@@ -1,97 +1,105 @@
 class: CommandLineTool
 id: ../../../preseq_lc_extrap.cwl
 inputs:
-- id: output
-  doc: 'yield output file (default: stdout) '
-  type: boolean
+- id: in_output
+  doc: 'yield output file (default: stdout)'
+  type: File
   inputBinding:
     prefix: -output
-- id: extra_p
-  doc: 'maximum extrapolation (default: 1e+10) '
+- id: in_extra_p
+  doc: 'maximum extrapolation (default: 1e+10)'
   type: boolean
   inputBinding:
     prefix: -extrap
-- id: step
-  doc: 'step size in extrapolations (default: 1e+06) '
+- id: in_step
+  doc: 'step size in extrapolations (default: 1e+06)'
   type: boolean
   inputBinding:
     prefix: -step
-- id: bootstraps
-  doc: 'number of bootstraps (default: 100), '
+- id: in_bootstraps
+  doc: 'number of bootstraps (default: 100),'
   type: boolean
   inputBinding:
     prefix: -bootstraps
-- id: cval
-  doc: 'level for confidence intervals (default: 0.95) '
+- id: in_cval
+  doc: 'level for confidence intervals (default: 0.95)'
   type: boolean
   inputBinding:
     prefix: -cval
-- id: terms
-  doc: 'maximum number of terms '
+- id: in_terms
+  doc: maximum number of terms
   type: boolean
   inputBinding:
     prefix: -terms
-- id: verbose
-  doc: 'print more information '
+- id: in_verbose
+  doc: print more information
   type: boolean
   inputBinding:
     prefix: -verbose
-- id: bam
-  doc: 'input is in BAM format '
+- id: in_bam
+  doc: input is in BAM format
   type: boolean
   inputBinding:
     prefix: -bam
-- id: seg_len
-  doc: 'maximum segment length when merging paired end bam reads  (default: 5000) '
+- id: in_seg_len
+  doc: "maximum segment length when merging paired end bam reads\n(default: 5000)"
   type: boolean
   inputBinding:
     prefix: -seg_len
-- id: pe
-  doc: 'input is paired end read file '
+- id: in_pe
+  doc: input is paired end read file
   type: boolean
   inputBinding:
     prefix: -pe
-- id: vals
-  doc: 'input is a text file containing only the observed counts '
+- id: in_vals
+  doc: input is a text file containing only the observed counts
   type: boolean
   inputBinding:
     prefix: -vals
-- id: hist
-  doc: 'input is a text file containing the observed histogram '
+- id: in_hist
+  doc: input is a text file containing the observed histogram
   type: boolean
   inputBinding:
     prefix: -hist
-- id: quick
-  doc: 'quick mode, estimate yield without bootstrapping for  confidence intervals '
+- id: in_quick
+  doc: "quick mode, estimate yield without bootstrapping for\nconfidence intervals"
   type: boolean
   inputBinding:
     prefix: -quick
-- id: defects
-  doc: 'defects mode to extrapolate without testing for defects '
+- id: in_defects
+  doc: defects mode to extrapolate without testing for defects
   type: boolean
   inputBinding:
     prefix: -defects
-- id: seed
-  doc: 'seed for random number generator '
+- id: in_seed
+  doc: seed for random number generator
   type: boolean
   inputBinding:
     prefix: -seed
-- id: about
-  doc: 'print about message '
+- id: in_about
+  doc: print about message
   type: boolean
   inputBinding:
     prefix: -about
-- id: lc_extra_p
+- id: in_lc_extra_p
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sorted_bed_file
+- id: in_sorted_bed_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: 'yield output file (default: stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - preseq

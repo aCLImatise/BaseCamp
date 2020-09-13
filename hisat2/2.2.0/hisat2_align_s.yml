@@ -1,9 +1,106 @@
 !Command
+command:
+- hisat2-align-s
 positional:
 - !Positional
   description: ''
   position: 0
   name: hisat2-align
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: ht2-idx
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: m1
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: m2
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: r
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: sam
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: specified
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: File
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Files
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Index
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: many
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: filename
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: for
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: times.
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: with
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: E.g.
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: SAM
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: prefix
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: unpaired
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: output
   optional: false
 named:
 - !Flag
@@ -296,51 +393,52 @@ named:
     name: int
   optional: true
 - !Flag
-  description: min acceptable alignment score w/r/t read length (L,0.0,-0.2)
+  description: "min acceptable alignment score w/r/t read length\n(L,0.0,-0.2)"
   synonyms:
   - --score-min
   args: !SimpleFlagArg
     name: func
   optional: true
 - !Flag
-  description: 'It searches for at most <int> distinct, primary alignments for each
-    read. Primary alignments mean  alignments whose alignment score is equal to or
-    higher than any other alignments. The search terminates  when it cannot find more
-    distinct valid alignments, or when it finds <int>, whichever happens first.  The
-    alignment score for a paired-end alignment equals the sum of the alignment scores
-    of  the individual mates. Each reported read or pair alignment beyond the first
-    has the SAM ‘secondary’ bit  (which equals 256) set in its FLAGS field. For reads
-    that have more than <int> distinct,  valid alignments, hisat2 does not guarantee
-    that the <int> alignments reported are the best possible  in terms of alignment
-    score. Default: 5 (linear index) or 10 (graph index). Note: HISAT2 is not designed
-    with large values for -k in mind, and when aligning reads to long,  repetitive
-    genomes, large -k could make alignment much slower.'
+  description: "It searches for at most <int> distinct, primary alignments for each\
+    \ read. Primary alignments mean\nalignments whose alignment score is equal to\
+    \ or higher than any other alignments. The search terminates\nwhen it cannot find\
+    \ more distinct valid alignments, or when it finds <int>, whichever happens first.\n\
+    The alignment score for a paired-end alignment equals the sum of the alignment\
+    \ scores of\nthe individual mates. Each reported read or pair alignment beyond\
+    \ the first has the SAM ‘secondary’ bit\n(which equals 256) set in its FLAGS field.\
+    \ For reads that have more than <int> distinct,\nvalid alignments, hisat2 does\
+    \ not guarantee that the <int> alignments reported are the best possible\nin terms\
+    \ of alignment score. Default: 5 (linear index) or 10 (graph index).\nNote: HISAT2\
+    \ is not designed with large values for -k in mind, and when aligning reads to\
+    \ long,\nrepetitive genomes, large -k could make alignment much slower."
   synonyms:
   - -k
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: HISAT2, like other aligners, uses seed-and-extend approaches. HISAT2
-    tries to extend seeds to  full-length alignments. In HISAT2, --max-seeds is used
-    to control the maximum number of seeds that  will be extended. For DNA-read alignment
-    (--no-spliced-alignment), HISAT2 extends up to these many seeds and skips the
-    rest of the seeds. For RNA-read alignment, HISAT2 skips extending seeds and reports  no
-    alignments if the number of seeds is larger than the number specified with the
-    option,  to be compatible with previous versions of HISAT2. Large values for --max-seeds
-    may improve alignment  sensitivity, but HISAT2 is not designed with large values
-    for --max-seeds in mind, and when aligning  reads to long, repetitive genomes,
-    large --max-seeds could make alignment much slower.  The default value is the
-    maximum of 5 and the value that comes with -k times 2.
+  description: "HISAT2, like other aligners, uses seed-and-extend approaches. HISAT2\
+    \ tries to extend seeds to\nfull-length alignments. In HISAT2, --max-seeds is\
+    \ used to control the maximum number of seeds that\nwill be extended. For DNA-read\
+    \ alignment (--no-spliced-alignment), HISAT2 extends up to these many seeds\n\
+    and skips the rest of the seeds. For RNA-read alignment, HISAT2 skips extending\
+    \ seeds and reports\nno alignments if the number of seeds is larger than the number\
+    \ specified with the option,\nto be compatible with previous versions of HISAT2.\
+    \ Large values for --max-seeds may improve alignment\nsensitivity, but HISAT2\
+    \ is not designed with large values for --max-seeds in mind, and when aligning\n\
+    reads to long, repetitive genomes, large --max-seeds could make alignment much\
+    \ slower.\nThe default value is the maximum of 5 and the value that comes with\
+    \ -k times 2."
   synonyms:
   - --max-seeds
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: HISAT2 reports all alignments it can find. Using the option is equivalent
-    to using both --max-seeds  and -k with the maximum value that a 64-bit signed
-    integer can represent (9,223,372,036,854,775,807).
+  description: "HISAT2 reports all alignments it can find. Using the option is equivalent\
+    \ to using both --max-seeds\nand -k with the maximum value that a 64-bit signed\
+    \ integer can represent (9,223,372,036,854,775,807)."
   synonyms:
   - -a/--all
   args: !EmptyFlagArg {}
@@ -448,8 +546,8 @@ named:
     name: text
   optional: true
 - !Flag
-  description: 'add <text> ("lab:value") to @RG line of SAM header. Note: @RG line
-    only printed when --rg-id is set.'
+  description: "add <text> (\"lab:value\") to @RG line of SAM header.\nNote: @RG line\
+    \ only printed when --rg-id is set."
   synonyms:
   - --rg
   args: !SimpleFlagArg
@@ -514,7 +612,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "add 'chr' to reference names in alignment "
+  description: add 'chr' to reference names in alignment
   synonyms:
   - --add-chrname
   args: !EmptyFlagArg {}
@@ -525,10 +623,9 @@ named:
   - -h/--help
   args: !EmptyFlagArg {}
   optional: true
-command:
-- hisat2-align-s
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag

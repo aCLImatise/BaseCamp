@@ -2,7 +2,7 @@ version 1.0
 
 task GetWqb {
   input {
-    String? dir
+    Directory? dir
     String? ligand
     String? ligand_output_mol
   }
@@ -15,6 +15,9 @@ task GetWqb {
   parameter_meta {
     dir: "Directory with location of OpenDUck data"
     ligand: "Ligand in mol format"
-    ligand_output_mol: "Ligand output in mol forma, with wqb value"
+    ligand_output_mol: "Ligand output in mol forma, with wqb value\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

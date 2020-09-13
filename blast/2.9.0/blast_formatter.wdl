@@ -4,4 +4,7 @@ task BlastFormatter {
   command <<<
     blast_formatter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

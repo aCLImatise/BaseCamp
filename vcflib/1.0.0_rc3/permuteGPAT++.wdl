@@ -1,14 +1,10 @@
 version 1.0
 
-task PermuteGPAT++ {
-  input {
-    String permute_gp_at
-  }
+task PermuteGPAT {
   command <<<
-    permuteGPAT++ \
-      ~{permute_gp_at}
+    permuteGPAT__
   >>>
-  parameter_meta {
-    permute_gp_at: ""
+  output {
+    File out_stdout = stdout()
   }
 }

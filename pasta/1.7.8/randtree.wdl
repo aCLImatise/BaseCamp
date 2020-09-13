@@ -4,4 +4,7 @@ task Randtree {
   command <<<
     randtree
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

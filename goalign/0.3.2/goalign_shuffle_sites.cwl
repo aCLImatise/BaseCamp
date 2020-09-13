@@ -1,95 +1,108 @@
 class: CommandLineTool
 id: ../../../goalign_shuffle_sites.cwl
 inputs:
-- id: rate
+- id: in_rate
   doc: Rate of shuffled sites (>=0 and <=1) (default 0.5)
   type: double
   inputBinding:
     prefix: --rate
-- id: rogue
+- id: in_rogue
   doc: If set, then will take the given proportion of taxa, and will apply shuffle
     again on --rate of the remaining intact sites
   type: double
   inputBinding:
     prefix: --rogue
-- id: rogue_file
+- id: in_rogue_file
   doc: Rogue sequence names output file (default "stdout")
-  type: string
+  type: File
   inputBinding:
     prefix: --rogue-file
-- id: stable_rogues
+- id: in_stable_rogues
   doc: If true, then with a given seed, rogues will always be the same with all alignments
     having sequences in the same order. It may not be the case if false, especially
     when alignemnts have different lengths.
   type: boolean
   inputBinding:
     prefix: --stable-rogues
-- id: align
+- id: in_align
   doc: Alignment input file (default "stdin")
-  type: string
+  type: File
   inputBinding:
     prefix: --align
-- id: auto_detect
+- id: in_auto_detect
   doc: Auto detects input format (overrides -p, -x and -u)
   type: boolean
   inputBinding:
     prefix: --auto-detect
-- id: clustal
+- id: in_clustal
   doc: Alignment is in clustal? default fasta
   type: boolean
   inputBinding:
     prefix: --clustal
-- id: ignore_identical
+- id: in_ignore_identical
   doc: Ignore duplicated sequences that have the same name and same sequences
   type: boolean
   inputBinding:
     prefix: --ignore-identical
-- id: input_strict
+- id: in_input_strict
   doc: Strict phylip input format (only used with -p)
   type: boolean
   inputBinding:
     prefix: --input-strict
-- id: nexus
+- id: in_nexus
   doc: Alignment is in nexus? default fasta
   type: boolean
   inputBinding:
     prefix: --nexus
-- id: no_block
+- id: in_no_block
   doc: Write Phylip sequences without space separated blocks (only used with -p)
   type: boolean
   inputBinding:
     prefix: --no-block
-- id: one_line
+- id: in_one_line
   doc: Write Phylip sequences on 1 line (only used with -p)
   type: boolean
   inputBinding:
     prefix: --one-line
-- id: output
+- id: in_output
   doc: Shuffled alignment output file (default "stdout")
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: output_strict
+- id: in_output_strict
   doc: Strict phylip output format (only used with -p)
   type: boolean
   inputBinding:
     prefix: --output-strict
-- id: phylip
+- id: in_phylip
   doc: Alignment is in phylip? default fasta
   type: boolean
   inputBinding:
     prefix: --phylip
-- id: seed
+- id: in_seed
   doc: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)'
   type: long
   inputBinding:
     prefix: --seed
-- id: threads
+- id: in_threads
   doc: Number of threads (default 1)
   type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_rogue_file
+  doc: Rogue sequence names output file (default "stdout")
+  type: File
+  outputBinding:
+    glob: $(inputs.in_rogue_file)
+- id: out_output
+  doc: Shuffled alignment output file (default "stdout")
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - goalign

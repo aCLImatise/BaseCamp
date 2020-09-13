@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../pvacseq_coverage_filter_output_file.cwl
 inputs:
-- id: normal_cov
+- id: in_normal_cov
   doc: ''
   type: string
   inputBinding:
     prefix: --normal-cov
-- id: pvac_seq
+- id: in_pvac_seq
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: coverage_filter
+- id: in_coverage_filter
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pvacseq

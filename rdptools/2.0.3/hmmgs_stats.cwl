@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../hmmgs_stats.cwl
 inputs:
-- id: bloom_filter_stats
+- id: in_bloom_filter_stats
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: bloom_filter
+- id: in_bloom_filter
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hmmgs

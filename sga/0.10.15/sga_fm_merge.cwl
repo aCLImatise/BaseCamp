@@ -1,38 +1,36 @@
 class: CommandLineTool
 id: ../../../sga_fm_merge.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: prefix
+- id: in_prefix
   doc: 'use PREFIX for the names of the index files (default: prefix of the input
     file)'
-  type: string
+  type: File
   inputBinding:
     prefix: --prefix
-- id: threads
+- id: in_threads
   doc: 'use NUM worker threads (default: no threading)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: min_overlap
+- id: in_min_overlap
   doc: 'minimum overlap required between two reads to merge (default: 45)'
-  type: string
+  type: long
   inputBinding:
     prefix: --min-overlap
-- id: outfile
+- id: in_outfile
   doc: 'write the merged sequences to FILE (default: basename.merged.fa)'
   type: File
   inputBinding:
     prefix: --outfile
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sga

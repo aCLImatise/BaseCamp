@@ -1,94 +1,96 @@
 class: CommandLineTool
 id: ../../../SAGE.cwl
 inputs:
-- id: coding_regions
-  doc: Coding regions bed file to search for inframe indels
-  type: string
-  inputBinding:
-    prefix: -coding_regions
-- id: known_hotspots
-  doc: Tab separated file of known hotspot locations
-  type: string
+- id: in_known_hotspots
+  doc: Tab separated file of known hotspot
+  type: File
   inputBinding:
     prefix: -known_hotspots
-- id: max_het_binomial_likelihood
-  doc: Up to 1 read of support for the ALT in the reference is allowed if the binomial
-    likelihood of observing the read (assuming a 50% VAF) is less than this parameter
-    [0.01]
-  type: string
-  inputBinding:
-    prefix: -max_het_binomial_likelihood
-- id: min_base_quality
-  doc: Minimum quality for a base to be considered [13]
-  type: string
+- id: in_min_base_quality
+  doc: "Minimum quality for a base to be\nconsidered [13]"
+  type: long
   inputBinding:
     prefix: -min_base_quality
-- id: min_in_del_quality
-  doc: Low confidence filtering minimum indel quality [150]
-  type: string
+- id: in_min_in_del_quality
+  doc: "Low confidence filtering minimum\nindel quality [150]"
+  type: long
   inputBinding:
     prefix: -min_indel_quality
-- id: min_in_del_vaf
-  doc: Low confidence filtering minimum indel VAF [0.02]
-  type: string
+- id: in_min_in_del_vaf
+  doc: "Low confidence filtering minimum\nindel VAF [0.02]"
+  type: double
   inputBinding:
     prefix: -min_indel_vaf
-- id: min_mapping_quality
-  doc: Minimum mapping quality for an alignment to be used [1]
-  type: string
+- id: in_min_mapping_quality
+  doc: "Minimum mapping quality for an\nalignment to be used [1]"
+  type: long
   inputBinding:
     prefix: -min_mapping_quality
-- id: min_snv_quality
-  doc: Low confidence filtering minimum SNV/MNV quality [100]
-  type: string
+- id: in_min_snv_quality
+  doc: "Low confidence filtering minimum\nSNV/MNV quality [100]"
+  type: long
   inputBinding:
     prefix: -min_snv_quality
-- id: min_snv_vaf
-  doc: Low confidence filtering minimum SNV/MNV VAF [0.005]
-  type: string
+- id: in_min_snv_vaf
+  doc: "Low confidence filtering minimum\nSNV/MNV VAF [0.005]"
+  type: double
   inputBinding:
     prefix: -min_snv_vaf
-- id: min_tumor_reads
-  doc: Low confidence filtering minimum tumor reads [2]
-  type: string
+- id: in_min_tumor_reads
+  doc: "Low confidence filtering minimum\ntumor reads [2]"
+  type: long
   inputBinding:
     prefix: -min_tumor_reads
-- id: out
-  doc: Output VCF file to write. Gz supported.
-  type: string
+- id: in_out
+  doc: Output VCF file to write. Gz
+  type: File
   inputBinding:
     prefix: -out
-- id: ref_genome
-  doc: Path to the ref genome fasta file
-  type: string
-  inputBinding:
-    prefix: -ref_genome
-- id: reference
+- id: in_reference
   doc: Name of reference sample
   type: string
   inputBinding:
     prefix: -reference
-- id: reference_bam
+- id: in_reference_bam
   doc: Path to reference bam file
-  type: string
+  type: File
   inputBinding:
     prefix: -reference_bam
-- id: tumor
+- id: in_tumor
   doc: Name of tumor sample
   type: string
   inputBinding:
     prefix: -tumor
-- id: tumor_bam
+- id: in_tumor_bam
   doc: Path to tumor bam file
-  type: string
+  type: File
   inputBinding:
     prefix: -tumor_bam
-- id: sage_hotspot_application
-  doc: ''
+- id: in_sage_hotspot_application
+  doc: "-coding_regions <arg>                Coding regions bed file to search\nfor\
+    \ inframe indels"
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_locations
+  doc: -max_het_binomial_likelihood <arg>   Up to 1 read of support for the ALT
+  type: string
+  inputBinding:
+    position: 1
+- id: in_supported_dot
+  doc: -ref_genome <arg>                    Path to the ref genome fasta file
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: Output VCF file to write. Gz
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - SAGE

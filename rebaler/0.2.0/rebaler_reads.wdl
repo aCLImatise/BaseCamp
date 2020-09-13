@@ -2,9 +2,9 @@ version 1.0
 
 task RebalerReads {
   input {
-    Boolean? d
-    String? t
     Boolean? random
+    String? t
+    Boolean? d
     String re_baler
     String reference
     String reads
@@ -14,16 +14,19 @@ task RebalerReads {
       ~{re_baler} \
       ~{reference} \
       ~{reads} \
-      ~{true="-d" false="" d} \
+      ~{if (random) then "--random" else ""} \
       ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
-      ~{true="--random" false="" random}
+      ~{if (d) then "-d" else ""}
   >>>
   parameter_meta {
-    d: ""
-    t: ""
     random: ""
+    t: ""
+    d: ""
     re_baler: ""
     reference: ""
     reads: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,25 +1,46 @@
 class: CommandLineTool
 id: ../../../vcf2scoary.cwl
 inputs:
-- id: out
+- id: in_out
   doc: The path to the output file
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: types
-  doc: 'The types of variants to include in the output. NOTE: This works if TYPE=XX
-    can be found in the INFO column of the vcf file. The special keyword ALL includes
-    all types. This is the default setting. Common types are snp, mnp, ins, del and
-    complex. Give as comma-separated list. Example: --types snp,ins,del'
-  type: string
+- id: in_types
+  doc: "The types of variants to include in the output. NOTE: This\nworks if TYPE=XX\
+    \ can be found in the INFO column of the vcf\nfile. The special keyword ALL includes\
+    \ all types. This is the\ndefault setting. Common types are snp, mnp, ins, del\
+    \ and\ncomplex. Give as comma-separated list. Example: --types\nsnp,ins,del"
+  type: File
   inputBinding:
     prefix: --types
-- id: force
+- id: in_force
   doc: Force overwriting of output file. (If it already exists)
-  type: boolean
+  type: File
   inputBinding:
     prefix: --force
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: The path to the output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
+- id: out_types
+  doc: "The types of variants to include in the output. NOTE: This\nworks if TYPE=XX\
+    \ can be found in the INFO column of the vcf\nfile. The special keyword ALL includes\
+    \ all types. This is the\ndefault setting. Common types are snp, mnp, ins, del\
+    \ and\ncomplex. Give as comma-separated list. Example: --types\nsnp,ins,del"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_types)
+- id: out_force
+  doc: Force overwriting of output file. (If it already exists)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_force)
 cwlVersion: v1.1
 baseCommand:
 - vcf2scoary

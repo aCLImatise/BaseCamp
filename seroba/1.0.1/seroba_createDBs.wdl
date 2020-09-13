@@ -4,4 +4,7 @@ task SerobaCreateDBs {
   command <<<
     seroba createDBs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

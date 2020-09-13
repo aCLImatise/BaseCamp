@@ -1,13 +1,13 @@
 version 1.0
 
-task QmerFilter {
+task Qmerfilter {
   input {
     String threshold
     String in
     String out
   }
   command <<<
-    qmer-filter \
+    qmer_filter \
       ~{threshold} \
       ~{in} \
       ~{out}
@@ -16,5 +16,8 @@ task QmerFilter {
     threshold: ""
     in: ""
     out: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

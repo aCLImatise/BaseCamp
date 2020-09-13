@@ -1,20 +1,20 @@
 version 1.0
 
-task AbyssFiltergraph {
+task Abyssfiltergraph {
   input {
-    String? km_er
+    Int? km_er
     Boolean? ss
     Boolean? no_ss
-    String? island
-    String? tip
-    String? length
-    String? max_length
+    Int? island
+    Int? tip
+    Int? length
+    Int? max_length
     Float? coverage
     Float? max_coverage
     Boolean? shim
     Boolean? no_shim
-    String? shim_max_degree
-    String? min_overlap
+    Int? shim_max_degree
+    Int? min_overlap
     Boolean? assemble
     Boolean? no_assemble
     File? graph
@@ -31,34 +31,34 @@ task AbyssFiltergraph {
     String fast_a
   }
   command <<<
-    abyss-filtergraph \
+    abyss_filtergraph \
       ~{contig_adjacency_graph} \
       ~{fast_a} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
-      ~{true="--SS" false="" ss} \
-      ~{true="--no-SS" false="" no_ss} \
+      ~{if (ss) then "--SS" else ""} \
+      ~{if (no_ss) then "--no-SS" else ""} \
       ~{if defined(island) then ("--island " +  '"' + island + '"') else ""} \
       ~{if defined(tip) then ("--tip " +  '"' + tip + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
       ~{if defined(max_length) then ("--max-length " +  '"' + max_length + '"') else ""} \
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""} \
       ~{if defined(max_coverage) then ("--max-coverage " +  '"' + max_coverage + '"') else ""} \
-      ~{true="--shim" false="" shim} \
-      ~{true="--no-shim" false="" no_shim} \
+      ~{if (shim) then "--shim" else ""} \
+      ~{if (no_shim) then "--no-shim" else ""} \
       ~{if defined(shim_max_degree) then ("--shim-max-degree " +  '"' + shim_max_degree + '"') else ""} \
       ~{if defined(min_overlap) then ("--min-overlap " +  '"' + min_overlap + '"') else ""} \
-      ~{true="--assemble" false="" assemble} \
-      ~{true="--no-assemble" false="" no_assemble} \
+      ~{if (assemble) then "--assemble" else ""} \
+      ~{if (no_assemble) then "--no-assemble" else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
       ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""} \
       ~{if defined(remove) then ("--remove " +  '"' + remove + '"') else ""} \
-      ~{true="--adj" false="" output_graph_adj} \
-      ~{true="--asqg" false="" as_qg} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--gv" false="" gv} \
-      ~{true="--gfa" false="" gfa} \
-      ~{true="--sam" false="" sam} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (output_graph_adj) then "--adj" else ""} \
+      ~{if (as_qg) then "--asqg" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (gv) then "--gv" else ""} \
+      ~{if (gfa) then "--gfa" else ""} \
+      ~{if (sam) then "--sam" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     km_er: "k-mer size"
@@ -70,9 +70,9 @@ task AbyssFiltergraph {
     max_length: "remove contigs longer than N [0]"
     coverage: "remove contigs with mean k-mer coverage less than FLOAT [0]"
     max_coverage: "remove contigs with mean k-mer coverage at least FLOAT [0]"
-    shim: "remove filler contigs that only contribute to adjacency [default]"
+    shim: "remove filler contigs that only contribute\\nto adjacency [default]"
     no_shim: "disable filler contigs removal"
-    shim_max_degree: "only remove shims where the smaller of  in/out degree is smaller than N [1]"
+    shim_max_degree: "only remove shims where the smaller of\\nin/out degree is smaller than N [1]"
     min_overlap: "require a minimum overlap of N bases [10]"
     assemble: "assemble unambiguous paths"
     no_assemble: "disable assembling of paths [default]"
@@ -88,5 +88,8 @@ task AbyssFiltergraph {
     verbose: "display verbose output"
     contig_adjacency_graph: "contig adjacency graph"
     fast_a: "contigs to check consistency of ADJ edges"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

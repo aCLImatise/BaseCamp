@@ -4,17 +4,17 @@ task MegahitToolkitAssemble {
   input {
     String? s_dbg_name
     String? output_prefix
-    String? num_cpu_threads
-    String? max_tip_len
-    String? min_standalone
-    String? bubble_level
-    String? merge_len
-    String? merge_similar
-    String? prune_level
-    String? disconnect_ratio
-    String? low_local_ratio
-    String? cleaning_rounds
-    String? min_depth
+    Int? num_cpu_threads
+    Int? max_tip_len
+    Int? min_standalone
+    Int? bubble_level
+    Int? merge_len
+    Int? merge_similar
+    Int? prune_level
+    Float? disconnect_ratio
+    Float? low_local_ratio
+    Int? cleaning_rounds
+    Int? min_depth
     Boolean? is_final_round
     Boolean? output_standalone
     Boolean? careful_bubble
@@ -36,9 +36,9 @@ task MegahitToolkitAssemble {
       ~{if defined(low_local_ratio) then ("--low_local_ratio " +  '"' + low_local_ratio + '"') else ""} \
       ~{if defined(cleaning_rounds) then ("--cleaning_rounds " +  '"' + cleaning_rounds + '"') else ""} \
       ~{if defined(min_depth) then ("--min_depth " +  '"' + min_depth + '"') else ""} \
-      ~{true="--is_final_round" false="" is_final_round} \
-      ~{true="--output_standalone" false="" output_standalone} \
-      ~{true="--careful_bubble" false="" careful_bubble}
+      ~{if (is_final_round) then "--is_final_round" else ""} \
+      ~{if (output_standalone) then "--output_standalone" else ""} \
+      ~{if (careful_bubble) then "--careful_bubble" else ""}
   >>>
   parameter_meta {
     s_dbg_name: "succinct de Bruijn graph name"
@@ -58,5 +58,8 @@ task MegahitToolkitAssemble {
     output_standalone: "output standalone contigs to *.final.contigs.fa"
     careful_bubble: "remove bubble carefully"
     assemble: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -16,9 +16,9 @@ task Cleric {
       ~{ref} \
       ~{target} \
       ~{output_bam} \
-      ~{true="--aln" false="" aln} \
-      ~{true="--emit-tool-contract" false="" emit_tool_contract} \
-      ~{true="--resolved-tool-contract" false="" resolved_tool_contract}
+      ~{if (aln) then "--aln" else ""} \
+      ~{if (emit_tool_contract) then "--emit-tool-contract" else ""} \
+      ~{if (resolved_tool_contract) then "--resolved-tool-contract" else ""}
   >>>
   parameter_meta {
     aln: "Pairwise alignment of reference to target"
@@ -28,5 +28,8 @@ task Cleric {
     ref: "Reference Fasta"
     target: "Target Fasta"
     output_bam: "Output BAM"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

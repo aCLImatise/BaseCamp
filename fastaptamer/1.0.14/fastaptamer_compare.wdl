@@ -2,25 +2,28 @@ version 1.0
 
 task FastaptamerCompare {
   input {
-    String? x
-    String? y
-    String? o
-    Boolean? q
     Boolean? a
+    Boolean? q
+    String? o
+    File? y
+    File? x
   }
   command <<<
     fastaptamer_compare \
-      ~{if defined(x) then ("-x " +  '"' + x + '"') else ""} \
-      ~{if defined(y) then ("-y " +  '"' + y + '"') else ""} \
+      ~{if (a) then "-a" else ""} \
+      ~{if (q) then "-q" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{true="-q" false="" q} \
-      ~{true="-a" false="" a}
+      ~{if defined(y) then ("-y " +  '"' + y + '"') else ""} \
+      ~{if defined(x) then ("-x " +  '"' + x + '"') else ""}
   >>>
   parameter_meta {
-    x: ""
-    y: ""
-    o: ""
-    q: ""
     a: ""
+    q: ""
+    o: ""
+    y: ""
+    x: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

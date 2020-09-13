@@ -5,7 +5,7 @@ task SketchyRun {
     File? fast_q
     File? sketch
     Int? ranks
-    File? outdir
+    Directory? outdir
     String? prefix
     Int? limit
     String? palette
@@ -13,9 +13,13 @@ task SketchyRun {
     Int? threads
     File? home
     Boolean? quiet
+    String reads
+    String template
   }
   command <<<
     sketchy run \
+      ~{reads} \
+      ~{template} \
       ~{if defined(fast_q) then ("--fastq " +  '"' + fast_q + '"') else ""} \
       ~{if defined(sketch) then ("--sketch " +  '"' + sketch + '"') else ""} \
       ~{if defined(ranks) then ("--ranks " +  '"' + ranks + '"') else ""} \
@@ -26,19 +30,25 @@ task SketchyRun {
       ~{if defined(stable) then ("--stable " +  '"' + stable + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(home) then ("--home " +  '"' + home + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
-    fast_q: "Path to input Fastq containing basecalled nanopore reads  [required]"
-    sketch: "Path to reference sketch local files or species template  [required]"
+    fast_q: "Path to input Fastq containing basecalled nanopore"
+    sketch: "Path to reference sketch local files or species"
     ranks: "Output highest ranking sum of shared hashes [10]"
     outdir: "Output directory for data and plots [sketchy]"
     prefix: "Prefix for output files [sketchy]."
     limit: "Maximum number of reads to predict on [all]"
     palette: "Brewer color palette for plots [YlGnBu]"
-    stable: "Stability parameter to compute stable breakpoints, in reads [1000]"
+    stable: "Stability parameter to compute stable breakpoints, in\\nreads [1000]"
     threads: "Threads for sketch queries in Mash [4]"
-    home: "Sketchy path to reference sketch home directory. Can be set via environmental variable: SKETCHY_PATH"
+    home: "Sketchy path to reference sketch home directory. Can\\nbe set via environmental variable: SKETCHY_PATH"
     quiet: "Run without logging output or progress bar."
+    reads: "[required]"
+    template: "[required]"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

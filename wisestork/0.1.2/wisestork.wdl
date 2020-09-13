@@ -4,4 +4,7 @@ task Wisestork {
   command <<<
     wisestork
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

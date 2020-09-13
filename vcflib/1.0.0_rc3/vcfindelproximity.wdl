@@ -4,4 +4,7 @@ task Vcfindelproximity {
   command <<<
     vcfindelproximity
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

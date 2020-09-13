@@ -4,4 +4,7 @@ task Netlearn {
   command <<<
     netlearn
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

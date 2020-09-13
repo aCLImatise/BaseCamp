@@ -4,4 +4,7 @@ task Advntr {
   command <<<
     advntr
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

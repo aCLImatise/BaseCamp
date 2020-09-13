@@ -1,7 +1,10 @@
 version 1.0
 
-task SplitAndRunSparc.sh.bak {
+task SplitAndRunSparcsh {
   command <<<
-    split_and_run_sparc.sh.bak
+    split_and_run_sparc_sh
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

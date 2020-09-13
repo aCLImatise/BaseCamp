@@ -1,27 +1,40 @@
 class: CommandLineTool
 id: ../../../compute.cwl
 inputs:
-- id: use_total_segregating
+- id: in_write_results_outfile
+  doc: ': write results to outfile'
+  type: string
+  inputBinding:
+    prefix: -o
+- id: in_use_nth_sequence
+  doc: ': use the nth sequence in the data as an outgroup'
+  type: string
+  inputBinding:
+    prefix: -O
+- id: in_use_total_segregating
   doc: ': use the total # of segregating sites, rather than # of mutations'
   type: boolean
   inputBinding:
     prefix: -n
-- id: verbose_progress_reporting
+- id: in_verbose_progress_reporting
   doc: ': verbose progress reporting to standard error'
   type: boolean
   inputBinding:
     prefix: -v
-- id: _pretty_output
+- id: in__pretty_output
   doc: ': pretty output'
   type: boolean
   inputBinding:
     prefix: -V
-- id: i
+- id: in_i
   doc: ''
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - compute

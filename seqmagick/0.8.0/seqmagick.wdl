@@ -8,13 +8,16 @@ task Seqmagick {
   }
   command <<<
     seqmagick \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="-V" false="" v}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (v) then "-V" else ""}
   >>>
   parameter_meta {
     verbose: "Be more verbose. Specify -vv or -vvv for even more"
     quiet: "Suppress output"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

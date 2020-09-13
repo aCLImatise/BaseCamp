@@ -4,4 +4,7 @@ task BpPairwiseKaks {
   command <<<
     bp_pairwise_kaks
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

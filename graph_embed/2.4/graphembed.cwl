@@ -1,110 +1,123 @@
 class: CommandLineTool
 id: ../../../graphembed.cwl
 inputs:
-- id: specify_input_data
+- id: in_specify_input_data
   doc: Specify input data file in CSV format.
   type: File
   inputBinding:
     prefix: -i
-- id: specify_classes_data
+- id: in_specify_classes_data
   doc: Specify classes data file in CSV format.
   type: File
   inputBinding:
     prefix: -t
-- id: output_directory_name
+- id: in_output_directory_name
   doc: 'Output directory name [default: out].'
-  type: string
+  type: Directory
   inputBinding:
     prefix: -o
-- id: class_confidence
-  doc: 'Confidence bias for clustering [default: 1.0].'
-  type: string
+- id: in_class_confidence
+  doc: "Confidence bias for clustering\n[default: 1.0]."
+  type: double
   inputBinding:
     prefix: --class_confidence
-- id: number_links_closest
-  doc: 'Number of links towards closest neighbors with same class [default: 5].'
-  type: string
+- id: in_number_links_closest
+  doc: "Number of links towards closest neighbors\nwith same class [default: 5]."
+  type: long
   inputBinding:
     prefix: -k
-- id: number_links_denser
-  doc: 'Number of links towards denser neighbors with a different class [default:
-    1]'
-  type: string
+- id: in_number_links_denser
+  doc: "Number of links towards denser neighbors\nwith a different class [default:\
+    \ 1]"
+  type: long
   inputBinding:
     prefix: -d
-- id: number_limit_horizon
-  doc: 'Number of nearest neighbors to limit the horizon to limit search of denser
-    neighbors of a different class [default: 10]'
-  type: string
+- id: in_number_limit_thehorizon
+  doc: "Number of nearest neighbors to limit the\nhorizon to limit search of denser\
+    \ neighbors\nof a different class [default: 10]"
+  type: long
   inputBinding:
     prefix: -z
-- id: number_mutual_nearest
-  doc: 'Number of mutual nearest neighbors that define outlier instances [default:
-    0]'
-  type: string
+- id: in_number_mutual_nearest
+  doc: "Number of mutual nearest neighbors that\ndefine outlier instances [default:\
+    \ 0]"
+  type: long
   inputBinding:
     prefix: -l
-- id: normalization
+- id: in_normalization
   doc: Convert data matrix to normalized matrix.
   type: boolean
   inputBinding:
     prefix: --normalization
-- id: feature_selection
+- id: in_feature_selection
   doc: Select most discriminative features.
   type: boolean
   inputBinding:
     prefix: --feature_selection
-- id: correlation_transformation
+- id: in_correlation_transformation
   doc: Convert data matrix to corr coeff matrix.
   type: boolean
   inputBinding:
     prefix: --correlation_transformation
-- id: min_threshold
+- id: in_min_threshold
   doc: 'Min num instances per class [default: 5]'
-  type: string
+  type: long
   inputBinding:
     prefix: --min_threshold
-- id: max_threshold
+- id: in_max_threshold
   doc: 'Max num instances per class [default: 400]'
-  type: string
+  type: long
   inputBinding:
     prefix: --max_threshold
-- id: random_state
+- id: in_random_state
   doc: 'Random seed [default: 1]'
-  type: string
+  type: long
   inputBinding:
     prefix: --random_state
-- id: display
+- id: in_display
   doc: Display graphs on terminal.
   type: boolean
   inputBinding:
     prefix: --display
-- id: figure_size
+- id: in_figure_size
   doc: 'Figure size [default: 15].'
-  type: string
+  type: long
   inputBinding:
     prefix: --figure_size
-- id: cmap_name
+- id: in_cmap_name
   doc: 'Color scheme [default: gist_ncar].'
   type: string
   inputBinding:
     prefix: --cmap_name
-- id: do_not_add_timestamp
-  doc: Do not use timestamp as suffix for output directory name.
-  type: boolean
+- id: in_do_not_add_timestamp
+  doc: "Do not use timestamp as suffix for\noutput directory name."
+  type: Directory
   inputBinding:
     prefix: --do_not_add_timestamp
-- id: verbose
+- id: in_verbose
   doc: Print more text.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: graph_embed
+- id: in_graph_embed
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory_name
+  doc: 'Output directory name [default: out].'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory_name)
+- id: out_do_not_add_timestamp
+  doc: "Do not use timestamp as suffix for\noutput directory name."
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_do_not_add_timestamp)
 cwlVersion: v1.1
 baseCommand:
 - graphembed

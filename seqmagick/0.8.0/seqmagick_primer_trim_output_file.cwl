@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../seqmagick_primer_trim_output_file.cwl
 inputs:
-- id: reverse_is_rev_comp
+- id: in_reverse_is_rev_comp
   doc: ''
   type: boolean
   inputBinding:
     prefix: --reverse-is-revcomp
-- id: seq_magick
+- id: in_seq_magick
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: primer_trim
+- id: in_primer_trim
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - seqmagick

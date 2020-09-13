@@ -1,29 +1,10 @@
 version 1.0
 
-task SanityCheckMappingFile.pl.orig {
-  input {
-    String no
-    String such
-    File file
-    String or
-    Directory directory
-    String at
-  }
+task SanityCheckMappingFilepl {
   command <<<
-    sanity_check_mapping_file.pl.orig \
-      ~{no} \
-      ~{such} \
-      ~{file} \
-      ~{or} \
-      ~{directory} \
-      ~{at}
+    sanity_check_mapping_file_pl
   >>>
-  parameter_meta {
-    no: ""
-    such: ""
-    file: ""
-    or: ""
-    directory: ""
-    at: ""
+  output {
+    File out_stdout = stdout()
   }
 }

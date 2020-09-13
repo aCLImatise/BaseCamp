@@ -8,13 +8,16 @@ task SocruSpecies {
   }
   command <<<
     socru_species \
-      ~{true="--extended" false="" extended} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (extended) then "--extended" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    extended: "Extended information about the species databases (default: False)"
+    extended: "Extended information about the species databases (default:\\nFalse)"
     debug: "Turn on debugging (default: False)"
     verbose: "Turn on verbose output (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

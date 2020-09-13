@@ -8,13 +8,16 @@ task TANmask {
   }
   command <<<
     TANmask \
-      ~{true="-v" false="" verbose_mode_output} \
-      ~{true="-l" false="" shortest_tandem_interval} \
-      ~{true="-n" false="" use_name_tandem}
+      ~{if (verbose_mode_output) then "-v" else ""} \
+      ~{if (shortest_tandem_interval) then "-l" else ""} \
+      ~{if (use_name_tandem) then "-n" else ""}
   >>>
   parameter_meta {
     verbose_mode_output: ": Verbose mode, output statistics as proceed."
     shortest_tandem_interval: ": shortest tandem interval to report."
     use_name_tandem: ": use this name as for the tandem mask track"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../seqmap.cwl
 inputs:
-- id: number_of_mismatches
+- id: in_number_of_mismatches
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: probe_fast_a_file_name
+- id: in_probe_fast_a_file_name
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: transcript_fast_a_file_name
+- id: in_transcript_fast_a_file_name
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 2
-- id: output_file_name
+- id: in_output_file_name
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_name
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_name)
 cwlVersion: v1.1
 baseCommand:
 - seqmap

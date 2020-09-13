@@ -2,7 +2,7 @@ version 1.0
 
 task Consensus {
   input {
-    String? out
+    File? out
     String? pile_up
     Boolean? nt
     Boolean? cs
@@ -15,10 +15,10 @@ task Consensus {
       ~{contig} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(pile_up) then ("--pileup " +  '"' + pile_up + '"') else ""} \
-      ~{true="--nt" false="" nt} \
-      ~{true="--cs" false="" cs} \
-      ~{true="--variants" false="" variants} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (nt) then "--nt" else ""} \
+      ~{if (cs) then "--cs" else ""} \
+      ~{if (variants) then "--variants" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     out: "write the output FASTA file to OUTPUT"
@@ -28,5 +28,9 @@ task Consensus {
     variants: "print only variants in the pileup"
     verbose: "display verbose output"
     contig: "contigs in FASTA format"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

@@ -4,4 +4,7 @@ task StructConnect {
   command <<<
     structConnect
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

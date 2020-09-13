@@ -1,17 +1,10 @@
 version 1.0
 
-task MerfishtoolsEstErrorRates {
-  input {
-    String tsv_file
-    String raw_data
-  }
+task MerfishtoolsEsterrorrates {
   command <<<
-    merfishtools est-error-rates \
-      ~{tsv_file} \
-      ~{raw_data}
+    merfishtools est_error_rates
   >>>
-  parameter_meta {
-    tsv_file: ""
-    raw_data: ""
+  output {
+    File out_stdout = stdout()
   }
 }

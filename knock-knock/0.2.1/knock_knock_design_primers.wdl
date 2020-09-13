@@ -1,14 +1,17 @@
 version 1.0
 
-task KnockKnockDesignPrimers {
+task KnockknockDesignprimers {
   input {
     String project_directory
   }
   command <<<
-    knock-knock design-primers \
+    knock_knock design_primers \
       ~{project_directory}
   >>>
   parameter_meta {
-    project_directory: "the base directory to store input data, reference annotations, and analysis output for a project"
+    project_directory: "the base directory to store input data, reference\\nannotations, and analysis output for a project"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

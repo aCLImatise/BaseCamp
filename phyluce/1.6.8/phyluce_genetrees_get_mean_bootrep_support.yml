@@ -1,6 +1,20 @@
 !Command
-positional: []
+command:
+- phyluce_genetrees_get_mean_bootrep_support
+positional:
+- !Positional
+  description: '[--schema {nexus,newick,nexml,fasta,phylip}]'
+  position: 0
+  name: CONFIG
+  optional: false
 named:
+- !Flag
+  description: ''
+  synonyms:
+  - --root
+  args: !SimpleFlagArg
+    name: ROOT
+  optional: true
 - !Flag
   description: Tree file
   synonyms:
@@ -21,23 +35,15 @@ named:
   - --schema
   args: !ChoiceFlagArg
     choices: !!set
-      ? nexml
-      ? nexus
+      ? newick
       ? fasta
       ? phylip
-      ? newick
+      ? nexus
+      ? nexml
   optional: true
-- !Flag
-  description: The taxon on which to root trees
-  synonyms:
-  - --root
-  args: !SimpleFlagArg
-    name: ROOT
-  optional: true
-command:
-- phyluce_genetrees_get_mean_bootrep_support
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

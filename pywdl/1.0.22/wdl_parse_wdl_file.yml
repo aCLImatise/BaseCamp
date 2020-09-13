@@ -1,4 +1,8 @@
 &id004 !Command
+command:
+- wdl
+- parse
+- wdl_file
 positional:
 - !Positional
   description: ''
@@ -9,26 +13,24 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - --debug
+  - --no-color
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ''
   synonyms:
-  - --no-color
+  - --debug
   args: !EmptyFlagArg {}
   optional: true
-command:
-- wdl
-- parse
-- wdl_file
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - wdl
   - parse
-  parent: &id001 !Command
+  positional: []
+  named: []
+  parent: &id002 !Command
+    command:
+    - wdl
     positional: []
     named:
     - !Flag
@@ -43,11 +45,13 @@ parent: &id002 !Command
       - --no-color
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - wdl
     parent:
     subcommands:
+    - *id001
     - !Command
+      command:
+      - wdl
+      - run
       positional:
       - !Positional
         description: Path to WDL File
@@ -68,11 +72,9 @@ parent: &id002 !Command
         - --sge
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - wdl
-      - run
-      parent: *id001
+      parent: *id002
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -89,7 +91,7 @@ parent: &id002 !Command
         \  Use SGE to execute tasks\n"
       generated_using: &id003
       - --help
-    - *id002
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -113,6 +115,7 @@ parent: &id002 !Command
     generated_using: *id003
   subcommands:
   - *id004
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -127,6 +130,7 @@ parent: &id002 !Command
     \  -h, --help  show this help message and exit\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

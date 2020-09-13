@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../MatchesByFeature.cwl
 inputs:
-- id: gff_three_file
+- id: in_gff_three_file
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: gff_features
+- id: in_gff_features
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: match_files
+- id: in_match_files
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MatchesByFeature

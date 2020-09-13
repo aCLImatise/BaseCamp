@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../humann2_build_custom_database.cwl
 inputs:
-- id: input
+- id: in_input
   doc: the fasta input file
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: the output folder
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: id_mapping
+- id: in_id_mapping
   doc: the file mapping fasta ids to taxonomy
-  type: string
+  type: File
   inputBinding:
     prefix: --id-mapping
-- id: taxonomic_profile
+- id: in_taxonomic_profile
   doc: the file containing the taxonomic profile
-  type: string
+  type: File
   inputBinding:
     prefix: --taxonomic-profile
-- id: format
+- id: in_format
   doc: the final database format
   type: string
   inputBinding:
     prefix: --format
-- id: genus_abundance_threshold
-  doc: the minimum abundance for a genus to be included in the database
+- id: in_genus_abundance_threshold
+  doc: "the minimum abundance for a genus to be included in the database\n"
   type: string
   inputBinding:
     prefix: --genus-abundance-threshold
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: the output folder
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - humann2_build_custom_database

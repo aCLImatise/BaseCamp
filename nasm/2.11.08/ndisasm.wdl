@@ -3,15 +3,15 @@ version 1.0
 task Ndisasm {
   input {
     String? auto_intelligent_sync
-    String? as_b
-    String? b_sets_mode
+    Int? as_b
+    Int? b_sets_mode
     String? this_text
-    String? the_version_number
+    Int? the_version_number
     String? bytes_bytes_header
     String? disassembling_bytes_bytes
     String? preferred_vendor_instruction
-    String? o
     String? s
+    String? o
   }
   command <<<
     ndisasm \
@@ -23,8 +23,8 @@ task Ndisasm {
       ~{if defined(bytes_bytes_header) then ("-e " +  '"' + bytes_bytes_header + '"') else ""} \
       ~{if defined(disassembling_bytes_bytes) then ("-k " +  '"' + disassembling_bytes_bytes + '"') else ""} \
       ~{if defined(preferred_vendor_instruction) then ("-p " +  '"' + preferred_vendor_instruction + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
     auto_intelligent_sync: "auto (intelligent) sync"
@@ -35,7 +35,10 @@ task Ndisasm {
     bytes_bytes_header: "<bytes> bytes of header"
     disassembling_bytes_bytes: "disassembling <bytes> bytes from position <start>"
     preferred_vendor_instruction: "the preferred vendor instruction set (intel, amd, cyrix, idt)"
-    o: ""
     s: ""
+    o: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

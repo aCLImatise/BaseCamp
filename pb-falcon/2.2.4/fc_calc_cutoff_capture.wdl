@@ -20,4 +20,7 @@ task FcCalcCutoffCapture {
     genome_size: ""
     capture: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

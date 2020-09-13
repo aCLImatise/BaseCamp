@@ -7,11 +7,14 @@ task KneaddataTest {
   }
   command <<<
     kneaddata_test \
-      ~{true="--bypass-functional-tests" false="" bypass_functional_tests} \
-      ~{true="--bypass-unit-tests" false="" bypass_unit_tests}
+      ~{if (bypass_functional_tests) then "--bypass-functional-tests" else ""} \
+      ~{if (bypass_unit_tests) then "--bypass-unit-tests" else ""}
   >>>
   parameter_meta {
     bypass_functional_tests: "do not run the kneaddata end to end functional tests"
     bypass_unit_tests: "do not run the unit tests"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

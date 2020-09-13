@@ -4,4 +4,7 @@ task Arv {
   command <<<
     arv
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

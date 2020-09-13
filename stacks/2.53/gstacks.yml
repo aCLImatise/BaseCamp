@@ -1,0 +1,202 @@
+!Command
+command:
+- gstacks
+positional: []
+named:
+- !Flag
+  description: ": input directory containg '*.matches.bam' files created by the\n\
+    de novo Stacks pipeline, ustacks-cstacks-sstacks-tsv2bam"
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': input directory containing BAM files'
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": with -I/-M, suffix to use to build BAM file names: by default this\n\
+    is just '.bam', i.e. the program expects 'SAMPLE_NAME.bam'"
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': input BAM file(s)'
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': path to a population map giving the list of samples'
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": output directory (default: none with -B; with -P same as the input\n\
+    directory)"
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': number of threads to use (default: 1)'
+  synonyms:
+  - -t
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": model to use to call variants and genotypes; one of\nmarukilow (default),\
+    \ marukihigh, or snp"
+  synonyms:
+  - --model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': alpha threshold for discovering SNPs (default: 0.01 for marukilow)'
+  synonyms:
+  - --var-alpha
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': alpha threshold for calling genotypes (default: 0.05)'
+  synonyms:
+  - --gt-alpha
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": remove all but one set ofread pairs of the same sample that\nhave\
+    \ the same insert length (implies --rm-unpaired-reads)"
+  synonyms:
+  - --rm-pcr-duplicates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': discard unpaired reads'
+  synonyms:
+  - --rm-unpaired-reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': ignore paired-end reads even if present in the input'
+  synonyms:
+  - --ignore-pe-reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": ignore read pairing (only for paired-end GBS; treat READ2's as if\
+    \ they were READ1's)"
+  synonyms:
+  - --unpaired
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': kmer length for the de Bruijn graph (default: 31, max. 31)'
+  synonyms:
+  - --kmer-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': maximum number of reads to use in the de Bruijn graph (default:
+    1000)'
+  synonyms:
+  - --max-debruijn-reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': minimum coverage to consider a kmer (default: 2)'
+  synonyms:
+  - --min-kmer-cov
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': save read alignments (heavy BAM files)'
+  synonyms:
+  - --write-alignments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': minimum PHRED-scaled mapping quality to consider a read (default:
+    10)'
+  synonyms:
+  - --min-mapq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': maximum soft-clipping level, in fraction of read length (default:
+    0.20)'
+  synonyms:
+  - --max-clipped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': maximum allowed sequencing insert length (default: 1000)'
+  synonyms:
+  - --max-insert-len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': write a heavier output'
+  synonyms:
+  - --details
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": range of edge coverage thresholds to\niterate over when building\
+    \ the graph of allele cooccurrences for\nSNP phasing (default: 1,2)"
+  synonyms:
+  - --phasing-cooccurrences-thr-range
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": don't try to ignore dubious heterozygote\ngenotypes during phasing\n"
+  synonyms:
+  - --phasing-dont-prune-hets
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "gstacks 2.53\n\nDe novo mode:\n  gstacks -P stacks_dir -M popmap\n\n \
+  \ -P: input directory containg '*.matches.bam' files created by the\n      de novo\
+  \ Stacks pipeline, ustacks-cstacks-sstacks-tsv2bam\n\nReference-based mode:\n  gstacks\
+  \ -I bam_dir -M popmap [-S suffix] -O out_dir\n  gstacks -B bam_file [-B ...] -O\
+  \ out_dir\n\n  -I: input directory containing BAM files\n  -S: with -I/-M, suffix\
+  \ to use to build BAM file names: by default this\n      is just '.bam', i.e. the\
+  \ program expects 'SAMPLE_NAME.bam'\n  -B: input BAM file(s)\n\n  The input BAM\
+  \ file(s) must be sorted by coordinate.\n  With -B, records must be assigned to\
+  \ samples using BAM \"reads groups\"\n  (gstacks uses the ID/identifier and SM/sample\
+  \ name fields). Read groups\n  must be consistent if repeated different files. Note\
+  \ that with -I, read\n  groups are unneeded and ignored.\n\nFor both modes:\n  -M:\
+  \ path to a population map giving the list of samples\n  -O: output directory (default:\
+  \ none with -B; with -P same as the input\n      directory)\n  -t,--threads: number\
+  \ of threads to use (default: 1)\n\nSNP Model options:\n  --model: model to use\
+  \ to call variants and genotypes; one of\n           marukilow (default), marukihigh,\
+  \ or snp\n  --var-alpha: alpha threshold for discovering SNPs (default: 0.01 for\
+  \ marukilow)\n  --gt-alpha: alpha threshold for calling genotypes (default: 0.05)\n\
+  \nPaired-end options:\n  --rm-pcr-duplicates: remove all but one set ofread pairs\
+  \ of the same sample that \n                       have the same insert length (implies\
+  \ --rm-unpaired-reads)\n  --rm-unpaired-reads: discard unpaired reads\n  --ignore-pe-reads:\
+  \ ignore paired-end reads even if present in the input\n  --unpaired: ignore read\
+  \ pairing (only for paired-end GBS; treat READ2's as if they were READ1's)\n\nAdvanced\
+  \ options:\n  (De novo mode)\n  --kmer-length: kmer length for the de Bruijn graph\
+  \ (default: 31, max. 31)\n  --max-debruijn-reads: maximum number of reads to use\
+  \ in the de Bruijn graph (default: 1000)\n  --min-kmer-cov: minimum coverage to\
+  \ consider a kmer (default: 2)\n  --write-alignments: save read alignments (heavy\
+  \ BAM files)\n\n  (Reference-based mode)\n  --min-mapq: minimum PHRED-scaled mapping\
+  \ quality to consider a read (default: 10)\n  --max-clipped: maximum soft-clipping\
+  \ level, in fraction of read length (default: 0.20)\n  --max-insert-len: maximum\
+  \ allowed sequencing insert length (default: 1000)\n\n  --details: write a heavier\
+  \ output\n  --phasing-cooccurrences-thr-range: range of edge coverage thresholds\
+  \ to\n        iterate over when building the graph of allele cooccurrences for\n\
+  \        SNP phasing (default: 1,2)\n  --phasing-dont-prune-hets: don't try to ignore\
+  \ dubious heterozygote\n        genotypes during phasing\n\n"
+generated_using:
+- --help

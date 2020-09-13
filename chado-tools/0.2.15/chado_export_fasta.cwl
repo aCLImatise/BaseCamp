@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../chado_export_fasta.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: verbose mode
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: config
+- id: in_config
   doc: YAML file containing connection details
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: use_password
+- id: in_use_password
   doc: 'connect with password (default: no password)'
   type: boolean
   inputBinding:
     prefix: --use_password
-- id: output_file
+- id: in_output_file
   doc: FASTA output file
-  type: string
+  type: File
   inputBinding:
     prefix: --output_file
-- id: abbreviation
+- id: in_abbreviation
   doc: abbreviation/short name of the organism
   type: string
   inputBinding:
     prefix: --abbreviation
-- id: sequence_type
+- id: in_sequence_type
   doc: type of the sequences to be exported
   type: string
   inputBinding:
     prefix: --sequence_type
-- id: release
+- id: in_release
   doc: name of the FASTA release
   type: string
   inputBinding:
     prefix: --release
-- id: include_obsolete
+- id: in_include_obsolete
   doc: export all features, including obsoletes
   type: boolean
   inputBinding:
     prefix: --include_obsolete
-- id: dbname
-  doc: name of the database
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: FASTA output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - chado

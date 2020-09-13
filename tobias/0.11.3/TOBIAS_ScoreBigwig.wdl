@@ -2,8 +2,8 @@ version 1.0
 
 task TOBIASScoreBigwig {
   input {
-    String? signal
-    String? full_path_output
+    File? signal
+    File? full_path_bigwig
     String? regions
     String? score
     Boolean? absolute
@@ -25,10 +25,10 @@ task TOBIASScoreBigwig {
     TOBIAS ScoreBigwig \
       ~{score_bigwig} \
       ~{if defined(signal) then ("--signal " +  '"' + signal + '"') else ""} \
-      ~{if defined(full_path_output) then ("--output " +  '"' + full_path_output + '"') else ""} \
+      ~{if defined(full_path_bigwig) then ("--output " +  '"' + full_path_bigwig + '"') else ""} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
       ~{if defined(score) then ("--score " +  '"' + score + '"') else ""} \
-      ~{true="--absolute" false="" absolute} \
+      ~{if (absolute) then "--absolute" else ""} \
       ~{if defined(extend) then ("--extend " +  '"' + extend + '"') else ""} \
       ~{if defined(smooth) then ("--smooth " +  '"' + smooth + '"') else ""} \
       ~{if defined(min_limit) then ("--min-limit " +  '"' + min_limit + '"') else ""} \
@@ -44,12 +44,12 @@ task TOBIASScoreBigwig {
   >>>
   parameter_meta {
     signal: "A .bw file of ATAC-seq cutsite signal"
-    full_path_output: "Full path to output bigwig"
+    full_path_bigwig: "Full path to output bigwig"
     regions: "Genomic regions to run footprinting within"
-    score: "Type of scoring to perform on cutsites (footprint/sum/mean/none) (default: footprint)"
-    absolute: "Convert bigwig signal to absolute values before calculating score"
+    score: "Type of scoring to perform on cutsites\\n(footprint/sum/mean/none) (default: footprint)"
+    absolute: "Convert bigwig signal to absolute values before\\ncalculating score"
     extend: "Extend input regions with bp (default: 100)"
-    smooth: "Smooth output signal by mean in <bp> windows (default: no smoothing)"
+    smooth: "Smooth output signal by mean in <bp> windows (default:\\nno smoothing)"
     min_limit: "Limit input bigwig value range (default: no lower limit)"
     max_limit: "Limit input bigwig value range (default: no upper limit)"
     fp_min: "Minimum footprint width (default: 20)"
@@ -59,7 +59,11 @@ task TOBIASScoreBigwig {
     window: "The window for calculation of sum (default: 100)"
     cores: "Number of cores to use for computation (default: 1)"
     split: "Split of multiprocessing jobs (default: 100)"
-    verbosity: "Level of output logging (0: silent, 1: errors/warnings, 2: info, 3: stats, 4: debug, 5: spam) (default: 3)"
+    verbosity: "Level of output logging (0: silent, 1: errors/warnings,\\n2: info, 3: stats, 4: debug, 5: spam) (default: 3)\\n"
     score_bigwig: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_full_path_bigwig = "${in_full_path_bigwig}"
   }
 }

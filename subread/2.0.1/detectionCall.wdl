@@ -4,4 +4,7 @@ task DetectionCall {
   command <<<
     detectionCall
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

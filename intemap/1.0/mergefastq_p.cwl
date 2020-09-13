@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../mergefastq_p.cwl
 inputs:
-- id: merge
+- id: in_merge
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: separate
+- id: in_separate
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: mate
+- id: in_mate
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: pair
+- id: in_pair
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: files
+- id: in_files
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 4
-- id: into
+- id: in_into
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 5
-- id: one
+- id: in_one
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 7
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mergefastq-p

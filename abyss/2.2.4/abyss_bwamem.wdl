@@ -1,14 +1,10 @@
 version 1.0
 
-task AbyssBwamem {
-  input {
-    String? option
-  }
+task Abyssbwamem {
   command <<<
-    abyss-bwamem \
-      ~{option}
+    abyss_bwamem
   >>>
-  parameter_meta {
-    option: ""
+  output {
+    File out_stdout = stdout()
   }
 }

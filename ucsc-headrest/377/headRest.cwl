@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../headRest.cwl
 inputs:
-- id: count
+- id: in_xxx
   doc: ''
   type: string
   inputBinding:
-    position: 0
-- id: filename
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-outputs: []
+    prefix: -xxx
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - headRest

@@ -1,6 +1,27 @@
 !Command
-positional: []
+command:
+- phyluce_genetrees_get_tree_counts
+positional:
+- !Positional
+  description: '[--schema {nexus,newick,nexml,fasta,phylip}]'
+  position: 0
+  name: LOCUS_SUPPORT_OUTPUT
+  optional: false
 named:
+- !Flag
+  description: ''
+  synonyms:
+  - --locus-support-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --root
+  - --extension
+  args: !SimpleFlagArg
+    name: ROOT
+  optional: true
 - !Flag
   description: Tree file
   synonyms:
@@ -9,50 +30,27 @@ named:
     name: TREES
   optional: true
 - !Flag
-  description: The output file in which to store trees and their associated loci (config
-    format)
-  synonyms:
-  - --locus-support-output
-  args: !SimpleFlagArg
-    name: LOCUS_SUPPORT_OUTPUT
-  optional: true
-- !Flag
   description: The scheme of the input data
   synonyms:
   - --schema
   args: !ChoiceFlagArg
     choices: !!set
-      ? nexml
-      ? nexus
+      ? newick
       ? fasta
       ? phylip
-      ? newick
+      ? nexus
+      ? nexml
   optional: true
 - !Flag
-  description: The taxon on which to root trees
-  synonyms:
-  - --root
-  args: !SimpleFlagArg
-    name: ROOT
-  optional: true
-- !Flag
-  description: File extension used with each 'best' tree
-  synonyms:
-  - --extension
-  args: !SimpleFlagArg
-    name: EXTENSION
-  optional: true
-- !Flag
-  description: Loci to exclude
+  description: "Loci to exclude\n"
   synonyms:
   - --exclude
   args: !RepeatFlagArg
     name: EXCLUDE
   optional: true
-command:
-- phyluce_genetrees_get_tree_counts
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

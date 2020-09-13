@@ -1,4 +1,7 @@
-&id003 !Command
+&id002 !Command
+command:
+- SOAPdenovo-Trans-127mer
+- map
 positional: []
 named:
 - !Flag
@@ -31,68 +34,17 @@ named:
   - -p
   args: !EmptyFlagArg {}
   optional: true
-command:
-- SOAPdenovo-Trans-127mer
-- map
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - SOAPdenovo-Trans-127mer
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: '<string>        configFile: the config file of reads'
-      synonyms:
-      - -s
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '<string>        outputGraph: prefix of output graph file name'
-      synonyms:
-      - -o
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '<int>           kmer(min 13, max 127): kmer size, [23]'
-      synonyms:
-      - -K
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '<int>           n_cpu: number of cpu for use, [8]'
-      synonyms:
-      - -p
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '<int>           kmerFreqCutoff: kmers with frequency no larger
-        than KmerFreqCutoff will be deleted, [0]'
-      synonyms:
-      - -d
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - SOAPdenovo-Trans-127mer
-    - pregraph
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "\nThe version 1.03: released on July 19th, 2013\nWith bug fixes by\
-      \ Chris Boursnell January 23rd, 2014\n\n\npregraph -s configFile -o outputGraph\
-      \ [-K kmer -p n_cpu -d kmerFreqCutoff]\n  -s\t<string>\tconfigFile: the config\
-      \ file of reads\n  -o\t<string>\toutputGraph: prefix of output graph file name\n\
-      \  -K\t<int>\t\tkmer(min 13, max 127): kmer size, [23]\n  -p\t<int>\t\tn_cpu:\
-      \ number of cpu for use, [8]\n  -d\t<int>\t\tkmerFreqCutoff: kmers with frequency\
-      \ no larger than KmerFreqCutoff will be deleted, [0]\n"
-    generated_using: &id002
-    - --help
-  - !Command
+    - contig
     positional: []
     named:
     - !Flag
@@ -115,11 +67,9 @@ parent: &id001 !Command
       - -M
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - SOAPdenovo-Trans-127mer
-    - contig
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -129,82 +79,13 @@ parent: &id001 !Command
       \  -e\t<int>\t\tEdgeCovCutoff: edges with coverage no larger than EdgeCovCutoff\
       \ will be deleted, [2]\n  -M\t<int>\t\tmergeLevel(min 0, max 3): the strength\
       \ of merging similar sequences during contiging, [1]\n"
-    generated_using: *id002
-  - *id003
+    generated_using: &id003
+    - --help
+  - *id002
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: '<string>        inputGraph: prefix of input graph file name'
-      synonyms:
-      - -g
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: (optional) output assembly RPKM statistics, [NO]
-      synonyms:
-      - -R
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: (optional)      scaffold structure exists, [NO]
-      synonyms:
-      - -S
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: (optional)      fill gaps in scaffolds, [NO]
-      synonyms:
-      - -F
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '<int>           n_cpu: number of cpu for use, [8]'
-      synonyms:
-      - -p
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '<int>           minContigLen: shortest contig for scaffolding,
-        [100]'
-      synonyms:
-      - -L
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '<int>           locusMaxOutput: output the number of transcripts
-        no more than locusMaxOutput in one locus, [5]'
-      synonyms:
-      - -t
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '<int>           gapLenDiff: allowed length difference between
-        estimated and filled gap, [50]'
-      synonyms:
-      - -G
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - SOAPdenovo-Trans-127mer
-    - scaff
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "\nThe version 1.03: released on July 19th, 2013\nWith bug fixes by\
-      \ Chris Boursnell January 23rd, 2014\n\n\nscaff -g inputGraph [-R -S -F] [-p\
-      \ n_cpu -L minContigLen -t locusMaxOutput -G gapLenDiff]\n  -g\t<string>\tinputGraph:\
-      \ prefix of input graph file name\n  -R\t\t(optional) output assembly RPKM statistics,\
-      \ [NO]\n  -S\t(optional)\tscaffold structure exists, [NO]\n  -F\t(optional)\t\
-      fill gaps in scaffolds, [NO]\n  -p\t<int>\t\tn_cpu: number of cpu for use, [8]\n\
-      \  -L\t<int>\t\tminContigLen: shortest contig for scaffolding, [100]\n  -t\t\
-      <int>\t\tlocusMaxOutput: output the number of transcripts no more than locusMaxOutput\
-      \ in one locus, [5]\n  -G\t<int>\t\tgapLenDiff: allowed length difference between\
-      \ estimated and filled gap, [50]\n"
-    generated_using: *id002
-  - !Command
+    - all
     positional: []
     named:
     - !Flag
@@ -298,11 +179,9 @@ parent: &id001 !Command
       - -G
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - SOAPdenovo-Trans-127mer
-    - all
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -324,7 +203,133 @@ parent: &id001 !Command
       \ the number of transcripts no more than locusMaxOutput in one locus, [5]\n\
       \  -G\t<int>\t\tgapLenDiff: allowed length difference between estimated and\
       \ filled gap, [50]\n"
-    generated_using: *id002
+    generated_using: *id003
+  - !Command
+    command:
+    - SOAPdenovo-Trans-127mer
+    - pregraph
+    positional: []
+    named:
+    - !Flag
+      description: '<string>        configFile: the config file of reads'
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '<string>        outputGraph: prefix of output graph file name'
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '<int>           kmer(min 13, max 127): kmer size, [23]'
+      synonyms:
+      - -K
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '<int>           n_cpu: number of cpu for use, [8]'
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '<int>           kmerFreqCutoff: kmers with frequency no larger
+        than KmerFreqCutoff will be deleted, [0]'
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nThe version 1.03: released on July 19th, 2013\nWith bug fixes by\
+      \ Chris Boursnell January 23rd, 2014\n\n\npregraph -s configFile -o outputGraph\
+      \ [-K kmer -p n_cpu -d kmerFreqCutoff]\n  -s\t<string>\tconfigFile: the config\
+      \ file of reads\n  -o\t<string>\toutputGraph: prefix of output graph file name\n\
+      \  -K\t<int>\t\tkmer(min 13, max 127): kmer size, [23]\n  -p\t<int>\t\tn_cpu:\
+      \ number of cpu for use, [8]\n  -d\t<int>\t\tkmerFreqCutoff: kmers with frequency\
+      \ no larger than KmerFreqCutoff will be deleted, [0]\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - SOAPdenovo-Trans-127mer
+    - scaff
+    positional: []
+    named:
+    - !Flag
+      description: '<string>        inputGraph: prefix of input graph file name'
+      synonyms:
+      - -g
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: (optional) output assembly RPKM statistics, [NO]
+      synonyms:
+      - -R
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: (optional)      scaffold structure exists, [NO]
+      synonyms:
+      - -S
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: (optional)      fill gaps in scaffolds, [NO]
+      synonyms:
+      - -F
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '<int>           n_cpu: number of cpu for use, [8]'
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '<int>           minContigLen: shortest contig for scaffolding,
+        [100]'
+      synonyms:
+      - -L
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '<int>           locusMaxOutput: output the number of transcripts
+        no more than locusMaxOutput in one locus, [5]'
+      synonyms:
+      - -t
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '<int>           gapLenDiff: allowed length difference between
+        estimated and filled gap, [50]'
+      synonyms:
+      - -G
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nThe version 1.03: released on July 19th, 2013\nWith bug fixes by\
+      \ Chris Boursnell January 23rd, 2014\n\n\nscaff -g inputGraph [-R -S -F] [-p\
+      \ n_cpu -L minContigLen -t locusMaxOutput -G gapLenDiff]\n  -g\t<string>\tinputGraph:\
+      \ prefix of input graph file name\n  -R\t\t(optional) output assembly RPKM statistics,\
+      \ [NO]\n  -S\t(optional)\tscaffold structure exists, [NO]\n  -F\t(optional)\t\
+      fill gaps in scaffolds, [NO]\n  -p\t<int>\t\tn_cpu: number of cpu for use, [8]\n\
+      \  -L\t<int>\t\tminContigLen: shortest contig for scaffolding, [100]\n  -t\t\
+      <int>\t\tlocusMaxOutput: output the number of transcripts no more than locusMaxOutput\
+      \ in one locus, [5]\n  -G\t<int>\t\tgapLenDiff: allowed length difference between\
+      \ estimated and filled gap, [50]\n"
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -333,8 +338,9 @@ parent: &id001 !Command
     \    pregraph     construction kmer-graph\n    contig       eliminate errors and\
     \ output contigs\n    map          map reads to contigs\n    scaff        scaffolding\n\
     \    all          doing all the above in turn\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -344,4 +350,4 @@ help_text: "\nThe version 1.03: released on July 19th, 2013\nWith bug fixes by C
   inputGraph: prefix of input graph file name\n  -f\t(optional)\toutput gap related\
   \ reads for SRkgf to fill gap, [NO]\n  -R\t(optional)\toutput assembly RPKM statistics,\
   \ [NO]\n  -p\t<int>\t\tn_cpu: number of cpu for use, [8]\n"
-generated_using: *id002
+generated_using: *id003

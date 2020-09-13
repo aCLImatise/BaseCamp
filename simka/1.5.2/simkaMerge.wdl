@@ -15,16 +15,16 @@ task SimkaMerge {
   }
   command <<<
     simkaMerge \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-kmer-size" false="" km_er_size} \
-      ~{true="-in" false="" in} \
-      ~{true="-out-tmp-simka" false="" out_tmp_sim_ka} \
-      ~{true="-partition-id" false="" partition_id} \
-      ~{true="-max-memory" false="" max_memory} \
-      ~{true="-kmer-shannon-index" false="" km_er_shannon_index} \
-      ~{true="-simple-dist" false="" simple_dist} \
-      ~{true="-complex-dist" false="" complex_dist}
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (km_er_size) then "-kmer-size" else ""} \
+      ~{if (in) then "-in" else ""} \
+      ~{if (out_tmp_sim_ka) then "-out-tmp-simka" else ""} \
+      ~{if (partition_id) then "-partition-id" else ""} \
+      ~{if (max_memory) then "-max-memory" else ""} \
+      ~{if (km_er_shannon_index) then "-kmer-shannon-index" else ""} \
+      ~{if (simple_dist) then "-simple-dist" else ""} \
+      ~{if (complex_dist) then "-complex-dist" else ""}
   >>>
   parameter_meta {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
@@ -37,5 +37,8 @@ task SimkaMerge {
     km_er_shannon_index: "(1 arg) :    bank name"
     simple_dist: "(0 arg) :    compute simple distances"
     complex_dist: "(0 arg) :    compute complex distances"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

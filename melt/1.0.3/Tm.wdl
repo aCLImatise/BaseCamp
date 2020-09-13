@@ -10,7 +10,7 @@ task Tm {
   }
   command <<<
     Tm \
-      ~{true="--uncorrected" false="" uncorrected} \
+      ~{if (uncorrected) then "--uncorrected" else ""} \
       ~{if defined(dna) then ("--dna " +  '"' + dna + '"') else ""} \
       ~{if defined(na) then ("--na " +  '"' + na + '"') else ""} \
       ~{if defined(mg) then ("--mg " +  '"' + mg + '"') else ""} \
@@ -22,5 +22,8 @@ task Tm {
     na: "Na+ concentration (mM)"
     mg: "Mg++ concentration (mM)"
     dntp: "Nucleotide triphosphate concentration (mM)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

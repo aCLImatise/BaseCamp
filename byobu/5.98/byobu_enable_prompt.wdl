@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuEnablePrompt {
+task Byobuenableprompt {
   command <<<
-    byobu-enable-prompt
+    byobu_enable_prompt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

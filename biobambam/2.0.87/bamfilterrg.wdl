@@ -4,4 +4,7 @@ task Bamfilterrg {
   command <<<
     bamfilterrg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../filter_variations.cwl
 inputs:
-- id: arg_maximum_allowed_distance
+- id: in_arg_maximum_allowed_distance
   doc: '[ --max_offset ] arg (=100)     Maximum allowed distance.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: arg_maximum_allowed_difference
+- id: in_arg_maximum_allowed_difference
   doc: '[ --max_length_diff ] arg (=20) Maximum allowed length difference.'
   type: boolean
   inputBinding:
     prefix: -z
-- id: arg_minimum_length
-  doc: '[ --min_length ] arg (=10)      Minimum length of variations to be  written.'
+- id: in_arg_minimum_length
+  doc: "[ --min_length ] arg (=10)      Minimum length of variations to be\nwritten.\n"
   type: boolean
   inputBinding:
     prefix: -l
-- id: variants_file
+- id: in_variants_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - filter-variations

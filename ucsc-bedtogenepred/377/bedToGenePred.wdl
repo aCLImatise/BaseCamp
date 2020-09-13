@@ -2,16 +2,16 @@ version 1.0
 
 task BedToGenePred {
   input {
-    String bed_file
-    String gene_pred_file
+    String? not_valid_option
   }
   command <<<
     bedToGenePred \
-      ~{bed_file} \
-      ~{gene_pred_file}
+      ~{if defined(not_valid_option) then ("-h " +  '"' + not_valid_option + '"') else ""}
   >>>
   parameter_meta {
-    bed_file: ""
-    gene_pred_file: ""
+    not_valid_option: "not a valid option"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,16 +2,16 @@ version 1.0
 
 task RaToLines {
   input {
-    String in_do_tra
-    String out_dot_txt
+    String? not_valid_option
   }
   command <<<
     raToLines \
-      ~{in_do_tra} \
-      ~{out_dot_txt}
+      ~{if defined(not_valid_option) then ("-h " +  '"' + not_valid_option + '"') else ""}
   >>>
   parameter_meta {
-    in_do_tra: ""
-    out_dot_txt: ""
+    not_valid_option: "not a valid option"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

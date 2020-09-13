@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../chado_admin_revoke.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: verbose mode
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: config
+- id: in_config
   doc: YAML file containing connection details
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: use_password
+- id: in_use_password
   doc: 'connect with password (default: no password)'
   type: boolean
   inputBinding:
     prefix: --use_password
-- id: role
+- id: in_role
   doc: Name of the role/user
   type: string
   inputBinding:
     prefix: --role
-- id: schema
-  doc: 'Database schema (default: all)'
+- id: in_schema
+  doc: "Database schema (default: all)\n"
   type: string
   inputBinding:
     prefix: --schema
-- id: dbname
-  doc: name of the database
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chado

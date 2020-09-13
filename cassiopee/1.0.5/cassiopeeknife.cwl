@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../cassiopeeknife.cwl
 inputs:
-- id: _sequence_convert
+- id: in__sequence_convert
   doc: ': sequence to convert'
   type: boolean
   inputBinding:
     prefix: -s
-- id: _output_file
+- id: in__output_file
   doc: ': output file'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: _show_version
+- id: in__show_version
   doc: ': show version'
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out__output_file
+  doc: ': output file'
+  type: File
+  outputBinding:
+    glob: $(inputs.in__output_file)
 cwlVersion: v1.1
 baseCommand:
 - cassiopeeknife

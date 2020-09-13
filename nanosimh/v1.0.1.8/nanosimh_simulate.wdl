@@ -2,9 +2,9 @@ version 1.0
 
 task NanosimhSimulate {
   input {
-    String? reference
+    File? reference
     String? profile
-    String? out_pref
+    File? out_pref
     Int? number
     Float? mis_rate
     Float? ins_rate
@@ -29,11 +29,11 @@ task NanosimhSimulate {
       ~{if defined(ins_rate) then ("--ins-rate " +  '"' + ins_rate + '"') else ""} \
       ~{if defined(del_rate) then ("--del-rate " +  '"' + del_rate + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--circular" false="" circular} \
-      ~{true="--perfect" false="" perfect} \
-      ~{true="--merge-contigs" false="" merge_contigs} \
-      ~{true="--rnf" false="" rnf} \
-      ~{true="--rnf-add-cigar" false="" rnf_add_cigar} \
+      ~{if (circular) then "--circular" else ""} \
+      ~{if (perfect) then "--perfect" else ""} \
+      ~{if (merge_contigs) then "--merge-contigs" else ""} \
+      ~{if (rnf) then "--rnf" else ""} \
+      ~{if (rnf_add_cigar) then "--rnf-add-cigar" else ""} \
       ~{if defined(max_len) then ("--max-len " +  '"' + max_len + '"') else ""} \
       ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
       ~{if defined(km_er_bias) then ("--kmer-bias " +  '"' + km_er_bias + '"') else ""}
@@ -46,7 +46,7 @@ task NanosimhSimulate {
     mis_rate: "mismatch rate (weight tuning) [1.0]"
     ins_rate: "insertion rate (weight tuning) [1.0]"
     del_rate: "deletion reate (weight tuning) [1.0]"
-    seed: "initial seed for the pseudorandom number generator (0 for random) [1]"
+    seed: "initial seed for the pseudorandom number generator (0\\nfor random) [1]"
     circular: "circular simulation (linear otherwise)"
     perfect: "output perfect reads, no mutations"
     merge_contigs: "merge contigs from the reference"
@@ -54,6 +54,10 @@ task NanosimhSimulate {
     rnf_add_cigar: "add cigar to RNF names (not fully debugged, yet)"
     max_len: "maximum read length [inf]"
     min_len: "minimum read length [50]"
-    km_er_bias: "prohibits homopolymers with length >= n bases in output reads [6]"
+    km_er_bias: "prohibits homopolymers with length >= n bases in\\noutput reads [6]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_pref = "${in_out_pref}"
   }
 }

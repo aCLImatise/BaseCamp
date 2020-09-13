@@ -1,14 +1,10 @@
 version 1.0
 
-task FixSqnDate {
-  input {
-    String sqn
-  }
+task Fixsqndate {
   command <<<
-    fix-sqn-date \
-      ~{sqn}
+    fix_sqn_date
   >>>
-  parameter_meta {
-    sqn: "Input SQN file to change date"
+  output {
+    File out_stdout = stdout()
   }
 }

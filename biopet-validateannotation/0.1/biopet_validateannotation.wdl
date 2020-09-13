@@ -1,6 +1,6 @@
 version 1.0
 
-task BiopetValidateannotation {
+task Biopetvalidateannotation {
   input {
     String? log_level
     File? ref_flat_file
@@ -10,13 +10,13 @@ task BiopetValidateannotation {
     String validate_annotation
   }
   command <<<
-    biopet-validateannotation \
+    biopet_validateannotation \
       ~{validate_annotation} \
       ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""} \
       ~{if defined(ref_flat_file) then ("--refflatFile " +  '"' + ref_flat_file + '"') else ""} \
       ~{if defined(gtf_file) then ("--gtfFile " +  '"' + gtf_file + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{true="--disableFail" false="" disable_fail}
+      ~{if (disable_fail) then "--disableFail" else ""}
   >>>
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
@@ -25,5 +25,8 @@ task BiopetValidateannotation {
     reference: "Reference fasta to check vcf file against"
     disable_fail: "Do not fail on error. The tool will still exit when encountering an error, but will do so with exit code 0"
     validate_annotation: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

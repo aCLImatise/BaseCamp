@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../hailctl_dataproc_diagnose.cwl
 inputs:
-- id: dest
+- id: in_dest
   doc: Directory for diagnose output -- must be local.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --dest
-- id: hail_log
+- id: in_hail_log
   doc: Path for hail.log file.
-  type: string
+  type: File
   inputBinding:
     prefix: --hail-log
-- id: overwrite
+- id: in_overwrite
   doc: Delete dest directory before adding new files.
   type: boolean
   inputBinding:
     prefix: --overwrite
-- id: no_diagnose
+- id: in_no_diagnose
   doc: Do not run gcloud dataproc clusters diagnose.
   type: boolean
   inputBinding:
     prefix: --no-diagnose
-- id: compress
+- id: in_compress
   doc: GZIP all files.
   type: boolean
   inputBinding:
     prefix: --compress
-- id: workers
-  doc: '[WORKERS [WORKERS ...]] Specific workers to get log files from.'
+- id: in_workers
+  doc: "[WORKERS [WORKERS ...]]\nSpecific workers to get log files from."
   type: boolean
   inputBinding:
     prefix: --workers
-- id: take
+- id: in_take
   doc: Only download logs from the first N workers.
   type: string
   inputBinding:
     prefix: --take
-- id: name
-  doc: Cluster name.
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_dest
+  doc: Directory for diagnose output -- must be local.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_dest)
 cwlVersion: v1.1
 baseCommand:
 - hailctl

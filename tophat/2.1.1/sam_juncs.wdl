@@ -11,4 +11,7 @@ task SamJuncs {
   parameter_meta {
     hits_dots_am: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

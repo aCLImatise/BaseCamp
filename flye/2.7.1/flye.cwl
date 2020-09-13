@@ -1,112 +1,120 @@
 class: CommandLineTool
 id: ../../../flye.cwl
 inputs:
-- id: pac_bio_raw
-  doc: PacBio raw reads
-  type: File[]
-  inputBinding:
-    prefix: --pacbio-raw
-- id: pac_bio_corr
-  doc: PacBio corrected reads
-  type: File[]
-  inputBinding:
-    prefix: --pacbio-corr
-- id: pac_bio_hifi
-  doc: PacBio HiFi reads
-  type: File[]
-  inputBinding:
-    prefix: --pacbio-hifi
-- id: nano_raw
-  doc: ONT raw reads
-  type: File[]
-  inputBinding:
-    prefix: --nano-raw
-- id: nano_corr
-  doc: ONT corrected reads
-  type: File[]
+- id: in_nano_corr
+  doc: '| --subassemblies) file1 [file_2 ...]'
+  type: boolean
   inputBinding:
     prefix: --nano-corr
-- id: subassemblies
-  doc: high-quality contigs input
-  type: File[]
-  inputBinding:
-    prefix: --subassemblies
-- id: genome_size
+- id: in_genome_size
   doc: estimated genome size (for example, 5m or 2.6g)
   type: long
   inputBinding:
     prefix: --genome-size
-- id: out_dir
+- id: in_pac_bio_raw
+  doc: PacBio raw reads
+  type: File[]
+  inputBinding:
+    prefix: --pacbio-raw
+- id: in_pac_bio_corr
+  doc: PacBio corrected reads
+  type: File[]
+  inputBinding:
+    prefix: --pacbio-corr
+- id: in_pac_bio_hifi
+  doc: PacBio HiFi reads
+  type: File[]
+  inputBinding:
+    prefix: --pacbio-hifi
+- id: in_nano_raw
+  doc: ONT raw reads
+  type: File[]
+  inputBinding:
+    prefix: --nano-raw
+- id: in_subassemblies
+  doc: high-quality contigs input
+  type: File[]
+  inputBinding:
+    prefix: --subassemblies
+- id: in_out_dir
   doc: Output directory
-  type: File
+  type: Directory
   inputBinding:
     prefix: --out-dir
-- id: threads
+- id: in_threads
   doc: number of parallel threads [1]
   type: long
   inputBinding:
     prefix: --threads
-- id: iterations
+- id: in_iterations
   doc: number of polishing iterations [1]
   type: long
   inputBinding:
     prefix: --iterations
-- id: min_overlap
+- id: in_min_overlap
   doc: minimum overlap between reads [auto]
   type: long
   inputBinding:
     prefix: --min-overlap
-- id: asm_coverage
-  doc: reduced coverage for initial disjointig assembly [not set]
+- id: in_asm_coverage
+  doc: "reduced coverage for initial disjointig assembly [not\nset]"
   type: long
   inputBinding:
     prefix: --asm-coverage
-- id: plasmids
+- id: in_plasmids
   doc: rescue short unassembled plasmids
   type: boolean
   inputBinding:
     prefix: --plasmids
-- id: meta
+- id: in_meta
   doc: metagenome / uneven coverage mode
   type: boolean
   inputBinding:
     prefix: --meta
-- id: keep_haplotypes
+- id: in_keep_haplotypes
   doc: do not collapse alternative haplotypes
   type: boolean
   inputBinding:
     prefix: --keep-haplotypes
-- id: trestle
+- id: in_trestle
   doc: enable Trestle [disabled]
   type: boolean
   inputBinding:
     prefix: --trestle
-- id: polish_target
+- id: in_polish_target
   doc: run polisher on the target sequence
   type: File
   inputBinding:
     prefix: --polish-target
-- id: resume
+- id: in_resume
   doc: resume from the last completed stage
   type: boolean
   inputBinding:
     prefix: --resume
-- id: resume_from
+- id: in_resume_from
   doc: resume from a custom stage
   type: string
   inputBinding:
     prefix: --resume-from
-- id: stop_after
+- id: in_stop_after
   doc: stop after the specified stage completed
   type: string
   inputBinding:
     prefix: --stop-after
-- id: debug
+- id: in_debug
   doc: enable debug output
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_dir
+  doc: Output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_out_dir)
 cwlVersion: v1.1
 baseCommand:
 - flye

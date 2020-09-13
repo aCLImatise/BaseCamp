@@ -2,7 +2,7 @@ version 1.0
 
 task Rmap {
   input {
-    Boolean? output_file_name
+    File? output_file_name
     Boolean? chrom
     Boolean? start
     Boolean? number
@@ -13,35 +13,39 @@ task Rmap {
     Boolean? clip
     Boolean? verbose
     Boolean? about
-    String fast_q_reads_file
+    File fast_q_reads_file
   }
   command <<<
     rmap \
       ~{fast_q_reads_file} \
-      ~{true="-output" false="" output_file_name} \
-      ~{true="-chrom" false="" chrom} \
-      ~{true="-start" false="" start} \
-      ~{true="-number" false="" number} \
-      ~{true="-suffix" false="" suffix} \
-      ~{true="-mismatch" false="" mismatch} \
-      ~{true="-ambiguous" false="" ambiguous} \
-      ~{true="-max-map" false="" max_map} \
-      ~{true="-clip" false="" clip} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-about" false="" about}
+      ~{if (output_file_name) then "-output" else ""} \
+      ~{if (chrom) then "-chrom" else ""} \
+      ~{if (start) then "-start" else ""} \
+      ~{if (number) then "-number" else ""} \
+      ~{if (suffix) then "-suffix" else ""} \
+      ~{if (mismatch) then "-mismatch" else ""} \
+      ~{if (ambiguous) then "-ambiguous" else ""} \
+      ~{if (max_map) then "-max-map" else ""} \
+      ~{if (clip) then "-clip" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (about) then "-about" else ""}
   >>>
   parameter_meta {
-    output_file_name: "output file name "
-    chrom: "chromosomes in FASTA file or dir "
-    start: "index of first read to map "
-    number: "number of reads to map "
-    suffix: "suffix of chrom files (assumes dir provided) "
-    mismatch: "maximum allowed mismatches "
-    ambiguous: "file to write names of ambiguously mapped reads "
-    max_map: "maximum allowed mappings for a read "
-    clip: "clip the specified adaptor "
-    verbose: "print more run info "
-    about: "print about message "
+    output_file_name: "output file name"
+    chrom: "chromosomes in FASTA file or dir"
+    start: "index of first read to map"
+    number: "number of reads to map"
+    suffix: "suffix of chrom files (assumes dir provided)"
+    mismatch: "maximum allowed mismatches"
+    ambiguous: "file to write names of ambiguously mapped reads"
+    max_map: "maximum allowed mappings for a read"
+    clip: "clip the specified adaptor"
+    verbose: "print more run info"
+    about: "print about message"
     fast_q_reads_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

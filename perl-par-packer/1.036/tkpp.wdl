@@ -4,4 +4,7 @@ task Tkpp {
   command <<<
     tkpp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,119 +1,128 @@
 class: CommandLineTool
 id: ../../../csvtk_join.cwl
 inputs:
-- id: fields
+- id: in_fields
   doc: Semicolon separated key fields of all files, if given one, we think all the
     files have the same key columns. Fields of different files should be separated
     by ";", e.g -f "1;2" or -f "A,B;C,D" or -f id (default "1")
-  type: string
+  type: long
   inputBinding:
     prefix: --fields
-- id: fuzzy_fields
+- id: in_fuzzy_fields
   doc: using fuzzy fields, e.g., -F -f "*name" or -F -f "id123*"
   type: boolean
   inputBinding:
     prefix: --fuzzy-fields
-- id: ignore_case
+- id: in_ignore_case
   doc: ignore case
   type: boolean
   inputBinding:
     prefix: --ignore-case
-- id: keep_unmatched
+- id: in_keep_unmatched
   doc: keep unmatched data of the first file (left join)
   type: boolean
   inputBinding:
     prefix: --keep-unmatched
-- id: left_join
+- id: in_left_join
   doc: left join, equals to -k/--keep-unmatched, exclusive with --outer-join
   type: boolean
   inputBinding:
     prefix: --left-join
-- id: na
+- id: in_na
   doc: content for filling NA data
   type: string
   inputBinding:
     prefix: --na
-- id: outer_join
+- id: in_outer_join
   doc: outer join, exclusive with --left-join
   type: boolean
   inputBinding:
     prefix: --outer-join
-- id: chunk_size
+- id: in_chunk_size
   doc: chunk size of CSV reader (default 50)
   type: long
   inputBinding:
     prefix: --chunk-size
-- id: comment_char
+- id: in_comment_char
   doc: lines starting with commment-character will be ignored. if your header row
     starts with '#', please assign "-C" another rare symbol, e.g. '$' (default "#")
   type: string
   inputBinding:
     prefix: --comment-char
-- id: delimiter
+- id: in_delimiter
   doc: delimiting character of the input CSV file (default ",")
-  type: string
+  type: File
   inputBinding:
     prefix: --delimiter
-- id: ignore_empty_row
+- id: in_ignore_empty_row
   doc: ignore empty rows
   type: boolean
   inputBinding:
     prefix: --ignore-empty-row
-- id: ignore_illegal_row
+- id: in_ignore_illegal_row
   doc: ignore illegal rows
   type: boolean
   inputBinding:
     prefix: --ignore-illegal-row
-- id: in_file_list
+- id: in_in_file_list
   doc: file of input files list (one file per line), if given, they are appended to
     files from cli arguments
-  type: string
+  type: File
   inputBinding:
     prefix: --infile-list
-- id: lazy_quotes
+- id: in_lazy_quotes
   doc: if given, a quote may appear in an unquoted field and a non-doubled quote may
     appear in a quoted field
   type: boolean
   inputBinding:
     prefix: --lazy-quotes
-- id: no_header_row
+- id: in_no_header_row
   doc: specifies that the input CSV file does not have header row
   type: boolean
   inputBinding:
     prefix: --no-header-row
-- id: num_cpus
+- id: in_num_cpus
   doc: number of CPUs to use (default value depends on your computer) (default 8)
   type: long
   inputBinding:
     prefix: --num-cpus
-- id: out_delimiter
+- id: in_out_delimiter
   doc: delimiting character of the output CSV file, e.g., -D $'\t' for tab (default
     ",")
-  type: string
+  type: File
   inputBinding:
     prefix: --out-delimiter
-- id: out_file
+- id: in_out_file
   doc: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
-  type: string
+  type: File
   inputBinding:
     prefix: --out-file
-- id: out_tabs
+- id: in_out_tabs
   doc: specifies that the output is delimited with tabs. Overrides "-D"
   type: boolean
   inputBinding:
     prefix: --out-tabs
-- id: tabs
+- id: in_tabs
   doc: specifies that the input CSV file is delimited with tabs. Overrides "-d" and
     "-D"
   type: boolean
   inputBinding:
     prefix: --tabs
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_delimiter
+  doc: delimiting character of the output CSV file, e.g., -D $'\t' for tab (default
+    ",")
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_delimiter)
+- id: out_out_file
+  doc: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_file)
 cwlVersion: v1.1
 baseCommand:
 - csvtk

@@ -4,4 +4,7 @@ task Popdel {
   command <<<
     popdel
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

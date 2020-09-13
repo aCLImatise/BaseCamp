@@ -2,7 +2,7 @@ version 1.0
 
 task Mixreads {
   input {
-    String root_name_fast_q_file_a
+    File root_name_fast_q_file_a
   }
   command <<<
     mixreads \
@@ -10,5 +10,8 @@ task Mixreads {
   >>>
   parameter_meta {
     root_name_fast_q_file_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

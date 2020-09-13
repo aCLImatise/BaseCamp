@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../chromosomer_assemble_fragment_fasta.cwl
 inputs:
-- id: s
+- id: in_s
   doc: ''
   type: boolean
   inputBinding:
     prefix: -s
-- id: chromosome_r
+- id: in_chromosome_r
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: assemble
+- id: in_assemble
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: map
+- id: in_map
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: fragment_fast_a
+- id: in_fragment_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: output_fast_a
+- id: in_output_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chromosomer

@@ -4,4 +4,7 @@ task Featcopy {
   command <<<
     featcopy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,12 +1,25 @@
 class: CommandLineTool
 id: ../../../unitigger.cwl
 inputs:
-- id: depot
-  doc: ''
-  type: string
+- id: in_spec_file
+  doc: spec file (string [=])
+  type: boolean
+  inputBinding:
+    prefix: --spec_file
+- id: in_depot
+  doc: depot path (string)
+  type: boolean
   inputBinding:
     prefix: --depot
-outputs: []
+- id: in_working_directory
+  doc: working directory (string [=.])
+  type: boolean
+  inputBinding:
+    prefix: --working_directory
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - unitigger

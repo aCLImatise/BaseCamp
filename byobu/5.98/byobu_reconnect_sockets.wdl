@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuReconnectSockets {
+task Byobureconnectsockets {
   command <<<
-    byobu-reconnect-sockets
+    byobu_reconnect_sockets
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../MotifRaptor_snpscan.cwl
 inputs:
-- id: indexed_genome_db
+- id: in_indexed_genome_db
   doc: indexed genome_database_folder
   type: string
   inputBinding:
     prefix: --indexed_genome_db
-- id: pfm_folder
+- id: in_pfm_folder
   doc: motif pmf files folder
-  type: string
+  type: Directory
   inputBinding:
     prefix: --pfm_folder
-- id: motifscan_output
+- id: in_motifscan_output
   doc: Motif Scan Ouput Folder
-  type: string
+  type: Directory
   inputBinding:
     prefix: --motifscan_output
-- id: threads
-  doc: number of threads
-  type: string
+- id: in_threads
+  doc: "number of threads\n"
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MotifRaptor

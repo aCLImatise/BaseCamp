@@ -8,16 +8,19 @@ task Dialign22 {
     String seq_file
   }
   command <<<
-    dialign2-2 \
+    dialign2_2 \
       ~{seq_file} \
-      ~{true="-n" false="" dna_sequences_nucleotide} \
-      ~{true="-nt" false="" nt} \
-      ~{true="-lgs" false="" lgs}
+      ~{if (dna_sequences_nucleotide) then "-n" else ""} \
+      ~{if (nt) then "-nt" else ""} \
+      ~{if (lgs) then "-lgs" else ""}
   >>>
   parameter_meta {
-    dna_sequences_nucleotide: "DNA sequences; similarity calculated at the nucleotide level "
-    nt: "DNA sequences; similarity calculated at the peptide level (by translation using the genetic code) "
-    lgs: "long genomic sequences: Both nucleotide and peptide similarities calculated "
+    dna_sequences_nucleotide: "DNA sequences; similarity calculated at the nucleotide level"
+    nt: "DNA sequences; similarity calculated at the peptide level\\n(by translation using the genetic code)"
+    lgs: "long genomic sequences: Both nucleotide and peptide\\nsimilarities calculated"
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

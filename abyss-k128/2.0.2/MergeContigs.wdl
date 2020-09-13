@@ -2,7 +2,7 @@ version 1.0
 
 task MergeContigs {
   input {
-    String? km_er
+    Int? km_er
     File? out
     File? graph
     Boolean? merged
@@ -27,12 +27,12 @@ task MergeContigs {
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
-      ~{true="--merged" false="" merged} \
-      ~{true="--adj" false="" adj} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--dot-meancov" false="" dot_mean_cov} \
-      ~{true="--sam" false="" sam} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (merged) then "--merged" else ""} \
+      ~{if (adj) then "--adj" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (dot_mean_cov) then "--dot-meancov" else ""} \
+      ~{if (sam) then "--sam" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
@@ -55,5 +55,9 @@ task MergeContigs {
     fast_a: "contigs in FASTA format"
     overlap: "contig overlap graph"
     path: "sequences of contig IDs"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

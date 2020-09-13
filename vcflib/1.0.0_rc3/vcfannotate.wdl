@@ -5,19 +5,22 @@ task Vcfannotate {
     Boolean? bed
     Boolean? key
     Boolean? default
-    String? vcf_file
+    File? vcf_file
   }
   command <<<
     vcfannotate \
       ~{vcf_file} \
-      ~{true="--bed" false="" bed} \
-      ~{true="--key" false="" key} \
-      ~{true="--default" false="" default}
+      ~{if (bed) then "--bed" else ""} \
+      ~{if (key) then "--key" else ""} \
+      ~{if (default) then "--default" else ""}
   >>>
   parameter_meta {
     bed: "use annotations provided by this BED file"
     key: "use this INFO field key for the annotations"
     default: "use this INFO field key for records without annotations"
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

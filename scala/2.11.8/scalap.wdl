@@ -10,9 +10,9 @@ task Scalap {
   }
   command <<<
     scalap \
-      ~{true="-private" false="" private} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-version" false="" version} \
+      ~{if (private) then "-private" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (version) then "-version" else ""} \
       ~{if defined(classpath) then ("-classpath " +  '"' + classpath + '"') else ""} \
       ~{if defined(cp) then ("-cp " +  '"' + cp + '"') else ""}
   >>>
@@ -22,5 +22,8 @@ task Scalap {
     version: "print out the version number of scalap"
     classpath: "specify where to find user class files"
     cp: "specify where to find user class files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

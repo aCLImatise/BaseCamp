@@ -2,15 +2,15 @@ version 1.0
 
 task BxclSeqqc {
   input {
-    String? files
-    File? outdir
+    Int? files
+    Directory? outdir
     File? tmpdir
-    String? threads
-    String? adapt_seq
-    String? qc_conf
+    Int? threads
+    File? adapt_seq
+    File? qc_conf
     String? trim
     Boolean? print_config
-    String? fone
+    Int? fone
   }
   command <<<
     bxcl_seqqc \
@@ -22,17 +22,21 @@ task BxclSeqqc {
       ~{if defined(adapt_seq) then ("--adaptseq " +  '"' + adapt_seq + '"') else ""} \
       ~{if defined(qc_conf) then ("--qcconf " +  '"' + qc_conf + '"') else ""} \
       ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""} \
-      ~{true="--printconfig" false="" print_config}
+      ~{if (print_config) then "--printconfig" else ""}
   >>>
   parameter_meta {
     files: "F1    Pair of input FastQ files."
     outdir: "Output directory. (default: current directory)"
     tmpdir: "Temp directory. (default: system tmp location)"
-    threads: "Max number of threads to use. NOTE: not allstages use all threads. (default: 2)"
-    adapt_seq: "The adapter sequence to be trimmed from the FastQ file. (default: Illumina TruSeq Universal Adapter)"
+    threads: "Max number of threads to use. NOTE: not allstages use\\nall threads. (default: 2)"
+    adapt_seq: "The adapter sequence to be trimmed from the FastQ file.\\n(default: Illumina TruSeq Universal Adapter)"
     qc_conf: "Location of config file. (default: internal config)"
-    trim: "The type of trimming to be done on the paired sequences: [A]dapter or [Q]uality trimming, or [F]ull/both. WARNING: For standalone execution of runtrim only! (default: [F]ull)"
+    trim: "The type of trimming to be done on the paired\\nsequences: [A]dapter or [Q]uality trimming, or\\n[F]ull/both. WARNING: For standalone execution of\\nruntrim only! (default: [F]ull)"
     print_config: "Print example config files to current directory."
     fone: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

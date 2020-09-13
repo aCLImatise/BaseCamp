@@ -15,6 +15,9 @@ task Menecheck {
   parameter_meta {
     draft_net: "metabolic network in SBML format"
     seeds: "seeds in SBML format"
-    targets: "targets in SBML format"
+    targets: "targets in SBML format\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

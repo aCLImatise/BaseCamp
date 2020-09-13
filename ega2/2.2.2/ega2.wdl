@@ -4,4 +4,7 @@ task Ega2 {
   command <<<
     ega2
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

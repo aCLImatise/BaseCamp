@@ -4,4 +4,7 @@ task Vcfcountalleles {
   command <<<
     vcfcountalleles
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

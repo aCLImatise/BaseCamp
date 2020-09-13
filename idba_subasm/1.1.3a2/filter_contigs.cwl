@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../filter_contigs.cwl
 inputs:
-- id: min_contig
+- id: in_min_contig
   doc: (=100)            filter out reads containing 'N'
-  type: string
+  type: long
   inputBinding:
     prefix: --min_contig
-- id: fq_two_fa
+- id: in_fq_two_fa
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: tmp_dot_fq
+- id: in_tmp_dot_fq
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: tmp_dot_fa
+- id: in_tmp_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - filter_contigs

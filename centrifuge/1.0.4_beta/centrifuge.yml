@@ -1,5 +1,172 @@
 !Command
-positional: []
+command:
+- centrifuge
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Could
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: cf-idx
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: m1
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: m2
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: r
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: report
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: s
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: specified
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: A
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: File
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Files
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Index
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: be
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: many
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: TSV
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: filename
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: for
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: gzip
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: times.
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: with
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: E.g.
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: classification
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: file
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: prefix
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: tabular
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: unpaired
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: output
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: reads.
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: where
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: each
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: line
+  optional: false
+- !Positional
+  description: ''
+  position: 7
+  name: represents
+  optional: false
+- !Positional
+  description: ''
+  position: 8
+  name: a
+  optional: false
 named:
 - !Flag
   description: query input files are FASTQ .fq/.fastq (default)
@@ -124,6 +291,54 @@ named:
     name: taxids
   optional: true
 - !Flag
+  description: define output format, either 'tab' or 'sam' (tab)
+  synonyms:
+  - --out-fmt
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: "columns in tabular format, comma separated\ndefault: readID,seqID,taxID,score,2ndBestScore,hitLength,queryLength,numMatches"
+  synonyms:
+  - --tab-fmt-cols
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: print wall-clock time taken by search phases
+  synonyms:
+  - -t/--time
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write unpaired reads that didn't align to <path>
+  synonyms:
+  - --un
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: write unpaired reads that aligned at least once to <path>
+  synonyms:
+  - --al
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: write pairs that didn't align concordantly to <path>
+  synonyms:
+  - --un-conc
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: write pairs that aligned concordantly at least once to <path>
+  synonyms:
+  - --al-conc
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
   description: ", to gzip compress output, or add '-bz2' to bzip2 compress output.)"
   synonyms:
   - --un-gz
@@ -195,10 +410,9 @@ named:
   - -h/--help
   args: !EmptyFlagArg {}
   optional: true
-command:
-- centrifuge
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag

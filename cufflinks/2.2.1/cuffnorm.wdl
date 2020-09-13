@@ -2,7 +2,7 @@ version 1.0
 
 task Cuffnorm {
   input {
-    Boolean? oslash_output_dir
+    Directory? oslash_output_dir
     Boolean? lslash_labels
     Boolean? norm_standards_file
     Boolean? p_slash_num_threads
@@ -15,28 +15,36 @@ task Cuffnorm {
     Boolean? q_slash_quiet
     Boolean? seed
     Boolean? no_update_check
-    String transcripts_dot_gtf
-    String sample_one_expr_dot_cx_b
-    String sample_two_expr_dot_cx_b
+    String ff_first_strand
+    String ff_un_stranded
+    String fr_second_strand
+    String trans_frags
+    String classic_fp_km
+    String geometric
+    String cuff_diff
   }
   command <<<
     cuffnorm \
-      ~{transcripts_dot_gtf} \
-      ~{sample_one_expr_dot_cx_b} \
-      ~{sample_two_expr_dot_cx_b} \
-      ~{true="-o/--output-dir" false="" oslash_output_dir} \
-      ~{true="-L/--labels" false="" lslash_labels} \
-      ~{true="--norm-standards-file" false="" norm_standards_file} \
-      ~{true="-p/--num-threads" false="" p_slash_num_threads} \
-      ~{true="--library-type" false="" library_type} \
-      ~{true="--library-norm-method" false="" library_norm_method} \
-      ~{true="--output-format" false="" output_format} \
-      ~{true="--compatible-hits-norm" false="" compatible_hits_norm} \
-      ~{true="--total-hits-norm" false="" total_hits_norm} \
-      ~{true="-v/--verbose" false="" v_slash_verbose} \
-      ~{true="-q/--quiet" false="" q_slash_quiet} \
-      ~{true="--seed" false="" seed} \
-      ~{true="--no-update-check" false="" no_update_check}
+      ~{ff_first_strand} \
+      ~{ff_un_stranded} \
+      ~{fr_second_strand} \
+      ~{trans_frags} \
+      ~{classic_fp_km} \
+      ~{geometric} \
+      ~{cuff_diff} \
+      ~{if (oslash_output_dir) then "-o/--output-dir" else ""} \
+      ~{if (lslash_labels) then "-L/--labels" else ""} \
+      ~{if (norm_standards_file) then "--norm-standards-file" else ""} \
+      ~{if (p_slash_num_threads) then "-p/--num-threads" else ""} \
+      ~{if (library_type) then "--library-type" else ""} \
+      ~{if (library_norm_method) then "--library-norm-method" else ""} \
+      ~{if (output_format) then "--output-format" else ""} \
+      ~{if (compatible_hits_norm) then "--compatible-hits-norm" else ""} \
+      ~{if (total_hits_norm) then "--total-hits-norm" else ""} \
+      ~{if (v_slash_verbose) then "-v/--verbose" else ""} \
+      ~{if (q_slash_quiet) then "-q/--quiet" else ""} \
+      ~{if (seed) then "--seed" else ""} \
+      ~{if (no_update_check) then "--no-update-check" else ""}
   >>>
   parameter_meta {
     oslash_output_dir: "write all output files to this directory              [ default:     ./ ]"
@@ -52,8 +60,16 @@ task Cuffnorm {
     q_slash_quiet: "log-friendly quiet processing (no progress bar)       [ default:  FALSE ]"
     seed: "value of random number generator seed                 [ default:      0 ]"
     no_update_check: "do not contact server to check for update availability[ default:  FALSE ]"
-    transcripts_dot_gtf: ""
-    sample_one_expr_dot_cx_b: ""
-    sample_two_expr_dot_cx_b: ""
+    ff_first_strand: "ff-secondstrand"
+    ff_un_stranded: "fr-firststrand"
+    fr_second_strand: "fr-unstranded (default)"
+    trans_frags: "Supported library normalization methods:"
+    classic_fp_km: "geometric (default)"
+    geometric: "quartile"
+    cuff_diff: "simple-table (default)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_oslash_output_dir = "${in_oslash_output_dir}"
   }
 }

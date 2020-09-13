@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../mvp.cwl
 inputs:
-- id: outfile
+- id: in_outfile
   doc: 'results table (default: stdout)'
   type: string
   inputBinding:
     prefix: --outfile
-- id: reference
+- id: in_reference
   doc: reference sequence in fasta format
   type: string
   inputBinding:
     prefix: --reference
-- id: motif_file
+- id: in_motif_file
   doc: file containing a list of motifs to check
-  type: string
+  type: File
   inputBinding:
     prefix: --motif-file
-- id: motif_list
+- id: in_motif_list
   doc: a comma-delimited string of motifs to check
   type: string
   inputBinding:
     prefix: --motif-list
-- id: sequence_type
-  doc: 'DNA or amino acid (default: dna)'
+- id: in_sequence_type
+  doc: "DNA or amino acid (default: dna)\n"
   type: string
   inputBinding:
     prefix: --sequence-type
-- id: in_file
-  doc: 'vcf or vcf.gz file containing mutations (default: stdin)'
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mvp

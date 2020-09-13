@@ -1,7 +1,10 @@
 version 1.0
 
-task _newseq {
+task Newseq {
   command <<<
     _newseq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

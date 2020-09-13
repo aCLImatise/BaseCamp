@@ -1,32 +1,25 @@
 class: CommandLineTool
 id: ../../../scram_pileup.cwl
 inputs:
-- id: no
-  doc: ''
-  type: string
+- id: in_gap_pileup_format
+  doc: Gap5 pileup format.
+  type: boolean
   inputBinding:
-    position: 0
-- id: such
-  doc: ''
-  type: string
+    prefix: '-5'
+- id: in_depth_format
+  doc: Depth format.
+  type: boolean
   inputBinding:
-    position: 1
-- id: file
+    prefix: -d
+- id: in_filename_dot
   doc: ''
   type: File
   inputBinding:
-    position: 2
-- id: or
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: directory
-  doc: ''
-  type: Directory
-  inputBinding:
-    position: 4
-outputs: []
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - scram_pileup

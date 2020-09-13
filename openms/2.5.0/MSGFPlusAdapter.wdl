@@ -8,27 +8,27 @@ task MSGFPlusAdapter {
     File? executable
     File? database
     Boolean? add_decoys
-    String? precursor_mass_tolerance
+    Float? precursor_mass_tolerance
     String? precursor_error_units
-    String? isotope_error_range
+    Float? isotope_error_range
     String? fragment_method
     String? instrument
     String? enzyme
     String? protocol
     String? tryptic
-    String? min_precursor_charge
-    String? max_precursor_charge
-    String? min_peptide_length
-    String? max_peptide_length
-    String? matches_per_spec
+    Int? min_precursor_charge
+    Int? max_precursor_charge
+    Int? min_peptide_length
+    Int? max_peptide_length
+    Int? matches_per_spec
     String? add_features
-    String? max_mods
-    String? fixed_modifications
-    String? variable_modifications
+    Int? max_mods
+    Int? fixed_modifications
+    Int? variable_modifications
     File? java_executable
-    String? java_memory
+    Int? java_memory
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -39,7 +39,7 @@ task MSGFPlusAdapter {
       ~{if defined(mz_id_out) then ("-mzid_out " +  '"' + mz_id_out + '"') else ""} \
       ~{if defined(executable) then ("-executable " +  '"' + executable + '"') else ""} \
       ~{if defined(database) then ("-database " +  '"' + database + '"') else ""} \
-      ~{true="-add_decoys" false="" add_decoys} \
+      ~{if (add_decoys) then "-add_decoys" else ""} \
       ~{if defined(precursor_mass_tolerance) then ("-precursor_mass_tolerance " +  '"' + precursor_mass_tolerance + '"') else ""} \
       ~{if defined(precursor_error_units) then ("-precursor_error_units " +  '"' + precursor_error_units + '"') else ""} \
       ~{if defined(isotope_error_range) then ("-isotope_error_range " +  '"' + isotope_error_range + '"') else ""} \
@@ -62,12 +62,12 @@ task MSGFPlusAdapter {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                        Input file (MS-GF+ parameter '-s') (valid formats: 'mzML', 'mzXML', 'mgf', 'ms2')"
     out: "Output file (valid formats: 'idXML')"
-    mz_id_out: "Alternative output file (MS-GF+ parameter '-o') Either 'out' or 'mzid_out' are required. They can be used together. (valid formats: 'mzid')"
+    mz_id_out: "Alternative output file (MS-GF+ parameter '-o')\\nEither 'out' or 'mzid_out' are required. They can be used together. (valid formats: 'mzid')"
     executable: "*                The MSGFPlus Java archive file. Provide a full or relative path, or make sure it can be found in your PATH environment."
     database: "*                  Protein sequence database (FASTA file; MS-GF+ parameter '-d'). Non-existing relative filenames are looked up via 'OpenMS.ini:id_db_dir'. (valid formats: 'FASTA')"
     add_decoys: "Create decoy proteins (reversed sequences) and append them to the database for the search (MS-GF+ parameter '-tda'). This allows the calculation of FDRs, but should only be used if the database does not already contain decoys."
@@ -94,5 +94,10 @@ task MSGFPlusAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_mz_id_out = "${in_mz_id_out}"
   }
 }

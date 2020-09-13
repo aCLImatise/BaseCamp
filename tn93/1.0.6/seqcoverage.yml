@@ -1,4 +1,6 @@
 &id001 !Command
+command:
+- seqcoverage
 positional: []
 named:
 - !Flag
@@ -9,17 +11,17 @@ named:
     name: OUTPUT
   optional: true
 - !Flag
-  description: 'handle ambigous characters using one of the following strategies (default=skipover)
-    average: average ambiguities (e.g. a nucleotide R adds 0.5 to A and G coverage
-    for that position); ignore: ambiguities contribute nothing to coverage counts;'
+  description: "handle ambigous characters using one of the following strategies (default=skipover)\n\
+    average: average ambiguities (e.g. a nucleotide R adds 0.5 to A and G coverage\
+    \ for that position);\nignore: ambiguities contribute nothing to coverage counts;"
   synonyms:
   - -a
   args: !SimpleFlagArg
     name: AMBIGS
   optional: true
 - !Flag
-  description: 'the type of data expected (default=DEFAULT_FORMAT) dna: DNA or RNA
-    (IUPAC); protein : protein (IUPAC);'
+  description: "the type of data expected (default=DEFAULT_FORMAT)\ndna: DNA or RNA\
+    \ (IUPAC);\nprotein : protein (IUPAC);"
   synonyms:
   - -t
   args: !SimpleFlagArg
@@ -27,45 +29,31 @@ named:
   optional: true
 - !Flag
   description: "if sequence name is of the form 'somethingCOUNTS_IN_NAMEinteger' then\
-    \ treat the integer as a copy number when computing coverages (a character, default=COUNTS_IN_NAME):"
+    \ treat the integer as a copy number\nwhen computing coverages (a character, default=COUNTS_IN_NAME):"
   synonyms:
   - -d
   args: !SimpleFlagArg
     name: COUNTS_IN_NAME
   optional: true
 - !Flag
-  description: 'do not report progress updates and other diagnostics to stderr '
+  description: do not report progress updates and other diagnostics to stderr
   synonyms:
   - -q
   args: !EmptyFlagArg {}
   optional: true
-command:
-- seqcoverage
 parent:
 subcommands:
 - !Command
+  command:
+  - seqcoverage
+  - FASTA
   positional: []
   named:
   - !Flag
     description: ''
     synonyms:
-    - -o
-    args: !SimpleFlagArg
-      name: OUTPUT
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -a
-    args: !SimpleFlagArg
-      name: AMBIGS
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -t
-    args: !SimpleFlagArg
-      name: TYPE
+    - -q
+    args: !EmptyFlagArg {}
     optional: true
   - !Flag
     description: ''
@@ -77,14 +65,27 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - -q
-    args: !EmptyFlagArg {}
+    - -t
+    args: !SimpleFlagArg
+      name: TYPE
     optional: true
-  command:
-  - seqcoverage
-  - FASTA
+  - !Flag
+    description: ''
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: AMBIGS
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -97,6 +98,7 @@ subcommands:
     \ [-q] [FASTA]\nseqcoverage: error: unknown argument: FASTA\n"
   generated_using: &id002
   - --help
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

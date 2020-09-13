@@ -4,4 +4,7 @@ task Genometreetk {
   command <<<
     genometreetk
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

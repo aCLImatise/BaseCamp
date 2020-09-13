@@ -1,48 +1,51 @@
 class: CommandLineTool
 id: ../../../dgenies_clear.cwl
 inputs:
-- id: _clear_crons
-  doc: '[CRONS], --crons [CRONS] Clear crons'
+- id: in_clear_crons
+  doc: "[CRONS], --crons [CRONS]\nClear crons"
   type: boolean
   inputBinding:
     prefix: -c
-- id: _clear_logs
-  doc: '[LOGS], --logs [LOGS] Clear logs'
+- id: in_clear_logs
+  doc: "[LOGS], --logs [LOGS]\nClear logs"
   type: boolean
   inputBinding:
     prefix: -l
-- id: _clear_jobs
-  doc: '[JOBS], --jobs [JOBS] Clear jobs'
+- id: in_clear_jobs
+  doc: "[JOBS], --jobs [JOBS]\nClear jobs"
   type: boolean
   inputBinding:
     prefix: -j
-- id: max_age
+- id: in_max_age
   doc: Max age for job to delete (0 for all)
   type: long
   inputBinding:
     prefix: --max-age
-- id: add_option_use
-  doc: '[WEB], --web [WEB] Add this option with -j option, if you use the webserver
-    mode'
+- id: in_add_option_use
+  doc: "[WEB], --web [WEB]\nAdd this option with -j option, if you use the\nwebserver\
+    \ mode\n"
   type: boolean
   inputBinding:
     prefix: -w
-- id: cron_s
+- id: in_cron_s
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: logs
+- id: in_logs
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: jobs
+- id: in_jobs
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dgenies

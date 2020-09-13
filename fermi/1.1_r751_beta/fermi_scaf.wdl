@@ -18,7 +18,7 @@ task FermiScaf {
       ~{std} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(minimum_number_supporting) then ("-m " +  '"' + minimum_number_supporting + '"') else ""} \
-      ~{true="-P" false="" print_links_unitigs}
+      ~{if (print_links_unitigs) then "-P" else ""}
   >>>
   parameter_meta {
     number_of_threads: "number of threads [1]"
@@ -28,5 +28,8 @@ task FermiScaf {
     in_dot_remapped_dot_mag: ""
     avg: ""
     std: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

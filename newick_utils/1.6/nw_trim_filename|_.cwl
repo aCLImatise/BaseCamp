@@ -1,13 +1,17 @@
 class: CommandLineTool
 id: ../../../nw_trim_filename|_.cwl
 inputs:
-- id: maximum_depth_expressed
-  doc: ': the maximum depth is expressed in number of ancestors, not distance. Nodes
-    are not shortened, but no node is retained that has more ancestors than the maximum.'
+- id: in_maximum_depth_expressed
+  doc: ": the maximum depth is expressed in number of ancestors, not distance.\nNodes\
+    \ are not shortened, but no node is retained that has more\nancestors than the\
+    \ maximum."
   type: boolean
   inputBinding:
     prefix: -a
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nw_trim

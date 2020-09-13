@@ -17,4 +17,7 @@ task FfindexUnpack {
     index_filename: ""
     out_dir: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

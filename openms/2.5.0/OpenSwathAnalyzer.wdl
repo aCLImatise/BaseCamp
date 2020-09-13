@@ -7,10 +7,10 @@ task OpenSwathAnalyzer {
     File? rt_norm
     File? out
     Boolean? no_strict
-    File? swath_files
-    String? min_upper_edge_dist
+    Int? swath_files
+    Float? min_upper_edge_dist
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -20,13 +20,13 @@ task OpenSwathAnalyzer {
       ~{if defined(tr) then ("-tr " +  '"' + tr + '"') else ""} \
       ~{if defined(rt_norm) then ("-rt_norm " +  '"' + rt_norm + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{true="-no-strict" false="" no_strict} \
+      ~{if (no_strict) then "-no-strict" else ""} \
       ~{if defined(swath_files) then ("-swath_files " +  '"' + swath_files + '"') else ""} \
       ~{if defined(min_upper_edge_dist) then ("-min_upper_edge_dist " +  '"' + min_upper_edge_dist + '"') else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                    Input file containing the chromatograms. (valid formats: 'mzML')"
@@ -40,5 +40,9 @@ task OpenSwathAnalyzer {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

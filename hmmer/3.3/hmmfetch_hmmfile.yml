@@ -1,15 +1,41 @@
-&id001 !Command
+&id003 !Command
+command:
+- hmmfetch
+- hmmfile
 positional:
+- !Positional
+  description: ''
+  position: 0
+  name: hmmfetch
+  optional: false
 - !Positional
   description: ''
   position: 0
   name: key
   optional: false
-named: []
-command:
-- hmmfetch
-- hmmfile
-parent: &id002 !Command
+- !Positional
+  description: ''
+  position: 1
+  name: keyfile
+  optional: false
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --index
+  args: !SimpleFlagArg
+    name: hmmfile
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: hmmfile
+  optional: true
+parent: &id001 !Command
+  command:
+  - hmmfetch
   positional: []
   named:
   - !Flag
@@ -37,12 +63,63 @@ parent: &id002 !Command
     - --index
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - hmmfetch
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - hmmfetch
+    - key
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: hmmfetch
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: hmmfile
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: keyfile
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: key
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --index
+      args: !SimpleFlagArg
+        name: hmmfile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: hmmfile
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: hmmfetch [options] <hmmfile> <key>         (retrieves HMM named\
+      \ <key>)\nUsage: hmmfetch [options] -f <hmmfile> <keyfile>  (retrieves all HMMs\
+      \ in <keyfile>)\nUsage: hmmfetch [options] --index <hmmfile>       (indexes\
+      \ <hmmfile>)\n\nTo see more help on available options, do hmmfetch -h\n\n"
+    generated_using: &id002 []
+  - !Command
+    command:
+    - hmmfetch
+    - keyfile
     positional:
     - !Positional
       description: ''
@@ -59,12 +136,24 @@ parent: &id002 !Command
       position: 2
       name: key
       optional: false
-    named: []
-    command:
-    - hmmfetch
-    - key
-    parent: *id002
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --index
+      args: !SimpleFlagArg
+        name: hmmfile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: hmmfile
+      optional: true
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -72,7 +161,9 @@ parent: &id002 !Command
       \ <key>)\nUsage: hmmfetch [options] -f <hmmfile> <keyfile>  (retrieves all HMMs\
       \ in <keyfile>)\nUsage: hmmfetch [options] --index <hmmfile>       (indexes\
       \ <hmmfile>)\n\nTo see more help on available options, do hmmfetch -h\n\n"
-    generated_using: &id003 []
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: ': help; show brief info on version and usage'
     synonyms:
@@ -95,6 +186,7 @@ parent: &id002 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -102,4 +194,4 @@ help_text: "Usage: hmmfetch [options] <hmmfile> <key>         (retrieves HMM nam
   \ <key>)\nUsage: hmmfetch [options] -f <hmmfile> <keyfile>  (retrieves all HMMs\
   \ in <keyfile>)\nUsage: hmmfetch [options] --index <hmmfile>       (indexes <hmmfile>)\n\
   \nTo see more help on available options, do hmmfetch -h\n\n"
-generated_using: *id003
+generated_using: *id002

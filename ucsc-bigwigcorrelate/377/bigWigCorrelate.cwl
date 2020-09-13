@@ -1,17 +1,10 @@
 class: CommandLineTool
 id: ../../../bigWigCorrelate.cwl
-inputs:
-- id: a_dot_bigwig
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: b_dot_bigwig
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bigWigCorrelate

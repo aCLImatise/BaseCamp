@@ -14,4 +14,7 @@ task SamtoolsReheader {
     in_dot_header_dots_am: ""
     in_dot_bam: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

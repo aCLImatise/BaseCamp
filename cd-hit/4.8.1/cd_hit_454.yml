@@ -1,11 +1,146 @@
 !Command
-positional: []
-named: []
 command:
 - cd-hit-454
+positional: []
+named:
+- !Flag
+  description: input filename in fasta format, required, can be in .gz format
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output filename, required
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "sequence identity threshold, default 0.98\nthis is a \"global sequence\
+    \ identity\" calculated as :\nnumber of identical amino acids or bases in alignment\n\
+    divided by the full length of the shorter sequence + gaps"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: band_width of alignment, default 10
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: memory limit (in MB) for the program, default 800; 0 for unlimitted;
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of threads, default 1; with 0, all CPUs will be used
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: word_length, default 10, see user's guide for choosing it
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "alignment coverage for the longer sequence, default 0.0\nif set to\
+    \ 0.9, the alignment must covers 90% of the sequence"
+  synonyms:
+  - -aL
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "alignment coverage control for the longer sequence, default 99999999\n\
+    if set to 60, and the length of the sequence is 400,\nthen the alignment must\
+    \ be >= 340 (400-60) residues"
+  synonyms:
+  - -AL
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "alignment coverage for the shorter sequence, default 0.0\nif set to\
+    \ 0.9, the alignment must covers 90% of the sequence"
+  synonyms:
+  - -aS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "alignment coverage control for the shorter sequence, default 99999999\n\
+    if set to 60, and the length of the sequence is 400,\nthen the alignment must\
+    \ be >= 340 (400-60) residues"
+  synonyms:
+  - -AS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "1 or 0, default 0, by default, sequences are stored in RAM\nif set\
+    \ to 1, sequence are stored on hard drive\n!! No longer supported !!"
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "1 or 0, default 0\nby cd-hit's default algorithm, a sequence is clustered\
+    \ to the first\ncluster that meet the threshold (fast cluster). If set to 1, the\
+    \ program\nwill cluster it into the most similar cluster that meet the threshold\n\
+    (accurate but slow mode)\nbut either 1 or 0 won't change the representatives of\
+    \ final clusters"
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: max size per indel, default 1
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: matching score, default 2
+  synonyms:
+  - -match
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: mismatching score, default -1
+  synonyms:
+  - -mismatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: opening score, default -3
+  synonyms:
+  - -gap
+  args: !SimpleFlagArg
+    name: gap
+  optional: true
+- !Flag
+  description: gap extension score, default -1
+  synonyms:
+  - -gap-ext
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: backup cluster file (1 or 0, default 0)
+  synonyms:
+  - -bak
+  args: !SimpleFlagArg
+    name: write
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: print this help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "\t\t====== CD-HIT version 4.8.1 (built on Oct 26 2019) ======\n\nUsage:\

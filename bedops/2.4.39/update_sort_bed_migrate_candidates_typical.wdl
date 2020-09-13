@@ -1,14 +1,10 @@
 version 1.0
 
-task UpdateSortBedMigrateCandidatesTypical {
-  input {
-    Boolean? resort_in_parallel_via_slur_m
-  }
+task Updatesortbedmigratecandidatestypical {
   command <<<
-    update-sort-bed-migrate-candidates-typical \
-      ~{true="--resort-in-parallel-via-slurm" false="" resort_in_parallel_via_slur_m}
+    update_sort_bed_migrate_candidates_typical
   >>>
-  parameter_meta {
-    resort_in_parallel_via_slur_m: "[ --slurm-memory <MB> ] [ --slurm-partition <SLURM partition> ] [ --slurm-workdir <working directory> ] [ --slurm-output <SLURM output directory> ] [ --slurm-error <SLURM error directory> ] "
+  output {
+    File out_stdout = stdout()
   }
 }

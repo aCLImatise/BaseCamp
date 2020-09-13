@@ -2,6 +2,9 @@ version 1.0
 
 task ProtpredGromacsTestCrossover {
   command <<<
-    protpred-Gromacs-Test_crossover
+    protpred_Gromacs_Test_crossover
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

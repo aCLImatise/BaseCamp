@@ -11,4 +11,7 @@ task LongSpanningReads {
   parameter_meta {
     reads_dot_fa_slashdot_fq: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,4 +1,6 @@
 !Command
+command:
+- abyss-sealer
 positional:
 - !Positional
   description: ''
@@ -34,8 +36,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: max gap size to fill in bp [800]; runtime increases exponentially with
-    respect to this parameter
+  description: "max gap size to fill in bp [800]; runtime increases\nexponentially\
+    \ with respect to this parameter"
   synonyms:
   - -G
   - --max-gap-length
@@ -59,8 +61,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: size of Bloom filter (e.g. '40G'). Required when not using pre-built
-    Bloom filter(s) (-i option)
+  description: "size of Bloom filter (e.g. '40G'). Required\nwhen not using pre-built\
+    \ Bloom filter(s)\n(-i option)"
   synonyms:
   - -b
   - --bloom-size
@@ -76,8 +78,8 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: find and fix single-base errors when reads have no kmers in bloom filter
-    [disabled]
+  description: "find and fix single-base errors when reads\nhave no kmers in bloom\
+    \ filter [disabled]"
   synonyms:
   - -e
   - --fix-errors
@@ -130,14 +132,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: do not trim masked bases from the ends of reads [default]
+  description: "do not trim masked bases from the ends\nof reads [default]"
   synonyms:
   - --no-trim-masked
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: max mismatches between paths and flanks; use 'nolimit' for no limit
-    [nolimit]
+  description: "max mismatches between paths and flanks; use\n'nolimit' for no limit\
+    \ [nolimit]"
   synonyms:
   - -m
   - --flank-mismatches
@@ -145,8 +147,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: max mismatches between all alternate paths; use 'nolimit' for no limit
-    [nolimit]
+  description: "max mismatches between all alternate paths;\nuse 'nolimit' for no\
+    \ limit [nolimit]"
   synonyms:
   - -M
   - --max-mismatches
@@ -154,8 +156,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: disable all limits; equivalent to '-B nolimit -m nolimit -M nolimit
-    -P nolimit'
+  description: "disable all limits; equivalent to\n'-B nolimit -m nolimit -M nolimit\
+    \ -P nolimit'"
   synonyms:
   - -n
   - --no-limits
@@ -170,7 +172,7 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: merge at most N alternate paths; use 'nolimit' for no limit [2]
+  description: "merge at most N alternate paths; use 'nolimit'\nfor no limit [2]"
   synonyms:
   - -P
   - --max-paths
@@ -178,7 +180,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: trim bases from the ends of reads whose quality is less than the threshold
+  description: "trim bases from the ends of reads whose\nquality is less than the\
+    \ threshold"
   synonyms:
   - -q
   - --trim-quality
@@ -186,13 +189,13 @@ named:
     name: N
   optional: true
 - !Flag
-  description: zero quality is `!' (33) default for FASTQ and SAM files
+  description: "zero quality is `!' (33)\ndefault for FASTQ and SAM files"
   synonyms:
   - --standard-quality
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: zero quality is `@' (64) default for qseq and export files
+  description: "zero quality is `@' (64)\ndefault for qseq and export files"
   synonyms:
   - --illumina-quality
   args: !EmptyFlagArg {}
@@ -206,8 +209,8 @@ named:
     name: STR
   optional: true
 - !Flag
-  description: mem limit for graph searches; multiply by the number of threads (-j)
-    to get the total mem used for graph traversal [500M]
+  description: "mem limit for graph searches; multiply by the\nnumber of threads (-j)\
+    \ to get the total mem used\nfor graph traversal [500M]"
   synonyms:
   - -s
   - --search-mem
@@ -237,10 +240,34 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- abyss-sealer
+- !Flag
+  description: "max branches in de Bruijn graph traversal;\nuse 'nolimit' for no limit\
+    \ [nolimit]"
+  synonyms:
+  - -B
+  - --max-branches
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: min fragment size in base pairs
+  synonyms:
+  - -f
+  - --min-frag
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: max fragment size in base pairs
+  synonyms:
+  - -F
+  - --max-frag
+  args: !SimpleFlagArg
+    name: N
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: display this help and exit
   synonyms:

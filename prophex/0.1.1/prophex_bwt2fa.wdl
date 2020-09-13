@@ -14,4 +14,7 @@ task ProphexBwt2fa {
     idx_base: ""
     output_dot_fa: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

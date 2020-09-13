@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- optimir
+- libprep
 positional: []
 named:
 - !Flag
@@ -10,32 +13,32 @@ named:
     name: VCF
   optional: true
 - !Flag
-  description: 'Path to the reference library containing mature miRNAs sequences [default:
-    miRBase 21]'
+  description: "Path to the reference library containing mature miRNAs\nsequences\
+    \ [default: miRBase 21]"
   synonyms:
   - --maturesFasta
   args: !SimpleFlagArg
     name: MATURES
   optional: true
 - !Flag
-  description: 'Path to the reference library containing pri-miRNAs sequences [default:
-    miRBase 21]'
+  description: "Path to the reference library containing pri-miRNAs\nsequences [default:\
+    \ miRBase 21]"
   synonyms:
   - --hairpinsFasta
   args: !SimpleFlagArg
     name: HAIRPINS
   optional: true
 - !Flag
-  description: 'Path to the reference library containing miRNAs and pri-miRNAs coordinates
-    [default: miRBase v21, GRCh38 coordinates]'
+  description: "Path to the reference library containing miRNAs and\npri-miRNAs coordinates\
+    \ [default: miRBase v21, GRCh38\ncoordinates]"
   synonyms:
   - --gff3
   args: !SimpleFlagArg
     name: GFF3
   optional: true
 - !Flag
-  description: 'Full path of the directory where output files are generated [default:
-    ./OptimiR_Results_Dir/]'
+  description: "Full path of the directory where output files are\ngenerated [default:\
+    \ ./OptimiR_Results_Dir/]"
   synonyms:
   - -o
   - --dirOutput
@@ -43,28 +46,58 @@ named:
     name: OUTDIR
   optional: true
 - !Flag
-  description: 'Provide path to the bowtie2 index builder binary [default: from $PATH]'
+  description: "Provide path to the bowtie2 index builder binary\n[default: from $PATH]\n"
   synonyms:
   - --bowtie2_build
   args: !SimpleFlagArg
     name: BOWTIE2_BUILD
   optional: true
-command:
-- optimir
-- libprep
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - optimir
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - optimir
+    - summarize
     positional: []
     named:
     - !Flag
-      description: 'Full path of the sample fastq file (accepted formats and extensions:
-        fastq, fq and fq.gz)'
+      description: Full path of the directory containing results
+      synonyms:
+      - --dir
+      args: !SimpleFlagArg
+        name: DIR
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: optimir summarize [-h] --dir DIR\n\noptional arguments:\n \
+      \ -h, --help  show this help message and exit\n  --dir DIR   Full path of the\
+      \ directory containing results\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    command:
+    - optimir
+    - process
+    positional: []
+    named:
+    - !Flag
+      description: "Full path of the sample fastq file (accepted formats\nand extensions:\
+        \ fastq, fq and fq.gz)"
       synonyms:
       - -i
       - --fq
@@ -72,8 +105,8 @@ parent: &id001 !Command
         name: FASTQ
       optional: true
     - !Flag
-      description: 'Full path of the directory where output files are generated [default:
-        ./OptimiR_Results_Dir/]'
+      description: "Full path of the directory where output files are\ngenerated [default:\
+        \ ./OptimiR_Results_Dir/]"
       synonyms:
       - -o
       - --dirOutput
@@ -89,7 +122,7 @@ parent: &id001 !Command
         name: VCF
       optional: true
     - !Flag
-      description: "Choose the alignment seed length used in option '-L' by Bowtie2\
+      description: "Choose the alignment seed length used in option '-L'\nby Bowtie2\
         \ [default: 17]"
       synonyms:
       - --seedLen
@@ -97,7 +130,7 @@ parent: &id001 !Command
         name: SEEDLEN
       optional: true
     - !Flag
-      description: "Choose the weight applied on events detected on the 5' end of\
+      description: "Choose the weight applied on events detected on the 5'\nend of\
         \ aligned reads [default: 4]"
       synonyms:
       - --w5
@@ -105,32 +138,33 @@ parent: &id001 !Command
         name: WEIGHT5
       optional: true
     - !Flag
-      description: 'Choose the threshold for alignment score above which alignments
-        are discarded [default: 9]'
+      description: "Choose the threshold for alignment score above which\nalignments\
+        \ are discarded [default: 9]"
       synonyms:
       - --scoreThresh
       args: !SimpleFlagArg
         name: SCORE_THRESH
       optional: true
     - !Flag
-      description: 'Choose the rate threshold for inconsistent reads mapped to a polymiR
-        above which the alignment is flagged as highly suspicious [default: 0.01]'
+      description: "Choose the rate threshold for inconsistent reads\nmapped to a\
+        \ polymiR above which the alignment is\nflagged as highly suspicious [default:\
+        \ 0.01]"
       synonyms:
       - --consistentRate
       args: !SimpleFlagArg
         name: INCONSISTENT_THRESHOLD
       optional: true
     - !Flag
-      description: Add this option to remove temporary files (trimmed fastq, collapsed
-        fastq, mapped reads, annotated bams
+      description: "Add this option to remove temporary files (trimmed\nfastq, collapsed\
+        \ fastq, mapped reads, annotated bams"
       synonyms:
       - --rmTempFiles
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: "Control which annotation file is produced by adding corresponding\
-        \ letter : 'h' for expressed_hairpins, 'p' for polymiRs_table, 'i' for consistency_table,\
-        \ 'c' for remaining_ambiguous, 's' for isomiRs_dist. Ex: '-- annot hpics'\
+      description: "Control which annotation file is produced by adding\ncorresponding\
+        \ letter : 'h' for expressed_hairpins, 'p'\nfor polymiRs_table, 'i' for consistency_table,\
+        \ 'c' for\nremaining_ambiguous, 's' for isomiRs_dist. Ex: '--\nannot hpics'\
         \ [default] will produce all of them"
       synonyms:
       - --annot
@@ -138,21 +172,22 @@ parent: &id001 !Command
         name: ANNOT_FILES
       optional: true
     - !Flag
-      description: 'Add this option to generate results in mirGFF3 format [default
-        : disabled]'
+      description: "Add this option to generate results in mirGFF3 format\n[default\
+        \ : disabled]"
       synonyms:
       - --gff_out
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Add this option to generate results in VCF format [default : disabled]'
+      description: "Add this option to generate results in VCF format\n[default :\
+        \ disabled]"
       synonyms:
       - --vcf_out
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: "Define the 3' adaptor sequence (default is NEB & ILLUMINA: AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC\
-        \ -a TGGAATTCTCGGGTGCCAAGG -> hack: use -a to add adapter sequences)"
+      description: "Define the 3' adaptor sequence (default is NEB &\nILLUMINA: AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC\
+        \ -a\nTGGAATTCTCGGGTGCCAAGG -> hack: use -a to add adapter\nsequences)"
       synonyms:
       - --adapt3
       args: !SimpleFlagArg
@@ -166,103 +201,107 @@ parent: &id001 !Command
         name: ADAPT5
       optional: true
     - !Flag
-      description: 'Define the minimum read length defined with option -m in cutadapt
-        [default: 15]'
+      description: "Define the minimum read length defined with option -m\nin cutadapt\
+        \ [default: 15]"
       synonyms:
       - --readMin
       args: !SimpleFlagArg
         name: READMIN
       optional: true
     - !Flag
-      description: 'Define the maximum read length defined with option -M in cutadapt
-        [default: 27]'
+      description: "Define the maximum read length defined with option -M\nin cutadapt\
+        \ [default: 27]"
       synonyms:
       - --readMax
       args: !SimpleFlagArg
         name: READMAX
       optional: true
     - !Flag
-      description: 'Define the Base Quality threshold defined with option -q in cutadapt
-        [default: 28]'
+      description: Define the Base Quality threshold defined with option
       synonyms:
       - --bqThresh
       args: !SimpleFlagArg
         name: BQTHRESH
       optional: true
     - !Flag
-      description: 'Add this option to trim files that have been trimmed in a previous
-        application. By default, when temporary files are kept, trimmed files are
-        reused. If you wish to change a paramater used in the trimming step of the
-        workflow, this parameter is a must [default: disabled]'
+      description: 'cutadapt [default: 28]'
+      synonyms:
+      - -q
+      args: !SimpleFlagArg
+        name: in
+      optional: true
+    - !Flag
+      description: "Add this option to trim files that have been trimmed\nin a previous\
+        \ application. By default, when temporary\nfiles are kept, trimmed files are\
+        \ reused. If you wish\nto change a paramater used in the trimming step of\
+        \ the\nworkflow, this parameter is a must [default: disabled]"
       synonyms:
       - --trimAgain
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Path to the reference library containing mature miRNAs sequences
-        [default: miRBase 21]'
+      description: "Path to the reference library containing mature miRNAs\nsequences\
+        \ [default: miRBase 21]"
       synonyms:
       - --maturesFasta
       args: !SimpleFlagArg
         name: MATURES
       optional: true
     - !Flag
-      description: 'Path to the reference library containing pri-miRNAs sequences
-        [default: miRBase 21]'
+      description: "Path to the reference library containing pri-miRNAs\nsequences\
+        \ [default: miRBase 21]"
       synonyms:
       - --hairpinsFasta
       args: !SimpleFlagArg
         name: HAIRPINS
       optional: true
     - !Flag
-      description: 'Path to the reference library containing miRNAs and pri-miRNAs
-        coordinates [default: miRBase v21, GRCh38 coordinates]'
+      description: "Path to the reference library containing miRNAs and\npri-miRNAs\
+        \ coordinates [default: miRBase v21, GRCh38\ncoordinates]"
       synonyms:
       - --gff3
       args: !SimpleFlagArg
         name: GFF3
       optional: true
     - !Flag
-      description: 'Add this option to remove OptimiR progression on screen [default:
-        disabled]'
+      description: "Add this option to remove OptimiR progression on\nscreen [default:\
+        \ disabled]"
       synonyms:
       - --quiet
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Provide path to the cutadapt binary [default: from $PATH]'
+      description: "Provide path to the cutadapt binary [default: from\n$PATH]"
       synonyms:
       - --cutadapt
       args: !SimpleFlagArg
         name: CUTADAPT
       optional: true
     - !Flag
-      description: 'Provide path to the bowtie2 binary [default: from $PATH]'
+      description: "Provide path to the bowtie2 binary [default: from\n$PATH]"
       synonyms:
       - --bowtie2
       args: !SimpleFlagArg
         name: BOWTIE2
       optional: true
     - !Flag
-      description: 'Provide path to the bowtie2 index builder binary [default: from
-        $PATH]'
+      description: "Provide path to the bowtie2 index builder binary\n[default: from\
+        \ $PATH]"
       synonyms:
       - --bowtie2_build
       args: !SimpleFlagArg
         name: BOWTIE2_BUILD
       optional: true
     - !Flag
-      description: 'Provide path to the samtools binary [default: from $PATH]'
+      description: "Provide path to the samtools binary [default: from\n$PATH]\n"
       synonyms:
       - --samtools
       args: !SimpleFlagArg
         name: SAMTOOLS
       optional: true
-    command:
-    - optimir
-    - process
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -337,37 +376,9 @@ parent: &id001 !Command
       \ binary\n                        [default: from $PATH]\n  --samtools SAMTOOLS\
       \   Provide path to the samtools binary [default: from\n                   \
       \     $PATH]\n"
-    generated_using: &id002
-    - --help
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Full path of the directory containing results
-      synonyms:
-      - --dir
-      args: !SimpleFlagArg
-        name: DIR
-      optional: true
-    command:
-    - optimir
-    - summarize
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: optimir summarize [-h] --dir DIR\n\noptional arguments:\n \
-      \ -h, --help  show this help message and exit\n  --dir DIR   Full path of the\
-      \ directory containing results\n"
     generated_using: *id002
   - *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -389,6 +400,7 @@ parent: &id001 !Command
     \   processing multiple samples in parallel)\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

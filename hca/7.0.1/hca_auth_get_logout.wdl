@@ -1,17 +1,20 @@
 version 1.0
 
-task HcaAuthGetLogout {
+task HcaAuthGetlogout {
   input {
     String? log_level
     String hca
   }
   command <<<
-    hca auth get-logout \
+    hca auth get_logout \
       ~{hca} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""}
   >>>
   parameter_meta {
     log_level: ""
     hca: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

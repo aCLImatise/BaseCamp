@@ -1,7 +1,10 @@
 version 1.0
 
-task RgtMotifanalysis {
+task Rgtmotifanalysis {
   command <<<
-    rgt-motifanalysis
+    rgt_motifanalysis
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

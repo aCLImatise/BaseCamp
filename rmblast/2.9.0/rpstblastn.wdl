@@ -4,4 +4,7 @@ task Rpstblastn {
   command <<<
     rpstblastn
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

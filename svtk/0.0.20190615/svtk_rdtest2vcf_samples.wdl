@@ -4,7 +4,7 @@ task SvtkRdtest2vcfSamples {
   input {
     String? contigs
     String s_vtk
-    String rd_test_two_vcf
+    Int rd_test_two_vcf
     String bed
     String samples
     String f_out
@@ -25,5 +25,8 @@ task SvtkRdtest2vcfSamples {
     bed: ""
     samples: ""
     f_out: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -8,10 +8,13 @@ task TripailleDbPopulateMviews {
   command <<<
     tripaille db populate_mviews \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
-      ~{true="--no_wait" false="" no_wait}
+      ~{if (no_wait) then "--no_wait" else ""}
   >>>
   parameter_meta {
     name: "filter on mview name"
     no_wait: "Do not wait for job to complete"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

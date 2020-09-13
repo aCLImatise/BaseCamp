@@ -11,4 +11,7 @@ task TripailleEntityGetFields {
   parameter_meta {
     entity: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

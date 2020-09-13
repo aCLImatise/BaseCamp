@@ -4,7 +4,7 @@ task CramtoolsFastq {
   input {
     Boolean? default_quality_score
     Boolean? enumerate
-    Boolean? fast_q_base_name
+    File? fast_q_base_name
     Boolean? gzip
     Boolean? ignore_md_five_mismatch
     Boolean? input_cram_file
@@ -19,18 +19,18 @@ task CramtoolsFastq {
   command <<<
     cramtools fastq \
       ~{main_class} \
-      ~{true="--default-quality-score" false="" default_quality_score} \
-      ~{true="--enumerate" false="" enumerate} \
-      ~{true="--fastq-base-name" false="" fast_q_base_name} \
-      ~{true="--gzip" false="" gzip} \
-      ~{true="--ignore-md5-mismatch" false="" ignore_md_five_mismatch} \
-      ~{true="--input-cram-file" false="" input_cram_file} \
-      ~{true="--max-records" false="" max_records} \
-      ~{true="--read-name-prefix" false="" read_name_prefix} \
-      ~{true="--reference-fasta-file" false="" reference_fast_a_file} \
-      ~{true="--reverse" false="" reverse} \
-      ~{true="--skip-md5-check" false="" skip_md_five_check} \
-      ~{true="--log-level" false="" log_level}
+      ~{if (default_quality_score) then "--default-quality-score" else ""} \
+      ~{if (enumerate) then "--enumerate" else ""} \
+      ~{if (fast_q_base_name) then "--fastq-base-name" else ""} \
+      ~{if (gzip) then "--gzip" else ""} \
+      ~{if (ignore_md_five_mismatch) then "--ignore-md5-mismatch" else ""} \
+      ~{if (input_cram_file) then "--input-cram-file" else ""} \
+      ~{if (max_records) then "--max-records" else ""} \
+      ~{if (read_name_prefix) then "--read-name-prefix" else ""} \
+      ~{if (reference_fast_a_file) then "--reference-fasta-file" else ""} \
+      ~{if (reverse) then "--reverse" else ""} \
+      ~{if (skip_md_five_check) then "--skip-md5-check" else ""} \
+      ~{if (log_level) then "--log-level" else ""}
   >>>
   parameter_meta {
     default_quality_score: "Use this quality score (decimal representation of ASCII symbol) as a default value when the original quality score was lost due to compression. Minimum is 33. (default: 63)"
@@ -41,10 +41,14 @@ task CramtoolsFastq {
     input_cram_file: "The path to the CRAM file to uncompress. Omit if standard input (pipe)."
     max_records: "Stop after reading this many records. (default: -1)"
     read_name_prefix: "Replace read names with this prefix and a sequential integer."
-    reference_fast_a_file: "Path to the reference fasta file, it must be uncompressed and indexed (use 'samtools faidx' for example). "
+    reference_fast_a_file: "Path to the reference fasta file, it must be uncompressed and indexed (use 'samtools faidx' for example)."
     reverse: "Re-reverse reads mapped to negative strand. (default: false)"
     skip_md_five_check: "Skip MD5 checks when reading the header. (default: false)"
     log_level: "Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)"
     main_class: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_fast_q_base_name = "${in_fast_q_base_name}"
   }
 }

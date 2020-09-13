@@ -4,4 +4,7 @@ task PpaniniFastaSelect {
   command <<<
     ppanini_fasta_select
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -8,17 +8,15 @@ task SmafaMakedb {
     Boolean? verbose
     String? flags
     String db_fast_a
-    String db
   }
   command <<<
     smafa makedb \
       ~{flags} \
       ~{db_fast_a} \
-      ~{db} \
-      ~{true="--amino-acid" false="" amino_acid} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--translate" false="" translate} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (amino_acid) then "--amino-acid" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (translate) then "--translate" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     amino_acid: "Sequences are amino acid [default: nucleotide]"
@@ -27,6 +25,8 @@ task SmafaMakedb {
     verbose: "Print extra debug logging information"
     flags: ""
     db_fast_a: ""
-    db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

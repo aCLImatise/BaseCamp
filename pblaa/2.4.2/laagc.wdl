@@ -47,10 +47,10 @@ task Laagc {
     Boolean? chimera_score_threshold
     Boolean? chimera_filter
     Boolean? no_chimera_filter
-    Boolean? log_file
-    Boolean? result_file
-    Boolean? junk_file
-    Boolean? report_file
+    File? log_file
+    File? result_file
+    File? junk_file
+    File? report_file
     Boolean? input_report_file
     Boolean? locus_report_file
     Boolean? whitelist_report_file
@@ -59,70 +59,72 @@ task Laagc {
     Boolean? log_level
     Boolean? emit_tool_contract
     Boolean? resolved_tool_contract
+    Int three_bsd
     String guide
     String input_file
   }
   command <<<
     laagc \
+      ~{three_bsd} \
       ~{guide} \
       ~{input_file} \
-      ~{true="--rngSeed" false="" rng_seed} \
-      ~{true="--generateBamIndex" false="" generate_bam_index} \
-      ~{true="--ignoreBamIndex" false="" ignore_bam_index} \
-      ~{true="--numThreads" false="" num_threads} \
-      ~{true="--modelPath" false="" model_path} \
-      ~{true="--modelSpec" false="" model_spec} \
-      ~{true="--barcodes" false="" barcodes} \
-      ~{true="--minBarcodeScore" false="" min_barcode_score} \
-      ~{true="--fullLength" false="" full_length} \
-      ~{true="--doBc" false="" do_bc} \
-      ~{true="--ignoreBc" false="" ignore_bc} \
-      ~{true="--minLength" false="" minlength} \
-      ~{true="--maxLength" false="" maxlength} \
-      ~{true="--minReadScore" false="" min_read_score} \
-      ~{true="--minSnr" false="" mins_nr} \
-      ~{true="--minGuideScore" false="" min_guide_score} \
-      ~{true="--minGuideSpan" false="" min_guide_span} \
-      ~{true="--whitelist" false="" whitelist} \
-      ~{true="--maxReads" false="" max_reads} \
-      ~{true="--maxClusteringReads" false="" max_clustering_reads} \
-      ~{true="--fullLengthPreference" false="" full_length_preference} \
-      ~{true="--fullLengthClustering" false="" full_length_clustering} \
-      ~{true="--clusterInflation" false="" cluster_inflation} \
-      ~{true="--clusterLoopWeight" false="" cluster_loop_weight} \
-      ~{true="--skipRate" false="" skip_rate} \
-      ~{true="--minClusterSize" false="" min_cluster_size} \
-      ~{true="--doCluster" false="" do_cluster} \
-      ~{true="--Clustering" false="" clustering} \
-      ~{true="--noClustering" false="" no_clustering} \
-      ~{true="--ignoreEnds" false="" ignore_ends} \
-      ~{true="--maxPhasingReads" false="" max_phasing_reads} \
-      ~{true="--minQScore" false="" min_q_score} \
-      ~{true="--minPrevalence" false="" min_prevalence} \
-      ~{true="--minSplitReads" false="" min_split_reads} \
-      ~{true="--minSplitFraction" false="" min_split_fraction} \
-      ~{true="--minSplitScore" false="" min_split_score} \
-      ~{true="--minZScore" false="" min_zscore} \
-      ~{true="--Phasing" false="" phasing} \
-      ~{true="--noPhasing" false="" no_phasing} \
-      ~{true="--takeN" false="" taken} \
-      ~{true="--trimEnds" false="" trim_ends} \
-      ~{true="--minPredictedAccuracy" false="" min_predicted_accuracy} \
-      ~{true="--chimeraScoreThreshold" false="" chimera_score_threshold} \
-      ~{true="--ChimeraFilter" false="" chimera_filter} \
-      ~{true="--noChimeraFilter" false="" no_chimera_filter} \
-      ~{true="--logFile" false="" log_file} \
-      ~{true="--resultFile" false="" result_file} \
-      ~{true="--junkFile" false="" junk_file} \
-      ~{true="--reportFile" false="" report_file} \
-      ~{true="--inputReportFile" false="" input_report_file} \
-      ~{true="--locusReportFile" false="" locus_report_file} \
-      ~{true="--whitelistReportFile" false="" whitelist_report_file} \
-      ~{true="--subreadsReportPrefix" false="" sub_reads_report_prefix} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--log-level" false="" log_level} \
-      ~{true="--emit-tool-contract" false="" emit_tool_contract} \
-      ~{true="--resolved-tool-contract" false="" resolved_tool_contract}
+      ~{if (rng_seed) then "--rngSeed" else ""} \
+      ~{if (generate_bam_index) then "--generateBamIndex" else ""} \
+      ~{if (ignore_bam_index) then "--ignoreBamIndex" else ""} \
+      ~{if (num_threads) then "--numThreads" else ""} \
+      ~{if (model_path) then "--modelPath" else ""} \
+      ~{if (model_spec) then "--modelSpec" else ""} \
+      ~{if (barcodes) then "--barcodes" else ""} \
+      ~{if (min_barcode_score) then "--minBarcodeScore" else ""} \
+      ~{if (full_length) then "--fullLength" else ""} \
+      ~{if (do_bc) then "--doBc" else ""} \
+      ~{if (ignore_bc) then "--ignoreBc" else ""} \
+      ~{if (minlength) then "--minLength" else ""} \
+      ~{if (maxlength) then "--maxLength" else ""} \
+      ~{if (min_read_score) then "--minReadScore" else ""} \
+      ~{if (mins_nr) then "--minSnr" else ""} \
+      ~{if (min_guide_score) then "--minGuideScore" else ""} \
+      ~{if (min_guide_span) then "--minGuideSpan" else ""} \
+      ~{if (whitelist) then "--whitelist" else ""} \
+      ~{if (max_reads) then "--maxReads" else ""} \
+      ~{if (max_clustering_reads) then "--maxClusteringReads" else ""} \
+      ~{if (full_length_preference) then "--fullLengthPreference" else ""} \
+      ~{if (full_length_clustering) then "--fullLengthClustering" else ""} \
+      ~{if (cluster_inflation) then "--clusterInflation" else ""} \
+      ~{if (cluster_loop_weight) then "--clusterLoopWeight" else ""} \
+      ~{if (skip_rate) then "--skipRate" else ""} \
+      ~{if (min_cluster_size) then "--minClusterSize" else ""} \
+      ~{if (do_cluster) then "--doCluster" else ""} \
+      ~{if (clustering) then "--Clustering" else ""} \
+      ~{if (no_clustering) then "--noClustering" else ""} \
+      ~{if (ignore_ends) then "--ignoreEnds" else ""} \
+      ~{if (max_phasing_reads) then "--maxPhasingReads" else ""} \
+      ~{if (min_q_score) then "--minQScore" else ""} \
+      ~{if (min_prevalence) then "--minPrevalence" else ""} \
+      ~{if (min_split_reads) then "--minSplitReads" else ""} \
+      ~{if (min_split_fraction) then "--minSplitFraction" else ""} \
+      ~{if (min_split_score) then "--minSplitScore" else ""} \
+      ~{if (min_zscore) then "--minZScore" else ""} \
+      ~{if (phasing) then "--Phasing" else ""} \
+      ~{if (no_phasing) then "--noPhasing" else ""} \
+      ~{if (taken) then "--takeN" else ""} \
+      ~{if (trim_ends) then "--trimEnds" else ""} \
+      ~{if (min_predicted_accuracy) then "--minPredictedAccuracy" else ""} \
+      ~{if (chimera_score_threshold) then "--chimeraScoreThreshold" else ""} \
+      ~{if (chimera_filter) then "--ChimeraFilter" else ""} \
+      ~{if (no_chimera_filter) then "--noChimeraFilter" else ""} \
+      ~{if (log_file) then "--logFile" else ""} \
+      ~{if (result_file) then "--resultFile" else ""} \
+      ~{if (junk_file) then "--junkFile" else ""} \
+      ~{if (report_file) then "--reportFile" else ""} \
+      ~{if (input_report_file) then "--inputReportFile" else ""} \
+      ~{if (locus_report_file) then "--locusReportFile" else ""} \
+      ~{if (whitelist_report_file) then "--whitelistReportFile" else ""} \
+      ~{if (sub_reads_report_prefix) then "--subreadsReportPrefix" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (emit_tool_contract) then "--emit-tool-contract" else ""} \
+      ~{if (resolved_tool_contract) then "--resolved-tool-contract" else ""}
   >>>
   parameter_meta {
     rng_seed: "RNG seed, modulates reservoir filtering of reads. [42]"
@@ -142,7 +144,7 @@ task Laagc {
     mins_nr: "Minimum SNR of input reads. [3.75]"
     min_guide_score: "Minimum score of a query alignment to the cluster guide [50]"
     min_guide_span: "Minimum span of a query alignment to the cluster guide [500]"
-    whitelist: "A file of ReadIds, as either Text or Fasta, to allow from the input file. [\"None\"]"
+    whitelist: "A file of ReadIds, as either Text or Fasta, to allow from the input file. [\\\"None\\\"]"
     max_reads: "Maximum number of input reads to cluster per barcode. [1000]"
     max_clustering_reads: "Maximum number of input reads to cluster per barcode. [400]"
     full_length_preference: "Prefer full-length subreads when clustering"
@@ -171,18 +173,26 @@ task Laagc {
     chimera_filter: "Activate the chimera filter and separate chimeric consensus outputs"
     no_chimera_filter: "Deactivate the chimera filter and output all consensus"
     log_file: "Output file to write logging information to"
-    result_file: "Output file for high-quality results. [\"amplicon_analysis.fastq\"]"
-    junk_file: "Output file for low-quality or chimeric results. [\"amplicon_analysis_chimeras_noise.fastq\"]"
-    report_file: "Output file for summary report. [\"amplicon_analysis_summary.csv\"]"
-    input_report_file: "Output estimates of input PCR quality based on subread mappings [\"amplicon_analysis_input.csv\"]"
-    locus_report_file: "Output estimates of sample mixture based on ZMW/subread mappings [\"amplicon_analysis_per_locus.csv\"]"
-    whitelist_report_file: "Output barcode/locus mappings for each subread seen [\"amplicon_analysis_whitelist.csv\"]"
-    sub_reads_report_prefix: "Output prefix for subreads report. [\"amplicon_analysis_subreads\"]"
+    result_file: "Output file for high-quality results. [\\\"amplicon_analysis.fastq\\\"]"
+    junk_file: "Output file for low-quality or chimeric results. [\\\"amplicon_analysis_chimeras_noise.fastq\\\"]"
+    report_file: "Output file for summary report. [\\\"amplicon_analysis_summary.csv\\\"]"
+    input_report_file: "Output estimates of input PCR quality based on subread mappings [\\\"amplicon_analysis_input.csv\\\"]"
+    locus_report_file: "Output estimates of sample mixture based on ZMW/subread mappings [\\\"amplicon_analysis_per_locus.csv\\\"]"
+    whitelist_report_file: "Output barcode/locus mappings for each subread seen [\\\"amplicon_analysis_whitelist.csv\\\"]"
+    sub_reads_report_prefix: "Output prefix for subreads report. [\\\"amplicon_analysis_subreads\\\"]"
     verbose: "Use verbose output."
-    log_level: "Set log level. [\"INFO\"]"
+    log_level: "Set log level. [\\\"INFO\\\"]"
     emit_tool_contract: "Emit tool contract."
     resolved_tool_contract: "Use args from resolved tool contract."
+    three_bsd: "General Options:"
     guide: "Guide file."
     input_file: "Input file."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_log_file = "${in_log_file}"
+    File out_result_file = "${in_result_file}"
+    File out_junk_file = "${in_junk_file}"
+    File out_report_file = "${in_report_file}"
   }
 }

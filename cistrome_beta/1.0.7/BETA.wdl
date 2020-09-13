@@ -4,4 +4,7 @@ task BETA {
   command <<<
     BETA
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

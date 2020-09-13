@@ -1,14 +1,10 @@
 version 1.0
 
-task FastaFetch {
-  input {
-    String fast_a
-  }
+task Fastafetch {
   command <<<
-    fasta-fetch \
-      ~{fast_a}
+    fasta_fetch
   >>>
-  parameter_meta {
-    fast_a: ""
+  output {
+    File out_stdout = stdout()
   }
 }

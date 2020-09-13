@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceSnpSummarizeVcfFile {
   input {
-    String? vcf_file_process
+    File? vcf_file_process
   }
   command <<<
     phyluce_snp_summarize_vcf_file \
@@ -10,5 +10,8 @@ task PhyluceSnpSummarizeVcfFile {
   >>>
   parameter_meta {
     vcf_file_process: "The vcf file to process"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

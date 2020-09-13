@@ -11,4 +11,7 @@ task SraToSolid {
   parameter_meta {
     input_dot_fast_q: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

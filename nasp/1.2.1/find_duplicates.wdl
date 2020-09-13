@@ -2,8 +2,8 @@ version 1.0
 
 task FindDuplicates {
   input {
-    String? nuc_me_rpath
-    String? reference
+    File? nuc_me_rpath
+    File? reference
   }
   command <<<
     find_duplicates \
@@ -12,6 +12,9 @@ task FindDuplicates {
   >>>
   parameter_meta {
     nuc_me_rpath: "Path to the 'nucmer' executable."
-    reference: "Path to the reference fasta file."
+    reference: "Path to the reference fasta file.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

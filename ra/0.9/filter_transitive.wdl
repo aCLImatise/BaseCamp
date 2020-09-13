@@ -2,13 +2,16 @@ version 1.0
 
 task FilterTransitive {
   input {
-    String? depot
+    Boolean? depot
   }
   command <<<
     filter_transitive \
-      ~{if defined(depot) then ("--depot " +  '"' + depot + '"') else ""}
+      ~{if (depot) then "--depot" else ""}
   >>>
   parameter_meta {
-    depot: ""
+    depot: "depot path (string)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

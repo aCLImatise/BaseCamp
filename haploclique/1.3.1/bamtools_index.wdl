@@ -2,16 +2,19 @@ version 1.0
 
 task BamtoolsIndex {
   input {
-    String? in
+    File? in
     Boolean? bti
   }
   command <<<
     bamtools index \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
-      ~{true="-bti" false="" bti}
+      ~{if (bti) then "-bti" else ""}
   >>>
   parameter_meta {
     in: "the input BAM file [stdin]"
-    bti: "create (non-standard) BamTools index file (*.bti). Default behavior is to create standard BAM index (*.bai)"
+    bti: "create (non-standard) BamTools\\nindex file (*.bti). Default behavior is to\\ncreate standard BAM index (*.bai)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

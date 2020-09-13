@@ -5,7 +5,7 @@ task FunannotateIprscan {
     Boolean? funannotate_folder_fasta
     Boolean? method
     Boolean? num
-    Boolean? out
+    File? out
     Boolean? debug
     Boolean? cpus
     Boolean? cpus_per_chunk
@@ -15,14 +15,14 @@ task FunannotateIprscan {
   command <<<
     funannotate iprscan \
       ~{arguments} \
-      ~{true="--input" false="" funannotate_folder_fasta} \
-      ~{true="--method" false="" method} \
-      ~{true="--num" false="" num} \
-      ~{true="--out" false="" out} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--cpus" false="" cpus} \
-      ~{true="--cpus_per_chunk" false="" cpus_per_chunk} \
-      ~{true="--iprscan_path" false="" iprs_can_path}
+      ~{if (funannotate_folder_fasta) then "--input" else ""} \
+      ~{if (method) then "--method" else ""} \
+      ~{if (num) then "--num" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (cpus) then "--cpus" else ""} \
+      ~{if (cpus_per_chunk) then "--cpus_per_chunk" else ""} \
+      ~{if (iprs_can_path) then "--iprscan_path" else ""}
   >>>
   parameter_meta {
     funannotate_folder_fasta: "Funannotate folder or FASTA protein file. (Required)"
@@ -30,9 +30,13 @@ task FunannotateIprscan {
     num: "Number of fasta files per chunk. Default: 1000"
     out: "Output XML InterProScan5 file"
     debug: "Keep intermediate files"
-    cpus: "Number of CPUs (total). Default: 12     "
+    cpus: "Number of CPUs (total). Default: 12"
     cpus_per_chunk: "Number of cpus per Docker instance. Default: 4"
     iprs_can_path: "Path to interproscan.sh. Default: which(interproscan.sh)"
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

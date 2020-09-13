@@ -1,19 +1,34 @@
 !Command
-positional: []
+command:
+- RNAplex
+positional:
+- !Positional
+  description: -q, --query=STRING            File containing the query sequence.
+  position: 0
+  name: program
+  optional: false
+- !Positional
+  description: (default=off)
+  position: 2
+  name: alignments
+  optional: false
+- !Positional
+  description: -L, --WindowLength=INT        Tells how large the region around the
+    target
+  position: 0
+  name: RNAplex
+  optional: false
+- !Positional
+  description: (default=`1')
+  position: 0
+  name: interaction
+  optional: false
 named:
 - !Flag
-  description: Print help, including all details and hidden options, and exit
+  description: "Print help, including all details and hidden\noptions, and exit"
   synonyms:
   - --detailed-help
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: File containing the query sequence.
-  synonyms:
-  - -q
-  - --query
-  args: !SimpleFlagArg
-    name: STRING
   optional: true
 - !Flag
   description: File containing the target sequence.
@@ -32,16 +47,16 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: Allow the reading and parsing of memory dumped opening energy file
-    (default=off)
+  description: "Allow the reading and parsing of memory dumped\nopening energy file\n\
+    (default=off)"
   synonyms:
   - -b
   - --binary
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Read energy parameters from paramfile, instead of using the default
-    parameter set.
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
   synonyms:
   - -P
   - --paramFile
@@ -49,7 +64,7 @@ named:
     name: paramfile
   optional: true
 - !Flag
-  description: Rescale energy parameters to a temperature T. Default is 37C.
+  description: "Rescale energy parameters to a temperature T.\nDefault is 37C."
   synonyms:
   - -T
   - --temp
@@ -57,7 +72,7 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Maximal length of an interaction (default=`40')
+  description: "Maximal length of an interaction\n(default=`40')"
   synonyms:
   - -l
   - --interaction-length
@@ -65,7 +80,7 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Cost to add to each nucleotide in a duplex (default=`0')
+  description: "Cost to add to each nucleotide in a duplex\n(default=`0')"
   synonyms:
   - -c
   - --extension-cost
@@ -80,7 +95,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Set the probe concentration for the Tm computation (default=`0.1')
+  description: "Set the probe concentration for the Tm\ncomputation\n(default=`0.1')"
   synonyms:
   - -Q
   - --probe-concentration
@@ -88,7 +103,7 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Set the Na+ concentration for the Tm computation (default=`1.0')
+  description: Set the Na+ concentration for the Tm
   synonyms:
   - -N
   - --na-concentration
@@ -96,7 +111,7 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Set the Mg2+ concentration for the Tm computation (default=`1.0')
+  description: Set the Mg2+ concentration for the Tm
   synonyms:
   - -M
   - --mg-concentration
@@ -104,7 +119,7 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Set the K+ concentration for the Tm computation (default=`1.0')
+  description: "Set the K+ concentration for the Tm computation\n(default=`1.0')"
   synonyms:
   - -K
   - --k-concentration
@@ -112,7 +127,7 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Set the tris+ concentration for the Tm computation (default=`1.0')
+  description: "Set the tris+ concentration for the Tm\ncomputation\n(default=`1.0')"
   synonyms:
   - -U
   - --tris-concentration
@@ -120,7 +135,7 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Speedup of the target search (default=`0')
+  description: "Speedup of the target search\n(default=`0')"
   synonyms:
   - -f
   - --fast-folding
@@ -128,7 +143,7 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Rescale all opening energy by a factor V (default=`1.0')
+  description: "Rescale all opening energy by a factor V\n(default=`1.0')"
   synonyms:
   - -V
   - --scale-accessibility
@@ -136,29 +151,29 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Calculate structures subject to constraints. (default=off)
+  description: "Calculate structures subject to constraints.\n(default=off)"
   synonyms:
   - -C
   - --constraint
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Tells RNAplex to compute interactions based on alignments (default=off)
+  description: Tells RNAplex to compute interactions based on
   synonyms:
   - -A
   - --alignment-mode
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: If set, RNAplex will convert all opening energy file in a directory
-    set by the -a option into binary opening energy files (default=off)
+  description: "If set, RNAplex will convert all opening energy\nfile in a directory\
+    \ set by the -a option into\nbinary opening energy files\n(default=off)"
   synonyms:
   - -k
   - --convert-to-bin
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Distance between target 3' ends of two consecutive duplexes (default=`0')
+  description: "Distance between target 3' ends of two\nconsecutive duplexes\n(default=`0')"
   synonyms:
   - -z
   - --duplex-distance
@@ -166,7 +181,7 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Minimal energy for a duplex to be returned (default=`-100000')
+  description: "Minimal energy for a duplex to be returned\n(default=`-100000')"
   synonyms:
   - -e
   - --energy-threshold
@@ -174,26 +189,16 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Draw an alignment annotated interaction from RNAplex
+  description: Draw an alignment annotated interaction from
   synonyms:
   - -I
   - --produce-ps
   args: !SimpleFlagArg
     name: STRING
   optional: true
-- !Flag
-  description: Tells how large the region around the target site should be for redrawing
-    the alignment interaction (default=`1')
-  synonyms:
-  - -L
-  - --WindowLength
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-command:
-- RNAplex
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print help and exit
   synonyms:

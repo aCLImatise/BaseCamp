@@ -2,7 +2,7 @@ version 1.0
 
 task FixMapOrdering {
   input {
-    String? sam_header
+    File? sam_header
     String in_sam_file
     String out_bam_file
     String? out_unmapped_bam
@@ -19,5 +19,8 @@ task FixMapOrdering {
     in_sam_file: ""
     out_bam_file: ""
     out_unmapped_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Elprep {
   command <<<
     elprep
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

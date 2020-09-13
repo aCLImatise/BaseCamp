@@ -1,6 +1,6 @@
 version 1.0
 
-task FlyeSamtoolsDepth {
+task FlyesamtoolsDepth {
   input {
     String? list_positions_regions
     String? list_input_bam
@@ -8,13 +8,15 @@ task FlyeSamtoolsDepth {
     Int? d_slash_m
     Int? base_quality_threshold
     Int? mapping_quality_threshold
-    Boolean? chrfromto_region_opt
+    Boolean? chrfromto__region
+    File? input_fmt_option
+    File? reference
     String sam_tools
     String depth
-    String in_one_dot_bam
+    Int in_one_dot_bam
   }
   command <<<
-    flye-samtools depth \
+    flye_samtools depth \
       ~{sam_tools} \
       ~{depth} \
       ~{in_one_dot_bam} \
@@ -24,18 +26,25 @@ task FlyeSamtoolsDepth {
       ~{if defined(d_slash_m) then ("-d/-m " +  '"' + d_slash_m + '"') else ""} \
       ~{if defined(base_quality_threshold) then ("-q " +  '"' + base_quality_threshold + '"') else ""} \
       ~{if defined(mapping_quality_threshold) then ("-Q " +  '"' + mapping_quality_threshold + '"') else ""} \
-      ~{true="-r" false="" chrfromto_region_opt}
+      ~{if (chrfromto__region) then "-r" else ""} \
+      ~{if defined(input_fmt_option) then ("--input-fmt-option " +  '"' + input_fmt_option + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
   parameter_meta {
     list_positions_regions: "list of positions or regions"
     list_input_bam: "list of input BAM filenames, one per line [null]"
     read_ignore_reads: "read length threshold (ignore reads shorter than <int>) [0]"
-    d_slash_m: "maximum coverage depth [8000]. If 0, depth is set to the maximum integer value, effectively removing any depth limit."
+    d_slash_m: "maximum coverage depth [8000]. If 0, depth is set to the maximum\\ninteger value, effectively removing any depth limit."
     base_quality_threshold: "base quality threshold [0]"
     mapping_quality_threshold: "mapping quality threshold [0]"
-    chrfromto_region_opt: "<chr:from-to>    region --input-fmt-option OPT[=VAL] Specify a single input file format option in the form of OPTION or OPTION=VALUE --reference FILE Reference sequence FASTA FILE [null]"
+    chrfromto__region: "<chr:from-to>    region"
+    input_fmt_option: "[=VAL]\\nSpecify a single input file format option in the form\\nof OPTION or OPTION=VALUE"
+    reference: "Reference sequence FASTA FILE [null]"
     sam_tools: ""
     depth: ""
     in_one_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

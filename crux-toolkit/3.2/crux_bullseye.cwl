@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../crux_bullseye.cwl
 inputs:
-- id: ms_one_spectra
-  doc: ''
-  type: string
+- id: in_gap_tolerance_dot
+  doc: = 3.
+  type: long
   inputBinding:
-    position: 0
-- id: ms_two_spectra
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+    prefix: --gap-tolerance.
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crux

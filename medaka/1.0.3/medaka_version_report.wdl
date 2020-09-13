@@ -4,4 +4,7 @@ task MedakaVersionReport {
   command <<<
     medaka_version_report
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

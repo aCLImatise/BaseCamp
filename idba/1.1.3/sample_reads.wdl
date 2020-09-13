@@ -2,12 +2,12 @@ version 1.0
 
 task SampleReads {
   input {
-    String? depth
-    String? error_rate
-    String? read_length
+    Int? depth
+    Float? error_rate
+    Int? read_length
     Boolean? paired
-    String? sd
-    String? insert_distance
+    Int? sd
+    Int? insert_distance
     Boolean? print_correct
     String sim_reads
     String ref_dot_fa
@@ -21,10 +21,10 @@ task SampleReads {
       ~{if defined(depth) then ("--depth " +  '"' + depth + '"') else ""} \
       ~{if defined(error_rate) then ("--error_rate " +  '"' + error_rate + '"') else ""} \
       ~{if defined(read_length) then ("--read_length " +  '"' + read_length + '"') else ""} \
-      ~{true="--paired" false="" paired} \
+      ~{if (paired) then "--paired" else ""} \
       ~{if defined(sd) then ("--sd " +  '"' + sd + '"') else ""} \
       ~{if defined(insert_distance) then ("--insert_distance " +  '"' + insert_distance + '"') else ""} \
-      ~{true="--print_correct" false="" print_correct}
+      ~{if (print_correct) then "--print_correct" else ""}
   >>>
   parameter_meta {
     depth: "(=30)                  sequencing depth of the sample"
@@ -37,5 +37,8 @@ task SampleReads {
     sim_reads: ""
     ref_dot_fa: ""
     reads_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,52 +1,60 @@
 class: CommandLineTool
 id: ../../../afplot_regions_histogram.cwl
 inputs:
-- id: margin
+- id: in_margin
   doc: Margin around regions to plot
   type: long
   inputBinding:
     prefix: --margin
-- id: region
+- id: in_region
   doc: Region string. Must be of format <contig:start-end>
   type: string
   inputBinding:
     prefix: --region
-- id: region_file
+- id: in_region_file
   doc: Path to region file
   type: File
   inputBinding:
     prefix: --region-file
-- id: name
+- id: in_name
   doc: Optional title for plot
   type: string
   inputBinding:
     prefix: --name
-- id: output_dir
+- id: in_output_dir
   doc: Path to output directory  [required]
   type: File
   inputBinding:
     prefix: --output-dir
-- id: vcf
+- id: in_vcf
   doc: Path to input VCF file  [required]
   type: File
   inputBinding:
     prefix: --vcf
-- id: color_palette
-  doc: The name of a color palette to pass to seaborn.set_palette
+- id: in_color_palette
+  doc: The name of a color palette to pass to
   type: string
   inputBinding:
     prefix: --color-palette
-- id: dpi
-  doc: 'DPI for output PNGs (default: 300)'
-  type: long
-  inputBinding:
-    prefix: --dpi
-- id: kde_only
+- id: in_kde_only
   doc: Only show kernel density plot
   type: boolean
   inputBinding:
     prefix: --kde-only
-outputs: []
+- id: in_seaborn_dot_set_palette
+  doc: '--dpi INTEGER           DPI for output PNGs (default: 300)'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: Path to output directory  [required]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - afplot

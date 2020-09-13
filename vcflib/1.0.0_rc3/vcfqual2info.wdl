@@ -14,4 +14,7 @@ task Vcfqual2info {
     key: ""
     vcf_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

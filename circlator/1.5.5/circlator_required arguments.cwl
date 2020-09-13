@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../circlator_required arguments.cwl
 inputs:
-- id: circ_lator
+- id: in_circ_lator
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: command
+- id: in_command
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: required_arguments
+- id: in_required_arguments
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - circlator

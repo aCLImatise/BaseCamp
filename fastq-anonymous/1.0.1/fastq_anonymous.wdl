@@ -1,17 +1,20 @@
 version 1.0
 
-task FastqAnonymous {
+task Fastqanonymous {
   input {
     Boolean? mask
     Boolean? v
   }
   command <<<
-    fastq-anonymous \
-      ~{true="--mask" false="" mask} \
-      ~{true="-v" false="" v}
+    fastq_anonymous \
+      ~{if (mask) then "--mask" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     mask: "Mask all nucleotides using N"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

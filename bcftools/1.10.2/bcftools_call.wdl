@@ -34,7 +34,7 @@ task BcftoolsCall {
   command <<<
     bcftools call \
       ~{in_dot_vcf_do_tgz} \
-      ~{true="--no-version" false="" no_version} \
+      ~{if (no_version) then "--no-version" else ""} \
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(ploidy) then ("--ploidy " +  '"' + ploidy + '"') else ""} \
@@ -46,18 +46,18 @@ task BcftoolsCall {
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--keep-alts" false="" keep_alts} \
+      ~{if (keep_alts) then "--keep-alts" else ""} \
       ~{if defined(format_fields) then ("--format-fields " +  '"' + format_fields + '"') else ""} \
-      ~{true="--prior-freqs" false="" prior_freqs} \
+      ~{if (prior_freqs) then "--prior-freqs" else ""} \
       ~{if defined(group_samples) then ("--group-samples " +  '"' + group_samples + '"') else ""} \
       ~{if defined(gvc_f) then ("--gvcf " +  '"' + gvc_f + '"') else ""} \
-      ~{true="--insert-missed" false="" insert_missed} \
-      ~{true="--keep-masked-ref" false="" keep_masked_ref} \
+      ~{if (insert_missed) then "--insert-missed" else ""} \
+      ~{if (keep_masked_ref) then "--keep-masked-ref" else ""} \
       ~{if defined(skip_variants) then ("--skip-variants " +  '"' + skip_variants + '"') else ""} \
-      ~{true="--variants-only" false="" variants_only} \
-      ~{true="--consensus-caller" false="" consensus_caller} \
+      ~{if (variants_only) then "--variants-only" else ""} \
+      ~{if (consensus_caller) then "--consensus-caller" else ""} \
       ~{if defined(constrain) then ("--constrain " +  '"' + constrain + '"') else ""} \
-      ~{true="--multiallelic-caller" false="" multi_allelic_caller} \
+      ~{if (multi_allelic_caller) then "--multiallelic-caller" else ""} \
       ~{if defined(novel_rate) then ("--novel-rate " +  '"' + novel_rate + '"') else ""} \
       ~{if defined(pval_threshold) then ("--pval-threshold " +  '"' + pval_threshold + '"') else ""} \
       ~{if defined(prior) then ("--prior " +  '"' + prior + '"') else ""}
@@ -78,7 +78,7 @@ task BcftoolsCall {
     keep_alts: "keep all possible alternate alleles at variant sites"
     format_fields: "output format fields: GQ,GP (lowercase allowed) []"
     prior_freqs: "<AN,AC>       use prior allele frequencies"
-    group_samples: "group samples by population (file with \"sample\tgroup\") or \"-\" for single-sample calling"
+    group_samples: "group samples by population (file with \\\"sample\\tgroup\\\") or \\\"-\\\" for single-sample calling"
     gvc_f: ",[...]          group non-variant sites into gVCF blocks by minimum per-sample DP"
     insert_missed: "output also sites missed by mpileup but present in -T"
     keep_masked_ref: "keep sites with masked reference allele (REF=N)"
@@ -91,5 +91,9 @@ task BcftoolsCall {
     pval_threshold: "variant if P(ref|D)<FLOAT with -c [0.5]"
     prior: "mutation rate (use bigger for greater sensitivity), use with -m [1.1e-3]"
     in_dot_vcf_do_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_write_output_file = "${in_write_output_file}"
   }
 }

@@ -3,7 +3,7 @@ version 1.0
 task Hicap {
   input {
     String? query_fp
-    String? output_dir
+    Directory? output_dir
     Boolean? help_all
     Boolean? v
   }
@@ -11,13 +11,17 @@ task Hicap {
     hicap \
       ~{if defined(query_fp) then ("--query_fp " +  '"' + query_fp + '"') else ""} \
       ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""} \
-      ~{true="--help_all" false="" help_all} \
-      ~{true="-v" false="" v}
+      ~{if (help_all) then "--help_all" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     query_fp: "Input FASTA query"
     output_dir: "Output directory"
     help_all: "Display extended help"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

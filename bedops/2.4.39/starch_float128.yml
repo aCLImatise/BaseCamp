@@ -1,15 +1,56 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: starch
-  optional: false
-named: []
 command:
 - starch-float128
+positional:
+- !Positional
+  description: Process Flags
+  position: 0
+  name: faster.
+  optional: false
+- !Positional
+  description: --version             Show binary version.
+  position: 0
+  name: data.
+  optional: false
+named:
+- !Flag
+  description: ="foo bar..."   Append note to output archive metadata (optional).
+  synonyms:
+  - --note
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --gzip      Specify backend compression type (optional, default\n\
+    is bzip2)."
+  synonyms:
+  - --bzip2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Skip generating per-chromosome data integrity signature\n(optional,\
+    \ default is to generate signature)."
+  synonyms:
+  - --omit-signature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Report compression progress every N elements per\nchromosome to standard\
+    \ error stream (optional)"
+  synonyms:
+  - --report-progress
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Support BED input with custom UCSC track, SAM or VCF\nheaders, or\
+    \ generic comments (optional)."
+  synonyms:
+  - --header
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this usage message.
   synonyms:
@@ -17,12 +58,7 @@ help_flag: !Flag
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: Show binary version.
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "starch\n  citation: http://bioinformatics.oxfordjournals.org/content/28/14/1919.abstract\n\
   \            https://doi.org/10.1093/bioinformatics/bts277\n  binary version: 2.4.39\
   \ (typical, quadruple precision float) (creates archive version: 2.2.0)\n  authors:\

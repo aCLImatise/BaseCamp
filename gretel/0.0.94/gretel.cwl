@@ -1,87 +1,100 @@
 class: CommandLineTool
 id: ../../../gretel.cwl
 inputs:
-- id: start
+- id: in_start
   doc: '1-indexed included start base position [default: 1]'
-  type: string
+  type: long
   inputBinding:
     prefix: --start
-- id: end
-  doc: '1-indexed inlcuded end base position [default: reference length]'
-  type: string
+- id: in_end
+  doc: "1-indexed inlcuded end base position [default:\nreference length]"
+  type: long
   inputBinding:
     prefix: --end
-- id: paths
+- id: in_paths
   doc: Maximum number of paths to generate [default:100]
-  type: File
+  type: long
   inputBinding:
     prefix: --paths
-- id: master
-  doc: Master sequence (will be used to fill in homogeneous gaps in haplotypes, otherwise
-    --gapchar)
+- id: in_master
+  doc: "Master sequence (will be used to fill in homogeneous\ngaps in haplotypes,\
+    \ otherwise --gapchar)"
   type: string
   inputBinding:
     prefix: --master
-- id: gap_char
-  doc: Character to fill homogeneous gaps in haplotypes if no --master [default N]
+- id: in_gap_char
+  doc: Character to fill homogeneous gaps in haplotypes if no
   type: string
   inputBinding:
     prefix: --gapchar
-- id: del_char
-  doc: Character to output in haplotype for deletion (eg. -) [default is blank]
+- id: in_del_char
+  doc: "Character to output in haplotype for deletion (eg. -)\n[default is blank]"
   type: string
   inputBinding:
     prefix: --delchar
-- id: quiet
-  doc: Don't output anything other than a single summary line.
+- id: in_quiet
+  doc: Don't output anything other than a single summary
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: out
-  doc: Output directory [default .]
-  type: string
-  inputBinding:
-    prefix: --out
-- id: threads
+- id: in_threads
   doc: Number of BAM iterators [default 1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: debug_reads
-  doc: A newline delimited list of read names to output debug data when parsing the
-    BAM
+- id: in_debug_reads
+  doc: "A newline delimited list of read names to output debug\ndata when parsing\
+    \ the BAM"
   type: string
   inputBinding:
     prefix: --debugreads
-- id: debug_pos
-  doc: A newline delimited list of 1-indexed genomic positions to output debug data
-    when parsing the BAM
-  type: string
+- id: in_debug_pos
+  doc: "A newline delimited list of 1-indexed genomic\npositions to output debug data\
+    \ when parsing the BAM"
+  type: long
   inputBinding:
     prefix: --debugpos
-- id: debug_hp_os
-  doc: A comma delimited list of 1-indexed SNP positions to output debug data when
-    predicting haplotypes
-  type: string
+- id: in_debug_hp_os
+  doc: "A comma delimited list of 1-indexed SNP positions to\noutput debug data when\
+    \ predicting haplotypes"
+  type: long
   inputBinding:
     prefix: --debughpos
-- id: dump_matrix
+- id: in_dump_matrix
   doc: Location to dump the Hansel matrix to disk
   type: string
   inputBinding:
     prefix: --dumpmatrix
-- id: dump_snps
+- id: in_dump_snps
   doc: Location to dump the SNP positions to disk
   type: string
   inputBinding:
     prefix: --dumpsnps
-- id: pepper
-  doc: enable a more permissive pileup by setting the pysam pileup stepper to 'all',
-    instead of 'samtools'. Note that this will allow improper pairs.
+- id: in_pepper
+  doc: "enable a more permissive pileup by setting the pysam\npileup stepper to 'all',\
+    \ instead of 'samtools'. Note\nthat this will allow improper pairs."
   type: boolean
   inputBinding:
     prefix: --pepper
-outputs: []
+- id: in_bam
+  doc: vcf
+  type: string
+  inputBinding:
+    position: 0
+- id: in_contig
+  doc: 'optional arguments:'
+  type: string
+  inputBinding:
+    position: 1
+- id: in_line_dot
+  doc: -o OUT, --out OUT     Output directory [default .]
+  type: string
+  inputBinding:
+    position: 2
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gretel

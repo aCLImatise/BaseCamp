@@ -17,4 +17,7 @@ task MockinbirdPreprocessConfigFile {
     mock_in_bird: ""
     preprocess: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

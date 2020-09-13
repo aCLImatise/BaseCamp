@@ -2,7 +2,7 @@ version 1.0
 
 task PreseqLcExtrap {
   input {
-    Boolean? yield_output_file
+    File? yield_output_file
     Boolean? extra_p
     Boolean? step
     Boolean? bootstraps
@@ -19,47 +19,51 @@ task PreseqLcExtrap {
     Boolean? seed
     Boolean? about
     String lc_extra_p
-    String sorted_bed_file
+    File sorted_bed_file
   }
   command <<<
     preseq lc_extrap \
       ~{lc_extra_p} \
       ~{sorted_bed_file} \
-      ~{true="-output" false="" yield_output_file} \
-      ~{true="-extrap" false="" extra_p} \
-      ~{true="-step" false="" step} \
-      ~{true="-bootstraps" false="" bootstraps} \
-      ~{true="-cval" false="" cval} \
-      ~{true="-terms" false="" terms} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-bam" false="" bam} \
-      ~{true="-seg_len" false="" seg_len} \
-      ~{true="-pe" false="" pe} \
-      ~{true="-vals" false="" vals} \
-      ~{true="-hist" false="" hist} \
-      ~{true="-quick" false="" quick} \
-      ~{true="-defects" false="" defects} \
-      ~{true="-seed" false="" seed} \
-      ~{true="-about" false="" about}
+      ~{if (yield_output_file) then "-output" else ""} \
+      ~{if (extra_p) then "-extrap" else ""} \
+      ~{if (step) then "-step" else ""} \
+      ~{if (bootstraps) then "-bootstraps" else ""} \
+      ~{if (cval) then "-cval" else ""} \
+      ~{if (terms) then "-terms" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (bam) then "-bam" else ""} \
+      ~{if (seg_len) then "-seg_len" else ""} \
+      ~{if (pe) then "-pe" else ""} \
+      ~{if (vals) then "-vals" else ""} \
+      ~{if (hist) then "-hist" else ""} \
+      ~{if (quick) then "-quick" else ""} \
+      ~{if (defects) then "-defects" else ""} \
+      ~{if (seed) then "-seed" else ""} \
+      ~{if (about) then "-about" else ""}
   >>>
   parameter_meta {
-    yield_output_file: "yield output file (default: stdout) "
-    extra_p: "maximum extrapolation (default: 1e+10) "
-    step: "step size in extrapolations (default: 1e+06) "
-    bootstraps: "number of bootstraps (default: 100), "
-    cval: "level for confidence intervals (default: 0.95) "
-    terms: "maximum number of terms "
-    verbose: "print more information "
-    bam: "input is in BAM format "
-    seg_len: "maximum segment length when merging paired end bam reads  (default: 5000) "
-    pe: "input is paired end read file "
-    vals: "input is a text file containing only the observed counts "
-    hist: "input is a text file containing the observed histogram "
-    quick: "quick mode, estimate yield without bootstrapping for  confidence intervals "
-    defects: "defects mode to extrapolate without testing for defects "
-    seed: "seed for random number generator "
-    about: "print about message "
+    yield_output_file: "yield output file (default: stdout)"
+    extra_p: "maximum extrapolation (default: 1e+10)"
+    step: "step size in extrapolations (default: 1e+06)"
+    bootstraps: "number of bootstraps (default: 100),"
+    cval: "level for confidence intervals (default: 0.95)"
+    terms: "maximum number of terms"
+    verbose: "print more information"
+    bam: "input is in BAM format"
+    seg_len: "maximum segment length when merging paired end bam reads\\n(default: 5000)"
+    pe: "input is paired end read file"
+    vals: "input is a text file containing only the observed counts"
+    hist: "input is a text file containing the observed histogram"
+    quick: "quick mode, estimate yield without bootstrapping for\\nconfidence intervals"
+    defects: "defects mode to extrapolate without testing for defects"
+    seed: "seed for random number generator"
+    about: "print about message"
     lc_extra_p: ""
     sorted_bed_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_yield_output_file = "${in_yield_output_file}"
   }
 }

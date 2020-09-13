@@ -6,9 +6,12 @@ task SquareMash {
   }
   command <<<
     square_mash \
-      ~{true="--classic" false="" classic}
+      ~{if (classic) then "--classic" else ""}
   >>>
   parameter_meta {
     classic: "Output table in a format suitable for R_mds.pl"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

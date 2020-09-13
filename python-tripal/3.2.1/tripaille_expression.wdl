@@ -4,4 +4,7 @@ task TripailleExpression {
   command <<<
     tripaille expression
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

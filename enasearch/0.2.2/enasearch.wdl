@@ -4,4 +4,7 @@ task Enasearch {
   command <<<
     enasearch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

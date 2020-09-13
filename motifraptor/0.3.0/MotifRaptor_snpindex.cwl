@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../MotifRaptor_snpindex.cwl
 inputs:
-- id: vcf_filename
-  doc: input - VCF file for SNPs, first five columns need to be CHR,POS,ID,REF,ALT
-  type: string
+- id: in_vcf_filename
+  doc: "input - VCF file for SNPs, first five columns need to\nbe CHR,POS,ID,REF,ALT"
+  type: File
   inputBinding:
     prefix: --vcf_filename
-- id: indexed_genome_db
+- id: in_indexed_genome_db
   doc: output - indexed genome_database_folder
   type: string
   inputBinding:
     prefix: --indexed_genome_db
-- id: mk_sary
+- id: in_mk_sary
   doc: Mksary program path
-  type: string
+  type: File
   inputBinding:
     prefix: --mksary
-- id: threads
-  doc: number of threads
-  type: string
+- id: in_threads
+  doc: "number of threads\n"
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MotifRaptor

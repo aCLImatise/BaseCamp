@@ -2,16 +2,16 @@ version 1.0
 
 task PairtoolsMerge {
   input {
-    String? output_file_path
+    File? output_file_path
     Int? max_n_merge
-    String? tmpdir
-    String? memory
-    String? compress_program
+    Directory? tmpdir
+    Int? memory
+    Int? compress_program
     Int? nproc
     Int? nproc_in
     Int? nproc_out
-    String? cmd_in
-    String? cmd_out
+    Int? cmd_in
+    Int? cmd_out
     String? pairs_path
   }
   command <<<
@@ -29,16 +29,20 @@ task PairtoolsMerge {
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
   parameter_meta {
-    output_file_path: "output file. If the path ends with .gz/.lz4, the output is compressed by pbgzip/lz4c. By default, the output is printed into stdout."
-    max_n_merge: "The maximal number of inputs merged at once. For more, store merged intermediates in temporary files.  [default: 8]"
+    output_file_path: "output file. If the path ends with .gz/.lz4, the\\noutput is compressed by pbgzip/lz4c. By default,\\nthe output is printed into stdout."
+    max_n_merge: "The maximal number of inputs merged at once. For\\nmore, store merged intermediates in temporary\\nfiles.  [default: 8]"
     tmpdir: "Custom temporary folder for merged intermediates."
-    memory: "The amount of memory used by default.  [default: 2G]"
-    compress_program: "A binary to compress temporary merged chunks. Must decompress input when the flag -d is provided. Suggested alternatives: lz4c, gzip, lzop, snzip. NOTE: fails silently if the command syntax is wrong.   [default: ]"
+    memory: "The amount of memory used by default.  [default:\\n2G]"
+    compress_program: "A binary to compress temporary merged chunks. Must\\ndecompress input when the flag -d is provided.\\nSuggested alternatives: lz4c, gzip, lzop, snzip.\\nNOTE: fails silently if the command syntax is\\nwrong.   [default: ]"
     nproc: "Number of threads for merging.  [default: 8]"
-    nproc_in: "Number of processes used by the auto-guessed input decompressing command.  [default: 1]"
-    nproc_out: "Number of processes used by the auto-guessed output compressing command.  [default: 8]"
-    cmd_in: "A command to decompress the input. If provided, fully overrides the auto-guessed command. Does not work with stdin. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -dc -n 3"
-    cmd_out: "A command to compress the output. If provided, fully overrides the auto-guessed command. Does not work with stdout. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -c -n 8"
+    nproc_in: "Number of processes used by the auto-guessed input\\ndecompressing command.  [default: 1]"
+    nproc_out: "Number of processes used by the auto-guessed output\\ncompressing command.  [default: 8]"
+    cmd_in: "A command to decompress the input. If provided,\\nfully overrides the auto-guessed command. Does not\\nwork with stdin. Must read input from stdin and\\nprint output into stdout. EXAMPLE: pbgzip -dc -n 3"
+    cmd_out: "A command to compress the output. If provided,\\nfully overrides the auto-guessed command. Does not\\nwork with stdout. Must read input from stdin and\\nprint output into stdout. EXAMPLE: pbgzip -c -n 8"
     pairs_path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_path = "${in_output_file_path}"
   }
 }

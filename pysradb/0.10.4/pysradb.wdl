@@ -6,9 +6,12 @@ task Pysradb {
   }
   command <<<
     pysradb \
-      ~{true="--citation" false="" citation}
+      ~{if (citation) then "--citation" else ""}
   >>>
   parameter_meta {
     citation: "how to cite"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,10 +1,7 @@
 !Command
-positional:
-- !Positional
-  description: input TE sequences in fasta format [required]
-  position: 0
-  name: sequence
-  optional: false
+command:
+- TEsorter
+positional: []
 named:
 - !Flag
   description: the database used [default=rexdb]
@@ -13,9 +10,9 @@ named:
   - --hmm-database
   args: !ChoiceFlagArg
     choices: !!set
+      ? rexdb-metazoa
       ? gydb
       ? rexdb
-      ? rexdb-metazoa
       ? rexdb-plant
   optional: true
 - !Flag
@@ -37,7 +34,7 @@ named:
     name: PREFIX
   optional: true
 - !Flag
-  description: if False, will use the existed hmmscan outfile and skip hmmscan [default=False]
+  description: "if False, will use the existed hmmscan outfile and\nskip hmmscan [default=False]"
   synonyms:
   - -fw
   - --force-write-hmmscan
@@ -60,7 +57,7 @@ named:
     name: TMP_DIR
   optional: true
 - !Flag
-  description: mininum coverage for protein domains in HMMScan output [default=20]
+  description: "mininum coverage for protein domains in HMMScan output\n[default=20]"
   synonyms:
   - -cov
   - --min-coverage
@@ -68,7 +65,7 @@ named:
     name: MIN_COVERAGE
   optional: true
 - !Flag
-  description: maxinum E-value for protein domains in HMMScan output [default=0.001]
+  description: "maxinum E-value for protein domains in HMMScan output\n[default=0.001]"
   synonyms:
   - -eval
   - --max-evalue
@@ -76,16 +73,16 @@ named:
     name: MAX_EVALUE
   optional: true
 - !Flag
-  description: do not further classify the unclassified sequences [default=False for
-    `nucl`, True for `prot`]
+  description: "do not further classify the unclassified sequences\n[default=False\
+    \ for `nucl`, True for `prot`]"
   synonyms:
   - -dp2
   - --disable-pass2
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: classifying rule [identity-coverage-length] in pass-2 based on similarity
-    [default=80-80-80]
+  description: "classifying rule [identity-coverage-length] in pass-2\nbased on similarity\
+    \ [default=80-80-80]"
   synonyms:
   - -rule
   - --pass2-rule
@@ -93,31 +90,30 @@ named:
     name: PASS2_RULE
   optional: true
 - !Flag
-  description: do not generate a library file for RepeatMasker [default=False]
+  description: "do not generate a library file for RepeatMasker\n[default=False]"
   synonyms:
   - -nolib
   - --no-library
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: do not reverse complement sequences if they are detected in minus strand
-    [default=False]
+  description: "do not reverse complement sequences if they are\ndetected in minus\
+    \ strand [default=False]"
   synonyms:
   - -norc
   - --no-reverse
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: do not clean up the temporary directory [default=False]
+  description: "do not clean up the temporary directory\n[default=False]\n"
   synonyms:
   - -nocln
   - --no-cleanup
   args: !EmptyFlagArg {}
   optional: true
-command:
-- TEsorter
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

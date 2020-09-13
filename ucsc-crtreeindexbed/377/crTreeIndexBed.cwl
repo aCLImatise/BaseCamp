@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../crTreeIndexBed.cwl
 inputs:
-- id: block_size
+- id: in_block_size
   doc: '- number of children per node in index tree. Default 1024'
-  type: string
+  type: long
   inputBinding:
     prefix: -blockSize
-- id: items_per_slot
+- id: in_items_per_slot
   doc: '- number of items per index slot. Default is half block size'
-  type: string
+  type: long
   inputBinding:
     prefix: -itemsPerSlot
-- id: no_check_sort
+- id: in_no_check_sort
   doc: "- Don't check sorting order of in.tab"
   type: boolean
   inputBinding:
     prefix: -noCheckSort
-- id: in_dot_bed
+- id: in_in_dot_bed
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_do_tcr
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crTreeIndexBed

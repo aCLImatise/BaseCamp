@@ -4,4 +4,7 @@ task Htsbox {
   command <<<
     htsbox
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

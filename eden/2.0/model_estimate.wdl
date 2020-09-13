@@ -2,10 +2,10 @@ version 1.0
 
 task ModelEstimate {
   input {
-    String? positive_input_file
-    String? negative_input_file
-    String? model_file
-    String? output_dir
+    File? positive_input_file
+    File? negative_input_file
+    File? model_file
+    File? output_dir
     Boolean? cross_validation
   }
   command <<<
@@ -14,13 +14,17 @@ task ModelEstimate {
       ~{if defined(negative_input_file) then ("--negative-input-file " +  '"' + negative_input_file + '"') else ""} \
       ~{if defined(model_file) then ("--model-file " +  '"' + model_file + '"') else ""} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
-      ~{true="--cross-validation" false="" cross_validation}
+      ~{if (cross_validation) then "--cross-validation" else ""}
   >>>
   parameter_meta {
-    positive_input_file: "Path tofile containing input for the positive class. (default: None)"
-    negative_input_file: "Path to file containing input for the negative class. (default: None)"
+    positive_input_file: "Path tofile containing input for the positive class.\\n(default: None)"
+    negative_input_file: "Path to file containing input for the negative class.\\n(default: None)"
     model_file: "Path to a fit model file. (default: None)"
     output_dir: "Path to output directory. (default: out)"
-    cross_validation: "If set, report cross validated performance measures. The model's parameters are re-trained in each fold keeping the hyper-parameters of the given model. (default: False)"
+    cross_validation: "If set, report cross validated performance measures.\\nThe model's parameters are re-trained in each fold\\nkeeping the hyper-parameters of the given model.\\n(default: False)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_dir = "${in_output_dir}"
   }
 }

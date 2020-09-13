@@ -1,7 +1,10 @@
 version 1.0
 
-task AnviComputeAni {
+task Anvicomputeani {
   command <<<
-    anvi-compute-ani
+    anvi_compute_ani
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

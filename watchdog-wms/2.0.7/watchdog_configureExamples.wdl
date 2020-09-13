@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogConfigureExamples {
+task WatchdogconfigureExamples {
   command <<<
-    watchdog-configureExamples
+    watchdog_configureExamples
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

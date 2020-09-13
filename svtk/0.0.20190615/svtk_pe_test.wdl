@@ -1,20 +1,20 @@
 version 1.0
 
-task SvtkPeTest {
+task SvtkPetest {
   input {
-    String? window_out
-    String? window_in
-    String? background
+    Int? window_out
+    Int? window_in
+    Int? background
     String? samples
-    String? index
-    String? median_file
+    File? index
+    File? median_file
     Boolean? log
     String vcf
     String disc
     String f_out
   }
   command <<<
-    svtk pe-test \
+    svtk pe_test \
       ~{vcf} \
       ~{disc} \
       ~{f_out} \
@@ -24,18 +24,21 @@ task SvtkPeTest {
       ~{if defined(samples) then ("--samples " +  '"' + samples + '"') else ""} \
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
       ~{if defined(median_file) then ("--medianfile " +  '"' + median_file + '"') else ""} \
-      ~{true="--log" false="" log}
+      ~{if (log) then "--log" else ""}
   >>>
   parameter_meta {
-    window_out: "Window outside breakpoint to query for discordant pairs. [500]"
-    window_in: "Window inside breakpoint to query for discordant pairs. [50]"
-    background: "Number of background samples to sample for PE evidence. [160]"
+    window_out: "Window outside breakpoint to query for discordant\\npairs. [500]"
+    window_in: "Window inside breakpoint to query for discordant\\npairs. [50]"
+    background: "Number of background samples to sample for PE\\nevidence. [160]"
     samples: "Whitelist of samples to restrict testing to."
-    index: "Tabix index of discordant pair file. Required if discordant pair file is hosted remotely."
-    median_file: "Median coverage statistics for each library (optional). If provided, each sample's split counts will be normalized accordingly. Same format as RdTest, one column per sample."
+    index: "Tabix index of discordant pair file. Required if\\ndiscordant pair file is hosted remotely."
+    median_file: "Median coverage statistics for each library\\n(optional). If provided, each sample's split counts\\nwill be normalized accordingly. Same format as RdTest,\\none column per sample."
     log: "Print progress log to stderr."
     vcf: "Variants."
     disc: "Table of discordant pair coordinates."
     f_out: "Output table of PE counts."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

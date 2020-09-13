@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../extendSuperReadsBasedOnUniqueExtensions.cwl
 inputs:
-- id: dir
+- id: in_dir
   doc: '*Directory where the super-reads work is done'
   type: File
   inputBinding:
     prefix: --dir
-- id: mer
+- id: in_mer
   doc: '*Length of mer'
   type: long
   inputBinding:
     prefix: --mer
-- id: cmdline_parse
+- id: in_cmdline_parse
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - extendSuperReadsBasedOnUniqueExtensions

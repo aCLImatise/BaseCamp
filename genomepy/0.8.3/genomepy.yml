@@ -1,23 +1,32 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - genomepy
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - genomepy
+  - search
   positional:
   - !Positional
     description: ''
     position: 0
-    name: COMMAND
+    name: TERM
     optional: false
-  named: []
-  command:
-  - genomepy
-  - config
+  named:
+  - !Flag
+    description: provider
+    synonyms:
+    - -p
+    - --provider
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -27,13 +36,51 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "Usage: genomepy config [OPTIONS] COMMAND\n\n  Manage configuration\n\
-    \n  genomepy config file        return config filepath\n\n  genomepy config show\
-    \        return config content\n\n  genomepy config generate    create new config\
-    \ file\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+  help_text: "Usage: genomepy search [OPTIONS] TERM\n\n  Search for genomes that contain\
+    \ TERM in their name or description.\n\n  Function is case-insensitive. Spaces\
+    \ in TERM can be replaced with\n  underscores (_) or TERM can be \"quoted\", e.g.,\
+    \ \"homo sapiens\".\n\nOptions:\n  -p, --provider TEXT  provider\n  -h, --help\
+    \           Show this message and exit.\n"
   generated_using: &id002
   - --help
 - !Command
+  command:
+  - genomepy
+  - plugin
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: COMMAND
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: NAME
+    optional: true
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: genomepy plugin [OPTIONS] COMMAND [NAME]...\n\n  Enable or disable\
+    \ plugins\n\n  genomepy plugin list                 show plugins and status\n\n\
+    \  genomepy plugin enable  [NAME(S)]    enable plugins\n\n  genomepy plugin disable\
+    \ [NAME(S)]    disable plugins\n\nOptions:\n  -h, --help  Show this message and\
+    \ exit.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - genomepy
+  - genomes
   positional: []
   named:
   - !Flag
@@ -44,11 +91,9 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  command:
-  - genomepy
-  - genomes
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -63,6 +108,9 @@ subcommands:
     \ message and exit.\n"
   generated_using: *id002
 - !Command
+  command:
+  - genomepy
+  - install
   positional:
   - !Positional
     description: ''
@@ -151,8 +199,8 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: skip (check for) matching of contig names between annotation and
-      fasta (sets -a)
+    description: "skip (check for) matching of contig names\nbetween annotation and\
+      \ fasta (sets -a)"
     synonyms:
     - -s
     - --skip_sanitizing
@@ -172,25 +220,23 @@ subcommands:
       name: INTEGER
     optional: true
   - !Flag
-    description: 'specify annotation to download: UCSC, Ensembl, NCBI_refseq or UCSC_refseq'
+    description: "specify annotation to download: UCSC, Ensembl,\nNCBI_refseq or UCSC_refseq"
     synonyms:
     - --ucsc-annotation
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: link to the annotation file, required if this is not in the same
-      directory as the fasta file
+    description: "link to the annotation file, required if this\nis not in the same\
+      \ directory as the fasta file"
     synonyms:
     - --url-to-annotation
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  command:
-  - genomepy
-  - install
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -220,23 +266,19 @@ subcommands:
     \n  -h, --help                   Show this message and exit.\n"
   generated_using: *id002
 - !Command
+  command:
+  - genomepy
+  - config
   positional:
   - !Positional
     description: ''
     position: 0
     name: COMMAND
     optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: NAME
-    optional: true
   named: []
-  command:
-  - genomepy
-  - plugin
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -246,48 +288,12 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "Usage: genomepy plugin [OPTIONS] COMMAND [NAME]...\n\n  Enable or disable\
-    \ plugins\n\n  genomepy plugin list                 show plugins and status\n\n\
-    \  genomepy plugin enable  [NAME(S)]    enable plugins\n\n  genomepy plugin disable\
-    \ [NAME(S)]    disable plugins\n\nOptions:\n  -h, --help  Show this message and\
-    \ exit.\n"
+  help_text: "Usage: genomepy config [OPTIONS] COMMAND\n\n  Manage configuration\n\
+    \n  genomepy config file        return config filepath\n\n  genomepy config show\
+    \        return config content\n\n  genomepy config generate    create new config\
+    \ file\n\nOptions:\n  -h, --help  Show this message and exit.\n"
   generated_using: *id002
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: TERM
-    optional: false
-  named:
-  - !Flag
-    description: provider
-    synonyms:
-    - -p
-    - --provider
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  command:
-  - genomepy
-  - search
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "Usage: genomepy search [OPTIONS] TERM\n\n  Search for genomes that contain\
-    \ TERM in their name or description.\n\n  Function is case-insensitive. Spaces\
-    \ in TERM can be replaced with\n  underscores (_) or TERM can be \"quoted\", e.g.,\
-    \ \"homo sapiens\".\n\nOptions:\n  -p, --provider TEXT  provider\n  -h, --help\
-    \           Show this message and exit.\n"
-  generated_using: *id002
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:

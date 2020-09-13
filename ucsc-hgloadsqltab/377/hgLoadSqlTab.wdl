@@ -16,9 +16,9 @@ task HgLoadSqlTab {
       ~{table} \
       ~{file_dot_sql} \
       ~{file} \
-      ~{true="-warn" false="" warn} \
-      ~{true="-notOnServer" false="" not_on_server} \
-      ~{true="-oldTable" false="" old_table}
+      ~{if (warn) then "-warn" else ""} \
+      ~{if (not_on_server) then "-notOnServer" else ""} \
+      ~{if (old_table) then "-oldTable" else ""}
   >>>
   parameter_meta {
     warn: "- warn instead of abort on mysql errors or warnings"
@@ -28,5 +28,8 @@ task HgLoadSqlTab {
     table: ""
     file_dot_sql: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,9 +1,9 @@
 version 1.0
 
-task NanosimH {
+task Nanosimh {
   input {
-    String? profile
-    String? out_pref
+    Directory? profile
+    File? out_pref
     Int? number
     Float? un_align_rate
     Float? mis_rate
@@ -21,7 +21,7 @@ task NanosimH {
     Boolean? v
   }
   command <<<
-    nanosim-h \
+    nanosim_h \
       ~{if defined(profile) then ("--profile " +  '"' + profile + '"') else ""} \
       ~{if defined(out_pref) then ("--out-pref " +  '"' + out_pref + '"') else ""} \
       ~{if defined(number) then ("--number " +  '"' + number + '"') else ""} \
@@ -30,25 +30,25 @@ task NanosimH {
       ~{if defined(ins_rate) then ("--ins-rate " +  '"' + ins_rate + '"') else ""} \
       ~{if defined(del_rate) then ("--del-rate " +  '"' + del_rate + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--circular" false="" circular} \
-      ~{true="--perfect" false="" perfect} \
-      ~{true="--merge-contigs" false="" merge_contigs} \
-      ~{true="--rnf" false="" rnf} \
-      ~{true="--rnf-add-cigar" false="" rnf_add_cigar} \
+      ~{if (circular) then "--circular" else ""} \
+      ~{if (perfect) then "--perfect" else ""} \
+      ~{if (merge_contigs) then "--merge-contigs" else ""} \
+      ~{if (rnf) then "--rnf" else ""} \
+      ~{if (rnf_add_cigar) then "--rnf-add-cigar" else ""} \
       ~{if defined(max_len) then ("--max-len " +  '"' + max_len + '"') else ""} \
       ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
       ~{if defined(km_er_bias) then ("--kmer-bias " +  '"' + km_er_bias + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    profile: "error profile - one of precomputed profiles ('ecoli_R7', 'yeast', 'ecoli_R7.3', 'ecoli_R9_2D', 'ecoli_R9_1D', 'ecoli_UCSC1b') or own directory with an error profile [ecoli_R9_2D]"
+    profile: "error profile - one of precomputed profiles\\n('ecoli_UCSC1b', 'ecoli_R7.3', 'yeast', 'ecoli_R9_2D',\\n'ecoli_R7', 'ecoli_R9_1D') or own directory with an\\nerror profile [ecoli_R9_2D]"
     out_pref: "prefix of output file [simulated]"
     number: "number of generated reads [10000]"
-    un_align_rate: "rate of unaligned reads [detect from the error profile]"
+    un_align_rate: "rate of unaligned reads [detect from the error\\nprofile]"
     mis_rate: "mismatch rate (weight tuning) [1.0]"
     ins_rate: "insertion rate (weight tuning) [1.0]"
     del_rate: "deletion rate (weight tuning) [1.0]"
-    seed: "initial seed for the pseudorandom number generator (0 for random) [42]"
+    seed: "initial seed for the pseudorandom number generator (0\\nfor random) [42]"
     circular: "circular simulation (linear otherwise)"
     perfect: "output perfect reads, no mutations"
     merge_contigs: "merge contigs from the reference"
@@ -56,7 +56,11 @@ task NanosimH {
     rnf_add_cigar: "add cigar to RNF names (not fully debugged, yet)"
     max_len: "maximum read length [inf]"
     min_len: "minimum read length [50]"
-    km_er_bias: "prohibits homopolymers with length >= n bases in output reads [6]"
+    km_er_bias: "prohibits homopolymers with length >= n bases in\\noutput reads [6]"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_pref = "${in_out_pref}"
   }
 }

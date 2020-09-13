@@ -1,11 +1,174 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: input.bam ..
-  optional: false
+command:
+- stringtie
+positional: []
 named:
+- !Flag
+  description: ': conservative transcriptome assembly, same as -t -c 1.5 -f 0.05'
+  synonyms:
+  - --conservative
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: stranded library fr-firststrand
+  synonyms:
+  - --rf
+  args: !SimpleFlagArg
+    name: assume
+  optional: true
+- !Flag
+  description: stranded library fr-secondstrand
+  synonyms:
+  - --fr
+  args: !SimpleFlagArg
+    name: assume
+  optional: true
+- !Flag
+  description: annotation to use for guiding the assembly process (GTF/GFF3)
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: reference
+  optional: true
+- !Flag
+  description: point-features from a given 4 column feature file <f_tab>
+  synonyms:
+  - --ptf
+  args: !SimpleFlagArg
+    name: load
+  optional: true
+- !Flag
+  description: 'path/file name for the assembled transcripts GTF (default: stdout)'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: output
+  optional: true
+- !Flag
+  description: 'prefix for output transcripts (default: STRG)'
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: 'isoform fraction (default: 0.01)'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: minimum
+  optional: true
+- !Flag
+  description: long reads settings (default:false)
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: use
+  optional: true
+- !Flag
+  description: long reads are provided, just clean and collapse the reads but do not
+    assemble
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: if
+  optional: true
+- !Flag
+  description: 'assembled transcript length (default: 200)'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: minimum
+  optional: true
+- !Flag
+  description: 'anchor length for junctions (default: 10)'
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: minimum
+  optional: true
+- !Flag
+  description: 'junction coverage (default: 1)'
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: minimum
+  optional: true
+- !Flag
+  description: "trimming of predicted transcripts based on coverage\n(default: coverage\
+    \ trimming is enabled)"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: disable
+  optional: true
+- !Flag
+  description: "reads per bp coverage to consider for multi-exon transcript\n(default:\
+    \ 1)"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: minimum
+  optional: true
+- !Flag
+  description: "reads per bp coverage to consider for single-exon transcript\n(default:\
+    \ 4.75)"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: minimum
+  optional: true
+- !Flag
+  description: (log bundle processing details)
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: verbose
+  optional: true
+- !Flag
+  description: 'gap allowed between read mappings (default: 50)'
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: maximum
+  optional: true
+- !Flag
+  description: of bundle allowed to be covered by multi-hit reads (default:1)
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: fraction
+  optional: true
+- !Flag
+  description: 'of threads (CPUs) to use (default: 1)'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: abundance estimation output file
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: gene
+  optional: true
+- !Flag
+  description: "output of Ballgown table files which will be created in the\nsame\
+    \ directory as the output GTF (requires -G, -o recommended)"
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: enable
+  optional: true
+- !Flag
+  description: "output of Ballgown table files but these files will be\ncreated under\
+    \ the directory path given as <dir_path>"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: enable
+  optional: true
 - !Flag
   description: estimate the abundance of given reference transcripts (requires -G)
   synonyms:
@@ -35,91 +198,37 @@ named:
     name: print
   optional: true
 - !Flag
-  description: reference annotation to include in the merging (GTF/GFF3)
-  synonyms:
-  - -G
-  args: !SimpleFlagArg
-    name: guide_gff
-  optional: true
-- !Flag
-  description: 'output file name for the merged transcripts GTF (default: stdout)'
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: out_gtf
-  optional: true
-- !Flag
-  description: 'minimum input transcript length to include in the merge (default:
-    50)'
-  synonyms:
-  - -m
-  args: !SimpleFlagArg
-    name: min_len
-  optional: true
-- !Flag
-  description: 'minimum input transcript coverage to include in the merge (default:
-    0)'
-  synonyms:
-  - -c
-  args: !SimpleFlagArg
-    name: min_cov
-  optional: true
-- !Flag
-  description: 'minimum input transcript FPKM to include in the merge (default: 1.0)'
+  description: "minimum input transcript FPKM to include in the merge\n(default: 1.0)"
   synonyms:
   - -F
   args: !SimpleFlagArg
     name: min_fpkm
   optional: true
 - !Flag
-  description: 'minimum input transcript TPM to include in the merge (default: 1.0)'
+  description: "minimum input transcript TPM to include in the merge\n(default: 1.0)"
   synonyms:
   - -T
   args: !SimpleFlagArg
     name: min_tpm
   optional: true
 - !Flag
-  description: 'minimum isoform fraction (default: 0.01)'
-  synonyms:
-  - -f
-  args: !SimpleFlagArg
-    name: min_iso
-  optional: true
-- !Flag
-  description: 'gap between transcripts to merge together (default: 250)'
-  synonyms:
-  - -g
-  args: !SimpleFlagArg
-    name: gap_len
-  optional: true
-- !Flag
-  description: keep merged transcripts with retained introns; by default these are
-    not kept unless there is strong evidence for them
+  description: "keep merged transcripts with retained introns; by default\nthese are\
+    \ not kept unless there is strong evidence for them"
   synonyms:
   - -i
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: 'name prefix for output transcripts (default: MSTRG)'
-  synonyms:
-  - -l
-  args: !SimpleFlagArg
-    name: label
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -p
-  args: !SimpleFlagArg
-    name: cpus
-  optional: true
-command:
-- stringtie
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: ': print just the version at stdout and exit'
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "StringTie v2.1.2 usage:\n stringtie <input.bam ..> [-G <guide_gff>] [-l\
   \ <label>] [-o <out_gtf>] [-p <cpus>]\n  [-v] [-a <min_anchor_len>] [-m <min_tlen>]\
   \ [-j <min_anchor_cov>] [-f <min_iso>]\n  [-C <coverage_file_name>] [-c <min_bundle_cov>]\

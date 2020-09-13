@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../compalignp.cwl
 inputs:
-- id: v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: d
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -d
-- id: r
+- id: in_r
   doc: ''
   type: string
   inputBinding:
     prefix: -r
-- id: t
+- id: in_d
   doc: ''
-  type: string
+  type: boolean
   inputBinding:
-    prefix: -t
-outputs: []
+    prefix: -d
+- id: in_v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - compalignp

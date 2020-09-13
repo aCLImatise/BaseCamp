@@ -1,17 +1,20 @@
 version 1.0
 
-task KrakenhllTranslate {
+task Krakenhlltranslate {
   input {
-    String? db
     Boolean? mpa_format
+    String? db
   }
   command <<<
-    krakenhll-translate \
-      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{true="--mpa-format" false="" mpa_format}
+    krakenhll_translate \
+      ~{if (mpa_format) then "--mpa-format" else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
   parameter_meta {
-    db: ""
     mpa_format: ""
+    db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

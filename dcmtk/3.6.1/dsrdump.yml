@@ -1,4 +1,6 @@
 !Command
+command:
+- dsrdump
 positional:
 - !Positional
   description: DICOM SR input filename to be dumped
@@ -6,6 +8,12 @@ positional:
   name: dsrfile-in
   optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet                 quiet mode, print no warnings and errors
   synonyms:
@@ -25,15 +33,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-level             [l]evel: string constant (fatal, error, warn,
-    info, debug, trace) use level l for the logger'
+  description: "--log-level             [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
   synonyms:
   - -ll
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-config            [f]ilename: string use config file f for the
-    logger'
+  description: "--log-config            [f]ilename: string\nuse config file f for\
+    \ the logger"
   synonyms:
   - -lc
   args: !EmptyFlagArg {}
@@ -87,8 +95,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --invalid-item-value    accept invalid content item value (e.g. violation
-    of VR or VM definition)
+  description: "--invalid-item-value    accept invalid content item value\n(e.g. violation\
+    \ of VR or VM definition)"
   synonyms:
   - -Ev
   args: !EmptyFlagArg {}
@@ -100,8 +108,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --ignore-item-errors    do not abort on content item errors, just warn
-    (e.g. missing value type specific attributes)
+  description: "--ignore-item-errors    do not abort on content item errors, just\
+    \ warn\n(e.g. missing value type specific attributes)"
   synonyms:
   - -Ee
   args: !EmptyFlagArg {}
@@ -119,9 +127,34 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: --no-document-header    do not print general document information
+  synonyms:
+  - -Ph
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: --indent-nested-items   indent nested items by spaces (default)
   synonyms:
   - -Pn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --shorten-long-values   print long item values shortened (default)
+  synonyms:
+  - -Pl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--print-sopclass-short  print short SOP class name of referenced\n\
+    image objects, e.g. \"CT image\" (default)"
+  synonyms:
+  - -Ps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-invalid-codes      print text "invalid code" instead (default)
+  synonyms:
+  - -Pi
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -136,20 +169,22 @@ named:
   - -C
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dsrdump
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help                  print this help text and exit --version               print
-    version information and exit --arguments             print expanded command line
-    arguments
+  description: --help                  print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dsrdump v3.6.1 2016-11-02 $\n\ndsrdump: Dump DICOM SR file and\
   \ data set\nusage: dsrdump [options] dsrfile-in...\n\nparameters:\n  dsrfile-in\
   \                      DICOM SR input filename to be dumped\n\ngeneral options:\n\

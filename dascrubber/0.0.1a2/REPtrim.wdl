@@ -4,4 +4,7 @@ task REPtrim {
   command <<<
     REPtrim
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

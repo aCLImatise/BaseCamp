@@ -4,4 +4,7 @@ task Datatool {
   command <<<
     datatool
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

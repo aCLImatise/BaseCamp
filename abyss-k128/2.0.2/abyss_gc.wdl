@@ -1,17 +1,20 @@
 version 1.0
 
-task AbyssGc {
+task Abyssgc {
   input {
     Boolean? verbose
     File? file
   }
   command <<<
-    abyss-gc \
+    abyss_gc \
       ~{file} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     verbose: "display verbose output"
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

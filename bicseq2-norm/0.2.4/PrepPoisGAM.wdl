@@ -2,11 +2,11 @@ version 1.0
 
 task PrepPoisGAM {
   input {
-    String? two_column_read
+    File? two_column_read
     Int? fragment_size_estimated
     Int? read_length_default
     String? specified_use_output
-    String? file_stores_estimates
+    File? file_stores_estimates
     Int? bin_size_default
     String? chrom
     Int? uds
@@ -15,8 +15,8 @@ task PrepPoisGAM {
     Boolean? map_bin
     Boolean? none_gb_inom
     Boolean? noheader
-    String? refine
-    String fa_file
+    File? refine
+    File fa_file
   }
   command <<<
     PrepPoisGAM \
@@ -29,15 +29,15 @@ task PrepPoisGAM {
       ~{if defined(bin_size_default) then ("-b " +  '"' + bin_size_default + '"') else ""} \
       ~{if defined(chrom) then ("--chrom " +  '"' + chrom + '"') else ""} \
       ~{if defined(uds) then ("--uds " +  '"' + uds + '"') else ""} \
-      ~{true="--noGapInRead" false="" no_gap_in_read} \
-      ~{true="--gc_bin" false="" gc_bin} \
-      ~{true="--map_bin" false="" map_bin} \
-      ~{true="--NoNegBinom" false="" none_gb_inom} \
-      ~{true="--NoHeader" false="" noheader} \
+      ~{if (no_gap_in_read) then "--noGapInRead" else ""} \
+      ~{if (gc_bin) then "--gc_bin" else ""} \
+      ~{if (map_bin) then "--map_bin" else ""} \
+      ~{if (none_gb_inom) then "--NoNegBinom" else ""} \
+      ~{if (noheader) then "--NoHeader" else ""} \
       ~{if defined(refine) then ("--refine " +  '"' + refine + '"') else ""}
   >>>
   parameter_meta {
-    two_column_read: ": a two column read count file(position and count); If unspecified, use <stdin> as input; Data should be ordered by position"
+    two_column_read: ": a two column read count file(position and count); If unspecified, use <stdin> as input;\\nData should be ordered by position"
     fragment_size_estimated: ": fragment size as estimated from paired end data or by cross correlation of reads on postive and negative strands; Default 300"
     read_length_default: ": read length; Default 50"
     specified_use_output: ": if specified, use this as output"
@@ -47,10 +47,13 @@ task PrepPoisGAM {
     uds: ": the number base pairs to extend to upstream and downstream. Default 5."
     no_gap_in_read: ": when use every nucleotide in the extended read instead of just the nucleotides on two ends"
     gc_bin: ": bin the data and report gc and read count in the bins; Notice that if the option -e is specified, this option will be ignored"
-    map_bin: ": if specified, bin the data as bins with equal number of uniquely mappable genomic locations only valid if --gc_bin is specified and this option assume the input file has all unique mappable positions of the chromosome under consideration"
-    none_gb_inom: ": Do not use negative binomial to estimate the variance; If this is not specified, the last row of -e <string> will be used as estimate of theta parameter in the Negative Binomial model"
+    map_bin: ": if specified, bin the data as bins with equal number of uniquely mappable genomic locations\\nonly valid if --gc_bin is specified and this option assume the input file has all unique mappable positions of the chromosome under consideration"
+    none_gb_inom: ": Do not use negative binomial to estimate the variance;\\nIf this is not specified, the last row of -e <string> will be used as estimate of theta parameter in the Negative Binomial model"
     noheader: ": Do not print header to the output"
     refine: ": the file that stores the parameters in the refine step"
     fa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

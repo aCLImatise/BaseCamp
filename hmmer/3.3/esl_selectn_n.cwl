@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../esl_selectn_n.cwl
 inputs:
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - esl-selectn

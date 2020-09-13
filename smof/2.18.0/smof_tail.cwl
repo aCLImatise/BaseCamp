@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../smof_tail.cwl
 inputs:
-- id: entries
-  doc: print last K entries; or use -n +K to output starting with the Kth
+- id: in_entries
+  doc: "print last K entries; or use -n +K to output starting\nwith the Kth"
   type: string
   inputBinding:
     prefix: --entries
-- id: first
+- id: in_first
   doc: print first K letters of each sequence
   type: string
   inputBinding:
     prefix: --first
-- id: last
+- id: in_last
   doc: print last K letters of each sequence
   type: string
   inputBinding:
     prefix: --last
-- id: k_print_entries
-  doc: -K print last K entries
-  type: string
-  inputBinding:
-    position: 0
-- id: input
+- id: in_input
   doc: input fasta sequence (default = stdin)
   type: string
   inputBinding:
-    position: 1
-outputs: []
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - smof

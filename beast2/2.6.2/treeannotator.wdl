@@ -7,18 +7,14 @@ task Treeannotator {
     String? b
     String? limit
     String? target
-    String? force_discrete
+    Int? force_discrete
     String? lowmem
-    String? hpd_two_d
-    String? no_hpd_two_d
-    Int? nos_a
-    String input_file_name
-    String? output_file_name
+    Int? hpd_two_d
+    Int? no_hpd_two_d
+    String? nos_a
   }
   command <<<
     treeannotator \
-      ~{input_file_name} \
-      ~{output_file_name} \
       ~{if defined(heights) then ("-heights " +  '"' + heights + '"') else ""} \
       ~{if defined(burnin) then ("-burnin " +  '"' + burnin + '"') else ""} \
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
@@ -41,7 +37,8 @@ task Treeannotator {
     hpd_two_d: "HPD interval to be used for the bivariate traits"
     no_hpd_two_d: "calculation of HPD intervals for the bivariate traits"
     nos_a: "the tree set as begin from a not being from a sampled ancestor analysis, even if there are zero branch lengths in the tree set"
-    input_file_name: ""
-    output_file_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

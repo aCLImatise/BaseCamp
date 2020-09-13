@@ -1,6 +1,6 @@
 version 1.0
 
-task RsemGenTranscriptPlots {
+task Rsemgentranscriptplots {
   input {
     String sample_name
     String input_list
@@ -8,7 +8,7 @@ task RsemGenTranscriptPlots {
     String id_type
   }
   command <<<
-    rsem-gen-transcript-plots \
+    rsem_gen_transcript_plots \
       ~{sample_name} \
       ~{input_list} \
       ~{is_allele_specific} \
@@ -19,5 +19,8 @@ task RsemGenTranscriptPlots {
     input_list: ""
     is_allele_specific: ""
     id_type: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

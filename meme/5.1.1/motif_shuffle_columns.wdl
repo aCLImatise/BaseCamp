@@ -1,13 +1,13 @@
 version 1.0
 
-task MotifShuffleColumns {
+task Motifshufflecolumns {
   input {
     File? output_file_name
-    String? seed
+    Int? seed
     String motif_db
   }
   command <<<
-    motif-shuffle-columns \
+    motif_shuffle_columns \
       ~{motif_db} \
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""}
@@ -16,5 +16,9 @@ task MotifShuffleColumns {
     output_file_name: "output file name"
     seed: "pseudo-random number generator seed"
     motif_db: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

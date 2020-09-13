@@ -1,16 +1,107 @@
 !Command
+command:
+- EukHighConfidenceFilter
 positional:
 - !Positional
   description: ''
   position: 0
   name: EukQualityFilter
   optional: false
-named: []
-command:
-- EukHighConfidenceFilter
+named:
+- !Flag
+  description: tRNAscan-SE output file used as input
+  synonyms:
+  - --result
+  - -i
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: tRNAscan-SE secondary structure file used as input
+  synonyms:
+  - --ss
+  - -s
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Directory where output files will be written
+  synonyms:
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: file path
+  optional: true
+- !Flag
+  description: Prefix for output file name
+  synonyms:
+  - --prefix
+  - -p
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: 'Remove filtered tRNA hits (default: filtered tRNA hits are only tagged)'
+  synonyms:
+  - --remove
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Domain-specific model score cutoff for secondary filtering (default
+    = 50; -1 if not used for filtering)
+  synonyms:
+  - --cmscore1
+  - -c1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Secondary structure score cutoff for secondary filtering (default =
+    10; -1 if not used for filtering)
+  synonyms:
+  - --ssscore1
+  - -m1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Isotype-specific model score cutoff for secondary filtering (default
+    = 70; -1 if not used for filtering)
+  synonyms:
+  - --isoscore1
+  - -e1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Isotype-specific model starting score cutoff for tertiary filtering
+    (default = 70; -1 if not used for filtering)
+  synonyms:
+  - --isoscore2
+  - -e2
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Maximum isotype-specific model score cutoff for tertiary filtering
+    (default = 95)
+  synonyms:
+  - --isomaxscore2
+  - -x
+  args: !SimpleFlagArg
+    name: num
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Print this help
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: EukQualityFilter [options]\nOptions\n--result -i <file>       \

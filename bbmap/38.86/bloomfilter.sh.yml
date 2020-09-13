@@ -1,0 +1,77 @@
+!Command
+command:
+- bloomfilter.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified September 18, 2018\n\nDescription:\
+  \  Filters reads potentially sharing a kmer with a reference.\nThe more memory,\
+  \ the higher the accuracy.  Reads going to outu are guaranteed\nto not match the\
+  \ reference, but reads going to outm might may or may not\nmatch the reference.\n\
+  \nUsage:  bloomfilter.sh in=<input file> out=<nonmatches> outm=<matches> ref=<reference>\n\
+  \nExample:\nbloomfilter.sh in=reads.fq outm=nonhuman.fq outm=human.fq k=31 minhits=3\
+  \ ref=human.fa\n\nError correction and depth filtering can be done simultaneously.\n\
+  \nFile parameters:\nin=<file>       Primary input, or read 1 input.\nin2=<file>\
+  \      Read 2 input if reads are in two files.\noutm=<file>     (out) Primary matched\
+  \ read output.\noutm2=<file>    (out2) Matched read 2 output if reads are in two\
+  \ files.\noutu=<file>     Primary unmatched read output.\noutu2=<file>    Unmatched\
+  \ read 2 output if reads are in two files.\nref=<file>      Reference sequence file,\
+  \ or a comma-delimited list.\n                For depth-based filtering, set this\
+  \ to the same as the input.\noverwrite=t     (ow) Set to false to force the program\
+  \ to abort rather than\n                overwrite an existing file.\n\nHashing parameters:\n\
+  k=31            Kmer length.\nhashes=2        Number of hashes per kmer.  Higher\
+  \ generally reduces \n                false positives at the expense of speed.\n\
+  minprob=0.5     Ignore reference kmers with probability of being correct\n     \
+  \           below this (affects fastq references only).\nmemmult=1.0     Fraction\
+  \ of free memory to use for Bloom filter.  1.0 should\n                generally\
+  \ work; if the program crashes with an out of memory\n                error, set\
+  \ this lower.  Higher increases specificity.\ncells=          Option to set the\
+  \ number of cells manually.  By default this\n                will be autoset to\
+  \ use all available memory.  The only reason\n                to set this is to\
+  \ ensure deterministic output.\nseed=0          This will change the hash function\
+  \ used.\n\nReference-matching parameters:\nminhits=3       Consecutive kmer hits\
+  \ for a read to be considered matched.\n                Higher reduces false positives\
+  \ at the expense of sensitivity.\nmincount=1      Minimum number of times a read\
+  \ kmer must occur in the \n                reference to be considered a match.\n\
+  requireboth=f   Require both reads in a pair to match the ref in order to go\n \
+  \               to outm.  By default, pairs go to outm if either matches.\n\nJava\
+  \ Parameters:\n-Xmx            This will set Java's memory usage, overriding autodetection.\n\
+  \                -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will\n      \
+  \          specify 200 megs. The max is typically 85% of physical memory.\n-eoom\
+  \           This flag will cause the process to exit if an out-of-memory\n     \
+  \           exception occurs.  Requires Java 8u92+.\n-da             Disable assertions.\n\
+  \nPlease contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help

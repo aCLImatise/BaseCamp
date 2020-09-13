@@ -1,52 +1,50 @@
 class: CommandLineTool
 id: ../../../dsk.cwl
 inputs:
-- id: t
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -t
-- id: m
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -m
-- id: d
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -d
-- id: o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
-- id: histo
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -histo
-- id: c
+- id: in_c
   doc: ''
   type: boolean
   inputBinding:
     prefix: -c
-- id: b
+- id: in_histo
   doc: ''
   type: boolean
   inputBinding:
-    prefix: -b
-- id: input_file
+    prefix: -histo
+- id: in_o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: in_d
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -d
+- id: in_m
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -m
+- id: in_t
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -t
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: km_er_size
+- id: in_km_er_size
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dsk

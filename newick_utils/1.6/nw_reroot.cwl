@@ -1,31 +1,34 @@
 class: CommandLineTool
 id: ../../../nw_reroot.cwl
 inputs:
-- id: deroot_splice_attaching
-  doc: ": deroot - splice out the LCA of the ingroup, attaching its children to the\
-    \ root. The ingroup is the root's child which has the more descendants. The root\
-    \ is expected to have two children. Other options have no effect."
+- id: in_deroot_splice_lca
+  doc: ": deroot - splice out the LCA of the ingroup, attaching its children\nto the\
+    \ root. The ingroup is the root's child which has the more\ndescendants. The root\
+    \ is expected to have two children. Other options\nhave no effect."
   type: boolean
   inputBinding:
     prefix: -d
-- id: lax_try_ingroup
-  doc: ": lax - if it is not possible to reroot on the outgroup, try the ingroup -\
-    \ that is, all nodes whose labels were NOT passed as arguments.  This can also\
-    \ fail, if both the outgroup and the ingroup have the tree's root as LCA. Note\
-    \ that to use this option you must make sure that you pass ALL outgroup labels,\
-    \ otherwise the ingroup will be wrong."
+- id: in_lax_try_theingroup
+  doc: ": lax - if it is not possible to reroot on the outgroup, try the\ningroup\
+    \ - that is, all nodes whose labels were NOT passed as\narguments.  This can also\
+    \ fail, if both the outgroup and the\ningroup have the tree's root as LCA. Note\
+    \ that to use this option\nyou must make sure that you pass ALL outgroup labels,\
+    \ otherwise the\ningroup will be wrong."
   type: boolean
   inputBinding:
     prefix: -l
-- id: treat_node_labels
-  doc: ': treat inner node labels as bipartition support values. Although they are
-    attributed to nodes in Newick, these are actually properties of edges, and are
-    treated differently from clade labels, which are really properties of nodes. The
-    "Rerooting" section of the manual has more details.'
+- id: in_treat_node_labels
+  doc: ": treat inner node labels as bipartition support values. Although they\nare\
+    \ attributed to nodes in Newick, these are actually properties of\nedges, and\
+    \ are treated differently from clade labels, which are\nreally properties of nodes.\
+    \ The \"Rerooting\" section of the manual\nhas more details."
   type: boolean
   inputBinding:
     prefix: -s
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nw_reroot

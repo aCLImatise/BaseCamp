@@ -4,4 +4,7 @@ task MEGAN {
   command <<<
     MEGAN
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

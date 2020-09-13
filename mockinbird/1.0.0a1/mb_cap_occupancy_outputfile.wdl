@@ -1,6 +1,6 @@
 version 1.0
 
-task MbCapOccupancyOutputfile {
+task MbcapoccupancyOutputfile {
   input {
     String? quantile
     String mb_cap_occupancy
@@ -8,7 +8,7 @@ task MbCapOccupancyOutputfile {
     String output_file
   }
   command <<<
-    mb-cap-occupancy outputfile \
+    mb_cap_occupancy outputfile \
       ~{mb_cap_occupancy} \
       ~{input_file} \
       ~{output_file} \
@@ -19,5 +19,8 @@ task MbCapOccupancyOutputfile {
     mb_cap_occupancy: ""
     input_file: ""
     output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

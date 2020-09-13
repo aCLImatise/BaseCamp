@@ -1,50 +1,53 @@
 class: CommandLineTool
 id: ../../../mateclever.cwl
 inputs:
-- id: threads
+- id: in_threads
   doc: Threads.
   type: string
   inputBinding:
     prefix: -T
-- id: maximum_deletion_length
+- id: in_maximum_deletion_length
   doc: 'Maximum deletion length to look for (default: 10000).'
   type: long
   inputBinding:
     prefix: -M
-- id: delete_old_result
-  doc: Delete old result and working directory first (if present).
+- id: in_delete_old_result
+  doc: "Delete old result and working directory first (if\npresent)."
   type: boolean
   inputBinding:
     prefix: -f
-- id: working_directory_default
+- id: in_working_directory_default
   doc: 'Working directory (default: <result-directory>/work).'
-  type: string
+  type: Directory
   inputBinding:
     prefix: -w
-- id: keep_default_directory
-  doc: 'Keep working directory (default: delete directory when finished).'
+- id: in_keep_directory_whenfinished
+  doc: "Keep working directory (default: delete directory when\nfinished)."
   type: boolean
   inputBinding:
     prefix: -k
-- id: minimum_expected_support
-  doc: 'Minimum expected support for a SNP in order to ignore mismatches at that position
-    (default: 3.0).'
-  type: string
+- id: in_minimum_expected_support
+  doc: "Minimum expected support for a SNP in order to ignore\nmismatches at that\
+    \ position (default: 3.0)."
+  type: double
   inputBinding:
     prefix: -W
-- id: maximum_center_distance
-  doc: 'Maximum center distance between split-read and read- pair deletion to be considered
-    identical (default: 100).'
+- id: in_maximum_center_distance
+  doc: "Maximum center distance between split-read and read-\npair deletion to be\
+    \ considered identical (default:\n100)."
   type: long
   inputBinding:
     prefix: -o
-- id: maximum_length_difference
-  doc: 'Maximum length difference between split-read and read- pair deletion to be
-    considered identical (default: 20).'
+- id: in_maximum_length_difference
+  doc: "Maximum length difference between split-read and read-\npair deletion to be\
+    \ considered identical (default:\n20).\n"
   type: long
   inputBinding:
     prefix: -z
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mateclever

@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../nthll.cwl
 inputs:
-- id: threads
+- id: in_threads
   doc: use N parallel threads [1] (N>=2 should be used when input files are >=2)
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: km_er
+- id: in_km_er
   doc: the length of kmer [64]
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nthll

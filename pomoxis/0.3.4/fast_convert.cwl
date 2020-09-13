@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../fast_convert.cwl
 inputs:
-- id: discard_q
-  doc: 'Discard quality information from fastq, use with --mock_q. (default: False)'
+- id: in_discard_q
+  doc: "Discard quality information from fastq, use with --mock_q.\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --discard_q
-- id: mock_q
+- id: in_mock_q
   doc: 'Mock quality value, valid for convert=aq|qq. (default: 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: --mock_q
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fast_convert

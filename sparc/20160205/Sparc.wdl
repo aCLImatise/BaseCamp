@@ -4,4 +4,7 @@ task Sparc {
   command <<<
     Sparc
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

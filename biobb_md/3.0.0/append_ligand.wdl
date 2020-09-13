@@ -2,10 +2,10 @@ version 1.0
 
 task AppendLigand {
   input {
-    String? config
-    String? input_top_zip_path
-    String? input_itp_path
-    String? output_top_zip_path
+    File? config
+    File? input_top_zip_path
+    File? input_itp_path
+    File? output_top_zip_path
   }
   command <<<
     append_ligand \
@@ -19,5 +19,9 @@ task AppendLigand {
     input_top_zip_path: ""
     input_itp_path: ""
     output_top_zip_path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_top_zip_path = "${in_output_top_zip_path}"
   }
 }

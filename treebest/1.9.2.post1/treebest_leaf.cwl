@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../treebest_leaf.cwl
 inputs:
-- id: nh_tree
+- id: in_nh_tree
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - treebest

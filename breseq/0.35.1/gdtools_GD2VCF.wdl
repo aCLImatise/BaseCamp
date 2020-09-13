@@ -2,8 +2,8 @@ version 1.0
 
 task GdtoolsGD2VCF {
   input {
-    String? reference
-    String? name_output_file
+    File? reference
+    File? name_output_file
   }
   command <<<
     gdtools GD2VCF \
@@ -13,5 +13,9 @@ task GdtoolsGD2VCF {
   parameter_meta {
     reference: "File containing reference sequences in GenBank, GFF3, or FASTA format. Option may be provided multiple times for multiple files (REQUIRED)"
     name_output_file: "name of output file (DEFAULT=output.vcf)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_name_output_file = "${in_name_output_file}"
   }
 }

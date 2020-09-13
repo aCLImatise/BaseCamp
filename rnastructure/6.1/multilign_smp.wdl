@@ -1,14 +1,17 @@
 version 1.0
 
-task MultilignSmp {
+task Multilignsmp {
   input {
-    String configuration_file
+    File configuration_file
   }
   command <<<
-    multilign-smp \
+    multilign_smp \
       ~{configuration_file}
   >>>
   parameter_meta {
     configuration_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

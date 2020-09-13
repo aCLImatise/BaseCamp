@@ -4,4 +4,7 @@ task MAnormFast {
   command <<<
     MAnormFast
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

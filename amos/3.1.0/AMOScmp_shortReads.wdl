@@ -1,7 +1,10 @@
 version 1.0
 
-task AMOScmpShortReads {
+task AMOScmpshortReads {
   command <<<
-    AMOScmp-shortReads
+    AMOScmp_shortReads
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

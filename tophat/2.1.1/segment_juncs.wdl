@@ -26,4 +26,7 @@ task SegmentJuncs {
     left_reads_dot_fq: ""
     left_reads_dot_bwt_out: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,115 +1,134 @@
 class: CommandLineTool
 id: ../../../hp_model_test.cwl
 inputs:
-- id: seqs
+- id: in_seqs
   doc: Alignment in FASTA or PHYLIP format
   type: string
   inputBinding:
     prefix: --seqs
-- id: run_id
+- id: in_run_id
   doc: Prefix for output files
   type: string
   inputBinding:
     prefix: --run_id
-- id: out_name
+- id: in_out_name
   doc: 'Name for output file (Default: modeltest_results)'
-  type: string
+  type: File
   inputBinding:
     prefix: --outname
-- id: outdir
+- id: in_outdir
   doc: 'Output directory (Default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: data_type
+- id: in_data_type
   doc: 'Data type: nt or aa'
   type: string
   inputBinding:
     prefix: --data_type
-- id: partitions
+- id: in_partitions
   doc: Partitions file
-  type: string
+  type: File
   inputBinding:
     prefix: --partitions
-- id: seed
+- id: in_seed
   doc: Seed for random number generator
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: topology
-  doc: 'Starting topology: ml, mp, fixed-ml-jc, fixed-ml-gtr, fixed-mp, random, or
-    user'
+- id: in_topology
+  doc: "Starting topology: ml, mp, fixed-ml-jc, fixed-ml-gtr,\nfixed-mp, random, or\
+    \ user"
   type: string
   inputBinding:
     prefix: --topology
-- id: utree
+- id: in_utree
   doc: User-defined starting tree
   type: string
   inputBinding:
     prefix: --utree
-- id: force
+- id: in_force
   doc: 'force output overriding (default: False)'
   type: boolean
   inputBinding:
     prefix: --force
-- id: asc_bias
-  doc: 'Ascertainment bias correction: lewis, felsenstein, or stamatakis'
+- id: in_asc_bias
+  doc: 'Ascertainment bias correction: lewis, felsenstein, or'
   type: string
   inputBinding:
     prefix: --asc_bias
-- id: frequencies
-  doc: 'Candidate model frequencies: e (estimated) or f (fixed)'
-  type: string
-  inputBinding:
-    prefix: --frequencies
-- id: het
-  doc: 'Set rate heterogeneity: u (uniform), i (invariant sites +I), g (gamma +G),
-    or f (both invariant sites and gamma +I+G)'
+- id: in_het
+  doc: "Set rate heterogeneity: u (uniform), i (invariant\nsites +I), g (gamma +G),\
+    \ or f (both invariant sites\nand gamma +I+G)"
   type: string
   inputBinding:
     prefix: --het
-- id: models
+- id: in_models
   doc: Text file with candidate models, one per line
-  type: string
+  type: File
   inputBinding:
     prefix: --models
-- id: schemes
-  doc: 'Number of predefined DNA substitution schemes evaluated: 3, 5, 7, 11, or 203'
-  type: string
+- id: in_schemes
+  doc: "Number of predefined DNA substitution schemes\nevaluated: 3, 5, 7, 11, or\
+    \ 203"
+  type: long
   inputBinding:
     prefix: --schemes
-- id: template
-  doc: 'Set candidate models according to a specified tool: raxml, phyml, mrbayes,
-    or paup'
+- id: in_template
+  doc: "Set candidate models according to a specified tool:\nraxml, phyml, mrbayes,\
+    \ or paup"
   type: string
   inputBinding:
     prefix: --template
-- id: n_cpu
+- id: in_n_cpu
   doc: 'Number of CPU to use (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --ncpu
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Name for log file (output)
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'Keep temporary directory (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_tmp
-outputs: []
+- id: in_stam_a_takis
+  doc: --frequencies FREQUENCIES
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_name
+  doc: 'Name for output file (Default: modeltest_results)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_name)
+- id: out_outdir
+  doc: 'Output directory (Default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Name for log file (output)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - hp_model_test

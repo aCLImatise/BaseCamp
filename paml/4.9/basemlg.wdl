@@ -4,4 +4,7 @@ task Basemlg {
   command <<<
     basemlg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

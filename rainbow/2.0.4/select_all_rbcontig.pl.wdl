@@ -1,7 +1,10 @@
 version 1.0
 
-task SelectAllRbcontig.pl.bak {
+task SelectAllRbcontigpl {
   command <<<
-    select_all_rbcontig.pl.bak
+    select_all_rbcontig_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

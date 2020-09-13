@@ -1,14 +1,10 @@
 version 1.0
 
-task NgmUtilsDebug {
-  input {
-    String ngm_utils
-  }
+task Ngmutilsdebug {
   command <<<
-    ngm-utils-debug \
-      ~{ngm_utils}
+    ngm_utils_debug
   >>>
-  parameter_meta {
-    ngm_utils: "[--] <name>"
+  output {
+    File out_stdout = stdout()
   }
 }

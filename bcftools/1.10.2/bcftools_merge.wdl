@@ -25,17 +25,17 @@ task BcftoolsMerge {
     bcftools merge \
       ~{a_dot_vcf_do_tgz} \
       ~{bdotvcfdotgz} \
-      ~{true="--force-samples" false="" force_samples} \
-      ~{true="--print-header" false="" print_header} \
+      ~{if (force_samples) then "--force-samples" else ""} \
+      ~{if (print_header) then "--print-header" else ""} \
       ~{if defined(use_header) then ("--use-header " +  '"' + use_header + '"') else ""} \
-      ~{true="--missing-to-ref" false="" missing_to_ref} \
+      ~{if (missing_to_ref) then "--missing-to-ref" else ""} \
       ~{if defined(apply_filters) then ("--apply-filters " +  '"' + apply_filters + '"') else ""} \
-      ~{true="--filter-logic" false="" filter_logic} \
-      ~{true="--gvcf" false="" gvc_f} \
-      ~{true="--info-rules" false="" info_rules} \
+      ~{if (filter_logic) then "--filter-logic" else ""} \
+      ~{if (gvc_f) then "--gvcf" else ""} \
+      ~{if (info_rules) then "--info-rules" else ""} \
       ~{if defined(file_list) then ("--file-list " +  '"' + file_list + '"') else ""} \
       ~{if defined(merge) then ("--merge " +  '"' + merge + '"') else ""} \
-      ~{true="--no-version" false="" no_version} \
+      ~{if (no_version) then "--no-version" else ""} \
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
@@ -47,10 +47,10 @@ task BcftoolsMerge {
     print_header: "print only the merged header and exit"
     use_header: "use the provided header"
     missing_to_ref: "assume genotypes at missing sites are 0/0"
-    apply_filters: "require at least one of the listed FILTER strings (e.g. \"PASS,.\")"
-    filter_logic: "<x|+>           remove filters if some input is PASS (\"x\"), or apply all filters (\"+\") [+]"
+    apply_filters: "require at least one of the listed FILTER strings (e.g. \\\"PASS,.\\\")"
+    filter_logic: "<x|+>           remove filters if some input is PASS (\\\"x\\\"), or apply all filters (\\\"+\\\") [+]"
     gvc_f: "<-|ref.fa>              merge gVCF blocks, INFO/END tag is expected. Implies -i QS:sum,MinDP:min,I16:sum,IDV:max,IMF:max"
-    info_rules: "<tag:method,..>   rules for merging INFO fields (method is one of sum,avg,min,max,join) or \"-\" to turn off the default [DP:sum,DP4:sum]"
+    info_rules: "<tag:method,..>   rules for merging INFO fields (method is one of sum,avg,min,max,join) or \\\"-\\\" to turn off the default [DP:sum,DP4:sum]"
     file_list: "read file names from the file"
     merge: "allow multiallelic records for <snps|indels|both|all|none|id>, see man page for details [both]"
     no_version: "do not append version and command line to the header"
@@ -61,5 +61,9 @@ task BcftoolsMerge {
     threads: "use multithreading with <int> worker threads [0]"
     a_dot_vcf_do_tgz: ""
     bdotvcfdotgz: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_write_output_file = "${in_write_output_file}"
   }
 }

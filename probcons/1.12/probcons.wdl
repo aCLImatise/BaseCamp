@@ -3,9 +3,9 @@ version 1.0
 task Probcons {
   input {
     Boolean? clustalw
-    String? consistency
-    String? iterative_refinement
-    String? pre_training
+    Int? consistency
+    Int? iterative_refinement
+    Int? pre_training
     Boolean? pairs
     Boolean? viterbi
     Boolean? verbose
@@ -14,23 +14,21 @@ task Probcons {
     Boolean? emissions
     File? param_file
     Boolean? alignment_order
-    String? option
   }
   command <<<
     probcons \
-      ~{option} \
-      ~{true="-clustalw" false="" clustalw} \
+      ~{if (clustalw) then "-clustalw" else ""} \
       ~{if defined(consistency) then ("--consistency " +  '"' + consistency + '"') else ""} \
       ~{if defined(iterative_refinement) then ("--iterative-refinement " +  '"' + iterative_refinement + '"') else ""} \
       ~{if defined(pre_training) then ("--pre-training " +  '"' + pre_training + '"') else ""} \
-      ~{true="-pairs" false="" pairs} \
-      ~{true="-viterbi" false="" viterbi} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (pairs) then "-pairs" else ""} \
+      ~{if (viterbi) then "-viterbi" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(an_not) then ("-annot " +  '"' + an_not + '"') else ""} \
       ~{if defined(train) then ("--train " +  '"' + train + '"') else ""} \
-      ~{true="--emissions" false="" emissions} \
+      ~{if (emissions) then "--emissions" else ""} \
       ~{if defined(param_file) then ("--paramfile " +  '"' + param_file + '"') else ""} \
-      ~{true="--alignment-order" false="" alignment_order}
+      ~{if (alignment_order) then "--alignment-order" else ""}
   >>>
   parameter_meta {
     clustalw: "use CLUSTALW output format instead of MFA"
@@ -44,7 +42,9 @@ task Probcons {
     train: "compute EM transition probabilities, store in FILENAME (default: no training)"
     emissions: "also reestimate emission probabilities (default: off)"
     param_file: "read parameters from FILENAME (default: )"
-    alignment_order: "print sequences in alignment order rather than input order (default: off)"
-    option: ""
+    alignment_order: "print sequences in alignment order rather than input order (default: off)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

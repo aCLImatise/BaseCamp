@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../svtools_copynumber.cwl
 inputs:
-- id: cnv_nator
+- id: in_cnv_nator
   doc: '[-i <VCF>] [-o <PATH>] [-t <DIR>]'
   type: File
   inputBinding:
     prefix: --cnvnator
-- id: coordinates
-  doc: file containing coordinate for which to retrieve copynumber (required)
+- id: in_coordinates
+  doc: "file containing coordinate for which to retrieve\ncopynumber (required)"
   type: File
   inputBinding:
     prefix: --coordinates
-- id: root
+- id: in_root
   doc: CNVnator .root histogram file (required)
   type: File
   inputBinding:
     prefix: --root
-- id: window
+- id: in_window
   doc: CNVnator window size (required)
   type: long
   inputBinding:
     prefix: --window
-- id: sample
+- id: in_sample
   doc: sample to annotate (required)
   type: string
   inputBinding:
     prefix: --sample
-- id: input
+- id: in_input
   doc: VCF input
   type: string
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: 'output VCF to write (default: stdout)'
   type: File
   inputBinding:
     prefix: --output
-- id: tempdir
+- id: in_tempdir
   doc: Directory for temp file downloads
-  type: string
+  type: File
   inputBinding:
     prefix: --tempdir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svtools

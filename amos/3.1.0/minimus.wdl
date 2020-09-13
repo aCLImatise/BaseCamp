@@ -4,4 +4,7 @@ task Minimus {
   command <<<
     minimus
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

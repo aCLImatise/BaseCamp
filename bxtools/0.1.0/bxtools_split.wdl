@@ -12,18 +12,21 @@ task BxtoolsSplit {
   command <<<
     bxtools split \
       ~{bam_slash_sam_slash_cram} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--analysis-id" false="" analysis_id} \
-      ~{true="--no-output" false="" no_output} \
-      ~{true="--min-reads" false="" min_reads} \
-      ~{true="--tag" false="" tag}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (analysis_id) then "--analysis-id" else ""} \
+      ~{if (no_output) then "--no-output" else ""} \
+      ~{if (min_reads) then "--min-reads" else ""} \
+      ~{if (tag) then "--tag" else ""}
   >>>
   parameter_meta {
-    verbose: "Select verbosity level (0-4). Default: 0 "
+    verbose: "Select verbosity level (0-4). Default: 0"
     analysis_id: "ID to prefix output files with [foo]"
     no_output: "Don't output BAMs (count only) [off]"
     min_reads: "Minumum reads of given tag to see before writing [0]"
     tag: "Split by a tag other than BX (e.g. MI)"
     bam_slash_sam_slash_cram: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

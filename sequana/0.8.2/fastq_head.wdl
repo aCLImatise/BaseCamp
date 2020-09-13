@@ -2,9 +2,9 @@ version 1.0
 
 task FastqHead {
   input {
-    String? nlines
-    String? input_fastq_gzipped
-    String? output_file_extension
+    Int? nlines
+    File? input_fastq_gzipped
+    File? output_file_extension
     String var_3
     String var_4
   }
@@ -19,8 +19,12 @@ task FastqHead {
   parameter_meta {
     nlines: "Number of lines to extract."
     input_fastq_gzipped: "input fastq gzipped or not"
-    output_file_extension: "output file with .gz extension or not"
+    output_file_extension: "output file with .gz extension or not\\n"
     var_3: ""
     var_4: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_extension = "${in_output_file_extension}"
   }
 }

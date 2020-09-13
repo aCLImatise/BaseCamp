@@ -1,82 +1,125 @@
 class: CommandLineTool
 id: ../../../bs_call.cwl
 inputs:
-- id: no_split
+- id: in_no_split
   doc: Do not split output on contig
   type: boolean
   inputBinding:
     prefix: --no-split
-- id: haploid
+- id: in_haploid
   doc: Assume genome is haploid
   type: boolean
   inputBinding:
     prefix: --haploid
-- id: keep_duplicates
+- id: in_keep_duplicates
   doc: Don't merge duplicate reads
   type: boolean
   inputBinding:
     prefix: --keep-duplicates
-- id: ignore_duplicates
+- id: in_ignore_duplicates
   doc: Ignore duplicate flag from SAM/BAM files
   type: boolean
   inputBinding:
     prefix: --ignore-duplicates
-- id: keep_unmatched
+- id: in_keep_unmatched
   doc: Don't discard reads that don't form proper pairs
   type: boolean
   inputBinding:
     prefix: --keep-unmatched
-- id: extra_stats
+- id: in_extra_stats
   doc: Generate extra stats files
   type: boolean
   inputBinding:
     prefix: --extra-stats
-- id: right_trim
+- id: in_right_trim
   doc: Bases to trim from right of read pair
   type: boolean
   inputBinding:
     prefix: --right-trim
-- id: left_trim
+- id: in_left_trim
   doc: Bases to trim from left of read pair
   type: boolean
   inputBinding:
     prefix: --left-trim
-- id: blank_trim
+- id: in_blank_trim
   doc: Don't use trimmed bases for genotype estimation
   type: boolean
   inputBinding:
     prefix: --blank-trim
-- id: mapq_threshold
+- id: in_mapq_threshold
   doc: Set MAPQ threshold for selecting reads (default 20)
   type: long
   inputBinding:
     prefix: --mapq-threshold
-- id: bq_threshold
+- id: in_bq_threshold
   doc: Set base quality threshold for calling (default 20)
   type: long
   inputBinding:
     prefix: --bq-threshold
-- id: max_template_length
+- id: in_max_template_length
   doc: Set maximum template length for a pair (default 1000)
   type: long
   inputBinding:
     prefix: --max-template-length
-- id: realign_tolerance
+- id: in_realign_tolerance
   doc: Tolerance for realignment positions (default 8)
   type: long
   inputBinding:
     prefix: --realign-tolerance
-- id: conversion
+- id: in_no_compress
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --no-compress
+- id: in_output
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --output
+- id: in_sample
+  doc: SAMPLE
+  type: string
+  inputBinding:
+    prefix: --sample
+- id: in_reference
+  doc: (MultiFASTA/FASTA)
+  type: File
+  inputBinding:
+    prefix: --reference
+- id: in_contig_bed
+  doc: (BED)
+  type: File
+  inputBinding:
+    prefix: --contig-bed
+- id: in_dbsnp
+  doc: (dbSNP processed file)
+  type: File
+  inputBinding:
+    prefix: --dbsnp
+- id: in_all_positions
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --all-positions
+- id: in_conversion
   doc: ',<float> Set under and over conversion rates (default 0.01,0.05)'
   type: double
   inputBinding:
     prefix: --conversion
-- id: reference_bias
+- id: in_reference_bias
   doc: Set bias to reference homozygote (default 2)
   type: double
   inputBinding:
     prefix: --reference-bias
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_no_compress
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_no_compress)
 cwlVersion: v1.1
 baseCommand:
 - bs_call

@@ -3,10 +3,10 @@ version 1.0
 task Gvcf2bed {
   input {
     String? input_gvcf
-    String? output_bed_file
-    String? sample
-    String? quality
-    String? non_variant_quality
+    File? output_bed_file
+    File? sample
+    Int? quality
+    Int? non_variant_quality
     Boolean? bed_graph
   }
   command <<<
@@ -16,14 +16,18 @@ task Gvcf2bed {
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
       ~{if defined(quality) then ("--quality " +  '"' + quality + '"') else ""} \
       ~{if defined(non_variant_quality) then ("--non-variant-quality " +  '"' + non_variant_quality + '"') else ""} \
-      ~{true="--bedgraph" false="" bed_graph}
+      ~{if (bed_graph) then "--bedgraph" else ""}
   >>>
   parameter_meta {
     input_gvcf: "Input gVCF"
     output_bed_file: "Output bed file"
-    sample: "Sample name in VCF file to use. Will default to first sample (alphabetically) if not supplied"
+    sample: "Sample name in VCF file to use. Will default to first\\nsample (alphabetically) if not supplied"
     quality: "Minimum genotype quality (default 20)"
-    non_variant_quality: "Minimum genotype quality for non-variant records (default 20)"
+    non_variant_quality: "Minimum genotype quality for non-variant records\\n(default 20)"
     bed_graph: "Output in bedgraph mode"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_bed_file = "${in_output_bed_file}"
   }
 }

@@ -1,44 +1,54 @@
 class: CommandLineTool
 id: ../../../stats_from_bam.cwl
 inputs:
-- id: all_alignments
-  doc: 'Include secondary and supplementary alignments. (default: False)'
+- id: in_bed
+  doc: ".bed file of reference regions to include. (default:\nNone)"
+  type: File
+  inputBinding:
+    prefix: --bed
+- id: in_min_length
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --min_length
+- id: in_all_alignments
+  doc: "Include secondary and supplementary alignments.\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --all_alignments
-- id: output
-  doc: "Output alignment stats to file instead of stdout. (default: <_io.TextIOWrapper\
-    \ name='<stdout>' mode='w' encoding='UTF-8'>)"
-  type: string
+- id: in_output
+  doc: "Output alignment stats to file instead of stdout.\n(default: <_io.TextIOWrapper\
+    \ name='<stdout>' mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  type: File
   inputBinding:
     prefix: --output
-- id: summary
-  doc: "Output summary to file instead of stderr. (default: <_io.TextIOWrapper name='<stderr>'\
-    \ mode='w' encoding='UTF-8'>)"
-  type: string
+- id: in_summary
+  doc: "Output summary to file instead of stderr. (default:\n<_io.TextIOWrapper name='<stderr>'\
+    \ mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  type: File
   inputBinding:
     prefix: --summary
-- id: threads
-  doc: 'Number of threads for parallel processing. (default: 1)'
-  type: string
-  inputBinding:
-    prefix: --threads
-- id: bed
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --bed
-- id: m
-  doc: ''
+- id: in_threads
+  doc: "Number of threads for parallel processing. (default:\n1)\n"
   type: long
   inputBinding:
-    prefix: -m
-- id: bam
-  doc: Path to bam file.
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+    prefix: --threads
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output alignment stats to file instead of stdout.\n(default: <_io.TextIOWrapper\
+    \ name='<stdout>' mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_summary
+  doc: "Output summary to file instead of stderr. (default:\n<_io.TextIOWrapper name='<stderr>'\
+    \ mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_summary)
 cwlVersion: v1.1
 baseCommand:
 - stats_from_bam

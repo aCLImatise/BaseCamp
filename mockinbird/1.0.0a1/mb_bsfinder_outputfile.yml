@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- mb-bsfinder
+- outputfile
 positional:
 - !Positional
   description: ''
@@ -9,21 +12,20 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - --threshold
-  args: !SimpleFlagArg
-    name: THRESHOLD
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
   - --mincov
   args: !SimpleFlagArg
     name: MINCOV
   optional: true
-command:
-- mb-bsfinder
-- outputfile
-parent: &id001 !Command
+- !Flag
+  description: ''
+  synonyms:
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+parent: &id002 !Command
+  command:
+  - mb-bsfinder
   positional: []
   named:
   - !Flag
@@ -65,11 +67,13 @@ parent: &id001 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - mb-bsfinder
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - mb-bsfinder
+    - inputfile
     positional:
     - !Positional
       description: ''
@@ -80,22 +84,20 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - --threshold
-      args: !SimpleFlagArg
-        name: THRESHOLD
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
       - --mincov
       args: !SimpleFlagArg
         name: MINCOV
       optional: true
-    command:
-    - mb-bsfinder
-    - inputfile
-    parent: *id001
+    - !Flag
+      description: ''
+      synonyms:
+      - --threshold
+      args: !SimpleFlagArg
+        name: THRESHOLD
+      optional: true
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -110,7 +112,7 @@ parent: &id001 !Command
       \ 'inputfile' does not exist\n"
     generated_using: &id003
     - --help
-  - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -134,6 +136,7 @@ parent: &id001 !Command
     \  --verbose, -v         verbose output\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

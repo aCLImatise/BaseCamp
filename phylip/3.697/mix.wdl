@@ -4,4 +4,7 @@ task Mix {
   command <<<
     mix
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

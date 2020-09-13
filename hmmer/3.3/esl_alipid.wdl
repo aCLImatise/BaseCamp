@@ -1,8 +1,8 @@
 version 1.0
 
-task EslAlipid {
+task Eslalipid {
   input {
-    String? in_format
+    File? in_format
     String? out_format
     Boolean? noheader
     Boolean? dna
@@ -11,14 +11,14 @@ task EslAlipid {
     String msa_file
   }
   command <<<
-    esl-alipid \
+    esl_alipid \
       ~{msa_file} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
-      ~{true="--noheader" false="" noheader} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--amino" false="" amino}
+      ~{if (noheader) then "--noheader" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (amino) then "--amino" else ""}
   >>>
   parameter_meta {
     in_format: ": specify the input MSA file is in format <s>"
@@ -28,5 +28,8 @@ task EslAlipid {
     rna: ": use RNA alphabet"
     amino: ": use protein alphabet"
     msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

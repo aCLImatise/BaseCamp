@@ -16,7 +16,7 @@ task BcftoolsConvert {
     Int? threads
     Boolean? gen_sample_two_vcf
     Boolean? gen_sample
-    String? tag
+    File? tag
     Boolean? chrom
     File? sex
     Boolean? vcf_ids
@@ -26,7 +26,8 @@ task BcftoolsConvert {
     Boolean? hap_sample
     Boolean? haploid_two_diploid
     Boolean? hap_legend_sample_two_vcf
-    String? columns
+    File? tsv_two_vcf
+    File? columns
     String input_file
   }
   command <<<
@@ -40,22 +41,23 @@ task BcftoolsConvert {
       ~{if defined(samples_file) then ("--samples-file " +  '"' + samples_file + '"') else ""} \
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
-      ~{true="--no-version" false="" no_version} \
+      ~{if (no_version) then "--no-version" else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--gensample2vcf" false="" gen_sample_two_vcf} \
-      ~{true="--gensample" false="" gen_sample} \
+      ~{if (gen_sample_two_vcf) then "--gensample2vcf" else ""} \
+      ~{if (gen_sample) then "--gensample" else ""} \
       ~{if defined(tag) then ("--tag " +  '"' + tag + '"') else ""} \
-      ~{true="--chrom" false="" chrom} \
+      ~{if (chrom) then "--chrom" else ""} \
       ~{if defined(sex) then ("--sex " +  '"' + sex + '"') else ""} \
-      ~{true="--vcf-ids" false="" vcf_ids} \
-      ~{true="--gvcf2vcf" false="" gvc_f_two_vcf} \
+      ~{if (vcf_ids) then "--vcf-ids" else ""} \
+      ~{if (gvc_f_two_vcf) then "--gvcf2vcf" else ""} \
       ~{if defined(fast_a_ref) then ("--fasta-ref " +  '"' + fast_a_ref + '"') else ""} \
-      ~{true="--hapsample2vcf" false="" hap_sample_two_vcf} \
-      ~{true="--hapsample" false="" hap_sample} \
-      ~{true="--haploid2diploid" false="" haploid_two_diploid} \
-      ~{true="--haplegendsample2vcf" false="" hap_legend_sample_two_vcf} \
+      ~{if (hap_sample_two_vcf) then "--hapsample2vcf" else ""} \
+      ~{if (hap_sample) then "--hapsample" else ""} \
+      ~{if (haploid_two_diploid) then "--haploid2diploid" else ""} \
+      ~{if (hap_legend_sample_two_vcf) then "--haplegendsample2vcf" else ""} \
+      ~{if defined(tsv_two_vcf) then ("--tsv2vcf " +  '"' + tsv_two_vcf + '"') else ""} \
       ~{if defined(columns) then ("--columns " +  '"' + columns + '"') else ""}
   >>>
   parameter_meta {
@@ -75,7 +77,7 @@ task BcftoolsConvert {
     gen_sample: "<...>       <prefix>|<gen-file>,<sample-file>"
     tag: "tag to take values for .gen file: GT,PL,GL,GP [GT]"
     chrom: "output chromosome in first column instead of CHROM:POS_REF_ALT"
-    sex: "output sex column in the sample-file, input format is: Sample\t[MF]"
+    sex: "output sex column in the sample-file, input format is: Sample\\t[MF]"
     vcf_ids: "output VCF IDs in second column instead of CHROM:POS_REF_ALT"
     gvc_f_two_vcf: "expand gVCF reference blocks"
     fast_a_ref: "reference sequence in fasta format"
@@ -83,7 +85,12 @@ task BcftoolsConvert {
     hap_sample: "<...>       <prefix>|<hap-file>,<sample-file>"
     haploid_two_diploid: "convert haploid genotypes to diploid homozygotes"
     hap_legend_sample_two_vcf: "<...>  <prefix>|<hap-file>,<legend-file>,<sample-file>"
+    tsv_two_vcf: ""
     columns: "columns of the input tsv file [ID,CHROM,POS,AA]"
     input_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

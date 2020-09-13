@@ -4,4 +4,7 @@ task SummarizeMultiTest {
   command <<<
     summarizeMultiTest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

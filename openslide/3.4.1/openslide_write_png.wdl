@@ -1,7 +1,10 @@
 version 1.0
 
-task OpenslideWritePng {
+task Openslidewritepng {
   command <<<
-    openslide-write-png
+    openslide_write_png
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

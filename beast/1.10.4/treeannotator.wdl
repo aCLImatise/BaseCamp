@@ -3,19 +3,15 @@ version 1.0
 task Treeannotator {
   input {
     String? heights
-    String? burnin
-    String? burnin_trees
+    Int? burnin
+    Int? burnin_trees
     String? limit
     String? target
-    String? force_discrete
-    String? hpd_two_d
-    String input_file_name
-    String? output_file_name
+    Int? force_discrete
+    Int? hpd_two_d
   }
   command <<<
     treeannotator \
-      ~{input_file_name} \
-      ~{output_file_name} \
       ~{if defined(heights) then ("-heights " +  '"' + heights + '"') else ""} \
       ~{if defined(burnin) then ("-burnin " +  '"' + burnin + '"') else ""} \
       ~{if defined(burnin_trees) then ("-burninTrees " +  '"' + burnin_trees + '"') else ""} \
@@ -32,7 +28,8 @@ task Treeannotator {
     target: "a user target tree to be annotated"
     force_discrete: "integer traits to be treated as discrete traits."
     hpd_two_d: "a (vector of comma seperated) HPD proportion(s)"
-    input_file_name: ""
-    output_file_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,78 +2,78 @@ version 1.0
 
 task Iqtree {
   input {
-    String? seqtype
-    File? parsrand_default_parsimony
+    Int? seqtype
+    File? parsrand_starting_default
     String? outgroup_taxon_list
     String? prefix
-    String? seed
+    Int? seed
     Boolean? safe
-    String? mem
-    String? runs
+    Int? mem
+    Int? runs
     Boolean? redo
     Boolean? verbose
     Boolean? quiet
-    String? f_const
-    String? epsilon
-    String? auto_coresthreads_default
-    String? threads_max
+    Int? f_const
+    Int? epsilon
+    Int? auto_coresthreads_autodetect
+    Int? threads_max
     File? dir_nexusraxml_partition
     File? dir_p_edgelinked
     File? dir_p_edgeunlinked
     File? dir_p_separate
-    String? subsample
-    String? subsample_seed
-    String? l_map
+    Int? subsample
+    Int? subsample_seed
+    Int? l_map
     File? lmc_lust
     Boolean? quartet_lh
-    String? nin_it
-    String? ntop
-    String? n_best
-    String? fix_number_stop
-    String? n_stop
-    String? perturb
-    String? radius
+    Int? nin_it
+    Int? ntop
+    Int? n_best
+    Int? fix_number_stop
+    Int? n_stop
+    Int? perturb
+    Int? radius
     Boolean? all_nni
-    File? multifurcating_tree_file
+    File? multifurcating_constraint_file
     Boolean? fast
     Boolean? poly_to_my
     Boolean? tree_fix
     Boolean? t_reels
     Boolean? show_lh
     Boolean? terrace
-    String? uf_boot
-    String? uf_jack
-    String? jack_prop
+    Int? uf_boot
+    Int? uf_jack
+    Int? jack_prop
     String? sampling
     Boolean? boot_trees
     Boolean? wbt_l
-    String? nmax
-    String? nstep
-    String? bc_or
-    String? be_ps
+    Int? nmax
+    Int? nstep
+    Int? bc_or
+    Int? be_ps
     Boolean? bnn_i
-    String? boot
-    String? jack
-    String? bc_on
-    String? b_only
+    Int? boot
+    Int? jack
+    Int? bc_on
+    Int? b_only
     Boolean? t_be
     Boolean? a_bayes
-    String? lbp
+    Int? lbp
     String? msub
     String? m_freq
     String? m_rate
-    String? cm_in
-    String? cmax
+    Int? cm_in
+    Int? cmax
     String? merit
     Boolean? mtree
     Boolean? m_redo
     String? madd
     File? m_def
     Boolean? modelo_matic
-    String? r_cluster
-    String? r_cluster_f
-    String? r_cluster_max
-    String? alpha_min
+    Int? r_cluster
+    Int? r_cluster_f
+    Int? r_cluster_max
+    Int? alpha_min
     Boolean? gamma_median
     Boolean? rate
     Boolean? ml_rate
@@ -84,25 +84,25 @@ task Iqtree {
     File? site_freq
     Boolean? freq_max
     File? trees
-    String? test
+    Int? test
     Boolean? test_weight
     Boolean? test_au
     Boolean? site_lh
     Boolean? ancestral
-    String? asr_min
+    Int? asr_min
     Boolean? sym_test
     Boolean? sym_test_only
     Boolean? sym_test_remove_bad
     Boolean? sym_test_remove_good
-    String? sym_test_type
-    String? sym_test_pval
+    Int? sym_test_type
+    Float? sym_test_pval
     Boolean? sym_test_keep_zero
     File? gcf
     Boolean? df_tree
-    String? scf
+    Int? scf
     Boolean? cf_verbose
-    String? sup_min
-    String? burnin
+    Int? sup_min
+    Int? burnin
     Boolean? con_tree
     Boolean? con_net
     File? support
@@ -110,11 +110,11 @@ task Iqtree {
     Boolean? tree_dist_all
     File? tree_dist
     File? tree_dist_two
-    String? taxa_yuleharding_random
+    Int? taxa_yuleharding_random
     String? rand
-    String? rlen
+    Int? rlen
     Boolean? keep_ident
-    String? cp_time
+    Int? cp_time
     Boolean? bl_fix
     Boolean? bl_scale
     Boolean? blm_in
@@ -133,19 +133,19 @@ task Iqtree {
   command <<<
     iqtree \
       ~{if defined(seqtype) then ("--seqtype " +  '"' + seqtype + '"') else ""} \
-      ~{if defined(parsrand_default_parsimony) then ("-t " +  '"' + parsrand_default_parsimony + '"') else ""} \
+      ~{if defined(parsrand_starting_default) then ("-t " +  '"' + parsrand_starting_default + '"') else ""} \
       ~{if defined(outgroup_taxon_list) then ("-o " +  '"' + outgroup_taxon_list + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--safe" false="" safe} \
+      ~{if (safe) then "--safe" else ""} \
       ~{if defined(mem) then ("--mem " +  '"' + mem + '"') else ""} \
       ~{if defined(runs) then ("--runs " +  '"' + runs + '"') else ""} \
-      ~{true="--redo" false="" redo} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (redo) then "--redo" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(f_const) then ("-fconst " +  '"' + f_const + '"') else ""} \
       ~{if defined(epsilon) then ("--epsilon " +  '"' + epsilon + '"') else ""} \
-      ~{if defined(auto_coresthreads_default) then ("-T " +  '"' + auto_coresthreads_default + '"') else ""} \
+      ~{if defined(auto_coresthreads_autodetect) then ("-T " +  '"' + auto_coresthreads_autodetect + '"') else ""} \
       ~{if defined(threads_max) then ("--threads-max " +  '"' + threads_max + '"') else ""} \
       ~{if defined(dir_nexusraxml_partition) then ("-p " +  '"' + dir_nexusraxml_partition + '"') else ""} \
       ~{if defined(dir_p_edgelinked) then ("-q " +  '"' + dir_p_edgelinked + '"') else ""} \
@@ -155,7 +155,7 @@ task Iqtree {
       ~{if defined(subsample_seed) then ("--subsample-seed " +  '"' + subsample_seed + '"') else ""} \
       ~{if defined(l_map) then ("--lmap " +  '"' + l_map + '"') else ""} \
       ~{if defined(lmc_lust) then ("--lmclust " +  '"' + lmc_lust + '"') else ""} \
-      ~{true="--quartetlh" false="" quartet_lh} \
+      ~{if (quartet_lh) then "--quartetlh" else ""} \
       ~{if defined(nin_it) then ("--ninit " +  '"' + nin_it + '"') else ""} \
       ~{if defined(ntop) then ("--ntop " +  '"' + ntop + '"') else ""} \
       ~{if defined(n_best) then ("--nbest " +  '"' + n_best + '"') else ""} \
@@ -163,31 +163,31 @@ task Iqtree {
       ~{if defined(n_stop) then ("--nstop " +  '"' + n_stop + '"') else ""} \
       ~{if defined(perturb) then ("--perturb " +  '"' + perturb + '"') else ""} \
       ~{if defined(radius) then ("--radius " +  '"' + radius + '"') else ""} \
-      ~{true="--allnni" false="" all_nni} \
-      ~{if defined(multifurcating_tree_file) then ("-g " +  '"' + multifurcating_tree_file + '"') else ""} \
-      ~{true="--fast" false="" fast} \
-      ~{true="--polytomy" false="" poly_to_my} \
-      ~{true="--tree-fix" false="" tree_fix} \
-      ~{true="--treels" false="" t_reels} \
-      ~{true="--show-lh" false="" show_lh} \
-      ~{true="--terrace" false="" terrace} \
+      ~{if (all_nni) then "--allnni" else ""} \
+      ~{if defined(multifurcating_constraint_file) then ("-g " +  '"' + multifurcating_constraint_file + '"') else ""} \
+      ~{if (fast) then "--fast" else ""} \
+      ~{if (poly_to_my) then "--polytomy" else ""} \
+      ~{if (tree_fix) then "--tree-fix" else ""} \
+      ~{if (t_reels) then "--treels" else ""} \
+      ~{if (show_lh) then "--show-lh" else ""} \
+      ~{if (terrace) then "--terrace" else ""} \
       ~{if defined(uf_boot) then ("--ufboot " +  '"' + uf_boot + '"') else ""} \
       ~{if defined(uf_jack) then ("--ufjack " +  '"' + uf_jack + '"') else ""} \
       ~{if defined(jack_prop) then ("--jack-prop " +  '"' + jack_prop + '"') else ""} \
       ~{if defined(sampling) then ("--sampling " +  '"' + sampling + '"') else ""} \
-      ~{true="--boot-trees" false="" boot_trees} \
-      ~{true="--wbtl" false="" wbt_l} \
+      ~{if (boot_trees) then "--boot-trees" else ""} \
+      ~{if (wbt_l) then "--wbtl" else ""} \
       ~{if defined(nmax) then ("--nmax " +  '"' + nmax + '"') else ""} \
       ~{if defined(nstep) then ("--nstep " +  '"' + nstep + '"') else ""} \
       ~{if defined(bc_or) then ("--bcor " +  '"' + bc_or + '"') else ""} \
       ~{if defined(be_ps) then ("--beps " +  '"' + be_ps + '"') else ""} \
-      ~{true="--bnni" false="" bnn_i} \
+      ~{if (bnn_i) then "--bnni" else ""} \
       ~{if defined(boot) then ("--boot " +  '"' + boot + '"') else ""} \
       ~{if defined(jack) then ("--jack " +  '"' + jack + '"') else ""} \
       ~{if defined(bc_on) then ("--bcon " +  '"' + bc_on + '"') else ""} \
       ~{if defined(b_only) then ("--bonly " +  '"' + b_only + '"') else ""} \
-      ~{true="--tbe" false="" t_be} \
-      ~{true="--abayes" false="" a_bayes} \
+      ~{if (t_be) then "--tbe" else ""} \
+      ~{if (a_bayes) then "--abayes" else ""} \
       ~{if defined(lbp) then ("--lbp " +  '"' + lbp + '"') else ""} \
       ~{if defined(msub) then ("--msub " +  '"' + msub + '"') else ""} \
       ~{if defined(m_freq) then ("--mfreq " +  '"' + m_freq + '"') else ""} \
@@ -195,74 +195,74 @@ task Iqtree {
       ~{if defined(cm_in) then ("--cmin " +  '"' + cm_in + '"') else ""} \
       ~{if defined(cmax) then ("--cmax " +  '"' + cmax + '"') else ""} \
       ~{if defined(merit) then ("--merit " +  '"' + merit + '"') else ""} \
-      ~{true="--mtree" false="" mtree} \
-      ~{true="--mredo" false="" m_redo} \
+      ~{if (mtree) then "--mtree" else ""} \
+      ~{if (m_redo) then "--mredo" else ""} \
       ~{if defined(madd) then ("--madd " +  '"' + madd + '"') else ""} \
       ~{if defined(m_def) then ("--mdef " +  '"' + m_def + '"') else ""} \
-      ~{true="--modelomatic" false="" modelo_matic} \
+      ~{if (modelo_matic) then "--modelomatic" else ""} \
       ~{if defined(r_cluster) then ("--rcluster " +  '"' + r_cluster + '"') else ""} \
       ~{if defined(r_cluster_f) then ("--rclusterf " +  '"' + r_cluster_f + '"') else ""} \
       ~{if defined(r_cluster_max) then ("--rcluster-max " +  '"' + r_cluster_max + '"') else ""} \
       ~{if defined(alpha_min) then ("--alpha-min " +  '"' + alpha_min + '"') else ""} \
-      ~{true="--gamma-median" false="" gamma_median} \
-      ~{true="--rate" false="" rate} \
-      ~{true="--mlrate" false="" ml_rate} \
+      ~{if (gamma_median) then "--gamma-median" else ""} \
+      ~{if (rate) then "--rate" else ""} \
+      ~{if (ml_rate) then "--mlrate" else ""} \
       ~{if defined(input_counts_file) then ("-s " +  '"' + input_counts_file + '"') else ""} \
-      ~{true="--mix-opt" false="" mix_opt} \
-      ~{true="-m" false="" asc_ascertainment_bias} \
+      ~{if (mix_opt) then "--mix-opt" else ""} \
+      ~{if (asc_ascertainment_bias) then "-m" else ""} \
       ~{if defined(tree_freq) then ("--tree-freq " +  '"' + tree_freq + '"') else ""} \
       ~{if defined(site_freq) then ("--site-freq " +  '"' + site_freq + '"') else ""} \
-      ~{true="--freq-max" false="" freq_max} \
+      ~{if (freq_max) then "--freq-max" else ""} \
       ~{if defined(trees) then ("--trees " +  '"' + trees + '"') else ""} \
       ~{if defined(test) then ("--test " +  '"' + test + '"') else ""} \
-      ~{true="--test-weight" false="" test_weight} \
-      ~{true="--test-au" false="" test_au} \
-      ~{true="--sitelh" false="" site_lh} \
-      ~{true="--ancestral" false="" ancestral} \
+      ~{if (test_weight) then "--test-weight" else ""} \
+      ~{if (test_au) then "--test-au" else ""} \
+      ~{if (site_lh) then "--sitelh" else ""} \
+      ~{if (ancestral) then "--ancestral" else ""} \
       ~{if defined(asr_min) then ("--asr-min " +  '"' + asr_min + '"') else ""} \
-      ~{true="--symtest" false="" sym_test} \
-      ~{true="--symtest-only" false="" sym_test_only} \
-      ~{true="--symtest-remove-bad" false="" sym_test_remove_bad} \
-      ~{true="--symtest-remove-good" false="" sym_test_remove_good} \
+      ~{if (sym_test) then "--symtest" else ""} \
+      ~{if (sym_test_only) then "--symtest-only" else ""} \
+      ~{if (sym_test_remove_bad) then "--symtest-remove-bad" else ""} \
+      ~{if (sym_test_remove_good) then "--symtest-remove-good" else ""} \
       ~{if defined(sym_test_type) then ("--symtest-type " +  '"' + sym_test_type + '"') else ""} \
       ~{if defined(sym_test_pval) then ("--symtest-pval " +  '"' + sym_test_pval + '"') else ""} \
-      ~{true="--symtest-keep-zero" false="" sym_test_keep_zero} \
+      ~{if (sym_test_keep_zero) then "--symtest-keep-zero" else ""} \
       ~{if defined(gcf) then ("--gcf " +  '"' + gcf + '"') else ""} \
-      ~{true="--df-tree" false="" df_tree} \
+      ~{if (df_tree) then "--df-tree" else ""} \
       ~{if defined(scf) then ("--scf " +  '"' + scf + '"') else ""} \
-      ~{true="--cf-verbose" false="" cf_verbose} \
+      ~{if (cf_verbose) then "--cf-verbose" else ""} \
       ~{if defined(sup_min) then ("--sup-min " +  '"' + sup_min + '"') else ""} \
       ~{if defined(burnin) then ("--burnin " +  '"' + burnin + '"') else ""} \
-      ~{true="--con-tree" false="" con_tree} \
-      ~{true="--con-net" false="" con_net} \
+      ~{if (con_tree) then "--con-tree" else ""} \
+      ~{if (con_net) then "--con-net" else ""} \
       ~{if defined(support) then ("--support " +  '"' + support + '"') else ""} \
       ~{if defined(sup_tag) then ("--suptag " +  '"' + sup_tag + '"') else ""} \
-      ~{true="--tree-dist-all" false="" tree_dist_all} \
+      ~{if (tree_dist_all) then "--tree-dist-all" else ""} \
       ~{if defined(tree_dist) then ("--tree-dist " +  '"' + tree_dist + '"') else ""} \
       ~{if defined(tree_dist_two) then ("--tree-dist2 " +  '"' + tree_dist_two + '"') else ""} \
       ~{if defined(taxa_yuleharding_random) then ("-r " +  '"' + taxa_yuleharding_random + '"') else ""} \
       ~{if defined(rand) then ("--rand " +  '"' + rand + '"') else ""} \
       ~{if defined(rlen) then ("--rlen " +  '"' + rlen + '"') else ""} \
-      ~{true="--keep-ident" false="" keep_ident} \
+      ~{if (keep_ident) then "--keep-ident" else ""} \
       ~{if defined(cp_time) then ("--cptime " +  '"' + cp_time + '"') else ""} \
-      ~{true="-blfix" false="" bl_fix} \
-      ~{true="-blscale" false="" bl_scale} \
-      ~{true="-blmin" false="" blm_in} \
-      ~{true="-blmax" false="" bl_max} \
-      ~{true="-wslr" false="" w_slr} \
-      ~{true="-wslm" false="" w_slm} \
-      ~{true="-wslmr" false="" wsl_mr} \
-      ~{true="-wspr" false="" w_spr} \
-      ~{true="-wspm" false="" ws_pm} \
-      ~{true="-wspmr" false="" wsp_mr} \
-      ~{true="--partlh" false="" part_lh} \
-      ~{true="--no-outfiles" false="" no_out_files} \
-      ~{true="--eigenlib" false="" eigen_lib} \
-      ~{true="-alninfo" false="" aln_info}
+      ~{if (bl_fix) then "-blfix" else ""} \
+      ~{if (bl_scale) then "-blscale" else ""} \
+      ~{if (blm_in) then "-blmin" else ""} \
+      ~{if (bl_max) then "-blmax" else ""} \
+      ~{if (w_slr) then "-wslr" else ""} \
+      ~{if (w_slm) then "-wslm" else ""} \
+      ~{if (wsl_mr) then "-wslmr" else ""} \
+      ~{if (w_spr) then "-wspr" else ""} \
+      ~{if (ws_pm) then "-wspm" else ""} \
+      ~{if (wsp_mr) then "-wspmr" else ""} \
+      ~{if (part_lh) then "--partlh" else ""} \
+      ~{if (no_out_files) then "--no-outfiles" else ""} \
+      ~{if (eigen_lib) then "--eigenlib" else ""} \
+      ~{if (aln_info) then "-alninfo" else ""}
   >>>
   parameter_meta {
     seqtype: "BIN, DNA, AA, NT2AA, CODON, MORPH (default: auto-detect)"
-    parsrand_default_parsimony: "|PARS|RAND    Starting tree (default: 99 parsimony and BIONJ)"
+    parsrand_starting_default: "|PARS|RAND    Starting tree (default: 99 parsimony and BIONJ)"
     outgroup_taxon_list: "[,...,TAX]     Outgroup taxon (list) for writing .treefile"
     prefix: "Prefix for all output files (default: aln/partition)"
     seed: "Random seed number, normally used for debugging purpose"
@@ -274,10 +274,10 @@ task Iqtree {
     quiet: "Quiet mode, suppress printing to screen (stdout)"
     f_const: ",...,fN    Add constant patterns into alignment (N=no. states)"
     epsilon: "Likelihood epsilon for parameter estimate (default 0.01)"
-    auto_coresthreads_default: "|AUTO          No. cores/threads or AUTO-detect (default: 1)"
+    auto_coresthreads_autodetect: "|AUTO          No. cores/threads or AUTO-detect (default: 1)"
     threads_max: "Max number of threads for -T AUTO (default: all cores)"
-    dir_nexusraxml_partition: "|DIR          NEXUS/RAxML partition file or directory with alignments Edge-linked proportional partition model"
-    dir_p_edgelinked: "|DIR          Like -p but edge-linked equal partition model "
+    dir_nexusraxml_partition: "|DIR          NEXUS/RAxML partition file or directory with alignments\\nEdge-linked proportional partition model"
+    dir_p_edgelinked: "|DIR          Like -p but edge-linked equal partition model"
     dir_p_edgeunlinked: "|DIR          Like -p but edge-unlinked partition model"
     dir_p_separate: "|DIR          Like -p but separate tree inference"
     subsample: "Randomly sub-sample partitions (negative for complement)"
@@ -293,7 +293,7 @@ task Iqtree {
     perturb: "Perturbation strength for randomized NNI (default: 0.5)"
     radius: "Radius for parsimony SPR search (default: 6)"
     all_nni: "Perform more thorough NNI search (default: OFF)"
-    multifurcating_tree_file: "(Multifurcating) topological constraint tree file"
+    multifurcating_constraint_file: "(Multifurcating) topological constraint tree file"
     fast: "Fast search to resemble FastTree"
     poly_to_my: "Collapse near-zero branches into polytomy"
     tree_fix: "Fix -t tree (no tree search performed)"
@@ -318,9 +318,9 @@ task Iqtree {
     t_be: "Transfer bootstrap expectation"
     a_bayes: "approximate Bayes test (Anisimova et al. 2011)"
     lbp: "Replicates for fast local bootstrap probabilities"
-    msub: "Amino-acid model source (nuclear, mitochondrial, chloroplast or viral)"
+    msub: "Amino-acid model source\\n(nuclear, mitochondrial, chloroplast or viral)"
     m_freq: ",...      List of state frequencies"
-    m_rate: ",...      List of rate heterogeneity among sites (e.g. -mrate E,I,G,I+G,R is used for -m MF)"
+    m_rate: ",...      List of rate heterogeneity among sites\\n(e.g. -mrate E,I,G,I+G,R is used for -m MF)"
     cm_in: "Min categories for FreeRate model [+R] (default: 2)"
     cmax: "Max categories for FreeRate model [+R] (default: 10)"
     merit: "|AICc|BIC  Akaike|Bayesian information criterion (default: BIC)"
@@ -360,7 +360,7 @@ task Iqtree {
     df_tree: "Write discordant trees associated with gDF1"
     scf: "Number of quartets for site concordance factor (sCF)"
     cf_verbose: "Write CF per tree/locus to cf.stat_tree/_loci"
-    sup_min: "Min split support, 0.5 for majority-rule consensus (default: 0, extended consensus)"
+    sup_min: "Min split support, 0.5 for majority-rule consensus\\n(default: 0, extended consensus)"
     burnin: "Burnin number of trees to ignore"
     con_tree: "Compute consensus tree to .contree file"
     con_net: "Computing consensus network to .nex file"
@@ -388,5 +388,8 @@ task Iqtree {
     no_out_files: "Suppress printing output files"
     eigen_lib: "Use Eigen3 library"
     aln_info: "Print alignment sites statistics to .alninfo"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

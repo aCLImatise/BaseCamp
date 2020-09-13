@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../ragout_maf2synteny.cwl
 inputs:
-- id: path_output_directory
+- id: in_path_output_directory
   doc: path to the output directory [default = .]
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: path_file_custom
+- id: in_path_file_custom
   doc: path to a file with custom simplification parameters [default = not set]
-  type: string
+  type: File
   inputBinding:
     prefix: -s
-- id: commaseparated_list_synteny
+- id: in_commaseparated_list_synteny
   doc: comma-separated list of synteny block scales [default = 5000]
-  type: string
+  type: long
   inputBinding:
     prefix: -b
-- id: m
+- id: in_m
   doc: ''
   type: string
   inputBinding:
     prefix: -m
-- id: maf_file
+- id: in_maf_file
   doc: path to maf file
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_path_output_directory
+  doc: path to the output directory [default = .]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_path_output_directory)
 cwlVersion: v1.1
 baseCommand:
 - ragout-maf2synteny

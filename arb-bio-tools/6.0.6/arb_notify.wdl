@@ -11,4 +11,7 @@ task ArbNotify {
   parameter_meta {
     id: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

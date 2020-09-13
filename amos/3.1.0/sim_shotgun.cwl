@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../sim_shotgun.cwl
 inputs:
-- id: set_minimum_reads
+- id: in_set_minimum_reads
   doc: Set minimum reads in a contig to <n> (default = 2)
-  type: string
+  type: long
   inputBinding:
     prefix: -c
-- id: set_minimum_length
+- id: in_set_overlap_length
   doc: Set minimum overlap length to <n> (default = 40)
-  type: string
+  type: long
   inputBinding:
     prefix: -o
-- id: set_readlength_deviation
+- id: in_set_readlength_deviation
   doc: Set read-length std deviation to <n> (default = 0)
-  type: string
+  type: long
   inputBinding:
     prefix: -s
-- id: coverage
+- id: in_coverage
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: read_len
+- id: in_read_len
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: genome_len
+- id: in_genome_len
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sim-shotgun

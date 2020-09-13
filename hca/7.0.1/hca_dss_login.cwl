@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../hca_dss_login.cwl
 inputs:
-- id: access_token
+- id: in_access_token
   doc: ''
   type: string
   inputBinding:
     prefix: --access-token
-- id: remote
+- id: in_remote
   doc: ''
   type: boolean
   inputBinding:
     prefix: --remote
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

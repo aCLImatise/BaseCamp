@@ -4,4 +4,7 @@ task Easypqp {
   command <<<
     easypqp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

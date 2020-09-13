@@ -1,7 +1,10 @@
 version 1.0
 
-task NgmCoreDebug {
+task Ngmcoredebug {
   command <<<
-    ngm-core-debug
+    ngm_core_debug
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

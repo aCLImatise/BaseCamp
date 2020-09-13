@@ -20,4 +20,7 @@ task AlignmentProjector {
     mfa_seq_input: ""
     mfa_seq_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

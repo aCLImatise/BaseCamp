@@ -1,72 +1,70 @@
 class: CommandLineTool
 id: ../../../abyss_overlap.cwl
 inputs:
-- id: min
+- id: in_min
   doc: find matches at least N bp [50]
-  type: string
+  type: long
   inputBinding:
     prefix: --min
-- id: max
+- id: in_max
   doc: find matches less than N bp [inf]
-  type: string
+  type: long
   inputBinding:
     prefix: --max
-- id: threads
+- id: in_threads
   doc: use N parallel threads [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: sample
+- id: in_sample
   doc: sample the suffix array [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --sample
-- id: tred
+- id: in_tred
   doc: remove transitive edges [default]
   type: boolean
   inputBinding:
     prefix: --tred
-- id: no_tred
+- id: in_no_tred
   doc: do not remove transitive edges
   type: boolean
   inputBinding:
     prefix: --no-tred
-- id: adj
+- id: in_adj
   doc: output the results in adj format
   type: boolean
   inputBinding:
     prefix: --adj
-- id: dot
+- id: in_dot
   doc: output the results in dot format [default]
   type: boolean
   inputBinding:
     prefix: --dot
-- id: sam
+- id: in_sam
   doc: output the results in SAM format
   type: boolean
   inputBinding:
     prefix: --sam
-- id: ss
+- id: in_ss
   doc: expect contigs to be oriented correctly
   type: boolean
   inputBinding:
     prefix: --SS
-- id: no_ss
+- id: in_no_ss
   doc: no assumption about contig orientation
   type: boolean
   inputBinding:
     prefix: --no-SS
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - abyss-overlap

@@ -4,4 +4,7 @@ task Gendist {
   command <<<
     gendist
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

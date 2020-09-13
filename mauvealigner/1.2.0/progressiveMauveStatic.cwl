@@ -1,253 +1,231 @@
 class: CommandLineTool
 id: ../../../progressiveMauveStatic.cwl
 inputs:
-- id: island_gap_size
+- id: in_island_gap_size
   doc: Alignment gaps above this size in nucleotides are considered to be islands
     [20]
-  type: string
+  type: long
   inputBinding:
     prefix: --island-gap-size
-- id: profile
+- id: in_profile
   doc: (Not yet implemented) Read an existing sequence alignment in XMFA format and
     align it to other sequences or alignments
   type: File
   inputBinding:
     prefix: --profile
-- id: apply_backbone
+- id: in_apply_backbone
   doc: Read an existing sequence alignment in XMFA format and apply backbone statistics
     to it
   type: File
   inputBinding:
     prefix: --apply-backbone
-- id: disable_backbone
+- id: in_disable_backbone
   doc: backbone detection
   type: string
   inputBinding:
     prefix: --disable-backbone
-- id: mums
+- id: in_mums
   doc: MUMs only, do not attempt to determine locally collinear blocks (LCBs)
   type: string
   inputBinding:
     prefix: --mums
-- id: seed_weight
+- id: in_seed_weight
   doc: Use the specified seed weight for calculating initial anchors
-  type: string
+  type: long
   inputBinding:
     prefix: --seed-weight
-- id: output
+- id: in_output
   doc: Output file name.  Prints to screen by default
   type: File
   inputBinding:
     prefix: --output
-- id: backbone_output
+- id: in_backbone_output
   doc: Backbone output file name (optional).
   type: File
   inputBinding:
     prefix: --backbone-output
-- id: match_input
+- id: in_match_input
   doc: Use specified match file instead of searching for matches
   type: File
   inputBinding:
     prefix: --match-input
-- id: max_gapped_aligner_length
+- id: in_max_gapped_aligner_length
   doc: Maximum number of base pairs to attempt aligning with the gapped aligner
-  type: string
+  type: long
   inputBinding:
     prefix: --max-gapped-aligner-length
-- id: input_guide_tree
+- id: in_input_guide_tree
   doc: A phylogenetic guide tree in NEWICK format that describes the order in which
     sequences will be aligned
   type: File
   inputBinding:
     prefix: --input-guide-tree
-- id: output_guide_tree
+- id: in_output_guide_tree
   doc: Write out the guide tree used for alignment to a file
   type: File
   inputBinding:
     prefix: --output-guide-tree
-- id: debug
+- id: in_debug
   doc: in debug mode (perform internal consistency checks--very slow)
   type: string
   inputBinding:
     prefix: --debug
-- id: scratch_path_one
+- id: in_scratch_path_one
   doc: Designate a path that can be used for temporary data storage.  Two or more
     paths should be specified.
   type: File
   inputBinding:
     prefix: --scratch-path-1
-- id: scratch_path_two
+- id: in_scratch_path_two
   doc: Designate a path that can be used for temporary data storage.  Two or more
     paths should be specified.
   type: File
   inputBinding:
     prefix: --scratch-path-2
-- id: collinear
+- id: in_collinear
   doc: that input sequences are collinear--they have no rearrangements
   type: string
   inputBinding:
     prefix: --collinear
-- id: scoring_scheme
+- id: in_scoring_scheme
   doc: Selects the anchoring score function.  Default is extant sum-of-pairs (sp).
   type: string
   inputBinding:
     prefix: --scoring-scheme
-- id: no_weight_scaling
+- id: in_no_weight_scaling
   doc: "'t scale LCB weights by conservation distance and breakpoint distance"
   type: string
   inputBinding:
     prefix: --no-weight-scaling
-- id: max_breakpoint_distance_scale
+- id: in_max_breakpoint_distance_scale
   doc: =<number [0,1]> Set the maximum weight scaling by breakpoint distance.  Defaults
     to 0.5
   type: boolean
   inputBinding:
     prefix: --max-breakpoint-distance-scale
-- id: conservation_distance_scale
+- id: in_conservation_distance_scale
   doc: =<number [0,1]> Scale conservation distances by this amount.  Defaults to 0.5
   type: boolean
   inputBinding:
     prefix: --conservation-distance-scale
-- id: muscle_args
+- id: in_muscle_args
   doc: Additional command-line options for MUSCLE.  Any quotes should be escaped with
     a backslash
   type: string
   inputBinding:
     prefix: --muscle-args
-- id: skip_refinement
+- id: in_skip_refinement
   doc: not perform iterative refinement
   type: string
   inputBinding:
     prefix: --skip-refinement
-- id: skip_gapped_alignment
+- id: in_skip_gapped_alignment
   doc: not perform gapped alignment
   type: string
   inputBinding:
     prefix: --skip-gapped-alignment
-- id: bp_dist_estimate_min_score
+- id: in_bp_dist_estimate_min_score
   doc: Minimum LCB score for estimating pairwise breakpoint distance
-  type: string
+  type: long
   inputBinding:
     prefix: --bp-dist-estimate-min-score
-- id: mem_clean
+- id: in_mem_clean
   doc: this to true when debugging memory allocations
   type: string
   inputBinding:
     prefix: --mem-clean
-- id: gap_open
+- id: in_gap_open
   doc: Gap open penalty
-  type: string
+  type: long
   inputBinding:
     prefix: --gap-open
-- id: repeat_penalty
+- id: in_repeat_penalty
   doc: Sets whether the repeat scores go negative or go to zero for highly repetitive
     sequences.  Default is negative.
   type: string
   inputBinding:
     prefix: --repeat-penalty
-- id: gap_extend
+- id: in_gap_extend
   doc: Gap extend penalty
-  type: string
+  type: long
   inputBinding:
     prefix: --gap-extend
-- id: substitution_matrix
+- id: in_substitution_matrix
   doc: Nucleotide substitution matrix in NCBI format
   type: File
   inputBinding:
     prefix: --substitution-matrix
-- id: weight
+- id: in_weight
   doc: Minimum pairwise LCB score
-  type: string
+  type: long
   inputBinding:
     prefix: --weight
-- id: min_scaled_penalty
+- id: in_min_scaled_penalty
   doc: Minimum breakpoint penalty after scaling the penalty by expected divergence
-  type: string
+  type: long
   inputBinding:
     prefix: --min-scaled-penalty
-- id: hmm_p_go_homologous
+- id: in_hmm_p_go_homologous
   doc: Probability of transitioning from the unrelated to the homologous state [0.00001]
-  type: string
+  type: long
   inputBinding:
     prefix: --hmm-p-go-homologous
-- id: hmm_p_go_unrelated
+- id: in_hmm_p_go_unrelated
   doc: Probability of transitioning from the homologous to the unrelated state [0.000000001]
-  type: string
+  type: long
   inputBinding:
     prefix: --hmm-p-go-unrelated
-- id: hmm_identity
+- id: in_hmm_identity
   doc: Expected level of sequence identity among pairs of sequences, ranging between
     0 and 1 [0.7]
-  type: string
+  type: long
   inputBinding:
     prefix: --hmm-identity
-- id: seed_family
+- id: in_seed_family
   doc: a family of spaced seeds to improve sensitivity
   type: string
   inputBinding:
     prefix: --seed-family
-- id: solid_seeds
+- id: in_solid_seeds
   doc: solid seeds. Do not permit substitutions in anchor matches.
   type: string
   inputBinding:
     prefix: --solid-seeds
-- id: coding_seeds
+- id: in_coding_seeds
   doc: coding pattern seeds. Useful to generate matches coding regions with 3rd codon
     position degeneracy.
-  type: string
+  type: long
   inputBinding:
     prefix: --coding-seeds
-- id: disable_cache
+- id: in_disable_cache
   doc: recursive anchor search cacheing to workaround a crash bug
   type: string
   inputBinding:
     prefix: --disable-cache
-- id: no_recursion
+- id: in_no_recursion
   doc: recursive anchor search
   type: string
   inputBinding:
     prefix: --no-recursion
-- id: when
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: each
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: genome
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: resides
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: in
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
-- id: separate
-  doc: ''
-  type: string
-  inputBinding:
-    position: 6
-- id: file
-  doc: ''
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Output file name.  Prints to screen by default
   type: File
-  inputBinding:
-    position: 7
-outputs: []
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_backbone_output
+  doc: Backbone output file name (optional).
+  type: File
+  outputBinding:
+    glob: $(inputs.in_backbone_output)
+- id: out_output_guide_tree
+  doc: Write out the guide tree used for alignment to a file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_guide_tree)
 cwlVersion: v1.1
 baseCommand:
 - progressiveMauveStatic

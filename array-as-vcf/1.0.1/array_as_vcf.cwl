@@ -1,57 +1,60 @@
 class: CommandLineTool
 id: ../../../array_as_vcf.cwl
 inputs:
-- id: path
+- id: in_path
   doc: 'Path to array file (default: None)'
   type: File
   inputBinding:
     prefix: --path
-- id: build
+- id: in_build
   doc: 'Genome build (default: GRCh37)'
   type: string
   inputBinding:
     prefix: --build
-- id: sample_name
+- id: in_sample_name
   doc: 'Name of sample in VCF file (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --sample-name
-- id: chr_prefix
+- id: in_chr_prefix
   doc: 'Prefix to chromosome names (default: None)'
   type: string
   inputBinding:
     prefix: --chr-prefix
-- id: lookup_table
-  doc: 'Path to existing lookup table for rsIDs (default: None)'
-  type: string
+- id: in_lookup_table
+  doc: "Path to existing lookup table for rsIDs (default:\nNone)"
+  type: File
   inputBinding:
     prefix: --lookup-table
-- id: dump
+- id: in_dump
   doc: 'Path to write generated lookup table (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --dump
-- id: encoding
+- id: in_encoding
   doc: 'Encoding of the array file (default: UTF-8)'
-  type: string
+  type: File
   inputBinding:
     prefix: --encoding
-- id: exclude_assays
+- id: in_exclude_assays
   doc: 'Assay IDs for OpenArray to ignore (default: None)'
   type: string[]
   inputBinding:
     prefix: --exclude-assays
-- id: no_ensembl_lookup
+- id: in_no_ensembl_lookup
   doc: 'Lookup missing rsIDs on Ensembl (default: False)'
   type: boolean
   inputBinding:
     prefix: --no-ensembl-lookup
-- id: log_level
-  doc: 'Set the verbosity of the logger (default: INFO)'
+- id: in_log_level
+  doc: "Set the verbosity of the logger (default: INFO)\n"
   type: string
   inputBinding:
     prefix: --log-level
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - array-as-vcf

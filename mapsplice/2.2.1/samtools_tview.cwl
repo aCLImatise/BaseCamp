@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../samtools_tview.cwl
 inputs:
-- id: bam_tk
+- id: in_bam_tk
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: t_view
+- id: in_t_view
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: aln_dot_bam
+- id: in_aln_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: ref_dot_fast_a
+- id: in_ref_dot_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - samtools

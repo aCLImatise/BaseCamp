@@ -4,4 +4,7 @@ task TripailleFeature {
   command <<<
     tripaille feature
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

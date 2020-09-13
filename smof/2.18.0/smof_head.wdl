@@ -5,22 +5,22 @@ task SmofHead {
     String? entries
     String? first
     String? last
-    String k_print_entries
-    String input_fasta_sequence
+    String input_fasta_default
   }
   command <<<
     smof head \
-      ~{k_print_entries} \
-      ~{input_fasta_sequence} \
+      ~{input_fasta_default} \
       ~{if defined(entries) then ("--entries " +  '"' + entries + '"') else ""} \
       ~{if defined(first) then ("--first " +  '"' + first + '"') else ""} \
       ~{if defined(last) then ("--last " +  '"' + last + '"') else ""}
   >>>
   parameter_meta {
-    entries: "print first K entries; or use -n -K to print all but the last K entries"
+    entries: "print first K entries; or use -n -K to print all but the\\nlast K entries"
     first: "print first K letters of each sequence"
     last: "print last K letters of each sequence"
-    k_print_entries: "-K print first K entries"
-    input_fasta_sequence: "input fasta sequence (default = stdin)"
+    input_fasta_default: "input fasta sequence (default = stdin)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

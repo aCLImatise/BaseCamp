@@ -4,4 +4,7 @@ task Igblastn {
   command <<<
     igblastn
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

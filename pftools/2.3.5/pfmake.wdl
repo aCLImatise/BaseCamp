@@ -13,42 +13,42 @@ task Pfmake {
     Boolean? input_sequences_msa
     Boolean? impose_limit_line
     Boolean? symmetrical_gap_weighting
-    Boolean? value_gap_extension
-    Boolean? value_output_score
-    Boolean? value_gap_opening
-    Boolean? value_high_cost
-    Boolean? value_gap_penalty
-    Boolean? value_low_cost
-    Boolean? value_maximum_gap
-    Boolean? value_score_matrix
-    Boolean? value_gap_region
-    Boolean? value_gap_excision
+    Boolean? valuegap_extension_penalty
+    Boolean? valueoutput_score_multiplier
+    Boolean? valuegap_opening_penalty
+    Boolean? valuehigh_cost_initiationtermination
+    Boolean? valuegap_penalty_multiplier
+    Boolean? valuelow_cost_initiationtermination
+    Boolean? valuemaximum_gap_penalty
+    Boolean? valuescore_matrix_multiplier
+    Boolean? valuegap_region_threshold
+    Boolean? valuegap_excision_threshold
     Boolean? zero_one_two_three_abcehlsefghilmstx
   }
   command <<<
     pfmake \
-      ~{true="-0" false="" global_alignment_mode} \
-      ~{true="-1" false="" domain_global_alignment} \
-      ~{true="-2" false="" semiglobal_alignment_mode} \
-      ~{true="-3" false="" local_alignment_mode} \
-      ~{true="-a" false="" asymmetrical_gap_weighting} \
-      ~{true="-b" false="" block_profile_mode} \
-      ~{true="-c" false="" _circular_profile} \
-      ~{true="-e" false="" enable_endgapweighting_mode} \
-      ~{true="-m" false="" input_sequences_msa} \
-      ~{true="-l" false="" impose_limit_line} \
-      ~{true="-s" false="" symmetrical_gap_weighting} \
-      ~{true="-E" false="" value_gap_extension} \
-      ~{true="-F" false="" value_output_score} \
-      ~{true="-G" false="" value_gap_opening} \
-      ~{true="-H" false="" value_high_cost} \
-      ~{true="-I" false="" value_gap_penalty} \
-      ~{true="-L" false="" value_low_cost} \
-      ~{true="-M" false="" value_maximum_gap} \
-      ~{true="-S" false="" value_score_matrix} \
-      ~{true="-T" false="" value_gap_region} \
-      ~{true="-X" false="" value_gap_excision} \
-      ~{true="-0123abcehlsEFGHILMSTX" false="" zero_one_two_three_abcehlsefghilmstx}
+      ~{if (global_alignment_mode) then "-0" else ""} \
+      ~{if (domain_global_alignment) then "-1" else ""} \
+      ~{if (semiglobal_alignment_mode) then "-2" else ""} \
+      ~{if (local_alignment_mode) then "-3" else ""} \
+      ~{if (asymmetrical_gap_weighting) then "-a" else ""} \
+      ~{if (block_profile_mode) then "-b" else ""} \
+      ~{if (_circular_profile) then "-c" else ""} \
+      ~{if (enable_endgapweighting_mode) then "-e" else ""} \
+      ~{if (input_sequences_msa) then "-m" else ""} \
+      ~{if (impose_limit_line) then "-l" else ""} \
+      ~{if (symmetrical_gap_weighting) then "-s" else ""} \
+      ~{if (valuegap_extension_penalty) then "-E" else ""} \
+      ~{if (valueoutput_score_multiplier) then "-F" else ""} \
+      ~{if (valuegap_opening_penalty) then "-G" else ""} \
+      ~{if (valuehigh_cost_initiationtermination) then "-H" else ""} \
+      ~{if (valuegap_penalty_multiplier) then "-I" else ""} \
+      ~{if (valuelow_cost_initiationtermination) then "-L" else ""} \
+      ~{if (valuemaximum_gap_penalty) then "-M" else ""} \
+      ~{if (valuescore_matrix_multiplier) then "-S" else ""} \
+      ~{if (valuegap_region_threshold) then "-T" else ""} \
+      ~{if (valuegap_excision_threshold) then "-X" else ""} \
+      ~{if (zero_one_two_three_abcehlsefghilmstx) then "-0123abcehlsEFGHILMSTX" else ""}
   >>>
   parameter_meta {
     global_alignment_mode: ": global alignment mode."
@@ -62,16 +62,19 @@ task Pfmake {
     input_sequences_msa: ": input sequences in MSA format."
     impose_limit_line: ": do not impose limit on line length."
     symmetrical_gap_weighting: ": symmetrical gap weighting."
-    value_gap_extension: "<value>: gap extension penalty (default: 0.2)."
-    value_output_score: "<value>: output score multiplier (default: 100)"
-    value_gap_opening: "<value>: gap opening penalty (default: 2.1)"
-    value_high_cost: "<value>: high cost initiation/termination score (default: *)"
-    value_gap_penalty: "<value>: gap penalty multiplier increment (default: 0.1)"
-    value_low_cost: "<value>: low cost initiation/termination score (default:  0)."
-    value_maximum_gap: "<value>: maximum gap penalty multiplier (default: 0.333)."
-    value_score_matrix: "<value>: score matrix multiplier (default: 0.1)"
-    value_gap_region: "<value>: gap region threshold (default: 0.01)"
-    value_gap_excision: "<value>: gap excision threshold (default: 0.5)"
+    valuegap_extension_penalty: "<value>:\\ngap extension penalty (default: 0.2)."
+    valueoutput_score_multiplier: "<value>:\\noutput score multiplier (default: 100)"
+    valuegap_opening_penalty: "<value>:\\ngap opening penalty (default: 2.1)"
+    valuehigh_cost_initiationtermination: "<value>:\\nhigh cost initiation/termination score (default: *)"
+    valuegap_penalty_multiplier: "<value>:\\ngap penalty multiplier increment (default: 0.1)"
+    valuelow_cost_initiationtermination: "<value>:\\nlow cost initiation/termination score (default:  0)."
+    valuemaximum_gap_penalty: "<value>:\\nmaximum gap penalty multiplier (default: 0.333)."
+    valuescore_matrix_multiplier: "<value>:\\nscore matrix multiplier (default: 0.1)"
+    valuegap_region_threshold: "<value>:\\ngap region threshold (default: 0.01)"
+    valuegap_excision_threshold: "<value>:\\ngap excision threshold (default: 0.5)"
     zero_one_two_three_abcehlsefghilmstx: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

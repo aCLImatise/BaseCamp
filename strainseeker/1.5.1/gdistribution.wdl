@@ -4,4 +4,7 @@ task Gdistribution {
   command <<<
     gdistribution
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

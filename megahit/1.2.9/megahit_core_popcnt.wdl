@@ -4,4 +4,7 @@ task MegahitCorePopcnt {
   command <<<
     megahit_core_popcnt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

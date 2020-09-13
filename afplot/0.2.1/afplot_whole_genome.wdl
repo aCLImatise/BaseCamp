@@ -1,7 +1,10 @@
 version 1.0
 
-task AfplotWholeGenome {
+task AfplotWholegenome {
   command <<<
-    afplot whole-genome
+    afplot whole_genome
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

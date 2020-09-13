@@ -14,4 +14,7 @@ task GetCalledRegions {
     gvc_f: ""
     called_dot_bed: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

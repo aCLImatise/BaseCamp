@@ -1,22 +1,10 @@
 class: CommandLineTool
 id: ../../../AnalyseSeqs.cwl
-inputs:
-- id: x
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -X
-- id: q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -Q
-- id: bsw_nm
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - AnalyseSeqs

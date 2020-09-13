@@ -1,12 +1,10 @@
 class: CommandLineTool
 id: ../../../gem.cwl
-inputs:
-- id: h_slash_help
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -h/--help
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gem

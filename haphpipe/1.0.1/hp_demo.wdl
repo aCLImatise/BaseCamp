@@ -2,16 +2,22 @@ version 1.0
 
 task HpDemo {
   input {
-    String? outdir
-    Boolean? ref_only
+    String? githubcomgwcbihaphpipeblobmasterbinrefstargzrawtrue__haphpipedemorefstargz
+    String? xzvf
+    Boolean? haphpipedemo
   }
   command <<<
     hp_demo \
-      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
-      ~{true="--refonly" false="" ref_only}
+      ~{if defined(githubcomgwcbihaphpipeblobmasterbinrefstargzrawtrue__haphpipedemorefstargz) then ("-L " +  '"' + githubcomgwcbihaphpipeblobmasterbinrefstargzrawtrue__haphpipedemorefstargz + '"') else ""} \
+      ~{if defined(xzvf) then ("-xzvf " +  '"' + xzvf + '"') else ""} \
+      ~{if (haphpipedemo) then "-C" else ""}
   >>>
   parameter_meta {
-    outdir: "Output directory (default: .)"
-    ref_only: "Does not run entire demo, only pulls the reference files (default: False)"
+    githubcomgwcbihaphpipeblobmasterbinrefstargzrawtrue__haphpipedemorefstargz: "://github.com/gwcbi/haphpipe/blob/master/bin/refs.tar.gz?raw=true \\\\n> ./haphpipe_demo/refs.tar.gz"
+    xzvf: "\\"
+    haphpipedemo: "./haphpipe_demo"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

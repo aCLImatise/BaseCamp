@@ -1,14 +1,10 @@
 version 1.0
 
-task AbyssBwa {
-  input {
-    String? option
-  }
+task Abyssbwa {
   command <<<
-    abyss-bwa \
-      ~{option}
+    abyss_bwa
   >>>
-  parameter_meta {
-    option: ""
+  output {
+    File out_stdout = stdout()
   }
 }

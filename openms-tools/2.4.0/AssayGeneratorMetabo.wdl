@@ -6,16 +6,16 @@ task AssayGeneratorMetabo {
     File? in_id
     File? out
     String? method
-    String? precursor_mz_tolerance
+    Int? precursor_mz_tolerance
     String? precursor_mz_tolerance_unit
-    String? precursor_mz_distance
-    String? precursor_rt_tolerance
-    String? cosine_similarity_threshold
-    String? filter_by_convex_hulls
-    String? transition_threshold
+    Int? precursor_mz_distance
+    Int? precursor_rt_tolerance
+    Int? cosine_similarity_threshold
+    Int? filter_by_convex_hulls
+    Int? transition_threshold
     Boolean? use_known_unknowns
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -32,11 +32,11 @@ task AssayGeneratorMetabo {
       ~{if defined(cosine_similarity_threshold) then ("-cosine_similarity_threshold " +  '"' + cosine_similarity_threshold + '"') else ""} \
       ~{if defined(filter_by_convex_hulls) then ("-filter_by_convex_hulls " +  '"' + filter_by_convex_hulls + '"') else ""} \
       ~{if defined(transition_threshold) then ("-transition_threshold " +  '"' + transition_threshold + '"') else ""} \
-      ~{true="-use_known_unknowns" false="" use_known_unknowns} \
+      ~{if (use_known_unknowns) then "-use_known_unknowns" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                            MzML Input file (valid formats: 'mzml')"
@@ -55,5 +55,9 @@ task AssayGeneratorMetabo {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

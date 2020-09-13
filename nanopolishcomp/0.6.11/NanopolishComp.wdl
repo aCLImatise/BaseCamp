@@ -4,4 +4,7 @@ task NanopolishComp {
   command <<<
     NanopolishComp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

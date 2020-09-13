@@ -1,26 +1,26 @@
 version 1.0
 
-task SpadesGbuilder {
+task Spadesgbuilder {
   input {
-    String? kmer_length_use
+    Int? kmer_length_use
     String? _threads_use
-    String? tmp_dir
-    String? sorting_buffer_size
+    Directory? tmp_dir
+    Int? sorting_buffer_size
     Boolean? unit_igs
     Boolean? fast_g
     Boolean? gfa
     Boolean? spades
   }
   command <<<
-    spades-gbuilder \
+    spades_gbuilder \
       ~{if defined(kmer_length_use) then ("-k " +  '"' + kmer_length_use + '"') else ""} \
       ~{if defined(_threads_use) then ("-t " +  '"' + _threads_use + '"') else ""} \
       ~{if defined(tmp_dir) then ("-tmp-dir " +  '"' + tmp_dir + '"') else ""} \
       ~{if defined(sorting_buffer_size) then ("-b " +  '"' + sorting_buffer_size + '"') else ""} \
-      ~{true="--unitigs" false="" unit_igs} \
-      ~{true="--fastg" false="" fast_g} \
-      ~{true="--gfa" false="" gfa} \
-      ~{true="--spades" false="" spades}
+      ~{if (unit_igs) then "--unitigs" else ""} \
+      ~{if (fast_g) then "--fastg" else ""} \
+      ~{if (gfa) then "--gfa" else ""} \
+      ~{if (spades) then "--spades" else ""}
   >>>
   parameter_meta {
     kmer_length_use: "k-mer length to use"
@@ -31,5 +31,8 @@ task SpadesGbuilder {
     fast_g: "produce graph in FASTG format"
     gfa: "produce graph in GFA1 format"
     spades: "produce graph in SPAdes internal format"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

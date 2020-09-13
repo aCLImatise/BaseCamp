@@ -1,4 +1,7 @@
-&id006 !Command
+&id003 !Command
+command:
+- easel
+- filter
 positional: []
 named:
 - !Flag
@@ -118,17 +121,72 @@ named:
   - -options
   args: !EmptyFlagArg {}
   optional: true
-command:
-- easel
-- filter
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - easel
+  positional: []
+  named: []
   parent:
   subcommands:
-  - &id002 !Command
+  - !Command
+    command:
+    - easel
+    - downsample
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: m
+      optional: false
+    named:
+    - !Flag
+      description: ': sequence sampling: <infile> is file or stream of seqs'
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ': big sequence sample: <infile> is (seekable) seq file'
+      synonyms:
+      - -S
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ': set random number generator seed  [0]'
+      synonyms:
+      - --seed
+      args: !SimpleFlagArg
+        name: n
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ': show brief help on version and usage'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "easel downsample :: downsample <m> things from larger <infile> of\
+      \ n things\n\nUsage:\n  easel downsample [-options] <m> <infile>\n\nOptions:\n\
+      \  -h         : show brief help on version and usage\n  -s         : sequence\
+      \ sampling: <infile> is file or stream of seqs\n  -S         : big sequence\
+      \ sample: <infile> is (seekable) seq file\n  --seed <n> : set random number\
+      \ generator seed  [0]\n"
+    generated_using: &id002
+    - -h
+  - !Command
+    command:
+    - easel
+    - alistat
     positional: []
     named:
     - !Flag
@@ -161,34 +219,9 @@ parent: &id001 !Command
       - -options
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - easel
-    - alistat
     parent: *id001
-    subcommands:
-    - !Command
-      positional: []
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -options
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - easel
-      - alistat
-      - msafile
-      parent: *id002
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-      help_text: "Incorrect number of command line arguments.Usage:\n  easel alistat\
-        \ [-options] <msafile>\n\nTo see more help on available options, do `easel\
-        \ alistat -h`\n\n"
-      generated_using: &id007
-      - --help
+    subcommands: []
+    usage: []
     help_flag: !Flag
       description: ': show brief help on version and usage'
       synonyms:
@@ -203,126 +236,9 @@ parent: &id001 !Command
       \ per alignment\n  --dna   : use DNA alphabet (don't autodetect)\n  --rna  \
       \ : use RNA alphabet (don't autodetect)\n  --amino : use protein alphabet (don't\
       \ autodetect)\n"
-    generated_using: &id005
-    - -h
-  - &id003 !Command
-    positional: []
-    named:
-    - !Flag
-      description: ': sequence sampling: <infile> is file or stream of seqs'
-      synonyms:
-      - -s
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ': big sequence sample: <infile> is (seekable) seq file'
-      synonyms:
-      - -S
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ': set random number generator seed  [0]'
-      synonyms:
-      - --seed
-      args: !SimpleFlagArg
-        name: n
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -options
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - easel
-    - downsample
-    parent: *id001
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: infile
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -options
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - easel
-      - downsample
-      - m
-      parent: *id003
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-      help_text: "Incorrect number of command line arguments.Usage:\n  easel downsample\
-        \ [-options] <m> <infile>\n\nTo see more help on available options, do `easel\
-        \ downsample -h`\n\n"
-      generated_using: &id004 []
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: easel
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: downsample
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: m
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: infile
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -options
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - easel
-      - downsample
-      - infile
-      parent: *id003
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-      help_text: "Incorrect number of command line arguments.Usage:\n  easel downsample\
-        \ [-options] <m> <infile>\n\nTo see more help on available options, do `easel\
-        \ downsample -h`\n\n"
-      generated_using: *id004
-    help_flag: !Flag
-      description: ': show brief help on version and usage'
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "easel downsample :: downsample <m> things from larger <infile> of\
-      \ n things\n\nUsage:\n  easel downsample [-options] <m> <infile>\n\nOptions:\n\
-      \  -h         : show brief help on version and usage\n  -s         : sequence\
-      \ sampling: <infile> is file or stream of seqs\n  -S         : big sequence\
-      \ sample: <infile> is (seekable) seq file\n  --seed <n> : set random number\
-      \ generator seed  [0]\n"
-    generated_using: *id005
-  - *id006
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -330,7 +246,12 @@ parent: &id001 !Command
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
-  version_flag:
+  version_flag: !Flag
+    description: ''
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
   help_text: "easel: little utilities for biological sequence analysis\nversion 0.46\
     \ (Nov 2019): http://bioeasel.org/\n\nUsage:\n  easel -h                : show\
     \ overall brief help summary\n  easel --version         : show version number\n\
@@ -339,57 +260,15 @@ parent: &id001 !Command
     \ statistics for a multiple seq alignment file\n  downsample   downsample <m>\
     \ things from larger <infile> of n things\n  filter       remove seqs >= <maxid>\
     \ fractional identity from MSA\n"
-  generated_using: *id007
+  generated_using:
+  - --help
 subcommands:
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: msafile
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - -options
-    args: !EmptyFlagArg {}
-    optional: true
   command:
   - easel
   - filter
   - maxid
-  parent: *id006
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "Incorrect number of command line arguments.\nUsage:\n  easel filter\
-    \ [-options] <maxid> <msafile>\n\nTo see more help on available options, do `easel\
-    \ filter -h`\n\n"
-  generated_using: *id004
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: easel
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: filter
-    optional: false
-  - !Positional
-    description: ''
-    position: 2
-    name: maxid
-    optional: false
-  - !Positional
-    description: ''
-    position: 3
-    name: msafile
-    optional: false
+  positional: []
   named:
   - !Flag
     description: ''
@@ -397,19 +276,17 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - easel
-  - filter
-  - msafile
-  parent: *id006
+  parent: *id003
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
   help_text: "Incorrect number of command line arguments.\nUsage:\n  easel filter\
     \ [-options] <maxid> <msafile>\n\nTo see more help on available options, do `easel\
     \ filter -h`\n\n"
-  generated_using: *id004
+  generated_using: []
+usage: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
   synonyms:
@@ -437,4 +314,4 @@ help_text: "easel filter :: remove seqs >= <maxid> fractional identity from MSA\
   \ : keep seq whose alispan has better consensus coverage  [default]\n  --randorder\
   \ :  ... or with random preference\n  --origorder :  ... or prefer seq that comes\
   \ first in order\n"
-generated_using: *id005
+generated_using: *id002

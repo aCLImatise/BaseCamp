@@ -2,6 +2,8 @@ version 1.0
 
 task Canu {
   input {
+    String? p
+    Directory? d
     Boolean? pac_bio_hifi
     Boolean? haplotype
     Boolean? correct
@@ -9,24 +11,36 @@ task Canu {
     Boolean? assemble
     Boolean? trim_assemble
     String? haplotype_nanny
-    String? haplotype_billy
-    Boolean? version
+    Int? haplotype_billy
+    Boolean? corrected
+    Boolean? trimmed
+    Boolean? pac_bio
     Boolean? citation
+    Boolean? version
+    String assembled_dot
   }
   command <<<
     canu \
-      ~{true="-pacbio-hifi" false="" pac_bio_hifi} \
-      ~{true="-haplotype" false="" haplotype} \
-      ~{true="-correct" false="" correct} \
-      ~{true="-trim" false="" trim} \
-      ~{true="-assemble" false="" assemble} \
-      ~{true="-trim-assemble" false="" trim_assemble} \
+      ~{assembled_dot} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if (pac_bio_hifi) then "-pacbio-hifi" else ""} \
+      ~{if (haplotype) then "-haplotype" else ""} \
+      ~{if (correct) then "-correct" else ""} \
+      ~{if (trim) then "-trim" else ""} \
+      ~{if (assemble) then "-assemble" else ""} \
+      ~{if (trim_assemble) then "-trim-assemble" else ""} \
       ~{if defined(haplotype_nanny) then ("-haplotypeNANNY " +  '"' + haplotype_nanny + '"') else ""} \
       ~{if defined(haplotype_billy) then ("-haplotypeBILLY " +  '"' + haplotype_billy + '"') else ""} \
-      ~{true="-version" false="" version} \
-      ~{true="-citation" false="" citation}
+      ~{if (corrected) then "-corrected" else ""} \
+      ~{if (trimmed) then "-trimmed" else ""} \
+      ~{if (pac_bio) then "-pacbio" else ""} \
+      ~{if (citation) then "-citation" else ""} \
+      ~{if (version) then "-version" else ""}
   >>>
   parameter_meta {
+    p: "\\"
+    d: "\\"
     pac_bio_hifi: "] file1 file2 ..."
     haplotype: "- generate haplotype-specific reads"
     correct: "- generate corrected reads"
@@ -35,7 +49,14 @@ task Canu {
     trim_assemble: "- generate trimmed reads and then assemble them"
     haplotype_nanny: "*gz"
     haplotype_billy: "billy2.fasta.gz"
-    version: ""
+    corrected: ""
+    trimmed: ""
+    pac_bio: "<files>"
     citation: ""
+    version: ""
+    assembled_dot: "It is used primarily to estimate coverage in reads, NOT as the desired"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

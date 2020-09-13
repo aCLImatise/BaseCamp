@@ -4,4 +4,7 @@ task Dollop {
   command <<<
     dollop
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

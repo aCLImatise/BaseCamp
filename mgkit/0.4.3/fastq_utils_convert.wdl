@@ -1,17 +1,23 @@
 version 1.0
 
-task FastqUtilsConvert {
+task FastqutilsConvert {
   input {
+    Boolean? verbose
     String? fast_q_file
     String? fast_a_file
   }
   command <<<
-    fastq-utils convert \
+    fastq_utils convert \
       ~{fast_q_file} \
-      ~{fast_a_file}
+      ~{fast_a_file} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
+    verbose: ""
     fast_q_file: ""
     fast_a_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

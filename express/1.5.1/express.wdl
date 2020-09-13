@@ -4,4 +4,7 @@ task Express {
   command <<<
     express
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,26 +4,29 @@ task RNAsnp {
   input {
     Boolean? detailed_help
     Boolean? full_help
-    String? seq
-    String? snp
+    File? seq
+    File? snp
     Int? mode
     Int? winsize_fold
   }
   command <<<
     RNAsnp \
-      ~{true="--detailed-help" false="" detailed_help} \
-      ~{true="--full-help" false="" full_help} \
+      ~{if (detailed_help) then "--detailed-help" else ""} \
+      ~{if (full_help) then "--full-help" else ""} \
       ~{if defined(seq) then ("--seq " +  '"' + seq + '"') else ""} \
       ~{if defined(snp) then ("--snp " +  '"' + snp + '"') else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(winsize_fold) then ("--winsizeFold " +  '"' + winsize_fold + '"') else ""}
   >>>
   parameter_meta {
-    detailed_help: "Print help, including all details and hidden options, and exit"
+    detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"
     seq: "File containing the input sequence"
     snp: "File containing the list of SNP"
-    mode: "Select the mode of operation (default=`1') 1 - perform global folding by using RNAfold and compute the difference in base pair probabilities for all sequence intervals 2 - perform local folding by using RNAplfold and compute the difference in base pair probabilities for all sequence intervals of fixed length 3 - screen putative structure-disruptive SNPs in an RNA sequence"
-    winsize_fold: "length of flanking sequence on either side of SNP to fold  (default=`200')"
+    mode: "Select the mode of operation (default=`1')\\n1 - perform global folding by using RNAfold\\nand compute the difference in base pair\\nprobabilities for all sequence intervals\\n2 - perform local folding by using RNAplfold\\nand compute the difference in base pair\\nprobabilities for all sequence intervals of\\nfixed length\\n3 - screen putative structure-disruptive SNPs\\nin an RNA sequence"
+    winsize_fold: "length of flanking sequence on either side of\\nSNP to fold  (default=`200')"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

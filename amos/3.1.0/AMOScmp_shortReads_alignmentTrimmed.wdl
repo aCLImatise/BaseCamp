@@ -1,7 +1,10 @@
 version 1.0
 
-task AMOScmpShortReadsAlignmentTrimmed {
+task AMOScmpshortReadsalignmentTrimmed {
   command <<<
-    AMOScmp-shortReads-alignmentTrimmed
+    AMOScmp_shortReads_alignmentTrimmed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

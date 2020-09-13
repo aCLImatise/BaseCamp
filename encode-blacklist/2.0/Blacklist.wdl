@@ -4,4 +4,7 @@ task Blacklist {
   command <<<
     Blacklist
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

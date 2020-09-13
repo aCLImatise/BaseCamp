@@ -7,11 +7,14 @@ task Pscan {
   }
   command <<<
     pscan \
-      ~{true="-emin" false="" emin} \
-      ~{true="-emax" false="" emax}
+      ~{if (emin) then "-emin" else ""} \
+      ~{if (emax) then "-emax" else ""}
   >>>
   parameter_meta {
-    emin: "integer    [2] Minimum number of elements per fingerprint (Integer from 1 to 20)"
-    emax: "integer    [20] Maximum number of elements per fingerprint (Integer up to 20)"
+    emin: "integer    [2] Minimum number of elements per\\nfingerprint (Integer from 1 to 20)"
+    emax: "integer    [20] Maximum number of elements per\\nfingerprint (Integer up to 20)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

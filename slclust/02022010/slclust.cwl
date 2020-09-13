@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../slclust.cwl
 inputs:
-- id: _verbosity_at
-  doc: "[v] verbosity at 'info', 'debug'  "
+- id: in__verbosity_at
+  doc: "[v] verbosity at 'info', 'debug'"
   type: string
   inputBinding:
     prefix: -j
-- id: opts
+- id: in_opts
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: file_of_pairs
+- id: in_file_of_pairs
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 1
-- id: clusters
+- id: in_clusters
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - slclust

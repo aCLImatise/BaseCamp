@@ -4,4 +4,7 @@ task Umis {
   command <<<
     umis
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,16 +2,16 @@ version 1.0
 
 task HeadRest {
   input {
-    String count
-    File filename
+    String? xxx
   }
   command <<<
     headRest \
-      ~{count} \
-      ~{filename}
+      ~{if defined(xxx) then ("-xxx " +  '"' + xxx + '"') else ""}
   >>>
   parameter_meta {
-    count: ""
-    filename: ""
+    xxx: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

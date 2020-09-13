@@ -1,6 +1,6 @@
 version 1.0
 
-task FlyeSamtoolsMpileup {
+task FlyesamtoolsMpileup {
   input {
     Boolean? illumina_one_dot_three
     Boolean? count_orphans
@@ -16,44 +16,46 @@ task FlyeSamtoolsMpileup {
     Int? min_bq
     String? region
     Boolean? ignore_rg
-    String? incl_flags
-    String? excl_flags
+    Int? incl_flags
+    Int? excl_flags
     Boolean? ignore_overlaps
     File? write_output_file
     Boolean? output_bp
     Boolean? output_mq
     Boolean? output_qname
+    File? input_fmt_option
     File? reference
     String sam_tools
     String m_pile_up
-    String in_one_dot_bam
+    Int in_one_dot_bam
   }
   command <<<
-    flye-samtools mpileup \
+    flye_samtools mpileup \
       ~{sam_tools} \
       ~{m_pile_up} \
       ~{in_one_dot_bam} \
-      ~{true="--illumina1.3" false="" illumina_one_dot_three} \
-      ~{true="--count-orphans" false="" count_orphans} \
+      ~{if (illumina_one_dot_three) then "--illumina1.3" else ""} \
+      ~{if (count_orphans) then "--count-orphans" else ""} \
       ~{if defined(bam_list) then ("--bam-list " +  '"' + bam_list + '"') else ""} \
-      ~{true="--no-BAQ" false="" no_baq} \
+      ~{if (no_baq) then "--no-BAQ" else ""} \
       ~{if defined(adjust_mq) then ("--adjust-MQ " +  '"' + adjust_mq + '"') else ""} \
       ~{if defined(max_depth) then ("--max-depth " +  '"' + max_depth + '"') else ""} \
-      ~{true="--redo-BAQ" false="" redo_baq} \
+      ~{if (redo_baq) then "--redo-BAQ" else ""} \
       ~{if defined(fast_a_ref) then ("--fasta-ref " +  '"' + fast_a_ref + '"') else ""} \
       ~{if defined(exclude_rg) then ("--exclude-RG " +  '"' + exclude_rg + '"') else ""} \
       ~{if defined(positions) then ("--positions " +  '"' + positions + '"') else ""} \
       ~{if defined(min_mq) then ("--min-MQ " +  '"' + min_mq + '"') else ""} \
       ~{if defined(min_bq) then ("--min-BQ " +  '"' + min_bq + '"') else ""} \
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
-      ~{true="--ignore-RG" false="" ignore_rg} \
+      ~{if (ignore_rg) then "--ignore-RG" else ""} \
       ~{if defined(incl_flags) then ("--incl-flags " +  '"' + incl_flags + '"') else ""} \
       ~{if defined(excl_flags) then ("--excl-flags " +  '"' + excl_flags + '"') else ""} \
-      ~{true="--ignore-overlaps" false="" ignore_overlaps} \
+      ~{if (ignore_overlaps) then "--ignore-overlaps" else ""} \
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
-      ~{true="--output-BP" false="" output_bp} \
-      ~{true="--output-MQ" false="" output_mq} \
-      ~{true="--output-QNAME" false="" output_qname} \
+      ~{if (output_bp) then "--output-BP" else ""} \
+      ~{if (output_mq) then "--output-MQ" else ""} \
+      ~{if (output_qname) then "--output-QNAME" else ""} \
+      ~{if defined(input_fmt_option) then ("--input-fmt-option " +  '"' + input_fmt_option + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
   parameter_meta {
@@ -72,15 +74,20 @@ task FlyeSamtoolsMpileup {
     region: "region in which pileup is generated"
     ignore_rg: "ignore RG tags (one BAM = one sample)"
     incl_flags: "|INT  required flags: skip reads with mask bits unset []"
-    excl_flags: "|INT  filter flags: skip reads with mask bits set [UNMAP,SECONDARY,QCFAIL,DUP]"
+    excl_flags: "|INT  filter flags: skip reads with mask bits set\\n[UNMAP,SECONDARY,QCFAIL,DUP]"
     ignore_overlaps: "disable read-pair overlap detection"
     write_output_file: "write output to FILE [standard output]"
     output_bp: "output base positions on reads"
     output_mq: "output mapping quality"
     output_qname: "output read names"
+    input_fmt_option: "[=VAL]\\nSpecify a single input file format option in the form\\nof OPTION or OPTION=VALUE"
     reference: "Reference sequence FASTA FILE [null]"
     sam_tools: ""
     m_pile_up: ""
     in_one_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_write_output_file = "${in_write_output_file}"
   }
 }

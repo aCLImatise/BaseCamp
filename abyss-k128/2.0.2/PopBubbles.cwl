@@ -1,112 +1,115 @@
 class: CommandLineTool
 id: ../../../PopBubbles.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: k-mer size
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: branches
+- id: in_branches
   doc: 'maximum number of branches, default: 2'
-  type: string
+  type: long
   inputBinding:
     prefix: --branches
-- id: bubble_length
-  doc: pop bubbles shorter than N bp default is 10000
-  type: string
+- id: in_bubble_length
+  doc: "pop bubbles shorter than N bp\ndefault is 10000"
+  type: long
   inputBinding:
     prefix: --bubble-length
-- id: identity
+- id: in_identity
   doc: 'minimum identity, default: 0.9'
-  type: string
+  type: double
   inputBinding:
     prefix: --identity
-- id: coverage
-  doc: remove contigs with mean k-mer coverage less than this threshold [0]
-  type: string
+- id: in_coverage
+  doc: "remove contigs with mean k-mer coverage\nless than this threshold [0]"
+  type: long
   inputBinding:
     prefix: --coverage
-- id: scaffold
-  doc: scaffold over bubbles that have insufficient identity
+- id: in_scaffold
+  doc: "scaffold over bubbles that have\ninsufficient identity"
   type: boolean
   inputBinding:
     prefix: --scaffold
-- id: no_scaffold
+- id: in_no_scaffold
   doc: disable scaffolding [default]
   type: boolean
   inputBinding:
     prefix: --no-scaffold
-- id: ss
+- id: in_ss
   doc: expect contigs to be oriented correctly
   type: boolean
   inputBinding:
     prefix: --SS
-- id: no_ss
+- id: in_no_ss
   doc: no assumption about contig orientation [default]
   type: boolean
   inputBinding:
     prefix: --no-SS
-- id: graph
+- id: in_graph
   doc: write the contig adjacency graph to FILE
   type: File
   inputBinding:
     prefix: --graph
-- id: output_graph_adj
+- id: in_output_graph_adj
   doc: output the graph in ADJ format [default]
   type: boolean
   inputBinding:
     prefix: --adj
-- id: as_qg
+- id: in_as_qg
   doc: output the graph in ASQG format
   type: boolean
   inputBinding:
     prefix: --asqg
-- id: dot
+- id: in_dot
   doc: output the graph in GraphViz format
   type: boolean
   inputBinding:
     prefix: --dot
-- id: gv
+- id: in_gv
   doc: output the graph in GraphViz format
   type: boolean
   inputBinding:
     prefix: --gv
-- id: gfa
+- id: in_gfa
   doc: output the graph in GFA format
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: sam
+- id: in_sam
   doc: output the graph in SAM format
   type: boolean
   inputBinding:
     prefix: --sam
-- id: bubble_graph
+- id: in_bubble_graph
   doc: output a graph of the bubbles
   type: boolean
   inputBinding:
     prefix: --bubble-graph
-- id: threads
+- id: in_threads
   doc: use N parallel threads [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: fast_a
+- id: in_fast_a
   doc: contigs in FASTA format
   type: string
   inputBinding:
     position: 0
-- id: contig_adjacency_graph
+- id: in_contig_adjacency_graph
   doc: contig adjacency graph
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - PopBubbles

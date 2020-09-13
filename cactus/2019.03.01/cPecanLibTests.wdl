@@ -4,4 +4,7 @@ task CPecanLibTests {
   command <<<
     cPecanLibTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

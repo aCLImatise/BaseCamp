@@ -1,74 +1,14 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - scssim
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
-  positional: []
-  named:
-  - !Flag
-    description: reference file (.fasta)
-    synonyms:
-    - -r
-    - --ref
-    args: !SimpleFlagArg
-      name: string
-    optional: true
-  - !Flag
-    description: SNP file containing the SNPs to be simulated [Default:null]
-    synonyms:
-    - -s
-    - --snp
-    args: !SimpleFlagArg
-      name: string
-    optional: true
-  - !Flag
-    description: variation file containing the genomic variations to be simulated
-      [Default:null]
-    synonyms:
-    - -v
-    - --var
-    args: !SimpleFlagArg
-      name: string
-    optional: true
-  - !Flag
-    description: output file (.fasta) to save generated sequences
-    synonyms:
-    - -o
-    - --output
-    args: !SimpleFlagArg
-      name: string
-    optional: true
   command:
   - scssim
-  - simuvars
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: give this information
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "Usage: scssim simuvars [options]\n\nOptions:\n    -h, --help       \
-    \               give this information\n    -r, --ref <string>              reference\
-    \ file (.fasta)\n    -s, --snp <string>              SNP file containing the SNPs\
-    \ to be simulated [Default:null]\n    -v, --var <string>              variation\
-    \ file containing the genomic variations to be simulated [Default:null]\n    -o,\
-    \ --output <string>           output file (.fasta) to save generated sequences\n\
-    \nExample:\n    scssim simuvars -r /path/to/hg19.fa -s /path/to/hg19.snp138.1based.txt\
-    \ -v /path/to/variation.txt -o /path/to/results.fa\n\n    scssim simuvars -r /path/to/hg19.fa\
-    \ -v /path/to/variation.txt -o /path/to/results.fa\n\n    scssim simuvars -r /path/to/hg19.fa\
-    \ -s /path/to/hg19.snp138.1based.txt -o /path/to/results.fa\n\nAuthor: Zhenhua\
-    \ Yu <qasim0208@163.com>\n\n"
-  generated_using: &id002
-  - --help
-- !Command
+  - learn
   positional: []
   named:
   - !Flag
@@ -135,11 +75,9 @@ subcommands:
     args: !SimpleFlagArg
       name: string
     optional: true
-  command:
-  - scssim
-  - learn
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: give this information
     synonyms:
@@ -163,8 +101,12 @@ subcommands:
     \n    scssim learn -b /path/to/normal.bam -v /path/to/normal.vcf -r /path/to/ref.fa\
     \ -o /path/to/results.profile -s /path/to/samtools\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\
     \n"
-  generated_using: *id002
+  generated_using: &id002
+  - --help
 - !Command
+  command:
+  - scssim
+  - genreads
   positional: []
   named:
   - !Flag
@@ -240,11 +182,9 @@ subcommands:
     args: !SimpleFlagArg
       name: string
     optional: true
-  command:
-  - scssim
-  - genreads
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: give this information
     synonyms:
@@ -269,6 +209,70 @@ subcommands:
     \ scssim genreads -i /path/to/ref.fa -m /path/to/hiseq2500.profile -t 5 -o /path/to/reads\n\
     \nAuthor: Zhenhua Yu <qasim0208@163.com>\n\n"
   generated_using: *id002
+- !Command
+  command:
+  - scssim
+  - simuvars
+  positional: []
+  named:
+  - !Flag
+    description: reference file (.fasta)
+    synonyms:
+    - -r
+    - --ref
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: SNP file containing the SNPs to be simulated [Default:null]
+    synonyms:
+    - -s
+    - --snp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: variation file containing the genomic variations to be simulated
+      [Default:null]
+    synonyms:
+    - -v
+    - --var
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: output file (.fasta) to save generated sequences
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: give this information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: scssim simuvars [options]\n\nOptions:\n    -h, --help       \
+    \               give this information\n    -r, --ref <string>              reference\
+    \ file (.fasta)\n    -s, --snp <string>              SNP file containing the SNPs\
+    \ to be simulated [Default:null]\n    -v, --var <string>              variation\
+    \ file containing the genomic variations to be simulated [Default:null]\n    -o,\
+    \ --output <string>           output file (.fasta) to save generated sequences\n\
+    \nExample:\n    scssim simuvars -r /path/to/hg19.fa -s /path/to/hg19.snp138.1based.txt\
+    \ -v /path/to/variation.txt -o /path/to/results.fa\n\n    scssim simuvars -r /path/to/hg19.fa\
+    \ -v /path/to/variation.txt -o /path/to/results.fa\n\n    scssim simuvars -r /path/to/hg19.fa\
+    \ -s /path/to/hg19.snp138.1based.txt -o /path/to/results.fa\n\nAuthor: Zhenhua\
+    \ Yu <qasim0208@163.com>\n\n"
+  generated_using: *id002
+usage: []
 help_flag: !Flag
   description: give this information
   synonyms:

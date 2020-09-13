@@ -1,7 +1,10 @@
 version 1.0
 
-task SanityCheckReadsReadyFile.pl.orig {
+task SanityCheckReadsReadyFilepl {
   command <<<
-    sanity_check_reads_ready_file.pl.orig
+    sanity_check_reads_ready_file_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

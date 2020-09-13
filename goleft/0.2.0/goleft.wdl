@@ -4,4 +4,7 @@ task Goleft {
   command <<<
     goleft
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

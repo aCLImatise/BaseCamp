@@ -4,4 +4,7 @@ task Bamfilteraux {
   command <<<
     bamfilteraux
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

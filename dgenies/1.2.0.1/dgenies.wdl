@@ -4,4 +4,7 @@ task Dgenies {
   command <<<
     dgenies
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

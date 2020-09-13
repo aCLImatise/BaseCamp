@@ -1,7 +1,10 @@
 version 1.0
 
-task UseDevelAssertos {
+task Usedevelassertos {
   command <<<
-    use-devel-assertos
+    use_devel_assertos
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

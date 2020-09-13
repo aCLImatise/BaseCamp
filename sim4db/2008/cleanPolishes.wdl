@@ -12,13 +12,13 @@ task CleanPolishes {
   }
   command <<<
     cleanPolishes \
-      ~{true="-threshold" false="" threshold} \
-      ~{true="-quiet" false="" quiet} \
-      ~{true="-beforeafter" false="" before_after} \
-      ~{true="-segregate" false="" segregate} \
-      ~{true="-gff3" false="" gff_three} \
-      ~{true="-savejunk" false="" save_junk} \
-      ~{true="-debug" false="" debug}
+      ~{if (threshold) then "-threshold" else ""} \
+      ~{if (quiet) then "-quiet" else ""} \
+      ~{if (before_after) then "-beforeafter" else ""} \
+      ~{if (segregate) then "-segregate" else ""} \
+      ~{if (gff_three) then "-gff3" else ""} \
+      ~{if (save_junk) then "-savejunk" else ""} \
+      ~{if (debug) then "-debug" else ""}
   >>>
   parameter_meta {
     threshold: "Introns bigger than this are candidates for trimming (default = 100000)."
@@ -28,5 +28,8 @@ task CleanPolishes {
     gff_three: "Write output in GFF3 format"
     save_junk: "Also print the trimmed pieces (as separate matches)"
     debug: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

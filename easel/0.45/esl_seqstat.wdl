@@ -1,10 +1,10 @@
 version 1.0
 
-task EslSeqstat {
+task Eslseqstat {
   input {
     Boolean? report_persequence_info
     Boolean? count_report_composition
-    String? in_format
+    File? in_format
     Boolean? rna
     Boolean? dna
     Boolean? amino
@@ -12,15 +12,15 @@ task EslSeqstat {
     String seq_file
   }
   command <<<
-    esl-seqstat \
+    esl_seqstat \
       ~{seq_file} \
-      ~{true="-a" false="" report_persequence_info} \
-      ~{true="-c" false="" count_report_composition} \
+      ~{if (report_persequence_info) then "-a" else ""} \
+      ~{if (count_report_composition) then "-c" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--comptbl" false="" comp_tbl}
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (comp_tbl) then "--comptbl" else ""}
   >>>
   parameter_meta {
     report_persequence_info: ": report per-sequence info line, not just a summary"
@@ -31,5 +31,8 @@ task EslSeqstat {
     amino: ": specify that <seqfile> contains protein sequence"
     comp_tbl: ": alternative output: a table of residue compositions per seq"
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

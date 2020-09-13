@@ -4,4 +4,7 @@ task Vcfnoindels {
   command <<<
     vcfnoindels
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

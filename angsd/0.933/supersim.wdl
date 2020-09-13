@@ -5,8 +5,8 @@ task Supersim {
     String? out_files
     Boolean? n_pop
     Boolean? n_ind
-    String? n_sites
-    String? er_rate
+    Int? n_sites
+    Float? er_rate
     Boolean? depth
     Boolean? p_var
     Boolean? m_freq
@@ -18,17 +18,17 @@ task Supersim {
   command <<<
     supersim \
       ~{if defined(out_files) then ("-outfiles " +  '"' + out_files + '"') else ""} \
-      ~{true="-npop" false="" n_pop} \
-      ~{true="-nind" false="" n_ind} \
+      ~{if (n_pop) then "-npop" else ""} \
+      ~{if (n_ind) then "-nind" else ""} \
       ~{if defined(n_sites) then ("-nsites " +  '"' + n_sites + '"') else ""} \
       ~{if defined(er_rate) then ("-errate " +  '"' + er_rate + '"') else ""} \
-      ~{true="-depth" false="" depth} \
-      ~{true="-pvar" false="" p_var} \
-      ~{true="-mfreq" false="" m_freq} \
-      ~{true="-F" false="" inbreeding_coefficient_population} \
-      ~{true="-model" false="" model} \
-      ~{true="-simpleRand" false="" simpler_and} \
-      ~{true="-base_freq" false="" base_freq}
+      ~{if (depth) then "-depth" else ""} \
+      ~{if (p_var) then "-pvar" else ""} \
+      ~{if (m_freq) then "-mfreq" else ""} \
+      ~{if (inbreeding_coefficient_population) then "-F" else ""} \
+      ~{if (model) then "-model" else ""} \
+      ~{if (simpler_and) then "-simpleRand" else ""} \
+      ~{if (base_freq) then "-base_freq" else ""}
   >>>
   parameter_meta {
     out_files: "PREFIX.seq PREFIX.glf PREFIX.frq PREFIX.arg"
@@ -43,5 +43,8 @@ task Supersim {
     model: "0=fixed errate 1=variable errate [1]"
     simpler_and: "boolean [1]"
     base_freq: "Background allele frequencies for A,C,G,T [0.25 0.25 0.25 0.25]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

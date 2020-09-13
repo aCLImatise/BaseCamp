@@ -1,6 +1,6 @@
 version 1.0
 
-task OGetReadsFromFastaOutputFasta {
+task OgetreadsfromfastaOutputFasta {
   input {
     Boolean? s
     String o_get_reads_from_fast_a
@@ -9,12 +9,12 @@ task OGetReadsFromFastaOutputFasta {
     String output_fast_a
   }
   command <<<
-    o-get-reads-from-fasta output_fasta \
+    o_get_reads_from_fasta output_fasta \
       ~{o_get_reads_from_fast_a} \
       ~{input_fast_a} \
       ~{ids_file} \
       ~{output_fast_a} \
-      ~{true="-S" false="" s}
+      ~{if (s) then "-S" else ""}
   >>>
   parameter_meta {
     s: ""
@@ -22,5 +22,8 @@ task OGetReadsFromFastaOutputFasta {
     input_fast_a: ""
     ids_file: ""
     output_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

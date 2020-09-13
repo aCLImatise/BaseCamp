@@ -1,22 +1,27 @@
 !Command
-positional: []
+command:
+- wes-client
+positional:
+- !Positional
+  description: job_order
+  position: 0
+  name: workflow_url
+  optional: false
+- !Positional
+  description: --auth AUTH           Defaults to WES_API_AUTH.
+  position: 0
+  name: WES_API_HOST.
+  optional: false
 named:
 - !Flag
-  description: ''
+  description: "Example: '--host=localhost:8080'. Defaults to"
   synonyms:
   - --host
   args: !SimpleFlagArg
     name: HOST
   optional: true
 - !Flag
-  description: ''
-  synonyms:
-  - --auth
-  args: !SimpleFlagArg
-    name: AUTH
-  optional: true
-- !Flag
-  description: ''
+  description: "Options: [http, https]. Defaults to WES_API_PROTO\n(https)."
   synonyms:
   - --proto
   args: !SimpleFlagArg
@@ -28,18 +33,103 @@ named:
   - --quiet
   args: !EmptyFlagArg {}
   optional: true
-command:
-- wes-client
-parent:
-subcommands: []
-help_flag: !Flag
+- !Flag
   description: ''
   synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "A comma separated list of attachments to include.\nExample: --attachments=\"\
+    testdata/dockstore-tool-\nmd5sum.cwl,testdata/md5sum.input\""
+  synonyms:
+  - --attachments
+  args: !SimpleFlagArg
+    name: ATTACHMENTS
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --page
+  args: !SimpleFlagArg
+    name: PAGE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --page-size
+  args: !SimpleFlagArg
+    name: PAGE_SIZE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a <workflow-id>. Example: '--get=<workflow-\nid>'"
+  synonyms:
+  - --get
+  args: !SimpleFlagArg
+    name: GET
+  optional: true
+- !Flag
+  description: "Specify a <workflow-id>. Example: '--log=<workflow-\nid>'"
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --wait
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --no-wait
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --auth
+  args: !SimpleFlagArg
+    name: AUTH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: ''
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "usage: wes-client [-h] [--host HOST] [--auth AUTH] [--proto PROTO] [--quiet]\n\
   \                  [--outdir OUTDIR] [--attachments ATTACHMENTS] [--page PAGE]\n\
   \                  [--page-size PAGE_SIZE]\n                  [--run | --get GET\

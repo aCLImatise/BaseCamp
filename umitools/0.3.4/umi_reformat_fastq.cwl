@@ -1,63 +1,76 @@
 class: CommandLineTool
 id: ../../../umi_reformat_fastq.cwl
 inputs:
-- id: left
+- id: in_left
   doc: 'the input fastq file for r1. (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --left
-- id: right
+- id: in_right
   doc: 'the input fastq file for r2. (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --right
-- id: left_out
+- id: in_left_out
   doc: 'the output fastq file for r1 (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --left-out
-- id: right_out
+- id: in_right_out
   doc: 'the output fastq file for r2 (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --right-out
-- id: verbose
-  doc: 'Also include detailed stats for UMI and padding usage (default: False)'
+- id: in_verbose
+  doc: "Also include detailed stats for UMI and padding usage\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: umi_locator
-  doc: 'Set the UMI locators. If you have multiple, separate them by comma. e.g. GGG,TCA,ATC
-    (default: GGG,TCA,ATC)'
+- id: in_umi_locator
+  doc: "Set the UMI locators. If you have multiple, separate\nthem by comma. e.g.\
+    \ GGG,TCA,ATC (default: GGG,TCA,ATC)"
   type: string
   inputBinding:
     prefix: --umi-locator
-- id: umi_padding
-  doc: 'Set the nucleotide (for preventing ligation bias) after the UMI locators.
-    If you have multiple, separate them by comma. e.g. A,C,G,T. The quality for this
-    nt is sometimes low, so the default is all possible four nucleotides (default:
-    A,C,G,T,N)'
+- id: in_umi_padding
+  doc: "Set the nucleotide (for preventing ligation bias)\nafter the UMI locators.\
+    \ If you have multiple, separate\nthem by comma. e.g. A,C,G,T. The quality for\
+    \ this nt\nis sometimes low, so the default is all possible four\nnucleotides\
+    \ (default: A,C,G,T,N)"
   type: string
   inputBinding:
     prefix: --umi-padding
-- id: umi_pattern
+- id: in_umi_pattern
   doc: 'Set the UMI patterns. (default: None)'
   type: string
   inputBinding:
     prefix: --umi-pattern
-- id: quality
-  doc: 'Quality (phred quality score) cutoff for UMI.Default is 13, that is UMI with
-    qualities >= 13 willbe kept. This program assumes the phred quality scoresin the
-    fastq file are using sanger format (default: 13)'
-  type: string
+- id: in_quality
+  doc: "Quality (phred quality score) cutoff for UMI.Default\nis 13, that is UMI with\
+    \ qualities >= 13 willbe kept.\nThis program assumes the phred quality scoresin\
+    \ the\nfastq file are using sanger format (default: 13)"
+  type: File
   inputBinding:
     prefix: --quality
-- id: debug
+- id: in_debug
   doc: 'Turn on debugging mode (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_left_out
+  doc: 'the output fastq file for r1 (default: None)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_left_out)
+- id: out_right_out
+  doc: 'the output fastq file for r2 (default: None)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_right_out)
 cwlVersion: v1.1
 baseCommand:
 - umi_reformat_fastq

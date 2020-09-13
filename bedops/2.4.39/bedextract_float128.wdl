@@ -1,14 +1,26 @@
 version 1.0
 
-task BedextractFloat128 {
+task Bedextractfloat128 {
   input {
-    String zero
+    Int zero
+    Int one
+    Int two
+    Int three
   }
   command <<<
-    bedextract-float128 \
-      ~{zero}
+    bedextract_float128 \
+      ~{zero} \
+      ~{one} \
+      ~{two} \
+      ~{three}
   >>>
   parameter_meta {
     zero: ""
+    one: ""
+    two: ""
+    three: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

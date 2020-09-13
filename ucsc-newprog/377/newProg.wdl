@@ -6,21 +6,21 @@ task NewProg {
     Boolean? cgi
     String progname
     String description
-    String words
   }
   command <<<
     newProg \
       ~{progname} \
       ~{description} \
-      ~{words} \
-      ~{true="-jkhgap" false="" jkh_gap} \
-      ~{true="-cgi" false="" cgi}
+      ~{if (jkh_gap) then "-jkhgap" else ""} \
+      ~{if (cgi) then "-cgi" else ""}
   >>>
   parameter_meta {
-    jkh_gap: "- include jkhgap.a and mysql libraries as well as jkweb.a archives "
+    jkh_gap: "- include jkhgap.a and mysql libraries as well as jkweb.a archives"
     cgi: "- create shell of a CGI script for web"
     progname: ""
     description: ""
-    words: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

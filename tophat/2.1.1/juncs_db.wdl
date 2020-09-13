@@ -2,7 +2,7 @@ version 1.0
 
 task JuncsDb {
   input {
-    Int min_anchor
+    String min_anchor
     String read_length
   }
   command <<<
@@ -13,5 +13,8 @@ task JuncsDb {
   parameter_meta {
     min_anchor: ""
     read_length: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

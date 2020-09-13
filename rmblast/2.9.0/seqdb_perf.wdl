@@ -4,4 +4,7 @@ task SeqdbPerf {
   command <<<
     seqdb_perf
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

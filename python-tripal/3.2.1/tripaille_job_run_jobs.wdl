@@ -6,9 +6,12 @@ task TripailleJobRunJobs {
   }
   command <<<
     tripaille job run_jobs \
-      ~{true="--wait" false="" wait}
+      ~{if (wait) then "--wait" else ""}
   >>>
   parameter_meta {
     wait: "Wait for job completion  [default: True]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

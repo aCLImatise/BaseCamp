@@ -4,4 +4,7 @@ task Multivcfanalyzer {
   command <<<
     multivcfanalyzer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

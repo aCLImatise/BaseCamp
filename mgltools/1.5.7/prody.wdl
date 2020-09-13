@@ -4,4 +4,7 @@ task Prody {
   command <<<
     prody
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../bxtools_tile.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: Set verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: width
+- id: in_width
   doc: Width of the tile [1000]
   type: boolean
   inputBinding:
     prefix: --width
-- id: overlap
+- id: in_overlap
   doc: Overlap of the tiles [0]
   type: boolean
   inputBinding:
     prefix: --overlap
-- id: bed
+- id: in_bed
   doc: Rather than tile genome, input BED with regions
   type: boolean
   inputBinding:
     prefix: --bed
-- id: tag
+- id: in_tag
   doc: Tag other than BX to evaluate (e.g. MI)
   type: boolean
   inputBinding:
     prefix: --tag
-- id: bam_slash_sam_slash_cram
+- id: in_bam_slash_sam_slash_cram
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bxtools

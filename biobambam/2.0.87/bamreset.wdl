@@ -4,4 +4,7 @@ task Bamreset {
   command <<<
     bamreset
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

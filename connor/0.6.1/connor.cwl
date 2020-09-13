@@ -1,67 +1,75 @@
 class: CommandLineTool
 id: ../../../connor.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: print all log messages to console
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: force
+- id: in_force
   doc: =False. Override validation warnings
   type: boolean
   inputBinding:
     prefix: --force
-- id: log_file
+- id: in_log_file
   doc: ={output_filename}.log. Path to verbose log file
-  type: string
+  type: File
   inputBinding:
     prefix: --log_file
-- id: annotated_output_bam
+- id: in_annotated_output_bam
   doc: path to output BAM containing all original aligns annotated with BAM tags
-  type: string
+  type: File
   inputBinding:
     prefix: --annotated_output_bam
-- id: consensus_freq_threshold
-  doc: '=0.6 (0..1.0): Ambiguous base calls at a specific position in a family are
-    transformed to either majority base call, or N if the majority percentage is below
-    this threshold. (Higher threshold results in more Ns in consensus.)'
-  type: string
+- id: in_consensus_freq_threshold
+  doc: "=0.6 (0..1.0): Ambiguous base calls at a specific position in a family are\n\
+    transformed to either majority base call, or N if the majority percentage\nis\
+    \ below this threshold. (Higher threshold results in more Ns in\nconsensus.)"
+  type: double
   inputBinding:
     prefix: --consensus_freq_threshold
-- id: min_family_size_threshold
-  doc: '=3 (>=0): families with count of original reads < threshold are excluded from
-    the deduplicated output. (Higher threshold is more stringent.)'
+- id: in_min_family_size_threshold
+  doc: "=3 (>=0): families with count of original reads < threshold are excluded\n\
+    from the deduplicated output. (Higher threshold is more\nstringent.)"
   type: long
   inputBinding:
     prefix: --min_family_size_threshold
-- id: umt_distance_threshold
-  doc: =1 (>=0); UMTs equal to or closer than this Hamming distance will be combined
-    into a single family. Lower threshold make more families with more consistent
-    UMTs; 0 implies UMI must match exactly.
-  type: string
+- id: in_umt_distance_threshold
+  doc: "=1 (>=0); UMTs equal to or closer than this Hamming distance will be\ncombined\
+    \ into a single family. Lower threshold make more families with more\nconsistent\
+    \ UMTs; 0 implies UMI must match\nexactly."
+  type: long
   inputBinding:
     prefix: --umt_distance_threshold
-- id: filter_order
-  doc: =count; determines how filters will be ordered in the log results
+- id: in_filter_order
+  doc: "=count; determines how filters will be ordered in the log\nresults"
   type: string
   inputBinding:
     prefix: --filter_order
-- id: umt_length
+- id: in_umt_length
   doc: =6 (>=1); length of UMT
-  type: string
+  type: long
   inputBinding:
     prefix: --umt_length
-- id: input_bam
+- id: in_input_bam
   doc: path to input BAM
   type: string
   inputBinding:
     position: 0
-- id: output_bam
+- id: in_output_bam
   doc: path to deduplicated output BAM
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_annotated_output_bam
+  doc: path to output BAM containing all original aligns annotated with BAM tags
+  type: File
+  outputBinding:
+    glob: $(inputs.in_annotated_output_bam)
 cwlVersion: v1.1
 baseCommand:
 - connor

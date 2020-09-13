@@ -4,4 +4,7 @@ task Bammapdist {
   command <<<
     bammapdist
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

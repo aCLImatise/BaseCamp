@@ -1,17 +1,21 @@
 class: CommandLineTool
 id: ../../../traitar_pfam.cwl
 inputs:
-- id: local
+- id: in_local
   doc: the Pfam HMMs are in the above directory with name 'Pfam-A.hmm'
   type: boolean
   inputBinding:
     prefix: --local
-- id: download
-  doc: download Pfam HMMs into the given download directory and untar and unzip it
+- id: in_download
+  doc: "download Pfam HMMs into the given download directory and untar\nand unzip\
+    \ it"
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - traitar

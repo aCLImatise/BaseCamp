@@ -3,26 +3,24 @@ version 1.0
 task ChadoExportGff {
   input {
     Boolean? verbose
-    String? config
+    File? config
     Boolean? use_password
-    String? output_file
+    File? output_file
     String? abbreviation
     Boolean? export_fast_a
-    String? fast_a_file
+    File? fast_a_file
     Boolean? include_obsolete
-    String dbname
   }
   command <<<
     chado export gff \
-      ~{dbname} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
-      ~{true="--use_password" false="" use_password} \
+      ~{if (use_password) then "--use_password" else ""} \
       ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""} \
       ~{if defined(abbreviation) then ("--abbreviation " +  '"' + abbreviation + '"') else ""} \
-      ~{true="--export_fasta" false="" export_fast_a} \
+      ~{if (export_fast_a) then "--export_fasta" else ""} \
       ~{if defined(fast_a_file) then ("--fasta_file " +  '"' + fast_a_file + '"') else ""} \
-      ~{true="--include_obsolete" false="" include_obsolete}
+      ~{if (include_obsolete) then "--include_obsolete" else ""}
   >>>
   parameter_meta {
     verbose: "verbose mode"
@@ -31,8 +29,12 @@ task ChadoExportGff {
     output_file: "GFF output file"
     abbreviation: "abbreviation/short name of the organism"
     export_fast_a: "export FASTA sequences along with annotations"
-    fast_a_file: "FASTA output file with sequences (default: paste to end of GFF file)"
+    fast_a_file: "FASTA output file with sequences (default: paste to\\nend of GFF file)"
     include_obsolete: "export all features, including obsoletes"
-    dbname: "name of the database"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+    File out_fast_a_file = "${in_fast_a_file}"
   }
 }

@@ -1,14 +1,17 @@
 version 1.0
 
-task HsBlastn {
+task Hsblastn {
   input {
-    String one
+    String or
   }
   command <<<
-    hs-blastn \
-      ~{one}
+    hs_blastn \
+      ~{or}
   >>>
   parameter_meta {
-    one: ""
+    or: "hs-blastn align -help"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

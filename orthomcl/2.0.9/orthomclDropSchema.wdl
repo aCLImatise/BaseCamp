@@ -14,4 +14,7 @@ task OrthomclDropSchema {
     config_file: ""
     sql_log_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

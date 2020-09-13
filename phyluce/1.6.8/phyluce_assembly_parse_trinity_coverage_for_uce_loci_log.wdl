@@ -2,8 +2,8 @@ version 1.0
 
 task PhyluceAssemblyParseTrinityCoverageForUceLociLog {
   input {
-    String? log
-    String? output_csv_file
+    File? log
+    File? output_csv_file
   }
   command <<<
     phyluce_assembly_parse_trinity_coverage_for_uce_loci_log \
@@ -13,5 +13,9 @@ task PhyluceAssemblyParseTrinityCoverageForUceLociLog {
   parameter_meta {
     log: "The log file to parse"
     output_csv_file: "The output CSV file to create"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_csv_file = "${in_output_csv_file}"
   }
 }

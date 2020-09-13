@@ -1,19 +1,22 @@
 class: CommandLineTool
 id: ../../../knock_knock_table.cwl
 inputs:
-- id: group
-  doc: if specified, the single group name to generate tables for; if not specified,
-    all groups will be generated
+- id: in_group
+  doc: "if specified, the single group name to generate tables\nfor; if not specified,\
+    \ all groups will be generated\n"
   type: string
   inputBinding:
     prefix: --group
-- id: project_directory
-  doc: the base directory to store input data, reference annotations, and analysis
-    output for a project
+- id: in_project_directory
+  doc: "the base directory to store input data, reference\nannotations, and analysis\
+    \ output for a project"
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - knock-knock

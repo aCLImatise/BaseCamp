@@ -4,4 +4,7 @@ task Pip {
   command <<<
     pip
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,32 +1,33 @@
 version 1.0
 
-task PanarooFmg {
+task Panaroofmg {
   input {
     String? tree
     String? pa
-    String? outfile
-    String? n_boot
-    String? threads
+    File? outfile
+    Int? n_boot
     Boolean? verbose
-    String pana_roo_fmg_est
+    String perform_dot
   }
   command <<<
-    panaroo-fmg \
-      ~{pana_roo_fmg_est} \
+    panaroo_fmg \
+      ~{perform_dot} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
       ~{if defined(pa) then ("--pa " +  '"' + pa + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(n_boot) then ("--nboot " +  '"' + n_boot + '"') else ""} \
-      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     tree: "A dated phylogeny."
     pa: "A presence/absence produced by Panaroo."
     outfile: "Name of outputfile."
-    n_boot: "The number of sub-sampling bootstrap iterations to perform."
-    threads: "number of threads to use (default=1)"
+    n_boot: "The number of sub-sampling bootstrap iterations to"
     verbose: "print additional output"
-    pana_roo_fmg_est: ""
+    perform_dot: "-t N_CPU, --threads N_CPU"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
   }
 }

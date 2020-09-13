@@ -5,7 +5,7 @@ task Yaggo {
     File? output_file
     File? license
     Boolean? man
-    Boolean? stub
+    File? stub
     File? zc
     Boolean? extended_syntax
     Boolean? debug
@@ -14,11 +14,11 @@ task Yaggo {
     yaggo \
       ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""} \
       ~{if defined(license) then ("--license " +  '"' + license + '"') else ""} \
-      ~{true="--man" false="" man} \
-      ~{true="--stub" false="" stub} \
+      ~{if (man) then "--man" else ""} \
+      ~{if (stub) then "--stub" else ""} \
       ~{if defined(zc) then ("--zc " +  '"' + zc + '"') else ""} \
-      ~{true="--extended-syntax" false="" extended_syntax} \
-      ~{true="--debug" false="" debug}
+      ~{if (extended_syntax) then "--extended-syntax" else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     output_file: "Output file"
@@ -28,5 +28,10 @@ task Yaggo {
     zc: "Write zsh completion file"
     extended_syntax: "Use extended syntax"
     debug: "Debug yaggo"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+    File out_stub = "${in_stub}"
   }
 }

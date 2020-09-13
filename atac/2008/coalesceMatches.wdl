@@ -4,4 +4,7 @@ task CoalesceMatches {
   command <<<
     coalesceMatches
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

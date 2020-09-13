@@ -4,4 +4,7 @@ task Jellyfish {
   command <<<
     jellyfish
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

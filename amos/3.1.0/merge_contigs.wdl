@@ -1,23 +1,27 @@
 version 1.0
 
-task MergeContigs {
+task Mergecontigs {
   input {
-    Boolean? output_outprefixmali_file
-    String coords_file
-    String cco_file
+    File? output_outprefixmali_file
+    File coords_file
+    File cco_file
     String bank_name
   }
   command <<<
-    merge-contigs \
+    merge_contigs \
       ~{coords_file} \
       ~{cco_file} \
       ~{bank_name} \
-      ~{true="-a" false="" output_outprefixmali_file}
+      ~{if (output_outprefixmali_file) then "-a" else ""}
   >>>
   parameter_meta {
     output_outprefixmali_file: "Output the <out-prefix>.mali file"
     coords_file: ""
     cco_file: ""
     bank_name: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_outprefixmali_file = "${in_output_outprefixmali_file}"
   }
 }

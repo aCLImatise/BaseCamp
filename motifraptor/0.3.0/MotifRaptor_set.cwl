@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../MotifRaptor_set.cwl
 inputs:
-- id: parameter_name
+- id: in_parameter_name
   doc: Parameter Name
   type: string
   inputBinding:
     prefix: --parametername
-- id: parameter_value
-  doc: Parameter Value
+- id: in_parameter_value
+  doc: "Parameter Value\n"
   type: string
   inputBinding:
     prefix: --parametervalue
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MotifRaptor

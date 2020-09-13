@@ -4,4 +4,7 @@ task ErdsPipeline {
   command <<<
     erds_pipeline
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

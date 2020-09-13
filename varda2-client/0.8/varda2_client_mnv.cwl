@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../varda2_client_mnv.cwl
 inputs:
-- id: start
+- id: in_start
   doc: Start of region
   type: string
   inputBinding:
     prefix: --start
-- id: end
+- id: in_end
   doc: End of region
   type: string
   inputBinding:
     prefix: --end
-- id: inserted
+- id: in_inserted
   doc: Inserted sequence
   type: string
   inputBinding:
     prefix: --inserted
-- id: reference
-  doc: Chromosome to look at
+- id: in_reference
+  doc: "Chromosome to look at\n"
   type: string
   inputBinding:
     prefix: --reference
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - varda2-client

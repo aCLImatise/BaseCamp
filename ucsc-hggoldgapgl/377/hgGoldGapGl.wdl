@@ -4,9 +4,9 @@ task HgGoldGapGl {
   input {
     Boolean? no_gl
     String? chrom
-    String? chrom_lst
+    Int? chrom_lst
     Boolean? no_load
-    String? verbose
+    Int? verbose
     String database
     String gs_dir
     String oo_subdir
@@ -16,10 +16,10 @@ task HgGoldGapGl {
       ~{database} \
       ~{gs_dir} \
       ~{oo_subdir} \
-      ~{true="-noGl" false="" no_gl} \
+      ~{if (no_gl) then "-noGl" else ""} \
       ~{if defined(chrom) then ("-chrom " +  '"' + chrom + '"') else ""} \
       ~{if defined(chrom_lst) then ("-chromLst " +  '"' + chrom_lst + '"') else ""} \
-      ~{true="-noLoad" false="" no_load} \
+      ~{if (no_load) then "-noLoad" else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
   parameter_meta {
@@ -27,9 +27,12 @@ task HgGoldGapGl {
     chrom: "- just do a single chromosome.  Don't delete old tables."
     chrom_lst: "- chromosomes subdirs are named in chrom.lst (1, 2, ...)"
     no_load: "- do not load tables, leave SQL files instead."
-    verbose: "- n==2 brief information and SQL table create statements - n==3 show all gaps"
+    verbose: "- n==2 brief information and SQL table create statements\\n- n==3 show all gaps"
     database: ""
     gs_dir: ""
     oo_subdir: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

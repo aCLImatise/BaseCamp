@@ -1,32 +1,35 @@
 version 1.0
 
-task RagoutOverlap {
+task Ragoutoverlap {
   input {
-    Boolean? detect_km_er
     Boolean? hist
+    Boolean? detect_km_er
     String overlap
     String fast_a_in
     String dot_out
-    Int min_k
-    Int max_k
+    String min_k
+    String max_k
   }
   command <<<
-    ragout-overlap \
+    ragout_overlap \
       ~{overlap} \
       ~{fast_a_in} \
       ~{dot_out} \
       ~{min_k} \
       ~{max_k} \
-      ~{true="--detect-kmer" false="" detect_km_er} \
-      ~{true="--hist" false="" hist}
+      ~{if (hist) then "--hist" else ""} \
+      ~{if (detect_km_er) then "--detect-kmer" else ""}
   >>>
   parameter_meta {
-    detect_km_er: ""
     hist: ""
+    detect_km_er: ""
     overlap: ""
     fast_a_in: ""
     dot_out: ""
     min_k: ""
     max_k: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

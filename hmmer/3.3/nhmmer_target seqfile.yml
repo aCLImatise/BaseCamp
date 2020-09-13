@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- nhmmer
+- target seqfile
 positional:
 - !Positional
   description: ''
@@ -16,10 +19,9 @@ positional:
   name: target seqfile
   optional: false
 named: []
-command:
-- nhmmer
-- target seqfile
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - nhmmer
   positional: []
   named:
   - !Flag
@@ -355,11 +357,13 @@ parent: &id001 !Command
     args: !SimpleFlagArg
       name: n
     optional: true
-  command:
-  - nhmmer
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - nhmmer
+    - query hmmfile|alignfile|seqfile
     positional:
     - !Positional
       description: ''
@@ -367,11 +371,9 @@ parent: &id001 !Command
       name: target seqfile
       optional: false
     named: []
-    command:
-    - nhmmer
-    - query hmmfile|alignfile|seqfile
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ': show brief help on version and usage'
       synonyms:
@@ -385,7 +387,7 @@ parent: &id001 !Command
       \ are:\n  -h : show brief help on version and usage\n\nTo see more help on available\
       \ options, do nhmmer -h\n\n"
     generated_using: &id003 []
-  - *id002
+  usage: []
   help_flag: !Flag
     description: ': show brief help on version and usage'
     synonyms:
@@ -454,6 +456,7 @@ parent: &id001 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
   synonyms:

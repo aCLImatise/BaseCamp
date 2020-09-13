@@ -5,10 +5,10 @@ task QCExtractor {
     File? in
     String? qp
     File? run
-    String? name
+    File? name
     File? out_csv
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -22,7 +22,7 @@ task QCExtractor {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*        Input qcml file (valid formats: 'qcML')"
@@ -34,5 +34,8 @@ task QCExtractor {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

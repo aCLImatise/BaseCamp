@@ -1,7 +1,10 @@
 version 1.0
 
-task MbCalculatePosterior {
+task Mbcalculateposterior {
   command <<<
-    mb-calculate-posterior
+    mb_calculate_posterior
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

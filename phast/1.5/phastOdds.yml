@@ -1,9 +1,31 @@
 !Command
+command:
+- phastOdds
 positional: []
 named:
 - !Flag
-  description: (Required unless -w or -y) File defining features to be scored (GFF,
-    BED, or genepred).
+  description: "(Required) Comma-delimited list of tree model (*.mod) files for\n\
+    background.  If used with --background-hmm, order of models must\ncorrespond to\
+    \ order of states in HMM."
+  synonyms:
+  - --background-mods
+  - -b
+  args: !SimpleFlagArg
+    name: backgd_mods
+  optional: true
+- !Flag
+  description: "(Required) Comma-delimited list of tree model (*.mod) files for\n\
+    features.  If used with --feature-hmm, order of models must\ncorrespond to order\
+    \ of states in HMM."
+  synonyms:
+  - --feature-mods
+  - -f
+  args: !SimpleFlagArg
+    name: feat_mods
+  optional: true
+- !Flag
+  description: "(Required unless -w or -y) File defining features to be scored\n(GFF,\
+    \ BED, or genepred)."
   synonyms:
   - --features
   - -g
@@ -11,13 +33,31 @@ named:
     name: feats.gff
   optional: true
 - !Flag
-  description: (Can be used instead of -g or -y) Compute scores in a sliding window
-    of the specified size.
+  description: "(Can be used instead of -g or -y) Compute scores in a sliding\nwindow\
+    \ of the specified size."
   synonyms:
   - --window
   - -w
   args: !SimpleFlagArg
     name: size
+  optional: true
+- !Flag
+  description: "HMM for background.  If there is only one backgound tree\nmodel, a\
+    \ trivial (single-state) HMM will be assumed."
+  synonyms:
+  - --background-hmm
+  - -B
+  args: !SimpleFlagArg
+    name: backgd.hmm
+  optional: true
+- !Flag
+  description: "HMM for features.  If there is only one tree model for\nfeatures,\
+    \ a trivial (single-state) HMM will be assumed."
+  synonyms:
+  - --feature-hmm
+  - -F
+  args: !SimpleFlagArg
+    name: feat.hmm
   optional: true
 - !Flag
   description: (For use with -g) Generate output in bed format rather than GFF.
@@ -27,58 +67,20 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (Required) Comma-delimited list of tree model (*.mod) files for background.  If
-    used with --background-hmm, order of models must correspond to order of states
-    in HMM.
-  synonyms:
-  - --background-mods
-  - -b
-  args: !SimpleFlagArg
-    name: backgd_mods
-  optional: true
-- !Flag
-  description: HMM for background.  If there is only one backgound tree model, a trivial
-    (single-state) HMM will be assumed.
-  synonyms:
-  - --background-hmm
-  - -B
-  args: !SimpleFlagArg
-    name: backgd.hmm
-  optional: true
-- !Flag
-  description: (Required) Comma-delimited list of tree model (*.mod) files for features.  If
-    used with --feature-hmm, order of models must correspond to order of states in
-    HMM.
-  synonyms:
-  - --feature-mods
-  - -f
-  args: !SimpleFlagArg
-    name: feat_mods
-  optional: true
-- !Flag
-  description: HMM for features.  If there is only one tree model for features, a
-    trivial (single-state) HMM will be assumed.
-  synonyms:
-  - --feature-hmm
-  - -F
-  args: !SimpleFlagArg
-    name: feat.hmm
-  optional: true
-- !Flag
-  description: (Can be used instead of -g or -y) Output base-by-base scores, in the
-    coordinate frame of the reference sequence (or of the sequence specified by --refidx).  Output
-    is in fixed-step WIG format (http://genome.ucsc.edu/goldenPath/help/wiggle.html).  This
-    option can only be used with individual phylogenetic models, not with sets of
-    models and a (nontrivial) HMM.
+  description: "(Can be used instead of -g or -y) Output base-by-base scores, in\n\
+    the coordinate frame of the reference sequence (or of the sequence\nspecified\
+    \ by --refidx).  Output is in fixed-step WIG format\n(http://genome.ucsc.edu/goldenPath/help/wiggle.html).\
+    \  This option\ncan only be used with individual phylogenetic models, not with\
+    \ sets\nof models and a (nontrivial) HMM."
   synonyms:
   - --base-by-base
   - -y
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (Can be used instead of -g or -y) Like --window but outputs scores
-    in fixed-step WIG format, as with --base-by-base.  Scores for the positive strand
-    only are output.
+  description: "(Can be used instead of -g or -y) Like --window but outputs scores\n\
+    in fixed-step WIG format, as with --base-by-base.  Scores for the\npositive strand\
+    \ only are output."
   synonyms:
   - --window-wig
   - -W
@@ -86,8 +88,8 @@ named:
     name: size
   optional: true
 - !Flag
-  description: Input format for alignment.  May be FASTA, PHYLIP, MPM, SS, or MAF
-    (default is to guess format from file contents).
+  description: "Input format for alignment.  May be FASTA, PHYLIP, MPM, SS, or\nMAF\
+    \ (default is to guess format from file contents)."
   synonyms:
   - --msa-format
   - -i
@@ -95,8 +97,8 @@ named:
     name: type
   optional: true
 - !Flag
-  description: Index of reference sequence for coordinates.  Use 0 to indicate the
-    coordinate system of the alignment as a whole. Default is 1, for first sequence.
+  description: "Index of reference sequence for coordinates.  Use 0 to\nindicate the\
+    \ coordinate system of the alignment as a whole.\nDefault is 1, for first sequence."
   synonyms:
   - --refidx
   - -r
@@ -104,19 +106,18 @@ named:
     name: ref_seq
   optional: true
 - !Flag
-  description: Verbose mode.  Print messages to stderr describing what the program
-    is doing.
+  description: "Verbose mode.  Print messages to stderr describing what the\nprogram\
+    \ is doing."
   synonyms:
   - --verbose
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- phastOdds
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: Print this help message.
+  description: "Print this help message.\n"
   synonyms:
   - --help
   - -h

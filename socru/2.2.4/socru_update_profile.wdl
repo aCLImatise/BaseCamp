@@ -2,7 +2,7 @@ version 1.0
 
 task SocruUpdateProfile {
   input {
-    String? output_file
+    File? output_file
     Boolean? debug
     Boolean? verbose
     String so_cru_output_filename
@@ -13,8 +13,8 @@ task SocruUpdateProfile {
       ~{so_cru_output_filename} \
       ~{profile_filename} \
       ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     output_file: "Output filename (default: updated_profile.txt)"
@@ -22,5 +22,9 @@ task SocruUpdateProfile {
     verbose: "Turn on verbose output (default: False)"
     so_cru_output_filename: "Socru output file"
     profile_filename: "profile.txt from database"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

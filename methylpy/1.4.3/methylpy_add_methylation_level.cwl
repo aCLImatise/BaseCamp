@@ -1,71 +1,74 @@
 class: CommandLineTool
 id: ../../../methylpy_add_methylation_level.cwl
 inputs:
-- id: input_tsv_file
-  doc: 'A tab-separate file that specifies genomic intervals. The file contains a
-    header.First three columns are required to be chromosome, start and end, which
-    are 1-based cooridates. It may contain additional column(s). (default: None)'
-  type: string
-  inputBinding:
-    prefix: --input-tsv-file
-- id: output_file
-  doc: 'Name of output file (default: None)'
-  type: string
+- id: in_output_file
+  doc: ''
+  type: File
   inputBinding:
     prefix: --output-file
-- id: all_c_files
-  doc: 'List of allc files. (default: None)'
-  type: string[]
+- id: in_input_tsv_file
+  doc: "A tab-separate file that specifies genomic intervals.\nThe file contains a\
+    \ header.First three columns are\nrequired to be chromosome, start and end, which\
+    \ are\n1-based cooridates. It may contain additional\ncolumn(s). (default: None)"
+  type: File
   inputBinding:
-    prefix: --allc-files
-- id: samples
-  doc: 'List of space separated samples matching allc files. By default sample names
-    will be inferred from allc filenames (default: None)'
+    prefix: --input-tsv-file
+- id: in_samples
+  doc: "List of space separated samples matching allc files.\nBy default sample names\
+    \ will be inferred from allc\nfilenames (default: None)"
   type: string[]
   inputBinding:
     prefix: --samples
-- id: mc_type
-  doc: "List of space separated mc nucleotide contexts for which you want to look\
-    \ for DMRs. These classifications may use the wildcards H (indicating anything\
-    \ but a G) and N (indicating any nucleotide). (default: ['CGN'])"
+- id: in_mc_type
+  doc: "List of space separated mc nucleotide contexts for\nwhich you want to look\
+    \ for DMRs. These classifications\nmay use the wildcards H (indicating anything\
+    \ but a G)\nand N (indicating any nucleotide). (default: ['CGN'])"
   type: string[]
   inputBinding:
     prefix: --mc-type
-- id: extra_info
-  doc: 'Boolean to indicate whether to generate two output extra files with the total
-    basecalls and covered sites in each of the regions. (default: False)'
-  type: string
+- id: in_extra_info
+  doc: "Boolean to indicate whether to generate two output\nextra files with the total\
+    \ basecalls and covered sites\nin each of the regions. (default: False)"
+  type: boolean
   inputBinding:
     prefix: --extra-info
-- id: num_procs
-  doc: 'Number of processors you wish to use to parallelize this function (default:
-    1)'
-  type: string
+- id: in_num_procs
+  doc: "Number of processors you wish to use to parallelize\nthis function (default:\
+    \ 1)"
+  type: long
   inputBinding:
     prefix: --num-procs
-- id: min_cov
-  doc: 'Minimum coverage for a site to be included (default: 0)'
+- id: in_min_cov
+  doc: "Minimum coverage for a site to be included (default:\n0)"
   type: long
   inputBinding:
     prefix: --min-cov
-- id: max_cov
-  doc: 'Maximum coverage for a site to be included. By default this cutoff is not
-    applied. (default: None)'
+- id: in_max_cov
+  doc: "Maximum coverage for a site to be included. By default\nthis cutoff is not\
+    \ applied. (default: None)"
   type: long
   inputBinding:
     prefix: --max-cov
-- id: buffer_line_number
-  doc: 'size of buffer for reads to be written on hard drive. (default: 100000)'
-  type: string
+- id: in_buffer_line_number
+  doc: "size of buffer for reads to be written on hard drive.\n(default: 100000)"
+  type: long
   inputBinding:
     prefix: --buffer-line-number
-- id: input_no_header
-  doc: 'Indicating whether input tsv file contains a header. If this is set to True,
-    a header will be automatically generated in the output file. (default: False)'
-  type: string
+- id: in_input_no_header
+  doc: "Indicating whether input tsv file contains a header.\nIf this is set to True,\
+    \ a header will be automatically\ngenerated in the output file. (default: False)\n"
+  type: File
   inputBinding:
     prefix: --input-no-header
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - methylpy

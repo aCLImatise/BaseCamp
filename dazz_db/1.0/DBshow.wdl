@@ -6,9 +6,12 @@ task DBshow {
   }
   command <<<
     DBshow \
-      ~{true="-unqUQ" false="" unq_uq}
+      ~{if (unq_uq) then "-unqUQ" else ""}
   >>>
   parameter_meta {
     unq_uq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

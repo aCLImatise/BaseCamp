@@ -1,26 +1,35 @@
 version 1.0
 
-task LwpMirror {
+task Lwpmirror {
   input {
     Boolean? print_version_number
     String? set_timeout_value
-    Boolean? options
+    Boolean? var_2
+    Boolean? more_options
+    Boolean? var_4
     String url
     File file
   }
   command <<<
-    lwp-mirror \
+    lwp_mirror \
       ~{url} \
       ~{file} \
-      ~{true="-v" false="" print_version_number} \
+      ~{if (print_version_number) then "-v" else ""} \
       ~{if defined(set_timeout_value) then ("-t " +  '"' + set_timeout_value + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (var_2) then "-options" else ""} \
+      ~{if (more_options) then "-MORE_OPTIONS" else ""} \
+      ~{if (var_4) then "-OPTIONS" else ""}
   >>>
   parameter_meta {
     print_version_number: "print version number of program"
     set_timeout_value: "Set timeout value"
-    options: ""
+    var_2: ""
+    more_options: ""
+    var_4: ""
     url: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

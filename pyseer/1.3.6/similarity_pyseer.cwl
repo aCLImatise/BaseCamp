@@ -1,47 +1,45 @@
 class: CommandLineTool
 id: ../../../similarity_pyseer.cwl
 inputs:
-- id: km_ers
+- id: in_km_ers
   doc: Kmers file
-  type: string
+  type: File
   inputBinding:
     prefix: --kmers
-- id: vcf
+- id: in_vcf
   doc: VCF file. Will filter any non 'PASS' sites
-  type: string
+  type: File
   inputBinding:
     prefix: --vcf
-- id: pres
-  doc: Presence/absence .Rtab matrix as produced by roary and piggy
+- id: in_pres
+  doc: Presence/absence .Rtab matrix as produced by roary and
   type: string
   inputBinding:
     prefix: --pres
-- id: min_af
-  doc: 'Minimum AF [Default: 0.01]'
-  type: long
-  inputBinding:
-    prefix: --min-af
-- id: max_af
+- id: in_max_af
   doc: 'Maximum AF [Default: 0.99]'
   type: long
   inputBinding:
     prefix: --max-af
-- id: max_missing
+- id: in_max_missing
   doc: 'Maximum missing (vcf/Rtab) [Default: 0.05]'
   type: long
   inputBinding:
     prefix: --max-missing
-- id: uncompressed
+- id: in_uncompressed
   doc: 'Uncompressed kmers file [Default: gzipped]'
   type: boolean
   inputBinding:
     prefix: --uncompressed
-- id: samples
-  doc: List of sample names to use
+- id: in_piggy
+  doc: '--min-af MIN_AF       Minimum AF [Default: 0.01]'
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - similarity_pyseer

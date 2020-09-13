@@ -1,13 +1,84 @@
 !Command
-positional: []
-named: []
 command:
 - convert2bed
+positional: []
+named:
+- !Flag
+  description: "=[bam|gff|gtf|gvf|psl|rmsk|sam|vcf|wig] (-i <fmt>)\nGenomic format\
+    \ of input file (required)"
+  synonyms:
+  - --input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[bed|starch] (-o <fmt>)\nFormat of output file, either BED or BEDOPS\
+    \ Starch (optional, default is BED)"
+  synonyms:
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-d)\nDo not sort BED output with sort-bed (not compatible with --output=starch)"
+  synonyms:
+  - --do-not-sort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-m <val>)\nSets aside <value> memory for sorting BED output. For\
+    \ example, <value> can\nbe 8G, 8000M or 8000000000 to specify 8 GB of memory (default\
+    \ is 2G)"
+  synonyms:
+  - --max-mem
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "(-r <dir>)\nOptionally sets [dir] as temporary directory for sort\
+    \ data, when used in\nconjunction with --max-mem=[value], instead of the host's\
+    \ operating system\ndefault temporary directory"
+  synonyms:
+  - --sort-tmpdir
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: "(-z)\nUsed with --output=starch, the compressed output explicitly\
+    \ applies the bzip2\nalgorithm to compress intermediate data (default is bzip2)"
+  synonyms:
+  - --starch-bzip2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-g)\nUsed with --output=starch, the compressed output applies gzip\
+    \ compression on\nintermediate data"
+  synonyms:
+  - --starch-gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=\"xyz...\" (-e \"xyz...\")\nUsed with --output=starch, this adds\
+    \ a note to the Starch archive metadata"
+  synonyms:
+  - --starch-note
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: "| --help[-bam|-gff|-gtf|-gvf|-psl|-rmsk|-sam|-vcf|-wig] (-h | -h <fmt>)\n\
+    Show general help message (or detailed help for a specified input format)"
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: "(-w)\nShow application version\n"
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "convert2bed\n  version:  2.4.39\n  author:   Alex Reynolds\n\n  Usage:\n\
   \n  $ convert2bed --input=fmt [--output=fmt] [options] < input > output\n\n  Convert\
   \ BAM, GFF, GTF, GVF, PSL, RepeatMasker (OUT), SAM, VCF\n  and WIG genomic formats\

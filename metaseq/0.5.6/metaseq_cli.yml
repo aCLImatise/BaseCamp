@@ -1,116 +1,34 @@
 !Command
-positional:
-- !Positional
-  description: One of (avgdensity, array)
-  position: 0
-  name: action
-  optional: false
-- !Positional
-  description: Data file to use.
-  position: 1
-  name: datafile
-  optional: false
-- !Positional
-  description: Type of data file. One of (bam, bed, bigwig, bigbed, gff, gtf, vcf)
-  position: 2
-  name: type
-  optional: false
-- !Positional
-  description: Windows within which to get data from `datafile`. Can be a filename
-    of intervals (bam, bed, gff, gtf, vcf), or, if `--fromstring` is specified, a
-    coord of the form "chrom:start-stop", which only works for a single interval')
-  position: 3
-  name: windows
-  optional: false
-named:
-- !Flag
-  description: Assume `windows` specifies a genomic coordinate of the form 'chrom:start-stop'
-    or 'chrom:start-stop[strand]
-  synonyms:
-  - --fromstring
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Number of bins to divide each window into
-  synonyms:
-  - --bins
-  args: !SimpleFlagArg
-    name: BINS
-  optional: true
-- !Flag
-  description: Results will be saved to this file; default is to print to stdout.
-  synonyms:
-  - --output
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
-  description: Create a simple plot of the results
-  synonyms:
-  - --plot
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Number of processes to use
-  synonyms:
-  - --processes
-  args: !SimpleFlagArg
-    name: PROCESSES
-  optional: true
-- !Flag
-  description: Each interval in `datafile` will be extended 3' to a total of `fragmentsize`
-    bp. This can have a dramatic smoothing effect.
-  synonyms:
-  - --fragmentsize
-  args: !SimpleFlagArg
-    name: FRAGMENTSIZE
-  optional: true
 command:
 - metaseq-cli
+positional: []
+named: []
 parent:
 subcommands: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+usage: []
+help_flag:
 usage_flag:
 version_flag:
-help_text: "usage: metaseq-cli [-h] [--fromstring] [--bins BINS] [--output OUTPUT]\n\
-  \                   [--plot] [--processes PROCESSES]\n                   [--fragmentsize\
-  \ FRAGMENTSIZE]\n                   action datafile type windows\n\n    **Still\
-  \ in development -- the API will probably change; this is mostly\n    provided as\
-  \ an example for how to use metaseq in general...**\n\n    Given two files -- one\
-  \ with data to summarize (`datafile`), and another\n    with windows in which that\
-  \ data will be summarized (`windows`) -- return\n    either an average density or\
-  \ a full array of data.\n\n    For example, say \"reads.bam\" is a BAM file of ChIP-seq\
-  \ reads, and\n    \"tsses.bed\" is a BED file of transcript TSSs, +/- 1kb.\n\n \
-  \   The following command will plot the average read density around TSSs, with\n\
-  \    data binned into 100 bins.  Eight CPUs will be used to calculate the full\n\
-  \    array, which will then be averaged to give the final read density.  If each\n\
-  \    feature in \"tsses.bed\" is 2kb, then the bin sizes will be 20bp.  Results\n\
-  \    will be saved to \"avgdensity.txt\" for use by other programs.\n\n    metaseq-cli\
-  \ avgdensity \\\n        reads.bam bam \\\n        tsses.bed \\\n        --bins=100\
-  \ \\\n        --plot \\\n        --output avgdensity.txt \\\n        --processes=8\n\
-  \n    \n\npositional arguments:\n  action                One of (avgdensity, array)\n\
-  \  datafile              Data file to use.\n  type                  Type of data\
-  \ file. One of (bam, bed, bigwig, bigbed,\n                        gff, gtf, vcf)\n\
-  \  windows               Windows within which to get data from `datafile`. Can\n\
-  \                        be a filename of intervals (bam, bed, gff, gtf, vcf),\n\
-  \                        or, if `--fromstring` is specified, a coord of the\n  \
-  \                      form \"chrom:start-stop\", which only works for a single\n\
-  \                        interval')\n\noptional arguments:\n  -h, --help       \
-  \     show this help message and exit\n  --fromstring          Assume `windows`\
-  \ specifies a genomic coordinate of the\n                        form 'chrom:start-stop'\
-  \ or 'chrom:start-stop[strand]\n  --bins BINS           Number of bins to divide\
-  \ each window into\n  --output OUTPUT       Results will be saved to this file;\
-  \ default is to\n                        print to stdout.\n  --plot            \
-  \    Create a simple plot of the results\n  --processes PROCESSES\n            \
-  \            Number of processes to use\n  --fragmentsize FRAGMENTSIZE\n       \
-  \                 Each interval in `datafile` will be extended 3' to a\n       \
-  \                 total of `fragmentsize` bp. This can have a dramatic\n       \
-  \                 smoothing effect.\n"
+help_text: "/usr/local/lib/python2.7/site-packages/metaseq/_genomic_signal.py:32:\
+  \ RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility.\
+  \ Expected 96, got 88\n  from bx.bbi.bigwig_file import BigWigFile\n/usr/local/lib/python2.7/site-packages/metaseq/filetype_adapters.py:15:\
+  \ RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility.\
+  \ Expected 96, got 88\n  from bx.bbi.bigbed_file import BigBedFile\nTraceback (most\
+  \ recent call last):\n  File \"/usr/local/bin/metaseq-cli\", line 6, in <module>\n\
+  \    import metaseq\n  File \"/usr/local/lib/python2.7/site-packages/metaseq/__init__.py\"\
+  , line 7, in <module>\n    import plotutils\n  File \"/usr/local/lib/python2.7/site-packages/metaseq/plotutils.py\"\
+  , line 6, in <module>\n    from matplotlib import pyplot as plt\n  File \"/usr/local/lib/python2.7/site-packages/matplotlib/pyplot.py\"\
+  , line 115, in <module>\n    _backend_mod, new_figure_manager, draw_if_interactive,\
+  \ _show = pylab_setup()\n  File \"/usr/local/lib/python2.7/site-packages/matplotlib/backends/__init__.py\"\
+  , line 62, in pylab_setup\n    [backend_name], 0)\n  File \"/usr/local/lib/python2.7/site-packages/matplotlib/backends/backend_qt5agg.py\"\
+  , line 15, in <module>\n    from .backend_qt5 import (\n  File \"/usr/local/lib/python2.7/site-packages/matplotlib/backends/backend_qt5.py\"\
+  , line 19, in <module>\n    import matplotlib.backends.qt_editor.figureoptions as\
+  \ figureoptions\n  File \"/usr/local/lib/python2.7/site-packages/matplotlib/backends/qt_editor/figureoptions.py\"\
+  , line 20, in <module>\n    import matplotlib.backends.qt_editor.formlayout as formlayout\n\
+  \  File \"/usr/local/lib/python2.7/site-packages/matplotlib/backends/qt_editor/formlayout.py\"\
+  , line 54, in <module>\n    from matplotlib.backends.qt_compat import QtGui, QtWidgets,\
+  \ QtCore\n  File \"/usr/local/lib/python2.7/site-packages/matplotlib/backends/qt_compat.py\"\
+  , line 158, in <module>\n    raise ImportError(\"Failed to import any qt binding\"\
+  )\nImportError: Failed to import any qt binding\n"
 generated_using:
 - --help

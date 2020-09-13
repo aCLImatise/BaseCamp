@@ -1,7 +1,10 @@
 version 1.0
 
-task _ssuMerge {
+task Ssumerge {
   command <<<
-    _ssu-merge
+    _ssu_merge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

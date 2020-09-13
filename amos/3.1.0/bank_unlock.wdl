@@ -1,7 +1,10 @@
 version 1.0
 
-task BankUnlock {
+task Bankunlock {
   command <<<
-    bank-unlock
+    bank_unlock
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

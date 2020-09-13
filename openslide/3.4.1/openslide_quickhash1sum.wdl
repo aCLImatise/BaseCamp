@@ -1,7 +1,10 @@
 version 1.0
 
-task OpenslideQuickhash1sum {
+task Openslidequickhash1sum {
   command <<<
-    openslide-quickhash1sum
+    openslide_quickhash1sum
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

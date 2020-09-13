@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../sff2fastq.cwl
 inputs:
-- id: program_version_information
+- id: in_program_version_information
   doc: Program and version information
   type: boolean
   inputBinding:
     prefix: -v
-- id: output_untrimmed_sequence
+- id: in_output_untrimmed_sequence
   doc: Output the untrimmed sequence and quality scores
   type: boolean
   inputBinding:
     prefix: -n
-- id: desired_fastq_output
+- id: in_desired_fastq_output
   doc: Desired fastq output file. If not specified, defaults to stdout
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: sff_file
+- id: in_sff_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_desired_fastq_output
+  doc: Desired fastq output file. If not specified, defaults to stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_desired_fastq_output)
 cwlVersion: v1.1
 baseCommand:
 - sff2fastq

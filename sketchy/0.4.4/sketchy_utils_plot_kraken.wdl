@@ -1,9 +1,9 @@
 version 1.0
 
-task SketchyUtilsPlotKraken {
+task SketchyUtilsPlotkraken {
   input {
-    String? report
-    String? prefix
+    File? report
+    File? prefix
     String? level
     Int? top
     String? color
@@ -11,14 +11,14 @@ task SketchyUtilsPlotKraken {
     Boolean? sub
   }
   command <<<
-    sketchy utils plot-kraken \
+    sketchy utils plot_kraken \
       ~{if defined(report) then ("--report " +  '"' + report + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
       ~{if defined(top) then ("--top " +  '"' + top + '"') else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
-      ~{true="--sub" false="" sub}
+      ~{if (sub) then "--sub" else ""}
   >>>
   parameter_meta {
     report: "Path or file glob to tax report files"
@@ -28,5 +28,9 @@ task SketchyUtilsPlotKraken {
     color: "Color palette for central donut plot."
     title: "Row titles for center plot, comma separated string."
     sub: "Add subplot titles for each column."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_prefix = "${in_prefix}"
   }
 }

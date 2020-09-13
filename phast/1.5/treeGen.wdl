@@ -2,13 +2,19 @@ version 1.0
 
 task TreeGen {
   input {
-    String spec_one
+    String or
+    String assignment_dot
   }
   command <<<
     treeGen \
-      ~{spec_one}
+      ~{or} \
+      ~{assignment_dot}
   >>>
   parameter_meta {
-    spec_one: ""
+    or: "treeGen '*speciesFile' ['*groupFile'] > outfile"
+    assignment_dot: "The integers should appear in the same order as the"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

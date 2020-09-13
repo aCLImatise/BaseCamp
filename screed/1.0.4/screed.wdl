@@ -4,4 +4,7 @@ task Screed {
   command <<<
     screed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../ribo_config.cwl
 inputs:
-- id: outdir
-  doc: 'output directory; default: /tmp/tmpdvlbjbbn'
-  type: string
+- id: in_outdir
+  doc: 'output directory; default: /'
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: name
+- id: in_name
   doc: 'name of config file; default: timestamped'
-  type: string
+  type: File
   inputBinding:
     prefix: --name
-- id: ribo
+- id: in_ribo
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'output directory; default: /'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - ribo

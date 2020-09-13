@@ -17,4 +17,7 @@ task Map2gtf {
     alignments_dot_bam: ""
     out_file_dot_bam: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

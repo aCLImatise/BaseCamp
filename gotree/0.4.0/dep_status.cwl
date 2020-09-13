@@ -1,63 +1,97 @@
 class: CommandLineTool
 id: ../../../dep_status.cwl
 inputs:
-- id: detail
+- id: in_detail
   doc: 'include more detail in the chosen format (default: false)'
   type: boolean
   inputBinding:
     prefix: -detail
-- id: dot
+- id: in_dot
   doc: 'output the dependency graph in GraphViz format (default: false)'
   type: boolean
   inputBinding:
     prefix: -dot
-- id: examples
+- id: in_examples
   doc: 'print detailed usage examples (default: false)'
   type: boolean
   inputBinding:
     prefix: -examples
-- id: output_texttemplate_format
+- id: in_output_texttemplate_format
   doc: 'output in text/template format (default: <none>)'
   type: boolean
   inputBinding:
     prefix: -f
-- id: json
+- id: in_json
   doc: 'output in JSON format (default: false)'
   type: boolean
   inputBinding:
     prefix: -json
-- id: lock
+- id: in_lock
   doc: 'output in the lock file format (assumes -detail) (default: false)'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -lock
-- id: missing
+- id: in_missing
   doc: 'only show missing dependencies (default: false)'
   type: boolean
   inputBinding:
     prefix: -missing
-- id: old
+- id: in_old
   doc: 'only show out-of-date dependencies (default: false)'
   type: boolean
   inputBinding:
     prefix: -old
-- id: out
+- id: in_out
   doc: 'path to a file to which to write the output. Blank value will be ignored (default:
     <none>)'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -out
-- id: enable_verbose_logging
+- id: in_enable_verbose_logging
   doc: 'enable verbose logging (default: false)'
   type: boolean
   inputBinding:
     prefix: -v
-- id: package_dot_dot_dot
-  doc: ''
+- id: in_project
+  doc: Import path
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_constraint
+  doc: Version constraint, from the manifest
+  type: string
+  inputBinding:
+    position: 1
+- id: in_version
+  doc: Version chosen, from the lock
+  type: string
+  inputBinding:
+    position: 2
+- id: in_revision
+  doc: VCS revision of the chosen version
+  type: string
+  inputBinding:
+    position: 3
+- id: in_latest
+  doc: Latest VCS revision available
+  type: string
+  inputBinding:
+    position: 4
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_lock
+  doc: 'output in the lock file format (assumes -detail) (default: false)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_lock)
+- id: out_out
+  doc: 'path to a file to which to write the output. Blank value will be ignored (default:
+    <none>)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - dep

@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../genomedata_erase_data.cwl
 inputs:
-- id: track_name
+- id: in_track_name
   doc: tracknames to erase
   type: string[]
   inputBinding:
     prefix: --trackname
-- id: verbose
+- id: in_verbose
   doc: Print status updates and diagnostic messages
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: gd_archive
-  doc: genomedata archive
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genomedata-erase-data

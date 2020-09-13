@@ -1,9 +1,9 @@
 version 1.0
 
-task EslSsdraw {
+task Eslssdraw {
   input {
     Boolean? draw_default_set
-    String? mask
+    Int? mask
     Boolean? small
     Boolean? cons
     Boolean? info
@@ -15,14 +15,14 @@ task EslSsdraw {
     Boolean? span
     Boolean? rf
     Boolean? dint
-    String? tab_file
+    File? tab_file
     Boolean? indi
     Boolean? force_windi_draw
     Boolean? no_leg
     Boolean? no_head
     Boolean? no_foot
     Boolean? mask_col
-    String? mask_diff
+    Int? mask_diff
     Boolean? no_pp
     Boolean? no_bp
     Boolean? no_ol
@@ -34,44 +34,44 @@ task EslSsdraw {
     Boolean? mask_u
     Boolean? mask_x
     Boolean? mask_a
-    String? d_file
-    String? e_file
-    String? i_file
+    File? d_file
+    File? e_file
+    File? i_file
   }
   command <<<
-    esl-ssdraw \
-      ~{true="-d" false="" draw_default_set} \
+    esl_ssdraw \
+      ~{if (draw_default_set) then "-d" else ""} \
       ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""} \
-      ~{true="--small" false="" small} \
-      ~{true="--cons" false="" cons} \
-      ~{true="--info" false="" info} \
-      ~{true="--mutinfo" false="" mut_info} \
-      ~{true="--ifreq" false="" ifreq} \
-      ~{true="--iavglen" false="" i_avg_len} \
-      ~{true="--dall" false="" d_all} \
-      ~{true="--prob" false="" prob} \
-      ~{true="--span" false="" span} \
-      ~{true="--rf" false="" rf} \
-      ~{true="--dint" false="" dint} \
+      ~{if (small) then "--small" else ""} \
+      ~{if (cons) then "--cons" else ""} \
+      ~{if (info) then "--info" else ""} \
+      ~{if (mut_info) then "--mutinfo" else ""} \
+      ~{if (ifreq) then "--ifreq" else ""} \
+      ~{if (i_avg_len) then "--iavglen" else ""} \
+      ~{if (d_all) then "--dall" else ""} \
+      ~{if (prob) then "--prob" else ""} \
+      ~{if (span) then "--span" else ""} \
+      ~{if (rf) then "--rf" else ""} \
+      ~{if (dint) then "--dint" else ""} \
       ~{if defined(tab_file) then ("--tabfile " +  '"' + tab_file + '"') else ""} \
-      ~{true="--indi" false="" indi} \
-      ~{true="-f" false="" force_windi_draw} \
-      ~{true="--no-leg" false="" no_leg} \
-      ~{true="--no-head" false="" no_head} \
-      ~{true="--no-foot" false="" no_foot} \
-      ~{true="--mask-col" false="" mask_col} \
+      ~{if (indi) then "--indi" else ""} \
+      ~{if (force_windi_draw) then "-f" else ""} \
+      ~{if (no_leg) then "--no-leg" else ""} \
+      ~{if (no_head) then "--no-head" else ""} \
+      ~{if (no_foot) then "--no-foot" else ""} \
+      ~{if (mask_col) then "--mask-col" else ""} \
       ~{if defined(mask_diff) then ("--mask-diff " +  '"' + mask_diff + '"') else ""} \
-      ~{true="--no-pp" false="" no_pp} \
-      ~{true="--no-bp" false="" no_bp} \
-      ~{true="--no-ol" false="" no_ol} \
-      ~{true="--no-ntpp" false="" no_nt_pp} \
-      ~{true="--no-cnt" false="" no_cnt} \
+      ~{if (no_pp) then "--no-pp" else ""} \
+      ~{if (no_bp) then "--no-bp" else ""} \
+      ~{if (no_ol) then "--no-ol" else ""} \
+      ~{if (no_nt_pp) then "--no-ntpp" else ""} \
+      ~{if (no_cnt) then "--no-cnt" else ""} \
       ~{if defined(c_thresh) then ("--cthresh " +  '"' + c_thresh + '"') else ""} \
-      ~{true="--cambig" false="" cam_big} \
+      ~{if (cam_big) then "--cambig" else ""} \
       ~{if defined(a_thresh) then ("--athresh " +  '"' + a_thresh + '"') else ""} \
-      ~{true="--mask-u" false="" mask_u} \
-      ~{true="--mask-x" false="" mask_x} \
-      ~{true="--mask-a" false="" mask_a} \
+      ~{if (mask_u) then "--mask-u" else ""} \
+      ~{if (mask_x) then "--mask-x" else ""} \
+      ~{if (mask_a) then "--mask-a" else ""} \
       ~{if defined(d_file) then ("--dfile " +  '"' + d_file + '"') else ""} \
       ~{if defined(e_file) then ("--efile " +  '"' + e_file + '"') else ""} \
       ~{if defined(i_file) then ("--ifile " +  '"' + i_file + '"') else ""}
@@ -112,5 +112,9 @@ task EslSsdraw {
     d_file: ": read 'draw file' specifying >=1 diagrams"
     e_file: ": read 'expert draw file' specifying >=1 diagrams"
     i_file: ": read insert information from cmalign insert file <f>"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_tab_file = "${in_tab_file}"
   }
 }

@@ -1,8 +1,8 @@
 version 1.0
 
-task PbtoolsGather {
+task Pbtoolsgather {
   input {
-    String? log_file
+    File? log_file
     String? log_level
     Boolean? debug
     Boolean? quiet
@@ -12,24 +12,27 @@ task PbtoolsGather {
     String chunked_files
   }
   command <<<
-    pbtools-gather \
+    pbtools_gather \
       ~{output_file} \
       ~{chunked_files} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--join-contigs" false="" join_contigs}
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (join_contigs) then "--join-contigs" else ""}
   >>>
   parameter_meta {
-    log_file: "Write the log to file. Default(None) will write to stdout. (default: None)"
+    log_file: "Write the log to file. Default(None) will write to\\nstdout. (default: None)"
     log_level: "Set log level (default: INFO)"
     debug: "Alias for setting log level to DEBUG (default: False)"
-    quiet: "Alias for setting log level to CRITICAL to suppress output. (default: False)"
+    quiet: "Alias for setting log level to CRITICAL to suppress\\noutput. (default: False)"
     verbose: "Set the verbosity level. (default: None)"
     join_contigs: "Merge split contigs (default: False)"
     output_file: "Gathered output file"
     chunked_files: "Chunked input files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

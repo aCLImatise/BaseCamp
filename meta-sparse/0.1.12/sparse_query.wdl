@@ -3,7 +3,7 @@ version 1.0
 task SparseQuery {
   input {
     String? dbname
-    String? seq_list
+    File? seq_list
     String? default
     Int? min
     Int? max
@@ -53,11 +53,11 @@ task SparseQuery {
   parameter_meta {
     dbname: "Name for the database. REQUIRED."
     seq_list: "File name for the output. Default: to screen."
-    default: "Default MapDB criteria for updates. Choose from: representative, subpopulation, Virus, Eukaryota"
+    default: "Default MapDB criteria for updates. Choose from:\\nrepresentative, subpopulation, Virus, Eukaryota"
     min: "Minimum size of genomes to show"
     max: "Maximum size of genomes to show"
     group: "Filter using the prefix of barcode addresses"
-    tag: "Filter by relationships between different level of barcodes. i.e.,  \"p!=r;p==a\" gets references that have the same numbers in p groups and a groups, but different between p groups and r groups"
+    tag: "Filter by relationships between different level of barcodes. i.e.,\\n\\\"p!=r;p==a\\\" gets references that have the same numbers in p groups and a groups, but different between p groups and r groups"
     index: "Filter by index."
     barcode: "Filter by barcode."
     assembly_accession: "Filter by assembly_accession."
@@ -72,6 +72,10 @@ task SparseQuery {
     class: "Filter by class."
     phylum: "Filter by phylum."
     kingdom: "Filter by kingdom."
-    superkingdom: "Filter by superkingdom."
+    superkingdom: "Filter by superkingdom.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_seq_list = "${in_seq_list}"
   }
 }

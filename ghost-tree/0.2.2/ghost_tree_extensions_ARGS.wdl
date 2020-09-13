@@ -1,6 +1,6 @@
 version 1.0
 
-task GhostTreeExtensionsARGS {
+task GhosttreeExtensionsARGS {
   input {
     String ghost_tree
     String extensions
@@ -8,7 +8,7 @@ task GhostTreeExtensionsARGS {
     String? args
   }
   command <<<
-    ghost-tree extensions ARGS \
+    ghost_tree extensions ARGS \
       ~{ghost_tree} \
       ~{extensions} \
       ~{var_command} \
@@ -19,5 +19,8 @@ task GhostTreeExtensionsARGS {
     extensions: ""
     var_command: ""
     args: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

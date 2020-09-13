@@ -17,4 +17,7 @@ task SynthReadGenOutputFile {
     input_file: ""
     output_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

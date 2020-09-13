@@ -1,215 +1,208 @@
 class: CommandLineTool
 id: ../../../illumina_cleanup.cwl
 inputs:
-- id: exports_system_environment
-  doc: 'Exports all current system environment Default: false'
+- id: in_exports_current_system
+  doc: "Exports all current system environment\nDefault: false"
   type: boolean
   inputBinding:
     prefix: -E
-- id: ansi_log
+- id: in_ansi_log
   doc: Enable/disable ANSI console logging
   type: boolean
   inputBinding:
     prefix: -ansi-log
-- id: bucket_dir
+- id: in_bucket_dir
   doc: Remote bucket where intermediate result files are stored
   type: boolean
   inputBinding:
     prefix: -bucket-dir
-- id: cache
+- id: in_cache
   doc: Enable/disable processes caching
   type: boolean
   inputBinding:
     prefix: -cache
-- id: dump_channels
+- id: in_dump_channels
   doc: Dump channels for debugging purpose
   type: boolean
   inputBinding:
     prefix: -dump-channels
-- id: dump_hashes
-  doc: 'Dump task hash keys for debugging purpose Default: false'
+- id: in_dump_hashes
+  doc: "Dump task hash keys for debugging purpose\nDefault: false"
   type: boolean
   inputBinding:
     prefix: -dump-hashes
-- id: e_dot
-  doc: 'Add the specified variable to execution environment Syntax: -e.key=value Default:
-    {}'
+- id: in_e_dot
+  doc: "Add the specified variable to execution environment\nSyntax: -e.key=value\n\
+    Default: {}"
   type: boolean
   inputBinding:
     prefix: -e.
-- id: entry
+- id: in_entry
   doc: Entry workflow name to be executed
   type: boolean
   inputBinding:
     prefix: -entry
-- id: hub
+- id: in_hub
   doc: Service hub where the project is hosted
   type: boolean
   inputBinding:
     prefix: -hub
-- id: latest
-  doc: 'Pull latest changes before run Default: false'
+- id: in_latest
+  doc: "Pull latest changes before run\nDefault: false"
   type: boolean
   inputBinding:
     prefix: -latest
-- id: lib
+- id: in_lib
   doc: Library extension path
   type: boolean
   inputBinding:
     prefix: -lib
-- id: assign_mnemonic_name
+- id: in_assign_mnemonic_name
   doc: Assign a mnemonic name to the a pipeline run
   type: boolean
   inputBinding:
     prefix: -name
-- id: offline
-  doc: 'Do not check for remote project updates Default: false'
+- id: in_offline
+  doc: "Do not check for remote project updates\nDefault: false"
   type: boolean
   inputBinding:
     prefix: -offline
-- id: params_file
+- id: in_params_file
   doc: Load script parameters from a JSON/YAML file
   type: boolean
   inputBinding:
     prefix: -params-file
-- id: process_dot
-  doc: 'Set process options Syntax: -process.key=value Default: {}'
+- id: in_process_dot
+  doc: "Set process options\nSyntax: -process.key=value\nDefault: {}"
   type: boolean
   inputBinding:
     prefix: -process.
-- id: profile
+- id: in_profile
   doc: Choose a configuration profile
   type: boolean
   inputBinding:
     prefix: -profile
-- id: queue_size
+- id: in_queue_size
   doc: Max number of processes that can be executed in parallel by each executor
   type: boolean
   inputBinding:
     prefix: -queue-size
-- id: resume
-  doc: Execute the script using the cached results, useful to continue executions
-    that was stopped by an error
+- id: in_resume
+  doc: "Execute the script using the cached results, useful to continue\nexecutions\
+    \ that was stopped by an error"
   type: boolean
   inputBinding:
     prefix: -resume
-- id: revision
-  doc: Revision of the project to run (either a git branch, tag or commit SHA number)
+- id: in_revision
+  doc: "Revision of the project to run (either a git branch, tag or commit SHA\nnumber)"
   type: boolean
   inputBinding:
     prefix: -revision
-- id: test
+- id: in_test
   doc: Test a script function with the name specified
   type: boolean
   inputBinding:
     prefix: -test
-- id: user
+- id: in_user
   doc: Private repository user name
   type: boolean
   inputBinding:
     prefix: -user
-- id: with_cond_a
-  doc: Use the specified Conda environment package or file (must end with .yml|.yaml
-    suffix)
+- id: in_with_cond_a
+  doc: "Use the specified Conda environment package or file (must end with\n.yml|.yaml\
+    \ suffix)"
   type: boolean
   inputBinding:
     prefix: -with-conda
-- id: with_dag
+- id: in_with_dag
   doc: Create pipeline DAG file
   type: boolean
   inputBinding:
     prefix: -with-dag
-- id: with_docker
+- id: in_with_docker
   doc: Enable process execution in a Docker container
   type: boolean
   inputBinding:
     prefix: -with-docker
-- id: with_notification
-  doc: Send a notification email on workflow completion to the specified recipients
+- id: in_with_notification
+  doc: "Send a notification email on workflow completion to the specified\nrecipients"
   type: boolean
   inputBinding:
     prefix: -with-notification
-- id: with_pod_man
-  doc: Enable process execution in a Podman container
-  type: boolean
-  inputBinding:
-    prefix: -with-podman
-- id: with_report
+- id: in_with_report
   doc: Create processes execution html report
   type: boolean
   inputBinding:
     prefix: -with-report
-- id: with_singularity
+- id: in_with_singularity
   doc: Enable process execution in a Singularity container
   type: boolean
   inputBinding:
     prefix: -with-singularity
-- id: with_timeline
+- id: in_with_timeline
   doc: Create processes execution timeline file
   type: boolean
   inputBinding:
     prefix: -with-timeline
-- id: with_tower
+- id: in_with_tower
   doc: Monitor workflow execution with Seqera Tower service
   type: boolean
   inputBinding:
     prefix: -with-tower
-- id: with_trace
+- id: in_with_trace
   doc: Create processes execution tracing file
   type: boolean
   inputBinding:
     prefix: -with-trace
-- id: with_weblog
+- id: in_with_weblog
   doc: Send workflow status messages via HTTP to target URL
   type: boolean
   inputBinding:
     prefix: -with-weblog
-- id: without_docker
-  doc: 'Disable process execution with Docker Default: false'
+- id: in_without_docker
+  doc: "Disable process execution with Docker\nDefault: false"
   type: boolean
   inputBinding:
     prefix: -without-docker
-- id: without_pod_man
-  doc: Disable process execution in a Podman container
-  type: boolean
-  inputBinding:
-    prefix: -without-podman
-- id: work_dir
-  doc: Directory where intermediate result files are stored
+- id: in_work_dir
+  doc: "Directory where intermediate result files are stored\n"
   type: boolean
   inputBinding:
     prefix: -work-dir
-- id: run
+- id: in_run
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: project
+- id: in_project
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: var_37
+- id: in_var_35
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: or
+- id: in_or
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: repository
+- id: in_repository
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: url
+- id: in_url
   doc: ''
   type: string
   inputBinding:
     position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - illumina-cleanup

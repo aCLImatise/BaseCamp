@@ -14,4 +14,7 @@ task Fastqtofasta {
     in_fast_q_file: ""
     out_fast_a_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

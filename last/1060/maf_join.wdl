@@ -1,7 +1,17 @@
 version 1.0
 
-task MafJoin {
+task Mafjoin {
+  input {
+    Int sorted_file_two_dot_maf
+  }
   command <<<
-    maf-join
+    maf_join \
+      ~{sorted_file_two_dot_maf}
   >>>
+  parameter_meta {
+    sorted_file_two_dot_maf: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../ghost_tree_extensions_ARGS.cwl
 inputs:
-- id: ghost_tree
+- id: in_ghost_tree
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: extensions
+- id: in_extensions
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: command
+- id: in_command
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: args
+- id: in_args
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ghost-tree

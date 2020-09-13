@@ -10,7 +10,7 @@ task Humann2ReduceTable {
   }
   command <<<
     humann2_reduce_table \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(the_input_table) then ("--input " +  '"' + the_input_table + '"') else ""} \
       ~{if defined(the_output_table) then ("--output " +  '"' + the_output_table + '"') else ""} \
       ~{if defined(function) then ("--function " +  '"' + function + '"') else ""} \
@@ -21,6 +21,9 @@ task Humann2ReduceTable {
     the_input_table: "the input table"
     the_output_table: "the output table"
     function: "the function to apply"
-    sort_by: "sort the output by the selection"
+    sort_by: "sort the output by the selection\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

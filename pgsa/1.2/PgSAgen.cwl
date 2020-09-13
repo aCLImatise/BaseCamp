@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../PgSAgen.cwl
 inputs:
-- id: r
-  doc: ''
-  type: string
+- id: in_rate
+  doc: rate [1 - 6]
+  type: long
   inputBinding:
     prefix: -r
-- id: k
-  doc: ''
-  type: string
+- id: in_kmer_length
+  doc: kmer length
+  type: long
   inputBinding:
     prefix: -k
-- id: c
-  doc: ''
-  type: boolean
+- id: in_cache_file
+  doc: cache file
+  type: File
   inputBinding:
     prefix: -c
-- id: p
-  doc: ''
-  type: boolean
+- id: in_pg_no_sa
+  doc: Pg, no SA
+  type: string
   inputBinding:
     prefix: -p
-- id: v
-  doc: ''
-  type: boolean
+- id: in_use_after_generation
+  doc: (use after generation)
+  type: string
   inputBinding:
     prefix: -v
-- id: reads_srcfile
+- id: in_reads_srcfile
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: pair_srcfile
+- id: in_pair_srcfile
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: index_prefix
+- id: in_index_prefix
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - PgSAgen

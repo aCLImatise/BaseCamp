@@ -1,27 +1,40 @@
 class: CommandLineTool
 id: ../../../get_gff_info_split.cwl
 inputs:
-- id: prefix
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_prefix
   doc: 'Prefix for the file name in output  [default: split]'
-  type: string
+  type: File
   inputBinding:
     prefix: --prefix
-- id: number
-  doc: 'Number of chunks into which split the GFF file [default: 10]'
+- id: in_number
+  doc: "Number of chunks into which split the GFF file\n[default: 10]"
   type: long
   inputBinding:
     prefix: --number
-- id: gzip
+- id: in_gzip
   doc: gzip output files
   type: boolean
   inputBinding:
     prefix: --gzip
-- id: gff_file
+- id: in_gff_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prefix
+  doc: 'Prefix for the file name in output  [default: split]'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_prefix)
 cwlVersion: v1.1
 baseCommand:
 - get-gff-info

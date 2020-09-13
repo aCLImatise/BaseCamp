@@ -4,4 +4,7 @@ task SamPileupConsensus {
   command <<<
     samPileupConsensus
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

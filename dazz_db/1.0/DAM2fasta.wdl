@@ -6,9 +6,12 @@ task DAM2fasta {
   }
   command <<<
     DAM2fasta \
-      ~{true="-vU" false="" vu}
+      ~{if (vu) then "-vU" else ""}
   >>>
   parameter_meta {
     vu: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

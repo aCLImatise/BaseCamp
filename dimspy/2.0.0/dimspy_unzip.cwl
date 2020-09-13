@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../dimspy_unzip.cwl
 inputs:
-- id: input
+- id: in_input
   doc: file[.zip]
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output
-  doc: Directory to write to.
-  type: string
+- id: in_output
+  doc: "Directory to write to.\n"
+  type: Directory
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dimspy

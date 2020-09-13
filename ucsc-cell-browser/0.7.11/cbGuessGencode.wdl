@@ -8,10 +8,13 @@ task CbGuessGencode {
   command <<<
     cbGuessGencode \
       ~{filename} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     debug: "show debug messages"
     filename: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

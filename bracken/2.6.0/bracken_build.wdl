@@ -1,29 +1,29 @@
 version 1.0
 
-task BrackenBuild {
+task Brackenbuild {
   input {
-    String? k
-    String? l
-    String? d
-    String? x
     String? t
-    String bracken_build
+    String? x
+    String? d
+    String? l
+    String? k
   }
   command <<<
-    bracken-build \
-      ~{bracken_build} \
-      ~{if defined(k) then ("-k " +  '"' + k + '"') else ""} \
-      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+    bracken_build \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if defined(x) then ("-x " +  '"' + x + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if defined(k) then ("-k " +  '"' + k + '"') else ""}
   >>>
   parameter_meta {
-    k: ""
-    l: ""
-    d: ""
-    x: ""
     t: ""
-    bracken_build: ""
+    x: ""
+    d: ""
+    l: ""
+    k: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

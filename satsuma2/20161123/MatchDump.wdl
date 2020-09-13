@@ -11,4 +11,7 @@ task MatchDump {
   parameter_meta {
     k_match_output_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

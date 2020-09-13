@@ -4,4 +4,7 @@ task Iterate {
   command <<<
     iterate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

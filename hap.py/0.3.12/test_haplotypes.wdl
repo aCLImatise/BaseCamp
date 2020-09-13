@@ -22,29 +22,35 @@ task TestHaplotypes {
     Boolean? save_pattern
     Boolean? show_progress
     Boolean? wait_for_debugger
+    String usage
+    String use
+    String or
   }
   command <<<
     test_haplotypes \
-      ~{true="--auto_start_dbg" false="" auto_start_dbg} \
-      ~{true="--break_exec_path" false="" break_exec_path} \
-      ~{true="--build_info" false="" build_info} \
-      ~{true="--detect_memory_leaks" false="" detect_memory_leaks} \
-      ~{true="--list_content" false="" list_content} \
-      ~{true="--list_labels" false="" list_labels} \
-      ~{true="--log_format" false="" log_format} \
-      ~{true="--log_level" false="" log_level} \
-      ~{true="--log_sink" false="" log_sink} \
-      ~{true="--logger" false="" logger} \
-      ~{true="--output_format" false="" output_format} \
-      ~{true="--random" false="" random} \
-      ~{true="--report_format" false="" report_format} \
-      ~{true="--report_level" false="" report_level} \
-      ~{true="--report_memory_leaks_to" false="" report_memory_leaks_to} \
-      ~{true="--report_sink" false="" report_sink} \
-      ~{true="--run_test" false="" run_test} \
-      ~{true="--save_pattern" false="" save_pattern} \
-      ~{true="--show_progress" false="" show_progress} \
-      ~{true="--wait_for_debugger" false="" wait_for_debugger}
+      ~{usage} \
+      ~{use} \
+      ~{or} \
+      ~{if (auto_start_dbg) then "--auto_start_dbg" else ""} \
+      ~{if (break_exec_path) then "--break_exec_path" else ""} \
+      ~{if (build_info) then "--build_info" else ""} \
+      ~{if (detect_memory_leaks) then "--detect_memory_leaks" else ""} \
+      ~{if (list_content) then "--list_content" else ""} \
+      ~{if (list_labels) then "--list_labels" else ""} \
+      ~{if (log_format) then "--log_format" else ""} \
+      ~{if (log_level) then "--log_level" else ""} \
+      ~{if (log_sink) then "--log_sink" else ""} \
+      ~{if (logger) then "--logger" else ""} \
+      ~{if (output_format) then "--output_format" else ""} \
+      ~{if (random) then "--random" else ""} \
+      ~{if (report_format) then "--report_format" else ""} \
+      ~{if (report_level) then "--report_level" else ""} \
+      ~{if (report_memory_leaks_to) then "--report_memory_leaks_to" else ""} \
+      ~{if (report_sink) then "--report_sink" else ""} \
+      ~{if (run_test) then "--run_test" else ""} \
+      ~{if (save_pattern) then "--save_pattern" else ""} \
+      ~{if (show_progress) then "--show_progress" else ""} \
+      ~{if (wait_for_debugger) then "--wait_for_debugger" else ""}
   >>>
   parameter_meta {
     auto_start_dbg: "[1;33;49m[=<boolean value>]"
@@ -67,5 +73,11 @@ task TestHaplotypes {
     save_pattern: "[1;33;49m[=<boolean value>]"
     show_progress: "[1;33;49m[=<boolean value>]"
     wait_for_debugger: "[1;33;49m[=<boolean value>]"
+    usage: "[0;39;49m[1;32;49mtest_haplotypes [Boost.Test argument]... [0;39;49m[1;33;49m[-- [custom test module argument]...][0;39;49m"
+    use: "[1;32;49mtest_haplotypes --help[0;39;49m"
+    or: "[1;32;49mtest_haplotypes --help=<parameter name>[0;39;49m"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

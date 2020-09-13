@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../makeWebsite.cwl
 inputs:
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: spec_a
+- id: in_spec_a
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: spec_b
+- id: in_spec_b
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: mouse_bed
+- id: in_mouse_bed
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: human_bed
+- id: in_human_bed
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: maf_dir
+- id: in_maf_dir
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: prefix
+- id: in_prefix
   doc: ''
   type: string
   inputBinding:
     position: 6
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - makeWebsite

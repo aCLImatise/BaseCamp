@@ -16,7 +16,7 @@ task TraitarRemoveOutF {
       ~{archive_f} \
       ~{phenotypes} \
       ~{out_f} \
-      ~{true="--keep" false="" keep}
+      ~{if (keep) then "--keep" else ""}
   >>>
   parameter_meta {
     keep: ""
@@ -25,5 +25,8 @@ task TraitarRemoveOutF {
     archive_f: ""
     phenotypes: ""
     out_f: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

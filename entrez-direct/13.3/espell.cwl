@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../espell.cwl
 inputs:
-- id: db
+- id: in_db
   doc: Database name
   type: boolean
   inputBinding:
     prefix: -db
-- id: query
+- id: in_query
   doc: Query string
   type: boolean
   inputBinding:
     prefix: -query
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - espell

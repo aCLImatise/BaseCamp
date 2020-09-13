@@ -1,18 +1,22 @@
 class: CommandLineTool
 id: ../../../pscan.cwl
 inputs:
-- id: emin
-  doc: integer    [2] Minimum number of elements per fingerprint (Integer from 1 to
-    20)
+- id: in_emin
+  doc: "integer    [2] Minimum number of elements per\nfingerprint (Integer from 1\
+    \ to 20)"
   type: boolean
   inputBinding:
     prefix: -emin
-- id: emax
-  doc: integer    [20] Maximum number of elements per fingerprint (Integer up to 20)
+- id: in_emax
+  doc: "integer    [20] Maximum number of elements per\nfingerprint (Integer up to\
+    \ 20)"
   type: boolean
   inputBinding:
     prefix: -emax
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pscan

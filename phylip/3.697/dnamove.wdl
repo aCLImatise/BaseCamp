@@ -4,4 +4,7 @@ task Dnamove {
   command <<<
     dnamove
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

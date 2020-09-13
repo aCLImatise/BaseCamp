@@ -1,47 +1,58 @@
 class: CommandLineTool
 id: ../../../dlessP.cwl
 inputs:
-- id: refseq
-  doc: (for use with --msa-format MAF) Read the complete text of the reference sequence
-    from <fname> (FASTA format) and combine it with the contents of the MAF file to
-    produce a complete, ordered representation of the alignment.  The reference sequence
-    of the MAF file is assumed to be the one that appears first in each block.
-  type: string
+- id: in_msa_format
+  doc: "|PHYLIP|MPM|MAF|SS\nAlignment format (default is to guess format from file\
+    \ contents).\nNote that the program msa_view can be used for conversion."
+  type: File
+  inputBinding:
+    prefix: --msa-format
+- id: in_refseq
+  doc: "(for use with --msa-format MAF) Read the complete text of the\nreference sequence\
+    \ from <fname> (FASTA format) and combine it\nwith the contents of the MAF file\
+    \ to produce a complete,\nordered representation of the alignment.  The reference\n\
+    sequence of the MAF file is assumed to be the one that appears\nfirst in each\
+    \ block."
+  type: File
   inputBinding:
     prefix: --refseq
-- id: ref_idx
-  doc: Use coordinate frame of specified sequence in output.  Default value is 1,
-    first sequence in alignment; 0 indicates coordinate frame of entire multiple alignment.
-  type: string
+- id: in_ref_idx
+  doc: "Use coordinate frame of specified sequence in output.  Default\nvalue is 1,\
+    \ first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
+    \ alignment."
+  type: long
   inputBinding:
     prefix: --refidx
-- id: timing
+- id: in_timing
   doc: Write timing data to <file>.
   type: File
   inputBinding:
     prefix: --timing
-- id: html
-  doc: Create a directory and write one HTML file into it per DLESS prediction, giving
-    the stats for that prediction.
-  type: string
+- id: in_html
+  doc: "Create a directory and write one HTML file into it per DLESS\nprediction,\
+    \ giving the stats for that prediction."
+  type: File
   inputBinding:
     prefix: --html
-- id: alignment
+- id: in_alignment
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: tree_dot_mod
+- id: in_tree_dot_mod
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: predictions_dot_gff
+- id: in_predictions_dot_gff
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dlessP

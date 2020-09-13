@@ -1,69 +1,77 @@
 class: CommandLineTool
 id: ../../../tadbit_describe.cwl
 inputs:
-- id: workdir
+- id: in_workdir
   doc: path to working directory (generated with the tool tadbit map)
   type: File
   inputBinding:
     prefix: --workdir
-- id: nox
+- id: in_nox
   doc: no display server (X screen)
   type: boolean
   inputBinding:
     prefix: --noX
-- id: tables_show_write
-  doc: "[ ...], --tables  [ ...] [['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',\
-    \ '11', '12', '13']] what tables to show, write either the sequence of names or\
-    \ indexes, according to this list: 11: segment_outputs, 10: merge_outputs, 13:\
-    \ modeled_regions, 12: models, 1: paths, 3: mapped_outputs, 2: jobs, 5: parsed_outputs,\
-    \ 4: mapped_inputs, 7: filter_outputs, 6: intersection_outputs, 9: merge_stats,\
-    \ 8: normalize_outputs"
+- id: in_tables_show_write
+  doc: "[ ...], --tables  [ ...]\n[['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',\
+    \ '11', '12',\n'13']] what tables to show, write either the sequence of names\
+    \ or\nindexes, according to this list: 11: segment_outputs, 10:\nmerge_outputs,\
+    \ 13: modeled_regions, 12: models, 1: paths, 3:\nmapped_outputs, 2: jobs, 5: parsed_outputs,\
+    \ 4: mapped_inputs, 7:\nfilter_outputs, 6: intersection_outputs, 9: merge_stats,\
+    \ 8:\nnormalize_outputs"
   type: boolean
   inputBinding:
     prefix: -t
-- id: tables_not_show
-  doc: '[ ...], --skip_tables  [ ...] [[]] what tables NOT to show, write either the
-    sequence of names or indexes, according to this list: 11: segment_outputs, 10:
-    merge_outputs, 13: modeled_regions, 12: models, 1: paths, 3: mapped_outputs, 2:
-    jobs, 5: parsed_outputs, 4: mapped_inputs, 7: filter_outputs, 6: intersection_outputs,
-    9: merge_stats, 8: normalize_outputs'
+- id: in_what_tables_not
+  doc: "[ ...], --skip_tables  [ ...]\n[[]] what tables NOT to show, write either\
+    \ the sequence of names or\nindexes, according to this list: 11: segment_outputs,\
+    \ 10:\nmerge_outputs, 13: modeled_regions, 12: models, 1: paths, 3:\nmapped_outputs,\
+    \ 2: jobs, 5: parsed_outputs, 4: mapped_inputs, 7:\nfilter_outputs, 6: intersection_outputs,\
+    \ 9: merge_stats, 8:\nnormalize_outputs"
   type: boolean
   inputBinding:
     prefix: -T
-- id: job_ids
+- id: in_job_ids
   doc: Display only items matching these jobids.
   type: long[]
   inputBinding:
     prefix: --jobids
-- id: where
-  doc: 'Select rows. List pairs of keywords (column header) and values to filter results.
-    For example to get only results where "18" appears in the column "Chromosome",
-    the option should be set as: `-W Chromosome,18`'
+- id: in_where
+  doc: "Select rows. List pairs of keywords (column header) and values to\nfilter\
+    \ results. For example to get only results where \"18\" appears\nin the column\
+    \ \"Chromosome\", the option should be set as: `-W\nChromosome,18`"
   type: string[]
   inputBinding:
     prefix: --where
-- id: select
-  doc: 'Select columns. List the keyword (column headers) to be displayed. E.g. to
-    show only the colmns JobIds: `-s Jobids`'
+- id: in_select
+  doc: "Select columns. List the keyword (column headers) to be displayed.\nE.g. to\
+    \ show only the colmns JobIds: `-s Jobids`"
   type: string[]
   inputBinding:
     prefix: --select
-- id: tmp_db
+- id: in_tmp_db
   doc: if provided uses this directory to manipulate the database
   type: File
   inputBinding:
     prefix: --tmpdb
-- id: tsv
+- id: in_tsv
   doc: Print output in tab separated format
   type: boolean
   inputBinding:
     prefix: --tsv
-- id: output
-  doc: Writes output in specified file.
-  type: string
+- id: in_output
+  doc: "Writes output in specified file.\n"
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Writes output in specified file.\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - tadbit

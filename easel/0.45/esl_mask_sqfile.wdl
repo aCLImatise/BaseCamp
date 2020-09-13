@@ -1,14 +1,17 @@
 version 1.0
 
-task EslMaskSqfile {
+task EslmaskSqfile {
   input {
     String mask_file
   }
   command <<<
-    esl-mask sqfile \
+    esl_mask sqfile \
       ~{mask_file}
   >>>
   parameter_meta {
     mask_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task AnviEstimateGenomeTaxonomy {
+task Anviestimategenometaxonomy {
   command <<<
-    anvi-estimate-genome-taxonomy
+    anvi_estimate_genome_taxonomy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

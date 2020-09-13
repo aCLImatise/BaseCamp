@@ -1,7 +1,10 @@
 version 1.0
 
-task RadicalUtilsVersion {
+task Radicalutilsversion {
   command <<<
-    radical-utils-version
+    radical_utils_version
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

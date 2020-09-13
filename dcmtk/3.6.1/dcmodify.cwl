@@ -1,178 +1,196 @@
 class: CommandLineTool
 id: ../../../dcmodify.cwl
 inputs:
-- id: _quiet_quiet
+- id: in_arguments
+  doc: print expanded command line arguments
+  type: boolean
+  inputBinding:
+    prefix: --arguments
+- id: in__quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: _verbose_verbose
+- id: in__verbose_details
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: _debug_debug
+- id: in__debug_information
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
     prefix: -d
-- id: ll
-  doc: '--log-level            [l]evel: string constant (fatal, error, warn, info,
-    debug, trace) use level l for the logger'
+- id: in_ll
+  doc: "--log-level            [l]evel: string constant\n(fatal, error, warn, info,\
+    \ debug, trace)\nuse level l for the logger"
   type: boolean
   inputBinding:
     prefix: -ll
-- id: lc
-  doc: '--log-config           [f]ilename: string use config file f for the logger'
+- id: in_lc
+  doc: "--log-config           [f]ilename: string\nuse config file f for the logger"
   type: boolean
   inputBinding:
     prefix: -lc
-- id: _readxferauto_use
+- id: in__readdataset_read
+  doc: --read-dataset         read data set without file meta information
+  type: boolean
+  inputBinding:
+    prefix: -f
+- id: in__readxferauto_use
   doc: =   --read-xfer-auto       use TS recognition (default)
   type: boolean
   inputBinding:
     prefix: -t
-- id: td
+- id: in_td
   doc: --read-xfer-detect     ignore TS specified in the file meta header
   type: boolean
   inputBinding:
     prefix: -td
-- id: te
+- id: in_te
   doc: --read-xfer-little     read with explicit VR little endian TS
   type: boolean
   inputBinding:
     prefix: -te
-- id: tb
+- id: in_tb
   doc: --read-xfer-big        read with explicit VR big endian TS
   type: boolean
   inputBinding:
     prefix: -tb
-- id: ti
+- id: in_ti
   doc: --read-xfer-implicit   read with implicit VR little endian TS
   type: boolean
   inputBinding:
     prefix: -ti
-- id: dc
+- id: in_dc
   doc: --disable-correction   disable automatic data correction
   type: boolean
   inputBinding:
     prefix: -dc
-- id: nb
+- id: in_backup
+  doc: backup files before modifying (default)
+  type: boolean
+  inputBinding:
+    prefix: --backup
+- id: in_nb
   doc: --no-backup            don't backup files (DANGEROUS)
   type: boolean
   inputBinding:
     prefix: -nb
-- id: _insert_insert
-  doc: --insert               "[t]ag-path=[v]alue" insert (or overwrite) path at position
-    t with value v
+- id: in__insert_insert
+  doc: "--insert               \"[t]ag-path=[v]alue\"\ninsert (or overwrite) path\
+    \ at position t\nwith value v"
   type: boolean
   inputBinding:
     prefix: -i
-- id: if
-  doc: --insert-from-file     "[t]ag-path=[f]ilename" insert (or overwrite) path at
-    position t with value from file f
+- id: in_if
+  doc: "--insert-from-file     \"[t]ag-path=[f]ilename\"\ninsert (or overwrite) path\
+    \ at position t\nwith value from file f"
   type: boolean
   inputBinding:
     prefix: -if
-- id: no_reserv_check
-  doc: do not check private reservations when inserting private tags
+- id: in_no_reserv_check
+  doc: "do not check private reservations\nwhen inserting private tags"
   type: boolean
   inputBinding:
     prefix: --no-reserv-check
-- id: _modify_modify
-  doc: --modify               "[t]ag-path=[v]alue" modify tag at position t to value
-    v
+- id: in__modify_tag
+  doc: "--modify               \"[t]ag-path=[v]alue\"\nmodify tag at position t to\
+    \ value v"
   type: boolean
   inputBinding:
     prefix: -m
-- id: mf
-  doc: --modify-from-file     "[t]ag-path=[f]ilename" modify tag at position t to
-    value from file f
+- id: in_mf
+  doc: "--modify-from-file     \"[t]ag-path=[f]ilename\"\nmodify tag at position t\
+    \ to value from file f"
   type: boolean
   inputBinding:
     prefix: -mf
-- id: ma
-  doc: --modify-all           "[t]ag=[v]alue" modify ALL matching tags t in file to
-    value v
+- id: in_ma
+  doc: "--modify-all           \"[t]ag=[v]alue\"\nmodify ALL matching tags t in file\
+    \ to value v"
   type: boolean
   inputBinding:
     prefix: -ma
-- id: _erase_tagitem
-  doc: --erase                "[t]ag-path" erase tag/item at position t
+- id: in__erase_erase
+  doc: "--erase                \"[t]ag-path\"\nerase tag/item at position t"
   type: boolean
   inputBinding:
     prefix: -e
-- id: ea
-  doc: --erase-all            "[t]ag" erase ALL matching tags t in file
+- id: in_ea
+  doc: "--erase-all            \"[t]ag\"\nerase ALL matching tags t in file"
   type: boolean
   inputBinding:
     prefix: -ea
-- id: ep
+- id: in_ep
   doc: --erase-private        erase ALL private data from file
   type: boolean
   inputBinding:
     prefix: -ep
-- id: gen_stud_uid
+- id: in_gen_stud_uid
   doc: generate new Study Instance UID
   type: boolean
   inputBinding:
     prefix: --gen-stud-uid
-- id: gen_ser_uid
+- id: in_gen_ser_uid
   doc: generate new Series Instance UID
   type: boolean
   inputBinding:
     prefix: --gen-ser-uid
-- id: gen_inst_uid
+- id: in_gen_inst_uid
   doc: generate new SOP Instance UID
   type: boolean
   inputBinding:
     prefix: --gen-inst-uid
-- id: no_meta_uid
-  doc: do not update metaheader UIDs if related UIDs in the dataset are modified
+- id: in_no_meta_uid
+  doc: "do not update metaheader UIDs if related\nUIDs in the dataset are modified"
   type: boolean
   inputBinding:
     prefix: --no-meta-uid
-- id: ie
+- id: in_ie
   doc: --ignore-errors        continue with file, if modify error occurs
   type: boolean
   inputBinding:
     prefix: -ie
-- id: ignore_missing_tags
-  doc: treat 'tag not found' as success when modifying or erasing in datasets
+- id: in_ignore_missing_tags
+  doc: "treat 'tag not found' as success\nwhen modifying or erasing in datasets"
   type: boolean
   inputBinding:
     prefix: --ignore-missing-tags
-- id: ignore_un_values
-  doc: do not try writing any values to elements having a VR of UN
+- id: in_ignore_un_values
+  doc: "do not try writing any values to elements\nhaving a VR of UN"
   type: boolean
   inputBinding:
     prefix: --ignore-un-values
-- id: _writedataset_write
+- id: in__writedataset_write
   doc: --write-dataset        write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: _disablenewvr_disable
+- id: in__disablenewvr_disable
   doc: --disable-new-vr       disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: _grouplengthremove_always
+- id: in__grouplengthremove_always
   doc: --group-length-remove  always write without group length elements
   type: boolean
   inputBinding:
     prefix: -g
-- id: le
+- id: in_le
   doc: --length-undefined     write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -le
-- id: dcm_file_in
+- id: in_dcm_file_in
   doc: DICOM input filename to be modified
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dcmodify

@@ -17,4 +17,7 @@ task StrainestMap2snp {
     mapped: ""
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

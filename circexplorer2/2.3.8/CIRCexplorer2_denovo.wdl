@@ -6,12 +6,12 @@ task CIRCexplorer2Denovo {
     String? detect_alternative_splicing
     String? as_type
     String? abs
-    String? bed
-    String? cuff
-    String? top_hat
-    String? pa_plus
-    String? output_folder
-    String? genome
+    File? bed
+    Directory? cuff
+    Directory? top_hat
+    Directory? pa_plus
+    Directory? output_folder
+    File? genome
     Boolean? no_fix
     Boolean? rp_km
   }
@@ -27,8 +27,8 @@ task CIRCexplorer2Denovo {
       ~{if defined(pa_plus) then ("--pAplus " +  '"' + pa_plus + '"') else ""} \
       ~{if defined(output_folder) then ("--output " +  '"' + output_folder + '"') else ""} \
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
-      ~{true="--no-fix" false="" no_fix} \
-      ~{true="--rpkm" false="" rp_km}
+      ~{if (no_fix) then "--no-fix" else ""} \
+      ~{if (rp_km) then "--rpkm" else ""}
   >>>
   parameter_meta {
     ref: "Gene annotation."
@@ -43,5 +43,10 @@ task CIRCexplorer2Denovo {
     genome: "Genome FASTA file."
     no_fix: "No-fix mode (useful for species with poor gene annotations)."
     rp_km: "Calculate RPKM for cassette exons."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_cuff = "${in_cuff}"
+    Directory out_output_folder = "${in_output_folder}"
   }
 }

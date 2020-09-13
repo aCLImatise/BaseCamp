@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- cmfetch
+- key
 positional:
 - !Positional
   description: ''
@@ -12,14 +15,32 @@ positional:
   optional: false
 - !Positional
   description: ''
+  position: 1
+  name: keyfile
+  optional: false
+- !Positional
+  description: ''
   position: 2
   name: key
   optional: false
-named: []
-command:
-- cmfetch
-- key
-parent: &id001 !Command
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --index
+  args: !SimpleFlagArg
+    name: cmfile
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: cmfile
+  optional: true
+parent: &id002 !Command
+  command:
+  - cmfetch
   positional: []
   named:
   - !Flag
@@ -47,23 +68,47 @@ parent: &id001 !Command
     - --index
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - cmfetch
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - cmfetch
+    - cmfile
     positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: cmfetch
+      optional: false
     - !Positional
       description: ''
       position: 0
       name: key
       optional: false
-    named: []
-    command:
-    - cmfetch
-    - cmfile
-    parent: *id001
+    - !Positional
+      description: ''
+      position: 1
+      name: keyfile
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --index
+      args: !SimpleFlagArg
+        name: cmfile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: cmfile
+      optional: true
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -72,7 +117,53 @@ parent: &id001 !Command
       \ in <keyfile>)\nUsage: cmfetch [options] --index <cmfile>       (indexes <cmfile>)\n\
       \nTo see more help on available options, do cmfetch -h\n\n"
     generated_using: &id003 []
-  - *id002
+  - !Command
+    command:
+    - cmfetch
+    - keyfile
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: cmfetch
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: cmfile
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: key
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --index
+      args: !SimpleFlagArg
+        name: cmfile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: cmfile
+      optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cmfetch [options] <cmfile> <key>         (retrieves CM named\
+      \ <key>)\nUsage: cmfetch [options] -f <cmfile> <keyfile>  (retrieves all CMs\
+      \ in <keyfile>)\nUsage: cmfetch [options] --index <cmfile>       (indexes <cmfile>)\n\
+      \nTo see more help on available options, do cmfetch -h\n\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: ': help; show brief info on version and usage'
     synonyms:
@@ -94,6 +185,7 @@ parent: &id001 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

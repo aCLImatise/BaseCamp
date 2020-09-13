@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../refinem_genome_stats.cwl
 inputs:
-- id: cpus
+- id: in_cpus
   doc: 'number of CPUs to use (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpus
-- id: silent
+- id: in_silent
   doc: 'suppress output of logger (default: False)'
   type: boolean
   inputBinding:
     prefix: --silent
-- id: scaffold_stats_file
+- id: in_scaffold_stats_file
   doc: file with statistics for each scaffold
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: output file with genome statistics
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - refinem

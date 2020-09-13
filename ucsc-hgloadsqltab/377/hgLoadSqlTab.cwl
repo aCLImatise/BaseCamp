@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../hgLoadSqlTab.cwl
 inputs:
-- id: warn
+- id: in_warn
   doc: '- warn instead of abort on mysql errors or warnings'
   type: boolean
   inputBinding:
     prefix: -warn
-- id: not_on_server
+- id: in_not_on_server
   doc: '- file is *not* in a directory that the mysql server can see'
   type: boolean
   inputBinding:
     prefix: -notOnServer
-- id: old_table
+- id: in_old_table
   doc: '- add to existing table'
   type: boolean
   inputBinding:
     prefix: -oldTable
-- id: database
+- id: in_database
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: table
+- id: in_table
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: file_dot_sql
+- id: in_file_dot_sql
   doc: ''
   type: File
   inputBinding:
     position: 2
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hgLoadSqlTab

@@ -1,7 +1,10 @@
 version 1.0
 
-task GhostTreeScaffold {
+task GhosttreeScaffold {
   command <<<
-    ghost-tree scaffold
+    ghost_tree scaffold
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

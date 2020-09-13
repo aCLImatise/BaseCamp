@@ -1,4 +1,6 @@
 !Command
+command:
+- sqlToXml
 positional:
 - !Positional
   description: ''
@@ -10,32 +12,44 @@ positional:
   position: 1
   name: dumpSpec.od
   optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: output.xml
-  optional: false
 named:
 - !Flag
+  description: "- Give the top level XML tag the given name.  By\ndefault it will\
+    \ be the same as the database name."
+  synonyms:
+  - -topTag
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "- Instead of dumping whole database, just dump those\nrecords matching\
+    \ SQL select statement in file.sql.\nThis statement should be of the form:\nselect\
+    \ * from table where ...\nor\nselect table.* from table,otherTables where ...\n\
+    Where the table is the same as the table in the first\nline of dumpSpec."
+  synonyms:
+  - -query
+  args: !SimpleFlagArg
+    name: file.sql
+  optional: true
+- !Flag
   description: "- number of spaces betweeen tabs in xml.dumpSpec - by default it's\
-    \ 8. (It may be best just to avoid tabs in that file though.)"
+    \ 8.\n(It may be best just to avoid tabs in that file though.)"
   synonyms:
   - -tab
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: '- This will limit any lists in the output to no more than size N.  This
-    is mostly just for testing.'
+  description: "- This will limit any lists in the output to no more than\nsize N.\
+    \  This is mostly just for testing.\n"
   synonyms:
   - -maxList
   args: !SimpleFlagArg
     name: N
   optional: true
-command:
-- sqlToXml
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

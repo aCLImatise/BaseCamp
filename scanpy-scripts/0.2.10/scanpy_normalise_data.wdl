@@ -1,6 +1,6 @@
 version 1.0
 
-task ScanpyNormaliseData {
+task Scanpynormalisedata {
   input {
     Boolean? input_format
     Boolean? output_format
@@ -11,34 +11,34 @@ task ScanpyNormaliseData {
     Boolean? no_log_transform
     Float? normalize_to
     Float? fraction
-    String input_obj
-    String output_obj
+    String format_dot
   }
   command <<<
-    scanpy-normalise-data \
-      ~{input_obj} \
-      ~{output_obj} \
-      ~{true="--input-format" false="" input_format} \
-      ~{true="--output-format" false="" output_format} \
+    scanpy_normalise_data \
+      ~{format_dot} \
+      ~{if (input_format) then "--input-format" else ""} \
+      ~{if (output_format) then "--output-format" else ""} \
       ~{if defined(zarr_chunk_size) then ("--zarr-chunk-size " +  '"' + zarr_chunk_size + '"') else ""} \
       ~{if defined(export_mtx) then ("--export-mtx " +  '"' + export_mtx + '"') else ""} \
-      ~{true="--show-obj" false="" show_obj} \
-      ~{true="--save-raw" false="" save_raw} \
-      ~{true="--no-log-transform" false="" no_log_transform} \
+      ~{if (show_obj) then "--show-obj" else ""} \
+      ~{if (save_raw) then "--save-raw" else ""} \
+      ~{if (no_log_transform) then "--no-log-transform" else ""} \
       ~{if defined(normalize_to) then ("--normalize-to " +  '"' + normalize_to + '"') else ""} \
       ~{if defined(fraction) then ("--fraction " +  '"' + fraction + '"') else ""}
   >>>
   parameter_meta {
-    input_format: "[anndata|loom] Input object format.  [default: anndata]"
-    output_format: "[anndata|loom|zarr] Output object format.  [default: anndata]"
-    zarr_chunk_size: "Chunk size for writing output in zarr format.  [default: 1000]"
-    export_mtx: "When specified, using it as prefix for exporting mtx files. If not empty and not ending with \"/\" or \"_\", a \"_\" will be appended."
-    show_obj: "[stdout|stderr]      Print output object summary info to specified stream."
-    save_raw: "[yes|no|counts]  Save raw data existing raw data.  [default: yes]"
-    no_log_transform: "When set, do not apply (natural) log transform following normalisation. [default: True]"
-    normalize_to: "Normalize per cell nUMI to this number. [default: 10000]"
-    fraction: "Only use genes that make up less than this fraction of the total count in every cell. So only these genes will sum up to the number specified by --normalize-to. [default: 0.9]"
-    input_obj: ""
-    output_obj: ""
+    input_format: "[anndata|loom]\\nInput object format.  [default: anndata]"
+    output_format: "[anndata|loom|zarr]\\nOutput object format.  [default: anndata]"
+    zarr_chunk_size: "Chunk size for writing output in zarr"
+    export_mtx: "When specified, using it as prefix for\\nexporting mtx files. If not empty and not\\nending with \\\"/\\\" or \\\"_\\\", a \\\"_\\\" will be\\nappended."
+    show_obj: "[stdout|stderr]      Print output object summary info to\\nspecified stream."
+    save_raw: "[yes|no|counts]  Save raw data existing raw data.  [default:\\nyes]"
+    no_log_transform: "When set, do not apply (natural) log\\ntransform following normalisation.\\n[default: True]"
+    normalize_to: "Normalize per cell nUMI to this number.\\n[default: 10000]"
+    fraction: "Only use genes that make up less than this\\nfraction of the total count in every cell.\\nSo only these genes will sum up to the\\nnumber specified by --normalize-to.\\n[default: 0.9]"
+    format_dot: "[default: 1000]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

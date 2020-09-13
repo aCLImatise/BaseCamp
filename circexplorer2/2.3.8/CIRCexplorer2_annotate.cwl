@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../CIRCexplorer2_annotate.cwl
 inputs:
-- id: ref
+- id: in_ref
   doc: Gene annotation.
   type: string
   inputBinding:
     prefix: --ref
-- id: genome
+- id: in_genome
   doc: Genome FASTA file.
-  type: string
+  type: File
   inputBinding:
     prefix: --genome
-- id: bed
+- id: in_bed
   doc: Input file.
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: output
-  doc: 'Output file. [default: circularRNA_known.txt]'
-  type: string
+- id: in_output
+  doc: "Output file.\n[default: circularRNA_known.txt]"
+  type: File
   inputBinding:
     prefix: --output
-- id: no_fix
+- id: in_no_fix
   doc: No-fix mode (useful for species with poor gene annotations).
   type: boolean
   inputBinding:
     prefix: --no-fix
-- id: low_confidence
+- id: in_low_confidence
   doc: Extract low confidence circRNAs.
   type: boolean
   inputBinding:
     prefix: --low-confidence
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output file.\n[default: circularRNA_known.txt]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - CIRCexplorer2

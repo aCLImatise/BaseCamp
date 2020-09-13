@@ -3,10 +3,10 @@ version 1.0
 task Vcfrandomsample {
   input {
     String? rate
-    String? scale_by
+    Float? scale_by
     String? random_seed
     Boolean? pseudorandom_seed
-    String? vcf_file
+    File? vcf_file
   }
   command <<<
     vcfrandomsample \
@@ -14,7 +14,7 @@ task Vcfrandomsample {
       ~{if defined(rate) then ("--rate " +  '"' + rate + '"') else ""} \
       ~{if defined(scale_by) then ("--scale-by " +  '"' + scale_by + '"') else ""} \
       ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""} \
-      ~{true="--pseudorandom-seed" false="" pseudorandom_seed}
+      ~{if (pseudorandom_seed) then "--pseudorandom-seed" else ""}
   >>>
   parameter_meta {
     rate: "base sampling probability per locus"
@@ -22,5 +22,8 @@ task Vcfrandomsample {
     random_seed: "use this random seed (by default read from /dev/random)"
     pseudorandom_seed: "use a pseudorandom seed (by default read from /dev/random)"
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

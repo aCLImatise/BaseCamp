@@ -12,6 +12,9 @@ task Menescope {
   >>>
   parameter_meta {
     draft_net: "metabolic network in SBML format"
-    seeds: "seeds in SBML format"
+    seeds: "seeds in SBML format\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

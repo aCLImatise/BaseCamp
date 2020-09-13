@@ -26,4 +26,8 @@ task BcftoolsReheader {
     threads: "use multithreading with <int> worker threads (BCF only) [0]"
     in_dot_vcf_do_tgz: ""
   }
+  output {
+    File out_stdout = stdout()
+    File out_write_output_file = "${in_write_output_file}"
+  }
 }

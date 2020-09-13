@@ -14,4 +14,7 @@ task Addrg {
     file_dot_bam: ""
     rg_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

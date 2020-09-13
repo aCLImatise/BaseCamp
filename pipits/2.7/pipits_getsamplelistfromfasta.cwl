@@ -1,62 +1,60 @@
 class: CommandLineTool
 id: ../../../pipits_getsamplelistfromfasta.cwl
 inputs:
-- id: i
-  doc: '[REQUIRED]'
-  type: string
-  inputBinding:
-    prefix: -i
-- id: o
-  doc: '[REQUIRED]'
-  type: string
+- id: in_o
+  doc: ''
+  type: boolean
   inputBinding:
     prefix: -o
-- id: creates
+- id: in_i
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -i
+- id: in_creates
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_3
+- id: in_a
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: sample
+- id: in_sample
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: list
+- id: in_list
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 4
-- id: from
+- id: in_from
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: var_8
-  doc: ''
-  type: string
-  inputBinding:
-    position: 6
-- id: fast_a
+- id: in_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: sequences_dot
+- id: in_sequences_dot
   doc: ''
   type: string
   inputBinding:
     position: 8
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pipits_getsamplelistfromfasta

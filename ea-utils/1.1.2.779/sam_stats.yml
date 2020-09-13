@@ -1,20 +1,101 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: file1
-  optional: true
-- !Positional
-  description: ''
-  position: 1
-  name: file2...filen
-  optional: true
-named: []
 command:
 - sam-stats
+positional:
+- !Positional
+  description: ': # of entries in the sam file, might not be # reads'
+  position: 0
+  name: reads
+  optional: false
+- !Positional
+  description: ': phred scale used'
+  position: 1
+  name: phred
+  optional: false
+- !Positional
+  description: ': # reads used for qual stats'
+  position: 2
+  name: bsize
+  optional: false
+- !Positional
+  description: ': number of forward-aligned reads'
+  position: 0
+  name: forward
+  optional: false
+- !Positional
+  description: ': number of reverse-aligned reads'
+  position: 1
+  name: reverse
+  optional: false
+named:
+- !Flag
+  description: Keep track of multiple alignments
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output prefix enabling extended output (see below)
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: Coverage/RNA output (coverage, 3' bias, etc, implies -A)
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: FIL
+  optional: true
+- !Flag
+  description: Report all chr sigs, even if there are more than 1000
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of reads to sample for per-base stats (1M)
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Size of ascii-signature (30)
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: File extension for handling multiple files (stats)
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: FIL
+  optional: true
+- !Flag
+  description: Only overwrite if newer (requires -x, or multiple files)
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is bam, don't bother looking at magic
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't fail when zero entries in sam
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

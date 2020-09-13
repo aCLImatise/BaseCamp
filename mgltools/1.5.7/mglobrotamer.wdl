@@ -1,17 +1,10 @@
 version 1.0
 
 task Mglobrotamer {
-  input {
-    String ob_rotamer
-    File file
-  }
   command <<<
-    mglobrotamer \
-      ~{ob_rotamer} \
-      ~{file}
+    mglobrotamer
   >>>
-  parameter_meta {
-    ob_rotamer: ""
-    file: ""
+  output {
+    File out_stdout = stdout()
   }
 }

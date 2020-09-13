@@ -2,37 +2,52 @@ version 1.0
 
 task Kcgrasstest {
   input {
-    String? th
-    Boolean? rnd
-    Boolean? etc
-    Boolean? tran
+    Int? pc_cap
+    Int? psi_z
+    Int? b_num
     Boolean? tc
-    String? b_num
-    String? psi_z
-    String? pc_cap
+    Int? it
+    Int? th
+    Boolean? rnd
+    Boolean? var_7
+    Boolean? etc
     String order
+    String queue
+    String var_11
+    String wicked
   }
   command <<<
     kcgrasstest \
       ~{order} \
-      ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
-      ~{true="-rnd" false="" rnd} \
-      ~{true="-etc" false="" etc} \
-      ~{true="-tran" false="" tran} \
-      ~{true="-tc" false="" tc} \
-      ~{if defined(b_num) then ("-bnum " +  '"' + b_num + '"') else ""} \
+      ~{queue} \
+      ~{var_11} \
+      ~{wicked} \
+      ~{if defined(pc_cap) then ("-pccap " +  '"' + pc_cap + '"') else ""} \
       ~{if defined(psi_z) then ("-psiz " +  '"' + psi_z + '"') else ""} \
-      ~{if defined(pc_cap) then ("-pccap " +  '"' + pc_cap + '"') else ""}
+      ~{if defined(b_num) then ("-bnum " +  '"' + b_num + '"') else ""} \
+      ~{if (tc) then "-tc" else ""} \
+      ~{if defined(it) then ("-it " +  '"' + it + '"') else ""} \
+      ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
+      ~{if (rnd) then "-rnd" else ""} \
+      ~{if (var_7) then "-tran" else ""} \
+      ~{if (etc) then "-etc" else ""}
   >>>
   parameter_meta {
+    pc_cap: ""
+    psi_z: ""
+    b_num: ""
+    tc: ""
+    it: ""
     th: ""
     rnd: ""
+    var_7: ""
     etc: ""
-    tran: ""
-    tc: ""
-    b_num: ""
-    psi_z: ""
-    pc_cap: ""
     order: ""
+    queue: ""
+    var_11: ""
+    wicked: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

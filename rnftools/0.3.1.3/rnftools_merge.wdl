@@ -17,4 +17,7 @@ task RnftoolsMerge {
     mode_mergeing_files: "mode for mergeing files (single-end / paired-end-bwa / paired-end-bfast)"
     output_prefix: "output prefix"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,28 +2,31 @@ version 1.0
 
 task Msalign2 {
   input {
-    Boolean? one
-    Boolean? two
     Boolean? e
+    Boolean? two
+    Boolean? one
     String ms_align
-    String lc_ms_dataset_one_filename
-    String lc_ms_dataset_two_filename
+    File lc_ms_dataset_one_filename
+    File lc_ms_dataset_two_filename
   }
   command <<<
     msalign2 \
       ~{ms_align} \
       ~{lc_ms_dataset_one_filename} \
       ~{lc_ms_dataset_two_filename} \
-      ~{true="-1" false="" one} \
-      ~{true="-2" false="" two} \
-      ~{true="-e" false="" e}
+      ~{if (e) then "-e" else ""} \
+      ~{if (two) then "-2" else ""} \
+      ~{if (one) then "-1" else ""}
   >>>
   parameter_meta {
-    one: ""
-    two: ""
     e: ""
+    two: ""
+    one: ""
     ms_align: ""
     lc_ms_dataset_one_filename: ""
     lc_ms_dataset_two_filename: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

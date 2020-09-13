@@ -4,4 +4,7 @@ task Trunkreads {
   command <<<
     trunkreads
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

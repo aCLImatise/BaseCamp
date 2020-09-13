@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../pyatac_bias.cwl
 inputs:
-- id: fast_a
+- id: in_fast_a
   doc: Accepts fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --fasta
-- id: pwm
-  doc: PWM descriptor file. Default is Human.PWM.txt included in package
-  type: string
+- id: in_pwm
+  doc: "PWM descriptor file. Default is Human.PWM.txt included\nin package"
+  type: long
   inputBinding:
     prefix: --pwm
-- id: bed
+- id: in_bed
   doc: Positions around which to get nucleotide frequencies
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: out
+- id: in_out
   doc: Basename for output
   type: string
   inputBinding:
     prefix: --out
-- id: cores
+- id: in_cores
   doc: number of cores to use
   type: long
   inputBinding:
     prefix: --cores
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pyatac

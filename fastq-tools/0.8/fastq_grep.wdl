@@ -1,6 +1,6 @@
 version 1.0
 
-task FastqGrep {
+task Fastqgrep {
   input {
     Boolean? id
     Boolean? invert_match
@@ -11,14 +11,14 @@ task FastqGrep {
     Boolean? trim_match
   }
   command <<<
-    fastq-grep \
-      ~{true="--id" false="" id} \
-      ~{true="--invert-match" false="" invert_match} \
+    fastq_grep \
+      ~{if (id) then "--id" else ""} \
+      ~{if (invert_match) then "--invert-match" else ""} \
       ~{if defined(mismatches) then ("--mismatches " +  '"' + mismatches + '"') else ""} \
-      ~{true="--count" false="" count} \
-      ~{true="--trim_after" false="" trim_after} \
-      ~{true="--trim_before" false="" trim_before} \
-      ~{true="--trim_match" false="" trim_match}
+      ~{if (count) then "--count" else ""} \
+      ~{if (trim_after) then "--trim_after" else ""} \
+      ~{if (trim_before) then "--trim_before" else ""} \
+      ~{if (trim_match) then "--trim_match" else ""}
   >>>
   parameter_meta {
     id: "match the read id (by default, sequence is matched)"
@@ -28,5 +28,9 @@ task FastqGrep {
     trim_after: "trim output after the match end"
     trim_before: "trim output before the match start"
     trim_match: "trim the match itself, regardless of trimming mode"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_mismatches = "${in_mismatches}"
   }
 }

@@ -1,20 +1,23 @@
 version 1.0
 
-task MbBsfinderOutputfile {
+task MbbsfinderOutputfile {
   input {
-    String? threshold
     Int? min_cov
+    String? threshold
     String mb_bs_finder
   }
   command <<<
-    mb-bsfinder outputfile \
+    mb_bsfinder outputfile \
       ~{mb_bs_finder} \
-      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
-      ~{if defined(min_cov) then ("--mincov " +  '"' + min_cov + '"') else ""}
+      ~{if defined(min_cov) then ("--mincov " +  '"' + min_cov + '"') else ""} \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
   parameter_meta {
-    threshold: ""
     min_cov: ""
+    threshold: ""
     mb_bs_finder: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

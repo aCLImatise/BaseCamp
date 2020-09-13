@@ -5,8 +5,8 @@ task SortReads {
     Boolean? paired
     Boolean? merge
     Boolean? filter
-    String? min_length
-    String fq_two_fa
+    Int? min_length
+    Int fq_two_fa
     String tmp_dot_fq
     String tmp_dot_fa
   }
@@ -15,18 +15,21 @@ task SortReads {
       ~{fq_two_fa} \
       ~{tmp_dot_fq} \
       ~{tmp_dot_fa} \
-      ~{true="--paired" false="" paired} \
-      ~{true="--merge" false="" merge} \
-      ~{true="--filter" false="" filter} \
+      ~{if (paired) then "--paired" else ""} \
+      ~{if (merge) then "--merge" else ""} \
+      ~{if (filter) then "--filter" else ""} \
       ~{if defined(min_length) then ("--min_length " +  '"' + min_length + '"') else ""}
   >>>
   parameter_meta {
     paired: "if the reads are paired-end in one file"
     merge: "if the reads are paired-end in two files"
     filter: "filter out reads containing 'N'"
-    min_length: "(=0)              minimum length "
+    min_length: "(=0)              minimum length"
     fq_two_fa: ""
     tmp_dot_fq: ""
     tmp_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

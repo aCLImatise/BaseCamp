@@ -4,4 +4,7 @@ task TargetDB {
   command <<<
     targetDB
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

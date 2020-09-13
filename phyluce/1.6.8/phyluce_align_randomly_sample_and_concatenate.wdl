@@ -2,15 +2,17 @@ version 1.0
 
 task PhyluceAlignRandomlySampleAndConcatenate {
   input {
-    String? alignments
-    String? output_directory_hold
-    String? sample_size
-    String? replicates
+    Directory? alignments
+    Directory? output_directory_hold
+    Int? sample_size
+    Int? replicates
     String? verbosity
-    String? log_path
+    File? log_path
+    String var_6
   }
   command <<<
     phyluce_align_randomly_sample_and_concatenate \
+      ~{var_6} \
       ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
       ~{if defined(output_directory_hold) then ("--output " +  '"' + output_directory_hold + '"') else ""} \
       ~{if defined(sample_size) then ("--sample-size " +  '"' + sample_size + '"') else ""} \
@@ -19,11 +21,16 @@ task PhyluceAlignRandomlySampleAndConcatenate {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
   parameter_meta {
-    alignments: "The directory containing NEXUS alignments to sample and concatenate"
+    alignments: "The directory containing NEXUS alignments to sample\\nand concatenate"
     output_directory_hold: "The output directory to hold concatenated files"
     sample_size: "The number of loci to sample"
     replicates: "The number of replicate samples to take"
     verbosity: "The logging level to use."
     log_path: "The path to a directory to hold logs."
+    var_6: "[--sample-size SAMPLE_SIZE]"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_hold = "${in_output_directory_hold}"
   }
 }

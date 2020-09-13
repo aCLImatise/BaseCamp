@@ -4,4 +4,7 @@ task Easel {
   command <<<
     easel
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

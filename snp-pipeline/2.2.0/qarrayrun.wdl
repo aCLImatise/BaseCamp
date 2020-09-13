@@ -4,4 +4,7 @@ task Qarrayrun {
   command <<<
     qarrayrun
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

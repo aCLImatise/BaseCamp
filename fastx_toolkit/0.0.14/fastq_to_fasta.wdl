@@ -2,28 +2,31 @@ version 1.0
 
 task FastqToFasta {
   input {
-    Boolean? r
-    Boolean? n
-    Boolean? v
-    Boolean? z
-    String? i
     String? o
+    File? i
+    Boolean? z
+    Boolean? v
+    Boolean? n
+    Boolean? r
   }
   command <<<
     fastq_to_fasta \
-      ~{true="-r" false="" r} \
-      ~{true="-n" false="" n} \
-      ~{true="-v" false="" v} \
-      ~{true="-z" false="" z} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if (z) then "-z" else ""} \
+      ~{if (v) then "-v" else ""} \
+      ~{if (n) then "-n" else ""} \
+      ~{if (r) then "-r" else ""}
   >>>
   parameter_meta {
-    r: ""
-    n: ""
-    v: ""
-    z: ""
-    i: ""
     o: ""
+    i: ""
+    z: ""
+    v: ""
+    n: ""
+    r: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

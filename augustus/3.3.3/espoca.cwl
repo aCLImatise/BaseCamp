@@ -1,39 +1,42 @@
 class: CommandLineTool
 id: ../../../espoca.cwl
 inputs:
-- id: var_0
+- id: in_var_0
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --treefile
+- id: in_var_1
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --alnfile
+- id: in_var_2
   doc: ''
   type: string
   inputBinding:
     prefix: --species
-- id: var_1
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --alnfile
-- id: var_2
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --treefile
-- id: species_parameter_calculation
+- id: in_species_parameter_see
   doc: species parameter for calculation of the codon usage. type 'augustus --species=help'
     to see what species are available
   type: string
   inputBinding:
     position: 0
-- id: codon_alignment_file
+- id: in_codon_alignment_file
   doc: codon alignment file in multi fasta format
   type: string
   inputBinding:
     position: 1
-- id: phylogenetic_tree_branchlength
+- id: in_phylogenetic_tree_branchlength
   doc: phylogenetic tree with branchlength in newick format (startree is used if not
     specified)
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - espoca

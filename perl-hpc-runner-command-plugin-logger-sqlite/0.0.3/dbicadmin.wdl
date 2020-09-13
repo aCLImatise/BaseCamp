@@ -4,4 +4,7 @@ task Dbicadmin {
   command <<<
     dbicadmin
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

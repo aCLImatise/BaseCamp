@@ -4,4 +4,7 @@ task Ipa {
   command <<<
     ipa
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

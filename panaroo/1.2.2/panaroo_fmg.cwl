@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../panaroo_fmg.cwl
 inputs:
-- id: tree
+- id: in_tree
   doc: A dated phylogeny.
   type: string
   inputBinding:
     prefix: --tree
-- id: pa
+- id: in_pa
   doc: A presence/absence produced by Panaroo.
   type: string
   inputBinding:
     prefix: --pa
-- id: outfile
+- id: in_outfile
   doc: Name of outputfile.
-  type: string
+  type: File
   inputBinding:
     prefix: --outfile
-- id: n_boot
-  doc: The number of sub-sampling bootstrap iterations to perform.
-  type: string
+- id: in_n_boot
+  doc: The number of sub-sampling bootstrap iterations to
+  type: long
   inputBinding:
     prefix: --nboot
-- id: threads
-  doc: number of threads to use (default=1)
-  type: string
-  inputBinding:
-    prefix: --threads
-- id: verbose
+- id: in_verbose
   doc: print additional output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: pana_roo_fmg_est
-  doc: ''
+- id: in_perform_dot
+  doc: -t N_CPU, --threads N_CPU
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outfile
+  doc: Name of outputfile.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
 cwlVersion: v1.1
 baseCommand:
 - panaroo-fmg

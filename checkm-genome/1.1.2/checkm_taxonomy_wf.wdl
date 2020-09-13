@@ -8,38 +8,38 @@ task CheckmTaxonomyWf {
     Boolean? individual_markers
     Boolean? skip_adj_correction
     Boolean? skip_pseudogene_correction
-    String? aai_strain
-    String? alignment_file
+    Float? aai_strain
+    File? alignment_file
     Boolean? ignore_thresholds
-    String? e_value
+    Float? e_value
     Int? length
-    String? coverage_file
+    File? coverage_file
     File? file
     Boolean? tab_table
-    String? extension
-    String? threads
+    Directory? extension
+    Int? threads
     Boolean? quiet
-    String? tmpdir
+    Directory? tmpdir
   }
   command <<<
     checkm taxonomy_wf \
-      ~{true="--ali" false="" ali} \
-      ~{true="--nt" false="" nt} \
-      ~{true="--genes" false="" genes} \
-      ~{true="--individual_markers" false="" individual_markers} \
-      ~{true="--skip_adj_correction" false="" skip_adj_correction} \
-      ~{true="--skip_pseudogene_correction" false="" skip_pseudogene_correction} \
+      ~{if (ali) then "--ali" else ""} \
+      ~{if (nt) then "--nt" else ""} \
+      ~{if (genes) then "--genes" else ""} \
+      ~{if (individual_markers) then "--individual_markers" else ""} \
+      ~{if (skip_adj_correction) then "--skip_adj_correction" else ""} \
+      ~{if (skip_pseudogene_correction) then "--skip_pseudogene_correction" else ""} \
       ~{if defined(aai_strain) then ("--aai_strain " +  '"' + aai_strain + '"') else ""} \
       ~{if defined(alignment_file) then ("--alignment_file " +  '"' + alignment_file + '"') else ""} \
-      ~{true="--ignore_thresholds" false="" ignore_thresholds} \
+      ~{if (ignore_thresholds) then "--ignore_thresholds" else ""} \
       ~{if defined(e_value) then ("--e_value " +  '"' + e_value + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
       ~{if defined(coverage_file) then ("--coverage_file " +  '"' + coverage_file + '"') else ""} \
       ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
-      ~{true="--tab_table" false="" tab_table} \
+      ~{if (tab_table) then "--tab_table" else ""} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
   parameter_meta {
@@ -61,5 +61,8 @@ task CheckmTaxonomyWf {
     threads: "number of threads (default: 1)"
     quiet: "suppress console output"
     tmpdir: "specify an alternative directory for temporary files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

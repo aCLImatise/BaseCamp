@@ -1,14 +1,10 @@
 version 1.0
 
-task Nanocompore.bakPlot {
-  input {
-    String nano_compo_re_dot_bak
-  }
+task Nanocompore {
   command <<<
-    nanocompore.bak plot \
-      ~{nano_compo_re_dot_bak}
+    nanocompore
   >>>
-  parameter_meta {
-    nano_compo_re_dot_bak: ""
+  output {
+    File out_stdout = stdout()
   }
 }

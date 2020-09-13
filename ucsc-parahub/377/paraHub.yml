@@ -1,15 +1,97 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: machineList
-  optional: false
-named: []
 command:
 - paraHub
+positional: []
+named:
+- !Flag
+  description: Number of processes that feed jobs to nodes - default 30.
+  synonyms:
+  - -spokes
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Minutes between checking on job - default 10.
+  synonyms:
+  - -jobCheckPeriod
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Minutes between checking on machine - default 20.
+  synonyms:
+  - -machineCheckPeriod
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Only accept connections from subnet (example 192.168).
+  synonyms:
+  - -subnet
+  args: !SimpleFlagArg
+    name: XXX.YYY.ZZZ
+  optional: true
+- !Flag
+  description: Starting job ID number.
+  synonyms:
+  - -nextJobId
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Log to the specified syslog facility - default local0.
+  synonyms:
+  - -logFacility
+  args: !SimpleFlagArg
+    name: facility
+  optional: true
+- !Flag
+  description: "minimum syslog priority to log, also filters file logging.\ndefaults\
+    \ to \"warn\""
+  synonyms:
+  - -logMinPriority
+  args: !SimpleFlagArg
+    name: pri
+  optional: true
+- !Flag
+  description: Log to file instead of syslog.
+  synonyms:
+  - -log
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Don't daemonize
+  synonyms:
+  - -debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't try to reconnect with jobs running on nodes.
+  synonyms:
+  - -noResume
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of bytes of RAM in the base unit used by the jobs.\nDefault\
+    \ is RAM on node divided by number of cpus on node.\nShorthand expressions allow\
+    \ t,g,m,k for tera, giga, mega, kilo.\ne.g. 4g = 4 Gigabytes."
+  synonyms:
+  - -ramUnit
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Number of ram units in a job has no specified ram usage.\nDefaults\
+    \ to 1.\n"
+  synonyms:
+  - -defaultJobRam
+  args: !SimpleFlagArg
+    name: N
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

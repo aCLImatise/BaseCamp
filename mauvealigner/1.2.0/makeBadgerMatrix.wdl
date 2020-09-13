@@ -3,8 +3,8 @@ version 1.0
 task MakeBadgerMatrix {
   input {
     String input_x_mfa
-    String output_badger_file
-    String lcb_coordinate_file
+    File output_badger_file
+    File lcb_coordinate_file
   }
   command <<<
     makeBadgerMatrix \
@@ -16,5 +16,9 @@ task MakeBadgerMatrix {
     input_x_mfa: ""
     output_badger_file: ""
     lcb_coordinate_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_badger_file = "${in_output_badger_file}"
   }
 }

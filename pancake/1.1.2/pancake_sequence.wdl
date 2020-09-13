@@ -2,10 +2,10 @@ version 1.0
 
 task PancakeSequence {
   input {
-    String? pan_file
+    File? pan_file
     String? chrom
     String? genome
-    String? file_fasta_output
+    File? file_fasta_output
     Int? linewidth
     Int? start
     Int? stop
@@ -23,10 +23,14 @@ task PancakeSequence {
   parameter_meta {
     pan_file: "Name of PanCake Data Object File (required)"
     chrom: "Chromosome from which sequence originates"
-    genome: "(multiple) .fasta output of GENOME (if set, start and stop will be ignored)"
-    file_fasta_output: "file to which .fasta output will be written (DEFAULT = STDOUT)"
+    genome: "(multiple) .fasta output of GENOME (if set, start and\\nstop will be ignored)"
+    file_fasta_output: "file to which .fasta output will be written (DEFAULT =\\nSTDOUT)"
     linewidth: "line witdth in .fastafile (DEFAULT=100)"
     start: "(1-based) start position on CHROMOSME (DEFAULT = 1)"
-    stop: "(1-based) stop position on CHROMOSME (DEFAULT = length of CHROMOSME)"
+    stop: "(1-based) stop position on CHROMOSME (DEFAULT = length\\nof CHROMOSME)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_file_fasta_output = "${in_file_fasta_output}"
   }
 }

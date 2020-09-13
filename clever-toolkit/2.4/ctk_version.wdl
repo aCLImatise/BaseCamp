@@ -1,7 +1,10 @@
 version 1.0
 
-task CtkVersion {
+task Ctkversion {
   command <<<
-    ctk-version
+    ctk_version
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

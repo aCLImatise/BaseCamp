@@ -1,13 +1,13 @@
 version 1.0
 
-task SeqtkTrinity {
+task Seqtktrinity {
   input {
     String seq_tk
     String var_command
     String arguments
   }
   command <<<
-    seqtk-trinity \
+    seqtk_trinity \
       ~{seq_tk} \
       ~{var_command} \
       ~{arguments}
@@ -16,5 +16,8 @@ task SeqtkTrinity {
     seq_tk: ""
     var_command: ""
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

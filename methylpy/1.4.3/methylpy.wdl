@@ -4,4 +4,7 @@ task Methylpy {
   command <<<
     methylpy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

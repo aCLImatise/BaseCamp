@@ -15,24 +15,38 @@ task BsCall {
     Int? bq_threshold
     Int? max_template_length
     Int? realign_tolerance
+    File? no_compress
+    String? var_output
+    String? sample
+    File? reference
+    File? contig_bed
+    File? dbsnp
+    Boolean? all_positions
     Float? conversion
     Float? reference_bias
   }
   command <<<
     bs_call \
-      ~{true="--no-split" false="" no_split} \
-      ~{true="--haploid" false="" haploid} \
-      ~{true="--keep-duplicates" false="" keep_duplicates} \
-      ~{true="--ignore-duplicates" false="" ignore_duplicates} \
-      ~{true="--keep-unmatched" false="" keep_unmatched} \
-      ~{true="--extra-stats" false="" extra_stats} \
-      ~{true="--right-trim" false="" right_trim} \
-      ~{true="--left-trim" false="" left_trim} \
-      ~{true="--blank-trim" false="" blank_trim} \
+      ~{if (no_split) then "--no-split" else ""} \
+      ~{if (haploid) then "--haploid" else ""} \
+      ~{if (keep_duplicates) then "--keep-duplicates" else ""} \
+      ~{if (ignore_duplicates) then "--ignore-duplicates" else ""} \
+      ~{if (keep_unmatched) then "--keep-unmatched" else ""} \
+      ~{if (extra_stats) then "--extra-stats" else ""} \
+      ~{if (right_trim) then "--right-trim" else ""} \
+      ~{if (left_trim) then "--left-trim" else ""} \
+      ~{if (blank_trim) then "--blank-trim" else ""} \
       ~{if defined(mapq_threshold) then ("--mapq-threshold " +  '"' + mapq_threshold + '"') else ""} \
       ~{if defined(bq_threshold) then ("--bq-threshold " +  '"' + bq_threshold + '"') else ""} \
       ~{if defined(max_template_length) then ("--max-template-length " +  '"' + max_template_length + '"') else ""} \
       ~{if defined(realign_tolerance) then ("--realign-tolerance " +  '"' + realign_tolerance + '"') else ""} \
+      ~{if defined(no_compress) then ("--no-compress " +  '"' + no_compress + '"') else ""} \
+      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
+      ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(contig_bed) then ("--contig-bed " +  '"' + contig_bed + '"') else ""} \
+      ~{if defined(dbsnp) then ("--dbsnp " +  '"' + dbsnp + '"') else ""} \
+      ~{if (all_positions) then "--all-positions" else ""} \
       ~{if defined(conversion) then ("--conversion " +  '"' + conversion + '"') else ""} \
       ~{if defined(reference_bias) then ("--reference-bias " +  '"' + reference_bias + '"') else ""}
   >>>
@@ -50,7 +64,18 @@ task BsCall {
     bq_threshold: "Set base quality threshold for calling (default 20)"
     max_template_length: "Set maximum template length for a pair (default 1000)"
     realign_tolerance: "Tolerance for realignment positions (default 8)"
+    no_compress: ""
+    var_output: ""
+    sample: "SAMPLE"
+    reference: "(MultiFASTA/FASTA)"
+    contig_bed: "(BED)"
+    dbsnp: "(dbSNP processed file)"
+    all_positions: ""
     conversion: ",<float> Set under and over conversion rates (default 0.01,0.05)"
     reference_bias: "Set bias to reference homozygote (default 2)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_no_compress = "${in_no_compress}"
   }
 }

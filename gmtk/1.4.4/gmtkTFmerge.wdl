@@ -4,4 +4,7 @@ task GmtkTFmerge {
   command <<<
     gmtkTFmerge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task 3EdgeTests {
+task EdgeTests {
   command <<<
-    3EdgeTests
+    _EdgeTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

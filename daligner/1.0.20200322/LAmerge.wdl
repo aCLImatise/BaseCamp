@@ -9,15 +9,18 @@ task LAmerge {
   }
   command <<<
     LAmerge \
-      ~{true="-v" false="" verbose_mode_output} \
-      ~{true="-a" false="" sort_areadaposition_pairs} \
-      ~{true="-P" false="" intermediate_merging_directory} \
-      ~{true="-va" false="" va}
+      ~{if (verbose_mode_output) then "-v" else ""} \
+      ~{if (sort_areadaposition_pairs) then "-a" else ""} \
+      ~{if (intermediate_merging_directory) then "-P" else ""} \
+      ~{if (va) then "-va" else ""}
   >>>
   parameter_meta {
     verbose_mode_output: ": Verbose mode, output statistics as proceed."
-    sort_areadaposition_pairs: ": sort .las by A-read,A-position pairs for map usecase off => sort .las by A,B-read pairs for overlap piles"
+    sort_areadaposition_pairs: ": sort .las by A-read,A-position pairs for map usecase\\noff => sort .las by A,B-read pairs for overlap piles"
     intermediate_merging_directory: ": Do any intermediate merging in directory -P."
     va: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

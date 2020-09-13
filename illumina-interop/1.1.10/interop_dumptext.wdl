@@ -4,23 +4,26 @@ task InteropDumptext {
   input {
     Boolean? subset
     Boolean? metric
-    String? option_one
-    String? option_two
+    Int? option_two
+    Int? option_one
     String run_folder
   }
   command <<<
     interop_dumptext \
       ~{run_folder} \
-      ~{true="--subset" false="" subset} \
-      ~{true="--metric" false="" metric} \
-      ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""} \
-      ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""}
+      ~{if (subset) then "--subset" else ""} \
+      ~{if (metric) then "--metric" else ""} \
+      ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""} \
+      ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""}
   >>>
   parameter_meta {
     subset: "[0]: Number of metrics to subsample"
     metric: "[]: Name of metric to load, e.g. --metric=Tile to load TileMetricsOut.bin"
-    option_one: ""
     option_two: ""
+    option_one: ""
     run_folder: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

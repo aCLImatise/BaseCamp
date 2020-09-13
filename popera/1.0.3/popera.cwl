@@ -1,47 +1,55 @@
 class: CommandLineTool
 id: ../../../popera.cwl
 inputs:
-- id: data
+- id: in_data
   doc: data file, should be sorted bam format
-  type: string
+  type: File
   inputBinding:
     prefix: --data
-- id: name
+- id: in_name
   doc: NH sample name default=NH_sample
   type: string
   inputBinding:
     prefix: --name
-- id: bandwidth
+- id: in_bandwidth
   doc: kernel smooth band width, should >1, default=200
-  type: string
+  type: long
   inputBinding:
     prefix: --bandwidth
-- id: threshold
+- id: in_threshold
   doc: Hot spots threshold, default=4.0
-  type: string
+  type: double
   inputBinding:
     prefix: --threshold
-- id: minlength
+- id: in_minlength
   doc: minimum length of hot spots, default=5
   type: long
   inputBinding:
     prefix: --minlength
-- id: threads
+- id: in_threads
   doc: threads number or cpu number, default=4
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: bigwig
+- id: in_bigwig
   doc: whether out put bigwig file, default=False
-  type: boolean
+  type: File
   inputBinding:
     prefix: --bigwig
-- id: exclude_chr
-  doc: Don't count those DHs, example='-x ChrM,ChrC'
+- id: in_exclude_chr
+  doc: "Don't count those DHs, example='-x ChrM,ChrC'\n"
   type: string
   inputBinding:
     prefix: --excludechr
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_bigwig
+  doc: whether out put bigwig file, default=False
+  type: File
+  outputBinding:
+    glob: $(inputs.in_bigwig)
 cwlVersion: v1.1
 baseCommand:
 - popera

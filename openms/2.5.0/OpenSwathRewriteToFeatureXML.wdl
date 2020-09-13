@@ -5,9 +5,9 @@ task OpenSwathRewriteToFeatureXML {
     File? csv
     File? feature_xml
     File? out
-    String? fdr_cut_off
+    Float? fdr_cut_off
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -20,10 +20,10 @@ task OpenSwathRewriteToFeatureXML {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
-    csv: "MProphet tsv output file: \"all_peakgroups.xls\" (valid formats: 'csv')"
+    csv: "MProphet tsv output file: \\\"all_peakgroups.xls\\\" (valid formats: 'csv')"
     feature_xml: "*   Input featureXML file (valid formats: 'featureXML')"
     out: "*          Output featureXML file (valid formats: 'featureXML')"
     fdr_cut_off: "FDR cutoff (e.g. to remove all features with a an m_score above 0.05 use 0.05 here) (default: '-1.0')"
@@ -31,5 +31,10 @@ task OpenSwathRewriteToFeatureXML {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_csv = "${in_csv}"
+    File out_out = "${in_out}"
   }
 }

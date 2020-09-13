@@ -1,75 +1,83 @@
 class: CommandLineTool
 id: ../../../roc.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: show verbose information (to stderr)
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: input_file
+- id: in_input_file
   doc: The input files
-  type: string
+  type: File
   inputBinding:
     prefix: --input-file
-- id: arg_output_file
+- id: in_arg_output_name
   doc: '[ --output-file ] arg  Output file name, defaults to - / write to stdout'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: arg_character_default
+- id: in_arg_separator_character
   doc: "[ --separator ] arg    separator character (default: '\\t' for reading tsv)"
   type: boolean
   inputBinding:
     prefix: -s
-- id: arg_lines_skip
+- id: in_arg_lines_skip
   doc: '[ --header-lines ] arg lines to skip before starting to read'
   type: boolean
   inputBinding:
     prefix: -H
-- id: arg_value_column
+- id: in_arg_value_name
   doc: '[ --value ] arg        value column name'
   type: boolean
   inputBinding:
     prefix: -v
-- id: value_column
+- id: in_value_column
   doc: value column number
-  type: string
+  type: long
   inputBinding:
     prefix: --value-column
-- id: arg_reverse_counting
-  doc: '[ --reverse ] arg      Reverse counting for score (default: higher scores  are
-    better)'
+- id: in_arg_reverse_counting
+  doc: "[ --reverse ] arg      Reverse counting for score (default: higher scores\n\
+    are better)"
   type: boolean
   inputBinding:
     prefix: -R
-- id: arg_tag_column
+- id: in_arg_tag_column
   doc: '[ --tag ] arg          tag column name'
   type: boolean
   inputBinding:
     prefix: -t
-- id: tag_column
-  doc: tag column number. Tags must be TP/FP/FN, lines  with different tags will be
-    ignored
-  type: string
+- id: in_tag_column
+  doc: "tag column number. Tags must be TP/FP/FN, lines\nwith different tags will\
+    \ be ignored"
+  type: long
   inputBinding:
     prefix: --tag-column
-- id: arg_filter_column
+- id: in_arg_filter_column
   doc: '[ --filter ] arg       filter column name'
   type: boolean
   inputBinding:
     prefix: -f
-- id: filter_column
-  doc: filter column number. This is used if we the value  we are varying is a threshold
-    for a certain filter.
-  type: string
+- id: in_filter_column
+  doc: "filter column number. This is used if we the value\nwe are varying is a threshold\
+    \ for a certain filter."
+  type: long
   inputBinding:
     prefix: --filter-column
-- id: arg_filter_name
+- id: in_arg_filter_name
   doc: '[ --filter-name ] arg  filter name if value is threshold for this filter'
   type: boolean
   inputBinding:
     prefix: -n
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_output_name
+  doc: '[ --output-file ] arg  Output file name, defaults to - / write to stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_name)
 cwlVersion: v1.1
 baseCommand:
 - roc

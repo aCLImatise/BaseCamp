@@ -4,4 +4,7 @@ task StCafTests {
   command <<<
     stCafTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

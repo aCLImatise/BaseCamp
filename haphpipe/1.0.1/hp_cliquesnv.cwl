@@ -1,98 +1,112 @@
 class: CommandLineTool
 id: ../../../hp_cliquesnv.cwl
 inputs:
-- id: fq_one
+- id: in_fq_one
   doc: Fastq file with read 1
-  type: string
+  type: long
   inputBinding:
     prefix: --fq1
-- id: fq_two
+- id: in_fq_two
   doc: Fastq file with read 2
-  type: string
+  type: long
   inputBinding:
     prefix: --fq2
-- id: f_qu
+- id: in_f_qu
   doc: Fastq file with unpaired reads
-  type: string
+  type: File
   inputBinding:
     prefix: --fqU
-- id: ref_fa
+- id: in_ref_fa
   doc: Reference FASTA file
-  type: string
+  type: File
   inputBinding:
     prefix: --ref_fa
-- id: outdir
+- id: in_outdir
   doc: 'Output directory (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: jar_dir
-  doc: 'Path to clique-snv.jar (existing) (Default: current directory) (default: .)'
-  type: string
+- id: in_jar_dir
+  doc: "Path to clique-snv.jar (existing) (Default: current\ndirectory) (default:\
+    \ .)"
+  type: File
   inputBinding:
     prefix: --jardir
-- id: o_two_two_min
+- id: in_o_two_two_min
   doc: minimum threshold for O22 value
-  type: string
+  type: long
   inputBinding:
     prefix: --O22min
-- id: o_two_two_min_freq
-  doc: minimum threshold for O22 frequency relative to read coverage
-  type: string
+- id: in_o_two_two_min_freq
+  doc: "minimum threshold for O22 frequency relative to read\ncoverage"
+  type: long
   inputBinding:
     prefix: --O22minfreq
-- id: print_log
+- id: in_print_log
   doc: 'Print log data to console (default: False)'
   type: boolean
   inputBinding:
     prefix: --printlog
-- id: merging
+- id: in_merging
   doc: 'Cliques merging algorithm: accurate or fast'
   type: string
   inputBinding:
     prefix: --merging
-- id: fast_a_format
-  doc: 'Fasta defline format: short or extended, add number at end to adjust precision
-    of frequency (default: extended4)'
-  type: string
+- id: in_fast_a_format
+  doc: "Fasta defline format: short or extended, add number at\nend to adjust precision\
+    \ of frequency (default:\nextended4)"
+  type: long
   inputBinding:
     prefix: --fasta_format
-- id: output_start
+- id: in_output_start
   doc: Output start position
   type: string
   inputBinding:
     prefix: --outputstart
-- id: output_end
+- id: in_output_end
   doc: Output end position
   type: string
   inputBinding:
     prefix: --outputend
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Name for log file (output)
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-- id: n_cpu
+- id: in_n_cpu
   doc: 'Number of CPU to use (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --ncpu
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'Do not delete temporary directory (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_tmp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Name for log file (output)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - hp_cliquesnv

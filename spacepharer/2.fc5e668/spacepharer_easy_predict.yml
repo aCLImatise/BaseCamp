@@ -1,4 +1,7 @@
-&id001 !Command
+&id003 !Command
+command:
+- spacepharer
+- easy-predict
 positional: []
 named:
 - !Flag
@@ -158,8 +161,8 @@ named:
     name: BOOL
   optional: true
 - !Flag
-  description: 'How to compute the alignment: 0: automatic 1: only score and end_pos
-    2: also start_pos and cov 3: also seq.id 4: only ungapped alignment [2]'
+  description: "How to compute the alignment:\n0: automatic\n1: only score and end_pos\n\
+    2: also start_pos and cov\n3: also seq.id\n4: only ungapped alignment [2]"
   synonyms:
   - --alignment-mode
   args: !SimpleFlagArg
@@ -218,10 +221,10 @@ named:
     name: FLOAT
   optional: true
 - !Flag
-  description: '0: coverage of query and target 1: coverage of target 2: coverage
-    of query 3: target seq. length has to be at least x% of query length 4: query
-    seq. length has to be at least x% of target length 5: short seq. needs to be at
-    least x% of the other seq. length [0]'
+  description: "0: coverage of query and target\n1: coverage of target\n2: coverage\
+    \ of query\n3: target seq. length has to be at least x% of query length\n4: query\
+    \ seq. length has to be at least x% of target length\n5: short seq. needs to be\
+    \ at least x% of the other seq. length [0]"
   synonyms:
   - --cov-mode
   args: !SimpleFlagArg
@@ -379,9 +382,9 @@ named:
     name: BOOL
   optional: true
 - !Flag
-  description: 'Rescore diagonals with: 0: Hamming distance 1: local alignment (score
-    only) 2: local alignment 3: global alignment 4: longest alignment fullfilling
-    window quality criterion [0]'
+  description: "Rescore diagonals with:\n0: Hamming distance\n1: local alignment (score\
+    \ only)\n2: local alignment\n3: global alignment\n4: longest alignment fullfilling\
+    \ window quality criterion [0]"
   synonyms:
   - --rescore-mode
   args: !SimpleFlagArg
@@ -455,13 +458,13 @@ named:
     name: STR
   optional: true
 - !Flag
-  description: 1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL,
-    5) INVERT_MITOCHONDRIAL, 6) CILIATE 9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID, 11)
-    PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL
-    15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL,
-    22) SCENEDESMUS_MITOCHONDRIAL 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,
-    25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA 29) MESODINIUM,
-    30) PERTRICH, 31) BLASTOCRITHIDIA [1]
+  description: "1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL,\
+    \ 5) INVERT_MITOCHONDRIAL, 6) CILIATE\n9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID,\
+    \ 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL\n\
+    15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL,\
+    \ 22) SCENEDESMUS_MITOCHONDRIAL\n23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
+    \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\n29)\
+    \ MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA [1]"
   synonyms:
   - --translation-table
   args: !SimpleFlagArg
@@ -680,18 +683,17 @@ named:
   args: !SimpleFlagArg
     name: INT
   optional: true
-command:
-- spacepharer
-- easy-predict
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - spacepharer
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - spacepharer
+    - truncatebesthits
     positional: []
     named:
     - !Flag
@@ -716,151 +718,32 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - spacepharer
-    - parsespacer
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
-    help_text: "usage: spacepharer parsespacer <i:spacerFile1[.txt]> ... <i:spacerFileN[.txt]>\
-      \ <o:spacerDB> [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\noptions:\
-      \ common:           \n --threads INT      Number of CPU-cores used (all by default)\
+    help_text: "usage: spacepharer truncatebesthits <i:queryDB> <i:besthitsDB> <o:resultDB>\
+      \ [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\noptions: common:\
+      \           \n --threads INT      Number of CPU-cores used (all by default)\
       \ [8]\n --compressed INT   Write compressed output [0]\n -v INT            \
       \ Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n\nreferences:\n\
       \ - Zhang R, Mirdita M, Levy Karin E, Norroy C, Galiez C, and Soding J: SpacePHARER:\
       \ Sensitive identification of phages from CRISPR spacers in prokaryotic hosts.\
       \ (2020)\n"
-    generated_using: &id003
+    generated_using: &id002
     - --help
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: name/downloadFile
-      optional: false
-    named:
-    - !Flag
-      description: Create additional setDB with reversed fragments to compute under
-        null [0,1] [1]
-      synonyms:
-      - --reverse-setdb
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info
-        [3]'
-      synonyms:
-      - -v
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
     command:
     - spacepharer
-    - downloadgenome
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "usage: spacepharer downloadgenome <name/downloadFile> <o:sequenceDB>\
-      \ <tmpDir> [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\n\n  Name\
-      \                  \n- GenBank_phage_2018_09 \n  GenBank phage genomes from\
-      \ September 2018\n  Cite: NCBI Resource Coordinators: Database resources of\
-      \ the National Center for Biotechnology Information. Nucleic Acids Res 46(D1),\
-      \ D8-D13 (2018)\n- GenBank_eukvir_2018_09\n  GenBank eukaryotic viral genomes\
-      \ from September 2018\n  Cite: NCBI Resource Coordinators: Database resources\
-      \ of the National Center for Biotechnology Information. Nucleic Acids Res 46(D1),\
-      \ D8-D13 (2018)\n\noptions:                      \n --reverse-setdb INT   Create\
-      \ additional setDB with reversed fragments to compute under null [0,1] [1]\n\
-      \                     \n -v INT                Verbosity level: 0: quiet, 1:\
-      \ +errors, 2: +warnings, 3: +info [3]\n\nreferences:\n - Zhang R, Mirdita M,\
-      \ Levy Karin E, Norroy C, Galiez C, and Soding J: SpacePHARER: Sensitive identification\
-      \ of phages from CRISPR spacers in prokaryotic hosts. (2020)\n"
-    generated_using: *id003
-  - !Command
+    - findpam
     positional: []
     named:
     - !Flag
-      description: 'Database type 0: auto, 1: amino acid 2: nucleotides [0]'
+      description: Number of CPU-cores used (all by default) [8]
       synonyms:
-      - --dbtype
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: Shuffle input database [1]
-      synonyms:
-      - --shuffle
-      args: !SimpleFlagArg
-        name: BOOL
-      optional: true
-    - !Flag
-      description: 'Createdb mode 0: copy data, 1: soft link data and write new index
-        (works only with single line fasta/q) [0]'
-      synonyms:
-      - --createdb-mode
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: Numeric ids in index file are offset by this value [0]
-      synonyms:
-      - --id-offset
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: 1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4)
-        MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE 9) FLATWORM_MITOCHONDRIAL,
-        10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14)
-        ALT_FLATWORM_MITOCHONDRIAL 15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,
-        21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL,
-        24) PTEROBRANCHIA_MITOCHONDRIAL, 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27)
-        KARYORELICT, 28) CONDYLOSTOMA 29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA
-        [1]
-      synonyms:
-      - --translation-table
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: Add stop codon '*' at complete start and end [0]
-      synonyms:
-      - --add-orf-stop
-      args: !SimpleFlagArg
-        name: BOOL
-      optional: true
-    - !Flag
-      description: 'One of: linecount, mean, doolittle, charges, seqlen, firstline
-        []'
-      synonyms:
-      - --stat
-      args: !SimpleFlagArg
-        name: STR
-      optional: true
-    - !Flag
-      description: Return output in TSV format [0]
-      synonyms:
-      - --tsv
-      args: !SimpleFlagArg
-        name: BOOL
-      optional: true
-    - !Flag
-      description: Reverse AA fragments to compute under null [0,1] [0]
-      synonyms:
-      - --reverse-fragments
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: change parameter settings for extractorfs when createsetdb for
-        spacer db [0,1] [0]
-      synonyms:
-      - --extractorf-spacer
+      - --threads
       args: !SimpleFlagArg
         name: INT
       optional: true
@@ -879,51 +762,25 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    - !Flag
-      description: Number of CPU-cores used (all by default) [8]
-      synonyms:
-      - --threads
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    command:
-    - spacepharer
-    - createsetdb
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
-    help_text: "usage: spacepharer createsetdb <i:fastaFile1[.gz]> ... <i:fastaFileN[.gz]>|<i:DB>\
-      \ <o:setDB> <tmpDir> [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\n\
-      options: misc:                    \n --dbtype INT              Database type\
-      \ 0: auto, 1: amino acid 2: nucleotides [0]\n --shuffle BOOL            Shuffle\
-      \ input database [1]\n --createdb-mode INT       Createdb mode 0: copy data,\
-      \ 1: soft link data and write new index (works only with single line fasta/q)\
-      \ [0]\n --id-offset INT           Numeric ids in index file are offset by this\
-      \ value [0]\n --translation-table INT   1) CANONICAL, 2) VERT_MITOCHONDRIAL,\
-      \ 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6)\
-      \ CILIATE\n                           9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID,\
-      \ 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL\n\
-      \                           15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,\
-      \ 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\n             \
-      \              23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
-      \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\n \
-      \                           29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA\
-      \ [1]\n --add-orf-stop BOOL       Add stop codon '*' at complete start and end\
-      \ [0]\n --stat STR                One of: linecount, mean, doolittle, charges,\
-      \ seqlen, firstline []\n --tsv BOOL                Return output in TSV format\
-      \ [0]\n --reverse-fragments INT   Reverse AA fragments to compute under null\
-      \ [0,1] [0]\n --extractorf-spacer INT   change parameter settings for extractorfs\
-      \ when createsetdb for spacer db [0,1] [0]\ncommon:                  \n --compressed\
-      \ INT          Write compressed output [0]\n -v INT                    Verbosity\
-      \ level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n --threads INT  \
-      \           Number of CPU-cores used (all by default) [8]\n\nreferences:\n -\
-      \ Zhang R, Mirdita M, Levy Karin E, Norroy C, Galiez C, and Soding J: SpacePHARER:\
+    help_text: "usage: spacepharer findpam <i:targetDB> <i:alnResultDB>  <o:resultDB>\
+      \ [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\noptions: common:\
+      \           \n --threads INT      Number of CPU-cores used (all by default)\
+      \ [8]\n --compressed INT   Write compressed output [0]\n -v INT            \
+      \ Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n\nreferences:\n\
+      \ - Zhang R, Mirdita M, Levy Karin E, Norroy C, Galiez C, and Soding J: SpacePHARER:\
       \ Sensitive identification of phages from CRISPR spacers in prokaryotic hosts.\
       \ (2020)\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
+    command:
+    - spacepharer
+    - predictmatch
     positional: []
     named:
     - !Flag
@@ -1084,8 +941,9 @@ parent: &id002 !Command
         name: BOOL
       optional: true
     - !Flag
-      description: 'How to compute the alignment: 0: automatic 1: only score and end_pos
-        2: also start_pos and cov 3: also seq.id 4: only ungapped alignment [2]'
+      description: "How to compute the alignment:\n0: automatic\n1: only score and\
+        \ end_pos\n2: also start_pos and cov\n3: also seq.id\n4: only ungapped alignment\
+        \ [2]"
       synonyms:
       - --alignment-mode
       args: !SimpleFlagArg
@@ -1144,10 +1002,10 @@ parent: &id002 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: '0: coverage of query and target 1: coverage of target 2: coverage
-        of query 3: target seq. length has to be at least x% of query length 4: query
-        seq. length has to be at least x% of target length 5: short seq. needs to
-        be at least x% of the other seq. length [0]'
+      description: "0: coverage of query and target\n1: coverage of target\n2: coverage\
+        \ of query\n3: target seq. length has to be at least x% of query length\n\
+        4: query seq. length has to be at least x% of target length\n5: short seq.\
+        \ needs to be at least x% of the other seq. length [0]"
       synonyms:
       - --cov-mode
       args: !SimpleFlagArg
@@ -1306,9 +1164,9 @@ parent: &id002 !Command
         name: BOOL
       optional: true
     - !Flag
-      description: 'Rescore diagonals with: 0: Hamming distance 1: local alignment
-        (score only) 2: local alignment 3: global alignment 4: longest alignment fullfilling
-        window quality criterion [0]'
+      description: "Rescore diagonals with:\n0: Hamming distance\n1: local alignment\
+        \ (score only)\n2: local alignment\n3: global alignment\n4: longest alignment\
+        \ fullfilling window quality criterion [0]"
       synonyms:
       - --rescore-mode
       args: !SimpleFlagArg
@@ -1382,14 +1240,14 @@ parent: &id002 !Command
         name: STR
       optional: true
     - !Flag
-      description: 1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4)
-        MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE 9) FLATWORM_MITOCHONDRIAL,
-        10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14)
-        ALT_FLATWORM_MITOCHONDRIAL 15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,
-        21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL,
-        24) PTEROBRANCHIA_MITOCHONDRIAL, 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27)
-        KARYORELICT, 28) CONDYLOSTOMA 29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA
-        [1]
+      description: "1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4)\
+        \ MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE\n9) FLATWORM_MITOCHONDRIAL,\
+        \ 10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL,\
+        \ 14) ALT_FLATWORM_MITOCHONDRIAL\n15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,\
+        \ 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\n23) THRAUSTOCHYTRIUM_MITOCHONDRIAL,\
+        \ 24) PTEROBRANCHIA_MITOCHONDRIAL, 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27)\
+        \ KARYORELICT, 28) CONDYLOSTOMA\n29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA\
+        \ [1]"
       synonyms:
       - --translation-table
       args: !SimpleFlagArg
@@ -1610,11 +1468,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - spacepharer
-    - predictmatch
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -1760,28 +1616,23 @@ parent: &id002 !Command
       \ both [1]\n\nreferences:\n - Zhang R, Mirdita M, Levy Karin E, Norroy C, Galiez\
       \ C, and Soding J: SpacePHARER: Sensitive identification of phages from CRISPR\
       \ spacers in prokaryotic hosts. (2020)\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
-    positional: []
+    command:
+    - spacepharer
+    - downloadgenome
+    positional:
+    - !Positional
+      description: '- GenBank_phage_2018_09 '
+      position: 0
+      name: Name
+      optional: false
     named:
     - !Flag
-      description: FDR cutoff for filtering matches[0.0, 1.0] [0.050]
+      description: Create additional setDB with reversed fragments to compute under
+        null [0,1] [1]
       synonyms:
-      - --fdr
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
-    - !Flag
-      description: Write compressed output [0]
-      synonyms:
-      - --compressed
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: Number of CPU-cores used (all by default) [8]
-      synonyms:
-      - --threads
+      - --reverse-setdb
       args: !SimpleFlagArg
         name: INT
       optional: true
@@ -1793,25 +1644,31 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - spacepharer
-    - filtermatchbyfdr
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
-    help_text: "usage: spacepharer filtermatchbyfdr <i:cScoreDB> <i:controlcScoreDB>\
-      \ <o:resultDB> [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\noptions:\
-      \ misc:             \n --fdr FLOAT        FDR cutoff for filtering matches[0.0,\
-      \ 1.0] [0.050]\ncommon:           \n --compressed INT   Write compressed output\
-      \ [0]\n --threads INT      Number of CPU-cores used (all by default) [8]\n -v\
-      \ INT             Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info\
-      \ [3]\n\nreferences:\n - Zhang R, Mirdita M, Levy Karin E, Norroy C, Galiez\
-      \ C, and Soding J: SpacePHARER: Sensitive identification of phages from CRISPR\
-      \ spacers in prokaryotic hosts. (2020)\n"
-    generated_using: *id003
+    help_text: "usage: spacepharer downloadgenome <name/downloadFile> <o:sequenceDB>\
+      \ <tmpDir> [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\n\n  Name\
+      \                  \n- GenBank_phage_2018_09 \n  GenBank phage genomes from\
+      \ September 2018\n  Cite: NCBI Resource Coordinators: Database resources of\
+      \ the National Center for Biotechnology Information. Nucleic Acids Res 46(D1),\
+      \ D8-D13 (2018)\n- GenBank_eukvir_2018_09\n  GenBank eukaryotic viral genomes\
+      \ from September 2018\n  Cite: NCBI Resource Coordinators: Database resources\
+      \ of the National Center for Biotechnology Information. Nucleic Acids Res 46(D1),\
+      \ D8-D13 (2018)\n\noptions:                      \n --reverse-setdb INT   Create\
+      \ additional setDB with reversed fragments to compute under null [0,1] [1]\n\
+      \                     \n -v INT                Verbosity level: 0: quiet, 1:\
+      \ +errors, 2: +warnings, 3: +info [3]\n\nreferences:\n - Zhang R, Mirdita M,\
+      \ Levy Karin E, Norroy C, Galiez C, and Soding J: SpacePHARER: Sensitive identification\
+      \ of phages from CRISPR spacers in prokaryotic hosts. (2020)\n"
+    generated_using: *id002
   - !Command
+    command:
+    - spacepharer
+    - parsespacer
     positional: []
     named:
     - !Flag
@@ -1836,66 +1693,26 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - spacepharer
-    - findpam
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
-    help_text: "usage: spacepharer findpam <i:targetDB> <i:alnResultDB>  <o:resultDB>\
-      \ [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\noptions: common:\
-      \           \n --threads INT      Number of CPU-cores used (all by default)\
+    help_text: "usage: spacepharer parsespacer <i:spacerFile1[.txt]> ... <i:spacerFileN[.txt]>\
+      \ <o:spacerDB> [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\noptions:\
+      \ common:           \n --threads INT      Number of CPU-cores used (all by default)\
       \ [8]\n --compressed INT   Write compressed output [0]\n -v INT            \
       \ Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n\nreferences:\n\
       \ - Zhang R, Mirdita M, Levy Karin E, Norroy C, Galiez C, and Soding J: SpacePHARER:\
       \ Sensitive identification of phages from CRISPR spacers in prokaryotic hosts.\
       \ (2020)\n"
-    generated_using: *id003
+    generated_using: *id002
+  - *id003
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Number of CPU-cores used (all by default) [8]
-      synonyms:
-      - --threads
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: Write compressed output [0]
-      synonyms:
-      - --compressed
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info
-        [3]'
-      synonyms:
-      - -v
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
     command:
     - spacepharer
-    - truncatebesthits
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "usage: spacepharer truncatebesthits <i:queryDB> <i:besthitsDB> <o:resultDB>\
-      \ [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\noptions: common:\
-      \           \n --threads INT      Number of CPU-cores used (all by default)\
-      \ [8]\n --compressed INT   Write compressed output [0]\n -v INT            \
-      \ Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n\nreferences:\n\
-      \ - Zhang R, Mirdita M, Levy Karin E, Norroy C, Galiez C, and Soding J: SpacePHARER:\
-      \ Sensitive identification of phages from CRISPR spacers in prokaryotic hosts.\
-      \ (2020)\n"
-    generated_using: *id003
-  - !Command
+    - summarizeresults
     positional: []
     named:
     - !Flag
@@ -1928,11 +1745,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - spacepharer
-    - summarizeresults
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -1945,7 +1760,202 @@ parent: &id002 !Command
       \ 1: +errors, 2: +warnings, 3: +info [3]\n\nreferences:\n - Zhang R, Mirdita\
       \ M, Levy Karin E, Norroy C, Galiez C, and Soding J: SpacePHARER: Sensitive\
       \ identification of phages from CRISPR spacers in prokaryotic hosts. (2020)\n"
-    generated_using: *id003
+    generated_using: *id002
+  - !Command
+    command:
+    - spacepharer
+    - createsetdb
+    positional: []
+    named:
+    - !Flag
+      description: 'Database type 0: auto, 1: amino acid 2: nucleotides [0]'
+      synonyms:
+      - --dbtype
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: Shuffle input database [1]
+      synonyms:
+      - --shuffle
+      args: !SimpleFlagArg
+        name: BOOL
+      optional: true
+    - !Flag
+      description: 'Createdb mode 0: copy data, 1: soft link data and write new index
+        (works only with single line fasta/q) [0]'
+      synonyms:
+      - --createdb-mode
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: Numeric ids in index file are offset by this value [0]
+      synonyms:
+      - --id-offset
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: "1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4)\
+        \ MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE\n9) FLATWORM_MITOCHONDRIAL,\
+        \ 10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL,\
+        \ 14) ALT_FLATWORM_MITOCHONDRIAL\n15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,\
+        \ 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\n23) THRAUSTOCHYTRIUM_MITOCHONDRIAL,\
+        \ 24) PTEROBRANCHIA_MITOCHONDRIAL, 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27)\
+        \ KARYORELICT, 28) CONDYLOSTOMA\n29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA\
+        \ [1]"
+      synonyms:
+      - --translation-table
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: Add stop codon '*' at complete start and end [0]
+      synonyms:
+      - --add-orf-stop
+      args: !SimpleFlagArg
+        name: BOOL
+      optional: true
+    - !Flag
+      description: 'One of: linecount, mean, doolittle, charges, seqlen, firstline
+        []'
+      synonyms:
+      - --stat
+      args: !SimpleFlagArg
+        name: STR
+      optional: true
+    - !Flag
+      description: Return output in TSV format [0]
+      synonyms:
+      - --tsv
+      args: !SimpleFlagArg
+        name: BOOL
+      optional: true
+    - !Flag
+      description: Reverse AA fragments to compute under null [0,1] [0]
+      synonyms:
+      - --reverse-fragments
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: change parameter settings for extractorfs when createsetdb for
+        spacer db [0,1] [0]
+      synonyms:
+      - --extractorf-spacer
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: Write compressed output [0]
+      synonyms:
+      - --compressed
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info
+        [3]'
+      synonyms:
+      - -v
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: Number of CPU-cores used (all by default) [8]
+      synonyms:
+      - --threads
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "usage: spacepharer createsetdb <i:fastaFile1[.gz]> ... <i:fastaFileN[.gz]>|<i:DB>\
+      \ <o:setDB> <tmpDir> [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\n\
+      options: misc:                    \n --dbtype INT              Database type\
+      \ 0: auto, 1: amino acid 2: nucleotides [0]\n --shuffle BOOL            Shuffle\
+      \ input database [1]\n --createdb-mode INT       Createdb mode 0: copy data,\
+      \ 1: soft link data and write new index (works only with single line fasta/q)\
+      \ [0]\n --id-offset INT           Numeric ids in index file are offset by this\
+      \ value [0]\n --translation-table INT   1) CANONICAL, 2) VERT_MITOCHONDRIAL,\
+      \ 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6)\
+      \ CILIATE\n                           9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID,\
+      \ 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL\n\
+      \                           15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,\
+      \ 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\n             \
+      \              23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
+      \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\n \
+      \                           29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA\
+      \ [1]\n --add-orf-stop BOOL       Add stop codon '*' at complete start and end\
+      \ [0]\n --stat STR                One of: linecount, mean, doolittle, charges,\
+      \ seqlen, firstline []\n --tsv BOOL                Return output in TSV format\
+      \ [0]\n --reverse-fragments INT   Reverse AA fragments to compute under null\
+      \ [0,1] [0]\n --extractorf-spacer INT   change parameter settings for extractorfs\
+      \ when createsetdb for spacer db [0,1] [0]\ncommon:                  \n --compressed\
+      \ INT          Write compressed output [0]\n -v INT                    Verbosity\
+      \ level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n --threads INT  \
+      \           Number of CPU-cores used (all by default) [8]\n\nreferences:\n -\
+      \ Zhang R, Mirdita M, Levy Karin E, Norroy C, Galiez C, and Soding J: SpacePHARER:\
+      \ Sensitive identification of phages from CRISPR spacers in prokaryotic hosts.\
+      \ (2020)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - spacepharer
+    - filtermatchbyfdr
+    positional: []
+    named:
+    - !Flag
+      description: FDR cutoff for filtering matches[0.0, 1.0] [0.050]
+      synonyms:
+      - --fdr
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: Write compressed output [0]
+      synonyms:
+      - --compressed
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: Number of CPU-cores used (all by default) [8]
+      synonyms:
+      - --threads
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info
+        [3]'
+      synonyms:
+      - -v
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "usage: spacepharer filtermatchbyfdr <i:cScoreDB> <i:controlcScoreDB>\
+      \ <o:resultDB> [options]\n By Ruoshi Zhang <ruoshi.zhang@mpibpc.mpg.de>\noptions:\
+      \ misc:             \n --fdr FLOAT        FDR cutoff for filtering matches[0.0,\
+      \ 1.0] [0.050]\ncommon:           \n --compressed INT   Write compressed output\
+      \ [0]\n --threads INT      Number of CPU-cores used (all by default) [8]\n -v\
+      \ INT             Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info\
+      \ [3]\n\nreferences:\n - Zhang R, Mirdita M, Levy Karin E, Norroy C, Galiez\
+      \ C, and Soding J: SpacePHARER: Sensitive identification of phages from CRISPR\
+      \ spacers in prokaryotic hosts. (2020)\n"
+    generated_using: *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -1963,8 +1973,9 @@ parent: &id002 !Command
     \ set size\n  summarizeresults  \tSummarize results on predicted matches (E-value)\
     \ and hits (alignments and PAM)\n\n\nInvalid Command: --help\nDid you mean \"\
     spacepharer easy-search\"?\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -2103,4 +2114,4 @@ help_text: "usage: spacepharer easy-predict <i:spacerFile1[.txt]> ... <i:spacerF
   \ forward, 2: both [1]\n\nreferences:\n - Zhang R, Mirdita M, Levy Karin E, Norroy\
   \ C, Galiez C, and Soding J: SpacePHARER: Sensitive identification of phages from\
   \ CRISPR spacers in prokaryotic hosts. (2020)\n"
-generated_using: *id003
+generated_using: *id002

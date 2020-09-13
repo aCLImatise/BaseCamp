@@ -11,4 +11,7 @@ task PvacseqDownloadExampleData {
   parameter_meta {
     destination_directory: "Directory for downloading example data"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

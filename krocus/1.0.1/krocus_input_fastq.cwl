@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../krocus_input_fastq.cwl
 inputs:
-- id: kroc_us
+- id: in_kroc_us
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: allele_directory
+- id: in_allele_directory
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: input_dot_fast_q
+- id: in_input_dot_fast_q
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - krocus

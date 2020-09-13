@@ -2,28 +2,31 @@ version 1.0
 
 task AmrReport {
   input {
-    Boolean? qc
-    String? verbose
-    Boolean? no_progress
+    Int? threads
+    Int? seed
     Boolean? profile
-    String? seed
-    String? threads
+    Boolean? no_progress
+    Int? verbose
+    Boolean? qc
   }
   command <<<
     amr_report \
-      ~{true="-qc" false="" qc} \
-      ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""} \
-      ~{true="-noprogress" false="" no_progress} \
-      ~{true="-profile" false="" profile} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""} \
-      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""}
+      ~{if (profile) then "-profile" else ""} \
+      ~{if (no_progress) then "-noprogress" else ""} \
+      ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""} \
+      ~{if (qc) then "-qc" else ""}
   >>>
   parameter_meta {
-    qc: ""
-    verbose: ""
-    no_progress: ""
-    profile: ""
-    seed: ""
     threads: ""
+    seed: ""
+    profile: ""
+    no_progress: ""
+    verbose: ""
+    qc: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

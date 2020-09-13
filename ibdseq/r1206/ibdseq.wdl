@@ -17,4 +17,7 @@ task Ibdseq {
     java: ""
     parameters: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

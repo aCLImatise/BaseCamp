@@ -29,4 +29,7 @@ task FermiRemap {
     reads_dot_fmd: ""
     contigs_dot_fq: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

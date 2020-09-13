@@ -1,57 +1,55 @@
 class: CommandLineTool
 id: ../../../barrnap.cwl
 inputs:
-- id: citation
+- id: in_citation
   doc: Print citation for referencing barrnap
   type: boolean
   inputBinding:
     prefix: --citation
-- id: kingdom
-  doc: "[X]     Kingdom: euk bac mito arc (default 'bac')"
+- id: in_kingdom
+  doc: "[X]     Kingdom: arc mito bac euk (default 'bac')"
   type: boolean
   inputBinding:
     prefix: --kingdom
-- id: quiet
+- id: in_quiet
   doc: No screen output (default OFF)
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: threads
+- id: in_threads
   doc: "[N]     Number of threads/cores/CPUs to use (default '1')"
   type: boolean
   inputBinding:
     prefix: --threads
-- id: len_cut_off
+- id: in_len_cut_off
   doc: "[n.n] Proportional length threshold to label as partial (default '0.8')"
   type: boolean
   inputBinding:
     prefix: --lencutoff
-- id: reject
+- id: in_reject
   doc: "[n.n]    Proportional length threshold to reject prediction (default '0.25')"
   type: boolean
   inputBinding:
     prefix: --reject
-- id: evalue
+- id: in_evalue
   doc: "[n.n]    Similarity e-value cut-off (default '1e-06')"
   type: boolean
   inputBinding:
     prefix: --evalue
-- id: in_cseq
+- id: in_in_cseq
   doc: Include FASTA _input_ sequences in GFF3 output (default OFF)
   type: boolean
   inputBinding:
     prefix: --incseq
-- id: out_seq
+- id: in_out_seq
   doc: "[X]      Save rRNA hit seqs to this FASTA file (default '')"
   type: boolean
   inputBinding:
     prefix: --outseq
-- id: chr_dot_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - barrnap

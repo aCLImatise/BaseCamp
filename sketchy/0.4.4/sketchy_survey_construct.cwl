@@ -1,32 +1,45 @@
 class: CommandLineTool
 id: ../../../sketchy_survey_construct.cwl
 inputs:
-- id: directory
-  doc: Input directory with collected output from Pathfinder Survey  [required]
+- id: in_directory
+  doc: Input directory with collected output from Pathfinder
   type: File
   inputBinding:
     prefix: --directory
-- id: output
+- id: in_output
   doc: Tab-delimited genotype feature index for Sketchy
   type: File
   inputBinding:
     prefix: --output
-- id: template
-  doc: 'Use a configuration template: saureus, kpneumoniae, mtuberculosis'
+- id: in_template
+  doc: 'Use a configuration template: saureus, kpneumoniae,'
   type: string
   inputBinding:
     prefix: --template
-- id: missing
-  doc: Set a missing character [-]
-  type: string
-  inputBinding:
-    prefix: --missing
-- id: intersect
-  doc: Take minimum intersection of all specified column values
+- id: in_intersect
+  doc: Take minimum intersection of all specified column
   type: boolean
   inputBinding:
     prefix: --intersect
-outputs: []
+- id: in_survey
+  doc: '[required]'
+  type: string
+  inputBinding:
+    position: 0
+- id: in_m_tuberculosis
+  doc: -m, --missing TEXT    Set a missing character [-]
+  type: string
+  inputBinding:
+    position: 1
+- id: in_values
+  doc: --help                Show this message and exit.
+  type: string
+  inputBinding:
+    position: 2
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sketchy

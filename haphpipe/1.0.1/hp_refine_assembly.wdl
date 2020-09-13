@@ -2,20 +2,20 @@ version 1.0
 
 task HpRefineAssembly {
   input {
-    String? fq_one
-    String? fq_two
-    String? f_qu
+    Int? fq_one
+    Int? fq_two
+    File? f_qu
     String? ref_fa
-    String? outdir
+    Directory? outdir
     Int? max_step
     String? subsample
-    String? seed
+    Int? seed
     String? sample_id
-    String? n_cpu
-    String? x_mx
+    Int? n_cpu
+    Int? x_mx
     Boolean? keep_tmp
     Boolean? quiet
-    String? log_file
+    File? log_file
     Boolean? debug
   }
   command <<<
@@ -31,10 +31,10 @@ task HpRefineAssembly {
       ~{if defined(sample_id) then ("--sample_id " +  '"' + sample_id + '"') else ""} \
       ~{if defined(n_cpu) then ("--ncpu " +  '"' + n_cpu + '"') else ""} \
       ~{if defined(x_mx) then ("--xmx " +  '"' + x_mx + '"') else ""} \
-      ~{true="--keep_tmp" false="" keep_tmp} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (keep_tmp) then "--keep_tmp" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     fq_one: "Fastq file with read 1"
@@ -44,13 +44,18 @@ task HpRefineAssembly {
     outdir: "Output directory (default: .)"
     max_step: "Maximum number of refinement steps (default: 1)"
     subsample: "Use a subsample of reads for refinement."
-    seed: "Seed for random number generator (ignored if not subsampling)."
-    sample_id: "Sample ID. Used as read group ID in BAM (default: sampleXX)"
+    seed: "Seed for random number generator (ignored if not\\nsubsampling)."
+    sample_id: "Sample ID. Used as read group ID in BAM (default:\\nsampleXX)"
     n_cpu: "Number of CPUs to use (default: 1)"
     x_mx: "Maximum heap size for Java VM, in GB. (default: 32)"
     keep_tmp: "Do not delete temporary directory (default: False)"
-    quiet: "Do not write output to console (silence stdout and stderr) (default: False)"
+    quiet: "Do not write output to console (silence stdout and\\nstderr) (default: False)"
     log_file: "Append console output to this file"
     debug: "Print commands but do not run (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    File out_log_file = "${in_log_file}"
   }
 }

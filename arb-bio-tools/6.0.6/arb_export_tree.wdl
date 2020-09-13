@@ -8,13 +8,16 @@ task ArbExportTree {
   }
   command <<<
     arb_export_tree \
-      ~{true="--bifurcated" false="" bifurcated} \
-      ~{true="--nobranchlens" false="" no_branch_lens} \
-      ~{true="--doublequotes" false="" double_quotes}
+      ~{if (bifurcated) then "--bifurcated" else ""} \
+      ~{if (no_branch_lens) then "--nobranchlens" else ""} \
+      ~{if (double_quotes) then "--doublequotes" else ""}
   >>>
   parameter_meta {
     bifurcated: "write a bifurcated tree (default is a trifurcated tree)"
     no_branch_lens: "do not write branchlengths"
     double_quotes: "use doublequotes (default is singlequotes)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

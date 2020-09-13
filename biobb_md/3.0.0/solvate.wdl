@@ -2,11 +2,11 @@ version 1.0
 
 task Solvate {
   input {
-    String? config
-    String? input_solute_gro_path
-    String? output_gro_path
-    String? input_top_zip_path
-    String? output_top_zip_path
+    File? config
+    File? input_solute_gro_path
+    File? output_gro_path
+    File? input_top_zip_path
+    File? output_top_zip_path
   }
   command <<<
     solvate \
@@ -22,5 +22,10 @@ task Solvate {
     output_gro_path: ""
     input_top_zip_path: ""
     output_top_zip_path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_gro_path = "${in_output_gro_path}"
+    File out_output_top_zip_path = "${in_output_top_zip_path}"
   }
 }

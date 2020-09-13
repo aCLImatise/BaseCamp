@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../isatab2dot.cwl
 inputs:
-- id: investigation_file
+- id: in_investigation_file
   doc: Path to investigation file
-  type: string
+  type: File
   inputBinding:
     prefix: --investigation-file
-- id: output_file
-  doc: Path to output file, stdout ("-") by default
-  type: string
+- id: in_output_file
+  doc: "Path to output file, stdout (\"-\") by default\n"
+  type: File
   inputBinding:
     prefix: --output-file
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: "Path to output file, stdout (\"-\") by default\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - isatab2dot

@@ -10,17 +10,20 @@ task FalconcBam2clippedFasta {
   }
   command <<<
     falconc bam2clippedFasta \
-      ~{true="--help-syntax" false="" help_syntax} \
-      ~{true="-i" false="" _inbam_string} \
-      ~{true="-r" false="" _region_string} \
-      ~{true="-f" false="" _flag_int} \
-      ~{true="--flip-rc" false="" flip_rc}
+      ~{if (help_syntax) then "--help-syntax" else ""} \
+      ~{if (_inbam_string) then "-i" else ""} \
+      ~{if (_region_string) then "-r" else ""} \
+      ~{if (_flag_int) then "-f" else ""} \
+      ~{if (flip_rc) then "--flip-rc" else ""}
   >>>
   parameter_meta {
     help_syntax: "advanced: prepend,plurals,.."
     _inbam_string: "=, --in-bam=  string  REQUIRED  input bam name"
     _region_string: "=, --region=  string  REQUIRED  htslib formatted region seqid:start-end"
     _flag_int: "=, --flag=    int     3844      filter reads with flag"
-    flip_rc: "bool    false     reverse complement (RC) the sequence if alignment is in RC"
+    flip_rc: "bool    false     reverse complement (RC) the sequence if\\nalignment is in RC\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

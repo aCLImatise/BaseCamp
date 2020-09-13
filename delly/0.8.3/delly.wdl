@@ -4,4 +4,7 @@ task Delly {
   command <<<
     delly
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

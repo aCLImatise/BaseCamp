@@ -10,11 +10,14 @@ task FermiExact {
     fermi exact \
       ~{idx_based_ot_bwt} \
       ~{src_dot_fa} \
-      ~{true="-Ms" false="" ms}
+      ~{if (ms) then "-Ms" else ""}
   >>>
   parameter_meta {
     ms: ""
     idx_based_ot_bwt: ""
     src_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

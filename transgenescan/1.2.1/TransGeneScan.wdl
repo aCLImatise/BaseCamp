@@ -4,4 +4,7 @@ task TransGeneScan {
   command <<<
     TransGeneScan
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

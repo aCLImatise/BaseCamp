@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../MotifRaptor_info_para.cwl
 inputs:
-- id: motif_raptor
+- id: in_motif_raptor
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: info
+- id: in_info
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MotifRaptor

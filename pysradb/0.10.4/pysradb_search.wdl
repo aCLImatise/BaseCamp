@@ -2,8 +2,8 @@ version 1.0
 
 task PysradbSearch {
   input {
-    String? save_to
-    String? db
+    File? save_to
+    File? db
     Boolean? assay
     Boolean? desc
     Boolean? detailed
@@ -13,10 +13,10 @@ task PysradbSearch {
     pysradb search \
       ~{if defined(save_to) then ("--saveto " +  '"' + save_to + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{true="--assay" false="" assay} \
-      ~{true="--desc" false="" desc} \
-      ~{true="--detailed" false="" detailed} \
-      ~{true="--expand" false="" expand}
+      ~{if (assay) then "--assay" else ""} \
+      ~{if (desc) then "--desc" else ""} \
+      ~{if (detailed) then "--detailed" else ""} \
+      ~{if (expand) then "--expand" else ""}
   >>>
   parameter_meta {
     save_to: "Save metadata dataframe to file"
@@ -25,5 +25,8 @@ task PysradbSearch {
     desc: "Should sample_attribute be included"
     detailed: "Display detailed metadata table"
     expand: "Should sample_attribute be expanded"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

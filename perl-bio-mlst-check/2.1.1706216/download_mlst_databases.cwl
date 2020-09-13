@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../download_mlst_databases.cwl
 inputs:
-- id: config_file_containing
+- id: in_config_file_containing
   doc: Config file containing details of MLST databases from pubMLST
-  type: string
+  type: File
   inputBinding:
     prefix: -c
-- id: directory_where_mlst
+- id: in_directory_where_stored
   doc: Directory where MLST databases are stored [$MLST_DATABASES]
-  type: string
+  type: Directory
   inputBinding:
     prefix: -b
-- id: print_version_number
+- id: in_print_version_number
   doc: Print version number and exit
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - download_mlst_databases

@@ -5,7 +5,7 @@ task SplitFa {
     Boolean? paired
     Boolean? merge
     Boolean? filter
-    String fq_two_fa
+    Int fq_two_fa
     String tmp_dot_fq
     String tmp_dot_fa
   }
@@ -14,9 +14,9 @@ task SplitFa {
       ~{fq_two_fa} \
       ~{tmp_dot_fq} \
       ~{tmp_dot_fa} \
-      ~{true="--paired" false="" paired} \
-      ~{true="--merge" false="" merge} \
-      ~{true="--filter" false="" filter}
+      ~{if (paired) then "--paired" else ""} \
+      ~{if (merge) then "--merge" else ""} \
+      ~{if (filter) then "--filter" else ""}
   >>>
   parameter_meta {
     paired: "if the reads are paired-end in one file"
@@ -25,5 +25,8 @@ task SplitFa {
     fq_two_fa: ""
     tmp_dot_fq: ""
     tmp_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

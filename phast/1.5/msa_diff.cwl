@@ -1,34 +1,49 @@
 class: CommandLineTool
 id: ../../../msa_diff.cwl
 inputs:
-- id: alphabet
-  doc: "Use given string for alphabet.  Can be used to accommodate nonstandard characters\
-    \ (e.g., 'b' for any base or '^' for insertion gaps, '.' for deletion gaps).  "
+- id: in_format_one
+  doc: "|SS|PHYLIP|MPM|MAF\nFormat of first alignment (default is to guess format\
+    \ from file contents)."
+  type: long
+  inputBinding:
+    prefix: --format1
+- id: in_format_two
+  doc: "|SS|PHYLIP|MPM|MAF\nFormat of second alignment (default is to guess format\
+    \ from file contents)."
+  type: long
+  inputBinding:
+    prefix: --format2
+- id: in_alphabet
+  doc: "Use given string for alphabet.  Can be used to accommodate\nnonstandard characters\
+    \ (e.g., 'b' for any base or '^' for insertion\ngaps, '.' for deletion gaps)."
   type: string
   inputBinding:
     prefix: --alphabet
-- id: ignore_base_id
-  doc: Ignore identity of bases; consider all alphabetical characters equivalent (e.g.,
-    A, C, G, T, N, X, b).
+- id: in_ignore_base_id
+  doc: "Ignore identity of bases; consider all alphabetical characters\nequivalent\
+    \ (e.g., A, C, G, T, N, X, b)."
   type: boolean
   inputBinding:
     prefix: --ignore-base-id
-- id: ignore_gap_type
+- id: in_ignore_gap_type
   doc: Ignore type of gap; consider '-', '^', and '.' all equivalent.
   type: boolean
   inputBinding:
     prefix: --ignore-gap-type
-- id: alignment_one_dot_fa
+- id: in_alignment_one_dot_fa
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: alignment_two_dot_fa
+- id: in_alignment_two_dot_fa
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - msa_diff

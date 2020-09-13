@@ -2,16 +2,16 @@ version 1.0
 
 task PslScore {
   input {
-    File file_dot_psl
-    String? more_files_dot_psl
+    String? not_valid_option
   }
   command <<<
     pslScore \
-      ~{file_dot_psl} \
-      ~{more_files_dot_psl}
+      ~{if defined(not_valid_option) then ("-h " +  '"' + not_valid_option + '"') else ""}
   >>>
   parameter_meta {
-    file_dot_psl: ""
-    more_files_dot_psl: ""
+    not_valid_option: "not a valid option"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

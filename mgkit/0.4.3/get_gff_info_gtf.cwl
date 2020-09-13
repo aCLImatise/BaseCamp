@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../get_gff_info_gtf.cwl
 inputs:
-- id: gene_id
-  doc: 'GFF attribute to use for the GTF *gene_id* attribute [default: gene_id]'
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_gene_id
+  doc: "GFF attribute to use for the GTF *gene_id* attribute\n[default: gene_id]"
   type: string
   inputBinding:
     prefix: --gene-id
-- id: gff_file
+- id: in_gff_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: gtf_file
+- id: in_gtf_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - get-gff-info

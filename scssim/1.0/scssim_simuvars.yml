@@ -1,4 +1,7 @@
-&id001 !Command
+&id003 !Command
+command:
+- scssim
+- simuvars
 positional: []
 named:
 - !Flag
@@ -33,18 +36,17 @@ named:
   args: !SimpleFlagArg
     name: string
   optional: true
-command:
-- scssim
-- simuvars
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - scssim
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - scssim
+    - learn
     positional: []
     named:
     - !Flag
@@ -111,11 +113,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: string
       optional: true
-    command:
-    - scssim
-    - learn
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: give this information
       synonyms:
@@ -140,9 +140,12 @@ parent: &id002 !Command
       \ learn -b /path/to/normal.bam -v /path/to/normal.vcf -r /path/to/ref.fa -o\
       \ /path/to/results.profile -s /path/to/samtools\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\
       \n"
-    generated_using: &id003
+    generated_using: &id002
     - --help
   - !Command
+    command:
+    - scssim
+    - genreads
     positional: []
     named:
     - !Flag
@@ -218,11 +221,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: string
       optional: true
-    command:
-    - scssim
-    - genreads
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: give this information
       synonyms:
@@ -246,7 +247,9 @@ parent: &id002 !Command
       \    -o, --output <string>           the prefix of output file\n\nExample:\n\
       \    scssim genreads -i /path/to/ref.fa -m /path/to/hiseq2500.profile -t 5 -o\
       \ /path/to/reads\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\n"
-    generated_using: *id003
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: give this information
     synonyms:
@@ -270,8 +273,9 @@ parent: &id002 !Command
     \             learn sequencing profiles from real sequencing data\n    genreads\
     \          simulate sequencing reads of single cell\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\
     \n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: give this information
   synonyms:
@@ -292,4 +296,4 @@ help_text: "Usage: scssim simuvars [options]\n\nOptions:\n    -h, --help        
   \ -v /path/to/variation.txt -o /path/to/results.fa\n\n    scssim simuvars -r /path/to/hg19.fa\
   \ -s /path/to/hg19.snp138.1based.txt -o /path/to/results.fa\n\nAuthor: Zhenhua Yu\
   \ <qasim0208@163.com>\n\n"
-generated_using: *id003
+generated_using: *id002

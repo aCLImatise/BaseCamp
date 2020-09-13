@@ -1,4 +1,6 @@
 !Command
+command:
+- hal2fasta
 positional:
 - !Positional
   description: ''
@@ -10,12 +12,90 @@ positional:
   position: 1
   name: genome
   optional: false
-named: []
-command:
-- hal2fasta
+named:
+- !Flag
+  description: ":   maximum size in bytes of regular hdf5 cache [default =\n15728640]"
+  synonyms:
+  - --cacheBytes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':     number of metadata slots in hdf5 cache [default = 113]'
+  synonyms:
+  - --cacheMDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":     number of regular slots in hdf5 cache.  should be a prime\n\
+    number ~= 10 * DefaultCacheRDCBytes / chunk [default =\n599999]"
+  synonyms:
+  - --cacheRDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':      w0 parameter fro hdf5 cache [default = 0.75]'
+  synonyms:
+  - --cacheW0
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":             load all data in memory (and disable hdf5 cache) [default\
+    \ =\n0]"
+  synonyms:
+  - --inMemory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":       length of the reference genome (or sequence if specified)\
+    \ to\nconvert.  If set to 0, the entire thing is converted [default\n= 0]"
+  synonyms:
+  - --length
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':    Line width for output [default = 80]'
+  synonyms:
+  - --lineWidth
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':    output fasta file (stdout if none) [default = stdout]'
+  synonyms:
+  - --outFaPath
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":     sequence name to export (all sequences by default) [default\
+    \ =\n\"\"]"
+  synonyms:
+  - --sequence
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":        coordinate within reference genome (or sequence if specified)\n\
+    to start at [default = 0]\n"
+  synonyms:
+  - --start
+  args: !SimpleFlagArg
+    name: value
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ':                 dsiplay this help page [default = 0]'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: " \n\nhal2fasta v2.1: Export single genome from hal database to fasta file.\n\

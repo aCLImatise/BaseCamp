@@ -2,28 +2,34 @@ version 1.0
 
 task ChromosomerFragmentmap {
   input {
-    String? ratio_threshold
+    Float? ratio_threshold
     Boolean? shrink_gaps
+    String construct_fragment_map
     String alignment_file
     String gap_size
     String fragment_lengths
-    String output_map
+    String output_fragment_map
   }
   command <<<
     chromosomer fragmentmap \
+      ~{construct_fragment_map} \
       ~{alignment_file} \
       ~{gap_size} \
       ~{fragment_lengths} \
-      ~{output_map} \
+      ~{output_fragment_map} \
       ~{if defined(ratio_threshold) then ("--ratio_threshold " +  '"' + ratio_threshold + '"') else ""} \
-      ~{true="--shrink_gaps" false="" shrink_gaps}
+      ~{if (shrink_gaps) then "--shrink_gaps" else ""}
   >>>
   parameter_meta {
-    ratio_threshold: "the least ratio of two greatest fragment alignment scores to determine the fragment placed to a reference genome (default: 1.2)"
-    shrink_gaps: "shrink large interfragment gaps to the specified size (default: False)"
-    alignment_file: "a BLAST tabular file of fragment alignments to reference chromosomes"
+    ratio_threshold: "the least ratio of two greatest fragment alignment\\nscores to determine the fragment placed to a reference\\ngenome (default: 1.2)"
+    shrink_gaps: "shrink large interfragment gaps to the specified size\\n(default: False)\\n"
+    construct_fragment_map: "Construct a fragment map from fragment alignments to reference chromosomes."
+    alignment_file: "a BLAST tabular file of fragment alignments to\\nreference chromosomes"
     gap_size: "a size of a gap inserted between mapped fragments"
-    fragment_lengths: "a file containing lengths of fragment sequences; it can be obtained using the 'chromosomer fastalength' tool"
-    output_map: "an output fragment map file name"
+    fragment_lengths: "a file containing lengths of fragment sequences; it\\ncan be obtained using the 'chromosomer fastalength'\\ntool"
+    output_fragment_map: "an output fragment map file name"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

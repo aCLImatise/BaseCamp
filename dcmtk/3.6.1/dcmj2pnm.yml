@@ -1,4 +1,6 @@
 !Command
+command:
+- dcmj2pnm
 positional:
 - !Positional
   description: DICOM input filename to be converted
@@ -10,7 +12,23 @@ positional:
   position: 1
   name: bitmap-out
   optional: false
+- !Positional
+  description: 'use interpolation when scaling (1..4, def: 1)'
+  position: 0
+  name: integer
+  optional: false
+- !Positional
+  description: +Mp   --accept-palettes     accept incorrect palette attribute tags
+  position: 0
+  name: interpretation
+  optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet               quiet mode, print no warnings and errors
   synonyms:
@@ -30,15 +48,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-level           [l]evel: string constant (fatal, error, warn,
-    info, debug, trace) use level l for the logger'
+  description: "--log-level           [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
   synonyms:
   - -ll
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-config          [f]ilename: string use config file f for the
-    logger'
+  description: "--log-config          [f]ilename: string\nuse config file f for the\
+    \ logger"
   synonyms:
   - -lc
   args: !EmptyFlagArg {}
@@ -80,6 +98,48 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: --ignore-aspect       ignore pixel aspect ratio when scaling
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-interpolation    no interpolation when scaling
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-scaling          no scaling, ignore pixel aspect ratio (default)
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-modality         ignore stored modality LUT transformation
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-windowing        no VOI windowing (default)
+  synonyms:
+  - -W
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-overlays         do not display overlays
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --nointerlace         create non-interlaced file
+  synonyms:
+  - -il
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: --meta-none           no PNG file meta information
   synonyms:
   - -mf
@@ -97,20 +157,22 @@ named:
   - -o
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dcmj2pnm
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help                print this help text and exit --version             print
-    version information and exit --arguments           print expanded command line
-    arguments
+  description: --help                print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dcmj2pnm v3.6.1 2016-11-02 $\n\ndcmj2pnm: Convert DICOM images\
   \ to PGM/PPM, PNG, TIFF, JPEG or BMP\nusage: dcmj2pnm [options] dcmfile-in [bitmap-out]\n\
   \nparameters:\n  dcmfile-in  DICOM input filename to be converted\n  bitmap-out\

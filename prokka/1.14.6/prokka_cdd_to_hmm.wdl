@@ -1,6 +1,6 @@
 version 1.0
 
-task ProkkaCddToHmm {
+task ProkkacddToHmm {
   input {
     Boolean? verbose
     String? srcdir
@@ -8,16 +8,19 @@ task ProkkaCddToHmm {
     Boolean? force
   }
   command <<<
-    prokka-cdd_to_hmm \
-      ~{true="--verbose" false="" verbose} \
+    prokka_cdd_to_hmm \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(srcdir) then ("--srcdir " +  '"' + srcdir + '"') else ""} \
       ~{if defined(lib) then ("--lib " +  '"' + lib + '"') else ""} \
-      ~{true="--force" false="" force}
+      ~{if (force) then "--force" else ""}
   >>>
   parameter_meta {
     verbose: "!      Verbose output (default '0')."
     srcdir: "CDD download dir (default '/bio/data/cdd/latest/')."
     lib: "Subset of CDD to create (default 'COG')."
     force: "!        Force overwrite of output files: LIB.aln LIB.hmm (default '0')."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

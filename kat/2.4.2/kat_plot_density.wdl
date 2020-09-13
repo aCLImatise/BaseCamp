@@ -2,31 +2,60 @@ version 1.0
 
 task KatPlotDensity {
   input {
+    File? path_output_file
+    File? output_type
+    String? title
+    String? x_label
+    String? y_label
+    String? z_label
+    String? x_max
+    String? y_max
+    String? z_max
+    String? width
+    String? height
+    String? contours
     Boolean? not_raster_is_ed
     String? dpi
     Boolean? verbose
-    String? o
-    String? p
-    String? t
-    String matrix_file
   }
   command <<<
     kat_plot_density \
-      ~{matrix_file} \
-      ~{true="--not_rasterised" false="" not_raster_is_ed} \
+      ~{if defined(path_output_file) then ("--output " +  '"' + path_output_file + '"') else ""} \
+      ~{if defined(output_type) then ("--output_type " +  '"' + output_type + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{if defined(x_label) then ("--x_label " +  '"' + x_label + '"') else ""} \
+      ~{if defined(y_label) then ("--y_label " +  '"' + y_label + '"') else ""} \
+      ~{if defined(z_label) then ("--z_label " +  '"' + z_label + '"') else ""} \
+      ~{if defined(x_max) then ("--x_max " +  '"' + x_max + '"') else ""} \
+      ~{if defined(y_max) then ("--y_max " +  '"' + y_max + '"') else ""} \
+      ~{if defined(z_max) then ("--z_max " +  '"' + z_max + '"') else ""} \
+      ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
+      ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
+      ~{if defined(contours) then ("--contours " +  '"' + contours + '"') else ""} \
+      ~{if (not_raster_is_ed) then "--not_rasterised" else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
+    path_output_file: "The path to the output file."
+    output_type: "The plot file type to create (default is based on\\ngiven output name)."
+    title: "Title for plot"
+    x_label: "Label for x-axis"
+    y_label: "Label for y-axis"
+    z_label: "Label for z-axis"
+    x_max: "Maximum value for x-axis"
+    y_max: "Maximum value for y-axis"
+    z_max: "Maximum value for z-axis"
+    width: "Width of canvas"
+    height: "Height of canvas"
+    contours: ""
     not_raster_is_ed: "Don't rasterise graphics (slower)."
     dpi: "Resolution in dots per inch of output graphic."
     verbose: "Print extra information"
-    o: ""
-    p: ""
-    t: ""
-    matrix_file: "The input matrix file from KAT"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_file = "${in_path_output_file}"
+    File out_output_type = "${in_output_type}"
   }
 }

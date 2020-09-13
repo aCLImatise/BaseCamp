@@ -1,4 +1,7 @@
-&id003 !Command
+&id002 !Command
+command:
+- taxon-utils
+- lca_line
 positional:
 - !Positional
   description: ''
@@ -11,6 +14,13 @@ positional:
   name: OUTPUT_FILE
   optional: true
 named:
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Taxonomy file  [required]
   synonyms:
@@ -28,9 +38,9 @@ named:
     name: FILENAME
   optional: true
 - !Flag
-  description: If set, only taxa that have a rank will be used in the lineageself.
-    This is not advised for lineages such as Viruses, where the top levels have no
-    rank
+  description: "If set, only taxa that have a rank will be used in\nthe lineageself.\
+    \ This is not advised for lineages\nsuch as Viruses, where the top levels have\
+    \ no rank"
   synonyms:
   - -a
   - --only-ranked
@@ -44,17 +54,23 @@ named:
   args: !SimpleFlagArg
     name: TEXT
   optional: true
-command:
-- taxon-utils
-- lca_line
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - taxon-utils
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --cite
+    args: !EmptyFlagArg {}
+    optional: true
   parent:
   subcommands:
   - !Command
+    command:
+    - taxon-utils
+    - filter
     positional:
     - !Positional
       description: ''
@@ -67,6 +83,20 @@ parent: &id001 !Command
       name: OUTPUT_FILE
       optional: true
     named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -p
+      - --table
+      args: !EmptyFlagArg {}
+      optional: true
     - !Flag
       description: Taxonomy file  [required]
       synonyms:
@@ -113,11 +143,9 @@ parent: &id001 !Command
       - --progress
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - taxon-utils
-    - filter
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -134,9 +162,95 @@ parent: &id001 !Command
       \ taxon_ids\n  -en, --exclude-taxon-name TEXT  Exclude taxon_names\n  --progress\
       \                      Shows Progress Bar\n  --help                        \
       \  Show this message and exit.\n"
-    generated_using: &id002
+    generated_using: &id003
     - --help
+  - *id002
   - !Command
+    command:
+    - taxon-utils
+    - to_hdf
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: INPUT_FILE
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: OUTPUT_FILE
+      optional: true
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Name of the table/storage to use  [default: taxa]'
+      synonyms:
+      - -n
+      - --table-name
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Overwrite the file, instead of appending to it
+      synonyms:
+      - -w
+      - --overwrite
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Maximum number of characters for the gene_id\n[default: 12]"
+      synonyms:
+      - -s
+      - --index-size
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Chunk size to use when reading the input file\n[default: 5000000]"
+      synonyms:
+      - -c
+      - --chunk-size
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Shows Progress Bar
+      synonyms:
+      - --progress
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: taxon-utils to_hdf [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n\
+      \  Convert a taxa table to HDF5, with the input as tabular format, defaults\n\
+      \  to stdin. Output file, defaults to (taxa-table.hf5)\n\nOptions:\n  -v, --verbose\n\
+      \  -n, --table-name TEXT     Name of the table/storage to use  [default: taxa]\n\
+      \  -w, --overwrite           Overwrite the file, instead of appending to it\n\
+      \  -s, --index-size INTEGER  Maximum number of characters for the gene_id\n\
+      \                            [default: 12]\n\n  -c, --chunk-size INTEGER  Chunk\
+      \ size to use when reading the input file\n                            [default:\
+      \ 5000000]\n\n  --progress                Shows Progress Bar\n  --help     \
+      \               Show this message and exit.\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - taxon-utils
+    - lca
     positional:
     - !Positional
       description: ''
@@ -149,6 +263,13 @@ parent: &id001 !Command
       name: OUTPUT_FILE
       optional: true
     named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
     - !Flag
       description: Taxonomy file  [required]
       synonyms:
@@ -166,9 +287,9 @@ parent: &id001 !Command
         name: FILENAME
       optional: true
     - !Flag
-      description: If set, only taxa that have a rank will be used in the lineageself.
-        This is not advised for lineages such as Viruses, where the top levels have
-        no rank
+      description: "If set, only taxa that have a rank will be\nused in the lineageself.\
+        \ This is not advised\nfor lineages such as Viruses, where the top\nlevels\
+        \ have no rank"
       synonyms:
       - -a
       - --only-ranked
@@ -183,23 +304,23 @@ parent: &id001 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: Emulates BLAST behaviour for headers (keep left of first space)
+      description: "Emulates BLAST behaviour for headers (keep\nleft of first space)"
       synonyms:
       - -m
       - --rename
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: If the GFF file is sorted (all of a sequence annotations are contiguos)
-        can use less memory, `sort -s -k 1,1` can be used
+      description: "If the GFF file is sorted (all of a sequence\nannotations are\
+        \ contiguos) can use less\nmemory, `sort -s -k 1,1` can be used"
       synonyms:
       - -s
       - --sorted
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Feature type used if the output is a GFF (default is *LCA*)  [default:
-        LCA]'
+      description: "Feature type used if the output is a GFF\n(default is *LCA*) \
+        \ [default: LCA]"
       synonyms:
       - -ft
       - --feat-type
@@ -207,7 +328,7 @@ parent: &id001 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: Reference file for the GFF, if supplied a GFF file is the output
+      description: "Reference file for the GFF, if supplied a\nGFF file is the output"
       synonyms:
       - -r
       - --reference
@@ -215,15 +336,15 @@ parent: &id001 !Command
         name: FILENAME
       optional: true
     - !Flag
-      description: Uses a 2 column table format (seq_id taxon_id) TAB separated
+      description: "Uses a 2 column table format (seq_id\ntaxon_id) TAB separated"
       synonyms:
       - -p
       - --simple-table
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Total number of raw sequences (used to output correct percentages
-        in Krona
+      description: "Total number of raw sequences (used to\noutput correct percentages\
+        \ in Krona"
       synonyms:
       - -kt
       - --krona-total
@@ -231,7 +352,7 @@ parent: &id001 !Command
         name: INTEGER
       optional: true
     - !Flag
-      description: '[krona|json|tab|gff] Format of output file  [default: tab]'
+      description: "[krona|json|tab|gff]\nFormat of output file  [default: tab]"
       synonyms:
       - -f
       - --out-format
@@ -243,11 +364,9 @@ parent: &id001 !Command
       - --progress
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - taxon-utils
-    - lca
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -281,82 +400,8 @@ parent: &id001 !Command
       \           Format of output file  [default: tab]\n  --progress            \
       \          Shows Progress Bar\n  --help                          Show this message\
       \ and exit.\n"
-    generated_using: *id002
-  - *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: INPUT_FILE
-      optional: true
-    - !Positional
-      description: ''
-      position: 1
-      name: OUTPUT_FILE
-      optional: true
-    named:
-    - !Flag
-      description: 'Name of the table/storage to use  [default: taxa]'
-      synonyms:
-      - -n
-      - --table-name
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Overwrite the file, instead of appending to it
-      synonyms:
-      - -w
-      - --overwrite
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Maximum number of characters for the gene_id [default: 12]'
-      synonyms:
-      - -s
-      - --index-size
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: 'Chunk size to use when reading the input file [default: 5000000]'
-      synonyms:
-      - -c
-      - --chunk-size
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: Shows Progress Bar
-      synonyms:
-      - --progress
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - taxon-utils
-    - to_hdf
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Usage: taxon-utils to_hdf [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n\
-      \  Convert a taxa table to HDF5, with the input as tabular format, defaults\n\
-      \  to stdin. Output file, defaults to (taxa-table.hf5)\n\nOptions:\n  -v, --verbose\n\
-      \  -n, --table-name TEXT     Name of the table/storage to use  [default: taxa]\n\
-      \  -w, --overwrite           Overwrite the file, instead of appending to it\n\
-      \  -s, --index-size INTEGER  Maximum number of characters for the gene_id\n\
-      \                            [default: 12]\n\n  -c, --chunk-size INTEGER  Chunk\
-      \ size to use when reading the input file\n                            [default:\
-      \ 5000000]\n\n  --progress                Shows Progress Bar\n  --help     \
-      \               Show this message and exit.\n"
-    generated_using: *id002
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -364,7 +409,12 @@ parent: &id001 !Command
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
-  version_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
   help_text: "Usage: taxon-utils [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\n\
     Options:\n  --version  Show the version and exit.\n  --cite\n  --help     Show\
     \ this message and exit.\n\nCommands:\n  filter    Filter a GFF file or a table\
@@ -372,8 +422,9 @@ parent: &id001 !Command
     \ in a GFF file\n  lca_line  Finds the last common ancestor for all IDs in a text\
     \ file line\n  to_hdf    Convert a taxa table to HDF5, with the input as tabular\
     \ format,...\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -391,4 +442,4 @@ help_text: "Usage: taxon-utils lca_line [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n
   \ Viruses, where the top levels have no rank\n\n  -s, --separator TEXT   separator\
   \ for taxon_ids (defaults to TAB)\n  --help                 Show this message and\
   \ exit.\n"
-generated_using: *id002
+generated_using: *id003

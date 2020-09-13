@@ -4,4 +4,7 @@ task Ivar {
   command <<<
     ivar
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

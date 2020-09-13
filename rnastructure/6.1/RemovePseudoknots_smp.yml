@@ -1,4 +1,6 @@
 !Command
+command:
+- RemovePseudoknots-smp
 positional:
 - !Positional
   description: ''
@@ -15,14 +17,81 @@ positional:
   position: 2
   name: output ct file
   optional: false
-named: []
-command:
-- RemovePseudoknots-smp
+named:
+- !Flag
+  description: "Specify that the sequence is DNA, and DNA parameters are to be used.\n\
+    Default is to use RNA parameters."
+  synonyms:
+  - -d
+  - -D
+  - --DNA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write the output as a dot-bracket file instead of a CT file. (Note\
+    \ that the\ninput file can be either a CT or bracket file, regardless of this\
+    \ option.)"
+  synonyms:
+  - -k
+  - --bracket
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that the NUMBER of remaining base pairs should be maximized\
+    \ in the\npseudoknot-free structure in an energy-agnostic way -- i.e. with no\
+    \ regard\nfor the folding free energy of the structure.\nThis is usually much\
+    \ faster than the default behavior, which is to break\nbase-pairs such that the\
+    \ final structure(s) have minimum free energy.\nThe default method often maximizes\
+    \ the number of remaining base pairs, but\nnot always."
+  synonyms:
+  - -m
+  - -M
+  - --maximize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use the MaxExpect method (MEAFill) to break pseudoknots. This should\n\
+    produce identical results as the 'maximize' option (-m), but will be slower\n\
+    (for testing only)."
+  synonyms:
+  - --MEA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Suppress unnecessary output. This option is implied when the output\
+    \ file is\n'-' (STDOUT)."
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the temperature at which calculation takes place in Kelvin.\n\
+    Default is 310.15 K, which is 37 degrees C.\n"
+  synonyms:
+  - -t
+  - -T
+  - --temperature
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: RemovePseudoknots <input ct file> <output ct file> [options]\n\
   All flags are case-insensitive, and grouping of flags is not allowed.\n\n=============================\n\
   ==== Required Parameters ====\n=============================\n<input ct file>\n\

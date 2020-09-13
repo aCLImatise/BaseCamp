@@ -4,4 +4,7 @@ task Pisces {
   command <<<
     pisces
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

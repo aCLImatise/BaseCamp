@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- fastutils
+- format
 positional: []
 named:
 - !Flag
@@ -106,73 +109,17 @@ named:
   - --fofn
   args: !EmptyFlagArg {}
   optional: true
-command:
-- fastutils
-- format
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - fastutils
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: input file in fasta/q format [stdin]
-      synonyms:
-      - -i
-      - --in
-      args: !SimpleFlagArg
-        name: STR
-      optional: true
-    - !Flag
-      description: output file [stdout]
-      synonyms:
-      - -o
-      - --out
-      args: !SimpleFlagArg
-        name: STR
-      optional: true
-    - !Flag
-      description: min read length [0]
-      synonyms:
-      - -m
-      - --minLen
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: max read length [INT64_MAX]
-      synonyms:
-      - -M
-      - --maxLen
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
     command:
     - fastutils
-    - stat
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: print this help
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "\nUsage: fastutils stat [options]\n\nI/O options:\n     -i,--in STR\
-      \         input file in fasta/q format [stdin]\n     -o,--out STR        output\
-      \ file [stdout]\n\nMore options:\n     -m,--minLen INT     min read length [0]\n\
-      \     -M,--maxLen INT     max read length [INT64_MAX]\n     -h,--help      \
-      \     print this help\n\n"
-    generated_using: &id002
-    - --help
-  - !Command
+    - length
     positional: []
     named:
     - !Flag
@@ -214,11 +161,9 @@ parent: &id001 !Command
       - --total
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - fastutils
-    - length
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: print this help
       synonyms:
@@ -234,9 +179,12 @@ parent: &id001 !Command
       \ min read length [0]\n     -M,--maxLen INT        max read length [LLONG_MAX]\n\
       \     -t,--total             print total number of bases in third column\n \
       \    -h,--help              print this help\n\n"
-    generated_using: *id002
-  - *id003
+    generated_using: &id002
+    - --help
   - !Command
+    command:
+    - fastutils
+    - interleave
     positional: []
     named:
     - !Flag
@@ -278,11 +226,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: CHR
       optional: true
-    command:
-    - fastutils
-    - interleave
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: print this help
       synonyms:
@@ -301,7 +247,110 @@ parent: &id001 !Command
       \     -s,--separator CHR     separator character [.]\n     -h,--help       \
       \       print this help\n\n"
     generated_using: *id002
+  - *id003
   - !Command
+    command:
+    - fastutils
+    - stat
+    positional: []
+    named:
+    - !Flag
+      description: input file in fasta/q format [stdin]
+      synonyms:
+      - -i
+      - --in
+      args: !SimpleFlagArg
+        name: STR
+      optional: true
+    - !Flag
+      description: output file [stdout]
+      synonyms:
+      - -o
+      - --out
+      args: !SimpleFlagArg
+        name: STR
+      optional: true
+    - !Flag
+      description: min read length [0]
+      synonyms:
+      - -m
+      - --minLen
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: max read length [INT64_MAX]
+      synonyms:
+      - -M
+      - --maxLen
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: print this help
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "\nUsage: fastutils stat [options]\n\nI/O options:\n     -i,--in STR\
+      \         input file in fasta/q format [stdin]\n     -o,--out STR        output\
+      \ file [stdout]\n\nMore options:\n     -m,--minLen INT     min read length [0]\n\
+      \     -M,--maxLen INT     max read length [INT64_MAX]\n     -h,--help      \
+      \     print this help\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - fastutils
+    - cutN
+    positional: []
+    named:
+    - !Flag
+      description: input file in fastx format. Use - for stdin.
+      synonyms:
+      - -i
+      args: !SimpleFlagArg
+        name: STR
+      optional: true
+    - !Flag
+      description: output file in fasta format. Use - for stdout.
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: STR
+      optional: true
+    - !Flag
+      description: print version and build date
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: print this help
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "\nUSAGE: fastutils cutN [options]\n\nRequired options:\n         -i\
+      \ STR        input file in fastx format. Use - for stdin.\n         -o STR \
+      \       output file in fasta format. Use - for stdout.\n\nMore options:\n  \
+      \       -v            print version and build date\n         -h            print\
+      \ this help\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - fastutils
+    - revcomp
     positional: []
     named:
     - !Flag
@@ -349,11 +398,9 @@ parent: &id001 !Command
       - --lex
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - fastutils
-    - revcomp
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: print this help
       synonyms:
@@ -372,6 +419,9 @@ parent: &id001 !Command
       \     -h,--help              print this help\n\n"
     generated_using: *id002
   - !Command
+    command:
+    - fastutils
+    - subsample
     positional: []
     named:
     - !Flag
@@ -464,11 +514,9 @@ parent: &id001 !Command
       - --fofn
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - fastutils
-    - subsample
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: print this help
       synonyms:
@@ -494,6 +542,9 @@ parent: &id001 !Command
       \    print this help\n\n"
     generated_using: *id002
   - !Command
+    command:
+    - fastutils
+    - subseq
     positional: []
     named:
     - !Flag
@@ -516,11 +567,9 @@ parent: &id001 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - fastutils
-    - subseq
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: print this help
       synonyms:
@@ -535,48 +584,7 @@ parent: &id001 !Command
       \  -v            print version and build date\n         -h            print\
       \ this help\n\n"
     generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: input file in fastx format. Use - for stdin.
-      synonyms:
-      - -i
-      args: !SimpleFlagArg
-        name: STR
-      optional: true
-    - !Flag
-      description: output file in fasta format. Use - for stdout.
-      synonyms:
-      - -o
-      args: !SimpleFlagArg
-        name: STR
-      optional: true
-    - !Flag
-      description: print version and build date
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - fastutils
-    - cutN
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: print this help
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "\nUSAGE: fastutils cutN [options]\n\nRequired options:\n         -i\
-      \ STR        input file in fastx format. Use - for stdin.\n         -o STR \
-      \       output file in fasta format. Use - for stdout.\n\nMore options:\n  \
-      \       -v            print version and build date\n         -h            print\
-      \ this help\n\n"
-    generated_using: *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -591,6 +599,7 @@ parent: &id001 !Command
     \      breaks fasta entries into contigs (if containing N's)\n\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: print this help
   synonyms:

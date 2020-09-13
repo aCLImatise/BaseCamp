@@ -14,4 +14,7 @@ task Bank2coverage {
     bank_name: ""
     out_prefix: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

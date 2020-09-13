@@ -1,72 +1,70 @@
 class: CommandLineTool
 id: ../../../stripSubsetLCBs.cwl
 inputs:
-- id: input_x_mfa
+- id: in_input_x_mfa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_bbc_ols
+- id: in_input_bbc_ols
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_x_mfa
+- id: in_output_x_mfa
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: var_3
+- id: in_min
   doc: ''
   type: long
   inputBinding:
     position: 3
-- id: lcb
+- id: in_lcb
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: size
+- id: in_size
   doc: ''
   type: long
   inputBinding:
     position: 5
-- id: var_6
-  doc: ''
-  type: long
-  inputBinding:
-    position: 6
-- id: genomes
+- id: in_genomes
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: randomly
+- id: in_randomly
   doc: ''
   type: string
   inputBinding:
     position: 8
-- id: subsample
+- id: in_subsample
   doc: ''
   type: string
   inputBinding:
     position: 9
-- id: to
+- id: in_to
   doc: ''
   type: string
   inputBinding:
     position: 10
-- id: x
+- id: in_x
   doc: ''
   type: string
   inputBinding:
     position: 11
-- id: kb
+- id: in_kb
   doc: ''
   type: string
   inputBinding:
     position: 12
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - stripSubsetLCBs

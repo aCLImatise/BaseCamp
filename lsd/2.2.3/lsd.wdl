@@ -4,4 +4,7 @@ task Lsd {
   command <<<
     lsd
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,47 +1,55 @@
 class: CommandLineTool
 id: ../../../CIRCexplorer2_assemble.cwl
 inputs:
-- id: ref
+- id: in_ref
   doc: Gene annotation file.
-  type: string
+  type: File
   inputBinding:
     prefix: --ref
-- id: top_hat
+- id: in_top_hat
   doc: TopHat mapping folder.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tophat
-- id: output
+- id: in_output
   doc: 'Output directory. [default: assemble]'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: thread
+- id: in_thread
   doc: 'Running threads. [default: 10]'
-  type: string
+  type: long
   inputBinding:
     prefix: --thread
-- id: bb
+- id: in_bb
   doc: Convert assembly results to BigBed.
   type: boolean
   inputBinding:
     prefix: --bb
-- id: chrom_size
+- id: in_chrom_size
   doc: Chrom size file for converting to BigBed.
-  type: string
+  type: long
   inputBinding:
     prefix: --chrom-size
-- id: remove_rrna
+- id: in_remove_rrna
   doc: Ignore rRNA during assembling (only for human hg19).
   type: boolean
   inputBinding:
     prefix: --remove-rRNA
-- id: max_bundle_frags
+- id: in_max_bundle_frags
   doc: Cufflinks --max-bundle-frags option.
-  type: string
+  type: long
   inputBinding:
     prefix: --max-bundle-frags
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: 'Output directory. [default: assemble]'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - CIRCexplorer2

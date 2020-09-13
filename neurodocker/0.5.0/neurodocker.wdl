@@ -2,16 +2,22 @@ version 1.0
 
 task Neurodocker {
   input {
-    String? var_0
-    Boolean? var_1
+    String? verbosity
+    Boolean? v
+    String generate
   }
   command <<<
     neurodocker \
-      ~{if defined(var_0) then ("-v " +  '"' + var_0 + '"') else ""} \
-      ~{true="-V" false="" var_1}
+      ~{generate} \
+      ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
+      ~{if (v) then "-V" else ""}
   >>>
   parameter_meta {
-    var_0: ""
-    var_1: ""
+    verbosity: ""
+    v: ""
+    generate: "generate recipes"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

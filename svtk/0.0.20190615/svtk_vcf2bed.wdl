@@ -13,32 +13,38 @@ task SvtkVcf2bed {
     Boolean? simple_sinks
     String vcf
     String bed
+    String stdout_dot
   }
   command <<<
     svtk vcf2bed \
       ~{vcf} \
       ~{bed} \
-      ~{true="--no-samples" false="" no_samples} \
+      ~{stdout_dot} \
+      ~{if (no_samples) then "--no-samples" else ""} \
       ~{if defined(info) then ("--info " +  '"' + info + '"') else ""} \
-      ~{true="--include-filters" false="" include_filters} \
-      ~{true="--split-bnd" false="" split_bnd} \
-      ~{true="--split-cpx" false="" split_cpx} \
-      ~{true="--no-header" false="" no_header} \
-      ~{true="--no-sort-coords" false="" no_sort_coords} \
-      ~{true="--no-unresolved" false="" no_unresolved} \
-      ~{true="--simple-sinks" false="" simple_sinks}
+      ~{if (include_filters) then "--include-filters" else ""} \
+      ~{if (split_bnd) then "--split-bnd" else ""} \
+      ~{if (split_cpx) then "--split-cpx" else ""} \
+      ~{if (no_header) then "--no-header" else ""} \
+      ~{if (no_sort_coords) then "--no-sort-coords" else ""} \
+      ~{if (no_unresolved) then "--no-unresolved" else ""} \
+      ~{if (simple_sinks) then "--simple-sinks" else ""}
   >>>
   parameter_meta {
-    no_samples: "Don't include comma-delimited list of called samples for each variant."
-    info: "INFO field to include as column in output. May be specified more than once. To include all INFO fields, specify `--info ALL`. INFO fields are reported in the order in which they are requested. If ALL INFO fields are requested, they are reported in the order in which they appear in the VCF header."
-    include_filters: "Include FILTER status in output, with the same behavior an INFO field."
+    no_samples: "Don't include comma-delimited list of called samples\\nfor each variant."
+    info: "INFO field to include as column in output. May be\\nspecified more than once. To include all INFO fields,\\nspecify `--info ALL`. INFO fields are reported in the\\norder in which they are requested. If ALL INFO fields\\nare requested, they are reported in the order in which\\nthey appear in the VCF header."
+    include_filters: "Include FILTER status in output, with the same\\nbehavior an INFO field."
     split_bnd: "Report two entries in bed file for each BND."
     split_cpx: "Report entries for each CPX rearrangement interval."
     no_header: "Suppress header."
-    no_sort_coords: "Do not sort start/end coordinates per record before writing to bed."
+    no_sort_coords: "Do not sort start/end coordinates per record before\\nwriting to bed."
     no_unresolved: "Do not output unresolved variants."
     simple_sinks: "Report all INS sinks as 1bp intervals."
     vcf: "VCF to convert."
-    bed: "Converted bed. Specify `-` or `stdout` to write to stdout."
+    bed: "Converted bed. Specify `-` or `stdout` to write to"
+    stdout_dot: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

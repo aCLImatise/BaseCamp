@@ -14,4 +14,7 @@ task LoadFeatures {
     are_ungapped: "are ungapped"
     is_the_iid: "is the IID"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

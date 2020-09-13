@@ -4,4 +4,7 @@ task Bgt {
   command <<<
     bgt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

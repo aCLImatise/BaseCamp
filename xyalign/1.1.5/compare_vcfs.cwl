@@ -1,47 +1,67 @@
 class: CommandLineTool
 id: ../../../compare_vcfs.cwl
 inputs:
-- id: vcf_before
-  doc: Full path to first Platypus VCF output from BAM_ANALYSIS module. This will
-    be treated as the 'before' condition for comparisons.
-  type: string
-  inputBinding:
-    prefix: --vcf_before
-- id: vcf_after
-  doc: Full path to second Platypus VCF output from BAM_ANALYSIS module. This will
-    be treated as the 'after' condition for comparisons.
-  type: string
-  inputBinding:
-    prefix: --vcf_after
-- id: output_file
-  doc: Name of output file (including path, if to be created elsewhere).
-  type: string
+- id: in_output_file
+  doc: ''
+  type: File
   inputBinding:
     prefix: --output_file
-- id: variant_site_quality
-  doc: Consider all SNPs with a site quality (QUAL) greater than or equal to this
-    value. Default is 30.
-  type: string
+- id: in_vcf_before
+  doc: "Full path to first Platypus VCF output from\nBAM_ANALYSIS module. This will\
+    \ be treated as the\n'before' condition for comparisons."
+  type: File
+  inputBinding:
+    prefix: --vcf_before
+- id: in_vcf_after
+  doc: "Full path to second Platypus VCF output from\nBAM_ANALYSIS module. This will\
+    \ be treated as the\n'after' condition for comparisons."
+  type: File
+  inputBinding:
+    prefix: --vcf_after
+- id: in_variant_site_quality
+  doc: "Consider all SNPs with a site quality (QUAL) greater\nthan or equal to this\
+    \ value. Default is 30."
+  type: long
   inputBinding:
     prefix: --variant_site_quality
-- id: variant_genotype_quality
-  doc: Consider all SNPs with a sample genotype quality greater than or equal to this
-    value. Default is 30.
-  type: string
+- id: in_variant_genotype_quality
+  doc: "Consider all SNPs with a sample genotype quality\ngreater than or equal to\
+    \ this value. Default is 30."
+  type: long
   inputBinding:
     prefix: --variant_genotype_quality
-- id: variant_depth
-  doc: Consider all SNPs with a sample depth greater than or equal to this value.
-    Default is 4.
-  type: string
+- id: in_variant_depth
+  doc: "Consider all SNPs with a sample depth greater than or\nequal to this value.\
+    \ Default is 4."
+  type: long
   inputBinding:
     prefix: --variant_depth
-- id: chrom
+- id: in_chrom
   doc: Name of chromosome to analyze.
   type: string
   inputBinding:
     prefix: --chrom
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
+- id: out_vcf_before
+  doc: "Full path to first Platypus VCF output from\nBAM_ANALYSIS module. This will\
+    \ be treated as the\n'before' condition for comparisons."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_vcf_before)
+- id: out_vcf_after
+  doc: "Full path to second Platypus VCF output from\nBAM_ANALYSIS module. This will\
+    \ be treated as the\n'after' condition for comparisons."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_vcf_after)
 cwlVersion: v1.1
 baseCommand:
 - compare_vcfs

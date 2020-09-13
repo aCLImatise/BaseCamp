@@ -1,59 +1,72 @@
 class: CommandLineTool
 id: ../../../hp_sample_reads.cwl
 inputs:
-- id: fq_one
+- id: in_fq_one
   doc: Fastq file with read 1
-  type: string
+  type: long
   inputBinding:
     prefix: --fq1
-- id: fq_two
+- id: in_fq_two
   doc: Fastq file with read 2
-  type: string
+  type: long
   inputBinding:
     prefix: --fq2
-- id: f_qu
+- id: in_f_qu
   doc: Fastq file with unpaired reads
-  type: string
+  type: File
   inputBinding:
     prefix: --fqU
-- id: outdir
+- id: in_outdir
   doc: 'Output directory (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: n_reads
-  doc: Number of reads to sample. If greater than the number of reads in file, all
-    reads will be sampled.
-  type: string
+- id: in_n_reads
+  doc: "Number of reads to sample. If greater than the number of\nreads in file, all\
+    \ reads will be sampled."
+  type: long
   inputBinding:
     prefix: --nreads
-- id: frac
-  doc: Fraction of reads to sample, between 0 and 1. Each read has [frac] probability
-    of being sampled, so number of sampled reads is not precisely [frac * num_reads].
-  type: string
+- id: in_frac
+  doc: "Fraction of reads to sample, between 0 and 1. Each read\nhas [frac] probability\
+    \ of being sampled, so number of\nsampled reads is not precisely [frac * num_reads]."
+  type: long
   inputBinding:
     prefix: --frac
-- id: seed
+- id: in_seed
   doc: Seed for random number generator.
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Append console output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Append console output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - hp_sample_reads

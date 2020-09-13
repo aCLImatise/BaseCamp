@@ -8,13 +8,16 @@ task MmseqsConcatdbs {
   }
   command <<<
     mmseqs concatdbs \
-      ~{true="--preserve-keys" false="" preserve_keys} \
-      ~{true="--threads" false="" threads} \
-      ~{true="-v" false="" verbosity_level_nothing}
+      ~{if (preserve_keys) then "--preserve-keys" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
   parameter_meta {
     preserve_keys: "false           the keys of the two DB should be distinct, and they will be preserved in the concatenation."
     threads: "1               number of cores used for the computation (uses all cores by default)"
     verbosity_level_nothing: "3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

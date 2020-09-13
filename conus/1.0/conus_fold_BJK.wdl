@@ -10,11 +10,14 @@ task ConusFoldBJK {
     conus_fold BJK \
       ~{conus_fold} \
       ~{seq_file_in} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     conus_fold: ""
     seq_file_in: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

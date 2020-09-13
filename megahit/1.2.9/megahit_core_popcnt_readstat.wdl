@@ -11,4 +11,7 @@ task MegahitCorePopcntReadstat {
   parameter_meta {
     cat: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

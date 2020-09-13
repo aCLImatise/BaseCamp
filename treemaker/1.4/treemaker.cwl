@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../treemaker.cwl
 inputs:
-- id: output
+- id: in_output
   doc: output file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: mode
+- id: in_mode
   doc: 'output mode: nexus or newick'
   type: string
   inputBinding:
     prefix: --mode
-- id: labels
+- id: in_labels
   doc: show node labels
   type: boolean
   inputBinding:
     prefix: --labels
-- id: input
+- id: in_input
   doc: inputfile
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - treemaker

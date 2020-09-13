@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../hailctl_dev_config.cwl
 inputs:
-- id: location
+- id: in_location
   doc: 'Location. (default: external)'
   type: string
   inputBinding:
     prefix: --location
-- id: override
-  doc: 'List of comma-separated service=namespace overrides. (default: none)'
+- id: in_override
+  doc: "List of comma-separated service=namespace overrides.\n(default: none)\n"
   type: string
   inputBinding:
     prefix: --override
-- id: namespace
-  doc: Default namespace. Show the current configuration if not specified.
+- id: in_namespace
+  doc: "Default namespace. Show the current configuration if\nnot specified."
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hailctl

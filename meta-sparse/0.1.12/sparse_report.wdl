@@ -5,8 +5,8 @@ task SparseReport {
     File? path
     String? tag
     Boolean? absolute
-    String? low
-    String? species_filter
+    Float? low
+    File? species_filter
     Boolean? sample_filter
     Boolean? inverse
     String workspace
@@ -16,11 +16,11 @@ task SparseReport {
       ~{workspace} \
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""} \
       ~{if defined(tag) then ("--tag " +  '"' + tag + '"') else ""} \
-      ~{true="--absolute" false="" absolute} \
+      ~{if (absolute) then "--absolute" else ""} \
       ~{if defined(low) then ("--low " +  '"' + low + '"') else ""} \
       ~{if defined(species_filter) then ("--speciesFilter " +  '"' + species_filter + '"') else ""} \
-      ~{true="--sampleFilter" false="" sample_filter} \
-      ~{true="--inverse" false="" inverse}
+      ~{if (sample_filter) then "--sampleFilter" else ""} \
+      ~{if (inverse) then "--inverse" else ""}
   >>>
   parameter_meta {
     path: "All sparse workspaces under the assigned folder will be added in automatically."
@@ -30,6 +30,9 @@ task SparseReport {
     species_filter: "Show only species listed in the file."
     sample_filter: "Show only samples that have hits in the listed species. Default: False"
     inverse: "Inverse the output matrix such that columns are species and rows are samples."
-    workspace: "Folders that contain \"SPARSE extract\" outputs. REQUIRED at least one folder."
+    workspace: "Folders that contain \\\"SPARSE extract\\\" outputs. REQUIRED at least one folder."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

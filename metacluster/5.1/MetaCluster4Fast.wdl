@@ -4,4 +4,7 @@ task MetaCluster4Fast {
   command <<<
     MetaCluster4Fast
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

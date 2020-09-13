@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../checkv_quality_summary.cwl
 inputs:
-- id: quiet
+- id: in_quiet
   doc: Suppress logging messages
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: input
+- id: in_input
   doc: Input viral sequences in FASTA format
   type: string
   inputBinding:
     position: 0
-- id: output
+- id: in_output
   doc: Output directory
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkv

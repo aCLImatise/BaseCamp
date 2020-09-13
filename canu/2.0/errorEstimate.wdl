@@ -4,4 +4,7 @@ task ErrorEstimate {
   command <<<
     errorEstimate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

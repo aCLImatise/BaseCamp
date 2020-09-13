@@ -2,8 +2,8 @@ version 1.0
 
 task Wdl2dot {
   input {
-    String? input_file
-    String? output_file
+    File? input_file
+    File? output_file
   }
   command <<<
     wdl2dot \
@@ -12,6 +12,10 @@ task Wdl2dot {
   >>>
   parameter_meta {
     input_file: "Input wdl file"
-    output_file: "Output dot file"
+    output_file: "Output dot file\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

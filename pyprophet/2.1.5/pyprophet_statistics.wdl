@@ -11,4 +11,7 @@ task PyprophetStatistics {
   parameter_meta {
     in: "PyProphet input file.  [required]"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

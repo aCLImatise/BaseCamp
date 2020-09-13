@@ -12,18 +12,21 @@ task FunannotateOutgroups {
   command <<<
     funannotate outgroups \
       ~{arguments} \
-      ~{true="--input" false="" proteome_multifasta_file} \
-      ~{true="--species" false="" species} \
-      ~{true="--busco_db" false="" busco_db} \
-      ~{true="--cpus" false="" cpus} \
-      ~{true="--database" false="" database}
+      ~{if (proteome_multifasta_file) then "--input" else ""} \
+      ~{if (species) then "--species" else ""} \
+      ~{if (busco_db) then "--busco_db" else ""} \
+      ~{if (cpus) then "--cpus" else ""} \
+      ~{if (database) then "--database" else ""}
   >>>
   parameter_meta {
-    proteome_multifasta_file: "Proteome multi-fasta file. Required. "
+    proteome_multifasta_file: "Proteome multi-fasta file. Required."
     species: "Species name for adding a species. Required."
     busco_db: "BUSCO db to use. Default. dikarya"
     cpus: "Number of CPUs to use for BUSCO search."
     database: "Path to funannotate database. Default: $FUNANNOTATE_DB"
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

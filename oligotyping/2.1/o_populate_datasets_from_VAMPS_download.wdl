@@ -1,20 +1,21 @@
 version 1.0
 
-task OPopulateDatasetsFromVAMPSDownload {
+task OpopulatedatasetsfromVAMPSdownload {
   input {
     String? tax_on
-    String? output_file_name
-    String fast_a
+    File? output_file_name
   }
   command <<<
-    o-populate-datasets-from-VAMPS-download \
-      ~{fast_a} \
+    o_populate_datasets_from_VAMPS_download \
       ~{if defined(tax_on) then ("--taxon " +  '"' + tax_on + '"') else ""} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
   parameter_meta {
     tax_on: "Isolate a particular taxon"
-    output_file_name: "Output file name"
-    fast_a: "FASTA file downloaded from VAMPS"
+    output_file_name: "Output file name\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

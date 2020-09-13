@@ -1,59 +1,72 @@
 class: CommandLineTool
 id: ../../../dcmp2pgm.cwl
 inputs:
-- id: _quiet_quiet
+- id: in_arguments
+  doc: print expanded command line arguments
+  type: boolean
+  inputBinding:
+    prefix: --arguments
+- id: in__quiet_quiet
   doc: --quiet        quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: _verbose_verbose
+- id: in__verbose_details
   doc: --verbose      verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: _debug_debug
+- id: in__debug_information
   doc: --debug        debug mode, print debug information
   type: boolean
   inputBinding:
     prefix: -d
-- id: log_level
-  doc: '[l]evel: string constant (fatal, error, warn, info, debug, trace) use level
-    l for the logger'
+- id: in_log_level
+  doc: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\nuse level\
+    \ l for the logger"
   type: boolean
   inputBinding:
     prefix: --log-level
-- id: log_config
-  doc: '[f]ilename: string use config file f for the logger'
+- id: in_log_config
+  doc: "[f]ilename: string\nuse config file f for the logger"
   type: boolean
   inputBinding:
     prefix: --log-config
-- id: _pstate_ilename
-  doc: '--pstate       [f]ilename: string process using presentation state file'
+- id: in__pstate_stringprocess
+  doc: "--pstate       [f]ilename: string\nprocess using presentation state file"
   type: boolean
   inputBinding:
     prefix: -p
-- id: _config_ilename
-  doc: '--config       [f]ilename: string process using settings from configuration
-    file'
+- id: in__config_ilename
+  doc: "--config       [f]ilename: string\nprocess using settings from configuration\
+    \ file"
   type: boolean
   inputBinding:
     prefix: -c
-- id: _frame_rame
-  doc: '--frame        [f]rame: integer process using image frame f (default: 1)'
+- id: in__frame_integerprocess
+  doc: "--frame        [f]rame: integer\nprocess using image frame f (default: 1)"
   type: boolean
   inputBinding:
     prefix: -f
-- id: dcm_file_in
+- id: in__pgm_save
+  doc: --pgm          save image as PGM (default)
+  type: boolean
+  inputBinding:
+    prefix: -D
+- id: in_dcm_file_in
   doc: input DICOM image
   type: string
   inputBinding:
     position: 0
-- id: bitmap_out
+- id: in_bitmap_out
   doc: output DICOM image or PGM bitmap
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dcmp2pgm

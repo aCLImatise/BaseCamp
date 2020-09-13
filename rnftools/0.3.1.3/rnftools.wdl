@@ -4,4 +4,7 @@ task Rnftools {
   command <<<
     rnftools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

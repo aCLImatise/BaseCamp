@@ -1,5 +1,13 @@
-&id001 !Command
-positional: []
+&id002 !Command
+command:
+- sketchy-rs
+- compute
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: sketchy-rs
+  optional: false
 named:
 - !Flag
   description: progress switch > 0
@@ -33,64 +41,17 @@ named:
   args: !SimpleFlagArg
     name: INT
   optional: true
-command:
-- sketchy-rs
-- compute
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - sketchy-rs
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: genotype feature index
-      synonyms:
-      - -f
-      - --features
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    - !Flag
-      description: reads to stable breakpoint
-      synonyms:
-      - -s
-      - --stable
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
     command:
     - sketchy-rs
-    - evaluate
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: Prints help information
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: Prints version information
-      synonyms:
-      - -V
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "sketchy-rs-evaluate 0.4.4\n\nevaluate sum of shared hashes from sketchy\
-      \ compute on stdin\n\nUSAGE:\n    sketchy-rs evaluate [OPTIONS]\n\nFLAGS:\n\
-      \    -h, --help       Prints help information\n    -V, --version    Prints version\
-      \ information\n\nOPTIONS:\n    -f, --features <FILE>    genotype feature index\n\
-      \    -s, --stable <INT>       reads to stable breakpoint\n"
-    generated_using: &id003
-    - --help
-  - !Command
+    - help
     positional:
     - !Positional
       description: ''
@@ -113,22 +74,69 @@ parent: &id002 !Command
       name: try
       optional: false
     named: []
-    command:
-    - sketchy-rs
-    - help
-    parent: *id002
+    parent: *id001
     subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    usage: []
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tsketchy-rs\
       \ help <subcommands>...\n\nFor more information try --help\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - sketchy-rs
+    - evaluate
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: sketchy-rs
+      optional: false
+    named:
+    - !Flag
+      description: genotype feature index
+      synonyms:
+      - -f
+      - --features
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: reads to stable breakpoint
+      synonyms:
+      - -s
+      - --stable
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Prints help information
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Prints version information
+      synonyms:
+      - -V
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "sketchy-rs-evaluate 0.4.4\n\nevaluate sum of shared hashes from sketchy\
+      \ compute on stdin\n\nUSAGE:\n    sketchy-rs evaluate [OPTIONS]\n\nFLAGS:\n\
+      \    -h, --help       Prints help information\n    -V, --version    Prints version\
+      \ information\n\nOPTIONS:\n    -f, --features <FILE>    genotype feature index\n\
+      \    -s, --stable <INT>       reads to stable breakpoint\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -153,6 +161,7 @@ parent: &id002 !Command
     \ the help of the given subcommand(s)\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Prints help information
   synonyms:

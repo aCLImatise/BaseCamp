@@ -1,45 +1,54 @@
 class: CommandLineTool
 id: ../../../sequenza_utils_pileup2acgt.cwl
 inputs:
-- id: m_pile_up
-  doc: Name of the input mpileup (SAMtools) file. If the filename ends in .gz it will
-    be opened in gzip mode. If the file name is - it will be read from STDIN.
-  type: string
+- id: in_m_pile_up
+  doc: "Name of the input mpileup (SAMtools) file. If the\nfilename ends in .gz it\
+    \ will be opened in gzip mode.\nIf the file name is - it will be read from STDIN."
+  type: File
   inputBinding:
     prefix: --mpileup
-- id: output
-  doc: Name of the output file. To use gzip compression name the file ending in .gz.
-    Default STDOUT.
-  type: string
+- id: in_output
+  doc: "Name of the output file. To use gzip compression name\nthe file ending in\
+    \ .gz. Default STDOUT."
+  type: File
   inputBinding:
     prefix: --output
-- id: minimum_required_read
-  doc: The minimum required read depth on a position to test for mutation.
+- id: in_minimum_required_read
+  doc: "The minimum required read depth on a position to test\nfor mutation."
   type: string
   inputBinding:
     prefix: -n
-- id: q_limit
+- id: in_q_limit
   doc: Minimum nucleotide quality score filter.
   type: string
   inputBinding:
     prefix: --qlimit
-- id: no_end
+- id: in_no_end
   doc: Discard the base located at the end of the read
   type: boolean
   inputBinding:
     prefix: --no-end
-- id: no_start
+- id: in_no_start
   doc: Discard the base located at the start of the read
   type: boolean
   inputBinding:
     prefix: --no-start
-- id: q_format
-  doc: Quality format, options are "sanger" or "illumina". This will add an offset
-    of 33 or 64 respectively to the qlimit value.
-  type: string
+- id: in_q_format
+  doc: "Quality format, options are \"sanger\" or \"illumina\".\nThis will add an\
+    \ offset of 33 or 64 respectively to\nthe qlimit value.\n"
+  type: long
   inputBinding:
     prefix: --qformat
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Name of the output file. To use gzip compression name\nthe file ending in\
+    \ .gz. Default STDOUT."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - sequenza-utils

@@ -2,7 +2,7 @@ version 1.0
 
 task PARTS {
   input {
-    String configuration_file
+    File configuration_file
   }
   command <<<
     PARTS \
@@ -10,5 +10,8 @@ task PARTS {
   >>>
   parameter_meta {
     configuration_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

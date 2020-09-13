@@ -4,4 +4,7 @@ task MakeSCF {
   command <<<
     makeSCF
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

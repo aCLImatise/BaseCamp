@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../anvi_export_state.cwl
 inputs:
-- id: pan_or_profile_db
-  doc: Anvi'o pan or profile database (and even genes database in appropriate contexts).
+- id: in_pan_or_profile_db
+  doc: "Anvi'o pan or profile database (and even genes\ndatabase in appropriate contexts)."
   type: string
   inputBinding:
     prefix: --pan-or-profile-db
-- id: output_file
+- id: in_output_file
   doc: File path to store results.
   type: File
   inputBinding:
     prefix: --output-file
-- id: state
+- id: in_state
   doc: The state name to export.
   type: string
   inputBinding:
     prefix: --state
-- id: list_states
+- id: in_list_states
   doc: Show available states and exit.
   type: boolean
   inputBinding:
     prefix: --list-states
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: File path to store results.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - anvi-export-state

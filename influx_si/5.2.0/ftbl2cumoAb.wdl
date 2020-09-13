@@ -4,4 +4,7 @@ task Ftbl2cumoAb {
   command <<<
     ftbl2cumoAb
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

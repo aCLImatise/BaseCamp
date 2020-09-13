@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../bedparse_promoter.cwl
 inputs:
-- id: up
+- id: in_up
   doc: Get this many nt upstream of each feature.
   type: string
   inputBinding:
     prefix: --up
-- id: down
+- id: in_down
   doc: Get this many nt downstream of each feature.
   type: string
   inputBinding:
     prefix: --down
-- id: un_stranded
+- id: in_un_stranded
   doc: Do not consider strands.
   type: boolean
   inputBinding:
     prefix: --unstranded
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedparse

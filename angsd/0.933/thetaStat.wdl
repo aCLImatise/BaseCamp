@@ -4,4 +4,7 @@ task ThetaStat {
   command <<<
     thetaStat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

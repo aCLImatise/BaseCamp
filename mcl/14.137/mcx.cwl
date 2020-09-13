@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../mcx.cwl
 inputs:
-- id: mode
+- id: in_mode
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: files
+- id: in_files
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mcx

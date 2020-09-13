@@ -1,98 +1,101 @@
 class: CommandLineTool
 id: ../../../daligner_p.cwl
 inputs:
-- id: kmer_size_must
+- id: in_kmer_size_must
   doc: ': k-mer size (must be <= 32).'
   type: boolean
   inputBinding:
     prefix: -k
-- id: look_kmers_averlapping
+- id: in_look_kmers_w
   doc: ': Look for k-mers in averlapping bands of size 2^-w.'
   type: boolean
   inputBinding:
     prefix: -w
-- id: ignore_kmers_occur
+- id: in_ignore_kmers_occur
   doc: ': Ignore k-mers that occur >= -t times in a block.'
   type: boolean
   inputBinding:
     prefix: -t
-- id: use_only_gb
+- id: in_use_only_gb
   doc: ': Use only -M GB of memory by ignoring most frequent k-mers.'
   type: boolean
   inputBinding:
     prefix: -M
-- id: look_alignments_e
+- id: in_look_alignments_e
   doc: ': Look for alignments with -e percent similarity.'
   type: boolean
   inputBinding:
     prefix: -e
-- id: look_alignments_l
+- id: in_look_alignments_l
   doc: ': Look for alignments of length >= -l.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: trace_point_spacing
+- id: in_trace_point_spacing
   doc: ': The trace point spacing for encoding alignments.'
   type: boolean
   inputBinding:
     prefix: -s
-- id: hgap_option_align
+- id: in_hgap_option_align
   doc: ': HGAP option: align only target reads of length >= -H.'
   type: boolean
   inputBinding:
     prefix: -H
-- id: use_t_threads
+- id: in_use_t_threads
   doc: ': Use -T threads.'
   type: boolean
   inputBinding:
     prefix: -T
-- id: block_level_sorts
+- id: in_block_level_sorts
   doc: ': Do block level sorts and merges in directory -P.'
   type: boolean
   inputBinding:
     prefix: -P
-- id: soft_mask_blocks
+- id: in_soft_mask_blocks
   doc: ': Soft mask the blocks with the specified mask.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: atgc_biased_compensate
+- id: in_atgc_biased_counts
   doc: ': For AT/GC biased data, compensate k-mer counts (deprecated).'
   type: boolean
   inputBinding:
     prefix: -b
-- id: verbose_mode_output
+- id: in_verbose_mode_output
   doc: ': Verbose mode, output statistics as proceed.'
   type: boolean
   inputBinding:
     prefix: -v
-- id: sort_areadaposition_pairs
-  doc: ': sort .las by A-read,A-position pairs for map usecase off => sort .las by
-    A,B-read pairs for overlap piles'
+- id: in_sort_areadaposition_pairs
+  doc: ": sort .las by A-read,A-position pairs for map usecase\noff => sort .las by\
+    \ A,B-read pairs for overlap piles"
   type: boolean
   inputBinding:
     prefix: -a
-- id: compare_subjet_target
+- id: in_compare_subjet_target
   doc: ': Compare subjet to target, but not vice versa.'
   type: boolean
   inputBinding:
     prefix: -A
-- id: compare_reads_themselves
+- id: in_compare_reads_themselves
   doc: ': Compare reads to themselves'
   type: boolean
   inputBinding:
     prefix: -I
-- id: va_bai
+- id: in_va_bai
   doc: ''
   type: boolean
   inputBinding:
     prefix: -vabAI
-- id: d_aligner
+- id: in_d_aligner
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - daligner_p

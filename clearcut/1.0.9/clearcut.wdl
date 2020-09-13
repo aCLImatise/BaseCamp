@@ -17,34 +17,34 @@ task Clearcut {
     Boolean? kimura
     Boolean? stdout
     File? matrix_out
-    String? n_trees
+    Int? n_trees
     Boolean? exp_blen
     Boolean? exp_dist
-    String? in
-    String? out
+    File? out
+    File? in
   }
   command <<<
     clearcut \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--norandom" false="" no_random} \
-      ~{true="--shuffle" false="" shuffle} \
-      ~{true="--neighbor" false="" neighbor} \
-      ~{true="--stdin" false="" stdin} \
-      ~{true="--distance" false="" distance} \
-      ~{true="--alignment" false="" alignment} \
-      ~{true="--DNA" false="" dna} \
-      ~{true="--protein" false="" protein} \
-      ~{true="--jukes" false="" jukes} \
-      ~{true="--kimura" false="" kimura} \
-      ~{true="--stdout" false="" stdout} \
+      ~{if (no_random) then "--norandom" else ""} \
+      ~{if (shuffle) then "--shuffle" else ""} \
+      ~{if (neighbor) then "--neighbor" else ""} \
+      ~{if (stdin) then "--stdin" else ""} \
+      ~{if (distance) then "--distance" else ""} \
+      ~{if (alignment) then "--alignment" else ""} \
+      ~{if (dna) then "--DNA" else ""} \
+      ~{if (protein) then "--protein" else ""} \
+      ~{if (jukes) then "--jukes" else ""} \
+      ~{if (kimura) then "--kimura" else ""} \
+      ~{if (stdout) then "--stdout" else ""} \
       ~{if defined(matrix_out) then ("--matrixout " +  '"' + matrix_out + '"') else ""} \
       ~{if defined(n_trees) then ("--ntrees " +  '"' + n_trees + '"') else ""} \
-      ~{true="--expblen" false="" exp_blen} \
-      ~{true="--expdist" false="" exp_dist} \
-      ~{if defined(in) then ("--in " +  '"' + in + '"') else ""} \
-      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
+      ~{if (exp_blen) then "--expblen" else ""} \
+      ~{if (exp_dist) then "--expdist" else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(in) then ("--in " +  '"' + in + '"') else ""}
   >>>
   parameter_meta {
     verbose: "More output. (Default: OFF)"
@@ -65,7 +65,12 @@ task Clearcut {
     n_trees: "Output n trees.  (Default: 1)"
     exp_blen: "Exponential notation for branch lengths. (Default: OFF)"
     exp_dist: "Exponential notation in distance output. (Default: OFF)"
-    in: ""
     out: ""
+    in: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_matrix_out = "${in_matrix_out}"
+    File out_out = "${in_out}"
   }
 }

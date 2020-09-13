@@ -1,27 +1,45 @@
 class: CommandLineTool
 id: ../../../augment_bam.cwl
 inputs:
-- id: augment_output_records
+- id: in_augment_output_records
   doc: Augment output records with original fields from FILE (required)
   type: File
   inputBinding:
     prefix: -a
-- id: invoke_command_output
+- id: in_invoke_command_reading
   doc: Invoke a command for its output rather than reading FILE
-  type: boolean
+  type: File
   inputBinding:
     prefix: -c
-- id: write_output_bam
+- id: in_write_bam_file
   doc: Write output BAM file to FILE rather than standard output
   type: File
   inputBinding:
     prefix: -o
-- id: augment_records_pairs
+- id: in_augment_records_pairs
   doc: Augment records in pairs (input files must be grouped by name)
   type: boolean
   inputBinding:
     prefix: -p
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_augment_output_records
+  doc: Augment output records with original fields from FILE (required)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_augment_output_records)
+- id: out_invoke_command_reading
+  doc: Invoke a command for its output rather than reading FILE
+  type: File
+  outputBinding:
+    glob: $(inputs.in_invoke_command_reading)
+- id: out_write_bam_file
+  doc: Write output BAM file to FILE rather than standard output
+  type: File
+  outputBinding:
+    glob: $(inputs.in_write_bam_file)
 cwlVersion: v1.1
 baseCommand:
 - augment-bam

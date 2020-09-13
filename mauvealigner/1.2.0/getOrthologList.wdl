@@ -3,9 +3,9 @@ version 1.0
 task GetOrthologList {
   input {
     String input_x_mfa
-    String backbone_seq_file
+    File backbone_seq_file
     String reference_genome
-    String cds_ortholog_filename
+    File cds_ortholog_filename
     String cds_alignment_base_name
   }
   command <<<
@@ -22,5 +22,8 @@ task GetOrthologList {
     reference_genome: ""
     cds_ortholog_filename: ""
     cds_alignment_base_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

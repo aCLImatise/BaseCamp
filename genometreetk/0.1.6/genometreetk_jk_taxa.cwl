@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../genometreetk_jk_taxa.cwl
 inputs:
-- id: out_group_ids
+- id: in_out_group_ids
   doc: file indicating outgroup taxa
-  type: string
+  type: File
   inputBinding:
     prefix: --outgroup_ids
-- id: model
+- id: in_model
   doc: 'model of evolution to use (default: wag)'
   type: string
   inputBinding:
     prefix: --model
-- id: perc_tax_a
+- id: in_perc_tax_a
   doc: 'percentage of taxa to keep (default: 0.5)'
-  type: string
+  type: double
   inputBinding:
     prefix: --perc_taxa
-- id: num_replicates
-  doc: 'number of jackknife replicates to perform (default: 100)'
-  type: string
+- id: in_num_replicates
+  doc: "number of jackknife replicates to perform (default:\n100)"
+  type: long
   inputBinding:
     prefix: --num_replicates
-- id: cpus
+- id: in_cpus
   doc: 'number of cpus (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpus
-- id: silent
+- id: in_silent
   doc: suppress output
   type: boolean
   inputBinding:
     prefix: --silent
-- id: input_tree
+- id: in_input_tree
   doc: tree inferred from original data
   type: string
   inputBinding:
     position: 0
-- id: msa_file
+- id: in_msa_file
   doc: file containing multiple sequence alignment
   type: string
   inputBinding:
     position: 1
-- id: output_dir
+- id: in_output_dir
   doc: output directory
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genometreetk

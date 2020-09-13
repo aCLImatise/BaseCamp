@@ -2,25 +2,28 @@ version 1.0
 
 task Ktserver {
   input {
-    String? host
-    String? port
-    String? tout
-    String? th
     File? log
+    Int? th
+    Int? tout
+    Int? port
+    String? host
   }
   command <<<
     ktserver \
-      ~{if defined(host) then ("-host " +  '"' + host + '"') else ""} \
-      ~{if defined(port) then ("-port " +  '"' + port + '"') else ""} \
-      ~{if defined(tout) then ("-tout " +  '"' + tout + '"') else ""} \
+      ~{if defined(log) then ("-log " +  '"' + log + '"') else ""} \
       ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
-      ~{if defined(log) then ("-log " +  '"' + log + '"') else ""}
+      ~{if defined(tout) then ("-tout " +  '"' + tout + '"') else ""} \
+      ~{if defined(port) then ("-port " +  '"' + port + '"') else ""} \
+      ~{if defined(host) then ("-host " +  '"' + host + '"') else ""}
   >>>
   parameter_meta {
-    host: ""
-    port: ""
-    tout: ""
-    th: ""
     log: ""
+    th: ""
+    tout: ""
+    port: ""
+    host: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

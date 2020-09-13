@@ -12,11 +12,11 @@ task DBstats {
   command <<<
     DBstats \
       ~{db_stats} \
-      ~{true="-u" false="" give_stats_untrimmed} \
-      ~{true="-n" false="" show_histogram_read} \
-      ~{true="-m" false="" show_histogram_mask} \
-      ~{true="-b" false="" use_histogram_buckets} \
-      ~{true="-nu" false="" nu}
+      ~{if (give_stats_untrimmed) then "-u" else ""} \
+      ~{if (show_histogram_read) then "-n" else ""} \
+      ~{if (show_histogram_mask) then "-m" else ""} \
+      ~{if (use_histogram_buckets) then "-b" else ""} \
+      ~{if (nu) then "-nu" else ""}
   >>>
   parameter_meta {
     give_stats_untrimmed: ": Give stats for the untrimmed database."
@@ -25,5 +25,8 @@ task DBstats {
     use_histogram_buckets: ": Use histogram buckets of this size (default 1Kbp)."
     nu: ""
     db_stats: "[-nu] [-b<int(1000)>] [-m<mask>]+ <name:db|dam>"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

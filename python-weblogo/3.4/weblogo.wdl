@@ -3,47 +3,47 @@ version 1.0
 task Weblogo {
   input {
     File? fin
-    String? datatype
+    File? datatype
     File? f_out
     String? format
     String? sequence_type
     String? alphabet
-    String? units
-    String? composition
-    String? weight
-    String? first_index
+    Int? units
+    Int? composition
+    Int? weight
+    Int? first_index
     String? lower
     String? upper
     Boolean? ignore_lower_case
     Boolean? reverse
     Boolean? complement
     Boolean? rev_comp
-    String? size
-    String? stacks_per_line
+    Int? size
+    Int? stacks_per_line
     String? title
-    String? label
+    Int? label
     String? show_x_axis
     String? xlabel
-    String? annotate
+    Int? annotate
     String? yaxis
     String? show_yaxis
     String? ylabel
     String? show_ends
     String? fine_print
-    String? tic_marks
+    Int? tic_marks
     String? error_bars
     String? reverse_stacks
     String? color_scheme
     String? color
     String? default_color
-    String? stack_width
-    String? aspect_ratio
+    Float? stack_width
+    Int? aspect_ratio
     String? box
-    String? resolution
+    Int? resolution
     String? scale_width
     String? debug
     Boolean? serve
-    String? port
+    Int? port
     String sequence_data_dot_fa
     String sequence_logo_dot_eps
   }
@@ -63,10 +63,10 @@ task Weblogo {
       ~{if defined(first_index) then ("--first-index " +  '"' + first_index + '"') else ""} \
       ~{if defined(lower) then ("--lower " +  '"' + lower + '"') else ""} \
       ~{if defined(upper) then ("--upper " +  '"' + upper + '"') else ""} \
-      ~{true="--ignore-lower-case" false="" ignore_lower_case} \
-      ~{true="--reverse" false="" reverse} \
-      ~{true="--complement" false="" complement} \
-      ~{true="--revcomp" false="" rev_comp} \
+      ~{if (ignore_lower_case) then "--ignore-lower-case" else ""} \
+      ~{if (reverse) then "--reverse" else ""} \
+      ~{if (complement) then "--complement" else ""} \
+      ~{if (rev_comp) then "--revcomp" else ""} \
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""} \
       ~{if defined(stacks_per_line) then ("--stacks-per-line " +  '"' + stacks_per_line + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
@@ -91,53 +91,57 @@ task Weblogo {
       ~{if defined(resolution) then ("--resolution " +  '"' + resolution + '"') else ""} \
       ~{if defined(scale_width) then ("--scale-width " +  '"' + scale_width + '"') else ""} \
       ~{if defined(debug) then ("--debug " +  '"' + debug + '"') else ""} \
-      ~{true="--serve" false="" serve} \
+      ~{if (serve) then "--serve" else ""} \
       ~{if defined(port) then ("--port " +  '"' + port + '"') else ""}
   >>>
   parameter_meta {
     fin: "Sequence input file (default: stdin)"
-    datatype: "Type of multiple sequence alignment or position weight matrix file: (clustal, fasta, plain, msf, genbank, nbrf, nexus, phylip, stockholm, intelligenetics, table, array, transfac)"
+    datatype: "Type of multiple sequence alignment or\\nposition weight matrix file: (clustal, fasta,\\nplain, msf, genbank, nbrf, nexus, phylip,\\nstockholm, intelligenetics, table, array,\\ntransfac)"
     f_out: "Output file (default: stdout)"
-    format: "Format of output: eps (default), png, png_print, pdf, jpeg, svg, logodata"
-    sequence_type: "The type of sequence data: 'protein', 'rna' or 'dna'."
-    alphabet: "The set of symbols to count, e.g. 'AGTC'. All characters not in the alphabet are ignored. If neither the alphabet nor sequence-type are specified then weblogo will examine the input data and make an educated guess. See also --sequence-type, --ignore-lower-case"
-    units: "A unit of entropy ('bits' (default), 'nats', 'digits'), or a unit of free energy ('kT', 'kJ/mol', 'kcal/mol'), or 'probability' for probabilities"
-    composition: "The expected composition of the sequences: 'auto' (default), 'equiprobable', 'none' (do not perform any compositional adjustment), a CG percentage, a species name (e.g. 'E. coli', 'H. sapiens'), or an explicit distribution (e.g. \"{'A':10, 'C':40, 'G':40, 'T':10}\"). The automatic option uses a typical distribution for proteins and equiprobable distribution for everything else."
-    weight: "The weight of prior data.  Default depends on alphabet length"
-    first_index: "Index of first position in sequence data (default: 1)"
+    format: "Format of output: eps (default), png,\\npng_print, pdf, jpeg, svg, logodata"
+    sequence_type: "The type of sequence data: 'protein', 'rna' or\\n'dna'."
+    alphabet: "The set of symbols to count, e.g. 'AGTC'. All\\ncharacters not in the alphabet are ignored. If\\nneither the alphabet nor sequence-type are\\nspecified then weblogo will examine the input\\ndata and make an educated guess. See also\\n--sequence-type, --ignore-lower-case"
+    units: "A unit of entropy ('bits' (default), 'nats',\\n'digits'), or a unit of free energy ('kT',\\n'kJ/mol', 'kcal/mol'), or 'probability' for\\nprobabilities"
+    composition: "The expected composition of the sequences:\\n'auto' (default), 'equiprobable', 'none' (do\\nnot perform any compositional adjustment), a\\nCG percentage, a species name (e.g. 'E. coli',\\n'H. sapiens'), or an explicit distribution\\n(e.g. \\\"{'A':10, 'C':40, 'G':40, 'T':10}\\\"). The\\nautomatic option uses a typical distribution\\nfor proteins and equiprobable distribution for\\neverything else."
+    weight: "The weight of prior data.  Default depends on\\nalphabet length"
+    first_index: "Index of first position in sequence data\\n(default: 1)"
     lower: "Lower bound of sequence to display"
     upper: "Upper bound of sequence to display"
-    ignore_lower_case: "Disregard lower case letters and only count upper case letters in sequences."
+    ignore_lower_case: "Disregard lower case letters and only count\\nupper case letters in sequences."
     reverse: "reverse sequences"
     complement: "complement nucleic sequences"
     rev_comp: "reverse complement nucleic sequences"
-    size: "Specify a standard logo size (small, medium (default), large)"
-    stacks_per_line: "Maximum number of logo stacks per logo line. (default: 40)"
+    size: "Specify a standard logo size (small, medium\\n(default), large)"
+    stacks_per_line: "Maximum number of logo stacks per logo line.\\n(default: 40)"
     title: "Logo title text."
     label: "A figure label, e.g. '2a'"
-    show_x_axis: "Display sequence numbers along x-axis? (default: True)"
+    show_x_axis: "Display sequence numbers along x-axis?\\n(default: True)"
     xlabel: "X-axis label"
-    annotate: "A comma separated list of custom stack annotations, e.g. '1,3,4,5,6,7'.  Annotation list must be same length as sequences."
-    yaxis: "Height of yaxis in units. (Default: Maximum value with uninformative prior.)"
-    show_yaxis: "Display entropy scale along y-axis? (default: True)"
-    ylabel: "Y-axis label (default depends on plot type and units)"
-    show_ends: "Label the ends of the sequence? (default: False)"
+    annotate: "A comma separated list of custom stack\\nannotations, e.g. '1,3,4,5,6,7'.  Annotation\\nlist must be same length as sequences."
+    yaxis: "Height of yaxis in units. (Default: Maximum\\nvalue with uninformative prior.)"
+    show_yaxis: "Display entropy scale along y-axis? (default:\\nTrue)"
+    ylabel: "Y-axis label (default depends on plot type and\\nunits)"
+    show_ends: "Label the ends of the sequence? (default:\\nFalse)"
     fine_print: "The fine print (default: weblogo version)"
     tic_marks: "Distance between ticmarks (default: 1.0)"
     error_bars: "Display error bars? (default: True)"
-    reverse_stacks: "Draw stacks with largest letters on top? (default: True)"
-    color_scheme: "Specify a standard color scheme (auto, base pairing, charge, chemistry, classic, hydrophobicity, monochrome)"
-    color: "SYMBOLS DESCRIPTION  Specify symbol colors, e.g. --color black AG 'Purine' --color red TC 'Pyrimidine'"
+    reverse_stacks: "Draw stacks with largest letters on top?\\n(default: True)"
+    color_scheme: "Specify a standard color scheme (auto, base\\npairing, charge, chemistry, classic,\\nhydrophobicity, monochrome)"
+    color: "SYMBOLS DESCRIPTION\\nSpecify symbol colors, e.g. --color black AG\\n'Purine' --color red TC 'Pyrimidine'"
     default_color: "Symbol color if not otherwise specified."
     stack_width: "Width of a logo stack (default: 10.8)"
     aspect_ratio: "Ratio of stack height to width (default: 5)"
     box: "Draw boxes around symbols? (default: no)"
-    resolution: "Bitmap resolution in dots per inch (DPI). (Default: 96 DPI, except png_print, 600 DPI) Low resolution bitmaps (DPI<300) are antialiased."
-    scale_width: "Scale the visible stack width by the fraction of symbols in the column?  (I.e. columns with many gaps of unknowns are narrow.)  (Default: yes)"
-    debug: "Output additional diagnostic information. (Default: False)"
-    serve: "Start a standalone WebLogo server for creating sequence logos."
+    resolution: "Bitmap resolution in dots per inch (DPI).\\n(Default: 96 DPI, except png_print, 600 DPI)\\nLow resolution bitmaps (DPI<300) are\\nantialiased."
+    scale_width: "Scale the visible stack width by the fraction\\nof symbols in the column?  (I.e. columns with\\nmany gaps of unknowns are narrow.)  (Default:\\nyes)"
+    debug: "Output additional diagnostic information.\\n(Default: False)"
+    serve: "Start a standalone WebLogo server for creating\\nsequence logos."
     port: "Listen to this local port. (Default: 8080)"
     sequence_data_dot_fa: ""
     sequence_logo_dot_eps: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_f_out = "${in_f_out}"
   }
 }

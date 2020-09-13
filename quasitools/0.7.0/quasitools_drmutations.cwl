@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../quasitools_drmutations.cwl
 inputs:
-- id: bam
-  doc: ''
-  type: string
+- id: in_min_freq
+  doc: the minimum required frequency.
+  type: double
   inputBinding:
-    position: 0
-- id: reference
-  doc: ''
-  type: string
+    prefix: --min_freq
+- id: in_reporting_threshold
+  doc: "the minimum percentage required for an entry\nin the drugresistant report."
+  type: long
   inputBinding:
-    position: 1
-- id: variants
+    prefix: --reporting_threshold
+- id: in_output
   doc: ''
-  type: string
+  type: File
   inputBinding:
-    position: 2
-- id: bed_four_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-outputs: []
+    prefix: --output
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - quasitools

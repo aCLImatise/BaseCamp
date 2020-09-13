@@ -2,7 +2,7 @@ version 1.0
 
 task GenomepyInstall {
   input {
-    String? genomes_dir
+    Directory? genomes_dir
     String? local_name
     String? mask
     String? regex
@@ -16,7 +16,7 @@ task GenomepyInstall {
     Boolean? ensembl_top_level
     Int? ensembl_version
     String? ucsc_annotation
-    String? url_to_annotation
+    File? url_to_annotation
     String name
     String provider
   }
@@ -28,14 +28,14 @@ task GenomepyInstall {
       ~{if defined(local_name) then ("--localname " +  '"' + local_name + '"') else ""} \
       ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""} \
       ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""} \
-      ~{true="--no-match" false="" no_match} \
-      ~{true="--bgzip" false="" b_gzip} \
+      ~{if (no_match) then "--no-match" else ""} \
+      ~{if (b_gzip) then "--bgzip" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--force" false="" force} \
-      ~{true="--annotation" false="" annotation} \
-      ~{true="--only_annotation" false="" only_annotation} \
-      ~{true="--skip_sanitizing" false="" skip_sanitizing} \
-      ~{true="--ensembl-toplevel" false="" ensembl_top_level} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (annotation) then "--annotation" else ""} \
+      ~{if (only_annotation) then "--only_annotation" else ""} \
+      ~{if (skip_sanitizing) then "--skip_sanitizing" else ""} \
+      ~{if (ensembl_top_level) then "--ensembl-toplevel" else ""} \
       ~{if defined(ensembl_version) then ("--ensembl-version " +  '"' + ensembl_version + '"') else ""} \
       ~{if defined(ucsc_annotation) then ("--ucsc-annotation " +  '"' + ucsc_annotation + '"') else ""} \
       ~{if defined(url_to_annotation) then ("--url-to-annotation " +  '"' + url_to_annotation + '"') else ""}
@@ -51,12 +51,15 @@ task GenomepyInstall {
     force: "overwrite existing files"
     annotation: "download annotation"
     only_annotation: "only download annotation (sets -a)"
-    skip_sanitizing: "skip (check for) matching of contig names between annotation and fasta (sets -a)"
+    skip_sanitizing: "skip (check for) matching of contig names\\nbetween annotation and fasta (sets -a)"
     ensembl_top_level: "always download toplevel-genome"
     ensembl_version: "select release version"
-    ucsc_annotation: "specify annotation to download: UCSC, Ensembl, NCBI_refseq or UCSC_refseq"
-    url_to_annotation: "link to the annotation file, required if this is not in the same directory as the fasta file"
+    ucsc_annotation: "specify annotation to download: UCSC, Ensembl,\\nNCBI_refseq or UCSC_refseq"
+    url_to_annotation: "link to the annotation file, required if this\\nis not in the same directory as the fasta file"
     name: ""
     provider: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -11,4 +11,7 @@ task SimplifyLibraries {
   parameter_meta {
     bank_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

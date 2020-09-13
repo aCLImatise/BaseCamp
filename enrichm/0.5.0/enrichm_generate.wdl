@@ -2,28 +2,28 @@ version 1.0
 
 task EnrichmGenerate {
   input {
-    String? log
-    String? verbosity
-    String? output_directory
+    File? log
+    Int? verbosity
+    Directory? output_directory
     Boolean? force
     String? input_matrix
     String? groups
     String? model_type
-    String? testing_portion
+    Float? testing_portion
     Boolean? grid_search
-    String? threads
+    Int? threads
   }
   command <<<
     enrichm generate \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(output_directory) then ("--output " +  '"' + output_directory + '"') else ""} \
-      ~{true="--force" false="" force} \
+      ~{if (force) then "--force" else ""} \
       ~{if defined(input_matrix) then ("--input_matrix " +  '"' + input_matrix + '"') else ""} \
       ~{if defined(groups) then ("--groups " +  '"' + groups + '"') else ""} \
       ~{if defined(model_type) then ("--model_type " +  '"' + model_type + '"') else ""} \
       ~{if defined(testing_portion) then ("--testing_portion " +  '"' + testing_portion + '"') else ""} \
-      ~{true="--grid_search" false="" grid_search} \
+      ~{if (grid_search) then "--grid_search" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
@@ -37,5 +37,10 @@ task EnrichmGenerate {
     testing_portion: "portion of the input data to use for testing (default = 0.2)"
     grid_search: "grid search"
     threads: "number of threads to use for hyperparameterization (default = all available)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_log = "${in_log}"
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

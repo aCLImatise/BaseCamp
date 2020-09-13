@@ -17,4 +17,7 @@ task OrthomclSingletons {
     groups_file: ""
     id_prefix: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

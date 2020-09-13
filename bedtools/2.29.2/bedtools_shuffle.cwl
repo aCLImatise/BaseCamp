@@ -1,85 +1,103 @@
 class: CommandLineTool
 id: ../../../bedtools_shuffle.cwl
 inputs:
-- id: excl
-  doc: A BED/GFF/VCF file of coordinates in which features in -i should not be placed
-    (e.g. gaps.bed).
+- id: in_excl
+  doc: "A BED/GFF/VCF file of coordinates in which features in -i\nshould not be placed\
+    \ (e.g. gaps.bed)."
   type: boolean
   inputBinding:
     prefix: -excl
-- id: incl
-  doc: 'Instead of randomly placing features in a genome, the -incl options defines
-    a BED/GFF/VCF file of coordinates in which  features in -i should be randomly
-    placed (e.g. genes.bed).  Larger -incl intervals will contain more shuffled regions.  This
-    method DISABLES -chromFirst. '
+- id: in_incl
+  doc: "Instead of randomly placing features in a genome, the -incl\noptions defines\
+    \ a BED/GFF/VCF file of coordinates in which\nfeatures in -i should be randomly\
+    \ placed (e.g. genes.bed).\nLarger -incl intervals will contain more shuffled\
+    \ regions.\nThis method DISABLES -chromFirst."
   type: boolean
   inputBinding:
     prefix: -incl
-- id: chrom
-  doc: 'Keep features in -i on the same chromosome. - By default, the chrom and position
-    are randomly chosen. - NOTE: Forces use of -chromFirst (see below).'
+- id: in_chrom
+  doc: "Keep features in -i on the same chromosome.\n- By default, the chrom and position\
+    \ are randomly chosen.\n- NOTE: Forces use of -chromFirst (see below)."
   type: boolean
   inputBinding:
     prefix: -chrom
-- id: seed
-  doc: Supply an integer seed for the shuffling. - By default, the seed is chosen
-    automatically. - (INTEGER)
+- id: in_seed
+  doc: "Supply an integer seed for the shuffling.\n- By default, the seed is chosen\
+    \ automatically.\n- (INTEGER)"
   type: boolean
   inputBinding:
     prefix: -seed
-- id: maximum_overlap_fraction
-  doc: Maximum overlap (as a fraction of the -i feature) with an -excl feature that
-    is tolerated before searching for a new,  randomized locus. For example, -f 0.10
-    allows up to 10% of a randomized feature to overlap with a given feature in the
-    -excl file. **Cannot be used with -incl file.** - Default is 1E-9 (i.e., 1bp).
-    - FLOAT (e.g. 0.50)
+- id: in_maximum_overlap_feature
+  doc: "Maximum overlap (as a fraction of the -i feature) with an -excl\nfeature that\
+    \ is tolerated before searching for a new,\nrandomized locus. For example, -f\
+    \ 0.10 allows up to 10%\nof a randomized feature to overlap with a given feature\n\
+    in the -excl file. **Cannot be used with -incl file.**\n- Default is 1E-9 (i.e.,\
+    \ 1bp).\n- FLOAT (e.g. 0.50)"
   type: boolean
   inputBinding:
     prefix: -f
-- id: chrom_first
-  doc: Instead of choosing a position randomly among the entire genome (the default),
-    first choose a chrom randomly, and then choose a random start coordinate on that
-    chrom.  This leads to features being ~uniformly distributed among the chroms,
-    as opposed to features being distribute as a function of chrom size.
+- id: in_chrom_first
+  doc: "Instead of choosing a position randomly among the entire\ngenome (the default),\
+    \ first choose a chrom randomly, and then\nchoose a random start coordinate on\
+    \ that chrom.  This leads\nto features being ~uniformly distributed among the\
+    \ chroms,\nas opposed to features being distribute as a function of chrom size."
   type: boolean
   inputBinding:
     prefix: -chromFirst
-- id: bed_pe
+- id: in_bed_pe
   doc: Indicate that the A file is in BEDPE format.
   type: boolean
   inputBinding:
     prefix: -bedpe
-- id: max_tries
-  doc: Max. number of attempts to find a home for a shuffled interval in the presence
-    of -incl or -excl. Default = 1000.
+- id: in_max_tries
+  doc: "Max. number of attempts to find a home for a shuffled interval\nin the presence\
+    \ of -incl or -excl.\nDefault = 1000."
   type: boolean
   inputBinding:
     prefix: -maxTries
-- id: no_overlapping
+- id: in_no_overlapping
   doc: Don't allow shuffled intervals to overlap.
   type: boolean
   inputBinding:
     prefix: -noOverlapping
-- id: allow_beyond_chrome_nd
-  doc: Allow shuffled intervals to be relocated to a position in which the entire
-    original interval cannot fit w/o exceeding the end of the chromosome.  In this
-    case, the end coordinate of the shuffled interval will be set to the chromosome's
-    length. By default, an interval's original length must be fully-contained within
-    the chromosome.
+- id: in_allow_beyond_chrome_nd
+  doc: "Allow shuffled intervals to be relocated to a position\nin which the entire\
+    \ original interval cannot fit w/o exceeding\nthe end of the chromosome.  In this\
+    \ case, the end coordinate of the\nshuffled interval will be set to the chromosome's\
+    \ length.\nBy default, an interval's original length must be fully-contained\n\
+    within the chromosome."
   type: boolean
   inputBinding:
     prefix: -allowBeyondChromEnd
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-- id: g
+- id: in_g
   doc: ''
   type: string
   inputBinding:
     prefix: -g
-outputs: []
+- id: in_i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: in_chr_one
+  doc: '249250621'
+  type: long
+  inputBinding:
+    position: 0
+- id: in_chr_two
+  doc: '243199373'
+  type: long
+  inputBinding:
+    position: 1
+- id: in_chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
+  doc: '4262'
+  type: long
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedtools

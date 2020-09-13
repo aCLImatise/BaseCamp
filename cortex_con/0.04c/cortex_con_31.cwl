@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../cortex_con_31.cwl
 inputs:
-- id: input
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --input
-- id: mem_height
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --mem_height
-- id: dump_binary
+- id: in_dump_binary
   doc: ''
   type: string
   inputBinding:
     prefix: --dump_binary
-- id: cortex_con
+- id: in_mem_height
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: --mem_height
+- id: in_input
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --input
+- id: in_cortex_con
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cortex_con_31

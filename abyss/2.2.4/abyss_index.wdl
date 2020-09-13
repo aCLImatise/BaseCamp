@@ -1,6 +1,6 @@
 version 1.0
 
-task AbyssIndex {
+task Abyssindex {
   input {
     Boolean? both
     Boolean? fai
@@ -11,28 +11,26 @@ task AbyssIndex {
     Boolean? alpha
     Boolean? dna
     Boolean? protein
-    String? sample
+    Int? sample
     Boolean? decompress
     Boolean? stdout
     Boolean? verbose
-    String? option
   }
   command <<<
-    abyss-index \
-      ~{option} \
-      ~{true="--both" false="" both} \
-      ~{true="--fai" false="" fai} \
-      ~{true="--fm" false="" fm} \
-      ~{true="--fa2bwt" false="" fa_two_bwt} \
-      ~{true="--bwt2fm" false="" bwt_two_fm} \
+    abyss_index \
+      ~{if (both) then "--both" else ""} \
+      ~{if (fai) then "--fai" else ""} \
+      ~{if (fm) then "--fm" else ""} \
+      ~{if (fa_two_bwt) then "--fa2bwt" else ""} \
+      ~{if (bwt_two_fm) then "--bwt2fm" else ""} \
       ~{if defined(alphabet) then ("--alphabet " +  '"' + alphabet + '"') else ""} \
-      ~{true="--alpha" false="" alpha} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--protein" false="" protein} \
+      ~{if (alpha) then "--alpha" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (protein) then "--protein" else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
-      ~{true="--decompress" false="" decompress} \
-      ~{true="--stdout" false="" stdout} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (decompress) then "--decompress" else ""} \
+      ~{if (stdout) then "--stdout" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     both: "build both FAI and FM indexes [default]"
@@ -48,6 +46,8 @@ task AbyssIndex {
     decompress: "decompress the index FILE"
     stdout: "write output to standard output"
     verbose: "display verbose output"
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

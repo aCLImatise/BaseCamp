@@ -1,14 +1,10 @@
 version 1.0
 
-task FilterBam {
-  input {
-    String? exclude_read_group
-  }
+task Filterbam {
   command <<<
-    filter-bam \
-      ~{if defined(exclude_read_group) then ("--exclude_readgroup " +  '"' + exclude_read_group + '"') else ""}
+    filter_bam
   >>>
-  parameter_meta {
-    exclude_read_group: "Name of readgroup to discard."
+  output {
+    File out_stdout = stdout()
   }
 }

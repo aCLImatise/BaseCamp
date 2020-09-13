@@ -14,4 +14,7 @@ task ArbHelp2xml {
     arb_help_file: ""
     xml_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

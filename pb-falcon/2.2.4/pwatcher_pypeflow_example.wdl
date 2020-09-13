@@ -1,7 +1,10 @@
 version 1.0
 
-task PwatcherPypeflowExample {
+task Pwatcherpypeflowexample {
   command <<<
-    pwatcher-pypeflow-example
+    pwatcher_pypeflow_example
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

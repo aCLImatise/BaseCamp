@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../orthomclAdjustFasta.cwl
 inputs:
-- id: tax_on_code
+- id: in_tax_on_code
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: fast_a_file
+- id: in_fast_a_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: id_field
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - orthomclAdjustFasta

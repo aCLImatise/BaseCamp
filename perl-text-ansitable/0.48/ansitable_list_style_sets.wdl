@@ -1,7 +1,10 @@
 version 1.0
 
-task AnsitableListStyleSets {
+task Ansitableliststylesets {
   command <<<
-    ansitable-list-style-sets
+    ansitable_list_style_sets
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

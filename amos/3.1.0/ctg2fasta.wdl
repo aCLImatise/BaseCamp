@@ -4,4 +4,7 @@ task Ctg2fasta {
   command <<<
     ctg2fasta
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

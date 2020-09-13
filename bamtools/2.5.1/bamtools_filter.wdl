@@ -2,9 +2,9 @@ version 1.0
 
 task BamtoolsFilter {
   input {
-    String? in
+    File? in
     File? list
-    String? out
+    File? out
     String? region
     File? script
     Boolean? force_compression
@@ -35,14 +35,14 @@ task BamtoolsFilter {
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(region) then ("-region " +  '"' + region + '"') else ""} \
       ~{if defined(script) then ("-script " +  '"' + script + '"') else ""} \
-      ~{true="-forceCompression" false="" force_compression} \
+      ~{if (force_compression) then "-forceCompression" else ""} \
       ~{if defined(alignment_flag) then ("-alignmentFlag " +  '"' + alignment_flag + '"') else ""} \
       ~{if defined(insert_size) then ("-insertSize " +  '"' + insert_size + '"') else ""} \
       ~{if defined(length) then ("-length " +  '"' + length + '"') else ""} \
-      ~{true="-mapQuality" false="" map_quality} \
+      ~{if (map_quality) then "-mapQuality" else ""} \
       ~{if defined(name) then ("-name " +  '"' + name + '"') else ""} \
       ~{if defined(query_bases) then ("-queryBases " +  '"' + query_bases + '"') else ""} \
-      ~{true="-tag" false="" tag} \
+      ~{if (tag) then "-tag" else ""} \
       ~{if defined(is_duplicate) then ("-isDuplicate " +  '"' + is_duplicate + '"') else ""} \
       ~{if defined(is_failed_qc) then ("-isFailedQC " +  '"' + is_failed_qc + '"') else ""} \
       ~{if defined(is_first_mate) then ("-isFirstMate " +  '"' + is_first_mate + '"') else ""} \
@@ -58,29 +58,33 @@ task BamtoolsFilter {
   >>>
   parameter_meta {
     in: "the input BAM file(s) [stdin]"
-    list: "the input BAM file list, one line per file"
+    list: "the input BAM file list, one\\nline per file"
     out: "the output BAM file [stdout]"
-    region: "only read data from this genomic region (see documentation for more details)"
-    script: "the filter script file (see documentation for more details)"
-    force_compression: "if results are sent to stdout (like when piping to another tool), default behavior is to leave output uncompressed. Use this flag to override and force compression"
-    alignment_flag: "keep reads with this *exact* alignment flag (for more detailed queries, see below)"
-    insert_size: "keep reads with insert size that matches pattern"
-    length: "keep reads with length that matches pattern"
-    map_quality: "<[0-255]>             keep reads with map quality that matches pattern"
-    name: "keep reads with name that matches pattern"
-    query_bases: "keep reads with motif that matches pattern"
-    tag: "<TAG:VALUE>                  keep reads with this key=>value pair"
-    is_duplicate: "keep only alignments that are marked as duplicate? [true]"
-    is_failed_qc: "keep only alignments that failed QC? [true]"
-    is_first_mate: "keep only alignments marked as first mate? [true]"
-    is_mapped: "keep only alignments that were mapped? [true]"
-    is_mate_mapped: "keep only alignments with mates that mapped [true]"
-    is_mate_reverse_strand: "keep only alignments with mate on reverese strand? [true]"
-    is_paired: "keep only alignments that were sequenced as paired? [true]"
-    is_primary_alignment: "keep only alignments marked as primary? [true]"
-    is_proper_pair: "keep only alignments that passed PE resolution? [true]"
-    is_reverse_strand: "keep only alignments on reverse strand? [true]"
-    is_second_mate: "keep only alignments marked as second mate? [true]"
+    region: "only read data from this\\ngenomic region (see documentation for more\\ndetails)"
+    script: "the filter script file (see\\ndocumentation for more details)"
+    force_compression: "if results are sent to stdout\\n(like when piping to another tool),\\ndefault behavior is to leave output\\nuncompressed. Use this flag to override\\nand force compression"
+    alignment_flag: "keep reads with this *exact*\\nalignment flag (for more detailed queries,\\nsee below)"
+    insert_size: "keep reads with insert size\\nthat matches pattern"
+    length: "keep reads with length that\\nmatches pattern"
+    map_quality: "<[0-255]>             keep reads with map quality\\nthat matches pattern"
+    name: "keep reads with name that\\nmatches pattern"
+    query_bases: "keep reads with motif that\\nmatches pattern"
+    tag: "<TAG:VALUE>                  keep reads with this\\nkey=>value pair"
+    is_duplicate: "keep only alignments that are\\nmarked as duplicate? [true]"
+    is_failed_qc: "keep only alignments that\\nfailed QC? [true]"
+    is_first_mate: "keep only alignments marked as\\nfirst mate? [true]"
+    is_mapped: "keep only alignments that were\\nmapped? [true]"
+    is_mate_mapped: "keep only alignments with\\nmates that mapped [true]"
+    is_mate_reverse_strand: "keep only alignments with mate\\non reverese strand? [true]"
+    is_paired: "keep only alignments that were\\nsequenced as paired? [true]"
+    is_primary_alignment: "keep only alignments marked as\\nprimary? [true]"
+    is_proper_pair: "keep only alignments that\\npassed PE resolution? [true]"
+    is_reverse_strand: "keep only alignments on\\nreverse strand? [true]"
+    is_second_mate: "keep only alignments marked as\\nsecond mate? [true]"
     is_singleton: "keep only singletons [true]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

@@ -1,7 +1,17 @@
 version 1.0
 
-task FastqUtils {
+task Fastqutils {
+  input {
+    Boolean? cite
+  }
   command <<<
-    fastq-utils
+    fastq_utils \
+      ~{if (cite) then "--cite" else ""}
   >>>
+  parameter_meta {
+    cite: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
 }

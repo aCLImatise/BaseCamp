@@ -10,7 +10,7 @@ task ProdigalSm {
     Boolean? specify_fastagenbank_input
     Boolean? treat_runs_n
     Boolean? bypass_shinedalgarno_trainer
-    Boolean? specify_output_file
+    File? specify_output_file
     Boolean? select_procedure_single
     Boolean? run_quietly_suppress
     Boolean? write_potential_genes
@@ -21,20 +21,20 @@ task ProdigalSm {
   command <<<
     prodigal_sm \
       ~{prodigal} \
-      ~{true="-a" false="" write_protein_translations} \
-      ~{true="-c" false="" closed_ends_allow} \
-      ~{true="-d" false="" write_nucleotide_sequences} \
-      ~{true="-f" false="" select_output_format} \
-      ~{true="-g" false="" specify_translation_table} \
-      ~{true="-i" false="" specify_fastagenbank_input} \
-      ~{true="-m" false="" treat_runs_n} \
-      ~{true="-n" false="" bypass_shinedalgarno_trainer} \
-      ~{true="-o" false="" specify_output_file} \
-      ~{true="-p" false="" select_procedure_single} \
-      ~{true="-q" false="" run_quietly_suppress} \
-      ~{true="-s" false="" write_potential_genes} \
-      ~{true="-t" false="" write_training_file} \
-      ~{true="-v" false="" print_version_number}
+      ~{if (write_protein_translations) then "-a" else ""} \
+      ~{if (closed_ends_allow) then "-c" else ""} \
+      ~{if (write_nucleotide_sequences) then "-d" else ""} \
+      ~{if (select_output_format) then "-f" else ""} \
+      ~{if (specify_translation_table) then "-g" else ""} \
+      ~{if (specify_fastagenbank_input) then "-i" else ""} \
+      ~{if (treat_runs_n) then "-m" else ""} \
+      ~{if (bypass_shinedalgarno_trainer) then "-n" else ""} \
+      ~{if (specify_output_file) then "-o" else ""} \
+      ~{if (select_procedure_single) then "-p" else ""} \
+      ~{if (run_quietly_suppress) then "-q" else ""} \
+      ~{if (write_potential_genes) then "-s" else ""} \
+      ~{if (write_training_file) then "-t" else ""} \
+      ~{if (print_version_number) then "-v" else ""}
   >>>
   parameter_meta {
     write_protein_translations: ":  Write protein translations to the selected file."
@@ -49,8 +49,12 @@ task ProdigalSm {
     select_procedure_single: ":  Select procedure (single or meta).  Default is single."
     run_quietly_suppress: ":  Run quietly (suppress normal stderr output)."
     write_potential_genes: ":  Write all potential genes (with scores) to the selected file."
-    write_training_file: ":  Write a training file (if none exists); otherwise, read and use the specified training file."
+    write_training_file: ":  Write a training file (if none exists); otherwise, read and use\\nthe specified training file."
     print_version_number: ":  Print version number and exit."
     prodigal: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_specify_output_file = "${in_specify_output_file}"
   }
 }

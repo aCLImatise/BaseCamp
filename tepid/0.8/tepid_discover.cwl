@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../tepid_discover.cwl
 inputs:
-- id: keep
+- id: in_keep
   doc: keep all intermediate files
   type: boolean
   inputBinding:
     prefix: --keep
-- id: deletions
+- id: in_deletions
   doc: find deletions only
   type: boolean
   inputBinding:
     prefix: --deletions
-- id: insertions
+- id: in_insertions
   doc: find insertions only
   type: boolean
   inputBinding:
     prefix: --insertions
-- id: strict
+- id: in_strict
   doc: Report high-confidence variants only
   type: boolean
   inputBinding:
     prefix: --strict
-- id: mask
+- id: in_mask
   doc: Mask chromosomes in comma separated list or file
-  type: string
+  type: File
   inputBinding:
     prefix: --mask
-- id: discordant
+- id: in_discordant
   doc: Supply discordant reads bam file
-  type: string
+  type: File
   inputBinding:
     prefix: --discordant
-- id: proc
+- id: in_proc
   doc: number of processors
-  type: string
+  type: long
   inputBinding:
     prefix: --proc
-- id: name
+- id: in_name
   doc: sample name
   type: string
   inputBinding:
     prefix: --name
-- id: conc
+- id: in_conc
   doc: bam file from bowtie2
-  type: string
+  type: File
   inputBinding:
     prefix: --conc
-- id: split
+- id: in_split
   doc: split reads bam file from yaha
-  type: string
+  type: File
   inputBinding:
     prefix: --split
-- id: te
+- id: in_te
   doc: TE annotation bedfile
   type: string
   inputBinding:
     prefix: --te
-- id: se
+- id: in_se
   doc: Run in single-end mode
   type: boolean
   inputBinding:
     prefix: --se
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tepid-discover

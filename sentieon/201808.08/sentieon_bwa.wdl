@@ -1,7 +1,10 @@
 version 1.0
 
-task SentieonBwa {
+task Sentieonbwa {
   command <<<
-    sentieon-bwa
+    sentieon_bwa
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

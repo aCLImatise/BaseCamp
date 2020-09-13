@@ -4,4 +4,7 @@ task Ir {
   command <<<
     ir
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

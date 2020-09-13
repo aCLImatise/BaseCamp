@@ -4,4 +4,7 @@ task VcfregionreducePipe {
   command <<<
     vcfregionreduce_pipe
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,146 +1,95 @@
 version 1.0
 
-task ChimerascanExcludeTranscriptomeEvents {
+task Chimerascanexcludetranscriptomeevents {
   input {
-    Boolean? extended_regexp
-    Boolean? fixed_strings
-    Boolean? basic_regexp
-    Boolean? perl_regexp
-    String? regexp
-    File? file
+    Boolean? h
+    Boolean? n
+    Boolean? show_names_match
+    Boolean? show_names_do
+    Boolean? show_only_count
+    Boolean? show_only_part
+    Boolean? quiet_return_found
+    Boolean? select_nonmatching_lines
+    Boolean? suppress_open_read
+    Boolean? recurse
     Boolean? ignore_case
-    Boolean? word_regexp
-    Boolean? line_regexp
-    Boolean? null_data
-    Boolean? no_messages
-    Boolean? invert_match
-    String? max_count
-    Boolean? byte_offset
-    Boolean? line_number
-    Boolean? line_buffered
-    Boolean? with_filename
-    String? label
-    Boolean? only_matching
-    Boolean? silent
-    String? binary_files
-    Boolean? text
-    Boolean? equivalent__binaryfileswithoutmatch
-    String? directories
-    String? devices
-    Boolean? recursive
-    Boolean? dereference_recursive
-    String? include
-    String? exclude
-    File? exclude_from
-    String? exclude_dir
-    Boolean? files_without_match
-    Boolean? files_with_matches
-    Boolean? count
-    Boolean? initial_tab
-    Boolean? null
-    String? before_context
-    String? after_context
-    String? context
-    Boolean? num
-    Boolean? color
-    Boolean? colour
-    Boolean? binary
+    Boolean? match_whole_words
+    Boolean? match_whole_lines
+    Boolean? pattern_literal_regexp
+    Boolean? pattern_extended_regexp
+    File? match_n_times
+    String? print_n_lines_trailing
+    String? print_n_lines_leading
+    String? same_as
+    String? pattern_to_match
+    File? read_pattern_file
+    String? a_slash_b_slash_c
+    Boolean? hhnlloqvsriwfe
     String grep
-    String? option
+    String pattern_slash_e
+    String pattern_dot_dot_dot_slash_f
+    File? file
   }
   command <<<
-    chimerascan-exclude-transcriptome-events \
+    chimerascan_exclude_transcriptome_events \
       ~{grep} \
-      ~{option} \
-      ~{true="--extended-regexp" false="" extended_regexp} \
-      ~{true="--fixed-strings" false="" fixed_strings} \
-      ~{true="--basic-regexp" false="" basic_regexp} \
-      ~{true="--perl-regexp" false="" perl_regexp} \
-      ~{if defined(regexp) then ("--regexp " +  '"' + regexp + '"') else ""} \
-      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
-      ~{true="--ignore-case" false="" ignore_case} \
-      ~{true="--word-regexp" false="" word_regexp} \
-      ~{true="--line-regexp" false="" line_regexp} \
-      ~{true="--null-data" false="" null_data} \
-      ~{true="--no-messages" false="" no_messages} \
-      ~{true="--invert-match" false="" invert_match} \
-      ~{if defined(max_count) then ("--max-count " +  '"' + max_count + '"') else ""} \
-      ~{true="--byte-offset" false="" byte_offset} \
-      ~{true="--line-number" false="" line_number} \
-      ~{true="--line-buffered" false="" line_buffered} \
-      ~{true="--with-filename" false="" with_filename} \
-      ~{if defined(label) then ("--label " +  '"' + label + '"') else ""} \
-      ~{true="--only-matching" false="" only_matching} \
-      ~{true="--silent" false="" silent} \
-      ~{if defined(binary_files) then ("--binary-files " +  '"' + binary_files + '"') else ""} \
-      ~{true="--text" false="" text} \
-      ~{true="-I" false="" equivalent__binaryfileswithoutmatch} \
-      ~{if defined(directories) then ("--directories " +  '"' + directories + '"') else ""} \
-      ~{if defined(devices) then ("--devices " +  '"' + devices + '"') else ""} \
-      ~{true="--recursive" false="" recursive} \
-      ~{true="--dereference-recursive" false="" dereference_recursive} \
-      ~{if defined(include) then ("--include " +  '"' + include + '"') else ""} \
-      ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
-      ~{if defined(exclude_from) then ("--exclude-from " +  '"' + exclude_from + '"') else ""} \
-      ~{if defined(exclude_dir) then ("--exclude-dir " +  '"' + exclude_dir + '"') else ""} \
-      ~{true="--files-without-match" false="" files_without_match} \
-      ~{true="--files-with-matches" false="" files_with_matches} \
-      ~{true="--count" false="" count} \
-      ~{true="--initial-tab" false="" initial_tab} \
-      ~{true="--null" false="" null} \
-      ~{if defined(before_context) then ("--before-context " +  '"' + before_context + '"') else ""} \
-      ~{if defined(after_context) then ("--after-context " +  '"' + after_context + '"') else ""} \
-      ~{if defined(context) then ("--context " +  '"' + context + '"') else ""} \
-      ~{true="-NUM" false="" num} \
-      ~{true="--color" false="" color} \
-      ~{true="--colour" false="" colour} \
-      ~{true="--binary" false="" binary}
+      ~{pattern_slash_e} \
+      ~{pattern_dot_dot_dot_slash_f} \
+      ~{file} \
+      ~{if (h) then "-H" else ""} \
+      ~{if (n) then "-n" else ""} \
+      ~{if (show_names_match) then "-l" else ""} \
+      ~{if (show_names_do) then "-L" else ""} \
+      ~{if (show_only_count) then "-c" else ""} \
+      ~{if (show_only_part) then "-o" else ""} \
+      ~{if (quiet_return_found) then "-q" else ""} \
+      ~{if (select_nonmatching_lines) then "-v" else ""} \
+      ~{if (suppress_open_read) then "-s" else ""} \
+      ~{if (recurse) then "-r" else ""} \
+      ~{if (ignore_case) then "-i" else ""} \
+      ~{if (match_whole_words) then "-w" else ""} \
+      ~{if (match_whole_lines) then "-x" else ""} \
+      ~{if (pattern_literal_regexp) then "-F" else ""} \
+      ~{if (pattern_extended_regexp) then "-E" else ""} \
+      ~{if defined(match_n_times) then ("-m " +  '"' + match_n_times + '"') else ""} \
+      ~{if defined(print_n_lines_trailing) then ("-A " +  '"' + print_n_lines_trailing + '"') else ""} \
+      ~{if defined(print_n_lines_leading) then ("-B " +  '"' + print_n_lines_leading + '"') else ""} \
+      ~{if defined(same_as) then ("-C " +  '"' + same_as + '"') else ""} \
+      ~{if defined(pattern_to_match) then ("-e " +  '"' + pattern_to_match + '"') else ""} \
+      ~{if defined(read_pattern_file) then ("-f " +  '"' + read_pattern_file + '"') else ""} \
+      ~{if defined(a_slash_b_slash_c) then ("-A/B/C " +  '"' + a_slash_b_slash_c + '"') else ""} \
+      ~{if (hhnlloqvsriwfe) then "-HhnlLoqvsriwFE" else ""}
   >>>
   parameter_meta {
-    extended_regexp: "PATTERNS are extended regular expressions"
-    fixed_strings: "PATTERNS are strings"
-    basic_regexp: "PATTERNS are basic regular expressions"
-    perl_regexp: "PATTERNS are Perl regular expressions"
-    regexp: "use PATTERNS for matching"
-    file: "take PATTERNS from FILE"
-    ignore_case: "ignore case distinctions"
-    word_regexp: "match only whole words"
-    line_regexp: "match only whole lines"
-    null_data: "a data line ends in 0 byte, not newline"
-    no_messages: "suppress error messages"
-    invert_match: "select non-matching lines"
-    max_count: "stop after NUM selected lines"
-    byte_offset: "print the byte offset with output lines"
-    line_number: "print line number with output lines"
-    line_buffered: "flush output on every line"
-    with_filename: "print file name with output lines"
-    label: "use LABEL as the standard input file name prefix"
-    only_matching: "show only nonempty parts of lines that match"
-    silent: "suppress all normal output"
-    binary_files: "assume that binary files are TYPE; TYPE is 'binary', 'text', or 'without-match'"
-    text: "equivalent to --binary-files=text"
-    equivalent__binaryfileswithoutmatch: "equivalent to --binary-files=without-match"
-    directories: "how to handle directories; ACTION is 'read', 'recurse', or 'skip'"
-    devices: "how to handle devices, FIFOs and sockets; ACTION is 'read' or 'skip'"
-    recursive: "like --directories=recurse"
-    dereference_recursive: "likewise, but follow all symlinks"
-    include: "search only files that match GLOB (a file pattern)"
-    exclude: "skip files and directories matching GLOB"
-    exclude_from: "skip files matching any file pattern from FILE"
-    exclude_dir: "skip directories that match GLOB"
-    files_without_match: "print only names of FILEs with no selected lines"
-    files_with_matches: "print only names of FILEs with selected lines"
-    count: "print only a count of selected lines per FILE"
-    initial_tab: "make tabs line up (if needed)"
-    null: "print 0 byte after FILE name"
-    before_context: "print NUM lines of leading context"
-    after_context: "print NUM lines of trailing context"
-    context: "print NUM lines of output context"
-    num: "same as --context=NUM"
-    color: "[=WHEN],"
-    colour: "[=WHEN]       use markers to highlight the matching strings; WHEN is 'always', 'never', or 'auto'"
-    binary: "do not strip CR characters at EOL (MSDOS/Windows)"
+    h: "Add 'filename:' prefix"
+    n: "Add 'line_no:' prefix"
+    show_names_match: "Show only names of files that match"
+    show_names_do: "Show only names of files that don't match"
+    show_only_count: "Show only count of matching lines"
+    show_only_part: "Show only the matching part of line"
+    quiet_return_found: "Quiet. Return 0 if PATTERN is found, 1 otherwise"
+    select_nonmatching_lines: "Select non-matching lines"
+    suppress_open_read: "Suppress open and read errors"
+    recurse: "Recurse"
+    ignore_case: "Ignore case"
+    match_whole_words: "Match whole words only"
+    match_whole_lines: "Match whole lines only"
+    pattern_literal_regexp: "PATTERN is a literal (not regexp)"
+    pattern_extended_regexp: "PATTERN is an extended regexp"
+    match_n_times: "Match up to N times per file"
+    print_n_lines_trailing: "Print N lines of trailing context"
+    print_n_lines_leading: "Print N lines of leading context"
+    same_as: "Same as '-A N -B N'"
+    pattern_to_match: "Pattern to match"
+    read_pattern_file: "Read pattern from file"
+    a_slash_b_slash_c: ""
+    hhnlloqvsriwfe: ""
     grep: ""
-    option: ""
+    pattern_slash_e: ""
+    pattern_dot_dot_dot_slash_f: ""
+    file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

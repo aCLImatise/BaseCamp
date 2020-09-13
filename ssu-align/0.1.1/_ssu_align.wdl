@@ -1,7 +1,10 @@
 version 1.0
 
-task _ssuAlign {
+task Ssualign {
   command <<<
-    _ssu-align
+    _ssu_align
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

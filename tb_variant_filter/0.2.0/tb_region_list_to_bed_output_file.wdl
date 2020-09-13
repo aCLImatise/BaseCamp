@@ -14,4 +14,7 @@ task TbRegionListToBedOutputFile {
     chromosome_name: ""
     tb_region_list_to_bed: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

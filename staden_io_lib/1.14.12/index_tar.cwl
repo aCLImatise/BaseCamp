@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../index_tar.cwl
 inputs:
-- id: d
+- id: in_d
   doc: ''
   type: boolean
   inputBinding:
     prefix: -d
-- id: tar_file
+- id: in_tar_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - index_tar

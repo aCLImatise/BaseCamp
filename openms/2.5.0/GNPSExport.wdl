@@ -3,14 +3,14 @@ version 1.0
 task GNPSExport {
   input {
     File? in_cm
-    File? in_mzm_l
+    String? in_mzm_l
     File? out
     String? output_type
-    String? precursor_mz_tolerance
-    String? precursor_rt_tolerance
+    Int? precursor_mz_tolerance
+    Int? precursor_rt_tolerance
     Boolean? merged_spectra
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -22,11 +22,11 @@ task GNPSExport {
       ~{if defined(output_type) then ("-output_type " +  '"' + output_type + '"') else ""} \
       ~{if defined(precursor_mz_tolerance) then ("-precursor_mz_tolerance " +  '"' + precursor_mz_tolerance + '"') else ""} \
       ~{if defined(precursor_rt_tolerance) then ("-precursor_rt_tolerance " +  '"' + precursor_rt_tolerance + '"') else ""} \
-      ~{true="-merged_spectra" false="" merged_spectra} \
+      ~{if (merged_spectra) then "-merged_spectra" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in_cm: "*                        Input file containing consensus elements with 'peptide' annotations (valid formats: 'consensusXML')"
@@ -40,5 +40,9 @@ task GNPSExport {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

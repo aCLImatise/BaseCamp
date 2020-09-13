@@ -1,13 +1,13 @@
 version 1.0
 
-task Maq2samShort {
+task Maq2samshort {
   input {
-    String maq_two_sam
+    Int maq_two_sam
     String in_dot_map
     String? read_group
   }
   command <<<
-    maq2sam-short \
+    maq2sam_short \
       ~{maq_two_sam} \
       ~{in_dot_map} \
       ~{read_group}
@@ -16,5 +16,8 @@ task Maq2samShort {
     maq_two_sam: ""
     in_dot_map: ""
     read_group: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

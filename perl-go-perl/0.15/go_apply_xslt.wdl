@@ -1,7 +1,10 @@
 version 1.0
 
-task GoApplyXslt {
+task Goapplyxslt {
   command <<<
-    go-apply-xslt
+    go_apply_xslt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

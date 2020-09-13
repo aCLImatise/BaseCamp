@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../o_get_reads_from_fasta_ids_file.cwl
 inputs:
-- id: s
+- id: in_s
   doc: ''
   type: boolean
   inputBinding:
     prefix: -S
-- id: o_get_reads_from_fast_a
+- id: in_o_get_reads_from_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_fast_a
+- id: in_input_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: ids_file
+- id: in_ids_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: output_fast_a
+- id: in_output_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - o-get-reads-from-fasta

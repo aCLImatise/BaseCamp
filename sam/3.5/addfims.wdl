@@ -14,4 +14,7 @@ task Addfims {
     option: ""
     run_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

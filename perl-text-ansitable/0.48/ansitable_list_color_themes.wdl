@@ -1,7 +1,10 @@
 version 1.0
 
-task AnsitableListColorThemes {
+task Ansitablelistcolorthemes {
   command <<<
-    ansitable-list-color-themes
+    ansitable_list_color_themes
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 version 1.0
 
-task LastMapProbs {
+task Lastmapprobs {
   input {
-    String? mis_map
-    String? score
+    Float? mis_map
+    Int? score
   }
   command <<<
-    last-map-probs \
+    last_map_probs \
       ~{if defined(mis_map) then ("--mismap " +  '"' + mis_map + '"') else ""} \
       ~{if defined(score) then ("--score " +  '"' + score + '"') else ""}
   >>>
   parameter_meta {
-    mis_map: "don't write alignments with mismap probability > M (default: 0.01)"
-    score: "don't write alignments with score < S (default: e+t*ln[1000])"
+    mis_map: "don't write alignments with mismap probability > M\\n(default: 0.01)"
+    score: "don't write alignments with score < S (default:\\ne+t*ln[1000])\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

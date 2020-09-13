@@ -11,4 +11,7 @@ task AddDatasourceMd5 {
   parameter_meta {
     ds_dir: "datasource directory.  This should be the genome_build dir inside a datasource dir."
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

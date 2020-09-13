@@ -2,22 +2,28 @@ version 1.0
 
 task Dedup {
   input {
-    String? input_file_specified
+    File? input_file_option
     Boolean? merged
-    String? output_folder_specified
-    Boolean? unsorted
+    Directory? output_folder_specified
+    String ded_up
+    String set_dot
   }
   command <<<
     dedup \
-      ~{if defined(input_file_specified) then ("--input " +  '"' + input_file_specified + '"') else ""} \
-      ~{true="--merged" false="" merged} \
-      ~{if defined(output_folder_specified) then ("--output " +  '"' + output_folder_specified + '"') else ""} \
-      ~{true="--unsorted" false="" unsorted}
+      ~{ded_up} \
+      ~{set_dot} \
+      ~{if defined(input_file_option) then ("--input " +  '"' + input_file_option + '"') else ""} \
+      ~{if (merged) then "--merged" else ""} \
+      ~{if defined(output_folder_specified) then ("--output " +  '"' + output_folder_specified + '"') else ""}
   >>>
   parameter_meta {
-    input_file_specified: "the input file if this option is not specified, the input is expected to be piped in"
-    merged: "the input only contains merged reads. If this option is specified read names are not examined for prefixes. Both the start and end of the aligment are considered for all reads."
-    output_folder_specified: "the output folder. Has to be specified if input is set."
-    unsorted: "Do not automatically sort the output"
+    input_file_option: "the input file if this option is not specified,\\nthe input is expected to be piped in"
+    merged: "the input only contains merged reads.\\nIf this option is specified read names are not\\nexamined for prefixes.\\nBoth the start and end of the aligment are considered\\nfor all reads."
+    output_folder_specified: "the output folder. Has to be specified if input is"
+    ded_up: "-h,--help           show this help page"
+    set_dot: "-u,--unsorted       Do not automatically sort the output"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

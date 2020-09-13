@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceProbeGetClustersFromTaxa {
   input {
-    String? clusters
+    Directory? clusters
     String? db
     Array[String] tax_a
   }
@@ -15,6 +15,9 @@ task PhyluceProbeGetClustersFromTaxa {
   parameter_meta {
     clusters: "The directory containing cluster files"
     db: "The database to update"
-    tax_a: "The taxon overlaps to use"
+    tax_a: "The taxon overlaps to use\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

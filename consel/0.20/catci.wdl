@@ -4,4 +4,7 @@ task Catci {
   command <<<
     catci
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

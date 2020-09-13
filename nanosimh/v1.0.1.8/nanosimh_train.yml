@@ -1,5 +1,12 @@
 !Command
-positional: []
+command:
+- nanosimh_train
+positional:
+- !Positional
+  description: -p str, --profile str
+  position: 0
+  name: extension
+  optional: false
 named:
 - !Flag
   description: training ONT real reads, must be fasta files
@@ -18,18 +25,10 @@ named:
     name: str
   optional: true
 - !Flag
-  description: user can provide their own alignment file, with maf extension
+  description: user can provide their own alignment file, with maf
   synonyms:
   - -m
   - --maf
-  args: !SimpleFlagArg
-    name: str
-  optional: true
-- !Flag
-  description: prefix of output files [training]
-  synonyms:
-  - -p
-  - --profile
   args: !SimpleFlagArg
     name: str
   optional: true
@@ -47,10 +46,16 @@ named:
   - --no-model-fit
   args: !EmptyFlagArg {}
   optional: true
-command:
-- nanosimh_train
+- !Flag
+  description: ''
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: str
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -2,7 +2,7 @@ version 1.0
 
 task Fido {
   input {
-    String graph_file
+    File graph_file
     String gamma
     String alpha
     String beta
@@ -19,5 +19,8 @@ task Fido {
     gamma: ""
     alpha: ""
     beta: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

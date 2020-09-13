@@ -1,188 +1,173 @@
 !Command
+command:
+- sccaller
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -d
-  args: !SimpleFlagArg
-    name: WKDIR
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -l
-  args: !SimpleFlagArg
-    name: LAMB
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --bias
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --minvar
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --mapq
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --min_depth
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --RD
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --null
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --bulk
-  args: !SimpleFlagArg
-    name: BAM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --bulk_min_depth
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --bulk_min_mapq
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --bulk_min_var
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --format
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? vcf
-      ? bed
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --head
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --tail
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -e
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? pysam
-      ? samtools
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --cpu_num
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -w
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -n
-  args: !SimpleFlagArg
-    name: NUM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -t
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? hsnp
-      ? dbsnp
-  optional: true
-- !Flag
-  description: ''
+  description: ':      bamfile of a single cell'
   synonyms:
   - -b
-  args: !SimpleFlagArg
-    name: BAM
+  - --bam
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ''
+  description: ':    fasta file of reference genome'
   synonyms:
   - -f
-  args: !SimpleFlagArg
-    name: FASTA
+  - --fasta
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ''
-  synonyms:
-  - -s
-  args: !SimpleFlagArg
-    name: SNP_IN
-  optional: true
-- !Flag
-  description: ''
+  description: ':   output file name'
   synonyms:
   - -o
-  args: !SimpleFlagArg
-    name: OUTPUT
+  - --output
+  args: !EmptyFlagArg {}
   optional: true
-command:
-- sccaller
+- !Flag
+  description: ':   Candidate snp input file, either from dbsnp data or heterozygous
+    snp (hsnp) data of the bulk, for known heterogous call. file type: bed (1-based)
+    or vcf.'
+  synonyms:
+  - -s
+  - --snp_in
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': SNP type for --snp_in. It could be either "dbsnp" or "hsnp". When
+    choosing dbsnp, --bulk bulk_bamfile is required.'
+  synonyms:
+  - -t
+  - --snp_type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':           min. read depth of known heterogous SNP called from bulk
+    when choosing -t dbsnp. Default: 20. Recommand: 10,15,20, depending on average
+    read depth'
+  synonyms:
+  - --RD
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':         default theta (bias) for SNVs whose theta cannot be estimated.
+    Default=0.75'
+  synonyms:
+  - --bias
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':         bamfile of bulk DNA sequencing'
+  synonyms:
+  - --bulk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':min. reads for bulk. Default: 20'
+  synonyms:
+  - --bulk_min_depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':min. mapQ for bulk. Default: 20'
+  synonyms:
+  - --bulk_min_mapq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': min. num. variant supporting reads for bulk. Default: 1'
+  synonyms:
+  - --bulk_min_var
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':       output file format. bed or vcf. Default: vcf'
+  synonyms:
+  - --format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':         first chromosome as sorted as in fasta file to analyze (1-based).
+    Default: the first chr. in the fasta'
+  synonyms:
+  - --head
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':         min. mapQ. Default: 40'
+  synonyms:
+  - --mapq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':    min. reads. Default: 10'
+  synonyms:
+  - --min_depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':       min. num. variant supporting reads. Default: 4'
+  synonyms:
+  - --minvar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':         min. allelic fraction considered. Default=0.03'
+  synonyms:
+  - --null
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':         last chromosome as sorted as in fasta file to analyze (1-based).
+    Default: the last chr. in the fasta'
+  synonyms:
+  - --tail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':    work dir. Default: ./'
+  synonyms:
+  - -d
+  - --wkdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':   pileup engine. samtools or pysam. Default: pysam'
+  synonyms:
+  - -e
+  - --engine
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':     lambda for bias estimation. Default=10000'
+  synonyms:
+  - -l
+  - --lamb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':  num. processes. Default: 1'
+  synonyms:
+  - -n
+  - --cpu_num
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': num. splits per chromosome for multi-process computing. Default:
+    100'
+  synonyms:
+  - -w
+  - --work_num
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: ':     Help'
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:

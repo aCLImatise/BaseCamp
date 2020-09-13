@@ -2,11 +2,11 @@ version 1.0
 
 task PispinoCreatereadpairslist {
   input {
-    String? directory_raw_sequences
+    Directory? directory_raw_sequences
     File? name_output_list
-    String? label_add_c_end
-    String? label_add_c_front
-    String? label_re_index_c
+    File? label_add_c_end
+    File? label_add_c_front
+    Int? label_re_index_c
     Boolean? ignore_name_clash
     String makes
     String a
@@ -22,17 +22,23 @@ task PispinoCreatereadpairslist {
       ~{if defined(label_add_c_end) then ("--label-add-c-end " +  '"' + label_add_c_end + '"') else ""} \
       ~{if defined(label_add_c_front) then ("--label-add-c-front " +  '"' + label_add_c_front + '"') else ""} \
       ~{if defined(label_re_index_c) then ("--label-reindex-c " +  '"' + label_re_index_c + '"') else ""} \
-      ~{true="-f" false="" ignore_name_clash}
+      ~{if (ignore_name_clash) then "-f" else ""}
   >>>
   parameter_meta {
-    directory_raw_sequences: "[REQUIRED] Directory with your raw sequences in gzipped FASTQ"
+    directory_raw_sequences: "[REQUIRED] Directory with your raw sequences in\\ngzipped FASTQ"
     name_output_list: "Name of output list file."
-    label_add_c_end: "Add a label to the END of each sample ids in the output file. N.B. \"_\" is not allowed"
-    label_add_c_front: "Add a label to the FRONT of each sample ids in the output file. N.B. \"_\" is not allowed"
-    label_re_index_c: "Rename samples with the given label. It will automatically add 001, 002 etc. at the end of each name. N.B. \"_\" is not allowed"
+    label_add_c_end: "Add a label to the END of each sample ids in the\\noutput file. N.B. \\\"_\\\" is not allowed"
+    label_add_c_front: "Add a label to the FRONT of each sample ids in the\\noutput file. N.B. \\\"_\\\" is not allowed"
+    label_re_index_c: "Rename samples with the given label. It will\\nautomatically add 001, 002 etc. at the end of each\\nname. N.B. \\\"_\\\" is not allowed"
     ignore_name_clash: "Ignore name clash and create a mapping file anyway."
     makes: ""
     a: ""
     read_pairs_list_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_name_output_list = "${in_name_output_list}"
+    File out_label_add_c_end = "${in_label_add_c_end}"
+    File out_label_add_c_front = "${in_label_add_c_front}"
   }
 }

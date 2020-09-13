@@ -1,5 +1,13 @@
 !Command
-positional: []
+command:
+- CollapseBarcodesInPlace
+positional:
+- !Positional
+  description: MIN_NUM_READS_CORE=Integer    Number of reads a barcode would need
+    to have in order to have other barcodes get merged
+  position: 0
+  name: value.
+  optional: false
 named:
 - !Flag
   description: (default 4g)
@@ -15,15 +23,43 @@ named:
   args: !SimpleFlagArg
     name: echo
   optional: true
-command:
-- CollapseBarcodesInPlace
+- !Flag
+  description: Displays options specific to this tool.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --stdhelp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
-help_text: "USAGE: /tmp/tmpq7xcnqce/bin/CollapseBarcodesInPlace [-m <jvm_heap_size>]\
-  \ [-v] program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: /usr/local/bin/CollapseBarcodesInPlace [-m <jvm_heap_size>] [-v]\
+  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
   \ command line before executing\n\nProgram options:\nUSAGE: CollapseBarcodesInPlace\
   \ [options]\n\nFold down barcodes, possibly in the context of another barcode (that\
   \ has been folded down already.)\nVersion: 2.3.0(34e6572_1555443285)\n\n\nOptions:\n\

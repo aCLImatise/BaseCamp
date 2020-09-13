@@ -4,4 +4,7 @@ task Vcfecho {
   command <<<
     vcfecho
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

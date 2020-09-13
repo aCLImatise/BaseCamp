@@ -1,7 +1,10 @@
 version 1.0
 
-task Gxw2consensus.pl.bak {
+task Gxw2consensuspl {
   command <<<
-    gxw2consensus.pl.bak
+    gxw2consensus_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

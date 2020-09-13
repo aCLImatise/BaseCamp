@@ -2,12 +2,12 @@ version 1.0
 
 task PhyluceProbeGetGenomeSequencesFromBed {
   input {
-    String? bed
-    String? two_bit
-    String? output_fasta_file
+    File? bed
+    Int? two_bit
+    File? output_fasta_file
     String? filter_mask
     Int? max_n
-    String? buffer_to
+    Int? buffer_to
   }
   command <<<
     phyluce_probe_get_genome_sequences_from_bed \
@@ -24,6 +24,10 @@ task PhyluceProbeGetGenomeSequencesFromBed {
     output_fasta_file: "The output fasta file"
     filter_mask: "Filter strings with > X frequency of masked bases"
     max_n: "The maximum number of ambiguous bases ('N') to accept"
-    buffer_to: "The length to which to buffer the extracted sequences"
+    buffer_to: "The length to which to buffer the extracted sequences\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_fasta_file = "${in_output_fasta_file}"
   }
 }

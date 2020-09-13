@@ -2,21 +2,16 @@ version 1.0
 
 task CompressFast5 {
   input {
-    String? input_path
-    String? save_path
-    Boolean? in_place
-    String? target_output_compression
-    String? threads
-    Boolean? recursive
-    Boolean? ignore_symlinks
+    Boolean? c
+    File? i
     String tool
     String for
     String changing
     String the
-    String var_11
+    String compression
     String of
-    String fast_five
-    File files
+    Int fast_five
+    String files
   }
   command <<<
     compress_fast5 \
@@ -24,33 +19,26 @@ task CompressFast5 {
       ~{for} \
       ~{changing} \
       ~{the} \
-      ~{var_11} \
+      ~{compression} \
       ~{of} \
       ~{fast_five} \
       ~{files} \
-      ~{if defined(input_path) then ("--input_path " +  '"' + input_path + '"') else ""} \
-      ~{if defined(save_path) then ("--save_path " +  '"' + save_path + '"') else ""} \
-      ~{true="--in_place" false="" in_place} \
-      ~{if defined(target_output_compression) then ("--compression " +  '"' + target_output_compression + '"') else ""} \
-      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--recursive" false="" recursive} \
-      ~{true="--ignore_symlinks" false="" ignore_symlinks}
+      ~{if (c) then "-c" else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
-    input_path: "Folder containing single read fast5 files"
-    save_path: "Folder to output multi read files to"
-    in_place: "Replace the old files with new files in place"
-    target_output_compression: "Target output compression type"
-    threads: "Maximum number of threads to use"
-    recursive: "Search recursively through folders for single_read fast5 files"
-    ignore_symlinks: "Ignore symlinks when searching recursively for fast5 files"
+    c: ""
+    i: ""
     tool: ""
     for: ""
     changing: ""
     the: ""
-    var_11: ""
+    compression: ""
     of: ""
     fast_five: ""
     files: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

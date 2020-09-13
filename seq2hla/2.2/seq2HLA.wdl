@@ -2,11 +2,11 @@ version 1.0
 
 task Seq2HLA {
   input {
-    String? one
-    String? two
+    Int? one
+    Int? two
     String? run_name
-    String? threads
-    String? trim_three
+    Int? threads
+    Int? trim_three
   }
   command <<<
     seq2HLA \
@@ -19,8 +19,11 @@ task Seq2HLA {
   parameter_meta {
     one: "File name of #1 mates (uncompressed or gzipped fastq)"
     two: "File name of #2 mates (uncompressed or gzipped fastq)"
-    run_name: "Name of this HLA typing run. Wil be used throughout this process as part of the name of the newly created files."
-    threads: "Bowtie option: Launch <int> parallel search threads. Default (seq2HLA): 6"
-    trim_three: "Bowtie option: -3 <int> trims <int> bases from the low quality 3' end of each read. Default: 0"
+    run_name: "Name of this HLA typing run. Wil be used throughout\\nthis process as part of the name of the newly created\\nfiles."
+    threads: "Bowtie option: Launch <int> parallel search threads.\\nDefault (seq2HLA): 6"
+    trim_three: "Bowtie option: -3 <int> trims <int> bases from the low\\nquality 3' end of each read. Default: 0\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

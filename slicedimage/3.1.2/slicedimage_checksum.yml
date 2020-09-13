@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- slicedimage
+- checksum
 positional: []
 named:
 - !Flag
@@ -7,17 +10,15 @@ named:
   - --pretty
   args: !EmptyFlagArg {}
   optional: true
-command:
-- slicedimage
-- checksum
 parent: !Command
-  positional: []
-  named: []
   command:
   - slicedimage
+  positional: []
+  named: []
   parent:
   subcommands:
   - *id001
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -34,6 +35,10 @@ parent: !Command
   - --help
 subcommands:
 - !Command
+  command:
+  - slicedimage
+  - checksum
+  - out_path
   positional:
   - !Positional
     description: ''
@@ -62,12 +67,9 @@ subcommands:
     - --pretty
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - slicedimage
-  - checksum
-  - out_path
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -79,6 +81,7 @@ subcommands:
   help_text: "usage: slicedimage checksum [-h] [--pretty] in_url out_path\nslicedimage\
     \ checksum: error: the following arguments are required: out_path\n"
   generated_using: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

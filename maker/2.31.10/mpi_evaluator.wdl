@@ -4,4 +4,7 @@ task MpiEvaluator {
   command <<<
     mpi_evaluator
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

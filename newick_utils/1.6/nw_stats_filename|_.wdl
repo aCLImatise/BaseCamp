@@ -1,14 +1,17 @@
 version 1.0
 
-task NwStatsFilename|_ {
+task NwStatsFilename {
   input {
-    Boolean? format_l_default
+    Boolean? format_lines_l
   }
   command <<<
-    nw_stats filename|- \
-      ~{true="-f" false="" format_l_default}
+    nw_stats filename__ \
+      ~{if (format_lines_l) then "-f" else ""}
   >>>
   parameter_meta {
-    format_l_default: "[lc]: format in lines (l) or columns (c). Default is l."
+    format_lines_l: "[lc]: format in lines (l) or columns (c). Default is l."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

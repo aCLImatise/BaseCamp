@@ -2,15 +2,19 @@ version 1.0
 
 task Ecodbtaxstat {
   input {
+    Boolean? debug
+    Boolean? without_progress_bar
     String? rank
     File? database
     File? taxonomy_dump
     String? require_rank
-    String? required
+    Int? required
     String? ignore
   }
   command <<<
     ecodbtaxstat \
+      ~{if (debug) then "--DEBUG" else ""} \
+      ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
       ~{if defined(rank) then ("--rank " +  '"' + rank + '"') else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(taxonomy_dump) then ("--taxonomy-dump " +  '"' + taxonomy_dump + '"') else ""} \
@@ -19,11 +23,16 @@ task Ecodbtaxstat {
       ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""}
   >>>
   parameter_meta {
-    rank: "The taxonomic rank at which frequencies have to be computed. Possible values are: class, family, forma, genus, infraclass, infraorder, kingdom, order, parvorder, phylum, species, species group, species subgroup, subclass, subfamily, subgenus, subkingdom, suborder, subphylum, subspecies, subtribe, superclass, superfamily, superkingdom, superorder, superphylum, tribe or varietas. (Default: species)"
+    debug: "Set logging in debug mode"
+    without_progress_bar: "desactivate progress bar"
+    rank: "The taxonomic rank at which frequencies have to be\\ncomputed. Possible values are: class, family, forma,\\ngenus, infraclass, infraorder, kingdom, order,\\nparvorder, phylum, species, species group, species\\nsubgroup, subclass, subfamily, subgenus, subkingdom,\\nsuborder, subphylum, subspecies, subtribe, superclass,\\nsuperfamily, superkingdom, superorder, superphylum,\\ntribe or varietas. (Default: species)"
     database: "ecoPCR taxonomy Database name"
     taxonomy_dump: "NCBI Taxonomy dump repository name"
-    require_rank: "select sequence with taxid tag containing a parent of rank <RANK_NAME>"
-    required: "Select the sequences having the ancestor of taxid <TAXID>. If several ancestors are specified (with  '-r taxid1 -r taxid2'), the sequences having at least one of them are selected"
-    ignore: "ignored taxid"
+    require_rank: "select sequence with taxid tag containing a parent of\\nrank <RANK_NAME>"
+    required: "Select the sequences having the ancestor of taxid\\n<TAXID>. If several ancestors are specified (with  '-r\\ntaxid1 -r taxid2'), the sequences having at least one\\nof them are selected"
+    ignore: "ignored taxid\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

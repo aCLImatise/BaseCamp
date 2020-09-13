@@ -2,22 +2,37 @@ version 1.0
 
 task Kclangctest {
   input {
-    Boolean? rnd
     Boolean? etc
+    Boolean? rnd
+    Int? b_num
     Boolean? tran
+    String index
+    String list
+    String var_map
     String order
   }
   command <<<
     kclangctest \
+      ~{index} \
+      ~{list} \
+      ~{var_map} \
       ~{order} \
-      ~{true="-rnd" false="" rnd} \
-      ~{true="-etc" false="" etc} \
-      ~{true="-tran" false="" tran}
+      ~{if (etc) then "-etc" else ""} \
+      ~{if (rnd) then "-rnd" else ""} \
+      ~{if defined(b_num) then ("-bnum " +  '"' + b_num + '"') else ""} \
+      ~{if (tran) then "-tran" else ""}
   >>>
   parameter_meta {
-    rnd: ""
     etc: ""
+    rnd: ""
+    b_num: ""
     tran: ""
+    index: ""
+    list: ""
+    var_map: ""
     order: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

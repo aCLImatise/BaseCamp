@@ -2,8 +2,8 @@ version 1.0
 
 task Bundler {
   input {
-    Boolean? b
     Boolean? t
+    Boolean? b
     String? an_k
     String bank_name
     String? ype
@@ -15,15 +15,18 @@ task Bundler {
       ~{bank_name} \
       ~{ype} \
       ~{comma_separated_list_of_link_types_to_process} \
-      ~{true="-b" false="" b} \
-      ~{true="-t" false="" t}
+      ~{if (t) then "-t" else ""} \
+      ~{if (b) then "-b" else ""}
   >>>
   parameter_meta {
-    b: ""
     t: ""
+    b: ""
     an_k: ""
     bank_name: ""
     ype: ""
     comma_separated_list_of_link_types_to_process: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

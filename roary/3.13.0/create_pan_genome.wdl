@@ -3,8 +3,8 @@ version 1.0
 task CreatePanGenome {
   input {
     Int? number_of_threads
-    String? clusters_output_filename
-    String? output_directory
+    File? clusters_output_filename
+    Directory? output_directory
     Boolean? create_multifasta_alignment
     Boolean? fast_core_gene
     Boolean? minimum_percentage_identity
@@ -12,10 +12,10 @@ task CreatePanGenome {
     Boolean? delete_intermediate_files
     Int? translation_table
     Boolean? verbose_output_stdout
-    Boolean? add_inference_information
+    Boolean? add_information_work
     Int? maximum_number_clusters
     Boolean? qc
-    String? path_kraken_database
+    File? path_kraken_database
     Boolean? print_version_exit
     Boolean? check_dependancies_versions
   }
@@ -24,19 +24,19 @@ task CreatePanGenome {
       ~{if defined(number_of_threads) then ("-p " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(clusters_output_filename) then ("-o " +  '"' + clusters_output_filename + '"') else ""} \
       ~{if defined(output_directory) then ("-f " +  '"' + output_directory + '"') else ""} \
-      ~{true="-e" false="" create_multifasta_alignment} \
-      ~{true="-n" false="" fast_core_gene} \
-      ~{true="-i" false="" minimum_percentage_identity} \
+      ~{if (create_multifasta_alignment) then "-e" else ""} \
+      ~{if (fast_core_gene) then "-n" else ""} \
+      ~{if (minimum_percentage_identity) then "-i" else ""} \
       ~{if defined(cd) then ("-cd " +  '"' + cd + '"') else ""} \
-      ~{true="-z" false="" delete_intermediate_files} \
+      ~{if (delete_intermediate_files) then "-z" else ""} \
       ~{if defined(translation_table) then ("-t " +  '"' + translation_table + '"') else ""} \
-      ~{true="-v" false="" verbose_output_stdout} \
-      ~{true="-y" false="" add_inference_information} \
+      ~{if (verbose_output_stdout) then "-v" else ""} \
+      ~{if (add_information_work) then "-y" else ""} \
       ~{if defined(maximum_number_clusters) then ("-g " +  '"' + maximum_number_clusters + '"') else ""} \
-      ~{true="-qc" false="" qc} \
+      ~{if (qc) then "-qc" else ""} \
       ~{if defined(path_kraken_database) then ("-k " +  '"' + path_kraken_database + '"') else ""} \
-      ~{true="-w" false="" print_version_exit} \
-      ~{true="-a" false="" check_dependancies_versions}
+      ~{if (print_version_exit) then "-w" else ""} \
+      ~{if (check_dependancies_versions) then "-a" else ""}
   >>>
   parameter_meta {
     number_of_threads: "number of threads [1]"
@@ -49,11 +49,16 @@ task CreatePanGenome {
     delete_intermediate_files: "dont delete intermediate files"
     translation_table: "translation table [11]"
     verbose_output_stdout: "verbose output to STDOUT"
-    add_inference_information: "add gene inference information to spreadsheet, doesnt work with -e"
+    add_information_work: "add gene inference information to spreadsheet, doesnt work with -e"
     maximum_number_clusters: "maximum number of clusters [50000]"
     qc: "generate QC report with Kraken"
     path_kraken_database: "path to Kraken database for QC, use with -qc"
     print_version_exit: "print version and exit"
     check_dependancies_versions: "check dependancies and print versions"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_clusters_output_filename = "${in_clusters_output_filename}"
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

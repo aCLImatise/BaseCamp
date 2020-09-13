@@ -1,13 +1,13 @@
 version 1.0
 
-task AlignmentToolsCompareErrorType {
+task AlignmentToolsCompareerrortype {
   input {
     String? stem
     String compare_error_type
     String ref_nucl
   }
   command <<<
-    AlignmentTools compare-error-type \
+    AlignmentTools compare_error_type \
       ~{compare_error_type} \
       ~{ref_nucl} \
       ~{if defined(stem) then ("--stem " +  '"' + stem + '"') else ""}
@@ -16,5 +16,8 @@ task AlignmentToolsCompareErrorType {
     stem: "Output stem (default <query_nucl.fasta>)"
     compare_error_type: ""
     ref_nucl: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

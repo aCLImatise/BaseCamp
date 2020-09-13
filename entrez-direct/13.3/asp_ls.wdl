@@ -1,7 +1,10 @@
 version 1.0
 
-task AspLs {
+task Aspls {
   command <<<
-    asp-ls
+    asp_ls
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

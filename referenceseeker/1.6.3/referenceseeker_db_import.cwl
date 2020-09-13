@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../referenceseeker_db_import.cwl
 inputs:
-- id: db
+- id: in_db
   doc: ReferenceSeeker database path
-  type: string
+  type: File
   inputBinding:
     prefix: --db
-- id: genome
+- id: in_genome
   doc: Genome path [Fasta, GenBank, EMBL]
-  type: string
+  type: File
   inputBinding:
     prefix: --genome
-- id: id
-  doc: Unique genome identifier (default sequence id of first record)
+- id: in_id
+  doc: "Unique genome identifier (default sequence id of first\nrecord)"
   type: string
   inputBinding:
     prefix: --id
-- id: taxonomy
+- id: in_taxonomy
   doc: Taxonomy ID (default = 12908 [unclassified sequences])
-  type: string
+  type: long
   inputBinding:
     prefix: --taxonomy
-- id: status
+- id: in_status
   doc: Assembly level (default = contig)
   type: string
   inputBinding:
     prefix: --status
-- id: organism
-  doc: Organism name (default = "")
+- id: in_organism
+  doc: "Organism name (default = \"\")\n"
   type: string
   inputBinding:
     prefix: --organism
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - referenceseeker_db

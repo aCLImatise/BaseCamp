@@ -2,7 +2,7 @@ version 1.0
 
 task BamtoolsStats {
   input {
-    String? in
+    File? in
     File? list
     Boolean? insert
   }
@@ -10,11 +10,14 @@ task BamtoolsStats {
     bamtools stats \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(list) then ("-list " +  '"' + list + '"') else ""} \
-      ~{true="-insert" false="" insert}
+      ~{if (insert) then "-insert" else ""}
   >>>
   parameter_meta {
     in: "the input BAM file [stdin]"
-    list: "the input BAM file list, one line per file"
+    list: "the input BAM file list, one\\nline per file"
     insert: "summarize insert size data"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

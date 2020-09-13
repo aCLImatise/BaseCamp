@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../vcf2dag.cwl
 inputs:
-- id: reference
+- id: in_reference
   doc: FASTA reference file.
   type: File
   inputBinding:
     prefix: --reference
-- id: vcf_file
+- id: in_vcf_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcf2dag

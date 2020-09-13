@@ -4,4 +4,7 @@ task Consense {
   command <<<
     consense
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

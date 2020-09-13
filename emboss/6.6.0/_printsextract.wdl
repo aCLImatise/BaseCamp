@@ -1,7 +1,10 @@
 version 1.0
 
-task _printsextract {
+task Printsextract {
   command <<<
     _printsextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

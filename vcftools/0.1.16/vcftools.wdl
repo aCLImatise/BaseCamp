@@ -4,4 +4,7 @@ task Vcftools {
   command <<<
     vcftools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

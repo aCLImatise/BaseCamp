@@ -1,22 +1,22 @@
 version 1.0
 
-task MethylpyFilterAllc {
+task MethylpyFilterallc {
   input {
-    Array[String] all_c_files
     Array[String] output_files
-    String? num_procs
-    Array[String] mc_type
+    Array[String] all_c_files
+    Int? num_procs
+    File? mc_type
     Int? min_cov
     Int? max_cov
-    Array[Int] max_mismatch
-    Array[Int] max_mismatch_frac
-    String? compress_output
+    File? max_mismatch
+    File? max_mismatch_frac
+    Boolean? compress_output
     Array[String] chrom_s
   }
   command <<<
-    methylpy filter-allc \
-      ~{if defined(all_c_files) then ("--allc-files " +  '"' + all_c_files + '"') else ""} \
+    methylpy filter_allc \
       ~{if defined(output_files) then ("--output-files " +  '"' + output_files + '"') else ""} \
+      ~{if defined(all_c_files) then ("--allc-files " +  '"' + all_c_files + '"') else ""} \
       ~{if defined(num_procs) then ("--num-procs " +  '"' + num_procs + '"') else ""} \
       ~{if defined(mc_type) then ("--mc-type " +  '"' + mc_type + '"') else ""} \
       ~{if defined(min_cov) then ("--min-cov " +  '"' + min_cov + '"') else ""} \
@@ -27,15 +27,21 @@ task MethylpyFilterAllc {
       ~{if defined(chrom_s) then ("--chroms " +  '"' + chrom_s + '"') else ""}
   >>>
   parameter_meta {
+    output_files: ""
     all_c_files: "allc files to filter. (default: None)"
-    output_files: "Name of output files. Each output file matches each allc file. (default: None)"
-    num_procs: "Number of processors you wish to use to parallelize this function (default: 1)"
-    mc_type: "List of space separated cytosine nucleotide contexts for sites to be included in output file. These classifications may use the wildcards H (indicating anything but a G) and N (indicating any nucleotide). (default: None)"
-    min_cov: "Minimum number of reads that must cover a site for it to be included in the output file. (default: 0)"
-    max_cov: "Maximum number of reads that must cover a site for it to be included in the output file. By default this cutoff is not applied. (default: None)"
-    max_mismatch: "Maximum numbers of mismatch basecalls allowed in each nucleotide in the sequence context of a site for it to be included in output file. If the sequence context has three nucleotides, an example of this option is \"0 1 2\". It requires no mismatch basecall at the first nucleotide, at most one mismatch basecall at the second nucleotide, and at most two at the third nucleotide for a site to be reported. (default: None)"
-    max_mismatch_frac: "Maximum fraction of mismatch basecalls out of unambiguous basecalls allowed in each nucleotide in the sequence context of a site for it to be included in output file. If the sequence context has three nucleotides, an example of this option is \"0 0 0.1\". It requires no mismatch basecall at the first and second nucleotide, and at most 10% mismatches out of unambiguous basecalls at the third nucleotide for a site to be reported. (default: None)"
-    compress_output: "Boolean indicating whether to compress (by gzip) the final output (default: True)"
-    chrom_s: "Space separated listing of chromosomes to be included in the output. By default, data of all chromosomes in input allc file will be included. (default: None)"
+    num_procs: "Number of processors you wish to use to parallelize\\nthis function (default: 1)"
+    mc_type: "List of space separated cytosine nucleotide contexts\\nfor sites to be included in output file. These\\nclassifications may use the wildcards H (indicating\\nanything but a G) and N (indicating any nucleotide).\\n(default: None)"
+    min_cov: "Minimum number of reads that must cover a site for it\\nto be included in the output file. (default: 0)"
+    max_cov: "Maximum number of reads that must cover a site for it\\nto be included in the output file. By default this\\ncutoff is not applied. (default: None)"
+    max_mismatch: "Maximum numbers of mismatch basecalls allowed in each\\nnucleotide in the sequence context of a site for it to\\nbe included in output file. If the sequence context\\nhas three nucleotides, an example of this option is \\\"0\\n1 2\\\". It requires no mismatch basecall at the first\\nnucleotide, at most one mismatch basecall at the\\nsecond nucleotide, and at most two at the third\\nnucleotide for a site to be reported. (default: None)"
+    max_mismatch_frac: "Maximum fraction of mismatch basecalls out of\\nunambiguous basecalls allowed in each nucleotide in\\nthe sequence context of a site for it to be included\\nin output file. If the sequence context has three\\nnucleotides, an example of this option is \\\"0 0 0.1\\\".\\nIt requires no mismatch basecall at the first and\\nsecond nucleotide, and at most 10% mismatches out of\\nunambiguous basecalls at the third nucleotide for a\\nsite to be reported. (default: None)"
+    compress_output: "Boolean indicating whether to compress (by gzip) the\\nfinal output (default: True)"
+    chrom_s: "Space separated listing of chromosomes to be included\\nin the output. By default, data of all chromosomes in\\ninput allc file will be included. (default: None)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_mc_type = "${in_mc_type}"
+    File out_max_mismatch = "${in_max_mismatch}"
+    File out_max_mismatch_frac = "${in_max_mismatch_frac}"
   }
 }

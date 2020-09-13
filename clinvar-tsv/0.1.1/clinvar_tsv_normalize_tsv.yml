@@ -1,4 +1,7 @@
-&id003 !Command
+&id001 !Command
+command:
+- clinvar_tsv
+- normalize_tsv
 positional:
 - !Positional
   description: ''
@@ -26,62 +29,24 @@ named:
     name: INPUT_TSV
   optional: true
 - !Flag
-  description: Path to output TSV file.
+  description: "Path to output TSV file.\n"
   synonyms:
   - --output-tsv
   args: !SimpleFlagArg
     name: OUTPUT_TSV
   optional: true
-command:
-- clinvar_tsv
-- normalize_tsv
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - clinvar_tsv
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: clinvar-tsv
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: inspect
-      optional: false
-    named:
-    - !Flag
-      description: Path to working directory
-      synonyms:
-      - --work-dir
-      args: !SimpleFlagArg
-        name: WORK_DIR
-      optional: true
     command:
     - clinvar_tsv
-    - inspect
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: clinvar-tsv inspect [-h] [--work-dir WORK_DIR]\n\noptional\
-      \ arguments:\n  -h, --help           show this help message and exit\n  --work-dir\
-      \ WORK_DIR  Path to working directory\n"
-    generated_using: &id002
-    - --help
-  - !Command
+    - main
     positional:
     - !Positional
       description: ''
@@ -128,11 +93,9 @@ parent: &id001 !Command
       - --debug
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - clinvar_tsv
-    - main
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -149,8 +112,12 @@ parent: &id001 !Command
       \ B38_PATH  Path to GRCh38 FAI-indexed FASTA file.\n  --work-dir WORK_DIR  Path\
       \ to working directory\n  --cores CORES        Number of cores to use\n  --debug\
       \              Enables debugging helps\n"
-    generated_using: *id002
+    generated_using: &id003
+    - --help
   - !Command
+    command:
+    - clinvar_tsv
+    - parse_xml
     positional:
     - !Positional
       description: ''
@@ -183,8 +150,8 @@ parent: &id001 !Command
       - --genome-build
       args: !ChoiceFlagArg
         choices: !!set
-          ? b38
           ? b37
+          ? b38
       optional: true
     - !Flag
       description: Output path for single TSV file.
@@ -200,11 +167,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: MAX_ROWS
       optional: true
-    command:
-    - clinvar_tsv
-    - parse_xml
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -224,8 +189,47 @@ parent: &id001 !Command
       \ for single TSV file.\n  --output-multi OUTPUT_MULTI\n                    \
       \    Output path to multi TSV file.\n  --max-rows MAX_ROWS   Maximal number\
       \ of rows to write out; for debugging.\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
+  - !Command
+    command:
+    - clinvar_tsv
+    - inspect
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: clinvar-tsv
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: inspect
+      optional: false
+    named:
+    - !Flag
+      description: Path to working directory
+      synonyms:
+      - --work-dir
+      args: !SimpleFlagArg
+        name: WORK_DIR
+      optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: clinvar-tsv inspect [-h] [--work-dir WORK_DIR]\n\noptional\
+      \ arguments:\n  -h, --help           show this help message and exit\n  --work-dir\
+      \ WORK_DIR  Path to working directory\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -247,8 +251,9 @@ parent: &id001 !Command
     \       Parse the Clinvar XML\n\noptional arguments:\n  -h, --help           \
     \ show this help message and exit\n  --version             show program's version\
     \ number and exit\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -264,4 +269,4 @@ help_text: "usage: clinvar-tsv normalize_tsv [-h] --reference REFERENCE --input-
   \ REFERENCE\n                        Path to reference FASTA file\n  --input-tsv\
   \ INPUT_TSV\n                        Path to input TSV file.\n  --output-tsv OUTPUT_TSV\n\
   \                        Path to output TSV file.\n"
-generated_using: *id002
+generated_using: *id003

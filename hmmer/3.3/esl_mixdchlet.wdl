@@ -1,7 +1,10 @@
 version 1.0
 
-task EslMixdchlet {
+task Eslmixdchlet {
   command <<<
-    esl-mixdchlet
+    esl_mixdchlet
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

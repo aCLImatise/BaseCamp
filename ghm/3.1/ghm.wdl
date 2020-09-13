@@ -4,4 +4,7 @@ task Ghm {
   command <<<
     ghm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

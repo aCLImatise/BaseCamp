@@ -3,7 +3,7 @@ version 1.0
 task Msa2bamOUTPUT {
   input {
     String? r
-    String msa_two_bam
+    Int msa_two_bam
     String var_input
     String var_output
   }
@@ -19,5 +19,8 @@ task Msa2bamOUTPUT {
     msa_two_bam: ""
     var_input: ""
     var_output: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

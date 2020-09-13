@@ -1,19 +1,22 @@
 !Command
+command:
+- cbImportScanpy
 positional:
 - !Positional
-  description: ''
+  description: --markerField=MARKERFIELD
   position: 0
-  name: inFilename
+  name: htmlDir
   optional: false
 - !Positional
-  description: ''
-  position: 1
-  name: outDir
+  description: --clusterField=CLUSTERFIELD
+  position: 0
+  name: rank_genes_groups
   optional: false
 - !Positional
-  description: ''
-  position: 2
-  name: datasetName
+  description: -m, --skipMatrix      do not convert the matrix, saves time if the
+    same one
+  position: 0
+  name: others
   optional: false
 named:
 - !Flag
@@ -32,9 +35,9 @@ named:
     name: INFILE
   optional: true
 - !Flag
-  description: when exporting, do not use the raw input data, instead use the normalized
-    and corrected matrix scanpy. This has no effect if the anndata.raw attribute is
-    not used in the anndata object
+  description: "when exporting, do not use the raw input data, instead\nuse the normalized\
+    \ and corrected matrix scanpy. This\nhas no effect if the anndata.raw attribute\
+    \ is not used\nin the anndata object"
   synonyms:
   - --proc
   args: !EmptyFlagArg {}
@@ -48,8 +51,8 @@ named:
     name: OUTDIR
   optional: true
 - !Flag
-  description: Dataset name for generated cellbrowser.conf. If not specified, the
-    last component of -o will be used.
+  description: "Dataset name for generated cellbrowser.conf. If not\nspecified, the\
+    \ last component of -o will be used."
   synonyms:
   - -n
   - --name
@@ -57,49 +60,24 @@ named:
     name: DATASETNAME
   optional: true
 - !Flag
-  description: do not only convert to tab-sep files but also run cbBuild toconvert
-    the data and add the dataset under htmlDir
+  description: "do not only convert to tab-sep files but also run\ncbBuild toconvert\
+    \ the data and add the dataset under\nhtmlDir"
   synonyms:
   - --htmlDir
   args: !SimpleFlagArg
     name: HTMLDIR
   optional: true
 - !Flag
-  description: 'only with --htmlDir: start webserver on port to serve htmlDir'
+  description: 'only with --htmlDir: start webserver on port to serve'
   synonyms:
   - -p
   - --port
   args: !SimpleFlagArg
     name: PORT
   optional: true
-- !Flag
-  description: 'name of the marker genes field, default: rank_genes_groups'
-  synonyms:
-  - --markerField
-  args: !SimpleFlagArg
-    name: MARKERFIELD
-  optional: true
-- !Flag
-  description: if no marker genes are present, use this field to calculate them. Default
-    is to try a list of common field names, like 'Cluster' or 'louvain' and a few
-    others
-  synonyms:
-  - --clusterField
-  args: !SimpleFlagArg
-    name: CLUSTERFIELD
-  optional: true
-- !Flag
-  description: do not convert the matrix, saves time if the same one has been exported
-    before to the same directory
-  synonyms:
-  - -m
-  - --skipMatrix
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- cbImportScanpy
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

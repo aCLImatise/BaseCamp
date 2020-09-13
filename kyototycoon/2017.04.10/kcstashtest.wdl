@@ -2,34 +2,46 @@ version 1.0
 
 task Kcstashtest {
   input {
-    String? th
-    Boolean? rnd
-    Boolean? etc
-    Boolean? tran
-    String? b_num
     Boolean? lv
+    Int? b_num
+    Int? it
+    Int? th
+    Boolean? rnd
+    Boolean? var_5
+    Boolean? etc
     String order
-    String rnum
+    String queue
+    String var_9
+    String wicked
   }
   command <<<
     kcstashtest \
       ~{order} \
-      ~{rnum} \
-      ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
-      ~{true="-rnd" false="" rnd} \
-      ~{true="-etc" false="" etc} \
-      ~{true="-tran" false="" tran} \
+      ~{queue} \
+      ~{var_9} \
+      ~{wicked} \
+      ~{if (lv) then "-lv" else ""} \
       ~{if defined(b_num) then ("-bnum " +  '"' + b_num + '"') else ""} \
-      ~{true="-lv" false="" lv}
+      ~{if defined(it) then ("-it " +  '"' + it + '"') else ""} \
+      ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
+      ~{if (rnd) then "-rnd" else ""} \
+      ~{if (var_5) then "-tran" else ""} \
+      ~{if (etc) then "-etc" else ""}
   >>>
   parameter_meta {
+    lv: ""
+    b_num: ""
+    it: ""
     th: ""
     rnd: ""
+    var_5: ""
     etc: ""
-    tran: ""
-    b_num: ""
-    lv: ""
     order: ""
-    rnum: ""
+    queue: ""
+    var_9: ""
+    wicked: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

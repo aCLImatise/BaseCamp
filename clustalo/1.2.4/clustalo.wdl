@@ -18,24 +18,24 @@ task Clustalo {
     Boolean? pile_up
     Boolean? full
     Boolean? full_iter
-    String? cluster_size
+    Int? cluster_size
     File? clustering_out
-    String? trans
+    Int? trans
     File? posterior_out
     Boolean? use_kimura
     Boolean? percent_id
-    Boolean? outfile
-    Boolean? out_fmt
+    File? outfile
+    File? out_fmt
     Boolean? residue_number
-    String? wrap
+    Int? wrap
     String? output_order
-    String? iterations
-    String? max_guide_tree_iterations
-    String? max_hmm_iterations
-    String? max_num_seq
-    String? max_seq_len
+    Int? iterations
+    Int? max_guide_tree_iterations
+    Int? max_hmm_iterations
+    Int? max_num_seq
+    Int? max_seq_len
     Boolean? auto
-    String? threads
+    Int? threads
     File? pseudo
     File? log
     Boolean? verbose
@@ -45,31 +45,31 @@ task Clustalo {
   }
   command <<<
     clustalo \
-      ~{true="--infile" false="" in_file} \
+      ~{if (in_file) then "--infile" else ""} \
       ~{if defined(hmm_in) then ("--hmm-in " +  '"' + hmm_in + '"') else ""} \
       ~{if defined(hmm_batch) then ("--hmm-batch " +  '"' + hmm_batch + '"') else ""} \
-      ~{true="--dealign" false="" de_align} \
+      ~{if (de_align) then "--dealign" else ""} \
       ~{if defined(profile_one) then ("--profile1 " +  '"' + profile_one + '"') else ""} \
       ~{if defined(profile_two) then ("--profile2 " +  '"' + profile_two + '"') else ""} \
-      ~{true="--is-profile" false="" is_profile} \
+      ~{if (is_profile) then "--is-profile" else ""} \
       ~{if defined(seqtype) then ("--seqtype " +  '"' + seqtype + '"') else ""} \
-      ~{true="--infmt" false="" in_fmt} \
+      ~{if (in_fmt) then "--infmt" else ""} \
       ~{if defined(dist_mat_in) then ("--distmat-in " +  '"' + dist_mat_in + '"') else ""} \
       ~{if defined(dist_mat_out) then ("--distmat-out " +  '"' + dist_mat_out + '"') else ""} \
       ~{if defined(guide_tree_in) then ("--guidetree-in " +  '"' + guide_tree_in + '"') else ""} \
       ~{if defined(guide_tree_out) then ("--guidetree-out " +  '"' + guide_tree_out + '"') else ""} \
-      ~{true="--pileup" false="" pile_up} \
-      ~{true="--full" false="" full} \
-      ~{true="--full-iter" false="" full_iter} \
+      ~{if (pile_up) then "--pileup" else ""} \
+      ~{if (full) then "--full" else ""} \
+      ~{if (full_iter) then "--full-iter" else ""} \
       ~{if defined(cluster_size) then ("--cluster-size " +  '"' + cluster_size + '"') else ""} \
       ~{if defined(clustering_out) then ("--clustering-out " +  '"' + clustering_out + '"') else ""} \
       ~{if defined(trans) then ("--trans " +  '"' + trans + '"') else ""} \
       ~{if defined(posterior_out) then ("--posterior-out " +  '"' + posterior_out + '"') else ""} \
-      ~{true="--use-kimura" false="" use_kimura} \
-      ~{true="--percent-id" false="" percent_id} \
-      ~{true="--outfile" false="" outfile} \
-      ~{true="--outfmt" false="" out_fmt} \
-      ~{true="--residuenumber" false="" residue_number} \
+      ~{if (use_kimura) then "--use-kimura" else ""} \
+      ~{if (percent_id) then "--percent-id" else ""} \
+      ~{if (outfile) then "--outfile" else ""} \
+      ~{if (out_fmt) then "--outfmt" else ""} \
+      ~{if (residue_number) then "--residuenumber" else ""} \
       ~{if defined(wrap) then ("--wrap " +  '"' + wrap + '"') else ""} \
       ~{if defined(output_order) then ("--output-order " +  '"' + output_order + '"') else ""} \
       ~{if defined(iterations) then ("--iterations " +  '"' + iterations + '"') else ""} \
@@ -77,14 +77,14 @@ task Clustalo {
       ~{if defined(max_hmm_iterations) then ("--max-hmm-iterations " +  '"' + max_hmm_iterations + '"') else ""} \
       ~{if defined(max_num_seq) then ("--maxnumseq " +  '"' + max_num_seq + '"') else ""} \
       ~{if defined(max_seq_len) then ("--maxseqlen " +  '"' + max_seq_len + '"') else ""} \
-      ~{true="--auto" false="" auto} \
+      ~{if (auto) then "--auto" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(pseudo) then ("--pseudo " +  '"' + pseudo + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--long-version" false="" long_version} \
-      ~{true="--force" false="" force} \
-      ~{true="-hv" false="" hv}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (long_version) then "--long-version" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (hv) then "-hv" else ""}
   >>>
   parameter_meta {
     in_file: "={<file>,-} Multiple sequence input file (- for stdin)"
@@ -127,5 +127,15 @@ task Clustalo {
     long_version: "Print long version information and exit"
     force: "Force file overwriting"
     hv: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_dist_mat_out = "${in_dist_mat_out}"
+    File out_guide_tree_out = "${in_guide_tree_out}"
+    File out_clustering_out = "${in_clustering_out}"
+    File out_posterior_out = "${in_posterior_out}"
+    File out_outfile = "${in_outfile}"
+    File out_out_fmt = "${in_out_fmt}"
+    File out_log = "${in_log}"
   }
 }

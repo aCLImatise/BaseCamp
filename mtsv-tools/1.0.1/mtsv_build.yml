@@ -1,4 +1,6 @@
 &id001 !Command
+command:
+- mtsv-build
 positional: []
 named:
 - !Flag
@@ -16,9 +18,9 @@ named:
     name: FASTA
   optional: true
 - !Flag
-  description: 'Sampling interval for index generation. Smaller = more memory usage,
-    slightly  faster queries. Larger = less memory usage slightly slower queries.
-    [default: 32]'
+  description: "Sampling interval for index generation. Smaller = more memory usage,\
+    \ slightly  faster queries. Larger = less\nmemory usage slightly slower queries.\
+    \ [default: 32]"
   synonyms:
   - --sample-interval
   args: !SimpleFlagArg
@@ -32,11 +34,12 @@ named:
   args: !SimpleFlagArg
     name: INDEX
   optional: true
-command:
-- mtsv-build
 parent:
 subcommands:
 - !Command
+  command:
+  - mtsv-build
+  - FLAGS
   positional: []
   named:
   - !Flag
@@ -46,18 +49,9 @@ subcommands:
     args: !SimpleFlagArg
       name: FASTA
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --index
-    args: !SimpleFlagArg
-      name: INDEX
-    optional: true
-  command:
-  - mtsv-build
-  - FLAGS
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -66,6 +60,7 @@ subcommands:
     \ --index <INDEX>\n\nFor more information try --help\n"
   generated_using: &id002
   - --help
+usage: []
 help_flag: !Flag
   description: Prints help information
   synonyms:

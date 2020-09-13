@@ -1,6 +1,6 @@
 version 1.0
 
-task FsmLite {
+task Fsmlite {
   input {
     File? list
     File? tmp
@@ -12,7 +12,7 @@ task FsmLite {
     Boolean? verbose
   }
   command <<<
-    fsm-lite \
+    fsm_lite \
       ~{if defined(list) then ("--list " +  '"' + list + '"') else ""} \
       ~{if defined(tmp) then ("--tmp " +  '"' + tmp + '"') else ""} \
       ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
@@ -20,10 +20,10 @@ task FsmLite {
       ~{if defined(freq) then ("--freq " +  '"' + freq + '"') else ""} \
       ~{if defined(min_supp) then ("--minsupp " +  '"' + min_supp + '"') else ""} \
       ~{if defined(max_supp) then ("--maxsupp " +  '"' + max_supp + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    list: "Text file that lists all input files as whitespace-separated pairs  <data-name> <data-filename> where <data-name> is unique identifier (without whitespace) and <data-filename> is full path to each input file. Default data file format is FASTA (uncompressed)."
+    list: "Text file that lists all input files as whitespace-separated pairs\\n<data-name> <data-filename>\\nwhere <data-name> is unique identifier (without whitespace)\\nand <data-filename> is full path to each input file.\\nDefault data file format is FASTA (uncompressed)."
     tmp: "Store temporary index data"
     min: "Minimum length to report (default 9)"
     max: "Maximum length to report (default 100)"
@@ -31,5 +31,8 @@ task FsmLite {
     min_supp: "Minimum number of input files with support to report (default 2)"
     max_supp: "Maximum number of input files with support to report (default inf)"
     verbose: "Verbose output"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

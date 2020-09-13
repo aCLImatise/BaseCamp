@@ -4,4 +4,7 @@ task DupMasker {
   command <<<
     DupMasker
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

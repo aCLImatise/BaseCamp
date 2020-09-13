@@ -4,4 +4,7 @@ task Trimfrg {
   command <<<
     trimfrg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

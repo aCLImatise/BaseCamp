@@ -4,4 +4,7 @@ task BuildG {
   command <<<
     buildG
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

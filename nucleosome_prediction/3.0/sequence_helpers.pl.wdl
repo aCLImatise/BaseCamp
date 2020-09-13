@@ -1,7 +1,10 @@
 version 1.0
 
-task SequenceHelpers.pl.bak {
+task SequenceHelperspl {
   command <<<
-    sequence_helpers.pl.bak
+    sequence_helpers_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

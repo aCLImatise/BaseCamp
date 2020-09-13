@@ -1,7 +1,10 @@
 version 1.0
 
-task FlyeSamtools {
+task Flyesamtools {
   command <<<
-    flye-samtools
+    flye_samtools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

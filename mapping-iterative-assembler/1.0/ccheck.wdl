@@ -6,7 +6,7 @@ task Ccheck {
     Boolean? ancient
     Boolean? transversions
     String? span
-    String? num_pos
+    Int? num_pos
     Boolean? force
     Boolean? table
     Boolean? verbose
@@ -16,13 +16,13 @@ task Ccheck {
     ccheck \
       ~{aln_dot_mal_n} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{true="--ancient" false="" ancient} \
-      ~{true="--transversions" false="" transversions} \
+      ~{if (ancient) then "--ancient" else ""} \
+      ~{if (transversions) then "--transversions" else ""} \
       ~{if defined(span) then ("--span " +  '"' + span + '"') else ""} \
       ~{if defined(num_pos) then ("--numpos " +  '"' + num_pos + '"') else ""} \
-      ~{true="--force" false="" force} \
-      ~{true="--table" false="" table} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (force) then "--force" else ""} \
+      ~{if (table) then "--table" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     reference: "FASTA file with the likely contaminant (default: builtin mt311)"
@@ -34,5 +34,8 @@ task Ccheck {
     table: "Output as tables (easier for scripts, harder on the eyes)"
     verbose: "Increase verbosity level (can be repeated)"
     aln_dot_mal_n: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

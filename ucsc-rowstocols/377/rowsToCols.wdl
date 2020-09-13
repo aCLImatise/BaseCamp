@@ -8,16 +8,14 @@ task RowsToCols {
     Boolean? fixed
     String? offsets
     String in_dot_txt
-    String out_dot_txt
   }
   command <<<
     rowsToCols \
       ~{in_dot_txt} \
-      ~{out_dot_txt} \
-      ~{true="-varCol" false="" var_col} \
-      ~{true="-tab" false="" tab} \
+      ~{if (var_col) then "-varCol" else ""} \
+      ~{if (tab) then "-tab" else ""} \
       ~{if defined(fs) then ("-fs " +  '"' + fs + '"') else ""} \
-      ~{true="-fixed" false="" fixed} \
+      ~{if (fixed) then "-fixed" else ""} \
       ~{if defined(offsets) then ("-offsets " +  '"' + offsets + '"') else ""}
   >>>
   parameter_meta {
@@ -27,6 +25,8 @@ task RowsToCols {
     fixed: "- fields are of fixed width with space padding"
     offsets: ",Y,Z - fields are of fixed width at given offsets"
     in_dot_txt: ""
-    out_dot_txt: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

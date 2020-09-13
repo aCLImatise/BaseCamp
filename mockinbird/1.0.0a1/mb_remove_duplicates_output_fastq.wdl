@@ -1,6 +1,6 @@
 version 1.0
 
-task MbRemoveDuplicatesOutputFastq {
+task MbremoveduplicatesOutputFastq {
   input {
     Boolean? verbose
     String mb_remove_duplicates
@@ -8,16 +8,19 @@ task MbRemoveDuplicatesOutputFastq {
     String output_fast_q
   }
   command <<<
-    mb-remove-duplicates output_fastq \
+    mb_remove_duplicates output_fastq \
       ~{mb_remove_duplicates} \
       ~{input_fast_q} \
       ~{output_fast_q} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     verbose: ""
     mb_remove_duplicates: ""
     input_fast_q: ""
     output_fast_q: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

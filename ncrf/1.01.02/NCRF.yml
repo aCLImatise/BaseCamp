@@ -1,4 +1,6 @@
 !Command
+command:
+- NCRF
 positional:
 - !Positional
   description: ''
@@ -10,11 +12,56 @@ positional:
   position: 1
   name: fasta
   optional: false
-named: []
-command:
-- NCRF
+named:
+- !Flag
+  description: "discard alignments with a low frequency of matches;\nratio can be\
+    \ between 0 and 1 (e.g. \"0.85\"), or can be\nexpressed as a percentage (e.g.\
+    \ \"85%\")"
+  synonyms:
+  - --minmratio
+  args: !SimpleFlagArg
+    name: ratio
+  optional: true
+- !Flag
+  description: (same as --minmratio but with 1-ratio)
+  synonyms:
+  - --maxnoise
+  args: !SimpleFlagArg
+    name: ratio
+  optional: true
+- !Flag
+  description: "discard alignments that don't have long enough repeat\n(default is\
+    \ 500)"
+  synonyms:
+  - --minlength
+  args: !SimpleFlagArg
+    name: bp
+  optional: true
+- !Flag
+  description: "discard alignments that don't score high enough\n(default is zero)"
+  synonyms:
+  - --minscore
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: show match/mismatch/insert/delete counts
+  synonyms:
+  - --stats
+  args: !SimpleFlagArg
+    name: events
+  optional: true
+- !Flag
+  description: "show match/mismatch/insert/delete counts by motif\nposition (independent\
+    \ of --stats=events); this may be\nuseful for detecting error non-uniformity,\
+    \ to separate\nperfect repeats from imperfect"
+  synonyms:
+  - --positionalevents
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

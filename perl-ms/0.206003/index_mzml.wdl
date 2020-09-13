@@ -4,4 +4,7 @@ task IndexMzml {
   command <<<
     index_mzml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

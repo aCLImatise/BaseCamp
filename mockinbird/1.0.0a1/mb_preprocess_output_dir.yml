@@ -1,4 +1,7 @@
 &id002 !Command
+command:
+- mb-preprocess
+- output_dir
 positional:
 - !Positional
   description: ''
@@ -12,15 +15,14 @@ named:
   - --log_level
   args: !ChoiceFlagArg
     choices: !!set
+      ? debug
+      ? info
       ? warn
       ? error
-      ? info
-      ? debug
   optional: true
-command:
-- mb-preprocess
-- output_dir
 parent: &id001 !Command
+  command:
+  - mb-preprocess
   positional: []
   named:
   - !Flag
@@ -29,115 +31,38 @@ parent: &id001 !Command
     - --log_level
     args: !ChoiceFlagArg
       choices: !!set
+        ? debug
+        ? info
         ? warn
         ? error
-        ? info
-        ? debug
     optional: true
-  command:
-  - mb-preprocess
   parent:
   subcommands:
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mockinbird-preprocess
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --log_level
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? warn
-          ? error
-          ? info
-          ? debug
-      optional: true
-    command:
-    - mb-preprocess
-    - parclip_fastq
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: mockinbird-preprocess [-h] [--log_level {debug,info,warn,error}]\n\
-      \                             [--version]\n                             parclip_fastq\
-      \ output_dir prefix config_file\nmockinbird-preprocess: error: argument parclip_fastq:\
-      \ 'parclip_fastq' does not exist\n"
-    generated_using: &id003
-    - --help
-  - *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mockinbird-preprocess
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --log_level
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? warn
-          ? error
-          ? info
-          ? debug
-      optional: true
-    command:
-    - mb-preprocess
-    - prefix
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: mockinbird-preprocess [-h] [--log_level {debug,info,warn,error}]\n\
-      \                             [--version]\n                             parclip_fastq\
-      \ output_dir prefix config_file\nmockinbird-preprocess: error: argument parclip_fastq:\
-      \ 'prefix' does not exist\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mockinbird-preprocess
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --log_level
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? warn
-          ? error
-          ? info
-          ? debug
-      optional: true
     command:
     - mb-preprocess
     - config_file
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mockinbird-preprocess
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --log_level
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? debug
+          ? info
+          ? warn
+          ? error
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -150,7 +75,86 @@ parent: &id001 !Command
       \                             [--version]\n                             parclip_fastq\
       \ output_dir prefix config_file\nmockinbird-preprocess: error: argument parclip_fastq:\
       \ 'config_file' does not exist\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - mb-preprocess
+    - parclip_fastq
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mockinbird-preprocess
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --log_level
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? debug
+          ? info
+          ? warn
+          ? error
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: mockinbird-preprocess [-h] [--log_level {debug,info,warn,error}]\n\
+      \                             [--version]\n                             parclip_fastq\
+      \ output_dir prefix config_file\nmockinbird-preprocess: error: argument parclip_fastq:\
+      \ 'parclip_fastq' does not exist\n"
     generated_using: *id003
+  - !Command
+    command:
+    - mb-preprocess
+    - exist
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mockinbird-preprocess
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --log_level
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? debug
+          ? info
+          ? warn
+          ? error
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: mockinbird-preprocess [-h] [--log_level {debug,info,warn,error}]\n\
+      \                             [--version]\n                             parclip_fastq\
+      \ output_dir prefix config_file\nmockinbird-preprocess: error: argument parclip_fastq:\
+      \ 'exist' does not exist\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -178,6 +182,7 @@ parent: &id001 !Command
     \ of the logger\n  --version, -v         show program's version number and exit\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

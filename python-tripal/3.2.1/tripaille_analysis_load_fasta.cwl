@@ -1,94 +1,92 @@
 class: CommandLineTool
 id: ../../../tripaille_analysis_load_fasta.cwl
 inputs:
-- id: organism
+- id: in_organism
   doc: Organism common name or abbreviation
   type: string
   inputBinding:
     prefix: --organism
-- id: organism_id
+- id: in_organism_id
   doc: Organism ID
   type: long
   inputBinding:
     prefix: --organism_id
-- id: analysis
+- id: in_analysis
   doc: Analysis name
   type: string
   inputBinding:
     prefix: --analysis
-- id: analysis_id
+- id: in_analysis_id
   doc: Analysis ID
   type: long
   inputBinding:
     prefix: --analysis_id
-- id: sequence_type
+- id: in_sequence_type
   doc: 'Sequence type  [default: contig]'
   type: string
   inputBinding:
     prefix: --sequence_type
-- id: re_name
+- id: in_re_name
   doc: Regular expression for the name
   type: string
   inputBinding:
     prefix: --re_name
-- id: re_unique_name
+- id: in_re_unique_name
   doc: Regular expression for the unique name
   type: string
   inputBinding:
     prefix: --re_uniquename
-- id: db_ext_id
+- id: in_db_ext_id
   doc: External DB ID
   type: string
   inputBinding:
     prefix: --db_ext_id
-- id: re_accession
-  doc: Regular expression for the accession from external DB
+- id: in_re_accession
+  doc: Regular expression for the accession from external
   type: string
   inputBinding:
     prefix: --re_accession
-- id: rel_type
-  doc: Relation type (part_of or derives_from)
-  type: string
-  inputBinding:
-    prefix: --rel_type
-- id: rel_subject_re
-  doc: Relation subject regular expression (used to extract id of related entity)
+- id: in_rel_subject_re
+  doc: "Relation subject regular expression (used to\nextract id of related entity)"
   type: string
   inputBinding:
     prefix: --rel_subject_re
-- id: rel_subject_type
-  doc: Relation subject type (must match already loaded data, e.g. mRNA)
+- id: in_rel_subject_type
+  doc: "Relation subject type (must match already loaded\ndata, e.g. mRNA)"
   type: string
   inputBinding:
     prefix: --rel_subject_type
-- id: method
-  doc: 'Insertion method (insert, update or insup, default=insup (Insert and Update))  [default:
-    insup]'
+- id: in_method
+  doc: "Insertion method (insert, update or insup,\ndefault=insup (Insert and Update))\
+    \  [default:\ninsup]"
   type: string
   inputBinding:
     prefix: --method
-- id: match_type
-  doc: "Match type for already loaded features (name or uniquename; default=uniquename;\
-    \ used for \"Update only\" or \"Insert and update\" methods)'  [default: uniquename]"
+- id: in_match_type
+  doc: "Match type for already loaded features (name or\nuniquename; default=uniquename;\
+    \ used for \"Update\nonly\" or \"Insert and update\" methods)'  [default:\nuniquename]"
   type: string
   inputBinding:
     prefix: --match_type
-- id: job_name
+- id: in_job_name
   doc: Name of the job
   type: string
   inputBinding:
     prefix: --job_name
-- id: no_wait
+- id: in_no_wait
   doc: Do not wait for job to complete
   type: boolean
   inputBinding:
     prefix: --no_wait
-- id: fast_a
-  doc: ''
+- id: in_db
+  doc: --rel_type TEXT          Relation type (part_of or derives_from)
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tripaille

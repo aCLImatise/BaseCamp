@@ -4,4 +4,7 @@ task BigWigMerge {
   command <<<
     bigWigMerge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

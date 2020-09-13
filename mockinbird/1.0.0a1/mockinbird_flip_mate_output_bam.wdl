@@ -20,4 +20,7 @@ task MockinbirdFlipMateOutputBam {
     input_bam: ""
     output_bam: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

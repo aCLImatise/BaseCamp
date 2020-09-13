@@ -2,7 +2,7 @@ version 1.0
 
 task Hmmbuild2 {
   input {
-    String? name_name_first
+    String? name_name_hmm
     String? resave_annotated_alignment
     Boolean? append_append_hmm
     Boolean? force_allow_overwriting
@@ -24,50 +24,50 @@ task Hmmbuild2 {
     String? pb_switch
     Boolean? amino
     Boolean? nucleic
-    String? arch_pri
+    Int? arch_pri
     Boolean? binary
     String? c_file
-    String? gap_max
-    String? id_level
+    Int? gap_max
+    Float? id_level
     String? in_format
-    String? pam_wgt
-    String? sw_entry
-    String? sw_exit
+    Int? pam_wgt
+    Float? sw_entry
+    Float? sw_exit
     Boolean? verbose
     Boolean? options
     String hmmbuild
     String hmm_file_output
-    String alignment_file
+    File alignment_file
   }
   command <<<
     hmmbuild2 \
       ~{hmmbuild} \
       ~{hmm_file_output} \
       ~{alignment_file} \
-      ~{if defined(name_name_first) then ("-n " +  '"' + name_name_first + '"') else ""} \
+      ~{if defined(name_name_hmm) then ("-n " +  '"' + name_name_hmm + '"') else ""} \
       ~{if defined(resave_annotated_alignment) then ("-o " +  '"' + resave_annotated_alignment + '"') else ""} \
-      ~{true="-A" false="" append_append_hmm} \
-      ~{true="-F" false="" force_allow_overwriting} \
-      ~{true="-f" false="" multihit_local_hmmfs} \
-      ~{true="-g" false="" global_alignment_hmms} \
-      ~{true="-s" false="" local_alignment_hmmsw} \
-      ~{true="--fast" false="" fast} \
-      ~{true="--hand" false="" hand} \
-      ~{true="--null" false="" null} \
-      ~{true="--pam" false="" pam} \
+      ~{if (append_append_hmm) then "-A" else ""} \
+      ~{if (force_allow_overwriting) then "-F" else ""} \
+      ~{if (multihit_local_hmmfs) then "-f" else ""} \
+      ~{if (global_alignment_hmms) then "-g" else ""} \
+      ~{if (local_alignment_hmmsw) then "-s" else ""} \
+      ~{if (fast) then "--fast" else ""} \
+      ~{if (hand) then "--hand" else ""} \
+      ~{if (null) then "--null" else ""} \
+      ~{if (pam) then "--pam" else ""} \
       ~{if defined(prior) then ("--prior " +  '"' + prior + '"') else ""} \
-      ~{true="--wblosum" false="" w_blosum} \
-      ~{true="--wgsc" false="" wgs_c} \
-      ~{true="--wme" false="" w_me} \
-      ~{true="--wpb" false="" wpb} \
-      ~{true="--wvoronoi" false="" w_voronoi} \
-      ~{true="--wnone" false="" w_none} \
-      ~{true="--noeff" false="" no_eff} \
+      ~{if (w_blosum) then "--wblosum" else ""} \
+      ~{if (wgs_c) then "--wgsc" else ""} \
+      ~{if (w_me) then "--wme" else ""} \
+      ~{if (wpb) then "--wpb" else ""} \
+      ~{if (w_voronoi) then "--wvoronoi" else ""} \
+      ~{if (w_none) then "--wnone" else ""} \
+      ~{if (no_eff) then "--noeff" else ""} \
       ~{if defined(pb_switch) then ("--pbswitch " +  '"' + pb_switch + '"') else ""} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--nucleic" false="" nucleic} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (nucleic) then "--nucleic" else ""} \
       ~{if defined(arch_pri) then ("--archpri " +  '"' + arch_pri + '"') else ""} \
-      ~{true="--binary" false="" binary} \
+      ~{if (binary) then "--binary" else ""} \
       ~{if defined(c_file) then ("--cfile " +  '"' + c_file + '"') else ""} \
       ~{if defined(gap_max) then ("--gapmax " +  '"' + gap_max + '"') else ""} \
       ~{if defined(id_level) then ("--idlevel " +  '"' + id_level + '"') else ""} \
@@ -75,11 +75,11 @@ task Hmmbuild2 {
       ~{if defined(pam_wgt) then ("--pamwgt " +  '"' + pam_wgt + '"') else ""} \
       ~{if defined(sw_entry) then ("--swentry " +  '"' + sw_entry + '"') else ""} \
       ~{if defined(sw_exit) then ("--swexit " +  '"' + sw_exit + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="-options" false="" options}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
-    name_name_first: ": name; name this (first) HMM <s>"
+    name_name_hmm: ": name; name this (first) HMM <s>"
     resave_annotated_alignment: ": re-save annotated alignment to <f>"
     append_append_hmm: ": append; append this HMM to <hmmfile>"
     force_allow_overwriting: ": force; allow overwriting of <hmmfile>"
@@ -115,5 +115,8 @@ task Hmmbuild2 {
     hmmbuild: ""
     hmm_file_output: ""
     alignment_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

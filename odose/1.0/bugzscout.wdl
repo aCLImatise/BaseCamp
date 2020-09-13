@@ -1,7 +1,10 @@
 version 1.0
 
-task Bugzscout.py {
+task Bugzscout {
   command <<<
-    bugzscout.py
+    bugzscout
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

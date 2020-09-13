@@ -17,10 +17,10 @@ task BAMscaleCov {
     String? unmap_pair
     Int? min_frag
     Int? max_frag
-    String? frag_filt
+    Int? frag_filt
     String? diff_chr
-    String? outdir
-    String? prefix
+    Directory? outdir
+    File? prefix
     Int? threads
   }
   command <<<
@@ -53,9 +53,9 @@ task BAMscaleCov {
     frag: "Compute coverage using fragments instead of reads (default: no)"
     strand: "Reads need to have same orientation of peaks (default: unstranded)"
     r_strand: "Reads need to have reverse orientation of peaks (default: unstranded)"
-    seq_cov: "Compute sequencing coverage from BAM file quickly using the index (option '0'), or count number of reads by parsing entire BAM file (slower, but more accurate; set to '1' [default])"
+    seq_cov: "Compute sequencing coverage from BAM file quickly using the index (option '0'),\\nor count number of reads by parsing entire BAM file (slower, but more accurate; set to '1' [default])"
     blacklist: "Input file with list of chromosomes to blacklist when computing coverage for normalization"
-    bed_subtract: "BED file with regions to subtract when computing coverage for normalization These coordinates should not overlap so reads are not counted multiple times"
+    bed_subtract: "BED file with regions to subtract when computing coverage for normalization\\nThese coordinates should not overlap so reads are not counted multiple times"
     mapq: "Minimum (at least) mapping quality (default: 0)"
     keep_dup: "Keep duplicated reads (default: no)"
     no_proper: "Do not filter un-proper alignments (default: filter)"
@@ -67,5 +67,10 @@ task BAMscaleCov {
     outdir: "Output directory name (default: '.')"
     prefix: "Output prefix for file names (default: none)"
     threads: "No. of threads to use (default: 1)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    File out_prefix = "${in_prefix}"
   }
 }

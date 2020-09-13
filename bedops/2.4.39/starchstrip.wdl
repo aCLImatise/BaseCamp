@@ -2,8 +2,8 @@ version 1.0
 
 task Starchstrip {
   input {
-    String? include
-    String? exclude
+    File? include
+    File? exclude
   }
   command <<<
     starchstrip \
@@ -13,5 +13,8 @@ task Starchstrip {
   parameter_meta {
     include: "Include specified chromosomes from <starch-file>."
     exclude: "Exclude specified chromosomes from <starch-file>."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

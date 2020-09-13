@@ -4,4 +4,7 @@ task Biom {
   command <<<
     biom
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

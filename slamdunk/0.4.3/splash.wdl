@@ -4,4 +4,7 @@ task Splash {
   command <<<
     splash
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

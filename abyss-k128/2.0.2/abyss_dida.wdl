@@ -1,6 +1,6 @@
 version 1.0
 
-task AbyssDida {
+task Abyssdida {
   input {
     String? additional_command_line
     Boolean? number_of_threads
@@ -9,11 +9,11 @@ task AbyssDida {
     String? value_set_variable
   }
   command <<<
-    abyss-dida \
+    abyss_dida \
       ~{if defined(additional_command_line) then ("-d " +  '"' + additional_command_line + '"') else ""} \
-      ~{true="-j" false="" number_of_threads} \
-      ~{true="-m" false="" path_of_executable} \
-      ~{true="-n" false="" number_ranks_dida} \
+      ~{if (number_of_threads) then "-j" else ""} \
+      ~{if (path_of_executable) then "-m" else ""} \
+      ~{if (number_ranks_dida) then "-n" else ""} \
       ~{if defined(value_set_variable) then ("-x " +  '"' + value_set_variable + '"') else ""}
   >>>
   parameter_meta {
@@ -22,5 +22,8 @@ task AbyssDida {
     path_of_executable: "path of 'mpirun' executable [mpirun]"
     number_ranks_dida: "number of ranks in DIDA MPI job [3]"
     value_set_variable: "=value  set environment variable for MPI job"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

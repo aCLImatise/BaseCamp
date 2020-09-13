@@ -1,22 +1,25 @@
 class: CommandLineTool
-id: ../../../rust_synergy.bak.cwl
+id: ../../../rust_synergy.cwl
 inputs:
-- id: directory_path_outputfile
+- id: in_directory_path_outputfile
   doc: directory  path to outputfile, default is "synergy"
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: rust_amino_file
+- id: in_rust_amino_file
   doc: path to file produced from "rust_amino"
   type: string
   inputBinding:
     position: 0
-- id: rust_tripeptide_file
+- id: in_rust_tripeptide_file
   doc: path to file produced from "rust_tripeptide"
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- rust_synergy.bak
+- rust_synergy

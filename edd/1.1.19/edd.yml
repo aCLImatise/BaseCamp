@@ -1,12 +1,46 @@
 &id001 !Command
+command:
+- edd
 positional: []
 named:
 - !Flag
-  description: Leave unspecificed for auto-estimation. Adjusts how sensitive EDD is
-    to heterogeneity within domains. Depends on Signal/Noise ratio of source files
-    and on the interests of the researcher. A "low" value favors large enriched domains
-    with more heterogeneity. A "high" value favors smaller enriched domains devoid
-    of heterogeneity.
+  description: "An integer specifying the bin size in KB. Will auto\nselect bin size\
+    \ based on input data if not specified."
+  synonyms:
+  - --bin-size
+  args: !SimpleFlagArg
+    name: BIN_SIZE
+  optional: true
+- !Flag
+  description: Number of trials in monte carlo simulation
+  synonyms:
+  - -n
+  - --num-trials
+  args: !SimpleFlagArg
+    name: NUM_TRIALS
+  optional: true
+- !Flag
+  description: "Number of processes to use for the monte carlo\nsimulation. One processes\
+    \ per physical CPU core is\nrecommended."
+  synonyms:
+  - -p
+  - --nprocs
+  args: !SimpleFlagArg
+    name: NPROCS
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --fdr
+  args: !SimpleFlagArg
+    name: FDR
+  optional: true
+- !Flag
+  description: "Leave unspecificed for auto-estimation. Adjusts how\nsensitive EDD\
+    \ is to heterogeneity within domains.\nDepends on Signal/Noise ratio of source\
+    \ files and on\nthe interests of the researcher. A \"low\" value favors\nlarge\
+    \ enriched domains with more heterogeneity. A\n\"high\" value favors smaller enriched\
+    \ domains devoid of\nheterogeneity."
   synonyms:
   - -g
   - --gap-penalty
@@ -14,8 +48,8 @@ named:
     name: GAP_PENALTY
   optional: true
 - !Flag
-  description: Path to user specified EDD configuration file. See EDD manual section
-    about configuration for more information.
+  description: "Path to user specified EDD configuration file. See EDD\nmanual section\
+    \ about configuration for more\ninformation."
   synonyms:
   - --config-file
   args: !SimpleFlagArg
@@ -33,39 +67,12 @@ named:
   - --write-bin-scores
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --bin-size
-  args: !SimpleFlagArg
-    name: BIN_SIZE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -n
-  args: !SimpleFlagArg
-    name: NUM_TRIALS
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -p
-  args: !SimpleFlagArg
-    name: NPROCS
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --fdr
-  args: !SimpleFlagArg
-    name: FDR
-  optional: true
-command:
-- edd
 parent:
 subcommands:
 - !Command
+  command:
+  - edd
+  - output_dir
   positional:
   - !Positional
     description: ''
@@ -76,16 +83,9 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --bin-size
+    - --fdr
     args: !SimpleFlagArg
-      name: BIN_SIZE
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -n
-    args: !SimpleFlagArg
-      name: NUM_TRIALS
+      name: FDR
     optional: true
   - !Flag
     description: ''
@@ -97,15 +97,20 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --fdr
+    - -n
     args: !SimpleFlagArg
-      name: FDR
+      name: NUM_TRIALS
     optional: true
-  command:
-  - edd
-  - chrom_size
+  - !Flag
+    description: ''
+    synonyms:
+    - --bin-size
+    args: !SimpleFlagArg
+      name: BIN_SIZE
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -117,161 +122,52 @@ subcommands:
   help_text: "usage: edd [-h] [--bin-size BIN_SIZE] [-n NUM_TRIALS] [-p NPROCS] [--fdr\
     \ FDR]\n           [-g GAP_PENALTY] [--config-file CONFIG_FILE] [--write-log-ratios]\n\
     \           [--write-bin-scores] [-v]\n           chrom_size unalignable_regions\
-    \ ip_bam input_bam output_dir\nedd: error: argument chrom_size: can't open 'chrom_size':\
-    \ [Errno 2] No such file or directory: 'chrom_size'\n"
+    \ ip_bam input_bam output_dir\nedd: error: argument chrom_size: can't open 'output_dir':\
+    \ [Errno 2] No such file or directory: 'output_dir'\n"
   generated_using: &id002
   - --help
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: edd
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --bin-size
-    args: !SimpleFlagArg
-      name: BIN_SIZE
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -n
-    args: !SimpleFlagArg
-      name: NUM_TRIALS
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -p
-    args: !SimpleFlagArg
-      name: NPROCS
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --fdr
-    args: !SimpleFlagArg
-      name: FDR
-    optional: true
-  command:
-  - edd
-  - unalignable_regions
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: ''
-    synonyms:
-    - -h
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: edd [-h] [--bin-size BIN_SIZE] [-n NUM_TRIALS] [-p NPROCS] [--fdr\
-    \ FDR]\n           [-g GAP_PENALTY] [--config-file CONFIG_FILE] [--write-log-ratios]\n\
-    \           [--write-bin-scores] [-v]\n           chrom_size unalignable_regions\
-    \ ip_bam input_bam output_dir\nedd: error: argument chrom_size: can't open 'unalignable_regions':\
-    \ [Errno 2] No such file or directory: 'unalignable_regions'\n"
-  generated_using: *id002
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: edd
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --bin-size
-    args: !SimpleFlagArg
-      name: BIN_SIZE
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -n
-    args: !SimpleFlagArg
-      name: NUM_TRIALS
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -p
-    args: !SimpleFlagArg
-      name: NPROCS
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --fdr
-    args: !SimpleFlagArg
-      name: FDR
-    optional: true
-  command:
-  - edd
-  - ip_bam
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: ''
-    synonyms:
-    - -h
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: edd [-h] [--bin-size BIN_SIZE] [-n NUM_TRIALS] [-p NPROCS] [--fdr\
-    \ FDR]\n           [-g GAP_PENALTY] [--config-file CONFIG_FILE] [--write-log-ratios]\n\
-    \           [--write-bin-scores] [-v]\n           chrom_size unalignable_regions\
-    \ ip_bam input_bam output_dir\nedd: error: argument chrom_size: can't open 'ip_bam':\
-    \ [Errno 2] No such file or directory: 'ip_bam'\n"
-  generated_using: *id002
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: edd
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --bin-size
-    args: !SimpleFlagArg
-      name: BIN_SIZE
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -n
-    args: !SimpleFlagArg
-      name: NUM_TRIALS
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -p
-    args: !SimpleFlagArg
-      name: NPROCS
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --fdr
-    args: !SimpleFlagArg
-      name: FDR
-    optional: true
   command:
   - edd
   - input_bam
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: edd
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --fdr
+    args: !SimpleFlagArg
+      name: FDR
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: NPROCS
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: NUM_TRIALS
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --bin-size
+    args: !SimpleFlagArg
+      name: BIN_SIZE
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -287,6 +183,9 @@ subcommands:
     \ [Errno 2] No such file or directory: 'input_bam'\n"
   generated_using: *id002
 - !Command
+  command:
+  - edd
+  - ip_bam
   positional:
   - !Positional
     description: ''
@@ -297,16 +196,9 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --bin-size
+    - --fdr
     args: !SimpleFlagArg
-      name: BIN_SIZE
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -n
-    args: !SimpleFlagArg
-      name: NUM_TRIALS
+      name: FDR
     optional: true
   - !Flag
     description: ''
@@ -318,15 +210,20 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --fdr
+    - -n
     args: !SimpleFlagArg
-      name: FDR
+      name: NUM_TRIALS
     optional: true
-  command:
-  - edd
-  - output_dir
+  - !Flag
+    description: ''
+    synonyms:
+    - --bin-size
+    args: !SimpleFlagArg
+      name: BIN_SIZE
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -338,13 +235,127 @@ subcommands:
   help_text: "usage: edd [-h] [--bin-size BIN_SIZE] [-n NUM_TRIALS] [-p NPROCS] [--fdr\
     \ FDR]\n           [-g GAP_PENALTY] [--config-file CONFIG_FILE] [--write-log-ratios]\n\
     \           [--write-bin-scores] [-v]\n           chrom_size unalignable_regions\
-    \ ip_bam input_bam output_dir\nedd: error: argument chrom_size: can't open 'output_dir':\
-    \ [Errno 2] No such file or directory: 'output_dir'\n"
+    \ ip_bam input_bam output_dir\nedd: error: argument chrom_size: can't open 'ip_bam':\
+    \ [Errno 2] No such file or directory: 'ip_bam'\n"
   generated_using: *id002
+- !Command
+  command:
+  - edd
+  - unalignable_regions
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: edd
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --fdr
+    args: !SimpleFlagArg
+      name: FDR
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: NPROCS
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: NUM_TRIALS
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --bin-size
+    args: !SimpleFlagArg
+      name: BIN_SIZE
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: edd [-h] [--bin-size BIN_SIZE] [-n NUM_TRIALS] [-p NPROCS] [--fdr\
+    \ FDR]\n           [-g GAP_PENALTY] [--config-file CONFIG_FILE] [--write-log-ratios]\n\
+    \           [--write-bin-scores] [-v]\n           chrom_size unalignable_regions\
+    \ ip_bam input_bam output_dir\nedd: error: argument chrom_size: can't open 'unalignable_regions':\
+    \ [Errno 2] No such file or directory: 'unalignable_regions'\n"
+  generated_using: *id002
+- !Command
+  command:
+  - edd
+  - chrom_size
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: edd
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --fdr
+    args: !SimpleFlagArg
+      name: FDR
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: NPROCS
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: NUM_TRIALS
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --bin-size
+    args: !SimpleFlagArg
+      name: BIN_SIZE
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: edd [-h] [--bin-size BIN_SIZE] [-n NUM_TRIALS] [-p NPROCS] [--fdr\
+    \ FDR]\n           [-g GAP_PENALTY] [--config-file CONFIG_FILE] [--write-log-ratios]\n\
+    \           [--write-bin-scores] [-v]\n           chrom_size unalignable_regions\
+    \ ip_bam input_bam output_dir\nedd: error: argument chrom_size: can't open 'chrom_size':\
+    \ [Errno 2] No such file or directory: 'chrom_size'\n"
+  generated_using: *id002
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:

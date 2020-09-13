@@ -1,17 +1,10 @@
 version 1.0
 
 task Momo {
-  input {
-    String algorithm
-    String arguments
-  }
   command <<<
-    momo \
-      ~{algorithm} \
-      ~{arguments}
+    momo
   >>>
-  parameter_meta {
-    algorithm: ""
-    arguments: ""
+  output {
+    File out_stdout = stdout()
   }
 }

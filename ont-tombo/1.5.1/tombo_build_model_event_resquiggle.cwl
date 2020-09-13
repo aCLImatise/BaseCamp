@@ -1,134 +1,166 @@
 class: CommandLineTool
 id: ../../../tombo_build_model_event_resquiggle.cwl
 inputs:
-- id: minimap_two_executable
+- id: in_minimap_two_executable
   doc: Path to minimap2 executable.
   type: long
   inputBinding:
     prefix: --minimap2-executable
-- id: minimap_two_index
-  doc: Path to minimap2 index (with map-ont preset) file corresponding to the [genome_fasta]
-    provided.
+- id: in_minimap_two_index
+  doc: "Path to minimap2 index (with map-ont preset) file\ncorresponding to the [genome_fasta]\
+    \ provided."
   type: long
   inputBinding:
     prefix: --minimap2-index
-- id: bwa_mem_executable
+- id: in_bwa_mem_executable
   doc: Path to bwa-mem executable.
-  type: string
+  type: File
   inputBinding:
     prefix: --bwa-mem-executable
-- id: graph_map_executable
+- id: in_graph_map_executable
   doc: Path to graphmap executable.
-  type: string
+  type: File
   inputBinding:
     prefix: --graphmap-executable
-- id: alignment_batch_size
-  doc: 'Number of reads included in each alignment call. Note: A new system mapping
-    call is made for each batch (including loading of the genome), so it is advised
-    to use larger values for larger genomes. Default: 1000'
-  type: string
+- id: in_alignment_batch_size
+  doc: "Number of reads included in each alignment call. Note:\nA new system mapping\
+    \ call is made for each batch\n(including loading of the genome), so it is advised\
+    \ to\nuse larger values for larger genomes. Default: 1000"
+  type: long
   inputBinding:
     prefix: --alignment-batch-size
-- id: obs_per_base_filter
-  doc: Filter reads based on observations per base percentile thresholds. Format thresholds
-    as "percentile:thresh [pctl2:thresh2 ...]". For example to filter reads with 99th
-    pctl > 200 obs/base or max > 5k obs/base use "99:200 100:5000".
+- id: in_normalization_type
+  doc: "Choices: \"none\": raw 16-bit DAQ values, \"pA_raw\": pA\nas in the ONT events\
+    \ (using offset, range and\ndigitization), \"pA\": k-mer-based correction for\
+    \ pA\ndrift as in nanopolish (requires [--pore-model-\nfilename]), \"median\"\
+    : median and MAD from raw signal.\nDefault: median"
+  type: string
+  inputBinding:
+    prefix: --normalization-type
+- id: in_pore_model_filename
+  doc: "File containing kmer model parameters (level_mean and\nlevel_stdv) used in\
+    \ order to compute kmer-based\ncorrected pA values. E.g. https://github.com/jts/nanop\n\
+    olish/blob/master/etc/r9-models/template_median68pA.5m\ners.model"
+  type: File
+  inputBinding:
+    prefix: --pore-model-filename
+- id: in_outlier_threshold
+  doc: "Windosrize the signal at this number of scale values.\nNegative value disables\
+    \ outlier clipping. Default:\n5.000000"
+  type: long
+  inputBinding:
+    prefix: --outlier-threshold
+- id: in_segmentation_parameters
+  doc: "SEGMENTATION_PARAMETERS\nSpecify the 2 parameters for segmentation 1) running\n\
+    neighboring windows width 2) minimum raw observations\nper genomic base. Sample\
+    \ type defaults: RNA : 12 6 ||\nDNA : 5 3"
+  type: long
+  inputBinding:
+    prefix: --segmentation-parameters
+- id: in_obs_per_base_filter
+  doc: "Filter reads based on observations per base percentile\nthresholds. Format\
+    \ thresholds as \"percentile:thresh\n[pctl2:thresh2 ...]\". For example to filter\
+    \ reads with\n99th pctl > 200 obs/base or max > 5k obs/base use\n\"99:200 100:5000\"\
+    ."
   type: string[]
   inputBinding:
     prefix: --obs-per-base-filter
-- id: timeout
-  doc: 'Timeout in seconds for processing a single read. Default: No timeout.'
+- id: in_timeout
+  doc: "Timeout in seconds for processing a single read.\nDefault: No timeout."
   type: string
   inputBinding:
     prefix: --timeout
-- id: cpts_limit
-  doc: 'Maximum number of changepoints to find within a single indel group. Default:
-    No limit.'
-  type: string
+- id: in_cpts_limit
+  doc: "Maximum number of changepoints to find within a single\nindel group. Default:\
+    \ No limit."
+  type: long
   inputBinding:
     prefix: --cpts-limit
-- id: skip_index
-  doc: Skip creation of tombo index. This drastically slows downstream tombo commands.
-    Default stores tombo index named ".[--fast5-basedir].[--corrected- group].tombo.index"
-    to be loaded automatically for downstream commands.
+- id: in_skip_index
+  doc: "Skip creation of tombo index. This drastically slows\ndownstream tombo commands.\
+    \ Default stores tombo index\nnamed \".[--fast5-basedir].[--corrected-\ngroup].tombo.index\"\
+    \ to be loaded automatically for\ndownstream commands."
   type: boolean
   inputBinding:
     prefix: --skip-index
-- id: overwrite
-  doc: 'Overwrite previous corrected group in FAST5 files. Note: only effects --corrected-group
-    or --new- corrected-group.'
+- id: in_overwrite
+  doc: "Overwrite previous corrected group in FAST5 files.\nNote: only effects --corrected-group\
+    \ or --new-\ncorrected-group."
   type: boolean
   inputBinding:
     prefix: --overwrite
-- id: failed_reads_filename
-  doc: 'Output failed read filenames with assoicated error. Default: Do not store
-    failed reads.'
-  type: string
+- id: in_failed_reads_filename
+  doc: "Output failed read filenames with assoicated error.\nDefault: Do not store\
+    \ failed reads."
+  type: File
   inputBinding:
     prefix: --failed-reads-filename
-- id: include_event_stdev
-  doc: Include corrected event standard deviation in output FAST5 data.
+- id: in_include_event_stdev
+  doc: "Include corrected event standard deviation in output\nFAST5 data."
   type: boolean
   inputBinding:
     prefix: --include-event-stdev
-- id: corrected_group
-  doc: 'FAST5 group created by resquiggle command. Default: RawGenomeCorrected_000'
-  type: string
+- id: in_corrected_group
+  doc: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  type: long
   inputBinding:
     prefix: --corrected-group
-- id: base_call_group
-  doc: 'FAST5 group obtain original basecalls (under Analyses group). Default: Basecall_1D_000'
-  type: string
+- id: in_base_call_group
+  doc: "FAST5 group obtain original basecalls (under Analyses\ngroup). Default: Basecall_1D_000"
+  type: long
   inputBinding:
     prefix: --basecall-group
-- id: base_call_subgroups
-  doc: "FAST5 subgroup(s) (under /Analyses/[--basecall- group]/) containing basecalls\
-    \ and created within [--corrected-group] containing re-squiggle results. Default:\
+- id: in_base_call_subgroups
+  doc: "FAST5 subgroup(s) (under /Analyses/[--basecall-\ngroup]/) containing basecalls\
+    \ and created within\n[--corrected-group] containing re-squiggle results.\nDefault:\
     \ ['BaseCalled_template']"
   type: string[]
   inputBinding:
     prefix: --basecall-subgroups
-- id: processes
+- id: in_processes
   doc: 'Number of processes. Default: 2'
-  type: string
+  type: long
   inputBinding:
     prefix: --processes
-- id: align_processes
-  doc: 'Number of processes to use for parsing and aligning original basecalls. Each
-    process will independently load the genome into memory, so use caution with larger
-    genomes (e.g. human). Default: 1'
-  type: string
+- id: in_align_processes
+  doc: "Number of processes to use for parsing and aligning\noriginal basecalls. Each\
+    \ process will independently\nload the genome into memory, so use caution with\n\
+    larger genomes (e.g. human). Default: 1"
+  type: long
   inputBinding:
     prefix: --align-processes
-- id: align_threads_per_process
-  doc: 'Number of threads to use for aligner system call. Default: [--processes] /
-    (2 * [--align-processes)]'
-  type: string
+- id: in_align_threads_per_process
+  doc: "Number of threads to use for aligner system call.\nDefault: [--processes]\
+    \ / (2 * [--align-processes)]"
+  type: long
   inputBinding:
     prefix: --align-threads-per-process
-- id: re_squiggle_processes
-  doc: 'Number of processes to use for resquiggle algorithm. Default: [--processes]
-    / 2'
-  type: string
+- id: in_re_squiggle_processes
+  doc: "Number of processes to use for resquiggle algorithm.\nDefault: [--processes]\
+    \ / 2"
+  type: long
   inputBinding:
     prefix: --resquiggle-processes
-- id: quiet
+- id: in_quiet
   doc: Don't print status information.
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: fast_fives_basedir
-  doc: Directory containing fast5 files. All files ending in "fast5" found recursively
-    within this base directory will be processed.
-  type: string
+- id: in_fast_fives_basedir
+  doc: "Directory containing fast5 files. All files ending in\n\"fast5\" found recursively\
+    \ within this base directory\nwill be processed."
+  type: long
   inputBinding:
     position: 0
-- id: reference_fast_a
+- id: in_reference_fast_a
   doc: Reference genome/transcriptome FASTA file for mapping.
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tombo

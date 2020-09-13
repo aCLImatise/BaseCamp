@@ -7,11 +7,14 @@ task FfindexFromFastaWithSplit {
   }
   command <<<
     ffindex_from_fasta_with_split \
-      ~{true="-s" false="" sort_index_file} \
-      ~{true="-v" false="" v}
+      ~{if (sort_index_file) then "-s" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     sort_index_file: "sort index file"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

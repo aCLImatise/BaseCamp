@@ -11,4 +11,7 @@ task Printafm {
   parameter_meta {
     fontname: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

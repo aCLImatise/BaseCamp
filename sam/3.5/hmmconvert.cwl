@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../hmmconvert.cwl
 inputs:
-- id: model_file
+- id: in_model_file
   doc: model file
-  type: string
+  type: File
   inputBinding:
     prefix: -model_file
-- id: binary_output
+- id: in_binary_output
   doc: target format ASCII/BINARY
-  type: string
+  type: long
   inputBinding:
     prefix: -binary_output
-- id: option
+- id: in_option
   doc: ''
   type: string
   inputBinding:
     prefix: -option
-- id: run_name
+- id: in_run_name
   doc: required
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hmmconvert

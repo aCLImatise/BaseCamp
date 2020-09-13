@@ -2,7 +2,7 @@ version 1.0
 
 task Pdf2ps {
   input {
-    String? d_ascii_eight_five_encode_pages
+    Int? d_ascii_eight_five_encode_pages
   }
   command <<<
     pdf2ps \
@@ -10,5 +10,8 @@ task Pdf2ps {
   >>>
   parameter_meta {
     d_ascii_eight_five_encode_pages: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

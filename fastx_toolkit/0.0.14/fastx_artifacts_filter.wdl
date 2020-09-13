@@ -2,22 +2,25 @@ version 1.0
 
 task FastxArtifactsFilter {
   input {
-    Boolean? v
-    Boolean? z
-    String? i
     String? o
+    File? i
+    Boolean? z
+    Boolean? v
   }
   command <<<
     fastx_artifacts_filter \
-      ~{true="-v" false="" v} \
-      ~{true="-z" false="" z} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if (z) then "-z" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    v: ""
-    z: ""
-    i: ""
     o: ""
+    i: ""
+    z: ""
+    v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

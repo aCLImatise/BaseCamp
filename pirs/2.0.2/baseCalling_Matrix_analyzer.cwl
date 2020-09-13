@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../baseCalling_Matrix_analyzer.cwl
 inputs:
-- id: matrix_file
+- id: in_matrix_file
   doc: matrix file
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: output_prefix
+- id: in_output_prefix
   doc: output prefix
   type: string
   inputBinding:
     prefix: -o
-- id: min_quality_score
+- id: in_min_quality_score
   doc: min quality score[default:0]
-  type: string
+  type: long
   inputBinding:
     prefix: -m
-- id: max_quality_score
+- id: in_max_quality_score
   doc: max quality score[default:40]
-  type: string
+  type: long
   inputBinding:
     prefix: -x
-- id: ignore_bases_quality
+- id: in_ignore_bases_quality
   doc: 'ignore the bases that quality is B or #'
   type: boolean
   inputBinding:
     prefix: -B
-outputs: []
+- id: in_error_matrix_analyzer_do_tpl
+  doc: Description
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - baseCalling_Matrix_analyzer

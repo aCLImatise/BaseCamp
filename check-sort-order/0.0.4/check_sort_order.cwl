@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../check_sort_order.cwl
 inputs:
-- id: genome
+- id: in_genome
   doc: a genome file of chromosome sizes and order
-  type: string
+  type: File
   inputBinding:
     prefix: --genome
-- id: path
-  doc: ''
+- id: in_path
+  doc: 'Options:'
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - check-sort-order

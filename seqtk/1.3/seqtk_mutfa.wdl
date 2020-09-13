@@ -14,4 +14,7 @@ task SeqtkMutfa {
     in_dot_fa: ""
     in_dot_snp: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

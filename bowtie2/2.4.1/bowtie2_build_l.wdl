@@ -1,6 +1,6 @@
 version 1.0
 
-task Bowtie2BuildL {
+task Bowtie2buildl {
   input {
     Boolean? reference_files_fasta
     Boolean? reference_sequences_given
@@ -19,32 +19,32 @@ task Bowtie2BuildL {
     Boolean? q_slash_quiet
     Boolean? h_slash_help
     String reference_in
-    String bt_two_index_base
+    Int bt_two_index_base
   }
   command <<<
-    bowtie2-build-l \
+    bowtie2_build_l \
       ~{reference_in} \
       ~{bt_two_index_base} \
-      ~{true="-f" false="" reference_files_fasta} \
-      ~{true="-c" false="" reference_sequences_given} \
-      ~{true="-a/--noauto" false="" a_slash_no_auto} \
-      ~{true="-p/--packed" false="" p_slash_packed} \
+      ~{if (reference_files_fasta) then "-f" else ""} \
+      ~{if (reference_sequences_given) then "-c" else ""} \
+      ~{if (a_slash_no_auto) then "-a/--noauto" else ""} \
+      ~{if (p_slash_packed) then "-p/--packed" else ""} \
       ~{if defined(bmax) then ("--bmax " +  '"' + bmax + '"') else ""} \
       ~{if defined(bmax_divn) then ("--bmaxdivn " +  '"' + bmax_divn + '"') else ""} \
       ~{if defined(dcv) then ("--dcv " +  '"' + dcv + '"') else ""} \
-      ~{true="--nodc" false="" no_dc} \
-      ~{true="-r/--noref" false="" r_slash_no_ref} \
-      ~{true="-3/--justref" false="" three_slash_just_ref} \
+      ~{if (no_dc) then "--nodc" else ""} \
+      ~{if (r_slash_no_ref) then "-r/--noref" else ""} \
+      ~{if (three_slash_just_ref) then "-3/--justref" else ""} \
       ~{if defined(oslash_off_rate) then ("-o/--offrate " +  '"' + oslash_off_rate + '"') else ""} \
       ~{if defined(t_slash_f_tab_chars) then ("-t/--ftabchars " +  '"' + t_slash_f_tab_chars + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-q/--quiet" false="" q_slash_quiet} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (q_slash_quiet) then "-q/--quiet" else ""} \
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
     reference_files_fasta: "reference files are Fasta (default)"
-    reference_sequences_given: "reference sequences given on cmd line (as <reference_in>)"
+    reference_sequences_given: "reference sequences given on cmd line (as\\n<reference_in>)"
     a_slash_no_auto: "disable automatic -p/--bmax/--dcv memory-fitting"
     p_slash_packed: "use packed strings internally; slower, less memory"
     bmax: "max bucket sz for blockwise suffix-array builder"
@@ -61,5 +61,8 @@ task Bowtie2BuildL {
     h_slash_help: "print detailed description of tool and its options"
     reference_in: "comma-separated list of files with ref sequences"
     bt_two_index_base: "write bt2l data to files with this dir/basename"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

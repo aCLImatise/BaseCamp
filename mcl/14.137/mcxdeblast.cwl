@@ -1,87 +1,100 @@
 class: CommandLineTool
 id: ../../../mcxdeblast.cwl
 inputs:
-- id: m_nine
+- id: in_m_nine
   doc: Expect column (-m 9) input.
   type: boolean
   inputBinding:
     prefix: --m9
-- id: line_mode
+- id: in_line_mode
   doc: Output simple ID1 ID2 SCORE format.
-  type: string
+  type: long
   inputBinding:
     prefix: --line-mode
-- id: score
-  doc: Use bit scores, E-values, or bit scores normalized by hsp-length
-  type: string
+- id: in_score
+  doc: "Use bit scores, E-values,\nor bit scores normalized by hsp-length"
+  type: long
   inputBinding:
     prefix: --score
-- id: sort
+- id: in_sort
   doc: Use alphabetic sorting (default) or occurrence.
   type: string
   inputBinding:
     prefix: --sort
-- id: tab
+- id: in_tab
   doc: Use user-supplied tab file.
-  type: string
+  type: File
   inputBinding:
     prefix: --tab
-- id: xi_dat
+- id: in_xi_dat
   doc: Strip <suf> from file-name to create output base name.
-  type: string
+  type: File
   inputBinding:
     prefix: --xi-dat
-- id: xo_dat
+- id: in_xo_dat
   doc: Add <suf> to base name.
   type: string
   inputBinding:
     prefix: --xo-dat
-- id: b_cut
+- id: in_b_cut
   doc: Ignore hits below bit score <val>
   type: string
   inputBinding:
     prefix: --bcut
-- id: e_cut
+- id: in_e_cut
   doc: Ignore hits below E-value <val>
   type: string
   inputBinding:
     prefix: --ecut
-- id: r_cut
+- id: in_r_cut
   doc: Ignore hits below raw value <val>
   type: string
   inputBinding:
     prefix: --rcut
-- id: out
+- id: in_out
   doc: Output file name ('-' for STDOUT)
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: based_oth_dr
+- id: in_based_oth_dr
   doc: '[to be read by mcxassemble]'
   type: string
   inputBinding:
     position: 0
-- id: based_ot_raw
+- id: in_based_ot_raw
   doc: '[to be read by mcxassemble]'
   type: string
   inputBinding:
     position: 1
-- id: based_ot_map
+- id: in_based_ot_map
   doc: '[to be read by mcxassemble]'
   type: string
   inputBinding:
     position: 2
-- id: based_ot_tab
+- id: in_based_ot_tab
   doc: '[to be read by clmformat]'
   type: string
   inputBinding:
     position: 3
-- id: base_do_terr
+- id: in_base_do_terr
   doc: '[error log]'
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_xi_dat
+  doc: Strip <suf> from file-name to create output base name.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_xi_dat)
+- id: out_out
+  doc: Output file name ('-' for STDOUT)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - mcxdeblast

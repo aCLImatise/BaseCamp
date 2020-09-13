@@ -2,10 +2,10 @@ version 1.0
 
 task EigenstratQTL {
   input {
-    Boolean? i
-    Boolean? j
-    Boolean? p
     String? o
+    Boolean? p
+    Boolean? j
+    Boolean? i
     String must
     String all
     String be
@@ -17,19 +17,22 @@ task EigenstratQTL {
       ~{all} \
       ~{be} \
       ~{specified} \
-      ~{true="-i" false="" i} \
-      ~{true="-j" false="" j} \
-      ~{true="-p" false="" p} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if (p) then "-p" else ""} \
+      ~{if (j) then "-j" else ""} \
+      ~{if (i) then "-i" else ""}
   >>>
   parameter_meta {
-    i: ""
-    j: ""
-    p: ""
     o: ""
+    p: ""
+    j: ""
+    i: ""
     must: ""
     all: ""
     be: ""
     specified: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

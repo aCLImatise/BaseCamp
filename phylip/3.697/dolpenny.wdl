@@ -4,4 +4,7 @@ task Dolpenny {
   command <<<
     dolpenny
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,7 +2,7 @@ version 1.0
 
 task BaitFisher {
   input {
-    String parameter_file
+    File parameter_file
     String? gff_file_test
   }
   command <<<
@@ -13,5 +13,8 @@ task BaitFisher {
   parameter_meta {
     parameter_file: ""
     gff_file_test: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

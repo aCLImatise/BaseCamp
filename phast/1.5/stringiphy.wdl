@@ -11,4 +11,7 @@ task Stringiphy {
   parameter_meta {
     exons_dot_gff: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

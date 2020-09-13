@@ -1,10 +1,7 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: inFile
-  optional: false
+&id001 !Command
+command:
+- wordLine
+positional: []
 named:
 - !Flag
   description: '- Break up words based on C symbol rules rather than white space'
@@ -12,10 +9,31 @@ named:
   - -csym
   args: !EmptyFlagArg {}
   optional: true
-command:
-- wordLine
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - wordLine
+  - inFile
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using:
+  - -h
+usage: []
 help_flag:
 usage_flag:
 version_flag:

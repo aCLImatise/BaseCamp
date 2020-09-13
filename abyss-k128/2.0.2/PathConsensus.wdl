@@ -2,8 +2,8 @@ version 1.0
 
 task PathConsensus {
   input {
-    String? km_er
-    String? dist_error
+    Int? km_er
+    Int? dist_error
     File? out
     File? consensus
     File? graph
@@ -13,14 +13,14 @@ task PathConsensus {
     Boolean? gv
     Boolean? gfa
     Boolean? sam
-    String? branches
-    String? identity
+    Int? branches
+    Float? identity
     Boolean? verbose
     File? db
     String? library
     String? strain
     String? species
-    String? di_align_d
+    Int? di_align_d
     File? di_align_m
     File? di_align_p
     String fast_a
@@ -37,15 +37,15 @@ task PathConsensus {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(consensus) then ("--consensus " +  '"' + consensus + '"') else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
-      ~{true="--adj" false="" output_graph_adj} \
-      ~{true="--asqg" false="" as_qg} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--gv" false="" gv} \
-      ~{true="--gfa" false="" gfa} \
-      ~{true="--sam" false="" sam} \
+      ~{if (output_graph_adj) then "--adj" else ""} \
+      ~{if (as_qg) then "--asqg" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (gv) then "--gv" else ""} \
+      ~{if (gfa) then "--gfa" else ""} \
+      ~{if (sam) then "--sam" else ""} \
       ~{if defined(branches) then ("--branches " +  '"' + branches + '"') else ""} \
       ~{if defined(identity) then ("--identity " +  '"' + identity + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
@@ -56,7 +56,7 @@ task PathConsensus {
   >>>
   parameter_meta {
     km_er: "k-mer size"
-    dist_error: "acceptable error of a distance estimate default: 6 bp"
+    dist_error: "acceptable error of a distance estimate\\ndefault: 6 bp"
     out: "output contig paths to FILE"
     consensus: "output consensus sequences to FILE"
     graph: "output the contig adjacency graph to FILE"
@@ -66,7 +66,7 @@ task PathConsensus {
     gv: "output the graph in GraphViz format"
     gfa: "output the graph in GFA format"
     sam: "output the graph in SAM format"
-    branches: "maximum number of sequences to align default: 4"
+    branches: "maximum number of sequences to align\\ndefault: 4"
     identity: "minimum identity, default: 0.9"
     verbose: "display verbose output"
     db: "specify path of database repository in FILE"
@@ -75,9 +75,15 @@ task PathConsensus {
     species: "specify species NAME for database"
     di_align_d: "dialign debug level, default: 0"
     di_align_m: "score matrix, default: dna_matrix.scr"
-    di_align_p: "diagonal length probability distribution default: dna_diag_prob_100_exp_550000"
+    di_align_p: "diagonal length probability distribution\\ndefault: dna_diag_prob_100_exp_550000"
     fast_a: "contigs in FASTA format"
     contig_adjacency_graph: "contig adjacency graph"
     path: "paths of these contigs"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_consensus = "${in_consensus}"
+    File out_graph = "${in_graph}"
   }
 }

@@ -6,7 +6,7 @@ task FcDedupATigs {
     Int? max_aln_cov
     Int? min_len_diff
     Int? min_seq_len
-    String? ploidy
+    Int? ploidy
     String? a_ctg_all
   }
   command <<<
@@ -24,6 +24,9 @@ task FcDedupATigs {
     min_len_diff: "Keep a-tig if the length different > min_len_diff (default: 500)"
     min_seq_len: "Branches with length less than this threshold will always be deduplicated. (default: 2000)"
     ploidy: "For a diplid genome, 2 branches per SV are expected. This parameter limits the number of pairwise comparison. If <= 0, this threshold is not applied. (default: 2)"
-    a_ctg_all: "Input set of all associate contigs for deduplication. (default: a_ctg_all.fasta)"
+    a_ctg_all: "Input set of all associate contigs for deduplication. (default: a_ctg_all.fasta)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

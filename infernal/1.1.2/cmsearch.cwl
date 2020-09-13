@@ -1,207 +1,215 @@
 class: CommandLineTool
 id: ../../../cmsearch.cwl
 inputs:
-- id: configure_cm_glocal
+- id: in_configure_cm_glocal
   doc: ': configure CM for glocal alignment [default: local]'
   type: boolean
   inputBinding:
     prefix: -g
-- id: set_space_size
+- id: in_set_space_size
   doc: ': set search space size in *Mb* to <x> for E-value calculations  (x>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -Z
-- id: devhelp
+- id: in_devhelp
   doc: ': show list of otherwise hidden developer/expert options'
   type: boolean
   inputBinding:
     prefix: --devhelp
-- id: direct_output_file
+- id: in_direct_output_file
   doc: ': direct output to file <f>, not stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: save_multiple_alignment
+- id: in_save_multiple_alignment
   doc: ': save multiple alignment of all significant hits to file <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: -A
-- id: tbl_out
+- id: in_tbl_out
   doc: ': save parseable table of hits to file <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --tblout
-- id: acc
+- id: in_acc
   doc: ': prefer accessions over names in output'
   type: boolean
   inputBinding:
     prefix: --acc
-- id: no_ali
+- id: in_no_ali
   doc: ": don't output alignments, so output is smaller"
   type: boolean
   inputBinding:
     prefix: --noali
-- id: no_text_w
+- id: in_no_text_w
   doc: ': unlimit ASCII text output line width'
   type: boolean
   inputBinding:
     prefix: --notextw
-- id: text_w
+- id: in_text_w
   doc: ': set max width of ASCII text output lines  [120]  (n>=120)'
-  type: string
+  type: long
   inputBinding:
     prefix: --textw
-- id: verbose
+- id: in_verbose
   doc: ': report extra information; mainly useful for debugging'
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: report_sequences_evalue
+- id: in_report_sequences_evalue_threshold
   doc: ': report sequences <= this E-value threshold in output  [10.0]  (x>0)'
-  type: string
+  type: double
   inputBinding:
     prefix: -E
-- id: report_sequences_threshold
+- id: in_report_sequences_score_threshold
   doc: ': report sequences >= this score threshold in output'
   type: string
   inputBinding:
     prefix: -T
-- id: ince
+- id: in_ince
   doc: ': consider sequences <= this E-value threshold as significant  [0.01]'
-  type: string
+  type: double
   inputBinding:
     prefix: --incE
-- id: in_ct
+- id: in_in_ct
   doc: ': consider sequences >= this score threshold as significant'
   type: string
   inputBinding:
     prefix: --incT
-- id: cut_ga
+- id: in_cut_ga
   doc: ": use CM's GA gathering cutoffs as reporting thresholds"
   type: boolean
   inputBinding:
     prefix: --cut_ga
-- id: cut_nc
+- id: in_cut_nc
   doc: ": use CM's NC noise cutoffs as reporting thresholds"
   type: boolean
   inputBinding:
     prefix: --cut_nc
-- id: cut_tc
+- id: in_cut_tc
   doc: ": use CM's TC trusted cutoffs as reporting thresholds"
   type: boolean
   inputBinding:
     prefix: --cut_tc
-- id: max
+- id: in_max
   doc: ': turn all heuristic filters off (slow)'
   type: boolean
   inputBinding:
     prefix: --max
-- id: no_hmm
+- id: in_no_hmm
   doc: ': skip all HMM filter stages, use only CM (slow)'
   type: boolean
   inputBinding:
     prefix: --nohmm
-- id: mid
+- id: in_mid
   doc: ': skip first two HMM filter stages (SSV & Vit)'
   type: boolean
   inputBinding:
     prefix: --mid
-- id: default
+- id: in_default
   doc: ': default: run search space size-dependent pipeline  [default]'
   type: boolean
   inputBinding:
     prefix: --default
-- id: rf_am
+- id: in_rf_am
   doc: ': set heuristic filters at Rfam-level (fast)'
   type: boolean
   inputBinding:
     prefix: --rfam
-- id: hmm_only
+- id: in_hmm_only
   doc: ": use HMM only, don't use a CM at all"
   type: boolean
   inputBinding:
     prefix: --hmmonly
-- id: fz
+- id: in_fz
   doc: ': set filters to defaults used for a search space of size <x> Mb'
-  type: string
+  type: long
   inputBinding:
     prefix: --FZ
-- id: fmid
+- id: in_fmid
   doc: ': with --mid, set P-value threshold for HMM stages to <x>  [0.02]'
-  type: string
+  type: double
   inputBinding:
     prefix: --Fmid
-- id: not_run_c
+- id: in_not_run_c
   doc: ': do not allow truncated hits at sequence termini'
   type: boolean
   inputBinding:
     prefix: --notrunc
-- id: any_trunc
+- id: in_any_trunc
   doc: ': allow full and truncated hits anywhere within sequences'
   type: boolean
   inputBinding:
     prefix: --anytrunc
-- id: no_null_three
+- id: in_no_null_three
   doc: ': turn off the NULL3 post hoc additional null model'
   type: boolean
   inputBinding:
     prefix: --nonull3
-- id: mx_size
+- id: in_mx_size
   doc: ': set max allowed alnment mx size to <x> Mb [df: autodetermined]'
-  type: string
+  type: long
   inputBinding:
     prefix: --mxsize
-- id: smx_size
+- id: in_smx_size
   doc: ': set max allowed size of search DP matrices to <x> Mb  [128.]'
-  type: string
+  type: long
   inputBinding:
     prefix: --smxsize
-- id: cy_k
+- id: in_cy_k
   doc: ': use scanning CM CYK algorithm, not Inside in final stage'
   type: boolean
   inputBinding:
     prefix: --cyk
-- id: acy_k
+- id: in_acy_k
   doc: ': align hits with CYK, not optimal accuracy'
   type: boolean
   inputBinding:
     prefix: --acyk
-- id: wcx
+- id: in_wcx
   doc: ': set W (expected max hit len) as <x> * cm->clen (model len)'
-  type: string
+  type: long
   inputBinding:
     prefix: --wcx
-- id: top_only
+- id: in_top_only
   doc: ': only search the top strand'
   type: boolean
   inputBinding:
     prefix: --toponly
-- id: bottom_only
+- id: in_bottom_only
   doc: ': only search the bottom strand'
   type: boolean
   inputBinding:
     prefix: --bottomonly
-- id: t_format
+- id: in_t_format
   doc: ': assert target <seqdb> is in format <s>: no autodetection'
   type: string
   inputBinding:
     prefix: --tformat
-- id: cpu
+- id: in_cpu
   doc: ': number of parallel CPU workers to use for multithreads'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpu
-- id: cm_file
+- id: in_cm_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seq_db
+- id: in_seq_db
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_direct_output_file
+  doc: ': direct output to file <f>, not stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_direct_output_file)
 cwlVersion: v1.1
 baseCommand:
 - cmsearch

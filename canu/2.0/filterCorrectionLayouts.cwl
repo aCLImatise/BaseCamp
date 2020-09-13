@@ -1,48 +1,51 @@
 class: CommandLineTool
 id: ../../../filterCorrectionLayouts.cwl
 inputs:
-- id: input_reads
+- id: in_input_reads
   doc: input reads
   type: string
   inputBinding:
     prefix: -S
-- id: input_correction_layouts
+- id: in_input_correction_layouts
   doc: input correction layouts
   type: string
   inputBinding:
     prefix: -C
-- id: output_ascii_list
-  doc: output ascii list of read IDs to correct also creates asm.readsToCorrect.stats
-    and asm.readsToCorrect.log
+- id: in_output_ascii_list
+  doc: "output ascii list of read IDs to correct\nalso creates\nasm.readsToCorrect.stats\
+    \ and\nasm.readsToCorrect.log"
   type: string
   inputBinding:
     prefix: -R
-- id: cc
+- id: in_cc
   doc: minimum coverage of evidence reads
   type: boolean
   inputBinding:
     prefix: -cc
-- id: cl
+- id: in_cl
   doc: minimum length of a corrected read
   type: boolean
   inputBinding:
     prefix: -cl
-- id: estimated_genome_size
+- id: in_estimated_genome_size
   doc: estimated genome size
   type: boolean
   inputBinding:
     prefix: -g
-- id: desired_coverage_corrected
+- id: in_desired_coverage_corrected
   doc: desired coverage in corrected reads
   type: boolean
   inputBinding:
     prefix: -c
-- id: rescue
-  doc: enable rescue - if read not used as evidence force it to be corrected
+- id: in_rescue
+  doc: "enable rescue - if read not used as evidence\nforce it to be corrected"
   type: boolean
   inputBinding:
     prefix: -rescue
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - filterCorrectionLayouts

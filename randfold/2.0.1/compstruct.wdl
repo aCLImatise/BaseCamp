@@ -9,12 +9,15 @@ task Compstruct {
   command <<<
     compstruct \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="-options" false="" options}
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     in_format: ": specify that both alignments are in format <s> (SELEX, for instance)"
     quiet: ": suppress verbose header (used in regression testing)"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -14,4 +14,7 @@ task Pgma {
     names: ""
     distances: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

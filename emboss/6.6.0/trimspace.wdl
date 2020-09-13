@@ -4,4 +4,7 @@ task Trimspace {
   command <<<
     trimspace
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

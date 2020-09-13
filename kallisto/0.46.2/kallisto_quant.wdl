@@ -2,16 +2,15 @@ version 1.0
 
 task KallistoQuant {
   input {
+    File? index
+    Directory? output_dir
     Boolean? bias
-    Int? seed
-    Boolean? plain_text
-    Boolean? fusion
-    Boolean? single
-    Boolean? single_overhang
-    Boolean? fr_stranded
-    Boolean? rf_stranded
-    Boolean? pseudo_bam
-    Boolean? genome_bam
+    Int? bootstrap_samples
+    Int? fragment_length
+    Int? sd
+    Int? threads
+    Boolean? gtf
+    Boolean? chromosomes
     Boolean? verbose
     String? arguments
     String fast_q_files
@@ -20,31 +19,33 @@ task KallistoQuant {
     kallisto quant \
       ~{arguments} \
       ~{fast_q_files} \
-      ~{true="--bias" false="" bias} \
-      ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--plaintext" false="" plain_text} \
-      ~{true="--fusion" false="" fusion} \
-      ~{true="--single" false="" single} \
-      ~{true="--single-overhang" false="" single_overhang} \
-      ~{true="--fr-stranded" false="" fr_stranded} \
-      ~{true="--rf-stranded" false="" rf_stranded} \
-      ~{true="--pseudobam" false="" pseudo_bam} \
-      ~{true="--genomebam" false="" genome_bam} \
-      ~{true="--verbose" false="" verbose}
+      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
+      ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
+      ~{if (bias) then "--bias" else ""} \
+      ~{if defined(bootstrap_samples) then ("--bootstrap-samples " +  '"' + bootstrap_samples + '"') else ""} \
+      ~{if defined(fragment_length) then ("--fragment-length " +  '"' + fragment_length + '"') else ""} \
+      ~{if defined(sd) then ("--sd " +  '"' + sd + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{if (gtf) then "--gtf" else ""} \
+      ~{if (chromosomes) then "--chromosomes" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
+    index: "Filename for the kallisto index to be used for\\nquantification"
+    output_dir: "Directory to write output to"
     bias: "Perform sequence based bias correction"
-    seed: "Seed for the bootstrap sampling (default: 42)"
-    plain_text: "Output plaintext instead of HDF5"
-    fusion: "Search for fusions for Pizzly"
-    single: "Quantify single-end reads"
-    single_overhang: "Include reads where unobserved rest of fragment is predicted to lie outside a transcript"
-    fr_stranded: "Strand specific reads, first read forward"
-    rf_stranded: "Strand specific reads, first read reverse"
-    pseudo_bam: "Save pseudoalignments to transcriptome to BAM file"
-    genome_bam: "Project pseudoalignments to genome sorted BAM file"
+    bootstrap_samples: "Number of bootstrap samples (default: 0)\\n--seed=INT                Seed for the bootstrap sampling (default: 42)\\n--plaintext               Output plaintext instead of HDF5\\n--fusion                  Search for fusions for Pizzly\\n--single                  Quantify single-end reads\\n--single-overhang         Include reads where unobserved rest of fragment is\\npredicted to lie outside a transcript\\n--fr-stranded             Strand specific reads, first read forward\\n--rf-stranded             Strand specific reads, first read reverse"
+    fragment_length: "Estimated average fragment length"
+    sd: "Estimated standard deviation of fragment length\\n(default: -l, -s values are estimated from paired\\nend data, but are required when using --single)"
+    threads: "Number of threads to use (default: 1)\\n--pseudobam               Save pseudoalignments to transcriptome to BAM file\\n--genomebam               Project pseudoalignments to genome sorted BAM file"
+    gtf: "GTF file for transcriptome information\\n(required for --genomebam)"
+    chromosomes: "Tab separated file with chromosome names and lengths\\n(optional for --genomebam, but recommended)"
     verbose: "Print out progress information every 1M proccessed reads"
     arguments: ""
     fast_q_files: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

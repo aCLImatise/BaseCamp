@@ -1,67 +1,65 @@
 class: CommandLineTool
 id: ../../../PgSAtest.cwl
 inputs:
-- id: k
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -k
-- id: r
-  doc: ''
+- id: in_by_position
+  doc: by position
   type: string
   inputBinding:
-    prefix: -r
-- id: n
+    prefix: -p
+- id: in_reads_uncorrecly_concatenated
+  doc: reads (for uncorrecly concatenated pair-ended data)
+  type: string
+  inputBinding:
+    prefix: -s
+- id: in_filter
+  doc: reads (for compatibility with CGk tests)
+  type: string
+  inputBinding:
+    prefix: -filter
+- id: in_c
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -c
+- id: in_n
   doc: ''
   type: string
   inputBinding:
     prefix: -n
-- id: c
+- id: in_r
   doc: ''
   type: string
   inputBinding:
-    prefix: -c
-- id: p
+    prefix: -r
+- id: in_k
   doc: ''
-  type: boolean
+  type: long
   inputBinding:
-    prefix: -p
-- id: s
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -s
-- id: f
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -f
-- id: var_7
+    prefix: -k
+- id: in_of
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: repeats
+- id: in_repeats
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: var_9
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: test_km_ers
+- id: in_test_km_ers
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: index_file
+- id: in_index_file
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - PgSAtest

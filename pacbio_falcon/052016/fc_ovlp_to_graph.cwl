@@ -1,28 +1,31 @@
 class: CommandLineTool
 id: ../../../fc_ovlp_to_graph.cwl
 inputs:
-- id: min_len
-  doc: minimum length of the reads to be considered for assembling
+- id: in_min_len
+  doc: minimum length of the reads to be considered for
   type: long
   inputBinding:
     prefix: --min_len
-- id: min_idt
-  doc: minimum alignment identity of the reads to be considered for assembling
-  type: long
-  inputBinding:
-    prefix: --min_idt
-- id: lfc
-  doc: use local flow constraint method rather than best overlap method to resolve
-    knots in string graph
+- id: in_lfc
+  doc: "use local flow constraint method rather than best overlap\nmethod to resolve\
+    \ knots in string graph\n"
   type: boolean
   inputBinding:
     prefix: --lfc
-- id: overlap_file
-  doc: a file that contains the overlap information.
+- id: in_min_idt
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --min_idt
+- id: in_assembling
+  doc: --min_idt MIN_IDT  minimum alignment identity of the reads to be considered
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fc_ovlp_to_graph

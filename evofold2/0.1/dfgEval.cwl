@@ -1,106 +1,118 @@
 class: CommandLineTool
 id: ../../../dfgEval.cwl
 inputs:
-- id: arg_calculate_posterior
-  doc: '[ --ppFile ] arg                   Calculate posterior probabilities for  each
-    state of each random variable and  output to file.'
-  type: boolean
+- id: in_arg_calculate_posterior
+  doc: "[ --ppFile ] arg                   Calculate posterior probabilities for\n\
+    each state of each random variable and\noutput to file."
+  type: File
   inputBinding:
     prefix: -o
-- id: arg_calculate_normalization
-  doc: '[ --ncFile ] arg                   Calculate normalization constant output
-    to file.'
-  type: boolean
+- id: in_arg_calculate_normalization
+  doc: "[ --ncFile ] arg                   Calculate normalization constant output\n\
+    to file."
+  type: File
   inputBinding:
     prefix: -n
-- id: arg_calculate_state
-  doc: '[ --mpsFile ] arg                  Calculate most probable state for each  random
-    variable and output to file.'
-  type: boolean
+- id: in_arg_calculate_state
+  doc: "[ --mpsFile ] arg                  Calculate most probable state for each\n\
+    random variable and output to file."
+  type: File
   inputBinding:
     prefix: -m
-- id: exp_file
-  doc: Calculate expectancies and output to  file
+- id: in_exp_file
+  doc: Calculate expectancies and output to
   type: string
   inputBinding:
     prefix: --expFile
-- id: arg_output_precision
-  doc: '[ --precision ] arg (=5)           Output precision of real numbers.'
-  type: boolean
-  inputBinding:
-    prefix: -p
-- id: pp_sum_other
-  doc: For post probs, for each state output  sum of post probs for all the other  states
-    for that variable. This retains  precision for post probs very close to  one.
+- id: in_pp_sum_other
+  doc: "For post probs, for each state output\nsum of post probs for all the other\n\
+    states for that variable. This retains\nprecision for post probs very close to\n\
+    one."
   type: boolean
   inputBinding:
     prefix: --ppSumOther
-- id: output_natural_logarithm
-  doc: '[ --minusLogarithm ]               Output minus the natural logarithm of  result
-    values (program will terminate  on negative results...).'
+- id: in_output_natural_logarithm
+  doc: "[ --minusLogarithm ]               Output minus the natural logarithm of\n\
+    result values (program will terminate\non negative results...)."
   type: boolean
   inputBinding:
     prefix: -l
-- id: mps_vars
-  doc: 'Define the random variables for which  the most probable state (mps) should
-    be output. Default is to output the mps  for all random variables. The  specification
-    string must be enclosed  in citation marks and whitespace  separated if it includes
-    more than one  random variable, e.g.: "X Y".'
+- id: in_mps_vars
+  doc: "Define the random variables for which\nthe most probable state (mps) should\
+    \ be\noutput. Default is to output the mps\nfor all random variables. The\nspecification\
+    \ string must be enclosed\nin citation marks and whitespace\nseparated if it includes\
+    \ more than one\nrandom variable, e.g.: \"X Y\"."
   type: string
   inputBinding:
     prefix: --mpsVars
-- id: pp_vars
-  doc: "Define the random variables for which  the posterior state probabilities (pp)\
-    \  should be calculated. Default is to  output the pp for all states of all  random\
-    \ variables (may generate much  output!). Random variables are  specified similar\
-    \ to mpsVars, but must  be semicolon (';') separated. It is  possible to only\
-    \ output pp's for  certain states, in which case the  following specification\
-    \ format is used: \"X=a b c; Y=a b\"."
+- id: in_pp_vars
+  doc: "Define the random variables for which\nthe posterior state probabilities (pp)\n\
+    should be calculated. Default is to\noutput the pp for all states of all\nrandom\
+    \ variables (may generate much\noutput!). Random variables are\nspecified similar\
+    \ to mpsVars, but must\nbe semicolon (';') separated. It is\npossible to only\
+    \ output pp's for\ncertain states, in which case the\nfollowing specification\
+    \ format is used:\n\"X=a b c; Y=a b\"."
   type: string
   inputBinding:
     prefix: --ppVars
-- id: arg_prefix_dfg
-  doc: '[ --dfgSpecPrefix ] arg (=./dfgSpec/) Prefix of DFG specification files..'
+- id: in_arg_dfgspecprefix_dfg
+  doc: "[ --dfgSpecPrefix ] arg (=./dfgSpec/)\nPrefix of DFG specification files.."
   type: boolean
   inputBinding:
     prefix: -s
-- id: factor_graph_file
-  doc: (=factorGraph.txt) Specification of the factor graph  structure.
+- id: in_factor_graph_file
+  doc: "(=factorGraph.txt)\nSpecification of the factor graph\nstructure."
   type: string
   inputBinding:
     prefix: --factorGraphFile
-- id: variables_file
-  doc: (=variables.txt)  Specification of the state map used by  each variable.
+- id: in_variables_file
+  doc: "(=variables.txt)  Specification of the state map used by\neach variable."
   type: string
   inputBinding:
     prefix: --variablesFile
-- id: state_map_file
+- id: in_state_map_file
   doc: (=stateMaps.txt)   Specification of state maps.
   type: string
   inputBinding:
     prefix: --stateMapFile
-- id: fac_pot_file
-  doc: (=factorPotentials.txt) Specification of factor potentials.
+- id: in_fac_pot_file
+  doc: "(=factorPotentials.txt)\nSpecification of factor potentials."
   type: string
   inputBinding:
     prefix: --facPotFile
-- id: sub_var_file
-  doc: Input subscribed variables file in  named data format. Must use same  identifiers
-    in same order as varFile
-  type: string
+- id: in_sub_var_file
+  doc: "Input subscribed variables file in\nnamed data format. Must use same\nidentifiers\
+    \ in same order as varFile\n"
+  type: File
   inputBinding:
     prefix: --subVarFile
-- id: input_var_data_dot_tab
-  doc: ''
-  type: string
+- id: in_file
+  doc: -p [ --precision ] arg (=5)           Output precision of real numbers.
+  type: File
   inputBinding:
     position: 0
-- id: input_fac_data_dot_tab
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_calculate_posterior
+  doc: "[ --ppFile ] arg                   Calculate posterior probabilities for\n\
+    each state of each random variable and\noutput to file."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_calculate_posterior)
+- id: out_arg_calculate_normalization
+  doc: "[ --ncFile ] arg                   Calculate normalization constant output\n\
+    to file."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_calculate_normalization)
+- id: out_arg_calculate_state
+  doc: "[ --mpsFile ] arg                  Calculate most probable state for each\n\
+    random variable and output to file."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_calculate_state)
 cwlVersion: v1.1
 baseCommand:
 - dfgEval

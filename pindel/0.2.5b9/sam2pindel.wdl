@@ -4,4 +4,7 @@ task Sam2pindel {
   command <<<
     sam2pindel
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

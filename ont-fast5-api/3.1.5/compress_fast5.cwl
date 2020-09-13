@@ -1,82 +1,60 @@
 class: CommandLineTool
 id: ../../../compress_fast5.cwl
 inputs:
-- id: input_path
-  doc: Folder containing single read fast5 files
-  type: string
-  inputBinding:
-    prefix: --input_path
-- id: save_path
-  doc: Folder to output multi read files to
-  type: string
-  inputBinding:
-    prefix: --save_path
-- id: in_place
-  doc: Replace the old files with new files in place
+- id: in_c
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --in_place
-- id: target_output_compression
-  doc: Target output compression type
-  type: string
+    prefix: -c
+- id: in_i
+  doc: ''
+  type: File
   inputBinding:
-    prefix: --compression
-- id: threads
-  doc: Maximum number of threads to use
-  type: string
-  inputBinding:
-    prefix: --threads
-- id: recursive
-  doc: Search recursively through folders for single_read fast5 files
-  type: boolean
-  inputBinding:
-    prefix: --recursive
-- id: ignore_symlinks
-  doc: Ignore symlinks when searching recursively for fast5 files
-  type: boolean
-  inputBinding:
-    prefix: --ignore_symlinks
-- id: tool
+    prefix: -i
+- id: in_tool
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: for
+- id: in_for
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: changing
+- id: in_changing
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: the
+- id: in_the
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: var_11
+- id: in_compression
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: of
+- id: in_of
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: fast_five
+- id: in_fast_five
+  doc: ''
+  type: long
+  inputBinding:
+    position: 6
+- id: in_files
   doc: ''
   type: string
   inputBinding:
-    position: 6
-- id: files
-  doc: ''
-  type: File
-  inputBinding:
     position: 7
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - compress_fast5

@@ -3,7 +3,7 @@ version 1.0
 task BcftoolsIsec {
   input {
     String? collapse
-    Boolean? complement
+    File? complement
     String? exclude
     String? apply_filters
     String? include
@@ -17,7 +17,7 @@ task BcftoolsIsec {
     String? targets
     File? targets_file
     Int? threads
-    String? write
+    Int? write
     String a_dot_vcf_do_tgz
     String bdotvcfdotgz
   }
@@ -26,12 +26,12 @@ task BcftoolsIsec {
       ~{a_dot_vcf_do_tgz} \
       ~{bdotvcfdotgz} \
       ~{if defined(collapse) then ("--collapse " +  '"' + collapse + '"') else ""} \
-      ~{true="--complement" false="" complement} \
+      ~{if (complement) then "--complement" else ""} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(apply_filters) then ("--apply-filters " +  '"' + apply_filters + '"') else ""} \
       ~{if defined(include) then ("--include " +  '"' + include + '"') else ""} \
-      ~{true="--no-version" false="" no_version} \
-      ~{true="--nfiles" false="" n_files} \
+      ~{if (no_version) then "--no-version" else ""} \
+      ~{if (n_files) then "--nfiles" else ""} \
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
@@ -46,7 +46,7 @@ task BcftoolsIsec {
     collapse: "treat as identical records with <snps|indels|both|all|some|none>, see man page for details [none]"
     complement: "output positions present only in the first file but missing in the others"
     exclude: "exclude sites for which the expression is true"
-    apply_filters: "require at least one of the listed FILTER strings (e.g. \"PASS,.\")"
+    apply_filters: "require at least one of the listed FILTER strings (e.g. \\\"PASS,.\\\")"
     include: "include only sites for which the expression is true"
     no_version: "do not append version and command line to the header"
     n_files: "[+-=~]<int>      output positions present in this many (=), this many or more (+), this many or fewer (-), the exact (~) files"
@@ -61,5 +61,10 @@ task BcftoolsIsec {
     write: "list of files to write with -p given as 1-based indexes. By default, all files are written"
     a_dot_vcf_do_tgz: ""
     bdotvcfdotgz: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_complement = "${in_complement}"
+    File out_write_output_file = "${in_write_output_file}"
   }
 }

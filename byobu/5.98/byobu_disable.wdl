@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuDisable {
+task Byobudisable {
   command <<<
-    byobu-disable
+    byobu_disable
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

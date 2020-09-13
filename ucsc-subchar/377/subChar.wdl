@@ -17,4 +17,7 @@ task SubChar {
     new_char: ""
     file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../filter_seq.cwl
 inputs:
-- id: index
+- id: in_index
   doc: an index file of the copy file
-  type: string
+  type: File
   inputBinding:
     prefix: -index
-- id: good_dot
-  doc: ''
+- id: in_options
+  doc: '-------'
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - filter_seq

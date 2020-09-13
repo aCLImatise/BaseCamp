@@ -9,9 +9,9 @@ task SinglemGetTree {
   }
   command <<<
     singlem get_tree \
-      ~{true="--debug" false="" debug} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--full_help" false="" full_help} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (full_help) then "--full_help" else ""} \
       ~{if defined(single_m_packages) then ("--singlem_packages " +  '"' + single_m_packages + '"') else ""}
   >>>
   parameter_meta {
@@ -19,5 +19,8 @@ task SinglemGetTree {
     quiet: "only output errors"
     full_help: "display all help options"
     single_m_packages: "SingleM packages to use [default: use the default set]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

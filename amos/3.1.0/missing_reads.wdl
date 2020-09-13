@@ -1,7 +1,10 @@
 version 1.0
 
-task MissingReads {
+task Missingreads {
   command <<<
-    missing-reads
+    missing_reads
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

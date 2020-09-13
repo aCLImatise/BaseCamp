@@ -1,8 +1,10 @@
 &id001 !Command
+command:
+- lexmapr
 positional: []
 named:
 - !Flag
-  description: '[OUTPUT], --output [OUTPUT] Output file'
+  description: "[OUTPUT], --output [OUTPUT]\nOutput file"
   synonyms:
   - -o
   args: !EmptyFlagArg {}
@@ -36,9 +38,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Pre-defined sets of command-line arguments for specialized purposes:
-    * ifsac:  * maps samples to food and environmental resources * classifies samples
-    into ifsac labels * outputs content to ``ifsac_output.tsv``'
+  description: "Pre-defined sets of command-line arguments for specialized purposes:\n\
+    * ifsac:\n* maps samples to food and environmental resources\n* classifies samples\
+    \ into ifsac labels\n* outputs content to ``ifsac_output.tsv``\n"
   synonyms:
   - -p
   - --profile
@@ -52,33 +54,30 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- lexmapr
 parent:
 subcommands:
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: lexmapr
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: OUTPUT
-    optional: true
+  command:
+  - lexmapr
+  - OUTPUT
+  positional: []
   named:
   - !Flag
     description: ''
     synonyms:
-    - -o
+    - -v
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
     description: ''
     synonyms:
-    - -f
+    - --no-cache
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -b
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
@@ -91,26 +90,18 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - -b
+    - -f
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
     description: ''
     synonyms:
-    - --no-cache
+    - -o
     args: !EmptyFlagArg {}
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -v
-    args: !EmptyFlagArg {}
-    optional: true
-  command:
-  - lexmapr
-  - input_file
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -124,6 +115,7 @@ subcommands:
     \ argument input_file: Please supply a csv or tsv input file\n"
   generated_using: &id002
   - --help
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

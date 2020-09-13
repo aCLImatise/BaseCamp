@@ -2,17 +2,17 @@ version 1.0
 
 task KatPlotProfile {
   input {
-    String? path_output_file
-    String? output_type
+    File? path_output_file
+    File? output_type
     String? title
     String? x_label
     String? y_label
-    String? y_two_label
+    Int? y_two_label
     String? x_max
     String? x_min
     String? y_max
     String? y_min
-    String? y_two_max
+    Int? y_two_max
     String? width
     String? height
     String? index
@@ -20,7 +20,7 @@ task KatPlotProfile {
     String? dpi
     Boolean? verbose
     String sect_profile_file
-    String sect_profile_file_two
+    Int sect_profile_file_two
   }
   command <<<
     kat_plot_profile \
@@ -42,11 +42,11 @@ task KatPlotProfile {
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
       ~{if defined(header) then ("--header " +  '"' + header + '"') else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     path_output_file: "The path to the output file."
-    output_type: "The plot file type to create (default is based on given output name)."
+    output_type: "The plot file type to create (default is based on\\ngiven output name)."
     title: "Title for plot"
     x_label: "Label for x-axis"
     y_label: "Label for y-axis"
@@ -64,5 +64,10 @@ task KatPlotProfile {
     verbose: "Print extra information"
     sect_profile_file: "The input profile file from KAT sect"
     sect_profile_file_two: "The optional second input profile file from KAT sect"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_file = "${in_path_output_file}"
+    File out_output_type = "${in_output_type}"
   }
 }

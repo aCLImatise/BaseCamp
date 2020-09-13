@@ -4,4 +4,7 @@ task Parldyn {
   command <<<
     parldyn
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

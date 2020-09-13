@@ -1,10 +1,12 @@
-&id010 !Command
-positional: []
-named: []
+&id008 !Command
 command:
 - chromosomer
 - agp2map
+positional: []
+named: []
 parent: &id001 !Command
+  command:
+  - chromosomer
   positional: []
   named:
   - !Flag
@@ -20,555 +22,12 @@ parent: &id001 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - chromosomer
   parent:
   subcommands:
   - &id002 !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'keep soft masking from the original fragment sequences (default:
-        False)'
-      synonyms:
-      - -s
-      - --save_soft_mask
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - chromosomer
-    - assemble
-    parent: *id001
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: assemble
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: map
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: fragment_fasta
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: output_fasta
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -s
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - chromosomer
-      - assemble
-      - fragment_fasta
-      parent: *id002
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: chromosomer assemble [-h] [-s] map fragment_fasta output_fasta\n\
-        chromosomer assemble: error: too few arguments\n"
-      generated_using: &id003 []
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: assemble
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: map
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: fragment_fasta
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: output_fasta
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -s
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - chromosomer
-      - assemble
-      - output_fasta
-      parent: *id002
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: chromosomer assemble [-h] [-s] map fragment_fasta output_fasta\n\
-        chromosomer assemble: error: too few arguments\n"
-      generated_using: *id003
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chromosomer assemble [-h] [-s] map fragment_fasta output_fasta\n\
-      \nGet the FASTA file of assembled chromosomes.\n\npositional arguments:\n  map\
-      \                   a fragment map file\n  fragment_fasta        a FASTA file\
-      \ of fragment sequences to be assembled\n  output_fasta          the output\
-      \ FASTA file of the assembled chromosome\n                        sequences\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  -s, --save_soft_mask  keep soft masking from the original fragment sequences\n\
-      \                        (default: False)\n"
-    generated_using: &id004
-    - --help
-  - !Command
-    positional:
-    - !Positional
-      description: a BLAST tabular file of fragment alignments to reference chromosomes
-      position: 0
-      name: alignment_file
-      optional: false
-    - !Positional
-      description: a size of a gap inserted between mapped fragments
-      position: 1
-      name: gap_size
-      optional: false
-    - !Positional
-      description: a file containing lengths of fragment sequences; it can be obtained
-        using the 'chromosomer fastalength' tool
-      position: 2
-      name: fragment_lengths
-      optional: false
-    - !Positional
-      description: an output fragment map file name
-      position: 3
-      name: output_map
-      optional: false
-    named:
-    - !Flag
-      description: 'the least ratio of two greatest fragment alignment scores to determine
-        the fragment placed to a reference genome (default: 1.2)'
-      synonyms:
-      - -r
-      - --ratio_threshold
-      args: !SimpleFlagArg
-        name: RATIO_THRESHOLD
-      optional: true
-    - !Flag
-      description: 'shrink large interfragment gaps to the specified size (default:
-        False)'
-      synonyms:
-      - -s
-      - --shrink_gaps
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - chromosomer
-    - fragmentmap
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chromosomer fragmentmap [-h] [-r RATIO_THRESHOLD] [-s]\n  \
-      \                             alignment_file gap_size fragment_lengths\n   \
-      \                            output_map\n\nConstruct a fragment map from fragment\
-      \ alignments to reference chromosomes.\n\npositional arguments:\n  alignment_file\
-      \        a BLAST tabular file of fragment alignments to\n                  \
-      \      reference chromosomes\n  gap_size              a size of a gap inserted\
-      \ between mapped fragments\n  fragment_lengths      a file containing lengths\
-      \ of fragment sequences; it\n                        can be obtained using the\
-      \ 'chromosomer fastalength'\n                        tool\n  output_map    \
-      \        an output fragment map file name\n\noptional arguments:\n  -h, --help\
-      \            show this help message and exit\n  -r RATIO_THRESHOLD, --ratio_threshold\
-      \ RATIO_THRESHOLD\n                        the least ratio of two greatest fragment\
-      \ alignment\n                        scores to determine the fragment placed\
-      \ to a reference\n                        genome (default: 1.2)\n  -s, --shrink_gaps\
-      \     shrink large interfragment gaps to the specified size\n              \
-      \          (default: False)\n"
-    generated_using: *id004
-  - &id005 !Command
-    positional: []
-    named: []
-    command:
-    - chromosomer
-    - fragmentmapstat
-    parent: *id001
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: fragmentmapstat
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: map
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: output
-        optional: false
-      named: []
-      command:
-      - chromosomer
-      - fragmentmapstat
-      - output
-      parent: *id005
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: chromosomer fragmentmapstat [-h] map output\nchromosomer\
-        \ fragmentmapstat: error: too few arguments\n"
-      generated_using: *id003
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chromosomer fragmentmapstat [-h] map output\n\nShow statistics\
-      \ on a fragment map.\n\npositional arguments:\n  map         a fragment map\
-      \ file\n  output      an output file of fragment map statistics\n\noptional\
-      \ arguments:\n  -h, --help  show this help message and exit\n"
-    generated_using: *id004
-  - &id006 !Command
-    positional: []
-    named: []
-    command:
-    - chromosomer
-    - fragmentmapbed
-    parent: *id001
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: fragmentmapbed
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: map
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: output
-        optional: false
-      named: []
-      command:
-      - chromosomer
-      - fragmentmapbed
-      - output
-      parent: *id006
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: chromosomer fragmentmapbed [-h] map output\nchromosomer fragmentmapbed:\
-        \ error: too few arguments\n"
-      generated_using: *id003
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chromosomer fragmentmapbed [-h] map output\n\nConvert a fragment\
-      \ map to the BED format.\n\npositional arguments:\n  map         a fragment\
-      \ map file\n  output      an output BED file representing the fragment map\n\
-      \noptional arguments:\n  -h, --help  show this help message and exit\n"
-    generated_using: *id004
-  - &id007 !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'the format of a file of annotated features (bed, gff3 or vcf)
-        (default: bed)'
-      synonyms:
-      - -f
-      - --format
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? vcf
-          ? gff3
-          ? bed
-      optional: true
-    command:
-    - chromosomer
-    - transfer
-    parent: *id001
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: transfer
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: map
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: annotation
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: output
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -f
-        args: !ChoiceFlagArg
-          choices: !!set
-            ? vcf
-            ? gff3
-            ? bed
-        optional: true
-      command:
-      - chromosomer
-      - transfer
-      - annotation
-      parent: *id007
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: chromosomer transfer [-h] [-f {bed,gff3,vcf}] map annotation\
-        \ output\nchromosomer transfer: error: too few arguments\n"
-      generated_using: *id003
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: transfer
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: map
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: annotation
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: output
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -f
-        args: !ChoiceFlagArg
-          choices: !!set
-            ? vcf
-            ? gff3
-            ? bed
-        optional: true
-      command:
-      - chromosomer
-      - transfer
-      - output
-      parent: *id007
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: chromosomer transfer [-h] [-f {bed,gff3,vcf}] map annotation\
-        \ output\nchromosomer transfer: error: too few arguments\n"
-      generated_using: *id003
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chromosomer transfer [-h] [-f {bed,gff3,vcf}] map annotation\
-      \ output\n\nTransfer annotated genomic features from fragments to their assembly.\n\
-      \npositional arguments:\n  map                   a fragment map file\n  annotation\
-      \            a file of annotated genome features\n  output                an\
-      \ output file of the transfered annotation\n\noptional arguments:\n  -h, --help\
-      \            show this help message and exit\n  -f {bed,gff3,vcf}, --format\
-      \ {bed,gff3,vcf}\n                        the format of a file of annotated\
-      \ features (bed, gff3\n                        or vcf) (default: bed)\n"
-    generated_using: *id004
-  - &id008 !Command
-    positional: []
-    named: []
-    command:
-    - chromosomer
-    - fastalength
-    parent: *id001
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: fastalength
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: fasta
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: output
-        optional: false
-      named: []
-      command:
-      - chromosomer
-      - fastalength
-      - output
-      parent: *id008
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: chromosomer fastalength [-h] fasta output\nchromosomer fastalength:\
-        \ error: too few arguments\n"
-      generated_using: *id003
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chromosomer fastalength [-h] fasta output\n\nGet lengths of\
-      \ sequences in the specified FASTA file (required to build a\nfragment map).\n\
-      \npositional arguments:\n  fasta       a FASTA file which sequence lengths are\
-      \ to be obtained\n  output      an output file of sequence lengths\n\noptional\
-      \ arguments:\n  -h, --help  show this help message and exit\n"
-    generated_using: *id004
-  - &id009 !Command
+    - simulator
     positional: []
     named:
     - !Flag
@@ -594,136 +53,42 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: PREFIX
       optional: true
-    command:
-    - chromosomer
-    - simulator
     parent: *id001
     subcommands:
     - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: simulator
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -g
-        args: !SimpleFlagArg
-          name: GAP_SIZE
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - -p
-        args: !SimpleFlagArg
-          name: UNPLACED
-        optional: true
-      command:
-      - chromosomer
-      - simulator
-      - fr_num
-      parent: *id009
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: chromosomer simulator [-h] [-g GAP_SIZE] [-p UNPLACED]\n\
-        \                             [--prefix PREFIX]\n                        \
-        \     fr_num fr_len chr_num output_dir\nchromosomer simulator: error: argument\
-        \ fr_num: invalid int value: 'fr_num'\n"
-      generated_using: *id004
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: simulator
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -g
-        args: !SimpleFlagArg
-          name: GAP_SIZE
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - -p
-        args: !SimpleFlagArg
-          name: UNPLACED
-        optional: true
-      command:
-      - chromosomer
-      - simulator
-      - fr_len
-      parent: *id009
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: chromosomer simulator [-h] [-g GAP_SIZE] [-p UNPLACED]\n\
-        \                             [--prefix PREFIX]\n                        \
-        \     fr_num fr_len chr_num output_dir\nchromosomer simulator: error: argument\
-        \ fr_num: invalid int value: 'fr_len'\n"
-      generated_using: *id004
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: chromosomer
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: simulator
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -g
-        args: !SimpleFlagArg
-          name: GAP_SIZE
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - -p
-        args: !SimpleFlagArg
-          name: UNPLACED
-        optional: true
       command:
       - chromosomer
       - simulator
       - chr_num
-      parent: *id009
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: simulator
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -p
+        args: !SimpleFlagArg
+          name: UNPLACED
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -g
+        args: !SimpleFlagArg
+          name: GAP_SIZE
+        optional: true
+      parent: *id002
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: ''
         synonyms:
@@ -736,8 +101,13 @@ parent: &id001 !Command
         \                             [--prefix PREFIX]\n                        \
         \     fr_num fr_len chr_num output_dir\nchromosomer simulator: error: argument\
         \ fr_num: invalid int value: 'chr_num'\n"
-      generated_using: *id004
+      generated_using: &id003
+      - --help
     - !Command
+      command:
+      - chromosomer
+      - simulator
+      - output_dir
       positional:
       - !Positional
         description: ''
@@ -753,23 +123,20 @@ parent: &id001 !Command
       - !Flag
         description: ''
         synonyms:
-        - -g
-        args: !SimpleFlagArg
-          name: GAP_SIZE
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
         - -p
         args: !SimpleFlagArg
           name: UNPLACED
         optional: true
-      command:
-      - chromosomer
-      - simulator
-      - output_dir
-      parent: *id009
+      - !Flag
+        description: ''
+        synonyms:
+        - -g
+        args: !SimpleFlagArg
+          name: GAP_SIZE
+        optional: true
+      parent: *id002
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: ''
         synonyms:
@@ -782,7 +149,102 @@ parent: &id001 !Command
         \                             [--prefix PREFIX]\n                        \
         \     fr_num fr_len chr_num output_dir\nchromosomer simulator: error: argument\
         \ fr_num: invalid int value: 'output_dir'\n"
-      generated_using: *id004
+      generated_using: *id003
+    - !Command
+      command:
+      - chromosomer
+      - simulator
+      - fr_num
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: simulator
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -p
+        args: !SimpleFlagArg
+          name: UNPLACED
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -g
+        args: !SimpleFlagArg
+          name: GAP_SIZE
+        optional: true
+      parent: *id002
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: chromosomer simulator [-h] [-g GAP_SIZE] [-p UNPLACED]\n\
+        \                             [--prefix PREFIX]\n                        \
+        \     fr_num fr_len chr_num output_dir\nchromosomer simulator: error: argument\
+        \ fr_num: invalid int value: 'fr_num'\n"
+      generated_using: *id003
+    - !Command
+      command:
+      - chromosomer
+      - simulator
+      - fr_len
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: simulator
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -p
+        args: !SimpleFlagArg
+          name: UNPLACED
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -g
+        args: !SimpleFlagArg
+          name: GAP_SIZE
+        optional: true
+      parent: *id002
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: chromosomer simulator [-h] [-g GAP_SIZE] [-p UNPLACED]\n\
+        \                             [--prefix PREFIX]\n                        \
+        \     fr_num fr_len chr_num output_dir\nchromosomer simulator: error: argument\
+        \ fr_num: invalid int value: 'fr_len'\n"
+      generated_using: *id003
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -803,8 +265,558 @@ parent: &id001 !Command
       \                        the size of gaps between fragments on a chromosome\n\
       \  -p UNPLACED, --unplaced UNPLACED\n                        the number of unplaced\
       \ fragments\n  --prefix PREFIX       the prefix for output file names\n"
-    generated_using: *id004
-  - *id010
+    generated_using: *id003
+  - !Command
+    command:
+    - chromosomer
+    - fragmentmap
+    positional:
+    - !Positional
+      description: Construct a fragment map from fragment alignments to reference
+        chromosomes.
+      position: 0
+      name: output_map
+      optional: false
+    - !Positional
+      description: "a BLAST tabular file of fragment alignments to\nreference chromosomes"
+      position: 0
+      name: alignment_file
+      optional: false
+    - !Positional
+      description: a size of a gap inserted between mapped fragments
+      position: 1
+      name: gap_size
+      optional: false
+    - !Positional
+      description: "a file containing lengths of fragment sequences; it\ncan be obtained\
+        \ using the 'chromosomer fastalength'\ntool"
+      position: 2
+      name: fragment_lengths
+      optional: false
+    - !Positional
+      description: an output fragment map file name
+      position: 3
+      name: output_map
+      optional: false
+    named:
+    - !Flag
+      description: "the least ratio of two greatest fragment alignment\nscores to\
+        \ determine the fragment placed to a reference\ngenome (default: 1.2)"
+      synonyms:
+      - -r
+      - --ratio_threshold
+      args: !SimpleFlagArg
+        name: RATIO_THRESHOLD
+      optional: true
+    - !Flag
+      description: "shrink large interfragment gaps to the specified size\n(default:\
+        \ False)\n"
+      synonyms:
+      - -s
+      - --shrink_gaps
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: chromosomer fragmentmap [-h] [-r RATIO_THRESHOLD] [-s]\n  \
+      \                             alignment_file gap_size fragment_lengths\n   \
+      \                            output_map\n\nConstruct a fragment map from fragment\
+      \ alignments to reference chromosomes.\n\npositional arguments:\n  alignment_file\
+      \        a BLAST tabular file of fragment alignments to\n                  \
+      \      reference chromosomes\n  gap_size              a size of a gap inserted\
+      \ between mapped fragments\n  fragment_lengths      a file containing lengths\
+      \ of fragment sequences; it\n                        can be obtained using the\
+      \ 'chromosomer fastalength'\n                        tool\n  output_map    \
+      \        an output fragment map file name\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n  -r RATIO_THRESHOLD, --ratio_threshold\
+      \ RATIO_THRESHOLD\n                        the least ratio of two greatest fragment\
+      \ alignment\n                        scores to determine the fragment placed\
+      \ to a reference\n                        genome (default: 1.2)\n  -s, --shrink_gaps\
+      \     shrink large interfragment gaps to the specified size\n              \
+      \          (default: False)\n"
+    generated_using: *id003
+  - &id004 !Command
+    command:
+    - chromosomer
+    - fragmentmapstat
+    positional: []
+    named: []
+    parent: *id001
+    subcommands:
+    - !Command
+      command:
+      - chromosomer
+      - fragmentmapstat
+      - output
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: fragmentmapstat
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: map
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: output
+        optional: false
+      named: []
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: chromosomer fragmentmapstat [-h] map output\nchromosomer\
+        \ fragmentmapstat: error: too few arguments\n"
+      generated_using: &id006 []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: chromosomer fragmentmapstat [-h] map output\n\nShow statistics\
+      \ on a fragment map.\n\npositional arguments:\n  map         a fragment map\
+      \ file\n  output      an output file of fragment map statistics\n\noptional\
+      \ arguments:\n  -h, --help  show this help message and exit\n"
+    generated_using: *id003
+  - &id005 !Command
+    command:
+    - chromosomer
+    - assemble
+    positional: []
+    named:
+    - !Flag
+      description: "keep soft masking from the original fragment sequences\n(default:\
+        \ False)\n"
+      synonyms:
+      - -s
+      - --save_soft_mask
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands:
+    - !Command
+      command:
+      - chromosomer
+      - assemble
+      - sequences
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: assemble
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: map
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fragment_fasta
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: output_fasta
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -s
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id005
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: chromosomer assemble [-h] [-s] map fragment_fasta output_fasta\n\
+        chromosomer assemble: error: too few arguments\n"
+      generated_using: *id006
+    - !Command
+      command:
+      - chromosomer
+      - assemble
+      - fragment_fasta
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: assemble
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: map
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fragment_fasta
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: output_fasta
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -s
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id005
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: chromosomer assemble [-h] [-s] map fragment_fasta output_fasta\n\
+        chromosomer assemble: error: too few arguments\n"
+      generated_using: *id006
+    - !Command
+      command:
+      - chromosomer
+      - assemble
+      - output_fasta
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: assemble
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: map
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fragment_fasta
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: output_fasta
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -s
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id005
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: chromosomer assemble [-h] [-s] map fragment_fasta output_fasta\n\
+        chromosomer assemble: error: too few arguments\n"
+      generated_using: *id006
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: chromosomer assemble [-h] [-s] map fragment_fasta output_fasta\n\
+      \nGet the FASTA file of assembled chromosomes.\n\npositional arguments:\n  map\
+      \                   a fragment map file\n  fragment_fasta        a FASTA file\
+      \ of fragment sequences to be assembled\n  output_fasta          the output\
+      \ FASTA file of the assembled chromosome\n                        sequences\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -s, --save_soft_mask  keep soft masking from the original fragment sequences\n\
+      \                        (default: False)\n"
+    generated_using: *id003
+  - &id007 !Command
+    command:
+    - chromosomer
+    - transfer
+    positional: []
+    named:
+    - !Flag
+      description: "the format of a file of annotated features (bed, gff3\nor vcf)\
+        \ (default: bed)\n"
+      synonyms:
+      - -f
+      - --format
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? gff3
+          ? bed
+          ? vcf
+      optional: true
+    parent: *id001
+    subcommands:
+    - !Command
+      command:
+      - chromosomer
+      - transfer
+      - output
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: transfer
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: map
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: annotation
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: output
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -f
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? gff3
+            ? bed
+            ? vcf
+        optional: true
+      parent: *id007
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: chromosomer transfer [-h] [-f {bed,gff3,vcf}] map annotation\
+        \ output\nchromosomer transfer: error: too few arguments\n"
+      generated_using: *id006
+    - !Command
+      command:
+      - chromosomer
+      - transfer
+      - annotation
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: transfer
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: map
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: annotation
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: output
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -f
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? gff3
+            ? bed
+            ? vcf
+        optional: true
+      parent: *id007
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: chromosomer transfer [-h] [-f {bed,gff3,vcf}] map annotation\
+        \ output\nchromosomer transfer: error: too few arguments\n"
+      generated_using: *id006
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: chromosomer transfer [-h] [-f {bed,gff3,vcf}] map annotation\
+      \ output\n\nTransfer annotated genomic features from fragments to their assembly.\n\
+      \npositional arguments:\n  map                   a fragment map file\n  annotation\
+      \            a file of annotated genome features\n  output                an\
+      \ output file of the transfered annotation\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n  -f {bed,gff3,vcf}, --format\
+      \ {bed,gff3,vcf}\n                        the format of a file of annotated\
+      \ features (bed, gff3\n                        or vcf) (default: bed)\n"
+    generated_using: *id003
+  - *id008
+  - &id009 !Command
+    command:
+    - chromosomer
+    - fragmentmapbed
+    positional: []
+    named: []
+    parent: *id001
+    subcommands:
+    - !Command
+      command:
+      - chromosomer
+      - fragmentmapbed
+      - output
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: chromosomer
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: fragmentmapbed
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: map
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: output
+        optional: false
+      named: []
+      parent: *id009
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: chromosomer fragmentmapbed [-h] map output\nchromosomer fragmentmapbed:\
+        \ error: too few arguments\n"
+      generated_using: *id006
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: chromosomer fragmentmapbed [-h] map output\n\nConvert a fragment\
+      \ map to the BED format.\n\npositional arguments:\n  map         a fragment\
+      \ map file\n  output      an output BED file representing the fragment map\n\
+      \noptional arguments:\n  -h, --help  show this help message and exit\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -833,9 +845,13 @@ parent: &id001 !Command
     \ map\n\noptional arguments:\n  -h, --help            show this help message and\
     \ exit\n  -v, --version         show program's version number and exit\n  -d,\
     \ --debug           show debugging messages\n"
-  generated_using: *id004
+  generated_using: *id003
 subcommands:
 - !Command
+  command:
+  - chromosomer
+  - agp2map
+  - output_file
   positional:
   - !Positional
     description: ''
@@ -858,12 +874,9 @@ subcommands:
     name: output_file
     optional: false
   named: []
-  command:
-  - chromosomer
-  - agp2map
-  - output_file
-  parent: *id010
+  parent: *id008
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -874,7 +887,8 @@ subcommands:
   version_flag:
   help_text: "usage: chromosomer agp2map [-h] agp_file output_file\nchromosomer agp2map:\
     \ error: too few arguments\n"
-  generated_using: *id003
+  generated_using: *id006
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -888,4 +902,4 @@ help_text: "usage: chromosomer agp2map [-h] agp_file output_file\n\nConvert an A
   \ file to the fragment map format.\n\npositional arguments:\n  agp_file     an AGP\
   \ file\n  output_file  the output fragment map file\n\noptional arguments:\n  -h,\
   \ --help   show this help message and exit\n"
-generated_using: *id004
+generated_using: *id003

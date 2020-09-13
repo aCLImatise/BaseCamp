@@ -4,4 +4,7 @@ task SonLibCigarTest {
   command <<<
     sonLib_cigarTest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

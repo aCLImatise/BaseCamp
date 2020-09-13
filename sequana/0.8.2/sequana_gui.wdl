@@ -4,4 +4,7 @@ task SequanaGui {
   command <<<
     sequana_gui
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

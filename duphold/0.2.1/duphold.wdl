@@ -18,7 +18,7 @@ task Duphold {
       ~{if defined(snp) then ("--snp " +  '"' + snp + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(output_vcfbcf_default) then ("--output " +  '"' + output_vcfbcf_default + '"') else ""} \
-      ~{true="--drop" false="" drop}
+      ~{if (drop) then "--drop" else ""}
   >>>
   parameter_meta {
     vcf: "path to sorted SV VCF/BCF"
@@ -28,5 +28,8 @@ task Duphold {
     threads: "number of decompression threads. [default: 4]"
     output_vcfbcf_default: "output VCF/BCF (default is VCF to stdout) [default: -]"
     drop: "drop all samples from a multi-sample --vcf *except* the sample in --bam. useful for parallelization by sample followed by merge."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

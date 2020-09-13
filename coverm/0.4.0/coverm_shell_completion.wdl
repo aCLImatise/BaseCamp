@@ -1,20 +1,27 @@
 version 1.0
 
-task CovermShellCompletion {
+task CovermShellcompletion {
   input {
-    String? output_file
+    Boolean? quiet
+    Boolean? verbose
+    File? output_file
     String? shell
-    String? flags
   }
   command <<<
-    coverm shell-completion \
-      ~{flags} \
+    coverm shell_completion \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(shell) then ("--shell " +  '"' + shell + '"') else ""}
   >>>
   parameter_meta {
-    output_file: "--shell <shell>                 [possible values: zsh, bash, fish, powershell, elvish]"
-    shell: ""
-    flags: ""
+    quiet: ""
+    verbose: ""
+    output_file: ""
+    shell: "[possible values: zsh, bash, fish, powershell, elvish]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

@@ -4,4 +4,7 @@ task Ete {
   command <<<
     ete
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

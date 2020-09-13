@@ -1,18 +1,16 @@
 version 1.0
 
-task SgaFmMerge {
+task SgaFmmerge {
   input {
     Boolean? verbose
-    String? prefix
-    String? threads
-    String? min_overlap
+    File? prefix
+    Int? threads
+    Int? min_overlap
     File? outfile
-    String? option
   }
   command <<<
-    sga fm-merge \
-      ~{option} \
-      ~{true="--verbose" false="" verbose} \
+    sga fm_merge \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(min_overlap) then ("--min-overlap " +  '"' + min_overlap + '"') else ""} \
@@ -24,6 +22,8 @@ task SgaFmMerge {
     threads: "use NUM worker threads (default: no threading)"
     min_overlap: "minimum overlap required between two reads to merge (default: 45)"
     outfile: "write the merged sequences to FILE (default: basename.merged.fa)"
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

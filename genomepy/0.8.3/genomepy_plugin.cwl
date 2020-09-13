@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../genomepy_plugin.cwl
 inputs:
-- id: command
+- id: in_command
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: name
+- id: in_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genomepy

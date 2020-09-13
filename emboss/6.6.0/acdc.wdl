@@ -4,4 +4,7 @@ task Acdc {
   command <<<
     acdc
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

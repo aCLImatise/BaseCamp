@@ -11,4 +11,7 @@ task DnaMutationBlastnMutation {
   parameter_meta {
     organism: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

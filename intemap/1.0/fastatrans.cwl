@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../fastatrans.cwl
 inputs:
-- id: contig_file
+- id: in_contig_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastatrans

@@ -1,7 +1,10 @@
 version 1.0
 
-task LoadProkaryotes.py {
+task LoadProkaryotes {
   command <<<
-    load_prokaryotes.py
+    load_prokaryotes
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

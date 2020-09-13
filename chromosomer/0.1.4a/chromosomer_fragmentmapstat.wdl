@@ -4,4 +4,7 @@ task ChromosomerFragmentmapstat {
   command <<<
     chromosomer fragmentmapstat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

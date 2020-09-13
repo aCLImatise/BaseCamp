@@ -1,7 +1,10 @@
 version 1.0
 
-task IuComputeQualDictsFromFastq {
+task Iucomputequaldictsfromfastq {
   command <<<
-    iu-compute-qual-dicts-from-fastq
+    iu_compute_qual_dicts_from_fastq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../catalogue_errors.cwl
 inputs:
-- id: bed
-  doc: '.bed file of reference regions to include. (default: None)'
-  type: string
+- id: in_bed
+  doc: ".bed file of reference regions to include. (default:\nNone)"
+  type: File
   inputBinding:
     prefix: --bed
-- id: threads
+- id: in_threads
   doc: 'Number of threads for parallel execution. (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: outdir
-  doc: 'Output directory. (default: error_catalogue)'
-  type: string
+- id: in_outdir
+  doc: "Output directory. (default: error_catalogue)\n"
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: bam
+- id: in_bam
   doc: Input alignments (aligned to ref).
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: "Output directory. (default: error_catalogue)\n"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - catalogue_errors

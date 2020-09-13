@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../convertToExtent.cwl
 inputs:
-- id: be_chatty
+- id: in_be_chatty
   doc: be chatty
   type: boolean
   inputBinding:
     prefix: -v
-- id: full_query
+- id: in_full_query
   doc: output the whole query def line
   type: boolean
   inputBinding:
     prefix: -fullquery
-- id: full_genomic
+- id: in_full_genomic
   doc: output the whole genomic def line
   type: boolean
   inputBinding:
     prefix: -fullgenomic
-- id: exons
+- id: in_exons
   doc: include exons
   type: boolean
   inputBinding:
     prefix: -exons
-- id: extended
+- id: in_extended
   doc: include the IDX of each sequence
   type: boolean
   inputBinding:
     prefix: -extended
-- id: in
+- id: in_in
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out
+- id: in_out
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - convertToExtent

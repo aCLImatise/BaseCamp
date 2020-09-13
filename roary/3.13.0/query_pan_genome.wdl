@@ -2,10 +2,10 @@ version 1.0
 
 task QueryPanGenome {
   input {
-    String? groups_filename
+    File? groups_filename
     String? action_unionintersectioncomplementgenemultifastadifference
     Float? percentage_isolates_gene
-    String? output_filename
+    File? output_filename
     String? comma_separated_list
     String? comma_separated_one
     String? comma_separated_two
@@ -20,7 +20,7 @@ task QueryPanGenome {
       ~{if defined(comma_separated_list) then ("-n " +  '"' + comma_separated_list + '"') else ""} \
       ~{if defined(comma_separated_one) then ("-i " +  '"' + comma_separated_one + '"') else ""} \
       ~{if defined(comma_separated_two) then ("-t " +  '"' + comma_separated_two + '"') else ""} \
-      ~{true="-v" false="" verbose_output_stdout}
+      ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
   parameter_meta {
     groups_filename: "groups filename [clustered_proteins]"
@@ -31,5 +31,9 @@ task QueryPanGenome {
     comma_separated_one: "comma separated list of filenames, comparison set one"
     comma_separated_two: "comma separated list of filenames, comparison set two"
     verbose_output_stdout: "verbose output to STDOUT"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_filename = "${in_output_filename}"
   }
 }

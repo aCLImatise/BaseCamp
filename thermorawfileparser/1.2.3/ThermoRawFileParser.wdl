@@ -1,26 +1,27 @@
 version 1.0
 
-task ThermoRawFileParser.sh {
+task ThermoRawFileParser {
   input {
-    String? raw_file_input
-    String? input_directory
-    String? output_directory_specify
-    String? output_file
-    String? format
-    String? metadata
-    String? metadata_output_file
-    Boolean? gzip
+    File? raw_file_input
+    File? input_directory
+    File? output_directory_specify
+    File? output_file
+    Int? format
+    Int? metadata
+    File? metadata_output_file
+    File? gzip
     Boolean? no_peak_picking
     Boolean? no_zlib_compression
-    String? logging
-    Boolean? ignore_instrument_errors
+    Int? logging
     Boolean? s_three_url
-    Boolean? s_three_access_key_id
-    Boolean? s_three_secret_accesskey
+    File? s_three_access_key_id
+    File? s_three_secret_accesskey
     Boolean? s_three_bucket_name
+    String verbose_dot
   }
   command <<<
-    ThermoRawFileParser.sh \
+    ThermoRawFileParser \
+      ~{verbose_dot} \
       ~{if defined(raw_file_input) then ("--input " +  '"' + raw_file_input + '"') else ""} \
       ~{if defined(input_directory) then ("--input_directory " +  '"' + input_directory + '"') else ""} \
       ~{if defined(output_directory_specify) then ("--output " +  '"' + output_directory_specify + '"') else ""} \
@@ -28,32 +29,38 @@ task ThermoRawFileParser.sh {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(metadata) then ("--metadata " +  '"' + metadata + '"') else ""} \
       ~{if defined(metadata_output_file) then ("--metadata_output_file " +  '"' + metadata_output_file + '"') else ""} \
-      ~{true="--gzip" false="" gzip} \
-      ~{true="--noPeakPicking" false="" no_peak_picking} \
-      ~{true="--noZlibCompression" false="" no_zlib_compression} \
+      ~{if (gzip) then "--gzip" else ""} \
+      ~{if (no_peak_picking) then "--noPeakPicking" else ""} \
+      ~{if (no_zlib_compression) then "--noZlibCompression" else ""} \
       ~{if defined(logging) then ("--logging " +  '"' + logging + '"') else ""} \
-      ~{true="--ignoreInstrumentErrors" false="" ignore_instrument_errors} \
-      ~{true="--s3_url" false="" s_three_url} \
-      ~{true="--s3_accesskeyid" false="" s_three_access_key_id} \
-      ~{true="--s3_secretaccesskey" false="" s_three_secret_accesskey} \
-      ~{true="--s3_bucketName" false="" s_three_bucket_name}
+      ~{if (s_three_url) then "--s3_url" else ""} \
+      ~{if (s_three_access_key_id) then "--s3_accesskeyid" else ""} \
+      ~{if (s_three_secret_accesskey) then "--s3_secretaccesskey" else ""} \
+      ~{if (s_three_bucket_name) then "--s3_bucketName" else ""}
   >>>
   parameter_meta {
-    raw_file_input: "The raw file input (Required). Specify this or an input directory -d."
-    input_directory: "The directory containing the raw files (Required). Specify this or an input raw file -i."
-    output_directory_specify: "The output directory. Specify this or an output file -b. Specifying neither writes to the input directory."
-    output_file: "The output file. Specify this or an output directory -o. Specifying neither writes to the input directory."
-    format: "The spectra output format: 0 for MGF, 1 for mzML, 2 for indexed mzML, 3 for Parquet. Defaults to mzML if no format is specified."
+    raw_file_input: "The raw file input (Required). Specify this or an\\ninput directory -d."
+    input_directory: "The directory containing the raw files (Required).\\nSpecify this or an input raw file -i."
+    output_directory_specify: "The output directory. Specify this or an output\\nfile -b. Specifying neither writes to the input\\ndirectory."
+    output_file: "The output file. Specify this or an output\\ndirectory -o. Specifying neither writes to the\\ninput directory."
+    format: "The spectra output format: 0 for MGF, 1 for mzML,\\n2 for indexed mzML, 3 for Parquet. Defaults to\\nmzML if no format is specified."
     metadata: "The metadata output format: 0 for JSON, 1 for TXT."
-    metadata_output_file: "The metadata output file. By default the metadata file is written to the output directory."
+    metadata_output_file: "The metadata output file. By default the metadata\\nfile is written to the output directory."
     gzip: "GZip the output file."
-    no_peak_picking: "Don't use the peak picking provided by the native Thermo library. By default peak picking is enabled."
-    no_zlib_compression: "Don't use zlib compression for the m/z ratios and intensities. By default zlib compression is enabled."
-    logging: "Optional logging level: 0 for silent, 1 for verbose."
-    ignore_instrument_errors: "Ignore missing properties by the instrument."
-    s_three_url: "[=VALUE]       Optional property to write directly the data into S3 Storage."
-    s_three_access_key_id: "[=VALUE] Optional key for the S3 bucket to write the file output."
-    s_three_secret_accesskey: "[=VALUE] Optional key for the S3 bucket to write the file output."
-    s_three_bucket_name: "[=VALUE] S3 bucket name"
+    no_peak_picking: "Don't use the peak picking provided by the native\\nThermo library. By default peak picking is\\nenabled."
+    no_zlib_compression: "Don't use zlib compression for the m/z ratios and\\nintensities. By default zlib compression is\\nenabled."
+    logging: "Optional logging level: 0 for silent, 1 for"
+    s_three_url: "[=VALUE]       Optional property to write directly the data into\\nS3 Storage."
+    s_three_access_key_id: "[=VALUE]\\nOptional key for the S3 bucket to write the file\\noutput."
+    s_three_secret_accesskey: "[=VALUE]\\nOptional key for the S3 bucket to write the file\\noutput."
+    s_three_bucket_name: "[=VALUE]\\nS3 bucket name\\n"
+    verbose_dot: "-e, --ignoreInstrumentErrors"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_metadata_output_file = "${in_metadata_output_file}"
+    File out_gzip = "${in_gzip}"
+    File out_s_three_access_key_id = "${in_s_three_access_key_id}"
+    File out_s_three_secret_accesskey = "${in_s_three_secret_accesskey}"
   }
 }

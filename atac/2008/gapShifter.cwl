@@ -1,17 +1,10 @@
 class: CommandLineTool
 id: ../../../gapShifter.cwl
-inputs:
-- id: var_0
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: var_1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gapShifter

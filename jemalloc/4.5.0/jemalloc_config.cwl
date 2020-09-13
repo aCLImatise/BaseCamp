@@ -1,72 +1,75 @@
 class: CommandLineTool
 id: ../../../jemalloc_config.cwl
 inputs:
-- id: revision
+- id: in_revision
   doc: ': Print shared library revision number.'
   type: boolean
   inputBinding:
     prefix: --revision
-- id: config
+- id: in_config
   doc: ': Print configure options used to build jemalloc.'
   type: boolean
   inputBinding:
     prefix: --config
-- id: prefix
+- id: in_prefix
   doc: ': Print installation directory prefix.'
   type: boolean
   inputBinding:
     prefix: --prefix
-- id: bindir
+- id: in_bindir
   doc: ': Print binary installation directory.'
   type: boolean
   inputBinding:
     prefix: --bindir
-- id: datadir
+- id: in_datadir
   doc: ': Print data installation directory.'
   type: boolean
   inputBinding:
     prefix: --datadir
-- id: includedir
+- id: in_includedir
   doc: ': Print include installation directory.'
   type: boolean
   inputBinding:
     prefix: --includedir
-- id: libdir
+- id: in_libdir
   doc: ': Print library installation directory.'
   type: boolean
   inputBinding:
     prefix: --libdir
-- id: mandir
+- id: in_mandir
   doc: ': Print manual page installation directory.'
   type: boolean
   inputBinding:
     prefix: --mandir
-- id: cc
+- id: in_cc
   doc: ': Print compiler used to build jemalloc.'
   type: boolean
   inputBinding:
     prefix: --cc
-- id: cflags
+- id: in_cflags
   doc: ': Print compiler flags used to build jemalloc.'
   type: boolean
   inputBinding:
     prefix: --cflags
-- id: cppflags
+- id: in_cppflags
   doc: ': Print preprocessor flags used to build jemalloc.'
   type: boolean
   inputBinding:
     prefix: --cppflags
-- id: ldflags
+- id: in_ldflags
   doc: ': Print library flags used to build jemalloc.'
   type: boolean
   inputBinding:
     prefix: --ldflags
-- id: libs
+- id: in_libs
   doc: ': Print libraries jemalloc was linked against.'
   type: boolean
   inputBinding:
     prefix: --libs
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - jemalloc-config

@@ -2,6 +2,9 @@ version 1.0
 
 task ProtpredGromacsTestComputeObjetivies {
   command <<<
-    protpred-Gromacs-Test_compute_objetivies
+    protpred_Gromacs_Test_compute_objetivies
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

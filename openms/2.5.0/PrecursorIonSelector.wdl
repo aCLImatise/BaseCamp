@@ -2,22 +2,22 @@ version 1.0
 
 task PrecursorIonSelector {
   input {
-    String? in
-    String? out
-    String? next_feat
-    String? ids
+    File? in
+    File? out
+    File? next_feat
+    File? ids
     Int? num_precursors
     File? raw_data
     Boolean? load_preprocessing
     Boolean? store_preprocessing
     Boolean? simulation
-    String? sim_results
-    String? db_path
-    String? rt_model
-    String? dt_model
+    File? sim_results
+    File? db_path
+    File? rt_model
+    File? dt_model
     String? fixed_modifications
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -29,9 +29,9 @@ task PrecursorIonSelector {
       ~{if defined(ids) then ("-ids " +  '"' + ids + '"') else ""} \
       ~{if defined(num_precursors) then ("-num_precursors " +  '"' + num_precursors + '"') else ""} \
       ~{if defined(raw_data) then ("-raw_data " +  '"' + raw_data + '"') else ""} \
-      ~{true="-load_preprocessing" false="" load_preprocessing} \
-      ~{true="-store_preprocessing" false="" store_preprocessing} \
-      ~{true="-simulation" false="" simulation} \
+      ~{if (load_preprocessing) then "-load_preprocessing" else ""} \
+      ~{if (store_preprocessing) then "-store_preprocessing" else ""} \
+      ~{if (simulation) then "-simulation" else ""} \
       ~{if defined(sim_results) then ("-sim_results " +  '"' + sim_results + '"') else ""} \
       ~{if defined(db_path) then ("-db_path " +  '"' + db_path + '"') else ""} \
       ~{if defined(rt_model) then ("-rt_model " +  '"' + rt_model + '"') else ""} \
@@ -40,7 +40,7 @@ task PrecursorIonSelector {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*            Input feature map file (featureXML) (valid formats: 'featureXML')"
@@ -61,5 +61,11 @@ task PrecursorIonSelector {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_next_feat = "${in_next_feat}"
+    File out_sim_results = "${in_sim_results}"
   }
 }

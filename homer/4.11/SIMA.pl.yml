@@ -1,0 +1,167 @@
+!Command
+command:
+- SIMA.pl
+positional: []
+named:
+- !Flag
+  description: (Domains to perform analysis on)
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: domain peak file
+  optional: true
+- !Flag
+  description: '[peak file2] ... (features to check for enrichment)'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: peak file1
+  optional: true
+- !Flag
+  description: <#> (resolution, default=2500)
+  synonyms:
+  - -res
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (super resolution/window size, default=10000)
+  synonyms:
+  - -window
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (minimum interaction read distance, default: 2x superRes)'
+  synonyms:
+  - -minDist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (minimum domain size, default: 500000)'
+  synonyms:
+  - -minDsize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (minimum distance between domains to test significance, default=-1)
+  synonyms:
+  - -min
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (maximum distance, set to -1 to allow inter-chr, default=1e9)
+  synonyms:
+  - -max
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(only analyze this chromosome, default: all)'
+  synonyms:
+  - -chr
+  args: !SimpleFlagArg
+    name: chromosome
+  optional: true
+- !Flag
+  description: '[peak file2] ... (heterogenous peak enrichments)'
+  synonyms:
+  - -p2
+  args: !SimpleFlagArg
+    name: peak file1
+  optional: true
+- !Flag
+  description: (All versus All, compare -p peaks against one another)
+  synonyms:
+  - -AvsA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Number of randomizations per domain, default: 1000)'
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (adjust randomization based on HiC read depth)
+  synonyms:
+  - -rdepth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (number of CPUs to use for analysis, default: 1)'
+  synonyms:
+  - -cpu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (merge results for all domains)
+  synonyms:
+  - -merge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(output stat for matrix mode, default: ratio)'
+  synonyms:
+  - -stat
+  args: !SimpleFlagArg
+    name: pvalue|ratio
+  optional: true
+- !Flag
+  description: '<#> (p-value cutoff to report the ratio, default: 0.01)'
+  synonyms:
+  - -pvalue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (minimum number of peaks, default: none)'
+  synonyms:
+  - -minPeaks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (domain name to show)
+  synonyms:
+  - -dname
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: (domain name to show, if different)
+  synonyms:
+  - -dname2
+  args: !SimpleFlagArg
+    name: name2
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tNormal usage: SIMA.pl <HIC directory> [options]\n\n\tOutput table\
+  \ is sent to stdout\n\t\t(See below for output visualization formatting)\n\n\tRequired\
+  \ Options:\n\t\t-d <domain peak file> (Domains to perform analysis on)\n\t\t-p <peak\
+  \ file1> [peak file2] ... (features to check for enrichment)\n\n\tOptions:\n\t\t\
+  -res <#> (resolution, default=2500)\n\t\t-window <#> (super resolution/window size,\
+  \ default=10000)\n\t\t-minDist <#> (minimum interaction read distance, default:\
+  \ 2x superRes)\n\t\t-minDsize <#> (minimum domain size, default: 500000)\n\t\t-min\
+  \ <#> (minimum distance between domains to test significance, default=-1)\n\t\t\
+  -max <#> (maximum distance, set to -1 to allow inter-chr, default=1e9)\n\t\t-chr\
+  \ <chromosome> (only analyze this chromosome, default: all)\n\t\t-p2 <peak file1>\
+  \ [peak file2] ... (heterogenous peak enrichments)\n\t\t-AvsA (All versus All, compare\
+  \ -p peaks against one another)\n\t\t-N <#> (Number of randomizations per domain,\
+  \ default: 1000)\n\t\t-rdepth (adjust randomization based on HiC read depth)\n\t\
+  \t-cpu <#> (number of CPUs to use for analysis, default: 1)\n\t\t-merge (merge results\
+  \ for all domains)\n\n\n\n\tOutput Visualization Formatting (Run SIMA first, then\
+  \ format the output)\n\n\t\tMatrix Mode: Takes output and prints out a matrix for\
+  \ visualization\n\t\t\tSIMA.pl -matrix <SIMA output from analysis> [options]\n\n\
+  \t\tMatrix Mode Options: (defaults to resolution of 200000, output to stdout)\n\t\
+  \t\t-stat <pvalue|ratio> (output stat for matrix mode, default: ratio)\n\t\t\t-pvalue\
+  \ <#> (p-value cutoff to report the ratio, default: 0.01)\n\t\t\t-minPeaks <#> (minimum\
+  \ number of peaks, default: none)\n\t\t\t-res <#> (resolution of matrix, default=200000)\n\
+  \t\t\t-p <peak file1> (features from initial analysis to show)\n\t\t\t-p2 <peak\
+  \ file2> (features from initial analysis to show, if used/different)\n\n\t\tCytoscape\
+  \ Mode: Takes output from single domain and prints files\n\t\t\tSIMA.pl -cytoscape\
+  \ <SIMA output from analysis>\n\t\t\t\t(output to \"cytoscape.filename.*\" files)\n\
+  \t\t\t-dname <name> (domain name to show)\n\t\t\t-dname2 <name2> (domain name to\
+  \ show, if different)\n\n"
+generated_using:
+- --help

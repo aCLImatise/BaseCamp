@@ -4,32 +4,34 @@ task Swipe {
   input {
     File? db
     File? query
-    String? matrix
-    String? penalty
-    String? reward
-    String? gap_open
-    String? gap_extend
-    String? num_descriptions
-    String? num_alignments
-    String? evalue
-    String? mine_value
-    String? min_score
-    String? max_score
-    String? num_threads
-    String? out_fmt
+    File? matrix
+    Int? penalty
+    Int? reward
+    Int? gap_open
+    Int? gap_extend
+    Int? num_descriptions
+    Int? num_alignments
+    Float? evalue
+    Float? mine_value
+    Int? min_score
+    Int? max_score
+    Int? num_threads
+    Int? out_fmt
     Boolean? show_gis
-    String? sym_type
-    String? strand
-    String? query_gen_code
-    String? db_gen_code
+    Int? sym_type
+    Int? strand
+    Int? query_gen_code
+    Int? db_gen_code
     File? taxid_list
-    String? dump
+    Int? dump
     Boolean? show_taxid
     File? out
-    String? db_size
+    Int? db_size
+    Int two_two_one_dot
   }
   command <<<
     swipe \
+      ~{two_two_one_dot} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
       ~{if defined(matrix) then ("--matrix " +  '"' + matrix + '"') else ""} \
@@ -45,14 +47,14 @@ task Swipe {
       ~{if defined(max_score) then ("--max_score " +  '"' + max_score + '"') else ""} \
       ~{if defined(num_threads) then ("--num_threads " +  '"' + num_threads + '"') else ""} \
       ~{if defined(out_fmt) then ("--outfmt " +  '"' + out_fmt + '"') else ""} \
-      ~{true="--show_gis" false="" show_gis} \
+      ~{if (show_gis) then "--show_gis" else ""} \
       ~{if defined(sym_type) then ("--symtype " +  '"' + sym_type + '"') else ""} \
       ~{if defined(strand) then ("--strand " +  '"' + strand + '"') else ""} \
       ~{if defined(query_gen_code) then ("--query_gencode " +  '"' + query_gen_code + '"') else ""} \
       ~{if defined(db_gen_code) then ("--db_gencode " +  '"' + db_gen_code + '"') else ""} \
       ~{if defined(taxid_list) then ("--taxidlist " +  '"' + taxid_list + '"') else ""} \
       ~{if defined(dump) then ("--dump " +  '"' + dump + '"') else ""} \
-      ~{true="--show_taxid" false="" show_taxid} \
+      ~{if (show_taxid) then "--show_taxid" else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(db_size) then ("--dbsize " +  '"' + db_size + '"') else ""}
   >>>
@@ -82,5 +84,10 @@ task Swipe {
     show_taxid: "show taxid etc in results (no)"
     out: "output file (stdout)"
     db_size: "set effective database size (0)"
+    two_two_one_dot: "Usage: swipe [OPTIONS]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

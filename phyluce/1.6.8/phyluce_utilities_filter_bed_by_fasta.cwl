@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../phyluce_utilities_filter_bed_by_fasta.cwl
 inputs:
-- id: bed
+- id: in_bed
   doc: The BED file to filter.
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: fast_a
+- id: in_fast_a
   doc: The FASTA file to use as a filter.
-  type: string
+  type: File
   inputBinding:
     prefix: --fasta
-- id: output
+- id: in_output
   doc: The output BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output BED file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_utilities_filter_bed_by_fasta

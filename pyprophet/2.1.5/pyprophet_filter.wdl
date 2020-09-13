@@ -18,9 +18,12 @@ task PyprophetFilter {
   >>>
   parameter_meta {
     in: "PyProphet input file.  [required]"
-    max_precursor_pep: "Maximum PEP to retain scored precursors in sqMass.  [default: 0.7]"
-    max_peak_group_pep: "Maximum PEP to retain scored peak groups in sqMass.  [default: 0.7]"
-    max_transition_pep: "Maximum PEP to retain scored transitions in sqMass.  [default: 0.7]"
+    max_precursor_pep: "Maximum PEP to retain scored precursors in"
+    max_peak_group_pep: "Maximum PEP to retain scored peak groups in"
+    max_transition_pep: "Maximum PEP to retain scored transitions in"
     sq_mass_files: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

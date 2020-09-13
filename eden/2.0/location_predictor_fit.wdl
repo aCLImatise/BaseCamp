@@ -2,16 +2,16 @@ version 1.0
 
 task LocationPredictorFit {
   input {
-    String? input_file
-    String? model_file
-    String? gene_domain_score_file_name
-    String? output_dir
+    File? input_file
+    File? model_file
+    File? gene_domain_score_file_name
+    File? output_dir
     Array[String] selected_column_names
-    String? window_size
-    String? complexity
-    String? nbits
-    String? n_discretization_levels
-    String? label_size
+    Int? window_size
+    Int? complexity
+    Int? nbits
+    Int? n_discretization_levels
+    Int? label_size
     Int? min_subarray_size
     Int? max_subarray_size
   }
@@ -42,6 +42,10 @@ task LocationPredictorFit {
     n_discretization_levels: "... (default: 100)"
     label_size: "... (default: 5)"
     min_subarray_size: "... (default: 3)"
-    max_subarray_size: "... (default: 15)"
+    max_subarray_size: "... (default: 15)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_dir = "${in_output_dir}"
   }
 }

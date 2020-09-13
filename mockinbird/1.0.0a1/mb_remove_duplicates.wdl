@@ -1,14 +1,17 @@
 version 1.0
 
-task MbRemoveDuplicates {
+task Mbremoveduplicates {
   input {
     Boolean? verbose
   }
   command <<<
-    mb-remove-duplicates \
-      ~{true="--verbose" false="" verbose}
+    mb_remove_duplicates \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     verbose: "verbose output"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

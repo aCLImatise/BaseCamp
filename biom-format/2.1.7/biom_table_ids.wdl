@@ -1,17 +1,20 @@
 version 1.0
 
-task BiomTableIds {
+task BiomTableids {
   input {
     File? input_fp
     Boolean? observations
   }
   command <<<
-    biom table-ids \
+    biom table_ids \
       ~{if defined(input_fp) then ("--input-fp " +  '"' + input_fp + '"') else ""} \
-      ~{true="--observations" false="" observations}
+      ~{if (observations) then "--observations" else ""}
   >>>
   parameter_meta {
     input_fp: "The input BIOM table  [required]"
     observations: "Grab observation IDs"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

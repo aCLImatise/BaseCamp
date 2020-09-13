@@ -1,14 +1,26 @@
 version 1.0
 
-task BedextractMegarow {
+task Bedextractmegarow {
   input {
-    String zero
+    Int zero
+    Int one
+    Int two
+    Int three
   }
   command <<<
-    bedextract-megarow \
-      ~{zero}
+    bedextract_megarow \
+      ~{zero} \
+      ~{one} \
+      ~{two} \
+      ~{three}
   >>>
   parameter_meta {
     zero: ""
+    one: ""
+    two: ""
+    three: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

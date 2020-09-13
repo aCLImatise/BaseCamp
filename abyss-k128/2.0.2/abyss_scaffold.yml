@@ -1,4 +1,6 @@
 !Command
+command:
+- abyss-scaffold
 positional:
 - !Positional
   description: contigs in FASTA format
@@ -17,6 +19,23 @@ positional:
   optional: false
 named:
 - !Flag
+  description: minimum number of pairs [0]
+  synonyms:
+  - -n
+  - --npairs
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "minimum contig length [200]\nor -s N0-N1   Find the value of s in\
+    \ [N0,N1]\nthat maximizes the scaffold N50."
+  synonyms:
+  - -s
+  - --seed-length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
   description: length of a k-mer
   synonyms:
   - -k
@@ -25,7 +44,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: expected genome size. Used to calculate NG50 and associated stats [disabled]
+  description: "expected genome size. Used to calculate NG50\nand associated stats\
+    \ [disabled]"
   synonyms:
   - -G
   - --genome-size
@@ -121,10 +141,9 @@ named:
   args: !SimpleFlagArg
     name: NAME
   optional: true
-command:
-- abyss-scaffold
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: display this help and exit
   synonyms:

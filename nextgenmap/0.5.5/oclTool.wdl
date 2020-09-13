@@ -4,4 +4,7 @@ task OclTool {
   command <<<
     oclTool
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

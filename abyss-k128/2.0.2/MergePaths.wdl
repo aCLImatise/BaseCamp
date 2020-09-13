@@ -2,13 +2,13 @@ version 1.0
 
 task MergePaths {
   input {
-    String? km_er
-    String? seed_length
+    Int? km_er
+    Int? seed_length
     File? out
     Boolean? no_greedy
     Boolean? greedy
     File? graph
-    String? threads
+    Int? threads
     Boolean? verbose
     File? db
     String? library
@@ -24,11 +24,11 @@ task MergePaths {
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
       ~{if defined(seed_length) then ("--seed-length " +  '"' + seed_length + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
-      ~{true="--no-greedy" false="" no_greedy} \
-      ~{true="--greedy" false="" greedy} \
+      ~{if (no_greedy) then "--no-greedy" else ""} \
+      ~{if (greedy) then "--greedy" else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
@@ -49,5 +49,8 @@ task MergePaths {
     species: "specify species NAME for database"
     len: "lengths of the contigs"
     path: "sequences of contig IDs"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

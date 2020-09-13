@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../toUpper.cwl
 inputs:
-- id: in_file
+- id: in_in_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: outfile
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - toUpper

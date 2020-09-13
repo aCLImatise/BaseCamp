@@ -1,5 +1,17 @@
 !Command
-positional: []
+command:
+- sarscov2summary
+positional:
+- !Positional
+  description: -c COORDINATES, --coordinates COORDINATES
+  position: 0
+  name: p-value
+  optional: false
+- !Positional
+  description: -E EVOLUTIONARY_ANNOTATION, --evolutionary_annotation EVOLUTIONARY_ANNOTATION
+  position: 0
+  name: frequency
+  optional: false
 named:
 - !Flag
   description: Write results here
@@ -42,7 +54,7 @@ named:
     name: PRIME
   optional: true
 - !Flag
-  description: p-value
+  description: ''
   synonyms:
   - -P
   - --pvalue
@@ -50,15 +62,7 @@ named:
     name: PVALUE
   optional: true
 - !Flag
-  description: An alignment with reference sequence (assumed to start with NC)
-  synonyms:
-  - -c
-  - --coordinates
-  args: !SimpleFlagArg
-    name: COORDINATES
-  optional: true
-- !Flag
-  description: Primary database record to extract sequence information from
+  description: "Primary database record to extract sequence\ninformation from"
   synonyms:
   - -D
   - --database
@@ -74,7 +78,7 @@ named:
     name: DUPLICATES
   optional: true
 - !Flag
-  description: Also include sites with hapoltype MAF >= this frequency
+  description: Also include sites with hapoltype MAF >= this
   synonyms:
   - -M
   - --MAF
@@ -82,16 +86,8 @@ named:
     name: MAF
   optional: true
 - !Flag
-  description: If provided use evolutionary likelihood annotation
-  synonyms:
-  - -E
-  - --evolutionary_annotation
-  args: !SimpleFlagArg
-    name: EVOLUTIONARY_ANNOTATION
-  optional: true
-- !Flag
-  description: Used in conjunction with evolutionary annotation to designate the fragment
-    to look up
+  description: "Used in conjunction with evolutionary annotation to\ndesignate the\
+    \ fragment to look up"
   synonyms:
   - -F
   - --evolutionary_fragment
@@ -107,17 +103,16 @@ named:
     name: MAFS
   optional: true
 - !Flag
-  description: If provided, write a CSV file with observed/predicted frequncies
+  description: "If provided, write a CSV file with observed/predicted\nfrequncies\n"
   synonyms:
   - -V
   - --evolutionary_csv
   args: !SimpleFlagArg
     name: EVOLUTIONARY_CSV
   optional: true
-command:
-- sarscov2summary
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -2,7 +2,7 @@ version 1.0
 
 task Nasm {
   input {
-    Boolean? assemble_scitech_tasm
+    Boolean? assemble_tasm_mode
     Boolean? generate_debug_information
     Boolean? e_preprocess_only
     Boolean? preprocess_assemble_only
@@ -18,22 +18,26 @@ task Nasm {
     String? select_debugging_format
     String? write_output_outfile
     String? select_output_format
-    String? write_listing_listfile
+    File? write_listing_listfile
     Boolean? path_adds_pathname
     Boolean? digit_optimize_branch
+    Boolean? o_zero
+    Boolean? o_one
+    Boolean? ox
     Boolean? file_preincludes_file
     Boolean? macro_predefines_macro
     Boolean? macro_undefines_macro
     Boolean? format_specifies_gnu
-    Boolean? foo_enables_warning
+    Boolean? foo_enables_wfoo
     Boolean? w_foo
+    Boolean? postfix
     String? at
     String error
     String macro_params
     String macro_self_ref
     String macro_defaults
     String orphan_labels
-    String number_overflow
+    Int number_overflow
     String gnu_elf_extensions
     Float float_overflow
     Float float_de_norm
@@ -61,35 +65,39 @@ task Nasm {
       ~{lock} \
       ~{hle} \
       ~{bnd} \
-      ~{true="-t" false="" assemble_scitech_tasm} \
-      ~{true="-g" false="" generate_debug_information} \
-      ~{true="-E" false="" e_preprocess_only} \
-      ~{true="-a" false="" preprocess_assemble_only} \
-      ~{true="-M" false="" generate_makefile_dependencies} \
-      ~{true="-MG" false="" mg} \
+      ~{if (assemble_tasm_mode) then "-t" else ""} \
+      ~{if (generate_debug_information) then "-g" else ""} \
+      ~{if (e_preprocess_only) then "-E" else ""} \
+      ~{if (preprocess_assemble_only) then "-a" else ""} \
+      ~{if (generate_makefile_dependencies) then "-M" else ""} \
+      ~{if (mg) then "-MG" else ""} \
       ~{if defined(mf) then ("-MF " +  '"' + mf + '"') else ""} \
       ~{if defined(md) then ("-MD " +  '"' + md + '"') else ""} \
       ~{if defined(mt) then ("-MT " +  '"' + mt + '"') else ""} \
       ~{if defined(mq) then ("-MQ " +  '"' + mq + '"') else ""} \
-      ~{true="-MP" false="" mp} \
-      ~{true="-Z" false="" file_redirect_messages} \
-      ~{true="-s" false="" redirect_error_messages} \
+      ~{if (mp) then "-MP" else ""} \
+      ~{if (file_redirect_messages) then "-Z" else ""} \
+      ~{if (redirect_error_messages) then "-s" else ""} \
       ~{if defined(select_debugging_format) then ("-F " +  '"' + select_debugging_format + '"') else ""} \
       ~{if defined(write_output_outfile) then ("-o " +  '"' + write_output_outfile + '"') else ""} \
       ~{if defined(select_output_format) then ("-f " +  '"' + select_output_format + '"') else ""} \
       ~{if defined(write_listing_listfile) then ("-l " +  '"' + write_listing_listfile + '"') else ""} \
-      ~{true="-I" false="" path_adds_pathname} \
-      ~{true="-O" false="" digit_optimize_branch} \
-      ~{true="-P" false="" file_preincludes_file} \
-      ~{true="-D" false="" macro_predefines_macro} \
-      ~{true="-U" false="" macro_undefines_macro} \
-      ~{true="-X" false="" format_specifies_gnu} \
-      ~{true="-w" false="" foo_enables_warning} \
-      ~{true="-w-foo" false="" w_foo} \
+      ~{if (path_adds_pathname) then "-I" else ""} \
+      ~{if (digit_optimize_branch) then "-O" else ""} \
+      ~{if (o_zero) then "-O0" else ""} \
+      ~{if (o_one) then "-O1" else ""} \
+      ~{if (ox) then "-Ox" else ""} \
+      ~{if (file_preincludes_file) then "-P" else ""} \
+      ~{if (macro_predefines_macro) then "-D" else ""} \
+      ~{if (macro_undefines_macro) then "-U" else ""} \
+      ~{if (format_specifies_gnu) then "-X" else ""} \
+      ~{if (foo_enables_wfoo) then "-w" else ""} \
+      ~{if (w_foo) then "-w-foo" else ""} \
+      ~{if (postfix) then "--postfix" else ""} \
       ~{if defined(at) then ("-@ " +  '"' + at + '"') else ""}
   >>>
   parameter_meta {
-    assemble_scitech_tasm: "assemble in SciTech TASM compatible mode"
+    assemble_tasm_mode: "assemble in SciTech TASM compatible mode"
     generate_debug_information: "generate debug information in selected format"
     e_preprocess_only: "(or -e)  preprocess only (writes output to stdout by default)"
     preprocess_assemble_only: "don't preprocess (assemble only)"
@@ -107,13 +115,17 @@ task Nasm {
     select_output_format: "select an output format"
     write_listing_listfile: "write listing to a listfile"
     path_adds_pathname: "<path>    adds a pathname to the include file path"
-    digit_optimize_branch: "<digit>   optimize branch offsets -O0: No optimization -O1: Minimal optimization -Ox: Multipass optimization (default)"
+    digit_optimize_branch: "<digit>   optimize branch offsets"
+    o_zero: ": No optimization"
+    o_one: ": Minimal optimization"
+    ox: ": Multipass optimization (default)"
     file_preincludes_file: "<file>    pre-includes a file"
     macro_predefines_macro: "<macro>[=<value>] pre-defines a macro"
     macro_undefines_macro: "<macro>   undefines a macro"
     format_specifies_gnu: "<format>  specifies error reporting format (gnu or vc)"
-    foo_enables_warning: "+foo      enables warning foo (equiv. -Wfoo)"
+    foo_enables_wfoo: "+foo      enables warning foo (equiv. -Wfoo)"
     w_foo: "disable warning foo (equiv. -Wno-foo)"
+    postfix: "this options prepend or append the given argument to all\\nextern and global variables"
     at: ""
     error: "treat warnings as errors (default off)"
     macro_params: "macro calls with wrong parameter count (default on)"
@@ -130,5 +142,8 @@ task Nasm {
     lock: "lock prefix on unlockable instructions (default on)"
     hle: "invalid hle prefixes (default on)"
     bnd: "invalid bnd prefixes (default on)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

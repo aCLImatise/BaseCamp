@@ -2,10 +2,10 @@ version 1.0
 
 task CreateDataSet {
   input {
-    String? _genotype_file
+    File? _genotype_file
     String? _seed_random
-    String? _percentage_masked
-    String? _output_file
+    Float? _percentage_masked
+    File? _output_file
   }
   command <<<
     createDataSet \
@@ -19,5 +19,9 @@ task CreateDataSet {
     _seed_random: "-- seed random init             (default: random)"
     _percentage_masked: "-- percentage of masked data    (default: 0.05)"
     _output_file: "-- output file (in .geno format)(default: input_file_I.geno)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out__output_file = "${in__output_file}"
   }
 }

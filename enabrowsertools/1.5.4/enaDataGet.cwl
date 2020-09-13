@@ -1,62 +1,59 @@
 class: CommandLineTool
 id: ../../../enaDataGet.cwl
 inputs:
-- id: format
-  doc: 'File format required. Format requested must be permitted for data type selected.
-    sequence, assembly and wgs accessions: embl(default) and fasta formats. read group:
-    submitted, fastq and sra formats. analysis group: submitted only.'
+- id: in_format
+  doc: "File format required. Format requested must be\npermitted for data type selected.\
+    \ sequence, assembly\nand wgs accessions: embl(default) and fasta formats.\nread\
+    \ group: submitted, fastq and sra formats. analysis\ngroup: submitted only."
   type: string
   inputBinding:
     prefix: --format
-- id: dest
-  doc: Destination directory (default is current running directory)
-  type: string
+- id: in_dest
+  doc: "Destination directory (default is current running\ndirectory)"
+  type: Directory
   inputBinding:
     prefix: --dest
-- id: wgs
-  doc: Download WGS set for each assembly if available (default is false)
+- id: in_wgs
+  doc: "Download WGS set for each assembly if available\n(default is false)"
   type: boolean
   inputBinding:
     prefix: --wgs
-- id: extract_wgs
-  doc: Extract WGS scaffolds for each assembly if available (default is false)
+- id: in_extract_wgs
+  doc: "Extract WGS scaffolds for each assembly if available\n(default is false)"
   type: boolean
   inputBinding:
     prefix: --extract-wgs
-- id: expanded
-  doc: Expand CON scaffolds when downloading embl format (default is false)
+- id: in_expanded
+  doc: "Expand CON scaffolds when downloading embl format\n(default is false)"
   type: boolean
   inputBinding:
     prefix: --expanded
-- id: meta
-  doc: Download read or analysis XML in addition to data files (default is false)
+- id: in_meta
+  doc: "Download read or analysis XML in addition to data\nfiles (default is false)"
   type: boolean
   inputBinding:
     prefix: --meta
-- id: index
-  doc: Download CRAM index files with submitted CRAM files, if any (default is false).
-    This flag is ignored for fastq and sra format options.
+- id: in_index
+  doc: "Download CRAM index files with submitted CRAM files,\nif any (default is false).\
+    \ This flag is ignored for\nfastq and sra format options."
   type: boolean
   inputBinding:
     prefix: --index
-- id: aspera
-  doc: Use the aspera command line client to download, instead of FTP.
+- id: in_aspera
+  doc: "Use the aspera command line client to download,\ninstead of FTP."
   type: boolean
   inputBinding:
     prefix: --aspera
-- id: aspera_settings
-  doc: Use the provided settings file, will otherwise check for environment variable
-    or default settings file location.
-  type: string
+- id: in_aspera_settings
+  doc: "Use the provided settings file, will otherwise check\nfor environment variable\
+    \ or default settings file\nlocation."
+  type: File
   inputBinding:
     prefix: --aspera-settings
-- id: accession
-  doc: Sequence, coding, assembly, run, experiment or analysis accession or WGS prefix
-    (LLLLVV) to download
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - enaDataGet

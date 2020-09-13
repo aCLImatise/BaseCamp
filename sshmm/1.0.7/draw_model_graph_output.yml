@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- draw_model_graph
+- output
 positional:
 - !Positional
   description: ''
@@ -21,17 +24,18 @@ positional:
   name: output
   optional: false
 named: []
-command:
-- draw_model_graph
-- output
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - draw_model_graph
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - draw_model_graph
+    - sequence_number
     positional:
     - !Positional
       description: ''
@@ -54,11 +58,9 @@ parent: &id001 !Command
       name: output
       optional: false
     named: []
-    command:
-    - draw_model_graph
-    - sequence_number
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -70,7 +72,7 @@ parent: &id001 !Command
     help_text: "usage: draw_model_graph [-h] model sequence_number output\ndraw_model_graph:\
       \ error: too few arguments\n"
     generated_using: &id003 []
-  - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -90,6 +92,7 @@ parent: &id001 !Command
   generated_using:
   - --help
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

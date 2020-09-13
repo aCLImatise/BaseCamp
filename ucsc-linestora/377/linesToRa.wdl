@@ -2,16 +2,16 @@ version 1.0
 
 task LinesToRa {
   input {
-    String in_dot_txt
-    String out_do_tra
+    String? not_valid_option
   }
   command <<<
     linesToRa \
-      ~{in_dot_txt} \
-      ~{out_do_tra}
+      ~{if defined(not_valid_option) then ("-h " +  '"' + not_valid_option + '"') else ""}
   >>>
   parameter_meta {
-    in_dot_txt: ""
-    out_do_tra: ""
+    not_valid_option: "not a valid option"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task ArvadosCwlRunner {
+task Arvadoscwlrunner {
   command <<<
-    arvados-cwl-runner
+    arvados_cwl_runner
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

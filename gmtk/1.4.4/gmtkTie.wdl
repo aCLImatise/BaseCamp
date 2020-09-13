@@ -4,4 +4,7 @@ task GmtkTie {
   command <<<
     gmtkTie
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -11,13 +11,16 @@ task QpF4ratio {
     qpF4ratio \
       ~{file} \
       ~{if defined(use_parameters_file) then ("-p " +  '"' + use_parameters_file + '"') else ""} \
-      ~{true="-v" false="" print_version_exit} \
-      ~{true="-V" false="" toggle_verbose_mode}
+      ~{if (print_version_exit) then "-v" else ""} \
+      ~{if (toggle_verbose_mode) then "-V" else ""}
   >>>
   parameter_meta {
     use_parameters_file: "... use parameters from <file> ."
     print_version_exit: "... print version and exit."
     toggle_verbose_mode: "... toggle verbose mode ON."
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

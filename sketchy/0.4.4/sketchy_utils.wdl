@@ -4,4 +4,7 @@ task SketchyUtils {
   command <<<
     sketchy utils
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,22 +2,25 @@ version 1.0
 
 task MafToSnpBed {
   input {
+    String? xxx
     String database
     String input_dot_maf
     String input_do_tgp
-    String output_dot_bed
   }
   command <<<
     mafToSnpBed \
       ~{database} \
       ~{input_dot_maf} \
       ~{input_do_tgp} \
-      ~{output_dot_bed}
+      ~{if defined(xxx) then ("-xxx " +  '"' + xxx + '"') else ""}
   >>>
   parameter_meta {
+    xxx: ""
     database: ""
     input_dot_maf: ""
     input_do_tgp: ""
-    output_dot_bed: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

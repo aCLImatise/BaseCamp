@@ -4,4 +4,7 @@ task Fastool {
   command <<<
     fastool
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

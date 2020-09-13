@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../tbvcfreport_ARGS.cwl
 inputs:
-- id: tb_vcf_report
+- id: in_tb_vcf_report
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: command
+- id: in_command
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: args
+- id: in_args
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tbvcfreport

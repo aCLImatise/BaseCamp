@@ -1,53 +1,66 @@
 class: CommandLineTool
 id: ../../../enrichm_classify.cwl
 inputs:
-- id: log
+- id: in_log
   doc: Output logging information to this file.
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: verbosity
+- id: in_verbosity
   doc: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
-  type: string
+  type: long
   inputBinding:
     prefix: --verbosity
-- id: output
+- id: in_output
   doc: Output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: force
+- id: in_force
   doc: Overwrite previous run
   type: boolean
   inputBinding:
     prefix: --force
-- id: genome_and_annotation_file
+- id: in_genome_and_annotation_file
   doc: Path to file containing a genome<tab>annotation list
-  type: string
+  type: File
   inputBinding:
     prefix: --genome_and_annotation_file
-- id: genome_and_annotation_matrix
+- id: in_genome_and_annotation_matrix
   doc: Path to file containing a genome annotation matrix
-  type: string
+  type: File
   inputBinding:
     prefix: --genome_and_annotation_matrix
-- id: custom_modules
+- id: in_custom_modules
   doc: Tab separated file containing module name, definition as the columns
-  type: string
+  type: File
   inputBinding:
     prefix: --custom_modules
-- id: cut_off
+- id: in_cut_off
   doc: Output only modules with greater than this percent of the requied KO groups
     (default = print all modules)
   type: string
   inputBinding:
     prefix: --cutoff
-- id: aggregate
+- id: in_aggregate
   doc: Calculate the abundance of each pathway within each genome/sample (column)
   type: boolean
   inputBinding:
     prefix: --aggregate
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_log
+  doc: Output logging information to this file.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log)
+- id: out_output
+  doc: Output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - enrichm

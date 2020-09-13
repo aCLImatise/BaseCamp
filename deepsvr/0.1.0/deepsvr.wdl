@@ -4,4 +4,7 @@ task Deepsvr {
   command <<<
     deepsvr
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task HaploToPlink {
   command <<<
     haploToPlink
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

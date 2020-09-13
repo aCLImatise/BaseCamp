@@ -16,11 +16,11 @@ task FindMissingMates {
   command <<<
     findMissingMates \
       ~{find_missing_mates} \
-      ~{true="-s" false="" disregard_bank_locks} \
-      ~{true="-v" false="" display_compatible_version} \
-      ~{true="-S" false="" looks_mates_virtue} \
-      ~{true="-M" false="" only_display_missing} \
-      ~{true="-m" false="" use_mate_information} \
+      ~{if (disregard_bank_locks) then "-s" else ""} \
+      ~{if (display_compatible_version) then "-v" else ""} \
+      ~{if (looks_mates_virtue) then "-S" else ""} \
+      ~{if (only_display_missing) then "-M" else ""} \
+      ~{if (use_mate_information) then "-m" else ""} \
       ~{if defined(contig_eid_interest) then ("-E " +  '"' + contig_eid_interest + '"') else ""} \
       ~{if defined(contig_iid_interest) then ("-I " +  '"' + contig_iid_interest + '"') else ""} \
       ~{if defined(start_of_range) then ("-x " +  '"' + start_of_range + '"') else ""} \
@@ -37,5 +37,8 @@ task FindMissingMates {
     start_of_range: "Start of range"
     end_of_range: "End of range"
     find_missing_mates: "[options]  -b <bank path>"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

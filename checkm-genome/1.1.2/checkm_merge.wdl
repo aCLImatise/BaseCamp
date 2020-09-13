@@ -3,12 +3,12 @@ version 1.0
 task CheckmMerge {
   input {
     Boolean? genes
-    String? delta_comp
-    String? delta_cont
-    String? merged_comp
-    String? merged_cont
-    String? extension
-    String? threads
+    Float? delta_comp
+    Float? delta_cont
+    Float? merged_comp
+    Float? merged_cont
+    Directory? extension
+    Int? threads
     Boolean? quiet
     String marker_file
     String bin_dir
@@ -19,14 +19,14 @@ task CheckmMerge {
       ~{marker_file} \
       ~{bin_dir} \
       ~{output_dir} \
-      ~{true="--genes" false="" genes} \
+      ~{if (genes) then "--genes" else ""} \
       ~{if defined(delta_comp) then ("--delta_comp " +  '"' + delta_comp + '"') else ""} \
       ~{if defined(delta_cont) then ("--delta_cont " +  '"' + delta_cont + '"') else ""} \
       ~{if defined(merged_comp) then ("--merged_comp " +  '"' + merged_comp + '"') else ""} \
       ~{if defined(merged_cont) then ("--merged_cont " +  '"' + merged_cont + '"') else ""} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     genes: "bins contain genes as amino acids instead of nucleotide contigs"
@@ -40,5 +40,8 @@ task CheckmMerge {
     marker_file: "marker file to use for assessing potential bin mergers (marker set or HMM file)"
     bin_dir: "directory containing bins (fasta format)"
     output_dir: "directory to write output files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

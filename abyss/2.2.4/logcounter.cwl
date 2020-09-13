@@ -1,72 +1,70 @@
 class: CommandLineTool
 id: ../../../logcounter.cwl
 inputs:
-- id: threads
+- id: in_threads
   doc: use N parallel threads [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: km_er
+- id: in_km_er
   doc: the size of a k-mer
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: seed
+- id: in_seed
   doc: the seed value used
   type: string
   inputBinding:
     prefix: --seed
-- id: bloom_size
+- id: in_bloom_size
   doc: size of bloom filter [500M]
-  type: string
+  type: long
   inputBinding:
     prefix: --bloom-size
-- id: chastity
+- id: in_chastity
   doc: discard unchaste reads [default]
   type: boolean
   inputBinding:
     prefix: --chastity
-- id: no_chastity
+- id: in_no_chastity
   doc: do not discard unchaste reads
   type: boolean
   inputBinding:
     prefix: --no-chastity
-- id: trim_masked
+- id: in_trim_masked
   doc: trim masked bases from the ends of reads
   type: boolean
   inputBinding:
     prefix: --trim-masked
-- id: no_trim_masked
-  doc: do not trim masked bases from the ends of reads [default]
+- id: in_no_trim_masked
+  doc: "do not trim masked bases from the ends\nof reads [default]"
   type: boolean
   inputBinding:
     prefix: --no-trim-masked
-- id: trim_quality
-  doc: trim bases from the ends of reads whose quality is less than the threshold
+- id: in_trim_quality
+  doc: "trim bases from the ends of reads whose\nquality is less than the threshold"
   type: string
   inputBinding:
     prefix: --trim-quality
-- id: standard_quality
-  doc: zero quality is `!' (33) default for FASTQ and SAM files
+- id: in_standard_quality
+  doc: "zero quality is `!' (33)\ndefault for FASTQ and SAM files"
   type: boolean
   inputBinding:
     prefix: --standard-quality
-- id: illumina_quality
-  doc: zero quality is `@' (64) default for qseq and export files
+- id: in_illumina_quality
+  doc: "zero quality is `@' (64)\ndefault for qseq and export files"
   type: boolean
   inputBinding:
     prefix: --illumina-quality
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - logcounter

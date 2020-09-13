@@ -4,4 +4,7 @@ task MakeSummaryTables {
   command <<<
     makeSummaryTables
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

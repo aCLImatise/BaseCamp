@@ -1,22 +1,10 @@
 class: CommandLineTool
 id: ../../../cleanAtac.cwl
-inputs:
-- id: discard_match_it
-  doc: discard the match if it is below this percent identity
-  type: boolean
-  inputBinding:
-    prefix: -d
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-- id: m
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -m
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cleanAtac

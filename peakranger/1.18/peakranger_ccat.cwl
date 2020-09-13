@@ -1,87 +1,85 @@
 class: CommandLineTool
 id: ../../../peakranger_ccat.cwl
 inputs:
-- id: arg_data_file
+- id: in_arg_data_file
   doc: '[ --data ] arg               data file'
   type: boolean
   inputBinding:
     prefix: -d
-- id: arg_control_file
+- id: in_arg_control_file
   doc: '[ --control ] arg            control file'
   type: boolean
   inputBinding:
     prefix: -c
-- id: format
-  doc: 'the format of the data file, can be one of :  bowtie, sam, bam and bed'
-  type: string
+- id: in_format
+  doc: "the format of the data file, can be one of :\nbowtie, sam, bam and bed"
+  type: File
   inputBinding:
     prefix: --format
-- id: arg_output_location
+- id: in_arg_output_location
   doc: '[ --output ] arg             the output location'
   type: boolean
   inputBinding:
     prefix: -o
-- id: report
+- id: in_generate_html_reports
   doc: generate html reports
   type: boolean
   inputBinding:
     prefix: --report
-- id: plot_region
-  doc: (=6000)       the length of the snapshort regions in the  report
-  type: string
+- id: in_plot_region
+  doc: (=6000)       the length of the snapshort regions in the
+  type: long
   inputBinding:
     prefix: --plot_region
-- id: gene_an_not_file
-  doc: the gene annotation file
-  type: string
-  inputBinding:
-    prefix: --gene_annot_file
-- id: arg__fdr
+- id: in_arg_fdr_cutoff
   doc: '[ --FDR ] arg (=0.11)        FDR cut-off'
   type: boolean
   inputBinding:
     prefix: -q
-- id: win_size
+- id: in_win_size
   doc: (=500)           sliding window size
-  type: string
+  type: long
   inputBinding:
     prefix: --win_size
-- id: win_step
+- id: in_win_step
   doc: (=50)            window moving step
-  type: string
+  type: long
   inputBinding:
     prefix: --win_step
-- id: min_count
+- id: in_min_count
   doc: (=4)            minimum window reads count
-  type: string
+  type: long
   inputBinding:
     prefix: --min_count
-- id: min_score
+- id: in_min_score
   doc: (=5)            minimum window reads fold change
-  type: string
+  type: long
   inputBinding:
     prefix: --min_score
-- id: arg_read_length
+- id: in_arg_read_length
   doc: '[ --ext_length ] arg (=200)  read extension length'
   type: boolean
   inputBinding:
     prefix: -l
-- id: arg_number_worker
+- id: in_arg_number_worker
   doc: '[ --thread ] arg (=7)        number of worker threads'
   type: boolean
   inputBinding:
     prefix: -t
-- id: verbose
+- id: in_verbose
   doc: show progress
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: input
-  doc: ''
+- id: in__geneannotfile_arg
+  doc: --gene_annot_file arg           the gene annotation file
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - peakranger

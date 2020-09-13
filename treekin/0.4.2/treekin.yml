@@ -1,5 +1,17 @@
 !Command
-positional: []
+command:
+- treekin
+positional:
+- !Positional
+  description: (default=off)
+  position: 0
+  name: diagonalization
+  optional: false
+- !Positional
+  description: (default=off)
+  position: 1
+  name: eigenvectors
+  optional: false
 named:
 - !Flag
   description: Make a state absorbing
@@ -10,8 +22,8 @@ named:
     name: state
   optional: true
 - !Flag
-  description: "Select method to build transition matrix: A ==> Arrhenius-like kinetics\
-    \ I ==> use input as a rate matrix  (possible values=\"A\", \"I\" default=`I')"
+  description: "Select method to build transition matrix:\nA ==> Arrhenius-like kinetics\n\
+    I ==> use input as a rate matrix  (possible\nvalues=\"A\", \"I\" default=`I')"
   synonyms:
   - -m
   - --method
@@ -19,9 +31,9 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: "Specify how to treat issues with numerical errors in probability:\
-    \ I ==> Ignore H ==> Halt the program R ==> Rescale the probability  (possible\
-    \ values=\"I\", \"H\", \"R\" default=`H')"
+  description: "Specify how to treat issues with numerical errors\nin probability:\n\
+    I ==> Ignore\nH ==> Halt the program\nR ==> Rescale the probability  (possible\n\
+    values=\"I\", \"H\", \"R\" default=`H')"
   synonyms:
   - --num-err
   args: !SimpleFlagArg
@@ -50,8 +62,8 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Read only first <int> states (assume quasi-stationary distribution
-    (derivation of others is = 0))
+  description: "Read only first <int> states (assume\nquasi-stationary distribution\
+    \ (derivation of\nothers is = 0))"
   synonyms:
   - -n
   - --nstates
@@ -59,42 +71,43 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: 'Set initial population of state <int> to <double> Can be given multiple
-    times (NOTE: sum of <double> must equal 1) (example: "--p0 2=1.0" - state 2 has
-    initial population 100 percent)'
+  description: "Set initial population of state <int> to <double>\nCan be given multiple\
+    \ times\n(NOTE: sum of <double> must equal 1)\n(example: \"--p0 2=1.0\" - state\
+    \ 2 has initial\npopulation 100 percent)"
   synonyms:
   - --p0
   args: !SimpleFlagArg
     name: STRING
   optional: true
 - !Flag
-  description: Time scaling factor (for log time-scale) (default=`1.02')
+  description: "Time scaling factor (for log time-scale)\n(default=`1.02')"
   synonyms:
   - --tinc
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: Consider degeneracy in transition rates (default=off)
+  description: "Consider degeneracy in transition rates\n(default=off)"
   synonyms:
   - --degeneracy
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use matrix-expontent routines, rather than diagonalization  (default=off)
+  description: Use matrix-expontent routines, rather than
   synonyms:
   - --exponent
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Dump transition matrix U to file mx.txt (and to binary mx.bin - not
-    fixed yet)  (default=off)
+  description: "Dump transition matrix U to file mx.txt (and to\nbinary mx.bin - not\
+    \ fixed yet)  (default=off)"
   synonyms:
   - --dumpU
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Dump transition matrix U to Mathematica-readable file mxMat.txt  (default=off)
+  description: "Dump transition matrix U to Mathematica-readable\nfile mxMat.txt \
+    \ (default=off)"
   synonyms:
   - --mathematicamatrix
   args: !EmptyFlagArg {}
@@ -107,8 +120,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input barriers file. Required in case "-m I" (rates kinetics) AND "-a"
-    (absorbing state) is given
+  description: "Input barriers file. Required in case \"-m I\"\n(rates kinetics) AND\
+    \ \"-a\" (absorbing state) is\ngiven"
   synonyms:
   - -B
   - --bar
@@ -116,8 +129,8 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: 'Compute first passage times (FPT). Arguments: all => compute all FPT
-    (slow) <num> - compute FPT to state <num> from all states'
+  description: "Compute first passage times (FPT). Arguments:\nall => compute all\
+    \ FPT (slow)\n<num> - compute FPT to state <num> from all\nstates"
   synonyms:
   - -t
   - --fpt
@@ -125,22 +138,22 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: Recover from pre-ccomputes eigenvalues and eigenvectors  (default=off)
+  description: Recover from pre-ccomputes eigenvalues and
   synonyms:
   - -r
   - --recoverE
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Dump eigenvalues and eigenvectors to a binary recovery file and continue
-    with iteration (default=off)
+  description: "Dump eigenvalues and eigenvectors to a binary\nrecovery file and continue\
+    \ with iteration\n(default=off)"
   synonyms:
   - -e
   - --dumpE
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Dump eigenvalues to ASCII file and exit (do not iterate)  (default=off)
+  description: "Dump eigenvalues to ASCII file and exit (do not\niterate)  (default=off)"
   synonyms:
   - -x
   - --dumpX
@@ -160,7 +173,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Be silent (do not print out the output) (default=off)
+  description: "Be silent (do not print out the output)\n(default=off)"
   synonyms:
   - -q
   - --quiet
@@ -174,56 +187,57 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: 'Filename where to print a visualization of rate graph (without file
-    subscript, two files will be generated: .dot and .eps with text and visual representation
-    of graph)'
+  description: "Filename where to print a visualization of rate\ngraph (without file\
+    \ subscript, two files will be\ngenerated: .dot and .eps with text and visual\n\
+    representation of graph)"
   synonyms:
   - --visualize
   args: !SimpleFlagArg
     name: STRING
   optional: true
 - !Flag
-  description: Do not diagonalize and iterate, just shorten input (meaningfull only
-    with -n X option or -fpt option or --visualize option)  (default=off)
+  description: "Do not diagonalize and iterate, just shorten input\n(meaningfull only\
+    \ with -n X option or -fpt\noption or --visualize option)  (default=off)"
   synonyms:
   - --just-shorten
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximal decrease in dimension in one step (default=`1000000')
+  description: "Maximal decrease in dimension in one step\n(default=`1000000')"
   synonyms:
   - --max-decrease
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: Machine precision used by LAPACK routines (and matrix aritmetic) --
-    if set to negative number, the lapack suggested value is used (2*DLAMCH("S") )  (default=`1E-15')
+  description: "Machine precision used by LAPACK routines (and\nmatrix aritmetic)\
+    \ -- if set to negative number,\nthe lapack suggested value is used\n(2*DLAMCH(\"\
+    S\") )  (default=`1E-15')"
   synonyms:
   - --feps
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: Use old treekin computation where we add identity matrix to transition
-    matrix. Sometimes less precise (maybe sometimes also more precise), in normal
-    case it should not affect results at all. (default=off)
+  description: "Use old treekin computation where we add identity\nmatrix to transition\
+    \ matrix. Sometimes less\nprecise (maybe sometimes also more precise), in\nnormal\
+    \ case it should not affect results at all.\n(default=off)"
   synonyms:
   - --useplusI
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Rescale all rates to be higher than the minimal rate using formula  "rate
-    -> rate^(ln(desired_minimal_rate)/ln(minimal_rate))", where desired_minimal_rate
-    is from input, minimal_rate is the lowest from all rates in rate matrix.
+  description: "Rescale all rates to be higher than the minimal\nrate using formula\
+    \  \"rate ->\nrate^(ln(desired_minimal_rate)/ln(minimal_rate))\",\nwhere desired_minimal_rate\
+    \ is from input,\nminimal_rate is the lowest from all rates in\nrate matrix."
   synonyms:
   - --minimal-rate
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: 'Rescale all rates by a hard exponent (usually 0.0<HR<1.0). Formula:
-    "rate -> rate^(hard-rescale)". Overrides --minimal-rate argument.'
+  description: "Rescale all rates by a hard exponent (usually\n0.0<HR<1.0). Formula:\
+    \ \"rate ->\nrate^(hard-rescale)\". Overrides --minimal-rate\nargument."
   synonyms:
   - --hard-rescale
   args: !SimpleFlagArg
@@ -244,15 +258,14 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Turn all the warnings about underflow on. (default=off)
+  description: "Turn all the warnings about underflow on.\n(default=off)\n"
   synonyms:
   - --warnings
   args: !EmptyFlagArg {}
   optional: true
-command:
-- treekin
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print help and exit
   synonyms:

@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../fastq_utils_di.cwl
 inputs:
-- id: strip
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_strip
   doc: Strip additional info
   type: boolean
   inputBinding:
     prefix: --strip
-- id: fast_q_file
+- id: in_fast_q_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: mate_one_file
+- id: in_mate_one_file
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: mate_two_file
+- id: in_mate_two_file
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastq-utils

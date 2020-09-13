@@ -4,4 +4,7 @@ task BayesTyper {
   command <<<
     bayesTyper
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

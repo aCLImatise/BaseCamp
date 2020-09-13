@@ -1,7 +1,10 @@
 version 1.0
 
-task SpadesCore {
+task Spadescore {
   command <<<
-    spades-core
+    spades_core
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

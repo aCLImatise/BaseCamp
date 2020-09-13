@@ -14,4 +14,7 @@ task TrimByOvl {
     file_do_to_vl: ""
     n: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

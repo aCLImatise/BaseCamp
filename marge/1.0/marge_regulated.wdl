@@ -59,4 +59,7 @@ task MargeRegulated {
     or: ""
     mouse_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

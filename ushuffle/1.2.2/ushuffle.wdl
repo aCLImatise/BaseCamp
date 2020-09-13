@@ -3,9 +3,9 @@ version 1.0
 task Ushuffle {
   input {
     String? specifies_the_sequence
-    String? specifies_number_generate
-    String? specifies_let_size
-    String? seed
+    Int? specifies_number_generate
+    Int? specifies_let_size
+    Int? seed
     Boolean? benchmark
   }
   command <<<
@@ -14,7 +14,7 @@ task Ushuffle {
       ~{if defined(specifies_number_generate) then ("-n " +  '"' + specifies_number_generate + '"') else ""} \
       ~{if defined(specifies_let_size) then ("-k " +  '"' + specifies_let_size + '"') else ""} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""} \
-      ~{true="-b" false="" benchmark}
+      ~{if (benchmark) then "-b" else ""}
   >>>
   parameter_meta {
     specifies_the_sequence: "specifies the sequence"
@@ -22,5 +22,8 @@ task Ushuffle {
     specifies_let_size: "specifies the let size"
     seed: "specifies the seed for random number generator"
     benchmark: "benchmark"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

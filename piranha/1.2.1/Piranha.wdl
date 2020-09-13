@@ -2,7 +2,7 @@ version 1.0
 
 task Piranha {
   input {
-    Boolean? name_output_omitted
+    File? name_output_omitted
     Boolean? sort
     Boolean? p_threshold
     Boolean? no_pval_correct
@@ -12,7 +12,7 @@ task Piranha {
     Boolean? bin_size_both
     Boolean? cluster_dist
     Boolean? suppress_co_vars
-    Boolean? fit
+    File? fit
     Boolean? dist
     Boolean? fit_method
     Boolean? model
@@ -24,45 +24,50 @@ task Piranha {
   }
   command <<<
     Piranha \
-      ~{true="-output" false="" name_output_omitted} \
-      ~{true="-sort" false="" sort} \
-      ~{true="-p_threshold" false="" p_threshold} \
-      ~{true="-no_pval_correct" false="" no_pval_correct} \
-      ~{true="-background_thresh" false="" background_thresh} \
-      ~{true="-bin_size_reponse" false="" bin_size_reponse} \
-      ~{true="-bin_size_covars" false="" bin_size_co_vars} \
-      ~{true="-bin_size_both" false="" bin_size_both} \
-      ~{true="-cluster_dist" false="" cluster_dist} \
-      ~{true="-suppress_covars" false="" suppress_co_vars} \
-      ~{true="-fit" false="" fit} \
-      ~{true="-dist" false="" dist} \
-      ~{true="-fitMethod" false="" fit_method} \
-      ~{true="-model" false="" model} \
-      ~{true="-VERBOSE" false="" verbose} \
-      ~{true="-UNSTRANDED" false="" un_stranded} \
-      ~{true="-no_normalisation" false="" no_normalisation} \
-      ~{true="-log_covars" false="" log_co_vars} \
-      ~{true="-about" false="" about}
+      ~{if (name_output_omitted) then "-output" else ""} \
+      ~{if (sort) then "-sort" else ""} \
+      ~{if (p_threshold) then "-p_threshold" else ""} \
+      ~{if (no_pval_correct) then "-no_pval_correct" else ""} \
+      ~{if (background_thresh) then "-background_thresh" else ""} \
+      ~{if (bin_size_reponse) then "-bin_size_reponse" else ""} \
+      ~{if (bin_size_co_vars) then "-bin_size_covars" else ""} \
+      ~{if (bin_size_both) then "-bin_size_both" else ""} \
+      ~{if (cluster_dist) then "-cluster_dist" else ""} \
+      ~{if (suppress_co_vars) then "-suppress_covars" else ""} \
+      ~{if (fit) then "-fit" else ""} \
+      ~{if (dist) then "-dist" else ""} \
+      ~{if (fit_method) then "-fitMethod" else ""} \
+      ~{if (model) then "-model" else ""} \
+      ~{if (verbose) then "-VERBOSE" else ""} \
+      ~{if (un_stranded) then "-UNSTRANDED" else ""} \
+      ~{if (no_normalisation) then "-no_normalisation" else ""} \
+      ~{if (log_co_vars) then "-log_covars" else ""} \
+      ~{if (about) then "-about" else ""}
   >>>
   parameter_meta {
-    name_output_omitted: "Name of output file, STDOUT if omitted "
-    sort: "indicates that input is unsorted and Piranha should  sort it for you "
-    p_threshold: "significance threshold for sites "
-    no_pval_correct: "don't correct p-values for multiple hypothesis  testing. We correct by default using B&H. "
-    background_thresh: "indicates that this proportion of the lowest scores  should be considered the background. Default is 0.99 "
-    bin_size_reponse: "indicates that the response (first input file) is raw  reads and should be binned into bins of this size "
-    bin_size_co_vars: "indicates that the covariates (all except first  file) are raw reads and should be binned into bins of  this size "
-    bin_size_both: "synonymous with -b x -i x for any x "
-    cluster_dist: "merge significant bins within this distance.  Setting to 0 disables merging, default is 1 (merge  adjacent) "
-    suppress_co_vars: "don't print covariate values in output "
-    fit: "Fit only, output model to file "
-    dist: "Distribution type. Currently supports Poisson,  NegativeBinomial, ZeroTruncatedPoisson,  ZeroTruncatedNegativeBinomial (default with no  covariates), PoissonRegression,  NegativeBinomialRegression,  ZeroTruncatedPoissonRegression,  ZeroTruncatedNegativeBinomialRegression  (default with covariates) "
-    fit_method: "component fitting method "
-    model: "Use the specified model file instead of fitting to  input data "
-    verbose: "output additional messages about run to stderr if set "
-    un_stranded: "Don't preserve strand (puts all the peaks in positive  strand) "
-    no_normalisation: "don't normalise covariates "
-    log_co_vars: "convert covariates to log scale "
-    about: "print about message "
+    name_output_omitted: "Name of output file, STDOUT if omitted"
+    sort: "indicates that input is unsorted and Piranha should\\nsort it for you"
+    p_threshold: "significance threshold for sites"
+    no_pval_correct: "don't correct p-values for multiple hypothesis\\ntesting. We correct by default using B&H."
+    background_thresh: "indicates that this proportion of the lowest scores\\nshould be considered the background. Default is 0.99"
+    bin_size_reponse: "indicates that the response (first input file) is raw\\nreads and should be binned into bins of this size"
+    bin_size_co_vars: "indicates that the covariates (all except first\\nfile) are raw reads and should be binned into bins of\\nthis size"
+    bin_size_both: "synonymous with -b x -i x for any x"
+    cluster_dist: "merge significant bins within this distance.\\nSetting to 0 disables merging, default is 1 (merge\\nadjacent)"
+    suppress_co_vars: "don't print covariate values in output"
+    fit: "Fit only, output model to file"
+    dist: "Distribution type. Currently supports Poisson,\\nNegativeBinomial, ZeroTruncatedPoisson,\\nZeroTruncatedNegativeBinomial (default with no\\ncovariates), PoissonRegression,\\nNegativeBinomialRegression,\\nZeroTruncatedPoissonRegression,\\nZeroTruncatedNegativeBinomialRegression\\n(default with covariates)"
+    fit_method: "component fitting method"
+    model: "Use the specified model file instead of fitting to\\ninput data"
+    verbose: "output additional messages about run to stderr if set"
+    un_stranded: "Don't preserve strand (puts all the peaks in positive\\nstrand)"
+    no_normalisation: "don't normalise covariates"
+    log_co_vars: "convert covariates to log scale"
+    about: "print about message"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_name_output_omitted = "${in_name_output_omitted}"
+    File out_fit = "${in_fit}"
   }
 }

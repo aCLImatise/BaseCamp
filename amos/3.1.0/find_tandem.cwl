@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../find_tandem.cwl
 inputs:
-- id: multifasta_file_scan
+- id: in_multifasta_file_scan
   doc: multifasta file to scan
-  type: string
+  type: File
   inputBinding:
     prefix: -f
-- id: minimum_number_units
+- id: in_minimum_number_report
   doc: 'minimum number of units to report (default: 3)'
-  type: string
+  type: long
   inputBinding:
     prefix: -u
-- id: minimum_length_tandem
+- id: in_minimum_length_tandem
   doc: 'minimum length of tandem in bp (default: 8)'
-  type: string
+  type: long
   inputBinding:
     prefix: -l
-- id: max_unit_length
+- id: in_max_unit_length
   doc: 'max unit length (default: 4)'
-  type: string
+  type: long
   inputBinding:
     prefix: -x
-- id: min_unit_length
+- id: in_min_unit_length
   doc: 'min unit length (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: -m
-- id: flanking_bp_report
+- id: in_flanking_bp_report
   doc: 'flanking bp to report (default: 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: -k
-- id: find_tandems
+- id: in_find_tandems
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - find-tandem

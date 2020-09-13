@@ -4,4 +4,7 @@ task CactusSecondaryDatabase {
   command <<<
     cactus_secondaryDatabase
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../bwa_index.cwl
 inputs:
-- id: bwt_construction_algorithm
+- id: in_bwt_construction_algorithm
   doc: 'BWT construction algorithm: bwtsw, is or rb2 [auto]'
-  type: string
+  type: long
   inputBinding:
     prefix: -a
-- id: prefix_of_index
+- id: in_prefix_of_index
   doc: prefix of the index [same as fasta name]
   type: string
   inputBinding:
     prefix: -p
-- id: block_size_bwtsw
+- id: in_block_size_effective
   doc: block size for the bwtsw algorithm (effective with -a bwtsw) [10000000]
   type: long
   inputBinding:
     prefix: -b
-- id: index_files_named
-  doc: 'index files named as <in.fasta>.64.* instead of <in.fasta>.* '
+- id: in_index_files_named
+  doc: index files named as <in.fasta>.64.* instead of <in.fasta>.*
   type: boolean
   inputBinding:
     prefix: '-6'
-- id: in_dot_fast_a
+- id: in_in_dot_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bwa

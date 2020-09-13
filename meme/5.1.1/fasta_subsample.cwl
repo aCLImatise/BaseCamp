@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../fasta_subsample.cwl
 inputs:
-- id: seed
+- id: in_len
   doc: ''
   type: string
   inputBinding:
-    prefix: -seed
-- id: nor_and
+    prefix: -len
+- id: in_off
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -off
+- id: in_nor_and
   doc: ''
   type: boolean
   inputBinding:
     prefix: -norand
-- id: rest
+- id: in_seed
   doc: ''
   type: string
   inputBinding:
-    prefix: -rest
-- id: fast_a
-  doc: ''
-  type: string
+    prefix: -seed
+- id: in_file_dot
+  doc: By default the sequences will be selected using a random number
+  type: File
   inputBinding:
     position: 0
-- id: n
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fasta-subsample

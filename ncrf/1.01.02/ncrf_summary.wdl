@@ -1,7 +1,10 @@
 version 1.0
 
-task NcrfSummary.py {
+task NcrfSummary {
   command <<<
-    ncrf_summary.py
+    ncrf_summary
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

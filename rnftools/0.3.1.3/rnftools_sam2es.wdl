@@ -14,7 +14,11 @@ task RnftoolsSam2es {
   >>>
   parameter_meta {
     sam: "SAM/BAM with aligned RNF reads(- for standard input)."
-    es: "Output ES file (evaluated segments, - for standard output)."
-    allowed_delta: "Tolerance of difference of coordinates between true (i.e., expected) alignment and real alignment (very important parameter!) (default: 5)."
+    es: "Output ES file (evaluated segments, - for standard\\noutput)."
+    allowed_delta: "Tolerance of difference of coordinates between true\\n(i.e., expected) alignment and real alignment (very\\nimportant parameter!) (default: 5).\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_es = "${in_es}"
   }
 }

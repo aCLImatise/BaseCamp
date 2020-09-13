@@ -2,7 +2,7 @@ version 1.0
 
 task Hardklor {
   input {
-    String config_file
+    File config_file
   }
   command <<<
     hardklor \
@@ -10,5 +10,8 @@ task Hardklor {
   >>>
   parameter_meta {
     config_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

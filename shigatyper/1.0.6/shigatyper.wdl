@@ -2,22 +2,19 @@ version 1.0
 
 task Shigatyper {
   input {
-    String? n
     Boolean? verbose
-    String read_one
-    String read_two
+    String? n
   }
   command <<<
     shigatyper \
-      ~{read_one} \
-      ~{read_two} \
-      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
   parameter_meta {
-    n: ""
     verbose: ""
-    read_one: ""
-    read_two: ""
+    n: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

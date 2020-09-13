@@ -4,4 +4,7 @@ task Optimir {
   command <<<
     optimir
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

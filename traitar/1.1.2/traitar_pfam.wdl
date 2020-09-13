@@ -8,10 +8,13 @@ task TraitarPfam {
   command <<<
     traitar pfam \
       ~{download} \
-      ~{true="--local" false="" local}
+      ~{if (local) then "--local" else ""}
   >>>
   parameter_meta {
     local: "the Pfam HMMs are in the above directory with name 'Pfam-A.hmm'"
-    download: "download Pfam HMMs into the given download directory and untar and unzip it"
+    download: "download Pfam HMMs into the given download directory and untar\\nand unzip it"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,9 +2,9 @@ version 1.0
 
 task BackboneGlobalToLocal {
   input {
-    String x_mfa_file
-    String backbone_file
-    String output_file
+    File x_mfa_file
+    File backbone_file
+    File output_file
   }
   command <<<
     backbone_global_to_local \
@@ -16,5 +16,9 @@ task BackboneGlobalToLocal {
     x_mfa_file: ""
     backbone_file: ""
     output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

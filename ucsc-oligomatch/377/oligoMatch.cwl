@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../oligoMatch.cwl
 inputs:
-- id: oligos
+- id: in_oligos
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sequence
+- id: in_sequence
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_dot_bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - oligoMatch

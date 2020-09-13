@@ -1,16 +1,16 @@
 version 1.0
 
-task SsuEslReformat {
+task Ssueslreformat {
   input {
     Boolean? convert_dna_alphabet
     Boolean? convert_lower_case
-    Boolean? remove_dna_iupac
-    String? send_output_file
-    Boolean? convert_rna_alphabet
+    Boolean? remove_dna_codes
+    File? send_output_file
+    Boolean? convert_rna_tu
     Boolean? convert_upper_case
-    Boolean? convert_noniupac_chars
+    Boolean? convert_chars_x
     String? gap_sym
-    String? in_format
+    File? in_format
     Boolean? min_gap
     Boolean? keep_rf
     Boolean? no_gap
@@ -19,43 +19,47 @@ task SsuEslReformat {
     Boolean? full_wuss
     String? ignore
     String? accept_x
-    String? rename
+    Int? rename
     Boolean? small
     Boolean? options
     String fast_a
+    String pfam
+    String psiblast
   }
   command <<<
-    ssu-esl-reformat \
+    ssu_esl_reformat \
       ~{fast_a} \
-      ~{true="-d" false="" convert_dna_alphabet} \
-      ~{true="-l" false="" convert_lower_case} \
-      ~{true="-n" false="" remove_dna_iupac} \
+      ~{pfam} \
+      ~{psiblast} \
+      ~{if (convert_dna_alphabet) then "-d" else ""} \
+      ~{if (convert_lower_case) then "-l" else ""} \
+      ~{if (remove_dna_codes) then "-n" else ""} \
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
-      ~{true="-r" false="" convert_rna_alphabet} \
-      ~{true="-u" false="" convert_upper_case} \
-      ~{true="-x" false="" convert_noniupac_chars} \
+      ~{if (convert_rna_tu) then "-r" else ""} \
+      ~{if (convert_upper_case) then "-u" else ""} \
+      ~{if (convert_chars_x) then "-x" else ""} \
       ~{if defined(gap_sym) then ("--gapsym " +  '"' + gap_sym + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--mingap" false="" min_gap} \
-      ~{true="--keeprf" false="" keep_rf} \
-      ~{true="--nogap" false="" no_gap} \
-      ~{true="--wussify" false="" w_us_sify} \
-      ~{true="--dewuss" false="" de_wuss} \
-      ~{true="--fullwuss" false="" full_wuss} \
+      ~{if (min_gap) then "--mingap" else ""} \
+      ~{if (keep_rf) then "--keeprf" else ""} \
+      ~{if (no_gap) then "--nogap" else ""} \
+      ~{if (w_us_sify) then "--wussify" else ""} \
+      ~{if (de_wuss) then "--dewuss" else ""} \
+      ~{if (full_wuss) then "--fullwuss" else ""} \
       ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""} \
       ~{if defined(accept_x) then ("--acceptx " +  '"' + accept_x + '"') else ""} \
       ~{if defined(rename) then ("--rename " +  '"' + rename + '"') else ""} \
-      ~{true="--small" false="" small} \
-      ~{true="-options" false="" options}
+      ~{if (small) then "--small" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     convert_dna_alphabet: ": convert to DNA alphabet (U->T)"
     convert_lower_case: ": convert to lower case"
-    remove_dna_iupac: ": remove DNA IUPAC codes; convert ambig chars to N"
+    remove_dna_codes: ": remove DNA IUPAC codes; convert ambig chars to N"
     send_output_file: ": send output to file <f>, not stdout"
-    convert_rna_alphabet: ": convert to RNA alphabet (T->U)"
+    convert_rna_tu: ": convert to RNA alphabet (T->U)"
     convert_upper_case: ": convert to upper case"
-    convert_noniupac_chars: ": convert non-IUPAC chars (e.g. X) in DNA to N"
+    convert_chars_x: ": convert non-IUPAC chars (e.g. X) in DNA to N"
     gap_sym: ": convert all gaps to character <c>"
     in_format: ": input sequence file is in format <s>"
     min_gap: ": remove columns containing all gaps (seqfile=MSA)"
@@ -69,6 +73,12 @@ task SsuEslReformat {
     rename: ": rename and number each sequence <s>.<n>"
     small: ": use minimal RAM, input must be pfam, ouput must be afa or pfam"
     options: ""
-    fast_a: "stockholm pfam a2m psiblast afa"
+    fast_a: "stockholm"
+    pfam: "a2m"
+    psiblast: "afa"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_send_output_file = "${in_send_output_file}"
   }
 }

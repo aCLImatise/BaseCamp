@@ -1,14 +1,10 @@
 version 1.0
 
 task Mglobrotate {
-  input {
-    String ob_rotate
-  }
   command <<<
-    mglobrotate \
-      ~{ob_rotate}
+    mglobrotate
   >>>
-  parameter_meta {
-    ob_rotate: ""
+  output {
+    File out_stdout = stdout()
   }
 }

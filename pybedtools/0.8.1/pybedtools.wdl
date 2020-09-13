@@ -4,4 +4,7 @@ task Pybedtools {
   command <<<
     pybedtools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

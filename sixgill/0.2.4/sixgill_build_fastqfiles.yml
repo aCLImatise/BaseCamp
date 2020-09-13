@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- sixgill_build
+- fastqfiles
 positional:
 - !Positional
   description: ''
@@ -13,12 +16,18 @@ named:
   args: !SimpleFlagArg
     name: MINLENGTH
   optional: true
-command:
-- sixgill_build
-- fastqfiles
 parent: !Command
+  command:
+  - sixgill_build
   positional: []
   named:
+  - !Flag
+    description: specified, start with the output of MetaGene Annotator
+    synonyms:
+    - --metagenefile
+    args: !SimpleFlagArg
+      name: is
+    optional: true
   - !Flag
     description: min AA length of a metapeptide
     synonyms:
@@ -27,19 +36,11 @@ parent: !Command
       name: MINLENGTH
     optional: true
   - !Flag
-    description: min base-call phred score across any NT in a metapeptide
+    description: "min base-call phred score across any NT in a\nmetapeptide"
     synonyms:
     - --minqualscore
     args: !SimpleFlagArg
       name: MINQUALSCORE
-    optional: true
-  - !Flag
-    description: input MetaGene Annotator output file. Records must be in same linear
-      order as reads in fastqfiles
-    synonyms:
-    - --metagenefile
-    args: !SimpleFlagArg
-      name: METAGENEFILE
     optional: true
   - !Flag
     description: minimum MetaGene score
@@ -91,7 +92,7 @@ parent: !Command
       name: OUTFASTA
     optional: true
   - !Flag
-    description: Write plaintetxt (non-gzipped) output (default gzipped)
+    description: "Write plaintetxt (non-gzipped) output (default\ngzipped)"
     synonyms:
     - --nogzipout
     args: !EmptyFlagArg {}
@@ -102,11 +103,10 @@ parent: !Command
     - --debug
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - sixgill_build
   parent:
   subcommands:
   - *id001
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -151,6 +151,7 @@ parent: !Command
   generated_using: &id002
   - --help
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

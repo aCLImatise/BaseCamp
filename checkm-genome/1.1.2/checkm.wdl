@@ -11,4 +11,7 @@ task Checkm {
   parameter_meta {
     h: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

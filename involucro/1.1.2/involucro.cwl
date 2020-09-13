@@ -1,69 +1,72 @@
 class: CommandLineTool
 id: ../../../involucro.cwl
 inputs:
-- id: set_url_docker
+- id: in_set_url_docker
   doc: Set the URL of the Docker instance (default "unix:///var/run/docker.sock")
   type: string
   inputBinding:
     prefix: -H
-- id: shorthand__tasks
+- id: in_shorthand__tasks
   doc: Shorthand for --tasks
   type: boolean
   inputBinding:
     prefix: -T
-- id: evaluate_given_script
+- id: in_evaluate_given_script
   doc: Evaluate the given script directly, not evaluating the control file
-  type: string
+  type: File
   inputBinding:
     prefix: -e
-- id: set_file_default
+- id: in_set_control_default
   doc: Set the control file (default "invfile.lua")
-  type: string
+  type: File
   inputBinding:
     prefix: -f
-- id: host
+- id: in_host
   doc: Long form for -H (default "unix:///var/run/docker.sock")
   type: string
   inputBinding:
     prefix: -host
-- id: shorthand__set
+- id: in_shorthand__set
   doc: Shorthand for --set (default [])
   type: string
   inputBinding:
     prefix: -s
-- id: set
+- id: in_set
   doc: Used as KEY=VALUE, makes VAR[KEY] available with value VALUE in Lua script
     (default [])
   type: string
   inputBinding:
     prefix: -set
-- id: tasks
+- id: in_tasks
   doc: Show available tasks and then exit
   type: boolean
   inputBinding:
     prefix: -tasks
-- id: set_verbosity_logs
+- id: in_set_verbosity_logs
   doc: Set verbosity, 3 logs everything, 2 shows standard output (default 1)
   type: long
   inputBinding:
     prefix: -v
-- id: version
+- id: in_version
   doc: Show version and the exit
   type: boolean
   inputBinding:
     prefix: -version
-- id: set_working_dir
+- id: in_set_working_dir
   doc: Set working dir, being the base for all operations. Also settable via environment
     variable $INVOLUCRO_WORKDIR (default ".")
   type: string
   inputBinding:
     prefix: -w
-- id: wrap
-  doc: Execute encoded wrap task
+- id: in_wrap
+  doc: "Execute encoded wrap task\n"
   type: string
   inputBinding:
     prefix: -wrap
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - involucro

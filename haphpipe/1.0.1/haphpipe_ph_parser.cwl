@@ -1,37 +1,50 @@
 class: CommandLineTool
 id: ../../../haphpipe_ph_parser.cwl
 inputs:
-- id: haplotypes_fa
+- id: in_haplotypes_fa
   doc: Haplotype file created by PredictHaplo.
-  type: string
+  type: File
   inputBinding:
     prefix: --haplotypes_fa
-- id: outdir
+- id: in_outdir
   doc: 'Output directory. (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: prefix
+- id: in_prefix
   doc: Prefix to add to sequence names
   type: string
   inputBinding:
     prefix: --prefix
-- id: keep_gaps
+- id: in_keep_gaps
   doc: 'Do not remove gaps from alignment (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_gaps
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Append console output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory. (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Append console output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - haphpipe

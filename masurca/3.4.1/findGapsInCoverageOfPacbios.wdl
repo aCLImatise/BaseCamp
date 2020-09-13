@@ -23,4 +23,7 @@ task FindGapsInCoverageOfPacbios {
     min_match_len_for_implied_match: "Will not use implied matches of matches whose actual match is shorter than this (30)"
     cmdline_parse: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

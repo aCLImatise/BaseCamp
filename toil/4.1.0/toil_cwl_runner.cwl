@@ -1,534 +1,708 @@
 class: CommandLineTool
 id: ../../../toil_cwl_runner.cwl
 inputs:
-- id: tmpdir_prefix
-  doc: Path prefix for temporary directories
+- id: in_var_0
+  doc: ''
   type: string
+  inputBinding:
+    prefix: --jobStore
+- id: in_not_strict
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --not-strict
+- id: in_enable_dev
+  doc: Enable loading and running development versions of CWL
+  type: boolean
+  inputBinding:
+    prefix: --enable-dev
+- id: in_quiet
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --quiet
+- id: in_basedir
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --basedir
+- id: in_outdir
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --outdir
+- id: in_user_space_docker_cmd
+  doc: "(Linux/OS X only) Specify a user space docker command\n(like udocker or dx-docker)\
+    \ that will be used to call\n'pull' and 'run'"
+  type: string
+  inputBinding:
+    prefix: --user-space-docker-cmd
+- id: in_singularity
+  doc: "[experimental] Use Singularity runtime for running\ncontainers. Requires Singularity\
+    \ v2.6.1+ and Linux\nwith kernel version v3.18+ or with overlayfs support\nbackported."
+  type: boolean
+  inputBinding:
+    prefix: --singularity
+- id: in_no_container
+  doc: "Do not execute jobs in a Docker container, even when\n`DockerRequirement`\
+    \ is specified under `hints`."
+  type: boolean
+  inputBinding:
+    prefix: --no-container
+- id: in_leave_container
+  doc: Do not delete Docker container used by jobs after they
+  type: boolean
+  inputBinding:
+    prefix: --leave-container
+- id: in_beta_dependency_resolvers_configuration
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --beta-dependency-resolvers-configuration
+- id: in_beta_dependencies_directory
+  doc: ''
+  type: Directory
+  inputBinding:
+    prefix: --beta-dependencies-directory
+- id: in_beta_use_bio_containers
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --beta-use-biocontainers
+- id: in_beta_cond_a_dependencies
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --beta-conda-dependencies
+- id: in_tmpdir_prefix
+  doc: Path prefix for temporary directories
+  type: File
   inputBinding:
     prefix: --tmpdir-prefix
-- id: tmp_outdir_prefix
+- id: in_tmp_outdir_prefix
   doc: Path prefix for intermediate output directories
-  type: string
+  type: File
   inputBinding:
     prefix: --tmp-outdir-prefix
-- id: force_docker_pull
+- id: in_force_docker_pull
   doc: Pull latest docker image even if it is locally present
   type: boolean
   inputBinding:
     prefix: --force-docker-pull
-- id: no_match_user
+- id: in_no_match_user
   doc: Disable passing the current uid to `docker run --user`
   type: boolean
   inputBinding:
     prefix: --no-match-user
-- id: no_read_only
-  doc: Do not set root directory in the container as read- only
+- id: in_no_read_only
+  doc: Do not set root directory in the container as read-
   type: boolean
   inputBinding:
     prefix: --no-read-only
-- id: strict_memory_limit
-  doc: When running with software containers and the Docker engine, pass either the
-    calculated memory allocation from ResourceRequirements or the default of 1 gigabyte
-    to Docker's --memory option.
-  type: boolean
-  inputBinding:
-    prefix: --strict-memory-limit
-- id: relax_path_checks
-  doc: Relax requirements on path names to permit spaces and hash characters.
+- id: in_relax_path_checks
+  doc: "Relax requirements on path names to permit spaces and\nhash characters."
   type: boolean
   inputBinding:
     prefix: --relax-path-checks
-- id: default_container
-  doc: Specify a default docker container that will be used if the workflow fails
-    to specify one.
+- id: in_default_container
+  doc: "Specify a default docker container that will be used\nif the workflow fails\
+    \ to specify one."
   type: string
   inputBinding:
     prefix: --default-container
-- id: logoff
+- id: in_logoff
   doc: Same as --logCritical
   type: boolean
   inputBinding:
     prefix: --logOff
-- id: log_critical
-  doc: Turn on logging at level CRITICAL and above. (default is INFO)
+- id: in_log_critical
+  doc: "Turn on logging at level CRITICAL and above. (default\nis INFO)"
   type: boolean
   inputBinding:
     prefix: --logCritical
-- id: log_error
-  doc: Turn on logging at level ERROR and above. (default is INFO)
+- id: in_log_error
+  doc: "Turn on logging at level ERROR and above. (default is\nINFO)"
   type: boolean
   inputBinding:
     prefix: --logError
-- id: log_warning
-  doc: Turn on logging at level WARNING and above. (default is INFO)
+- id: in_log_warning
+  doc: "Turn on logging at level WARNING and above. (default\nis INFO)"
   type: boolean
   inputBinding:
     prefix: --logWarning
-- id: loginfo
-  doc: Turn on logging at level INFO and above. (default is INFO)
+- id: in_loginfo
+  doc: "Turn on logging at level INFO and above. (default is\nINFO)"
   type: boolean
   inputBinding:
     prefix: --logInfo
-- id: log_debug
-  doc: Turn on logging at level DEBUG and above. (default is INFO)
+- id: in_log_debug
+  doc: "Turn on logging at level DEBUG and above. (default is\nINFO)"
   type: boolean
   inputBinding:
     prefix: --logDebug
-- id: loglevel
-  doc: Log at given level (may be either OFF (or CRITICAL), ERROR, WARN (or WARNING),
-    INFO or DEBUG). (default is INFO)
+- id: in_loglevel
+  doc: "Log at given level (may be either OFF (or CRITICAL),\nERROR, WARN (or WARNING),\
+    \ INFO or DEBUG). (default is\nINFO)"
   type: string
   inputBinding:
     prefix: --logLevel
-- id: log_file
+- id: in_log_file
   doc: File to log in
-  type: string
+  type: File
   inputBinding:
     prefix: --logFile
-- id: rotating_logging
-  doc: Turn on rotating logging, which prevents log files getting too big.
+- id: in_rotating_logging
+  doc: "Turn on rotating logging, which prevents log files\ngetting too big."
   type: boolean
   inputBinding:
     prefix: --rotatingLogging
-- id: workdir
-  doc: Absolute path to directory where temporary files generated during the Toil
-    run should be placed. Standard output and error from batch system jobs (unless
-    --noStdOutErr) will be placed in this directory. A cache directory may be placed
-    in this directory. Temp files and folders will be placed in a directory toil-<workflowID>
-    within workDir. The workflowID is generated by Toil and will be reported in the
-    workflow logs. Default is determined by the variables (TMPDIR, TEMP, TMP) via
-    mkdtemp. This directory needs to exist on all machines running jobs; if capturing
-    standard output and error from batch system jobs is desired, it will generally
-    need to be on a shared file system. When sharing a cache between containers on
-    a host, this directory must be shared between the containers.
-  type: string
+- id: in_workdir
+  doc: "Absolute path to directory where temporary files\ngenerated during the Toil\
+    \ run should be placed.\nStandard output and error from batch system jobs\n(unless\
+    \ --noStdOutErr) will be placed in this\ndirectory. A cache directory may be placed\
+    \ in this\ndirectory. Temp files and folders will be placed in a\ndirectory toil-<workflowID>\
+    \ within workDir. The\nworkflowID is generated by Toil and will be reported\n\
+    in the workflow logs. Default is determined by the\nvariables (TMPDIR, TEMP, TMP)\
+    \ via mkdtemp. This\ndirectory needs to exist on all machines running jobs;\n\
+    if capturing standard output and error from batch\nsystem jobs is desired, it\
+    \ will generally need to be\non a shared file system. When sharing a cache between\n\
+    containers on a host, this directory must be shared\nbetween the containers."
+  type: File
   inputBinding:
     prefix: --workDir
-- id: no_stdout_err
-  doc: Do not capture standard output and error from batch system jobs.
+- id: in_no_stdout_err
+  doc: "Do not capture standard output and error from batch\nsystem jobs."
   type: boolean
   inputBinding:
     prefix: --noStdOutErr
-- id: stats
-  doc: Records statistics about the toil workflow to be used by 'toil stats'.
+- id: in_stats
+  doc: "Records statistics about the toil workflow to be used\nby 'toil stats'."
   type: boolean
   inputBinding:
     prefix: --stats
-- id: clean
-  doc: "Determines the deletion of the jobStore upon completion of the program. Choices:\
-    \ 'always', 'onError','never', 'onSuccess'. The --stats option requires information\
-    \ from the jobStore upon completion so the jobStore will never be deleted withthat\
-    \ flag. If you wish to be able to restart the run, choose 'never' or 'onSuccess'.\
-    \ Default is 'never' if stats is enabled, and 'onSuccess' otherwise"
+- id: in_clean
+  doc: "Determines the deletion of the jobStore upon\ncompletion of the program. Choices:\
+    \ 'always',\n'onError','never', 'onSuccess'. The --stats option\nrequires information\
+    \ from the jobStore upon completion\nso the jobStore will never be deleted withthat\
+    \ flag.\nIf you wish to be able to restart the run, choose\n'never' or 'onSuccess'.\
+    \ Default is 'never' if stats is\nenabled, and 'onSuccess' otherwise"
   type: string
   inputBinding:
     prefix: --clean
-- id: clean_workdir
-  doc: "Determines deletion of temporary worker directory upon completion of a job.\
-    \ Choices: 'always', 'never', 'onSuccess'. Default = always. WARNING: This option\
-    \ should be changed for debugging only. Running a full pipeline with this option\
-    \ could fill your disk with intermediate data."
+- id: in_clean_workdir
+  doc: "Determines deletion of temporary worker directory upon\ncompletion of a job.\
+    \ Choices: 'always', 'never',\n'onSuccess'. Default = always. WARNING: This option\n\
+    should be changed for debugging only. Running a full\npipeline with this option\
+    \ could fill your disk with\nintermediate data."
   type: string
   inputBinding:
     prefix: --cleanWorkDir
-- id: cluster_stats
-  doc: '[CLUSTERSTATS] If enabled, writes out JSON resource usage statistics to a
-    file. The default location for this file is the current working directory, but
-    an absolute path can also be passed to specify where this file should be written.
-    This options only applies when using scalable batch systems.'
-  type: boolean
+- id: in_cluster_stats
+  doc: "[CLUSTERSTATS]\nIf enabled, writes out JSON resource usage statistics\nto\
+    \ a file. The default location for this file is the\ncurrent working directory,\
+    \ but an absolute path can\nalso be passed to specify where this file should be\n\
+    written. This options only applies when using scalable\nbatch systems."
+  type: File
   inputBinding:
     prefix: --clusterStats
-- id: restart
-  doc: If --restart is specified then will attempt to restart existing workflow at
-    the location pointed to by the --jobStore option. Will raise an exception if the
-    workflow does not exist
+- id: in_restart
+  doc: "If --restart is specified then will attempt to restart\nexisting workflow\
+    \ at the location pointed to by the\n--jobStore option. Will raise an exception\
+    \ if the\nworkflow does not exist"
   type: boolean
   inputBinding:
     prefix: --restart
-- id: batch_system
-  doc: The type of batch system to run the job(s) with, currently can be one of Torque,
-    singleMachine, parasol, HTCondor, Mesos, Slurm, Kubernetes, LSF, gridEngine'.
-    default=singleMachine
+- id: in_batch_system
+  doc: "The type of batch system to run the job(s) with,\ncurrently can be one of\
+    \ Slurm, Torque, LSF,\nKubernetes, Mesos, HTCondor, singleMachine, parasol,\n\
+    gridEngine'. default=singleMachine"
   type: string
   inputBinding:
     prefix: --batchSystem
-- id: disable_hot_deployment
-  doc: Hot-deployment was renamed to auto-deployment. Option now redirects to --disableAutoDeployment.
-    Left in for backwards compatibility.
+- id: in_disable_hot_deployment
+  doc: "Hot-deployment was renamed to auto-deployment. Option\nnow redirects to --disableAutoDeployment.\
+    \ Left in for\nbackwards compatibility."
   type: boolean
   inputBinding:
     prefix: --disableHotDeployment
-- id: disable_auto_deployment
-  doc: Should auto-deployment of the user script be deactivated? If True, the user
-    script/package should be present at the same location on all workers. default=false
+- id: in_disable_auto_deployment
+  doc: "Should auto-deployment of the user script be\ndeactivated? If True, the user\
+    \ script/package should\nbe present at the same location on all workers.\ndefault=false"
   type: boolean
   inputBinding:
     prefix: --disableAutoDeployment
-- id: max_local_jobs
-  doc: For batch systems that support a local queue for housekeeping jobs (Mesos,
-    GridEngine, htcondor, lsf, slurm, torque), the maximum number of these housekeeping
-    jobs to run on the local system. The default (equal to the number of cores) is
-    a maximum of 8 concurrent local housekeeping jobs.
+- id: in_max_local_jobs
+  doc: "For batch systems that support a local queue for\nhousekeeping jobs (Mesos,\
+    \ GridEngine, htcondor, lsf,\nslurm, torque), the maximum number of these\nhousekeeping\
+    \ jobs to run on the local system. The\ndefault (equal to the number of cores)\
+    \ is a maximum of\n8 concurrent local housekeeping jobs."
   type: long
   inputBinding:
     prefix: --maxLocalJobs
-- id: manual_mem_args
-  doc: "Do not add the default arguments: 'hv=MEMORY' & 'h_vmem=MEMORY' to the qsub\
-    \ call, and instead rely on TOIL_GRIDGENGINE_ARGS to supply alternative arguments.\
-    \ Requires that TOIL_GRIDGENGINE_ARGS be set."
+- id: in_manual_mem_args
+  doc: "Do not add the default arguments: 'hv=MEMORY' &\n'h_vmem=MEMORY' to the qsub\
+    \ call, and instead rely on\nTOIL_GRIDGENGINE_ARGS to supply alternative arguments.\n\
+    Requires that TOIL_GRIDGENGINE_ARGS be set."
   type: boolean
   inputBinding:
     prefix: --manualMemArgs
-- id: run_cwl_internal_jobs_on_workers
-  doc: Whether to run CWL internal jobs (e.g. CWLScatter) on the worker nodes instead
-    of the primary node. If false (default), then all such jobs are run on the primary
-    node. Setting this to true can speed up the pipeline for very large workflows
-    with many sub-workflows and/or scatters, provided that the worker pool is large
-    enough.
+- id: in_run_cwl_internal_jobs_on_workers
+  doc: "Whether to run CWL internal jobs (e.g. CWLScatter) on\nthe worker nodes instead\
+    \ of the primary node. If false\n(default), then all such jobs are run on the\
+    \ primary\nnode. Setting this to true can speed up the pipeline\nfor very large\
+    \ workflows with many sub-workflows\nand/or scatters, provided that the worker\
+    \ pool is\nlarge enough."
   type: boolean
   inputBinding:
     prefix: --runCwlInternalJobsOnWorkers
-- id: parasol_command
-  doc: The name or path of the parasol program. Will be looked up on PATH unless it
-    starts with a slash. default=parasol
-  type: string
+- id: in_parasol_command
+  doc: "The name or path of the parasol program. Will be\nlooked up on PATH unless\
+    \ it starts with a slash.\ndefault=parasol"
+  type: File
   inputBinding:
     prefix: --parasolCommand
-- id: parasol_max_batches
-  doc: Maximum number of job batches the Parasol batch is allowed to create. One batch
-    is created for jobs with a a unique set of resource requirements. default=1000
-  type: string
+- id: in_parasol_max_batches
+  doc: "Maximum number of job batches the Parasol batch is\nallowed to create. One\
+    \ batch is created for jobs with\na a unique set of resource requirements. default=1000"
+  type: long
   inputBinding:
     prefix: --parasolMaxBatches
-- id: scale
-  doc: A scaling factor to change the value of all submitted tasks's submitted cores.
-    Used in singleMachine batch system. default=1
-  type: string
+- id: in_scale
+  doc: "A scaling factor to change the value of all submitted\ntasks's submitted cores.\
+    \ Used in singleMachine batch\nsystem. default=1"
+  type: long
   inputBinding:
     prefix: --scale
-- id: no_link_imports
-  doc: When using a filesystem based job store, CWL input files are by default symlinked
-    in. Specifying this option instead copies the files into the job store, which
-    may protect them from being modified externally. When not specified and as long
-    as caching is enabled, Toil will protect the file automatically by changing the
-    permissions to read-only.
+- id: in_no_link_imports
+  doc: "When using a filesystem based job store, CWL input\nfiles are by default symlinked\
+    \ in. Specifying this\noption instead copies the files into the job store,\nwhich\
+    \ may protect them from being modified externally.\nWhen not specified and as\
+    \ long as caching is enabled,\nToil will protect the file automatically by changing\n\
+    the permissions to read-only."
   type: boolean
   inputBinding:
     prefix: --noLinkImports
-- id: no_move_exports
-  doc: When using a filesystem based job store, output files are by default moved
-    to the output directory, and a symlink to the moved exported file is created at
-    the initial location. Specifying this option instead copies the files into the
-    output directory. Applies to filesystem-based job stores only.
-  type: boolean
+- id: in_no_move_exports
+  doc: "When using a filesystem based job store, output files\nare by default moved\
+    \ to the output directory, and a\nsymlink to the moved exported file is created\
+    \ at the\ninitial location. Specifying this option instead\ncopies the files into\
+    \ the output directory. Applies to\nfilesystem-based job stores only."
+  type: File
   inputBinding:
     prefix: --noMoveExports
-- id: mesos_master
-  doc: 'The host and port of the Mesos master separated by colon. (default: 115.146.93.132:5050)'
-  type: string
+- id: in_mesos_master
+  doc: "The host and port of the Mesos master separated by\ncolon. (default: 172.17.0.4:5050)"
+  type: double
   inputBinding:
     prefix: --mesosMaster
-- id: ku_bernet_es_host_path
-  doc: 'Path on Kubernetes hosts to use as shared inter-pod temp directory (default:
-    None)'
-  type: string
+- id: in_ku_bernet_es_host_path
+  doc: "Path on Kubernetes hosts to use as shared inter-pod\ntemp directory (default:\
+    \ None)"
+  type: File
   inputBinding:
     prefix: --kubernetesHostPath
-- id: provisioner
-  doc: The provisioner for cluster auto-scaling. The currently supported choices are'gce',
-    or 'aws'. The default is None.
-  type: string
-  inputBinding:
-    prefix: --provisioner
-- id: node_types
-  doc: List of node types separated by commas. The syntax for each node type depends
-    on the provisioner used. For the cgcloud and AWS provisioners this is the name
-    of an EC2 instance type, optionally followed by a colon and the price in dollars
-    to bid for a spot instance of that type, for example 'c3.8xlarge:0.42'.If no spot
-    bid is specified, nodes of this type will be non- preemptable.It is acceptable
-    to specify an instance as both preemptable and non-preemptable, including it twice
-    in the list. In that case,preemptable nodes of that type will be preferred when
-    creating new nodes once the maximum number of preemptable-nodes has beenreached.
-  type: string
+- id: in_node_types
+  doc: "List of node types separated by commas. The syntax for\neach node type depends\
+    \ on the provisioner used. For\nthe cgcloud and AWS provisioners this is the name\
+    \ of\nan EC2 instance type, optionally followed by a colon\nand the price in dollars\
+    \ to bid for a spot instance of\nthat type, for example 'c3.8xlarge:0.42'.If no\
+    \ spot\nbid is specified, nodes of this type will be non-\npreemptable.It is acceptable\
+    \ to specify an instance as\nboth preemptable and non-preemptable, including it\n\
+    twice in the list. In that case,preemptable nodes of\nthat type will be preferred\
+    \ when creating new nodes\nonce the maximum number of preemptable-nodes has\n\
+    beenreached."
+  type: long
   inputBinding:
     prefix: --nodeTypes
-- id: node_options
-  doc: Options for provisioning the nodes. The syntax depends on the provisioner used.
-    Neither the CGCloud nor the AWS provisioner support any node options.
+- id: in_node_options
+  doc: "Options for provisioning the nodes. The syntax depends\non the provisioner\
+    \ used. Neither the CGCloud nor the\nAWS provisioner support any node options."
   type: string
   inputBinding:
     prefix: --nodeOptions
-- id: min_nodes
-  doc: Mininum number of nodes of each type in the cluster, if using auto-scaling.
-    This should be provided as a comma-separated list of the same length as the list
-    of node types. default=0
+- id: in_min_nodes
+  doc: "Mininum number of nodes of each type in the cluster,\nif using auto-scaling.\
+    \ This should be provided as a\ncomma-separated list of the same length as the\
+    \ list of\nnode types. default=0"
   type: long
   inputBinding:
     prefix: --minNodes
-- id: max_nodes
-  doc: Maximum number of nodes of each type in the cluster, if using autoscaling,
-    provided as a comma-separated list. The first value is used as a default if the
-    list length is less than the number of nodeTypes. default=10
+- id: in_max_nodes
+  doc: "Maximum number of nodes of each type in the cluster,\nif using autoscaling,\
+    \ provided as a comma-separated\nlist. The first value is used as a default if\
+    \ the list\nlength is less than the number of nodeTypes.\ndefault=10"
   type: long
   inputBinding:
     prefix: --maxNodes
-- id: target_time
-  doc: Sets how rapidly you aim to complete jobs in seconds. Shorter times mean more
-    aggressive parallelization. The autoscaler attempts to scale up/down so that it
-    expects all queued jobs will complete within targetTime seconds. default=1800
-  type: string
+- id: in_target_time
+  doc: "Sets how rapidly you aim to complete jobs in seconds.\nShorter times mean\
+    \ more aggressive parallelization.\nThe autoscaler attempts to scale up/down so\
+    \ that it\nexpects all queued jobs will complete within\ntargetTime seconds. default=1800"
+  type: long
   inputBinding:
     prefix: --targetTime
-- id: beta_inertia
-  doc: A smoothing parameter to prevent unnecessary oscillations in the number of
-    provisioned nodes. This controls an exponentially weighted moving average of the
-    estimated number of nodes. A value of 0.0 disables any smoothing, and a value
-    of 0.9 will smooth so much that few changes will ever be made. Must be between
-    0.0 and 0.9. default=0.1
-  type: string
+- id: in_beta_inertia
+  doc: "A smoothing parameter to prevent unnecessary\noscillations in the number of\
+    \ provisioned nodes. This\ncontrols an exponentially weighted moving average of\n\
+    the estimated number of nodes. A value of 0.0 disables\nany smoothing, and a value\
+    \ of 0.9 will smooth so much\nthat few changes will ever be made. Must be between\n\
+    0.0 and 0.9. default=0.1"
+  type: long
   inputBinding:
     prefix: --betaInertia
-- id: scale_interval
-  doc: The interval (seconds) between assessing if the scale of the cluster needs
-    to change. default=60
-  type: string
+- id: in_scale_interval
+  doc: "The interval (seconds) between assessing if the scale\nof the cluster needs\
+    \ to change. default=60"
+  type: long
   inputBinding:
     prefix: --scaleInterval
-- id: preempt_able_compensation
-  doc: The preference of the autoscaler to replace preemptable nodes with non-preemptable
-    nodes, when preemptable nodes cannot be started for some reason. Defaults to 0.0.
-    This value must be between 0.0 and 1.0, inclusive. A value of 0.0 disables such
-    compensation, a value of 0.5 compensates two missing preemptable nodes with a
-    non-preemptable one. A value of 1.0 replaces every missing pre-emptable node with
-    a non-preemptable one.
-  type: string
+- id: in_preempt_able_compensation
+  doc: "The preference of the autoscaler to replace\npreemptable nodes with non-preemptable\
+    \ nodes, when\npreemptable nodes cannot be started for some reason.\nDefaults\
+    \ to 0.0. This value must be between 0.0 and\n1.0, inclusive. A value of 0.0 disables\
+    \ such\ncompensation, a value of 0.5 compensates two missing\npreemptable nodes\
+    \ with a non-preemptable one. A value\nof 1.0 replaces every missing pre-emptable\
+    \ node with a\nnon-preemptable one."
+  type: double
   inputBinding:
     prefix: --preemptableCompensation
-- id: node_storage
-  doc: Specify the size of the root volume of worker nodes when they are launched
-    in gigabytes. You may want to set this if your jobs require a lot of disk space.
-    The default value is 50.
-  type: string
+- id: in_node_storage
+  doc: "Specify the size of the root volume of worker nodes\nwhen they are launched\
+    \ in gigabytes. You may want to\nset this if your jobs require a lot of disk space.\
+    \ The\ndefault value is 50."
+  type: long
   inputBinding:
     prefix: --nodeStorage
-- id: metrics
-  doc: Enable the prometheus/grafana dashboard for monitoring CPU/RAM usage, queue
-    size, and issued jobs.
+- id: in_metrics
+  doc: "Enable the prometheus/grafana dashboard for monitoring\nCPU/RAM usage, queue\
+    \ size, and issued jobs."
   type: boolean
   inputBinding:
     prefix: --metrics
-- id: max_cores
-  doc: The maximum number of CPU cores to request from the batch system at any one
-    time. Standard suffixes like K, Ki, M, Mi, G or Gi are supported. Default is 8.0
-    Ei
+- id: in_default_memory
+  doc: "The default amount of memory to request for a job.\nOnly applicable to jobs\
+    \ that do not specify an\nexplicit value for this requirement. Standard suffixes\n\
+    like K, Ki, M, Mi, G or Gi are supported. Default is\n2.0 Gi"
+  type: long
+  inputBinding:
+    prefix: --defaultMemory
+- id: in_default_cores
+  doc: "The default number of CPU cores to dedicate a job.\nOnly applicable to jobs\
+    \ that do not specify an\nexplicit value for this requirement. Fractions of a\n\
+    core (for example 0.1) are supported on some batch\nsystems, namely Mesos and\
+    \ singleMachine. Default is\n1.0"
+  type: double
+  inputBinding:
+    prefix: --defaultCores
+- id: in_default_disk
+  doc: "The default amount of disk space to dedicate a job.\nOnly applicable to jobs\
+    \ that do not specify an\nexplicit value for this requirement. Standard suffixes\n\
+    like K, Ki, M, Mi, G or Gi are supported. Default is\n2.0 Gi"
+  type: long
+  inputBinding:
+    prefix: --defaultDisk
+- id: in_default_preempt_able
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --defaultPreemptable
+- id: in_max_cores
+  doc: "The maximum number of CPU cores to request from the\nbatch system at any one\
+    \ time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default is\
+    \ 8.0 Ei"
   type: long
   inputBinding:
     prefix: --maxCores
-- id: max_memory
-  doc: The maximum amount of memory to request from the batch system at any one time.
-    Standard suffixes like K, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei
+- id: in_max_memory
+  doc: "The maximum amount of memory to request from the batch\nsystem at any one\
+    \ time. Standard suffixes like K, Ki,\nM, Mi, G or Gi are supported. Default is\
+    \ 8.0 Ei"
   type: long
   inputBinding:
     prefix: --maxMemory
-- id: max_disk
-  doc: The maximum amount of disk space to request from the batch system at any one
-    time. Standard suffixes like K, Ki, M, Mi, G or Gi are supported. Default is 8.0
-    Ei
+- id: in_max_disk
+  doc: "The maximum amount of disk space to request from the\nbatch system at any\
+    \ one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default\
+    \ is 8.0 Ei"
   type: long
   inputBinding:
     prefix: --maxDisk
-- id: retry_count
-  doc: Number of times to retry a failing job before giving up and labeling job failed.
-    default=1
-  type: string
+- id: in_retry_count
+  doc: "Number of times to retry a failing job before giving\nup and labeling job\
+    \ failed. default=1"
+  type: long
   inputBinding:
     prefix: --retryCount
-- id: enable_unlimited_preempt_able_retries
-  doc: If set, preemptable failures (or any failure due to an instance getting unexpectedly
-    terminated) would not count towards job failures and --retryCount.
+- id: in_enable_unlimited_preempt_able_retries
+  doc: "If set, preemptable failures (or any failure due to an\ninstance getting unexpectedly\
+    \ terminated) would not\ncount towards job failures and --retryCount."
   type: boolean
   inputBinding:
     prefix: --enableUnlimitedPreemptableRetries
-- id: max_job_duration
-  doc: Maximum runtime of a job (in seconds) before we kill it (this is a lower bound,
-    and the actual time before killing the job may be longer). default=9223372036854775807
+- id: in_max_job_duration
+  doc: "Maximum runtime of a job (in seconds) before we kill\nit (this is a lower\
+    \ bound, and the actual time before\nkilling the job may be longer).\ndefault=9223372036854775807"
   type: long
   inputBinding:
     prefix: --maxJobDuration
-- id: rescue_jobs_frequency
-  doc: Period of time to wait (in seconds) between checking for missing/overlong jobs,
-    that is jobs which get lost by the batch system. Expert parameter. default=3600
-  type: string
+- id: in_rescue_jobs_frequency
+  doc: "Period of time to wait (in seconds) between checking\nfor missing/overlong\
+    \ jobs, that is jobs which get lost\nby the batch system. Expert parameter. default=3600"
+  type: long
   inputBinding:
     prefix: --rescueJobsFrequency
-- id: disable_caching
-  doc: '[DISABLECACHING] Disables caching in the file store. This flag must be set
-    to use a batch system that does not support caching such as Grid Engine, Parasol,
-    LSF, or Slurm'
+- id: in_disable_caching
+  doc: "[DISABLECACHING]\nDisables caching in the file store. This flag must be\n\
+    set to use a batch system that does not support\ncaching such as Grid Engine,\
+    \ Parasol, LSF, or Slurm"
   type: boolean
   inputBinding:
     prefix: --disableCaching
-- id: disable_chaining
-  doc: Disables chaining of jobs (chaining uses one job's resource allocation for
-    its successor job if possible).
+- id: in_disable_chaining
+  doc: "Disables chaining of jobs (chaining uses one job's\nresource allocation for\
+    \ its successor job if\npossible)."
   type: boolean
   inputBinding:
     prefix: --disableChaining
-- id: disable_job_store_checksum_verification
-  doc: Disables checksum verification for files transferred to/from the job store.
-    Checksum verification is a safety check to ensure the data is not corrupted during
-    transfer. Currently only supported for non- streaming AWS files.
+- id: in_disable_job_store_checksum_verification
+  doc: "Disables checksum verification for files transferred\nto/from the job store.\
+    \ Checksum verification is a\nsafety check to ensure the data is not corrupted\n\
+    during transfer. Currently only supported for non-\nstreaming AWS files."
   type: boolean
   inputBinding:
     prefix: --disableJobStoreChecksumVerification
-- id: max_log_file_size
-  doc: The maximum size of a job log file to keep (in bytes), log files larger than
-    this will be truncated to the last X bytes. Setting this option to zero will prevent
-    any truncation. Setting this option to a negative value will truncate from the
-    beginning.Default=62.5 K
+- id: in_max_log_file_size
+  doc: "The maximum size of a job log file to keep (in bytes),\nlog files larger than\
+    \ this will be truncated to the\nlast X bytes. Setting this option to zero will\
+    \ prevent\nany truncation. Setting this option to a negative\nvalue will truncate\
+    \ from the beginning.Default=62.5 K"
   type: long
   inputBinding:
     prefix: --maxLogFileSize
-- id: write_logs
-  doc: "[WRITELOGS] Write worker logs received by the leader into their own files\
-    \ at the specified path. Any non-empty standard output and error from failed batch\
-    \ system jobs will also be written into files at this path. The current working\
-    \ directory will be used if a path is not specified explicitly. Note: By default\
-    \ only the logs of failed jobs are returned to leader. Set log level to 'debug'\
-    \ or enable '--writeLogsFromAllJobs' to get logs back from successful jobs, and\
-    \ adjust 'maxLogFileSize' to control the truncation limit for worker logs."
-  type: boolean
+- id: in_write_logs
+  doc: "[WRITELOGS]\nWrite worker logs received by the leader into their\nown files\
+    \ at the specified path. Any non-empty\nstandard output and error from failed\
+    \ batch system\njobs will also be written into files at this path. The\ncurrent\
+    \ working directory will be used if a path is\nnot specified explicitly. Note:\
+    \ By default only the\nlogs of failed jobs are returned to leader. Set log\nlevel\
+    \ to 'debug' or enable '--writeLogsFromAllJobs' to\nget logs back from successful\
+    \ jobs, and adjust\n'maxLogFileSize' to control the truncation limit for\nworker\
+    \ logs."
+  type: File
   inputBinding:
     prefix: --writeLogs
-- id: write_logs_gzip
-  doc: '[WRITELOGSGZIP] Identical to --writeLogs except the logs files are gzipped
-    on the leader.'
+- id: in_write_logs_gzip
+  doc: "[WRITELOGSGZIP]\nIdentical to --writeLogs except the logs files are\ngzipped\
+    \ on the leader."
   type: boolean
   inputBinding:
     prefix: --writeLogsGzip
-- id: write_logs_from_all_jobs
-  doc: Whether to write logs from all jobs (including the successful ones) without
-    necessarily setting the log level to 'debug'. Ensure that either --writeLogs or
-    --writeLogsGzip is set if enabling this option.
+- id: in_write_logs_from_all_jobs
+  doc: "Whether to write logs from all jobs (including the\nsuccessful ones) without\
+    \ necessarily setting the log\nlevel to 'debug'. Ensure that either --writeLogs\
+    \ or\n--writeLogsGzip is set if enabling this option."
   type: boolean
   inputBinding:
     prefix: --writeLogsFromAllJobs
-- id: real_time_logging
+- id: in_real_time_logging
   doc: Enable real-time logging from workers to masters
   type: boolean
   inputBinding:
     prefix: --realTimeLogging
-- id: sse_key
-  doc: Path to file containing 32 character key to be used for server-side encryption
-    on awsJobStore or googleJobStore. SSE will not be used if this flag is not passed.
-  type: string
+- id: in_sse_key
+  doc: "Path to file containing 32 character key to be used\nfor server-side encryption\
+    \ on awsJobStore or\ngoogleJobStore. SSE will not be used if this flag is\nnot\
+    \ passed."
+  type: File
   inputBinding:
     prefix: --sseKey
-- id: setenv
-  doc: =VALUE or NAME, -e NAME=VALUE or NAME Set an environment variable early on
-    in the worker. If VALUE is omitted, it will be looked up in the current environment.
-    Independently of this option, the worker will try to emulate the leader's environment
-    before running a job, except for some variables known to vary across systems.
-    Using this option, a variable can be injected into the worker process itself before
-    it is started.
+- id: in_setenv
+  doc: "=VALUE or NAME, -e NAME=VALUE or NAME\nSet an environment variable early on\
+    \ in the worker. If\nVALUE is omitted, it will be looked up in the current\nenvironment.\
+    \ Independently of this option, the worker\nwill try to emulate the leader's environment\
+    \ before\nrunning a job, except for some variables known to vary\nacross systems.\
+    \ Using this option, a variable can be\ninjected into the worker process itself\
+    \ before it is\nstarted."
   type: string
   inputBinding:
     prefix: --setEnv
-- id: service_polling_interval
-  doc: Interval of time service jobs wait between polling for the existence of the
-    keep-alive flag (defailt=60)
-  type: string
+- id: in_service_polling_interval
+  doc: "Interval of time service jobs wait between polling for\nthe existence of the\
+    \ keep-alive flag (defailt=60)"
+  type: long
   inputBinding:
     prefix: --servicePollingInterval
-- id: force_docker_appliance
-  doc: Disables sanity checking the existence of the docker image specified by TOIL_APPLIANCE_SELF,
-    which Toil uses to provision mesos for autoscaling.
+- id: in_force_docker_appliance
+  doc: "Disables sanity checking the existence of the docker\nimage specified by TOIL_APPLIANCE_SELF,\
+    \ which Toil\nuses to provision mesos for autoscaling."
   type: boolean
   inputBinding:
     prefix: --forceDockerAppliance
-- id: disable_progress
-  doc: Disables the progress bar shown when standard error is a terminal.
+- id: in_disable_progress
+  doc: "Disables the progress bar shown when standard error is\na terminal."
   type: boolean
   inputBinding:
     prefix: --disableProgress
-- id: debug_worker
-  doc: Experimental no forking mode for local debugging. Specifically, workers are
-    not forked and stderr/stdout are not redirected to the log.
+- id: in_debug_worker
+  doc: "Experimental no forking mode for local debugging.\nSpecifically, workers are\
+    \ not forked and stderr/stdout\nare not redirected to the log."
   type: boolean
   inputBinding:
     prefix: --debugWorker
-- id: disable_worker_output_capture
-  doc: Let worker output go to worker's standard out/error instead of per-job logs.
+- id: in_disable_worker_output_capture
+  doc: "Let worker output go to worker's standard out/error\ninstead of per-job logs."
   type: boolean
   inputBinding:
     prefix: --disableWorkerOutputCapture
-- id: bad_worker
-  doc: For testing purposes randomly kill 'badWorker' proportion of jobs using SIGKILL,
-    default=0.0
-  type: string
+- id: in_bad_worker
+  doc: "For testing purposes randomly kill 'badWorker'\nproportion of jobs using SIGKILL,\
+    \ default=0.0"
+  type: double
   inputBinding:
     prefix: --badWorker
-- id: bad_worker_fail_interval
-  doc: When killing the job pick uniformly within the interval from 0.0 to 'badWorkerFailInterval'
-    seconds after the worker starts, default=0.01
-  type: string
+- id: in_bad_worker_fail_interval
+  doc: "When killing the job pick uniformly within the\ninterval from 0.0 to 'badWorkerFailInterval'\
+    \ seconds\nafter the worker starts, default=0.01"
+  type: double
   inputBinding:
     prefix: --badWorkerFailInterval
-- id: provenance
-  doc: Save provenance to specified folder as a Research Object that captures and
-    aggregates workflow execution and data products.
-  type: string
+- id: in_provenance
+  doc: "Save provenance to specified folder as a Research\nObject that captures and\
+    \ aggregates workflow execution\nand data products."
+  type: Directory
   inputBinding:
     prefix: --provenance
-- id: enable_user_provenance
+- id: in_enable_user_provenance
   doc: Record user account info as part of provenance.
   type: boolean
   inputBinding:
     prefix: --enable-user-provenance
-- id: disable_user_provenance
+- id: in_disable_user_provenance
   doc: Do not record user account info in provenance.
   type: boolean
   inputBinding:
     prefix: --disable-user-provenance
-- id: enable_host_provenance
+- id: in_enable_host_provenance
   doc: Record host info as part of provenance.
   type: boolean
   inputBinding:
     prefix: --enable-host-provenance
-- id: disable_host_provenance
+- id: in_disable_host_provenance
   doc: Do not record host info in provenance.
   type: boolean
   inputBinding:
     prefix: --disable-host-provenance
-- id: or_cid
-  doc: Record user ORCID identifier as part of provenance, e.g. https://orcid.org/0000-0002-1825-0097
-    or 0000-0002-1825-0097. Alternatively the environment variable ORCID may be set.
-  type: string
+- id: in_or_cid
+  doc: "Record user ORCID identifier as part of provenance,\ne.g. https://orcid.org/0000-0002-1825-0097\
+    \ or\n0000-0002-1825-0097. Alternatively the environment\nvariable ORCID may be\
+    \ set."
+  type: long
   inputBinding:
     prefix: --orcid
-- id: full_name
-  doc: Record full name of user as part of provenance, e.g. Josiah Carberry. You may
-    need to use shell quotes to preserve spaces. Alternatively the environment variable
-    CWL_FULL_NAME may be set.
+- id: in_full_name
+  doc: "Record full name of user as part of provenance, e.g.\nJosiah Carberry. You\
+    \ may need to use shell quotes to\npreserve spaces. Alternatively the environment\n\
+    variable CWL_FULL_NAME may be set.\n"
   type: string
   inputBinding:
     prefix: --full-name
-- id: job_store
-  doc: 'The location of the job store for the workflow. A job store holds persistent
-    information about the jobs and files in a workflow. If the workflow is run with
-    a distributed batch system, the job store must be accessible by all worker nodes.
-    Depending on the desired job store implementation, the location should be formatted
-    according to one of the following schemes: file:<path> where <path> points to
-    a directory on the file systen aws:<region>:<prefix> where <region> is the name
-    of an AWS region like us- west-2 and <prefix> will be prepended to the names of
-    any top-level AWS resources in use by job store, e.g. S3 buckets. google:<project_id>:<prefix>
-    TODO: explain For backwards compatibility, you may also specify ./foo (equivalent
-    to file:./foo or just file:foo) or /bar (equivalent to file:/bar).'
+- id: in_cwl_tool
+  doc: cwljob
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_exit
+  doc: --preserve-environment VAR1 VAR2 [VAR1 VAR2 ...]
+  type: string
+  inputBinding:
+    position: 0
+- id: in_command_line_tools
+  doc: --preserve-entire-environment
+  type: string
+  inputBinding:
+    position: 0
+- id: in_command_line_tools_dot
+  doc: --destBucket DESTBUCKET
+  type: string
+  inputBinding:
+    position: 0
+- id: in_only
+  doc: --strict-memory-limit
+  type: string
+  inputBinding:
+    position: 0
+- id: in_location_job_store
+  doc: "The location of the job store for the workflow. A job\nstore holds persistent\
+    \ information about the jobs and\nfiles in a workflow. If the workflow is run\
+    \ with a\ndistributed batch system, the job store must be\naccessible by all worker\
+    \ nodes. Depending on the\ndesired job store implementation, the location should\n\
+    be formatted according to one of the following\nschemes: file:<path> where <path>\
+    \ points to a\ndirectory on the file systen aws:<region>:<prefix>\nwhere <region>\
+    \ is the name of an AWS region like us-\nwest-2 and <prefix> will be prepended\
+    \ to the names of\nany top-level AWS resources in use by job store, e.g.\nS3 buckets.\
+    \ google:<project_id>:<prefix> TODO: explain\nFor backwards compatibility, you\
+    \ may also specify\n./foo (equivalent to file:./foo or just file:foo) or\n/bar\
+    \ (equivalent to file:/bar)."
+  type: string
+  inputBinding:
+    position: 0
+- id: in_provisioning_dot
+  doc: "--provisioner {aws,gce}\nThe provisioner for cluster auto-scaling. The\ncurrently\
+    \ supported choices are'gce', or 'aws'. The\ndefault is None."
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_tmp_outdir_prefix
+  doc: Path prefix for intermediate output directories
+  type: File
+  outputBinding:
+    glob: $(inputs.in_tmp_outdir_prefix)
+- id: out_workdir
+  doc: "Absolute path to directory where temporary files\ngenerated during the Toil\
+    \ run should be placed.\nStandard output and error from batch system jobs\n(unless\
+    \ --noStdOutErr) will be placed in this\ndirectory. A cache directory may be placed\
+    \ in this\ndirectory. Temp files and folders will be placed in a\ndirectory toil-<workflowID>\
+    \ within workDir. The\nworkflowID is generated by Toil and will be reported\n\
+    in the workflow logs. Default is determined by the\nvariables (TMPDIR, TEMP, TMP)\
+    \ via mkdtemp. This\ndirectory needs to exist on all machines running jobs;\n\
+    if capturing standard output and error from batch\nsystem jobs is desired, it\
+    \ will generally need to be\non a shared file system. When sharing a cache between\n\
+    containers on a host, this directory must be shared\nbetween the containers."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_workdir)
+- id: out_cluster_stats
+  doc: "[CLUSTERSTATS]\nIf enabled, writes out JSON resource usage statistics\nto\
+    \ a file. The default location for this file is the\ncurrent working directory,\
+    \ but an absolute path can\nalso be passed to specify where this file should be\n\
+    written. This options only applies when using scalable\nbatch systems."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_cluster_stats)
+- id: out_no_move_exports
+  doc: "When using a filesystem based job store, output files\nare by default moved\
+    \ to the output directory, and a\nsymlink to the moved exported file is created\
+    \ at the\ninitial location. Specifying this option instead\ncopies the files into\
+    \ the output directory. Applies to\nfilesystem-based job stores only."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_no_move_exports)
+- id: out_write_logs
+  doc: "[WRITELOGS]\nWrite worker logs received by the leader into their\nown files\
+    \ at the specified path. Any non-empty\nstandard output and error from failed\
+    \ batch system\njobs will also be written into files at this path. The\ncurrent\
+    \ working directory will be used if a path is\nnot specified explicitly. Note:\
+    \ By default only the\nlogs of failed jobs are returned to leader. Set log\nlevel\
+    \ to 'debug' or enable '--writeLogsFromAllJobs' to\nget logs back from successful\
+    \ jobs, and adjust\n'maxLogFileSize' to control the truncation limit for\nworker\
+    \ logs."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_write_logs)
 cwlVersion: v1.1
 baseCommand:
 - toil-cwl-runner

@@ -15,14 +15,14 @@ task BcftoolsIndex {
   command <<<
     bcftools index \
       ~{in_dot_bcf} \
-      ~{true="--csi" false="" csi} \
-      ~{true="--force" false="" force} \
+      ~{if (csi) then "--csi" else ""} \
+      ~{if (force) then "--force" else ""} \
       ~{if defined(min_shift) then ("--min-shift " +  '"' + min_shift + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
-      ~{true="--tbi" false="" tbi} \
+      ~{if (tbi) then "--tbi" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--nrecords" false="" n_records} \
-      ~{true="--stats" false="" stats}
+      ~{if (n_records) then "--nrecords" else ""} \
+      ~{if (stats) then "--stats" else ""}
   >>>
   parameter_meta {
     csi: "generate CSI-format index for VCF/BCF files [default]"
@@ -34,5 +34,9 @@ task BcftoolsIndex {
     n_records: "print number of records based on existing index file"
     stats: "print per contig stats based on existing index file"
     in_dot_bcf: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

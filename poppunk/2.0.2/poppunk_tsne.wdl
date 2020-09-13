@@ -2,10 +2,10 @@ version 1.0
 
 task PoppunkTsne {
   input {
-    String? distances
-    String? name_output_file
-    String? perplexity
-    String? verbosity
+    File? distances
+    File? name_output_file
+    Int? perplexity
+    Int? verbosity
   }
   command <<<
     poppunk_tsne \
@@ -15,9 +15,13 @@ task PoppunkTsne {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
   parameter_meta {
-    distances: "Prefix of input pickle and numpy file of pre- calculated distances"
+    distances: "Prefix of input pickle and numpy file of pre-\\ncalculated distances"
     name_output_file: "Name of output file"
-    perplexity: "Perplexity used to generate t-SNE projection [default = 30]"
-    verbosity: "Verbosity level for t-SNE (0-3) [default = 0]"
+    perplexity: "Perplexity used to generate t-SNE projection [default\\n= 30]"
+    verbosity: "Verbosity level for t-SNE (0-3) [default = 0]\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_name_output_file = "${in_name_output_file}"
   }
 }

@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../ca2singletons.cwl
 inputs:
-- id: asm_file
+- id: in_asm_file
   doc: .asm file
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: fasta_file_name
+- id: in_fasta_file_name
   doc: .fasta file name
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: frg_file
-  doc: '.frg file '
-  type: string
+- id: in_frg_file
+  doc: .frg file
+  type: File
   inputBinding:
     prefix: -f
-- id: clear
+- id: in_clear
   doc: outputs just the clear range of the singletons
   type: boolean
   inputBinding:
     prefix: -clear
-- id: contig
+- id: in_contig
   doc: outputs singletons in TIGR .contig format
   type: boolean
   inputBinding:
     prefix: -contig
-- id: list
+- id: in_list
   doc: outputs a list of the singleton names
   type: boolean
   inputBinding:
     prefix: -list
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ca2singletons

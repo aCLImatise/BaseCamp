@@ -1,64 +1,83 @@
 class: CommandLineTool
 id: ../../../ppanggolin_draw.cwl
 inputs:
-- id: pan_genome
+- id: in_pan_genome
   doc: 'The pangenome .h5 file (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --pangenome
-- id: output
-  doc: 'Output directory (default: ppanggolin_output_DATE2020- 06-23_HOUR13.44.56_PID30847)'
-  type: string
+- id: in_output
+  doc: "Output directory (default:\nppanggolin_output_DATE2020-09-09_HOUR23.40.55_PID1558)"
+  type: Directory
   inputBinding:
     prefix: --output
-- id: tile_plot
+- id: in_tile_plot
   doc: 'draw the tile plot of the pangenome (default: False)'
   type: boolean
   inputBinding:
     prefix: --tile_plot
-- id: no_cloud
-  doc: 'Do not draw the cloud in the tile plot (default: False)'
+- id: in_no_cloud
+  doc: "Do not draw the cloud in the tile plot (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --nocloud
-- id: soft_core
+- id: in_soft_core
   doc: 'Soft core threshold to use (default: 0.95)'
-  type: string
+  type: double
   inputBinding:
     prefix: --soft_core
-- id: u_curve
+- id: in_u_curve
   doc: 'draw the U-curve of the pangenome (default: False)'
   type: boolean
   inputBinding:
     prefix: --ucurve
-- id: tmpdir
+- id: in_tmpdir
   doc: 'directory for storing temporary files (default: /tmp)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-- id: verbose
-  doc: 'Indicate verbose level (0 for warning and errors only, 1 for info, 2 for debug)
-    (default: 1)'
+- id: in_verbose
+  doc: "Indicate verbose level (0 for warning and errors only,\n1 for info, 2 for\
+    \ debug) (default: 1)"
   type: string
   inputBinding:
     prefix: --verbose
-- id: log
+- id: in_log
   doc: 'log output file (default: stdout)'
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: cpu
+- id: in_cpu
   doc: 'Number of available cpus (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpu
-- id: force
-  doc: 'Force writing in output directory and in pangenome output file. (default:
-    False)'
-  type: boolean
+- id: in_force
+  doc: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  type: File
   inputBinding:
     prefix: --force
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output directory (default:\nppanggolin_output_DATE2020-09-09_HOUR23.40.55_PID1558)"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_log
+  doc: 'log output file (default: stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log)
+- id: out_force
+  doc: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_force)
 cwlVersion: v1.1
 baseCommand:
 - ppanggolin

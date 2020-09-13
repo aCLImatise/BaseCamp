@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../mb_plot_metagene_nobs.cwl
 inputs:
-- id: downstream
+- id: in_downstream
   doc: set downstream range
   type: string
   inputBinding:
     prefix: --downstream
-- id: upstream
+- id: in_upstream
   doc: set upstream range
   type: string
   inputBinding:
     prefix: --upstream
-- id: gene
+- id: in_gene
   doc: set gene range
   type: string
   inputBinding:
     prefix: --gene
-- id: min
+- id: in_min
   doc: minimum transcript size
   type: long
   inputBinding:
     prefix: --min
-- id: max
+- id: in_max
   doc: maximum transcript size
   type: long
   inputBinding:
     prefix: --max
-- id: plot_smooth
+- id: in_plot_smooth
   doc: half of the window size used for the running mean
-  type: string
+  type: long
   inputBinding:
     prefix: --plotSmooth
-- id: label_center_a
+- id: in_label_center_a
   doc: plot label for the first center position
   type: string
   inputBinding:
     prefix: --labelCenterA
-- id: label_body
+- id: in_label_body
   doc: for body (between A and B)
   type: string
   inputBinding:
     prefix: --labelBody
-- id: label_center_b
+- id: in_label_center_b
   doc: plot label for the second center position
   type: string
   inputBinding:
     prefix: --labelCenterB
-- id: title
+- id: in_title
   doc: plot title
   type: string
   inputBinding:
     prefix: --title
-- id: remove
+- id: in_remove
   doc: remove temporary files
   type: boolean
   inputBinding:
     prefix: --remove
-- id: verbose
+- id: in_verbose
   doc: verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mb-plot-metagene-nobs

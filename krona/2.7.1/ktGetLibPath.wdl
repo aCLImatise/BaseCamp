@@ -4,4 +4,7 @@ task KtGetLibPath {
   command <<<
     ktGetLibPath
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../coordinateTranslate.cwl
 inputs:
-- id: x_mfa_alignment
+- id: in_x_mfa_alignment
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: alignment_coordinate_file
+- id: in_alignment_coordinate_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - coordinateTranslate

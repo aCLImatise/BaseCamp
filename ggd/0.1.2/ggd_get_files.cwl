@@ -1,40 +1,38 @@
 class: CommandLineTool
 id: ../../../ggd_get_files.cwl
 inputs:
-- id: channel
-  doc: The ggd channel of the recipe to find. (Default = genomics)
+- id: in_channel
+  doc: "The ggd channel of the recipe to find. (Default =\ngenomics)"
   type: string
   inputBinding:
     prefix: --channel
-- id: species
-  doc: (Optional) species recipe is for. Use '*' for any species
+- id: in_species
+  doc: "(Optional) species recipe is for. Use '*' for any\nspecies"
   type: string
   inputBinding:
     prefix: --species
-- id: genome_build
-  doc: (Optional) genome build the recipe is for. Use '*' for any genome build.
+- id: in_genome_build
+  doc: "(Optional) genome build the recipe is for. Use '*' for\nany genome build."
   type: string
   inputBinding:
     prefix: --genome-build
-- id: pattern
-  doc: (Optional) pattern to match the name of the file desired. To list all files
-    for a ggd package, do not use the -p option
-  type: string
+- id: in_pattern
+  doc: "(Optional) pattern to match the name of the file\ndesired. To list all files\
+    \ for a ggd package, do not\nuse the -p option"
+  type: File
   inputBinding:
     prefix: --pattern
-- id: prefix
-  doc: (Optional) The name or the full directory path to an conda environment where
-    a ggd recipe is stored. (Only needed if not getting file paths for files in the
-    current conda enviroment)
-  type: string
+- id: in_prefix
+  doc: "(Optional) The name or the full directory path to an\nconda environment where\
+    \ a ggd recipe is stored. (Only\nneeded if not getting file paths for files in\
+    \ the\ncurrent conda enviroment)\n"
+  type: File
   inputBinding:
     prefix: --prefix
-- id: name
-  doc: pattern to match recipe name(s).
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ggd

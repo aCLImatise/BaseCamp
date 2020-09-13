@@ -1,12 +1,20 @@
 class: CommandLineTool
-id: ../../../extract_miRNAs.pl.orig.cwl
+id: ../../../extract_miRNAs.pl.cwl
 inputs:
-- id: perl
+- id: in_e_dot_gdot
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_perl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- extract_miRNAs.pl.orig
+- extract_miRNAs.pl

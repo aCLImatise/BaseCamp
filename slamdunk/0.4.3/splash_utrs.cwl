@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../splash_utrs.cwl
 inputs:
-- id: reference
+- id: in_reference
   doc: Reference fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: bed
+- id: in_bed
   doc: BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: read_length
+- id: in_read_length
   doc: Read length
-  type: string
+  type: long
   inputBinding:
     prefix: --read-length
-- id: output_dir
+- id: in_output_dir
   doc: Output directory for mapped BAM files.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outputDir
-- id: snp_rate
-  doc: SNP rate in UTRs
+- id: in_snp_rate
+  doc: "SNP rate in UTRs\n"
   type: string
   inputBinding:
     prefix: --snp-rate
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: Output directory for mapped BAM files.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - splash

@@ -2,9 +2,9 @@ version 1.0
 
 task BwaSamse {
   input {
-    Int? n
-    String? f
     String? r
+    String? f
+    Int? n
     String prefix
     String in_do_tsai
     String in_dot_fq
@@ -14,16 +14,19 @@ task BwaSamse {
       ~{prefix} \
       ~{in_do_tsai} \
       ~{in_dot_fq} \
-      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
-      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
   parameter_meta {
-    n: ""
-    f: ""
     r: ""
+    f: ""
+    n: ""
     prefix: ""
     in_do_tsai: ""
     in_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

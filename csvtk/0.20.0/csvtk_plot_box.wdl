@@ -7,39 +7,37 @@ task CsvtkPlotBox {
     Float? axis_width
     Int? chunk_size
     String? comment_char
-    String? data_field
-    String? delimiter
-    String? format
+    Int? data_field
+    File? delimiter
+    File? format
     String? group_field
     Float? height
     Boolean? ignore_empty_row
     Boolean? ignore_illegal_row
-    String? in_file_list
+    File? in_file_list
     Int? label_size
     Boolean? lazy_quotes
     Boolean? no_header_row
     Int? num_cpus
-    String? out_delimiter
-    String? out_file
+    File? out_delimiter
+    File? out_file
     Boolean? out_tabs
     Boolean? tabs
     Float? tick_width
     String? title
     Int? title_size
     Float? width
-    String? x_max
-    String? x_min
+    Int? x_max
+    Int? x_min
     String? xlab
-    String? y_max
-    String? y_min
+    Int? y_max
+    Int? y_min
     String? ylab
-    String? flags
   }
   command <<<
     csvtk plot box \
-      ~{flags} \
       ~{if defined(box_width) then ("--box-width " +  '"' + box_width + '"') else ""} \
-      ~{true="--horiz" false="" horiz} \
+      ~{if (horiz) then "--horiz" else ""} \
       ~{if defined(axis_width) then ("--axis-width " +  '"' + axis_width + '"') else ""} \
       ~{if defined(chunk_size) then ("--chunk-size " +  '"' + chunk_size + '"') else ""} \
       ~{if defined(comment_char) then ("--comment-char " +  '"' + comment_char + '"') else ""} \
@@ -48,17 +46,17 @@ task CsvtkPlotBox {
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(group_field) then ("--group-field " +  '"' + group_field + '"') else ""} \
       ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
-      ~{true="--ignore-empty-row" false="" ignore_empty_row} \
-      ~{true="--ignore-illegal-row" false="" ignore_illegal_row} \
+      ~{if (ignore_empty_row) then "--ignore-empty-row" else ""} \
+      ~{if (ignore_illegal_row) then "--ignore-illegal-row" else ""} \
       ~{if defined(in_file_list) then ("--infile-list " +  '"' + in_file_list + '"') else ""} \
       ~{if defined(label_size) then ("--label-size " +  '"' + label_size + '"') else ""} \
-      ~{true="--lazy-quotes" false="" lazy_quotes} \
-      ~{true="--no-header-row" false="" no_header_row} \
+      ~{if (lazy_quotes) then "--lazy-quotes" else ""} \
+      ~{if (no_header_row) then "--no-header-row" else ""} \
       ~{if defined(num_cpus) then ("--num-cpus " +  '"' + num_cpus + '"') else ""} \
       ~{if defined(out_delimiter) then ("--out-delimiter " +  '"' + out_delimiter + '"') else ""} \
       ~{if defined(out_file) then ("--out-file " +  '"' + out_file + '"') else ""} \
-      ~{true="--out-tabs" false="" out_tabs} \
-      ~{true="--tabs" false="" tabs} \
+      ~{if (out_tabs) then "--out-tabs" else ""} \
+      ~{if (tabs) then "--tabs" else ""} \
       ~{if defined(tick_width) then ("--tick-width " +  '"' + tick_width + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
       ~{if defined(title_size) then ("--title-size " +  '"' + title_size + '"') else ""} \
@@ -75,10 +73,10 @@ task CsvtkPlotBox {
     horiz: "horize box plot"
     axis_width: "axis width (default 1.5)"
     chunk_size: "chunk size of CSV reader (default 50)"
-    comment_char: "lines starting with commment-character will be ignored. if your header row starts with '#', please assign \"-C\" another rare symbol, e.g. '$' (default \"#\")"
-    data_field: "column index or column name of data (default \"1\")"
-    delimiter: "delimiting character of the input CSV file (default \",\")"
-    format: "image format for stdout when flag -o/--out-file not given. available values: eps, jpg|jpeg, pdf, png, svg, and tif|tiff. (default \"png\")"
+    comment_char: "lines starting with commment-character will be ignored. if your header row starts with '#', please assign \\\"-C\\\" another rare symbol, e.g. '$' (default \\\"#\\\")"
+    data_field: "column index or column name of data (default \\\"1\\\")"
+    delimiter: "delimiting character of the input CSV file (default \\\",\\\")"
+    format: "image format for stdout when flag -o/--out-file not given. available values: eps, jpg|jpeg, pdf, png, svg, and tif|tiff. (default \\\"png\\\")"
     group_field: "column index or column name of group"
     height: "Figure height (default 4.5)"
     ignore_empty_row: "ignore empty rows"
@@ -88,10 +86,10 @@ task CsvtkPlotBox {
     lazy_quotes: "if given, a quote may appear in an unquoted field and a non-doubled quote may appear in a quoted field"
     no_header_row: "specifies that the input CSV file does not have header row"
     num_cpus: "number of CPUs to use (default value depends on your computer) (default 8)"
-    out_delimiter: "delimiting character of the output CSV file, e.g., -D $'\t' for tab (default \",\")"
-    out_file: "out file (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")"
-    out_tabs: "specifies that the output is delimited with tabs. Overrides \"-D\""
-    tabs: "specifies that the input CSV file is delimited with tabs. Overrides \"-d\" and \"-D\""
+    out_delimiter: "delimiting character of the output CSV file, e.g., -D $'\\t' for tab (default \\\",\\\")"
+    out_file: "out file (\\\"-\\\" for stdout, suffix .gz for gzipped out) (default \\\"-\\\")"
+    out_tabs: "specifies that the output is delimited with tabs. Overrides \\\"-D\\\""
+    tabs: "specifies that the input CSV file is delimited with tabs. Overrides \\\"-d\\\" and \\\"-D\\\""
     tick_width: "axis tick width (default 1.5)"
     title: "Figure title"
     title_size: "title font size (default 16)"
@@ -102,6 +100,11 @@ task CsvtkPlotBox {
     y_max: "maximum value of Y axis"
     y_min: "minimum value of Y axis"
     ylab: "y label text"
-    flags: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_format = "${in_format}"
+    File out_out_delimiter = "${in_out_delimiter}"
+    File out_out_file = "${in_out_file}"
   }
 }

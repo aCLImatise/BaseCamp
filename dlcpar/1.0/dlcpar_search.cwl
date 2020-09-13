@@ -1,103 +1,86 @@
 class: CommandLineTool
 id: ../../../dlcpar_search.cwl
 inputs:
-- id: stree
+- id: in_stree
   doc: species tree file in newick format
-  type: string
+  type: File
   inputBinding:
     prefix: --stree
-- id: s_map
+- id: in_s_map
   doc: gene to species map
   type: string
   inputBinding:
     prefix: --smap
-- id: input_ext
+- id: in_input_ext
   doc: 'input file extension (default: "")'
-  type: string
+  type: File
   inputBinding:
     prefix: --inputext
-- id: output_ext
+- id: in_output_ext
   doc: 'output file extension (default: ".dlcpar")'
-  type: string
+  type: File
   inputBinding:
     prefix: --outputext
-- id: dup_cost
+- id: in_dup_cost
   doc: 'duplication cost (default: 1.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: --dupcost
-- id: loss_cost
+- id: in_loss_cost
   doc: 'loss cost (default: 1.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: --losscost
-- id: coal_cost
+- id: in_coal_cost
   doc: 'deep coalescence cost (default: 0.5)'
-  type: string
+  type: double
   inputBinding:
     prefix: --coalcost
-- id: explicit
-  doc: set to ignore extra lineages at implied speciation nodes
+- id: in_explicit
+  doc: set to ignore extra lineages at implied speciation
   type: boolean
   inputBinding:
     prefix: --explicit
-- id: iterations__number
-  doc: '<# iterations>, --iter=<# iterations> number of search iterations (default:
-    10)'
+- id: in_iterations_iter_iterationsnumber
+  doc: "<# iterations>, --iter=<# iterations>\nnumber of search iterations (default:\
+    \ 10)"
   type: boolean
   inputBinding:
     prefix: -i
-- id: n_prescreen
-  doc: '=<# prescreens> number of prescreening iterations (default: 20)'
+- id: in_n_prescreen
+  doc: "=<# prescreens>\nnumber of prescreening iterations (default: 20)"
   type: boolean
   inputBinding:
     prefix: --nprescreen
-- id: in_it_locus_tree
+- id: in_in_it_locus_tree
   doc: initial locus tree for search
-  type: string
+  type: File
   inputBinding:
     prefix: --init-locus-tree
-- id: seed
+- id: in_seed
   doc: random number seed
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: log
+- id: in_log
   doc: if given, output debugging log
   type: boolean
   inputBinding:
     prefix: --log
-- id: dlc_par_search
-  doc: ''
+- id: in_nodes
+  doc: 'Search:'
   type: string
   inputBinding:
     position: 0
-- id: is
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: phylogenetic
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: program
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: for
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_ext
+  doc: 'output file extension (default: ".dlcpar")'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_ext)
 cwlVersion: v1.1
 baseCommand:
 - dlcpar_search

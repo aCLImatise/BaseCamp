@@ -4,4 +4,7 @@ task KillBadKUnitigs {
   command <<<
     killBadKUnitigs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

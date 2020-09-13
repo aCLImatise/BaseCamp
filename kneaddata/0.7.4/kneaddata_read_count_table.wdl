@@ -2,8 +2,8 @@ version 1.0
 
 task KneaddataReadCountTable {
   input {
-    String? input_folder_kneaddata
-    String? output_file_write
+    Directory? input_folder_kneaddata
+    File? output_file_write
   }
   command <<<
     kneaddata_read_count_table \
@@ -13,5 +13,9 @@ task KneaddataReadCountTable {
   parameter_meta {
     input_folder_kneaddata: "the input folder with kneaddata log files"
     output_file_write: "the output file to write"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_write = "${in_output_file_write}"
   }
 }

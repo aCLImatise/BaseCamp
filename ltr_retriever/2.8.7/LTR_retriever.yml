@@ -1,24 +1,226 @@
 !Command
+command:
+- LTR_retriever
 positional: []
 named:
 - !Flag
-  description: ''
+  description: '[File]     specify the genome sequence file (FASTA)'
   synonyms:
   - -genome
-  args: !SimpleFlagArg
-    name: genomefile
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ''
+  description: '[File]     LTR-RT candidates from LTRharvest'
   synonyms:
   - -inharvest
-  args: !SimpleFlagArg
-    name: LTRharvest_input
+  args: !EmptyFlagArg {}
   optional: true
-command:
-- LTR_retriever
+- !Flag
+  description: '[File]     LTR-RT candidates from LTR_FINDER'
+  synonyms:
+  - -infinder
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[File]     LTR-RT candidates from MGEScan_LTR'
+  synonyms:
+  - -inmgescan
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[File]     Non-canonical LTR-RT candidates from LTRharvest'
+  synonyms:
+  - -nonTGCA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: retain intermediate outputs (developer mode)
+  synonyms:
+  - -verbose/-v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable whole genome LTR-RT annotation (no GFF output)
+  synonyms:
+  - -noanno
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[CHR]      specify the ambiguous character (default N)'
+  synonyms:
+  - -misschar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable filtering ambiguous sequence in candidates
+  synonyms:
+  - -Nscreen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[INT]      maximum number of ambiguous bp allowed in a candidate (default
+    10)'
+  synonyms:
+  - -missmax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0-1]      maximum percentage of ambiguous bp allowed in a candidate
+    (default 0.8)'
+  synonyms:
+  - -missrate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[INT]      minimum bp of the LTR region (default 100)'
+  synonyms:
+  - -minlen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[FLOAT]    maximum length ratio of internal region/LTR region (default
+    50)'
+  synonyms:
+  - -max_ratio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[INT]      minimum alignment length (INT/2) to identify tandem repeats
+    (default 1000)'
+  synonyms:
+  - -minscore
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[1-60]     maximum ambiguous length (bp) allowed in 60bp-flanking
+    sequences (default 25)'
+  synonyms:
+  - -flankmiss
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0-100]    minimum percentage of identity for flanking sequence alignment
+    (default 60)'
+  synonyms:
+  - -flanksim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0-1]      maximum alignment portion allowed for 60bp-flanking sequences
+    (default 0.6)'
+  synonyms:
+  - -flankaln
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[[STRING]] specify non-canonical motifs to search for\n(default -motif\
+    \ [TCCA TGCT TACA TACT TGGA TATA TGTA TGCA])"
+  synonyms:
+  - -motif
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Discard truncated LTR-RTs and nested LTR-RTs (will dampen sensitivity)
+  synonyms:
+  - -notrunc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[0-1]     maximum portion of allowed for cumulated DNA TE database\
+    \ and LINE database\nlignments (default 0.7)"
+  synonyms:
+  - -procovTE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0-1]     maximum portion allowed for cumulated plant protein database
+    alignments (default 0.7)'
+  synonyms:
+  - -procovPL
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[INT]      minimum alignment length (aa) for LINE/DNA transposase/plant
+    protein alignment (default 30)'
+  synonyms:
+  - -prolensig
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[[STRING]] trigger to use blastclust and customize parameters\n(default\
+    \ -blastclust [-L .9 -b T -S 80])"
+  synonyms:
+  - -blastclust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[[STRING]] trigger to use cd-hit-est (default) and customize parameters\n\
+    (default -cdhit [-c 0.8 -G 0.8 -s 0.9 -aL 0.9 -aS 0.9 -M 0])"
+  synonyms:
+  - -cdhit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[FASTA]    provide LINE transposase database for LINE TE exclusion\n\
+    (default /database/Tpases020812LINE)"
+  synonyms:
+  - -linelib
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[FASTA]    provide DNA TE transposase database for DNA TE exclusion\n\
+    (default /database/Tpases020812DNA)"
+  synonyms:
+  - -dnalib
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[FASTA]    provide plant protein database for coding sequence exclusion\n\
+    (default /database/alluniRefprexp082813)"
+  synonyms:
+  - -plantprolib
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[Pfam]     provide Pfam database for TE identification\n(default /database/TEfam.hmm)"
+  synonyms:
+  - -TEhmm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[FLOAT]    neutral mutation rate (per bp per ya) (default 1.3e-8 (from
+    rice))'
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[STRING]   restart the program from a particular step. Existing outputs\
+    \ will be overwritten. Options:\nInit (default, from the beginning);\nMajor (Tandem\
+    \ repeat cleanup finished, structrual analyses next)\nTrunc (Structural analyses\
+    \ finished, truncated LTR recycle next)\nPromask (Truncated LTR recycle finished,\
+    \ protein contamination cleanup next)\nLibrary (Protein contamination cleanup\
+    \ finished, initial library construction next)\nNext (Initial library construction\
+    \ finished, non-TGCA analyses next)"
+  synonyms:
+  - -step
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[INT]      number of threads (≤ total available threads, default 4)'
+  synonyms:
+  - -threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: display this help information
+  synonyms:
+  - -help/-h
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

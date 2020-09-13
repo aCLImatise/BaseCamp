@@ -1,87 +1,100 @@
 class: CommandLineTool
 id: ../../../fqtools.cwl
 inputs:
-- id: show_program_version
+- id: in_show_program_version
   doc: Show the program version and exit.
   type: boolean
   inputBinding:
     prefix: -v
-- id: allow_dna_sequence_bases
+- id: in_allow_bases_acgtn
   doc: Allow DNA sequence bases       (ACGTN)
   type: boolean
   inputBinding:
     prefix: -d
-- id: allow_rna_sequence_bases
+- id: in_allow_rna_bases
   doc: Allow RNA sequence bases       (ACGUN)
   type: boolean
   inputBinding:
     prefix: -r
-- id: allow_ambiguous_bases
+- id: in_allow_bases_rykmswbdhv
   doc: Allow ambiguous sequence bases (RYKMSWBDHV)
   type: boolean
   inputBinding:
     prefix: -a
-- id: allow_sequence_base
+- id: in_allow_mask_base
   doc: Allow mask sequence base       (X)
   type: boolean
   inputBinding:
     prefix: -m
-- id: allow_uppercase_sequence_bases
+- id: in_allow_uppercase_bases
   doc: Allow uppercase sequence bases
   type: boolean
   inputBinding:
     prefix: -u
-- id: allow_lowercase_sequence_bases
+- id: in_allow_sequence_bases
   doc: Allow lowercase sequence bases
   type: boolean
   inputBinding:
     prefix: -l
-- id: set_replacement_default
+- id: in_set_replacement_default
   doc: Set the pair replacement character (default "%")
   type: string
   inputBinding:
     prefix: -p
-- id: set_input_size
+- id: in_set_input_size
   doc: Set the input buffer size
-  type: string
+  type: long
   inputBinding:
     prefix: -b
-- id: set_output_size
+- id: in_set_buffer_size
   doc: Set the output buffer size
-  type: string
+  type: long
   inputBinding:
     prefix: -B
-- id: set_score_encoding
+- id: in_set_score_encoding
   doc: Set the quality score encoding
   type: string
   inputBinding:
     prefix: -q
-- id: set_input_format
+- id: in_set_input_format
   doc: Set the input file format
-  type: string
+  type: File
   inputBinding:
     prefix: -f
-- id: set_file_format
+- id: in_set_file_format
   doc: Set the output file format
-  type: string
+  type: File
   inputBinding:
     prefix: -F
-- id: read_interleaved_pairs
+- id: in_read_interleaved_pairs
   doc: Read interleaved input file pairs
   type: boolean
   inputBinding:
     prefix: -i
-- id: write_file_pairs
+- id: in_write_interleaved_pairs
   doc: Write interleaved output file pairs
-  type: boolean
+  type: File
   inputBinding:
     prefix: -I
-- id: hv_dram_uli
+- id: in_hv_dram_uli
   doc: ''
   type: boolean
   inputBinding:
     prefix: -hvdramuli
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_set_file_format
+  doc: Set the output file format
+  type: File
+  outputBinding:
+    glob: $(inputs.in_set_file_format)
+- id: out_write_interleaved_pairs
+  doc: Write interleaved output file pairs
+  type: File
+  outputBinding:
+    glob: $(inputs.in_write_interleaved_pairs)
 cwlVersion: v1.1
 baseCommand:
 - fqtools

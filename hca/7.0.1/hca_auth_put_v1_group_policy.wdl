@@ -1,17 +1,20 @@
 version 1.0
 
-task HcaAuthPutV1GroupPolicy {
+task HcaAuthPutv1grouppolicy {
   input {
-    String? group_id
     String? policy
+    String? group_id
   }
   command <<<
-    hca auth put-v1-group-policy \
-      ~{if defined(group_id) then ("--group-id " +  '"' + group_id + '"') else ""} \
-      ~{if defined(policy) then ("--policy " +  '"' + policy + '"') else ""}
+    hca auth put_v1_group_policy \
+      ~{if defined(policy) then ("--policy " +  '"' + policy + '"') else ""} \
+      ~{if defined(group_id) then ("--group-id " +  '"' + group_id + '"') else ""}
   >>>
   parameter_meta {
-    group_id: "The name of the group."
     policy: ""
+    group_id: "The name of the group."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

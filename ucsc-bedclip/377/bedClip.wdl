@@ -3,24 +3,24 @@ version 1.0
 task BedClip {
   input {
     Boolean? truncate
-    String? verbose
+    Int? verbose
     String input_dot_bed
     String chrom_dot_sizes
-    String output_dot_bed
   }
   command <<<
     bedClip \
       ~{input_dot_bed} \
       ~{chrom_dot_sizes} \
-      ~{output_dot_bed} \
-      ~{true="-truncate" false="" truncate} \
+      ~{if (truncate) then "-truncate" else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
   parameter_meta {
-    truncate: "- truncate items that span ends of chrom instead of the default of dropping the items"
+    truncate: "- truncate items that span ends of chrom instead of the\\ndefault of dropping the items"
     verbose: "- set to get list of lines clipped and why"
     input_dot_bed: ""
     chrom_dot_sizes: ""
-    output_dot_bed: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

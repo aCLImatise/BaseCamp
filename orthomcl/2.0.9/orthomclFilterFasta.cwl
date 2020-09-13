@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../orthomclFilterFasta.cwl
 inputs:
-- id: input_dir
+- id: in_input_dir
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: min_length
+- id: in_min_length
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 1
-- id: max_percent_stops
+- id: in_max_percent_stops
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 2
-- id: good_proteins_file
+- id: in_good_proteins_file
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: poor_proteins_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - orthomclFilterFasta

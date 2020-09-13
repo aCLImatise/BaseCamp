@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- AlignmentTools
+- align-nucl-to-prot
 positional:
 - !Positional
   description: ''
@@ -26,61 +29,17 @@ positional:
   name: stats out
   optional: false
 named: []
-command:
-- AlignmentTools
-- align-nucl-to-prot
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - AlignmentTools
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: java
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: AlignmentMerger
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: alignfiledir
-      optional: false
-    - !Positional
-      description: ''
-      position: 3
-      name: outfile.fasta
-      optional: false
-    - !Positional
-      description: ''
-      position: 4
-      name: mask_file
-      optional: true
-    named: []
     command:
     - AlignmentTools
-    - alignment-merger
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Exception in thread \"main\" java.lang.IllegalArgumentException: Usage:\
-      \ java AlignmentMerger <alignfiledir> <outfile.fasta> [ <mask_file>] \n  This\
-      \ program reads in all the files from the input directory and merges the alignment\
-      \ into one single file\n  stkdir contains a list of aligned stk files to be\
-      \ merged \n  maskfile contains the model positions to be ignored\n\tat edu.msu.cme.rdp.alignment.AlignmentMerger.main(AlignmentMerger.java:291)\n\
-      \tat edu.msu.cme.rdp.alignment.AlignmentToolsMain.main(AlignmentToolsMain.java:49)\n"
-    generated_using: &id002
-    - --help
-  - !Command
+    - pairwise-knn
     positional:
     - !Positional
       description: ''
@@ -90,11 +49,16 @@ parent: &id001 !Command
     - !Positional
       description: ''
       position: 1
-      name: queryFile
+      name: options
       optional: false
     - !Positional
       description: ''
       position: 2
+      name: queryFile
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
       name: dbFile
       optional: false
     named:
@@ -106,8 +70,8 @@ parent: &id001 !Command
         name: arg
       optional: true
     - !Flag
-      description: Alignment mode {global, glocal, local, overlap, overlap_trim} (default=
-        glocal)
+      description: "Alignment mode {global, glocal, local, overlap,\noverlap_trim}\
+        \ (default= glocal)"
       synonyms:
       - -m
       - --mode
@@ -129,8 +93,8 @@ parent: &id001 !Command
         name: arg
       optional: true
     - !Flag
-      description: The top p closest targets from kmer prefilter step. Set p=0 to
-        disable the prefilter step. (default = 10)
+      description: "The top p closest targets from kmer prefilter\nstep. Set p=0 to\
+        \ disable the prefilter step.\n(default = 10)"
       synonyms:
       - -p
       - --prefilter
@@ -138,7 +102,7 @@ parent: &id001 !Command
         name: arg
       optional: true
     - !Flag
-      description: '#Threads to use. This process is CPU intensive. (default 1)'
+      description: "#Threads to use. This process is CPU intensive.\n(default 1)"
       synonyms:
       - -t
       - --threads
@@ -146,19 +110,17 @@ parent: &id001 !Command
         name: arg
       optional: true
     - !Flag
-      description: The word size used to find closest targets during prefilter. (default
-        4 for protein, 8 for nucleotide)
+      description: "The word size used to find closest targets during\nprefilter.\
+        \ (default 4 for protein, 8 for\nnucleotide)\n"
       synonyms:
       - -w
       - --word-size
       args: !SimpleFlagArg
         name: arg
       optional: true
-    command:
-    - AlignmentTools
-    - pairwise-knn
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -174,8 +136,12 @@ parent: &id001 !Command
       \ -w,--word-size <arg>   The word size used to find closest targets during\n\
       \                        prefilter. (default 4 for protein, 8 for\n        \
       \                nucleotide)\n"
-    generated_using: *id002
+    generated_using: &id002
+    - --help
   - !Command
+    command:
+    - AlignmentTools
+    - compare-error-type
     positional:
     - !Positional
       description: ''
@@ -196,11 +162,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: arg
       optional: true
-    command:
-    - AlignmentTools
-    - compare-error-type
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -208,8 +172,10 @@ parent: &id001 !Command
       \                     <query_nucl.fasta> <query_nucl.qual>)\n -s,--stem <arg>\
       \   Output stem (default <query_nucl.fasta>)\n"
     generated_using: *id002
-  - *id003
   - !Command
+    command:
+    - AlignmentTools
+    - rm-partialseq
     positional:
     - !Positional
       description: ''
@@ -228,7 +194,7 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: 'Alignment mode: overlap, glocal, local or global. default = overlap'
+      description: "Alignment mode: overlap, glocal, local or global.\ndefault = overlap"
       synonyms:
       - -a
       - --alignment-mode
@@ -236,9 +202,9 @@ parent: &id001 !Command
         name: arg
       optional: true
     - !Flag
-      description: The minimum number of continuous gaps in the beginning or end of
-        the query alignment. If above the cutoff, the query is marked as partial.
-        default = 50
+      description: "The minimum number of continuous gaps in the\nbeginning or end\
+        \ of the query alignment. If above\nthe cutoff, the query is marked as partial.\
+        \ default\n= 50"
       synonyms:
       - -g
       - --min_gaps
@@ -246,8 +212,8 @@ parent: &id001 !Command
         name: arg
       optional: true
     - !Flag
-      description: The top k closest targets using a heuristic method. (default =
-        20)
+      description: "The top k closest targets using a heuristic method.\n(default\
+        \ = 20)"
       synonyms:
       - -k
       - --knn
@@ -262,11 +228,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: arg
       optional: true
-    command:
-    - AlignmentTools
-    - rm-partialseq
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -281,6 +245,8 @@ parent: &id001 !Command
       \                             (default = 20)\n -o,--alignment-out <arg>    The\
       \ output file containing the pairwise alignment\n"
     generated_using: *id002
+  - *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -293,6 +259,7 @@ parent: &id001 !Command
     \ to reference sequences\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

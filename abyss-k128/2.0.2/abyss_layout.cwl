@@ -1,62 +1,65 @@
 class: CommandLineTool
 id: ../../../abyss_layout.cwl
 inputs:
-- id: min_length
+- id: in_min_length
   doc: minimum sequence length [0]
-  type: string
+  type: long
   inputBinding:
     prefix: --min-length
-- id: min_overlap
+- id: in_min_overlap
   doc: minimum overlap [0]
-  type: string
+  type: long
   inputBinding:
     prefix: --min-overlap
-- id: km_er
+- id: in_km_er
   doc: length of a k-mer
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: out
+- id: in_out
   doc: write the paths to FILE
   type: File
   inputBinding:
     prefix: --out
-- id: graph
+- id: in_graph
   doc: write the graph to FILE
   type: File
   inputBinding:
     prefix: --graph
-- id: tred
+- id: in_tred
   doc: remove transitive edges
   type: boolean
   inputBinding:
     prefix: --tred
-- id: no_tred
+- id: in_no_tred
   doc: do not remove transitive edges [default]
   type: boolean
   inputBinding:
     prefix: --no-tred
-- id: ss
+- id: in_ss
   doc: expect contigs to be oriented correctly
   type: boolean
   inputBinding:
     prefix: --SS
-- id: no_ss
+- id: in_no_ss
   doc: no assumption about contig orientation [default]
   type: boolean
   inputBinding:
     prefix: --no-SS
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: overlap
+- id: in_overlap
   doc: the sequence overlap graph
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - abyss-layout

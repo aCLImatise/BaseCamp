@@ -1,7 +1,10 @@
 version 1.0
 
-task DreamtoolsLayout {
+task Dreamtoolslayout {
   command <<<
-    dreamtools-layout
+    dreamtools_layout
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

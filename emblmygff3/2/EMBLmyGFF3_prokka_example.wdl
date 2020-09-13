@@ -1,7 +1,10 @@
 version 1.0
 
-task EMBLmyGFF3ProkkaExample {
+task EMBLmyGFF3prokkaexample {
   command <<<
-    EMBLmyGFF3-prokka-example
+    EMBLmyGFF3_prokka_example
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

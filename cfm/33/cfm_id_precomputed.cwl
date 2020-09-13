@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../cfm_id_precomputed.cwl
 inputs:
-- id: cfm_id_dot_exe
+- id: in_cfm_id_dot_exe
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: spectrum_file
+- id: in_spectrum_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: id
+- id: in_id
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: candidate_file
+- id: in_candidate_file
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: num_highest
+- id: in_num_highest
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: ppm_mass_to_l
+- id: in_ppm_mass_to_l
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: abs_mass_to_l
+- id: in_abs_mass_to_l
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: score_type
+- id: in_score_type
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: output_filename
+- id: in_output_filename
   doc: ''
   type: string
   inputBinding:
     position: 8
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cfm-id-precomputed

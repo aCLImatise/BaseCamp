@@ -4,4 +4,7 @@ task Transposcope {
   command <<<
     transposcope
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

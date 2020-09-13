@@ -2,37 +2,37 @@ version 1.0
 
 task Appcov {
   input {
-    String? outdir
+    Directory? outdir
     Boolean? _be_verbose
-    String? window
-    String? slide
+    Int? window
+    Int? slide
     Boolean? one_msa
     Boolean? plot_wc
     Boolean? helix
-    String? app_gap
-    String? app_var
-    String? a_ppv_art
-    String? app_now_c
-    String? app_gu
-    String? app_not_s
-    String? min_helix
-    String? filter_seqs_xseqcons
-    String? _require_seqs_x_i_d_
-    String? require_seqs_x_i_d__x
-    String? t_start
-    String? tend
+    Int? app_gap
+    Float? app_var
+    Float? a_ppv_art
+    Int? app_now_c
+    Float? app_gu
+    Float? app_not_s
+    Int? min_helix
+    Float? filter_seqs_xseqcons
+    Float? var_15
+    Float? var_16
+    Int? t_start
+    Int? tend
     Boolean? consensus
-    String? sub_msa
-    String? n_seq_min
-    String? gap_thresh
-    String? mini_d
-    String? max_id
+    Int? sub_msa
+    Int? n_seq_min
+    Float? gap_thresh
+    Float? mini_d
+    Float? max_id
     String? in_format
     Boolean? _produce_plots
     String? out_pair
-    String? out_msa
-    String? out_map
-    String? seed
+    File? out_msa
+    File? out_map
+    Int? seed
     Boolean? options
     String apparent
     String co_variations
@@ -44,12 +44,12 @@ task Appcov {
       ~{co_variations} \
       ~{msa_file} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
-      ~{true="-v" false="" _be_verbose} \
+      ~{if (_be_verbose) then "-v" else ""} \
       ~{if defined(window) then ("--window " +  '"' + window + '"') else ""} \
       ~{if defined(slide) then ("--slide " +  '"' + slide + '"') else ""} \
-      ~{true="--onemsa" false="" one_msa} \
-      ~{true="--plotwc" false="" plot_wc} \
-      ~{true="--helix" false="" helix} \
+      ~{if (one_msa) then "--onemsa" else ""} \
+      ~{if (plot_wc) then "--plotwc" else ""} \
+      ~{if (helix) then "--helix" else ""} \
       ~{if defined(app_gap) then ("--appgap " +  '"' + app_gap + '"') else ""} \
       ~{if defined(app_var) then ("--appvar " +  '"' + app_var + '"') else ""} \
       ~{if defined(a_ppv_art) then ("--appvart " +  '"' + a_ppv_art + '"') else ""} \
@@ -58,23 +58,23 @@ task Appcov {
       ~{if defined(app_not_s) then ("--appnots " +  '"' + app_not_s + '"') else ""} \
       ~{if defined(min_helix) then ("--minhelix " +  '"' + min_helix + '"') else ""} \
       ~{if defined(filter_seqs_xseqcons) then ("-F " +  '"' + filter_seqs_xseqcons + '"') else ""} \
-      ~{if defined(_require_seqs_x_i_d_) then ("-I " +  '"' + _require_seqs_x_i_d_ + '"') else ""} \
-      ~{if defined(require_seqs_x_i_d__x) then ("-i " +  '"' + require_seqs_x_i_d__x + '"') else ""} \
+      ~{if defined(var_15) then ("-I " +  '"' + var_15 + '"') else ""} \
+      ~{if defined(var_16) then ("-i " +  '"' + var_16 + '"') else ""} \
       ~{if defined(t_start) then ("--tstart " +  '"' + t_start + '"') else ""} \
       ~{if defined(tend) then ("--tend " +  '"' + tend + '"') else ""} \
-      ~{true="--consensus" false="" consensus} \
+      ~{if (consensus) then "--consensus" else ""} \
       ~{if defined(sub_msa) then ("--submsa " +  '"' + sub_msa + '"') else ""} \
       ~{if defined(n_seq_min) then ("--nseqmin " +  '"' + n_seq_min + '"') else ""} \
       ~{if defined(gap_thresh) then ("--gapthresh " +  '"' + gap_thresh + '"') else ""} \
       ~{if defined(mini_d) then ("--minid " +  '"' + mini_d + '"') else ""} \
       ~{if defined(max_id) then ("--maxid " +  '"' + max_id + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="-p" false="" _produce_plots} \
+      ~{if (_produce_plots) then "-p" else ""} \
       ~{if defined(out_pair) then ("--outpair " +  '"' + out_pair + '"') else ""} \
       ~{if defined(out_msa) then ("--outmsa " +  '"' + out_msa + '"') else ""} \
       ~{if defined(out_map) then ("--outmap " +  '"' + out_map + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     outdir: ": specify a directory for all output files"
@@ -92,8 +92,8 @@ task Appcov {
     app_not_s: ": fraction of not transitions to still call a pair ts [default: allows non]  [0.0]  (0<=x<=1)"
     min_helix: ": min lenght of a helix [default: 4]  [3]  (n>0)"
     filter_seqs_xseqcons: ": filter out seqs <x*seq_cons residues  (0<x<=1.0)"
-    _require_seqs_x_i_d_: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
-    require_seqs_x_i_d__x: ": require seqs to have >= <x> id  (0<=x<1.0)"
+    var_15: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
+    var_16: ": require seqs to have >= <x> id  (0<=x<1.0)"
     t_start: ": min alignment position to analyze [1..alen]  (n>0)"
     tend: ": max alignment position to analyze [1..alen]  (n>0)"
     consensus: ": analyze only consensus (seq_cons) positions"
@@ -112,5 +112,9 @@ task Appcov {
     apparent: ""
     co_variations: ""
     msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

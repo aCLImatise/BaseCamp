@@ -5,10 +5,10 @@ task CheckmAnalyze {
     Boolean? ali
     Boolean? nt
     Boolean? genes
-    String? extension
-    String? threads
+    Directory? extension
+    Int? threads
     Boolean? quiet
-    String? tmpdir
+    Directory? tmpdir
     String marker_file
     String bin_dir
     String output_dir
@@ -18,12 +18,12 @@ task CheckmAnalyze {
       ~{marker_file} \
       ~{bin_dir} \
       ~{output_dir} \
-      ~{true="--ali" false="" ali} \
-      ~{true="--nt" false="" nt} \
-      ~{true="--genes" false="" genes} \
+      ~{if (ali) then "--ali" else ""} \
+      ~{if (nt) then "--nt" else ""} \
+      ~{if (genes) then "--genes" else ""} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
   parameter_meta {
@@ -37,5 +37,8 @@ task CheckmAnalyze {
     marker_file: "markers for assessing bins (marker set or HMM file)"
     bin_dir: "directory containing bins (fasta format)"
     output_dir: "directory to write output files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

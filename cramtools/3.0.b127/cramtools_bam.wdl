@@ -11,7 +11,7 @@ task CramtoolsBam {
     Boolean? ignore_md_five_mismatch
     Boolean? inject_sq_uri
     Boolean? input_cram_file
-    Boolean? output_bam_file
+    File? output_bam_file
     Boolean? password
     Boolean? print_sam_header
     Boolean? reference_fast_a_file
@@ -26,25 +26,25 @@ task CramtoolsBam {
   command <<<
     cramtools bam \
       ~{main_class} \
-      ~{true="--calculate-md-tag" false="" calculate_md_tag} \
-      ~{true="--calculate-nm-tag" false="" calculate_nm_tag} \
-      ~{true="--count-only" false="" count_only} \
-      ~{true="--decrypt" false="" decrypt} \
-      ~{true="--default-quality-score" false="" default_quality_score} \
-      ~{true="--filter-flags" false="" filter_flags} \
-      ~{true="--ignore-md5-mismatch" false="" ignore_md_five_mismatch} \
-      ~{true="--inject-sq-uri" false="" inject_sq_uri} \
-      ~{true="--input-cram-file" false="" input_cram_file} \
-      ~{true="--output-bam-file" false="" output_bam_file} \
-      ~{true="--password" false="" password} \
-      ~{true="--print-sam-header" false="" print_sam_header} \
-      ~{true="--reference-fasta-file" false="" reference_fast_a_file} \
-      ~{true="--required-flags" false="" required_flags} \
-      ~{true="--skip-md5-check" false="" skip_md_five_check} \
-      ~{true="--sync-bam-output" false="" sync_bam_output} \
-      ~{true="--output-bam-format" false="" output_bam_format} \
-      ~{true="-H" false="" print_sam_header_quit} \
-      ~{true="--log-level" false="" log_level}
+      ~{if (calculate_md_tag) then "--calculate-md-tag" else ""} \
+      ~{if (calculate_nm_tag) then "--calculate-nm-tag" else ""} \
+      ~{if (count_only) then "--count-only" else ""} \
+      ~{if (decrypt) then "--decrypt" else ""} \
+      ~{if (default_quality_score) then "--default-quality-score" else ""} \
+      ~{if (filter_flags) then "--filter-flags" else ""} \
+      ~{if (ignore_md_five_mismatch) then "--ignore-md5-mismatch" else ""} \
+      ~{if (inject_sq_uri) then "--inject-sq-uri" else ""} \
+      ~{if (input_cram_file) then "--input-cram-file" else ""} \
+      ~{if (output_bam_file) then "--output-bam-file" else ""} \
+      ~{if (password) then "--password" else ""} \
+      ~{if (print_sam_header) then "--print-sam-header" else ""} \
+      ~{if (reference_fast_a_file) then "--reference-fasta-file" else ""} \
+      ~{if (required_flags) then "--required-flags" else ""} \
+      ~{if (skip_md_five_check) then "--skip-md5-check" else ""} \
+      ~{if (sync_bam_output) then "--sync-bam-output" else ""} \
+      ~{if (output_bam_format) then "--output-bam-format" else ""} \
+      ~{if (print_sam_header_quit) then "-H" else ""} \
+      ~{if (log_level) then "--log-level" else ""}
   >>>
   parameter_meta {
     calculate_md_tag: "Calculate MD tag. (default: false)"
@@ -59,7 +59,7 @@ task CramtoolsBam {
     output_bam_file: "The path to the output BAM file."
     password: "Password to decrypt the file."
     print_sam_header: "Print SAM header when writing SAM format. (default: false)"
-    reference_fast_a_file: "Path to the reference fasta file, it must be uncompressed and indexed (use 'samtools faidx' for example). "
+    reference_fast_a_file: "Path to the reference fasta file, it must be uncompressed and indexed (use 'samtools faidx' for example)."
     required_flags: "Required flags.  (default: 0)"
     skip_md_five_check: "Skip MD5 checks when reading the header. (default: false)"
     sync_bam_output: "Write BAM output in the same thread. (default: false)"
@@ -67,5 +67,9 @@ task CramtoolsBam {
     print_sam_header_quit: "Print SAM header and quit. (default: false)"
     log_level: "Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)"
     main_class: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_bam_file = "${in_output_bam_file}"
   }
 }

@@ -1,57 +1,70 @@
 class: CommandLineTool
 id: ../../../mendelscan_trio.cwl
 inputs:
-- id: vep_file
+- id: in_vep_file
   doc: Variant annotation in VEP format
   type: boolean
   inputBinding:
     prefix: --vep-file
-- id: ped_file
+- id: in_ped_file
   doc: Pedigree file in 6-column tab-delimited format
   type: boolean
   inputBinding:
     prefix: --ped-file
-- id: gene_file
+- id: in_gene_file
   doc: A list of gene expression values for tissue of interest
   type: boolean
   inputBinding:
     prefix: --gene-file
-- id: output_file
+- id: in_output_file
   doc: Output file to contain summary report
-  type: boolean
+  type: File
   inputBinding:
     prefix: --output-file
-- id: output_recessive
+- id: in_output_recessive
   doc: Output file to contain scored variants in VCF format
-  type: boolean
+  type: File
   inputBinding:
     prefix: --output-recessive
-- id: output_de_novo
+- id: in_output_de_novo
   doc: file for possible de novo variants
-  type: string
+  type: File
   inputBinding:
     prefix: --output-denovo
-- id: jar
+- id: in_jar
   doc: ''
   type: string
   inputBinding:
     prefix: -jar
-- id: java
+- id: in_java
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: trio
+- id: in_trio
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: vcf
+- id: in_vcf
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: Output file to contain summary report
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
+- id: out_output_recessive
+  doc: Output file to contain scored variants in VCF format
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_recessive)
 cwlVersion: v1.1
 baseCommand:
 - mendelscan

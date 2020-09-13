@@ -5,10 +5,13 @@ task FindErrorsDump {
     File? r
   }
   command <<<
-    findErrors-Dump \
+    findErrors_Dump \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
   parameter_meta {
     r: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

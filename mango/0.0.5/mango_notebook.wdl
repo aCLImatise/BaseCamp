@@ -1,7 +1,10 @@
 version 1.0
 
-task MangoNotebook {
+task Mangonotebook {
   command <<<
-    mango-notebook
+    mango_notebook
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

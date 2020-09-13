@@ -1,83 +1,96 @@
 class: CommandLineTool
 id: ../../../pyatac_signal.cwl
 inputs:
-- id: bed
+- id: in_bed
   doc: Positions around which to generate VPlot
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: bg
+- id: in_bg
   doc: Accepts bedgraph file that is tabix indexed
-  type: string
+  type: File
   inputBinding:
     prefix: --bg
-- id: sizes
+- id: in_sizes
   doc: File with chromosome names in 1st col, sizes in 2nd
-  type: string
+  type: File
   inputBinding:
     prefix: --sizes
-- id: out
+- id: in_out
   doc: basename for output
   type: string
   inputBinding:
     prefix: --out
-- id: cores
+- id: in_cores
   doc: Number of cores to use
   type: long
   inputBinding:
     prefix: --cores
-- id: all
-  doc: output csv file (gzipped) with signal track around all sites
-  type: boolean
+- id: in_all
+  doc: output csv file (gzipped) with signal track around all
+  type: File
   inputBinding:
     prefix: --all
-- id: no_agg
-  doc: Don't make a plot of aggregate or write up of aggregate
-  type: boolean
-  inputBinding:
-    prefix: --no_agg
-- id: up
+- id: in_up
   doc: bases upstream of site to look
   type: long
   inputBinding:
     prefix: --up
-- id: down
+- id: in_down
   doc: bases dowstream site to look
   type: long
   inputBinding:
     prefix: --down
-- id: weight
-  doc: Column with weight information. Signal for interval will be weighted by value
-    in column
+- id: in_weight
+  doc: "Column with weight information. Signal for interval\nwill be weighted by value\
+    \ in column"
   type: long
   inputBinding:
     prefix: --weight
-- id: strand
-  doc: Column in which strand information is included if strand is to be used
+- id: in_strand
+  doc: "Column in which strand information is included if\nstrand is to be used"
   type: long
   inputBinding:
     prefix: --strand
-- id: exp
+- id: in_exp
   doc: take exponent of value
   type: boolean
   inputBinding:
     prefix: --exp
-- id: positive
+- id: in_positive
   doc: Only include positive signal
   type: boolean
   inputBinding:
     prefix: --positive
-- id: scale
+- id: in_scale
   doc: scale each individual track by total signal value
   type: boolean
   inputBinding:
     prefix: --scale
-- id: norm
+- id: in_norm
   doc: normalize aggregate track by number of intervals
   type: boolean
   inputBinding:
     prefix: --norm
-outputs: []
+- id: in_sites
+  doc: --no_agg              Don't make a plot of aggregate or write up of
+  type: string
+  inputBinding:
+    position: 0
+- id: in_aggregate
+  doc: 'Bed options:'
+  type: string
+  inputBinding:
+    position: 1
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_all
+  doc: output csv file (gzipped) with signal track around all
+  type: File
+  outputBinding:
+    glob: $(inputs.in_all)
 cwlVersion: v1.1
 baseCommand:
 - pyatac

@@ -1,7 +1,10 @@
 version 1.0
 
-task StarchDiffFloat128 {
+task Starchdifffloat128 {
   command <<<
-    starch-diff-float128
+    starch_diff_float128
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,10 +2,10 @@ version 1.0
 
 task Statal {
   input {
-    String? in
-    String? compare_set
-    String? force_select
-    String? matrix
+    File? in
+    File? compare_set
+    File? force_select
+    File? matrix
     Boolean? sgc
     Boolean? sgt
     Boolean? ssc
@@ -14,10 +14,10 @@ task Statal {
     Boolean? sft
     Boolean? sident
     Boolean? scol_ident_t
-    String? half_window_size
-    String? gw
-    String? sw
-    String? cw
+    Int? half_window_size
+    Int? gw
+    Int? sw
+    Int? cw
   }
   command <<<
     statal \
@@ -25,14 +25,14 @@ task Statal {
       ~{if defined(compare_set) then ("-compareset " +  '"' + compare_set + '"') else ""} \
       ~{if defined(force_select) then ("-forceselect " +  '"' + force_select + '"') else ""} \
       ~{if defined(matrix) then ("-matrix " +  '"' + matrix + '"') else ""} \
-      ~{true="-sgc" false="" sgc} \
-      ~{true="-sgt" false="" sgt} \
-      ~{true="-ssc" false="" ssc} \
-      ~{true="-sst" false="" sst} \
-      ~{true="-sfc" false="" sfc} \
-      ~{true="-sft" false="" sft} \
-      ~{true="-sident" false="" sident} \
-      ~{true="-scolidentt" false="" scol_ident_t} \
+      ~{if (sgc) then "-sgc" else ""} \
+      ~{if (sgt) then "-sgt" else ""} \
+      ~{if (ssc) then "-ssc" else ""} \
+      ~{if (sst) then "-sst" else ""} \
+      ~{if (sfc) then "-sfc" else ""} \
+      ~{if (sft) then "-sft" else ""} \
+      ~{if (sident) then "-sident" else ""} \
+      ~{if (scol_ident_t) then "-scolidentt" else ""} \
       ~{if defined(half_window_size) then ("-w " +  '"' + half_window_size + '"') else ""} \
       ~{if defined(gw) then ("-gw " +  '"' + gw + '"') else ""} \
       ~{if defined(sw) then ("-sw " +  '"' + sw + '"') else ""} \
@@ -55,5 +55,8 @@ task Statal {
     gw: "(half) Window size only applies to statistics based on Gaps."
     sw: "(half) Window size only applies to statistics based on Similarity."
     cw: "(half) Window size only applies to statistics based on Consistency."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

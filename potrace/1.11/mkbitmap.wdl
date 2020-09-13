@@ -6,31 +6,31 @@ task Mkbitmap {
     File? _output_file
     Boolean? no_defaults
     Boolean? invert
-    String? filter
+    Int? filter
     Boolean? no_filter
     String? blur
-    String? scale
+    Int? scale
     Boolean? linear
     Boolean? cubic
-    String? threshold
+    Float? threshold
     Boolean? grey
     File? file_dot_dot_dot
   }
   command <<<
     mkbitmap \
       ~{file_dot_dot_dot} \
-      ~{true="--license" false="" license} \
+      ~{if (license) then "--license" else ""} \
       ~{if defined(_output_file) then ("--output " +  '"' + _output_file + '"') else ""} \
-      ~{true="--nodefaults" false="" no_defaults} \
-      ~{true="--invert" false="" invert} \
+      ~{if (no_defaults) then "--nodefaults" else ""} \
+      ~{if (invert) then "--invert" else ""} \
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""} \
-      ~{true="--nofilter" false="" no_filter} \
+      ~{if (no_filter) then "--nofilter" else ""} \
       ~{if defined(blur) then ("--blur " +  '"' + blur + '"') else ""} \
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""} \
-      ~{true="--linear" false="" linear} \
-      ~{true="--cubic" false="" cubic} \
+      ~{if (linear) then "--linear" else ""} \
+      ~{if (cubic) then "--cubic" else ""} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
-      ~{true="--grey" false="" grey}
+      ~{if (grey) then "--grey" else ""}
   >>>
   parameter_meta {
     license: "- print license info and exit"
@@ -46,5 +46,9 @@ task Mkbitmap {
     threshold: "- set threshold for bilevel conversion (default 0.45)"
     grey: "- no bilevel conversion, output a greymap"
     file_dot_dot_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out__output_file = "${in__output_file}"
   }
 }

@@ -1,0 +1,97 @@
+!Command
+command:
+- medpy_apparent_diffusion_coefficient.py
+positional:
+- !Positional
+  description: the diffusion weighted image required with b=0
+  position: 0
+  name: b0image
+  optional: false
+- !Positional
+  description: the diffusion weighted image required with b=x
+  position: 1
+  name: bximage
+  optional: false
+- !Positional
+  description: the computed apparent diffusion coefficient image
+  position: 0
+  name: output
+  optional: false
+named:
+- !Flag
+  description: "set a fixed threshold for the input images to mask the\ncomputation"
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: overwrite existing files
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: medpy_apparent_diffusion_coefficient.py [-h] [-t THRESHOLD] [-v]\
+  \ [-d]\n                                               [-f]\n                  \
+  \                             b0image bximage b output\n\nComputes the apparent\
+  \ diffusion coefficient from two diffusion weighted\nMRI images. The output image\
+  \ will be of type float.\n\nNormally diffusion weight (DW) MRI images are acquired\
+  \ once with a\nb-value of 0 (which we call b0) and once with another b-value (which\
+  \ we\ncall bx) such as 500, 800 or 1000. The latter is typical for brain MRIs.\n\
+  This results in a single b0 DW image and three bx DW images, one for each\ndirection.\n\
+  \nUsually the three bx DW images are already combined into an isotropic\naverage\
+  \ image (which we call abx) denoting the length of the three-dimensional\nvector\
+  \ formed by the the three bx images.\n\nThe formula presented in [1] is applied\
+  \ to the b0 and abx images to\ncompute the apparent diffusion coefficient (ADC):\n\
+  \nADC = -bx-value * ln(abx-image / b0-image)\n\nTo cope with zero-values in the\
+  \ images, we apply a-priori a\nthresholding to the b0 + abx DW image, set all lower\
+  \ values to 0 and\napply the formula only to the remaining intensities. Note that\
+  \ the\ndefault threshold is chosen using Otsu's and is good for most cases.\n(Thanks\
+  \ to Nils at the UKE in Hamburg, Germany for this hint!)\n\nWe restrain from implementing\
+  \ a method working on more DW images, that\nwere acquired with multiple b-values,\
+  \ as [2] observed that this might\nlead to worse results.\n\n[1] \"Understanding\
+  \ Diffusion MR Imaging Techniques: From Scalar\nDiffusion-weighted Imaging to Diffusion\
+  \ Tensor Imaging and Beyond\" by\nPatric Hagmann et al.\n[2] \"Understanding the\
+  \ Mathematics Involved in Calculating Apparent\nDiffusion Coefficient Maps\" by\
+  \ Michael Yong Park and Jae Young Byun\n\nCopyright (C) 2013 Oskar Maier\nThis program\
+  \ comes with ABSOLUTELY NO WARRANTY; This is free software,\nand you are welcome\
+  \ to redistribute it under certain conditions; see\nthe LICENSE file or <http://www.gnu.org/licenses/>\
+  \ for details.   \n                  \n\npositional arguments:\n  b0image      \
+  \         the diffusion weighted image required with b=0\n  bximage            \
+  \   the diffusion weighted image required with b=x\n  b                     the\
+  \ b-value used to acquire the bx-image (i.e. x)\n  output                the computed\
+  \ apparent diffusion coefficient image\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  -t THRESHOLD, --threshold THRESHOLD\n\
+  \                        set a fixed threshold for the input images to mask the\n\
+  \                        computation\n  -v, --verbose         verbose output\n \
+  \ -d                    Display debug information.\n  -f, --force           overwrite\
+  \ existing files\n"
+generated_using:
+- --help

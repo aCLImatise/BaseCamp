@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../fastaselect.pl.orig.cwl
+id: ../../../fastaselect.pl.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- fastaselect.pl.orig
+- fastaselect.pl

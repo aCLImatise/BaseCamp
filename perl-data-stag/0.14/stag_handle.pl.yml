@@ -1,0 +1,84 @@
+!Command
+command:
+- stag-handle.pl
+positional: []
+named:
+- !Flag
+  description: "|m PERLMODULE\nA module that is used to transform the input events\
+    \ the module\nshould inherit from Data::Stag::BaseHandler"
+  synonyms:
+  - -module
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|u NODE_NAME\n(you should always use this option if you specify -m)\n\
+    this is the unit that gets passed to the handler/transformer. this\nwill get set\
+    \ automatically if you use the the -c, -s or -t options\nmultiple units can be\
+    \ set\n-u foo -u bar -u boz"
+  synonyms:
+  - -unit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|w WRITER\nwriter for final transformed tree; can be xml, sxpr or\
+    \ itext"
+  synonyms:
+  - -writer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|c FILE\na file containing a perlhashref containing event handlers\
+    \ - see\nbelow"
+  synonyms:
+  - -codefile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|s PERL\na perl hashref containing handlers"
+  synonyms:
+  - -sub
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|t ELEMENT=SUB'
+  synonyms:
+  - -trap
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "|h\nshows this document"
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n    stag-handle - streams a stag file through a handler into a writer\n\
+  \nSYNOPSIS\n      stag-handle -w itext -c my-handler.pl myfile.xml > processed.itext\n\
+  \      stag-handle -w itext -p My::Parser -m My::Handler myfile.xml > processed.itext\n\
+  \nDESCRIPTION\n    will take a Stag compatible format (xml, sxpr or itext), turn\
+  \ the data\n    into an event stream passing it through my-handler.pl\n\n    -help|h\n\
+  \        shows this document\n\n    -module|m PERLMODULE\n        A module that\
+  \ is used to transform the input events the module\n        should inherit from\
+  \ Data::Stag::BaseHandler\n\n    -unit|u NODE_NAME\n        (you should always use\
+  \ this option if you specify -m)\n\n        this is the unit that gets passed to\
+  \ the handler/transformer. this\n        will get set automatically if you use the\
+  \ the -c, -s or -t options\n\n        multiple units can be set\n\n          -u\
+  \ foo -u bar -u boz\n\n    -writer|w WRITER\n        writer for final transformed\
+  \ tree; can be xml, sxpr or itext\n\n    -module|m MODULE\n        perl modules\
+  \ for handling events\n\n    -codefile|c FILE\n        a file containing a perlhashref\
+  \ containing event handlers - see\n        below\n\n    -sub|s PERL\n        a perl\
+  \ hashref containing handlers\n\n    -trap|t ELEMENT=SUB\n\nEXAMPLES\n      unix>\
+  \ cat my-handler.pl\n      {\n        person => sub {\n            my ($self, $person)\
+  \ = @_;\n            $person->set_fullname($person->get_firstname . ' ' .\n    \
+  \                           $person->get_lastname);\n            $person;\n    \
+  \    },\n        address => sub {\n            my ($self, $address) = @_;\n    \
+  \        # remove addresses altogether from processed file\n            return;\n\
+  \        },\n      }\n\nPOD ERRORS\n    Hey! The above document had some coding\
+  \ errors, which are explained\n    below:\n\n    Around line 138:\n        =over\
+  \ should be: '=over' or '=over positive_number'\n\n"
+generated_using:
+- --help

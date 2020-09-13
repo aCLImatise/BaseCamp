@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../draw_model_graph_output.cwl
 inputs:
-- id: draw_model_graph
+- id: in_draw_model_graph
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: model
+- id: in_model
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: sequence_number
+- id: in_sequence_number
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - draw_model_graph

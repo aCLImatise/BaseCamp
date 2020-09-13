@@ -1,21 +1,138 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: halFile
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: refGenome
-  optional: false
-named: []
 command:
 - halBranchMutations
+positional:
+- !Positional
+  description: 'USAGE:'
+  position: 0
+  name: parent.
+  optional: false
+named:
+- !Flag
+  description: ":     maximum size in bytes of regular hdf5 cache [default =\n15728640]"
+  synonyms:
+  - --cacheBytes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':       number of metadata slots in hdf5 cache [default = 113]'
+  synonyms:
+  - --cacheMDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":       number of regular slots in hdf5 cache.  should be a prime\n\
+    number ~= 10 * DefaultCacheRDCBytes / chunk [default =\n599999]"
+  synonyms:
+  - --cacheRDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':        w0 parameter fro hdf5 cache [default = 0.75]'
+  synonyms:
+  - --cacheW0
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":   bed file write deletion breakpoints to in reference genome\ncoordinates\
+    \ (or stdout) [default = \"\"]"
+  synonyms:
+  - --delBreakFile
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":               load all data in memory (and disable hdf5 cache) [default\
+    \ =\n0]"
+  synonyms:
+  - --inMemory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":         length of the reference genome (or sequence if specified)\n\
+    to convert.  If set to 0, the entire thing is converted\n[default = 0]"
+  synonyms:
+  - --length
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":         maximum indel length to be considered a gap.  Gaps  can\
+    \ be\nnested within other rearrangements. [default = 20]"
+  synonyms:
+  - --maxGap
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":   maximum fraction of Ns in a rearranged segment for it to\nnot\
+    \ be ignored as missing data. [default = 1]"
+  synonyms:
+  - --maxNFraction
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":     bed file to write rearrangements (deletions and\nduplications)\
+    \ in reference's parent genome coordinates (or\nstdout) [default = \"\"]"
+  synonyms:
+  - --parentFile
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":        bed file to write structural rearrangements in reference\n\
+    genome coordinates (or stdout) [default = \"\"]"
+  synonyms:
+  - --refFile
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":    name of reference sequence within reference genome (all\nsequences\
+    \ if empty) [default = \"\"]"
+  synonyms:
+  - --refSequence
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":     bed file coordinates of intervals in the reference genome\n\
+    to analyze [default = \"\"]"
+  synonyms:
+  - --refTargets
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":        bed file write point mutations to in reference genome\ncoordinates\
+    \ (or stdout) [default = \"\"]"
+  synonyms:
+  - --snpFile
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":          coordinate within reference genome (or sequence if\nspecified)\
+    \ to start at [default = 0]\n"
+  synonyms:
+  - --start
+  args: !SimpleFlagArg
+    name: value
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ':                   dsiplay this help page [default = 0]'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: " \n\nhalBranchMutations v2.1: Identify mutations on branch between given\

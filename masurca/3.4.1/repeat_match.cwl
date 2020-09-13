@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../repeat_match.cwl
 inputs:
-- id: use_exhaustive_search
+- id: in_use_exhaustive_search
   doc: Use exhaustive (slow) search to find matches
   type: boolean
   inputBinding:
     prefix: -E
-- id: forward_strand_only
+- id: in_forward_strand_only
   doc: Forward strand only, don't use reverse complement
   type: boolean
   inputBinding:
     prefix: -f
-- id: set_minimum_length
+- id: in_set_minimum_length
   doc: '#  Set minimum exact match length to #'
   type: boolean
   inputBinding:
     prefix: -n
-- id: only_output_tandem
+- id: in_only_output_tandem
   doc: Only output tandem repeats
   type: boolean
   inputBinding:
     prefix: -t
-- id: set_level_verbose
+- id: in_set_level_verbose
   doc: '#  Set level of verbose (debugging) printing to #'
   type: boolean
   inputBinding:
     prefix: -V
-- id: genome_file
+- id: in_genome_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - repeat-match

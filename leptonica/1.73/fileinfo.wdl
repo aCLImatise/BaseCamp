@@ -4,4 +4,7 @@ task Fileinfo {
   command <<<
     fileinfo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

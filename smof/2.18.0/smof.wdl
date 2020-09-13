@@ -4,4 +4,7 @@ task Smof {
   command <<<
     smof
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

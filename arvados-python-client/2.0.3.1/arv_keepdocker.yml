@@ -1,4 +1,6 @@
 !Command
+command:
+- arv-keepdocker
 positional:
 - !Positional
   description: 'Docker image to upload: repo, repo:tag, or hash'
@@ -6,23 +8,23 @@ positional:
   name: image
   optional: false
 - !Positional
-  description: Tag of the Docker image to upload (default 'latest'), if image is given
-    as an untagged repo name
+  description: "Tag of the Docker image to upload (default 'latest'),\nif image is\
+    \ given as an untagged repo name"
   position: 1
   name: tag
   optional: false
+- !Positional
+  description: --force-image-format  Proceed even if the image format is not supported
+    by
+  position: 0
+  name: server
+  optional: false
 named:
 - !Flag
-  description: Re-upload the image even if it already exists on the server
+  description: Re-upload the image even if it already exists on the
   synonyms:
   - -f
   - --force
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Proceed even if the image format is not supported by the server
-  synonyms:
-  - --force-image-format
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -32,15 +34,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use locally installed image only, don't pull image from Docker registry
-    (default)
+  description: "Use locally installed image only, don't pull image\nfrom Docker registry\
+    \ (default)"
   synonyms:
   - --no-pull
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Store the collection in the specified project, instead of your Home
-    project.
+  description: "Store the collection in the specified project, instead\nof your Home\
+    \ project."
   synonyms:
   - --project-uuid
   args: !SimpleFlagArg
@@ -54,36 +56,36 @@ named:
     name: NAME
   optional: true
 - !Flag
-  description: Display human-readable progress on stderr (bytes and, if possible,
-    percentage of total data size). This is the default behavior when stderr is a
-    tty.
+  description: "Display human-readable progress on stderr (bytes and,\nif possible,\
+    \ percentage of total data size). This is\nthe default behavior when stderr is\
+    \ a tty."
   synonyms:
   - --progress
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not display human-readable progress on stderr, even if stderr is
-    a tty.
+  description: "Do not display human-readable progress on stderr, even\nif stderr\
+    \ is a tty."
   synonyms:
   - --no-progress
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Display machine-readable progress on stderr (bytes and, if known, total
-    data size).
+  description: "Display machine-readable progress on stderr (bytes\nand, if known,\
+    \ total data size)."
   synonyms:
   - --batch-progress
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not print any debug messages to console. (Any error messages will
-    still be displayed.)
+  description: "Do not print any debug messages to console. (Any error\nmessages will\
+    \ still be displayed.)"
   synonyms:
   - --silent
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Continue interrupted uploads from cached state (default).
+  description: "Continue interrupted uploads from cached state\n(default)."
   synonyms:
   - --resume
   args: !EmptyFlagArg {}
@@ -95,7 +97,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Save upload state in a cache file for resuming (default).
+  description: "Save upload state in a cache file for resuming\n(default)."
   synonyms:
   - --cache
   args: !EmptyFlagArg {}
@@ -107,17 +109,22 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximum number of times to retry server requests that encounter temporary
-    failures (e.g., server down). Default 3.
+  description: "Maximum number of times to retry server requests that\nencounter temporary\
+    \ failures (e.g., server down).\nDefault 3.\n"
   synonyms:
   - --retries
   args: !SimpleFlagArg
     name: RETRIES
   optional: true
-command:
-- arv-keepdocker
+- !Flag
+  description: ''
+  synonyms:
+  - --force-image-format
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

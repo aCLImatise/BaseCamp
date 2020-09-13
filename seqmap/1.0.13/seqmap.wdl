@@ -2,10 +2,10 @@ version 1.0
 
 task Seqmap {
   input {
-    String number_of_mismatches
-    String probe_fast_a_file_name
-    String transcript_fast_a_file_name
-    String output_file_name
+    Int number_of_mismatches
+    File probe_fast_a_file_name
+    File transcript_fast_a_file_name
+    File output_file_name
   }
   command <<<
     seqmap \
@@ -19,5 +19,9 @@ task Seqmap {
     probe_fast_a_file_name: ""
     transcript_fast_a_file_name: ""
     output_file_name: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

@@ -1,112 +1,119 @@
 class: CommandLineTool
 id: ../../../nanonettrain.cwl
 inputs:
-- id: train
-  doc: 'Input training data, either a path to fast5 files or a single netcdf file
-    (default: None)'
-  type: string
+- id: in_train
+  doc: "Input training data, either a path to fast5 files or a\nsingle netcdf file\
+    \ (default: None)"
+  type: File
   inputBinding:
     prefix: --train
-- id: train_list
+- id: in_train_list
   doc: 'Strand list constaining training set (default: None)'
   type: string
   inputBinding:
     prefix: --train_list
-- id: section
+- id: in_section
   doc: 'Section of reads to train (default: template)'
   type: string
   inputBinding:
     prefix: --section
-- id: val
-  doc: 'Input validation data, either a path to fast5 files or a single netcdf file
-    (default: None)'
-  type: string
+- id: in_val
+  doc: "Input validation data, either a path to fast5 files or\na single netcdf file\
+    \ (default: None)"
+  type: File
   inputBinding:
     prefix: --val
-- id: val_list
+- id: in_val_list
   doc: 'Strand list constaining validation set (default: None)'
   type: string
   inputBinding:
     prefix: --val_list
-- id: workspace
-  doc: 'Path for storing training and validation NetCDF files, if not specified a
-    temporary file is used. (default: /tmp)'
-  type: string
+- id: in_workspace
+  doc: "Path for storing training and validation NetCDF files,\nif not specified a\
+    \ temporary file is used. (default:\n/tmp)"
+  type: File
   inputBinding:
     prefix: --workspace
-- id: output
+- id: in_output
   doc: 'Output prefix (default: None)'
   type: string
   inputBinding:
     prefix: --output
-- id: model
-  doc: 'ANN configuration file (default: /home/ubuntu/.cache /Python-Eggs/nanonet-2.0.0-py2.7-linux-x86_64.egg-
-    tmp/nanonet/data/default_model.tmpl)'
-  type: string
+- id: in_model
+  doc: 'ANN configuration file (default: /root/.cache/Python-'
+  type: File
   inputBinding:
     prefix: --model
-- id: km_er_length
+- id: in_km_er_length
   doc: 'Length of kmers to learn. (default: 5)'
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer_length
-- id: bases
+- id: in_bases
   doc: 'Alphabet of kmers to learn. (default: ACGT)'
   type: string
   inputBinding:
     prefix: --bases
-- id: device
+- id: in_device
   doc: 'ID of CUDA device to use. (default: 0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --device
-- id: no_cuda
-  doc: 'Use CUDA acceleration. (Default: --no-cuda) (default: False)'
+- id: in_no_cuda
+  doc: "Use CUDA acceleration. (Default: --no-cuda) (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --no-cuda
-- id: window
-  doc: 'The detailed list of the entire window. (default: [-1, 0, 1])'
+- id: in_window
+  doc: "The detailed list of the entire window. (default: [-1,\n0, 1])"
   type: string[]
   inputBinding:
     prefix: --window
-- id: max_epochs
+- id: in_max_epochs
   doc: 'Max training epocs, default 500 (default: 500)'
   type: long
   inputBinding:
     prefix: --max_epochs
-- id: max_epochs_no_best
-  doc: 'Stop training when no improvment for number of epocs, default 50 (default:
-    50)'
+- id: in_max_epochs_no_best
+  doc: "Stop training when no improvment for number of epocs,\ndefault 50 (default:\
+    \ 50)"
   type: long
   inputBinding:
     prefix: --max_epochs_no_best
-- id: validate_every
-  doc: 'Run validation data set every number of epocs. (default: 5)'
-  type: string
+- id: in_validate_every
+  doc: "Run validation data set every number of epocs.\n(default: 5)"
+  type: long
   inputBinding:
     prefix: --validate_every
-- id: parallel_sequences
+- id: in_parallel_sequences
   doc: 'Number of sequences in a min-batch (default: 125)'
-  type: string
+  type: long
   inputBinding:
     prefix: --parallel_sequences
-- id: learning_rate
+- id: in_learning_rate
   doc: 'Learning rate parameters of SGD. (default: 1e-05)'
-  type: string
+  type: double
   inputBinding:
     prefix: --learning_rate
-- id: momentum
+- id: in_momentum
   doc: 'Momentum parameter of SGD. (default: 0.9)'
-  type: string
+  type: double
   inputBinding:
     prefix: --momentum
-- id: cache_path
-  doc: 'Path for currennt temporary files. (default: /tmp)'
-  type: string
+- id: in_cache_path
+  doc: "Path for currennt temporary files. (default: /tmp)\n"
+  type: File
   inputBinding:
     prefix: --cache_path
-outputs: []
+- id: in_eggs_slash_nano_net_two_dot_zero_dot_zero_py_two_dot_seven_linux_x_eight_six_six_four_dot_egg
+  doc: tmp/nanonet/data/default_model.tmpl)
+  type: double
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nanonettrain

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../vcfcheck.cwl
 inputs:
-- id: fast_a_reference
+- id: in_fast_a_reference
   doc: FASTA reference file to use to obtain primer sequences
   type: boolean
   inputBinding:
     prefix: --fasta-reference
-- id: exclude_failures
+- id: in_exclude_failures
   doc: a record fails, don't print it.  Otherwise do.
   type: string
   inputBinding:
     prefix: --exclude-failures
-- id: keep_failures
+- id: in_keep_failures
   doc: Print if the record fails, otherwise not.
   type: boolean
   inputBinding:
     prefix: --keep-failures
-- id: vcf_file
+- id: in_vcf_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfcheck

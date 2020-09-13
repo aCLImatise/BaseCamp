@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../sim_reads.cwl
 inputs:
-- id: depth
+- id: in_depth
   doc: (=30)                  sequencing depth of the sample
-  type: string
+  type: long
   inputBinding:
     prefix: --depth
-- id: error_rate
+- id: in_error_rate
   doc: (=0.01)           error rate
-  type: string
+  type: double
   inputBinding:
     prefix: --error_rate
-- id: read_length
+- id: in_read_length
   doc: (=100)           read length
-  type: string
+  type: long
   inputBinding:
     prefix: --read_length
-- id: paired
+- id: in_paired
   doc: if paired-end
   type: boolean
   inputBinding:
     prefix: --paired
-- id: sd
+- id: in_sd
   doc: (=-1)                     sd
-  type: string
+  type: long
   inputBinding:
     prefix: --sd
-- id: insert_distance
+- id: in_insert_distance
   doc: (=500)       insert distance
-  type: string
+  type: long
   inputBinding:
     prefix: --insert_distance
-- id: print_correct
+- id: in_print_correct
   doc: output correct reads
   type: boolean
   inputBinding:
     prefix: --print_correct
-- id: ref_dot_fa
+- id: in_ref_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: reads_dot_fa
+- id: in_reads_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sim_reads

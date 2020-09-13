@@ -4,4 +4,7 @@ task Clique {
   command <<<
     clique
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

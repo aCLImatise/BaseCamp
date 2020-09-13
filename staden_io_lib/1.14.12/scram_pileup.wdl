@@ -2,25 +2,22 @@ version 1.0
 
 task ScramPileup {
   input {
-    String no
-    String such
-    File file
-    String or
-    Directory directory
+    Boolean? gap_pileup_format
+    Boolean? depth_format
+    File filename_dot
   }
   command <<<
     scram_pileup \
-      ~{no} \
-      ~{such} \
-      ~{file} \
-      ~{or} \
-      ~{directory}
+      ~{filename_dot} \
+      ~{if (gap_pileup_format) then "-5" else ""} \
+      ~{if (depth_format) then "-d" else ""}
   >>>
   parameter_meta {
-    no: ""
-    such: ""
-    file: ""
-    or: ""
-    directory: ""
+    gap_pileup_format: "Gap5 pileup format."
+    depth_format: "Depth format."
+    filename_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

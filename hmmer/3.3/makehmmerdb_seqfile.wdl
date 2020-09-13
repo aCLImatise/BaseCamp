@@ -11,4 +11,7 @@ task MakehmmerdbSeqfile {
   parameter_meta {
     binary_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

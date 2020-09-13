@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../bipartition_smp.cwl
 inputs:
-- id: bi_partition
+- id: in_bi_partition
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seq_file_one
+- id: in_seq_file_one
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: seq_file_two
+- id: in_seq_file_two
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 2
-- id: pfs_file
+- id: in_pfs_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bipartition-smp

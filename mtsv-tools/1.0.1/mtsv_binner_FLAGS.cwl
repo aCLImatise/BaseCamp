@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../mtsv_binner_FLAGS.cwl
 inputs:
-- id: fast_a
+- id: in_fast_a
   doc: ''
   type: string
   inputBinding:
     prefix: --fasta
-- id: index
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --index
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mtsv-binner

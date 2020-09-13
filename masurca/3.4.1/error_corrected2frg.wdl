@@ -2,7 +2,7 @@ version 1.0
 
 task ErrorCorrected2frg {
   input {
-    String? length_min
+    Int? length_min
     String lib_id
   }
   command <<<
@@ -13,5 +13,8 @@ task ErrorCorrected2frg {
   parameter_meta {
     length_min: "Minimum length of a read (64)"
     lib_id: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

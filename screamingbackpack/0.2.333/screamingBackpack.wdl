@@ -4,4 +4,7 @@ task ScreamingBackpack {
   command <<<
     screamingBackpack
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

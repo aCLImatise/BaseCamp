@@ -4,4 +4,7 @@ task Maker2jbrowse {
   command <<<
     maker2jbrowse
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,4 +1,6 @@
 !Command
+command:
+- gkmtrain
 positional:
 - !Positional
   description: ''
@@ -17,11 +19,11 @@ positional:
   optional: false
 named:
 - !Flag
-  description: '<0 ~ 5>   set kernel function (default: 4 wgkm) NOTE: RBF kernels
-    (3 and 5) work best with -c 10 -g 2 0 -- gapped-kmer 1 -- estimated l-mer with
-    full filter 2 -- estimated l-mer with truncated filter (gkm) 3 -- gkm + RBF (gkmrbf)
-    4 -- gkm + center weighted (wgkm) [weight = max(M, floor(M*exp(-ln(2)*D/H)+1))]
-    5 -- gkm + center weighted + RBF (wgkmrbf)'
+  description: "<0 ~ 5>   set kernel function (default: 4 wgkm)\nNOTE: RBF kernels\
+    \ (3 and 5) work best with -c 10 -g 2\n0 -- gapped-kmer\n1 -- estimated l-mer\
+    \ with full filter\n2 -- estimated l-mer with truncated filter (gkm)\n3 -- gkm\
+    \ + RBF (gkmrbf)\n4 -- gkm + center weighted (wgkm)\n[weight = max(M, floor(M*exp(-ln(2)*D/H)+1))]\n\
+    5 -- gkm + center weighted + RBF (wgkmrbf)"
   synonyms:
   - -t
   args: !EmptyFlagArg {}
@@ -55,17 +57,17 @@ named:
     name: float
   optional: true
 - !Flag
-  description: 'set the initial value (M) of the exponential decay function for wgkm-kernels.
-    max=255, -t 4 or 5 only (default: 50)'
+  description: "set the initial value (M) of the exponential decay function\nfor wgkm-kernels.\
+    \ max=255, -t 4 or 5 only (default: 50)"
   synonyms:
   - -M
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: 'set the half-life parameter (H) that is the distance (D) required
-    to fall to half of its initial value in the exponential decay function for wgkm-kernels.
-    -t 4 or 5 only (default: 50)'
+  description: "set the half-life parameter (H) that is the distance (D) required\n\
+    to fall to half of its initial value in the exponential decay\nfunction for wgkm-kernels.\
+    \ -t 4 or 5 only (default: 50)"
   synonyms:
   - -H
   args: !SimpleFlagArg
@@ -93,8 +95,8 @@ named:
     name: float
   optional: true
 - !Flag
-  description: 'set cache memory size in MB (default: 100.0) NOTE: Large cache signifcantly
-    reduces runtime. >4Gb is recommended'
+  description: "set cache memory size in MB (default: 100.0)\nNOTE: Large cache signifcantly\
+    \ reduces runtime. >4Gb is recommended"
   synonyms:
   - -m
   args: !SimpleFlagArg
@@ -128,18 +130,25 @@ named:
     name: int
   optional: true
 - !Flag
-  description: '<0 ~ 4>   set the level of verbosity (default: 2) 0 -- error msgs
-    only (ERROR) 1 -- warning msgs (WARN) 2 -- progress msgs at coarse-grained level
-    (INFO) 3 -- progress msgs at fine-grained level (DEBUG) 4 -- progress msgs at
-    finer-grained level (TRACE)'
+  description: "<0 ~ 4>   set the level of verbosity (default: 2)\n0 -- error msgs\
+    \ only (ERROR)\n1 -- warning msgs (WARN)\n2 -- progress msgs at coarse-grained\
+    \ level (INFO)\n3 -- progress msgs at fine-grained level (DEBUG)\n4 -- progress\
+    \ msgs at finer-grained level (TRACE)"
   synonyms:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- gkmtrain
+- !Flag
+  description: "set the number of threads for parallel calculation, 1, 4, or 16\n\
+    (default: 1)\n"
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: 1|4|16
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

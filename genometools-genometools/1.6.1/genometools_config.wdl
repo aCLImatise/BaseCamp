@@ -1,7 +1,17 @@
 version 1.0
 
-task GenometoolsConfig {
+task Genometoolsconfig {
+  input {
+    Boolean? cppflags
+  }
   command <<<
-    genometools-config
+    genometools_config \
+      ~{if (cppflags) then "-cppflags" else ""}
   >>>
+  parameter_meta {
+    cppflags: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../eval_predictions.cwl
 inputs:
-- id: l
-  doc: '[OPTIONS] '
+- id: in_l
+  doc: '[OPTIONS]'
   type: string
   inputBinding:
     prefix: -l
-- id: required_list_real
-  doc: '(required) List of names of files defining real genes (GFF). '
+- id: in_required_list_real
+  doc: (required) List of names of files defining real genes (GFF).
   type: string
   inputBinding:
     prefix: -r
-- id: required_list_predicted
-  doc: (required) List of names of files defining predicted genes (GFF).  Must correspond
-    in order to <real_fname_list>.
+- id: in_predicted_predicted_correspond
+  doc: "(required) List of names of files defining predicted genes\n(GFF).  Must correspond\
+    \ in order to <real_fname_list>."
   type: string
   inputBinding:
     prefix: -p
-- id: list_names_features
-  doc: List of names of all features denoting exon regions.  By default, equal to
-    the single name "CDS".
+- id: in_list_names_equal
+  doc: "List of names of all features denoting exon regions.  By\ndefault, equal to\
+    \ the single name \"CDS\"."
   type: string
   inputBinding:
     prefix: -f
-- id: dump_full_coords
-  doc: Dump full coords of correct, partially correct, wrong, missed,  and overlapping
-    exons to a set of files having the specified  file name prefix.
-  type: string
+- id: in_dump_full_coords
+  doc: "Dump full coords of correct, partially correct, wrong, missed,\nand overlapping\
+    \ exons to a set of files having the specified\nfile name prefix."
+  type: File
   inputBinding:
     prefix: -d
-- id: also_report_stats
-  doc: Also report stats on "nearly correct" exons, that is, incorrect exons whose
-    boundaries are within <nbases> of being correct. Columns will be labeled "NCa"
-    and "NCp".
+- id: in_also_report_labeled
+  doc: "Also report stats on \"nearly correct\" exons, that is, incorrect\nexons whose\
+    \ boundaries are within <nbases> of being correct.\nColumns will be labeled \"\
+    NCa\" and \"NCp\"."
   type: string
   inputBinding:
     prefix: -n
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - eval_predictions

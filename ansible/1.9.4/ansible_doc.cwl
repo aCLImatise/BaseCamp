@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../ansible_doc.cwl
 inputs:
-- id: module_path
+- id: in_module_path
   doc: Ansible modules/ directory
-  type: string
+  type: File
   inputBinding:
     prefix: --module-path
-- id: list
+- id: in_list
   doc: List available modules
   type: boolean
   inputBinding:
     prefix: --list
-- id: snippet
+- id: in_snippet
   doc: Show playbook snippet for specified module(s)
   type: boolean
   inputBinding:
     prefix: --snippet
-- id: show_version_number
+- id: in_show_version_number
   doc: Show version number and exit
   type: boolean
   inputBinding:
     prefix: -v
-- id: module_dot_dot_dot
+- id: in_module_dot_dot_dot
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ansible-doc

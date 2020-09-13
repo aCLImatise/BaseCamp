@@ -7,7 +7,7 @@ task HighResPrecursorMassCorrector {
     Boolean? highest_intensity_peak
     File? out_csv
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -15,12 +15,12 @@ task HighResPrecursorMassCorrector {
     HighResPrecursorMassCorrector \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{true="-highest_intensity_peak" false="" highest_intensity_peak} \
+      ~{if (highest_intensity_peak) then "-highest_intensity_peak" else ""} \
       ~{if defined(out_csv) then ("-out_csv " +  '"' + out_csv + '"') else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                                 Input file (centroided data) (valid formats: 'mzML')"
@@ -31,5 +31,10 @@ task HighResPrecursorMassCorrector {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_out_csv = "${in_out_csv}"
   }
 }

@@ -9,10 +9,10 @@ task ProteomicsLFQ {
     File? out
     File? out_ms_stats
     File? out_c_xml
-    String? protein_fdr
-    String? psm_fdr
+    Int? protein_fdr
+    Int? psm_fdr
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -30,11 +30,11 @@ task ProteomicsLFQ {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                                           Input files (valid formats: 'mzML')"
-    ids: "*                                          Identifications filtered at PSM level (e.g., q-value < 0.01).And annotated with PEP as main score. We suggest using: 1. PercolatorAdapter tool (score_type = 'q-value', -post-processing-tdc) 2. FalseDiscoveryRate (FDR:PSM = 0.01) 3. IDScoreSwitcher (-old_score q-value -new_score MS:1001493 -new_score_orientation lower_better -new_score_type) To obtain well calibrated PEPs and an inital reduction of PSMs ID files must be provided in same order as spectra files. (valid formats: 'idXML', 'mzId')"
+    ids: "*                                          Identifications filtered at PSM level (e.g., q-value < 0.01).And annotated with PEP as main score.\\nWe suggest using:\\n1. PercolatorAdapter tool (score_type = 'q-value', -post-processing-tdc)\\n2. FalseDiscoveryRate (FDR:PSM = 0.01)\\n3. IDScoreSwitcher (-old_score q-value -new_score MS:1001493 -new_score_orientation lower_better -new_score_type)\\nTo obtain well calibrated PEPs and an inital reduction of PSMs\\nID files must be provided in same order as spectra files. (valid formats: 'idXML', 'mzId')"
     design: "Design file (valid formats: 'tsv')"
     fast_a: "Fasta file (valid formats: 'fasta')"
     out: "*                                               Output mzTab file (valid formats: 'mzTab')"
@@ -46,5 +46,10 @@ task ProteomicsLFQ {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_out_c_xml = "${in_out_c_xml}"
   }
 }

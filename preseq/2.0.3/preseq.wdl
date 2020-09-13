@@ -4,4 +4,7 @@ task Preseq {
   command <<<
     preseq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

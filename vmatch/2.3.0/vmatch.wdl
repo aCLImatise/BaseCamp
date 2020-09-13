@@ -11,4 +11,7 @@ task Vmatch {
   parameter_meta {
     index_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

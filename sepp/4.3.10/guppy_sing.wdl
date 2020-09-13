@@ -22,17 +22,17 @@ task GuppySing {
       ~{sing} \
       ~{place_file} \
       ~{s} \
-      ~{true="--point-mass" false="" point_mass} \
-      ~{true="--pp" false="" pp} \
-      ~{true="-o" false="" specify_filename_write} \
-      ~{true="--out-dir" false="" out_dir} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="--min-fat" false="" min_fat} \
-      ~{true="--total-width" false="" total_width} \
-      ~{true="--width-factor" false="" width_factor} \
-      ~{true="--node-numbers" false="" node_numbers} \
-      ~{true="--xml" false="" xml} \
-      ~{true="--help" false="" help}
+      ~{if (point_mass) then "--point-mass" else ""} \
+      ~{if (pp) then "--pp" else ""} \
+      ~{if (specify_filename_write) then "-o" else ""} \
+      ~{if (out_dir) then "--out-dir" else ""} \
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (min_fat) then "--min-fat" else ""} \
+      ~{if (total_width) then "--total-width" else ""} \
+      ~{if (width_factor) then "--width-factor" else ""} \
+      ~{if (node_numbers) then "--node-numbers" else ""} \
+      ~{if (xml) then "--xml" else ""} \
+      ~{if (help) then "--help" else ""}
   >>>
   parameter_meta {
     point_mass: "Treat every pquery as a point mass concentrated on the highest-weight placement."
@@ -49,5 +49,8 @@ task GuppySing {
     sing: ""
     place_file: ""
     s: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

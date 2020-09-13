@@ -1,4 +1,7 @@
-&id001 !Command
+&id003 !Command
+command:
+- comparem
+- aai
 positional:
 - !Positional
   description: file with all query genes
@@ -6,7 +9,7 @@ positional:
   name: query_gene_file
   optional: false
 - !Positional
-  description: sorted file indicating genes passing sequence similarity criteria
+  description: "sorted file indicating genes passing sequence\nsimilarity criteria"
   position: 1
   name: sorted_hit_table
   optional: false
@@ -17,7 +20,7 @@ positional:
   optional: false
 named:
 - !Flag
-  description: 'maximum e-value for reporting an alignments (default: 0.001)'
+  description: "maximum e-value for reporting an alignments (default:\n0.001)"
   synonyms:
   - -e
   - --evalue
@@ -25,7 +28,7 @@ named:
     name: EVALUE
   optional: true
 - !Flag
-  description: 'minimum percent identity for reporting an alignment (default: 30.0)'
+  description: "minimum percent identity for reporting an alignment\n(default: 30.0)"
   synonyms:
   - -p
   - --per_identity
@@ -33,8 +36,8 @@ named:
     name: PER_IDENTITY
   optional: true
 - !Flag
-  description: 'minimum percent coverage of query sequence for reporting an alignment
-    (default: 70.0)'
+  description: "minimum percent coverage of query sequence for\nreporting an alignment\
+    \ (default: 70.0)"
   synonyms:
   - -a
   - --per_aln_len
@@ -61,59 +64,31 @@ named:
   - --silent
   args: !EmptyFlagArg {}
   optional: true
-command:
-- comparem
-- aai
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - comparem
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - comparem
+    - aai_wf
     positional:
     - !Positional
-      description: file with all query genes
+      description: genome files
       position: 0
-      name: query_gene_file
-      optional: false
-    - !Positional
-      description: file with all target genes
-      position: 1
-      name: target_gene_file
-      optional: false
-    - !Positional
-      description: sorted file indicating genes passing sequence similarity criteria
-      position: 2
-      name: sorted_hit_table
+      name: input_files
       optional: false
     - !Positional
       description: output directory
-      position: 3
+      position: 1
       name: output_dir
       optional: false
     named:
     - !Flag
-      description: 'number of top scoring target genomes to report per query genome
-        (default: 1)'
-      synonyms:
-      - -k
-      - --num_top_targets
-      args: !SimpleFlagArg
-        name: NUM_TOP_TARGETS
-      optional: true
-    - !Flag
-      description: file indicating taxonomic identification of all target genomes
-      synonyms:
-      - -t
-      - --taxonomy_file
-      args: !SimpleFlagArg
-        name: TAXONOMY_FILE
-      optional: true
-    - !Flag
-      description: 'e-value cutoff for identifying initial blast hits (default: 0.001)'
+      description: "e-value cutoff for identifying initial blast hits\n(default: 0.001)"
       synonyms:
       - -e
       - --evalue
@@ -129,8 +104,8 @@ parent: &id002 !Command
         name: PER_IDENTITY
       optional: true
     - !Flag
-      description: 'percent alignment length of query sequence for defining homology
-        (default: 70.0)'
+      description: "percent alignment length of query sequence for\ndefining homology\
+        \ (default: 70.0)"
       synonyms:
       - -a
       - --per_aln_len
@@ -146,12 +121,50 @@ parent: &id002 !Command
         name: FILE_EXT
       optional: true
     - !Flag
+      description: indicates the input files contain protein sequences
+      synonyms:
+      - --proteins
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: force use of specific translation table
+      synonyms:
+      - --force_table
+      args: !SimpleFlagArg
+        name: FORCE_TABLE
+      optional: true
+    - !Flag
+      description: use blastp instead of diamond
+      synonyms:
+      - --blastp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: use sensitive mode of DIAMOND
+      synonyms:
+      - --sensitive
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "indicates FASTA headers already have the format\n<genome_id>~<gene_id>"
+      synonyms:
+      - --keep_headers
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
       description: create file with reciprocal best hits
       synonyms:
       - --keep_rbhs
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
+      description: "specify alternative directory for temporary files\n(default: /tmp)"
+      synonyms:
+      - --tmp_dir
+      args: !SimpleFlagArg
+        name: TMP_DIR
+      optional: true
+    - !Flag
       description: 'number of CPUs to use (default: 1)'
       synonyms:
       - -c
@@ -165,11 +178,9 @@ parent: &id002 !Command
       - --silent
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - comparem
-    - classify
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -179,106 +190,35 @@ parent: &id002 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: comparem classify [-h] [-k NUM_TOP_TARGETS] [-t TAXONOMY_FILE]\n\
-      \                         [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_LEN]\n \
-      \                        [-x FILE_EXT] [--keep_rbhs] [-c CPUS] [--silent]\n\
-      \                         query_gene_file target_gene_file sorted_hit_table\n\
-      \                         output_dir\n\nIdentify similar genomes based on AAI\
-      \ value.\n\npositional arguments:\n  query_gene_file       file with all query\
-      \ genes\n  target_gene_file      file with all target genes\n  sorted_hit_table\
-      \      sorted file indicating genes passing sequence\n                     \
-      \   similarity criteria\n  output_dir            output directory\n\noptional\
-      \ arguments:\n  -h, --help            show this help message and exit\n  -k,\
-      \ --num_top_targets NUM_TOP_TARGETS\n                        number of top scoring\
-      \ target genomes to report per\n                        query genome (default:\
-      \ 1)\n  -t, --taxonomy_file TAXONOMY_FILE\n                        file indicating\
-      \ taxonomic identification of all target\n                        genomes\n\
-      \  -e, --evalue EVALUE   e-value cutoff for identifying initial blast hits\n\
-      \                        (default: 0.001)\n  -p, --per_identity PER_IDENTITY\n\
-      \                        percent identity for defining homology (default: 30.0)\n\
-      \  -a, --per_aln_len PER_ALN_LEN\n                        percent alignment\
-      \ length of query sequence for\n                        defining homology (default:\
-      \ 70.0)\n  -x, --file_ext FILE_EXT\n                        extension of files\
-      \ to process (default: fna)\n  --keep_rbhs           create file with reciprocal\
-      \ best hits\n  -c, --cpus CPUS       number of CPUs to use (default: 1)\n  --silent\
-      \              suppress output\n"
-    generated_using: &id003
+    help_text: "usage: comparem aai_wf [-h] [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_LEN]\n\
+      \                       [-x FILE_EXT] [--proteins] [--force_table FORCE_TABLE]\n\
+      \                       [--blastp] [--sensitive] [--keep_headers] [--keep_rbhs]\n\
+      \                       [--tmp_dir TMP_DIR] [-c CPUS] [--silent]\n         \
+      \              input_files output_dir\n\nCalculate AAI between all pairs of\
+      \ genomes\n\npositional arguments:\n  input_files           genome files\n \
+      \ output_dir            output directory\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n  -e, --evalue EVALUE   e-value\
+      \ cutoff for identifying initial blast hits\n                        (default:\
+      \ 0.001)\n  -p, --per_identity PER_IDENTITY\n                        percent\
+      \ identity for defining homology (default: 30.0)\n  -a, --per_aln_len PER_ALN_LEN\n\
+      \                        percent alignment length of query sequence for\n  \
+      \                      defining homology (default: 70.0)\n  -x, --file_ext FILE_EXT\n\
+      \                        extension of files to process (default: fna)\n  --proteins\
+      \            indicates the input files contain protein sequences\n  --force_table\
+      \ FORCE_TABLE\n                        force use of specific translation table\n\
+      \  --blastp              use blastp instead of diamond\n  --sensitive      \
+      \     use sensitive mode of DIAMOND\n  --keep_headers        indicates FASTA\
+      \ headers already have the format\n                        <genome_id>~<gene_id>\n\
+      \  --keep_rbhs           create file with reciprocal best hits\n  --tmp_dir\
+      \ TMP_DIR     specify alternative directory for temporary files\n          \
+      \              (default: /tmp)\n  -c, --cpus CPUS       number of CPUs to use\
+      \ (default: 1)\n  --silent              suppress output\n"
+    generated_using: &id002
     - --help
   - !Command
-    positional:
-    - !Positional
-      description: input files with genomes in nucleotide space
-      position: 0
-      name: genome_files
-      optional: false
-    - !Positional
-      description: output file indicating kmer usage of each genome
-      position: 1
-      name: output_file
-      optional: false
-    named:
-    - !Flag
-      description: output raw counts instead of frequencies
-      synonyms:
-      - --counts
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'length of kmers, e.g., 4 -> tetranucleotides (default: 4)'
-      synonyms:
-      - -k
-      args: !SimpleFlagArg
-        name: K
-      optional: true
-    - !Flag
-      description: 'extension of files to process (default: fna)'
-      synonyms:
-      - -x
-      - --file_ext
-      args: !SimpleFlagArg
-        name: FILE_EXT
-      optional: true
-    - !Flag
-      description: 'number of CPUs to use (default: 1)'
-      synonyms:
-      - -c
-      - --cpus
-      args: !SimpleFlagArg
-        name: CPUS
-      optional: true
-    - !Flag
-      description: suppress output
-      synonyms:
-      - --silent
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - comparem
-    - kmer_usage
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: comparem kmer_usage [-h] [--counts] [-k K] [-x FILE_EXT] [-c\
-      \ CPUS]\n                           [--silent]\n                           genome_files\
-      \ output_file\n\nCalculate kmer usage within each genome.\n\npositional arguments:\n\
-      \  genome_files          input files with genomes in nucleotide space\n  output_file\
-      \           output file indicating kmer usage of each genome\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n  --counts       \
-      \       output raw counts instead of frequencies\n  -k K                  length\
-      \ of kmers, e.g., 4 -> tetranucleotides (default:\n                        4)\n\
-      \  -x, --file_ext FILE_EXT\n                        extension of files to process\
-      \ (default: fna)\n  -c, --cpus CPUS       number of CPUs to use (default: 1)\n\
-      \  --silent              suppress output\n"
-    generated_using: *id003
-  - !Command
+    - stop_usage
     positional:
     - !Positional
       description: input files with genes in nucleotide space
@@ -325,11 +265,9 @@ parent: &id002 !Command
       - --silent
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - comparem
-    - stop_usage
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -351,8 +289,11 @@ parent: &id002 !Command
       \ FILE_EXT\n                        extension of files to process (default:\
       \ fna)\n  -c, --cpus CPUS       number of CPUs to use (default: 1)\n  --silent\
       \              suppress output\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
+    command:
+    - comparem
+    - diss
     positional:
     - !Positional
       description: file with usage profile for each genome
@@ -360,9 +301,14 @@ parent: &id002 !Command
       name: profile_file
       optional: false
     - !Positional
-      description: output file with pairwise dissimilarity between genomes
+      description: output file with pairwise dissimilarity between
       position: 1
       name: output_file
+      optional: false
+    - !Positional
+      description: 'optional arguments:'
+      position: 2
+      name: genomes
       optional: false
     named:
     - !Flag
@@ -371,28 +317,28 @@ parent: &id002 !Command
       - --metric
       args: !ChoiceFlagArg
         choices: !!set
+          ? sokalmichener
+          ? russellrao
+          ? correlation
           ? cityblock
           ? canberra
-          ? mahalanobis
-          ? correlation
-          ? sokalsneath
-          ? seuclidean
-          ? yule
           ? cosine
-          ? wminkowski
-          ? sqeuclidean
-          ? matching
-          ? rogerstanimoto
-          ? jaccard
-          ? chebyshev
+          ? mahalanobis
           ? dice
-          ? sokalmichener
-          ? kulsinski
-          ? braycurtis
-          ? minkowski
-          ? euclidean
-          ? russellrao
           ? hamming
+          ? sqeuclidean
+          ? euclidean
+          ? yule
+          ? chebyshev
+          ? braycurtis
+          ? kulsinski
+          ? jaccard
+          ? wminkowski
+          ? seuclidean
+          ? rogerstanimoto
+          ? matching
+          ? minkowski
+          ? sokalsneath
       optional: true
     - !Flag
       description: output full dissimilarity matrix
@@ -406,11 +352,9 @@ parent: &id002 !Command
       - --silent
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - comparem
-    - diss
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -430,11 +374,90 @@ parent: &id002 !Command
       \                        distance metric to use (default: euclidean)\n  --full_matrix\
       \         output full dissimilarity matrix\n  --silent              suppress\
       \ output\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
+    command:
+    - comparem
+    - kmer_usage
     positional:
     - !Positional
-      description: file with pairwise similarity or dissimilarity values between genomes
+      description: input files with genomes in nucleotide space
+      position: 0
+      name: genome_files
+      optional: false
+    - !Positional
+      description: output file indicating kmer usage of each genome
+      position: 1
+      name: output_file
+      optional: false
+    named:
+    - !Flag
+      description: output raw counts instead of frequencies
+      synonyms:
+      - --counts
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "length of kmers, e.g., 4 -> tetranucleotides (default:\n4)"
+      synonyms:
+      - -k
+      args: !SimpleFlagArg
+        name: K
+      optional: true
+    - !Flag
+      description: 'extension of files to process (default: fna)'
+      synonyms:
+      - -x
+      - --file_ext
+      args: !SimpleFlagArg
+        name: FILE_EXT
+      optional: true
+    - !Flag
+      description: 'number of CPUs to use (default: 1)'
+      synonyms:
+      - -c
+      - --cpus
+      args: !SimpleFlagArg
+        name: CPUS
+      optional: true
+    - !Flag
+      description: suppress output
+      synonyms:
+      - --silent
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: comparem kmer_usage [-h] [--counts] [-k K] [-x FILE_EXT] [-c\
+      \ CPUS]\n                           [--silent]\n                           genome_files\
+      \ output_file\n\nCalculate kmer usage within each genome.\n\npositional arguments:\n\
+      \  genome_files          input files with genomes in nucleotide space\n  output_file\
+      \           output file indicating kmer usage of each genome\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  --counts       \
+      \       output raw counts instead of frequencies\n  -k K                  length\
+      \ of kmers, e.g., 4 -> tetranucleotides (default:\n                        4)\n\
+      \  -x, --file_ext FILE_EXT\n                        extension of files to process\
+      \ (default: fna)\n  -c, --cpus CPUS       number of CPUs to use (default: 1)\n\
+      \  --silent              suppress output\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - comparem
+    - hclust
+    positional:
+    - !Positional
+      description: "file with pairwise similarity or dissimilarity values\nbetween\
+        \ genomes"
       position: 0
       name: pairwise_value_file
       optional: false
@@ -451,11 +474,11 @@ parent: &id002 !Command
       args: !ChoiceFlagArg
         choices: !!set
           ? weighted
-          ? centroid
-          ? complete
           ? single
-          ? average
+          ? complete
+          ? centroid
           ? median
+          ? average
           ? ward
       optional: true
     - !Flag
@@ -486,8 +509,8 @@ parent: &id002 !Command
         name: NAME_COL2
       optional: true
     - !Flag
-      description: 'index of column with similarity or dissimilarity values (default:
-        2)'
+      description: "index of column with similarity or dissimilarity\nvalues (default:\
+        \ 2)"
       synonyms:
       - --value_col
       args: !SimpleFlagArg
@@ -499,11 +522,9 @@ parent: &id002 !Command
       - --silent
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - comparem
-    - hclust
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -530,7 +551,289 @@ parent: &id002 !Command
       \ column with genome names (default: 1)\n  --value_col VALUE_COL\n         \
       \               index of column with similarity or dissimilarity\n         \
       \               values (default: 2)\n  --silent              suppress output\n"
-    generated_using: *id003
+    generated_using: *id002
+  - !Command
+    command:
+    - comparem
+    - lgt_di
+    positional:
+    - !Positional
+      description: input files with genes in nucleotide space
+      position: 0
+      name: nucleotide_gene_files
+      optional: false
+    - !Positional
+      description: "output directory to write dinucleotide usage for each\ngene in\
+        \ each genome"
+      position: 1
+      name: output_dir
+      optional: false
+    named:
+    - !Flag
+      description: 'extension of files to process (default: fna)'
+      synonyms:
+      - -x
+      - --file_ext
+      args: !SimpleFlagArg
+        name: FILE_EXT
+      optional: true
+    - !Flag
+      description: "critical value for defining deviant genes (default:\n0.001)"
+      synonyms:
+      - --crit_value
+      args: !SimpleFlagArg
+        name: CRIT_VALUE
+      optional: true
+    - !Flag
+      description: 'number of CPUs to use (default: 1)'
+      synonyms:
+      - -c
+      - --cpus
+      args: !SimpleFlagArg
+        name: CPUS
+      optional: true
+    - !Flag
+      description: suppress output
+      synonyms:
+      - --silent
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: comparem lgt_di [-h] [-x FILE_EXT] [--crit_value CRIT_VALUE]\
+      \ [-c CPUS]\n                       [--silent]\n                       nucleotide_gene_files\
+      \ output_dir\n\nCalculate dinuceotide (3rd,1st) usage of genes to identify putative\
+      \ LGT\nevents.\n\npositional arguments:\n  nucleotide_gene_files\n         \
+      \               input files with genes in nucleotide space\n  output_dir   \
+      \         output directory to write dinucleotide usage for each\n          \
+      \              gene in each genome\n\noptional arguments:\n  -h, --help    \
+      \        show this help message and exit\n  -x, --file_ext FILE_EXT\n      \
+      \                  extension of files to process (default: fna)\n  --crit_value\
+      \ CRIT_VALUE\n                        critical value for defining deviant genes\
+      \ (default:\n                        0.001)\n  -c, --cpus CPUS       number\
+      \ of CPUs to use (default: 1)\n  --silent              suppress output\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - comparem
+    - classify
+    positional:
+    - !Positional
+      description: Identify similar genomes based on AAI value.
+      position: 0
+      name: output_dir
+      optional: false
+    - !Positional
+      description: file with all query genes
+      position: 0
+      name: query_gene_file
+      optional: false
+    - !Positional
+      description: file with all target genes
+      position: 1
+      name: target_gene_file
+      optional: false
+    - !Positional
+      description: "sorted file indicating genes passing sequence\nsimilarity criteria"
+      position: 2
+      name: sorted_hit_table
+      optional: false
+    - !Positional
+      description: output directory
+      position: 3
+      name: output_dir
+      optional: false
+    named:
+    - !Flag
+      description: "number of top scoring target genomes to report per\nquery genome\
+        \ (default: 1)"
+      synonyms:
+      - -k
+      - --num_top_targets
+      args: !SimpleFlagArg
+        name: NUM_TOP_TARGETS
+      optional: true
+    - !Flag
+      description: "file indicating taxonomic identification of all target\ngenomes"
+      synonyms:
+      - -t
+      - --taxonomy_file
+      args: !SimpleFlagArg
+        name: TAXONOMY_FILE
+      optional: true
+    - !Flag
+      description: "e-value cutoff for identifying initial blast hits\n(default: 0.001)"
+      synonyms:
+      - -e
+      - --evalue
+      args: !SimpleFlagArg
+        name: EVALUE
+      optional: true
+    - !Flag
+      description: 'percent identity for defining homology (default: 30.0)'
+      synonyms:
+      - -p
+      - --per_identity
+      args: !SimpleFlagArg
+        name: PER_IDENTITY
+      optional: true
+    - !Flag
+      description: "percent alignment length of query sequence for\ndefining homology\
+        \ (default: 70.0)"
+      synonyms:
+      - -a
+      - --per_aln_len
+      args: !SimpleFlagArg
+        name: PER_ALN_LEN
+      optional: true
+    - !Flag
+      description: 'extension of files to process (default: fna)'
+      synonyms:
+      - -x
+      - --file_ext
+      args: !SimpleFlagArg
+        name: FILE_EXT
+      optional: true
+    - !Flag
+      description: create file with reciprocal best hits
+      synonyms:
+      - --keep_rbhs
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'number of CPUs to use (default: 1)'
+      synonyms:
+      - -c
+      - --cpus
+      args: !SimpleFlagArg
+        name: CPUS
+      optional: true
+    - !Flag
+      description: suppress output
+      synonyms:
+      - --silent
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: comparem classify [-h] [-k NUM_TOP_TARGETS] [-t TAXONOMY_FILE]\n\
+      \                         [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_LEN]\n \
+      \                        [-x FILE_EXT] [--keep_rbhs] [-c CPUS] [--silent]\n\
+      \                         query_gene_file target_gene_file sorted_hit_table\n\
+      \                         output_dir\n\nIdentify similar genomes based on AAI\
+      \ value.\n\npositional arguments:\n  query_gene_file       file with all query\
+      \ genes\n  target_gene_file      file with all target genes\n  sorted_hit_table\
+      \      sorted file indicating genes passing sequence\n                     \
+      \   similarity criteria\n  output_dir            output directory\n\noptional\
+      \ arguments:\n  -h, --help            show this help message and exit\n  -k,\
+      \ --num_top_targets NUM_TOP_TARGETS\n                        number of top scoring\
+      \ target genomes to report per\n                        query genome (default:\
+      \ 1)\n  -t, --taxonomy_file TAXONOMY_FILE\n                        file indicating\
+      \ taxonomic identification of all target\n                        genomes\n\
+      \  -e, --evalue EVALUE   e-value cutoff for identifying initial blast hits\n\
+      \                        (default: 0.001)\n  -p, --per_identity PER_IDENTITY\n\
+      \                        percent identity for defining homology (default: 30.0)\n\
+      \  -a, --per_aln_len PER_ALN_LEN\n                        percent alignment\
+      \ length of query sequence for\n                        defining homology (default:\
+      \ 70.0)\n  -x, --file_ext FILE_EXT\n                        extension of files\
+      \ to process (default: fna)\n  --keep_rbhs           create file with reciprocal\
+      \ best hits\n  -c, --cpus CPUS       number of CPUs to use (default: 1)\n  --silent\
+      \              suppress output\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - comparem
+    - aa_usage
+    positional:
+    - !Positional
+      description: input files with genes in amino acid space
+      position: 0
+      name: protein_gene_files
+      optional: false
+    - !Positional
+      description: output file indicating amino acid usage for each
+      position: 1
+      name: output_file
+      optional: false
+    - !Positional
+      description: 'optional arguments:'
+      position: 2
+      name: genome
+      optional: false
+    named:
+    - !Flag
+      description: output raw counts instead of frequencies
+      synonyms:
+      - --counts
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'extension of files to process (default: faa)'
+      synonyms:
+      - -x
+      - --file_ext
+      args: !SimpleFlagArg
+        name: FILE_EXT
+      optional: true
+    - !Flag
+      description: 'number of CPUs to use (default: 1)'
+      synonyms:
+      - -c
+      - --cpus
+      args: !SimpleFlagArg
+        name: CPUS
+      optional: true
+    - !Flag
+      description: suppress output
+      synonyms:
+      - --silent
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: comparem aa_usage [-h] [--counts] [-x FILE_EXT] [-c CPUS] [--silent]\n\
+      \                         protein_gene_files output_file\n\nCalculate amino\
+      \ acid usage within each genome.\n\npositional arguments:\n  protein_gene_files\
+      \    input files with genes in amino acid space\n  output_file           output\
+      \ file indicating amino acid usage for each\n                        genome\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  --counts              output raw counts instead of frequencies\n  -x, --file_ext\
+      \ FILE_EXT\n                        extension of files to process (default:\
+      \ faa)\n  -c, --cpus CPUS       number of CPUs to use (default: 1)\n  --silent\
+      \              suppress output\n"
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -557,6 +860,7 @@ parent: &id002 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -580,4 +884,4 @@ help_text: "usage: comparem aai [-h] [-e EVALUE] [-p PER_IDENTITY] [-a PER_ALN_L
   \ for\n                        reporting an alignment (default: 70.0)\n  --keep_rbhs\
   \           create file with reciprocal best hits\n  -c, --cpus CPUS       number\
   \ of CPUs to use (default: 1)\n  --silent              suppress output\n"
-generated_using: *id003
+generated_using: *id002

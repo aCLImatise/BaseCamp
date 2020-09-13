@@ -4,4 +4,7 @@ task TriangulateTimings {
   command <<<
     triangulateTimings
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

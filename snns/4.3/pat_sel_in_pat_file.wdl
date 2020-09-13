@@ -20,4 +20,7 @@ task PatSelInPatFile {
     in_pat_file: ""
     out_pat_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

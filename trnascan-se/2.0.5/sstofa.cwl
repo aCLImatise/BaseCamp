@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../sstofa.cwl
 inputs:
-- id: sec_struct_file
+- id: in_sec_struct_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sstofa

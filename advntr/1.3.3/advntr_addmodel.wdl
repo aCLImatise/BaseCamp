@@ -3,8 +3,8 @@ version 1.0
 task AdvntrAddmodel {
   input {
     String? r_slash_reference
-    String? c_slash_chromosome
-    String? p_slash_pattern
+    Int? c_slash_chromosome
+    Int? p_slash_pattern
     Int? s_slash_start
     Int? e_slash_end
     String? g_slash_gene
@@ -22,7 +22,7 @@ task AdvntrAddmodel {
       ~{if defined(g_slash_gene) then ("-g/--gene " +  '"' + g_slash_gene + '"') else ""} \
       ~{if defined(a_slash_annotation) then ("-a/--annotation " +  '"' + a_slash_annotation + '"') else ""} \
       ~{if defined(m_slash_models) then ("-m/--models " +  '"' + m_slash_models + '"') else ""} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
     r_slash_reference: "Reference genome"
@@ -34,5 +34,8 @@ task AdvntrAddmodel {
     a_slash_annotation: "Annotation of VNTR region"
     m_slash_models: "VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]"
     h_slash_help: "show this help message and exit"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

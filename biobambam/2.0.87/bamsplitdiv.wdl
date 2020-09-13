@@ -4,4 +4,7 @@ task Bamsplitdiv {
   command <<<
     bamsplitdiv
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,10 +2,10 @@ version 1.0
 
 task CatPdb {
   input {
-    String? config
-    String? input_structure_one
-    String? input_structure_two
-    String? output_structure_path
+    File? config
+    Int? input_structure_one
+    Int? input_structure_two
+    File? output_structure_path
   }
   command <<<
     cat_pdb \
@@ -18,6 +18,10 @@ task CatPdb {
     config: "This file can be a YAML file, JSON file or JSON string"
     input_structure_one: "Input structure 1 file path. Accepted formats: pdb."
     input_structure_two: "Input structure 2 file path. Accepted formats: pdb."
-    output_structure_path: "Output structure file path. Accepted formats: pdb."
+    output_structure_path: "Output structure file path. Accepted formats: pdb.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_structure_path = "${in_output_structure_path}"
   }
 }

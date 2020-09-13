@@ -1,11 +1,13 @@
 version 1.0
 
-task AbyssScaffold {
+task Abyssscaffold {
   input {
-    String? km_er
-    String? genome_size
-    String? min_gap
-    String? max_gap
+    Int? n_pairs
+    Int? seed_length
+    Int? km_er
+    Int? genome_size
+    Int? min_gap
+    Int? max_gap
     Boolean? complex
     Boolean? no_complex
     Boolean? ss
@@ -22,29 +24,33 @@ task AbyssScaffold {
     String dist
   }
   command <<<
-    abyss-scaffold \
+    abyss_scaffold \
       ~{fast_a} \
       ~{overlap} \
       ~{dist} \
+      ~{if defined(n_pairs) then ("--npairs " +  '"' + n_pairs + '"') else ""} \
+      ~{if defined(seed_length) then ("--seed-length " +  '"' + seed_length + '"') else ""} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
       ~{if defined(genome_size) then ("--genome-size " +  '"' + genome_size + '"') else ""} \
       ~{if defined(min_gap) then ("--min-gap " +  '"' + min_gap + '"') else ""} \
       ~{if defined(max_gap) then ("--max-gap " +  '"' + max_gap + '"') else ""} \
-      ~{true="--complex" false="" complex} \
-      ~{true="--no-complex" false="" no_complex} \
-      ~{true="--SS" false="" ss} \
-      ~{true="--no-SS" false="" no_ss} \
+      ~{if (complex) then "--complex" else ""} \
+      ~{if (no_complex) then "--no-complex" else ""} \
+      ~{if (ss) then "--SS" else ""} \
+      ~{if (no_ss) then "--no-SS" else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""}
   >>>
   parameter_meta {
+    n_pairs: "minimum number of pairs [0]"
+    seed_length: "minimum contig length [200]\\nor -s N0-N1   Find the value of s in [N0,N1]\\nthat maximizes the scaffold N50."
     km_er: "length of a k-mer"
-    genome_size: "expected genome size. Used to calculate NG50 and associated stats [disabled]"
+    genome_size: "expected genome size. Used to calculate NG50\\nand associated stats [disabled]"
     min_gap: "minimum scaffold gap length to output [50]"
     max_gap: "maximum scaffold gap length to output [inf]"
     complex: "remove complex transitive edges"
@@ -61,5 +67,8 @@ task AbyssScaffold {
     fast_a: "contigs in FASTA format"
     overlap: "the contig overlap graph"
     dist: "estimates of the distance between contigs"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,62 +1,75 @@
 class: CommandLineTool
 id: ../../../hp_call_variants.cwl
 inputs:
-- id: aln_bam
+- id: in_aln_bam
   doc: Alignment file.
-  type: string
+  type: File
   inputBinding:
     prefix: --aln_bam
-- id: ref_fa
+- id: in_ref_fa
   doc: Reference fasta file.
-  type: string
+  type: File
   inputBinding:
     prefix: --ref_fa
-- id: outdir
+- id: in_outdir
   doc: 'Output directory (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: emit_all
+- id: in_emit_all
   doc: 'Output calls for all sites. (default: False)'
   type: boolean
   inputBinding:
     prefix: --emit_all
-- id: min_base_qual
-  doc: 'Minimum base quality required to consider a base for calling. (default: 15)'
+- id: in_min_base_qual
+  doc: "Minimum base quality required to consider a base for\ncalling. (default: 15)"
   type: long
   inputBinding:
     prefix: --min_base_qual
-- id: n_cpu
+- id: in_n_cpu
   doc: Number of CPU to use
-  type: string
+  type: long
   inputBinding:
     prefix: --ncpu
-- id: x_mx
+- id: in_x_mx
   doc: 'Maximum heap size for Java VM, in GB. (default: 32)'
-  type: string
+  type: long
   inputBinding:
     prefix: --xmx
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'Do not delete temporary directory (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_tmp
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Append console output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Append console output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - hp_call_variants

@@ -1,7 +1,10 @@
 version 1.0
 
-task ShedTools {
+task Shedtools {
   command <<<
-    shed-tools
+    shed_tools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

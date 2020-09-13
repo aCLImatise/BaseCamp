@@ -1,7 +1,10 @@
 version 1.0
 
-task CompareHLA.py.bak {
+task CompareHLApy {
   command <<<
-    compare_HLA.py.bak
+    compare_HLA_py
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

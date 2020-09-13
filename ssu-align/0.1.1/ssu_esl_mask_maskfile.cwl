@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../ssu_esl_mask_maskfile.cwl
 inputs:
-- id: ssu_esl_mask
+- id: in_ssu_esl_mask
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sq_file
+- id: in_sq_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: mask_file
+- id: in_mask_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-mask

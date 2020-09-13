@@ -2,22 +2,22 @@ version 1.0
 
 task Gcov2perl {
   input {
-    Boolean? i
-    Boolean? v
     String? db
-    String gcov_files
+    Boolean? v
+    Boolean? i
   }
   command <<<
     gcov2perl \
-      ~{gcov_files} \
-      ~{true="-i" false="" i} \
-      ~{true="-v" false="" v} \
-      ~{if defined(db) then ("-db " +  '"' + db + '"') else ""}
+      ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
+      ~{if (v) then "-v" else ""} \
+      ~{if (i) then "-i" else ""}
   >>>
   parameter_meta {
-    i: ""
-    v: ""
     db: ""
-    gcov_files: ""
+    v: ""
+    i: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

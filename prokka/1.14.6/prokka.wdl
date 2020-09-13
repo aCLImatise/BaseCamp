@@ -10,9 +10,9 @@ task Prokka {
     Boolean? setup_db
     Boolean? clean_db
     Boolean? depends
-    Boolean? outdir
-    Boolean? force
-    Boolean? prefix
+    Directory? outdir
+    Directory? force
+    File? prefix
     Boolean? add_genes
     Boolean? add_mrna
     Boolean? locus_tag
@@ -45,60 +45,58 @@ task Prokka {
     Boolean? no_rrna
     Boolean? not_rna
     Boolean? rn_ammer
-    String contigs_dot_fast_a
   }
   command <<<
     prokka \
-      ~{contigs_dot_fast_a} \
-      ~{true="--citation" false="" citation} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--dbdir" false="" db_dir} \
-      ~{true="--listdb" false="" list_db} \
-      ~{true="--setupdb" false="" setup_db} \
-      ~{true="--cleandb" false="" clean_db} \
-      ~{true="--depends" false="" depends} \
-      ~{true="--outdir" false="" outdir} \
-      ~{true="--force" false="" force} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="--addgenes" false="" add_genes} \
-      ~{true="--addmrna" false="" add_mrna} \
-      ~{true="--locustag" false="" locus_tag} \
-      ~{true="--increment" false="" increment} \
-      ~{true="--gffver" false="" gff_ver} \
-      ~{true="--compliant" false="" compliant} \
-      ~{true="--centre" false="" centre} \
-      ~{true="--accver" false="" acc_ver} \
-      ~{true="--genus" false="" genus} \
-      ~{true="--species" false="" species} \
-      ~{true="--strain" false="" strain} \
-      ~{true="--plasmid" false="" plasmid} \
-      ~{true="--kingdom" false="" kingdom} \
-      ~{true="--gcode" false="" g_code} \
-      ~{true="--prodigaltf" false="" prodigal_tf} \
-      ~{true="--gram" false="" gram} \
-      ~{true="--usegenus" false="" use_genus} \
-      ~{true="--proteins" false="" proteins} \
-      ~{true="--hmms" false="" hmms} \
-      ~{true="--metagenome" false="" meta_genome} \
-      ~{true="--rawproduct" false="" raw_product} \
-      ~{true="--cdsrnaolap" false="" cds_rna_olap} \
-      ~{true="--evalue" false="" evalue} \
-      ~{true="--coverage" false="" coverage} \
-      ~{true="--cpus" false="" cpus} \
-      ~{true="--fast" false="" fast} \
-      ~{true="--noanno" false="" no_an_no} \
-      ~{true="--mincontiglen" false="" min_conti_glen} \
-      ~{true="--rfam" false="" rf_am} \
-      ~{true="--norrna" false="" no_rrna} \
-      ~{true="--notrna" false="" not_rna} \
-      ~{true="--rnammer" false="" rn_ammer}
+      ~{if (citation) then "--citation" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (db_dir) then "--dbdir" else ""} \
+      ~{if (list_db) then "--listdb" else ""} \
+      ~{if (setup_db) then "--setupdb" else ""} \
+      ~{if (clean_db) then "--cleandb" else ""} \
+      ~{if (depends) then "--depends" else ""} \
+      ~{if (outdir) then "--outdir" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (add_genes) then "--addgenes" else ""} \
+      ~{if (add_mrna) then "--addmrna" else ""} \
+      ~{if (locus_tag) then "--locustag" else ""} \
+      ~{if (increment) then "--increment" else ""} \
+      ~{if (gff_ver) then "--gffver" else ""} \
+      ~{if (compliant) then "--compliant" else ""} \
+      ~{if (centre) then "--centre" else ""} \
+      ~{if (acc_ver) then "--accver" else ""} \
+      ~{if (genus) then "--genus" else ""} \
+      ~{if (species) then "--species" else ""} \
+      ~{if (strain) then "--strain" else ""} \
+      ~{if (plasmid) then "--plasmid" else ""} \
+      ~{if (kingdom) then "--kingdom" else ""} \
+      ~{if (g_code) then "--gcode" else ""} \
+      ~{if (prodigal_tf) then "--prodigaltf" else ""} \
+      ~{if (gram) then "--gram" else ""} \
+      ~{if (use_genus) then "--usegenus" else ""} \
+      ~{if (proteins) then "--proteins" else ""} \
+      ~{if (hmms) then "--hmms" else ""} \
+      ~{if (meta_genome) then "--metagenome" else ""} \
+      ~{if (raw_product) then "--rawproduct" else ""} \
+      ~{if (cds_rna_olap) then "--cdsrnaolap" else ""} \
+      ~{if (evalue) then "--evalue" else ""} \
+      ~{if (coverage) then "--coverage" else ""} \
+      ~{if (cpus) then "--cpus" else ""} \
+      ~{if (fast) then "--fast" else ""} \
+      ~{if (no_an_no) then "--noanno" else ""} \
+      ~{if (min_conti_glen) then "--mincontiglen" else ""} \
+      ~{if (rf_am) then "--rfam" else ""} \
+      ~{if (no_rrna) then "--norrna" else ""} \
+      ~{if (not_rna) then "--notrna" else ""} \
+      ~{if (rn_ammer) then "--rnammer" else ""}
   >>>
   parameter_meta {
     citation: "Print citation for referencing Prokka"
     quiet: "No screen output (default OFF)"
     debug: "Debug mode: keep all temporary files (default OFF)"
-    db_dir: "[X]        Prokka database root folders (default '/tmp/tmp7h3k3e00/db')"
+    db_dir: "[X]        Prokka database root folders (default '/usr/local/db')"
     list_db: "List all configured databases"
     setup_db: "Index all installed databases"
     clean_db: "Remove all database indices"
@@ -132,12 +130,17 @@ task Prokka {
     coverage: "[n.n]   Minimum coverage on query protein (default '80')"
     cpus: "[N]         Number of CPUs to use [0=all] (default '8')"
     fast: "Fast mode - only use basic BLASTP databases (default OFF)"
-    no_an_no: "For CDS just set /product=\"unannotated protein\" (default OFF)"
+    no_an_no: "For CDS just set /product=\\\"unannotated protein\\\" (default OFF)"
     min_conti_glen: "[N] Minimum contig size [NCBI needs 200] (default '1')"
     rf_am: "Enable searching for ncRNAs with Infernal+Rfam (SLOW!) (default '0')"
     no_rrna: "Don't run rRNA search (default OFF)"
     not_rna: "Don't run tRNA search (default OFF)"
     rn_ammer: "Prefer RNAmmer over Barrnap for rRNA prediction (default OFF)"
-    contigs_dot_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    Directory out_force = "${in_force}"
+    File out_prefix = "${in_prefix}"
   }
 }

@@ -9,7 +9,7 @@ task Dart {
     Int? max_dup
     Boolean? alignment_filename_sam
     Boolean? bo
-    Boolean? splice_junction_output
+    File? splice_junction_output
     Boolean? output_multiple_alignments
     Boolean? all_sj
     Boolean? pairedend_reads_interlaced
@@ -22,20 +22,20 @@ task Dart {
   command <<<
     dart \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
-      ~{true="-f" false="" f} \
-      ~{true="-f2" false="" f_two} \
+      ~{if (f) then "-f" else ""} \
+      ~{if (f_two) then "-f2" else ""} \
       ~{if defined(mis) then ("-mis " +  '"' + mis + '"') else ""} \
       ~{if defined(max_dup) then ("-max_dup " +  '"' + max_dup + '"') else ""} \
-      ~{true="-o" false="" alignment_filename_sam} \
-      ~{true="-bo" false="" bo} \
-      ~{true="-j" false="" splice_junction_output} \
-      ~{true="-m" false="" output_multiple_alignments} \
-      ~{true="-all_sj" false="" all_sj} \
-      ~{true="-p" false="" pairedend_reads_interlaced} \
-      ~{true="-unique" false="" unique} \
-      ~{true="-max_intron" false="" max_intron} \
-      ~{true="-min_intron" false="" min_intron} \
-      ~{true="-v" false="" version} \
+      ~{if (alignment_filename_sam) then "-o" else ""} \
+      ~{if (bo) then "-bo" else ""} \
+      ~{if (splice_junction_output) then "-j" else ""} \
+      ~{if (output_multiple_alignments) then "-m" else ""} \
+      ~{if (all_sj) then "-all_sj" else ""} \
+      ~{if (pairedend_reads_interlaced) then "-p" else ""} \
+      ~{if (unique) then "-unique" else ""} \
+      ~{if (max_intron) then "-max_intron" else ""} \
+      ~{if (min_intron) then "-min_intron" else ""} \
+      ~{if (version) then "-v" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
@@ -55,5 +55,9 @@ task Dart {
     min_intron: "the minimal intron size [10]"
     version: "version"
     i: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_splice_junction_output = "${in_splice_junction_output}"
   }
 }

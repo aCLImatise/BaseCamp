@@ -1,7 +1,10 @@
 version 1.0
 
-task RegtoolsCisSpliceEffects {
+task RegtoolsCisspliceeffects {
   command <<<
-    regtools cis-splice-effects
+    regtools cis_splice_effects
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

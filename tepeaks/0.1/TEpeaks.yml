@@ -1,11 +1,14 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - TEpeaks
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - TEpeaks
+  - narrow
   positional:
   - !Positional
     description: ''
@@ -19,78 +22,91 @@ subcommands:
     optional: false
   named:
   - !Flag
-    description: "How to deal with duplicate reads. The valid values are 'auto', 'all',\
-      \ or 1 (default: auto)"
+    description: IP sample ( BAM )
     synonyms:
-    - --keepDup
+    - -t
+    - --treatment
     args: !SimpleFlagArg
       name: STRING
     optional: true
   - !Flag
-    description: "Shift reads towards 3' end, if positive, or 5' end if negative.\
-      \ (default: 0)"
+    description: Control IP samples ( BAM )
     synonyms:
-    - --shift
+    - -c
+    - --control
+    args: !SimpleFlagArg
+      name: files
+    optional: true
+  - !Flag
+    description: Directory to write output to
+    synonyms:
+    - -o
+    - --outputdir
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: "Fragment size (default: 200)\n--keepDup=STRING          How to deal\
+      \ with duplicate reads. The valid values are 'auto', 'all', or 1 (default: auto)\n\
+      --shift=INT               Shift reads towards 3' end, if positive, or 5' end\
+      \ if negative. (default: 0)\n--lmfold=INT              Lower limit of fold ratio\
+      \ against background to build model (default: 10)\n--hmfold=INT            \
+      \  Higher limit of fold ratio against background to build model (default: 30)"
+    synonyms:
+    - -f
+    - --fraglen
     args: !SimpleFlagArg
       name: INT
     optional: true
   - !Flag
-    description: 'Lower limit of fold ratio against background to build model (default:
-      10)'
+    description: 'Name of the prject (default: NONAME)'
     synonyms:
-    - --lmfold
+    - -n
+    - --prjname
     args: !SimpleFlagArg
-      name: INT
+      name: STRING
     optional: true
   - !Flag
-    description: 'Higher limit of fold ratio against background to build model (default:
-      30)'
+    description: "P-value cutoff (default: 1e-5)\n--fdr=DOUBLE              False\
+      \ discovery rate cutoff (default: 0.05)\n--toLarge                 Scale library\
+      \ size to large sample (default: off)"
     synonyms:
-    - --hmfold
-    args: !SimpleFlagArg
-      name: INT
-    optional: true
-  - !Flag
-    description: 'False discovery rate cutoff (default: 0.05)'
-    synonyms:
-    - --fdr
+    - -p
+    - --pval
     args: !SimpleFlagArg
       name: DOUBLE
     optional: true
   - !Flag
-    description: 'Scale library size to large sample (default: off)'
+    description: 'Species e.g., hs (Human hg19),  mm (Mouse mm9). (default: hs)'
     synonyms:
-    - --toLarge
-    args: !EmptyFlagArg {}
+    - -s
+    - --species
+    args: !SimpleFlagArg
+      name: STRING
     optional: true
   - !Flag
-    description: 'Number of threads to use (default: 1)'
+    description: "Effective genome size (default: human genome 2.7e9)\n--threads=INT\
+      \             Number of threads to use (default: 1)\n--pileup=INT          \
+      \    The minuim pileup required for peaks with multi-reads (default: 20)\n--fe=DOUBLE\
+      \               The minuim fold enrichment required for peaks with multi-reads\
+      \ (default: 3)"
     synonyms:
-    - --threads
+    - -g
+    - --gsize
     args: !SimpleFlagArg
       name: INT
     optional: true
   - !Flag
-    description: 'The minuim pileup required for peaks with multi-reads (default:
-      20)'
+    description: 'Number of iterations (default: 50)'
     synonyms:
-    - --pileup
+    - -i
+    - --numItr
     args: !SimpleFlagArg
       name: INT
     optional: true
-  - !Flag
-    description: 'The minuim fold enrichment required for peaks with multi-reads (default:
-      3)'
-    synonyms:
-    - --fe
-    args: !SimpleFlagArg
-      name: DOUBLE
-    optional: true
-  command:
-  - TEpeaks
-  - narrow
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -117,6 +133,7 @@ subcommands:
     \ multi-reads (default: 3)\n-i, --numItr=INT              Number of iterations\
     \ (default: 50)\n"
   generated_using: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

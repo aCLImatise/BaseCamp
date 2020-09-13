@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../rsem_bam2readdepth.cwl
 inputs:
-- id: sorted_bam_input
+- id: in_sorted_bam_input
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: read_depth_output
+- id: in_read_depth_output
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rsem-bam2readdepth

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../bam2occupancy.cwl
 inputs:
-- id: name
-  doc: name for this occupancy vector (prepended to occupancy vector)
+- id: in_name
+  doc: "name for this occupancy vector (prepended to occupancy\nvector)"
   type: string
   inputBinding:
     prefix: --name
-- id: hash_file
-  doc: for .bam input, write sorted hash file to the given path
-  type: string
+- id: in_hash_file
+  doc: "for .bam input, write sorted hash file to the given\npath"
+  type: long
   inputBinding:
     prefix: --hashfile
-- id: verbose
-  doc: for .bam input, output progress messages every million reads to stderr
+- id: in_verbose
+  doc: "for .bam input, output progress messages every million\nreads to stderr"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: path
-  doc: input .bam file, or hash .h5 file created by a previous run
+- id: in_path
+  doc: "input .bam file, or hash .h5 file created by a\nprevious run"
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bam2occupancy

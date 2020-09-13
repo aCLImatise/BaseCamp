@@ -2,43 +2,41 @@ version 1.0
 
 task GmerCounter {
   input {
-    String? db
-    String? dbb
+    File? db
+    File? dbb
     File? write_binary_database
     Boolean? use_bit_integeres
-    String? max_km_ers
+    Int? max_km_ers
     Boolean? silent
     Boolean? header
     Boolean? total
     Boolean? unique
     Boolean? km_ers
     File? compile_index
-    String? distribution
+    Int? distribution
     Boolean? num_threads
     Boolean? prefetch
     Boolean? increase_debug_level
     String arguments
-    String sequences_dot_dot_dot
   }
   command <<<
     gmer_counter \
       ~{arguments} \
-      ~{sequences_dot_dot_dot} \
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
       ~{if defined(dbb) then ("-dbb " +  '"' + dbb + '"') else ""} \
       ~{if defined(write_binary_database) then ("-w " +  '"' + write_binary_database + '"') else ""} \
-      ~{true="-32" false="" use_bit_integeres} \
+      ~{if (use_bit_integeres) then "-32" else ""} \
       ~{if defined(max_km_ers) then ("--max_kmers " +  '"' + max_km_ers + '"') else ""} \
-      ~{true="--silent" false="" silent} \
-      ~{true="--header" false="" header} \
-      ~{true="--total" false="" total} \
-      ~{true="--unique" false="" unique} \
-      ~{true="--kmers" false="" km_ers} \
+      ~{if (silent) then "--silent" else ""} \
+      ~{if (header) then "--header" else ""} \
+      ~{if (total) then "--total" else ""} \
+      ~{if (unique) then "--unique" else ""} \
+      ~{if (km_ers) then "--kmers" else ""} \
       ~{if defined(compile_index) then ("--compile_index " +  '"' + compile_index + '"') else ""} \
       ~{if defined(distribution) then ("--distribution " +  '"' + distribution + '"') else ""} \
-      ~{true="--num_threads" false="" num_threads} \
-      ~{true="--prefetch" false="" prefetch} \
-      ~{true="-D" false="" increase_debug_level}
+      ~{if (num_threads) then "--num_threads" else ""} \
+      ~{if (prefetch) then "--prefetch" else ""} \
+      ~{if (increase_debug_level) then "-D" else ""}
   >>>
   parameter_meta {
     db: "- SNP/KMER database file"
@@ -57,6 +55,8 @@ task GmerCounter {
     prefetch: "- prefetch memory mapped files (faster on high-memory systems)"
     increase_debug_level: "- increase debug level"
     arguments: ""
-    sequences_dot_dot_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

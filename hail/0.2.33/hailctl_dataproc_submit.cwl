@@ -1,43 +1,47 @@
 class: CommandLineTool
 id: ../../../hailctl_dataproc_submit.cwl
 inputs:
-- id: files
-  doc: Comma-separated list of files to add to the working directory of the Hail application.
-  type: File
+- id: in_files
+  doc: "Comma-separated list of files to add to the working\ndirectory of the Hail\
+    \ application."
+  type: Directory
   inputBinding:
     prefix: --files
-- id: py_files
-  doc: Comma-separated list of files (or directories with python files) to add to
-    the PYTHONPATH.
+- id: in_py_files
+  doc: "Comma-separated list of files (or directories with\npython files) to add to\
+    \ the PYTHONPATH."
   type: string
   inputBinding:
     prefix: --pyfiles
-- id: properties
+- id: in_properties
   doc: Extra Spark properties to set.
   type: string
   inputBinding:
     prefix: --properties
-- id: g_cloud_configuration
-  doc: Google Cloud configuration to submit job (defaults to currently set configuration).
+- id: in_g_cloud_configuration
+  doc: "Google Cloud configuration to submit job (defaults to\ncurrently set configuration)."
   type: string
   inputBinding:
     prefix: --gcloud_configuration
-- id: dry_run
+- id: in_dry_run
   doc: Print gcloud dataproc command, but don't run it.
   type: boolean
   inputBinding:
     prefix: --dry-run
-- id: name
+- id: in_name
   doc: Cluster name.
   type: string
   inputBinding:
     position: 0
-- id: script
+- id: in_script
   doc: Path to script.
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hailctl

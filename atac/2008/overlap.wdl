@@ -1,20 +1,10 @@
 version 1.0
 
 task Overlap {
-  input {
-    String matches_one
-    String matches_two
-    String out_prefix
-  }
   command <<<
-    overlap \
-      ~{matches_one} \
-      ~{matches_two} \
-      ~{out_prefix}
+    overlap
   >>>
-  parameter_meta {
-    matches_one: ""
-    matches_two: ""
-    out_prefix: ""
+  output {
+    File out_stdout = stdout()
   }
 }

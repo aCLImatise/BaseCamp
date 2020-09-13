@@ -1,17 +1,36 @@
 class: CommandLineTool
 id: ../../../refold.cwl
 inputs:
-- id: save_file
+- id: in_maximum
+  doc: "Specify a maximum number of structures.\nDefault is 20 structures."
+  type: boolean
+  inputBinding:
+    prefix: --maximum
+- id: in_percent
+  doc: "Specify a maximum percent energy difference.\nDefault is 10 percent (specified\
+    \ as 10, not 0.1)."
+  type: boolean
+  inputBinding:
+    prefix: --percent
+- id: in_window
+  doc: "Specify a window size.\nDefault is determined by the length of the sequence.\n"
+  type: boolean
+  inputBinding:
+    prefix: --window
+- id: in_save_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: ct_file
+- id: in_ct_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - refold

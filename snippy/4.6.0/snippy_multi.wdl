@@ -1,7 +1,10 @@
 version 1.0
 
-task SnippyMulti {
+task Snippymulti {
   command <<<
-    snippy-multi
+    snippy_multi
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

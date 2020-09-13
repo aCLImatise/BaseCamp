@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../FeatureFinderMetabo.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*        Centroided mzML file (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: "*       FeatureXML file with metabolite features (valid formats: 'featureXML')"
   type: File
   inputBinding:
     prefix: -out
-- id: out_chrom
+- id: in_out_chrom
   doc: "Optional mzML file with chromatograms (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -out_chrom
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - FeatureFinderMetabo

@@ -2,15 +2,13 @@ version 1.0
 
 task BamtoolsSplit {
   input {
-    String? in
+    File? in
     String? ref_prefix
     String? tag_prefix
     File? stub
     String? taglist_delim
     Boolean? mapped
-    Boolean? paired
-    Boolean? reference
-    String? tag
+    File? tag
   }
   command <<<
     bamtools split \
@@ -19,20 +17,19 @@ task BamtoolsSplit {
       ~{if defined(tag_prefix) then ("-tagPrefix " +  '"' + tag_prefix + '"') else ""} \
       ~{if defined(stub) then ("-stub " +  '"' + stub + '"') else ""} \
       ~{if defined(taglist_delim) then ("-tagListDelim " +  '"' + taglist_delim + '"') else ""} \
-      ~{true="-mapped" false="" mapped} \
-      ~{true="-paired" false="" paired} \
-      ~{true="-reference" false="" reference} \
+      ~{if (mapped) then "-mapped" else ""} \
       ~{if defined(tag) then ("-tag " +  '"' + tag + '"') else ""}
   >>>
   parameter_meta {
     in: "the input BAM file [stdin]"
-    ref_prefix: "custom prefix for splitting by references. Currently files end with REF_<refName>.bam. This option allows you to replace \"REF_\" with a prefix of your choosing."
-    tag_prefix: "custom prefix for splitting by tags. Current files end with TAG_<tagname>_<tagvalue>.bam. This option allows you to replace \"TAG_\" with a prefix of your choosing."
-    stub: "prefix stub for output BAM files (default behavior is to use input filename, without .bam extension, as stub). If input is stdin and no stub provided, a timestamp is generated as the stub."
-    taglist_delim: "delimiter used to separate values in the filenames generated from splitting on list-type tags [--]"
-    mapped: "split mapped/unmapped alignments"
-    paired: "split single-end/paired-end alignments"
-    reference: "split alignments by reference"
-    tag: "splits alignments based on all values of TAG encountered (i.e. -tag RG creates a BAM file for each read group in original BAM file)"
+    ref_prefix: "custom prefix for splitting by\\nreferences. Currently files end with\\nREF_<refName>.bam. This option allows you\\nto replace \\\"REF_\\\" with a prefix of your\\nchoosing."
+    tag_prefix: "custom prefix for splitting by\\ntags. Current files end with\\nTAG_<tagname>_<tagvalue>.bam. This option\\nallows you to replace \\\"TAG_\\\" with a prefix\\nof your choosing."
+    stub: "prefix stub for output BAM\\nfiles (default behavior is to use input\\nfilename, without .bam extension, as\\nstub). If input is stdin and no stub\\nprovided, a timestamp is generated as the\\nstub."
+    taglist_delim: "delimiter used to separate\\nvalues in the filenames generated from\\nsplitting on list-type tags [--]"
+    mapped: "split mapped/unmapped"
+    tag: "splits alignments based on all\\nvalues of TAG encountered (i.e. -tag RG\\ncreates a BAM file for each read group in\\noriginal BAM file)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

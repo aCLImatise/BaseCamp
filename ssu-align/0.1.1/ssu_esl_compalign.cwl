@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../ssu_esl_compalign.cwl
 inputs:
-- id: print_column_statistics
+- id: in_print_column_statistics
   doc: ': print per column statistics instead of per sequence stats'
   type: boolean
   inputBinding:
     prefix: -c
-- id: print_stats_pp
+- id: in_print_stats_accuracy
   doc: ': print stats on accuracy versus posterior probability (PP)'
   type: boolean
   inputBinding:
     prefix: -p
-- id: p_mask
+- id: in_p_mask
   doc: ": with -p, only consider columns within mask ('1' columns) in <f>"
-  type: string
+  type: long
   inputBinding:
     prefix: --p-mask
-- id: c_two_d_file
+- id: in_c_two_d_file
   doc: ': print per column stats to esl-ssdraw --dfile file <f>'
-  type: string
+  type: long
   inputBinding:
     prefix: --c2dfile
-- id: amino
+- id: in_amino
   doc: ': <msafile> contains protein alignments'
   type: boolean
   inputBinding:
     prefix: --amino
-- id: dna
+- id: in_dna
   doc: ': <msafile> contains DNA alignments'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: rna
+- id: in_rna
   doc: ': <msafile> contains RNA alignments'
   type: boolean
   inputBinding:
     prefix: --rna
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-compalign

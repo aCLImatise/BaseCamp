@@ -1,14 +1,17 @@
 version 1.0
 
-task EslAlirevMsafile {
+task EslalirevMsafile {
   input {
     Boolean? options
   }
   command <<<
-    esl-alirev msafile \
-      ~{true="-options" false="" options}
+    esl_alirev msafile \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

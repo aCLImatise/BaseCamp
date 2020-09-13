@@ -11,4 +11,7 @@ task Seqstats {
   parameter_meta {
     in_dot_fast_a_vertical_line_in_dot_fast_q: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

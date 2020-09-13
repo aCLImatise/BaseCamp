@@ -1,38 +1,36 @@
 class: CommandLineTool
 id: ../../../bcbio_monitor.cwl
 inputs:
-- id: config
-  doc: PAth to the configuration file, defaults to ~/.bcbio/monitor.yaml
-  type: string
+- id: in_config
+  doc: "PAth to the configuration file, defaults to\n~/.bcbio/monitor.yaml"
+  type: File
   inputBinding:
     prefix: --config
-- id: title
+- id: in_title
   doc: Title (or name) for the analysis, i.e NA12878 test
-  type: string
+  type: long
   inputBinding:
     prefix: --title
-- id: no_update
-  doc: Don't update frontend with the last log line read (less requests)
+- id: in_no_update
+  doc: "Don't update frontend with the last log line read (less\nrequests)"
   type: boolean
   inputBinding:
     prefix: --no-update
-- id: no_browser
+- id: in_no_browser
   doc: Don't open a new browser tab
   type: boolean
   inputBinding:
     prefix: --no-browser
-- id: local
-  doc: Force the monitor to look for the log file locally (regardless of the configuration
-    file.)
+- id: in_local
+  doc: "Force the monitor to look for the log file locally\n(regardless of the configuration\
+    \ file.)\n"
   type: boolean
   inputBinding:
     prefix: --local
-- id: log_file
-  doc: Path to the file bcbio-nextgen-debug.log
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bcbio_monitor

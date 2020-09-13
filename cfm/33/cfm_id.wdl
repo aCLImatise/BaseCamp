@@ -1,6 +1,6 @@
 version 1.0
 
-task CfmId {
+task Cfmid {
   input {
     String spectrum_file
     String id
@@ -17,7 +17,7 @@ task CfmId {
     String output_msp_or_mgf
   }
   command <<<
-    cfm-id \
+    cfm_id \
       ~{spectrum_file} \
       ~{id} \
       ~{candidate_file} \
@@ -46,5 +46,8 @@ task CfmId {
     apply_postprocessing: ""
     output_filename: ""
     output_msp_or_mgf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

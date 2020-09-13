@@ -1,38 +1,47 @@
 class: CommandLineTool
 id: ../../../find_indels.cwl
 inputs:
-- id: min_in_del_length
-  doc: 'Filter out indels shorter than this length. (default: 0)'
+- id: in_min_in_del_length
+  doc: "Filter out indels shorter than this length. (default:\n0)"
   type: long
   inputBinding:
     prefix: --min_indel_length
-- id: all_alignments
-  doc: 'Include secondary and supplementary alignments. (default: False)'
+- id: in_all_alignments
+  doc: "Include secondary and supplementary alignments.\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --all_alignments
-- id: output
-  doc: "Output indels to file instead of stdout. (default: <_io.TextIOWrapper name='<stdout>'\
-    \ mode='w' encoding='UTF-8'>)"
-  type: string
+- id: in_output
+  doc: "Output indels to file instead of stdout. (default:\n<_io.TextIOWrapper name='<stdout>'\
+    \ mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  type: File
   inputBinding:
     prefix: --output
-- id: bed
+- id: in_bed
   doc: 'Additionaly output a .bed file. (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: threads
-  doc: 'Number of threads for parallel processing. (default: 1)'
-  type: string
+- id: in_threads
+  doc: "Number of threads for parallel processing. (default:\n1)\n"
+  type: long
   inputBinding:
     prefix: --threads
-- id: bam
-  doc: Path to bam file.
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output indels to file instead of stdout. (default:\n<_io.TextIOWrapper name='<stdout>'\
+    \ mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_bed
+  doc: 'Additionaly output a .bed file. (default: None)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_bed)
 cwlVersion: v1.1
 baseCommand:
 - find_indels

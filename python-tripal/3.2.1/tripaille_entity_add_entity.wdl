@@ -14,4 +14,7 @@ task TripailleEntityAddEntity {
     params: "Values to populate the entity fields"
     entity: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

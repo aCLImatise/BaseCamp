@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../sdust.cwl
 inputs:
-- id: w
+- id: in_t
   doc: ''
-  type: string
-  inputBinding:
-    prefix: -w
-- id: t
-  doc: ''
-  type: string
+  type: long
   inputBinding:
     prefix: -t
-- id: in_dot_fa
+- id: in_w
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -w
+- id: in_in_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sdust

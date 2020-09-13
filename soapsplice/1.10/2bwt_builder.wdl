@@ -1,14 +1,14 @@
 version 1.0
 
-task 2bwtBuilder {
+task Bwtbuilder {
   input {
-    String sequence_file
+    File sequence_file
     String? var_output
     String? index
     String? prefix
   }
   command <<<
-    2bwt-builder \
+    _bwt_builder \
       ~{sequence_file} \
       ~{var_output} \
       ~{index} \
@@ -19,5 +19,8 @@ task 2bwtBuilder {
     var_output: ""
     index: ""
     prefix: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

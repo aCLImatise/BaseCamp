@@ -29,4 +29,7 @@ task MakeWebsite {
     maf_dir: ""
     prefix: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

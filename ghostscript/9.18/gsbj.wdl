@@ -4,4 +4,7 @@ task Gsbj {
   command <<<
     gsbj
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

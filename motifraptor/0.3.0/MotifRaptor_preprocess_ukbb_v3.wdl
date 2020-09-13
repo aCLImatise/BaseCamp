@@ -2,8 +2,8 @@ version 1.0
 
 task MotifRaptorPreprocessUkbbV3 {
   input {
-    String? g_was_summary
-    String? threshold
+    File? g_was_summary
+    Float? threshold
   }
   command <<<
     MotifRaptor preprocess_ukbb_v3 \
@@ -12,6 +12,9 @@ task MotifRaptorPreprocessUkbbV3 {
   >>>
   parameter_meta {
     g_was_summary: "GWAS summary statistic - UKBB v3 tsv filename"
-    threshold: "threads for pvalue - default 5E-8"
+    threshold: "threads for pvalue - default 5E-8\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

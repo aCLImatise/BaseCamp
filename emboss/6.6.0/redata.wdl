@@ -4,4 +4,7 @@ task Redata {
   command <<<
     redata
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

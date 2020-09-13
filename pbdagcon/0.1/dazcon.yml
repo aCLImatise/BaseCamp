@@ -1,65 +1,98 @@
 !Command
+command:
+- dazcon
 positional:
 - !Positional
-  description: '[-v] [-o] [-x] [-m <uint>] -s <string> -a <string> [-t <uint>] [-l
-    <uint>] [-c <uint>] [-j <int>] [--] [--version] [-h] <list of ints> ...'
+  description: "[-v] [-o] [-x] [-m <uint>] -s <string> -a <string> [-t <uint>]\n[-l\
+    \ <uint>] [-c <uint>] [-j <int>] [--] [--version] [-h] <list\nof ints> ..."
   position: 0
   name: dazcon
   optional: false
 named:
 - !Flag
-  description: ''
+  description: ",  --verbose\nTurns on verbose logging"
   synonyms:
   - -v
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ''
+  description: ",  --only-proper-overlaps\nUse only 'proper overlaps', i.e., align\
+    \ to the ends"
   synonyms:
   - -o
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ''
+  description: ",  --coverage-sort\nSort hits by coverage"
   synonyms:
   - -x
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ''
+  description: ",  --max-hit <uint>\nMaximum number of hits to pass to consensus"
   synonyms:
   - -m
   args: !SimpleFlagArg
     name: uint
   optional: true
 - !Flag
-  description: ''
+  description: ",  --seq-file <string>\n(required)  Path to the sequences file"
   synonyms:
   - -s
   args: !SimpleFlagArg
     name: string
   optional: true
 - !Flag
-  description: ''
+  description: ",  --align-file <string>\n(required)  Path to the alignments file"
   synonyms:
   - -a
   args: !SimpleFlagArg
     name: string
   optional: true
 - !Flag
-  description: ''
+  description: ",  --trim <uint>\nTrim alignments on either size"
   synonyms:
   - -t
   args: !SimpleFlagArg
     name: uint
   optional: true
-command:
-- dazcon
+- !Flag
+  description: ",  --min-len <uint>\nMinimum length for correction"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: uint
+  optional: true
+- !Flag
+  description: ",  --min-coverage <uint>\nMinimum coverage for correction"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: uint
+  optional: true
+- !Flag
+  description: ",  --threads <int>\nNumber of consensus threads"
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: int
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ",  --help\nDisplays usage information and exits."
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Displays version information and exits.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "\nUSAGE: \n\n   dazcon  [-v] [-o] [-x] [-m <uint>] -s <string> -a <string>\
   \ [-t <uint>]\n           [-l <uint>] [-c <uint>] [-j <int>] [--] [--version] [-h]\
   \ <list\n           of ints> ...\n\n\nWhere: \n\n   -v,  --verbose\n     Turns on\

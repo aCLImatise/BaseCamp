@@ -11,4 +11,7 @@ task TripailleJobGetJobs {
   parameter_meta {
     job_id: "job id"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

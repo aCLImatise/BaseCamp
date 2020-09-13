@@ -1,17 +1,20 @@
 version 1.0
 
-task KrakenuniqFilter {
+task Krakenuniqfilter {
   input {
+    Int? threshold
     String? db
-    String? threshold
   }
   command <<<
-    krakenuniq-filter \
-      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
+    krakenuniq_filter \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
   parameter_meta {
-    db: ""
     threshold: ""
+    db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

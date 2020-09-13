@@ -4,4 +4,7 @@ task JuncDb {
   command <<<
     junc_db
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

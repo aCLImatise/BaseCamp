@@ -1,22 +1,35 @@
 class: CommandLineTool
 id: ../../../map_back.cwl
 inputs:
-- id: arg_seer_file
+- id: in_arg_seer_kmer
   doc: '[ --kmers ] arg       seer kmer output file'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -k
-- id: arg_file_tab
-  doc: '[ --references ] arg  file with tab separated reference name and fasta  file'
+- id: in_arg_file_tab
+  doc: '[ --references ] arg  file with tab separated reference name and fasta'
   type: boolean
   inputBinding:
     prefix: -r
-- id: threads
+- id: in_threads
   doc: '(=1)       number of threads. Suggested: 8'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+- id: in_file
+  doc: 'Other options:'
+  type: File
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_seer_kmer
+  doc: '[ --kmers ] arg       seer kmer output file'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_seer_kmer)
 cwlVersion: v1.1
 baseCommand:
 - map_back

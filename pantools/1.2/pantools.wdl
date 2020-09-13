@@ -4,4 +4,7 @@ task Pantools {
   command <<<
     pantools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

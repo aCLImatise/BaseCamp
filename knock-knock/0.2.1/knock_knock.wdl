@@ -1,7 +1,10 @@
 version 1.0
 
-task KnockKnock {
+task Knockknock {
   command <<<
-    knock-knock
+    knock_knock
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

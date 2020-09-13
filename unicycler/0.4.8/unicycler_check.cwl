@@ -1,78 +1,86 @@
 class: CommandLineTool
 id: ../../../unicycler_check.cwl
 inputs:
-- id: sam
-  doc: Input SAM file of alignments (if this file doesn't exist, the alignment will
-    be performed with results saved to this file - you can use the aligner arguments
-    with this script)
-  type: string
+- id: in_sam
+  doc: "Input SAM file of alignments (if this file doesn't\nexist, the alignment will\
+    \ be performed with results\nsaved to this file - you can use the aligner\narguments\
+    \ with this script)"
+  type: File
   inputBinding:
     prefix: --sam
-- id: ref
-  doc: FASTA file containing one or more reference sequences
-  type: string
+- id: in_ref
+  doc: FASTA file containing one or more reference
+  type: File
   inputBinding:
     prefix: --ref
-- id: reads
-  doc: FASTQ file of long reads
-  type: string
-  inputBinding:
-    prefix: --reads
-- id: min_len
-  doc: 'Minimum alignment length (bp) - exclude alignments shorter than this length
-    (default: 100)'
+- id: in_min_len
+  doc: "Minimum alignment length (bp) - exclude alignments\nshorter than this length\
+    \ (default: 100)"
   type: long
   inputBinding:
     prefix: --min_len
-- id: error_window_size
+- id: in_error_window_size
   doc: 'Window size for error summaries (default: 100)'
-  type: string
+  type: long
   inputBinding:
     prefix: --error_window_size
-- id: depth_window_size
+- id: in_depth_window_size
   doc: 'Window size for depth summaries (default: 100)'
-  type: string
+  type: long
   inputBinding:
     prefix: --depth_window_size
-- id: error_rate_threshold
-  doc: 'Threshold for high error rates, expressed as the fraction between the mean
-    error rate and the random alignment error rate (default: 0.3)'
-  type: string
+- id: in_error_rate_threshold
+  doc: "Threshold for high error rates, expressed as the\nfraction between the mean\
+    \ error rate and the random\nalignment error rate (default: 0.3)"
+  type: double
   inputBinding:
     prefix: --error_rate_threshold
-- id: depth_p_val
-  doc: 'P-value for low/high depth thresholds (default: 0.001)'
-  type: string
+- id: in_depth_p_val
+  doc: "P-value for low/high depth thresholds (default:\n0.001)"
+  type: double
   inputBinding:
     prefix: --depth_p_val
-- id: window_tables
-  doc: 'Path and/or prefix for table files summarising reference errors for reference
-    windows (default: do not save window tables)'
-  type: string
+- id: in_window_tables
+  doc: "Path and/or prefix for table files summarising\nreference errors for reference\
+    \ windows (default: do\nnot save window tables)"
+  type: File
   inputBinding:
     prefix: --window_tables
-- id: base_tables
-  doc: 'Path and/or prefix for table files summarising reference errors at each base
-    (default: do not save base tables)'
-  type: string
+- id: in_base_tables
+  doc: "Path and/or prefix for table files summarising\nreference errors at each base\
+    \ (default: do not save\nbase tables)"
+  type: File
   inputBinding:
     prefix: --base_tables
-- id: html
-  doc: 'Path for HTML report (default: do not save HTML report)'
-  type: string
+- id: in_html
+  doc: "Path for HTML report (default: do not save HTML\nreport)"
+  type: File
   inputBinding:
     prefix: --html
-- id: threads
-  doc: 'Number of CPU threads used to align (default: the number of available CPUs)'
-  type: string
+- id: in_threads
+  doc: "Number of CPU threads used to align (default: the\nnumber of available CPUs)"
+  type: long
   inputBinding:
     prefix: --threads
-- id: verbosity
+- id: in_verbosity
   doc: 'Level of stdout information (0 to 2) (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --verbosity
-outputs: []
+- id: in_reads
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --reads
+- id: in_sequences
+  doc: --reads READS           FASTQ file of long reads
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - unicycler_check

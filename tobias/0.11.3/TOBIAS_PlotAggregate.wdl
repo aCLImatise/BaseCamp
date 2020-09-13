@@ -7,7 +7,7 @@ task TOBIASPlotAggregate {
     Boolean? regions
     Boolean? whitelist
     Boolean? blacklist
-    Boolean? path_output_tobiasaggregatepdf
+    File? path_output_tobiasaggregatepdf
     Boolean? title
     Boolean? flank
     Boolean? tfbs_labels
@@ -25,24 +25,24 @@ task TOBIASPlotAggregate {
   }
   command <<<
     TOBIAS PlotAggregate \
-      ~{true="--TFBS" false="" tfbs} \
-      ~{true="--signals" false="" signals} \
-      ~{true="--regions" false="" regions} \
-      ~{true="--whitelist" false="" whitelist} \
-      ~{true="--blacklist" false="" blacklist} \
-      ~{true="--output" false="" path_output_tobiasaggregatepdf} \
-      ~{true="--title" false="" title} \
-      ~{true="--flank" false="" flank} \
-      ~{true="--TFBS-labels" false="" tfbs_labels} \
-      ~{true="--signal-labels" false="" signal_labels} \
-      ~{true="--region-labels" false="" region_labels} \
-      ~{true="--share-y" false="" share_y} \
-      ~{true="--normalize" false="" normalize} \
-      ~{true="--negate" false="" negate} \
+      ~{if (tfbs) then "--TFBS" else ""} \
+      ~{if (signals) then "--signals" else ""} \
+      ~{if (regions) then "--regions" else ""} \
+      ~{if (whitelist) then "--whitelist" else ""} \
+      ~{if (blacklist) then "--blacklist" else ""} \
+      ~{if (path_output_tobiasaggregatepdf) then "--output" else ""} \
+      ~{if (title) then "--title" else ""} \
+      ~{if (flank) then "--flank" else ""} \
+      ~{if (tfbs_labels) then "--TFBS-labels" else ""} \
+      ~{if (signal_labels) then "--signal-labels" else ""} \
+      ~{if (region_labels) then "--region-labels" else ""} \
+      ~{if (share_y) then "--share-y" else ""} \
+      ~{if (normalize) then "--normalize" else ""} \
+      ~{if (negate) then "--negate" else ""} \
       ~{if defined(smooth) then ("--smooth " +  '"' + smooth + '"') else ""} \
-      ~{true="--log-transform" false="" log_transform} \
-      ~{true="--plot-boundaries" false="" plot_boundaries} \
-      ~{true="--signal-on-x" false="" signal_on_x} \
+      ~{if (log_transform) then "--log-transform" else ""} \
+      ~{if (plot_boundaries) then "--plot-boundaries" else ""} \
+      ~{if (signal_on_x) then "--signal-on-x" else ""} \
       ~{if defined(remove_outliers) then ("--remove-outliers " +  '"' + remove_outliers + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
@@ -53,19 +53,23 @@ task TOBIASPlotAggregate {
     whitelist: "[<bed> [<bed> ...]]      Only plot sites overlapping whitelist (optional)"
     blacklist: "[<bed> [<bed> ...]]      Exclude sites overlapping blacklist (optional)"
     path_output_tobiasaggregatepdf: "Path to output (default: TOBIAS_aggregate.pdf)"
-    title: "Title of plot (default: \"Aggregated signals\")"
-    flank: "Flanking basepairs (+/-) to show in plot (counted from middle of the TFBS) (default: 60)"
-    tfbs_labels: "[ [ ...]]              Labels used for each TFBS file (default: prefix of each --TFBS)"
-    signal_labels: "[ [ ...]]            Labels used for each signal file (default: prefix of each --signals)"
-    region_labels: "[ [ ...]]            Labels used for each regions file (default: prefix of each --regions)"
-    share_y: "Share y-axis range across plots (none/signals/sites/both). Use \"--share-y signals\" if bigwig signals have similar ranges. Use \"-- share_y sites\" if sites per bigwig are comparable, but bigwigs themselves aren't comparable (default: none)"
-    normalize: "Normalize the aggregate signal(s) to be between 0-1 (default: the true range of values is shown)"
+    title: "Title of plot (default: \\\"Aggregated signals\\\")"
+    flank: "Flanking basepairs (+/-) to show in plot (counted\\nfrom middle of the TFBS) (default: 60)"
+    tfbs_labels: "[ [ ...]]              Labels used for each TFBS file (default: prefix of\\neach --TFBS)"
+    signal_labels: "[ [ ...]]            Labels used for each signal file (default: prefix\\nof each --signals)"
+    region_labels: "[ [ ...]]            Labels used for each regions file (default: prefix\\nof each --regions)"
+    share_y: "Share y-axis range across plots\\n(none/signals/sites/both). Use \\\"--share-y signals\\\"\\nif bigwig signals have similar ranges. Use \\\"--\\nshare_y sites\\\" if sites per bigwig are comparable,\\nbut bigwigs themselves aren't comparable (default:\\nnone)"
+    normalize: "Normalize the aggregate signal(s) to be between 0-1\\n(default: the true range of values is shown)"
     negate: "Negate overlap with regions"
-    smooth: "Smooth output signal by taking the mean of <smooth> bp windows (default: 1 (no smooth)"
+    smooth: "Smooth output signal by taking the mean of <smooth>\\nbp windows (default: 1 (no smooth)"
     log_transform: "Log transform the signals before aggregation"
-    plot_boundaries: "Plot TFBS boundaries (Note: estimated from first region in each --TFBS)"
-    signal_on_x: "Show signals on x-axis and TFBSs on y-axis (default: signal is on y-axis)"
-    remove_outliers: "Value between 0-1 indicating the percentile of regions to include, e.g. 0.99 to remove the sites with 1% highest values (default: 1)"
-    verbosity: "Level of output logging (0: silent, 1: errors/warnings, 2: info, 3: stats, 4: debug, 5: spam) (default: 3)"
+    plot_boundaries: "Plot TFBS boundaries (Note: estimated from first\\nregion in each --TFBS)"
+    signal_on_x: "Show signals on x-axis and TFBSs on y-axis\\n(default: signal is on y-axis)"
+    remove_outliers: "Value between 0-1 indicating the percentile of\\nregions to include, e.g. 0.99 to remove the sites\\nwith 1% highest values (default: 1)"
+    verbosity: "Level of output logging (0: silent, 1:\\nerrors/warnings, 2: info, 3: stats, 4: debug, 5:\\nspam) (default: 3)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_tobiasaggregatepdf = "${in_path_output_tobiasaggregatepdf}"
   }
 }

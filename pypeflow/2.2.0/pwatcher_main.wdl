@@ -1,7 +1,10 @@
 version 1.0
 
-task PwatcherMain {
+task Pwatchermain {
   command <<<
-    pwatcher-main
+    pwatcher_main
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

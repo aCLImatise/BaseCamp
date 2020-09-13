@@ -4,4 +4,7 @@ task Magpurify {
   command <<<
     magpurify
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

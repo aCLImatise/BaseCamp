@@ -1,17 +1,20 @@
 version 1.0
 
-task KrakenReport {
+task Krakenreport {
   input {
-    String? db
     Boolean? show_zeros
+    String? db
   }
   command <<<
-    kraken-report \
-      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{true="--show-zeros" false="" show_zeros}
+    kraken_report \
+      ~{if (show_zeros) then "--show-zeros" else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
   parameter_meta {
-    db: ""
     show_zeros: ""
+    db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

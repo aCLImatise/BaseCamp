@@ -1,4 +1,7 @@
-&id003 !Command
+&id004 !Command
+command:
+- haphpipe
+- multiple_align
 positional: []
 named:
 - !Flag
@@ -9,8 +12,8 @@ named:
     name: SEQS
   optional: true
 - !Flag
-  description: List of directories which include either a final.fna or ph_haplotypes.fna
-    file, one on each line
+  description: "List of directories which include either a final.fna\nor ph_haplotypes.fna\
+    \ file, one on each line"
   synonyms:
   - --dir_list
   args: !SimpleFlagArg
@@ -67,7 +70,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Guide tree is output to the input.tree file (default: False)'
+  description: "Guide tree is output to the input.tree file (default:\nFalse)"
   synonyms:
   - --treeout
   args: !EmptyFlagArg {}
@@ -86,8 +89,8 @@ named:
     name: OUTDIR
   optional: true
 - !Flag
-  description: 'Use different algorithm in command: linsi, ginsi, einsi, fftnsi, fftns,
-    nwns, nwnsi'
+  description: "Use different algorithm in command: linsi, ginsi,\neinsi, fftnsi,\
+    \ fftns, nwns, nwnsi"
   synonyms:
   - --algo
   args: !SimpleFlagArg
@@ -100,8 +103,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Calculate distance based on shared 6mers, on by default (default:
-    False)'
+  description: "Calculate distance based on shared 6mers, on by\ndefault (default:\
+    \ False)"
   synonyms:
   - --sixmerpair
   args: !EmptyFlagArg {}
@@ -119,7 +122,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Use local algorithm with generalized affine gap cost (default: False)'
+  description: "Use local algorithm with generalized affine gap cost\n(default: False)"
   synonyms:
   - --genafpair
   args: !EmptyFlagArg {}
@@ -152,7 +155,7 @@ named:
     name: MAXITERATE
   optional: true
 - !Flag
-  description: 'Do not check alignment score in iterative alignment (default: False)'
+  description: "Do not check alignment score in iterative alignment\n(default: False)"
   synonyms:
   - --noscore
   args: !EmptyFlagArg {}
@@ -164,19 +167,19 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Use fast tree-building method with 6mer distance (default: False)'
+  description: "Use fast tree-building method with 6mer distance\n(default: False)"
   synonyms:
   - --parttree
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Use PartTree algorithm with distances based on DP (default: False)'
+  description: "Use PartTree algorithm with distances based on DP\n(default: False)"
   synonyms:
   - --dpparttree
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Use PartTree algorithm with distances based on FASTA (default: False)'
+  description: "Use PartTree algorithm with distances based on FASTA\n(default: False)"
   synonyms:
   - --fastaparttree
   args: !EmptyFlagArg {}
@@ -259,8 +262,8 @@ named:
     name: AAMATRIX
   optional: true
 - !Flag
-  description: 'Incorporate AA/nuc composition info into scoring matrix (default:
-    False)'
+  description: "Incorporate AA/nuc composition info into scoring\nmatrix (default:\
+    \ False)"
   synonyms:
   - --fmodel
   args: !EmptyFlagArg {}
@@ -273,8 +276,8 @@ named:
     name: NCPU
   optional: true
 - !Flag
-  description: 'Do not write output to console (silence stdout and stderr) (default:
-    False)'
+  description: "Do not write output to console (silence stdout and\nstderr) (default:\
+    \ False)"
   synonyms:
   - --quiet
   args: !EmptyFlagArg {}
@@ -293,1587 +296,29 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Output fasta files separated by region but do not align (default:
-    False)'
+  description: "Output fasta files separated by region but do not\nalign (default:\
+    \ False)"
   synonyms:
   - --fastaonly
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Do not separate files by region, align entire file (default: False)'
+  description: "Do not separate files by region, align entire file\n(default: False)\n"
   synonyms:
   - --alignall
   args: !EmptyFlagArg {}
   optional: true
-command:
-- haphpipe
-- multiple_align
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - haphpipe
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq1
-      args: !SimpleFlagArg
-        name: FQ1
-      optional: true
-    - !Flag
-      description: Fastq file with read 2
-      synonyms:
-      - --fq2
-      args: !SimpleFlagArg
-        name: FQ2
-      optional: true
-    - !Flag
-      description: Fastq file with unpaired reads
-      synonyms:
-      - --fqU
-      args: !SimpleFlagArg
-        name: FQU
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: Number of reads to sample. If greater than the number of reads
-        in file, all reads will be sampled.
-      synonyms:
-      - --nreads
-      args: !SimpleFlagArg
-        name: NREADS
-      optional: true
-    - !Flag
-      description: Fraction of reads to sample, between 0 and 1. Each read has [frac]
-        probability of being sampled, so number of sampled reads is not precisely
-        [frac * num_reads].
-      synonyms:
-      - --frac
-      args: !SimpleFlagArg
-        name: FRAC
-      optional: true
-    - !Flag
-      description: Seed for random number generator.
-      synonyms:
-      - --seed
-      args: !SimpleFlagArg
-        name: SEED
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - haphpipe
-    - sample_reads
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe sample_reads [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU]\n\
-      \                             [--outdir OUTDIR] (--nreads NREADS | --frac FRAC)\n\
-      \                             [--seed SEED] [--quiet] [--logfile LOGFILE]\n\
-      \                             [--debug]\n\noptional arguments:\n  -h, --help\
-      \         show this help message and exit\n\nInput/Output:\n  --fq1 FQ1    \
-      \      Fastq file with read 1\n  --fq2 FQ2          Fastq file with read 2\n\
-      \  --fqU FQU          Fastq file with unpaired reads\n  --outdir OUTDIR    Output\
-      \ directory (default: .)\n\nSample options:\n  --nreads NREADS    Number of\
-      \ reads to sample. If greater than the number of\n                     reads\
-      \ in file, all reads will be sampled.\n  --frac FRAC        Fraction of reads\
-      \ to sample, between 0 and 1. Each read\n                     has [frac] probability\
-      \ of being sampled, so number of\n                     sampled reads is not\
-      \ precisely [frac * num_reads].\n  --seed SEED        Seed for random number\
-      \ generator.\n\nSettings:\n  --quiet            Do not write output to console\
-      \ (silence stdout and\n                     stderr) (default: False)\n  --logfile\
-      \ LOGFILE  Append console output to this file\n  --debug            Print commands\
-      \ but do not run (default: False)\n"
-    generated_using: &id002
-    - --help
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq1
-      args: !SimpleFlagArg
-        name: FQ1
-      optional: true
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq2
-      args: !SimpleFlagArg
-        name: FQ2
-      optional: true
-    - !Flag
-      description: Fastq file with unpaired reads
-      synonyms:
-      - --fqU
-      args: !SimpleFlagArg
-        name: FQU
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: Adapter file
-      synonyms:
-      - --adapter_file
-      args: !SimpleFlagArg
-        name: ADAPTER_FILE
-      optional: true
-    - !Flag
-      description: "Trim commands for trimmomatic (default: ['LEADING:3', 'TRAILING:3',\
-        \ 'SLIDINGWINDOW:4:15', 'MINLEN:36'])"
-      synonyms:
-      - --trimmers
-      args: !SimpleFlagArg
-        name: TRIMMERS
-      optional: true
-    - !Flag
-      description: '{Phred+33,Phred+64} Quality score encoding'
-      synonyms:
-      - --encoding
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Number of CPU to use (default: 1)'
-      synonyms:
-      - --ncpu
-      args: !SimpleFlagArg
-        name: NCPU
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - trim_reads
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe trim_reads [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU]\n\
-      \                           [--outdir OUTDIR] [--adapter_file ADAPTER_FILE]\n\
-      \                           [--trimmers TRIMMERS]\n                        \
-      \   [--encoding {Phred+33,Phred+64}] [--ncpu NCPU]\n                       \
-      \    [--quiet] [--logfile LOGFILE] [--debug]\n\noptional arguments:\n  -h, --help\
-      \            show this help message and exit\n\nInput/Output:\n  --fq1 FQ1 \
-      \            Fastq file with read 1\n  --fq2 FQ2             Fastq file with\
-      \ read 1\n  --fqU FQU             Fastq file with unpaired reads\n  --outdir\
-      \ OUTDIR       Output directory (default: .)\n\nTrimmomatic options:\n  --adapter_file\
-      \ ADAPTER_FILE\n                        Adapter file\n  --trimmers TRIMMERS\
-      \   Trim commands for trimmomatic (default: ['LEADING:3',\n                \
-      \        'TRAILING:3', 'SLIDINGWINDOW:4:15', 'MINLEN:36'])\n  --encoding {Phred+33,Phred+64}\n\
-      \                        Quality score encoding\n\nSettings:\n  --ncpu NCPU\
-      \           Number of CPU to use (default: 1)\n  --quiet               Do not\
-      \ write output to console (silence stdout and\n                        stderr)\
-      \ (default: False)\n  --logfile LOGFILE     Append console output to this file\n\
-      \  --debug               Print commands but do not run (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq1
-      args: !SimpleFlagArg
-        name: FQ1
-      optional: true
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq2
-      args: !SimpleFlagArg
-        name: FQ2
-      optional: true
-    - !Flag
-      description: Output directory
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'The minimum required overlap length between two reads to provide
-        a confident overlap. (default: 10)'
-      synonyms:
-      - --min_overlap
-      args: !SimpleFlagArg
-        name: MIN_OVERLAP
-      optional: true
-    - !Flag
-      description: Maximum overlap length expected in approximately 90 pct of read
-        pairs, longer overlaps are penalized.
-      synonyms:
-      - --max_overlap
-      args: !SimpleFlagArg
-        name: MAX_OVERLAP
-      optional: true
-    - !Flag
-      description: 'Also try combining read pairs in the "outie" orientation (default:
-        False)'
-      synonyms:
-      - --allow_outies
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Quality score encoding
-      synonyms:
-      - --encoding
-      args: !SimpleFlagArg
-        name: ENCODING
-      optional: true
-    - !Flag
-      description: Number of CPU to use
-      synonyms:
-      - --ncpu
-      args: !SimpleFlagArg
-        name: NCPU
-      optional: true
-    - !Flag
-      description: 'Keep temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - join_reads
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe join_reads [-h] --fq1 FQ1 --fq2 FQ2 [--outdir OUTDIR]\n\
-      \                           [--min_overlap MIN_OVERLAP]\n                  \
-      \         [--max_overlap MAX_OVERLAP] [--allow_outies]\n                   \
-      \        [--encoding ENCODING] [--ncpu NCPU] [--keep_tmp]\n                \
-      \           [--quiet] [--logfile LOGFILE] [--debug]\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n\nInput/Output:\n\
-      \  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2             Fastq\
-      \ file with read 1\n  --outdir OUTDIR       Output directory\n\nFLAsh settings:\n\
-      \  --min_overlap MIN_OVERLAP\n                        The minimum required overlap\
-      \ length between two reads\n                        to provide a confident overlap.\
-      \ (default: 10)\n  --max_overlap MAX_OVERLAP\n                        Maximum\
-      \ overlap length expected in approximately 90\n                        pct of\
-      \ read pairs, longer overlaps are penalized.\n  --allow_outies        Also try\
-      \ combining read pairs in the \"outie\"\n                        orientation\
-      \ (default: False)\n  --encoding ENCODING   Quality score encoding\n\nSettings:\n\
-      \  --ncpu NCPU           Number of CPU to use\n  --keep_tmp            Keep\
-      \ temporary directory (default: False)\n  --quiet               Do not write\
-      \ output to console (silence stdout and\n                        stderr) (default:\
-      \ False)\n  --logfile LOGFILE     Append console output to this file\n  --debug\
-      \               Print commands but do not run (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq1
-      args: !SimpleFlagArg
-        name: FQ1
-      optional: true
-    - !Flag
-      description: Fastq file with read 2
-      synonyms:
-      - --fq2
-      args: !SimpleFlagArg
-        name: FQ2
-      optional: true
-    - !Flag
-      description: Fastq file with unpaired reads
-      synonyms:
-      - --fqU
-      args: !SimpleFlagArg
-        name: FQU
-      optional: true
-    - !Flag
-      description: Output directory
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Number of CPU to use (default: 1)'
-      synonyms:
-      - --ncpu
-      args: !SimpleFlagArg
-        name: NCPU
-      optional: true
-    - !Flag
-      description: 'Keep temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - ec_reads
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe ec_reads [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU]\n\
-      \                         [--outdir OUTDIR] [--ncpu NCPU] [--keep_tmp]\n   \
-      \                      [--quiet] [--logfile LOGFILE] [--debug]\n\noptional arguments:\n\
-      \  -h, --help         show this help message and exit\n\nInput/Output:\n  --fq1\
-      \ FQ1          Fastq file with read 1\n  --fq2 FQ2          Fastq file with\
-      \ read 2\n  --fqU FQU          Fastq file with unpaired reads\n  --outdir OUTDIR\
-      \    Output directory\n\nSettings:\n  --ncpu NCPU        Number of CPU to use\
-      \ (default: 1)\n  --keep_tmp         Keep temporary directory (default: False)\n\
-      \  --quiet            Do not write output to console (silence stdout and\n \
-      \                    stderr) (default: False)\n  --logfile LOGFILE  Append console\
-      \ output to this file\n  --debug            Print commands but do not run (default:\
-      \ False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq1
-      args: !SimpleFlagArg
-        name: FQ1
-      optional: true
-    - !Flag
-      description: Fastq file with read 2
-      synonyms:
-      - --fq2
-      args: !SimpleFlagArg
-        name: FQ2
-      optional: true
-    - !Flag
-      description: Fastq file with unpaired reads
-      synonyms:
-      - --fqU
-      args: !SimpleFlagArg
-        name: FQU
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Do not perform error correction [spades only] (default: False)'
-      synonyms:
-      - --no_error_correction
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Use a subsample of reads for assembly.
-      synonyms:
-      - --subsample
-      args: !SimpleFlagArg
-        name: SUBSAMPLE
-      optional: true
-    - !Flag
-      description: Seed for random number generator (ignored if not subsampling).
-      synonyms:
-      - --seed
-      args: !SimpleFlagArg
-        name: SEED
-      optional: true
-    - !Flag
-      description: 'Number of CPU to use (default: 1)'
-      synonyms:
-      - --ncpu
-      args: !SimpleFlagArg
-        name: NCPU
-      optional: true
-    - !Flag
-      description: 'Keep temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - assemble_denovo
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe assemble_denovo [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU\
-      \ FQU]\n                                [--outdir OUTDIR] [--no_error_correction]\n\
-      \                                [--subsample SUBSAMPLE] [--seed SEED]\n   \
-      \                             [--ncpu NCPU] [--keep_tmp] [--quiet]\n       \
-      \                         [--logfile LOGFILE] [--debug]\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n\nInput/Output:\n\
-      \  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2             Fastq\
-      \ file with read 2\n  --fqU FQU             Fastq file with unpaired reads\n\
-      \  --outdir OUTDIR       Output directory (default: .)\n\nAssembly options:\n\
-      \  --no_error_correction\n                        Do not perform error correction\
-      \ [spades only]\n                        (default: False)\n  --subsample SUBSAMPLE\n\
-      \                        Use a subsample of reads for assembly.\n  --seed SEED\
-      \           Seed for random number generator (ignored if not\n             \
-      \           subsampling).\n\nSettings:\n  --ncpu NCPU           Number of CPU\
-      \ to use (default: 1)\n  --keep_tmp            Keep temporary directory (default:\
-      \ False)\n  --quiet               Do not write output to console (silence stdout\
-      \ and\n                        stderr) (default: False)\n  --logfile LOGFILE\
-      \     Append console output to this file\n  --debug               Print commands\
-      \ but do not run (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fasta file with assembled contigs
-      synonyms:
-      - --contigs_fa
-      args: !SimpleFlagArg
-        name: CONTIGS_FA
-      optional: true
-    - !Flag
-      description: Fasta file with reference genome to scaffold against
-      synonyms:
-      - --ref_fa
-      args: !SimpleFlagArg
-        name: REF_FA
-      optional: true
-    - !Flag
-      description: GTF format file containing amplicon regions
-      synonyms:
-      - --ref_gtf
-      args: !SimpleFlagArg
-        name: REF_GTF
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Sample ID. (default: sampleXX)'
-      synonyms:
-      - --sample_id
-      args: !SimpleFlagArg
-        name: SAMPLE_ID
-      optional: true
-    - !Flag
-      description: 'Bases to include outside reference annotation. (default: 50)'
-      synonyms:
-      - --padding
-      args: !SimpleFlagArg
-        name: PADDING
-      optional: true
-    - !Flag
-      description: 'Minimum contig length for tiling path (default: 200)'
-      synonyms:
-      - --min_contig_len
-      args: !SimpleFlagArg
-        name: MIN_CONTIG_LEN
-      optional: true
-    - !Flag
-      description: 'Additional options (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - assemble_amplicons
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe assemble_amplicons [-h] --contigs_fa CONTIGS_FA --ref_fa\n\
-      \                                   REF_FA --ref_gtf REF_GTF [--outdir OUTDIR]\n\
-      \                                   [--sample_id SAMPLE_ID] [--padding PADDING]\n\
-      \                                   [--min_contig_len MIN_CONTIG_LEN]\n    \
-      \                               [--keep_tmp] [--quiet] [--logfile LOGFILE]\n\
-      \                                   [--debug]\n\noptional arguments:\n  -h,\
-      \ --help            show this help message and exit\n\nInput/Output:\n  --contigs_fa\
-      \ CONTIGS_FA\n                        Fasta file with assembled contigs\n  --ref_fa\
-      \ REF_FA       Fasta file with reference genome to scaffold against\n  --ref_gtf\
-      \ REF_GTF     GTF format file containing amplicon regions\n  --outdir OUTDIR\
-      \       Output directory (default: .)\n\nScaffold options:\n  --sample_id SAMPLE_ID\n\
-      \                        Sample ID. (default: sampleXX)\n  --padding PADDING\
-      \     Bases to include outside reference annotation.\n                     \
-      \   (default: 50)\n  --min_contig_len MIN_CONTIG_LEN\n                     \
-      \   Minimum contig length for tiling path (default: 200)\n\nSettings:\n  --keep_tmp\
-      \            Additional options (default: False)\n  --quiet               Do\
-      \ not write output to console (silence stdout and\n                        stderr)\
-      \ (default: False)\n  --logfile LOGFILE     Append console output to this file\n\
-      \  --debug               Print commands but do not run (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fasta file with assembled contigs
-      synonyms:
-      - --contigs_fa
-      args: !SimpleFlagArg
-        name: CONTIGS_FA
-      optional: true
-    - !Flag
-      description: Fasta file with reference genome to scaffold against
-      synonyms:
-      - --ref_fa
-      args: !SimpleFlagArg
-        name: REF_FA
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Name to append to scaffold sequence. (default: sample01)'
-      synonyms:
-      - --seqname
-      args: !SimpleFlagArg
-        name: SEQNAME
-      optional: true
-    - !Flag
-      description: 'Additional options (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - assemble_scaffold
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe assemble_scaffold [-h] --contigs_fa CONTIGS_FA --ref_fa\
-      \ REF_FA\n                                  [--outdir OUTDIR] [--seqname SEQNAME]\n\
-      \                                  [--keep_tmp] [--quiet] [--logfile LOGFILE]\n\
-      \                                  [--debug]\n\noptional arguments:\n  -h, --help\
-      \            show this help message and exit\n\nInput/Output:\n  --contigs_fa\
-      \ CONTIGS_FA\n                        Fasta file with assembled contigs\n  --ref_fa\
-      \ REF_FA       Fasta file with reference genome to scaffold against\n  --outdir\
-      \ OUTDIR       Output directory (default: .)\n\nScaffold options:\n  --seqname\
-      \ SEQNAME     Name to append to scaffold sequence. (default:\n             \
-      \           sample01)\n\nSettings:\n  --keep_tmp            Additional options\
-      \ (default: False)\n  --quiet               Do not write output to console (silence\
-      \ stdout and\n                        stderr) (default: False)\n  --logfile\
-      \ LOGFILE     Append console output to this file\n  --debug               Print\
-      \ commands but do not run (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq1
-      args: !SimpleFlagArg
-        name: FQ1
-      optional: true
-    - !Flag
-      description: Fastq file with read 2
-      synonyms:
-      - --fq2
-      args: !SimpleFlagArg
-        name: FQ2
-      optional: true
-    - !Flag
-      description: Fastq file with unpaired reads
-      synonyms:
-      - --fqU
-      args: !SimpleFlagArg
-        name: FQU
-      optional: true
-    - !Flag
-      description: Reference fasta file.
-      synonyms:
-      - --ref_fa
-      args: !SimpleFlagArg
-        name: REF_FA
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Bowtie2 preset (default: sensitive-local)'
-      synonyms:
-      - --bt2_preset
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? very-fast-local
-          ? sensitive-local
-          ? fast
-          ? very-sensitive
-          ? fast-local
-          ? very-fast
-          ? sensitive
-          ? very-sensitive-local
-      optional: true
-    - !Flag
-      description: 'Sample ID. Used as read group ID in BAM (default: sampleXX)'
-      synonyms:
-      - --sample_id
-      args: !SimpleFlagArg
-        name: SAMPLE_ID
-      optional: true
-    - !Flag
-      description: 'Do not realign indels (default: False)'
-      synonyms:
-      - --no_realign
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Remove duplicates from final alignment. Otherwise duplicates are
-        marked but not removed. (default: False)'
-      synonyms:
-      - --remove_duplicates
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '{Phred+33,Phred+64} Quality score encoding'
-      synonyms:
-      - --encoding
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Number of CPUs to use (default: 1)'
-      synonyms:
-      - --ncpu
-      args: !SimpleFlagArg
-        name: NCPU
-      optional: true
-    - !Flag
-      description: 'Maximum heap size for Java VM, in GB. (default: 32)'
-      synonyms:
-      - --xmx
-      args: !SimpleFlagArg
-        name: XMX
-      optional: true
-    - !Flag
-      description: 'Do not delete temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - align_reads
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe align_reads [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU]\
-      \ --ref_fa\n                            REF_FA [--outdir OUTDIR]\n         \
-      \                   [--bt2_preset {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}]\n\
-      \                            [--sample_id SAMPLE_ID] [--no_realign]\n      \
-      \                      [--remove_duplicates]\n                            [--encoding\
-      \ {Phred+33,Phred+64}] [--ncpu NCPU]\n                            [--xmx XMX]\
-      \ [--keep_tmp] [--quiet]\n                            [--logfile LOGFILE] [--debug]\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \nInput/Output:\n  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2\
-      \             Fastq file with read 2\n  --fqU FQU             Fastq file with\
-      \ unpaired reads\n  --ref_fa REF_FA       Reference fasta file.\n  --outdir\
-      \ OUTDIR       Output directory (default: .)\n\nAlignment options:\n  --bt2_preset\
-      \ {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}\n\
-      \                        Bowtie2 preset (default: sensitive-local)\n  --sample_id\
-      \ SAMPLE_ID\n                        Sample ID. Used as read group ID in BAM\
-      \ (default:\n                        sampleXX)\n  --no_realign          Do not\
-      \ realign indels (default: False)\n  --remove_duplicates   Remove duplicates\
-      \ from final alignment. Otherwise\n                        duplicates are marked\
-      \ but not removed. (default:\n                        False)\n  --encoding {Phred+33,Phred+64}\n\
-      \                        Quality score encoding\n\nSettings:\n  --ncpu NCPU\
-      \           Number of CPUs to use (default: 1)\n  --xmx XMX             Maximum\
-      \ heap size for Java VM, in GB. (default: 32)\n  --keep_tmp            Do not\
-      \ delete temporary directory (default: False)\n  --quiet               Do not\
-      \ write output to console (silence stdout and\n                        stderr)\
-      \ (default: False)\n  --logfile LOGFILE     Append console output to this file\n\
-      \  --debug               Print commands but do not run (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Alignment file.
-      synonyms:
-      - --aln_bam
-      args: !SimpleFlagArg
-        name: ALN_BAM
-      optional: true
-    - !Flag
-      description: Reference fasta file.
-      synonyms:
-      - --ref_fa
-      args: !SimpleFlagArg
-        name: REF_FA
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Output calls for all sites. (default: False)'
-      synonyms:
-      - --emit_all
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Minimum base quality required to consider a base for calling.
-        (default: 15)'
-      synonyms:
-      - --min_base_qual
-      args: !SimpleFlagArg
-        name: MIN_BASE_QUAL
-      optional: true
-    - !Flag
-      description: Number of CPU to use
-      synonyms:
-      - --ncpu
-      args: !SimpleFlagArg
-        name: NCPU
-      optional: true
-    - !Flag
-      description: 'Maximum heap size for Java VM, in GB. (default: 32)'
-      synonyms:
-      - --xmx
-      args: !SimpleFlagArg
-        name: XMX
-      optional: true
-    - !Flag
-      description: 'Do not delete temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - call_variants
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe call_variants [-h] --aln_bam ALN_BAM --ref_fa REF_FA\n\
-      \                              [--outdir OUTDIR] [--emit_all]\n            \
-      \                  [--min_base_qual MIN_BASE_QUAL] [--ncpu NCPU]\n         \
-      \                     [--xmx XMX] [--keep_tmp] [--quiet]\n                 \
-      \             [--logfile LOGFILE] [--debug]\n\noptional arguments:\n  -h, --help\
-      \            show this help message and exit\n\nInput/Output:\n  --aln_bam ALN_BAM\
-      \     Alignment file.\n  --ref_fa REF_FA       Reference fasta file.\n  --outdir\
-      \ OUTDIR       Output directory (default: .)\n\nVariant calling options:\n \
-      \ --emit_all            Output calls for all sites. (default: False)\n  --min_base_qual\
-      \ MIN_BASE_QUAL\n                        Minimum base quality required to consider\
-      \ a base for\n                        calling. (default: 15)\n\nSettings:\n\
-      \  --ncpu NCPU           Number of CPU to use\n  --xmx XMX             Maximum\
-      \ heap size for Java VM, in GB. (default: 32)\n  --keep_tmp            Do not\
-      \ delete temporary directory (default: False)\n  --quiet               Do not\
-      \ write output to console (silence stdout and\n                        stderr)\
-      \ (default: False)\n  --logfile LOGFILE     Append console output to this file\n\
-      \  --debug               Print commands but do not run (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: VCF file (created with all sites).
-      synonyms:
-      - --vcf
-      args: !SimpleFlagArg
-        name: VCF
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Index for sample if multi-sample VCF (default: 0)'
-      synonyms:
-      - --sampidx
-      args: !SimpleFlagArg
-        name: SAMPIDX
-      optional: true
-    - !Flag
-      description: 'Minimum depth to call site (default: 5)'
-      synonyms:
-      - --min_dp
-      args: !SimpleFlagArg
-        name: MIN_DP
-      optional: true
-    - !Flag
-      description: 'Allele fraction to make unambiguous call (default: 0.5)'
-      synonyms:
-      - --major
-      args: !SimpleFlagArg
-        name: MAJOR
-      optional: true
-    - !Flag
-      description: 'Allele fraction to make ambiguous call (default: 0.2)'
-      synonyms:
-      - --minor
-      args: !SimpleFlagArg
-        name: MINOR
-      optional: true
-    - !Flag
-      description: 'Do not delete temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    command:
-    - haphpipe
-    - vcf_to_consensus
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe vcf_to_consensus [-h] --vcf VCF [--outdir OUTDIR]\n\
-      \                                 [--sampidx SAMPIDX] [--min_dp MIN_DP]\n  \
-      \                               [--major MAJOR] [--minor MINOR] [--keep_tmp]\n\
-      \                                 [--quiet] [--logfile LOGFILE]\n\noptional\
-      \ arguments:\n  -h, --help         show this help message and exit\n\nInput/Output:\n\
-      \  --vcf VCF          VCF file (created with all sites).\n  --outdir OUTDIR\
-      \    Output directory (default: .)\n  --sampidx SAMPIDX  Index for sample if\
-      \ multi-sample VCF (default: 0)\n\nVariant options:\n  --min_dp MIN_DP    Minimum\
-      \ depth to call site (default: 5)\n  --major MAJOR      Allele fraction to make\
-      \ unambiguous call (default: 0.5)\n  --minor MINOR      Allele fraction to make\
-      \ ambiguous call (default: 0.2)\n\nSettings:\n  --keep_tmp         Do not delete\
-      \ temporary directory (default: False)\n  --quiet            Do not write output\
-      \ to console (silence stdout and\n                     stderr) (default: False)\n\
-      \  --logfile LOGFILE  Append console output to this file\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq1
-      args: !SimpleFlagArg
-        name: FQ1
-      optional: true
-    - !Flag
-      description: Fastq file with read 2
-      synonyms:
-      - --fq2
-      args: !SimpleFlagArg
-        name: FQ2
-      optional: true
-    - !Flag
-      description: Fastq file with unpaired reads
-      synonyms:
-      - --fqU
-      args: !SimpleFlagArg
-        name: FQU
-      optional: true
-    - !Flag
-      description: Assembly to refine
-      synonyms:
-      - --ref_fa
-      args: !SimpleFlagArg
-        name: REF_FA
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Maximum number of refinement steps (default: 1)'
-      synonyms:
-      - --max_step
-      args: !SimpleFlagArg
-        name: MAX_STEP
-      optional: true
-    - !Flag
-      description: Use a subsample of reads for refinement.
-      synonyms:
-      - --subsample
-      args: !SimpleFlagArg
-        name: SUBSAMPLE
-      optional: true
-    - !Flag
-      description: Seed for random number generator (ignored if not subsampling).
-      synonyms:
-      - --seed
-      args: !SimpleFlagArg
-        name: SEED
-      optional: true
-    - !Flag
-      description: 'Sample ID. Used as read group ID in BAM (default: sampleXX)'
-      synonyms:
-      - --sample_id
-      args: !SimpleFlagArg
-        name: SAMPLE_ID
-      optional: true
-    - !Flag
-      description: 'Number of CPUs to use (default: 1)'
-      synonyms:
-      - --ncpu
-      args: !SimpleFlagArg
-        name: NCPU
-      optional: true
-    - !Flag
-      description: 'Maximum heap size for Java VM, in GB. (default: 32)'
-      synonyms:
-      - --xmx
-      args: !SimpleFlagArg
-        name: XMX
-      optional: true
-    - !Flag
-      description: 'Do not delete temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - refine_assembly
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe refine_assembly [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU\
-      \ FQU]\n                                --ref_fa REF_FA [--outdir OUTDIR]\n\
-      \                                [--max_step MAX_STEP] [--subsample SUBSAMPLE]\n\
-      \                                [--seed SEED] [--sample_id SAMPLE_ID]\n   \
-      \                             [--ncpu NCPU] [--xmx XMX] [--keep_tmp]\n     \
-      \                           [--quiet] [--logfile LOGFILE] [--debug]\n\noptional\
-      \ arguments:\n  -h, --help            show this help message and exit\n\nInput/Output:\n\
-      \  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2             Fastq\
-      \ file with read 2\n  --fqU FQU             Fastq file with unpaired reads\n\
-      \  --ref_fa REF_FA       Assembly to refine\n  --outdir OUTDIR       Output\
-      \ directory (default: .)\n\nRefinement options:\n  --max_step MAX_STEP   Maximum\
-      \ number of refinement steps (default: 1)\n  --subsample SUBSAMPLE\n       \
-      \                 Use a subsample of reads for refinement.\n  --seed SEED  \
-      \         Seed for random number generator (ignored if not\n               \
-      \         subsampling).\n  --sample_id SAMPLE_ID\n                        Sample\
-      \ ID. Used as read group ID in BAM (default:\n                        sampleXX)\n\
-      \nSettings:\n  --ncpu NCPU           Number of CPUs to use (default: 1)\n  --xmx\
-      \ XMX             Maximum heap size for Java VM, in GB. (default: 32)\n  --keep_tmp\
-      \            Do not delete temporary directory (default: False)\n  --quiet \
-      \              Do not write output to console (silence stdout and\n        \
-      \                stderr) (default: False)\n  --logfile LOGFILE     Append console\
-      \ output to this file\n  --debug               Print commands but do not run\
-      \ (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq1
-      args: !SimpleFlagArg
-        name: FQ1
-      optional: true
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq2
-      args: !SimpleFlagArg
-        name: FQ2
-      optional: true
-    - !Flag
-      description: Fastq file with unpaired reads
-      synonyms:
-      - --fqU
-      args: !SimpleFlagArg
-        name: FQU
-      optional: true
-    - !Flag
-      description: Consensus fasta file
-      synonyms:
-      - --ref_fa
-      args: !SimpleFlagArg
-        name: REF_FA
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Bowtie2 preset to use (default: very-sensitive)'
-      synonyms:
-      - --bt2_preset
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? very-fast-local
-          ? sensitive-local
-          ? fast
-          ? very-sensitive
-          ? fast-local
-          ? very-fast
-          ? sensitive
-          ? very-sensitive-local
-      optional: true
-    - !Flag
-      description: 'Sample ID (default: sampleXX)'
-      synonyms:
-      - --sample_id
-      args: !SimpleFlagArg
-        name: SAMPLE_ID
-      optional: true
-    - !Flag
-      description: Number of CPU to use
-      synonyms:
-      - --ncpu
-      args: !SimpleFlagArg
-        name: NCPU
-      optional: true
-    - !Flag
-      description: 'Do not delete temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - finalize_assembly
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe finalize_assembly [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU\
-      \ FQU]\n                                  --ref_fa REF_FA [--outdir OUTDIR]\n\
-      \                                  [--bt2_preset {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}]\n\
-      \                                  [--sample_id SAMPLE_ID] [--ncpu NCPU]\n \
-      \                                 [--keep_tmp] [--quiet] [--logfile LOGFILE]\n\
-      \                                  [--debug]\n\noptional arguments:\n  -h, --help\
-      \            show this help message and exit\n\nInput/Output:\n  --fq1 FQ1 \
-      \            Fastq file with read 1\n  --fq2 FQ2             Fastq file with\
-      \ read 1\n  --fqU FQU             Fastq file with unpaired reads\n  --ref_fa\
-      \ REF_FA       Consensus fasta file\n  --outdir OUTDIR       Output directory\
-      \ (default: .)\n\nFix consensus options:\n  --bt2_preset {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}\n\
-      \                        Bowtie2 preset to use (default: very-sensitive)\n \
-      \ --sample_id SAMPLE_ID\n                        Sample ID (default: sampleXX)\n\
-      \nSettings:\n  --ncpu NCPU           Number of CPU to use\n  --keep_tmp    \
-      \        Do not delete temporary directory (default: False)\n  --quiet     \
-      \          Do not write output to console (silence stdout and\n            \
-      \            stderr) (default: False)\n  --logfile LOGFILE     Append console\
-      \ output to this file\n  --debug               Print commands but do not run\
-      \ (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Fastq file with read 1
-      synonyms:
-      - --fq1
-      args: !SimpleFlagArg
-        name: FQ1
-      optional: true
-    - !Flag
-      description: Fastq file with read 2
-      synonyms:
-      - --fq2
-      args: !SimpleFlagArg
-        name: FQ2
-      optional: true
-    - !Flag
-      description: Reference sequence used to align reads (fasta)
-      synonyms:
-      - --ref_fa
-      args: !SimpleFlagArg
-        name: REF_FA
-      optional: true
-    - !Flag
-      description: 'File with regions to perform haplotype reconstruction. Regions
-        should be specified using the samtools region specification format: RNAME[:STARTPOS[-ENDPOS]]'
-      synonyms:
-      - --region_txt
-      args: !SimpleFlagArg
-        name: REGION_TXT
-      optional: true
-    - !Flag
-      description: 'Output directory (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Minimum readlength passed to PredictHaplo (default: 36)'
-      synonyms:
-      - --min_readlength
-      args: !SimpleFlagArg
-        name: MIN_READLENGTH
-      optional: true
-    - !Flag
-      description: 'Do not delete temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - predict_haplo
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe predict_haplo [-h] --fq1 FQ1 --fq2 FQ2 --ref_fa REF_FA\n\
-      \                              [--region_txt REGION_TXT] [--outdir OUTDIR]\n\
-      \                              [--min_readlength MIN_READLENGTH] [--keep_tmp]\n\
-      \                              [--quiet] [--logfile LOGFILE] [--debug]\n\noptional\
-      \ arguments:\n  -h, --help            show this help message and exit\n\nInput/Output:\n\
-      \  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2             Fastq\
-      \ file with read 2\n  --ref_fa REF_FA       Reference sequence used to align\
-      \ reads (fasta)\n  --region_txt REGION_TXT\n                        File with\
-      \ regions to perform haplotype reconstruction.\n                        Regions\
-      \ should be specified using the samtools region\n                        specification\
-      \ format: RNAME[:STARTPOS[-ENDPOS]]\n  --outdir OUTDIR       Output directory\
-      \ (default: .)\n\nPredictHaplo Options:\n  --min_readlength MIN_READLENGTH\n\
-      \                        Minimum readlength passed to PredictHaplo (default:\n\
-      \                        36)\n\nSettings:\n  --keep_tmp            Do not delete\
-      \ temporary directory (default: False)\n  --quiet               Do not write\
-      \ output to console (silence stdout and\n                        stderr) (default:\
-      \ False)\n  --logfile LOGFILE     Append console output to this file\n  --debug\
-      \               Print commands but do not run (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Haplotype file created by PredictHaplo.
-      synonyms:
-      - --haplotypes_fa
-      args: !SimpleFlagArg
-        name: HAPLOTYPES_FA
-      optional: true
-    - !Flag
-      description: 'Output directory. (default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: Prefix to add to sequence names
-      synonyms:
-      - --prefix
-      args: !SimpleFlagArg
-        name: PREFIX
-      optional: true
-    - !Flag
-      description: 'Do not remove gaps from alignment (default: False)'
-      synonyms:
-      - --keep_gaps
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Append console output to this file
-      synonyms:
-      - --logfile
-      args: !SimpleFlagArg
-        name: LOGFILE
-      optional: true
-    command:
-    - haphpipe
-    - ph_parser
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe ph_parser [-h] --haplotypes_fa HAPLOTYPES_FA [--outdir\
-      \ OUTDIR]\n                          [--prefix PREFIX] [--keep_gaps] [--quiet]\n\
-      \                          [--logfile LOGFILE]\n\noptional arguments:\n  -h,\
-      \ --help            show this help message and exit\n\nInput/Output:\n  --haplotypes_fa\
-      \ HAPLOTYPES_FA\n                        Haplotype file created by PredictHaplo.\n\
-      \  --outdir OUTDIR       Output directory. (default: .)\n\nParser options:\n\
-      \  --prefix PREFIX       Prefix to add to sequence names\n  --keep_gaps    \
-      \       Do not remove gaps from alignment (default: False)\n\nSettings:\n  --quiet\
-      \               Do not write output to console (silence stdout and\n       \
-      \                 stderr) (default: False)\n  --logfile LOGFILE     Append console\
-      \ output to this file\n"
-    generated_using: *id002
-  - !Command
+    - cliquesnv
     positional: []
     named:
     - !Flag
@@ -1912,8 +357,8 @@ parent: &id001 !Command
         name: OUTDIR
       optional: true
     - !Flag
-      description: 'Path to clique-snv.jar (existing) (Default: current directory)
-        (default: .)'
+      description: "Path to clique-snv.jar (existing) (Default: current\ndirectory)\
+        \ (default: .)"
       synonyms:
       - --jardir
       args: !SimpleFlagArg
@@ -1927,7 +372,7 @@ parent: &id001 !Command
         name: O22MIN
       optional: true
     - !Flag
-      description: minimum threshold for O22 frequency relative to read coverage
+      description: "minimum threshold for O22 frequency relative to read\ncoverage"
       synonyms:
       - --O22minfreq
       args: !SimpleFlagArg
@@ -1947,8 +392,8 @@ parent: &id001 !Command
         name: MERGING
       optional: true
     - !Flag
-      description: 'Fasta defline format: short or extended, add number at end to
-        adjust precision of frequency (default: extended4)'
+      description: "Fasta defline format: short or extended, add number at\nend to\
+        \ adjust precision of frequency (default:\nextended4)"
       synonyms:
       - --fasta_format
       args: !SimpleFlagArg
@@ -1969,8 +414,8 @@ parent: &id001 !Command
         name: OUTPUTEND
       optional: true
     - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
       synonyms:
       - --quiet
       args: !EmptyFlagArg {}
@@ -2001,11 +446,9 @@ parent: &id001 !Command
       - --keep_tmp
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - haphpipe
-    - cliquesnv
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -2043,27 +486,30 @@ parent: &id001 !Command
       \ log file (output)\n  --debug               Print commands but do not run (default:\
       \ False)\n  --ncpu NCPU           Number of CPU to use (default: 1)\n  --keep_tmp\
       \            Do not delete temporary directory (default: False)\n"
-    generated_using: *id002
+    generated_using: &id002
+    - --help
   - !Command
+    command:
+    - haphpipe
+    - assemble_amplicons
     positional: []
     named:
     - !Flag
-      description: Assembled amplicons (fasta)
+      description: Fasta file with assembled contigs
       synonyms:
-      - --amplicons_fa
+      - --contigs_fa
       args: !SimpleFlagArg
-        name: AMPLICONS_FA
+        name: CONTIGS_FA
       optional: true
     - !Flag
-      description: Reference fasta file
+      description: Fasta file with reference genome to scaffold against
       synonyms:
       - --ref_fa
       args: !SimpleFlagArg
         name: REF_FA
       optional: true
     - !Flag
-      description: GTF format file containing amplicon regions. Primary and alternate
-        coding regions should be provided in the attribute field (for amino acid alignment).
+      description: GTF format file containing amplicon regions
       synonyms:
       - --ref_gtf
       args: !SimpleFlagArg
@@ -2077,14 +523,35 @@ parent: &id001 !Command
         name: OUTDIR
       optional: true
     - !Flag
-      description: 'Do not delete temporary directory (default: False)'
+      description: 'Sample ID. (default: sampleXX)'
+      synonyms:
+      - --sample_id
+      args: !SimpleFlagArg
+        name: SAMPLE_ID
+      optional: true
+    - !Flag
+      description: "Bases to include outside reference annotation.\n(default: 50)"
+      synonyms:
+      - --padding
+      args: !SimpleFlagArg
+        name: PADDING
+      optional: true
+    - !Flag
+      description: 'Minimum contig length for tiling path (default: 200)'
+      synonyms:
+      - --min_contig_len
+      args: !SimpleFlagArg
+        name: MIN_CONTIG_LEN
+      optional: true
+    - !Flag
+      description: 'Additional options (default: False)'
       synonyms:
       - --keep_tmp
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
       synonyms:
       - --quiet
       args: !EmptyFlagArg {}
@@ -2102,11 +569,9 @@ parent: &id001 !Command
       - --debug
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - haphpipe
-    - pairwise_align
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -2116,290 +581,79 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: haphpipe pairwise_align [-h] --amplicons_fa AMPLICONS_FA --ref_fa\n\
-      \                               REF_FA --ref_gtf REF_GTF [--outdir OUTDIR]\n\
+    help_text: "usage: haphpipe assemble_amplicons [-h] --contigs_fa CONTIGS_FA --ref_fa\n\
+      \                                   REF_FA --ref_gtf REF_GTF [--outdir OUTDIR]\n\
+      \                                   [--sample_id SAMPLE_ID] [--padding PADDING]\n\
+      \                                   [--min_contig_len MIN_CONTIG_LEN]\n    \
       \                               [--keep_tmp] [--quiet] [--logfile LOGFILE]\n\
-      \                               [--debug]\n\noptional arguments:\n  -h, --help\
-      \            show this help message and exit\n\nInput/Output:\n  --amplicons_fa\
-      \ AMPLICONS_FA\n                        Assembled amplicons (fasta)\n  --ref_fa\
-      \ REF_FA       Reference fasta file\n  --ref_gtf REF_GTF     GTF format file\
-      \ containing amplicon regions. Primary\n                        and alternate\
-      \ coding regions should be provided in the\n                        attribute\
-      \ field (for amino acid alignment).\n  --outdir OUTDIR       Output directory\
-      \ (default: .)\n\nSettings:\n  --keep_tmp            Do not delete temporary\
-      \ directory (default: False)\n  --quiet               Do not write output to\
-      \ console (silence stdout and\n                        stderr) (default: False)\n\
-      \  --logfile LOGFILE     Append console output to this file\n  --debug     \
-      \          Print commands but do not run (default: False)\n"
+      \                                   [--debug]\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n\nInput/Output:\n  --contigs_fa\
+      \ CONTIGS_FA\n                        Fasta file with assembled contigs\n  --ref_fa\
+      \ REF_FA       Fasta file with reference genome to scaffold against\n  --ref_gtf\
+      \ REF_GTF     GTF format file containing amplicon regions\n  --outdir OUTDIR\
+      \       Output directory (default: .)\n\nScaffold options:\n  --sample_id SAMPLE_ID\n\
+      \                        Sample ID. (default: sampleXX)\n  --padding PADDING\
+      \     Bases to include outside reference annotation.\n                     \
+      \   (default: 50)\n  --min_contig_len MIN_CONTIG_LEN\n                     \
+      \   Minimum contig length for tiling path (default: 200)\n\nSettings:\n  --keep_tmp\
+      \            Additional options (default: False)\n  --quiet               Do\
+      \ not write output to console (silence stdout and\n                        stderr)\
+      \ (default: False)\n  --logfile LOGFILE     Append console output to this file\n\
+      \  --debug               Print commands but do not run (default: False)\n"
     generated_using: *id002
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: JSON file describing alignment (output of pairwise_align stage)
-      synonyms:
-      - --align_json
-      args: !SimpleFlagArg
-        name: ALIGN_JSON
-      optional: true
-    - !Flag
-      description: Output file. Default is stdout
-      synonyms:
-      - --outfile
-      args: !SimpleFlagArg
-        name: OUTFILE
-      optional: true
-    - !Flag
-      description: 'Format for output (default: nuc_fa)'
-      synonyms:
-      - --outfmt
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? tsv
-          ? aln_fa
-          ? prot_fa
-          ? nuc_fa
-          ? amp_gtf
-      optional: true
-    - !Flag
-      description: Reference region. String format is ref:start-stop. For example,
-        the region string to extract pol when aligned to HXB2 is HIV_B.K03455.HXB2:2085-5096
-      synonyms:
-      - --refreg
-      args: !SimpleFlagArg
-        name: REFREG
-      optional: true
-    - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - haphpipe
-    - extract_pairwise
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe extract_pairwise [-h] --align_json ALIGN_JSON\n  \
-      \                               [--outfile OUTFILE]\n                      \
-      \           [--outfmt {nuc_fa,aln_fa,amp_gtf,tsv,prot_fa}]\n               \
-      \                  [--refreg REFREG] [--debug]\n\noptional arguments:\n  -h,\
-      \ --help            show this help message and exit\n\nInput/Output:\n  --align_json\
-      \ ALIGN_JSON\n                        JSON file describing alignment (output\
-      \ of\n                        pairwise_align stage)\n  --outfile OUTFILE   \
-      \  Output file. Default is stdout\n\nExtract pairwise options:\n  --outfmt {nuc_fa,aln_fa,amp_gtf,tsv,prot_fa}\n\
-      \                        Format for output (default: nuc_fa)\n  --refreg REFREG\
-      \       Reference region. String format is ref:start-stop. For\n           \
-      \             example, the region string to extract pol when aligned\n     \
-      \                   to HXB2 is HIV_B.K03455.HXB2:2085-5096\n\nSettings:\n  --debug\
-      \               Print commands but do not run (default: False)\n"
-    generated_using: *id002
-  - !Command
+    - assemble_denovo
     positional: []
     named:
     - !Flag
-      description: List of directories which include the required files, one on each
-        line
+      description: Fastq file with read 1
       synonyms:
-      - --dir_list
+      - --fq1
       args: !SimpleFlagArg
-        name: DIR_LIST
+        name: FQ1
       optional: true
     - !Flag
-      description: List of directories which include haplotype summary files, one
-        on each line
+      description: Fastq file with read 2
       synonyms:
-      - --ph_list
+      - --fq2
       args: !SimpleFlagArg
-        name: PH_LIST
+        name: FQ2
       optional: true
     - !Flag
-      description: 'Amplicons used in assembly (default: False)'
+      description: Fastq file with unpaired reads
       synonyms:
-      - --amplicons
-      args: !EmptyFlagArg {}
+      - --fqU
+      args: !SimpleFlagArg
+        name: FQU
       optional: true
     - !Flag
-      description: Output directory
+      description: 'Output directory (default: .)'
       synonyms:
       - --outdir
       args: !SimpleFlagArg
         name: OUTDIR
       optional: true
     - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
+      description: "Do not perform error correction [spades only]\n(default: False)"
       synonyms:
-      - --quiet
+      - --no_error_correction
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Name for log file (output)
+      description: Use a subsample of reads for assembly.
       synonyms:
-      - --logfile
+      - --subsample
       args: !SimpleFlagArg
-        name: LOGFILE
+        name: SUBSAMPLE
       optional: true
     - !Flag
-      description: 'Print commands but do not run (default: False)'
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - summary_stats
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: haphpipe summary_stats [-h] [--dir_list DIR_LIST] [--ph_list\
-      \ PH_LIST]\n                              [--amplicons] [--outdir OUTDIR] [--quiet]\n\
-      \                              [--logfile LOGFILE] [--debug]\n\noptional arguments:\n\
-      \  -h, --help           show this help message and exit\n\nInput/Output:\n \
-      \ --dir_list DIR_LIST  List of directories which include the required files,\n\
-      \                       one on each line\n  --ph_list PH_LIST    List of directories\
-      \ which include haplotype summary\n                       files, one on each\
-      \ line\n  --amplicons          Amplicons used in assembly (default: False)\n\
-      \  --outdir OUTDIR      Output directory\n\nSettings:\n  --quiet           \
-      \   Do not write output to console (silence stdout and\n                   \
-      \    stderr) (default: False)\n  --logfile LOGFILE    Name for log file (output)\n\
-      \  --debug              Print commands but do not run (default: False)\n"
-    generated_using: *id002
-  - *id003
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Alignment in FASTA or PHYLIP format
-      synonyms:
-      - --seqs
-      args: !SimpleFlagArg
-        name: SEQS
-      optional: true
-    - !Flag
-      description: Prefix for output files
-      synonyms:
-      - --run_id
-      args: !SimpleFlagArg
-        name: RUN_ID
-      optional: true
-    - !Flag
-      description: 'Name for output file (Default: modeltest_results)'
-      synonyms:
-      - --outname
-      args: !SimpleFlagArg
-        name: OUTNAME
-      optional: true
-    - !Flag
-      description: 'Output directory (Default: .)'
-      synonyms:
-      - --outdir
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    - !Flag
-      description: 'Data type: nt or aa'
-      synonyms:
-      - --data_type
-      args: !SimpleFlagArg
-        name: DATA_TYPE
-      optional: true
-    - !Flag
-      description: Partitions file
-      synonyms:
-      - --partitions
-      args: !SimpleFlagArg
-        name: PARTITIONS
-      optional: true
-    - !Flag
-      description: Seed for random number generator
+      description: "Seed for random number generator (ignored if not\nsubsampling)."
       synonyms:
       - --seed
       args: !SimpleFlagArg
         name: SEED
-      optional: true
-    - !Flag
-      description: 'Starting topology: ml, mp, fixed-ml-jc, fixed-ml-gtr, fixed-mp,
-        random, or user'
-      synonyms:
-      - --topology
-      args: !SimpleFlagArg
-        name: TOPOLOGY
-      optional: true
-    - !Flag
-      description: User-defined starting tree
-      synonyms:
-      - --utree
-      args: !SimpleFlagArg
-        name: UTREE
-      optional: true
-    - !Flag
-      description: 'force output overriding (default: False)'
-      synonyms:
-      - --force
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Ascertainment bias correction: lewis, felsenstein, or stamatakis'
-      synonyms:
-      - --asc_bias
-      args: !SimpleFlagArg
-        name: ASC_BIAS
-      optional: true
-    - !Flag
-      description: 'Candidate model frequencies: e (estimated) or f (fixed)'
-      synonyms:
-      - --frequencies
-      args: !SimpleFlagArg
-        name: FREQUENCIES
-      optional: true
-    - !Flag
-      description: 'Set rate heterogeneity: u (uniform), i (invariant sites +I), g
-        (gamma +G), or f (both invariant sites and gamma +I+G)'
-      synonyms:
-      - --het
-      args: !SimpleFlagArg
-        name: HET
-      optional: true
-    - !Flag
-      description: Text file with candidate models, one per line
-      synonyms:
-      - --models
-      args: !SimpleFlagArg
-        name: MODELS
-      optional: true
-    - !Flag
-      description: 'Number of predefined DNA substitution schemes evaluated: 3, 5,
-        7, 11, or 203'
-      synonyms:
-      - --schemes
-      args: !SimpleFlagArg
-        name: SCHEMES
-      optional: true
-    - !Flag
-      description: 'Set candidate models according to a specified tool: raxml, phyml,
-        mrbayes, or paup'
-      synonyms:
-      - --template
-      args: !SimpleFlagArg
-        name: TEMPLATE
       optional: true
     - !Flag
       description: 'Number of CPU to use (default: 1)'
@@ -2409,14 +663,20 @@ parent: &id001 !Command
         name: NCPU
       optional: true
     - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
+      description: 'Keep temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
       synonyms:
       - --quiet
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Name for log file (output)
+      description: Append console output to this file
       synonyms:
       - --logfile
       args: !SimpleFlagArg
@@ -2428,17 +688,9 @@ parent: &id001 !Command
       - --debug
       args: !EmptyFlagArg {}
       optional: true
-    - !Flag
-      description: 'Keep temporary directory (default: False)'
-      synonyms:
-      - --keep_tmp
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - haphpipe
-    - model_test
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -2448,42 +700,378 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: haphpipe model_test [-h] [--seqs SEQS] [--run_id RUN_ID]\n\
-      \                           [--outname OUTNAME] [--outdir OUTDIR]\n        \
-      \                   [--data_type DATA_TYPE] [--partitions PARTITIONS]\n    \
-      \                       [--seed SEED] [--topology TOPOLOGY] [--utree UTREE]\n\
-      \                           [--force] [--asc_bias ASC_BIAS]\n              \
-      \             [--frequencies FREQUENCIES] [--het HET]\n                    \
-      \       [--models MODELS] [--schemes SCHEMES]\n                           [--template\
-      \ TEMPLATE] [--ncpu NCPU] [--quiet]\n                           [--logfile LOGFILE]\
-      \ [--debug] [--keep_tmp]\n\noptional arguments:\n  -h, --help            show\
-      \ this help message and exit\n\nInput/Output:\n  --seqs SEQS           Alignment\
-      \ in FASTA or PHYLIP format\n  --run_id RUN_ID       Prefix for output files\n\
-      \  --outname OUTNAME     Name for output file (Default: modeltest_results)\n\
-      \  --outdir OUTDIR       Output directory (Default: .)\n\nModelTest-NG Options:\n\
-      \  --data_type DATA_TYPE\n                        Data type: nt or aa\n  --partitions\
-      \ PARTITIONS\n                        Partitions file\n  --seed SEED       \
-      \    Seed for random number generator\n  --topology TOPOLOGY   Starting topology:\
-      \ ml, mp, fixed-ml-jc, fixed-ml-gtr,\n                        fixed-mp, random,\
-      \ or user\n  --utree UTREE         User-defined starting tree\n  --force   \
-      \            force output overriding (default: False)\n  --asc_bias ASC_BIAS\
-      \   Ascertainment bias correction: lewis, felsenstein, or\n                \
-      \        stamatakis\n  --frequencies FREQUENCIES\n                        Candidate\
-      \ model frequencies: e (estimated) or f\n                        (fixed)\n \
-      \ --het HET             Set rate heterogeneity: u (uniform), i (invariant\n\
-      \                        sites +I), g (gamma +G), or f (both invariant sites\n\
-      \                        and gamma +I+G)\n  --models MODELS       Text file\
-      \ with candidate models, one per line\n  --schemes SCHEMES     Number of predefined\
-      \ DNA substitution schemes\n                        evaluated: 3, 5, 7, 11,\
-      \ or 203\n  --template TEMPLATE   Set candidate models according to a specified\
-      \ tool:\n                        raxml, phyml, mrbayes, or paup\n\nOptions:\n\
-      \  --ncpu NCPU           Number of CPU to use (default: 1)\n  --quiet      \
-      \         Do not write output to console (silence stdout and\n             \
-      \           stderr) (default: False)\n  --logfile LOGFILE     Name for log file\
-      \ (output)\n  --debug               Print commands but do not run (default:\
-      \ False)\n  --keep_tmp            Keep temporary directory (default: False)\n"
+    help_text: "usage: haphpipe assemble_denovo [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU\
+      \ FQU]\n                                [--outdir OUTDIR] [--no_error_correction]\n\
+      \                                [--subsample SUBSAMPLE] [--seed SEED]\n   \
+      \                             [--ncpu NCPU] [--keep_tmp] [--quiet]\n       \
+      \                         [--logfile LOGFILE] [--debug]\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n\nInput/Output:\n\
+      \  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2             Fastq\
+      \ file with read 2\n  --fqU FQU             Fastq file with unpaired reads\n\
+      \  --outdir OUTDIR       Output directory (default: .)\n\nAssembly options:\n\
+      \  --no_error_correction\n                        Do not perform error correction\
+      \ [spades only]\n                        (default: False)\n  --subsample SUBSAMPLE\n\
+      \                        Use a subsample of reads for assembly.\n  --seed SEED\
+      \           Seed for random number generator (ignored if not\n             \
+      \           subsampling).\n\nSettings:\n  --ncpu NCPU           Number of CPU\
+      \ to use (default: 1)\n  --keep_tmp            Keep temporary directory (default:\
+      \ False)\n  --quiet               Do not write output to console (silence stdout\
+      \ and\n                        stderr) (default: False)\n  --logfile LOGFILE\
+      \     Append console output to this file\n  --debug               Print commands\
+      \ but do not run (default: False)\n"
     generated_using: *id002
   - !Command
+    command:
+    - haphpipe
+    - refine_assembly
+    positional: []
+    named:
+    - !Flag
+      description: '[--outdir OUTDIR]'
+      synonyms:
+      - --ref_fa
+      args: !SimpleFlagArg
+        name: REF_FA
+      optional: true
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq1
+      args: !SimpleFlagArg
+        name: FQ1
+      optional: true
+    - !Flag
+      description: Fastq file with read 2
+      synonyms:
+      - --fq2
+      args: !SimpleFlagArg
+        name: FQ2
+      optional: true
+    - !Flag
+      description: Fastq file with unpaired reads
+      synonyms:
+      - --fqU
+      args: !SimpleFlagArg
+        name: FQU
+      optional: true
+    - !Flag
+      description: 'Output directory (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: 'Maximum number of refinement steps (default: 1)'
+      synonyms:
+      - --max_step
+      args: !SimpleFlagArg
+        name: MAX_STEP
+      optional: true
+    - !Flag
+      description: Use a subsample of reads for refinement.
+      synonyms:
+      - --subsample
+      args: !SimpleFlagArg
+        name: SUBSAMPLE
+      optional: true
+    - !Flag
+      description: "Seed for random number generator (ignored if not\nsubsampling)."
+      synonyms:
+      - --seed
+      args: !SimpleFlagArg
+        name: SEED
+      optional: true
+    - !Flag
+      description: "Sample ID. Used as read group ID in BAM (default:\nsampleXX)"
+      synonyms:
+      - --sample_id
+      args: !SimpleFlagArg
+        name: SAMPLE_ID
+      optional: true
+    - !Flag
+      description: 'Number of CPUs to use (default: 1)'
+      synonyms:
+      - --ncpu
+      args: !SimpleFlagArg
+        name: NCPU
+      optional: true
+    - !Flag
+      description: 'Maximum heap size for Java VM, in GB. (default: 32)'
+      synonyms:
+      - --xmx
+      args: !SimpleFlagArg
+        name: XMX
+      optional: true
+    - !Flag
+      description: 'Do not delete temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe refine_assembly [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU\
+      \ FQU]\n                                --ref_fa REF_FA [--outdir OUTDIR]\n\
+      \                                [--max_step MAX_STEP] [--subsample SUBSAMPLE]\n\
+      \                                [--seed SEED] [--sample_id SAMPLE_ID]\n   \
+      \                             [--ncpu NCPU] [--xmx XMX] [--keep_tmp]\n     \
+      \                           [--quiet] [--logfile LOGFILE] [--debug]\n\noptional\
+      \ arguments:\n  -h, --help            show this help message and exit\n\nInput/Output:\n\
+      \  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2             Fastq\
+      \ file with read 2\n  --fqU FQU             Fastq file with unpaired reads\n\
+      \  --ref_fa REF_FA       Assembly to refine\n  --outdir OUTDIR       Output\
+      \ directory (default: .)\n\nRefinement options:\n  --max_step MAX_STEP   Maximum\
+      \ number of refinement steps (default: 1)\n  --subsample SUBSAMPLE\n       \
+      \                 Use a subsample of reads for refinement.\n  --seed SEED  \
+      \         Seed for random number generator (ignored if not\n               \
+      \         subsampling).\n  --sample_id SAMPLE_ID\n                        Sample\
+      \ ID. Used as read group ID in BAM (default:\n                        sampleXX)\n\
+      \nSettings:\n  --ncpu NCPU           Number of CPUs to use (default: 1)\n  --xmx\
+      \ XMX             Maximum heap size for Java VM, in GB. (default: 32)\n  --keep_tmp\
+      \            Do not delete temporary directory (default: False)\n  --quiet \
+      \              Do not write output to console (silence stdout and\n        \
+      \                stderr) (default: False)\n  --logfile LOGFILE     Append console\
+      \ output to this file\n  --debug               Print commands but do not run\
+      \ (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - call_variants
+    positional: []
+    named:
+    - !Flag
+      description: Alignment file.
+      synonyms:
+      - --aln_bam
+      args: !SimpleFlagArg
+        name: ALN_BAM
+      optional: true
+    - !Flag
+      description: Reference fasta file.
+      synonyms:
+      - --ref_fa
+      args: !SimpleFlagArg
+        name: REF_FA
+      optional: true
+    - !Flag
+      description: 'Output directory (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: 'Output calls for all sites. (default: False)'
+      synonyms:
+      - --emit_all
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Minimum base quality required to consider a base for\ncalling.\
+        \ (default: 15)"
+      synonyms:
+      - --min_base_qual
+      args: !SimpleFlagArg
+        name: MIN_BASE_QUAL
+      optional: true
+    - !Flag
+      description: Number of CPU to use
+      synonyms:
+      - --ncpu
+      args: !SimpleFlagArg
+        name: NCPU
+      optional: true
+    - !Flag
+      description: 'Maximum heap size for Java VM, in GB. (default: 32)'
+      synonyms:
+      - --xmx
+      args: !SimpleFlagArg
+        name: XMX
+      optional: true
+    - !Flag
+      description: 'Do not delete temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe call_variants [-h] --aln_bam ALN_BAM --ref_fa REF_FA\n\
+      \                              [--outdir OUTDIR] [--emit_all]\n            \
+      \                  [--min_base_qual MIN_BASE_QUAL] [--ncpu NCPU]\n         \
+      \                     [--xmx XMX] [--keep_tmp] [--quiet]\n                 \
+      \             [--logfile LOGFILE] [--debug]\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n\nInput/Output:\n  --aln_bam ALN_BAM\
+      \     Alignment file.\n  --ref_fa REF_FA       Reference fasta file.\n  --outdir\
+      \ OUTDIR       Output directory (default: .)\n\nVariant calling options:\n \
+      \ --emit_all            Output calls for all sites. (default: False)\n  --min_base_qual\
+      \ MIN_BASE_QUAL\n                        Minimum base quality required to consider\
+      \ a base for\n                        calling. (default: 15)\n\nSettings:\n\
+      \  --ncpu NCPU           Number of CPU to use\n  --xmx XMX             Maximum\
+      \ heap size for Java VM, in GB. (default: 32)\n  --keep_tmp            Do not\
+      \ delete temporary directory (default: False)\n  --quiet               Do not\
+      \ write output to console (silence stdout and\n                        stderr)\
+      \ (default: False)\n  --logfile LOGFILE     Append console output to this file\n\
+      \  --debug               Print commands but do not run (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - ec_reads
+    positional: []
+    named:
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq1
+      args: !SimpleFlagArg
+        name: FQ1
+      optional: true
+    - !Flag
+      description: Fastq file with read 2
+      synonyms:
+      - --fq2
+      args: !SimpleFlagArg
+        name: FQ2
+      optional: true
+    - !Flag
+      description: Fastq file with unpaired reads
+      synonyms:
+      - --fqU
+      args: !SimpleFlagArg
+        name: FQU
+      optional: true
+    - !Flag
+      description: Output directory
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: 'Number of CPU to use (default: 1)'
+      synonyms:
+      - --ncpu
+      args: !SimpleFlagArg
+        name: NCPU
+      optional: true
+    - !Flag
+      description: 'Keep temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe ec_reads [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU]\n\
+      \                         [--outdir OUTDIR] [--ncpu NCPU] [--keep_tmp]\n   \
+      \                      [--quiet] [--logfile LOGFILE] [--debug]\n\noptional arguments:\n\
+      \  -h, --help         show this help message and exit\n\nInput/Output:\n  --fq1\
+      \ FQ1          Fastq file with read 1\n  --fq2 FQ2          Fastq file with\
+      \ read 2\n  --fqU FQU          Fastq file with unpaired reads\n  --outdir OUTDIR\
+      \    Output directory\n\nSettings:\n  --ncpu NCPU        Number of CPU to use\
+      \ (default: 1)\n  --keep_tmp         Keep temporary directory (default: False)\n\
+      \  --quiet            Do not write output to console (silence stdout and\n \
+      \                    stderr) (default: False)\n  --logfile LOGFILE  Append console\
+      \ output to this file\n  --debug            Print commands but do not run (default:\
+      \ False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - build_tree_NG
     positional: []
     named:
     - !Flag
@@ -2522,14 +1110,14 @@ parent: &id001 !Command
         name: MODEL
       optional: true
     - !Flag
-      description: 'Run bootstrap search and find best ML tree (default: False)'
+      description: "Run bootstrap search and find best ML tree (default:\nFalse)"
       synonyms:
       - --all
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Branch length estimation mode: linked, scaled, unlinked (partitioned
-        analysis only)'
+      description: "Branch length estimation mode: linked, scaled,\nunlinked (partitioned\
+        \ analysis only)"
       synonyms:
       - --branch_length
       args: !SimpleFlagArg
@@ -2550,8 +1138,8 @@ parent: &id001 !Command
         name: RAND_TREE
       optional: true
     - !Flag
-      description: Start from a tree generated by the parsimony-based randomized stepwise
-        addition algorithm
+      description: "Start from a tree generated by the parsimony-based\nrandomized\
+        \ stepwise addition algorithm"
       synonyms:
       - --pars_tree
       args: !SimpleFlagArg
@@ -2571,14 +1159,14 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Find best scoring ML tree with 1 random tree (default: False)'
+      description: "Find best scoring ML tree with 1 random tree (default:\nFalse)"
       synonyms:
       - --search_1random
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Specify a constraint tree to e.g. enforce monophyly of certain
-        groups
+      description: "Specify a constraint tree to e.g. enforce monophyly of\ncertain\
+        \ groups"
       synonyms:
       - --constraint_tree
       args: !SimpleFlagArg
@@ -2592,13 +1180,13 @@ parent: &id001 !Command
         name: OUTGROUP
       optional: true
     - !Flag
-      description: 'A posteriori bootstrap convergence test (default: False)'
+      description: "A posteriori bootstrap convergence test (default:\nFalse)"
       synonyms:
       - --bsconverge
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Generate bootstrap replicate alignments (default: False)'
+      description: "Generate bootstrap replicate alignments (default:\nFalse)"
       synonyms:
       - --bs_msa
       args: !EmptyFlagArg {}
@@ -2611,8 +1199,8 @@ parent: &id001 !Command
         name: BS_TREES
       optional: true
     - !Flag
-      description: Change the bootstopping cutoff value to make the test more or less
-        stringent
+      description: "Change the bootstopping cutoff value to make the test\nmore or\
+        \ less stringent"
       synonyms:
       - --bs_tree_cutoff
       args: !SimpleFlagArg
@@ -2632,30 +1220,30 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Check alignment file and remove any columns consisting entirely
-        of gaps (default: False)'
+      description: "Check alignment file and remove any columns consisting\nentirely\
+        \ of gaps (default: False)"
       synonyms:
       - --check
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Options for output verbosity: ERROR, WARNING, RESULT, INFO, PROGRESS,
-        VERBOSE, or DEBUG'
+      description: "Options for output verbosity: ERROR, WARNING, RESULT,\nINFO, PROGRESS,\
+        \ VERBOSE, or DEBUG"
       synonyms:
       - --log
       args: !SimpleFlagArg
         name: LOG
       optional: true
     - !Flag
-      description: 'Compute log-likelihood of a given tree without any optimization
-        (default: False)'
+      description: "Compute log-likelihood of a given tree without any\noptimization\
+        \ (default: False)"
       synonyms:
       - --loglh
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Check whether a tree lies on a phylogenetic terrace (default:
-        False)'
+      description: "Check whether a tree lies on a phylogenetic terrace\n(default:\
+        \ False)"
       synonyms:
       - --terrace
       args: !EmptyFlagArg {}
@@ -2668,8 +1256,8 @@ parent: &id001 !Command
         name: SEED
       optional: true
     - !Flag
-      description: 'Run even if there are existing files with the same name (use with
-        caution!) (default: False)'
+      description: "Run even if there are existing files with the same\nname (use\
+        \ with caution!) (default: False)"
       synonyms:
       - --redo
       args: !EmptyFlagArg {}
@@ -2681,8 +1269,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Do not write output to console (silence stdout and stderr) (default:
-        False)'
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
       synonyms:
       - --quiet
       args: !EmptyFlagArg {}
@@ -2707,11 +1295,9 @@ parent: &id001 !Command
       - --debug
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - haphpipe
-    - build_tree_NG
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -2785,8 +1371,34 @@ parent: &id001 !Command
       \ commands but do not run (default: False)\n"
     generated_using: *id002
   - !Command
+    command:
+    - haphpipe
+    - pairwise_align
     positional: []
     named:
+    - !Flag
+      description: Assembled amplicons (fasta)
+      synonyms:
+      - --amplicons_fa
+      args: !SimpleFlagArg
+        name: AMPLICONS_FA
+      optional: true
+    - !Flag
+      description: Reference fasta file
+      synonyms:
+      - --ref_fa
+      args: !SimpleFlagArg
+        name: REF_FA
+      optional: true
+    - !Flag
+      description: "GTF format file containing amplicon regions. Primary\nand alternate\
+        \ coding regions should be provided in the\nattribute field (for amino acid\
+        \ alignment)."
+      synonyms:
+      - --ref_gtf
+      args: !SimpleFlagArg
+        name: REF_GTF
+      optional: true
     - !Flag
       description: 'Output directory (default: .)'
       synonyms:
@@ -2795,17 +1407,34 @@ parent: &id001 !Command
         name: OUTDIR
       optional: true
     - !Flag
-      description: 'Does not run entire demo, only pulls the reference files (default:
-        False)'
+      description: 'Do not delete temporary directory (default: False)'
       synonyms:
-      - --refonly
+      - --keep_tmp
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - haphpipe
-    - demo
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -2815,12 +1444,1523 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: haphpipe demo [-h] [--outdir OUTDIR] [--refonly]\n\noptional\
-      \ arguments:\n  -h, --help       show this help message and exit\n\nInput/Output:\n\
-      \  --outdir OUTDIR  Output directory (default: .)\n  --refonly        Does not\
-      \ run entire demo, only pulls the reference files\n                   (default:\
-      \ False)\n"
+    help_text: "usage: haphpipe pairwise_align [-h] --amplicons_fa AMPLICONS_FA --ref_fa\n\
+      \                               REF_FA --ref_gtf REF_GTF [--outdir OUTDIR]\n\
+      \                               [--keep_tmp] [--quiet] [--logfile LOGFILE]\n\
+      \                               [--debug]\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n\nInput/Output:\n  --amplicons_fa\
+      \ AMPLICONS_FA\n                        Assembled amplicons (fasta)\n  --ref_fa\
+      \ REF_FA       Reference fasta file\n  --ref_gtf REF_GTF     GTF format file\
+      \ containing amplicon regions. Primary\n                        and alternate\
+      \ coding regions should be provided in the\n                        attribute\
+      \ field (for amino acid alignment).\n  --outdir OUTDIR       Output directory\
+      \ (default: .)\n\nSettings:\n  --keep_tmp            Do not delete temporary\
+      \ directory (default: False)\n  --quiet               Do not write output to\
+      \ console (silence stdout and\n                        stderr) (default: False)\n\
+      \  --logfile LOGFILE     Append console output to this file\n  --debug     \
+      \          Print commands but do not run (default: False)\n"
     generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - extract_pairwise
+    positional: []
+    named:
+    - !Flag
+      description: "JSON file describing alignment (output of\npairwise_align stage)"
+      synonyms:
+      - --align_json
+      args: !SimpleFlagArg
+        name: ALIGN_JSON
+      optional: true
+    - !Flag
+      description: Output file. Default is stdout
+      synonyms:
+      - --outfile
+      args: !SimpleFlagArg
+        name: OUTFILE
+      optional: true
+    - !Flag
+      description: 'Format for output (default: nuc_fa)'
+      synonyms:
+      - --outfmt
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? tsv
+          ? prot_fa
+          ? amp_gtf
+          ? aln_fa
+          ? nuc_fa
+      optional: true
+    - !Flag
+      description: "Reference region. String format is ref:start-stop. For\nexample,\
+        \ the region string to extract pol when aligned\nto HXB2 is HIV_B.K03455.HXB2:2085-5096"
+      synonyms:
+      - --refreg
+      args: !SimpleFlagArg
+        name: REFREG
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe extract_pairwise [-h] --align_json ALIGN_JSON\n  \
+      \                               [--outfile OUTFILE]\n                      \
+      \           [--outfmt {nuc_fa,aln_fa,amp_gtf,tsv,prot_fa}]\n               \
+      \                  [--refreg REFREG] [--debug]\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n\nInput/Output:\n  --align_json\
+      \ ALIGN_JSON\n                        JSON file describing alignment (output\
+      \ of\n                        pairwise_align stage)\n  --outfile OUTFILE   \
+      \  Output file. Default is stdout\n\nExtract pairwise options:\n  --outfmt {nuc_fa,aln_fa,amp_gtf,tsv,prot_fa}\n\
+      \                        Format for output (default: nuc_fa)\n  --refreg REFREG\
+      \       Reference region. String format is ref:start-stop. For\n           \
+      \             example, the region string to extract pol when aligned\n     \
+      \                   to HXB2 is HIV_B.K03455.HXB2:2085-5096\n\nSettings:\n  --debug\
+      \               Print commands but do not run (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - ph_parser
+    positional: []
+    named:
+    - !Flag
+      description: Haplotype file created by PredictHaplo.
+      synonyms:
+      - --haplotypes_fa
+      args: !SimpleFlagArg
+        name: HAPLOTYPES_FA
+      optional: true
+    - !Flag
+      description: 'Output directory. (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: Prefix to add to sequence names
+      synonyms:
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: 'Do not remove gaps from alignment (default: False)'
+      synonyms:
+      - --keep_gaps
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe ph_parser [-h] --haplotypes_fa HAPLOTYPES_FA [--outdir\
+      \ OUTDIR]\n                          [--prefix PREFIX] [--keep_gaps] [--quiet]\n\
+      \                          [--logfile LOGFILE]\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n\nInput/Output:\n  --haplotypes_fa\
+      \ HAPLOTYPES_FA\n                        Haplotype file created by PredictHaplo.\n\
+      \  --outdir OUTDIR       Output directory. (default: .)\n\nParser options:\n\
+      \  --prefix PREFIX       Prefix to add to sequence names\n  --keep_gaps    \
+      \       Do not remove gaps from alignment (default: False)\n\nSettings:\n  --quiet\
+      \               Do not write output to console (silence stdout and\n       \
+      \                 stderr) (default: False)\n  --logfile LOGFILE     Append console\
+      \ output to this file\n"
+    generated_using: *id002
+  - &id003 !Command
+    command:
+    - haphpipe
+    - demo
+    positional: []
+    named:
+    - !Flag
+      description: "://github.com/gwcbi/haphpipe/blob/master/bin/refs.tar.gz?raw=true\
+        \ \\\n> ./haphpipe_demo/refs.tar.gz"
+      synonyms:
+      - -L
+      args: !SimpleFlagArg
+        name: https
+      optional: true
+    - !Flag
+      description: \
+      synonyms:
+      - -xzvf
+      args: !SimpleFlagArg
+        name: haphpipe_demo/refs.tar.gz
+      optional: true
+    - !Flag
+      description: ./haphpipe_demo
+      synonyms:
+      - -C
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands:
+    - !Command
+      command:
+      - haphpipe
+      - demo
+      - '100'
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: haphpipe
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: demo
+        optional: false
+      named:
+      - !Flag
+        description: 'Output directory (default: .)'
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUTDIR
+        optional: true
+      - !Flag
+        description: "Does not run entire demo, only pulls the reference files\n(default:\
+          \ False)\n"
+        synonyms:
+        - --refonly
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: haphpipe demo [-h] [--outdir OUTDIR] [--refonly]\n\noptional\
+        \ arguments:\n  -h, --help       show this help message and exit\n\nInput/Output:\n\
+        \  --outdir OUTDIR  Output directory (default: .)\n  --refonly        Does\
+        \ not run entire demo, only pulls the reference files\n                  \
+        \ (default: False)\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - haphpipe
+      - demo
+      - Dload
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: haphpipe
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: demo
+        optional: false
+      named:
+      - !Flag
+        description: 'Output directory (default: .)'
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUTDIR
+        optional: true
+      - !Flag
+        description: "Does not run entire demo, only pulls the reference files\n(default:\
+          \ False)\n"
+        synonyms:
+        - --refonly
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: haphpipe demo [-h] [--outdir OUTDIR] [--refonly]\n\noptional\
+        \ arguments:\n  -h, --help       show this help message and exit\n\nInput/Output:\n\
+        \  --outdir OUTDIR  Output directory (default: .)\n  --refonly        Does\
+        \ not run entire demo, only pulls the reference files\n                  \
+        \ (default: False)\n"
+      generated_using: *id002
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\n[--- refs command 1 ---]\ncurl \\\n    -L https://github.com/gwcbi/haphpipe/blob/master/bin/refs.tar.gz?raw=true\
+      \ \\\n        > ./haphpipe_demo/refs.tar.gz\n  % Total    % Received % Xferd\
+      \  Average Speed   Time    Time     Time  Current\n                        \
+      \         Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0   \
+      \  0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   126  100\
+      \   126    0     0    224      0 --:--:-- --:--:-- --:--:--   224\n\r  0   \
+      \  0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r\
+      100   137  100   137    0     0    158      0 --:--:-- --:--:-- --:--:--  133k\n\
+      \r100  4056  100  4056    0     0   3408      0  0:00:01  0:00:01 --:--:-- \
+      \ 3408\n\n[--- refs command 1 ---]\ntar \\\n    -xzvf haphpipe_demo/refs.tar.gz\
+      \ \\\n    -C ./haphpipe_demo\n\n[--- refs command 2 ---]\nrm \\\n    ./haphpipe_demo/refs.tar.gz\n\
+      tar: invalid option -- 'z'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
+      \ binary.\n\nUsage: tar -[cxthvO] [-X FILE] [-T FILE] [-f TARFILE] [-C DIR]\
+      \ [FILE]...\n\nCreate, extract, or list files from a tar file\n\nOperation:\n\
+      \tc\tCreate\n\tx\tExtract\n\tt\tList\n\tf\tName of TARFILE ('-' for stdin/out)\n\
+      \tC\tChange to DIR before operation\n\tv\tVerbose\n\tO\tExtract to stdout\n\t\
+      h\tFollow symlinks\n\texclude\tFile to exclude\n\tX\tFile with names to exclude\n\
+      \tT\tFile with names to include\n\nTraceback (most recent call last):\n  File\
+      \ \"/usr/local/bin/haphpipe\", line 10, in <module>\n    sys.exit(console())\n\
+      \  File \"/usr/local/lib/python3.7/site-packages/haphpipe/haphpipe.py\", line\
+      \ 218, in console\n    args.func(**sysutils.args_params(args))\n  File \"/usr/local/lib/python3.7/site-packages/haphpipe/stages/demo.py\"\
+      , line 90, in demo\n    [cmd2, cmd3, ], 'refs'\n  File \"/usr/local/lib/python3.7/site-packages/haphpipe/utils/sysutils.py\"\
+      , line 162, in command_runner\n    returncode=returncode\nhaphpipe.utils.sysutils.PipelineStepError:\
+      \ \n[--- FAILED: refs ---]\nCommand:\ntar -xzvf haphpipe_demo/refs.tar.gz -C\
+      \ ./haphpipe_demo && rm ./haphpipe_demo/refs.tar.gz\nreturncode: 1\n"
+    generated_using: []
+  - !Command
+    command:
+    - haphpipe
+    - sample_reads
+    positional: []
+    named:
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq1
+      args: !SimpleFlagArg
+        name: FQ1
+      optional: true
+    - !Flag
+      description: Fastq file with read 2
+      synonyms:
+      - --fq2
+      args: !SimpleFlagArg
+        name: FQ2
+      optional: true
+    - !Flag
+      description: Fastq file with unpaired reads
+      synonyms:
+      - --fqU
+      args: !SimpleFlagArg
+        name: FQU
+      optional: true
+    - !Flag
+      description: 'Output directory (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: "Number of reads to sample. If greater than the number of\nreads\
+        \ in file, all reads will be sampled."
+      synonyms:
+      - --nreads
+      args: !SimpleFlagArg
+        name: NREADS
+      optional: true
+    - !Flag
+      description: "Fraction of reads to sample, between 0 and 1. Each read\nhas [frac]\
+        \ probability of being sampled, so number of\nsampled reads is not precisely\
+        \ [frac * num_reads]."
+      synonyms:
+      - --frac
+      args: !SimpleFlagArg
+        name: FRAC
+      optional: true
+    - !Flag
+      description: Seed for random number generator.
+      synonyms:
+      - --seed
+      args: !SimpleFlagArg
+        name: SEED
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe sample_reads [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU]\n\
+      \                             [--outdir OUTDIR] (--nreads NREADS | --frac FRAC)\n\
+      \                             [--seed SEED] [--quiet] [--logfile LOGFILE]\n\
+      \                             [--debug]\n\noptional arguments:\n  -h, --help\
+      \         show this help message and exit\n\nInput/Output:\n  --fq1 FQ1    \
+      \      Fastq file with read 1\n  --fq2 FQ2          Fastq file with read 2\n\
+      \  --fqU FQU          Fastq file with unpaired reads\n  --outdir OUTDIR    Output\
+      \ directory (default: .)\n\nSample options:\n  --nreads NREADS    Number of\
+      \ reads to sample. If greater than the number of\n                     reads\
+      \ in file, all reads will be sampled.\n  --frac FRAC        Fraction of reads\
+      \ to sample, between 0 and 1. Each read\n                     has [frac] probability\
+      \ of being sampled, so number of\n                     sampled reads is not\
+      \ precisely [frac * num_reads].\n  --seed SEED        Seed for random number\
+      \ generator.\n\nSettings:\n  --quiet            Do not write output to console\
+      \ (silence stdout and\n                     stderr) (default: False)\n  --logfile\
+      \ LOGFILE  Append console output to this file\n  --debug            Print commands\
+      \ but do not run (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - align_reads
+    positional: []
+    named:
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq1
+      args: !SimpleFlagArg
+        name: FQ1
+      optional: true
+    - !Flag
+      description: Fastq file with read 2
+      synonyms:
+      - --fq2
+      args: !SimpleFlagArg
+        name: FQ2
+      optional: true
+    - !Flag
+      description: Fastq file with unpaired reads
+      synonyms:
+      - --fqU
+      args: !SimpleFlagArg
+        name: FQU
+      optional: true
+    - !Flag
+      description: Reference fasta file.
+      synonyms:
+      - --ref_fa
+      args: !SimpleFlagArg
+        name: REF_FA
+      optional: true
+    - !Flag
+      description: 'Output directory (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: 'Bowtie2 preset (default: sensitive-local)'
+      synonyms:
+      - --bt2_preset
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? very-fast-local
+          ? sensitive-local
+          ? very-fast
+          ? fast
+          ? fast-local
+          ? very-sensitive
+          ? sensitive
+          ? very-sensitive-local
+      optional: true
+    - !Flag
+      description: "Sample ID. Used as read group ID in BAM (default:\nsampleXX)"
+      synonyms:
+      - --sample_id
+      args: !SimpleFlagArg
+        name: SAMPLE_ID
+      optional: true
+    - !Flag
+      description: 'Do not realign indels (default: False)'
+      synonyms:
+      - --no_realign
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Remove duplicates from final alignment. Otherwise\nduplicates\
+        \ are marked but not removed. (default:\nFalse)"
+      synonyms:
+      - --remove_duplicates
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "{Phred+33,Phred+64}\nQuality score encoding"
+      synonyms:
+      - --encoding
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Number of CPUs to use (default: 1)'
+      synonyms:
+      - --ncpu
+      args: !SimpleFlagArg
+        name: NCPU
+      optional: true
+    - !Flag
+      description: 'Maximum heap size for Java VM, in GB. (default: 32)'
+      synonyms:
+      - --xmx
+      args: !SimpleFlagArg
+        name: XMX
+      optional: true
+    - !Flag
+      description: 'Do not delete temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe align_reads [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU]\
+      \ --ref_fa\n                            REF_FA [--outdir OUTDIR]\n         \
+      \                   [--bt2_preset {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}]\n\
+      \                            [--sample_id SAMPLE_ID] [--no_realign]\n      \
+      \                      [--remove_duplicates]\n                            [--encoding\
+      \ {Phred+33,Phred+64}] [--ncpu NCPU]\n                            [--xmx XMX]\
+      \ [--keep_tmp] [--quiet]\n                            [--logfile LOGFILE] [--debug]\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \nInput/Output:\n  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2\
+      \             Fastq file with read 2\n  --fqU FQU             Fastq file with\
+      \ unpaired reads\n  --ref_fa REF_FA       Reference fasta file.\n  --outdir\
+      \ OUTDIR       Output directory (default: .)\n\nAlignment options:\n  --bt2_preset\
+      \ {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}\n\
+      \                        Bowtie2 preset (default: sensitive-local)\n  --sample_id\
+      \ SAMPLE_ID\n                        Sample ID. Used as read group ID in BAM\
+      \ (default:\n                        sampleXX)\n  --no_realign          Do not\
+      \ realign indels (default: False)\n  --remove_duplicates   Remove duplicates\
+      \ from final alignment. Otherwise\n                        duplicates are marked\
+      \ but not removed. (default:\n                        False)\n  --encoding {Phred+33,Phred+64}\n\
+      \                        Quality score encoding\n\nSettings:\n  --ncpu NCPU\
+      \           Number of CPUs to use (default: 1)\n  --xmx XMX             Maximum\
+      \ heap size for Java VM, in GB. (default: 32)\n  --keep_tmp            Do not\
+      \ delete temporary directory (default: False)\n  --quiet               Do not\
+      \ write output to console (silence stdout and\n                        stderr)\
+      \ (default: False)\n  --logfile LOGFILE     Append console output to this file\n\
+      \  --debug               Print commands but do not run (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - vcf_to_consensus
+    positional: []
+    named:
+    - !Flag
+      description: VCF file (created with all sites).
+      synonyms:
+      - --vcf
+      args: !SimpleFlagArg
+        name: VCF
+      optional: true
+    - !Flag
+      description: 'Output directory (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: 'Index for sample if multi-sample VCF (default: 0)'
+      synonyms:
+      - --sampidx
+      args: !SimpleFlagArg
+        name: SAMPIDX
+      optional: true
+    - !Flag
+      description: 'Minimum depth to call site (default: 5)'
+      synonyms:
+      - --min_dp
+      args: !SimpleFlagArg
+        name: MIN_DP
+      optional: true
+    - !Flag
+      description: 'Allele fraction to make unambiguous call (default: 0.5)'
+      synonyms:
+      - --major
+      args: !SimpleFlagArg
+        name: MAJOR
+      optional: true
+    - !Flag
+      description: 'Allele fraction to make ambiguous call (default: 0.2)'
+      synonyms:
+      - --minor
+      args: !SimpleFlagArg
+        name: MINOR
+      optional: true
+    - !Flag
+      description: 'Do not delete temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe vcf_to_consensus [-h] --vcf VCF [--outdir OUTDIR]\n\
+      \                                 [--sampidx SAMPIDX] [--min_dp MIN_DP]\n  \
+      \                               [--major MAJOR] [--minor MINOR] [--keep_tmp]\n\
+      \                                 [--quiet] [--logfile LOGFILE]\n\noptional\
+      \ arguments:\n  -h, --help         show this help message and exit\n\nInput/Output:\n\
+      \  --vcf VCF          VCF file (created with all sites).\n  --outdir OUTDIR\
+      \    Output directory (default: .)\n  --sampidx SAMPIDX  Index for sample if\
+      \ multi-sample VCF (default: 0)\n\nVariant options:\n  --min_dp MIN_DP    Minimum\
+      \ depth to call site (default: 5)\n  --major MAJOR      Allele fraction to make\
+      \ unambiguous call (default: 0.5)\n  --minor MINOR      Allele fraction to make\
+      \ ambiguous call (default: 0.2)\n\nSettings:\n  --keep_tmp         Do not delete\
+      \ temporary directory (default: False)\n  --quiet            Do not write output\
+      \ to console (silence stdout and\n                     stderr) (default: False)\n\
+      \  --logfile LOGFILE  Append console output to this file\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - predict_haplo
+    positional: []
+    named:
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq1
+      args: !SimpleFlagArg
+        name: FQ1
+      optional: true
+    - !Flag
+      description: Fastq file with read 2
+      synonyms:
+      - --fq2
+      args: !SimpleFlagArg
+        name: FQ2
+      optional: true
+    - !Flag
+      description: Reference sequence used to align reads (fasta)
+      synonyms:
+      - --ref_fa
+      args: !SimpleFlagArg
+        name: REF_FA
+      optional: true
+    - !Flag
+      description: "File with regions to perform haplotype reconstruction.\nRegions\
+        \ should be specified using the samtools region\nspecification format: RNAME[:STARTPOS[-ENDPOS]]"
+      synonyms:
+      - --region_txt
+      args: !SimpleFlagArg
+        name: REGION_TXT
+      optional: true
+    - !Flag
+      description: 'Output directory (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: "Minimum readlength passed to PredictHaplo (default:\n36)"
+      synonyms:
+      - --min_readlength
+      args: !SimpleFlagArg
+        name: MIN_READLENGTH
+      optional: true
+    - !Flag
+      description: 'Do not delete temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe predict_haplo [-h] --fq1 FQ1 --fq2 FQ2 --ref_fa REF_FA\n\
+      \                              [--region_txt REGION_TXT] [--outdir OUTDIR]\n\
+      \                              [--min_readlength MIN_READLENGTH] [--keep_tmp]\n\
+      \                              [--quiet] [--logfile LOGFILE] [--debug]\n\noptional\
+      \ arguments:\n  -h, --help            show this help message and exit\n\nInput/Output:\n\
+      \  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2             Fastq\
+      \ file with read 2\n  --ref_fa REF_FA       Reference sequence used to align\
+      \ reads (fasta)\n  --region_txt REGION_TXT\n                        File with\
+      \ regions to perform haplotype reconstruction.\n                        Regions\
+      \ should be specified using the samtools region\n                        specification\
+      \ format: RNAME[:STARTPOS[-ENDPOS]]\n  --outdir OUTDIR       Output directory\
+      \ (default: .)\n\nPredictHaplo Options:\n  --min_readlength MIN_READLENGTH\n\
+      \                        Minimum readlength passed to PredictHaplo (default:\n\
+      \                        36)\n\nSettings:\n  --keep_tmp            Do not delete\
+      \ temporary directory (default: False)\n  --quiet               Do not write\
+      \ output to console (silence stdout and\n                        stderr) (default:\
+      \ False)\n  --logfile LOGFILE     Append console output to this file\n  --debug\
+      \               Print commands but do not run (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - join_reads
+    positional: []
+    named:
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq1
+      args: !SimpleFlagArg
+        name: FQ1
+      optional: true
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq2
+      args: !SimpleFlagArg
+        name: FQ2
+      optional: true
+    - !Flag
+      description: Output directory
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: "The minimum required overlap length between two reads\nto provide\
+        \ a confident overlap. (default: 10)"
+      synonyms:
+      - --min_overlap
+      args: !SimpleFlagArg
+        name: MIN_OVERLAP
+      optional: true
+    - !Flag
+      description: "Maximum overlap length expected in approximately 90\npct of read\
+        \ pairs, longer overlaps are penalized."
+      synonyms:
+      - --max_overlap
+      args: !SimpleFlagArg
+        name: MAX_OVERLAP
+      optional: true
+    - !Flag
+      description: "Also try combining read pairs in the \"outie\"\norientation (default:\
+        \ False)"
+      synonyms:
+      - --allow_outies
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Quality score encoding
+      synonyms:
+      - --encoding
+      args: !SimpleFlagArg
+        name: ENCODING
+      optional: true
+    - !Flag
+      description: Number of CPU to use
+      synonyms:
+      - --ncpu
+      args: !SimpleFlagArg
+        name: NCPU
+      optional: true
+    - !Flag
+      description: 'Keep temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe join_reads [-h] --fq1 FQ1 --fq2 FQ2 [--outdir OUTDIR]\n\
+      \                           [--min_overlap MIN_OVERLAP]\n                  \
+      \         [--max_overlap MAX_OVERLAP] [--allow_outies]\n                   \
+      \        [--encoding ENCODING] [--ncpu NCPU] [--keep_tmp]\n                \
+      \           [--quiet] [--logfile LOGFILE] [--debug]\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n\nInput/Output:\n\
+      \  --fq1 FQ1             Fastq file with read 1\n  --fq2 FQ2             Fastq\
+      \ file with read 1\n  --outdir OUTDIR       Output directory\n\nFLAsh settings:\n\
+      \  --min_overlap MIN_OVERLAP\n                        The minimum required overlap\
+      \ length between two reads\n                        to provide a confident overlap.\
+      \ (default: 10)\n  --max_overlap MAX_OVERLAP\n                        Maximum\
+      \ overlap length expected in approximately 90\n                        pct of\
+      \ read pairs, longer overlaps are penalized.\n  --allow_outies        Also try\
+      \ combining read pairs in the \"outie\"\n                        orientation\
+      \ (default: False)\n  --encoding ENCODING   Quality score encoding\n\nSettings:\n\
+      \  --ncpu NCPU           Number of CPU to use\n  --keep_tmp            Keep\
+      \ temporary directory (default: False)\n  --quiet               Do not write\
+      \ output to console (silence stdout and\n                        stderr) (default:\
+      \ False)\n  --logfile LOGFILE     Append console output to this file\n  --debug\
+      \               Print commands but do not run (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - finalize_assembly
+    positional: []
+    named:
+    - !Flag
+      description: '[--outdir OUTDIR]'
+      synonyms:
+      - --ref_fa
+      args: !SimpleFlagArg
+        name: REF_FA
+      optional: true
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq1
+      args: !SimpleFlagArg
+        name: FQ1
+      optional: true
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq2
+      args: !SimpleFlagArg
+        name: FQ2
+      optional: true
+    - !Flag
+      description: Fastq file with unpaired reads
+      synonyms:
+      - --fqU
+      args: !SimpleFlagArg
+        name: FQU
+      optional: true
+    - !Flag
+      description: 'Output directory (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: 'Bowtie2 preset to use (default: very-sensitive)'
+      synonyms:
+      - --bt2_preset
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? very-fast-local
+          ? sensitive-local
+          ? very-fast
+          ? fast
+          ? fast-local
+          ? very-sensitive
+          ? sensitive
+          ? very-sensitive-local
+      optional: true
+    - !Flag
+      description: 'Sample ID (default: sampleXX)'
+      synonyms:
+      - --sample_id
+      args: !SimpleFlagArg
+        name: SAMPLE_ID
+      optional: true
+    - !Flag
+      description: Number of CPU to use
+      synonyms:
+      - --ncpu
+      args: !SimpleFlagArg
+        name: NCPU
+      optional: true
+    - !Flag
+      description: 'Do not delete temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe finalize_assembly [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU\
+      \ FQU]\n                                  --ref_fa REF_FA [--outdir OUTDIR]\n\
+      \                                  [--bt2_preset {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}]\n\
+      \                                  [--sample_id SAMPLE_ID] [--ncpu NCPU]\n \
+      \                                 [--keep_tmp] [--quiet] [--logfile LOGFILE]\n\
+      \                                  [--debug]\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n\nInput/Output:\n  --fq1 FQ1 \
+      \            Fastq file with read 1\n  --fq2 FQ2             Fastq file with\
+      \ read 1\n  --fqU FQU             Fastq file with unpaired reads\n  --ref_fa\
+      \ REF_FA       Consensus fasta file\n  --outdir OUTDIR       Output directory\
+      \ (default: .)\n\nFix consensus options:\n  --bt2_preset {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}\n\
+      \                        Bowtie2 preset to use (default: very-sensitive)\n \
+      \ --sample_id SAMPLE_ID\n                        Sample ID (default: sampleXX)\n\
+      \nSettings:\n  --ncpu NCPU           Number of CPU to use\n  --keep_tmp    \
+      \        Do not delete temporary directory (default: False)\n  --quiet     \
+      \          Do not write output to console (silence stdout and\n            \
+      \            stderr) (default: False)\n  --logfile LOGFILE     Append console\
+      \ output to this file\n  --debug               Print commands but do not run\
+      \ (default: False)\n"
+    generated_using: *id002
+  - *id004
+  - !Command
+    command:
+    - haphpipe
+    - model_test
+    positional:
+    - !Positional
+      description: --frequencies FREQUENCIES
+      position: 0
+      name: stamatakis
+      optional: false
+    named:
+    - !Flag
+      description: Alignment in FASTA or PHYLIP format
+      synonyms:
+      - --seqs
+      args: !SimpleFlagArg
+        name: SEQS
+      optional: true
+    - !Flag
+      description: Prefix for output files
+      synonyms:
+      - --run_id
+      args: !SimpleFlagArg
+        name: RUN_ID
+      optional: true
+    - !Flag
+      description: 'Name for output file (Default: modeltest_results)'
+      synonyms:
+      - --outname
+      args: !SimpleFlagArg
+        name: OUTNAME
+      optional: true
+    - !Flag
+      description: 'Output directory (Default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: 'Data type: nt or aa'
+      synonyms:
+      - --data_type
+      args: !SimpleFlagArg
+        name: DATA_TYPE
+      optional: true
+    - !Flag
+      description: Partitions file
+      synonyms:
+      - --partitions
+      args: !SimpleFlagArg
+        name: PARTITIONS
+      optional: true
+    - !Flag
+      description: Seed for random number generator
+      synonyms:
+      - --seed
+      args: !SimpleFlagArg
+        name: SEED
+      optional: true
+    - !Flag
+      description: "Starting topology: ml, mp, fixed-ml-jc, fixed-ml-gtr,\nfixed-mp,\
+        \ random, or user"
+      synonyms:
+      - --topology
+      args: !SimpleFlagArg
+        name: TOPOLOGY
+      optional: true
+    - !Flag
+      description: User-defined starting tree
+      synonyms:
+      - --utree
+      args: !SimpleFlagArg
+        name: UTREE
+      optional: true
+    - !Flag
+      description: 'force output overriding (default: False)'
+      synonyms:
+      - --force
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Ascertainment bias correction: lewis, felsenstein, or'
+      synonyms:
+      - --asc_bias
+      args: !SimpleFlagArg
+        name: ASC_BIAS
+      optional: true
+    - !Flag
+      description: "Set rate heterogeneity: u (uniform), i (invariant\nsites +I),\
+        \ g (gamma +G), or f (both invariant sites\nand gamma +I+G)"
+      synonyms:
+      - --het
+      args: !SimpleFlagArg
+        name: HET
+      optional: true
+    - !Flag
+      description: Text file with candidate models, one per line
+      synonyms:
+      - --models
+      args: !SimpleFlagArg
+        name: MODELS
+      optional: true
+    - !Flag
+      description: "Number of predefined DNA substitution schemes\nevaluated: 3, 5,\
+        \ 7, 11, or 203"
+      synonyms:
+      - --schemes
+      args: !SimpleFlagArg
+        name: SCHEMES
+      optional: true
+    - !Flag
+      description: "Set candidate models according to a specified tool:\nraxml, phyml,\
+        \ mrbayes, or paup"
+      synonyms:
+      - --template
+      args: !SimpleFlagArg
+        name: TEMPLATE
+      optional: true
+    - !Flag
+      description: 'Number of CPU to use (default: 1)'
+      synonyms:
+      - --ncpu
+      args: !SimpleFlagArg
+        name: NCPU
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Name for log file (output)
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Keep temporary directory (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe model_test [-h] [--seqs SEQS] [--run_id RUN_ID]\n\
+      \                           [--outname OUTNAME] [--outdir OUTDIR]\n        \
+      \                   [--data_type DATA_TYPE] [--partitions PARTITIONS]\n    \
+      \                       [--seed SEED] [--topology TOPOLOGY] [--utree UTREE]\n\
+      \                           [--force] [--asc_bias ASC_BIAS]\n              \
+      \             [--frequencies FREQUENCIES] [--het HET]\n                    \
+      \       [--models MODELS] [--schemes SCHEMES]\n                           [--template\
+      \ TEMPLATE] [--ncpu NCPU] [--quiet]\n                           [--logfile LOGFILE]\
+      \ [--debug] [--keep_tmp]\n\noptional arguments:\n  -h, --help            show\
+      \ this help message and exit\n\nInput/Output:\n  --seqs SEQS           Alignment\
+      \ in FASTA or PHYLIP format\n  --run_id RUN_ID       Prefix for output files\n\
+      \  --outname OUTNAME     Name for output file (Default: modeltest_results)\n\
+      \  --outdir OUTDIR       Output directory (Default: .)\n\nModelTest-NG Options:\n\
+      \  --data_type DATA_TYPE\n                        Data type: nt or aa\n  --partitions\
+      \ PARTITIONS\n                        Partitions file\n  --seed SEED       \
+      \    Seed for random number generator\n  --topology TOPOLOGY   Starting topology:\
+      \ ml, mp, fixed-ml-jc, fixed-ml-gtr,\n                        fixed-mp, random,\
+      \ or user\n  --utree UTREE         User-defined starting tree\n  --force   \
+      \            force output overriding (default: False)\n  --asc_bias ASC_BIAS\
+      \   Ascertainment bias correction: lewis, felsenstein, or\n                \
+      \        stamatakis\n  --frequencies FREQUENCIES\n                        Candidate\
+      \ model frequencies: e (estimated) or f\n                        (fixed)\n \
+      \ --het HET             Set rate heterogeneity: u (uniform), i (invariant\n\
+      \                        sites +I), g (gamma +G), or f (both invariant sites\n\
+      \                        and gamma +I+G)\n  --models MODELS       Text file\
+      \ with candidate models, one per line\n  --schemes SCHEMES     Number of predefined\
+      \ DNA substitution schemes\n                        evaluated: 3, 5, 7, 11,\
+      \ or 203\n  --template TEMPLATE   Set candidate models according to a specified\
+      \ tool:\n                        raxml, phyml, mrbayes, or paup\n\nOptions:\n\
+      \  --ncpu NCPU           Number of CPU to use (default: 1)\n  --quiet      \
+      \         Do not write output to console (silence stdout and\n             \
+      \           stderr) (default: False)\n  --logfile LOGFILE     Name for log file\
+      \ (output)\n  --debug               Print commands but do not run (default:\
+      \ False)\n  --keep_tmp            Keep temporary directory (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - summary_stats
+    positional: []
+    named:
+    - !Flag
+      description: "List of directories which include the required files,\none on\
+        \ each line"
+      synonyms:
+      - --dir_list
+      args: !SimpleFlagArg
+        name: DIR_LIST
+      optional: true
+    - !Flag
+      description: "List of directories which include haplotype summary\nfiles, one\
+        \ on each line"
+      synonyms:
+      - --ph_list
+      args: !SimpleFlagArg
+        name: PH_LIST
+      optional: true
+    - !Flag
+      description: 'Amplicons used in assembly (default: False)'
+      synonyms:
+      - --amplicons
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Output directory
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Name for log file (output)
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe summary_stats [-h] [--dir_list DIR_LIST] [--ph_list\
+      \ PH_LIST]\n                              [--amplicons] [--outdir OUTDIR] [--quiet]\n\
+      \                              [--logfile LOGFILE] [--debug]\n\noptional arguments:\n\
+      \  -h, --help           show this help message and exit\n\nInput/Output:\n \
+      \ --dir_list DIR_LIST  List of directories which include the required files,\n\
+      \                       one on each line\n  --ph_list PH_LIST    List of directories\
+      \ which include haplotype summary\n                       files, one on each\
+      \ line\n  --amplicons          Amplicons used in assembly (default: False)\n\
+      \  --outdir OUTDIR      Output directory\n\nSettings:\n  --quiet           \
+      \   Do not write output to console (silence stdout and\n                   \
+      \    stderr) (default: False)\n  --logfile LOGFILE    Name for log file (output)\n\
+      \  --debug              Print commands but do not run (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - assemble_scaffold
+    positional: []
+    named:
+    - !Flag
+      description: Fasta file with assembled contigs
+      synonyms:
+      - --contigs_fa
+      args: !SimpleFlagArg
+        name: CONTIGS_FA
+      optional: true
+    - !Flag
+      description: Fasta file with reference genome to scaffold against
+      synonyms:
+      - --ref_fa
+      args: !SimpleFlagArg
+        name: REF_FA
+      optional: true
+    - !Flag
+      description: 'Output directory (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: "Name to append to scaffold sequence. (default:\nsample01)"
+      synonyms:
+      - --seqname
+      args: !SimpleFlagArg
+        name: SEQNAME
+      optional: true
+    - !Flag
+      description: 'Additional options (default: False)'
+      synonyms:
+      - --keep_tmp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe assemble_scaffold [-h] --contigs_fa CONTIGS_FA --ref_fa\
+      \ REF_FA\n                                  [--outdir OUTDIR] [--seqname SEQNAME]\n\
+      \                                  [--keep_tmp] [--quiet] [--logfile LOGFILE]\n\
+      \                                  [--debug]\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n\nInput/Output:\n  --contigs_fa\
+      \ CONTIGS_FA\n                        Fasta file with assembled contigs\n  --ref_fa\
+      \ REF_FA       Fasta file with reference genome to scaffold against\n  --outdir\
+      \ OUTDIR       Output directory (default: .)\n\nScaffold options:\n  --seqname\
+      \ SEQNAME     Name to append to scaffold sequence. (default:\n             \
+      \           sample01)\n\nSettings:\n  --keep_tmp            Additional options\
+      \ (default: False)\n  --quiet               Do not write output to console (silence\
+      \ stdout and\n                        stderr) (default: False)\n  --logfile\
+      \ LOGFILE     Append console output to this file\n  --debug               Print\
+      \ commands but do not run (default: False)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - haphpipe
+    - trim_reads
+    positional: []
+    named:
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq1
+      args: !SimpleFlagArg
+        name: FQ1
+      optional: true
+    - !Flag
+      description: Fastq file with read 1
+      synonyms:
+      - --fq2
+      args: !SimpleFlagArg
+        name: FQ2
+      optional: true
+    - !Flag
+      description: Fastq file with unpaired reads
+      synonyms:
+      - --fqU
+      args: !SimpleFlagArg
+        name: FQU
+      optional: true
+    - !Flag
+      description: 'Output directory (default: .)'
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    - !Flag
+      description: Adapter file
+      synonyms:
+      - --adapter_file
+      args: !SimpleFlagArg
+        name: ADAPTER_FILE
+      optional: true
+    - !Flag
+      description: "Trim commands for trimmomatic (default: ['LEADING:3',\n'TRAILING:3',\
+        \ 'SLIDINGWINDOW:4:15', 'MINLEN:36'])"
+      synonyms:
+      - --trimmers
+      args: !SimpleFlagArg
+        name: TRIMMERS
+      optional: true
+    - !Flag
+      description: "{Phred+33,Phred+64}\nQuality score encoding"
+      synonyms:
+      - --encoding
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Number of CPU to use (default: 1)'
+      synonyms:
+      - --ncpu
+      args: !SimpleFlagArg
+        name: NCPU
+      optional: true
+    - !Flag
+      description: "Do not write output to console (silence stdout and\nstderr) (default:\
+        \ False)"
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append console output to this file
+      synonyms:
+      - --logfile
+      args: !SimpleFlagArg
+        name: LOGFILE
+      optional: true
+    - !Flag
+      description: 'Print commands but do not run (default: False)'
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: haphpipe trim_reads [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU]\n\
+      \                           [--outdir OUTDIR] [--adapter_file ADAPTER_FILE]\n\
+      \                           [--trimmers TRIMMERS]\n                        \
+      \   [--encoding {Phred+33,Phred+64}] [--ncpu NCPU]\n                       \
+      \    [--quiet] [--logfile LOGFILE] [--debug]\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n\nInput/Output:\n  --fq1 FQ1 \
+      \            Fastq file with read 1\n  --fq2 FQ2             Fastq file with\
+      \ read 1\n  --fqU FQU             Fastq file with unpaired reads\n  --outdir\
+      \ OUTDIR       Output directory (default: .)\n\nTrimmomatic options:\n  --adapter_file\
+      \ ADAPTER_FILE\n                        Adapter file\n  --trimmers TRIMMERS\
+      \   Trim commands for trimmomatic (default: ['LEADING:3',\n                \
+      \        'TRAILING:3', 'SLIDINGWINDOW:4:15', 'MINLEN:36'])\n  --encoding {Phred+33,Phred+64}\n\
+      \                        Quality score encoding\n\nSettings:\n  --ncpu NCPU\
+      \           Number of CPU to use (default: 1)\n  --quiet               Do not\
+      \ write output to console (silence stdout and\n                        stderr)\
+      \ (default: False)\n  --logfile LOGFILE     Append console output to this file\n\
+      \  --debug               Print commands but do not run (default: False)\n"
+    generated_using: *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -2847,6 +2987,7 @@ parent: &id001 !Command
     \ demo directory and test data\n\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

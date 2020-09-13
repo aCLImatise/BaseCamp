@@ -1,7 +1,10 @@
 version 1.0
 
-task Translate.py {
+task Translate {
   command <<<
-    translate.py
+    translate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

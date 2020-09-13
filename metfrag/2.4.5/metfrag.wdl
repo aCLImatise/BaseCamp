@@ -17,4 +17,7 @@ task Metfrag {
     java: ""
     parameter_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

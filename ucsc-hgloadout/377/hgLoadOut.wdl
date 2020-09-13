@@ -2,7 +2,7 @@ version 1.0
 
 task HgLoadOut {
   input {
-    String? tab_file
+    File? tab_file
     Boolean? split
     String? table
     String database
@@ -13,7 +13,7 @@ task HgLoadOut {
       ~{database} \
       ~{file} \
       ~{if defined(tab_file) then ("-tabFile " +  '"' + tab_file + '"') else ""} \
-      ~{true="-split" false="" split} \
+      ~{if (split) then "-split" else ""} \
       ~{if defined(table) then ("-table " +  '"' + table + '"') else ""}
   >>>
   parameter_meta {
@@ -22,5 +22,8 @@ task HgLoadOut {
     table: "- use a different suffix other than the default (rmsk)"
     database: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

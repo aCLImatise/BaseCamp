@@ -1,62 +1,65 @@
 class: CommandLineTool
 id: ../../../fastx_clipper.cwl
 inputs:
-- id: a
+- id: in_o
   doc: ''
   type: string
-  inputBinding:
-    prefix: -a
-- id: var_1
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -D
-- id: l
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -l
-- id: n
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -n
-- id: var_4
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -d
-- id: var_5
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -c
-- id: var_6
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -C
-- id: o
-  doc: ''
-  type: boolean
   inputBinding:
     prefix: -o
-- id: v
+- id: in_i
   doc: ''
-  type: boolean
+  type: File
   inputBinding:
-    prefix: -v
-- id: z
+    prefix: -i
+- id: in_z
   doc: ''
   type: boolean
   inputBinding:
     prefix: -z
-- id: i
+- id: in_v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: in_var_4
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -C
+- id: in_var_5
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -c
+- id: in_var_6
   doc: ''
   type: string
   inputBinding:
-    prefix: -i
-outputs: []
+    prefix: -d
+- id: in_n
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -n
+- id: in_l
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -l
+- id: in_var_9
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -D
+- id: in_a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastx_clipper

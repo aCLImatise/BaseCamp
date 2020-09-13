@@ -1,52 +1,60 @@
 class: CommandLineTool
 id: ../../../alfred_ase.cwl
 inputs:
-- id: arg_min_mapping_quality
+- id: in_arg_min_mapping_quality
   doc: '[ --map-qual ] arg (=10)      min. mapping quality'
   type: boolean
   inputBinding:
     prefix: -m
-- id: arg_min_base_quality
+- id: in_arg_min_base_quality
   doc: '[ --base-qual ] arg (=10)     min. base quality'
   type: boolean
   inputBinding:
     prefix: -b
-- id: arg_reference_fasta
+- id: in_arg_reference_fasta
   doc: '[ --reference ] arg           reference fasta file'
   type: boolean
   inputBinding:
     prefix: -r
-- id: arg_na_sample
+- id: in_arg_na_sample
   doc: '[ --sample ] arg (=NA12878)   sample name'
   type: boolean
   inputBinding:
     prefix: -s
-- id: arg_allelespecific_output
+- id: in_arg_allelespecific_file
   doc: '[ --ase ] arg (="as.tsv.gz")  allele-specific output file'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -a
-- id: arg_input_phased
+- id: in_arg_input_phased
   doc: '[ --vcffile ] arg             input (phased) BCF file'
   type: boolean
   inputBinding:
     prefix: -v
-- id: bcf_file_phased
+- id: in_bcf_file_phased
   doc: '[ --phased ]                  BCF file is phased and BAM is haplo-tagged'
   type: boolean
   inputBinding:
     prefix: -p
-- id: output_het_input
+- id: in_output_het_input
   doc: '[ --full ]                    output all het. input SNPs'
   type: boolean
   inputBinding:
     prefix: -f
-- id: input_dot_bam
+- id: in_input_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_allelespecific_file
+  doc: '[ --ase ] arg (="as.tsv.gz")  allele-specific output file'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_allelespecific_file)
 cwlVersion: v1.1
 baseCommand:
 - alfred

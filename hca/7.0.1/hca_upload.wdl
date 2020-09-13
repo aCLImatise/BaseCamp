@@ -4,4 +4,7 @@ task HcaUpload {
   command <<<
     hca upload
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

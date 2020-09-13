@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../nf_core_bump_version.cwl
 inputs:
-- id: next_flow
+- id: in_next_flow
   doc: Bump required nextflow version instead of pipeline version
   type: boolean
   inputBinding:
     prefix: --nextflow
-- id: pipeline_directory
+- id: in_pipeline_directory
   doc: ''
-  type: string
+  type: Directory
   inputBinding:
     position: 0
-- id: new_version
+- id: in_new_version
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nf-core

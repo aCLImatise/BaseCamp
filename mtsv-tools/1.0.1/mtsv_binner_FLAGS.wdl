@@ -1,17 +1,17 @@
 version 1.0
 
-task MtsvBinnerFLAGS {
+task MtsvbinnerFLAGS {
   input {
     String? fast_a
-    String? index
   }
   command <<<
-    mtsv-binner FLAGS \
-      ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
-      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""}
+    mtsv_binner FLAGS \
+      ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""}
   >>>
   parameter_meta {
     fast_a: ""
-    index: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task ModuleAvailability {
   command <<<
     module_availability
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

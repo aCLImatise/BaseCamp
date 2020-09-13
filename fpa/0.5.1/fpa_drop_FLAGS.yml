@@ -1,4 +1,8 @@
-&id008 !Command
+&id006 !Command
+command:
+- fpa
+- drop
+- FLAGS
 positional:
 - !Positional
   description: ''
@@ -13,18 +17,10 @@ named:
   args: !SimpleFlagArg
     name: input
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --output
-  args: !SimpleFlagArg
-    name: output
-  optional: true
-command:
-- fpa
-- drop
-- FLAGS
-parent: &id001 !Command
+parent: &id005 !Command
+  command:
+  - fpa
+  - drop
   positional: []
   named:
   - !Flag
@@ -95,15 +91,14 @@ parent: &id001 !Command
     args: !SimpleFlagArg
       name: sequence_length_upper
     optional: true
-  command:
-  - fpa
-  - drop
-  parent: &id002 !Command
+  parent: &id001 !Command
+    command:
+    - fpa
     positional: []
     named:
     - !Flag
-      description: 'Output compression format, the input compression format is chosen
-        by default [possible values: gzip, bzip2, lzma, no]'
+      description: "Output compression format, the input compression format is chosen\
+        \ by default [possible values: gzip, bzip2,\nlzma, no]"
       synonyms:
       - -z
       - --compression-out
@@ -127,8 +122,8 @@ parent: &id001 !Command
         name: input
       optional: true
     - !Flag
-      description: 'A match is internal match if overhang length > match length *
-        internal threshold this option set internal match [default: 0.8]'
+      description: "A match is internal match if overhang length > match length *\
+        \ internal threshold this option set internal\nmatch [default: 0.8]"
       synonyms:
       - --internal-threshold
       args: !SimpleFlagArg
@@ -142,221 +137,12 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: output
       optional: true
-    command:
-    - fpa
     parent:
     subcommands:
-    - *id001
-    - &id003 !Command
-      positional: []
-      named:
-      - !Flag
-        description: Keep containment overlap
-        synonyms:
-        - -c
-        - --containment
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Keep internal match overlap
-        synonyms:
-        - -i
-        - --internalmatch
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Write mapping passing filter in gfa1 graph format in path passed
-          as parameter
-        synonyms:
-        - -o
-        - --output
-        args: !SimpleFlagArg
-          name: output
-        optional: true
+    - &id002 !Command
       command:
       - fpa
-      - gfa
-      parent: *id002
-      subcommands:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: fpa
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --input
-          args: !SimpleFlagArg
-            name: input
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --output
-          args: !SimpleFlagArg
-            name: output
-          optional: true
-        command:
-        - fpa
-        - gfa
-        - FLAGS
-        parent: *id003
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't\
-          \ valid in this context\n\nUSAGE:\n    fpa --input <input> --output <output>\n\
-          \nFor more information try --help\n"
-        generated_using: &id004
-        - --help
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: fpa
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --input
-          args: !SimpleFlagArg
-            name: input
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --output
-          args: !SimpleFlagArg
-            name: output
-          optional: true
-        command:
-        - fpa
-        - gfa
-        - SUBCOMMAND
-        parent: *id003
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "error: Found argument 'SUBCOMMAND' which wasn't expected, or isn't\
-          \ valid in this context\n\nUSAGE:\n    fpa --input <input> --output <output>\n\
-          \nFor more information try --help\n"
-        generated_using: *id004
-      help_flag: !Flag
-        description: Prints help information
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag: !Flag
-        description: Prints version information
-        synonyms:
-        - -V
-        - --version
-        args: !EmptyFlagArg {}
-        optional: true
-      help_text: "fpa-gfa \nfpa generate a overlap graph in gfa1 format with mapping\
-        \ passing filter\n\nUSAGE:\n    fpa gfa [FLAGS] [OPTIONS] [SUBCOMMAND]\n\n\
-        FLAGS:\n    -c, --containment      Keep containment overlap\n    -h, --help\
-        \             Prints help information\n    -i, --internalmatch    Keep internal\
-        \ match overlap\n    -V, --version          Prints version information\n\n\
-        OPTIONS:\n    -o, --output <output>    Write mapping passing filter in gfa1\
-        \ graph format in path passed as parameter\n"
-      generated_using: *id004
-    - &id005 !Command
-      positional: []
-      named:
-      - !Flag
-        description: Write index of mapping passing filter in path passed as parameter
-        synonyms:
-        - -f
-        - --filename
-        args: !SimpleFlagArg
-          name: filename
-        optional: true
-      - !Flag
-        description: "Type of index, only reference read when it's query, target or\
-          \ both of them [default: both]  [possible values: query, target, both]"
-        synonyms:
-        - -t
-        - --type
-        args: !SimpleFlagArg
-          name: type
-        optional: true
-      command:
-      - fpa
-      - index
-      parent: *id002
-      subcommands:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: fpa
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --input
-          args: !SimpleFlagArg
-            name: input
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --output
-          args: !SimpleFlagArg
-            name: output
-          optional: true
-        command:
-        - fpa
-        - index
-        - SUBCOMMAND
-        parent: *id005
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "error: Found argument 'SUBCOMMAND' which wasn't expected, or isn't\
-          \ valid in this context\n\nUSAGE:\n    fpa --input <input> --output <output>\n\
-          \nFor more information try --help\n"
-        generated_using: *id004
-      help_flag: !Flag
-        description: Prints help information
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag: !Flag
-        description: Prints version information
-        synonyms:
-        - -V
-        - --version
-        args: !EmptyFlagArg {}
-        optional: true
-      help_text: "fpa-index \nfpa generate a index of mapping passing filter\n\nUSAGE:\n\
-        \    fpa index [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n    -h, --help       Prints\
-        \ help information\n    -V, --version    Prints version information\n\nOPTIONS:\n\
-        \    -f, --filename <filename>    Write index of mapping passing filter in\
-        \ path passed as parameter\n    -t, --type <type>            Type of index,\
-        \ only reference read when it's query, target or both of them [default:\n\
-        \                                 both]  [possible values: query, target,\
-        \ both]\n"
-      generated_using: *id004
-    - &id006 !Command
+      - keep
       positional: []
       named:
       - !Flag
@@ -420,19 +206,20 @@ parent: &id001 !Command
           name: sequence_length_lower
         optional: true
       - !Flag
-        description: Keep only mapping where one reads have length upper than value
+        description: "Keep only mapping where one reads have length upper than value\n"
         synonyms:
         - -S
         - --sequence-length-upper
         args: !SimpleFlagArg
           name: sequence_length_upper
         optional: true
-      command:
-      - fpa
-      - keep
-      parent: *id002
+      parent: *id001
       subcommands:
       - !Command
+        command:
+        - fpa
+        - keep
+        - FLAGS
         positional:
         - !Positional
           description: ''
@@ -447,61 +234,18 @@ parent: &id001 !Command
           args: !SimpleFlagArg
             name: input
           optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --output
-          args: !SimpleFlagArg
-            name: output
-          optional: true
-        command:
-        - fpa
-        - keep
-        - FLAGS
-        parent: *id006
+        parent: *id002
         subcommands: []
+        usage: []
         help_flag:
         usage_flag:
         version_flag:
         help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't\
           \ valid in this context\n\nUSAGE:\n    fpa --input <input> --output <output>\n\
           \nFor more information try --help\n"
-        generated_using: *id004
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: fpa
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --input
-          args: !SimpleFlagArg
-            name: input
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --output
-          args: !SimpleFlagArg
-            name: output
-          optional: true
-        command:
-        - fpa
-        - keep
-        - SUBCOMMAND
-        parent: *id006
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "error: Found argument 'SUBCOMMAND' which wasn't expected, or isn't\
-          \ valid in this context\n\nUSAGE:\n    fpa --input <input> --output <output>\n\
-          \nFor more information try --help\n"
-        generated_using: *id004
+        generated_using: &id003
+        - --help
+      usage: []
       help_flag: !Flag
         description: Prints help information
         synonyms:
@@ -532,8 +276,11 @@ parent: &id001 !Command
         \ mapping where one reads have length lower than value\n\n    -S, --sequence-length-upper\
         \ <sequence_length_upper>\n            Keep only mapping where one reads have\
         \ length upper than value\n\n"
-      generated_using: *id004
-    - &id007 !Command
+      generated_using: *id003
+    - !Command
+      command:
+      - fpa
+      - rename
       positional: []
       named:
       - !Flag
@@ -552,46 +299,9 @@ parent: &id001 !Command
         args: !SimpleFlagArg
           name: output
         optional: true
-      command:
-      - fpa
-      - rename
-      parent: *id002
-      subcommands:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: fpa
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --input
-          args: !SimpleFlagArg
-            name: input
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --output
-          args: !SimpleFlagArg
-            name: output
-          optional: true
-        command:
-        - fpa
-        - rename
-        - SUBCOMMAND
-        parent: *id007
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "error: Found argument 'SUBCOMMAND' which wasn't expected, or isn't\
-          \ valid in this context\n\nUSAGE:\n    fpa --input <input> --output <output>\n\
-          \nFor more information try --help\n"
-        generated_using: *id004
+      parent: *id001
+      subcommands: []
+      usage: []
       help_flag: !Flag
         description: Prints help information
         synonyms:
@@ -613,7 +323,143 @@ parent: &id001 !Command
         \ information\n\nOPTIONS:\n    -i, --input <input>      Rename reads with\
         \ value in path passed as parameter\n    -o, --output <output>    Write rename\
         \ table in path passed as parameter\n"
-      generated_using: *id004
+      generated_using: *id003
+    - &id004 !Command
+      command:
+      - fpa
+      - gfa
+      positional: []
+      named:
+      - !Flag
+        description: Keep containment overlap
+        synonyms:
+        - -c
+        - --containment
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Keep internal match overlap
+        synonyms:
+        - -i
+        - --internalmatch
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Write mapping passing filter in gfa1 graph format in path passed
+          as parameter
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: output
+        optional: true
+      parent: *id001
+      subcommands:
+      - !Command
+        command:
+        - fpa
+        - gfa
+        - FLAGS
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: fpa
+          optional: false
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - --input
+          args: !SimpleFlagArg
+            name: input
+          optional: true
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't\
+          \ valid in this context\n\nUSAGE:\n    fpa --input <input> --output <output>\n\
+          \nFor more information try --help\n"
+        generated_using: *id003
+      usage: []
+      help_flag: !Flag
+        description: Prints help information
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: Prints version information
+        synonyms:
+        - -V
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "fpa-gfa \nfpa generate a overlap graph in gfa1 format with mapping\
+        \ passing filter\n\nUSAGE:\n    fpa gfa [FLAGS] [OPTIONS] [SUBCOMMAND]\n\n\
+        FLAGS:\n    -c, --containment      Keep containment overlap\n    -h, --help\
+        \             Prints help information\n    -i, --internalmatch    Keep internal\
+        \ match overlap\n    -V, --version          Prints version information\n\n\
+        OPTIONS:\n    -o, --output <output>    Write mapping passing filter in gfa1\
+        \ graph format in path passed as parameter\n"
+      generated_using: *id003
+    - !Command
+      command:
+      - fpa
+      - index
+      positional: []
+      named:
+      - !Flag
+        description: Write index of mapping passing filter in path passed as parameter
+        synonyms:
+        - -f
+        - --filename
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      - !Flag
+        description: "Type of index, only reference read when it's query, target or\
+          \ both of them [default:\nboth]  [possible values: query, target, both]\n"
+        synonyms:
+        - -t
+        - --type
+        args: !SimpleFlagArg
+          name: type
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Prints help information
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: Prints version information
+        synonyms:
+        - -V
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "fpa-index \nfpa generate a index of mapping passing filter\n\nUSAGE:\n\
+        \    fpa index [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n    -h, --help       Prints\
+        \ help information\n    -V, --version    Prints version information\n\nOPTIONS:\n\
+        \    -f, --filename <filename>    Write index of mapping passing filter in\
+        \ path passed as parameter\n    -t, --type <type>            Type of index,\
+        \ only reference read when it's query, target or both of them [default:\n\
+        \                                 both]  [possible values: query, target,\
+        \ both]\n"
+      generated_using: *id003
+    - *id005
+    usage: []
     help_flag: !Flag
       description: Prints help information
       synonyms:
@@ -648,44 +494,10 @@ parent: &id001 !Command
       \    index     fpa generate a index of mapping passing filter\n    keep    \
       \  fpa keep only mapping match this constraints\n    rename    fpa rename reads\
       \ with name you chose or with incremental counter\n"
-    generated_using: *id004
+    generated_using: *id003
   subcommands:
-  - *id008
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: fpa
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --input
-      args: !SimpleFlagArg
-        name: input
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - --output
-      args: !SimpleFlagArg
-        name: output
-      optional: true
-    command:
-    - fpa
-    - drop
-    - SUBCOMMAND
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "error: Found argument 'SUBCOMMAND' which wasn't expected, or isn't\
-      \ valid in this context\n\nUSAGE:\n    fpa --input <input> --output <output>\n\
-      \nFor more information try --help\n"
-    generated_using: *id004
+  - *id006
+  usage: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -714,12 +526,13 @@ parent: &id001 !Command
     \ -s, --sequence-length-lower <sequence_length_lower>    Drop mapping where one\
     \ reads have length lower than value\n    -S, --sequence-length-upper <sequence_length_upper>\
     \    Drop mapping where one reads have length upper than value\n"
-  generated_using: *id004
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
 help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid in\
   \ this context\n\nUSAGE:\n    fpa --input <input> --output <output>\n\nFor more\
   \ information try --help\n"
-generated_using: *id004
+generated_using: *id003

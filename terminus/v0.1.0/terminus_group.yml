@@ -1,4 +1,7 @@
-&id002 !Command
+&id003 !Command
+command:
+- terminus
+- group
 positional: []
 named:
 - !Flag
@@ -10,8 +13,8 @@ named:
     name: dir
   optional: true
 - !Flag
-  description: 'the minimum spread a transcript must exhibit to enable an attached
-    edge to be a collapse candidate [default: 0.1]'
+  description: "the minimum spread a transcript must exhibit to enable an attached\
+    \ edge to be a\ncollapse candidate [default: 0.1]"
   synonyms:
   - -m
   - --min-spread
@@ -27,32 +30,32 @@ named:
     name: out
   optional: true
 - !Flag
-  description: 'The allowable difference between the weights of transcripts in same
-    equivalence classes to treat them as identical [default: 10]'
+  description: "The allowable difference between the weights of transcripts in same\
+    \ equivalence\nclasses to treat them as identical [default: 10]"
   synonyms:
   - --seed
   args: !SimpleFlagArg
     name: seed
   optional: true
 - !Flag
-  description: 'The allowable difference between the weights of transcripts in same
-    equivalence classes to treat them as identical [default: 0.001]'
+  description: "The allowable difference between the weights of transcripts in same\
+    \ equivalence\nclasses to treat them as identical [default: 0.001]\n"
   synonyms:
   - --tolerance
   args: !SimpleFlagArg
     name: tolerance
   optional: true
-command:
-- terminus
-- group
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - terminus
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - terminus
+    - collapse
     positional: []
     named:
     - !Flag
@@ -81,19 +84,17 @@ parent: &id001 !Command
         name: out
       optional: true
     - !Flag
-      description: 'number of threads to use when writing down the collapsed quantifications
-        [default: 8]'
+      description: "number of threads to use when writing down the collapsed quantifications\
+        \ [default: 8]\n"
       synonyms:
       - -t
       - --threads
       args: !SimpleFlagArg
         name: threads
       optional: true
-    command:
-    - terminus
-    - collapse
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Prints help information
       synonyms:
@@ -118,10 +119,12 @@ parent: &id001 !Command
       \ from\n    -o, --out <out>                              prefix where output\
       \ would be written\n    -t, --threads <threads>\n            number of threads\
       \ to use when writing down the collapsed quantifications [default: 8]\n\n"
-    generated_using: &id003
+    generated_using: &id002
     - --help
-  - *id002
   - !Command
+    command:
+    - terminus
+    - help
     positional:
     - !Positional
       description: ''
@@ -144,24 +147,17 @@ parent: &id001 !Command
       name: try
       optional: false
     named: []
-    command:
-    - terminus
-    - help
     parent: *id001
     subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    usage: []
+    help_flag:
     usage_flag:
     version_flag:
-    help_text: "terminus: Relink `/tmp/tmpmhla4wuf/bin/../lib/./libgfortran.so.4'\
-      \ with `/lib/x86_64-linux-gnu/librt.so.1' for IFUNC symbol `clock_gettime'\n\
-      error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tterminus help\
-      \ <subcommands>...\n\nFor more information try --help\n"
-    generated_using: *id003
+    help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tterminus\
+      \ help <subcommands>...\n\nFor more information try --help\n"
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -184,8 +180,9 @@ parent: &id001 !Command
     \ groups, and produce a consensus grouping.\n    group       perform per-sample\
     \ grouping of transcripts; required prior to consensus collapse.\n    help   \
     \     Prints this message or the help of the given subcommand(s)\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Prints help information
   synonyms:
@@ -214,4 +211,4 @@ help_text: "terminus-group \nperform per-sample grouping of transcripts; require
   \ [default: 10]\n        --tolerance <tolerance>      The allowable difference between\
   \ the weights of transcripts in same equivalence\n                             \
   \        classes to treat them as identical [default: 0.001]\n"
-generated_using: *id003
+generated_using: *id002

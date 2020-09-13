@@ -13,8 +13,8 @@ task MafsInRegion {
       ~{regions_dot_bed} \
       ~{out_dot_maf_vertical_line_outdir} \
       ~{in_dot_maf} \
-      ~{true="-outDir" false="" outdir} \
-      ~{true="-keepInitialGaps" false="" keep_initial_gaps}
+      ~{if (outdir) then "-outDir" else ""} \
+      ~{if (keep_initial_gaps) then "-keepInitialGaps" else ""}
   >>>
   parameter_meta {
     outdir: "- output separate files named by bed name field to outDir"
@@ -22,5 +22,8 @@ task MafsInRegion {
     regions_dot_bed: ""
     out_dot_maf_vertical_line_outdir: ""
     in_dot_maf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

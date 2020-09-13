@@ -1,13 +1,13 @@
 version 1.0
 
-task PrefixEditDistanceMatchLimitGenerate {
+task PrefixEditDistancematchLimitGenerate {
   input {
-    Int mine_value
-    Int? max_evalue
+    String mine_value
+    String? max_evalue
     String? step
   }
   command <<<
-    prefixEditDistance-matchLimitGenerate \
+    prefixEditDistance_matchLimitGenerate \
       ~{mine_value} \
       ~{max_evalue} \
       ~{step}
@@ -16,5 +16,8 @@ task PrefixEditDistanceMatchLimitGenerate {
     mine_value: ""
     max_evalue: ""
     step: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

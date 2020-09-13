@@ -2,9 +2,9 @@ version 1.0
 
 task BedparseJoin {
   input {
-    String? annotation
-    String? column
-    String? separator
+    File? annotation
+    File? column
+    File? separator
     String? empty
     Boolean? no_unmatched
   }
@@ -14,7 +14,7 @@ task BedparseJoin {
       ~{if defined(column) then ("--column " +  '"' + column + '"') else ""} \
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
       ~{if defined(empty) then ("--empty " +  '"' + empty + '"') else ""} \
-      ~{true="--noUnmatched" false="" no_unmatched}
+      ~{if (no_unmatched) then "--noUnmatched" else ""}
   >>>
   parameter_meta {
     annotation: "Path to the annotation file."
@@ -22,5 +22,8 @@ task BedparseJoin {
     separator: "Field separator for the annotation file (default tab)"
     empty: "String to append to empty records (default '.')."
     no_unmatched: "Do not print unmatched lines."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

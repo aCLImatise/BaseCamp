@@ -3,9 +3,9 @@ version 1.0
 task RNAplot {
   input {
     Int? layout_type
-    String? output_format
-    String? pre
-    String? post
+    File? output_format
+    File? pre
+    Int? post
   }
   command <<<
     RNAplot \
@@ -15,9 +15,13 @@ task RNAplot {
       ~{if defined(post) then ("--post " +  '"' + post + '"') else ""}
   >>>
   parameter_meta {
-    layout_type: "Choose the layout algorithm. Simple radial  layout if 0, or naview if 1 (default=`1')"
-    output_format: "|gml|xrna|svg Specify output format. Available formats are:  PostScript (ps), Graph Meta Language (gml),  Scalable Vector Graphics (svg), and XRNA save  file (xrna). Output filenames will end in  \".ps\" \".gml\" \".svg\" \".ss\",  respectively. (default=`ps')"
-    pre: "Add annotation macros to postscript file, and  add the postscript code in \"string\" just  before the code to draw the structure. This  is an easy way to add annotation."
-    post: "Same as --pre but in contrast to adding the  annotation macros. E.g to mark position 15  with circle use --post \"15 cmark\""
+    layout_type: "Choose the layout algorithm. Simple radial\\nlayout if 0, or naview if 1\\n(default=`1')"
+    output_format: "|gml|xrna|svg\\nSpecify output format. Available formats are:\\nPostScript (ps), Graph Meta Language (gml),\\nScalable Vector Graphics (svg), and XRNA save\\nfile (xrna). Output filenames will end in\\n\\\".ps\\\" \\\".gml\\\" \\\".svg\\\" \\\".ss\\\",\\nrespectively.\\n(default=`ps')"
+    pre: "Add annotation macros to postscript file, and\\nadd the postscript code in \\\"string\\\" just\\nbefore the code to draw the structure. This\\nis an easy way to add annotation."
+    post: "Same as --pre but in contrast to adding the\\nannotation macros. E.g to mark position 15\\nwith circle use --post \\\"15 cmark\\\""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_format = "${in_output_format}"
   }
 }

@@ -1,14 +1,17 @@
 version 1.0
 
-task Varda2ClientSeq {
+task Varda2clientSeq {
   input {
     String? sequence
   }
   command <<<
-    varda2-client seq \
+    varda2_client seq \
       ~{if defined(sequence) then ("--sequence " +  '"' + sequence + '"') else ""}
   >>>
   parameter_meta {
-    sequence: "Sequence"
+    sequence: "Sequence\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

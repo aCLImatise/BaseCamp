@@ -4,4 +4,7 @@ task WigToBigWig {
   command <<<
     wigToBigWig
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

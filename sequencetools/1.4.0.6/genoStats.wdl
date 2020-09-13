@@ -15,9 +15,12 @@ task GenoStats {
       ~{if defined(eigen_strat_ind) then ("--eigenstratInd " +  '"' + eigen_strat_ind + '"') else ""}
   >>>
   parameter_meta {
-    freq_sum: "a freqsum file to read as input. Use - to read from stdin (the default) (default: \"-\")"
+    freq_sum: "a freqsum file to read as input. Use - to read from\\nstdin (the default) (default: \\\"-\\\")"
     eigen_strat_geno: "Eigenstrat Geno File"
     eigen_strat_snp: "Eigenstrat Snp File"
-    eigen_strat_ind: "Eigenstrat Ind File"
+    eigen_strat_ind: "Eigenstrat Ind File\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

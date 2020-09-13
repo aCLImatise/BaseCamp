@@ -2,9 +2,9 @@ version 1.0
 
 task PhyluceProbeGetSubsetsOfTiledProbes {
   input {
-    String? probes
+    File? probes
     Array[String] tax_a
-    String? file_store_output
+    File? file_store_output
     String? regex
   }
   command <<<
@@ -18,6 +18,10 @@ task PhyluceProbeGetSubsetsOfTiledProbes {
     probes: "The probe file to filter."
     tax_a: "The taxa for which to filter probes."
     file_store_output: "The file in which to store the output."
-    regex: "A regular expression to apply to the probe names for replacement [default='^(uce-\d+)(?:_p\d+.*)']."
+    regex: "A regular expression to apply to the probe names for\\nreplacement [default='^(uce-\\d+)(?:_p\\d+.*)'].\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_file_store_output = "${in_file_store_output}"
   }
 }

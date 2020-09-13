@@ -1,15 +1,41 @@
-&id001 !Command
+&id003 !Command
+command:
+- ssu-esl-sfetch
+- sqfile
 positional:
 - !Positional
   description: ''
   position: 0
   name: name
   optional: false
-named: []
-command:
-- ssu-esl-sfetch
-- sqfile
-parent: &id002 !Command
+- !Positional
+  description: ''
+  position: 0
+  name: ssu-esl-sfetch
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: namefile
+  optional: false
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --index
+  args: !SimpleFlagArg
+    name: sqfile
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: sqfile
+  optional: true
+parent: &id001 !Command
+  command:
+  - ssu-esl-sfetch
   positional: []
   named:
   - !Flag
@@ -36,6 +62,19 @@ parent: &id002 !Command
     description: ': reverse complement the seq(s)'
     synonyms:
     - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ': retrieve subsequence coords <from>..<to>'
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: s
+    optional: true
+  - !Flag
+    description: ': <namefile> in <f> contains subseq coords too'
+    synonyms:
+    - -C
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
@@ -71,12 +110,26 @@ parent: &id002 !Command
     args: !SimpleFlagArg
       name: x
     optional: true
-  command:
-  - ssu-esl-sfetch
+  - !Flag
+    description: ''
+    synonyms:
+    - --index
+    args: !SimpleFlagArg
+      name: sqfile
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: sqfile
+    optional: true
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - ssu-esl-sfetch
+    - namefile
     positional:
     - !Positional
       description: ''
@@ -93,12 +146,24 @@ parent: &id002 !Command
       position: 2
       name: name
       optional: false
-    named: []
-    command:
-    - ssu-esl-sfetch
-    - name
-    parent: *id002
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --index
+      args: !SimpleFlagArg
+        name: sqfile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: sqfile
+      optional: true
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -107,8 +172,62 @@ parent: &id002 !Command
       \ in <namefile>)\nUsage: ssu-esl-sfetch [options] --index <sqfile>       (index\
       \ <sqfile>)\n\nTo see more help on available options, do ssu-esl-sfetch -h\n\
       \n"
-    generated_using: &id003
+    generated_using: &id002
     - --help
+  - !Command
+    command:
+    - ssu-esl-sfetch
+    - name
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: ssu-esl-sfetch
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: namefile
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: sqfile
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: name
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --index
+      args: !SimpleFlagArg
+        name: sqfile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: sqfile
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: ssu-esl-sfetch [options] <sqfile> <name>        (one seq named\
+      \ <name>)\nUsage: ssu-esl-sfetch [options] -f <sqfile> <namefile> (all seqs\
+      \ in <namefile>)\nUsage: ssu-esl-sfetch [options] --index <sqfile>       (index\
+      \ <sqfile>)\n\nTo see more help on available options, do ssu-esl-sfetch -h\n\
+      \n"
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: ': help; show brief info on version and usage'
     synonyms:
@@ -147,6 +266,7 @@ parent: &id002 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -154,4 +274,4 @@ help_text: "Usage: ssu-esl-sfetch [options] <sqfile> <name>        (one seq name
   \ <name>)\nUsage: ssu-esl-sfetch [options] -f <sqfile> <namefile> (all seqs in <namefile>)\n\
   Usage: ssu-esl-sfetch [options] --index <sqfile>       (index <sqfile>)\n\nTo see\
   \ more help on available options, do ssu-esl-sfetch -h\n\n"
-generated_using: *id003
+generated_using: *id002

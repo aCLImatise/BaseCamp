@@ -2,10 +2,10 @@ version 1.0
 
 task CheckmTaxonomyWfBinDir {
   input {
-    Boolean? ali
-    Boolean? nt
-    Boolean? g
     Boolean? individual_markers
+    Boolean? g
+    Boolean? nt
+    Boolean? ali
     String check_m
     String taxonomy_wf
   }
@@ -13,17 +13,20 @@ task CheckmTaxonomyWfBinDir {
     checkm taxonomy_wf bin_dir \
       ~{check_m} \
       ~{taxonomy_wf} \
-      ~{true="--ali" false="" ali} \
-      ~{true="--nt" false="" nt} \
-      ~{true="-g" false="" g} \
-      ~{true="--individual_markers" false="" individual_markers}
+      ~{if (individual_markers) then "--individual_markers" else ""} \
+      ~{if (g) then "-g" else ""} \
+      ~{if (nt) then "--nt" else ""} \
+      ~{if (ali) then "--ali" else ""}
   >>>
   parameter_meta {
-    ali: ""
-    nt: ""
-    g: ""
     individual_markers: ""
+    g: ""
+    nt: ""
+    ali: ""
     check_m: ""
     taxonomy_wf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

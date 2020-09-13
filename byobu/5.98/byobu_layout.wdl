@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuLayout {
+task Byobulayout {
   command <<<
-    byobu-layout
+    byobu_layout
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

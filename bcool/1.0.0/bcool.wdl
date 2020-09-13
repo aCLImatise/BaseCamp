@@ -3,13 +3,13 @@ version 1.0
 task Bcool {
   input {
     String? mandatory_input_fasta
-    String? path_store_results
-    String? number_cores_used
-    String? kmer_size_default
+    File? path_store_results
+    Int? number_cores_used
+    Int? kmer_size_default
     Int? kmers_present_less
     String? unitig_coverage_cleaning
-    String? advanced_maximum_number
-    String? advanced_index_one
+    Int? advanced_maximum_number
+    Int? advanced_index_one
     Int? advanced_maximum_occurence
     String? advanced_print_command
   }
@@ -37,5 +37,8 @@ task Bcool {
     advanced_index_one: "(ADVANCED) index one out of i anchors to reduce memory consumption (Default = 1)"
     advanced_maximum_occurence: "(ADVANCED) Maximum occurence of an anchor (Default = 1), better correction for repetitive genome but slower"
     advanced_print_command: "(ADVANCED) Print command lines"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

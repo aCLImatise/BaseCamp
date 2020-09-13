@@ -1,31 +1,31 @@
 version 1.0
 
-task CdbgOps {
+task Cdbgops {
   input {
     String? graph
-    String? nodes
-    String? edges
+    File? nodes
+    File? edges
     String? source
-    String? source_list
+    File? source_list
     String? target
     Boolean? all
-    String? unit_igs
-    String? length
+    File? unit_igs
+    Int? length
     Boolean? repeats
     String? mode
   }
   command <<<
-    cdbg-ops \
+    cdbg_ops \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
       ~{if defined(nodes) then ("--nodes " +  '"' + nodes + '"') else ""} \
       ~{if defined(edges) then ("--edges " +  '"' + edges + '"') else ""} \
       ~{if defined(source) then ("--source " +  '"' + source + '"') else ""} \
       ~{if defined(source_list) then ("--source-list " +  '"' + source_list + '"') else ""} \
       ~{if defined(target) then ("--target " +  '"' + target + '"') else ""} \
-      ~{true="--all" false="" all} \
+      ~{if (all) then "--all" else ""} \
       ~{if defined(unit_igs) then ("--unitigs " +  '"' + unit_igs + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
-      ~{true="--repeats" false="" repeats} \
+      ~{if (repeats) then "--repeats" else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""}
   >>>
   parameter_meta {
@@ -40,5 +40,8 @@ task CdbgOps {
     length: "(=100)    Maximum extension length"
     repeats: "Allow loops in extensions"
     mode: "Mode of operation"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

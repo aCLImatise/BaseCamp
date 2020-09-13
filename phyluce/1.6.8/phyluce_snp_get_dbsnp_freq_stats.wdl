@@ -3,10 +3,10 @@ version 1.0
 task PhyluceSnpGetDbsnpFreqStats {
   input {
     String? dbsnp
-    String? xml
-    String? var_output
-    String? output_two
-    String? dupe_file
+    File? xml
+    File? var_output
+    File? output_two
+    File? dupe_file
   }
   command <<<
     phyluce_snp_get_dbsnp_freq_stats \
@@ -22,5 +22,10 @@ task PhyluceSnpGetDbsnpFreqStats {
     var_output: "The output file"
     output_two: "The output file"
     dupe_file: "The path to a lastz file of lastz-against-self results"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_var_output = "${in_var_output}"
+    File out_output_two = "${in_output_two}"
   }
 }

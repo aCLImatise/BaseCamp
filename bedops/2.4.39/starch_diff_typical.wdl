@@ -1,7 +1,10 @@
 version 1.0
 
-task StarchDiffTypical {
+task Starchdifftypical {
   command <<<
-    starch-diff-typical
+    starch_diff_typical
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

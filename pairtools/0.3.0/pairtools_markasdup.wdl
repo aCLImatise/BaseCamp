@@ -2,11 +2,11 @@ version 1.0
 
 task PairtoolsMarkasdup {
   input {
-    String? output_pairsam_file
+    File? output_pairsam_file
     Int? nproc_in
     Int? nproc_out
-    String? cmd_in
-    String? cmd_out
+    File? cmd_in
+    File? cmd_out
     String? pairs_am_path
   }
   command <<<
@@ -19,11 +19,15 @@ task PairtoolsMarkasdup {
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
   parameter_meta {
-    output_pairsam_file: "output .pairsam file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed. By default, the output is printed into stdout."
-    nproc_in: "Number of processes used by the auto-guessed input decompressing command.  [default: 3]"
-    nproc_out: "Number of processes used by the auto-guessed output compressing command.  [default: 8]"
-    cmd_in: "A command to decompress the input file. If provided, fully overrides the auto-guessed command. Does not work with stdin. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -dc -n 3"
-    cmd_out: "A command to compress the output file. If provided, fully overrides the auto-guessed command. Does not work with stdout. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -c -n 8"
+    output_pairsam_file: "output .pairsam file. If the path ends with .gz or\\n.lz4, the output is pbgzip-/lz4c-compressed. By\\ndefault, the output is printed into stdout."
+    nproc_in: "Number of processes used by the auto-guessed input\\ndecompressing command.  [default: 3]"
+    nproc_out: "Number of processes used by the auto-guessed output\\ncompressing command.  [default: 8]"
+    cmd_in: "A command to decompress the input file. If provided,\\nfully overrides the auto-guessed command. Does not work\\nwith stdin. Must read input from stdin and print output\\ninto stdout. EXAMPLE: pbgzip -dc -n 3"
+    cmd_out: "A command to compress the output file. If provided,\\nfully overrides the auto-guessed command. Does not work\\nwith stdout. Must read input from stdin and print\\noutput into stdout. EXAMPLE: pbgzip -c -n 8"
     pairs_am_path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_pairsam_file = "${in_output_pairsam_file}"
   }
 }

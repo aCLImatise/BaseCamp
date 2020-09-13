@@ -14,4 +14,7 @@ task AwsCommand {
     subcommand: ""
     parameters: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,16 +2,16 @@ version 1.0
 
 task ChromGraphToBin {
   input {
-    String in_dot_tab
-    String out_dot_chrom_graph
+    String? xxx
   }
   command <<<
     chromGraphToBin \
-      ~{in_dot_tab} \
-      ~{out_dot_chrom_graph}
+      ~{if defined(xxx) then ("-xxx " +  '"' + xxx + '"') else ""}
   >>>
   parameter_meta {
-    in_dot_tab: ""
-    out_dot_chrom_graph: ""
+    xxx: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Stssearch {
   command <<<
     stssearch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

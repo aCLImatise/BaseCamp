@@ -1,23 +1,23 @@
 version 1.0
 
-task MtsvSignatureFLAGS {
+task MtsvsignatureFLAGS {
   input {
-    String? index
-    String? var_input
     String? lca
-    String? var_output
+    String? var_input
+    String? index
   }
   command <<<
-    mtsv-signature FLAGS \
-      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
-      ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""} \
+    mtsv_signature FLAGS \
       ~{if defined(lca) then ("--lca " +  '"' + lca + '"') else ""} \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""}
+      ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""} \
+      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""}
   >>>
   parameter_meta {
-    index: ""
-    var_input: ""
     lca: ""
-    var_output: ""
+    var_input: ""
+    index: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

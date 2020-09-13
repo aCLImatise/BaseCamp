@@ -1,7 +1,10 @@
 version 1.0
 
-task SelectForRandfold.pl.orig {
+task SelectForRandfoldpl {
   command <<<
-    select_for_randfold.pl.orig
+    select_for_randfold_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

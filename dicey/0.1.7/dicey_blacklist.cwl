@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../dicey_blacklist.cwl
 inputs:
-- id: arg_blacklist_bed
-  doc: '[ --blacklist ] arg (="blacklist.bed") blacklist in BED format'
+- id: in_arg_blacklist_bed
+  doc: "[ --blacklist ] arg (=\"blacklist.bed\")\nblacklist in BED format"
   type: boolean
   inputBinding:
     prefix: -b
-- id: arg_gzipped_file
+- id: in_arg_gzipped_file
   doc: '[ --outfile ] arg (="map.fa.gz")   gzipped output file'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: danio_rerio_dot_fado_tgz
+- id: in_danio_rerio_dot_fado_tgz
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_gzipped_file
+  doc: '[ --outfile ] arg (="map.fa.gz")   gzipped output file'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_gzipped_file)
 cwlVersion: v1.1
 baseCommand:
 - dicey

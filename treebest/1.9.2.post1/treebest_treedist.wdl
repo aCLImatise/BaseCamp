@@ -2,8 +2,8 @@ version 1.0
 
 task TreebestTreedist {
   input {
-    String tree_one
-    String tree_two
+    Int tree_one
+    Int tree_two
   }
   command <<<
     treebest treedist \
@@ -13,5 +13,8 @@ task TreebestTreedist {
   parameter_meta {
     tree_one: ""
     tree_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

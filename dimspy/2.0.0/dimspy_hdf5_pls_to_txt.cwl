@@ -1,23 +1,26 @@
 class: CommandLineTool
 id: ../../../dimspy_hdf5_pls_to_txt.cwl
 inputs:
-- id: input
-  doc: HDF5 file that contains a list of peaklist objects from one of the processing
-    steps.
-  type: string
+- id: in_input
+  doc: "HDF5 file that contains a list of peaklist objects\nfrom one of the processing\
+    \ steps."
+  type: File
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: Directory to write to.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: delimiter
-  doc: Values on each line of the file are separated by this character.
+- id: in_delimiter
+  doc: "Values on each line of the file are separated by this\ncharacter.\n"
   type: string
   inputBinding:
     prefix: --delimiter
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dimspy

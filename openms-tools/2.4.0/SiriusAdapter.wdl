@@ -7,27 +7,27 @@ task SiriusAdapter {
     File? in_feature_info
     File? out_sirius
     File? out_finger_id
-    String? filter_by_num_mass_traces
+    Int? filter_by_num_mass_traces
     Boolean? feature_only
-    String? precursor_mz_tolerance
+    Int? precursor_mz_tolerance
     String? precursor_mz_tolerance_unit
-    String? precursor_rt_tolerance
+    Int? precursor_rt_tolerance
     String? profile
-    String? candidates
+    Int? candidates
     String? database
-    String? noise
-    String? ppm_max
+    Int? noise
+    Int? ppm_max
     String? isotope
-    String? elements
-    String? compound_timeout
-    String? tree_timeout
-    String? top_n_hits
+    Int? elements
+    Int? compound_timeout
+    Int? tree_timeout
+    Int? top_n_hits
     Boolean? auto_charge
     Boolean? ion_tree
     Boolean? no_recalibration
     Boolean? most_intense_ms_two
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -39,7 +39,7 @@ task SiriusAdapter {
       ~{if defined(out_sirius) then ("-out_sirius " +  '"' + out_sirius + '"') else ""} \
       ~{if defined(out_finger_id) then ("-out_fingerid " +  '"' + out_finger_id + '"') else ""} \
       ~{if defined(filter_by_num_mass_traces) then ("-filter_by_num_masstraces " +  '"' + filter_by_num_mass_traces + '"') else ""} \
-      ~{true="-feature_only" false="" feature_only} \
+      ~{if (feature_only) then "-feature_only" else ""} \
       ~{if defined(precursor_mz_tolerance) then ("-precursor_mz_tolerance " +  '"' + precursor_mz_tolerance + '"') else ""} \
       ~{if defined(precursor_mz_tolerance_unit) then ("-precursor_mz_tolerance_unit " +  '"' + precursor_mz_tolerance_unit + '"') else ""} \
       ~{if defined(precursor_rt_tolerance) then ("-precursor_rt_tolerance " +  '"' + precursor_rt_tolerance + '"') else ""} \
@@ -53,14 +53,14 @@ task SiriusAdapter {
       ~{if defined(compound_timeout) then ("-compound_timeout " +  '"' + compound_timeout + '"') else ""} \
       ~{if defined(tree_timeout) then ("-tree_timeout " +  '"' + tree_timeout + '"') else ""} \
       ~{if defined(top_n_hits) then ("-top_n_hits " +  '"' + top_n_hits + '"') else ""} \
-      ~{true="-auto_charge" false="" auto_charge} \
-      ~{true="-ion_tree" false="" ion_tree} \
-      ~{true="-no_recalibration" false="" no_recalibration} \
-      ~{true="-most_intense_ms2" false="" most_intense_ms_two} \
+      ~{if (auto_charge) then "-auto_charge" else ""} \
+      ~{if (ion_tree) then "-ion_tree" else ""} \
+      ~{if (no_recalibration) then "-no_recalibration" else ""} \
+      ~{if (most_intense_ms_two) then "-most_intense_ms2" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     executable: "Sirius executable e.g. sirius"
@@ -91,5 +91,10 @@ task SiriusAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_sirius = "${in_out_sirius}"
+    File out_out_finger_id = "${in_out_finger_id}"
   }
 }

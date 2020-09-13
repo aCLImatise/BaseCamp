@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../funannotate_outgroups.cwl
 inputs:
-- id: input
-  doc: 'Proteome multi-fasta file. Required. '
+- id: in_input
+  doc: Proteome multi-fasta file. Required.
   type: boolean
   inputBinding:
     prefix: --input
-- id: species
+- id: in_species
   doc: Species name for adding a species. Required.
   type: boolean
   inputBinding:
     prefix: --species
-- id: busco_db
+- id: in_busco_db
   doc: BUSCO db to use. Default. dikarya
   type: boolean
   inputBinding:
     prefix: --busco_db
-- id: cpus
+- id: in_cpus
   doc: Number of CPUs to use for BUSCO search.
   type: boolean
   inputBinding:
     prefix: --cpus
-- id: database
+- id: in_database
   doc: 'Path to funannotate database. Default: $FUNANNOTATE_DB'
   type: boolean
   inputBinding:
     prefix: --database
-- id: arguments
+- id: in_arguments
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - funannotate

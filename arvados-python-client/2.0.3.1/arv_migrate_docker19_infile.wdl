@@ -1,20 +1,23 @@
 version 1.0
 
-task ArvMigrateDocker19Infile {
+task Arvmigratedocker19Infile {
   input {
-    Boolean? verbose
     Boolean? force
-    String arv_migrate_docker_one_nine
+    Boolean? verbose
+    Int arv_migrate_docker_one_nine
   }
   command <<<
-    arv-migrate-docker19 infile \
+    arv_migrate_docker19 infile \
       ~{arv_migrate_docker_one_nine} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--force" false="" force}
+      ~{if (force) then "--force" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
     force: ""
+    verbose: ""
     arv_migrate_docker_one_nine: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -11,4 +11,7 @@ task SketchyList {
   parameter_meta {
     path: "Path to sketchy home directory [~/.sketchy]"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

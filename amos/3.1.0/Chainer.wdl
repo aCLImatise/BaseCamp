@@ -4,4 +4,7 @@ task Chainer {
   command <<<
     Chainer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

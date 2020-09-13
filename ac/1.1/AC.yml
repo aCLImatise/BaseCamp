@@ -1,23 +1,69 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: OPTION
-  optional: true
+command:
+- AC
+positional: []
 named:
 - !Flag
-  description: 'reference file ("-rm" are loaded here),     '
+  description: show AC compression levels,
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose mode (more information),
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: display version number,
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: force overwrite of output,
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: level of compression [1;7] (lazy -tm setup),
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: level
+  optional: true
+- !Flag
+  description: threshold frequency to discard from alphabet,
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: threshold
+  optional: true
+- !Flag
+  description: "it creates a file with the extension \".iae\"\nwith the respective\
+    \ information content."
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reference file ("-rm" are loaded here),
   synonyms:
   - -r
   args: !SimpleFlagArg
     name: FILE
   optional: true
-command:
-- AC
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: give this help,
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: AC [OPTION]... -r [FILE]  [FILE]:[...]                        \

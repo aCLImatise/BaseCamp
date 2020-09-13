@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../tadtool_subset.cwl
 inputs:
-- id: matrix
-  doc: 'Square Hi-C Matrix as tab-delimited or .npy file (created with numpy.save)
-    or sparse matrix format (each line: <row region index> <column region index> <matrix
-    value>)'
+- id: in_matrix
+  doc: "Square Hi-C Matrix as tab-delimited or .npy file (created\nwith numpy.save)\
+    \ or sparse matrix format (each line: <row\nregion index> <column region index>\
+    \ <matrix value>)"
   type: string
   inputBinding:
     position: 0
-- id: regions
-  doc: BED file (no header) with regions corresponding to the number of rows in the
-    provided matrix. Fourth column, if present, denotes name field, which is used
-    as an identifier in sparse matrix notation.
+- id: in_regions
+  doc: "BED file (no header) with regions corresponding to the\nnumber of rows in\
+    \ the provided matrix. Fourth column, if\npresent, denotes name field, which is\
+    \ used as an identifier\nin sparse matrix notation."
   type: string
   inputBinding:
     position: 1
-- id: sub_region
-  doc: 'Region of the Hi-C matrix to display in plot. Format: <chromosome>:<start>-<end>,
-    e.g. chr12:31000000-33000000'
+- id: in_sub_region
+  doc: "Region of the Hi-C matrix to display in plot. Format:\n<chromosome>:<start>-<end>,\
+    \ e.g. chr12:31000000-33000000"
   type: string
   inputBinding:
     position: 2
-- id: output_matrix
+- id: in_output_matrix
   doc: Output matrix file.
   type: string
   inputBinding:
     position: 3
-- id: output_regions
+- id: in_output_regions
   doc: Output regions file.
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tadtool

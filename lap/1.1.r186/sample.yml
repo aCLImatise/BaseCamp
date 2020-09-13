@@ -1,31 +1,40 @@
-&id001 !Command
-positional: []
-named: []
+!Command
 command:
 - sample
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTION...
+  optional: true
+named:
+- !Flag
+  description: "The format ('fasta' or 'fastq' or 'lines') of the\nsequences (default=fastq)"
+  synonyms:
+  - -f
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: The number of sequences to be sampled (default=1)
+  synonyms:
+  - -n
+  - --sequences
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: "The seed for sequence of pseudo-random integers to\nbe used in sampling"
+  synonyms:
+  - -r
+  - --random-seed
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
 parent:
-subcommands:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: sample
-    optional: false
-  named: []
-  command:
-  - sample
-  - OPTION...
-  parent: *id001
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "Usage: sample [-?V] [-f FORMAT] [-n NUMBER] [-r NUMBER] [--format=FORMAT]\n\
-    \            [--sequences=NUMBER] [--random-seed=NUMBER] [--help] [--usage]\n\
-    \            [--version]\n"
-  generated_using:
-  - --usage
+subcommands: []
+usage: []
 help_flag:
 usage_flag: !Flag
   description: Give a short usage message

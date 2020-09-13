@@ -1,14 +1,10 @@
 version 1.0
 
-task CruxSearchForXlinks {
-  input {
-    String ms_two_file
-  }
+task CruxSearchforxlinks {
   command <<<
-    crux search-for-xlinks \
-      ~{ms_two_file}
+    crux search_for_xlinks
   >>>
-  parameter_meta {
-    ms_two_file: ""
+  output {
+    File out_stdout = stdout()
   }
 }

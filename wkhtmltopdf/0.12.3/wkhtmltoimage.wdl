@@ -4,4 +4,7 @@ task Wkhtmltoimage {
   command <<<
     wkhtmltoimage
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,122 +1,130 @@
 class: CommandLineTool
 id: ../../../cmemit.cwl
 inputs:
-- id: send_sequence_output
+- id: in_send_sequence_output
   doc: ': send sequence output to file <f>, not stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: generate_n_sequences
+- id: in_generate_n_sequences
   doc: ': generate <n> sequences  [10]'
-  type: string
+  type: long
   inputBinding:
     prefix: -N
-- id: write_generated_sequences_unaligned
+- id: in_write_generated_sequences_unaligned
   doc: ': write generated sequences as unaligned FASTA [default]  [default]'
   type: boolean
   inputBinding:
     prefix: -u
-- id: write_generated_sequences_alignment
+- id: in_write_generated_sequences_alignment
   doc: ': write generated sequences as an alignment'
   type: boolean
   inputBinding:
     prefix: -a
-- id: generate_single_sequence
+- id: in_generate_single_sequence
   doc: ': generate a single "consensus" sequence only'
   type: boolean
   inputBinding:
     prefix: -c
-- id: embed_emitted_sequences
+- id: in_embed_emitted_sequences
   doc: ': embed emitted sequences within larger random sequences of length <n>'
-  type: string
+  type: long
   inputBinding:
     prefix: -e
-- id: local_emit_locally
+- id: in_local_emit_locally
   doc: ': local; emit from a locally configured model [default: global]'
   type: boolean
   inputBinding:
     prefix: -l
-- id: u_five_p
+- id: in_u_five_p
   doc: ": truncate unaligned sequences 5', choosing a random start posn"
   type: boolean
   inputBinding:
     prefix: --u5p
-- id: u_three_p
+- id: in_u_three_p
   doc: ": truncate unaligned sequences 3', choosing a random end   posn"
   type: boolean
   inputBinding:
     prefix: --u3p
-- id: a_five_p
+- id: in_a_five_p
   doc: ": truncate aln 5', start at match column <n> (use 0 for random posn)"
-  type: string
+  type: long
   inputBinding:
     prefix: --a5p
-- id: a_three_p
+- id: in_a_three_p
   doc: ": truncate aln 3', end   at match column <n> (use 0 for random posn)"
-  type: string
+  type: long
   inputBinding:
     prefix: --a3p
-- id: seed
+- id: in_seed
   doc: ': set RNG seed to <n> [default: one-time arbitrary seed]  [0]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: iid
-  doc: ': with -e, generate larger sequences as 25% ACGU (iid) '
+- id: in_iid
+  doc: ': with -e, generate larger sequences as 25% ACGU (iid)'
   type: boolean
   inputBinding:
     prefix: --iid
-- id: rna
+- id: in_rna
   doc: ': output as RNA sequence data  [default]'
   type: boolean
   inputBinding:
     prefix: --rna
-- id: dna
+- id: in_dna
   doc: ': output as DNA sequence data'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: idx
+- id: in_idx
   doc: ': start sequence numbering at <n>  [1]'
-  type: string
+  type: long
   inputBinding:
     prefix: --idx
-- id: out_format
+- id: in_out_format
   doc: ': w/-a output alignment in format <s>  [Stockholm]'
   type: string
   inputBinding:
     prefix: --outformat
-- id: t_file
+- id: in_t_file
   doc: ': dump parsetrees to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --tfile
-- id: exp
+- id: in_exp
   doc: ': exponentiate CM probabilities by <x> before emitting'
   type: string
   inputBinding:
     prefix: --exp
-- id: hmm_only
+- id: in_hmm_only
   doc: ': emit from filter HMM, not from CM'
   type: boolean
   inputBinding:
     prefix: --hmmonly
-- id: no_hmm_only
+- id: in_no_hmm_only
   doc: ': always emit from CM, even for models with 0 basepairs'
   type: boolean
   inputBinding:
     prefix: --nohmmonly
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: cm_file
+- id: in_cm_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_send_sequence_output
+  doc: ': send sequence output to file <f>, not stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_send_sequence_output)
 cwlVersion: v1.1
 baseCommand:
 - cmemit

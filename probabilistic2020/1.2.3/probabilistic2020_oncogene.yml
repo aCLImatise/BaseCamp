@@ -1,5 +1,14 @@
-&id001 !Command
-positional: []
+&id002 !Command
+command:
+- probabilistic2020
+- oncogene
+positional:
+- !Positional
+  description: Find statsitically significant oncogene-like genes. Evaluates clustering
+    of
+  position: 0
+  name: OUTPUT
+  optional: false
 named:
 - !Flag
   description: gene FASTA file from extract_gene_seq.py script
@@ -10,8 +19,8 @@ named:
     name: INPUT
   optional: true
 - !Flag
-  description: DNA mutations file (MAF file). Columns can be in any order, but should
-    contain the correct column header names.
+  description: "DNA mutations file (MAF file). Columns can be in any\norder, but should\
+    \ contain the correct column header\nnames."
   synonyms:
   - -m
   - --mutations
@@ -27,9 +36,9 @@ named:
     name: BED
   optional: true
 - !Flag
-  description: 'Number of processes to use for parallelization. 0 indicates using
-    a single process without using a multiprocessing pool (more means Faster, default:
-    0).'
+  description: "Number of processes to use for parallelization. 0\nindicates using\
+    \ a single process without using a\nmultiprocessing pool (more means Faster, default:\
+    \ 0)."
   synonyms:
   - -p
   - --processes
@@ -37,8 +46,9 @@ named:
     name: PROCESSES
   optional: true
 - !Flag
-  description: 'Number of iterations for null model. p-value precision increases with
-    more iterations, however this will also increase the run time (Default: 100,000).'
+  description: "Number of iterations for null model. p-value precision\nincreases\
+    \ with more iterations, however this will also\nincrease the run time (Default:\
+    \ 100,000)."
   synonyms:
   - -n
   - --num-iterations
@@ -46,11 +56,11 @@ named:
     name: NUM_ITERATIONS
   optional: true
 - !Flag
-  description: 'Number of DNA bases to use as context. 0 indicates no context. 1 indicates
-    only use the mutated base. 1.5 indicates using the base context used in CHASM
-    (http:/ /wiki.chasmsoftware.org/index.php/CHASM_Overview). 2 indicates using the
-    mutated base and the upstream base. 3 indicates using the mutated base and both
-    the upstream and downstream bases. (Default: 1.5)'
+  description: "Number of DNA bases to use as context. 0 indicates no\ncontext. 1\
+    \ indicates only use the mutated base. 1.5\nindicates using the base context used\
+    \ in CHASM (http:/\n/wiki.chasmsoftware.org/index.php/CHASM_Overview). 2\nindicates\
+    \ using the mutated base and the upstream\nbase. 3 indicates using the mutated\
+    \ base and both the\nupstream and downstream bases. (Default: 1.5)"
   synonyms:
   - -c
   - --context
@@ -58,8 +68,8 @@ named:
     name: CONTEXT
   optional: true
 - !Flag
-  description: 'Directory containing VEST score information in pickle files (Default:
-    None).'
+  description: "Directory containing VEST score information in pickle\nfiles (Default:\
+    \ None)."
   synonyms:
   - -s
   - --score-dir
@@ -75,9 +85,9 @@ named:
     name: OUTPUT
   optional: true
 - !Flag
-  description: 'Number of iterations more significant then the observed statistic
-    to stop further computations. This decreases compute time spent in resolving p-values
-    for non-significant genes. (Default: 1000).'
+  description: "Number of iterations more significant then the\nobserved statistic\
+    \ to stop further computations. This\ndecreases compute time spent in resolving\
+    \ p-values for\nnon-significant genes. (Default: 1000)."
   synonyms:
   - -sc
   - --stop-criteria
@@ -85,8 +95,8 @@ named:
     name: STOP_CRITERIA
   optional: true
 - !Flag
-  description: 'Minimum number of mutations at a position for it to be considered
-    a recurrently mutated position (Default: 3).'
+  description: "Minimum number of mutations at a position for it to be\nconsidered\
+    \ a recurrently mutated position (Default:\n3)."
   synonyms:
   - -r
   - --recurrent
@@ -94,8 +104,8 @@ named:
     name: RECURRENT
   optional: true
 - !Flag
-  description: 'Fraction of total mutations in a gene. This define the minimumm number
-    of mutations for a position to be defined as recurrently mutated (Defaul: .02).'
+  description: "Fraction of total mutations in a gene. This define the\nminimumm number\
+    \ of mutations for a position to be\ndefined as recurrently mutated (Defaul: .02)."
   synonyms:
   - -f
   - --fraction
@@ -103,24 +113,24 @@ named:
     name: FRACTION
   optional: true
 - !Flag
-  description: Only keep unique mutations for each tumor sample. Mutations reported
-    from heterogeneous sources may contain duplicates, e.g. a tumor sample was sequenced
-    twice.
+  description: "Only keep unique mutations for each tumor sample.\nMutations reported\
+    \ from heterogeneous sources may\ncontain duplicates, e.g. a tumor sample was\
+    \ sequenced\ntwice."
   synonyms:
   - --unique
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use mutations that are not mapped to the the single reference transcript
-    for a gene specified in the bed file indicated by the -b option.
+  description: "Use mutations that are not mapped to the the single\nreference transcript\
+    \ for a gene specified in the bed\nfile indicated by the -b option."
   synonyms:
   - -u
   - --use-unmapped
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Path to the genome fasta file. Required if --use- unmapped flag is
-    used. (Default: None)'
+  description: "Path to the genome fasta file. Required if --use-\nunmapped flag is\
+    \ used. (Default: None)"
   synonyms:
   - -g
   - --genome
@@ -128,24 +138,23 @@ named:
     name: GENOME
   optional: true
 - !Flag
-  description: 'Specify the seed for the pseudo random number generator. By default,
-    the seed is randomly chosen. The seed will be used for the monte carlo simulations
-    (Default: 101).'
+  description: "Specify the seed for the pseudo random number\ngenerator. By default,\
+    \ the seed is randomly chosen.\nThe seed will be used for the monte carlo simulations\n\
+    (Default: 101).\n"
   synonyms:
   - -seed
   - --seed
   args: !SimpleFlagArg
     name: SEED
   optional: true
-command:
-- probabilistic2020
-- oncogene
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - probabilistic2020
   positional: []
   named:
   - !Flag
-    description: Write a log file (--log-level=DEBUG for debug mode, --log-level=INFO
-      for info mode)
+    description: "Write a log file (--log-level=DEBUG for debug mode,\n--log-level=INFO\
+      \ for info mode)"
     synonyms:
     - -ll
     - --log-level
@@ -167,12 +176,12 @@ parent: &id002 !Command
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - probabilistic2020
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - probabilistic2020
+    - tsg
     positional: []
     named:
     - !Flag
@@ -184,8 +193,8 @@ parent: &id002 !Command
         name: INPUT
       optional: true
     - !Flag
-      description: DNA mutations file (MAF file). Columns can be in any order, but
-        should contain the correct column header names.
+      description: "DNA mutations file (MAF file). Columns can be in any\norder, but\
+        \ should contain the correct column header\nnames."
       synonyms:
       - -m
       - --mutations
@@ -201,9 +210,9 @@ parent: &id002 !Command
         name: BED
       optional: true
     - !Flag
-      description: 'Number of processes to use for parallelization. 0 indicates using
-        a single process without using a multiprocessing pool (more means Faster,
-        default: 0).'
+      description: "Number of processes to use for parallelization. 0\nindicates using\
+        \ a single process without using a\nmultiprocessing pool (more means Faster,\
+        \ default: 0)."
       synonyms:
       - -p
       - --processes
@@ -211,9 +220,9 @@ parent: &id002 !Command
         name: PROCESSES
       optional: true
     - !Flag
-      description: 'Number of iterations for null model. p-value precision increases
-        with more iterations, however this will also increase the run time (Default:
-        100,000).'
+      description: "Number of iterations for null model. p-value precision\nincreases\
+        \ with more iterations, however this will also\nincrease the run time (Default:\
+        \ 100,000)."
       synonyms:
       - -n
       - --num-iterations
@@ -221,11 +230,12 @@ parent: &id002 !Command
         name: NUM_ITERATIONS
       optional: true
     - !Flag
-      description: 'Number of DNA bases to use as context. 0 indicates no context.
-        1 indicates only use the mutated base. 1.5 indicates using the base context
-        used in CHASM (http:/ /wiki.chasmsoftware.org/index.php/CHASM_Overview). 2
-        indicates using the mutated base and the upstream base. 3 indicates using
-        the mutated base and both the upstream and downstream bases. (Default: 1.5)'
+      description: "Number of DNA bases to use as context. 0 indicates no\ncontext.\
+        \ 1 indicates only use the mutated base. 1.5\nindicates using the base context\
+        \ used in CHASM (http:/\n/wiki.chasmsoftware.org/index.php/CHASM_Overview).\
+        \ 2\nindicates using the mutated base and the upstream\nbase. 3 indicates\
+        \ using the mutated base and both the\nupstream and downstream bases. (Default:\
+        \ 1.5)"
       synonyms:
       - -c
       - --context
@@ -241,9 +251,9 @@ parent: &id002 !Command
         name: OUTPUT
       optional: true
     - !Flag
-      description: 'Number of iterations more significant then the observed statistic
-        to stop further computations. This decreases compute time spent in resolving
-        p-values for non-significant genes. (Default: 1000).'
+      description: "Number of iterations more significant then the\nobserved statistic\
+        \ to stop further computations. This\ndecreases compute time spent in resolving\
+        \ p-values for\nnon-significant genes. (Default: 1000)."
       synonyms:
       - -sc
       - --stop-criteria
@@ -251,8 +261,8 @@ parent: &id002 !Command
         name: STOP_CRITERIA
       optional: true
     - !Flag
-      description: 'Perform tsg randomization-based test if gene has at least a user
-        specified number of deleterious mutations (default: 1)'
+      description: "Perform tsg randomization-based test if gene has at\nleast a user\
+        \ specified number of deleterious mutations\n(default: 1)"
       synonyms:
       - -d
       - --deleterious
@@ -260,24 +270,24 @@ parent: &id002 !Command
         name: DELETERIOUS
       optional: true
     - !Flag
-      description: Only keep unique mutations for each tumor sample. Mutations reported
-        from heterogeneous sources may contain duplicates, e.g. a tumor sample was
-        sequenced twice.
+      description: "Only keep unique mutations for each tumor sample.\nMutations reported\
+        \ from heterogeneous sources may\ncontain duplicates, e.g. a tumor sample\
+        \ was sequenced\ntwice."
       synonyms:
       - --unique
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Use mutations that are not mapped to the the single reference transcript
-        for a gene specified in the bed file indicated by the -b option.
+      description: "Use mutations that are not mapped to the the single\nreference\
+        \ transcript for a gene specified in the bed\nfile indicated by the -b option."
       synonyms:
       - -u
       - --use-unmapped
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Path to the genome fasta file. Required if --use- unmapped flag
-        is used. (Default: None)'
+      description: "Path to the genome fasta file. Required if --use-\nunmapped flag\
+        \ is used. (Default: None)"
       synonyms:
       - -g
       - --genome
@@ -285,20 +295,18 @@ parent: &id002 !Command
         name: GENOME
       optional: true
     - !Flag
-      description: 'Specify the seed for the pseudo random number generator. By default,
-        the seed is randomly chosen. The seed will be used for the monte carlo simulations
-        (Default: 101).'
+      description: "Specify the seed for the pseudo random number\ngenerator. By default,\
+        \ the seed is randomly chosen.\nThe seed will be used for the monte carlo\
+        \ simulations\n(Default: 101).\n"
       synonyms:
       - -seed
       - --seed
       args: !SimpleFlagArg
         name: SEED
       optional: true
-    command:
-    - probabilistic2020
-    - tsg
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -358,211 +366,54 @@ parent: &id002 !Command
       \              (Default: 101).\n"
     generated_using: &id003
     - --help
+  - *id002
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: gene FASTA file from extract_gene_seq.py script
-      synonyms:
-      - -i
-      - --input
-      args: !SimpleFlagArg
-        name: INPUT
-      optional: true
-    - !Flag
-      description: DNA mutations file (MAF file). Columns can be in any order, but
-        should contain the correct column header names.
-      synonyms:
-      - -m
-      - --mutations
-      args: !SimpleFlagArg
-        name: MUTATIONS
-      optional: true
-    - !Flag
-      description: BED file annotation of genes
-      synonyms:
-      - -b
-      - --bed
-      args: !SimpleFlagArg
-        name: BED
-      optional: true
-    - !Flag
-      description: 'Number of processes to use for parallelization. 0 indicates using
-        a single process without using a multiprocessing pool (more means Faster,
-        default: 0).'
-      synonyms:
-      - -p
-      - --processes
-      args: !SimpleFlagArg
-        name: PROCESSES
-      optional: true
-    - !Flag
-      description: 'Number of iterations for null model. p-value precision increases
-        with more iterations, however this will also increase the run time (Default:
-        100,000).'
-      synonyms:
-      - -n
-      - --num-iterations
-      args: !SimpleFlagArg
-        name: NUM_ITERATIONS
-      optional: true
-    - !Flag
-      description: 'Number of DNA bases to use as context. 0 indicates no context.
-        1 indicates only use the mutated base. 1.5 indicates using the base context
-        used in CHASM (http:/ /wiki.chasmsoftware.org/index.php/CHASM_Overview). 2
-        indicates using the mutated base and the upstream base. 3 indicates using
-        the mutated base and both the upstream and downstream bases. (Default: 1.5)'
-      synonyms:
-      - -c
-      - --context
-      args: !SimpleFlagArg
-        name: CONTEXT
-      optional: true
-    - !Flag
-      description: Output text file of probabilistic 20/20 results
-      synonyms:
-      - -o
-      - --output
-      args: !SimpleFlagArg
-        name: OUTPUT
-      optional: true
-    - !Flag
-      description: 'Number of iterations more significant then the observed statistic
-        to stop further computations. This decreases compute time spent in resolving
-        p-values for non-significant genes. (Default: 1000).'
-      synonyms:
-      - -sc
-      - --stop-criteria
-      args: !SimpleFlagArg
-        name: STOP_CRITERIA
-      optional: true
-    - !Flag
-      description: 'Sequence window size for HotMAPS 1D algorithm by number of codons
-        (Default: 3)'
-      synonyms:
-      - -w
-      - --window
-      args: !SimpleFlagArg
-        name: WINDOW
-      optional: true
-    - !Flag
-      description: Flag for reporting index (row number, starts at zero) in associated
-        mutation file
-      synonyms:
-      - -r
-      - --report-index
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Path to directory to save empirical null distribution
-      synonyms:
-      - -nd
-      - --null-distr-dir
-      args: !SimpleFlagArg
-        name: NULL_DISTR_DIR
-      optional: true
-    - !Flag
-      description: Only keep unique mutations for each tumor sample. Mutations reported
-        from heterogeneous sources may contain duplicates, e.g. a tumor sample was
-        sequenced twice.
-      synonyms:
-      - --unique
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Use mutations that are not mapped to the the single reference transcript
-        for a gene specified in the bed file indicated by the -b option.
-      synonyms:
-      - -u
-      - --use-unmapped
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Path to the genome fasta file. Required if --use- unmapped flag
-        is used. (Default: None)'
-      synonyms:
-      - -g
-      - --genome
-      args: !SimpleFlagArg
-        name: GENOME
-      optional: true
-    - !Flag
-      description: 'Specify the seed for the pseudo random number generator. By default,
-        the seed is randomly chosen. The seed will be used for the monte carlo simulations
-        (Default: 101).'
-      synonyms:
-      - -seed
-      - --seed
-      args: !SimpleFlagArg
-        name: SEED
-      optional: true
     command:
     - probabilistic2020
-    - hotmaps1d
-    parent: *id002
+    - genes.
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: probabilistic2020
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -l
+      args: !SimpleFlagArg
+        name: LOG
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -ll
+      args: !SimpleFlagArg
+        name: LOG_LEVEL
+      optional: true
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
-      description: show this help message and exit
+      description: ''
       synonyms:
       - -h
-      - --help
       args: !EmptyFlagArg {}
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: probabilistic2020 hotmaps1d [-h] -i INPUT -m MUTATIONS -b BED\n\
-      \                                   [-p PROCESSES] [-n NUM_ITERATIONS]\n   \
-      \                                [-sc STOP_CRITERIA] [-c CONTEXT]\n        \
-      \                           [-w WINDOW] [-r] [-nd NULL_DISTR_DIR]\n        \
-      \                           [--unique] [-u] [-g GENOME] [-seed SEED] -o\n  \
-      \                                 OUTPUT\n\nFind codons with significant clustering\
-      \ of missense mutations in sequence.\nEvaluates for a higher ammount of clustering\
-      \ of missense mutations.\n\noptional arguments:\n  -h, --help            show\
-      \ this help message and exit\n\nMajor options:\n  -i INPUT, --input INPUT\n\
-      \                        gene FASTA file from extract_gene_seq.py script\n \
-      \ -m MUTATIONS, --mutations MUTATIONS\n                        DNA mutations\
-      \ file (MAF file). Columns can be in any\n                        order, but\
-      \ should contain the correct column header\n                        names.\n\
-      \  -b BED, --bed BED     BED file annotation of genes\n  -p PROCESSES, --processes\
-      \ PROCESSES\n                        Number of processes to use for parallelization.\
-      \ 0\n                        indicates using a single process without using\
-      \ a\n                        multiprocessing pool (more means Faster, default:\
-      \ 0).\n  -n NUM_ITERATIONS, --num-iterations NUM_ITERATIONS\n              \
-      \          Number of iterations for null model. p-value precision\n        \
-      \                increases with more iterations, however this will also\n  \
-      \                      increase the run time (Default: 100,000).\n  -c CONTEXT,\
-      \ --context CONTEXT\n                        Number of DNA bases to use as context.\
-      \ 0 indicates no\n                        context. 1 indicates only use the\
-      \ mutated base. 1.5\n                        indicates using the base context\
-      \ used in CHASM (http:/\n                        /wiki.chasmsoftware.org/index.php/CHASM_Overview).\
-      \ 2\n                        indicates using the mutated base and the upstream\n\
-      \                        base. 3 indicates using the mutated base and both the\n\
-      \                        upstream and downstream bases. (Default: 1.5)\n  -o\
-      \ OUTPUT, --output OUTPUT\n                        Output text file of probabilistic\
-      \ 20/20 results\n\nAdvanced options:\n  -sc STOP_CRITERIA, --stop-criteria STOP_CRITERIA\n\
-      \                        Number of iterations more significant then the\n  \
-      \                      observed statistic to stop further computations. This\n\
-      \                        decreases compute time spent in resolving p-values\
-      \ for\n                        non-significant genes. (Default: 1000).\n  -w\
-      \ WINDOW, --window WINDOW\n                        Sequence window size for\
-      \ HotMAPS 1D algorithm by\n                        number of codons (Default:\
-      \ 3)\n  -r, --report-index    Flag for reporting index (row number, starts at\
-      \ zero)\n                        in associated mutation file\n  -nd NULL_DISTR_DIR,\
-      \ --null-distr-dir NULL_DISTR_DIR\n                        Path to directory\
-      \ to save empirical null distribution\n  --unique              Only keep unique\
-      \ mutations for each tumor sample.\n                        Mutations reported\
-      \ from heterogeneous sources may\n                        contain duplicates,\
-      \ e.g. a tumor sample was sequenced\n                        twice.\n  -u, --use-unmapped\
-      \    Use mutations that are not mapped to the the single\n                 \
-      \       reference transcript for a gene specified in the bed\n             \
-      \           file indicated by the -b option.\n  -g GENOME, --genome GENOME\n\
-      \                        Path to the genome fasta file. Required if --use-\n\
-      \                        unmapped flag is used. (Default: None)\n  -seed SEED,\
-      \ --seed SEED\n                        Specify the seed for the pseudo random\
-      \ number\n                        generator. By default, the seed is randomly\
-      \ chosen.\n                        The seed will be used for the monte carlo\
-      \ simulations\n                        (Default: 101).\n"
+    help_text: "usage: probabilistic2020 [-h] [-ll LOG_LEVEL] [-l LOG] [-v]\n    \
+      \                     {oncogene,tsg,hotmaps1d} ...\nprobabilistic2020: error:\
+      \ argument kind: invalid choice: 'genes.' (choose from 'oncogene', 'tsg', 'hotmaps1d')\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -586,6 +437,7 @@ parent: &id002 !Command
     \ clustering of missense\n                        mutations in sequence.\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

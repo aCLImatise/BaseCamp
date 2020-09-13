@@ -11,4 +11,7 @@ task ArbDnaratesInputDbname {
   parameter_meta {
     db_save_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

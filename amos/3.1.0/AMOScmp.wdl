@@ -4,4 +4,7 @@ task AMOScmp {
   command <<<
     AMOScmp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

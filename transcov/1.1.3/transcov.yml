@@ -1,59 +1,214 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - transcov
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - transcov
+  - collapse
   positional:
   - !Positional
     description: ''
     position: 0
-    name: ARGS
+    name: MATRICES
     optional: true
-  named: []
-  command:
-  - transcov
-  - COMMAND
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --uint32
+    args: !EmptyFlagArg {}
+    optional: true
   parent: *id001
   subcommands: []
-  help_flag:
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
-  help_text: "Usage: transcov [OPTIONS] COMMAND [ARGS]...\nTry 'transcov --help' for\
-    \ help.\n\nError: No such command 'COMMAND'.\n"
+  help_text: "Usage: transcov collapse [OPTIONS] [MATRICES]...\n\nOptions:\n  -o,\
+    \ --output-file TEXT\n  --uint32\n  --help                  Show this message\
+    \ and exit.\n"
   generated_using: &id002
   - --help
 - !Command
+  command:
+  - transcov
+  - generate-coverage
   positional:
   - !Positional
     description: ''
     position: 0
-    name: transcov
+    name: BAM_FILE
     optional: false
   - !Positional
     description: ''
     position: 1
-    name: COMMAND
+    name: BED_FILE
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: transcov generate-coverage [OPTIONS] BAM_FILE BED_FILE\n\nOptions:\n\
+    \  -o, --output-file TEXT\n  --help                  Show this message and exit.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - transcov
+  - plot-tensor-dist
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: INPUT_TENSOR
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: transcov plot-tensor-dist [OPTIONS] INPUT_TENSOR\n\nOptions:\n\
+    \  -o, --output-file TEXT\n  --help                  Show this message and exit.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - transcov
+  - pick-subset
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: INPUT_SAMPLE
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: INDEX_FILE
     optional: false
   - !Positional
     description: ''
     position: 2
-    name: ARGS
+    name: IDS_FILE
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: TEXT
     optional: true
-  named: []
-  command:
-  - transcov
-  - ARGS
   parent: *id001
   subcommands: []
-  help_flag:
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
-  help_text: "Usage: transcov [OPTIONS] COMMAND [ARGS]...\nTry 'transcov --help' for\
-    \ help.\n\nError: No such command 'ARGS'.\n"
+  help_text: "Usage: transcov pick-subset [OPTIONS] INPUT_SAMPLE INDEX_FILE IDS_FILE\n\
+    \nOptions:\n  -o, --output-file TEXT\n  --help                  Show this message\
+    \ and exit.\n"
   generated_using: *id002
+- !Command
+  command:
+  - transcov
+  - generate-length
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: BAM_FILE
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: BED_FILE
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: RANGE
+    synonyms:
+    - -m
+    - --max-length
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: transcov generate-length [OPTIONS] BAM_FILE BED_FILE\n\nOptions:\n\
+    \  -o, --output-file TEXT\n  -m, --max-length INTEGER RANGE\n  --help        \
+    \                  Show this message and exit.\n"
+  generated_using: *id002
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:

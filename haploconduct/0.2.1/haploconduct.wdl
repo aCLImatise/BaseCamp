@@ -11,4 +11,7 @@ task Haploconduct {
   parameter_meta {
     program: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

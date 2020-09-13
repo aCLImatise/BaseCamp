@@ -6,7 +6,7 @@ task DgeniesGalleryAdd {
     String? name
     String? query
     String? target
-    String? pict
+    File? pict
   }
   command <<<
     dgenies gallery add \
@@ -22,5 +22,8 @@ task DgeniesGalleryAdd {
     query: "Name of the query"
     target: "Name of the target"
     pict: "Name of the file that illustrate the job"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

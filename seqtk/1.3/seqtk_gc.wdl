@@ -11,7 +11,7 @@ task SeqtkGc {
   command <<<
     seqtk gc \
       ~{in_dot_fa} \
-      ~{true="-w" false="" identify_highat_regions} \
+      ~{if (identify_highat_regions) then "-w" else ""} \
       ~{if defined(min_gc_fraction) then ("-f " +  '"' + min_gc_fraction + '"') else ""} \
       ~{if defined(min_region_length) then ("-l " +  '"' + min_region_length + '"') else ""} \
       ~{if defined(xdropoff) then ("-x " +  '"' + xdropoff + '"') else ""}
@@ -22,5 +22,8 @@ task SeqtkGc {
     min_region_length: "min region length to output [0]"
     xdropoff: "X-dropoff [10.0]"
     in_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

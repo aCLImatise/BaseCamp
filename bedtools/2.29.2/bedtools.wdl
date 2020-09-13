@@ -6,9 +6,12 @@ task Bedtools {
   }
   command <<<
     bedtools \
-      ~{true="--contact" false="" contact}
+      ~{if (contact) then "--contact" else ""}
   >>>
   parameter_meta {
     contact: "Feature requests, bugs, mailing lists, etc."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

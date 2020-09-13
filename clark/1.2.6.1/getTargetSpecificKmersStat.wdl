@@ -4,4 +4,7 @@ task GetTargetSpecificKmersStat {
   command <<<
     getTargetSpecificKmersStat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

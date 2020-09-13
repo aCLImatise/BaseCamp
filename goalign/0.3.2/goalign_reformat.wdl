@@ -3,9 +3,9 @@ version 1.0
 task GoalignReformat {
   input {
     Boolean? clean_names
-    String? reformated_alignment_output
+    File? reformated_alignment_output
     Boolean? unaligned
-    String? align
+    File? align
     Boolean? auto_detect
     Boolean? alignment_clustal_default
     Boolean? ignore_identical
@@ -32,27 +32,27 @@ task GoalignReformat {
       ~{paml} \
       ~{reformats_input_alignment_phylip} \
       ~{tnt} \
-      ~{true="--clean-names" false="" clean_names} \
+      ~{if (clean_names) then "--clean-names" else ""} \
       ~{if defined(reformated_alignment_output) then ("--output " +  '"' + reformated_alignment_output + '"') else ""} \
-      ~{true="--unaligned" false="" unaligned} \
+      ~{if (unaligned) then "--unaligned" else ""} \
       ~{if defined(align) then ("--align " +  '"' + align + '"') else ""} \
-      ~{true="--auto-detect" false="" auto_detect} \
-      ~{true="--clustal" false="" alignment_clustal_default} \
-      ~{true="--ignore-identical" false="" ignore_identical} \
-      ~{true="--input-strict" false="" input_strict} \
-      ~{true="--nexus" false="" alignment_nexus_default} \
-      ~{true="--no-block" false="" no_block} \
-      ~{true="--one-line" false="" one_line} \
-      ~{true="--output-strict" false="" output_strict} \
-      ~{true="--phylip" false="" alignment_phylip_default} \
+      ~{if (auto_detect) then "--auto-detect" else ""} \
+      ~{if (alignment_clustal_default) then "--clustal" else ""} \
+      ~{if (ignore_identical) then "--ignore-identical" else ""} \
+      ~{if (input_strict) then "--input-strict" else ""} \
+      ~{if (alignment_nexus_default) then "--nexus" else ""} \
+      ~{if (no_block) then "--no-block" else ""} \
+      ~{if (one_line) then "--one-line" else ""} \
+      ~{if (output_strict) then "--output-strict" else ""} \
+      ~{if (alignment_phylip_default) then "--phylip" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
     clean_names: "Replaces special characters (tabs, spaces, newick characters) with '-' from input sequence names before writing output alignment"
-    reformated_alignment_output: "Reformated alignment output file (default \"stdout\")"
+    reformated_alignment_output: "Reformated alignment output file (default \\\"stdout\\\")"
     unaligned: "Considers sequences as unaligned and format fasta (phylip, nexus,... options are ignored)"
-    align: "Alignment input file (default \"stdin\")"
+    align: "Alignment input file (default \\\"stdin\\\")"
     auto_detect: "Auto detects input format (overrides -p, -x and -u)"
     alignment_clustal_default: "Alignment is in clustal? default fasta"
     ignore_identical: "Ignore duplicated sequences that have the same name and same sequences"
@@ -70,5 +70,9 @@ task GoalignReformat {
     paml: "Reformats an input alignment into input data for PAML"
     reformats_input_alignment_phylip: "Reformats an input alignment into Phylip"
     tnt: "Reformats an input alignment into input data for TNT"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_reformated_alignment_output = "${in_reformated_alignment_output}"
   }
 }

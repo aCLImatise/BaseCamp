@@ -31,14 +31,14 @@ task Pplacer {
     Boolean? write_masked
     Boolean? verbosity
     Boolean? out_dir
-    Boolean? specify_file_name
+    File? specify_output_name
     Boolean? pretend
     Boolean? check_like
     Boolean? number_child_spawn
     Boolean? timing
     Boolean? no_pre_mask
-    Boolean? write_pre_masked
-    Boolean? map_mrca
+    File? write_pre_masked
+    File? map_mrca
     Boolean? map_mrca_min
     Boolean? map_identity
     Boolean? keep_at_most
@@ -50,51 +50,51 @@ task Pplacer {
   }
   command <<<
     pplacer \
-      ~{true="-c" false="" specify_path_reference} \
-      ~{true="-t" false="" specify_tree_filename} \
-      ~{true="-r" false="" specify_alignment_filename} \
-      ~{true="-s" false="" supply_phyml_statstxt} \
-      ~{true="-d" false="" specify_directory_containing} \
-      ~{true="-p" false="" calculate_posterior_probabilities} \
-      ~{true="-m" false="" substitution_model_protein} \
-      ~{true="--model-freqs" false="" model_freqs} \
-      ~{true="--gamma-cats" false="" gamma_cats} \
-      ~{true="--gamma-alpha" false="" gamma_alpha} \
-      ~{true="--ml-tolerance" false="" ml_tolerance} \
-      ~{true="--pp-rel-err" false="" pp_rel_err} \
-      ~{true="--unif-prior" false="" unif_prior} \
-      ~{true="--inform-prior" false="" inform_prior} \
-      ~{true="--prior-lower" false="" prior_lower} \
-      ~{true="--start-pend" false="" start_pend} \
-      ~{true="--max-pend" false="" max_pend} \
-      ~{true="--fig-cutoff" false="" fig_cut_off} \
-      ~{true="--fig-eval-all" false="" fig_eval_all} \
-      ~{true="--fig-eval-discrepancy-tree" false="" fig_eval_discrepancy_tree} \
-      ~{true="--fig-tree" false="" fig_tree} \
-      ~{true="--max-strikes" false="" max_strikes} \
-      ~{true="--strike-box" false="" strike_box} \
-      ~{true="--max-pitches" false="" max_pitches} \
-      ~{true="--fantasy" false="" fantasy} \
-      ~{true="--fantasy-frac" false="" fantasy_frac} \
-      ~{true="--write-masked" false="" write_masked} \
-      ~{true="--verbosity" false="" verbosity} \
-      ~{true="--out-dir" false="" out_dir} \
-      ~{true="-o" false="" specify_file_name} \
-      ~{true="--pretend" false="" pretend} \
-      ~{true="--check-like" false="" check_like} \
-      ~{true="-j" false="" number_child_spawn} \
-      ~{true="--timing" false="" timing} \
-      ~{true="--no-pre-mask" false="" no_pre_mask} \
-      ~{true="--write-pre-masked" false="" write_pre_masked} \
-      ~{true="--map-mrca" false="" map_mrca} \
-      ~{true="--map-mrca-min" false="" map_mrca_min} \
-      ~{true="--map-identity" false="" map_identity} \
-      ~{true="--keep-at-most" false="" keep_at_most} \
-      ~{true="--keep-factor" false="" keep_factor} \
-      ~{true="--mrca-class" false="" mrca_class} \
-      ~{true="--groups" false="" groups} \
-      ~{true="--always-refine" false="" always_refine} \
-      ~{true="--help" false="" help}
+      ~{if (specify_path_reference) then "-c" else ""} \
+      ~{if (specify_tree_filename) then "-t" else ""} \
+      ~{if (specify_alignment_filename) then "-r" else ""} \
+      ~{if (supply_phyml_statstxt) then "-s" else ""} \
+      ~{if (specify_directory_containing) then "-d" else ""} \
+      ~{if (calculate_posterior_probabilities) then "-p" else ""} \
+      ~{if (substitution_model_protein) then "-m" else ""} \
+      ~{if (model_freqs) then "--model-freqs" else ""} \
+      ~{if (gamma_cats) then "--gamma-cats" else ""} \
+      ~{if (gamma_alpha) then "--gamma-alpha" else ""} \
+      ~{if (ml_tolerance) then "--ml-tolerance" else ""} \
+      ~{if (pp_rel_err) then "--pp-rel-err" else ""} \
+      ~{if (unif_prior) then "--unif-prior" else ""} \
+      ~{if (inform_prior) then "--inform-prior" else ""} \
+      ~{if (prior_lower) then "--prior-lower" else ""} \
+      ~{if (start_pend) then "--start-pend" else ""} \
+      ~{if (max_pend) then "--max-pend" else ""} \
+      ~{if (fig_cut_off) then "--fig-cutoff" else ""} \
+      ~{if (fig_eval_all) then "--fig-eval-all" else ""} \
+      ~{if (fig_eval_discrepancy_tree) then "--fig-eval-discrepancy-tree" else ""} \
+      ~{if (fig_tree) then "--fig-tree" else ""} \
+      ~{if (max_strikes) then "--max-strikes" else ""} \
+      ~{if (strike_box) then "--strike-box" else ""} \
+      ~{if (max_pitches) then "--max-pitches" else ""} \
+      ~{if (fantasy) then "--fantasy" else ""} \
+      ~{if (fantasy_frac) then "--fantasy-frac" else ""} \
+      ~{if (write_masked) then "--write-masked" else ""} \
+      ~{if (verbosity) then "--verbosity" else ""} \
+      ~{if (out_dir) then "--out-dir" else ""} \
+      ~{if (specify_output_name) then "-o" else ""} \
+      ~{if (pretend) then "--pretend" else ""} \
+      ~{if (check_like) then "--check-like" else ""} \
+      ~{if (number_child_spawn) then "-j" else ""} \
+      ~{if (timing) then "--timing" else ""} \
+      ~{if (no_pre_mask) then "--no-pre-mask" else ""} \
+      ~{if (write_pre_masked) then "--write-pre-masked" else ""} \
+      ~{if (map_mrca) then "--map-mrca" else ""} \
+      ~{if (map_mrca_min) then "--map-mrca-min" else ""} \
+      ~{if (map_identity) then "--map-identity" else ""} \
+      ~{if (keep_at_most) then "--keep-at-most" else ""} \
+      ~{if (keep_factor) then "--keep-factor" else ""} \
+      ~{if (mrca_class) then "--mrca-class" else ""} \
+      ~{if (groups) then "--groups" else ""} \
+      ~{if (always_refine) then "--always-refine" else ""} \
+      ~{if (help) then "--help" else ""}
   >>>
   parameter_meta {
     specify_path_reference: "Specify the path to the reference package."
@@ -126,7 +126,7 @@ task Pplacer {
     write_masked: "Write alignment masked to the region without gaps in the query."
     verbosity: "Set verbosity level. 0 is silent, and 2 is quite a lot. Default is 1."
     out_dir: "Specify the directory to write place files to."
-    specify_file_name: "Specify the output file name"
+    specify_output_name: "Specify the output file name"
     pretend: "Only check out the files then report. Do not run the analysis."
     check_like: "Write out the likelihood of the reference tree, calculated two ways."
     number_child_spawn: "The number of child processes to spawn when doing placements. Default is 2."
@@ -142,5 +142,11 @@ task Pplacer {
     groups: "Split query alignment into the specified number of groups."
     always_refine: "Always refine the model before placing."
     help: "Display this list of options"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_specify_output_name = "${in_specify_output_name}"
+    File out_write_pre_masked = "${in_write_pre_masked}"
+    File out_map_mrca = "${in_map_mrca}"
   }
 }

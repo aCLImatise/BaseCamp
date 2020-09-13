@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../2bwt_builder.cwl
 inputs:
-- id: sequence_file
+- id: in_sequence_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: index
+- id: in_index
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: prefix
+- id: in_prefix
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - 2bwt-builder

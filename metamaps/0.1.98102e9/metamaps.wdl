@@ -4,4 +4,7 @@ task Metamaps {
   command <<<
     metamaps
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

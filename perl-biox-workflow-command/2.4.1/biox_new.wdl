@@ -2,46 +2,49 @@ version 1.0
 
 task BioxNew {
   input {
-    Boolean? plugins_opts
     Boolean? plugins
+    Boolean? plugins_opts
+    Boolean? no_configs
     Boolean? config
     Boolean? search
-    Boolean? no_configs
     Boolean? search_path
-    Boolean? config_base
     Boolean? rules
-    Boolean? outfile
     Boolean? stdout
+    Boolean? outfile
     Boolean? supply_a_workflow
+    String config_dot
     String help
   }
   command <<<
     biox new \
+      ~{config_dot} \
       ~{help} \
-      ~{true="--plugins_opts" false="" plugins_opts} \
-      ~{true="--plugins" false="" plugins} \
-      ~{true="--config" false="" config} \
-      ~{true="--search" false="" search} \
-      ~{true="--no_configs" false="" no_configs} \
-      ~{true="--search_path" false="" search_path} \
-      ~{true="--config_base" false="" config_base} \
-      ~{true="--rules" false="" rules} \
-      ~{true="--outfile" false="" outfile} \
-      ~{true="--stdout" false="" stdout} \
-      ~{true="--workflow" false="" supply_a_workflow}
+      ~{if (plugins) then "--plugins" else ""} \
+      ~{if (plugins_opts) then "--plugins_opts" else ""} \
+      ~{if (no_configs) then "--no_configs" else ""} \
+      ~{if (config) then "--config" else ""} \
+      ~{if (search) then "--search" else ""} \
+      ~{if (search_path) then "--search_path" else ""} \
+      ~{if (rules) then "--rules" else ""} \
+      ~{if (stdout) then "--stdout" else ""} \
+      ~{if (outfile) then "--outfile" else ""} \
+      ~{if (supply_a_workflow) then "--workflow" else ""}
   >>>
   parameter_meta {
+    plugins: "Load aplication plugins [Multiple; Split by \\\",\\\"]"
     plugins_opts: "Options for application plugins [Key-Value]"
-    plugins: "Load aplication plugins [Multiple; Split by \",\"]"
-    config: "Override the search paths and supply your own config."
-    search: "Search for config files in ~/.config.(ext) and in your current working directory. [Flag]"
-    no_configs: "--no_configs tells HPC::Runner not to load any configs [Flag]"
-    search_path: "Enable a search path for configs. Default is the home dir and your cwd. [Multiple]"
-    config_base: "Basename of config files [Default:\".bioxworkflow\"]"
-    rules: "Add rules [Multiple; Split by \",\"]"
-    outfile: "Write your workflow to a file"
+    no_configs: "--no_configs tells HPC::Runner not to load any\\nconfigs [Flag]"
+    config: "Override the search paths and supply your own"
+    search: "Search for config files in ~/.config.(ext) and in\\nyour current working directory. [Flag]"
+    search_path: "Enable a search path for configs. Default is the\\nhome dir and your cwd. [Multiple]"
+    rules: "Add rules [Multiple; Split by \\\",\\\"]"
     stdout: "Write workflows to STDOUT [Flag]"
+    outfile: "Write your workflow to a file"
     supply_a_workflow: "Supply a workflow [Required]"
+    config_dot: "--config_base         Basename of config files [Default:\\\".bioxworkflow\\\"]"
     help: "Prints this usage information"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

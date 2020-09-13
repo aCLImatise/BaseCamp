@@ -4,4 +4,7 @@ task Dustmasker {
   command <<<
     dustmasker
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

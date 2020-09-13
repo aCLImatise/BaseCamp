@@ -1,0 +1,134 @@
+!Command
+command:
+- hicPlotDistVsCounts
+positional: []
+named:
+- !Flag
+  description: "Hi-C normalized (corrected) matrices. Each path should\nbe separated\
+    \ by a space."
+  synonyms:
+  - --matrices
+  - -m
+  args: !RepeatFlagArg
+    name: MATRICES
+  optional: true
+- !Flag
+  description: "name, -o file name\nFile name to save the file. The given file ending\
+    \ will\nbe used to determine the image format. The available\noptions are: .png,\
+    \ .emf, .eps, .pdf and .svg."
+  synonyms:
+  - --plotFile
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Label to assign to each matrix file. Each label should\nbe separated\
+    \ by a space. Quote labels that contain\nspaces: E.g. --labels label1 \"labels\
+    \ 2\". If no labels\nare given then the file name is used."
+  synonyms:
+  - --labels
+  args: !RepeatFlagArg
+    name: LABELS
+  optional: true
+- !Flag
+  description: If set, diagonal counts are not included.
+  synonyms:
+  - --skipDiagonal
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "bp     Maximum distance from diagonal to use. In other words,\ndistances\
+    \ up to maxDepth are computed. Default is 3\nmillion bp."
+  synonyms:
+  - --maxdepth
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "If given, computes and display distance versus Hi-C\ncounts plots\
+    \ for each chromosome stored in the\nmatrices passed to --matrices."
+  synonyms:
+  - --perchr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Exclude the given list of chromosomes. This is useful\nfor example\
+    \ to exclude the Y chromosome. The names of\nthe chromosomes should be separated\
+    \ by space."
+  synonyms:
+  - --chromosomeExclude
+  args: !RepeatFlagArg
+    name: CHROMOSOMEEXCLUDE
+  optional: true
+- !Flag
+  description: "If given, the data underlying the plots is saved on\nthis file."
+  synonyms:
+  - --outFileData
+  args: !SimpleFlagArg
+    name: OUTFILEDATA
+  optional: true
+- !Flag
+  description: "PLOTSIZE\nWidth and height of the plot (in inches). Default is\n6*number\
+    \ of cols, 4 * number of rows. The maximum\nnumber of rows is 4. Example: --plotsize\
+    \ 6 5"
+  synonyms:
+  - --plotsize
+  args: !SimpleFlagArg
+    name: PLOTSIZE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: hicPlotDistVsCounts --matrices MATRICES [MATRICES ...] --plotFile\
+  \ file\n                           name [--labels LABELS [LABELS ...]]\n       \
+  \                    [--skipDiagonal] [--maxdepth INT bp] [--perchr]\n         \
+  \                  [--chromosomeExclude CHROMOSOMEEXCLUDE [CHROMOSOMEEXCLUDE ...]]\n\
+  \                           [--outFileData OUTFILEDATA]\n                      \
+  \     [--plotsize PLOTSIZE PLOTSIZE] [--help] [--version]\n\nThis program creates\
+  \ distance vs. Hi-C counts plots. It can use several matrix\nfiles to compare them\
+  \ at once. If the `--perchr` option is given, each\nchromosome is plotted independently.\
+  \ When plotting multiple matrices, denser\nmatrices are scaled down to match the\
+  \ sum of the smallest matrix.\n\nRequired arguments:\n  --matrices MATRICES [MATRICES\
+  \ ...], -m MATRICES [MATRICES ...]\n                        Hi-C normalized (corrected)\
+  \ matrices. Each path should\n                        be separated by a space.\n\
+  \  --plotFile file name, -o file name\n                        File name to save\
+  \ the file. The given file ending will\n                        be used to determine\
+  \ the image format. The available\n                        options are: .png, .emf,\
+  \ .eps, .pdf and .svg.\n\nOptional arguments:\n  --labels LABELS [LABELS ...]\n\
+  \                        Label to assign to each matrix file. Each label should\n\
+  \                        be separated by a space. Quote labels that contain\n  \
+  \                      spaces: E.g. --labels label1 \"labels 2\". If no labels\n\
+  \                        are given then the file name is used.\n  --skipDiagonal,\
+  \ -s    If set, diagonal counts are not included.\n  --maxdepth INT bp     Maximum\
+  \ distance from diagonal to use. In other words,\n                        distances\
+  \ up to maxDepth are computed. Default is 3\n                        million bp.\n\
+  \  --perchr              If given, computes and display distance versus Hi-C\n \
+  \                       counts plots for each chromosome stored in the\n       \
+  \                 matrices passed to --matrices.\n  --chromosomeExclude CHROMOSOMEEXCLUDE\
+  \ [CHROMOSOMEEXCLUDE ...]\n                        Exclude the given list of chromosomes.\
+  \ This is useful\n                        for example to exclude the Y chromosome.\
+  \ The names of\n                        the chromosomes should be separated by space.\n\
+  \  --outFileData OUTFILEDATA\n                        If given, the data underlying\
+  \ the plots is saved on\n                        this file.\n  --plotsize PLOTSIZE\
+  \ PLOTSIZE\n                        Width and height of the plot (in inches). Default\
+  \ is\n                        6*number of cols, 4 * number of rows. The maximum\n\
+  \                        number of rows is 4. Example: --plotsize 6 5\n  --help,\
+  \ -h            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help

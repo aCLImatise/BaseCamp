@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../tripaille_entity_publish.cwl
 inputs:
-- id: types
-  doc: 'List of entity types to be published (e.g. Gene mRNA, default: all)'
+- id: in_types
+  doc: "List of entity types to be published (e.g. Gene mRNA,\ndefault: all)"
   type: string
   inputBinding:
     prefix: --types
-- id: job_name
+- id: in_job_name
   doc: Name of the job
   type: string
   inputBinding:
     prefix: --job_name
-- id: no_wait
+- id: in_no_wait
   doc: Return immediately without waiting for job completion
   type: boolean
   inputBinding:
     prefix: --no_wait
-outputs: []
+- id: in_status
+  doc: 'Options:'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tripaille

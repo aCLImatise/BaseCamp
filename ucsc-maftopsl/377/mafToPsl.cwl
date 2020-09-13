@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../mafToPsl.cwl
 inputs:
-- id: query_src
+- id: in_query_src
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: target_src
+- id: in_target_src
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: in_dot_maf
+- id: in_in_dot_maf
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: out_dot_psl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mafToPsl

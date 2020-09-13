@@ -1,23 +1,27 @@
 version 1.0
 
-task RibotricerOrfsSeq {
+task RibotricerOrfsseq {
   input {
-    String? ribot_ricer_index
-    String? fast_a
+    File? ribot_ricer_index
+    File? fast_a
     Boolean? protein
-    String? save_to
+    File? save_to
   }
   command <<<
-    ribotricer orfs-seq \
+    ribotricer orfs_seq \
       ~{if defined(ribot_ricer_index) then ("--ribotricer_index " +  '"' + ribot_ricer_index + '"') else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
-      ~{true="--protein" false="" protein} \
+      ~{if (protein) then "--protein" else ""} \
       ~{if defined(save_to) then ("--saveto " +  '"' + save_to + '"') else ""}
   >>>
   parameter_meta {
-    ribot_ricer_index: "Path to the index file of ribotricer This file should be generated using ribotricer prepare-orfs [required]"
+    ribot_ricer_index: "Path to the index file of ribotricer This file\\nshould be generated using ribotricer prepare-orfs\\n[required]"
     fast_a: "Path to FASTA file  [required]"
     protein: "Output protein sequence instead of nucleotide"
     save_to: "Path to output file  [required]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_save_to = "${in_save_to}"
   }
 }

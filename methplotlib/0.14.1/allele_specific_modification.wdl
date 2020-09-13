@@ -2,9 +2,9 @@ version 1.0
 
 task AlleleSpecificModification {
   input {
-    String? bed
-    String? cut_off
-    String? out
+    File? bed
+    Float? cut_off
+    File? out
     String methylation
   }
   command <<<
@@ -19,5 +19,8 @@ task AlleleSpecificModification {
     cut_off: "FDR cutoff. Default: 0.05"
     out: "File to write results to. Default: stdout."
     methylation: "Haplotype specific frequency files."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

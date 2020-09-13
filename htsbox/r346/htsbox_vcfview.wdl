@@ -7,8 +7,8 @@ task HtsboxVcfview {
     File? output_file_name
     Int? compression_level
     File? list_reference_names
-    File? list_samples_started
-    Boolean? drop_genotype_information
+    File? list_started_otherwise
+    Boolean? drop_individual_information
     Boolean? exclude_indels
     String vcf_view
     String in_dot_bcf
@@ -17,14 +17,14 @@ task HtsboxVcfview {
     htsbox vcfview \
       ~{vcf_view} \
       ~{in_dot_bcf} \
-      ~{true="-b" false="" output_in_bcf} \
-      ~{true="-S" false="" input_is_vcf} \
+      ~{if (output_in_bcf) then "-b" else ""} \
+      ~{if (input_is_vcf) then "-S" else ""} \
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(compression_level) then ("-l " +  '"' + compression_level + '"') else ""} \
       ~{if defined(list_reference_names) then ("-t " +  '"' + list_reference_names + '"') else ""} \
-      ~{if defined(list_samples_started) then ("-s " +  '"' + list_samples_started + '"') else ""} \
-      ~{true="-G" false="" drop_genotype_information} \
-      ~{true="-I" false="" exclude_indels}
+      ~{if defined(list_started_otherwise) then ("-s " +  '"' + list_started_otherwise + '"') else ""} \
+      ~{if (drop_individual_information) then "-G" else ""} \
+      ~{if (exclude_indels) then "-I" else ""}
   >>>
   parameter_meta {
     output_in_bcf: "output in BCF"
@@ -32,10 +32,14 @@ task HtsboxVcfview {
     output_file_name: "output file name [stdout]"
     compression_level: "compression level [0]"
     list_reference_names: "list of reference names and lengths [null]"
-    list_samples_started: "list of samples (STR if started with ':'; FILE otherwise) [null]"
-    drop_genotype_information: "drop individual genotype information"
+    list_started_otherwise: "list of samples (STR if started with ':'; FILE otherwise) [null]"
+    drop_individual_information: "drop individual genotype information"
     exclude_indels: "exclude INDELs"
     vcf_view: ""
     in_dot_bcf: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

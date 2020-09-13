@@ -4,4 +4,7 @@ task SepSam {
   command <<<
     SepSam
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

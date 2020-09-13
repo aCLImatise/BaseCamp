@@ -1,6 +1,15 @@
 !Command
+command:
+- multigps
 positional: []
 named:
+- !Flag
+  description: ''
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: output file prefix
+  optional: true
 - !Flag
   description: <number of threads to use (default=1)>
   synonyms:
@@ -26,6 +35,40 @@ named:
   - --geninfo
   args: !SimpleFlagArg
     name: genome info file
+  optional: true
+- !Flag
+  description: AND --format <SAM/BED/SCIDX>
+  synonyms:
+  - --expt
+  args: !SimpleFlagArg
+    name: file name
+  optional: true
+- !Flag
+  description: <file name (optional argument. must be same format as expt files)>
+  synonyms:
+  - --ctrl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <experiment design file name to use instead of --expt and --ctrl; see
+    website for format>
+  synonyms:
+  - --design
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<fixed per base limit (default: estimated from background model)>'
+  synonyms:
+  - --fixedpb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --poissongausspb
+  args: !SimpleFlagArg
+    name: filter per base using a Poisson threshold parameterized by a local Gaussian
+      sliding window
   optional: true
 - !Flag
   description: '[flag to use non-unique reads]'
@@ -88,6 +131,99 @@ named:
   synonyms:
   - --plotscaling
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --d
+  args: !SimpleFlagArg
+    name: binding event read distribution file
+  optional: true
+- !Flag
+  description: <max. model update rounds, default=3>
+  synonyms:
+  - --r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[flag to turn off binding model updates]'
+  synonyms:
+  - --nomodelupdate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <minimum number of events to support an update (default=500)>
+  synonyms:
+  - --minmodelupdateevents
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[flag to turn off binding model smoothing]'
+  synonyms:
+  - --nomodelsmoothing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <spline smoothing parameter (default=30)>
+  synonyms:
+  - --splinesmoothparam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[flag to turn on Gaussian model smoothing (default = cubic spline)]'
+  synonyms:
+  - --gaussmodelsmoothing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <Gaussian smoothing std dev (default=3)>
+  synonyms:
+  - --gausssmoothparam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[flag to allow joint events in model updates (default=do not)]'
+  synonyms:
+  - --jointinmodel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[flag to keep binding model range fixed to inital size (default: vary
+    automatically)]'
+  synonyms:
+  - --fixedmodelrange
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <Poisson log threshold for potential region scanning(default=-6)>
+  synonyms:
+  - --prlogconf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <alpha scaling factor(default=1.0>
+  synonyms:
+  - --alphascale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<impose this alpha (default: set automatically)>'
+  synonyms:
+  - --fixedalpha
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[flag to not share component configs in the ML step]'
+  synonyms:
+  - --mlconfignotshared
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: file of regions to ignore
   optional: true
 - !Flag
   description: '[flag to turn off inter-experiment positional prior (default=on)]'
@@ -192,10 +328,9 @@ named:
   - --eventsaretxt
   args: !EmptyFlagArg {}
   optional: true
-command:
-- multigps
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

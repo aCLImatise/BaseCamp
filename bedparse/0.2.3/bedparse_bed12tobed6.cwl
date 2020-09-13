@@ -1,23 +1,26 @@
 class: CommandLineTool
 id: ../../../bedparse_bed12tobed6.cwl
 inputs:
-- id: append_exn
+- id: in_append_exn
   doc: Appends the exon number to the transcript name.
   type: boolean
   inputBinding:
     prefix: --appendExN
-- id: which_exon
-  doc: Which exon to return. First and last respectively report the first or last
-    exon relative to the TSS (i.e. taking strand into account).
+- id: in_which_exon
+  doc: "Which exon to return. First and last respectively\nreport the first or last\
+    \ exon relative to the TSS\n(i.e. taking strand into account)."
   type: string
   inputBinding:
     prefix: --whichExon
-- id: keep_introns
-  doc: Add records for introns as well. Only allowed if --whichExon all
+- id: in_keep_introns
+  doc: Add records for introns as well. Only allowed if
   type: boolean
   inputBinding:
     prefix: --keepIntrons
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedparse

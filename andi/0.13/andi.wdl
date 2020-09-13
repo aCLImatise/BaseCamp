@@ -13,7 +13,7 @@ task Andi {
     String? truncate_names
     Boolean? verbose
     String? options_dot_dot_dot
-    File files_dot_dot_dot
+    String files_dot_dot_dot
   }
   command <<<
     andi \
@@ -21,14 +21,14 @@ task Andi {
       ~{files_dot_dot_dot} \
       ~{if defined(bootstrap) then ("--bootstrap " +  '"' + bootstrap + '"') else ""} \
       ~{if defined(file_of_filenames) then ("--file-of-filenames " +  '"' + file_of_filenames + '"') else ""} \
-      ~{true="--join" false="" join} \
-      ~{true="--low-memory" false="" low_memory} \
+      ~{if (join) then "--join" else ""} \
+      ~{if (low_memory) then "--low-memory" else ""} \
       ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
       ~{if defined(significance_anchor_default) then ("-p " +  '"' + significance_anchor_default + '"') else ""} \
       ~{if defined(progress) then ("--progress " +  '"' + progress + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(truncate_names) then ("--truncate-names " +  '"' + truncate_names + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     bootstrap: "Print additional bootstrap matrices"
@@ -43,5 +43,8 @@ task Andi {
     verbose: "Prints additional information"
     options_dot_dot_dot: ""
     files_dot_dot_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

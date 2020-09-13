@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- pysradb
+- srp-to-srs
 positional: []
 named:
 - !Flag
@@ -16,8 +19,9 @@ named:
     name: SAVETO
   optional: true
 - !Flag
-  description: 'Output additional columns: [run_accession (SRR), study_accession (SRP),
-    experiment_alias (GSM), sample_alias (GSM_), run_alias (GSM_r), study_alias (GSE)]'
+  description: "Output additional columns: [run_accession (SRR),\nstudy_accession\
+    \ (SRP), experiment_alias (GSM), sample_alias\n(GSM_), run_alias (GSM_r), study_alias\
+    \ (GSE)]"
   synonyms:
   - --detailed
   args: !EmptyFlagArg {}
@@ -34,10 +38,9 @@ named:
   - --expand
   args: !EmptyFlagArg {}
   optional: true
-command:
-- pysradb
-- srp-to-srs
 parent: &id001 !Command
+  command:
+  - pysradb
   positional: []
   named:
   - !Flag
@@ -46,20 +49,19 @@ parent: &id001 !Command
     - --citation
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - pysradb
   parent:
   subcommands:
   - !Command
-    positional: []
+    command:
+    - pysradb
+    - srr-to-srs
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srr_ids
+      optional: false
     named:
-    - !Flag
-      description: Save metadata dataframe to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
     - !Flag
       description: Path to SRAmetadb.sqlite file
       synonyms:
@@ -68,9 +70,11 @@ parent: &id001 !Command
         name: DB
       optional: true
     - !Flag
-      description: Include assay type in output
+      description: "'Output additional columns: [experiment_accession (SRX),\nstudy_accession\
+        \ (SRP), run_alias (GSM_r), sample_alias\n(GSM_), experiment_alias (GSM),\
+        \ study_alias (GSE)]"
       synonyms:
-      - --assay
+      - --detailed
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
@@ -80,22 +84,21 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Display detailed metadata table
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
       description: Should sample_attribute be expanded
       synonyms:
       - --expand
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - pysradb
-    - metadata
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -105,304 +108,65 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: pysradb metadata [-h] [--saveto SAVETO] [--db DB] [--assay]\
-      \ [--desc]\n                        [--detailed] [--expand]\n              \
-      \          srp_id [srp_id ...]\n\npositional arguments:\n  srp_id\n\noptional\
-      \ arguments:\n  -h, --help       show this help message and exit\n  --saveto\
-      \ SAVETO  Save metadata dataframe to file\n  --db DB          Path to SRAmetadb.sqlite\
-      \ file\n  --assay          Include assay type in output\n  --desc          \
-      \ Should sample_attribute be included\n  --detailed       Display detailed metadata\
-      \ table\n  --expand         Should sample_attribute be expanded\n"
+    help_text: "usage: pysradb srr-to-srs [-h] [--db DB] [--detailed] [--desc] [--expand]\n\
+      \                          [--saveto SAVETO]\n                          srr_ids\
+      \ [srr_ids ...]\n\npositional arguments:\n  srr_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --detailed       'Output additional columns: [experiment_accession\
+      \ (SRX),\n                   study_accession (SRP), run_alias (GSM_r), sample_alias\n\
+      \                   (GSM_), experiment_alias (GSM), study_alias (GSE)]\n  --desc\
+      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
+      \ be expanded\n  --saveto SAVETO  Save output to file\n"
     generated_using: &id002
     - --help
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Save metadata dataframe to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Include assay type in output
-      synonyms:
-      - --assay
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Display detailed metadata table
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - pysradb
-    - search
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb search [-h] [--saveto SAVETO] [--db DB] [--assay] [--desc]\n\
-      \                      [--detailed] [--expand]\n                      search_text\n\
-      \npositional arguments:\n  search_text\n\noptional arguments:\n  -h, --help\
-      \       show this help message and exit\n  --saveto SAVETO  Save metadata dataframe\
-      \ to file\n  --db DB          Path to SRAmetadb.sqlite file\n  --assay     \
-      \     Include assay type in output\n  --desc           Should sample_attribute\
-      \ be included\n  --detailed       Display detailed metadata table\n  --expand\
-      \         Should sample_attribute be expanded\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    - !Flag
-      description: 'Output additional columns: [sample_accession (SRS), run_accession
-        (SRR), sample_alias (GSM), run_alias (GSM_r)]'
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - pysradb
-    - gse-to-gsm
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb gse-to-gsm [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
-      \                          [--desc] [--expand]\n                          gse_ids\
-      \ [gse_ids ...]\n\npositional arguments:\n  gse_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --saveto SAVETO  Save output to file\n  --detailed\
-      \       Output additional columns: [sample_accession (SRS),\n              \
-      \     run_accession (SRR), sample_alias (GSM), run_alias (GSM_r)]\n  --desc\
-      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
-      \ be expanded\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    - !Flag
-      description: 'Output additional columns: [experiment_accession (SRX), run_accession
-        (SRR), sample_accession (SRS), experiment_alias (GSM_), run_alias (GSM_r),
-        sample_alias (GSM)]'
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - pysradb
-    - gse-to-srp
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb gse-to-srp [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
-      \                          [--desc] [--expand]\n                          gse_ids\
-      \ [gse_ids ...]\n\npositional arguments:\n  gse_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --saveto SAVETO  Save output to file\n  --detailed\
-      \       Output additional columns: [experiment_accession (SRX),\n          \
-      \         run_accession (SRR), sample_accession (SRS),\n                   experiment_alias\
-      \ (GSM_), run_alias (GSM_r), sample_alias\n                   (GSM)]\n  --desc\
-      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
-      \ be expanded\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    - !Flag
-      description: 'Output additional columns: [sample_accession (SRS), run_accession
-        (SRR), sample_alias (GSM), run_alias (GSM_r)]'
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - pysradb
-    - gsm-to-gse
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb gsm-to-gse [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
-      \                          [--desc] [--expand]\n                          gsm_ids\
-      \ [gsm_ids ...]\n\npositional arguments:\n  gsm_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --saveto SAVETO  Save output to file\n  --detailed\
-      \       Output additional columns: [sample_accession (SRS),\n              \
-      \     run_accession (SRR), sample_alias (GSM), run_alias (GSM_r)]\n  --desc\
-      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
-      \ be expanded\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Output additional columns: [experiment_accession (SRX), sample_accession
-        (SRS), run_accession (SRR), experiment_alias (GSM), sample_alias (GSM), run_alias
-        (GSM_r), study_alias (GSE)]'
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
     command:
     - pysradb
     - gsm-to-srp
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: gsm_ids
+      optional: false
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Output additional columns: [experiment_accession (SRX),\nsample_accession\
+        \ (SRS), run_accession (SRR),\nexperiment_alias (GSM), sample_alias (GSM),\
+        \ run_alias\n(GSM_r), study_alias (GSE)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -424,7 +188,526 @@ parent: &id001 !Command
       \ be expanded\n  --saveto SAVETO  Save output to file\n"
     generated_using: *id002
   - !Command
+    command:
+    - pysradb
+    - srx-to-srs
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srx_ids
+      optional: false
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    - !Flag
+      description: 'Output additional columns: [run_accession, study_accession]'
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb srx-to-srs [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
+      \                          [--desc] [--expand]\n                          srx_ids\
+      \ [srx_ids ...]\n\npositional arguments:\n  srx_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --saveto SAVETO  Save output to file\n  --detailed\
+      \       Output additional columns: [run_accession, study_accession]\n  --desc\
+      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
+      \ be expanded\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - srr-to-srp
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srr_ids
+      optional: false
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: "'Output additional columns: [experiment_accession (SRX),\nsample_accession\
+        \ (SRS), run_alias (GSM_r), experiment_alias\n(GSM), sample_alias (GSM_),\
+        \ study_alias (GSE)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb srr-to-srp [-h] [--db DB] [--detailed] [--desc] [--expand]\n\
+      \                          [--saveto SAVETO]\n                          srr_ids\
+      \ [srr_ids ...]\n\npositional arguments:\n  srr_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --detailed       'Output additional columns: [experiment_accession\
+      \ (SRX),\n                   sample_accession (SRS), run_alias (GSM_r), experiment_alias\n\
+      \                   (GSM), sample_alias (GSM_), study_alias (GSE)]\n  --desc\
+      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
+      \ be expanded\n  --saveto SAVETO  Save output to file\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - srp-to-gse
     positional: []
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    - !Flag
+      description: "Output additional columns: [sample_accession,\nrun_accession]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb srp-to-gse [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
+      \                          [--desc] [--expand]\n                          srp_id\n\
+      \npositional arguments:\n  srp_id\n\noptional arguments:\n  -h, --help     \
+      \  show this help message and exit\n  --db DB          Path to SRAmetadb.sqlite\
+      \ file\n  --saveto SAVETO  Save output to file\n  --detailed       Output additional\
+      \ columns: [sample_accession,\n                   run_accession]\n  --desc \
+      \          Should sample_attribute be included\n  --expand         Should sample_attribute\
+      \ be expanded\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - srp-to-srr
+    positional: []
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    - !Flag
+      description: "Output additional columns: [experiment_accession (SRX),\nsample_accession\
+        \ (SRS), study_alias (GSE), experiment_alias\n(GSM), sample_alias (GSM_),\
+        \ run_alias (GSM_r)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb srp-to-srr [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
+      \                          [--desc] [--expand]\n                          srp_id\n\
+      \npositional arguments:\n  srp_id\n\noptional arguments:\n  -h, --help     \
+      \  show this help message and exit\n  --db DB          Path to SRAmetadb.sqlite\
+      \ file\n  --saveto SAVETO  Save output to file\n  --detailed       Output additional\
+      \ columns: [experiment_accession (SRX),\n                   sample_accession\
+      \ (SRS), study_alias (GSE), experiment_alias\n                   (GSM), sample_alias\
+      \ (GSM_), run_alias (GSM_r)]\n  --desc           Should sample_attribute be\
+      \ included\n  --expand         Should sample_attribute be expanded\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - gse-to-srp
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: gse_ids
+      optional: false
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    - !Flag
+      description: "Output additional columns: [experiment_accession (SRX),\nrun_accession\
+        \ (SRR), sample_accession (SRS),\nexperiment_alias (GSM_), run_alias (GSM_r),\
+        \ sample_alias\n(GSM)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb gse-to-srp [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
+      \                          [--desc] [--expand]\n                          gse_ids\
+      \ [gse_ids ...]\n\npositional arguments:\n  gse_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --saveto SAVETO  Save output to file\n  --detailed\
+      \       Output additional columns: [experiment_accession (SRX),\n          \
+      \         run_accession (SRR), sample_accession (SRS),\n                   experiment_alias\
+      \ (GSM_), run_alias (GSM_r), sample_alias\n                   (GSM)]\n  --desc\
+      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
+      \ be expanded\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - srs-to-srx
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srs_ids
+      optional: false
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    - !Flag
+      description: 'Output additional columns: [run_accession, study_accession]'
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb srs-to-srx [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
+      \                          [--desc] [--expand]\n                          srs_ids\
+      \ [srs_ids ...]\n\npositional arguments:\n  srs_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --saveto SAVETO  Save output to file\n  --detailed\
+      \       Output additional columns: [run_accession, study_accession]\n  --desc\
+      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
+      \ be expanded\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - search
+    positional: []
+    named:
+    - !Flag
+      description: Save metadata dataframe to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Include assay type in output
+      synonyms:
+      - --assay
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Display detailed metadata table
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb search [-h] [--saveto SAVETO] [--db DB] [--assay] [--desc]\n\
+      \                      [--detailed] [--expand]\n                      search_text\n\
+      \npositional arguments:\n  search_text\n\noptional arguments:\n  -h, --help\
+      \       show this help message and exit\n  --saveto SAVETO  Save metadata dataframe\
+      \ to file\n  --db DB          Path to SRAmetadb.sqlite file\n  --assay     \
+      \     Include assay type in output\n  --desc           Should sample_attribute\
+      \ be included\n  --detailed       Display detailed metadata table\n  --expand\
+      \         Should sample_attribute be expanded\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - srp-to-srx
+    positional: []
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    - !Flag
+      description: "Output additional columns: [sample_accession (SRS),\nrun_accession\
+        \ (SRR), experiment_alias (GSM), sample_alias\n(GSM_), run_alias (GSM_r)',\
+        \ study_alias (GSE)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb srp-to-srx [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
+      \                          [--desc] [--expand]\n                          srp_id\n\
+      \npositional arguments:\n  srp_id\n\noptional arguments:\n  -h, --help     \
+      \  show this help message and exit\n  --db DB          Path to SRAmetadb.sqlite\
+      \ file\n  --saveto SAVETO  Save output to file\n  --detailed       Output additional\
+      \ columns: [sample_accession (SRS),\n                   run_accession (SRR),\
+      \ experiment_alias (GSM), sample_alias\n                   (GSM_), run_alias\
+      \ (GSM_r)', study_alias (GSE)]\n  --desc           Should sample_attribute be\
+      \ included\n  --expand         Should sample_attribute be expanded\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - srx-to-srr
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srx_ids
+      optional: false
     named:
     - !Flag
       description: Path to SRAmetadb.sqlite file
@@ -440,9 +723,7 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Output additional columns: [experiment_accession (SRX), sample_accession
-        (SRS), study_accession (SRS), run_alias (GSM_r), sample_alias (GSM), study_alias
-        (GSE)]'
+      description: "Output additional columns: [sample_accession,\nstudy_accession]"
       synonyms:
       - --detailed
       args: !EmptyFlagArg {}
@@ -460,11 +741,143 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: SAVETO
       optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb srx-to-srr [-h] [--db DB] [--desc] [--detailed] [--expand]\n\
+      \                          [--saveto SAVETO]\n                          srx_ids\
+      \ [srx_ids ...]\n\npositional arguments:\n  srx_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --desc           Should sample_attribute be included\n\
+      \  --detailed       Output additional columns: [sample_accession,\n        \
+      \           study_accession]\n  --expand         Should sample_attribute be\
+      \ expanded\n  --saveto SAVETO  Save output to file\n"
+    generated_using: *id002
+  - *id003
+  - !Command
+    command:
+    - pysradb
+    - srr-to-gsm
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srr_ids
+      optional: false
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: "'Output additional columns: [experiment_accession (SRX),\nstudy_accession\
+        \ (SRP), run_alias (GSM_r), sample_alias\n(GSM_), experiment_alias (GSM),\
+        \ study_alias (GSE)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb srr-to-gsm [-h] [--db DB] [--detailed] [--desc] [--expand]\n\
+      \                          [--saveto SAVETO]\n                          srr_ids\
+      \ [srr_ids ...]\n\npositional arguments:\n  srr_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --detailed       'Output additional columns: [experiment_accession\
+      \ (SRX),\n                   study_accession (SRP), run_alias (GSM_r), sample_alias\n\
+      \                   (GSM_), experiment_alias (GSM), study_alias (GSE)]\n  --desc\
+      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
+      \ be expanded\n  --saveto SAVETO  Save output to file\n"
+    generated_using: *id002
+  - !Command
     command:
     - pysradb
     - gsm-to-srr
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: gsm_ids
+      optional: false
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Output additional columns: [experiment_accession (SRX),\nsample_accession\
+        \ (SRS), study_accession (SRS), run_alias\n(GSM_r), sample_alias (GSM), study_alias\
+        \ (GSE)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -486,556 +899,15 @@ parent: &id001 !Command
       \ to file\n"
     generated_using: *id002
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Output additional columns: [experiment_accession (SRX), run_accession
-        (SRR), study_accession (SRP), run_alias (GSM_r), experiment_alias (GSM), study_alias
-        (GSE)]'
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
     command:
     - pysradb
-    - gsm-to-srs
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb gsm-to-srs [-h] [--db DB] [--desc] [--detailed] [--expand]\n\
-      \                          [--saveto SAVETO]\n                          gsm_ids\
-      \ [gsm_ids ...]\n\npositional arguments:\n  gsm_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --desc           Should sample_attribute be included\n\
-      \  --detailed       Output additional columns: [experiment_accession (SRX),\n\
-      \                   run_accession (SRR), study_accession (SRP), run_alias\n\
-      \                   (GSM_r), experiment_alias (GSM), study_alias (GSE)]\n  --expand\
-      \         Should sample_attribute be expanded\n  --saveto SAVETO  Save output\
-      \ to file\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Output additional columns: [experiment_accession (SRX), sample_accession
-        (SRS), run_accession (SRR), experiment_alias (GSM), sample_alias (GSM), run_alias
-        (GSM_r), study_alias (GSE)]'
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    command:
-    - pysradb
-    - gsm-to-srx
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb gsm-to-srx [-h] [--db DB] [--desc] [--detailed] [--expand]\n\
-      \                          [--saveto SAVETO]\n                          gsm_ids\
-      \ [gsm_ids ...]\n\npositional arguments:\n  gsm_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --desc           Should sample_attribute be included\n\
-      \  --detailed       Output additional columns: [experiment_accession (SRX),\n\
-      \                   sample_accession (SRS), run_accession (SRR),\n         \
-      \          experiment_alias (GSM), sample_alias (GSM), run_alias\n         \
-      \          (GSM_r), study_alias (GSE)]\n  --expand         Should sample_attribute\
-      \ be expanded\n  --saveto SAVETO  Save output to file\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    - !Flag
-      description: 'Output additional columns: [sample_accession, run_accession]'
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - pysradb
-    - srp-to-gse
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb srp-to-gse [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
-      \                          [--desc] [--expand]\n                          srp_id\n\
-      \npositional arguments:\n  srp_id\n\noptional arguments:\n  -h, --help     \
-      \  show this help message and exit\n  --db DB          Path to SRAmetadb.sqlite\
-      \ file\n  --saveto SAVETO  Save output to file\n  --detailed       Output additional\
-      \ columns: [sample_accession,\n                   run_accession]\n  --desc \
-      \          Should sample_attribute be included\n  --expand         Should sample_attribute\
-      \ be expanded\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    - !Flag
-      description: 'Output additional columns: [experiment_accession (SRX), sample_accession
-        (SRS), study_alias (GSE), experiment_alias (GSM), sample_alias (GSM_), run_alias
-        (GSM_r)]'
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - pysradb
-    - srp-to-srr
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb srp-to-srr [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
-      \                          [--desc] [--expand]\n                          srp_id\n\
-      \npositional arguments:\n  srp_id\n\noptional arguments:\n  -h, --help     \
-      \  show this help message and exit\n  --db DB          Path to SRAmetadb.sqlite\
-      \ file\n  --saveto SAVETO  Save output to file\n  --detailed       Output additional\
-      \ columns: [experiment_accession (SRX),\n                   sample_accession\
-      \ (SRS), study_alias (GSE), experiment_alias\n                   (GSM), sample_alias\
-      \ (GSM_), run_alias (GSM_r)]\n  --desc           Should sample_attribute be\
-      \ included\n  --expand         Should sample_attribute be expanded\n"
-    generated_using: *id002
-  - *id003
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    - !Flag
-      description: "Output additional columns: [sample_accession (SRS), run_accession\
-        \ (SRR), experiment_alias (GSM), sample_alias (GSM_), run_alias (GSM_r)',\
-        \ study_alias (GSE)]"
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - pysradb
-    - srp-to-srx
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb srp-to-srx [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
-      \                          [--desc] [--expand]\n                          srp_id\n\
-      \npositional arguments:\n  srp_id\n\noptional arguments:\n  -h, --help     \
-      \  show this help message and exit\n  --db DB          Path to SRAmetadb.sqlite\
-      \ file\n  --saveto SAVETO  Save output to file\n  --detailed       Output additional\
-      \ columns: [sample_accession (SRS),\n                   run_accession (SRR),\
-      \ experiment_alias (GSM), sample_alias\n                   (GSM_), run_alias\
-      \ (GSM_r)', study_alias (GSE)]\n  --desc           Should sample_attribute be\
-      \ included\n  --expand         Should sample_attribute be expanded\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: "'Output additional columns: [experiment_accession (SRX), study_accession\
-        \ (SRP), run_alias (GSM_r), sample_alias (GSM_), experiment_alias (GSM), study_alias\
-        \ (GSE)]"
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    command:
-    - pysradb
-    - srr-to-gsm
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb srr-to-gsm [-h] [--db DB] [--detailed] [--desc] [--expand]\n\
-      \                          [--saveto SAVETO]\n                          srr_ids\
-      \ [srr_ids ...]\n\npositional arguments:\n  srr_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --detailed       'Output additional columns: [experiment_accession\
-      \ (SRX),\n                   study_accession (SRP), run_alias (GSM_r), sample_alias\n\
-      \                   (GSM_), experiment_alias (GSM), study_alias (GSE)]\n  --desc\
-      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
-      \ be expanded\n  --saveto SAVETO  Save output to file\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: "'Output additional columns: [experiment_accession (SRX), sample_accession\
-        \ (SRS), run_alias (GSM_r), experiment_alias (GSM), sample_alias (GSM_), study_alias\
-        \ (GSE)]"
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    command:
-    - pysradb
-    - srr-to-srp
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb srr-to-srp [-h] [--db DB] [--detailed] [--desc] [--expand]\n\
-      \                          [--saveto SAVETO]\n                          srr_ids\
-      \ [srr_ids ...]\n\npositional arguments:\n  srr_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --detailed       'Output additional columns: [experiment_accession\
-      \ (SRX),\n                   sample_accession (SRS), run_alias (GSM_r), experiment_alias\n\
-      \                   (GSM), sample_alias (GSM_), study_alias (GSE)]\n  --desc\
-      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
-      \ be expanded\n  --saveto SAVETO  Save output to file\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: "'Output additional columns: [experiment_accession (SRX), study_accession\
-        \ (SRP), run_alias (GSM_r), sample_alias (GSM_), experiment_alias (GSM), study_alias\
-        \ (GSE)]"
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    command:
-    - pysradb
-    - srr-to-srs
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb srr-to-srs [-h] [--db DB] [--detailed] [--desc] [--expand]\n\
-      \                          [--saveto SAVETO]\n                          srr_ids\
-      \ [srr_ids ...]\n\npositional arguments:\n  srr_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --detailed       'Output additional columns: [experiment_accession\
-      \ (SRX),\n                   study_accession (SRP), run_alias (GSM_r), sample_alias\n\
-      \                   (GSM_), experiment_alias (GSM), study_alias (GSE)]\n  --desc\
-      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
-      \ be expanded\n  --saveto SAVETO  Save output to file\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to SRAmetadb.sqlite file
-      synonyms:
-      - --db
-      args: !SimpleFlagArg
-        name: DB
-      optional: true
-    - !Flag
-      description: 'Output additional columns: [sample_accession (SRS), study_accession
-        (SRP), run_alias (GSM_r), experiment_alias (GSM), sample_alias (GSM_), study_alias
-        (GSE)]'
-      synonyms:
-      - --detailed
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be included
-      synonyms:
-      - --desc
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Should sample_attribute be expanded
-      synonyms:
-      - --expand
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    command:
-    - pysradb
-    - srr-to-srx
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pysradb srr-to-srx [-h] [--db DB] [--detailed] [--desc] [--expand]\n\
-      \                          [--saveto SAVETO]\n                          srr_ids\
-      \ [srr_ids ...]\n\npositional arguments:\n  srr_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --detailed       Output additional columns: [sample_accession\
-      \ (SRS),\n                   study_accession (SRP), run_alias (GSM_r), experiment_alias\n\
-      \                   (GSM), sample_alias (GSM_), study_alias (GSE)]\n  --desc\
-      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
-      \ be expanded\n  --saveto SAVETO  Save output to file\n"
-    generated_using: *id002
-  - !Command
-    positional: []
+    - srs-to-gsm
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srs_ids
+      optional: false
     named:
     - !Flag
       description: Path to SRAmetadb.sqlite file
@@ -1069,11 +941,9 @@ parent: &id001 !Command
       - --expand
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - pysradb
-    - srs-to-gsm
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1093,7 +963,15 @@ parent: &id001 !Command
       \ be expanded\n"
     generated_using: *id002
   - !Command
-    positional: []
+    command:
+    - pysradb
+    - gsm-to-gse
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: gsm_ids
+      optional: false
     named:
     - !Flag
       description: Path to SRAmetadb.sqlite file
@@ -1110,7 +988,8 @@ parent: &id001 !Command
         name: SAVETO
       optional: true
     - !Flag
-      description: 'Output additional columns: [run_accession, study_accession]'
+      description: "Output additional columns: [sample_accession (SRS),\nrun_accession\
+        \ (SRR), sample_alias (GSM), run_alias (GSM_r)]"
       synonyms:
       - --detailed
       args: !EmptyFlagArg {}
@@ -1127,11 +1006,9 @@ parent: &id001 !Command
       - --expand
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - pysradb
-    - srs-to-srx
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1141,17 +1018,92 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: pysradb srs-to-srx [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
-      \                          [--desc] [--expand]\n                          srs_ids\
-      \ [srs_ids ...]\n\npositional arguments:\n  srs_ids\n\noptional arguments:\n\
+    help_text: "usage: pysradb gsm-to-gse [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
+      \                          [--desc] [--expand]\n                          gsm_ids\
+      \ [gsm_ids ...]\n\npositional arguments:\n  gsm_ids\n\noptional arguments:\n\
       \  -h, --help       show this help message and exit\n  --db DB          Path\
       \ to SRAmetadb.sqlite file\n  --saveto SAVETO  Save output to file\n  --detailed\
-      \       Output additional columns: [run_accession, study_accession]\n  --desc\
+      \       Output additional columns: [sample_accession (SRS),\n              \
+      \     run_accession (SRR), sample_alias (GSM), run_alias (GSM_r)]\n  --desc\
       \           Should sample_attribute be included\n  --expand         Should sample_attribute\
       \ be expanded\n"
     generated_using: *id002
   - !Command
-    positional: []
+    command:
+    - pysradb
+    - gse-to-gsm
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: gse_ids
+      optional: false
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    - !Flag
+      description: "Output additional columns: [sample_accession (SRS),\nrun_accession\
+        \ (SRR), sample_alias (GSM), run_alias (GSM_r)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb gse-to-gsm [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
+      \                          [--desc] [--expand]\n                          gse_ids\
+      \ [gse_ids ...]\n\npositional arguments:\n  gse_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --saveto SAVETO  Save output to file\n  --detailed\
+      \       Output additional columns: [sample_accession (SRS),\n              \
+      \     run_accession (SRR), sample_alias (GSM), run_alias (GSM_r)]\n  --desc\
+      \           Should sample_attribute be included\n  --expand         Should sample_attribute\
+      \ be expanded\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - srx-to-srp
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srx_ids
+      optional: false
     named:
     - !Flag
       description: Path to SRAmetadb.sqlite file
@@ -1167,9 +1119,9 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Output additional columns: [run_accession (SRR), sample_accession
-        (SRS), experiment_alias (GSM), run_alias (GSM_r), sample_alias (GSM), study_alias
-        (GSE)]'
+      description: "Output additional columns: [run_accession (SRR),\nsample_accession\
+        \ (SRS), experiment_alias (GSM), run_alias\n(GSM_r), sample_alias (GSM), study_alias\
+        \ (GSE)]"
       synonyms:
       - --detailed
       args: !EmptyFlagArg {}
@@ -1187,11 +1139,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: SAVETO
       optional: true
-    command:
-    - pysradb
-    - srx-to-srp
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1213,8 +1163,23 @@ parent: &id001 !Command
       \ to file\n"
     generated_using: *id002
   - !Command
-    positional: []
+    command:
+    - pysradb
+    - metadata
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srp_id
+      optional: false
     named:
+    - !Flag
+      description: Save metadata dataframe to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
     - !Flag
       description: Path to SRAmetadb.sqlite file
       synonyms:
@@ -1223,13 +1188,19 @@ parent: &id001 !Command
         name: DB
       optional: true
     - !Flag
+      description: Include assay type in output
+      synonyms:
+      - --assay
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
       description: Should sample_attribute be included
       synonyms:
       - --desc
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Output additional columns: [sample_accession, study_accession]'
+      description: Display detailed metadata table
       synonyms:
       - --detailed
       args: !EmptyFlagArg {}
@@ -1240,18 +1211,9 @@ parent: &id001 !Command
       - --expand
       args: !EmptyFlagArg {}
       optional: true
-    - !Flag
-      description: Save output to file
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: SAVETO
-      optional: true
-    command:
-    - pysradb
-    - srx-to-srr
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1261,17 +1223,25 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: pysradb srx-to-srr [-h] [--db DB] [--desc] [--detailed] [--expand]\n\
-      \                          [--saveto SAVETO]\n                          srx_ids\
-      \ [srx_ids ...]\n\npositional arguments:\n  srx_ids\n\noptional arguments:\n\
-      \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --desc           Should sample_attribute be included\n\
-      \  --detailed       Output additional columns: [sample_accession,\n        \
-      \           study_accession]\n  --expand         Should sample_attribute be\
-      \ expanded\n  --saveto SAVETO  Save output to file\n"
+    help_text: "usage: pysradb metadata [-h] [--saveto SAVETO] [--db DB] [--assay]\
+      \ [--desc]\n                        [--detailed] [--expand]\n              \
+      \          srp_id [srp_id ...]\n\npositional arguments:\n  srp_id\n\noptional\
+      \ arguments:\n  -h, --help       show this help message and exit\n  --saveto\
+      \ SAVETO  Save metadata dataframe to file\n  --db DB          Path to SRAmetadb.sqlite\
+      \ file\n  --assay          Include assay type in output\n  --desc          \
+      \ Should sample_attribute be included\n  --detailed       Display detailed metadata\
+      \ table\n  --expand         Should sample_attribute be expanded\n"
     generated_using: *id002
   - !Command
-    positional: []
+    command:
+    - pysradb
+    - gsm-to-srx
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: gsm_ids
+      optional: false
     named:
     - !Flag
       description: Path to SRAmetadb.sqlite file
@@ -1281,14 +1251,145 @@ parent: &id001 !Command
         name: DB
       optional: true
     - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Output additional columns: [experiment_accession (SRX),\nsample_accession\
+        \ (SRS), run_accession (SRR),\nexperiment_alias (GSM), sample_alias (GSM),\
+        \ run_alias\n(GSM_r), study_alias (GSE)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
       description: Save output to file
       synonyms:
       - --saveto
       args: !SimpleFlagArg
         name: SAVETO
       optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb gsm-to-srx [-h] [--db DB] [--desc] [--detailed] [--expand]\n\
+      \                          [--saveto SAVETO]\n                          gsm_ids\
+      \ [gsm_ids ...]\n\npositional arguments:\n  gsm_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --desc           Should sample_attribute be included\n\
+      \  --detailed       Output additional columns: [experiment_accession (SRX),\n\
+      \                   sample_accession (SRS), run_accession (SRR),\n         \
+      \          experiment_alias (GSM), sample_alias (GSM), run_alias\n         \
+      \          (GSM_r), study_alias (GSE)]\n  --expand         Should sample_attribute\
+      \ be expanded\n  --saveto SAVETO  Save output to file\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - gsm-to-srs
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: gsm_ids
+      optional: false
+    named:
     - !Flag
-      description: 'Output additional columns: [run_accession, study_accession]'
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: Should sample_attribute be included
+      synonyms:
+      - --desc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Output additional columns: [experiment_accession (SRX),\nrun_accession\
+        \ (SRR), study_accession (SRP), run_alias\n(GSM_r), experiment_alias (GSM),\
+        \ study_alias (GSE)]"
+      synonyms:
+      - --detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Should sample_attribute be expanded
+      synonyms:
+      - --expand
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pysradb gsm-to-srs [-h] [--db DB] [--desc] [--detailed] [--expand]\n\
+      \                          [--saveto SAVETO]\n                          gsm_ids\
+      \ [gsm_ids ...]\n\npositional arguments:\n  gsm_ids\n\noptional arguments:\n\
+      \  -h, --help       show this help message and exit\n  --db DB          Path\
+      \ to SRAmetadb.sqlite file\n  --desc           Should sample_attribute be included\n\
+      \  --detailed       Output additional columns: [experiment_accession (SRX),\n\
+      \                   run_accession (SRR), study_accession (SRP), run_alias\n\
+      \                   (GSM_r), experiment_alias (GSM), study_alias (GSE)]\n  --expand\
+      \         Should sample_attribute be expanded\n  --saveto SAVETO  Save output\
+      \ to file\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - pysradb
+    - srr-to-srx
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: srr_ids
+      optional: false
+    named:
+    - !Flag
+      description: Path to SRAmetadb.sqlite file
+      synonyms:
+      - --db
+      args: !SimpleFlagArg
+        name: DB
+      optional: true
+    - !Flag
+      description: "Output additional columns: [sample_accession (SRS),\nstudy_accession\
+        \ (SRP), run_alias (GSM_r), experiment_alias\n(GSM), sample_alias (GSM_),\
+        \ study_alias (GSE)]"
       synonyms:
       - --detailed
       args: !EmptyFlagArg {}
@@ -1305,11 +1406,16 @@ parent: &id001 !Command
       - --expand
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - pysradb
-    - srx-to-srs
+    - !Flag
+      description: Save output to file
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: SAVETO
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1319,15 +1425,17 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: pysradb srx-to-srs [-h] [--db DB] [--saveto SAVETO] [--detailed]\n\
-      \                          [--desc] [--expand]\n                          srx_ids\
-      \ [srx_ids ...]\n\npositional arguments:\n  srx_ids\n\noptional arguments:\n\
+    help_text: "usage: pysradb srr-to-srx [-h] [--db DB] [--detailed] [--desc] [--expand]\n\
+      \                          [--saveto SAVETO]\n                          srr_ids\
+      \ [srr_ids ...]\n\npositional arguments:\n  srr_ids\n\noptional arguments:\n\
       \  -h, --help       show this help message and exit\n  --db DB          Path\
-      \ to SRAmetadb.sqlite file\n  --saveto SAVETO  Save output to file\n  --detailed\
-      \       Output additional columns: [run_accession, study_accession]\n  --desc\
+      \ to SRAmetadb.sqlite file\n  --detailed       Output additional columns: [sample_accession\
+      \ (SRS),\n                   study_accession (SRP), run_alias (GSM_r), experiment_alias\n\
+      \                   (GSM), sample_alias (GSM_), study_alias (GSE)]\n  --desc\
       \           Should sample_attribute be included\n  --expand         Should sample_attribute\
-      \ be expanded\n"
+      \ be expanded\n  --saveto SAVETO  Save output to file\n"
     generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -1363,6 +1471,7 @@ parent: &id001 !Command
     \          Get SRR for a SRX\n    srx-to-srs          Get SRS for a SRX\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

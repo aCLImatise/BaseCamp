@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../Assemblytics_delta_output_prefix.cwl
 inputs:
-- id: unique_length_required
+- id: in_unique_length_required
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: min_size
+- id: in_min_size
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 1
-- id: max_size
+- id: in_max_size
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - Assemblytics

@@ -1,7 +1,10 @@
 version 1.0
 
-task QuastDownloadSilva {
+task Quastdownloadsilva {
   command <<<
-    quast-download-silva
+    quast_download_silva
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

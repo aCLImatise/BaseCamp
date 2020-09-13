@@ -4,4 +4,7 @@ task Bxtools {
   command <<<
     bxtools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -13,14 +13,17 @@ task PATHOGISTCorrelation {
       ~{distance_matrix} \
       ~{threshold} \
       ~{output_path} \
-      ~{true="--all_constraints" false="" all_constraints} \
+      ~{if (all_constraints) then "--all_constraints" else ""} \
       ~{if defined(method) then ("--method " +  '"' + method + '"') else ""}
   >>>
   parameter_meta {
-    all_constraints: "add all constraints to the optimization problem, not just those with mixed signs."
-    method: "Method for correlation clustering"
+    all_constraints: "add all constraints to the optimization problem, not\\njust those with mixed signs."
+    method: "Method for correlation clustering\\n"
     distance_matrix: "path to the distance matrix file"
     threshold: "threshold value for correlation"
     output_path: "path to write cluster output tsv file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

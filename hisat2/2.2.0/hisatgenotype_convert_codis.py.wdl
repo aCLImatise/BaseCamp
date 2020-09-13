@@ -1,7 +1,10 @@
 version 1.0
 
-task HisatgenotypeConvertCodis.py.bak {
+task HisatgenotypeConvertCodispy {
   command <<<
-    hisatgenotype_convert_codis.py.bak
+    hisatgenotype_convert_codis_py
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

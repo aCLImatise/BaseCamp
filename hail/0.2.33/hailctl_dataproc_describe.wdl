@@ -11,4 +11,7 @@ task HailctlDataprocDescribe {
   parameter_meta {
     file: "Path to hail file (either MatrixTable or Table)."
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

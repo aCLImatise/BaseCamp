@@ -4,4 +4,7 @@ task Conterminator {
   command <<<
     conterminator
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

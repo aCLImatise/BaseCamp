@@ -4,4 +4,7 @@ task Aws {
   command <<<
     aws
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

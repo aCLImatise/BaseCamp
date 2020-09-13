@@ -1,7 +1,10 @@
 version 1.0
 
-task EntrezPhraseSearch {
+task Entrezphrasesearch {
   command <<<
-    entrez-phrase-search
+    entrez_phrase_search
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

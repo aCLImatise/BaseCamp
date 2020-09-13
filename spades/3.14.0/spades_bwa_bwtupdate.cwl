@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../spades_bwa_bwtupdate.cwl
 inputs:
-- id: bwa
+- id: in_bwa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: bwt_update
+- id: in_bwt_update
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: the_dot_bwt
+- id: in_the_dot_bwt
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - spades-bwa

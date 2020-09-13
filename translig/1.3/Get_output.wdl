@@ -4,4 +4,7 @@ task GetOutput {
   command <<<
     Get_output
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

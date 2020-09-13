@@ -14,4 +14,7 @@ task GenomepyPlugin {
     var_command: ""
     name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

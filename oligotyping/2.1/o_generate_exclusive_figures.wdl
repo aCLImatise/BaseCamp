@@ -1,7 +1,10 @@
 version 1.0
 
-task OGenerateExclusiveFigures {
+task Ogenerateexclusivefigures {
   command <<<
-    o-generate-exclusive-figures
+    o_generate_exclusive_figures
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

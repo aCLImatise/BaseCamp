@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../agg_ingest1.cwl
 inputs:
-- id: output
+- id: in_output
   doc: agg will output output_prefix.bcf and output_prefix.tmp
   type: string
   inputBinding:
     prefix: --output
-- id: fast_a_ref
+- id: in_fast_a_ref
   doc: reference sequence
   type: File
   inputBinding:
     prefix: --fasta-ref
-- id: ignore_non_matching_ref
+- id: in_ignore_non_matching_ref
   doc: skip non-matching ref alleles (will warn)
   type: boolean
   inputBinding:
     prefix: --ignore-non-matching-ref
-- id: input_gvc_f
+- id: in_input_gvc_f
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - agg

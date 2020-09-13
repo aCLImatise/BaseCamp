@@ -4,4 +4,7 @@ task Homer2 {
   command <<<
     homer2
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task FormatFasta {
   input {
-    String? input_fast_a
-    String? output_fast_a
+    File? input_fast_a
+    File? output_fast_a
   }
   command <<<
     format_fasta \
@@ -12,6 +12,10 @@ task FormatFasta {
   >>>
   parameter_meta {
     input_fast_a: "Path to input fasta."
-    output_fast_a: "Path to output fasta."
+    output_fast_a: "Path to output fasta.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_fast_a = "${in_output_fast_a}"
   }
 }

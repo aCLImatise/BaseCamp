@@ -2,25 +2,25 @@ version 1.0
 
 task AquilaStep1 {
   input {
-    String? bam_file
-    String? vcf_file
-    String? chr_start
-    String? chr_end
-    String? sample_name
-    String? out_dir
-    String? uniq_map_dir
-    String? num_threads
-    String? num_threads_for_sam_tools_sort
-    String? num_threads_for_extract_reads
-    String? block_threshold
-    String? block_len_use
-    String? mbq_threshold
-    String? boundary
-    String use
+    File? bam_file
+    File? vcf_file
+    Int? chr_start
+    Int? chr_end
+    Int? sample_name
+    Directory? out_dir
+    Directory? uniq_map_dir
+    Int? num_threads
+    Int? num_threads_for_sam_tools_sort
+    Int? num_threads_for_extract_reads
+    Int? block_threshold
+    Int? block_len_use
+    Int? mbq_threshold
+    Int? boundary
+    Int x_zhou_one_five_atcs_dot_stanford_dot_edu
   }
   command <<<
     Aquila_step1 \
-      ~{use} \
+      ~{x_zhou_one_five_atcs_dot_stanford_dot_edu} \
       ~{if defined(bam_file) then ("--bam_file " +  '"' + bam_file + '"') else ""} \
       ~{if defined(vcf_file) then ("--vcf_file " +  '"' + vcf_file + '"') else ""} \
       ~{if defined(chr_start) then ("--chr_start " +  '"' + chr_start + '"') else ""} \
@@ -37,20 +37,23 @@ task AquilaStep1 {
       ~{if defined(boundary) then ("--boundary " +  '"' + boundary + '"') else ""}
   >>>
   parameter_meta {
-    bam_file: "Required parameter; BAM file, called by longranger align"
+    bam_file: "Required parameter; BAM file, called by longranger\\nalign"
     vcf_file: "Required parameter; VCF file, called by FreeBayes"
     chr_start: "chromosome start from, default = 1"
     chr_end: "chromosome end by,default = 23"
-    sample_name: "Required parameter; Sample Name you can define by yourself, for example: S12878"
-    out_dir: "Directory to store assembly results, default = ./Assembly_results"
-    uniq_map_dir: "Required Parameter; Directory for 100-mer uniqness, run ./install to download \"Uniquess_map\" for hg38"
+    sample_name: "Required parameter; Sample Name you can define by\\nyourself, for example: S12878"
+    out_dir: "Directory to store assembly results, default =\\n./Assembly_results"
+    uniq_map_dir: "Required Parameter; Directory for 100-mer uniqness,\\nrun ./install to download \\\"Uniquess_map\\\" for hg38"
     num_threads: "number of threads, default = 8 (recommended)"
     num_threads_for_sam_tools_sort: "number of threads for samtools sort, default = 20"
-    num_threads_for_extract_reads: "number of threads for extracting raw reads, default = 8 (recommended)"
+    num_threads_for_extract_reads: "number of threads for extracting raw reads, default =\\n8 (recommended)"
     block_threshold: "phase block threshold, default = 200000"
     block_len_use: "phase block len threshold, default = 100000"
-    mbq_threshold: "phred-scaled quality score for the assertion made in ALT, default = 13"
-    boundary: "boundary for long fragments with the same barcode, default = 50000 (recommended)"
-    use: ""
+    mbq_threshold: "phred-scaled quality score for the assertion made in\\nALT, default = 13"
+    boundary: "boundary for long fragments with the same barcode,\\ndefault = 50000 (recommended)\\n"
+    x_zhou_one_five_atcs_dot_stanford_dot_edu: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task TxUnique {
   command <<<
     txUnique
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

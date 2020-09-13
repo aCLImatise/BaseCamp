@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../esl_compalign_test file.cwl
 inputs:
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: esl_comp_align
+- id: in_esl_comp_align
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: trusted_file
+- id: in_trusted_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: test_file
+- id: in_test_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - esl-compalign

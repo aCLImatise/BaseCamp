@@ -1,12 +1,10 @@
 class: CommandLineTool
 id: ../../../minimus2.cwl
-inputs:
-- id: prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - minimus2

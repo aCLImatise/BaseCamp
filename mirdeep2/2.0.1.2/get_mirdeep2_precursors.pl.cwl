@@ -1,57 +1,65 @@
 class: CommandLineTool
-id: ../../../get_mirdeep2_precursors.pl.orig.cwl
+id: ../../../get_mirdeep2_precursors.pl.cwl
 inputs:
-- id: s
+- id: in_s
   doc: '[int]        output only precursors with min-score >= [int]'
   type: boolean
   inputBinding:
     prefix: -s
-- id: var_1
+- id: in_var_1
   doc: '[int]        output only precursors with score     <  [int]'
   type: boolean
   inputBinding:
     prefix: -t
-- id: output_dna_rna
+- id: in_output_dna_instead
   doc: output dna instead of rna
   type: boolean
   inputBinding:
     prefix: -d
-- id: make_simple_d
+- id: in_make_simple_d
   doc: make simple id with the name only
   type: boolean
   inputBinding:
     prefix: -p
-- id: getmature_instead_precursor
+- id: in_getmature_instead_precursor
   doc: get_mature instead of precursor
   type: boolean
   inputBinding:
     prefix: -m
-- id: getstar_instead_precursor
+- id: in_getstar_instead_precursor
   doc: get_star instead of precursor
   type: boolean
   inputBinding:
     prefix: -k
-- id: trackname_for_bedfiles
+- id: in_trackname_for_bedfiles
   doc: Trackname for bedfiles
   type: boolean
   inputBinding:
     prefix: -T
-- id: outdir
+- id: in_outdir
   doc: outdir
   type: boolean
   inputBinding:
     prefix: -o
-- id: options
+- id: in_r
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
-    prefix: -OPTIONS
-- id: more_options
+    prefix: -r
+- id: in_more_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -MORE_OPTIONS
-outputs: []
+- id: in_options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -OPTIONS
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- get_mirdeep2_precursors.pl.orig
+- get_mirdeep2_precursors.pl

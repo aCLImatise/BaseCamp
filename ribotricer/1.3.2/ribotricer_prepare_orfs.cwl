@@ -1,42 +1,50 @@
 class: CommandLineTool
 id: ../../../ribotricer_prepare_orfs.cwl
 inputs:
-- id: gtf
+- id: in_gtf
   doc: Path to GTF file  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --gtf
-- id: fast_a
+- id: in_fast_a
   doc: Path to FASTA file  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --fasta
-- id: prefix
+- id: in_prefix
   doc: Prefix to output file  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --prefix
-- id: min_orf_length
-  doc: 'The minimum length (nts) of ORF to include [default: 60]'
+- id: in_min_orf_length
+  doc: "The minimum length (nts) of ORF to include\n[default: 60]"
   type: long
   inputBinding:
     prefix: --min_orf_length
-- id: start_codons
-  doc: 'Comma separated list of start codons  [default: ATG]'
+- id: in_start_codons
+  doc: "Comma separated list of start codons  [default:\nATG]"
   type: string
   inputBinding:
     prefix: --start_codons
-- id: stop_codons
-  doc: 'Comma separated list of stop codons  [default: TAG,TAA,TGA]'
+- id: in_stop_codons
+  doc: "Comma separated list of stop codons  [default:\nTAG,TAA,TGA]"
   type: string
   inputBinding:
     prefix: --stop_codons
-- id: longest
-  doc: Choose the most upstream start codon if multiple in frame ones exist
+- id: in_longest
+  doc: "Choose the most upstream start codon if multiple\nin frame ones exist"
   type: boolean
   inputBinding:
     prefix: --longest
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prefix
+  doc: Prefix to output file  [required]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_prefix)
 cwlVersion: v1.1
 baseCommand:
 - ribotricer

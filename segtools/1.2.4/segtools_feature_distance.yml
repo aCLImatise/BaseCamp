@@ -1,4 +1,6 @@
 !Command
+command:
+- segtools-feature-distance
 positional:
 - !Positional
   description: ''
@@ -25,30 +27,31 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Strand correct features in the ANNOTATION file. If the feature contains
-    strand information, the sign of the distance value is used to portray the relationship
-    between the segment and the nearest stranded feature. A negative distance value
-    indicates that the segment is nearest the 5' end of the feature, whereas a positive
-    value indicates the segment is nearest the 3' end of the feature.
+  description: "Strand correct features in the ANNOTATION file. If the\nfeature contains\
+    \ strand information, the sign of the\ndistance value is used to portray the relationship\n\
+    between the segment and the nearest stranded feature.\nA negative distance value\
+    \ indicates that the segment\nis nearest the 5' end of the feature, whereas a\n\
+    positive value indicates the segment is nearest the 3'\nend of the feature."
   synonyms:
   - -s
   - --stranded
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: The name of the nearest feature will be printed after each distance
-    (with a space separating the two) for features from the ANNOTATION file. If multiple
-    features are equally near (or overlap), it is undefined which will be printed
+  description: "The name of the nearest feature will be printed after\neach distance\
+    \ (with a space separating the two) for\nfeatures from the ANNOTATION file. If\
+    \ multiple\nfeatures are equally near (or overlap), it is\nundefined which will\
+    \ be printed"
   synonyms:
   - -p
   - --print-nearest
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: If multiple features in the ANNOTATION file overlap a segment, a separate
-    line is printed for each overlapping segment-feature pair. This is most interesting
-    with --print-nearest. Otherwise, the first overlapping segment will be used for
-    printing.
+  description: "If multiple features in the ANNOTATION file overlap a\nsegment, a\
+    \ separate line is printed for each\noverlapping segment-feature pair. This is\
+    \ most\ninteresting with --print-nearest. Otherwise, the first\noverlapping segment\
+    \ will be used for printing."
   synonyms:
   - -a
   - --all-overlapping
@@ -61,17 +64,17 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Load data from output tab files and regenerate plots instead of recomputing
-    data.
+  description: "Load data from output tab files and regenerate plots\ninstead of recomputing\
+    \ data."
   synonyms:
   - --replot
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Number of bins to use in histogram for distances greater than zero
-    and less than or equal to N*W. Distances of 0 and greater than N*W are placed
-    in additional bins. If --stranded, N more bins are included in the negative direction
-    and a bin for distances less than -N*W.
+  description: "Number of bins to use in histogram for distances\ngreater than zero\
+    \ and less than or equal to N*W.\nDistances of 0 and greater than N*W are placed\
+    \ in\nadditional bins. If --stranded, N more bins are\nincluded in the negative\
+    \ direction and a bin for\ndistances less than -N*W."
   synonyms:
   - -n
   - --n-bins
@@ -79,9 +82,9 @@ named:
     name: N
   optional: true
 - !Flag
-  description: Number of bases in each bin. If --stranded, bins cover distances of
-    (-Inf,-N*W), ..., [-W,0), [0], (0,W], ..., (N*W,Inf). Otherwise, the bins cover
-    distances of [0], (0,W], (W,2W], ..., (N*W,Inf).
+  description: "Number of bases in each bin. If --stranded, bins cover\ndistances\
+    \ of (-Inf,-N*W), ..., [-W,0), [0], (0,W],\n..., (N*W,Inf). Otherwise, the bins\
+    \ cover distances of\n[0], (0,W], (W,2W], ..., (N*W,Inf)."
   synonyms:
   - -w
   - --bin-width
@@ -89,7 +92,7 @@ named:
     name: W
   optional: true
 - !Flag
-  description: If specified, labels will be shown using mnemonics found in FILE
+  description: "If specified, labels will be shown using mnemonics\nfound in FILE"
   synonyms:
   - -m
   - --mnemonic-file
@@ -97,8 +100,8 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: 'File output directory (will be created if it does not exist) [default:
-    feature_distance]'
+  description: "File output directory (will be created if it does not\nexist) [default:\
+    \ feature_distance]"
   synonyms:
   - -o
   - --outdir
@@ -106,20 +109,30 @@ named:
     name: DIR
   optional: true
 - !Flag
-  description: =VAL        Pass VAL for PARAM when calling R functions. May be specified
-    multiple times.
+  description: "=VAL        Pass VAL for PARAM when calling R functions. May be\n\
+    specified multiple times.\n"
   synonyms:
   - -R
   args: !SimpleFlagArg
     name: PARAM
   optional: true
-command:
-- segtools-feature-distance
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: segtools-feature-distance [OPTIONS] SEGMENTATION ANNOTATION\n\n\
   Given a SEGMENTATION and ANNOTATION file, 1) prints the distance of each\nsegment\
   \ to the nearest feature in the ANNOTATION file (zero if the two\noverlap) and 2)\

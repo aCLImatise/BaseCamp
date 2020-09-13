@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../esl_seqrange.cwl
 inputs:
-- id: in_format
+- id: in_in_format
   doc: ': specify that input file is in format <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --informat
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - esl-seqrange

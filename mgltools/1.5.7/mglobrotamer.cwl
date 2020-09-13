@@ -1,17 +1,10 @@
 class: CommandLineTool
 id: ../../../mglobrotamer.cwl
-inputs:
-- id: ob_rotamer
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mglobrotamer

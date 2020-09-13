@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../gvcf2coverage.cwl
 inputs:
-- id: t
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -t
-- id: d
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -d
-- id: n
+- id: in_n
   doc: ''
   type: boolean
   inputBinding:
     prefix: -n
-outputs: []
+- id: in_d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: in_t
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -t
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gvcf2coverage

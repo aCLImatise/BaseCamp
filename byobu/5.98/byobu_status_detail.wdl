@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuStatusDetail {
+task Byobustatusdetail {
   command <<<
-    byobu-status-detail
+    byobu_status_detail
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

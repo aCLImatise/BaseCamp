@@ -2,7 +2,6 @@ version 1.0
 
 task TripailleJobAddImportJob {
   input {
-    Int? priority
     String name
     String importer
     String input_file
@@ -11,13 +10,14 @@ task TripailleJobAddImportJob {
     tripaille job add_import_job \
       ~{name} \
       ~{importer} \
-      ~{input_file} \
-      ~{if defined(priority) then ("--priority " +  '"' + priority + '"') else ""}
+      ~{input_file}
   >>>
   parameter_meta {
-    priority: "An integer score to prioritize the job  [default: 10]"
     name: ""
     importer: ""
     input_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

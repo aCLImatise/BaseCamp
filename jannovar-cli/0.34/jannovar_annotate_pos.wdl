@@ -1,8 +1,8 @@
 version 1.0
 
-task JannovarAnnotatePos {
+task JannovarAnnotatepos {
   input {
-    String? database
+    File? database
     String? genomic_change
     Boolean? show_all
     Boolean? no_three_prime_shifting
@@ -17,24 +17,24 @@ task JannovarAnnotatePos {
     String annotate_pos
   }
   command <<<
-    jannovar annotate-pos \
+    jannovar annotate_pos \
       ~{jan_novar_cli} \
       ~{annotate_pos} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(genomic_change) then ("--genomic-change " +  '"' + genomic_change + '"') else ""} \
-      ~{true="--show-all" false="" show_all} \
-      ~{true="--no-3-prime-shifting" false="" no_three_prime_shifting} \
-      ~{true="--3-letter-amino-acids" false="" three_letter_amino_acids} \
-      ~{true="--report-no-progress" false="" report_no_progress} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--very-verbose" false="" very_verbose} \
+      ~{if (show_all) then "--show-all" else ""} \
+      ~{if (no_three_prime_shifting) then "--no-3-prime-shifting" else ""} \
+      ~{if (three_letter_amino_acids) then "--3-letter-amino-acids" else ""} \
+      ~{if (report_no_progress) then "--report-no-progress" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (very_verbose) then "--very-verbose" else ""} \
       ~{if defined(http_proxy) then ("--http-proxy " +  '"' + http_proxy + '"') else ""} \
       ~{if defined(https_proxy) then ("--https-proxy " +  '"' + https_proxy + '"') else ""} \
       ~{if defined(ftp_proxy) then ("--ftp-proxy " +  '"' + ftp_proxy + '"') else ""}
   >>>
   parameter_meta {
     database: "Path to database .ser file"
-    genomic_change: "Genomic change to annotate, you can give multiple ones"
+    genomic_change: "Genomic change to annotate,  you can give multiple\\nones"
     show_all: "Show all effects"
     no_three_prime_shifting: "Disable shifting towards 3' of transcript"
     three_letter_amino_acids: "Enable usage of 3 letter amino acid codes"
@@ -46,5 +46,8 @@ task JannovarAnnotatePos {
     ftp_proxy: "Set FTP proxy to use, if any"
     jan_novar_cli: ""
     annotate_pos: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

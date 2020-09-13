@@ -1,29 +1,32 @@
 class: CommandLineTool
 id: ../../../_frestboot.cwl
 inputs:
-- id: weights
+- id: in_weights
   doc: properties Weights file
   type: boolean
   inputBinding:
     prefix: -weights
-- id: test
-  doc: 'menu       [b] Choose test (Values: b (Bootstrap); j (Jackknife); c (Permute
-    species for each character); o (Permute character order); s (Permute within species);
-    r (Rewrite data))'
+- id: in_test
+  doc: "menu       [b] Choose test (Values: b (Bootstrap); j\n(Jackknife); c (Permute\
+    \ species for each\ncharacter); o (Permute character order); s\n(Permute within\
+    \ species); r (Rewrite data))"
   type: boolean
   inputBinding:
     prefix: -test
-- id: enzymes
-  doc: boolean    [N] Is the number of enzymes present in input file
+- id: in_enzymes
+  doc: "boolean    [N] Is the number of enzymes present in\ninput file"
   type: boolean
   inputBinding:
     prefix: -enzymes
-- id: print_data
+- id: in_print_data
   doc: boolean    [N] Print out the data at start of run
   type: boolean
   inputBinding:
     prefix: -printdata
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - _frestboot

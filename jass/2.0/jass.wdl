@@ -4,4 +4,7 @@ task Jass {
   command <<<
     jass
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

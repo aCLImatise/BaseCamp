@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../hca_dss_delete_collection.cwl
 inputs:
-- id: uuid
+- id: in_uuid
   doc: A RFC4122-compliant ID for the collection.
-  type: string
+  type: long
   inputBinding:
     prefix: --uuid
-- id: replica
+- id: in_replica
   doc: Replica to delete from.
   type: string
   inputBinding:
     prefix: --replica
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

@@ -10,11 +10,14 @@ task RemoveDuplicate {
     removeDuplicate \
       ~{var_1} \
       ~{var_2} \
-      ~{true="-gff3" false="" gff_three}
+      ~{if (gff_three) then "-gff3" else ""}
   >>>
   parameter_meta {
     gff_three: ""
     var_1: ""
     var_2: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

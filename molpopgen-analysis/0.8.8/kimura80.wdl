@@ -4,4 +4,7 @@ task Kimura80 {
   command <<<
     kimura80
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

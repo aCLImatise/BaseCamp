@@ -2,14 +2,14 @@ version 1.0
 
 task MocaFindMotifs {
   input {
-    String? bed_file
-    String? oc
-    String? configuration
+    File? bed_file
+    Directory? oc
+    File? configuration
     Int? slop_length
     Int? flank_motif
     Int? n_motif
     Int? cores
-    String? genome_build
+    File? genome_build
     Boolean? show_progress
   }
   command <<<
@@ -22,7 +22,7 @@ task MocaFindMotifs {
       ~{if defined(n_motif) then ("--n-motif " +  '"' + n_motif + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if defined(genome_build) then ("--genome-build " +  '"' + genome_build + '"') else ""} \
-      ~{true="--show-progress" false="" show_progress}
+      ~{if (show_progress) then "--show-progress" else ""}
   >>>
   parameter_meta {
     bed_file: "Bed file input  [required]"
@@ -32,7 +32,11 @@ task MocaFindMotifs {
     flank_motif: "Length of sequence flanking motif"
     n_motif: "Number of motifs"
     cores: "Number of parallel MEME jobs  [required]"
-    genome_build: "Key denoting genome build to use in configuration file  [required]"
+    genome_build: "Key denoting genome build to use in\\nconfiguration file  [required]"
     show_progress: "Print progress"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_oc = "${in_oc}"
   }
 }

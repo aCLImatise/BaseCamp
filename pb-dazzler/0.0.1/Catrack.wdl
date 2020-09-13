@@ -9,15 +9,18 @@ task Catrack {
   }
   command <<<
     Catrack \
-      ~{true="-v" false="" _verbose} \
-      ~{true="-d" false="" delete_individual_blocks} \
-      ~{true="-f" false="" force_overwrite_present} \
-      ~{true="-vfd" false="" vfd}
+      ~{if (_verbose) then "-v" else ""} \
+      ~{if (delete_individual_blocks) then "-d" else ""} \
+      ~{if (force_overwrite_present) then "-f" else ""} \
+      ~{if (vfd) then "-vfd" else ""}
   >>>
   parameter_meta {
     _verbose: ": verbose"
     delete_individual_blocks: ": delete individual blocks after a successful concatenation"
     force_overwrite_present: ": force overwrite of track if already present"
     vfd: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

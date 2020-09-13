@@ -1,131 +1,157 @@
 class: CommandLineTool
 id: ../../../cs_generate.cwl
 inputs:
-- id: quiet
+- id: in_quiet
   doc: Suppress all warning messages. Cannot use with '-v'.
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: verbose
-  doc: "Increase verbosity. With '-v', show every warning. With '-vv', turn warnings\
-    \ into exceptions. Cannot use with '-q'. (Default: show each type of warning once)"
+- id: in_verbose
+  doc: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn warnings\
+    \ into exceptions. Cannot use\nwith '-q'. (Default: show each type of warning\
+    \ once)"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: annotation_format
-  doc: 'Format of annotation_files (Default: GTF2). Note: GFF3 assembly assumes SO
-    v.2.5.2 feature ontologies, which may or may not match your specific file.'
+- id: in_annotation_files
+  doc: "[BED | BigBed | GTF2 | GFF3] [infile.[BED | BigBed | GTF2 | GFF3] ...]\nZero\
+    \ or more annotation files (max 1 file if BigBed)"
+  type: File
+  inputBinding:
+    prefix: --annotation_files
+- id: in_annotation_format
+  doc: "Format of annotation_files (Default: GTF2). Note: GFF3\nassembly assumes SO\
+    \ v.2.5.2 feature ontologies, which\nmay or may not match your specific file."
   type: string
   inputBinding:
     prefix: --annotation_format
-- id: add_three
-  doc: If supplied, coding regions will be extended by 3 nucleotides at their 3' ends
-    (except for GTF2 files that explicitly include `stop_codon` features). Use if
-    your annotation file excludes stop codons from CDS.
+- id: in_add_three
+  doc: "If supplied, coding regions will be extended by 3\nnucleotides at their 3'\
+    \ ends (except for GTF2 files\nthat explicitly include `stop_codon` features).\
+    \ Use if\nyour annotation file excludes stop codons from CDS."
   type: boolean
   inputBinding:
     prefix: --add_three
-- id: tab_ix
-  doc: 'annotation_files are tabix-compressed and indexed (Default: False). Ignored
-    for BigBed files.'
+- id: in_tab_ix
+  doc: "annotation_files are tabix-compressed and indexed\n(Default: False). Ignored\
+    \ for BigBed files."
   type: boolean
   inputBinding:
     prefix: --tabix
-- id: sorted
-  doc: 'annotation_files are sorted by chromosomal position (Default: False)'
+- id: in_sorted
+  doc: "annotation_files are sorted by chromosomal position\n(Default: False)"
   type: boolean
   inputBinding:
     prefix: --sorted
-- id: bed_extra_columns
-  doc: 'Number of extra columns in BED file (e.g. in custom ENCODE formats) or list
-    of names for those columns. (Default: 0).'
+- id: in_bed_extra_columns
+  doc: "Number of extra columns in BED file (e.g. in custom\nENCODE formats) or list\
+    \ of names for those columns.\n(Default: 0)."
   type: string[]
   inputBinding:
     prefix: --bed_extra_columns
-- id: mask_bed_extra_columns
-  doc: 'Number of extra columns in BED file (e.g. in custom ENCODE formats) or list
-    of names for those columns. (Default: 0).'
+- id: in_mask_bed_extra_columns
+  doc: "Number of extra columns in BED file (e.g. in custom\nENCODE formats) or list\
+    \ of names for those columns.\n(Default: 0)."
   type: string[]
   inputBinding:
     prefix: --mask_bed_extra_columns
-- id: maxmem
-  doc: 'Maximum desired memory footprint in MB to devote to BigBed/BigWig files. May
-    be exceeded by large queries. (Default: 0, No maximum)'
+- id: in_maxmem
+  doc: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig files.\
+    \ May be exceeded by large queries.\n(Default: 0, No maximum)"
   type: long
   inputBinding:
     prefix: --maxmem
-- id: mask_maxmem
-  doc: 'Maximum desired memory footprint in MB to devote to BigBed/BigWig files. May
-    be exceeded by large queries. (Default: 0, No maximum)'
-  type: string
+- id: in_mask_maxmem
+  doc: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig files.\
+    \ May be exceeded by large queries.\n(Default: 0, No maximum)"
+  type: long
   inputBinding:
     prefix: --mask_maxmem
-- id: gff_transcript_types
-  doc: 'GFF3 feature types to include as transcripts, even if no exons are present
-    (for GFF3 only; default: use SO v2.5.3 specification)'
+- id: in_gff_transcript_types
+  doc: "GFF3 feature types to include as transcripts, even if\nno exons are present\
+    \ (for GFF3 only; default: use SO\nv2.5.3 specification)"
   type: string[]
   inputBinding:
     prefix: --gff_transcript_types
-- id: gff_exon_types
-  doc: 'GFF3 feature types to include as exons (for GFF3 only; default: use SO v2.5.3
-    specification)'
+- id: in_gff_exon_types
+  doc: "GFF3 feature types to include as exons (for GFF3 only;\ndefault: use SO v2.5.3\
+    \ specification)"
   type: string[]
   inputBinding:
     prefix: --gff_exon_types
-- id: gff_cds_types
-  doc: 'GFF3 feature types to include as CDS (for GFF3 only; default: use SO v2.5.3
-    specification)'
+- id: in_gff_cds_types
+  doc: "GFF3 feature types to include as CDS (for GFF3 only;\ndefault: use SO v2.5.3\
+    \ specification)"
   type: string[]
   inputBinding:
     prefix: --gff_cds_types
-- id: mask_gff_transcript_types
-  doc: 'GFF3 feature types to include as transcripts, even if no exons are present
-    (for GFF3 only; default: use SO v2.5.3 specification)'
+- id: in_mask_gff_transcript_types
+  doc: "GFF3 feature types to include as transcripts, even if\nno exons are present\
+    \ (for GFF3 only; default: use SO\nv2.5.3 specification)"
   type: string[]
   inputBinding:
     prefix: --mask_gff_transcript_types
-- id: mask_gff_exon_types
-  doc: 'GFF3 feature types to include as exons (for GFF3 only; default: use SO v2.5.3
-    specification)'
+- id: in_mask_gff_exon_types
+  doc: "GFF3 feature types to include as exons (for GFF3 only;\ndefault: use SO v2.5.3\
+    \ specification)"
   type: string[]
   inputBinding:
     prefix: --mask_gff_exon_types
-- id: mask_gff_cds_types
-  doc: 'GFF3 feature types to include as CDS (for GFF3 only; default: use SO v2.5.3
-    specification)'
+- id: in_mask_gff_cds_types
+  doc: "GFF3 feature types to include as CDS (for GFF3 only;\ndefault: use SO v2.5.3\
+    \ specification)"
   type: string[]
   inputBinding:
     prefix: --mask_gff_cds_types
-- id: mask_annotation_format
-  doc: 'Format of mask_annotation_files (Default: GTF2). Note: GFF3 assembly assumes
-    SO v.2.5.2 feature ontologies, which may or may not match your specific file.'
+- id: in_mask_annotation_files
+  doc: "[BED | BigBed | GTF2 | GFF3 | PSL] [infile.[BED | BigBed | GTF2 | GFF3 | PSL]\
+    \ ...]\nZero or more annotation files (max 1 file if BigBed)"
+  type: File
+  inputBinding:
+    prefix: --mask_annotation_files
+- id: in_mask_annotation_format
+  doc: "Format of mask_annotation_files (Default: GTF2). Note:\nGFF3 assembly assumes\
+    \ SO v.2.5.2 feature ontologies,\nwhich may or may not match your specific file."
   type: string
   inputBinding:
     prefix: --mask_annotation_format
-- id: mask_add_three
-  doc: If supplied, coding regions will be extended by 3 nucleotides at their 3' ends
-    (except for GTF2 files that explicitly include `stop_codon` features). Use if
-    your annotation file excludes stop codons from CDS.
+- id: in_mask_add_three
+  doc: "If supplied, coding regions will be extended by 3\nnucleotides at their 3'\
+    \ ends (except for GTF2 files\nthat explicitly include `stop_codon` features).\
+    \ Use if\nyour annotation file excludes stop codons from CDS."
   type: boolean
   inputBinding:
     prefix: --mask_add_three
-- id: mask_tab_ix
-  doc: 'mask_annotation_files are tabix-compressed and indexed (Default: False). Ignored
-    for BigBed files.'
+- id: in_mask_tab_ix
+  doc: "mask_annotation_files are tabix-compressed and indexed\n(Default: False).\
+    \ Ignored for BigBed files."
   type: boolean
   inputBinding:
     prefix: --mask_tabix
-- id: mask_sorted
-  doc: 'mask_annotation_files are sorted by chromosomal position (Default: False)'
+- id: in_mask_sorted
+  doc: "mask_annotation_files are sorted by chromosomal\nposition (Default: False)\n"
   type: boolean
   inputBinding:
     prefix: --mask_sorted
-- id: out_base
+- id: in___
+  doc: '------------------------------------------------------------------------------'
+  type: string
+  inputBinding:
+    position: 0
+- id: in_genes_dot
+  doc: 2. Within merged genes, all positions are classified. All positions are
+  type: string
+  inputBinding:
+    position: 0
+- id: in_basename_output_files
   doc: Basename for output files
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cs

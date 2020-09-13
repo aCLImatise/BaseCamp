@@ -1,47 +1,45 @@
 class: CommandLineTool
 id: ../../../mafFrag.cwl
 inputs:
-- id: out_name
+- id: in_out_name
   doc: Use XXX instead of database.chrom for the name
   type: string
   inputBinding:
     prefix: -outName
-- id: database
+- id: in_database
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: maf_track
+- id: in_maf_track
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: chrom
+- id: in_chrom
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: start
+- id: in_start
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: end
+- id: in_end
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: strand
+- id: in_strand
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: out_dot_maf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 6
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mafFrag

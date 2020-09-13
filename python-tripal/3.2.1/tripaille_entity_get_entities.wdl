@@ -14,4 +14,7 @@ task TripailleEntityGetEntities {
     entity: "Name of the entity type (e.g. Organism)"
     entity_id: "ID of an entity"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

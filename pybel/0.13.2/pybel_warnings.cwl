@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../pybel_warnings.cwl
 inputs:
-- id: path
+- id: in_path
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pybel

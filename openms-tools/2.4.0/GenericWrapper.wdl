@@ -4,4 +4,7 @@ task GenericWrapper {
   command <<<
     GenericWrapper
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

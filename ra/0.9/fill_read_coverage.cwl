@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../fill_read_coverage.cwl
 inputs:
-- id: depot
-  doc: ''
-  type: string
+- id: in_depot
+  doc: depot path (string)
+  type: boolean
   inputBinding:
     prefix: --depot
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fill_read_coverage

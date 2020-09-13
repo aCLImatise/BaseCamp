@@ -17,4 +17,7 @@ task LofreqIdxstats {
     idx_stats: ""
     in_dot_bam: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

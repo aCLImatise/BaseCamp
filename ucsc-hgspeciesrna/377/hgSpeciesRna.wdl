@@ -7,15 +7,13 @@ task HgSpeciesRna {
     String database
     String genus
     String species
-    String output_dot_fa
   }
   command <<<
     hgSpeciesRna \
       ~{database} \
       ~{genus} \
       ~{species} \
-      ~{output_dot_fa} \
-      ~{true="-est" false="" est} \
+      ~{if (est) then "-est" else ""} \
       ~{if defined(filter) then ("-filter " +  '"' + filter + '"') else ""}
   >>>
   parameter_meta {
@@ -24,6 +22,8 @@ task HgSpeciesRna {
     database: ""
     genus: ""
     species: ""
-    output_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

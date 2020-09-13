@@ -4,4 +4,7 @@ task EMMIX {
   command <<<
     EMMIX
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

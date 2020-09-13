@@ -1,72 +1,70 @@
 class: CommandLineTool
 id: ../../../mea_eval.cwl
 inputs:
-- id: alpha
-  doc: slope of base pair distance penalty (default=`0.012')
-  type: string
+- id: in_alpha
+  doc: "slope of base pair distance penalty\n(default=`0.012')"
+  type: double
   inputBinding:
     prefix: --alpha
-- id: beta
-  doc: turning point of base pair distance penalty (default=`315')
-  type: string
+- id: in_beta
+  doc: "turning point of base pair distance penalty\n(default=`315')"
+  type: long
   inputBinding:
     prefix: --beta
-- id: gamma
+- id: in_gamma
   doc: base pair weight factor  (default=`0.5')
-  type: string
+  type: double
   inputBinding:
     prefix: --gamma
-- id: delta
-  doc: minimum penalty factor for base pairs (default=`0.003')
-  type: string
+- id: in_delta
+  doc: "minimum penalty factor for base pairs\n(default=`0.003')"
+  type: double
   inputBinding:
     prefix: --delta
-- id: dp_dir
+- id: in_dp_dir
   doc: Path to dot plot files  (default=`')
-  type: string
+  type: File
   inputBinding:
     prefix: --dpdir
-- id: pred
-  doc: File with predicted structures to compare with input file  (default=`')
-  type: string
+- id: in_pred
+  doc: File with predicted structures to compare with input
+  type: File
   inputBinding:
     prefix: --pred
-- id: start
+- id: in_start
   doc: Restrict start of base pair span range  (default=`1')
   type: long
   inputBinding:
     prefix: --start
-- id: stop
+- id: in_stop
   doc: Restrict start of base pair span range  (default=`0')
   type: long
   inputBinding:
     prefix: --stop
-- id: no_slide_rule
+- id: in_no_slide_rule
   doc: 'Use slide rule [default: use slide rule]'
   type: boolean
   inputBinding:
     prefix: --no-slide-rule
-- id: no_conflict_rule
+- id: in_no_conflict_rule
   doc: 'Use conflict rule [default: use conflict rule]'
   type: boolean
   inputBinding:
     prefix: --no-conflict-rule
-- id: verbose
+- id: in_verbose
   doc: Turn on verobose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: me_a
-  doc: ''
-  type: string
+- id: in_file
+  doc: (default=`')
+  type: File
   inputBinding:
     position: 0
-- id: input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mea_eval

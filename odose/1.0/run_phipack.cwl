@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../run_phipack.py.cwl
+id: ../../../run_phipack.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- run_phipack.py
+- run_phipack

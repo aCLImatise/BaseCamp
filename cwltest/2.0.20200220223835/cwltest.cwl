@@ -1,89 +1,97 @@
 class: CommandLineTool
 id: ../../../cwltest.cwl
 inputs:
-- id: test
+- id: in_test
   doc: YAML file describing test cases
-  type: string
+  type: File
   inputBinding:
     prefix: --test
-- id: basedir
+- id: in_basedir
   doc: Basedir to use for tests
   type: string
   inputBinding:
     prefix: --basedir
-- id: list_tests_exit
+- id: in_list_tests_then
   doc: List tests then exit
   type: boolean
   inputBinding:
     prefix: -l
-- id: run_specific_tests_format
+- id: in_run_specific_tests_format
   doc: Run specific tests, format is 1,3-6,9
-  type: string
+  type: long
   inputBinding:
     prefix: -n
-- id: run_specific_tests_using
-  doc: Run specific tests using their short names separated by comma
+- id: in_run_specific_tests_using
+  doc: "Run specific tests using their short names separated\nby comma"
   type: string
   inputBinding:
     prefix: -s
-- id: tool
+- id: in_tool
   doc: CWL runner executable to use (default 'cwl-runner'
   type: string
   inputBinding:
     prefix: --tool
-- id: only_tools
+- id: in_only_tools
   doc: Only test CommandLineTools
   type: boolean
   inputBinding:
     prefix: --only-tools
-- id: tags
+- id: in_tags
   doc: Tags to be tested
   type: string
   inputBinding:
     prefix: --tags
-- id: junit_xml
+- id: in_junit_xml
   doc: Path to JUnit xml file
-  type: string
+  type: File
   inputBinding:
     prefix: --junit-xml
-- id: junit_verbose
+- id: in_junit_verbose
   doc: Store more verbose output to JUnit xml file
-  type: boolean
+  type: File
   inputBinding:
     prefix: --junit-verbose
-- id: test_arg
-  doc: ==--cache-dir Additional argument given in test cases and required prefix for
-    tool runner.
+- id: in_test_arg
+  doc: "==--cache-dir\nAdditional argument given in test cases and required\nprefix\
+    \ for tool runner."
   type: string
   inputBinding:
     prefix: --test-arg
-- id: specifies_number_tests
-  doc: Specifies the number of tests to run simultaneously (defaults to one).
-  type: string
+- id: in_specifies_number_run
+  doc: "Specifies the number of tests to run simultaneously\n(defaults to one)."
+  type: long
   inputBinding:
     prefix: -j
-- id: verbose
+- id: in_verbose
   doc: More verbose output during test run.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: classname
+- id: in_classname
   doc: Specify classname for the Test Suite.
   type: string
   inputBinding:
     prefix: --classname
-- id: timeout
-  doc: Time of execution in seconds after which the test will be skipped. Defaults
-    to 600 seconds (10.0 minutes).
-  type: string
+- id: in_timeout
+  doc: "Time of execution in seconds after which the test will\nbe skipped. Defaults\
+    \ to 600 seconds (10.0 minutes)."
+  type: double
   inputBinding:
     prefix: --timeout
-- id: badge_dir
+- id: in_badge_dir
   doc: Directory that stores JSON files for badges.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --badgedir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_junit_verbose
+  doc: Store more verbose output to JUnit xml file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_junit_verbose)
 cwlVersion: v1.1
 baseCommand:
 - cwltest

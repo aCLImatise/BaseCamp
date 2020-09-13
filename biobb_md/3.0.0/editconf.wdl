@@ -2,9 +2,9 @@ version 1.0
 
 task Editconf {
   input {
-    String? config
-    String? input_gro_path
-    String? output_gro_path
+    File? config
+    File? input_gro_path
+    File? output_gro_path
   }
   command <<<
     editconf \
@@ -16,5 +16,9 @@ task Editconf {
     config: "This file can be a YAML file, JSON file or JSON string"
     input_gro_path: ""
     output_gro_path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_gro_path = "${in_output_gro_path}"
   }
 }

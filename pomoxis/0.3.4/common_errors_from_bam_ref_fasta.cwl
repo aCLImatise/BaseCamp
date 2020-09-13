@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../common_errors_from_bam_ref_fasta.cwl
 inputs:
-- id: o
+- id: in_o
   doc: ''
   type: string
   inputBinding:
     prefix: -o
-- id: common_errors_from_bam
+- id: in_common_errors_from_bam
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: bam
+- id: in_bam
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: ref_fast_a
+- id: in_ref_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - common_errors_from_bam

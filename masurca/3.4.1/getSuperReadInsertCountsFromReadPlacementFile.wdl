@@ -6,7 +6,7 @@ task GetSuperReadInsertCountsFromReadPlacementFile {
     File? output_file_devfd
     Boolean? fib
     Boolean? bloom
-    String? number_reads
+    Int? number_reads
     String cmdline_parse
   }
   command <<<
@@ -14,8 +14,8 @@ task GetSuperReadInsertCountsFromReadPlacementFile {
       ~{cmdline_parse} \
       ~{if defined(input_file_devfd) then ("--input " +  '"' + input_file_devfd + '"') else ""} \
       ~{if defined(output_file_devfd) then ("--output " +  '"' + output_file_devfd + '"') else ""} \
-      ~{true="--fib" false="" fib} \
-      ~{true="--bloom" false="" bloom} \
+      ~{if (fib) then "--fib" else ""} \
+      ~{if (bloom) then "--bloom" else ""} \
       ~{if defined(number_reads) then ("--number-reads " +  '"' + number_reads + '"') else ""}
   >>>
   parameter_meta {
@@ -25,5 +25,9 @@ task GetSuperReadInsertCountsFromReadPlacementFile {
     bloom: "Use a bloom filter to remove unique super-reads (false)"
     number_reads: "Estimated number of super-reads (1000000)"
     cmdline_parse: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_devfd = "${in_output_file_devfd}"
   }
 }

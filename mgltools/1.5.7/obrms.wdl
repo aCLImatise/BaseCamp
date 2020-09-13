@@ -1,14 +1,10 @@
 version 1.0
 
 task Obrms {
-  input {
-    Boolean? first_only
-  }
   command <<<
-    obrms \
-      ~{true="-firstonly" false="" first_only}
+    obrms
   >>>
-  parameter_meta {
-    first_only: ""
+  output {
+    File out_stdout = stdout()
   }
 }

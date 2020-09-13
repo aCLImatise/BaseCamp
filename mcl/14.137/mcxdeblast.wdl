@@ -3,16 +3,16 @@ version 1.0
 task Mcxdeblast {
   input {
     Boolean? m_nine
-    String? line_mode
-    String? score
+    Int? line_mode
+    Int? score
     String? sort
-    String? tab
-    String? xi_dat
+    File? tab
+    File? xi_dat
     String? xo_dat
     String? b_cut
     String? e_cut
     String? r_cut
-    String? out
+    File? out
     String based_oth_dr
     String based_ot_raw
     String based_ot_map
@@ -26,7 +26,7 @@ task Mcxdeblast {
       ~{based_ot_map} \
       ~{based_ot_tab} \
       ~{base_do_terr} \
-      ~{true="--m9" false="" m_nine} \
+      ~{if (m_nine) then "--m9" else ""} \
       ~{if defined(line_mode) then ("--line-mode " +  '"' + line_mode + '"') else ""} \
       ~{if defined(score) then ("--score " +  '"' + score + '"') else ""} \
       ~{if defined(sort) then ("--sort " +  '"' + sort + '"') else ""} \
@@ -41,7 +41,7 @@ task Mcxdeblast {
   parameter_meta {
     m_nine: "Expect column (-m 9) input."
     line_mode: "Output simple ID1 ID2 SCORE format."
-    score: "Use bit scores, E-values, or bit scores normalized by hsp-length"
+    score: "Use bit scores, E-values,\\nor bit scores normalized by hsp-length"
     sort: "Use alphabetic sorting (default) or occurrence."
     tab: "Use user-supplied tab file."
     xi_dat: "Strip <suf> from file-name to create output base name."
@@ -55,5 +55,10 @@ task Mcxdeblast {
     based_ot_map: "[to be read by mcxassemble]"
     based_ot_tab: "[to be read by clmformat]"
     base_do_terr: "[error log]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_xi_dat = "${in_xi_dat}"
+    File out_out = "${in_out}"
   }
 }

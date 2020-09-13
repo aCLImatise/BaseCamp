@@ -1,14 +1,17 @@
 version 1.0
 
-task _pasteseq {
+task Pasteseq {
   input {
     Boolean? pos
   }
   command <<<
     _pasteseq \
-      ~{true="-pos" false="" pos}
+      ~{if (pos) then "-pos" else ""}
   >>>
   parameter_meta {
-    pos: "integer    [$(asequence.end)] The position in the main input sequence to insert after. To insert before the start use the position 0. (Integer 0 or more)"
+    pos: "integer    [$(asequence.end)] The position in the main\\ninput sequence to insert after.\\nTo insert before the start use the position\\n0. (Integer 0 or more)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

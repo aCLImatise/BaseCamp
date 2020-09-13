@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../htsbox_bgzip.cwl
 inputs:
-- id: write_standard_output
+- id: in_write_keep_files
   doc: write on standard output, keep original files unchanged
   type: boolean
   inputBinding:
     prefix: -c
-- id: decompress
+- id: in_decompress
   doc: decompress
   type: boolean
   inputBinding:
     prefix: -d
-- id: overwrite_files_asking
+- id: in_overwrite_files_asking
   doc: overwrite files without asking
   type: boolean
   inputBinding:
     prefix: -f
-- id: decompress_virtual_file
+- id: in_decompress_virtual_file
   doc: decompress at virtual file pointer INT
   type: long
   inputBinding:
     prefix: -b
-- id: decompress_int_bytes
+- id: in_decompress_int_bytes
   doc: decompress INT bytes in the uncompressed file
   type: long
   inputBinding:
     prefix: -s
-- id: b_gzip
+- id: in_b_gzip
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - htsbox

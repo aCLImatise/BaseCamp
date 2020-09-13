@@ -4,4 +4,7 @@ task Selscan {
   command <<<
     selscan
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

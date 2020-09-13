@@ -2,12 +2,12 @@ version 1.0
 
 task PairtoolsFlip {
   input {
-    String? chrom_s_path
-    String? output_file_path
+    File? chrom_s_path
+    File? output_file_path
     Int? nproc_in
     Int? nproc_out
-    String? cmd_in
-    String? cmd_out
+    File? cmd_in
+    File? cmd_out
     String? pairs_path
   }
   command <<<
@@ -21,12 +21,16 @@ task PairtoolsFlip {
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
   parameter_meta {
-    chrom_s_path: "Chromosome order used to flip interchromosomal mates: path to a chromosomes file (e.g. UCSC chrom.sizes or similar) whose first column lists scaffold names. Any scaffolds not listed will be ordered lexicographically following the names provided.  [required]"
-    output_file_path: "output file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed. By default, the output is printed into stdout."
-    nproc_in: "Number of processes used by the auto-guessed input decompressing command.  [default: 3]"
-    nproc_out: "Number of processes used by the auto-guessed output compressing command.  [default: 8]"
-    cmd_in: "A command to decompress the input file. If provided, fully overrides the auto-guessed command. Does not work with stdin. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -dc -n 3"
-    cmd_out: "A command to compress the output file. If provided, fully overrides the auto-guessed command. Does not work with stdout. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -c -n 8"
+    chrom_s_path: "Chromosome order used to flip interchromosomal\\nmates: path to a chromosomes file (e.g. UCSC\\nchrom.sizes or similar) whose first column lists\\nscaffold names. Any scaffolds not listed will be\\nordered lexicographically following the names\\nprovided.  [required]"
+    output_file_path: "output file. If the path ends with .gz or .lz4, the\\noutput is pbgzip-/lz4c-compressed. By default, the\\noutput is printed into stdout."
+    nproc_in: "Number of processes used by the auto-guessed input\\ndecompressing command.  [default: 3]"
+    nproc_out: "Number of processes used by the auto-guessed output\\ncompressing command.  [default: 8]"
+    cmd_in: "A command to decompress the input file. If provided,\\nfully overrides the auto-guessed command. Does not\\nwork with stdin. Must read input from stdin and\\nprint output into stdout. EXAMPLE: pbgzip -dc -n 3"
+    cmd_out: "A command to compress the output file. If provided,\\nfully overrides the auto-guessed command. Does not\\nwork with stdout. Must read input from stdin and\\nprint output into stdout. EXAMPLE: pbgzip -c -n 8"
     pairs_path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_path = "${in_output_file_path}"
   }
 }

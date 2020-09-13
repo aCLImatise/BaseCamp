@@ -4,4 +4,7 @@ task Vcfcomplex {
   command <<<
     vcfcomplex
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

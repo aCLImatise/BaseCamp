@@ -4,4 +4,7 @@ task AwsCompleter {
   command <<<
     aws_completer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

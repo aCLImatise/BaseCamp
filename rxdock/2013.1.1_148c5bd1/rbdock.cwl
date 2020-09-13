@@ -1,78 +1,91 @@
 class: CommandLineTool
 id: ../../../rbdock.cwl
 inputs:
-- id: input
+- id: in_input
   doc: input ligand SD file
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: output file name(s) prefix
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: receptor_param
+- id: in_receptor_param
   doc: receptor parameter file
-  type: string
+  type: File
   inputBinding:
     prefix: --receptor-param
-- id: docking_param
+- id: in_docking_param
   doc: docking protocol parameter file
-  type: string
+  type: File
   inputBinding:
     prefix: --docking-param
-- id: number
-  doc: 'number of runs per ligand (0 = unlimited) (default: 0)'
-  type: string
+- id: in_number
+  doc: "number of runs per ligand (0 = unlimited)\n(default: 0)"
+  type: long
   inputBinding:
     prefix: --number
-- id: proton_ate
-  doc: protonate all neutral amines, guanidines, imidazoles
+- id: in_proton_ate
+  doc: protonate all neutral amines, guanidines,
   type: boolean
   inputBinding:
     prefix: --protonate
-- id: de_proton_ate
-  doc: deprotonate all carboxylic, sulphur and phosphorous acid groups
-  type: boolean
-  inputBinding:
-    prefix: --deprotonate
-- id: all_hydrogens
-  doc: read all hydrogens present instead of only polar hydrogens
+- id: in_all_hydrogens
+  doc: read all hydrogens present instead of only polar
   type: boolean
   inputBinding:
     prefix: --all-hydrogens
-- id: threshold
-  doc: score threshold
-  type: string
-  inputBinding:
-    prefix: --threshold
-- id: continue
-  doc: continue if score threshold is met instead of terminating ligand
+- id: in_continue
+  doc: "continue if score threshold is met instead of\nterminating ligand"
   type: boolean
   inputBinding:
     prefix: --continue
-- id: filter
+- id: in_filter
   doc: filter file name
-  type: string
+  type: File
   inputBinding:
     prefix: --filter
-- id: trace
-  doc: 'controls output level for debugging (0 = minimal, >0 = more verbose) (default:
-    0)'
-  type: string
+- id: in_trace
+  doc: "controls output level for debugging (0 = minimal,\n>0 = more verbose) (default:\
+    \ 0)"
+  type: long
   inputBinding:
     prefix: --trace
-- id: seed
-  doc: random number seed to use instead of std::random_device
-  type: string
+- id: in_seed
+  doc: "random number seed to use instead of\nstd::random_device"
+  type: long
   inputBinding:
     prefix: --seed
-- id: option_dot_dot_dot
+- id: in_t
   doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -t
+- id: in_d
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -D
+- id: in_imidazoles
+  doc: -D, --deprotonate         deprotonate all carboxylic, sulphur and
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_hydrogens
+  doc: -t, --threshold arg       score threshold
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output file name(s) prefix
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - rbdock

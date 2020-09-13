@@ -11,4 +11,7 @@ task SynthReadGenInputFile {
   parameter_meta {
     output_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

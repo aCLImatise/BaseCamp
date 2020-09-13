@@ -1,50 +1,58 @@
 class: CommandLineTool
 id: ../../../pairtools_stats.cwl
 inputs:
-- id: output
+- id: in_output
   doc: output stats tsv file.
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: merge
-  doc: If specified, merge multiple input stats files instead of calculating statistics
-    of a .pairs/.pairsam file. Merging is performed via summation of all overlapping
-    statistics. Non-overlapping statistics are appended to the end of the file.
+- id: in_merge
+  doc: "If specified, merge multiple input stats files instead\nof calculating statistics\
+    \ of a .pairs/.pairsam file.\nMerging is performed via summation of all overlapping\n\
+    statistics. Non-overlapping statistics are appended to\nthe end of the file."
   type: boolean
   inputBinding:
     prefix: --merge
-- id: nproc_in
-  doc: 'Number of processes used by the auto-guessed input decompressing command.  [default:
-    3]'
+- id: in_nproc_in
+  doc: "Number of processes used by the auto-guessed input\ndecompressing command.\
+    \  [default: 3]"
   type: long
   inputBinding:
     prefix: --nproc-in
-- id: nproc_out
-  doc: 'Number of processes used by the auto-guessed output compressing command.  [default:
-    8]'
+- id: in_nproc_out
+  doc: "Number of processes used by the auto-guessed output\ncompressing command.\
+    \  [default: 8]"
   type: long
   inputBinding:
     prefix: --nproc-out
-- id: cmd_in
-  doc: 'A command to decompress the input file. If provided, fully overrides the auto-guessed
-    command. Does not work with stdin. Must read input from stdin and print output
-    into stdout. EXAMPLE: pbgzip -dc -n 3'
-  type: string
+- id: in_cmd_in
+  doc: "A command to decompress the input file. If provided,\nfully overrides the\
+    \ auto-guessed command. Does not work\nwith stdin. Must read input from stdin\
+    \ and print output\ninto stdout. EXAMPLE: pbgzip -dc -n 3"
+  type: File
   inputBinding:
     prefix: --cmd-in
-- id: cmd_out
-  doc: 'A command to compress the output file. If provided, fully overrides the auto-guessed
-    command. Does not work with stdout. Must read input from stdin and print output
-    into stdout. EXAMPLE: pbgzip -c -n 8'
-  type: string
+- id: in_cmd_out
+  doc: "A command to compress the output file. If provided,\nfully overrides the auto-guessed\
+    \ command. Does not work\nwith stdout. Must read input from stdin and print\n\
+    output into stdout. EXAMPLE: pbgzip -c -n 8"
+  type: File
   inputBinding:
     prefix: --cmd-out
-- id: input_path
-  doc: ''
+- id: in_merge_dot
+  doc: The files with paths ending with .gz/.lz4 are decompressed by pbgzip/lz4c.
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output stats tsv file.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - pairtools

@@ -1,4 +1,7 @@
-&id003 !Command
+&id002 !Command
+command:
+- cramtools
+- qstat
 positional:
 - !Positional
   description: ''
@@ -27,17 +30,170 @@ named:
   - --log-level
   args: !EmptyFlagArg {}
   optional: true
-command:
-- cramtools
-- qstat
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - cramtools
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - cramtools
+    - getref
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: main class
+      optional: false
+    named:
+    - !Flag
+      description: Destination file.
+      synonyms:
+      - --destination-file
+      - -F
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Wrap fasta lines accroding to this value. (default: 80)'
+      synonyms:
+      - --fasta-line-length
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Compress fasta with gzip. (default: false)'
+      synonyms:
+      - --gzip
+      - -z
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Don't fail on not found sequences, just issue a warning. (default:\
+        \ false)"
+      synonyms:
+      - --ignore-not-found
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: The path to the CRAM or BAM file to extract sequence MD5 checksums.
+      synonyms:
+      - --input-file
+      - -I
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)'
+      synonyms:
+      - -l
+      - --log-level
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: 'Print help and quit (default: false)'
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Version 3.0-b127\n\nUsage: <main class> [options]\n A list of MD5\
+      \ checksums for which the sequences should be downloaded.\n  Options:    --destination-file,\
+      \ -F  Destination file.\n    --fasta-line-length     Wrap fasta lines accroding\
+      \ to this value. (default: 80)\n    --gzip, -z              Compress fasta with\
+      \ gzip. (default: false)\n    --ignore-not-found      Don't fail on not found\
+      \ sequences, just issue a warning. (default: false)\n    --input-file, -I  \
+      \      The path to the CRAM or BAM file to extract sequence MD5 checksums.\n\
+      \    -h, --help              Print help and quit (default: false)\n    -l, --log-level\
+      \         Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)\n\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - cramtools
+    - fixheader
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: fixheader
+      optional: false
+    named:
+    - !Flag
+      description: 'Calculate MD5 for sequences mentioned in the header. Requires
+        --reference-fasta-file option. (default: false)'
+      synonyms:
+      - --confirm-md5
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Inject URI for all reference sequences in the header. (default:
+        false)'
+      synonyms:
+      - --inject-uri
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: The path to the CRAM file.
+      synonyms:
+      - --input-cram-file
+      - -I
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Path to the reference fasta file, it must be uncompressed and indexed
+        (use 'samtools faidx' for example).
+      synonyms:
+      - --reference-fasta-file
+      - -R
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'String formatting pattern for sequence URI to be injected. (default:
+        http://www.ebi.ac.uk/ena/cram/md5/%s)'
+      synonyms:
+      - --uri-pattern
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)'
+      synonyms:
+      - -l
+      - --log-level
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: '(default: false)'
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Version 3.0-b127\n\nUsage: fixheader [options]\n  Options:    --confirm-md5\
+      \               Calculate MD5 for sequences mentioned in the header. Requires\
+      \ --reference-fasta-file option. (default: false)\n    --inject-uri        \
+      \        Inject URI for all reference sequences in the header. (default: false)\n\
+      \    --input-cram-file, -I       The path to the CRAM file.\n    --reference-fasta-file,\
+      \ -R  Path to the reference fasta file, it must be uncompressed and indexed\
+      \ (use 'samtools faidx' for example). \n    --uri-pattern               String\
+      \ formatting pattern for sequence URI to be injected. (default: http://www.ebi.ac.uk/ena/cram/md5/%s)\n\
+      \    -h, --help                   (default: false)\n    -l, --log-level    \
+      \         Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)\n\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - cramtools
+    - bam
     positional:
     - !Positional
       description: ''
@@ -128,8 +284,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: "Path to the reference fasta file, it must be uncompressed and\
-        \ indexed (use 'samtools faidx' for example). "
+      description: Path to the reference fasta file, it must be uncompressed and indexed
+        (use 'samtools faidx' for example).
       synonyms:
       - --reference-fasta-file
       - -R
@@ -174,11 +330,9 @@ parent: &id001 !Command
       - --log-level
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - cramtools
-    - bam
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: 'Print help and quit (default: false)'
       synonyms:
@@ -215,9 +369,11 @@ parent: &id001 !Command
       \    -h, --help                  Print help and quit (default: false)\n    -l,\
       \ --log-level             Change log level: DEBUG, INFO, WARNING, ERROR. (default:\
       \ ERROR)\n\n"
-    generated_using: &id002
-    - --help
+    generated_using: *id003
   - !Command
+    command:
+    - cramtools
+    - cram
     positional:
     - !Positional
       description: ''
@@ -314,8 +470,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: "The reference fasta file, uncompressed and indexed (.fai file,\
-        \ use 'samtools faidx'). "
+      description: The reference fasta file, uncompressed and indexed (.fai file,
+        use 'samtools faidx').
       synonyms:
       - --reference-fasta-file
       - -R
@@ -328,11 +484,9 @@ parent: &id001 !Command
       - --log-level
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - cramtools
-    - cram
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: 'Print help and quit (default: false)'
       synonyms:
@@ -364,150 +518,11 @@ parent: &id001 !Command
       \ 'samtools faidx'). \n    -h, --help                      Print help and quit\
       \ (default: false)\n    -l, --log-level                 Change log level: DEBUG,\
       \ INFO, WARNING, ERROR. (default: ERROR)\n\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: main class
-      optional: false
-    named:
-    - !Flag
-      description: Write index to this file.
-      synonyms:
-      - --index-file
-      - -O
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Choose between BAM index (bai) and CRAM index (crai).  (default:
-        CRAI)'
-      synonyms:
-      - --index-format
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Path to a BAM or CRAM file to be indexed. Omit if standard input
-        (pipe).
-      synonyms:
-      - --input-file
-      - -I
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)'
-      synonyms:
-      - -l
-      - --log-level
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - cramtools
-    - index
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: 'Print help and exit. (default: false)'
-      synonyms:
-      - --help
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Version 3.0-b127\n\nUsage: <main class> [options]\n  Options:    --help,\
-      \ -h        Print help and exit. (default: false)\n    --index-file, -O  Write\
-      \ index to this file.\n    --index-format    Choose between BAM index (bai)\
-      \ and CRAM index (crai).  (default: CRAI)\n    --input-file, -I  Path to a BAM\
-      \ or CRAM file to be indexed. Omit if standard input (pipe).\n    -l, --log-level\
-      \   Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)\n\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: main class
-      optional: false
-    named:
-    - !Flag
-      description: Path to the output BAM file. Omit for stdout.
-      synonyms:
-      - --output-file
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Path to the reference fasta file, it must be uncompressed and indexed
-        (use 'samtools faidx' for example).
-      synonyms:
-      - --reference-fasta-file
-      - -R
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Alignment slice specification, for example: chr1:65000-100000.'
-      synonyms:
-      - --region
-      - -r
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Output in SAM rather than BAM format. (default: false)'
-      synonyms:
-      - --sam-format
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Print SAM file header when output format is text SAM. (default:
-        false)'
-      synonyms:
-      - --sam-header
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)'
-      synonyms:
-      - -l
-      - --log-level
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Change validation stringency level: STRICT, LENIENT, SILENT. (default:
-        STRICT)'
-      synonyms:
-      - -v
-      - --validation-level
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - cramtools
-    - merge
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: 'Print help and quit (default: false)'
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Version 3.0-b127\n\nUsage: <main class> [options]\n The paths to the\
-      \ CRAM or BAM files to uncompress. \n  Options:    --output-file           \
-      \    Path to the output BAM file. Omit for stdout.\n    --reference-fasta-file,\
-      \ -R  Path to the reference fasta file, it must be uncompressed and indexed\
-      \ (use 'samtools faidx' for example).\n    --region, -r                Alignment\
-      \ slice specification, for example: chr1:65000-100000.\n    --sam-format   \
-      \             Output in SAM rather than BAM format. (default: false)\n    --sam-header\
-      \                Print SAM file header when output format is text SAM. (default:\
-      \ false)\n    -h, --help                  Print help and quit (default: false)\n\
-      \    -l, --log-level             Change log level: DEBUG, INFO, WARNING, ERROR.\
-      \ (default: ERROR)\n    -v, --validation-level      Change validation stringency\
-      \ level: STRICT, LENIENT, SILENT. (default: STRICT)\n\n"
-    generated_using: *id002
-  - !Command
+    - fastq
     positional:
     - !Positional
       description: ''
@@ -574,8 +589,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: "Path to the reference fasta file, it must be uncompressed and\
-        \ indexed (use 'samtools faidx' for example). "
+      description: Path to the reference fasta file, it must be uncompressed and indexed
+        (use 'samtools faidx' for example).
       synonyms:
       - --reference-fasta-file
       - -R
@@ -600,11 +615,9 @@ parent: &id001 !Command
       - --log-level
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - cramtools
-    - fastq
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: 'Print help and quit (default: false)'
       synonyms:
@@ -635,84 +648,11 @@ parent: &id001 !Command
       \ when reading the header. (default: false)\n    -h, --help                \
       \  Print help and quit (default: false)\n    -l, --log-level             Change\
       \ log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)\n\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: fixheader
-      optional: false
-    named:
-    - !Flag
-      description: 'Calculate MD5 for sequences mentioned in the header. Requires
-        --reference-fasta-file option. (default: false)'
-      synonyms:
-      - --confirm-md5
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Inject URI for all reference sequences in the header. (default:
-        false)'
-      synonyms:
-      - --inject-uri
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: The path to the CRAM file.
-      synonyms:
-      - --input-cram-file
-      - -I
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "Path to the reference fasta file, it must be uncompressed and\
-        \ indexed (use 'samtools faidx' for example). "
-      synonyms:
-      - --reference-fasta-file
-      - -R
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'String formatting pattern for sequence URI to be injected. (default:
-        http://www.ebi.ac.uk/ena/cram/md5/%s)'
-      synonyms:
-      - --uri-pattern
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)'
-      synonyms:
-      - -l
-      - --log-level
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - cramtools
-    - fixheader
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: '(default: false)'
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Version 3.0-b127\n\nUsage: fixheader [options]\n  Options:    --confirm-md5\
-      \               Calculate MD5 for sequences mentioned in the header. Requires\
-      \ --reference-fasta-file option. (default: false)\n    --inject-uri        \
-      \        Inject URI for all reference sequences in the header. (default: false)\n\
-      \    --input-cram-file, -I       The path to the CRAM file.\n    --reference-fasta-file,\
-      \ -R  Path to the reference fasta file, it must be uncompressed and indexed\
-      \ (use 'samtools faidx' for example). \n    --uri-pattern               String\
-      \ formatting pattern for sequence URI to be injected. (default: http://www.ebi.ac.uk/ena/cram/md5/%s)\n\
-      \    -h, --help                   (default: false)\n    -l, --log-level    \
-      \         Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)\n\n"
-    generated_using: *id002
-  - !Command
+    - index
     positional:
     - !Positional
       description: ''
@@ -721,34 +661,22 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: Destination file.
+      description: Write index to this file.
       synonyms:
-      - --destination-file
-      - -F
+      - --index-file
+      - -O
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Wrap fasta lines accroding to this value. (default: 80)'
+      description: 'Choose between BAM index (bai) and CRAM index (crai).  (default:
+        CRAI)'
       synonyms:
-      - --fasta-line-length
+      - --index-format
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Compress fasta with gzip. (default: false)'
-      synonyms:
-      - --gzip
-      - -z
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "Don't fail on not found sequences, just issue a warning. (default:\
-        \ false)"
-      synonyms:
-      - --ignore-not-found
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: The path to the CRAM or BAM file to extract sequence MD5 checksums.
+      description: Path to a BAM or CRAM file to be indexed. Omit if standard input
+        (pipe).
       synonyms:
       - --input-file
       - -I
@@ -761,11 +689,88 @@ parent: &id001 !Command
       - --log-level
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - cramtools
-    - getref
     parent: *id001
     subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: 'Print help and exit. (default: false)'
+      synonyms:
+      - --help
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Version 3.0-b127\n\nUsage: <main class> [options]\n  Options:    --help,\
+      \ -h        Print help and exit. (default: false)\n    --index-file, -O  Write\
+      \ index to this file.\n    --index-format    Choose between BAM index (bai)\
+      \ and CRAM index (crai).  (default: CRAI)\n    --input-file, -I  Path to a BAM\
+      \ or CRAM file to be indexed. Omit if standard input (pipe).\n    -l, --log-level\
+      \   Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)\n\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - cramtools
+    - merge
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: main class
+      optional: false
+    named:
+    - !Flag
+      description: Path to the output BAM file. Omit for stdout.
+      synonyms:
+      - --output-file
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Path to the reference fasta file, it must be uncompressed and indexed
+        (use 'samtools faidx' for example).
+      synonyms:
+      - --reference-fasta-file
+      - -R
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Alignment slice specification, for example: chr1:65000-100000.'
+      synonyms:
+      - --region
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Output in SAM rather than BAM format. (default: false)'
+      synonyms:
+      - --sam-format
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Print SAM file header when output format is text SAM. (default:
+        false)'
+      synonyms:
+      - --sam-header
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)'
+      synonyms:
+      - -l
+      - --log-level
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Change validation stringency level: STRICT, LENIENT, SILENT. (default:
+        STRICT)'
+      synonyms:
+      - -v
+      - --validation-level
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
     help_flag: !Flag
       description: 'Print help and quit (default: false)'
       synonyms:
@@ -775,17 +780,20 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "Version 3.0-b127\n\nUsage: <main class> [options]\n A list of MD5\
-      \ checksums for which the sequences should be downloaded.\n  Options:    --destination-file,\
-      \ -F  Destination file.\n    --fasta-line-length     Wrap fasta lines accroding\
-      \ to this value. (default: 80)\n    --gzip, -z              Compress fasta with\
-      \ gzip. (default: false)\n    --ignore-not-found      Don't fail on not found\
-      \ sequences, just issue a warning. (default: false)\n    --input-file, -I  \
-      \      The path to the CRAM or BAM file to extract sequence MD5 checksums.\n\
-      \    -h, --help              Print help and quit (default: false)\n    -l, --log-level\
-      \         Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)\n\n"
-    generated_using: *id002
-  - *id003
+    help_text: "Version 3.0-b127\n\nUsage: <main class> [options]\n The paths to the\
+      \ CRAM or BAM files to uncompress. \n  Options:    --output-file           \
+      \    Path to the output BAM file. Omit for stdout.\n    --reference-fasta-file,\
+      \ -R  Path to the reference fasta file, it must be uncompressed and indexed\
+      \ (use 'samtools faidx' for example).\n    --region, -r                Alignment\
+      \ slice specification, for example: chr1:65000-100000.\n    --sam-format   \
+      \             Output in SAM rather than BAM format. (default: false)\n    --sam-header\
+      \                Print SAM file header when output format is text SAM. (default:\
+      \ false)\n    -h, --help                  Print help and quit (default: false)\n\
+      \    -l, --log-level             Change log level: DEBUG, INFO, WARNING, ERROR.\
+      \ (default: ERROR)\n    -v, --validation-level      Change validation stringency\
+      \ level: STRICT, LENIENT, SILENT. (default: STRICT)\n\n"
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -797,8 +805,9 @@ parent: &id001 !Command
     \   A tool to fix CRAM header without re-writing the whole file.\n    getref \
     \     Download reference sequences.\n    qstat       Quality score statistics.\n\
     \n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: 'Print help and quit (default: false)'
   synonyms:
@@ -814,4 +823,4 @@ help_text: "Version 3.0-b127\n\nUsage: <main class> [options]\n  Options:    --d
   \ or BAM file.\n    -h, --help               Print help and quit (default: false)\n\
   \    -l, --log-level          Change log level: DEBUG, INFO, WARNING, ERROR. (default:\
   \ ERROR)\n\n"
-generated_using: *id002
+generated_using: *id003

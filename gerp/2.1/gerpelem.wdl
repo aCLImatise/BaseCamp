@@ -5,28 +5,28 @@ task Gerpelem {
     Boolean? verbose_mode
     File? column_scores_filename
     String? c
-    String? s
+    Int? s
     String? suffix_naming_files
-    String? suffix_naming_file
+    File? suffix_naming_exclusion
     Int? minimum_element_length
     Int? maximum_element_length
-    String? inverse_rounding_tolerance
-    String? depth_threshold_shallow
-    String? penalty_coefficient_shallow
-    String? number_border_nucleotides
-    String? total_number_allowed
-    String? acceptable_false_positive
-    String? denominator_minimum_candidate
-    String? exponent_minimum_candidate
+    Int? inverse_rounding_tolerance
+    Float? depth_threshold_shallow
+    Float? penalty_coefficient_shallow
+    Int? number_border_nucleotides
+    Int? total_number_allowed
+    Float? acceptable_false_positive
+    Float? denominator_minimum_candidate
+    Float? exponent_minimum_candidate
   }
   command <<<
     gerpelem \
-      ~{true="-v" false="" verbose_mode} \
+      ~{if (verbose_mode) then "-v" else ""} \
       ~{if defined(column_scores_filename) then ("-f " +  '"' + column_scores_filename + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(suffix_naming_files) then ("-x " +  '"' + suffix_naming_files + '"') else ""} \
-      ~{if defined(suffix_naming_file) then ("-w " +  '"' + suffix_naming_file + '"') else ""} \
+      ~{if defined(suffix_naming_exclusion) then ("-w " +  '"' + suffix_naming_exclusion + '"') else ""} \
       ~{if defined(minimum_element_length) then ("-l " +  '"' + minimum_element_length + '"') else ""} \
       ~{if defined(maximum_element_length) then ("-L " +  '"' + maximum_element_length + '"') else ""} \
       ~{if defined(inverse_rounding_tolerance) then ("-t " +  '"' + inverse_rounding_tolerance + '"') else ""} \
@@ -43,8 +43,8 @@ task Gerpelem {
     column_scores_filename: "column scores filename"
     c: "[default = none]"
     s: "[default = 0]"
-    suffix_naming_files: "suffix for naming output files [default = \".elems\"]"
-    suffix_naming_file: "suffix for naming exclusion region file [default = no output]"
+    suffix_naming_files: "suffix for naming output files [default = \\\".elems\\\"]"
+    suffix_naming_exclusion: "suffix for naming exclusion region file [default = no output]"
     minimum_element_length: "minimum element length [default = 4]"
     maximum_element_length: "maximum element length [default = 2000]"
     inverse_rounding_tolerance: "inverse of the rounding tolerance [default = 10]"
@@ -55,5 +55,9 @@ task Gerpelem {
     acceptable_false_positive: "acceptable false positive rate [default = 0.05]"
     denominator_minimum_candidate: "denominator for minimum candidate element score formula [default = 10.0]"
     exponent_minimum_candidate: "exponent for minimum candidate element score formula [default = 1.15]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_suffix_naming_exclusion = "${in_suffix_naming_exclusion}"
   }
 }

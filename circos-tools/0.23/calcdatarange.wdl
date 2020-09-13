@@ -14,4 +14,7 @@ task Calcdatarange {
     cat: ""
     data_dot_txt: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

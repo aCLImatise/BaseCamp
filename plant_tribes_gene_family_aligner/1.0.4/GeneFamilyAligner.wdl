@@ -4,4 +4,7 @@ task GeneFamilyAligner {
   command <<<
     GeneFamilyAligner
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

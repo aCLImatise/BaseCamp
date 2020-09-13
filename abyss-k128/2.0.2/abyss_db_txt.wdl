@@ -1,14 +1,17 @@
 version 1.0
 
-task AbyssDbTxt {
+task Abyssdbtxt {
   input {
-    String sqlite_repository
+    String? e
   }
   command <<<
-    abyss-db-txt \
-      ~{sqlite_repository}
+    abyss_db_txt \
+      ~{if defined(e) then ("-e " +  '"' + e + '"') else ""}
   >>>
   parameter_meta {
-    sqlite_repository: ""
+    e: ":"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

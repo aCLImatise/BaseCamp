@@ -6,9 +6,12 @@ task Assemblerflow {
   }
   command <<<
     assemblerflow \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     debug: "Set log to debug mode"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

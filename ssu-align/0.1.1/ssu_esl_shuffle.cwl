@@ -1,87 +1,105 @@
 class: CommandLineTool
 id: ../../../ssu_esl_shuffle.cwl
 inputs:
-- id: direct_output_data
+- id: in_direct_output_data
   doc: ': direct output data to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: generate_n_samples
+- id: in_generate_n_samples
   doc: ': generate <n> samples (per input seq/msa)  [1]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -N
-- id: truncate_outputs_length
+- id: in_truncate_outputs_length
   doc: ': truncate outputs to length <n>  [0]  (n>=0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -L
-- id: shuffle_preserving_composition
+- id: in_shuffle_preserving_composition
   doc: ': shuffle preserving monoresidue composition  [default]'
   type: boolean
   inputBinding:
     prefix: -m
-- id: shuffle_preserving_mono
+- id: in_shuffle_preserving_
   doc: ': shuffle preserving mono- and di-residue composition'
   type: boolean
   inputBinding:
     prefix: -d
-- id: shuffle_nonoverlapping_nmers
+- id: in_shuffle_nonoverlapping_nmers
   doc: ': shuffle nonoverlapping <n>-mers  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -k
-- id: generate_markov_properties
+- id: in_generate_order_markov
   doc: ': generate with 0th order Markov properties per input'
   type: boolean
   inputBinding:
     prefix: '-0'
-- id: generate_st_order
+- id: in_generate_st_order
   doc: ': generate with 1st order Markov properties per input'
   type: boolean
   inputBinding:
     prefix: '-1'
-- id: _reverse_input
+- id: in__reverse_input
   doc: ': reverse each input'
   type: boolean
   inputBinding:
     prefix: -r
-- id: regionally_shuffle_inputs
+- id: in_regionally_shuffle_inputs
   doc: ': regionally shuffle inputs in window size <n>  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -w
-- id: rna
+- id: in_rna
   doc: ': generate RNA sequence  [default]'
   type: boolean
   inputBinding:
     prefix: --rna
-- id: dna
+- id: in_dna
   doc: ': generate DNA sequence'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: amino
+- id: in_amino
   doc: ': generate protein sequence'
   type: boolean
   inputBinding:
     prefix: --amino
-- id: seed
+- id: in_seed
   doc: ": set random number generator's seed to <n>  [0]  (n>=0)"
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: in_format
+- id: in_in_format
   doc: ': specify that input file is in format <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --informat
-- id: seq_file
+- id: in_g
   doc: ''
-  type: string
+  type: boolean
   inputBinding:
-    position: 0
-outputs: []
+    prefix: -G
+- id: in_q
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -Q
+- id: in_a
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -A
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_direct_output_data
+  doc: ': direct output data to file <f>'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_direct_output_data)
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-shuffle

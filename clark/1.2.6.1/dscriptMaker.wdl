@@ -4,4 +4,7 @@ task DscriptMaker {
   command <<<
     dscriptMaker
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

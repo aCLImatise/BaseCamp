@@ -1,4 +1,7 @@
-&id002 !Command
+&id003 !Command
+command:
+- biscuit
+- align
 positional:
 - !Positional
   description: ''
@@ -24,18 +27,18 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: 'For PE, read 1 to parent, read 2 to daughter (1, directional library);
-    read1 and read 2 to both (0: default, nondirectional library); For SE, parent
-    (1); daughter (3); both (0, default); Def: parent (bisulfite treated strand),
-    daughter (synthesized strand)'
+  description: "For PE, read 1 to parent, read 2 to daughter (1, directional library);\n\
+    read1 and read 2 to both (0: default, nondirectional library); For SE, parent\
+    \ (1);\ndaughter (3); both (0, default); Def: parent (bisulfite\ntreated strand),\
+    \ daughter (synthesized strand)"
   synonyms:
   - -b
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: '1: BSW strand; 3: BSC strand; 0 (default): both; (libraries targeting
-    either BSW or BSC are unseen so far!)'
+  description: "1: BSW strand; 3: BSC strand; 0 (default): both; (libraries\ntargeting\
+    \ either BSW or BSC are unseen so far!)"
   synonyms:
   - -f
   args: !SimpleFlagArg
@@ -63,7 +66,7 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: look for internal seeds inside a seed longer than {-k} * FLOAT [1.5]
+  description: "look for internal seeds inside a seed longer than\n{-k} * FLOAT [1.5]"
   synonyms:
   - -r
   args: !SimpleFlagArg
@@ -119,8 +122,8 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: drop chains shorter than FLOAT fraction of the longest overlapping
-    chain [0.50]
+  description: "drop chains shorter than FLOAT fraction of the longest\noverlapping\
+    \ chain [0.50]"
   synonyms:
   - -D
   args: !SimpleFlagArg
@@ -159,8 +162,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: score for a sequence match, which scales options -TdBOELU unless overridden
-    [1]
+  description: "score for a sequence match, which scales options -TdBOELU\nunless\
+    \ overridden [1]"
   synonyms:
   - -A
   args: !SimpleFlagArg
@@ -184,7 +187,7 @@ named:
     separator: ','
   optional: true
 - !Flag
-  description: gap extension penalty; a gap of size k cost '{-O} + {-E}*k' [1,1]
+  description: "gap extension penalty; a gap of size k cost\n'{-O} + {-E}*k' [1,1]"
   synonyms:
   - -E
   args: !OptionalFlagArg
@@ -236,15 +239,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: insert STR to header if it starts with @; or insert lines in FILE [null]
+  description: "insert STR to header if it starts with @; or insert lines\nin FILE\
+    \ [null]"
   synonyms:
   - -H
   args: !SimpleFlagArg
     name: STR/FILE
   optional: true
 - !Flag
-  description: treat ALT contigs as part of the primary assembly (i.e. ignore <idxbase>.alt
-    file)
+  description: "treat ALT contigs as part of the primary assembly (i.e.\nignore <idxbase>.alt\
+    \ file)"
   synonyms:
   - -j
   args: !EmptyFlagArg {}
@@ -256,7 +260,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'verbose level:  1=error, 2=warning, 3=message, 4+=debugging [3]'
+  description: "verbose level:\n1=error, 2=warning, 3=message, 4+=debugging [3]"
   synonyms:
   - -v
   args: !SimpleFlagArg
@@ -310,9 +314,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: specify the mean, standard deviation (10% of the mean if absent), max
-    (4 sigma from the mean if absent) and min of insert size distribution.FR orientation
-    only [inferred]
+  description: "specify the mean, standard deviation (10% of the mean\nif absent),\
+    \ max (4 sigma from the mean if absent) and min\nof insert size distribution.FR\
+    \ orientation only [inferred]\n"
   synonyms:
   - -I
   args: !OptionalFlagArg
@@ -323,165 +327,17 @@ named:
     - INT
     separator: ','
   optional: true
-command:
-- biscuit
-- align
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - biscuit
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'BWT construction algorithm: bwtsw or is [auto]'
-      synonyms:
-      - -a
-      args: !SimpleFlagArg
-        name: STR
-      optional: true
-    - !Flag
-      description: prefix of the index [same as fasta name]
-      synonyms:
-      - -p
-      args: !SimpleFlagArg
-        name: STR
-      optional: true
-    - !Flag
-      description: 'index files named as <in.fasta>.64.* instead of <in.fasta>.* '
-      synonyms:
-      - '-6'
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - biscuit
-    - index
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "\nUsage:   biscuit index [-a bwtsw|is] [-c] <in.fasta>\n\nOptions:\
-      \ -a STR    BWT construction algorithm: bwtsw or is [auto]\n         -p STR\
-      \    prefix of the index [same as fasta name]\n         -6        index files\
-      \ named as <in.fasta>.64.* instead of <in.fasta>.* \n\nWarning: `-a bwtsw' does\
-      \ not work for short genomes, while `-a is' and\n         `-a div' do not work\
-      \ not for long genomes. Please choose `-a'\n         according to the length\
-      \ of the genome.\n\n"
-    generated_using: &id004 []
-  - *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: in.bam
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: ref.fa
-      optional: false
-    named:
-    - !Flag
-      description: :pos     go directly to this position
-      synonyms:
-      - -g
-      args: !SimpleFlagArg
-        name: chr
-      optional: true
-    - !Flag
-      description: max number of reads to load per position [50]
-      synonyms:
-      - -m
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: highlight the read(s) with the read name
-      synonyms:
-      - -n
-      args: !SimpleFlagArg
-        name: name
-      optional: true
-    - !Flag
-      description: flanking sequence length [10]
-      synonyms:
-      - -f
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    command:
-    - biscuit
-    - tview
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: this help.
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "\nUsage: biscuit tview [options] in.bam ref.fa \nInput options:\n\
-      \     -g chr:pos     go directly to this position\n     -m INT         max number\
-      \ of reads to load per position [50]\n     -n name        highlight the read(s)\
-      \ with the read name\n     -f INT         flanking sequence length [10]\n  \
-      \   -h             this help.\n\n"
-    generated_using: &id003
-    - -h
-  - !Command
-    positional:
-    - !Positional
-      description: optional output bam, work with -y or -c
-      position: 0
-      name: OUTPUT
-      optional: false
-    named:
-    - !Flag
-      description: region (optional, chrX:123-456 if missing, process the whole bam).
-      synonyms:
-      - -g
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: append count of C>T (YC tag) and G>A (YG tag) in output bam.
-      synonyms:
-      - -y
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: correct bsstrand in the output bam, YD tag will be replaced if
-        existent and created if not.
-      synonyms:
-      - -c
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - biscuit
-    - bsstrand
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: this help.
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "\nUsage: bsstrand [options] ref.fa in.bam [out.bam]\nInput options:\n\
-      \ OUTPUT        optional output bam, work with -y or -c\n     -g        region\
-      \ (optional, chrX:123-456 if missing, process the whole bam).\n     -y     \
-      \   append count of C>T (YC tag) and G>A (YG tag) in output bam.\n     -c  \
-      \      correct bsstrand in the output bam, YD tag will be replaced if existent\
-      \ and created if not.\n     -h        this help.\n\n"
-    generated_using: *id003
-  - !Command
+    - bsconv
     positional:
     - !Positional
       description: ''
@@ -559,11 +415,9 @@ parent: &id001 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - biscuit
-    - bsconv
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: this help.
       synonyms:
@@ -580,8 +434,195 @@ parent: &id001 !Command
       \     -t        filter: maximum CpT retention [Inf]\n     -b        print in\
       \ tab, CpA_R, CpA_C, CpC_R, CpC_C, CpG_R, CpG_C, CpT_R, CpT_C\n     -v     \
       \   show filtered instead of remained [False]\n     -h        this help.\n\n"
-    generated_using: *id003
+    generated_using: &id002
+    - -h
   - !Command
+    command:
+    - biscuit
+    - epiread
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: epiread
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: ref.fa
+      optional: true
+    - !Positional
+      description: ''
+      position: 2
+      name: in.bam
+      optional: true
+    named:
+    - !Flag
+      description: bed input for SNP display in epiread output [no SNP]
+      synonyms:
+      - -B
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: region (optional, if not specified the whole bam will be processed).
+      synonyms:
+      - -g
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: step of window dispatching [100000].
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: number of threads [3].
+      synonyms:
+      - -q
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: output file [stdout]
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: pairwise mode [off]
+      synonyms:
+      - -P
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: NOMe-seq mode [off]
+      synonyms:
+      - -N
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: verbose (print additional info for diagnosis).
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: minimum mapping quality [40].
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: max cytosine retention in a read [999999].
+      synonyms:
+      - -t
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: minimum read length [10].
+      synonyms:
+      - -l
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: NO filtering secondary mapping.
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: NO filtering of duplicate.
+      synonyms:
+      - -u
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: NO filtering of improper pair (!BAM_FPROPER_PAIR).
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: maximum NM tag [999999].
+      synonyms:
+      - -n
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: this help.
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "\nConvert BAM to epiread output.\nUsage: epiread [options] [ref.fa]\
+      \ [in.bam]\nOptions:\n\n     -B        bed input for SNP display in epiread\
+      \ output [no SNP]\n     -g        region (optional, if not specified the whole\
+      \ bam will be processed).\n     -s        step of window dispatching [100000].\n\
+      \     -q        number of threads [3].\n\nOutputing format:\n\n     -o     \
+      \   output file [stdout]\n     -P        pairwise mode [off]\n     -N      \
+      \  NOMe-seq mode [off]\n     -v        verbose (print additional info for diagnosis).\n\
+      \nFiltering:\n\n     -m        minimum mapping quality [40].\n     -t      \
+      \  max cytosine retention in a read [999999].\n     -l        minimum read length\
+      \ [10].\n     -c        NO filtering secondary mapping.\n     -u        NO filtering\
+      \ of duplicate.\n     -p        NO filtering of improper pair (!BAM_FPROPER_PAIR).\n\
+      \     -n        maximum NM tag [999999].\n     -h        this help.\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - biscuit
+    - bsstrand
+    positional:
+    - !Positional
+      description: optional output bam, work with -y or -c
+      position: 0
+      name: OUTPUT
+      optional: false
+    named:
+    - !Flag
+      description: region (optional, chrX:123-456 if missing, process the whole bam).
+      synonyms:
+      - -g
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: append count of C>T (YC tag) and G>A (YG tag) in output bam.
+      synonyms:
+      - -y
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: correct bsstrand in the output bam, YD tag will be replaced if
+        existent and created if not.
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: this help.
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "\nUsage: bsstrand [options] ref.fa in.bam [out.bam]\nInput options:\n\
+      \ OUTPUT        optional output bam, work with -y or -c\n     -g        region\
+      \ (optional, chrX:123-456 if missing, process the whole bam).\n     -y     \
+      \   append count of C>T (YC tag) and G>A (YG tag) in output bam.\n     -c  \
+      \      correct bsstrand in the output bam, YD tag will be replaced if existent\
+      \ and created if not.\n     -h        this help.\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - biscuit
+    - cinread
     positional:
     - !Positional
       description: ''
@@ -612,9 +653,9 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'content to print, ","-delimited: QNAME, QPAIR, STRAND, BSSTRAND,
-        MAPQ QBEG, QEND, CHRM, CRPOS, CGRPOS CQPOS, CRBASE, CCTXT, CQBASE, CRETENTION
-        [QNAME,QPAIR,BSSTRAND,CRBASE,CQBASE]'
+      description: "content to print, \",\"-delimited:\nQNAME, QPAIR, STRAND, BSSTRAND,\
+        \ MAPQ\nQBEG, QEND, CHRM, CRPOS, CGRPOS\nCQPOS, CRBASE, CCTXT, CQBASE, CRETENTION\n\
+        [QNAME,QPAIR,BSSTRAND,CRBASE,CQBASE]"
       synonyms:
       - -p
       args: !EmptyFlagArg {}
@@ -631,11 +672,9 @@ parent: &id001 !Command
       - -o
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - biscuit
-    - cinread
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: this help.
       synonyms:
@@ -651,8 +690,97 @@ parent: &id001 !Command
       \              CQPOS, CRBASE, CCTXT, CQBASE, CRETENTION\n\n               [QNAME,QPAIR,BSSTRAND,CRBASE,CQBASE]\n\
       \n     -s        consider secondary mapping.\n     -o        output.\n     -h\
       \        this help.\n\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
+    command:
+    - biscuit
+    - vcf2bed
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: vcf
+      optional: false
+    named:
+    - !Flag
+      description: extract type {c, cg, ch, hcg, gch, snp} [CG]
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: STRING
+      optional: true
+    - !Flag
+      description: minimum coverage [3]
+      synonyms:
+      - -k
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: sample, (takes "FIRST", "LAST", "ALL", or specific sample names
+        separated by ",")[FIRST]
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: STRING
+      optional: true
+    - !Flag
+      description: show context (reference base, context group {CG,CHG,CHH}, 2-base
+        {CA,CC,CG,CT} and 5-base context) before beta value and coverage column
+      synonyms:
+      - -e
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: this help.
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "vcf2bed: invalid option -- '-'\n\nUsage: biscuit vcf2bed [options]\
+      \ vcf \nInput options:\n     -t STRING extract type {c, cg, ch, hcg, gch, snp}\
+      \ [CG]\n     -k INT    minimum coverage [3]\n     -s STRING sample, (takes \"\
+      FIRST\", \"LAST\", \"ALL\", or specific sample names separated by \",\")[FIRST]\n\
+      \     -e        show context (reference base, context group {CG,CHG,CHH}, 2-base\
+      \ {CA,CC,CG,CT} and 5-base context) before beta value and coverage column\n\
+      \     -h        this help.\n\nUnrecognized option: ?.\n"
+    generated_using:
+    - --help
+  - *id003
+  - !Command
+    command:
+    - biscuit
+    - asm
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: input.epiread
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: this help.
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Please provide input epiread.\n\nUsage: biscuit asm [options] <input.epiread>\n\
+      \     -h        this help.\n\n"
+    generated_using: &id004 []
+  - !Command
+    command:
+    - biscuit
+    - pileup
     positional:
     - !Positional
       description: ''
@@ -833,11 +961,9 @@ parent: &id001 !Command
       - -Q
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - biscuit
-    - pileup
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: this help.
       synonyms:
@@ -869,49 +995,54 @@ parent: &id001 !Command
       \ [0.001].\n     -C        contamination rate [0.010].\n     -P        prior\
       \ probability for heterozygous variant [0.333].\n     -Q        prior probability\
       \ for homozygous variant [0.333].\n     -h        this help.\n\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
+    command:
+    - biscuit
+    - tview
     positional:
     - !Positional
       description: ''
       position: 0
-      name: vcf
+      name: in.bam
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: ref.fa
       optional: false
     named:
     - !Flag
-      description: extract type {c, cg, ch, hcg, gch, snp} [CG]
+      description: :pos     go directly to this position
       synonyms:
-      - -t
+      - -g
       args: !SimpleFlagArg
-        name: STRING
+        name: chr
       optional: true
     - !Flag
-      description: minimum coverage [3]
+      description: max number of reads to load per position [50]
       synonyms:
-      - -k
+      - -m
       args: !SimpleFlagArg
         name: INT
       optional: true
     - !Flag
-      description: sample, (takes "FIRST", "LAST", "ALL", or specific sample names
-        separated by ",")[FIRST]
+      description: highlight the read(s) with the read name
       synonyms:
-      - -s
+      - -n
       args: !SimpleFlagArg
-        name: STRING
+        name: name
       optional: true
     - !Flag
-      description: show context (reference base, context group {CG,CHG,CHH}, 2-base
-        {CA,CC,CG,CT} and 5-base context) before beta value and coverage column
+      description: flanking sequence length [10]
       synonyms:
-      - -e
-      args: !EmptyFlagArg {}
+      - -f
+      args: !SimpleFlagArg
+        name: INT
       optional: true
-    command:
-    - biscuit
-    - vcf2bed
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: this help.
       synonyms:
@@ -920,16 +1051,88 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "vcf2bed: invalid option -- '-'\n\nUsage: biscuit vcf2bed [options]\
-      \ vcf \nInput options:\n     -t STRING extract type {c, cg, ch, hcg, gch, snp}\
-      \ [CG]\n     -k INT    minimum coverage [3]\n     -s STRING sample, (takes \"\
-      FIRST\", \"LAST\", \"ALL\", or specific sample names separated by \",\")[FIRST]\n\
-      \     -e        show context (reference base, context group {CG,CHG,CHH}, 2-base\
-      \ {CA,CC,CG,CT} and 5-base context) before beta value and coverage column\n\
-      \     -h        this help.\n\nUnrecognized option: ?.\n"
-    generated_using:
-    - --help
+    help_text: "\nUsage: biscuit tview [options] in.bam ref.fa \nInput options:\n\
+      \     -g chr:pos     go directly to this position\n     -m INT         max number\
+      \ of reads to load per position [50]\n     -n name        highlight the read(s)\
+      \ with the read name\n     -f INT         flanking sequence length [10]\n  \
+      \   -h             this help.\n\n"
+    generated_using: *id002
   - !Command
+    command:
+    - biscuit
+    - index
+    positional: []
+    named:
+    - !Flag
+      description: 'BWT construction algorithm: bwtsw or is [auto]'
+      synonyms:
+      - -a
+      args: !SimpleFlagArg
+        name: STR
+      optional: true
+    - !Flag
+      description: prefix of the index [same as fasta name]
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: STR
+      optional: true
+    - !Flag
+      description: index files named as <in.fasta>.64.* instead of <in.fasta>.*
+      synonyms:
+      - '-6'
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nUsage:   biscuit index [-a bwtsw|is] [-c] <in.fasta>\n\nOptions:\
+      \ -a STR    BWT construction algorithm: bwtsw or is [auto]\n         -p STR\
+      \    prefix of the index [same as fasta name]\n         -6        index files\
+      \ named as <in.fasta>.64.* instead of <in.fasta>.* \n\nWarning: `-a bwtsw' does\
+      \ not work for short genomes, while `-a is' and\n         `-a div' do not work\
+      \ not for long genomes. Please choose `-a'\n         according to the length\
+      \ of the genome.\n\n"
+    generated_using: *id004
+  - !Command
+    command:
+    - biscuit
+    - rectangle
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: ref.fa
+      optional: true
+    named:
+    - !Flag
+      description: output file [stdout]
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: this help.
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "\nConvert epiread into a rectanglular matrix.\nUsage: biscuit rectangle\
+      \ [options] [ref.fa] [.epiread]\nOptions:\n\n     -o        output file [stdout]\n\
+      \     -h        this help.\n\n"
+    generated_using: *id004
+  - !Command
+    command:
+    - biscuit
+    - mergecg
     positional:
     - !Positional
       description: fai-indexed fasta
@@ -937,9 +1140,9 @@ parent: &id001 !Command
       name: REF
       optional: false
     - !Positional
-      description: sorted bed file, starting from column 4,5, we have alternating
-        beta value and coverage for each sample. This is what output from biscuit
-        vcf2bed without -e.
+      description: "sorted bed file, starting from column 4,5, we have alternating\n\
+        beta value and coverage for each sample. This is what output from\nbiscuit\
+        \ vcf2bed without -e."
       position: 1
       name: BED
       optional: false
@@ -951,18 +1154,16 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: minimum depth after merging (0). This applies to the maximum depth
-        across samples.
+      description: "minimum depth after merging (0). This applies to the maximum depth\n\
+        across samples."
       synonyms:
       - -k
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - biscuit
-    - mergecg
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: this help.
       synonyms:
@@ -979,196 +1180,8 @@ parent: &id001 !Command
       \ mode, only merge C,G both in HCGD context\n     -k INT    minimum depth after\
       \ merging (0). This applies to the maximum depth\n               across samples.\n\
       \     -h        this help.\n\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: epiread
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: ref.fa
-      optional: true
-    - !Positional
-      description: ''
-      position: 2
-      name: in.bam
-      optional: true
-    named:
-    - !Flag
-      description: bed input for SNP display in epiread output [no SNP]
-      synonyms:
-      - -B
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: region (optional, if not specified the whole bam will be processed).
-      synonyms:
-      - -g
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: step of window dispatching [100000].
-      synonyms:
-      - -s
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: number of threads [3].
-      synonyms:
-      - -q
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: output file [stdout]
-      synonyms:
-      - -o
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: pairwise mode [off]
-      synonyms:
-      - -P
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: NOMe-seq mode [off]
-      synonyms:
-      - -N
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: verbose (print additional info for diagnosis).
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: minimum mapping quality [40].
-      synonyms:
-      - -m
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: max cytosine retention in a read [999999].
-      synonyms:
-      - -t
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: minimum read length [10].
-      synonyms:
-      - -l
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: NO filtering secondary mapping.
-      synonyms:
-      - -c
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: NO filtering of duplicate.
-      synonyms:
-      - -u
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: NO filtering of improper pair (!BAM_FPROPER_PAIR).
-      synonyms:
-      - -p
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: maximum NM tag [999999].
-      synonyms:
-      - -n
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - biscuit
-    - epiread
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: this help.
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "\nConvert BAM to epiread output.\nUsage: epiread [options] [ref.fa]\
-      \ [in.bam]\nOptions:\n\n     -B        bed input for SNP display in epiread\
-      \ output [no SNP]\n     -g        region (optional, if not specified the whole\
-      \ bam will be processed).\n     -s        step of window dispatching [100000].\n\
-      \     -q        number of threads [3].\n\nOutputing format:\n\n     -o     \
-      \   output file [stdout]\n     -P        pairwise mode [off]\n     -N      \
-      \  NOMe-seq mode [off]\n     -v        verbose (print additional info for diagnosis).\n\
-      \nFiltering:\n\n     -m        minimum mapping quality [40].\n     -t      \
-      \  max cytosine retention in a read [999999].\n     -l        minimum read length\
-      \ [10].\n     -c        NO filtering secondary mapping.\n     -u        NO filtering\
-      \ of duplicate.\n     -p        NO filtering of improper pair (!BAM_FPROPER_PAIR).\n\
-      \     -n        maximum NM tag [999999].\n     -h        this help.\n\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: ref.fa
-      optional: true
-    named:
-    - !Flag
-      description: output file [stdout]
-      synonyms:
-      - -o
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - biscuit
-    - rectangle
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: this help.
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "\nConvert epiread into a rectanglular matrix.\nUsage: biscuit rectangle\
-      \ [options] [ref.fa] [.epiread]\nOptions:\n\n     -o        output file [stdout]\n\
-      \     -h        this help.\n\n"
-    generated_using: *id004
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: input.epiread
-      optional: false
-    named: []
-    command:
-    - biscuit
-    - asm
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: this help.
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Please provide input epiread.\n\nUsage: biscuit asm [options] <input.epiread>\n\
-      \     -h        this help.\n\n"
-    generated_using: *id004
+    generated_using: *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -1187,6 +1200,7 @@ parent: &id001 !Command
     \     asm           test allele specific methylation\n\n"
   generated_using: *id004
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

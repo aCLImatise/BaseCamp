@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../hmmpress.cwl
 inputs:
-- id: force_overwrite_files
+- id: in_force_overwrite_files
   doc: ': force: overwrite any previous pressed files'
   type: boolean
   inputBinding:
     prefix: -f
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hmmpress

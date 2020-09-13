@@ -4,4 +4,7 @@ task CactusSplitAlignmentOverlaps {
   command <<<
     cactus_splitAlignmentOverlaps
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

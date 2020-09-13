@@ -3,49 +3,49 @@ version 1.0
 task Hmmbuild {
   input {
     String? name_hmm_s
-    String? direct_summary_output
-    String? resave_annotated_possibly
+    File? direct_summary_output
+    File? resave_annotated_modified
     Boolean? amino
     Boolean? dna
     Boolean? rna
     Boolean? fast
     Boolean? hand
-    String? sym_frac
-    String? frag_thresh
+    Float? sym_frac
+    Float? frag_thresh
     Boolean? wpb
     Boolean? wgs_c
     Boolean? w_blosum
     Boolean? w_none
     Boolean? w_given
-    String? wid
+    Float? wid
     Boolean? e_ent
     Boolean? ec_lust
     Boolean? en_one
     String? e_set
     String? ere
-    String? e_sigma
-    String? eid
+    Float? e_sigma
+    Float? eid
     Boolean? p_none
     Boolean? pla_place
     Boolean? single_mx
     String? popen
     String? p_extend
     String? mx
-    String? mx_file
-    String? eml
-    String? emn
-    String? evl
-    String? evn
-    String? efl
-    String? efn
-    String? eft
-    String? cpu
+    File? mx_file
+    Int? eml
+    Int? emn
+    Int? evl
+    Int? evn
+    Int? efl
+    Int? efn
+    Float? eft
+    Int? cpu
     Boolean? stall
     String? in_format
-    String? seed
-    String? w_beta
-    String? w_length
-    String? max_insert_len
+    Int? seed
+    Int? w_beta
+    Int? w_length
+    Int? max_insert_len
     Boolean? options
     String hmm_file_out
     String msa_file
@@ -56,30 +56,30 @@ task Hmmbuild {
       ~{msa_file} \
       ~{if defined(name_hmm_s) then ("-n " +  '"' + name_hmm_s + '"') else ""} \
       ~{if defined(direct_summary_output) then ("-o " +  '"' + direct_summary_output + '"') else ""} \
-      ~{if defined(resave_annotated_possibly) then ("-O " +  '"' + resave_annotated_possibly + '"') else ""} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--fast" false="" fast} \
-      ~{true="--hand" false="" hand} \
+      ~{if defined(resave_annotated_modified) then ("-O " +  '"' + resave_annotated_modified + '"') else ""} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (fast) then "--fast" else ""} \
+      ~{if (hand) then "--hand" else ""} \
       ~{if defined(sym_frac) then ("--symfrac " +  '"' + sym_frac + '"') else ""} \
       ~{if defined(frag_thresh) then ("--fragthresh " +  '"' + frag_thresh + '"') else ""} \
-      ~{true="--wpb" false="" wpb} \
-      ~{true="--wgsc" false="" wgs_c} \
-      ~{true="--wblosum" false="" w_blosum} \
-      ~{true="--wnone" false="" w_none} \
-      ~{true="--wgiven" false="" w_given} \
+      ~{if (wpb) then "--wpb" else ""} \
+      ~{if (wgs_c) then "--wgsc" else ""} \
+      ~{if (w_blosum) then "--wblosum" else ""} \
+      ~{if (w_none) then "--wnone" else ""} \
+      ~{if (w_given) then "--wgiven" else ""} \
       ~{if defined(wid) then ("--wid " +  '"' + wid + '"') else ""} \
-      ~{true="--eent" false="" e_ent} \
-      ~{true="--eclust" false="" ec_lust} \
-      ~{true="--enone" false="" en_one} \
+      ~{if (e_ent) then "--eent" else ""} \
+      ~{if (ec_lust) then "--eclust" else ""} \
+      ~{if (en_one) then "--enone" else ""} \
       ~{if defined(e_set) then ("--eset " +  '"' + e_set + '"') else ""} \
       ~{if defined(ere) then ("--ere " +  '"' + ere + '"') else ""} \
       ~{if defined(e_sigma) then ("--esigma " +  '"' + e_sigma + '"') else ""} \
       ~{if defined(eid) then ("--eid " +  '"' + eid + '"') else ""} \
-      ~{true="--pnone" false="" p_none} \
-      ~{true="--plaplace" false="" pla_place} \
-      ~{true="--singlemx" false="" single_mx} \
+      ~{if (p_none) then "--pnone" else ""} \
+      ~{if (pla_place) then "--plaplace" else ""} \
+      ~{if (single_mx) then "--singlemx" else ""} \
       ~{if defined(popen) then ("--popen " +  '"' + popen + '"') else ""} \
       ~{if defined(p_extend) then ("--pextend " +  '"' + p_extend + '"') else ""} \
       ~{if defined(mx) then ("--mx " +  '"' + mx + '"') else ""} \
@@ -92,18 +92,18 @@ task Hmmbuild {
       ~{if defined(efn) then ("--EfN " +  '"' + efn + '"') else ""} \
       ~{if defined(eft) then ("--Eft " +  '"' + eft + '"') else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
-      ~{true="--stall" false="" stall} \
+      ~{if (stall) then "--stall" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(w_beta) then ("--w_beta " +  '"' + w_beta + '"') else ""} \
       ~{if defined(w_length) then ("--w_length " +  '"' + w_length + '"') else ""} \
       ~{if defined(max_insert_len) then ("--maxinsertlen " +  '"' + max_insert_len + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     name_hmm_s: ": name the HMM <s>"
     direct_summary_output: ": direct summary output to file <f>, not stdout"
-    resave_annotated_possibly: ": resave annotated, possibly modified MSA to file <f>"
+    resave_annotated_modified: ": resave annotated, possibly modified MSA to file <f>"
     amino: ": input alignment is protein sequence data"
     dna: ": input alignment is DNA sequence data"
     rna: ": input alignment is RNA sequence data"
@@ -143,10 +143,14 @@ task Hmmbuild {
     in_format: ": assert input alifile is in format <s> (no autodetect)"
     seed: ": set RNG seed to <n> (if 0: one-time arbitrary seed)  [42]"
     w_beta: ": tail mass at which window length is determined"
-    w_length: ": window length "
+    w_length: ": window length"
     max_insert_len: ": pretend all inserts are length <= <n>"
     options: ""
     hmm_file_out: ""
     msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_direct_summary_output = "${in_direct_summary_output}"
   }
 }

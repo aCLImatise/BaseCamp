@@ -1,109 +1,117 @@
 class: CommandLineTool
 id: ../../../lohhla.cwl
 inputs:
-- id: patient_id
+- id: in_patient_id
   doc: patient ID
   type: string
   inputBinding:
     prefix: --patientId
-- id: output_dir
+- id: in_output_dir
   doc: location of output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outputDir
-- id: normal_bam_file
-  doc: normal BAM file can be FALSE to run without normal sample
-  type: string
+- id: in_normal_bam_file
+  doc: "normal BAM file\ncan be FALSE to run without normal sample"
+  type: File
   inputBinding:
     prefix: --normalBAMfile
-- id: bam_dir
+- id: in_bam_dir
   doc: location of all BAMs to test
   type: string
   inputBinding:
     prefix: --BAMDir
-- id: hla_path
+- id: in_hla_path
   doc: location to patient HLA calls
   type: string
   inputBinding:
     prefix: --hlaPath
-- id: hla_fast_a_loc
+- id: in_hla_fast_a_loc
   doc: location of HLA FASTA [default= ~/lohhla/data/hla_all.fasta]
   type: string
   inputBinding:
     prefix: --HLAfastaLoc
-- id: copy_num_loc
-  doc: location to patient purity and ploidy output can be FALSE to only estimate
-    allelic imbalance
+- id: in_copy_num_loc
+  doc: "location to patient purity and ploidy output\ncan be FALSE to only estimate\
+    \ allelic imbalance"
   type: string
   inputBinding:
     prefix: --CopyNumLoc
-- id: override_dir
+- id: in_override_dir
   doc: location of flagstat information if already run [default= FALSE]
   type: string
   inputBinding:
     prefix: --overrideDir
-- id: min_coverage_filter
+- id: in_min_coverage_filter
   doc: minimum coverage at mismatch site [default= 30]
-  type: string
+  type: long
   inputBinding:
     prefix: --minCoverageFilter
-- id: km_er_size
+- id: in_km_er_size
   doc: size of kmers to fish with [default= 50]
-  type: string
+  type: long
   inputBinding:
     prefix: --kmerSize
-- id: num_mismatch
+- id: in_num_mismatch
   doc: number of mismatches allowed in read to map to HLA allele [default= 1]
-  type: string
+  type: long
   inputBinding:
     prefix: --numMisMatch
-- id: mapping_step
+- id: in_mapping_step
   doc: does mapping to HLA alleles need to be done [default= TRUE]
   type: string
   inputBinding:
     prefix: --mappingStep
-- id: fishing_step
+- id: in_fishing_step
   doc: if mapping is performed, also look for fished reads matching kmers of size
     kmerSize [default= TRUE]
-  type: string
+  type: long
   inputBinding:
     prefix: --fishingStep
-- id: plotting_step
+- id: in_plotting_step
   doc: are plots made [default= TRUE]
   type: string
   inputBinding:
     prefix: --plottingStep
-- id: coverage_step
+- id: in_coverage_step
   doc: are coverage differences analyzed [default= TRUE]
   type: string
   inputBinding:
     prefix: --coverageStep
-- id: cleanup
+- id: in_cleanup
   doc: remove temporary files [default= TRUE]
   type: string
   inputBinding:
     prefix: --cleanUp
-- id: novo_dir
+- id: in_novo_dir
   doc: path to novoalign executable [default= ]
-  type: string
+  type: File
   inputBinding:
     prefix: --novoDir
-- id: g_atk_dir
+- id: in_g_atk_dir
   doc: path to GATK executable [default= ]
-  type: string
+  type: File
   inputBinding:
     prefix: --gatkDir
-- id: hla_exon_loc
+- id: in_hla_exon_loc
   doc: HLA exon boundaries for plotting [default= ~/lohhla/data/hla.dat]
   type: string
   inputBinding:
     prefix: --HLAexonLoc
-- id: ignore_warnings
+- id: in_ignore_warnings
   doc: continue running with warnings [default= TRUE]
   type: string
   inputBinding:
     prefix: --ignoreWarnings
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: location of output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - lohhla

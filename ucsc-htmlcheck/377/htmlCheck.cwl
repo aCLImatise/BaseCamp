@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../htmlCheck.cwl
 inputs:
-- id: how
-  doc: ''
+- id: in_not_valid_option
+  doc: not a valid option
   type: string
   inputBinding:
-    position: 0
-- id: url
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+    prefix: -h
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - htmlCheck

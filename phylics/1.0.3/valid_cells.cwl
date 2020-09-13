@@ -1,39 +1,42 @@
 class: CommandLineTool
 id: ../../../valid_cells.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: Verbose execution.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: sample_name
+- id: in_sample_name
   doc: Sample name
   type: string
   inputBinding:
     position: 0
-- id: results_dot_txt
+- id: in_results_dot_txt
   doc: Path to stats file
   type: string
   inputBinding:
     position: 1
-- id: seg_copy
+- id: in_seg_copy
   doc: Path to cnvs file
   type: string
   inputBinding:
     position: 2
-- id: interval_slash_value
-  doc: 'Interval of values (p1-p2) or single values (p) to be filtered out. At least
-    one interval/value must be specified. Intervals must be compliant to the following
-    format: p1-p2. Values must be compliant to the following format: p.'
-  type: long
+- id: in_interval_slash_value
+  doc: "Interval of values (p1-p2) or single values (p) to be\nfiltered out. At least\
+    \ one interval/value must be specified.\nIntervals must be compliant to the following\
+    \ format: p1-p2.\nValues must be compliant to the following format: p."
+  type: string
   inputBinding:
     position: 3
-- id: out_dir
+- id: in_out_dir
   doc: Path to the output directory
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - valid_cells

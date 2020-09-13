@@ -20,4 +20,7 @@ task SamtoolsTview {
     aln_dot_bam: ""
     ref_dot_fast_a: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

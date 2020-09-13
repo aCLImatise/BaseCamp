@@ -11,13 +11,16 @@ task BioformatsSnpeff2bed {
     bioformats snpeff2bed \
       ~{vcf_file} \
       ~{bed_file} \
-      ~{true="--bed3" false="" bed_three} \
-      ~{true="-v" false="" v}
+      ~{if (bed_three) then "--bed3" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     bed_three: "convert to the BED3 format"
     v: ""
     vcf_file: "an snpEff-annotated VCF file"
     bed_file: "the output BED file of annotated variants"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -6,34 +6,34 @@ task MauveAligner {
     String? mums
     String? no_recursion
     String? no_lcb_extension
-    String? seed_size
-    String? max_extension_iterations
+    Int? seed_size
+    Int? max_extension_iterations
     String? eliminate_inclusions
-    String? weight
+    Int? weight
     File? match_input
     Boolean? lcb_match_input
     File? lcb_input
     File? scratch_path
     File? id_matrix
-    String? island_size
+    Int? island_size
     File? island_output
-    String? backbone_size
-    String? max_backbone_gap
+    Int? backbone_size
+    Int? max_backbone_gap
     File? backbone_output
     File? coverage_output
     String? repeats
     File? output_guide_tree
     String? collinear
     String? no_gapped_alignment
-    String? max_gapped_aligner_length
-    String? min_recursive_gap_length
+    Int? max_gapped_aligner_length
+    Int? min_recursive_gap_length
     File? permutation_matrix_output
-    String? permutation_matrix_min_weight
+    Int? permutation_matrix_min_weight
     Directory? alignment_output_dir
     Directory? alignment_output_format
     File? output_alignment
-    String seq_n_filename
-    String s_mln_filename
+    File seq_n_filename
+    File s_mln_filename
   }
   command <<<
     mauveAligner \
@@ -48,7 +48,7 @@ task MauveAligner {
       ~{if defined(eliminate_inclusions) then ("--eliminate-inclusions " +  '"' + eliminate_inclusions + '"') else ""} \
       ~{if defined(weight) then ("--weight " +  '"' + weight + '"') else ""} \
       ~{if defined(match_input) then ("--match-input " +  '"' + match_input + '"') else ""} \
-      ~{true="--lcb-match-input" false="" lcb_match_input} \
+      ~{if (lcb_match_input) then "--lcb-match-input" else ""} \
       ~{if defined(lcb_input) then ("--lcb-input " +  '"' + lcb_input + '"') else ""} \
       ~{if defined(scratch_path) then ("--scratch-path " +  '"' + scratch_path + '"') else ""} \
       ~{if defined(id_matrix) then ("--id-matrix " +  '"' + id_matrix + '"') else ""} \
@@ -103,5 +103,13 @@ task MauveAligner {
     output_alignment: "Write out an XMFA format alignment to the designated file"
     seq_n_filename: ""
     s_mln_filename: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
+    File out_coverage_output = "${in_coverage_output}"
+    File out_output_guide_tree = "${in_output_guide_tree}"
+    File out_permutation_matrix_output = "${in_permutation_matrix_output}"
+    File out_output_alignment = "${in_output_alignment}"
   }
 }

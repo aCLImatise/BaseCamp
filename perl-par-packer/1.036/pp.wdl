@@ -4,4 +4,7 @@ task Pp {
   command <<<
     pp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

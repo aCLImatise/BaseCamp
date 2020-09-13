@@ -1,20 +1,10 @@
 version 1.0
 
-task SamFLAGinfo.pl.orig {
-  input {
-    String perl
-    String sam_flag_info_do_tpl
-    Int? var_int
-  }
+task SamFLAGinfopl {
   command <<<
-    samFLAGinfo.pl.orig \
-      ~{perl} \
-      ~{sam_flag_info_do_tpl} \
-      ~{var_int}
+    samFLAGinfo_pl
   >>>
-  parameter_meta {
-    perl: ""
-    sam_flag_info_do_tpl: ""
-    var_int: ""
+  output {
+    File out_stdout = stdout()
   }
 }

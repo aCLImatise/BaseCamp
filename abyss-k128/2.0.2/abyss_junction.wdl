@@ -1,6 +1,6 @@
 version 1.0
 
-task AbyssJunction {
+task Abyssjunction {
   input {
     File? ignore
     Boolean? verbose
@@ -8,16 +8,19 @@ task AbyssJunction {
     String scaffold
   }
   command <<<
-    abyss-junction \
+    abyss_junction \
       ~{overlap} \
       ~{scaffold} \
       ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     ignore: "ignore junctions seen in FILE"
     verbose: "display verbose output"
     overlap: "the overlap graph"
     scaffold: "a scaffold graph"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -20,4 +20,7 @@ task ClipedgeOUTPUT {
     var_input: ""
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,12 +1,12 @@
 version 1.0
 
-task MsisensorProMsi {
+task MsisensorproMsi {
   input {
-    Boolean? string_homopolymers_file
+    Boolean? string_homopolymers_microsatellites
     Boolean? string_normal_file
-    Boolean? string_tumor_file
+    Boolean? string_tumor_bam
     Boolean? string_output_prefix
-    Boolean? string_bed_file
+    Boolean? string_file_optional
     Boolean? double_fdr_threshold
     Boolean? int_coverage_threshold
     Boolean? int_coverage_normalization
@@ -22,32 +22,32 @@ task MsisensorProMsi {
     Boolean? int_output_site
   }
   command <<<
-    msisensor-pro msi \
-      ~{true="-d" false="" string_homopolymers_file} \
-      ~{true="-n" false="" string_normal_file} \
-      ~{true="-t" false="" string_tumor_file} \
-      ~{true="-o" false="" string_output_prefix} \
-      ~{true="-e" false="" string_bed_file} \
-      ~{true="-f" false="" double_fdr_threshold} \
-      ~{true="-c" false="" int_coverage_threshold} \
-      ~{true="-z" false="" int_coverage_normalization} \
-      ~{true="-r" false="" string_choose_format} \
-      ~{true="-p" false="" int_minimal_homopolymer} \
-      ~{true="-m" false="" int_maximal_homopolymer} \
-      ~{true="-s" false="" int_minimal_microsatellite} \
-      ~{true="-w" false="" int_maximal_microsatellite} \
-      ~{true="-u" false="" int_span_size} \
-      ~{true="-b" false="" int_threads_number} \
-      ~{true="-x" false="" int_output_homopolymer} \
-      ~{true="-y" false="" int_output_microsatellites} \
-      ~{true="-0" false="" int_output_site}
+    msisensor_pro msi \
+      ~{if (string_homopolymers_microsatellites) then "-d" else ""} \
+      ~{if (string_normal_file) then "-n" else ""} \
+      ~{if (string_tumor_bam) then "-t" else ""} \
+      ~{if (string_output_prefix) then "-o" else ""} \
+      ~{if (string_file_optional) then "-e" else ""} \
+      ~{if (double_fdr_threshold) then "-f" else ""} \
+      ~{if (int_coverage_threshold) then "-c" else ""} \
+      ~{if (int_coverage_normalization) then "-z" else ""} \
+      ~{if (string_choose_format) then "-r" else ""} \
+      ~{if (int_minimal_homopolymer) then "-p" else ""} \
+      ~{if (int_maximal_homopolymer) then "-m" else ""} \
+      ~{if (int_minimal_microsatellite) then "-s" else ""} \
+      ~{if (int_maximal_microsatellite) then "-w" else ""} \
+      ~{if (int_span_size) then "-u" else ""} \
+      ~{if (int_threads_number) then "-b" else ""} \
+      ~{if (int_output_homopolymer) then "-x" else ""} \
+      ~{if (int_output_microsatellites) then "-y" else ""} \
+      ~{if (int_output_site) then "-0" else ""}
   >>>
   parameter_meta {
-    string_homopolymers_file: "<string>   homopolymers and microsatellites file"
+    string_homopolymers_microsatellites: "<string>   homopolymers and microsatellites file"
     string_normal_file: "<string>   normal bam file with index"
-    string_tumor_file: "<string>   tumor  bam file with index"
+    string_tumor_bam: "<string>   tumor  bam file with index"
     string_output_prefix: "<string>   output prefix"
-    string_bed_file: "<string>   bed file, optional"
+    string_file_optional: "<string>   bed file, optional"
     double_fdr_threshold: "<double>   FDR threshold for somatic sites detection, default=0.05"
     int_coverage_threshold: "<int>      coverage threshold for msi analysis, WXS: 20; WGS: 15, default=1"
     int_coverage_normalization: "<int>      coverage normalization for paired tumor and normal data, 0: no; 1: yes, default=0"
@@ -61,5 +61,8 @@ task MsisensorProMsi {
     int_output_homopolymer: "<int>      output homopolymer only, 0: no; 1: yes, default=0"
     int_output_microsatellites: "<int>      output microsatellites only, 0: no; 1: yes, default=0"
     int_output_site: "<int>      output site have no read coverage, 1: no; 0: yes, default=0"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,22 +1,40 @@
 class: CommandLineTool
 id: ../../../cmfetch_key.cwl
 inputs:
-- id: cm_fetch
+- id: in_index
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --index
+- id: in_f
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -f
+- id: in_cm_fetch
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: cm_file
+- id: in_cm_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: key
+- id: in_keyfile
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_key
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cmfetch

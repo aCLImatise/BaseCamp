@@ -1,33 +1,36 @@
 class: CommandLineTool
 id: ../../../PATHOGIST_correlation.cwl
 inputs:
-- id: all_constraints
-  doc: add all constraints to the optimization problem, not just those with mixed
-    signs.
+- id: in_all_constraints
+  doc: "add all constraints to the optimization problem, not\njust those with mixed\
+    \ signs."
   type: boolean
   inputBinding:
     prefix: --all_constraints
-- id: method
-  doc: Method for correlation clustering
+- id: in_method
+  doc: "Method for correlation clustering\n"
   type: string
   inputBinding:
     prefix: --method
-- id: distance_matrix
+- id: in_distance_matrix
   doc: path to the distance matrix file
   type: string
   inputBinding:
     position: 0
-- id: threshold
+- id: in_threshold
   doc: threshold value for correlation
   type: string
   inputBinding:
     position: 1
-- id: output_path
+- id: in_output_path
   doc: path to write cluster output tsv file
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - PATHOGIST

@@ -2,52 +2,56 @@ version 1.0
 
 task Analyze {
   input {
-    Boolean? report_wrong_default
-    Boolean? report_right_patterns
+    Boolean? report_wrong_classified
+    Boolean? report_right_classified
     Boolean? report_unclassified_patterns
     Boolean? same_w_r
     Boolean? report_confusion_class
     Boolean? show_statistic_information
-    Boolean? show_class_information
+    Boolean? show_class_statistic
     Boolean? show_confusion_matrix
     Boolean? _verbous_mode
-    String? select_error_function
+    Int? select_error_functionfunction
     Float? lower_bound_level
     Float? upper_bound_level
-    String? input_result_file
-    String? output_file_default
+    File? input_result_stdin
+    File? output_file_default
   }
   command <<<
     analyze \
-      ~{true="-w" false="" report_wrong_default} \
-      ~{true="-r" false="" report_right_patterns} \
-      ~{true="-u" false="" report_unclassified_patterns} \
-      ~{true="-a" false="" same_w_r} \
-      ~{true="-S" false="" report_confusion_class} \
-      ~{true="-s" false="" show_statistic_information} \
-      ~{true="-c" false="" show_class_information} \
-      ~{true="-m" false="" show_confusion_matrix} \
-      ~{true="-v" false="" _verbous_mode} \
-      ~{if defined(select_error_function) then ("-e " +  '"' + select_error_function + '"') else ""} \
+      ~{if (report_wrong_classified) then "-w" else ""} \
+      ~{if (report_right_classified) then "-r" else ""} \
+      ~{if (report_unclassified_patterns) then "-u" else ""} \
+      ~{if (same_w_r) then "-a" else ""} \
+      ~{if (report_confusion_class) then "-S" else ""} \
+      ~{if (show_statistic_information) then "-s" else ""} \
+      ~{if (show_class_statistic) then "-c" else ""} \
+      ~{if (show_confusion_matrix) then "-m" else ""} \
+      ~{if (_verbous_mode) then "-v" else ""} \
+      ~{if defined(select_error_functionfunction) then ("-e " +  '"' + select_error_functionfunction + '"') else ""} \
       ~{if defined(lower_bound_level) then ("-l " +  '"' + lower_bound_level + '"') else ""} \
       ~{if defined(upper_bound_level) then ("-h " +  '"' + upper_bound_level + '"') else ""} \
-      ~{if defined(input_result_file) then ("-i " +  '"' + input_result_file + '"') else ""} \
+      ~{if defined(input_result_stdin) then ("-i " +  '"' + input_result_stdin + '"') else ""} \
       ~{if defined(output_file_default) then ("-o " +  '"' + output_file_default + '"') else ""}
   >>>
   parameter_meta {
-    report_wrong_default: ": report wrong classified patterns (default)"
-    report_right_patterns: ": report right classified patterns"
+    report_wrong_classified: ": report wrong classified patterns (default)"
+    report_right_classified: ": report right classified patterns"
     report_unclassified_patterns: ": report unclassified patterns"
     same_w_r: ": same as -w -r -u"
-    report_confusion_class: "\"t c\"         : report confusion from class t to c (-1 = noclass)"
+    report_confusion_class: "\\\"t c\\\"         : report confusion from class t to c (-1 = noclass)"
     show_statistic_information: ": show statistic information"
-    show_class_information: ": show class statistic information"
+    show_class_statistic: ": show class statistic information"
     show_confusion_matrix: ": show confusion matrix"
     _verbous_mode: ": verbous mode"
-    select_error_function: ": select error function  <function> = [402040 | WTA | band] default = 402040"
-    lower_bound_level: ": lower bound level (see documentation)  default: 0.4 for 402040 default: 0.0 for WTA default: 0.1 for band"
-    upper_bound_level: ": upper bound level (see documentation)  default: 0.6 for 402040 default: 0.0 for WTA default: 0.1 for band"
-    input_result_file: ": input result file (default stdin)"
+    select_error_functionfunction: ": select error function\\n<function> = [402040 | WTA | band]\\ndefault = 402040"
+    lower_bound_level: ": lower bound level (see documentation)\\ndefault: 0.4 for 402040\\ndefault: 0.0 for WTA\\ndefault: 0.1 for band"
+    upper_bound_level: ": upper bound level (see documentation)\\ndefault: 0.6 for 402040\\ndefault: 0.0 for WTA\\ndefault: 0.1 for band"
+    input_result_stdin: ": input result file (default stdin)"
     output_file_default: ": output file (default stdout)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_default = "${in_output_file_default}"
   }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
-id: ../../../to_upper_case.pl.bak.cwl
+id: ../../../to_upper_case.pl.cwl
 inputs:
-- id: convert_lower_case
+- id: in_convert_lower_case
   doc: ':       Convert to lower case'
   type: boolean
   inputBinding:
     prefix: -l
-- id: convert_only_column
+- id: in_convert_column_default
   doc: ': Convert only column <num> (default: convert the entire line)'
-  type: string
+  type: long
   inputBinding:
     prefix: -c
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- to_upper_case.pl.bak
+- to_upper_case.pl

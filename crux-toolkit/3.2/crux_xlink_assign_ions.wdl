@@ -1,6 +1,6 @@
 version 1.0
 
-task CruxXlinkAssignIons {
+task CruxXlinkassignions {
   input {
     String peptide_a
     String peptide_b
@@ -8,19 +8,17 @@ task CruxXlinkAssignIons {
     String pos_b
     String link_mass
     String charge_state
-    String scan_number
-    String ms_two_file
+    Int scan_number
   }
   command <<<
-    crux xlink-assign-ions \
+    crux xlink_assign_ions \
       ~{peptide_a} \
       ~{peptide_b} \
       ~{pos_a} \
       ~{pos_b} \
       ~{link_mass} \
       ~{charge_state} \
-      ~{scan_number} \
-      ~{ms_two_file}
+      ~{scan_number}
   >>>
   parameter_meta {
     peptide_a: ""
@@ -30,6 +28,8 @@ task CruxXlinkAssignIons {
     link_mass: ""
     charge_state: ""
     scan_number: ""
-    ms_two_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -3,15 +3,15 @@ version 1.0
 task Hgsqldump {
   input {
     String database
-    String? tables
   }
   command <<<
     hgsqldump \
-      ~{database} \
-      ~{tables}
+      ~{database}
   >>>
   parameter_meta {
     database: ""
-    tables: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

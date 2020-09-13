@@ -1,7 +1,10 @@
 version 1.0
 
-task TEsorterTest {
+task TEsortertest {
   command <<<
-    TEsorter-test
+    TEsorter_test
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

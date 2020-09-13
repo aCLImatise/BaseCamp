@@ -4,4 +4,7 @@ task SepMPSfusion {
   command <<<
     sepMPSfusion
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

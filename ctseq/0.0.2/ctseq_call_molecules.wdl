@@ -2,11 +2,11 @@ version 1.0
 
 task CtseqCallMolecules {
   input {
-    String? ref_dir
-    String? dir
-    String? consensus
-    String? processes
-    String? umi_threshold
+    File? ref_dir
+    File? dir
+    Float? consensus
+    Int? processes
+    Int? umi_threshold
     String? umi_collapse_alg
   }
   command <<<
@@ -19,11 +19,14 @@ task CtseqCallMolecules {
       ~{if defined(umi_collapse_alg) then ("--umiCollapseAlg " +  '"' + umi_collapse_alg + '"') else ""}
   >>>
   parameter_meta {
-    ref_dir: "Full path to directory where you have already built your methylation reference files. If no '--refDir' is specified, ctseq will look in your current directory."
-    dir: "Full path to directory where your .sam files are located. If no '--dir' is specified, ctseq will look in your current directory."
-    consensus: "consensus threshold to make consensus methylation call from all the reads with the same UMI (default=0.9)"
-    processes: "number of processes (default=1; default settings could take a long time to run)"
-    umi_threshold: "UMIs with this edit distance will be collapsed together, default=0 (don't collapse)"
-    umi_collapse_alg: "algorithm used to collapse UMIs, options: default=directional"
+    ref_dir: "Full path to directory where you have already built\\nyour methylation reference files. If no '--refDir' is\\nspecified, ctseq will look in your current directory."
+    dir: "Full path to directory where your .sam files are\\nlocated. If no '--dir' is specified, ctseq will look\\nin your current directory."
+    consensus: "consensus threshold to make consensus methylation call\\nfrom all the reads with the same UMI (default=0.9)"
+    processes: "number of processes (default=1; default settings could\\ntake a long time to run)"
+    umi_threshold: "UMIs with this edit distance will be collapsed\\ntogether, default=0 (don't collapse)"
+    umi_collapse_alg: "algorithm used to collapse UMIs, options:\\ndefault=directional\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

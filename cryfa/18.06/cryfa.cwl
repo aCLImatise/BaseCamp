@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../cryfa.cwl
 inputs:
-- id: key_file_name
-  doc: '[KEY_FILE],  --key [KEY_FILE] key file name -- MANDATORY The KEY_FILE would
-    contain a password. To make a strong password, the "keygen" program can be  employed
-    via the command "./keygen".'
+- id: in_key_file_name
+  doc: "[KEY_FILE],  --key [KEY_FILE]\nkey file name -- MANDATORY\nThe KEY_FILE would\
+    \ contain a password.\nTo make a strong password, the \"keygen\" program can be\n\
+    employed via the command \"./keygen\"."
   type: boolean
   inputBinding:
     prefix: -k
-- id: _dec_decrypt
-  doc: ',  --dec decrypt & unpack'
+- id: in__decdecrypt_unpack
+  doc: ",  --dec\ndecrypt & unpack"
   type: boolean
   inputBinding:
     prefix: -d
-- id: _force_force
-  doc: ',  --force force to consider input as non-FASTA/FASTQ Forces Cryfa not to
-    compact, but shuffle and encrypt.     If the input is FASTA/FASTQ, it is again
-    considered as    non-FASTA/FASTQ, therefore, compaction will be ignored,   but
-    shuffling and encryption will be performed.'
+- id: in__forceforce_consider
+  doc: ",  --force\nforce to consider input as non-FASTA/FASTQ\nForces Cryfa not to\
+    \ compact, but shuffle and encrypt.\nIf the input is FASTA/FASTQ, it is again\
+    \ considered as\nnon-FASTA/FASTQ, therefore, compaction will be ignored,\nbut\
+    \ shuffling and encryption will be performed."
   type: boolean
   inputBinding:
     prefix: -f
-- id: _verbose_verbose
-  doc: ',  --verbose verbose mode (more information)'
+- id: in__verboseverbose_mode
+  doc: ",  --verbose\nverbose mode (more information)"
   type: boolean
   inputBinding:
     prefix: -v
-- id: _stopshuffle_stop
-  doc: ',  --stop_shuffle stop shuffling the input'
+- id: in__stopshufflestop_shuffling
+  doc: ",  --stop_shuffle\nstop shuffling the input"
   type: boolean
   inputBinding:
     prefix: -s
-- id: _number_threads
-  doc: '[NUMBER],  --thread [NUMBER] number of threads'
+- id: in_number_of_threads
+  doc: "[NUMBER],  --thread [NUMBER]\nnumber of threads"
   type: boolean
   inputBinding:
     prefix: -t
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cryfa

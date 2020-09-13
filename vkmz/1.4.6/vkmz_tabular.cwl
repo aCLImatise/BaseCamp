@@ -1,78 +1,87 @@
 class: CommandLineTool
 id: ../../../vkmz_tabular.cwl
 inputs:
-- id: input
+- id: in_input
   doc: Path to tabular file.
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: mass_error_ms
-  doc: '[ERROR], -e [ERROR] Mass error of MS data in parts-per-million'
+- id: in_mass_error_ms
+  doc: "[ERROR], -e [ERROR]\nMass error of MS data in parts-per-million"
   type: boolean
   inputBinding:
     prefix: --error
-- id: specify_output_file
-  doc: '[OUTPUT], -o [OUTPUT] Specify output file path'
-  type: boolean
+- id: in_specify_output_file
+  doc: "[OUTPUT], -o [OUTPUT]\nSpecify output file path"
+  type: File
   inputBinding:
     prefix: --output
-- id: json
+- id: in_json
   doc: Set JSON flag to save JSON output
   type: boolean
   inputBinding:
     prefix: --json
-- id: sql
+- id: in_sql
   doc: Set SQL flag to save SQL output
   type: boolean
   inputBinding:
     prefix: --sql
-- id: metadata
+- id: in_metadata
   doc: Set metadata flag to save argument metadata
   type: boolean
   inputBinding:
     prefix: --metadata
-- id: database
-  doc: '[DATABASE], -db [DATABASE] Define path to custom database of known formula-mass
-    pairs'
+- id: in_database
+  doc: "[DATABASE], -db [DATABASE]\nDefine path to custom database of known formula-mass\n\
+    pairs"
   type: boolean
   inputBinding:
     prefix: --database
-- id: prefix
-  doc: '[PREFIX]     Define path prefix to support files ("d3.html" and database directory)'
+- id: in_prefix
+  doc: "[PREFIX]     Define path prefix to support files (\"d3.html\" and\ndatabase\
+    \ directory)"
   type: boolean
   inputBinding:
     prefix: --prefix
-- id: polarity
-  doc: Set flag to force polarity of all features to positive or negative
+- id: in_polarity
+  doc: "Set flag to force polarity of all features to positive\nor negative"
   type: string
   inputBinding:
     prefix: --polarity
-- id: neutral
-  doc: Set flag if input data contains neutral feature mass instead of mz
+- id: in_neutral
+  doc: "Set flag if input data contains neutral feature mass\ninstead of mz"
   type: boolean
   inputBinding:
     prefix: --neutral
-- id: alternate
+- id: in_alternate
   doc: Set flag to keep features with multiple predictions
   type: boolean
   inputBinding:
     prefix: --alternate
-- id: impute_charge
-  doc: Set flag to impute "1" for missing charge information
+- id: in_impute_charge
+  doc: "Set flag to impute \"1\" for missing charge information\n"
   type: boolean
   inputBinding:
     prefix: --impute-charge
-- id: var_12
+- id: in_var_12
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_13
+- id: in_var_13
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_specify_output_file
+  doc: "[OUTPUT], -o [OUTPUT]\nSpecify output file path"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_specify_output_file)
 cwlVersion: v1.1
 baseCommand:
 - vkmz

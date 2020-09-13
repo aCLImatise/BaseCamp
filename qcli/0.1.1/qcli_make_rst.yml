@@ -1,6 +1,16 @@
 !Command
+command:
+- qcli_make_rst
 positional: []
 named:
+- !Flag
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: the input file(s) to generate rst files for [REQUIRED]
   synonyms:
@@ -10,20 +20,30 @@ named:
     name: INPUT_FPS
   optional: true
 - !Flag
-  description: the directory where the resulting rst file(s) should be written [REQUIRED]
+  description: "the directory where the resulting rst file(s) should\nbe written [REQUIRED]\n"
   synonyms:
   - -o
   - --output_dir
   args: !SimpleFlagArg
     name: OUTPUT_DIR
   optional: true
-command:
-- qcli_make_rst
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: qcli_make_rst [options] {-i/--input_fps INPUT_FPS -o/--output_dir\
   \ OUTPUT_DIR}\n\n[] indicates optional input (order unimportant)\n{} indicates required\
   \ input (order unimportant)\n\nThis script will take a qcli script and convert the\

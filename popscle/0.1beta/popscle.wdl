@@ -4,4 +4,7 @@ task Popscle {
   command <<<
     popscle
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

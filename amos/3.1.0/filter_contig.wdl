@@ -14,4 +14,7 @@ task FilterContig {
     contig_file: ""
     id: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

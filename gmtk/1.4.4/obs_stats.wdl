@@ -1,7 +1,10 @@
 version 1.0
 
-task ObsStats {
+task Obsstats {
   command <<<
-    obs-stats
+    obs_stats
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

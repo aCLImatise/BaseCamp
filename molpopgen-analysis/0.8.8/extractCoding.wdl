@@ -4,4 +4,7 @@ task ExtractCoding {
   command <<<
     extractCoding
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

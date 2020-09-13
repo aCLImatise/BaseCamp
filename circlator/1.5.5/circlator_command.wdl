@@ -11,4 +11,7 @@ task CirclatorCommand {
   parameter_meta {
     required_arguments: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,21 @@
 version 1.0
 
-task AnviScriptGenCPRClassifier {
+task AnviscriptgenCPRclassifier {
   input {
-    String? output_file_name
+    File? output_file_name
     String matrix_file
   }
   command <<<
-    anvi-script-gen-CPR-classifier \
+    anvi_script_gen_CPR_classifier \
       ~{matrix_file} \
       ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""}
   >>>
   parameter_meta {
-    output_file_name: "Output file name for the classifier."
-    matrix_file: "TAB-delimited matrix of CPR genome names, classes, and presence absence of single-copy genes. Headers of the first two rows should be \"genome\", and \"class\". The rest of the rows shold be single-copy genes."
+    output_file_name: "Output file name for the classifier.\\n"
+    matrix_file: "TAB-delimited matrix of CPR genome names, classes, and\\npresence absence of single-copy genes. Headers of the\\nfirst two rows should be \\\"genome\\\", and \\\"class\\\". The\\nrest of the rows shold be single-copy genes."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

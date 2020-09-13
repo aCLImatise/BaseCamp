@@ -2,22 +2,23 @@ version 1.0
 
 task FaSomeRecords {
   input {
-    Boolean? exclude
+    File? exclude
     String in_dot_fa
     String list_file
-    String out_dot_fa
   }
   command <<<
     faSomeRecords \
       ~{in_dot_fa} \
       ~{list_file} \
-      ~{out_dot_fa} \
-      ~{true="-exclude" false="" exclude}
+      ~{if (exclude) then "-exclude" else ""}
   >>>
   parameter_meta {
     exclude: "- output sequences not in the list file."
     in_dot_fa: ""
     list_file: ""
-    out_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_exclude = "${in_exclude}"
   }
 }

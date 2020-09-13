@@ -4,4 +4,7 @@ task Dnadist {
   command <<<
     dnadist
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

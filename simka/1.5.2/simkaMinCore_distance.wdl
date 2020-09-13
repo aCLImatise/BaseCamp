@@ -14,15 +14,15 @@ task SimkaMinCoreDistance {
   }
   command <<<
     simkaMinCore distance \
-      ~{true="-in1" false="" in_one} \
-      ~{true="-in2" false="" in_two} \
-      ~{true="-out" false="" out} \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-start-i" false="" start_i} \
-      ~{true="-start-j" false="" start_j} \
-      ~{true="-n-i" false="" n_i} \
-      ~{true="-n-j" false="" n_j}
+      ~{if (in_one) then "-in1" else ""} \
+      ~{if (in_two) then "-in2" else ""} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (start_i) then "-start-i" else ""} \
+      ~{if (start_j) then "-start-j" else ""} \
+      ~{if (n_i) then "-n-i" else ""} \
+      ~{if (n_j) then "-n-j" else ""}
   >>>
   parameter_meta {
     in_one: "(1 arg) :    filename to a sketch file to compare with -in2"
@@ -34,5 +34,8 @@ task SimkaMinCoreDistance {
     start_j: "(1 arg) :    start j (column)  [default '0']"
     n_i: "(1 arg) :    Nb datasets to process (row)  [default '0']"
     n_j: "(1 arg) :    Nb datasets to process (column)  [default '0']"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../htsbox_bamidx.cwl
 inputs:
-- id: s
+- id: in_s
   doc: ''
   type: long
   inputBinding:
     prefix: -s
-- id: bam_idx
+- id: in_bam_idx
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_dot_bam
+- id: in_in_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - htsbox

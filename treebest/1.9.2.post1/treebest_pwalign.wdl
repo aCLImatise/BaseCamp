@@ -5,20 +5,20 @@ task TreebestPwalign {
     Boolean? generate_full_alignment
     Boolean? apply_matrix_mean
     Boolean? just_calculate_boundaries
-    String? gap_open_penalty
-    String? gap_extension_penalty
-    String? gap_end_penalty
-    String? frameshift_penalty_aant
-    String? good_splicing_penalty
-    String? bandwidth
-    String? bad_splicing_penalty
+    Int? gap_open_penalty
+    Int? gap_extension_penalty
+    Int? gap_end_penalty
+    Int? frameshift_penalty_aant
+    Int? good_splicing_penalty
+    Int? bandwidth
+    Int? bad_splicing_penalty
     Boolean? output_miscellaneous_information
   }
   command <<<
     treebest pwalign \
-      ~{true="-f" false="" generate_full_alignment} \
-      ~{true="-a" false="" apply_matrix_mean} \
-      ~{true="-d" false="" just_calculate_boundaries} \
+      ~{if (generate_full_alignment) then "-f" else ""} \
+      ~{if (apply_matrix_mean) then "-a" else ""} \
+      ~{if (just_calculate_boundaries) then "-d" else ""} \
       ~{if defined(gap_open_penalty) then ("-o " +  '"' + gap_open_penalty + '"') else ""} \
       ~{if defined(gap_extension_penalty) then ("-e " +  '"' + gap_extension_penalty + '"') else ""} \
       ~{if defined(gap_end_penalty) then ("-n " +  '"' + gap_end_penalty + '"') else ""} \
@@ -26,7 +26,7 @@ task TreebestPwalign {
       ~{if defined(good_splicing_penalty) then ("-g " +  '"' + good_splicing_penalty + '"') else ""} \
       ~{if defined(bandwidth) then ("-w " +  '"' + bandwidth + '"') else ""} \
       ~{if defined(bad_splicing_penalty) then ("-b " +  '"' + bad_splicing_penalty + '"') else ""} \
-      ~{true="-m" false="" output_miscellaneous_information}
+      ~{if (output_miscellaneous_information) then "-m" else ""}
   >>>
   parameter_meta {
     generate_full_alignment: "generate full alignment"
@@ -40,5 +40,8 @@ task TreebestPwalign {
     bandwidth: "band-width"
     bad_splicing_penalty: "bad splicing penalty"
     output_miscellaneous_information: "output miscellaneous information"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

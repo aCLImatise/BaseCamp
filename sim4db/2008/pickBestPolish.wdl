@@ -4,4 +4,7 @@ task PickBestPolish {
   command <<<
     pickBestPolish
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

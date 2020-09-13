@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../gtf_juncs.cwl
 inputs:
-- id: transcripts_dot_gtf
+- id: in_transcripts_dot_gtf
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gtf_juncs

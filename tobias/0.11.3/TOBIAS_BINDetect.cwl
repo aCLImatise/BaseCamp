@@ -1,98 +1,106 @@
 class: CommandLineTool
 id: ../../../TOBIAS_BINDetect.cwl
 inputs:
-- id: signals
-  doc: '[<bigwig> [<bigwig> ...]] Signal per condition (.bigwig format)'
+- id: in_signals
+  doc: "[<bigwig> [<bigwig> ...]]\nSignal per condition (.bigwig format)"
   type: boolean
   inputBinding:
     prefix: --signals
-- id: peaks
-  doc: Peaks.bed containing open chromatin regions across all conditions
+- id: in_peaks
+  doc: Peaks.bed containing open chromatin regions across all
   type: string
   inputBinding:
     prefix: --peaks
-- id: motifs
-  doc: '[<motifs> [<motifs> ...]] Motif file(s) in pfm/jaspar/meme format'
-  type: boolean
-  inputBinding:
-    prefix: --motifs
-- id: genome
+- id: in_genome
   doc: Genome .fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --genome
-- id: cond_names
-  doc: '[<name> [<name> ...]] Names of conditions fitting to --signals (default: prefix
-    of --signals)'
+- id: in_cond_names
+  doc: "[<name> [<name> ...]]\nNames of conditions fitting to --signals (default:\n\
+    prefix of --signals)"
   type: boolean
   inputBinding:
     prefix: --cond-names
-- id: peak_header
-  doc: 'File containing the header of --peaks separated by whitespace or newlines
-    (default: peak columns are named "_additional_<count>")'
+- id: in_peak_header
+  doc: "File containing the header of --peaks separated by\nwhitespace or newlines\
+    \ (default: peak columns are named\n\"_additional_<count>\")"
   type: File
   inputBinding:
     prefix: --peak-header
-- id: naming
-  doc: "Naming convention for TF output files ('id', 'name', 'name_id', 'id_name')\
+- id: in_naming
+  doc: "Naming convention for TF output files ('id', 'name',\n'name_id', 'id_name')\
     \ (default: 'name_id')"
   type: string
   inputBinding:
     prefix: --naming
-- id: motif_p_value
-  doc: 'Set p-value threshold for motif scanning (default: 1e-4)'
+- id: in_motif_p_value
+  doc: "Set p-value threshold for motif scanning (default:\n1e-4)"
   type: double
   inputBinding:
     prefix: --motif-pvalue
-- id: bound_p_value
-  doc: 'Set p-value threshold for bound/unbound split (default: 0.001)'
+- id: in_bound_p_value
+  doc: "Set p-value threshold for bound/unbound split (default:\n0.001)"
   type: double
   inputBinding:
     prefix: --bound-pvalue
-- id: pseudo
-  doc: 'Pseudocount for calculating log2fcs (default: estimated from data)'
+- id: in_pseudo
+  doc: "Pseudocount for calculating log2fcs (default: estimated\nfrom data)"
   type: double
   inputBinding:
     prefix: --pseudo
-- id: time_series
-  doc: Will only compare signals1<->signals2<->signals3 (...) in order of input, and
-    skip all-against-all comparison.
+- id: in_time_series
+  doc: "Will only compare signals1<->signals2<->signals3 (...)\nin order of input,\
+    \ and skip all-against-all comparison."
   type: boolean
   inputBinding:
     prefix: --time-series
-- id: skip_excel
-  doc: Skip creation of excel files - for large datasets, this will speed up BINDetect
-    considerably
+- id: in_skip_excel
+  doc: "Skip creation of excel files - for large datasets, this\nwill speed up BINDetect\
+    \ considerably"
   type: boolean
   inputBinding:
     prefix: --skip-excel
-- id: prefix
-  doc: 'Prefix for overview files in --outdir folder (default: bindetect)'
-  type: string
+- id: in_prefix
+  doc: "Prefix for overview files in --outdir folder (default:\nbindetect)"
+  type: Directory
   inputBinding:
     prefix: --prefix
-- id: outdir
-  doc: 'Output directory to place TFBS/plots in (default: bindetect_output)'
+- id: in_outdir
+  doc: "Output directory to place TFBS/plots in (default:\nbindetect_output)"
   type: Directory
   inputBinding:
     prefix: --outdir
-- id: cores
+- id: in_cores
   doc: 'Number of cores to use for computation (default: 1)'
   type: long
   inputBinding:
     prefix: --cores
-- id: split
+- id: in_split
   doc: 'Split of multiprocessing jobs (default: 100)'
   type: long
   inputBinding:
     prefix: --split
-- id: verbosity
-  doc: 'Level of output logging (0: silent, 1: errors/warnings, 2: info, 3: stats,
-    4: debug, 5: spam) (default: 3)'
+- id: in_verbosity
+  doc: "Level of output logging (0: silent, 1: errors/warnings,\n2: info, 3: stats,\
+    \ 4: debug, 5: spam) (default: 3)\n"
   type: long
   inputBinding:
     prefix: --verbosity
-outputs: []
+- id: in_conditions
+  doc: --motifs [<motifs> [<motifs> ...]]
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: "Output directory to place TFBS/plots in (default:\nbindetect_output)"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

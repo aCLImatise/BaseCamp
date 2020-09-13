@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../split_and_run_sparc.sh.bak.cwl
+id: ../../../split_and_run_sparc.sh.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- split_and_run_sparc.sh.bak
+- split_and_run_sparc.sh

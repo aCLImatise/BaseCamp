@@ -1,37 +1,22 @@
 class: CommandLineTool
 id: ../../../genePredCheck.cwl
 inputs:
-- id: if
-  doc: ''
+- id: in_db
+  doc: "- If specified, then this database is used to\nget chromosome sizes, and perhaps\
+    \ the table to check."
   type: string
   inputBinding:
-    position: 0
-- id: file_tbl
-  doc: ''
+    prefix: -db
+- id: in_chrom_sizes
+  doc: "- use chrom sizes from tab separated\nfile (name,size) instead of from chromInfo\
+    \ table in specified db.\n"
   type: File
   inputBinding:
-    position: 1
-- id: is
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: an
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: existing
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 5
-outputs: []
+    prefix: -chromSizes
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genePredCheck

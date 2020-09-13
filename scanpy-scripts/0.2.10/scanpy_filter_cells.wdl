@@ -1,6 +1,6 @@
 version 1.0
 
-task ScanpyFilterCells {
+task Scanpyfiltercells {
   input {
     Boolean? input_format
     Boolean? output_format
@@ -9,42 +9,42 @@ task ScanpyFilterCells {
     Boolean? show_obj
     String? gene_name
     Boolean? list_attr
-    String? param
+    Float? param
     Boolean? category
-    String? subset
+    File? subset
     Boolean? force_recalc
-    String input_obj
-    String output_obj
+    String format_dot
   }
   command <<<
-    scanpy-filter-cells \
-      ~{input_obj} \
-      ~{output_obj} \
-      ~{true="--input-format" false="" input_format} \
-      ~{true="--output-format" false="" output_format} \
+    scanpy_filter_cells \
+      ~{format_dot} \
+      ~{if (input_format) then "--input-format" else ""} \
+      ~{if (output_format) then "--output-format" else ""} \
       ~{if defined(zarr_chunk_size) then ("--zarr-chunk-size " +  '"' + zarr_chunk_size + '"') else ""} \
       ~{if defined(export_mtx) then ("--export-mtx " +  '"' + export_mtx + '"') else ""} \
-      ~{true="--show-obj" false="" show_obj} \
+      ~{if (show_obj) then "--show-obj" else ""} \
       ~{if defined(gene_name) then ("--gene-name " +  '"' + gene_name + '"') else ""} \
-      ~{true="--list-attr" false="" list_attr} \
+      ~{if (list_attr) then "--list-attr" else ""} \
       ~{if defined(param) then ("--param " +  '"' + param + '"') else ""} \
-      ~{true="--category" false="" category} \
+      ~{if (category) then "--category" else ""} \
       ~{if defined(subset) then ("--subset " +  '"' + subset + '"') else ""} \
-      ~{true="--force-recalc" false="" force_recalc}
+      ~{if (force_recalc) then "--force-recalc" else ""}
   >>>
   parameter_meta {
-    input_format: "[anndata|loom] Input object format.  [default: anndata]"
-    output_format: "[anndata|loom|zarr] Output object format.  [default: anndata]"
-    zarr_chunk_size: "Chunk size for writing output in zarr format.  [default: 1000]"
-    export_mtx: "When specified, using it as prefix for exporting mtx files. If not empty and not ending with \"/\" or \"_\", a \"_\" will be appended."
-    show_obj: "[stdout|stderr]      Print output object summary info to specified stream."
-    gene_name: "Name of the variable that contains gene names, used for flagging mitochondria genes when column \"mito\" is absent from `.var`. [default: index]"
-    list_attr: "When set, list attributes that can be filtered on."
-    param: "... Numerical parameters used to filter the data, in the format of \"-p name min max\". Multiple -p entries allowed."
-    category: "<TEXT TEXT[,TEXT...]>... Categorical attributes used to filter the data, in the format of \"-c <name> <values>\", where entries with attribute <name> with value in <values> are kept. If <values> is preceded by \"!\", entries with value in <values> are removed. Multiple -c entries allowed."
-    subset: "... Similar to --category in the format of \"-s <name> <file>\", but the <file> to be a one- column table that provides the values. Multiple -s entries allowed."
-    force_recalc: "When set, re-calculate `pct_counts_<qc_variable>` and `pct_counts_in_top_<n>_genes` even if they exist."
-    input_obj: ""
-    output_obj: ""
+    input_format: "[anndata|loom]\\nInput object format.  [default: anndata]"
+    output_format: "[anndata|loom|zarr]\\nOutput object format.  [default: anndata]"
+    zarr_chunk_size: "Chunk size for writing output in zarr"
+    export_mtx: "When specified, using it as prefix for\\nexporting mtx files. If not empty and not\\nending with \\\"/\\\" or \\\"_\\\", a \\\"_\\\" will be\\nappended."
+    show_obj: "[stdout|stderr]      Print output object summary info to\\nspecified stream."
+    gene_name: "Name of the variable that contains gene\\nnames, used for flagging mitochondria genes\\nwhen column \\\"mito\\\" is absent from `.var`.\\n[default: index]"
+    list_attr: "When set, list attributes that can be\\nfiltered on."
+    param: "...\\nNumerical parameters used to filter the\\ndata, in the format of \\\"-p name min max\\\".\\nMultiple -p entries allowed."
+    category: "<TEXT TEXT[,TEXT...]>...\\nCategorical attributes used to filter the\\ndata, in the format of \\\"-c <name> <values>\\\",\\nwhere entries with attribute <name> with\\nvalue in <values> are kept. If <values> is\\npreceded by \\\"!\\\", entries with value in\\n<values> are removed. Multiple -c entries\\nallowed."
+    subset: "...\\nSimilar to --category in the format of \\\"-s\\n<name> <file>\\\", but the <file> to be a one-\\ncolumn table that provides the values.\\nMultiple -s entries allowed."
+    force_recalc: "When set, re-calculate\\n`pct_counts_<qc_variable>` and\\n`pct_counts_in_top_<n>_genes` even if they\\nexist."
+    format_dot: "[default: 1000]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

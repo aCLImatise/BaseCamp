@@ -1,14 +1,10 @@
 version 1.0
 
 task CruxHardklor {
-  input {
-    String spectra
-  }
   command <<<
-    crux hardklor \
-      ~{spectra}
+    crux hardklor
   >>>
-  parameter_meta {
-    spectra: ""
+  output {
+    File out_stdout = stdout()
   }
 }

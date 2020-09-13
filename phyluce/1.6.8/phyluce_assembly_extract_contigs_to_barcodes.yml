@@ -1,6 +1,21 @@
 !Command
-positional: []
+command:
+- phyluce_assembly_extract_contigs_to_barcodes
+positional:
+- !Positional
+  description: '[--verbosity {INFO,WARN,CRITICAL}]'
+  position: 0
+  name: OUTPUT
+  optional: false
 named:
+- !Flag
+  description: ''
+  synonyms:
+  - --config
+  - --output
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
 - !Flag
   description: The directory containing the assembled contigs.
   synonyms:
@@ -9,27 +24,13 @@ named:
     name: CONTIGS
   optional: true
 - !Flag
-  description: A config file containing the contigs to extract.
-  synonyms:
-  - --config
-  args: !SimpleFlagArg
-    name: CONFIG
-  optional: true
-- !Flag
-  description: The output FASTA file to create
-  synonyms:
-  - --output
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
   description: The logging level to use.
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      ? WARN
       ? CRITICAL
+      ? WARN
       ? INFO
   optional: true
 - !Flag
@@ -39,10 +40,9 @@ named:
   args: !SimpleFlagArg
     name: LOG_PATH
   optional: true
-command:
-- phyluce_assembly_extract_contigs_to_barcodes
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

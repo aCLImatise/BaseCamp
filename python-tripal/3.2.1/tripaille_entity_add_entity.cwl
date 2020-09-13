@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../tripaille_entity_add_entity.cwl
 inputs:
-- id: params
+- id: in_params
   doc: Values to populate the entity fields
   type: string
   inputBinding:
     prefix: --params
-- id: entity
+- id: in_entity
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tripaille

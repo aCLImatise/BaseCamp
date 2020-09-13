@@ -5,19 +5,22 @@ task SmofTranslate {
     Boolean? from_start
     Boolean? all_frames
     Boolean? cds
-    String input_fasta_sequence
+    String input_fasta_default
   }
   command <<<
     smof translate \
-      ~{input_fasta_sequence} \
-      ~{true="--from-start" false="" from_start} \
-      ~{true="--all-frames" false="" all_frames} \
-      ~{true="--cds" false="" cds}
+      ~{input_fasta_default} \
+      ~{if (from_start) then "--from-start" else ""} \
+      ~{if (all_frames) then "--all-frames" else ""} \
+      ~{if (cds) then "--cds" else ""}
   >>>
   parameter_meta {
     from_start: "Require each product begin with a start codon"
     all_frames: "Translate in all frames, keep longest"
     cds: "Write the DNA coding sequence"
-    input_fasta_sequence: "input fasta sequence (default = stdin)"
+    input_fasta_default: "input fasta sequence (default = stdin)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

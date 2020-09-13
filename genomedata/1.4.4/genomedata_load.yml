@@ -1,5 +1,18 @@
 !Command
+command:
+- genomedata-load
 positional:
+- !Positional
+  description: Create Genomedata archive named GENOMEDATAFILE by loading
+  position: 0
+  name: GENOMEDATAFILE
+  optional: false
+- !Positional
+  description: 'Example: genomedata-load -t high=signal.high.wig -t low=signal.low.bed.gz
+    -s chrX.fa -s chrY.fa.gz GENOMEDATAFILE'
+  position: 0
+  name: respectively.
+  optional: false
 - !Positional
   description: genomedata archive
   position: 0
@@ -7,14 +20,8 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Print status updates and diagnostic messages
-  synonyms:
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Add the sequence data in the specified file or files (may use UNIX
-    glob wildcard syntax)
+  description: "Add the sequence data in the specified file or files\n(may use UNIX\
+    \ glob wildcard syntax)"
   synonyms:
   - -s
   - --sequence
@@ -22,15 +29,21 @@ named:
     name: SEQUENCE
   optional: true
 - !Flag
-  description: '=FILE, --track NAME=FILE Add data from FILE as the track NAME, such
-    as: -t signal=signal.wig'
+  description: Print status updates and diagnostic messages
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=FILE, --track NAME=FILE\nAdd data from FILE as the track NAME, such\
+    \ as: -t\nsignal=signal.wig"
   synonyms:
   - -t
   args: !SimpleFlagArg
     name: NAME
   optional: true
 - !Flag
-  description: A BED file containing regions to mask out from tracks before loading
+  description: "A BED file containing regions to mask out from tracks\nbefore loading"
   synonyms:
   - -m
   - --maskfile
@@ -38,41 +51,34 @@ named:
     name: MASKFILE
   optional: true
 - !Flag
-  description: sequence files contain assembly (AGP) files instead of sequence
+  description: sequence files contain assembly (AGP) files instead of
   synonyms:
   - --assembly
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: sequence files contain list of sizes instead of sequence
-  synonyms:
-  - --sizes
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: If specified, the Genomedata archive will be implemented as a single
-    file, with a separate h5 group for each Chromosome. This is recommended if there
-    are a large number of Chromosomes. The default behavior is to use a single file
-    if there are at least 100 Chromosomes being added.
+  description: "If specified, the Genomedata archive will be\nimplemented as a single\
+    \ file, with a separate h5 group\nfor each Chromosome. This is recommended if\
+    \ there are\na large number of Chromosomes. The default behavior is\nto use a\
+    \ single file if there are at least 100\nChromosomes being added."
   synonyms:
   - -f
   - --file-mode
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: If specified, the Genomedata archive will be implemented as a directory,
-    with a separate file for each Chromosome. This is recommended if there are a small
-    number of Chromosomes. The default behavior is to use a directory if there are
-    fewer than 100 Chromosomes being added.
+  description: "If specified, the Genomedata archive will be\nimplemented as a directory,\
+    \ with a separate file for\neach Chromosome. This is recommended if there are\
+    \ a\nsmall number of Chromosomes. The default behavior is\nto use a directory\
+    \ if there are fewer than 100\nChromosomes being added."
   synonyms:
   - -d
   - --directory-mode
   args: !EmptyFlagArg {}
   optional: true
-command:
-- genomedata-load
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

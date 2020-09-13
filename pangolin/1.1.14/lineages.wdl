@@ -4,4 +4,7 @@ task Lineages {
   command <<<
     lineages
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task PpaniniTest {
   command <<<
     ppanini_test
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

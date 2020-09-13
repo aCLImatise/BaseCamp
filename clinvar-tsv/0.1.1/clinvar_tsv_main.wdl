@@ -2,10 +2,10 @@ version 1.0
 
 task ClinvarTsvMain {
   input {
-    String? b_three_seven_path
-    String? b_three_eight_path
-    String? work_dir
-    String? cores
+    Int? b_three_seven_path
+    Int? b_three_eight_path
+    File? work_dir
+    Int? cores
     Boolean? debug
     String clin_var_tsv
     String main
@@ -18,7 +18,7 @@ task ClinvarTsvMain {
       ~{if defined(b_three_eight_path) then ("--b38-path " +  '"' + b_three_eight_path + '"') else ""} \
       ~{if defined(work_dir) then ("--work-dir " +  '"' + work_dir + '"') else ""} \
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     b_three_seven_path: "Path to GRCh37 FAI-indexed FASTA file."
@@ -28,5 +28,8 @@ task ClinvarTsvMain {
     debug: "Enables debugging helps"
     clin_var_tsv: ""
     main: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

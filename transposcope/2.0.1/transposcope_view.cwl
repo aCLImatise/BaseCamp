@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../transposcope_view.cwl
 inputs:
-- id: web_directory
+- id: in_web_directory
   doc: The path to the web directory created by the align tool.
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - transposcope

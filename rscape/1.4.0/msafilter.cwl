@@ -1,117 +1,125 @@
 class: CommandLineTool
 id: ../../../msafilter.cwl
 inputs:
-- id: outdir
+- id: in_outdir
   doc: ': specify a directory for all output files'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: _be_verbose
+- id: in__be_verbose
   doc: ': be verbose'
   type: boolean
   inputBinding:
     prefix: -v
-- id: window
+- id: in_window
   doc: ': window size  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --window
-- id: slide
+- id: in_slide
   doc: ': window slide  [50]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --slide
-- id: one_msa
+- id: in_one_msa
   doc: ': if file has more than one msa, analyze only the first one'
   type: boolean
   inputBinding:
     prefix: --onemsa
-- id: filter_seqs_xseqcons
+- id: in_filter_seqs_xseqcons
   doc: ': filter out seqs <x*seq_cons residues  (0<x<=1.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: -F
-- id: _require_seqs_x_i_d_
+- id: in_var_6
   doc: ': require seqs to have < <x> id  [1.0]  (0<x<=1.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: -I
-- id: require_seqs_x_i_d__x
+- id: in_var_7
   doc: ': require seqs to have >= <x> id  (0<=x<1.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: -i
-- id: t_start
+- id: in_t_start
   doc: ': min alignment position to analyze [1..alen]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --tstart
-- id: tend
+- id: in_tend
   doc: ': max alignment position to analyze [1..alen]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --tend
-- id: consensus
+- id: in_consensus
   doc: ': analyze only consensus (seq_cons) positions'
   type: boolean
   inputBinding:
     prefix: --consensus
-- id: sub_msa
+- id: in_sub_msa
   doc: ': take n random sequences from the alignment, all if NULL  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --submsa
-- id: n_seq_min
+- id: in_n_seq_min
   doc: ': minimum number of sequences in the alignment  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --nseqmin
-- id: gap_thresh
+- id: in_gap_thresh
   doc: ': keep columns with < <x> fraction of gaps  [1.0]  (0<=x<=1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --gapthresh
-- id: mini_d
+- id: in_mini_d
   doc: ': minimum avgid of the given alignment  (0<x<=1.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: --minid
-- id: max_id
+- id: in_max_id
   doc: ': maximum avgid of the given alignment  (0<x<=1.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: --maxid
-- id: in_format
+- id: in_in_format
   doc: ': specify format'
   type: string
   inputBinding:
     prefix: --informat
-- id: out_msa
+- id: in_out_msa
   doc: ': write msa used to file <f>,'
-  type: string
+  type: File
   inputBinding:
     prefix: --outmsa
-- id: out_map
+- id: in_out_map
   doc: ': write map file to <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --outmap
-- id: seed
+- id: in_seed
   doc: ': set RNG seed to <n>. Use 0 for a random seed.  [42]  (n>=0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: msa_file
+- id: in_msa_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: ': specify a directory for all output files'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - msafilter

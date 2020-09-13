@@ -1,14 +1,20 @@
 version 1.0
 
-task _sigcleave {
+task Sigcleave {
   input {
     Boolean? min_weight
+    Boolean? prokaryote
   }
   command <<<
     _sigcleave \
-      ~{true="-minweight" false="" min_weight}
+      ~{if (min_weight) then "-minweight" else ""} \
+      ~{if (prokaryote) then "-prokaryote" else ""}
   >>>
   parameter_meta {
-    min_weight: "float      [3.5] Minimum scoring weight value for the predicted cleavage site (Number from 0.000 to 100.000)"
+    min_weight: "float      [3.5] Minimum scoring weight value for the\\npredicted cleavage site (Number from 0.000\\nto 100.000)"
+    prokaryote: "boolean    Specifies the sequence is prokaryotic and\\nchanges the default scoring data file name"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -12,21 +12,19 @@ task MakeTableList {
     Boolean? hg_central
     Boolean? all
     Boolean? big_files
-    String? assemblies
   }
   command <<<
     makeTableList \
-      ~{assemblies} \
-      ~{true="-host" false="" host} \
-      ~{true="-user" false="" user} \
-      ~{true="-password" false="" password} \
-      ~{true="-toProf" false="" to_prof} \
-      ~{true="-toHost" false="" to_host} \
-      ~{true="-toUser" false="" to_user} \
-      ~{true="-toPassword" false="" to_password} \
-      ~{true="-hgcentral" false="" hg_central} \
-      ~{true="-all" false="" all} \
-      ~{true="-bigFiles" false="" big_files}
+      ~{if (host) then "-host" else ""} \
+      ~{if (user) then "-user" else ""} \
+      ~{if (password) then "-password" else ""} \
+      ~{if (to_prof) then "-toProf" else ""} \
+      ~{if (to_host) then "-toHost" else ""} \
+      ~{if (to_user) then "-toUser" else ""} \
+      ~{if (to_password) then "-toPassword" else ""} \
+      ~{if (hg_central) then "-hgcentral" else ""} \
+      ~{if (all) then "-all" else ""} \
+      ~{if (big_files) then "-bigFiles" else ""}
   >>>
   parameter_meta {
     host: "show tables: mysql host"
@@ -39,6 +37,8 @@ task MakeTableList {
     hg_central: "specify an alternative hgcentral db name when using -all"
     all: "recreate tableList for all active assemblies in hg.conf's hgcentral"
     big_files: "create table with tuples (track, name of bigfile)"
-    assemblies: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

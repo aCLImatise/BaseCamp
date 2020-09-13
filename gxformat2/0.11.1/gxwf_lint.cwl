@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../gxwf_lint.cwl
 inputs:
-- id: training_topic
-  doc: If this is a training workflow, specify a training topic.
+- id: in_training_topic
+  doc: "If this is a training workflow, specify a training\ntopic.\n"
   type: string
   inputBinding:
     prefix: --training-topic
-- id: path
+- id: in_path
   doc: workflow path
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gxwf-lint

@@ -20,4 +20,7 @@ task StrainestSnpclust {
     snp_out: ""
     clust: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

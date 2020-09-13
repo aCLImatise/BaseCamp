@@ -4,4 +4,7 @@ task Pamp {
   command <<<
     pamp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

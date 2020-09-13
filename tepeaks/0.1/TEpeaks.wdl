@@ -4,4 +4,7 @@ task TEpeaks {
   command <<<
     TEpeaks
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,29 +1,29 @@
 version 1.0
 
-task MimeoFilter {
+task Mimeofilter {
   input {
-    String? in_file
-    String? outdir
-    String? outfile
+    File? in_file
+    Directory? outdir
+    File? outfile
     Boolean? keep_temp
     Boolean? verbose
-    String? trf_path
+    File? trf_path
     String? t_match
     String? t_mismatch
     String? t_delta
     String? tpm
     String? tpi
     String? tm_in_score
-    String? tmax_period
+    Int? tmax_period
     Int? max_tandem
   }
   command <<<
-    mimeo-filter \
+    mimeo_filter \
       ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
-      ~{true="--keeptemp" false="" keep_temp} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (keep_temp) then "--keeptemp" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(trf_path) then ("--TRFpath " +  '"' + trf_path + '"') else ""} \
       ~{if defined(t_match) then ("--tmatch " +  '"' + t_match + '"') else ""} \
       ~{if defined(t_mismatch) then ("--tmismatch " +  '"' + t_mismatch + '"') else ""} \
@@ -47,7 +47,11 @@ task MimeoFilter {
     tpm: "TRF match probability"
     tpi: "TRF indel probability"
     tm_in_score: "TRF minimum alignment score to report"
-    tmax_period: "TRF maximum period size to report. Note: Setting this score too high may exclude some LTR retrotransposons. Optimal len to exclude only SSRs is 10-50bp."
-    max_tandem: "Max percentage of a sequence which may be masked by TRF. If exceeded, element will be discarded."
+    tmax_period: "TRF maximum period size to report. Note: Setting this\\nscore too high may exclude some LTR retrotransposons.\\nOptimal len to exclude only SSRs is 10-50bp."
+    max_tandem: "Max percentage of a sequence which may be masked by\\nTRF. If exceeded, element will be discarded.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task SagapythonVersion {
+task Sagapythonversion {
   command <<<
-    sagapython-version
+    sagapython_version
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Hubward {
   command <<<
     hubward
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

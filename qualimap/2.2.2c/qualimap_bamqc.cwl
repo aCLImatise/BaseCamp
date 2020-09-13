@@ -1,101 +1,109 @@
 class: CommandLineTool
 id: ../../../qualimap_bamqc.cwl
 inputs:
-- id: bam
+- id: in_bam
   doc: Input mapping file in BAM format
-  type: string
+  type: File
   inputBinding:
     prefix: -bam
-- id: paint_chromosome_limits
+- id: in_paint_chromosome_limits
   doc: Paint chromosome limits inside charts
   type: boolean
   inputBinding:
     prefix: --paint-chromosome-limits
-- id: genome_gc_distr
-  doc: 'Species to compare with genome GC distribution. Possible values: HUMAN - hg19;
-    MOUSE - mm9(default), mm10'
-  type: string
+- id: in_genome_gc_distr
+  doc: "Species to compare with genome GC\ndistribution. Possible values: HUMAN -\n\
+    hg19; MOUSE - mm9(default), mm10"
+  type: long
   inputBinding:
     prefix: --genome-gc-distr
-- id: feature_file
-  doc: Feature file with regions of interest in GFF/GTF or BED format
-  type: string
+- id: in_feature_file
+  doc: "Feature file with regions of interest in\nGFF/GTF or BED format"
+  type: File
   inputBinding:
     prefix: --feature-file
-- id: hm
-  doc: Minimum size for a homopolymer to be considered in indel analysis (default
-    is 3)
-  type: string
+- id: in_hm
+  doc: "Minimum size for a homopolymer to be\nconsidered in indel analysis (default\
+    \ is\n3)"
+  type: long
   inputBinding:
     prefix: -hm
-- id: collect_overlap_pairs
-  doc: Activate this option to collect statistics of overlapping paired-end reads
+- id: in_collect_overlap_pairs
+  doc: "Activate this option to collect statistics\nof overlapping paired-end reads"
   type: boolean
   inputBinding:
     prefix: --collect-overlap-pairs
-- id: nr
-  doc: Number of reads analyzed in a chunk (default is 1000)
-  type: string
+- id: in_nr
+  doc: "Number of reads analyzed in a chunk\n(default is 1000)"
+  type: long
   inputBinding:
     prefix: -nr
-- id: nt
+- id: in_nt
   doc: Number of threads (default is 8)
-  type: string
+  type: long
   inputBinding:
     prefix: -nt
-- id: nw
+- id: in_nw
   doc: Number of windows (default is 400)
-  type: string
+  type: long
   inputBinding:
     prefix: -nw
-- id: output_genome_coverage
-  doc: 'File to save per base non-zero coverage. Warning: large files are expected
-    for large genomes'
-  type: string
+- id: in_output_genome_coverage
+  doc: "File to save per base non-zero coverage.\nWarning: large files are expected\
+    \ for\nlarge genomes"
+  type: File
   inputBinding:
     prefix: --output-genome-coverage
-- id: outside_stats
-  doc: Report information for the regions outside those defined by feature-file  (ignored
-    when -gff option is not set)
+- id: in_outside_stats
+  doc: "Report information for the regions outside\nthose defined by feature-file\
+    \  (ignored\nwhen -gff option is not set)"
   type: boolean
   inputBinding:
     prefix: --outside-stats
-- id: outdir
-  doc: Output folder for HTML report and raw data.
-  type: string
+- id: in_outdir
+  doc: Output folder for HTML report and raw
+  type: Directory
   inputBinding:
     prefix: -outdir
-- id: outfile
-  doc: Output file for PDF report (default value is report.pdf).
-  type: string
-  inputBinding:
-    prefix: -outfile
-- id: out_format
-  doc: Format of the output report (PDF, HTML or both PDF:HTML, default is HTML).
+- id: in_out_format
+  doc: "Format of the output report (PDF, HTML or\nboth PDF:HTML, default is HTML)."
   type: string
   inputBinding:
     prefix: -outformat
-- id: sequencing_protocol
-  doc: 'Sequencing library protocol: strand-specific-forward, strand-specific-reverse
-    or non-strand-specific (default)'
+- id: in_sequencing_protocol
+  doc: "Sequencing library protocol:\nstrand-specific-forward,\nstrand-specific-reverse\
+    \ or\nnon-strand-specific (default)"
   type: string
   inputBinding:
     prefix: --sequencing-protocol
-- id: skip_duplicated
-  doc: Activate this option to skip duplicated alignments from the analysis. If the
-    duplicates are not flagged in the BAM file, then they will be detected by Qualimap
-    and can be selected for skipping.
+- id: in_skip_duplicated
+  doc: "Activate this option to skip duplicated\nalignments from the analysis. If\
+    \ the\nduplicates are not flagged in the BAM\nfile, then they will be detected\
+    \ by\nQualimap and can be selected for skipping."
   type: boolean
   inputBinding:
     prefix: --skip-duplicated
-- id: skip_dup_mode
-  doc: 'Specific type of duplicated alignments to skip (if this option is activated).
-    0 : only flagged duplicates (default) 1 : only estimated by Qualimap 2 : both
-    flagged and estimated'
-  type: string
+- id: in_skip_dup_mode
+  doc: "Specific type of duplicated alignments to\nskip (if this option is activated).\n\
+    0 : only flagged duplicates (default)\n1 : only estimated by Qualimap\n2 : both\
+    \ flagged and estimated\n"
+  type: long
   inputBinding:
     prefix: --skip-dup-mode
-outputs: []
+- id: in_data_dot
+  doc: -outfile <arg>                       Output file for PDF report (default value
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: Output folder for HTML report and raw
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - qualimap

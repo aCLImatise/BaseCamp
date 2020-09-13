@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../expMatrixToBarchartBed_outputFile.cwl
 inputs:
-- id: auto_sql
+- id: in_auto_sql
   doc: ''
   type: string
   inputBinding:
     prefix: --autoSql
-- id: exp_matrix_to_barchart_bed
+- id: in_exp_matrix_to_barchart_bed
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - expMatrixToBarchartBed

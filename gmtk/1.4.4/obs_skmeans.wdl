@@ -1,7 +1,10 @@
 version 1.0
 
-task ObsSkmeans {
+task Obsskmeans {
   command <<<
-    obs-skmeans
+    obs_skmeans
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

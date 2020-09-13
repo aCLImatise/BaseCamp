@@ -2,6 +2,9 @@ version 1.0
 
 task ProtpredGromacsDominance {
   command <<<
-    protpred-Gromacs-Dominance
+    protpred_Gromacs_Dominance
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

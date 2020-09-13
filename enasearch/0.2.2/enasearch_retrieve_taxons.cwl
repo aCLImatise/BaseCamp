@@ -1,59 +1,64 @@
 class: CommandLineTool
 id: ../../../enasearch_retrieve_taxons.cwl
 inputs:
-- id: ids
+- id: in_ids
   doc: Ids for taxon to return [multiple]  [required]
   type: string
   inputBinding:
     prefix: --ids
-- id: display
-  doc: Display option to specify the display format (accessible with get_display_options)  [required]
+- id: in_display
+  doc: "Display option to specify the display format\n(accessible with get_display_options)\
+    \  [required]"
   type: string
   inputBinding:
     prefix: --display
-- id: result
-  doc: Id of a taxonomy result (accessible with get_taxonomy_results)
+- id: in_result
+  doc: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
   type: string
   inputBinding:
     prefix: --result
-- id: download
-  doc: Download option to specify that records are to be saved in a file (used with
-    file option, list accessible with get_download_options)
-  type: string
+- id: in_download
+  doc: "Download option to specify that records are to be\nsaved in a file (used with\
+    \ file option, list\naccessible with get_download_options)"
+  type: File
   inputBinding:
     prefix: --download
-- id: file
-  doc: File to save the content of the search (used with download option)
+- id: in_file
+  doc: "File to save the content of the search (used with\ndownload option)"
   type: File
   inputBinding:
     prefix: --file
-- id: offset
-  doc: RANGE  First record to get (used only for display different of fasta and fastq
+- id: in_offset
+  doc: "RANGE  First record to get (used only for display different\nof fasta and\
+    \ fastq"
   type: long
   inputBinding:
     prefix: --offset
-- id: length
-  doc: RANGE  Number of records to retrieve (used only for display different of fasta
-    and fastq
+- id: in_length
+  doc: "RANGE  Number of records to retrieve (used only for display\ndifferent of\
+    \ fasta and fastq"
   type: long
   inputBinding:
     prefix: --length
-- id: subseq_range
-  doc: Range for subsequences (integer start and stop separated by a -)
-  type: string
+- id: in_subseq_range
+  doc: "Range for subsequences (integer start and stop\nseparated by a -)"
+  type: long
   inputBinding:
     prefix: --subseq_range
-- id: expanded
+- id: in_expanded
   doc: Determine if a CON record is expanded
   type: boolean
   inputBinding:
     prefix: --expanded
-- id: header
+- id: in_header
   doc: To obtain only the header of a record
   type: boolean
   inputBinding:
     prefix: --header
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - enasearch

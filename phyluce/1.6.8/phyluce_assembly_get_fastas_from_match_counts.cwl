@@ -1,58 +1,64 @@
 class: CommandLineTool
 id: ../../../phyluce_assembly_get_fastas_from_match_counts.cwl
 inputs:
-- id: contigs
-  doc: 'The directory containing the assembled contigs in which you searched for UCE
-    loci. (default: None)'
-  type: string
-  inputBinding:
-    prefix: --contigs
-- id: locus_db
-  doc: 'The SQL database file holding probe matches to targeted loci (usually "lastz/probe.matches.sqlite").
-    (default: None)'
+- id: in_locus_db
+  doc: ''
   type: string
   inputBinding:
     prefix: --locus-db
-- id: match_count_output
-  doc: 'The output file containing taxa and loci in complete/incomplete matrices generated
-    by get_match_counts.py. (default: None)'
-  type: string
+- id: in_var_1
+  doc: ''
+  type: boolean
   inputBinding:
     prefix: --match-count-output
-- id: incomplete_matrix
-  doc: 'The path to the outfile for incomplete-matrix records. Required when processing
-    an incomplete data matrix. (default: False)'
-  type: string
-  inputBinding:
-    prefix: --incomplete-matrix
-- id: output
-  doc: 'The path to the output FASTA file you want to create. (default: None)'
+- id: in_output
+  doc: ''
   type: string
   inputBinding:
     prefix: --output
-- id: verbosity
+- id: in_contigs
+  doc: "The directory containing the assembled contigs in\nwhich you searched for\
+    \ UCE loci. (default: None)"
+  type: Directory
+  inputBinding:
+    prefix: --contigs
+- id: in_incomplete_matrix
+  doc: "The path to the outfile for incomplete-matrix records.\nRequired when processing\
+    \ an incomplete data matrix.\n(default: False)"
+  type: File
+  inputBinding:
+    prefix: --incomplete-matrix
+- id: in_verbosity
   doc: 'The logging level to use. (default: INFO)'
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: 'The path to a directory to hold logs. (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-- id: extend_locus_db
-  doc: 'An SQLlite database file holding probe matches to other targeted loci. (default:
-    None)'
-  type: string
+- id: in_extend_locus_db
+  doc: "An SQLlite database file holding probe matches to\nother targeted loci. (default:\
+    \ None)"
+  type: File
   inputBinding:
     prefix: --extend-locus-db
-- id: extend_locus_contigs
-  doc: 'A directory holding the assembled contigs (from genomes or another study)
-    referenced by --extend- locus-db. (default: None)'
-  type: string
+- id: in_extend_locus_contigs
+  doc: "A directory holding the assembled contigs (from\ngenomes or another study)\
+    \ referenced by --extend-\nlocus-db. (default: None)\n"
+  type: Directory
   inputBinding:
     prefix: --extend-locus-contigs
-outputs: []
+- id: in_var_9
+  doc: '[--incomplete-matrix INCOMPLETE_MATRIX]'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_assembly_get_fastas_from_match_counts

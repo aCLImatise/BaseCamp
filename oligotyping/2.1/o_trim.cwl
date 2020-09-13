@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../o_trim.cwl
 inputs:
-- id: trim_from
+- id: in_trim_from
   doc: Start position
   type: long
   inputBinding:
     prefix: --trim-from
-- id: trim_to
+- id: in_trim_to
   doc: End position
   type: long
   inputBinding:
     prefix: --trim-to
-- id: min_length
+- id: in_min_length
   doc: Minimum lenght of a read to be kept
   type: long
   inputBinding:
     prefix: --min-length
-- id: output
-  doc: Output file name.
+- id: in_output
+  doc: "Output file name.\n"
   type: File
   inputBinding:
     prefix: --output
-- id: file
-  doc: FASTA file to subsample
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output file name.\n"
   type: File
-  inputBinding:
-    position: 0
-outputs: []
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - o-trim

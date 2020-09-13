@@ -4,4 +4,7 @@ task Vcfrandom {
   command <<<
     vcfrandom
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

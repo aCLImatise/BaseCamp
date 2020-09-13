@@ -11,4 +11,7 @@ task UfastaCmd {
   parameter_meta {
     arg_dot_dot_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

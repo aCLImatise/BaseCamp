@@ -4,4 +4,7 @@ task Vcfbiallelic {
   command <<<
     vcfbiallelic
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,4 +1,6 @@
 !Command
+command:
+- anvi-analyze-synteny
 positional:
 - !Positional
   description: ''
@@ -7,13 +9,33 @@ positional:
   optional: false
 named:
 - !Flag
-  description: 'The range of window sizes of Ngrams to analyze for synteny patterns.Please
-    format the window-range as x:y (e.g. Window sizes 2 to 4 would be denoted as:
-    2:4)'
+  description: ''
   synonyms:
   - --ngram-window-range
+  - -o
   args: !SimpleFlagArg
     name: NGRAM_WINDOW_RANGE
+  optional: true
+- !Flag
+  description: "A two-column TAB-delimited flat text file that lists\nanvi'o contigs\
+    \ databases. The first item in the header\nline should read 'name', and the second\
+    \ should read\n'contigs_db_path'. Each line in the file should\ndescribe a single\
+    \ entry, where the first column is the\nname of the genome (or MAG), and the second\
+    \ column is\nthe anvi'o contigs database generated for this genome."
+  synonyms:
+  - -e
+  - --external-genomes
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
+- !Flag
+  description: "NAME\nGet functional annotations for a specific annotation\nsource.\
+    \ You can use the flag '--list-annotation-\nsources' to learn about what sources\
+    \ are available."
+  synonyms:
+  - --annotation-source
+  args: !SimpleFlagArg
+    name: SOURCE
   optional: true
 - !Flag
   description: File path to store results.
@@ -24,30 +46,15 @@ named:
     name: FILE_PATH
   optional: true
 - !Flag
-  description: Provide this flag if you want anvi-analyze-synteny to take into account
-    Ngrams that contain gene calls that have no annotation.
+  description: "Provide this flag if you want anvi-analyze-synteny to\ntake into account\
+    \ Ngrams that contain gene calls that\nhave no annotation.\n"
   synonyms:
   - --analyze-unknown-functions
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -e
-  args: !SimpleFlagArg
-    name: FILE_PATH
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --annotation-source
-  args: !SimpleFlagArg
-    name: SOURCE
-  optional: true
-command:
-- anvi-analyze-synteny
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -87,4 +94,4 @@ help_text: "usage: anvi-analyze-synteny [-h] -e FILE_PATH --annotation-source SO
   \                        take into account Ngrams that contain gene calls that\n\
   \                        have no annotation.\n"
 generated_using:
-- -h
+- --help

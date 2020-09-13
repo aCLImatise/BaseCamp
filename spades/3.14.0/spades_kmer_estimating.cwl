@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../spades_kmer_estimating.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: K-mer length
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: dataset
+- id: in_dataset
   doc: Dataset description (in YAML)
   type: string
   inputBinding:
     prefix: --dataset
-- id: threads
+- id: in_threads
   doc: '# of threads to use'
   type: string
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - spades-kmer-estimating

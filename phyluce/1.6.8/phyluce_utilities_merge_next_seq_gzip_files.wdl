@@ -2,12 +2,12 @@ version 1.0
 
 task PhyluceUtilitiesMergeNextSeqGzipFiles {
   input {
-    String? path_directory_containing
-    String? config
-    String? path_directory_store
+    File? path_directory_containing
+    File? config
+    File? path_directory_store
     String? section
     String? verbosity
-    String? log_path
+    File? log_path
     Boolean? se
   }
   command <<<
@@ -18,7 +18,7 @@ task PhyluceUtilitiesMergeNextSeqGzipFiles {
       ~{if defined(section) then ("--section " +  '"' + section + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
-      ~{true="--se" false="" se}
+      ~{if (se) then "--se" else ""}
   >>>
   parameter_meta {
     path_directory_containing: "The path to a directory containing the reads to merge."
@@ -28,5 +28,9 @@ task PhyluceUtilitiesMergeNextSeqGzipFiles {
     verbosity: "The logging level to use."
     log_path: "The path to a directory to hold logs."
     se: "Run is single-end."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_directory_store = "${in_path_directory_store}"
   }
 }

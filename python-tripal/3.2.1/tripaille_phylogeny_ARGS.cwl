@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../tripaille_phylogeny_ARGS.cwl
 inputs:
-- id: tri_paille
+- id: in_tri_paille
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: phylogeny
+- id: in_phylogeny
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: command
+- id: in_command
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: args
+- id: in_args
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tripaille

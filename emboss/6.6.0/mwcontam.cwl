@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../mwcontam.cwl
 inputs:
-- id: tolerance
+- id: in_tolerance
   doc: float      [50.0] Ppm tolerance (Any numeric value)
   type: boolean
   inputBinding:
     prefix: -tolerance
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mwcontam

@@ -1,78 +1,86 @@
 class: CommandLineTool
 id: ../../../bazam.cwl
 inputs:
-- id: bam
+- id: in_bam
   doc: BAM file to extract read pairs from
-  type: string
+  type: File
   inputBinding:
     prefix: -bam
-- id: dr
-  doc: 'Specify a read name to debug: processing of the read will be verbosey printed'
+- id: in_dr
+  doc: "Specify a read name to debug: processing of the read\nwill be verbosey printed"
   type: string
   inputBinding:
     prefix: -dr
-- id: filter
+- id: in_filter
   doc: Filter using specified groovy expression
   type: string
   inputBinding:
     prefix: --filter
-- id: gene
+- id: in_gene
   doc: Extract region of given gene
   type: string
   inputBinding:
     prefix: -gene
-- id: regions
+- id: in_regions
   doc: Regions to include reads (and mates of reads) from
   type: string
   inputBinding:
     prefix: --regions
-- id: concurrency_parameter
+- id: in_concurrency_parameter
   doc: Concurrency parameter (4)
-  type: string
+  type: long
   inputBinding:
     prefix: -n
-- id: name_pos
+- id: in_name_pos
   doc: Add original position to the read names
   type: boolean
   inputBinding:
     prefix: -namepos
-- id: output_file
+- id: in_output_file
   doc: Output file
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: pad
+- id: in_pad
   doc: Amount to pad regions by (0)
-  type: string
+  type: long
   inputBinding:
     prefix: -pad
-- id: r_one
+- id: in_r_one
   doc: Output for R1 if extracting FASTQ in separate files
-  type: string
+  type: long
   inputBinding:
     prefix: -r1
-- id: r_two
+- id: in_r_two
   doc: Output for R2 if extracting FASTQ in separate files
-  type: string
+  type: long
   inputBinding:
     prefix: -r2
-- id: sharding_factor_format
-  doc: 'Sharding factor: format <n>,<N>: output only reads belonging to shard n of
-    N'
+- id: in_sharding_factor_format
+  doc: "Sharding factor: format <n>,<N>: output only reads\nbelonging to shard n of\
+    \ N"
   type: string
   inputBinding:
     prefix: -s
-- id: jar
+- id: in_jar
   doc: ''
   type: string
   inputBinding:
     prefix: -jar
-- id: java
+- id: in_java
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: Output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - bazam

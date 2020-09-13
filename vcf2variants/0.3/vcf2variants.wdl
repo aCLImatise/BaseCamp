@@ -4,4 +4,7 @@ task Vcf2variants {
   command <<<
     vcf2variants
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

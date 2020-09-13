@@ -2,10 +2,10 @@ version 1.0
 
 task MegahitCoreNoHwAccelSeq2sdbg {
   input {
-    String? host_mem
-    String? km_er_size
-    String? km_er_from
-    String? num_cpu_threads
+    Int? host_mem
+    Int? km_er_size
+    Int? km_er_from
+    Int? num_cpu_threads
     String? contig
     String? bubble
     String? add_i_contig
@@ -13,9 +13,9 @@ task MegahitCoreNoHwAccelSeq2sdbg {
     String? input_prefix
     String? output_prefix
     Boolean? need_mercy
-    String? mem_flag
+    Int? mem_flag
     String s_dbg_builder
-    String seq_two_s_dbg
+    Int seq_two_s_dbg
   }
   command <<<
     megahit_core_no_hw_accel seq2sdbg \
@@ -31,7 +31,7 @@ task MegahitCoreNoHwAccelSeq2sdbg {
       ~{if defined(local_contig) then ("--local_contig " +  '"' + local_contig + '"') else ""} \
       ~{if defined(input_prefix) then ("--input_prefix " +  '"' + input_prefix + '"') else ""} \
       ~{if defined(output_prefix) then ("--output_prefix " +  '"' + output_prefix + '"') else ""} \
-      ~{true="--need_mercy" false="" need_mercy} \
+      ~{if (need_mercy) then "--need_mercy" else ""} \
       ~{if defined(mem_flag) then ("--mem_flag " +  '"' + mem_flag + '"') else ""}
   >>>
   parameter_meta {
@@ -49,5 +49,8 @@ task MegahitCoreNoHwAccelSeq2sdbg {
     mem_flag: "(=1)                memory options. 0: minimize memory usage; 1: automatically use moderate memory; other: use all available mem specified by '--host_mem'"
     s_dbg_builder: ""
     seq_two_s_dbg: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

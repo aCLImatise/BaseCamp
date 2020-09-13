@@ -2,25 +2,28 @@ version 1.0
 
 task SeqcoverageFASTA {
   input {
-    String? o
-    String? a
-    String? t
-    String? d
     Boolean? q
+    String? d
+    String? t
+    String? a
+    String? o
   }
   command <<<
     seqcoverage FASTA \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if (q) then "-q" else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
-      ~{true="-q" false="" q}
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
-    o: ""
-    a: ""
-    t: ""
-    d: ""
     q: ""
+    d: ""
+    t: ""
+    a: ""
+    o: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

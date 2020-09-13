@@ -1,14 +1,17 @@
 version 1.0
 
-task FindDuplicateReads {
+task Findduplicatereads {
   input {
     String bank_name
   }
   command <<<
-    find-duplicate-reads \
+    find_duplicate_reads \
       ~{bank_name}
   >>>
   parameter_meta {
     bank_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

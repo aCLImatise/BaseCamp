@@ -2,19 +2,22 @@ version 1.0
 
 task Gvcf2coverage {
   input {
-    String? t
-    String? d
     Boolean? n
+    String? d
+    String? t
   }
   command <<<
     gvcf2coverage \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if (n) then "-n" else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
-      ~{true="-n" false="" n}
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
   parameter_meta {
-    t: ""
-    d: ""
     n: ""
+    d: ""
+    t: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

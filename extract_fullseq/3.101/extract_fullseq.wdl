@@ -4,4 +4,7 @@ task ExtractFullseq {
   command <<<
     extract_fullseq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

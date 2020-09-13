@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- mb-plot-transition-frequencies
+- inputfile
 positional:
 - !Positional
   description: ''
@@ -13,10 +16,9 @@ named:
   args: !SimpleFlagArg
     name: COVERAGE
   optional: true
-command:
-- mb-plot-transition-frequencies
-- inputfile
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - mb-plot-transition-frequencies
   positional: []
   named:
   - !Flag
@@ -49,65 +51,29 @@ parent: &id002 !Command
     - -r
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - mb-plot-transition-frequencies
   parent:
   subcommands:
-  - *id001
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mb-plot-transition-frequencies
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --coverage
-      args: !SimpleFlagArg
-        name: COVERAGE
-      optional: true
-    command:
-    - mb-plot-transition-frequencies
-    - outdir
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: mb-plot-transition-frequencies [-h] [--coverage COVERAGE]\n\
-      \                                      [--limit LIMIT] [--verbose] [--remove]\n\
-      \                                      inputfile outdir prefix\nmb-plot-transition-frequencies:\
-      \ error: argument inputfile: 'outdir' does not exist\n"
-    generated_using: &id003
-    - --help
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mb-plot-transition-frequencies
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --coverage
-      args: !SimpleFlagArg
-        name: COVERAGE
-      optional: true
     command:
     - mb-plot-transition-frequencies
     - prefix
-    parent: *id002
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mb-plot-transition-frequencies
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --coverage
+      args: !SimpleFlagArg
+        name: COVERAGE
+      optional: true
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -120,7 +86,44 @@ parent: &id002 !Command
       \                                      [--limit LIMIT] [--verbose] [--remove]\n\
       \                                      inputfile outdir prefix\nmb-plot-transition-frequencies:\
       \ error: argument inputfile: 'prefix' does not exist\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - mb-plot-transition-frequencies
+    - outdir
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mb-plot-transition-frequencies
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --coverage
+      args: !SimpleFlagArg
+        name: COVERAGE
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: mb-plot-transition-frequencies [-h] [--coverage COVERAGE]\n\
+      \                                      [--limit LIMIT] [--verbose] [--remove]\n\
+      \                                      inputfile outdir prefix\nmb-plot-transition-frequencies:\
+      \ error: argument inputfile: 'outdir' does not exist\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -142,6 +145,7 @@ parent: &id002 !Command
     \  --remove, -r          remove temporary files\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

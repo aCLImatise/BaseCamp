@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../makehmmerdb_binaryfile.cwl
 inputs:
-- id: make_hmmer_db
+- id: in_make_hmmer_db
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seq_file
+- id: in_seq_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: binary_file
+- id: in_binary_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - makehmmerdb

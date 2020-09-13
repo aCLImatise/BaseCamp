@@ -3,12 +3,12 @@ version 1.0
 task BioformatsNcbirenameseq {
   input {
     Boolean? fast_a
-    String? column
-    String? comment_char
-    String? separator
-    String? chr
-    String? unloc
-    String? un_pl
+    Int? column
+    File? comment_char
+    File? separator
+    File? chr
+    File? unloc
+    File? un_pl
     String? prefix
     String? prefix_chr
     String? prefix_unloc
@@ -20,16 +20,20 @@ task BioformatsNcbirenameseq {
     Boolean? revert
     Boolean? no_version
     Boolean? no_description
-    String? output_table
+    File? output_table
     Boolean? v
-    String bio_formats
-    String? var_command
+    String var_20
+    String var_21
+    String file_change_names
+    String output_file_renamed
   }
   command <<<
     bioformats ncbirenameseq \
-      ~{bio_formats} \
-      ~{var_command} \
-      ~{true="--fasta" false="" fast_a} \
+      ~{var_20} \
+      ~{var_21} \
+      ~{file_change_names} \
+      ~{output_file_renamed} \
+      ~{if (fast_a) then "--fasta" else ""} \
       ~{if defined(column) then ("--column " +  '"' + column + '"') else ""} \
       ~{if defined(comment_char) then ("--comment_char " +  '"' + comment_char + '"') else ""} \
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
@@ -44,11 +48,11 @@ task BioformatsNcbirenameseq {
       ~{if defined(suffix_chr) then ("--suffix_chr " +  '"' + suffix_chr + '"') else ""} \
       ~{if defined(suffix_unloc) then ("--suffix_unloc " +  '"' + suffix_unloc + '"') else ""} \
       ~{if defined(suffix_un_pl) then ("--suffix_unpl " +  '"' + suffix_un_pl + '"') else ""} \
-      ~{true="--revert" false="" revert} \
-      ~{true="--no_version" false="" no_version} \
-      ~{true="--no_description" false="" no_description} \
+      ~{if (revert) then "--revert" else ""} \
+      ~{if (no_version) then "--no_version" else ""} \
+      ~{if (no_description) then "--no_description" else ""} \
       ~{if defined(output_table) then ("--output_table " +  '"' + output_table + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     fast_a: "the input file is of the FASTA format"
@@ -71,7 +75,12 @@ task BioformatsNcbirenameseq {
     no_description: "remove descriptions from FASTA sequence headers"
     output_table: "write the renaming table to the specified file"
     v: ""
-    bio_formats: ""
-    var_command: ""
+    var_20: "{refseq_full,genbank_full,refseq_gi,genbank_gi,refseq,genbank,chr_refseq,chr_genbank}"
+    var_21: "{refseq_full,genbank_full,refseq_gi,genbank_gi,refseq,genbank,chr_refseq,chr_genbank,ucsc}"
+    file_change_names: "a file to change sequence names in"
+    output_file_renamed: "an output file for renamed sequences"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

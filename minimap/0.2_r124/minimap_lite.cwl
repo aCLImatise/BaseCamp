@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../minimap_lite.cwl
 inputs:
-- id: target_dot_fa
+- id: in_target_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: query_dot_fa
+- id: in_query_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - minimap-lite

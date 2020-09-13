@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../xmfa2maf.cwl
 inputs:
-- id: x_mfa_input
+- id: in_x_mfa_input
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: maf_output
+- id: in_maf_output
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - xmfa2maf

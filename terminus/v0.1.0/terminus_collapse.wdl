@@ -2,10 +2,10 @@ version 1.0
 
 task TerminusCollapse {
   input {
-    String? consensus_thresh
+    Float? consensus_thresh
     String? dirs
     String? out
-    String? threads
+    Int? threads
   }
   command <<<
     terminus collapse \
@@ -18,6 +18,9 @@ task TerminusCollapse {
     consensus_thresh: "threshold for edge consensus [default: 0.5]"
     dirs: "...                         direcotories to read the group files from"
     out: "prefix where output would be written"
-    threads: "number of threads to use when writing down the collapsed quantifications [default: 8]"
+    threads: "number of threads to use when writing down the collapsed quantifications [default: 8]\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

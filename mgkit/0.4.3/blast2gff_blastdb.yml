@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- blast2gff
+- blastdb
 positional:
 - !Positional
   description: ''
@@ -12,6 +15,13 @@ positional:
   optional: true
 named:
 - !Flag
+  description: ''
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: 'blastdb used  [default: NCBI-NT]'
   synonyms:
   - -db
@@ -20,15 +30,15 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: if used, the script assumes that the sequence header will be used as
-    gene_id
+  description: "if used, the script assumes that the sequence\nheader will be used\
+    \ as gene_id"
   synonyms:
   - -n
   - --no-split
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "The separator for the header, defaults to '|' (pipe)  [default: |]"
+  description: "The separator for the header, defaults to '|'\n(pipe)  [default: |]"
   synonyms:
   - -s
   - --header-sep
@@ -36,8 +46,8 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: 'Which of the header columns (0-based) to use as gene_id (defaults
-    to 1 - the second column) [default: 1]'
+  description: "Which of the header columns (0-based) to use as\ngene_id (defaults\
+    \ to 1 - the second column)\n[default: 1]"
   synonyms:
   - -i
   - --gene-index
@@ -45,7 +55,7 @@ named:
     name: INTEGER
   optional: true
 - !Flag
-  description: if used, the script removes the *version* information from the gene_id
+  description: "if used, the script removes the *version*\ninformation from the gene_id"
   synonyms:
   - -r
   - --remove-version
@@ -68,7 +78,7 @@ named:
     name: INTEGER
   optional: true
 - !Flag
-  description: 'Minimum bitscore to keep the annotation [default: 0.0]'
+  description: "Minimum bitscore to keep the annotation\n[default: 0.0]"
   synonyms:
   - -b
   - --bitscore
@@ -76,8 +86,8 @@ named:
     name: FLOAT
   optional: true
 - !Flag
-  description: Additional attribute and value to add to each annotation, in the form
-    attr:value
+  description: "Additional attribute and value to add to each\nannotation, in the\
+    \ form attr:value"
   synonyms:
   - -k
   - --attr-value
@@ -98,18 +108,23 @@ named:
   - --progress
   args: !EmptyFlagArg {}
   optional: true
-command:
-- blast2gff
-- blastdb
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - blast2gff
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --cite
+    args: !EmptyFlagArg {}
+    optional: true
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - blast2gff
+    - uniprot
     positional:
     - !Positional
       description: ''
@@ -123,7 +138,14 @@ parent: &id002 !Command
       optional: true
     named:
     - !Flag
-      description: 'Uniprot database used with BLAST  [default: UNIPROT-SP]'
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Uniprot database used with BLAST  [default:\nUNIPROT-SP]"
       synonyms:
       - -db
       - --db-used
@@ -131,8 +153,8 @@ parent: &id002 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: if used, the script assumes that the sequence header will be used
-        as gene_id
+      description: "if used, the script assumes that the sequence\nheader will be\
+        \ used as gene_id"
       synonyms:
       - -n
       - --no-split
@@ -155,7 +177,7 @@ parent: &id002 !Command
         name: INTEGER
       optional: true
     - !Flag
-      description: 'Minimum bitscore to keep the annotation [default: 0.0]'
+      description: "Minimum bitscore to keep the annotation\n[default: 0.0]"
       synonyms:
       - -b
       - --bitscore
@@ -163,8 +185,8 @@ parent: &id002 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: Additional attribute and value to add to each annotation, in the
-        form attr:value
+      description: "Additional attribute and value to add to each\nannotation, in\
+        \ the form attr:value"
       synonyms:
       - -k
       - --attr-value
@@ -185,11 +207,9 @@ parent: &id002 !Command
       - --progress
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - blast2gff
-    - uniprot
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -215,6 +235,8 @@ parent: &id002 !Command
       \ message and exit.\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -222,7 +244,12 @@ parent: &id002 !Command
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
-  version_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
   help_text: "Usage: blast2gff [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\n\
     Options:\n  --version  Show the version and exit.\n  --cite\n  --help     Show\
     \ this message and exit.\n\nCommands:\n  blastdb  Reads a BLAST output file [blast-file]\
@@ -230,6 +257,7 @@ parent: &id002 !Command
     \ in tabular format (using...\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:

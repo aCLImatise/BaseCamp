@@ -6,9 +6,12 @@ task Antigenic {
   }
   command <<<
     antigenic \
-      ~{true="-minlen" false="" min_len}
+      ~{if (min_len) then "-minlen" else ""}
   >>>
   parameter_meta {
-    min_len: "integer    [6] Minimum length of antigenic region (Integer from 1 to 50)"
+    min_len: "integer    [6] Minimum length of antigenic region\\n(Integer from 1 to 50)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

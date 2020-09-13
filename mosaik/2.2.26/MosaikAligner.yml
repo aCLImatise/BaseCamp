@@ -1,12 +1,53 @@
 !Command
-positional: []
+command:
+- MosaikAligner
+positional:
+- !Positional
+  description: '-m <mode>                         alignment mode: [unique, all]. def:
+    all'
+  position: 0
+  name: all
+  optional: false
+- !Positional
+  description: -srefn <hashes>                   the maximum special hashes
+  position: 0
+  name: references
+  optional: false
+- !Positional
+  description: '-mms <mismatch score>             the mismatch score. def: -9.00'
+  position: 0
+  name: '10.00'
+  optional: false
 named:
 - !Flag
-  description: 'alignment mode: [unique, all]. def: all'
+  description: the input read file
   synonyms:
-  - -m
+  - -in
   args: !SimpleFlagArg
-    name: mode
+    name: MOSAIK read filename
+  optional: true
+- !Flag
+  description: the output alignment file
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: MOSAIK alignment filename
+  optional: true
+- !Flag
+  description: "enables colorspace to basespace conversion\nusing the supplied BASESPACE\
+    \ reference\narchive"
+  synonyms:
+  - -ibs
+  args: !SimpleFlagArg
+    name: MOSAIK reference filename
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -annpe
+  - -annse
+  args: !SimpleFlagArg
+    name: Neural network filename
   optional: true
 - !Flag
   description: 'hash size [4 - 32]. def: 15'
@@ -44,7 +85,7 @@ named:
     name: nucleotides
   optional: true
 - !Flag
-  description: the minimum alignment percentage [0.0 - 1.0]
+  description: "the minimum alignment percentage [0.0 -\n1.0]"
   synonyms:
   - -minp
   args: !SimpleFlagArg
@@ -58,7 +99,7 @@ named:
     name: mismatches
   optional: true
 - !Flag
-  description: the percentage of mismatches allowed [0.0 - 1.0]
+  description: "the percentage of mismatches allowed [0.0\n- 1.0]"
   synonyms:
   - -mmp
   args: !SimpleFlagArg
@@ -71,7 +112,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'specifies the Smith-Waterman bandwidth. def: 9'
+  description: "specifies the Smith-Waterman bandwidth.\ndef: 9"
   synonyms:
   - -bw
   args: !SimpleFlagArg
@@ -96,28 +137,21 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: specifies the prefixes of special references
+  description: specifies the prefixes of special
   synonyms:
   - -sref
   args: !SimpleFlagArg
     name: reference prefixes
   optional: true
 - !Flag
-  description: the maximum special hashes
-  synonyms:
-  - -srefn
-  args: !SimpleFlagArg
-    name: hashes
-  optional: true
-- !Flag
-  description: output chromosome ids and positions of multiply mapped alignments in
-    the multiple.bam
+  description: "output chromosome ids and positions of\nmultiply mapped alignments\
+    \ in the\nmultiple.bam"
   synonyms:
   - -omi
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: output complete multiply mapped alignments in the multiple.bam
+  description: "output complete multiply mapped alignments\nin the multiple.bam"
   synonyms:
   - -om
   args: !EmptyFlagArg {}
@@ -127,13 +161,6 @@ named:
   synonyms:
   - -zn
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'the mismatch score. def: -9.00'
-  synonyms:
-  - -mms
-  args: !SimpleFlagArg
-    name: mismatch score
   optional: true
 - !Flag
   description: 'the gap open penalty. def: 15.00'
@@ -156,10 +183,9 @@ named:
   args: !SimpleFlagArg
     name: gap open penalty
   optional: true
-command:
-- MosaikAligner
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

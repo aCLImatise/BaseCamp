@@ -10,11 +10,14 @@ task Ifne {
     ifne \
       ~{var_command} \
       ~{args} \
-      ~{true="-n" false="" n}
+      ~{if (n) then "-n" else ""}
   >>>
   parameter_meta {
     n: ""
     var_command: ""
     args: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

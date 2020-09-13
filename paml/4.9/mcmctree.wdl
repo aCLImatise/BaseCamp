@@ -4,4 +4,7 @@ task Mcmctree {
   command <<<
     mcmctree
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

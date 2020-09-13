@@ -1,53 +1,59 @@
 version 1.0
 
-task ArvGet {
+task Arvget {
   input {
-    String? retries
+    Int? retries
     Boolean? progress
     Boolean? no_progress
     Boolean? batch_progress
-    String? hash
+    File? hash
     Boolean? md_five_sum
-    Boolean? write_data_
     Boolean? retrieve_files_specified
     Boolean? overwrite_existing_files
     Boolean? verbose_mode_twice
     Boolean? skip_existing
     Boolean? strip_manifest
     String locator
-    String destination
+    String prefix_dot
+    String stdout_dot
+    String keep_dot
   }
   command <<<
-    arv-get \
+    arv_get \
       ~{locator} \
-      ~{destination} \
+      ~{prefix_dot} \
+      ~{stdout_dot} \
+      ~{keep_dot} \
       ~{if defined(retries) then ("--retries " +  '"' + retries + '"') else ""} \
-      ~{true="--progress" false="" progress} \
-      ~{true="--no-progress" false="" no_progress} \
-      ~{true="--batch-progress" false="" batch_progress} \
+      ~{if (progress) then "--progress" else ""} \
+      ~{if (no_progress) then "--no-progress" else ""} \
+      ~{if (batch_progress) then "--batch-progress" else ""} \
       ~{if defined(hash) then ("--hash " +  '"' + hash + '"') else ""} \
-      ~{true="--md5sum" false="" md_five_sum} \
-      ~{true="-n" false="" write_data_} \
-      ~{true="-r" false="" retrieve_files_specified} \
-      ~{true="-f" false="" overwrite_existing_files} \
-      ~{true="-v" false="" verbose_mode_twice} \
-      ~{true="--skip-existing" false="" skip_existing} \
-      ~{true="--strip-manifest" false="" strip_manifest}
+      ~{if (md_five_sum) then "--md5sum" else ""} \
+      ~{if (retrieve_files_specified) then "-r" else ""} \
+      ~{if (overwrite_existing_files) then "-f" else ""} \
+      ~{if (verbose_mode_twice) then "-v" else ""} \
+      ~{if (skip_existing) then "--skip-existing" else ""} \
+      ~{if (strip_manifest) then "--strip-manifest" else ""}
   >>>
   parameter_meta {
-    retries: "Maximum number of times to retry server requests that encounter temporary failures (e.g., server down). Default 3."
-    progress: "Display human-readable progress on stderr (bytes and, if possible, percentage of total data size). This is the default behavior when it is not expected to interfere with the output: specifically, stderr is a tty _and_ either stdout is not a tty, or output is being written to named files rather than stdout."
+    retries: "Maximum number of times to retry server requests that\\nencounter temporary failures (e.g., server down). Default\\n3."
+    progress: "Display human-readable progress on stderr (bytes and, if\\npossible, percentage of total data size). This is the\\ndefault behavior when it is not expected to interfere\\nwith the output: specifically, stderr is a tty _and_\\neither stdout is not a tty, or output is being written to\\nnamed files rather than stdout."
     no_progress: "Do not display human-readable progress on stderr."
-    batch_progress: "Display machine-readable progress on stderr (bytes and, if known, total data size)."
-    hash: "Display the hash of each file as it is read from Keep, using the given hash algorithm. Supported algorithms include md5, sha1, sha224, sha256, sha384, and sha512."
-    md_five_sum: "Display the MD5 hash of each file as it is read from Keep."
-    write_data_: "Do not write any data -- just read from Keep, and report md5sums if requested."
-    retrieve_files_specified: "Retrieve all files in the specified collection/prefix. This is the default behavior if the \"locator\" argument ends with a forward slash."
-    overwrite_existing_files: "Overwrite existing files while writing. The default behavior is to refuse to write *anything* if any of the output files already exist. As a special case, -f is not needed to write to stdout."
+    batch_progress: "Display machine-readable progress on stderr (bytes and,\\nif known, total data size)."
+    hash: "Display the hash of each file as it is read from Keep,\\nusing the given hash algorithm. Supported algorithms\\ninclude md5, sha1, sha224, sha256, sha384, and sha512."
+    md_five_sum: "Display the MD5 hash of each file as it is read from"
+    retrieve_files_specified: "Retrieve all files in the specified collection/prefix.\\nThis is the default behavior if the \\\"locator\\\" argument\\nends with a forward slash."
+    overwrite_existing_files: "Overwrite existing files while writing. The default\\nbehavior is to refuse to write *anything* if any of the\\noutput files already exist. As a special case, -f is not\\nneeded to write to stdout."
     verbose_mode_twice: "Once for verbose mode, twice for debug mode."
-    skip_existing: "Skip files that already exist. The default behavior is to refuse to write *anything* if any files exist that would have to be overwritten. This option causes even devices, sockets, and fifos to be skipped."
-    strip_manifest: "When getting a collection manifest, strip its access tokens before writing it."
-    locator: "Collection locator, optionally with a file path or prefix."
-    destination: "Local file or directory where the data is to be written. Default: stdout."
+    skip_existing: "Skip files that already exist. The default behavior is to\\nrefuse to write *anything* if any files exist that would\\nhave to be overwritten. This option causes even devices,\\nsockets, and fifos to be skipped."
+    strip_manifest: "When getting a collection manifest, strip its access\\ntokens before writing it.\\n"
+    locator: "Collection locator, optionally with a file path or"
+    prefix_dot: "destination        Local file or directory where the data is to be written."
+    stdout_dot: "optional arguments:"
+    keep_dot: "-n                 Do not write any data -- just read from Keep, and report"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

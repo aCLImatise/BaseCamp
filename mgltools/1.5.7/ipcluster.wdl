@@ -4,4 +4,7 @@ task Ipcluster {
   command <<<
     ipcluster
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

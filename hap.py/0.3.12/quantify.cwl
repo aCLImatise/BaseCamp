@@ -1,138 +1,156 @@
 class: CommandLineTool
 id: ../../../quantify.cwl
 inputs:
-- id: input_file
+- id: in_input_file
   doc: The input file
-  type: string
+  type: File
   inputBinding:
     prefix: --input-file
-- id: arg_output_file
+- id: in_arg_output_file
   doc: '[ --output-file ] arg   The output file name (TSV Format).'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: arg_annotated_vcf
+- id: in_arg_annotated_vcf
   doc: '[ --output-vcf ] arg    Annotated VCF file (with bed annotations).'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -v
-- id: output_summary
-  doc: Output a summary table with TP / FP / FN / UNK  counts, precision, recall,
-    etc.
+- id: in_output_summary
+  doc: "Output a summary table with TP / FP / FN / UNK\ncounts, precision, recall,\
+    \ etc."
   type: string
   inputBinding:
     prefix: --output-summary
-- id: output_filter_rocs
+- id: in_output_filter_rocs
   doc: Output ROC levels for filters.
   type: string
   inputBinding:
     prefix: --output-filter-rocs
-- id: roc_filter
+- id: in_roc_filter
   doc: Ignore certain filters when creating a ROC.
   type: string
   inputBinding:
     prefix: --roc-filter
-- id: roc_delta
+- id: in_roc_delta
   doc: Minium spacing of levels on ROC QQ trace.
   type: string
   inputBinding:
     prefix: --roc-delta
-- id: qq
-  doc: Field to use for QQ (ROC quantity). Can be QUAL /  GQ / ... / any INFO field
-    name.
+- id: in_qq
+  doc: "Field to use for QQ (ROC quantity). Can be QUAL /\nGQ / ... / any INFO field\
+    \ name."
   type: string
   inputBinding:
     prefix: --qq
-- id: qq_header
-  doc: Field header to use for QQ in output tables (ROC  quantity). Defaults to QQ.
+- id: in_qq_header
+  doc: "Field header to use for QQ in output tables (ROC\nquantity). Defaults to QQ."
   type: string
   inputBinding:
     prefix: --qq-header
-- id: arg_reference_fasta
-  doc: '[ --reference ] arg     The reference fasta file (needed only for VCF  output).'
-  type: boolean
+- id: in_arg_reference_fasta
+  doc: "[ --reference ] arg     The reference fasta file (needed only for VCF\noutput)."
+  type: File
   inputBinding:
     prefix: -r
-- id: arg_start_location
+- id: in_arg_start_location
   doc: '[ --location ] arg      Start location.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: arg_region_bed
-  doc: '[ --regions ] arg       Region bed file. You can attach a label by  prefixing
-    with a colon, e.g. -R  FP2:false-positives-type2.bed'
+- id: in_arg_region_bed
+  doc: "[ --regions ] arg       Region bed file. You can attach a label by\nprefixing\
+    \ with a colon, e.g. -R\nFP2:false-positives-type2.bed"
   type: boolean
   inputBinding:
     prefix: -R
-- id: roc_regions
-  doc: Regions to compute ROCs in. By default, only the  '*' region (total unstratified
-    counts) will  produce ROC counts. For example, --roc-regions '*' --roc-regions
-    FP2 also produces a ROC in the FP2  regions.
-  type: string
+- id: in_roc_regions
+  doc: "Regions to compute ROCs in. By default, only the\n'*' region (total unstratified\
+    \ counts) will\nproduce ROC counts. For example, --roc-regions '*'\n--roc-regions\
+    \ FP2 also produces a ROC in the FP2\nregions."
+  type: long
   inputBinding:
     prefix: --roc-regions
-- id: type
-  doc: Quantification method to use. Current choices are  xcmp or ga4gh.
-  type: string
+- id: in_type
+  doc: "Quantification method to use. Current choices are\nxcmp or ga4gh."
+  type: long
   inputBinding:
     prefix: --type
-- id: arg_bed_file
-  doc: '[ --only ] arg          Bed file of locations (equivalent to -R in  bcftools)'
+- id: in_arg_bed_file
+  doc: "[ --only ] arg          Bed file of locations (equivalent to -R in\nbcftools)"
   type: boolean
   inputBinding:
     prefix: -O
-- id: limit_records
+- id: in_limit_records
   doc: Maximum umber of records to process
   type: string
   inputBinding:
     prefix: --limit-records
-- id: message_every
+- id: in_message_every
   doc: Print a message every N records.
   type: string
   inputBinding:
     prefix: --message-every
-- id: arg_apply_filtering
+- id: in_arg_apply_filtering
   doc: '[ --apply-filters ] arg Apply filtering in VCF.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: count_hom_ref
+- id: in_count_hom_ref
   doc: Count homref locations.
   type: string
   inputBinding:
     prefix: --count-homref
-- id: output_vtc
+- id: in_output_vtc
   doc: Output variant types counted (debugging).
   type: string
   inputBinding:
     prefix: --output-vtc
-- id: clean_info
+- id: in_clean_info
   doc: Set to zero to preserve INFO fields (default is 1)
-  type: string
+  type: long
   inputBinding:
     prefix: --clean-info
-- id: output_rocs
-  doc: Output ROCs with full set of levels of QQ values  (default is 1, disable for
-    more concise output)
-  type: string
+- id: in_output_rocs
+  doc: "Output ROCs with full set of levels of QQ values\n(default is 1, disable for\
+    \ more concise output)"
+  type: long
   inputBinding:
     prefix: --output-rocs
-- id: fix_chr_regions
-  doc: Add chr prefix to regions if necessary (default is off).
+- id: in_fix_chr_regions
+  doc: "Add chr prefix to regions if necessary (default is\noff)."
   type: string
   inputBinding:
     prefix: --fix-chr-regions
-- id: threads
+- id: in_threads
   doc: Number of threads to use.
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: block_size
+- id: in_block_size
   doc: Number of variants per block.
-  type: string
+  type: long
   inputBinding:
     prefix: --blocksize
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_output_file
+  doc: '[ --output-file ] arg   The output file name (TSV Format).'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_file)
+- id: out_arg_annotated_vcf
+  doc: '[ --output-vcf ] arg    Annotated VCF file (with bed annotations).'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_annotated_vcf)
+- id: out_arg_reference_fasta
+  doc: "[ --reference ] arg     The reference fasta file (needed only for VCF\noutput)."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_reference_fasta)
 cwlVersion: v1.1
 baseCommand:
 - quantify

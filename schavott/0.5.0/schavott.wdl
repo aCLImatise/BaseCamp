@@ -4,17 +4,17 @@ task Schavott {
   input {
     String? run_mode
     String? scaffold_er
-    String? s_space_path
+    File? s_space_path
     String? read_type
     Int? min_read_length
     Int? min_quality
-    String? watch
-    String? contig_file
+    Directory? watch
+    File? contig_file
     String? trigger_mode
     String? skip
     Int? intensity
     Boolean? plot
-    String? set_output_filename
+    File? set_filename_schavott
   }
   command <<<
     schavott \
@@ -29,22 +29,26 @@ task Schavott {
       ~{if defined(trigger_mode) then ("--trigger_mode " +  '"' + trigger_mode + '"') else ""} \
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
       ~{if defined(intensity) then ("--intensity " +  '"' + intensity + '"') else ""} \
-      ~{true="--plot" false="" plot} \
-      ~{if defined(set_output_filename) then ("--output " +  '"' + set_output_filename + '"') else ""}
+      ~{if (plot) then "--plot" else ""} \
+      ~{if defined(set_filename_schavott) then ("--output " +  '"' + set_filename_schavott + '"') else ""}
   >>>
   parameter_meta {
     run_mode: "Run scaffolding or assembly"
     scaffold_er: "Which scaffolder to use."
     s_space_path: "Path to SSPACE (Only for scaffolding)"
-    read_type: "Select input type: fastq, fast5 or fasta, this is also the search pattern for shavott (*.read_type)"
+    read_type: "Select input type: fastq, fast5 or fasta, this is also\\nthe search pattern for shavott (*.read_type)"
     min_read_length: "Minimum read length from MinION to use."
     min_quality: "Minimum quality for reads from MinION to use."
     watch: "Directory to watch for fast5 files"
     contig_file: "Path to contig file (Only for scaffolding)"
     trigger_mode: "Use timer or read count. [reads]"
     skip: "Skips the first j read of the sequencing"
-    intensity: "How often the scaffolding process should run. If run mode is set to reads, scaffolding will run every i:th read. If run mode is time, scaffolding will run every i:th second. [100 reads]"
+    intensity: "How often the scaffolding process should run. If run\\nmode is set to reads, scaffolding will run every i:th\\nread. If run mode is time, scaffolding will run every\\ni:th second. [100 reads]"
     plot: "Plot result in web-browser"
-    set_output_filename: "Set output filename. (Defaut: schavott)"
+    set_filename_schavott: "Set output filename. (Defaut: schavott)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_set_filename_schavott = "${in_set_filename_schavott}"
   }
 }

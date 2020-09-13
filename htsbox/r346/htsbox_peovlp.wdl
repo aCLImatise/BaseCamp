@@ -13,8 +13,8 @@ task HtsboxPeovlp {
     Boolean? tabular_output_debugging
     String seq_tk
     String merge_pe
-    String read_one_dot_fq
-    String read_two_dot_fq
+    Int read_one_dot_fq
+    Int read_two_dot_fq
   }
   command <<<
     htsbox peovlp \
@@ -29,8 +29,8 @@ task HtsboxPeovlp {
       ~{if defined(min_overlap_length) then ("-o " +  '"' + min_overlap_length + '"') else ""} \
       ~{if defined(output_pe_reads) then ("-p " +  '"' + output_pe_reads + '"') else ""} \
       ~{if defined(trim_intbp_end) then ("-T " +  '"' + trim_intbp_end + '"') else ""} \
-      ~{true="-P" false="" output_paired_reads} \
-      ~{true="-d" false="" tabular_output_debugging}
+      ~{if (output_paired_reads) then "-P" else ""} \
+      ~{if (tabular_output_debugging) then "-d" else ""}
   >>>
   parameter_meta {
     barcode_file_overriding: "barcode file (overriding -B) []"
@@ -46,5 +46,8 @@ task HtsboxPeovlp {
     merge_pe: ""
     read_one_dot_fq: ""
     read_two_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

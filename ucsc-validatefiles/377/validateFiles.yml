@@ -1,53 +1,32 @@
-!Command
-positional:
-- !Positional
-  description: ': ENCODE Peak formats'
-  position: 0
-  name: broadPeak
-  optional: false
-- !Positional
-  description: These are specialized bedN+P formats.
-  position: 1
-  name: narrowPeak
-  optional: false
-- !Positional
-  description: See http://genomewiki.soe.ucsc.edu/EncodeDCC/index.php/File_Formats
-  position: 2
-  name: gappedPeak
-  optional: false
-- !Positional
-  description: ':  BED Graph'
-  position: 3
-  name: bedGraph
-  optional: false
-- !Positional
-  description: ':  NanoString RCC'
-  position: 4
-  name: rcc
-  optional: false
-- !Positional
-  description: ':  Illumina IDAT'
-  position: 5
-  name: idat
-  optional: false
+&id001 !Command
+command:
+- validateFiles
+positional: []
 named:
 - !Flag
-  description: If you have extra "bedPlus" fields, it's great to put a definition
-    of each field in a row in AutoSql format here. Applies to bed-related types.
+  description: '='
+  synonyms:
+  - -type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If you have extra \"bedPlus\" fields, it's great to put a definition\n\
+    of each field in a row in AutoSql format here. Applies to bed-related types."
   synonyms:
   - -as
   args: !SimpleFlagArg
     name: fields.as
   optional: true
 - !Flag
-  description: If set, expect fields to be tab separated, normally expects white space
-    separator. Applies to bed-related types.
+  description: "If set, expect fields to be tab separated, normally\nexpects white\
+    \ space separator. Applies to bed-related types."
   synonyms:
   - -tab
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Specify DB containing chromInfo table to validate chrom names and sizes
+  description: "Specify DB containing chromInfo table to validate chrom names\nand\
+    \ sizes"
   synonyms:
   - -chromDb
   args: !SimpleFlagArg
@@ -61,8 +40,8 @@ named:
     name: file.txt
   optional: true
 - !Flag
-  description: Sequences include colorspace values [0-3] (can be used  with formats
-    such as tagAlign and pairedTagAlign)
+  description: "Sequences include colorspace values [0-3] (can be used\nwith formats\
+    \ such as tagAlign and pairedTagAlign)"
   synonyms:
   - -colorSpace
   args: !EmptyFlagArg {}
@@ -86,8 +65,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: REQUIRED to validate sequence mappings match the genome specified in
-    the .2bit file. (BAM, tagAlign, pairedTagAlign)
+  description: "REQUIRED to validate sequence mappings match the genome specified\n\
+    in the .2bit file. (BAM, tagAlign, pairedTagAlign)"
   synonyms:
   - -genome
   args: !SimpleFlagArg
@@ -107,7 +86,7 @@ named:
     name: n
   optional: true
 - !Flag
-  description: 'Maximum number of mismatches in sequence (or read pair) '
+  description: Maximum number of mismatches in sequence (or read pair)
   synonyms:
   - -mismatches
   args: !SimpleFlagArg
@@ -121,8 +100,8 @@ named:
     name: n
   optional: true
 - !Flag
-  description: Check either pair dont exceed mismatch count if validating pairedTagAlign
-    files (default is the total for the pair)
+  description: "Check either pair dont exceed mismatch count if validating\npairedTagAlign\
+    \ files (default is the total for the pair)"
   synonyms:
   - -mmPerPair
   args: !EmptyFlagArg {}
@@ -171,17 +150,283 @@ named:
   - -options
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -type
-  args: !SimpleFlagArg
-    name: FILE_TYPE
-  optional: true
-command:
-- validateFiles
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - validateFiles
+  - csfasta
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: &id002
+  - -h
+- !Command
+  command:
+  - validateFiles
+  - csqual
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - fasta
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - gappedPeak
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - bedGraph
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - rcc
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - narrowPeak
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - tagAlign
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - idat
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - fastq
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - bigWig
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - pairedTagAlign
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+- !Command
+  command:
+  - validateFiles
+  - bam
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:

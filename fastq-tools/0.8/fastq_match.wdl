@@ -1,7 +1,10 @@
 version 1.0
 
-task FastqMatch {
+task Fastqmatch {
   command <<<
-    fastq-match
+    fastq_match
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

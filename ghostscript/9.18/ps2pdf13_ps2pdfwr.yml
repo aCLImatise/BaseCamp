@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- ps2pdf13
+- ps2pdfwr
 positional: []
 named:
 - !Flag
@@ -7,18 +10,17 @@ named:
   - --dict
   args: !EmptyFlagArg {}
   optional: true
-command:
-- ps2pdf13
-- ps2pdfwr
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - ps2pdf13
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - ps2pdf13
+    - options...
     positional: []
     named:
     - !Flag
@@ -27,11 +29,9 @@ parent: &id002 !Command
       - --dict
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ps2pdf13
-    - options...
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -44,12 +44,15 @@ parent: &id002 !Command
       \ error, exit code 1\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
   help_text: "Usage: ps2pdfwr [options...] (input.[e]ps|-) [output.pdf|-]\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

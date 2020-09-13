@@ -4,4 +4,7 @@ task Pblayout {
   command <<<
     pblayout
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

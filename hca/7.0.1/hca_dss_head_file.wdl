@@ -1,17 +1,20 @@
 version 1.0
 
-task HcaDssHeadFile {
+task HcaDssHeadfile {
   input {
-    String? uuid
+    File? uuid
     String? replica
   }
   command <<<
-    hca dss head-file \
+    hca dss head_file \
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""} \
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""}
   >>>
   parameter_meta {
     uuid: "A RFC4122-compliant ID for the file."
     replica: "Replica to fetch from."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

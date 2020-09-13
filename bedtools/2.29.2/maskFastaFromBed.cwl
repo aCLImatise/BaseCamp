@@ -1,49 +1,58 @@
 class: CommandLineTool
 id: ../../../maskFastaFromBed.cwl
 inputs:
-- id: fi
+- id: in_fi
   doc: Input FASTA file
   type: boolean
   inputBinding:
     prefix: -fi
-- id: bed
+- id: in_bed
   doc: BED/GFF/VCF file of ranges to mask in -fi
   type: boolean
   inputBinding:
     prefix: -bed
-- id: fo
+- id: in_fo
   doc: Output FASTA file
-  type: boolean
+  type: File
   inputBinding:
     prefix: -fo
-- id: soft
-  doc: Enforce "soft" masking. Mask with lower-case bases, instead of masking with
-    Ns.
+- id: in_soft
+  doc: "Enforce \"soft\" masking.\nMask with lower-case bases, instead of masking\
+    \ with Ns."
   type: boolean
   inputBinding:
     prefix: -soft
-- id: mc
-  doc: Replace masking character. Use another character, instead of masking with Ns.
+- id: in_mc
+  doc: "Replace masking character.\nUse another character, instead of masking with\
+    \ Ns."
   type: boolean
   inputBinding:
     prefix: -mc
-- id: full_header
-  doc: Use full fasta header. By default, only the word before the first space or
-    tab is used.
+- id: in_full_header
+  doc: "Use full fasta header.\nBy default, only the word before the first space or\
+    \ tab\nis used.\n"
   type: boolean
   inputBinding:
     prefix: -fullHeader
-- id: bed_tools
+- id: in_bed_tools
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: mask_fast_a
+- id: in_mask_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_fo
+  doc: Output FASTA file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_fo)
 cwlVersion: v1.1
 baseCommand:
 - maskFastaFromBed

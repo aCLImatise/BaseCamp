@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../fraggraph_gen.cwl
 inputs:
-- id: smiles_or_inch_i_string
+- id: in_smiles_or_inch_i_string
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: max_depth
+- id: in_max_depth
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fraggraph-gen

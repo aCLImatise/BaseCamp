@@ -1,24 +1,24 @@
 version 1.0
 
-task RsemRunEm {
+task Rsemrunem {
   input {
     Boolean? number_user_wants
-    Boolean? produce_bam_default
+    File? produce_bam_default
     Boolean? set_it_quiet
-    Boolean? gibbs_out
+    File? gibbs_out
     Boolean? sampling
-    String? seed
+    Int? seed
     Boolean? append_names
   }
   command <<<
-    rsem-run-em \
-      ~{true="-p" false="" number_user_wants} \
-      ~{true="-b" false="" produce_bam_default} \
-      ~{true="-q" false="" set_it_quiet} \
-      ~{true="--gibbs-out" false="" gibbs_out} \
-      ~{true="--sampling" false="" sampling} \
+    rsem_run_em \
+      ~{if (number_user_wants) then "-p" else ""} \
+      ~{if (produce_bam_default) then "-b" else ""} \
+      ~{if (set_it_quiet) then "-q" else ""} \
+      ~{if (gibbs_out) then "--gibbs-out" else ""} \
+      ~{if (sampling) then "--sampling" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--append-names" false="" append_names}
+      ~{if (append_names) then "--append-names" else ""}
   >>>
   parameter_meta {
     number_user_wants: ": number of threads which user wants to use. (default: 1)"
@@ -28,5 +28,10 @@ task RsemRunEm {
     sampling: ": sample each read from its posterior distribution when BAM file is generated. (default: off)"
     seed: ": the seed used for the BAM sampling. (default: off)"
     append_names: ": append transcript_name/gene_name when available. (default: off)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_produce_bam_default = "${in_produce_bam_default}"
+    File out_gibbs_out = "${in_gibbs_out}"
   }
 }

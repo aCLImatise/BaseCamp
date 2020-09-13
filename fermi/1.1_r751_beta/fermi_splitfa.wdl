@@ -4,7 +4,7 @@ task FermiSplitfa {
   input {
     String in_dot_fq
     String out_dot_prefix
-    String? eight
+    Int? eight
   }
   command <<<
     fermi splitfa \
@@ -16,5 +16,8 @@ task FermiSplitfa {
     in_dot_fq: ""
     out_dot_prefix: ""
     eight: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

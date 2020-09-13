@@ -2,19 +2,22 @@ version 1.0
 
 task Dextract {
   input {
-    Boolean? v_faq
     Boolean? o
+    Boolean? v_faq
     File? path
   }
   command <<<
     dextract \
       ~{path} \
-      ~{true="-vfaq" false="" v_faq} \
-      ~{true="-o" false="" o}
+      ~{if (o) then "-o" else ""} \
+      ~{if (v_faq) then "-vfaq" else ""}
   >>>
   parameter_meta {
-    v_faq: ""
     o: ""
+    v_faq: ""
     path: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

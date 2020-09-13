@@ -2,25 +2,25 @@ version 1.0
 
 task PpanggolinSpot {
   input {
-    String? output_directory_default
+    Directory? output_directory_defaultppanggolinoutputdatehourpid
     Boolean? spot_graph
     Boolean? draw_hotspots
-    String? overlapping_match
-    String? set_size
-    String? exact_match_size
-    Int? interest
-    String? pan_genome
-    String? tmpdir
+    Int? overlapping_match
+    Int? set_size
+    Int? exact_match_size
+    String? interest
+    File? pan_genome
+    Directory? tmpdir
     String? verbose
-    String? log
-    String? cpu
-    Boolean? force
+    File? log
+    Int? cpu
+    File? force
   }
   command <<<
     ppanggolin spot \
-      ~{if defined(output_directory_default) then ("--output " +  '"' + output_directory_default + '"') else ""} \
-      ~{true="--spot_graph" false="" spot_graph} \
-      ~{true="--draw_hotspots" false="" draw_hotspots} \
+      ~{if defined(output_directory_defaultppanggolinoutputdatehourpid) then ("--output " +  '"' + output_directory_defaultppanggolinoutputdatehourpid + '"') else ""} \
+      ~{if (spot_graph) then "--spot_graph" else ""} \
+      ~{if (draw_hotspots) then "--draw_hotspots" else ""} \
       ~{if defined(overlapping_match) then ("--overlapping_match " +  '"' + overlapping_match + '"') else ""} \
       ~{if defined(set_size) then ("--set_size " +  '"' + set_size + '"') else ""} \
       ~{if defined(exact_match_size) then ("--exact_match_size " +  '"' + exact_match_size + '"') else ""} \
@@ -30,21 +30,27 @@ task PpanggolinSpot {
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
-      ~{true="--force" false="" force}
+      ~{if (force) then "--force" else ""}
   >>>
   parameter_meta {
-    output_directory_default: "Output directory (default: ppanggolin_output_DATE2020- 06-23_HOUR13.46.37_PID31916)"
-    spot_graph: "Writes a graph in a .gexf format of pairs of blocks of single copy markers flanking RGPs, supposedly belonging to the same hotspot (default: False)"
-    draw_hotspots: "Draws a figure representing all of the hotspots syntenies (default: False)"
-    overlapping_match: "The number of 'missing' persistent genes allowed when comparing flanking genes during hotspot computations (default: 2)"
-    set_size: "Number of single copy markers to use as flanking genes for a RGP during hotspot computation (default: 3)"
-    exact_match_size: "Number of perfecty matching flanking single copy markers required to associate RGPs during hotspot computation (Ex: If set to 1, two RGPs are in the same hotspot if both their 1st flanking genes are the same) (default: 1)"
-    interest: "Comma separated list of elements to flag when drawing hotspots (default: )"
+    output_directory_defaultppanggolinoutputdatehourpid: "Output directory (default:\\nppanggolin_output_DATE2020-09-09_HOUR23.41.14_PID1862)"
+    spot_graph: "Writes a graph in a .gexf format of pairs of blocks of\\nsingle copy markers flanking RGPs, supposedly\\nbelonging to the same hotspot (default: False)"
+    draw_hotspots: "Draws a figure representing all of the hotspots\\nsyntenies (default: False)"
+    overlapping_match: "The number of 'missing' persistent genes allowed when\\ncomparing flanking genes during hotspot computations\\n(default: 2)"
+    set_size: "Number of single copy markers to use as flanking genes\\nfor a RGP during hotspot computation (default: 3)"
+    exact_match_size: "Number of perfecty matching flanking single copy\\nmarkers required to associate RGPs during hotspot\\ncomputation (Ex: If set to 1, two RGPs are in the same\\nhotspot if both their 1st flanking genes are the same)\\n(default: 1)"
+    interest: "Comma separated list of elements to flag when drawing\\nhotspots (default: )"
     pan_genome: "The pangenome .h5 file (default: None)"
     tmpdir: "directory for storing temporary files (default: /tmp)"
-    verbose: "Indicate verbose level (0 for warning and errors only, 1 for info, 2 for debug) (default: 1)"
+    verbose: "Indicate verbose level (0 for warning and errors only,\\n1 for info, 2 for debug) (default: 1)"
     log: "log output file (default: stdout)"
     cpu: "Number of available cpus (default: 1)"
-    force: "Force writing in output directory and in pangenome output file. (default: False)"
+    force: "Force writing in output directory and in pangenome\\noutput file. (default: False)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_defaultppanggolinoutputdatehourpid = "${in_output_directory_defaultppanggolinoutputdatehourpid}"
+    File out_log = "${in_log}"
+    File out_force = "${in_force}"
   }
 }

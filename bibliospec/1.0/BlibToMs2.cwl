@@ -1,36 +1,45 @@
 class: CommandLineTool
 id: ../../../BlibToMs2.cwl
 inputs:
-- id: arg_name_output
-  doc: '[ --file-name ] arg                Name the output ms2 file.  Default is  <library
-    name>.ms2.'
-  type: boolean
+- id: in_arg_name_output
+  doc: "[ --file-name ] arg                Name the output ms2 file.  Default is\n\
+    <library name>.ms2."
+  type: File
   inputBinding:
     prefix: -f
-- id: arg_precision_peak
-  doc: '[ --mz-precision ] arg (=2)        Precision for peak m/z printed to ms2.  Default
-    2.'
+- id: in_arg_precision_peak_mz
+  doc: "[ --mz-precision ] arg (=2)        Precision for peak m/z printed to ms2.\n\
+    Default 2."
   type: boolean
   inputBinding:
     prefix: -m
-- id: arg_precision_default
-  doc: '[ --intensity-precision ] arg (=1) Precision for peak intensities.   Default
-    1.'
+- id: in_arg_precision_peak_intensitiesdefault
+  doc: "[ --intensity-precision ] arg (=1) Precision for peak intensities.\nDefault\
+    \ 1."
   type: boolean
   inputBinding:
     prefix: -i
-- id: arg_status_control
-  doc: '[ --verbosity ] arg (=status)      Control the level of output to stderr.  (silent,
-    error, status, warn, debug,  detail, all)  Default status.'
+- id: in_arg_status_control
+  doc: "[ --verbosity ] arg (=status)      Control the level of output to stderr.\n\
+    (silent, error, status, warn, debug,\ndetail, all)  Default status."
   type: boolean
   inputBinding:
     prefix: -v
-- id: library
+- id: in_library
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_name_output
+  doc: "[ --file-name ] arg                Name the output ms2 file.  Default is\n\
+    <library name>.ms2."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_name_output)
 cwlVersion: v1.1
 baseCommand:
 - BlibToMs2

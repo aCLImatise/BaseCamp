@@ -1,86 +1,83 @@
 class: CommandLineTool
 id: ../../../sequana_compressor.cwl
 inputs:
-- id: quiet
+- id: in_source
+  doc: be provided but no analysis will be performed
+  type: string
+  inputBinding:
+    prefix: --source
+- id: in_quiet
   doc: set verbosity off
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: source
-  doc: 'Search for all source files with this extension. Valid extensions are: fastq,
-    fastq.gz, fastq.bz2, fastq.dscr, fq, fq.gz, fq.bz2 and fq.dsrc'
-  type: string
-  inputBinding:
-    prefix: --source
-- id: target
-  doc: Convert the source files to a new target format. Same extensions as above.
-  type: string
-  inputBinding:
-    prefix: --target
-- id: recursive
+- id: in_recursive
   doc: recursive search
   type: boolean
   inputBinding:
     prefix: --recursive
-- id: dry_run
+- id: in_dry_run
   doc: Do not execute anything
   type: boolean
   inputBinding:
     prefix: --dryrun
-- id: threads
+- id: in_threads
   doc: Maximum number of threads to use per task (4).
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: jobs
+- id: in_jobs
   doc: Maximum number of cores to use at the same time (4).
-  type: string
+  type: long
   inputBinding:
     prefix: --jobs
-- id: bypass_job_limit
-  doc: The number of jobs is limited to 20 to limit IO. If you want to bypass this
-    limitation, use this option.
+- id: in_bypass_job_limit
+  doc: "The number of jobs is limited to 20 to limit IO. If\nyou want to bypass this\
+    \ limitation, use this option."
   type: boolean
   inputBinding:
     prefix: --bypass-job-limit
-- id: unlock
-  doc: If you stopped the application, the underlying snakemake process are interrupted
-    and directories were snakemake was launch will be locked. If so please use this
-    option using the --source and --target as when you got the error message
+- id: in_unlock
+  doc: "If you stopped the application, the underlying\nsnakemake process are interrupted\
+    \ and directories were\nsnakemake was launch will be locked. If so please use\n\
+    this option using the --source and --target as when\nyou got the error message"
   type: boolean
   inputBinding:
     prefix: --unlock
-- id: snake_make_options
-  doc: Any valid list of options accepted by snakemake except -s and -j (for -j, use
-    our --jobs argument). Note that by default --keep-going is used ; If you set this
-    argument yourself, you have to add --keep-going as well otherwise it stops at
-    the first error encountered
+- id: in_snake_make_options
+  doc: "Any valid list of options accepted by snakemake except\n-s and -j (for -j,\
+    \ use our --jobs argument). Note that\nby default --keep-going is used ; If you\
+    \ set this\nargument yourself, you have to add --keep-going as\nwell otherwise\
+    \ it stops at the first error encountered"
   type: string
   inputBinding:
     prefix: --snakemake-options
-- id: snake_make_cluster
-  doc: "a valid snakemake option dedicated to a cluster.   e.g on LSF cluster use:\
-    \ --cluster 'qsub -cwd -q<QUEUE> ' On a SLURM system use for example: --cluster\
-    \ 'sbatch --qos normal'"
+- id: in_snake_make_cluster
+  doc: "a valid snakemake option dedicated to a cluster.\ne.g on LSF cluster use:\n\
+    --cluster 'qsub -cwd -q<QUEUE> '\nOn a SLURM system use for example:\n--cluster\
+    \ 'sbatch --qos normal'\n"
   type: string
   inputBinding:
     prefix: --snakemake-cluster
-- id: welcome
+- id: in_welcome
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: to
+- id: in_to
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: se_quan_a
+- id: in_se_quan_a
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sequana_compressor

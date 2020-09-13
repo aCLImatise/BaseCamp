@@ -4,4 +4,7 @@ task Densitree {
   command <<<
     densitree
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

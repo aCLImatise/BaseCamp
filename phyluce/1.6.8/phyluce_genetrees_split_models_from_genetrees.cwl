@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../phyluce_genetrees_split_models_from_genetrees.cwl
 inputs:
-- id: gene_trees
+- id: in_gene_trees
   doc: The cloudforest genetree file containing models
-  type: string
+  type: File
   inputBinding:
     prefix: --genetrees
-- id: output
-  doc: The output file to hold the parsed substitution model data
-  type: string
+- id: in_output
+  doc: "The output file to hold the parsed substitution model\ndata\n"
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "The output file to hold the parsed substitution model\ndata\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_genetrees_split_models_from_genetrees

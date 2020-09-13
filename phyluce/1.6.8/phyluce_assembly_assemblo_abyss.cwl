@@ -1,57 +1,60 @@
 class: CommandLineTool
 id: ../../../phyluce_assembly_assemblo_abyss.cwl
 inputs:
-- id: output
+- id: in_output
   doc: The directory in which to store the assembly data
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: km_er
+- id: in_km_er
   doc: The kmer value to use
   type: string
   inputBinding:
     prefix: --kmer
-- id: cores
-  doc: The number of compute cores/threads to run with Trinity
-  type: string
+- id: in_cores
+  doc: The number of compute cores/threads to run with
+  type: long
   inputBinding:
     prefix: --cores
-- id: subfolder
-  doc: A subdirectory, below the level of the group, containing the reads
-  type: string
-  inputBinding:
-    prefix: --subfolder
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-- id: clean
+- id: in_clean
   doc: Cleanup all intermediate Trinity files
   type: boolean
   inputBinding:
     prefix: --clean
-- id: abyss_se
+- id: in_abyss_se
   doc: Only use abyss-se
   type: boolean
   inputBinding:
     prefix: --abyss-se
-- id: config
+- id: in_config
   doc: A configuration file containing reads to assemble
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: dir
+- id: in_dir
   doc: A directory of reads to assemble
-  type: string
+  type: Directory
   inputBinding:
     prefix: --dir
-outputs: []
+- id: in_trinity
+  doc: --subfolder SUBFOLDER
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_assembly_assemblo_abyss

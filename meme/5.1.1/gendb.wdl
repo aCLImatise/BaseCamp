@@ -2,20 +2,18 @@ version 1.0
 
 task Gendb {
   input {
-    String? alph
+    File? alph
     String? am_big
-    String? b_file
+    File? b_file
     Int? min_seq
     Int? max_seq
     String? order
-    String? type
+    Int? type
     Boolean? dummy
-    String? seed
-    String sequence_count
+    Int? seed
   }
   command <<<
     gendb \
-      ~{sequence_count} \
       ~{if defined(alph) then ("-alph " +  '"' + alph + '"') else ""} \
       ~{if defined(am_big) then ("-ambig " +  '"' + am_big + '"') else ""} \
       ~{if defined(b_file) then ("-bfile " +  '"' + b_file + '"') else ""} \
@@ -23,19 +21,21 @@ task Gendb {
       ~{if defined(max_seq) then ("-maxseq " +  '"' + max_seq + '"') else ""} \
       ~{if defined(order) then ("-order " +  '"' + order + '"') else ""} \
       ~{if defined(type) then ("-type " +  '"' + type + '"') else ""} \
-      ~{true="-dummy" false="" dummy} \
+      ~{if (dummy) then "-dummy" else ""} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""}
   >>>
   parameter_meta {
     alph: "Set the alphabet (overrides -type)"
-    am_big: "Set the fraction of symbols that will be ambiguous (overrides -type)"
+    am_big: "Set the fraction of symbols that\\nwill be ambiguous (overrides -type)"
     b_file: "Set the background"
-    min_seq: "Set the minimum sequence length (default: 50)"
-    max_seq: "Set the maximum sequence length (default: 2000)"
-    order: "Set the highest background order to load (default: load highest available)"
-    type: "|1|2|3|4          Set the alphabet type 0 = Protein with 1% ambiguous symbols (default) 1 = DNA with 1% ambiguous symbols 2 = codons (ignores -bfile) 3 = DNA without ambiguous symbols 4 = Protein without ambiguous symbols"
+    min_seq: "Set the minimum sequence length\\n(default: 50)"
+    max_seq: "Set the maximum sequence length\\n(default: 2000)"
+    order: "Set the highest background order to load\\n(default: load highest available)"
+    type: "|1|2|3|4          Set the alphabet type\\n0 = Protein with 1% ambiguous symbols (default)\\n1 = DNA with 1% ambiguous symbols\\n2 = codons (ignores -bfile)\\n3 = DNA without ambiguous symbols\\n4 = Protein without ambiguous symbols"
     dummy: "Add dummy sequence showing the configuration"
     seed: "Set the pseudo-random number generator seed"
-    sequence_count: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

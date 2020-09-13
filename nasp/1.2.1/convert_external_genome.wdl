@@ -2,12 +2,12 @@ version 1.0
 
 task ConvertExternalGenome {
   input {
-    String? nuc_me_rpath
+    File? nuc_me_rpath
     String? nuc_mer_args
-    String? delta_filter_path
+    File? delta_filter_path
     String? delta_filter_args
-    String? reference
-    String? external
+    File? reference
+    File? external
     String? name
   }
   command <<<
@@ -24,9 +24,12 @@ task ConvertExternalGenome {
     nuc_me_rpath: "Path to the 'nucmer' executable."
     nuc_mer_args: "Optional arguments to pass to the 'nucmer' executable."
     delta_filter_path: "Path to the 'delta-filter' executable."
-    delta_filter_args: "Optional arguments to pass to the 'delta-filter' executable."
+    delta_filter_args: "Optional arguments to pass to the 'delta-filter'\\nexecutable."
     reference: "Path to the reference fasta file."
     external: "Path to the external genome fasta file."
     name: "Name of this external genome."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

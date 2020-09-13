@@ -1,82 +1,80 @@
 class: CommandLineTool
 id: ../../../sga_assemble.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: out_prefix
+- id: in_out_prefix
   doc: use NAME as the prefix of the output files (output files will be NAME-contigs.fa,
     etc)
   type: string
   inputBinding:
     prefix: --out-prefix
-- id: min_overlap
-  doc: only use overlaps of at least LEN. This can be used to filter the overlap set
-    so that the overlap step only needs to be run once.
-  type: string
+- id: in_min_overlap
+  doc: "only use overlaps of at least LEN. This can be used to filter\nthe overlap\
+    \ set so that the overlap step only needs to be run once."
+  type: long
   inputBinding:
     prefix: --min-overlap
-- id: transitive_reduction
+- id: in_transitive_reduction
   doc: remove transitive edges from the graph. Off by default.
   type: boolean
   inputBinding:
     prefix: --transitive-reduction
-- id: max_edges
-  doc: 'limit each vertex to a maximum of N edges. For highly repetitive regions this
-    helps save memory by culling excessive edges around unresolvable repeats (default:
-    128)'
-  type: string
+- id: in_max_edges
+  doc: "limit each vertex to a maximum of N edges. For highly repetitive regions\n\
+    this helps save memory by culling excessive edges around unresolvable repeats\
+    \ (default: 128)"
+  type: long
   inputBinding:
     prefix: --max-edges
-- id: bubble
+- id: in_bubble
   doc: 'perform N bubble removal steps (default: 3)'
-  type: string
+  type: long
   inputBinding:
     prefix: --bubble
-- id: max_divergence
+- id: in_max_divergence
   doc: 'only remove variation if the divergence between sequences is less than F (default:
     0.05)'
-  type: string
+  type: long
   inputBinding:
     prefix: --max-divergence
-- id: max_gap_divergence
-  doc: 'only remove variation if the divergence between sequences when only counting
-    indels is less than F (default: 0.01) Setting this to 0.0 will suppress removing
-    indel variation'
-  type: string
+- id: in_max_gap_divergence
+  doc: "only remove variation if the divergence between sequences when only counting\
+    \ indels is less than F (default: 0.01)\nSetting this to 0.0 will suppress removing\
+    \ indel variation"
+  type: long
   inputBinding:
     prefix: --max-gap-divergence
-- id: max_in_del
+- id: in_max_in_del
   doc: 'do not remove variation that is an indel of length greater than D (default:
     20)'
-  type: string
+  type: long
   inputBinding:
     prefix: --max-indel
-- id: cut_terminal
+- id: in_cut_terminal
   doc: 'cut off terminal branches in N rounds (default: 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cut-terminal
-- id: min_branch_length
+- id: in_min_branch_length
   doc: 'remove terminal branches only if they are less than LEN bases in length (default:
     150)'
-  type: string
+  type: long
   inputBinding:
     prefix: --min-branch-length
-- id: resolve_small
-  doc: 'resolve small repeats using spanning overlaps when the difference between
-    the shortest and longest overlap is greater than LEN (default: not performed)'
+- id: in_resolve_small
+  doc: "resolve small repeats using spanning overlaps when the difference between\
+    \ the shortest\nand longest overlap is greater than LEN (default: not performed)"
   type: string
   inputBinding:
     prefix: --resolve-small
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sga

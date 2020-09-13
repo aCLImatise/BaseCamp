@@ -2,7 +2,7 @@ version 1.0
 
 task Cmsip {
   input {
-    String? config
+    File? config
     Array[String] define_variablevalue_suppress
     Boolean? v
   }
@@ -10,11 +10,14 @@ task Cmsip {
     cmsip \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(define_variablevalue_suppress) then ("-D " +  '"' + define_variablevalue_suppress + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     config: "Configuration file in YAML format."
-    define_variablevalue_suppress: "Define variable=value to suppress configuration file. e.g. \"-D dhmrinfo.verbose=False\""
+    define_variablevalue_suppress: "Define variable=value to suppress configuration file.\\ne.g. \\\"-D dhmrinfo.verbose=False\\\""
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

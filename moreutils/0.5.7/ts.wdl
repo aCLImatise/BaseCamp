@@ -1,14 +1,10 @@
 version 1.0
 
 task Ts {
-  input {
-    Boolean? r
-  }
   command <<<
-    ts \
-      ~{true="-r" false="" r}
+    ts
   >>>
-  parameter_meta {
-    r: ""
+  output {
+    File out_stdout = stdout()
   }
 }

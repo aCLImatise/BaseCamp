@@ -1,135 +1,138 @@
 class: CommandLineTool
-id: ../../../filter.pl.bak.cwl
+id: ../../../filter.pl.cwl
 inputs:
-- id: column_filter_applied
-  doc: ':           The column to which the filter is applied (if not specified, then
-    if either column passes, the row passes.'
-  type: string
+- id: in_column_filter_applied
+  doc: ":           The column to which the filter is applied (if not specified,\n\
+    then if either column passes, the row passes."
+  type: long
   inputBinding:
     prefix: -c
-- id: number_columns_headers
+- id: in_number_columns_headers
   doc: ':           Number of columns that are headers (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: -h
-- id: min
+- id: in_min
   doc: ':         Filter passes if the number is above or equal to <num>'
-  type: string
+  type: long
   inputBinding:
     prefix: -min
-- id: mins
+- id: in_mins
   doc: ':        Filter passes if the number is strictly above <num>'
-  type: string
+  type: long
   inputBinding:
     prefix: -mins
-- id: min_l
+- id: in_min_l
   doc: ':        Filter passes if the number of characters of the column is >= <num>'
-  type: string
+  type: long
   inputBinding:
     prefix: -minl
-- id: max
+- id: in_max
   doc: ':         Filter passes if the number is below or equal to <num>'
-  type: string
+  type: long
   inputBinding:
     prefix: -max
-- id: maxs
+- id: in_maxs
   doc: ':        Filter passes if the number is strictly below <num>'
-  type: string
+  type: long
   inputBinding:
     prefix: -maxs
-- id: max_l
+- id: in_max_l
   doc: ':        Filter passes if the number of characters of the column is <= <num>'
-  type: string
+  type: long
   inputBinding:
     prefix: -maxl
-- id: abs
+- id: in_abs
   doc: ':         Filter passes if the number is above <num> or below -<num>'
-  type: string
+  type: long
   inputBinding:
     prefix: -abs
-- id: babs
+- id: in_babs
   doc: ':        Filter passes if the number is above -<num> and below <num>'
-  type: string
+  type: long
   inputBinding:
     prefix: -babs
-- id: str
+- id: in_str
   doc: ':         Filter passes if the column contains <str>'
   type: string
   inputBinding:
     prefix: -str
-- id: est_r
+- id: in_est_r
   doc: ':        Filter passes if the column is equal to <str>'
   type: string
   inputBinding:
     prefix: -estr
-- id: est_r_list
+- id: in_est_r_list
   doc: ':   Filter passes if the column is equal to one of the values in <str1;str2;...>'
-  type: string
+  type: long
   inputBinding:
     prefix: -estr_list
-- id: nstr
+- id: in_nstr
   doc: ':        Filter passes if the column is *not* equal to <str>'
   type: string
   inputBinding:
     prefix: -nstr
-- id: ne
+- id: in_ne
   doc: ':                Filter passes if string is not empty'
   type: boolean
   inputBinding:
     prefix: -ne
-- id: e
+- id: in_e
   doc: ':                 Filter passes if string is empty'
   type: boolean
   inputBinding:
     prefix: -e
-- id: min_pass
+- id: in_min_pass
   doc: ':    Filter passes if at least num columns pass the filter (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: -min_pass
-- id: rel_min_pass
+- id: in_rel_min_pass
   doc: :Filter passes if at least int(num*rowlength) columns pass the filter
-  type: string
+  type: long
   inputBinding:
     prefix: -rel_min_pass
-- id: numeric
+- id: in_numeric
   doc: ':           Filter passes if string is numeric'
   type: boolean
   inputBinding:
     prefix: -numeric
-- id: pass_from
+- id: in_pass_from
   doc: ':         Print all rows from the point that one row passed the filter'
   type: boolean
   inputBinding:
     prefix: -pass_from
-- id: use_column_num
-  doc: ':           Use column <num> as the value for the the specified filters (e.g.
-    for the parameters " -c 1 -u 0 -mins " rows whose value in the second column is
-    greater than the value in the first column will pass)'
-  type: string
+- id: in_use_column_num
+  doc: ":           Use column <num> as the value for the the specified filters (e.g.\n\
+    for the parameters \" -c 1 -u 0 -mins \" rows whose value in the second\ncolumn\
+    \ is greater than the value in the first column will pass)"
+  type: long
   inputBinding:
     prefix: -u
-- id: print_num
+- id: in_print_num
   doc: ':         Prints the number of columns that passed the filter'
   type: boolean
   inputBinding:
     prefix: -print_num
-- id: sk
+- id: in_sk
   doc: ':          Print first num rows without filtering'
-  type: string
+  type: long
   inputBinding:
     prefix: -sk
-- id: skip
+- id: in_skip
   doc: ':        Print first num rows without filtering'
-  type: string
+  type: long
   inputBinding:
     prefix: -skip
-- id: quite_mode_default
+- id: in_quite_mode_default
   doc: ':                 Quite mode (default is verbose)'
   type: boolean
   inputBinding:
     prefix: -q
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- filter.pl.bak
+- filter.pl

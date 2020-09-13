@@ -1,6 +1,6 @@
 version 1.0
 
-task BiopetBasecounter {
+task Biopetbasecounter {
   input {
     String? log_level
     File? ref_flat
@@ -10,7 +10,7 @@ task BiopetBasecounter {
     String base_counter
   }
   command <<<
-    biopet-basecounter \
+    biopet_basecounter \
       ~{base_counter} \
       ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""} \
       ~{if defined(ref_flat) then ("--refFlat " +  '"' + ref_flat + '"') else ""} \
@@ -25,5 +25,9 @@ task BiopetBasecounter {
     bam: "Bam file. Mandatory"
     prefix: "The prefix for the output files"
     base_counter: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

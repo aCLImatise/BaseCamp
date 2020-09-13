@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../seqtk_trimfq.cwl
 inputs:
-- id: error_rate_threshold
+- id: in_error_rate_threshold
   doc: error rate threshold (disabled by -b/-e) [0.05]
   type: double
   inputBinding:
     prefix: -q
-- id: maximally_trim_int
+- id: in_maximally_trim_disabled
   doc: maximally trim down to INT bp (disabled by -b/-e) [30]
   type: long
   inputBinding:
     prefix: -l
-- id: trim_int_bp_left_disable_ql
+- id: in_trim_int_bp_left_disable
   doc: trim INT bp from left (non-zero to disable -q/-l) [0]
   type: long
   inputBinding:
     prefix: -b
-- id: trim_int_bp_right_disable_ql
+- id: in_trim_int_bp_right_disable
   doc: trim INT bp from right (non-zero to disable -q/-l) [0]
   type: long
   inputBinding:
     prefix: -e
-- id: retain_most_bp
+- id: in_retain_most_disable
   doc: retain at most INT bp from the 5'-end (non-zero to disable -q/-l) [0]
   type: long
   inputBinding:
     prefix: -L
-- id: force_fastq_output
+- id: in_force_fastq_output
   doc: force FASTQ output
   type: boolean
   inputBinding:
     prefix: -Q
-- id: in_dot_fq
+- id: in_in_dot_fq
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - seqtk

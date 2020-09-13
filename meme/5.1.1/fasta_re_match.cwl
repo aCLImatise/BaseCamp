@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../fasta_re_match.cwl
 inputs:
-- id: norc
+- id: in_norc
   doc: Only find matches to motifs in the given strand
   type: boolean
   inputBinding:
     prefix: -norc
-- id: erase
-  doc: erases this motif before finding matches;  repeatable; order matters!
+- id: in_erase
+  doc: "erases this motif before finding matches;\nrepeatable; order matters!"
   type: string
   inputBinding:
     prefix: -erase
-- id: iupac_dna_motif
+- id: in_iupac_dna_motif
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fasta-re-match

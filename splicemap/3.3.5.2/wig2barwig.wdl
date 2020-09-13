@@ -4,4 +4,7 @@ task Wig2barwig {
   command <<<
     wig2barwig
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

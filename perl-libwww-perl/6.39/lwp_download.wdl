@@ -1,23 +1,57 @@
 version 1.0
 
-task LwpDownload {
+task Lwpdownload {
   input {
     Boolean? save_file_ascii
-    Boolean? use_http_headers
+    File? use_http_headers
+    String save
     String url
-    String? local_path
+    String use
+    String http
+    String the
+    File file
+    String headers
+    String in
+    String to
+    String ascii
+    String guess
+    String var_output
   }
   command <<<
-    lwp-download \
+    lwp_download \
+      ~{save} \
       ~{url} \
-      ~{local_path} \
-      ~{true="-a" false="" save_file_ascii} \
-      ~{true="-s" false="" use_http_headers}
+      ~{use} \
+      ~{http} \
+      ~{the} \
+      ~{file} \
+      ~{headers} \
+      ~{in} \
+      ~{to} \
+      ~{ascii} \
+      ~{guess} \
+      ~{var_output} \
+      ~{if (save_file_ascii) then "-a" else ""} \
+      ~{if (use_http_headers) then "-s" else ""}
   >>>
   parameter_meta {
     save_file_ascii: "save the file in ASCII mode"
     use_http_headers: "use HTTP headers to guess output filename"
+    save: ""
     url: ""
-    local_path: ""
+    use: ""
+    http: ""
+    the: ""
+    file: ""
+    headers: ""
+    in: ""
+    to: ""
+    ascii: ""
+    guess: ""
+    var_output: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_use_http_headers = "${in_use_http_headers}"
   }
 }

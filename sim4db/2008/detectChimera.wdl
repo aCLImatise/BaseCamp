@@ -4,4 +4,7 @@ task DetectChimera {
   command <<<
     detectChimera
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

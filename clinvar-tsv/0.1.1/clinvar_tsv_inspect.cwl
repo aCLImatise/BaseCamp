@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../clinvar_tsv_inspect.cwl
 inputs:
-- id: work_dir
+- id: in_work_dir
   doc: Path to working directory
-  type: string
+  type: File
   inputBinding:
     prefix: --work-dir
-- id: clin_var_tsv
+- id: in_clin_var_tsv
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: inspect
+- id: in_inspect
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - clinvar_tsv

@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- mb-naive-bsfinder
+- pileup_file
 positional:
 - !Positional
   description: ''
@@ -13,10 +16,9 @@ named:
   args: !SimpleFlagArg
     name: MIN_TRANSITIONS
   optional: true
-command:
-- mb-naive-bsfinder
-- pileup_file
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - mb-naive-bsfinder
   positional: []
   named:
   - !Flag
@@ -33,29 +35,29 @@ parent: &id002 !Command
     - -r
     args: !ChoiceFlagArg
       choices: !!set
-        ? T
-        ? C
-        ? A
         ? G
+        ? T
+        ? A
+        ? C
     optional: true
   - !Flag
-    description: set default mutation nucleotide
+    description: "set default mutation nucleotide\n"
     synonyms:
     - --mutation
     - -m
     args: !ChoiceFlagArg
       choices: !!set
-        ? T
-        ? C
-        ? A
         ? G
+        ? T
+        ? A
+        ? C
     optional: true
-  command:
-  - mb-naive-bsfinder
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - mb-naive-bsfinder
+    - output_table
     positional:
     - !Positional
       description: ''
@@ -70,11 +72,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: MIN_TRANSITIONS
       optional: true
-    command:
-    - mb-naive-bsfinder
-    - output_table
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -89,6 +89,8 @@ parent: &id002 !Command
       \ argument pileup_file: 'output_table' does not exist\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -111,6 +113,7 @@ parent: &id002 !Command
     \                        set default mutation nucleotide\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

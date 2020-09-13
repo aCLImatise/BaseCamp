@@ -10,17 +10,19 @@ task Cmasker {
     Boolean? strict_mode_mask
     Boolean? prefix_for_outfiles
     Boolean? suppress_fasta_output
+    String c_masker
   }
   command <<<
     cmasker \
-      ~{true="-f" false="" fasta_input} \
-      ~{true="-j" false="" jellfish_database} \
-      ~{true="-o" false="" create_occ_output} \
-      ~{true="-n" false="" normalize_value} \
-      ~{true="-r" false="" rt_value_masking} \
-      ~{true="-t" false="" strict_mode_mask} \
-      ~{true="-p" false="" prefix_for_outfiles} \
-      ~{true="-s" false="" suppress_fasta_output}
+      ~{c_masker} \
+      ~{if (fasta_input) then "-f" else ""} \
+      ~{if (jellfish_database) then "-j" else ""} \
+      ~{if (create_occ_output) then "-o" else ""} \
+      ~{if (normalize_value) then "-n" else ""} \
+      ~{if (rt_value_masking) then "-r" else ""} \
+      ~{if (strict_mode_mask) then "-t" else ""} \
+      ~{if (prefix_for_outfiles) then "-p" else ""} \
+      ~{if (suppress_fasta_output) then "-s" else ""}
   >>>
   parameter_meta {
     fasta_input: "FASTA Input"
@@ -31,5 +33,9 @@ task Cmasker {
     strict_mode_mask: "Strict mode: Mask the whole k-mer in the query sequence instead of the single nucleotide"
     prefix_for_outfiles: "Prefix for the outfiles"
     suppress_fasta_output: "Suppress FASTA output"
+    c_masker: "-h      Shows this help"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

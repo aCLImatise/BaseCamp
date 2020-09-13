@@ -1,237 +1,240 @@
 class: CommandLineTool
 id: ../../../ssu_cmbuild.cwl
 inputs:
-- id: name_cms_s
+- id: in_name_cms_s
   doc: ': name the CM(s) <s>, (only if single aln in file)'
-  type: string
+  type: File
   inputBinding:
     prefix: -n
-- id: append_cm_cmfile
+- id: in_append_cm_cmfile
   doc: ': append this CM to <cmfile>'
   type: boolean
   inputBinding:
     prefix: -A
-- id: force_allow_overwriting
+- id: in_force_allow_overwriting
   doc: ': force; allow overwriting of <cmfile>'
   type: boolean
   inputBinding:
     prefix: -F
-- id: _verbose_output
+- id: in__verbose_output
   doc: ': be verbose with output'
   type: boolean
   inputBinding:
     prefix: -v
-- id: i_ins
+- id: in_i_ins
   doc: ': allow informative insert emissions, do not zero them'
   type: boolean
   inputBinding:
     prefix: --iins
-- id: w_beta
+- id: in_w_beta
   doc: ": set tail loss prob for calc'ing W (max size of a hit) to <x>"
-  type: string
+  type: long
   inputBinding:
     prefix: --Wbeta
-- id: devhelp
+- id: in_devhelp
   doc: ': show list of undocumented developer options'
   type: boolean
   inputBinding:
     prefix: --devhelp
-- id: r_search
+- id: in_r_search
   doc: ': use RSEARCH parameterization with RIBOSUM matrix file <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --rsearch
-- id: binary
+- id: in_binary
   doc: ': save the model(s) in binary format'
   type: boolean
   inputBinding:
     prefix: --binary
-- id: rf
+- id: in_rf
   doc: ': use reference coordinate annotation to specify consensus'
   type: boolean
   inputBinding:
     prefix: --rf
-- id: gap_thresh
+- id: in_gap_thresh
   doc: ': fraction of gaps to allow in a consensus column [0..1]  [0.5]'
-  type: string
+  type: double
   inputBinding:
     prefix: --gapthresh
-- id: ignorant
+- id: in_ignorant
   doc: ': strip the structural info from input alignment'
   type: boolean
   inputBinding:
     prefix: --ignorant
-- id: wgs_c
+- id: in_wgs_c
   doc: ': Gerstein/Sonnhammer/Chothia tree weights  [default]'
   type: boolean
   inputBinding:
     prefix: --wgsc
-- id: w_blosum
+- id: in_w_blosum
   doc: ': Henikoff simple filter weights'
   type: boolean
   inputBinding:
     prefix: --wblosum
-- id: wpb
+- id: in_wpb
   doc: ': Henikoff position-based weights'
   type: boolean
   inputBinding:
     prefix: --wpb
-- id: w_none
+- id: in_w_none
   doc: ": don't do any relative weighting; set all to 1"
   type: boolean
   inputBinding:
     prefix: --wnone
-- id: w_given
+- id: in_w_given
   doc: ': use weights as given in MSA file'
   type: boolean
   inputBinding:
     prefix: --wgiven
-- id: pb_switch
+- id: in_pb_switch
   doc: ': set failover to efficient PB wgts at > <n> seqs  [5000]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --pbswitch
-- id: wid
+- id: in_wid
   doc: ': for --wblosum: set identity cutoff  [0.62]  (0<=x<=1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --wid
-- id: e_ent
+- id: in_e_ent
   doc: ': adjust eff seq # to achieve relative entropy target  [default]'
   type: boolean
   inputBinding:
     prefix: --eent
-- id: en_one
+- id: in_en_one
   doc: ': no effective seq # weighting: just use nseq'
   type: boolean
   inputBinding:
     prefix: --enone
-- id: ere
+- id: in_ere
   doc: ': for --eent: set CM target relative entropy to <x>  (x>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --ere
-- id: e_hmm_re
+- id: in_e_hmm_re
   doc: ': for --eent: set minimum HMM relative entropy to <x>  (x>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --ehmmre
-- id: 'null'
+- id: in_null
   doc: ': read null (random sequence) model from file <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --null
-- id: prior
+- id: in_prior
   doc: ': read priors from file <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --prior
-- id: c_target
+- id: in_c_target
   doc: ': build (at most) <n> CMs by partitioning MSA into <n> clusters'
   type: string
   inputBinding:
     prefix: --ctarget
-- id: cmax_id
+- id: in_cmax_id
   doc: ': max fractional id b/t 2 clusters is <x>, each cluster -> CM'
-  type: string
+  type: long
   inputBinding:
     prefix: --cmaxid
-- id: call
+- id: in_call
   doc: ': build a separate CM from every seq in MSA'
   type: boolean
   inputBinding:
     prefix: --call
-- id: c_orig
+- id: in_c_orig
   doc: ': build an additional CM from the original, full MSA'
   type: boolean
   inputBinding:
     prefix: --corig
-- id: c_dump
+- id: in_c_dump
   doc: ': dump the MSA for each cluster (CM) to file <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --cdump
-- id: refine
+- id: in_refine
   doc: ': refine input aln w/Expectation-Maximization, save to <s>'
   type: string
   inputBinding:
     prefix: --refine
-- id: gibbs
+- id: in_gibbs
   doc: ': w/--refine, use Gibbs sampling instead of EM'
   type: boolean
   inputBinding:
     prefix: --gibbs
-- id: wgibbs_set_seed
+- id: in_wgibbs_set_seed
   doc: ': w/--gibbs, set RNG seed to <n> (if 0: one-time arbitrary seed)'
-  type: string
+  type: long
   inputBinding:
     prefix: -s
-- id: wrefine_align_locally
+- id: in_wrefine_align_locally
   doc: ': w/--refine, align locally w.r.t the model'
   type: boolean
   inputBinding:
     prefix: -l
-- id: print_individual_sequence
+- id: in_print_individual_sequence
   doc: ': print individual sequence scores during MSA refinement'
   type: boolean
   inputBinding:
     prefix: -a
-- id: cy_k
+- id: in_cy_k
   doc: ': w/--refine align w/the CYK algorithm, not optimal accuracy'
   type: boolean
   inputBinding:
     prefix: --cyk
-- id: sub
+- id: in_sub
   doc: ': w/--refine, use sub CM for columns b/t HMM start/end points'
   type: boolean
   inputBinding:
     prefix: --sub
-- id: non_banded
+- id: in_non_banded
   doc: ': do not use bands to accelerate alignment with --refine'
   type: boolean
   inputBinding:
     prefix: --nonbanded
-- id: tau
+- id: in_tau
   doc: ': set tail loss prob for --hbanded to <x>'
   type: string
   inputBinding:
     prefix: --tau
-- id: fins
+- id: in_fins
   doc: ': w/--refine, flush inserts left/right in alignments'
   type: boolean
   inputBinding:
     prefix: --fins
-- id: mx_size
+- id: in_mx_size
   doc: ': set maximum allowable DP matrix size to <x> Mb'
-  type: string
+  type: long
   inputBinding:
     prefix: --mxsize
-- id: r_dump
+- id: in_r_dump
   doc: ': w/--refine, print all intermediate alignments to <f>'
   type: string
   inputBinding:
     prefix: --rdump
-- id: i_leaved
+- id: in_i_leaved
   doc: ': w/--refine,--cdump, output alnment as interleaved Stockholm'
   type: boolean
   inputBinding:
     prefix: --ileaved
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: cm_file_output
+- id: in_cm_file_output
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: alignment_file
+- id: in_alignment_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ssu-cmbuild

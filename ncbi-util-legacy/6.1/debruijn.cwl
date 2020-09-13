@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../debruijn.cwl
 inputs:
-- id: word_size
+- id: in_word_size
   doc: word size [Integer]
   type: boolean
   inputBinding:
     prefix: -n
-- id: alphabet
+- id: in_alphabet
   doc: alphabet
   type: boolean
   inputBinding:
     prefix: -a
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - debruijn

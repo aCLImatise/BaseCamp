@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../build_taxdb.cwl
 inputs:
-- id: with
+- id: in_with
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: two
+- id: in_two
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: or
+- id: in_or
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: three
+- id: in_three
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: arguments
+- id: in_arguments
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - build_taxdb

@@ -1,82 +1,91 @@
 class: CommandLineTool
 id: ../../../Binsanity_wf.cwl
 inputs:
-- id: specify_coverage_file
-  doc: Specify a Transformed Coverage File e.g Log transformed
-  type: string
+- id: in_specify_coverage_log
+  doc: "Specify a Transformed Coverage File\ne.g Log transformed"
+  type: File
   inputBinding:
     prefix: -c
-- id: specify_directory_containing
+- id: in_specify_directory_containing
   doc: Specify directory containing your contigs
-  type: string
+  type: Directory
   inputBinding:
     prefix: -f
-- id: specify_preference_note
-  doc: 'Specify a preference [Default: -3] Note: decreasing the preference leads to
-    more lumping, increasing will lead to more splitting. If your range of coverages
-    are low you will want to decrease the preference, if you have 10 or less replicates
-    increasing the preference could benefit you.'
-  type: string
+- id: in_specify_preference_note
+  doc: "Specify a preference [Default: -3]\nNote: decreasing the preference leads\
+    \ to more lumping,\nincreasing will lead to more splitting. If your range\nof\
+    \ coverages are low you will want to decrease the\npreference, if you have 10\
+    \ or less replicates increasing\nthe preference could benefit you."
+  type: long
   inputBinding:
     prefix: -p
-- id: specify_max_number
+- id: in_specify_max_number
   doc: 'Specify a max number of iterations [Default: 4000]'
   type: long
   inputBinding:
     prefix: -m
-- id: specify_iteration_number
-  doc: 'Specify the convergence iteration number [Default: 400] e.g Number of iterations
-    with no change in the number of estimated clusters that stops the convergence.'
-  type: string
+- id: in_specify_convergence_number
+  doc: "Specify the convergence iteration number [Default: 400]\ne.g Number of iterations\
+    \ with no change in the number\nof estimated clusters that stops the convergence."
+  type: long
   inputBinding:
     prefix: -v
-- id: specify_damping_factor
+- id: in_specify_damping_factor
   doc: 'Specify a damping factor between 0.5 and 1, [Default: 0.95]'
-  type: string
+  type: double
   inputBinding:
     prefix: -d
-- id: specify_fasta_file
+- id: in_specify_fasta_file
   doc: Specify the fasta file containing contigs you want to cluster
-  type: string
+  type: File
   inputBinding:
     prefix: -l
-- id: specify_contig_size
+- id: in_specify_contig_size
   doc: 'Specify the contig size cut-off [Default: 1000 bp]'
   type: long
   inputBinding:
     prefix: -x
-- id: give_name_directory
-  doc: "Give a name to the directory BinSanity results will be output in [Default:\
+- id: in_give_name_directory
+  doc: "Give a name to the directory BinSanity results will be output in\n[Default:\
     \ 'BINSANITY-RESULTS']"
-  type: string
+  type: Directory
   inputBinding:
     prefix: -o
-- id: threads
+- id: in_threads
   doc: Indicate how many threads you want dedicated to the subprocess CheckM. [Default=1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: km_er
+- id: in_km_er
   doc: 'Indicate a number for the kmer calculation, the [Default: 4]'
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: prefix
+- id: in_prefix
   doc: Specify a prefix to append to the start of all files generated during Binsanity
   type: string
   inputBinding:
     prefix: --Prefix
-- id: refine_preference
+- id: in_refine_preference
   doc: 'Specify a preference for refinement. [Default: -25]'
-  type: string
+  type: long
   inputBinding:
     prefix: --refine-preference
-- id: bin_prefix
+- id: in_bin_prefix
   doc: Sepcify what prefix you want appended to final Bins {optional}
   type: string
   inputBinding:
     prefix: --binPrefix
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_give_name_directory
+  doc: "Give a name to the directory BinSanity results will be output in\n[Default:\
+    \ 'BINSANITY-RESULTS']"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_give_name_directory)
 cwlVersion: v1.1
 baseCommand:
 - Binsanity-wf

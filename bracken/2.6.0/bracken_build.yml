@@ -1,31 +1,14 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: bracken_build
-  optional: false
+&id001 !Command
+command:
+- bracken-build
+positional: []
 named:
 - !Flag
   description: ''
   synonyms:
-  - -k
+  - -t
   args: !SimpleFlagArg
-    name: KMER_LEN
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -l
-  args: !SimpleFlagArg
-    name: READ_LEN
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -d
-  args: !SimpleFlagArg
-    name: MY_DB
+    name: THREADS
   optional: true
 - !Flag
   description: ''
@@ -37,14 +20,132 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -t
+  - -d
   args: !SimpleFlagArg
-    name: THREADS
+    name: MY_DB
   optional: true
-command:
-- bracken-build
+- !Flag
+  description: ''
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: READ_LEN
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: KMER_LEN
+  optional: true
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - bracken-build
+  - KMER_LEN
+  positional:
+  - !Positional
+    description: '= '
+    position: 0
+    name: database
+    optional: false
+  - !Positional
+    description: = 1
+    position: 1
+    name: threads
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: " >> Selected Options:\n       kmer length = 35\n       read length =\
+    \ 100\n       database    = \n       threads     = 1\n >> Checking for Valid Options...\n\
+    \ ERROR: Database library /library does not exist\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - bracken-build
+  - THREADS
+  positional:
+  - !Positional
+    description: '= '
+    position: 0
+    name: database
+    optional: false
+  - !Positional
+    description: = 1
+    position: 1
+    name: threads
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: " >> Selected Options:\n       kmer length = 35\n       read length =\
+    \ 100\n       database    = \n       threads     = 1\n >> Checking for Valid Options...\n\
+    \ ERROR: Database library /library does not exist\n"
+  generated_using: *id002
+- !Command
+  command:
+  - bracken-build
+  - MY_DB
+  positional:
+  - !Positional
+    description: '= '
+    position: 0
+    name: database
+    optional: false
+  - !Positional
+    description: = 1
+    position: 1
+    name: threads
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: " >> Selected Options:\n       kmer length = 35\n       read length =\
+    \ 100\n       database    = \n       threads     = 1\n >> Checking for Valid Options...\n\
+    \ ERROR: Database library /library does not exist\n"
+  generated_using: *id002
+- !Command
+  command:
+  - bracken-build
+  - READ_LEN
+  positional:
+  - !Positional
+    description: '= '
+    position: 0
+    name: database
+    optional: false
+  - !Positional
+    description: = 1
+    position: 1
+    name: threads
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: " >> Selected Options:\n       kmer length = 35\n       read length =\
+    \ 100\n       database    = \n       threads     = 1\n >> Checking for Valid Options...\n\
+    \ ERROR: Database library /library does not exist\n"
+  generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -56,5 +157,4 @@ help_text: "Usage: bracken_build -k KMER_LEN -l READ_LEN -d MY_DB -x K_INSTALLAT
   \ location of the installed kraken/kraken-build scripts (default assumes scripts\
   \ can be run from the user path)\n\n**Note that this script will try to use kraken2\
   \ as default. If kraken2 is not installed, kraken will be used instead\n"
-generated_using:
-- --help
+generated_using: *id002

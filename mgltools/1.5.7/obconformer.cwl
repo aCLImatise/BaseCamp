@@ -1,22 +1,10 @@
 class: CommandLineTool
 id: ../../../obconformer.cwl
-inputs:
-- id: n_steps
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: geom_steps
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 2
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - obconformer

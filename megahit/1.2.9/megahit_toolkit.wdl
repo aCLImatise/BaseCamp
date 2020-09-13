@@ -4,4 +4,7 @@ task MegahitToolkit {
   command <<<
     megahit_toolkit
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

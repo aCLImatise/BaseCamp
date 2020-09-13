@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../scree_plot_pyseer.cwl
 inputs:
-- id: max_dimensions
+- id: in_max_dimensions
   doc: 'Maximum dimensions to plot [Default: 30]'
   type: long
   inputBinding:
     prefix: --max-dimensions
-- id: output
+- id: in_output
   doc: 'Plot filename [Default: scree_plot.png]'
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: distances
-  doc: Strains distance square matrix
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - scree_plot_pyseer

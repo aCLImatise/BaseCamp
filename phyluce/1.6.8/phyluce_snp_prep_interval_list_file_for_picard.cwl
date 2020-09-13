@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../phyluce_snp_prep_interval_list_file_for_picard.cwl
 inputs:
-- id: bed
+- id: in_bed
   doc: The BED file to filter.
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: bam
+- id: in_bam
   doc: The BED file to filter.
-  type: string
+  type: File
   inputBinding:
     prefix: --bam
-- id: output
+- id: in_output
   doc: The output BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output BED file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_snp_prep_interval_list_file_for_picard

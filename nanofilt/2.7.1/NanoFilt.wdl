@@ -2,15 +2,15 @@ version 1.0
 
 task NanoFilt {
   input {
-    String? log_file
+    File? log_file
     Int? length
     Int? maxlength
     String? quality
-    Int? ming_c
+    Float? ming_c
     Int? max_gc
     String? head_crop
     String? tail_crop
-    String? summary
+    File? summary
     String? read_type
     Boolean? v
     String input_uncompressed_file
@@ -28,20 +28,23 @@ task NanoFilt {
       ~{if defined(tail_crop) then ("--tailcrop " +  '"' + tail_crop + '"') else ""} \
       ~{if defined(summary) then ("--summary " +  '"' + summary + '"') else ""} \
       ~{if defined(read_type) then ("--readtype " +  '"' + read_type + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     log_file: "Specify the path and filename for the log file."
     length: "Filter on a minimum read length"
     maxlength: "Filter on a maximum read length"
     quality: "Filter on a minimum average read quality score"
-    ming_c: "Sequences must have GC content >= to this. Float between 0.0 and 1.0. Ignored if using summary file."
-    max_gc: "Sequences must have GC content <= to this. Float between 0.0 and 1.0. Ignored if using summary file."
+    ming_c: "Sequences must have GC content >= to this. Float between 0.0 and 1.0. Ignored if\\nusing summary file."
+    max_gc: "Sequences must have GC content <= to this. Float between 0.0 and 1.0. Ignored if\\nusing summary file."
     head_crop: "Trim n nucleotides from start of read"
     tail_crop: "Trim n nucleotides from end of read"
     summary: "Use albacore or guppy summary file for quality scores"
-    read_type: "Which read type to extract information about from summary. Options are 1D, 2D or 1D2"
+    read_type: "Which read type to extract information about from summary. Options are 1D, 2D or\\n1D2"
     v: ""
     input_uncompressed_file: "input, uncompressed fastq file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

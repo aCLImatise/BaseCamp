@@ -4,4 +4,7 @@ task Stride {
   command <<<
     stride
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

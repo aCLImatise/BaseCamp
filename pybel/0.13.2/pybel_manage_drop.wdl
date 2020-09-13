@@ -6,9 +6,12 @@ task PybelManageDrop {
   }
   command <<<
     pybel manage drop \
-      ~{true="--yes" false="" yes}
+      ~{if (yes) then "--yes" else ""}
   >>>
   parameter_meta {
     yes: "Confirm the action without prompting."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

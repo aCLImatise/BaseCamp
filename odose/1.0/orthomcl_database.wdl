@@ -1,7 +1,10 @@
 version 1.0
 
-task OrthomclDatabase.py {
+task OrthomclDatabase {
   command <<<
-    orthomcl_database.py
+    orthomcl_database
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

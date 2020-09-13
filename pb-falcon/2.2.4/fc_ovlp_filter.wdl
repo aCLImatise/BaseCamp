@@ -2,17 +2,17 @@ version 1.0
 
 task FcOvlpFilter {
   input {
-    String? out_fn
-    String? n_core
-    String? las_fof_n
-    String? db
+    File? out_fn
+    Int? n_core
+    File? las_fof_n
+    File? db
     Int? max_diff
     Int? max_cov
     Int? min_cov
     Int? min_len
     Int? min_idt
     Boolean? ignore_indels
-    String? best_n
+    Int? best_n
     Boolean? stream
     Boolean? debug
     Boolean? silent
@@ -28,11 +28,11 @@ task FcOvlpFilter {
       ~{if defined(min_cov) then ("--min-cov " +  '"' + min_cov + '"') else ""} \
       ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
       ~{if defined(min_idt) then ("--min-idt " +  '"' + min_idt + '"') else ""} \
-      ~{true="--ignore-indels" false="" ignore_indels} \
+      ~{if (ignore_indels) then "--ignore-indels" else ""} \
       ~{if defined(best_n) then ("--bestn " +  '"' + best_n + '"') else ""} \
-      ~{true="--stream" false="" stream} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--silent" false="" silent}
+      ~{if (stream) then "--stream" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (silent) then "--silent" else ""}
   >>>
   parameter_meta {
     out_fn: "Output filename (default: preads.m4)"
@@ -49,5 +49,9 @@ task FcOvlpFilter {
     stream: "stream from LA4Falcon, instead of slurping all at once; can save memory for large data (default: False)"
     debug: "single-threaded, plus other aids to debugging (default: False)"
     silent: "suppress cmd reporting on stderr (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_fn = "${in_out_fn}"
   }
 }

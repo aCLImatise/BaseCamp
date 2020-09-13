@@ -1,18 +1,18 @@
 version 1.0
 
-task MergefastqP {
+task Mergefastqp {
   input {
     String merge
     String separate
     String mate
     String var_pair
-    File files
-    Int into
+    String files
+    String into
     String one
     File file
   }
   command <<<
-    mergefastq-p \
+    mergefastq_p \
       ~{merge} \
       ~{separate} \
       ~{mate} \
@@ -31,5 +31,8 @@ task MergefastqP {
     into: ""
     one: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

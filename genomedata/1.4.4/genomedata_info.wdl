@@ -1,7 +1,10 @@
 version 1.0
 
-task GenomedataInfo {
+task Genomedatainfo {
   command <<<
-    genomedata-info
+    genomedata_info
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

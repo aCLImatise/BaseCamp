@@ -14,4 +14,7 @@ task OrthomclLoadBlast {
     config_file: ""
     similar_seqs_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

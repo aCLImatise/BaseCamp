@@ -7,10 +7,10 @@ task RTPredict {
     File? in_oligo_params
     File? in_oligo_train_set
     File? svm_model
-    String? total_gradient_time
-    Boolean? out_text
+    Int? total_gradient_time
+    File? out_text
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -22,11 +22,11 @@ task RTPredict {
       ~{if defined(in_oligo_train_set) then ("-in_oligo_trainset " +  '"' + in_oligo_train_set + '"') else ""} \
       ~{if defined(svm_model) then ("-svm_model " +  '"' + svm_model + '"') else ""} \
       ~{if defined(total_gradient_time) then ("-total_gradient_time " +  '"' + total_gradient_time + '"') else ""} \
-      ~{true="-out_text" false="" out_text} \
+      ~{if (out_text) then "-out_text" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in_id: "Peptides with precursor information (valid formats: 'idXML')"
@@ -40,5 +40,9 @@ task RTPredict {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_text = "${in_out_text}"
   }
 }

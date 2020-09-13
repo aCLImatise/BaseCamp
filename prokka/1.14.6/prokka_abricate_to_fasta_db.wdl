@@ -1,29 +1,10 @@
 version 1.0
 
-task ProkkaAbricateToFastaDb {
-  input {
-    String no
-    String such
-    File file
-    String or
-    Directory directory
-    String at
-  }
+task ProkkaabricateToFastaDb {
   command <<<
-    prokka-abricate_to_fasta_db \
-      ~{no} \
-      ~{such} \
-      ~{file} \
-      ~{or} \
-      ~{directory} \
-      ~{at}
+    prokka_abricate_to_fasta_db
   >>>
-  parameter_meta {
-    no: ""
-    such: ""
-    file: ""
-    or: ""
-    directory: ""
-    at: ""
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -14,4 +14,7 @@ task RenameReads {
     bank_name: ""
     old_iid_dot_new_iid: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

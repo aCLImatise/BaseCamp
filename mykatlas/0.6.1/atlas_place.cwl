@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../atlas_place.cwl
 inputs:
-- id: db_name
-  doc: ''
+- id: in_db_name
+  doc: db_name
   type: string
   inputBinding:
     prefix: --db_name
-- id: f
-  doc: ''
+- id: in_force
+  doc: force
   type: boolean
   inputBinding:
-    prefix: -f
-- id: q
-  doc: ''
+    prefix: --force
+- id: in_quiet
+  doc: do not output warnings to stderr
   type: boolean
   inputBinding:
-    prefix: -q
-- id: tree
-  doc: ''
+    prefix: --quiet
+- id: in_tree
+  doc: tree
   type: string
   inputBinding:
     prefix: --tree
-- id: sample
-  doc: sample id
-  type: string
+- id: in_searchable_samples
+  doc: list of samples (file)
+  type: File
   inputBinding:
-    position: 0
-outputs: []
+    prefix: --searchable_samples
+- id: in_no_cache
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --no-cache
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - atlas

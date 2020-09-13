@@ -1,7 +1,10 @@
 version 1.0
 
-task CreateSrFrg.pl {
+task CreateSrFrg {
   command <<<
-    create_sr_frg.pl
+    create_sr_frg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

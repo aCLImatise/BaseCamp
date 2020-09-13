@@ -2,9 +2,9 @@ version 1.0
 
 task FixSideChain {
   input {
-    String? config
-    String? input_pdb_path
-    String? output_pdb_path
+    File? config
+    File? input_pdb_path
+    File? output_pdb_path
   }
   command <<<
     fix_side_chain \
@@ -15,6 +15,10 @@ task FixSideChain {
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
     input_pdb_path: "Input PDB file name"
-    output_pdb_path: "Output PDB file name"
+    output_pdb_path: "Output PDB file name\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_pdb_path = "${in_output_pdb_path}"
   }
 }

@@ -4,7 +4,7 @@ task PhyluceUtilitiesCleanupTrinity {
   input {
     File? path_to_clean
     String? verbosity
-    String? log_path
+    File? log_path
   }
   command <<<
     phyluce_utilities_cleanup_trinity \
@@ -16,5 +16,8 @@ task PhyluceUtilitiesCleanupTrinity {
     path_to_clean: "The directory holding the trinity files to clean"
     verbosity: "The logging level to use"
     log_path: "The path to a directory to hold logs."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

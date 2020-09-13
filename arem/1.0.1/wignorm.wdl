@@ -4,4 +4,7 @@ task Wignorm {
   command <<<
     wignorm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

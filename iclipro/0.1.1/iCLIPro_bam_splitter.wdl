@@ -4,8 +4,8 @@ task ICLIProBamSplitter {
   input {
     Directory? output_folder_default
     Int? use_only_reads
-    String? read_groups_default
-    String in_one_dot_bam
+    Int? read_groups_default
+    Int in_one_dot_bam
   }
   command <<<
     iCLIPro_bam_splitter \
@@ -17,7 +17,11 @@ task ICLIProBamSplitter {
   parameter_meta {
     output_folder_default: "output folder (default is cwd - current working directory)"
     use_only_reads: "use only reads with minimum mapping quality (mapq) (0..100, default: 10)"
-    read_groups_default: "read len groups (default: \"A:16-39,A1:16-25,A2:26-32,A3:33-39,B:42\")"
+    read_groups_default: "read len groups (default: \\\"A:16-39,A1:16-25,A2:26-32,A3:33-39,B:42\\\")"
     in_one_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_folder_default = "${in_output_folder_default}"
   }
 }

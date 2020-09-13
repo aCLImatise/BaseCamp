@@ -1,38 +1,46 @@
 class: CommandLineTool
 id: ../../../add_gff_info_unipfile.cwl
 inputs:
-- id: mapping_file
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_mapping_file
   doc: Uniprot mapping file  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --mapping-file
-- id: force_tax_on_id
+- id: in_force_tax_on_id
   doc: Overwrite taxon_id if already present
   type: boolean
   inputBinding:
     prefix: --force-taxon-id
-- id: mapping
-  doc: '[NCBI_TaxID|eggNOG|KO|KEGG|BioCyc|UniPathway|EMBL|EMBL-CDS|GI|STRING] Mappings
-    to add  [required]'
+- id: in_mapping
+  doc: "[NCBI_TaxID|eggNOG|KO|KEGG|BioCyc|UniPathway|EMBL|EMBL-CDS|GI|STRING]\nMappings\
+    \ to add  [required]"
   type: boolean
   inputBinding:
     prefix: --mapping
-- id: progress
+- id: in_progress
   doc: Shows Progress Bar
   type: boolean
   inputBinding:
     prefix: --progress
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - add-gff-info

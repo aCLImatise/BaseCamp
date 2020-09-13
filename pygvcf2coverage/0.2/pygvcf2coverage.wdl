@@ -9,12 +9,15 @@ task Pygvcf2coverage {
   command <<<
     pygvcf2coverage \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
-      ~{true="--no_merge" false="" no_merge} \
+      ~{if (no_merge) then "--no_merge" else ""} \
       ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""}
   >>>
   parameter_meta {
     threshold: "DP threshold"
     no_merge: "Do not merge entries"
-    distance: "Merging distance"
+    distance: "Merging distance\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

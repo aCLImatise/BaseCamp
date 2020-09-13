@@ -1,4 +1,6 @@
 !Command
+command:
+- initializeTranscriptDatasource
 positional:
 - !Positional
   description: 'Location of the gtf files.  Multiple files can be specified as a comma
@@ -30,27 +32,46 @@ positional:
   optional: false
 named:
 - !Flag
-  description: ''
+  description: name of the datasource.  For example, ensembl.  Or GENCODE
   synonyms:
   - --name
   args: !SimpleFlagArg
     name: NAME
   optional: true
 - !Flag
-  description: ''
+  description: "Filter to use from ['dummy', 'basic'].  For non-GENCODE ENSEMBL, this\
+    \ should be set to dummy. default: basic"
   synonyms:
   - --filter
   args: !SimpleFlagArg
     name: FILTER
   optional: true
-command:
-- initializeTranscriptDatasource
+- !Flag
+  description: "Protein mapping file (a tsv with transcript ID to protein ID ....\
+    \ Typically, for ENSEMBL or GENCODE a file with ENST to ENSP mappings).\nThis\
+    \ utility can require a lot of RAM (~4GB for gencode.v18).\nCreation of a gencode\
+    \ datasource can require as much as two hours.\nNOTE about Filter:\nPlease see\
+    \ the filter option.  Since this defaults to a GENCODE specific filter, which\
+    \ can be problematic for\nENSEMBL-only.\nUse \"dummy\" for ENSEMBL-only datasources\n\
+    Use \"basic\" for GENCODE datasources, unless you want to annotate using every\
+    \ available transcript.\nNote that all transcripts are present in a datasource,\
+    \ so if a filter change is needed to a datasource that has\nalready been generated,\
+    \ you can edit the config file, instead of re-creating the entire datasource.\n\
+    IF you wish to have HGVS support, you must provide the protein mapping file (--protein-map-file).\n"
+  synonyms:
+  - -p
+  - --protein-map-file
+  args: !SimpleFlagArg
+    name: PROTEIN_MAP_FILE
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:

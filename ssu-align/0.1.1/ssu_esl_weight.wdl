@@ -1,36 +1,36 @@
 version 1.0
 
-task SsuEslWeight {
+task Ssueslweight {
   input {
     Boolean? gersteinsonnhammerchothia_tree_weights
     Boolean? henikoff_positionbased_weights
     Boolean? henikoff_simple_filter
     Boolean? filter_seqs_fractional
-    String? send_output_file
-    String? id
-    String? idf
-    String? in_format
+    File? send_output_file
+    Float? id
+    Float? idf
+    File? in_format
     Boolean? amino
     Boolean? dna
     Boolean? rna
     Boolean? options
-    String msa_file
+    File msa_file
   }
   command <<<
-    ssu-esl-weight \
+    ssu_esl_weight \
       ~{msa_file} \
-      ~{true="-g" false="" gersteinsonnhammerchothia_tree_weights} \
-      ~{true="-p" false="" henikoff_positionbased_weights} \
-      ~{true="-b" false="" henikoff_simple_filter} \
-      ~{true="-f" false="" filter_seqs_fractional} \
+      ~{if (gersteinsonnhammerchothia_tree_weights) then "-g" else ""} \
+      ~{if (henikoff_positionbased_weights) then "-p" else ""} \
+      ~{if (henikoff_simple_filter) then "-b" else ""} \
+      ~{if (filter_seqs_fractional) then "-f" else ""} \
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
       ~{if defined(id) then ("--id " +  '"' + id + '"') else ""} \
       ~{if defined(idf) then ("--idf " +  '"' + idf + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
-      ~{true="-options" false="" options}
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     gersteinsonnhammerchothia_tree_weights: ": Gerstein/Sonnhammer/Chothia tree weights  [default]"
@@ -46,5 +46,9 @@ task SsuEslWeight {
     rna: ": <msa file> contains RNA alignments"
     options: ""
     msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_send_output_file = "${in_send_output_file}"
   }
 }

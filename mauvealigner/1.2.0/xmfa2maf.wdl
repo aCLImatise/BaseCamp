@@ -14,4 +14,7 @@ task Xmfa2maf {
     x_mfa_input: ""
     maf_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Defiant {
   command <<<
     defiant
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

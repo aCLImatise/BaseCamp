@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../ghost_tree_compare_trees.cwl
 inputs:
-- id: method
-  doc: '[pearson|spearman] correlation method to use in Mantel test'
+- id: in_method
+  doc: "[pearson|spearman]\ncorrelation method to use in Mantel test"
   type: boolean
   inputBinding:
     prefix: --method
-- id: tree_file_one
+- id: in_tree_file_one
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: tree_file_two
+- id: in_tree_file_two
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ghost-tree

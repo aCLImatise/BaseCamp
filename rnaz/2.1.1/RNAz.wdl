@@ -14,15 +14,15 @@ task RNAz {
   }
   command <<<
     RNAz \
-      ~{true="--forward" false="" forward} \
-      ~{true="--reverse" false="" reverse} \
-      ~{true="--both-strands" false="" both_strands} \
+      ~{if (forward) then "--forward" else ""} \
+      ~{if (reverse) then "--reverse" else ""} \
+      ~{if (both_strands) then "--both-strands" else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
-      ~{true="--dinucleotide" false="" dinucleotide} \
-      ~{true="--mononucleotide" false="" mononucleotide} \
-      ~{true="--locarnate" false="" lo_car_nate} \
-      ~{true="--no-shuffle" false="" no_shuffle}
+      ~{if (dinucleotide) then "--dinucleotide" else ""} \
+      ~{if (mononucleotide) then "--mononucleotide" else ""} \
+      ~{if (lo_car_nate) then "--locarnate" else ""} \
+      ~{if (no_shuffle) then "--no-shuffle" else ""}
   >>>
   parameter_meta {
     forward: "Score forward strand"
@@ -34,5 +34,9 @@ task RNAz {
     mononucleotide: "Use mononucleotide shuffled z-scores"
     lo_car_nate: "Use decision model for structural alignments (default=off)"
     no_shuffle: "Never fall back to shuffling (default=off)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
   }
 }

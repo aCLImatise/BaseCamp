@@ -4,4 +4,7 @@ task Lofreq {
   command <<<
     lofreq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

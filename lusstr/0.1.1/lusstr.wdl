@@ -8,10 +8,13 @@ task Lusstr {
   command <<<
     lusstr \
       ~{sub_cmd} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     v: ""
     sub_cmd: "annotate, format"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

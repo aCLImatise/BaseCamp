@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../bamtools_sort.cwl
 inputs:
-- id: in
+- id: in_in
   doc: the input BAM file [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: the output BAM file [stdout]
-  type: string
+  type: File
   inputBinding:
     prefix: -out
-- id: by_name
+- id: in_by_name
   doc: sort by alignment name
   type: boolean
   inputBinding:
     prefix: -byname
-- id: max_number_alignments
-  doc: max number of alignments per tempfile [500000]
-  type: string
+- id: in_max_number_alignments
+  doc: "max number of alignments per\ntempfile [500000]"
+  type: long
   inputBinding:
     prefix: -n
-- id: mem
+- id: in_mem
   doc: max memory to use [1024]
-  type: string
+  type: long
   inputBinding:
     prefix: -mem
-- id: sort_options
+- id: in_sort_options
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: the output BAM file [stdout]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - bamtools

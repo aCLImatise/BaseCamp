@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuPrompt {
+task Byobuprompt {
   command <<<
-    byobu-prompt
+    byobu_prompt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

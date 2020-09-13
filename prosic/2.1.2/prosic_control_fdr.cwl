@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../prosic_control_fdr.cwl
 inputs:
-- id: fdr
+- id: in_fdr
   doc: 'FDR to control for. [default: 0.05]'
-  type: string
+  type: double
   inputBinding:
     prefix: --fdr
-- id: event
+- id: in_event
   doc: Event to consider.
   type: string
   inputBinding:
     prefix: --event
-- id: max_len
+- id: in_max_len
   doc: Maximum indel length to consider (exclusive).
   type: long
   inputBinding:
     prefix: --max-len
-- id: min_len
+- id: in_min_len
   doc: Minimum indel length to consider.
   type: long
   inputBinding:
     prefix: --min-len
-- id: var
+- id: in_var
   doc: Variant type to consider (SNV, INS, DEL).
   type: string
   inputBinding:
     prefix: --var
-- id: bcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - prosic

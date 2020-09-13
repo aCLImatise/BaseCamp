@@ -4,4 +4,7 @@ task RnaclustDecodeTable {
   command <<<
     rnaclustDecodeTable
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../hgvsToVcf.cwl
 inputs:
-- id: no_left_shift
+- id: in_no_left_shift
   doc: Don't do the VCF-conventional left shifting of ambiguous placements
   type: boolean
   inputBinding:
     prefix: -noLeftShift
-- id: db
+- id: in_db
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_dot_hgvs
+- id: in_input_dot_hgvs
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_dot_vcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hgvsToVcf

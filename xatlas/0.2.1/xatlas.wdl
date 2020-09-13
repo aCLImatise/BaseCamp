@@ -3,19 +3,19 @@ version 1.0
 task Xatlas {
   input {
     String? ref
-    String? in
-    String? sample_name
-    String? prefix
+    File? in
+    File? sample_name
+    File? prefix
     Boolean? multithread
-    String? num_hts_threads
-    String? capture_bed
+    Int? num_hts_threads
+    File? capture_bed
     Boolean? min_p_value
-    String? min_snp_mapq
-    String? min_in_del_mapq
-    String? max_coverage
+    Int? min_snp_mapq
+    Int? min_in_del_mapq
+    Int? max_coverage
     String? block_abs_lim
     String? block_rel_lim
-    Boolean? gvc_f
+    File? gvc_f
     Boolean? bg_zf
     File? snp_log_it_params
     File? in_del_log_it_params
@@ -27,20 +27,20 @@ task Xatlas {
       ~{if defined(in) then ("--in " +  '"' + in + '"') else ""} \
       ~{if defined(sample_name) then ("--sample-name " +  '"' + sample_name + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
-      ~{true="--multithread" false="" multithread} \
+      ~{if (multithread) then "--multithread" else ""} \
       ~{if defined(num_hts_threads) then ("--num-hts-threads " +  '"' + num_hts_threads + '"') else ""} \
       ~{if defined(capture_bed) then ("--capture-bed " +  '"' + capture_bed + '"') else ""} \
-      ~{true="--min-p-value" false="" min_p_value} \
+      ~{if (min_p_value) then "--min-p-value" else ""} \
       ~{if defined(min_snp_mapq) then ("--min-snp-mapq " +  '"' + min_snp_mapq + '"') else ""} \
       ~{if defined(min_in_del_mapq) then ("--min-indel-mapq " +  '"' + min_in_del_mapq + '"') else ""} \
       ~{if defined(max_coverage) then ("--max-coverage " +  '"' + max_coverage + '"') else ""} \
       ~{if defined(block_abs_lim) then ("--block-abs-lim " +  '"' + block_abs_lim + '"') else ""} \
       ~{if defined(block_rel_lim) then ("--block-rel-lim " +  '"' + block_rel_lim + '"') else ""} \
-      ~{true="--gvcf" false="" gvc_f} \
-      ~{true="--bgzf" false="" bg_zf} \
+      ~{if (gvc_f) then "--gvcf" else ""} \
+      ~{if (bg_zf) then "--bgzf" else ""} \
       ~{if defined(snp_log_it_params) then ("--snp-logit-params " +  '"' + snp_log_it_params + '"') else ""} \
       ~{if defined(in_del_log_it_params) then ("--indel-logit-params " +  '"' + in_del_log_it_params + '"') else ""} \
-      ~{true="--enable-strand-filter" false="" enable_strand_filter}
+      ~{if (enable_strand_filter) then "--enable-strand-filter" else ""}
   >>>
   parameter_meta {
     ref: "Reference genome in FASTA format"
@@ -61,5 +61,11 @@ task Xatlas {
     snp_log_it_params: "File with intercept and coefficients for SNP logit model"
     in_del_log_it_params: "File with intercept and coefficients for indel logit model"
     enable_strand_filter: "Enable SNP filter for single-strandedness"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_sample_name = "${in_sample_name}"
+    File out_prefix = "${in_prefix}"
+    File out_gvc_f = "${in_gvc_f}"
   }
 }

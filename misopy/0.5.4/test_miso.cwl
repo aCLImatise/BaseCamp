@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../test_miso.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: Verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: quiet
+- id: in_quiet
   doc: Minimal output
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: fail_fast
+- id: in_fail_fast
   doc: Stop on first failure
   type: boolean
   inputBinding:
     prefix: --failfast
-- id: catch
+- id: in_catch
   doc: Catch control-C and display results
   type: boolean
   inputBinding:
     prefix: --catch
-- id: buffer
+- id: in_buffer
   doc: Buffer stdout and stderr during test runs
   type: boolean
   inputBinding:
     prefix: --buffer
-- id: test
-  doc: ''
+- id: in_test_miso
+  doc: '- run default set of tests'
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - test_miso

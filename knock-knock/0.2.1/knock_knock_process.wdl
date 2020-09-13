@@ -1,6 +1,6 @@
 version 1.0
 
-task KnockKnockProcess {
+task KnockknockProcess {
   input {
     Boolean? progress
     String? stages
@@ -9,18 +9,21 @@ task KnockKnockProcess {
     String sample
   }
   command <<<
-    knock-knock process \
+    knock_knock process \
       ~{project_directory} \
       ~{group} \
       ~{sample} \
-      ~{true="--progress" false="" progress} \
+      ~{if (progress) then "--progress" else ""} \
       ~{if defined(stages) then ("--stages " +  '"' + stages + '"') else ""}
   >>>
   parameter_meta {
-    progress: ""
+    progress: "show progress bars"
     stages: ""
-    project_directory: "the base directory to store input data, reference annotations, and analysis output for a project"
+    project_directory: "the base directory to store input data, reference\\nannotations, and analysis output for a project"
     group: "group name"
     sample: "sample name"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

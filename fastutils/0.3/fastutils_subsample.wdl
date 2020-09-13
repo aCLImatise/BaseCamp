@@ -2,10 +2,10 @@ version 1.0
 
 task FastutilsSubsample {
   input {
-    String? in
-    String? out
+    File? in
+    File? out
     Int? depth
-    String? genome_size
+    Int? genome_size
     Boolean? random
     Boolean? longest
     Int? seed
@@ -21,14 +21,14 @@ task FastutilsSubsample {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(depth) then ("--depth " +  '"' + depth + '"') else ""} \
       ~{if defined(genome_size) then ("--genomeSize " +  '"' + genome_size + '"') else ""} \
-      ~{true="--random" false="" random} \
-      ~{true="--longest" false="" longest} \
+      ~{if (random) then "--random" else ""} \
+      ~{if (longest) then "--longest" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--fastq" false="" fast_q} \
-      ~{true="--comment" false="" comment} \
-      ~{true="--num" false="" num} \
-      ~{true="--keep" false="" keep} \
-      ~{true="--fofn" false="" fof_n}
+      ~{if (fast_q) then "--fastq" else ""} \
+      ~{if (comment) then "--comment" else ""} \
+      ~{if (num) then "--num" else ""} \
+      ~{if (keep) then "--keep" else ""} \
+      ~{if (fof_n) then "--fofn" else ""}
   >>>
   parameter_meta {
     in: "input file in fasta/q format. This options is required if -r or -l are used [stdin]"
@@ -43,5 +43,9 @@ task FastutilsSubsample {
     num: "use read index instead of read name"
     keep: "keep name as a comment when using -n"
     fof_n: "input file is a file of file names"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

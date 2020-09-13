@@ -11,4 +11,7 @@ task Dnaplotter {
   parameter_meta {
     read_template_file: "Read a template file"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

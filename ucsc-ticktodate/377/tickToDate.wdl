@@ -1,14 +1,10 @@
 version 1.0
 
 task TickToDate {
-  input {
-    String ticks
-  }
   command <<<
-    tickToDate \
-      ~{ticks}
+    tickToDate
   >>>
-  parameter_meta {
-    ticks: ""
+  output {
+    File out_stdout = stdout()
   }
 }

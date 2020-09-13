@@ -1,7 +1,10 @@
 version 1.0
 
-task FastqQscale {
+task Fastqqscale {
   command <<<
-    fastq-qscale
+    fastq_qscale
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

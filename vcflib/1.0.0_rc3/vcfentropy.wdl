@@ -4,17 +4,20 @@ task Vcfentropy {
   input {
     Boolean? fast_a_reference
     Boolean? window_size
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcfentropy \
       ~{vcf_file} \
-      ~{true="--fasta-reference" false="" fast_a_reference} \
-      ~{true="--window-size" false="" window_size}
+      ~{if (fast_a_reference) then "--fasta-reference" else ""} \
+      ~{if (window_size) then "--window-size" else ""}
   >>>
   parameter_meta {
     fast_a_reference: "FASTA reference file to use to obtain flanking sequences"
     window_size: "Size of the window over which to calculate entropy"
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

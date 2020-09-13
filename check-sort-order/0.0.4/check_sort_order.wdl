@@ -1,17 +1,20 @@
 version 1.0
 
-task CheckSortOrder {
+task Checksortorder {
   input {
-    String? genome
+    File? genome
     File path
   }
   command <<<
-    check-sort-order \
+    check_sort_order \
       ~{path} \
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""}
   >>>
   parameter_meta {
     genome: "a genome file of chromosome sizes and order"
-    path: ""
+    path: "Options:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,10 +2,10 @@ version 1.0
 
 task ClanOutput {
   input {
-    Boolean? i
-    Boolean? o
-    Boolean? f
     Boolean? r
+    Boolean? f
+    Boolean? o
+    Boolean? i
     String? clan_file
     String? output_file
     String? reference_file
@@ -17,19 +17,22 @@ task ClanOutput {
       ~{output_file} \
       ~{reference_file} \
       ~{read_file} \
-      ~{true="-i" false="" i} \
-      ~{true="-o" false="" o} \
-      ~{true="-f" false="" f} \
-      ~{true="-r" false="" r}
+      ~{if (r) then "-r" else ""} \
+      ~{if (f) then "-f" else ""} \
+      ~{if (o) then "-o" else ""} \
+      ~{if (i) then "-i" else ""}
   >>>
   parameter_meta {
-    i: ""
-    o: ""
-    f: ""
     r: ""
+    f: ""
+    o: ""
+    i: ""
     clan_file: ""
     output_file: ""
     reference_file: ""
     read_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

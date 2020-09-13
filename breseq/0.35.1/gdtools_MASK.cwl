@@ -1,7 +1,7 @@
 class: CommandLineTool
 id: ../../../gdtools_MASK.cwl
 inputs:
-- id: small
+- id: in_small
   doc: "Mask only 'small' mutations defined as: all SNP mutations; INS, DEL, and SUB\
     \ mutations with sizes ≤ 20 bp; and all INS and DEL mutations causing expansion\
     \ or contraction of simple sequence repeats (SSRs) with at least two repeats of\
@@ -11,17 +11,25 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --small
-- id: output
+- id: in_output
   doc: Output Genome Diff file. (DEFAULT=output.gd)
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: verbose
+- id: in_verbose
   doc: Verbose mode
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Output Genome Diff file. (DEFAULT=output.gd)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - gdtools

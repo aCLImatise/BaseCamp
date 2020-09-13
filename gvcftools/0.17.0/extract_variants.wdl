@@ -4,14 +4,20 @@ task ExtractVariants {
   input {
     Boolean? skip_header
     Boolean? invert
+    String output_dot
   }
   command <<<
     extract_variants \
-      ~{true="--skip-header" false="" skip_header} \
-      ~{true="--invert" false="" invert}
+      ~{output_dot} \
+      ~{if (skip_header) then "--skip-header" else ""} \
+      ~{if (invert) then "--invert" else ""}
   >>>
   parameter_meta {
     skip_header: "Write gVCF output without header"
-    invert: "Invert the filter so that only non-variant records are  output."
+    invert: "Invert the filter so that only non-variant records are"
+    output_dot: "help:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

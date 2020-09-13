@@ -1,242 +1,250 @@
 class: CommandLineTool
 id: ../../../weblogo.cwl
 inputs:
-- id: fin
+- id: in_fin
   doc: 'Sequence input file (default: stdin)'
   type: File
   inputBinding:
     prefix: --fin
-- id: datatype
-  doc: 'Type of multiple sequence alignment or position weight matrix file: (clustal,
-    fasta, plain, msf, genbank, nbrf, nexus, phylip, stockholm, intelligenetics, table,
-    array, transfac)'
-  type: string
+- id: in_datatype
+  doc: "Type of multiple sequence alignment or\nposition weight matrix file: (clustal,\
+    \ fasta,\nplain, msf, genbank, nbrf, nexus, phylip,\nstockholm, intelligenetics,\
+    \ table, array,\ntransfac)"
+  type: File
   inputBinding:
     prefix: --datatype
-- id: f_out
+- id: in_f_out
   doc: 'Output file (default: stdout)'
   type: File
   inputBinding:
     prefix: --fout
-- id: format
-  doc: 'Format of output: eps (default), png, png_print, pdf, jpeg, svg, logodata'
+- id: in_format
+  doc: "Format of output: eps (default), png,\npng_print, pdf, jpeg, svg, logodata"
   type: string
   inputBinding:
     prefix: --format
-- id: sequence_type
-  doc: "The type of sequence data: 'protein', 'rna' or 'dna'."
+- id: in_sequence_type
+  doc: "The type of sequence data: 'protein', 'rna' or\n'dna'."
   type: string
   inputBinding:
     prefix: --sequence-type
-- id: alphabet
-  doc: The set of symbols to count, e.g. 'AGTC'. All characters not in the alphabet
-    are ignored. If neither the alphabet nor sequence-type are specified then weblogo
-    will examine the input data and make an educated guess. See also --sequence-type,
-    --ignore-lower-case
+- id: in_alphabet
+  doc: "The set of symbols to count, e.g. 'AGTC'. All\ncharacters not in the alphabet\
+    \ are ignored. If\nneither the alphabet nor sequence-type are\nspecified then\
+    \ weblogo will examine the input\ndata and make an educated guess. See also\n\
+    --sequence-type, --ignore-lower-case"
   type: string
   inputBinding:
     prefix: --alphabet
-- id: units
-  doc: A unit of entropy ('bits' (default), 'nats', 'digits'), or a unit of free energy
-    ('kT', 'kJ/mol', 'kcal/mol'), or 'probability' for probabilities
-  type: string
+- id: in_units
+  doc: "A unit of entropy ('bits' (default), 'nats',\n'digits'), or a unit of free\
+    \ energy ('kT',\n'kJ/mol', 'kcal/mol'), or 'probability' for\nprobabilities"
+  type: long
   inputBinding:
     prefix: --units
-- id: composition
-  doc: "The expected composition of the sequences: 'auto' (default), 'equiprobable',\
-    \ 'none' (do not perform any compositional adjustment), a CG percentage, a species\
-    \ name (e.g. 'E. coli', 'H. sapiens'), or an explicit distribution (e.g. \"{'A':10,\
-    \ 'C':40, 'G':40, 'T':10}\"). The automatic option uses a typical distribution\
-    \ for proteins and equiprobable distribution for everything else."
-  type: string
+- id: in_composition
+  doc: "The expected composition of the sequences:\n'auto' (default), 'equiprobable',\
+    \ 'none' (do\nnot perform any compositional adjustment), a\nCG percentage, a species\
+    \ name (e.g. 'E. coli',\n'H. sapiens'), or an explicit distribution\n(e.g. \"\
+    {'A':10, 'C':40, 'G':40, 'T':10}\"). The\nautomatic option uses a typical distribution\n\
+    for proteins and equiprobable distribution for\neverything else."
+  type: long
   inputBinding:
     prefix: --composition
-- id: weight
-  doc: The weight of prior data.  Default depends on alphabet length
-  type: string
+- id: in_weight
+  doc: "The weight of prior data.  Default depends on\nalphabet length"
+  type: long
   inputBinding:
     prefix: --weight
-- id: first_index
-  doc: 'Index of first position in sequence data (default: 1)'
-  type: string
+- id: in_first_index
+  doc: "Index of first position in sequence data\n(default: 1)"
+  type: long
   inputBinding:
     prefix: --first-index
-- id: lower
+- id: in_lower
   doc: Lower bound of sequence to display
   type: string
   inputBinding:
     prefix: --lower
-- id: upper
+- id: in_upper
   doc: Upper bound of sequence to display
   type: string
   inputBinding:
     prefix: --upper
-- id: ignore_lower_case
-  doc: Disregard lower case letters and only count upper case letters in sequences.
+- id: in_ignore_lower_case
+  doc: "Disregard lower case letters and only count\nupper case letters in sequences."
   type: boolean
   inputBinding:
     prefix: --ignore-lower-case
-- id: reverse
+- id: in_reverse
   doc: reverse sequences
   type: boolean
   inputBinding:
     prefix: --reverse
-- id: complement
+- id: in_complement
   doc: complement nucleic sequences
   type: boolean
   inputBinding:
     prefix: --complement
-- id: rev_comp
+- id: in_rev_comp
   doc: reverse complement nucleic sequences
   type: boolean
   inputBinding:
     prefix: --revcomp
-- id: size
-  doc: Specify a standard logo size (small, medium (default), large)
-  type: string
+- id: in_size
+  doc: "Specify a standard logo size (small, medium\n(default), large)"
+  type: long
   inputBinding:
     prefix: --size
-- id: stacks_per_line
-  doc: 'Maximum number of logo stacks per logo line. (default: 40)'
-  type: string
+- id: in_stacks_per_line
+  doc: "Maximum number of logo stacks per logo line.\n(default: 40)"
+  type: long
   inputBinding:
     prefix: --stacks-per-line
-- id: title
+- id: in_title
   doc: Logo title text.
   type: string
   inputBinding:
     prefix: --title
-- id: label
+- id: in_label
   doc: A figure label, e.g. '2a'
-  type: string
+  type: long
   inputBinding:
     prefix: --label
-- id: show_x_axis
-  doc: 'Display sequence numbers along x-axis? (default: True)'
+- id: in_show_x_axis
+  doc: "Display sequence numbers along x-axis?\n(default: True)"
   type: string
   inputBinding:
     prefix: --show-xaxis
-- id: xlabel
+- id: in_xlabel
   doc: X-axis label
   type: string
   inputBinding:
     prefix: --xlabel
-- id: annotate
-  doc: A comma separated list of custom stack annotations, e.g. '1,3,4,5,6,7'.  Annotation
-    list must be same length as sequences.
-  type: string
+- id: in_annotate
+  doc: "A comma separated list of custom stack\nannotations, e.g. '1,3,4,5,6,7'. \
+    \ Annotation\nlist must be same length as sequences."
+  type: long
   inputBinding:
     prefix: --annotate
-- id: yaxis
-  doc: 'Height of yaxis in units. (Default: Maximum value with uninformative prior.)'
+- id: in_yaxis
+  doc: "Height of yaxis in units. (Default: Maximum\nvalue with uninformative prior.)"
   type: string
   inputBinding:
     prefix: --yaxis
-- id: show_yaxis
-  doc: 'Display entropy scale along y-axis? (default: True)'
+- id: in_show_yaxis
+  doc: "Display entropy scale along y-axis? (default:\nTrue)"
   type: string
   inputBinding:
     prefix: --show-yaxis
-- id: ylabel
-  doc: Y-axis label (default depends on plot type and units)
+- id: in_ylabel
+  doc: "Y-axis label (default depends on plot type and\nunits)"
   type: string
   inputBinding:
     prefix: --ylabel
-- id: show_ends
-  doc: 'Label the ends of the sequence? (default: False)'
+- id: in_show_ends
+  doc: "Label the ends of the sequence? (default:\nFalse)"
   type: string
   inputBinding:
     prefix: --show-ends
-- id: fine_print
+- id: in_fine_print
   doc: 'The fine print (default: weblogo version)'
   type: string
   inputBinding:
     prefix: --fineprint
-- id: tic_marks
+- id: in_tic_marks
   doc: 'Distance between ticmarks (default: 1.0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --ticmarks
-- id: error_bars
+- id: in_error_bars
   doc: 'Display error bars? (default: True)'
   type: string
   inputBinding:
     prefix: --errorbars
-- id: reverse_stacks
-  doc: 'Draw stacks with largest letters on top? (default: True)'
+- id: in_reverse_stacks
+  doc: "Draw stacks with largest letters on top?\n(default: True)"
   type: string
   inputBinding:
     prefix: --reverse-stacks
-- id: color_scheme
-  doc: Specify a standard color scheme (auto, base pairing, charge, chemistry, classic,
-    hydrophobicity, monochrome)
+- id: in_color_scheme
+  doc: "Specify a standard color scheme (auto, base\npairing, charge, chemistry, classic,\n\
+    hydrophobicity, monochrome)"
   type: string
   inputBinding:
     prefix: --color-scheme
-- id: color
-  doc: SYMBOLS DESCRIPTION  Specify symbol colors, e.g. --color black AG 'Purine'
-    --color red TC 'Pyrimidine'
+- id: in_color
+  doc: "SYMBOLS DESCRIPTION\nSpecify symbol colors, e.g. --color black AG\n'Purine'\
+    \ --color red TC 'Pyrimidine'"
   type: string
   inputBinding:
     prefix: --color
-- id: default_color
+- id: in_default_color
   doc: Symbol color if not otherwise specified.
   type: string
   inputBinding:
     prefix: --default-color
-- id: stack_width
+- id: in_stack_width
   doc: 'Width of a logo stack (default: 10.8)'
-  type: string
+  type: double
   inputBinding:
     prefix: --stack-width
-- id: aspect_ratio
+- id: in_aspect_ratio
   doc: 'Ratio of stack height to width (default: 5)'
-  type: string
+  type: long
   inputBinding:
     prefix: --aspect-ratio
-- id: box
+- id: in_box
   doc: 'Draw boxes around symbols? (default: no)'
   type: string
   inputBinding:
     prefix: --box
-- id: resolution
-  doc: 'Bitmap resolution in dots per inch (DPI). (Default: 96 DPI, except png_print,
-    600 DPI) Low resolution bitmaps (DPI<300) are antialiased.'
-  type: string
+- id: in_resolution
+  doc: "Bitmap resolution in dots per inch (DPI).\n(Default: 96 DPI, except png_print,\
+    \ 600 DPI)\nLow resolution bitmaps (DPI<300) are\nantialiased."
+  type: long
   inputBinding:
     prefix: --resolution
-- id: scale_width
-  doc: 'Scale the visible stack width by the fraction of symbols in the column?  (I.e.
-    columns with many gaps of unknowns are narrow.)  (Default: yes)'
+- id: in_scale_width
+  doc: "Scale the visible stack width by the fraction\nof symbols in the column? \
+    \ (I.e. columns with\nmany gaps of unknowns are narrow.)  (Default:\nyes)"
   type: string
   inputBinding:
     prefix: --scale-width
-- id: debug
-  doc: 'Output additional diagnostic information. (Default: False)'
+- id: in_debug
+  doc: "Output additional diagnostic information.\n(Default: False)"
   type: string
   inputBinding:
     prefix: --debug
-- id: serve
-  doc: Start a standalone WebLogo server for creating sequence logos.
+- id: in_serve
+  doc: "Start a standalone WebLogo server for creating\nsequence logos."
   type: boolean
   inputBinding:
     prefix: --serve
-- id: port
+- id: in_port
   doc: 'Listen to this local port. (Default: 8080)'
-  type: string
+  type: long
   inputBinding:
     prefix: --port
-- id: sequence_data_dot_fa
+- id: in_sequence_data_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sequence_logo_dot_eps
+- id: in_sequence_logo_dot_eps
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_f_out
+  doc: 'Output file (default: stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_f_out)
 cwlVersion: v1.1
 baseCommand:
 - weblogo

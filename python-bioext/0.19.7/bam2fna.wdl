@@ -4,4 +4,7 @@ task Bam2fna {
   command <<<
     bam2fna
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

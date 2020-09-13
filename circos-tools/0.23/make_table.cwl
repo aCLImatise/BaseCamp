@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../make_table.cwl
 inputs:
-- id: rows
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -rows
-- id: cols
+- id: in_cols
   doc: ''
   type: long
   inputBinding:
     prefix: -cols
-outputs: []
+- id: in_rows
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -rows
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - make-table

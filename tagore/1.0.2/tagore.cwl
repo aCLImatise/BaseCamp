@@ -1,65 +1,74 @@
 class: CommandLineTool
 id: ../../../tagore.cwl
 inputs:
-- id: input
+- id: in_input
   doc: Input BED-like file
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: p
+- id: in_p
   doc: '[output file prefix], --prefix [output file prefix]  Output prefix [Default:
     "out"]'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -p
-- id: b
+- id: in_b
   doc: '[hg78/hg38], --build [hg78/hg38]                     Human genome build to
     use [Default: hg38]'
   type: boolean
   inputBinding:
     prefix: -b
-- id: force
+- id: in_force
   doc: Overwrite output files if they exist already
   type: boolean
   inputBinding:
     prefix: --force
-- id: of_mt
+- id: in_of_mt
   doc: '[png/pdf], --oformat [png/pdf]                    Output format for conversion
     (pdf requires rsvg-convert)'
   type: boolean
   inputBinding:
     prefix: -ofmt
-- id: verbose
+- id: in_verbose
   doc: Display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 1
-- id: prefix
+- id: in_prefix
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: hg_seven_eight_slash_hg_three_eight
+- id: in_hg_seven_eight_slash_hg_three_eight
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 3
-- id: png_slash_pdf
+- id: in_png_slash_pdf
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_p
+  doc: '[output file prefix], --prefix [output file prefix]  Output prefix [Default:
+    "out"]'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_p)
 cwlVersion: v1.1
 baseCommand:
 - tagore

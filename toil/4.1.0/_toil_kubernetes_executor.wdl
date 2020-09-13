@@ -1,7 +1,10 @@
 version 1.0
 
-task _toilKubernetesExecutor {
+task ToilKubernetesExecutor {
   command <<<
     _toil_kubernetes_executor
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

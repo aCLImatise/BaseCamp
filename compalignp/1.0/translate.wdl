@@ -5,7 +5,7 @@ task Translate {
     Boolean? translate_full_stops
     Int? report_only_orfs
     Boolean? require_orfs_start
-    String? save_results_output
+    File? save_results_output
     Boolean? quiet_silence_banner
     String? set_stop_character
     Boolean? options
@@ -14,13 +14,13 @@ task Translate {
   command <<<
     translate \
       ~{seq_file} \
-      ~{true="-a" false="" translate_full_stops} \
+      ~{if (translate_full_stops) then "-a" else ""} \
       ~{if defined(report_only_orfs) then ("-l " +  '"' + report_only_orfs + '"') else ""} \
-      ~{true="-m" false="" require_orfs_start} \
+      ~{if (require_orfs_start) then "-m" else ""} \
       ~{if defined(save_results_output) then ("-o " +  '"' + save_results_output + '"') else ""} \
-      ~{true="-q" false="" quiet_silence_banner} \
+      ~{if (quiet_silence_banner) then "-q" else ""} \
       ~{if defined(set_stop_character) then ("-s " +  '"' + set_stop_character + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     translate_full_stops: ": translate in full, with stops; no individual ORFs"
@@ -31,5 +31,9 @@ task Translate {
     set_stop_character: ": with -a, set stop character to <stopchar>"
     options: ""
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_save_results_output = "${in_save_results_output}"
   }
 }

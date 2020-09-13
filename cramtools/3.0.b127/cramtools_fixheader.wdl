@@ -13,20 +13,23 @@ task CramtoolsFixheader {
   command <<<
     cramtools fixheader \
       ~{fix_header} \
-      ~{true="--confirm-md5" false="" confirm_md_five} \
-      ~{true="--inject-uri" false="" inject_uri} \
-      ~{true="--input-cram-file" false="" input_cram_file} \
-      ~{true="--reference-fasta-file" false="" reference_fast_a_file} \
-      ~{true="--uri-pattern" false="" uri_pattern} \
-      ~{true="--log-level" false="" log_level}
+      ~{if (confirm_md_five) then "--confirm-md5" else ""} \
+      ~{if (inject_uri) then "--inject-uri" else ""} \
+      ~{if (input_cram_file) then "--input-cram-file" else ""} \
+      ~{if (reference_fast_a_file) then "--reference-fasta-file" else ""} \
+      ~{if (uri_pattern) then "--uri-pattern" else ""} \
+      ~{if (log_level) then "--log-level" else ""}
   >>>
   parameter_meta {
     confirm_md_five: "Calculate MD5 for sequences mentioned in the header. Requires --reference-fasta-file option. (default: false)"
     inject_uri: "Inject URI for all reference sequences in the header. (default: false)"
     input_cram_file: "The path to the CRAM file."
-    reference_fast_a_file: "Path to the reference fasta file, it must be uncompressed and indexed (use 'samtools faidx' for example). "
+    reference_fast_a_file: "Path to the reference fasta file, it must be uncompressed and indexed (use 'samtools faidx' for example)."
     uri_pattern: "String formatting pattern for sequence URI to be injected. (default: http://www.ebi.ac.uk/ena/cram/md5/%s)"
     log_level: "Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)"
     fix_header: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

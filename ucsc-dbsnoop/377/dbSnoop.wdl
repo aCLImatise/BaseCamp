@@ -8,15 +8,13 @@ task DbSnoop {
     String? skip_table
     String? profile
     String database
-    String var_output
   }
   command <<<
     dbSnoop \
       ~{database} \
-      ~{var_output} \
-      ~{true="-unsplit" false="" unsplit} \
-      ~{true="-noNumberCommas" false="" no_number_commas} \
-      ~{true="-justSchema" false="" just_schema} \
+      ~{if (unsplit) then "-unsplit" else ""} \
+      ~{if (no_number_commas) then "-noNumberCommas" else ""} \
+      ~{if (just_schema) then "-justSchema" else ""} \
       ~{if defined(skip_table) then ("-skipTable " +  '"' + skip_table + '"') else ""} \
       ~{if defined(profile) then ("-profile " +  '"' + profile + '"') else ""}
   >>>
@@ -27,6 +25,8 @@ task DbSnoop {
     skip_table: "- if set skip a given table name"
     profile: "- use profile for connection settings, default = 'db'"
     database: ""
-    var_output: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

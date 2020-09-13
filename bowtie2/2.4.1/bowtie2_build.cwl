@@ -1,117 +1,121 @@
 class: CommandLineTool
 id: ../../../bowtie2_build.cwl
 inputs:
-- id: reference_files_fasta
+- id: in_reference_files_fasta
   doc: reference files are Fasta (default)
   type: boolean
   inputBinding:
     prefix: -f
-- id: reference_sequences_given
-  doc: reference sequences given on cmd line (as <reference_in>)
+- id: in_reference_sequences_given
+  doc: "reference sequences given on cmd line (as\n<reference_in>)"
   type: boolean
   inputBinding:
     prefix: -c
-- id: large_index
-  doc: force generated index to be 'large', even if ref has fewer than 4 billion nucleotides
+- id: in_large_index
+  doc: "force generated index to be 'large', even if ref\nhas fewer than 4 billion\
+    \ nucleotides"
   type: boolean
   inputBinding:
     prefix: --large-index
-- id: debug
+- id: in_debug
   doc: use the debug binary; slower, assertions enabled
   type: boolean
   inputBinding:
     prefix: --debug
-- id: sanitized
+- id: in_sanitized
   doc: use sanitized binary; slower, uses ASan and/or UBSan
   type: boolean
   inputBinding:
     prefix: --sanitized
-- id: verbose
+- id: in_verbose
   doc: log the issued command
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: a_slash_no_auto
+- id: in_a_slash_no_auto
   doc: disable automatic -p/--bmax/--dcv memory-fitting
   type: boolean
   inputBinding:
     prefix: -a/--noauto
-- id: p_slash_packed
+- id: in_p_slash_packed
   doc: use packed strings internally; slower, less memory
   type: boolean
   inputBinding:
     prefix: -p/--packed
-- id: bmax
+- id: in_bmax
   doc: max bucket sz for blockwise suffix-array builder
   type: long
   inputBinding:
     prefix: --bmax
-- id: bmax_divn
+- id: in_bmax_divn
   doc: 'max bucket sz as divisor of ref len (default: 4)'
   type: long
   inputBinding:
     prefix: --bmaxdivn
-- id: dcv
+- id: in_dcv
   doc: 'diff-cover period for blockwise (default: 1024)'
   type: long
   inputBinding:
     prefix: --dcv
-- id: no_dc
+- id: in_no_dc
   doc: disable diff-cover (algorithm becomes quadratic)
   type: boolean
   inputBinding:
     prefix: --nodc
-- id: r_slash_no_ref
+- id: in_r_slash_no_ref
   doc: don't build .3/.4 index files
   type: boolean
   inputBinding:
     prefix: -r/--noref
-- id: three_slash_just_ref
+- id: in_three_slash_just_ref
   doc: just build .3/.4 index files
   type: boolean
   inputBinding:
     prefix: -3/--justref
-- id: oslash_off_rate
+- id: in_oslash_off_rate
   doc: 'SA is sampled every 2^<int> BWT chars (default: 5)'
   type: long
   inputBinding:
     prefix: -o/--offrate
-- id: t_slash_f_tab_chars
+- id: in_t_slash_f_tab_chars
   doc: '# of chars consumed in initial lookup (default: 10)'
   type: long
   inputBinding:
     prefix: -t/--ftabchars
-- id: threads
+- id: in_threads
   doc: '# of threads'
   type: long
   inputBinding:
     prefix: --threads
-- id: seed
+- id: in_seed
   doc: seed for random number generator
   type: long
   inputBinding:
     prefix: --seed
-- id: q_slash_quiet
+- id: in_q_slash_quiet
   doc: verbose output (for debugging)
   type: boolean
   inputBinding:
     prefix: -q/--quiet
-- id: h_slash_help
+- id: in_h_slash_help
   doc: print detailed description of tool and its options
   type: boolean
   inputBinding:
     prefix: -h/--help
-- id: reference_in
+- id: in_reference_in
   doc: comma-separated list of files with ref sequences
   type: string
   inputBinding:
     position: 0
-- id: bt_two_index_base
+- id: in_bt_two_index_base
   doc: write bt2 data to files with this dir/basename
-  type: string
+  type: long
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bowtie2-build

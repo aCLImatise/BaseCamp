@@ -11,4 +11,7 @@ task HaphpipeDemo {
   parameter_meta {
     outdir: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

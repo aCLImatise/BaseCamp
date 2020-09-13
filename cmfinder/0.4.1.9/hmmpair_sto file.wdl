@@ -1,7 +1,10 @@
 version 1.0
 
-task HmmpairSto file {
+task HmmpairStofile {
   command <<<
-    hmmpair sto file
+    hmmpair sto_file
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

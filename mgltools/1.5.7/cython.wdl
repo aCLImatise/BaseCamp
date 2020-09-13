@@ -4,4 +4,7 @@ task Cython {
   command <<<
     cython
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

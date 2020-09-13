@@ -16,13 +16,13 @@ task VarscanCopynumber {
     varscan copynumber \
       ~{normal_pile_up} \
       ~{tumor_pile_up} \
-      ~{true="--min-base-qual" false="" min_base_qual} \
-      ~{true="--min-map-qual" false="" min_map_qual} \
-      ~{true="--min-coverage" false="" min_coverage} \
-      ~{true="--min-segment-size" false="" min_segment_size} \
-      ~{true="--max-segment-size" false="" max_segment_size} \
-      ~{true="--p-value" false="" p_value} \
-      ~{true="--data-ratio" false="" data_ratio}
+      ~{if (min_base_qual) then "--min-base-qual" else ""} \
+      ~{if (min_map_qual) then "--min-map-qual" else ""} \
+      ~{if (min_coverage) then "--min-coverage" else ""} \
+      ~{if (min_segment_size) then "--min-segment-size" else ""} \
+      ~{if (max_segment_size) then "--max-segment-size" else ""} \
+      ~{if (p_value) then "--p-value" else ""} \
+      ~{if (data_ratio) then "--data-ratio" else ""}
   >>>
   parameter_meta {
     min_base_qual: "- Minimum base quality to count for coverage [20]"
@@ -34,5 +34,8 @@ task VarscanCopynumber {
     data_ratio: "- The normal/tumor input data ratio for copynumber adjustment [1.0]"
     normal_pile_up: ""
     tumor_pile_up: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

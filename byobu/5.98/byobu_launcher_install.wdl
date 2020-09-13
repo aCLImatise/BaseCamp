@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuLauncherInstall {
+task Byobulauncherinstall {
   command <<<
-    byobu-launcher-install
+    byobu_launcher_install
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

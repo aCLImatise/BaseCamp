@@ -2,7 +2,7 @@ version 1.0
 
 task Vcfcleancomplex {
   input {
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcfcleancomplex \
@@ -10,5 +10,8 @@ task Vcfcleancomplex {
   >>>
   parameter_meta {
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -5,7 +5,7 @@ task Winextract {
     File? genome
     File? in_bed
     File? output_file_valid
-    String? window
+    Int? window
     Boolean? uow
     Boolean? asn
   }
@@ -15,8 +15,8 @@ task Winextract {
       ~{if defined(in_bed) then ("--in-bed " +  '"' + in_bed + '"') else ""} \
       ~{if defined(output_file_valid) then ("--output " +  '"' + output_file_valid + '"') else ""} \
       ~{if defined(window) then ("--window " +  '"' + window + '"') else ""} \
-      ~{true="--uow" false="" uow} \
-      ~{true="--asn" false="" asn}
+      ~{if (uow) then "--uow" else ""} \
+      ~{if (asn) then "--asn" else ""}
   >>>
   parameter_meta {
     genome: "Genome reference file. Valid filetypes are: .fa and .fasta."
@@ -25,5 +25,9 @@ task Winextract {
     window: "Window size to analyse. In range [5..2000]."
     uow: "Use given window."
     asn: "Add score to output sequence name."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_valid = "${in_output_file_valid}"
   }
 }

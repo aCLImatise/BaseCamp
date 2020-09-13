@@ -1,34 +1,37 @@
 class: CommandLineTool
 id: ../../../pyrad.cwl
 inputs:
-- id: input_file_sample
+- id: in_input_file_sample
   doc: input file for within sample filtering and clustering
-  type: string
+  type: File
   inputBinding:
     prefix: -p
-- id: perform_stepwise_parts
-  doc: perform step-wise parts of within analysis 1 = barcode sorting 2 = filter/edit
-    raw sequences 3 = within-sample clustering 4 = estimate pi and e 5 = consensus
-    calling 6 = cluster consensus 7 = align & create output files
-  type: string
+- id: in_perform_stepwise_parts
+  doc: "perform step-wise parts of within analysis\n1 = barcode sorting\n2 = filter/edit\
+    \ raw sequences\n3 = within-sample clustering\n4 = estimate pi and e\n5 = consensus\
+    \ calling\n6 = cluster consensus\n7 = align & create output files"
+  type: long
   inputBinding:
     prefix: -s
-- id: input_file_dtest
-  doc: input file for D-test of introgression, can iterate over multiple samples
-  type: string
+- id: in_input_file_dtest
+  doc: "input file for D-test of introgression,\ncan iterate over multiple samples"
+  type: File
   inputBinding:
     prefix: -d
-- id: creates_new_empty_input_file
+- id: in_creates_new_input_file
   doc: creates a new empty input params.txt file
   type: boolean
   inputBinding:
     prefix: -n
-- id: creates_new_empty_dtest_file
+- id: in_creates_new_empty_file
   doc: creates a new empty Dtest input file
   type: boolean
   inputBinding:
     prefix: -D
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pyrad

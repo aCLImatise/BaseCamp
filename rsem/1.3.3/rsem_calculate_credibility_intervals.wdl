@@ -1,6 +1,6 @@
 version 1.0
 
-task RsemCalculateCredibilityIntervals {
+task Rsemcalculatecredibilityintervals {
   input {
     String reference_name
     String imd_name
@@ -11,7 +11,7 @@ task RsemCalculateCredibilityIntervals {
     String nmb
   }
   command <<<
-    rsem-calculate-credibility-intervals \
+    rsem_calculate_credibility_intervals \
       ~{reference_name} \
       ~{imd_name} \
       ~{stat_name} \
@@ -28,5 +28,8 @@ task RsemCalculateCredibilityIntervals {
     ncv: ""
     ns_pc: ""
     nmb: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

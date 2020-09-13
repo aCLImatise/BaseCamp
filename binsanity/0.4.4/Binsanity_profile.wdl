@@ -1,18 +1,18 @@
 version 1.0
 
-task BinsanityProfile {
+task Binsanityprofile {
   input {
-    String? specify_fasta_file
-    String? identify_location_indexed
-    String? identify_name_output
-    String? transform
-    String? specify_number_threads
-    String? specify_directory_output
+    File? specify_fasta_file
+    String? identify_location_bam
+    File? identify_name_output
+    File? transform
+    Int? specify_number_threads
+    Directory? specify_directory_output
   }
   command <<<
-    Binsanity-profile \
+    Binsanity_profile \
       ~{if defined(specify_fasta_file) then ("-i " +  '"' + specify_fasta_file + '"') else ""} \
-      ~{if defined(identify_location_indexed) then ("-s " +  '"' + identify_location_indexed + '"') else ""} \
+      ~{if defined(identify_location_bam) then ("-s " +  '"' + identify_location_bam + '"') else ""} \
       ~{if defined(identify_name_output) then ("-c " +  '"' + identify_name_output + '"') else ""} \
       ~{if defined(transform) then ("--transform " +  '"' + transform + '"') else ""} \
       ~{if defined(specify_number_threads) then ("-T " +  '"' + specify_number_threads + '"') else ""} \
@@ -20,10 +20,15 @@ task BinsanityProfile {
   >>>
   parameter_meta {
     specify_fasta_file: "Specify fasta file being profiled"
-    identify_location_indexed: "identify location of BAM files BAM files should be indexed and sorted"
+    identify_location_bam: "identify location of BAM files\\nBAM files should be indexed and sorted"
     identify_name_output: "Identify name of output file for coverage information"
-    transform: "Indicate what type of data transformation you want in the final file [Default:log]: scale --> Scaled by multiplying by 100 and log transforming log --> Log transform None --> Raw Coverage Values X5 --> Multiplication by 5 X10 --> Multiplication by 10 X100 --> Multiplication by 100 SQR --> Square root We recommend using a scaled log transformation for initial testing. Other transformations can be useful on a case by case basis"
+    transform: "Indicate what type of data transformation you want in the final file [Default:log]:\\nscale --> Scaled by multiplying by 100 and log transforming\\nlog --> Log transform\\nNone --> Raw Coverage Values\\nX5 --> Multiplication by 5\\nX10 --> Multiplication by 10\\nX100 --> Multiplication by 100\\nSQR --> Square root\\nWe recommend using a scaled log transformation for initial testing.\\nOther transformations can be useful on a case by case basis"
     specify_number_threads: "Specify Number of Threads For Feature Counts [Default: 1]"
     specify_directory_output: "Specify directory for output files to be deposited [Default: Working Directory]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_identify_name_output = "${in_identify_name_output}"
+    Directory out_specify_directory_output = "${in_specify_directory_output}"
   }
 }

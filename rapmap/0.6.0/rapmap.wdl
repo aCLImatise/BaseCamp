@@ -4,4 +4,7 @@ task Rapmap {
   command <<<
     rapmap
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

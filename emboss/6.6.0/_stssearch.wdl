@@ -1,7 +1,10 @@
 version 1.0
 
-task _stssearch {
+task Stssearch {
   command <<<
     _stssearch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,10 +2,10 @@ version 1.0
 
 task ClinvarTsvParseXml {
   input {
-    String? output_multi
-    String? clin_var_xml
+    Int? output_multi
+    File? clin_var_xml
     String? genome_build
-    String? output_single
+    File? output_single
     Int? max_rows
     String clin_var_tsv
     String parse_xml
@@ -28,5 +28,9 @@ task ClinvarTsvParseXml {
     max_rows: "Maximal number of rows to write out; for debugging."
     clin_var_tsv: ""
     parse_xml: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_single = "${in_output_single}"
   }
 }

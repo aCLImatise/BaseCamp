@@ -11,4 +11,7 @@ task HmmsearchHmmfile {
   parameter_meta {
     seq_db: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../dehomopolymerate.cwl
 inputs:
-- id: print_version_exit
+- id: in_print_version_exit
   doc: Print version and exit
   type: boolean
   inputBinding:
     prefix: -v
-- id: quiet_mode_output
+- id: in_quiet_mode_nonerror
   doc: Quiet mode; not non-error output
   type: boolean
   inputBinding:
     prefix: -q
-- id: output_fasta_fastq
+- id: in_output_fasta_fastq
   doc: Output FASTA not FASTQ
   type: boolean
   inputBinding:
     prefix: -f
-- id: output_raw_one
+- id: in_output_raw_line
   doc: Output RAW one line per sequence
   type: boolean
   inputBinding:
     prefix: -w
-- id: discard_output_sequences
+- id: in_discard_output_sequences
   doc: Discard output sequences shorter then L bp
   type: string
   inputBinding:
     prefix: -l
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dehomopolymerate

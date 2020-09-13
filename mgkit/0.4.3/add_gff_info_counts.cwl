@@ -1,42 +1,50 @@
 class: CommandLineTool
 id: ../../../add_gff_info_counts.cwl
 inputs:
-- id: samples
-  doc: Sample names, in the same order as the count files [required]
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_samples
+  doc: "Sample names, in the same order as the count files\n[required]"
   type: string
   inputBinding:
     prefix: --samples
-- id: count_files
+- id: in_count_files
   doc: Count file(s)  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --count-files
-- id: fp_kms
+- id: in_fp_kms
   doc: If the counts are FPKMS
   type: boolean
   inputBinding:
     prefix: --fpkms
-- id: feature_counts
+- id: in_feature_counts
   doc: If the counts files are from featureCounts
   type: boolean
   inputBinding:
     prefix: --featureCounts
-- id: progress
+- id: in_progress
   doc: Shows Progress Bar
   type: boolean
   inputBinding:
     prefix: --progress
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - add-gff-info

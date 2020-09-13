@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../orthomclLoadBlast.cwl
 inputs:
-- id: config_file
+- id: in_config_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: similar_seqs_file
+- id: in_similar_seqs_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - orthomclLoadBlast

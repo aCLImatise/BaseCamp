@@ -1,23 +1,32 @@
 class: CommandLineTool
 id: ../../../scHicCorrectMatrices.cwl
 inputs:
-- id: matrix
+- id: in_matrix
   doc: 'Matrix to reduce in h5 format. (default: None)'
-  type: string
+  type: long
   inputBinding:
     prefix: --matrix
-- id: out_filename
-  doc: 'File name to save the resulting matrix, please add the scool prefix. (default:
-    None)'
-  type: string
+- id: in_out_filename
+  doc: "File name to save the resulting matrix, please add the\nscool prefix. (default:\
+    \ None)"
+  type: File
   inputBinding:
     prefix: --outFileName
-- id: threads
-  doc: 'Number of threads. Using the python multiprocessing module. (default: 4)'
-  type: string
+- id: in_threads
+  doc: "Number of threads. Using the python multiprocessing\nmodule. (default: 4)"
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_filename
+  doc: "File name to save the resulting matrix, please add the\nscool prefix. (default:\
+    \ None)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_filename)
 cwlVersion: v1.1
 baseCommand:
 - scHicCorrectMatrices

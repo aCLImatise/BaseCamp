@@ -2,9 +2,9 @@ version 1.0
 
 task RADpainterPaint {
   input {
-    String? ploidy
+    Int? ploidy
     Boolean? chr
-    Boolean? run_name
+    File? run_name
     Boolean? missing_two
     String input_dot_txt
   }
@@ -12,15 +12,19 @@ task RADpainterPaint {
     RADpainter paint \
       ~{input_dot_txt} \
       ~{if defined(ploidy) then ("--ploidy " +  '"' + ploidy + '"') else ""} \
-      ~{true="--chr" false="" chr} \
-      ~{true="--run-name" false="" run_name} \
-      ~{true="--missing2" false="" missing_two}
+      ~{if (chr) then "--chr" else ""} \
+      ~{if (run_name) then "--run-name" else ""} \
+      ~{if (missing_two) then "--missing2" else ""}
   >>>
   parameter_meta {
     ploidy: "ploidy of the species being analysed (default is 2N, i.e. diploid)"
     chr: "output per-chromosome coancestry matrices"
     run_name: "run-name will be included in the output file name(s)"
-    missing_two: "(deprecated) output a conancestry matrix with missing data treated as if any pair of individuals are equally distant"
+    missing_two: "(deprecated) output a conancestry matrix with missing data treated\\nas if any pair of individuals are equally distant"
     input_dot_txt: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_run_name = "${in_run_name}"
   }
 }

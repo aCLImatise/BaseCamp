@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuDisablePrompt {
+task Byobudisableprompt {
   command <<<
-    byobu-disable-prompt
+    byobu_disable_prompt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

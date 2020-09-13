@@ -1,33 +1,41 @@
 class: CommandLineTool
 id: ../../../bcftools_sort.cwl
 inputs:
-- id: max_mem
+- id: in_max_mem
   doc: '[kMG]    maximum memory to use [768M]'
   type: double
   inputBinding:
     prefix: --max-mem
-- id: output_file
+- id: in_output_file
   doc: output file name [stdout]
   type: File
   inputBinding:
     prefix: --output-file
-- id: output_type
+- id: in_output_type
   doc: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
     VCF [v]'
   type: string
   inputBinding:
     prefix: --output-type
-- id: temp_dir
+- id: in_temp_dir
   doc: temporary files [/tmp/bcftools-sort.XXXXXX]
   type: string
   inputBinding:
     prefix: --temp-dir
-- id: file_dot_vcf
+- id: in_file_dot_vcf
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: output file name [stdout]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - bcftools

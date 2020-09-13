@@ -8,22 +8,22 @@ task TOBIASSubsampleBam {
     Boolean? end
     Boolean? step
     Boolean? cores
-    Boolean? outdir
+    Directory? outdir
     Boolean? prefix
     Boolean? force
     Int? verbosity
   }
   command <<<
     TOBIAS SubsampleBam \
-      ~{true="--bam" false="" bam} \
-      ~{true="--no_rand" false="" no_rand} \
-      ~{true="--start" false="" start} \
-      ~{true="--end" false="" end} \
-      ~{true="--step" false="" step} \
-      ~{true="--cores" false="" cores} \
-      ~{true="--outdir" false="" outdir} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="--force" false="" force} \
+      ~{if (bam) then "--bam" else ""} \
+      ~{if (no_rand) then "--no_rand" else ""} \
+      ~{if (start) then "--start" else ""} \
+      ~{if (end) then "--end" else ""} \
+      ~{if (step) then "--step" else ""} \
+      ~{if (cores) then "--cores" else ""} \
+      ~{if (outdir) then "--outdir" else ""} \
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (force) then "--force" else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
   parameter_meta {
@@ -36,6 +36,10 @@ task TOBIASSubsampleBam {
     outdir: "Output directory (default: subsamplebam_output)"
     prefix: "Prefix for output files (default: prefix of .bam)"
     force: "Force creation of subsampled .bam-files (default: only create if not existing)"
-    verbosity: "Level of output logging (0: silent, 1: errors/warnings, 2: info, 3: stats, 4: debug, 5: spam) (default: 3)"
+    verbosity: "Level of output logging (0: silent, 1: errors/warnings, 2: info, 3: stats, 4:\\ndebug, 5: spam) (default: 3)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

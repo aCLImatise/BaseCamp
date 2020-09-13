@@ -2,19 +2,22 @@ version 1.0
 
 task SinglemMakedb {
   input {
-    Boolean? debug
-    Boolean? quiet
     Boolean? full_help
+    Boolean? quiet
+    Boolean? debug
   }
   command <<<
     singlem makedb \
-      ~{true="--debug" false="" debug} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--full_help" false="" full_help}
+      ~{if (full_help) then "--full_help" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
-    debug: ""
-    quiet: ""
     full_help: ""
+    quiet: ""
+    debug: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

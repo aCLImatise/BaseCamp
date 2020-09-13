@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../convertToAtac.cwl
 inputs:
-- id: f
+- id: in_two
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: '-2'
+- id: in_one
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: '-1'
+- id: in_f
   doc: ''
   type: boolean
   inputBinding:
     prefix: -f
-- id: one
+- id: in_asm_file_one
   doc: ''
-  type: string
-  inputBinding:
-    prefix: '-1'
-- id: two
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: '-2'
-- id: asm_file_one
-  doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: asm_file_two
+- id: in_asm_file_two
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: matches_dot_sim_four_db
+- id: in_matches_dot_sim_four_db
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-- id: matches_dot_atac
+- id: in_matches_dot_atac
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - convertToAtac

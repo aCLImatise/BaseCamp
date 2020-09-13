@@ -2,11 +2,11 @@ version 1.0
 
 task Fpa {
   input {
-    String? compression_out
-    String? format
-    String? path_input_use
+    Int? compression_out
+    Int? format
+    File? path_input_use
     Int? internal_threshold
-    String? path_output_use
+    File? path_output_use
   }
   command <<<
     fpa \
@@ -17,10 +17,14 @@ task Fpa {
       ~{if defined(path_output_use) then ("--output " +  '"' + path_output_use + '"') else ""}
   >>>
   parameter_meta {
-    compression_out: "Output compression format, the input compression format is chosen by default [possible values: gzip, bzip2, lzma, no]"
+    compression_out: "Output compression format, the input compression format is chosen by default [possible values: gzip, bzip2,\\nlzma, no]"
     format: "Force the format used [possible values: paf, m4]"
     path_input_use: "Path to input file, use '-' for stdin [default: -]"
-    internal_threshold: "A match is internal match if overhang length > match length * internal threshold this option set internal match [default: 0.8]"
+    internal_threshold: "A match is internal match if overhang length > match length * internal threshold this option set internal\\nmatch [default: 0.8]"
     path_output_use: "Path to output file, use '-' for stdout [default: -]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_use = "${in_path_output_use}"
   }
 }

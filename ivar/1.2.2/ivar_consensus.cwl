@@ -1,80 +1,89 @@
 class: CommandLineTool
 id: ../../../ivar_consensus.cwl
 inputs:
-- id: minimum_quality_score
+- id: in_minimum_quality_score
   doc: 'Minimum quality score threshold to count base (Default: 20)'
   type: boolean
   inputBinding:
     prefix: -q
-- id: minimum_frequency_threshold
-  doc: 'Minimum frequency threshold(0 - 1) to call consensus. (Default: 0) Frequently
-    used thresholds | Description ---------------------------|------------ 0 | Majority
-    or most common base 0.2 | Bases that make up atleast 20% of the depth at a position
-    0.5 | Strict or bases that make up atleast 50% of the depth at a position 0.9
-    | Strict or bases that make up atleast 90% of the depth at a position 1 | Identical
-    or bases that make up 100% of the depth at a position. Will have highest ambiguities'
+- id: in_minimum_frequency_threshold
+  doc: "Minimum frequency threshold(0 - 1) to call consensus. (Default: 0)\nFrequently\
+    \ used thresholds | Description\n---------------------------|------------\n0 |\
+    \ Majority or most common base\n0.2 | Bases that make up atleast 20% of the depth\
+    \ at a position\n0.5 | Strict or bases that make up atleast 50% of the depth at\
+    \ a position\n0.9 | Strict or bases that make up atleast 90% of the depth at a\
+    \ position\n1 | Identical or bases that make up 100% of the depth at a position.\
+    \ Will have highest ambiguities"
   type: boolean
   inputBinding:
     prefix: -t
-- id: minimum_depth_call
+- id: in_minimum_depth_call
   doc: 'Minimum depth to call consensus(Default: 10)'
   type: boolean
   inputBinding:
     prefix: -m
-- id: will_override_option
-  doc: "If '-k' flag is added, regions with depth less than minimum depth will not\
-    \ be added to the consensus sequence. Using '-k' will override any option specified\
-    \ using -n "
+- id: in_will_override_option
+  doc: If '-k' flag is added, regions with depth less than minimum depth will not
+    be added to the consensus sequence. Using '-k' will override any option specified
+    using -n
   type: boolean
   inputBinding:
     prefix: -k
-- id: n__character
+- id: in__character_print
   doc: '(N/-) Character to print in regions with less than minimum coverage(Default:
     N)'
   type: boolean
   inputBinding:
     prefix: -n
-- id: required_prefix_output
+- id: in_required_prefix_output
   doc: (Required) Prefix for the output fasta file and quality file
-  type: boolean
+  type: File
   inputBinding:
     prefix: -p
-- id: aa
+- id: in_var_6
   doc: ''
-  type: boolean
+  type: long
   inputBinding:
-    prefix: -aa
-- id: a
+    prefix: -Q
+- id: in_d
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -d
+- id: in_a
   doc: ''
   type: boolean
   inputBinding:
     prefix: -A
-- id: d
+- id: in_aa
   doc: ''
-  type: string
+  type: boolean
   inputBinding:
-    prefix: -d
-- id: var_9
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -Q
-- id: sam_tools
+    prefix: -aa
+- id: in_sam_tools
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: m_pile_up
+- id: in_m_pile_up
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: input_dot_bam
+- id: in_input_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_required_prefix_output
+  doc: (Required) Prefix for the output fasta file and quality file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_required_prefix_output)
 cwlVersion: v1.1
 baseCommand:
 - ivar

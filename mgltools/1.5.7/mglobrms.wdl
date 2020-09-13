@@ -4,4 +4,7 @@ task Mglobrms {
   command <<<
     mglobrms
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

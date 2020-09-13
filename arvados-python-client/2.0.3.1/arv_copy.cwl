@@ -1,69 +1,67 @@
 class: CommandLineTool
 id: ../../../arv_copy.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: Verbose output.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: progress
+- id: in_progress
   doc: Report progress on copying collections. (default)
   type: boolean
   inputBinding:
     prefix: --progress
-- id: no_progress
+- id: in_no_progress
   doc: Do not report progress on copying collections.
   type: boolean
   inputBinding:
     prefix: --no-progress
-- id: force
-  doc: Perform copy even if the object appears to exist at the remote destination.
+- id: in_force
+  doc: "Perform copy even if the object appears to exist at\nthe remote destination."
   type: boolean
   inputBinding:
     prefix: --force
-- id: src
-  doc: The name of the source Arvados instance (required) - points at an Arvados config
-    file. May be either a pathname to a config file, or (for example) "foo" as shorthand
-    for $HOME/.config/arvados/foo.conf.
-  type: string
+- id: in_src
+  doc: "The name of the source Arvados instance (required) -\npoints at an Arvados\
+    \ config file. May be either a\npathname to a config file, or (for example) \"\
+    foo\" as\nshorthand for $HOME/.config/arvados/foo.conf."
+  type: File
   inputBinding:
     prefix: --src
-- id: dst
-  doc: The name of the destination Arvados instance (required) - points at an Arvados
-    config file. May be either a pathname to a config file, or (for example) "foo"
-    as shorthand for $HOME/.config/arvados/foo.conf.
-  type: string
+- id: in_dst
+  doc: "The name of the destination Arvados instance\n(required) - points at an Arvados\
+    \ config file. May be\neither a pathname to a config file, or (for example)\n\"\
+    foo\" as shorthand for $HOME/.config/arvados/foo.conf."
+  type: File
   inputBinding:
     prefix: --dst
-- id: recursive
-  doc: Recursively copy any dependencies for this object. (default)
+- id: in_recursive
+  doc: "Recursively copy any dependencies for this object.\n(default)"
   type: boolean
   inputBinding:
     prefix: --recursive
-- id: no_recursive
-  doc: 'Do not copy any dependencies. NOTE: if this option is given, the copied object
-    will need to be updated manually in order to be functional.'
+- id: in_no_recursive
+  doc: "Do not copy any dependencies. NOTE: if this option is\ngiven, the copied object\
+    \ will need to be updated\nmanually in order to be functional."
   type: boolean
   inputBinding:
     prefix: --no-recursive
-- id: project_uuid
-  doc: The UUID of the project at the destination to which the collection or workflow
-    should be copied.
+- id: in_project_uuid
+  doc: "The UUID of the project at the destination to which\nthe collection or workflow\
+    \ should be copied."
   type: string
   inputBinding:
     prefix: --project-uuid
-- id: retries
-  doc: Maximum number of times to retry server requests that encounter temporary failures
-    (e.g., server down). Default 3.
-  type: string
+- id: in_retries
+  doc: "Maximum number of times to retry server requests that\nencounter temporary\
+    \ failures (e.g., server down).\nDefault 3.\n"
+  type: long
   inputBinding:
     prefix: --retries
-- id: object_uuid
-  doc: The UUID of the object to be copied.
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - arv-copy

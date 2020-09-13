@@ -4,4 +4,7 @@ task BbFilter {
   command <<<
     bbFilter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task DiaUmpireSe {
   command <<<
     dia_umpire_se
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

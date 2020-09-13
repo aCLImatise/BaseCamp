@@ -13,10 +13,10 @@ task Dbgh5 {
     Boolean? solidity_custom
     Boolean? max_memory
     Boolean? max_disk
-    Boolean? solid_km_ers_out
-    Boolean? out
-    Boolean? out_dir
-    Boolean? out_tmp
+    File? solid_km_ers_out
+    File? out
+    Directory? out_dir
+    Directory? out_tmp
     Boolean? out_compress
     Boolean? storage_type
     Boolean? histo_two_d
@@ -39,48 +39,72 @@ task Dbgh5 {
     Boolean? email_fmt
     Boolean? check
     Boolean? check_dump
+    Boolean? redo_b_calm
+    Boolean? skip_b_calm
+    Boolean? redo_b_glue
+    Boolean? skip_b_glue
+    Boolean? redo_links
+    Boolean? skip_links
     Boolean? nb_glue_partitions
+    String version
+    Int git_sha_one
+    String build_date
+    String build_system
+    String build_compiler
+    String build_km_er_size
   }
   command <<<
     dbgh5 \
-      ~{true="-no-mphf" false="" no_mph_f} \
-      ~{true="-in" false="" in} \
-      ~{true="-kmer-size" false="" km_er_size} \
-      ~{true="-abundance-min" false="" abundance_min} \
-      ~{true="-abundance-max" false="" abundance_max} \
-      ~{true="-abundance-min-threshold" false="" abundance_min_threshold} \
-      ~{true="-histo-max" false="" histo_max} \
-      ~{true="-solidity-kind" false="" solidity_kind} \
-      ~{true="-solidity-custom" false="" solidity_custom} \
-      ~{true="-max-memory" false="" max_memory} \
-      ~{true="-max-disk" false="" max_disk} \
-      ~{true="-solid-kmers-out" false="" solid_km_ers_out} \
-      ~{true="-out" false="" out} \
-      ~{true="-out-dir" false="" out_dir} \
-      ~{true="-out-tmp" false="" out_tmp} \
-      ~{true="-out-compress" false="" out_compress} \
-      ~{true="-storage-type" false="" storage_type} \
-      ~{true="-histo2D" false="" histo_two_d} \
-      ~{true="-histo" false="" histo} \
-      ~{true="-minimizer-type" false="" minimizer_type} \
-      ~{true="-minimizer-size" false="" minimizer_size} \
-      ~{true="-repartition-type" false="" repartition_type} \
-      ~{true="-bloom" false="" bloom} \
-      ~{true="-debloom" false="" de_bloom} \
-      ~{true="-debloom-impl" false="" de_bloom_impl} \
-      ~{true="-branching-nodes" false="" branching_nodes} \
-      ~{true="-topology-stats" false="" topology_stats} \
-      ~{true="-config-only" false="" config_only} \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-all-abundance-counts" false="" all_abundance_counts} \
-      ~{true="-edge-km" false="" edge_km} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-integer-precision" false="" integer_precision} \
-      ~{true="-email" false="" email} \
-      ~{true="-email-fmt" false="" email_fmt} \
-      ~{true="-check" false="" check} \
-      ~{true="-check-dump" false="" check_dump} \
-      ~{true="-nb-glue-partitions" false="" nb_glue_partitions}
+      ~{version} \
+      ~{git_sha_one} \
+      ~{build_date} \
+      ~{build_system} \
+      ~{build_compiler} \
+      ~{build_km_er_size} \
+      ~{if (no_mph_f) then "-no-mphf" else ""} \
+      ~{if (in) then "-in" else ""} \
+      ~{if (km_er_size) then "-kmer-size" else ""} \
+      ~{if (abundance_min) then "-abundance-min" else ""} \
+      ~{if (abundance_max) then "-abundance-max" else ""} \
+      ~{if (abundance_min_threshold) then "-abundance-min-threshold" else ""} \
+      ~{if (histo_max) then "-histo-max" else ""} \
+      ~{if (solidity_kind) then "-solidity-kind" else ""} \
+      ~{if (solidity_custom) then "-solidity-custom" else ""} \
+      ~{if (max_memory) then "-max-memory" else ""} \
+      ~{if (max_disk) then "-max-disk" else ""} \
+      ~{if (solid_km_ers_out) then "-solid-kmers-out" else ""} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (out_dir) then "-out-dir" else ""} \
+      ~{if (out_tmp) then "-out-tmp" else ""} \
+      ~{if (out_compress) then "-out-compress" else ""} \
+      ~{if (storage_type) then "-storage-type" else ""} \
+      ~{if (histo_two_d) then "-histo2D" else ""} \
+      ~{if (histo) then "-histo" else ""} \
+      ~{if (minimizer_type) then "-minimizer-type" else ""} \
+      ~{if (minimizer_size) then "-minimizer-size" else ""} \
+      ~{if (repartition_type) then "-repartition-type" else ""} \
+      ~{if (bloom) then "-bloom" else ""} \
+      ~{if (de_bloom) then "-debloom" else ""} \
+      ~{if (de_bloom_impl) then "-debloom-impl" else ""} \
+      ~{if (branching_nodes) then "-branching-nodes" else ""} \
+      ~{if (topology_stats) then "-topology-stats" else ""} \
+      ~{if (config_only) then "-config-only" else ""} \
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (all_abundance_counts) then "-all-abundance-counts" else ""} \
+      ~{if (edge_km) then "-edge-km" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (integer_precision) then "-integer-precision" else ""} \
+      ~{if (email) then "-email" else ""} \
+      ~{if (email_fmt) then "-email-fmt" else ""} \
+      ~{if (check) then "-check" else ""} \
+      ~{if (check_dump) then "-check-dump" else ""} \
+      ~{if (redo_b_calm) then "-redo-bcalm" else ""} \
+      ~{if (skip_b_calm) then "-skip-bcalm" else ""} \
+      ~{if (redo_b_glue) then "-redo-bglue" else ""} \
+      ~{if (skip_b_glue) then "-skip-bglue" else ""} \
+      ~{if (redo_links) then "-redo-links" else ""} \
+      ~{if (skip_links) then "-skip-links" else ""} \
+      ~{if (nb_glue_partitions) then "-nb-glue-partitions" else ""}
   >>>
   parameter_meta {
     no_mph_f: "(0 arg) :    don't construct the MPHF"
@@ -88,7 +112,7 @@ task Dbgh5 {
     km_er_size: "(1 arg) :    size of a kmer  [default '31']"
     abundance_min: "(1 arg) :    min abundance threshold for solid kmers  [default '2']"
     abundance_max: "(1 arg) :    max abundance threshold for solid kmers  [default '2147483647']"
-    abundance_min_threshold: "(1 arg) :    min abundance hard threshold (only used when min abundance is \"auto\")  [default '2']"
+    abundance_min_threshold: "(1 arg) :    min abundance hard threshold (only used when min abundance is \\\"auto\\\")  [default '2']"
     histo_max: "(1 arg) :    max number of values in kmers histogram  [default '10000']"
     solidity_kind: "(1 arg) :    way to compute counts of several files (sum, min, max, one, all, custom)  [default 'sum']"
     solidity_custom: "(1 arg) :    when solidity-kind is custom, specifies list of files where kmer must be present  [default '']"
@@ -120,6 +144,25 @@ task Dbgh5 {
     email_fmt: "(1 arg) :    'raw' or 'xml'  [default 'raw']"
     check: "(1 arg) :    check result with previous result  [default '']"
     check_dump: "(1 arg) :    dump some properties of the created graph into a file  [default '']"
+    redo_b_calm: "(0 arg) :    debug function, redo the bcalm algo"
+    skip_b_calm: "(0 arg) :    same, but       skip     bcalm"
+    redo_b_glue: "(0 arg) :    same, but       redo     bglue (needs debug_keep_glue_files=true in source code)"
+    skip_b_glue: "(0 arg) :    same, but       skip     bglue"
+    redo_links: "(0 arg) :    same, but       redo     links"
+    skip_links: "(0 arg) :    same, but       skip     links"
     nb_glue_partitions: "(1 arg) :    number of glue partitions (automatically calculated by default)  [default '0']"
+    version: ": 1.4.1"
+    git_sha_one: ": notset"
+    build_date: ": 2020-03-24/10:17:25"
+    build_system: ": Linux-4.4.0-96-generic"
+    build_compiler: ": /opt/conda/conda-bld/discosnp_1585044920332/_build_env/bin/x86_64-conda_cos6-linux-gnu-cc  (7.3.0)"
+    build_km_er_size: ": 32 64 96 128"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_solid_km_ers_out = "${in_solid_km_ers_out}"
+    File out_out = "${in_out}"
+    Directory out_out_dir = "${in_out_dir}"
+    Directory out_out_tmp = "${in_out_tmp}"
   }
 }

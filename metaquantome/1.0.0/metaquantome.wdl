@@ -4,4 +4,7 @@ task Metaquantome {
   command <<<
     metaquantome
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

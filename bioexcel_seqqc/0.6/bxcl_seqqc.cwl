@@ -1,56 +1,64 @@
 class: CommandLineTool
 id: ../../../bxcl_seqqc.cwl
 inputs:
-- id: files
+- id: in_files
   doc: F1    Pair of input FastQ files.
-  type: string
+  type: long
   inputBinding:
     prefix: --files
-- id: outdir
+- id: in_outdir
   doc: 'Output directory. (default: current directory)'
-  type: File
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: tmpdir
+- id: in_tmpdir
   doc: 'Temp directory. (default: system tmp location)'
   type: File
   inputBinding:
     prefix: --tmpdir
-- id: threads
-  doc: 'Max number of threads to use. NOTE: not allstages use all threads. (default:
-    2)'
-  type: string
+- id: in_threads
+  doc: "Max number of threads to use. NOTE: not allstages use\nall threads. (default:\
+    \ 2)"
+  type: long
   inputBinding:
     prefix: --threads
-- id: adapt_seq
-  doc: 'The adapter sequence to be trimmed from the FastQ file. (default: Illumina
-    TruSeq Universal Adapter)'
-  type: string
+- id: in_adapt_seq
+  doc: "The adapter sequence to be trimmed from the FastQ file.\n(default: Illumina\
+    \ TruSeq Universal Adapter)"
+  type: File
   inputBinding:
     prefix: --adaptseq
-- id: qc_conf
+- id: in_qc_conf
   doc: 'Location of config file. (default: internal config)'
-  type: string
+  type: File
   inputBinding:
     prefix: --qcconf
-- id: trim
-  doc: 'The type of trimming to be done on the paired sequences: [A]dapter or [Q]uality
-    trimming, or [F]ull/both. WARNING: For standalone execution of runtrim only! (default:
-    [F]ull)'
+- id: in_trim
+  doc: "The type of trimming to be done on the paired\nsequences: [A]dapter or [Q]uality\
+    \ trimming, or\n[F]ull/both. WARNING: For standalone execution of\nruntrim only!\
+    \ (default: [F]ull)"
   type: string
   inputBinding:
     prefix: --trim
-- id: print_config
+- id: in_print_config
   doc: Print example config files to current directory.
   type: boolean
   inputBinding:
     prefix: --printconfig
-- id: fone
+- id: in_fone
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory. (default: current directory)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - bxcl_seqqc

@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../show_ma_asm.cwl
 inputs:
-- id: count_gaps_printed
+- id: in_count_gaps_printed
   doc: Count gaps in printed consensus positions
   type: boolean
   inputBinding:
     prefix: -g
-- id: print_snps_addition
+- id: in_print_snps_addition
   doc: Print SNPs in addition to multialignments
   type: boolean
   inputBinding:
     prefix: -s
-- id: print_alignments_unitigs
+- id: in_print_alignments_unitigs
   doc: Print alignments for unitig(s) with specfied uid(s)
   type: boolean
   inputBinding:
     prefix: -u
-- id: display_code_version
+- id: in_display_code_version
   doc: Display code version
   type: boolean
   inputBinding:
     prefix: -V
-- id: uid
+- id: in_uid
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: asm_file
+- id: in_asm_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: frg_file
+- id: in_frg_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - show-ma-asm

@@ -10,32 +10,35 @@ task Opsin {
     Boolean? allow_uninterpretable_stereo
     Boolean? verbose
     Boolean? wildcard_radicals
-    String? jar
+    Int? jar
     String java
   }
   command <<<
     opsin \
       ~{java} \
-      ~{true="--allowAcidsWithoutAcid" false="" allow_acids_without_acid} \
-      ~{true="--detailedFailureAnalysis" false="" detailed_failure_analysis} \
-      ~{true="--name" false="" name} \
+      ~{if (allow_acids_without_acid) then "--allowAcidsWithoutAcid" else ""} \
+      ~{if (detailed_failure_analysis) then "--detailedFailureAnalysis" else ""} \
+      ~{if (name) then "--name" else ""} \
       ~{if defined(sets_opsins_output) then ("--output " +  '"' + sets_opsins_output + '"') else ""} \
-      ~{true="--allowRadicals" false="" allow_radicals} \
-      ~{true="--allowUninterpretableStereo" false="" allow_uninterpretable_stereo} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--wildcardRadicals" false="" wildcard_radicals} \
+      ~{if (allow_radicals) then "--allowRadicals" else ""} \
+      ~{if (allow_uninterpretable_stereo) then "--allowUninterpretableStereo" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (wildcard_radicals) then "--wildcardRadicals" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
-    allow_acids_without_acid: "Allows interpretation of acids without the word acid e.g. \"acetic\""
-    detailed_failure_analysis: "Enables reverse parsing to more accurately determine why parsing failed"
-    name: "Include name in SMILES/InChI output (tab delimited)"
-    sets_opsins_output: "Sets OPSIN's output format (default smi) Allowed values are: cml for Chemical Markup Language smi for SMILES extendedsmi for Extended SMILES inchi for InChI (with FixedH) stdinchi for StdInChI stdinchikey for StdInChIKey"
+    allow_acids_without_acid: "Allows interpretation of acids without\\nthe word acid e.g. \\\"acetic\\\""
+    detailed_failure_analysis: "Enables reverse parsing to more\\naccurately determine why parsing failed"
+    name: "Include name in SMILES/InChI output\\n(tab delimited)"
+    sets_opsins_output: "Sets OPSIN's output format (default\\nsmi)\\nAllowed values are:\\ncml for Chemical Markup Language\\nsmi for SMILES\\nextendedsmi for Extended SMILES\\ninchi for InChI (with FixedH)\\nstdinchi for StdInChI\\nstdinchikey for StdInChIKey"
     allow_radicals: "Enables interpretation of radicals"
-    allow_uninterpretable_stereo: "Allows stereochemistry uninterpretable by OPSIN to be ignored"
+    allow_uninterpretable_stereo: "Allows stereochemistry uninterpretable\\nby OPSIN to be ignored"
     verbose: "Enables debugging"
     wildcard_radicals: "Radicals are output as wildcard atoms"
     jar: ""
     java: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

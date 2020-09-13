@@ -2,8 +2,8 @@ version 1.0
 
 task MetawrapClassifyBins {
   input {
-    String? folder_bins_classified
-    String? output_directory
+    Directory? folder_bins_classified
+    Directory? output_directory
     Int? number_of_threads
   }
   command <<<
@@ -16,5 +16,9 @@ task MetawrapClassifyBins {
     folder_bins_classified: "folder with the bins to be classified (in fasta format)"
     output_directory: "output directory"
     number_of_threads: "number of threads"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

@@ -1,4 +1,6 @@
 !Command
+command:
+- cuteSV
 positional:
 - !Positional
   description: Output VCF format file.
@@ -11,6 +13,30 @@ positional:
   name: work_dir
   optional: false
 named:
+- !Flag
+  description: '100'
+  synonyms:
+  - --max_cluster_bias_INS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0.2'
+  synonyms:
+  - --diff_ratio_merging_INS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0.6'
+  synonyms:
+  - --diff_ratio_filtering_INS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0.7'
+  synonyms:
+  - --diff_ratio_filtering_DEL
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Number of threads to use.[16]
   synonyms:
@@ -42,8 +68,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximum number of split segments a read may be aligned before it is
-    ignored.[7]
+  description: "Maximum number of split segments a read may be aligned\nbefore it\
+    \ is ignored.[7]"
   synonyms:
   - -p
   - --max_split_parts
@@ -51,7 +77,7 @@ named:
     name: MAX_SPLIT_PARTS
   optional: true
 - !Flag
-  description: Minimum mapping quality value of alignment to be taken into account.[20]
+  description: "Minimum mapping quality value of alignment to be taken\ninto account.[20]"
   synonyms:
   - -q
   - --min_mapq
@@ -59,7 +85,7 @@ named:
     name: MIN_MAPQ
   optional: true
 - !Flag
-  description: Ignores reads that only report alignments with not longer than bp.[500]
+  description: "Ignores reads that only report alignments with not\nlonger than bp.[500]"
   synonyms:
   - -r
   - --min_read_len
@@ -75,7 +101,7 @@ named:
     name: MERGE_DEL_THRESHOLD
   optional: true
 - !Flag
-  description: Maximum distance of insertion signals to be merged.[100]
+  description: "Maximum distance of insertion signals to be\nmerged.[100]"
   synonyms:
   - -mi
   - --merge_ins_threshold
@@ -83,7 +109,7 @@ named:
     name: MERGE_INS_THRESHOLD
   optional: true
 - !Flag
-  description: Minimum number of reads that support a SV to be reported.[10]
+  description: "Minimum number of reads that support a SV to be\nreported.[10]"
   synonyms:
   - -s
   - --min_support
@@ -121,88 +147,58 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximum round of iteration for alignments searching if perform genotyping.[500]
+  description: "Maximum round of iteration for alignments searching if\nperform genotyping.[500]"
   synonyms:
   - --gt_round
   args: !SimpleFlagArg
     name: GT_ROUND
   optional: true
 - !Flag
-  description: Maximum distance to cluster read together for insertion.[100]
-  synonyms:
-  - --max_cluster_bias_INS
-  args: !SimpleFlagArg
-    name: MAX_CLUSTER_BIAS_INS
-  optional: true
-- !Flag
-  description: Do not merge breakpoints with basepair identity more than [0.2] for
-    insertion.
-  synonyms:
-  - --diff_ratio_merging_INS
-  args: !SimpleFlagArg
-    name: DIFF_RATIO_MERGING_INS
-  optional: true
-- !Flag
-  description: Filter breakpoints with basepair identity less than [0.6] for insertion.
-  synonyms:
-  - --diff_ratio_filtering_INS
-  args: !SimpleFlagArg
-    name: DIFF_RATIO_FILTERING_INS
-  optional: true
-- !Flag
-  description: Maximum distance to cluster read together for deletion.[200]
+  description: "Maximum distance to cluster read together for\ndeletion.[200]"
   synonyms:
   - --max_cluster_bias_DEL
   args: !SimpleFlagArg
     name: MAX_CLUSTER_BIAS_DEL
   optional: true
 - !Flag
-  description: Do not merge breakpoints with basepair identity more than [0.3] for
-    deletion.
+  description: "Do not merge breakpoints with basepair identity more\nthan [0.3] for\
+    \ deletion."
   synonyms:
   - --diff_ratio_merging_DEL
   args: !SimpleFlagArg
     name: DIFF_RATIO_MERGING_DEL
   optional: true
 - !Flag
-  description: Filter breakpoints with basepair identity less than [0.7] for deletion.
-  synonyms:
-  - --diff_ratio_filtering_DEL
-  args: !SimpleFlagArg
-    name: DIFF_RATIO_FILTERING_DEL
-  optional: true
-- !Flag
-  description: Maximum distance to cluster read together for inversion.[500]
+  description: "Maximum distance to cluster read together for\ninversion.[500]"
   synonyms:
   - --max_cluster_bias_INV
   args: !SimpleFlagArg
     name: MAX_CLUSTER_BIAS_INV
   optional: true
 - !Flag
-  description: Maximum distance to cluster read together for duplication.[500]
+  description: "Maximum distance to cluster read together for\nduplication.[500]"
   synonyms:
   - --max_cluster_bias_DUP
   args: !SimpleFlagArg
     name: MAX_CLUSTER_BIAS_DUP
   optional: true
 - !Flag
-  description: Maximum distance to cluster read together for translocation.[50]
+  description: "Maximum distance to cluster read together for\ntranslocation.[50]"
   synonyms:
   - --max_cluster_bias_TRA
   args: !SimpleFlagArg
     name: MAX_CLUSTER_BIAS_TRA
   optional: true
 - !Flag
-  description: Filter breakpoints with basepair identity less than [0.6] for translocation.
+  description: "Filter breakpoints with basepair identity less than\n[0.6] for translocation.\n"
   synonyms:
   - --diff_ratio_filtering_TRA
   args: !SimpleFlagArg
     name: DIFF_RATIO_FILTERING_TRA
   optional: true
-command:
-- cuteSV
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

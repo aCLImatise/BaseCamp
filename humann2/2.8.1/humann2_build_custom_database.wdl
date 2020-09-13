@@ -2,10 +2,10 @@ version 1.0
 
 task Humann2BuildCustomDatabase {
   input {
-    String? fasta_input_file
-    String? the_output_folder
-    String? id_mapping
-    String? taxonomic_profile
+    File? fasta_input_file
+    Directory? the_output_folder
+    File? id_mapping
+    File? taxonomic_profile
     String? format
     String? genus_abundance_threshold
   }
@@ -24,6 +24,10 @@ task Humann2BuildCustomDatabase {
     id_mapping: "the file mapping fasta ids to taxonomy"
     taxonomic_profile: "the file containing the taxonomic profile"
     format: "the final database format"
-    genus_abundance_threshold: "the minimum abundance for a genus to be included in the database"
+    genus_abundance_threshold: "the minimum abundance for a genus to be included in the database\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_the_output_folder = "${in_the_output_folder}"
   }
 }

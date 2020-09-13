@@ -2,15 +2,15 @@ version 1.0
 
 task PhyluceAssemblyAssembloVelvet {
   input {
-    String? directory_store_data
+    Directory? directory_store_data
     String? km_er
-    String? cores
+    Int? cores
     String? subfolder
     String? verbosity
-    String? log_path
+    File? log_path
     Boolean? clean
-    String? config
-    String? dir
+    File? config
+    Directory? dir
   }
   command <<<
     phyluce_assembly_assemblo_velvet \
@@ -20,7 +20,7 @@ task PhyluceAssemblyAssembloVelvet {
       ~{if defined(subfolder) then ("--subfolder " +  '"' + subfolder + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
-      ~{true="--clean" false="" clean} \
+      ~{if (clean) then "--clean" else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""}
   >>>
@@ -28,11 +28,14 @@ task PhyluceAssemblyAssembloVelvet {
     directory_store_data: "The directory in which to store the assembly data"
     km_er: "The kmer value to use"
     cores: "The number of compute cores/threads to run with Velvet"
-    subfolder: "A subdirectory, below the level of the group, containing the reads"
+    subfolder: "A subdirectory, below the level of the group,\\ncontaining the reads"
     verbosity: "The logging level to use"
     log_path: "The path to a directory to hold logs."
     clean: "Cleanup all intermediate Trinity files"
     config: "A configuration file containing reads to assemble"
     dir: "A directory of reads to assemble"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

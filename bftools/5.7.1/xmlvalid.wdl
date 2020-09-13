@@ -4,4 +4,7 @@ task Xmlvalid {
   command <<<
     xmlvalid
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

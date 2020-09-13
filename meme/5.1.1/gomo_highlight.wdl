@@ -14,4 +14,7 @@ task GomoHighlight {
     go_dag: ""
     gomo_xml: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

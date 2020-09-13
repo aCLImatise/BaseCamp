@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../cgatreport_quickstart.cwl
 inputs:
-- id: dest
-  doc: destination directory.
-  type: string
+- id: in_dest
+  doc: "destination directory.\n"
+  type: Directory
   inputBinding:
     prefix: --dest
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cgatreport-quickstart

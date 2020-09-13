@@ -4,4 +4,7 @@ task Fastqqc {
   command <<<
     fastqqc
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -11,13 +11,17 @@ task PyprophetMerge {
     pyprophet merge \
       ~{in_files} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
-      ~{true="--same_run" false="" same_run} \
+      ~{if (same_run) then "--same_run" else ""} \
       ~{if defined(template) then ("--template " +  '"' + template + '"') else ""}
   >>>
   parameter_meta {
     out: "Merged OSW output file.  [required]"
-    same_run: "/ --no-same_run  Assume input files are from same run (deletes run information)."
+    same_run: "/ --no-same_run  Assume input files are from same run (deletes\\nrun information)."
     template: "Template OSW file.  [required]"
     in_files: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

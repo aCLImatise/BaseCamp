@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../trimmomatic.cwl
 inputs:
-- id: version
+- id: in_version
   doc: ''
   type: boolean
   inputBinding:
     prefix: -version
-- id: threads
+- id: in_threads
   doc: ''
   type: string
   inputBinding:
     prefix: -threads
-- id: pe
+- id: in_pe
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_or
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - trimmomatic

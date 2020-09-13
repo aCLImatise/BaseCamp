@@ -9,7 +9,7 @@ task InternalCalibration {
     Array[String] ms_level
     Boolean? rt_chunking
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -18,13 +18,13 @@ task InternalCalibration {
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(r_script_executable) then ("-rscript_executable " +  '"' + r_script_executable + '"') else ""} \
-      ~{true="-ppm_match_tolerance" false="" ppm_match_tolerance} \
+      ~{if (ppm_match_tolerance) then "-ppm_match_tolerance" else ""} \
       ~{if defined(ms_level) then ("-ms_level " +  '"' + ms_level + '"') else ""} \
-      ~{true="-RT_chunking" false="" rt_chunking} \
+      ~{if (rt_chunking) then "-RT_chunking" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                                Input peak file (valid formats: 'mzML')"
@@ -37,5 +37,9 @@ task InternalCalibration {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

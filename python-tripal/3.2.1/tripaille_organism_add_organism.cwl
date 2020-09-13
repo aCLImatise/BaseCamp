@@ -1,43 +1,46 @@
 class: CommandLineTool
 id: ../../../tripaille_organism_add_organism.cwl
 inputs:
-- id: common
+- id: in_common
   doc: The common name of the organism
   type: string
   inputBinding:
     prefix: --common
-- id: abbr
+- id: in_abbr
   doc: The abbreviation of the organism
   type: string
   inputBinding:
     prefix: --abbr
-- id: comment
+- id: in_comment
   doc: A comment / description
   type: string
   inputBinding:
     prefix: --comment
-- id: infraspecific_rank
-  doc: The type name of infraspecific name for any taxon below the rank of species.
-    Must be one of ['subspecies', 'varietas', 'subvariety', 'forma', 'subforma']
+- id: in_infraspecific_rank
+  doc: "The type name of infraspecific name for any taxon\nbelow the rank of species.\
+    \ Must be one of\n['subspecies', 'varietas', 'subvariety', 'forma',\n'subforma']"
   type: string
   inputBinding:
     prefix: --infraspecific_rank
-- id: infraspecific_name
+- id: in_infraspecific_name
   doc: The infraspecific name for this organism.
   type: string
   inputBinding:
     prefix: --infraspecific_name
-- id: genus
+- id: in_genus
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: species
+- id: in_species
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tripaille

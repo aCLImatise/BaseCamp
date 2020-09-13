@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../scalpel_export.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: ': verbose mode'
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: single
-  doc: ': export variants for single exome study '
+- id: in_single
+  doc: ': export variants for single exome study'
   type: boolean
   inputBinding:
     prefix: --single
-- id: de_novo
+- id: in_de_novo
   doc: ': export variants for family study (mom,dad,affected,sibling)'
   type: boolean
   inputBinding:
     prefix: --denovo
-- id: somatic
+- id: in_somatic
   doc: ': export variants for normal/tumor study'
   type: boolean
   inputBinding:
     prefix: --somatic
-- id: command
+- id: in_command
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - scalpel-export

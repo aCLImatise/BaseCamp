@@ -1,17 +1,17 @@
 version 1.0
 
-task CruxSortByColumn {
+task CruxSortbycolumn {
   input {
-    String tsv_file
-    String column_name
+    File tsv_file
   }
   command <<<
-    crux sort-by-column \
-      ~{tsv_file} \
-      ~{column_name}
+    crux sort_by_column \
+      ~{tsv_file}
   >>>
   parameter_meta {
     tsv_file: ""
-    column_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

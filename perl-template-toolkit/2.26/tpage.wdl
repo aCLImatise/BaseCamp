@@ -12,7 +12,7 @@ task Tpage {
     Boolean? load_perl
     Boolean? absolute
     Boolean? relative
-    String? include_path
+    Directory? include_path
     String? pre_process
     String? post_process
     String? process
@@ -24,26 +24,26 @@ task Tpage {
     String? end_tag
     String? tag_style
     String? plugin_base
-    String? compile_ext
-    String? compile_dir
-    String? perl_five_lib
+    File? compile_ext
+    Directory? compile_dir
+    Int? perl_five_lib
     String? template_module
     Int? while_max
-    File? files
+    String? files
   }
   command <<<
     tpage \
       ~{files} \
       ~{if defined(define) then ("--define " +  '"' + define + '"') else ""} \
-      ~{true="--interpolate" false="" interpolate} \
-      ~{true="--anycase" false="" any_case} \
-      ~{true="--pre_chomp" false="" pre_chomp} \
-      ~{true="--post_chomp" false="" post_chomp} \
-      ~{true="--trim" false="" trim} \
-      ~{true="--eval_perl" false="" eval_perl} \
-      ~{true="--load_perl" false="" load_perl} \
-      ~{true="--absolute" false="" absolute} \
-      ~{true="--relative" false="" relative} \
+      ~{if (interpolate) then "--interpolate" else ""} \
+      ~{if (any_case) then "--anycase" else ""} \
+      ~{if (pre_chomp) then "--pre_chomp" else ""} \
+      ~{if (post_chomp) then "--post_chomp" else ""} \
+      ~{if (trim) then "--trim" else ""} \
+      ~{if (eval_perl) then "--eval_perl" else ""} \
+      ~{if (load_perl) then "--load_perl" else ""} \
+      ~{if (absolute) then "--absolute" else ""} \
+      ~{if (relative) then "--relative" else ""} \
       ~{if defined(include_path) then ("--include_path " +  '"' + include_path + '"') else ""} \
       ~{if defined(pre_process) then ("--pre_process " +  '"' + pre_process + '"') else ""} \
       ~{if defined(post_process) then ("--post_process " +  '"' + post_process + '"') else ""} \
@@ -66,14 +66,14 @@ task Tpage {
     define: "=value       Define template variable"
     interpolate: "Interpolate '$var' references in text"
     any_case: "Accept directive keywords in any case."
-    pre_chomp: "Chomp leading whitespace "
+    pre_chomp: "Chomp leading whitespace"
     post_chomp: "Chomp trailing whitespace"
     trim: "Trim blank lines around template blocks"
     eval_perl: "Evaluate [% PERL %] ... [% END %] code blocks"
     load_perl: "Load regular Perl modules via USE directive"
     absolute: "Allow ABSOLUTE directories (enabled by default)"
     relative: "Allow RELATIVE directories (enabled by default)"
-    include_path: "Add directory to INCLUDE_PATH "
+    include_path: "Add directory to INCLUDE_PATH"
     pre_process: "Process TEMPLATE before each main template"
     post_process: "Process TEMPLATE after each main template"
     process: "Process TEMPLATE instead of main template"
@@ -83,13 +83,16 @@ task Tpage {
     debug: "Set TT DEBUG option to STRING"
     start_tag: "STRING defines start of directive tag"
     end_tag: "STRING defined end of directive tag"
-    tag_style: "Use pre-defined tag STYLE    "
-    plugin_base: "Base PACKAGE for plugins            "
+    tag_style: "Use pre-defined tag STYLE"
+    plugin_base: "Base PACKAGE for plugins"
     compile_ext: "File extension for compiled template files"
     compile_dir: "Directory for compiled template files"
     perl_five_lib: "Specify additional Perl library directories"
     template_module: "Specify alternate Template module"
     while_max: "Change '$Template::Directive::WHILE_MAX' default"
     files: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

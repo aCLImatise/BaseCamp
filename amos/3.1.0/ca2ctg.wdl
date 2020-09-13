@@ -4,4 +4,7 @@ task Ca2ctg {
   command <<<
     ca2ctg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

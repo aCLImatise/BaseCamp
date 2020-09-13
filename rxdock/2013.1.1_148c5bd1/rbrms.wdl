@@ -4,4 +4,7 @@ task Rbrms {
   command <<<
     rbrms
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -3,37 +3,35 @@ version 1.0
 task SgaCorrect {
   input {
     Boolean? verbose
-    String? prefix
+    File? prefix
     File? outfile
-    String? threads
+    Int? threads
     Boolean? discard
-    String? sample_rate
+    Int? sample_rate
     String? algorithm
     File? metrics
-    String? km_er_size
-    String? km_er_threshold
-    String? km_er_rounds
-    String? count_offset
+    Int? km_er_size
+    Int? km_er_threshold
+    Int? km_er_rounds
+    Int? count_offset
     Boolean? learn
     Boolean? error_rate
-    String? min_overlap
+    Int? min_overlap
     Int? min_count_max_base
-    String? base_threshold
+    Int? base_threshold
     Int? conflict
-    String? seed_length
-    String? seed_stride
-    String? branch_cut_off
-    String? rounds
-    String? option
+    Int? seed_length
+    Int? seed_stride
+    Int? branch_cut_off
+    Int? rounds
   }
   command <<<
     sga correct \
-      ~{option} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--discard" false="" discard} \
+      ~{if (discard) then "--discard" else ""} \
       ~{if defined(sample_rate) then ("--sample-rate " +  '"' + sample_rate + '"') else ""} \
       ~{if defined(algorithm) then ("--algorithm " +  '"' + algorithm + '"') else ""} \
       ~{if defined(metrics) then ("--metrics " +  '"' + metrics + '"') else ""} \
@@ -41,8 +39,8 @@ task SgaCorrect {
       ~{if defined(km_er_threshold) then ("--kmer-threshold " +  '"' + km_er_threshold + '"') else ""} \
       ~{if defined(km_er_rounds) then ("--kmer-rounds " +  '"' + km_er_rounds + '"') else ""} \
       ~{if defined(count_offset) then ("--count-offset " +  '"' + count_offset + '"') else ""} \
-      ~{true="--learn" false="" learn} \
-      ~{true="--error-rate" false="" error_rate} \
+      ~{if (learn) then "--learn" else ""} \
+      ~{if (error_rate) then "--error-rate" else ""} \
       ~{if defined(min_overlap) then ("--min-overlap " +  '"' + min_overlap + '"') else ""} \
       ~{if defined(min_count_max_base) then ("--min-count-max-base " +  '"' + min_count_max_base + '"') else ""} \
       ~{if defined(base_threshold) then ("--base-threshold " +  '"' + base_threshold + '"') else ""} \
@@ -58,7 +56,7 @@ task SgaCorrect {
     outfile: "write the corrected reads to FILE (default: READSFILE.ec.fa)"
     threads: "use NUM threads for the computation (default: 1)"
     discard: "detect and discard low-quality reads"
-    sample_rate: "use occurrence array sample rate of N in the FM-index. Higher values use significantly less memory at the cost of higher runtime. This value must be a power of 2 (default: 128)"
+    sample_rate: "use occurrence array sample rate of N in the FM-index. Higher values use significantly\\nless memory at the cost of higher runtime. This value must be a power of 2 (default: 128)"
     algorithm: "specify the correction algorithm to use. STR must be one of kmer, hybrid, overlap. (default: kmer)"
     metrics: "collect error correction metrics (error rate by position in read, etc) and write them to FILE"
     km_er_size: "The length of the kmer to use. (default: 31)"
@@ -68,13 +66,15 @@ task SgaCorrect {
     learn: "Attempt to learn the k-mer correction threshold (experimental). Overrides -x parameter."
     error_rate: "the maximum error rate allowed between two sequences to consider them overlapped (default: 0.04)"
     min_overlap: "minimum overlap required between two reads (default: 45)"
-    min_count_max_base: "minimum count of the base that has the highest count in overlap correction. The base of the read is only corrected if the maximum base has at least this count. Should avoid mis-corrections in low coverage regions (default: 4)"
+    min_count_max_base: "minimum count of the base that has the highest count in overlap correction.\\nThe base of the read is only corrected if the maximum base has at least this count.\\nShould avoid mis-corrections in low coverage regions (default: 4)"
     base_threshold: "Attempt to correct bases in a read that are seen less than N times (default: 2)"
     conflict: "use INT as the threshold to detect a conflicted base in the multi-overlap (default: 5)"
-    seed_length: "force the seed length to be LEN. By default, the seed length in the overlap step is calculated to guarantee all overlaps with --error-rate differences are found. This option removes the guarantee but will be (much) faster. As SGA can tolerate some missing edges, this option may be preferable for some data sets."
-    seed_stride: "force the seed stride to be LEN. This parameter will be ignored unless --seed-length is specified (see above). This parameter defaults to the same value as --seed-length"
-    branch_cut_off: "stop the overlap search at N branches. This parameter is used to control the search time for highly-repetitive reads. If the number of branches exceeds N, the search stops and the read will not be corrected. This is not enabled by default."
+    seed_length: "force the seed length to be LEN. By default, the seed length in the overlap step\\nis calculated to guarantee all overlaps with --error-rate differences are found.\\nThis option removes the guarantee but will be (much) faster. As SGA can tolerate some\\nmissing edges, this option may be preferable for some data sets."
+    seed_stride: "force the seed stride to be LEN. This parameter will be ignored unless --seed-length\\nis specified (see above). This parameter defaults to the same value as --seed-length"
+    branch_cut_off: "stop the overlap search at N branches. This parameter is used to control the search time for\\nhighly-repetitive reads. If the number of branches exceeds N, the search stops and the read\\nwill not be corrected. This is not enabled by default."
     rounds: "iteratively correct reads up to a maximum of NUM rounds (default: 1)"
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

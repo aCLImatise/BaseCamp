@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../ffindex_reduce.cwl
 inputs:
-- id: data_filename
+- id: in_data_filename
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: index_filename
+- id: in_index_filename
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: program
+- id: in_program
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: program_args
+- id: in_program_args
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ffindex_reduce

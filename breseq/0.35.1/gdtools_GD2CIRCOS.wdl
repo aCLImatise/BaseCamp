@@ -2,10 +2,10 @@ version 1.0
 
 task GdtoolsGD2CIRCOS {
   input {
-    String? reference
-    String? name_save_files
-    String? distance
-    String? feature
+    File? reference
+    Directory? name_save_files
+    Int? distance
+    Int? feature
   }
   command <<<
     gdtools GD2CIRCOS \
@@ -19,5 +19,8 @@ task GdtoolsGD2CIRCOS {
     name_save_files: "name of directory to save Circos configuration files and scripts (DEFAULT=circos_output)"
     distance: "the distance from the center the first axis will be in proportion to the default size (DEFAULT=1.0)"
     feature: "the scale of the features in proportion to the default size (DEFAULT=1.0)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

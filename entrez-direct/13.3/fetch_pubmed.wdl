@@ -1,7 +1,10 @@
 version 1.0
 
-task FetchPubmed {
+task Fetchpubmed {
   command <<<
-    fetch-pubmed
+    fetch_pubmed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,4 +1,6 @@
 !Command
+command:
+- phmm
 positional:
 - !Positional
   description: ''
@@ -15,14 +17,43 @@ positional:
   position: 2
   name: out file
   optional: false
-named: []
-command:
-- phmm
+named:
+- !Flag
+  description: "Specify that program should output probabilities as logs (base 10).\n\
+    Default is to output probabilties."
+  synonyms:
+  - -L
+  - -l
+  - --logprobability
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that program should output a maximum likelihood alignment.\n\
+    Default is to output pairwise probabilities."
+  synonyms:
+  - -M
+  - -m
+  - --maxlikelihood
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: "Display version and copyright information for this interface.\n"
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: phmm <seq 1> <seq 2> <out file> [options]\nAll flags are case-insensitive,\
   \ and grouping of flags is not allowed.\n\n=============================\n==== Required\
   \ Parameters ====\n=============================\n<seq 1>\n    The name of a file\

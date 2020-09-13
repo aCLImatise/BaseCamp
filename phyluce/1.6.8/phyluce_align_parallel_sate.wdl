@@ -3,9 +3,9 @@ version 1.0
 task PhyluceAlignParallelSate {
   input {
     String? sate_conf
-    String? input_directory_containing
-    String? output_directory_hold
-    String? cores
+    Directory? input_directory_containing
+    Directory? output_directory_hold
+    Int? cores
   }
   command <<<
     phyluce_align_parallel_sate \
@@ -19,5 +19,9 @@ task PhyluceAlignParallelSate {
     input_directory_containing: "The input directory containing fasta files"
     output_directory_hold: "The output directory to hold alignments"
     cores: "The number of compute cores to use"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_hold = "${in_output_directory_hold}"
   }
 }

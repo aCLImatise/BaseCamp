@@ -1,6 +1,6 @@
 version 1.0
 
-task AbyssTodot {
+task Abysstodot {
   input {
     String? km_er
     Boolean? adj
@@ -19,25 +19,25 @@ task AbyssTodot {
     File? file
   }
   command <<<
-    abyss-todot \
+    abyss_todot \
       ~{file} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
-      ~{true="--adj" false="" adj} \
-      ~{true="--asqg" false="" as_qg} \
-      ~{true="--dist" false="" dist} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--gv" false="" gv} \
-      ~{true="--dot-meancov" false="" dot_mean_cov} \
-      ~{true="--gfa" false="" gfa} \
-      ~{true="--gfa1" false="" gfa_one} \
-      ~{true="--gfa2" false="" gfa_two} \
-      ~{true="--sam" false="" sam} \
+      ~{if (adj) then "--adj" else ""} \
+      ~{if (as_qg) then "--asqg" else ""} \
+      ~{if (dist) then "--dist" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (gv) then "--gv" else ""} \
+      ~{if (dot_mean_cov) then "--dot-meancov" else ""} \
+      ~{if (gfa) then "--gfa" else ""} \
+      ~{if (gfa_one) then "--gfa1" else ""} \
+      ~{if (gfa_two) then "--gfa2" else ""} \
+      ~{if (sam) then "--sam" else ""} \
       ~{if defined(estimate) then ("--estimate " +  '"' + estimate + '"') else ""} \
       ~{if defined(add_complements) then ("--add-complements " +  '"' + add_complements + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    km_er: "report the mean k-mer coverage, otherwise the sum k-mer coverage is reported"
+    km_er: "report the mean k-mer coverage, otherwise\\nthe sum k-mer coverage is reported"
     adj: "output the graph in adj format"
     as_qg: "output the graph in asqg format"
     dist: "output the graph in dist format"
@@ -52,5 +52,8 @@ task AbyssTodot {
     add_complements: "missing complementary edges"
     verbose: "display verbose output"
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

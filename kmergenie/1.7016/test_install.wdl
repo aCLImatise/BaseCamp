@@ -1,7 +1,10 @@
 version 1.0
 
-task TestInstall.bak {
+task TestInstall {
   command <<<
-    test_install.bak
+    test_install
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

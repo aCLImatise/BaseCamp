@@ -4,4 +4,7 @@ task CactusWorkflowConvertAlignmentCoordinates {
   command <<<
     cactus_workflow_convertAlignmentCoordinates
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

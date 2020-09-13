@@ -1,7 +1,10 @@
 version 1.0
 
-task BelResources {
+task Belresources {
   command <<<
-    bel-resources
+    bel_resources
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

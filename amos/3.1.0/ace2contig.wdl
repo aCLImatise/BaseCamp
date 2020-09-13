@@ -2,7 +2,7 @@ version 1.0
 
 task Ace2contig {
   input {
-    String? file
+    File? file
     String? prefix_output_prefixcontig
   }
   command <<<
@@ -13,5 +13,8 @@ task Ace2contig {
   parameter_meta {
     file: "file"
     prefix_output_prefixcontig: "prefix (output is <prefix>.contig)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

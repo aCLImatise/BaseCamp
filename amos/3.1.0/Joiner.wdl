@@ -4,4 +4,7 @@ task Joiner {
   command <<<
     Joiner
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

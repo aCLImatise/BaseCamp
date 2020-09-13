@@ -4,4 +4,7 @@ task Maf2lav {
   command <<<
     maf2lav
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

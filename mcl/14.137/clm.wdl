@@ -4,17 +4,20 @@ task Clm {
   input {
     Boolean? nop
     String mode
-    File? files
+    String? files
   }
   command <<<
     clm \
       ~{mode} \
       ~{files} \
-      ~{true="--nop" false="" nop}
+      ~{if (nop) then "--nop" else ""}
   >>>
   parameter_meta {
     nop: ""
     mode: ""
     files: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

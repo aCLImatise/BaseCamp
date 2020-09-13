@@ -2,26 +2,26 @@ version 1.0
 
 task Cmcalibrate {
   input {
-    String? set_random_length
+    Int? set_random_length
     Boolean? forecast
     String? n_forecast
     Boolean? mem_req
     Boolean? no_forecast
-    String? g_tail_n
-    String? l_tail_n
+    Int? g_tail_n
+    Int? l_tail_n
     String? tail_p
-    String? h_file
-    String? s_file
-    String? qq_file
-    String? f_file
-    String? x_file
-    String? seed
+    File? h_file
+    File? s_file
+    File? qq_file
+    File? f_file
+    File? x_file
+    Int? seed
     String? beta
     Boolean? non_banded
     Boolean? no_null_three
     Boolean? random
-    String? gc
-    String? cpu
+    File? gc
+    Int? cpu
     Boolean? options
     String cm_file
   }
@@ -29,10 +29,10 @@ task Cmcalibrate {
     cmcalibrate \
       ~{cm_file} \
       ~{if defined(set_random_length) then ("-L " +  '"' + set_random_length + '"') else ""} \
-      ~{true="--forecast" false="" forecast} \
+      ~{if (forecast) then "--forecast" else ""} \
       ~{if defined(n_forecast) then ("--nforecast " +  '"' + n_forecast + '"') else ""} \
-      ~{true="--memreq" false="" mem_req} \
-      ~{true="--noforecast" false="" no_forecast} \
+      ~{if (mem_req) then "--memreq" else ""} \
+      ~{if (no_forecast) then "--noforecast" else ""} \
       ~{if defined(g_tail_n) then ("--gtailn " +  '"' + g_tail_n + '"') else ""} \
       ~{if defined(l_tail_n) then ("--ltailn " +  '"' + l_tail_n + '"') else ""} \
       ~{if defined(tail_p) then ("--tailp " +  '"' + tail_p + '"') else ""} \
@@ -43,12 +43,12 @@ task Cmcalibrate {
       ~{if defined(x_file) then ("--xfile " +  '"' + x_file + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(beta) then ("--beta " +  '"' + beta + '"') else ""} \
-      ~{true="--nonbanded" false="" non_banded} \
-      ~{true="--nonull3" false="" no_null_three} \
-      ~{true="--random" false="" random} \
+      ~{if (non_banded) then "--nonbanded" else ""} \
+      ~{if (no_null_three) then "--nonull3" else ""} \
+      ~{if (random) then "--random" else ""} \
       ~{if defined(gc) then ("--gc " +  '"' + gc + '"') else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     set_random_length: ": set random seq length to search in Mb to <x>  [1.6]  (0.01<=x<=160.)"
@@ -73,5 +73,8 @@ task Cmcalibrate {
     cpu: ": number of parallel CPU workers to use for multithreads"
     options: ""
     cm_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

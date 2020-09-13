@@ -11,4 +11,7 @@ task EbisearchGetDomains {
   parameter_meta {
     file: "File to export the domain information (optional)"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

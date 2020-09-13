@@ -4,4 +4,7 @@ task AdapterRemovalFixPrefix {
   command <<<
     AdapterRemovalFixPrefix
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

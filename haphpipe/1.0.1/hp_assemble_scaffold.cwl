@@ -1,47 +1,60 @@
 class: CommandLineTool
 id: ../../../hp_assemble_scaffold.cwl
 inputs:
-- id: contigs_fa
+- id: in_contigs_fa
   doc: Fasta file with assembled contigs
-  type: string
+  type: File
   inputBinding:
     prefix: --contigs_fa
-- id: ref_fa
+- id: in_ref_fa
   doc: Fasta file with reference genome to scaffold against
-  type: string
+  type: File
   inputBinding:
     prefix: --ref_fa
-- id: outdir
+- id: in_outdir
   doc: 'Output directory (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: seqname
-  doc: 'Name to append to scaffold sequence. (default: sample01)'
-  type: string
+- id: in_seqname
+  doc: "Name to append to scaffold sequence. (default:\nsample01)"
+  type: long
   inputBinding:
     prefix: --seqname
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'Additional options (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_tmp
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Append console output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Append console output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - hp_assemble_scaffold

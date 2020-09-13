@@ -21,6 +21,8 @@ task Dba {
     Boolean? slim
     Boolean? big
     Boolean? params
+    Boolean? dy_mem
+    Boolean? kbyte
     Boolean? dy_debug
     Boolean? pal_debug
     Boolean? version
@@ -29,40 +31,42 @@ task Dba {
     String? error_off_std
     Boolean? error_log
     Boolean? error_style
-    String seq_one
-    String seq_two
+    Int seq_one
+    Int seq_two
   }
   command <<<
     dba \
       ~{seq_one} \
       ~{seq_two} \
-      ~{true="-matchA" false="" match_a} \
-      ~{true="-matchB" false="" match_b} \
-      ~{true="-matchC" false="" match_c} \
-      ~{true="-matchD" false="" match_d} \
-      ~{true="-gapA" false="" gap_a} \
-      ~{true="-gapAA" false="" gap_aa} \
-      ~{true="-gap" false="" gap} \
-      ~{true="-blockopen" false="" block_open} \
-      ~{true="-umatch" false="" u_match} \
-      ~{true="-single" false="" single} \
-      ~{true="-nomatchn" false="" no_match_n} \
-      ~{true="-align" false="" align} \
-      ~{true="-anchor" false="" anchor} \
-      ~{true="-pretty" false="" pretty} \
-      ~{true="-pff" false="" pff} \
-      ~{true="-label" false="" label} \
-      ~{true="-slim" false="" slim} \
-      ~{true="-big" false="" big} \
-      ~{true="-params" false="" params} \
-      ~{true="-dydebug" false="" dy_debug} \
-      ~{true="-paldebug" false="" pal_debug} \
-      ~{true="-version" false="" version} \
-      ~{true="-silent" false="" silent} \
-      ~{true="-quiet" false="" quiet} \
+      ~{if (match_a) then "-matchA" else ""} \
+      ~{if (match_b) then "-matchB" else ""} \
+      ~{if (match_c) then "-matchC" else ""} \
+      ~{if (match_d) then "-matchD" else ""} \
+      ~{if (gap_a) then "-gapA" else ""} \
+      ~{if (gap_aa) then "-gapAA" else ""} \
+      ~{if (gap) then "-gap" else ""} \
+      ~{if (block_open) then "-blockopen" else ""} \
+      ~{if (u_match) then "-umatch" else ""} \
+      ~{if (single) then "-single" else ""} \
+      ~{if (no_match_n) then "-nomatchn" else ""} \
+      ~{if (align) then "-align" else ""} \
+      ~{if (anchor) then "-anchor" else ""} \
+      ~{if (pretty) then "-pretty" else ""} \
+      ~{if (pff) then "-pff" else ""} \
+      ~{if (label) then "-label" else ""} \
+      ~{if (slim) then "-slim" else ""} \
+      ~{if (big) then "-big" else ""} \
+      ~{if (params) then "-params" else ""} \
+      ~{if (dy_mem) then "-dymem" else ""} \
+      ~{if (kbyte) then "-kbyte" else ""} \
+      ~{if (dy_debug) then "-dydebug" else ""} \
+      ~{if (pal_debug) then "-paldebug" else ""} \
+      ~{if (version) then "-version" else ""} \
+      ~{if (silent) then "-silent" else ""} \
+      ~{if (quiet) then "-quiet" else ""} \
       ~{if defined(error_off_std) then ("-erroroffstd " +  '"' + error_off_std + '"') else ""} \
-      ~{true="-errorlog" false="" error_log} \
-      ~{true="-errorstyle" false="" error_style}
+      ~{if (error_log) then "-errorlog" else ""} \
+      ~{if (error_style) then "-errorstyle" else ""}
   >>>
   parameter_meta {
     match_a: "[0.65]     match level A"
@@ -79,11 +83,13 @@ task Dba {
     align: "show alignment for computer parsing"
     anchor: "show anchored alignment to first sequence"
     pretty: "show alignment for ASCII viewing"
-    pff: "show phylogenetic footprinting format output (gapped fasta)"
+    pff: "show phylogenetic footprinting format output\\n(gapped fasta)"
     label: "show label alignment"
     slim: "use slim DBA alignment"
     big: "use big DBA alignment with AA block"
     params: "print parameters"
+    dy_mem: "memory style [default/linear/explicit]"
+    kbyte: "memory amount to use [4000]"
     dy_debug: "drop into dynamite dp matrix debugger"
     pal_debug: "print PackAln after debugger run if used"
     version: "show version and compile info"
@@ -94,5 +100,8 @@ task Dba {
     error_style: "[server/program] style of error reporting (default program)"
     seq_one: ""
     seq_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

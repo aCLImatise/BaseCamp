@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../checkm_taxonomy_wf_taxon.cwl
 inputs:
-- id: ali
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --ali
-- id: nt
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --nt
-- id: g
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -g
-- id: individual_markers
+- id: in_individual_markers
   doc: ''
   type: boolean
   inputBinding:
     prefix: --individual_markers
-- id: check_m
+- id: in_g
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -g
+- id: in_nt
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --nt
+- id: in_ali
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --ali
+- id: in_check_m
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: taxonomy_wf
+- id: in_taxonomy_wf
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkm

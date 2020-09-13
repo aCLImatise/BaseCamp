@@ -1,44 +1,57 @@
 class: CommandLineTool
 id: ../../../sequana_summary.cwl
 inputs:
-- id: file
-  doc: one filename (either FastQ or BED file; see DESCRIPTION)
+- id: in_multiple
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --multiple
+- id: in_quiet
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --quiet
+- id: in_file
+  doc: "one filename (either FastQ or BED file; see\nDESCRIPTION)"
   type: File
   inputBinding:
     prefix: --file
-- id: glob
-  doc: a glob/pattern of files. Must use quotes e.g. "*.fastq.gz" (See --file or DESCRIPTION
-    for details)
-  type: string
+- id: in_glob
+  doc: "a glob/pattern of files. Must use quotes e.g.\n\"*.fastq.gz\" (See --file\
+    \ or DESCRIPTION for details)"
+  type: File
   inputBinding:
     prefix: --glob
-- id: sample
-  doc: If input FastQ files, analyse entire file. You may restrict analysis to set
-    of reads
-  type: string
+- id: in_sample
+  doc: "If input FastQ files, analyse entire file. You may\nrestrict analysis to set\
+    \ of reads"
+  type: File
   inputBinding:
     prefix: --sample
-- id: thread
-  doc: Several files may be processed in parallel. By default 4 threads are used
-  type: string
+- id: in_thread
+  doc: "Several files may be processed in parallel. By default\n4 threads are used\n"
+  type: long
   inputBinding:
     prefix: --thread
-- id: welcome
+- id: in_welcome
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: to
+- id: in_to
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: se_quan_a
+- id: in_se_quan_a
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sequana_summary

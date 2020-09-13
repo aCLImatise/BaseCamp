@@ -1,17 +1,23 @@
 version 1.0
 
-task HcaAuthGetV1Roles {
+task HcaAuthGetv1roles {
   input {
-    Boolean? no_paginate
     String? next_token
+    String? per_page
+    Boolean? no_paginate
   }
   command <<<
-    hca auth get-v1-roles \
-      ~{true="--no-paginate" false="" no_paginate} \
-      ~{if defined(next_token) then ("--next-token " +  '"' + next_token + '"') else ""}
+    hca auth get_v1_roles \
+      ~{if defined(next_token) then ("--next-token " +  '"' + next_token + '"') else ""} \
+      ~{if defined(per_page) then ("--per-page " +  '"' + per_page + '"') else ""} \
+      ~{if (no_paginate) then "--no-paginate" else ""}
   >>>
   parameter_meta {
-    no_paginate: "Do not automatically page the responses"
     next_token: ""
+    per_page: ""
+    no_paginate: "Do not automatically page the responses"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

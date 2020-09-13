@@ -1,52 +1,66 @@
 class: CommandLineTool
 id: ../../../RNAparconv.cwl
 inputs:
-- id: full_help
+- id: in_full_help
   doc: Print help, including hidden options, and exit
   type: boolean
   inputBinding:
     prefix: --full-help
-- id: output
-  doc: Specify an output file name. If argument is missing  the converted energy parameters
-    are printed to  'stdout'.
+- id: in_output
+  doc: "Specify an output file name. If argument is missing\nthe converted energy\
+    \ parameters are printed to\n'stdout'."
   type: File
   inputBinding:
     prefix: --output
-- id: input
-  doc: Specify an input file name. If argument is missing  the energy parameter input
-    can be supplied via  'stdin'.
+- id: in_input
+  doc: "Specify an input file name. If argument is missing\nthe energy parameter input\
+    \ can be supplied via\n'stdin'."
   type: File
   inputBinding:
     prefix: --input
-- id: vanilla
-  doc: Print just as much as needed to represent the given  energy parameters data
-    set. This option overrides all other output settings! (default=off)
+- id: in_vanilla
+  doc: "Print just as much as needed to represent the given\nenergy parameters data\
+    \ set.\nThis option overrides all other output settings!\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --vanilla
-- id: dump
-  doc: Just dump Vienna 1.8.4 energy parameters in format  used since 2.0. This option
-    skips any energy parameter input! (default=off)
+- id: in_dump
+  doc: "Just dump Vienna 1.8.4 energy parameters in format\nused since 2.0.\nThis\
+    \ option skips any energy parameter input!\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --dump
-- id: silent
-  doc: Print just energy parameters and appropriate comment  lines but suppress all
-    other output (default=off)
+- id: in_silent
+  doc: "Print just energy parameters and appropriate comment\nlines but suppress all\
+    \ other output\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --silent
-- id: input_file
+- id: in_input_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Specify an output file name. If argument is missing\nthe converted energy\
+    \ parameters are printed to\n'stdout'."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_output_file
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - RNAparconv

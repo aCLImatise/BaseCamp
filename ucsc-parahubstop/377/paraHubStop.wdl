@@ -1,14 +1,10 @@
 version 1.0
 
 task ParaHubStop {
-  input {
-    String now
-  }
   command <<<
-    paraHubStop \
-      ~{now}
+    paraHubStop
   >>>
-  parameter_meta {
-    now: ""
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task GapLinks {
+task Gaplinks {
   command <<<
-    gap-links
+    gap_links
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

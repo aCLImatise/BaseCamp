@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../imagespread.cwl
 inputs:
-- id: seq_name_list
+- id: in_seq_name_list
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: msp_list
+- id: in_msp_list
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: number_of_output_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - imagespread

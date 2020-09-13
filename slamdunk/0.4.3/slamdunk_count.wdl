@@ -2,15 +2,15 @@ version 1.0
 
 task SlamdunkCount {
   input {
-    String? output_dir
-    String? snp_directory
-    String? vcf
-    String? reference
-    String? bed
-    String? conversion_threshold
+    Directory? output_dir
+    Directory? snp_directory
+    File? vcf
+    File? reference
+    File? bed
+    Int? conversion_threshold
     Int? max_read_length
     Int? min_base_qual
-    String? threads
+    Int? threads
     String bam
   }
   command <<<
@@ -32,10 +32,14 @@ task SlamdunkCount {
     vcf: "Externally provided custom variant file."
     reference: "Reference fasta file"
     bed: "BED file"
-    conversion_threshold: "Number of T>C conversions required to count read as T>C read (default: 1)"
+    conversion_threshold: "Number of T>C conversions required to count read as\\nT>C read (default: 1)"
     max_read_length: "Max read length in BAM file"
     min_base_qual: "Min base quality for T -> C conversions (default: 27)"
-    threads: "Thread number (default: 1)"
+    threads: "Thread number (default: 1)\\n"
     bam: "Bam file(s)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

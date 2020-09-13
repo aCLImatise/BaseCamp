@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- hmmalign
+- hmmfile
 positional:
 - !Positional
   description: ''
@@ -12,10 +15,9 @@ named:
   - -options
   args: !EmptyFlagArg {}
   optional: true
-command:
-- hmmalign
-- hmmfile
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - hmmalign
   positional: []
   named:
   - !Flag
@@ -76,12 +78,12 @@ parent: &id002 !Command
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - hmmalign
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - hmmalign
+    - seqfile
     positional:
     - !Positional
       description: ''
@@ -105,11 +107,9 @@ parent: &id002 !Command
       - -options
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - hmmalign
-    - seqfile
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -117,6 +117,8 @@ parent: &id002 !Command
       \ [-options] <hmmfile> <seqfile>\n\nTo see more help on available options, do\
       \ hmmalign -h\n\n"
     generated_using: &id003 []
+  - *id002
+  usage: []
   help_flag: !Flag
     description: ': show brief help on version and usage'
     synonyms:
@@ -143,6 +145,7 @@ parent: &id002 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

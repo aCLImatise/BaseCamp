@@ -1,5 +1,12 @@
 !Command
-positional: []
+command:
+- phyluce_assembly_assemblo_abyss
+positional:
+- !Positional
+  description: --subfolder SUBFOLDER
+  position: 0
+  name: Trinity
+  optional: false
 named:
 - !Flag
   description: The directory in which to store the assembly data
@@ -16,18 +23,11 @@ named:
     name: KMER
   optional: true
 - !Flag
-  description: The number of compute cores/threads to run with Trinity
+  description: The number of compute cores/threads to run with
   synonyms:
   - --cores
   args: !SimpleFlagArg
     name: CORES
-  optional: true
-- !Flag
-  description: A subdirectory, below the level of the group, containing the reads
-  synonyms:
-  - --subfolder
-  args: !SimpleFlagArg
-    name: SUBFOLDER
   optional: true
 - !Flag
   description: The logging level to use
@@ -35,8 +35,8 @@ named:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      ? WARN
       ? CRITICAL
+      ? WARN
       ? INFO
   optional: true
 - !Flag
@@ -72,10 +72,9 @@ named:
   args: !SimpleFlagArg
     name: DIR
   optional: true
-command:
-- phyluce_assembly_assemblo_abyss
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

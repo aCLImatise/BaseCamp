@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../gvcf2bed.cwl
 inputs:
-- id: input_file
+- id: in_input_file
   doc: The input file
-  type: string
+  type: File
   inputBinding:
     prefix: --input-file
-- id: arg_output_file
+- id: in_arg_output_file
   doc: '[ --output-file ] arg   The output file name (BED Format).'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: arg_fasta_file
+- id: in_arg_reference_fasta
   doc: '[ --reference ] arg     Reference fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: arg_optional_bed
+- id: in_arg_optional_bed
   doc: '[ --target-region ] arg Optional bed file with target regions'
   type: boolean
   inputBinding:
     prefix: -T
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_output_file
+  doc: '[ --output-file ] arg   The output file name (BED Format).'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_file)
 cwlVersion: v1.1
 baseCommand:
 - gvcf2bed

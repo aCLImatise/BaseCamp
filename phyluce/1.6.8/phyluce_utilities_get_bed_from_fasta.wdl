@@ -2,8 +2,8 @@ version 1.0
 
 task PhyluceUtilitiesGetBedFromFasta {
   input {
-    String? fasta_file_parse
-    String? bed_file_create
+    File? fasta_file_parse
+    File? bed_file_create
     String? locus_prefix
   }
   command <<<
@@ -15,6 +15,9 @@ task PhyluceUtilitiesGetBedFromFasta {
   parameter_meta {
     fasta_file_parse: "The fasta file to parse"
     bed_file_create: "The BED file to create"
-    locus_prefix: "A prefix to add to each locus name"
+    locus_prefix: "A prefix to add to each locus name\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,17 +1,20 @@
 version 1.0
 
-task FastaMost {
+task Fastamost {
   input {
     Boolean? min
     Boolean? max
   }
   command <<<
-    fasta-most \
-      ~{true="-min" false="" min} \
-      ~{true="-max" false="" max}
+    fasta_most \
+      ~{if (min) then "-min" else ""} \
+      ~{if (max) then "-max" else ""}
   >>>
   parameter_meta {
     min: "<length>  minimum length to accept"
     max: "<length>  maximum length to accept"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,40 +1,71 @@
 !Command
+command:
+- KmerStream
 positional: []
 named:
 - !Flag
-  description: Output is written in binary format (default false)
+  description: Size of k-mers, either a single value or comma separated list
   synonyms:
-  - --binary
-  args: !EmptyFlagArg {}
+  - -k
+  - --kmer-size
+  args: !SimpleFlagArg
+    name: INT
   optional: true
 - !Flag
-  description: Output is written in TSV format (default false)
+  description: Comma separated list, keep k-mers with bases above quality threshold
+    in PHRED (default 0)
   synonyms:
-  - --tsv
-  args: !EmptyFlagArg {}
+  - -q
+  - --quality-cutoff
+  args: !SimpleFlagArg
+    name: INT
   optional: true
 - !Flag
-  description: Print lots of messages during run
+  description: Filename for output
   synonyms:
-  - --verbose
-  args: !EmptyFlagArg {}
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: STRING
   optional: true
 - !Flag
-  description: Prints out estimates every 100K reads
+  description: Error rate guaranteed (default value 0.01)
   synonyms:
-  - --online
-  args: !EmptyFlagArg {}
+  - -e
+  - --error-rate
+  args: !SimpleFlagArg
+    name: FLOAT
   optional: true
 - !Flag
-  description: set if PHRED+64 scores are used (@...h) default used PHRED+33
+  description: SNumber of threads to use (default value 1)
   synonyms:
-  - --q64
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Seed value for the randomness (default value 0, use time based randomness)
+  synonyms:
+  - -s
+  - --seed
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Input is in BAM format (default false)\n--binary             Output\
+    \ is written in binary format (default false)\n--tsv                Output is\
+    \ written in TSV format (default false)\n--verbose            Print lots of messages\
+    \ during run\n--online             Prints out estimates every 100K reads\n--q64\
+    \                set if PHRED+64 scores are used (@...h) default used PHRED+33\n"
+  synonyms:
+  - -b
+  - --bam
   args: !EmptyFlagArg {}
   optional: true
-command:
-- KmerStream
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

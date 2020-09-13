@@ -3,15 +3,15 @@ version 1.0
 task MSstatsConverter {
   input {
     String? in
-    String? in_design
+    File? in_design
     String? method
     String? ms_stats_bio_replicate
     String? ms_stats_condition
     String? ms_stats_mixture
     Boolean? labeled_reference_peptides
-    String? out
+    File? out
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -23,12 +23,12 @@ task MSstatsConverter {
       ~{if defined(ms_stats_bio_replicate) then ("-msstats_bioreplicate " +  '"' + ms_stats_bio_replicate + '"') else ""} \
       ~{if defined(ms_stats_condition) then ("-msstats_condition " +  '"' + ms_stats_condition + '"') else ""} \
       ~{if defined(ms_stats_mixture) then ("-msstats_mixture " +  '"' + ms_stats_mixture + '"') else ""} \
-      ~{true="-labeled_reference_peptides" false="" labeled_reference_peptides} \
+      ~{if (labeled_reference_peptides) then "-labeled_reference_peptides" else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                                     Input consensusXML with peptide intensities (valid formats: 'consensusXML')"
@@ -43,5 +43,8 @@ task MSstatsConverter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

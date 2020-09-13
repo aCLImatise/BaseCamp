@@ -1,50 +1,50 @@
 class: CommandLineTool
 id: ../../../OMSSAAdapter.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*                            Input file  (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: "*                           Output file  (valid formats: 'idXML')"
   type: File
   inputBinding:
     prefix: -out
-- id: precursor_mass_tolerance
+- id: in_precursor_mass_tolerance
   doc: "Precursor monoisotopic mass tolerance (default: '10.0')"
-  type: string
+  type: double
   inputBinding:
     prefix: -precursor_mass_tolerance
-- id: precursor_error_units
+- id: in_precursor_error_units
   doc: "Unit of precursor mass tolerance (default: 'ppm' valid: 'Da', 'ppm')"
   type: string
   inputBinding:
     prefix: -precursor_error_units
-- id: fragment_mass_tolerance
+- id: in_fragment_mass_tolerance
   doc: "Fragment mass error in Dalton (default: '0.3')"
-  type: string
+  type: double
   inputBinding:
     prefix: -fragment_mass_tolerance
-- id: database
+- id: in_database
   doc: "*              NCBI formatted FASTA files. The .psq filename should be given,\
     \ e.g. 'SwissProt.fasta.psq'. If the filename does not end in '.psq' (e.g., SwissProt.fasta)\
     \ the psq suffix will be added automatically. Non-existing relative file-names\
     \ are looked up via'OpenMS.ini:id_db_dir' (valid formats: 'psq', 'fasta')"
-  type: string
+  type: File
   inputBinding:
     prefix: -database
-- id: min_precursor_charge
+- id: in_min_precursor_charge
   doc: "Minimum precursor ion charge (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -min_precursor_charge
-- id: max_precursor_charge
+- id: in_max_precursor_charge
   doc: "Maximum precursor ion charge (default: '3')"
-  type: string
+  type: long
   inputBinding:
     prefix: -max_precursor_charge
-- id: fixed_modifications
+- id: in_fixed_modifications
   doc: "Fixed modifications, specified using Unimod (www.unimod.org) terms, e.g. 'Carbamidomethyl\
     \ (C)' or 'Oxidation (M)' (default: '[Carbamidomethyl (C)]' valid: '15N-oxobutanoic\
     \ (N-term C)', '15N-oxobutanoic (Protein N-term S)', '15N-oxobutanoic (Protein\
@@ -756,10 +756,10 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: string
+  type: long
   inputBinding:
     prefix: -fixed_modifications
-- id: variable_modifications
+- id: in_variable_modifications
   doc: "Variable modifications, specified using Unimod (www.unimod.org) terms, e.g.\
     \ 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Oxidation (M)]' valid:\
     \ '15N-oxobutanoic (N-term C)', '15N-oxobutanoic (Protein N-term S)', '15N-oxobutanoic\
@@ -1471,35 +1471,35 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: string
+  type: long
   inputBinding:
     prefix: -variable_modifications
-- id: om_ssa_executable
+- id: in_om_ssa_executable
   doc: "*        The 'omssacl' executable of the OMSSA installation. Provide a full\
     \ or relative path, or make sure it can be found in your PATH environment."
-  type: string
+  type: File
   inputBinding:
     prefix: -omssa_executable
-- id: number_missed_cleavages
+- id: in_number_missed_cleavages
   doc: "Number of missed cleavages allowed (default: '1')"
   type: long
   inputBinding:
     prefix: -v
-- id: enzyme
-  doc: "The enzyme used for peptide digestion. (default: 'Trypsin' valid: 'Trypsin',\
-    \ 'Asp-N_ambic', 'CNBr', 'Formic_acid', 'TrypChymo', 'Trypsin/P', 'Lys-C', 'no\
-    \ cleavage', 'unspecific cleavage', 'glutamyl endopeptidase', 'Lys-C/P', 'PepsinA',\
-    \ 'Chymotrypsin', 'Arg-C', 'Asp-N')"
+- id: in_enzyme
+  doc: "The enzyme used for peptide digestion. (default: 'Trypsin' valid: 'Lys-C',\
+    \ 'CNBr', 'Formic_acid', 'Chymotrypsin', 'TrypChymo', 'Asp-N_ambic', 'glutamyl\
+    \ endopeptidase', 'no cleavage', 'unspecific cleavage', 'Asp-N', 'Trypsin/P',\
+    \ 'Trypsin', 'Lys-C/P', 'PepsinA', 'Arg-C')"
   type: string
   inputBinding:
     prefix: -enzyme
-- id: hl
+- id: in_hl
   doc: "Maximum number of hits retained for one spectrum. Note: even when set to 1\
     \ OMSSA may report multiple hits with different charge states (default: '30')"
   type: long
   inputBinding:
     prefix: -hl
-- id: he
+- id: in_he
   doc: "The maximum e-value allowed in the hit list. If you set this parameter too\
     \ small (e.g., he=1), this will effectively introduce FDR filtering. Thus, allowing\
     \ a less stringent FDR during post-processing will nevertheless return the (better)\
@@ -1507,27 +1507,35 @@ inputs:
   type: double
   inputBinding:
     prefix: -he
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "*                           Output file  (valid formats: 'idXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - OMSSAAdapter

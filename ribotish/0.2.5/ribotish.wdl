@@ -4,4 +4,7 @@ task Ribotish {
   command <<<
     ribotish
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../abyss_gapfill.cwl
 inputs:
-- id: min_align
+- id: in_min_align
   doc: the minimal alignment size [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --min-align
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - abyss-gapfill

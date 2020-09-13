@@ -4,4 +4,7 @@ task Tba {
   command <<<
     tba
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

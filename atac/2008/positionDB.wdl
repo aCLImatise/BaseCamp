@@ -1,14 +1,10 @@
 version 1.0
 
 task PositionDB {
-  input {
-    String? args
-  }
   command <<<
-    positionDB \
-      ~{args}
+    positionDB
   >>>
-  parameter_meta {
-    args: ""
+  output {
+    File out_stdout = stdout()
   }
 }

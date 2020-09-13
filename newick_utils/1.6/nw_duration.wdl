@@ -8,10 +8,13 @@ task NwDuration {
   command <<<
     nw_duration \
       ~{filename_vertical_line} \
-      ~{true="-bhIL" false="" bh_il}
+      ~{if (bh_il) then "-bhIL" else ""}
   >>>
   parameter_meta {
     bh_il: ""
     filename_vertical_line: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

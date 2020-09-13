@@ -1,85 +1,94 @@
 class: CommandLineTool
 id: ../../../medusa.cwl
 inputs:
-- id: optional_parameterthe_option_d
-  doc: 'OPTIONAL PARAMETER;The option *-d* allows for the estimation of the distance
-    between pairs of contigs based on the reference genome(s): in this case the scaffolded
-    contigs will be separated by a number of N characters equal to this estimate.
-    The estimated distances are also saved in the <targetGenome>_distanceTable file.
-    By default the scaffolded contigs are separated by 100 Ns'
+- id: in_optional_parameterthe_option_dallows
+  doc: "OPTIONAL PARAMETER;The option *-d*\nallows for the estimation of the\ndistance\
+    \ between pairs of contigs\nbased on the reference genome(s):\nin this case the\
+    \ scaffolded contigs\nwill be separated by a number of N\ncharacters equal to\
+    \ this estimate.\nThe estimated distances are also\nsaved in the\n<targetGenome>_distanceTable\
+    \ file.\nBy default the scaffolded contigs\nare separated by 100 Ns"
   type: boolean
   inputBinding:
     prefix: -d
-- id: draftsfolder_optional_parameter
-  doc: <<draftsFolder>>                   OPTIONAL PARAMETER; The option *-f* is optional
-    and indicates the path to the comparison drafts folder
+- id: in_draftsfolder_optional_parameter
+  doc: "<<draftsFolder>>                   OPTIONAL PARAMETER; The option *-f*\nis\
+    \ optional and indicates the path\nto the comparison drafts folder"
   type: boolean
   inputBinding:
     prefix: -f
-- id: gex_f
-  doc: OPTIONAL PARAMETER;Conting network and path cover are given in gexf format.
+- id: in_gex_f
+  doc: "OPTIONAL PARAMETER;Conting network\nand path cover are given in gexf\nformat."
   type: boolean
   inputBinding:
     prefix: -gexf
-- id: targetgenome_required_parameterthe
-  doc: <<targetGenome>>                   REQUIRED PARAMETER;The option *-i* indicates
-    the name of the target genome file.
+- id: in_targetgenome_required_parameterthe
+  doc: "<<targetGenome>>                   REQUIRED PARAMETER;The option *-i*\nindicates\
+    \ the name of the target\ngenome file."
   type: boolean
   inputBinding:
     prefix: -i
-- id: n_five_zero
-  doc: '<<fastaFile>>                    OPTIONAL PARAMETER; The option *-n50* allows
-    the calculation of the N50 statistic on a FASTA file. In this case the usage is
-    the following: java -jar medusa.jar -n50 <name_of_the_fasta>. All the other options
-    will be ignored.'
+- id: in_n_five_zero
+  doc: "<<fastaFile>>                    OPTIONAL PARAMETER; The option\n*-n50* allows\
+    \ the calculation of\nthe N50 statistic on a FASTA file.\nIn this case the usage\
+    \ is the\nfollowing: java -jar medusa.jar\n-n50 <name_of_the_fasta>. All the\n\
+    other options will be ignored."
   type: boolean
   inputBinding:
     prefix: -n50
-- id: outputname_optional_parameter
-  doc: <<outputName>>                     OPTIONAL PARAMETER; The option *-o* indicates
-    the name of output fasta file.
-  type: boolean
+- id: in_outputname_optional_parameter
+  doc: "<<outputName>>                     OPTIONAL PARAMETER; The option *-o*\nindicates\
+    \ the name of output fasta\nfile."
+  type: File
   inputBinding:
     prefix: -o
-- id: random
-  doc: <<numberOfRounds>>            OPTIONAL PARAMETER;The option *-random* is available
-    (not required). This option allows the user to run a given number of cleaning
-    rounds and keep the best solution. Since the variability is small 5 rounds are
-    usually sufficient to find the best score.
+- id: in_random
+  doc: "<<numberOfRounds>>            OPTIONAL PARAMETER;The option\n*-random* is\
+    \ available (not\nrequired). This option allows the\nuser to run a given number\
+    \ of\ncleaning rounds and keep the best\nsolution. Since the variability is\n\
+    small 5 rounds are usually\nsufficient to find the best score."
   type: boolean
   inputBinding:
     prefix: -random
-- id: script_path
-  doc: '<<medusaScriptsFolder>>   OPTIONAL PARAMETER; The folder containing the medusa
-    scripts. Default value: medusa_scripts'
+- id: in_script_path
+  doc: "<<medusaScriptsFolder>>   OPTIONAL PARAMETER; The folder\ncontaining the medusa\
+    \ scripts.\nDefault value: medusa_scripts"
   type: boolean
   inputBinding:
     prefix: -scriptPath
-- id: recommended_parameter_option
-  doc: RECOMMENDED PARAMETER; The option *-v* (recommended) print on console the information
-    given by the package MUMmer. This option is strongly suggested to understand if
-    MUMmer is not running properly.
+- id: in_recommended_parameter_optionv
+  doc: "RECOMMENDED PARAMETER; The option\n*-v* (recommended) print on console\nthe\
+    \ information given by the\npackage MUMmer. This option is\nstrongly suggested\
+    \ to understand if\nMUMmer is not running properly."
   type: boolean
   inputBinding:
     prefix: -v
-- id: w_two
-  doc: OPTIONAL PARAMETER;The option *-w2* is optional and allows for a sequence similarity
-    based weighting scheme. Using a different weighting scheme may lead to better
-    results.
+- id: in_w_two
+  doc: "OPTIONAL PARAMETER;The option *-w2*\nis optional and allows for a\nsequence\
+    \ similarity based weighting\nscheme. Using a different weighting\nscheme may\
+    \ lead to better results.\n"
   type: boolean
   inputBinding:
     prefix: -w2
-- id: jar
+- id: in_jar
   doc: ''
   type: string
   inputBinding:
     prefix: -jar
-- id: java
+- id: in_java
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outputname_optional_parameter
+  doc: "<<outputName>>                     OPTIONAL PARAMETER; The option *-o*\nindicates\
+    \ the name of output fasta\nfile."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outputname_optional_parameter)
 cwlVersion: v1.1
 baseCommand:
 - medusa

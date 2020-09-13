@@ -2,28 +2,28 @@ version 1.0
 
 task IdbaTranTest {
   input {
-    String? out
-    String? read
-    String? long_read
-    String? mink
-    String? max_k
-    String? step
-    String? inner_mink
-    String? inner_step
-    String? prefix
-    String? min_count
-    String? min_support
-    String? num_threads
-    String? seed_km_er
-    String? min_contig
-    String? similar
-    String? max_mismatch
+    Directory? out
+    File? read
+    File? long_read
+    Int? mink
+    Int? max_k
+    Int? step
+    Int? inner_mink
+    Int? inner_step
+    Int? prefix
+    Int? min_count
+    Int? min_support
+    Int? num_threads
+    Int? seed_km_er
+    Int? min_contig
+    Float? similar
+    Int? max_mismatch
     Boolean? no_local
     Boolean? no_coverage
     Boolean? no_correct
     Boolean? pre_correction
-    String? max_isoforms
-    String? max_component_size
+    Int? max_isoforms
+    Int? max_component_size
     String i_dba_tran
   }
   command <<<
@@ -45,10 +45,10 @@ task IdbaTranTest {
       ~{if defined(min_contig) then ("--min_contig " +  '"' + min_contig + '"') else ""} \
       ~{if defined(similar) then ("--similar " +  '"' + similar + '"') else ""} \
       ~{if defined(max_mismatch) then ("--max_mismatch " +  '"' + max_mismatch + '"') else ""} \
-      ~{true="--no_local" false="" no_local} \
-      ~{true="--no_coverage" false="" no_coverage} \
-      ~{true="--no_correct" false="" no_correct} \
-      ~{true="--pre_correction" false="" pre_correction} \
+      ~{if (no_local) then "--no_local" else ""} \
+      ~{if (no_coverage) then "--no_coverage" else ""} \
+      ~{if (no_correct) then "--no_correct" else ""} \
+      ~{if (pre_correction) then "--pre_correction" else ""} \
       ~{if defined(max_isoforms) then ("--max_isoforms " +  '"' + max_isoforms + '"') else ""} \
       ~{if defined(max_component_size) then ("--max_component_size " +  '"' + max_component_size + '"') else ""}
   >>>
@@ -76,5 +76,9 @@ task IdbaTranTest {
     max_isoforms: "(=3)            maximum number of isoforms"
     max_component_size: "(=30)     maximum size of components"
     i_dba_tran: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
   }
 }

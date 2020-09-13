@@ -4,4 +4,7 @@ task Vcfnulldotslashdot {
   command <<<
     vcfnulldotslashdot
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

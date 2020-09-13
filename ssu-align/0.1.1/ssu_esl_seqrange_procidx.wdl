@@ -1,6 +1,6 @@
 version 1.0
 
-task SsuEslSeqrangeProcidx {
+task SsueslseqrangeProcidx {
   input {
     String ssu_esl_seq_range
     String sq_file
@@ -8,7 +8,7 @@ task SsuEslSeqrangeProcidx {
     String nproc
   }
   command <<<
-    ssu-esl-seqrange procidx \
+    ssu_esl_seqrange procidx \
       ~{ssu_esl_seq_range} \
       ~{sq_file} \
       ~{proc_idx} \
@@ -19,5 +19,8 @@ task SsuEslSeqrangeProcidx {
     sq_file: ""
     proc_idx: ""
     nproc: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

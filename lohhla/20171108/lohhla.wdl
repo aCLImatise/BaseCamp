@@ -3,23 +3,23 @@ version 1.0
 task Lohhla {
   input {
     String? patient_id
-    String? output_dir
-    String? normal_bam_file
+    Directory? output_dir
+    File? normal_bam_file
     String? bam_dir
     String? hla_path
     String? hla_fast_a_loc
     String? copy_num_loc
     String? override_dir
-    String? min_coverage_filter
-    String? km_er_size
-    String? num_mismatch
+    Int? min_coverage_filter
+    Int? km_er_size
+    Int? num_mismatch
     String? mapping_step
-    String? fishing_step
+    Int? fishing_step
     String? plotting_step
     String? coverage_step
     String? cleanup
-    String? novo_dir
-    String? g_atk_dir
+    File? novo_dir
+    File? g_atk_dir
     String? hla_exon_loc
     String? ignore_warnings
   }
@@ -49,11 +49,11 @@ task Lohhla {
   parameter_meta {
     patient_id: "patient ID"
     output_dir: "location of output directory"
-    normal_bam_file: "normal BAM file can be FALSE to run without normal sample"
+    normal_bam_file: "normal BAM file\\ncan be FALSE to run without normal sample"
     bam_dir: "location of all BAMs to test"
     hla_path: "location to patient HLA calls"
     hla_fast_a_loc: "location of HLA FASTA [default= ~/lohhla/data/hla_all.fasta]"
-    copy_num_loc: "location to patient purity and ploidy output can be FALSE to only estimate allelic imbalance"
+    copy_num_loc: "location to patient purity and ploidy output\\ncan be FALSE to only estimate allelic imbalance"
     override_dir: "location of flagstat information if already run [default= FALSE]"
     min_coverage_filter: "minimum coverage at mismatch site [default= 30]"
     km_er_size: "size of kmers to fish with [default= 50]"
@@ -67,5 +67,9 @@ task Lohhla {
     g_atk_dir: "path to GATK executable [default= ]"
     hla_exon_loc: "HLA exon boundaries for plotting [default= ~/lohhla/data/hla.dat]"
     ignore_warnings: "continue running with warnings [default= TRUE]"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

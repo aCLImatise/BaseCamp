@@ -2,6 +2,10 @@ version 1.0
 
 task VarscanFpfilter {
   input {
+    File? output_file
+    File? filtered_file
+    Boolean? dream_three_settings
+    File? keep_failures
     Boolean? min_var_count
     Boolean? min_var_count_lc
     Boolean? min_var_freq
@@ -30,45 +34,51 @@ task VarscanFpfilter {
     String java
     String fp_filter
     String? variant
-    File? var_28
+    File? file
     String? read_count
-    File? var_30
   }
   command <<<
     varscan fpfilter \
       ~{java} \
       ~{fp_filter} \
       ~{variant} \
-      ~{var_28} \
+      ~{file} \
       ~{read_count} \
-      ~{var_30} \
-      ~{true="--min-var-count" false="" min_var_count} \
-      ~{true="--min-var-count-lc" false="" min_var_count_lc} \
-      ~{true="--min-var-freq" false="" min_var_freq} \
-      ~{true="--max-somatic-p" false="" max_somatic_p} \
-      ~{true="--max-somatic-p-depth" false="" max_somatic_p_depth} \
-      ~{true="--min-ref-readpos" false="" min_ref_read_pos} \
-      ~{true="--min-var-readpos" false="" min_var_read_pos} \
-      ~{true="--min-ref-dist3" false="" min_ref_dist_three} \
-      ~{true="--min-var-dist3" false="" min_var_dist_three} \
-      ~{true="--min-strandedness" false="" min_stranded_ness} \
-      ~{true="--min-strand-reads" false="" min_strand_reads} \
-      ~{true="--min-ref-basequal" false="" min_ref_base_qual} \
-      ~{true="--min-var-basequal" false="" min_var_base_qual} \
-      ~{true="--max-basequal-diff" false="" max_base_qual_diff} \
-      ~{true="--min-ref-avgrl" false="" min_ref_avg_rl} \
-      ~{true="--min-var-avgrl" false="" min_var_avg_rl} \
-      ~{true="--max-rl-diff" false="" max_rl_diff} \
-      ~{true="--max-ref-mmqs" false="" max_ref_mm_qs} \
-      ~{true="--max-var-mmqs" false="" max_var_mm_qs} \
-      ~{true="--min-mmqs-diff" false="" min_mm_qs_diff} \
-      ~{true="--max-mmqs-diff" false="" max_mm_qs_diff} \
-      ~{true="--min-ref-mapqual" false="" min_ref_map_qual} \
-      ~{true="--min-var-mapqual" false="" min_var_map_qual} \
-      ~{true="--max-mapqual-diff" false="" max_map_qual_diff} \
+      ~{if (output_file) then "--output-file" else ""} \
+      ~{if (filtered_file) then "--filtered-file" else ""} \
+      ~{if (dream_three_settings) then "--dream3-settings" else ""} \
+      ~{if (keep_failures) then "--keep-failures" else ""} \
+      ~{if (min_var_count) then "--min-var-count" else ""} \
+      ~{if (min_var_count_lc) then "--min-var-count-lc" else ""} \
+      ~{if (min_var_freq) then "--min-var-freq" else ""} \
+      ~{if (max_somatic_p) then "--max-somatic-p" else ""} \
+      ~{if (max_somatic_p_depth) then "--max-somatic-p-depth" else ""} \
+      ~{if (min_ref_read_pos) then "--min-ref-readpos" else ""} \
+      ~{if (min_var_read_pos) then "--min-var-readpos" else ""} \
+      ~{if (min_ref_dist_three) then "--min-ref-dist3" else ""} \
+      ~{if (min_var_dist_three) then "--min-var-dist3" else ""} \
+      ~{if (min_stranded_ness) then "--min-strandedness" else ""} \
+      ~{if (min_strand_reads) then "--min-strand-reads" else ""} \
+      ~{if (min_ref_base_qual) then "--min-ref-basequal" else ""} \
+      ~{if (min_var_base_qual) then "--min-var-basequal" else ""} \
+      ~{if (max_base_qual_diff) then "--max-basequal-diff" else ""} \
+      ~{if (min_ref_avg_rl) then "--min-ref-avgrl" else ""} \
+      ~{if (min_var_avg_rl) then "--min-var-avgrl" else ""} \
+      ~{if (max_rl_diff) then "--max-rl-diff" else ""} \
+      ~{if (max_ref_mm_qs) then "--max-ref-mmqs" else ""} \
+      ~{if (max_var_mm_qs) then "--max-var-mmqs" else ""} \
+      ~{if (min_mm_qs_diff) then "--min-mmqs-diff" else ""} \
+      ~{if (max_mm_qs_diff) then "--max-mmqs-diff" else ""} \
+      ~{if (min_ref_map_qual) then "--min-ref-mapqual" else ""} \
+      ~{if (min_var_map_qual) then "--min-var-mapqual" else ""} \
+      ~{if (max_map_qual_diff) then "--max-mapqual-diff" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
+    output_file: "Optional output file for filter-pass variants"
+    filtered_file: "Optional output file for filter-fail variants"
+    dream_three_settings: "If set to 1, optimizes filter parameters based on TCGA-ICGC DREAM-3 SNV Challenge results"
+    keep_failures: "If set to 1, includes failures in the output file"
     min_var_count: "Minimum number of variant-supporting reads [4]"
     min_var_count_lc: "Minimum number of variant-supporting reads when depth below somaticPdepth [2]"
     min_var_freq: "Minimum variant allele frequency [0.05]"
@@ -97,8 +107,13 @@ task VarscanFpfilter {
     java: ""
     fp_filter: ""
     variant: ""
-    var_28: ""
+    file: ""
     read_count: ""
-    var_30: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+    File out_filtered_file = "${in_filtered_file}"
+    File out_keep_failures = "${in_keep_failures}"
   }
 }

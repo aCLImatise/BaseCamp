@@ -20,4 +20,7 @@ task Fexact {
     k: ""
     l: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

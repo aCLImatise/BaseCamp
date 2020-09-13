@@ -4,4 +4,7 @@ task Taxprof {
   command <<<
     taxprof
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

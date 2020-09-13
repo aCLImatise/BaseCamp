@@ -1,6 +1,6 @@
 version 1.0
 
-task SynchainMugsy {
+task Synchainmugsy {
   input {
     String mugsy_chaining
     Int max_distance
@@ -8,7 +8,7 @@ task SynchainMugsy {
     Int min_stats_len
   }
   command <<<
-    synchain-mugsy \
+    synchain_mugsy \
       ~{mugsy_chaining} \
       ~{max_distance} \
       ~{min_lcb_span} \
@@ -19,5 +19,8 @@ task SynchainMugsy {
     max_distance: ""
     min_lcb_span: ""
     min_stats_len: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

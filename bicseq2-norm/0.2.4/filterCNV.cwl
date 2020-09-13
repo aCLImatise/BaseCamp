@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../filterCNV.cwl
 inputs:
-- id: cnv_region_file
+- id: in_cnv_region_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: read_count_file
+- id: in_read_count_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: chrom_name
+- id: in_chrom_name
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - filterCNV

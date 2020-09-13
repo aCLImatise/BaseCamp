@@ -1,7 +1,10 @@
 version 1.0
 
-task FuRename {
+task Furename {
   command <<<
-    fu-rename
+    fu_rename
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../fastx_reverse_complement.cwl
 inputs:
-- id: r
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -r
-- id: z
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -z
-- id: v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-- id: o
+- id: in_o
   doc: ''
   type: string
   inputBinding:
     prefix: -o
-outputs: []
+- id: in_i
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -i
+- id: in_v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: in_z
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -z
+- id: in_r
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -r
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastx_reverse_complement

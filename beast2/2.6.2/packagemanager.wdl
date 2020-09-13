@@ -6,8 +6,8 @@ task Packagemanager {
     String? add
     String? del
     String? version
-    String? use_app_dir
-    String? dir
+    Directory? use_app_dir
+    Directory? dir
     String? update
     String? update_now
   }
@@ -31,5 +31,8 @@ task Packagemanager {
     dir: "package in directory <DIR>. This overrides the useAppDir option"
     update: "for updates, and ask to install if available"
     update_now: "for updates and install without asking"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -14,4 +14,7 @@ task Bam2msaINPUT {
     r: ""
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

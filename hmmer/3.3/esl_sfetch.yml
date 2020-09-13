@@ -1,4 +1,6 @@
 &id001 !Command
+command:
+- esl-sfetch
 positional: []
 named:
 - !Flag
@@ -28,39 +30,45 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: ': retrieve subsequence coords <from>..<to>'
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: ': <namefile> in <f> contains subseq coords too'
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: ': specify that input file is in format <s>'
   synonyms:
   - --informat
   args: !SimpleFlagArg
     name: s
   optional: true
-command:
-- esl-sfetch
+- !Flag
+  description: ''
+  synonyms:
+  - --index
+  args: !SimpleFlagArg
+    name: sqfile
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: sqfile
+  optional: true
 parent:
 subcommands:
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: name
-    optional: false
-  named: []
   command:
   - esl-sfetch
-  - sqfile
-  parent: *id001
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "Usage: esl-sfetch [options] <sqfile> <name>        (one seq named <name>)\n\
-    Usage: esl-sfetch [options] -f <sqfile> <namefile> (all seqs in <namefile>)\n\
-    Usage: esl-sfetch [options] --index <sqfile>       (index <sqfile>)\n\nTo see\
-    \ more help on available options, do esl-sfetch -h\n\n"
-  generated_using: &id002
-  - --help
-- !Command
+  - namefile
   positional:
   - !Positional
     description: ''
@@ -77,12 +85,76 @@ subcommands:
     position: 2
     name: name
     optional: false
-  named: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --index
+    args: !SimpleFlagArg
+      name: sqfile
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: sqfile
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: esl-sfetch [options] <sqfile> <name>        (one seq named <name>)\n\
+    Usage: esl-sfetch [options] -f <sqfile> <namefile> (all seqs in <namefile>)\n\
+    Usage: esl-sfetch [options] --index <sqfile>       (index <sqfile>)\n\nTo see\
+    \ more help on available options, do esl-sfetch -h\n\n"
+  generated_using: &id002
+  - --help
+- !Command
   command:
   - esl-sfetch
   - name
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: esl-sfetch
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: namefile
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: sqfile
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: name
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --index
+    args: !SimpleFlagArg
+      name: sqfile
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: sqfile
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -91,6 +163,53 @@ subcommands:
     Usage: esl-sfetch [options] --index <sqfile>       (index <sqfile>)\n\nTo see\
     \ more help on available options, do esl-sfetch -h\n\n"
   generated_using: *id002
+- !Command
+  command:
+  - esl-sfetch
+  - sqfile
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: esl-sfetch
+    optional: false
+  - !Positional
+    description: ''
+    position: 0
+    name: name
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: namefile
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --index
+    args: !SimpleFlagArg
+      name: sqfile
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: sqfile
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: esl-sfetch [options] <sqfile> <name>        (one seq named <name>)\n\
+    Usage: esl-sfetch [options] -f <sqfile> <namefile> (all seqs in <namefile>)\n\
+    Usage: esl-sfetch [options] --index <sqfile>       (index <sqfile>)\n\nTo see\
+    \ more help on available options, do esl-sfetch -h\n\n"
+  generated_using: *id002
+usage: []
 help_flag: !Flag
   description: ': help; show brief info on version and usage'
   synonyms:

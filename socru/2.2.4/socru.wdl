@@ -2,14 +2,14 @@ version 1.0
 
 task Socru {
   input {
-    String? db_dir
-    String? threads
-    String? output_file
-    String? output_plot_file
-    String? novel_profiles
-    String? new_fragments
-    String? top_blast_hits
-    String? output_operon_directions_file
+    Directory? db_dir
+    Int? threads
+    File? output_file
+    File? output_plot_file
+    File? novel_profiles
+    File? new_fragments
+    File? top_blast_hits
+    File? output_operon_directions_file
     Int? max_bases_from_ends
     Boolean? not_circular
     Int? min_bit_score
@@ -32,22 +32,22 @@ task Socru {
       ~{if defined(top_blast_hits) then ("--top_blast_hits " +  '"' + top_blast_hits + '"') else ""} \
       ~{if defined(output_operon_directions_file) then ("--output_operon_directions_file " +  '"' + output_operon_directions_file + '"') else ""} \
       ~{if defined(max_bases_from_ends) then ("--max_bases_from_ends " +  '"' + max_bases_from_ends + '"') else ""} \
-      ~{true="--not_circular" false="" not_circular} \
+      ~{if (not_circular) then "--not_circular" else ""} \
       ~{if defined(min_bit_score) then ("--min_bit_score " +  '"' + min_bit_score + '"') else ""} \
       ~{if defined(min_alignment_length) then ("--min_alignment_length " +  '"' + min_alignment_length + '"') else ""} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    db_dir: "Base directory for species databases, defaults to bundled (default: None)"
+    db_dir: "Base directory for species databases, defaults to\\nbundled (default: None)"
     threads: "No. of threads to use (default: 1)"
     output_file: "Output filename, defaults to STDOUT (default: None)"
-    output_plot_file: "Filename of plot of genome structure (default: genome_structure.pdf)"
-    novel_profiles: "Filename for novel profiles (default: profile.txt.novel)"
-    new_fragments: "Filename for novel fragments (default: novel_fragments.fa)"
+    output_plot_file: "Filename of plot of genome structure (default:\\ngenome_structure.pdf)"
+    novel_profiles: "Filename for novel profiles (default:\\nprofile.txt.novel)"
+    new_fragments: "Filename for novel fragments (default:\\nnovel_fragments.fa)"
     top_blast_hits: "Filename for top blast hits (default: None)"
-    output_operon_directions_file: "Filename of directions of operons (default: operon_directions.txt)"
-    max_bases_from_ends: "Only look at this number of bases from start and end of fragment (default: None)"
+    output_operon_directions_file: "Filename of directions of operons (default:\\noperon_directions.txt)"
+    max_bases_from_ends: "Only look at this number of bases from start and end\\nof fragment (default: None)"
     not_circular: "Assume chromosome is not circularised (default: False)"
     min_bit_score: "Minimum bit score (default: 100)"
     min_alignment_length: "Minimum alignment length (default: 100)"
@@ -55,5 +55,11 @@ task Socru {
     verbose: "Turn on verbose output (default: False)"
     species: "Species name, use socru_species to see all available"
     input_files: "Input FASTA files (optionally gzipped)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+    File out_output_plot_file = "${in_output_plot_file}"
+    File out_output_operon_directions_file = "${in_output_operon_directions_file}"
   }
 }

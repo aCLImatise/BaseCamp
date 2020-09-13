@@ -8,17 +8,17 @@ task Vcfsample2info {
     Boolean? median
     Boolean? min
     Boolean? max
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcfsample2info \
       ~{vcf_file} \
-      ~{true="--field" false="" field} \
-      ~{true="--info" false="" info} \
-      ~{true="--average" false="" average} \
-      ~{true="--median" false="" median} \
-      ~{true="--min" false="" min} \
-      ~{true="--max" false="" max}
+      ~{if (field) then "--field" else ""} \
+      ~{if (info) then "--info" else ""} \
+      ~{if (average) then "--average" else ""} \
+      ~{if (median) then "--median" else ""} \
+      ~{if (min) then "--min" else ""} \
+      ~{if (max) then "--max" else ""}
   >>>
   parameter_meta {
     field: "Add information about this field in samples to INFO column"
@@ -28,5 +28,8 @@ task Vcfsample2info {
     min: "Use the min"
     max: "Use the max"
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

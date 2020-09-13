@@ -4,4 +4,7 @@ task Stats {
   command <<<
     stats
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../xmlCat.cwl
 inputs:
-- id: xxx
-  doc: ''
+- id: in_not_valid_option
+  doc: not a valid option
   type: string
   inputBinding:
-    position: 0
-outputs: []
+    prefix: -h
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - xmlCat

@@ -11,4 +11,7 @@ task Bamdump {
   parameter_meta {
     bam_dump: "[--] [--version] [-h] <bamfile> <contig> <start> <end>"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

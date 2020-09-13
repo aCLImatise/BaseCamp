@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../vina_split.cwl
 inputs:
-- id: input_split_pdbqt
+- id: in_input
   doc: input to split (PDBQT)
   type: string
   inputBinding:
     prefix: --input
-- id: ligand
+- id: in_ligand
   doc: prefix for ligands
   type: string
   inputBinding:
     prefix: --ligand
-- id: flex
+- id: in_flex
   doc: prefix for side chains
   type: string
   inputBinding:
     prefix: --flex
-- id: var_3
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vina_split

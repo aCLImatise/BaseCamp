@@ -4,4 +4,7 @@ task GmtkTime {
   command <<<
     gmtkTime
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

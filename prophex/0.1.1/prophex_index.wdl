@@ -11,13 +11,16 @@ task ProphexIndex {
     prophex index \
       ~{idx_base} \
       ~{if defined(kmer_length_klcp) then ("-k " +  '"' + kmer_length_klcp + '"') else ""} \
-      ~{true="-s" false="" construct_klcp_sa} \
-      ~{true="-i" false="" sampling_distance_sa}
+      ~{if (construct_klcp_sa) then "-s" else ""} \
+      ~{if (sampling_distance_sa) then "-i" else ""}
   >>>
   parameter_meta {
     kmer_length_klcp: "k-mer length for k-LCP"
     construct_klcp_sa: "construct k-LCP and SA in parallel"
     sampling_distance_sa: "sampling distance for SA"
     idx_base: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,7 +2,7 @@ version 1.0
 
 task RapClust {
   input {
-    String? config
+    File? config
   }
   command <<<
     RapClust \
@@ -10,5 +10,8 @@ task RapClust {
   >>>
   parameter_meta {
     config: "Config file describing the experimental setup  [required]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

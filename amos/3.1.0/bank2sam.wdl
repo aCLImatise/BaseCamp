@@ -10,14 +10,17 @@ task Bank2sam {
   command <<<
     bank2sam \
       ~{if defined(the_bank_operated) then ("-b " +  '"' + the_bank_operated + '"') else ""} \
-      ~{true="-c" false="" use_contigs_reference} \
-      ~{true="-s" false="" use_scaffolds_reference} \
-      ~{true="-i" false="" use_iids_query}
+      ~{if (use_contigs_reference) then "-c" else ""} \
+      ~{if (use_scaffolds_reference) then "-s" else ""} \
+      ~{if (use_iids_query) then "-i" else ""}
   >>>
   parameter_meta {
-    the_bank_operated: "The bank to be operated on. "
+    the_bank_operated: "The bank to be operated on."
     use_contigs_reference: "Use contigs as reference"
     use_scaffolds_reference: "Use scaffolds as reference"
-    use_iids_query: "Use IIDs as query template name (EIDs is default.) "
+    use_iids_query: "Use IIDs as query template name (EIDs is default.)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

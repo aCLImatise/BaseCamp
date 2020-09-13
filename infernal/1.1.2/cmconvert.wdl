@@ -5,20 +5,20 @@ task Cmconvert {
     Boolean? ascii_output_models
     Boolean? binary_output_models
     Boolean? output_backward_compatible
-    String? save_cm_file
+    File? save_cm_file
     Boolean? ml_hmm
     Boolean? f_hmm
     Boolean? options
   }
   command <<<
     cmconvert \
-      ~{true="-a" false="" ascii_output_models} \
-      ~{true="-b" false="" binary_output_models} \
-      ~{true="-1" false="" output_backward_compatible} \
+      ~{if (ascii_output_models) then "-a" else ""} \
+      ~{if (binary_output_models) then "-b" else ""} \
+      ~{if (output_backward_compatible) then "-1" else ""} \
       ~{if defined(save_cm_file) then ("-o " +  '"' + save_cm_file + '"') else ""} \
-      ~{true="--mlhmm" false="" ml_hmm} \
-      ~{true="--fhmm" false="" f_hmm} \
-      ~{true="-options" false="" options}
+      ~{if (ml_hmm) then "--mlhmm" else ""} \
+      ~{if (f_hmm) then "--fhmm" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     ascii_output_models: ": ascii:  output models in INFERNAL 1.1 ASCII format  [default]"
@@ -28,5 +28,8 @@ task Cmconvert {
     ml_hmm: ": output maximum likelihood HMM for CM in HMMER3 format"
     f_hmm: ": output filter HMM for CM in HMMER3 format"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

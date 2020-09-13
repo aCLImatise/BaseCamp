@@ -9,8 +9,8 @@ task Ecotaxstat {
   }
   command <<<
     ecotaxstat \
-      ~{true="--DEBUG" false="" debug} \
-      ~{true="--without-progress-bar" false="" without_progress_bar} \
+      ~{if (debug) then "--DEBUG" else ""} \
+      ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
       ~{if defined(eco_pcr_db) then ("--ecopcrdb " +  '"' + eco_pcr_db + '"') else ""} \
       ~{if defined(required) then ("--required " +  '"' + required + '"') else ""}
   >>>
@@ -18,6 +18,9 @@ task Ecotaxstat {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"
     eco_pcr_db: "ecoPCR Database name"
-    required: "required taxid"
+    required: "required taxid\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

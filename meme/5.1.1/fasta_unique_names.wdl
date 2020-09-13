@@ -1,14 +1,17 @@
 version 1.0
 
-task FastaUniqueNames {
+task Fastauniquenames {
   input {
-    String? r
+    String copyright
   }
   command <<<
-    fasta-unique-names \
-      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
+    fasta_unique_names \
+      ~{copyright}
   >>>
   parameter_meta {
-    r: ""
+    copyright: "(1999) The Regents of the University of California."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

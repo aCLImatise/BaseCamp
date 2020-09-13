@@ -6,9 +6,12 @@ task Dexta {
   }
   command <<<
     dexta \
-      ~{true="-vk" false="" vk}
+      ~{if (vk) then "-vk" else ""}
   >>>
   parameter_meta {
     vk: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

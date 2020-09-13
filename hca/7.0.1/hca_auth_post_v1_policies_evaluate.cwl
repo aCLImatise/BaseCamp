@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../hca_auth_post_v1_policies_evaluate.cwl
 inputs:
-- id: principal
+- id: in_principal
   doc: Attested user identifier.
   type: string
   inputBinding:
     prefix: --principal
-- id: action
+- id: in_action
   doc: The action the principal is attempting to perform.
   type: string[]
   inputBinding:
     prefix: --action
-- id: resource
-  doc: The resource the principal will perform the action against.
+- id: in_resource
+  doc: "The resource the principal will perform the action against.\n"
   type: string[]
   inputBinding:
     prefix: --resource
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

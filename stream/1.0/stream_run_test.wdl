@@ -4,4 +4,7 @@ task StreamRunTest {
   command <<<
     stream_run_test
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

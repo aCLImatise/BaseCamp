@@ -1,35 +1,38 @@
 class: CommandLineTool
 id: ../../../terminus_group.cwl
 inputs:
-- id: dir
+- id: in_dir
   doc: directory to read input from
-  type: string
+  type: Directory
   inputBinding:
     prefix: --dir
-- id: min_spread
-  doc: 'the minimum spread a transcript must exhibit to enable an attached edge to
-    be a collapse candidate [default: 0.1]'
+- id: in_min_spread
+  doc: "the minimum spread a transcript must exhibit to enable an attached edge to\
+    \ be a\ncollapse candidate [default: 0.1]"
   type: long
   inputBinding:
     prefix: --min-spread
-- id: out
+- id: in_out
   doc: prefix where output would be written
   type: string
   inputBinding:
     prefix: --out
-- id: seed
-  doc: 'The allowable difference between the weights of transcripts in same equivalence
-    classes to treat them as identical [default: 10]'
-  type: string
+- id: in_seed
+  doc: "The allowable difference between the weights of transcripts in same equivalence\n\
+    classes to treat them as identical [default: 10]"
+  type: long
   inputBinding:
     prefix: --seed
-- id: tolerance
-  doc: 'The allowable difference between the weights of transcripts in same equivalence
-    classes to treat them as identical [default: 0.001]'
-  type: string
+- id: in_tolerance
+  doc: "The allowable difference between the weights of transcripts in same equivalence\n\
+    classes to treat them as identical [default: 0.001]\n"
+  type: double
   inputBinding:
     prefix: --tolerance
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - terminus

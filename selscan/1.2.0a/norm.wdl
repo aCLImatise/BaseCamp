@@ -4,4 +4,7 @@ task Norm {
   command <<<
     norm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

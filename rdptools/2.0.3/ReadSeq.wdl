@@ -4,4 +4,7 @@ task ReadSeq {
   command <<<
     ReadSeq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

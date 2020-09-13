@@ -1,14 +1,10 @@
 version 1.0
 
-task Minimus2Blat {
-  input {
-    String prefix
-  }
+task Minimus2blat {
   command <<<
-    minimus2-blat \
-      ~{prefix}
+    minimus2_blat
   >>>
-  parameter_meta {
-    prefix: ""
+  output {
+    File out_stdout = stdout()
   }
 }

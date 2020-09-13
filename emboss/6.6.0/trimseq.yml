@@ -1,13 +1,47 @@
 !Command
-positional: []
-named: []
 command:
 - trimseq
+positional: []
+named:
+- !Flag
+  description: "integer    [1] This determines the size of the region\nthat is considered\
+    \ when deciding whether the\npercentage of ambiguity is greater than the\nthreshold.\
+    \ A value of 5 means that a region\nof 5 letters in the sequence is shifted\n\
+    along the sequence from the ends and\ntrimming is done only if there is a greater\n\
+    or equal percentage of ambiguity than the\nthreshold percentage. (Integer 1 or\
+    \ more)"
+  synonyms:
+  - -window
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "float      [100.0] This is the threshold of the\npercentage ambiguity\
+    \ in the window required\nin order to trim a sequence. (Any numeric\nvalue)"
+  synonyms:
+  - -percent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "boolean    [N] In nucleic sequences, trim off not only\nN's and X's,\
+    \ but also the nucleotide IUPAC\nambiguity codes M, R, W, S, Y, K, V, H, D\nand\
+    \ B. In protein sequences, trim off not\nonly X's but also B and Z."
+  synonyms:
+  - -strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "boolean    [N] In protein sequences, trim off not only\nX's, but also\
+    \ the *'s"
+  synonyms:
+  - -star
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: boolean    Report command line options and exit. More information on
-    associated and general qualifiers can be found with -help -verbose
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   synonyms:
   - -help
   args: !EmptyFlagArg {}

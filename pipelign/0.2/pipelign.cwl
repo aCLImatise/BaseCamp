@@ -1,100 +1,118 @@
 class: CommandLineTool
 id: ../../../pipelign.cwl
 inputs:
-- id: in_file
+- id: in_in_file
   doc: Input sequence file in FASTA format
-  type: string
+  type: File
   inputBinding:
     prefix: --inFile
-- id: outfile
+- id: in_outfile
   doc: FASTA formatted output alignment file
-  type: string
+  type: File
   inputBinding:
     prefix: --outFile
-- id: lent_hr
+- id: in_lent_hr
   doc: 'Length threshold for full sequences (default: 0.7)'
-  type: string
+  type: long
   inputBinding:
     prefix: --lenThr
-- id: alphabet
+- id: in_alphabet
   doc: 'Input sequences can be dna/rna/aa (default: dna)'
   type: string
   inputBinding:
     prefix: --alphabet
-- id: keep_orphans
+- id: in_keep_orphans
   doc: Add fragments without clusters
   type: boolean
   inputBinding:
     prefix: --keepOrphans
-- id: keep_bad_seqs
+- id: in_keep_bad_seqs
   doc: Add long sequences with too many ambiguous residues
   type: boolean
   inputBinding:
     prefix: --keepBadSeqs
-- id: m_zip
+- id: in_m_zip
   doc: Create zipped intermediate output files
   type: boolean
   inputBinding:
     prefix: --mZip
-- id: simper
+- id: in_simper
   doc: 'Percent sequence similarity for clustering (default: 0.8)'
-  type: string
+  type: double
   inputBinding:
     prefix: --simPer
-- id: run
+- id: in_run
   doc: 'Run either (J)oblib/(G)NU parallel version (default: G)'
   type: string
   inputBinding:
     prefix: --run
-- id: merge
+- id: in_merge
   doc: 'Merge using (P)arallel/(C)onsensus strategy  (default: P)'
   type: string
   inputBinding:
     prefix: --merge
-- id: thread
+- id: in_thread
   doc: 'Number of CPU/threads to use (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --thread
-- id: mite_rate_long
+- id: in_mite_rate_long
   doc: 'Number of iterations to refine long alignments (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --mIterateLong
-- id: miter_at_emerge
+- id: in_miter_at_emerge
   doc: 'Number of iterations to refine merged alignment (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --mIterateMerge
-- id: outdir
+- id: in_outdir
   doc: Name for output directory to hold intermediate files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outDir
-- id: clear_existing_directory
+- id: in_clear_existing_directory
   doc: Remove files from existing output directory
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: --clearExistingDirectory
-- id: am_big_per
+- id: in_am_big_per
   doc: 'Proportion of ambiguous characters allowed in the long sequences (default:
     0.1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --ambigPer
-- id: stage
-  doc: 1  Make cluster alignments and HMM of long sequences 2  Align long sequences
-    only 3  Assign fragments to clusters 4  Make cluster alignments with fragments
-    5  Align all sequences
+- id: in_stage
+  doc: "1  Make cluster alignments and HMM of long sequences\n2  Align long sequences\
+    \ only\n3  Assign fragments to clusters\n4  Make cluster alignments with fragments\n\
+    5  Align all sequences"
   type: string
   inputBinding:
     prefix: --stage
-- id: exclude_clusters
-  doc: Exclude clusters from final alignment
+- id: in_exclude_clusters
+  doc: "Exclude clusters from final alignment\n"
   type: boolean
   inputBinding:
     prefix: --excludeClusters
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outfile
+  doc: FASTA formatted output alignment file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
+- id: out_outdir
+  doc: Name for output directory to hold intermediate files
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_clear_existing_directory
+  doc: Remove files from existing output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_clear_existing_directory)
 cwlVersion: v1.1
 baseCommand:
 - pipelign

@@ -8,17 +8,17 @@ task NovorAdapter {
     String? enzyme
     String? fragmentation
     String? mass_analyzer
-    String? fragment_mass_tolerance
-    String? precursor_mass_tolerance
+    Float? fragment_mass_tolerance
+    Int? precursor_mass_tolerance
     String? precursor_error_units
     String? variable_modifications
     String? fixed_modifications
     String? forbidden_residues
     File? nov_or_file
     File? java_executable
-    String? java_memory
+    Int? java_memory
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -42,7 +42,7 @@ task NovorAdapter {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     executable: "Novor.jar"
@@ -64,5 +64,8 @@ task NovorAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

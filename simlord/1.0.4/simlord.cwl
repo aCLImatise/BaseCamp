@@ -1,140 +1,160 @@
 class: CommandLineTool
 id: ../../../simlord.cwl
 inputs:
-- id: save_reference
-  doc: Save the random reference as fasta-file at given PATH. By default, save at
-    output path with '_reference.fasta' appended.
-  type: File
-  inputBinding:
-    prefix: --save-reference
-- id: num_reads
-  doc: Number of reads to simulate (1000).
-  type: long
-  inputBinding:
-    prefix: --num-reads
-- id: coverage
-  doc: Desired read coverage.
-  type: double
-  inputBinding:
-    prefix: --coverage
-- id: chi_two_params_s
-  doc: "PAR PAR PAR PAR, -xs PAR PAR PAR PAR PAR Parameters for the curve determining\
-    \ the parameter scale for the chi^2 distribution: m,b, z, c, a for 'm*x + b' if\
-    \ x <= z and 'c * x^-a' if x > z (default= (0.01214, -5.12, 675, 48303.0732881,\
-    \ 1.4691051212330266))"
-  type: string
-  inputBinding:
-    prefix: --chi2-params-s
-- id: chi_two_params_n
-  doc: "PAR PAR, -xn PAR PAR PAR Parameters for the function determining the parameter\
-    \ n for the chi^2 distribution: m, b, z for 'm*x + b' if x < z and 'm*z + b' for\
-    \ x >=z (default= (0.00189237136, 2.5394497, 5500))."
-  type: string
-  inputBinding:
-    prefix: --chi2-params-n
-- id: max_passes
-  doc: Maximal number of passes for one molecule (default= 40).
-  type: long
-  inputBinding:
-    prefix: --max-passes
-- id: sqrt_params
-  doc: "PAR, -sq PAR PAR Parameters for the sqare root function for the quality increase:\
-    \ a, b for 'sqrt(x+a) - b' (default= (0.5, 0.2247))"
-  type: string
-  inputBinding:
-    prefix: --sqrt-params
-- id: norm_params
-  doc: PAR, -nd PAR PAR Parameters for normal distributed noise added to quality increase
-    sqare root function (default= (0, 0.2))
-  type: string
-  inputBinding:
-    prefix: --norm-params
-- id: probability_threshold
-  doc: Upper bound for the modified total error probability (default= 0.2)
-  type: double
-  inputBinding:
-    prefix: --probability-threshold
-- id: prob_ins
-  doc: Probability for insertions for reads with one pass. (default= 0.11)
-  type: double
-  inputBinding:
-    prefix: --prob-ins
-- id: prob_del
-  doc: Probability for deletions for reads with one pass. (default= 0.04)
-  type: double
-  inputBinding:
-    prefix: --prob-del
-- id: prob_sub
-  doc: Probability for substitutions for reads with one pass. (default= 0.01)
-  type: double
-  inputBinding:
-    prefix: --prob-sub
-- id: min_read_length
-  doc: Minium read length (default= 50) for lognormal distribution
-  type: long
-  inputBinding:
-    prefix: --min-readlength
-- id: log_norm_read_length
-  doc: '[PARAMETER [PARAMETER ...]], -ln [PARAMETER [PARAMETER ...]] Parameters for
-    lognormal read length distribution: (sigma, loc, scale), empty for defaults'
-  type: boolean
-  inputBinding:
-    prefix: --lognorm-readlength
-- id: fixed_read_length
+- id: in_fixed_read_length
   doc: Fixed read length for all reads.
   type: long
   inputBinding:
     prefix: --fixed-readlength
-- id: sample_read_length_from_fast_q
-  doc: Sample read length from a fastq-file at PATH containing reads.
+- id: in_read_reference
+  doc: Read a reference from PATH to sample reads from
+  type: File
+  inputBinding:
+    prefix: --read-reference
+- id: in_generate_reference
+  doc: "LENGTH, -gr GC LENGTH\nGenerate a random reference with given GC-content and\n\
+    given length"
+  type: long
+  inputBinding:
+    prefix: --generate-reference
+- id: in_save_reference
+  doc: "Save the random reference as fasta-file at given PATH.\nBy default, save at\
+    \ output path with\n'_reference.fasta' appended."
+  type: File
+  inputBinding:
+    prefix: --save-reference
+- id: in_num_reads
+  doc: Number of reads to simulate (1000).
+  type: long
+  inputBinding:
+    prefix: --num-reads
+- id: in_coverage
+  doc: Desired read coverage.
+  type: double
+  inputBinding:
+    prefix: --coverage
+- id: in_chi_two_params_s
+  doc: "PAR PAR PAR PAR, -xs PAR PAR PAR PAR PAR\nParameters for the curve determining\
+    \ the parameter\nscale for the chi^2 distribution: m,b, z, c, a for\n'm*x + b'\
+    \ if x <= z and 'c * x^-a' if x > z (default=\n(0.01214, -5.12, 675, 48303.0732881,\n\
+    1.4691051212330266))"
+  type: long
+  inputBinding:
+    prefix: --chi2-params-s
+- id: in_chi_two_params_n
+  doc: "PAR PAR, -xn PAR PAR PAR\nParameters for the function determining the parameter\n\
+    n for the chi^2 distribution: m, b, z for 'm*x + b' if\nx < z and 'm*z + b' for\
+    \ x >=z (default=\n(0.00189237136, 2.5394497, 5500))."
+  type: long
+  inputBinding:
+    prefix: --chi2-params-n
+- id: in_max_passes
+  doc: "Maximal number of passes for one molecule (default=\n40)."
+  type: long
+  inputBinding:
+    prefix: --max-passes
+- id: in_sqrt_params
+  doc: "PAR, -sq PAR PAR\nParameters for the sqare root function for the quality\n\
+    increase: a, b for 'sqrt(x+a) - b' (default= (0.5,\n0.2247))"
+  type: double
+  inputBinding:
+    prefix: --sqrt-params
+- id: in_norm_params
+  doc: "PAR, -nd PAR PAR\nParameters for normal distributed noise added to\nquality\
+    \ increase sqare root function (default= (0,\n0.2))"
+  type: double
+  inputBinding:
+    prefix: --norm-params
+- id: in_probability_threshold
+  doc: "Upper bound for the modified total error probability\n(default= 0.2)"
+  type: double
+  inputBinding:
+    prefix: --probability-threshold
+- id: in_prob_ins
+  doc: "Probability for insertions for reads with one pass.\n(default= 0.11)"
+  type: double
+  inputBinding:
+    prefix: --prob-ins
+- id: in_prob_del
+  doc: "Probability for deletions for reads with one pass.\n(default= 0.04)"
+  type: double
+  inputBinding:
+    prefix: --prob-del
+- id: in_prob_sub
+  doc: "Probability for substitutions for reads with one pass.\n(default= 0.01)"
+  type: double
+  inputBinding:
+    prefix: --prob-sub
+- id: in_min_read_length
+  doc: "Minium read length (default= 50) for lognormal\ndistribution"
+  type: long
+  inputBinding:
+    prefix: --min-readlength
+- id: in_log_norm_read_length
+  doc: "[PARAMETER [PARAMETER ...]], -ln [PARAMETER [PARAMETER ...]]\nParameters for\
+    \ lognormal read length distribution:\n(sigma, loc, scale), empty for defaults"
+  type: boolean
+  inputBinding:
+    prefix: --lognorm-readlength
+- id: in_sample_read_length_from_fast_q
+  doc: "Sample read length from a fastq-file at PATH\ncontaining reads."
   type: File[]
   inputBinding:
     prefix: --sample-readlength-from-fastq
-- id: sample_read_length_from_text
-  doc: Sample read length from a text file (one length per line).
+- id: in_sample_read_length_from_text
+  doc: "Sample read length from a text file (one length per\nline)."
   type: File
   inputBinding:
     prefix: --sample-readlength-from-text
-- id: sam_output
-  doc: Save the alignments in a sam-file at SAM_OUTPUT. By default, use OUTPUT_PREFIX.sam.
-  type: string
+- id: in_sam_output
+  doc: "Save the alignments in a sam-file at SAM_OUTPUT. By\ndefault, use OUTPUT_PREFIX.sam."
+  type: File
   inputBinding:
     prefix: --sam-output
-- id: no_sam
+- id: in_no_sam
   doc: Do not calculate the alignment and write a sam file.
   type: boolean
   inputBinding:
     prefix: --no-sam
-- id: gzip
-  doc: Compress the simulated reads using gzip and save them at OUTPUT_PREFIX.fastq.gz
+- id: in_gzip
+  doc: "Compress the simulated reads using gzip and save them\nat OUTPUT_PREFIX.fastq.gz"
   type: boolean
   inputBinding:
     prefix: --gzip
-- id: without_ns
-  doc: Skip regions containing Ns and sample reads only from parts completly without
-    Ns.
+- id: in_without_ns
+  doc: "Skip regions containing Ns and sample reads only from\nparts completly without\
+    \ Ns."
   type: boolean
   inputBinding:
     prefix: --without-ns
-- id: uniform_chromosome_probability
-  doc: Sample chromosomes for reads equally distributed instead of weighted by their
-    length. (Was default behaviour up to version 1.0.1)
+- id: in_uniform_chromosome_probability
+  doc: "Sample chromosomes for reads equally distributed\ninstead of weighted by their\
+    \ length. (Was default\nbehaviour up to version 1.0.1)"
   type: boolean
   inputBinding:
     prefix: --uniform-chromosome-probability
-- id: old_read_names
-  doc: Use old long read names where all information is encoded in one large string.
-    New format is according to PacBio convention m\{\}/\{\}/CCS with read information
-    following after a whitespace.
+- id: in_old_read_names
+  doc: "Use old long read names where all information is\nencoded in one large string.\
+    \ New format is according\nto PacBio convention m\\{\\}/\\{\\}/CCS with read\n\
+    information following after a whitespace.\n"
   type: boolean
   inputBinding:
     prefix: --old-read-names
-- id: output_prefix
-  doc: Save the simulated reads as a fastq-file at OUTPUT_PREFIX.fastq
+- id: in_output_prefix_dot_fast_q
+  doc: 'optional arguments:'
   type: string
   inputBinding:
-    position: 0
-outputs: []
+    position: 1
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_save_reference
+  doc: "Save the random reference as fasta-file at given PATH.\nBy default, save at\
+    \ output path with\n'_reference.fasta' appended."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_save_reference)
 cwlVersion: v1.1
 baseCommand:
 - simlord

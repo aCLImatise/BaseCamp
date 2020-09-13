@@ -1,7 +1,20 @@
 version 1.0
 
-task AbyssFatoagp {
+task Abyssfatoagp {
+  input {
+    Boolean? more_options
+    Boolean? options
+  }
   command <<<
-    abyss-fatoagp
+    abyss_fatoagp \
+      ~{if (more_options) then "-MORE_OPTIONS" else ""} \
+      ~{if (options) then "-OPTIONS" else ""}
   >>>
+  parameter_meta {
+    more_options: ""
+    options: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
 }

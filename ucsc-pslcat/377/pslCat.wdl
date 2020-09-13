@@ -7,16 +7,14 @@ task PslCat {
     Boolean? dir
     File? out
     Boolean? ext
-    File file
   }
   command <<<
     pslCat \
-      ~{file} \
       ~{if defined(check) then ("-check " +  '"' + check + '"') else ""} \
       ~{if defined(no_head) then ("-nohead " +  '"' + no_head + '"') else ""} \
-      ~{true="-dir" false="" dir} \
+      ~{if (dir) then "-dir" else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{true="-ext" false="" ext}
+      ~{if (ext) then "-ext" else ""}
   >>>
   parameter_meta {
     check: "input.  Detects more errors but slower"
@@ -24,6 +22,9 @@ task PslCat {
     dir: "files are directories (concatenate all in dirs)"
     out: "put output to file rather than stdout"
     ext: "=.xxx  limit files in directories to those with extension"
-    file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

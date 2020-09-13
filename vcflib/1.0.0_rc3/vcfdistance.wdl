@@ -11,4 +11,7 @@ task Vcfdistance {
   parameter_meta {
     custom_tag_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

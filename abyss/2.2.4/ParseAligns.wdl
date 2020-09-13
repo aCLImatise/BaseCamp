@@ -2,9 +2,9 @@ version 1.0
 
 task ParseAligns {
   input {
-    String? min_align
-    String? dist
-    String? frag
+    Int? min_align
+    File? dist
+    File? frag
     File? hist
     Boolean? sam
     Boolean? k_aligner
@@ -12,21 +12,19 @@ task ParseAligns {
     Boolean? verbose
     Boolean? k
     String km_er
-    String? option
   }
   command <<<
     ParseAligns \
       ~{km_er} \
-      ~{option} \
       ~{if defined(min_align) then ("--min-align " +  '"' + min_align + '"') else ""} \
       ~{if defined(dist) then ("--dist " +  '"' + dist + '"') else ""} \
       ~{if defined(frag) then ("--frag " +  '"' + frag + '"') else ""} \
       ~{if defined(hist) then ("--hist " +  '"' + hist + '"') else ""} \
-      ~{true="--sam" false="" sam} \
-      ~{true="--kaligner" false="" k_aligner} \
+      ~{if (sam) then "--sam" else ""} \
+      ~{if (k_aligner) then "--kaligner" else ""} \
       ~{if defined(cover) then ("--cover " +  '"' + cover + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="-k" false="" k}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (k) then "-k" else ""}
   >>>
   parameter_meta {
     min_align: "minimum alignment length"
@@ -39,6 +37,8 @@ task ParseAligns {
     verbose: "display verbose output"
     k: ""
     km_er: ""
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

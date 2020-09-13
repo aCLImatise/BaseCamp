@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../snaptools_dex_fastq.cwl
 inputs:
-- id: input_fast_q
-  doc: 'fastq file contains the sequencing reads (default: None)'
-  type: string
+- id: in_input_fast_q
+  doc: "fastq file contains the sequencing reads (default:\nNone)"
+  type: File
   inputBinding:
     prefix: --input-fastq
-- id: output_fast_q
+- id: in_output_fast_q
   doc: 'output decomplexed fastq file (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --output-fastq
-- id: index_fast_q_list
-  doc: 'a list of fastq files that contain the cell indices. (default: None)'
+- id: in_index_fast_q_list
+  doc: "a list of fastq files that contain the cell indices.\n(default: None)\n"
   type: string[]
   inputBinding:
     prefix: --index-fastq-list
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_fast_q
+  doc: 'output decomplexed fastq file (default: None)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_fast_q)
 cwlVersion: v1.1
 baseCommand:
 - snaptools

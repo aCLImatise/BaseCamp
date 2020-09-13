@@ -1,7 +1,10 @@
 version 1.0
 
-task BlobtoolsBuildNodesdb {
+task BlobtoolsbuildNodesdb {
   command <<<
-    blobtools-build_nodesdb
+    blobtools_build_nodesdb
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

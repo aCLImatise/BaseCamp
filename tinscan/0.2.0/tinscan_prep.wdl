@@ -1,15 +1,15 @@
 version 1.0
 
-task TinscanPrep {
+task Tinscanprep {
   input {
     String? target
     String? query
-    String? a_dir
-    String? b_dir
-    String? outdir
+    Directory? a_dir
+    Directory? b_dir
+    Directory? outdir
   }
   command <<<
-    tinscan-prep \
+    tinscan_prep \
       ~{if defined(target) then ("--target " +  '"' + target + '"') else ""} \
       ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
       ~{if defined(a_dir) then ("--adir " +  '"' + a_dir + '"') else ""} \
@@ -21,6 +21,9 @@ task TinscanPrep {
     query: "Multifasta containing B genome."
     a_dir: "A genome sub-directory within outdir"
     b_dir: "B genome sub-directory within outdir"
-    outdir: "Write split directories within this directory. (Default: cwd)"
+    outdir: "Write split directories within this directory.\\n(Default: cwd)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

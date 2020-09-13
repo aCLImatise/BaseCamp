@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- krocus
+- allele_directory
 positional:
 - !Positional
   description: ''
@@ -6,10 +9,9 @@ positional:
   name: input.fastq
   optional: false
 named: []
-command:
-- krocus
-- allele_directory
 parent: &id002 !Command
+  command:
+  - krocus
   positional: []
   named:
   - !Flag
@@ -29,15 +31,15 @@ parent: &id002 !Command
       name: OUTPUT_FILE
     optional: true
   - !Flag
-    description: 'Maximum gap for blocks to be contigous, measured in multiples of
-      the k-mer size (default: 4)'
+    description: "Maximum gap for blocks to be contigous, measured in\nmultiples of\
+      \ the k-mer size (default: 4)"
     synonyms:
     - --max_gap
     args: !SimpleFlagArg
       name: MAX_GAP
     optional: true
   - !Flag
-    description: 'Flanking region around a block to use for mapping (default: 50)'
+    description: "Flanking region around a block to use for mapping\n(default: 50)"
     synonyms:
     - --margin
     args: !SimpleFlagArg
@@ -59,14 +61,14 @@ parent: &id002 !Command
       name: MIN_FASTA_HITS
     optional: true
   - !Flag
-    description: 'Minimum No. of kmers matching a read in 1st pass (default: 10)'
+    description: "Minimum No. of kmers matching a read in 1st pass\n(default: 10)"
     synonyms:
     - --min_kmers_for_onex_pass
     args: !SimpleFlagArg
       name: MIN_KMERS_FOR_ONEX_PASS
     optional: true
   - !Flag
-    description: 'Dont count kmers occuring more than this many times (default: 10)'
+    description: "Dont count kmers occuring more than this many times\n(default: 10)"
     synonyms:
     - --max_kmers
     - -r
@@ -90,14 +92,14 @@ parent: &id002 !Command
       name: KMER
     optional: true
   - !Flag
-    description: 'Genes which are not divisible by 3 are excluded (default: False)'
+    description: "Genes which are not divisible by 3 are excluded\n(default: False)"
     synonyms:
     - --divisible_by_3
     - -d
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 'For performance testing print time to find given ST (default: None)'
+    description: "For performance testing print time to find given ST\n(default: None)"
     synonyms:
     - --target_st
     args: !SimpleFlagArg
@@ -110,12 +112,13 @@ parent: &id002 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - krocus
   parent:
   subcommands:
   - *id001
   - !Command
+    command:
+    - krocus
+    - input_fastq
     positional:
     - !Positional
       description: ''
@@ -133,11 +136,9 @@ parent: &id002 !Command
       name: input.fastq
       optional: false
     named: []
-    command:
-    - krocus
-    - input_fastq
     parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -145,6 +146,7 @@ parent: &id002 !Command
       \ argument allele_directory: The allele directory doesnt exist\n"
     generated_using: &id003
     - --help
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -186,6 +188,7 @@ parent: &id002 !Command
     \ program's version number and exit\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

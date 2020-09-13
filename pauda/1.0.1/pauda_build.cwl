@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../pauda_build.cwl
 inputs:
-- id: references_fast_a
+- id: in_references_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: p_aud_a_index_directory
+- id: in_p_aud_a_index_directory
   doc: ''
-  type: string
+  type: Directory
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pauda-build

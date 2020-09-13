@@ -7,15 +7,11 @@ task TripailleAnalysisAddAnalysis {
     String? source_uri
     String? description
     String? date_executed
-    String name
-    String program
-    String program_version
+    String source_name
   }
   command <<<
     tripaille analysis add_analysis \
-      ~{name} \
-      ~{program} \
-      ~{program_version} \
+      ~{source_name} \
       ~{if defined(algorithm) then ("--algorithm " +  '"' + algorithm + '"') else ""} \
       ~{if defined(source_version) then ("--sourceversion " +  '"' + source_version + '"') else ""} \
       ~{if defined(source_uri) then ("--sourceuri " +  '"' + source_uri + '"') else ""} \
@@ -28,8 +24,9 @@ task TripailleAnalysisAddAnalysis {
     source_uri: "analysis sourceuri"
     description: "analysis description"
     date_executed: "analysis date_executed (yyyy-mm-dd)"
-    name: ""
-    program: ""
-    program_version: ""
+    source_name: "Create an analysis"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

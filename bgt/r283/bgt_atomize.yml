@@ -1,4 +1,7 @@
-&id002 !Command
+&id003 !Command
+command:
+- bgt
+- atomize
 positional:
 - !Positional
   description: ''
@@ -37,17 +40,68 @@ named:
   - '-0'
   args: !EmptyFlagArg {}
   optional: true
-command:
-- bgt
-- atomize
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - bgt
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - bgt
+    - fmf
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: fmf
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: in.fmf
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: condition
+      optional: true
+    named:
+    - !Flag
+      description: load the entire FMF into RAM
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: only output the row name (the 1st column)
+      synonyms:
+      - -n
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -mn
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "fmf: invalid option -- '-'\nfmf: invalid option -- 'h'\nfmf: invalid\
+      \ option -- 'e'\nfmf: invalid option -- 'l'\nfmf: invalid option -- 'p'\nUsage:\
+      \ fmf [-mn] <in.fmf> [condition]\nOptions:\n  -m   load the entire FMF into\
+      \ RAM\n  -n   only output the row name (the 1st column)\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    command:
+    - bgt
+    - import
     positional:
     - !Positional
       description: ''
@@ -85,11 +139,9 @@ parent: &id001 !Command
       - '-1'
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bgt
-    - import
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -98,10 +150,39 @@ parent: &id001 !Command
       Options:\n  -S           input is VCF\n  -t FILE      list of reference names\
       \ and lengths [null]\n  -F           keep filtered variants\n  -1          \
       \ generate .pb1 file (not used for now)\n"
-    generated_using: &id003
-    - --help
-  - *id002
+    generated_using: *id002
   - !Command
+    command:
+    - bgt
+    - bcfidx
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: in.bcf
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: minShift
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "bcfidx: invalid option -- '-'\nbcfidx: invalid option -- 'h'\nbcfidx:\
+      \ invalid option -- 'e'\nbcfidx: invalid option -- 'l'\nbcfidx: invalid option\
+      \ -- 'p'\nUsage: bgt bcfidx [-s minShift] <in.bcf>\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - bgt
+    - view
     positional:
     - !Positional
       description: ''
@@ -224,18 +305,16 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'comma-delimited list of fields to output. Accepted variables:
-        AC, AN, AC#, AN#, CHROM, POS, END, REF, ALT (# for a group number)'
+      description: "comma-delimited list of fields to output. Accepted variables:\n\
+        AC, AN, AC#, AN#, CHROM, POS, END, REF, ALT (# for a group number)"
       synonyms:
       - -t
       args: !SimpleFlagArg
         name: STR
       optional: true
-    command:
-    - bgt
-    - view
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -263,83 +342,9 @@ parent: &id001 !Command
       \    3) expression if .spl/-d file contains metadata. e.g.: -s\"gender=='M'&&population!='CEU'\"\
       \n  If multiple -s is specified, the AC/AN of the first group will be written\
       \ to VCF INFO AC1/AN1,\n  the second to AC2/AN2, etc.\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: fmf
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: in.fmf
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: condition
-      optional: true
-    named:
-    - !Flag
-      description: load the entire FMF into RAM
-      synonyms:
-      - -m
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: only output the row name (the 1st column)
-      synonyms:
-      - -n
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -mn
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - bgt
-    - fmf
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "fmf: invalid option -- '-'\nfmf: invalid option -- 'h'\nfmf: invalid\
-      \ option -- 'e'\nfmf: invalid option -- 'l'\nfmf: invalid option -- 'p'\nUsage:\
-      \ fmf [-mn] <in.fmf> [condition]\nOptions:\n  -m   load the entire FMF into\
-      \ RAM\n  -n   only output the row name (the 1st column)\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: in.bcf
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -s
-      args: !SimpleFlagArg
-        name: minShift
-      optional: true
-    command:
-    - bgt
-    - bcfidx
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "bcfidx: invalid option -- '-'\nbcfidx: invalid option -- 'h'\nbcfidx:\
-      \ invalid option -- 'e'\nbcfidx: invalid option -- 'l'\nbcfidx: invalid option\
-      \ -- 'p'\nUsage: bgt bcfidx [-s minShift] <in.bcf>\n"
-    generated_using: *id003
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -349,6 +354,7 @@ parent: &id001 !Command
     \ index\n  version      show version number\n"
   generated_using: []
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -358,4 +364,4 @@ help_text: "atomize: invalid option -- '-'\natomize: invalid option -- 'h'\natom
   \ output\n  -S       VCF input\n  -t FILE  list of contig names and lengths (force\
   \ -S)\n  -M       use <M> at a multi-allelic site (override -0)\n  -0       use\
   \ 0 at a multi-allelic genotype\n"
-generated_using: *id003
+generated_using: *id002

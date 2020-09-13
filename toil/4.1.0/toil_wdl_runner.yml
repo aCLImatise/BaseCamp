@@ -1,4 +1,6 @@
 !Command
+command:
+- toil-wdl-runner
 positional:
 - !Positional
   description: A WDL workflow file.
@@ -12,8 +14,15 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Optionally specify the directory that outputs are written to. Default
-    is the current working dir.
+  description: ''
+  synonyms:
+  - --jobStore
+  args: !SimpleFlagArg
+    name: JOBSTORE
+  optional: true
+- !Flag
+  description: "Optionally specify the directory that outputs are\nwritten to. Default\
+    \ is the current working dir."
   synonyms:
   - -o
   - --outdir
@@ -21,46 +30,39 @@ named:
     name: OUTDIR
   optional: true
 - !Flag
-  description: 1. Creates "AST.out", which holds the printed AST and "mappings.out",
-    which holds the parsed task, workflow dictionaries that were generated. 2. Saves
-    the compiled toil script generated from the wdl/json files from deletion. 3. Skips
-    autorunning the compiled python file.
+  description: "1. Creates \"AST.out\", which holds the printed AST and\n\"mappings.out\"\
+    , which holds the parsed task, workflow\ndictionaries that were generated. 2.\
+    \ Saves the\ncompiled toil script generated from the wdl/json files\nfrom deletion.\
+    \ 3. Skips autorunning the compiled\npython file."
   synonyms:
   - --dev_mode
   args: !SimpleFlagArg
     name: DEV_MODE
   optional: true
 - !Flag
-  description: The user permissions that the docker containers will be run with (and
-    the permissions set on any output files produced). Default is "root". Setting
-    this to None will set this to the current user.
+  description: "The user permissions that the docker containers will\nbe run with\
+    \ (and the permissions set on any output\nfiles produced). Default is \"root\"\
+    . Setting this to\nNone will set this to the current user."
   synonyms:
   - --docker_user
   args: !SimpleFlagArg
     name: DOCKER_USER
   optional: true
 - !Flag
-  description: Specify a cloud bucket endpoint for output files.
+  description: "Specify a cloud bucket endpoint for output files.\n"
   synonyms:
   - --destBucket
   args: !SimpleFlagArg
     name: DESTBUCKET
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --jobStore
-  args: !SimpleFlagArg
-    name: JOBSTORE
-  optional: true
-command:
-- toil-wdl-runner
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:

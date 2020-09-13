@@ -4,4 +4,7 @@ task Tracy {
   command <<<
     tracy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

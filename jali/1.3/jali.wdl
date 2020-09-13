@@ -2,11 +2,11 @@ version 1.0
 
 task Jali {
   input {
-    String? amino_acid_similarity
+    File? amino_acid_similarity
     String? i
     String? e
     String? j
-    String? ascii_default_html
+    Int? ascii_default_html
     Boolean? print_alignment
     Boolean? run_verbose_mode
     Boolean? print_version
@@ -22,9 +22,9 @@ task Jali {
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
       ~{if defined(j) then ("-j " +  '"' + j + '"') else ""} \
       ~{if defined(ascii_default_html) then ("-f " +  '"' + ascii_default_html + '"') else ""} \
-      ~{true="-p" false="" print_alignment} \
-      ~{true="-o" false="" run_verbose_mode} \
-      ~{true="-v" false="" print_version}
+      ~{if (print_alignment) then "-p" else ""} \
+      ~{if (run_verbose_mode) then "-o" else ""} \
+      ~{if (print_version) then "-v" else ""}
   >>>
   parameter_meta {
     amino_acid_similarity: "//amino acid similarity matrix"
@@ -37,5 +37,8 @@ task Jali {
     print_version: "//print version"
     sequence_dot_fast_a: ""
     alignment_dot_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

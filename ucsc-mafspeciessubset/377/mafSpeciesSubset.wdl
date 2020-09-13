@@ -3,21 +3,18 @@ version 1.0
 task MafSpeciesSubset {
   input {
     Boolean? keep_first
-    String in_dot_maf
-    String species_dot_lst
-    String out_dot_maf
+    String truth_dot
   }
   command <<<
     mafSpeciesSubset \
-      ~{in_dot_maf} \
-      ~{species_dot_lst} \
-      ~{out_dot_maf} \
-      ~{true="-keepFirst" false="" keep_first}
+      ~{truth_dot} \
+      ~{if (keep_first) then "-keepFirst" else ""}
   >>>
   parameter_meta {
-    keep_first: "- If set, keep the first 'a' line in a maf no matter what Useful for mafFrag results where we use this for the gene name"
-    in_dot_maf: ""
-    species_dot_lst: ""
-    out_dot_maf: ""
+    keep_first: "- If set, keep the first 'a' line in a maf no matter what\\nUseful for mafFrag results where we use this for the gene name\\n"
+    truth_dot: "species.lst is a file with a list of species to keep"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

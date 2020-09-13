@@ -1,7 +1,10 @@
 version 1.0
 
-task BcbioPrioritize {
+task Bcbioprioritize {
   command <<<
-    bcbio-prioritize
+    bcbio_prioritize
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

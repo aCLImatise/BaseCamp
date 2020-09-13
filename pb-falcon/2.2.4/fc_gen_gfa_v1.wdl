@@ -11,4 +11,7 @@ task FcGenGfaV1 {
   parameter_meta {
     collected_gfa: "Path to the file with collected and formatted data for generating the GFA"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

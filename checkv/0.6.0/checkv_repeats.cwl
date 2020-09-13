@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../checkv_repeats.cwl
 inputs:
-- id: min_tr_len
+- id: in_min_tr_len
   doc: Min length of TR
   type: long
   inputBinding:
     prefix: --min_tr_len
-- id: quiet
+- id: in_quiet
   doc: Suppress logging messages
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: input
+- id: in_input
   doc: Input viral sequences in FASTA format
   type: string
   inputBinding:
     position: 0
-- id: output
+- id: in_output
   doc: Output directory
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkv

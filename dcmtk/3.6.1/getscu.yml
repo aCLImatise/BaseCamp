@@ -1,4 +1,6 @@
 !Command
+command:
+- getscu
 positional:
 - !Positional
   description: hostname of DICOM peer
@@ -17,8 +19,46 @@ positional:
   optional: false
 named:
 - !Flag
-  description: '--key                  [k]ey: gggg,eeee="str", path or dic. name="str"
-    override matching key'
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --quiet                quiet mode, print no warnings and errors
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --verbose              verbose mode, print processing details
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --debug                debug mode, print debug information
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-level            [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
+  synonyms:
+  - -ll
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-config           [f]ilename: string\nuse config file f for the\
+    \ logger"
+  synonyms:
+  - -lc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--key                  [k]ey: gggg,eeee=\"str\", path or dic. name=\"\
+    str\"\noverride matching key"
   synonyms:
   - -k
   args: !EmptyFlagArg {}
@@ -42,43 +82,43 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[a]etitle: string set my calling AE title (default: GETSCU)'
+  description: "[a]etitle: string\nset my calling AE title (default: GETSCU)"
   synonyms:
   - -aet
   - --aetitle
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[a]etitle: string set called AE title of peer (default: ANY-SCP)'
+  description: "[a]etitle: string\nset called AE title of peer (default: ANY-SCP)"
   synonyms:
   - -aec
   - --call
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: =   --propose-uncompr      propose all uncompressed TS, explicit VR
-    with local byte ordering first (default)
+  description: "=   --propose-uncompr      propose all uncompressed TS, explicit VR\n\
+    with local byte ordering first (default)"
   synonyms:
   - -x
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --propose-little       propose all uncompressed TS, explicit VR little
-    endian first
+  description: "--propose-little       propose all uncompressed TS, explicit VR\n\
+    little endian first"
   synonyms:
   - -xe
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --propose-big          propose all uncompressed TS, explicit VR big
-    endian first
+  description: "--propose-big          propose all uncompressed TS, explicit VR\n\
+    big endian first"
   synonyms:
   - -xb
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --propose-deflated     propose deflated explicit VR little endian TS
-    and all uncompressed transfer syntaxes
+  description: "--propose-deflated     propose deflated explicit VR little endian\
+    \ TS\nand all uncompressed transfer syntaxes"
   synonyms:
   - -xd
   args: !EmptyFlagArg {}
@@ -90,36 +130,36 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--timeout              [s]econds: integer (default: unlimited) timeout
-    for connection requests'
+  description: "--timeout              [s]econds: integer (default: unlimited)\ntimeout\
+    \ for connection requests"
   synonyms:
   - -to
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--acse-timeout         [s]econds: integer (default: 30) timeout for
-    ACSE messages'
+  description: "--acse-timeout         [s]econds: integer (default: 30)\ntimeout for\
+    \ ACSE messages"
   synonyms:
   - -ta
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--dimse-timeout        [s]econds: integer (default: unlimited) timeout
-    for DIMSE messages'
+  description: "--dimse-timeout        [s]econds: integer (default: unlimited)\ntimeout\
+    \ for DIMSE messages"
   synonyms:
   - -td
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[n]umber of bytes: integer (4096..131072) set max receive pdu to n
-    bytes (default: 16384)'
+  description: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to\
+    \ n bytes (default: 16384)"
   synonyms:
   - -pdu
   - --max-pdu
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[n]umber: integer repeat n times'
+  description: "[n]umber: integer\nrepeat n times"
   synonyms:
   - --repeat
   args: !EmptyFlagArg {}
@@ -131,10 +171,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--output-directory     [d]irectory: string (default: ".") write received
-    objects to existing directory d'
+  description: "--output-directory     [d]irectory: string (default: \".\")\nwrite\
+    \ received objects to existing directory d"
   synonyms:
   - -od
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --normal               receive in memory, then write to disk (default)
+  synonyms:
+  - -B
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -143,13 +189,22 @@ named:
   - --ignore
   args: !EmptyFlagArg {}
   optional: true
-command:
-- getscu
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: --help                 print this help text and exit
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: getscu v3.6.1 2016-11-02 $\n\ngetscu: DICOM retrieve (C-GET) SCU\n\
   usage: getscu [options] peer port [dcmfile-in...]\n\nparameters:\n  peer       \
   \                    hostname of DICOM peer\n  port                           tcp/ip\

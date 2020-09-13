@@ -1,7 +1,10 @@
 version 1.0
 
-task AnviScriptFASTAToContigsDb {
+task AnviscriptFASTAtocontigsdb {
   command <<<
-    anvi-script-FASTA-to-contigs-db
+    anvi_script_FASTA_to_contigs_db
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Filteroriginalfusion {
   command <<<
     filteroriginalfusion
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

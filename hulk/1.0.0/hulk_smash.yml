@@ -1,10 +1,8 @@
-&id002 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: flags
-  optional: true
+&id001 !Command
+command:
+- hulk
+- smash
+positional: []
 named:
 - !Flag
   description: tells HULK which sketching algorithm to use [histosketch kmv khf] (default
@@ -61,7 +59,7 @@ named:
     name: string
   optional: true
 - !Flag
-  description: directory and basename for saving the outfile(s) (default "./hulk-20200619041003")
+  description: directory and basename for saving the outfile(s) (default "./hulk-20200909212823")
   synonyms:
   - -o
   - --outFile
@@ -82,10 +80,9 @@ named:
   - --profiling
   args: !EmptyFlagArg {}
   optional: true
-command:
-- hulk
-- smash
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - hulk
   positional: []
   named:
   - !Flag
@@ -104,7 +101,7 @@ parent: &id001 !Command
       name: string
     optional: true
   - !Flag
-    description: directory and basename for saving the outfile(s) (default "./hulk-20200619040844")
+    description: directory and basename for saving the outfile(s) (default "./hulk-20200909212820")
     synonyms:
     - -o
     - --outFile
@@ -125,17 +122,14 @@ parent: &id001 !Command
     - --profiling
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - hulk
   parent:
   subcommands:
+  - *id001
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: flags
-      optional: true
+    command:
+    - hulk
+    - sketch
+    positional: []
     named:
     - !Flag
       description: FASTQ file(s) to sketch (can also pipe in STDIN)
@@ -229,7 +223,7 @@ parent: &id001 !Command
         name: string
       optional: true
     - !Flag
-      description: directory and basename for saving the outfile(s) (default "./hulk-20200619040918")
+      description: directory and basename for saving the outfile(s) (default "./hulk-20200909212826")
       synonyms:
       - -o
       - --outFile
@@ -250,11 +244,9 @@ parent: &id001 !Command
       - --profiling
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - hulk
-    - sketch
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: help for sketch
       synonyms:
@@ -283,12 +275,12 @@ parent: &id001 !Command
       \ --kmerSize uint    minimizer k-mer length (default 21)\n      --log string\
       \       filename for log file, if omitted then STDOUT used by default\n  -o,\
       \ --outFile string   directory and basename for saving the outfile(s) (default\
-      \ \"./hulk-20200619040918\")\n  -p, --processors int   number of processors\
+      \ \"./hulk-20200909212826\")\n  -p, --processors int   number of processors\
       \ to use (default 1)\n      --profiling        create the files needed to profile\
       \ HULK using the go tool pprof\n"
     generated_using: &id003
     - --help
-  - *id002
+  usage: []
   help_flag: !Flag
     description: help for hulk
     synonyms:
@@ -308,12 +300,13 @@ parent: &id001 !Command
     \ version and exits\n\nFlags:\n  -h, --help             help for hulk\n  -k, --kmerSize\
     \ uint    minimizer k-mer length (default 21)\n      --log string       filename\
     \ for log file, if omitted then STDOUT used by default\n  -o, --outFile string\
-    \   directory and basename for saving the outfile(s) (default \"./hulk-20200619040844\"\
+    \   directory and basename for saving the outfile(s) (default \"./hulk-20200909212820\"\
     )\n  -p, --processors int   number of processors to use (default 1)\n      --profiling\
     \        create the files needed to profile HULK using the go tool pprof\n\nUse\
     \ \"hulk [command] --help\" for more information about a command.\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: help for smash
   synonyms:
@@ -335,7 +328,7 @@ help_text: "\n\t\tSmash a bunch of sketches and return a distance matrix.\n\n\t\
   \ (default \"./\")\n\nGlobal Flags:\n  -k, --kmerSize uint    minimizer k-mer length\
   \ (default 21)\n      --log string       filename for log file, if omitted then\
   \ STDOUT used by default\n  -o, --outFile string   directory and basename for saving\
-  \ the outfile(s) (default \"./hulk-20200619041003\")\n  -p, --processors int   number\
+  \ the outfile(s) (default \"./hulk-20200909212823\")\n  -p, --processors int   number\
   \ of processors to use (default 1)\n      --profiling        create the files needed\
   \ to profile HULK using the go tool pprof\n"
 generated_using: *id003

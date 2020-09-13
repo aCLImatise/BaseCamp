@@ -1,6 +1,6 @@
 version 1.0
 
-task Bowtie2Build {
+task Bowtie2build {
   input {
     Boolean? reference_files_fasta
     Boolean? reference_sequences_given
@@ -23,37 +23,37 @@ task Bowtie2Build {
     Boolean? q_slash_quiet
     Boolean? h_slash_help
     String reference_in
-    String bt_two_index_base
+    Int bt_two_index_base
   }
   command <<<
-    bowtie2-build \
+    bowtie2_build \
       ~{reference_in} \
       ~{bt_two_index_base} \
-      ~{true="-f" false="" reference_files_fasta} \
-      ~{true="-c" false="" reference_sequences_given} \
-      ~{true="--large-index" false="" large_index} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--sanitized" false="" sanitized} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="-a/--noauto" false="" a_slash_no_auto} \
-      ~{true="-p/--packed" false="" p_slash_packed} \
+      ~{if (reference_files_fasta) then "-f" else ""} \
+      ~{if (reference_sequences_given) then "-c" else ""} \
+      ~{if (large_index) then "--large-index" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (sanitized) then "--sanitized" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (a_slash_no_auto) then "-a/--noauto" else ""} \
+      ~{if (p_slash_packed) then "-p/--packed" else ""} \
       ~{if defined(bmax) then ("--bmax " +  '"' + bmax + '"') else ""} \
       ~{if defined(bmax_divn) then ("--bmaxdivn " +  '"' + bmax_divn + '"') else ""} \
       ~{if defined(dcv) then ("--dcv " +  '"' + dcv + '"') else ""} \
-      ~{true="--nodc" false="" no_dc} \
-      ~{true="-r/--noref" false="" r_slash_no_ref} \
-      ~{true="-3/--justref" false="" three_slash_just_ref} \
+      ~{if (no_dc) then "--nodc" else ""} \
+      ~{if (r_slash_no_ref) then "-r/--noref" else ""} \
+      ~{if (three_slash_just_ref) then "-3/--justref" else ""} \
       ~{if defined(oslash_off_rate) then ("-o/--offrate " +  '"' + oslash_off_rate + '"') else ""} \
       ~{if defined(t_slash_f_tab_chars) then ("-t/--ftabchars " +  '"' + t_slash_f_tab_chars + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-q/--quiet" false="" q_slash_quiet} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (q_slash_quiet) then "-q/--quiet" else ""} \
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
     reference_files_fasta: "reference files are Fasta (default)"
-    reference_sequences_given: "reference sequences given on cmd line (as <reference_in>)"
-    large_index: "force generated index to be 'large', even if ref has fewer than 4 billion nucleotides"
+    reference_sequences_given: "reference sequences given on cmd line (as\\n<reference_in>)"
+    large_index: "force generated index to be 'large', even if ref\\nhas fewer than 4 billion nucleotides"
     debug: "use the debug binary; slower, assertions enabled"
     sanitized: "use sanitized binary; slower, uses ASan and/or UBSan"
     verbose: "log the issued command"
@@ -73,5 +73,8 @@ task Bowtie2Build {
     h_slash_help: "print detailed description of tool and its options"
     reference_in: "comma-separated list of files with ref sequences"
     bt_two_index_base: "write bt2 data to files with this dir/basename"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

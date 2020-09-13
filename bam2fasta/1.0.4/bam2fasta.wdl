@@ -2,13 +2,16 @@ version 1.0
 
 task Bam2fasta {
   input {
-    String? var_command
+    String optional_arguments
   }
   command <<<
     bam2fasta \
-      ~{var_command}
+      ~{optional_arguments}
   >>>
   parameter_meta {
-    var_command: ""
+    optional_arguments: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

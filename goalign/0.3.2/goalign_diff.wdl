@@ -4,9 +4,9 @@ task GoalignDiff {
   input {
     Boolean? counts
     Boolean? no_gaps
-    String? diff_output_file
+    File? diff_output_file
     Boolean? reverse
-    String? align
+    File? align
     Boolean? auto_detect
     Boolean? clustal
     Boolean? ignore_identical
@@ -18,34 +18,32 @@ task GoalignDiff {
     Boolean? phylip
     Int? seed
     Int? threads
-    String? flags
   }
   command <<<
     goalign diff \
-      ~{flags} \
-      ~{true="--counts" false="" counts} \
-      ~{true="--no-gaps" false="" no_gaps} \
+      ~{if (counts) then "--counts" else ""} \
+      ~{if (no_gaps) then "--no-gaps" else ""} \
       ~{if defined(diff_output_file) then ("--output " +  '"' + diff_output_file + '"') else ""} \
-      ~{true="--reverse" false="" reverse} \
+      ~{if (reverse) then "--reverse" else ""} \
       ~{if defined(align) then ("--align " +  '"' + align + '"') else ""} \
-      ~{true="--auto-detect" false="" auto_detect} \
-      ~{true="--clustal" false="" clustal} \
-      ~{true="--ignore-identical" false="" ignore_identical} \
-      ~{true="--input-strict" false="" input_strict} \
-      ~{true="--nexus" false="" nexus} \
-      ~{true="--no-block" false="" no_block} \
-      ~{true="--one-line" false="" one_line} \
-      ~{true="--output-strict" false="" output_strict} \
-      ~{true="--phylip" false="" phylip} \
+      ~{if (auto_detect) then "--auto-detect" else ""} \
+      ~{if (clustal) then "--clustal" else ""} \
+      ~{if (ignore_identical) then "--ignore-identical" else ""} \
+      ~{if (input_strict) then "--input-strict" else ""} \
+      ~{if (nexus) then "--nexus" else ""} \
+      ~{if (no_block) then "--no-block" else ""} \
+      ~{if (one_line) then "--one-line" else ""} \
+      ~{if (output_strict) then "--output-strict" else ""} \
+      ~{if (phylip) then "--phylip" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
     counts: "Count differences instead of writting only identical characters"
     no_gaps: "Do not count gaps (only with --counts)"
-    diff_output_file: "Diff output file (default \"stdout\")"
+    diff_output_file: "Diff output file (default \\\"stdout\\\")"
     reverse: "Restore identical characters (.) using first sequence positions"
-    align: "Alignment input file (default \"stdin\")"
+    align: "Alignment input file (default \\\"stdin\\\")"
     auto_detect: "Auto detects input format (overrides -p, -x and -u)"
     clustal: "Alignment is in clustal? default fasta"
     ignore_identical: "Ignore duplicated sequences that have the same name and same sequences"
@@ -57,6 +55,9 @@ task GoalignDiff {
     phylip: "Alignment is in phylip? default fasta"
     seed: "Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)"
     threads: "Number of threads (default 1)"
-    flags: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_diff_output_file = "${in_diff_output_file}"
   }
 }

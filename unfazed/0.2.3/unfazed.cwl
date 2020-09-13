@@ -1,74 +1,84 @@
 class: CommandLineTool
 id: ../../../unfazed.cwl
 inputs:
-- id: dn_ms
-  doc: 'valid VCF OR BED file of the DNMs of interest> If BED, must contain chrom,
-    start, end, kid_id, var_type columns (default: None)'
-  type: string
+- id: in_dn_ms
+  doc: "valid VCF OR BED file of the DNMs of interest> If BED,\nmust contain chrom,\
+    \ start, end, kid_id, var_type\ncolumns (default: None)"
+  type: File
   inputBinding:
     prefix: --dnms
-- id: sites
-  doc: 'sorted/bgzipped/indexed VCF/BCF file of SNVs to identify informative sites.
-    Must contain each kid and both parents (default: None)'
-  type: string
+- id: in_sites
+  doc: "sorted/bgzipped/indexed VCF/BCF file of SNVs to\nidentify informative sites.\
+    \ Must contain each kid and\nboth parents (default: None)"
+  type: File
   inputBinding:
     prefix: --sites
-- id: ped
-  doc: 'ped file including the kid and both parent IDs (default: None)'
-  type: string
+- id: in_ped
+  doc: "ped file including the kid and both parent IDs\n(default: None)"
+  type: File
   inputBinding:
     prefix: --ped
-- id: bam_dir
-  doc: 'directory where bam/cram files (named {sample_id}.bam or {sample_id}.cram)
-    are stored for offspring. If not included, --bam-pairs must be set (default: None)'
-  type: string
+- id: in_bam_dir
+  doc: "directory where bam/cram files (named {sample_id}.bam\nor {sample_id}.cram)\
+    \ are stored for offspring. If not\nincluded, --bam-pairs must be set (default:\
+    \ None)"
+  type: Directory
   inputBinding:
     prefix: --bam-dir
-- id: bam_pairs
-  doc: '[BAM_PAIRS [BAM_PAIRS ...]] space-delimited list of pairs in the format {sample_id}:{bam_path}
-    where {sample_id} matches an offspring id from the dnm file. Can be used with
-    --bam-dir arg, must be used in its absence (default: None)'
+- id: in_bam_pairs
+  doc: "[BAM_PAIRS [BAM_PAIRS ...]]\nspace-delimited list of pairs in the format\n\
+    {sample_id}:{bam_path} where {sample_id} matches an\noffspring id from the dnm\
+    \ file. Can be used with\n--bam-dir arg, must be used in its absence (default:\n\
+    None)"
   type: boolean
   inputBinding:
     prefix: --bam-pairs
-- id: threads
+- id: in_threads
   doc: 'number of threads to use (default: 2)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: output_type
-  doc: 'choose output type. If --dnms is not a VCF/BCF, output must be to BED format.
-    Defaults to match --dnms input file (default: None)'
+- id: in_output_type
+  doc: "choose output type. If --dnms is not a VCF/BCF, output\nmust be to BED format.\
+    \ Defaults to match --dnms input\nfile (default: None)"
   type: string
   inputBinding:
     prefix: --output-type
-- id: include_ambiguous
+- id: in_include_ambiguous
   doc: 'include ambiguous phasing results (default: False)'
   type: boolean
   inputBinding:
     prefix: --include-ambiguous
-- id: verbose
-  doc: 'print verbose output including sites and reads used for phasing. Only applies
-    to BED output (default: False)'
+- id: in_verbose
+  doc: "print verbose output including sites and reads used\nfor phasing. Only applies\
+    \ to BED output (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: outfile
-  doc: 'name for output file. Defaults to stdout (default: /dev/stdout)'
-  type: string
+- id: in_outfile
+  doc: "name for output file. Defaults to stdout (default:\n/dev/stdout)"
+  type: File
   inputBinding:
     prefix: --outfile
-- id: reference
-  doc: 'reference fasta file (required for crams) (default: None)'
-  type: string
+- id: in_reference
+  doc: "reference fasta file (required for crams) (default:\nNone)\n"
+  type: File
   inputBinding:
     prefix: --reference
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outfile
+  doc: "name for output file. Defaults to stdout (default:\n/dev/stdout)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
 cwlVersion: v1.1
 baseCommand:
 - unfazed

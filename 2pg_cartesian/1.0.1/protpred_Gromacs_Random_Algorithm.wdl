@@ -2,6 +2,9 @@ version 1.0
 
 task ProtpredGromacsRandomAlgorithm {
   command <<<
-    protpred-Gromacs-Random_Algorithm
+    protpred_Gromacs_Random_Algorithm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

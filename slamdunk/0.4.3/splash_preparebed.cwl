@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../splash_preparebed.cwl
 inputs:
-- id: bed
+- id: in_bed
   doc: BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: read_length
+- id: in_read_length
   doc: All UTRs short than the read length are removed.
-  type: string
+  type: long
   inputBinding:
     prefix: --read-length
-- id: output_dir
-  doc: Output directory for mapped BAM files.
-  type: string
+- id: in_output_dir
+  doc: "Output directory for mapped BAM files.\n"
+  type: Directory
   inputBinding:
     prefix: --outputDir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: "Output directory for mapped BAM files.\n"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - splash

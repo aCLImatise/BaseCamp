@@ -1,17 +1,10 @@
 version 1.0
 
-task MbUpgradeTable {
-  input {
-    String table_file
-    String output_file
-  }
+task Mbupgradetable {
   command <<<
-    mb-upgrade-table \
-      ~{table_file} \
-      ~{output_file}
+    mb_upgrade_table
   >>>
-  parameter_meta {
-    table_file: ""
-    output_file: ""
+  output {
+    File out_stdout = stdout()
   }
 }

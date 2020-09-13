@@ -2,7 +2,7 @@ version 1.0
 
 task SetHaploidRegion {
   input {
-    String? region_file
+    File? region_file
     String? ref
   }
   command <<<
@@ -11,7 +11,10 @@ task SetHaploidRegion {
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
   parameter_meta {
-    region_file: "A bed file specifying the regions to be converted  (required)"
+    region_file: "A bed file specifying the regions to be converted\\n(required)"
     ref: "samtools reference sequence (required)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

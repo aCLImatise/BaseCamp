@@ -4,4 +4,7 @@ task Vcfqualfilter {
   command <<<
     vcfqualfilter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

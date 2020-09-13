@@ -2,12 +2,12 @@ version 1.0
 
 task SlamdunkFilter {
   input {
-    String? output_dir
-    String? bed
-    String? min_mq
-    String? min_identity
-    String? max_nm
-    String? threads
+    Directory? output_dir
+    File? bed
+    Int? min_mq
+    Int? min_identity
+    Int? max_nm
+    Int? threads
     String bam
   }
   command <<<
@@ -26,7 +26,11 @@ task SlamdunkFilter {
     min_mq: "Minimum mapping quality (default: 2)"
     min_identity: "Minimum alignment identity (default: 0.95)"
     max_nm: "Maximum NM for alignments (default: -1)"
-    threads: "Thread number (default: 1)"
+    threads: "Thread number (default: 1)\\n"
     bam: "Bam file(s)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

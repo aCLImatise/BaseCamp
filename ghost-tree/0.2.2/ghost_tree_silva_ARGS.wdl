@@ -1,6 +1,6 @@
 version 1.0
 
-task GhostTreeSilvaARGS {
+task GhosttreeSilvaARGS {
   input {
     String ghost_tree
     String silva
@@ -8,7 +8,7 @@ task GhostTreeSilvaARGS {
     String? args
   }
   command <<<
-    ghost-tree silva ARGS \
+    ghost_tree silva ARGS \
       ~{ghost_tree} \
       ~{silva} \
       ~{var_command} \
@@ -19,5 +19,8 @@ task GhostTreeSilvaARGS {
     silva: ""
     var_command: ""
     args: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

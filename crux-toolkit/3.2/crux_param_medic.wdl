@@ -1,14 +1,17 @@
 version 1.0
 
-task CruxParamMedic {
+task CruxParammedic {
   input {
-    String spectrum_file
+    File spectrum_file
   }
   command <<<
-    crux param-medic \
+    crux param_medic \
       ~{spectrum_file}
   >>>
   parameter_meta {
     spectrum_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

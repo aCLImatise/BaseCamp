@@ -14,4 +14,7 @@ task FcCalcCutoffGenomeSize {
     coverage: ""
     capture: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

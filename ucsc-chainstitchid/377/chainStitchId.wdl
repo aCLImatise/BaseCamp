@@ -2,16 +2,16 @@ version 1.0
 
 task ChainStitchId {
   input {
-    String in_dot_chain
-    String out_dot_chain
+    String? not_valid_option
   }
   command <<<
     chainStitchId \
-      ~{in_dot_chain} \
-      ~{out_dot_chain}
+      ~{if defined(not_valid_option) then ("-h " +  '"' + not_valid_option + '"') else ""}
   >>>
   parameter_meta {
-    in_dot_chain: ""
-    out_dot_chain: ""
+    not_valid_option: "not a valid option"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

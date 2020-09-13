@@ -4,4 +4,7 @@ task Omssa2pepXML {
   command <<<
     omssa2pepXML
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

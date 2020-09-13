@@ -4,4 +4,7 @@ task Ncoils {
   command <<<
     ncoils
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

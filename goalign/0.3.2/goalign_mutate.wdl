@@ -2,9 +2,9 @@ version 1.0
 
 task GoalignMutate {
   input {
-    String? mutated_alignment_output
+    File? mutated_alignment_output
     Float? rate
-    String? align
+    File? align
     Boolean? auto_detect
     Boolean? clustal
     Boolean? ignore_identical
@@ -26,22 +26,22 @@ task GoalignMutate {
       ~{if defined(mutated_alignment_output) then ("--output " +  '"' + mutated_alignment_output + '"') else ""} \
       ~{if defined(rate) then ("--rate " +  '"' + rate + '"') else ""} \
       ~{if defined(align) then ("--align " +  '"' + align + '"') else ""} \
-      ~{true="--auto-detect" false="" auto_detect} \
-      ~{true="--clustal" false="" clustal} \
-      ~{true="--ignore-identical" false="" ignore_identical} \
-      ~{true="--input-strict" false="" input_strict} \
-      ~{true="--nexus" false="" nexus} \
-      ~{true="--no-block" false="" no_block} \
-      ~{true="--one-line" false="" one_line} \
-      ~{true="--output-strict" false="" output_strict} \
-      ~{true="--phylip" false="" phylip} \
+      ~{if (auto_detect) then "--auto-detect" else ""} \
+      ~{if (clustal) then "--clustal" else ""} \
+      ~{if (ignore_identical) then "--ignore-identical" else ""} \
+      ~{if (input_strict) then "--input-strict" else ""} \
+      ~{if (nexus) then "--nexus" else ""} \
+      ~{if (no_block) then "--no-block" else ""} \
+      ~{if (one_line) then "--one-line" else ""} \
+      ~{if (output_strict) then "--output-strict" else ""} \
+      ~{if (phylip) then "--phylip" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    mutated_alignment_output: "Mutated alignment output file (default \"stdout\")"
+    mutated_alignment_output: "Mutated alignment output file (default \\\"stdout\\\")"
     rate: "Mutation rate per nucleotide/amino acid (default 0.1)"
-    align: "Alignment input file (default \"stdin\")"
+    align: "Alignment input file (default \\\"stdin\\\")"
     auto_detect: "Auto detects input format (overrides -p, -x and -u)"
     clustal: "Alignment is in clustal? default fasta"
     ignore_identical: "Ignore duplicated sequences that have the same name and same sequences"
@@ -55,5 +55,9 @@ task GoalignMutate {
     threads: "Number of threads (default 1)"
     gaps: "Adds gaps uniformly in an input alignment"
     sn_vs: "Adds substitutions uniformly in an input alignment"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_mutated_alignment_output = "${in_mutated_alignment_output}"
   }
 }

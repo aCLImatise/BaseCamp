@@ -2,25 +2,28 @@ version 1.0
 
 task AmrfinderUpdate {
   input {
-    String? database
+    Directory? database
     Boolean? quiet
-    String? threads
+    Int? threads
     Boolean? debug
-    String? log
+    File? log
   }
   command <<<
     amrfinder_update \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--debug" false="" debug} \
+      ~{if (debug) then "--debug" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
   parameter_meta {
-    database: ""
-    quiet: ""
-    threads: ""
-    debug: ""
-    log: ""
+    database: "Directory for all versions of AMRFinder databases\\nDefault: /usr/local/bin/data"
+    quiet: "Suppress messages to STDERR"
+    threads: "Max. number of threads\\nDefault: 1"
+    debug: "Integrity checks"
+    log: "Error log file, appended, opened on application start\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

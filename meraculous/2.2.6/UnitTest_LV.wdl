@@ -24,25 +24,25 @@ task UnitTestLV {
   }
   command <<<
     UnitTest_LV \
-      ~{true="--list-tests" false="" list_tests} \
-      ~{true="--list-tags" false="" list_tags} \
-      ~{true="--success" false="" success} \
-      ~{true="--break" false="" break} \
-      ~{true="--nothrow" false="" no_throw} \
-      ~{true="--invisibles" false="" invisibles} \
+      ~{if (list_tests) then "--list-tests" else ""} \
+      ~{if (list_tags) then "--list-tags" else ""} \
+      ~{if (success) then "--success" else ""} \
+      ~{if (break) then "--break" else ""} \
+      ~{if (no_throw) then "--nothrow" else ""} \
+      ~{if (invisibles) then "--invisibles" else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(reporter) then ("--reporter " +  '"' + reporter + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
-      ~{true="--abort" false="" abort} \
+      ~{if (abort) then "--abort" else ""} \
       ~{if defined(abort_x) then ("--abortx " +  '"' + abort_x + '"') else ""} \
       ~{if defined(warn) then ("--warn " +  '"' + warn + '"') else ""} \
       ~{if defined(durations) then ("--durations " +  '"' + durations + '"') else ""} \
       ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
-      ~{true="--list-test-names-only" false="" list_test_names_only} \
-      ~{true="--list-reporters" false="" list_reporters} \
+      ~{if (list_test_names_only) then "--list-test-names-only" else ""} \
+      ~{if (list_reporters) then "--list-reporters" else ""} \
       ~{if defined(order) then ("--order " +  '"' + order + '"') else ""} \
-      ~{true="--rng-seed" false="" rng_seed} \
-      ~{true="--force-colour" false="" force_colour}
+      ~{if (rng_seed) then "--rng-seed" else ""} \
+      ~{if (force_colour) then "--force-colour" else ""}
   >>>
   parameter_meta {
     list_tests: "list all/matching test cases"
@@ -64,5 +64,9 @@ task UnitTestLV {
     order: "test case order (defaults to decl)"
     rng_seed: "<'time'|number>   set a specific seed for random numbers"
     force_colour: "force colourised output"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

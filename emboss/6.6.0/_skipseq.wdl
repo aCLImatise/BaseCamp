@@ -1,14 +1,20 @@
 version 1.0
 
-task _skipseq {
+task Skipseq {
   input {
     Boolean? skip
+    Boolean? feature
   }
   command <<<
     _skipseq \
-      ~{true="-skip" false="" skip}
+      ~{if (skip) then "-skip" else ""} \
+      ~{if (feature) then "-feature" else ""}
   >>>
   parameter_meta {
-    skip: "integer    [0] Number of sequences to skip at start (Any integer value)"
+    skip: "integer    [0] Number of sequences to skip at start\\n(Any integer value)"
+    feature: "boolean    Use feature information"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,11 +2,11 @@ version 1.0
 
 task RiboTry {
   input {
-    String? output_directory_default
-    String? verbosity
-    String? cores
+    Directory? output_directory_default
+    File? verbosity
+    Int? cores
     String? threads
-    String? memory
+    Int? memory
   }
   command <<<
     ribo try \
@@ -17,10 +17,15 @@ task RiboTry {
       ~{if defined(memory) then ("--memory " +  '"' + memory + '"') else ""}
   >>>
   parameter_meta {
-    output_directory_default: "output directory; default: /tmp/tmpdvlbjbbn/riboSeed_sample_results"
-    verbosity: "Logger writes debug to file in output dir; this sets verbosity level sent to stderr. 1 = debug(), 2 = info(), 3 = warning(), 4 = error() and 5 = critical(); default: 2"
+    output_directory_default: "output directory; default: /riboSeed_sample_results"
+    verbosity: "Logger writes debug to file in output dir; this sets\\nverbosity level sent to stderr. 1 = debug(), 2 =\\ninfo(), 3 = warning(), 4 = error() and 5 = critical();\\ndefault: 2"
     cores: "cores to be used; default: 2"
-    threads: "if your cores are hyperthreaded, set number threads to the number of threads per processer.If unsure, see 'cat /proc/cpuinfo' under 'cpu cores', or 'lscpu' under 'Thread(s) per core'.: 1"
+    threads: "if your cores are hyperthreaded, set number threads to\\nthe number of threads per processer.If unsure, see\\n'cat /proc/cpuinfo' under 'cpu cores', or 'lscpu'\\nunder 'Thread(s) per core'.: 1"
     memory: "system memory available; default: 8"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_default = "${in_output_directory_default}"
+    File out_verbosity = "${in_verbosity}"
   }
 }

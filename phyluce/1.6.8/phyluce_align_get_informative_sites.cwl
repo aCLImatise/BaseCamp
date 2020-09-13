@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../phyluce_align_get_informative_sites.cwl
 inputs:
-- id: alignments
+- id: in_alignments
   doc: The directory containing the alignment files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --alignments
-- id: output
+- id: in_output
   doc: The output filename
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: input_format
+- id: in_input_format
   doc: The input alignment format
   type: string
   inputBinding:
     prefix: --input-format
-- id: cores
+- id: in_cores
   doc: The number of cores to use.
-  type: string
+  type: long
   inputBinding:
     prefix: --cores
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output filename
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_align_get_informative_sites

@@ -4,14 +4,23 @@ task Happer {
   input {
     File? out
     Boolean? v
+    String seq_file
+    String bed
   }
   command <<<
     happer \
+      ~{seq_file} \
+      ~{bed} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    out: "write haplotype sequences to the specified file; default is the terminal (stdout)"
+    out: "write haplotype sequences to the specified file;\\ndefault is the terminal (stdout)\\n"
     v: ""
+    seq_file: "input sequences in Fasta format"
+    bed: "haplotypes annotated in BED format"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

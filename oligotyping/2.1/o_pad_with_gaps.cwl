@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../o_pad_with_gaps.cwl
 inputs:
-- id: reverse
-  doc: 'Pad the beginning of reads, instead of the end (default: False)'
+- id: in_reverse
+  doc: "Pad the beginning of reads, instead of the end\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --reverse
-- id: output
-  doc: Path for output.
+- id: in_output
+  doc: "Path for output.\n"
   type: File
   inputBinding:
     prefix: --output
-- id: fast_a_file_path
+- id: in_fast_a_file_path
   doc: FASTA file that contains reads to be padded
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Path for output.\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - o-pad-with-gaps

@@ -11,4 +11,7 @@ task TreebestLeaf {
   parameter_meta {
     nh_tree: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- capC-MAP
+- postprocess
 positional: []
 named:
 - !Flag
@@ -15,17 +18,17 @@ named:
   args: !SimpleFlagArg
     name: OUTDIR
   optional: true
-command:
-- capC-MAP
-- postprocess
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - capC-MAP
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - capC-MAP
+    - genomedigest
     positional: []
     named:
     - !Flag
@@ -49,11 +52,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: OUTPUTBED
       optional: true
-    command:
-    - capC-MAP
-    - genomedigest
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -71,6 +72,48 @@ parent: &id001 !Command
     generated_using: &id002
     - --help
   - !Command
+    command:
+    - capC-MAP
+    - getchromsizes
+    positional: []
+    named:
+    - !Flag
+      description: "bed file continaing list of restriction enzyme fragments\nfor\
+        \ genome"
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: FRAGMENTSFILE
+      optional: true
+    - !Flag
+      description: 'output file name (Default: chrom.sizes)'
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTFILE
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: capC-MAP getchromsizes [-h] -f FRAGMENTSFILE [-o OUTFILE]\n\
+      \noptional arguments:\n  -h, --help        show this help message and exit\n\
+      \  -f FRAGMENTSFILE  bed file continaing list of restriction enzyme fragments\n\
+      \                    for genome\n  -o OUTFILE        output file name (Default:\
+      \ chrom.sizes)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - capC-MAP
+    - run
     positional: []
     named:
     - !Flag
@@ -87,11 +130,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: OUTDIR
       optional: true
-    command:
-    - capC-MAP
-    - run
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -105,8 +146,10 @@ parent: &id001 !Command
       \  -h, --help     show this help message and exit\n  -c CONFIGFILE  configuration\
       \ file\n  -o OUTDIR      directory to be created for output\n"
     generated_using: *id002
-  - *id003
   - !Command
+    command:
+    - capC-MAP
+    - combinereps
     positional: []
     named:
     - !Flag
@@ -117,8 +160,8 @@ parent: &id001 !Command
         name: CONFIGFILE
       optional: true
     - !Flag
-      description: directory containing output from capC-MAP for a replicate (option
-        must appear multiple times).
+      description: "directory containing output from capC-MAP for a replicate\n(option\
+        \ must appear multiple times)."
       synonyms:
       - -i
       args: !SimpleFlagArg
@@ -131,11 +174,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: OUTDIR
       optional: true
-    command:
-    - capC-MAP
-    - combinereps
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -151,43 +192,8 @@ parent: &id001 !Command
       \ from capC-MAP for a replicate\n                 (option must appear multiple\
       \ times).\n  -o OUTDIR      directory to be created for combined output\n"
     generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: bed file continaing list of restriction enzyme fragments for genome
-      synonyms:
-      - -f
-      args: !SimpleFlagArg
-        name: FRAGMENTSFILE
-      optional: true
-    - !Flag
-      description: 'output file name (Default: chrom.sizes)'
-      synonyms:
-      - -o
-      args: !SimpleFlagArg
-        name: OUTFILE
-      optional: true
-    command:
-    - capC-MAP
-    - getchromsizes
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: capC-MAP getchromsizes [-h] -f FRAGMENTSFILE [-o OUTFILE]\n\
-      \noptional arguments:\n  -h, --help        show this help message and exit\n\
-      \  -f FRAGMENTSFILE  bed file continaing list of restriction enzyme fragments\n\
-      \                    for genome\n  -o OUTFILE        output file name (Default:\
-      \ chrom.sizes)\n"
-    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -218,6 +224,7 @@ parent: &id001 !Command
     \                 restriction enzyme fragments.\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

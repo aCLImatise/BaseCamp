@@ -6,7 +6,7 @@ task SketchySurveyPopmap {
     File? tree
     File? graph
     File? index
-    String? column
+    File? column
     File? path_output_gif
   }
   command <<<
@@ -19,11 +19,15 @@ task SketchySurveyPopmap {
       ~{if defined(path_output_gif) then ("--output " +  '"' + path_output_gif + '"') else ""}
   >>>
   parameter_meta {
-    ssh: "Path to sum of shared hashes file to map to population [required]  [required]"
-    tree: "Path to phylogeny [newick] to use as population map [required] NOTE: This argument is mutually exclusive with arguments: [graph]."
-    graph: "Path to a population graph to use as population map [none] NOTE: This argument is mutually exclusive with arguments: [tree]."
-    index: "Path to lineage index file to use as validation population [required]  [required]"
-    column: "Column in index file that map the indices from the sum of shared hashes file to the population"
+    ssh: "Path to sum of shared hashes file to map to population\\n[required]  [required]"
+    tree: "Path to phylogeny [newick] to use as population map\\n[required] NOTE: This argument is mutually exclusive with\\narguments: [graph]."
+    graph: "Path to a population graph to use as population map\\n[none] NOTE: This argument is mutually exclusive with\\narguments: [tree]."
+    index: "Path to lineage index file to use as validation\\npopulation [required]  [required]"
+    column: "Column in index file that map the indices from the sum of\\nshared hashes file to the population"
     path_output_gif: "Path to a output GIF [pop.gif]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_gif = "${in_path_output_gif}"
   }
 }

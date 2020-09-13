@@ -1,4 +1,6 @@
 !Command
+command:
+- cdbyank
 positional:
 - !Positional
   description: ''
@@ -6,6 +8,107 @@ positional:
   name: index_file
   optional: false
 named:
+- !Flag
+  description: "the sequence name (accession) for a fasta record to be\nretrieved;\
+    \ if not given, a list of accessions is expected\nat stdin"
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: key
+  optional: true
+- !Flag
+  description: "is the fasta file to pull records from;\nif not specified, cdbyank\
+    \ will look in the same directory\nwhere <index_file> resides, for a file with\
+    \ the same name\nbut without the \".cidx\" suffix"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: fasta_file
+  optional: true
+- !Flag
+  description: records found are written to file <outfile> instead of stdout
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: the
+  optional: true
+- !Flag
+  description: "retrieval of multiple records per key, if the indexed\ndatabase had\
+    \ records with the same key (non-unique keys);\n(without -x only one record for\
+    \ a given key is retrieved)"
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: allows
+  optional: true
+- !Flag
+  description: "insensitive query (expects the <index_file> to have been\ncreated\
+    \ with cdbfasta -i option)"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: case
+  optional: true
+- !Flag
+  description: "the query key surrounded by character '%' before the\ncorresponding\
+    \ record"
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: output
+  optional: true
+- !Flag
+  description: as -Q but use character <char> instead of '%'
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: same
+  optional: true
+- !Flag
+  description: warnings (sent to stderr) when a key is not found
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: enable
+  optional: true
+- !Flag
+  description: only the defline for each record (discard the sequence)
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: pulls
+  optional: true
+- !Flag
+  description: "displays the position(s) (file offset) within the\ndatabase file,\
+    \ for the requested record(s)"
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: only
+  optional: true
+- !Flag
+  description: "range extraction: expects the input <key(s)> to have\nthe format:\
+    \ '<seq_name> <start> <end>'\nand pulls only the specified sequence range"
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: sequence
+  optional: true
+- !Flag
+  description: "the entire file <dbfasta.cdbz>\n(assumes it was built using cdbfasta\
+    \ with '-z' option)"
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: decompress
+  optional: true
+- !Flag
+  description: version number and exit
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: show
+  optional: true
 - !Flag
   description: the number of records indexed
   synonyms:
@@ -27,17 +130,9 @@ named:
   args: !SimpleFlagArg
     name: display
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -d
-  args: !SimpleFlagArg
-    name: fasta_file
-  optional: true
-command:
-- cdbyank
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

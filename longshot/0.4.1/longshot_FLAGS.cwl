@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../longshot_FLAGS.cwl
 inputs:
-- id: bam
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --bam
-- id: ref
+- id: in_ref
   doc: ''
   type: string
   inputBinding:
     prefix: --ref
-- id: out
+- id: in_bam
   doc: ''
   type: string
   inputBinding:
-    prefix: --out
-outputs: []
+    prefix: --bam
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - longshot

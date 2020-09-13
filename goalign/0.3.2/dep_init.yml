@@ -1,4 +1,7 @@
-&id001 !Command
+&id003 !Command
+command:
+- dep
+- init
 positional:
 - !Positional
   description: ''
@@ -31,24 +34,43 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dep
-- init
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - dep
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - dep
+    - status
     positional:
     - !Positional
-      description: ''
+      description: Import path
       position: 0
-      name: package...
-      optional: true
+      name: PROJECT
+      optional: false
+    - !Positional
+      description: Version constraint, from the manifest
+      position: 1
+      name: CONSTRAINT
+      optional: false
+    - !Positional
+      description: Version chosen, from the lock
+      position: 2
+      name: VERSION
+      optional: false
+    - !Positional
+      description: VCS revision of the chosen version
+      position: 3
+      name: REVISION
+      optional: false
+    - !Positional
+      description: Latest VCS revision available
+      position: 4
+      name: LATEST
+      optional: false
     named:
     - !Flag
       description: 'include more detail in the chosen format (default: false)'
@@ -111,11 +133,9 @@ parent: &id002 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - dep
-    - status
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -138,9 +158,95 @@ parent: &id002 !Command
       \ dependencies (default: false)\n  -out       path to a file to which to write\
       \ the output. Blank value will be ignored (default: <none>)\n  -v         enable\
       \ verbose logging (default: false)\n\n"
-    generated_using: &id003
+    generated_using: &id002
     - --help
   - !Command
+    command:
+    - dep
+    - check
+    positional: []
+    named:
+    - !Flag
+      description: 'Suppress non-error output (default: false)'
+      synonyms:
+      - -q
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Skip checking that imports and Gopkg.toml are in sync with Gopkg.lock
+        (default: false)'
+      synonyms:
+      - -skip-lock
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Skip checking that vendor is in sync with Gopkg.lock (default:
+        false)'
+      synonyms:
+      - -skip-vendor
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: dep check [-q] [-skip-lock] [-skip-vendor]\n\nCheck determines\
+      \ if your project is in a good state. If problems are found, it\nprints a description\
+      \ of each issue, then exits 1. Passing -q suppresses output.\n\nFlags control\
+      \ which specific checks will be run. By default, dep check verifies\nthat Gopkg.lock\
+      \ is in sync with Gopkg.toml and the imports in your project's .go\nfiles, and\
+      \ that the vendor directory is in sync with Gopkg.lock. These checks\ncan be\
+      \ disabled with -skip-lock and -skip-vendor, respectively.\n\n(See https://golang.github.io/dep/docs/ensure-mechanics.html#staying-in-sync\
+      \ for\nmore information on what it means to be \"in sync.\")\n\nIf your workflow\
+      \ necessitates that you modify the contents of vendor, you can\nforce check\
+      \ to ignore hash mismatches on a per-project basis by naming\nproject roots\
+      \ in Gopkg.toml's \"noverify\" list.\n\nFlags:\n\n  -q            Suppress non-error\
+      \ output (default: false)\n  -skip-lock    Skip checking that imports and Gopkg.toml\
+      \ are in sync with Gopkg.lock (default: false)\n  -skip-vendor  Skip checking\
+      \ that vendor is in sync with Gopkg.lock (default: false)\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - dep
+    - version
+    positional:
+    - !Positional
+      description: ': devel'
+      position: 0
+      name: version
+      optional: false
+    - !Positional
+      description: 'go compiler : gc'
+      position: 0
+      name: go1.13.5
+      optional: false
+    - !Positional
+      description: ': linux/amd64'
+      position: 1
+      name: platform
+      optional: false
+    - !Positional
+      description: ': ImportDuringSolve=false'
+      position: 2
+      name: features
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "dep:\n version     : devel\n build date  : \n git hash    : \n go\
+      \ version  : go1.13.5\n go compiler : gc\n platform    : linux/amd64\n features\
+      \    : ImportDuringSolve=false\n"
+    generated_using: []
+  - !Command
+    command:
+    - dep
+    - ensure
     positional: []
     named:
     - !Flag
@@ -189,11 +295,9 @@ parent: &id002 !Command
       - -vendor-only
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - dep
-    - ensure
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -222,78 +326,9 @@ parent: &id002 !Command
       \ named) in Gopkg.lock to the latest allowed by Gopkg.toml (default: false)\n\
       \  -v            enable verbose logging (default: false)\n  -vendor-only  populate\
       \ vendor/ from Gopkg.lock without updating it first (default: false)\n\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ': linux/amd64'
-      position: 0
-      name: platform
-      optional: false
-    - !Positional
-      description: ': ImportDuringSolve=false'
-      position: 1
-      name: features
-      optional: false
-    named: []
-    command:
-    - dep
-    - version
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "dep:\n version     : devel\n build date  : \n git hash    : \n go\
-      \ version  : go1.13.5\n go compiler : gc\n platform    : linux/amd64\n features\
-      \    : ImportDuringSolve=false\n"
-    generated_using: []
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'Suppress non-error output (default: false)'
-      synonyms:
-      - -q
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Skip checking that imports and Gopkg.toml are in sync with Gopkg.lock
-        (default: false)'
-      synonyms:
-      - -skip-lock
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Skip checking that vendor is in sync with Gopkg.lock (default:
-        false)'
-      synonyms:
-      - -skip-vendor
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - dep
-    - check
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Usage: dep check [-q] [-skip-lock] [-skip-vendor]\n\nCheck determines\
-      \ if your project is in a good state. If problems are found, it\nprints a description\
-      \ of each issue, then exits 1. Passing -q suppresses output.\n\nFlags control\
-      \ which specific checks will be run. By default, dep check verifies\nthat Gopkg.lock\
-      \ is in sync with Gopkg.toml and the imports in your project's .go\nfiles, and\
-      \ that the vendor directory is in sync with Gopkg.lock. These checks\ncan be\
-      \ disabled with -skip-lock and -skip-vendor, respectively.\n\n(See https://golang.github.io/dep/docs/ensure-mechanics.html#staying-in-sync\
-      \ for\nmore information on what it means to be \"in sync.\")\n\nIf your workflow\
-      \ necessitates that you modify the contents of vendor, you can\nforce check\
-      \ to ignore hash mismatches on a per-project basis by naming\nproject roots\
-      \ in Gopkg.toml's \"noverify\" list.\n\nFlags:\n\n  -q            Suppress non-error\
-      \ output (default: false)\n  -skip-lock    Skip checking that imports and Gopkg.toml\
-      \ are in sync with Gopkg.lock (default: false)\n  -skip-vendor  Skip checking\
-      \ that vendor is in sync with Gopkg.lock (default: false)\n\n"
-    generated_using: *id003
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -308,8 +343,9 @@ parent: &id002 !Command
     \ locked versions of all dependencies\n  dep ensure -add github.com/pkg/errors\
     \  add a dependency to the project\n\nUse \"dep help [command]\" for more information\
     \ about a command.\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -335,4 +371,4 @@ help_text: "Usage: dep init [root]\n\nInitialize the project at filepath root by
   \  don't include example in Gopkg.toml (default: false)\n  -skip-tools   skip importing\
   \ configuration from other dependency managers (default: false)\n  -v          \
   \  enable verbose logging (default: false)\n\n"
-generated_using: *id003
+generated_using: *id002

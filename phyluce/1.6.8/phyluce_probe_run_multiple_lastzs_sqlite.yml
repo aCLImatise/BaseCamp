@@ -1,13 +1,33 @@
 !Command
-positional: []
+command:
+- phyluce_probe_run_multiple_lastzs_sqlite
+positional:
+- !Positional
+  description: --cores CORES         The number of compute cores to use
+  position: 0
+  name: directory
+  optional: false
 named:
 - !Flag
-  description: The database in which to store results (also use --append if adding
-    results to an existing database)
+  description: ''
+  synonyms:
+  - --probefile
+  args: !SimpleFlagArg
+    name: PROBEFILE
+  optional: true
+- !Flag
+  description: The database in which to store results (also use
   synonyms:
   - --db
   args: !SimpleFlagArg
     name: DB
+  optional: true
+- !Flag
+  description: adding results to an existing database)
+  synonyms:
+  - --append
+  args: !SimpleFlagArg
+    name: if
   optional: true
 - !Flag
   description: The directory in which to store the LASTZ files
@@ -17,47 +37,27 @@ named:
     name: OUTPUT
   optional: true
 - !Flag
-  description: The probe file to align against the sequences
-  synonyms:
-  - --probefile
-  args: !SimpleFlagArg
-    name: PROBEFILE
-  optional: true
-- !Flag
-  description: The list of organisms with genome sequences in chromosomes
+  description: "The list of organisms with genome sequences in\nchromosomes"
   synonyms:
   - --chromolist
   args: !RepeatFlagArg
     name: CHROMOLIST
   optional: true
 - !Flag
-  description: The list of organisms with genome sequences in scaffolds/contigs
+  description: "The list of organisms with genome sequences in\nscaffolds/contigs"
   synonyms:
   - --scaffoldlist
   args: !RepeatFlagArg
     name: SCAFFOLDLIST
   optional: true
 - !Flag
-  description: Insert results to an existing database
-  synonyms:
-  - --append
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: If genome sequences are not in their own abbr. directory
+  description: If genome sequences are not in their own abbr.
   synonyms:
   - --no-dir
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: The number of compute cores to use
-  synonyms:
-  - --cores
-  args: !SimpleFlagArg
-    name: CORES
-  optional: true
-- !Flag
-  description: The base path to a directory containing genomes sequences
+  description: "The base path to a directory containing genomes\nsequences"
   synonyms:
   - --genome-base-path
   args: !SimpleFlagArg
@@ -77,10 +77,9 @@ named:
   args: !SimpleFlagArg
     name: IDENTITY
   optional: true
-command:
-- phyluce_probe_run_multiple_lastzs_sqlite
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

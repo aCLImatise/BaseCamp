@@ -2,23 +2,23 @@ version 1.0
 
 task QuorumErrorCorrectReads {
   input {
-    String? thread
-    String? min_count
-    String? skip
-    String? good
-    String? anchor_count
-    String? window
-    String? error
-    String? output_file_prefix
+    Int? thread
+    Int? min_count
+    Int? skip
+    Int? good
+    Int? anchor_count
+    Int? window
+    Int? error
+    File? output_file_prefix
     File? contaminant
     Boolean? trim_contaminant
     Int? homo_trim
-    Boolean? gzip
+    File? gzip
     Boolean? no_mmap
-    String? a_priori_error_rate
-    String? poisson_threshold
-    String? cut_off
-    String? qual_cut_off_value
+    Float? a_priori_error_rate
+    Float? poisson_threshold
+    Int? cut_off
+    Int? qual_cut_off_value
     String? qual_cut_off_char
     Boolean? no_discard
     Boolean? verbose
@@ -38,21 +38,21 @@ task QuorumErrorCorrectReads {
       ~{if defined(error) then ("--error " +  '"' + error + '"') else ""} \
       ~{if defined(output_file_prefix) then ("--output " +  '"' + output_file_prefix + '"') else ""} \
       ~{if defined(contaminant) then ("--contaminant " +  '"' + contaminant + '"') else ""} \
-      ~{true="--trim-contaminant" false="" trim_contaminant} \
+      ~{if (trim_contaminant) then "--trim-contaminant" else ""} \
       ~{if defined(homo_trim) then ("--homo-trim " +  '"' + homo_trim + '"') else ""} \
-      ~{true="--gzip" false="" gzip} \
-      ~{true="--no-mmap" false="" no_mmap} \
+      ~{if (gzip) then "--gzip" else ""} \
+      ~{if (no_mmap) then "--no-mmap" else ""} \
       ~{if defined(a_priori_error_rate) then ("--apriori-error-rate " +  '"' + a_priori_error_rate + '"') else ""} \
       ~{if defined(poisson_threshold) then ("--poisson-threshold " +  '"' + poisson_threshold + '"') else ""} \
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
       ~{if defined(qual_cut_off_value) then ("--qual-cutoff-value " +  '"' + qual_cut_off_value + '"') else ""} \
       ~{if defined(qual_cut_off_char) then ("--qual-cutoff-char " +  '"' + qual_cut_off_char + '"') else ""} \
-      ~{true="--no-discard" false="" no_discard} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (no_discard) then "--no-discard" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     thread: "Number of threads (1)"
-    min_count: "Minimum count for a k-mer to be considered \"good\" (1)"
+    min_count: "Minimum count for a k-mer to be considered \\\"good\\\" (1)"
     skip: "Number of bases to skip for start k-mer (1)"
     good: "Number of good k-mer in a row for anchor (2)"
     anchor_count: "Minimum count for an anchor k-mer (3)"
@@ -73,5 +73,10 @@ task QuorumErrorCorrectReads {
     verbose: "Be verbose (false)"
     error_correct_reads: ""
     db: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_prefix = "${in_output_file_prefix}"
+    File out_gzip = "${in_gzip}"
   }
 }

@@ -7,7 +7,7 @@ task Humann2RenormTable {
     String? mode
     String? special
     Boolean? update_s_names
-    String? path_modified_output
+    File? path_modified_output
   }
   command <<<
     humann2_renorm_table \
@@ -15,7 +15,7 @@ task Humann2RenormTable {
       ~{if defined(units) then ("--units " +  '"' + units + '"') else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(special) then ("--special " +  '"' + special + '"') else ""} \
-      ~{true="--update-snames" false="" update_s_names} \
+      ~{if (update_s_names) then "--update-snames" else ""} \
       ~{if defined(path_modified_output) then ("--output " +  '"' + path_modified_output + '"') else ""}
   >>>
   parameter_meta {
@@ -24,6 +24,10 @@ task Humann2RenormTable {
     mode: "Normalize all levels by [community] total or [levelwise] totals; default=[community]"
     special: "Include the special features UNMAPPED, UNINTEGRATED, and UNGROUPED; default=[y]"
     update_s_names: "Update '-RPK' in sample names to appropriate suffix; default=off"
-    path_modified_output: "Path for modified output table; default=[STDOUT]"
+    path_modified_output: "Path for modified output table; default=[STDOUT]\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_modified_output = "${in_path_modified_output}"
   }
 }

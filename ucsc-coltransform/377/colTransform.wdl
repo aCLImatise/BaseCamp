@@ -6,21 +6,21 @@ task ColTransform {
     String input_dot_tab
     String add_factor
     String mul_factor
-    String output_dot_tab
   }
   command <<<
     colTransform \
       ~{column} \
       ~{input_dot_tab} \
       ~{add_factor} \
-      ~{mul_factor} \
-      ~{output_dot_tab}
+      ~{mul_factor}
   >>>
   parameter_meta {
     column: ""
     input_dot_tab: ""
     add_factor: ""
     mul_factor: ""
-    output_dot_tab: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

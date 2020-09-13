@@ -4,4 +4,7 @@ task Vcflength {
   command <<<
     vcflength
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

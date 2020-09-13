@@ -1,32 +1,45 @@
 class: CommandLineTool
 id: ../../../phyluce_snp_get_dbsnp_freq_stats.cwl
 inputs:
-- id: dbsnp
+- id: in_dbsnp
   doc: CSV input from dbSNP giving SNP positions within UCE
   type: string
   inputBinding:
     prefix: --dbsnp
-- id: xml
+- id: in_xml
   doc: The XML file holiding locus data from dbSNP
-  type: string
+  type: File
   inputBinding:
     prefix: --xml
-- id: output
+- id: in_output
   doc: The output file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: output_two
+- id: in_output_two
   doc: The output file
-  type: string
+  type: File
   inputBinding:
     prefix: --output2
-- id: dupe_file
+- id: in_dupe_file
   doc: The path to a lastz file of lastz-against-self results
-  type: string
+  type: File
   inputBinding:
     prefix: --dupefile
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_output_two
+  doc: The output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_two)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_snp_get_dbsnp_freq_stats

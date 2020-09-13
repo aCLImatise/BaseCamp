@@ -1,7 +1,10 @@
 version 1.0
 
-task RunOrthomcl.py {
+task RunOrthomcl {
   command <<<
-    run_orthomcl.py
+    run_orthomcl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

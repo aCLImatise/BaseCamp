@@ -4,41 +4,41 @@ task Snippy {
   input {
     Boolean? citation
     Boolean? check
-    Boolean? force
+    Directory? force
     Boolean? quiet
-    String? cpus
-    String? ram
+    Int? cpus
+    Int? ram
     String? tmpdir
     String? reference
-    String? r_one
-    String? r_two
+    Int? r_one
+    Int? r_two
     String? se
     String? ctg_s
-    String? peil
-    String? bam
-    String? targets
-    String? subsample
-    String? outdir
+    Int? peil
+    File? bam
+    File? targets
+    Int? subsample
+    Directory? outdir
     String? prefix
     Boolean? report
     Boolean? cleanup
     String? rg_id
     Boolean? unmapped
-    String? map_qual
-    String? base_qual
-    String? min_cov
-    String? min_frac
-    String? min_qual
-    String? max_soft
+    Int? map_qual
+    Int? base_qual
+    Int? min_cov
+    Int? min_frac
+    Int? min_qual
+    Int? max_soft
     String? bwa_opt
-    String? fb_opt
+    Float? fb_opt
   }
   command <<<
     snippy \
-      ~{true="--citation" false="" citation} \
-      ~{true="--check" false="" check} \
-      ~{true="--force" false="" force} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (citation) then "--citation" else ""} \
+      ~{if (check) then "--check" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if defined(ram) then ("--ram " +  '"' + ram + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
@@ -53,10 +53,10 @@ task Snippy {
       ~{if defined(subsample) then ("--subsample " +  '"' + subsample + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
-      ~{true="--report" false="" report} \
-      ~{true="--cleanup" false="" cleanup} \
+      ~{if (report) then "--report" else ""} \
+      ~{if (cleanup) then "--cleanup" else ""} \
       ~{if defined(rg_id) then ("--rgid " +  '"' + rg_id + '"') else ""} \
-      ~{true="--unmapped" false="" unmapped} \
+      ~{if (unmapped) then "--unmapped" else ""} \
       ~{if defined(map_qual) then ("--mapqual " +  '"' + map_qual + '"') else ""} \
       ~{if defined(base_qual) then ("--basequal " +  '"' + base_qual + '"') else ""} \
       ~{if defined(min_cov) then ("--mincov " +  '"' + min_cov + '"') else ""} \
@@ -97,5 +97,10 @@ task Snippy {
     max_soft: "Maximum soft clipping to allow (default '10')"
     bwa_opt: "Extra BWA MEM options, eg. -x pacbio (default '')"
     fb_opt: "Extra Freebayes options, eg. --theta 1E-6 --read-snp-limit 2 (default '')"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_force = "${in_force}"
+    Directory out_outdir = "${in_outdir}"
   }
 }

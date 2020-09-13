@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- smafa
+- makedb
 positional:
 - !Positional
   description: ''
@@ -9,11 +12,6 @@ positional:
   description: ''
   position: 1
   name: DB_FASTA
-  optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: DB
   optional: false
 named:
 - !Flag
@@ -42,10 +40,9 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- smafa
-- makedb
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - smafa
   positional: []
   named:
   - !Flag
@@ -62,22 +59,19 @@ parent: &id001 !Command
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - smafa
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - smafa
+    - cluster
     positional:
     - !Positional
       description: ''
       position: 0
       name: FLAGS
       optional: true
-    - !Positional
-      description: ''
-      position: 1
-      name: FASTA
-      optional: false
     named:
     - !Flag
       description: 'Sequences are amino acid [default: nucleotide]'
@@ -121,11 +115,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
-    command:
-    - smafa
-    - cluster
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Prints help information
       synonyms:
@@ -154,7 +146,7 @@ parent: &id001 !Command
       \    Sequences to cluster\n"
     generated_using: &id003
     - --help
-  - *id002
+  usage: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -181,6 +173,7 @@ parent: &id001 !Command
     \      Search a database\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Prints help information
   synonyms:

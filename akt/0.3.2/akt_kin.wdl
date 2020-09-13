@@ -19,18 +19,18 @@ task AktKin {
   command <<<
     akt kin \
       ~{in_dot_bcf} \
-      ~{true="--minkin" false="" minkin} \
-      ~{true="--freq-file" false="" freq_file} \
-      ~{true="--method" false="" method} \
-      ~{true="--aftag" false="" af_tag} \
-      ~{true="--threads" false="" threads} \
-      ~{true="--regions-file" false="" regions_file} \
-      ~{true="--regions" false="" regions} \
-      ~{true="--targets-file" false="" targets_file} \
-      ~{true="--targets" false="" targets} \
-      ~{true="--force" false="" force} \
-      ~{true="--samples" false="" samples} \
-      ~{true="--samples-file" false="" samples_file}
+      ~{if (minkin) then "--minkin" else ""} \
+      ~{if (freq_file) then "--freq-file" else ""} \
+      ~{if (method) then "--method" else ""} \
+      ~{if (af_tag) then "--aftag" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (regions_file) then "--regions-file" else ""} \
+      ~{if (regions) then "--regions" else ""} \
+      ~{if (targets_file) then "--targets-file" else ""} \
+      ~{if (targets) then "--targets" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (samples) then "--samples" else ""} \
+      ~{if (samples_file) then "--samples-file" else ""}
   >>>
   parameter_meta {
     minkin: ":                   threshold for relatedness output (none)"
@@ -46,5 +46,8 @@ task AktKin {
     samples: ":                  list of samples"
     samples_file: ":             list of samples, file"
     in_dot_bcf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

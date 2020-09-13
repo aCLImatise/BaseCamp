@@ -2,7 +2,7 @@ version 1.0
 
 task Dbletters {
   input {
-    String? db
+    File? db
     String? option
     String run_name
   }
@@ -16,5 +16,8 @@ task Dbletters {
     db: "[-db seq_filen]*     one or more sequence files"
     option: ""
     run_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogWorkflowValidator {
+task WatchdogworkflowValidator {
   command <<<
-    watchdog-workflowValidator
+    watchdog_workflowValidator
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

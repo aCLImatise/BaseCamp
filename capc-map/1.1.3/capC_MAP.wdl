@@ -2,6 +2,9 @@ version 1.0
 
 task CapCMAP {
   command <<<
-    capC-MAP
+    capC_MAP
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,5 +1,17 @@
 !Command
+command:
+- IRFinder
 positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Unsorted.bam
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: ftp
+  optional: false
 - !Positional
   description: ''
   position: 0
@@ -21,12 +33,13 @@ named:
     name: Show
   optional: true
 - !Flag
-  description: FastQ (default. Quantifies intron retention from FASTQ file); BAM (quantifies
-    intron retention from a name-sorted BAM file); BuildRef (builds IRFinder reference
-    from Ensembl FTP site. Requires Internet), BuildRefDownload (only downloads FASTA
-    and GTF files from Ensembl FTP site, without building IRFinder reference. Requires
-    Internet), BuildRefProcess (builds IRFinder reference from local FASTA and GTF
-    files), BuildRefFromSTARRef (builds IRFinder reference from a local STAR reference).
+  description: "FastQ (default. Quantifies intron retention from FASTQ file);\nBAM\
+    \ (quantifies intron retention from a name-sorted BAM file);\nBuildRef (builds\
+    \ IRFinder reference from Ensembl FTP site. Requires Internet),\nBuildRefDownload\
+    \ (only downloads FASTA and GTF files from Ensembl FTP site, without building\
+    \ IRFinder reference. Requires Internet),\nBuildRefProcess (builds IRFinder reference\
+    \ from local FASTA and GTF files),\nBuildRefFromSTARRef (builds IRFinder reference\
+    \ from a local STAR reference)."
   synonyms:
   - -m
   args: !SimpleFlagArg
@@ -68,6 +81,18 @@ named:
   - -R
   args: !SimpleFlagArg
     name: ROI.bed.gz
+  optional: true
+- !Flag
+  description: "An existing STAR reference folder.\nPlease note: By default, BuildRefFromSTARRef\
+    \ mode automatically looks for the original FASTA and GTF files used to generate\
+    \ STARRefDir.\nSpecifically, IRFinder investigates 'genomeParameters.txt' in STARRefDir.\n\
+    If both files can be located, IRFinder will continue to generate reference, ignoring\
+    \ '-f' and '-g' options.\nIf either file is missing, IRFinder will quit and you\
+    \ have to re-run it by giving both '-f' and '-g' options."
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: STARRefDir.
   optional: true
 - !Flag
   description: ': This MUST be the same FASTA file used to generate STARRefDir. Ignored
@@ -143,10 +168,9 @@ named:
   args: !SimpleFlagArg
     name: Sort
   optional: true
-command:
-- IRFinder
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

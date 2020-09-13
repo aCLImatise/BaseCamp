@@ -7,11 +7,14 @@ task Eproxy {
   }
   command <<<
     eproxy \
-      ~{true="-alias" false="" file_of_aliases} \
-      ~{true="-pipe" false="" pipe}
+      ~{if (file_of_aliases) then "-alias" else ""} \
+      ~{if (pipe) then "-pipe" else ""}
   >>>
   parameter_meta {
     file_of_aliases: "File of aliases"
     pipe: "Read aliases from stdin"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

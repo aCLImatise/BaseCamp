@@ -4,4 +4,7 @@ task Nimnexus {
   command <<<
     nimnexus
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

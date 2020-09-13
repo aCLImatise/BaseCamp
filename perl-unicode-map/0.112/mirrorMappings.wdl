@@ -4,4 +4,7 @@ task MirrorMappings {
   command <<<
     mirrorMappings
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

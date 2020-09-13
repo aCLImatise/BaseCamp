@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../merCounterTh_56mer.cwl
 inputs:
-- id: mer_size
+- id: in_mer_size
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: min_count_to_report
+- id: in_min_count_to_report
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 1
-- id: num_threads
+- id: in_num_threads
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: prefix_list_to_hash
+- id: in_prefix_list_to_hash
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: output_prefix
+- id: in_output_prefix
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: fast_q_descriptor_file
+- id: in_fast_q_descriptor_file
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: trim_flag
+- id: in_trim_flag
   doc: ''
   type: string
   inputBinding:
     position: 6
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - merCounterTh_56mer

@@ -1,7 +1,10 @@
 version 1.0
 
-task EpicOverlaps {
+task Epicoverlaps {
   command <<<
-    epic-overlaps
+    epic_overlaps
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

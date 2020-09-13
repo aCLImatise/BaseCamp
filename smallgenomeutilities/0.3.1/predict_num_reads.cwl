@@ -1,48 +1,56 @@
 class: CommandLineTool
 id: ../../../predict_num_reads.cwl
 inputs:
-- id: length_trimming_default
-  doc: 'Length of the sliding window for emulating read trimming (default: 10)'
+- id: in_length_sliding_window
+  doc: "Length of the sliding window for emulating read trimming\n(default: 10)"
   type: long
   inputBinding:
     prefix: -w
-- id: qual
-  doc: 'Quality threshold for emulating read trimming (default: 30)'
+- id: in_qual
+  doc: "Quality threshold for emulating read trimming (default:\n30)"
   type: long
   inputBinding:
     prefix: --qual
-- id: threshold_read_counts
+- id: in_threshold_read_counts
   doc: 'Threshold on the read counts (default: 25000)'
   type: long
   inputBinding:
     prefix: -c
-- id: read_length_specify
-  doc: 'Read length. If not specify estimated for every read independently (default:
-    None)'
+- id: in_read_length_specify
+  doc: "Read length. If not specify estimated for every read\nindependently (default:\
+    \ None)"
   type: long
   inputBinding:
     prefix: -l
-- id: output_file_name
+- id: in_output_file_name
   doc: 'Output file name (default: output.tsv)'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: patientsample_identifier_default
+- id: in_patientsample_identifier_default
   doc: 'Patient/sample identifier (default: None)'
   type: string
   inputBinding:
     prefix: -n
-- id: sample_date_default
+- id: in_sample_date_default
   doc: 'Sample date (default: None)'
   type: string
   inputBinding:
     prefix: -d
-- id: fast_q
+- id: in_fast_q
   doc: FASTQ files for forward and reverse reads
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_name
+  doc: 'Output file name (default: output.tsv)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_name)
 cwlVersion: v1.1
 baseCommand:
 - predict_num_reads

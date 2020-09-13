@@ -4,4 +4,7 @@ task MuSE {
   command <<<
     MuSE
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

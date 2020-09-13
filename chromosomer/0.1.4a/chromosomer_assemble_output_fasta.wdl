@@ -16,7 +16,7 @@ task ChromosomerAssembleOutputFasta {
       ~{var_map} \
       ~{fragment_fast_a} \
       ~{output_fast_a} \
-      ~{true="-s" false="" s}
+      ~{if (s) then "-s" else ""}
   >>>
   parameter_meta {
     s: ""
@@ -25,5 +25,8 @@ task ChromosomerAssembleOutputFasta {
     var_map: ""
     fragment_fast_a: ""
     output_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

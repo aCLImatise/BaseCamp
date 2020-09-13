@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../spacepharer_filtermatchbyfdr.cwl
 inputs:
-- id: fdr
+- id: in_fdr
   doc: FDR cutoff for filtering matches[0.0, 1.0] [0.050]
   type: double
   inputBinding:
     prefix: --fdr
-- id: compressed
+- id: in_compressed
   doc: Write compressed output [0]
   type: long
   inputBinding:
     prefix: --compressed
-- id: threads
+- id: in_threads
   doc: Number of CPU-cores used (all by default) [8]
   type: long
   inputBinding:
     prefix: --threads
-- id: verbosity_level_errors
+- id: in_verbosity_level_errors
   doc: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
   type: long
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - spacepharer

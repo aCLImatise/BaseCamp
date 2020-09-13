@@ -1,7 +1,10 @@
 version 1.0
 
-task BetweenTwoGenes {
+task Betweentwogenes {
   command <<<
-    between-two-genes
+    between_two_genes
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

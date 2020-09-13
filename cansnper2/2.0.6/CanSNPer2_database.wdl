@@ -1,6 +1,6 @@
 version 1.0
 
-task CanSNPer2Database {
+task CanSNPer2database {
   input {
     Boolean? db
     Boolean? tree
@@ -10,7 +10,6 @@ task CanSNPer2Database {
     Boolean? create
     Boolean? mod_file
     Boolean? parent
-    Boolean? remove
     Boolean? replace
     Boolean? export
     Boolean? export_format
@@ -20,27 +19,28 @@ task CanSNPer2Database {
     Boolean? verbose
     Boolean? debug
     Boolean? supress
+    String update_slash_replace_slash_remove
   }
   command <<<
-    CanSNPer2-database \
-      ~{true="-db" false="" db} \
-      ~{true="--tree" false="" tree} \
-      ~{true="--annotation" false="" annotation} \
-      ~{true="--references" false="" references} \
-      ~{true="--source_type" false="" source_type} \
-      ~{true="--create" false="" create} \
-      ~{true="--mod_file" false="" mod_file} \
-      ~{true="--parent" false="" parent} \
-      ~{true="--remove" false="" remove} \
-      ~{true="--replace" false="" replace} \
-      ~{true="--export" false="" export} \
-      ~{true="--export_format" false="" export_format} \
-      ~{true="-o" false="" _outdir_outdir} \
-      ~{true="--tmpdir" false="" tmpdir} \
-      ~{true="--logs" false="" logs} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--supress" false="" supress}
+    CanSNPer2_database \
+      ~{update_slash_replace_slash_remove} \
+      ~{if (db) then "-db" else ""} \
+      ~{if (tree) then "--tree" else ""} \
+      ~{if (annotation) then "--annotation" else ""} \
+      ~{if (references) then "--references" else ""} \
+      ~{if (source_type) then "--source_type" else ""} \
+      ~{if (create) then "--create" else ""} \
+      ~{if (mod_file) then "--mod_file" else ""} \
+      ~{if (parent) then "--parent" else ""} \
+      ~{if (replace) then "--replace" else ""} \
+      ~{if (export) then "--export" else ""} \
+      ~{if (export_format) then "--export_format" else ""} \
+      ~{if (_outdir_outdir) then "-o" else ""} \
+      ~{if (tmpdir) then "--tmpdir" else ""} \
+      ~{if (logs) then "--logs" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (supress) then "--supress" else ""}
   >>>
   parameter_meta {
     db: ", --database   CanSNPer2 database name"
@@ -50,10 +50,9 @@ task CanSNPer2Database {
     source_type: "Select source file type"
     create: "Create new database!"
     mod_file: "File with modifications/update to the tree"
-    parent: "Node (or nodes matching tree file) from which to update/replace/remove"
-    remove: "If node is given, instead of replace/update remove branch from node"
+    parent: "Node (or nodes matching tree file) from which to"
     replace: "replace node"
-    export: "Export database to text format (exports tree and annotation file)"
+    export: "Export database to text format (exports tree and\\nannotation file)"
     export_format: "Select output format [tab, newick]"
     _outdir_outdir: ", --outdir      outdir for database export!"
     tmpdir: "Specify tmp directory default (/tmp)"
@@ -61,5 +60,9 @@ task CanSNPer2Database {
     verbose: "print process info, default no output"
     debug: "print debug info"
     supress: "supress warnings"
+    update_slash_replace_slash_remove: "--remove           If node is given, instead of replace/update remove branch"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Transterm {
   command <<<
     transterm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

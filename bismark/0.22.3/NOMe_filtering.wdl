@@ -11,7 +11,10 @@ task NOMeFiltering {
       ~{if defined(genome_folder) then ("--genome_folder " +  '"' + genome_folder + '"') else ""}
   >>>
   parameter_meta {
-    genome_folder: "Enter the genome folder you wish to use to extract sequences from (full path only!). Accepted formats are FastA files ending with '.fa' or '.fasta'. Specifying a genome folder path is mandatory."
+    genome_folder: "Enter the genome folder you wish to use to extract sequences from (full path only!). Accepted\\nformats are FastA files ending with '.fa' or '.fasta'. Specifying a genome folder path is mandatory."
     var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Drawtree {
   command <<<
     drawtree
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

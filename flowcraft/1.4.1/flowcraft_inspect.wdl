@@ -2,25 +2,28 @@ version 1.0
 
 task FlowcraftInspect {
   input {
-    String? specify_nextflow_file
+    File? specify_nextflow_file
     String? set_refresh_frequency
-    String? mode
     String? url
     Boolean? pretty
+    String functions
   }
   command <<<
     flowcraft inspect \
+      ~{functions} \
       ~{if defined(specify_nextflow_file) then ("-i " +  '"' + specify_nextflow_file + '"') else ""} \
       ~{if defined(set_refresh_frequency) then ("-r " +  '"' + set_refresh_frequency + '"') else ""} \
-      ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(url) then ("--url " +  '"' + url + '"') else ""} \
-      ~{true="--pretty" false="" pretty}
+      ~{if (pretty) then "--pretty" else ""}
   >>>
   parameter_meta {
     specify_nextflow_file: "Specify the nextflow trace file."
-    set_refresh_frequency: "Set the refresh frequency for the continuous inspect functions"
-    mode: "Specify the inspection run mode."
+    set_refresh_frequency: "Set the refresh frequency for the continuous inspect"
     url: "Specify the URL to where the data should be broadcast"
-    pretty: "Pretty inspection mode that removes usual reporting processes."
+    pretty: "Pretty inspection mode that removes usual reporting\\nprocesses.\\n"
+    functions: "-m {overview,broadcast}, --mode {overview,broadcast}"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

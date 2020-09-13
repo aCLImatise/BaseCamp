@@ -1,53 +1,80 @@
 class: CommandLineTool
 id: ../../../tombo_detect_modifications_aggregate_per_read_stats.cwl
 inputs:
-- id: per_read_statistics_filename
-  doc: Binary file containing per-read statistics from statistical testing.
-  type: string
-  inputBinding:
-    prefix: --per-read-statistics-filename
-- id: statistics_filename
+- id: in_file_saveload_base
   doc: File to save/load genomic base anchored statistics.
-  type: string
+  type: File
   inputBinding:
     prefix: --statistics-filename
-- id: single_read_threshold
-  doc: P-value or log likelihood ratio threshold when computing fraction of significant
-    reads at each genomic position. If two values are provided, statistics between
-    these values are not considered.
+- id: in_pvalue_log_threshold
+  doc: "P-value or log likelihood ratio threshold when\ncomputing fraction of significant\
+    \ reads at each\ngenomic position. If two values are provided,\nstatistics between\
+    \ these values are not considered."
   type: string[]
   inputBinding:
     prefix: --single-read-threshold
-- id: num_most_significant_stored
-  doc: 'Number of the most significant sites to store for faster access. If a longer
-    list of most significant sites is required the list must be re-computed from all
-    batches. Very large values can increase RAM usage. Default: 100000'
-  type: string
+- id: in_minimum_test_reads
+  doc: "Number of reads required at a position to perform\nsignificance testing or\
+    \ contribute to model\nestimation. Default: 1"
+  type: long
+  inputBinding:
+    prefix: --minimum-test-reads
+- id: in_coverage_dampen_counts
+  doc: "COVERAGE_DAMPEN_COUNTS\nDampen fraction modified estimates for low coverage\n\
+    sites. Two parameters are unmodified and modified\npseudo read counts. This is\
+    \ equivalent to a beta prior\non the fraction estimate. Set to \"0 0\" to disable\n\
+    dampened fraction estimation. Default: [2, 0]"
+  type: long
+  inputBinding:
+    prefix: --coverage-dampen-counts
+- id: in_num_most_significant_stored
+  doc: "Number of the most significant sites to store for\nfaster access. If a longer\
+    \ list of most significant\nsites is required the list must be re-computed from\n\
+    all batches. Very large values can increase RAM usage.\nDefault: 100000"
+  type: long
   inputBinding:
     prefix: --num-most-significant-stored
-- id: processes
+- id: in_processes
   doc: 'Number of processes. Default: 1'
-  type: string
+  type: long
   inputBinding:
     prefix: --processes
-- id: corrected_group
-  doc: 'FAST5 group created by resquiggle command. Default: RawGenomeCorrected_000'
-  type: string
+- id: in_corrected_group
+  doc: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  type: long
   inputBinding:
     prefix: --corrected-group
-- id: base_call_subgroups
-  doc: "FAST5 subgroup(s) (under /Analyses/[--basecall- group]/) containing basecalls\
-    \ and created within [--corrected-group] containing re-squiggle results. Default:\
+- id: in_base_call_subgroups
+  doc: "FAST5 subgroup(s) (under /Analyses/[--basecall-\ngroup]/) containing basecalls\
+    \ and created within\n[--corrected-group] containing re-squiggle results.\nDefault:\
     \ ['BaseCalled_template']"
   type: string[]
   inputBinding:
     prefix: --basecall-subgroups
-- id: quiet
+- id: in_quiet
   doc: Don't print status information.
   type: boolean
   inputBinding:
     prefix: --quiet
-outputs: []
+- id: in_per_read_statistics_filename
+  doc: --statistics-filename
+  type: string
+  inputBinding:
+    position: 0
+- id: in__singlereadthreshold
+  doc: --single-read-threshold
+  type: string
+  inputBinding:
+    position: 1
+- id: in_var_11
+  doc: '[SINGLE_READ_THRESHOLD ...]'
+  type: string
+  inputBinding:
+    position: 2
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tombo

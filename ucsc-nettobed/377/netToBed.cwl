@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../netToBed.cwl
 inputs:
-- id: max_gap
+- id: in_max_gap
   doc: '- break up at gaps of given size or more'
-  type: string
+  type: long
   inputBinding:
     prefix: -maxGap
-- id: min_fill
+- id: in_min_fill
   doc: '- only include fill of given size of above.'
-  type: string
+  type: long
   inputBinding:
     prefix: -minFill
-- id: in_dotnet
+- id: in_in_dotnet
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_dot_bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - netToBed

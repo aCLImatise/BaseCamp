@@ -1,7 +1,10 @@
 version 1.0
 
-task SwitchBEDOPSBinaryType {
+task SwitchBEDOPSbinarytype {
   command <<<
-    switch-BEDOPS-binary-type
+    switch_BEDOPS_binary_type
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

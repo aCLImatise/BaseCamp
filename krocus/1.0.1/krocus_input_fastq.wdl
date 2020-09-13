@@ -17,4 +17,7 @@ task KrocusInputFastq {
     allele_directory: ""
     input_dot_fast_q: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

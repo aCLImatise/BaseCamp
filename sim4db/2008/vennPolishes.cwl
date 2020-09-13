@@ -1,63 +1,66 @@
 class: CommandLineTool
 id: ../../../vennPolishes.cwl
 inputs:
-- id: there_numseqs_input
+- id: in_there_input_set
   doc: there are <num-seqs> in the input set
-  type: string
+  type: long
   inputBinding:
     prefix: -n
-- id: filter_matches_minident
-  doc: filter matches to be >= <min-ident> identity default = 95
+- id: in_filter_matches_minident
+  doc: "filter matches to be >= <min-ident> identity\ndefault = 95"
   type: long
   inputBinding:
     prefix: -i
-- id: filter_matches_mincover
-  doc: filter matches to be >= <min-cover> coverage default = 50
+- id: in_filter_matches_mincover
+  doc: "filter matches to be >= <min-cover> coverage\ndefault = 50"
   type: long
   inputBinding:
     prefix: -c
-- id: dump_sequence_iids
+- id: in_dump_sequence_iids
   doc: dump the sequence IIDs in <class-id> to stdout
   type: string
   inputBinding:
     prefix: -d
-- id: plot
-  doc: write a plot-able datafile of the venn diagram for percent identity <min-idenit>
-    to 100 (inclusive) and <min-cover> coverage.
+- id: in_plot
+  doc: "write a plot-able datafile of the venn diagram\nfor percent identity <min-idenit>\
+    \ to 100 (inclusive)\nand <min-cover> coverage.\n"
   type: boolean
   inputBinding:
     prefix: -plot
-- id: given
+- id: in_given
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_6
+- id: in_var_6
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: sets
+- id: in_sets
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: of
+- id: in_of
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: sim_four
+- id: in_sim_four
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 4
-- id: polishes
+- id: in_polishes
   doc: ''
   type: string
   inputBinding:
     position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vennPolishes

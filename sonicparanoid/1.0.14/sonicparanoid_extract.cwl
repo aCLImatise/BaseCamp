@@ -1,76 +1,85 @@
 class: CommandLineTool
 id: ../../../sonicparanoid_extract.cwl
 inputs:
-- id: input_table
-  doc: 'Table with output groups generated using SonicParanoid. NOTE: the headers
-    must not be modified or removed.'
+- id: in_input_table
+  doc: "Table with output groups generated using\nSonicParanoid. NOTE: the headers\
+    \ must not be modified\nor removed."
   type: string
   inputBinding:
     prefix: --input-table
-- id: output_directory
+- id: in_output_directory
   doc: The directory in which the results will be stored.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output-directory
-- id: fast_a_directory
-  doc: Directory containing the proteome files in FASTA format.
-  type: string
+- id: in_fast_a_directory
+  doc: "Directory containing the proteome files in FASTA\nformat."
+  type: Directory
   inputBinding:
     prefix: --fasta-directory
-- id: min_sp
-  doc: Exctract clusters with genes from at least --min-sp species. (Default=2)
+- id: in_min_sp
+  doc: "Exctract clusters with genes from at least --min-sp\nspecies. (Default=2)"
   type: long
   inputBinding:
     prefix: --min-sp
-- id: max_sp
-  doc: Exctract clusters with genes from at max --max-sp species. (Default=2)
+- id: in_max_sp
+  doc: "Exctract clusters with genes from at max --max-sp\nspecies. (Default=2)"
   type: long
   inputBinding:
     prefix: --max-sp
-- id: ids_list
-  doc: 'Extract a list of clusters by their ids. NOTE: the ids should be separated
-    by a comma (e.g., --ids-list 20,23,40,22); this parameter bypasses the --min-sp
-    and max-sp.'
-  type: string
+- id: in_ids_list
+  doc: "Extract a list of clusters by their ids. NOTE: the ids\nshould be separated\
+    \ by a comma (e.g., --ids-list\n20,23,40,22); this parameter bypasses the --min-sp\
+    \ and\nmax-sp."
+  type: long
   inputBinding:
     prefix: --ids-list
-- id: min_conf
-  doc: Keep only orthologs with a confidence higher than --min-conf. (Default=0.05)
+- id: in_min_conf
+  doc: "Keep only orthologs with a confidence higher than\n--min-conf. (Default=0.05)"
   type: long
   inputBinding:
     prefix: --min-conf
-- id: fast_a
-  doc: Generate a FASTA for with the proteins in each cluster.
+- id: in_fast_a
+  doc: Generate a FASTA for with the proteins in each
   type: boolean
   inputBinding:
     prefix: --fasta
-- id: multiple_fast_a
-  doc: Generate a FASTA file for each species in each cluster. (implies --fasta)
-  type: boolean
-  inputBinding:
-    prefix: --multiple-fasta
-- id: an_not_cols
-  doc: 'Column ids containing annotations for the new HDR. NOTE: the column positions
-    should be separated by a comma (e.g., --annot-cols 1,2,4,5); this parameter bypasses.'
-  type: string
+- id: in_an_not_cols
+  doc: "Column ids containing annotations for the new HDR.\nNOTE: the column positions\
+    \ should be separated by a\ncomma (e.g., --annot-cols 1,2,4,5); this parameter\n\
+    bypasses."
+  type: long
   inputBinding:
     prefix: --annot-cols
-- id: an_not_file
+- id: in_an_not_file
   doc: Table with tab-serataed fields with annotations.
-  type: string
+  type: File
   inputBinding:
     prefix: --annot-file
-- id: gene_col_id
-  doc: Column number of the annotation file containing the protein id.
-  type: string
+- id: in_gene_col_id
+  doc: "Column number of the annotation file containing the\nprotein id."
+  type: long
   inputBinding:
     prefix: --gene-col-id
-- id: debug
+- id: in_debug
   doc: Output debug information.
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+- id: in_cluster_dot
+  doc: -mf, --multiple-fasta
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory
+  doc: The directory in which the results will be stored.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory)
 cwlVersion: v1.1
 baseCommand:
 - sonicparanoid-extract

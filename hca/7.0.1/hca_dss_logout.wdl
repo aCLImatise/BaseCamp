@@ -14,4 +14,7 @@ task HcaDssLogout {
     log_level: ""
     hca: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

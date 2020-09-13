@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- reverse_bed
+- bed_out
 positional:
 - !Positional
   description: ''
@@ -21,17 +24,18 @@ positional:
   name: bed_out
   optional: false
 named: []
-command:
-- reverse_bed
-- bed_out
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - reverse_bed
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - reverse_bed
+    - ref_fasta
     positional:
     - !Positional
       description: ''
@@ -54,11 +58,9 @@ parent: &id001 !Command
       name: bed_out
       optional: false
     named: []
-    command:
-    - reverse_bed
-    - ref_fasta
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -70,7 +72,7 @@ parent: &id001 !Command
     help_text: "usage: reverse_bed [-h] bed_in ref_fasta bed_out\nreverse_bed: error:\
       \ the following arguments are required: ref_fasta, bed_out\n"
     generated_using: &id003 []
-  - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -88,6 +90,7 @@ parent: &id001 !Command
   generated_using:
   - --help
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

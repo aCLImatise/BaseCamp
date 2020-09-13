@@ -20,4 +20,7 @@ task DnaMutationOrganism {
     mutation: ""
     organism: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

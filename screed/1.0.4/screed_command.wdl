@@ -2,13 +2,16 @@ version 1.0
 
 task ScreedCommand {
   input {
-    String? args
+    String optional_arguments
   }
   command <<<
     screed command \
-      ~{args}
+      ~{optional_arguments}
   >>>
   parameter_meta {
-    args: ""
+    optional_arguments: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

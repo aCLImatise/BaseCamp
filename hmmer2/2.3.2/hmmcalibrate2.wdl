@@ -3,12 +3,12 @@ version 1.0
 task Hmmcalibrate2 {
   input {
     String? cpu
-    String? fixed
-    String? hist_file
-    String? mean
-    String? num
+    Int? fixed
+    File? hist_file
+    Int? mean
+    Int? num
     Boolean? pvm
-    String? sd
+    Int? sd
     String? seed
     Boolean? options
     String hmmcalibrate
@@ -23,10 +23,10 @@ task Hmmcalibrate2 {
       ~{if defined(hist_file) then ("--histfile " +  '"' + hist_file + '"') else ""} \
       ~{if defined(mean) then ("--mean " +  '"' + mean + '"') else ""} \
       ~{if defined(num) then ("--num " +  '"' + num + '"') else ""} \
-      ~{true="--pvm" false="" pvm} \
+      ~{if (pvm) then "--pvm" else ""} \
       ~{if defined(sd) then ("--sd " +  '"' + sd + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     cpu: ": run <n> threads in parallel (if threaded)"
@@ -40,5 +40,8 @@ task Hmmcalibrate2 {
     options: ""
     hmmcalibrate: ""
     hmm_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

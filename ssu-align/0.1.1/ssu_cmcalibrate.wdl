@@ -1,41 +1,41 @@
 version 1.0
 
-task SsuCmcalibrate {
+task Ssucmcalibrate {
   input {
-    String? set_rng_seed
+    Int? set_rng_seed
     String? forecast
     Boolean? devhelp
-    String? exp_cml_glc
-    String? exp_cml_loc
-    String? exp_hmm_ln_glc
-    String? exp_hmm_ln_loc
-    String? exp_hmm_lx
-    String? exp_fract
+    Int? exp_cml_glc
+    Int? exp_cml_loc
+    Int? exp_hmm_ln_glc
+    Int? exp_hmm_ln_loc
+    Int? exp_hmm_lx
+    Int? exp_fract
     String? exp_tail_n_c_glc
     String? exp_tail_n_cloc
     String? exp_tail_n_h_glc
     String? exp_tail_n_h_loc
     String? exp_tail_p
-    String? exp_tail_xn
+    Int? exp_tail_xn
     String? exp_beta
     Boolean? exp_no_qdb
-    String? exp_h_file
-    String? exp_s_file
-    String? exp_qq_file
-    String? exp_f_file
-    String? fil_n
+    File? exp_h_file
+    File? exp_s_file
+    File? exp_qq_file
+    File? exp_f_file
+    Int? fil_n
     String? fil_f
     String? fil_tau
     Boolean? fil_gem_it
-    String? fil_d_file
-    String? mx_size
+    File? fil_d_file
+    Int? mx_size
     Boolean? options
   }
   command <<<
-    ssu-cmcalibrate \
+    ssu_cmcalibrate \
       ~{if defined(set_rng_seed) then ("-s " +  '"' + set_rng_seed + '"') else ""} \
       ~{if defined(forecast) then ("--forecast " +  '"' + forecast + '"') else ""} \
-      ~{true="--devhelp" false="" devhelp} \
+      ~{if (devhelp) then "--devhelp" else ""} \
       ~{if defined(exp_cml_glc) then ("--exp-cmL-glc " +  '"' + exp_cml_glc + '"') else ""} \
       ~{if defined(exp_cml_loc) then ("--exp-cmL-loc " +  '"' + exp_cml_loc + '"') else ""} \
       ~{if defined(exp_hmm_ln_glc) then ("--exp-hmmLn-glc " +  '"' + exp_hmm_ln_glc + '"') else ""} \
@@ -49,7 +49,7 @@ task SsuCmcalibrate {
       ~{if defined(exp_tail_p) then ("--exp-tailp " +  '"' + exp_tail_p + '"') else ""} \
       ~{if defined(exp_tail_xn) then ("--exp-tailxn " +  '"' + exp_tail_xn + '"') else ""} \
       ~{if defined(exp_beta) then ("--exp-beta " +  '"' + exp_beta + '"') else ""} \
-      ~{true="--exp-no-qdb" false="" exp_no_qdb} \
+      ~{if (exp_no_qdb) then "--exp-no-qdb" else ""} \
       ~{if defined(exp_h_file) then ("--exp-hfile " +  '"' + exp_h_file + '"') else ""} \
       ~{if defined(exp_s_file) then ("--exp-sfile " +  '"' + exp_s_file + '"') else ""} \
       ~{if defined(exp_qq_file) then ("--exp-qqfile " +  '"' + exp_qq_file + '"') else ""} \
@@ -57,10 +57,10 @@ task SsuCmcalibrate {
       ~{if defined(fil_n) then ("--fil-N " +  '"' + fil_n + '"') else ""} \
       ~{if defined(fil_f) then ("--fil-F " +  '"' + fil_f + '"') else ""} \
       ~{if defined(fil_tau) then ("--fil-tau " +  '"' + fil_tau + '"') else ""} \
-      ~{true="--fil-gemit" false="" fil_gem_it} \
+      ~{if (fil_gem_it) then "--fil-gemit" else ""} \
       ~{if defined(fil_d_file) then ("--fil-dfile " +  '"' + fil_d_file + '"') else ""} \
       ~{if defined(mx_size) then ("--mxsize " +  '"' + mx_size + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     set_rng_seed: ": set RNG seed to <n> (if 0: one-time arbitrary seed)  [181]"
@@ -91,5 +91,8 @@ task SsuCmcalibrate {
     fil_d_file: ": save filter threshold data (HMM and CM scores) to file <s>"
     mx_size: ": set maximum allowable HMM banded DP matrix size to <x> Mb"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

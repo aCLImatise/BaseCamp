@@ -1,158 +1,43 @@
-&id003 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: INPUT_FILE
-  optional: true
-- !Positional
-  description: ''
-  position: 1
-  name: OUTPUT_FILE
-  optional: true
+&id001 !Command
+command:
+- sampling-utils
+- sync
+positional: []
 named:
 - !Flag
-  description: Resampled FastQ file that is out of sync with the original pair  [required]
+  description: ''
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Resampled FastQ file that is out of sync with\nthe original pair \
+    \ [required]"
   synonyms:
   - -m
   - --master-file
   args: !SimpleFlagArg
     name: FILENAME
   optional: true
-command:
-- sampling-utils
-- sync
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - sampling-utils
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --cite
+    args: !EmptyFlagArg {}
+    optional: true
   parent:
   subcommands:
+  - *id001
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: OUTPUT_FILE
-      optional: true
-    named:
-    - !Flag
-      description: 'Number of sequences to generate  [default: 1000]'
-      synonyms:
-      - -n
-      - --num-seqs
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: 'GC content (defaults to .5 out of 1)  [default: 0.5]'
-      synonyms:
-      - -gc
-      - --gc-content
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
-    - !Flag
-      description: Infer parameters GC content and Quality model from file
-      synonyms:
-      - -i
-      - --infer-params
-      args: !SimpleFlagArg
-        name: FILENAME
-      optional: true
-    - !Flag
-      description: 'Proportion of coding sequences  [default: 0.0]'
-      synonyms:
-      - -r
-      - --coding-prop
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
-    - !Flag
-      description: 'Sequence length  [default: 150]'
-      synonyms:
-      - -l
-      - --length
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: Use a model with constant qualities + noise
-      synonyms:
-      - -d
-      - --const-model
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Use as the starting point quality  [default: 30.0]'
-      synonyms:
-      - -x
-      - --dist-loc
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
-    - !Flag
-      description: The output file is a FastQ file
-      synonyms:
-      - -q
-      - --fastq
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Save inferred qualities model to a pickle file
-      synonyms:
-      - -m
-      - --save-model
-      args: !SimpleFlagArg
-        name: FILENAME
-      optional: true
-    - !Flag
-      description: Load qualities model from a pickle file
-      synonyms:
-      - -a
-      - --read-model
-      args: !SimpleFlagArg
-        name: FILENAME
-      optional: true
-    - !Flag
-      description: Shows Progress Bar
-      synonyms:
-      - --progress
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - sampling-utils
-    - rand_seq
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Usage: sampling-utils rand_seq [OPTIONS] [OUTPUT_FILE]\n\n  Generates\
-      \ random FastA/Q sequences\n\nOptions:\n  -v, --verbose\n  -n, --num-seqs INTEGER\
-      \       Number of sequences to generate  [default:\n                       \
-      \        1000]\n\n  -gc, --gc-content FLOAT      GC content (defaults to .5\
-      \ out of 1)  [default:\n                               0.5]\n\n  -i, --infer-params\
-      \ FILENAME  Infer parameters GC content and Quality model\n                \
-      \               from file\n\n  -r, --coding-prop FLOAT      Proportion of coding\
-      \ sequences  [default: 0.0]\n  -l, --length INTEGER         Sequence length\
-      \  [default: 150]\n  -d, --const-model            Use a model with constant\
-      \ qualities + noise\n  -x, --dist-loc FLOAT         Use as the starting point\
-      \ quality  [default:\n                               30.0]\n\n  -q, --fastq\
-      \                  The output file is a FastQ file\n  -m, --save-model FILENAME\
-      \    Save inferred qualities model to a pickle file\n  -a, --read-model FILENAME\
-      \    Load qualities model from a pickle file\n  --progress                 \
-      \  Shows Progress Bar\n  --help                       Show this message and\
-      \ exit.\n"
-    generated_using: &id002
-    - --help
-  - !Command
+    - sample
     positional:
     - !Positional
       description: ''
@@ -161,7 +46,14 @@ parent: &id001 !Command
       optional: true
     named:
     - !Flag
-      description: 'Prefix for the file name(s) in output  [default: sample]'
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Prefix for the file name(s) in output  [default:\nsample]"
       synonyms:
       - -p
       - --prefix
@@ -206,11 +98,9 @@ parent: &id001 !Command
       - --gzip
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - sampling-utils
-    - sample
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -227,8 +117,12 @@ parent: &id001 !Command
       \ 0.001]\n  -x, --max-seq INTEGER  Maximum number of sequences  [default: 100000]\n\
       \  -q, --fastq            The input file is a fastq file\n  -z, --gzip     \
       \        gzip output files\n  --help                 Show this message and exit.\n"
-    generated_using: *id002
+    generated_using: &id003
+    - --help
   - !Command
+    command:
+    - sampling-utils
+    - sample_stream
     positional:
     - !Positional
       description: ''
@@ -241,6 +135,13 @@ parent: &id001 !Command
       name: OUTPUT_FILE
       optional: true
     named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
     - !Flag
       description: Probability of picking a sequence
       synonyms:
@@ -264,11 +165,9 @@ parent: &id001 !Command
       - --fastq
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - sampling-utils
-    - sample_stream
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -283,8 +182,138 @@ parent: &id001 !Command
       \ of picking a sequence\n  -x, --max-seq INTEGER  Maximum number of sequences\n\
       \  -q, --fastq            The input file is a fastq file\n  --help         \
       \        Show this message and exit.\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
+  - !Command
+    command:
+    - sampling-utils
+    - rand_seq
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OUTPUT_FILE
+      optional: true
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Number of sequences to generate  [default:\n1000]"
+      synonyms:
+      - -n
+      - --num-seqs
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "GC content (defaults to .5 out of 1)  [default:\n0.5]"
+      synonyms:
+      - -gc
+      - --gc-content
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: "Infer parameters GC content and Quality model\nfrom file"
+      synonyms:
+      - -i
+      - --infer-params
+      args: !SimpleFlagArg
+        name: FILENAME
+      optional: true
+    - !Flag
+      description: 'Proportion of coding sequences  [default: 0.0]'
+      synonyms:
+      - -r
+      - --coding-prop
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: 'Sequence length  [default: 150]'
+      synonyms:
+      - -l
+      - --length
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Use a model with constant qualities + noise
+      synonyms:
+      - -d
+      - --const-model
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Use as the starting point quality  [default:\n30.0]"
+      synonyms:
+      - -x
+      - --dist-loc
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: The output file is a FastQ file
+      synonyms:
+      - -q
+      - --fastq
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Save inferred qualities model to a pickle file
+      synonyms:
+      - -m
+      - --save-model
+      args: !SimpleFlagArg
+        name: FILENAME
+      optional: true
+    - !Flag
+      description: Load qualities model from a pickle file
+      synonyms:
+      - -a
+      - --read-model
+      args: !SimpleFlagArg
+        name: FILENAME
+      optional: true
+    - !Flag
+      description: Shows Progress Bar
+      synonyms:
+      - --progress
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: sampling-utils rand_seq [OPTIONS] [OUTPUT_FILE]\n\n  Generates\
+      \ random FastA/Q sequences\n\nOptions:\n  -v, --verbose\n  -n, --num-seqs INTEGER\
+      \       Number of sequences to generate  [default:\n                       \
+      \        1000]\n\n  -gc, --gc-content FLOAT      GC content (defaults to .5\
+      \ out of 1)  [default:\n                               0.5]\n\n  -i, --infer-params\
+      \ FILENAME  Infer parameters GC content and Quality model\n                \
+      \               from file\n\n  -r, --coding-prop FLOAT      Proportion of coding\
+      \ sequences  [default: 0.0]\n  -l, --length INTEGER         Sequence length\
+      \  [default: 150]\n  -d, --const-model            Use a model with constant\
+      \ qualities + noise\n  -x, --dist-loc FLOAT         Use as the starting point\
+      \ quality  [default:\n                               30.0]\n\n  -q, --fastq\
+      \                  The output file is a FastQ file\n  -m, --save-model FILENAME\
+      \    Save inferred qualities model to a pickle file\n  -a, --read-model FILENAME\
+      \    Load qualities model from a pickle file\n  --progress                 \
+      \  Shows Progress Bar\n  --help                       Show this message and\
+      \ exit.\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -292,15 +321,58 @@ parent: &id001 !Command
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
-  version_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
   help_text: "Usage: sampling-utils [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\
     \nOptions:\n  --version  Show the version and exit.\n  --cite\n  --help     Show\
     \ this message and exit.\n\nCommands:\n  rand_seq       Generates random FastA/Q\
     \ sequences\n  sample         Sample a FastA/Q multiple times\n  sample_stream\
     \  Samples a FastA/Q one time, alternative to sample if...\n  sync           Syncs\
     \ a FastQ file generated with *sample* with the...\n"
-  generated_using: *id002
-subcommands: []
+  generated_using: *id003
+subcommands:
+- !Command
+  command:
+  - sampling-utils
+  - sync
+  - files.
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: sampling-utils
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: sync
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: INPUT_FILE
+    optional: true
+  - !Positional
+    description: ''
+    position: 3
+    name: OUTPUT_FILE
+    optional: true
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: sampling-utils sync [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\nTry\
+    \ 'sampling-utils sync --help' for help.\n\nError: no such option: -h\n"
+  generated_using:
+  - -h
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -314,4 +386,4 @@ help_text: "Usage: sampling-utils sync [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n 
   \  -v, --verbose\n  -m, --master-file FILENAME  Resampled FastQ file that is out\
   \ of sync with\n                              the original pair  [required]\n\n\
   \  --help                      Show this message and exit.\n"
-generated_using: *id002
+generated_using: *id003

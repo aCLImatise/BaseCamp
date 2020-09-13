@@ -1,20 +1,20 @@
 version 1.0
 
-task _gdcmpgif {
+task Gdcmpgif {
   input {
     String gdc_mpg_if
-    File var_1
-    File var_2
+    File filename_do_tgif
   }
   command <<<
     _gdcmpgif \
       ~{gdc_mpg_if} \
-      ~{var_1} \
-      ~{var_2}
+      ~{filename_do_tgif}
   >>>
   parameter_meta {
     gdc_mpg_if: ""
-    var_1: ""
-    var_2: ""
+    filename_do_tgif: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

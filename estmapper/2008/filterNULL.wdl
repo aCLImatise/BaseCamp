@@ -4,4 +4,7 @@ task FilterNULL {
   command <<<
     filterNULL
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

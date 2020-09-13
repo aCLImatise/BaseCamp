@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- ssu-esl-mask
+- sqfile
 positional:
 - !Positional
   description: ''
@@ -6,10 +9,9 @@ positional:
   name: maskfile
   optional: false
 named: []
-command:
-- ssu-esl-mask
-- sqfile
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - ssu-esl-mask
   positional: []
   named:
   - !Flag
@@ -58,12 +60,12 @@ parent: &id002 !Command
     args: !SimpleFlagArg
       name: s
     optional: true
-  command:
-  - ssu-esl-mask
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - ssu-esl-mask
+    - maskfile
     positional:
     - !Positional
       description: ''
@@ -81,11 +83,9 @@ parent: &id002 !Command
       name: maskfile
       optional: false
     named: []
-    command:
-    - ssu-esl-mask
-    - maskfile
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -93,6 +93,8 @@ parent: &id002 !Command
       \ on available options, do ssu-esl-mask -h\n\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag: !Flag
     description: ': help; show brief info on version and usage'
     synonyms:
@@ -121,6 +123,7 @@ parent: &id002 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

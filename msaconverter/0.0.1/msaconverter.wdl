@@ -2,8 +2,8 @@ version 1.0
 
 task Msaconverter {
   input {
-    String? input_msa_file
-    String? output_msa_file
+    File? input_msa_file
+    File? output_msa_file
     String? p
     String? q
   }
@@ -18,6 +18,10 @@ task Msaconverter {
     input_msa_file: "input msa file"
     output_msa_file: "output msa file"
     p: "input msa format [fasta]"
-    q: "input msa format [phylip-relaxed]"
+    q: "input msa format [phylip-relaxed]\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_msa_file = "${in_output_msa_file}"
   }
 }

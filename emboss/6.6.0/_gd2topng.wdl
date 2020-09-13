@@ -1,8 +1,8 @@
 version 1.0
 
-task _gd2topng {
+task Gd2topng {
   input {
-    String gd_two_to_png
+    Int gd_two_to_png
     File filename_dot_gd_two
     File filename_dot_png
     String? srcx
@@ -28,5 +28,8 @@ task _gd2topng {
     src_y: ""
     width: ""
     height: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

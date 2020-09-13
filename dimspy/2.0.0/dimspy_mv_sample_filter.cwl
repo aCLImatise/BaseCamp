@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../dimspy_mv_sample_filter.cwl
 inputs:
-- id: input
+- id: in_input
   doc: HDF5 file file that contains a peak matrix object.
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: HDF5 file to save the peak matrix object to.
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: max_fraction
-  doc: Maximum percentage of missing values allowed across a sample.
+- id: in_max_fraction
+  doc: "Maximum percentage of missing values allowed across a\nsample.\n"
   type: long
   inputBinding:
     prefix: --max-fraction
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dimspy

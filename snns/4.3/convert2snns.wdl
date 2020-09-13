@@ -2,7 +2,7 @@ version 1.0
 
 task Convert2snns {
   input {
-    String control_file
+    File control_file
   }
   command <<<
     convert2snns \
@@ -10,5 +10,8 @@ task Convert2snns {
   >>>
   parameter_meta {
     control_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

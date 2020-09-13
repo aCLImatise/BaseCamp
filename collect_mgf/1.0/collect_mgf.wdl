@@ -2,8 +2,8 @@ version 1.0
 
 task CollectMgf {
   input {
-    String exp_no_directory
-    String dd_results_file
+    Directory exp_no_directory
+    File dd_results_file
   }
   command <<<
     collect_mgf \
@@ -13,5 +13,8 @@ task CollectMgf {
   parameter_meta {
     exp_no_directory: ""
     dd_results_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,16 +2,23 @@ version 1.0
 
 task Glam2format {
   input {
-    String my_format
-    String my_motif_dot_glam_two
+    File? output_file_stdout
+    Boolean? make_compact_alignment
+    Boolean? sequence_file_flanking
   }
   command <<<
     glam2format \
-      ~{my_format} \
-      ~{my_motif_dot_glam_two}
+      ~{if (output_file_stdout) then "-o" else ""} \
+      ~{if (make_compact_alignment) then "-c" else ""} \
+      ~{if (sequence_file_flanking) then "-f" else ""}
   >>>
   parameter_meta {
-    my_format: ""
-    my_motif_dot_glam_two: ""
+    output_file_stdout: ": output file (stdout)"
+    make_compact_alignment: ": make a compact alignment"
+    sequence_file_flanking: ": sequence file for flanking sequences"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_stdout = "${in_output_file_stdout}"
   }
 }

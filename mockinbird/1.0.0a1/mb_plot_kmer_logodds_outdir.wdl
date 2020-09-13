@@ -1,20 +1,23 @@
 version 1.0
 
-task MbPlotKmerLogoddsOutdir {
+task MbplotkmerlogoddsOutdir {
   input {
-    String? km_er
     String? gff
+    String? km_er
     String mb_plot_km_er_log_odds
   }
   command <<<
-    mb-plot-kmer-logodds outdir \
+    mb_plot_kmer_logodds outdir \
       ~{mb_plot_km_er_log_odds} \
-      ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
-      ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""}
+      ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""} \
+      ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""}
   >>>
   parameter_meta {
-    km_er: ""
     gff: ""
+    km_er: ""
     mb_plot_km_er_log_odds: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

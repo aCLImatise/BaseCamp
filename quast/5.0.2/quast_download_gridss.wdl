@@ -1,7 +1,10 @@
 version 1.0
 
-task QuastDownloadGridss {
+task Quastdownloadgridss {
   command <<<
-    quast-download-gridss
+    quast_download_gridss
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,25 +2,28 @@ version 1.0
 
 task MergePolishes {
   input {
+    Boolean? m
     String? o
-    String? m
     String cdna
-    String cdna_one
-    String cdna_two
+    Int cdna_one
+    Int cdna_two
   }
   command <<<
     mergePolishes \
       ~{cdna} \
       ~{cdna_one} \
       ~{cdna_two} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
+      ~{if (m) then "-m" else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
-    o: ""
     m: ""
+    o: ""
     cdna: ""
     cdna_one: ""
     cdna_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

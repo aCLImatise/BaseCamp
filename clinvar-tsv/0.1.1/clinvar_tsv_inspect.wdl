@@ -2,7 +2,7 @@ version 1.0
 
 task ClinvarTsvInspect {
   input {
-    String? work_dir
+    File? work_dir
     String clin_var_tsv
     String inspect
   }
@@ -16,5 +16,8 @@ task ClinvarTsvInspect {
     work_dir: "Path to working directory"
     clin_var_tsv: ""
     inspect: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

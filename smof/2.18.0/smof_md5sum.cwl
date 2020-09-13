@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../smof_md5sum.cwl
 inputs:
-- id: ignore_case
+- id: in_ignore_case
   doc: convert all to uppercase, before hashing
   type: boolean
   inputBinding:
     prefix: --ignore-case
-- id: each_sequence
+- id: in_each_sequence
   doc: calculate md5sum for each sequence (TAB delimited)
   type: boolean
   inputBinding:
     prefix: --each-sequence
-- id: all_sequences
+- id: in_all_sequences
   doc: calculate one md5sum for all concatenated sequences
   type: boolean
   inputBinding:
     prefix: --all-sequences
-- id: all_headers
+- id: in_all_headers
   doc: calculate one md5sum for all concatenated headers
   type: boolean
   inputBinding:
     prefix: --all-headers
-- id: replace_header
-  doc: replace the header of each entry with the checksum of the sequence
+- id: in_replace_header
+  doc: "replace the header of each entry with the checksum of\nthe sequence\n"
   type: boolean
   inputBinding:
     prefix: --replace-header
-- id: input
+- id: in_input
   doc: input fasta sequence (default = stdin)
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - smof

@@ -4,4 +4,7 @@ task Bamm {
   command <<<
     bamm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

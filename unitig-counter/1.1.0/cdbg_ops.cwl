@@ -1,62 +1,65 @@
 class: CommandLineTool
 id: ../../../cdbg_ops.cwl
 inputs:
-- id: graph
+- id: in_graph
   doc: Prefix of graph files
   type: string
   inputBinding:
     prefix: --graph
-- id: nodes
+- id: in_nodes
   doc: Name of .node file
-  type: string
+  type: File
   inputBinding:
     prefix: --nodes
-- id: edges
+- id: in_edges
   doc: Name of .edges.dbg file
-  type: string
+  type: File
   inputBinding:
     prefix: --edges
-- id: source
+- id: in_source
   doc: Sequence of source node
   type: string
   inputBinding:
     prefix: --source
-- id: source_list
+- id: in_source_list
   doc: File containing sequences of source nodes
-  type: string
+  type: File
   inputBinding:
     prefix: --source-list
-- id: target
+- id: in_target
   doc: Sequence of target node
   type: string
   inputBinding:
     prefix: --target
-- id: all
+- id: in_all
   doc: Generate distances to all other unitigs
   type: boolean
   inputBinding:
     prefix: --all
-- id: unit_igs
+- id: in_unit_igs
   doc: File containing unitigs to extend
-  type: string
+  type: File
   inputBinding:
     prefix: --unitigs
-- id: length
+- id: in_length
   doc: (=100)    Maximum extension length
-  type: string
+  type: long
   inputBinding:
     prefix: --length
-- id: repeats
+- id: in_repeats
   doc: Allow loops in extensions
   type: boolean
   inputBinding:
     prefix: --repeats
-- id: mode
+- id: in_mode
   doc: Mode of operation
   type: string
   inputBinding:
     prefix: --mode
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cdbg-ops

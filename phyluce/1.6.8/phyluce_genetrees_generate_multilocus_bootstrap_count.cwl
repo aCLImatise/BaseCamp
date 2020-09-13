@@ -1,43 +1,46 @@
 class: CommandLineTool
 id: ../../../phyluce_genetrees_generate_multilocus_bootstrap_count.cwl
 inputs:
-- id: alignments
-  doc: The input directory containing alignments in phylip format
-  type: string
+- id: in_alignments
+  doc: "The input directory containing alignments in phylip\nformat"
+  type: Directory
   inputBinding:
     prefix: --alignments
-- id: bootstrap_replicates
+- id: in_bootstrap_replicates
   doc: The file that will hold bootstrap replicates sampling
-  type: string
+  type: File
   inputBinding:
     prefix: --bootstrap_replicates
-- id: directory
-  doc: Optional path to directory containing alignments. Defaults to alignment directory
-    if not provided.
+- id: in_directory
+  doc: "Optional path to directory containing alignments.\nDefaults to alignment directory\
+    \ if not provided."
   type: Directory
   inputBinding:
     prefix: --directory
-- id: bootstrap_counts
-  doc: The CSV file that will hold bootstrap replicate counts for each locus
-  type: string
+- id: in_bootstrap_counts
+  doc: "The CSV file that will hold bootstrap replicate counts\nfor each locus"
+  type: File
   inputBinding:
     prefix: --bootstrap_counts
-- id: boot_reps
+- id: in_boot_reps
   doc: The number of bootstrap replicates to run
-  type: string
+  type: long
   inputBinding:
     prefix: --bootreps
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_genetrees_generate_multilocus_bootstrap_count

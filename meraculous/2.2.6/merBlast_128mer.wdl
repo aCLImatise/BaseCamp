@@ -26,4 +26,7 @@ task MerBlast128mer {
     output_file_prefix: ""
     num_threads: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,28 +1,28 @@
 version 1.0
 
-task SsuEslAlimap {
+task Ssueslalimap {
   input {
     Boolean? quiet_print_mapping
-    String? mask_a_two_a
-    String? mask_at_worf
-    String? mask_rf_two_a
-    String? mask_rf_two_rf
-    String? submap
+    Int? mask_a_two_a
+    Int? mask_at_worf
+    Int? mask_rf_two_a
+    Int? mask_rf_two_rf
+    Int? submap
     Boolean? amino
     Boolean? dna
     Boolean? rna
   }
   command <<<
-    ssu-esl-alimap \
-      ~{true="-q" false="" quiet_print_mapping} \
+    ssu_esl_alimap \
+      ~{if (quiet_print_mapping) then "-q" else ""} \
       ~{if defined(mask_a_two_a) then ("--mask-a2a " +  '"' + mask_a_two_a + '"') else ""} \
       ~{if defined(mask_at_worf) then ("--mask-a2rf " +  '"' + mask_at_worf + '"') else ""} \
       ~{if defined(mask_rf_two_a) then ("--mask-rf2a " +  '"' + mask_rf_two_a + '"') else ""} \
       ~{if defined(mask_rf_two_rf) then ("--mask-rf2rf " +  '"' + mask_rf_two_rf + '"') else ""} \
       ~{if defined(submap) then ("--submap " +  '"' + submap + '"') else ""} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna}
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""}
   >>>
   parameter_meta {
     quiet_print_mapping: ": be quiet, don't print mapping of each column"
@@ -34,5 +34,8 @@ task SsuEslAlimap {
     amino: ": <msafile{1,2}> contain protein alignments"
     dna: ": <msafile{1,2}> contain DNA alignments"
     rna: ": <msafile{1,2}> contain RNA alignments"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

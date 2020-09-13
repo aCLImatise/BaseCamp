@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- synthReadGen
+- outputFile
 positional:
 - !Positional
   description: ''
@@ -16,21 +19,20 @@ positional:
   name: outputFile
   optional: false
 named: []
-command:
-- synthReadGen
-- outputFile
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - synthReadGen
   positional: []
   named:
   - !Flag
-    description: ': set distribution used for insert length [1 = normal], 2 = poisson'
+    description: ": set distribution used for insert length\n[1 = normal], 2 = poisson"
     synonyms:
     - -id
     args: !SimpleFlagArg
       name: i
     optional: true
   - !Flag
-    description: ': set distribution used for read length [1 = normal], 2 = poisson'
+    description: ": set distribution used for read length\n[1 = normal], 2 = poisson"
     synonyms:
     - -ld
     args: !SimpleFlagArg
@@ -112,11 +114,13 @@ parent: &id001 !Command
     - -b
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - synthReadGen
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - synthReadGen
+    - inputFile
     positional:
     - !Positional
       description: ''
@@ -124,11 +128,9 @@ parent: &id001 !Command
       name: outputFile
       optional: false
     named: []
-    command:
-    - synthReadGen
-    - inputFile
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ': print out help'
       synonyms:
@@ -141,7 +143,7 @@ parent: &id001 !Command
       \nUsage: synthReadGen [options] <inputFile> <outputFile>\n    Options:\n   \
       \ -h : print out help\n"
     generated_using: &id003 []
-  - *id002
+  usage: []
   help_flag: !Flag
     description: ': print out this help'
     synonyms:
@@ -165,6 +167,7 @@ parent: &id001 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': print out help'
   synonyms:

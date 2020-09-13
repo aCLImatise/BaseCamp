@@ -1,145 +1,180 @@
 class: CommandLineTool
 id: ../../../pairtools_dedup.cwl
 inputs:
-- id: output
-  doc: output file for pairs after duplicate removal. If the path ends with .gz or
-    .lz4, the output is pbgzip-/lz4c-compressed. By default, the output is printed
-    into stdout.
-  type: string
+- id: in_output
+  doc: "output file for pairs after duplicate\nremoval. If the path ends with .gz\
+    \ or .lz4,\nthe output is pbgzip-/lz4c-compressed. By\ndefault, the output is\
+    \ printed into stdout."
+  type: File
   inputBinding:
     prefix: --output
-- id: output_dups
-  doc: output file for duplicated pairs.  If the path ends with .gz or .lz4, the output
-    is pbgzip-/lz4c-compressed. If the path is the same as in --output or -, output
-    duplicates together  with deduped pairs. By default, duplicates are dropped.
-  type: string
+- id: in_output_dups
+  doc: "output file for duplicated pairs.  If the\npath ends with .gz or .lz4, the\
+    \ output is\npbgzip-/lz4c-compressed. If the path is the\nsame as in --output\
+    \ or -, output duplicates\ntogether  with deduped pairs. By default,\nduplicates\
+    \ are dropped."
+  type: File
   inputBinding:
     prefix: --output-dups
-- id: output_unmapped
-  doc: output file for unmapped pairs. If the path ends with .gz or .lz4, the output
-    is pbgzip-/lz4c-compressed. If the path is the same as in --output or -, output
-    unmapped pairs together with deduped pairs. If the path is the same as --output-dups,
-    output unmapped reads together with dups. By default, unmapped pairs are dropped.
-  type: string
+- id: in_output_unmapped
+  doc: "output file for unmapped pairs. If the path\nends with .gz or .lz4, the output\
+    \ is\npbgzip-/lz4c-compressed. If the path is the\nsame as in --output or -, output\
+    \ unmapped\npairs together with deduped pairs. If the\npath is the same as --output-dups,\
+    \ output\nunmapped reads together with dups. By\ndefault, unmapped pairs are dropped."
+  type: File
   inputBinding:
     prefix: --output-unmapped
-- id: output_stats
-  doc: output file for duplicate statistics.  If file exists, it will be open in the
-    append mode. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.
-    By default, statistics are not printed.
-  type: string
+- id: in_output_stats
+  doc: "output file for duplicate statistics.  If\nfile exists, it will be open in\
+    \ the append\nmode. If the path ends with .gz or .lz4, the\noutput is pbgzip-/lz4c-compressed.\
+    \ By\ndefault, statistics are not printed."
+  type: File
   inputBinding:
     prefix: --output-stats
-- id: max_mismatch
-  doc: 'Pairs with both sides mapped within this distance (bp) from each other are
-    considered duplicates.  [default: 3]'
+- id: in_max_mismatch
+  doc: "Pairs with both sides mapped within this\ndistance (bp) from each other are\
+    \ considered\nduplicates.  [default: 3]"
   type: long
   inputBinding:
     prefix: --max-mismatch
-- id: method
-  doc: '[max|sum]              define the mismatch as either the max or the sum of
-    the mismatches ofthe genomic locations of the both sides of the two compared molecules  [default:
-    max]'
+- id: in_method
+  doc: "[max|sum]              define the mismatch as either the max or the\nsum of\
+    \ the mismatches ofthe genomic\nlocations of the both sides of the two\ncompared\
+    \ molecules  [default: max]"
   type: boolean
   inputBinding:
     prefix: --method
-- id: sep
-  doc: Separator (\t, \v, etc. characters are supported, pass them in quotes)
+- id: in_sep
+  doc: "Separator (\\t, \\v, etc. characters are\nsupported, pass them in quotes)"
   type: string
   inputBinding:
     prefix: --sep
-- id: comment_char
+- id: in_comment_char
   doc: The first character of comment lines
   type: string
   inputBinding:
     prefix: --comment-char
-- id: send_header_to
-  doc: '[dups|dedup|both|none] Which of the outputs should receive header and comment
-    lines'
+- id: in_send_header_to
+  doc: "[dups|dedup|both|none]\nWhich of the outputs should receive header\nand comment\
+    \ lines"
   type: boolean
   inputBinding:
     prefix: --send-header-to
-- id: cone
+- id: in_cone
   doc: Chrom 1 column; default 1
   type: long
   inputBinding:
     prefix: --c1
-- id: c_two
+- id: in_c_two
   doc: Chrom 2 column; default 3
   type: long
   inputBinding:
     prefix: --c2
-- id: p_one
+- id: in_p_one
   doc: Position 1 column; default 2
   type: long
   inputBinding:
     prefix: --p1
-- id: p_two
+- id: in_p_two
   doc: Position 2 column; default 4
   type: long
   inputBinding:
     prefix: --p2
-- id: s_one
+- id: in_s_one
   doc: Strand 1 column; default 5
   type: long
   inputBinding:
     prefix: --s1
-- id: s_two
+- id: in_s_two
   doc: Strand 2 column; default 6
   type: long
   inputBinding:
     prefix: --s2
-- id: unmapped_chrom
-  doc: Placeholder for a chromosome on an unmapped side; default !
+- id: in_unmapped_chrom
+  doc: "Placeholder for a chromosome on an unmapped\nside; default !"
   type: string
   inputBinding:
     prefix: --unmapped-chrom
-- id: mark_dups
-  doc: If specified, duplicate pairs are marked as DD in "pair_type" and as a duplicate
-    in the sam entries.
+- id: in_mark_dups
+  doc: "If specified, duplicate pairs are marked as\nDD in \"pair_type\" and as a\
+    \ duplicate in the\nsam entries."
   type: boolean
   inputBinding:
     prefix: --mark-dups
-- id: extra_col_pair
-  doc: 'Extra columns that also must match for two pairs to be marked as duplicates.
-    Can be either provided as 0-based column indices or as column names (requires
-    the "#columns" header field). The option can be provided multiple times if multiple
-    column pairs must match. Example: --extra-col-pair "phase1" "phase2"'
-  type: string
+- id: in_extra_col_pair
+  doc: "Extra columns that also must match for two\npairs to be marked as duplicates.\
+    \ Can be\neither provided as 0-based column indices or\nas column names (requires\
+    \ the \"#columns\"\nheader field). The option can be provided\nmultiple times\
+    \ if multiple column pairs must\nmatch. Example: --extra-col-pair \"phase1\"\n\
+    \"phase2\""
+  type: long
   inputBinding:
     prefix: --extra-col-pair
-- id: nproc_in
-  doc: 'Number of processes used by the auto-guessed input decompressing command.  [default:
-    3]'
+- id: in_nproc_in
+  doc: "Number of processes used by the auto-guessed\ninput decompressing command.\
+    \  [default: 3]"
   type: long
   inputBinding:
     prefix: --nproc-in
-- id: nproc_out
-  doc: 'Number of processes used by the auto-guessed output compressing command.  [default:
-    8]'
+- id: in_nproc_out
+  doc: "Number of processes used by the auto-guessed\noutput compressing command.\
+    \  [default: 8]"
   type: long
   inputBinding:
     prefix: --nproc-out
-- id: cmd_in
-  doc: 'A command to decompress the input file. If provided, fully overrides the auto-guessed
-    command. Does not work with stdin. Must read input from stdin and print output
-    into stdout. EXAMPLE: pbgzip -dc -n 3'
-  type: string
+- id: in_cmd_in
+  doc: "A command to decompress the input file. If\nprovided, fully overrides the\
+    \ auto-guessed\ncommand. Does not work with stdin. Must read\ninput from stdin\
+    \ and print output into\nstdout. EXAMPLE: pbgzip -dc -n 3"
+  type: File
   inputBinding:
     prefix: --cmd-in
-- id: cmd_out
-  doc: 'A command to compress the output file. If provided, fully overrides the auto-guessed
-    command. Does not work with stdout. Must read input from stdin and print output
-    into stdout. EXAMPLE: pbgzip -c -n 8'
-  type: string
+- id: in_cmd_out
+  doc: "A command to compress the output file. If\nprovided, fully overrides the auto-guessed\n\
+    command. Does not work with stdout. Must\nread input from stdin and print output\
+    \ into\nstdout. EXAMPLE: pbgzip -c -n 8"
+  type: File
   inputBinding:
     prefix: --cmd-out
-- id: pairs_path
+- id: in_pairs_path
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "output file for pairs after duplicate\nremoval. If the path ends with .gz\
+    \ or .lz4,\nthe output is pbgzip-/lz4c-compressed. By\ndefault, the output is\
+    \ printed into stdout."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_output_dups
+  doc: "output file for duplicated pairs.  If the\npath ends with .gz or .lz4, the\
+    \ output is\npbgzip-/lz4c-compressed. If the path is the\nsame as in --output\
+    \ or -, output duplicates\ntogether  with deduped pairs. By default,\nduplicates\
+    \ are dropped."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_dups)
+- id: out_output_unmapped
+  doc: "output file for unmapped pairs. If the path\nends with .gz or .lz4, the output\
+    \ is\npbgzip-/lz4c-compressed. If the path is the\nsame as in --output or -, output\
+    \ unmapped\npairs together with deduped pairs. If the\npath is the same as --output-dups,\
+    \ output\nunmapped reads together with dups. By\ndefault, unmapped pairs are dropped."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_unmapped)
+- id: out_output_stats
+  doc: "output file for duplicate statistics.  If\nfile exists, it will be open in\
+    \ the append\nmode. If the path ends with .gz or .lz4, the\noutput is pbgzip-/lz4c-compressed.\
+    \ By\ndefault, statistics are not printed."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_stats)
 cwlVersion: v1.1
 baseCommand:
 - pairtools

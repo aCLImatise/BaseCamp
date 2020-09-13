@@ -1,7 +1,10 @@
 version 1.0
 
-task _patmatdb {
+task Patmatdb {
   command <<<
     _patmatdb
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

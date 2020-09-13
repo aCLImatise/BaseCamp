@@ -1,7 +1,10 @@
 version 1.0
 
-task _ssuDraw {
+task Ssudraw {
   command <<<
-    _ssu-draw
+    _ssu_draw
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

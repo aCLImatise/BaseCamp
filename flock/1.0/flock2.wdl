@@ -4,4 +4,7 @@ task Flock2 {
   command <<<
     flock2
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

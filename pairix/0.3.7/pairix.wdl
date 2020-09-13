@@ -11,7 +11,7 @@ task Pairix {
     Int? v
     Boolean? delimiter_space_instead
     Boolean? query_region_string
-    Int? skip_first_lines
+    Int? skip_first_int
     String? symbol_commentmeta_lines
     String? symbol_query_region
     File? replace_header_content
@@ -36,21 +36,21 @@ task Pairix {
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
       ~{if defined(u) then ("-u " +  '"' + u + '"') else ""} \
       ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
-      ~{true="-T" false="" delimiter_space_instead} \
-      ~{true="-L" false="" query_region_string} \
-      ~{if defined(skip_first_lines) then ("-S " +  '"' + skip_first_lines + '"') else ""} \
+      ~{if (delimiter_space_instead) then "-T" else ""} \
+      ~{if (query_region_string) then "-L" else ""} \
+      ~{if defined(skip_first_int) then ("-S " +  '"' + skip_first_int + '"') else ""} \
       ~{if defined(symbol_commentmeta_lines) then ("-c " +  '"' + symbol_commentmeta_lines + '"') else ""} \
       ~{if defined(symbol_query_region) then ("-w " +  '"' + symbol_query_region + '"') else ""} \
       ~{if defined(replace_header_content) then ("-r " +  '"' + replace_header_content + '"') else ""} \
-      ~{true="-0" false="" zerobased_coordinate} \
-      ~{true="-H" false="" print_only_lines} \
-      ~{true="-B" false="" print_only_number} \
-      ~{true="-W" false="" print_only_region} \
-      ~{true="-Y" false="" only_check_occurs} \
-      ~{true="-l" false="" list_chromosome_names} \
-      ~{true="-n" false="" print_only_count} \
-      ~{true="-f" false="" force_overwrite_index} \
-      ~{true="-a" false="" autoflip_query_exist}
+      ~{if (zerobased_coordinate) then "-0" else ""} \
+      ~{if (print_only_lines) then "-H" else ""} \
+      ~{if (print_only_number) then "-B" else ""} \
+      ~{if (print_only_region) then "-W" else ""} \
+      ~{if (only_check_occurs) then "-Y" else ""} \
+      ~{if (list_chromosome_names) then "-l" else ""} \
+      ~{if (print_only_count) then "-n" else ""} \
+      ~{if (force_overwrite_index) then "-f" else ""} \
+      ~{if (autoflip_query_exist) then "-a" else ""}
   >>>
   parameter_meta {
     preset_pairs_mergednodups: "preset: pairs, merged_nodups, old_merged_nodups, gff, bed, sam, vcf, psltbl [gff]"
@@ -62,7 +62,7 @@ task Pairix {
     v: "end2 column; can be identical to '-u' [null or identical to the start2 specified by -u]"
     delimiter_space_instead: "delimiter is space instead of tab."
     query_region_string: "query region is not a string but a file listing query regions"
-    skip_first_lines: "skip first INT lines [0]"
+    skip_first_int: "skip first INT lines [0]"
     symbol_commentmeta_lines: "symbol for comment/meta lines [#]"
     symbol_query_region: "symbol for query region separator [|]"
     replace_header_content: "replace the header with the content of FILE [null]"
@@ -76,5 +76,8 @@ task Pairix {
     force_overwrite_index: "force to overwrite the index"
     autoflip_query_exist: "autoflip query when the matching chromosome pair doesn't exist"
     in_dot_pairs_do_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

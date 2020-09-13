@@ -1,78 +1,91 @@
 class: CommandLineTool
 id: ../../../sqStoreDumpFASTQ.cwl
 inputs:
-- id: write_files_outprefixlibnamefastq
-  doc: write files out-prefix.(libname).fastq, ... if out-prefix is '-', all sequences
-    output to stdout if out-prefix ends in .gz, .bz2 or .xz, output is compressed
+- id: in_s
+  doc: ''
   type: string
   inputBinding:
+    prefix: -S
+- id: in_write_files_outprefix
+  doc: "write files out-prefix.(libname).fastq, ...\nif out-prefix is '-', all sequences\
+    \ output to stdout\nif out-prefix ends in .gz, .bz2 or .xz, output is compressed"
+  type: long
+  inputBinding:
     prefix: -o
-- id: fast_q
-  doc: output is FASTQ format (with extension .fastq, default) (note that QVs are
-    not stored, and are invalid)
+- id: in_fast_q
+  doc: "output is FASTQ format (with extension .fastq, default)\n(note that QVs are\
+    \ not stored, and are invalid)"
   type: boolean
   inputBinding:
     prefix: -fastq
-- id: fast_a
+- id: in_fast_a
   doc: output is FASTA format (with extension .fasta)
   type: boolean
   inputBinding:
     prefix: -fasta
-- id: no_libname
+- id: in_no_libname
   doc: don't include the library name in the output file name
-  type: boolean
+  type: File
   inputBinding:
     prefix: -nolibname
-- id: no_read_name
-  doc: "don't include the read name in the sequence header.  header will be: '>original-name\
-    \ id=<seqID> clr=<bgn>,<end>   with names '>read<seqID> clr=<bgn>,<end>      \
-    \          without names"
+- id: in_no_read_name
+  doc: "don't include the read name in the sequence header.  header will be:\n'>original-name\
+    \ id=<seqID> clr=<bgn>,<end>   with names\n'>read<seqID> clr=<bgn>,<end>     \
+    \           without names"
   type: boolean
   inputBinding:
     prefix: -noreadname
-- id: reverse
+- id: in_reverse
   doc: Dump the reverse-complement of the read.
   type: boolean
   inputBinding:
     prefix: -reverse
-- id: output_only_read_library
+- id: in_output_only_read_library
   doc: output only read in library number 'id'
-  type: string
+  type: long
   inputBinding:
     prefix: -l
-- id: output_only_single_read
+- id: in_output_only_single_read
   doc: "[-id]          output only the single read 'id', or the specified range of\
     \ ids"
   type: string
   inputBinding:
     prefix: -r
-- id: raw
+- id: in_raw
   doc: Dump raw reads.
   type: boolean
   inputBinding:
     prefix: -raw
-- id: corrected
+- id: in_corrected
   doc: Dump corrected reads.
   type: boolean
   inputBinding:
     prefix: -corrected
-- id: trimmed
+- id: in_trimmed
   doc: Dump the trimmed version of the raw/corrected read.
   type: boolean
   inputBinding:
     prefix: -trimmed
-- id: compressed
+- id: in_compressed
   doc: Dump the compressed version of the raw/corrected read.
   type: boolean
   inputBinding:
     prefix: -compressed
-- id: normal
-  doc: Dump the uncompressed version of the raw/corrected read. (for stores that are
-    by default compressing homopolymers)
+- id: in_normal
+  doc: "Dump the uncompressed version of the raw/corrected read.\n(for stores that\
+    \ are by default compressing homopolymers)"
   type: boolean
   inputBinding:
     prefix: -normal
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_no_libname
+  doc: don't include the library name in the output file name
+  type: File
+  outputBinding:
+    glob: $(inputs.in_no_libname)
 cwlVersion: v1.1
 baseCommand:
 - sqStoreDumpFASTQ

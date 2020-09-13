@@ -1,7 +1,10 @@
 version 1.0
 
-task ReduceQmers {
+task Reduceqmers {
   command <<<
-    reduce-qmers
+    reduce_qmers
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

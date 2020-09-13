@@ -6,13 +6,11 @@ task MerfishtoolsDiffexp {
     Float? pseudo_counts
     File? cdf
     Int? threads
-    String group_one
-    String group_two
+    Int group_one
   }
   command <<<
     merfishtools diffexp \
       ~{group_one} \
-      ~{group_two} \
       ~{if defined(max_null_log_two_fc) then ("--max-null-log2fc " +  '"' + max_null_log_two_fc + '"') else ""} \
       ~{if defined(pseudo_counts) then ("--pseudocounts " +  '"' + pseudo_counts + '"') else ""} \
       ~{if defined(cdf) then ("--cdf " +  '"' + cdf + '"') else ""} \
@@ -24,6 +22,8 @@ task MerfishtoolsDiffexp {
     cdf: "Path to write CDFs of log2 fold changes to."
     threads: "Number of threads to use."
     group_one: ""
-    group_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

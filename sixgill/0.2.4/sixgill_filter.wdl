@@ -2,7 +2,7 @@ version 1.0
 
 task SixgillFilter {
   input {
-    String? out
+    File? out
     Int? minor_f_length
     Int? mina_a_seq_length
     Int? min_read_count
@@ -23,8 +23,8 @@ task SixgillFilter {
       ~{if defined(min_longest_tryp_peple_n) then ("--minlongesttryppeplen " +  '"' + min_longest_tryp_peple_n + '"') else ""} \
       ~{if defined(min_meta_gene_score) then ("--minmetagenescore " +  '"' + min_meta_gene_score + '"') else ""} \
       ~{if defined(max_meta_peptides) then ("--maxmetapeptides " +  '"' + max_meta_peptides + '"') else ""} \
-      ~{true="--nogzipout" false="" no_gzip_out} \
-      ~{true="--debug" false="" debug}
+      ~{if (no_gzip_out) then "--nogzipout" else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     out: "output metapeptide database file"
@@ -35,7 +35,11 @@ task SixgillFilter {
     min_longest_tryp_peple_n: "minimum length of the longest tryptic peptide"
     min_meta_gene_score: "Minimum MetaGene score (-1 for none)"
     max_meta_peptides: "maximum number of metapeptides to write"
-    no_gzip_out: "Write plaintetxt (non-gzipped) output (default gzipped)"
+    no_gzip_out: "Write plaintetxt (non-gzipped) output (default\\ngzipped)"
     debug: "Enable debug logging"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

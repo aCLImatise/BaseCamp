@@ -1,64 +1,67 @@
 class: CommandLineTool
 id: ../../../fc_ovlp_filter.cwl
 inputs:
-- id: n_core
-  doc: number of processes used for generating consensus; 0 for main process only
-    (default=4)
-  type: string
+- id: in_n_core
+  doc: "number of processes used for generating consensus; 0\nfor main process only\
+    \ (default=4)"
+  type: long
   inputBinding:
     prefix: --n_core
-- id: fof_n
-  doc: file contains the path of all LAS file to be processed in parallel
-  type: string
+- id: in_fof_n
+  doc: "file contains the path of all LAS file to be processed\nin parallel"
+  type: File
   inputBinding:
     prefix: --fofn
-- id: db
+- id: in_db
   doc: read db file path
-  type: string
+  type: File
   inputBinding:
     prefix: --db
-- id: max_diff
+- id: in_max_diff
   doc: max difference of 5' and 3' coverage
   type: long
   inputBinding:
     prefix: --max_diff
-- id: max_cov
+- id: in_max_cov
   doc: max coverage of 5' or 3' coverage
   type: long
   inputBinding:
     prefix: --max_cov
-- id: min_cov
+- id: in_min_cov
   doc: min coverage of 5' or 3' coverage
   type: long
   inputBinding:
     prefix: --min_cov
-- id: min_len
+- id: in_min_len
   doc: min length of the reads (default=2500)
   type: long
   inputBinding:
     prefix: --min_len
-- id: best_n
-  doc: output at least best n overlaps on 5' or 3' ends if possible (default=10)
-  type: string
+- id: in_best_n
+  doc: "output at least best n overlaps on 5' or 3' ends if\npossible (default=10)"
+  type: long
   inputBinding:
     prefix: --bestn
-- id: stream
-  doc: stream from LA4Falcon, instead of slurping all at once; can save memory for
-    large data
+- id: in_stream
+  doc: "stream from LA4Falcon, instead of slurping all at once;\ncan save memory for\
+    \ large data"
   type: boolean
   inputBinding:
     prefix: --stream
-- id: debug
+- id: in_debug
   doc: single-threaded, plus other aids to debugging
   type: boolean
   inputBinding:
     prefix: --debug
-- id: silent
+- id: in_silent
   doc: suppress cmd reporting on stderr
   type: boolean
   inputBinding:
     prefix: --silent
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fc_ovlp_filter

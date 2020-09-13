@@ -1,11 +1,48 @@
 !Command
+command:
+- oases
 positional:
 - !Positional
   description: ': working directory name'
   position: 0
   name: directory
   optional: false
+- !Positional
+  description: directory/contig-ordering.txt
+  position: 0
+  name: directory/transcripts.fa
+  optional: false
 named:
+- !Flag
+  description: ': print citation to Oases manuscript and exit'
+  synonyms:
+  - --citation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': expected distance between two paired-end reads in the second short-read
+    dataset (default: no read pairing)'
+  synonyms:
+  - -ins_length2
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': expected distance between two long paired-end reads (default: no
+    read pairing)'
+  synonyms:
+  - -ins_length_long
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "*_sd <integer>       : est. standard deviation of respective dataset\
+    \ (default: 10% of corresponding length)\n[replace '*' by nothing, '2' or '_long'\
+    \ as necessary]"
+  synonyms:
+  - -ins_length
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: ': export unused reads in UnusedReads.fa file (default: no)'
   synonyms:
@@ -29,6 +66,53 @@ named:
     name: yes|no
   optional: true
 - !Flag
+  description: ': removal of low coverage nodes AFTER tour bus or allow the system
+    to infer it (default: 3)'
+  synonyms:
+  - -cov_cutoff
+  args: !SimpleFlagArg
+    name: floating-point
+  optional: true
+- !Flag
+  description: ': minimum number of paired end connections to justify the scaffolding
+    of two long contigs (default: 4)'
+  synonyms:
+  - -min_pair_count
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': Minimum length of output transcripts (default: hash-length)'
+  synonyms:
+  - -min_trans_lgth
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ": minimum ratio allowed between the numbers of observed and estimated\
+    \ connecting read pairs\nMust be part of the open interval ]0,1[ (default: 0.1)"
+  synonyms:
+  - -paired_cutoff
+  args: !SimpleFlagArg
+    name: floating-point
+  optional: true
+- !Flag
+  description: ':Preserve contigs mapping onto long sequences to be preserved from
+    coverage cutoff (default: no)'
+  synonyms:
+  - -merge
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+- !Flag
+  description: ": Remove edges which represent less than that fraction of a nodes\
+    \ outgoing flow\nMust be part of the open interval ]0,1[ (default: 0.01)"
+  synonyms:
+  - -edgeFractionCutoff
+  args: !SimpleFlagArg
+    name: floating-point
+  optional: true
+- !Flag
   description: ': Allow gaps in transcripts (default: no)'
   synonyms:
   - -scaffolding
@@ -43,13 +127,22 @@ named:
   args: !SimpleFlagArg
     name: integer
   optional: true
-command:
-- oases
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ': this help message'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: ': print version and exit'
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage:\n./oases directory [options]\n\n\tdirectory\t\t\t: working directory\
   \ name\n\nStandard options:\n\t--help\t\t\t\t: this help message\n\t--version\t\t\
   \t: print version and exit\n\t--citation\t\t\t: print citation to Oases manuscript\

@@ -1,17 +1,20 @@
 version 1.0
 
-task ArvNormalize {
+task Arvnormalize {
   input {
-    String? extract
+    File? extract
     Boolean? strip
   }
   command <<<
-    arv-normalize \
+    arv_normalize \
       ~{if defined(extract) then ("--extract " +  '"' + extract + '"') else ""} \
-      ~{true="--strip" false="" strip}
+      ~{if (strip) then "--strip" else ""}
   >>>
   parameter_meta {
     extract: "The file to extract from the input manifest"
     strip: "Strip authorization tokens"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

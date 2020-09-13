@@ -3,7 +3,7 @@ version 1.0
 task FunannotateMask {
   input {
     Boolean? multifasta_genome_file
-    Boolean? out
+    File? out
     Boolean? method
     Boolean? repeatmasker_species
     Boolean? repeat_modeler_lib
@@ -14,13 +14,13 @@ task FunannotateMask {
   command <<<
     funannotate mask \
       ~{arguments} \
-      ~{true="--input" false="" multifasta_genome_file} \
-      ~{true="--out" false="" out} \
-      ~{true="--method" false="" method} \
-      ~{true="--repeatmasker_species" false="" repeatmasker_species} \
-      ~{true="--repeatmodeler_lib" false="" repeat_modeler_lib} \
-      ~{true="--cpus" false="" cpus} \
-      ~{true="--debug" false="" debug}
+      ~{if (multifasta_genome_file) then "--input" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (method) then "--method" else ""} \
+      ~{if (repeatmasker_species) then "--repeatmasker_species" else ""} \
+      ~{if (repeat_modeler_lib) then "--repeatmodeler_lib" else ""} \
+      ~{if (cpus) then "--cpus" else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     multifasta_genome_file: "Multi-FASTA genome file. (Required)"
@@ -31,5 +31,9 @@ task FunannotateMask {
     cpus: "Number of cpus to use. Default: 2"
     debug: "Keep intermediate files"
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

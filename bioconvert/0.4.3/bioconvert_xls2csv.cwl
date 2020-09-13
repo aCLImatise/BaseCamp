@@ -1,89 +1,102 @@
 class: CommandLineTool
 id: ../../../bioconvert_xls2csv.cwl
 inputs:
-- id: force
-  doc: 'if outfile exists, it is overwritten with this option (default: False)'
+- id: in_force
+  doc: "if outfile exists, it is overwritten with this option\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --force
-- id: verbosity
+- id: in_verbosity
   doc: 'Set the outpout verbosity. (default: ERROR)'
   type: string
   inputBinding:
     prefix: --verbosity
-- id: raise_exception
-  doc: 'Let exception ending the execution be raised and displayed (default: False)'
+- id: in_raise_exception
+  doc: "Let exception ending the execution be raised and\ndisplayed (default: False)"
   type: boolean
   inputBinding:
     prefix: --raise-exception
-- id: batch
-  doc: "Allow conversion of a set of files using wildcards. You must use quotes to\
-    \ escape the wildcards. For instance: --batch 'test*fastq' (default: False)"
+- id: in_batch
+  doc: "Allow conversion of a set of files using wildcards.\nYou must use quotes to\
+    \ escape the wildcards. For\ninstance: --batch 'test*fastq' (default: False)"
   type: boolean
   inputBinding:
     prefix: --batch
-- id: benchmark
+- id: in_benchmark
   doc: 'Running all available methods (default: False)'
   type: boolean
   inputBinding:
     prefix: --benchmark
-- id: benchmark_n
+- id: in_benchmark_n
   doc: 'Number of trials for each methods (default: 5)'
-  type: string
+  type: long
   inputBinding:
     prefix: --benchmark-N
-- id: benchmark_methods
+- id: in_benchmark_methods
   doc: 'Methods to include (default: all)'
   type: string[]
   inputBinding:
     prefix: --benchmark-methods
-- id: allow_indirect_conversion
-  doc: 'Allow to chain converter when direct conversion is absent (default: False)'
+- id: in_allow_indirect_conversion
+  doc: "Allow to chain converter when direct conversion is\nabsent (default: False)"
   type: boolean
   inputBinding:
     prefix: --allow-indirect-conversion
-- id: extra_arguments
-  doc: "Any arguments accepted by the method's tool (default: )"
+- id: in_extra_arguments
+  doc: "Any arguments accepted by the method's tool (default:\n)"
   type: string
   inputBinding:
     prefix: --extra-arguments
-- id: method_use_conversion
-  doc: '[{pandas,pyexcel}], --method [{pandas,pyexcel}] The method to use to do the
-    conversion. (default: pandas)'
+- id: in_method_use_conversion
+  doc: "[{pandas,pyexcel}], --method [{pandas,pyexcel}]\nThe method to use to do the\
+    \ conversion. (default:\npandas)"
   type: boolean
   inputBinding:
     prefix: -m
-- id: show_methods
+- id: in_show_methods
   doc: 'A converter may have several methods (default: False)'
   type: boolean
   inputBinding:
     prefix: --show-methods
-- id: sheet_name
+- id: in_sheet_name
   doc: 'The name or id of the sheet to convert (default: 0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --sheet-name
-- id: out_sep
+- id: in_out_sep
   doc: 'The separator used in the output file (default: ,)'
-  type: string
+  type: File
   inputBinding:
     prefix: --out-sep
-- id: line_terminator
-  doc: 'The line terminator used in the output file (default: )'
-  type: string
+- id: in_line_terminator
+  doc: "The line terminator used in the output file (default:\n)"
+  type: File
   inputBinding:
     prefix: --line-terminator
-- id: input_file
+- id: in_input_file
   doc: 'The path to the file to convert. (default: None)'
   type: string
   inputBinding:
     position: 0
-- id: output_file
-  doc: 'The path where the result will be stored. (default: None)'
+- id: in_output_file
+  doc: "The path where the result will be stored. (default:\nNone)"
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_sep
+  doc: 'The separator used in the output file (default: ,)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_sep)
+- id: out_line_terminator
+  doc: "The line terminator used in the output file (default:\n)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_line_terminator)
 cwlVersion: v1.1
 baseCommand:
 - bioconvert

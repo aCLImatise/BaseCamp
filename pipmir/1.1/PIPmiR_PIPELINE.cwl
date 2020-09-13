@@ -1,67 +1,71 @@
 class: CommandLineTool
 id: ../../../PIPmiR_PIPELINE.cwl
 inputs:
-- id: minimum_size_precursor
+- id: in_sorted_file_containing
+  doc: ".bam Sorted .bam file containing alignment of the read data\nmust also have\
+    \ <alignment_file.bai> at the same location"
+  type: File
+  inputBinding:
+    prefix: -a
+- id: in_version_genome_aligned
+  doc: .2bit version of the genome against which the reads were aligned
+  type: File
+  inputBinding:
+    prefix: -t
+- id: in_basename_output_files
+  doc: basename of output files
+  type: string
+  inputBinding:
+    prefix: -o
+- id: in_minimum_size_precursor
   doc: 'Minimum size for a precursor sequence (Default: 50)'
   type: long
   inputBinding:
     prefix: -l
-- id: maximum_size_precursor
+- id: in_maximum_size_precursor
   doc: 'Maximum size for a precursor sequence (Default: 500)'
   type: long
   inputBinding:
     prefix: -L
-- id: step_size_calculating
+- id: in_step_size_calculating
   doc: 'Step size for calculating precursor sequence (Default: 2)'
-  type: string
+  type: long
   inputBinding:
     prefix: -s
-- id: minimum_read_count
+- id: in_minimum_read_count
   doc: 'Minimum read count for a mature to be considered expressed (Default: 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: -m
-- id: number_threads_pipmir
+- id: in_number_threads_pipmir
   doc: 'Number of threads the PIPmiR can use (Default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: -p
-- id: maximum_amount_pipmir
+- id: in_maximum_amount_memory
   doc: 'Maximum amount of memory PIPmiR can use (Default: 4G)'
   type: long
   inputBinding:
     prefix: -X
-- id: file_containing_trainingdatadat
+- id: in_file_containing_data
   doc: 'File containing classifier training data (Default: TrainingData.dat)'
-  type: string
+  type: File
   inputBinding:
     prefix: -T
-- id: location_rnafold_default
+- id: in_location_rnafold_default
   doc: 'Location of RNAfold (Default: /home/dc97/bin/RNAfold)'
-  type: string
+  type: long
   inputBinding:
     prefix: -R
-- id: creates_log_file
+- id: in_creates_log_file
   doc: Creates a log file of PIPmiR results at <output_header>_log.csv
   type: boolean
   inputBinding:
     prefix: -d
-- id: a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -a
-- id: var_10
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -t
-- id: o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - PIPmiR

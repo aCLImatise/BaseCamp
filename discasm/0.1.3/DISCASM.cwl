@@ -1,48 +1,52 @@
 class: CommandLineTool
 id: ../../../DISCASM.cwl
 inputs:
-- id: chimeric_junctions
-  doc: STAR Chimeric.out.junction file
-  type: string
-  inputBinding:
-    prefix: --chimeric_junctions
-- id: aligned_bam
-  doc: aligned bam file from your favorite rna-seq alignment tool
-  type: string
-  inputBinding:
-    prefix: --aligned_bam
-- id: left_fq
-  doc: left fastq file
-  type: string
-  inputBinding:
-    prefix: --left_fq
-- id: right_fq
-  doc: right fastq file
-  type: string
+- id: in_right_fq
+  doc: ''
+  type: File
   inputBinding:
     prefix: --right_fq
-- id: out_dir
-  doc: output directory
-  type: string
-  inputBinding:
-    prefix: --out_dir
-- id: de_novo_assembler
-  doc: 'de novo assembly method: Trinity|Oases|OasesMultiK'
+- id: in_de_novo_assembler
+  doc: ''
   type: string
   inputBinding:
     prefix: --denovo_assembler
-- id: add_trinity_params
-  doc: any additional parameters to pass on to Trinity if Trinity is the chosen assembler.
+- id: in_chimeric_junctions
+  doc: STAR Chimeric.out.junction file
+  type: File
+  inputBinding:
+    prefix: --chimeric_junctions
+- id: in_aligned_bam
+  doc: "aligned bam file from your favorite rna-seq alignment\ntool"
+  type: File
+  inputBinding:
+    prefix: --aligned_bam
+- id: in_left_fq
+  doc: left fastq file
+  type: File
+  inputBinding:
+    prefix: --left_fq
+- id: in_add_trinity_params
+  doc: "any additional parameters to pass on to Trinity if\nTrinity is the chosen\
+    \ assembler."
   type: string
   inputBinding:
     prefix: --add_trinity_params
-- id: normalize_reads
-  doc: perform in silico normalization prior to de novo assembly (not needed if using
-    Trinity, since Trinity performs normalization internally
+- id: in_normalize_reads
+  doc: "perform in silico normalization prior to de novo\nassembly (not needed if\
+    \ using Trinity, since Trinity\nperforms normalization internally\n"
   type: boolean
   inputBinding:
     prefix: --normalize_reads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_chimeric_junctions
+  doc: STAR Chimeric.out.junction file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_chimeric_junctions)
 cwlVersion: v1.1
 baseCommand:
 - DISCASM

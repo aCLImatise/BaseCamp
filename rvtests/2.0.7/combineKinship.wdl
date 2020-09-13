@@ -8,13 +8,16 @@ task CombineKinship {
   }
   command <<<
     combineKinship \
-      ~{true="--out" false="" out} \
-      ~{true="--pca" false="" pc_a} \
-      ~{true="--thread" false="" thread}
+      ~{if (out) then "--out" else ""} \
+      ~{if (pc_a) then "--pca" else ""} \
+      ~{if (thread) then "--thread" else ""}
   >>>
   parameter_meta {
     out: ": Output prefix for autosomal kinship calculation"
     pc_a: ": Decomoposite calculated kinship matrix."
     thread: ": Specify number of parallel threads to speed up"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

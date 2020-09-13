@@ -4,4 +4,7 @@ task SpliceMap {
   command <<<
     SpliceMap
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

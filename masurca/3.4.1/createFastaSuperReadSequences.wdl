@@ -4,4 +4,7 @@ task CreateFastaSuperReadSequences {
   command <<<
     createFastaSuperReadSequences
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

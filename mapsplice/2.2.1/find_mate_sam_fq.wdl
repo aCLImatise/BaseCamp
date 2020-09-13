@@ -4,4 +4,7 @@ task FindMateSamFq {
   command <<<
     find_mate_sam_fq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

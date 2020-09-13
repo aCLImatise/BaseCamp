@@ -1,4 +1,7 @@
-&id003 !Command
+&id001 !Command
+command:
+- CIRCexplorer2
+- assemble
 positional: []
 named:
 - !Flag
@@ -59,17 +62,84 @@ named:
   args: !SimpleFlagArg
     name: FRAGMENTS
   optional: true
-command:
-- CIRCexplorer2
-- assemble
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - CIRCexplorer2
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - CIRCexplorer2
+    - parse
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: fusion
+      optional: false
+    named:
+    - !Flag
+      description: Aligner (TopHat-Fusion, STAR, MapSplice, BWA, segemehl).
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: ALIGNER
+      optional: true
+    - !Flag
+      description: "Output file.\n[default: back_spliced_junction.bed]"
+      synonyms:
+      - -b
+      - --bed
+      args: !SimpleFlagArg
+        name: JUNC
+      optional: true
+    - !Flag
+      description: Parse paired-end alignment file (only for TopHat-Fusion). If this
+        is set, then -f is set automatically.
+      synonyms:
+      - --pe
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Statistics fragment numbers rather than read numbers.
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show help message.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Show version.
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "Usage: CIRCexplorer2 parse [options] -t ALIGNER <fusion>\n\nOptions:\n\
+      \    -h --help                      Show help message.\n    --version      \
+      \                Show version.\n    -t ALIGNER                     Aligner (TopHat-Fusion,\
+      \ STAR, MapSplice, BWA, segemehl).\n    -b JUNC --bed=JUNC             Output\
+      \ file.\n                                   [default: back_spliced_junction.bed]\n\
+      \    --pe                           Parse paired-end alignment file (only for\
+      \ TopHat-Fusion). If this is set, then -f is set automatically.\n    -f    \
+      \                         Statistics fragment numbers rather than read numbers.\n"
+    generated_using: &id003
+    - --help
+  - !Command
+    command:
+    - CIRCexplorer2
+    - align
     positional: []
     named:
     - !Flag
@@ -129,7 +199,7 @@ parent: &id001 !Command
         name: OUT
       optional: true
     - !Flag
-      description: 'Output file. [default: back_spliced_junction.bed]'
+      description: "Output file.\n[default: back_spliced_junction.bed]"
       synonyms:
       - -b
       - --bed
@@ -160,11 +230,9 @@ parent: &id001 !Command
       - --skip-tophat-fusion
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - CIRCexplorer2
-    - align
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show help message.
       synonyms:
@@ -194,73 +262,11 @@ parent: &id001 !Command
       \         Create BigWig file.\n    --scale                        Scale to HPB.\n\
       \    --skip-tophat                  Skip TopHat mapping.\n    --skip-tophat-fusion\
       \           Skip TopHat-Fusion mapping.\n"
-    generated_using: &id002
-    - --help
+    generated_using: *id003
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: fusion
-      optional: false
-    named:
-    - !Flag
-      description: Aligner (TopHat-Fusion, STAR, MapSplice, BWA, segemehl).
-      synonyms:
-      - -t
-      args: !SimpleFlagArg
-        name: ALIGNER
-      optional: true
-    - !Flag
-      description: 'Output file. [default: back_spliced_junction.bed]'
-      synonyms:
-      - -b
-      - --bed
-      args: !SimpleFlagArg
-        name: JUNC
-      optional: true
-    - !Flag
-      description: Parse paired-end alignment file (only for TopHat-Fusion). If this
-        is set, then -f is set automatically.
-      synonyms:
-      - --pe
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Statistics fragment numbers rather than read numbers.
-      synonyms:
-      - -f
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - CIRCexplorer2
-    - parse
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: Show help message.
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: Show version.
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "Usage: CIRCexplorer2 parse [options] -t ALIGNER <fusion>\n\nOptions:\n\
-      \    -h --help                      Show help message.\n    --version      \
-      \                Show version.\n    -t ALIGNER                     Aligner (TopHat-Fusion,\
-      \ STAR, MapSplice, BWA, segemehl).\n    -b JUNC --bed=JUNC             Output\
-      \ file.\n                                   [default: back_spliced_junction.bed]\n\
-      \    --pe                           Parse paired-end alignment file (only for\
-      \ TopHat-Fusion). If this is set, then -f is set automatically.\n    -f    \
-      \                         Statistics fragment numbers rather than read numbers.\n"
-    generated_using: *id002
-  - !Command
+    - annotate
     positional: []
     named:
     - !Flag
@@ -288,7 +294,7 @@ parent: &id001 !Command
         name: JUNC
       optional: true
     - !Flag
-      description: 'Output file. [default: circularRNA_known.txt]'
+      description: "Output file.\n[default: circularRNA_known.txt]"
       synonyms:
       - -o
       - --output
@@ -307,11 +313,9 @@ parent: &id001 !Command
       - --low-confidence
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - CIRCexplorer2
-    - annotate
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show help message.
       synonyms:
@@ -335,9 +339,11 @@ parent: &id001 !Command
       \    --no-fix                       No-fix mode (useful for species with poor\
       \ gene annotations).\n    --low-confidence               Extract low confidence\
       \ circRNAs.\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
   - !Command
+    command:
+    - CIRCexplorer2
+    - denovo
     positional: []
     named:
     - !Flag
@@ -429,11 +435,9 @@ parent: &id001 !Command
       - --rpkm
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - CIRCexplorer2
-    - denovo
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show help message.
       synonyms:
@@ -463,7 +467,8 @@ parent: &id001 !Command
       \    --no-fix                       No-fix mode (useful for species with poor\
       \ gene annotations).\n    --rpkm                         Calculate RPKM for\
       \ cassette exons.\n"
-    generated_using: *id002
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -477,8 +482,9 @@ parent: &id001 !Command
     \ from other aligners\n    annotate         Annotate circular RNA junction reads\
     \ with gene annotations\n    assemble         Assemble transcriptome for circular\
     \ RNAs\n    denovo           Fetch de novo circular RNA isoforms\n\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show help message.
   synonyms:
@@ -504,4 +510,4 @@ help_text: "Usage: CIRCexplorer2 assemble [options] -r REF -m TOPHAT [-o OUT]\n\
   \ for converting to BigBed.\n    --remove-rRNA                  Ignore rRNA during\
   \ assembling (only for human hg19).\n    --max-bundle-frags=FRAGMENTS   Cufflinks\
   \ --max-bundle-frags option.\n"
-generated_using: *id002
+generated_using: *id003

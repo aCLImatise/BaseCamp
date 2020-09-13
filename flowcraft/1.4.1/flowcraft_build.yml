@@ -1,5 +1,24 @@
-&id001 !Command
-positional: []
+&id002 !Command
+command:
+- flowcraft
+- build
+positional:
+- !Positional
+  description: -L, --component-list  Print a detailed description for all the currently
+  position: 0
+  name: exit.
+  optional: false
+- !Positional
+  description: -cr, --check-recipe   Check tasks that the recipe contain and their
+    flow.
+  position: 0
+  name: recipes
+  optional: false
+- !Positional
+  description: --export-params       Only export the parameters for the provided components
+  position: 0
+  name: option.
+  optional: false
 named:
 - !Flag
   description: Space separated tasks of the pipeline
@@ -32,14 +51,15 @@ named:
     name: PIPELINE_NAME
   optional: true
 - !Flag
-  description: Merges identical parameters from multiple components into the same
-    one. Otherwise, the parameters will be separated and unique to each component.
+  description: "Merges identical parameters from multiple components\ninto the same\
+    \ one. Otherwise, the parameters will be\nseparated and unique to each component."
   synonyms:
   - --merge-params
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Write only the pipeline files and not the templates, bin, and lib folders.
+  description: "Write only the pipeline files and not the templates,\nbin, and lib\
+    \ folders."
   synonyms:
   - --pipeline-only
   args: !EmptyFlagArg {}
@@ -52,21 +72,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Check only the validity of the pipeline string and exit.
+  description: Check only the validity of the pipeline string and
   synonyms:
   - -c
   - --check-pipeline
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Print a detailed description for all the currently available processes.
-  synonyms:
-  - -L
-  - --component-list
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Print a short list of the currently available processes.
+  description: "Print a short list of the currently available\nprocesses."
   synonyms:
   - -l
   - --component-list-short
@@ -79,46 +92,29 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Print a condensed list of the currently available recipes
+  description: Print a condensed list of the currently available
   synonyms:
   - --recipe-list-short
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Check tasks that the recipe contain and their flow. This option might
-    be useful if a user wants to change some components of a given recipe, by using
-    the -t option.
-  synonyms:
-  - -cr
-  - --check-recipe
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Only export the parameters for the provided components (via -t option)
-    in JSON format to stdout. No pipeline will be generated with this option.
-  synonyms:
-  - --export-params
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Only export the directives for the provided components (via -t option)
-    in JSON format to stdout. No pipeline will be generated with this option.
+  description: "Only export the directives for the provided components\n(via -t option)\
+    \ in JSON format to stdout. No pipeline\nwill be generated with this option."
   synonyms:
   - --export-directives
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Allows to fetch all docker tags for the components listed with the
-    -t flag.
+  description: "Allows to fetch all docker tags for the components\nlisted with the\
+    \ -t flag.\n"
   synonyms:
   - -ft
   - --fetch-tags
   args: !EmptyFlagArg {}
   optional: true
-command:
-- flowcraft
-- build
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - flowcraft
   positional: []
   named:
   - !Flag
@@ -133,79 +129,12 @@ parent: &id002 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - flowcraft
   parent:
   subcommands:
-  - *id001
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Specify the nextflow trace file.
-      synonyms:
-      - -i
-      args: !SimpleFlagArg
-        name: TRACE_FILE
-      optional: true
-    - !Flag
-      description: Set the refresh frequency for the continuous inspect functions
-      synonyms:
-      - -r
-      args: !SimpleFlagArg
-        name: REFRESH_RATE
-      optional: true
-    - !Flag
-      description: Specify the inspection run mode.
-      synonyms:
-      - -m
-      - --mode
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? overview
-          ? broadcast
-      optional: true
-    - !Flag
-      description: Specify the URL to where the data should be broadcast
-      synonyms:
-      - -u
-      - --url
-      args: !SimpleFlagArg
-        name: URL
-      optional: true
-    - !Flag
-      description: Pretty inspection mode that removes usual reporting processes.
-      synonyms:
-      - --pretty
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - flowcraft
-    - inspect
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: flowcraft inspect [-h] [-i TRACE_FILE] [-r REFRESH_RATE]\n\
-      \                         [-m {overview,broadcast}] [-u URL] [--pretty]\n\n\
-      optional arguments:\n  -h, --help            show this help message and exit\n\
-      \  -i TRACE_FILE         Specify the nextflow trace file.\n  -r REFRESH_RATE\
-      \       Set the refresh frequency for the continuous inspect\n             \
-      \           functions\n  -m {overview,broadcast}, --mode {overview,broadcast}\n\
-      \                        Specify the inspection run mode.\n  -u URL, --url URL\
-      \     Specify the URL to where the data should be broadcast\n  --pretty    \
-      \          Pretty inspection mode that removes usual reporting\n           \
-      \             processes.\n"
-    generated_using: &id003
-    - --help
-  - !Command
+    - report
     positional: []
     named:
     - !Flag
@@ -224,35 +153,33 @@ parent: &id002 !Command
         name: URL
       optional: true
     - !Flag
-      description: Specify the nextflow trace file. Only applicable in combination
-        with --watch option.
+      description: "Specify the nextflow trace file. Only applicable in\ncombination\
+        \ with --watch option."
       synonyms:
       - --trace-file
       args: !SimpleFlagArg
         name: TRACE_FILE
       optional: true
     - !Flag
-      description: Specify the nextflow log file. Only applicable in combination with
-        --watch option.
+      description: "Specify the nextflow log file. Only applicable in\ncombination\
+        \ with --watch option."
       synonyms:
       - --log-file
       args: !SimpleFlagArg
         name: LOG_FILE
       optional: true
     - !Flag
-      description: Run the report in watch mode. This option will track the generation
-        of reports during the execution of the pipeline, allowing for the visualization
-        of the reports in real-time
+      description: "Run the report in watch mode. This option will track\nthe generation\
+        \ of reports during the execution of the\npipeline, allowing for the visualization\
+        \ of the\nreports in real-time\n"
       synonyms:
       - -w
       - --watch
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - flowcraft
-    - report
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -275,7 +202,72 @@ parent: &id002 !Command
       \               the generation of reports during the execution of the\n    \
       \                    pipeline, allowing for the visualization of the\n     \
       \                   reports in real-time\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - flowcraft
+    - inspect
+    positional:
+    - !Positional
+      description: -m {overview,broadcast}, --mode {overview,broadcast}
+      position: 0
+      name: functions
+      optional: false
+    named:
+    - !Flag
+      description: Specify the nextflow trace file.
+      synonyms:
+      - -i
+      args: !SimpleFlagArg
+        name: TRACE_FILE
+      optional: true
+    - !Flag
+      description: Set the refresh frequency for the continuous inspect
+      synonyms:
+      - -r
+      args: !SimpleFlagArg
+        name: REFRESH_RATE
+      optional: true
+    - !Flag
+      description: Specify the URL to where the data should be broadcast
+      synonyms:
+      - -u
+      - --url
+      args: !SimpleFlagArg
+        name: URL
+      optional: true
+    - !Flag
+      description: "Pretty inspection mode that removes usual reporting\nprocesses.\n"
+      synonyms:
+      - --pretty
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: flowcraft inspect [-h] [-i TRACE_FILE] [-r REFRESH_RATE]\n\
+      \                         [-m {overview,broadcast}] [-u URL] [--pretty]\n\n\
+      optional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -i TRACE_FILE         Specify the nextflow trace file.\n  -r REFRESH_RATE\
+      \       Set the refresh frequency for the continuous inspect\n             \
+      \           functions\n  -m {overview,broadcast}, --mode {overview,broadcast}\n\
+      \                        Specify the inspection run mode.\n  -u URL, --url URL\
+      \     Specify the URL to where the data should be broadcast\n  --pretty    \
+      \          Pretty inspection mode that removes usual reporting\n           \
+      \             processes.\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -301,6 +293,7 @@ parent: &id002 !Command
     \ exit.\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -14,4 +14,7 @@ task ArbGeneProbe {
     input_database: ""
     output_database: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

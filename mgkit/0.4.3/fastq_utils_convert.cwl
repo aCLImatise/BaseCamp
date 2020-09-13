@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../fastq_utils_convert.cwl
 inputs:
-- id: fast_q_file
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_fast_q_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: fast_a_file
+- id: in_fast_a_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastq-utils

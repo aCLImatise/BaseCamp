@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../rsem_sam_validator.cwl
 inputs:
-- id: input_dots_am_slash_input_dot_bam_slash_input_dot_cram
+- id: in_input_dots_am_slash_input_dot_bam_slash_input_dot_cram
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rsem-sam-validator

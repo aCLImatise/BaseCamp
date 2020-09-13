@@ -2,19 +2,19 @@ version 1.0
 
 task HailctlDataprocStart {
   input {
-    String? master_machine_type
-    String? master_memory_fraction
-    String? master_boot_disk_size
-    String? num_master_local_ssds
-    String? num_preemptible_workers
-    String? num_worker_local_ssds
-    String? num_workers
-    String? preemptible_worker_boot_disk_size
-    String? worker_boot_disk_size
-    String? worker_machine_type
-    String? zone
+    Int? master_machine_type
+    Float? master_memory_fraction
+    Int? master_boot_disk_size
+    Int? num_master_local_ssds
+    Int? num_preemptible_workers
+    Int? num_worker_local_ssds
+    Int? num_workers
+    Int? preemptible_worker_boot_disk_size
+    Int? worker_boot_disk_size
+    Int? worker_machine_type
+    Int? zone
     String? properties
-    String? metadata
+    Int? metadata
     String? packages
     String? project
     String? configuration
@@ -28,11 +28,9 @@ task HailctlDataprocStart {
     String? in_it_timeout
     String? vep
     Boolean? dry_run
-    String name
   }
   command <<<
     hailctl dataproc start \
-      ~{name} \
       ~{if defined(master_machine_type) then ("--master-machine-type " +  '"' + master_machine_type + '"') else ""} \
       ~{if defined(master_memory_fraction) then ("--master-memory-fraction " +  '"' + master_memory_fraction + '"') else ""} \
       ~{if defined(master_boot_disk_size) then ("--master-boot-disk-size " +  '"' + master_boot_disk_size + '"') else ""} \
@@ -58,35 +56,37 @@ task HailctlDataprocStart {
       ~{if defined(in_it) then ("--init " +  '"' + in_it + '"') else ""} \
       ~{if defined(in_it_timeout) then ("--init_timeout " +  '"' + in_it_timeout + '"') else ""} \
       ~{if defined(vep) then ("--vep " +  '"' + vep + '"') else ""} \
-      ~{true="--dry-run" false="" dry_run}
+      ~{if (dry_run) then "--dry-run" else ""}
   >>>
   parameter_meta {
     master_machine_type: "Master machine type (default: n1-highmem-8)."
-    master_memory_fraction: "Fraction of master memory allocated to the JVM. Use a smaller value to reserve more memory for Python. (default: 0.8)"
+    master_memory_fraction: "Fraction of master memory allocated to the JVM. Use a\\nsmaller value to reserve more memory for Python.\\n(default: 0.8)"
     master_boot_disk_size: "Disk size of master machine, in GB (default: 100)."
-    num_master_local_ssds: "Number of local SSDs to attach to the master machine (default: 0)."
+    num_master_local_ssds: "Number of local SSDs to attach to the master machine\\n(default: 0)."
     num_preemptible_workers: "Number of preemptible worker machines (default: 0)."
-    num_worker_local_ssds: "Number of local SSDs to attach to each worker machine (default: 0)."
+    num_worker_local_ssds: "Number of local SSDs to attach to each worker machine\\n(default: 0)."
     num_workers: "Number of worker machines (default: 2)."
-    preemptible_worker_boot_disk_size: "Disk size of preemptible machines, in GB (default: 40)."
+    preemptible_worker_boot_disk_size: "Disk size of preemptible machines, in GB (default:\\n40)."
     worker_boot_disk_size: "Disk size of worker machines, in GB (default: 40)."
-    worker_machine_type: "Worker machine type (default: n1-standard-8, or n1-highmem-8 with --vep)."
+    worker_machine_type: "Worker machine type (default: n1-standard-8, or\\nn1-highmem-8 with --vep)."
     zone: "Compute zone for the cluster (default: us-central1-b)."
     properties: "Additional configuration properties for the cluster"
-    metadata: "Comma-separated list of metadata to add: KEY1=VALUE1,KEY2=VALUE2..."
-    packages: "Comma-separated list of Python packages to be installed on the master node."
-    project: "Google Cloud project to start cluster (defaults to currently set project)."
-    configuration: "Google Cloud configuration to start cluster (defaults to currently set configuration)."
-    max_idle: "If specified, maximum idle time before shutdown (e.g. 60m)."
+    metadata: "Comma-separated list of metadata to add:\\nKEY1=VALUE1,KEY2=VALUE2..."
+    packages: "Comma-separated list of Python packages to be\\ninstalled on the master node."
+    project: "Google Cloud project to start cluster (defaults to\\ncurrently set project)."
+    configuration: "Google Cloud configuration to start cluster (defaults\\nto currently set configuration)."
+    max_idle: "If specified, maximum idle time before shutdown (e.g.\\n60m)."
     max_age: "If specified, maximum age before shutdown (e.g. 60m)."
-    bucket: "The Google Cloud Storage bucket to use for cluster staging (just the bucket name, no gs:// prefix)."
+    bucket: "The Google Cloud Storage bucket to use for cluster\\nstaging (just the bucket name, no gs:// prefix)."
     network: "the network for all nodes in this cluster"
-    master_tags: "comma-separated list of instance tags to apply to the mastern node"
+    master_tags: "comma-separated list of instance tags to apply to the\\nmastern node"
     wheel: "Non-default Hail installation. Warning: experimental."
     in_it: "Comma-separated list of init scripts to run."
-    in_it_timeout: "Flag to specify a timeout period for the initialization action"
+    in_it_timeout: "Flag to specify a timeout period for the\\ninitialization action"
     vep: "Install VEP for the specified reference genome."
     dry_run: "Print gcloud dataproc command, but don't run it."
-    name: "Cluster name."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

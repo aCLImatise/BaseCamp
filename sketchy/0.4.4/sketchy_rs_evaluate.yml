@@ -1,5 +1,13 @@
-&id002 !Command
-positional: []
+&id003 !Command
+command:
+- sketchy-rs
+- evaluate
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: sketchy-rs
+  optional: false
 named:
 - !Flag
   description: genotype feature index
@@ -17,18 +25,59 @@ named:
   args: !SimpleFlagArg
     name: INT
   optional: true
-command:
-- sketchy-rs
-- evaluate
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - sketchy-rs
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
-    positional: []
+    command:
+    - sketchy-rs
+    - help
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: For
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: more
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: information
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: try
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tsketchy-rs\
+      \ help <subcommands>...\n\nFor more information try --help\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    command:
+    - sketchy-rs
+    - compute
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: sketchy-rs
+      optional: false
     named:
     - !Flag
       description: progress switch > 0
@@ -62,11 +111,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - sketchy-rs
-    - compute
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Prints help information
       synonyms:
@@ -88,48 +135,9 @@ parent: &id001 !Command
       \nOPTIONS:\n    -p, --progress <INT>    progress switch > 0\n    -r, --ranks\
       \ <INT>       max ranks per read\n    -s, --sketch <FILE>     reference sketch\n\
       \    -t, --threads <INT>     max threads for mash\n"
-    generated_using: &id003
-    - --help
-  - *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: For
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: more
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: information
-      optional: false
-    - !Positional
-      description: ''
-      position: 3
-      name: try
-      optional: false
-    named: []
-    command:
-    - sketchy-rs
-    - help
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tsketchy-rs\
-      \ help <subcommands>...\n\nFor more information try --help\n"
-    generated_using: *id003
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -152,8 +160,9 @@ parent: &id001 !Command
     \ from fasta/q on stdin\n    evaluate    \n                evaluate sum of shared\
     \ hashes from sketchy compute on stdin\n    help        Prints this message or\
     \ the help of the given subcommand(s)\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Prints help information
   synonyms:
@@ -174,4 +183,4 @@ help_text: "sketchy-rs-evaluate 0.4.4\n\nevaluate sum of shared hashes from sket
   \ --help       Prints help information\n    -V, --version    Prints version information\n\
   \nOPTIONS:\n    -f, --features <FILE>    genotype feature index\n    -s, --stable\
   \ <INT>       reads to stable breakpoint\n"
-generated_using: *id003
+generated_using: *id002

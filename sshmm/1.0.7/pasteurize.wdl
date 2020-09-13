@@ -4,25 +4,27 @@ task Pasteurize {
   input {
     Boolean? all_imports
     String? fix
-    String? processes
+    Int? processes
     String? no_fix
     Boolean? list_fixes
     Boolean? verbose
     Boolean? no_diffs
     Boolean? write
     Boolean? no_backups
+    File file_vertical_line_dir
   }
   command <<<
     pasteurize \
-      ~{true="--all-imports" false="" all_imports} \
+      ~{file_vertical_line_dir} \
+      ~{if (all_imports) then "--all-imports" else ""} \
       ~{if defined(fix) then ("--fix " +  '"' + fix + '"') else ""} \
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if defined(no_fix) then ("--nofix " +  '"' + no_fix + '"') else ""} \
-      ~{true="--list-fixes" false="" list_fixes} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--no-diffs" false="" no_diffs} \
-      ~{true="--write" false="" write} \
-      ~{true="--nobackups" false="" no_backups}
+      ~{if (list_fixes) then "--list-fixes" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (no_diffs) then "--no-diffs" else ""} \
+      ~{if (write) then "--write" else ""} \
+      ~{if (no_backups) then "--nobackups" else ""}
   >>>
   parameter_meta {
     all_imports: "Adds all __future__ and future imports to each module"
@@ -34,5 +36,9 @@ task Pasteurize {
     no_diffs: "Don't show diffs of the refactoring"
     write: "Write back modified files"
     no_backups: "Don't write backups for modified files."
+    file_vertical_line_dir: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

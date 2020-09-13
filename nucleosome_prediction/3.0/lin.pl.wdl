@@ -1,7 +1,10 @@
 version 1.0
 
-task Lin.pl.bak {
+task Linpl {
   command <<<
-    lin.pl.bak
+    lin_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task ChorusGUI {
   command <<<
     ChorusGUI
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

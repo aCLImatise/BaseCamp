@@ -19,8 +19,8 @@ task Minidot {
       ~{if defined(min_span) then ("-s " +  '"' + min_span + '"') else ""} \
       ~{if defined(image_width) then ("-w " +  '"' + image_width + '"') else ""} \
       ~{if defined(font_size) then ("-f " +  '"' + font_size + '"') else ""} \
-      ~{true="-L" false="" do_print_labels} \
-      ~{true="-D" false="" try_put_hits}
+      ~{if (do_print_labels) then "-L" else ""} \
+      ~{if (try_put_hits) then "-D" else ""}
   >>>
   parameter_meta {
     min_match_length: "min match length [100]"
@@ -31,5 +31,8 @@ task Minidot {
     do_print_labels: "don't print labels"
     try_put_hits: "don't try to put hits onto the diagonal"
     in_dot_paf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

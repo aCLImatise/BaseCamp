@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogInstallCondaYaml {
+task WatchdoginstallCondaYaml {
   command <<<
-    watchdog-installCondaYaml
+    watchdog_installCondaYaml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

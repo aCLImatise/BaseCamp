@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../sparse_mash.cwl
 inputs:
-- id: dbname
+- id: in_dbname
   doc: Name for the database folder. REQUIRED.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --dbname
-- id: query
-  doc: 'A genome in fasta format, or a set of reads in fastq format. REQUIRED. '
+- id: in_query
+  doc: A genome in fasta format, or a set of reads in fastq format. REQUIRED.
   type: string
   inputBinding:
     prefix: --query
-- id: read
+- id: in_read
   doc: Specify if query is a read set rather than an assembly.
   type: boolean
   inputBinding:
     prefix: --read
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sparse

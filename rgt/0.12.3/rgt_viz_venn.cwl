@@ -1,64 +1,73 @@
 class: CommandLineTool
 id: ../../../rgt_viz_venn.cwl
 inputs:
-- id: s_one
+- id: in_s_one
   doc: Define the file for gene set 1 (BED or gene list)
   type: boolean
   inputBinding:
     prefix: -s1
-- id: s_two
+- id: in_s_two
   doc: Define the file for gene set 2 (BED or gene list)
   type: boolean
   inputBinding:
     prefix: -s2
-- id: s_three
+- id: in_s_three
   doc: Define the file for gene set 3 (BED or gene list)
   type: boolean
   inputBinding:
     prefix: -s3
-- id: s_four
+- id: in_s_four
   doc: Define the file for gene set 3 (BED or gene list)
   type: boolean
   inputBinding:
     prefix: -s4
-- id: lone
+- id: in_lone
   doc: Define label on venn diagram for set 1
   type: boolean
   inputBinding:
     prefix: -l1
-- id: l_two
+- id: in_l_two
   doc: Define label on venn diagram for set 2
   type: boolean
   inputBinding:
     prefix: -l2
-- id: l_three
+- id: in_l_three
   doc: Define label on venn diagram for set 3
   type: boolean
   inputBinding:
     prefix: -l3
-- id: l_four
+- id: in_l_four
   doc: Define label on venn diagram for set 4
   type: boolean
   inputBinding:
     prefix: -l4
-- id: directory_name_output
-  doc: 'The directory name for the output files. For example, project name. (default:
-    None)'
-  type: boolean
+- id: in_directory_name_output
+  doc: "The directory name for the output files. For example, project\nname. (default:\
+    \ None)"
+  type: Directory
   inputBinding:
     prefix: -o
-- id: title_shown_top
-  doc: 'The title shown on the top of the plot and also the folder name. (default:
-    venn_diagram)'
+- id: in_title_shown_top
+  doc: "The title shown on the top of the plot and also the folder\nname. (default:\
+    \ venn_diagram)"
   type: boolean
   inputBinding:
     prefix: -t
-- id: organism
+- id: in_organism
   doc: Define the organism.
   type: boolean
   inputBinding:
     prefix: -organism
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_directory_name_output
+  doc: "The directory name for the output files. For example, project\nname. (default:\
+    \ None)"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_directory_name_output)
 cwlVersion: v1.1
 baseCommand:
 - rgt-viz

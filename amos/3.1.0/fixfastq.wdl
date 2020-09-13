@@ -4,4 +4,7 @@ task Fixfastq {
   command <<<
     fixfastq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

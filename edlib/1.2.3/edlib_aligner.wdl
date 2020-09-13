@@ -1,29 +1,29 @@
 version 1.0
 
-task EdlibAligner {
+task Edlibaligner {
   input {
     Boolean? specified_there_will
     String? nwshw_alignment_mode
-    String? score_will_calculated
-    String? sequences_score_k
+    Int? score_will_calculated
+    Int? sequences_score_k
     Boolean? specified_alignment_path
     Boolean? specified_start_locations
-    String? cigstdcigext_format_used
+    File? cigstdcigext_format_used
     String? options_dot_dot_dot
     String queries_dot_fast_a
     String target_dot_fast_a
   }
   command <<<
-    edlib-aligner \
+    edlib_aligner \
       ~{options_dot_dot_dot} \
       ~{queries_dot_fast_a} \
       ~{target_dot_fast_a} \
-      ~{true="-s" false="" specified_there_will} \
+      ~{if (specified_there_will) then "-s" else ""} \
       ~{if defined(nwshw_alignment_mode) then ("-m " +  '"' + nwshw_alignment_mode + '"') else ""} \
       ~{if defined(score_will_calculated) then ("-n " +  '"' + score_will_calculated + '"') else ""} \
       ~{if defined(sequences_score_k) then ("-k " +  '"' + sequences_score_k + '"') else ""} \
-      ~{true="-p" false="" specified_alignment_path} \
-      ~{true="-l" false="" specified_start_locations} \
+      ~{if (specified_alignment_path) then "-p" else ""} \
+      ~{if (specified_start_locations) then "-l" else ""} \
       ~{if defined(cigstdcigext_format_used) then ("-f " +  '"' + cigstdcigext_format_used + '"') else ""}
   >>>
   parameter_meta {
@@ -37,5 +37,8 @@ task EdlibAligner {
     options_dot_dot_dot: ""
     queries_dot_fast_a: ""
     target_dot_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

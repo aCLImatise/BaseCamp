@@ -4,7 +4,7 @@ task CountRead {
   input {
     String? normalized_data_case
     String? normalized_data_control
-    String? output_file_default
+    File? output_file_default
     String? chrom
     String region_file
   }
@@ -22,5 +22,9 @@ task CountRead {
     output_file_default: ": the output file; Default is <stdout>"
     chrom: ": the chromosome name"
     region_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_default = "${in_output_file_default}"
   }
 }

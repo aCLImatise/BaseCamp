@@ -4,4 +4,7 @@ task Deepbgc {
   command <<<
     deepbgc
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -14,12 +14,12 @@ task PepNovoAdapter {
     Float? pm_tolerance
     File? model
     Boolean? digest
-    String? tag_length
-    String? num_solutions
-    String? fixed_modifications
-    String? variable_modifications
+    Int? tag_length
+    Int? num_solutions
+    Int? fixed_modifications
+    Int? variable_modifications
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -29,14 +29,14 @@ task PepNovoAdapter {
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(pep_novo_executable) then ("-pepnovo_executable " +  '"' + pep_novo_executable + '"') else ""} \
       ~{if defined(model_directory) then ("-model_directory " +  '"' + model_directory + '"') else ""} \
-      ~{true="-correct_pm" false="" correct_pm} \
-      ~{true="-use_spectrum_charge" false="" use_spectrum_charge} \
-      ~{true="-use_spectrum_mz" false="" use_spectrum_mz} \
-      ~{true="-no_quality_filter" false="" no_quality_filter} \
+      ~{if (correct_pm) then "-correct_pm" else ""} \
+      ~{if (use_spectrum_charge) then "-use_spectrum_charge" else ""} \
+      ~{if (use_spectrum_mz) then "-use_spectrum_mz" else ""} \
+      ~{if (no_quality_filter) then "-no_quality_filter" else ""} \
       ~{if defined(fragment_tolerance) then ("-fragment_tolerance " +  '"' + fragment_tolerance + '"') else ""} \
       ~{if defined(pm_tolerance) then ("-pm_tolerance " +  '"' + pm_tolerance + '"') else ""} \
       ~{if defined(model) then ("-model " +  '"' + model + '"') else ""} \
-      ~{true="-digest" false="" digest} \
+      ~{if (digest) then "-digest" else ""} \
       ~{if defined(tag_length) then ("-tag_length " +  '"' + tag_length + '"') else ""} \
       ~{if defined(num_solutions) then ("-num_solutions " +  '"' + num_solutions + '"') else ""} \
       ~{if defined(fixed_modifications) then ("-fixed_modifications " +  '"' + fixed_modifications + '"') else ""} \
@@ -44,12 +44,12 @@ task PepNovoAdapter {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                     Input file  (valid formats: 'mzML')"
     out: "*                    Output file  (valid formats: 'idXML')"
-    pep_novo_executable: "*     The \"PepNovo\" executable of the PepNovo installation"
+    pep_novo_executable: "*     The \\\"PepNovo\\\" executable of the PepNovo installation"
     model_directory: "*        Name of the directory where the model files are kept."
     correct_pm: "Find optimal precursor mass and charge values."
     use_spectrum_charge: "Do not correct charge"
@@ -67,5 +67,9 @@ task PepNovoAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

@@ -11,7 +11,11 @@ task Vcf2eigenstrat {
       ~{if defined(out_prefix) then ("--outPrefix " +  '"' + out_prefix + '"') else ""}
   >>>
   parameter_meta {
-    snp_file: "specify an Eigenstrat SNP file with the positions and alleles of a reference set. If this option is given, only positions that are both in the SNP file and in the VCF will be output. Without this option, all sites in the VCF will be output. WARNING: Sites that are not in the VCF will not be output, and this is new behaviour. Previously one could specify that they will be output as missing or hom-ref, but that feature was recently removed. I plan to implement this behaviour in the future in a new eigenstrat-merging tool."
-    out_prefix: "specify the filenames for the EigenStrat SNP and IND file outputs: <FILE_PREFIX>.snp.txt and <FILE_PREFIX>.ind.txt"
+    snp_file: "specify an Eigenstrat SNP file with the positions and\\nalleles of a reference set. If this option is given,\\nonly positions that are both in the SNP file and in\\nthe VCF will be output. Without this option, all\\nsites in the VCF will be output. WARNING: Sites that\\nare not in the VCF will not be output, and this is\\nnew behaviour. Previously one could specify that they\\nwill be output as missing or hom-ref, but that\\nfeature was recently removed. I plan to implement\\nthis behaviour in the future in a new\\neigenstrat-merging tool."
+    out_prefix: "specify the filenames for the EigenStrat SNP and IND\\nfile outputs: <FILE_PREFIX>.snp.txt and\\n<FILE_PREFIX>.ind.txt\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_snp_file = "${in_snp_file}"
   }
 }

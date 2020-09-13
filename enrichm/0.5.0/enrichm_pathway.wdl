@@ -3,15 +3,15 @@ version 1.0
 task EnrichmPathway {
   input {
     String? matrix
-    String? genome_metadata
+    File? genome_metadata
     String? abundance
-    String? abundance_metadata
+    File? abundance_metadata
     String? tpm_values
-    String? tpm_metadata
+    File? tpm_metadata
     String? metabo_lome
-    String? log
-    String? verbosity
-    String? output_directory
+    File? log
+    Int? verbosity
+    Directory? output_directory
     Boolean? force
     Array[String] limit
     Array[String] filter
@@ -29,7 +29,7 @@ task EnrichmPathway {
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(output_directory) then ("--output " +  '"' + output_directory + '"') else ""} \
-      ~{true="--force" false="" force} \
+      ~{if (force) then "--force" else ""} \
       ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""} \
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""} \
       ~{if defined(enrichment_output) then ("--enrichment_output " +  '"' + enrichment_output + '"') else ""}
@@ -48,6 +48,11 @@ task EnrichmPathway {
     force: "Overwrite previous run"
     limit: "USE ONLY these reactions, or reactions within this pathway or module (space separated list)."
     filter: "Do not use these reactions, or reactions within this pathway or module (space separated list)."
-    enrichment_output: "Supply an enrichment output to integrate the results into the output network."
+    enrichment_output: "Supply an enrichment output to integrate the results into the output network.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_log = "${in_log}"
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

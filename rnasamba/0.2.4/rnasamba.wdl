@@ -4,4 +4,7 @@ task Rnasamba {
   command <<<
     rnasamba
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,6 +1,358 @@
 !Command
-positional: []
+command:
+- gxw2stats.pl
+positional:
+- !Positional
+  description: ======================
+  position: 0
+  name: WeightAverageOccupancy
+  optional: false
+- !Positional
+  description: =====================
+  position: 1
+  name: WeightMatrixPositions
+  optional: false
+- !Positional
+  description: ======================
+  position: 2
+  name: WeightMatrixClustering
+  optional: false
+- !Positional
+  description: ============================
+  position: 3
+  name: WeightMatrixSequenceFeatures
+  optional: false
 named:
+- !Flag
+  description: ':         matrices file (gxw format)'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':         use this matrix only out of the gxw file (default: use all
+    matrices)'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':             process weight matrices separately (applicable to all
+    commands)'
+  synonyms:
+  - -pws
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':         sequences file (fasta format)'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':         use only these sequences from the file <str> (default: use
+    all sequences in fasta file)'
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':       use sliding window on sequence: this parameter specifies substring
+    iterator length'
+  synonyms:
+  - -sil
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':       use sliding window on sequence: this parameter specifies distance
+    between two substrings'
+  synonyms:
+  - -siw
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':      load the sequences one by one (default: preload the sequences)'
+  synonyms:
+  - -no_preload
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':      Temperature scaling (default: 1.0)'
+  synonyms:
+  - -temp
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':         background order (default: 0)'
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':       Background matrix file to load (optional, background will
+    be computed form the sequences otherwise)'
+  synonyms:
+  - -bck
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':      Background matrix to matrices ratio (default: -1 for equal
+    value between background and matrices)'
+  synonyms:
+  - -bckr
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':       Compute the background locally for each sequence (as opposed
+    to a single global matrix)'
+  synonyms:
+  - -local_bck
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":       Regulator scaling factor (default: -1 for using the background\
+    \ ratios.\nFormat: <num> or <min>,<max>,<mul> where the latter is to go from min\
+    \ to max in multiplication jumps <mul>"
+  synonyms:
+  - -rsf
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':       Regulator scaling factor file'
+  synonyms:
+  - -sff
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':      Cooperativity parameters file'
+  synonyms:
+  - -coop
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':       Max cooperativity distance in basepairs (default: 100)'
+  synonyms:
+  - -mcd
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ":      Type of GHMM instance to be used\n(default: if coop file is\
+    \ given - Cooperative ; else - Basic)\nOptions: Basic\nBasicCooperative\nCooperative"
+  synonyms:
+  - -ghmm
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':       Number of simulations to perform (default: 0)'
+  synonyms:
+  - -sim
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':         Max p-value for which to print (default: 1)'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ': Precision for output file (default: 3)'
+  synonyms:
+  - -precision
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':         max training iterations (default: 100)'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':            print the best score across the sequence (or individual
+    windows)'
+  synonyms:
+  - -best
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':    print the best score across all windows'
+  synonyms:
+  - -best_windows
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':            do *not* use reverse complement in sequence (default:
+    use reverse complement)'
+  synonyms:
+  - -norc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":         stats type to compute (default: WeightMatrixPositions)\n\
+    Options: WeightMatrixAverageOccupancy\nWeightMatrixClustering\nWeightMatrixCounts\n\
+    WeightMatrixFreeEnergy\nWeightMatrixMaxConfiguration\nWeightMatrixPositions\n\
+    WeightMatrixSequenceFeatures"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':        Minimum average occupancy to print (default: 0)'
+  synonyms:
+  - -min_avg
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':        Maximum average occupancy to print (default: 1)'
+  synonyms:
+  - -max_avg
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':            Print the probability of starting matrices as opposed
+    to average occupancies'
+  synonyms:
+  - -start_avg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':                  Print the fraction occupancy of the matrix across
+    the entire region'
+  synonyms:
+  - -avg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':   Compute the avg occupancy of the matrix only within its central
+    bps without <num> flank on each side (default: 0)'
+  synonyms:
+  - -matrix_flank
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':         Print the sum of all matrices'
+  synonyms:
+  - -sum_matrices
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':            Print the results in a chv format'
+  synonyms:
+  - -print_chv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':  Print the results as a combined (num/2 on each side) moving average
+    window of <num>'
+  synonyms:
+  - -moving_window
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ': Do **not** print each matrix separately'
+  synonyms:
+  - -no_separate_matrices
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':             print the score for each position'
+  synonyms:
+  - -all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':              double-strand binding (average strands)'
+  synonyms:
+  - -ds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Minimum score to print'
+  synonyms:
+  - -min_score
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':      Maximum allowed sequence inserts'
+  synonyms:
+  - -masi
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':          Force double strand when doing sequence inserts'
+  synonyms:
+  - -fdsosi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':       Sequence insert penalty'
+  synonyms:
+  - -sip
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ":        don't sort according to score, print by position (useful\
+    \ when you want to intersect the results according to position)"
+  synonyms:
+  - -dontSort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":      Minimum high occupancy sites (specify multiple cutoffs with\
+    \ ';', e.g., \"0.1;0.2\") (default: 0.5)"
+  synonyms:
+  - -mhos
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':     Weight matrix clustering num matrices (default: 1)'
+  synonyms:
+  - -wmcnm
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':     Weight matrix clustering distance window (default: -1 for cumulative
+    clustering, not specific windows)'
+  synonyms:
+  - -wmcdw
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':     Weight matrix clustering distance increment (default: 10)'
+  synonyms:
+  - -wmcdi
+  args: !SimpleFlagArg
+    name: num
+  optional: true
 - !Flag
   description: ':        Num samples'
   synonyms:
@@ -27,8 +379,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ':      Configuration adjacent matrices counts (str has the form: <min;max;inc;XXX;NoFunction/Gaussian;mean;std>)
-    [XXX] = CombinedAdjacentMatricesCount/SeparateAdjacentMatricesCount/SeparateProximalMatricesCount'
+  description: ":      Configuration adjacent matrices counts (str has the form: <min;max;inc;XXX;NoFunction/Gaussian;mean;std>)\n\
+    [XXX] = CombinedAdjacentMatricesCount/SeparateAdjacentMatricesCount/SeparateProximalMatricesCount"
   synonyms:
   - -camc
   args: !SimpleFlagArg
@@ -66,10 +418,9 @@ named:
   args: !SimpleFlagArg
     name: str
   optional: true
-command:
-- gxw2stats.pl.bak
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

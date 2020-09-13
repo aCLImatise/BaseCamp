@@ -2,25 +2,25 @@ version 1.0
 
 task GdtoolsCHECK {
   input {
-    String? output_gd_file
-    String? reference
+    File? output_gd_file
+    File? reference
     Boolean? evidence
-    String? jc_buffer
-    String? jc_shorten
+    Int? jc_buffer
+    Int? jc_shorten
     Boolean? jc_only_accepted
-    String? plot_jc
+    File? plot_jc
     Boolean? verbose
   }
   command <<<
     gdtools CHECK \
       ~{if defined(output_gd_file) then ("--output " +  '"' + output_gd_file + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{true="--evidence" false="" evidence} \
+      ~{if (evidence) then "--evidence" else ""} \
       ~{if defined(jc_buffer) then ("--jc-buffer " +  '"' + jc_buffer + '"') else ""} \
       ~{if defined(jc_shorten) then ("--jc-shorten " +  '"' + jc_shorten + '"') else ""} \
-      ~{true="--jc-only-accepted" false="" jc_only_accepted} \
+      ~{if (jc_only_accepted) then "--jc-only-accepted" else ""} \
       ~{if defined(plot_jc) then ("--plot-jc " +  '"' + plot_jc + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     output_gd_file: "output GD file (DEFAULT=comp.gd)"
@@ -31,5 +31,9 @@ task GdtoolsCHECK {
     jc_only_accepted: "when comparing JC evidence, do not score/count rejected items"
     plot_jc: "plot JC Precision versus Score, argument is a prefix for the file paths"
     verbose: "verbose mode"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_gd_file = "${in_output_gd_file}"
   }
 }

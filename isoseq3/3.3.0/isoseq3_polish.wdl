@@ -9,24 +9,44 @@ task Isoseq3Polish {
     Boolean? log_file
     Boolean? verbose
     String iso_seq
-    String polish
-    String unpolished_dot_bam_vertical_line_xml
-    String sub_reads_dot_bam_vertical_line_xml
     String polished_dot_bam_vertical_line_xml
+    String str
+    String polish
+    String var_input
+    String var_output
+    String unpolished_dot_bam_vertical_line_xml
+    String polished
+    String sub_read
+    String sub_reads_dot_bam_vertical_line_xml
+    String unpolished
+    String bam
+    String or
+    String sub_read_set
+    String transcript_set
   }
   command <<<
     isoseq3 polish \
       ~{iso_seq} \
-      ~{polish} \
-      ~{unpolished_dot_bam_vertical_line_xml} \
-      ~{sub_reads_dot_bam_vertical_line_xml} \
       ~{polished_dot_bam_vertical_line_xml} \
-      ~{true="--rq-cutoff" false="" rq_cut_off} \
-      ~{true="--coverage" false="" coverage} \
-      ~{true="--num-threads" false="" num_threads} \
-      ~{true="--log-level" false="" log_level} \
-      ~{true="--log-file" false="" log_file} \
-      ~{true="--verbose" false="" verbose}
+      ~{str} \
+      ~{polish} \
+      ~{var_input} \
+      ~{var_output} \
+      ~{unpolished_dot_bam_vertical_line_xml} \
+      ~{polished} \
+      ~{sub_read} \
+      ~{sub_reads_dot_bam_vertical_line_xml} \
+      ~{unpolished} \
+      ~{bam} \
+      ~{or} \
+      ~{sub_read_set} \
+      ~{transcript_set} \
+      ~{if (rq_cut_off) then "--rq-cutoff" else ""} \
+      ~{if (coverage) then "--coverage" else ""} \
+      ~{if (num_threads) then "--num-threads" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_file) then "--log-file" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     rq_cut_off: "FLOAT  RQ cutoff for fastx output. [0.99]"
@@ -36,9 +56,22 @@ task Isoseq3Polish {
     log_file: "FILE   Log to a file, instead of stderr."
     verbose: "Use verbose output."
     iso_seq: ""
-    polish: ""
-    unpolished_dot_bam_vertical_line_xml: ""
-    sub_reads_dot_bam_vertical_line_xml: ""
     polished_dot_bam_vertical_line_xml: ""
+    str: ""
+    polish: ""
+    var_input: ""
+    var_output: ""
+    unpolished_dot_bam_vertical_line_xml: ""
+    polished: ""
+    sub_read: ""
+    sub_reads_dot_bam_vertical_line_xml: ""
+    unpolished: ""
+    bam: ""
+    or: ""
+    sub_read_set: ""
+    transcript_set: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

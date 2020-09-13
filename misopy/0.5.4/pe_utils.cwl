@@ -1,40 +1,48 @@
 class: CommandLineTool
 id: ../../../pe_utils.cwl
 inputs:
-- id: compute_insert_len
-  doc: Compute insert length for given sample. Takes as input (1) a comma-separated
-    list of sorted, indexed BAM files with headers (or a single BAM filename), (2)
-    a GFF file with constitutive exons. Outputs the insert length distribution into
-    the output directory.
-  type: string
+- id: in_compute_insert_len
+  doc: "Compute insert length for given sample. Takes as input\n(1) a comma-separated\
+    \ list of sorted, indexed BAM\nfiles with headers (or a single BAM filename),\
+    \ (2) a\nGFF file with constitutive exons. Outputs the insert\nlength distribution\
+    \ into the output directory."
+  type: long
   inputBinding:
     prefix: --compute-insert-len
-- id: no_bam_filter
-  doc: If provided, this ignores the BAM file flags that state whether the read was
-    paired or not, and instead uses only the read IDs to pair up the mates. Use this
-    if your paired-end BAM was the result of a samtools merge operation.
+- id: in_no_bam_filter
+  doc: "If provided, this ignores the BAM file flags that\nstate whether the read\
+    \ was paired or not, and instead\nuses only the read IDs to pair up the mates.\
+    \ Use this\nif your paired-end BAM was the result of a samtools\nmerge operation."
   type: boolean
   inputBinding:
     prefix: --no-bam-filter
-- id: min_exon_size
-  doc: Minimum size of constitutive exon (in nucleotides) that should be used in the
-    computation. Default is 500 bp.
+- id: in_min_exon_size
+  doc: "Minimum size of constitutive exon (in nucleotides)\nthat should be used in\
+    \ the computation. Default is 500\nbp."
   type: long
   inputBinding:
     prefix: --min-exon-size
-- id: sd_max
-  doc: Number of standard deviations used to define outliers. By default, set to 2,
-    meaning that any points at least 2*sigma away from the mean of the insert length
-    distribution will be discarded.
-  type: string
+- id: in_sd_max
+  doc: "Number of standard deviations used to define outliers.\nBy default, set to\
+    \ 2, meaning that any points at least\n2*sigma away from the mean of the insert\
+    \ length\ndistribution will be discarded."
+  type: long
   inputBinding:
     prefix: --sd-max
-- id: output_dir
-  doc: Output directory.
-  type: string
+- id: in_output_dir
+  doc: "Output directory.\n"
+  type: Directory
   inputBinding:
     prefix: --output-dir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: "Output directory.\n"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - pe_utils

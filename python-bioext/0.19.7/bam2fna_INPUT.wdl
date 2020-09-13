@@ -11,4 +11,7 @@ task Bam2fnaINPUT {
   parameter_meta {
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

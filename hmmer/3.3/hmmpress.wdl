@@ -7,11 +7,14 @@ task Hmmpress {
   }
   command <<<
     hmmpress \
-      ~{true="-f" false="" force_overwrite_files} \
-      ~{true="-options" false="" options}
+      ~{if (force_overwrite_files) then "-f" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     force_overwrite_files: ": force: overwrite any previous pressed files"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

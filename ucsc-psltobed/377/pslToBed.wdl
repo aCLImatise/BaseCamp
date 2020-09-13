@@ -2,16 +2,22 @@ version 1.0
 
 task PslToBed {
   input {
+    File? cds
+    Boolean? pos_name
     String psl
-    String bed
   }
   command <<<
     pslToBed \
       ~{psl} \
-      ~{bed}
+      ~{if defined(cds) then ("-cds " +  '"' + cds + '"') else ""} \
+      ~{if (pos_name) then "-posName" else ""}
   >>>
   parameter_meta {
+    cds: ""
+    pos_name: ""
     psl: ""
-    bed: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,6 +2,9 @@ version 1.0
 
 task ProtpredGromacsTestComputeDiehdral {
   command <<<
-    protpred-Gromacs-Test_compute_Diehdral
+    protpred_Gromacs_Test_compute_Diehdral
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

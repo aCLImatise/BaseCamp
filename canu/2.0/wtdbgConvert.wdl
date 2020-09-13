@@ -14,4 +14,7 @@ task WtdbgConvert {
     output_prefix: "output prefix"
     file_dot_dbg_dot_lay: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

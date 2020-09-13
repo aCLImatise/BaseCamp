@@ -6,9 +6,12 @@ task ChromosomerAssemble {
   }
   command <<<
     chromosomer assemble \
-      ~{true="--save_soft_mask" false="" save_soft_mask}
+      ~{if (save_soft_mask) then "--save_soft_mask" else ""}
   >>>
   parameter_meta {
-    save_soft_mask: "keep soft masking from the original fragment sequences (default: False)"
+    save_soft_mask: "keep soft masking from the original fragment sequences\\n(default: False)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

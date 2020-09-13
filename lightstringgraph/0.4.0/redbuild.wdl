@@ -4,20 +4,23 @@ task Redbuild {
   input {
     String? b
     Int? m
-    String? g
     Boolean? r
+    Int? g
   }
   command <<<
     redbuild \
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
       ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
-      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
-      ~{true="-r" false="" r}
+      ~{if (r) then "-r" else ""} \
+      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
   parameter_meta {
-    b: ""
-    m: ""
-    g: ""
+    b: "# (required)"
+    m: "# (required)"
     r: ""
+    g: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

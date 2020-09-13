@@ -7,15 +7,15 @@ task Variant {
     Boolean? rules
     Boolean? proc_regions_file
     Boolean? mark_as_qc_fail
-    Boolean? output_file_write
-    Boolean? cram
+    File? output_file_write
+    File? cram
     Boolean? bam
     Boolean? reference
     Boolean? strip_tags
     Boolean? strip_all_tags
     Boolean? write_trimmed
-    Boolean? qc_file
-    Boolean? max_coverage
+    File? qc_file
+    File? max_coverage
     Boolean? min_phred
     Boolean? region
     Boolean? exclude_region
@@ -37,36 +37,36 @@ task Variant {
   command <<<
     variant \
       ~{input_dot_bam} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--no-output" false="" no_output} \
-      ~{true="--rules" false="" rules} \
-      ~{true="--proc-regions-file" false="" proc_regions_file} \
-      ~{true="--mark-as-qc-fail" false="" mark_as_qc_fail} \
-      ~{true="--output" false="" output_file_write} \
-      ~{true="--cram" false="" cram} \
-      ~{true="--bam" false="" bam} \
-      ~{true="--reference" false="" reference} \
-      ~{true="--strip-tags" false="" strip_tags} \
-      ~{true="--strip-all-tags" false="" strip_all_tags} \
-      ~{true="--write-trimmed" false="" write_trimmed} \
-      ~{true="--qc-file" false="" qc_file} \
-      ~{true="--max-coverage" false="" max_coverage} \
-      ~{true="--min-phred" false="" min_phred} \
-      ~{true="--region" false="" region} \
-      ~{true="--exclude-region" false="" exclude_region} \
-      ~{true="--linked-region" false="" linked_region} \
-      ~{true="--linked-exclude-region" false="" linked_exclude_region} \
-      ~{true="--region-pad" false="" region_pad} \
-      ~{true="--min-clip" false="" min_clip} \
-      ~{true="--max-nbases" false="" max_n_bases} \
-      ~{true="--min-mapq" false="" min_mapq} \
-      ~{true="--min-del" false="" min_del} \
-      ~{true="--min-ins" false="" min_ins} \
-      ~{true="--min-length" false="" min_length} \
-      ~{true="--motif" false="" motif} \
-      ~{true="--read-group" false="" read_group} \
-      ~{true="--include-aln-flag" false="" include_aln_flag} \
-      ~{true="--exclude-aln-flag" false="" exclude_aln_flag}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (no_output) then "--no-output" else ""} \
+      ~{if (rules) then "--rules" else ""} \
+      ~{if (proc_regions_file) then "--proc-regions-file" else ""} \
+      ~{if (mark_as_qc_fail) then "--mark-as-qc-fail" else ""} \
+      ~{if (output_file_write) then "--output" else ""} \
+      ~{if (cram) then "--cram" else ""} \
+      ~{if (bam) then "--bam" else ""} \
+      ~{if (reference) then "--reference" else ""} \
+      ~{if (strip_tags) then "--strip-tags" else ""} \
+      ~{if (strip_all_tags) then "--strip-all-tags" else ""} \
+      ~{if (write_trimmed) then "--write-trimmed" else ""} \
+      ~{if (qc_file) then "--qc-file" else ""} \
+      ~{if (max_coverage) then "--max-coverage" else ""} \
+      ~{if (min_phred) then "--min-phred" else ""} \
+      ~{if (region) then "--region" else ""} \
+      ~{if (exclude_region) then "--exclude-region" else ""} \
+      ~{if (linked_region) then "--linked-region" else ""} \
+      ~{if (linked_exclude_region) then "--linked-exclude-region" else ""} \
+      ~{if (region_pad) then "--region-pad" else ""} \
+      ~{if (min_clip) then "--min-clip" else ""} \
+      ~{if (max_n_bases) then "--max-nbases" else ""} \
+      ~{if (min_mapq) then "--min-mapq" else ""} \
+      ~{if (min_del) then "--min-del" else ""} \
+      ~{if (min_ins) then "--min-ins" else ""} \
+      ~{if (min_length) then "--min-length" else ""} \
+      ~{if (motif) then "--motif" else ""} \
+      ~{if (read_group) then "--read-group" else ""} \
+      ~{if (include_aln_flag) then "--include-aln-flag" else ""} \
+      ~{if (exclude_aln_flag) then "--exclude-aln-flag" else ""}
   >>>
   parameter_meta {
     verbose: "Verbose output"
@@ -100,5 +100,12 @@ task Variant {
     include_aln_flag: "Flags to include (like samtools -f)"
     exclude_aln_flag: "Flags to exclude (like samtools -F)"
     input_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_write = "${in_output_file_write}"
+    File out_cram = "${in_cram}"
+    File out_qc_file = "${in_qc_file}"
+    File out_max_coverage = "${in_max_coverage}"
   }
 }

@@ -22,16 +22,16 @@ task Jq {
     jq \
       ~{jq_filter} \
       ~{file_dot_dot_dot} \
-      ~{true="-c" false="" compact_instead_prettyprinted} \
-      ~{true="-n" false="" use_null_single} \
-      ~{true="-e" false="" set_status_code} \
-      ~{true="-s" false="" read_slurp_inputs} \
-      ~{true="-r" false="" output_raw_strings} \
-      ~{true="-R" false="" read_raw_strings} \
-      ~{true="-C" false="" colorize_json} \
-      ~{true="-M" false="" monochrome_colorize_json} \
-      ~{true="-S" false="" sort_keys_objects} \
-      ~{true="--tab" false="" tab} \
+      ~{if (compact_instead_prettyprinted) then "-c" else ""} \
+      ~{if (use_null_single) then "-n" else ""} \
+      ~{if (set_status_code) then "-e" else ""} \
+      ~{if (read_slurp_inputs) then "-s" else ""} \
+      ~{if (output_raw_strings) then "-r" else ""} \
+      ~{if (read_raw_strings) then "-R" else ""} \
+      ~{if (colorize_json) then "-C" else ""} \
+      ~{if (monochrome_colorize_json) then "-M" else ""} \
+      ~{if (sort_keys_objects) then "-S" else ""} \
+      ~{if (tab) then "--tab" else ""} \
       ~{if defined(arg) then ("--arg " +  '"' + arg + '"') else ""} \
       ~{if defined(arg_json) then ("--argjson " +  '"' + arg_json + '"') else ""} \
       ~{if defined(slurp_file) then ("--slurpfile " +  '"' + slurp_file + '"') else ""}
@@ -52,5 +52,8 @@ task Jq {
     slurp_file: "f        set variable $a to an array of JSON texts read from <f>;"
     jq_filter: ""
     file_dot_dot_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

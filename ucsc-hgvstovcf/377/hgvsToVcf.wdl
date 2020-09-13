@@ -5,19 +5,19 @@ task HgvsToVcf {
     Boolean? no_left_shift
     String db
     String input_dot_hgvs
-    String output_dot_vcf
   }
   command <<<
     hgvsToVcf \
       ~{db} \
       ~{input_dot_hgvs} \
-      ~{output_dot_vcf} \
-      ~{true="-noLeftShift" false="" no_left_shift}
+      ~{if (no_left_shift) then "-noLeftShift" else ""}
   >>>
   parameter_meta {
     no_left_shift: "Don't do the VCF-conventional left shifting of ambiguous placements"
     db: ""
     input_dot_hgvs: ""
-    output_dot_vcf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

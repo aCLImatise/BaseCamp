@@ -8,13 +8,16 @@ task LAsort {
   }
   command <<<
     LAsort \
-      ~{true="-v" false="" verbose_mode_output} \
-      ~{true="-a" false="" sort_areadaposition_pairs} \
-      ~{true="-va" false="" va}
+      ~{if (verbose_mode_output) then "-v" else ""} \
+      ~{if (sort_areadaposition_pairs) then "-a" else ""} \
+      ~{if (va) then "-va" else ""}
   >>>
   parameter_meta {
     verbose_mode_output: ": Verbose mode, output statistics as proceed."
-    sort_areadaposition_pairs: ": sort .las by A-read,A-position pairs for map usecase off => sort .las by A,B-read pairs for overlap piles"
+    sort_areadaposition_pairs: ": sort .las by A-read,A-position pairs for map usecase\\noff => sort .las by A,B-read pairs for overlap piles\\n"
     va: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

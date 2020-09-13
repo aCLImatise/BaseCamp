@@ -1,120 +1,123 @@
 class: CommandLineTool
 id: ../../../mcast.cwl
 inputs:
-- id: alpha
-  doc: The fraction of all TF binding sites that are binding sites for the TF of interest.
-    Used in the calculation of PSP. (default 1.0)
-  type: string
+- id: in_alpha
+  doc: "The fraction of all TF binding sites that are binding sites\nfor the TF of\
+    \ interest. Used in the calculation of PSP.\n(default 1.0)"
+  type: double
   inputBinding:
     prefix: --alpha
-- id: b_file
+- id: in_b_file
   doc: File containing n-order Markov background model
   type: File
   inputBinding:
     prefix: --bfile
-- id: hard_mask
-  doc: Nucleotides in lower case will be converted to 'N'  preventing them from being
-    considred in motif matches
+- id: in_hard_mask
+  doc: "Nucleotides in lower case will be converted to 'N'\npreventing them from being\
+    \ considred in motif matches"
   type: boolean
   inputBinding:
     prefix: --hardmask
-- id: max_gap
-  doc: Maximum allowed distance between adjacent hits; (default = 50)
-  type: string
+- id: in_max_gap
+  doc: "Maximum allowed distance between adjacent hits;\n(default = 50)"
+  type: long
   inputBinding:
     prefix: --max-gap
-- id: max_stored_scores
-  doc: Maximum number of matches that will be stored in memory; (default=100000)
-  type: string
+- id: in_max_stored_scores
+  doc: "Maximum number of matches that will be stored in memory;\n(default=100000)"
+  type: long
   inputBinding:
     prefix: --max-stored-scores
-- id: max_total_width
+- id: in_max_total_width
   doc: Maximum combined width of all motifs; (default= no limit)
-  type: string
+  type: long
   inputBinding:
     prefix: --max-total-width
-- id: motif_p_thresh
+- id: in_motif_p_thresh
   doc: p-value threshold for motif hits; (default = 0.0005).
-  type: string
+  type: double
   inputBinding:
     prefix: --motif-pthresh
-- id: name_output_not
-  doc: Name of output directory. Existing files will not be overwritten. (default=mcast_out)
-  type: string
+- id: in_name_output_not
+  doc: "Name of output directory. Existing files will not be\noverwritten. (default=mcast_out)"
+  type: Directory
   inputBinding:
     prefix: --o
-- id: oc
-  doc: Name of output directory. Existing files will be overwritten.
-  type: string
+- id: in_oc
+  doc: Name of output directory. Existing files will be
+  type: Directory
   inputBinding:
     prefix: --oc
-- id: output_e_thresh
-  doc: Print only results with E-values less than <value>. (default = 10.0).
-  type: string
-  inputBinding:
-    prefix: --output-ethresh
-- id: output_p_thresh
-  doc: 'Print only results with p-values less than <value>. (default: not used).'
+- id: in_output_p_thresh
+  doc: "Print only results with p-values less than <value>.\n(default: not used)."
   type: string
   inputBinding:
     prefix: --output-pthresh
-- id: output_q_thresh
-  doc: 'Print only results with q-values less than <value>./ (default: not used).'
+- id: in_output_q_thresh
+  doc: "Print only results with q-values less than <value>./\n(default: not used)."
   type: string
   inputBinding:
     prefix: --output-qthresh
-- id: parse_genomic_coord
+- id: in_parse_genomic_coord
   doc: Parse genomic coord. found in sequence headers
   type: boolean
   inputBinding:
     prefix: --parse-genomic-coord
-- id: psp
+- id: in_psp
   doc: File containing position specific priors; (default none)
-  type: string
+  type: File
   inputBinding:
     prefix: --psp
-- id: prior_dist
-  doc: File containing distribution of position specific priors; (default none)
-  type: string
+- id: in_prior_dist
+  doc: "File containing distribution of position specific priors;\n(default none)"
+  type: File
   inputBinding:
     prefix: --prior-dist
-- id: synth
+- id: in_synth
   doc: Use synthetic scores for distribution
   type: boolean
   inputBinding:
     prefix: --synth
-- id: seed
-  doc: 'Use this seed for the generation of synthetic sequences which are in turn
-    used to create synthetic scores. (default: 42)'
-  type: string
+- id: in_seed
+  doc: "Use this seed for the generation of synthetic sequences\nwhich are in turn\
+    \ used to create synthetic scores.\n(default: 42)"
+  type: long
   inputBinding:
     prefix: --seed
-- id: text
+- id: in_text
   doc: Plain text output only
   type: boolean
   inputBinding:
     prefix: --text
-- id: transfac
+- id: in_transfac
   doc: 'Motif file is in TRANSFAC format. (default: MEME format)'
   type: boolean
   inputBinding:
     prefix: --transfac
-- id: verbosity
-  doc: Verbosity of error messagess, with <value> in the range 0-5; (default = 3).
-  type: string
+- id: in_verbosity
+  doc: "Verbosity of error messagess, with <value> in the range 0-5;\n(default = 3)."
+  type: long
   inputBinding:
     prefix: --verbosity
-- id: motifs
-  doc: ''
+- id: in_overwritten_dot
+  doc: --output-ethresh <value>      Print only results with E-values less than <value>.
   type: string
   inputBinding:
     position: 0
-- id: sequence_database
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_name_output_not
+  doc: "Name of output directory. Existing files will not be\noverwritten. (default=mcast_out)"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_name_output_not)
+- id: out_oc
+  doc: Name of output directory. Existing files will be
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_oc)
 cwlVersion: v1.1
 baseCommand:
 - mcast

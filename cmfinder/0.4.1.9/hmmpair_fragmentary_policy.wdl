@@ -1,16 +1,16 @@
 version 1.0
 
-task HmmpairFragmentaryPolicy {
+task HmmpairFragmentarypolicy {
   input {
     String hmm_pair
-    String sto_file
+    File sto_file
     Int max_non_canonical_pair_freq
     String fragmentary_policy
     Int size_of_poly_n_flanking_seqs_in_forward_prob_calculations
     String uniform_distribution_of_profile_hmm_starts_and_ends
   }
   command <<<
-    hmmpair fragmentary-policy \
+    hmmpair fragmentary_policy \
       ~{hmm_pair} \
       ~{sto_file} \
       ~{max_non_canonical_pair_freq} \
@@ -25,5 +25,8 @@ task HmmpairFragmentaryPolicy {
     fragmentary_policy: ""
     size_of_poly_n_flanking_seqs_in_forward_prob_calculations: ""
     uniform_distribution_of_profile_hmm_starts_and_ends: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

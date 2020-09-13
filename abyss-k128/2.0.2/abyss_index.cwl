@@ -1,77 +1,75 @@
 class: CommandLineTool
 id: ../../../abyss_index.cwl
 inputs:
-- id: both
+- id: in_both
   doc: build both FAI and FM indexes [default]
   type: boolean
   inputBinding:
     prefix: --both
-- id: fai
+- id: in_fai
   doc: build a FAI index
   type: boolean
   inputBinding:
     prefix: --fai
-- id: fm
+- id: in_fm
   doc: build a FM index
   type: boolean
   inputBinding:
     prefix: --fm
-- id: fa_two_bwt
+- id: in_fa_two_bwt
   doc: build the BWT directly without the SA
   type: boolean
   inputBinding:
     prefix: --fa2bwt
-- id: bwt_two_fm
+- id: in_bwt_two_fm
   doc: build the FM index from the BWT
   type: boolean
   inputBinding:
     prefix: --bwt2fm
-- id: alphabet
+- id: in_alphabet
   doc: use the alphabet STRING [-ACGT]
   type: string
   inputBinding:
     prefix: --alphabet
-- id: alpha
+- id: in_alpha
   doc: equivalent to -a' ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   type: boolean
   inputBinding:
     prefix: --alpha
-- id: dna
+- id: in_dna
   doc: equivalent to -a'-ACGT'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: protein
+- id: in_protein
   doc: equivalent to -a'#*ACDEFGHIKLMNPQRSTVWY'
   type: boolean
   inputBinding:
     prefix: --protein
-- id: sample
+- id: in_sample
   doc: sample the suffix array [16]
-  type: string
+  type: long
   inputBinding:
     prefix: --sample
-- id: decompress
+- id: in_decompress
   doc: decompress the index FILE
   type: boolean
   inputBinding:
     prefix: --decompress
-- id: stdout
+- id: in_stdout
   doc: write output to standard output
   type: boolean
   inputBinding:
     prefix: --stdout
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - abyss-index

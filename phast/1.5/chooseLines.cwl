@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../chooseLines.cwl
 inputs:
-- id: number_lines_choose
+- id: in_number_choose_default
   doc: Number of lines to choose (default is all lines).
-  type: string
+  type: long
   inputBinding:
     prefix: -k
-- id: in_file
+- id: in_in_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chooseLines

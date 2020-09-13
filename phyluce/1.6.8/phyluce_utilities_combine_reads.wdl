@@ -2,8 +2,8 @@ version 1.0
 
 task PhyluceUtilitiesCombineReads {
   input {
-    String? config
-    String? var_output
+    File? config
+    File? var_output
     String? subfolder
   }
   command <<<
@@ -15,6 +15,9 @@ task PhyluceUtilitiesCombineReads {
   parameter_meta {
     config: "The configuration file for reads we are combining"
     var_output: "The configuration file for reads we are combining"
-    subfolder: "A subdirectory, below the level of the group, containing the reads"
+    subfolder: "A subdirectory, below the level of the group,\\ncontaining the reads\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

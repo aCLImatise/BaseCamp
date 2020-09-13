@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../synthReadGen_outputFile.cwl
 inputs:
-- id: synth_read_gen
+- id: in_synth_read_gen
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - synthReadGen

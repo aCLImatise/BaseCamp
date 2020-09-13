@@ -2,12 +2,12 @@ version 1.0
 
 task PhyluceAlignExtractTaxonFastaFromAlignments {
   input {
-    String? alignments
+    Directory? alignments
     String? tax_on
-    String? output_fasta_file
+    File? output_fasta_file
     String? input_format
     String? verbosity
-    String? log_path
+    File? log_path
   }
   command <<<
     phyluce_align_extract_taxon_fasta_from_alignments \
@@ -25,5 +25,9 @@ task PhyluceAlignExtractTaxonFastaFromAlignments {
     input_format: "The input format of the alignments"
     verbosity: "The logging level to use."
     log_path: "The path to a directory to hold logs."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_fasta_file = "${in_output_fasta_file}"
   }
 }

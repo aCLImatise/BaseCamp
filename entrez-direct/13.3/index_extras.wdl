@@ -1,7 +1,10 @@
 version 1.0
 
-task IndexExtras {
+task Indexextras {
   command <<<
-    index-extras
+    index_extras
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

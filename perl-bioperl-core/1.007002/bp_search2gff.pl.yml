@@ -1,0 +1,190 @@
+!Command
+command:
+- bp_search2gff.pl
+positional:
+- !Positional
+  description: "Title : clone_loc Usage : my $l = clone_loc($feature->location);\n\
+    Function: Helper function to simplify the task of cloning locations for\n--locfunc\
+    \ closures.\nPresently simply implemented using Storable::dclone().\nExample :\n\
+    Returns : A L<Bio::LocationI> object of the same type and with the\nsame properties\
+    \ as the argument, but physically different.\nAll structured properties will be\
+    \ cloned as well.\nArgs    : A L<Bio::LocationI> compliant object"
+  position: 0
+  name: clone_loc
+  optional: false
+- !Positional
+  description: "Title : create_loc Usage : my $l = create_loc(\"10..12\"); Function:\n\
+    Helper function to simplify the task of creating locations for --locfunc\nclosures.\
+    \ Creates a location from a feature- table formatted string.\nExample : Returns\
+    \ : A Bio::LocationI object representing the location\ngiven as formatted string.\
+    \ Args : A GenBank feature-table formatted\nstring.\n"
+  position: 1
+  name: create_loc
+  optional: false
+named:
+- !Flag
+  description: "- (optional) inputfilename, will read\neither ARGV files or from STDIN"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: infilename
+  optional: true
+- !Flag
+  description: '- the output filename [default STDOUT]'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "- search result format (blast, fasta,waba,axt)\n(ssearch is fasta\
+    \ format). default is blast."
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: "- if you want to see query or hit information\nin the GFF report"
+  synonyms:
+  - -t/--type
+  args: !SimpleFlagArg
+    name: seqtype
+  optional: true
+- !Flag
+  description: "- specify the source (will be algorithm name\notherwise like BLASTN)"
+  synonyms:
+  - -s/--source
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- the method tag (primary_tag) of the features\n(default is similarity)"
+  synonyms:
+  - --method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- a string or a file that when parsed evaluates\nto a closure which\
+    \ will be passed a feature\nobject and that returns the score to be printed"
+  synonyms:
+  - --scorefunc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- a string or a file that when parsed evaluates\nto a closure which\
+    \ will be passed two\nfeatures, query and hit, and returns the\nlocation (Bio::LocationI\
+    \ compliant) for the\nGFF3 feature created for each HSP; the closure\nmay use\
+    \ the clone_loc() and create_loc()\nfunctions for convenience, see their PODs"
+  synonyms:
+  - --locfunc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- only print the first HSP feature for each hit'
+  synonyms:
+  - --onehsp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- the parent to which HSP features should refer\nif not the name of\
+    \ the hit or query (depending\non --type)"
+  synonyms:
+  - -p/--parent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- whether to always add the Target tag or not'
+  synonyms:
+  - --target/--notarget
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- generate GFF component fields (chromosome)'
+  synonyms:
+  - --component
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- generate a 'match' line which is a container\nof all the similarity\
+    \ HSPs"
+  synonyms:
+  - -m/--match
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- add ID tag in the absence of --match'
+  synonyms:
+  - --addid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- specify an evalue cutoff'
+  synonyms:
+  - -c/--cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '- this help menu'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: '- GFF version to use (put a 3 here to use gff 3)'
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "NAME\n    bp_search2gff - turn a SearchIO report into GFF\n\nSYNOPSIS\n\
+  \    Usage:\n\n      bp_search2gff [-o outputfile] [-f reportformat] [-i inputfilename]\
+  \  OR file1 file2 ..\n\nDESCRIPTION\n    This script will turn a SearchIO report\
+  \ (BLAST, FASTP, SSEARCH, AXT,\n    WABA) into GFF.\n\n    The options are:\n\n\
+  \       -i infilename      - (optional) inputfilename, will read\n             \
+  \               either ARGV files or from STDIN\n       -o filename        - the\
+  \ output filename [default STDOUT]\n       -f format          - search result format\
+  \ (blast, fasta,waba,axt)\n                            (ssearch is fasta format).\
+  \ default is blast.\n       -t/--type seqtype  - if you want to see query or hit\
+  \ information\n                            in the GFF report\n       -s/--source\
+  \        - specify the source (will be algorithm name\n                        \
+  \    otherwise like BLASTN)\n       --method           - the method tag (primary_tag)\
+  \ of the features\n                            (default is similarity)\n       --scorefunc\
+  \        - a string or a file that when parsed evaluates\n                     \
+  \       to a closure which will be passed a feature\n                          \
+  \  object and that returns the score to be printed\n       --locfunc          -\
+  \ a string or a file that when parsed evaluates\n                            to\
+  \ a closure which will be passed two\n                            features, query\
+  \ and hit, and returns the\n                            location (Bio::LocationI\
+  \ compliant) for the\n                            GFF3 feature created for each\
+  \ HSP; the closure\n                            may use the clone_loc() and create_loc()\n\
+  \                            functions for convenience, see their PODs\n       --onehsp\
+  \           - only print the first HSP feature for each hit\n       -p/--parent\
+  \        - the parent to which HSP features should refer\n                     \
+  \       if not the name of the hit or query (depending\n                       \
+  \     on --type)\n       --target/--notarget - whether to always add the Target\
+  \ tag or not\n       -h                 - this help menu\n       --version     \
+  \     - GFF version to use (put a 3 here to use gff 3)\n       --component     \
+  \   - generate GFF component fields (chromosome)\n       -m/--match         - generate\
+  \ a 'match' line which is a container\n                            of all the similarity\
+  \ HSPs\n       --addid            - add ID tag in the absence of --match\n     \
+  \  -c/--cutoff        - specify an evalue cutoff\n\n    Additionally specify the\
+  \ filenames you want to process on the\n    command-line. If no files are specified\
+  \ then STDIN input is assumed. You\n    specify this by doing: bp_search2gff < file1\
+  \ file2 file3\n\nAUTHOR\n    Jason Stajich, jason-at-bioperl-dot-org\n\nContributors\n\
+  \    Hilmar Lapp, hlapp-at-gmx-dot-net\n\n  clone_loc\n    Title : clone_loc Usage\
+  \ : my $l = clone_loc($feature->location);\n    Function: Helper function to simplify\
+  \ the task of cloning locations for\n    --locfunc closures.\n\n              Presently\
+  \ simply implemented using Storable::dclone().\n    Example :\n    Returns : A L<Bio::LocationI>\
+  \ object of the same type and with the\n              same properties as the argument,\
+  \ but physically different.\n              All structured properties will be cloned\
+  \ as well.\n    Args    : A L<Bio::LocationI> compliant object\n\n  create_loc\n\
+  \    Title : create_loc Usage : my $l = create_loc(\"10..12\"); Function:\n    Helper\
+  \ function to simplify the task of creating locations for --locfunc\n    closures.\
+  \ Creates a location from a feature- table formatted string.\n\n    Example : Returns\
+  \ : A Bio::LocationI object representing the location\n    given as formatted string.\
+  \ Args : A GenBank feature-table formatted\n    string.\n\n"
+generated_using:
+- --help

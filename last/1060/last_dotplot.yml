@@ -1,6 +1,164 @@
 !Command
+command:
+- last-dotplot
 positional: []
 named:
+- !Flag
+  description: show progress messages & data about the plot
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'maximum width in pixels (default: 1000)'
+  synonyms:
+  - -x
+  - --width
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'maximum height in pixels (default: 1000)'
+  synonyms:
+  - -y
+  - --height
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "maximum number of horizontal or vertical sequences\n(default=100)"
+  synonyms:
+  - -m
+  - --maxseqs
+  args: !SimpleFlagArg
+    name: M
+  optional: true
+- !Flag
+  description: which sequences to show from the 1st genome
+  synonyms:
+  - '-1'
+  - --seq1
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: which sequences to show from the 2nd genome
+  synonyms:
+  - '-2'
+  - --seq2
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: 'color for forward alignments (default: red)'
+  synonyms:
+  - -c
+  - --forwardcolor
+  args: !SimpleFlagArg
+    name: COLOR
+  optional: true
+- !Flag
+  description: 'color for reverse alignments (default: blue)'
+  synonyms:
+  - -r
+  - --reversecolor
+  args: !SimpleFlagArg
+    name: COLOR
+  optional: true
+- !Flag
+  description: secondary alignments
+  synonyms:
+  - --alignments
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "genome1 sequence order: 0=input order, 1=name order,\n2=length order,\
+    \ 3=alignment order (default=1)"
+  synonyms:
+  - --sort1
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "genome2 sequence order: 0=input order, 1=name order,\n2=length order,\
+    \ 3=alignment order (default=1)"
+  synonyms:
+  - --sort2
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "genome1 sequence orientation: 0=forward orientation,\n1=alignment\
+    \ orientation (default=0)"
+  synonyms:
+  - --strands1
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "genome2 sequence orientation: 0=forward orientation,\n1=alignment\
+    \ orientation (default=0)"
+  synonyms:
+  - --strands2
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "maximum unaligned (end,mid) gap in genome1: fraction\nof aligned length\
+    \ (default=0.5,2)"
+  synonyms:
+  - --max-gap1
+  args: !SimpleFlagArg
+    name: FRAC
+  optional: true
+- !Flag
+  description: "maximum unaligned (end,mid) gap in genome2: fraction\nof aligned length\
+    \ (default=0.5,2)"
+  synonyms:
+  - --max-gap2
+  args: !SimpleFlagArg
+    name: FRAC
+  optional: true
+- !Flag
+  description: "pad length when cutting unaligned gaps: fraction of\naligned length\
+    \ (default=0.04)"
+  synonyms:
+  - --pad
+  args: !SimpleFlagArg
+    name: FRAC
+  optional: true
+- !Flag
+  description: "join: 0=nothing, 1=alignments adjacent in genome1,\n2=alignments adjacent\
+    \ in genome2 (default=0)"
+  synonyms:
+  - -j
+  - --join
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: number of pixels between sequences (default=1)
+  synonyms:
+  - --border-pixels
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: color for pixels between sequences (default=black)
+  synonyms:
+  - --border-color
+  args: !SimpleFlagArg
+    name: COLOR
+  optional: true
+- !Flag
+  description: margin color
+  synonyms:
+  - --margin-color
+  args: !SimpleFlagArg
+    name: COLOR
+  optional: true
 - !Flag
   description: TrueType or OpenType font file
   synonyms:
@@ -18,16 +176,16 @@ named:
     name: SIZE
   optional: true
 - !Flag
-  description: 'genome1 labels: 0=name, 1=name:length, 2=name:start:length, 3=name:start-end
-    (default=0)'
+  description: "genome1 labels: 0=name, 1=name:length,\n2=name:start:length, 3=name:start-end\
+    \ (default=0)"
   synonyms:
   - --labels1
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: 'genome2 labels: 0=name, 1=name:length, 2=name:start:length, 3=name:start-end
-    (default=0)'
+  description: "genome2 labels: 0=name, 1=name:length,\n2=name:start:length, 3=name:start-end\
+    \ (default=0)"
   synonyms:
   - --labels2
   args: !SimpleFlagArg
@@ -62,14 +220,14 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: read genome1 repeats from RepeatMasker .out or rmsk.txt file
+  description: "read genome1 repeats from RepeatMasker .out or\nrmsk.txt file"
   synonyms:
   - --rmsk1
   args: !SimpleFlagArg
     name: FILE
   optional: true
 - !Flag
-  description: read genome2 repeats from RepeatMasker .out or rmsk.txt file
+  description: "read genome2 repeats from RepeatMasker .out or\nrmsk.txt file"
   synonyms:
   - --rmsk2
   args: !SimpleFlagArg
@@ -125,19 +283,19 @@ named:
     name: COLOR
   optional: true
 - !Flag
-  description: 'color for unbridged gaps (default: orange)'
+  description: "color for unbridged gaps (default: orange)\n"
   synonyms:
   - --unbridged-color
   args: !SimpleFlagArg
     name: COLOR
   optional: true
-command:
-- last-dotplot
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
+  - -h
   - --help
   args: !EmptyFlagArg {}
   optional: true

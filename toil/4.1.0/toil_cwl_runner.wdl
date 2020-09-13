@@ -1,13 +1,26 @@
 version 1.0
 
-task ToilCwlRunner {
+task Toilcwlrunner {
   input {
-    String? tmpdir_prefix
-    String? tmp_outdir_prefix
+    String? var_0
+    Boolean? not_strict
+    Boolean? enable_dev
+    Boolean? quiet
+    String? basedir
+    String? outdir
+    String? user_space_docker_cmd
+    Boolean? singularity
+    Boolean? no_container
+    Boolean? leave_container
+    String? beta_dependency_resolvers_configuration
+    Directory? beta_dependencies_directory
+    Boolean? beta_use_bio_containers
+    Boolean? beta_cond_a_dependencies
+    File? tmpdir_prefix
+    File? tmp_outdir_prefix
     Boolean? force_docker_pull
     Boolean? no_match_user
     Boolean? no_read_only
-    Boolean? strict_memory_limit
     Boolean? relax_path_checks
     String? default_container
     Boolean? logoff
@@ -17,14 +30,14 @@ task ToilCwlRunner {
     Boolean? loginfo
     Boolean? log_debug
     String? loglevel
-    String? log_file
+    File? log_file
     Boolean? rotating_logging
-    String? workdir
+    File? workdir
     Boolean? no_stdout_err
     Boolean? stats
     String? clean
     String? clean_workdir
-    Boolean? cluster_stats
+    File? cluster_stats
     Boolean? restart
     String? batch_system
     Boolean? disable_hot_deployment
@@ -32,98 +45,125 @@ task ToilCwlRunner {
     Int? max_local_jobs
     Boolean? manual_mem_args
     Boolean? run_cwl_internal_jobs_on_workers
-    String? parasol_command
-    String? parasol_max_batches
-    String? scale
+    File? parasol_command
+    Int? parasol_max_batches
+    Int? scale
     Boolean? no_link_imports
-    Boolean? no_move_exports
-    String? mesos_master
-    String? ku_bernet_es_host_path
-    String? provisioner
-    String? node_types
+    File? no_move_exports
+    Float? mesos_master
+    File? ku_bernet_es_host_path
+    Int? node_types
     String? node_options
     Int? min_nodes
     Int? max_nodes
-    String? target_time
-    String? beta_inertia
-    String? scale_interval
-    String? preempt_able_compensation
-    String? node_storage
+    Int? target_time
+    Int? beta_inertia
+    Int? scale_interval
+    Float? preempt_able_compensation
+    Int? node_storage
     Boolean? metrics
+    Int? default_memory
+    Float? default_cores
+    Int? default_disk
+    Boolean? default_preempt_able
     Int? max_cores
     Int? max_memory
     Int? max_disk
-    String? retry_count
+    Int? retry_count
     Boolean? enable_unlimited_preempt_able_retries
     Int? max_job_duration
-    String? rescue_jobs_frequency
+    Int? rescue_jobs_frequency
     Boolean? disable_caching
     Boolean? disable_chaining
     Boolean? disable_job_store_checksum_verification
     Int? max_log_file_size
-    Boolean? write_logs
+    File? write_logs
     Boolean? write_logs_gzip
     Boolean? write_logs_from_all_jobs
     Boolean? real_time_logging
-    String? sse_key
+    File? sse_key
     String? setenv
-    String? service_polling_interval
+    Int? service_polling_interval
     Boolean? force_docker_appliance
     Boolean? disable_progress
     Boolean? debug_worker
     Boolean? disable_worker_output_capture
-    String? bad_worker
-    String? bad_worker_fail_interval
-    String? provenance
+    Float? bad_worker
+    Float? bad_worker_fail_interval
+    Directory? provenance
     Boolean? enable_user_provenance
     Boolean? disable_user_provenance
     Boolean? enable_host_provenance
     Boolean? disable_host_provenance
-    String? or_cid
+    Int? or_cid
     String? full_name
-    String job_store
+    String cwl_tool
+    String exit
+    String command_line_tools
+    String command_line_tools_dot
+    String only
+    String location_job_store
+    String provisioning_dot
   }
   command <<<
-    toil-cwl-runner \
-      ~{job_store} \
+    toil_cwl_runner \
+      ~{cwl_tool} \
+      ~{exit} \
+      ~{command_line_tools} \
+      ~{command_line_tools_dot} \
+      ~{only} \
+      ~{location_job_store} \
+      ~{provisioning_dot} \
+      ~{if defined(var_0) then ("--jobStore " +  '"' + var_0 + '"') else ""} \
+      ~{if (not_strict) then "--not-strict" else ""} \
+      ~{if (enable_dev) then "--enable-dev" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if defined(basedir) then ("--basedir " +  '"' + basedir + '"') else ""} \
+      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
+      ~{if defined(user_space_docker_cmd) then ("--user-space-docker-cmd " +  '"' + user_space_docker_cmd + '"') else ""} \
+      ~{if (singularity) then "--singularity" else ""} \
+      ~{if (no_container) then "--no-container" else ""} \
+      ~{if (leave_container) then "--leave-container" else ""} \
+      ~{if defined(beta_dependency_resolvers_configuration) then ("--beta-dependency-resolvers-configuration " +  '"' + beta_dependency_resolvers_configuration + '"') else ""} \
+      ~{if defined(beta_dependencies_directory) then ("--beta-dependencies-directory " +  '"' + beta_dependencies_directory + '"') else ""} \
+      ~{if (beta_use_bio_containers) then "--beta-use-biocontainers" else ""} \
+      ~{if (beta_cond_a_dependencies) then "--beta-conda-dependencies" else ""} \
       ~{if defined(tmpdir_prefix) then ("--tmpdir-prefix " +  '"' + tmpdir_prefix + '"') else ""} \
       ~{if defined(tmp_outdir_prefix) then ("--tmp-outdir-prefix " +  '"' + tmp_outdir_prefix + '"') else ""} \
-      ~{true="--force-docker-pull" false="" force_docker_pull} \
-      ~{true="--no-match-user" false="" no_match_user} \
-      ~{true="--no-read-only" false="" no_read_only} \
-      ~{true="--strict-memory-limit" false="" strict_memory_limit} \
-      ~{true="--relax-path-checks" false="" relax_path_checks} \
+      ~{if (force_docker_pull) then "--force-docker-pull" else ""} \
+      ~{if (no_match_user) then "--no-match-user" else ""} \
+      ~{if (no_read_only) then "--no-read-only" else ""} \
+      ~{if (relax_path_checks) then "--relax-path-checks" else ""} \
       ~{if defined(default_container) then ("--default-container " +  '"' + default_container + '"') else ""} \
-      ~{true="--logOff" false="" logoff} \
-      ~{true="--logCritical" false="" log_critical} \
-      ~{true="--logError" false="" log_error} \
-      ~{true="--logWarning" false="" log_warning} \
-      ~{true="--logInfo" false="" loginfo} \
-      ~{true="--logDebug" false="" log_debug} \
+      ~{if (logoff) then "--logOff" else ""} \
+      ~{if (log_critical) then "--logCritical" else ""} \
+      ~{if (log_error) then "--logError" else ""} \
+      ~{if (log_warning) then "--logWarning" else ""} \
+      ~{if (loginfo) then "--logInfo" else ""} \
+      ~{if (log_debug) then "--logDebug" else ""} \
       ~{if defined(loglevel) then ("--logLevel " +  '"' + loglevel + '"') else ""} \
       ~{if defined(log_file) then ("--logFile " +  '"' + log_file + '"') else ""} \
-      ~{true="--rotatingLogging" false="" rotating_logging} \
+      ~{if (rotating_logging) then "--rotatingLogging" else ""} \
       ~{if defined(workdir) then ("--workDir " +  '"' + workdir + '"') else ""} \
-      ~{true="--noStdOutErr" false="" no_stdout_err} \
-      ~{true="--stats" false="" stats} \
+      ~{if (no_stdout_err) then "--noStdOutErr" else ""} \
+      ~{if (stats) then "--stats" else ""} \
       ~{if defined(clean) then ("--clean " +  '"' + clean + '"') else ""} \
       ~{if defined(clean_workdir) then ("--cleanWorkDir " +  '"' + clean_workdir + '"') else ""} \
-      ~{true="--clusterStats" false="" cluster_stats} \
-      ~{true="--restart" false="" restart} \
+      ~{if (cluster_stats) then "--clusterStats" else ""} \
+      ~{if (restart) then "--restart" else ""} \
       ~{if defined(batch_system) then ("--batchSystem " +  '"' + batch_system + '"') else ""} \
-      ~{true="--disableHotDeployment" false="" disable_hot_deployment} \
-      ~{true="--disableAutoDeployment" false="" disable_auto_deployment} \
+      ~{if (disable_hot_deployment) then "--disableHotDeployment" else ""} \
+      ~{if (disable_auto_deployment) then "--disableAutoDeployment" else ""} \
       ~{if defined(max_local_jobs) then ("--maxLocalJobs " +  '"' + max_local_jobs + '"') else ""} \
-      ~{true="--manualMemArgs" false="" manual_mem_args} \
-      ~{true="--runCwlInternalJobsOnWorkers" false="" run_cwl_internal_jobs_on_workers} \
+      ~{if (manual_mem_args) then "--manualMemArgs" else ""} \
+      ~{if (run_cwl_internal_jobs_on_workers) then "--runCwlInternalJobsOnWorkers" else ""} \
       ~{if defined(parasol_command) then ("--parasolCommand " +  '"' + parasol_command + '"') else ""} \
       ~{if defined(parasol_max_batches) then ("--parasolMaxBatches " +  '"' + parasol_max_batches + '"') else ""} \
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""} \
-      ~{true="--noLinkImports" false="" no_link_imports} \
-      ~{true="--noMoveExports" false="" no_move_exports} \
+      ~{if (no_link_imports) then "--noLinkImports" else ""} \
+      ~{if (no_move_exports) then "--noMoveExports" else ""} \
       ~{if defined(mesos_master) then ("--mesosMaster " +  '"' + mesos_master + '"') else ""} \
       ~{if defined(ku_bernet_es_host_path) then ("--kubernetesHostPath " +  '"' + ku_bernet_es_host_path + '"') else ""} \
-      ~{if defined(provisioner) then ("--provisioner " +  '"' + provisioner + '"') else ""} \
       ~{if defined(node_types) then ("--nodeTypes " +  '"' + node_types + '"') else ""} \
       ~{if defined(node_options) then ("--nodeOptions " +  '"' + node_options + '"') else ""} \
       ~{if defined(min_nodes) then ("--minNodes " +  '"' + min_nodes + '"') else ""} \
@@ -133,119 +173,153 @@ task ToilCwlRunner {
       ~{if defined(scale_interval) then ("--scaleInterval " +  '"' + scale_interval + '"') else ""} \
       ~{if defined(preempt_able_compensation) then ("--preemptableCompensation " +  '"' + preempt_able_compensation + '"') else ""} \
       ~{if defined(node_storage) then ("--nodeStorage " +  '"' + node_storage + '"') else ""} \
-      ~{true="--metrics" false="" metrics} \
+      ~{if (metrics) then "--metrics" else ""} \
+      ~{if defined(default_memory) then ("--defaultMemory " +  '"' + default_memory + '"') else ""} \
+      ~{if defined(default_cores) then ("--defaultCores " +  '"' + default_cores + '"') else ""} \
+      ~{if defined(default_disk) then ("--defaultDisk " +  '"' + default_disk + '"') else ""} \
+      ~{if (default_preempt_able) then "--defaultPreemptable" else ""} \
       ~{if defined(max_cores) then ("--maxCores " +  '"' + max_cores + '"') else ""} \
       ~{if defined(max_memory) then ("--maxMemory " +  '"' + max_memory + '"') else ""} \
       ~{if defined(max_disk) then ("--maxDisk " +  '"' + max_disk + '"') else ""} \
       ~{if defined(retry_count) then ("--retryCount " +  '"' + retry_count + '"') else ""} \
-      ~{true="--enableUnlimitedPreemptableRetries" false="" enable_unlimited_preempt_able_retries} \
+      ~{if (enable_unlimited_preempt_able_retries) then "--enableUnlimitedPreemptableRetries" else ""} \
       ~{if defined(max_job_duration) then ("--maxJobDuration " +  '"' + max_job_duration + '"') else ""} \
       ~{if defined(rescue_jobs_frequency) then ("--rescueJobsFrequency " +  '"' + rescue_jobs_frequency + '"') else ""} \
-      ~{true="--disableCaching" false="" disable_caching} \
-      ~{true="--disableChaining" false="" disable_chaining} \
-      ~{true="--disableJobStoreChecksumVerification" false="" disable_job_store_checksum_verification} \
+      ~{if (disable_caching) then "--disableCaching" else ""} \
+      ~{if (disable_chaining) then "--disableChaining" else ""} \
+      ~{if (disable_job_store_checksum_verification) then "--disableJobStoreChecksumVerification" else ""} \
       ~{if defined(max_log_file_size) then ("--maxLogFileSize " +  '"' + max_log_file_size + '"') else ""} \
-      ~{true="--writeLogs" false="" write_logs} \
-      ~{true="--writeLogsGzip" false="" write_logs_gzip} \
-      ~{true="--writeLogsFromAllJobs" false="" write_logs_from_all_jobs} \
-      ~{true="--realTimeLogging" false="" real_time_logging} \
+      ~{if (write_logs) then "--writeLogs" else ""} \
+      ~{if (write_logs_gzip) then "--writeLogsGzip" else ""} \
+      ~{if (write_logs_from_all_jobs) then "--writeLogsFromAllJobs" else ""} \
+      ~{if (real_time_logging) then "--realTimeLogging" else ""} \
       ~{if defined(sse_key) then ("--sseKey " +  '"' + sse_key + '"') else ""} \
       ~{if defined(setenv) then ("--setEnv " +  '"' + setenv + '"') else ""} \
       ~{if defined(service_polling_interval) then ("--servicePollingInterval " +  '"' + service_polling_interval + '"') else ""} \
-      ~{true="--forceDockerAppliance" false="" force_docker_appliance} \
-      ~{true="--disableProgress" false="" disable_progress} \
-      ~{true="--debugWorker" false="" debug_worker} \
-      ~{true="--disableWorkerOutputCapture" false="" disable_worker_output_capture} \
+      ~{if (force_docker_appliance) then "--forceDockerAppliance" else ""} \
+      ~{if (disable_progress) then "--disableProgress" else ""} \
+      ~{if (debug_worker) then "--debugWorker" else ""} \
+      ~{if (disable_worker_output_capture) then "--disableWorkerOutputCapture" else ""} \
       ~{if defined(bad_worker) then ("--badWorker " +  '"' + bad_worker + '"') else ""} \
       ~{if defined(bad_worker_fail_interval) then ("--badWorkerFailInterval " +  '"' + bad_worker_fail_interval + '"') else ""} \
       ~{if defined(provenance) then ("--provenance " +  '"' + provenance + '"') else ""} \
-      ~{true="--enable-user-provenance" false="" enable_user_provenance} \
-      ~{true="--disable-user-provenance" false="" disable_user_provenance} \
-      ~{true="--enable-host-provenance" false="" enable_host_provenance} \
-      ~{true="--disable-host-provenance" false="" disable_host_provenance} \
+      ~{if (enable_user_provenance) then "--enable-user-provenance" else ""} \
+      ~{if (disable_user_provenance) then "--disable-user-provenance" else ""} \
+      ~{if (enable_host_provenance) then "--enable-host-provenance" else ""} \
+      ~{if (disable_host_provenance) then "--disable-host-provenance" else ""} \
       ~{if defined(or_cid) then ("--orcid " +  '"' + or_cid + '"') else ""} \
       ~{if defined(full_name) then ("--full-name " +  '"' + full_name + '"') else ""}
   >>>
   parameter_meta {
+    var_0: ""
+    not_strict: ""
+    enable_dev: "Enable loading and running development versions of CWL"
+    quiet: ""
+    basedir: ""
+    outdir: ""
+    user_space_docker_cmd: "(Linux/OS X only) Specify a user space docker command\\n(like udocker or dx-docker) that will be used to call\\n'pull' and 'run'"
+    singularity: "[experimental] Use Singularity runtime for running\\ncontainers. Requires Singularity v2.6.1+ and Linux\\nwith kernel version v3.18+ or with overlayfs support\\nbackported."
+    no_container: "Do not execute jobs in a Docker container, even when\\n`DockerRequirement` is specified under `hints`."
+    leave_container: "Do not delete Docker container used by jobs after they"
+    beta_dependency_resolvers_configuration: ""
+    beta_dependencies_directory: ""
+    beta_use_bio_containers: ""
+    beta_cond_a_dependencies: ""
     tmpdir_prefix: "Path prefix for temporary directories"
     tmp_outdir_prefix: "Path prefix for intermediate output directories"
     force_docker_pull: "Pull latest docker image even if it is locally present"
     no_match_user: "Disable passing the current uid to `docker run --user`"
-    no_read_only: "Do not set root directory in the container as read- only"
-    strict_memory_limit: "When running with software containers and the Docker engine, pass either the calculated memory allocation from ResourceRequirements or the default of 1 gigabyte to Docker's --memory option."
-    relax_path_checks: "Relax requirements on path names to permit spaces and hash characters."
-    default_container: "Specify a default docker container that will be used if the workflow fails to specify one."
+    no_read_only: "Do not set root directory in the container as read-"
+    relax_path_checks: "Relax requirements on path names to permit spaces and\\nhash characters."
+    default_container: "Specify a default docker container that will be used\\nif the workflow fails to specify one."
     logoff: "Same as --logCritical"
-    log_critical: "Turn on logging at level CRITICAL and above. (default is INFO)"
-    log_error: "Turn on logging at level ERROR and above. (default is INFO)"
-    log_warning: "Turn on logging at level WARNING and above. (default is INFO)"
-    loginfo: "Turn on logging at level INFO and above. (default is INFO)"
-    log_debug: "Turn on logging at level DEBUG and above. (default is INFO)"
-    loglevel: "Log at given level (may be either OFF (or CRITICAL), ERROR, WARN (or WARNING), INFO or DEBUG). (default is INFO)"
+    log_critical: "Turn on logging at level CRITICAL and above. (default\\nis INFO)"
+    log_error: "Turn on logging at level ERROR and above. (default is\\nINFO)"
+    log_warning: "Turn on logging at level WARNING and above. (default\\nis INFO)"
+    loginfo: "Turn on logging at level INFO and above. (default is\\nINFO)"
+    log_debug: "Turn on logging at level DEBUG and above. (default is\\nINFO)"
+    loglevel: "Log at given level (may be either OFF (or CRITICAL),\\nERROR, WARN (or WARNING), INFO or DEBUG). (default is\\nINFO)"
     log_file: "File to log in"
-    rotating_logging: "Turn on rotating logging, which prevents log files getting too big."
-    workdir: "Absolute path to directory where temporary files generated during the Toil run should be placed. Standard output and error from batch system jobs (unless --noStdOutErr) will be placed in this directory. A cache directory may be placed in this directory. Temp files and folders will be placed in a directory toil-<workflowID> within workDir. The workflowID is generated by Toil and will be reported in the workflow logs. Default is determined by the variables (TMPDIR, TEMP, TMP) via mkdtemp. This directory needs to exist on all machines running jobs; if capturing standard output and error from batch system jobs is desired, it will generally need to be on a shared file system. When sharing a cache between containers on a host, this directory must be shared between the containers."
-    no_stdout_err: "Do not capture standard output and error from batch system jobs."
-    stats: "Records statistics about the toil workflow to be used by 'toil stats'."
-    clean: "Determines the deletion of the jobStore upon completion of the program. Choices: 'always', 'onError','never', 'onSuccess'. The --stats option requires information from the jobStore upon completion so the jobStore will never be deleted withthat flag. If you wish to be able to restart the run, choose 'never' or 'onSuccess'. Default is 'never' if stats is enabled, and 'onSuccess' otherwise"
-    clean_workdir: "Determines deletion of temporary worker directory upon completion of a job. Choices: 'always', 'never', 'onSuccess'. Default = always. WARNING: This option should be changed for debugging only. Running a full pipeline with this option could fill your disk with intermediate data."
-    cluster_stats: "[CLUSTERSTATS] If enabled, writes out JSON resource usage statistics to a file. The default location for this file is the current working directory, but an absolute path can also be passed to specify where this file should be written. This options only applies when using scalable batch systems."
-    restart: "If --restart is specified then will attempt to restart existing workflow at the location pointed to by the --jobStore option. Will raise an exception if the workflow does not exist"
-    batch_system: "The type of batch system to run the job(s) with, currently can be one of Torque, singleMachine, parasol, HTCondor, Mesos, Slurm, Kubernetes, LSF, gridEngine'. default=singleMachine"
-    disable_hot_deployment: "Hot-deployment was renamed to auto-deployment. Option now redirects to --disableAutoDeployment. Left in for backwards compatibility."
-    disable_auto_deployment: "Should auto-deployment of the user script be deactivated? If True, the user script/package should be present at the same location on all workers. default=false"
-    max_local_jobs: "For batch systems that support a local queue for housekeeping jobs (Mesos, GridEngine, htcondor, lsf, slurm, torque), the maximum number of these housekeeping jobs to run on the local system. The default (equal to the number of cores) is a maximum of 8 concurrent local housekeeping jobs."
-    manual_mem_args: "Do not add the default arguments: 'hv=MEMORY' & 'h_vmem=MEMORY' to the qsub call, and instead rely on TOIL_GRIDGENGINE_ARGS to supply alternative arguments. Requires that TOIL_GRIDGENGINE_ARGS be set."
-    run_cwl_internal_jobs_on_workers: "Whether to run CWL internal jobs (e.g. CWLScatter) on the worker nodes instead of the primary node. If false (default), then all such jobs are run on the primary node. Setting this to true can speed up the pipeline for very large workflows with many sub-workflows and/or scatters, provided that the worker pool is large enough."
-    parasol_command: "The name or path of the parasol program. Will be looked up on PATH unless it starts with a slash. default=parasol"
-    parasol_max_batches: "Maximum number of job batches the Parasol batch is allowed to create. One batch is created for jobs with a a unique set of resource requirements. default=1000"
-    scale: "A scaling factor to change the value of all submitted tasks's submitted cores. Used in singleMachine batch system. default=1"
-    no_link_imports: "When using a filesystem based job store, CWL input files are by default symlinked in. Specifying this option instead copies the files into the job store, which may protect them from being modified externally. When not specified and as long as caching is enabled, Toil will protect the file automatically by changing the permissions to read-only."
-    no_move_exports: "When using a filesystem based job store, output files are by default moved to the output directory, and a symlink to the moved exported file is created at the initial location. Specifying this option instead copies the files into the output directory. Applies to filesystem-based job stores only."
-    mesos_master: "The host and port of the Mesos master separated by colon. (default: 115.146.93.132:5050)"
-    ku_bernet_es_host_path: "Path on Kubernetes hosts to use as shared inter-pod temp directory (default: None)"
-    provisioner: "The provisioner for cluster auto-scaling. The currently supported choices are'gce', or 'aws'. The default is None."
-    node_types: "List of node types separated by commas. The syntax for each node type depends on the provisioner used. For the cgcloud and AWS provisioners this is the name of an EC2 instance type, optionally followed by a colon and the price in dollars to bid for a spot instance of that type, for example 'c3.8xlarge:0.42'.If no spot bid is specified, nodes of this type will be non- preemptable.It is acceptable to specify an instance as both preemptable and non-preemptable, including it twice in the list. In that case,preemptable nodes of that type will be preferred when creating new nodes once the maximum number of preemptable-nodes has beenreached."
-    node_options: "Options for provisioning the nodes. The syntax depends on the provisioner used. Neither the CGCloud nor the AWS provisioner support any node options."
-    min_nodes: "Mininum number of nodes of each type in the cluster, if using auto-scaling. This should be provided as a comma-separated list of the same length as the list of node types. default=0"
-    max_nodes: "Maximum number of nodes of each type in the cluster, if using autoscaling, provided as a comma-separated list. The first value is used as a default if the list length is less than the number of nodeTypes. default=10"
-    target_time: "Sets how rapidly you aim to complete jobs in seconds. Shorter times mean more aggressive parallelization. The autoscaler attempts to scale up/down so that it expects all queued jobs will complete within targetTime seconds. default=1800"
-    beta_inertia: "A smoothing parameter to prevent unnecessary oscillations in the number of provisioned nodes. This controls an exponentially weighted moving average of the estimated number of nodes. A value of 0.0 disables any smoothing, and a value of 0.9 will smooth so much that few changes will ever be made. Must be between 0.0 and 0.9. default=0.1"
-    scale_interval: "The interval (seconds) between assessing if the scale of the cluster needs to change. default=60"
-    preempt_able_compensation: "The preference of the autoscaler to replace preemptable nodes with non-preemptable nodes, when preemptable nodes cannot be started for some reason. Defaults to 0.0. This value must be between 0.0 and 1.0, inclusive. A value of 0.0 disables such compensation, a value of 0.5 compensates two missing preemptable nodes with a non-preemptable one. A value of 1.0 replaces every missing pre-emptable node with a non-preemptable one."
-    node_storage: "Specify the size of the root volume of worker nodes when they are launched in gigabytes. You may want to set this if your jobs require a lot of disk space. The default value is 50."
-    metrics: "Enable the prometheus/grafana dashboard for monitoring CPU/RAM usage, queue size, and issued jobs."
-    max_cores: "The maximum number of CPU cores to request from the batch system at any one time. Standard suffixes like K, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
-    max_memory: "The maximum amount of memory to request from the batch system at any one time. Standard suffixes like K, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
-    max_disk: "The maximum amount of disk space to request from the batch system at any one time. Standard suffixes like K, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
-    retry_count: "Number of times to retry a failing job before giving up and labeling job failed. default=1"
-    enable_unlimited_preempt_able_retries: "If set, preemptable failures (or any failure due to an instance getting unexpectedly terminated) would not count towards job failures and --retryCount."
-    max_job_duration: "Maximum runtime of a job (in seconds) before we kill it (this is a lower bound, and the actual time before killing the job may be longer). default=9223372036854775807"
-    rescue_jobs_frequency: "Period of time to wait (in seconds) between checking for missing/overlong jobs, that is jobs which get lost by the batch system. Expert parameter. default=3600"
-    disable_caching: "[DISABLECACHING] Disables caching in the file store. This flag must be set to use a batch system that does not support caching such as Grid Engine, Parasol, LSF, or Slurm"
-    disable_chaining: "Disables chaining of jobs (chaining uses one job's resource allocation for its successor job if possible)."
-    disable_job_store_checksum_verification: "Disables checksum verification for files transferred to/from the job store. Checksum verification is a safety check to ensure the data is not corrupted during transfer. Currently only supported for non- streaming AWS files."
-    max_log_file_size: "The maximum size of a job log file to keep (in bytes), log files larger than this will be truncated to the last X bytes. Setting this option to zero will prevent any truncation. Setting this option to a negative value will truncate from the beginning.Default=62.5 K"
-    write_logs: "[WRITELOGS] Write worker logs received by the leader into their own files at the specified path. Any non-empty standard output and error from failed batch system jobs will also be written into files at this path. The current working directory will be used if a path is not specified explicitly. Note: By default only the logs of failed jobs are returned to leader. Set log level to 'debug' or enable '--writeLogsFromAllJobs' to get logs back from successful jobs, and adjust 'maxLogFileSize' to control the truncation limit for worker logs."
-    write_logs_gzip: "[WRITELOGSGZIP] Identical to --writeLogs except the logs files are gzipped on the leader."
-    write_logs_from_all_jobs: "Whether to write logs from all jobs (including the successful ones) without necessarily setting the log level to 'debug'. Ensure that either --writeLogs or --writeLogsGzip is set if enabling this option."
+    rotating_logging: "Turn on rotating logging, which prevents log files\\ngetting too big."
+    workdir: "Absolute path to directory where temporary files\\ngenerated during the Toil run should be placed.\\nStandard output and error from batch system jobs\\n(unless --noStdOutErr) will be placed in this\\ndirectory. A cache directory may be placed in this\\ndirectory. Temp files and folders will be placed in a\\ndirectory toil-<workflowID> within workDir. The\\nworkflowID is generated by Toil and will be reported\\nin the workflow logs. Default is determined by the\\nvariables (TMPDIR, TEMP, TMP) via mkdtemp. This\\ndirectory needs to exist on all machines running jobs;\\nif capturing standard output and error from batch\\nsystem jobs is desired, it will generally need to be\\non a shared file system. When sharing a cache between\\ncontainers on a host, this directory must be shared\\nbetween the containers."
+    no_stdout_err: "Do not capture standard output and error from batch\\nsystem jobs."
+    stats: "Records statistics about the toil workflow to be used\\nby 'toil stats'."
+    clean: "Determines the deletion of the jobStore upon\\ncompletion of the program. Choices: 'always',\\n'onError','never', 'onSuccess'. The --stats option\\nrequires information from the jobStore upon completion\\nso the jobStore will never be deleted withthat flag.\\nIf you wish to be able to restart the run, choose\\n'never' or 'onSuccess'. Default is 'never' if stats is\\nenabled, and 'onSuccess' otherwise"
+    clean_workdir: "Determines deletion of temporary worker directory upon\\ncompletion of a job. Choices: 'always', 'never',\\n'onSuccess'. Default = always. WARNING: This option\\nshould be changed for debugging only. Running a full\\npipeline with this option could fill your disk with\\nintermediate data."
+    cluster_stats: "[CLUSTERSTATS]\\nIf enabled, writes out JSON resource usage statistics\\nto a file. The default location for this file is the\\ncurrent working directory, but an absolute path can\\nalso be passed to specify where this file should be\\nwritten. This options only applies when using scalable\\nbatch systems."
+    restart: "If --restart is specified then will attempt to restart\\nexisting workflow at the location pointed to by the\\n--jobStore option. Will raise an exception if the\\nworkflow does not exist"
+    batch_system: "The type of batch system to run the job(s) with,\\ncurrently can be one of Slurm, Torque, LSF,\\nKubernetes, Mesos, HTCondor, singleMachine, parasol,\\ngridEngine'. default=singleMachine"
+    disable_hot_deployment: "Hot-deployment was renamed to auto-deployment. Option\\nnow redirects to --disableAutoDeployment. Left in for\\nbackwards compatibility."
+    disable_auto_deployment: "Should auto-deployment of the user script be\\ndeactivated? If True, the user script/package should\\nbe present at the same location on all workers.\\ndefault=false"
+    max_local_jobs: "For batch systems that support a local queue for\\nhousekeeping jobs (Mesos, GridEngine, htcondor, lsf,\\nslurm, torque), the maximum number of these\\nhousekeeping jobs to run on the local system. The\\ndefault (equal to the number of cores) is a maximum of\\n8 concurrent local housekeeping jobs."
+    manual_mem_args: "Do not add the default arguments: 'hv=MEMORY' &\\n'h_vmem=MEMORY' to the qsub call, and instead rely on\\nTOIL_GRIDGENGINE_ARGS to supply alternative arguments.\\nRequires that TOIL_GRIDGENGINE_ARGS be set."
+    run_cwl_internal_jobs_on_workers: "Whether to run CWL internal jobs (e.g. CWLScatter) on\\nthe worker nodes instead of the primary node. If false\\n(default), then all such jobs are run on the primary\\nnode. Setting this to true can speed up the pipeline\\nfor very large workflows with many sub-workflows\\nand/or scatters, provided that the worker pool is\\nlarge enough."
+    parasol_command: "The name or path of the parasol program. Will be\\nlooked up on PATH unless it starts with a slash.\\ndefault=parasol"
+    parasol_max_batches: "Maximum number of job batches the Parasol batch is\\nallowed to create. One batch is created for jobs with\\na a unique set of resource requirements. default=1000"
+    scale: "A scaling factor to change the value of all submitted\\ntasks's submitted cores. Used in singleMachine batch\\nsystem. default=1"
+    no_link_imports: "When using a filesystem based job store, CWL input\\nfiles are by default symlinked in. Specifying this\\noption instead copies the files into the job store,\\nwhich may protect them from being modified externally.\\nWhen not specified and as long as caching is enabled,\\nToil will protect the file automatically by changing\\nthe permissions to read-only."
+    no_move_exports: "When using a filesystem based job store, output files\\nare by default moved to the output directory, and a\\nsymlink to the moved exported file is created at the\\ninitial location. Specifying this option instead\\ncopies the files into the output directory. Applies to\\nfilesystem-based job stores only."
+    mesos_master: "The host and port of the Mesos master separated by\\ncolon. (default: 172.17.0.4:5050)"
+    ku_bernet_es_host_path: "Path on Kubernetes hosts to use as shared inter-pod\\ntemp directory (default: None)"
+    node_types: "List of node types separated by commas. The syntax for\\neach node type depends on the provisioner used. For\\nthe cgcloud and AWS provisioners this is the name of\\nan EC2 instance type, optionally followed by a colon\\nand the price in dollars to bid for a spot instance of\\nthat type, for example 'c3.8xlarge:0.42'.If no spot\\nbid is specified, nodes of this type will be non-\\npreemptable.It is acceptable to specify an instance as\\nboth preemptable and non-preemptable, including it\\ntwice in the list. In that case,preemptable nodes of\\nthat type will be preferred when creating new nodes\\nonce the maximum number of preemptable-nodes has\\nbeenreached."
+    node_options: "Options for provisioning the nodes. The syntax depends\\non the provisioner used. Neither the CGCloud nor the\\nAWS provisioner support any node options."
+    min_nodes: "Mininum number of nodes of each type in the cluster,\\nif using auto-scaling. This should be provided as a\\ncomma-separated list of the same length as the list of\\nnode types. default=0"
+    max_nodes: "Maximum number of nodes of each type in the cluster,\\nif using autoscaling, provided as a comma-separated\\nlist. The first value is used as a default if the list\\nlength is less than the number of nodeTypes.\\ndefault=10"
+    target_time: "Sets how rapidly you aim to complete jobs in seconds.\\nShorter times mean more aggressive parallelization.\\nThe autoscaler attempts to scale up/down so that it\\nexpects all queued jobs will complete within\\ntargetTime seconds. default=1800"
+    beta_inertia: "A smoothing parameter to prevent unnecessary\\noscillations in the number of provisioned nodes. This\\ncontrols an exponentially weighted moving average of\\nthe estimated number of nodes. A value of 0.0 disables\\nany smoothing, and a value of 0.9 will smooth so much\\nthat few changes will ever be made. Must be between\\n0.0 and 0.9. default=0.1"
+    scale_interval: "The interval (seconds) between assessing if the scale\\nof the cluster needs to change. default=60"
+    preempt_able_compensation: "The preference of the autoscaler to replace\\npreemptable nodes with non-preemptable nodes, when\\npreemptable nodes cannot be started for some reason.\\nDefaults to 0.0. This value must be between 0.0 and\\n1.0, inclusive. A value of 0.0 disables such\\ncompensation, a value of 0.5 compensates two missing\\npreemptable nodes with a non-preemptable one. A value\\nof 1.0 replaces every missing pre-emptable node with a\\nnon-preemptable one."
+    node_storage: "Specify the size of the root volume of worker nodes\\nwhen they are launched in gigabytes. You may want to\\nset this if your jobs require a lot of disk space. The\\ndefault value is 50."
+    metrics: "Enable the prometheus/grafana dashboard for monitoring\\nCPU/RAM usage, queue size, and issued jobs."
+    default_memory: "The default amount of memory to request for a job.\\nOnly applicable to jobs that do not specify an\\nexplicit value for this requirement. Standard suffixes\\nlike K, Ki, M, Mi, G or Gi are supported. Default is\\n2.0 Gi"
+    default_cores: "The default number of CPU cores to dedicate a job.\\nOnly applicable to jobs that do not specify an\\nexplicit value for this requirement. Fractions of a\\ncore (for example 0.1) are supported on some batch\\nsystems, namely Mesos and singleMachine. Default is\\n1.0"
+    default_disk: "The default amount of disk space to dedicate a job.\\nOnly applicable to jobs that do not specify an\\nexplicit value for this requirement. Standard suffixes\\nlike K, Ki, M, Mi, G or Gi are supported. Default is\\n2.0 Gi"
+    default_preempt_able: ""
+    max_cores: "The maximum number of CPU cores to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
+    max_memory: "The maximum amount of memory to request from the batch\\nsystem at any one time. Standard suffixes like K, Ki,\\nM, Mi, G or Gi are supported. Default is 8.0 Ei"
+    max_disk: "The maximum amount of disk space to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
+    retry_count: "Number of times to retry a failing job before giving\\nup and labeling job failed. default=1"
+    enable_unlimited_preempt_able_retries: "If set, preemptable failures (or any failure due to an\\ninstance getting unexpectedly terminated) would not\\ncount towards job failures and --retryCount."
+    max_job_duration: "Maximum runtime of a job (in seconds) before we kill\\nit (this is a lower bound, and the actual time before\\nkilling the job may be longer).\\ndefault=9223372036854775807"
+    rescue_jobs_frequency: "Period of time to wait (in seconds) between checking\\nfor missing/overlong jobs, that is jobs which get lost\\nby the batch system. Expert parameter. default=3600"
+    disable_caching: "[DISABLECACHING]\\nDisables caching in the file store. This flag must be\\nset to use a batch system that does not support\\ncaching such as Grid Engine, Parasol, LSF, or Slurm"
+    disable_chaining: "Disables chaining of jobs (chaining uses one job's\\nresource allocation for its successor job if\\npossible)."
+    disable_job_store_checksum_verification: "Disables checksum verification for files transferred\\nto/from the job store. Checksum verification is a\\nsafety check to ensure the data is not corrupted\\nduring transfer. Currently only supported for non-\\nstreaming AWS files."
+    max_log_file_size: "The maximum size of a job log file to keep (in bytes),\\nlog files larger than this will be truncated to the\\nlast X bytes. Setting this option to zero will prevent\\nany truncation. Setting this option to a negative\\nvalue will truncate from the beginning.Default=62.5 K"
+    write_logs: "[WRITELOGS]\\nWrite worker logs received by the leader into their\\nown files at the specified path. Any non-empty\\nstandard output and error from failed batch system\\njobs will also be written into files at this path. The\\ncurrent working directory will be used if a path is\\nnot specified explicitly. Note: By default only the\\nlogs of failed jobs are returned to leader. Set log\\nlevel to 'debug' or enable '--writeLogsFromAllJobs' to\\nget logs back from successful jobs, and adjust\\n'maxLogFileSize' to control the truncation limit for\\nworker logs."
+    write_logs_gzip: "[WRITELOGSGZIP]\\nIdentical to --writeLogs except the logs files are\\ngzipped on the leader."
+    write_logs_from_all_jobs: "Whether to write logs from all jobs (including the\\nsuccessful ones) without necessarily setting the log\\nlevel to 'debug'. Ensure that either --writeLogs or\\n--writeLogsGzip is set if enabling this option."
     real_time_logging: "Enable real-time logging from workers to masters"
-    sse_key: "Path to file containing 32 character key to be used for server-side encryption on awsJobStore or googleJobStore. SSE will not be used if this flag is not passed."
-    setenv: "=VALUE or NAME, -e NAME=VALUE or NAME Set an environment variable early on in the worker. If VALUE is omitted, it will be looked up in the current environment. Independently of this option, the worker will try to emulate the leader's environment before running a job, except for some variables known to vary across systems. Using this option, a variable can be injected into the worker process itself before it is started."
-    service_polling_interval: "Interval of time service jobs wait between polling for the existence of the keep-alive flag (defailt=60)"
-    force_docker_appliance: "Disables sanity checking the existence of the docker image specified by TOIL_APPLIANCE_SELF, which Toil uses to provision mesos for autoscaling."
-    disable_progress: "Disables the progress bar shown when standard error is a terminal."
-    debug_worker: "Experimental no forking mode for local debugging. Specifically, workers are not forked and stderr/stdout are not redirected to the log."
-    disable_worker_output_capture: "Let worker output go to worker's standard out/error instead of per-job logs."
-    bad_worker: "For testing purposes randomly kill 'badWorker' proportion of jobs using SIGKILL, default=0.0"
-    bad_worker_fail_interval: "When killing the job pick uniformly within the interval from 0.0 to 'badWorkerFailInterval' seconds after the worker starts, default=0.01"
-    provenance: "Save provenance to specified folder as a Research Object that captures and aggregates workflow execution and data products."
+    sse_key: "Path to file containing 32 character key to be used\\nfor server-side encryption on awsJobStore or\\ngoogleJobStore. SSE will not be used if this flag is\\nnot passed."
+    setenv: "=VALUE or NAME, -e NAME=VALUE or NAME\\nSet an environment variable early on in the worker. If\\nVALUE is omitted, it will be looked up in the current\\nenvironment. Independently of this option, the worker\\nwill try to emulate the leader's environment before\\nrunning a job, except for some variables known to vary\\nacross systems. Using this option, a variable can be\\ninjected into the worker process itself before it is\\nstarted."
+    service_polling_interval: "Interval of time service jobs wait between polling for\\nthe existence of the keep-alive flag (defailt=60)"
+    force_docker_appliance: "Disables sanity checking the existence of the docker\\nimage specified by TOIL_APPLIANCE_SELF, which Toil\\nuses to provision mesos for autoscaling."
+    disable_progress: "Disables the progress bar shown when standard error is\\na terminal."
+    debug_worker: "Experimental no forking mode for local debugging.\\nSpecifically, workers are not forked and stderr/stdout\\nare not redirected to the log."
+    disable_worker_output_capture: "Let worker output go to worker's standard out/error\\ninstead of per-job logs."
+    bad_worker: "For testing purposes randomly kill 'badWorker'\\nproportion of jobs using SIGKILL, default=0.0"
+    bad_worker_fail_interval: "When killing the job pick uniformly within the\\ninterval from 0.0 to 'badWorkerFailInterval' seconds\\nafter the worker starts, default=0.01"
+    provenance: "Save provenance to specified folder as a Research\\nObject that captures and aggregates workflow execution\\nand data products."
     enable_user_provenance: "Record user account info as part of provenance."
     disable_user_provenance: "Do not record user account info in provenance."
     enable_host_provenance: "Record host info as part of provenance."
     disable_host_provenance: "Do not record host info in provenance."
-    or_cid: "Record user ORCID identifier as part of provenance, e.g. https://orcid.org/0000-0002-1825-0097 or 0000-0002-1825-0097. Alternatively the environment variable ORCID may be set."
-    full_name: "Record full name of user as part of provenance, e.g. Josiah Carberry. You may need to use shell quotes to preserve spaces. Alternatively the environment variable CWL_FULL_NAME may be set."
-    job_store: "The location of the job store for the workflow. A job store holds persistent information about the jobs and files in a workflow. If the workflow is run with a distributed batch system, the job store must be accessible by all worker nodes. Depending on the desired job store implementation, the location should be formatted according to one of the following schemes: file:<path> where <path> points to a directory on the file systen aws:<region>:<prefix> where <region> is the name of an AWS region like us- west-2 and <prefix> will be prepended to the names of any top-level AWS resources in use by job store, e.g. S3 buckets. google:<project_id>:<prefix> TODO: explain For backwards compatibility, you may also specify ./foo (equivalent to file:./foo or just file:foo) or /bar (equivalent to file:/bar)."
+    or_cid: "Record user ORCID identifier as part of provenance,\\ne.g. https://orcid.org/0000-0002-1825-0097 or\\n0000-0002-1825-0097. Alternatively the environment\\nvariable ORCID may be set."
+    full_name: "Record full name of user as part of provenance, e.g.\\nJosiah Carberry. You may need to use shell quotes to\\npreserve spaces. Alternatively the environment\\nvariable CWL_FULL_NAME may be set.\\n"
+    cwl_tool: "cwljob"
+    exit: "--preserve-environment VAR1 VAR2 [VAR1 VAR2 ...]"
+    command_line_tools: "--preserve-entire-environment"
+    command_line_tools_dot: "--destBucket DESTBUCKET"
+    only: "--strict-memory-limit"
+    location_job_store: "The location of the job store for the workflow. A job\\nstore holds persistent information about the jobs and\\nfiles in a workflow. If the workflow is run with a\\ndistributed batch system, the job store must be\\naccessible by all worker nodes. Depending on the\\ndesired job store implementation, the location should\\nbe formatted according to one of the following\\nschemes: file:<path> where <path> points to a\\ndirectory on the file systen aws:<region>:<prefix>\\nwhere <region> is the name of an AWS region like us-\\nwest-2 and <prefix> will be prepended to the names of\\nany top-level AWS resources in use by job store, e.g.\\nS3 buckets. google:<project_id>:<prefix> TODO: explain\\nFor backwards compatibility, you may also specify\\n./foo (equivalent to file:./foo or just file:foo) or\\n/bar (equivalent to file:/bar)."
+    provisioning_dot: "--provisioner {aws,gce}\\nThe provisioner for cluster auto-scaling. The\\ncurrently supported choices are'gce', or 'aws'. The\\ndefault is None."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_tmp_outdir_prefix = "${in_tmp_outdir_prefix}"
+    File out_workdir = "${in_workdir}"
+    File out_cluster_stats = "${in_cluster_stats}"
+    File out_no_move_exports = "${in_no_move_exports}"
+    File out_write_logs = "${in_write_logs}"
   }
 }

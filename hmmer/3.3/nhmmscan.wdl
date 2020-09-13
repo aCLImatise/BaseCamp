@@ -2,35 +2,35 @@ version 1.0
 
 task Nhmmscan {
   input {
-    String? direct_output_file
-    String? tbl_out
-    String? df_am_tbl_out
+    File? direct_output_file
+    File? tbl_out
+    File? df_am_tbl_out
     String? ali_scores_out
     Boolean? acc
     Boolean? no_ali
     Boolean? no_text_w
-    String? text_w
-    String? report_models_evalue
+    Int? text_w
+    Float? report_models_evalue
     String? report_models_threshold
-    String? ince
+    Float? ince
     String? in_ct
     Boolean? cut_ga
     Boolean? cut_nc
     Boolean? cut_tc
     Boolean? max
-    String? fone
-    String? f_two
-    String? f_three
+    Int? fone
+    Int? f_two
+    Int? f_three
     Boolean? no_bias
     String? q_format
     Boolean? no_null_two
     String? set_comparisons_done
-    String? seed
-    String? w_beta
-    String? w_length
+    Int? seed
+    Int? w_beta
+    Int? w_length
     Boolean? watson
     Boolean? crick
-    String? cpu
+    Int? cpu
     Boolean? options
   }
   command <<<
@@ -39,32 +39,32 @@ task Nhmmscan {
       ~{if defined(tbl_out) then ("--tblout " +  '"' + tbl_out + '"') else ""} \
       ~{if defined(df_am_tbl_out) then ("--dfamtblout " +  '"' + df_am_tbl_out + '"') else ""} \
       ~{if defined(ali_scores_out) then ("--aliscoresout " +  '"' + ali_scores_out + '"') else ""} \
-      ~{true="--acc" false="" acc} \
-      ~{true="--noali" false="" no_ali} \
-      ~{true="--notextw" false="" no_text_w} \
+      ~{if (acc) then "--acc" else ""} \
+      ~{if (no_ali) then "--noali" else ""} \
+      ~{if (no_text_w) then "--notextw" else ""} \
       ~{if defined(text_w) then ("--textw " +  '"' + text_w + '"') else ""} \
       ~{if defined(report_models_evalue) then ("-E " +  '"' + report_models_evalue + '"') else ""} \
       ~{if defined(report_models_threshold) then ("-T " +  '"' + report_models_threshold + '"') else ""} \
       ~{if defined(ince) then ("--incE " +  '"' + ince + '"') else ""} \
       ~{if defined(in_ct) then ("--incT " +  '"' + in_ct + '"') else ""} \
-      ~{true="--cut_ga" false="" cut_ga} \
-      ~{true="--cut_nc" false="" cut_nc} \
-      ~{true="--cut_tc" false="" cut_tc} \
-      ~{true="--max" false="" max} \
+      ~{if (cut_ga) then "--cut_ga" else ""} \
+      ~{if (cut_nc) then "--cut_nc" else ""} \
+      ~{if (cut_tc) then "--cut_tc" else ""} \
+      ~{if (max) then "--max" else ""} \
       ~{if defined(fone) then ("--F1 " +  '"' + fone + '"') else ""} \
       ~{if defined(f_two) then ("--F2 " +  '"' + f_two + '"') else ""} \
       ~{if defined(f_three) then ("--F3 " +  '"' + f_three + '"') else ""} \
-      ~{true="--nobias" false="" no_bias} \
+      ~{if (no_bias) then "--nobias" else ""} \
       ~{if defined(q_format) then ("--qformat " +  '"' + q_format + '"') else ""} \
-      ~{true="--nonull2" false="" no_null_two} \
+      ~{if (no_null_two) then "--nonull2" else ""} \
       ~{if defined(set_comparisons_done) then ("-Z " +  '"' + set_comparisons_done + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(w_beta) then ("--w_beta " +  '"' + w_beta + '"') else ""} \
       ~{if defined(w_length) then ("--w_length " +  '"' + w_length + '"') else ""} \
-      ~{true="--watson" false="" watson} \
-      ~{true="--crick" false="" crick} \
+      ~{if (watson) then "--watson" else ""} \
+      ~{if (crick) then "--crick" else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     direct_output_file: ": direct output to file <f>, not stdout"
@@ -92,10 +92,14 @@ task Nhmmscan {
     set_comparisons_done: ": set # of comparisons done, for E-value calculation"
     seed: ": set RNG seed to <n> (if 0: one-time arbitrary seed)  [42]"
     w_beta: ": tail mass at which window length is determined"
-    w_length: ": window length - essentially max expected hit length "
+    w_length: ": window length - essentially max expected hit length"
     watson: ": only search the top strand"
     crick: ": only search the bottom strand"
     cpu: ": number of parallel CPU workers to use for multithreads  [2]"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_direct_output_file = "${in_direct_output_file}"
   }
 }

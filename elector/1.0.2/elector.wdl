@@ -2,55 +2,53 @@ version 1.0
 
 task Elector {
   input {
-    Boolean? _number_threads
-    Boolean? fasta_file_corrected
+    Boolean? threads
+    Boolean? corrected
     Boolean? split
     Boolean? uncorrected
     Boolean? perfect
-    Boolean? reference
+    Boolean? fasta_file_reference_genome
     Boolean? simulator
     Boolean? correct_or
     Boolean? dazz_db
-    Boolean? name_output_directory
+    Directory? name_output_directory
     Boolean? remap
-    Boolean? assemble
     Boolean? minsize
-    String? var_13
-    String? var_14
+    String assemble_perform_assembly
   }
   command <<<
     elector \
-      ~{var_13} \
-      ~{var_14} \
-      ~{true="-threads" false="" _number_threads} \
-      ~{true="-corrected" false="" fasta_file_corrected} \
-      ~{true="-split" false="" split} \
-      ~{true="-uncorrected" false="" uncorrected} \
-      ~{true="-perfect" false="" perfect} \
-      ~{true="-reference" false="" reference} \
-      ~{true="-simulator" false="" simulator} \
-      ~{true="-corrector" false="" correct_or} \
-      ~{true="-dazzDb" false="" dazz_db} \
-      ~{true="-output" false="" name_output_directory} \
-      ~{true="-remap" false="" remap} \
-      ~{true="-assemble" false="" assemble} \
-      ~{true="-minsize" false="" minsize}
+      ~{assemble_perform_assembly} \
+      ~{if (threads) then "-threads" else ""} \
+      ~{if (corrected) then "-corrected" else ""} \
+      ~{if (split) then "-split" else ""} \
+      ~{if (uncorrected) then "-uncorrected" else ""} \
+      ~{if (perfect) then "-perfect" else ""} \
+      ~{if (fasta_file_reference_genome) then "-reference" else ""} \
+      ~{if (simulator) then "-simulator" else ""} \
+      ~{if (correct_or) then "-corrector" else ""} \
+      ~{if (dazz_db) then "-dazzDb" else ""} \
+      ~{if (name_output_directory) then "-output" else ""} \
+      ~{if (remap) then "-remap" else ""} \
+      ~{if (minsize) then "-minsize" else ""}
   >>>
   parameter_meta {
-    _number_threads: "[THREADS]    Number of threads"
-    fasta_file_corrected: "[CORRECTED] Fasta file with corrected reads (each read sequence on one line)"
+    threads: "[THREADS]    Number of threads"
+    corrected: "[CORRECTED]\\nFasta file with corrected reads (each read sequence on\\none line)"
     split: "Corrected reads are split"
-    uncorrected: "[UNCORRECTED] Prefix of the reads simulation files"
-    perfect: "[PERFECT]    Fasta file with reference read sequences (each read sequence on one line)"
-    reference: "[REFERENCE] Fasta file with reference genome sequences (each sequence on one line)"
-    simulator: "[SIMULATOR] Tool used for the simulation of the long reads (either nanosim or simlord)"
-    correct_or: "[SOFT]     Corrector used (lowercase, in this list: lorma, mecat, pbdagcon, daccord). If no corrector name is provided, make sure the read's headers are correctly formatted (i.e. they correspond to those of uncorrected and reference files)"
-    dazz_db: "[DAZZDB]      Reads database used for the correction, if the reads were corrected with Daccord or PBDagCon"
-    name_output_directory: "[OUTPUTDIRPATH] Name for output directory"
-    remap: "Perform remapping of the corrected reads to the reference"
-    assemble: "Perform assembly of the corrected reads"
-    minsize: "[MINSIZE]    Do not assess reads/fragments chose length is <= MINSIZE % of the original read"
-    var_13: ""
-    var_14: ""
+    uncorrected: "[UNCORRECTED]\\nPrefix of the reads simulation files"
+    perfect: "[PERFECT]    Fasta file with reference read sequences (each read\\nsequence on one line)"
+    fasta_file_reference_genome: "[REFERENCE]\\nFasta file with reference genome sequences (each\\nsequence on one line)"
+    simulator: "[SIMULATOR]\\nTool used for the simulation of the long reads (either\\nnanosim or simlord)"
+    correct_or: "[SOFT]     Corrector used (lowercase, in this list: lorma, mecat,\\npbdagcon, daccord). If no corrector name is provided,\\nmake sure the read's headers are correctly formatted\\n(i.e. they correspond to those of uncorrected and\\nreference files)"
+    dazz_db: "[DAZZDB]      Reads database used for the correction, if the reads\\nwere corrected with Daccord or PBDagCon"
+    name_output_directory: "[OUTPUTDIRPATH]\\nName for output directory"
+    remap: "Perform remapping of the corrected reads to the"
+    minsize: "[MINSIZE]    Do not assess reads/fragments chose length is <=\\nMINSIZE % of the original read\\n"
+    assemble_perform_assembly: "-assemble             Perform assembly of the corrected reads"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_name_output_directory = "${in_name_output_directory}"
   }
 }

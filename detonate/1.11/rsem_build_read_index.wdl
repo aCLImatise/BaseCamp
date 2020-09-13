@@ -1,7 +1,10 @@
 version 1.0
 
-task RsemBuildReadIndex {
+task Rsembuildreadindex {
   command <<<
-    rsem-build-read-index
+    rsem_build_read_index
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

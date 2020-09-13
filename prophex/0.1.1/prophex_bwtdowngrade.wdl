@@ -14,4 +14,7 @@ task ProphexBwtdowngrade {
     input_dot_bwt: ""
     output_dot_bwt: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

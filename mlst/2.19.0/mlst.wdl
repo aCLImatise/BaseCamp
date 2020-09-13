@@ -24,25 +24,25 @@ task Mlst {
   }
   command <<<
     mlst \
-      ~{true="--check" false="" check} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--threads" false="" threads} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--scheme" false="" scheme} \
-      ~{true="--list" false="" list} \
-      ~{true="--longlist" false="" long_list} \
-      ~{true="--exclude" false="" exclude} \
-      ~{true="--csv" false="" csv} \
-      ~{true="--json" false="" json} \
-      ~{true="--label" false="" label} \
-      ~{true="--nopath" false="" no_path} \
-      ~{true="--novel" false="" novel} \
-      ~{true="--legacy" false="" legacy} \
-      ~{true="--minid" false="" mini_d} \
-      ~{true="--mincov" false="" min_cov} \
-      ~{true="--minscore" false="" min_score} \
-      ~{true="--blastdb" false="" blast_db} \
-      ~{true="--datadir" false="" datadir}
+      ~{if (check) then "--check" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (scheme) then "--scheme" else ""} \
+      ~{if (list) then "--list" else ""} \
+      ~{if (long_list) then "--longlist" else ""} \
+      ~{if (exclude) then "--exclude" else ""} \
+      ~{if (csv) then "--csv" else ""} \
+      ~{if (json) then "--json" else ""} \
+      ~{if (label) then "--label" else ""} \
+      ~{if (no_path) then "--nopath" else ""} \
+      ~{if (novel) then "--novel" else ""} \
+      ~{if (legacy) then "--legacy" else ""} \
+      ~{if (mini_d) then "--minid" else ""} \
+      ~{if (min_cov) then "--mincov" else ""} \
+      ~{if (min_score) then "--minscore" else ""} \
+      ~{if (blast_db) then "--blastdb" else ""} \
+      ~{if (datadir) then "--datadir" else ""}
   >>>
   parameter_meta {
     check: "Just check dependencies and exit (default OFF)"
@@ -62,7 +62,10 @@ task Mlst {
     mini_d: "[n.n]     DNA %identity of full allelle to consider 'similar' [~] (default '95')"
     min_cov: "[n.n]    DNA %cov to report partial allele at all [?] (default '10')"
     min_score: "[n.n]  Minumum score out of 100 to match a scheme (when auto --scheme) (default '50')"
-    blast_db: "[X]     BLAST database (default '/tmp/tmp7lnwueq0/db/blast/mlst.fa')"
-    datadir: "[X]     PubMLST data (default '/tmp/tmp7lnwueq0/db/pubmlst')"
+    blast_db: "[X]     BLAST database (default '/usr/local/db/blast/mlst.fa')"
+    datadir: "[X]     PubMLST data (default '/usr/local/db/pubmlst')"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

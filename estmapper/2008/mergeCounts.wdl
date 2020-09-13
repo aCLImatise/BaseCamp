@@ -2,25 +2,19 @@ version 1.0
 
 task MergeCounts {
   input {
-    String no
-    String such
-    File file
-    String or
-    Directory directory
+    Int count_one
+    Int count_two
   }
   command <<<
     mergeCounts \
-      ~{no} \
-      ~{such} \
-      ~{file} \
-      ~{or} \
-      ~{directory}
+      ~{count_one} \
+      ~{count_two}
   >>>
   parameter_meta {
-    no: ""
-    such: ""
-    file: ""
-    or: ""
-    directory: ""
+    count_one: ""
+    count_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

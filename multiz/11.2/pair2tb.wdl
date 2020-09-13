@@ -4,4 +4,7 @@ task Pair2tb {
   command <<<
     pair2tb
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

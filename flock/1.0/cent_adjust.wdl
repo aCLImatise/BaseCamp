@@ -14,4 +14,7 @@ task CentAdjust {
     input_center: ""
     input_data_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

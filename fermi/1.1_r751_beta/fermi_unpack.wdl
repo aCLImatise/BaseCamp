@@ -10,11 +10,14 @@ task FermiUnpack {
     fermi unpack \
       ~{seqs_dot_bwt} \
       ~{if defined(index_read_starting) then ("-i " +  '"' + index_read_starting + '"') else ""} \
-      ~{true="-M" false="" load_fmindex_memory}
+      ~{if (load_fmindex_memory) then "-M" else ""}
   >>>
   parameter_meta {
     index_read_starting: "index of the read to output, starting from 0 [null]"
     load_fmindex_memory: "load the FM-index as a memory mapped file"
     seqs_dot_bwt: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,47 +1,55 @@
 class: CommandLineTool
 id: ../../../mapsifter.cwl
 inputs:
-- id: output
-  doc: 'Name of output file (default: stdout) '
-  type: boolean
+- id: in_output
+  doc: 'Name of output file (default: stdout)'
+  type: File
   inputBinding:
     prefix: -output
-- id: verbose
-  doc: 'print more run info '
+- id: in_verbose
+  doc: print more run info
   type: boolean
   inputBinding:
     prefix: -verbose
-- id: exclude
-  doc: 'exclude contained '
+- id: in_exclude
+  doc: exclude contained
   type: boolean
   inputBinding:
     prefix: -exclude
-- id: upper
-  doc: 'upper bound on scores '
+- id: in_upper
+  doc: upper bound on scores
   type: boolean
   inputBinding:
     prefix: -upper
-- id: lower
-  doc: 'lower bound on scores '
+- id: in_lower
+  doc: lower bound on scores
   type: boolean
   inputBinding:
     prefix: -lower
-- id: target
-  doc: 'target regions file '
+- id: in_target
+  doc: target regions file
   type: boolean
   inputBinding:
     prefix: -target
-- id: about
-  doc: 'print about message '
+- id: in_about
+  doc: print about message
   type: boolean
   inputBinding:
     prefix: -about
-- id: bed_format_file
+- id: in_bed_format_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: 'Name of output file (default: stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - mapsifter

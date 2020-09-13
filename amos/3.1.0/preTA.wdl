@@ -4,4 +4,7 @@ task PreTA {
   command <<<
     preTA
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,28 +2,34 @@ version 1.0
 
 task Fast5seek {
   input {
-    Array[String] fast_five_dir
+    Array[Int] fast_five_dir
     Array[String] reference
-    String? filename_write_paths
+    File? filename_write_paths
     Boolean? mapped
-    String? log_level
     Boolean? no_progress_bar
+    String? log_level
+    String files_dot
   }
   command <<<
     fast5seek \
+      ~{files_dot} \
       ~{if defined(fast_five_dir) then ("--fast5_dir " +  '"' + fast_five_dir + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(filename_write_paths) then ("--output " +  '"' + filename_write_paths + '"') else ""} \
-      ~{true="--mapped" false="" mapped} \
-      ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""} \
-      ~{true="--no_progress_bar" false="" no_progress_bar}
+      ~{if (mapped) then "--mapped" else ""} \
+      ~{if (no_progress_bar) then "--no_progress_bar" else ""} \
+      ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""}
   >>>
   parameter_meta {
-    fast_five_dir: "Directory of fast5 files you want to query. Program will walk recursively through subdirectories."
+    fast_five_dir: "Directory of fast5 files you want to query. Program\\nwill walk recursively through subdirectories."
     reference: "Fastq or BAM/SAM file(s)."
-    filename_write_paths: "Filename to write fast5 paths to. If nothing is entered, it will write the paths to STDOUT."
-    mapped: "Only extract read ids for mapped reads in BAM/SAM files."
-    log_level: "Level of logging. 0 is none, 5 is for debugging. Default is 4 which will report info, warnings, errors, and critical information."
+    filename_write_paths: "Filename to write fast5 paths to. If nothing is\\nentered, it will write the paths to STDOUT."
+    mapped: "Only extract read ids for mapped reads in BAM/SAM"
     no_progress_bar: "Do not display progress bar."
+    log_level: ""
+    files_dot: "--log_level {0,1,2,3,4,5}"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

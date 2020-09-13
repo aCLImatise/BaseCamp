@@ -1,20 +1,20 @@
 version 1.0
 
-task AnsibleDoc {
+task Ansibledoc {
   input {
-    String? module_path
+    File? module_path
     Boolean? list
     Boolean? snippet
     Boolean? show_version_number
     String? module_dot_dot_dot
   }
   command <<<
-    ansible-doc \
+    ansible_doc \
       ~{module_dot_dot_dot} \
       ~{if defined(module_path) then ("--module-path " +  '"' + module_path + '"') else ""} \
-      ~{true="--list" false="" list} \
-      ~{true="--snippet" false="" snippet} \
-      ~{true="-v" false="" show_version_number}
+      ~{if (list) then "--list" else ""} \
+      ~{if (snippet) then "--snippet" else ""} \
+      ~{if (show_version_number) then "-v" else ""}
   >>>
   parameter_meta {
     module_path: "Ansible modules/ directory"
@@ -22,5 +22,8 @@ task AnsibleDoc {
     snippet: "Show playbook snippet for specified module(s)"
     show_version_number: "Show version number and exit"
     module_dot_dot_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

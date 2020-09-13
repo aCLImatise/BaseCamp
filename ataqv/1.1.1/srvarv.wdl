@@ -2,7 +2,7 @@ version 1.0
 
 task Srvarv {
   input {
-    String? port
+    Int? port
     String instance
   }
   command <<<
@@ -11,7 +11,10 @@ task Srvarv {
       ~{if defined(port) then ("--port " +  '"' + port + '"') else ""}
   >>>
   parameter_meta {
-    port: "The TCP port on which to serve the viewer (default: 8000)."
-    instance: "The directory containing the viewer instance (default: current directory)."
+    port: "The TCP port on which to serve the viewer (default:\\n8000).\\n"
+    instance: "The directory containing the viewer instance (default:\\ncurrent directory)."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

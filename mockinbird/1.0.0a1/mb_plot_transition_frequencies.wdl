@@ -1,6 +1,6 @@
 version 1.0
 
-task MbPlotTransitionFrequencies {
+task Mbplottransitionfrequencies {
   input {
     String? coverage
     String? limit
@@ -8,16 +8,19 @@ task MbPlotTransitionFrequencies {
     Boolean? remove
   }
   command <<<
-    mb-plot-transition-frequencies \
+    mb_plot_transition_frequencies \
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""} \
       ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--remove" false="" remove}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (remove) then "--remove" else ""}
   >>>
   parameter_meta {
     coverage: "minimum coverage"
     limit: "y-axis limit"
     verbose: "verbose output"
     remove: "remove temporary files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

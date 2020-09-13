@@ -4,4 +4,7 @@ task Kmers {
   command <<<
     kmers
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

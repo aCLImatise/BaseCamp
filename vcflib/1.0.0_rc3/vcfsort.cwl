@@ -1,57 +1,45 @@
 class: CommandLineTool
 id: ../../../vcfsort.cwl
 inputs:
-- id: equivalent_to_ve
-  doc: equivalent to -vE
+- id: in_invalid_option_
+  doc: ": invalid option -- '-'"
   type: boolean
   inputBinding:
-    prefix: -e
-- id: show_ends
-  doc: display $ at end of each line
+    prefix: '-1000'
+- id: in_print_first_n
+  doc: '[-]N[kbm]    Print first N bytes'
   type: boolean
   inputBinding:
-    prefix: --show-ends
-- id: number
-  doc: number all output lines
+    prefix: -c
+- id: in_never_print_headers
+  doc: Never print headers
   type: boolean
   inputBinding:
-    prefix: --number
-- id: squeeze_blank
-  doc: suppress repeated empty output lines
+    prefix: -q
+- id: in_always_print_headers
+  doc: Always print headers
   type: boolean
   inputBinding:
-    prefix: --squeeze-blank
-- id: to_vt
-  doc: to -vT
-  type: string
-  inputBinding:
-    prefix: -t
-- id: show_tabs
-  doc: TAB characters as ^I
-  type: string
-  inputBinding:
-    prefix: --show-tabs
-- id: ignored
-  doc: (ignored)
-  type: boolean
-  inputBinding:
-    prefix: -u
-- id: show_non_printing
-  doc: ^ and M- notation, except for LFD and TAB
-  type: string
-  inputBinding:
-    prefix: --show-nonprinting
-- id: cat
+    prefix: -v
+- id: in_cat
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: option
+- id: in_head
   doc: ''
   type: string
   inputBinding:
+    position: 0
+- id: in_file
+  doc: ''
+  type: File
+  inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfsort

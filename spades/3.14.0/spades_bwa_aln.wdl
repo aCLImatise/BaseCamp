@@ -1,8 +1,8 @@
 version 1.0
 
-task SpadesBwaAln {
+task SpadesbwaAln {
   input {
-    String? max_diff_int
+    Int? max_diff_int
     Int? maximum_number_fraction
     Int? maximum_number_gap
     Int? put_indel_int
@@ -32,7 +32,7 @@ task SpadesBwaAln {
     String in_dot_fq
   }
   command <<<
-    spades-bwa aln \
+    spades_bwa aln \
       ~{bwa} \
       ~{aln} \
       ~{prefix} \
@@ -53,14 +53,14 @@ task SpadesBwaAln {
       ~{if defined(quality_threshold_read) then ("-q " +  '"' + quality_threshold_read + '"') else ""} \
       ~{if defined(file_write_output) then ("-f " +  '"' + file_write_output + '"') else ""} \
       ~{if defined(length_of_barcode) then ("-B " +  '"' + length_of_barcode + '"') else ""} \
-      ~{true="-L" false="" logscaled_gap_penalty} \
-      ~{true="-N" false="" noniterative_mode_search} \
-      ~{true="-I" false="" input_illumina_fastqlike} \
-      ~{true="-b" false="" input_read_file} \
-      ~{true="-0" false="" use_singleend_reads} \
-      ~{true="-1" false="" use_st_read} \
-      ~{true="-2" false="" use_nd_read} \
-      ~{true="-Y" false="" filter_casavafiltered_sequences}
+      ~{if (logscaled_gap_penalty) then "-L" else ""} \
+      ~{if (noniterative_mode_search) then "-N" else ""} \
+      ~{if (input_illumina_fastqlike) then "-I" else ""} \
+      ~{if (input_read_file) then "-b" else ""} \
+      ~{if (use_singleend_reads) then "-0" else ""} \
+      ~{if (use_st_read) then "-1" else ""} \
+      ~{if (use_nd_read) then "-2" else ""} \
+      ~{if (filter_casavafiltered_sequences) then "-Y" else ""}
   >>>
   parameter_meta {
     max_diff_int: "max #diff (int) or missing prob under 0.02 err rate (float) [0.04]"
@@ -91,5 +91,9 @@ task SpadesBwaAln {
     aln: ""
     prefix: ""
     in_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_file_write_output = "${in_file_write_output}"
   }
 }

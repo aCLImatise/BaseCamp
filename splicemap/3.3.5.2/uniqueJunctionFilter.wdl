@@ -4,4 +4,7 @@ task UniqueJunctionFilter {
   command <<<
     uniqueJunctionFilter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

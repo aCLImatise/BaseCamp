@@ -2,29 +2,27 @@ version 1.0
 
 task Msaprobs {
   input {
-    String? outfile
+    File? outfile
     Int? num_threads
     Boolean? clustalw
-    String? consistency
-    String? iterative_refinement
+    Int? consistency
+    Int? iterative_refinement
     Boolean? verbose
     File? an_not
     Boolean? alignment_order
     Boolean? version
-    String? option
   }
   command <<<
     msaprobs \
-      ~{option} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(num_threads) then ("-num_threads " +  '"' + num_threads + '"') else ""} \
-      ~{true="-clustalw" false="" clustalw} \
+      ~{if (clustalw) then "-clustalw" else ""} \
       ~{if defined(consistency) then ("--consistency " +  '"' + consistency + '"') else ""} \
       ~{if defined(iterative_refinement) then ("--iterative-refinement " +  '"' + iterative_refinement + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(an_not) then ("-annot " +  '"' + an_not + '"') else ""} \
-      ~{true="--alignment-order" false="" alignment_order} \
-      ~{true="-version" false="" version}
+      ~{if (alignment_order) then "--alignment-order" else ""} \
+      ~{if (version) then "-version" else ""}
   >>>
   parameter_meta {
     outfile: "specify the output file name (STDOUT by default)"
@@ -35,7 +33,10 @@ task Msaprobs {
     verbose: "report progress while aligning (default: off)"
     an_not: "write annotation for multiple alignment to FILENAME"
     alignment_order: "print sequences in alignment order rather than input order (default: off)"
-    version: "print out version of MSAPROBS "
-    option: ""
+    version: "print out version of MSAPROBS\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
   }
 }

@@ -7,11 +7,14 @@ task Chromosomer {
   }
   command <<<
     chromosomer \
-      ~{true="--debug" false="" debug} \
-      ~{true="-v" false="" v}
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     debug: "show debugging messages"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

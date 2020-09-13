@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../pynnotator_or.cwl
 inputs:
-- id: vcf_file_annotated
+- id: in_vcf_file_annotated
   doc: a VCF file to be annotated
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: hg_genome_build
+- id: in_hg_genome_build
   doc: or hg38  The genome build you want to use
-  type: string
+  type: long
   inputBinding:
     prefix: -b
-- id: options
+- id: in_options
   doc: install test
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pynnotator

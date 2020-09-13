@@ -1,7 +1,10 @@
 version 1.0
 
-task SelectSecRbcontig.pl.bak {
+task SelectSecRbcontigpl {
   command <<<
-    select_sec_rbcontig.pl.bak
+    select_sec_rbcontig_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

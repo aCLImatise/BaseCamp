@@ -1,7 +1,10 @@
 version 1.0
 
-task CannoliShell {
+task Cannolishell {
   command <<<
-    cannoli-shell
+    cannoli_shell
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

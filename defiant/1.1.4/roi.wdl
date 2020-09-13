@@ -4,4 +4,7 @@ task Roi {
   command <<<
     roi
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -17,8 +17,8 @@ task HtsboxQualbin {
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(number_records_buffer) then ("-n " +  '"' + number_records_buffer + '"') else ""} \
       ~{if defined(number_of_bins) then ("-m " +  '"' + number_of_bins + '"') else ""} \
-      ~{true="-b" false="" input_bam_file} \
-      ~{true="-u" false="" output_uncompressed_b}
+      ~{if (input_bam_file) then "-b" else ""} \
+      ~{if (output_uncompressed_b) then "-u" else ""}
   >>>
   parameter_meta {
     number_of_threads: "number of threads [1]"
@@ -28,5 +28,8 @@ task HtsboxQualbin {
     output_uncompressed_b: "output uncompressed BAM (force -b)"
     qual_bin: ""
     in_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

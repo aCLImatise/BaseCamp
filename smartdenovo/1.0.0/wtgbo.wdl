@@ -3,16 +3,16 @@ version 1.0
 task Wtgbo {
   input {
     Int? number_of_threads
-    String? long_reads_files
+    File? long_reads_files
     String? long_reads_region
-    String? overlap_files_readsttlentbegtendtreadsttlentbegtendtscore
-    String? load_pairs_read
+    File? overlap_files_readsttlentbegtendtreadsttlentbegtendtscore
+    File? load_pairs_read
     Int? minimum_alignment_score
     Float? minimum_alignment_identity
     Int? maximum_margin_alignment
-    String? output_file_new
-    String? record_pairs_sequences
-    Boolean? force_overwrite_output
+    File? output_file_new
+    Int? record_pairs_sequences
+    File? force_overwrite_output
     Int? minimum_estimated_coverage
     Boolean? use_number_matches
     Float? best_score_cutoff
@@ -45,11 +45,11 @@ task Wtgbo {
       ~{if defined(maximum_margin_alignment) then ("-u " +  '"' + maximum_margin_alignment + '"') else ""} \
       ~{if defined(output_file_new) then ("-o " +  '"' + output_file_new + '"') else ""} \
       ~{if defined(record_pairs_sequences) then ("-9 " +  '"' + record_pairs_sequences + '"') else ""} \
-      ~{true="-f" false="" force_overwrite_output} \
+      ~{if (force_overwrite_output) then "-f" else ""} \
       ~{if defined(minimum_estimated_coverage) then ("-c " +  '"' + minimum_estimated_coverage + '"') else ""} \
-      ~{true="-Q" false="" use_number_matches} \
+      ~{if (use_number_matches) then "-Q" else ""} \
       ~{if defined(best_score_cutoff) then ("-q " +  '"' + best_score_cutoff + '"') else ""} \
-      ~{true="-H" false="" turn_homopolymer_compression} \
+      ~{if (turn_homopolymer_compression) then "-H" else ""} \
       ~{if defined(smaller_kmer_size) then ("-z " +  '"' + smaller_kmer_size + '"') else ""} \
       ~{if defined(filter_high_frequency) then ("-Z " +  '"' + filter_high_frequency + '"') else ""} \
       ~{if defined(zmer_window) then ("-y " +  '"' + zmer_window + '"') else ""} \
@@ -63,22 +63,22 @@ task Wtgbo {
       ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""} \
       ~{if defined(minimum_bandwidth_iteratively) then ("-w " +  '"' + minimum_bandwidth_iteratively + '"') else ""} \
       ~{if defined(maximum_bandwidth) then ("-W " +  '"' + maximum_bandwidth + '"') else ""} \
-      ~{true="-n" false="" refine_the_alignment} \
+      ~{if (refine_the_alignment) then "-n" else ""} \
       ~{if defined(max_turns_iteration) then ("-N " +  '"' + max_turns_iteration + '"') else ""}
   >>>
   parameter_meta {
     number_of_threads: "Number of threads, [1]"
     long_reads_files: "Long reads sequences file(s), + *"
-    long_reads_region: "Long reads retained region, often from wtobt, + Format: read_name\toffset\tlength\toriginal_len"
-    overlap_files_readsttlentbegtendtreadsttlentbegtendtscore: "Overlap file(s), + * Format: reads1\t+/-\tlen1\tbeg1\tend1\treads2\t+/-\tlen2\tbeg2\tend2\tscore"
+    long_reads_region: "Long reads retained region, often from wtobt, +\\nFormat: read_name\\toffset\\tlength\\toriginal_len"
+    overlap_files_readsttlentbegtendtreadsttlentbegtendtscore: "Overlap file(s), + *\\nFormat: reads1\\t+/-\\tlen1\\tbeg1\\tend1\\treads2\\t+/-\\tlen2\\tbeg2\\tend2\\tscore"
     load_pairs_read: "Load pairs of read name from file, will avoid to calculate overlap them again, + [NULL]"
     minimum_alignment_score: "Minimum alignment score, [200]"
     minimum_alignment_identity: "Minimum alignment identity, [0.6]"
     maximum_margin_alignment: "Maximum margin of alignment, [100]"
     output_file_new: "Output file of new overlaps, *"
-    record_pairs_sequences: "Record pairs of sequences have beed aligned regardless of successful, including pairs from '-L' Format: read1\tread2"
+    record_pairs_sequences: "Record pairs of sequences have beed aligned regardless of successful, including pairs from '-L'\\nFormat: read1\\tread2"
     force_overwrite_output: "Force overwrite output file"
-    minimum_estimated_coverage: "Minimum estimated coverage of edge to be trusted, [1] edge coverage is calculated by counting overlaps that can replace this edge"
+    minimum_estimated_coverage: "Minimum estimated coverage of edge to be trusted, [1]\\nedge coverage is calculated by counting overlaps that can replace this edge"
     use_number_matches: "Use number of matches as alignment score"
     best_score_cutoff: "Best score cutoff, say best overlap MUST have alignment score >= <-r> * read's best score [0.95]"
     turn_homopolymer_compression: "Turn off homopolymer compression"
@@ -97,5 +97,10 @@ task Wtgbo {
     maximum_bandwidth: "Maximum bandwidth, [3200]"
     refine_the_alignment: "Refine the alignment"
     max_turns_iteration: "Max turns of iteration, [5]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_new = "${in_output_file_new}"
+    File out_force_overwrite_output = "${in_force_overwrite_output}"
   }
 }

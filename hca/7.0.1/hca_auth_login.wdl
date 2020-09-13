@@ -8,10 +8,13 @@ task HcaAuthLogin {
   command <<<
     hca auth login \
       ~{if defined(access_token) then ("--access-token " +  '"' + access_token + '"') else ""} \
-      ~{true="--remote" false="" remote}
+      ~{if (remote) then "--remote" else ""}
   >>>
   parameter_meta {
     access_token: ""
     remote: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

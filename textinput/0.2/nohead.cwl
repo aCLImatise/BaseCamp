@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../nohead.cwl
 inputs:
-- id: lines
+- id: in_lines
   doc: suppress NUM lines (default 1)
-  type: string
+  type: long
   inputBinding:
     prefix: --lines
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nohead

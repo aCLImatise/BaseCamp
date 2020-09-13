@@ -4,4 +4,7 @@ task SerobaGetPneumocat {
   command <<<
     seroba getPneumocat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

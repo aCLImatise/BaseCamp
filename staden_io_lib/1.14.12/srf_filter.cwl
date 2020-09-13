@@ -1,63 +1,67 @@
 class: CommandLineTool
 id: ../../../srf_filter.cwl
 inputs:
-- id: chunk_types_output
-  doc: 'Chunk types to output given as a comma delimited list of types. The following
-    types are allowed: "ALL", "BASE", "CNF1", "CNF4" "SAMP", "SMP4". The default is
-    "ALL".'
-  type: string
+- id: in_chunk_types_given
+  doc: "Chunk types to output given as a comma delimited list of types.\nThe following\
+    \ types are allowed: \"ALL\", \"BASE\", \"CNF1\", \"CNF4\"\n\"SAMP\", \"SMP4\"\
+    .\nThe default is \"ALL\"."
+  type: long
   inputBinding:
     prefix: -c
-- id: sampsmp_mdata_types
-  doc: 'SAMP/SMP4 mdata types to output given as a comma delimited list of types.
-    The following types are allowed: "ALL", "PROC", "SLXI", "SLXN" "0FAM", "1CY3",
-    "2TXR", "3CY5". The default is "ALL".'
-  type: string
+- id: in_sampsmp_mdata_types
+  doc: "SAMP/SMP4 mdata types to output given as a comma delimited list of types.\n\
+    The following types are allowed: \"ALL\", \"PROC\", \"SLXI\", \"SLXN\"\n\"0FAM\"\
+    , \"1CY3\", \"2TXR\", \"3CY5\".\nThe default is \"ALL\"."
+  type: long
   inputBinding:
     prefix: -m
-- id: filter_apply_reads
-  doc: The filter to apply to reads in the archive.  If reads match the filter they
-    are dumped. The filter takes the form of <name>=<value>, where <name> can be "read",
-    "prefix", "file". If the <name> is "read" the value is represents the name of
-    a read to dump.  Only the matching read will be dumped. If the <name> is "prefix"
-    the value is represents the prefix of the name of the reads to dump.  Only the
-    matching reads will be dumped. If the <name> is "file" the value is a file name
-    where any number of "read" and "prefix" name value pairs can be included, one
-    per line. The default is no filter, which means all reads are dumped.
-  type: string
+- id: in_filter_apply_reads
+  doc: "The filter to apply to reads in the archive.  If reads match the\nfilter they\
+    \ are dumped.\nThe filter takes the form of <name>=<value>, where <name> can be\n\
+    \"read\", \"prefix\", \"file\".\nIf the <name> is \"read\" the value is represents\
+    \ the name of a\nread to dump.  Only the matching read will be dumped.\nIf the\
+    \ <name> is \"prefix\" the value is represents the prefix of\nthe name of the\
+    \ reads to dump.  Only the matching reads will be\ndumped.\nIf the <name> is \"\
+    file\" the value is a file name where any\nnumber of \"read\" and \"prefix\" name\
+    \ value pairs can be included,\none per line.\nThe default is no filter, which\
+    \ means all reads are dumped."
+  type: long
   inputBinding:
     prefix: -f
-- id: exclude_bad_reads
+- id: in_exclude_bad_reads
   doc: exclude bad reads using readsFlags bitmask in data block header.
   type: boolean
   inputBinding:
     prefix: -b
-- id: use_option_add
+- id: in_use_option_add
   doc: use this option to add a Illumina-style REGN chunk.
-  type: string
+  type: long
   inputBinding:
     prefix: '-2'
-- id: print_verbose_messages
+- id: in_print_verbose_messages
   doc: Print verbose messages.
   type: boolean
   inputBinding:
     prefix: -v
-- id: var_6
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -C
-- id: o
+- id: in_o
   doc: ''
   type: boolean
   inputBinding:
     prefix: -o
-- id: input
+- id: in_var_7
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -C
+- id: in_input
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - srf_filter

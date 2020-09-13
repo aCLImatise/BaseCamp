@@ -7,9 +7,9 @@ task Metaprokka {
     Boolean? debug
     Boolean? db_dir
     Boolean? list_db
-    Boolean? outdir
-    Boolean? force
-    Boolean? prefix
+    Directory? outdir
+    Directory? force
+    File? prefix
     Boolean? locus_tag
     Boolean? increment
     Boolean? gff_ver
@@ -29,44 +29,42 @@ task Metaprokka {
     Boolean? do_trna
     Boolean? rn_ammer
     Boolean? do_tbl_two_asn
-    String contigs_dot_fast_a
   }
   command <<<
     metaprokka \
-      ~{contigs_dot_fast_a} \
-      ~{true="--citation" false="" citation} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--dbdir" false="" db_dir} \
-      ~{true="--listdb" false="" list_db} \
-      ~{true="--outdir" false="" outdir} \
-      ~{true="--force" false="" force} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="--locustag" false="" locus_tag} \
-      ~{true="--increment" false="" increment} \
-      ~{true="--gffver" false="" gff_ver} \
-      ~{true="--prodigaltf" false="" prodigal_tf} \
-      ~{true="--proteins" false="" proteins} \
-      ~{true="--hmms" false="" hmms} \
-      ~{true="--rawproduct" false="" raw_product} \
-      ~{true="--cdsrnaolap" false="" cds_rna_olap} \
-      ~{true="--evalue" false="" evalue} \
-      ~{true="--coverage" false="" coverage} \
-      ~{true="--cpus" false="" cpus} \
-      ~{true="--fast" false="" fast} \
-      ~{true="--noanno" false="" no_an_no} \
-      ~{true="--mincontiglen" false="" min_conti_glen} \
-      ~{true="--rfam" false="" rf_am} \
-      ~{true="--norrna" false="" no_rrna} \
-      ~{true="--dotrna" false="" do_trna} \
-      ~{true="--rnammer" false="" rn_ammer} \
-      ~{true="--dotbl2asn" false="" do_tbl_two_asn}
+      ~{if (citation) then "--citation" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (db_dir) then "--dbdir" else ""} \
+      ~{if (list_db) then "--listdb" else ""} \
+      ~{if (outdir) then "--outdir" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (locus_tag) then "--locustag" else ""} \
+      ~{if (increment) then "--increment" else ""} \
+      ~{if (gff_ver) then "--gffver" else ""} \
+      ~{if (prodigal_tf) then "--prodigaltf" else ""} \
+      ~{if (proteins) then "--proteins" else ""} \
+      ~{if (hmms) then "--hmms" else ""} \
+      ~{if (raw_product) then "--rawproduct" else ""} \
+      ~{if (cds_rna_olap) then "--cdsrnaolap" else ""} \
+      ~{if (evalue) then "--evalue" else ""} \
+      ~{if (coverage) then "--coverage" else ""} \
+      ~{if (cpus) then "--cpus" else ""} \
+      ~{if (fast) then "--fast" else ""} \
+      ~{if (no_an_no) then "--noanno" else ""} \
+      ~{if (min_conti_glen) then "--mincontiglen" else ""} \
+      ~{if (rf_am) then "--rfam" else ""} \
+      ~{if (no_rrna) then "--norrna" else ""} \
+      ~{if (do_trna) then "--dotrna" else ""} \
+      ~{if (rn_ammer) then "--rnammer" else ""} \
+      ~{if (do_tbl_two_asn) then "--dotbl2asn" else ""}
   >>>
   parameter_meta {
     citation: "Print citation for referencing Prokka"
     quiet: "No screen output (default OFF)"
     debug: "Debug mode: keep all temporary files (default OFF)"
-    db_dir: "[X]        Prokka database root folders (default '/tmp/tmplruwoux2/db')"
+    db_dir: "[X]        Prokka database root folders (default '/usr/local/db')"
     list_db: "List all configured databases"
     outdir: "[X]       Output folder [auto] (default '')"
     force: "Force overwriting existing output folder (default OFF)"
@@ -83,13 +81,18 @@ task Metaprokka {
     coverage: "[n.n]   Minimum coverage on query protein (default '80')"
     cpus: "[N]         Number of CPUs to use [0=all] (default '8')"
     fast: "Fast mode - only use basic BLASTP databases (default OFF)"
-    no_an_no: "For CDS just set /product=\"unannotated protein\" (default OFF)"
+    no_an_no: "For CDS just set /product=\\\"unannotated protein\\\" (default OFF)"
     min_conti_glen: "[N] Minimum contig size [NCBI needs 200] (default '1')"
     rf_am: "Enable searching for ncRNAs with Infernal+Rfam (SLOW!) (default '0')"
     no_rrna: "Don't run rRNA search (default OFF)"
     do_trna: "Run tRNA search (default OFF)"
     rn_ammer: "Prefer RNAmmer over Barrnap for rRNA prediction (default OFF)"
     do_tbl_two_asn: "Run tbl2asn (default OFF)"
-    contigs_dot_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    Directory out_force = "${in_force}"
+    File out_prefix = "${in_prefix}"
   }
 }

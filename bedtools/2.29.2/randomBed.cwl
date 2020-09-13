@@ -1,38 +1,46 @@
 class: CommandLineTool
 id: ../../../randomBed.cwl
 inputs:
-- id: length_generate_default
-  doc: The length of the intervals to generate. - Default = 100. - (INTEGER)
+- id: in_length_generate_default
+  doc: "The length of the intervals to generate.\n- Default = 100.\n- (INTEGER)"
   type: boolean
   inputBinding:
     prefix: -l
-- id: number_generate_default
-  doc: The number of intervals to generate. - Default = 1,000,000. - (INTEGER)
+- id: in_number_generate_default
+  doc: "The number of intervals to generate.\n- Default = 1,000,000.\n- (INTEGER)"
   type: boolean
   inputBinding:
     prefix: -n
-- id: seed
-  doc: Supply an integer seed for the shuffling. - By default, the seed is chosen
-    automatically. - (INTEGER)
+- id: in_seed
+  doc: "Supply an integer seed for the shuffling.\n- By default, the seed is chosen\
+    \ automatically.\n- (INTEGER)"
   type: boolean
   inputBinding:
     prefix: -seed
-- id: g
+- id: in_g
   doc: ''
   type: string
   inputBinding:
     prefix: -g
-- id: bed_tools
-  doc: ''
-  type: string
+- id: in_chr_one
+  doc: '249250621'
+  type: long
   inputBinding:
     position: 0
-- id: random
-  doc: ''
-  type: string
+- id: in_chr_two
+  doc: '243199373'
+  type: long
   inputBinding:
     position: 1
-outputs: []
+- id: in_chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
+  doc: '4262'
+  type: long
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - randomBed

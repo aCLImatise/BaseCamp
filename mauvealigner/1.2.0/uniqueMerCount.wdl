@@ -11,4 +11,7 @@ task UniqueMerCount {
   parameter_meta {
     sorted_mer_list: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

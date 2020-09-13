@@ -1,43 +1,56 @@
 class: CommandLineTool
 id: ../../../repair.cwl
 inputs:
-- id: name_input_file
+- id: in_name_input_file
   doc: Name of input file. BAM format by default.
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: name_output_file
+- id: in_name_output_file
   doc: Name of output file. The output file is in BAM format.
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: input_file_sam
+- id: in_input_file_sam
   doc: The input file is in SAM format.
   type: boolean
   inputBinding:
     prefix: -S
-- id: compress_output_bam
-  doc: Compress the output BAM file. This will reduce the size of BAM file, but will
-    increase the time of retrieving reads from BAM file.
+- id: in_compress_bam_file
+  doc: "Compress the output BAM file. This will reduce the size of BAM\nfile, but\
+    \ will increase the time of retrieving reads from BAM\nfile."
   type: boolean
   inputBinding:
     prefix: -c
-- id: number_cpu_threads
+- id: in_number_cpu_threads
   doc: Number of CPU threads. 8 by default.
   type: long
   inputBinding:
     prefix: -T
-- id: add_dummy_reads
+- id: in_add_dummy_reads
   doc: Do not add dummy reads for singleton reads.
   type: boolean
   inputBinding:
     prefix: -d
-- id: include_sequences_quality
-  doc: Do not include sequences and quality scores of reads in the output file.
-  type: boolean
+- id: in_include_sequences_scores
+  doc: "Do not include sequences and quality scores of reads in the\noutput file.\n"
+  type: File
   inputBinding:
     prefix: -t
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_name_output_file
+  doc: Name of output file. The output file is in BAM format.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_name_output_file)
+- id: out_include_sequences_scores
+  doc: "Do not include sequences and quality scores of reads in the\noutput file.\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_include_sequences_scores)
 cwlVersion: v1.1
 baseCommand:
 - repair

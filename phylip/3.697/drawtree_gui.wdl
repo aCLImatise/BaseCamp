@@ -4,4 +4,7 @@ task DrawtreeGui {
   command <<<
     drawtree_gui
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

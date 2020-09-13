@@ -4,4 +4,7 @@ task Consel {
   command <<<
     consel
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

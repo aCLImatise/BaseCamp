@@ -4,4 +4,7 @@ task Assemblytics {
   command <<<
     Assemblytics
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

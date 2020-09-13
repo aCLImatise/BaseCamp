@@ -2,8 +2,8 @@ version 1.0
 
 task Vcfcat {
   input {
-    File? file_one
-    File? file_two
+    Int? file_one
+    Int? file_two
   }
   command <<<
     vcfcat \
@@ -13,5 +13,8 @@ task Vcfcat {
   parameter_meta {
     file_one: ""
     file_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

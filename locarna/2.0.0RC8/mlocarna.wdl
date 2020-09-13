@@ -2,7 +2,7 @@ version 1.0
 
 task Mlocarna {
   input {
-    String fast_a_file
+    File fast_a_file
   }
   command <<<
     mlocarna \
@@ -10,5 +10,8 @@ task Mlocarna {
   >>>
   parameter_meta {
     fast_a_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

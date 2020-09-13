@@ -4,4 +4,7 @@ task Sonicparanoid {
   command <<<
     sonicparanoid
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Bamcat {
   command <<<
     bamcat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -10,17 +10,21 @@ task Pairaln {
     Int? alignment_penalty_read
     Int? bandwidth
     Boolean? output_alignment
+    String a_aggcc_tt
+    String aag_cctt
   }
   command <<<
     pairaln \
-      ~{true="-s" false="" try_both_strands} \
+      ~{a_aggcc_tt} \
+      ~{aag_cctt} \
+      ~{if (try_both_strands) then "-s" else ""} \
       ~{if defined(alignment_penalty_match) then ("-M " +  '"' + alignment_penalty_match + '"') else ""} \
       ~{if defined(alignment_penalty_mismatch) then ("-X " +  '"' + alignment_penalty_mismatch + '"') else ""} \
       ~{if defined(alignment_penalty_insertion) then ("-O " +  '"' + alignment_penalty_insertion + '"') else ""} \
       ~{if defined(alignment_penalty_gap) then ("-E " +  '"' + alignment_penalty_gap + '"') else ""} \
       ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""} \
       ~{if defined(bandwidth) then ("-W " +  '"' + bandwidth + '"') else ""} \
-      ~{true="-a" false="" output_alignment}
+      ~{if (output_alignment) then "-a" else ""}
   >>>
   parameter_meta {
     try_both_strands: "Try both strands"
@@ -31,5 +35,10 @@ task Pairaln {
     alignment_penalty_read: "Alignment penalty: read end clipping, 0: distable HSP extension, otherwise set to -100 or other [-100]"
     bandwidth: "Bandwidth, [800]"
     output_alignment: "Output alignment"
+    a_aggcc_tt: ">read2"
+    aag_cctt: "and so on, read3, read4, ..."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

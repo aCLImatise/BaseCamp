@@ -1,14 +1,14 @@
 version 1.0
 
-task PyrsaPriv2pub {
+task Pyrsapriv2pub {
   input {
-    String? input_filename_reads
-    String? output_filename_writes
+    File? input_filename_reads
+    File? output_filename_writes
     String? inform
     String? out_form
   }
   command <<<
-    pyrsa-priv2pub \
+    pyrsa_priv2pub \
       ~{if defined(input_filename_reads) then ("--input " +  '"' + input_filename_reads + '"') else ""} \
       ~{if defined(output_filename_writes) then ("--output " +  '"' + output_filename_writes + '"') else ""} \
       ~{if defined(inform) then ("--inform " +  '"' + inform + '"') else ""} \
@@ -19,5 +19,9 @@ task PyrsaPriv2pub {
     output_filename_writes: "Output filename. Writes to stdout of not specified"
     inform: "key format of input - default PEM"
     out_form: "key format of output - default PEM"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_filename_writes = "${in_output_filename_writes}"
   }
 }

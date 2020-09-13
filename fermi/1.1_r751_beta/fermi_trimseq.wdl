@@ -6,9 +6,12 @@ task FermiTrimseq {
   }
   command <<<
     fermi trimseq \
-      ~{true="-N" false="" n}
+      ~{if (n) then "-N" else ""}
   >>>
   parameter_meta {
     n: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

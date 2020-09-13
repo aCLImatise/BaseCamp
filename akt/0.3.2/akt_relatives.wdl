@@ -5,19 +5,23 @@ task AktRelatives {
     Boolean? km_in
     Boolean? its
     Boolean? graph_out
-    Boolean? prefix
+    File? prefix
   }
   command <<<
     akt relatives \
-      ~{true="--kmin" false="" km_in} \
-      ~{true="--its" false="" its} \
-      ~{true="--graphout" false="" graph_out} \
-      ~{true="--prefix" false="" prefix}
+      ~{if (km_in) then "--kmin" else ""} \
+      ~{if (its) then "--its" else ""} \
+      ~{if (graph_out) then "--graphout" else ""} \
+      ~{if (prefix) then "--prefix" else ""}
   >>>
   parameter_meta {
     km_in: ":                     threshold for relatedness (0.05)"
     its: ":                      number of iterations to find unrelated (10)"
     graph_out: ":         if present output pedigree graph files"
     prefix: ":                   output file prefix (out)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_prefix = "${in_prefix}"
   }
 }

@@ -1,24 +1,24 @@
 version 1.0
 
-task UnitigCounter {
+task Unitigcounter {
   input {
     Boolean? gzip
     Boolean? strains
     Boolean? arg_kmer_size
-    Boolean? arg_path_folder
+    File? arg_path_folder
     Boolean? nb_cores
     Boolean? verbose
     Boolean? version
   }
   command <<<
-    unitig-counter \
-      ~{true="-gzip" false="" gzip} \
-      ~{true="-strains" false="" strains} \
-      ~{true="-k" false="" arg_kmer_size} \
-      ~{true="-output" false="" arg_path_folder} \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-version" false="" version}
+    unitig_counter \
+      ~{if (gzip) then "-gzip" else ""} \
+      ~{if (strains) then "-strains" else ""} \
+      ~{if (arg_kmer_size) then "-k" else ""} \
+      ~{if (arg_path_folder) then "-output" else ""} \
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (version) then "-version" else ""}
   >>>
   parameter_meta {
     gzip: "(0 arg) :    Compress unitig output using gzip."
@@ -28,5 +28,9 @@ task UnitigCounter {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"
     version: "(0 arg) :    version"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_arg_path_folder = "${in_arg_path_folder}"
   }
 }

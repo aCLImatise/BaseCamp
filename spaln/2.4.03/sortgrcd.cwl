@@ -1,108 +1,111 @@
 class: CommandLineTool
 id: ../../../sortgrcd.cwl
 inputs:
-- id: cn
+- id: in_cn
   doc: ':    Minimum % of coverage (0-100)'
   type: boolean
   inputBinding:
     prefix: -CN
-- id: en
+- id: in_en
   doc: ':    Report only the best (N=1) or all (N=2) results per gene locus (1)'
   type: boolean
   inputBinding:
     prefix: -EN
-- id: fn
+- id: in_fn
   doc: ':    Filter Level (0 -> 3: no -> stringent)'
   type: boolean
   inputBinding:
     prefix: -FN
-- id: gn
+- id: in_gn
   doc: ':    Genetic code (0: universal)'
   type: boolean
   inputBinding:
     prefix: -GN
-- id: hn
+- id: in_hn
   doc: ':    Minimum spaln score'
   type: boolean
   inputBinding:
     prefix: -HN
-- id: jn
+- id: in_jn
   doc: ':    Minimum ORF length (300)'
   type: boolean
   inputBinding:
     prefix: -JN
-- id: maximum_total_number_missmatches
+- id: in_maximum_total_number_missmatches
   doc: ':    Maximum total number of missmatches'
   type: boolean
   inputBinding:
     prefix: -MN
-- id: maximum_total_number_noncanonical
+- id: in_maximum_total_number_noncanonical
   doc: ':    Maximum total number of non-canonical boundaries'
   type: boolean
   inputBinding:
     prefix: -NN
-- id: on
-  doc: ':    Output format. 0:Gff3, 3:BED, 4:Native, 5:Intron,  6:cDNA, 7:translate,
-    8:CDS, 15:unique intron'
+- id: in_on
+  doc: ":    Output format. 0:Gff3, 3:BED, 4:Native, 5:Intron,\n6:cDNA, 7:translate,\
+    \ 8:CDS, 15:unique intron"
   type: boolean
   inputBinding:
     prefix: -ON
-- id: pn
+- id: in_pn
   doc: ':    Minimum Overall % identity (0-100)'
   type: boolean
   inputBinding:
     prefix: -PN
-- id: maximum_total_number_unpaired
+- id: in_maximum_total_number_unpaired
   doc: ':    Maximum total number of unpaired bases in gaps'
   type: boolean
   inputBinding:
     prefix: -UN
-- id: ln
+- id: in_ln
   doc: ':    Number of residues per line for -O6 or -O7 (60)'
   type: boolean
   inputBinding:
     prefix: -lN
-- id: maximum_allowed_missmatches
+- id: in_maximum_allowed_missmatches
   doc: ':    Maximum allowed missmatches at both exon boundaries'
   type: boolean
   inputBinding:
     prefix: -mN
-- id: allow_noncanonical_boundary
+- id: in__allow_boundary
   doc: ':    allow non-canonical boundary? [0: no; 1: AT-AN; 2: 1bp mismatch; 3: any]'
   type: boolean
   inputBinding:
     prefix: -nN
-- id: maximum_allowed_bases
+- id: in_maximum_allowed_bases
   doc: ':    Maximum allowed unpaired bases in gaps at both exon boundaries'
   type: boolean
   inputBinding:
     prefix: -uN
-- id: gs
+- id: in_gs
   doc: ':    Specify the .grp file name'
   type: boolean
   inputBinding:
     prefix: -gS
-- id: sa
+- id: in_sa
   doc: ':    sort chromosomes in the alphabetical order of identifier (default)'
   type: boolean
   inputBinding:
     prefix: -Sa
-- id: sb
+- id: in_sb
   doc: ':    sort chromosomes in the order of abundance mapped on them'
   type: boolean
   inputBinding:
     prefix: -Sb
-- id: sc
+- id: in_sc
   doc: ':    sort chromosomes in the order of apparence in the genome db'
   type: boolean
   inputBinding:
     prefix: -Sc
-- id: sr
+- id: in_sr
   doc: ':    sort records mapped on minus strand in the reverse order of genomic positions'
   type: boolean
   inputBinding:
     prefix: -Sr
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sortgrcd

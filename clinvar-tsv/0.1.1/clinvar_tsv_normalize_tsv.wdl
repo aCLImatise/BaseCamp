@@ -2,9 +2,9 @@ version 1.0
 
 task ClinvarTsvNormalizeTsv {
   input {
-    String? reference
-    String? input_tsv
-    String? output_tsv
+    File? reference
+    File? input_tsv
+    File? output_tsv
     String clin_var_tsv
     String normalize_tsv
   }
@@ -19,8 +19,12 @@ task ClinvarTsvNormalizeTsv {
   parameter_meta {
     reference: "Path to reference FASTA file"
     input_tsv: "Path to input TSV file."
-    output_tsv: "Path to output TSV file."
+    output_tsv: "Path to output TSV file.\\n"
     clin_var_tsv: ""
     normalize_tsv: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_tsv = "${in_output_tsv}"
   }
 }

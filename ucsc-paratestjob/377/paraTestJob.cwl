@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../paraTestJob.cwl
 inputs:
-- id: crash
+- id: in_crash
   doc: Try to write to NULL when done.
   type: boolean
   inputBinding:
     prefix: -crash
-- id: err
+- id: in_err
   doc: Return -1 error code when done.
   type: boolean
   inputBinding:
     prefix: -err
-- id: output
+- id: in_output
   doc: Make some output in file as well.
   type: File
   inputBinding:
     prefix: -output
-- id: heavy
+- id: in_heavy
   doc: 'Make output heavy: n extra lumberjack lines.'
   type: string
   inputBinding:
     prefix: -heavy
-- id: input
+- id: in_input
   doc: Make it read in a file too.
   type: File
   inputBinding:
     prefix: -input
-- id: sleep
+- id: in_sleep
   doc: Sleep for N seconds.
   type: string
   inputBinding:
     prefix: -sleep
-- id: count
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Make some output in file as well.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - paraTestJob

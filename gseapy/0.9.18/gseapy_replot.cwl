@@ -1,57 +1,60 @@
 class: CommandLineTool
 id: ../../../gseapy_replot.cwl
 inputs:
-- id: in_dir
-  doc: The GSEA desktop results directroy that you want to reproduce the figure
+- id: in_in_dir
+  doc: "The GSEA desktop results directroy that you want to\nreproduce the figure"
   type: string
   inputBinding:
     prefix: --indir
-- id: _outdir_gseapy
-  doc: ', --outdir         The GSEApy output directory. Default: the current working
-    directory'
-  type: boolean
+- id: in__outdir_gseapy
+  doc: ", --outdir         The GSEApy output directory. Default: the current\nworking\
+    \ directory"
+  type: Directory
   inputBinding:
     prefix: -o
-- id: _format_file
-  doc: ", --format         File extensions supported by Matplotlib active backend,\
-    \ choose from {'pdf', 'png', 'jpeg','ps', 'eps','svg'}. Default: 'pdf'."
+- id: in__format_file
+  doc: ", --format         File extensions supported by Matplotlib active\nbackend,\
+    \ choose from {'pdf', 'png', 'jpeg','ps',\n'eps','svg'}. Default: 'pdf'."
   type: boolean
   inputBinding:
     prefix: -f
-- id: fs
-  doc: 'height, --figsize width height The figsize keyword argument need two parameters
-    to define. Default: (6.5, 6)'
-  type: string
+- id: in_fs
+  doc: "height, --figsize width height\nThe figsize keyword argument need two parameters\
+    \ to\ndefine. Default: (6.5, 6)"
+  type: double
   inputBinding:
     prefix: --fs
-- id: graph
+- id: in_graph
   doc: 'Numbers of top graphs produced. Default: 20'
   type: long
   inputBinding:
     prefix: --graph
-- id: no_plot
-  doc: 'Speed up computing by suppressing the plot output.This is useful only if data
-    are interested. Default: False.'
+- id: in_no_plot
+  doc: "Speed up computing by suppressing the plot output.This\nis useful only if\
+    \ data are interested. Default: False."
   type: boolean
   inputBinding:
     prefix: --no-plot
-- id: verbose
-  doc: Increase output verbosity, print out progress of your job
+- id: in_verbose
+  doc: Increase output verbosity, print out progress of your
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: weight
-  doc: 'Weighted_score of rank_metrics. Please Use the same value in GSEA. Choose
-    from (0, 1, 1.5, 2),default: 1'
-  type: double
-  inputBinding:
-    prefix: --weight
-- id: height
-  doc: ''
+- id: in_job
+  doc: -w float, --weight float
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out__outdir_gseapy
+  doc: ", --outdir         The GSEApy output directory. Default: the current\nworking\
+    \ directory"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in__outdir_gseapy)
 cwlVersion: v1.1
 baseCommand:
 - gseapy

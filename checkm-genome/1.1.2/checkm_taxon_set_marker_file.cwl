@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../checkm_taxon_set_marker_file.cwl
 inputs:
-- id: q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -q
-- id: tmpdir
+- id: in_tmpdir
   doc: ''
   type: string
   inputBinding:
     prefix: --tmpdir
-- id: check_m
+- id: in_q
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -q
+- id: in_check_m
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: tax_on_set
+- id: in_tax_on_set
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkm

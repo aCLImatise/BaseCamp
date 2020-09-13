@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../dvipdf.cwl
 inputs:
-- id: options_dot_dot_dot
+- id: in_options_dot_dot_dot
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_dot_dvi
+- id: in_input_dot_dvi
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_dot_pdf
+- id: in_output_dot_pdf
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dvipdf

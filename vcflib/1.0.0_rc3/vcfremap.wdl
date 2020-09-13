@@ -2,8 +2,8 @@ version 1.0
 
 task Vcfremap {
   input {
-    String? ref_window_size
-    String? alt_window_size
+    Int? ref_window_size
+    Int? alt_window_size
     File? reference
     String? match_score
     String? mismatch_score
@@ -12,7 +12,7 @@ task Vcfremap {
     Boolean? entropy_gap_open
     String? repeat_gap_extend
     String? adjust_vcf
-    String? vcf_file
+    File? vcf_file
   }
   command <<<
     vcfremap \
@@ -24,7 +24,7 @@ task Vcfremap {
       ~{if defined(mismatch_score) then ("--mismatch-score " +  '"' + mismatch_score + '"') else ""} \
       ~{if defined(gap_open_penalty) then ("--gap-open-penalty " +  '"' + gap_open_penalty + '"') else ""} \
       ~{if defined(gap_extend_penalty) then ("--gap-extend-penalty " +  '"' + gap_extend_penalty + '"') else ""} \
-      ~{true="--entropy-gap-open" false="" entropy_gap_open} \
+      ~{if (entropy_gap_open) then "--entropy-gap-open" else ""} \
       ~{if defined(repeat_gap_extend) then ("--repeat-gap-extend " +  '"' + repeat_gap_extend + '"') else ""} \
       ~{if defined(adjust_vcf) then ("--adjust-vcf " +  '"' + adjust_vcf + '"') else ""}
   >>>
@@ -40,5 +40,8 @@ task Vcfremap {
     repeat_gap_extend: "penalize non-repeat-unit gaps in repeat sequence"
     adjust_vcf: "supply a new cigar as TAG in the output VCF"
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

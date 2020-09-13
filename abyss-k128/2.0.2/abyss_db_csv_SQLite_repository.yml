@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- abyss-db-csv
+- SQLite_repository
 positional:
 - !Positional
   description: ''
@@ -6,18 +9,17 @@ positional:
   name: table_name
   optional: false
 named: []
-command:
-- abyss-db-csv
-- SQLite_repository
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - abyss-db-csv
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - abyss-db-csv
+    - table_name
     positional:
     - !Positional
       description: ''
@@ -35,11 +37,9 @@ parent: &id002 !Command
       name: table_name
       optional: false
     named: []
-    command:
-    - abyss-db-csv
-    - table_name
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -47,6 +47,8 @@ parent: &id002 !Command
       \ table_name(s)\nabyss-db-csv SQLite_repository --all\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -54,6 +56,7 @@ parent: &id002 !Command
     \ --all\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

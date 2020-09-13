@@ -14,4 +14,7 @@ task ExtendSuperReadsForUniqueKmerNeighbors {
     dir: "*Directory where the super-reads work is done"
     cmdline_parse: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

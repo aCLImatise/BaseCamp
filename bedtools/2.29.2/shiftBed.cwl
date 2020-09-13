@@ -1,57 +1,65 @@
 class: CommandLineTool
 id: ../../../shiftBed.cwl
 inputs:
-- id: shift_base_pairs
-  doc: Shift the BED/GFF/VCF entry -s base pairs. - (Integer) or (Float, e.g. 0.1)
-    if used with -pct.
+- id: in_shift_entry_pairs
+  doc: "Shift the BED/GFF/VCF entry -s base pairs.\n- (Integer) or (Float, e.g. 0.1)\
+    \ if used with -pct."
   type: boolean
   inputBinding:
     prefix: -s
-- id: shift_features_p
-  doc: Shift features on the + strand by -p base pairs. - (Integer) or (Float, e.g.
-    0.1) if used with -pct.
+- id: in_shift_features_p
+  doc: "Shift features on the + strand by -p base pairs.\n- (Integer) or (Float, e.g.\
+    \ 0.1) if used with -pct."
   type: boolean
   inputBinding:
     prefix: -p
-- id: shift_features_m
-  doc: Shift features on the - strand by -m base pairs. - (Integer) or (Float, e.g.
-    0.1) if used with -pct.
+- id: in_shift_features_m
+  doc: "Shift features on the - strand by -m base pairs.\n- (Integer) or (Float, e.g.\
+    \ 0.1) if used with -pct."
   type: boolean
   inputBinding:
     prefix: -m
-- id: pct
-  doc: Define -s, -m and -p as a fraction of the feature's length. E.g. if used on
-    a 1000bp feature, -s 0.50,  will shift the feature 500 bp "upstream".  Default
-    = false.
+- id: in_pct
+  doc: "Define -s, -m and -p as a fraction of the feature's length.\nE.g. if used\
+    \ on a 1000bp feature, -s 0.50,\nwill shift the feature 500 bp \"upstream\". \
+    \ Default = false."
   type: boolean
   inputBinding:
     prefix: -pct
-- id: header
+- id: in_header
   doc: the header from the input file prior to results.
-  type: string
+  type: File
   inputBinding:
     prefix: -header
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-- id: g
+- id: in_g
   doc: ''
   type: string
   inputBinding:
     prefix: -g
-- id: bed_tools
+- id: in_i
   doc: ''
   type: string
+  inputBinding:
+    prefix: -i
+- id: in_chr_one
+  doc: '249250621'
+  type: long
   inputBinding:
     position: 0
-- id: shift
-  doc: ''
-  type: string
+- id: in_chr_two
+  doc: '243199373'
+  type: long
   inputBinding:
     position: 1
-outputs: []
+- id: in_chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
+  doc: '4262'
+  type: long
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - shiftBed

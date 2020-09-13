@@ -11,4 +11,7 @@ task SeqtkRandbase {
   parameter_meta {
     in_dot_fa: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

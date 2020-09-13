@@ -1,166 +1,174 @@
 class: CommandLineTool
 id: ../../../dlcpar.cwl
 inputs:
-- id: stree
+- id: in_stree
   doc: species tree file in newick format
-  type: string
+  type: File
   inputBinding:
     prefix: --stree
-- id: s_map
+- id: in_s_map
   doc: gene to species map
   type: string
   inputBinding:
     prefix: --smap
-- id: l_map
+- id: in_l_map
   doc: gene to locus map (species-specific)
   type: string
   inputBinding:
     prefix: --lmap
-- id: n_samples
+- id: in_n_samples
   doc: 'number of uniform samples (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --nsamples
-- id: input_ext
+- id: in_input_ext
   doc: 'input file extension (default: "")'
-  type: string
+  type: File
   inputBinding:
     prefix: --inputext
-- id: output_ext
+- id: in_output_ext
   doc: 'output file extension (default: ".dlcpar")'
-  type: string
+  type: File
   inputBinding:
     prefix: --outputext
-- id: dup_cost
+- id: in_dup_cost
   doc: 'duplication cost (default: 1.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: --dupcost
-- id: loss_cost
+- id: in_loss_cost
   doc: 'loss cost (default: 1.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: --losscost
-- id: coal_cost
+- id: in_coal_cost
   doc: 'deep coalescence cost (default: 0.5)'
-  type: string
+  type: double
   inputBinding:
     prefix: --coalcost
-- id: no_prescreen
+- id: in_no_prescreen
   doc: set to disable prescreen of locus maps
   type: boolean
   inputBinding:
     prefix: --no_prescreen
-- id: prescreen_min
-  doc: 'prescreen locus maps if min (forward) cost exceeds this value (default: 50)'
-  type: string
+- id: in_prescreen_min
+  doc: "prescreen locus maps if min (forward) cost exceeds\nthis value (default: 50)"
+  type: long
   inputBinding:
     prefix: --prescreen_min
-- id: prescreen_factor
-  doc: 'prescreen locus maps if (forward) cost exceeds this factor * min (forward)
-    cost (default: 10)'
-  type: string
+- id: in_prescreen_factor
+  doc: "prescreen locus maps if (forward) cost exceeds this\nfactor * min (forward)\
+    \ cost (default: 10)"
+  type: long
   inputBinding:
     prefix: --prescreen_factor
-- id: max_loci
-  doc: '=<max # of loci> maximum # of co-existing loci (in each ancestral species),
-    set to -1 for no limit (default: -1)'
+- id: in_max_loci
+  doc: "=<max # of loci>\nmaximum # of co-existing loci (in each ancestral\nspecies),\
+    \ set to -1 for no limit (default: -1)"
   type: boolean
   inputBinding:
     prefix: --max_loci
-- id: max_dups
-  doc: '=<max # of dups> maximum # of duplications (in each ancestral species), set
-    to -1 for no limit (default: 4)'
+- id: in_max_dups
+  doc: "=<max # of dups>\nmaximum # of duplications (in each ancestral species),\n\
+    set to -1 for no limit (default: 4)"
   type: boolean
   inputBinding:
     prefix: --max_dups
-- id: max_losses
-  doc: '=<max # of losses> maximum # of losses (in each ancestral species), set to
-    -1 for no limit (default: 4)'
+- id: in_max_losses
+  doc: "=<max # of losses>\nmaximum # of losses (in each ancestral species), set\n\
+    to -1 for no limit (default: 4)"
   type: boolean
   inputBinding:
     prefix: --max_losses
-- id: allow_both
+- id: in_allow_both
   doc: set to allow duplications on both children
   type: boolean
   inputBinding:
     prefix: --allow_both
-- id: seed
+- id: in_seed
   doc: random number seed
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: output_format
-  doc: '=[dlcpar|dlcoal] specify output format (default: dlcpar)'
+- id: in_output_format
+  doc: "=[dlcpar|dlcoal]\nspecify output format (default: dlcpar)"
   type: boolean
   inputBinding:
     prefix: --output_format
-- id: log
+- id: in_log
   doc: if given, output debugging log
   type: boolean
   inputBinding:
     prefix: --log
-- id: dlc_par
+- id: in_dlc_par
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: is
+- id: in_is
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: a
+- id: in_a
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: phylogenetic
+- id: in_phylogenetic
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: program
+- id: in_program
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: for
+- id: in_for
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: finding
+- id: in_finding
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: the
+- id: in_the
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: most
+- id: in_most
   doc: ''
   type: string
   inputBinding:
     position: 8
-- id: parsimonious
+- id: in_parsimonious
   doc: ''
   type: string
   inputBinding:
     position: 9
-- id: gene
+- id: in_gene
   doc: ''
   type: string
   inputBinding:
     position: 10
-- id: tree
+- id: in_tree
   doc: ''
   type: string
   inputBinding:
     position: 11
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_ext
+  doc: 'output file extension (default: ".dlcpar")'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_ext)
 cwlVersion: v1.1
 baseCommand:
 - dlcpar

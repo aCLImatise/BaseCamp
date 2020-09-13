@@ -1,7 +1,10 @@
 version 1.0
 
-task FilterOrthologs.py {
+task FilterOrthologs {
   command <<<
-    filter_orthologs.py
+    filter_orthologs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

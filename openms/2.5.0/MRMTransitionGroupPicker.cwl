@@ -1,42 +1,50 @@
 class: CommandLineTool
 id: ../../../MRMTransitionGroupPicker.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*        Input file (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -in
-- id: tr
+- id: in_tr
   doc: "*        Transition file ('TraML' or 'csv') (valid formats: 'csv', 'traML')"
   type: File
   inputBinding:
     prefix: -tr
-- id: out
+- id: in_out
   doc: "*       Output file (valid formats: 'featureXML')"
   type: File
   inputBinding:
     prefix: -out
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "*       Output file (valid formats: 'featureXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - MRMTransitionGroupPicker

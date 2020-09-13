@@ -4,4 +4,7 @@ task Paladin {
   command <<<
     paladin
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

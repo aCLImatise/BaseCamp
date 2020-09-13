@@ -20,4 +20,7 @@ task SpacepharerSummarizeresults {
     threads: "Number of CPU-cores used (all by default) [8]"
     verbosity_level_errors: "Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

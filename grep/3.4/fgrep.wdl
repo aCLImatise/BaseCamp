@@ -15,12 +15,12 @@ task Fgrep {
     Boolean? null_data
     Boolean? no_messages
     Boolean? invert_match
-    String? max_count
+    Int? max_count
     Boolean? byte_offset
     Boolean? line_number
     Boolean? line_buffered
-    Boolean? with_filename
-    String? label
+    File? with_filename
+    File? label
     Boolean? only_matching
     Boolean? silent
     String? binary_files
@@ -30,7 +30,7 @@ task Fgrep {
     String? devices
     Boolean? recursive
     Boolean? dereference_recursive
-    String? include
+    File? include
     String? exclude
     File? exclude_from
     String? exclude_dir
@@ -39,64 +39,62 @@ task Fgrep {
     Boolean? count
     Boolean? initial_tab
     Boolean? null
-    String? before_context
-    String? after_context
-    String? context
+    Int? before_context
+    Int? after_context
+    Int? context
     Boolean? num
     Boolean? color
     Boolean? colour
     Boolean? binary
     String grep
-    String? option
   }
   command <<<
     fgrep \
       ~{grep} \
-      ~{option} \
-      ~{true="--extended-regexp" false="" extended_regexp} \
-      ~{true="--fixed-strings" false="" fixed_strings} \
-      ~{true="--basic-regexp" false="" basic_regexp} \
-      ~{true="--perl-regexp" false="" perl_regexp} \
+      ~{if (extended_regexp) then "--extended-regexp" else ""} \
+      ~{if (fixed_strings) then "--fixed-strings" else ""} \
+      ~{if (basic_regexp) then "--basic-regexp" else ""} \
+      ~{if (perl_regexp) then "--perl-regexp" else ""} \
       ~{if defined(regexp) then ("--regexp " +  '"' + regexp + '"') else ""} \
       ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
-      ~{true="--ignore-case" false="" ignore_case} \
-      ~{true="--no-ignore-case" false="" no_ignore_case} \
-      ~{true="--word-regexp" false="" word_regexp} \
-      ~{true="--line-regexp" false="" line_regexp} \
-      ~{true="--null-data" false="" null_data} \
-      ~{true="--no-messages" false="" no_messages} \
-      ~{true="--invert-match" false="" invert_match} \
+      ~{if (ignore_case) then "--ignore-case" else ""} \
+      ~{if (no_ignore_case) then "--no-ignore-case" else ""} \
+      ~{if (word_regexp) then "--word-regexp" else ""} \
+      ~{if (line_regexp) then "--line-regexp" else ""} \
+      ~{if (null_data) then "--null-data" else ""} \
+      ~{if (no_messages) then "--no-messages" else ""} \
+      ~{if (invert_match) then "--invert-match" else ""} \
       ~{if defined(max_count) then ("--max-count " +  '"' + max_count + '"') else ""} \
-      ~{true="--byte-offset" false="" byte_offset} \
-      ~{true="--line-number" false="" line_number} \
-      ~{true="--line-buffered" false="" line_buffered} \
-      ~{true="--with-filename" false="" with_filename} \
+      ~{if (byte_offset) then "--byte-offset" else ""} \
+      ~{if (line_number) then "--line-number" else ""} \
+      ~{if (line_buffered) then "--line-buffered" else ""} \
+      ~{if (with_filename) then "--with-filename" else ""} \
       ~{if defined(label) then ("--label " +  '"' + label + '"') else ""} \
-      ~{true="--only-matching" false="" only_matching} \
-      ~{true="--silent" false="" silent} \
+      ~{if (only_matching) then "--only-matching" else ""} \
+      ~{if (silent) then "--silent" else ""} \
       ~{if defined(binary_files) then ("--binary-files " +  '"' + binary_files + '"') else ""} \
-      ~{true="--text" false="" text} \
-      ~{true="-I" false="" equivalent__binaryfileswithoutmatch} \
+      ~{if (text) then "--text" else ""} \
+      ~{if (equivalent__binaryfileswithoutmatch) then "-I" else ""} \
       ~{if defined(directories) then ("--directories " +  '"' + directories + '"') else ""} \
       ~{if defined(devices) then ("--devices " +  '"' + devices + '"') else ""} \
-      ~{true="--recursive" false="" recursive} \
-      ~{true="--dereference-recursive" false="" dereference_recursive} \
+      ~{if (recursive) then "--recursive" else ""} \
+      ~{if (dereference_recursive) then "--dereference-recursive" else ""} \
       ~{if defined(include) then ("--include " +  '"' + include + '"') else ""} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(exclude_from) then ("--exclude-from " +  '"' + exclude_from + '"') else ""} \
       ~{if defined(exclude_dir) then ("--exclude-dir " +  '"' + exclude_dir + '"') else ""} \
-      ~{true="--files-without-match" false="" files_without_match} \
-      ~{true="--files-with-matches" false="" files_with_matches} \
-      ~{true="--count" false="" count} \
-      ~{true="--initial-tab" false="" initial_tab} \
-      ~{true="--null" false="" null} \
+      ~{if (files_without_match) then "--files-without-match" else ""} \
+      ~{if (files_with_matches) then "--files-with-matches" else ""} \
+      ~{if (count) then "--count" else ""} \
+      ~{if (initial_tab) then "--initial-tab" else ""} \
+      ~{if (null) then "--null" else ""} \
       ~{if defined(before_context) then ("--before-context " +  '"' + before_context + '"') else ""} \
       ~{if defined(after_context) then ("--after-context " +  '"' + after_context + '"') else ""} \
       ~{if defined(context) then ("--context " +  '"' + context + '"') else ""} \
-      ~{true="-NUM" false="" num} \
-      ~{true="--color" false="" color} \
-      ~{true="--colour" false="" colour} \
-      ~{true="--binary" false="" binary}
+      ~{if (num) then "-NUM" else ""} \
+      ~{if (color) then "--color" else ""} \
+      ~{if (colour) then "--colour" else ""} \
+      ~{if (binary) then "--binary" else ""}
   >>>
   parameter_meta {
     extended_regexp: "PATTERNS are extended regular expressions"
@@ -120,11 +118,11 @@ task Fgrep {
     label: "use LABEL as the standard input file name prefix"
     only_matching: "show only nonempty parts of lines that match"
     silent: "suppress all normal output"
-    binary_files: "assume that binary files are TYPE; TYPE is 'binary', 'text', or 'without-match'"
+    binary_files: "assume that binary files are TYPE;\\nTYPE is 'binary', 'text', or 'without-match'"
     text: "equivalent to --binary-files=text"
     equivalent__binaryfileswithoutmatch: "equivalent to --binary-files=without-match"
-    directories: "how to handle directories; ACTION is 'read', 'recurse', or 'skip'"
-    devices: "how to handle devices, FIFOs and sockets; ACTION is 'read' or 'skip'"
+    directories: "how to handle directories;\\nACTION is 'read', 'recurse', or 'skip'"
+    devices: "how to handle devices, FIFOs and sockets;\\nACTION is 'read' or 'skip'"
     recursive: "like --directories=recurse"
     dereference_recursive: "likewise, but follow all symlinks"
     include: "search only files that match GLOB (a file pattern)"
@@ -141,9 +139,12 @@ task Fgrep {
     context: "print NUM lines of output context"
     num: "same as --context=NUM"
     color: "[=WHEN],"
-    colour: "[=WHEN]       use markers to highlight the matching strings; WHEN is 'always', 'never', or 'auto'"
+    colour: "[=WHEN]       use markers to highlight the matching strings;\\nWHEN is 'always', 'never', or 'auto'"
     binary: "do not strip CR characters at EOL (MSDOS/Windows)"
     grep: ""
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_with_filename = "${in_with_filename}"
   }
 }

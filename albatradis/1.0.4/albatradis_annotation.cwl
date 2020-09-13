@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../albatradis_annotation.cwl
 inputs:
-- id: feature_size
+- id: in_feature_size
   doc: 'Feature size (default: 198)'
-  type: string
+  type: long
   inputBinding:
     prefix: --feature_size
-- id: output_file
+- id: in_output_file
   doc: 'Output file (default: output.embl)'
-  type: string
+  type: File
   inputBinding:
     prefix: --outputfile
-- id: verbose
-  doc: 'Print out more information about the analysis while it runs (default: False)'
+- id: in_verbose
+  doc: "Print out more information about the analysis while it\nruns (default: False)"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: debug
+- id: in_debug
   doc: 'Turn on debugging (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-- id: embl_file
+- id: in_embl_file
   doc: Annotation file in EMBL format
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: 'Output file (default: output.embl)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - albatradis-annotation

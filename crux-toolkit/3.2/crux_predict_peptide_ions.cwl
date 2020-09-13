@@ -1,17 +1,10 @@
 class: CommandLineTool
 id: ../../../crux_predict_peptide_ions.cwl
-inputs:
-- id: peptide_sequence
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: charge_state
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crux

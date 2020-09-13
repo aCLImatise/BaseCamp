@@ -4,4 +4,7 @@ task Linx {
   command <<<
     linx
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

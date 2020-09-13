@@ -1,75 +1,78 @@
 class: CommandLineTool
 id: ../../../svtools_genotype.cwl
 inputs:
-- id: input_vcf
+- id: in_input_vcf
   doc: 'VCF input (default: stdin)'
   type: string
   inputBinding:
     prefix: --input_vcf
-- id: output_vcf
+- id: in_output_vcf
   doc: 'output VCF to write (default: stdout)'
   type: string
   inputBinding:
     prefix: --output_vcf
-- id: bam
+- id: in_bam
   doc: BAM or CRAM file
-  type: string
+  type: File
   inputBinding:
     prefix: --bam
-- id: ref_fast_a
-  doc: Indexed reference FASTA file (recommended for reading CRAM files)
-  type: string
+- id: in_ref_fast_a
+  doc: "Indexed reference FASTA file (recommended for reading\nCRAM files)"
+  type: File
   inputBinding:
     prefix: --ref_fasta
-- id: lib_info
+- id: in_lib_info
   doc: create/read JSON file of library information
-  type: string
+  type: File
   inputBinding:
     prefix: --lib_info
-- id: min_aligned
-  doc: minimum number of aligned bases to consider read as evidence [20]
+- id: in_min_aligned
+  doc: "minimum number of aligned bases to consider read as\nevidence [20]"
   type: long
   inputBinding:
     prefix: --min_aligned
-- id: number_pairs_sample
-  doc: number of pairs to sample from BAM file for building insert size distribution
-    [1000000]
+- id: in_number_pairs_sample
+  doc: "number of pairs to sample from BAM file for building\ninsert size distribution\
+    \ [1000000]"
   type: long
   inputBinding:
     prefix: -n
-- id: sum_quals
-  doc: 'add genotyping quality to existing QUAL (default: overwrite QUAL field)'
+- id: in_sum_quals
+  doc: "add genotyping quality to existing QUAL (default:\noverwrite QUAL field)"
   type: boolean
   inputBinding:
     prefix: --sum_quals
-- id: max_reads
-  doc: 'maximum number of reads to assess at any variant (reduces processing time
-    in high-depth regions, default: 10000)'
+- id: in_max_reads
+  doc: "maximum number of reads to assess at any variant\n(reduces processing time\
+    \ in high-depth regions,\ndefault: 10000)"
   type: long
   inputBinding:
     prefix: --max_reads
-- id: max_ci_dist
-  doc: 'maximum size of a confidence interval before 95% CI is used intead (default:
-    1e10)'
+- id: in_max_ci_dist
+  doc: "maximum size of a confidence interval before 95% CI is\nused intead (default:\
+    \ 1e10)"
   type: long
   inputBinding:
     prefix: --max_ci_dist
-- id: split_weight
+- id: in_split_weight
   doc: weight for split reads [1]
   type: double
   inputBinding:
     prefix: --split_weight
-- id: disc_weight
+- id: in_disc_weight
   doc: weight for discordant paired-end reads [1]
   type: double
   inputBinding:
     prefix: --disc_weight
-- id: write_alignment
-  doc: write relevant reads to BAM file
-  type: string
+- id: in_write_alignment
+  doc: "write relevant reads to BAM file\n"
+  type: File
   inputBinding:
     prefix: --write_alignment
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svtools

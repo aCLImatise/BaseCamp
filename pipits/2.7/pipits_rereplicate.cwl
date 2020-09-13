@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../pipits_rereplicate.cwl
 inputs:
-- id: i
+- id: in_i
   doc: '[REQUIRED]'
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: o
+- id: in_o
   doc: '[REQUIRED]'
   type: string
   inputBinding:
     prefix: -o
-- id: uc
+- id: in_uc
   doc: '[REQUIRED] uc file from VSEARCH'
-  type: string
+  type: File
   inputBinding:
     prefix: --uc
-- id: re_replicate
+- id: in_re_replicate
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sequences_dot
+- id: in_sequences_dot
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pipits_rereplicate

@@ -1,14 +1,14 @@
 version 1.0
 
-task GenomedataHistogram {
+task Genomedatahistogram {
   input {
     File? include_coords
-    String? num_bins
+    Int? num_bins
     String gd_archive
     String track_name
   }
   command <<<
-    genomedata-histogram \
+    genomedata_histogram \
       ~{gd_archive} \
       ~{track_name} \
       ~{if defined(include_coords) then ("--include-coords " +  '"' + include_coords + '"') else ""} \
@@ -16,8 +16,11 @@ task GenomedataHistogram {
   >>>
   parameter_meta {
     include_coords: "limit summary to genomic coordinates in FILE"
-    num_bins: "use BINS bins"
+    num_bins: "use BINS bins\\n"
     gd_archive: "genomedata archive"
     track_name: "track name"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task FermiPe2cofq {
   input {
-    String in_one_dot_fq
-    String in_two_dot_fq
+    Int in_one_dot_fq
+    Int in_two_dot_fq
   }
   command <<<
     fermi pe2cofq \
@@ -13,5 +13,8 @@ task FermiPe2cofq {
   parameter_meta {
     in_one_dot_fq: ""
     in_two_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

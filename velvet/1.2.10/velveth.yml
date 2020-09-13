@@ -1,4 +1,6 @@
 !Command
+command:
+- velveth
 positional:
 - !Positional
   description: ': directory name for output files'
@@ -6,10 +8,11 @@ positional:
   name: directory
   optional: false
 - !Positional
-  description: ': EITHER an odd integer (if even, it will be decremented) <= 191 (if
-    above, will be reduced) : OR: m,M,s where m and M are odd integers (if not, they
-    will be decremented) with m < M <= 191 (if above, will be reduced) and s is a
-    step (even number). Velvet will then hash from k=m to k=M with a step of s'
+  description: ": EITHER an odd integer (if even, it will be decremented) <= 191 (if\
+    \ above, will be reduced)\n: OR: m,M,s where m and M are odd integers (if not,\
+    \ they will be decremented) with m < M <= 191 (if above, will be reduced)\nand\
+    \ s is a step (even number). Velvet will then hash from k=m to k=M with a step\
+    \ of s"
   position: 1
   name: hash_length
   optional: false
@@ -18,12 +21,15 @@ positional:
   position: 2
   name: filename
   optional: false
-- !Positional
-  description: '[Both files are picked up by graph, so please leave them there]'
-  position: 0
-  name: directory/Sequences
-  optional: false
 named:
+- !Flag
+  description: -fasta.gz       -fastq.gz       -raw.gz -sam    -bam    -fmtAuto
+  synonyms:
+  - -fasta
+  - -fastq
+  - -raw
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: ': File contains paired reads interleaved in the one file (default)'
   synonyms:
@@ -34,6 +40,46 @@ named:
   description: ': Read 2 separate files for paired reads'
   synonyms:
   - -separate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -short
+  - -shortPaired
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -short2
+  - -shortPaired2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -short3
+  - -shortPaired3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -short4
+  - -shortPaired4
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -longPaired
+  synonyms:
+  - -long
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -reference
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -69,10 +115,9 @@ named:
   - -create_binary
   args: !EmptyFlagArg {}
   optional: true
-command:
-- velveth
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

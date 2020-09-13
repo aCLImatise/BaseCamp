@@ -1,7 +1,10 @@
 version 1.0
 
-task ExpandCurrent {
+task Expandcurrent {
   command <<<
-    expand-current
+    expand_current
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

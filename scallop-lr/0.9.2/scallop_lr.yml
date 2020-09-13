@@ -1,12 +1,92 @@
 !Command
+command:
+- scallop-lr
 positional: []
 named:
 - !Flag
+  description: '<0, 1, 2>                         0: quiet; 1: one line for each graph;
+    2: with details, default: 1'
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<first, second, unstranded>  library type of the sample, default:
+    unstranded'
+  synonyms:
+  - --library_type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'minimum coverage required for a multi-exon transcript, default: 1.01'
+  synonyms:
+  - --min_transcript_coverage
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'minimum coverage required for a single-exon transcript, default: 10'
+  synonyms:
+  - --min_single_exon_coverage
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'default: 50'
+  synonyms:
+  - --min_transcript_length_increase
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'ignore reads with mapping quality less than this value, default: 1'
+  synonyms:
+  - --min_mapping_quality
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum distances required to start a new bundle, default: 50'
+  synonyms:
+  - --min_bundle_gap
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum number of reads required in a bundle, default: 1'
+  synonyms:
+  - --min_num_hits_in_bundle
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum number of spliced reads required for a junction, default:
+    1'
+  synonyms:
+  - --min_splice_hits
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "minimum number of reads with 5'/3' primes required for a boundary,\
+    \ default: 3\n___           ___           ___                                \
+    \       ___           ___\n/  /\\         /  /\\         /  /\\              \
+    \                       /  /\\         /  /\\\n/  /:/_       /  /:/        / \
+    \ /::\\                                   /  /::\\       /  /::\\\n/  /:/ /\\\
+    \     /  /:/        /  /:/\\:\\    ___     ___   ___     ___    /  /:/\\:\\  \
+    \   /  /:/\\:\\\n/  /:/ /::\\   /  /:/  ___   /  /:/~/::\\  /__/\\   /  /\\ /__/\\\
+    \   /  /\\  /  /:/  \\:\\   /  /:/~/:/"
+  synonyms:
+  - --min_boundary_hits
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
   description: ''
   synonyms:
-  - -i
+  - -c
   args: !SimpleFlagArg
-    name: bam-file
+    name: ccs-header-file
   optional: true
 - !Flag
   description: ''
@@ -18,17 +98,26 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -c
+  - -i
   args: !SimpleFlagArg
-    name: ccs-header-file
+    name: bam-file
   optional: true
-command:
-- scallop-lr
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: print usage of Scallop and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print current version of Scallop and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Scallop-LR v0.9.2 (c) 2018 Mingfu Shao, Carl Kingsford, and Carnegie Mellon\
   \ University\n\nUsage: scallop-lr -i <bam-file> -o <gtf-file> -c <ccs-header-file>\
   \ [options]\n\nOptions:\n --help                                      print usage\

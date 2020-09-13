@@ -4,4 +4,7 @@ task Plass {
   command <<<
     plass
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

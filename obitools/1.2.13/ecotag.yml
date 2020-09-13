@@ -1,5 +1,17 @@
 !Command
-positional: []
+command:
+- ecotag
+positional:
+- !Positional
+  description: '> ecotag -d embl_r113  -R ReferenceDB.fasta \'
+  position: 0
+  name: bash
+  optional: false
+- !Positional
+  description: --sort=SORT           Sort output on input sequence tag
+  position: 0
+  name: identification
+  optional: false
 named:
 - !Flag
   description: '> seq_tag.fasta'
@@ -9,6 +21,87 @@ named:
   - -r
   args: !SimpleFlagArg
     name: count
+  optional: true
+- !Flag
+  description: Set logging in debug mode
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: desactivate progress bar
+  synonyms:
+  - --without-progress-bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fasta file containing reference sequences
+  synonyms:
+  - -R
+  - --ref-database
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: minimum identity to consider.
+  synonyms:
+  - -m
+  - --minimum-identity
+  args: !SimpleFlagArg
+    name: identity
+  optional: true
+- !Flag
+  description: minimum identity considered for the assignment circle.
+  synonyms:
+  - --minimum-circle
+  args: !SimpleFlagArg
+    name: identity
+  optional: true
+- !Flag
+  description: "Add in the output CD (complementary data) record to\nexplain identification\
+    \ decision"
+  synonyms:
+  - -x
+  - --explain
+  args: !SimpleFlagArg
+    name: EXPLAIN
+  optional: true
+- !Flag
+  description: Apply a uniq filter on query sequences before
+  synonyms:
+  - -u
+  - --uniq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sort in reverse order (should be used with -S)
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tolerated rate of wrong assignation
+  synonyms:
+  - -E
+  - --errors
+  args: !SimpleFlagArg
+    name: ERROR
+  optional: true
+- !Flag
+  description: Minimum congruent assignation
+  synonyms:
+  - -M
+  - --min-matches
+  args: !SimpleFlagArg
+    name: MINMATCHES
+  optional: true
+- !Flag
+  description: Cache size for the aligment score
+  synonyms:
+  - --cache-size
+  args: !SimpleFlagArg
+    name: SIZE
   optional: true
 - !Flag
   description: ecoPCR taxonomy Database name
@@ -59,7 +152,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fasta nucleic format (including obitools fasta extentions)
+  description: "Input file is in fasta nucleic format (including\nobitools fasta extentions)"
   synonyms:
   - --fasta
   args: !EmptyFlagArg {}
@@ -71,19 +164,19 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fasta format (but more tolerant to format variant)
+  description: "Input file is in fasta format (but more tolerant to\nformat variant)"
   synonyms:
   - --raw-fasta
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in sanger fastq nucleic format (standard fastq)
+  description: "Input file is in sanger fastq nucleic format (standard\nfastq)"
   synonyms:
   - --sanger
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fastq nucleic format produced by solexa sequencer
+  description: "Input file is in fastq nucleic format produced by\nsolexa sequencer"
   synonyms:
   - --solexa
   args: !EmptyFlagArg {}
@@ -119,8 +212,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output sequences in ecopcr database format (sequence records are not
-    printed on standard output)
+  description: "Output sequences in ecopcr database format (sequence\nrecords are\
+    \ not printed on standard output)"
   synonyms:
   - --ecopcrdb-output
   args: !SimpleFlagArg
@@ -132,11 +225,16 @@ named:
   - --uppercase
   args: !EmptyFlagArg {}
   optional: true
-command:
-- ecotag
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: \n:py:mod:`ecotag`: assigns sequences to taxa\n===========================================\n\

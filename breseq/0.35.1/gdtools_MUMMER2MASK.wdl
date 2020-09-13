@@ -2,11 +2,11 @@ version 1.0
 
 task GdtoolsMUMMER2MASK {
   input {
-    String? reference
-    String? output_genome_diff
-    String? padding
-    String? merge
-    String? minimum
+    File? reference
+    File? output_genome_diff
+    Int? padding
+    Int? merge
+    Int? minimum
   }
   command <<<
     gdtools MUMMER2MASK \
@@ -22,5 +22,9 @@ task GdtoolsMUMMER2MASK {
     padding: "Additional padding to add to each end of every MASK region. (DEFAULT=0)"
     merge: "Merge regions if they are within this distance (before adding padding). (DEFAULT=0)"
     minimum: "Minimum size of a region after padding and merging to remain in the MASK list. (DEFAULT=0)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_genome_diff = "${in_output_genome_diff}"
   }
 }

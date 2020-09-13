@@ -1,38 +1,46 @@
 class: CommandLineTool
 id: ../../../taxon_utils_lca_line.cwl
 inputs:
-- id: taxonomy
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_taxonomy
   doc: Taxonomy file  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --taxonomy
-- id: no_lca
+- id: in_no_lca
   doc: File to which write records with no LCA
   type: File
   inputBinding:
     prefix: --no-lca
-- id: only_ranked
-  doc: If set, only taxa that have a rank will be used in the lineageself. This is
-    not advised for lineages such as Viruses, where the top levels have no rank
+- id: in_only_ranked
+  doc: "If set, only taxa that have a rank will be used in\nthe lineageself. This\
+    \ is not advised for lineages\nsuch as Viruses, where the top levels have no rank"
   type: boolean
   inputBinding:
     prefix: --only-ranked
-- id: separator
+- id: in_separator
   doc: separator for taxon_ids (defaults to TAB)
   type: string
   inputBinding:
     prefix: --separator
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - taxon-utils

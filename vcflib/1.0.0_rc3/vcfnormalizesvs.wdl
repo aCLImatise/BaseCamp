@@ -9,12 +9,15 @@ task Vcfnormalizesvs {
   command <<<
     vcfnormalizesvs \
       ~{var_dot_vcf} \
-      ~{true="-r" false="" _reference_reffa} \
-      ~{true="-i" false="" _insertions_insfa}
+      ~{if (_reference_reffa) then "-r" else ""} \
+      ~{if (_insertions_insfa) then "-i" else ""}
   >>>
   parameter_meta {
     _reference_reffa: "/ --reference <ref.fa>   FASTA-format reference genome from which to pull SV sequences."
     _insertions_insfa: "/ --insertions <ins.fa>   FASTA-format insertion sequences, with IDs matching the ALT allele tags in the vcf"
     var_dot_vcf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

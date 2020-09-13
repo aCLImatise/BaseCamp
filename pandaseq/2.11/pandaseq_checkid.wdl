@@ -1,7 +1,10 @@
 version 1.0
 
-task PandaseqCheckid {
+task Pandaseqcheckid {
   command <<<
-    pandaseq-checkid
+    pandaseq_checkid
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

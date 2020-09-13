@@ -1,72 +1,75 @@
 class: CommandLineTool
 id: ../../../last_split8.cwl
 inputs:
-- id: format
+- id: in_format
   doc: 'output format: MAF, MAF+ (default=MAF+)'
   type: string
   inputBinding:
     prefix: --format
-- id: genome
+- id: in_genome
   doc: lastdb genome name
   type: string
   inputBinding:
     prefix: --genome
-- id: direction
+- id: in_direction
   doc: 'RNA direction: 0=reverse, 1=forward, 2=mixed (default=1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --direction
-- id: cis
+- id: in_cis
   doc: cis-splice probability per base (default=0.004)
-  type: string
+  type: double
   inputBinding:
     prefix: --cis
-- id: trans
+- id: in_trans
   doc: trans-splice probability per base (default=1e-05)
-  type: string
+  type: double
   inputBinding:
     prefix: --trans
-- id: mean
+- id: in_mean
   doc: mean of ln[intron length] (default=7)
-  type: string
+  type: long
   inputBinding:
     prefix: --mean
-- id: sdev
+- id: in_sdev
   doc: standard deviation of ln[intron length] (default=1.7)
-  type: string
+  type: long
   inputBinding:
     prefix: --sdev
-- id: mis_map
+- id: in_mis_map
   doc: maximum mismap probability (default=1)
-  type: string
+  type: long
   inputBinding:
     prefix: --mismap
-- id: score
+- id: in_score
   doc: minimum alignment score (default=e OR e+t*ln[100])
   type: long
   inputBinding:
     prefix: --score
-- id: no_split
+- id: in_no_split
   doc: write original, not split, alignments
   type: boolean
   inputBinding:
     prefix: --no-split
-- id: bytes
+- id: in_bytes
   doc: maximum memory (default=8T for split, 8G for spliced)
-  type: string
+  type: long
   inputBinding:
     prefix: --bytes
-- id: verbose
+- id: in_verbose
   doc: be verbose
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: last_alignments_dot_maf
+- id: in_last_alignments_dot_maf
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - last-split8

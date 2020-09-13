@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../bedparse_gtf2bed_gtf.cwl
 inputs:
-- id: extrafields
+- id: in_extrafields
   doc: ''
   type: string
   inputBinding:
     prefix: --extraFields
-- id: bed_parse
+- id: in_bed_parse
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: gtf_two_bed
+- id: in_gtf_two_bed
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedparse

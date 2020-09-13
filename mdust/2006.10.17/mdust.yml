@@ -1,4 +1,6 @@
 !Command
+command:
+- mdust
 positional:
 - !Positional
   description: ''
@@ -7,23 +9,39 @@ positional:
   optional: true
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - -w
-  args: !SimpleFlagArg
-    name: wsize
-  optional: true
-- !Flag
-  description: ''
+  description: "<cut-off> value is 28 (lower values might mask more,\nbut possibly\
+    \ still useful sequence; > 64 will rarely mask poly-triplets)"
   synonyms:
   - -v
   args: !SimpleFlagArg
-    name: cut-off
+    name: default
   optional: true
-command:
-- mdust
+- !Flag
+  description: maximum word size to <wsize> (default 3)
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: set
+  optional: true
+- !Flag
+  description: "fasta output is not disabled by -c, set the masking letter type:\n\
+    N ('N', default), X ('X'), L (make lowercase)"
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: if
+  optional: true
+- !Flag
+  description: "masking coordinates only:\nseq_name, seqlength, mask_start, mask_end\
+    \  (tab delimited)\n"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: output
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

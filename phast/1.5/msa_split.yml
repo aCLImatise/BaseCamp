@@ -1,14 +1,115 @@
 !Command
+command:
+- msa_split
 positional:
 - !Positional
-  description: ''
+  description: msa_split mydata.fa --features conserved.bed --by-category \
   position: 0
-  name: fname
+  name: format.
   optional: false
 named:
 - !Flag
-  description: (For use with --windows or --by-index) Index of frame of reference
-    for split indices.  Default is 1 (1st sequence assumed reference).
+  description: "<win_size,win_overlap>\nSplit the alignment into \"windows\" of size\
+    \ <win_size> bases,\noverlapping by <win_overlap>."
+  synonyms:
+  - --windows
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Not for use with --by-category or --for-features) Try to\npartition\
+    \ at sites between alignment blocks.  Assumes a\nreference sequence alignment,\
+    \ with the first sequence as the\nreference seq (as created by multiz).  Blocks\
+    \ of 30 sites with\ngaps in all sequences but the reference seq are assumed to\n\
+    indicate boundaries between alignment blocks.  Partition\nindices will not be\
+    \ moved more than <radius> sites."
+  synonyms:
+  - --between-blocks
+  - -B
+  args: !SimpleFlagArg
+    name: radius
+  optional: true
+- !Flag
+  description: "(Requires --features) Split by category, as defined by\nannotations\
+    \ file and (optionally) category map (see\n--catmap)"
+  synonyms:
+  - --by-category
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Reverse complement all segments having at least one feature on\nthe\
+    \ reverse strand and none on the positive strand.  For use\nwith --by-group. \
+    \ Can also be used with --by-category to ensure\nall sites in a category are represented\
+    \ in the same strand\norientation."
+  synonyms:
+  - --reverse-compl
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Requires --features) Extract section of alignment\ncorresponding\
+    \ to every feature.  There will be no output for\nregions not covered by features."
+  synonyms:
+  - --for-features
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Requires --features) Split by groups in annotation file,\nas defined\
+    \ by specified tag.  Splits midway between every\npair of consecutive groups.\
+    \  Features will be sorted by group.\nThere should be no overlapping features\
+    \ (see 'refeature\n--unique')."
+  synonyms:
+  - --by-group
+  - -P
+  args: !SimpleFlagArg
+    name: tag
+  optional: true
+- !Flag
+  description: "List of explicit indices at which to split alignment\n(comma-separated).\
+    \  If the list of indices is \"10,20\",\nthen sub-alignments will be output for\
+    \ sites 1-9, 10-19, and\n20-<msa_len>.  Note that the indices are relative to\
+    \ the\ninput alignment, and not necessarily in genomic coordinates."
+  synonyms:
+  - --by-index
+  - -p
+  args: !SimpleFlagArg
+    name: indices
+  optional: true
+- !Flag
+  description: Split alignment equally into specified number of partitions.
+  synonyms:
+  - --npartitions
+  - -n
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: "(For use with --by-category, --by-group, --for-features, or\n--windows)\
+    \ Annotations file.  May be GFF, BED, or genepred\nformat.  Coordinates are assumed\
+    \ to be in the coordinate frame of\nthe first sequence in the alignment (assumed\
+    \ to be the reference\nsequence)."
+  synonyms:
+  - --features
+  - -g
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: "|<string>\n(Optionally use with --by-category) Mapping of feature\
+    \ types\nto category numbers.  Can either give a filename or an\n\"inline\" description\
+    \ of a simple category map, e.g.,\n--catmap \"NCATS = 3 ; CDS 1-3\" or --catmap\
+    \ \"NCATS = 1 ; UTR\n1\"."
+  synonyms:
+  - --catmap
+  - -c
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: "(For use with --windows or --by-index) Index of frame of\nreference\
+    \ for split indices.  Default is 1 (1st sequence\nassumed reference)."
   synonyms:
   - --refidx
   - -d
@@ -16,8 +117,62 @@ named:
     name: frame_index
   optional: true
 - !Flag
-  description: Include only specified sequences in output.  Indicate by  sequence
-    number or name (numbering starts with 1 and is evaluated *after* --order is applied).
+  description: "|PHYLIP|MPM|MAF|SS\nInput alignment file format.  Default is to guess\
+    \ format from\nfile contents."
+  synonyms:
+  - --in-format
+  - -i
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "(For use with --in-format MAF) Name of file containing\nreference\
+    \ sequence, in FASTA format."
+  synonyms:
+  - --refseq
+  - -M
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: "|PHYLIP|MPM|SS\nOutput alignment file format.  Default is FASTA."
+  synonyms:
+  - --out-format
+  - -o
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: Filename root for output files (default "msa_split").
+  synonyms:
+  - --out-root
+  - -r
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "(For use with --features)  Output subsets of features\ncorresponding\
+    \ to subalignments.  Features overlapping\npartition boundaries will be discarded.\
+    \  Not permitted with\n--by-category."
+  synonyms:
+  - --sub-features
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|ANY|<seqno>\nStrip columns in output alignments containing all gaps,\
+    \ any\ngaps, or gaps in the specified sequence (<seqno>; indexing\nbegins with\
+    \ one).  Default is not to strip any columns."
+  synonyms:
+  - --gap-strip
+  - -G
+  args: !SimpleFlagArg
+    name: ALL
+  optional: true
+- !Flag
+  description: "Include only specified sequences in output.  Indicate by\nsequence\
+    \ number or name (numbering starts with 1 and is\nevaluated *after* --order is\
+    \ applied)."
   synonyms:
   - --seqs
   - -l
@@ -32,9 +187,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Change order of rows in alignment to match sequence names specified
-    in name_list.  If a name appears in name_list but not in the alignment, a row
-    of gaps will be inserted.
+  description: "Change order of rows in alignment to match sequence names\nspecified\
+    \ in name_list.  If a name appears in name_list but\nnot in the alignment, a row\
+    \ of gaps will be inserted."
   synonyms:
   - --order
   - -O
@@ -42,8 +197,8 @@ named:
     name: name_list
   optional: true
 - !Flag
-  description: Only output alignments having at least <n> informative sites (sites
-    at which at least two non-gap and non-N gaps are present).
+  description: "Only output alignments having at least <n> informative sites\n(sites\
+    \ at which at least two non-gap and non-N gaps are present)."
   synonyms:
   - --min-informative
   - -I
@@ -51,8 +206,8 @@ named:
     name: n
   optional: true
 - !Flag
-  description: (For use with --by-category) Output sub-alignments for only the specified
-    categories (column-delimited list).
+  description: "(For use with --by-category) Output sub-alignments for only the\n\
+    specified categories (column-delimited list)."
   synonyms:
   - --do-cats
   - -C
@@ -60,12 +215,12 @@ named:
     name: cat_list
   optional: true
 - !Flag
-  description: (for use with --by-category or --out-format SS) Size of tuples of columns
-    to consider in downstream analysis (e.g., with context-dependent phylogenetic
-    models; see 'phyloFit').  With --by-category, insert tuple_size-1 columns of missing
-    data between sites that were not adjacent in the original alignment, to avoid
-    creating artificial context.  With --out-format SS, express sufficient statistics
-    in terms of tuples of specified size.
+  description: "(for use with --by-category or --out-format SS) Size of tuples\nof\
+    \ columns to consider in downstream analysis (e.g., with\ncontext-dependent phylogenetic\
+    \ models; see 'phyloFit').  With\n--by-category, insert tuple_size-1 columns of\
+    \ missing data\nbetween sites that were not adjacent in the original alignment,\n\
+    to avoid creating artificial context.  With --out-format SS,\nexpress sufficient\
+    \ statistics in terms of tuples of specified size."
   synonyms:
   - --tuple-size
   - -T
@@ -73,16 +228,16 @@ named:
     name: tuple_size
   optional: true
 - !Flag
-  description: (For use with --out-format SS)  Suppress the portion of the sufficient
-    statistics concerned with the order in which columns appear.
+  description: "(For use with --out-format SS)  Suppress the portion of the\nsufficient\
+    \ statistics concerned with the order in which columns\nappear."
   synonyms:
   - --unordered-ss
   - -z
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output summary of each output alignment to a file with suffix ".sum"
-    (includes base frequencies and numbers of gapped columns).
+  description: "Output summary of each output alignment to a file with suffix\n\"\
+    .sum\" (includes base frequencies and numbers of gapped columns)."
   synonyms:
   - --summary
   - -S
@@ -95,12 +250,11 @@ named:
   - -q
   args: !EmptyFlagArg {}
   optional: true
-command:
-- msa_split
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: Print this help message.
+  description: "Print this help message.\n"
   synonyms:
   - --help
   - -h

@@ -9,15 +9,15 @@ task FpaDrop {
     Int? length_lower
     Int? length_upper
     String? name_match
-    String? sequence_length_lower
-    String? sequence_length_upper
+    Int? sequence_length_lower
+    Int? sequence_length_upper
   }
   command <<<
     fpa drop \
-      ~{true="--containment" false="" containment} \
-      ~{true="--dovetail" false="" dovetail} \
-      ~{true="--internalmatch" false="" internal_match} \
-      ~{true="--same-name" false="" same_name} \
+      ~{if (containment) then "--containment" else ""} \
+      ~{if (dovetail) then "--dovetail" else ""} \
+      ~{if (internal_match) then "--internalmatch" else ""} \
+      ~{if (same_name) then "--same-name" else ""} \
       ~{if defined(length_lower) then ("--length-lower " +  '"' + length_lower + '"') else ""} \
       ~{if defined(length_upper) then ("--length-upper " +  '"' + length_upper + '"') else ""} \
       ~{if defined(name_match) then ("--name-match " +  '"' + name_match + '"') else ""} \
@@ -34,5 +34,8 @@ task FpaDrop {
     name_match: "Drop mapping where one reads match with regex"
     sequence_length_lower: "Drop mapping where one reads have length lower than value"
     sequence_length_upper: "Drop mapping where one reads have length upper than value"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

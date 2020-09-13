@@ -4,4 +4,7 @@ task ConnectGraph {
   command <<<
     connect_graph
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

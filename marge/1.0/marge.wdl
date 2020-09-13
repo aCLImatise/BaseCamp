@@ -4,4 +4,7 @@ task Marge {
   command <<<
     marge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -18,45 +18,51 @@ task Ccs {
     Boolean? log_level
     Boolean? log_file
     String in_dot_sub_reads_dot_bam_vertical_line_xml
-    String out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml
+    File file
+    String sub_reads
   }
   command <<<
     ccs \
       ~{in_dot_sub_reads_dot_bam_vertical_line_xml} \
-      ~{out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml} \
-      ~{true="--min-passes" false="" min_passes} \
-      ~{true="--min-snr" false="" min_snr} \
-      ~{true="--min-length" false="" min_length} \
-      ~{true="--max-length" false="" max_length} \
-      ~{true="--chunk" false="" chunk} \
-      ~{true="--max-chunks" false="" max_chunks} \
-      ~{true="--model-path" false="" model_path} \
-      ~{true="--model-spec" false="" model_spec} \
-      ~{true="--by-strand" false="" by_strand} \
-      ~{true="--skip-polish" false="" skip_polish} \
-      ~{true="--min-rq" false="" min_rq} \
-      ~{true="--report-file" false="" report_file} \
-      ~{true="--num-threads" false="" num_threads} \
-      ~{true="--log-level" false="" log_level} \
-      ~{true="--log-file" false="" log_file}
+      ~{file} \
+      ~{sub_reads} \
+      ~{if (min_passes) then "--min-passes" else ""} \
+      ~{if (min_snr) then "--min-snr" else ""} \
+      ~{if (min_length) then "--min-length" else ""} \
+      ~{if (max_length) then "--max-length" else ""} \
+      ~{if (chunk) then "--chunk" else ""} \
+      ~{if (max_chunks) then "--max-chunks" else ""} \
+      ~{if (model_path) then "--model-path" else ""} \
+      ~{if (model_spec) then "--model-spec" else ""} \
+      ~{if (by_strand) then "--by-strand" else ""} \
+      ~{if (skip_polish) then "--skip-polish" else ""} \
+      ~{if (min_rq) then "--min-rq" else ""} \
+      ~{if (report_file) then "--report-file" else ""} \
+      ~{if (num_threads) then "--num-threads" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_file) then "--log-file" else ""}
   >>>
   parameter_meta {
-    min_passes: "INT    Minimum number of full-length subreads required to generate CCS for a ZMW. [3]"
-    min_snr: "FLOAT  Minimum SNR of subreads to use for generating CCS [2.5]"
-    min_length: "INT    Minimum draft length before polishing. [10]"
-    max_length: "INT    Maximum draft length before polishing. [50000]"
-    chunk: "STR    Operate on a single chunk. Format i/N, where i in [1,N]. Examples: 3/24 or 9/9"
+    min_passes: "INT    Minimum number of full-length subreads\\nrequired to generate CCS for a ZMW. [3]"
+    min_snr: "FLOAT  Minimum SNR of subreads to use for\\ngenerating CCS [2.5]"
+    min_length: "INT    Minimum draft length before polishing.\\n[10]"
+    max_length: "INT    Maximum draft length before polishing.\\n[50000]"
+    chunk: "STR    Operate on a single chunk. Format i/N,\\nwhere i in [1,N]. Examples: 3/24 or 9/9"
     max_chunks: "Determine maximum number of chunks."
-    model_path: "STR    Path to a chemistry model file or directory containing model files."
-    model_spec: "STR    Name of chemistry or model to use, overriding default selection."
+    model_path: "STR    Path to a chemistry model file or\\ndirectory containing model files."
+    model_spec: "STR    Name of chemistry or model to use,\\noverriding default selection."
     by_strand: "Generate a consensus for each strand."
-    skip_polish: "Only output the initial draft template (faster, less accurate)."
-    min_rq: "FLOAT  Minimum predicted accuracy in [0, 1]. [0.99]"
-    report_file: "FILE   Where to write the results report. [ccs_report.txt]"
-    num_threads: "INT    Number of threads to use, 0 means autodetection. [0]"
-    log_level: "STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]"
+    skip_polish: "Only output the initial draft template\\n(faster, less accurate)."
+    min_rq: "FLOAT  Minimum predicted accuracy in [0, 1].\\n[0.99]"
+    report_file: "FILE   Where to write the results report.\\n[ccs_report.txt]"
+    num_threads: "INT    Number of threads to use, 0 means\\nautodetection. [0]"
+    log_level: "STR    Set log level. Valid choices: (TRACE,\\nDEBUG, INFO, WARN, FATAL). [WARN]"
     log_file: "FILE   Log to a file, instead of stderr."
     in_dot_sub_reads_dot_bam_vertical_line_xml: ""
-    out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml: ""
+    file: ""
+    sub_reads: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

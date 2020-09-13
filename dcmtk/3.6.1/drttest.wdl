@@ -4,4 +4,7 @@ task Drttest {
   command <<<
     drttest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

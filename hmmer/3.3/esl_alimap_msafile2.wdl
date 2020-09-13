@@ -1,13 +1,13 @@
 version 1.0
 
-task EslAlimapMsafile2 {
+task EslalimapMsafile2 {
   input {
     String esl_ali_map
-    String msa_file_one
-    String msa_file_two
+    Int msa_file_one
+    Int msa_file_two
   }
   command <<<
-    esl-alimap msafile2 \
+    esl_alimap msafile2 \
       ~{esl_ali_map} \
       ~{msa_file_one} \
       ~{msa_file_two}
@@ -16,5 +16,8 @@ task EslAlimapMsafile2 {
     esl_ali_map: ""
     msa_file_one: ""
     msa_file_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

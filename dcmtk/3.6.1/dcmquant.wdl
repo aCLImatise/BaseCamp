@@ -2,9 +2,10 @@ version 1.0
 
 task Dcmquant {
   input {
+    Boolean? arguments
     Boolean? _quiet_quiet
-    Boolean? _verbose_verbose
-    Boolean? _debug_debug
+    Boolean? _verbose_details
+    Boolean? _debug_information
     Boolean? ll
     Boolean? lc
     Boolean? _readdataset_read
@@ -24,28 +25,30 @@ task Dcmquant {
     dcmquant \
       ~{dcm_file_in} \
       ~{dcm_file_out} \
-      ~{true="-q" false="" _quiet_quiet} \
-      ~{true="-v" false="" _verbose_verbose} \
-      ~{true="-d" false="" _debug_debug} \
-      ~{true="-ll" false="" ll} \
-      ~{true="-lc" false="" lc} \
-      ~{true="-f" false="" _readdataset_read} \
-      ~{true="-t" false="" _readxferauto_use} \
-      ~{true="--read-xfer-detect" false="" read_xfer_detect} \
-      ~{true="--read-xfer-little" false="" read_xfer_little} \
-      ~{true="--read-xfer-big" false="" read_xfer_big} \
-      ~{true="--read-xfer-implicit" false="" read_xfer_implicit} \
-      ~{true="-F" false="" _writedataset_write} \
-      ~{true="-u" false="" _disablenewvr_disable} \
-      ~{true="-g" false="" _grouplengthremove_always} \
-      ~{true="-e" false="" _lengthundefined_write}
+      ~{if (arguments) then "--arguments" else ""} \
+      ~{if (_quiet_quiet) then "-q" else ""} \
+      ~{if (_verbose_details) then "-v" else ""} \
+      ~{if (_debug_information) then "-d" else ""} \
+      ~{if (ll) then "-ll" else ""} \
+      ~{if (lc) then "-lc" else ""} \
+      ~{if (_readdataset_read) then "-f" else ""} \
+      ~{if (_readxferauto_use) then "-t" else ""} \
+      ~{if (read_xfer_detect) then "--read-xfer-detect" else ""} \
+      ~{if (read_xfer_little) then "--read-xfer-little" else ""} \
+      ~{if (read_xfer_big) then "--read-xfer-big" else ""} \
+      ~{if (read_xfer_implicit) then "--read-xfer-implicit" else ""} \
+      ~{if (_writedataset_write) then "-F" else ""} \
+      ~{if (_disablenewvr_disable) then "-u" else ""} \
+      ~{if (_grouplengthremove_always) then "-g" else ""} \
+      ~{if (_lengthundefined_write) then "-e" else ""}
   >>>
   parameter_meta {
+    arguments: "print expanded command line arguments"
     _quiet_quiet: "--quiet                quiet mode, print no warnings and errors"
-    _verbose_verbose: "--verbose              verbose mode, print processing details"
-    _debug_debug: "--debug                debug mode, print debug information"
-    ll: "--log-level            [l]evel: string constant (fatal, error, warn, info, debug, trace) use level l for the logger"
-    lc: "--log-config           [f]ilename: string use config file f for the logger"
+    _verbose_details: "--verbose              verbose mode, print processing details"
+    _debug_information: "--debug                debug mode, print debug information"
+    ll: "--log-level            [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    lc: "--log-config           [f]ilename: string\\nuse config file f for the logger"
     _readdataset_read: "--read-dataset         read data set without file meta information"
     _readxferauto_use: "=  --read-xfer-auto       use TS recognition (default)"
     read_xfer_detect: "ignore TS specified in the file meta header"
@@ -58,5 +61,8 @@ task Dcmquant {
     _lengthundefined_write: "--length-undefined     write with undefined lengths"
     dcm_file_in: "DICOM input filename to be converted"
     dcm_file_out: "DICOM output filename to be written"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

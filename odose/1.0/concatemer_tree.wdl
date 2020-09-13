@@ -1,7 +1,10 @@
 version 1.0
 
-task ConcatemerTree.py {
+task ConcatemerTree {
   command <<<
-    concatemer_tree.py
+    concatemer_tree
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

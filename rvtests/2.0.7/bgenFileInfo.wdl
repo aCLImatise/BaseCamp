@@ -7,11 +7,14 @@ task BgenFileInfo {
   }
   command <<<
     bgenFileInfo \
-      ~{true="--inBgen" false="" in_bg_en} \
-      ~{true="--inSample" false="" in_sample}
+      ~{if (in_bg_en) then "--inBgen" else ""} \
+      ~{if (in_sample) then "--inSample" else ""}
   >>>
   parameter_meta {
     in_bg_en: ": Input BGEN File"
     in_sample: ": Input Sample File"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

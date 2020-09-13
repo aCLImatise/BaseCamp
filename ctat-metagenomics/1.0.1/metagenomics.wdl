@@ -2,9 +2,9 @@ version 1.0
 
 task Metagenomics {
   input {
-    String? threads
+    Int? threads
     String? format
-    String? num_primary_assign
+    Int? num_primary_assign
     String? index
     String? read_type
     String? right_fq
@@ -23,13 +23,16 @@ task Metagenomics {
       ~{if defined(unpaired_reads) then ("--unpaired_reads " +  '"' + unpaired_reads + '"') else ""}
   >>>
   parameter_meta {
-    threads: "Launch NTHREADS parallel search threads - default: 1 (default: 1)"
+    threads: "Launch NTHREADS parallel search threads - default: 1\\n(default: 1)"
     format: "Choose format (default: fastq)"
-    num_primary_assign: "It searches for at most <int> distinct, primary assignments for each read or pair.Default=5 (default: 1)"
-    index: "The basename of the index for the reference genomes (default: None)"
-    read_type: "Choose read type, skip if using Trinity assembles reads (default: paired)"
-    right_fq: "Right_fq (only when fastq format is used for read_type paired) (default: None)"
-    left_fq: "Left_fq (only when fastq format is used for read_type paired) (default: None)"
-    unpaired_reads: "Comma-separated list of files containing unpaired reads to be aligned (for Trinity runs and single end reads) (default: None)"
+    num_primary_assign: "It searches for at most <int> distinct, primary\\nassignments for each read or pair.Default=5 (default:\\n1)"
+    index: "The basename of the index for the reference genomes\\n(default: None)"
+    read_type: "Choose read type, skip if using Trinity assembles\\nreads (default: paired)"
+    right_fq: "Right_fq (only when fastq format is used for read_type\\npaired) (default: None)"
+    left_fq: "Left_fq (only when fastq format is used for read_type\\npaired) (default: None)"
+    unpaired_reads: "Comma-separated list of files containing unpaired\\nreads to be aligned (for Trinity runs and single end\\nreads) (default: None)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

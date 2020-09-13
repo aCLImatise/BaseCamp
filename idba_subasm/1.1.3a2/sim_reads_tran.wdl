@@ -2,11 +2,11 @@ version 1.0
 
 task SimReadsTran {
   input {
-    String? error_rate
-    String? read_length
+    Float? error_rate
+    Int? read_length
     Boolean? paired
-    String? sd
-    String? insert_distance
+    Int? sd
+    Int? insert_distance
     String ref_dot_fa
     String reads_dot_fa
   }
@@ -16,7 +16,7 @@ task SimReadsTran {
       ~{reads_dot_fa} \
       ~{if defined(error_rate) then ("--error_rate " +  '"' + error_rate + '"') else ""} \
       ~{if defined(read_length) then ("--read_length " +  '"' + read_length + '"') else ""} \
-      ~{true="--paired" false="" paired} \
+      ~{if (paired) then "--paired" else ""} \
       ~{if defined(sd) then ("--sd " +  '"' + sd + '"') else ""} \
       ~{if defined(insert_distance) then ("--insert_distance " +  '"' + insert_distance + '"') else ""}
   >>>
@@ -28,5 +28,8 @@ task SimReadsTran {
     insert_distance: "(=500)       insert distance"
     ref_dot_fa: ""
     reads_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

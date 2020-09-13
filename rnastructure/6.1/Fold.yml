@@ -1,4 +1,6 @@
 !Command
+command:
+- Fold
 positional:
 - !Positional
   description: ''
@@ -10,14 +12,312 @@ positional:
   position: 1
   name: CT file
   optional: false
-named: []
-command:
-- Fold
+named:
+- !Flag
+  description: "Specify that the sequence is DNA, and DNA parameters are to be used.\n\
+    Default is to use RNA parameters."
+  synonyms:
+  - -d
+  - -D
+  - --DNA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that coaxial stacking recusions should not be used. This option\n\
+    uses a less realistic energy function in exchange for a faster\ncalculation."
+  synonyms:
+  - --disablecoax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write the predicted structure in dot-bracket notation (DBN) instead\
+    \ of CT\nformat."
+  synonyms:
+  - -k
+  - --bracket
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that only the minimum free energy structure is needed.\nNo\
+    \ savefiles can be generated.\nThis saves nearly half the calculation time, but\
+    \ provides less\ninformation."
+  synonyms:
+  - -mfe
+  - -MFE
+  - --MFE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Suppress unnecessary output. This option is implied when the output\
+    \ file is\n'-' (STDOUT)."
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that the O(N^3) internal loop search should be used. This\
+    \ speeds up\nthe calculation if large internal loops are allowed using the -l\
+    \ option."
+  synonyms:
+  - -y
+  - -Y
+  - --simple_iloops
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of a folding alphabet and associated nearest neighbor\n\
+    parameters. The alphabet is the prefix for the thermodynamic parameter\nfiles,\
+    \ e.g. \"rna\" for RNA parameters or \"dna\" for DNA parameters or a\ncustom extended/modified\
+    \ alphabet. The thermodynamic parameters need to\nreside in the at the location\
+    \ indicated by environment variable DATAPATH.\nThe default is \"rna\" (i.e. use\
+    \ RNA parameters). This option overrides the\n--DNA flag."
+  synonyms:
+  - -a
+  - --alphabet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the number of bootstrap iterations to be done to retrieve\
+    \ base pair\nconfidence.\nDefaults to no bootstrapping."
+  synonyms:
+  - -boot
+  - -B
+  - --bootstrap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a constraints file to be applied.\nDefault is to have no constraints\
+    \ applied."
+  synonyms:
+  - -c
+  - -C
+  - --constraint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a CMCT constraints file to be applied. These constraints are\n\
+    pseudoenergy constraints.\nDefault is to have no constraints applied."
+  synonyms:
+  - -cmct
+  - -CMC
+  - --CMCT
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a DMS restraints file to be applied. These restraints are\n\
+    pseudoenergy constraints.\nDefault is to have no restraints applied."
+  synonyms:
+  - -dms
+  - -DMS
+  - --DMS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a differential SHAPE restraints file to be applied. These\n\
+    constraints are pseudoenergy restraints.\nDefault is to have no restraints applied."
+  synonyms:
+  - -dsh
+  - -DSH
+  - --DSHAPE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a slope used with differential SHAPE restraints.\nDefault\
+    \ is 2.11 kcal/mol."
+  synonyms:
+  - -dsm
+  - -DSM
+  - --DSHAPEslope
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a double-stranded offset file, which adds energy bonuses to\n\
+    particular double-stranded nucleotides.\nDefault is to have no double-stranded\
+    \ offset specified."
+  synonyms:
+  - -dso
+  - -DSO
+  - --doubleOffset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a maximum internal/bulge loop size.\nDefault is 30 unpaired\
+    \ numcleotides."
+  synonyms:
+  - -l
+  - -L
+  - --loop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a maximum number of structures.\nDefault is 20 structures."
+  synonyms:
+  - -m
+  - -M
+  - --maximum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a maximum pairing distance between nucleotides.\nDefault is\
+    \ no restriction on distance between pairs."
+  synonyms:
+  - -md
+  - -MD
+  - --maxdistance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a name for the sequence. This will override the name in the\n\
+    sequence file."
+  synonyms:
+  - --name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a maximum percent energy difference.\nDefault is 10 percent\
+    \ (specified as 10, not 0.1)."
+  synonyms:
+  - -p
+  - -P
+  - --percent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of a save file, needed for dotplots and refolding.\n\
+    Default is not to generate a save file."
+  synonyms:
+  - -s
+  - -S
+  - --save
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a SHAPE restraints file to be applied. These constraints are\n\
+    pseudoenergy restraints.\nDefault is to have no restraints applied."
+  synonyms:
+  - -sh
+  - -SH
+  - --SHAPE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify an intercept used with SHAPE restraints.\nDefault is -0.6\
+    \ kcal/mol."
+  synonyms:
+  - -si
+  - -SI
+  - --SHAPEintercept
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a slope used with SHAPE renstraints.\nDefault is 1.8 kcal/mol."
+  synonyms:
+  - -sm
+  - -SM
+  - --SHAPEslope
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a single-stranded offset file, which adds energy bonuses to\n\
+    particular single-stranded nucleotides.\nDefault is to have no single-stranded\
+    \ offset specified."
+  synonyms:
+  - -sso
+  - -SSO
+  - --singleOffset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the temperature at which calculation takes place in Kelvin.\n\
+    Default is 310.15 K, which is 37 degrees C."
+  synonyms:
+  - -t
+  - -T
+  - --temperature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify an intercept used with unpaired SHAPE constraints.\nDefault\
+    \ is 0 kcal/mol."
+  synonyms:
+  - -usi
+  - -USI
+  - --unpairedSHAPEintercept
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a slope used with unpaired SHAPE constraints.\nDefault is\
+    \ 0 kcal/mol."
+  synonyms:
+  - -usm
+  - -USM
+  - --unpairedSHAPEslope
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a window size.\nDefault is determined by the length of the\
+    \ sequence."
+  synonyms:
+  - -w
+  - -W
+  - --window
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set the behavior for non-critical warnings (e.g. related to invalid\n\
+    nucleotide positions or duplicate data points in SHAPE data). Valid values\nare:\n\
+    * on  -- Warnings are written to standard output. (default)\n* err -- Warnings\
+    \ are sent to STDERR. This can be used in automated scripts\netc to detect problems.\n\
+    * off -- Do not display warnings at all (not recommended)."
+  synonyms:
+  - --warnings
+  - --warn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input text file with bonuses (in kcal) as a matrix. As with SHAPE,\
+    \ bonuses\nwill be applied twice to internal base pairs, once to edge base pairs,\
+    \ and\nnot at all to single stranded regions.\nDefault is no experimental pair\
+    \ bonus file specified."
+  synonyms:
+  - -x
+  - -X
+  - --experimentalPairBonus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify an intercept (overall offset) to use with the 2D experimental\
+    \ pair\nbonus file.\nDefault is 0.0 (no change to input bonuses)."
+  synonyms:
+  - -xo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a number to multiply the experimental pair bonus matrix by.\n\
+    Default is 1.0 (no change to input bonuses).\n"
+  synonyms:
+  - -xs
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: Fold <sequence file> <CT file> [options]\nAll flags are case-insensitive,\
   \ and grouping of flags is not allowed.\n\n=============================\n==== Required\
   \ Parameters ====\n=============================\n<sequence file>\n    The name\

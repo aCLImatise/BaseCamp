@@ -11,4 +11,7 @@ task GtfJuncs {
   parameter_meta {
     transcripts_dot_gtf: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

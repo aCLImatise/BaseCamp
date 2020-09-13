@@ -2,8 +2,8 @@ version 1.0
 
 task PdbVariants {
   input {
-    String? config
-    String? output_mutations_list_txt
+    File? config
+    File? output_mutations_list_txt
   }
   command <<<
     pdb_variants \
@@ -12,6 +12,10 @@ task PdbVariants {
   >>>
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
-    output_mutations_list_txt: "Output variants list text file name"
+    output_mutations_list_txt: "Output variants list text file name\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_mutations_list_txt = "${in_output_mutations_list_txt}"
   }
 }

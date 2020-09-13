@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../extract_seq.cwl
 inputs:
-- id: name_write_sequence
+- id: in_name_write_sequence
   doc: Name of output file to write sequence to
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: sequence_name_extract
+- id: in_sequence_name_extract
   doc: Sequence name to extract
   type: string
   inputBinding:
     prefix: -s
-- id: do_remove_gaps
+- id: in_do_remove_gaps
   doc: Do not remove gaps
   type: boolean
   inputBinding:
     prefix: -g
-- id: msa_file
+- id: in_msa_file
   doc: file containing MSA
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_name_write_sequence
+  doc: Name of output file to write sequence to
+  type: File
+  outputBinding:
+    glob: $(inputs.in_name_write_sequence)
 cwlVersion: v1.1
 baseCommand:
 - extract_seq

@@ -1,17 +1,17 @@
 version 1.0
 
-task CruxExtractColumns {
+task CruxExtractcolumns {
   input {
-    String tsv_file
-    String column_names
+    File tsv_file
   }
   command <<<
-    crux extract-columns \
-      ~{tsv_file} \
-      ~{column_names}
+    crux extract_columns \
+      ~{tsv_file}
   >>>
   parameter_meta {
     tsv_file: ""
-    column_names: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

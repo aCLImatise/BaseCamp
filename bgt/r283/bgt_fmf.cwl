@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../bgt_fmf.cwl
 inputs:
-- id: load_entire_fmf
+- id: in_load_entire_fmf
   doc: load the entire FMF into RAM
   type: boolean
   inputBinding:
     prefix: -m
-- id: only_output_name
+- id: in_only_output_name
   doc: only output the row name (the 1st column)
   type: boolean
   inputBinding:
     prefix: -n
-- id: mn
+- id: in_mn
   doc: ''
   type: boolean
   inputBinding:
     prefix: -mn
-- id: fmf
+- id: in_fmf
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_dot_fmf
+- id: in_in_dot_fmf
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: condition
+- id: in_condition
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bgt

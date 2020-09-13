@@ -1,7 +1,10 @@
 version 1.0
 
-task ImfusionBuild {
+task Imfusionbuild {
   command <<<
-    imfusion-build
+    imfusion_build
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

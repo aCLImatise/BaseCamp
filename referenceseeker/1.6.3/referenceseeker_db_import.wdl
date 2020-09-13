@@ -2,10 +2,10 @@ version 1.0
 
 task ReferenceseekerDbImport {
   input {
-    String? db
-    String? genome
+    File? db
+    File? genome
     String? id
-    String? taxonomy
+    Int? taxonomy
     String? status
     String? organism
   }
@@ -21,9 +21,12 @@ task ReferenceseekerDbImport {
   parameter_meta {
     db: "ReferenceSeeker database path"
     genome: "Genome path [Fasta, GenBank, EMBL]"
-    id: "Unique genome identifier (default sequence id of first record)"
+    id: "Unique genome identifier (default sequence id of first\\nrecord)"
     taxonomy: "Taxonomy ID (default = 12908 [unclassified sequences])"
     status: "Assembly level (default = contig)"
-    organism: "Organism name (default = \"\")"
+    organism: "Organism name (default = \\\"\\\")\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

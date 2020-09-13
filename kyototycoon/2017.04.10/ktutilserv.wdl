@@ -2,22 +2,37 @@ version 1.0
 
 task Ktutilserv {
   input {
+    Int? th
+    Int? tout
+    Int? port
     String? host
-    String? port
-    String? tout
     String echo
+    String http
+    String mt_echo
+    String rpc
   }
   command <<<
     ktutilserv \
       ~{echo} \
-      ~{if defined(host) then ("-host " +  '"' + host + '"') else ""} \
+      ~{http} \
+      ~{mt_echo} \
+      ~{rpc} \
+      ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
+      ~{if defined(tout) then ("-tout " +  '"' + tout + '"') else ""} \
       ~{if defined(port) then ("-port " +  '"' + port + '"') else ""} \
-      ~{if defined(tout) then ("-tout " +  '"' + tout + '"') else ""}
+      ~{if defined(host) then ("-host " +  '"' + host + '"') else ""}
   >>>
   parameter_meta {
-    host: ""
-    port: ""
+    th: ""
     tout: ""
+    port: ""
+    host: ""
     echo: ""
+    http: ""
+    mt_echo: ""
+    rpc: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

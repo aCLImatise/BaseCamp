@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../select_for_randfold.pl.orig.cwl
+id: ../../../select_for_randfold.pl.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- select_for_randfold.pl.orig
+- select_for_randfold.pl

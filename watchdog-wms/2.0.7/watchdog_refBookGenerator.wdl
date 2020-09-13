@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogRefBookGenerator {
+task WatchdogrefBookGenerator {
   command <<<
-    watchdog-refBookGenerator
+    watchdog_refBookGenerator
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

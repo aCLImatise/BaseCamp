@@ -4,4 +4,7 @@ task Rop {
   command <<<
     rop
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

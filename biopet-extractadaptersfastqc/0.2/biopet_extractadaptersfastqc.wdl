@@ -1,30 +1,30 @@
 version 1.0
 
-task BiopetExtractadaptersfastqc {
+task Biopetextractadaptersfastqc {
   input {
     String? log_level
-    String? input_file
-    String? adapter_output_file
-    String? contam_soutputfile
+    File? input_file
+    File? adapter_output_file
+    File? contam_soutputfile
     Boolean? skip_contam_s
-    String? known_contam_file
-    String? known_adapter_file
-    String? adapter_cut_off
+    File? known_contam_file
+    File? known_adapter_file
+    Float? adapter_cut_off
     Boolean? output_as_fast_a
     String extract_adapters_fast_qc
   }
   command <<<
-    biopet-extractadaptersfastqc \
+    biopet_extractadaptersfastqc \
       ~{extract_adapters_fast_qc} \
       ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""} \
       ~{if defined(input_file) then ("--inputFile " +  '"' + input_file + '"') else ""} \
       ~{if defined(adapter_output_file) then ("--adapterOutputFile " +  '"' + adapter_output_file + '"') else ""} \
       ~{if defined(contam_soutputfile) then ("--contamsOutputFile " +  '"' + contam_soutputfile + '"') else ""} \
-      ~{true="--skipContams" false="" skip_contam_s} \
+      ~{if (skip_contam_s) then "--skipContams" else ""} \
       ~{if defined(known_contam_file) then ("--knownContamFile " +  '"' + known_contam_file + '"') else ""} \
       ~{if defined(known_adapter_file) then ("--knownAdapterFile " +  '"' + known_adapter_file + '"') else ""} \
       ~{if defined(adapter_cut_off) then ("--adapterCutoff " +  '"' + adapter_cut_off + '"') else ""} \
-      ~{true="--outputAsFasta" false="" output_as_fast_a}
+      ~{if (output_as_fast_a) then "--outputAsFasta" else ""}
   >>>
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
@@ -37,5 +37,11 @@ task BiopetExtractadaptersfastqc {
     adapter_cut_off: "The fraction of the adapters in a read should be above this fraction, default is 0.001"
     output_as_fast_a: "Output in fasta format, default only sequences"
     extract_adapters_fast_qc: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_input_file = "${in_input_file}"
+    File out_adapter_output_file = "${in_adapter_output_file}"
+    File out_contam_soutputfile = "${in_contam_soutputfile}"
   }
 }

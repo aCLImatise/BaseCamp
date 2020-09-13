@@ -4,4 +4,7 @@ task PIPmiR {
   command <<<
     PIPmiR
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

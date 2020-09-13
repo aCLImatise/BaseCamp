@@ -9,6 +9,9 @@ task Umitools {
       ~{subcommand}
   >>>
   parameter_meta {
-    subcommand: "See https://github.com/weng-lab/umitools for more information. For UMI RNA-seq: First, use umitools reformat_fastq to identify UMIs in UMI RNA-seq. Then, use umitools mark_duplicates to mark PCR duplicates. For UMI small RNA-seq: Use umitools reformat_sra_fastq to identify UMIs and PCR duplicates. To simulate UMIs, use umitools simulate."
+    subcommand: "See https://github.com/weng-lab/umitools for more information.\\nFor UMI RNA-seq: First, use umitools reformat_fastq to identify\\nUMIs in UMI RNA-seq. Then, use umitools mark_duplicates to mark\\nPCR duplicates. For UMI small RNA-seq: Use umitools\\nreformat_sra_fastq to identify UMIs and PCR duplicates. To\\nsimulate UMIs, use umitools simulate."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

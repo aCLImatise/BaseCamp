@@ -1,37 +1,64 @@
 class: CommandLineTool
 id: ../../../sequenceDiversity.cwl
 inputs:
-- id: target
-  doc: ''
-  type: string
+- id: in_version
+  doc: ': v1.0.0-rc0-349-g45c6-dirty'
+  type: boolean
   inputBinding:
-    prefix: --target
-- id: one_dot
+    prefix: -Version
+- id: in_contact
+  doc: ': zev.kronenberg [at] gmail.com'
+  type: boolean
+  inputBinding:
+    prefix: -Contact
+- id: in_notes
+  doc: ': If you find a bug, please open a report on github!'
+  type: boolean
+  inputBinding:
+    prefix: -Notes
+- id: in_support
+  doc: ': Please post questions to biostars.org'
+  type: boolean
+  inputBinding:
+    prefix: -Support
+- id: in_contribution
+  doc: ":\nZev Kronenberg (UW Genome Sciences)\nMark Yandell   (UU Human genetics)\n\
+    Mike Shapiro   (UU Biology)\nEJ Osborne     (UU Human genetics)\nBrett Kennedy\
+    \  (UU Human genetics)\nDaniel Ence    (UU Human genetics)\nErik Garrison  (Wellcome\
+    \ Trust Sanger Institute)\nTravis Collier (UC Davis)\n-     Your name goes here\
+    \       -'"
+  type: boolean
+  inputBinding:
+    prefix: -Contribution
+- id: in_one_dot
   doc: seqid
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: two_dot
+- id: in_two_dot
   doc: start of window
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: three_dot
+- id: in_three_dot
   doc: 'end of window  '
-  type: string
+  type: long
   inputBinding:
     position: 2
-- id: four_dot
+- id: in_four_dot
   doc: 'pi             '
-  type: string
+  type: long
   inputBinding:
     position: 3
-- id: five_dot
+- id: in_five_dot
   doc: 'eHH            '
-  type: string
+  type: long
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sequenceDiversity

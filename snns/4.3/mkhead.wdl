@@ -4,4 +4,7 @@ task Mkhead {
   command <<<
     mkhead
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

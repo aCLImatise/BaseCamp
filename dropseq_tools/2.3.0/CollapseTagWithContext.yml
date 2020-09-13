@@ -1,5 +1,30 @@
 !Command
-positional: []
+command:
+- CollapseTagWithContext
+positional:
+- !Positional
+  description: 'OUT_TAG=String                The output tag for the newly collapsed
+    tag values  Required. '
+  position: 0
+  name: value.
+  optional: false
+- !Positional
+  description: For example, if your context tags were cell and gene and you were collapsing
+    UMI
+  position: 0
+  name: counts.
+  optional: false
+- !Positional
+  description: MUTATIONAL_COLLAPSE=Boolean   Instead of using the default fixed edit
+    distance, use a mutational collapse strategy.  For
+  position: 0
+  name: value.
+  optional: false
+- !Positional
+  description: "Default value: false. This option can be set to 'null' to clear the"
+  position: 0
+  name: EDIT_DISTANCE.
+  optional: false
 named:
 - !Flag
   description: (default 4g)
@@ -15,15 +40,43 @@ named:
   args: !SimpleFlagArg
     name: echo
   optional: true
-command:
-- CollapseTagWithContext
+- !Flag
+  description: Displays options specific to this tool.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --stdhelp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
-help_text: "USAGE: /tmp/tmpq7xcnqce/bin/CollapseTagWithContext [-m <jvm_heap_size>]\
-  \ [-v] program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: /usr/local/bin/CollapseTagWithContext [-m <jvm_heap_size>] [-v]\
+  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
   \ command line before executing\n\nProgram options:\nUSAGE: CollapseTagWithContext\
   \ [options]\n\nCollapse set of barcodes that all share the same BAM tags.  For example,\
   \ collapse all UMIs that have the same cell,\ngene, and gene strand tags.  This\

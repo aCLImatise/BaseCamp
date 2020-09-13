@@ -7,10 +7,9 @@ task FastsparBootstrap {
     String? p_slash_prefix
     Int? threads
     Int? seed
-    Boolean? _version_display
-    File? otu_table
+    Boolean? _versiondisplay_version
     Int? number
-    String? prefix
+    File? otu_table
     String bootstraps
   }
   command <<<
@@ -21,10 +20,9 @@ task FastsparBootstrap {
       ~{if defined(p_slash_prefix) then ("-p/--prefix " +  '"' + p_slash_prefix + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-v" false="" _version_display} \
-      ~{if defined(otu_table) then ("--otu_table " +  '"' + otu_table + '"') else ""} \
+      ~{if (_versiondisplay_version) then "-v" else ""} \
       ~{if defined(number) then ("--number " +  '"' + number + '"') else ""} \
-      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
+      ~{if defined(otu_table) then ("--otu_table " +  '"' + otu_table + '"') else ""}
   >>>
   parameter_meta {
     c_slash_otu_table: "OTU input table"
@@ -32,10 +30,12 @@ task FastsparBootstrap {
     p_slash_prefix: "Prefix out bootstrap output files"
     threads: "Number of threads (default: 1)"
     seed: "Random number generator seed (default: 1)"
-    _version_display: "--version Display version information and exit"
-    otu_table: ""
+    _versiondisplay_version: "--version\\nDisplay version information and exit\\n"
     number: ""
-    prefix: ""
+    otu_table: ""
     bootstraps: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

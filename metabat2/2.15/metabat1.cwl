@@ -1,236 +1,227 @@
 class: CommandLineTool
 id: ../../../metabat1.cwl
 inputs:
-- id: i
+- id: in_i
   doc: '[ --inFile ] arg               Contigs in (gzipped) fasta file format [Mandatory]'
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
-  doc: '[ --outFile ] arg              Base file name for each bin. The default output
-    is fasta format. Use -l  option to output only contig names [Mandatory]'
-  type: boolean
+- id: in_arg_base_file
+  doc: "[ --outFile ] arg              Base file name for each bin. The default output\
+    \ is fasta format. Use -l\noption to output only contig names [Mandatory]"
+  type: File
   inputBinding:
     prefix: -o
-- id: a
-  doc: '[ --abdFile ] arg              A file having mean and variance of base coverage
-    depth (tab delimited;  the first column should be contig names, and the first
-    row will be  considered as the header and be skipped) [Optional]'
+- id: in_arg_file_having
+  doc: "[ --abdFile ] arg              A file having mean and variance of base coverage\
+    \ depth (tab delimited;\nthe first column should be contig names, and the first\
+    \ row will be\nconsidered as the header and be skipped) [Optional]"
   type: boolean
   inputBinding:
     prefix: -a
-- id: cv_ext
-  doc: When a coverage file without variance (from third party tools) is used  instead
-    of abdFile from jgi_summarize_bam_contig_depths
+- id: in_cv_ext
+  doc: "When a coverage file without variance (from third party tools) is used\ninstead\
+    \ of abdFile from jgi_summarize_bam_contig_depths"
   type: boolean
   inputBinding:
     prefix: --cvExt
-- id: p
-  doc: '[ --pairFile ] arg             A file having paired reads mapping information.
-    Use it to increase  sensitivity. (tab delimited; should have 3 columns of contig
-    index  (ordered by), its mate contig index, and supporting mean read coverage.  The
-    first row will be considered as the header and be skipped) [Optional]'
+- id: in_arg_file_paired
+  doc: "[ --pairFile ] arg             A file having paired reads mapping information.\
+    \ Use it to increase\nsensitivity. (tab delimited; should have 3 columns of contig\
+    \ index\n(ordered by), its mate contig index, and supporting mean read coverage.\n\
+    The first row will be considered as the header and be skipped) [Optional]"
   type: boolean
   inputBinding:
     prefix: -p
-- id: p_one
-  doc: (=0)                     Probability cutoff for bin seeding. It mainly controls
-    the number of  potential bins and their specificity. The higher, the more (specific)  bins
-    would be. (Percentage; Should be between 0 and 100)
-  type: string
+- id: in_p_one
+  doc: "(=0)                     Probability cutoff for bin seeding. It mainly controls\
+    \ the number of\npotential bins and their specificity. The higher, the more (specific)\n\
+    bins would be. (Percentage; Should be between 0 and 100)"
+  type: long
   inputBinding:
     prefix: --p1
-- id: p_two
-  doc: (=0)                     Probability cutoff for secondary neighbors. It supports
-    p1 and better be  close to p1. (Percentage; Should be between 0 and 100)
-  type: string
+- id: in_p_two
+  doc: "(=0)                     Probability cutoff for secondary neighbors. It supports\
+    \ p1 and better be\nclose to p1. (Percentage; Should be between 0 and 100)"
+  type: long
   inputBinding:
     prefix: --p2
-- id: min_prob
-  doc: (=0)                Minimum probability for binning consideration. It controls
-    sensitivity.  Usually it should be >= 75. (Percentage; Should be between 0 and
-    100)
-  type: string
+- id: in_min_prob
+  doc: "(=0)                Minimum probability for binning consideration. It controls\
+    \ sensitivity.\nUsually it should be >= 75. (Percentage; Should be between 0 and\
+    \ 100)"
+  type: long
   inputBinding:
     prefix: --minProb
-- id: min_binned
-  doc: (=0)              Minimum proportion of already binned neighbors for one's
-    membership  inference. It contorls specificity. Usually it would be <= 50  (Percentage;
-    Should be between 0 and 100)
-  type: string
+- id: in_min_binned
+  doc: ''
+  type: long
   inputBinding:
     prefix: --minBinned
-- id: very_sensitive
-  doc: For greater sensitivity, especially in a simple community. It is the  shortcut
-    for --p1 90 --p2 85 --pB 20 --minProb 75 --minBinned 20  --minCorr 90
+- id: in_very_sensitive
+  doc: "For greater sensitivity, especially in a simple community. It is the\nshortcut\
+    \ for --p1 90 --p2 85 --pB 20 --minProb 75 --minBinned 20\n--minCorr 90"
   type: boolean
   inputBinding:
     prefix: --verysensitive
-- id: sensitive
-  doc: For better sensitivity [default]. It is the shortcut for --p1 90 --p2 90  --pB
-    20 --minProb 80 --minBinned 40 --minCorr 92
+- id: in_sensitive
+  doc: For better sensitivity [default]. It is the shortcut for --p1 90 --p2 90
   type: boolean
   inputBinding:
     prefix: --sensitive
-- id: specific
-  doc: For better specificity. Different from --sensitive when using correlation binning
-    or ensemble binning. It is the shortcut for --p1 90 --p2 90 --pB  30 --minProb
-    80 --minBinned 40 --minCorr 96
+- id: in_specific
+  doc: "For better specificity. Different from --sensitive when using correlation\n\
+    binning or ensemble binning. It is the shortcut for --p1 90 --p2 90 --pB\n30 --minProb\
+    \ 80 --minBinned 40 --minCorr 96"
   type: boolean
   inputBinding:
     prefix: --specific
-- id: very_specific
-  doc: For greater specificity. No correlation binning for short contig  recruiting.
-    It is the shortcut for --p1 90 --p2 90 --pB 40 --minProb 80  --minBinned 40
+- id: in_very_specific
+  doc: "For greater specificity. No correlation binning for short contig\nrecruiting.\
+    \ It is the shortcut for --p1 90 --p2 90 --pB 40 --minProb 80\n--minBinned 40"
   type: boolean
   inputBinding:
     prefix: --veryspecific
-- id: super_specific
-  doc: For the best specificity. It is the shortcut for --p1 95 --p2 90 --pB 50  --minProb
-    80 --minBinned 20
+- id: in_super_specific
+  doc: For the best specificity. It is the shortcut for --p1 95 --p2 90 --pB 50
   type: boolean
   inputBinding:
     prefix: --superspecific
-- id: min_corr
-  doc: (=0)                Minimum pearson correlation coefficient for binning missed
-    contigs to  increase sensitivity (Helpful when there are many samples). Should
-    be  very high (>=90) to reduce contamination. (Percentage; Should be between  0
-    and 100; 0 disables)
-  type: string
-  inputBinding:
-    prefix: --minCorr
-- id: min_samples
+- id: in_min_samples
   doc: (=10)            Minimum number of sample sizes for considering correlation
-    based  recruiting
-  type: string
+    based
+  type: long
   inputBinding:
     prefix: --minSamples
-- id: arg_minimum_mean
-  doc: '[ --minCV ] arg (=1)           Minimum mean coverage of a contig to consider
-    for abundance distance  calculation in each library'
-  type: boolean
-  inputBinding:
-    prefix: -x
-- id: min_cvs_um
-  doc: (=2)               Minimum total mean coverage of a contig (sum of all libraries)
-    to  consider for abundance distance calculation
-  type: string
+- id: in_min_cvs_um
+  doc: "(=2)               Minimum total mean coverage of a contig (sum of all libraries)\
+    \ to\nconsider for abundance distance calculation"
+  type: long
   inputBinding:
     prefix: --minCVSum
-- id: arg_minimum_size_bin_considered
+- id: in_arg_minimum_size_bin_considered
   doc: '[ --minClsSize ] arg (=200000) Minimum size of a bin to be considered as the
     output'
   type: boolean
   inputBinding:
     prefix: -s
-- id: arg_minimum_size_contig_considered
-  doc: '[ --minContig ] arg (=2500)    Minimum size of a contig to be considered for
-    binning (should be >=1500;  ideally >=2500). If # of samples >= minSamples, small
-    contigs (>=1000)  will be given a chance to be recruited to existing bins by default.'
+- id: in_arg_minimum_size_contig_considered
+  doc: "[ --minContig ] arg (=2500)    Minimum size of a contig to be considered for\
+    \ binning (should be >=1500;\nideally >=2500). If # of samples >= minSamples,\
+    \ small contigs (>=1000)\nwill be given a chance to be recruited to existing bins\
+    \ by default."
   type: boolean
   inputBinding:
     prefix: -m
-- id: min_contig_by_corr
-  doc: '(=1000)     Minimum size of a contig to be considered for recruiting by pearson  correlation
-    coefficients (activated only if # of samples >= minSamples;  disabled when minContigByCorr
-    > minContig)'
-  type: string
+- id: in_min_contig_by_corr
+  doc: "(=1000)     Minimum size of a contig to be considered for recruiting by pearson\n\
+    correlation coefficients (activated only if # of samples >= minSamples;\ndisabled\
+    \ when minContigByCorr > minContig)"
+  type: long
   inputBinding:
     prefix: --minContigByCorr
-- id: arg_number_use
+- id: in_arg_number_use
   doc: '[ --numThreads ] arg (=0)      Number of threads to use (0: use all cores)'
   type: boolean
   inputBinding:
     prefix: -t
-- id: min_shared
+- id: in_min_shared
   doc: (=50)             Percentage cutoff for merging fuzzy contigs
-  type: string
+  type: long
   inputBinding:
     prefix: --minShared
-- id: fuzzy
-  doc: Binning with fuzziness which assigns multiple memberships of a contig to  bins
-    (activated only with --pairFile at the moment)
+- id: in_fuzzy
+  doc: "Binning with fuzziness which assigns multiple memberships of a contig to\n\
+    bins (activated only with --pairFile at the moment)"
   type: boolean
   inputBinding:
     prefix: --fuzzy
-- id: output_only_sequence
+- id: in_output_only_sequence
   doc: '[ --onlyLabel ]                Output only sequence labels as a list in a
     column without sequences'
   type: boolean
   inputBinding:
     prefix: -l
-- id: set_then_sample
-  doc: '[ --sumLowCV ]                 If set, then every sample that falls below
-    the minCV will be used in an  aggregate sample'
+- id: in_set_then_sample
+  doc: "[ --sumLowCV ]                 If set, then every sample that falls below\
+    \ the minCV will be used in an\naggregate sample"
   type: boolean
   inputBinding:
     prefix: -S
-- id: arg_ignore_contigs
+- id: in_arg_ignore_contigs
   doc: '[ --maxVarRatio ] arg (=0)     Ignore any contigs where variance / mean exceeds
     this ratio (0 disables)'
   type: boolean
   inputBinding:
     prefix: -V
-- id: save_tnf
+- id: in_save_tnf
   doc: File to save (or load if exists) TNF matrix for each contig in input
-  type: string
+  type: File
   inputBinding:
     prefix: --saveTNF
-- id: save_distance
-  doc: File to save (or load if exists) distance graph at lowest probability  cutoff
-  type: string
+- id: in_save_distance
+  doc: File to save (or load if exists) distance graph at lowest probability
+  type: File
   inputBinding:
     prefix: --saveDistance
-- id: save_cls
-  doc: Save cluster memberships as a matrix format
-  type: boolean
-  inputBinding:
-    prefix: --saveCls
-- id: unbinned
+- id: in_unbinned
   doc: Generate [outFile].unbinned.fa file for unbinned contigs
   type: boolean
   inputBinding:
     prefix: --unbinned
-- id: no_bin_out
-  doc: No bin output. Usually combined with --saveCls to check only contig  memberships
+- id: in_no_bin_out
+  doc: No bin output. Usually combined with --saveCls to check only contig
   type: boolean
   inputBinding:
     prefix: --noBinOut
-- id: arg_number_bootstrapping
-  doc: '[ --B ] arg (=20)              Number of bootstrapping for ensemble binning
-    (Recommended to be >=20)'
-  type: boolean
-  inputBinding:
-    prefix: -B
-- id: pb
-  doc: (=50)                    Proportion of shared membership in bootstrapping.
-    Major control for  sensitivity/specificity. The higher, the specific. (Percentage;
-    Should be between 0 and 100)
-  type: string
-  inputBinding:
-    prefix: --pB
-- id: seed
-  doc: '(=0)                   For reproducibility in ensemble binning, though it
-    might produce slightly different results. (0: use random seed)'
-  type: string
+- id: in_seed
+  doc: "(=0)                   For reproducibility in ensemble binning, though it\
+    \ might produce slightly\ndifferent results. (0: use random seed)"
+  type: long
   inputBinding:
     prefix: --seed
-- id: keep
+- id: in_keep
   doc: Keep the intermediate files for later usage
   type: boolean
   inputBinding:
     prefix: --keep
-- id: _debug_output
+- id: in__debug_output
   doc: '[ --debug ]                    Debug output'
   type: boolean
   inputBinding:
     prefix: -d
-- id: _verbose_output
+- id: in__verbose_output
   doc: '[ --verbose ]                  Verbose output'
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+- id: in_recruiting
+  doc: '-x [ --minCV ] arg (=1)           Minimum mean coverage of a contig to consider
+    for abundance distance '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_cut_off
+  doc: --saveCls                         Save cluster memberships as a matrix format
+  type: string
+  inputBinding:
+    position: 0
+- id: in_memberships
+  doc: -B [ --B ] arg (=20)              Number of bootstrapping for ensemble binning
+    (Recommended to be >=20)
+  type: string
+  inputBinding:
+    position: 1
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_base_file
+  doc: "[ --outFile ] arg              Base file name for each bin. The default output\
+    \ is fasta format. Use -l\noption to output only contig names [Mandatory]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_base_file)
 cwlVersion: v1.1
 baseCommand:
 - metabat1

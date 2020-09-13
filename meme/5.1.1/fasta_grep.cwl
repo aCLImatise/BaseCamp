@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../fasta_grep.cwl
 inputs:
-- id: re
-  doc: ''
+- id: in_copyright
+  doc: (2014) The Regents of the University of California.
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fasta-grep

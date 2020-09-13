@@ -1,7 +1,10 @@
 version 1.0
 
-task FastqQualadj {
+task Fastqqualadj {
   command <<<
-    fastq-qualadj
+    fastq_qualadj
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

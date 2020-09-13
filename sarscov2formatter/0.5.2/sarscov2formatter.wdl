@@ -2,8 +2,8 @@ version 1.0
 
 task Sarscov2formatter {
   input {
-    String? alignment
-    String? metadata
+    File? alignment
+    File? metadata
   }
   command <<<
     sarscov2formatter \
@@ -12,6 +12,9 @@ task Sarscov2formatter {
   >>>
   parameter_meta {
     alignment: "Mulitple sequence alignment file"
-    metadata: "Metadata source (Use \"ncbi\" if using NCBI SARS-CoV-2 data, otherwise supply tabular file of the correct format)"
+    metadata: "Metadata source (Use \\\"ncbi\\\" if using NCBI SARS-CoV-2\\ndata, otherwise supply tabular file of the correct\\nformat)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,16 +2,16 @@ version 1.0
 
 task Vcfcommonsamples {
   input {
-    String var_0
-    String var_1
+    File vcf_file
   }
   command <<<
     vcfcommonsamples \
-      ~{var_0} \
-      ~{var_1}
+      ~{vcf_file}
   >>>
   parameter_meta {
-    var_0: ""
-    var_1: ""
+    vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

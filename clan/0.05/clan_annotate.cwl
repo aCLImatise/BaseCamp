@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../clan_annotate.cwl
 inputs:
-- id: i
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -o
-- id: f
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -f
-- id: r
+- id: in_r
   doc: ''
   type: boolean
   inputBinding:
     prefix: -r
-- id: clan_file
+- id: in_f
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -f
+- id: in_o
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -o
+- id: in_i
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -i
+- id: in_clan_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: reference_file
+- id: in_reference_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: read_file
+- id: in_read_file
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - clan_annotate

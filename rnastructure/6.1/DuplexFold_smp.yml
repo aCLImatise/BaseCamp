@@ -1,4 +1,6 @@
 !Command
+command:
+- DuplexFold-smp
 positional:
 - !Positional
   description: ''
@@ -20,14 +22,77 @@ positional:
   position: 3
   name: ct file
   optional: false
-named: []
-command:
-- DuplexFold-smp
+named:
+- !Flag
+  description: "Specify that the sequence is DNA, and DNA parameters are to be used.\n\
+    Default is to use RNA parameters."
+  synonyms:
+  - -d
+  - -D
+  - --DNA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a maximum internal/bulge loop size.\nDefault is 6 unpaired\
+    \ numcleotides."
+  synonyms:
+  - -l
+  - -L
+  - --loop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a maximum number of structures.\nDefault is 10 structures."
+  synonyms:
+  - -m
+  - -M
+  - --maximum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a maximum percent energy difference.\nDefault is 40 percent\
+    \ (specified as 40, not 0.4)."
+  synonyms:
+  - -p
+  - -P
+  - --percent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the temperature at which calculation takes place in Kelvin.\n\
+    Default is 310.15 K, which is 37 degrees C."
+  synonyms:
+  - -t
+  - -T
+  - --temperature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a window size.\nDefault is 0 nucleotides.\n"
+  synonyms:
+  - -w
+  - -W
+  - --window
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: DuplexFold <seq file 1> <seq file 2> <ct file> [options]\nAll flags\
   \ are case-insensitive, and grouping of flags is not allowed.\n\n=============================\n\
   ==== Required Parameters ====\n=============================\n<seq file 1>\n   \

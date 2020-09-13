@@ -1,7 +1,10 @@
 version 1.0
 
-task ProkkaBuildKingdomDbs {
+task ProkkabuildKingdomDbs {
   command <<<
-    prokka-build_kingdom_dbs
+    prokka_build_kingdom_dbs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

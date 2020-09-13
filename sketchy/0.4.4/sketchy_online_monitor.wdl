@@ -5,16 +5,16 @@ task SketchyOnlineMonitor {
     Float? interval
     Boolean? terminate
     Float? early
-    String? prefix
-    Boolean? log
+    File? prefix
+    File? log
   }
   command <<<
     sketchy online monitor \
       ~{if defined(interval) then ("--interval " +  '"' + interval + '"') else ""} \
-      ~{true="--terminate" false="" terminate} \
+      ~{if (terminate) then "--terminate" else ""} \
       ~{if defined(early) then ("--early " +  '"' + early + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
-      ~{true="--log" false="" log}
+      ~{if (log) then "--log" else ""}
   >>>
   parameter_meta {
     interval: "Interval in seconds to check on resource usage"
@@ -22,5 +22,10 @@ task SketchyOnlineMonitor {
     early: "Terminate early after this amount of seconds"
     prefix: "Prefix for data output file when completed or stopped"
     log: "Output to log file instead of terminal"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_prefix = "${in_prefix}"
+    File out_log = "${in_log}"
   }
 }

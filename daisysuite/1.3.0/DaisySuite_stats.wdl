@@ -4,4 +4,7 @@ task DaisySuiteStats {
   command <<<
     DaisySuite_stats
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

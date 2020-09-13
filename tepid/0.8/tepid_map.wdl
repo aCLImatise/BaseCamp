@@ -1,6 +1,6 @@
 version 1.0
 
-task TepidMap {
+task Tepidmap {
   input {
     Boolean? path_bowtie_index
     Boolean? path_yaha_index
@@ -13,16 +13,16 @@ task TepidMap {
     Boolean? gzip_fastq_files
   }
   command <<<
-    tepid-map \
-      ~{true="-x" false="" path_bowtie_index} \
-      ~{true="-y" false="" path_yaha_index} \
-      ~{true="-p" false="" number_cores_use} \
-      ~{true="-s" false="" average_insert_size} \
-      ~{true="-n" false="" sample_name} \
-      ~{true="-1" false="" one} \
-      ~{true="-2" false="" two} \
-      ~{true="-r" false="" recursive_optional} \
-      ~{true="-z" false="" gzip_fastq_files}
+    tepid_map \
+      ~{if (path_bowtie_index) then "-x" else ""} \
+      ~{if (path_yaha_index) then "-y" else ""} \
+      ~{if (number_cores_use) then "-p" else ""} \
+      ~{if (average_insert_size) then "-s" else ""} \
+      ~{if (sample_name) then "-n" else ""} \
+      ~{if (one) then "-1" else ""} \
+      ~{if (two) then "-2" else ""} \
+      ~{if (recursive_optional) then "-r" else ""} \
+      ~{if (gzip_fastq_files) then "-z" else ""}
   >>>
   parameter_meta {
     path_bowtie_index: "path to bowtie2 index"
@@ -34,5 +34,8 @@ task TepidMap {
     two: "fastq file with #2 mates"
     recursive_optional: "recursive (optional)"
     gzip_fastq_files: "gzip fastq files (optional)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

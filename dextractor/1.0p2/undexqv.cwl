@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../undexqv.cwl
 inputs:
-- id: v_ku
+- id: in_v_ku
   doc: ''
   type: boolean
   inputBinding:
     prefix: -vkU
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - undexqv

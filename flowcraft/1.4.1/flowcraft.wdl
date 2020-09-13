@@ -7,11 +7,14 @@ task Flowcraft {
   }
   command <<<
     flowcraft \
-      ~{true="--debug" false="" debug} \
-      ~{true="-v" false="" v}
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     debug: "Set log to debug mode"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

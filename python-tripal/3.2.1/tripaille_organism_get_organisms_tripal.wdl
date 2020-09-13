@@ -11,4 +11,7 @@ task TripailleOrganismGetOrganismsTripal {
   parameter_meta {
     organism_id: "An organism entity ID"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

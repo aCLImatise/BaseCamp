@@ -4,4 +4,7 @@ task Vcfvarstats {
   command <<<
     vcfvarstats
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

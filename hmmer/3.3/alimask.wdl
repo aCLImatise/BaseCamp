@@ -2,28 +2,29 @@ version 1.0
 
 task Alimask {
   input {
-    String? direct_summary_output
+    File? direct_summary_output
+    Int? xxx
     String? model_range
     String? ali_range
     Boolean? ap_end_mask
-    String? model_two_ali
-    String? ali_two_model
+    Int? model_two_ali
+    Int? ali_two_model
     Boolean? amino
     Boolean? dna
     Boolean? rna
     String? out_format
     Boolean? fast
     Boolean? hand
-    String? sym_frac
-    String? frag_thresh
+    Float? sym_frac
+    Float? frag_thresh
     Boolean? wpb
     Boolean? wgs_c
     Boolean? w_blosum
     Boolean? w_none
     Boolean? w_given
-    String? wid
+    Float? wid
     String? in_format
-    String? seed
+    Int? seed
     Boolean? options
     String msa_file
     String post_msa_file
@@ -33,31 +34,33 @@ task Alimask {
       ~{msa_file} \
       ~{post_msa_file} \
       ~{if defined(direct_summary_output) then ("-o " +  '"' + direct_summary_output + '"') else ""} \
+      ~{if defined(xxx) then ("--xxx " +  '"' + xxx + '"') else ""} \
       ~{if defined(model_range) then ("--modelrange " +  '"' + model_range + '"') else ""} \
       ~{if defined(ali_range) then ("--alirange " +  '"' + ali_range + '"') else ""} \
-      ~{true="--apendmask" false="" ap_end_mask} \
+      ~{if (ap_end_mask) then "--apendmask" else ""} \
       ~{if defined(model_two_ali) then ("--model2ali " +  '"' + model_two_ali + '"') else ""} \
       ~{if defined(ali_two_model) then ("--ali2model " +  '"' + ali_two_model + '"') else ""} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
-      ~{true="--fast" false="" fast} \
-      ~{true="--hand" false="" hand} \
+      ~{if (fast) then "--fast" else ""} \
+      ~{if (hand) then "--hand" else ""} \
       ~{if defined(sym_frac) then ("--symfrac " +  '"' + sym_frac + '"') else ""} \
       ~{if defined(frag_thresh) then ("--fragthresh " +  '"' + frag_thresh + '"') else ""} \
-      ~{true="--wpb" false="" wpb} \
-      ~{true="--wgsc" false="" wgs_c} \
-      ~{true="--wblosum" false="" w_blosum} \
-      ~{true="--wnone" false="" w_none} \
-      ~{true="--wgiven" false="" w_given} \
+      ~{if (wpb) then "--wpb" else ""} \
+      ~{if (wgs_c) then "--wgsc" else ""} \
+      ~{if (w_blosum) then "--wblosum" else ""} \
+      ~{if (w_none) then "--wnone" else ""} \
+      ~{if (w_given) then "--wgiven" else ""} \
       ~{if defined(wid) then ("--wid " +  '"' + wid + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     direct_summary_output: ": direct summary output to file <f>, not stdout"
+    xxx: ",30-40 ) :"
     model_range: ": range(s) for mask(s) in model coordinates"
     ali_range: ": range(s) for mask(s) in alignment coordinates"
     ap_end_mask: ": add to existing mask (default ignores to existing mask)"
@@ -82,5 +85,9 @@ task Alimask {
     options: ""
     msa_file: ""
     post_msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_direct_summary_output = "${in_direct_summary_output}"
   }
 }

@@ -1,86 +1,84 @@
 class: CommandLineTool
 id: ../../../sga_graph_diff.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: prefix
+- id: in_prefix
   doc: prefix the output files with NAME
   type: string
   inputBinding:
     prefix: --prefix
-- id: threads
+- id: in_threads
   doc: use NUM computation threads
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: genome_size
-  doc: (optional) set the size of the genome to be N bases this is used to determine
-    the number of bits to use in the bloom filter if unset, it will be calculated
-    from the reference genome FASTA file
-  type: string
+- id: in_genome_size
+  doc: "(optional) set the size of the genome to be N bases\nthis is used to determine\
+    \ the number of bits to use in the bloom filter\nif unset, it will be calculated\
+    \ from the reference genome FASTA file"
+  type: long
   inputBinding:
     prefix: --genome-size
-- id: pre_cache_reference
-  doc: precache the named chromosome of the reference genome If STR is "all" the entire
-    reference will be cached
+- id: in_pre_cache_reference
+  doc: "precache the named chromosome of the reference genome\nIf STR is \"all\" the\
+    \ entire reference will be cached"
   type: string
   inputBinding:
     prefix: --precache-reference
-- id: variant
+- id: in_variant
   doc: call variants present in the read set in FILE
   type: File
   inputBinding:
     prefix: --variant
-- id: base
-  doc: use the read set in FILE as the base line for comparison if this option is
-    not given, reference-based calls will be made
+- id: in_base
+  doc: "use the read set in FILE as the base line for comparison\nif this option is\
+    \ not given, reference-based calls will be made"
   type: File
   inputBinding:
     prefix: --base
-- id: reference
+- id: in_reference
   doc: use the reference sequence in FILE
   type: File
   inputBinding:
     prefix: --reference
-- id: km_er
+- id: in_km_er
   doc: use K-mers to discover variants
   type: string
   inputBinding:
     prefix: --kmer
-- id: min_discovery_count
+- id: in_min_discovery_count
   doc: require a variant k-mer to be seen at least T times
-  type: string
+  type: long
   inputBinding:
     prefix: --min-discovery-count
-- id: algorithm
+- id: in_algorithm
   doc: 'select the assembly algorithm to use from: debruijn, string'
   type: string
   inputBinding:
     prefix: --algorithm
-- id: min_overlap
+- id: in_min_overlap
   doc: require at least N bp overlap when assembling using a string graph
-  type: string
+  type: long
   inputBinding:
     prefix: --min-overlap
-- id: min_dbg_count
+- id: in_min_dbg_count
   doc: only use k-mers seen T times when assembling using a de Bruijn graph
-  type: string
+  type: long
   inputBinding:
     prefix: --min-dbg-count
-- id: ref
+- id: in_ref
   doc: ''
   type: string
   inputBinding:
     prefix: --ref
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sga

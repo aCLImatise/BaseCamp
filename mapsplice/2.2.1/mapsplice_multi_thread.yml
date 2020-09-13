@@ -1,9 +1,146 @@
 !Command
+command:
+- mapsplice_multi_thread
 positional:
 - !Positional
   description: ''
   position: 0
   name: bowtie
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: hit
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: m1
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: m2
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: r
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: s
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: sequences
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Comma-separated
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: File
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: themselves
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: if
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: list
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: to
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: of
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: set
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: write
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: files
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: hits
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: containing
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: Crossbow-style
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: downstream
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: unpaired
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: upstream
+  optional: false
+- !Positional
+  description: ''
+  position: 7
+  name: mates
+  optional: false
+- !Positional
+  description: ''
+  position: 7
+  name: reads
+  optional: false
+- !Positional
+  description: ''
+  position: 7
+  name: reads.
+  optional: false
+- !Positional
+  description: ''
+  position: 8
+  name: Can
+  optional: false
+- !Positional
+  description: ''
+  position: 9
+  name: be
   optional: false
 named:
 - !Flag
@@ -109,9 +246,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'max mismatches in seed (can be 0-3, default: -n 2)'
+  description: report end-to-end hits w/ <=v mismatches; ignore qualities
   synonyms:
-  - -n/--seedmms
+  - -v
   args: !SimpleFlagArg
     name: int
   optional: true
@@ -293,11 +430,11 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: approx. fraction of SNP bases (e.g. 0.001); sets --snpphred
+  description: 'Phred penalty for SNP when decoding colorspace (def: 30)'
   synonyms:
-  - --snpfrac
+  - --snpphred
   args: !SimpleFlagArg
-    name: dec
+    name: int
   optional: true
 - !Flag
   description: print aligned colorspace seqs as colors, not decoded bases
@@ -394,10 +531,9 @@ named:
   - -h/--help
   args: !EmptyFlagArg {}
   optional: true
-command:
-- mapsplice_multi_thread
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag

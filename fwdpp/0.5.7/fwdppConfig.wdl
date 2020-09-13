@@ -5,9 +5,8 @@ task FwdppConfig {
     String print
     String out
     String version
-    String number
+    Int number
     String and
-    String exit
   }
   command <<<
     fwdppConfig \
@@ -15,8 +14,7 @@ task FwdppConfig {
       ~{out} \
       ~{version} \
       ~{number} \
-      ~{and} \
-      ~{exit}
+      ~{and}
   >>>
   parameter_meta {
     print: ""
@@ -24,6 +22,8 @@ task FwdppConfig {
     version: ""
     number: ""
     and: ""
-    exit: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

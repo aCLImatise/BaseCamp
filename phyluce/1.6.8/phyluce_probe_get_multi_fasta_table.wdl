@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceProbeGetMultiFastaTable {
   input {
-    String? fast_as
+    Directory? fast_as
     String? sqlite_database_create
     String? base_tax_on
   }
@@ -15,6 +15,9 @@ task PhyluceProbeGetMultiFastaTable {
   parameter_meta {
     fast_as: "A folder of fasta files."
     sqlite_database_create: "A SQLite database to create during integration."
-    base_tax_on: "The base taxon to use."
+    base_tax_on: "The base taxon to use.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

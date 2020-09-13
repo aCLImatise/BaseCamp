@@ -7,11 +7,14 @@ task ProteinAlignmentFromNucleotides {
   }
   command <<<
     protein_alignment_from_nucleotides \
-      ~{true="-n" false="" nucleotide_alignment_mafft} \
-      ~{true="-v" false="" verbose_output_stdout}
+      ~{if (nucleotide_alignment_mafft) then "-n" else ""} \
+      ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
   parameter_meta {
     nucleotide_alignment_mafft: "nucleotide alignment with MAFFT"
     verbose_output_stdout: "verbose output to STDOUT"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

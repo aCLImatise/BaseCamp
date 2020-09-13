@@ -4,4 +4,7 @@ task Cpancover {
   command <<<
     cpancover
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

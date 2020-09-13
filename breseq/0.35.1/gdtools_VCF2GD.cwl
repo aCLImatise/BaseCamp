@@ -1,12 +1,20 @@
 class: CommandLineTool
 id: ../../../gdtools_VCF2GD.cwl
 inputs:
-- id: output
+- id: in_output
   doc: name of output Genome Diff file (DEFAULT=output.gd)
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: name of output Genome Diff file (DEFAULT=output.gd)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - gdtools

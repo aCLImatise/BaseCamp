@@ -4,4 +4,7 @@ task Watchmedo {
   command <<<
     watchmedo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -11,4 +11,7 @@ task BwaBwtupdate {
   parameter_meta {
     the_dot_bwt: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

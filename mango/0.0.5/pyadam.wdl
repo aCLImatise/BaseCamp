@@ -4,4 +4,7 @@ task Pyadam {
   command <<<
     pyadam
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

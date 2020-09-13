@@ -13,10 +13,10 @@ task Bloocoo {
     Boolean? solidity_kind
     Boolean? max_memory
     Boolean? max_disk
-    Boolean? solid_km_ers_out
-    Boolean? out
-    Boolean? out_dir
-    Boolean? out_tmp
+    File? solid_km_ers_out
+    File? out
+    Directory? out_dir
+    Directory? out_tmp
     Boolean? out_compress
     Boolean? minimizer_type
     Boolean? minimizer_size
@@ -32,33 +32,33 @@ task Bloocoo {
   }
   command <<<
     Bloocoo \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-file" false="" file} \
-      ~{true="-kmer-size" false="" km_er_size} \
-      ~{true="-abundance-min" false="" abundance_min} \
-      ~{true="-abundance-max" false="" abundance_max} \
-      ~{true="-abundance-min-threshold" false="" abundance_min_threshold} \
-      ~{true="-histo-max" false="" histo_max} \
-      ~{true="-solidity-kind" false="" solidity_kind} \
-      ~{true="-max-memory" false="" max_memory} \
-      ~{true="-max-disk" false="" max_disk} \
-      ~{true="-solid-kmers-out" false="" solid_km_ers_out} \
-      ~{true="-out" false="" out} \
-      ~{true="-out-dir" false="" out_dir} \
-      ~{true="-out-tmp" false="" out_tmp} \
-      ~{true="-out-compress" false="" out_compress} \
-      ~{true="-minimizer-type" false="" minimizer_type} \
-      ~{true="-minimizer-size" false="" minimizer_size} \
-      ~{true="-repartition-type" false="" repartition_type} \
-      ~{true="-high-recall" false="" high_recall} \
-      ~{true="-high-precision" false="" high_precision} \
-      ~{true="-slow" false="" slow} \
-      ~{true="-ion" false="" ion} \
-      ~{true="-err-tab" false="" err_tab} \
-      ~{true="-max-trim" false="" max_trim} \
-      ~{true="-from-h5" false="" from_h_five} \
-      ~{true="-count-only" false="" count_only}
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (file) then "-file" else ""} \
+      ~{if (km_er_size) then "-kmer-size" else ""} \
+      ~{if (abundance_min) then "-abundance-min" else ""} \
+      ~{if (abundance_max) then "-abundance-max" else ""} \
+      ~{if (abundance_min_threshold) then "-abundance-min-threshold" else ""} \
+      ~{if (histo_max) then "-histo-max" else ""} \
+      ~{if (solidity_kind) then "-solidity-kind" else ""} \
+      ~{if (max_memory) then "-max-memory" else ""} \
+      ~{if (max_disk) then "-max-disk" else ""} \
+      ~{if (solid_km_ers_out) then "-solid-kmers-out" else ""} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (out_dir) then "-out-dir" else ""} \
+      ~{if (out_tmp) then "-out-tmp" else ""} \
+      ~{if (out_compress) then "-out-compress" else ""} \
+      ~{if (minimizer_type) then "-minimizer-type" else ""} \
+      ~{if (minimizer_size) then "-minimizer-size" else ""} \
+      ~{if (repartition_type) then "-repartition-type" else ""} \
+      ~{if (high_recall) then "-high-recall" else ""} \
+      ~{if (high_precision) then "-high-precision" else ""} \
+      ~{if (slow) then "-slow" else ""} \
+      ~{if (ion) then "-ion" else ""} \
+      ~{if (err_tab) then "-err-tab" else ""} \
+      ~{if (max_trim) then "-max-trim" else ""} \
+      ~{if (from_h_five) then "-from-h5" else ""} \
+      ~{if (count_only) then "-count-only" else ""}
   >>>
   parameter_meta {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
@@ -67,7 +67,7 @@ task Bloocoo {
     km_er_size: "(1 arg) :    size of a kmer  [default '31']"
     abundance_min: "(1 arg) :    min abundance threshold for solid kmers  [default '3']"
     abundance_max: "(1 arg) :    max abundance threshold for solid kmers  [default '2147483647']"
-    abundance_min_threshold: "(1 arg) :    min abundance hard threshold (only used when min abundance is \"auto\")  [default '3']"
+    abundance_min_threshold: "(1 arg) :    min abundance hard threshold (only used when min abundance is \\\"auto\\\")  [default '3']"
     histo_max: "(1 arg) :    max number of values in kmers histogram  [default '10000']"
     solidity_kind: "(1 arg) :    way to compute counts of several files (sum, min, max, one, all)  [default 'sum']"
     max_memory: "(1 arg) :    max memory (in MBytes)  [default '5000']"
@@ -88,5 +88,12 @@ task Bloocoo {
     max_trim: "(1 arg) :    max number of bases that can be trimmed per read  [default '']"
     from_h_five: "(0 arg) :    do not re-compute kmer counts, suppose h5 file already computed (with previous run with -count-only)"
     count_only: "(0 arg) :    do not correct, only count kmers"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_solid_km_ers_out = "${in_solid_km_ers_out}"
+    File out_out = "${in_out}"
+    Directory out_out_dir = "${in_out_dir}"
+    Directory out_out_tmp = "${in_out_tmp}"
   }
 }

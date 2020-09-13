@@ -2,19 +2,22 @@ version 1.0
 
 task FastxCollapser {
   input {
-    Boolean? v
-    String? i
     String? o
+    File? i
+    Boolean? v
   }
   command <<<
     fastx_collapser \
-      ~{true="-v" false="" v} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    v: ""
-    i: ""
     o: ""
+    i: ""
+    v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

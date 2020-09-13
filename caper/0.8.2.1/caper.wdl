@@ -8,10 +8,13 @@ task Caper {
   command <<<
     caper \
       ~{if defined(conf) then ("--conf " +  '"' + conf + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     conf: "Specify config file"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

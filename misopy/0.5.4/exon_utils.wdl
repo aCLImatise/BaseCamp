@@ -26,4 +26,7 @@ task ExonUtils {
     from: ""
     gff: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

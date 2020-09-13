@@ -4,4 +4,7 @@ task FragDuck {
   command <<<
     frag_duck
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

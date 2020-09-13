@@ -4,4 +4,7 @@ task Canvas {
   command <<<
     Canvas
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

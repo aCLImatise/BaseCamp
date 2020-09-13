@@ -1,7 +1,10 @@
 version 1.0
 
-task Project.sh.orig {
+task Projectsh {
   command <<<
-    project.sh.orig
+    project_sh
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

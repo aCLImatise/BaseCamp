@@ -4,4 +4,7 @@ task Treedist {
   command <<<
     treedist
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

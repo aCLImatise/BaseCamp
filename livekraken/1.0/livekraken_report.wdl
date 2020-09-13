@@ -1,17 +1,20 @@
 version 1.0
 
-task LivekrakenReport {
+task Livekrakenreport {
   input {
-    String? db
     Boolean? show_zeros
+    String? db
   }
   command <<<
-    livekraken-report \
-      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{true="--show-zeros" false="" show_zeros}
+    livekraken_report \
+      ~{if (show_zeros) then "--show-zeros" else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
   parameter_meta {
-    db: ""
     show_zeros: ""
+    db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

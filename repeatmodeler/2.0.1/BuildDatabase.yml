@@ -1,6 +1,27 @@
 !Command
-positional: []
+command:
+- BuildDatabase
+positional:
+- !Positional
+  description: '- Providing the name of a directory containing FASTA files '
+  position: 0
+  name: line.
+  optional: false
 named:
+- !Flag
+  description: "<dir containing fasta files *.fa, *.fasta,\n*.fast, *.FA, *.FASTA,\
+    \ *.FAST, *.dna,\nand  *.DNA >"
+  synonyms:
+  - -dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -batch
+  args: !SimpleFlagArg
+    name: file containing a list of fasta files
+  optional: true
 - !Flag
   description: The name of the database to create.
   synonyms:
@@ -9,42 +30,25 @@ named:
     name: database name
   optional: true
 - !Flag
-  description: The name of the search engine we are using. I.e abblast/wublast or
-    rmblast.
+  description: "The name of the search engine we are using. I.e abblast/wublast or\n\
+    rmblast."
   synonyms:
   - -engine
   args: !SimpleFlagArg
     name: engine name
   optional: true
-- !Flag
-  description: The name of a directory containing fasta files to be processed. The
-    files are recognized by their suffix. Only *.fa and *.fasta files are processed.
-  synonyms:
-  - -dir
-  args: !SimpleFlagArg
-    name: directory
-  optional: true
-- !Flag
-  description: The name of a file which contains the names of fasta files to process.
-    The files names are listed one per line and should be fully qualified.
-  synonyms:
-  - -batch
-  args: !SimpleFlagArg
-    name: file
-  optional: true
-command:
-- BuildDatabase
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: (elp) Detailed help
+  description: "(elp)\nDetailed help"
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
 version_flag:
-help_text: "No query sequence file indicated\n\n/tmp/tmppx41qzsb/share/RepeatModeler/BuildDatabase\
+help_text: "No query sequence file indicated\n\n/usr/local/share/RepeatModeler/BuildDatabase\
   \ - 2.0.1\nNAME\n    BuildDatabase - Format FASTA files for use with RepeatModeler\n\
   \nSYNOPSIS\n      BuildDatabase [-options] -name \"mydb\" <seqfile(s) in fasta format>\n\
   \     or \n      BuildDatabase [-options] -name \"mydb\" \n                    \

@@ -4,4 +4,7 @@ task Multic {
   command <<<
     multic
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

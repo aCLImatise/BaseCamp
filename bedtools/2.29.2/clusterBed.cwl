@@ -1,34 +1,37 @@
 class: CommandLineTool
 id: ../../../clusterBed.cwl
 inputs:
-- id: force_strandedness_only
-  doc: Force strandedness.  That is, only merge features that are the same strand.
-    - By default, merging is done without respect to strand.
+- id: in_force_strandedness_only
+  doc: "Force strandedness.  That is, only merge features\nthat are the same strand.\n\
+    - By default, merging is done without respect to strand."
   type: boolean
   inputBinding:
     prefix: -s
-- id: maximum_distance_features
-  doc: Maximum distance between features allowed for features to be merged. - Def.
-    0. That is, overlapping & book-ended features are merged. - (INTEGER)
+- id: in_maximum_distance_features
+  doc: "Maximum distance between features allowed for features\nto be merged.\n- Def.\
+    \ 0. That is, overlapping & book-ended features are merged.\n- (INTEGER)\n"
   type: boolean
   inputBinding:
     prefix: -d
-- id: i
+- id: in_i
   doc: ''
   type: string
   inputBinding:
     prefix: -i
-- id: bed_tools
+- id: in_bed_tools
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: cluster
+- id: in_cluster
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - clusterBed

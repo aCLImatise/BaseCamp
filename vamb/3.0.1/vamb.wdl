@@ -2,14 +2,14 @@ version 1.0
 
 task Vamb {
   input {
-    Boolean? output_directory_create
+    Directory? output_directory_create
     Boolean? fast_a
     Boolean? t_nfs
     Boolean? names
     Boolean? lengths
     Boolean? bam_files
     Boolean? rp_km
-    Boolean? jgi
+    File? jgi
     Boolean? ignore_contigs_shorter
     Boolean? ignore_reads_alignment
     Boolean? ignore_reads_nucleotide
@@ -40,35 +40,35 @@ task Vamb {
       ~{var_29} \
       ~{tnf_input} \
       ~{rp_km_input} \
-      ~{true="--outdir" false="" output_directory_create} \
-      ~{true="--fasta" false="" fast_a} \
-      ~{true="--tnfs" false="" t_nfs} \
-      ~{true="--names" false="" names} \
-      ~{true="--lengths" false="" lengths} \
-      ~{true="--bamfiles" false="" bam_files} \
-      ~{true="--rpkm" false="" rp_km} \
-      ~{true="--jgi" false="" jgi} \
-      ~{true="-m" false="" ignore_contigs_shorter} \
-      ~{true="-s" false="" ignore_reads_alignment} \
-      ~{true="-z" false="" ignore_reads_nucleotide} \
-      ~{true="-p" false="" number_subprocesses_spawn} \
-      ~{true="--norefcheck" false="" no_ref_check} \
-      ~{true="--minfasta" false="" min_fast_a} \
-      ~{true="-n" false="" n} \
-      ~{true="-l" false="" latent_neurons} \
-      ~{true="-a" false="" alpha_weight_tnf} \
-      ~{true="-b" false="" beta_capacity_learn} \
-      ~{true="-d" false="" dropout} \
-      ~{true="--cuda" false="" cuda} \
-      ~{true="-e" false="" epochs} \
-      ~{true="-t" false="" starting_batch_size} \
-      ~{true="-q" false="" q} \
-      ~{true="-r" false="" learning_rate} \
-      ~{true="-w" false="" size_count_successes} \
-      ~{true="-u" false="" minimum_success_window} \
-      ~{true="-i" false="" minimum_cluster_size} \
-      ~{true="-c" false="" stop_c_clusters} \
-      ~{true="-o" false="" binsplit_separator}
+      ~{if (output_directory_create) then "--outdir" else ""} \
+      ~{if (fast_a) then "--fasta" else ""} \
+      ~{if (t_nfs) then "--tnfs" else ""} \
+      ~{if (names) then "--names" else ""} \
+      ~{if (lengths) then "--lengths" else ""} \
+      ~{if (bam_files) then "--bamfiles" else ""} \
+      ~{if (rp_km) then "--rpkm" else ""} \
+      ~{if (jgi) then "--jgi" else ""} \
+      ~{if (ignore_contigs_shorter) then "-m" else ""} \
+      ~{if (ignore_reads_alignment) then "-s" else ""} \
+      ~{if (ignore_reads_nucleotide) then "-z" else ""} \
+      ~{if (number_subprocesses_spawn) then "-p" else ""} \
+      ~{if (no_ref_check) then "--norefcheck" else ""} \
+      ~{if (min_fast_a) then "--minfasta" else ""} \
+      ~{if (n) then "-n" else ""} \
+      ~{if (latent_neurons) then "-l" else ""} \
+      ~{if (alpha_weight_tnf) then "-a" else ""} \
+      ~{if (beta_capacity_learn) then "-b" else ""} \
+      ~{if (dropout) then "-d" else ""} \
+      ~{if (cuda) then "--cuda" else ""} \
+      ~{if (epochs) then "-e" else ""} \
+      ~{if (starting_batch_size) then "-t" else ""} \
+      ~{if (q) then "-q" else ""} \
+      ~{if (learning_rate) then "-r" else ""} \
+      ~{if (size_count_successes) then "-w" else ""} \
+      ~{if (minimum_success_window) then "-u" else ""} \
+      ~{if (minimum_cluster_size) then "-i" else ""} \
+      ~{if (stop_c_clusters) then "-c" else ""} \
+      ~{if (binsplit_separator) then "-o" else ""}
   >>>
   parameter_meta {
     output_directory_create: "output directory to create"
@@ -103,5 +103,10 @@ task Vamb {
     var_29: ""
     tnf_input: ""
     rp_km_input: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_create = "${in_output_directory_create}"
+    File out_jgi = "${in_jgi}"
   }
 }

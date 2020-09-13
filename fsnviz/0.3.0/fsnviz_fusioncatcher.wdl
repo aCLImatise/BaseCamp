@@ -11,4 +11,7 @@ task FsnvizFusioncatcher {
   parameter_meta {
     var_input: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

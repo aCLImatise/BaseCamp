@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../sequenza_utils_seqz_binning.cwl
 inputs:
-- id: seq_z
+- id: in_seq_z
   doc: A seqz file.
-  type: string
+  type: File
   inputBinding:
     prefix: --seqz
-- id: window
-  doc: Window size used for binning the original seqz file. Default is 50.
-  type: string
+- id: in_window
+  doc: "Window size used for binning the original seqz file.\nDefault is 50."
+  type: long
   inputBinding:
     prefix: --window
-- id: output_file_stdout
+- id: in_output_file_stdout
   doc: Output file "-" for STDOUT
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: tab_ix
-  doc: Path of the tabix binary. Default "tabix"
-  type: string
+- id: in_tab_ix
+  doc: "Path of the tabix binary. Default \"tabix\"\n"
+  type: File
   inputBinding:
     prefix: --tabix
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_stdout
+  doc: Output file "-" for STDOUT
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_stdout)
 cwlVersion: v1.1
 baseCommand:
 - sequenza-utils

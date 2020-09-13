@@ -1,5 +1,13 @@
-&id001 !Command
-positional: []
+&id002 !Command
+command:
+- Circle-Map
+- ReadExtractor
+positional:
+- !Positional
+  description: -dir , --directory    Working directory, default is the working directory
+  position: 0
+  name: variants
+  optional: false
 named:
 - !Flag
   description: 'Input: query name sorted bam file'
@@ -8,16 +16,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', --output         Ouput: Reads indicating circular DNA structural
-    variants'
+  description: ', --output         Ouput: Reads indicating circular DNA structural'
   synonyms:
   - -o
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --directory    Working directory, default is the working directory'
-  synonyms:
-  - -dir
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -53,30 +54,216 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- Circle-Map
-- ReadExtractor
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - Circle-Map
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
-    positional: []
+    command:
+    - Circle-Map
+    - Simulate
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: Circle-Map
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: bam2bam
+      optional: false
     named:
     - !Flag
-      description: 'Input: bam file containing the reads extracted by ReadExtractor'
+      description: "Genome fasta file (Needs to be indexed with samtools\nfaidx)"
+      synonyms:
+      - -g
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ', --read-number    Number of reads to simulate'
+      synonyms:
+      - -N
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Output file name
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: ', --directory    Working directory, default is the working directory'
+      synonyms:
+      - -dir
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ', --base-name      Fastq output basename'
+      synonyms:
+      - -b
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ", --skip-region    Regions of the genome to skip the simulation.\
+        \ The\ninput needs to be in bed format"
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ', --read-length    Read length to simulate'
+      synonyms:
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ', --mean-insert    Mean of the insert size distribution'
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ", --mean-coverage\nMean sequencing coverage within the eccDNA\
+        \ coordinates"
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ', --processes      Number of parallel processes to use'
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "If set to true, introduce mutations in the reference\ngenome prior\
+        \ to simulatingreads."
+      synonyms:
+      - -v
+      - --variants
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ", --substitution   Fraction of base substitutions to introduce\
+        \ on the\ngenome. Default: 0.0001"
+      synonyms:
+      - -S
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ", --Indels         Fraction of indels to introduce on the genome.\n\
+        Default: 0.001"
+      synonyms:
+      - -I
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ", --java_memory    Java memory allocation, required for mutating\
+        \ the\ngenome. Default: -Xmx16g"
+      synonyms:
+      - -J
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Introduce sequencing errors ( Uses ART on the\nbackground)"
+      synonyms:
+      - -e
+      - --error
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ", --instrument     Illumina sequecing instrument to simulate reads\
+        \ from\n(Default HiSeq 2500)"
       synonyms:
       - -i
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'Input: query name sorted bam file'
+      description: ", --insRate       the first-read insertion rate (default: 0.00009).\n\
+        Requires -e"
       synonyms:
-      - -qbam
+      - -ir
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ", --insRate2     the second-read insertion rate (default: 0.00015).\n\
+        Requires -e"
+      synonyms:
+      - -ir2
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ", --delRate       the first-read deletion rate (default: 0.00011).\n\
+        Requires -e"
+      synonyms:
+      - -dr
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ", --delRate2     the second-read deletion rate (default: 0.00023).\n\
+        Requires -e\n"
+      synonyms:
+      - -dr2
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "usage: Circle-Map bam2bam [options]\n\nRealign the soft-clipped reads\
+      \ and report\n\nrequired arguments:\n  -g                    Genome fasta file\
+      \ (Needs to be indexed with samtools\n                        faidx)\n  -N ,\
+      \ --read-number    Number of reads to simulate\n\noptional arguments:\n  -o\
+      \ OUTPUT, --output OUTPUT\n                        Output file name\n  -dir\
+      \ , --directory    Working directory, default is the working directory\n  -b\
+      \ , --base-name      Fastq output basename\n  -s , --skip-region    Regions\
+      \ of the genome to skip the simulation. The\n                        input needs\
+      \ to be in bed format\n  -r , --read-length    Read length to simulate\n  -m\
+      \ , --mean-insert    Mean of the insert size distribution\n  -c , --mean-coverage\
+      \ \n                        Mean sequencing coverage within the eccDNA coordinates\n\
+      \  -p , --processes      Number of parallel processes to use\n  -v, --variants\
+      \        If set to true, introduce mutations in the reference\n            \
+      \            genome prior to simulatingreads.\n  -S , --substitution   Fraction\
+      \ of base substitutions to introduce on the\n                        genome.\
+      \ Default: 0.0001\n  -I , --Indels         Fraction of indels to introduce on\
+      \ the genome.\n                        Default: 0.001\n  -J , --java_memory\
+      \    Java memory allocation, required for mutating the\n                   \
+      \     genome. Default: -Xmx16g\n  -e, --error           Introduce sequencing\
+      \ errors ( Uses ART on the\n                        background)\n  -i , --instrument\
+      \     Illumina sequecing instrument to simulate reads from\n               \
+      \         (Default HiSeq 2500)\n  -ir , --insRate       the first-read insertion\
+      \ rate (default: 0.00009).\n                        Requires -e\n  -ir2 , --insRate2\
+      \     the second-read insertion rate (default: 0.00015).\n                 \
+      \       Requires -e\n  -dr , --delRate       the first-read deletion rate (default:\
+      \ 0.00011).\n                        Requires -e\n  -dr2 , --delRate2     the\
+      \ second-read deletion rate (default: 0.00023).\n                        Requires\
+      \ -e\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - Circle-Map
+    - Realign
+    positional:
+    - !Positional
+      description: '-qbam                 Input: query name sorted bam file'
+      position: 0
+      name: ReadExtractor
+      optional: false
+    named:
+    - !Flag
+      description: 'Input: bam file containing the reads extracted by'
+      synonyms:
+      - -i
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
@@ -104,50 +291,50 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --cut_off        Probability cut-off for considering a soft-clipped
-        as realigned: Default: 0.99'
+      description: ", --cut_off        Probability cut-off for considering a soft-clipped\
+        \ as\nrealigned: Default: 0.99"
       synonyms:
       - -p
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --min_sc         Minimum soft-clipped length to attempt the
-        realignment. Default: 8'
+      description: ", --min_sc         Minimum soft-clipped length to attempt the\n\
+        realignment. Default: 8"
       synonyms:
       - -m
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --gap_open       Gap open penalty in the position specific scoring
-        matrix. Default: 5'
+      description: ", --gap_open       Gap open penalty in the position specific scoring\n\
+        matrix. Default: 5"
       synonyms:
       - -g
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --gap_ext        Gap extension penalty in the position specific
-        scoring matrix. Default: 1'
+      description: ", --gap_ext        Gap extension penalty in the position specific\
+        \ scoring\nmatrix. Default: 1"
       synonyms:
       - -e
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --mapq           Minimum mapping quality allowed in the supplementary
-        alignments. Default: 20'
+      description: ", --mapq           Minimum mapping quality allowed in the supplementary\n\
+        alignments. Default: 20"
       synonyms:
       - -q
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --edit_distance-fraction  Maximum edit distance fraction allowed
-        in the first realignment. Default (0.05)'
+      description: ", --edit_distance-fraction\nMaximum edit distance fraction allowed\
+        \ in the first\nrealignment. Default (0.05)"
       synonyms:
       - -d
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --split_quality  Minium split score to output an interval. Default
-        (0.0)'
+      description: ", --split_quality\nMinium split score to output an interval. Default\n\
+        (0.0)"
       synonyms:
       - -Q
       args: !EmptyFlagArg {}
@@ -160,15 +347,15 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --split          Number of required split reads to output a
-        eccDNA. Default: 0'
+      description: ", --split          Number of required split reads to output a\
+        \ eccDNA.\nDefault: 0"
       synonyms:
       - -S
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --number_of_discordants  Number of required discordant reads
-        for intervals with only discordants. Default: 3'
+      description: ", --number_of_discordants\nNumber of required discordant reads\
+        \ for intervals with\nonly discordants. Default: 3"
       synonyms:
       - -O
       args: !EmptyFlagArg {}
@@ -181,43 +368,43 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --insert_mapq   Mapq cutoff for stimating the insert size distribution.
-        Default 60'
+      description: ", --insert_mapq   Mapq cutoff for stimating the insert size\n\
+        distribution. Default 60"
       synonyms:
       - -iq
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --std           Standard deviations of the insert size to extend
-        the intervals. Default 5'
+      description: ", --std           Standard deviations of the insert size to extend\
+        \ the\nintervals. Default 5"
       synonyms:
       - -sd
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --sample_size    Number of concordant reads (R2F1) to use for
-        estimating the insert size distribution. Default 100000'
+      description: ", --sample_size    Number of concordant reads (R2F1) to use for\n\
+        estimating the insert size distribution. Default\n100000"
       synonyms:
       - -s
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --merge_fraction  Merge intervals reciprocally overlapping by
-        a fraction. Default 0.99'
+      description: ", --merge_fraction\nMerge intervals reciprocally overlapping by\
+        \ a\nfraction. Default 0.99"
       synonyms:
       - -f
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --interval_probability  Skip edges of the graph with a probability
-        below the threshold. Default: 0.01'
+      description: ", --interval_probability\nSkip edges of the graph with a probability\
+        \ below the\nthreshold. Default: 0.01"
       synonyms:
       - -P
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --clustering_dist  Cluster reads that are K nucleotides appart
-        in the same node. Default: 500'
+      description: ", --clustering_dist\nCluster reads that are K nucleotides appart\
+        \ in the\nsame node. Default: 500"
       synonyms:
       - -K
       args: !EmptyFlagArg {}
@@ -230,8 +417,8 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --allele_frequency  Minimum allele frequency required to report
-        the circle interval. Default (0.1)'
+      description: ", --allele_frequency\nMinimum allele frequency required to report\
+        \ the circle\ninterval. Default (0.1)"
       synonyms:
       - -F
       args: !EmptyFlagArg {}
@@ -244,22 +431,22 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --bases          Number of bases to extend for computing the
-        coverage ratio. Default: 200'
+      description: ", --bases          Number of bases to extend for computing the\
+        \ coverage\nratio. Default: 200"
       synonyms:
       - -b
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --cmapq         Minimum mapping quality treshold for coverage
-        computation. Default: 0'
+      description: ", --cmapq         Minimum mapping quality treshold for coverage\n\
+        computation. Default: 0"
       synonyms:
       - -cq
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --extension      Number of bases inside the eccDNA breakpoint
-        coordinates to compute the ratio. Default: 100'
+      description: ", --extension      Number of bases inside the eccDNA breakpoint\n\
+        coordinates to compute the ratio. Default: 100"
       synonyms:
       - -E
       args: !EmptyFlagArg {}
@@ -282,11 +469,9 @@ parent: &id002 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - Circle-Map
-    - Realign
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -339,31 +524,22 @@ parent: &id002 !Command
       Running options:\n  -t , --threads        Number of threads to use.Default 1\n\
       \  -dir , --directory    Working directory, default is the working directory\n\
       \  -v , --verbose        Verbose level, 1=error,2=warning, 3=message\n"
-    generated_using: &id003
-    - --help
+    generated_using: *id003
   - !Command
+    command:
+    - Circle-Map
+    - bam2bam
     positional:
     - !Positional
-      description: ''
+      description: '-qbam                 Input: query name sorted bam file'
       position: 0
-      name: Circle-Map
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: Realign
+      name: ReadExtractor
       optional: false
     named:
     - !Flag
-      description: 'Input: bam file containing the reads extracted by ReadExtractor'
+      description: 'Input: bam file containing the reads extracted by'
       synonyms:
       - -i
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Input: query name sorted bam file'
-      synonyms:
-      - -qbam
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
@@ -385,50 +561,50 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --cut_off        Probability cut-off for considering a soft-clipped
-        as realigned: Default: 0.99'
+      description: ", --cut_off        Probability cut-off for considering a soft-clipped\
+        \ as\nrealigned: Default: 0.99"
       synonyms:
       - -p
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --min_sc         Minimum soft-clipped length to attempt the
-        realignment. Default: 8'
+      description: ", --min_sc         Minimum soft-clipped length to attempt the\n\
+        realignment. Default: 8"
       synonyms:
       - -m
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --gap_open       Gap open penalty in the position specific scoring
-        matrix. Default: 5'
+      description: ", --gap_open       Gap open penalty in the position specific scoring\n\
+        matrix. Default: 5"
       synonyms:
       - -g
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --gap_ext        Gap extension penalty in the position specific
-        scoring matrix. Default: 1'
+      description: ", --gap_ext        Gap extension penalty in the position specific\
+        \ scoring\nmatrix. Default: 1"
       synonyms:
       - -e
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --mapq           Minimum mapping quality allowed in the supplementary
-        alignments. Default: 20'
+      description: ", --mapq           Minimum mapping quality allowed in the supplementary\n\
+        alignments. Default: 20"
       synonyms:
       - -q
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --edit_distance-fraction  Maximum edit distance fraction allowed
-        in the first realignment. Default (0.05)'
+      description: ", --edit_distance-fraction\nMaximum edit distance fraction allowed\
+        \ in the first\nrealignment. Default (0.05)"
       synonyms:
       - -d
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --split_quality  Minium split score to output an interval. Default
-        (0.0)'
+      description: ", --split_quality\nMinium split score to output an interval. Default\n\
+        (0.0)"
       synonyms:
       - -Q
       args: !EmptyFlagArg {}
@@ -441,36 +617,36 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --insert_mapq   Mapq cutoff for stimating the insert size distribution.
-        Default 60'
+      description: ", --insert_mapq   Mapq cutoff for stimating the insert size\n\
+        distribution. Default 60"
       synonyms:
       - -iq
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --std           Standard deviations of the insert size to extend
-        the intervals. Default 5'
+      description: ", --std           Standard deviations of the insert size to extend\
+        \ the\nintervals. Default 5"
       synonyms:
       - -sd
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --sample_size    Number of concordant reads (R2F1) to use for
-        estimating the insert size distribution. Default 100000'
+      description: ", --sample_size    Number of concordant reads (R2F1) to use for\n\
+        estimating the insert size distribution. Default\n100000"
       synonyms:
       - -s
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --interval_probability  Skip edges of the graph with a probability
-        below the threshold. Default: 0.01'
+      description: ", --interval_probability\nSkip edges of the graph with a probability\
+        \ below the\nthreshold. Default: 0.01"
       synonyms:
       - -P
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --clustering_dist  Cluster reads that are K nucleotides appart
-        in the same node. Default: 500'
+      description: ", --clustering_dist\nCluster reads that are K nucleotides appart\
+        \ in the\nsame node. Default: 500"
       synonyms:
       - -K
       args: !EmptyFlagArg {}
@@ -500,11 +676,9 @@ parent: &id002 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - Circle-Map
-    - bam2bam
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -543,7 +717,16 @@ parent: &id002 !Command
       \ , --verbose        Verbose level, 1=error,2=warning, 3=message\n"
     generated_using: *id003
   - !Command
-    positional: []
+    command:
+    - Circle-Map
+    - Repeats
+    positional:
+    - !Positional
+      description: -dir , --directory   Working directory, default is the working
+        directory
+      position: 0
+      name: variants
+      optional: false
     named:
     - !Flag
       description: 'Input: coordinate name sorted bam file'
@@ -552,16 +735,9 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --output        Ouput: Reads indicating circular DNA structural
-        variants'
+      description: ', --output        Ouput: Reads indicating circular DNA structural'
       synonyms:
       - -o
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --directory   Working directory, default is the working directory'
-      synonyms:
-      - -dir
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
@@ -571,22 +747,22 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --bases         Number of bases to extend for computing the
-        coverage ratio. Default: 200'
+      description: ", --bases         Number of bases to extend for computing the\
+        \ coverage\nratio. Default: 200"
       synonyms:
       - -b
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --cmapq        Minimum mapping quality treshold for coverage
-        computation. Default: 0'
+      description: ", --cmapq        Minimum mapping quality treshold for coverage\n\
+        computation. Default: 0"
       synonyms:
       - -cq
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --extension     Number of bases inside the eccDNA coordinates
-        to compute the ratio. Default: 100'
+      description: ", --extension     Number of bases inside the eccDNA coordinates\
+        \ to\ncompute the ratio. Default: 100"
       synonyms:
       - -E
       args: !EmptyFlagArg {}
@@ -598,8 +774,8 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ', --fraction      Required fraction to merge the intervals of
-        the double mapped reads. Default 0.8'
+      description: ", --fraction      Required fraction to merge the intervals of\
+        \ the double\nmapped reads. Default 0.8"
       synonyms:
       - -f
       args: !EmptyFlagArg {}
@@ -610,11 +786,9 @@ parent: &id002 !Command
       - -n
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - Circle-Map
-    - Repeats
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -633,191 +807,7 @@ parent: &id002 !Command
       \ to merge the intervals of the double\n                       mapped reads.\
       \ Default 0.8\n  -n , --read_number   Minimum number of reads required to output\n"
     generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: Circle-Map
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: bam2bam
-      optional: false
-    named:
-    - !Flag
-      description: Genome fasta file (Needs to be indexed with samtools faidx)
-      synonyms:
-      - -g
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --read-number    Number of reads to simulate'
-      synonyms:
-      - -N
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Output file name
-      synonyms:
-      - -o
-      - --output
-      args: !SimpleFlagArg
-        name: OUTPUT
-      optional: true
-    - !Flag
-      description: ', --directory    Working directory, default is the working directory'
-      synonyms:
-      - -dir
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --base-name      Fastq output basename'
-      synonyms:
-      - -b
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --skip-region    Regions of the genome to skip the simulation.
-        The input needs to be in bed format'
-      synonyms:
-      - -s
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --read-length    Read length to simulate'
-      synonyms:
-      - -r
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --mean-insert    Mean of the insert size distribution'
-      synonyms:
-      - -m
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --mean-coverage  Mean sequencing coverage within the eccDNA
-        coordinates'
-      synonyms:
-      - -c
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --processes      Number of parallel processes to use'
-      synonyms:
-      - -p
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: If set to true, introduce mutations in the reference genome prior
-        to simulatingreads.
-      synonyms:
-      - -v
-      - --variants
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --substitution   Fraction of base substitutions to introduce
-        on the genome. Default: 0.0001'
-      synonyms:
-      - -S
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --Indels         Fraction of indels to introduce on the genome.
-        Default: 0.001'
-      synonyms:
-      - -I
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --java_memory    Java memory allocation, required for mutating
-        the genome. Default: -Xmx16g'
-      synonyms:
-      - -J
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Introduce sequencing errors ( Uses ART on the background)
-      synonyms:
-      - -e
-      - --error
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --instrument     Illumina sequecing instrument to simulate reads
-        from (Default HiSeq 2500)'
-      synonyms:
-      - -i
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --insRate       the first-read insertion rate (default: 0.00009).
-        Requires -e'
-      synonyms:
-      - -ir
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --insRate2     the second-read insertion rate (default: 0.00015).
-        Requires -e'
-      synonyms:
-      - -ir2
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --delRate       the first-read deletion rate (default: 0.00011).
-        Requires -e'
-      synonyms:
-      - -dr
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ', --delRate2     the second-read deletion rate (default: 0.00023).
-        Requires -e'
-      synonyms:
-      - -dr2
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - Circle-Map
-    - Simulate
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "usage: Circle-Map bam2bam [options]\n\nRealign the soft-clipped reads\
-      \ and report\n\nrequired arguments:\n  -g                    Genome fasta file\
-      \ (Needs to be indexed with samtools\n                        faidx)\n  -N ,\
-      \ --read-number    Number of reads to simulate\n\noptional arguments:\n  -o\
-      \ OUTPUT, --output OUTPUT\n                        Output file name\n  -dir\
-      \ , --directory    Working directory, default is the working directory\n  -b\
-      \ , --base-name      Fastq output basename\n  -s , --skip-region    Regions\
-      \ of the genome to skip the simulation. The\n                        input needs\
-      \ to be in bed format\n  -r , --read-length    Read length to simulate\n  -m\
-      \ , --mean-insert    Mean of the insert size distribution\n  -c , --mean-coverage\
-      \ \n                        Mean sequencing coverage within the eccDNA coordinates\n\
-      \  -p , --processes      Number of parallel processes to use\n  -v, --variants\
-      \        If set to true, introduce mutations in the reference\n            \
-      \            genome prior to simulatingreads.\n  -S , --substitution   Fraction\
-      \ of base substitutions to introduce on the\n                        genome.\
-      \ Default: 0.0001\n  -I , --Indels         Fraction of indels to introduce on\
-      \ the genome.\n                        Default: 0.001\n  -J , --java_memory\
-      \    Java memory allocation, required for mutating the\n                   \
-      \     genome. Default: -Xmx16g\n  -e, --error           Introduce sequencing\
-      \ errors ( Uses ART on the\n                        background)\n  -i , --instrument\
-      \     Illumina sequecing instrument to simulate reads from\n               \
-      \         (Default HiSeq 2500)\n  -ir , --insRate       the first-read insertion\
-      \ rate (default: 0.00009).\n                        Requires -e\n  -ir2 , --insRate2\
-      \     the second-read insertion rate (default: 0.00015).\n                 \
-      \       Requires -e\n  -dr , --delRate       the first-read deletion rate (default:\
-      \ 0.00011).\n                        Requires -e\n  -dr2 , --delRate2     the\
-      \ second-read deletion rate (default: 0.00023).\n                        Requires\
-      \ -e\n"
-    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -837,6 +827,7 @@ parent: &id002 !Command
     \noptional arguments:\n  -h, --help            show this help message and exit\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

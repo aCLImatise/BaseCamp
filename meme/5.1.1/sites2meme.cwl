@@ -1,55 +1,59 @@
 class: CommandLineTool
 id: ../../../sites2meme.cwl
 inputs:
-- id: ext
-  doc: "the file extension (with '.') of the sites files; the file name minus the\
-    \ extension will be used as the motif identifer; default: expect an extension\
+- id: in_ext
+  doc: "the file extension (with '.') of the sites files;\nthe file name minus the\
+    \ extension will be\nused as the motif identifer;\ndefault: expect an extension\
     \ of \".txt\""
-  type: string
+  type: File
   inputBinding:
     prefix: -ext
-- id: map
+- id: in_map
   doc: tab separated file containing id, name pairs.
-  type: string
+  type: File
   inputBinding:
     prefix: -map
-- id: protein
-  doc: 'Sets the expected alphabet to protein; default: the expected alphabet is DNA'
+- id: in_protein
+  doc: "Sets the expected alphabet to protein;\ndefault: the expected alphabet is\
+    \ DNA"
   type: boolean
   inputBinding:
     prefix: -protein
-- id: alph
-  doc: 'Set the expected alphabet to the defintion in the file; default: DNA'
-  type: string
+- id: in_alph
+  doc: "Set the expected alphabet to the defintion\nin the file; default: DNA"
+  type: File
   inputBinding:
     prefix: -alph
-- id: bg
-  doc: 'file with background frequencies of letters;  default: use uniform background'
-  type: string
+- id: in_bg
+  doc: "file with background frequencies of letters;\ndefault: use uniform background"
+  type: File
   inputBinding:
     prefix: -bg
-- id: pseudo
-  doc: 'add <total pseudocounts> times letter background to each frequency; default:
-    0'
-  type: string
+- id: in_pseudo
+  doc: "add <total pseudocounts> times letter\nbackground to each frequency; default:\
+    \ 0"
+  type: long
   inputBinding:
     prefix: -pseudo
-- id: log_odds
-  doc: 'print log-odds matrix, too; default: print frequency matrix only'
+- id: in_log_odds
+  doc: "print log-odds matrix, too;\ndefault: print frequency matrix only"
   type: boolean
   inputBinding:
     prefix: -logodds
-- id: url
-  doc: website for the motif; The motif id is substituted for MOTIF_NAME
+- id: in_url
+  doc: "website for the motif; The motif id is\nsubstituted for MOTIF_NAME"
   type: string
   inputBinding:
     prefix: -url
-- id: directory
+- id: in_directory
   doc: ''
   type: Directory
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sites2meme

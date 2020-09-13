@@ -4,4 +4,7 @@ task MatchingAndOrderingTests {
   command <<<
     matchingAndOrderingTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

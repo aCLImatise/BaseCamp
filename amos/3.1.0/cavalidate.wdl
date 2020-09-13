@@ -4,4 +4,7 @@ task Cavalidate {
   command <<<
     cavalidate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

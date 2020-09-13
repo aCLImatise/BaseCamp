@@ -4,4 +4,7 @@ task Mpiswipe {
   command <<<
     mpiswipe
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Contamination {
   command <<<
     contamination
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

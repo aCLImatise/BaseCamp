@@ -1,23 +1,26 @@
 version 1.0
 
-task FmlrcConvert {
+task Fmlrcconvert {
   input {
     Boolean? print_version_number
-    Boolean? force_overwrite_false
-    String? plain_text_bwt
+    Boolean? force_overwrite_existing
+    File? plain_text_bwt
     String out_comp_mbswtdotnpy
   }
   command <<<
-    fmlrc-convert \
+    fmlrc_convert \
       ~{out_comp_mbswtdotnpy} \
-      ~{true="-v" false="" print_version_number} \
-      ~{true="-f" false="" force_overwrite_false} \
+      ~{if (print_version_number) then "-v" else ""} \
+      ~{if (force_overwrite_existing) then "-f" else ""} \
       ~{if defined(plain_text_bwt) then ("-i " +  '"' + plain_text_bwt + '"') else ""}
   >>>
   parameter_meta {
     print_version_number: "print version number and exit"
-    force_overwrite_false: "force overwrite of existing file (default: false)"
+    force_overwrite_existing: "force overwrite of existing file (default: false)"
     plain_text_bwt: "the plain text BWT file to be converted into msbwt format (default: stdin)"
     out_comp_mbswtdotnpy: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

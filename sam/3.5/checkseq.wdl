@@ -4,4 +4,7 @@ task Checkseq {
   command <<<
     checkseq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

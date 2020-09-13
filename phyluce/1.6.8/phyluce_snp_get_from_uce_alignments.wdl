@@ -4,4 +4,7 @@ task PhyluceSnpGetFromUceAlignments {
   command <<<
     phyluce_snp_get_from_uce_alignments
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

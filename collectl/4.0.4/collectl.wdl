@@ -26,35 +26,35 @@ task Collectl {
   command <<<
     collectl \
       ~{switches} \
-      ~{true="--count" false="" count} \
-      ~{true="--filename" false="" filename} \
-      ~{true="--interval" false="" interval} \
-      ~{true="--options" false="" options} \
-      ~{true="--playback" false="" playback} \
-      ~{true="--plot" false="" plot} \
-      ~{true="--subsys" false="" subsys} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--showdefs" false="" show_defs} \
-      ~{true="--helpextend" false="" help_extend} \
-      ~{true="--helpall" false="" help_all} \
-      ~{true="--showoptions" false="" show_options} \
-      ~{true="--showsubsys" false="" show_subsys} \
-      ~{true="--showsubopts" false="" show_sub_opts} \
-      ~{true="--showtopopts" false="" show_top_opts} \
-      ~{true="--showheader" false="" show_header} \
-      ~{true="--showcolheaders" false="" show_col_headers} \
-      ~{true="--showslabaliases" false="" shows_lab_aliases} \
-      ~{true="--showrootslabs" false="" show_roots_labs}
+      ~{if (count) then "--count" else ""} \
+      ~{if (filename) then "--filename" else ""} \
+      ~{if (interval) then "--interval" else ""} \
+      ~{if (options) then "--options" else ""} \
+      ~{if (playback) then "--playback" else ""} \
+      ~{if (plot) then "--plot" else ""} \
+      ~{if (subsys) then "--subsys" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (show_defs) then "--showdefs" else ""} \
+      ~{if (help_extend) then "--helpextend" else ""} \
+      ~{if (help_all) then "--helpall" else ""} \
+      ~{if (show_options) then "--showoptions" else ""} \
+      ~{if (show_subsys) then "--showsubsys" else ""} \
+      ~{if (show_sub_opts) then "--showsubopts" else ""} \
+      ~{if (show_top_opts) then "--showtopopts" else ""} \
+      ~{if (show_header) then "--showheader" else ""} \
+      ~{if (show_col_headers) then "--showcolheaders" else ""} \
+      ~{if (shows_lab_aliases) then "--showslabaliases" else ""} \
+      ~{if (show_roots_labs) then "--showrootslabs" else ""}
   >>>
   parameter_meta {
     count: "count      collect this number of samples and exit"
     filename: "file       name of directory/file to write to"
     interval: "int        collection interval in seconds [default=1]"
-    options: "options    misc formatting options, --showoptions for all d|D - include date in output T - include time in output z - turn off compression of plot files"
-    playback: "file       playback results from 'file' (be sure to quote if wild carded) or the shell might mess it up"
+    options: "options    misc formatting options, --showoptions for all\\nd|D - include date in output\\nT - include time in output\\nz - turn off compression of plot files"
+    playback: "file       playback results from 'file' (be sure to quote\\nif wild carded) or the shell might mess it up"
     plot: "generate output in 'plot' format"
     subsys: "subsys     specify one or more subsystems [default=cdn]"
-    verbose: "display output in verbose format (automatically selected when brief doesn't make sense)"
+    verbose: "display output in verbose format (automatically\\nselected when brief doesn't make sense)"
     show_defs: "print operational defaults"
     help_extend: "extended help, more details descriptions too"
     help_all: "shows all help concatenated together"
@@ -67,5 +67,8 @@ task Collectl {
     shows_lab_aliases: "for SLUB allocator, show non-root aliases"
     show_roots_labs: "same as --showslabaliases but use 'root' names"
     switches: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,6 +1,6 @@
 version 1.0
 
-task ComputeStats {
+task Computestats {
   input {
     String input_filename
     String measured_spec_dir
@@ -16,7 +16,7 @@ task ComputeStats {
     String num_groups
   }
   command <<<
-    compute-stats \
+    compute_stats \
       ~{input_filename} \
       ~{measured_spec_dir} \
       ~{predicted_spec_dir} \
@@ -43,5 +43,8 @@ task ComputeStats {
     clean_target_spectra: ""
     quanti_se_spectra_dec_pl: ""
     num_groups: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

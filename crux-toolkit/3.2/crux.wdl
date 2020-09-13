@@ -4,4 +4,7 @@ task Crux {
   command <<<
     crux
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

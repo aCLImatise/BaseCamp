@@ -14,4 +14,7 @@ task ValidateLocus {
     path_input_file: "Path to input locus file"
     input_directory: "Path to directory containing locus files"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

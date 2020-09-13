@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../phyluce_probe_get_genome_sequences_from_bed.cwl
 inputs:
-- id: bed
+- id: in_bed
   doc: The input BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: two_bit
+- id: in_two_bit
   doc: The input genome to slice in UCSC 2bit format
-  type: string
+  type: long
   inputBinding:
     prefix: --twobit
-- id: output
+- id: in_output
   doc: The output fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: filter_mask
+- id: in_filter_mask
   doc: Filter strings with > X frequency of masked bases
   type: string
   inputBinding:
     prefix: --filter-mask
-- id: max_n
+- id: in_max_n
   doc: The maximum number of ambiguous bases ('N') to accept
   type: long
   inputBinding:
     prefix: --max-n
-- id: buffer_to
-  doc: The length to which to buffer the extracted sequences
-  type: string
+- id: in_buffer_to
+  doc: "The length to which to buffer the extracted sequences\n"
+  type: long
   inputBinding:
     prefix: --buffer-to
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output fasta file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_probe_get_genome_sequences_from_bed

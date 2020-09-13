@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../bstats.cwl
 inputs:
-- id: _verbose
-  doc: ': verbose '
+- id: in__verbose
+  doc: ': verbose'
   type: boolean
   inputBinding:
     prefix: -v
-- id: _sampling_iterations
-  doc: ': Sampling iterations (100) '
+- id: in__sampling_iterations
+  doc: ': Sampling iterations (100)'
   type: long
   inputBinding:
     prefix: -i
-- id: output_diff_data
+- id: in_output_diff_data
   doc: ': Output diff data to <file>'
   type: File
   inputBinding:
     prefix: -d
-- id: b_strap
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file
-  doc: ''
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_diff_data
+  doc: ': Output diff data to <file>'
   type: File
-  inputBinding:
-    position: 1
-outputs: []
+  outputBinding:
+    glob: $(inputs.in_output_diff_data)
 cwlVersion: v1.1
 baseCommand:
 - bstats

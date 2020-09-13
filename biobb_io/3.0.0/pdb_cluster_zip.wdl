@@ -2,8 +2,8 @@ version 1.0
 
 task PdbClusterZip {
   input {
-    String? config
-    String? output_pdb_zip_path
+    File? config
+    File? output_pdb_zip_path
   }
   command <<<
     pdb_cluster_zip \
@@ -12,6 +12,10 @@ task PdbClusterZip {
   >>>
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
-    output_pdb_zip_path: "Output ZIP file name"
+    output_pdb_zip_path: "Output ZIP file name\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_pdb_zip_path = "${in_output_pdb_zip_path}"
   }
 }

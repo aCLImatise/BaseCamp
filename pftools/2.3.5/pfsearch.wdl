@@ -10,8 +10,8 @@ task Pfsearch {
     Boolean? report_individual_matches
     Boolean? use_raw_score
     Boolean? force_profile_disjointness
-    Boolean? value_value_forces
-    Boolean? value_set_mode
+    Boolean? valuecutoff_value_forces
+    Boolean? valueset_normalization_mode
     Boolean? impose_length_limit
     Boolean? using_keywordvalue_pairs
     Boolean? adding_sequence_matched
@@ -20,31 +20,31 @@ task Pfsearch {
     Boolean? list_alignments_psa
     Boolean? list_alignments_human
     Boolean? indicate_profile_start
-    Boolean? value_specifies_width
+    Boolean? valuespecifies_output_width
     Boolean? abcdfhllmmkrsuvwxyz
   }
   command <<<
     pfsearch \
-      ~{true="-a" false="" report_optimal_alignment} \
-      ~{true="-b" false="" search_complementary_strand} \
-      ~{true="-f" false="" input_sequence_file} \
-      ~{true="-l" false="" indicate_highest_number} \
-      ~{true="-L" false="" indicate_highest_text} \
-      ~{true="-m" false="" report_individual_matches} \
-      ~{true="-r" false="" use_raw_score} \
-      ~{true="-u" false="" force_profile_disjointness} \
-      ~{true="-C" false="" value_value_forces} \
-      ~{true="-M" false="" value_set_mode} \
-      ~{true="-d" false="" impose_length_limit} \
-      ~{true="-k" false="" using_keywordvalue_pairs} \
-      ~{true="-j" false="" adding_sequence_matched} \
-      ~{true="-s" false="" list_sequences_matched} \
-      ~{true="-v" false="" suppress_warnings_stderr} \
-      ~{true="-x" false="" list_alignments_psa} \
-      ~{true="-y" false="" list_alignments_human} \
-      ~{true="-z" false="" indicate_profile_start} \
-      ~{true="-W" false="" value_specifies_width} \
-      ~{true="-abCdfhlLmMkrsuvWxyz" false="" abcdfhllmmkrsuvwxyz}
+      ~{if (report_optimal_alignment) then "-a" else ""} \
+      ~{if (search_complementary_strand) then "-b" else ""} \
+      ~{if (input_sequence_file) then "-f" else ""} \
+      ~{if (indicate_highest_number) then "-l" else ""} \
+      ~{if (indicate_highest_text) then "-L" else ""} \
+      ~{if (report_individual_matches) then "-m" else ""} \
+      ~{if (use_raw_score) then "-r" else ""} \
+      ~{if (force_profile_disjointness) then "-u" else ""} \
+      ~{if (valuecutoff_value_forces) then "-C" else ""} \
+      ~{if (valueset_normalization_mode) then "-M" else ""} \
+      ~{if (impose_length_limit) then "-d" else ""} \
+      ~{if (using_keywordvalue_pairs) then "-k" else ""} \
+      ~{if (adding_sequence_matched) then "-j" else ""} \
+      ~{if (list_sequences_matched) then "-s" else ""} \
+      ~{if (suppress_warnings_stderr) then "-v" else ""} \
+      ~{if (list_alignments_psa) then "-x" else ""} \
+      ~{if (list_alignments_human) then "-y" else ""} \
+      ~{if (indicate_profile_start) then "-z" else ""} \
+      ~{if (valuespecifies_output_width) then "-W" else ""} \
+      ~{if (abcdfhllmmkrsuvwxyz) then "-abCdfhlLmMkrsuvWxyz" else ""}
   >>>
   parameter_meta {
     report_optimal_alignment: ": report optimal alignment for all sequences."
@@ -55,8 +55,8 @@ task Pfsearch {
     report_individual_matches: ": report individual matches for circular profiles."
     use_raw_score: ": use raw score."
     force_profile_disjointness: ": force profile disjointness to UNIQUE."
-    value_value_forces: "<value>: cut-off value. An integer value forces -r. Same as parameter C."
-    value_set_mode: "<value>: set the normalization mode to use for the score computation. Overrides the profile PRIORITY parameter."
+    valuecutoff_value_forces: "<value>:\\ncut-off value. An integer value forces -r. Same as parameter C."
+    valueset_normalization_mode: "<value>:\\nset the normalization mode to use for the score computation.\\nOverrides the profile PRIORITY parameter."
     impose_length_limit: ": impose length limit on sequence description."
     using_keywordvalue_pairs: ": output using the xPSA header (using keyword=value pairs)."
     adding_sequence_matched: ": output using the xPSA header adding the sequence matched by itself."
@@ -65,7 +65,10 @@ task Pfsearch {
     list_alignments_psa: ": list alignments in PSA format."
     list_alignments_human: ": list alignments in human readable form."
     indicate_profile_start: ": indicate profile start and stop positions."
-    value_specifies_width: "<value>: specifies the output width. Same as parameter W."
+    valuespecifies_output_width: "<value>:\\nspecifies the output width. Same as parameter W."
     abcdfhllmmkrsuvwxyz: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

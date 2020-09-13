@@ -1,14 +1,17 @@
 version 1.0
 
-task SegmentationFoldUtilsFixFastaHeaders {
+task SegmentationfoldutilsFixfastaheaders {
   input {
-    String fast_a_input_file
+    String fast_a_output_file
   }
   command <<<
-    segmentation-fold-utils fix-fasta-headers \
-      ~{fast_a_input_file}
+    segmentation_fold_utils fix_fasta_headers \
+      ~{fast_a_output_file}
   >>>
   parameter_meta {
-    fast_a_input_file: ""
+    fast_a_output_file: "Options:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

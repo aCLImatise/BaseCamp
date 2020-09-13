@@ -4,4 +4,7 @@ task CactusHalGeneratorTests {
   command <<<
     cactus_halGeneratorTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

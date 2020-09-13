@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../MotifRaptor_preprocess_ukbb_v3.cwl
 inputs:
-- id: g_was_summary
+- id: in_g_was_summary
   doc: GWAS summary statistic - UKBB v3 tsv filename
-  type: string
+  type: File
   inputBinding:
     prefix: --gwas_summary
-- id: threshold
-  doc: threads for pvalue - default 5E-8
-  type: string
+- id: in_threshold
+  doc: "threads for pvalue - default 5E-8\n"
+  type: double
   inputBinding:
     prefix: --threshold
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MotifRaptor

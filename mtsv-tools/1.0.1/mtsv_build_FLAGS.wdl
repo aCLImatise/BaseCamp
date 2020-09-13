@@ -1,17 +1,17 @@
 version 1.0
 
-task MtsvBuildFLAGS {
+task MtsvbuildFLAGS {
   input {
     String? fast_a
-    String? index
   }
   command <<<
-    mtsv-build FLAGS \
-      ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
-      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""}
+    mtsv_build FLAGS \
+      ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""}
   >>>
   parameter_meta {
     fast_a: ""
-    index: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

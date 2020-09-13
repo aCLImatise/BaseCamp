@@ -1,23 +1,23 @@
 version 1.0
 
-task FastaGetMarkov {
+task Fastagetmarkov {
   input {
     String? sequence
-    File? var_1
+    File? file
     String? background
-    File? var_3
   }
   command <<<
-    fasta-get-markov \
+    fasta_get_markov \
       ~{sequence} \
-      ~{var_1} \
-      ~{background} \
-      ~{var_3}
+      ~{file} \
+      ~{background}
   >>>
   parameter_meta {
     sequence: ""
-    var_1: ""
+    file: ""
     background: ""
-    var_3: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

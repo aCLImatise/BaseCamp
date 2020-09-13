@@ -1,87 +1,115 @@
 class: CommandLineTool
 id: ../../../jpredapi.cwl
 inputs:
-- id: silent
+- id: in_silent
   doc: Do not print messages.
   type: boolean
   inputBinding:
     prefix: --silent
-- id: extract
+- id: in_extract
   doc: Extract results tar.gz archive.
   type: boolean
   inputBinding:
     prefix: --extract
-- id: skip_pdb
+- id: in_skip_pdb
   doc: PDB check.
   type: boolean
   inputBinding:
     prefix: --skipPDB
-- id: mode
+- id: in_mode
   doc: 'Submission mode, possible values: single, batch, msa.'
   type: string
   inputBinding:
     prefix: --mode
-- id: format
+- id: in_format
   doc: 'Submission format, possible values: raw, fasta, msf, blc.'
   type: string
   inputBinding:
     prefix: --format
-- id: file
+- id: in_file
   doc: Filename of a file with the job input (sequence(s)).
   type: File
   inputBinding:
     prefix: --file
-- id: seq
+- id: in_seq
   doc: Instead of passing input file, for single-sequence submission.
-  type: string
+  type: File
   inputBinding:
     prefix: --seq
-- id: email
+- id: in_email
   doc: E-mail address where job report will be sent (optional for all but batch submissions).
   type: string
   inputBinding:
     prefix: --email
-- id: name
+- id: in_name
   doc: Job name.
   type: string
   inputBinding:
     prefix: --name
-- id: jobid
+- id: in_jobid
   doc: Job id.
   type: string
   inputBinding:
     prefix: --jobid
-- id: results
+- id: in_results
   doc: Path to directory where to save archive with results.
   type: File
   inputBinding:
     prefix: --results
-- id: rest
+- id: in_rest
   doc: 'REST address of server [default: http://www.compbio.dundee.ac.uk/jpred4/cgi-bin/rest].'
-  type: string
+  type: long
   inputBinding:
     prefix: --rest
-- id: jp_red_four
+- id: in_jp_red_four
   doc: 'Address of Jpred4 server [default: http://www.compbio.dundee.ac.uk/jpred4].'
-  type: string
+  type: long
   inputBinding:
     prefix: --jpred4
-- id: wait
+- id: in_wait
   doc: 'Wait interval before retrying to check job status in seconds [default: 60].'
   type: long
   inputBinding:
     prefix: --wait
-- id: attempts
+- id: in_attempts
   doc: 'Maximum number of attempts to check job status [default: 10].'
   type: long
   inputBinding:
     prefix: --attempts
-- id: submit
+- id: in_v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: in_check_rest_version
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_get_results
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_quota
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_status
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_submit
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - jpredapi

@@ -1,19 +1,15 @@
 class: CommandLineTool
 id: ../../../motifscan.cwl
 inputs:
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-- id: command
-  doc: config       Configure data paths for MotifScan. genome       Genome assembly
-    commands. motif        Motif set (PFMs/PWMs) commands. scan         Scan input
-    regions to detect motif occurrences.
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - motifscan

@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../chromosomer_simulator.cwl
 inputs:
-- id: gap_size
+- id: in_gap_size
   doc: the size of gaps between fragments on a chromosome
-  type: string
+  type: long
   inputBinding:
     prefix: --gap_size
-- id: unplaced
+- id: in_unplaced
   doc: the number of unplaced fragments
-  type: string
+  type: long
   inputBinding:
     prefix: --unplaced
-- id: prefix
+- id: in_prefix
   doc: the prefix for output file names
-  type: string
+  type: File
   inputBinding:
     prefix: --prefix
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prefix
+  doc: the prefix for output file names
+  type: File
+  outputBinding:
+    glob: $(inputs.in_prefix)
 cwlVersion: v1.1
 baseCommand:
 - chromosomer

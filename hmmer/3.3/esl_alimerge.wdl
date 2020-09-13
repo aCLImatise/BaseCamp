@@ -1,8 +1,8 @@
 version 1.0
 
-task EslAlimerge {
+task Eslalimerge {
   input {
-    String? output_final_alignment
+    File? output_final_alignment
     Boolean? print_info_stdout
     Boolean? small
     Boolean? rf_only
@@ -10,17 +10,23 @@ task EslAlimerge {
     Boolean? rna
     Boolean? dna
     Boolean? amino
+    File? list
+    String pfam
+    String psiblast
   }
   command <<<
-    esl-alimerge \
+    esl_alimerge \
+      ~{pfam} \
+      ~{psiblast} \
       ~{if defined(output_final_alignment) then ("-o " +  '"' + output_final_alignment + '"') else ""} \
-      ~{true="-v" false="" print_info_stdout} \
-      ~{true="--small" false="" small} \
-      ~{true="--rfonly" false="" rf_only} \
+      ~{if (print_info_stdout) then "-v" else ""} \
+      ~{if (small) then "--small" else ""} \
+      ~{if (rf_only) then "--rfonly" else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--amino" false="" amino}
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if defined(list) then ("--list " +  '"' + list + '"') else ""}
   >>>
   parameter_meta {
     output_final_alignment: ": output the final alignment to file <f>, not stdout"
@@ -31,5 +37,12 @@ task EslAlimerge {
     rna: ": alignments to merge are RNA alignments"
     dna: ": alignments to merge are DNA alignments"
     amino: ": alignments to merge are protein alignments"
+    list: ""
+    pfam: "a2m"
+    psiblast: "afa"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_final_alignment = "${in_output_final_alignment}"
   }
 }

@@ -2,9 +2,9 @@ version 1.0
 
 task PhyluceSnpPrepIntervalListFileForPicard {
   input {
-    String? bed
-    String? bam
-    String? output_bed_file
+    File? bed
+    File? bam
+    File? output_bed_file
   }
   command <<<
     phyluce_snp_prep_interval_list_file_for_picard \
@@ -16,5 +16,9 @@ task PhyluceSnpPrepIntervalListFileForPicard {
     bed: "The BED file to filter."
     bam: "The BED file to filter."
     output_bed_file: "The output BED file"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_bed_file = "${in_output_bed_file}"
   }
 }

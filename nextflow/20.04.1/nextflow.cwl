@@ -1,33 +1,55 @@
 class: CommandLineTool
-id: ../../../nextflow.bak_view.cwl
+id: ../../../nextflow.cwl
 inputs:
-- id: list_repository_content
-  doc: 'List repository content Default: false'
+- id: in_use_specified_files
+  doc: Use the specified configuration file(s) overriding any defaults
   type: boolean
   inputBinding:
-    prefix: -l
-- id: hide_header_line
-  doc: 'Hide header line Default: false'
+    prefix: -C
+- id: in_set_jvm_properties
+  doc: Set JVM properties
   type: boolean
   inputBinding:
-    prefix: -q
-- id: view
-  doc: ''
-  type: string
+    prefix: -D
+- id: in_bg
+  doc: Execute nextflow in background
+  type: boolean
   inputBinding:
-    position: 0
-- id: project
-  doc: ''
-  type: string
+    prefix: -bg
+- id: in_config
+  doc: Add the specified file to configuration set
+  type: boolean
   inputBinding:
-    position: 1
-- id: name
-  doc: ''
-  type: string
+    prefix: -config
+- id: in_docker_ize
+  doc: Launch nextflow via Docker (experimental)
+  type: boolean
   inputBinding:
-    position: 2
-outputs: []
+    prefix: -dockerize
+- id: in_log
+  doc: Set nextflow log file path
+  type: boolean
+  inputBinding:
+    prefix: -log
+- id: in_quiet
+  doc: Do not print information messages
+  type: boolean
+  inputBinding:
+    prefix: -quiet
+- id: in_syslog
+  doc: Send logs to syslog server (eg. localhost:514)
+  type: boolean
+  inputBinding:
+    prefix: -syslog
+- id: in_version
+  doc: Print the program version
+  type: boolean
+  inputBinding:
+    prefix: -version
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- nextflow.bak
-- view
+- nextflow

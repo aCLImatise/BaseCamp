@@ -1,0 +1,105 @@
+!Command
+command:
+- chunked-scatter
+positional: []
+named:
+- !Flag
+  description: "The prefix of the ouput files. Output will be named\nlike: <PREFIX><N>.bed,\
+    \ in which N is an incrementing\nnumber. Default 'scatter-'."
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: "If set, contigs are allowed to be split up over\nmultiple files."
+  synonyms:
+  - -S
+  - --split-contigs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set prints paths of the output files to STDOUT.\nThis makes the\
+    \ program usable in scripts and\nworfklows."
+  synonyms:
+  - -P
+  - --print-paths
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The size of the chunks. The first chunk in a region or\ncontig will\
+    \ be exactly length SIZE, subsequent chunks\nwill SIZE + OVERLAP and the final\
+    \ chunk may be\nanywhere from 0.5 to 1.5 times SIZE plus overlap. If a\nregion\
+    \ (or contig) is smaller than SIZE the original\nregions will be returned. Defaults\
+    \ to 1e6"
+  synonyms:
+  - -c
+  - --chunk-size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: "The minimum number of bases represented within a\nsingle output bed\
+    \ file. If an input contig or region\nis smaller than this MINIMUM_BP_PER_FILE,\
+    \ then the\nnext contigs/regions will be placed in the same file\nuntill this\
+    \ minimum is met. Defaults to 45e6."
+  synonyms:
+  - -m
+  - --minimum-bp-per-file
+  args: !SimpleFlagArg
+    name: MINIMUM_BP_PER_FILE
+  optional: true
+- !Flag
+  description: "The number of bases which each chunk should overlap\nwith the preceding\
+    \ one. Defaults to 150.\n"
+  synonyms:
+  - -o
+  - --overlap
+  args: !SimpleFlagArg
+    name: OVERLAP
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: chunked-scatter [-h] [-p PREFIX] [-S] [-P] [-c SIZE]\n        \
+  \               [-m MINIMUM_BP_PER_FILE] [-o OVERLAP]\n                       INPUT\n\
+  \nGiven a sequence dict, fasta index or a bed file, scatter over the defined\ncontigs/regions.\
+  \ Each contig/region will be split into multiple overlapping\nregions, which will\
+  \ be written to a new bed file. Each contig will be placed\nin a new file, unless\
+  \ the length of the contigs/regions doesn't exceed a given\nnumber.\n\npositional\
+  \ arguments:\n  INPUT                 The input file. The format is detected by\
+  \ the\n                        extension. Supported extensions are: '.bed', '.dict',\n\
+  \                        '.fai', '.vcf', '.vcf.gz', '.bcf'.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -p PREFIX, --prefix\
+  \ PREFIX\n                        The prefix of the ouput files. Output will be\
+  \ named\n                        like: <PREFIX><N>.bed, in which N is an incrementing\n\
+  \                        number. Default 'scatter-'.\n  -S, --split-contigs   If\
+  \ set, contigs are allowed to be split up over\n                        multiple\
+  \ files.\n  -P, --print-paths     If set prints paths of the output files to STDOUT.\n\
+  \                        This makes the program usable in scripts and\n        \
+  \                worfklows.\n  -c SIZE, --chunk-size SIZE\n                    \
+  \    The size of the chunks. The first chunk in a region or\n                  \
+  \      contig will be exactly length SIZE, subsequent chunks\n                 \
+  \       will SIZE + OVERLAP and the final chunk may be\n                       \
+  \ anywhere from 0.5 to 1.5 times SIZE plus overlap. If a\n                     \
+  \   region (or contig) is smaller than SIZE the original\n                     \
+  \   regions will be returned. Defaults to 1e6\n  -m MINIMUM_BP_PER_FILE, --minimum-bp-per-file\
+  \ MINIMUM_BP_PER_FILE\n                        The minimum number of bases represented\
+  \ within a\n                        single output bed file. If an input contig or\
+  \ region\n                        is smaller than this MINIMUM_BP_PER_FILE, then\
+  \ the\n                        next contigs/regions will be placed in the same file\n\
+  \                        untill this minimum is met. Defaults to 45e6.\n  -o OVERLAP,\
+  \ --overlap OVERLAP\n                        The number of bases which each chunk\
+  \ should overlap\n                        with the preceding one. Defaults to 150.\n"
+generated_using:
+- --help

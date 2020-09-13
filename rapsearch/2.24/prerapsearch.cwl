@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../prerapsearch.cwl
 inputs:
-- id: splits_database_specified
+- id: in_splits_database_specified
   doc: (splits the database into specified number of files)
-  type: string
+  type: long
   inputBinding:
     prefix: -s
-- id: output_full_headers
+- id: in_output_full_fasta
   doc: (output the full fasta headers of subjects to faicilitate anonotation)
   type: string
   inputBinding:
     prefix: -f
-- id: d
+- id: in_n
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -n
+- id: in_d
   doc: ''
   type: string
   inputBinding:
     prefix: -d
-- id: n
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -n
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - prerapsearch

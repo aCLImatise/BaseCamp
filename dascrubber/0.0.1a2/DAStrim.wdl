@@ -2,25 +2,25 @@ version 1.0
 
 task DAStrim {
   input {
-    Boolean? v
-    Boolean? g
     Boolean? b
-    Int var_3
-    Int var_4
+    Boolean? g
+    Boolean? v
+    Int var_int
   }
   command <<<
     DAStrim \
-      ~{var_3} \
-      ~{var_4} \
-      ~{true="-v" false="" v} \
-      ~{true="-g" false="" g} \
-      ~{true="-b" false="" b}
+      ~{var_int} \
+      ~{if (b) then "-b" else ""} \
+      ~{if (g) then "-g" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    v: ""
-    g: ""
     b: ""
-    var_3: ""
-    var_4: ""
+    g: ""
+    v: ""
+    var_int: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

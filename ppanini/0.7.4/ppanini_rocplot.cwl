@@ -1,62 +1,80 @@
 class: CommandLineTool
 id: ../../../ppanini_rocplot.cwl
 inputs:
-- id: master_plot
+- id: in_p_panini_output
+  doc: PPANINI output table
+  type: string
+  inputBinding:
+    prefix: --ppanini-output
+- id: in_essential_genes_one
+  doc: "<feature id>\na list of essential genes)"
+  type: long
+  inputBinding:
+    prefix: --essential-genes1
+- id: in_essential_genes_two
+  doc: "<feature id>\na list of essential genes)"
+  type: long
+  inputBinding:
+    prefix: --essential-genes2
+- id: in_master_plot
   doc: plotting master figure of the paper
   type: boolean
   inputBinding:
     prefix: --master-plot
-- id: plot_meta_genomics
+- id: in_plot_meta_genomics
   doc: plotting based of metagenomics priority score
   type: boolean
   inputBinding:
     prefix: --plot-metagenomics
-- id: plot_genomics
+- id: in_plot_genomics
   doc: plotting based of genomics priority score
   type: boolean
   inputBinding:
     prefix: --plot-genomics
-- id: path
+- id: in_path
   doc: path for inputs and/or outputs
   type: File
   inputBinding:
     prefix: --path
-- id: outfile
+- id: in_outfile
   doc: output file
-  type: string
+  type: File
   inputBinding:
     prefix: --outfile
-- id: beta
+- id: in_beta
   doc: beta is a weight of contribution, B * prevelence and (1-B) * abundance
-  type: string
+  type: long
   inputBinding:
     prefix: --beta
-- id: size
+- id: in_size
   doc: size of the plot in inches
   type: long
   inputBinding:
     prefix: --size
-- id: output
+- id: in_output
   doc: a name or output file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: niche
+- id: in_niche
   doc: niche name
   type: string
   inputBinding:
     prefix: --niche
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-- id: e_one
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -e1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outfile
+  doc: output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
+- id: out_output
+  doc: a name or output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - ppanini_rocplot

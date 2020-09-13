@@ -4,4 +4,7 @@ task Checkv {
   command <<<
     checkv
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

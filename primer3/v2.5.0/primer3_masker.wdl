@@ -15,16 +15,16 @@ task Primer3Masker {
   }
   command <<<
     primer3_masker \
-      ~{true="--probability_cutoff" false="" probability_cut_off} \
-      ~{true="--kmer_lists_path" false="" km_er_lists_path} \
-      ~{true="--list_prefix" false="" list_prefix} \
-      ~{true="--absolute_value_cutoff" false="" absolute_value_cut_off} \
-      ~{true="--list" false="" list} \
-      ~{true="--mask_5p" false="" mask_five_p} \
-      ~{true="--mask_3p" false="" mask_three_p} \
-      ~{true="--masking_char" false="" masking_char} \
-      ~{true="--soft_mask" false="" soft_mask} \
-      ~{true="--masking_direction" false="" masking_direction}
+      ~{if (probability_cut_off) then "--probability_cutoff" else ""} \
+      ~{if (km_er_lists_path) then "--kmer_lists_path" else ""} \
+      ~{if (list_prefix) then "--list_prefix" else ""} \
+      ~{if (absolute_value_cut_off) then "--absolute_value_cutoff" else ""} \
+      ~{if (list) then "--list" else ""} \
+      ~{if (mask_five_p) then "--mask_5p" else ""} \
+      ~{if (mask_three_p) then "--mask_3p" else ""} \
+      ~{if (masking_char) then "--masking_char" else ""} \
+      ~{if (soft_mask) then "--soft_mask" else ""} \
+      ~{if (masking_direction) then "--masking_direction" else ""}
   >>>
   parameter_meta {
     probability_cut_off: "- masking cutoff [0, 1] (default: >=0.1)"
@@ -37,5 +37,8 @@ task Primer3Masker {
     masking_char: "- character used for masking (default: N)"
     soft_mask: "- use soft masking (default: false)"
     masking_direction: "- a strand to mask (fwd, rev, both) (default: both)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

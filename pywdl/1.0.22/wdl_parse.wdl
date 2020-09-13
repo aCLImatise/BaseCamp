@@ -4,4 +4,7 @@ task WdlParse {
   command <<<
     wdl parse
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

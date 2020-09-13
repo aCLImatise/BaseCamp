@@ -2,8 +2,8 @@ version 1.0
 
 task RiboSwap {
   input {
-    String? output_directory_default
-    String? verbosity
+    Directory? output_directory_default
+    File? verbosity
     String de_novo_file
     String de_fere_novo_file
     String bad_contig
@@ -19,11 +19,16 @@ task RiboSwap {
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
   >>>
   parameter_meta {
-    output_directory_default: "output directory; default: /tmp/tmpdvlbjbbn"
-    verbosity: "Logger writes debug to file in output dir; this sets verbosity level sent to stderr. 1 = debug(), 2 = info(), 3 = warning(), 4 = error() and 5 = critical(); default: 2"
+    output_directory_default: "output directory; default: /"
+    verbosity: "Logger writes debug to file in output dir; this sets\\nverbosity level sent to stderr. 1 = debug(), 2 =\\ninfo(), 3 = warning(), 4 = error() and 5 = critical();\\ndefault: 2"
     de_novo_file: "multifasta containing de novo contigs"
     de_fere_novo_file: "multifasta containing de fere novo contigs"
     bad_contig: "name of the bad contig"
     good_contigs: "colon separated good contigs for replacement"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_default = "${in_output_directory_default}"
+    File out_verbosity = "${in_verbosity}"
   }
 }

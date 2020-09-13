@@ -1,589 +1,686 @@
 class: CommandLineTool
 id: ../../../octopus.cwl
 inputs:
-- id: config
-  doc: A config file, used to populate command line options
-  type: string
+- id: in_config
+  doc: "A config file, used to populate command\nline options"
+  type: File
   inputBinding:
     prefix: --config
-- id: debug
-  doc: '[=arg(="octopus_debug.log")]  Writes verbose debug information to  debug.log
-    in the working directory'
+- id: in_debug
+  doc: "[=arg(=\"octopus_debug.log\")]  Writes verbose debug information to\ndebug.log\
+    \ in the working directory"
   type: boolean
   inputBinding:
     prefix: --debug
-- id: trace
-  doc: '[=arg(="octopus_trace.log")]  Writes very verbose debug information  to trace.log
-    in the working directory'
+- id: in_trace
+  doc: "[=arg(=\"octopus_trace.log\")]  Writes very verbose debug information\nto\
+    \ trace.log in the working directory"
   type: boolean
   inputBinding:
     prefix: --trace
-- id: fast
-  doc: Turns off some features to improve  runtime, at the cost of decreased  calling
-    accuracy. Equivalent to '-a off -l minimal -x 50`
+- id: in_fast
+  doc: "Turns off some features to improve\nruntime, at the cost of decreased\ncalling\
+    \ accuracy. Equivalent to '-a off\n-l minimal -x 50`"
   type: boolean
   inputBinding:
     prefix: --fast
-- id: very_fast
-  doc: The same as fast but also disables  inactive flank scoring
+- id: in_very_fast
+  doc: "The same as fast but also disables\ninactive flank scoring"
   type: boolean
   inputBinding:
     prefix: --very-fast
-- id: arg_sets_directory
+- id: in_arg_sets_directory
   doc: '[ --working-directory ] arg        Sets the working directory'
   type: boolean
   inputBinding:
     prefix: -w
-- id: threads
-  doc: '[=arg(=0)]                  Maximum number of threads to be used,  enabling
-    this option with no argument  lets the application decide the number  of threads
-    ands enables specific  algorithm parallelisation'
+- id: in_threads
+  doc: "[=arg(=0)]                  Maximum number of threads to be used,\nenabling\
+    \ this option with no argument\nlets the application decide the number\nof threads\
+    \ ands enables specific\nalgorithm parallelisation"
   type: boolean
   inputBinding:
     prefix: --threads
-- id: arg_mb_maximum
-  doc: '[ --max-reference-cache-footprint ] arg (=500MB) Maximum memory footprint
-    for cached  reference sequence'
+- id: in_arg_mbmaximum_memory
+  doc: "[ --max-reference-cache-footprint ] arg (=500MB)\nMaximum memory footprint\
+    \ for cached\nreference sequence"
   type: boolean
   inputBinding:
     prefix: -X
-- id: arg_gb_none
-  doc: '[ --target-read-buffer-footprint ] arg (=6GB) None binding request to limit
-    the  memory footprint of buffered read data'
+- id: in_arg_gbnone_binding
+  doc: "[ --target-read-buffer-footprint ] arg (=6GB)\nNone binding request to limit\
+    \ the\nmemory footprint of buffered read data"
   type: boolean
   inputBinding:
     prefix: -B
-- id: max_open_read_files
-  doc: (=250)      Limits the number of read files that  can be open simultaneously
-  type: string
+- id: in_max_open_read_files
+  doc: "(=250)      Limits the number of read files that\ncan be open simultaneously"
+  type: long
   inputBinding:
     prefix: --max-open-read-files
-- id: target_working_memory
-  doc: Target working memory footprint for  analysis not including read or  reference
-    footprint
+- id: in_target_working_memory
+  doc: "Target working memory footprint for\nanalysis not including read or\nreference\
+    \ footprint"
   type: string
   inputBinding:
     prefix: --target-working-memory
-- id: temp_directory_prefix
-  doc: (="octopus-temp") File name prefix of temporary directory for calling
-  type: string
+- id: in_temp_directory_prefix
+  doc: "(=\"octopus-temp\")\nFile name prefix of temporary directory\nfor calling"
+  type: Directory
   inputBinding:
     prefix: --temp-directory-prefix
-- id: arg_fasta_format
-  doc: '[ --reference ] arg                FASTA format reference genome file to  be
-    analysed. Target regions will be  extracted from the reference index if  not provded
-    explicitly'
+- id: in_arg_fasta_format
+  doc: "[ --reference ] arg                FASTA format reference genome file to\n\
+    be analysed. Target regions will be\nextracted from the reference index if\nnot\
+    \ provded explicitly"
   type: boolean
   inputBinding:
     prefix: -R
-- id: arg_spaceseparated_list_analysed
-  doc: '[ --reads ] arg                    Space-separated list of BAM/CRAM files  to
-    be analysed. May be specified  multiple times'
+- id: in_arg_spaceseparated_list_bamcram
+  doc: "[ --reads ] arg                    Space-separated list of BAM/CRAM files\n\
+    to be analysed. May be specified\nmultiple times"
   type: boolean
   inputBinding:
     prefix: -I
-- id: arg_files_containing
-  doc: '[ --reads-file ] arg               Files containing lists of BAM/CRAM  files,
-    one per line, to be analysed'
+- id: in_arg_files_containing
+  doc: "[ --reads-file ] arg               Files containing lists of BAM/CRAM\nfiles,\
+    \ one per line, to be analysed"
   type: boolean
   inputBinding:
     prefix: -i
-- id: one_based_indexing
-  doc: Notifies that input regions are given  using one based indexing rather than  zero
-    based
+- id: in_one_based_indexing
+  doc: "Notifies that input regions are given\nusing one based indexing rather than\n\
+    zero based"
   type: boolean
   inputBinding:
     prefix: --one-based-indexing
-- id: arg_list_regions
-  doc: '[ --regions ] arg                  Space-separated list of regions  (chrom:begin-end)
-    to be analysed. May  be specified multiple times'
+- id: in_arg_spaceseparated_regionschrombeginend
+  doc: "[ --regions ] arg                  Space-separated list of regions\n(chrom:begin-end)\
+    \ to be analysed. May\nbe specified multiple times"
   type: boolean
   inputBinding:
     prefix: -T
-- id: arg_file_containing
-  doc: '[ --regions-file ] arg             File containing a list of regions  (chrom:begin-end),
-    one per line, to be  analysed'
+- id: in_arg_file_containing
+  doc: "[ --regions-file ] arg             File containing a list of regions\n(chrom:begin-end),\
+    \ one per line, to be\nanalysed"
   type: boolean
   inputBinding:
     prefix: -t
-- id: arg_spaceseparated_list_regions
-  doc: '[ --skip-regions ] arg             Space-separated list of regions  (chrom:begin-end)
-    to skip May be  specified multiple times'
+- id: in_arg_spaceseparated_list_skip
+  doc: "[ --skip-regions ] arg             Space-separated list of regions\n(chrom:begin-end)\
+    \ to skip May be\nspecified multiple times"
   type: boolean
   inputBinding:
     prefix: -K
-- id: arg_file_regions
-  doc: '[ --skip-regions-file ] arg        File of regions (chrom:begin-end), one  per
-    line, to skip'
+- id: in_arg_file_regions
+  doc: "[ --skip-regions-file ] arg        File of regions (chrom:begin-end), one\n\
+    per line, to skip"
   type: boolean
   inputBinding:
     prefix: -k
-- id: arg_spaceseparated_sample
-  doc: '[ --samples ] arg                  Space-separated list of sample names to
-    analyse'
+- id: in_arg_spaceseparated_sample
+  doc: '[ --samples ] arg                  Space-separated list of sample names to'
   type: boolean
   inputBinding:
     prefix: -S
-- id: arg_file_analyse
-  doc: '[ --samples-file ] arg             File of sample names to analyse, one  per
-    line, which must be a subset of the samples that appear in the read files'
-  type: boolean
-  inputBinding:
-    prefix: -s
-- id: ignore_unmapped_contigs
-  doc: Ignore any contigs that are not present in the read files
+- id: in_ignore_unmapped_contigs
+  doc: "Ignore any contigs that are not present\nin the read files"
   type: boolean
   inputBinding:
     prefix: --ignore-unmapped-contigs
-- id: pedigree
+- id: in_pedigree
   doc: PED file containing sample pedigree
-  type: string
+  type: File
   inputBinding:
     prefix: --pedigree
-- id: arg_file_where
-  doc: '[ --output ] arg                   File to where output is written. If  unspecified,
-    calls are written to  stdout'
-  type: boolean
+- id: in_arg_file_where
+  doc: "[ --output ] arg                   File to where output is written. If\nunspecified,\
+    \ calls are written to\nstdout"
+  type: File
   inputBinding:
     prefix: -o
-- id: contig_output_order
-  doc: (=asInReferenceIndex) The order contigs should be written to  the output
+- id: in_contig_output_order
+  doc: "(=asInReferenceIndex)\nThe order contigs should be written to\nthe output"
   type: string
   inputBinding:
     prefix: --contig-output-order
-- id: sites_only
-  doc: Only reports call sites (i.e. without  sample genotype information)
+- id: in_sites_only
+  doc: "Only reports call sites (i.e. without\nsample genotype information)"
   type: boolean
   inputBinding:
     prefix: --sites-only
-- id: legacy
-  doc: Outputs a legacy version of the final  callset in addition to the native  version
+- id: in_legacy
+  doc: "Outputs a legacy version of the final\ncallset in addition to the native\n\
+    version"
   type: boolean
   inputBinding:
     prefix: --legacy
-- id: re_genotype
-  doc: VCF file specifying calls to  regenotype, only sites in this files  will appear
-    in the final output
-  type: string
+- id: in_re_genotype
+  doc: "VCF file specifying calls to\nregenotype, only sites in this files\nwill appear\
+    \ in the final output"
+  type: File
   inputBinding:
     prefix: --regenotype
-- id: bam_out
+- id: in_bam_out
   doc: Output realigned BAM files
   type: string
   inputBinding:
     prefix: --bamout
-- id: full_bam_out
-  doc: Output all reads when producing  realigned bam outputs rather than just  variant
-    read minibams
+- id: in_full_bam_out
+  doc: "Output all reads when producing\nrealigned bam outputs rather than just\n\
+    variant read minibams"
   type: boolean
   inputBinding:
     prefix: --full-bamout
-- id: data_profile
-  doc: Output a profile of polymorphisms and  errors found in the data
+- id: in_data_profile
+  doc: "Output a profile of polymorphisms and\nerrors found in the data"
   type: string
   inputBinding:
     prefix: --data-profile
-- id: read_filtering
+- id: in_read_transforms
+  doc: (=1)            Enable all read transformations
+  type: long
+  inputBinding:
+    prefix: --read-transforms
+- id: in_mask_low_quality_tails
+  doc: "[=arg(=3)]   Masks read tail bases with base quality\nless than this"
+  type: boolean
+  inputBinding:
+    prefix: --mask-low-quality-tails
+- id: in_mask_tails
+  doc: "[=arg(=1)]               Unconditionally mask this many read\ntail sbases"
+  type: boolean
+  inputBinding:
+    prefix: --mask-tails
+- id: in_soft_clip_masking
+  doc: (=1)          Turn on or off soft clip base
+  type: long
+  inputBinding:
+    prefix: --soft-clip-masking
+- id: in_mask_soft_clipped_boundary_bases
+  doc: "(=2)\nMasks this number of adjacent non soft\nclipped bases when soft clipped\
+    \ bases\nare present"
+  type: long
+  inputBinding:
+    prefix: --mask-soft-clipped-boundary-bases
+- id: in_adapter_masking
+  doc: (=1)            Enable adapter detection and masking
+  type: long
+  inputBinding:
+    prefix: --adapter-masking
+- id: in_overlap_masking
+  doc: (=1)            Enable read segment overlap masking
+  type: long
+  inputBinding:
+    prefix: --overlap-masking
+- id: in_mask_inverted_soft_clipping
+  doc: "(=0)\nMask soft clipped sequence that is an\ninverted copy of a proximate\
+    \ sequence"
+  type: long
+  inputBinding:
+    prefix: --mask-inverted-soft-clipping
+- id: in_mask_three_prime_shifted_soft_clipped_heads
+  doc: "(=0)\nMask soft clipped read head sequence\nthat is a copy of a proximate\
+    \ 3'\nsequence"
+  type: long
+  inputBinding:
+    prefix: --mask-3prime-shifted-soft-clipped-heads
+- id: in_read_filtering
   doc: (=1)             Enable all read filters
-  type: string
+  type: long
   inputBinding:
     prefix: --read-filtering
-- id: consider_unmapped_reads
-  doc: Allows reads marked as unmapped to be  used for calling
+- id: in_consider_unmapped_reads
+  doc: "Allows reads marked as unmapped to be\nused for calling"
   type: boolean
   inputBinding:
     prefix: --consider-unmapped-reads
-- id: min_mapping_quality
-  doc: (=20)       Minimum read mapping quality required  to consider a read for calling
-  type: string
+- id: in_min_mapping_quality
+  doc: "(=20)       Minimum read mapping quality required\nto consider a read for\
+    \ calling"
+  type: long
   inputBinding:
     prefix: --min-mapping-quality
-- id: good_base_quality
-  doc: (=20)         Base quality threshold used by  min-good-bases and min-good-base-fracti
-    on filters
-  type: string
+- id: in_good_base_quality
+  doc: "(=20)         Base quality threshold used by\nmin-good-bases and min-good-base-fracti\n\
+    on filters"
+  type: long
   inputBinding:
     prefix: --good-base-quality
-- id: min_good_base_fraction
-  doc: '[=arg(=0.5)] Base quality threshold used by  min-good-bases filter'
+- id: in_min_good_base_fraction
+  doc: "[=arg(=0.5)] Base quality threshold used by\nmin-good-bases filter"
   type: boolean
   inputBinding:
     prefix: --min-good-base-fraction
-- id: min_good_bases
-  doc: (=20)            Minimum number of bases with quality  min-base-quality before
-    read is  considered
-  type: string
+- id: in_min_good_bases
+  doc: "(=20)            Minimum number of bases with quality\nmin-base-quality before\
+    \ read is\nconsidered"
+  type: long
   inputBinding:
     prefix: --min-good-bases
-- id: allow_qc_fails
+- id: in_allow_qc_fails
   doc: Filters reads marked as QC failed
   type: boolean
   inputBinding:
     prefix: --allow-qc-fails
-- id: min_read_length
+- id: in_min_read_length
   doc: Filters reads shorter than this
-  type: string
+  type: long
   inputBinding:
     prefix: --min-read-length
-- id: max_read_length
+- id: in_max_read_length
   doc: Filter reads longer than this
-  type: string
+  type: long
   inputBinding:
     prefix: --max-read-length
-- id: allow_marked_duplicates
-  doc: Allows reads marked as duplicate in  alignment record
+- id: in_allow_marked_duplicates
+  doc: "Allows reads marked as duplicate in\nalignment record"
   type: boolean
   inputBinding:
     prefix: --allow-marked-duplicates
-- id: allow_octopus_duplicates
-  doc: Allows reads considered duplicates by  octopus
+- id: in_allow_octopus_duplicates
+  doc: Allows reads considered duplicates by
   type: boolean
   inputBinding:
     prefix: --allow-octopus-duplicates
-- id: allow_secondary_alignments
-  doc: Allows reads marked as secondary  alignments
-  type: boolean
-  inputBinding:
-    prefix: --allow-secondary-alignments
-- id: allow_supplementary_alignments
-  doc: Allows reads marked as supplementary  alignments
-  type: boolean
-  inputBinding:
-    prefix: --allow-supplementary-alignments
-- id: no_reads_with_unmapped_segments
-  doc: Filter reads with unmapped template  segments to be used for calling
-  type: boolean
-  inputBinding:
-    prefix: --no-reads-with-unmapped-segments
-- id: no_reads_with_distant_segments
-  doc: Filter reads with template segments  that are on different contigs
+- id: in_no_reads_with_distant_segments
+  doc: "Filter reads with template segments\nthat are on different contigs"
   type: boolean
   inputBinding:
     prefix: --no-reads-with-distant-segments
-- id: no_adapter_contaminated_reads
-  doc: Filter reads with possible adapter  contamination
+- id: in_no_adapter_contaminated_reads
+  doc: Filter reads with possible adapter
   type: boolean
   inputBinding:
     prefix: --no-adapter-contaminated-reads
-- id: disable_downsampling
-  doc: Disables downsampling
-  type: boolean
-  inputBinding:
-    prefix: --disable-downsampling
-- id: down_sample_above
-  doc: (=1000)        Downsample reads in regions where  coverage is over this
-  type: string
+- id: in_down_sample_above
+  doc: "(=1000)        Downsample reads in regions where\ncoverage is over this"
+  type: long
   inputBinding:
     prefix: --downsample-above
-- id: down_sample_target
+- id: in_down_sample_target
   doc: (=500)        The target coverage for the downsampler
-  type: string
+  type: long
   inputBinding:
     prefix: --downsample-target
-- id: arg_generation_from
-  doc: '[ --raw-cigar-candidate-generator ] arg (=1) Enable candidate generation from
-    raw  read alignments (CIGAR strings)'
+- id: in_arg_enable_candidate_generation_rawread
+  doc: "[ --raw-cigar-candidate-generator ] arg (=1)\nEnable candidate generation\
+    \ from raw\nread alignments (CIGAR strings)"
   type: boolean
   inputBinding:
     prefix: -g
-- id: repeat_candidate_generator
-  doc: (=1) Enable candidate generation from  adjusted read alignments (CIGAR  strings)
-    around tandem repeats
-  type: string
+- id: in_repeat_candidate_generator
+  doc: "(=1) Enable candidate generation from\nadjusted read alignments (CIGAR\nstrings)\
+    \ around tandem repeats"
+  type: long
   inputBinding:
     prefix: --repeat-candidate-generator
-- id: arg_using_local
-  doc: '[ --assembly-candidate-generator ] arg (=1) Enable candidate generation using
-    local re-assembly'
+- id: in_arg_enable_candidate_generation_using
+  doc: "[ --assembly-candidate-generator ] arg (=1)\nEnable candidate generation using\
+    \ local\nre-assembly"
   type: boolean
   inputBinding:
     prefix: -a
-- id: arg_variant_file
-  doc: '[ --source-candidates ] arg        Variant file paths containing known  variants.
-    These variants will  automatically become candidates'
+- id: in_arg_variant_paths
+  doc: "[ --source-candidates ] arg        Variant file paths containing known\nvariants.\
+    \ These variants will\nautomatically become candidates"
   type: boolean
   inputBinding:
     prefix: -c
-- id: source_candidates_file
-  doc: Files containing lists of source  candidate variant files
-  type: string
+- id: in_source_candidates_file
+  doc: "Files containing lists of source\ncandidate variant files"
+  type: File
   inputBinding:
     prefix: --source-candidates-file
-- id: min_source_quality
-  doc: '[=arg(=2)]       Only variants with quality above this  value are considered
-    for candidate  generation'
+- id: in_min_source_quality
+  doc: "[=arg(=2)]       Only variants with quality above this\nvalue are considered\
+    \ for candidate\ngeneration"
   type: boolean
   inputBinding:
     prefix: --min-source-quality
-- id: use_filtered_source_candidates
-  doc: (=0) Use variants from source VCF records  that have been filtered
-  type: string
+- id: in_use_filtered_source_candidates
+  doc: "(=0)\nUse variants from source VCF records\nthat have been filtered"
+  type: long
   inputBinding:
     prefix: --use-filtered-source-candidates
-- id: min_base_quality
-  doc: (=20)          Only bases with quality above this  value are considered for
-    candidate  generation
-  type: string
+- id: in_min_base_quality
+  doc: "(=20)          Only bases with quality above this\nvalue are considered for\
+    \ candidate\ngeneration"
+  type: long
   inputBinding:
     prefix: --min-base-quality
-- id: min_supporting_reads
-  doc: '[=arg(=2)]     Minimum number of reads that must  support a variant if it
-    is to be  considered a candidate. By default  octopus will automatically determine  this
-    value'
+- id: in_min_supporting_reads
+  doc: "[=arg(=2)]     Minimum number of reads that must\nsupport a variant if it\
+    \ is to be\nconsidered a candidate. By default\noctopus will automatically determine\n\
+    this value"
   type: boolean
   inputBinding:
     prefix: --min-supporting-reads
-- id: max_variant_size
-  doc: (=2000)        Maximum candidate variant size to  consider (in region space)
-  type: string
+- id: in_max_variant_size
+  doc: "(=2000)        Maximum candidate variant size to\nconsider (in region space)"
+  type: long
   inputBinding:
     prefix: --max-variant-size
-- id: km_er_sizes
+- id: in_km_er_sizes
   doc: (=10 15 20)          Kmer sizes to use for local assembly
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer-sizes
-- id: num_fall_back_km_ers
-  doc: (=10)        How many local assembly fallback kmer  sizes to use if the default
-    sizes fail
-  type: string
+- id: in_num_fall_back_km_ers
+  doc: "(=10)        How many local assembly fallback kmer\nsizes to use if the default\
+    \ sizes fail"
+  type: long
   inputBinding:
     prefix: --num-fallback-kmers
-- id: fall_back_km_er_gap
-  doc: (=10)         The gap size used to generate local  assembly fallback kmers
-  type: string
+- id: in_fall_back_km_er_gap
+  doc: "(=10)         The gap size used to generate local\nassembly fallback kmers"
+  type: long
   inputBinding:
     prefix: --fallback-kmer-gap
-- id: max_region_to_assemble
-  doc: (=400)   The maximum region size that can be  used for local assembly
-  type: string
+- id: in_max_region_to_assemble
+  doc: "(=400)   The maximum region size that can be\nused for local assembly"
+  type: long
   inputBinding:
     prefix: --max-region-to-assemble
-- id: max_assemble_region_overlap
-  doc: (=200) The maximum number of bases allowed to  overlap assembly regions
-  type: string
+- id: in_max_assemble_region_overlap
+  doc: "(=200)\nThe maximum number of bases allowed to\noverlap assembly regions"
+  type: long
   inputBinding:
     prefix: --max-assemble-region-overlap
-- id: assemble_all
+- id: in_assemble_all
   doc: Forces all regions to be assembled
   type: boolean
   inputBinding:
     prefix: --assemble-all
-- id: assembler_mask_base_quality
-  doc: (=10) Aligned bases with quality less than  this will be converted to reference  before
-    being inserted into the De  Bruijn graph
-  type: string
+- id: in_assembler_mask_base_quality
+  doc: "(=10)\nAligned bases with quality less than\nthis will be converted to reference\n\
+    before being inserted into the De\nBruijn graph"
+  type: long
   inputBinding:
     prefix: --assembler-mask-base-quality
-- id: min_km_er_prune
-  doc: (=2)             Minimum number of read observations to  keep a kmer in the
-    assembly graph  before bubble extraction
-  type: string
+- id: in_min_km_er_prune
+  doc: "(=2)             Minimum number of read observations to\nkeep a kmer in the\
+    \ assembly graph\nbefore bubble extraction"
+  type: long
   inputBinding:
     prefix: --min-kmer-prune
-- id: max_bubbles
-  doc: (=30)               Maximum number of bubbles to extract  from the assembly
-    graph
-  type: string
+- id: in_max_bubbles
+  doc: "(=30)               Maximum number of bubbles to extract\nfrom the assembly\
+    \ graph"
+  type: long
   inputBinding:
     prefix: --max-bubbles
-- id: min_bubble_score
-  doc: (=2)           Minimum bubble score that will be  extracted from the assembly
-    graph
-  type: string
+- id: in_min_bubble_score
+  doc: "(=2)           Minimum bubble score that will be\nextracted from the assembly\
+    \ graph"
+  type: long
   inputBinding:
     prefix: --min-bubble-score
-- id: protect_reference_haplotype
-  doc: (=1) Protect the reference haplotype from  filtering
+- id: in_arg_maximum_number
+  doc: "[ --max-haplotypes ] arg (=200)    Maximum number of candidate haplotypes\n\
+    the caller may consider. If a region\ncontains more candidate haplotypes than\n\
+    this then filtering is applied"
+  type: boolean
+  inputBinding:
+    prefix: -x
+- id: in_haplotype_hold_out_threshold
+  doc: "(=2500)\nForces the haplotype generator to\ntemporarily hold out some alleles\
+    \ if\nthe number of haplotypes in a region\nexceeds this threshold"
+  type: long
+  inputBinding:
+    prefix: --haplotype-holdout-threshold
+- id: in_haplotype_overflow
+  doc: "(=200000)    Regions with more haplotypes than this\nwill be skipped"
+  type: long
+  inputBinding:
+    prefix: --haplotype-overflow
+- id: in_max_hold_out_depth
+  doc: "(=20)         Maximum number of holdout attempts the\nhaplotype generator\
+    \ can make before the\nregion is skipped"
+  type: long
+  inputBinding:
+    prefix: --max-holdout-depth
+- id: in_extension_level
+  doc: "(=normal)       Level of haplotype extension. Possible\nvalues are: conservative,\
+    \ normal,\noptimistic, aggressive"
   type: string
   inputBinding:
+    prefix: --extension-level
+- id: in_arg_haplotypes_filtered
+  doc: "[ --haplotype-extension-threshold ] arg (=100)\nHaplotypes with posterior\
+    \ probability\nless than this can be filtered before\nextension"
+  type: boolean
+  inputBinding:
+    prefix: -e
+- id: in_ded_up_haplotypes_with_prior_model
+  doc: "(=1)\nRemove duplicate haplotypes using\nmutation prior model"
+  type: long
+  inputBinding:
+    prefix: --dedup-haplotypes-with-prior-model
+- id: in_protect_reference_haplotype
+  doc: "(=1)\nProtect the reference haplotype from\nfiltering"
+  type: long
+  inputBinding:
     prefix: --protect-reference-haplotype
-- id: arg_population_use
+- id: in_arg_population_use
   doc: '[ --caller ] arg (=population)     Which of the octopus callers to use'
   type: boolean
   inputBinding:
     prefix: -C
-- id: arg_contigs_unspecified
-  doc: '[ --organism-ploidy ] arg (=2)     All contigs with unspecified ploidies  are
-    assumed the organism ploidy'
+- id: in_arg_contigs_unspecified
+  doc: "[ --organism-ploidy ] arg (=2)     All contigs with unspecified ploidies\n\
+    are assumed the organism ploidy"
   type: boolean
   inputBinding:
     prefix: -P
-- id: arg_y_chry
-  doc: '[ --contig-ploidies ] arg (=Y=1 chrY=1 MT=1 chrM=1) Space-separated list of
-    contig  (contig=ploidy) or sample contig  (sample:contig=ploidy) ploidies'
+- id: in_arg_y_mt
+  doc: "[ --contig-ploidies ] arg (=Y=1 chrY=1 MT=1 chrM=1)\nSpace-separated list\
+    \ of contig\n(contig=ploidy) or sample contig\n(sample:contig=ploidy) ploidies"
   type: boolean
   inputBinding:
     prefix: -p
-- id: contig_plo_i_dies_file
-  doc: File containing a list of contig  (contig=ploidy) or sample contig  (sample:contig=ploidy)
-    ploidies, one  per line
-  type: string
+- id: in_contig_plo_i_dies_file
+  doc: "File containing a list of contig\n(contig=ploidy) or sample contig\n(sample:contig=ploidy)\
+    \ ploidies, one\nper line"
+  type: File
   inputBinding:
     prefix: --contig-ploidies-file
-- id: min_variant_posterior
-  doc: (=1)      Report variant alleles with posterior  probability (phred scale)
-    greater than  this
-  type: string
+- id: in_min_variant_posterior
+  doc: "(=1)      Report variant alleles with posterior\nprobability (phred scale)\
+    \ greater than\nthis"
+  type: long
   inputBinding:
     prefix: --min-variant-posterior
-- id: ref_call
-  doc: '[=arg(=blocked)]            Caller will report reference confidence calls
-    for each position (positional),  or in automatically sized blocks  (blocked)'
+- id: in_ref_call
+  doc: "[=arg(=blocked)]            Caller will report reference confidence\ncalls\
+    \ for each position (positional),\nor in automatically sized blocks\n(blocked)"
   type: boolean
   inputBinding:
     prefix: --refcall
-- id: ref_call_block_merge_threshold
-  doc: (=10) Threshold to merge adjacent refcall  positions when using blocked refcalling
-  type: string
+- id: in_ref_call_block_merge_threshold
+  doc: "(=10)\nThreshold to merge adjacent refcall\npositions when using blocked refcalling"
+  type: long
   inputBinding:
     prefix: --refcall-block-merge-threshold
-- id: min_ref_call_posterior
-  doc: (=2)      Report reference alleles with posterior probability (phred scale)
-    greater than  this
-  type: string
+- id: in_min_ref_call_posterior
+  doc: "(=2)      Report reference alleles with posterior\nprobability (phred scale)\
+    \ greater than\nthis"
+  type: long
   inputBinding:
     prefix: --min-refcall-posterior
-- id: arg_germline_snp
-  doc: '[ --snp-heterozygosity ] arg (=0.001) Germline SNP heterozygosity for the  given
-    samples'
+- id: in_arg_snp_heterozygosity
+  doc: "[ --snp-heterozygosity ] arg (=0.001)\nGermline SNP heterozygosity for the\n\
+    given samples"
   type: boolean
   inputBinding:
     prefix: -z
-- id: snp_heterozygosity_stdev
-  doc: (=0.01) Standard deviation of the germline SNP  heterozygosity used for the
-    given  samples
-  type: string
+- id: in_snp_heterozygosity_stdev
+  doc: "(=0.01)\nStandard deviation of the germline SNP\nheterozygosity used for the\
+    \ given\nsamples"
+  type: double
   inputBinding:
     prefix: --snp-heterozygosity-stdev
-- id: arg_germline_indel
-  doc: '[ --indel-heterozygosity ] arg (=0.0001) Germline indel heterozygosity for
-    the  given samples'
+- id: in_arg_germline_indel
+  doc: "[ --indel-heterozygosity ] arg (=0.0001)\nGermline indel heterozygosity for\
+    \ the\ngiven samples"
   type: boolean
   inputBinding:
     prefix: -y
-- id: use_uniform_genotype_priors
-  doc: Use a uniform prior model when  calculating genotype posteriors
+- id: in_use_uniform_genotype_priors
+  doc: "Use a uniform prior model when\ncalculating genotype posteriors"
   type: boolean
   inputBinding:
     prefix: --use-uniform-genotype-priors
-- id: max_genotypes
-  doc: (=5000)           The maximum number of genotypes to  evaluate
-  type: string
+- id: in_max_genotypes
+  doc: (=5000)           The maximum number of genotypes to
+  type: long
   inputBinding:
     prefix: --max-genotypes
-- id: max_joint_genotypes
-  doc: (=1000000)  The maximum number of joint genotype  vectors to consider when
-    computing  joint genotype posterior probabilities
-  type: string
-  inputBinding:
-    prefix: --max-joint-genotypes
-- id: use_independent_genotype_priors
-  doc: Use independent genotype priors for  joint calling
+- id: in_use_independent_genotype_priors
+  doc: "Use independent genotype priors for\njoint calling"
   type: boolean
   inputBinding:
     prefix: --use-independent-genotype-priors
-- id: model_posterior
-  doc: Calculate model posteriors for every  call
+- id: in_model_posterior
+  doc: Calculate model posteriors for every
   type: string
   inputBinding:
     prefix: --model-posterior
-- id: inactive_flank_scoring
-  doc: (=1)     Disables additional calculation to  adjust alignment score when there
-    are  inactive candidates in haplotype  flanking regions
-  type: string
-  inputBinding:
-    prefix: --inactive-flank-scoring
-- id: model_mapping_quality
-  doc: (=1)      Include the read mapping quality in the haplotype likelihood calculation
-  type: string
+- id: in_model_mapping_quality
+  doc: "(=1)      Include the read mapping quality in the\nhaplotype likelihood calculation"
+  type: long
   inputBinding:
     prefix: --model-mapping-quality
-- id: sequence_error_model
-  doc: (=PCR-free.HiSeq-2500) The sequencer error model to use
-  type: string
+- id: in_sequence_error_model
+  doc: "(=PCR-free.HiSeq-2500)\nThe sequencer error model to use"
+  type: long
   inputBinding:
     prefix: --sequence-error-model
-- id: max_vb_seeds
-  doc: (=12)              Maximum number of seeds to use for  Variational Bayes algorithms
-  type: string
+- id: in_max_vb_seeds
+  doc: "(=12)              Maximum number of seeds to use for\nVariational Bayes algorithms"
+  type: long
   inputBinding:
     prefix: --max-vb-seeds
-- id: arg_normal_level
-  doc: '[ --phasing-level ] arg (=normal)  Level of phasing - longer range phasing
-    can improve calling accuracy at the  cost of runtime speed. Possible values  are:
-    minimal, conservative, moderate,  normal, aggressive'
+- id: in_arg_normal_level
+  doc: "[ --phasing-level ] arg (=normal)  Level of phasing - longer range phasing\n\
+    can improve calling accuracy at the\ncost of runtime speed. Possible values\n\
+    are: minimal, conservative, moderate,\nnormal, aggressive"
   type: boolean
   inputBinding:
     prefix: -l
-- id: min_phase_score
-  doc: (=10)           Minimum phase score (phred scale)  required to report sites
-    as phased
-  type: string
+- id: in_min_phase_score
+  doc: "(=10)           Minimum phase score (phred scale)\nrequired to report sites\
+    \ as phased"
+  type: long
   inputBinding:
     prefix: --min-phase-score
-- id: arg_turn_call
+- id: in_arg_turn_filtering
   doc: '[ --call-filtering ] arg (=1)      Turn variant call filtering on or off'
   type: boolean
   inputBinding:
     prefix: -f
-- id: filter_expression
-  doc: (=QUAL < 10 | MQ < 10 | MP < 10 | AF < 0.05 | SB > 0.98 | BQ < 15 | DP < 1)
-    Boolean expression to use to filter  variant calls
-  type: string
+- id: in_filter_expression
+  doc: "(=QUAL < 10 | MQ < 10 | MP < 10 | AF < 0.05 | SB > 0.98 | BQ < 15 | DP < 1)\n\
+    Boolean expression to use to filter\nvariant calls"
+  type: boolean
   inputBinding:
     prefix: --filter-expression
-- id: somatic_filter_expression
-  doc: (=QUAL < 2 | GQ < 20 | MQ < 30 | SMQ < 40 | SB > 0.9 | SD > 0.9 | BQ < 20 |
-    DP < 3 | MF > 0.2 | NC > 1 | FRF > 0.5) Boolean expression to use to filter  somatic
-    variant calls
-  type: string
+- id: in_somatic_filter_expression
+  doc: "(=QUAL < 2 | GQ < 20 | MQ < 30 | SMQ < 40 | SB > 0.9 | SD > 0.9 | BQ < 20\
+    \ | DP < 3 | MF > 0.2 | NC > 1 | FRF > 0.5)\nBoolean expression to use to filter\n\
+    somatic variant calls"
+  type: boolean
   inputBinding:
     prefix: --somatic-filter-expression
-- id: de_novo_filter_expression
-  doc: (=QUAL < 50 | PP < 40 | GQ < 20 | MQ < 30 | AF < 0.1 | SB > 0.95 | BQ < 20
-    | DP < 10 | DC > 1 | MF > 0.2 | FRF > 0.5 | MP < 30 | MQ0 > 2) Boolean expression
-    to use to filter  somatic variant calls
-  type: string
+- id: in_de_novo_filter_expression
+  doc: "(=QUAL < 50 | PP < 40 | GQ < 20 | MQ < 30 | AF < 0.1 | SB > 0.95 | BQ < 20\
+    \ | DP < 10 | DC > 1 | MF > 0.2 | FRF > 0.5 | MP < 30 | MQ0 > 2)\nBoolean expression\
+    \ to use to filter\nsomatic variant calls"
+  type: boolean
   inputBinding:
     prefix: --denovo-filter-expression
-- id: ref_call_filter_expression
-  doc: (=QUAL < 2 | GQ < 20 | MQ < 10 | DP < 10 | MF > 0.2) Boolean expression to
-    use to filter  homozygous reference calls
-  type: string
+- id: in_ref_call_filter_expression
+  doc: "(=QUAL < 2 | GQ < 20 | MQ < 10 | DP < 10 | MF > 0.2)\nBoolean expression to\
+    \ use to filter\nhomozygous reference calls"
+  type: boolean
   inputBinding:
     prefix: --refcall-filter-expression
-- id: use_calling_reads_for_filtering
-  doc: (=0) Use the original reads used for variant calling for filtering
-  type: string
+- id: in_use_calling_reads_for_filtering
+  doc: "(=0)\nUse the original reads used for variant\ncalling for filtering"
+  type: long
   inputBinding:
     prefix: --use-calling-reads-for-filtering
-- id: keep_unfiltered_calls
+- id: in_keep_unfiltered_calls
   doc: Keep a copy of unfiltered calls
   type: boolean
   inputBinding:
     prefix: --keep-unfiltered-calls
-- id: annotations
+- id: in_annotations
   doc: '[=arg(=active)]         Annotations to write to final VCF'
   type: boolean
   inputBinding:
     prefix: --annotations
-- id: filter_vcf
-  doc: Filter the given Octopus VCF without  calling
+- id: in_filter_vcf
+  doc: Filter the given Octopus VCF without
   type: string
   inputBinding:
     prefix: --filter-vcf
-- id: forest_file
-  doc: Trained Ranger random forest file
-  type: string
-  inputBinding:
-    prefix: --forest-file
-- id: somatic_forest_file
-  doc: Trained Ranger random forest file for  somatic variants
-  type: string
+- id: in_somatic_forest_file
+  doc: "Trained Ranger random forest file for\nsomatic variants\n"
+  type: File
   inputBinding:
     prefix: --somatic-forest-file
-outputs: []
+- id: in_analyse
+  doc: '-s [ --samples-file ] arg             File of sample names to analyse, one '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_recalibration
+  doc: '--soft-clip-mask-threshold [=arg(=3)] Only soft clipped bases with quality '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_octopus
+  doc: '--allow-secondary-alignments          Allows reads marked as secondary '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_contamination
+  doc: --disable-downsampling                Disables downsampling
+  type: string
+  inputBinding:
+    position: 0
+- id: in_evaluate
+  doc: '--max-joint-genotypes arg (=1000000)  The maximum number of joint genotype '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_call
+  doc: '--inactive-flank-scoring arg (=1)     Disables additional calculation to '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_calling
+  doc: --forest-file arg                     Trained Ranger random forest file
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_file_where
+  doc: "[ --output ] arg                   File to where output is written. If\nunspecified,\
+    \ calls are written to\nstdout"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_file_where)
+- id: out_re_genotype
+  doc: "VCF file specifying calls to\nregenotype, only sites in this files\nwill appear\
+    \ in the final output"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_re_genotype)
 cwlVersion: v1.1
 baseCommand:
 - octopus

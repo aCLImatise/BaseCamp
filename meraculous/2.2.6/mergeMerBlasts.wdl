@@ -4,4 +4,7 @@ task MergeMerBlasts {
   command <<<
     mergeMerBlasts
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

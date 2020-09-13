@@ -9,12 +9,15 @@ task RnftoolsValidate {
   command <<<
     rnftools validate \
       ~{if defined(fast_q) then ("--fastq " +  '"' + fast_q + '"') else ""} \
-      ~{true="--warnings-as-errors" false="" warnings_as_errors} \
-      ~{true="--all-occurrences" false="" all_occurrences}
+      ~{if (warnings_as_errors) then "--warnings-as-errors" else ""} \
+      ~{if (all_occurrences) then "--all-occurrences" else ""}
   >>>
   parameter_meta {
     fast_q: "FASTQ file to be validated."
     warnings_as_errors: "Treat warnings as errors."
-    all_occurrences: "Report all occurrences of warnings and errors."
+    all_occurrences: "Report all occurrences of warnings and errors.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

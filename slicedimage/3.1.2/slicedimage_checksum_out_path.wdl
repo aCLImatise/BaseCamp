@@ -14,7 +14,7 @@ task SlicedimageChecksumOutPath {
       ~{checksum} \
       ~{in_url} \
       ~{out_path} \
-      ~{true="--pretty" false="" pretty}
+      ~{if (pretty) then "--pretty" else ""}
   >>>
   parameter_meta {
     pretty: ""
@@ -22,5 +22,8 @@ task SlicedimageChecksumOutPath {
     checksum: ""
     in_url: ""
     out_path: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

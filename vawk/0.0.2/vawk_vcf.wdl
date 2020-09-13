@@ -2,10 +2,10 @@ version 1.0
 
 task VawkVcf {
   input {
-    String? v
-    String? c
-    Boolean? header
     Boolean? debug
+    Boolean? header
+    String? c
+    String? v
     String va_wk
     String cmd
     String? vcf
@@ -15,18 +15,21 @@ task VawkVcf {
       ~{va_wk} \
       ~{cmd} \
       ~{vcf} \
-      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (header) then "--header" else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
-      ~{true="--header" false="" header} \
-      ~{true="--debug" false="" debug}
+      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""}
   >>>
   parameter_meta {
-    v: ""
-    c: ""
-    header: ""
     debug: ""
+    header: ""
+    c: ""
+    v: ""
     va_wk: ""
     cmd: ""
     vcf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

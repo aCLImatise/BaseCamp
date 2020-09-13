@@ -1,6 +1,89 @@
 !Command
-positional: []
+command:
+- SelectSequencesFromMSA
+positional:
+- !Positional
+  description: -e --toogleexternalselectsequences  Use only replacement of alignment
+  position: 0
+  name: results.selected
+  optional: false
 named:
+- !Flag
+  description: Path to input clustal file
+  synonyms:
+  - -c
+  - --inputclustalpath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Path to output directory. Default:\ncurrent working directory"
+  synonyms:
+  - -o
+  - --outputpath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: 'Output filename. Default:'
+  synonyms:
+  - -f
+  - --outputfilename
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Number of sequences in the output\nalignment. (Default: 6)"
+  synonyms:
+  - -n
+  - --seqencenumber
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Optimize for this percentage of mean\npairwise identity (Default:\
+    \ 80)"
+  synonyms:
+  - -i
+  - --optimalidentity
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Sequences with a higher percentage of\npairwise Identity will be removed.\n\
+    (Default: 95)"
+  synonyms:
+  - -m
+  - --maximalidenity
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "The first sequence (=reference\nsequence) is always present in the\
+    \ output\nalignment per default. Default: True"
+  synonyms:
+  - -x
+  - --referencesequence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to distance matrix output file,\nonly internal for interal sequence\n\
+    selection, e.g. /home/user/distmat\n(Default: )"
+  synonyms:
+  - -d
+  - --distancematrixpath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Defines how sequence id is reformated,\ne.g. fitting for RNAcode or\
+    \ not (Default:\nRNAcode)"
+  synonyms:
+  - -r
+  - --reformatidoption
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
 - !Flag
   description: Loud verbosity
   synonyms:
@@ -15,10 +98,9 @@ named:
   - --quiet
   args: !EmptyFlagArg {}
   optional: true
-command:
-- SelectSequencesFromMSA
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag

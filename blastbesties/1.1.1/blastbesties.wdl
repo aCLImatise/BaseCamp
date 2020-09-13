@@ -2,13 +2,13 @@ version 1.0
 
 task Blastbesties {
   input {
-    String? blast_a_vb
-    String? blast_bva
+    File? blast_a_vb
+    File? blast_bva
     Int? min_len
     String? eval
     String? bit_score
-    String? outfile
-    String? outdir
+    File? outfile
+    Directory? outdir
     Boolean? v
   }
   command <<<
@@ -20,16 +20,19 @@ task Blastbesties {
       ~{if defined(bit_score) then ("--bitScore " +  '"' + bit_score + '"') else ""} \
       ~{if defined(outfile) then ("--outFile " +  '"' + outfile + '"') else ""} \
       ~{if defined(outdir) then ("--outDir " +  '"' + outdir + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    blast_a_vb: "Blast tab result file for fastaA query against fastaB subject"
-    blast_bva: "Blast tab result file for fastaB query against fastaA subject"
+    blast_a_vb: "Blast tab result file for fastaA query against fastaB\\nsubject"
+    blast_bva: "Blast tab result file for fastaB query against fastaA\\nsubject"
     min_len: "Minimum length of hit to consider valid."
     eval: "Maximum e-value to consider valid pair."
     bit_score: "Minimum bitscore to consider valid pair."
     outfile: "Write reciprocal blast pairs to this file."
-    outdir: "Directory for new sequence files to be written to."
+    outdir: "Directory for new sequence files to be written to.\\n"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

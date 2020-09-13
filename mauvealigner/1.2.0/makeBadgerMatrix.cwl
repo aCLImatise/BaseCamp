@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../makeBadgerMatrix.cwl
 inputs:
-- id: input_x_mfa
+- id: in_input_x_mfa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_badger_file
+- id: in_output_badger_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: lcb_coordinate_file
+- id: in_lcb_coordinate_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_badger_file
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_badger_file)
 cwlVersion: v1.1
 baseCommand:
 - makeBadgerMatrix

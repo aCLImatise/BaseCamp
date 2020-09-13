@@ -12,7 +12,7 @@ task Ruby {
     Boolean? f_pattern
     Boolean? edit_argv_files
     Boolean? i_directory
-    Boolean? enable_line_ending
+    Boolean? enable_line_processing
     Boolean? assume_loop_script
     Boolean? assume_loop_n
     Boolean? r_library
@@ -21,8 +21,8 @@ task Ruby {
     Boolean? turn_tainting_checks
     Boolean? verbose
     Boolean? turn_warnings_script
-    Boolean? set_warning_verbose
-    Boolean? strip_text_cd
+    Boolean? set_level_verbose
+    Boolean? strip_text_ruby
     Boolean? copyright
     String? enable
     String? external_encoding
@@ -33,43 +33,43 @@ task Ruby {
     ruby \
       ~{gems} \
       ~{ruby_opt} \
-      ~{true="-0" false="" specify_record_separator} \
-      ~{true="-a" false="" autosplit_mode_n} \
-      ~{true="-c" false="" check_syntax_only} \
-      ~{true="-Cdirectory" false="" c_directory} \
-      ~{true="--debug" false="" debug} \
-      ~{true="-e" false="" s_allowed_omit} \
-      ~{true="-Eex" false="" eex} \
-      ~{true="-Fpattern" false="" f_pattern} \
-      ~{true="-i" false="" edit_argv_files} \
-      ~{true="-Idirectory" false="" i_directory} \
-      ~{true="-l" false="" enable_line_ending} \
-      ~{true="-n" false="" assume_loop_script} \
-      ~{true="-p" false="" assume_loop_n} \
-      ~{true="-rlibrary" false="" r_library} \
-      ~{true="-s" false="" enable_switch_parsing} \
-      ~{true="-S" false="" look_script_using} \
-      ~{true="-T" false="" turn_tainting_checks} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="-w" false="" turn_warnings_script} \
-      ~{true="-W" false="" set_warning_verbose} \
-      ~{true="-x" false="" strip_text_cd} \
-      ~{true="--copyright" false="" copyright} \
+      ~{if (specify_record_separator) then "-0" else ""} \
+      ~{if (autosplit_mode_n) then "-a" else ""} \
+      ~{if (check_syntax_only) then "-c" else ""} \
+      ~{if (c_directory) then "-Cdirectory" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (s_allowed_omit) then "-e" else ""} \
+      ~{if (eex) then "-Eex" else ""} \
+      ~{if (f_pattern) then "-Fpattern" else ""} \
+      ~{if (edit_argv_files) then "-i" else ""} \
+      ~{if (i_directory) then "-Idirectory" else ""} \
+      ~{if (enable_line_processing) then "-l" else ""} \
+      ~{if (assume_loop_script) then "-n" else ""} \
+      ~{if (assume_loop_n) then "-p" else ""} \
+      ~{if (r_library) then "-rlibrary" else ""} \
+      ~{if (enable_switch_parsing) then "-s" else ""} \
+      ~{if (look_script_using) then "-S" else ""} \
+      ~{if (turn_tainting_checks) then "-T" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (turn_warnings_script) then "-w" else ""} \
+      ~{if (set_level_verbose) then "-W" else ""} \
+      ~{if (strip_text_ruby) then "-x" else ""} \
+      ~{if (copyright) then "--copyright" else ""} \
       ~{if defined(enable) then ("--enable " +  '"' + enable + '"') else ""} \
       ~{if defined(external_encoding) then ("--external-encoding " +  '"' + external_encoding + '"') else ""}
   >>>
   parameter_meta {
-    specify_record_separator: "[octal]       specify record separator (\0, if no argument)"
+    specify_record_separator: "[octal]       specify record separator (\\0, if no argument)"
     autosplit_mode_n: "autosplit mode with -n or -p (splits $_ into $F)"
     check_syntax_only: "check syntax only"
     c_directory: "cd to directory before executing your script"
     debug: "set debugging flags (set $DEBUG to true)"
     s_allowed_omit: "'command'    one line of script. Several -e's allowed. Omit [programfile]"
-    eex: "[:in], --encoding=ex[:in] specify the default external and internal character encodings"
+    eex: "[:in], --encoding=ex[:in]\\nspecify the default external and internal character encodings"
     f_pattern: "split() pattern for autosplit (-a)"
     edit_argv_files: "[extension]   edit ARGV files in place (make backup if extension supplied)"
     i_directory: "specify $LOAD_PATH directory (may be used more than once)"
-    enable_line_ending: "enable line ending processing"
+    enable_line_processing: "enable line ending processing"
     assume_loop_script: "assume 'while gets(); ... end' loop around your script"
     assume_loop_n: "assume loop like -n but print line also like sed"
     r_library: "require the library before executing your script"
@@ -78,12 +78,15 @@ task Ruby {
     turn_tainting_checks: "[level=1]     turn on tainting checks"
     verbose: "print version number, then turn on verbose mode"
     turn_warnings_script: "turn warnings on for your script"
-    set_warning_verbose: "[level=2]     set warning level; 0=silence, 1=medium, 2=verbose"
-    strip_text_cd: "[directory]   strip off text before #!ruby line and perhaps cd to directory"
+    set_level_verbose: "[level=2]     set warning level; 0=silence, 1=medium, 2=verbose"
+    strip_text_ruby: "[directory]   strip off text before #!ruby line and perhaps cd to directory"
     copyright: "print the copyright"
-    enable: "[,...], --disable=feature[,...] enable or disable features"
+    enable: "[,...], --disable=feature[,...]\\nenable or disable features"
     external_encoding: "specify the default external or internal character encoding"
     gems: "rubygems (default: enabled)"
     ruby_opt: "RUBYOPT environment variable (default: enabled)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

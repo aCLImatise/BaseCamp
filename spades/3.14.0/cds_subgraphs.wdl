@@ -1,18 +1,18 @@
 version 1.0
 
-task CdsSubgraphs {
+task Cdssubgraphs {
   input {
-    String? output_folder
+    Directory? output_folder
     File? part_desc
     File? part_seq
     String? graph
     File? cds_len_est
-    String? kmer_length_use
-    String? threads
-    String? tmpdir
+    Int? kmer_length_use
+    Int? threads
+    Directory? tmpdir
   }
   command <<<
-    cds-subgraphs \
+    cds_subgraphs \
       ~{if defined(output_folder) then ("--output-folder " +  '"' + output_folder + '"') else ""} \
       ~{if defined(part_desc) then ("--part-desc " +  '"' + part_desc + '"') else ""} \
       ~{if defined(part_seq) then ("--part-seq " +  '"' + part_seq + '"') else ""} \
@@ -30,6 +30,10 @@ task CdsSubgraphs {
     cds_len_est: "file with cds length estimamtes"
     kmer_length_use: "k-mer length to use"
     threads: "# of threads to use (default: max_threads / 2)"
-    tmpdir: "scratch directory to use (default: <outdir>/tmp)"
+    tmpdir: "scratch directory to use (default: <outdir>/tmp)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_folder = "${in_output_folder}"
   }
 }

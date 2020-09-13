@@ -2,9 +2,9 @@ version 1.0
 
 task ExtractHeteroatoms {
   input {
-    String? config
-    String? input_structure_path
-    String? output_heteroatom_path
+    File? config
+    File? input_structure_path
+    File? output_heteroatom_path
   }
   command <<<
     extract_heteroatoms \
@@ -15,6 +15,10 @@ task ExtractHeteroatoms {
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
     input_structure_path: "Input structure file path. Accepted formats: pdb."
-    output_heteroatom_path: "Output heteroatom file path. Accepted formats: pdb."
+    output_heteroatom_path: "Output heteroatom file path. Accepted formats: pdb.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_heteroatom_path = "${in_output_heteroatom_path}"
   }
 }

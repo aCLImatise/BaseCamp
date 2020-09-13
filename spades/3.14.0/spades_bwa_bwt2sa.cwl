@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../spades_bwa_bwt2sa.cwl
 inputs:
-- id: i
+- id: in_i
   doc: ''
-  type: string
+  type: long
   inputBinding:
     prefix: -i
-- id: bwa
+- id: in_bwa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: bwt_two_sa
+- id: in_bwt_two_sa
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: in_dot_bwt
+- id: in_in_dot_bwt
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: out_dots_a
+- id: in_out_dots_a
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - spades-bwa

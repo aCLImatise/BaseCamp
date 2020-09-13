@@ -4,4 +4,7 @@ task Makerep {
   command <<<
     makerep
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

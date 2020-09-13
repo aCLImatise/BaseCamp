@@ -1,7 +1,10 @@
 version 1.0
 
-task AspCp {
+task Aspcp {
   command <<<
-    asp-cp
+    asp_cp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

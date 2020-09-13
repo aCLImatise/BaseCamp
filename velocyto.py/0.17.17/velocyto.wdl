@@ -4,4 +4,7 @@ task Velocyto {
   command <<<
     velocyto
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

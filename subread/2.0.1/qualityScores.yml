@@ -1,20 +1,61 @@
 !Command
-positional: []
+command:
+- qualityScores
+positional:
+- !Positional
+  description: -o <string>  Name of output file that is a text file including Phred
+    scores
+  position: 0
+  name: Fastq.
+  optional: false
 named:
 - !Flag
-  description: Name of input file including read data. The default format is Fastq.
+  description: Name of input file including read data. The default format is
   synonyms:
   - -i
   args: !SimpleFlagArg
     name: string
   optional: true
 - !Flag
-  description: Name of output file that is a text file including Phred scores for
-    each read base.
+  description: file is in gzipped Fastq format.
   synonyms:
-  - -o
+  - --gzFASTQinput
   args: !SimpleFlagArg
-    name: string
+    name: Input
+  optional: true
+- !Flag
+  description: Input file is in BAM format.
+  synonyms:
+  - --BAMinput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is in SAM format.
+  synonyms:
+  - --SAMinput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use only first reads in paired-end data. Only applicable for\npaired-end\
+    \ BAM/SAM input."
+  synonyms:
+  - --first-end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use only second reads in paired-end data. Only applicable for\npaired-end\
+    \ BAM/SAM input."
+  synonyms:
+  - --second-end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Total number of reads to be extracted from the input\nfile. 10,000\
+    \ by default."
+  synonyms:
+  - --counted-reads
+  args: !SimpleFlagArg
+    name: int
   optional: true
 - !Flag
   description: refer to subread aligner.
@@ -23,10 +64,9 @@ named:
   args: !SimpleFlagArg
     name: 33|64
   optional: true
-command:
-- qualityScores
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

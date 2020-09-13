@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../subindel.cwl
 inputs:
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-- id: g
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -g
-- id: o
+- id: in_o
   doc: ''
   type: string
   inputBinding:
     prefix: -o
-outputs: []
+- id: in_g
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -g
+- id: in_i
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -i
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - subindel

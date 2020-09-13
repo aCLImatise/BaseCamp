@@ -1,33 +1,36 @@
 class: CommandLineTool
 id: ../../../segway.cwl
 inputs:
-- id: mem_usage
-  doc: try each float in PROGRESSION as the number of gibibytes of memory to allocate
-    in turn (default 2,3,4,6,8,10,12,14,15)
-  type: string
+- id: in_mem_usage
+  doc: "try each float in PROGRESSION as the number of\ngibibytes of memory to allocate\
+    \ in turn (default\n2,3,4,6,8,10,12,14,15)"
+  type: double
   inputBinding:
     prefix: --mem-usage
-- id: split_sequences
-  doc: split up sequences that are larger than SIZE bp (default 2000000)
+- id: in_split_sequences
+  doc: "split up sequences that are larger than SIZE bp\n(default 2000000)"
   type: long
   inputBinding:
     prefix: --split-sequences
-- id: verbosity
+- id: in_verbosity
   doc: show messages with verbosity NUM (default 0)
-  type: string
+  type: long
   inputBinding:
     prefix: --verbosity
-- id: cluster_opt
+- id: in_cluster_opt
   doc: specify an option to be passed to the cluster manager
   type: string
   inputBinding:
     prefix: --cluster-opt
-- id: dry_run
+- id: in_dry_run
   doc: write all files, but do not run any executables
   type: boolean
   inputBinding:
     prefix: --dry-run
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - segway

@@ -6,9 +6,12 @@ task Intervene {
   }
   command <<<
     intervene \
-      ~{true="--cite" false="" cite}
+      ~{if (cite) then "--cite" else ""}
   >>>
   parameter_meta {
     cite: "show citation information and exit"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

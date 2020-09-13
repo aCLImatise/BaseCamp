@@ -1,20 +1,23 @@
 version 1.0
 
-task IuTrimV6Primers {
+task IutrimV6primers {
   input {
     Boolean? archaea
     Boolean? debug
     String input_fast_a
   }
   command <<<
-    iu-trim-V6-primers \
+    iu_trim_V6_primers \
       ~{input_fast_a} \
-      ~{true="--archaea" false="" archaea} \
-      ~{true="--debug" false="" debug}
+      ~{if (archaea) then "--archaea" else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     archaea: "When set, primers for arhacea is used instead of bacteria."
     debug: "Turn on debug prints."
-    input_fast_a: "FASTA file that contain archaeal or bacterial V6 sequences with primers. This file is expected to be the result of iu-merge- pairs analysis with these flags and parameter: \"--marker-gene- stringent --retain-only-overlap --max-num-mismatches 0\"."
+    input_fast_a: "FASTA file that contain archaeal or bacterial V6 sequences with\\nprimers. This file is expected to be the result of iu-merge-\\npairs analysis with these flags and parameter: \\\"--marker-gene-\\nstringent --retain-only-overlap --max-num-mismatches 0\\\"."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

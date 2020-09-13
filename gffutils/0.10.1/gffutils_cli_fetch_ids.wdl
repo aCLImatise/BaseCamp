@@ -1,6 +1,6 @@
 version 1.0
 
-task GffutilsCliFetchIds {
+task GffutilscliFetchIds {
   input {
     String gff_utils_cli
     String fetch
@@ -8,7 +8,7 @@ task GffutilsCliFetchIds {
     String ids
   }
   command <<<
-    gffutils-cli fetch ids \
+    gffutils_cli fetch ids \
       ~{gff_utils_cli} \
       ~{fetch} \
       ~{db} \
@@ -19,5 +19,8 @@ task GffutilsCliFetchIds {
     fetch: ""
     db: ""
     ids: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

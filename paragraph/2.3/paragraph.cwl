@@ -1,188 +1,207 @@
 class: CommandLineTool
 id: ../../../paragraph.cwl
 inputs:
-- id: bad_align_frac
-  doc: (=0.800000012)          Fraction of read that needs to  be mapped in order
-    for it to be  used.
-  type: string
+- id: in_bad_align_frac
+  doc: "(=0.800000012)          Fraction of read that needs to\nbe mapped in order\
+    \ for it to be\nused."
+  type: double
   inputBinding:
     prefix: --bad-align-frac
-- id: bad_align_non_uniq
-  doc: (=1)                 Remove reads that are not mapped uniquely.
-  type: string
+- id: in_bad_align_non_uniq
+  doc: (=1)                 Remove reads that are not mapped
+  type: long
   inputBinding:
     prefix: --bad-align-nonuniq
-- id: bad_align_uniq_km_er_len
-  doc: (=0)           Kmer length for uniqueness check during read filtering.
-  type: string
-  inputBinding:
-    prefix: --bad-align-uniq-kmer-len
-- id: arg_input_bam
-  doc: '[ --bam ] arg                             Input BAM file(s) for read  extraction.
-    We align all reads  to all graphs.'
+- id: in_arg_input_bam
+  doc: "[ --bam ] arg                             Input BAM file(s) for read\nextraction.\
+    \ We align all reads\nto all graphs."
   type: boolean
   inputBinding:
     prefix: -b
-- id: graph_sequence_matching
-  doc: (=1)           Enables smith waterman graph  alignment
-  type: string
+- id: in_graph_sequence_matching
+  doc: (=1)           Enables smith waterman graph
+  type: long
   inputBinding:
     prefix: --graph-sequence-matching
-- id: arg_json_files
-  doc: '[ --graph-spec ] arg                      JSON file(s) describing the  graph(s)'
-  type: boolean
-  inputBinding:
-    prefix: -g
-- id: gzipcompress_output_files
-  doc: '[ --gzip-output ] [=arg(=1)] (=0)         gzip-compress output files. If  -O
-    is used, output file names  are appended with .gz'
+- id: in_gzipcompress_output_files
+  doc: '[ --gzip-output ] [=arg(=1)] (=0)         gzip-compress output files. If'
   type: boolean
   inputBinding:
     prefix: -z
-- id: help_defaults
-  doc: produce tab-delimited list of  command line options and their  default values
+- id: in_used_file_names
+  doc: used, output file names
+  type: File
+  inputBinding:
+    prefix: -O
+- id: in_help_defaults
+  doc: "produce tab-delimited list of\ncommand line options and their\ndefault values"
   type: boolean
   inputBinding:
     prefix: --help-defaults
-- id: help_md
-  doc: produce help message  pre-formatted as a markdown file section and exit
+- id: in_help_md
+  doc: "produce help message\npre-formatted as a markdown file\nsection and exit"
   type: boolean
   inputBinding:
     prefix: --help-md
-- id: k_lib_sequence_matching
+- id: in_k_lib_sequence_matching
   doc: (=0)            Use klib smith-waterman aligner.
-  type: string
+  type: long
   inputBinding:
     prefix: --klib-sequence-matching
-- id: km_er_sequence_matching
+- id: in_km_er_sequence_matching
   doc: (=0)            Use kmer aligner.
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer-sequence-matching
-- id: log_async
+- id: in_log_async
   doc: (=0)                         Enable / disable async logging.
-  type: string
+  type: long
   inputBinding:
     prefix: --log-async
-- id: log_file
+- id: in_log_file
   doc: Log to a file instead of stderr.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-file
-- id: log_level
-  doc: (=info)                      Set log level (error, warning,  info).
+- id: in_log_level
+  doc: "(=info)                      Set log level (error, warning,\ninfo)."
   type: string
   inputBinding:
     prefix: --log-level
-- id: arg_maximum_number
-  doc: '[ --max-reads-per-event ] arg (=10000)    Maximum number of reads to  process
-    for a single event.'
+- id: in_arg_maximum_number
+  doc: "[ --max-reads-per-event ] arg (=10000)    Maximum number of reads to\nprocess\
+    \ for a single event."
   type: boolean
   inputBinding:
     prefix: -M
-- id: arg_output_alignments_read
-  doc: '[ --output-alignments ] arg (=0)          Output alignments for every read
-    (large).'
+- id: in_arg_output_alignments_readlarge
+  doc: "[ --output-alignments ] arg (=0)          Output alignments for every read\n\
+    (large)."
   type: boolean
   inputBinding:
     prefix: -a
-- id: output_detailed_read_counts
-  doc: (=0)       Output detailed read counts not  just for paths but also for each
-    node/edge on the paths.
-  type: string
+- id: in_output_detailed_read_counts
+  doc: "(=0)       Output detailed read counts not\njust for paths but also for each\n\
+    node/edge on the paths."
+  type: long
   inputBinding:
     prefix: --output-detailed-read-counts
-- id: arg_write_information
-  doc: '[ --output-everything ] arg (=0)          Write all information we have  into
-    JSON. (=enable all  --output-* above)'
+- id: in_arg_write_information
+  doc: "[ --output-everything ] arg (=0)          Write all information we have\n\
+    into JSON. (=enable all\n--output-* above)"
   type: boolean
   inputBinding:
     prefix: -E
-- id: arg_output_file
-  doc: "[ --output-file ] arg                     Output file name. Will output to\
-    \ stdout if '-' or neither of  output-file or output-folder  provided."
-  type: boolean
+- id: in_arg_output_file
+  doc: "[ --output-file ] arg                     Output file name. Will output to\n\
+    stdout if '-' or neither of\noutput-file or output-folder\nprovided."
+  type: File
   inputBinding:
     prefix: -o
-- id: arg_output_alignments_filtered
-  doc: '[ --output-filtered-alignments ] arg (=0) Output alignments for every read
-    even when it was filtered  (larger).'
+- id: in_arg_output_alignments_readeven
+  doc: "[ --output-filtered-alignments ] arg (=0) Output alignments for every read\n\
+    even when it was filtered\n(larger)."
   type: boolean
   inputBinding:
     prefix: -A
-- id: arg_folder_path
-  doc: '[ --output-folder ] arg                   Output folder path. paragraph  will
-    attempt to create the  folder but not the entire path.  Will output to stdout
-    if neither of output-file or output-folder  provided. If specified,  paragraph
-    will produce one  output file for each input file  bearing the same name.'
-  type: boolean
-  inputBinding:
-    prefix: -O
-- id: output_node_coverage
+- id: in_output_node_coverage
   doc: (=0)              Output coverage for nodes
-  type: string
+  type: long
   inputBinding:
     prefix: --output-node-coverage
-- id: output_path_coverage
+- id: in_output_path_coverage
   doc: (=0)              Output coverage for paths
-  type: string
+  type: File
   inputBinding:
     prefix: --output-path-coverage
-- id: output_read_haplotypes
-  doc: (=0)            Output graph haplotypes  supported by reads.
-  type: string
+- id: in_output_read_haplotypes
+  doc: "(=0)            Output graph haplotypes\nsupported by reads."
+  type: long
   inputBinding:
     prefix: --output-read-haplotypes
-- id: arg_output_variants
-  doc: '[ --output-variants ] arg (=0)            Output variants not present in  the
-    graph.'
+- id: in_arg_output_variants
+  doc: "[ --output-variants ] arg (=0)            Output variants not present in\n\
+    the graph."
   type: boolean
   inputBinding:
     prefix: -v
-- id: path_sequence_matching
+- id: in_path_sequence_matching
   doc: (=1)            Enable path seeding aligner
-  type: string
+  type: File
   inputBinding:
     prefix: --path-sequence-matching
-- id: arg_reference_genome
+- id: in_arg_fasta_file
   doc: '[ --reference ] arg                       Reference genome fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: response_file
-  doc: file with more command line  arguments
-  type: string
+- id: in_response_file
+  doc: file with more command line
+  type: File
   inputBinding:
     prefix: --response-file
-- id: arg_commaseparated_list
-  doc: '[ --target-regions ] arg                  Comma-separated list of target  regions,
-    e.g. chr1:1-20,chr2:2-4 0. This overrides the target  regions in the graph spec.'
-  type: boolean
-  inputBinding:
-    prefix: -T
-- id: threads
-  doc: (=8)                           Number of threads to use for  parallel alignment.
-  type: string
+- id: in_threads
+  doc: "(=8)                           Number of threads to use for\nparallel alignment."
+  type: long
   inputBinding:
     prefix: --threads
-- id: validate_alignments
-  doc: '[=arg(=1)] (=0)        Use information in the input bam read names to collect
-    statistics about the accuracy of  alignments. Requires bam file  produced with
-    simulate-reads.sh'
+- id: in_validate_alignments
+  doc: "[=arg(=1)] (=0)        Use information in the input bam\nread names to collect\
+    \ statistics\nabout the accuracy of\nalignments. Requires bam file\nproduced with\
+    \ simulate-reads.sh"
   type: boolean
   inputBinding:
     prefix: --validate-alignments
-- id: variant_min_frac
-  doc: (=0.00999999978)      Minimum fraction of reads  required to report a variant.
-  type: string
+- id: in_variant_min_frac
+  doc: "(=0.00999999978)      Minimum fraction of reads\nrequired to report a variant."
+  type: long
   inputBinding:
     prefix: --variant-min-frac
-- id: variant_min_reads
-  doc: (=3)                 Minimum number of reads required to report a variant.
-  type: string
+- id: in_variant_min_reads
+  doc: "(=3)                 Minimum number of reads required\nto report a variant."
+  type: long
   inputBinding:
     prefix: --variant-min-reads
-outputs: []
+- id: in_uniquely_dot
+  doc: --bad-align-uniq-kmer-len arg (=0)           Kmer length for uniqueness check
+  type: string
+  inputBinding:
+    position: 0
+- id: in_alignment
+  doc: '-g [ --graph-spec ] arg                      JSON file(s) describing the '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_arguments
+  doc: '-T [ --target-regions ] arg                  Comma-separated list of target '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_information
+  doc: 'Failed to parse the options: ERROR: BAM file is missing.'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_used_file_names
+  doc: used, output file names
+  type: File
+  outputBinding:
+    glob: $(inputs.in_used_file_names)
+- id: out_arg_output_file
+  doc: "[ --output-file ] arg                     Output file name. Will output to\n\
+    stdout if '-' or neither of\noutput-file or output-folder\nprovided."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_file)
+- id: out_output_path_coverage
+  doc: (=0)              Output coverage for paths
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_path_coverage)
 cwlVersion: v1.1
 baseCommand:
 - paragraph

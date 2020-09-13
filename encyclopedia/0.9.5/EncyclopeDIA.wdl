@@ -2,7 +2,7 @@ version 1.0
 
 task EncyclopeDIA {
   input {
-    Boolean? input_dia_file
+    Boolean? input_dia_mzml
     Boolean? protein_fasta_database
     Boolean? library_elib_file
     String? walnut
@@ -43,47 +43,47 @@ task EncyclopeDIA {
   }
   command <<<
     EncyclopeDIA \
-      ~{true="-i" false="" input_dia_file} \
-      ~{true="-f" false="" protein_fasta_database} \
-      ~{true="-l" false="" library_elib_file} \
+      ~{if (input_dia_mzml) then "-i" else ""} \
+      ~{if (protein_fasta_database) then "-f" else ""} \
+      ~{if (library_elib_file) then "-l" else ""} \
       ~{if defined(walnut) then ("-walnut " +  '"' + walnut + '"') else ""} \
-      ~{true="-browser" false="" browser} \
-      ~{true="-libexport" false="" lib_export} \
-      ~{true="-convert" false="" convert} \
-      ~{true="-o" false="" output_report_file} \
-      ~{true="-acquisition" false="" acquisition} \
-      ~{true="-enzyme" false="" enzyme} \
-      ~{true="-expectedPeakWidth" false="" expected_peak_width} \
-      ~{true="-filterPeaklists" false="" filter_peak_lists} \
-      ~{true="-fixed" false="" fixed} \
-      ~{true="-foffset" false="" f_offset} \
-      ~{true="-frag" false="" frag} \
-      ~{true="-ftol" false="" f_to_l} \
-      ~{true="-ftolunits" false="" f_to_l_units} \
-      ~{true="-lftol" false="" lf_to_l} \
-      ~{true="-lftolunits" false="" lf_to_l_units} \
-      ~{true="-localizationModification" false="" localization_modification} \
-      ~{true="-minIntensity" false="" min_intensity} \
-      ~{true="-minNumOfQuantitativePeaks" false="" min_num_of_quantitative_peaks} \
-      ~{true="-minQuantitativeIonNumber" false="" min_quantitative_ion_number} \
-      ~{true="-numberOfExtraDecoyLibrariesSearche" false="" number_of_extra_decoy_libraries_search_e} \
-      ~{true="-numberOfQuantitativePeaks" false="" number_of_quantitative_peaks} \
-      ~{true="-percolatorProteinThreshold" false="" percolator_protein_threshold} \
-      ~{true="-percolatorThreshold" false="" percolator_threshold} \
-      ~{true="-percolatorTrainingFDR" false="" percolator_training_fdr} \
-      ~{true="-percolatorTrainingSetSize" false="" percolator_training_set_size} \
-      ~{true="-percolatorVersionNumber" false="" percolator_version_number} \
-      ~{true="-poffset" false="" p_offset} \
-      ~{true="-precursorIsolationMargin" false="" precursor_isolation_margin} \
-      ~{true="-precursorWindowSize" false="" precursor_window_size} \
-      ~{true="-ptol" false="" pto_l} \
-      ~{true="-ptolunits" false="" pto_l_units} \
-      ~{true="-rtWindowInMin" false="" rt_window_in_min} \
-      ~{true="-scoringBreadthType" false="" scoring_breadth_type} \
-      ~{true="-verifyModificationIons" false="" verify_modification_ions}
+      ~{if (browser) then "-browser" else ""} \
+      ~{if (lib_export) then "-libexport" else ""} \
+      ~{if (convert) then "-convert" else ""} \
+      ~{if (output_report_file) then "-o" else ""} \
+      ~{if (acquisition) then "-acquisition" else ""} \
+      ~{if (enzyme) then "-enzyme" else ""} \
+      ~{if (expected_peak_width) then "-expectedPeakWidth" else ""} \
+      ~{if (filter_peak_lists) then "-filterPeaklists" else ""} \
+      ~{if (fixed) then "-fixed" else ""} \
+      ~{if (f_offset) then "-foffset" else ""} \
+      ~{if (frag) then "-frag" else ""} \
+      ~{if (f_to_l) then "-ftol" else ""} \
+      ~{if (f_to_l_units) then "-ftolunits" else ""} \
+      ~{if (lf_to_l) then "-lftol" else ""} \
+      ~{if (lf_to_l_units) then "-lftolunits" else ""} \
+      ~{if (localization_modification) then "-localizationModification" else ""} \
+      ~{if (min_intensity) then "-minIntensity" else ""} \
+      ~{if (min_num_of_quantitative_peaks) then "-minNumOfQuantitativePeaks" else ""} \
+      ~{if (min_quantitative_ion_number) then "-minQuantitativeIonNumber" else ""} \
+      ~{if (number_of_extra_decoy_libraries_search_e) then "-numberOfExtraDecoyLibrariesSearche" else ""} \
+      ~{if (number_of_quantitative_peaks) then "-numberOfQuantitativePeaks" else ""} \
+      ~{if (percolator_protein_threshold) then "-percolatorProteinThreshold" else ""} \
+      ~{if (percolator_threshold) then "-percolatorThreshold" else ""} \
+      ~{if (percolator_training_fdr) then "-percolatorTrainingFDR" else ""} \
+      ~{if (percolator_training_set_size) then "-percolatorTrainingSetSize" else ""} \
+      ~{if (percolator_version_number) then "-percolatorVersionNumber" else ""} \
+      ~{if (p_offset) then "-poffset" else ""} \
+      ~{if (precursor_isolation_margin) then "-precursorIsolationMargin" else ""} \
+      ~{if (precursor_window_size) then "-precursorWindowSize" else ""} \
+      ~{if (pto_l) then "-ptol" else ""} \
+      ~{if (pto_l_units) then "-ptolunits" else ""} \
+      ~{if (rt_window_in_min) then "-rtWindowInMin" else ""} \
+      ~{if (scoring_breadth_type) then "-scoringBreadthType" else ""} \
+      ~{if (verify_modification_ions) then "-verifyModificationIons" else ""}
   >>>
   parameter_meta {
-    input_dia_file: "input .DIA or .MZML file"
+    input_dia_mzml: "input .DIA or .MZML file"
     protein_fasta_database: "protein .FASTA database"
     library_elib_file: "library .ELIB file"
     walnut: "Walnut FASTA search (use -walnut -h for help)"
@@ -121,5 +121,8 @@ task EncyclopeDIA {
     rt_window_in_min: "(default: -1.0)"
     scoring_breadth_type: "(default: window)"
     verify_modification_ions: "(default: true)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

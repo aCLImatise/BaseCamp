@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../qpreroot.cwl
 inputs:
-- id: use_parameters_file
+- id: in_use_parameters_file
   doc: '... use parameters from <file> .'
   type: File
   inputBinding:
     prefix: -p
-- id: use_nam_root
+- id: in_use_nam_root
   doc: '... use <nam> as root name.'
   type: string
   inputBinding:
     prefix: -r
-- id: use_nam_graph
+- id: in__use_nam_as_graph_name
   doc: '... use <nam> as graph name.'
   type: string
   inputBinding:
     prefix: -g
-- id: use_nam_out
+- id: in__use_nam_as_out_graph_name
   doc: '... use <nam> as out graph name.'
   type: string
   inputBinding:
     prefix: -o
-- id: use_nam_dot
+- id: in_use_nam_dot
   doc: '... use <nam> as dot graph name.'
   type: string
   inputBinding:
     prefix: -d
-- id: use_nam_script
+- id: in_use_nam_script
   doc: '... use <nam> as script name.'
   type: string
   inputBinding:
     prefix: -s
-- id: delete_population_nam
+- id: in__delete_population
   doc: '... delete population <nam>.'
   type: string
   inputBinding:
     prefix: -x
-- id: toggle_hash_calculation
+- id: in_toggle_hash_calculation
   doc: '... toggle hash calculation ON.'
   type: boolean
   inputBinding:
     prefix: -H
-- id: print_version_exit
+- id: in_print_version_exit
   doc: '... print version and exit.'
   type: boolean
   inputBinding:
     prefix: -v
-- id: toggle_verbose_mode
+- id: in_toggle_verbose_mode
   doc: '... toggle verbose mode ON.'
   type: boolean
   inputBinding:
     prefix: -V
-- id: new_output_format
+- id: in_new_output_format
   doc: '... new output format (edge not ledge etc.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - qpreroot

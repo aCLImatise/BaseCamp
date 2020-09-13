@@ -4,4 +4,7 @@ task ToRawSequence {
   command <<<
     toRawSequence
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

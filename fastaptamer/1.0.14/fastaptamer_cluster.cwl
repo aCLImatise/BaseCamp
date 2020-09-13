@@ -1,17 +1,26 @@
 class: CommandLineTool
 id: ../../../fastaptamer_cluster.cwl
 inputs:
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-- id: o
+- id: in_o
   doc: ''
   type: string
   inputBinding:
     prefix: -o
-outputs: []
+- id: in_i
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -i
+- id: in_sequence
+  doc: To prevent clustering of sequences not highly sampled (and improve execution
+    ti-
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastaptamer_cluster

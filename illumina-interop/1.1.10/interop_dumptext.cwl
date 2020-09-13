@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../interop_dumptext.cwl
 inputs:
-- id: subset
+- id: in_subset
   doc: '[0]: Number of metrics to subsample'
   type: boolean
   inputBinding:
     prefix: --subset
-- id: metric
+- id: in_metric
   doc: '[]: Name of metric to load, e.g. --metric=Tile to load TileMetricsOut.bin'
   type: boolean
   inputBinding:
     prefix: --metric
-- id: option_one
+- id: in_option_two
   doc: ''
-  type: string
-  inputBinding:
-    prefix: --option1
-- id: option_two
-  doc: ''
-  type: string
+  type: long
   inputBinding:
     prefix: --option2
-- id: run_folder
+- id: in_option_one
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: --option1
+- id: in_run_folder
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - interop_dumptext

@@ -2,8 +2,8 @@ version 1.0
 
 task PpaniniRenameContigs {
   input {
-    String? var_input
-    String? var_output
+    File? var_input
+    File? var_output
   }
   command <<<
     ppanini_rename_contigs \
@@ -12,6 +12,9 @@ task PpaniniRenameContigs {
   >>>
   parameter_meta {
     var_input: "fasta file"
-    var_output: "fasta file"
+    var_output: "fasta file\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

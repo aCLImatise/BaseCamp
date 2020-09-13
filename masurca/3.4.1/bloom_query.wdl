@@ -17,4 +17,7 @@ task BloomQuery {
     bloom_query_cmdline: ""
     var_input: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Wkhtmltopdf {
   command <<<
     wkhtmltopdf
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

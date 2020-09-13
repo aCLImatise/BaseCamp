@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../nhmmer_query hmmfile|alignfile|seqfile.cwl
 inputs:
-- id: target_seq_file
+- id: in_target_seq_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nhmmer

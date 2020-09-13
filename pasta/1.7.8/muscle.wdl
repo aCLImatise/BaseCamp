@@ -2,10 +2,10 @@ version 1.0
 
 task Muscle {
   input {
-    String? in
-    String? out
+    File? in
+    File? out
     Boolean? diags
-    String? maxiter_s
+    Int? maxiter_s
     String? max_hours
     Boolean? html
     Boolean? msf
@@ -19,16 +19,16 @@ task Muscle {
     muscle \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{true="-diags" false="" diags} \
+      ~{if (diags) then "-diags" else ""} \
       ~{if defined(maxiter_s) then ("-maxiters " +  '"' + maxiter_s + '"') else ""} \
       ~{if defined(max_hours) then ("-maxhours " +  '"' + max_hours + '"') else ""} \
-      ~{true="-html" false="" html} \
-      ~{true="-msf" false="" msf} \
-      ~{true="-clw" false="" clw} \
-      ~{true="-clwstrict" false="" cl_wstrict} \
-      ~{true="-log" false="" log} \
-      ~{true="-quiet" false="" quiet} \
-      ~{true="-version" false="" version}
+      ~{if (html) then "-html" else ""} \
+      ~{if (msf) then "-msf" else ""} \
+      ~{if (clw) then "-clw" else ""} \
+      ~{if (cl_wstrict) then "-clwstrict" else ""} \
+      ~{if (log) then "-log" else ""} \
+      ~{if (quiet) then "-quiet" else ""} \
+      ~{if (version) then "-version" else ""}
   >>>
   parameter_meta {
     in: "Input file in FASTA format (default stdin)"
@@ -43,5 +43,9 @@ task Muscle {
     log: "[a] <logfile>  Log to file (append if -loga, overwrite if -log)"
     quiet: "Do not write progress messages to stderr"
     version: "Display version information and exit"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

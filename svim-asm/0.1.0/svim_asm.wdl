@@ -1,7 +1,10 @@
 version 1.0
 
-task SvimAsm {
+task Svimasm {
   command <<<
-    svim-asm
+    svim_asm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

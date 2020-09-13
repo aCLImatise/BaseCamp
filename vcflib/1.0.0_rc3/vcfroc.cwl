@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../vcfroc.cwl
 inputs:
-- id: truth_vcf
+- id: in_truth_vcf
   doc: use this VCF as ground truth for ROC generation
   type: File
   inputBinding:
     prefix: --truth-vcf
-- id: window_size
+- id: in_window_size
   doc: compare records up to this many bp away (default 30)
-  type: string
+  type: long
   inputBinding:
     prefix: --window-size
-- id: complex
+- id: in_complex
   doc: directly compare complex alleles, don't parse into primitives
   type: boolean
   inputBinding:
     prefix: --complex
-- id: reference
+- id: in_reference
   doc: FASTA reference file
   type: File
   inputBinding:
     prefix: --reference
-- id: vcf_file
+- id: in_vcf_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfroc

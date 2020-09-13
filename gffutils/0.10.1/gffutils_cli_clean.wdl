@@ -1,14 +1,17 @@
 version 1.0
 
-task GffutilsCliClean {
+task GffutilscliClean {
   input {
     File filename
   }
   command <<<
-    gffutils-cli clean \
+    gffutils_cli clean \
       ~{filename}
   >>>
   parameter_meta {
     filename: "GFF or GTF file to use"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

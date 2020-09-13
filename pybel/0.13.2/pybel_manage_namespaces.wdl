@@ -17,4 +17,7 @@ task PybelManageNamespaces {
     insert: "Add a namespace by URL."
     ls: "List cached namespaces."
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

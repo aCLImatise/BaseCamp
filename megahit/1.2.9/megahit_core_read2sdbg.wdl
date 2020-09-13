@@ -2,17 +2,17 @@ version 1.0
 
 task MegahitCoreRead2sdbg {
   input {
-    String? km_er_k
-    String? min_km_er_frequency
-    String? host_mem
-    String? num_cpu_threads
-    String? read_lib_file
+    Int? km_er_k
+    Int? min_km_er_frequency
+    Int? host_mem
+    Int? num_cpu_threads
+    File? read_lib_file
     String? output_prefix
-    String? mem_flag
+    Int? mem_flag
     Boolean? need_mercy
     String? o
     String s_dbg_builder
-    String read_two_s_dbg
+    Int read_two_s_dbg
   }
   command <<<
     megahit_core read2sdbg \
@@ -25,7 +25,7 @@ task MegahitCoreRead2sdbg {
       ~{if defined(read_lib_file) then ("--read_lib_file " +  '"' + read_lib_file + '"') else ""} \
       ~{if defined(output_prefix) then ("--output_prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if defined(mem_flag) then ("--mem_flag " +  '"' + mem_flag + '"') else ""} \
-      ~{true="--need_mercy" false="" need_mercy} \
+      ~{if (need_mercy) then "--need_mercy" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
@@ -33,12 +33,15 @@ task MegahitCoreRead2sdbg {
     min_km_er_frequency: "(=2)      min frequency to output an edge"
     host_mem: "(=0)                Max memory to be used. 90% of the free memory is recommended."
     num_cpu_threads: "(=0)         number of CPU threads. At least 2."
-    read_lib_file: "input fast[aq] file, can be gzip'ed. \"-\" for stdin."
+    read_lib_file: "input fast[aq] file, can be gzip'ed. \\\"-\\\" for stdin."
     output_prefix: "(=out)         output prefix"
     mem_flag: "(=1)                memory options. 0: minimize memory usage; 1: automatically use moderate memory; other: use all available mem specified by '--host_mem'"
     need_mercy: "to add mercy edges."
     o: ""
     s_dbg_builder: ""
     read_two_s_dbg: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,27 +1,25 @@
 class: CommandLineTool
-id: ../../../generate_report.py.bak.cwl
+id: ../../../generate_report.py.cwl
 inputs:
-- id: name_report_file
+- id: in_name_report_file
   doc: 'name of the report file (default: [prefix]_report.html)'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: diploid
+- id: in_diploid
   doc: use the diploid model
   type: boolean
   inputBinding:
     prefix: --diploid
-- id: generate_report
+- id: in_generate_report
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- generate_report.py.bak
+- generate_report.py

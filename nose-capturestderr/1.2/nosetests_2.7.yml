@@ -1,0 +1,735 @@
+!Command
+command:
+- nosetests-2.7
+positional:
+- !Positional
+  description: --first-package-wins, --first-pkg-wins, --1st-pkg-wins
+  position: 0
+  name: package
+  optional: false
+- !Positional
+  description: --no-byte-compile     Prevent nose from byte-compiling the source into
+    .pyc
+  position: 0
+  name: behavior.
+  optional: false
+- !Positional
+  description: --cover-tests         Include test modules in coverage report
+  position: 0
+  name: run
+  optional: false
+named:
+- !Flag
+  description: "Output list of available plugins and exit. Combine\nwith higher verbosity\
+    \ for greater detail"
+  synonyms:
+  - -p
+  - --plugins
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Be more verbose. [NOSE_VERBOSE]
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set verbosity; --verbosity=2 is the same as -v
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: Be less verbose
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Load configuration from config file(s). May be\nspecified multiple\
+    \ times; in that case, all config\nfiles will be loaded and combined"
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: FILES
+  optional: true
+- !Flag
+  description: "Look for tests in this directory. May be specified\nmultiple times.\
+    \ The first directory passed will be\nused as the working directory, in place\
+    \ of the current\nworking directory, which is the default. Others will\nbe added\
+    \ to the list of tests to execute. [NOSE_WHERE]"
+  synonyms:
+  - -w
+  - --where
+  args: !SimpleFlagArg
+    name: WHERE
+  optional: true
+- !Flag
+  description: "Look for tests in this directory under Python 3.x.\nFunctions the\
+    \ same as 'where', but only applies if\nrunning under Python 3.x or above.  Note\
+    \ that, if\npresent under 3.x, this option completely replaces any\ndirectories\
+    \ specified with 'where', so the 'where'\noption becomes ineffective. [NOSE_PY3WHERE]"
+  synonyms:
+  - --py3where
+  args: !SimpleFlagArg
+    name: PY3WHERE
+  optional: true
+- !Flag
+  description: "Files, directories, function names, and class names\nthat match this\
+    \ regular expression are considered\ntests.  Default: (?:^|[\\b_\\./-])[Tt]est\n\
+    [NOSE_TESTMATCH]"
+  synonyms:
+  - -m
+  - --match
+  - --testmatch
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: "Run these tests (comma-separated list). This argument\nis useful mainly\
+    \ from configuration files; on the\ncommand line, just pass the tests to run as\
+    \ additional\narguments with no switch."
+  synonyms:
+  - --tests
+  args: !SimpleFlagArg
+    name: NAMES
+  optional: true
+- !Flag
+  description: "Activate debug logging for one or more systems.\nAvailable debug loggers:\
+    \ nose, nose.importer,\nnose.inspector, nose.plugins, nose.result and\nnose.selector.\
+    \ Separate multiple names with a comma."
+  synonyms:
+  - -l
+  - --debug
+  args: !SimpleFlagArg
+    name: DEBUG
+  optional: true
+- !Flag
+  description: 'Log debug messages to this file (default: sys.stderr)'
+  synonyms:
+  - --debug-log
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Load logging config from this file -- bypasses all\nother logging\
+    \ config settings."
+  synonyms:
+  - --logging-config
+  - --log-config
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Completely ignore any file that matches this regular\nexpression.\
+    \ Takes precedence over any other settings\nor plugins. Specifying this option\
+    \ will replace the\ndefault setting. Specify this option multiple times to\nadd\
+    \ more regular expressions [NOSE_IGNORE_FILES]"
+  synonyms:
+  - -I
+  - --ignore-files
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: "Don't run tests that match regular expression\n[NOSE_EXCLUDE]"
+  synonyms:
+  - -e
+  - --exclude
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: "This regular expression will be applied to files,\ndirectories, function\
+    \ names, and class names for a\nchance to include additional tests that do not\
+    \ match\nTESTMATCH.  Specify this option multiple times to add\nmore regular expressions\
+    \ [NOSE_INCLUDE]"
+  synonyms:
+  - -i
+  - --include
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: Stop running tests after the first error or failure
+  synonyms:
+  - -x
+  - --stop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't make any changes to sys.path when loading tests\n[NOSE_NOPATH]"
+  synonyms:
+  - -P
+  - --no-path-adjustment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Look for tests in python modules that are executable.\nNormal behavior\
+    \ is to exclude executable modules,\nsince they may not be import-safe [NOSE_INCLUDE_EXE]"
+  synonyms:
+  - --exe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "DO NOT look for tests in python modules that are\nexecutable. (The\
+    \ default on the windows platform is to\ndo so.)"
+  synonyms:
+  - --noexe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Traverse through all path entries of a namespace
+  synonyms:
+  - --traverse-namespace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't capture stderr (any stderr output will be\nprinted immediately)\
+    \ [NOSE_NOCAPTURESTDERR]"
+  synonyms:
+  - --nocapturestderr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Run only tests that have attributes specified by ATTR\n[NOSE_ATTR]"
+  synonyms:
+  - -a
+  - --attr
+  args: !SimpleFlagArg
+    name: ATTR
+  optional: true
+- !Flag
+  description: "Run only tests for whose attributes the Python\nexpression EXPR evaluates\
+    \ to True [NOSE_EVAL_ATTR]"
+  synonyms:
+  - -A
+  - --eval-attr
+  args: !SimpleFlagArg
+    name: EXPR
+  optional: true
+- !Flag
+  description: "Don't capture stdout (any stdout output will be\nprinted immediately)\
+    \ [NOSE_NOCAPTURE]"
+  synonyms:
+  - -s
+  - --nocapture
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Disable logging capture plugin. Logging configuration\nwill be left\
+    \ intact. [NOSE_NOLOGCAPTURE]"
+  synonyms:
+  - --nologcapture
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify custom format to print statements. Uses the\nsame format as\
+    \ used by standard logging handlers.\n[NOSE_LOGFORMAT]"
+  synonyms:
+  - --logging-format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: "Specify custom date/time format to print statements.\nUses the same\
+    \ format as used by standard logging\nhandlers. [NOSE_LOGDATEFMT]"
+  synonyms:
+  - --logging-datefmt
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: "Specify which statements to filter in/out. By default,\neverything\
+    \ is captured. If the output is too verbose,\nuse this option to filter out needless\
+    \ output.\nExample: filter=foo will capture statements issued\nONLY to  foo or\
+    \ foo.what.ever.sub but not foobar or\nother logger. Specify multiple loggers\
+    \ with comma:\nfilter=foo,bar,baz. If any logger name is prefixed\nwith a minus,\
+    \ eg filter=-foo, it will be excluded\nrather than included. Default: exclude\
+    \ logging\nmessages from nose itself (-nose). [NOSE_LOGFILTER]"
+  synonyms:
+  - --logging-filter
+  args: !SimpleFlagArg
+    name: FILTER
+  optional: true
+- !Flag
+  description: Clear all other logging handlers
+  synonyms:
+  - --logging-clear-handlers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set the log level to capture
+  synonyms:
+  - --logging-level
+  args: !SimpleFlagArg
+    name: LOGCAPTURE_LEVEL
+  optional: true
+- !Flag
+  description: "Enable plugin Coverage:  Activate a coverage report\nusing Ned Batchelder's\
+    \ coverage module.\n[NOSE_WITH_COVERAGE]"
+  synonyms:
+  - --with-coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Restrict coverage output to selected packages\n[NOSE_COVER_PACKAGE]"
+  synonyms:
+  - --cover-package
+  args: !SimpleFlagArg
+    name: PACKAGE
+  optional: true
+- !Flag
+  description: Erase previously collected coverage statistics before
+  synonyms:
+  - --cover-erase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum percentage of coverage for tests to pass\n[NOSE_COVER_MIN_PERCENTAGE]"
+  synonyms:
+  - --cover-min-percentage
+  args: !SimpleFlagArg
+    name: COVER_MIN_PERCENTAGE
+  optional: true
+- !Flag
+  description: "Include all python files under working directory in\ncoverage report.\
+    \  Useful for discovering holes in test\ncoverage if not all files are imported\
+    \ by the test\nsuite. [NOSE_COVER_INCLUSIVE]"
+  synonyms:
+  - --cover-inclusive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Produce HTML coverage information
+  synonyms:
+  - --cover-html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Produce HTML coverage information in dir
+  synonyms:
+  - --cover-html-dir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: "Include branch coverage in coverage report\n[NOSE_COVER_BRANCHES]"
+  synonyms:
+  - --cover-branches
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Produce XML coverage information
+  synonyms:
+  - --cover-xml
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Produce XML coverage information in file
+  synonyms:
+  - --cover-xml-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Drop into debugger on failures or errors
+  synonyms:
+  - --pdb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Drop into debugger on failures
+  synonyms:
+  - --pdb-failures
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Drop into debugger on errors
+  synonyms:
+  - --pdb-errors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable special handling of DeprecatedTest exceptions.
+  synonyms:
+  - --no-deprecated
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enable plugin Doctest:  Activate doctest plugin to\nfind and run doctests\
+    \ in non-test modules.\n[NOSE_WITH_DOCTEST]"
+  synonyms:
+  - --with-doctest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Also look for doctests in test modules. Note that\nclasses, methods\
+    \ and functions should have either\ndoctests or non-doctest tests, not both.\n\
+    [NOSE_DOCTEST_TESTS]"
+  synonyms:
+  - --doctest-tests
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Also look for doctests in files with this extension\n[NOSE_DOCTEST_EXTENSION]"
+  synonyms:
+  - --doctest-extension
+  args: !SimpleFlagArg
+    name: EXT
+  optional: true
+- !Flag
+  description: "Change the variable name set to the result of the last\ninterpreter\
+    \ command from the default '_'. Can be used\nto avoid conflicts with the _() function\
+    \ used for text\ntranslation. [NOSE_DOCTEST_RESULT_VAR]"
+  synonyms:
+  - --doctest-result-variable
+  args: !SimpleFlagArg
+    name: VAR
+  optional: true
+- !Flag
+  description: "Find fixtures for a doctest file in module with this\nname appended\
+    \ to the base name of the doctest file"
+  synonyms:
+  - --doctest-fixtures
+  args: !SimpleFlagArg
+    name: SUFFIX
+  optional: true
+- !Flag
+  description: "Specify options to pass to doctest. Eg.\n'+ELLIPSIS,+NORMALIZE_WHITESPACE'"
+  synonyms:
+  - --doctest-options
+  args: !SimpleFlagArg
+    name: OPTIONS
+  optional: true
+- !Flag
+  description: "Enable plugin IsolationPlugin:  Activate the isolation\nplugin to\
+    \ isolate changes to external modules to a\nsingle test module or package. The\
+    \ isolation plugin\nresets the contents of sys.modules after each test\nmodule\
+    \ or package runs to its state before the test.\nPLEASE NOTE that this plugin\
+    \ should not be used with\nthe coverage plugin, or in any other case where module\n\
+    reloading may produce undesirable side-effects.\n[NOSE_WITH_ISOLATION]"
+  synonyms:
+  - --with-isolation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Add detail to error output by attempting to evaluate\nfailed asserts\
+    \ [NOSE_DETAILED_ERRORS]"
+  synonyms:
+  - -d
+  - --detailed-errors
+  - --failure-detail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enable plugin Profile:  Use this plugin to run tests\nusing the hotshot\
+    \ profiler.   [NOSE_WITH_PROFILE]"
+  synonyms:
+  - --with-profile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set sort order for profiler output
+  synonyms:
+  - --profile-sort
+  args: !SimpleFlagArg
+    name: SORT
+  optional: true
+- !Flag
+  description: "Profiler stats file; default is a new temp file on\neach run"
+  synonyms:
+  - --profile-stats-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Restrict profiler output. See help for pstats.Stats\nfor details"
+  synonyms:
+  - --profile-restrict
+  args: !SimpleFlagArg
+    name: RESTRICT
+  optional: true
+- !Flag
+  description: Disable special handling of SkipTest exceptions.
+  synonyms:
+  - --no-skip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enable plugin TestId:  Activate to add a test id (like\n#1) to each\
+    \ test name output. Activate with --failed\nto rerun failing tests only.  [NOSE_WITH_ID]"
+  synonyms:
+  - --with-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Store test ids found in test runs in this file.\nDefault is the file\
+    \ .noseids in the working directory."
+  synonyms:
+  - --id-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Run the tests that failed in the last test run.
+  synonyms:
+  - --failed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Spread test run among this many processes. Set a\nnumber equal to\
+    \ the number of processors or cores in\nyour machine for best results. Pass a\
+    \ negative number\nto have the number of processes automatically set to\nthe number\
+    \ of cores. Passing 0 means to disable\nparallel testing. Default is 0 unless\
+    \ NOSE_PROCESSES\nis set. [NOSE_PROCESSES]"
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Set timeout for return of results from each test\nrunner process.\
+    \ Default is 10. [NOSE_PROCESS_TIMEOUT]"
+  synonyms:
+  - --process-timeout
+  args: !SimpleFlagArg
+    name: SECONDS
+  optional: true
+- !Flag
+  description: "If set, will restart each worker process once their\ntests are done,\
+    \ this helps control memory leaks from\nkilling the system. [NOSE_PROCESS_RESTARTWORKER]"
+  synonyms:
+  - --process-restartworker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enable plugin Xunit: This plugin provides test results\nin the standard\
+    \ XUnit XML format. [NOSE_WITH_XUNIT]"
+  synonyms:
+  - --with-xunit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to xml file to store the xunit report in. Default\nis nosetests.xml\
+    \ in the working directory\n[NOSE_XUNIT_FILE]"
+  synonyms:
+  - --xunit-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Name of the testsuite in the xunit xml, generated by\nplugin. Default\
+    \ test suite name is nosetests."
+  synonyms:
+  - --xunit-testsuite-name
+  args: !SimpleFlagArg
+    name: PACKAGE
+  optional: true
+- !Flag
+  description: "Enable plugin AllModules: Collect tests from all\npython modules.\
+    \  [NOSE_ALL_MODULES]"
+  synonyms:
+  - --all-modules
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enable collect-only:  Collect and output test names\nonly, don't run\
+    \ any tests.  [COLLECT_ONLY]\n"
+  synonyms:
+  - --collect-only
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Output nose version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: nosetests-2.7 [options]\n\nOptions:\n  -h, --help            show\
+  \ this help message and exit\n  -V, --version         Output nose version and exit\n\
+  \  -p, --plugins         Output list of available plugins and exit. Combine\n  \
+  \                      with higher verbosity for greater detail\n  -v, --verbose\
+  \         Be more verbose. [NOSE_VERBOSE]\n  --verbosity=VERBOSITY\n           \
+  \             Set verbosity; --verbosity=2 is the same as -v\n  -q, --quiet    \
+  \       Be less verbose\n  -c FILES, --config=FILES\n                        Load\
+  \ configuration from config file(s). May be\n                        specified multiple\
+  \ times; in that case, all config\n                        files will be loaded\
+  \ and combined\n  -w WHERE, --where=WHERE\n                        Look for tests\
+  \ in this directory. May be specified\n                        multiple times. The\
+  \ first directory passed will be\n                        used as the working directory,\
+  \ in place of the current\n                        working directory, which is the\
+  \ default. Others will\n                        be added to the list of tests to\
+  \ execute. [NOSE_WHERE]\n  --py3where=PY3WHERE   Look for tests in this directory\
+  \ under Python 3.x.\n                        Functions the same as 'where', but\
+  \ only applies if\n                        running under Python 3.x or above.  Note\
+  \ that, if\n                        present under 3.x, this option completely replaces\
+  \ any\n                        directories specified with 'where', so the 'where'\n\
+  \                        option becomes ineffective. [NOSE_PY3WHERE]\n  -m REGEX,\
+  \ --match=REGEX, --testmatch=REGEX\n                        Files, directories,\
+  \ function names, and class names\n                        that match this regular\
+  \ expression are considered\n                        tests.  Default: (?:^|[\\b_\\\
+  ./-])[Tt]est\n                        [NOSE_TESTMATCH]\n  --tests=NAMES        \
+  \ Run these tests (comma-separated list). This argument\n                      \
+  \  is useful mainly from configuration files; on the\n                        command\
+  \ line, just pass the tests to run as additional\n                        arguments\
+  \ with no switch.\n  -l DEBUG, --debug=DEBUG\n                        Activate debug\
+  \ logging for one or more systems.\n                        Available debug loggers:\
+  \ nose, nose.importer,\n                        nose.inspector, nose.plugins, nose.result\
+  \ and\n                        nose.selector. Separate multiple names with a comma.\n\
+  \  --debug-log=FILE      Log debug messages to this file (default: sys.stderr)\n\
+  \  --logging-config=FILE, --log-config=FILE\n                        Load logging\
+  \ config from this file -- bypasses all\n                        other logging config\
+  \ settings.\n  -I REGEX, --ignore-files=REGEX\n                        Completely\
+  \ ignore any file that matches this regular\n                        expression.\
+  \ Takes precedence over any other settings\n                        or plugins.\
+  \ Specifying this option will replace the\n                        default setting.\
+  \ Specify this option multiple times to\n                        add more regular\
+  \ expressions [NOSE_IGNORE_FILES]\n  -e REGEX, --exclude=REGEX\n               \
+  \         Don't run tests that match regular expression\n                      \
+  \  [NOSE_EXCLUDE]\n  -i REGEX, --include=REGEX\n                        This regular\
+  \ expression will be applied to files,\n                        directories, function\
+  \ names, and class names for a\n                        chance to include additional\
+  \ tests that do not match\n                        TESTMATCH.  Specify this option\
+  \ multiple times to add\n                        more regular expressions [NOSE_INCLUDE]\n\
+  \  -x, --stop            Stop running tests after the first error or failure\n \
+  \ -P, --no-path-adjustment\n                        Don't make any changes to sys.path\
+  \ when loading tests\n                        [NOSE_NOPATH]\n  --exe           \
+  \      Look for tests in python modules that are executable.\n                 \
+  \       Normal behavior is to exclude executable modules,\n                    \
+  \    since they may not be import-safe [NOSE_INCLUDE_EXE]\n  --noexe           \
+  \    DO NOT look for tests in python modules that are\n                        executable.\
+  \ (The default on the windows platform is to\n                        do so.)\n\
+  \  --traverse-namespace  Traverse through all path entries of a namespace\n    \
+  \                    package\n  --first-package-wins, --first-pkg-wins, --1st-pkg-wins\n\
+  \                        nose's importer will normally evict a package from\n  \
+  \                      sys.modules if it sees a package with the same name in\n\
+  \                        a different location. Set this option to disable that\n\
+  \                        behavior.\n  --no-byte-compile     Prevent nose from byte-compiling\
+  \ the source into .pyc\n                        files while nose is scanning for\
+  \ and running tests.\n  --nocapturestderr     Don't capture stderr (any stderr output\
+  \ will be\n                        printed immediately) [NOSE_NOCAPTURESTDERR]\n\
+  \  -a ATTR, --attr=ATTR  Run only tests that have attributes specified by ATTR\n\
+  \                        [NOSE_ATTR]\n  -A EXPR, --eval-attr=EXPR\n            \
+  \            Run only tests for whose attributes the Python\n                  \
+  \      expression EXPR evaluates to True [NOSE_EVAL_ATTR]\n  -s, --nocapture   \
+  \    Don't capture stdout (any stdout output will be\n                        printed\
+  \ immediately) [NOSE_NOCAPTURE]\n  --nologcapture        Disable logging capture\
+  \ plugin. Logging configuration\n                        will be left intact. [NOSE_NOLOGCAPTURE]\n\
+  \  --logging-format=FORMAT\n                        Specify custom format to print\
+  \ statements. Uses the\n                        same format as used by standard\
+  \ logging handlers.\n                        [NOSE_LOGFORMAT]\n  --logging-datefmt=FORMAT\n\
+  \                        Specify custom date/time format to print statements.\n\
+  \                        Uses the same format as used by standard logging\n    \
+  \                    handlers. [NOSE_LOGDATEFMT]\n  --logging-filter=FILTER\n  \
+  \                      Specify which statements to filter in/out. By default,\n\
+  \                        everything is captured. If the output is too verbose,\n\
+  \                        use this option to filter out needless output.\n      \
+  \                  Example: filter=foo will capture statements issued\n        \
+  \                ONLY to  foo or foo.what.ever.sub but not foobar or\n         \
+  \               other logger. Specify multiple loggers with comma:\n           \
+  \             filter=foo,bar,baz. If any logger name is prefixed\n             \
+  \           with a minus, eg filter=-foo, it will be excluded\n                \
+  \        rather than included. Default: exclude logging\n                      \
+  \  messages from nose itself (-nose). [NOSE_LOGFILTER]\n  --logging-clear-handlers\n\
+  \                        Clear all other logging handlers\n  --logging-level=LOGCAPTURE_LEVEL\n\
+  \                        Set the log level to capture\n  --with-coverage       Enable\
+  \ plugin Coverage:  Activate a coverage report\n                        using Ned\
+  \ Batchelder's coverage module.\n                        [NOSE_WITH_COVERAGE]\n\
+  \  --cover-package=PACKAGE\n                        Restrict coverage output to\
+  \ selected packages\n                        [NOSE_COVER_PACKAGE]\n  --cover-erase\
+  \         Erase previously collected coverage statistics before\n              \
+  \          run\n  --cover-tests         Include test modules in coverage report\n\
+  \                        [NOSE_COVER_TESTS]\n  --cover-min-percentage=COVER_MIN_PERCENTAGE\n\
+  \                        Minimum percentage of coverage for tests to pass\n    \
+  \                    [NOSE_COVER_MIN_PERCENTAGE]\n  --cover-inclusive     Include\
+  \ all python files under working directory in\n                        coverage\
+  \ report.  Useful for discovering holes in test\n                        coverage\
+  \ if not all files are imported by the test\n                        suite. [NOSE_COVER_INCLUSIVE]\n\
+  \  --cover-html          Produce HTML coverage information\n  --cover-html-dir=DIR\
+  \  Produce HTML coverage information in dir\n  --cover-branches      Include branch\
+  \ coverage in coverage report\n                        [NOSE_COVER_BRANCHES]\n \
+  \ --cover-xml           Produce XML coverage information\n  --cover-xml-file=FILE\n\
+  \                        Produce XML coverage information in file\n  --pdb     \
+  \            Drop into debugger on failures or errors\n  --pdb-failures        Drop\
+  \ into debugger on failures\n  --pdb-errors          Drop into debugger on errors\n\
+  \  --no-deprecated       Disable special handling of DeprecatedTest exceptions.\n\
+  \  --with-doctest        Enable plugin Doctest:  Activate doctest plugin to\n  \
+  \                      find and run doctests in non-test modules.\n            \
+  \            [NOSE_WITH_DOCTEST]\n  --doctest-tests       Also look for doctests\
+  \ in test modules. Note that\n                        classes, methods and functions\
+  \ should have either\n                        doctests or non-doctest tests, not\
+  \ both.\n                        [NOSE_DOCTEST_TESTS]\n  --doctest-extension=EXT\n\
+  \                        Also look for doctests in files with this extension\n \
+  \                       [NOSE_DOCTEST_EXTENSION]\n  --doctest-result-variable=VAR\n\
+  \                        Change the variable name set to the result of the last\n\
+  \                        interpreter command from the default '_'. Can be used\n\
+  \                        to avoid conflicts with the _() function used for text\n\
+  \                        translation. [NOSE_DOCTEST_RESULT_VAR]\n  --doctest-fixtures=SUFFIX\n\
+  \                        Find fixtures for a doctest file in module with this\n\
+  \                        name appended to the base name of the doctest file\n  --doctest-options=OPTIONS\n\
+  \                        Specify options to pass to doctest. Eg.\n             \
+  \           '+ELLIPSIS,+NORMALIZE_WHITESPACE'\n  --with-isolation      Enable plugin\
+  \ IsolationPlugin:  Activate the isolation\n                        plugin to isolate\
+  \ changes to external modules to a\n                        single test module or\
+  \ package. The isolation plugin\n                        resets the contents of\
+  \ sys.modules after each test\n                        module or package runs to\
+  \ its state before the test.\n                        PLEASE NOTE that this plugin\
+  \ should not be used with\n                        the coverage plugin, or in any\
+  \ other case where module\n                        reloading may produce undesirable\
+  \ side-effects.\n                        [NOSE_WITH_ISOLATION]\n  -d, --detailed-errors,\
+  \ --failure-detail\n                        Add detail to error output by attempting\
+  \ to evaluate\n                        failed asserts [NOSE_DETAILED_ERRORS]\n \
+  \ --with-profile        Enable plugin Profile:  Use this plugin to run tests\n \
+  \                       using the hotshot profiler.   [NOSE_WITH_PROFILE]\n  --profile-sort=SORT\
+  \   Set sort order for profiler output\n  --profile-stats-file=FILE\n          \
+  \              Profiler stats file; default is a new temp file on\n            \
+  \            each run\n  --profile-restrict=RESTRICT\n                        Restrict\
+  \ profiler output. See help for pstats.Stats\n                        for details\n\
+  \  --no-skip             Disable special handling of SkipTest exceptions.\n  --with-id\
+  \             Enable plugin TestId:  Activate to add a test id (like\n         \
+  \               #1) to each test name output. Activate with --failed\n         \
+  \               to rerun failing tests only.  [NOSE_WITH_ID]\n  --id-file=FILE \
+  \       Store test ids found in test runs in this file.\n                      \
+  \  Default is the file .noseids in the working directory.\n  --failed          \
+  \    Run the tests that failed in the last test run.\n  --processes=NUM       Spread\
+  \ test run among this many processes. Set a\n                        number equal\
+  \ to the number of processors or cores in\n                        your machine\
+  \ for best results. Pass a negative number\n                        to have the\
+  \ number of processes automatically set to\n                        the number of\
+  \ cores. Passing 0 means to disable\n                        parallel testing. Default\
+  \ is 0 unless NOSE_PROCESSES\n                        is set. [NOSE_PROCESSES]\n\
+  \  --process-timeout=SECONDS\n                        Set timeout for return of\
+  \ results from each test\n                        runner process. Default is 10.\
+  \ [NOSE_PROCESS_TIMEOUT]\n  --process-restartworker\n                        If\
+  \ set, will restart each worker process once their\n                        tests\
+  \ are done, this helps control memory leaks from\n                        killing\
+  \ the system. [NOSE_PROCESS_RESTARTWORKER]\n  --with-xunit          Enable plugin\
+  \ Xunit: This plugin provides test results\n                        in the standard\
+  \ XUnit XML format. [NOSE_WITH_XUNIT]\n  --xunit-file=FILE     Path to xml file\
+  \ to store the xunit report in. Default\n                        is nosetests.xml\
+  \ in the working directory\n                        [NOSE_XUNIT_FILE]\n  --xunit-testsuite-name=PACKAGE\n\
+  \                        Name of the testsuite in the xunit xml, generated by\n\
+  \                        plugin. Default test suite name is nosetests.\n  --all-modules\
+  \         Enable plugin AllModules: Collect tests from all\n                   \
+  \     python modules.  [NOSE_ALL_MODULES]\n  --collect-only        Enable collect-only:\
+  \  Collect and output test names\n                        only, don't run any tests.\
+  \  [COLLECT_ONLY]\n"
+generated_using:
+- --help

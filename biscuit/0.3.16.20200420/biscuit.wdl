@@ -4,4 +4,7 @@ task Biscuit {
   command <<<
     biscuit
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

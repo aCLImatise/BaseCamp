@@ -9,7 +9,6 @@ task MafFrag {
     String start
     String end
     String strand
-    String out_dot_maf
   }
   command <<<
     mafFrag \
@@ -19,7 +18,6 @@ task MafFrag {
       ~{start} \
       ~{end} \
       ~{strand} \
-      ~{out_dot_maf} \
       ~{if defined(out_name) then ("-outName " +  '"' + out_name + '"') else ""}
   >>>
   parameter_meta {
@@ -30,6 +28,8 @@ task MafFrag {
     start: ""
     end: ""
     strand: ""
-    out_dot_maf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

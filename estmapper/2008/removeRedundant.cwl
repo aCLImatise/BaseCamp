@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../removeRedundant.cwl
 inputs:
-- id: gff_three
+- id: in_gff_three
   doc: ''
   type: boolean
   inputBinding:
     prefix: -gff3
-- id: polishes_file
+- id: in_polishes_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - removeRedundant

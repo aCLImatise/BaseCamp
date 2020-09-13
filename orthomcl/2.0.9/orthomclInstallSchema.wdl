@@ -17,4 +17,7 @@ task OrthomclInstallSchema {
     sql_log_file: ""
     table_suffix: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

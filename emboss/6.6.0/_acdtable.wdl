@@ -1,7 +1,10 @@
 version 1.0
 
-task _acdtable {
+task Acdtable {
   command <<<
     _acdtable
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

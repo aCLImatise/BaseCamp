@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../splitFile.cwl
 inputs:
-- id: head
+- id: in_head
   doc: '- put head in front of each output'
   type: File
   inputBinding:
     prefix: -head
-- id: tail
+- id: in_tail
   doc: '- put tail at end of each output'
   type: File
   inputBinding:
     prefix: -tail
-- id: source
+- id: in_source
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: lines_per_file
+- id: in_lines_per_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_basename
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - splitFile

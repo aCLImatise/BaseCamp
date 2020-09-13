@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../faSomeRecords.cwl
 inputs:
-- id: exclude
+- id: in_exclude
   doc: '- output sequences not in the list file.'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -exclude
-- id: in_dot_fa
+- id: in_in_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: list_file
+- id: in_list_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_dot_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_exclude
+  doc: '- output sequences not in the list file.'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_exclude)
 cwlVersion: v1.1
 baseCommand:
 - faSomeRecords

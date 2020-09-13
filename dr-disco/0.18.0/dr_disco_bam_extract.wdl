@@ -1,13 +1,13 @@
 version 1.0
 
-task DrDiscoBamExtract {
+task DrdiscoBamextract {
   input {
-    String region_one
-    String region_two
+    Int region_one
+    Int region_two
     String bam_input_file
   }
   command <<<
-    dr-disco bam-extract \
+    dr_disco bam_extract \
       ~{region_one} \
       ~{region_two} \
       ~{bam_input_file}
@@ -16,5 +16,8 @@ task DrDiscoBamExtract {
     region_one: ""
     region_two: ""
     bam_input_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

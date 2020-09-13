@@ -1,4 +1,8 @@
 &id006 !Command
+command:
+- checkm
+- taxon_set
+- taxon
 positional:
 - !Positional
   description: ''
@@ -14,21 +18,20 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -q
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
   - --tmpdir
   args: !SimpleFlagArg
     name: TMPDIR
   optional: true
-command:
-- checkm
-- taxon_set
-- taxon
-parent: &id003 !Command
+- !Flag
+  description: ''
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent: &id005 !Command
+  command:
+  - checkm
+  - taxon_set
   positional: []
   named:
   - !Flag
@@ -45,10 +48,9 @@ parent: &id003 !Command
     args: !SimpleFlagArg
       name: TMPDIR
     optional: true
-  command:
-  - checkm
-  - taxon_set
   parent: &id001 !Command
+    command:
+    - checkm
     positional: []
     named:
     - !Flag
@@ -58,11 +60,52 @@ parent: &id003 !Command
       args: !SimpleFlagArg
         name: for
       optional: true
-    command:
-    - checkm
     parent:
     subcommands:
     - !Command
+      command:
+      - checkm
+      - unique
+      positional:
+      - !Positional
+        description: directory containing bins (fasta format)
+        position: 0
+        name: bin_dir
+        optional: false
+      named:
+      - !Flag
+        description: 'extension of bins (all other files in bin directory are ignored)
+          (default: fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm unique [-h] [-x EXTENSION] bin_dir\n\nEnsure no sequences\
+        \ are assigned to multiple bins.\n\npositional arguments:\n  bin_dir     \
+        \          directory containing bins (fasta format)\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  -x, --extension\
+        \ EXTENSION\n                        extension of bins (all other files in\
+        \ bin directory are ignored) (default: fna)\n\nExample: checkm unique ./bins\n"
+      generated_using: &id002
+      - --help
+    - !Command
+      command:
+      - checkm
+      - lineage_wf
       positional:
       - !Positional
         description: directory containing bins (fasta format)
@@ -100,6 +143,107 @@ parent: &id003 !Command
         synonyms:
         - -g
         - --genes
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'minimum number of unique phylogenetic markers required to use
+          lineage-specific marker set (default: 10)'
+        synonyms:
+        - -u
+        - --unique
+        args: !SimpleFlagArg
+          name: UNIQUE
+        optional: true
+      - !Flag
+        description: 'maximum number of multi-copy phylogenetic markers before defaulting
+          to domain-level marker set (default: 10)'
+        synonyms:
+        - -m
+        - --multi
+        args: !SimpleFlagArg
+          name: MULTI
+        optional: true
+      - !Flag
+        description: use domain-level sets for all bins
+        synonyms:
+        - --force_domain
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: do not perform lineage-specific marker set refinement
+        synonyms:
+        - --no_refinement
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: treat marker as independent (i.e., ignore co-located set structure)
+        synonyms:
+        - --individual_markers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: do not exclude adjacent marker genes when estimating contamination
+        synonyms:
+        - --skip_adj_correction
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: skip identification and filtering of pseudogenes
+        synonyms:
+        - --skip_pseudogene_correction
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'AAI threshold used to identify strain heterogeneity (default:
+          0.9)'
+        synonyms:
+        - --aai_strain
+        args: !SimpleFlagArg
+          name: AAI_STRAIN
+        optional: true
+      - !Flag
+        description: produce file showing alignment of multi-copy genes and their
+          AAI identity
+        synonyms:
+        - -a
+        - --alignment_file
+        args: !SimpleFlagArg
+          name: ALIGNMENT_FILE
+        optional: true
+      - !Flag
+        description: ignore model-specific score thresholds
+        synonyms:
+        - --ignore_thresholds
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'e-value cut off (default: 1e-10)'
+        synonyms:
+        - -e
+        - --e_value
+        args: !SimpleFlagArg
+          name: E_VALUE
+        optional: true
+      - !Flag
+        description: 'percent overlap between target and query (default: 0.7)'
+        synonyms:
+        - -l
+        - --length
+        args: !SimpleFlagArg
+          name: LENGTH
+        optional: true
+      - !Flag
+        description: 'print results to file (default: stdout)'
+        synonyms:
+        - -f
+        - --file
+        args: !SimpleFlagArg
+          name: FILE
+        optional: true
+      - !Flag
+        description: print tab-separated values table
+        synonyms:
+        - --tab_table
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
@@ -141,11 +285,9 @@ parent: &id003 !Command
         args: !SimpleFlagArg
           name: TMPDIR
         optional: true
-      command:
-      - checkm
-      - tree
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -155,197 +297,53 @@ parent: &id003 !Command
         optional: true
       usage_flag:
       version_flag:
-      help_text: "usage: checkm tree [-h] [-r] [--ali] [--nt] [-g] [-x EXTENSION]\
-        \ [-t THREADS]\n                   [--pplacer_threads PPLACER_THREADS] [-q]\
-        \ [--tmpdir TMPDIR]\n                   bin_dir output_dir\n\nPlace bins in\
-        \ the genome tree.\n\npositional arguments:\n  bin_dir               directory\
-        \ containing bins (fasta format)\n  output_dir            directory to write\
-        \ output files\n\noptional arguments:\n  -h, --help            show this help\
-        \ message and exit\n  -r, --reduced_tree    use reduced tree (requires <16GB\
-        \ of memory) for determining lineage of each bin\n  --ali                \
-        \ generate HMMER alignment file for each bin\n  --nt                  generate\
-        \ nucleotide gene sequences for each bin\n  -g, --genes           bins contain\
-        \ genes as amino acids instead of nucleotide contigs\n  -x, --extension EXTENSION\n\
-        \                        extension of bins (other files in directory are ignored)\
+      help_text: "usage: checkm lineage_wf [-h] [-r] [--ali] [--nt] [-g] [-u UNIQUE]\
+        \ [-m MULTI]\n                         [--force_domain] [--no_refinement]\n\
+        \                         [--individual_markers] [--skip_adj_correction]\n\
+        \                         [--skip_pseudogene_correction]\n               \
+        \          [--aai_strain AAI_STRAIN] [-a ALIGNMENT_FILE]\n               \
+        \          [--ignore_thresholds] [-e E_VALUE] [-l LENGTH]\n              \
+        \           [-f FILE] [--tab_table] [-x EXTENSION] [-t THREADS]\n        \
+        \                 [--pplacer_threads PPLACER_THREADS] [-q]\n             \
+        \            [--tmpdir TMPDIR]\n                         bin_dir output_dir\n\
+        \nRuns tree, lineage_set, analyze, qa\n\npositional arguments:\n  bin_dir\
+        \               directory containing bins (fasta format)\n  output_dir   \
+        \         directory to write output files\n\noptional arguments:\n  -h, --help\
+        \            show this help message and exit\n  -r, --reduced_tree    use\
+        \ reduced tree (requires <16GB of memory) for determining lineage of each\
+        \ bin\n  --ali                 generate HMMER alignment file for each bin\n\
+        \  --nt                  generate nucleotide gene sequences for each bin\n\
+        \  -g, --genes           bins contain genes as amino acids instead of nucleotide\
+        \ contigs\n  -u, --unique UNIQUE   minimum number of unique phylogenetic markers\
+        \ required to use lineage-specific marker set (default: 10)\n  -m, --multi\
+        \ MULTI     maximum number of multi-copy phylogenetic markers before defaulting\
+        \ to domain-level marker set (default: 10)\n  --force_domain        use domain-level\
+        \ sets for all bins\n  --no_refinement       do not perform lineage-specific\
+        \ marker set refinement\n  --individual_markers  treat marker as independent\
+        \ (i.e., ignore co-located set structure)\n  --skip_adj_correction\n     \
+        \                   do not exclude adjacent marker genes when estimating contamination\n\
+        \  --skip_pseudogene_correction\n                        skip identification\
+        \ and filtering of pseudogenes\n  --aai_strain AAI_STRAIN\n              \
+        \          AAI threshold used to identify strain heterogeneity (default: 0.9)\n\
+        \  -a, --alignment_file ALIGNMENT_FILE\n                        produce file\
+        \ showing alignment of multi-copy genes and their AAI identity\n  --ignore_thresholds\
+        \   ignore model-specific score thresholds\n  -e, --e_value E_VALUE\n    \
+        \                    e-value cut off (default: 1e-10)\n  -l, --length LENGTH\
+        \   percent overlap between target and query (default: 0.7)\n  -f, --file\
+        \ FILE       print results to file (default: stdout)\n  --tab_table      \
+        \     print tab-separated values table\n  -x, --extension EXTENSION\n    \
+        \                    extension of bins (other files in directory are ignored)\
         \ (default: fna)\n  -t, --threads THREADS\n                        number\
         \ of threads (default: 1)\n  --pplacer_threads PPLACER_THREADS\n         \
         \               number of threads used by pplacer (memory usage increases\
         \ linearly with additional threads) (default: 1)\n  -q, --quiet          \
         \ suppress console output\n  --tmpdir TMPDIR       specify an alternative\
-        \ directory for temporary files\n\nExample: checkm tree ./bins ./output\n"
-      generated_using: &id002
-      - --help
-    - !Command
-      positional:
-      - !Positional
-        description: directory specified during tree command
-        position: 0
-        name: tree_dir
-        optional: false
-      named:
-      - !Flag
-        description: 'desired output: (default: 1) 1. brief summary of genome tree
-          placement 2. detailed summary of genome tree placement including lineage-specific
-          statistics 3. genome tree in Newick format decorated with IMG genome ids
-          4. genome tree in Newick format decorated with taxonomy strings 5. multiple
-          sequence alignment of reference genomes and bins'
-        synonyms:
-        - -o
-        - --out_format
-        args: !ChoiceFlagArg
-          choices: !!set
-            ? "5"
-            ? "2"
-            ? "3"
-            ? "1"
-            ? "4"
-        optional: true
-      - !Flag
-        description: 'print results to file (default: stdout)'
-        synonyms:
-        - -f
-        - --file
-        args: !SimpleFlagArg
-          name: FILE
-        optional: true
-      - !Flag
-        description: print tab-separated values table
-        synonyms:
-        - --tab_table
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: specify an alternative directory for temporary files
-        synonyms:
-        - --tmpdir
-        args: !SimpleFlagArg
-          name: TMPDIR
-        optional: true
-      command:
-      - checkm
-      - tree_qa
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm tree_qa [-h] [-o {1,2,3,4,5}] [-f FILE] [--tab_table]\
-        \ [-q]\n                      [--tmpdir TMPDIR]\n                      tree_dir\n\
-        \nAssess phylogenetic markers found in each bin.\n\npositional arguments:\n\
-        \  tree_dir              directory specified during tree command\n\noptional\
-        \ arguments:\n  -h, --help            show this help message and exit\n  -o,\
-        \ --out_format {1,2,3,4,5}\n                        desired output: (default:\
-        \ 1)\n                          1. brief summary of genome tree placement\n\
-        \                          2. detailed summary of genome tree placement including\
-        \ lineage-specific statistics\n                          3. genome tree in\
-        \ Newick format decorated with IMG genome ids\n                          4.\
-        \ genome tree in Newick format decorated with taxonomy strings\n         \
-        \                 5. multiple sequence alignment of reference genomes and\
-        \ bins\n  -f, --file FILE       print results to file (default: stdout)\n\
-        \  --tab_table           print tab-separated values table\n  -q, --quiet \
-        \          suppress console output\n  --tmpdir TMPDIR       specify an alternative\
-        \ directory for temporary files\n\nExample: checkm tree_qa ./output\n"
+        \ directory for temporary files\n\nExample: checkm lineage_wf ./bins ./output\n"
       generated_using: *id002
     - !Command
-      positional:
-      - !Positional
-        description: directory specified during tree command
-        position: 0
-        name: tree_dir
-        optional: false
-      - !Positional
-        description: output file describing marker set for each bin
-        position: 1
-        name: marker_file
-        optional: false
-      named:
-      - !Flag
-        description: 'minimum number of unique phylogenetic markers required to use
-          lineage-specific marker set (default: 10)'
-        synonyms:
-        - -u
-        - --unique
-        args: !SimpleFlagArg
-          name: UNIQUE
-        optional: true
-      - !Flag
-        description: 'maximum number of multi-copy phylogenetic markers before defaulting
-          to domain-level marker set (default: 10)'
-        synonyms:
-        - -m
-        - --multi
-        args: !SimpleFlagArg
-          name: MULTI
-        optional: true
-      - !Flag
-        description: use domain-level sets for all bins
-        synonyms:
-        - --force_domain
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: do not perform lineage-specific marker set refinement
-        synonyms:
-        - --no_refinement
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: specify an alternative directory for temporary files
-        synonyms:
-        - --tmpdir
-        args: !SimpleFlagArg
-          name: TMPDIR
-        optional: true
       command:
       - checkm
-      - lineage_set
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm lineage_set [-h] [-u UNIQUE] [-m MULTI] [--force_domain]\n\
-        \                          [--no_refinement] [-q] [--tmpdir TMPDIR]\n    \
-        \                      tree_dir marker_file\n\nInfer lineage-specific marker\
-        \ sets for each bin.\n\npositional arguments:\n  tree_dir             directory\
-        \ specified during tree command\n  marker_file          output file describing\
-        \ marker set for each bin\n\noptional arguments:\n  -h, --help           show\
-        \ this help message and exit\n  -u, --unique UNIQUE  minimum number of unique\
-        \ phylogenetic markers required to use lineage-specific marker set (default:\
-        \ 10)\n  -m, --multi MULTI    maximum number of multi-copy phylogenetic markers\
-        \ before defaulting to domain-level marker set (default: 10)\n  --force_domain\
-        \       use domain-level sets for all bins\n  --no_refinement      do not\
-        \ perform lineage-specific marker set refinement\n  -q, --quiet          suppress\
-        \ console output\n  --tmpdir TMPDIR      specify an alternative directory\
-        \ for temporary files\n\nExample: checkm lineage_set ./output lineage.ms\n"
-      generated_using: *id002
-    - !Command
+      - taxon_list
       positional: []
       named:
       - !Flag
@@ -354,15 +352,15 @@ parent: &id003 !Command
         - --rank
         args: !ChoiceFlagArg
           choices: !!set
-            ? species
-            ? family
-            ? class
-            ? ALL
             ? domain
-            ? order
-            ? life
+            ? species
+            ? class
             ? genus
             ? phylum
+            ? life
+            ? order
+            ? family
+            ? ALL
         optional: true
       - !Flag
         description: specify an alternative directory for temporary files
@@ -371,11 +369,9 @@ parent: &id003 !Command
         args: !SimpleFlagArg
           name: TMPDIR
         optional: true
-      command:
-      - checkm
-      - taxon_list
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -394,8 +390,768 @@ parent: &id003 !Command
         \ ALL)\n  --tmpdir TMPDIR       specify an alternative directory for temporary\
         \ files\n\nExample: checkm taxon_list --rank phylum\n"
       generated_using: *id002
-    - *id003
+    - &id003 !Command
+      command:
+      - checkm
+      - taxonomy_wf
+      positional: []
+      named:
+      - !Flag
+        description: generate HMMER alignment file for each bin
+        synonyms:
+        - --ali
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: generate nucleotide gene sequences for each bin
+        synonyms:
+        - --nt
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: bins contain genes as amino acids instead of nucleotide contigs
+        synonyms:
+        - -g
+        - --genes
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: treat marker as independent (i.e., ignore co-located set structure)
+        synonyms:
+        - --individual_markers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: do not exclude adjacent marker genes when estimating contamination
+        synonyms:
+        - --skip_adj_correction
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: skip identification and filtering of pseudogenes
+        synonyms:
+        - --skip_pseudogene_correction
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'AAI threshold used to identify strain heterogeneity (default:
+          0.9)'
+        synonyms:
+        - --aai_strain
+        args: !SimpleFlagArg
+          name: AAI_STRAIN
+        optional: true
+      - !Flag
+        description: produce file showing alignment of multi-copy genes and their
+          AAI identity
+        synonyms:
+        - -a
+        - --alignment_file
+        args: !SimpleFlagArg
+          name: ALIGNMENT_FILE
+        optional: true
+      - !Flag
+        description: ignore model-specific score thresholds
+        synonyms:
+        - --ignore_thresholds
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'e-value cut off (default: 1e-10)'
+        synonyms:
+        - -e
+        - --e_value
+        args: !SimpleFlagArg
+          name: E_VALUE
+        optional: true
+      - !Flag
+        description: 'percent overlap between target and query (default: 0.7)'
+        synonyms:
+        - -l
+        - --length
+        args: !SimpleFlagArg
+          name: LENGTH
+        optional: true
+      - !Flag
+        description: file containing coverage of each sequence; coverage information
+          added to table type 2 (see coverage command)
+        synonyms:
+        - -c
+        - --coverage_file
+        args: !SimpleFlagArg
+          name: COVERAGE_FILE
+        optional: true
+      - !Flag
+        description: 'print results to file (default: stdout)'
+        synonyms:
+        - -f
+        - --file
+        args: !SimpleFlagArg
+          name: FILE
+        optional: true
+      - !Flag
+        description: print tab-separated values table
+        synonyms:
+        - --tab_table
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: 'number of threads (default: 1)'
+        synonyms:
+        - -t
+        - --threads
+        args: !SimpleFlagArg
+          name: THREADS
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: specify an alternative directory for temporary files
+        synonyms:
+        - --tmpdir
+        args: !SimpleFlagArg
+          name: TMPDIR
+        optional: true
+      parent: *id001
+      subcommands:
+      - !Command
+        command:
+        - checkm
+        - taxonomy_wf
+        - bin_dir
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: checkm
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: taxonomy_wf
+          optional: false
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - --individual_markers
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -g
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - --nt
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - --ali
+          args: !EmptyFlagArg {}
+          optional: true
+        parent: *id003
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: checkm taxonomy_wf [-h] [--ali] [--nt] [-g] [--individual_markers]\n\
+          \                          [--skip_adj_correction]\n                   \
+          \       [--skip_pseudogene_correction]\n                          [--aai_strain\
+          \ AAI_STRAIN] [-a ALIGNMENT_FILE]\n                          [--ignore_thresholds]\
+          \ [-e E_VALUE] [-l LENGTH]\n                          [-c COVERAGE_FILE]\
+          \ [-f FILE] [--tab_table]\n                          [-x EXTENSION] [-t\
+          \ THREADS] [-q] [--tmpdir TMPDIR]\n                          {life,domain,phylum,class,order,family,genus,species}\n\
+          \                          taxon bin_dir output_dir\ncheckm taxonomy_wf:\
+          \ error: argument rank: invalid choice: 'bin_dir' (choose from 'life', 'domain',\
+          \ 'phylum', 'class', 'order', 'family', 'genus', 'species')\n"
+        generated_using: *id002
+      - !Command
+        command:
+        - checkm
+        - taxonomy_wf
+        - output_dir
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: checkm
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: taxonomy_wf
+          optional: false
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - --individual_markers
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -g
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - --nt
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - --ali
+          args: !EmptyFlagArg {}
+          optional: true
+        parent: *id003
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: checkm taxonomy_wf [-h] [--ali] [--nt] [-g] [--individual_markers]\n\
+          \                          [--skip_adj_correction]\n                   \
+          \       [--skip_pseudogene_correction]\n                          [--aai_strain\
+          \ AAI_STRAIN] [-a ALIGNMENT_FILE]\n                          [--ignore_thresholds]\
+          \ [-e E_VALUE] [-l LENGTH]\n                          [-c COVERAGE_FILE]\
+          \ [-f FILE] [--tab_table]\n                          [-x EXTENSION] [-t\
+          \ THREADS] [-q] [--tmpdir TMPDIR]\n                          {life,domain,phylum,class,order,family,genus,species}\n\
+          \                          taxon bin_dir output_dir\ncheckm taxonomy_wf:\
+          \ error: argument rank: invalid choice: 'output_dir' (choose from 'life',\
+          \ 'domain', 'phylum', 'class', 'order', 'family', 'genus', 'species')\n"
+        generated_using: *id002
+      - !Command
+        command:
+        - checkm
+        - taxonomy_wf
+        - taxon
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: checkm
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: taxonomy_wf
+          optional: false
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - --individual_markers
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -g
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - --nt
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - --ali
+          args: !EmptyFlagArg {}
+          optional: true
+        parent: *id003
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: checkm taxonomy_wf [-h] [--ali] [--nt] [-g] [--individual_markers]\n\
+          \                          [--skip_adj_correction]\n                   \
+          \       [--skip_pseudogene_correction]\n                          [--aai_strain\
+          \ AAI_STRAIN] [-a ALIGNMENT_FILE]\n                          [--ignore_thresholds]\
+          \ [-e E_VALUE] [-l LENGTH]\n                          [-c COVERAGE_FILE]\
+          \ [-f FILE] [--tab_table]\n                          [-x EXTENSION] [-t\
+          \ THREADS] [-q] [--tmpdir TMPDIR]\n                          {life,domain,phylum,class,order,family,genus,species}\n\
+          \                          taxon bin_dir output_dir\ncheckm taxonomy_wf:\
+          \ error: argument rank: invalid choice: 'taxon' (choose from 'life', 'domain',\
+          \ 'phylum', 'class', 'order', 'family', 'genus', 'species')\n"
+        generated_using: *id002
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm taxonomy_wf [-h] [--ali] [--nt] [-g] [--individual_markers]\n\
+        \                          [--skip_adj_correction]\n                     \
+        \     [--skip_pseudogene_correction]\n                          [--aai_strain\
+        \ AAI_STRAIN] [-a ALIGNMENT_FILE]\n                          [--ignore_thresholds]\
+        \ [-e E_VALUE] [-l LENGTH]\n                          [-c COVERAGE_FILE] [-f\
+        \ FILE] [--tab_table]\n                          [-x EXTENSION] [-t THREADS]\
+        \ [-q] [--tmpdir TMPDIR]\n                          {life,domain,phylum,class,order,family,genus,species}\n\
+        \                          taxon bin_dir output_dir\n\nRuns taxon_set, analyze,\
+        \ qa\n\npositional arguments:\n  {life,domain,phylum,class,order,family,genus,species}\n\
+        \                        taxonomic rank\n  taxon                 taxon of\
+        \ interest\n  bin_dir               directory containing bins (fasta format)\n\
+        \  output_dir            directory to write output files\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  --ali        \
+        \         generate HMMER alignment file for each bin\n  --nt             \
+        \     generate nucleotide gene sequences for each bin\n  -g, --genes     \
+        \      bins contain genes as amino acids instead of nucleotide contigs\n \
+        \ --individual_markers  treat marker as independent (i.e., ignore co-located\
+        \ set structure)\n  --skip_adj_correction\n                        do not\
+        \ exclude adjacent marker genes when estimating contamination\n  --skip_pseudogene_correction\n\
+        \                        skip identification and filtering of pseudogenes\n\
+        \  --aai_strain AAI_STRAIN\n                        AAI threshold used to\
+        \ identify strain heterogeneity (default: 0.9)\n  -a, --alignment_file ALIGNMENT_FILE\n\
+        \                        produce file showing alignment of multi-copy genes\
+        \ and their AAI identity\n  --ignore_thresholds   ignore model-specific score\
+        \ thresholds\n  -e, --e_value E_VALUE\n                        e-value cut\
+        \ off (default: 1e-10)\n  -l, --length LENGTH   percent overlap between target\
+        \ and query (default: 0.7)\n  -c, --coverage_file COVERAGE_FILE\n        \
+        \                file containing coverage of each sequence; coverage information\
+        \ added to table type 2 (see coverage command)\n  -f, --file FILE       print\
+        \ results to file (default: stdout)\n  --tab_table           print tab-separated\
+        \ values table\n  -x, --extension EXTENSION\n                        extension\
+        \ of bins (other files in directory are ignored) (default: fna)\n  -t, --threads\
+        \ THREADS\n                        number of threads (default: 1)\n  -q, --quiet\
+        \           suppress console output\n  --tmpdir TMPDIR       specify an alternative\
+        \ directory for temporary files\n\nExample: checkm taxonomy_wf domain Bacteria\
+        \ ./bins ./output\n"
+      generated_using: *id002
     - !Command
+      command:
+      - checkm
+      - marker_plot
+      positional:
+      - !Positional
+        description: directory specified during qa command
+        position: 0
+        name: results_dir
+        optional: false
+      - !Positional
+        description: directory containing bins to plot (fasta format)
+        position: 1
+        name: bin_dir
+        optional: false
+      - !Positional
+        description: directory to hold plots
+        position: 2
+        name: output_dir
+        optional: false
+      named:
+      - !Flag
+        description: 'desired image type (default: png)'
+        synonyms:
+        - --image_type
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? svg
+            ? ps
+            ? eps
+            ? png
+            ? pdf
+        optional: true
+      - !Flag
+        description: 'desired DPI of output image (default: 600)'
+        synonyms:
+        - --dpi
+        args: !SimpleFlagArg
+          name: DPI
+        optional: true
+      - !Flag
+        description: 'Desired font size (default: 8)'
+        synonyms:
+        - --font_size
+        args: !SimpleFlagArg
+          name: FONT_SIZE
+        optional: true
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: 'width of output image (default: 6.5)'
+        synonyms:
+        - --width
+        args: !SimpleFlagArg
+          name: WIDTH
+        optional: true
+      - !Flag
+        description: 'height of output image (default: 6.5)'
+        synonyms:
+        - --height
+        args: !SimpleFlagArg
+          name: HEIGHT
+        optional: true
+      - !Flag
+        description: 'white space to place around figure (in inches) (default: 0.2)'
+        synonyms:
+        - --fig_padding
+        args: !SimpleFlagArg
+          name: FIG_PADDING
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm marker_plot [-h] [--image_type {eps,pdf,png,ps,svg}]\
+        \ [--dpi DPI]\n                          [--font_size FONT_SIZE] [-x EXTENSION]\n\
+        \                          [--width WIDTH] [--height HEIGHT]\n           \
+        \               [--fig_padding FIG_PADDING] [-q]\n                       \
+        \   results_dir bin_dir output_dir\n\nPlot position of marker genes on sequences.\n\
+        \npositional arguments:\n  results_dir           directory specified during\
+        \ qa command\n  bin_dir               directory containing bins to plot (fasta\
+        \ format)\n  output_dir            directory to hold plots\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  --image_type {eps,pdf,png,ps,svg}\n\
+        \                        desired image type (default: png)\n  --dpi DPI  \
+        \           desired DPI of output image (default: 600)\n  --font_size FONT_SIZE\n\
+        \                        Desired font size (default: 8)\n  -x, --extension\
+        \ EXTENSION\n                        extension of bins (other files in directory\
+        \ are ignored) (default: fna)\n  --width WIDTH         width of output image\
+        \ (default: 6.5)\n  --height HEIGHT       height of output image (default:\
+        \ 6.5)\n  --fig_padding FIG_PADDING\n                        white space to\
+        \ place around figure (in inches) (default: 0.2)\n  -q, --quiet          \
+        \ suppress console output\n\nExample: checkm marker_plot ./output ./bins ./plots\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - dist_plot
+      positional:
+      - !Positional
+        description: directory specified during analyze command
+        position: 0
+        name: results_dir
+        optional: false
+      - !Positional
+        description: directory containing bins to plot (fasta format)
+        position: 1
+        name: bin_dir
+        optional: false
+      - !Positional
+        description: directory to hold plots
+        position: 2
+        name: output_dir
+        optional: false
+      - !Positional
+        description: tetranucleotide profiles for each sequence (see tetra command)
+        position: 3
+        name: tetra_profile
+        optional: false
+      - !Positional
+        description: reference distribution(s) to plot; integer between 0 and 100
+        position: 4
+        name: dist_value
+        optional: false
+      named:
+      - !Flag
+        description: 'desired image type (default: png)'
+        synonyms:
+        - --image_type
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? svg
+            ? ps
+            ? eps
+            ? png
+            ? pdf
+        optional: true
+      - !Flag
+        description: 'desired DPI of output image (default: 600)'
+        synonyms:
+        - --dpi
+        args: !SimpleFlagArg
+          name: DPI
+        optional: true
+      - !Flag
+        description: 'Desired font size (default: 8)'
+        synonyms:
+        - --font_size
+        args: !SimpleFlagArg
+          name: FONT_SIZE
+        optional: true
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: 'width of output image (default: 6.5)'
+        synonyms:
+        - --width
+        args: !SimpleFlagArg
+          name: WIDTH
+        optional: true
+      - !Flag
+        description: 'height of output image (default: 8)'
+        synonyms:
+        - --height
+        args: !SimpleFlagArg
+          name: HEIGHT
+        optional: true
+      - !Flag
+        description: 'window size used to calculate GC histogram (default: 5000)'
+        synonyms:
+        - -a
+        - --gc_window_size
+        args: !SimpleFlagArg
+          name: GC_WINDOW_SIZE
+        optional: true
+      - !Flag
+        description: 'window size used to calculate TD histogram (default: 5000)'
+        synonyms:
+        - -b
+        - --td_window_size
+        args: !SimpleFlagArg
+          name: TD_WINDOW_SIZE
+        optional: true
+      - !Flag
+        description: 'window size used to calculate CD histogram (default: 10000)'
+        synonyms:
+        - -c
+        - --cd_window_size
+        args: !SimpleFlagArg
+          name: CD_WINDOW_SIZE
+        optional: true
+      - !Flag
+        description: 'width of GC bars in histogram (default: 0.01)'
+        synonyms:
+        - '-1'
+        - --gc_bin_width
+        args: !SimpleFlagArg
+          name: GC_BIN_WIDTH
+        optional: true
+      - !Flag
+        description: 'width of TD bars in histogram (default: 0.01)'
+        synonyms:
+        - '-2'
+        - --td_bin_width
+        args: !SimpleFlagArg
+          name: TD_BIN_WIDTH
+        optional: true
+      - !Flag
+        description: 'width of CD bars in histogram (default: 0.01)'
+        synonyms:
+        - '-3'
+        - --cd_bin_width
+        args: !SimpleFlagArg
+          name: CD_BIN_WIDTH
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm dist_plot [-h] [--image_type {eps,pdf,png,ps,svg}]\
+        \ [--dpi DPI]\n                        [--font_size FONT_SIZE] [-x EXTENSION]\
+        \ [--width WIDTH]\n                        [--height HEIGHT] [-a GC_WINDOW_SIZE]\n\
+        \                        [-b TD_WINDOW_SIZE] [-c CD_WINDOW_SIZE]\n       \
+        \                 [-1 GC_BIN_WIDTH] [-2 TD_BIN_WIDTH] [-3 CD_BIN_WIDTH]\n\
+        \                        [-q]\n                        results_dir bin_dir\
+        \ output_dir tetra_profile\n                        dist_value [dist_value\
+        \ ...]\n\nCreate image with GC, CD, and TD distribution plots together.\n\n\
+        positional arguments:\n  results_dir           directory specified during\
+        \ analyze command\n  bin_dir               directory containing bins to plot\
+        \ (fasta format)\n  output_dir            directory to hold plots\n  tetra_profile\
+        \         tetranucleotide profiles for each sequence (see tetra command)\n\
+        \  dist_value            reference distribution(s) to plot; integer between\
+        \ 0 and 100\n\noptional arguments:\n  -h, --help            show this help\
+        \ message and exit\n  --image_type {eps,pdf,png,ps,svg}\n                \
+        \        desired image type (default: png)\n  --dpi DPI             desired\
+        \ DPI of output image (default: 600)\n  --font_size FONT_SIZE\n          \
+        \              Desired font size (default: 8)\n  -x, --extension EXTENSION\n\
+        \                        extension of bins (other files in directory are ignored)\
+        \ (default: fna)\n  --width WIDTH         width of output image (default:\
+        \ 6.5)\n  --height HEIGHT       height of output image (default: 8)\n  -a,\
+        \ --gc_window_size GC_WINDOW_SIZE\n                        window size used\
+        \ to calculate GC histogram (default: 5000)\n  -b, --td_window_size TD_WINDOW_SIZE\n\
+        \                        window size used to calculate TD histogram (default:\
+        \ 5000)\n  -c, --cd_window_size CD_WINDOW_SIZE\n                        window\
+        \ size used to calculate CD histogram (default: 10000)\n  -1, --gc_bin_width\
+        \ GC_BIN_WIDTH\n                        width of GC bars in histogram (default:\
+        \ 0.01)\n  -2, --td_bin_width TD_BIN_WIDTH\n                        width\
+        \ of TD bars in histogram (default: 0.01)\n  -3, --cd_bin_width CD_BIN_WIDTH\n\
+        \                        width of CD bars in histogram (default: 0.01)\n \
+        \ -q, --quiet           suppress console output\n\nExample: checkm dist_plot\
+        \ ./output ./bins ./plots tetra.tsv 95\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - ssu_finder
+      positional:
+      - !Positional
+        description: sequences used to generate bins (fasta format)
+        position: 0
+        name: seq_file
+        optional: false
+      - !Positional
+        description: directory containing bins (fasta format)
+        position: 1
+        name: bin_dir
+        optional: false
+      - !Positional
+        description: directory to write output files
+        position: 2
+        name: output_dir
+        optional: false
+      named:
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: 'e-value threshold for identifying hits (default: 1e-05)'
+        synonyms:
+        - -e
+        - --evalue
+        args: !SimpleFlagArg
+          name: EVALUE
+        optional: true
+      - !Flag
+        description: 'concatenate hits that are within the specified number of base
+          pairs (default: 200)'
+        synonyms:
+        - -c
+        - --concatenate
+        args: !SimpleFlagArg
+          name: CONCATENATE
+        optional: true
+      - !Flag
+        description: 'number of threads (default: 1)'
+        synonyms:
+        - -t
+        - --threads
+        args: !SimpleFlagArg
+          name: THREADS
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm ssu_finder [-h] [-x EXTENSION] [-e EVALUE] [-c CONCATENATE]\n\
+        \                         [-t THREADS] [-q]\n                         seq_file\
+        \ bin_dir output_dir\n\nIdentify SSU (16S/18S) rRNAs in sequences.\n\npositional\
+        \ arguments:\n  seq_file              sequences used to generate bins (fasta\
+        \ format)\n  bin_dir               directory containing bins (fasta format)\n\
+        \  output_dir            directory to write output files\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  -x, --extension\
+        \ EXTENSION\n                        extension of bins (other files in directory\
+        \ are ignored) (default: fna)\n  -e, --evalue EVALUE   e-value threshold for\
+        \ identifying hits (default: 1e-05)\n  -c, --concatenate CONCATENATE\n   \
+        \                     concatenate hits that are within the specified number\
+        \ of base pairs (default: 200)\n  -t, --threads THREADS\n                \
+        \        number of threads (default: 1)\n  -q, --quiet           suppress\
+        \ console output\n\nExample: checkm ssu_finder seqs.fna ./bins ./ssu_finder\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - analyze
       positional:
       - !Positional
         description: markers for assessing bins (marker set or HMM file)
@@ -463,11 +1219,9 @@ parent: &id003 !Command
         args: !SimpleFlagArg
           name: TMPDIR
         optional: true
-      command:
-      - checkm
-      - analyze
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -495,6 +1249,9 @@ parent: &id003 !Command
         \nExample: checkm analyze lineage.ms ./bins ./output\n"
       generated_using: *id002
     - !Command
+      command:
+      - checkm
+      - qa
       positional:
       - !Positional
         description: marker file specified during analyze command
@@ -508,28 +1265,28 @@ parent: &id003 !Command
         optional: false
       named:
       - !Flag
-        description: 'desired output: (default: 1) 1. summary of bin completeness
-          and contamination 2. extended summary of bin statistics (includes GC, genome
-          size, ...) 3. summary of bin quality for increasingly basal lineage-specific
-          marker sets 4. list of marker genes and their counts 5. list of bin id,
-          marker gene id, gene id 6. list of marker genes present multiple times in
-          a bin 7. list of marker genes present multiple times on the same scaffold
-          8. list indicating position of each marker gene within a bin 9. FASTA file
-          of marker genes identified in each bin'
+        description: "desired output: (default: 1)\n1. summary of bin completeness\
+          \ and contamination\n2. extended summary of bin statistics (includes GC,\
+          \ genome size, ...)\n3. summary of bin quality for increasingly basal lineage-specific\
+          \ marker sets\n4. list of marker genes and their counts\n5. list of bin\
+          \ id, marker gene id, gene id\n6. list of marker genes present multiple\
+          \ times in a bin\n7. list of marker genes present multiple times on the\
+          \ same scaffold\n8. list indicating position of each marker gene within\
+          \ a bin\n9. FASTA file of marker genes identified in each bin"
         synonyms:
         - -o
         - --out_format
         args: !ChoiceFlagArg
           choices: !!set
-            ? "9"
-            ? "6"
-            ? "7"
             ? "5"
-            ? "2"
+            ? "7"
             ? "3"
+            ? "6"
             ? "1"
+            ? "9"
             ? "4"
             ? "8"
+            ? "2"
         optional: true
       - !Flag
         description: file specifying markers to exclude from marker sets
@@ -640,11 +1397,9 @@ parent: &id003 !Command
         args: !SimpleFlagArg
           name: TMPDIR
         optional: true
-      command:
-      - checkm
-      - qa
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -702,739 +1457,9 @@ parent: &id003 !Command
         \ ./output\n                                        \n"
       generated_using: *id002
     - !Command
-      positional:
-      - !Positional
-        description: directory containing bins (fasta format)
-        position: 0
-        name: bin_dir
-        optional: false
-      - !Positional
-        description: directory to write output files
-        position: 1
-        name: output_dir
-        optional: false
-      named:
-      - !Flag
-        description: use reduced tree (requires <16GB of memory) for determining lineage
-          of each bin
-        synonyms:
-        - -r
-        - --reduced_tree
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: generate HMMER alignment file for each bin
-        synonyms:
-        - --ali
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: generate nucleotide gene sequences for each bin
-        synonyms:
-        - --nt
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: bins contain genes as amino acids instead of nucleotide contigs
-        synonyms:
-        - -g
-        - --genes
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: 'minimum number of unique phylogenetic markers required to use
-          lineage-specific marker set (default: 10)'
-        synonyms:
-        - -u
-        - --unique
-        args: !SimpleFlagArg
-          name: UNIQUE
-        optional: true
-      - !Flag
-        description: 'maximum number of multi-copy phylogenetic markers before defaulting
-          to domain-level marker set (default: 10)'
-        synonyms:
-        - -m
-        - --multi
-        args: !SimpleFlagArg
-          name: MULTI
-        optional: true
-      - !Flag
-        description: use domain-level sets for all bins
-        synonyms:
-        - --force_domain
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: do not perform lineage-specific marker set refinement
-        synonyms:
-        - --no_refinement
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: treat marker as independent (i.e., ignore co-located set structure)
-        synonyms:
-        - --individual_markers
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: do not exclude adjacent marker genes when estimating contamination
-        synonyms:
-        - --skip_adj_correction
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: skip identification and filtering of pseudogenes
-        synonyms:
-        - --skip_pseudogene_correction
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: 'AAI threshold used to identify strain heterogeneity (default:
-          0.9)'
-        synonyms:
-        - --aai_strain
-        args: !SimpleFlagArg
-          name: AAI_STRAIN
-        optional: true
-      - !Flag
-        description: produce file showing alignment of multi-copy genes and their
-          AAI identity
-        synonyms:
-        - -a
-        - --alignment_file
-        args: !SimpleFlagArg
-          name: ALIGNMENT_FILE
-        optional: true
-      - !Flag
-        description: ignore model-specific score thresholds
-        synonyms:
-        - --ignore_thresholds
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: 'e-value cut off (default: 1e-10)'
-        synonyms:
-        - -e
-        - --e_value
-        args: !SimpleFlagArg
-          name: E_VALUE
-        optional: true
-      - !Flag
-        description: 'percent overlap between target and query (default: 0.7)'
-        synonyms:
-        - -l
-        - --length
-        args: !SimpleFlagArg
-          name: LENGTH
-        optional: true
-      - !Flag
-        description: 'print results to file (default: stdout)'
-        synonyms:
-        - -f
-        - --file
-        args: !SimpleFlagArg
-          name: FILE
-        optional: true
-      - !Flag
-        description: print tab-separated values table
-        synonyms:
-        - --tab_table
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: 'extension of bins (other files in directory are ignored) (default:
-          fna)'
-        synonyms:
-        - -x
-        - --extension
-        args: !SimpleFlagArg
-          name: EXTENSION
-        optional: true
-      - !Flag
-        description: 'number of threads (default: 1)'
-        synonyms:
-        - -t
-        - --threads
-        args: !SimpleFlagArg
-          name: THREADS
-        optional: true
-      - !Flag
-        description: 'number of threads used by pplacer (memory usage increases linearly
-          with additional threads) (default: 1)'
-        synonyms:
-        - --pplacer_threads
-        args: !SimpleFlagArg
-          name: PPLACER_THREADS
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: specify an alternative directory for temporary files
-        synonyms:
-        - --tmpdir
-        args: !SimpleFlagArg
-          name: TMPDIR
-        optional: true
       command:
       - checkm
-      - lineage_wf
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm lineage_wf [-h] [-r] [--ali] [--nt] [-g] [-u UNIQUE]\
-        \ [-m MULTI]\n                         [--force_domain] [--no_refinement]\n\
-        \                         [--individual_markers] [--skip_adj_correction]\n\
-        \                         [--skip_pseudogene_correction]\n               \
-        \          [--aai_strain AAI_STRAIN] [-a ALIGNMENT_FILE]\n               \
-        \          [--ignore_thresholds] [-e E_VALUE] [-l LENGTH]\n              \
-        \           [-f FILE] [--tab_table] [-x EXTENSION] [-t THREADS]\n        \
-        \                 [--pplacer_threads PPLACER_THREADS] [-q]\n             \
-        \            [--tmpdir TMPDIR]\n                         bin_dir output_dir\n\
-        \nRuns tree, lineage_set, analyze, qa\n\npositional arguments:\n  bin_dir\
-        \               directory containing bins (fasta format)\n  output_dir   \
-        \         directory to write output files\n\noptional arguments:\n  -h, --help\
-        \            show this help message and exit\n  -r, --reduced_tree    use\
-        \ reduced tree (requires <16GB of memory) for determining lineage of each\
-        \ bin\n  --ali                 generate HMMER alignment file for each bin\n\
-        \  --nt                  generate nucleotide gene sequences for each bin\n\
-        \  -g, --genes           bins contain genes as amino acids instead of nucleotide\
-        \ contigs\n  -u, --unique UNIQUE   minimum number of unique phylogenetic markers\
-        \ required to use lineage-specific marker set (default: 10)\n  -m, --multi\
-        \ MULTI     maximum number of multi-copy phylogenetic markers before defaulting\
-        \ to domain-level marker set (default: 10)\n  --force_domain        use domain-level\
-        \ sets for all bins\n  --no_refinement       do not perform lineage-specific\
-        \ marker set refinement\n  --individual_markers  treat marker as independent\
-        \ (i.e., ignore co-located set structure)\n  --skip_adj_correction\n     \
-        \                   do not exclude adjacent marker genes when estimating contamination\n\
-        \  --skip_pseudogene_correction\n                        skip identification\
-        \ and filtering of pseudogenes\n  --aai_strain AAI_STRAIN\n              \
-        \          AAI threshold used to identify strain heterogeneity (default: 0.9)\n\
-        \  -a, --alignment_file ALIGNMENT_FILE\n                        produce file\
-        \ showing alignment of multi-copy genes and their AAI identity\n  --ignore_thresholds\
-        \   ignore model-specific score thresholds\n  -e, --e_value E_VALUE\n    \
-        \                    e-value cut off (default: 1e-10)\n  -l, --length LENGTH\
-        \   percent overlap between target and query (default: 0.7)\n  -f, --file\
-        \ FILE       print results to file (default: stdout)\n  --tab_table      \
-        \     print tab-separated values table\n  -x, --extension EXTENSION\n    \
-        \                    extension of bins (other files in directory are ignored)\
-        \ (default: fna)\n  -t, --threads THREADS\n                        number\
-        \ of threads (default: 1)\n  --pplacer_threads PPLACER_THREADS\n         \
-        \               number of threads used by pplacer (memory usage increases\
-        \ linearly with additional threads) (default: 1)\n  -q, --quiet          \
-        \ suppress console output\n  --tmpdir TMPDIR       specify an alternative\
-        \ directory for temporary files\n\nExample: checkm lineage_wf ./bins ./output\n"
-      generated_using: *id002
-    - &id004 !Command
-      positional: []
-      named:
-      - !Flag
-        description: generate HMMER alignment file for each bin
-        synonyms:
-        - --ali
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: generate nucleotide gene sequences for each bin
-        synonyms:
-        - --nt
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: bins contain genes as amino acids instead of nucleotide contigs
-        synonyms:
-        - -g
-        - --genes
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: treat marker as independent (i.e., ignore co-located set structure)
-        synonyms:
-        - --individual_markers
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: do not exclude adjacent marker genes when estimating contamination
-        synonyms:
-        - --skip_adj_correction
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: skip identification and filtering of pseudogenes
-        synonyms:
-        - --skip_pseudogene_correction
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: 'AAI threshold used to identify strain heterogeneity (default:
-          0.9)'
-        synonyms:
-        - --aai_strain
-        args: !SimpleFlagArg
-          name: AAI_STRAIN
-        optional: true
-      - !Flag
-        description: produce file showing alignment of multi-copy genes and their
-          AAI identity
-        synonyms:
-        - -a
-        - --alignment_file
-        args: !SimpleFlagArg
-          name: ALIGNMENT_FILE
-        optional: true
-      - !Flag
-        description: ignore model-specific score thresholds
-        synonyms:
-        - --ignore_thresholds
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: 'e-value cut off (default: 1e-10)'
-        synonyms:
-        - -e
-        - --e_value
-        args: !SimpleFlagArg
-          name: E_VALUE
-        optional: true
-      - !Flag
-        description: 'percent overlap between target and query (default: 0.7)'
-        synonyms:
-        - -l
-        - --length
-        args: !SimpleFlagArg
-          name: LENGTH
-        optional: true
-      - !Flag
-        description: file containing coverage of each sequence; coverage information
-          added to table type 2 (see coverage command)
-        synonyms:
-        - -c
-        - --coverage_file
-        args: !SimpleFlagArg
-          name: COVERAGE_FILE
-        optional: true
-      - !Flag
-        description: 'print results to file (default: stdout)'
-        synonyms:
-        - -f
-        - --file
-        args: !SimpleFlagArg
-          name: FILE
-        optional: true
-      - !Flag
-        description: print tab-separated values table
-        synonyms:
-        - --tab_table
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: 'extension of bins (other files in directory are ignored) (default:
-          fna)'
-        synonyms:
-        - -x
-        - --extension
-        args: !SimpleFlagArg
-          name: EXTENSION
-        optional: true
-      - !Flag
-        description: 'number of threads (default: 1)'
-        synonyms:
-        - -t
-        - --threads
-        args: !SimpleFlagArg
-          name: THREADS
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: specify an alternative directory for temporary files
-        synonyms:
-        - --tmpdir
-        args: !SimpleFlagArg
-          name: TMPDIR
-        optional: true
-      command:
-      - checkm
-      - taxonomy_wf
-      parent: *id001
-      subcommands:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: checkm
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: taxonomy_wf
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --ali
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --nt
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - -g
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --individual_markers
-          args: !EmptyFlagArg {}
-          optional: true
-        command:
-        - checkm
-        - taxonomy_wf
-        - taxon
-        parent: *id004
-        subcommands: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: checkm taxonomy_wf [-h] [--ali] [--nt] [-g] [--individual_markers]\n\
-          \                          [--skip_adj_correction]\n                   \
-          \       [--skip_pseudogene_correction]\n                          [--aai_strain\
-          \ AAI_STRAIN] [-a ALIGNMENT_FILE]\n                          [--ignore_thresholds]\
-          \ [-e E_VALUE] [-l LENGTH]\n                          [-c COVERAGE_FILE]\
-          \ [-f FILE] [--tab_table]\n                          [-x EXTENSION] [-t\
-          \ THREADS] [-q] [--tmpdir TMPDIR]\n                          {life,domain,phylum,class,order,family,genus,species}\n\
-          \                          taxon bin_dir output_dir\ncheckm taxonomy_wf:\
-          \ error: argument rank: invalid choice: 'taxon' (choose from 'life', 'domain',\
-          \ 'phylum', 'class', 'order', 'family', 'genus', 'species')\n"
-        generated_using: *id002
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: checkm
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: taxonomy_wf
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --ali
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --nt
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - -g
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --individual_markers
-          args: !EmptyFlagArg {}
-          optional: true
-        command:
-        - checkm
-        - taxonomy_wf
-        - bin_dir
-        parent: *id004
-        subcommands: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: checkm taxonomy_wf [-h] [--ali] [--nt] [-g] [--individual_markers]\n\
-          \                          [--skip_adj_correction]\n                   \
-          \       [--skip_pseudogene_correction]\n                          [--aai_strain\
-          \ AAI_STRAIN] [-a ALIGNMENT_FILE]\n                          [--ignore_thresholds]\
-          \ [-e E_VALUE] [-l LENGTH]\n                          [-c COVERAGE_FILE]\
-          \ [-f FILE] [--tab_table]\n                          [-x EXTENSION] [-t\
-          \ THREADS] [-q] [--tmpdir TMPDIR]\n                          {life,domain,phylum,class,order,family,genus,species}\n\
-          \                          taxon bin_dir output_dir\ncheckm taxonomy_wf:\
-          \ error: argument rank: invalid choice: 'bin_dir' (choose from 'life', 'domain',\
-          \ 'phylum', 'class', 'order', 'family', 'genus', 'species')\n"
-        generated_using: *id002
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: checkm
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: taxonomy_wf
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --ali
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --nt
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - -g
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --individual_markers
-          args: !EmptyFlagArg {}
-          optional: true
-        command:
-        - checkm
-        - taxonomy_wf
-        - output_dir
-        parent: *id004
-        subcommands: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: checkm taxonomy_wf [-h] [--ali] [--nt] [-g] [--individual_markers]\n\
-          \                          [--skip_adj_correction]\n                   \
-          \       [--skip_pseudogene_correction]\n                          [--aai_strain\
-          \ AAI_STRAIN] [-a ALIGNMENT_FILE]\n                          [--ignore_thresholds]\
-          \ [-e E_VALUE] [-l LENGTH]\n                          [-c COVERAGE_FILE]\
-          \ [-f FILE] [--tab_table]\n                          [-x EXTENSION] [-t\
-          \ THREADS] [-q] [--tmpdir TMPDIR]\n                          {life,domain,phylum,class,order,family,genus,species}\n\
-          \                          taxon bin_dir output_dir\ncheckm taxonomy_wf:\
-          \ error: argument rank: invalid choice: 'output_dir' (choose from 'life',\
-          \ 'domain', 'phylum', 'class', 'order', 'family', 'genus', 'species')\n"
-        generated_using: *id002
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm taxonomy_wf [-h] [--ali] [--nt] [-g] [--individual_markers]\n\
-        \                          [--skip_adj_correction]\n                     \
-        \     [--skip_pseudogene_correction]\n                          [--aai_strain\
-        \ AAI_STRAIN] [-a ALIGNMENT_FILE]\n                          [--ignore_thresholds]\
-        \ [-e E_VALUE] [-l LENGTH]\n                          [-c COVERAGE_FILE] [-f\
-        \ FILE] [--tab_table]\n                          [-x EXTENSION] [-t THREADS]\
-        \ [-q] [--tmpdir TMPDIR]\n                          {life,domain,phylum,class,order,family,genus,species}\n\
-        \                          taxon bin_dir output_dir\n\nRuns taxon_set, analyze,\
-        \ qa\n\npositional arguments:\n  {life,domain,phylum,class,order,family,genus,species}\n\
-        \                        taxonomic rank\n  taxon                 taxon of\
-        \ interest\n  bin_dir               directory containing bins (fasta format)\n\
-        \  output_dir            directory to write output files\n\noptional arguments:\n\
-        \  -h, --help            show this help message and exit\n  --ali        \
-        \         generate HMMER alignment file for each bin\n  --nt             \
-        \     generate nucleotide gene sequences for each bin\n  -g, --genes     \
-        \      bins contain genes as amino acids instead of nucleotide contigs\n \
-        \ --individual_markers  treat marker as independent (i.e., ignore co-located\
-        \ set structure)\n  --skip_adj_correction\n                        do not\
-        \ exclude adjacent marker genes when estimating contamination\n  --skip_pseudogene_correction\n\
-        \                        skip identification and filtering of pseudogenes\n\
-        \  --aai_strain AAI_STRAIN\n                        AAI threshold used to\
-        \ identify strain heterogeneity (default: 0.9)\n  -a, --alignment_file ALIGNMENT_FILE\n\
-        \                        produce file showing alignment of multi-copy genes\
-        \ and their AAI identity\n  --ignore_thresholds   ignore model-specific score\
-        \ thresholds\n  -e, --e_value E_VALUE\n                        e-value cut\
-        \ off (default: 1e-10)\n  -l, --length LENGTH   percent overlap between target\
-        \ and query (default: 0.7)\n  -c, --coverage_file COVERAGE_FILE\n        \
-        \                file containing coverage of each sequence; coverage information\
-        \ added to table type 2 (see coverage command)\n  -f, --file FILE       print\
-        \ results to file (default: stdout)\n  --tab_table           print tab-separated\
-        \ values table\n  -x, --extension EXTENSION\n                        extension\
-        \ of bins (other files in directory are ignored) (default: fna)\n  -t, --threads\
-        \ THREADS\n                        number of threads (default: 1)\n  -q, --quiet\
-        \           suppress console output\n  --tmpdir TMPDIR       specify an alternative\
-        \ directory for temporary files\n\nExample: checkm taxonomy_wf domain Bacteria\
-        \ ./bins ./output\n"
-      generated_using: *id002
-    - !Command
-      positional:
-      - !Positional
-        description: directory containing bins to plot (fasta format)
-        position: 0
-        name: bin_dir
-        optional: false
-      - !Positional
-        description: directory to hold plots
-        position: 1
-        name: output_dir
-        optional: false
-      - !Positional
-        description: reference distribution(s) to plot; integer between 0 and 100
-        position: 2
-        name: dist_value
-        optional: false
-      named:
-      - !Flag
-        description: 'desired image type (default: png)'
-        synonyms:
-        - --image_type
-        args: !ChoiceFlagArg
-          choices: !!set
-            ? ps
-            ? eps
-            ? pdf
-            ? svg
-            ? png
-        optional: true
-      - !Flag
-        description: 'desired DPI of output image (default: 600)'
-        synonyms:
-        - --dpi
-        args: !SimpleFlagArg
-          name: DPI
-        optional: true
-      - !Flag
-        description: 'Desired font size (default: 8)'
-        synonyms:
-        - --font_size
-        args: !SimpleFlagArg
-          name: FONT_SIZE
-        optional: true
-      - !Flag
-        description: 'extension of bins (other files in directory are ignored) (default:
-          fna)'
-        synonyms:
-        - -x
-        - --extension
-        args: !SimpleFlagArg
-          name: EXTENSION
-        optional: true
-      - !Flag
-        description: 'width of output image (default: 6.5)'
-        synonyms:
-        - --width
-        args: !SimpleFlagArg
-          name: WIDTH
-        optional: true
-      - !Flag
-        description: 'height of output image (default: 3.5)'
-        synonyms:
-        - --height
-        args: !SimpleFlagArg
-          name: HEIGHT
-        optional: true
-      - !Flag
-        description: 'window size used to calculate GC histogram (default: 5000)'
-        synonyms:
-        - -w
-        - --gc_window_size
-        args: !SimpleFlagArg
-          name: GC_WINDOW_SIZE
-        optional: true
-      - !Flag
-        description: 'width of GC bars in histogram (default: 0.01)'
-        synonyms:
-        - -b
-        - --gc_bin_width
-        args: !SimpleFlagArg
-          name: GC_BIN_WIDTH
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - checkm
-      - gc_plot
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm gc_plot [-h] [--image_type {eps,pdf,png,ps,svg}] [--dpi\
-        \ DPI]\n                      [--font_size FONT_SIZE] [-x EXTENSION] [--width\
-        \ WIDTH]\n                      [--height HEIGHT] [-w GC_WINDOW_SIZE] [-b\
-        \ GC_BIN_WIDTH]\n                      [-q]\n                      bin_dir\
-        \ output_dir dist_value [dist_value ...]\n\nCreate GC histogram and delta-GC\
-        \ plot.\n\npositional arguments:\n  bin_dir               directory containing\
-        \ bins to plot (fasta format)\n  output_dir            directory to hold plots\n\
-        \  dist_value            reference distribution(s) to plot; integer between\
-        \ 0 and 100\n\noptional arguments:\n  -h, --help            show this help\
-        \ message and exit\n  --image_type {eps,pdf,png,ps,svg}\n                \
-        \        desired image type (default: png)\n  --dpi DPI             desired\
-        \ DPI of output image (default: 600)\n  --font_size FONT_SIZE\n          \
-        \              Desired font size (default: 8)\n  -x, --extension EXTENSION\n\
-        \                        extension of bins (other files in directory are ignored)\
-        \ (default: fna)\n  --width WIDTH         width of output image (default:\
-        \ 6.5)\n  --height HEIGHT       height of output image (default: 3.5)\n  -w,\
-        \ --gc_window_size GC_WINDOW_SIZE\n                        window size used\
-        \ to calculate GC histogram (default: 5000)\n  -b, --gc_bin_width GC_BIN_WIDTH\n\
-        \                        width of GC bars in histogram (default: 0.01)\n \
-        \ -q, --quiet           suppress console output\n\nExample: checkm gc_plot\
-        \ ./bins ./plots 95\n"
-      generated_using: *id002
-    - !Command
+      - coding_plot
       positional:
       - !Positional
         description: directory specified during qa command
@@ -1463,11 +1488,11 @@ parent: &id003 !Command
         - --image_type
         args: !ChoiceFlagArg
           choices: !!set
+            ? svg
             ? ps
             ? eps
-            ? pdf
-            ? svg
             ? png
+            ? pdf
         optional: true
       - !Flag
         description: 'desired DPI of output image (default: 600)'
@@ -1529,11 +1554,9 @@ parent: &id003 !Command
         - --quiet
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - checkm
-      - coding_plot
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -1568,6 +1591,84 @@ parent: &id003 !Command
         \ ./output ./bins ./plots 95\n"
       generated_using: *id002
     - !Command
+      command:
+      - checkm
+      - unbinned
+      positional:
+      - !Positional
+        description: directory containing bins (fasta format)
+        position: 0
+        name: bin_dir
+        optional: false
+      - !Positional
+        description: sequences used to generate bins (fasta format)
+        position: 1
+        name: seq_file
+        optional: false
+      - !Positional
+        description: write unbinned sequences to file
+        position: 2
+        name: output_seq_file
+        optional: false
+      - !Positional
+        description: write unbinned sequence statistics to file
+        position: 3
+        name: output_stats_file
+        optional: false
+      named:
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: required length of sequence
+        synonyms:
+        - -s
+        - --min_seq_len
+        args: !SimpleFlagArg
+          name: MIN_SEQ_LEN
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm unbinned [-h] [-x EXTENSION] [-s MIN_SEQ_LEN] [-q]\n\
+        \                       bin_dir seq_file output_seq_file output_stats_file\n\
+        \nIdentify unbinned sequences.\n\npositional arguments:\n  bin_dir       \
+        \        directory containing bins (fasta format)\n  seq_file            \
+        \  sequences used to generate bins (fasta format)\n  output_seq_file     \
+        \  write unbinned sequences to file\n  output_stats_file     write unbinned\
+        \ sequence statistics to file\n\noptional arguments:\n  -h, --help       \
+        \     show this help message and exit\n  -x, --extension EXTENSION\n     \
+        \                   extension of bins (other files in directory are ignored)\
+        \ (default: fna)\n  -s, --min_seq_len MIN_SEQ_LEN\n                      \
+        \  required length of sequence\n  -q, --quiet           suppress console output\n\
+        \nExample: checkm unbinned ./bins seqs.fna unbinned.fna unbinned_stats.tsv\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - outliers
       positional:
       - !Positional
         description: directory specified during qa command
@@ -1575,190 +1676,40 @@ parent: &id003 !Command
         name: results_dir
         optional: false
       - !Positional
-        description: directory containing bins to plot (fasta format)
+        description: directory containing bins (fasta format)
         position: 1
         name: bin_dir
-        optional: false
-      - !Positional
-        description: directory to hold plots
-        position: 2
-        name: output_dir
-        optional: false
-      - !Positional
-        description: tetranucleotide profiles for each bin (see tetra command)
-        position: 3
-        name: tetra_profile
-        optional: false
-      - !Positional
-        description: reference distribution(s) to plot; integer between 0 and 100
-        position: 4
-        name: dist_value
-        optional: false
-      named:
-      - !Flag
-        description: 'desired image type (default: png)'
-        synonyms:
-        - --image_type
-        args: !ChoiceFlagArg
-          choices: !!set
-            ? ps
-            ? eps
-            ? pdf
-            ? svg
-            ? png
-        optional: true
-      - !Flag
-        description: 'desired DPI of output image (default: 600)'
-        synonyms:
-        - --dpi
-        args: !SimpleFlagArg
-          name: DPI
-        optional: true
-      - !Flag
-        description: 'Desired font size (default: 8)'
-        synonyms:
-        - --font_size
-        args: !SimpleFlagArg
-          name: FONT_SIZE
-        optional: true
-      - !Flag
-        description: 'extension of bins (other files in directory are ignored) (default:
-          fna)'
-        synonyms:
-        - -x
-        - --extension
-        args: !SimpleFlagArg
-          name: EXTENSION
-        optional: true
-      - !Flag
-        description: 'width of output image (default: 6.5)'
-        synonyms:
-        - --width
-        args: !SimpleFlagArg
-          name: WIDTH
-        optional: true
-      - !Flag
-        description: 'height of output image (default: 3.5)'
-        synonyms:
-        - --height
-        args: !SimpleFlagArg
-          name: HEIGHT
-        optional: true
-      - !Flag
-        description: 'window size used to calculate TD histogram (default: 5000)'
-        synonyms:
-        - -w
-        - --td_window_size
-        args: !SimpleFlagArg
-          name: TD_WINDOW_SIZE
-        optional: true
-      - !Flag
-        description: 'width of TD bars in histogram (default: 0.01)'
-        synonyms:
-        - -b
-        - --td_bin_width
-        args: !SimpleFlagArg
-          name: TD_BIN_WIDTH
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - checkm
-      - tetra_plot
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm tetra_plot [-h] [--image_type {eps,pdf,png,ps,svg}]\
-        \ [--dpi DPI]\n                         [--font_size FONT_SIZE] [-x EXTENSION]\n\
-        \                         [--width WIDTH] [--height HEIGHT] [-w TD_WINDOW_SIZE]\n\
-        \                         [-b TD_BIN_WIDTH] [-q]\n                       \
-        \  results_dir bin_dir output_dir tetra_profile\n                        \
-        \ dist_value [dist_value ...]\n\nCreate tetranucleotide distance (TD) histogram\
-        \ and delta-TD plot.\n\npositional arguments:\n  results_dir           directory\
-        \ specified during qa command\n  bin_dir               directory containing\
-        \ bins to plot (fasta format)\n  output_dir            directory to hold plots\n\
-        \  tetra_profile         tetranucleotide profiles for each bin (see tetra\
-        \ command)\n  dist_value            reference distribution(s) to plot; integer\
-        \ between 0 and 100\n\noptional arguments:\n  -h, --help            show this\
-        \ help message and exit\n  --image_type {eps,pdf,png,ps,svg}\n           \
-        \             desired image type (default: png)\n  --dpi DPI             desired\
-        \ DPI of output image (default: 600)\n  --font_size FONT_SIZE\n          \
-        \              Desired font size (default: 8)\n  -x, --extension EXTENSION\n\
-        \                        extension of bins (other files in directory are ignored)\
-        \ (default: fna)\n  --width WIDTH         width of output image (default:\
-        \ 6.5)\n  --height HEIGHT       height of output image (default: 3.5)\n  -w,\
-        \ --td_window_size TD_WINDOW_SIZE\n                        window size used\
-        \ to calculate TD histogram (default: 5000)\n  -b, --td_bin_width TD_BIN_WIDTH\n\
-        \                        width of TD bars in histogram (default: 0.01)\n \
-        \ -q, --quiet           suppress console output\n\nExample: checkm tetra_plot\
-        \ ./output ./bins ./plots tetra.tsv 95\n"
-      generated_using: *id002
-    - !Command
-      positional:
-      - !Positional
-        description: directory specified during analyze command
-        position: 0
-        name: results_dir
-        optional: false
-      - !Positional
-        description: directory containing bins to plot (fasta format)
-        position: 1
-        name: bin_dir
-        optional: false
-      - !Positional
-        description: directory to hold plots
-        position: 2
-        name: output_dir
         optional: false
       - !Positional
         description: tetranucleotide profiles for each sequence (see tetra command)
-        position: 3
+        position: 2
         name: tetra_profile
         optional: false
       - !Positional
-        description: reference distribution(s) to plot; integer between 0 and 100
-        position: 4
-        name: dist_value
+        description: print results to file
+        position: 3
+        name: output_file
         optional: false
       named:
       - !Flag
-        description: 'desired image type (default: png)'
+        description: 'reference distribution used to identify outliers; integer between
+          0 and 100 (default: 95)'
         synonyms:
-        - --image_type
+        - -d
+        - --distributions
+        args: !SimpleFlagArg
+          name: dist_value
+        optional: true
+      - !Flag
+        description: "report sequences that are outliers in 'all' or 'any' reference\
+          \ distribution (default: any)"
+        synonyms:
+        - -r
+        - --report_type
         args: !ChoiceFlagArg
           choices: !!set
-            ? ps
-            ? eps
-            ? pdf
-            ? svg
-            ? png
-        optional: true
-      - !Flag
-        description: 'desired DPI of output image (default: 600)'
-        synonyms:
-        - --dpi
-        args: !SimpleFlagArg
-          name: DPI
-        optional: true
-      - !Flag
-        description: 'Desired font size (default: 8)'
-        synonyms:
-        - --font_size
-        args: !SimpleFlagArg
-          name: FONT_SIZE
+            ? any
+            ? all
         optional: true
       - !Flag
         description: 'extension of bins (other files in directory are ignored) (default:
@@ -1770,66 +1721,76 @@ parent: &id003 !Command
           name: EXTENSION
         optional: true
       - !Flag
-        description: 'width of output image (default: 6.5)'
+        description: suppress console output
         synonyms:
-        - --width
-        args: !SimpleFlagArg
-          name: WIDTH
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm outliers [-h] [-d dist_value] [-r {any,all}] [-x EXTENSION]\
+        \ [-q]\n                       results_dir bin_dir tetra_profile output_file\n\
+        \nIdentify outliers in bins relative to reference distributions.\n\npositional\
+        \ arguments:\n  results_dir           directory specified during qa command\n\
+        \  bin_dir               directory containing bins (fasta format)\n  tetra_profile\
+        \         tetranucleotide profiles for each sequence (see tetra command)\n\
+        \  output_file           print results to file\n\noptional arguments:\n  -h,\
+        \ --help            show this help message and exit\n  -d, --distributions\
+        \ dist_value\n                        reference distribution used to identify\
+        \ outliers; integer between 0 and 100 (default: 95)\n  -r, --report_type {any,all}\n\
+        \                        report sequences that are outliers in 'all' or 'any'\
+        \ reference distribution (default: any)\n  -x, --extension EXTENSION\n   \
+        \                     extension of bins (other files in directory are ignored)\
+        \ (default: fna)\n  -q, --quiet           suppress console output\n\nExample:\
+        \ checkm outliers ./output ./bins tetra.tsv outliers.tsv\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - tree_qa
+      positional: []
+      named:
+      - !Flag
+        description: "desired output: (default: 1)\n1. brief summary of genome tree\
+          \ placement\n2. detailed summary of genome tree placement including lineage-specific\
+          \ statistics\n3. genome tree in Newick format decorated with IMG genome\
+          \ ids\n4. genome tree in Newick format decorated with taxonomy strings\n\
+          5. multiple sequence alignment of reference genomes and bins"
+        synonyms:
+        - -o
+        - --out_format
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? "5"
+            ? "3"
+            ? "1"
+            ? "4"
+            ? "2"
         optional: true
       - !Flag
-        description: 'height of output image (default: 8)'
+        description: 'print results to file (default: stdout)'
         synonyms:
-        - --height
+        - -f
+        - --file
         args: !SimpleFlagArg
-          name: HEIGHT
+          name: FILE
         optional: true
       - !Flag
-        description: 'window size used to calculate GC histogram (default: 5000)'
+        description: print tab-separated values table
         synonyms:
-        - -a
-        - --gc_window_size
-        args: !SimpleFlagArg
-          name: GC_WINDOW_SIZE
-        optional: true
-      - !Flag
-        description: 'window size used to calculate TD histogram (default: 5000)'
-        synonyms:
-        - -b
-        - --td_window_size
-        args: !SimpleFlagArg
-          name: TD_WINDOW_SIZE
-        optional: true
-      - !Flag
-        description: 'window size used to calculate CD histogram (default: 10000)'
-        synonyms:
-        - -c
-        - --cd_window_size
-        args: !SimpleFlagArg
-          name: CD_WINDOW_SIZE
-        optional: true
-      - !Flag
-        description: 'width of GC bars in histogram (default: 0.01)'
-        synonyms:
-        - '-1'
-        - --gc_bin_width
-        args: !SimpleFlagArg
-          name: GC_BIN_WIDTH
-        optional: true
-      - !Flag
-        description: 'width of TD bars in histogram (default: 0.01)'
-        synonyms:
-        - '-2'
-        - --td_bin_width
-        args: !SimpleFlagArg
-          name: TD_BIN_WIDTH
-        optional: true
-      - !Flag
-        description: 'width of CD bars in histogram (default: 0.01)'
-        synonyms:
-        - '-3'
-        - --cd_bin_width
-        args: !SimpleFlagArg
-          name: CD_BIN_WIDTH
+        - --tab_table
+        args: !EmptyFlagArg {}
         optional: true
       - !Flag
         description: suppress console output
@@ -1838,11 +1799,16 @@ parent: &id003 !Command
         - --quiet
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - checkm
-      - dist_plot
+      - !Flag
+        description: specify an alternative directory for temporary files
+        synonyms:
+        - --tmpdir
+        args: !SimpleFlagArg
+          name: TMPDIR
+        optional: true
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -1852,61 +1818,101 @@ parent: &id003 !Command
         optional: true
       usage_flag:
       version_flag:
-      help_text: "usage: checkm dist_plot [-h] [--image_type {eps,pdf,png,ps,svg}]\
-        \ [--dpi DPI]\n                        [--font_size FONT_SIZE] [-x EXTENSION]\
-        \ [--width WIDTH]\n                        [--height HEIGHT] [-a GC_WINDOW_SIZE]\n\
-        \                        [-b TD_WINDOW_SIZE] [-c CD_WINDOW_SIZE]\n       \
-        \                 [-1 GC_BIN_WIDTH] [-2 TD_BIN_WIDTH] [-3 CD_BIN_WIDTH]\n\
-        \                        [-q]\n                        results_dir bin_dir\
-        \ output_dir tetra_profile\n                        dist_value [dist_value\
-        \ ...]\n\nCreate image with GC, CD, and TD distribution plots together.\n\n\
-        positional arguments:\n  results_dir           directory specified during\
-        \ analyze command\n  bin_dir               directory containing bins to plot\
-        \ (fasta format)\n  output_dir            directory to hold plots\n  tetra_profile\
-        \         tetranucleotide profiles for each sequence (see tetra command)\n\
-        \  dist_value            reference distribution(s) to plot; integer between\
-        \ 0 and 100\n\noptional arguments:\n  -h, --help            show this help\
-        \ message and exit\n  --image_type {eps,pdf,png,ps,svg}\n                \
-        \        desired image type (default: png)\n  --dpi DPI             desired\
-        \ DPI of output image (default: 600)\n  --font_size FONT_SIZE\n          \
-        \              Desired font size (default: 8)\n  -x, --extension EXTENSION\n\
-        \                        extension of bins (other files in directory are ignored)\
-        \ (default: fna)\n  --width WIDTH         width of output image (default:\
-        \ 6.5)\n  --height HEIGHT       height of output image (default: 8)\n  -a,\
-        \ --gc_window_size GC_WINDOW_SIZE\n                        window size used\
-        \ to calculate GC histogram (default: 5000)\n  -b, --td_window_size TD_WINDOW_SIZE\n\
-        \                        window size used to calculate TD histogram (default:\
-        \ 5000)\n  -c, --cd_window_size CD_WINDOW_SIZE\n                        window\
-        \ size used to calculate CD histogram (default: 10000)\n  -1, --gc_bin_width\
-        \ GC_BIN_WIDTH\n                        width of GC bars in histogram (default:\
-        \ 0.01)\n  -2, --td_bin_width TD_BIN_WIDTH\n                        width\
-        \ of TD bars in histogram (default: 0.01)\n  -3, --cd_bin_width CD_BIN_WIDTH\n\
-        \                        width of CD bars in histogram (default: 0.01)\n \
-        \ -q, --quiet           suppress console output\n\nExample: checkm dist_plot\
-        \ ./output ./bins ./plots tetra.tsv 95\n"
+      help_text: "usage: checkm tree_qa [-h] [-o {1,2,3,4,5}] [-f FILE] [--tab_table]\
+        \ [-q]\n                      [--tmpdir TMPDIR]\n                      tree_dir\n\
+        \nAssess phylogenetic markers found in each bin.\n\npositional arguments:\n\
+        \  tree_dir              directory specified during tree command\n\noptional\
+        \ arguments:\n  -h, --help            show this help message and exit\n  -o,\
+        \ --out_format {1,2,3,4,5}\n                        desired output: (default:\
+        \ 1)\n                          1. brief summary of genome tree placement\n\
+        \                          2. detailed summary of genome tree placement including\
+        \ lineage-specific statistics\n                          3. genome tree in\
+        \ Newick format decorated with IMG genome ids\n                          4.\
+        \ genome tree in Newick format decorated with taxonomy strings\n         \
+        \                 5. multiple sequence alignment of reference genomes and\
+        \ bins\n  -f, --file FILE       print results to file (default: stdout)\n\
+        \  --tab_table           print tab-separated values table\n  -q, --quiet \
+        \          suppress console output\n  --tmpdir TMPDIR       specify an alternative\
+        \ directory for temporary files\n\nExample: checkm tree_qa ./output\n"
       generated_using: *id002
-    - !Command
-      positional:
-      - !Positional
-        description: directory containing bins (fasta format)
-        position: 0
-        name: bin_dir
-        optional: false
+    - &id004 !Command
+      command:
+      - checkm
+      - tetra
+      positional: []
       named:
       - !Flag
-        description: 'extension of bins (all other files in bin directory are ignored)
-          (default: fna)'
+        description: 'number of threads (default: 1)'
         synonyms:
-        - -x
-        - --extension
+        - -t
+        - --threads
         args: !SimpleFlagArg
-          name: EXTENSION
+          name: THREADS
         optional: true
-      command:
-      - checkm
-      - unique
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
       parent: *id001
-      subcommands: []
+      subcommands:
+      - !Command
+        command:
+        - checkm
+        - tetra
+        - output_file
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: checkm
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: tetra
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: seq_file
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: output_file
+          optional: false
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - -q
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -t
+          args: !SimpleFlagArg
+            name: THREADS
+          optional: true
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: checkm tetra [-h] [-t THREADS] [-q] seq_file output_file\n\
+          checkm tetra: error: the following arguments are required: output_file\n"
+        generated_using: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -1916,14 +1922,18 @@ parent: &id003 !Command
         optional: true
       usage_flag:
       version_flag:
-      help_text: "usage: checkm unique [-h] [-x EXTENSION] bin_dir\n\nEnsure no sequences\
-        \ are assigned to multiple bins.\n\npositional arguments:\n  bin_dir     \
-        \          directory containing bins (fasta format)\n\noptional arguments:\n\
-        \  -h, --help            show this help message and exit\n  -x, --extension\
-        \ EXTENSION\n                        extension of bins (all other files in\
-        \ bin directory are ignored) (default: fna)\n\nExample: checkm unique ./bins\n"
+      help_text: "usage: checkm tetra [-h] [-t THREADS] [-q] seq_file output_file\n\
+        \nCalculate tetranucleotide signature of sequences.\n\npositional arguments:\n\
+        \  seq_file              sequences used to generate bins (fasta format)\n\
+        \  output_file           print results to file\n\noptional arguments:\n  -h,\
+        \ --help            show this help message and exit\n  -t, --threads THREADS\n\
+        \                        number of threads (default: 1)\n  -q, --quiet   \
+        \        suppress console output\n\nExample: checkm tetra seqs.fna tetra.tsv\n"
       generated_using: *id002
     - !Command
+      command:
+      - checkm
+      - merge
       positional:
       - !Positional
         description: marker file to use for assessing potential bin mergers (marker
@@ -2001,11 +2011,9 @@ parent: &id003 !Command
         - --quiet
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - checkm
-      - merge
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -2038,246 +2046,9 @@ parent: &id003 !Command
         \ checkm merge bacteria.ms ./bins ./output\n"
       generated_using: *id002
     - !Command
-      positional:
-      - !Positional
-        description: directory specified during qa command
-        position: 0
-        name: results_dir
-        optional: false
-      - !Positional
-        description: directory containing bins (fasta format)
-        position: 1
-        name: bin_dir
-        optional: false
-      - !Positional
-        description: tetranucleotide profiles for each sequence (see tetra command)
-        position: 2
-        name: tetra_profile
-        optional: false
-      - !Positional
-        description: print results to file
-        position: 3
-        name: output_file
-        optional: false
-      named:
-      - !Flag
-        description: 'reference distribution used to identify outliers; integer between
-          0 and 100 (default: 95)'
-        synonyms:
-        - -d
-        - --distributions
-        args: !SimpleFlagArg
-          name: dist_value
-        optional: true
-      - !Flag
-        description: "report sequences that are outliers in 'all' or 'any' reference\
-          \ distribution (default: any)"
-        synonyms:
-        - -r
-        - --report_type
-        args: !ChoiceFlagArg
-          choices: !!set
-            ? all
-            ? any
-        optional: true
-      - !Flag
-        description: 'extension of bins (other files in directory are ignored) (default:
-          fna)'
-        synonyms:
-        - -x
-        - --extension
-        args: !SimpleFlagArg
-          name: EXTENSION
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
       command:
       - checkm
-      - outliers
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm outliers [-h] [-d dist_value] [-r {any,all}] [-x EXTENSION]\
-        \ [-q]\n                       results_dir bin_dir tetra_profile output_file\n\
-        \nIdentify outliers in bins relative to reference distributions.\n\npositional\
-        \ arguments:\n  results_dir           directory specified during qa command\n\
-        \  bin_dir               directory containing bins (fasta format)\n  tetra_profile\
-        \         tetranucleotide profiles for each sequence (see tetra command)\n\
-        \  output_file           print results to file\n\noptional arguments:\n  -h,\
-        \ --help            show this help message and exit\n  -d, --distributions\
-        \ dist_value\n                        reference distribution used to identify\
-        \ outliers; integer between 0 and 100 (default: 95)\n  -r, --report_type {any,all}\n\
-        \                        report sequences that are outliers in 'all' or 'any'\
-        \ reference distribution (default: any)\n  -x, --extension EXTENSION\n   \
-        \                     extension of bins (other files in directory are ignored)\
-        \ (default: fna)\n  -q, --quiet           suppress console output\n\nExample:\
-        \ checkm outliers ./output ./bins tetra.tsv outliers.tsv\n"
-      generated_using: *id002
-    - !Command
-      positional:
-      - !Positional
-        description: sequences used to generate bins (fasta format)
-        position: 0
-        name: seq_file
-        optional: false
-      - !Positional
-        description: bin to be modified
-        position: 1
-        name: bin_file
-        optional: false
-      - !Positional
-        description: modified bin
-        position: 2
-        name: output_file
-        optional: false
-      named:
-      - !Flag
-        description: ID of sequence to add to bin (may specify multiple times)
-        synonyms:
-        - -a
-        - --add
-        args: !SimpleFlagArg
-          name: ADD
-        optional: true
-      - !Flag
-        description: ID of sequence to remove from bin (may specify multiple times)
-        synonyms:
-        - -r
-        - --remove
-        args: !SimpleFlagArg
-          name: REMOVE
-        optional: true
-      - !Flag
-        description: remove all sequences marked as outliers in the bin (see outlier
-          command)
-        synonyms:
-        - -o
-        - --outlier_file
-        args: !SimpleFlagArg
-          name: OUTLIER_FILE
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - checkm
-      - modify
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm modify [-h] [-a ADD] [-r REMOVE] [-o OUTLIER_FILE]\
-        \ [-q]\n                     seq_file bin_file output_file\n\nModify sequences\
-        \ in a bin.\n\npositional arguments:\n  seq_file              sequences used\
-        \ to generate bins (fasta format)\n  bin_file              bin to be modified\n\
-        \  output_file           modified bin\n\noptional arguments:\n  -h, --help\
-        \            show this help message and exit\n  -a, --add ADD         ID of\
-        \ sequence to add to bin (may specify multiple times)\n  -r, --remove REMOVE\
-        \   ID of sequence to remove from bin (may specify multiple times)\n  -o,\
-        \ --outlier_file OUTLIER_FILE\n                        remove all sequences\
-        \ marked as outliers in the bin (see outlier command)\n  -q, --quiet     \
-        \      suppress console output\n\nExample: checkm modify -r seq_id1 -r seq_id2\
-        \ seqs.fna bin.fna new_bin.fna\n"
-      generated_using: *id002
-    - !Command
-      positional:
-      - !Positional
-        description: directory containing bins (fasta format)
-        position: 0
-        name: bin_dir
-        optional: false
-      - !Positional
-        description: sequences used to generate bins (fasta format)
-        position: 1
-        name: seq_file
-        optional: false
-      - !Positional
-        description: write unbinned sequences to file
-        position: 2
-        name: output_seq_file
-        optional: false
-      - !Positional
-        description: write unbinned sequence statistics to file
-        position: 3
-        name: output_stats_file
-        optional: false
-      named:
-      - !Flag
-        description: 'extension of bins (other files in directory are ignored) (default:
-          fna)'
-        synonyms:
-        - -x
-        - --extension
-        args: !SimpleFlagArg
-          name: EXTENSION
-        optional: true
-      - !Flag
-        description: required length of sequence
-        synonyms:
-        - -s
-        - --min_seq_len
-        args: !SimpleFlagArg
-          name: MIN_SEQ_LEN
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - checkm
-      - unbinned
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm unbinned [-h] [-x EXTENSION] [-s MIN_SEQ_LEN] [-q]\n\
-        \                       bin_dir seq_file output_seq_file output_stats_file\n\
-        \nIdentify unbinned sequences.\n\npositional arguments:\n  bin_dir       \
-        \        directory containing bins (fasta format)\n  seq_file            \
-        \  sequences used to generate bins (fasta format)\n  output_seq_file     \
-        \  write unbinned sequences to file\n  output_stats_file     write unbinned\
-        \ sequence statistics to file\n\noptional arguments:\n  -h, --help       \
-        \     show this help message and exit\n  -x, --extension EXTENSION\n     \
-        \                   extension of bins (other files in directory are ignored)\
-        \ (default: fna)\n  -s, --min_seq_len MIN_SEQ_LEN\n                      \
-        \  required length of sequence\n  -q, --quiet           suppress console output\n\
-        \nExample: checkm unbinned ./bins seqs.fna unbinned.fna unbinned_stats.tsv\n"
-      generated_using: *id002
-    - !Command
+      - coverage
       positional:
       - !Positional
         description: directory containing bins (fasta format)
@@ -2353,11 +2124,9 @@ parent: &id003 !Command
         - --quiet
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - checkm
-      - coverage
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -2385,16 +2154,78 @@ parent: &id003 !Command
         \ threads (default: 1)\n  -q, --quiet           suppress console output\n\n\
         Example: checkm coverage ./bins coverage.tsv example_1.bam example_2.bam\n"
       generated_using: *id002
-    - &id005 !Command
-      positional: []
+    - !Command
+      command:
+      - checkm
+      - nx_plot
+      positional:
+      - !Positional
+        description: directory containing bins to plot (fasta format)
+        position: 0
+        name: bin_dir
+        optional: false
+      - !Positional
+        description: directory to hold plots
+        position: 1
+        name: output_dir
+        optional: false
       named:
       - !Flag
-        description: 'number of threads (default: 1)'
+        description: 'desired image type (default: png)'
         synonyms:
-        - -t
-        - --threads
+        - --image_type
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? svg
+            ? ps
+            ? eps
+            ? png
+            ? pdf
+        optional: true
+      - !Flag
+        description: 'desired DPI of output image (default: 600)'
+        synonyms:
+        - --dpi
         args: !SimpleFlagArg
-          name: THREADS
+          name: DPI
+        optional: true
+      - !Flag
+        description: 'Desired font size (default: 8)'
+        synonyms:
+        - --font_size
+        args: !SimpleFlagArg
+          name: FONT_SIZE
+        optional: true
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: 'width of output image (default: 6.5)'
+        synonyms:
+        - --width
+        args: !SimpleFlagArg
+          name: WIDTH
+        optional: true
+      - !Flag
+        description: 'height of output image (default: 6.5)'
+        synonyms:
+        - --height
+        args: !SimpleFlagArg
+          name: HEIGHT
+        optional: true
+      - !Flag
+        description: 'x step size for calculating Nx (default: 0.05)'
+        synonyms:
+        - -s
+        - --step_size
+        args: !SimpleFlagArg
+          name: STEP_SIZE
         optional: true
       - !Flag
         description: suppress console output
@@ -2403,64 +2234,9 @@ parent: &id003 !Command
         - --quiet
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - checkm
-      - tetra
       parent: *id001
-      subcommands:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: checkm
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: tetra
-          optional: false
-        - !Positional
-          description: ''
-          position: 2
-          name: seq_file
-          optional: false
-        - !Positional
-          description: ''
-          position: 3
-          name: output_file
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - -t
-          args: !SimpleFlagArg
-            name: THREADS
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - -q
-          args: !EmptyFlagArg {}
-          optional: true
-        command:
-        - checkm
-        - tetra
-        - output_file
-        parent: *id005
-        subcommands: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: checkm tetra [-h] [-t THREADS] [-q] seq_file output_file\n\
-          checkm tetra: error: the following arguments are required: output_file\n"
-        generated_using: []
+      subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -2470,15 +2246,673 @@ parent: &id003 !Command
         optional: true
       usage_flag:
       version_flag:
-      help_text: "usage: checkm tetra [-h] [-t THREADS] [-q] seq_file output_file\n\
-        \nCalculate tetranucleotide signature of sequences.\n\npositional arguments:\n\
-        \  seq_file              sequences used to generate bins (fasta format)\n\
-        \  output_file           print results to file\n\noptional arguments:\n  -h,\
-        \ --help            show this help message and exit\n  -t, --threads THREADS\n\
-        \                        number of threads (default: 1)\n  -q, --quiet   \
-        \        suppress console output\n\nExample: checkm tetra seqs.fna tetra.tsv\n"
+      help_text: "usage: checkm nx_plot [-h] [--image_type {eps,pdf,png,ps,svg}] [--dpi\
+        \ DPI]\n                      [--font_size FONT_SIZE] [-x EXTENSION] [--width\
+        \ WIDTH]\n                      [--height HEIGHT] [-s STEP_SIZE] [-q]\n  \
+        \                    bin_dir output_dir\n\nCreate Nx-plots.\n\npositional\
+        \ arguments:\n  bin_dir               directory containing bins to plot (fasta\
+        \ format)\n  output_dir            directory to hold plots\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  --image_type {eps,pdf,png,ps,svg}\n\
+        \                        desired image type (default: png)\n  --dpi DPI  \
+        \           desired DPI of output image (default: 600)\n  --font_size FONT_SIZE\n\
+        \                        Desired font size (default: 8)\n  -x, --extension\
+        \ EXTENSION\n                        extension of bins (other files in directory\
+        \ are ignored) (default: fna)\n  --width WIDTH         width of output image\
+        \ (default: 6.5)\n  --height HEIGHT       height of output image (default:\
+        \ 6.5)\n  -s, --step_size STEP_SIZE\n                        x step size for\
+        \ calculating Nx (default: 0.05)\n  -q, --quiet           suppress console\
+        \ output\n\nExample: checkm nx_plot ./bins ./plots\n"
       generated_using: *id002
     - !Command
+      command:
+      - checkm
+      - tree
+      positional:
+      - !Positional
+        description: directory containing bins (fasta format)
+        position: 0
+        name: bin_dir
+        optional: false
+      - !Positional
+        description: directory to write output files
+        position: 1
+        name: output_dir
+        optional: false
+      named:
+      - !Flag
+        description: use reduced tree (requires <16GB of memory) for determining lineage
+          of each bin
+        synonyms:
+        - -r
+        - --reduced_tree
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: generate HMMER alignment file for each bin
+        synonyms:
+        - --ali
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: generate nucleotide gene sequences for each bin
+        synonyms:
+        - --nt
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: bins contain genes as amino acids instead of nucleotide contigs
+        synonyms:
+        - -g
+        - --genes
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: 'number of threads (default: 1)'
+        synonyms:
+        - -t
+        - --threads
+        args: !SimpleFlagArg
+          name: THREADS
+        optional: true
+      - !Flag
+        description: 'number of threads used by pplacer (memory usage increases linearly
+          with additional threads) (default: 1)'
+        synonyms:
+        - --pplacer_threads
+        args: !SimpleFlagArg
+          name: PPLACER_THREADS
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: specify an alternative directory for temporary files
+        synonyms:
+        - --tmpdir
+        args: !SimpleFlagArg
+          name: TMPDIR
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm tree [-h] [-r] [--ali] [--nt] [-g] [-x EXTENSION]\
+        \ [-t THREADS]\n                   [--pplacer_threads PPLACER_THREADS] [-q]\
+        \ [--tmpdir TMPDIR]\n                   bin_dir output_dir\n\nPlace bins in\
+        \ the genome tree.\n\npositional arguments:\n  bin_dir               directory\
+        \ containing bins (fasta format)\n  output_dir            directory to write\
+        \ output files\n\noptional arguments:\n  -h, --help            show this help\
+        \ message and exit\n  -r, --reduced_tree    use reduced tree (requires <16GB\
+        \ of memory) for determining lineage of each bin\n  --ali                \
+        \ generate HMMER alignment file for each bin\n  --nt                  generate\
+        \ nucleotide gene sequences for each bin\n  -g, --genes           bins contain\
+        \ genes as amino acids instead of nucleotide contigs\n  -x, --extension EXTENSION\n\
+        \                        extension of bins (other files in directory are ignored)\
+        \ (default: fna)\n  -t, --threads THREADS\n                        number\
+        \ of threads (default: 1)\n  --pplacer_threads PPLACER_THREADS\n         \
+        \               number of threads used by pplacer (memory usage increases\
+        \ linearly with additional threads) (default: 1)\n  -q, --quiet          \
+        \ suppress console output\n  --tmpdir TMPDIR       specify an alternative\
+        \ directory for temporary files\n\nExample: checkm tree ./bins ./output\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - modify
+      positional:
+      - !Positional
+        description: sequences used to generate bins (fasta format)
+        position: 0
+        name: seq_file
+        optional: false
+      - !Positional
+        description: bin to be modified
+        position: 1
+        name: bin_file
+        optional: false
+      - !Positional
+        description: modified bin
+        position: 2
+        name: output_file
+        optional: false
+      named:
+      - !Flag
+        description: ID of sequence to add to bin (may specify multiple times)
+        synonyms:
+        - -a
+        - --add
+        args: !SimpleFlagArg
+          name: ADD
+        optional: true
+      - !Flag
+        description: ID of sequence to remove from bin (may specify multiple times)
+        synonyms:
+        - -r
+        - --remove
+        args: !SimpleFlagArg
+          name: REMOVE
+        optional: true
+      - !Flag
+        description: remove all sequences marked as outliers in the bin (see outlier
+          command)
+        synonyms:
+        - -o
+        - --outlier_file
+        args: !SimpleFlagArg
+          name: OUTLIER_FILE
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm modify [-h] [-a ADD] [-r REMOVE] [-o OUTLIER_FILE]\
+        \ [-q]\n                     seq_file bin_file output_file\n\nModify sequences\
+        \ in a bin.\n\npositional arguments:\n  seq_file              sequences used\
+        \ to generate bins (fasta format)\n  bin_file              bin to be modified\n\
+        \  output_file           modified bin\n\noptional arguments:\n  -h, --help\
+        \            show this help message and exit\n  -a, --add ADD         ID of\
+        \ sequence to add to bin (may specify multiple times)\n  -r, --remove REMOVE\
+        \   ID of sequence to remove from bin (may specify multiple times)\n  -o,\
+        \ --outlier_file OUTLIER_FILE\n                        remove all sequences\
+        \ marked as outliers in the bin (see outlier command)\n  -q, --quiet     \
+        \      suppress console output\n\nExample: checkm modify -r seq_id1 -r seq_id2\
+        \ seqs.fna bin.fna new_bin.fna\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - tetra_plot
+      positional:
+      - !Positional
+        description: directory specified during qa command
+        position: 0
+        name: results_dir
+        optional: false
+      - !Positional
+        description: directory containing bins to plot (fasta format)
+        position: 1
+        name: bin_dir
+        optional: false
+      - !Positional
+        description: directory to hold plots
+        position: 2
+        name: output_dir
+        optional: false
+      - !Positional
+        description: tetranucleotide profiles for each bin (see tetra command)
+        position: 3
+        name: tetra_profile
+        optional: false
+      - !Positional
+        description: reference distribution(s) to plot; integer between 0 and 100
+        position: 4
+        name: dist_value
+        optional: false
+      named:
+      - !Flag
+        description: 'desired image type (default: png)'
+        synonyms:
+        - --image_type
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? svg
+            ? ps
+            ? eps
+            ? png
+            ? pdf
+        optional: true
+      - !Flag
+        description: 'desired DPI of output image (default: 600)'
+        synonyms:
+        - --dpi
+        args: !SimpleFlagArg
+          name: DPI
+        optional: true
+      - !Flag
+        description: 'Desired font size (default: 8)'
+        synonyms:
+        - --font_size
+        args: !SimpleFlagArg
+          name: FONT_SIZE
+        optional: true
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: 'width of output image (default: 6.5)'
+        synonyms:
+        - --width
+        args: !SimpleFlagArg
+          name: WIDTH
+        optional: true
+      - !Flag
+        description: 'height of output image (default: 3.5)'
+        synonyms:
+        - --height
+        args: !SimpleFlagArg
+          name: HEIGHT
+        optional: true
+      - !Flag
+        description: 'window size used to calculate TD histogram (default: 5000)'
+        synonyms:
+        - -w
+        - --td_window_size
+        args: !SimpleFlagArg
+          name: TD_WINDOW_SIZE
+        optional: true
+      - !Flag
+        description: 'width of TD bars in histogram (default: 0.01)'
+        synonyms:
+        - -b
+        - --td_bin_width
+        args: !SimpleFlagArg
+          name: TD_BIN_WIDTH
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm tetra_plot [-h] [--image_type {eps,pdf,png,ps,svg}]\
+        \ [--dpi DPI]\n                         [--font_size FONT_SIZE] [-x EXTENSION]\n\
+        \                         [--width WIDTH] [--height HEIGHT] [-w TD_WINDOW_SIZE]\n\
+        \                         [-b TD_BIN_WIDTH] [-q]\n                       \
+        \  results_dir bin_dir output_dir tetra_profile\n                        \
+        \ dist_value [dist_value ...]\n\nCreate tetranucleotide distance (TD) histogram\
+        \ and delta-TD plot.\n\npositional arguments:\n  results_dir           directory\
+        \ specified during qa command\n  bin_dir               directory containing\
+        \ bins to plot (fasta format)\n  output_dir            directory to hold plots\n\
+        \  tetra_profile         tetranucleotide profiles for each bin (see tetra\
+        \ command)\n  dist_value            reference distribution(s) to plot; integer\
+        \ between 0 and 100\n\noptional arguments:\n  -h, --help            show this\
+        \ help message and exit\n  --image_type {eps,pdf,png,ps,svg}\n           \
+        \             desired image type (default: png)\n  --dpi DPI             desired\
+        \ DPI of output image (default: 600)\n  --font_size FONT_SIZE\n          \
+        \              Desired font size (default: 8)\n  -x, --extension EXTENSION\n\
+        \                        extension of bins (other files in directory are ignored)\
+        \ (default: fna)\n  --width WIDTH         width of output image (default:\
+        \ 6.5)\n  --height HEIGHT       height of output image (default: 3.5)\n  -w,\
+        \ --td_window_size TD_WINDOW_SIZE\n                        window size used\
+        \ to calculate TD histogram (default: 5000)\n  -b, --td_bin_width TD_BIN_WIDTH\n\
+        \                        width of TD bars in histogram (default: 0.01)\n \
+        \ -q, --quiet           suppress console output\n\nExample: checkm tetra_plot\
+        \ ./output ./bins ./plots tetra.tsv 95\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - lineage_set
+      positional:
+      - !Positional
+        description: directory specified during tree command
+        position: 0
+        name: tree_dir
+        optional: false
+      - !Positional
+        description: output file describing marker set for each bin
+        position: 1
+        name: marker_file
+        optional: false
+      named:
+      - !Flag
+        description: 'minimum number of unique phylogenetic markers required to use
+          lineage-specific marker set (default: 10)'
+        synonyms:
+        - -u
+        - --unique
+        args: !SimpleFlagArg
+          name: UNIQUE
+        optional: true
+      - !Flag
+        description: 'maximum number of multi-copy phylogenetic markers before defaulting
+          to domain-level marker set (default: 10)'
+        synonyms:
+        - -m
+        - --multi
+        args: !SimpleFlagArg
+          name: MULTI
+        optional: true
+      - !Flag
+        description: use domain-level sets for all bins
+        synonyms:
+        - --force_domain
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: do not perform lineage-specific marker set refinement
+        synonyms:
+        - --no_refinement
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: specify an alternative directory for temporary files
+        synonyms:
+        - --tmpdir
+        args: !SimpleFlagArg
+          name: TMPDIR
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm lineage_set [-h] [-u UNIQUE] [-m MULTI] [--force_domain]\n\
+        \                          [--no_refinement] [-q] [--tmpdir TMPDIR]\n    \
+        \                      tree_dir marker_file\n\nInfer lineage-specific marker\
+        \ sets for each bin.\n\npositional arguments:\n  tree_dir             directory\
+        \ specified during tree command\n  marker_file          output file describing\
+        \ marker set for each bin\n\noptional arguments:\n  -h, --help           show\
+        \ this help message and exit\n  -u, --unique UNIQUE  minimum number of unique\
+        \ phylogenetic markers required to use lineage-specific marker set (default:\
+        \ 10)\n  -m, --multi MULTI    maximum number of multi-copy phylogenetic markers\
+        \ before defaulting to domain-level marker set (default: 10)\n  --force_domain\
+        \       use domain-level sets for all bins\n  --no_refinement      do not\
+        \ perform lineage-specific marker set refinement\n  -q, --quiet          suppress\
+        \ console output\n  --tmpdir TMPDIR      specify an alternative directory\
+        \ for temporary files\n\nExample: checkm lineage_set ./output lineage.ms\n"
+      generated_using: *id002
+    - *id005
+    - !Command
+      command:
+      - checkm
+      - len_hist
+      positional:
+      - !Positional
+        description: directory containing bins to plot (fasta format)
+        position: 0
+        name: bin_dir
+        optional: false
+      - !Positional
+        description: directory to hold plots
+        position: 1
+        name: output_dir
+        optional: false
+      named:
+      - !Flag
+        description: 'desired image type (default: png)'
+        synonyms:
+        - --image_type
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? svg
+            ? ps
+            ? eps
+            ? png
+            ? pdf
+        optional: true
+      - !Flag
+        description: 'desired DPI of output image (default: 600)'
+        synonyms:
+        - --dpi
+        args: !SimpleFlagArg
+          name: DPI
+        optional: true
+      - !Flag
+        description: 'Desired font size (default: 8)'
+        synonyms:
+        - --font_size
+        args: !SimpleFlagArg
+          name: FONT_SIZE
+        optional: true
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: 'width of output image (default: 6.5)'
+        synonyms:
+        - --width
+        args: !SimpleFlagArg
+          name: WIDTH
+        optional: true
+      - !Flag
+        description: 'height of output image (default: 6.5)'
+        synonyms:
+        - --height
+        args: !SimpleFlagArg
+          name: HEIGHT
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm len_hist [-h] [--image_type {eps,pdf,png,ps,svg}]\
+        \ [--dpi DPI]\n                       [--font_size FONT_SIZE] [-x EXTENSION]\
+        \ [--width WIDTH]\n                       [--height HEIGHT] [-q]\n       \
+        \                bin_dir output_dir\n\nSequence length histogram.\n\npositional\
+        \ arguments:\n  bin_dir               directory containing bins to plot (fasta\
+        \ format)\n  output_dir            directory to hold plots\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  --image_type {eps,pdf,png,ps,svg}\n\
+        \                        desired image type (default: png)\n  --dpi DPI  \
+        \           desired DPI of output image (default: 600)\n  --font_size FONT_SIZE\n\
+        \                        Desired font size (default: 8)\n  -x, --extension\
+        \ EXTENSION\n                        extension of bins (other files in directory\
+        \ are ignored) (default: fna)\n  --width WIDTH         width of output image\
+        \ (default: 6.5)\n  --height HEIGHT       height of output image (default:\
+        \ 6.5)\n  -q, --quiet           suppress console output\n\nExample: checkm\
+        \ len_hist ./bins ./plots\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - gc_plot
+      positional:
+      - !Positional
+        description: directory containing bins to plot (fasta format)
+        position: 0
+        name: bin_dir
+        optional: false
+      - !Positional
+        description: directory to hold plots
+        position: 1
+        name: output_dir
+        optional: false
+      - !Positional
+        description: reference distribution(s) to plot; integer between 0 and 100
+        position: 2
+        name: dist_value
+        optional: false
+      named:
+      - !Flag
+        description: 'desired image type (default: png)'
+        synonyms:
+        - --image_type
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? svg
+            ? ps
+            ? eps
+            ? png
+            ? pdf
+        optional: true
+      - !Flag
+        description: 'desired DPI of output image (default: 600)'
+        synonyms:
+        - --dpi
+        args: !SimpleFlagArg
+          name: DPI
+        optional: true
+      - !Flag
+        description: 'Desired font size (default: 8)'
+        synonyms:
+        - --font_size
+        args: !SimpleFlagArg
+          name: FONT_SIZE
+        optional: true
+      - !Flag
+        description: 'extension of bins (other files in directory are ignored) (default:
+          fna)'
+        synonyms:
+        - -x
+        - --extension
+        args: !SimpleFlagArg
+          name: EXTENSION
+        optional: true
+      - !Flag
+        description: 'width of output image (default: 6.5)'
+        synonyms:
+        - --width
+        args: !SimpleFlagArg
+          name: WIDTH
+        optional: true
+      - !Flag
+        description: 'height of output image (default: 3.5)'
+        synonyms:
+        - --height
+        args: !SimpleFlagArg
+          name: HEIGHT
+        optional: true
+      - !Flag
+        description: 'window size used to calculate GC histogram (default: 5000)'
+        synonyms:
+        - -w
+        - --gc_window_size
+        args: !SimpleFlagArg
+          name: GC_WINDOW_SIZE
+        optional: true
+      - !Flag
+        description: 'width of GC bars in histogram (default: 0.01)'
+        synonyms:
+        - -b
+        - --gc_bin_width
+        args: !SimpleFlagArg
+          name: GC_BIN_WIDTH
+        optional: true
+      - !Flag
+        description: suppress console output
+        synonyms:
+        - -q
+        - --quiet
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: checkm gc_plot [-h] [--image_type {eps,pdf,png,ps,svg}] [--dpi\
+        \ DPI]\n                      [--font_size FONT_SIZE] [-x EXTENSION] [--width\
+        \ WIDTH]\n                      [--height HEIGHT] [-w GC_WINDOW_SIZE] [-b\
+        \ GC_BIN_WIDTH]\n                      [-q]\n                      bin_dir\
+        \ output_dir dist_value [dist_value ...]\n\nCreate GC histogram and delta-GC\
+        \ plot.\n\npositional arguments:\n  bin_dir               directory containing\
+        \ bins to plot (fasta format)\n  output_dir            directory to hold plots\n\
+        \  dist_value            reference distribution(s) to plot; integer between\
+        \ 0 and 100\n\noptional arguments:\n  -h, --help            show this help\
+        \ message and exit\n  --image_type {eps,pdf,png,ps,svg}\n                \
+        \        desired image type (default: png)\n  --dpi DPI             desired\
+        \ DPI of output image (default: 600)\n  --font_size FONT_SIZE\n          \
+        \              Desired font size (default: 8)\n  -x, --extension EXTENSION\n\
+        \                        extension of bins (other files in directory are ignored)\
+        \ (default: fna)\n  --width WIDTH         width of output image (default:\
+        \ 6.5)\n  --height HEIGHT       height of output image (default: 3.5)\n  -w,\
+        \ --gc_window_size GC_WINDOW_SIZE\n                        window size used\
+        \ to calculate GC histogram (default: 5000)\n  -b, --gc_bin_width GC_BIN_WIDTH\n\
+        \                        width of GC bars in histogram (default: 0.01)\n \
+        \ -q, --quiet           suppress console output\n\nExample: checkm gc_plot\
+        \ ./bins ./plots 95\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - checkm
+      - profile
       positional:
       - !Positional
         description: file indicating coverage of each sequence (see coverage command)
@@ -2507,11 +2941,9 @@ parent: &id003 !Command
         - --quiet
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - checkm
-      - profile
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -2529,94 +2961,7 @@ parent: &id003 !Command
         \ --tab_table      print tab-separated values table\n  -q, --quiet      suppress\
         \ console output\n\nExample: checkm profile coverage.tsv\n"
       generated_using: *id002
-    - !Command
-      positional:
-      - !Positional
-        description: sequences used to generate bins (fasta format)
-        position: 0
-        name: seq_file
-        optional: false
-      - !Positional
-        description: directory containing bins (fasta format)
-        position: 1
-        name: bin_dir
-        optional: false
-      - !Positional
-        description: directory to write output files
-        position: 2
-        name: output_dir
-        optional: false
-      named:
-      - !Flag
-        description: 'extension of bins (other files in directory are ignored) (default:
-          fna)'
-        synonyms:
-        - -x
-        - --extension
-        args: !SimpleFlagArg
-          name: EXTENSION
-        optional: true
-      - !Flag
-        description: 'e-value threshold for identifying hits (default: 1e-05)'
-        synonyms:
-        - -e
-        - --evalue
-        args: !SimpleFlagArg
-          name: EVALUE
-        optional: true
-      - !Flag
-        description: 'concatenate hits that are within the specified number of base
-          pairs (default: 200)'
-        synonyms:
-        - -c
-        - --concatenate
-        args: !SimpleFlagArg
-          name: CONCATENATE
-        optional: true
-      - !Flag
-        description: 'number of threads (default: 1)'
-        synonyms:
-        - -t
-        - --threads
-        args: !SimpleFlagArg
-          name: THREADS
-        optional: true
-      - !Flag
-        description: suppress console output
-        synonyms:
-        - -q
-        - --quiet
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - checkm
-      - ssu_finder
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: checkm ssu_finder [-h] [-x EXTENSION] [-e EVALUE] [-c CONCATENATE]\n\
-        \                         [-t THREADS] [-q]\n                         seq_file\
-        \ bin_dir output_dir\n\nIdentify SSU (16S/18S) rRNAs in sequences.\n\npositional\
-        \ arguments:\n  seq_file              sequences used to generate bins (fasta\
-        \ format)\n  bin_dir               directory containing bins (fasta format)\n\
-        \  output_dir            directory to write output files\n\noptional arguments:\n\
-        \  -h, --help            show this help message and exit\n  -x, --extension\
-        \ EXTENSION\n                        extension of bins (other files in directory\
-        \ are ignored) (default: fna)\n  -e, --evalue EVALUE   e-value threshold for\
-        \ identifying hits (default: 1e-05)\n  -c, --concatenate CONCATENATE\n   \
-        \                     concatenate hits that are within the specified number\
-        \ of base pairs (default: 200)\n  -t, --threads THREADS\n                \
-        \        number of threads (default: 1)\n  -q, --quiet           suppress\
-        \ console output\n\nExample: checkm ssu_finder seqs.fna ./bins ./ssu_finder\n"
-      generated_using: *id002
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -2654,6 +2999,10 @@ parent: &id003 !Command
   subcommands:
   - *id006
   - !Command
+    command:
+    - checkm
+    - taxon_set
+    - marker_file
     positional:
     - !Positional
       description: ''
@@ -2669,22 +3018,19 @@ parent: &id003 !Command
     - !Flag
       description: ''
       synonyms:
-      - -q
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
       - --tmpdir
       args: !SimpleFlagArg
         name: TMPDIR
       optional: true
-    command:
-    - checkm
-    - taxon_set
-    - marker_file
-    parent: *id003
+    - !Flag
+      description: ''
+      synonyms:
+      - -q
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id005
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -2699,6 +3045,7 @@ parent: &id003 !Command
       \ invalid choice: 'marker_file' (choose from 'life', 'domain', 'phylum', 'class',\
       \ 'order', 'family', 'genus', 'species')\n"
     generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -2720,6 +3067,7 @@ parent: &id003 !Command
     \ Bacteria bacteria.ms\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

@@ -14,4 +14,7 @@ task CramIndex {
     filename_dot_cram: ""
     filename_dot_cram_dot_cra_i: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

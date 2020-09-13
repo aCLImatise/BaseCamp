@@ -2,9 +2,9 @@ version 1.0
 
 task CatalogueErrors {
   input {
-    String? bed
-    String? threads
-    String? outdir
+    File? bed
+    Int? threads
+    Directory? outdir
     String bam
   }
   command <<<
@@ -15,9 +15,13 @@ task CatalogueErrors {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
   parameter_meta {
-    bed: ".bed file of reference regions to include. (default: None)"
+    bed: ".bed file of reference regions to include. (default:\\nNone)"
     threads: "Number of threads for parallel execution. (default: 1)"
-    outdir: "Output directory. (default: error_catalogue)"
+    outdir: "Output directory. (default: error_catalogue)\\n"
     bam: "Input alignments (aligned to ref)."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

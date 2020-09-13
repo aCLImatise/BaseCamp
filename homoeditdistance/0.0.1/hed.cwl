@@ -1,28 +1,31 @@
 class: CommandLineTool
 id: ../../../hed.cwl
 inputs:
-- id: string_one
-  doc: first string. Use quotation marks around your string (e.g. "STRING")for the
-    empty string or strings with special characters
-  type: string
+- id: in_string_one
+  doc: "first string. Use quotation marks around your string\n(e.g. \"STRING\")for\
+    \ the empty string or strings with\nspecial characters"
+  type: long
   inputBinding:
     prefix: --string1
-- id: string_two
+- id: in_string_two
   doc: second string
-  type: string
+  type: long
   inputBinding:
     prefix: --string2
-- id: all
+- id: in_all
   doc: show all optimal subsequences
   type: boolean
   inputBinding:
     prefix: --all
-- id: backtrace
+- id: in_backtrace
   doc: print transformation steps
   type: boolean
   inputBinding:
     prefix: --backtrace
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hed

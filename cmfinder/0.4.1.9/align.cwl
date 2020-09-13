@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../align.cwl
 inputs:
-- id: m
+- id: in_m
   doc: ''
   type: string
   inputBinding:
     prefix: -m
-- id: seq_file
+- id: in_seq_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - align

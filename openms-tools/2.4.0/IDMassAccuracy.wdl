@@ -5,15 +5,15 @@ task IDMassAccuracy {
     File? in
     File? id_in
     File? precursor_out
-    String? precursor_columns
+    File? precursor_columns
     Boolean? precursor_error_ppm
     File? fragment_out
-    String? fragment_columns
+    File? fragment_columns
     Boolean? fragment_error_ppm
-    String? fragment_mass_tolerance
+    Float? fragment_mass_tolerance
     String? separator
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -23,16 +23,16 @@ task IDMassAccuracy {
       ~{if defined(id_in) then ("-id_in " +  '"' + id_in + '"') else ""} \
       ~{if defined(precursor_out) then ("-precursor_out " +  '"' + precursor_out + '"') else ""} \
       ~{if defined(precursor_columns) then ("-precursor_columns " +  '"' + precursor_columns + '"') else ""} \
-      ~{true="-precursor_error_ppm" false="" precursor_error_ppm} \
+      ~{if (precursor_error_ppm) then "-precursor_error_ppm" else ""} \
       ~{if defined(fragment_out) then ("-fragment_out " +  '"' + fragment_out + '"') else ""} \
       ~{if defined(fragment_columns) then ("-fragment_columns " +  '"' + fragment_columns + '"') else ""} \
-      ~{true="-fragment_error_ppm" false="" fragment_error_ppm} \
+      ~{if (fragment_error_ppm) then "-fragment_error_ppm" else ""} \
       ~{if defined(fragment_mass_tolerance) then ("-fragment_mass_tolerance " +  '"' + fragment_mass_tolerance + '"') else ""} \
       ~{if defined(separator) then ("-separator " +  '"' + separator + '"') else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                      Input mzML file list, containing the spectra. (valid formats: 'mzML')"
@@ -49,5 +49,12 @@ task IDMassAccuracy {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_precursor_out = "${in_precursor_out}"
+    File out_precursor_columns = "${in_precursor_columns}"
+    File out_fragment_out = "${in_fragment_out}"
+    File out_fragment_columns = "${in_fragment_columns}"
   }
 }

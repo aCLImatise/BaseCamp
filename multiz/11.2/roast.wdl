@@ -4,4 +4,7 @@ task Roast {
   command <<<
     roast
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

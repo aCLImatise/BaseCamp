@@ -1,16 +1,16 @@
 version 1.0
 
-task DistanceEstSsq {
+task DistanceEstssq {
   input {
-    String? mind
+    Int? mind
     String? maxd
     Boolean? fr
     Boolean? rf
-    String? km_er
-    String? min_align
-    String? n_pairs
-    String? seed_length
-    String? min_mapq
+    Int? km_er
+    Int? min_align
+    Int? n_pairs
+    Int? seed_length
+    Int? min_mapq
     File? out
     Boolean? mle
     Boolean? median
@@ -20,7 +20,7 @@ task DistanceEstSsq {
     Boolean? gv
     Boolean? gfa
     Boolean? gfa_two
-    String? threads
+    Int? threads
     Boolean? verbose
     File? db
     String? library
@@ -30,29 +30,29 @@ task DistanceEstSsq {
     String alignments_between_contigs
   }
   command <<<
-    DistanceEst-ssq \
+    DistanceEst_ssq \
       ~{hist} \
       ~{alignments_between_contigs} \
       ~{if defined(mind) then ("--mind " +  '"' + mind + '"') else ""} \
       ~{if defined(maxd) then ("--maxd " +  '"' + maxd + '"') else ""} \
-      ~{true="--fr" false="" fr} \
-      ~{true="--rf" false="" rf} \
+      ~{if (fr) then "--fr" else ""} \
+      ~{if (rf) then "--rf" else ""} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
       ~{if defined(min_align) then ("--min-align " +  '"' + min_align + '"') else ""} \
       ~{if defined(n_pairs) then ("--npairs " +  '"' + n_pairs + '"') else ""} \
       ~{if defined(seed_length) then ("--seed-length " +  '"' + seed_length + '"') else ""} \
       ~{if defined(min_mapq) then ("--min-mapq " +  '"' + min_mapq + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
-      ~{true="--mle" false="" mle} \
-      ~{true="--median" false="" median} \
-      ~{true="--mean" false="" mean} \
-      ~{true="--dist" false="" dist} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--gv" false="" gv} \
-      ~{true="--gfa" false="" gfa} \
-      ~{true="--gfa2" false="" gfa_two} \
+      ~{if (mle) then "--mle" else ""} \
+      ~{if (median) then "--median" else ""} \
+      ~{if (mean) then "--mean" else ""} \
+      ~{if (dist) then "--dist" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (gv) then "--gv" else ""} \
+      ~{if (gfa) then "--gfa" else ""} \
+      ~{if (gfa_two) then "--gfa2" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
@@ -67,11 +67,11 @@ task DistanceEstSsq {
     min_align: "the minimal alignment size [1]"
     n_pairs: "minimum number of pairs"
     seed_length: "minimum length of the seed contigs"
-    min_mapq: "ignore alignments with mapping quality less than this threshold [10]"
+    min_mapq: "ignore alignments with mapping quality\\nless than this threshold [10]"
     out: "write result to FILE"
-    mle: "use the MLE [default] (maximum likelihood estimator)"
-    median: "use the difference of the population median and the sample median"
-    mean: "use the difference of the population mean and the sample mean"
+    mle: "use the MLE [default]\\n(maximum likelihood estimator)"
+    median: "use the difference of the population median\\nand the sample median"
+    mean: "use the difference of the population mean\\nand the sample mean"
     dist: "output the graph in dist format [default]"
     dot: "output the graph in GraphViz format"
     gv: "output the graph in GraphViz format"
@@ -85,5 +85,8 @@ task DistanceEstSsq {
     species: "specify species NAME for sqlite"
     hist: "distribution of fragments size"
     alignments_between_contigs: "alignments between contigs"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

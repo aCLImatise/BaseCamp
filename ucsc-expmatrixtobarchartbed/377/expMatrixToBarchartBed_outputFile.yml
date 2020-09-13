@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- expMatrixToBarchartBed
+- outputFile
 positional:
 - !Positional
   description: ''
@@ -13,44 +16,38 @@ named:
   args: !SimpleFlagArg
     name: AUTOSQL
   optional: true
-command:
-- expMatrixToBarchartBed
-- outputFile
 parent: &id001 !Command
+  command:
+  - expMatrixToBarchartBed
   positional: []
   named:
   - !Flag
-    description: Optional autoSql description of extra fields in the input bed.
+    description: "Optional autoSql description of extra fields in the\ninput bed."
     synonyms:
     - --autoSql
     args: !SimpleFlagArg
       name: AUTOSQL
     optional: true
   - !Flag
-    description: Optional file to define the group order, list the groups in a single
-      column in the order desired. The default ordering is alphabetical.
+    description: "Optional file to define the group order, list the\ngroups in a single\
+      \ column in the order desired. The\ndefault ordering is alphabetical."
     synonyms:
     - --groupOrderFile
     args: !SimpleFlagArg
       name: GROUPORDERFILE
     optional: true
   - !Flag
-    description: Calculate the group values using mean rather than median.
+    description: Calculate the group values using mean rather than
     synonyms:
     - --useMean
     args: !EmptyFlagArg {}
     optional: true
-  - !Flag
-    description: Show runtime messages.
-    synonyms:
-    - --verbose
-    args: !EmptyFlagArg {}
-    optional: true
-  command:
-  - expMatrixToBarchartBed
   parent:
   subcommands:
   - !Command
+    command:
+    - expMatrixToBarchartBed
+    - bedFile
     positional:
     - !Positional
       description: ''
@@ -65,11 +62,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: AUTOSQL
       optional: true
-    command:
-    - expMatrixToBarchartBed
-    - sampleFile
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -82,10 +77,13 @@ parent: &id001 !Command
       \                     [--groupOrderFile GROUPORDERFILE] [--useMean]\n      \
       \                        [--verbose]\n                              sampleFile\
       \ matrixFile bedFile outputFile\nexpMatrixToBarchartBed: error: argument sampleFile:\
-      \ can't open 'sampleFile': [Errno 2] No such file or directory: 'sampleFile'\n"
+      \ can't open 'bedFile': [Errno 2] No such file or directory: 'bedFile'\n"
     generated_using: &id002
     - --help
   - !Command
+    command:
+    - expMatrixToBarchartBed
+    - median.
     positional:
     - !Positional
       description: ''
@@ -100,11 +98,45 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: AUTOSQL
       optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: expMatrixToBarchartBed [-h] [--autoSql AUTOSQL]\n         \
+      \                     [--groupOrderFile GROUPORDERFILE] [--useMean]\n      \
+      \                        [--verbose]\n                              sampleFile\
+      \ matrixFile bedFile outputFile\nexpMatrixToBarchartBed: error: argument sampleFile:\
+      \ can't open 'median.': [Errno 2] No such file or directory: 'median.'\n"
+    generated_using: *id002
+  - *id003
+  - !Command
     command:
     - expMatrixToBarchartBed
     - matrixFile
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: expMatrixToBarchartBed
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --autoSql
+      args: !SimpleFlagArg
+        name: AUTOSQL
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -120,6 +152,9 @@ parent: &id001 !Command
       \ can't open 'matrixFile': [Errno 2] No such file or directory: 'matrixFile'\n"
     generated_using: *id002
   - !Command
+    command:
+    - expMatrixToBarchartBed
+    - sampleFile
     positional:
     - !Positional
       description: ''
@@ -134,11 +169,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: AUTOSQL
       optional: true
-    command:
-    - expMatrixToBarchartBed
-    - bedFile
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -151,9 +184,45 @@ parent: &id001 !Command
       \                     [--groupOrderFile GROUPORDERFILE] [--useMean]\n      \
       \                        [--verbose]\n                              sampleFile\
       \ matrixFile bedFile outputFile\nexpMatrixToBarchartBed: error: argument sampleFile:\
-      \ can't open 'bedFile': [Errno 2] No such file or directory: 'bedFile'\n"
+      \ can't open 'sampleFile': [Errno 2] No such file or directory: 'sampleFile'\n"
     generated_using: *id002
-  - *id003
+  - !Command
+    command:
+    - expMatrixToBarchartBed
+    - kent/src/hg/lib/barChartBed.as.
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: expMatrixToBarchartBed
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --autoSql
+      args: !SimpleFlagArg
+        name: AUTOSQL
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: expMatrixToBarchartBed [-h] [--autoSql AUTOSQL]\n         \
+      \                     [--groupOrderFile GROUPORDERFILE] [--useMean]\n      \
+      \                        [--verbose]\n                              sampleFile\
+      \ matrixFile bedFile outputFile\nexpMatrixToBarchartBed: error: argument sampleFile:\
+      \ can't open 'kent/src/hg/lib/barChartBed.as.': [Errno 2] No such file or directory:\
+      \ 'kent/src/hg/lib/barChartBed.as.'\n"
+    generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -189,6 +258,7 @@ parent: &id001 !Command
     \ median.\n  --verbose             Show runtime messages.\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

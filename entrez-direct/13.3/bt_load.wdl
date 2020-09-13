@@ -1,7 +1,10 @@
 version 1.0
 
-task BtLoad {
+task Btload {
   command <<<
-    bt-load
+    bt_load
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

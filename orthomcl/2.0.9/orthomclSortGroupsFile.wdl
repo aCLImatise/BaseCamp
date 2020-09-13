@@ -11,4 +11,7 @@ task OrthomclSortGroupsFile {
   parameter_meta {
     groups_dot_txt: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -6,9 +6,12 @@ task DBdust {
   }
   command <<<
     DBdust \
-      ~{true="-b" false="" b}
+      ~{if (b) then "-b" else ""}
   >>>
   parameter_meta {
     b: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

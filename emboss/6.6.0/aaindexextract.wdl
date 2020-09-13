@@ -4,4 +4,7 @@ task Aaindexextract {
   command <<<
     aaindexextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

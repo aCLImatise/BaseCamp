@@ -4,4 +4,7 @@ task DumpContigsFromHeader {
   command <<<
     dumpContigsFromHeader
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

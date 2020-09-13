@@ -11,4 +11,7 @@ task TransposcopeView {
   parameter_meta {
     web_directory: "The path to the web directory created by the align tool."
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

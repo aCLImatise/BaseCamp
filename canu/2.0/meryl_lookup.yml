@@ -1,49 +1,11 @@
 !Command
+command:
+- meryl-lookup
 positional:
 - !Positional
-  description: '- name of the sequence this kmer is from'
+  description: If the lookup table requires more memory than allowed, the program
   position: 0
-  name: seqName
-  optional: false
-- !Positional
-  description: '- numeric version of the seqName (0-based)'
-  position: 1
-  name: seqId
-  optional: false
-- !Positional
-  description: '- start position (0-based) of the kmer in the sequence'
-  position: 2
-  name: seqPos
-  optional: false
-- !Positional
-  description: "- 'T' if the kmer exists in the database, 'F' if it does not"
-  position: 3
-  name: exists
-  optional: false
-- !Positional
-  description: '- forward mer sequence'
-  position: 4
-  name: fwd-mer
-  optional: false
-- !Positional
-  description: '- value of the forward mer in the database'
-  position: 5
-  name: fwd-val
-  optional: false
-- !Positional
-  description: '- reverse mer sequence'
-  position: 6
-  name: rev-mer
-  optional: false
-- !Positional
-  description: '- value of the reverse mer in the database'
-  position: 7
-  name: rev-val
-  optional: false
-- !Positional
-  description: '- name of the sequence this kmer is from'
-  position: 0
-  name: seqName
+  name: speed.
   optional: false
 named:
 - !Flag
@@ -98,15 +60,58 @@ named:
     name: m
   optional: true
 - !Flag
-  description: / -exclude
+  description: "Report a tab-delimited line for each sequence showing the number of\
+    \ kmers\nin the sequence, in the database, and in both.\noutput:  seqName <tab>\
+    \ mersInSeq <tab> mersInDB <tab> mersInBoth\nseqName    - name of the sequence\n\
+    mersInSeq  - number of mers in the sequence\nmersInDB   - number of mers in the\
+    \ meryl database\nmersInBoth - number of mers in the sequence that are\nalso in\
+    \ the database"
+  synonyms:
+  - -existence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Report a tab-delimited line reporting each kmer in the input sequences,\
+    \ in\norder, annotated with the value of the kmer in the input database.  If the\
+    \ kmer\ndoes not exist in the database its value will be reported as zero.\noutput:\
+    \  seqName <tab> seqId <tab> seqPos <tab> exists <tab> fwd-mer <tab> fwd-val <tab>\
+    \ rev-mer <tab> rev-val\nseqName    - name of the sequence this kmer is from\n\
+    seqId      - numeric version of the seqName (0-based)\nseqPos     - start position\
+    \ (0-based) of the kmer in the sequence\nexists     - 'T' if the kmer exists in\
+    \ the database, 'F' if it does not\nfwd-mer    - forward mer sequence\nfwd-val\
+    \    - value of the forward mer in the database\nrev-mer    - reverse mer sequence\n\
+    rev-val    - value of the reverse mer in the database"
+  synonyms:
+  - -dump
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -exclude\nExtract sequences containing (-include) or not containing\
+    \ (-exclude) kmers in\nany input database.  Output sequences are written in the\
+    \ same format as the input\nsequences, with the number of kmers found added to\
+    \ the name.\nIf two input files are supplied, the corresponding sequences are\
+    \ treated as a pair.\noutput:  sequence given format (fasta or fastq) with the\
+    \ number of overlapping kmers appended\nif pairs of sequences are given, R1 will\
+    \ be stdout and R2 be named as <output.r2>\n<output.r2> will be automatically\
+    \ compressed if ends with .gz, .bz2, or xs\nseqName    - name of the sequence\
+    \ this kmer is from\nmersInBoth - number of mers in both sequence and in the database"
   synonyms:
   - -include
   args: !EmptyFlagArg {}
   optional: true
-command:
-- meryl-lookup
+- !Flag
+  description: "Extract sequences *NOT containing* kmers in <input.meryl>.\noutput:\
+    \  sequence given format (fasta or fastq) without reads containing kmers\nif pairs\
+    \ of sequences are given, R1 will be stdout and R2 be named as <output.r2>\n<output.r2>\
+    \ will be automatically compressed if ends with .gz, .bz2, or xs\nseqName    -\
+    \ name of the sequence this kmer is from"
+  synonyms:
+  - -exclude
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

@@ -1,33 +1,36 @@
 class: CommandLineTool
 id: ../../../snaptools_snap_add_pmat.cwl
 inputs:
-- id: snap_file
+- id: in_snap_file
   doc: 'snap file. (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --snap-file
-- id: peak_file
+- id: in_peak_file
   doc: 'bed file contains peaks. (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --peak-file
-- id: buffer_size
-  doc: 'max number of barcodes be stored in the memory. (default: 1000)'
-  type: string
+- id: in_buffer_size
+  doc: "max number of barcodes be stored in the memory.\n(default: 1000)"
+  type: long
   inputBinding:
     prefix: --buffer-size
-- id: tmp_folder
-  doc: 'a directory to store temporary files. If not given, snaptools will automatically
-    generate a temporary location to store temporary files. (default: None)'
-  type: string
+- id: in_tmp_folder
+  doc: "a directory to store temporary files. If not given,\nsnaptools will automatically\
+    \ generate a temporary\nlocation to store temporary files. (default: None)"
+  type: Directory
   inputBinding:
     prefix: --tmp-folder
-- id: verbose
-  doc: 'a boolen tag indicates output the progress. (default: True)'
+- id: in_verbose
+  doc: "a boolen tag indicates output the progress. (default:\nTrue)\n"
   type: string
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - snaptools

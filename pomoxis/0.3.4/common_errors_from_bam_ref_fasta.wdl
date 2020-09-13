@@ -20,4 +20,7 @@ task CommonErrorsFromBamRefFasta {
     bam: ""
     ref_fast_a: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Nucfreqsfasta {
   command <<<
     nucfreqsfasta
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

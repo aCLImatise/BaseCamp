@@ -3,15 +3,15 @@ version 1.0
 task OrthomclReduceFasta {
   input {
     String fast_a_file
-    String tax_a
   }
   command <<<
     orthomclReduceFasta \
-      ~{fast_a_file} \
-      ~{tax_a}
+      ~{fast_a_file}
   >>>
   parameter_meta {
     fast_a_file: ""
-    tax_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

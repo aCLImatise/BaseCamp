@@ -3,9 +3,9 @@ version 1.0
 task MotifRaptorSnpscan {
   input {
     String? indexed_genome_db
-    String? pfm_folder
-    String? motifscan_output
-    String? threads
+    Directory? pfm_folder
+    Directory? motifscan_output
+    Int? threads
   }
   command <<<
     MotifRaptor snpscan \
@@ -18,6 +18,9 @@ task MotifRaptorSnpscan {
     indexed_genome_db: "indexed genome_database_folder"
     pfm_folder: "motif pmf files folder"
     motifscan_output: "Motif Scan Ouput Folder"
-    threads: "number of threads"
+    threads: "number of threads\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

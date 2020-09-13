@@ -4,4 +4,7 @@ task Findbp {
   command <<<
     findbp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

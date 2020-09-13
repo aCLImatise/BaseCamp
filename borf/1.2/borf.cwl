@@ -1,49 +1,58 @@
 class: CommandLineTool
 id: ../../../borf.cwl
 inputs:
-- id: output_path
-  doc: 'path to write output files. [OUTPUT_PATH].pep and [OUTPUT_PATH].txt (default:
-    input .fa file name)'
-  type: string
+- id: in_output_path
+  doc: "path to write output files. [OUTPUT_PATH].pep and\n[OUTPUT_PATH].txt (default:\
+    \ input .fa file name)"
+  type: File
   inputBinding:
     prefix: --output_path
-- id: strand
+- id: in_strand
   doc: Predict orfs for both strands
   type: boolean
   inputBinding:
     prefix: --strand
-- id: all_orfs
-  doc: Return all ORFs for each sequence longer than the cutoff
+- id: in_all_orfs
+  doc: Return all ORFs for each sequence longer than the
   type: boolean
   inputBinding:
     prefix: --all_orfs
-- id: orf_length
-  doc: 'Minimum ORF length (AA). (default: 100)'
-  type: string
-  inputBinding:
-    prefix: --orf_length
-- id: upstream_incomplete_length
-  doc: 'Minimum length (AA) of uninterupted sequence upstream of ORF to be included
-    for incomplete_5prime transcripts (default: 50)'
-  type: string
+- id: in_upstream_incomplete_length
+  doc: "Minimum length (AA) of uninterupted sequence upstream\nof ORF to be included\
+    \ for incomplete_5prime\ntranscripts (default: 50)"
+  type: long
   inputBinding:
     prefix: --upstream_incomplete_length
-- id: batch_size
+- id: in_batch_size
   doc: Number of fasta records to read in in each batch
-  type: string
+  type: long
   inputBinding:
     prefix: --batch_size
-- id: force_overwrite
-  doc: Force overwriting of output files?
+- id: in_force_overwrite
+  doc: "Force overwriting of output files?\n"
   type: boolean
   inputBinding:
     prefix: --force_overwrite
-- id: fast_a_file
-  doc: fasta file to predict ORFs
+- id: in_l
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -l
+- id: in_cut_off
+  doc: -l ORF_LENGTH, --orf_length ORF_LENGTH
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_path
+  doc: "path to write output files. [OUTPUT_PATH].pep and\n[OUTPUT_PATH].txt (default:\
+    \ input .fa file name)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_path)
 cwlVersion: v1.1
 baseCommand:
 - borf

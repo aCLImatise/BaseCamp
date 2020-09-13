@@ -1,138 +1,146 @@
 class: CommandLineTool
 id: ../../../idba_ud.cwl
 inputs:
-- id: out
+- id: in_out
   doc: (=out)                   output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --out
-- id: read
+- id: in_read
   doc: fasta read file (<=600)
-  type: string
+  type: File
   inputBinding:
     prefix: --read
-- id: read_level_two
+- id: in_read_level_two
   doc: paired-end reads fasta for second level scaffolds
-  type: string
+  type: long
   inputBinding:
     prefix: --read_level_2
-- id: read_level_three
+- id: in_read_level_three
   doc: paired-end reads fasta for third level scaffolds
-  type: string
+  type: long
   inputBinding:
     prefix: --read_level_3
-- id: read_level_four
+- id: in_read_level_four
   doc: paired-end reads fasta for fourth level scaffolds
-  type: string
+  type: long
   inputBinding:
     prefix: --read_level_4
-- id: read_level_five
+- id: in_read_level_five
   doc: paired-end reads fasta for fifth level scaffolds
-  type: string
+  type: long
   inputBinding:
     prefix: --read_level_5
-- id: long_read
+- id: in_long_read
   doc: fasta long read file (>600)
-  type: string
+  type: File
   inputBinding:
     prefix: --long_read
-- id: mink
+- id: in_mink
   doc: (=20)                   minimum k value (<=312)
-  type: string
+  type: long
   inputBinding:
     prefix: --mink
-- id: max_k
+- id: in_max_k
   doc: (=100)                  maximum k value (<=312)
-  type: string
+  type: long
   inputBinding:
     prefix: --maxk
-- id: step
+- id: in_step
   doc: (=20)                   increment of k-mer of each iteration
-  type: string
+  type: long
   inputBinding:
     prefix: --step
-- id: inner_mink
+- id: in_inner_mink
   doc: (=10)             inner minimum k value
-  type: string
+  type: long
   inputBinding:
     prefix: --inner_mink
-- id: inner_step
+- id: in_inner_step
   doc: (=5)              inner increment of k-mer
-  type: string
+  type: long
   inputBinding:
     prefix: --inner_step
-- id: prefix
+- id: in_prefix
   doc: (=3)                  prefix length used to build sub k-mer table
-  type: string
+  type: long
   inputBinding:
     prefix: --prefix
-- id: min_count
+- id: in_min_count
   doc: (=2)               minimum multiplicity for filtering k-mer when building the
     graph
-  type: string
+  type: long
   inputBinding:
     prefix: --min_count
-- id: min_support
+- id: in_min_support
   doc: (=1)             minimum supoort in each iteration
-  type: string
+  type: long
   inputBinding:
     prefix: --min_support
-- id: num_threads
+- id: in_num_threads
   doc: (=0)             number of threads
-  type: string
+  type: long
   inputBinding:
     prefix: --num_threads
-- id: seed_km_er
+- id: in_seed_km_er
   doc: (=30)              seed kmer size for alignment
-  type: string
+  type: long
   inputBinding:
     prefix: --seed_kmer
-- id: min_contig
+- id: in_min_contig
   doc: (=200)            minimum size of contig
-  type: string
+  type: long
   inputBinding:
     prefix: --min_contig
-- id: similar
+- id: in_similar
   doc: (=0.95)              similarity for alignment
-  type: string
+  type: double
   inputBinding:
     prefix: --similar
-- id: max_mismatch
+- id: in_max_mismatch
   doc: (=3)            max mismatch of error correction
-  type: string
+  type: long
   inputBinding:
     prefix: --max_mismatch
-- id: min_pairs
+- id: in_min_pairs
   doc: (=3)               minimum number of pairs
-  type: string
+  type: long
   inputBinding:
     prefix: --min_pairs
-- id: no_bubble
+- id: in_no_bubble
   doc: do not merge bubble
   type: boolean
   inputBinding:
     prefix: --no_bubble
-- id: no_local
+- id: in_no_local
   doc: do not use local assembly
   type: boolean
   inputBinding:
     prefix: --no_local
-- id: no_coverage
+- id: in_no_coverage
   doc: do not iterate on coverage
   type: boolean
   inputBinding:
     prefix: --no_coverage
-- id: no_correct
+- id: in_no_correct
   doc: do not do correction
   type: boolean
   inputBinding:
     prefix: --no_correct
-- id: pre_correction
+- id: in_pre_correction
   doc: perform pre-correction before assembly
   type: boolean
   inputBinding:
     prefix: --pre_correction
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: (=out)                   output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - idba_ud

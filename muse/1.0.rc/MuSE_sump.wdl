@@ -5,14 +5,14 @@ task MuSESump {
     File? single_input_file
     Boolean? input_generated_whole_genome
     Boolean? input_generated_whole_exome
-    String? output_file_name
+    File? output_file_name
     File? dbsnp_vcf_file
   }
   command <<<
     MuSE sump \
       ~{if defined(single_input_file) then ("-I " +  '"' + single_input_file + '"') else ""} \
-      ~{true="-G" false="" input_generated_whole_genome} \
-      ~{true="-E" false="" input_generated_whole_exome} \
+      ~{if (input_generated_whole_genome) then "-G" else ""} \
+      ~{if (input_generated_whole_exome) then "-E" else ""} \
       ~{if defined(output_file_name) then ("-O " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(dbsnp_vcf_file) then ("-D " +  '"' + dbsnp_vcf_file + '"') else ""}
   >>>
@@ -21,6 +21,10 @@ task MuSESump {
     input_generated_whole_genome: "input generated from whole genome sequencing data"
     input_generated_whole_exome: "input generated from whole exome sequencing data"
     output_file_name: "output file name (VCF format)"
-    dbsnp_vcf_file: "dbSNP vcf file that should be bgzip compressed, tabix indexed and based on the same reference genome used in 'MuSE call'"
+    dbsnp_vcf_file: "dbSNP vcf file that should be bgzip compressed,\\ntabix indexed and based on the same reference\\ngenome used in 'MuSE call'\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

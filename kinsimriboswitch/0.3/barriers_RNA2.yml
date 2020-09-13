@@ -1,44 +1,50 @@
 !Command
+command:
+- barriers-RNA2
 positional:
 - !Positional
-  description: point mutation (default)
+  description: (default=off)
   position: 0
-  name: p
+  name: basins
   optional: false
 - !Positional
-  description: flip 2nd half
+  description: (default=off)
   position: 1
-  name: c
+  name: neighbors
+  optional: false
+- !Positional
+  description: RNA secondary structures
+  position: 0
+  name: RNA
+  optional: false
+- !Positional
+  description: "canonical RNA structures\n[no]Shift       with/out shift moves [default\
+    \ with]"
+  position: 1
+  name: RNA-noLP
+  optional: false
+- !Positional
+  description: "RNA secondary structures\n[no]Shift       with/out shift moves [default\
+    \ with]"
+  position: 2
+  name: RNA2
+  optional: false
+- !Positional
+  description: "canonical RNA structures, no lonely pairs\n[no]Shift       with/out\
+    \ shift moves [default with]"
+  position: 3
+  name: RNA2-noLP
+  optional: false
+- !Positional
+  description: "Spin Glass\np               point mutation (default)\nc          \
+    \     flip 2nd half"
+  position: 4
+  name: Q2
   optional: false
 - !Positional
   description: NNI moves [no other options yet]
   position: 0
   name: NNI
-  optional: false
-- !Positional
-  description: Permutations
-  position: 1
-  name: P
-  optional: false
-- !Positional
-  description: Transpositions [default]
-  position: 2
-  name: T
-  optional: false
-- !Positional
-  description: Canonical Transpositions
-  position: 3
-  name: C
-  optional: false
-- !Positional
-  description: Reversals
-  position: 4
-  name: R
-  optional: false
-- !Positional
-  description: Exchange Moves on balances +/- strings
-  position: 5
-  name: X
   optional: false
 named:
 - !Flag
@@ -70,7 +76,7 @@ named:
     name: Graph
   optional: true
 - !Flag
-  description: select move-set (if Graph allows several different ones)
+  description: "select move-set (if Graph allows several different\nones)"
   synonyms:
   - -M
   - --moves
@@ -90,14 +96,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: compute only the lowest <num> local minima (default=`100')
+  description: "compute only the lowest <num> local minima\n(default=`100')"
   synonyms:
   - --max
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: print only minima with barrier > dE (default=`0.000001')
+  description: "print only minima with barrier > dE\n(default=`0.000001')"
   synonyms:
   - --minh
   args: !SimpleFlagArg
@@ -110,21 +116,21 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: compute rates between macro states (basins) (default=off)
+  description: "compute rates between macro states (basins)\n(default=off)"
   synonyms:
   - --rates
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: input is a poset from n objective functions (default=`0')
+  description: "input is a poset from n objective functions\n(default=`0')"
   synonyms:
   - --poset
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: =<l2>  backtrack path between lmins l2 and l1 (l1 < l2), can be specified
-    multiple times
+  description: "=<l2>  backtrack path between lmins l2 and l1 (l1 < l2),\ncan be specified\
+    \ multiple times"
   synonyms:
   - -P
   - --path
@@ -132,21 +138,20 @@ named:
     name: l1
   optional: true
 - !Flag
-  description: 'FK: output map of structures and their respective basins  (default=off)'
+  description: 'FK: output map of structures and their respective'
   synonyms:
   - --sbmap
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'FK: output a list of all transient structures and their neighbors  (default=off)'
+  description: 'FK: output a list of all transient structures and their'
   synonyms:
   - --trans
   args: !EmptyFlagArg {}
   optional: true
-command:
-- barriers-RNA2
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print help and exit
   synonyms:

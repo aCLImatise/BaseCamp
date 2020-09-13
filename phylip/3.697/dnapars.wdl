@@ -4,4 +4,7 @@ task Dnapars {
   command <<<
     dnapars
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

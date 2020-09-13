@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../stk2ct.cwl
 inputs:
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: give_ct
+- id: in_give_ct
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seq_file_in
+- id: in_seq_file_in
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - stk2ct

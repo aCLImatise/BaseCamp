@@ -4,4 +4,7 @@ task Splitmates {
   command <<<
     splitmates
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

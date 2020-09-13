@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../split_by_p7_barcode_p7_file.cwl
 inputs:
-- id: f
+- id: in_f
   doc: ''
   type: boolean
   inputBinding:
     prefix: -f
-- id: split_by_p_seven_barcode
+- id: in_split_by_p_seven_barcode
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: p_five_file
+- id: in_p_five_file
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: p_seven_file
+- id: in_p_seven_file
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - split_by_p7_barcode

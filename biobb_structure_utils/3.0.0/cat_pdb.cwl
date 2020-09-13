@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../cat_pdb.cwl
 inputs:
-- id: config
+- id: in_config
   doc: This file can be a YAML file, JSON file or JSON string
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: input_structure_one
+- id: in_input_structure_one
   doc: 'Input structure 1 file path. Accepted formats: pdb.'
-  type: string
+  type: long
   inputBinding:
     prefix: --input_structure1
-- id: input_structure_two
+- id: in_input_structure_two
   doc: 'Input structure 2 file path. Accepted formats: pdb.'
-  type: string
+  type: long
   inputBinding:
     prefix: --input_structure2
-- id: output_structure_path
-  doc: 'Output structure file path. Accepted formats: pdb.'
-  type: string
+- id: in_output_structure_path
+  doc: "Output structure file path. Accepted formats: pdb.\n"
+  type: File
   inputBinding:
     prefix: --output_structure_path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_structure_path
+  doc: "Output structure file path. Accepted formats: pdb.\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_structure_path)
 cwlVersion: v1.1
 baseCommand:
 - cat_pdb

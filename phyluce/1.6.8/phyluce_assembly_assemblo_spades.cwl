@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../phyluce_assembly_assemblo_spades.cwl
 inputs:
-- id: output
+- id: in_output
   doc: The directory in which to store the assembly data
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: cores
+- id: in_cores
   doc: The number of compute cores/threads to run with SPAdes
-  type: string
+  type: long
   inputBinding:
     prefix: --cores
-- id: subfolder
-  doc: A subdirectory, below the level of the group, containing the reads
+- id: in_subfolder
+  doc: "A subdirectory, below the level of the group,\ncontaining the reads"
   type: string
   inputBinding:
     prefix: --subfolder
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-- id: do_not_clean
+- id: in_do_not_clean
   doc: Do not cleanup intermediate SPAdes files
   type: boolean
   inputBinding:
     prefix: --do-not-clean
-- id: config
+- id: in_config
   doc: A configuration file containing reads to assemble
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: dir
+- id: in_dir
   doc: A directory of reads to assemble
-  type: string
+  type: Directory
   inputBinding:
     prefix: --dir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_assembly_assemblo_spades

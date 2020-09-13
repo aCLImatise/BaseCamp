@@ -4,4 +4,7 @@ task Psiblast {
   command <<<
     psiblast
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

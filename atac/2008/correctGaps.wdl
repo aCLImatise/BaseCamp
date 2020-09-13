@@ -4,4 +4,7 @@ task CorrectGaps {
   command <<<
     correctGaps
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

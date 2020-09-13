@@ -1,6 +1,6 @@
 version 1.0
 
-task ReconcileTreeAlignment {
+task Reconciletreealignment {
   input {
     String input_tree
     String input_alignment
@@ -8,7 +8,7 @@ task ReconcileTreeAlignment {
     String output_alignment
   }
   command <<<
-    reconcile-tree-alignment \
+    reconcile_tree_alignment \
       ~{input_tree} \
       ~{input_alignment} \
       ~{output_tree} \
@@ -19,5 +19,8 @@ task ReconcileTreeAlignment {
     input_alignment: ""
     output_tree: ""
     output_alignment: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

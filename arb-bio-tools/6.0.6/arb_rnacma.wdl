@@ -4,4 +4,7 @@ task ArbRnacma {
   command <<<
     arb_rnacma
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

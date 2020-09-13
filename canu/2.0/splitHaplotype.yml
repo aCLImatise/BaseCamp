@@ -1,5 +1,13 @@
 !Command
+command:
+- splitHaplotype
 positional:
+- !Positional
+  description: -S seqStore                      path to input seqStore of reads to
+    classify.
+  position: 0
+  name: inputs.
+  optional: false
 - !Positional
   description: '- haplotype specific kmers contained in a meryl database.'
   position: 0
@@ -15,14 +23,12 @@ positional:
   position: 2
   name: haplo-output.fasta.gz
   optional: false
+- !Positional
+  description: Reads not assigned to any haplotype are written to the file specified
+  position: 0
+  name: option.
+  optional: false
 named:
-- !Flag
-  description: path to input seqStore of reads to classify.
-  synonyms:
-  - -S
-  args: !SimpleFlagArg
-    name: seqStore
-  optional: true
 - !Flag
   description: '[-end]                     range of reads to operate on.'
   synonyms:
@@ -31,8 +37,8 @@ named:
     name: bgn
   optional: true
 - !Flag
-  description: path to input FASTA or FASTQ of reads to classify. these may be uncompressed,
-    gzip, bzip2 or xz compressed.
+  description: "path to input FASTA or FASTQ of reads to classify.\nthese may be uncompressed,\
+    \ gzip, bzip2 or xz compressed."
   synonyms:
   - -R
   args: !SimpleFlagArg
@@ -44,6 +50,13 @@ named:
   - -H
   args: !SimpleFlagArg
     name: haplo-kmers.meryl
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: ambiguous.fasta.gz
   optional: true
 - !Flag
   description: minimum ratio between best and second best to classify
@@ -65,10 +78,16 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- splitHaplotype
+- !Flag
+  description: ''
+  synonyms:
+  - -S
+  args: !RepeatFlagArg
+    name: READ
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

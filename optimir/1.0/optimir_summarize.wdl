@@ -2,7 +2,7 @@ version 1.0
 
 task OptimirSummarize {
   input {
-    String? dir
+    File? dir
   }
   command <<<
     optimir summarize \
@@ -10,5 +10,8 @@ task OptimirSummarize {
   >>>
   parameter_meta {
     dir: "Full path of the directory containing results"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

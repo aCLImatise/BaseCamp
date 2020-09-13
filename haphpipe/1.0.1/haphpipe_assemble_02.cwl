@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../haphpipe_assemble_02.cwl
 inputs:
-- id: read_one
+- id: in_read_one
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: read_two
+- id: in_read_two
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: amplicons_fast_a
+- id: in_amplicons_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: samp_id
+- id: in_samp_id
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: outdir
+- id: in_outdir
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - haphpipe_assemble_02

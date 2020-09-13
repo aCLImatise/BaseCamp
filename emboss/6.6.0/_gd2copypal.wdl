@@ -1,9 +1,9 @@
 version 1.0
 
-task _gd2copypal {
+task Gd2copypal {
   input {
-    String gd_two_copy_pal
-    String palette_file_dot_gd_two
+    Int gd_two_copy_pal
+    Int palette_file_dot_gd_two
     File filename_dot_gd_two
   }
   command <<<
@@ -16,5 +16,8 @@ task _gd2copypal {
     gd_two_copy_pal: ""
     palette_file_dot_gd_two: ""
     filename_dot_gd_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

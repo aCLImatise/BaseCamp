@@ -2,10 +2,10 @@ version 1.0
 
 task ClanSearch {
   input {
-    Boolean? r
-    Boolean? o
-    Boolean? f
     Boolean? d
+    Boolean? f
+    Boolean? o
+    Boolean? r
     String? read_file
     String? output_file
     String? reference_file
@@ -17,19 +17,22 @@ task ClanSearch {
       ~{output_file} \
       ~{reference_file} \
       ~{index_prefix} \
-      ~{true="-r" false="" r} \
-      ~{true="-o" false="" o} \
-      ~{true="-f" false="" f} \
-      ~{true="-d" false="" d}
+      ~{if (d) then "-d" else ""} \
+      ~{if (f) then "-f" else ""} \
+      ~{if (o) then "-o" else ""} \
+      ~{if (r) then "-r" else ""}
   >>>
   parameter_meta {
-    r: ""
-    o: ""
-    f: ""
     d: ""
+    f: ""
+    o: ""
+    r: ""
     read_file: ""
     output_file: ""
     reference_file: ""
     index_prefix: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

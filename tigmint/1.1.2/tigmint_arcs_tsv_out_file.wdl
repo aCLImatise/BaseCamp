@@ -1,6 +1,6 @@
 version 1.0
 
-task TigmintArcsTsvOutFile {
+task TigmintarcstsvOutFile {
   input {
     String tig_mint_arcs_tsv
     String graph_file
@@ -8,7 +8,7 @@ task TigmintArcsTsvOutFile {
     String fast_a_file
   }
   command <<<
-    tigmint-arcs-tsv out_file \
+    tigmint_arcs_tsv out_file \
       ~{tig_mint_arcs_tsv} \
       ~{graph_file} \
       ~{out_file} \
@@ -19,5 +19,8 @@ task TigmintArcsTsvOutFile {
     graph_file: ""
     out_file: ""
     fast_a_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

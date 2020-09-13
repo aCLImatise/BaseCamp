@@ -1,29 +1,37 @@
 class: CommandLineTool
 id: ../../../anvi_gen_variability_network.cwl
 inputs:
-- id: input_file
-  doc: The anvi'o variability profile. Please see `anvi-gen- variability-profile`
-    to generate one.
-  type: string
+- id: in_input_file
+  doc: "The anvi'o variability profile. Please see `anvi-gen-\nvariability-profile`\
+    \ to generate one."
+  type: File
   inputBinding:
     prefix: --input-file
-- id: max_num_unique_positions
-  doc: Maximum number of unique positions to be used in the network. This may be one
-    way to avoid extremely large network descriptions that would defeat the purpose
-    of a quick visualization. If there are more unique positions in the variability
-    profile, the program will randomly select a subset of them to match the `max-
-    num-unique-positions`. The default is 0, which means all positions should be reported.
-    Remember that the number of nodes in the network will also depend on the number
-    of samples described in the variability profile.
-  type: string
+- id: in_max_num_unique_positions
+  doc: "Maximum number of unique positions to be used in the\nnetwork. This may be\
+    \ one way to avoid extremely large\nnetwork descriptions that would defeat the\
+    \ purpose of\na quick visualization. If there are more unique\npositions in the\
+    \ variability profile, the program will\nrandomly select a subset of them to match\
+    \ the `max-\nnum-unique-positions`. The default is 0, which means\nall positions\
+    \ should be reported. Remember that the\nnumber of nodes in the network will also\
+    \ depend on the\nnumber of samples described in the variability\nprofile."
+  type: long
   inputBinding:
     prefix: --max-num-unique-positions
-- id: output_file
-  doc: File path to store results.
+- id: in_output_file
+  doc: "File path to store results.\n"
   type: File
   inputBinding:
     prefix: --output-file
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: "File path to store results.\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - anvi-gen-variability-network

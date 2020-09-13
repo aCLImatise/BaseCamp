@@ -4,4 +4,7 @@ task Shmlast {
   command <<<
     shmlast
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

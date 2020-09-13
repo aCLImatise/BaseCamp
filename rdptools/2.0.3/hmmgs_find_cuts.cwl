@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../hmmgs_find_cuts.cwl
 inputs:
-- id: cut_finder
+- id: in_cut_finder
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: km_er_size
+- id: in_km_er_size
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: bloom_filter
+- id: in_bloom_filter
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: query_files
+- id: in_query_files
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hmmgs

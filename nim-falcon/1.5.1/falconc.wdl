@@ -4,4 +4,7 @@ task Falconc {
   command <<<
     falconc
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

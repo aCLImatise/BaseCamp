@@ -1,10 +1,8 @@
 &id002 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: BCF
-  optional: false
+command:
+- prosic
+- control-fdr
+positional: []
 named:
 - !Flag
   description: 'FDR to control for. [default: 0.05]'
@@ -43,10 +41,9 @@ named:
   args: !SimpleFlagArg
     name: STRING
   optional: true
-command:
-- prosic
-- control-fdr
 parent: &id001 !Command
+  command:
+  - prosic
   positional: []
   named:
   - !Flag
@@ -55,11 +52,12 @@ parent: &id001 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - prosic
   parent:
   subcommands:
   - !Command
+    command:
+    - prosic
+    - call-tumor-normal
     positional:
     - !Positional
       description: ''
@@ -76,15 +74,10 @@ parent: &id001 !Command
       position: 2
       name: normal
       optional: false
-    - !Positional
-      description: ''
-      position: 3
-      name: reference
-      optional: false
     named:
     - !Flag
-      description: Assume that the END tag is exclusive (i.e. it points to the position
-        after the variant). This is needed, e.g., for DELLY.
+      description: "Assume that the END tag is exclusive (i.e. it points to the position\
+        \ after the\nvariant). This is needed, e.g., for DELLY."
       synonyms:
       - --exclusive-end
       args: !EmptyFlagArg {}
@@ -96,8 +89,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Omit evidence consisting of read pairs with unexpected insert size
-        (insert size parameters will be ignored).
+      description: "Omit evidence consisting of read pairs with unexpected insert\
+        \ size (insert size\nparameters will be ignored)."
       synonyms:
       - --omit-fragment-evidence
       args: !EmptyFlagArg {}
@@ -123,9 +116,9 @@ parent: &id001 !Command
         name: FILE
       optional: true
     - !Flag
-      description: 'Factor of deletion mutation rate relative to SNV mutation rate
-        (0.03 according to Hodkinson et al. Nature Reviews Genetics 2011). [default:
-        0.03]'
+      description: "Factor of deletion mutation rate relative to SNV mutation rate\
+        \ (0.03 according\nto Hodkinson et al. Nature Reviews Genetics 2011). [default:\
+        \ 0.03]"
       synonyms:
       - -d
       - --deletion-factor
@@ -133,8 +126,8 @@ parent: &id001 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Effective SNV mutation rate of tumor sample (should be estimated
-        from somatic SNVs). [default: 2000.0]'
+      description: "Effective SNV mutation rate of tumor sample (should be estimated\
+        \ from somatic\nSNVs). [default: 2000.0]"
       synonyms:
       - --effmut
       args: !SimpleFlagArg
@@ -148,18 +141,18 @@ parent: &id001 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Number of bases to consider left and right of indel breakpoint
-        when calculating read support. This number should not be too large in order
-        to avoid biases caused by other close variants. [default: 100]'
+      description: "Number of bases to consider left and right of indel breakpoint\
+        \ when\ncalculating read support. This number should not be too large in order\
+        \ to\navoid biases caused by other close variants. [default: 100]"
       synonyms:
       - --indel-window
       args: !SimpleFlagArg
         name: INT
       optional: true
     - !Flag
-      description: 'Factor of insertion mutation rate relative to SNV mutation rate
-        (0.01 according to Hodkinson et al. Nature Reviews Genetics 2011). [default:
-        0.01]'
+      description: "Factor of insertion mutation rate relative to SNV mutation rate\
+        \ (0.01\naccording to Hodkinson et al. Nature Reviews Genetics 2011). [default:\
+        \ 0.01]"
       synonyms:
       - -i
       - --insertion-factor
@@ -174,8 +167,9 @@ parent: &id001 !Command
         name: INT
       optional: true
     - !Flag
-      description: Optional path where read observations shall be written to. The
-        resulting file contains a line for each observation with tab-separated values.
+      description: "Optional path where read observations shall be written to. The\
+        \ resulting file\ncontains a line for each observation with tab-separated\
+        \ values."
       synonyms:
       - --obs
       args: !SimpleFlagArg
@@ -190,8 +184,8 @@ parent: &id001 !Command
         name: FILE
       optional: true
     - !Flag
-      description: 'Window to investigate for evidence left and right of each variant.
-        [default: 2500]'
+      description: "Window to investigate for evidence left and right of each variant.\
+        \ [default:\n2500]"
       synonyms:
       - --pileup-window
       args: !SimpleFlagArg
@@ -206,40 +200,40 @@ parent: &id001 !Command
         name: INT
       optional: true
     - !Flag
-      description: 'Extension rate of spurious insertions by the sequencer (Illumina:
-        0.0, see Schirmer et al. BMC Bioinformatics 2016). [default: 0.0]'
+      description: "Extension rate of spurious insertions by the sequencer (Illumina:\
+        \ 0.0, see\nSchirmer et al. BMC Bioinformatics 2016). [default: 0.0]"
       synonyms:
       - --spurious-delext-rate
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Extension rate of spurious insertions by the sequencer (Illumina:
-        0.0, see Schirmer et al. BMC Bioinformatics 2016) [0.0]. [default: 0.0]'
+      description: "Extension rate of spurious insertions by the sequencer (Illumina:\
+        \ 0.0, see\nSchirmer et al. BMC Bioinformatics 2016) [0.0]. [default: 0.0]"
       synonyms:
       - --spurious-insext-rate
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Rate of spuriosly deleted bases by the sequencer (Illumina: 5.1e-6,
-        see Schirmer et al. BMC Bioinformatics 2016). [default: 5.1e-6]'
+      description: "Rate of spuriosly deleted bases by the sequencer (Illumina: 5.1e-6,\
+        \ see\nSchirmer et al. BMC Bioinformatics 2016). [default: 5.1e-6]"
       synonyms:
       - --spurious-del-rate
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Rate of spuriously inserted bases by the sequencer (Illumina:
-        2.8e-6, see Schirmer et al. BMC Bioinformatics 2016). [default: 2.8e-6]'
+      description: "Rate of spuriously inserted bases by the sequencer (Illumina:\
+        \ 2.8e-6, see\nSchirmer et al. BMC Bioinformatics 2016). [default: 2.8e-6]"
       synonyms:
       - --spurious-ins-rate
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Rate of wrongly reported insert size abberations (should be set
-        depending on mapper, BWA: 0.01332338, LASER: 0.05922201). [default: 0.0]'
+      description: "Rate of wrongly reported insert size abberations (should be set\
+        \ depending on\nmapper, BWA: 0.01332338, LASER: 0.05922201). [default: 0.0]"
       synonyms:
       - -r
       - --spurious-isize-rate
@@ -254,11 +248,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
-    command:
-    - prosic
-    - call-tumor-normal
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Prints help information
       synonyms:
@@ -333,7 +325,15 @@ parent: &id001 !Command
     - --help
   - *id002
   - !Command
-    positional: []
+    command:
+    - prosic
+    - estimate-mutation-rate
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: prosic
+      optional: false
     named:
     - !Flag
       description: Path to file that will observations and the parameters of the fitted
@@ -359,11 +359,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
-    command:
-    - prosic
-    - estimate-mutation-rate
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Prints help information
       synonyms:
@@ -388,6 +386,7 @@ parent: &id001 !Command
       \    Maximum allele frequency to consider [0.25].\n    -f, --min-af <FLOAT>\
       \    Minimum allele frequency to consider [0.12].\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -417,6 +416,7 @@ parent: &id001 !Command
     \ the given subcommand(s)\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Prints help information
   synonyms:

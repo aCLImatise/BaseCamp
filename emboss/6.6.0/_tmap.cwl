@@ -1,13 +1,21 @@
 class: CommandLineTool
 id: ../../../_tmap.cwl
 inputs:
-- id: graph
-  doc: xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type (ps, hpgl, hp7470, hp7580,
-    meta, cps, tek, tekt, none, data, png, gif, svg)
+- id: in_graph
+  doc: "xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type\n(ps, hpgl, hp7470,\
+    \ hp7580, meta, cps, tek,\ntekt, none, data, png, gif, svg)"
   type: boolean
   inputBinding:
     prefix: -graph
-outputs: []
+- id: in_r_format
+  doc: )
+  type: string
+  inputBinding:
+    prefix: -rformat
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - _tmap

@@ -4,4 +4,7 @@ task Featmerge {
   command <<<
     featmerge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

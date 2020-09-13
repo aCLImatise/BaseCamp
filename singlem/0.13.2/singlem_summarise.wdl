@@ -2,19 +2,22 @@ version 1.0
 
 task SinglemSummarise {
   input {
-    Boolean? debug
     Boolean? quiet
+    Boolean? debug
     String single_m
   }
   command <<<
     singlem summarise \
       ~{single_m} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
-    debug: ""
     quiet: ""
+    debug: ""
     single_m: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,88 +1,94 @@
 class: CommandLineTool
 id: ../../../fuma.cwl
 inputs:
-- id: formats
+- id: in_formats
   doc: show accepted dataset formats
   type: boolean
   inputBinding:
     prefix: --formats
-- id: matching_method
-  doc: The used method to match two gene sets. Overlap matches when two gene set have
-    one or more genes overlapping. Subset matches when one gene set is a subset of
-    the other. EGM is exact gene matching; all genes in both sets need to be identical
-    to match.
+- id: in_matching_method
+  doc: "The used method to match two gene sets. Overlap\nmatches when two gene set\
+    \ have one or more genes\noverlapping. Subset matches when one gene set is a\n\
+    subset of the other. EGM is exact gene matching; all\ngenes in both sets need\
+    \ to be identical to match."
   type: string
   inputBinding:
     prefix: --matching-method
-- id: strand_specific_matching
-  doc: 'Consider fusion genes distinct when the breakpoints have different strands:
-    (A<-,B<-) != (->A,B<-); default'
+- id: in_strand_specific_matching
+  doc: "Consider fusion genes distinct when the breakpoints\nhave different strands:\
+    \ (A<-,B<-) != (->A,B<-);\ndefault"
   type: boolean
   inputBinding:
     prefix: --strand-specific-matching
-- id: no_strand_specific_matching
-  doc: 'Consider fusion genes identical when the breakpoints have different strands:
-    (A<-,B<-) == (->A,B<-)'
+- id: in_no_strand_specific_matching
+  doc: "Consider fusion genes identical when the breakpoints\nhave different strands:\
+    \ (A<-,B<-) == (->A,B<-)"
   type: boolean
   inputBinding:
     prefix: --no-strand-specific-matching
-- id: accept_or_donor_order_specific_matching
-  doc: 'Consider fusion genes distinct when the donor and acceptor sites are swapped:
-    (A,B) != (B,A)'
+- id: in_accept_or_donor_order_specific_matching
+  doc: "Consider fusion genes distinct when the donor and\nacceptor sites are swapped:\
+    \ (A,B) != (B,A)"
   type: boolean
   inputBinding:
     prefix: --acceptor-donor-order-specific-matching
-- id: no_accept_or_donor_order_specific_matching
-  doc: 'Consider fusion genes identical when the donor and acceptor sites are swapped:
-    (A,B) == (B,A); default'
+- id: in_no_accept_or_donor_order_specific_matching
+  doc: "Consider fusion genes identical when the donor and\nacceptor sites are swapped:\
+    \ (A,B) == (B,A); default"
   type: boolean
   inputBinding:
     prefix: --no-acceptor-donor-order-specific-matching
-- id: verbose
+- id: in_verbose
   doc: increase output verbosity
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: annotationaliasfilename_file_bed
-  doc: '[ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]], --add-gene-annotation [ADD_GENE_ANNOTATION
-    [ADD_GENE_ANNOTATION ...]] annotation_alias:filename * file in BED format'
+- id: in_file_bed_format
+  doc: "[ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]], --add-gene-annotation [ADD_GENE_ANNOTATION\
+    \ [ADD_GENE_ANNOTATION ...]]\nannotation_alias:filename * file in BED format"
   type: boolean
   inputBinding:
     prefix: -a
-- id: add_sample
-  doc: 'sample_alias:format:filename (available formats: fuma --formats)'
+- id: in_add_sample
+  doc: "sample_alias:format:filename (available formats: fuma\n--formats)"
   type: string[]
   inputBinding:
     prefix: --add-sample
-- id: _samplealiasannotationalias
-  doc: '[LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]], --link-sample-to-annotation
-    [LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]] sample_alias:annotation_alias'
+- id: in_samplealiasannotationalias
+  doc: "[LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]], --link-sample-to-annotation\
+    \ [LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]]\nsample_alias:annotation_alias"
   type: boolean
   inputBinding:
     prefix: -l
-- id: format
-  doc: Output-format
+- id: in_format
+  doc: ''
   type: string
   inputBinding:
     prefix: --format
-- id: long_gene_size
-  doc: Gene-name based matching is more sensitive to long genes. This is the gene
-    size used to mark fusion genes spanning a 'long gene' as reported the output.
-    Use 0 to disable this feature.
-  type: string
-  inputBinding:
-    prefix: --long-gene-size
-- id: output
+- id: in_output
   doc: output filename; '-' for stdout
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -V
-outputs: []
+- id: in_output_format
+  doc: -g LONG_GENE_SIZE, --long-gene-size LONG_GENE_SIZE
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output filename; '-' for stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - fuma

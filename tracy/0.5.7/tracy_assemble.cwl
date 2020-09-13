@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../tracy_assemble.cwl
 inputs:
-- id: arg_referenceguided_assembly
+- id: in_arg_referenceguided_assembly
   doc: '[ --reference ] arg              reference-guided assembly (optional)'
   type: boolean
   inputBinding:
     prefix: -r
-- id: arg_peak_ratio
+- id: in_arg_peak_ratio
   doc: '[ --pratio ] arg (=0.330000013)  peak ratio to call base'
   type: boolean
   inputBinding:
     prefix: -p
-- id: t
+- id: in_t
   doc: '[ --trim ] arg (=4)              trimming stringency [1:9]'
   type: boolean
   inputBinding:
     prefix: -t
-- id: f
+- id: in_f
   doc: '[ --fracmatch ] arg (=0.5)       min. fraction of matches [0:1]'
   type: boolean
   inputBinding:
     prefix: -f
-- id: arg_gap_open
+- id: in_arg_gap_open
   doc: '[ --gapopen ] arg (=-10)         gap open'
   type: boolean
   inputBinding:
     prefix: -g
-- id: arg_gap_extension
+- id: in_arg_gap_extension
   doc: '[ --gapext ] arg (=-4)           gap extension'
   type: boolean
   inputBinding:
     prefix: -e
-- id: _arg_match
+- id: in__arg_match
   doc: '[ --match ] arg (=3)             match'
   type: boolean
   inputBinding:
     prefix: -m
-- id: _arg_mismatch
+- id: in__arg_mismatch
   doc: '[ --mismatch ] arg (=-5)         mismatch'
   type: boolean
   inputBinding:
     prefix: -n
-- id: arg_fraction_traces
+- id: in_arg_fraction_traces
   doc: '[ --called ] arg (=0.100000001)  fraction of traces required for consensus'
   type: boolean
   inputBinding:
     prefix: -d
-- id: arg_output_prefix
+- id: in_arg_output_prefix
   doc: '[ --outprefix ] arg (=out)       output prefix'
   type: boolean
   inputBinding:
     prefix: -o
-- id: include_consensus_fasta
+- id: in_include_consensus_align
   doc: '[ --inccons ]                    include consensus in FASTA align'
   type: boolean
   inputBinding:
     prefix: -i
-- id: generic
+- id: in_generic
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tracy

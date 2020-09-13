@@ -4,4 +4,7 @@ task Codcopy {
   command <<<
     codcopy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

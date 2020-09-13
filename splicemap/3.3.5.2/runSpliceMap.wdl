@@ -11,4 +11,7 @@ task RunSpliceMap {
   parameter_meta {
     run_dot_cfg: "--  Configuration options for this run, see comments in file for details"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

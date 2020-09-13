@@ -2,11 +2,11 @@ version 1.0
 
 task Swalign {
   input {
-    String? match_score_default
-    String? mm
-    String? gap
-    String? gap_ext
-    String? gap_decay
+    Int? match_score_default
+    Int? mm
+    Int? gap
+    Int? gap_ext
+    Float? gap_decay
     String? wrap
     Boolean? global
     Boolean? query
@@ -21,10 +21,10 @@ task Swalign {
       ~{if defined(gap_ext) then ("-gapext " +  '"' + gap_ext + '"') else ""} \
       ~{if defined(gap_decay) then ("-gapdecay " +  '"' + gap_decay + '"') else ""} \
       ~{if defined(wrap) then ("-wrap " +  '"' + wrap + '"') else ""} \
-      ~{true="-global" false="" global} \
-      ~{true="-query" false="" query} \
+      ~{if (global) then "-global" else ""} \
+      ~{if (query) then "-query" else ""} \
       ~{if defined(summary) then ("-summary " +  '"' + summary + '"') else ""} \
-      ~{true="-useregion" false="" use_region}
+      ~{if (use_region) then "-useregion" else ""}
   >>>
   parameter_meta {
     match_score_default: "Match score (default: 2)"
@@ -37,5 +37,8 @@ task Swalign {
     query: "Align the full query sequence (mix of local/global)"
     summary: "Write a summary files of match locations (tab-delimited)"
     use_region: "Use regions for coordinates if included in FASTA ref"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

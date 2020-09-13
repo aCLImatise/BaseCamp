@@ -4,4 +4,7 @@ task AlignmentHandler {
   command <<<
     alignment_handler
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

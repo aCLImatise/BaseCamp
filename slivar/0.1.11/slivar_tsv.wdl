@@ -2,19 +2,17 @@ version 1.0
 
 task SlivarTsv {
   input {
-    String? ped
+    File? ped
     String? csq_field
     String? csq_column
     String? sample_field
-    String? gene_description
+    Int? gene_description
     String? impact_order
     String? info_field
-    String? out
-    String? vcf
+    File? out
   }
   command <<<
     slivar tsv \
-      ~{vcf} \
       ~{if defined(ped) then ("--ped " +  '"' + ped + '"') else ""} \
       ~{if defined(csq_field) then ("--csq-field " +  '"' + csq_field + '"') else ""} \
       ~{if defined(csq_column) then ("--csq-column " +  '"' + csq_column + '"') else ""} \
@@ -33,6 +31,9 @@ task SlivarTsv {
     impact_order: "ordering of impacts to override the default (https://raw.githubusercontent.com/brentp/slivar/master/src/slivarpkg/default-order.txt)"
     info_field: "INFO field(s) that should be added to output (e.g. gnomad_popmax_af)"
     out: "path to output tab-separated file (default: /dev/stdout)"
-    vcf: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

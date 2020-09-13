@@ -2,6 +2,14 @@ version 1.0
 
 task Ccconfig {
   input {
+    Boolean? c
+    Boolean? cc
+    Boolean? o
+    File? output_file
+    Boolean? f
+    Boolean? output_format
+    Boolean? basename
+    Boolean? i
     Boolean? inc_path
     Boolean? preprocess
     Boolean? compile_obj
@@ -18,21 +26,37 @@ task Ccconfig {
   }
   command <<<
     ccconfig \
-      ~{true="--inc-path" false="" inc_path} \
-      ~{true="--preprocess" false="" preprocess} \
-      ~{true="--compile-obj" false="" compile_obj} \
-      ~{true="--compile-exe" false="" compile_exe} \
-      ~{true="--c-ext" false="" c_ext} \
-      ~{true="--pp-ext" false="" pp_ext} \
-      ~{true="--obj-ext" false="" obj_ext} \
-      ~{true="--exe-ext" false="" exe_ext} \
-      ~{true="--nodelete" false="" no_delete} \
-      ~{true="--norun" false="" no_run} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--nostatus" false="" no_status} \
-      ~{true="--debug" false="" debug}
+      ~{if (c) then "-c" else ""} \
+      ~{if (cc) then "--cc" else ""} \
+      ~{if (o) then "-o" else ""} \
+      ~{if (output_file) then "--output-file" else ""} \
+      ~{if (f) then "-f" else ""} \
+      ~{if (output_format) then "--output-format" else ""} \
+      ~{if (basename) then "--basename" else ""} \
+      ~{if (i) then "-I" else ""} \
+      ~{if (inc_path) then "--inc-path" else ""} \
+      ~{if (preprocess) then "--preprocess" else ""} \
+      ~{if (compile_obj) then "--compile-obj" else ""} \
+      ~{if (compile_exe) then "--compile-exe" else ""} \
+      ~{if (c_ext) then "--c-ext" else ""} \
+      ~{if (pp_ext) then "--pp-ext" else ""} \
+      ~{if (obj_ext) then "--obj-ext" else ""} \
+      ~{if (exe_ext) then "--exe-ext" else ""} \
+      ~{if (no_delete) then "--nodelete" else ""} \
+      ~{if (no_run) then "--norun" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (no_status) then "--nostatus" else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
+    c: ""
+    cc: "compiler   compiler executable to test\\ndefault: auto-determined"
+    o: ""
+    output_file: "file       output filename\\ndefault: output to stdout"
+    f: ""
+    output_format: "format     output format\\ndefault: dumper"
+    basename: "name       basename of the temporary test files\\ndefault: _t_e_s_t"
+    i: ""
     inc_path: "path       manually set compiler include path"
     preprocess: "rule       compiler rule for preprocessing"
     compile_obj: "rule       compiler rule for compiling objects"
@@ -46,5 +70,9 @@ task Ccconfig {
     quiet: "don't display anything"
     no_status: "don't display status indicator"
     debug: "debug mode"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

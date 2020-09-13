@@ -1,16 +1,21 @@
 !Command
+command:
+- last-train
 positional:
 - !Positional
-  description: ''
+  description: '-T NUMBER          type of alignment: 0=local, 1=overlap (default:
+    0)'
   position: 0
-  name: lastdb-name
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: sequence-file
+  name: per-length
   optional: false
 named:
+- !Flag
+  description: show more details of intermediate steps
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: force reverse-complement symmetry
   synonyms:
@@ -121,44 +126,37 @@ named:
     name: EG2
   optional: true
 - !Flag
-  description: '0=reverse, 1=forward, 2=both (default: 2 if DNA, else 1)'
+  description: "0=reverse, 1=forward, 2=both (default: 2 if DNA, else\n1)"
   synonyms:
   - -s
   args: !SimpleFlagArg
     name: STRAND
   optional: true
 - !Flag
-  description: 'score matrix applies to forward strand of: 0=reference, 1=query (default:
-    1)'
+  description: "score matrix applies to forward strand of: 0=reference,\n1=query (default:\
+    \ 1)"
   synonyms:
   - -S
   args: !SimpleFlagArg
     name: NUMBER
   optional: true
 - !Flag
-  description: omit gapless alignments in COUNT others with > score- per-length
+  description: omit gapless alignments in COUNT others with > score-
   synonyms:
   - -C
   args: !SimpleFlagArg
     name: COUNT
   optional: true
 - !Flag
-  description: 'type of alignment: 0=local, 1=overlap (default: 0)'
-  synonyms:
-  - -T
-  args: !SimpleFlagArg
-    name: NUMBER
-  optional: true
-- !Flag
-  description: 'maximum initial matches per query position (default: 10)'
+  description: "maximum initial matches per query position (default:\n10)"
   synonyms:
   - -m
   args: !SimpleFlagArg
     name: COUNT
   optional: true
 - !Flag
-  description: 'use initial matches starting at every STEP-th position in each query
-    (default: 1)'
+  description: "use initial matches starting at every STEP-th position\nin each query\
+    \ (default: 1)"
   synonyms:
   - -k
   args: !SimpleFlagArg
@@ -172,25 +170,30 @@ named:
     name: THREADS
   optional: true
 - !Flag
-  description: 'N/X is ambiguous in: 0=neither sequence, 1=reference, 2=query, 3=both
-    (default=0)'
+  description: "N/X is ambiguous in: 0=neither sequence, 1=reference,\n2=query, 3=both\
+    \ (default=0)"
   synonyms:
   - -X
   args: !SimpleFlagArg
     name: NUMBER
   optional: true
 - !Flag
-  description: 'input format: 0=fasta or fastq-ignore, 1=fastq-sanger (default=fasta)'
+  description: "input format: 0=fasta or fastq-ignore, 1=fastq-sanger\n(default=fasta)\n"
   synonyms:
   - -Q
   args: !SimpleFlagArg
     name: NUMBER
   optional: true
-command:
-- last-train
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: last-train [options] lastdb-name sequence-file(s)\n\nTry to find\

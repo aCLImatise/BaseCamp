@@ -1,7 +1,10 @@
 version 1.0
 
-task FindbpAll {
+task Findbpall {
   command <<<
-    findbp-all
+    findbp_all
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

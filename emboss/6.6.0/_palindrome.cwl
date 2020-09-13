@@ -1,27 +1,31 @@
 class: CommandLineTool
 id: ../../../_palindrome.cwl
 inputs:
-- id: min_p_allen
-  doc: integer    [10] Enter minimum length of palindrome (Integer 1 or more)
+- id: in_min_p_allen
+  doc: "integer    [10] Enter minimum length of palindrome\n(Integer 1 or more)"
   type: boolean
   inputBinding:
     prefix: -minpallen
-- id: maxp_allen
-  doc: integer    [100] Enter maximum length of palindrome (Any integer value)
+- id: in_maxp_allen
+  doc: "integer    [100] Enter maximum length of palindrome\n(Any integer value)"
   type: boolean
   inputBinding:
     prefix: -maxpallen
-- id: gap_limit
-  doc: integer    [100] Enter maximum gap between repeated regions (Integer 0 or more)
+- id: in_gap_limit
+  doc: "integer    [100] Enter maximum gap between repeated\nregions (Integer 0 or\
+    \ more)"
   type: boolean
   inputBinding:
     prefix: -gaplimit
-- id: num_mismatches
-  doc: integer    [0] Number of mismatches allowed (Positive integer)
+- id: in_num_mismatches
+  doc: "integer    [0] Number of mismatches allowed (Positive\ninteger)"
   type: boolean
   inputBinding:
     prefix: -nummismatches
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - _palindrome

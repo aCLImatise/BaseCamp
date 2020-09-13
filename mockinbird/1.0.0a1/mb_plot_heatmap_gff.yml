@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- mb-plot-heatmap
+- gff
 positional:
 - !Positional
   description: ''
@@ -9,21 +12,20 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - --downstream
-  args: !SimpleFlagArg
-    name: DOWNSTREAM
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
   - --upstream
   args: !SimpleFlagArg
     name: UPSTREAM
   optional: true
-command:
-- mb-plot-heatmap
-- gff
+- !Flag
+  description: ''
+  synonyms:
+  - --downstream
+  args: !SimpleFlagArg
+    name: DOWNSTREAM
+  optional: true
 parent: &id001 !Command
+  command:
+  - mb-plot-heatmap
   positional: []
   named:
   - !Flag
@@ -98,11 +100,12 @@ parent: &id001 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - mb-plot-heatmap
   parent:
   subcommands:
   - !Command
+    command:
+    - mb-plot-heatmap
+    - parclip
     positional:
     - !Positional
       description: ''
@@ -113,22 +116,20 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - --downstream
-      args: !SimpleFlagArg
-        name: DOWNSTREAM
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
       - --upstream
       args: !SimpleFlagArg
         name: UPSTREAM
       optional: true
-    command:
-    - mb-plot-heatmap
-    - parclip
+    - !Flag
+      description: ''
+      synonyms:
+      - --downstream
+      args: !SimpleFlagArg
+        name: DOWNSTREAM
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -145,73 +146,33 @@ parent: &id001 !Command
     generated_using: &id002
     - --help
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mb-plot-heatmap
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --downstream
-      args: !SimpleFlagArg
-        name: DOWNSTREAM
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - --upstream
-      args: !SimpleFlagArg
-        name: UPSTREAM
-      optional: true
-    command:
-    - mb-plot-heatmap
-    - outputdir
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: mb-plot-heatmap [-h] [--downstream DOWNSTREAM] [--upstream\
-      \ UPSTREAM]\n                       [--min MIN] [--max MAX] [--xbins XBINS]\
-      \ [--ybins YBINS]\n                       [--xpx XPX] [--ypx YPX] [--remove]\
-      \ [--verbose]\n                       parclip outputdir prefix gff\nmb-plot-heatmap:\
-      \ error: argument parclip: 'outputdir' does not exist\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mb-plot-heatmap
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --downstream
-      args: !SimpleFlagArg
-        name: DOWNSTREAM
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - --upstream
-      args: !SimpleFlagArg
-        name: UPSTREAM
-      optional: true
     command:
     - mb-plot-heatmap
     - prefix
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mb-plot-heatmap
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --upstream
+      args: !SimpleFlagArg
+        name: UPSTREAM
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - --downstream
+      args: !SimpleFlagArg
+        name: DOWNSTREAM
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -226,7 +187,50 @@ parent: &id001 !Command
       \ [--verbose]\n                       parclip outputdir prefix gff\nmb-plot-heatmap:\
       \ error: argument parclip: 'prefix' does not exist\n"
     generated_using: *id002
+  - !Command
+    command:
+    - mb-plot-heatmap
+    - outputdir
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mb-plot-heatmap
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --upstream
+      args: !SimpleFlagArg
+        name: UPSTREAM
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - --downstream
+      args: !SimpleFlagArg
+        name: DOWNSTREAM
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: mb-plot-heatmap [-h] [--downstream DOWNSTREAM] [--upstream\
+      \ UPSTREAM]\n                       [--min MIN] [--max MAX] [--xbins XBINS]\
+      \ [--ybins YBINS]\n                       [--xpx XPX] [--ypx YPX] [--remove]\
+      \ [--verbose]\n                       parclip outputdir prefix gff\nmb-plot-heatmap:\
+      \ error: argument parclip: 'outputdir' does not exist\n"
+    generated_using: *id002
   - *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -257,6 +261,7 @@ parent: &id001 !Command
     \        remove temporary text files\n  --verbose, -v         verbose output\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

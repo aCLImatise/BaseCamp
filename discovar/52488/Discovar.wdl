@@ -1,14 +1,10 @@
 version 1.0
 
 task Discovar {
-  input {
-    String arg_one
-  }
   command <<<
-    Discovar \
-      ~{arg_one}
+    Discovar
   >>>
-  parameter_meta {
-    arg_one: ""
+  output {
+    File out_stdout = stdout()
   }
 }

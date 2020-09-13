@@ -6,14 +6,14 @@ task ClusterMassTracesByPrecursor {
     File? in_swath
     File? out
     Boolean? assign_unassigned_to_all
-    String? min_pearson_correlation
-    String? max_lag
-    String? min_nr_ions
-    String? max_rt_apex_difference
-    String? swath_lower
-    String? swath_upper
+    Float? min_pearson_correlation
+    Int? max_lag
+    Int? min_nr_ions
+    Int? max_rt_apex_difference
+    Int? swath_lower
+    Int? swath_upper
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -22,7 +22,7 @@ task ClusterMassTracesByPrecursor {
       ~{if defined(in_ms_one) then ("-in_ms1 " +  '"' + in_ms_one + '"') else ""} \
       ~{if defined(in_swath) then ("-in_swath " +  '"' + in_swath + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{true="-assign_unassigned_to_all" false="" assign_unassigned_to_all} \
+      ~{if (assign_unassigned_to_all) then "-assign_unassigned_to_all" else ""} \
       ~{if defined(min_pearson_correlation) then ("-min_pearson_correlation " +  '"' + min_pearson_correlation + '"') else ""} \
       ~{if defined(max_lag) then ("-max_lag " +  '"' + max_lag + '"') else ""} \
       ~{if defined(min_nr_ions) then ("-min_nr_ions " +  '"' + min_nr_ions + '"') else ""} \
@@ -32,7 +32,7 @@ task ClusterMassTracesByPrecursor {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in_ms_one: "*                    MS1 mass traces (valid formats: 'consensusXML')"
@@ -49,5 +49,9 @@ task ClusterMassTracesByPrecursor {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

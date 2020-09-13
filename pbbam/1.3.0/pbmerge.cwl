@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../pbmerge.cwl
 inputs:
-- id: str_output_bam
+- id: in_str_output_bam
   doc: STR   Output BAM filename. Writes to stdout if not provided.
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: no_pbi
+- id: in_no_pbi
   doc: Disables creation of PBI index file. PBI always disabled when writing to stdout.
   type: boolean
   inputBinding:
     prefix: --no-pbi
-- id: input
+- id: in_input
   doc: 'FILE  Input file(s). Maybe one of: DataSetXML, BAM file(s), or FOFN'
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_str_output_bam
+  doc: STR   Output BAM filename. Writes to stdout if not provided.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_str_output_bam)
 cwlVersion: v1.1
 baseCommand:
 - pbmerge

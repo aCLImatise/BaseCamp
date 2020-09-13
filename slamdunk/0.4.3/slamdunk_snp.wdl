@@ -2,11 +2,11 @@ version 1.0
 
 task SlamdunkSnp {
   input {
-    String? output_dir
-    String? reference
-    String? min_coverage
-    String? var_fraction
-    String? threads
+    Directory? output_dir
+    File? reference
+    Int? min_coverage
+    Float? var_fraction
+    Int? threads
   }
   command <<<
     slamdunk snp \
@@ -20,7 +20,11 @@ task SlamdunkSnp {
     output_dir: "Output directory for mapped BAM files."
     reference: "Reference fasta file"
     min_coverage: "Minimimum coverage to call variant (default: 10)"
-    var_fraction: "Minimimum variant fraction to call variant (default: 0.8)"
-    threads: "Thread number (default: 1)"
+    var_fraction: "Minimimum variant fraction to call variant (default:\\n0.8)"
+    threads: "Thread number (default: 1)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

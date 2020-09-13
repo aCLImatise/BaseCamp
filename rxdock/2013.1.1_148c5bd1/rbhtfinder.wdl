@@ -4,4 +4,7 @@ task Rbhtfinder {
   command <<<
     rbhtfinder
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

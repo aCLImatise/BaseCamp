@@ -8,19 +8,19 @@ task BwaPemerge {
     Int? minimum_end_overlap
     Int? max_sum_errors
     Boolean? mu
-    String read_one_dot_fq
-    String? read_two_dot_fq
+    Int read_one_dot_fq
+    Int? read_two_dot_fq
   }
   command <<<
     bwa pemerge \
       ~{read_one_dot_fq} \
       ~{read_two_dot_fq} \
-      ~{true="-m" false="" output_merged_reads} \
-      ~{true="-u" false="" output_unmerged_reads} \
+      ~{if (output_merged_reads) then "-m" else ""} \
+      ~{if (output_unmerged_reads) then "-u" else ""} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(minimum_end_overlap) then ("-T " +  '"' + minimum_end_overlap + '"') else ""} \
       ~{if defined(max_sum_errors) then ("-Q " +  '"' + max_sum_errors + '"') else ""} \
-      ~{true="-mu" false="" mu}
+      ~{if (mu) then "-mu" else ""}
   >>>
   parameter_meta {
     output_merged_reads: "output merged reads only"
@@ -31,5 +31,8 @@ task BwaPemerge {
     mu: ""
     read_one_dot_fq: ""
     read_two_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

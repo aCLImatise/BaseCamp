@@ -14,4 +14,7 @@ task Geno2lfmm {
     _help: "--help"
     _helplfmm: "--help.lfmm"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

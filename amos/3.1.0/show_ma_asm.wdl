@@ -1,24 +1,24 @@
 version 1.0
 
-task ShowMaAsm {
+task Showmaasm {
   input {
     Boolean? count_gaps_printed
     Boolean? print_snps_addition
     Boolean? print_alignments_unitigs
     Boolean? display_code_version
     String uid
-    String asm_file
-    String frg_file
+    File asm_file
+    File frg_file
   }
   command <<<
-    show-ma-asm \
+    show_ma_asm \
       ~{uid} \
       ~{asm_file} \
       ~{frg_file} \
-      ~{true="-g" false="" count_gaps_printed} \
-      ~{true="-s" false="" print_snps_addition} \
-      ~{true="-u" false="" print_alignments_unitigs} \
-      ~{true="-V" false="" display_code_version}
+      ~{if (count_gaps_printed) then "-g" else ""} \
+      ~{if (print_snps_addition) then "-s" else ""} \
+      ~{if (print_alignments_unitigs) then "-u" else ""} \
+      ~{if (display_code_version) then "-V" else ""}
   >>>
   parameter_meta {
     count_gaps_printed: "Count gaps in printed consensus positions"
@@ -28,5 +28,8 @@ task ShowMaAsm {
     uid: ""
     asm_file: ""
     frg_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

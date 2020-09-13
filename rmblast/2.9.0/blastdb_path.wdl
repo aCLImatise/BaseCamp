@@ -4,4 +4,7 @@ task BlastdbPath {
   command <<<
     blastdb_path
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

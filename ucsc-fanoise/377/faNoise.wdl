@@ -9,7 +9,6 @@ task FaNoise {
     String transversion_ppt
     String insert_ppt
     String delete_ppt
-    String chimera_ppt
   }
   command <<<
     faNoise \
@@ -19,8 +18,7 @@ task FaNoise {
       ~{transversion_ppt} \
       ~{insert_ppt} \
       ~{delete_ppt} \
-      ~{chimera_ppt} \
-      ~{true="-upper" false="" upper}
+      ~{if (upper) then "-upper" else ""}
   >>>
   parameter_meta {
     upper: "- output in upper case"
@@ -30,6 +28,8 @@ task FaNoise {
     transversion_ppt: ""
     insert_ppt: ""
     delete_ppt: ""
-    chimera_ppt: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

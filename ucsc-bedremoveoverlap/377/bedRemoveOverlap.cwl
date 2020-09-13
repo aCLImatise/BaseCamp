@@ -1,17 +1,10 @@
 class: CommandLineTool
 id: ../../../bedRemoveOverlap.cwl
-inputs:
-- id: in_dot_bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: out_dot_bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedRemoveOverlap

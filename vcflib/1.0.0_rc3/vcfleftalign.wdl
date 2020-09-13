@@ -3,7 +3,7 @@ version 1.0
 task Vcfleftalign {
   input {
     File? reference
-    String? window
+    Int? window
     File? file
   }
   command <<<
@@ -16,5 +16,8 @@ task Vcfleftalign {
     reference: "Use this reference as a basis for realignment."
     window: "Use a window of this many bp when left aligning (150)."
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

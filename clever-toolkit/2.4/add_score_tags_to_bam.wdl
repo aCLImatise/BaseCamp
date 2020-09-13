@@ -1,26 +1,29 @@
 version 1.0
 
-task AddScoreTagsToBam {
+task Addscoretagstobam {
   input {
     Boolean? arg_value_substract
     Boolean? arg_issue_warning
-    Boolean? output_reads_computed
-    Boolean? arg_number_default
+    Boolean? output_tagcould_computed
+    Boolean? arg_number_threads
     String reference_dot_fast_a
   }
   command <<<
-    add-score-tags-to-bam \
+    add_score_tags_to_bam \
       ~{reference_dot_fast_a} \
-      ~{true="-p" false="" arg_value_substract} \
-      ~{true="-b" false="" arg_issue_warning} \
-      ~{true="-s" false="" output_reads_computed} \
-      ~{true="-T" false="" arg_number_default}
+      ~{if (arg_value_substract) then "-p" else ""} \
+      ~{if (arg_issue_warning) then "-b" else ""} \
+      ~{if (output_tagcould_computed) then "-s" else ""} \
+      ~{if (arg_number_threads) then "-T" else ""}
   >>>
   parameter_meta {
-    arg_value_substract: "[ --phred_offset ] arg (=33)       Value to substract from ASCII code to  get the PHRED quality."
-    arg_issue_warning: "[ --bad_alignment_threshold ] arg (=1000) Issue a warning when AS tag is above  this value."
-    output_reads_computed: "[ --skip_unknown ]                 Do not output reads for which no AS tag could be computed, e.g. because the  reference sequence was unknown."
-    arg_number_default: "[ --threads ] arg (=0)             Number of threads (default: 0 =  strictly single-threaded)."
+    arg_value_substract: "[ --phred_offset ] arg (=33)       Value to substract from ASCII code to\\nget the PHRED quality."
+    arg_issue_warning: "[ --bad_alignment_threshold ] arg (=1000)\\nIssue a warning when AS tag is above\\nthis value."
+    output_tagcould_computed: "[ --skip_unknown ]                 Do not output reads for which no AS tag\\ncould be computed, e.g. because the\\nreference sequence was unknown."
+    arg_number_threads: "[ --threads ] arg (=0)             Number of threads (default: 0 =\\nstrictly single-threaded).\\n"
     reference_dot_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

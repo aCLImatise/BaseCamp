@@ -2,8 +2,8 @@ version 1.0
 
 task FastutilsStat {
   input {
-    String? in
-    String? out
+    File? in
+    File? out
     Int? min_len
     Int? maxlen
   }
@@ -19,5 +19,9 @@ task FastutilsStat {
     out: "output file [stdout]"
     min_len: "min read length [0]"
     maxlen: "max read length [INT64_MAX]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

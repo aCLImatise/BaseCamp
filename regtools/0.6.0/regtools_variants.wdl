@@ -11,4 +11,7 @@ task RegtoolsVariants {
   parameter_meta {
     var_command: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

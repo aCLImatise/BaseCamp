@@ -1,4 +1,7 @@
-&id004 !Command
+&id003 !Command
+command:
+- seqmagick
+- mogrify
 positional:
 - !Positional
   description: Sequence file(s) to mogrify
@@ -12,72 +15,72 @@ named:
   - --alphabet
   args: !ChoiceFlagArg
     choices: !!set
-      ? dna-ambiguous
-      ? dna
-      ? rna-ambiguous
       ? rna
+      ? rna-ambiguous
+      ? dna
+      ? dna-ambiguous
       ? protein
   optional: true
 - !Flag
-  description: Adjust line wrap for sequence strings. When N is 0, all line breaks
-    are removed. Only fasta files are supported for the output format.
+  description: "Adjust line wrap for sequence strings. When N is 0,\nall line breaks\
+    \ are removed. Only fasta files are\nsupported for the output format."
   synonyms:
   - --line-wrap
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: Perform sorting by length or name, ascending or descending. ASCII sorting
-    is performed for names
+  description: "Perform sorting by length or name, ascending or\ndescending. ASCII\
+    \ sorting is performed for names"
   synonyms:
   - --sort
   args: !ChoiceFlagArg
     choices: !!set
-      ? name-desc
       ? length-asc
       ? name-asc
+      ? name-desc
       ? length-desc
   optional: true
 - !Flag
-  description: /path/to/module.py:function_name[:parameter] Specify a custom function
-    to apply to the input sequences, specified as /path/to/file.py:function_name.
-    Function should accept an iterable of Bio.SeqRecord objects, and yield SeqRecords.
-    If the parameter is specified, it will be passed as a string as the second argument
-    to the function. Specify more than one to chain.
+  description: "/path/to/module.py:function_name[:parameter]\nSpecify a custom function\
+    \ to apply to the input\nsequences, specified as\n/path/to/file.py:function_name.\
+    \ Function should accept\nan iterable of Bio.SeqRecord objects, and yield\nSeqRecords.\
+    \ If the parameter is specified, it will be\npassed as a string as the second\
+    \ argument to the\nfunction. Specify more than one to chain."
   synonyms:
   - --apply-function
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ':end[,start2:end2] Keep only the residues within the 1-indexed start
-    and end positions specified, : separated. Includes last item. Start or end can
-    be left unspecified to indicate start/end of sequence. A negative start may be
-    provided to indicate an offset from the end of the sequence. Note that to prevent
-    negative numbers being interpreted as flags, this should be written with an equals
-    sign between `--cut` and the argument, e.g.: `--cut=-10:`'
+  description: ":end[,start2:end2]\nKeep only the residues within the 1-indexed start\
+    \ and\nend positions specified, : separated. Includes last\nitem. Start or end\
+    \ can be left unspecified to indicate\nstart/end of sequence. A negative start\
+    \ may be\nprovided to indicate an offset from the end of the\nsequence. Note that\
+    \ to prevent negative numbers being\ninterpreted as flags, this should be written\
+    \ with an\nequals sign between `--cut` and the argument, e.g.:\n`--cut=-10:`"
   synonyms:
   - --cut
   args: !SimpleFlagArg
     name: start
   optional: true
 - !Flag
-  description: Apply --cut relative to the indexes of non-gap residues in sequence
-    identified by ID
+  description: "Apply --cut relative to the indexes of non-gap\nresidues in sequence\
+    \ identified by ID"
   synonyms:
   - --relative-to
   args: !SimpleFlagArg
     name: ID
   optional: true
 - !Flag
-  description: :end[,start2:end2] Remove the residues at the specified indices. Same
-    format as `--cut`.
+  description: ":end[,start2:end2]\nRemove the residues at the specified indices.\
+    \ Same\nformat as `--cut`."
   synonyms:
   - --drop
   args: !SimpleFlagArg
     name: start
   optional: true
 - !Flag
-  description: Replace any of the characters "?.:~" with a "-" for all sequences
+  description: "Replace any of the characters \"?.:~\" with a \"-\" for\nall sequences"
   synonyms:
   - --dash-gap
   args: !EmptyFlagArg {}
@@ -89,9 +92,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: :end1[,start2:end2] Replace residues in 1-indexed slice with gap- characters.
-    If --relative-to is also specified, coordinates are relative to the sequence ID
-    provided.
+  description: ":end1[,start2:end2]\nReplace residues in 1-indexed slice with gap-\n\
+    characters. If --relative-to is also specified,\ncoordinates are relative to the\
+    \ sequence ID provided."
   synonyms:
   - --mask
   args: !SimpleFlagArg
@@ -110,24 +113,24 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Remove any gaps that are present in the same position across all sequences
-    in an alignment (equivalent to --squeeze-threshold=1.0)
+  description: "Remove any gaps that are present in the same position\nacross all\
+    \ sequences in an alignment (equivalent to\n--squeeze-threshold=1.0)"
   synonyms:
   - --squeeze
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Trim columns from an alignment which have gaps in least the specified
-    proportion of sequences.
+  description: "Trim columns from an alignment which have gaps in\nleast the specified\
+    \ proportion of sequences."
   synonyms:
   - --squeeze-threshold
   args: !SimpleFlagArg
     name: PROP
   optional: true
 - !Flag
-  description: Transcription and back transcription for generic DNA and RNA. Source
-    sequences must be the correct alphabet or this action will likely produce incorrect
-    results.
+  description: "Transcription and back transcription for generic DNA\nand RNA. Source\
+    \ sequences must be the correct alphabet\nor this action will likely produce incorrect\
+    \ results."
   synonyms:
   - --transcribe
   args: !ChoiceFlagArg
@@ -136,17 +139,17 @@ named:
       ? dna2rna
   optional: true
 - !Flag
-  description: Translate from generic DNA/RNA to proteins. Options with "stop" suffix
-    will NOT translate through stop codons . Source sequences must be the correct
-    alphabet or this action will likely produce incorrect results.
+  description: "Translate from generic DNA/RNA to proteins. Options\nwith \"stop\"\
+    \ suffix will NOT translate through stop\ncodons . Source sequences must be the\
+    \ correct alphabet\nor this action will likely produce incorrect results."
   synonyms:
   - --translate
   args: !ChoiceFlagArg
     choices: !!set
-      ? dna2proteinstop
-      ? rna2protein
       ? dna2protein
       ? rna2proteinstop
+      ? rna2protein
+      ? dna2proteinstop
   optional: true
 - !Flag
   description: Remove gaps in the sequence alignment
@@ -161,8 +164,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Remove any duplicate sequences by sequence content, keep the first
-    instance seen
+  description: "Remove any duplicate sequences by sequence content,\nkeep the first\
+    \ instance seen"
   synonyms:
   - --deduplicate-sequences
   args: !EmptyFlagArg {}
@@ -175,67 +178,67 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: Remove any duplicate sequences by ID, keep the first instance seen
+  description: "Remove any duplicate sequences by ID, keep the first\ninstance seen"
   synonyms:
   - --deduplicate-taxa
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Filter sequences, removing those sequence IDs in the specified file
+  description: "Filter sequences, removing those sequence IDs in the\nspecified file"
   synonyms:
   - --exclude-from-file
   args: !SimpleFlagArg
     name: FILE
   optional: true
 - !Flag
-  description: Filter sequences, keeping only those sequence IDs in the specified
-    file
+  description: "Filter sequences, keeping only those sequence IDs in\nthe specified\
+    \ file"
   synonyms:
   - --include-from-file
   args: !SimpleFlagArg
     name: FILE
   optional: true
 - !Flag
-  description: Trim down to top N sequences. With the leading `-', print all but the
-    last N sequences.
+  description: "Trim down to top N sequences. With the leading `-',\nprint all but\
+    \ the last N sequences."
   synonyms:
   - --head
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: Discard any sequences beyond the specified maximum length. This operation
-    occurs *before* all length- changing options such as cut and squeeze.
+  description: "Discard any sequences beyond the specified maximum\nlength. This operation\
+    \ occurs *before* all length-\nchanging options such as cut and squeeze."
   synonyms:
   - --max-length
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: Discard any sequences less than the specified minimum length. This
-    operation occurs *before* cut and squeeze.
+  description: "Discard any sequences less than the specified minimum\nlength. This\
+    \ operation occurs *before* cut and\nsqueeze."
   synonyms:
   - --min-length
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: Discard any sequences less than the specified minimum length, excluding
-    gaps. This operation occurs *before* cut and squeeze.
+  description: "Discard any sequences less than the specified minimum\nlength, excluding\
+    \ gaps. This operation occurs *before*\ncut and squeeze."
   synonyms:
   - --min-ungapped-length
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: Filter the sequences by regular expression in ID or description
+  description: "Filter the sequences by regular expression in ID or\ndescription"
   synonyms:
   - --pattern-include
   args: !SimpleFlagArg
     name: REGEX
   optional: true
 - !Flag
-  description: Filter the sequences by regular expression in ID or description
+  description: "Filter the sequences by regular expression in ID or\ndescription"
   synonyms:
   - --pattern-exclude
   args: !SimpleFlagArg
@@ -276,12 +279,41 @@ named:
     name: REGEX
   optional: true
 - !Flag
-  description: Trim down to bottom N sequences. Use +N to output sequences starting
-    with the Nth.
+  description: "Trim down to bottom N sequences. Use +N to output\nsequences starting\
+    \ with the Nth."
   synonyms:
   - --tail
   args: !SimpleFlagArg
     name: N
+  optional: true
+- !Flag
+  description: "Take only the first whitespace-delimited word as the\nname of the\
+    \ sequence"
+  synonyms:
+  - --first-name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Append a suffix to all IDs.
+  synonyms:
+  - --name-suffix
+  args: !SimpleFlagArg
+    name: SUFFIX
+  optional: true
+- !Flag
+  description: Insert a prefix for all IDs.
+  synonyms:
+  - --name-prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: "replace_pattern\nReplace regex pattern \"search_pattern\" with\n\"\
+    replace_pattern\" in sequence ID and description"
+  synonyms:
+  - --pattern-replace
+  args: !SimpleFlagArg
+    name: search_pattern
   optional: true
 - !Flag
   description: Strip ranges from sequences IDs, matching </x-y>
@@ -303,10 +335,9 @@ named:
   args: !SimpleFlagArg
     name: FORMAT
   optional: true
-command:
-- seqmagick
-- mogrify
 parent: &id001 !Command
+  command:
+  - seqmagick
   positional: []
   named:
   - !Flag
@@ -329,63 +360,93 @@ parent: &id001 !Command
     - -V
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - seqmagick
   parent:
   subcommands:
-  - &id002 !Command
-    positional: []
-    named: []
+  - !Command
+    command:
+    - seqmagick
+    - info
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: sequence_files
+      optional: false
+    named:
+    - !Flag
+      description: Input format. Overrides extension for all input files
+      synonyms:
+      - --input-format
+      args: !SimpleFlagArg
+        name: INPUT_FORMAT
+      optional: true
+    - !Flag
+      description: 'Output destination. Default: STDOUT'
+      synonyms:
+      - --out-file
+      args: !SimpleFlagArg
+        name: destination_file
+      optional: true
+    - !Flag
+      description: "Specify output format as tab-delimited, CSV or aligned\nin a borderless\
+        \ table. Default is tab-delimited if the\noutput is directed to a file, aligned\
+        \ if output to the\nconsole."
+      synonyms:
+      - --format
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? tab
+          ? csv
+          ? align
+      optional: true
+    - !Flag
+      description: Number of threads (CPUs). [1]
+      synonyms:
+      - --threads
+      args: !SimpleFlagArg
+        name: THREADS
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: seqmagick info [-h] [--input-format INPUT_FORMAT]\n       \
+      \               [--out-file destination_file] [--format {tab,csv,align}]\n \
+      \                     [--threads THREADS]\n                      sequence_files\
+      \ [sequence_files ...]\n\nInfo action\n\npositional arguments:\n  sequence_files\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  --input-format INPUT_FORMAT\n                        Input format. Overrides\
+      \ extension for all input files\n  --out-file destination_file\n           \
+      \             Output destination. Default: STDOUT\n  --format {tab,csv,align}\n\
+      \                        Specify output format as tab-delimited, CSV or aligned\n\
+      \                        in a borderless table. Default is tab-delimited if\
+      \ the\n                        output is directed to a file, aligned if output\
+      \ to the\n                        console.\n  --threads THREADS     Number of\
+      \ threads (CPUs). [1]\n"
+    generated_using: &id002
+    - --help
+  - !Command
     command:
     - seqmagick
     - help
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: action
+      optional: false
+    named: []
     parent: *id001
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: seqmagick
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -V
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - -v
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - -q
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - seqmagick
-      - help
-      - action
-      parent: *id002
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: seqmagick [-h] [-V] [-v] [-q]\n                 {help,convert,info,mogrify,primer-trim,quality-filter,extract-ids,backtrans-align}\n\
-        \                 ...\nseqmagick: error: argument subparser_name: invalid\
-        \ choice: 'action' (choose from 'help', 'convert', 'info', 'mogrify', 'primer-trim',\
-        \ 'quality-filter', 'extract-ids', 'backtrans-align')\n"
-      generated_using: []
+    subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -397,9 +458,359 @@ parent: &id001 !Command
     version_flag:
     help_text: "usage: seqmagick help [-h] action\n\npositional arguments:\n  action\n\
       \noptional arguments:\n  -h, --help  show this help message and exit\n"
-    generated_using: &id003
-    - --help
+    generated_using: *id002
   - !Command
+    command:
+    - seqmagick
+    - extract-ids
+    positional: []
+    named:
+    - !Flag
+      description: Destination file
+      synonyms:
+      - -o
+      - --output-file
+      args: !SimpleFlagArg
+        name: OUTPUT_FILE
+      optional: true
+    - !Flag
+      description: Input format for sequence file
+      synonyms:
+      - --input-format
+      args: !SimpleFlagArg
+        name: INPUT_FORMAT
+      optional: true
+    - !Flag
+      description: "Include the sequence description in output [default:\nFalse]\n"
+      synonyms:
+      - -d
+      - --include-description
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: seqmagick extract-ids [-h] [-o OUTPUT_FILE]\n             \
+      \                [--input-format INPUT_FORMAT] [-d]\n                      \
+      \       sequence_file\n\nExtract the sequence IDs from a file\n\npositional\
+      \ arguments:\n  sequence_file         Sequence file\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  -o OUTPUT_FILE,\
+      \ --output-file OUTPUT_FILE\n                        Destination file\n  --input-format\
+      \ INPUT_FORMAT\n                        Input format for sequence file\n  -d,\
+      \ --include-description\n                        Include the sequence description\
+      \ in output [default:\n                        False]\n"
+    generated_using: *id002
+  - *id003
+  - &id004 !Command
+    command:
+    - seqmagick
+    - primer-trim
+    positional: []
+    named:
+    - !Flag
+      description: "Reverse primer is written as the reverse complement of\nthe top\
+        \ strand (default: False)"
+      synonyms:
+      - --reverse-is-revcomp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Alignment format (default: detect from extension'
+      synonyms:
+      - --source-format
+      args: !SimpleFlagArg
+        name: SOURCE_FORMAT
+      optional: true
+    - !Flag
+      description: 'Alignment format (default: detect from extension'
+      synonyms:
+      - --output-format
+      args: !SimpleFlagArg
+        name: OUTPUT_FORMAT
+      optional: true
+    - !Flag
+      description: 'Include the primers in the output (default: False)'
+      synonyms:
+      - --include-primers
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Maximum Hamming distance between primer and alignment\nsite (default:\
+        \ 1). IUPAC ambiguous bases in the primer\nmatching unambiguous bases in the\
+        \ alignment are not\npenalized"
+      synonyms:
+      - --max-hamming-distance
+      args: !SimpleFlagArg
+        name: MAX_HAMMING_DISTANCE
+      optional: true
+    - !Flag
+      description: "Action to take. Options are trim (trim to the region\ndefined\
+        \ by the two primers, decreasing the width of\nthe alignment), or isolate\
+        \ (convert all characters\noutside the primer-defined area to gaps). default:\n\
+        trim\n"
+      synonyms:
+      - --prune-action
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? isolate
+          ? trim
+      optional: true
+    parent: *id001
+    subcommands:
+    - !Command
+      command:
+      - seqmagick
+      - primer-trim
+      - forward_primer
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: seqmagick
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: primer-trim
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --reverse-is-revcomp
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "<frozen importlib._bootstrap>:219: RuntimeWarning: This module has\
+        \ been deprecated. We encourage users to switch to alternative libraries implementing\
+        \ a trie data structure, for example pygtrie.\n/usr/local/lib/python3.8/site-packages/Bio/triefind.py:32:\
+        \ BiopythonDeprecationWarning: This module has been deprecated. We encourage\
+        \ users to switch to alternative libraries implementing a trie data structure,\
+        \ for example pygtrie.\n  warnings.warn(\"This module has been deprecated.\
+        \ We encourage users to switch \"\nusage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n\
+        \                             [--source-format SOURCE_FORMAT]\n          \
+        \                   [--output-format OUTPUT_FORMAT]\n                    \
+        \         [--include-primers]\n                             [--max-hamming-distance\
+        \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
+        \                             source_file output_file forward_primer\n   \
+        \                          reverse_primer\nseqmagick primer-trim: error: argument\
+        \ source_file: can't open 'forward_primer': [Errno 2] No such file or directory:\
+        \ 'forward_primer'\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - seqmagick
+      - primer-trim
+      - source_file
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: seqmagick
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: primer-trim
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --reverse-is-revcomp
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "<frozen importlib._bootstrap>:219: RuntimeWarning: This module has\
+        \ been deprecated. We encourage users to switch to alternative libraries implementing\
+        \ a trie data structure, for example pygtrie.\n/usr/local/lib/python3.8/site-packages/Bio/triefind.py:32:\
+        \ BiopythonDeprecationWarning: This module has been deprecated. We encourage\
+        \ users to switch to alternative libraries implementing a trie data structure,\
+        \ for example pygtrie.\n  warnings.warn(\"This module has been deprecated.\
+        \ We encourage users to switch \"\nusage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n\
+        \                             [--source-format SOURCE_FORMAT]\n          \
+        \                   [--output-format OUTPUT_FORMAT]\n                    \
+        \         [--include-primers]\n                             [--max-hamming-distance\
+        \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
+        \                             source_file output_file forward_primer\n   \
+        \                          reverse_primer\nseqmagick primer-trim: error: argument\
+        \ source_file: can't open 'source_file': [Errno 2] No such file or directory:\
+        \ 'source_file'\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - seqmagick
+      - primer-trim
+      - output_file
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: seqmagick
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: primer-trim
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --reverse-is-revcomp
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "<frozen importlib._bootstrap>:219: RuntimeWarning: This module has\
+        \ been deprecated. We encourage users to switch to alternative libraries implementing\
+        \ a trie data structure, for example pygtrie.\n/usr/local/lib/python3.8/site-packages/Bio/triefind.py:32:\
+        \ BiopythonDeprecationWarning: This module has been deprecated. We encourage\
+        \ users to switch to alternative libraries implementing a trie data structure,\
+        \ for example pygtrie.\n  warnings.warn(\"This module has been deprecated.\
+        \ We encourage users to switch \"\nusage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n\
+        \                             [--source-format SOURCE_FORMAT]\n          \
+        \                   [--output-format OUTPUT_FORMAT]\n                    \
+        \         [--include-primers]\n                             [--max-hamming-distance\
+        \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
+        \                             source_file output_file forward_primer\n   \
+        \                          reverse_primer\nseqmagick primer-trim: error: argument\
+        \ source_file: can't open 'output_file': [Errno 2] No such file or directory:\
+        \ 'output_file'\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - seqmagick
+      - primer-trim
+      - reverse_primer
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: seqmagick
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: primer-trim
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --reverse-is-revcomp
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "<frozen importlib._bootstrap>:219: RuntimeWarning: This module has\
+        \ been deprecated. We encourage users to switch to alternative libraries implementing\
+        \ a trie data structure, for example pygtrie.\n/usr/local/lib/python3.8/site-packages/Bio/triefind.py:32:\
+        \ BiopythonDeprecationWarning: This module has been deprecated. We encourage\
+        \ users to switch to alternative libraries implementing a trie data structure,\
+        \ for example pygtrie.\n  warnings.warn(\"This module has been deprecated.\
+        \ We encourage users to switch \"\nusage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n\
+        \                             [--source-format SOURCE_FORMAT]\n          \
+        \                   [--output-format OUTPUT_FORMAT]\n                    \
+        \         [--include-primers]\n                             [--max-hamming-distance\
+        \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
+        \                             source_file output_file forward_primer\n   \
+        \                          reverse_primer\nseqmagick primer-trim: error: argument\
+        \ source_file: can't open 'reverse_primer': [Errno 2] No such file or directory:\
+        \ 'reverse_primer'\n"
+      generated_using: *id002
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n       \
+      \                      [--source-format SOURCE_FORMAT]\n                   \
+      \          [--output-format OUTPUT_FORMAT]\n                             [--include-primers]\n\
+      \                             [--max-hamming-distance MAX_HAMMING_DISTANCE]\n\
+      \                             [--prune-action {trim,isolate}]\n            \
+      \                 source_file output_file forward_primer\n                 \
+      \            reverse_primer\n\nFind a primer sequence in a gapped alignment,\
+      \ trim to amplicon\n\npositional arguments:\n  source_file           Source\
+      \ alignment file\n  output_file           Destination trimmed file\n  forward_primer\
+      \        The forward primer used\n  reverse_primer        The reverse primer\
+      \ used. By default the reverse primer\n                        is assumed to\
+      \ be a subsequence of the top strand (that\n                        is, the\
+      \ reverse complement of an actual downstream PCR\n                        primer).\
+      \ Use --reverse-is-revcomp if this is not the\n                        case.\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  --reverse-is-revcomp  Reverse primer is written as the reverse complement\
+      \ of\n                        the top strand (default: False)\n  --source-format\
+      \ SOURCE_FORMAT\n                        Alignment format (default: detect from\
+      \ extension\n  --output-format OUTPUT_FORMAT\n                        Alignment\
+      \ format (default: detect from extension\n  --include-primers     Include the\
+      \ primers in the output (default: False)\n  --max-hamming-distance MAX_HAMMING_DISTANCE\n\
+      \                        Maximum Hamming distance between primer and alignment\n\
+      \                        site (default: 1). IUPAC ambiguous bases in the primer\n\
+      \                        matching unambiguous bases in the alignment are not\n\
+      \                        penalized\n  --prune-action {trim,isolate}\n      \
+      \                  Action to take. Options are trim (trim to the region\n  \
+      \                      defined by the two primers, decreasing the width of\n\
+      \                        the alignment), or isolate (convert all characters\n\
+      \                        outside the primer-defined area to gaps). default:\n\
+      \                        trim\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - seqmagick
+    - convert
     positional:
     - !Positional
       description: Input sequence file
@@ -418,72 +829,73 @@ parent: &id001 !Command
       - --alphabet
       args: !ChoiceFlagArg
         choices: !!set
-          ? dna-ambiguous
-          ? dna
-          ? rna-ambiguous
           ? rna
+          ? rna-ambiguous
+          ? dna
+          ? dna-ambiguous
           ? protein
       optional: true
     - !Flag
-      description: Adjust line wrap for sequence strings. When N is 0, all line breaks
-        are removed. Only fasta files are supported for the output format.
+      description: "Adjust line wrap for sequence strings. When N is 0,\nall line\
+        \ breaks are removed. Only fasta files are\nsupported for the output format."
       synonyms:
       - --line-wrap
       args: !SimpleFlagArg
         name: N
       optional: true
     - !Flag
-      description: Perform sorting by length or name, ascending or descending. ASCII
-        sorting is performed for names
+      description: "Perform sorting by length or name, ascending or\ndescending. ASCII\
+        \ sorting is performed for names"
       synonyms:
       - --sort
       args: !ChoiceFlagArg
         choices: !!set
-          ? name-desc
           ? length-asc
           ? name-asc
+          ? name-desc
           ? length-desc
       optional: true
     - !Flag
-      description: /path/to/module.py:function_name[:parameter] Specify a custom function
-        to apply to the input sequences, specified as /path/to/file.py:function_name.
-        Function should accept an iterable of Bio.SeqRecord objects, and yield SeqRecords.
-        If the parameter is specified, it will be passed as a string as the second
-        argument to the function. Specify more than one to chain.
+      description: "/path/to/module.py:function_name[:parameter]\nSpecify a custom\
+        \ function to apply to the input\nsequences, specified as\n/path/to/file.py:function_name.\
+        \ Function should accept\nan iterable of Bio.SeqRecord objects, and yield\n\
+        SeqRecords. If the parameter is specified, it will be\npassed as a string\
+        \ as the second argument to the\nfunction. Specify more than one to chain."
       synonyms:
       - --apply-function
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: ':end[,start2:end2] Keep only the residues within the 1-indexed
-        start and end positions specified, : separated. Includes last item. Start
-        or end can be left unspecified to indicate start/end of sequence. A negative
-        start may be provided to indicate an offset from the end of the sequence.
-        Note that to prevent negative numbers being interpreted as flags, this should
-        be written with an equals sign between `--cut` and the argument, e.g.: `--cut=-10:`'
+      description: ":end[,start2:end2]\nKeep only the residues within the 1-indexed\
+        \ start and\nend positions specified, : separated. Includes last\nitem. Start\
+        \ or end can be left unspecified to indicate\nstart/end of sequence. A negative\
+        \ start may be\nprovided to indicate an offset from the end of the\nsequence.\
+        \ Note that to prevent negative numbers being\ninterpreted as flags, this\
+        \ should be written with an\nequals sign between `--cut` and the argument,\
+        \ e.g.:\n`--cut=-10:`"
       synonyms:
       - --cut
       args: !SimpleFlagArg
         name: start
       optional: true
     - !Flag
-      description: Apply --cut relative to the indexes of non-gap residues in sequence
-        identified by ID
+      description: "Apply --cut relative to the indexes of non-gap\nresidues in sequence\
+        \ identified by ID"
       synonyms:
       - --relative-to
       args: !SimpleFlagArg
         name: ID
       optional: true
     - !Flag
-      description: :end[,start2:end2] Remove the residues at the specified indices.
-        Same format as `--cut`.
+      description: ":end[,start2:end2]\nRemove the residues at the specified indices.\
+        \ Same\nformat as `--cut`."
       synonyms:
       - --drop
       args: !SimpleFlagArg
         name: start
       optional: true
     - !Flag
-      description: Replace any of the characters "?.:~" with a "-" for all sequences
+      description: "Replace any of the characters \"?.:~\" with a \"-\" for\nall sequences"
       synonyms:
       - --dash-gap
       args: !EmptyFlagArg {}
@@ -495,9 +907,9 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: :end1[,start2:end2] Replace residues in 1-indexed slice with gap-
-        characters. If --relative-to is also specified, coordinates are relative to
-        the sequence ID provided.
+      description: ":end1[,start2:end2]\nReplace residues in 1-indexed slice with\
+        \ gap-\ncharacters. If --relative-to is also specified,\ncoordinates are relative\
+        \ to the sequence ID provided."
       synonyms:
       - --mask
       args: !SimpleFlagArg
@@ -516,24 +928,24 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Remove any gaps that are present in the same position across all
-        sequences in an alignment (equivalent to --squeeze-threshold=1.0)
+      description: "Remove any gaps that are present in the same position\nacross\
+        \ all sequences in an alignment (equivalent to\n--squeeze-threshold=1.0)"
       synonyms:
       - --squeeze
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Trim columns from an alignment which have gaps in least the specified
-        proportion of sequences.
+      description: "Trim columns from an alignment which have gaps in\nleast the specified\
+        \ proportion of sequences."
       synonyms:
       - --squeeze-threshold
       args: !SimpleFlagArg
         name: PROP
       optional: true
     - !Flag
-      description: Transcription and back transcription for generic DNA and RNA. Source
-        sequences must be the correct alphabet or this action will likely produce
-        incorrect results.
+      description: "Transcription and back transcription for generic DNA\nand RNA.\
+        \ Source sequences must be the correct alphabet\nor this action will likely\
+        \ produce incorrect results."
       synonyms:
       - --transcribe
       args: !ChoiceFlagArg
@@ -542,17 +954,17 @@ parent: &id001 !Command
           ? dna2rna
       optional: true
     - !Flag
-      description: Translate from generic DNA/RNA to proteins. Options with "stop"
-        suffix will NOT translate through stop codons . Source sequences must be the
-        correct alphabet or this action will likely produce incorrect results.
+      description: "Translate from generic DNA/RNA to proteins. Options\nwith \"stop\"\
+        \ suffix will NOT translate through stop\ncodons . Source sequences must be\
+        \ the correct alphabet\nor this action will likely produce incorrect results."
       synonyms:
       - --translate
       args: !ChoiceFlagArg
         choices: !!set
-          ? dna2proteinstop
-          ? rna2protein
           ? dna2protein
           ? rna2proteinstop
+          ? rna2protein
+          ? dna2proteinstop
       optional: true
     - !Flag
       description: Remove gaps in the sequence alignment
@@ -567,8 +979,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Remove any duplicate sequences by sequence content, keep the first
-        instance seen
+      description: "Remove any duplicate sequences by sequence content,\nkeep the\
+        \ first instance seen"
       synonyms:
       - --deduplicate-sequences
       args: !EmptyFlagArg {}
@@ -581,68 +993,70 @@ parent: &id001 !Command
         name: FILE
       optional: true
     - !Flag
-      description: Remove any duplicate sequences by ID, keep the first instance seen
+      description: "Remove any duplicate sequences by ID, keep the first\ninstance\
+        \ seen"
       synonyms:
       - --deduplicate-taxa
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Filter sequences, removing those sequence IDs in the specified
-        file
+      description: "Filter sequences, removing those sequence IDs in the\nspecified\
+        \ file"
       synonyms:
       - --exclude-from-file
       args: !SimpleFlagArg
         name: FILE
       optional: true
     - !Flag
-      description: Filter sequences, keeping only those sequence IDs in the specified
-        file
+      description: "Filter sequences, keeping only those sequence IDs in\nthe specified\
+        \ file"
       synonyms:
       - --include-from-file
       args: !SimpleFlagArg
         name: FILE
       optional: true
     - !Flag
-      description: Trim down to top N sequences. With the leading `-', print all but
-        the last N sequences.
+      description: "Trim down to top N sequences. With the leading `-',\nprint all\
+        \ but the last N sequences."
       synonyms:
       - --head
       args: !SimpleFlagArg
         name: N
       optional: true
     - !Flag
-      description: Discard any sequences beyond the specified maximum length. This
-        operation occurs *before* all length- changing options such as cut and squeeze.
+      description: "Discard any sequences beyond the specified maximum\nlength. This\
+        \ operation occurs *before* all length-\nchanging options such as cut and\
+        \ squeeze."
       synonyms:
       - --max-length
       args: !SimpleFlagArg
         name: N
       optional: true
     - !Flag
-      description: Discard any sequences less than the specified minimum length. This
-        operation occurs *before* cut and squeeze.
+      description: "Discard any sequences less than the specified minimum\nlength.\
+        \ This operation occurs *before* cut and\nsqueeze."
       synonyms:
       - --min-length
       args: !SimpleFlagArg
         name: N
       optional: true
     - !Flag
-      description: Discard any sequences less than the specified minimum length, excluding
-        gaps. This operation occurs *before* cut and squeeze.
+      description: "Discard any sequences less than the specified minimum\nlength,\
+        \ excluding gaps. This operation occurs *before*\ncut and squeeze."
       synonyms:
       - --min-ungapped-length
       args: !SimpleFlagArg
         name: N
       optional: true
     - !Flag
-      description: Filter the sequences by regular expression in ID or description
+      description: "Filter the sequences by regular expression in ID or\ndescription"
       synonyms:
       - --pattern-include
       args: !SimpleFlagArg
         name: REGEX
       optional: true
     - !Flag
-      description: Filter the sequences by regular expression in ID or description
+      description: "Filter the sequences by regular expression in ID or\ndescription"
       synonyms:
       - --pattern-exclude
       args: !SimpleFlagArg
@@ -683,12 +1097,41 @@ parent: &id001 !Command
         name: REGEX
       optional: true
     - !Flag
-      description: Trim down to bottom N sequences. Use +N to output sequences starting
-        with the Nth.
+      description: "Trim down to bottom N sequences. Use +N to output\nsequences starting\
+        \ with the Nth."
       synonyms:
       - --tail
       args: !SimpleFlagArg
         name: N
+      optional: true
+    - !Flag
+      description: "Take only the first whitespace-delimited word as the\nname of\
+        \ the sequence"
+      synonyms:
+      - --first-name
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Append a suffix to all IDs.
+      synonyms:
+      - --name-suffix
+      args: !SimpleFlagArg
+        name: SUFFIX
+      optional: true
+    - !Flag
+      description: Insert a prefix for all IDs.
+      synonyms:
+      - --name-prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: "replace_pattern\nReplace regex pattern \"search_pattern\" with\n\
+        \"replace_pattern\" in sequence ID and description"
+      synonyms:
+      - --pattern-replace
+      args: !SimpleFlagArg
+        name: search_pattern
       optional: true
     - !Flag
       description: Strip ranges from sequences IDs, matching </x-y>
@@ -710,11 +1153,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: FORMAT
       optional: true
-    command:
-    - seqmagick
-    - convert
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -841,630 +1282,11 @@ parent: &id001 !Command
       \ FORMAT\n                        Output file format (default: determine from\
       \ extension)\n\nFilters using regular expressions are case-sensitive by default.\
       \ Append \"(?i)\"\nto a pattern to make it case-insensitive.\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Input format. Overrides extension for all input files
-      synonyms:
-      - --input-format
-      args: !SimpleFlagArg
-        name: INPUT_FORMAT
-      optional: true
-    - !Flag
-      description: 'Output destination. Default: STDOUT'
-      synonyms:
-      - --out-file
-      args: !SimpleFlagArg
-        name: destination_file
-      optional: true
-    - !Flag
-      description: Specify output format as tab-delimited, CSV or aligned in a borderless
-        table. Default is tab-delimited if the output is directed to a file, aligned
-        if output to the console.
-      synonyms:
-      - --format
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? tab
-          ? align
-          ? csv
-      optional: true
-    - !Flag
-      description: Number of threads (CPUs). [1]
-      synonyms:
-      - --threads
-      args: !SimpleFlagArg
-        name: THREADS
-      optional: true
     command:
     - seqmagick
-    - info
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: seqmagick info [-h] [--input-format INPUT_FORMAT]\n       \
-      \               [--out-file destination_file] [--format {tab,csv,align}]\n \
-      \                     [--threads THREADS]\n                      sequence_files\
-      \ [sequence_files ...]\n\nInfo action\n\npositional arguments:\n  sequence_files\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  --input-format INPUT_FORMAT\n                        Input format. Overrides\
-      \ extension for all input files\n  --out-file destination_file\n           \
-      \             Output destination. Default: STDOUT\n  --format {tab,csv,align}\n\
-      \                        Specify output format as tab-delimited, CSV or aligned\n\
-      \                        in a borderless table. Default is tab-delimited if\
-      \ the\n                        output is directed to a file, aligned if output\
-      \ to the\n                        console.\n  --threads THREADS     Number of\
-      \ threads (CPUs). [1]\n"
-    generated_using: *id003
-  - *id004
-  - &id005 !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'Reverse primer is written as the reverse complement of the top
-        strand (default: False)'
-      synonyms:
-      - --reverse-is-revcomp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Alignment format (default: detect from extension'
-      synonyms:
-      - --source-format
-      args: !SimpleFlagArg
-        name: SOURCE_FORMAT
-      optional: true
-    - !Flag
-      description: 'Alignment format (default: detect from extension'
-      synonyms:
-      - --output-format
-      args: !SimpleFlagArg
-        name: OUTPUT_FORMAT
-      optional: true
-    - !Flag
-      description: 'Include the primers in the output (default: False)'
-      synonyms:
-      - --include-primers
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Maximum Hamming distance between primer and alignment site (default:
-        1). IUPAC ambiguous bases in the primer matching unambiguous bases in the
-        alignment are not penalized'
-      synonyms:
-      - --max-hamming-distance
-      args: !SimpleFlagArg
-        name: MAX_HAMMING_DISTANCE
-      optional: true
-    - !Flag
-      description: 'Action to take. Options are trim (trim to the region defined by
-        the two primers, decreasing the width of the alignment), or isolate (convert
-        all characters outside the primer-defined area to gaps). default: trim'
-      synonyms:
-      - --prune-action
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? isolate
-          ? trim
-      optional: true
-    command:
-    - seqmagick
-    - primer-trim
-    parent: *id001
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: seqmagick
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: primer-trim
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - --reverse-is-revcomp
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - seqmagick
-      - primer-trim
-      - source_file
-      parent: *id005
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n     \
-        \                        [--source-format SOURCE_FORMAT]\n               \
-        \              [--output-format OUTPUT_FORMAT]\n                         \
-        \    [--include-primers]\n                             [--max-hamming-distance\
-        \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
-        \                             source_file output_file forward_primer\n   \
-        \                          reverse_primer\nseqmagick primer-trim: error: argument\
-        \ source_file: can't open 'source_file': [Errno 2] No such file or directory:\
-        \ 'source_file'\n"
-      generated_using: *id003
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: seqmagick
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: primer-trim
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - --reverse-is-revcomp
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - seqmagick
-      - primer-trim
-      - output_file
-      parent: *id005
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n     \
-        \                        [--source-format SOURCE_FORMAT]\n               \
-        \              [--output-format OUTPUT_FORMAT]\n                         \
-        \    [--include-primers]\n                             [--max-hamming-distance\
-        \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
-        \                             source_file output_file forward_primer\n   \
-        \                          reverse_primer\nseqmagick primer-trim: error: argument\
-        \ source_file: can't open 'output_file': [Errno 2] No such file or directory:\
-        \ 'output_file'\n"
-      generated_using: *id003
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: seqmagick
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: primer-trim
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - --reverse-is-revcomp
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - seqmagick
-      - primer-trim
-      - forward_primer
-      parent: *id005
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n     \
-        \                        [--source-format SOURCE_FORMAT]\n               \
-        \              [--output-format OUTPUT_FORMAT]\n                         \
-        \    [--include-primers]\n                             [--max-hamming-distance\
-        \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
-        \                             source_file output_file forward_primer\n   \
-        \                          reverse_primer\nseqmagick primer-trim: error: argument\
-        \ source_file: can't open 'forward_primer': [Errno 2] No such file or directory:\
-        \ 'forward_primer'\n"
-      generated_using: *id003
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: seqmagick
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: primer-trim
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - --reverse-is-revcomp
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - seqmagick
-      - primer-trim
-      - reverse_primer
-      parent: *id005
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n     \
-        \                        [--source-format SOURCE_FORMAT]\n               \
-        \              [--output-format OUTPUT_FORMAT]\n                         \
-        \    [--include-primers]\n                             [--max-hamming-distance\
-        \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
-        \                             source_file output_file forward_primer\n   \
-        \                          reverse_primer\nseqmagick primer-trim: error: argument\
-        \ source_file: can't open 'reverse_primer': [Errno 2] No such file or directory:\
-        \ 'reverse_primer'\n"
-      generated_using: *id003
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n       \
-      \                      [--source-format SOURCE_FORMAT]\n                   \
-      \          [--output-format OUTPUT_FORMAT]\n                             [--include-primers]\n\
-      \                             [--max-hamming-distance MAX_HAMMING_DISTANCE]\n\
-      \                             [--prune-action {trim,isolate}]\n            \
-      \                 source_file output_file forward_primer\n                 \
-      \            reverse_primer\n\nFind a primer sequence in a gapped alignment,\
-      \ trim to amplicon\n\npositional arguments:\n  source_file           Source\
-      \ alignment file\n  output_file           Destination trimmed file\n  forward_primer\
-      \        The forward primer used\n  reverse_primer        The reverse primer\
-      \ used. By default the reverse primer\n                        is assumed to\
-      \ be a subsequence of the top strand (that\n                        is, the\
-      \ reverse complement of an actual downstream PCR\n                        primer).\
-      \ Use --reverse-is-revcomp if this is not the\n                        case.\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  --reverse-is-revcomp  Reverse primer is written as the reverse complement\
-      \ of\n                        the top strand (default: False)\n  --source-format\
-      \ SOURCE_FORMAT\n                        Alignment format (default: detect from\
-      \ extension\n  --output-format OUTPUT_FORMAT\n                        Alignment\
-      \ format (default: detect from extension\n  --include-primers     Include the\
-      \ primers in the output (default: False)\n  --max-hamming-distance MAX_HAMMING_DISTANCE\n\
-      \                        Maximum Hamming distance between primer and alignment\n\
-      \                        site (default: 1). IUPAC ambiguous bases in the primer\n\
-      \                        matching unambiguous bases in the alignment are not\n\
-      \                        penalized\n  --prune-action {trim,isolate}\n      \
-      \                  Action to take. Options are trim (trim to the region\n  \
-      \                      defined by the two primers, decreasing the width of\n\
-      \                        the alignment), or isolate (convert all characters\n\
-      \                        outside the primer-defined area to gaps). default:\n\
-      \                        trim\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: Input fastq file. A fasta-format file may also be provided if --input-qual
-        is also specified.
-      position: 0
-      name: sequence_file
-      optional: false
-    - !Positional
-      description: Output file. Format determined from extension.
-      position: 1
-      name: output_file
-      optional: false
-    named:
-    - !Flag
-      description: The quality scores associated with the input file. Only used if
-        input file is fasta.
-      synonyms:
-      - --input-qual
-      args: !SimpleFlagArg
-        name: INPUT_QUAL
-      optional: true
-    - !Flag
-      description: 'Minimum mean quality score for each read [default: 25.0]'
-      synonyms:
-      - --min-mean-quality
-      args: !SimpleFlagArg
-        name: QUALITY
-      optional: true
-    - !Flag
-      description: 'Minimum length to keep sequence [default: 200]'
-      synonyms:
-      - --min-length
-      args: !SimpleFlagArg
-        name: LENGTH
-      optional: true
-    - !Flag
-      description: 'Maximum length to keep before truncating [default: 1000]. This
-        operation occurs before --max-ambiguous'
-      synonyms:
-      - --max-length
-      args: !SimpleFlagArg
-        name: LENGTH
-      optional: true
-    - !Flag
-      description: "Action to take on ambiguous base in sequence (N's). [default:\
-        \ no action]"
-      synonyms:
-      - --ambiguous-action
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? truncate
-          ? drop
-      optional: true
-    - !Flag
-      description: Maximum number of ambiguous bases in a sequence. Sequences exceeding
-        this count will be removed.
-      synonyms:
-      - --max-ambiguous
-      args: !SimpleFlagArg
-        name: MAX_AMBIGUOUS
-      optional: true
-    - !Flag
-      description: Maximun percent of ambiguous bases in a sequence. Sequences exceeding
-        this percent will be removed.
-      synonyms:
-      - --pct-ambiguous
-      args: !SimpleFlagArg
-        name: PCT_AMBIGUOUS
-      optional: true
-    - !Flag
-      description: 'Output file for report [default: stdout]'
-      synonyms:
-      - --report-out
-      args: !SimpleFlagArg
-        name: REPORT_OUT
-      optional: true
-    - !Flag
-      description: Output file to report fate of each sequence
-      synonyms:
-      - --details-out
-      args: !SimpleFlagArg
-        name: DETAILS_OUT
-      optional: true
-    - !Flag
-      description: Do not write comment lines with version and call to start --details-out
-      synonyms:
-      - --no-details-comment
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Minimum quality score within the window defined by --quality-window.
-        [default: same as --min-mean- quality]'
-      synonyms:
-      - --quality-window-mean-qual
-      args: !SimpleFlagArg
-        name: QUALITY_WINDOW_MEAN_QUAL
-      optional: true
-    - !Flag
-      description: 'Proportion of reads within quality window to that must pass filter.
-        Floats are [default: 1.0]'
-      synonyms:
-      - --quality-window-prop
-      args: !SimpleFlagArg
-        name: QUALITY_WINDOW_PROP
-      optional: true
-    - !Flag
-      description: 'Window size for truncating sequences. When set to a non-zero value,
-        sequences are truncated where the mean mean quality within the window drops
-        below --min-mean- quality. [default: 0]'
-      synonyms:
-      - --quality-window
-      args: !SimpleFlagArg
-        name: WINDOW_SIZE
-      optional: true
-    - !Flag
-      description: IUPAC ambiguous primer to require
-      synonyms:
-      - --primer
-      args: !SimpleFlagArg
-        name: PRIMER
-      optional: true
-    - !Flag
-      description: Do not use a primer.
-      synonyms:
-      - --no-primer
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: CSV file containing sample_id,barcode[,primer] in the rows. A single
-        primer for all sequences may be specified with `--primer`, or `--no-primer`
-        may be used to indicate barcodes should be used without a primer check.
-      synonyms:
-      - --barcode-file
-      args: !SimpleFlagArg
-        name: BARCODE_FILE
-      optional: true
-    - !Flag
-      description: 'Barcodes have a header row [default: False]'
-      synonyms:
-      - --barcode-header
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Path to write sequence_id,sample_id pairs
-      synonyms:
-      - --map-out
-      args: !SimpleFlagArg
-        name: SAMPLE_MAP
-      optional: true
-    - !Flag
-      description: 'A string naming an attribute of the csv module defining the quoting
-        behavior for `SAMPLE_MAP`. [default: QUOTE_MINIMAL]'
-      synonyms:
-      - --quoting
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? QUOTE_MINIMAL
-          ? QUOTE_NONE
-          ? QUOTE_NONNUMERIC
-          ? QUOTE_ALL
-      optional: true
-    command:
-    - seqmagick
-    - quality-filter
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: seqmagick quality-filter [-h] [--input-qual INPUT_QUAL]\n \
-      \                               [--report-out REPORT_OUT]\n                \
-      \                [--details-out DETAILS_OUT]\n                             \
-      \   [--no-details-comment]\n                                [--min-mean-quality\
-      \ QUALITY]\n                                [--min-length LENGTH] [--max-length\
-      \ LENGTH]\n                                [--quality-window-mean-qual QUALITY_WINDOW_MEAN_QUAL]\n\
-      \                                [--quality-window-prop QUALITY_WINDOW_PROP]\n\
-      \                                [--quality-window WINDOW_SIZE]\n          \
-      \                      [--ambiguous-action {truncate,drop}]\n              \
-      \                  [--max-ambiguous MAX_AMBIGUOUS]\n                       \
-      \         [--pct-ambiguous PCT_AMBIGUOUS]\n                                [--primer\
-      \ PRIMER | --no-primer]\n                                [--barcode-file BARCODE_FILE]\n\
-      \                                [--barcode-header] [--map-out SAMPLE_MAP]\n\
-      \                                [--quoting {QUOTE_ALL,QUOTE_MINIMAL,QUOTE_NONE,QUOTE_NONNUMERIC}]\n\
-      \                                sequence_file output_file\n\nFilter reads based\
-      \ on quality scores\n\npositional arguments:\n  sequence_file         Input\
-      \ fastq file. A fasta-format file may also be\n                        provided\
-      \ if --input-qual is also specified.\n  output_file           Output file. Format\
-      \ determined from extension.\n\noptional arguments:\n  -h, --help          \
-      \  show this help message and exit\n  --input-qual INPUT_QUAL\n            \
-      \            The quality scores associated with the input file.\n          \
-      \              Only used if input file is fasta.\n  --min-mean-quality QUALITY\n\
-      \                        Minimum mean quality score for each read [default:\n\
-      \                        25.0]\n  --min-length LENGTH   Minimum length to keep\
-      \ sequence [default: 200]\n  --max-length LENGTH   Maximum length to keep before\
-      \ truncating [default:\n                        1000]. This operation occurs\
-      \ before --max-ambiguous\n  --ambiguous-action {truncate,drop}\n           \
-      \             Action to take on ambiguous base in sequence (N's).\n        \
-      \                [default: no action]\n  --max-ambiguous MAX_AMBIGUOUS\n   \
-      \                     Maximum number of ambiguous bases in a sequence.\n   \
-      \                     Sequences exceeding this count will be removed.\n  --pct-ambiguous\
-      \ PCT_AMBIGUOUS\n                        Maximun percent of ambiguous bases\
-      \ in a sequence.\n                        Sequences exceeding this percent will\
-      \ be removed.\n\nOutput:\n  --report-out REPORT_OUT\n                      \
-      \  Output file for report [default: stdout]\n  --details-out DETAILS_OUT\n \
-      \                       Output file to report fate of each sequence\n  --no-details-comment\
-      \  Do not write comment lines with version and call to\n                   \
-      \     start --details-out\n\nQuality window options:\n  --quality-window-mean-qual\
-      \ QUALITY_WINDOW_MEAN_QUAL\n                        Minimum quality score within\
-      \ the window defined by\n                        --quality-window. [default:\
-      \ same as --min-mean-\n                        quality]\n  --quality-window-prop\
-      \ QUALITY_WINDOW_PROP\n                        Proportion of reads within quality\
-      \ window to that must\n                        pass filter. Floats are [default:\
-      \ 1.0]\n  --quality-window WINDOW_SIZE\n                        Window size\
-      \ for truncating sequences. When set to a\n                        non-zero\
-      \ value, sequences are truncated where the mean\n                        mean\
-      \ quality within the window drops below --min-mean-\n                      \
-      \  quality. [default: 0]\n\nBarcode/Primer:\n  --primer PRIMER       IUPAC ambiguous\
-      \ primer to require\n  --no-primer           Do not use a primer.\n  --barcode-file\
-      \ BARCODE_FILE\n                        CSV file containing sample_id,barcode[,primer]\
-      \ in the\n                        rows. A single primer for all sequences may\
-      \ be\n                        specified with `--primer`, or `--no-primer` may\
-      \ be\n                        used to indicate barcodes should be used without\
-      \ a\n                        primer check.\n  --barcode-header      Barcodes\
-      \ have a header row [default: False]\n  --map-out SAMPLE_MAP  Path to write\
-      \ sequence_id,sample_id pairs\n  --quoting {QUOTE_ALL,QUOTE_MINIMAL,QUOTE_NONE,QUOTE_NONNUMERIC}\n\
-      \                        A string naming an attribute of the csv module\n  \
-      \                      defining the quoting behavior for `SAMPLE_MAP`.\n   \
-      \                     [default: QUOTE_MINIMAL]\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: Sequence file
-      position: 0
-      name: sequence_file
-      optional: false
-    named:
-    - !Flag
-      description: Destination file
-      synonyms:
-      - -o
-      - --output-file
-      args: !SimpleFlagArg
-        name: OUTPUT_FILE
-      optional: true
-    - !Flag
-      description: Input format for sequence file
-      synonyms:
-      - --input-format
-      args: !SimpleFlagArg
-        name: INPUT_FORMAT
-      optional: true
-    - !Flag
-      description: 'Include the sequence description in output [default: False]'
-      synonyms:
-      - -d
-      - --include-description
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - seqmagick
-    - extract-ids
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: seqmagick extract-ids [-h] [-o OUTPUT_FILE]\n             \
-      \                [--input-format INPUT_FORMAT] [-d]\n                      \
-      \       sequence_file\n\nExtract the sequence IDs from a file\n\npositional\
-      \ arguments:\n  sequence_file         Sequence file\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n  -o OUTPUT_FILE,\
-      \ --output-file OUTPUT_FILE\n                        Destination file\n  --input-format\
-      \ INPUT_FORMAT\n                        Input format for sequence file\n  -d,\
-      \ --include-description\n                        Include the sequence description\
-      \ in output [default:\n                        False]\n"
-    generated_using: *id003
-  - !Command
+    - backtrans-align
     positional:
     - !Positional
       description: Protein Alignment
@@ -1486,32 +1308,30 @@ parent: &id001 !Command
         name: destination_file
       optional: true
     - !Flag
-      description: 'Translation table to use. [Default: standard- ambiguous]'
+      description: "Translation table to use. [Default: standard-\nambiguous]"
       synonyms:
       - -t
       - --translation-table
       args: !ChoiceFlagArg
         choices: !!set
-          ? vertebrate-mito
           ? standard
           ? standard-ambiguous
+          ? vertebrate-mito
       optional: true
     - !Flag
-      description: 'Action to take on an ambiguous codon [default: fail]'
+      description: "Action to take on an ambiguous codon [default: fail]\n"
       synonyms:
       - -a
       - --fail-action
       args: !ChoiceFlagArg
         choices: !!set
-          ? warn
           ? fail
+          ? warn
           ? none
       optional: true
-    command:
-    - seqmagick
-    - backtrans-align
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1536,7 +1356,8 @@ parent: &id001 !Command
       \                  Translation table to use. [Default: standard-\n         \
       \               ambiguous]\n  -a {fail,warn,none}, --fail-action {fail,warn,none}\n\
       \                        Action to take on an ambiguous codon [default: fail]\n"
-    generated_using: *id003
+    generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -1569,8 +1390,9 @@ parent: &id001 !Command
     \ this help message and exit\n  -V, --version         Print the version number\
     \ and exit\n  -v, --verbose         Be more verbose. Specify -vv or -vvv for even\
     \ more\n  -q, --quiet           Suppress output\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -1691,4 +1513,4 @@ help_text: "usage: seqmagick mogrify [-h] [--line-wrap N]\n                     
   \ from extension)\n  --output-format FORMAT\n                        Output file\
   \ format (default: determine from extension)\n\nFilters using regular expressions\
   \ are case-sensitive by default. Append \"(?i)\"\nto a pattern to make it case-insensitive.\n"
-generated_using: *id003
+generated_using: *id002

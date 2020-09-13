@@ -2,12 +2,12 @@ version 1.0
 
 task CheckmCoverage {
   input {
-    String? extension
+    Directory? extension
     Boolean? all_reads
     Int? min_align
     Int? max_edit_dist
     Int? min_qc
-    String? threads
+    Int? threads
     Boolean? quiet
     String bin_dir
     String output_file
@@ -19,12 +19,12 @@ task CheckmCoverage {
       ~{output_file} \
       ~{bam_files} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
-      ~{true="--all_reads" false="" all_reads} \
+      ~{if (all_reads) then "--all_reads" else ""} \
       ~{if defined(min_align) then ("--min_align " +  '"' + min_align + '"') else ""} \
       ~{if defined(max_edit_dist) then ("--max_edit_dist " +  '"' + max_edit_dist + '"') else ""} \
       ~{if defined(min_qc) then ("--min_qc " +  '"' + min_qc + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     extension: "extension of bins (other files in directory are ignored) (default: fna)"
@@ -37,5 +37,8 @@ task CheckmCoverage {
     bin_dir: "directory containing bins (fasta format)"
     output_file: "print results to file"
     bam_files: "BAM files to parse"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

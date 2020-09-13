@@ -17,4 +17,7 @@ task Dig2 {
     fast_a_sequence_database: ""
     settings: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

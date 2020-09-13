@@ -2,43 +2,46 @@ version 1.0
 
 task FastxClipper {
   input {
-    String? a
-    Boolean? var_1
-    String? l
-    Boolean? n
-    String? var_4
-    Boolean? var_5
-    Boolean? var_6
-    Boolean? o
-    Boolean? v
+    String? o
+    File? i
     Boolean? z
-    String? i
+    Boolean? v
+    Boolean? var_4
+    Boolean? var_5
+    String? var_6
+    Boolean? n
+    String? l
+    Boolean? var_9
+    String? a
   }
   command <<<
     fastx_clipper \
-      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
-      ~{true="-D" false="" var_1} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if (z) then "-z" else ""} \
+      ~{if (v) then "-v" else ""} \
+      ~{if (var_4) then "-C" else ""} \
+      ~{if (var_5) then "-c" else ""} \
+      ~{if defined(var_6) then ("-d " +  '"' + var_6 + '"') else ""} \
+      ~{if (n) then "-n" else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
-      ~{true="-n" false="" n} \
-      ~{if defined(var_4) then ("-d " +  '"' + var_4 + '"') else ""} \
-      ~{true="-c" false="" var_5} \
-      ~{true="-C" false="" var_6} \
-      ~{true="-o" false="" o} \
-      ~{true="-v" false="" v} \
-      ~{true="-z" false="" z} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
+      ~{if (var_9) then "-D" else ""} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
   parameter_meta {
-    a: ""
-    var_1: ""
-    l: ""
-    n: ""
+    o: ""
+    i: ""
+    z: ""
+    v: ""
     var_4: ""
     var_5: ""
     var_6: ""
-    o: ""
-    v: ""
-    z: ""
-    i: ""
+    n: ""
+    l: ""
+    var_9: ""
+    a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

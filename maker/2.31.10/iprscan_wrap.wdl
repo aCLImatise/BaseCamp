@@ -4,4 +4,7 @@ task IprscanWrap {
   command <<<
     iprscan_wrap
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

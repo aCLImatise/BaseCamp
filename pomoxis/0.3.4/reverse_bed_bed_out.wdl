@@ -20,4 +20,7 @@ task ReverseBedBedOut {
     ref_fast_a: ""
     bed_out: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

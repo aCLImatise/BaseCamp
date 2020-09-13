@@ -1,7 +1,10 @@
 version 1.0
 
-task FuCat {
+task Fucat {
   command <<<
-    fu-cat
+    fu_cat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

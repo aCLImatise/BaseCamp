@@ -1,97 +1,106 @@
 class: CommandLineTool
 id: ../../../guidescan_processer.cwl
 inputs:
-- id: path_fasta_file
-  doc: 'path to fasta file or folder with fasta files (will use all .fa, .fasta, .fa.gz,
-    .fasta.gz files found in the folder) (default: None)'
-  type: string
+- id: in_path_fasta_file
+  doc: "path to fasta file or folder with fasta files (will\nuse all .fa, .fasta,\
+    \ .fa.gz, .fasta.gz files found in\nthe folder) (default: None)"
+  type: File
   inputBinding:
     prefix: -f
-- id: project_name_use
-  doc: 'project name, use in all output (will produce a folder with this name containing
-    intermediate and final files in it) (default: myguides)'
-  type: string
+- id: in_project_name_use
+  doc: "project name, use in all output (will produce a folder\nwith this name containing\
+    \ intermediate and final files\nin it) (default: myguides)"
+  type: Directory
   inputBinding:
     prefix: -n
-- id: min_chr
-  doc: 'minimum chromosome length to consider, chromosomes in input FASTA that are
-    shorter than this will be excluded from analysis; simple way to exclude scaffolds
-    unassigned to known chromosomes etc. (default: 10000)'
+- id: in_min_chr
+  doc: "minimum chromosome length to consider, chromosomes in\ninput FASTA that are\
+    \ shorter than this will be\nexcluded from analysis; simple way to exclude\nscaffolds\
+    \ unassigned to known chromosomes etc.\n(default: 10000)"
   type: long
   inputBinding:
     prefix: --minchr
-- id: list_names_chromosomes
-  doc: 'list names of chromosomes (comma separated) that will be used in analysis,
-    or name of file where this list is stored (default: )'
-  type: string
+- id: in_list_names_chromosomes
+  doc: "list names of chromosomes (comma separated) that will\nbe used in analysis,\
+    \ or name of file where this list\nis stored (default: )"
+  type: File
   inputBinding:
     prefix: -c
-- id: desired_length_including
-  doc: 'desired length of guideRNAs (not including PAM) (default: 20)'
+- id: in_desired_length_including
+  doc: "desired length of guideRNAs (not including PAM)\n(default: 20)"
   type: long
   inputBinding:
     prefix: -l
-- id: pam_sequence_default
+- id: in_pam_sequence_default
   doc: 'PAM sequence (default: NGG)'
   type: string
   inputBinding:
     prefix: -p
-- id: alternative_pam_sequences
-  doc: 'alternative PAM sequences (separate multiple ones by commas), will not be
-    used in primary guideRNAs, but will be considered in off-targets; all PAM sequences
-    should be mutually exclusive and of the same length (default: NAG)'
-  type: string
+- id: in_alternative_pam_sequences
+  doc: "alternative PAM sequences (separate multiple ones by\ncommas), will not be\
+    \ used in primary guideRNAs, but\nwill be considered in off-targets; all PAM sequences\n\
+    should be mutually exclusive and of the same length\n(default: NAG)"
+  type: long
   inputBinding:
     prefix: -a
-- id: pam_pos
-  doc: 'position of PAM with respect to guideRNA (default: end)'
+- id: in_pam_pos
+  doc: "position of PAM with respect to guideRNA (default:\nend)"
   type: string
   inputBinding:
     prefix: --pampos
-- id: minimum_mismatch_similarity
-  doc: 'minimum mismatch similarity between guideRNAs; a candidate guideRNA (with
-    primary PAM) should not have alternative occurences in the genome (with any PAM)
-    with less than this many mismatches (not including PAM) (default: 2)'
-  type: string
+- id: in_minimum_mismatch_similarity
+  doc: "minimum mismatch similarity between guideRNAs; a\ncandidate guideRNA (with\
+    \ primary PAM) should not have\nalternative occurences in the genome (with any\
+    \ PAM)\nwith less than this many mismatches (not including\nPAM) (default: 2)"
+  type: long
   inputBinding:
     prefix: -s
-- id: maximum_distance_consider
-  doc: 'maximum distance to consider from guideRNA to its off- target; off-target
-    is an alternative occurrence (with any PAM) of this guideRNA in the genome at
-    edit distance at most this number (including PAM); currently values larger than
-    4 are infeasible for large (e.g., mammalian) genomes, and value 3 will take long
-    time to compute; use -1 if do not want any off- target info in resulting database
-    (can add it later using bamdata) (default: 3)'
-  type: string
+- id: in_maximum_distance_consider
+  doc: "maximum distance to consider from guideRNA to its off-\ntarget; off-target\
+    \ is an alternative occurrence (with\nany PAM) of this guideRNA in the genome\
+    \ at edit\ndistance at most this number (including PAM);\ncurrently values larger\
+    \ than 4 are infeasible for\nlarge (e.g., mammalian) genomes, and value 3 will\
+    \ take\nlong time to compute; use -1 if do not want any off-\ntarget info in resulting\
+    \ database (can add it later\nusing bamdata) (default: 3)"
+  type: long
   inputBinding:
     prefix: -d
-- id: max_off_pos
-  doc: 'maximum number of positions of k-mers to remember; for k-mer occurring multiple
-    times in the genome (such k-mers cannot be guideRNAs, but their positions can
-    be off-targets of guideRNAs) store at most this many arbitrary their occurrences
-    in the genome (default: 10)'
+- id: in_max_off_pos
+  doc: "maximum number of positions of k-mers to remember; for\nk-mer occurring multiple\
+    \ times in the genome (such\nk-mers cannot be guideRNAs, but their positions can\
+    \ be\noff-targets of guideRNAs) store at most this many\narbitrary their occurrences\
+    \ in the genome (default:\n10)"
   type: long
   inputBinding:
     prefix: --maxoffpos
-- id: max_off_count
-  doc: 'maximum number of off-targets to store for a guideRNA in a resulting BAM library
-    (default: 1000)'
+- id: in_max_off_count
+  doc: "maximum number of off-targets to store for a guideRNA\nin a resulting BAM\
+    \ library (default: 1000)"
   type: long
   inputBinding:
     prefix: --maxoffcount
-- id: gnu_path
-  doc: 'path to gnu utilities, e.g. "/usr/local/bin"; if empty, use system defaults;
-    requires: cut, sort, uniq, shuf (default: )'
-  type: string
+- id: in_gnu_path
+  doc: "path to gnu utilities, e.g. \"/usr/local/bin\"; if\nempty, use system defaults;\
+    \ requires: cut, sort, uniq,\nshuf (default: )"
+  type: File
   inputBinding:
     prefix: --gnupath
-- id: how_many_threads
-  doc: 'how many threads to use; do not specify more than you have on your system;
-    currently not implemented (default: 1)'
-  type: string
+- id: in_how_many_threads
+  doc: "how many threads to use; do not specify more than you\nhave on your system;\
+    \ currently not implemented\n(default: 1)\n"
+  type: long
   inputBinding:
     prefix: -t
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_project_name_use
+  doc: "project name, use in all output (will produce a folder\nwith this name containing\
+    \ intermediate and final files\nin it) (default: myguides)"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_project_name_use)
 cwlVersion: v1.1
 baseCommand:
 - guidescan_processer

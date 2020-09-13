@@ -1,18 +1,21 @@
 class: CommandLineTool
 id: ../../../bamtools_index.cwl
 inputs:
-- id: in
+- id: in_in
   doc: the input BAM file [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: bti
-  doc: create (non-standard) BamTools index file (*.bti). Default behavior is to create
-    standard BAM index (*.bai)
+- id: in_bti
+  doc: "create (non-standard) BamTools\nindex file (*.bti). Default behavior is to\n\
+    create standard BAM index (*.bai)"
   type: boolean
   inputBinding:
     prefix: -bti
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bamtools

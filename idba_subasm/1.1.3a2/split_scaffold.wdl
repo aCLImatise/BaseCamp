@@ -11,4 +11,7 @@ task SplitScaffold {
   parameter_meta {
     scaffold_dot_fa: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

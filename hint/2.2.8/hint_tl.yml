@@ -1,12 +1,22 @@
-&id003 !Command
+&id001 !Command
+command:
+- hint
+- tl
 positional: []
 named:
 - !Flag
-  description: The matrix compressed file contains 1Mb and 100kb resolutions Hi-C
-    contact matrix (.hic format), or 1Mb and 100kb resolution files seperate with
-    ',', like /path/to/data_1Mb.cool,/path/to/data_100kb.cool or the directory that
-    contain Hi-C interaction matrix in sparse or dense matrix format, interchromosomal
-    interaction matrices only. Absolute path is required
+  description: '[-c CUTOFF] [-o OUTDIR]'
+  synonyms:
+  - --backdir
+  args: !SimpleFlagArg
+    name: BACKGROUNDINTERCHROMMATRIXDIR
+  optional: true
+- !Flag
+  description: "The matrix compressed file contains 1Mb and 100kb\nresolutions Hi-C\
+    \ contact matrix (.hic format), or 1Mb\nand 100kb resolution files seperate with\
+    \ ',', like\n/path/to/data_1Mb.cool,/path/to/data_100kb.cool or the\ndirectory\
+    \ that contain Hi-C interaction matrix in\nsparse or dense matrix format, interchromosomal\n\
+    interaction matrices only. Absolute path is required"
   synonyms:
   - -m
   - --matrixfile
@@ -14,8 +24,8 @@ named:
     name: MATRIXFILE
   optional: true
 - !Flag
-  description: the reference directory that downloaded from dropbox dropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A
-    ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)
+  description: "the reference directory that downloaded from dropbox\ndropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\n\
+    ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"
   synonyms:
   - --refdir
   args: !SimpleFlagArg
@@ -29,8 +39,8 @@ named:
   args: !ChoiceFlagArg
     choices: !!set
       ? HindIII
-      ? MboI
       ? DpnII
+      ? MboI
   optional: true
 - !Flag
   description: 'Format for the output contact matrix, DEFAULT: cooler'
@@ -50,7 +60,8 @@ named:
     name: PAIRIXPATH
   optional: true
 - !Flag
-  description: 'Specify your species, choose form hg38, hg19, and mm10. DEFAULT: hg19'
+  description: "Specify your species, choose form hg38, hg19, and\nmm10. DEFAULT:\
+    \ hg19"
   synonyms:
   - -g
   - --genome
@@ -61,25 +72,16 @@ named:
       ? hg38
   optional: true
 - !Flag
-  description: Chimeric read pairs with .pairsam format. If no chimeric reads provided,
-    breakpoints in 100kb resolution will be output only
+  description: "Chimeric read pairs with .pairsam format. If no\nchimeric reads provided,\
+    \ breakpoints in 100kb\nresolution will be output only"
   synonyms:
   - --chimeric
   args: !SimpleFlagArg
     name: CHIMERIC
   optional: true
 - !Flag
-  description: Path to the directory of backgroundInterchromMatrixDir, can be downloaded
-    from  https://www.dropbox.com/sh/2ufsyu4wvrboxxp/AABk5-_Fwy7 jdM_t0vIsgYf4a?dl=0.,
-    named as backgroundMatrices, e,g. path_to_/backgroundMatrices/genome
-  synonyms:
-  - --backdir
-  args: !SimpleFlagArg
-    name: BACKGROUNDINTERCHROMMATRIXDIR
-  optional: true
-- !Flag
-  description: Cutoff of the rank product for chromosomal pairs to select candidate
-    translocated chromosomal pairs, default = 0.05
+  description: "Cutoff of the rank product for chromosomal pairs to\nselect candidate\
+    \ translocated chromosomal pairs,\ndefault = 0.05"
   synonyms:
   - -c
   - --cutoff
@@ -87,8 +89,8 @@ named:
     name: CUTOFF
   optional: true
 - !Flag
-  description: Path to the output directory, where you want to store all the output
-    files, if not set, the current directory will be used
+  description: "Path to the output directory, where you want to store\nall the output\
+    \ files, if not set, the current\ndirectory will be used"
   synonyms:
   - -o
   - --outdir
@@ -96,7 +98,7 @@ named:
     name: OUTDIR
   optional: true
 - !Flag
-  description: Prefix for the result files. If not set, 'NA' will be used instead
+  description: "Prefix for the result files. If not set, 'NA' will be\nused instead"
   synonyms:
   - -n
   - --name
@@ -104,30 +106,31 @@ named:
     name: NAME
   optional: true
 - !Flag
-  description: 'Number of threads for running HiNT-tl translocation breakpoints detection
-    part, DEFAULT: 16'
+  description: "Number of threads for running HiNT-tl translocation\nbreakpoints detection\
+    \ part, DEFAULT: 16\n"
   synonyms:
   - -p
   - --threads
   args: !SimpleFlagArg
     name: THREADS
   optional: true
-command:
-- hint
-- tl
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - hint
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - hint
+    - pre
     positional: []
     named:
     - !Flag
-      description: Hi-C raw data with fastq format, two mates seperate with a comma
-        ',', or bam file after alignment.
+      description: "Hi-C raw data with fastq format, two mates seperate\nwith a comma\
+        \ ',', or bam file after alignment."
       synonyms:
       - -d
       - --data
@@ -135,23 +138,23 @@ parent: &id001 !Command
         name: HICDATA
       optional: true
     - !Flag
-      description: the reference directory that downloaded from dropbox dropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A
-        ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)
+      description: "the reference directory that downloaded from dropbox\ndropbox.\
+        \ (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\nABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"
       synonyms:
       - --refdir
       args: !SimpleFlagArg
         name: REFERENCEDIR
       optional: true
     - !Flag
-      description: Path to samtools, e.g./n/app/samtools/1.3.1/bin/samtools
+      description: "Path to samtools,\ne.g./n/app/samtools/1.3.1/bin/samtools"
       synonyms:
       - --samtoolspath
       args: !SimpleFlagArg
         name: SAMTOOLSPATH
       optional: true
     - !Flag
-      description: Path to your BWA aligner, required when your input file(s) is in
-        fastq format, ignore when you input a bam file.
+      description: "Path to your BWA aligner, required when your input\nfile(s) is\
+        \ in fastq format, ignore when you input a\nbam file."
       synonyms:
       - -a
       - --alignerbwa
@@ -159,8 +162,8 @@ parent: &id001 !Command
         name: BWAPATH
       optional: true
     - !Flag
-      description: Path to BWA Index if your input file is fastq format, ignore if
-        your input is bam file.
+      description: "Path to BWA Index if your input file is fastq format,\nignore\
+        \ if your input is bam file."
       synonyms:
       - -i
       - --bwaIndex
@@ -168,8 +171,8 @@ parent: &id001 !Command
         name: BWAINDEX
       optional: true
     - !Flag
-      description: 'Specify your species, choose from hg38, hg19, and mm10. DEFAULT:
-        hg19'
+      description: "Specify your species, choose from hg38, hg19, and\nmm10. DEFAULT:\
+        \ hg19"
       synonyms:
       - -g
       - --genome
@@ -180,7 +183,7 @@ parent: &id001 !Command
           ? hg38
       optional: true
     - !Flag
-      description: "Format for the Hi-C input data, choose from 'fastq' and 'bam',\
+      description: "Format for the Hi-C input data, choose from 'fastq'\nand 'bam',\
         \ DEFAULT: fastq"
       synonyms:
       - --informat
@@ -190,7 +193,7 @@ parent: &id001 !Command
           ? fastq
       optional: true
     - !Flag
-      description: "Format for the output contact matrix, choose from 'cooler' and\
+      description: "Format for the output contact matrix, choose from\n'cooler' and\
         \ 'juicer', DEFAULT: cooler"
       synonyms:
       - --outformat
@@ -200,8 +203,9 @@ parent: &id001 !Command
           ? cooler
       optional: true
     - !Flag
-      description: Generate Hi-C contact matrix in user specified resolution. If not
-        set, HiNT will only output Hi-C contact matrix in 50kb, 100kb, and 1Mb
+      description: "Generate Hi-C contact matrix in user specified\nresolution. If\
+        \ not set, HiNT will only output Hi-C\ncontact matrix in 50kb, 100kb, and\
+        \ 1Mb"
       synonyms:
       - -r
       - --resolution
@@ -209,15 +213,15 @@ parent: &id001 !Command
         name: RESOLUTION
       optional: true
     - !Flag
-      description: Path to cooler tool, required when the format is cool via cooler
+      description: "Path to cooler tool, required when the format is cool\nvia cooler"
       synonyms:
       - --coolerpath
       args: !SimpleFlagArg
         name: COOLERPATH
       optional: true
     - !Flag
-      description: Path to juicer tools, required when the format is hic via juicer
-        tools
+      description: "Path to juicer tools, required when the format is hic\nvia juicer\
+        \ tools"
       synonyms:
       - --juicerpath
       args: !SimpleFlagArg
@@ -231,7 +235,7 @@ parent: &id001 !Command
         name: PAIRSAMPATH
       optional: true
     - !Flag
-      description: Prefix for the result files. If not set, 'NA' will be used instead
+      description: "Prefix for the result files. If not set, 'NA' will be\nused instead"
       synonyms:
       - -n
       - --name
@@ -239,8 +243,8 @@ parent: &id001 !Command
         name: NAME
       optional: true
     - !Flag
-      description: Path to the output directory, where you want to store all the output
-        files, if not set, the current directory will be used
+      description: "Path to the output directory, where you want to store\nall the\
+        \ output files, if not set, the current\ndirectory will be used"
       synonyms:
       - -o
       - --outdir
@@ -248,18 +252,16 @@ parent: &id001 !Command
         name: OUTDIR
       optional: true
     - !Flag
-      description: 'Number of threads for running BWA, DEFAULT: 16'
+      description: "Number of threads for running BWA, DEFAULT: 16\n"
       synonyms:
       - -p
       - --threads
       args: !SimpleFlagArg
         name: THREADS
       optional: true
-    command:
-    - hint
-    - pre
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -312,16 +314,19 @@ parent: &id001 !Command
       \           all the output files, if not set, the current\n                \
       \        directory will be used\n  -p THREADS, --threads THREADS\n         \
       \               Number of threads for running BWA, DEFAULT: 16\n"
-    generated_using: &id002
+    generated_using: &id003
     - --help
   - !Command
+    command:
+    - hint
+    - cnv
     positional: []
     named:
     - !Flag
-      description: The matrix compressed file contains single or multiple resolutions
-        Hi-C contact matrix files (multi-cool, or hic file), resolution should be
-        set via parameter -r; or a sparse | dense format matrix file whole genome
-        widely (not suggest when using a high resolution)
+      description: "The matrix compressed file contains single or multiple\nresolutions\
+        \ Hi-C contact matrix files (multi-cool, or\nhic file), resolution should\
+        \ be set via parameter -r;\nor a sparse | dense format matrix file whole genome\n\
+        widely (not suggest when using a high resolution)"
       synonyms:
       - -m
       - --matrixfile
@@ -329,24 +334,24 @@ parent: &id001 !Command
         name: MATRIXFILE
       optional: true
     - !Flag
-      description: the reference directory that downloaded from dropbox dropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A
-        ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)
+      description: "the reference directory that downloaded from dropbox\ndropbox.\
+        \ (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\nABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"
       synonyms:
       - --refdir
       args: !SimpleFlagArg
         name: REFERENCEDIR
       optional: true
     - !Flag
-      description: 'Choose which ENCODE mappability track should be used for regression.
-        See more details http://genome.ucsc.edu/cgi- bin/hgTrackUi?db=hg18&g=wgEncodeMapability.
-        DEFAULT: 50mer'
+      description: "Choose which ENCODE mappability track should be used\nfor regression.\
+        \ See more details\nhttp://genome.ucsc.edu/cgi-\nbin/hgTrackUi?db=hg18&g=wgEncodeMapability.\
+        \ DEFAULT:\n50mer"
       synonyms:
       - --maptrack
       args: !ChoiceFlagArg
         choices: !!set
-          ? 24mer
-          ? 50mer
           ? 36mer
+          ? 50mer
+          ? 24mer
       optional: true
     - !Flag
       description: /path/to/bicseqDir/
@@ -356,8 +361,8 @@ parent: &id001 !Command
         name: BICSEQ
       optional: true
     - !Flag
-      description: If this switch is on, HiNT will do the iterative regression model
-        by removing copy numer variated regions, DEFAULT=False
+      description: "If this switch is on, HiNT will do the iterative\nregression model\
+        \ by removing copy numer variated\nregions, DEFAULT=False"
       synonyms:
       - --doiter
       args: !EmptyFlagArg {}
@@ -373,20 +378,20 @@ parent: &id001 !Command
           ? cooler
       optional: true
     - !Flag
-      description: enzyme used for the Hi-C experiments, will be used to calculate
-        enzyme sites
+      description: "enzyme used for the Hi-C experiments, will be used to\ncalculate\
+        \ enzyme sites"
       synonyms:
       - -e
       - --enzyme
       args: !ChoiceFlagArg
         choices: !!set
           ? HindIII
-          ? MboI
           ? DpnII
+          ? MboI
       optional: true
     - !Flag
-      description: 'Resolution for the Hi-C contact matrix used for the CNV detection,
-        unit: kb, DEFAULT: 50kb'
+      description: "Resolution for the Hi-C contact matrix used for the\nCNV detection,\
+        \ unit: kb, DEFAULT: 50kb"
       synonyms:
       - -r
       - --resolution
@@ -394,8 +399,8 @@ parent: &id001 !Command
         name: RESOLUTION
       optional: true
     - !Flag
-      description: 'Specify your species, choose form hg38, hg19, and mm10. DEFAULT:
-        hg19'
+      description: "Specify your species, choose form hg38, hg19, and\nmm10. DEFAULT:\
+        \ hg19"
       synonyms:
       - -g
       - --genome
@@ -406,8 +411,8 @@ parent: &id001 !Command
           ? hg38
       optional: true
     - !Flag
-      description: Path to the output directory, where you want to store all the output
-        files, if not set, the current directory will be used
+      description: "Path to the output directory, where you want to store\nall the\
+        \ output files, if not set, the current\ndirectory will be used"
       synonyms:
       - -o
       - --outdir
@@ -415,7 +420,7 @@ parent: &id001 !Command
         name: OUTDIR
       optional: true
     - !Flag
-      description: Prefix for the result files. If not set, 'NA' will be used instead
+      description: "Prefix for the result files. If not set, 'NA' will be\nused instead"
       synonyms:
       - -n
       - --name
@@ -423,18 +428,16 @@ parent: &id001 !Command
         name: NAME
       optional: true
     - !Flag
-      description: 'Number of threads for running HiNT-cnv, DEFAULT: 16'
+      description: "Number of threads for running HiNT-cnv, DEFAULT: 16\n"
       synonyms:
       - -p
       - --threads
       args: !SimpleFlagArg
         name: THREADS
       optional: true
-    command:
-    - hint
-    - cnv
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -482,8 +485,8 @@ parent: &id001 !Command
       \ used\n  -n NAME, --name NAME  Prefix for the result files. If not set, 'NA'\
       \ will be\n                        used instead\n  -p THREADS, --threads THREADS\n\
       \                        Number of threads for running HiNT-cnv, DEFAULT: 16\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -507,8 +510,9 @@ parent: &id001 !Command
     \ as 1bp resolution\n\noptional arguments:\n  -h, --help    show this help message\
     \ and exit\n  --version     show program's version number and exit\n\nFor command\
     \ line options of each command, type: hint COMMAND -h\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -559,4 +563,4 @@ help_text: "usage: hint tl [-h] -m MATRIXFILE --refdir REFERENCEDIR\n           
   \ files. If not set, 'NA' will be\n                        used instead\n  -p THREADS,\
   \ --threads THREADS\n                        Number of threads for running HiNT-tl\
   \ translocation\n                        breakpoints detection part, DEFAULT: 16\n"
-generated_using: *id002
+generated_using: *id003

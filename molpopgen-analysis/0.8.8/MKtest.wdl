@@ -4,4 +4,7 @@ task MKtest {
   command <<<
     MKtest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

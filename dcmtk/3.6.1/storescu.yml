@@ -1,4 +1,6 @@
 !Command
+command:
+- storescu
 positional:
 - !Positional
   description: hostname of DICOM peer
@@ -15,7 +17,55 @@ positional:
   position: 2
   name: dcmfile-in
   optional: false
+- !Positional
+  description: '+IR   --invent-series      [n]umber: integer (implies --invent-instance)'
+  position: 0
+  name: sent
+  optional: false
+- !Positional
+  description: use specified password
+  position: 0
+  name: string
+  optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --quiet              quiet mode, print no warnings and errors
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --verbose            verbose mode, print processing details
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --debug              debug mode, print debug information
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-level          [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
+  synonyms:
+  - -ll
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-config         [f]ilename: string\nuse config file f for the\
+    \ logger"
+  synonyms:
+  - -lc
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --read-dataset       read data set without file meta information
   synonyms:
@@ -23,24 +73,153 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[a]etitle: string set my calling AE title (default: STORESCU)'
+  description: --no-recurse         do not recurse within directories (default)
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[a]etitle: string\nset my calling AE title (default: STORESCU)"
   synonyms:
   - -aet
   - --aetitle
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[a]etitle: string set called AE title of peer (default: ANY-SCP)'
+  description: "[a]etitle: string\nset called AE title of peer (default: ANY-SCP)"
   synonyms:
   - -aec
   - --call
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--config-file        [f]ilename, [p]rofile: string use profile p from
-    config file f'
+  description: "--config-file        [f]ilename, [p]rofile: string\nuse profile p\
+    \ from config file f"
   synonyms:
   - -xf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=   --propose-uncompr       propose all uncompressed TS, explicit\
+    \ VR\nwith local byte ordering first (default)"
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-little        propose all uncompressed TS, explicit VR\n\
+    little endian first"
+  synonyms:
+  - -xe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-big           propose all uncompressed TS, explicit VR\n\
+    big endian first"
+  synonyms:
+  - -xb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --propose-implicit      propose implicit VR little endian TS only
+  synonyms:
+  - -xi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-lossless      propose default JPEG lossless TS\nand all\
+    \ uncompressed transfer syntaxes"
+  synonyms:
+  - -xs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-jpeg8         propose default JPEG lossy TS for 8 bit data\n\
+    and all uncompressed transfer syntaxes"
+  synonyms:
+  - -xy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-jpeg12        propose default JPEG lossy TS for 12 bit data\n\
+    and all uncompressed transfer syntaxes"
+  synonyms:
+  - -xx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-j2k-lossless  propose JPEG 2000 lossless TS\nand all uncompressed\
+    \ transfer syntaxes"
+  synonyms:
+  - -xv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-j2k-lossy     propose JPEG 2000 lossy TS\nand all uncompressed\
+    \ transfer syntaxes"
+  synonyms:
+  - -xw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-jls-lossless  propose JPEG-LS lossless TS\nand all uncompressed\
+    \ transfer syntaxes"
+  synonyms:
+  - -xt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-jls-lossy     propose JPEG-LS lossy TS\nand all uncompressed\
+    \ transfer syntaxes"
+  synonyms:
+  - -xu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --propose-mpeg2         propose MPEG2 Main Profile @ Main Level TS
+    only
+  synonyms:
+  - -xm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --propose-mpeg2-high    propose MPEG2 Main Profile @ High Level TS
+    only
+  synonyms:
+  - -xh
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --propose-mpeg4         propose MPEG4 AVC/H.264 HP / Level 4.1 TS only
+  synonyms:
+  - -xn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --propose-mpeg4-bd      propose MPEG4 AVC/H.264 BD-compatible TS only
+  synonyms:
+  - -xl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-rle           propose RLE lossless TS\nand all uncompressed\
+    \ transfer syntaxes"
+  synonyms:
+  - -xr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--propose-deflated      propose deflated expl. VR little endian TS\n\
+    and all uncompressed transfer syntaxes"
+  synonyms:
+  - -xd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--required              propose only required presentation contexts\n\
+    (default: propose all supported)"
+  synonyms:
+  - -R
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -50,15 +229,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[u]ser name: string authenticate using user name u'
+  description: "[u]ser name: string\nauthenticate using user name u"
   synonyms:
   - -usr
   - --user
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[p]assword: string (only with --user) authenticate using password
-    p'
+  description: "[p]assword: string (only with --user)\nauthenticate using password\
+    \ p"
   synonyms:
   - -pwd
   - --password
@@ -72,10 +251,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--kerberos           [f]ilename: string read kerberos ticket from
-    file f --saml               [f]ilename: string read SAML request from file f'
+  description: "--kerberos           [f]ilename: string\nread kerberos ticket from\
+    \ file f"
   synonyms:
   - -kt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[f]ilename: string\nread SAML request from file f"
+  synonyms:
+  - --saml
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -83,6 +268,74 @@ named:
   synonyms:
   - -rsp
   - --pos-response
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--timeout            [s]econds: integer (default: unlimited)\ntimeout\
+    \ for connection requests"
+  synonyms:
+  - -to
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--acse-timeout       [s]econds: integer (default: 30)\ntimeout for\
+    \ ACSE messages"
+  synonyms:
+  - -ta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--dimse-timeout      [s]econds: integer (default: unlimited)\ntimeout\
+    \ for DIMSE messages"
+  synonyms:
+  - -td
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to\
+    \ n bytes (default: 16384)"
+  synonyms:
+  - -pdu
+  - --max-pdu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[n]umber of bytes: integer (4096..131072)\nrestrict max send pdu to\
+    \ n bytes"
+  synonyms:
+  - --max-send-pdu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[n]umber: integer\nrepeat n times"
+  synonyms:
+  - --repeat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: abort association instead of releasing it
+  synonyms:
+  - --abort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--no-halt            do not halt if unsuccessful store encountered\n\
+    (default: do halt)"
+  synonyms:
+  - -nh
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --uid-padding        silently correct space-padded UIDs
+  synonyms:
+  - -up
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use normal TCP/IP connection (default)
+  synonyms:
+  - -tls
+  - --disable-tls
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -123,13 +376,22 @@ named:
   - -ic
   args: !EmptyFlagArg {}
   optional: true
-command:
-- storescu
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: --help               print this help text and exit
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: storescu v3.6.1 2016-11-02 $\n\nstorescu: DICOM storage (C-STORE)\
   \ SCU\nusage: storescu [options] peer port dcmfile-in...\n\nparameters:\n  peer\
   \                         hostname of DICOM peer\n  port                       \

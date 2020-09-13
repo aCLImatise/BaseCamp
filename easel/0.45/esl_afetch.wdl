@@ -1,26 +1,28 @@
 version 1.0
 
-task EslAfetch {
+task Eslafetch {
   input {
     Boolean? second_cmdline_arg
-    String? output_alignments_file
-    Boolean? output_alignment_file
+    File? output_alignments_file
+    File? output_alignment_file
     String? in_format
     String? out_format
     Boolean? index
     String msa_file
+    String name_file
     String name
   }
   command <<<
-    esl-afetch \
+    esl_afetch \
       ~{msa_file} \
+      ~{name_file} \
       ~{name} \
-      ~{true="-f" false="" second_cmdline_arg} \
+      ~{if (second_cmdline_arg) then "-f" else ""} \
       ~{if defined(output_alignments_file) then ("-o " +  '"' + output_alignments_file + '"') else ""} \
-      ~{true="-O" false="" output_alignment_file} \
+      ~{if (output_alignment_file) then "-O" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
-      ~{true="--index" false="" index}
+      ~{if (index) then "--index" else ""}
   >>>
   parameter_meta {
     second_cmdline_arg: ": second cmdline arg is a file of names to retrieve"
@@ -30,6 +32,12 @@ task EslAfetch {
     out_format: ": output fetched alignment(s) in format <s>  [Stockholm]"
     index: ": index the <msafile>, creating <msafile>.ssi"
     msa_file: ""
+    name_file: ""
     name: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_alignments_file = "${in_output_alignments_file}"
+    File out_output_alignment_file = "${in_output_alignment_file}"
   }
 }

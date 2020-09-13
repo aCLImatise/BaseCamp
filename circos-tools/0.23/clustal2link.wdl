@@ -11,4 +11,7 @@ task Clustal2link {
   parameter_meta {
     aln: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

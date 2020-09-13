@@ -4,4 +4,7 @@ task HailctlAuth {
   command <<<
     hailctl auth
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

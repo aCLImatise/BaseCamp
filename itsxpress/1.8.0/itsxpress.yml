@@ -1,43 +1,109 @@
 !Command
+command:
+- itsxpress
 positional: []
 named:
+- !Flag
+  description: "A .fastq, .fq, .fastq.gz or .fq.gz file. Interleaved\nor not."
+  synonyms:
+  - --fastq
+  - -f
+  args: !SimpleFlagArg
+    name: FASTQ
+  optional: true
+- !Flag
+  description: "A flag to specify that the FASTQ file is single-ended\n(not paired).\
+    \ Default is false."
+  synonyms:
+  - --single_end
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A .fastq, .fq, .fastq.gz or .fq.gz file. representing\nread 2 (optional)"
+  synonyms:
+  - --fastq2
+  - -f2
+  args: !SimpleFlagArg
+    name: FASTQ2
+  optional: true
+- !Flag
+  description: "the trimmed Fastq file, if it ends in 'gz' it will be\ngzipped"
+  synonyms:
+  - --outfile
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: "the trimmed read 2 Fastq file, if it ends in 'gz' it\nwill be gzipped.\
+    \ If provided, reads will be returned\nunmerged."
+  synonyms:
+  - --outfile2
+  - -o2
+  args: !SimpleFlagArg
+    name: OUTFILE2
+  optional: true
+- !Flag
+  description: The temp file directory
+  synonyms:
+  - --tempdir
+  args: !SimpleFlagArg
+    name: TEMPDIR
+  optional: true
+- !Flag
+  description: Should intermediate files be kept?
+  synonyms:
+  - --keeptemp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --region
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? ITS2
+      ? ITS1
+      ? ALL
+  optional: true
 - !Flag
   description: The taxonomic group sequenced.
   synonyms:
   - --taxa
   args: !ChoiceFlagArg
     choices: !!set
-      ? Bacillariophyta
-      ? Fungi
-      ? Rhizaria
-      ? Phaeophyceae
-      ? Haptophyceae
-      ? Metazoa
-      ? Tracheophyta
-      ? All
-      ? Bryophyta
-      ? Marchantiophyta
-      ? Oomycota
-      ? Chlorophyta
-      ? Raphidophyceae
-      ? Eustigmatophyceae
-      ? Alveolata
       ? Rhodophyta
-      ? Amoebozoa
+      ? Raphidophyceae
+      ? Alveolata
       ? Euglenozoa
+      ? Eustigmatophyceae
+      ? Tracheophyta
+      ? Chlorophyta
+      ? Fungi
+      ? All
+      ? Metazoa
       ? Synurophyceae
+      ? Marchantiophyta
+      ? Phaeophyceae
+      ? Rhizaria
+      ? Oomycota
+      ? Bryophyta
+      ? Bacillariophyta
+      ? Amoebozoa
+      ? Haptophyceae
   optional: true
 - !Flag
-  description: The percent identity for clustering reads range [0.99-1.0], set to
-    1 for exact dereplication.
+  description: "The percent identity for clustering reads range\n[0.99-1.0], set to\
+    \ 1 for exact dereplication."
   synonyms:
   - --cluster_id
   args: !SimpleFlagArg
     name: CLUSTER_ID
   optional: true
 - !Flag
-  description: Primers are in reverse orientation as in Taylor et al. 2016, DOI:10.1128/AEM.02576-16.
-    If selected ITSxpress returns trimmed reads flipped to the forward orientation
+  description: "Primers are in reverse orientation as in Taylor et al.\n2016, DOI:10.1128/AEM.02576-16.\
+    \ If selected ITSxpress\nreturns trimmed reads flipped to the forward\norientation"
   synonyms:
   - --reversed_primers
   - -rp
@@ -57,40 +123,14 @@ named:
   args: !SimpleFlagArg
     name: THREADS
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --fastq
-  args: !SimpleFlagArg
-    name: FASTQ
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --single_end
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --fastq2
-  args: !SimpleFlagArg
-    name: FASTQ2
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --outfile
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- itsxpress
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:

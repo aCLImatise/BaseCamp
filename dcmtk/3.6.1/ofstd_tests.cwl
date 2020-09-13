@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../ofstd_tests.cwl
 inputs:
-- id: list
+- id: in_list
   doc: list available tests and exit
   type: boolean
   inputBinding:
     prefix: --list
-- id: exhaustive
+- id: in_exhaustive
   doc: also run extensive and slow tests
   type: boolean
   inputBinding:
     prefix: --exhaustive
-- id: verbose
+- id: in_verbose
   doc: verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: tests_to_run
+- id: in_tests_to_run
   doc: 'names of tests to run (default: all)'
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ofstd_tests

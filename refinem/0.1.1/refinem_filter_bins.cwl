@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../refinem_filter_bins.cwl
 inputs:
-- id: genome_ext
-  doc: 'extension of genomes (other files in directory are ignored) (default: fna)'
-  type: string
+- id: in_genome_ext
+  doc: "extension of genomes (other files in directory are\nignored) (default: fna)"
+  type: Directory
   inputBinding:
     prefix: --genome_ext
-- id: modified_only
+- id: in_modified_only
   doc: only copy modified bins to the output folder
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: --modified_only
-- id: silent
+- id: in_silent
   doc: suppress output of logger
   type: boolean
   inputBinding:
     prefix: --silent
-- id: genome_nt_dir
-  doc: directory containing nucleotide scaffolds for each genome
+- id: in_genome_nt_dir
+  doc: directory containing nucleotide scaffolds for each
   type: string
   inputBinding:
     position: 0
-- id: filter_file
-  doc: file specifying scaffolds to remove
+- id: in_genome
+  doc: filter_file           file specifying scaffolds to remove
   type: string
   inputBinding:
     position: 1
-- id: output_dir
+- id: in_output_dir
   doc: output directory
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_modified_only
+  doc: only copy modified bins to the output folder
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_modified_only)
 cwlVersion: v1.1
 baseCommand:
 - refinem

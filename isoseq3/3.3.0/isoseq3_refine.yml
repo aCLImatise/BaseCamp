@@ -1,9 +1,22 @@
-&id001 !Command
+&id002 !Command
+command:
+- isoseq3
+- refine
 positional:
 - !Positional
   description: ''
   position: 0
+  name: flnc.bam|xml
+  optional: false
+- !Positional
+  description: ''
+  position: 0
   name: isoseq
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: STR
   optional: false
 - !Positional
   description: ''
@@ -13,7 +26,32 @@ positional:
 - !Positional
   description: ''
   position: 2
+  name: Input
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: Output
+  optional: false
+- !Positional
+  description: ''
+  position: 2
   name: ccs.demux.bam|xml
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: demuxed
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: flnc
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: primer
   optional: false
 - !Positional
   description: ''
@@ -23,7 +61,32 @@ positional:
 - !Positional
   description: ''
   position: 4
-  name: flnc.bam|xml
+  name: FASTA
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: ccs
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: BAM
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: BarcodeSet
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: or
+  optional: false
+- !Positional
+  description: ''
+  position: 7
+  name: ConsensusReadSet
   optional: false
 named:
 - !Flag
@@ -65,23 +128,168 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- isoseq3
-- refine
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - isoseq3
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - isoseq3
+    - collapse
+    positional:
+    - !Positional
+      description: STR    Collapsed transcripts in FASTQ
+      position: 0
+      name: out.fastq
+      optional: false
+    named:
+    - !Flag
+      description: FLOAT  Ignore alignments with less than minimum query read coverage.
+        [0.99]
+      synonyms:
+      - --min-aln-coverage
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: FLOAT  Ignore alignments with less than minimum alignment identity.
+        [0.95]
+      synonyms:
+      - --min-aln-identity
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: INT    Ignore mismatches or indels shorter than or equal to N.
+        [5]
+      synonyms:
+      - --max-fuzzy-junction
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: INT    Number of threads to use, 0 means autodetection. [0]
+      synonyms:
+      - -j
+      - --num-threads
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN,
+        FATAL). [WARN]'
+      synonyms:
+      - --log-level
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: FILE   Log to a file, instead of stderr.
+      synonyms:
+      - --log-file
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this help and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Show application version and exit.
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "isoseq collapse - Collapse transcripts based on genomic mapping\n\n\
+      Usage:\n  isoseq collapse [options] <alignments.bam|xml> <ccs.bam|xml> <out.fastq>\n\
+      \n  alignments.bam|xml    STR    Alignments mapping Transcripts to reference\
+      \ genome\n  ccs.bam|xml           STR    CCS BAM, optional input\n  out.fastq\
+      \             STR    Collapsed transcripts in FASTQ\n\nAlignment Filter Options:\n\
+      \  --min-aln-coverage    FLOAT  Ignore alignments with less than minimum query\
+      \ read coverage. [0.99]\n  --min-aln-identity    FLOAT  Ignore alignments with\
+      \ less than minimum alignment identity. [0.95]\n\nCollapse Options:\n  --max-fuzzy-junction\
+      \  INT    Ignore mismatches or indels shorter than or equal to N. [5]\n\n  -h,--help\
+      \                    Show this help and exit.\n  --version                 \
+      \   Show application version and exit.\n  -j,--num-threads      INT    Number\
+      \ of threads to use, 0 means autodetection. [0]\n  --log-level           STR\
+      \    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n\
+      \  --log-file            FILE   Log to a file, instead of stderr.\n\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - isoseq3
+    - summarize
+    positional:
+    - !Positional
+      description: STR   Output summary CSV
+      position: 0
+      name: summary.csv
+      optional: false
+    named:
+    - !Flag
+      description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN,
+        FATAL). [WARN]'
+      synonyms:
+      - --log-level
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: FILE  Log to a file, instead of stderr.
+      synonyms:
+      - --log-file
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this help and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Show application version and exit.
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "isoseq summarize - Create barcode overview from transcripts (POLISHED\
+      \ to CSV)\n\nUsage:\n  isoseq summarize [options] <polished.bam|xml> <summary.csv>\n\
+      \n  polished.bam|xml  STR   Input polished BAM or TranscriptSet XML\n  summary.csv\
+      \       STR   Output summary CSV\n\nOptions:\n  -h,--help               Show\
+      \ this help and exit.\n  --version               Show application version and\
+      \ exit.\n  --log-level       STR   Set log level. Valid choices: (TRACE, DEBUG,\
+      \ INFO, WARN, FATAL). [WARN]\n  --log-file        FILE  Log to a file, instead\
+      \ of stderr.\n\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - isoseq3
+    - cluster
     positional:
     - !Positional
       description: ''
       position: 0
       name: isoseq
+      optional: false
+    - !Positional
+      description: ''
+      position: 0
+      name: unpolished.bam|xml
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: STR
       optional: false
     - !Positional
       description: ''
@@ -91,12 +299,42 @@ parent: &id002 !Command
     - !Positional
       description: ''
       position: 2
+      name: Input
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
       name: flnc.bam|xml
       optional: false
     - !Positional
       description: ''
       position: 3
-      name: unpolished.bam|xml
+      name: flnc
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: unpolished
+      optional: false
+    - !Positional
+      description: ''
+      position: 4
+      name: BAM
+      optional: false
+    - !Positional
+      description: ''
+      position: 5
+      name: or
+      optional: false
+    - !Positional
+      description: ''
+      position: 6
+      name: ConsensusReadSet
+      optional: false
+    - !Positional
+      description: ''
+      position: 6
+      name: TranscriptSet
       optional: false
     named:
     - !Flag
@@ -158,11 +396,9 @@ parent: &id002 !Command
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - isoseq3
-    - cluster
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this help and exit.
       synonyms:
@@ -193,14 +429,26 @@ parent: &id002 !Command
       \ level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
       \            FILE  Log to a file, instead of stderr.\n  -v,--verbose       \
       \         Use verbose output.\n\n"
-    generated_using: &id003
-    - --help
+    generated_using: *id003
   - !Command
+    command:
+    - isoseq3
+    - polish
     positional:
     - !Positional
       description: ''
       position: 0
       name: isoseq
+      optional: false
+    - !Positional
+      description: ''
+      position: 0
+      name: polished.bam|xml
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: STR
       optional: false
     - !Positional
       description: ''
@@ -210,7 +458,27 @@ parent: &id002 !Command
     - !Positional
       description: ''
       position: 2
+      name: Input
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: Output
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
       name: unpolished.bam|xml
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: polished
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: subread
       optional: false
     - !Positional
       description: ''
@@ -219,8 +487,28 @@ parent: &id002 !Command
       optional: false
     - !Positional
       description: ''
+      position: 3
+      name: unpolished
+      optional: false
+    - !Positional
+      description: ''
       position: 4
-      name: polished.bam|xml
+      name: BAM
+      optional: false
+    - !Positional
+      description: ''
+      position: 5
+      name: or
+      optional: false
+    - !Positional
+      description: ''
+      position: 6
+      name: SubreadSet
+      optional: false
+    - !Positional
+      description: ''
+      position: 6
+      name: TranscriptSet
       optional: false
     named:
     - !Flag
@@ -264,11 +552,9 @@ parent: &id002 !Command
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - isoseq3
-    - polish
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this help and exit.
       synonyms:
@@ -297,138 +583,7 @@ parent: &id002 !Command
       \ [WARN]\n  --log-file          FILE   Log to a file, instead of stderr.\n \
       \ -v,--verbose               Use verbose output.\n\n"
     generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: STR   Output summary CSV
-      position: 0
-      name: summary.csv
-      optional: false
-    named:
-    - !Flag
-      description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN,
-        FATAL). [WARN]'
-      synonyms:
-      - --log-level
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: FILE  Log to a file, instead of stderr.
-      synonyms:
-      - --log-file
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - isoseq3
-    - summarize
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: Show this help and exit.
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: Show application version and exit.
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "isoseq summarize - Create barcode overview from transcripts (POLISHED\
-      \ to CSV)\n\nUsage:\n  isoseq summarize [options] <polished.bam|xml> <summary.csv>\n\
-      \n  polished.bam|xml  STR   Input polished BAM or TranscriptSet XML\n  summary.csv\
-      \       STR   Output summary CSV\n\nOptions:\n  -h,--help               Show\
-      \ this help and exit.\n  --version               Show application version and\
-      \ exit.\n  --log-level       STR   Set log level. Valid choices: (TRACE, DEBUG,\
-      \ INFO, WARN, FATAL). [WARN]\n  --log-file        FILE  Log to a file, instead\
-      \ of stderr.\n\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: STR    Collapsed transcripts in FASTQ
-      position: 0
-      name: out.fastq
-      optional: false
-    named:
-    - !Flag
-      description: FLOAT  Ignore alignments with less than minimum query read coverage.
-        [0.99]
-      synonyms:
-      - --min-aln-coverage
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: FLOAT  Ignore alignments with less than minimum alignment identity.
-        [0.95]
-      synonyms:
-      - --min-aln-identity
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: INT    Ignore mismatches or indels shorter than or equal to N.
-        [5]
-      synonyms:
-      - --max-fuzzy-junction
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: INT    Number of threads to use, 0 means autodetection. [0]
-      synonyms:
-      - -j
-      - --num-threads
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN,
-        FATAL). [WARN]'
-      synonyms:
-      - --log-level
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: FILE   Log to a file, instead of stderr.
-      synonyms:
-      - --log-file
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - isoseq3
-    - collapse
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: Show this help and exit.
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: Show application version and exit.
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "isoseq collapse - Collapse transcripts based on genomic mapping\n\n\
-      Usage:\n  isoseq collapse [options] <alignments.bam|xml> <ccs.bam|xml> <out.fastq>\n\
-      \n  alignments.bam|xml    STR    Alignments mapping Transcripts to reference\
-      \ genome\n  ccs.bam|xml           STR    CCS BAM, optional input\n  out.fastq\
-      \             STR    Collapsed transcripts in FASTQ\n\nAlignment Filter Options:\n\
-      \  --min-aln-coverage    FLOAT  Ignore alignments with less than minimum query\
-      \ read coverage. [0.99]\n  --min-aln-identity    FLOAT  Ignore alignments with\
-      \ less than minimum alignment identity. [0.95]\n\nCollapse Options:\n  --max-fuzzy-junction\
-      \  INT    Ignore mismatches or indels shorter than or equal to N. [5]\n\n  -h,--help\
-      \                    Show this help and exit.\n  --version                 \
-      \   Show application version and exit.\n  -j,--num-threads      INT    Number\
-      \ of threads to use, 0 means autodetection. [0]\n  --log-level           STR\
-      \    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n\
-      \  --log-file            FILE   Log to a file, instead of stderr.\n\n"
-    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Show this help and exit.
     synonyms:
@@ -470,6 +625,7 @@ parent: &id002 !Command
     \ out.gff\n   or $ isoseq3 collapse aligned.sorted.bam movie.ccs.bam out.gff\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this help and exit.
   synonyms:

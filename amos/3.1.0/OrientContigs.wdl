@@ -2,13 +2,13 @@ version 1.0
 
 task OrientContigs {
   input {
-    Boolean? b
-    Boolean? all
-    Boolean? no_reduce
-    Boolean? agressive
-    Int? redundancy
-    File? repeats
     Boolean? skip
+    File? repeats
+    Int? redundancy
+    Boolean? agressive
+    Boolean? no_reduce
+    Boolean? all
+    Boolean? b
     String? an_k
     String bank_name
   }
@@ -16,23 +16,26 @@ task OrientContigs {
     OrientContigs \
       ~{an_k} \
       ~{bank_name} \
-      ~{true="-b" false="" b} \
-      ~{true="-all" false="" all} \
-      ~{true="-noreduce" false="" no_reduce} \
-      ~{true="-agressive" false="" agressive} \
-      ~{if defined(redundancy) then ("-redundancy " +  '"' + redundancy + '"') else ""} \
+      ~{if (skip) then "-skip" else ""} \
       ~{if defined(repeats) then ("-repeats " +  '"' + repeats + '"') else ""} \
-      ~{true="-skip" false="" skip}
+      ~{if defined(redundancy) then ("-redundancy " +  '"' + redundancy + '"') else ""} \
+      ~{if (agressive) then "-agressive" else ""} \
+      ~{if (no_reduce) then "-noreduce" else ""} \
+      ~{if (all) then "-all" else ""} \
+      ~{if (b) then "-b" else ""}
   >>>
   parameter_meta {
-    b: ""
-    all: ""
-    no_reduce: ""
-    agressive: ""
-    redundancy: ""
-    repeats: ""
     skip: ""
+    repeats: ""
+    redundancy: ""
+    agressive: ""
+    no_reduce: ""
+    all: ""
+    b: ""
     an_k: ""
     bank_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../phyluce_align_format_concatenated_phylip_for_paml.cwl
 inputs:
-- id: phylip_alignment
-  doc: The PATH to a PHYLIP-formatted alignment
-  type: string
+- id: in_var_0
+  doc: ''
+  type: boolean
   inputBinding:
     prefix: --phylip-alignment
-- id: config
-  doc: The PATH to a config file containing partition information (RAxML-formatted)
-  type: string
-  inputBinding:
-    prefix: --config
-- id: output
-  doc: The PATH to an output file (will be PHYLIP formatted)
+- id: in_output
+  doc: ''
   type: string
   inputBinding:
     prefix: --output
-- id: verbosity
+- id: in_config
+  doc: "The PATH to a config file containing partition\ninformation (RAxML-formatted)"
+  type: File
+  inputBinding:
+    prefix: --config
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-outputs: []
+- id: in__config_config
+  doc: --config CONFIG
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_align_format_concatenated_phylip_for_paml

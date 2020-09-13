@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../dumpBlob.cwl
 inputs:
-- id: b
+- id: in_b
   doc: ''
-  type: string
+  type: File
   inputBinding:
     prefix: -b
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dumpBlob

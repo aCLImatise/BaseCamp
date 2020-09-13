@@ -4,4 +4,7 @@ task VcfMelt {
   command <<<
     vcf_melt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

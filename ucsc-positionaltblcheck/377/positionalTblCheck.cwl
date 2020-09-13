@@ -1,22 +1,15 @@
 class: CommandLineTool
 id: ../../../positionalTblCheck.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: n>=2, print tables as checked
-  type: string
+  type: long
   inputBinding:
     prefix: -verbose
-- id: db
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: table
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - positionalTblCheck

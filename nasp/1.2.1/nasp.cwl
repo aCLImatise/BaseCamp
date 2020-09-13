@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../nasp.cwl
 inputs:
-- id: config
+- id: in_config
   doc: Path to the configuration xml file.
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nasp

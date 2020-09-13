@@ -1,7 +1,10 @@
 version 1.0
 
-task FuLen {
+task Fulen {
   command <<<
-    fu-len
+    fu_len
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

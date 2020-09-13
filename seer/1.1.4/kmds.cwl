@@ -1,72 +1,85 @@
 class: CommandLineTool
 id: ../../../kmds.cwl
 inputs:
-- id: arg_dsm_kmer
-  doc: '[ --kmers ] arg       dsm kmer output file (not needed if using  --mds_concat)'
-  type: boolean
+- id: in_arg_dsm_kmer
+  doc: '[ --kmers ] arg       dsm kmer output file (not needed if using'
+  type: File
   inputBinding:
     prefix: -k
-- id: _arg_metadata
+- id: in_mds_concat
+  doc: )
+  type: boolean
+  inputBinding:
+    prefix: --mds_concat
+- id: in_arg_pheno_metadata
   doc: '[ --pheno ] arg       .pheno metadata'
   type: boolean
   inputBinding:
     prefix: -p
-- id: arg_output_prefix
+- id: in_arg_output_prefix
   doc: '[ --output ] arg      output prefix for new dsm file'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: no_mds
+- id: in_no_mds
   doc: do not perform MDS; output subsampled matrix instead
   type: boolean
   inputBinding:
     prefix: --no_mds
-- id: write_distances
+- id: in_write_distances
   doc: write csv of distance matrix
   type: boolean
   inputBinding:
     prefix: --write_distances
-- id: mds_concat
-  doc: list of subsampled matrices to use in MDS. Performs  only MDS; implies --no_filtering
-  type: string
-  inputBinding:
-    prefix: --mds_concat
-- id: pc
+- id: in_pc
   doc: (=10)           number of principal coordinates to output
-  type: string
+  type: long
   inputBinding:
     prefix: --pc
-- id: size
+- id: in_size
   doc: (=1000000)    number of kmers to use in MDS
-  type: string
+  type: long
   inputBinding:
     prefix: --size
-- id: threads
+- id: in_threads
   doc: '(=1)       number of threads. Suggested: 8'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: no_filtering
-  doc: turn off all filtering and do not output new kmer  file
+- id: in_no_filtering
+  doc: turn off all filtering and do not output new kmer
   type: boolean
   inputBinding:
     prefix: --no_filtering
-- id: max_length
-  doc: (=100)  maximum kmer length
-  type: string
-  inputBinding:
-    prefix: --max_length
-- id: maf
+- id: in_maf
   doc: (=0.01)        minimum kmer frequency
-  type: string
+  type: double
   inputBinding:
     prefix: --maf
-- id: min_words
+- id: in_min_words
   doc: minimum kmer occurences. Overrides --maf
   type: string
   inputBinding:
     prefix: --min_words
-outputs: []
+- id: in_file
+  doc: --max_length arg (=100)  maximum kmer length
+  type: File
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_dsm_kmer
+  doc: '[ --kmers ] arg       dsm kmer output file (not needed if using'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_dsm_kmer)
+- id: out_arg_output_prefix
+  doc: '[ --output ] arg      output prefix for new dsm file'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_prefix)
 cwlVersion: v1.1
 baseCommand:
 - kmds

@@ -1,80 +1,67 @@
 class: CommandLineTool
 id: ../../../tripaille_analysis_load_interpro.cwl
 inputs:
-- id: interpro_parameters
-  doc: InterProScan parameters used to produce these results
+- id: in_interpro_parameters
+  doc: InterProScan parameters used to produce these
   type: string
   inputBinding:
     prefix: --interpro_parameters
-- id: query_re
-  doc: The regular expression that can uniquely identify the query name. This parameters
-    is required if the feature name is not the first word in the blast query name.
-  type: string
-  inputBinding:
-    prefix: --query_re
-- id: query_type
-  doc: The feature type (e.g. 'gene', 'mRNA', 'contig') of the query. It must be a
-    valid Sequence Ontology term.
+- id: in_query_type
+  doc: "The feature type (e.g. 'gene', 'mRNA', 'contig')\nof the query. It must be\
+    \ a valid Sequence\nOntology term."
   type: string
   inputBinding:
     prefix: --query_type
-- id: query_unique_name
-  doc: Use this if the query_re regular expression matches unique names instead of
-    names in the database.
+- id: in_query_unique_name
+  doc: "Use this if the query_re regular expression\nmatches unique names instead\
+    \ of names in the\ndatabase."
   type: boolean
   inputBinding:
     prefix: --query_uniquename
-- id: parse_go
+- id: in_parse_go
   doc: Load GO annotation to the database
   type: boolean
   inputBinding:
     prefix: --parse_go
-- id: no_wait
+- id: in_no_wait
   doc: Do not wait for job to complete
   type: boolean
   inputBinding:
     prefix: --no_wait
-- id: algorithm
+- id: in_algorithm
   doc: analysis algorithm
   type: string
   inputBinding:
     prefix: --algorithm
-- id: source_version
+- id: in_source_version
   doc: analysis sourceversion
   type: string
   inputBinding:
     prefix: --sourceversion
-- id: source_uri
+- id: in_source_uri
   doc: analysis sourceuri
   type: string
   inputBinding:
     prefix: --sourceuri
-- id: description
+- id: in_description
   doc: analysis description
   type: string
   inputBinding:
     prefix: --description
-- id: date_executed
+- id: in_date_executed
   doc: analysis date_executed (yyyy-mm-dd)
   type: string
   inputBinding:
     prefix: --date_executed
-- id: name
-  doc: ''
+- id: in_results
+  doc: --query_re TEXT             The regular expression that can uniquely
   type: string
   inputBinding:
     position: 0
-- id: program
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: program_version
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tripaille

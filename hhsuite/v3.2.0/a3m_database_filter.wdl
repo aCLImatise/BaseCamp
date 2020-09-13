@@ -2,28 +2,28 @@ version 1.0
 
 task A3mDatabaseFilter {
   input {
-    Boolean? i
-    Boolean? o
     Boolean? s
-    String? var_3
-    String? var_4
+    Boolean? o
+    Boolean? i
+    Int? ff_index_a_three_m_database_prefix
     String? filter
   }
   command <<<
     a3m_database_filter \
-      ~{var_3} \
-      ~{var_4} \
+      ~{ff_index_a_three_m_database_prefix} \
       ~{filter} \
-      ~{true="-i" false="" i} \
-      ~{true="-o" false="" o} \
-      ~{true="-s" false="" s}
+      ~{if (s) then "-s" else ""} \
+      ~{if (o) then "-o" else ""} \
+      ~{if (i) then "-i" else ""}
   >>>
   parameter_meta {
-    i: ""
-    o: ""
     s: ""
-    var_3: ""
-    var_4: ""
+    o: ""
+    i: ""
+    ff_index_a_three_m_database_prefix: ""
     filter: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

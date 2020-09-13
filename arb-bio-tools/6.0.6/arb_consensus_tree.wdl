@@ -14,4 +14,7 @@ task ArbConsensusTree {
     write_consensus_tree: "write consensus tree to outfile"
     tree: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

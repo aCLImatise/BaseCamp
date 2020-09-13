@@ -2,8 +2,8 @@ version 1.0
 
 task ProbeMatch {
   input {
-    String? max_dist
-    String? outfile
+    Int? max_dist
+    File? outfile
     String primer_match
     String primer_list_vertical_line_primer_file
     String seq_file
@@ -22,5 +22,9 @@ task ProbeMatch {
     primer_match: ""
     primer_list_vertical_line_primer_file: ""
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
   }
 }

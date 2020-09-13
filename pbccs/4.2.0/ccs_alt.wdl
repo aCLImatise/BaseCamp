@@ -1,6 +1,6 @@
 version 1.0
 
-task CcsAlt {
+task Ccsalt {
   input {
     Boolean? min_passes
     Boolean? min_snr
@@ -17,30 +17,38 @@ task CcsAlt {
     Boolean? num_threads
     Boolean? log_level
     Boolean? log_file
-    String ccs
-    String in_dot_sub_reads_dot_bam_vertical_line_xml
     String out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml
+    String ccs
+    File file
+    String in_dot_sub_reads_dot_bam_vertical_line_xml
+    String consensus
+    String sub_reads
+    String reads
   }
   command <<<
-    ccs-alt \
-      ~{ccs} \
-      ~{in_dot_sub_reads_dot_bam_vertical_line_xml} \
+    ccs_alt \
       ~{out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml} \
-      ~{true="--min-passes" false="" min_passes} \
-      ~{true="--min-snr" false="" min_snr} \
-      ~{true="--min-length" false="" min_length} \
-      ~{true="--max-length" false="" max_length} \
-      ~{true="--chunk" false="" chunk} \
-      ~{true="--max-chunks" false="" max_chunks} \
-      ~{true="--model-path" false="" model_path} \
-      ~{true="--model-spec" false="" model_spec} \
-      ~{true="--by-strand" false="" by_strand} \
-      ~{true="--skip-polish" false="" skip_polish} \
-      ~{true="--min-rq" false="" min_rq} \
-      ~{true="--report-file" false="" report_file} \
-      ~{true="--num-threads" false="" num_threads} \
-      ~{true="--log-level" false="" log_level} \
-      ~{true="--log-file" false="" log_file}
+      ~{ccs} \
+      ~{file} \
+      ~{in_dot_sub_reads_dot_bam_vertical_line_xml} \
+      ~{consensus} \
+      ~{sub_reads} \
+      ~{reads} \
+      ~{if (min_passes) then "--min-passes" else ""} \
+      ~{if (min_snr) then "--min-snr" else ""} \
+      ~{if (min_length) then "--min-length" else ""} \
+      ~{if (max_length) then "--max-length" else ""} \
+      ~{if (chunk) then "--chunk" else ""} \
+      ~{if (max_chunks) then "--max-chunks" else ""} \
+      ~{if (model_path) then "--model-path" else ""} \
+      ~{if (model_spec) then "--model-spec" else ""} \
+      ~{if (by_strand) then "--by-strand" else ""} \
+      ~{if (skip_polish) then "--skip-polish" else ""} \
+      ~{if (min_rq) then "--min-rq" else ""} \
+      ~{if (report_file) then "--report-file" else ""} \
+      ~{if (num_threads) then "--num-threads" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_file) then "--log-file" else ""}
   >>>
   parameter_meta {
     min_passes: "INT    Minimum number of full-length subreads required to generate CCS for a ZMW. [3]"
@@ -58,8 +66,15 @@ task CcsAlt {
     num_threads: "INT    Number of threads to use, 0 means autodetection. [0]"
     log_level: "STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]"
     log_file: "FILE   Log to a file, instead of stderr."
-    ccs: ""
-    in_dot_sub_reads_dot_bam_vertical_line_xml: ""
     out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml: ""
+    ccs: ""
+    file: ""
+    in_dot_sub_reads_dot_bam_vertical_line_xml: ""
+    consensus: ""
+    sub_reads: ""
+    reads: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

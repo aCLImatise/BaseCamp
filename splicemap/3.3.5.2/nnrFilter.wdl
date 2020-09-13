@@ -4,4 +4,7 @@ task NnrFilter {
   command <<<
     nnrFilter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

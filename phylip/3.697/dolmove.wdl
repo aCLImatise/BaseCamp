@@ -4,4 +4,7 @@ task Dolmove {
   command <<<
     dolmove
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

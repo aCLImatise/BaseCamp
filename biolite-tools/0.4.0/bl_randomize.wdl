@@ -1,6 +1,6 @@
 version 1.0
 
-task BlRandomize {
+task Blrandomize {
   input {
     Boolean? specify_multiple_input_files
     Boolean? specify_multiple_output_files
@@ -9,12 +9,12 @@ task BlRandomize {
     String randomize
   }
   command <<<
-    bl-randomize \
+    bl_randomize \
       ~{randomize} \
-      ~{true="-i" false="" specify_multiple_input_files} \
-      ~{true="-o" false="" specify_multiple_output_files} \
-      ~{true="-r" false="" use_order_readorder} \
-      ~{true="-w" false="" write_random_order}
+      ~{if (specify_multiple_input_files) then "-i" else ""} \
+      ~{if (specify_multiple_output_files) then "-o" else ""} \
+      ~{if (use_order_readorder) then "-r" else ""} \
+      ~{if (write_random_order) then "-w" else ""}
   >>>
   parameter_meta {
     specify_multiple_input_files: "specify multiple INPUT files"
@@ -22,5 +22,8 @@ task BlRandomize {
     use_order_readorder: "use the order in READ-ORDER instead of a random order"
     write_random_order: "write the random order to WRITE-ORDER"
     randomize: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

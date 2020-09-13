@@ -2,8 +2,8 @@ version 1.0
 
 task GoalignShuffle {
   input {
-    String? shuffled_file_default
-    String? align
+    File? shuffled_alignment_output
+    File? align
     Boolean? auto_detect
     Boolean? clustal
     Boolean? ignore_identical
@@ -18,23 +18,23 @@ task GoalignShuffle {
   }
   command <<<
     goalign shuffle \
-      ~{if defined(shuffled_file_default) then ("--output " +  '"' + shuffled_file_default + '"') else ""} \
+      ~{if defined(shuffled_alignment_output) then ("--output " +  '"' + shuffled_alignment_output + '"') else ""} \
       ~{if defined(align) then ("--align " +  '"' + align + '"') else ""} \
-      ~{true="--auto-detect" false="" auto_detect} \
-      ~{true="--clustal" false="" clustal} \
-      ~{true="--ignore-identical" false="" ignore_identical} \
-      ~{true="--input-strict" false="" input_strict} \
-      ~{true="--nexus" false="" nexus} \
-      ~{true="--no-block" false="" no_block} \
-      ~{true="--one-line" false="" one_line} \
-      ~{true="--output-strict" false="" output_strict} \
-      ~{true="--phylip" false="" phylip} \
+      ~{if (auto_detect) then "--auto-detect" else ""} \
+      ~{if (clustal) then "--clustal" else ""} \
+      ~{if (ignore_identical) then "--ignore-identical" else ""} \
+      ~{if (input_strict) then "--input-strict" else ""} \
+      ~{if (nexus) then "--nexus" else ""} \
+      ~{if (no_block) then "--no-block" else ""} \
+      ~{if (one_line) then "--one-line" else ""} \
+      ~{if (output_strict) then "--output-strict" else ""} \
+      ~{if (phylip) then "--phylip" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    shuffled_file_default: "Shuffled alignment output file (default \"stdout\")"
-    align: "Alignment input file (default \"stdin\")"
+    shuffled_alignment_output: "Shuffled alignment output file (default \\\"stdout\\\")"
+    align: "Alignment input file (default \\\"stdin\\\")"
     auto_detect: "Auto detects input format (overrides -p, -x and -u)"
     clustal: "Alignment is in clustal? default fasta"
     ignore_identical: "Ignore duplicated sequences that have the same name and same sequences"
@@ -46,5 +46,9 @@ task GoalignShuffle {
     phylip: "Alignment is in phylip? default fasta"
     seed: "Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)"
     threads: "Number of threads (default 1)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_shuffled_alignment_output = "${in_shuffled_alignment_output}"
   }
 }

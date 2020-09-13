@@ -2,16 +2,19 @@ version 1.0
 
 task Pynnotator {
   input {
+    Int? b
     String? i
-    String? b
   }
   command <<<
     pynnotator \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
     b: ""
+    i: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

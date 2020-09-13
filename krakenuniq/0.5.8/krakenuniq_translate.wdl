@@ -1,17 +1,20 @@
 version 1.0
 
-task KrakenuniqTranslate {
+task Krakenuniqtranslate {
   input {
-    String? db
     Boolean? mpa_format
+    String? db
   }
   command <<<
-    krakenuniq-translate \
-      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{true="--mpa-format" false="" mpa_format}
+    krakenuniq_translate \
+      ~{if (mpa_format) then "--mpa-format" else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
   parameter_meta {
-    db: ""
     mpa_format: ""
+    db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

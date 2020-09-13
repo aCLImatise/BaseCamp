@@ -4,4 +4,7 @@ task Degapseq {
   command <<<
     degapseq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

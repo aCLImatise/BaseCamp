@@ -2,9 +2,9 @@ version 1.0
 
 task Seqstat {
   input {
-    Boolean? report_persequence_info
+    Boolean? report_info_just
     Boolean? gc_comp
-    String? in_format
+    File? in_format
     Boolean? quiet
     Boolean? options
     String seq_file
@@ -12,18 +12,21 @@ task Seqstat {
   command <<<
     seqstat \
       ~{seq_file} \
-      ~{true="-a" false="" report_persequence_info} \
-      ~{true="--gccomp" false="" gc_comp} \
+      ~{if (report_info_just) then "-a" else ""} \
+      ~{if (gc_comp) then "--gccomp" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="-options" false="" options}
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
-    report_persequence_info: ": report per-sequence info, not just a summary"
+    report_info_just: ": report per-sequence info, not just a summary"
     gc_comp: ": with -a, include GC composition in report (DNA/RNA only)"
     in_format: ": specify sequence file format <s>"
     quiet: ": suppress verbose header (used in regression testing)"
     options: ""
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

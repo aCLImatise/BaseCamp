@@ -1,57 +1,55 @@
 class: CommandLineTool
 id: ../../../kmergenie.cwl
 inputs:
-- id: diploid
+- id: in_diploid
   doc: 'use the diploid model (default: haploid model)'
   type: boolean
   inputBinding:
     prefix: --diploid
-- id: one_pass
+- id: in_one_pass
   doc: 'skip the second pass to estimate k at 2 bp resolution (default: two passes)'
   type: boolean
   inputBinding:
     prefix: --one-pass
-- id: largest_kmer_size
+- id: in_largest_kmer_size
   doc: 'largest k-mer size to consider (default: 121)'
-  type: string
+  type: long
   inputBinding:
     prefix: -k
-- id: smallest_kmer_size
+- id: in_smallest_kmer_size
   doc: 'smallest k-mer size to consider (default: 15)'
-  type: string
+  type: long
   inputBinding:
     prefix: -l
-- id: interval_consecutive_kmer
+- id: in_interval_consecutive_kmer
   doc: 'interval between consecutive kmer sizes (default: 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: -s
-- id: kmer_sampling_value
+- id: in_kmer_sampling_value
   doc: 'k-mer sampling value (default: auto-detected to use ~200 MB memory/thread)'
-  type: string
+  type: long
   inputBinding:
     prefix: -e
-- id: number_threads_default
+- id: in_number_threads_default
   doc: 'number of threads (default: number of cores minus one)'
-  type: string
+  type: long
   inputBinding:
     prefix: -t
-- id: prefix_output_files
+- id: in_prefix_output_files
   doc: 'prefix of the output files (default: histograms)'
   type: string
   inputBinding:
     prefix: -o
-- id: debug
+- id: in_debug
   doc: developer output of R scripts
   type: boolean
   inputBinding:
     prefix: --debug
-- id: read_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - kmergenie

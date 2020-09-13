@@ -1,4 +1,6 @@
 !Command
+command:
+- dsr2xml
 positional:
 - !Positional
   description: DICOM SR input filename to be converted
@@ -11,6 +13,12 @@ positional:
   name: xmlfile-out
   optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet                 quiet mode, print no warnings and errors
   synonyms:
@@ -30,15 +38,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-level             [l]evel: string constant (fatal, error, warn,
-    info, debug, trace) use level l for the logger'
+  description: "--log-level             [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
   synonyms:
   - -ll
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-config            [f]ilename: string use config file f for the
-    logger'
+  description: "--log-config            [f]ilename: string\nuse config file f for\
+    \ the logger"
   synonyms:
   - -lc
   args: !EmptyFlagArg {}
@@ -91,7 +99,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: accept invalid content item value (e.g. violation of VR or VM definition)
+  description: "accept invalid content item value\n(e.g. violation of VR or VM definition)"
   synonyms:
   - -Ev
   - --invalid-item-value
@@ -105,8 +113,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: do not abort on content item errors, just warn (e.g. missing value
-    type specific attributes)
+  description: "do not abort on content item errors, just warn\n(e.g. missing value\
+    \ type specific attributes)"
   synonyms:
   - -Ee
   - --ignore-item-errors
@@ -126,20 +134,22 @@ named:
   - --disable-vr-checker
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dsr2xml
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help                  print this help text and exit --version               print
-    version information and exit --arguments             print expanded command line
-    arguments
+  description: --help                  print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dsr2xml v3.6.1 2016-11-02 $\n\ndsr2xml: Convert DICOM SR file\
   \ and data set to XML\nusage: dsr2xml [options] dsrfile-in [xmlfile-out]\n\nparameters:\n\
   \  dsrfile-in                     DICOM SR input filename to be converted\n  xmlfile-out\

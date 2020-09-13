@@ -2,10 +2,10 @@ version 1.0
 
 task DlcparToDlcoal {
   input {
-    String? stree
+    File? stree
     String? s_map
-    String? input_ext
-    String? output_ext
+    File? input_ext
+    File? output_ext
     String dlc_par_to_dl_coal
     String is
     String a
@@ -37,8 +37,8 @@ task DlcparToDlcoal {
   parameter_meta {
     stree: "species tree file in newick format"
     s_map: "gene to species map"
-    input_ext: "input file extension (default: \".tree\")"
-    output_ext: "output file extension (default: \"\")"
+    input_ext: "input file extension (default: \\\".tree\\\")"
+    output_ext: "output file extension (default: \\\"\\\")"
     dlc_par_to_dl_coal: ""
     is: ""
     a: ""
@@ -49,5 +49,9 @@ task DlcparToDlcoal {
     reconciliations: ""
     to: ""
     dl_coal: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_ext = "${in_output_ext}"
   }
 }

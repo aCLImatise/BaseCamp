@@ -4,4 +4,7 @@ task Pee {
   command <<<
     pee
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

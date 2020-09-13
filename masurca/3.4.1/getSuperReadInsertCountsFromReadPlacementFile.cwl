@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../getSuperReadInsertCountsFromReadPlacementFile.cwl
 inputs:
-- id: input
+- id: in_input
   doc: Input file (/dev/fd/0)
   type: File
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: Output file (/dev/fd/1)
   type: File
   inputBinding:
     prefix: --output
-- id: fib
+- id: in_fib
   doc: Use fibonacci encoding of the names (false)
   type: boolean
   inputBinding:
     prefix: --fib
-- id: bloom
+- id: in_bloom
   doc: Use a bloom filter to remove unique super-reads (false)
   type: boolean
   inputBinding:
     prefix: --bloom
-- id: number_reads
+- id: in_number_reads
   doc: Estimated number of super-reads (1000000)
-  type: string
+  type: long
   inputBinding:
     prefix: --number-reads
-- id: cmdline_parse
+- id: in_cmdline_parse
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Output file (/dev/fd/1)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - getSuperReadInsertCountsFromReadPlacementFile

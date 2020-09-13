@@ -1,17 +1,17 @@
 version 1.0
 
-task ReadSeqReverseComp {
+task ReadSeqReversecomp {
   input {
     Boolean? check
     String? format
-    String? in_file
-    String? outfile
+    File? in_file
+    File? outfile
     String rev_complement
   }
   command <<<
-    ReadSeq reverse-comp \
+    ReadSeq reverse_comp \
       ~{rev_complement} \
-      ~{true="--check" false="" check} \
+      ~{if (check) then "--check" else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
@@ -22,5 +22,9 @@ task ReadSeqReverseComp {
     in_file: "input fasta file"
     outfile: "output fasta file"
     rev_complement: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
   }
 }

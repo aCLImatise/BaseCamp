@@ -8,13 +8,13 @@ task MetaProSIP {
     File? out_peptide_centric_csv
     File? in_feature_xml
     File? r_executable
-    String? mz_tolerance_ppm
-    String? rt_tolerance_s
-    String? intensity_threshold
-    String? correlation_threshold
-    String? xic_threshold
-    String? decomposition_threshold
-    String? weight_merge_window
+    Int? mz_tolerance_ppm
+    Int? rt_tolerance_s
+    Int? intensity_threshold
+    Float? correlation_threshold
+    File? xic_threshold
+    Float? decomposition_threshold
+    Int? weight_merge_window
     String? plot_extension
     Directory? qc_output_directory
     String? labeling_element
@@ -24,7 +24,7 @@ task MetaProSIP {
     Boolean? filter_mono_isotopic
     Boolean? cluster
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -46,15 +46,15 @@ task MetaProSIP {
       ~{if defined(plot_extension) then ("-plot_extension " +  '"' + plot_extension + '"') else ""} \
       ~{if defined(qc_output_directory) then ("-qc_output_directory " +  '"' + qc_output_directory + '"') else ""} \
       ~{if defined(labeling_element) then ("-labeling_element " +  '"' + labeling_element + '"') else ""} \
-      ~{true="-use_unassigned_ids" false="" use_unassigned_ids} \
-      ~{true="-use_averagine_ids" false="" use_averag_in_e_ids} \
-      ~{true="-report_natural_peptides" false="" report_natural_peptides} \
-      ~{true="-filter_monoisotopic" false="" filter_mono_isotopic} \
-      ~{true="-cluster" false="" cluster} \
+      ~{if (use_unassigned_ids) then "-use_unassigned_ids" else ""} \
+      ~{if (use_averag_in_e_ids) then "-use_averagine_ids" else ""} \
+      ~{if (report_natural_peptides) then "-report_natural_peptides" else ""} \
+      ~{if (filter_mono_isotopic) then "-filter_monoisotopic" else ""} \
+      ~{if (cluster) then "-cluster" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in_mzm_l: "*                  Centroided MS1 data (valid formats: 'mzML')"
@@ -82,5 +82,9 @@ task MetaProSIP {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_qc_output_directory = "${in_qc_output_directory}"
   }
 }

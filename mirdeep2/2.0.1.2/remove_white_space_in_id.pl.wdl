@@ -1,7 +1,10 @@
 version 1.0
 
-task RemoveWhiteSpaceInId.pl.orig {
+task RemoveWhiteSpaceInIdpl {
   command <<<
-    remove_white_space_in_id.pl.orig
+    remove_white_space_in_id_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

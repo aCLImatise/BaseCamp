@@ -26,4 +26,7 @@ task ChromosomerTransferOutput {
     annotation: ""
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

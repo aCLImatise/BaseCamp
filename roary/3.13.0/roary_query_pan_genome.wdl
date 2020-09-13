@@ -1,11 +1,11 @@
 version 1.0
 
-task RoaryQueryPanGenome {
+task RoaryqueryPanGenome {
   input {
-    String? groups_filename
+    File? groups_filename
     String? action_unionintersectioncomplementgenemultifastadifference
     Float? percentage_isolates_gene
-    String? output_filename
+    File? output_filename
     String? comma_separated_list
     String? comma_separated_one
     String? comma_separated_two
@@ -13,7 +13,7 @@ task RoaryQueryPanGenome {
     String query_pan_genome
   }
   command <<<
-    roary-query_pan_genome \
+    roary_query_pan_genome \
       ~{query_pan_genome} \
       ~{if defined(groups_filename) then ("-g " +  '"' + groups_filename + '"') else ""} \
       ~{if defined(action_unionintersectioncomplementgenemultifastadifference) then ("-a " +  '"' + action_unionintersectioncomplementgenemultifastadifference + '"') else ""} \
@@ -22,7 +22,7 @@ task RoaryQueryPanGenome {
       ~{if defined(comma_separated_list) then ("-n " +  '"' + comma_separated_list + '"') else ""} \
       ~{if defined(comma_separated_one) then ("-i " +  '"' + comma_separated_one + '"') else ""} \
       ~{if defined(comma_separated_two) then ("-t " +  '"' + comma_separated_two + '"') else ""} \
-      ~{true="-v" false="" verbose_output_stdout}
+      ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
   parameter_meta {
     groups_filename: "groups filename [clustered_proteins]"
@@ -34,5 +34,9 @@ task RoaryQueryPanGenome {
     comma_separated_two: "comma separated list of filenames, comparison set two"
     verbose_output_stdout: "verbose output to STDOUT"
     query_pan_genome: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_filename = "${in_output_filename}"
   }
 }

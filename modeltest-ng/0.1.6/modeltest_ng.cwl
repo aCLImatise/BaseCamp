@@ -1,206 +1,217 @@
 class: CommandLineTool
 id: ../../../modeltest_ng.cwl
 inputs:
-- id: datatype
+- id: in_datatype
   doc: sets the data type
   type: string
   inputBinding:
     prefix: --datatype
-- id: input
+- id: in_input
   doc: sets the input alignment file (FASTA or PHYLIP format, required)
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: pipes the output into a file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: processes
+- id: in_processes
   doc: sets the number of processors to use (shared memory)
-  type: string
+  type: long
   inputBinding:
     prefix: --processes
-- id: partitions
+- id: in_partitions
   doc: sets a partitioning scheme
-  type: string
+  type: File
   inputBinding:
     prefix: --partitions
-- id: rng_seed
+- id: in_rng_seed
   doc: sets the seed for the random number generator
-  type: string
+  type: long
   inputBinding:
     prefix: --rngseed
-- id: topology
+- id: in_topology
   doc: sets the starting topology
   type: string
   inputBinding:
     prefix: --topology
-- id: utree
+- id: in_utree
   doc: sets a user tree
-  type: string
+  type: File
   inputBinding:
     prefix: --utree
-- id: force
+- id: in_force
   doc: force output overriding
   type: boolean
   inputBinding:
     prefix: --force
-- id: disable_checkpoint
+- id: in_disable_checkpoint
   doc: disable checkpoint writing
   type: boolean
   inputBinding:
     prefix: --disable-checkpoint
-- id: asc_bias
-  doc: '[:values]     includes ascertainment bias correction check modeltest manual
-    for more information'
+- id: in_asc_bias
+  doc: "[:values]     includes ascertainment bias correction\ncheck modeltest manual\
+    \ for more information"
   type: string
   inputBinding:
     prefix: --asc-bias
-- id: frequencies
-  doc: '[ef]                sets the candidate models frequencies e: estimated - maximum
-    likelihood (DNA) / empirical (AA) f: fixed - equal (DNA) / model defined (AA)'
+- id: in_frequencies
+  doc: "[ef]                sets the candidate models frequencies\ne: estimated -\
+    \ maximum likelihood (DNA) / empirical (AA)\nf: fixed - equal (DNA) / model defined\
+    \ (AA)"
   type: boolean
   inputBinding:
     prefix: --frequencies
-- id: models
-  doc: "sets the candidate model matrices separated by commas. use '+' or '-' prefix\
-    \ for updating the default list. e.g., \"-m JTT,LG\" evaluates JTT and LG only\
-    \ . \"-m +LG4X,+LG4M,-LG\" adds LG4 models and removes LG and from the list. dna:\
-    \ *JC *HKY *TrN *TPM1 *TPM2 *TPM3 *TIM1 *TIM2 *TIM3 *TVM *GTR protein: *DAYHOFF\
-    \ *LG *DCMUT *JTT *MTREV *WAG *RTREV *CPREV *VT *BLOSUM62 *MTMAM *MTART *MTZOA\
-    \ *PMB *HIVB *HIVW *JTT-DCMUT *FLU *STMTREV LG4M LG4X GTR * included by default"
-  type: string
+- id: in_models
+  doc: "sets the candidate model matrices separated by commas.\nuse '+' or '-' prefix\
+    \ for updating the default list.\ne.g., \"-m JTT,LG\" evaluates JTT and LG only\
+    \ .\n\"-m +LG4X,+LG4M,-LG\" adds LG4 models and removes LG and from the list.\n\
+    dna: *JC *HKY *TrN *TPM1 *TPM2 *TPM3\n*TIM1 *TIM2 *TIM3 *TVM *GTR\nprotein: *DAYHOFF\
+    \ *LG *DCMUT *JTT *MTREV *WAG *RTREV *CPREV\n*VT *BLOSUM62 *MTMAM *MTART *MTZOA\
+    \ *PMB *HIVB *HIVW\n*JTT-DCMUT *FLU *STMTREV LG4M LG4X GTR\n* included by default"
+  type: long
   inputBinding:
     prefix: --models
-- id: schemes
-  doc: '[3|5|7|11|203]          sets the number of predefined DNA substitution schemes
-    evaluated 3:   JC/F81, K80/HKY, SYM/GTR 5:   + TrNef/TrN, TPM1/TPM1uf 7:   + TIM1ef/TIM1,
-    TVMef/TVM 11:  + TPM2/TPM2uf, TPM3/TPM3uf, TIM2ef/TIM2, TIM3ef/TIM3 203: All possible
-    GTR submatrices'
+- id: in_schemes
+  doc: "[3|5|7|11|203]          sets the number of predefined DNA substitution schemes\
+    \ evaluated\n3:   JC/F81, K80/HKY, SYM/GTR\n5:   + TrNef/TrN, TPM1/TPM1uf\n7:\
+    \   + TIM1ef/TIM1, TVMef/TVM\n11:  + TPM2/TPM2uf, TPM3/TPM3uf, TIM2ef/TIM2, TIM3ef/TIM3\n\
+    203: All possible GTR submatrices"
   type: boolean
   inputBinding:
     prefix: --schemes
-- id: template
-  doc: '[tool]                 sets candidate models according to a specified tool
-    raxml                  RAxML (DNA 3 schemes / AA full search) phyml                  PhyML
-    (DNA full search / 14 AA matrices) mrbayes                MrBayes (DNA 3 schemes
-    / 8 AA matrices) paup                   PAUP* (DNA full search / AA full search)'
+- id: in_template
+  doc: '[tool]                 sets candidate models according to a specified tool'
   type: boolean
   inputBinding:
     prefix: --template
-- id: eps
+- id: in_eps
   doc: sets the model optimization epsilon
   type: string
   inputBinding:
     prefix: --eps
-- id: to_l
+- id: in_to_l
   doc: sets the parameter optimization tolerance
   type: string
   inputBinding:
     prefix: --tol
-- id: smooth_frequencies
+- id: in_smooth_frequencies
   doc: forces frequencies smoothing
   type: boolean
   inputBinding:
     prefix: --smooth-frequencies
-- id: gamma_rates
-  doc: '[a|g]               sets gamma rates mode a                  uses the average
-    (or mean) per category (default) m                  uses the median per category'
+- id: in_gamma_rates
+  doc: "[a|g]               sets gamma rates mode\na                  uses the average\
+    \ (or mean) per category (default)\nm                  uses the median per category"
   type: boolean
   inputBinding:
     prefix: --gamma-rates
-- id: no_compress
-  doc: disables pattern compression modeltest ignores if there are missing states
+- id: in_no_compress
+  doc: "disables pattern compression\nmodeltest ignores if there are missing states"
   type: boolean
   inputBinding:
     prefix: --no-compress
-- id: keep_params
+- id: in_keep_params
   doc: keep branch lengths fixed
   type: boolean
   inputBinding:
     prefix: --keep-params
-- id: verbose
+- id: in_verbose
   doc: run in verbose mode
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: nt
+- id: in_nt
   doc: nucleotide
   type: string
   inputBinding:
     position: 0
-- id: aa
+- id: in_aa
   doc: amino acid
   type: string
   inputBinding:
     position: 1
-- id: ml
+- id: in_ml
   doc: maximum likelihood
   type: string
   inputBinding:
     position: 2
-- id: mp
+- id: in_mp
   doc: maximum parsimony
   type: string
   inputBinding:
     position: 3
-- id: fixed_ml_jc
+- id: in_fixed_ml_jc
   doc: fixed maximum likelihood (JC)
   type: string
   inputBinding:
     position: 4
-- id: fixed_ml_gtr
+- id: in_fixed_ml_gtr
   doc: fixed maximum likelihood (GTR)
   type: string
   inputBinding:
     position: 5
-- id: fixed_mp
+- id: in_fixed_mp
   doc: fixed maximum parsimony (default)
   type: string
   inputBinding:
     position: 6
-- id: random
+- id: in_random
   doc: random generated tree
   type: string
   inputBinding:
     position: 7
-- id: user
+- id: in_user
   doc: fixed user defined (requires -u argument)
   type: string
   inputBinding:
     position: 8
-- id: lewis
+- id: in_lewis
   doc: Lewis (2001)
   type: string
   inputBinding:
     position: 0
-- id: felsenstein
-  doc: Felsenstein requires number of invariant sites
+- id: in_felsenstein
+  doc: "Felsenstein\nrequires number of invariant sites"
   type: string
   inputBinding:
     position: 1
-- id: stam_a_takis
-  doc: Leaché et al. (2015) requires invariant sites composition
+- id: in_stam_a_takis
+  doc: "Leaché et al. (2015)\nrequires invariant sites composition"
   type: string
   inputBinding:
     position: 2
-- id: if_ok
-  doc: if OK,
+- id: in_ra_xml
+  doc: RAxML (DNA 3 schemes / AA full search)
   type: string
   inputBinding:
-    position: 0
-- id: minor_problems_eg
-  doc: if minor problems (e.g., invalid arguments or data),
+    position: 3
+- id: in_phy_ml
+  doc: PhyML (DNA full search / 14 AA matrices)
   type: string
   inputBinding:
-    position: 1
-- id: serious_trouble_eg
-  doc: if serious trouble (e.g., execution crashed).
+    position: 4
+- id: in_mr_bayes
+  doc: MrBayes (DNA 3 schemes / 8 AA matrices)
   type: string
   inputBinding:
-    position: 2
-outputs: []
+    position: 5
+- id: in_paup
+  doc: PAUP* (DNA full search / AA full search)
+  type: string
+  inputBinding:
+    position: 6
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: pipes the output into a file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - modeltest-ng

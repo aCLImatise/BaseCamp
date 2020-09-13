@@ -1,7 +1,10 @@
 version 1.0
 
-task RsatSupportedOrganisms {
+task Rsatsupportedorganisms {
   command <<<
-    rsat-supported-organisms
+    rsat_supported_organisms
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

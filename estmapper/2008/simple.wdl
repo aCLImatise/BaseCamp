@@ -4,4 +4,7 @@ task Simple {
   command <<<
     simple
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

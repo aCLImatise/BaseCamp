@@ -2,19 +2,25 @@ version 1.0
 
 task PairSequences {
   input {
-    String? tsv_file_patientsampleclustertype
-    String? msa_file_containing
-    String? output_file_final
+    File? tsv_file_patientsampleclustertype
+    File? msa_file_containing
+    String? o
+    String sequences
   }
   command <<<
     pair_sequences \
+      ~{sequences} \
       ~{if defined(tsv_file_patientsampleclustertype) then ("-i " +  '"' + tsv_file_patientsampleclustertype + '"') else ""} \
       ~{if defined(msa_file_containing) then ("-s " +  '"' + msa_file_containing + '"') else ""} \
-      ~{if defined(output_file_final) then ("-o " +  '"' + output_file_final + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
     tsv_file_patientsampleclustertype: "tsv file of patient/sample/cluster/type mapping"
-    msa_file_containing: "MSA file containing the alignments between patient-sample sequences"
-    output_file_final: "Output file for final pairs"
+    msa_file_containing: "MSA file containing the alignments between patient-sample"
+    o: ""
+    sequences: "-o pairs     Output file for final pairs"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,21 +1,21 @@
 version 1.0
 
-task ImfusionCtg {
+task Imfusionctg {
   input {
-    String? insertions
-    String? reference
+    File? insertions
+    File? reference
     Array[String] gene_ids
-    String? path_output_ctg
-    String? threshold
-    String? pattern
+    File? path_output_ctg
+    Float? threshold
+    Int? pattern
     String? window
     Array[String] chromosomes
     Int? min_depth
-    String? expression
+    File? expression
     String? de_threshold
   }
   command <<<
-    imfusion-ctg \
+    imfusion_ctg \
       ~{if defined(insertions) then ("--insertions " +  '"' + insertions + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(gene_ids) then ("--gene_ids " +  '"' + gene_ids + '"') else ""} \
@@ -29,16 +29,20 @@ task ImfusionCtg {
       ~{if defined(de_threshold) then ("--de_threshold " +  '"' + de_threshold + '"') else ""}
   >>>
   parameter_meta {
-    insertions: "Path to the merged insertions file from imfusion- merge."
-    reference: "Path to the reference genome sequence (in fasta format). Can either be the augmented reference genome or the original reference."
+    insertions: "Path to the merged insertions file from imfusion-\\nmerge."
+    reference: "Path to the reference genome sequence (in fasta\\nformat). Can either be the augmented reference genome\\nor the original reference."
     gene_ids: "IDs of genes to test."
     path_output_ctg: "Path for the output CTG file."
     threshold: "Minimum corrected p-value for CTGs. (Default = 0.01)."
-    pattern: "Regular expression reflecting the nucleotide sequence at which the use transposon typically integrates (if any). Used to correct for sequence integration biases along the genome. For example the pattern (AT|TA) is used for the T2onc2 transposon, which is biased towards integrations as TA sites."
-    window: "WINDOW Window around the gene within which we test a given gene for enrichment in insertions."
-    chromosomes: "Chromosomes to consider. Used to omit specific chromosomes from the CTG analysis."
-    min_depth: "Minimum supporting number of reads for insertions to be included in the CTG analysis. Can be used to omit insertions with low support for more confidence in the analysis."
-    expression: "Path to the merged expression file from imfusion- merge."
-    de_threshold: "Minimum p-value for a CTG to be considered as differentially expressed."
+    pattern: "Regular expression reflecting the nucleotide sequence\\nat which the use transposon typically integrates (if\\nany). Used to correct for sequence integration biases\\nalong the genome. For example the pattern (AT|TA) is\\nused for the T2onc2 transposon, which is biased\\ntowards integrations as TA sites."
+    window: "WINDOW\\nWindow around the gene within which we test a given\\ngene for enrichment in insertions."
+    chromosomes: "Chromosomes to consider. Used to omit specific\\nchromosomes from the CTG analysis."
+    min_depth: "Minimum supporting number of reads for insertions to\\nbe included in the CTG analysis. Can be used to omit\\ninsertions with low support for more confidence in the\\nanalysis."
+    expression: "Path to the merged expression file from imfusion-\\nmerge."
+    de_threshold: "Minimum p-value for a CTG to be considered as\\ndifferentially expressed.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_ctg = "${in_path_output_ctg}"
   }
 }

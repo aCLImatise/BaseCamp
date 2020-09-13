@@ -4,4 +4,7 @@ task Imfusion {
   command <<<
     imfusion
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -7,7 +7,7 @@ task Hallagram {
     Boolean? mask
     String? cmap
     String? a_x_labels
-    String? outfile
+    File? outfile
     String? similarity
     String? order_by
     String sim_table
@@ -21,7 +21,7 @@ task Hallagram {
       ~{associations} \
       ~{if defined(strongest) then ("--strongest " +  '"' + strongest + '"') else ""} \
       ~{if defined(largest) then ("--largest " +  '"' + largest + '"') else ""} \
-      ~{true="--mask" false="" mask} \
+      ~{if (mask) then "--mask" else ""} \
       ~{if defined(cmap) then ("--cmap " +  '"' + cmap + '"') else ""} \
       ~{if defined(a_x_labels) then ("--axlabels " +  '"' + a_x_labels + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
@@ -33,12 +33,16 @@ task Hallagram {
     largest: "isolate the N largest associations"
     mask: "mask feature pairs not in associations"
     cmap: "matplotlib color map"
-    a_x_labels: "AXLABELS axis labels"
+    a_x_labels: "AXLABELS\\naxis labels"
     outfile: "output file name"
-    similarity: "Similarity metric has been used for similarity measurement"
-    order_by: "Order the significant association by similarity, pvalue, or qvalue"
+    similarity: "Similarity metric has been used for similarity\\nmeasurement"
+    order_by: "Order the significant association by similarity,\\npvalue, or qvalue\\n"
     sim_table: "table of pairwise similarity scores"
     tree: "hypothesis tree (for getting feature order)"
     associations: "HAllA associations"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
   }
 }

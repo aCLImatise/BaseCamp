@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../colorinterpolate.cwl
 inputs:
-- id: start
+- id: in_start
   doc: ',y1,z1 -end x2,y2,z2 -steps STEPS'
-  type: string
+  type: long
   inputBinding:
     prefix: -start
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - colorinterpolate

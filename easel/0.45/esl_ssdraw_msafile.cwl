@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../esl_ssdraw_msafile.cwl
 inputs:
-- id: ss_postscript_template
+- id: in_ss_postscript_template
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_postscript_file_name
+- id: in_output_postscript_file_name
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_postscript_file_name
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_postscript_file_name)
 cwlVersion: v1.1
 baseCommand:
 - esl-ssdraw

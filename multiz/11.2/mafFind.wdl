@@ -4,4 +4,7 @@ task MafFind {
   command <<<
     mafFind
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

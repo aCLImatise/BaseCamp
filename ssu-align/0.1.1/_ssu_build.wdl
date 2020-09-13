@@ -1,7 +1,10 @@
 version 1.0
 
-task _ssuBuild {
+task Ssubuild {
   command <<<
-    _ssu-build
+    _ssu_build
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

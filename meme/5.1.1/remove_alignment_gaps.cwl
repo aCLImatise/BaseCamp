@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../remove_alignment_gaps.cwl
 inputs:
-- id: species
+- id: in_species
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: alignment
+- id: in_alignment
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - remove-alignment-gaps

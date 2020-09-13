@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../libstats.pl.bak.cwl
+id: ../../../libstats.pl.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- libstats.pl.bak
+- libstats.pl

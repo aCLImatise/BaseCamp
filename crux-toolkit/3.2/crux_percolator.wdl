@@ -2,13 +2,16 @@ version 1.0
 
 task CruxPercolator {
   input {
-    String peptide_spectrum_matches
+    Boolean? train_fdr
   }
   command <<<
     crux percolator \
-      ~{peptide_spectrum_matches}
+      ~{if (train_fdr) then "--train-fdr" else ""}
   >>>
   parameter_meta {
-    peptide_spectrum_matches: ""
+    train_fdr: "). This option allows the user to specify which feature is used"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,75 +1,83 @@
 class: CommandLineTool
 id: ../../../binlorry.cwl
 inputs:
-- id: input
-  doc: FASTA/FASTQ of input reads or a directory which will be recursively searched
-    for FASTQ files (required).
-  type: string
+- id: in_input
+  doc: "FASTA/FASTQ of input reads or a directory which will\nbe recursively searched\
+    \ for FASTQ files (required)."
+  type: File
   inputBinding:
     prefix: --input
-- id: data
-  doc: A CSV file with metadata fields for reads or a directory of csv files that
-    will be recursively searched for names corresponding to a matching input FASTA/FASTQ
-    files.
-  type: string
+- id: in_data
+  doc: "A CSV file with metadata fields for reads or a\ndirectory of csv files that\
+    \ will be recursively\nsearched for names corresponding to a matching input\n\
+    FASTA/FASTQ files."
+  type: File
   inputBinding:
     prefix: --data
-- id: unordered_data
-  doc: 'The metadata tables are not in the same order as the reads - they will all
-    beloaded and then looked up as needed (slower). (default: False)'
+- id: in_unordered_data
+  doc: "The metadata tables are not in the same order as the\nreads - they will all\
+    \ beloaded and then looked up as\nneeded (slower). (default: False)"
   type: boolean
   inputBinding:
     prefix: --unordered_data
-- id: output
+- id: in_output
   doc: Output filename (or filename prefix)
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: out_report
-  doc: 'Output a report along with FASTA/FASTQ. (default: False)'
+- id: in_out_report
+  doc: "Output a report along with FASTA/FASTQ. (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --out-report
-- id: force_output
-  doc: 'Output binned/filtered files even if empty. (default: False)'
+- id: in_force_output
+  doc: "Output binned/filtered files even if empty.\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --force-output
-- id: verbosity
-  doc: 'Level of output information: 0 = none, 1 = some, 2 = lots (default: 1)'
-  type: string
+- id: in_verbosity
+  doc: "Level of output information: 0 = none, 1 = some, 2 =\nlots (default: 1)"
+  type: long
   inputBinding:
     prefix: --verbosity
-- id: bin_by
-  doc: Specify header field(s) to bin the reads by. For multiple fields these will
-    be nested in order specified. e.g. `--bin-by barcode reference`
+- id: in_bin_by
+  doc: "Specify header field(s) to bin the reads by. For\nmultiple fields these will\
+    \ be nested in order\nspecified. e.g. `--bin-by barcode reference`"
   type: string[]
   inputBinding:
     prefix: --bin-by
-- id: filter_by
-  doc: Specify header field and accepted values to filter the reads by. Multiple instances
-    of this option can be specified. e.g. `--filter-by barcode BC01 BC02-- filter-by
-    genotype Type1`
+- id: in_filter_by
+  doc: "Specify header field and accepted values to filter\nthe reads by. Multiple\
+    \ instances of this option can\nbe specified. e.g. `--filter-by barcode BC01 BC02--\n\
+    filter-by genotype Type1`"
   type: string[]
   inputBinding:
     prefix: --filter-by
-- id: min_length
-  doc: Filter the reads by their length, specifying the minimum length.
+- id: in_min_length
+  doc: "Filter the reads by their length, specifying the\nminimum length."
   type: long
   inputBinding:
     prefix: --min-length
-- id: max_length
-  doc: Filter the reads by their length, specifying the maximum length.
+- id: in_max_length
+  doc: "Filter the reads by their length, specifying the\nmaximum length."
   type: long
   inputBinding:
     prefix: --max-length
-- id: header_delimiters
-  doc: 'Delimiters to use when searching for key:value pairs in FASTA/FASTQ header.
-    (default: =)'
+- id: in_header_delimiters
+  doc: "Delimiters to use when searching for key:value pairs\nin FASTA/FASTQ header.\
+    \ (default: =)"
   type: string
   inputBinding:
     prefix: --header-delimiters
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Output filename (or filename prefix)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - binlorry

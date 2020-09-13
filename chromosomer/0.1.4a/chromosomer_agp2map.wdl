@@ -4,4 +4,7 @@ task ChromosomerAgp2map {
   command <<<
     chromosomer agp2map
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

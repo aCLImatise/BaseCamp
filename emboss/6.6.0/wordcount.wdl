@@ -3,12 +3,18 @@ version 1.0
 task Wordcount {
   input {
     Boolean? word_size
+    Boolean? min_count
   }
   command <<<
     wordcount \
-      ~{true="-wordsize" false="" word_size}
+      ~{if (word_size) then "-wordsize" else ""} \
+      ~{if (min_count) then "-mincount" else ""}
   >>>
   parameter_meta {
-    word_size: "integer    [@($(acdprotein)? 2 : 4)] Word size (Integer 1 or more)"
+    word_size: "integer    [@($(acdprotein)? 2 : 4)] Word size (Integer\\n1 or more)"
+    min_count: "integer    [1] Minimum word count to report (Integer 1\\nor more)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

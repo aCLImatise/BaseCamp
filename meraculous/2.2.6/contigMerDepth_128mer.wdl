@@ -4,7 +4,7 @@ task ContigMerDepth128mer {
   input {
     String? mer_count_file_prefix
     String? mer_size
-    Int? min_depth
+    String? min_depth
     String? prefix_list_to_hash
     String? num_threads
     String? output_prefix
@@ -28,5 +28,8 @@ task ContigMerDepth128mer {
     num_threads: ""
     output_prefix: ""
     contigs_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

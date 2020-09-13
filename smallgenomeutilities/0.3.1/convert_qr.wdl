@@ -2,9 +2,9 @@ version 1.0
 
 task ConvertQr {
   input {
-    String? it
-    String? ir
-    String? name_write_sequences
+    File? it
+    File? ir
+    File? name_write_sequences
     String? prefix
     Int? mf
     Int? length_sequences_exactly
@@ -18,15 +18,19 @@ task ConvertQr {
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(mf) then ("--mf " +  '"' + mf + '"') else ""} \
       ~{if defined(length_sequences_exactly) then ("-L " +  '"' + length_sequences_exactly + '"') else ""} \
-      ~{true="-p" false="" translate_sequences_protein}
+      ~{if (translate_sequences_protein) then "-p" else ""}
   >>>
   parameter_meta {
-    it: "Input file from QuasiRecomb, usually 'quasispecies.fasta' for transmitter"
-    ir: "Input file from QuasiRecomb, usually 'quasispecies.fasta' for recipient"
+    it: "Input file from QuasiRecomb, usually 'quasispecies.fasta'\\nfor transmitter"
+    ir: "Input file from QuasiRecomb, usually 'quasispecies.fasta'\\nfor recipient"
     name_write_sequences: "Name of output file to write sequences to"
-    prefix: "Prefix to use in FASTA header (retains source prefixes if none provided)"
+    prefix: "Prefix to use in FASTA header (retains source prefixes if\\nnone provided)"
     mf: "Minimum frequency required for keeping sequence"
     length_sequences_exactly: "Length of sequences have to be EXACTLY L"
     translate_sequences_protein: "Translate sequences into protein sequences"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_name_write_sequences = "${in_name_write_sequences}"
   }
 }

@@ -1,20 +1,10 @@
 version 1.0
 
 task ArbTreegen {
-  input {
-    String cfg
-    String tree
-    String seq
-  }
   command <<<
-    arb_treegen \
-      ~{cfg} \
-      ~{tree} \
-      ~{seq}
+    arb_treegen
   >>>
-  parameter_meta {
-    cfg: ""
-    tree: ""
-    seq: ""
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task CheckmTetraOutputFile {
   input {
-    String? t
     Boolean? q
+    String? t
     String check_m
     String tetra
     String seq_file
@@ -15,15 +15,18 @@ task CheckmTetraOutputFile {
       ~{tetra} \
       ~{seq_file} \
       ~{output_file} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
-      ~{true="-q" false="" q}
+      ~{if (q) then "-q" else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
   parameter_meta {
-    t: ""
     q: ""
+    t: ""
     check_m: ""
     tetra: ""
     seq_file: ""
     output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

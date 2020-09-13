@@ -2,21 +2,21 @@ version 1.0
 
 task Rapsearch {
   input {
-    String? query_file_fasta
-    String? database_file_base
-    String? output_file_name
+    File? query_file_fasta
+    File? database_file_base
+    File? output_file_name
     Int? stream_one_result
     Int? _number_threads
-    String? report_logevalue_evalue
-    String? evalue_threshold_given
-    String? threshold_bit_score
+    Int? report_logevalue_hit
+    Float? evalue_threshold_given
+    Float? threshold_bit_score
     Int? threshold_minimal_alignment
     Int? number_show_descriptions
     Int? number_show_alignments
     String? type_query_sequences
-    String? output_allmatched_query
+    File? output_allmatched_query
     String? apply_gap_extension
-    String? use_fast_mode
+    Int? use_fast_mode
     String? apply_hssp_criterion
     String? print_hits_xml
   }
@@ -27,7 +27,7 @@ task Rapsearch {
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(stream_one_result) then ("-u " +  '"' + stream_one_result + '"') else ""} \
       ~{if defined(_number_threads) then ("-z " +  '"' + _number_threads + '"') else ""} \
-      ~{if defined(report_logevalue_evalue) then ("-s " +  '"' + report_logevalue_evalue + '"') else ""} \
+      ~{if defined(report_logevalue_hit) then ("-s " +  '"' + report_logevalue_hit + '"') else ""} \
       ~{if defined(evalue_threshold_given) then ("-e " +  '"' + evalue_threshold_given + '"') else ""} \
       ~{if defined(threshold_bit_score) then ("-i " +  '"' + threshold_bit_score + '"') else ""} \
       ~{if defined(threshold_minimal_alignment) then ("-l " +  '"' + threshold_minimal_alignment + '"') else ""} \
@@ -46,8 +46,8 @@ task Rapsearch {
     output_file_name: ": output file name"
     stream_one_result: ": stream one result through stdout [1: m8 result, 2: aln result, default: don't stream any result through stdout]"
     _number_threads: ": number of threads [default: 1]"
-    report_logevalue_evalue: ": report log10(E-value) or E-value for each hit [t/T: log10(E-value), the default; f/F: E-value]"
-    evalue_threshold_given: ": E-value threshold, given in the format of log10(E-value), or E-value (when -s is set to f) [default: 1.0/10.0]. "
+    report_logevalue_hit: ": report log10(E-value) or E-value for each hit [t/T: log10(E-value), the default; f/F: E-value]"
+    evalue_threshold_given: ": E-value threshold, given in the format of log10(E-value), or E-value (when -s is set to f) [default: 1.0/10.0]."
     threshold_bit_score: ": threshold of bit score [default: 0.0]. It is the alternative option to limit the hits to report."
     threshold_minimal_alignment: ": threshold of minimal alignment length [default: 0]"
     number_show_descriptions: ": number of database sequences to show one-line descriptions [default: 500]. If it's -1, all results will be shown."
@@ -58,5 +58,10 @@ task Rapsearch {
     use_fast_mode: ": use fast mode (10~30 fold) [t/T: yes, f/F: no, default: f]"
     apply_hssp_criterion: ": apply HSSP criterion instead of E-value criterion [t/T: HSSP, f/F: E-value criteria, default: f]"
     print_hits_xml: ": print hits in xml format [t/T: yes, f/F: no, default: f]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
+    File out_output_allmatched_query = "${in_output_allmatched_query}"
   }
 }

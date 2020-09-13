@@ -2,8 +2,8 @@ version 1.0
 
 task Humann2SplitStratifiedTable {
   input {
-    String? stratified_input_table
-    String? the_output_folder
+    Int? stratified_input_table
+    Directory? the_output_folder
   }
   command <<<
     humann2_split_stratified_table \
@@ -12,6 +12,10 @@ task Humann2SplitStratifiedTable {
   >>>
   parameter_meta {
     stratified_input_table: "the stratified input table (tsv, tsv.gzip, tsv.bzip2, or biom format)"
-    the_output_folder: "the output folder"
+    the_output_folder: "the output folder\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_the_output_folder = "${in_the_output_folder}"
   }
 }

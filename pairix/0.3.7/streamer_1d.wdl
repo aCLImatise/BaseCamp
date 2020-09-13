@@ -2,7 +2,7 @@ version 1.0
 
 task Streamer1d {
   input {
-    String in_dot_two_ddot_pairs_do_tgz
+    Float in_dot_two_ddot_pairs_do_tgz
   }
   command <<<
     streamer_1d \
@@ -10,5 +10,8 @@ task Streamer1d {
   >>>
   parameter_meta {
     in_dot_two_ddot_pairs_do_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

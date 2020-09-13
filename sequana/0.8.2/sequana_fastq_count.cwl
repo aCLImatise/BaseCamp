@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../sequana_fastq_count.cwl
 inputs:
-- id: input_fastq_gzipped
-  doc: input fastq gzipped or not
-  type: string
+- id: in_input_fastq_gzipped
+  doc: "input fastq gzipped or not\n"
+  type: File
   inputBinding:
     prefix: --input
-- id: fast_q_count
+- id: in_fast_q_count
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_2
+- id: in_var_2
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: n
+- id: in_n
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sequana_fastq_count

@@ -1,20 +1,10 @@
 version 1.0
 
-task FastqUtilsSort {
-  input {
-    String mate_one_input
-    String mate_two_input
-    String mate_one_output
-  }
+task FastqutilsSort {
   command <<<
-    fastq-utils sort \
-      ~{mate_one_input} \
-      ~{mate_two_input} \
-      ~{mate_one_output}
+    fastq_utils sort
   >>>
-  parameter_meta {
-    mate_one_input: ""
-    mate_two_input: ""
-    mate_one_output: ""
+  output {
+    File out_stdout = stdout()
   }
 }

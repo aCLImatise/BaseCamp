@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../randomGeneSample.cwl
 inputs:
-- id: input_x_mfa
+- id: in_input_x_mfa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: backbone_seq_file
+- id: in_backbone_seq_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: sample_genome
+- id: in_sample_genome
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: number_of_genes
+- id: in_number_of_genes
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 3
-- id: output_base_name
+- id: in_output_base_name
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: random
+- id: in_random
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: seed
+- id: in_seed
   doc: ''
   type: string
   inputBinding:
     position: 6
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - randomGeneSample

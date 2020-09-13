@@ -1,6 +1,170 @@
 !Command
-positional: []
+command:
+- RNAlien
+positional:
+- !Positional
+  description: -z --inputnscicutoff=NUM             Only candidate sequences with
+    a
+  position: 0
+  name: organism
+  optional: false
+- !Positional
+  description: (bacteria,archea,eukaryia,cellularorganisms,viruses).
+  position: 0
+  name: kingdom
+  optional: false
 named:
+- !Flag
+  description: Path to input fasta file
+  synonyms:
+  - -i
+  - --inputfastafilepath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: Path to input alignment file
+  synonyms:
+  - -p
+  - --inputalignmentfilepath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Path to output directory. Default:\ncurrent working directory"
+  synonyms:
+  - -o
+  - --outputpath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: NCBI taxonomy ID number of input RNA
+  synonyms:
+  - -t
+  - --inputtaxid
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Evalue cutoff for cmsearch filtering.\nDefault: 0.001"
+  synonyms:
+  - -e
+  - --inputevaluecutoff
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Specify name of blast database to use,\nin offline mode the filepath\
+    \ to the\nblast database (/home/user/nt_v5).\nDefault: nt"
+  synonyms:
+  - -b
+  - --inputblastdatabase
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Filter blast hits per genomic length.\nDefault: True"
+  synonyms:
+  - -l
+  - --lengthfilter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Filter blast hits by coverage of at\nleast 80%. Default: True"
+  synonyms:
+  - -a
+  - --coveragefilter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only the best blast hit per taxonomic\nentry is considered. Default:\
+    \ False"
+  synonyms:
+  - -s
+  - --singlehitpertax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Toggles blast query softmasking,\nmeaning masking of non-conserved\
+    \ regions\non the query. Default: False"
+  synonyms:
+  - -f
+  - --blastsoftmasking
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Method for selection of queries\n(filtering,clustering). Default:\n\
+    filtering"
+  synonyms:
+  - -m
+  - --inputqueryselectionmethod
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Number of queries used for candidate\nsearch. Default: 5"
+  synonyms:
+  - -n
+  - --inputquerynumber
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Number of available cpu slots/cores.\nDefault: 1"
+  synonyms:
+  - -c
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Restrict search space to taxonomic
+  synonyms:
+  - -r
+  - --taxonomyrestriction
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Optional session id that is used\ninstead of automatically generated\
+    \ one."
+  synonyms:
+  - -d
+  - --sessionidentificator
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: 'Perform evaluation step. Default: True'
+  synonyms:
+  - -x
+  - --performevaluation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Just prints installed tool versions\nand performs connection check.\
+    \ Default:\nFalse"
+  synonyms:
+  - -g
+  - --checksetup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to NCBI taxonomy dump directory.
+  synonyms:
+  - -w
+  - --taxonomydumppath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Uses locally installed blast and\ndatabases. Default: False"
+  synonyms:
+  - -j
+  - --offlinemode
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Print just the version number
   synonyms:
@@ -21,10 +185,9 @@ named:
   - --quiet
   args: !EmptyFlagArg {}
   optional: true
-command:
-- RNAlien
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag

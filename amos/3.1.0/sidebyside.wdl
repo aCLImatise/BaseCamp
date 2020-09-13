@@ -2,7 +2,7 @@ version 1.0
 
 task Sidebyside {
   input {
-    String? width
+    File? width
     String? same
     String? dif
   }
@@ -16,5 +16,8 @@ task Sidebyside {
     width: ": line width for each file (default: 50)"
     same: ": marker for lines that are the same (default: ==)"
     dif: ": marker for lines that are different (default: !!)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

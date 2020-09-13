@@ -17,4 +17,8 @@ task MergeCoords {
     merge_coords_cmdline: ""
     coords: ""
   }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_stdout = "${in_output_file_stdout}"
+  }
 }

@@ -1,22 +1,25 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_extract_codis_data.py.bak.cwl
+id: ../../../hisatgenotype_extract_codis_data.py.cwl
 inputs:
-- id: base
+- id: in_base
   doc: 'base filename (default: codis)'
-  type: string
+  type: File
   inputBinding:
     prefix: --base
-- id: locus_list
+- id: in_locus_list
   doc: 'base filename (default: empty)'
-  type: string
+  type: File
   inputBinding:
     prefix: --locus-list
-- id: verbose
+- id: in_verbose
   doc: also print some statistics to stderr
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- hisatgenotype_extract_codis_data.py.bak
+- hisatgenotype_extract_codis_data.py

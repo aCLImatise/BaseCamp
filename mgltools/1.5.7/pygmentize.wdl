@@ -4,4 +4,7 @@ task Pygmentize {
   command <<<
     pygmentize
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

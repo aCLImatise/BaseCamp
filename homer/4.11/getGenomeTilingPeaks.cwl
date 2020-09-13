@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../getGenomeTilingPeaks.cwl
 inputs:
-- id: tag_directories_analyze
+- id: in_tag_directories_analyze
   doc: '[tag directory 2] ... (tag directories to analyze)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: -d
-- id: res
+- id: in_res
   doc: <#> (resolution of analysis)
   type: boolean
   inputBinding:
     prefix: -res
-outputs: []
+- id: in_options
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - getGenomeTilingPeaks

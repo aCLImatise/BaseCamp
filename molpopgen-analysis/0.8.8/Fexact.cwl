@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../Fexact.cwl
 inputs:
-- id: i
+- id: in_i
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: j
+- id: in_j
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: k
+- id: in_k
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: l
+- id: in_l
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - Fexact

@@ -2,7 +2,7 @@ version 1.0
 
 task DumpBlob {
   input {
-    String? b
+    File? b
   }
   command <<<
     dumpBlob \
@@ -10,5 +10,8 @@ task DumpBlob {
   >>>
   parameter_meta {
     b: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

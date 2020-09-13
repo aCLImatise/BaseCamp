@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../genePredToBed.cwl
 inputs:
-- id: in_dot_gene_pred
+- id: in_xxx
   doc: ''
   type: string
   inputBinding:
-    position: 0
-- id: out_dot_bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+    prefix: -xxx
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genePredToBed

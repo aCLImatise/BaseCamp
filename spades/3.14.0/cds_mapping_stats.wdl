@@ -1,18 +1,18 @@
 version 1.0
 
-task CdsMappingStats {
+task Cdsmappingstats {
   input {
-    String? kmer_length_use
+    Int? kmer_length_use
     String? graph
     File? cds_queries
     File? paths
     File? edge_info
-    String? threads
+    Int? threads
     File? colors
-    String? workdir
+    Directory? workdir
   }
   command <<<
-    cds-mapping-stats \
+    cds_mapping_stats \
       ~{if defined(kmer_length_use) then ("-k " +  '"' + kmer_length_use + '"') else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
       ~{if defined(cds_queries) then ("--cds-queries " +  '"' + cds_queries + '"') else ""} \
@@ -30,6 +30,9 @@ task CdsMappingStats {
     edge_info: "Destination for outputting edge usage information"
     threads: "# of threads to use (default: max_threads / 2)"
     colors: "Destination for outputting edge coloring to be displayed in Bandage"
-    workdir: "scratch directory to use (default: ./tmp)"
+    workdir: "scratch directory to use (default: ./tmp)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

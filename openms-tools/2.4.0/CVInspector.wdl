@@ -2,13 +2,13 @@ version 1.0
 
 task CVInspector {
   input {
-    File? cv_files
-    String? cv_names
+    String? cv_files
+    File? cv_names
     File? mapping_file
     String? ignore_cv
     File? html
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -22,7 +22,7 @@ task CVInspector {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     cv_files: "*    List of ontology files in OBO format. (valid formats: 'obo')"
@@ -34,5 +34,8 @@ task CVInspector {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

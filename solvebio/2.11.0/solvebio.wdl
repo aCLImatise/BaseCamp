@@ -4,7 +4,7 @@ task Solvebio {
   input {
     String? api_host
     String? api_key
-    String? access_token
+    Int? access_token
     String login
     String logout
     String whoami
@@ -49,5 +49,8 @@ task Solvebio {
     download: "Download one or more files from a SolveBio Vault."
     tag: "Apply tags or remove tags on objects"
     queue: "Shows the current job queue, grouped by User"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

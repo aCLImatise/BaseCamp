@@ -1,6 +1,6 @@
 version 1.0
 
-task SpadesBwaFastmap {
+task SpadesbwaFastmap {
   input {
     Int? min_smem_length
     Int? max_interval_size
@@ -13,7 +13,7 @@ task SpadesBwaFastmap {
     String in_dot_fq
   }
   command <<<
-    spades-bwa fastmap \
+    spades_bwa fastmap \
       ~{bwa} \
       ~{fast_map} \
       ~{idx_base} \
@@ -34,5 +34,8 @@ task SpadesBwaFastmap {
     fast_map: ""
     idx_base: ""
     in_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Vcfgenosamplenames {
   command <<<
     vcfgenosamplenames
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

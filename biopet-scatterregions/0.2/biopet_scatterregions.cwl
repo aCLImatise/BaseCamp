@@ -1,60 +1,68 @@
 class: CommandLineTool
 id: ../../../biopet_scatterregions.cwl
 inputs:
-- id: log_level
+- id: in_log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\
     \ 'error'"
   type: string
   inputBinding:
     prefix: --log_level
-- id: output_dir
+- id: in_output_dir
   doc: Output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outputDir
-- id: reference_fast_a
+- id: in_reference_fast_a
   doc: Reference fasta file, (dict file should be next to it)
-  type: string
+  type: File
   inputBinding:
     prefix: --referenceFasta
-- id: scatter_size
+- id: in_scatter_size
   doc: Approximately scatter size, tool will make all scatters the same size. default
     = 1000000
-  type: string
+  type: long
   inputBinding:
     prefix: --scatterSize
-- id: regions
+- id: in_regions
   doc: If given only regions in the given bed file will be used for scattering
-  type: string
+  type: File
   inputBinding:
     prefix: --regions
-- id: not_combine_contigs
+- id: in_not_combine_contigs
   doc: If set each scatter can only contain 1 contig
   type: boolean
   inputBinding:
     prefix: --notCombineContigs
-- id: max_contigs_in_scatter_job
+- id: in_max_contigs_in_scatter_job
   doc: If set each scatter can only contain 1 contig
-  type: string
+  type: long
   inputBinding:
     prefix: --maxContigsInScatterJob
-- id: bam_file
+- id: in_bam_file
   doc: When given the regions will be scattered based on number of reads in the index
     file
-  type: string
+  type: long
   inputBinding:
     prefix: --bamFile
-- id: not_split_contigs
+- id: in_not_split_contigs
   doc: When this option is set contigs are not split.
   type: boolean
   inputBinding:
     prefix: --notSplitContigs
-- id: scatter_regions
+- id: in_scatter_regions
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: Output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - biopet-scatterregions

@@ -4,4 +4,7 @@ task Donatello {
   command <<<
     Donatello
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../chromosomer.cwl
 inputs:
-- id: debug
+- id: in_debug
   doc: show debugging messages
   type: boolean
   inputBinding:
     prefix: --debug
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chromosomer

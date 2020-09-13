@@ -4,4 +4,7 @@ task Snns {
   command <<<
     snns
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

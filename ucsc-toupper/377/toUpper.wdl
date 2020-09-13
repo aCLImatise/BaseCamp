@@ -3,15 +3,15 @@ version 1.0
 task ToUpper {
   input {
     String in_file
-    String outfile
   }
   command <<<
     toUpper \
-      ~{in_file} \
-      ~{outfile}
+      ~{in_file}
   >>>
   parameter_meta {
     in_file: ""
-    outfile: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

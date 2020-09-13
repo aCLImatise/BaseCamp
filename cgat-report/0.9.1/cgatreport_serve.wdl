@@ -1,7 +1,10 @@
 version 1.0
 
-task CgatreportServe {
+task Cgatreportserve {
   command <<<
-    cgatreport-serve
+    cgatreport_serve
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

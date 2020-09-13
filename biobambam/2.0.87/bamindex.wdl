@@ -4,4 +4,7 @@ task Bamindex {
   command <<<
     bamindex
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

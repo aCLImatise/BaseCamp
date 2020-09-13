@@ -4,4 +4,7 @@ task CbImportSeurat {
   command <<<
     cbImportSeurat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../cromwell_tools_release_hold.cwl
 inputs:
-- id: url
-  doc: The URL to the Cromwell server. e.g. "https://cromwell.server.org/"
+- id: in_uuid
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --uuid
+- id: in_url
+  doc: "The URL to the Cromwell server. e.g.\n\"https://cromwell.server.org/\""
   type: string
   inputBinding:
     prefix: --url
-- id: username
+- id: in_username
   doc: Cromwell username for HTTPBasicAuth.
   type: string
   inputBinding:
     prefix: --username
-- id: password
+- id: in_password
   doc: Cromwell password for HTTPBasicAuth.
   type: string
   inputBinding:
     prefix: --password
-- id: secrets_file
-  doc: Path to the JSON file containing username, password, and url fields.
-  type: string
+- id: in_secrets_file
+  doc: "Path to the JSON file containing username, password,\nand url fields."
+  type: File
   inputBinding:
     prefix: --secrets-file
-- id: service_account_key
-  doc: Path to the JSON key file for authenticating with CaaS.
-  type: string
+- id: in_service_account_key
+  doc: "Path to the JSON key file for authenticating with\nCaaS."
+  type: File
   inputBinding:
     prefix: --service-account-key
-- id: uuid
-  doc: A Cromwell workflow UUID, which is the workflow identifier.
-  type: string
-  inputBinding:
-    prefix: --uuid
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cromwell-tools

@@ -14,4 +14,7 @@ task TbVariantFilterInputFile {
     region_filter: ""
     tb_variant_filter: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

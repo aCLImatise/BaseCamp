@@ -1,5 +1,28 @@
 !Command
-positional: []
+command:
+- rvtest
+positional:
+- !Positional
+  description: '--rangeFile: Specify the file containing ranges, please use'
+  position: 0
+  name: format.
+  optional: false
+- !Positional
+  description: '--meta: Meta-analysis related functions to generate summary'
+  position: 0
+  name: SKATO
+  optional: false
+- !Positional
+  description: '--imputePheno: Impute phenotype to mean of those have genotypes but
+    no'
+  position: 0
+  name: drop
+  optional: false
+- !Positional
+  description: '--imputeCov: Impute each covariate to its mean, instead of drop'
+  position: 1
+  name: phenotypes
+  optional: false
 named:
 - !Flag
   description: ': Input VCF File'
@@ -32,8 +55,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Output genotypes, phenotype, covariates(if any); and collapsed genotype
-    to tabular files'
+  description: ": Output genotypes, phenotype, covariates(if any); and\ncollapsed\
+    \ genotype to tabular files"
   synonyms:
   - --outputRaw
   args: !EmptyFlagArg {}
@@ -45,7 +68,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify the column name in covariate file to be included in analysis'
+  description: ": Specify the column name in covariate file to be\nincluded in analysis"
   synonyms:
   - --covar-name
   args: !EmptyFlagArg {}
@@ -69,25 +92,21 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify which phenotype column to read (default: 1);'
+  description: ": Fit covariate ~ phenotype, use residual to replace\nphenotype"
+  synonyms:
+  - --useResidualAsPhenotype
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Specify which phenotype column to read (default: 1);\n--pheno-name:\
+    \ Specify which phenotype column to read by header\n--qtl: Treat phenotype as\
+    \ quantitative trait"
   synonyms:
   - --mpheno
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify which phenotype column to read by header'
-  synonyms:
-  - --pheno-name
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': Treat phenotype as quantitative trait'
-  synonyms:
-  - --qtl
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': Specify aa template file for analyses of more than one phenotype'
+  description: ": Specify aa template file for analyses of more than one\nphenotype"
   synonyms:
   - --multiplePheno
   args: !EmptyFlagArg {}
@@ -111,8 +130,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ": Specify PAR region (default: hg19);, can be build number e.g. hg38,\
-    \ b37; or specify region, e.g. '60001-2699520,154931044-155260560'"
+  description: ": Specify PAR region (default: hg19);, can be build\nnumber e.g. hg38,\
+    \ b37; or specify region, e.g.\n'60001-2699520,154931044-155260560'"
   synonyms:
   - --xParRegion
   args: !EmptyFlagArg {}
@@ -124,7 +143,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': From given file, set IDs of people that will be included in study'
+  description: ": From given file, set IDs of people that will be\nincluded in study"
   synonyms:
   - --peopleIncludeFile
   args: !EmptyFlagArg {}
@@ -136,87 +155,68 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': From given file, set IDs of people that will be included in study'
+  description: ": From given file, set IDs of people that will be\nincluded in study"
   synonyms:
   - --peopleExcludeFile
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify some ranges to use, please use chr:begin-end format.'
+  description: ': Specify some ranges to use, please use chr:begin-end'
   synonyms:
   - --rangeList
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify the file containing ranges, please use chr:begin-end format.'
-  synonyms:
-  - --rangeFile
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': Specify the file containing sites to include, please use "chr pos"
-    format.'
+  description: ": Specify the file containing sites to include, please\nuse \"chr\
+    \ pos\" format."
   synonyms:
   - --siteFile
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify minimum depth(inclusive); to be included in analysis'
+  description: ': Specify minimum depth(inclusive); to be included in'
   synonyms:
   - --siteDepthMin
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify maximum depth(inclusive); to be included in analysis'
-  synonyms:
-  - --siteDepthMax
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': Specify minimum Minor Allele Count(inclusive); to be included in
-    analysis'
-  synonyms:
-  - --siteMACMin
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': Specify annotation type that is followed by ANNO= in the VCF INFO
-    field, regular expression is allowed'
+  description: ": Specify annotation type that is followed by ANNO= in\nthe VCF INFO\
+    \ field, regular expression is allowed"
   synonyms:
   - --annoType
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify minimum depth(inclusive); of a sample to be included in
-    analysis'
+  description: ": Specify minimum depth(inclusive); of a sample to be\nincluded in\
+    \ analysis"
   synonyms:
   - --indvDepthMin
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify maximum depth(inclusive); of a sample to be included in
-    analysis'
+  description: ": Specify maximum depth(inclusive); of a sample to be\nincluded in\
+    \ analysis"
   synonyms:
   - --indvDepthMax
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify minimum depth(inclusive); of a sample to be included in
-    analysis'
+  description: ": Specify minimum depth(inclusive); of a sample to be\nincluded in\
+    \ analysis"
   synonyms:
   - --indvQualMin
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Single variant tests, choose from: score, wald, exact, famScore,
-    famLrt, famGrammarGamma, firth'
+  description: ": Single variant tests, choose from: score, wald, exact,\nfamScore,\
+    \ famLrt, famGrammarGamma, firth"
   synonyms:
   - --single
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Burden tests, choose from: cmc, zeggini, mb, exactCMC, rarecover,
-    cmat, cmcWald'
+  description: ": Burden tests, choose from: cmc, zeggini, mb, exactCMC,\nrarecover,\
+    \ cmat, cmcWald"
   synonyms:
   - --burden
   args: !EmptyFlagArg {}
@@ -228,21 +228,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Kernal-based tests, choose from: SKAT, KBAC, FamSKAT, SKATO'
+  description: ': Kernal-based tests, choose from: SKAT, KBAC, FamSKAT,'
   synonyms:
   - --kernel
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Meta-analysis related functions to generate summary statistics,
-    choose from: score, cov, dominant, recessive'
-  synonyms:
-  - --meta
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': Specify a kinship file for autosomal analysis, use vcf2kinship to
-    generate'
+  description: ": Specify a kinship file for autosomal analysis, use\nvcf2kinship\
+    \ to generate"
   synonyms:
   - --kinship
   args: !EmptyFlagArg {}
@@ -254,14 +247,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify eigen decomposition results of a kinship file for autosomal
-    analysis'
+  description: ": Specify eigen decomposition results of a kinship file\nfor autosomal\
+    \ analysis"
   synonyms:
   - --kinshipEigen
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify eigen decomposition results of a kinship file for X analysis'
+  description: ": Specify eigen decomposition results of a kinship file\nfor X analysis"
   synonyms:
   - --xHemiKinshipEigen
   args: !EmptyFlagArg {}
@@ -297,8 +290,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify a list file (for burden tests, first 2 columns: setName
-    chr:beg-end);'
+  description: ": Specify a list file (for burden tests, first 2 columns:\nsetName\
+    \ chr:beg-end);"
   synonyms:
   - --setFile
   args: !EmptyFlagArg {}
@@ -310,34 +303,21 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify upper minor allele frequency bound to be included in analysis'
+  description: ": Specify upper minor allele frequency bound to be\nincluded in analysis"
   synonyms:
   - --freqUpper
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Specify lower minor allele frequency bound to be included in analysis'
+  description: ": Specify lower minor allele frequency bound to be\nincluded in analysis"
   synonyms:
   - --freqLower
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': Impute missing genotype (default:mean):  mean, hwe, and drop'
+  description: ': Impute missing genotype (default:mean):  mean, hwe, and'
   synonyms:
   - --impute
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': Impute phenotype to mean of those have genotypes but no phenotypes'
-  synonyms:
-  - --imputePheno
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': Impute each covariate to its mean, instead of drop samples with
-    missing covariates'
-  synonyms:
-  - --imputeCov
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -370,10 +350,9 @@ named:
   - --outputID
   args: !EmptyFlagArg {}
   optional: true
-command:
-- rvtest
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': Print detailed help message'
   synonyms:

@@ -4,4 +4,7 @@ task MegahitCore {
   command <<<
     megahit_core
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

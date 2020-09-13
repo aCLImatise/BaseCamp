@@ -1,4 +1,8 @@
 &id004 !Command
+command:
+- dgenies
+- gallery
+- del
 positional: []
 named:
 - !Flag
@@ -23,82 +27,55 @@ named:
   - --remove-pict
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dgenies
-- gallery
-- del
 parent: &id003 !Command
-  positional: []
-  named: []
   command:
   - dgenies
   - gallery
+  positional: []
+  named: []
   parent: &id001 !Command
-    positional: []
-    named: []
     command:
     - dgenies
+    positional: []
+    named: []
     parent:
     subcommands:
     - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: DEBUG
-        optional: true
-      named:
-      - !Flag
-        description: Mode into run the application
-        synonyms:
-        - -m
-        - --mode
-        args: !ChoiceFlagArg
-          choices: !!set
-            ? webserver
-            ? standalone
-        optional: true
-      - !Flag
-        description: '[DEBUG], --debug [DEBUG] Run in debug mode'
-        synonyms:
-        - -d
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Host into run the application
-        synonyms:
-        - -o
-        - --host
-        args: !SimpleFlagArg
-          name: HOST
-        optional: true
-      - !Flag
-        description: Port into run the application
-        synonyms:
-        - -p
-        - --port
-        args: !SimpleFlagArg
-          name: PORT
-        optional: true
-      - !Flag
-        description: '[NO_CRONS] Do not run crons (for debug only, ignored for standalone
-          mode)'
-        synonyms:
-        - --no-crons
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: '[NO_BROWSER] Do not start the browser (Start of browser is always
-          disabled in debug mode)'
-        synonyms:
-        - --no-browser
-        args: !EmptyFlagArg {}
-        optional: true
       command:
       - dgenies
-      - run
+      - inforun
+      positional: []
+      named:
+      - !Flag
+        description: Message to add
+        synonyms:
+        - -m
+        - --message
+        args: !SimpleFlagArg
+          name: MESSAGE
+        optional: true
+      - !Flag
+        description: Type of message
+        synonyms:
+        - -t
+        - --type
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? critical
+            ? success
+            ? info
+            ? warn
+        optional: true
+      - !Flag
+        description: Remove message
+        synonyms:
+        - -c
+        - --clear
+        args: !EmptyFlagArg {}
+        optional: true
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -111,21 +88,18 @@ parent: &id003 !Command
       help_text: "No section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
         No section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo section:\
         \ 'global'\nNo section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
-        usage: dgenies run [-h] [-m {standalone,webserver}] [-d [DEBUG]] [-o HOST]\n\
-        \                   [-p PORT] [--no-crons [NO_CRONS]]\n                  \
-        \ [--no-browser [NO_BROWSER]]\n\noptional arguments:\n  -h, --help       \
-        \     show this help message and exit\n  -m {standalone,webserver}, --mode\
-        \ {standalone,webserver}\n                        Mode into run the application\n\
-        \  -d [DEBUG], --debug [DEBUG]\n                        Run in debug mode\n\
-        \  -o HOST, --host HOST  Host into run the application\n  -p PORT, --port\
-        \ PORT  Port into run the application\n  --no-crons [NO_CRONS]\n         \
-        \               Do not run crons (for debug only, ignored for\n          \
-        \              standalone mode)\n  --no-browser [NO_BROWSER]\n           \
-        \             Do not start the browser (Start of browser is always\n     \
-        \                   disabled in debug mode)\n"
+        usage: dgenies inforun [-h] [-m MESSAGE] [-t {info,warn,critical,success}]\n\
+        \                       [-c]\n\noptional arguments:\n  -h, --help        \
+        \    show this help message and exit\n  -m MESSAGE, --message MESSAGE\n  \
+        \                      Message to add\n  -t {info,warn,critical,success},\
+        \ --type {info,warn,critical,success}\n                        Type of message\n\
+        \  -c, --clear           Remove message\n"
       generated_using: &id002
       - --help
     - !Command
+      command:
+      - dgenies
+      - clear
       positional:
       - !Positional
         description: ''
@@ -144,19 +118,19 @@ parent: &id003 !Command
         optional: true
       named:
       - !Flag
-        description: '[CRONS], --crons [CRONS] Clear crons'
+        description: "[CRONS], --crons [CRONS]\nClear crons"
         synonyms:
         - -c
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
-        description: '[LOGS], --logs [LOGS] Clear logs'
+        description: "[LOGS], --logs [LOGS]\nClear logs"
         synonyms:
         - -l
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
-        description: '[JOBS], --jobs [JOBS] Clear jobs'
+        description: "[JOBS], --jobs [JOBS]\nClear jobs"
         synonyms:
         - -j
         args: !EmptyFlagArg {}
@@ -170,17 +144,15 @@ parent: &id003 !Command
           name: MAX_AGE
         optional: true
       - !Flag
-        description: '[WEB], --web [WEB] Add this option with -j option, if you use
-          the webserver mode'
+        description: "[WEB], --web [WEB]\nAdd this option with -j option, if you use\
+          \ the\nwebserver mode\n"
         synonyms:
         - -w
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - dgenies
-      - clear
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -205,40 +177,65 @@ parent: &id003 !Command
       generated_using: *id002
     - *id003
     - !Command
-      positional: []
-      named:
-      - !Flag
-        description: Message to add
-        synonyms:
-        - -m
-        - --message
-        args: !SimpleFlagArg
-          name: MESSAGE
-        optional: true
-      - !Flag
-        description: Type of message
-        synonyms:
-        - -t
-        - --type
-        args: !ChoiceFlagArg
-          choices: !!set
-            ? critical
-            ? warn
-            ? success
-            ? info
-        optional: true
-      - !Flag
-        description: Remove message
-        synonyms:
-        - -c
-        - --clear
-        args: !EmptyFlagArg {}
-        optional: true
       command:
       - dgenies
-      - inforun
+      - run
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: DEBUG
+        optional: true
+      named:
+      - !Flag
+        description: Mode into run the application
+        synonyms:
+        - -m
+        - --mode
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? webserver
+            ? standalone
+        optional: true
+      - !Flag
+        description: "[DEBUG], --debug [DEBUG]\nRun in debug mode"
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Host into run the application
+        synonyms:
+        - -o
+        - --host
+        args: !SimpleFlagArg
+          name: HOST
+        optional: true
+      - !Flag
+        description: Port into run the application
+        synonyms:
+        - -p
+        - --port
+        args: !SimpleFlagArg
+          name: PORT
+        optional: true
+      - !Flag
+        description: "[NO_CRONS]\nDo not run crons (for debug only, ignored for\n\
+          standalone mode)"
+        synonyms:
+        - --no-crons
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "[NO_BROWSER]\nDo not start the browser (Start of browser is\
+          \ always\ndisabled in debug mode)\n"
+        synonyms:
+        - --no-browser
+        args: !EmptyFlagArg {}
+        optional: true
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -251,13 +248,20 @@ parent: &id003 !Command
       help_text: "No section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
         No section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo section:\
         \ 'global'\nNo section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
-        usage: dgenies inforun [-h] [-m MESSAGE] [-t {info,warn,critical,success}]\n\
-        \                       [-c]\n\noptional arguments:\n  -h, --help        \
-        \    show this help message and exit\n  -m MESSAGE, --message MESSAGE\n  \
-        \                      Message to add\n  -t {info,warn,critical,success},\
-        \ --type {info,warn,critical,success}\n                        Type of message\n\
-        \  -c, --clear           Remove message\n"
+        usage: dgenies run [-h] [-m {standalone,webserver}] [-d [DEBUG]] [-o HOST]\n\
+        \                   [-p PORT] [--no-crons [NO_CRONS]]\n                  \
+        \ [--no-browser [NO_BROWSER]]\n\noptional arguments:\n  -h, --help       \
+        \     show this help message and exit\n  -m {standalone,webserver}, --mode\
+        \ {standalone,webserver}\n                        Mode into run the application\n\
+        \  -d [DEBUG], --debug [DEBUG]\n                        Run in debug mode\n\
+        \  -o HOST, --host HOST  Host into run the application\n  -p PORT, --port\
+        \ PORT  Port into run the application\n  --no-crons [NO_CRONS]\n         \
+        \               Do not run crons (for debug only, ignored for\n          \
+        \              standalone mode)\n  --no-browser [NO_BROWSER]\n           \
+        \             Do not start the browser (Start of browser is always\n     \
+        \                   disabled in debug mode)\n"
       generated_using: *id002
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -278,7 +282,12 @@ parent: &id003 !Command
       \ help message and exit\n"
     generated_using: *id002
   subcommands:
+  - *id004
   - !Command
+    command:
+    - dgenies
+    - gallery
+    - add
     positional: []
     named:
     - !Flag
@@ -321,12 +330,9 @@ parent: &id003 !Command
       args: !SimpleFlagArg
         name: PICT
       optional: true
-    command:
-    - dgenies
-    - gallery
-    - add
     parent: *id003
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -347,7 +353,7 @@ parent: &id003 !Command
       \ query\n  -t TARGET, --target TARGET\n                        Name of the target\n\
       \  -p PICT, --pict PICT  Name of the file that illustrate the job\n"
     generated_using: *id002
-  - *id004
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -365,6 +371,7 @@ parent: &id003 !Command
     \noptional arguments:\n  -h, --help  show this help message and exit\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

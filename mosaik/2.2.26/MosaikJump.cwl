@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../MosaikJump.cwl
 inputs:
-- id: mem
-  doc: 'the amount memory used when sorting hashes. def: 2'
-  type: string
+- id: in_mem
+  doc: "the amount memory used when sorting\nhashes. def: 2"
+  type: long
   inputBinding:
     prefix: -mem
-- id: hs
+- id: in_hs
   doc: the hash size [4 - 32]
-  type: string
+  type: long
   inputBinding:
     prefix: -hs
-- id: iupac
+- id: in_iupac
   doc: considers IUPAC
   type: boolean
   inputBinding:
     prefix: -iupac
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MosaikJump

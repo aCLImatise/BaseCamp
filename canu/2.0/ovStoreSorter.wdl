@@ -2,10 +2,10 @@ version 1.0
 
 task OvStoreSorter {
   input {
-    String? path_overlap_store
-    String? path_sequence_store
-    String? path_ovstoreconfig_file
-    String? slice_process_n
+    File? path_overlap_store
+    File? path_sequence_store
+    File? path_ovstoreconfig_file
+    Int? slice_process_n
     String? maximum_memory_use
     Boolean? delete_early
     Boolean? delete_late
@@ -20,9 +20,9 @@ task OvStoreSorter {
       ~{if defined(path_ovstoreconfig_file) then ("-C " +  '"' + path_ovstoreconfig_file + '"') else ""} \
       ~{if defined(slice_process_n) then ("-s " +  '"' + slice_process_n + '"') else ""} \
       ~{if defined(maximum_memory_use) then ("-M " +  '"' + maximum_memory_use + '"') else ""} \
-      ~{true="-deleteearly" false="" delete_early} \
-      ~{true="-deletelate" false="" delete_late} \
-      ~{true="-f" false="" force_recompute_exists}
+      ~{if (delete_early) then "-deleteearly" else ""} \
+      ~{if (delete_late) then "-deletelate" else ""} \
+      ~{if (force_recompute_exists) then "-f" else ""}
   >>>
   parameter_meta {
     path_overlap_store: "path to overlap store to create"
@@ -34,5 +34,8 @@ task OvStoreSorter {
     delete_late: "remove intermediates when outputs exist (safe)"
     force_recompute_exists: "force a recompute, even if the output exists or appears in progress"
     opts: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

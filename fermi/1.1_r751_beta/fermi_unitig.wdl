@@ -20,4 +20,7 @@ task FermiUnitig {
     rank_file: "rank file [null]"
     reads_dot_fmd: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

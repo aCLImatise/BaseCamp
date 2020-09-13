@@ -4,4 +4,7 @@ task Dbiproxy {
   command <<<
     dbiproxy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

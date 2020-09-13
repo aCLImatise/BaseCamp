@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../xtermcolor.cwl
 inputs:
-- id: color
+- id: in_color
   doc: Color to convert
   type: string
   inputBinding:
     prefix: --color
-- id: compat
-  doc: Compatibility mode. Defaults to xterm.
+- id: in_compat
+  doc: "Compatibility mode. Defaults to xterm.\n"
   type: string
   inputBinding:
     prefix: --compat
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - xtermcolor

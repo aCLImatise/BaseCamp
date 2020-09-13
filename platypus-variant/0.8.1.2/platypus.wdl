@@ -1,17 +1,10 @@
 version 1.0
 
 task Platypus {
-  input {
-    String var_as
-    String follows
-  }
   command <<<
-    platypus \
-      ~{var_as} \
-      ~{follows}
+    platypus
   >>>
-  parameter_meta {
-    var_as: ""
-    follows: ""
+  output {
+    File out_stdout = stdout()
   }
 }

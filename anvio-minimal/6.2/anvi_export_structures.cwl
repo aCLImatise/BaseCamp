@@ -1,33 +1,41 @@
 class: CommandLineTool
 id: ../../../anvi_export_structures.cwl
 inputs:
-- id: structure_db
+- id: in_structure_db
   doc: Anvi'o structure database.
   type: string
   inputBinding:
     prefix: --structure-db
-- id: output_dir
+- id: in_output_dir
   doc: Directory path for output files
-  type: string
+  type: File
   inputBinding:
     prefix: --output-dir
-- id: gene_caller_ids
-  doc: Gene caller ids. Multiple of them can be declared separated by a delimiter
-    (the default is a comma). In anvi-gen-variability-profile, if you declare nothing
-    you will get all genes matching your other filtering criteria. In other programs,
-    you may get everything, nothing, or an error. It really depends on the situation.
-    Fortunately, mistakes are cheap, so it's worth a try.
+- id: in_gene_caller_ids
+  doc: "Gene caller ids. Multiple of them can be declared\nseparated by a delimiter\
+    \ (the default is a comma). In\nanvi-gen-variability-profile, if you declare nothing\n\
+    you will get all genes matching your other filtering\ncriteria. In other programs,\
+    \ you may get everything,\nnothing, or an error. It really depends on the\nsituation.\
+    \ Fortunately, mistakes are cheap, so it's\nworth a try."
   type: string
   inputBinding:
     prefix: --gene-caller-ids
-- id: genes_of_interest
-  doc: A file with anvi'o gene caller IDs. There should be only one column in the
-    file, and each line should correspond to a unique gene caller id (without a column
-    header).
+- id: in_genes_of_interest
+  doc: "A file with anvi'o gene caller IDs. There should be\nonly one column in the\
+    \ file, and each line should\ncorrespond to a unique gene caller id (without a\n\
+    column header).\n"
   type: File
   inputBinding:
     prefix: --genes-of-interest
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: Directory path for output files
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - anvi-export-structures

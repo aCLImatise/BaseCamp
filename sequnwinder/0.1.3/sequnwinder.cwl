@@ -1,123 +1,143 @@
 class: CommandLineTool
 id: ../../../sequnwinder.cwl
 inputs:
-- id: out
+- id: in_out
   doc: ': Ouput file prefix. All output will be put into a directory with the prefix
     name'
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: threads
+- id: in_threads
   doc: ': Use n threads to train SeqUnwinder model. Default is 5 threads'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: debug
+- id: in_debug
   doc: ': Flag to run in debug mode; prints extra output'
   type: boolean
   inputBinding:
     prefix: --debug
-- id: meme_path
+- id: in_meme_path
   doc: ': path to the meme bin dir (default: meme is in $PATH)'
   type: File
   inputBinding:
     prefix: --memepath
-- id: seq
-  doc: ': A directory containing fasta format files corresponding to every named chromosome
-    is required'
+- id: in_geninfo
+  doc: This file should list the lengths of all chromosomes on separate lines using
+    the format chrName<tab>chrLength
   type: File
   inputBinding:
-    prefix: --seq
-- id: gen_seqs
-  doc: '<DNA sequences around at TF binding sites; eg: ATGC...TGC     Shared;Proximal>'
+    prefix: --geninfo
+- id: in_genre_gs
+  doc: '<List of TF binding sites with annotations; eg: chr1:151736000  Shared;Proximal>'
   type: boolean
   inputBinding:
-    prefix: --genseqs
-- id: win
+    prefix: --genregs
+- id: in_win
   doc: ': Size of the genomic regions in bp. Default = 150.'
   type: long
   inputBinding:
     prefix: --win
-- id: maker_and_regs
+- id: in_maker_and_regs
   doc: ': Flag to make random genomic regions as an extra outgroup class in classification
-    (Only applicable when genome is provide.) '
+    (Only applicable when genome is provide.)'
   type: boolean
   inputBinding:
     prefix: --makerandregs
-- id: mink
+- id: in_mink
   doc: ': Minimum length of k-mer (default = 4)'
   type: long
   inputBinding:
     prefix: --mink
-- id: max_k
+- id: in_max_k
   doc: ': Maximum length of k-mer (default = 5)'
   type: long
   inputBinding:
     prefix: --maxk
-- id: regularization_constant_default
+- id: in_regularization_constant_default
   doc: ': Regularization constant (default = 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: --r
-- id: number_folds_cross
+- id: in_number_folds_cross
   doc: ': Number of folds for cross validation, default = 3.'
   type: long
   inputBinding:
     prefix: --x
-- id: merge_low
+- id: in_merge_low
   doc: ': Flag to merge subclasses with less than 200 sites with other relevant classes.
-    By default, all subclasses with less that 200 sites are removed. '
+    By default, all subclasses with less that 200 sites are removed.'
   type: boolean
   inputBinding:
     prefix: --mergelow
-- id: mins_can_len
+- id: in_mins_can_len
   doc: ': Minimum length of the window to scan K-mer models. Default=8.'
-  type: string
+  type: long
   inputBinding:
     prefix: --minscanlen
-- id: max_scan_len
+- id: in_max_scan_len
   doc: ': Maximum length of the window to scan K-mer models. Default=14.'
-  type: string
+  type: long
   inputBinding:
     prefix: --maxscanlen
-- id: hills_thresh
+- id: in_hills_thresh
   doc: ': Scoring threshold to identify hills. Default=0.1.'
-  type: string
+  type: double
   inputBinding:
     prefix: --hillsthresh
-- id: meme_min_w
+- id: in_meme_min_w
   doc: ': minw arg for MEME. Default=6.'
-  type: string
+  type: long
   inputBinding:
     prefix: --mememinw
-- id: meme_max_w
+- id: in_meme_max_w
   doc: ': maxw arg for MEME. Default=13. This value should always be less than "maxscanlen".'
-  type: string
+  type: long
   inputBinding:
     prefix: --mememaxw
-- id: me_men_motifs
+- id: in_me_men_motifs
   doc: ': Number of motifs MEME should find in each condition (default=3)'
   type: long
   inputBinding:
     prefix: --memenmotifs
-- id: meme_args
+- id: in_meme_args
   doc: ': Additional args for MEME (default:  -dna -mod zoops -revcomp -nostatus)'
   type: string
   inputBinding:
     prefix: --memeargs
-- id: meme_search_win
+- id: in_meme_search_win
   doc: ': Window around hills to search for discriminative motifs. Default=16. (Only
     applicable when run with "genregs").'
-  type: string
+  type: long
   inputBinding:
     prefix: --memesearchwin
-- id: motif_min_roc
+- id: in_motif_min_roc
   doc: ': minimum class-specific ROC required to report motif. Default=0.7.        --a
     <int>: Maximum number of allowed ADMM iterations. Default=400.'
-  type: string
+  type: long
   inputBinding:
     prefix: --motifminROC
-outputs: []
+- id: in_and
+  doc: '--seq <path>: A directory containing fasta format files corresponding to every
+    named chromosome is required'
+  type: string
+  inputBinding:
+    position: 0
+- id: in_or
+  doc: '--genseqs <DNA sequences around at TF binding sites; eg: ATGC...TGC     Shared;Proximal>'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: ': Ouput file prefix. All output will be put into a directory with the prefix
+    name'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - sequnwinder

@@ -1,4 +1,7 @@
-&id003 !Command
+&id002 !Command
+command:
+- wisestork
+- newref
 positional: []
 named:
 - !Flag
@@ -49,17 +52,17 @@ named:
   args: !SimpleFlagArg
     name: INTEGER
   optional: true
-command:
-- wisestork
-- newref
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - wisestork
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - wisestork
+    - count
     positional: []
     named:
     - !Flag
@@ -102,11 +105,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: PATH
       optional: true
-    command:
-    - wisestork
-    - count
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -130,10 +131,25 @@ parent: &id001 !Command
       \      Show the version and exit.\n  -O, --output PATH            Path to output\
       \ BED file  [required]\n  -I, --input PATH             Path to input BAM file\
       \  [required]\n  --help                       Show this message and exit.\n"
-    generated_using: &id002
+    generated_using: &id003
     - --help
+  - *id002
   - !Command
-    positional: []
+    command:
+    - wisestork
+    - gc-correct
+    positional:
+    - !Positional
+      description: -r, --frac-r FLOAT           Minimum fraction of reads per bin.
+        Default =
+      position: 0
+      name: '0.1'
+      optional: false
+    - !Positional
+      description: -t, --iter INTEGER           Number of iterations for LOWESS function.
+      position: 1
+      name: '0.0001'
+      optional: false
     named:
     - !Flag
       description: RANGE  Bin size to use. Default = 50000
@@ -176,7 +192,7 @@ parent: &id001 !Command
         name: PATH
       optional: true
     - !Flag
-      description: Maximum fraction of N-bases per bin. Default = 0.1
+      description: Maximum fraction of N-bases per bin. Default =
       synonyms:
       - -n
       - --frac-n
@@ -184,34 +200,16 @@ parent: &id001 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: Minimum fraction of reads per bin. Default = 0.0001
-      synonyms:
-      - -r
-      - --frac-r
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
-    - !Flag
-      description: Number of iterations for LOWESS function. Default = 3
-      synonyms:
-      - -t
-      - --iter
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: Fraction of data to use for LOWESS function. Default = 0.1
+      description: "Fraction of data to use for LOWESS function.\nDefault = 0.1"
       synonyms:
       - -l
       - --frac-lowess
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
-    command:
-    - wisestork
-    - gc-correct
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -239,9 +237,11 @@ parent: &id001 !Command
       \  Default = 3\n\n  -l, --frac-lowess FLOAT      Fraction of data to use for\
       \ LOWESS function.\n                               Default = 0.1\n\n  --help\
       \                       Show this message and exit.\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
   - !Command
+    command:
+    - wisestork
+    - zscore
     positional: []
     named:
     - !Flag
@@ -292,11 +292,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: PATH
       optional: true
-    command:
-    - wisestork
-    - zscore
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -322,7 +320,8 @@ parent: &id001 !Command
       \ PATH            Path to output BED file  [required]\n  -D, --dictionary-file\
       \ PATH   Path to dictionary BED file  [required]\n  --help                 \
       \      Show this message and exit.\n"
-    generated_using: *id002
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -346,8 +345,9 @@ parent: &id001 !Command
     \  --version  Show the version and exit.\n  --help     Show this message and exit.\n\
     \nCommands:\n  count       Count coverages\n  gc-correct  GC correct\n  newref\
     \      Create new reference\n  zscore      Calculate Z-scores\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -372,4 +372,4 @@ help_text: "Usage: wisestork newref [OPTIONS]\n\n  Create a new reference dictio
   \  -O, --output PATH            Path to output BED file  [required]\n  -n, --n-bins\
   \ INTEGER         Amount of neighbours bins to consider per bin\n  --help      \
   \                 Show this message and exit.\n"
-generated_using: *id002
+generated_using: *id003

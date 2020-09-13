@@ -14,4 +14,7 @@ task Dowtjack {
     bad: ""
     params_dot_dot_dot_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Vigpg {
   command <<<
     vigpg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

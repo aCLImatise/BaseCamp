@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../samtools_rmdup.cwl
 inputs:
-- id: rmdup_se_reads
+- id: in_rmdup_se_reads
   doc: rmdup for SE reads
   type: boolean
   inputBinding:
     prefix: -s
-- id: treat_pe_reads
+- id: in_treat_pe_reads
   doc: treat PE reads as SE in rmdup (force -s)
   type: boolean
   inputBinding:
     prefix: -S
-- id: ss
+- id: in_ss
   doc: ''
   type: boolean
   inputBinding:
     prefix: -sS
-- id: input_dots_rt_dot_bam
+- id: in_input_dots_rt_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_dot_bam
+- id: in_output_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - samtools

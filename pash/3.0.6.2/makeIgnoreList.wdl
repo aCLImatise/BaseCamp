@@ -2,22 +2,26 @@ version 1.0
 
 task MakeIgnoreList {
   input {
-    String? i
-    String? o
-    Int? c
     Int? m
+    Int? c
+    File? o
+    File? i
   }
   command <<<
     makeIgnoreList \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
-    o: ""
-    c: ""
     m: ""
+    c: ""
+    o: ""
+    i: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_o = "${in_o}"
   }
 }

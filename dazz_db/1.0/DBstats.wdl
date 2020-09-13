@@ -6,9 +6,12 @@ task DBstats {
   }
   command <<<
     DBstats \
-      ~{true="-nu" false="" nu}
+      ~{if (nu) then "-nu" else ""}
   >>>
   parameter_meta {
     nu: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

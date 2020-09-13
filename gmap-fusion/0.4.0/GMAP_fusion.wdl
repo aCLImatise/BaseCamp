@@ -1,7 +1,10 @@
 version 1.0
 
-task GMAPFusion {
+task GMAPfusion {
   command <<<
-    GMAP-fusion
+    GMAP_fusion
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

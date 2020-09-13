@@ -4,4 +4,7 @@ task Psearch {
   command <<<
     psearch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task TriangulateGA {
   command <<<
     triangulateGA
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -13,12 +13,12 @@ task Isoseq3Collapse {
   command <<<
     isoseq3 collapse \
       ~{out_dot_fast_q} \
-      ~{true="--min-aln-coverage" false="" min_aln_coverage} \
-      ~{true="--min-aln-identity" false="" min_aln_identity} \
-      ~{true="--max-fuzzy-junction" false="" max_fuzzy_junction} \
-      ~{true="--num-threads" false="" num_threads} \
-      ~{true="--log-level" false="" log_level} \
-      ~{true="--log-file" false="" log_file}
+      ~{if (min_aln_coverage) then "--min-aln-coverage" else ""} \
+      ~{if (min_aln_identity) then "--min-aln-identity" else ""} \
+      ~{if (max_fuzzy_junction) then "--max-fuzzy-junction" else ""} \
+      ~{if (num_threads) then "--num-threads" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_file) then "--log-file" else ""}
   >>>
   parameter_meta {
     min_aln_coverage: "FLOAT  Ignore alignments with less than minimum query read coverage. [0.99]"
@@ -28,5 +28,8 @@ task Isoseq3Collapse {
     log_level: "STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]"
     log_file: "FILE   Log to a file, instead of stderr."
     out_dot_fast_q: "STR    Collapsed transcripts in FASTQ"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

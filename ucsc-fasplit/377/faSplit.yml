@@ -1,4 +1,6 @@
 !Command
+command:
+- faSplit
 positional:
 - !Positional
   description: ''
@@ -15,16 +17,85 @@ positional:
   position: 2
   name: count
   optional: false
-- !Positional
-  description: ''
-  position: 3
-  name: outRoot
-  optional: false
-named: []
-command:
-- faSplit
+named:
+- !Flag
+  description: '- Write names of each file created (=3 more details)'
+  synonyms:
+  - -verbose
+  args: !SimpleFlagArg
+    name: '2'
+  optional: true
+- !Flag
+  description: "- Suppress pieces with more than maxN n's.  Only used with size.\n\
+    default is size-1 (only suppresses pieces that are all N)."
+  synonyms:
+  - -maxN
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '- Put output in one file. Only used with size'
+  synonyms:
+  - -oneFile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Add N extra bytes at the end to form overlapping pieces.  Only used
+    with size.'
+  synonyms:
+  - -extra
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Get masking from outfile.  Only used with size.
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: outFile
+  optional: true
+- !Flag
+  description: "Put info on how to reconstruct sequence from\npieces in file.lft.\
+    \  Only used with size and gap."
+  synonyms:
+  - -lift
+  args: !SimpleFlagArg
+    name: file.lft
+  optional: true
+- !Flag
+  description: "Consider a block of Ns to be a gap if block size >= X.\nDefault value\
+    \ 1000.  Only used with gap."
+  synonyms:
+  - -minGapSize
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: "- include all N's when splitting by gap."
+  synonyms:
+  - -noGapDrops
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Create N levels of output directory under current dir.\nThis helps\
+    \ prevent NFS problems with a large number of\nfile in a directory.  Using -outDirDepth=3\
+    \ would\nproduce ./1/2/3/outRoot123.fa."
+  synonyms:
+  - -outDirDepth
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "- used with byname option. create a separate output\nfile for each\
+    \ group of sequences names with same prefix\nof length N.\n"
+  synonyms:
+  - -prefixLength
+  args: !SimpleFlagArg
+    name: N
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

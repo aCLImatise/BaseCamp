@@ -4,4 +4,7 @@ task FcRun {
   command <<<
     fc_run
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

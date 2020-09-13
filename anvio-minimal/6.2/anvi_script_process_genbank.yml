@@ -1,4 +1,6 @@
 !Command
+command:
+- anvi-script-process-genbank
 positional: []
 named:
 - !Flag
@@ -10,6 +12,37 @@ named:
     name: GENBANK
   optional: true
 - !Flag
+  description: "A prefix to be used while naming the output files (no\nfile type extensions\
+    \ please; just a prefix)."
+  synonyms:
+  - -O
+  - --output-file-prefix
+  args: !SimpleFlagArg
+    name: FILENAME_PREFIX
+  optional: true
+- !Flag
+  description: Output FASTA file path.
+  synonyms:
+  - --output-fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "DELIMITED FILE\nOutput file path for external gene calls"
+  synonyms:
+  - --output-gene-calls
+  args: !SimpleFlagArg
+    name: TAB
+  optional: true
+- !Flag
+  description: "DELIMITED FILE\nOutput file path for anvi'o-importable gene functions\n\
+    file"
+  synonyms:
+  - --output-functions
+  args: !SimpleFlagArg
+    name: TAB
+  optional: true
+- !Flag
   description: 'Annotation source (default: "NCBI_PGAP")'
   synonyms:
   - --annotation-source
@@ -17,23 +50,16 @@ named:
     name: ANNOTATION_SOURCE
   optional: true
 - !Flag
-  description: 'Annotation source version to be stored in the database (default: "v4.6")'
+  description: "Annotation source version to be stored in the database\n(default:\
+    \ \"v4.6\")\n"
   synonyms:
   - --annotation-version
   args: !SimpleFlagArg
     name: ANNOTATION_VERSION
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -O
-  args: !SimpleFlagArg
-    name: FILENAME_PREFIX
-  optional: true
-command:
-- anvi-script-process-genbank
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

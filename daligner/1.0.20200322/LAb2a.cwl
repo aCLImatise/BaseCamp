@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../LAb2a.cwl
 inputs:
-- id: la_a_two_b
+- id: in_la_a_two_b
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - LAb2a

@@ -4,4 +4,7 @@ task Nemo {
   command <<<
     nemo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -12,11 +12,11 @@ task BxtoolsTile {
   command <<<
     bxtools tile \
       ~{bam_slash_sam_slash_cram} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--width" false="" width} \
-      ~{true="--overlap" false="" overlap} \
-      ~{true="--bed" false="" bed} \
-      ~{true="--tag" false="" tag}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (width) then "--width" else ""} \
+      ~{if (overlap) then "--overlap" else ""} \
+      ~{if (bed) then "--bed" else ""} \
+      ~{if (tag) then "--tag" else ""}
   >>>
   parameter_meta {
     verbose: "Set verbose output"
@@ -25,5 +25,8 @@ task BxtoolsTile {
     bed: "Rather than tile genome, input BED with regions"
     tag: "Tag other than BX to evaluate (e.g. MI)"
     bam_slash_sam_slash_cram: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

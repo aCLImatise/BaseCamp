@@ -1,6 +1,6 @@
 version 1.0
 
-task MargeCisRegulatory {
+task MargeCisregulatory {
   input {
     String marge
     String is
@@ -21,7 +21,7 @@ task MargeCisRegulatory {
     String mouse_dot
   }
   command <<<
-    marge cis-regulatory \
+    marge cis_regulatory \
       ~{marge} \
       ~{is} \
       ~{a} \
@@ -58,5 +58,8 @@ task MargeCisRegulatory {
     human: ""
     or: ""
     mouse_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

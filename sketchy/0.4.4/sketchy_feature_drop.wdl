@@ -14,7 +14,11 @@ task SketchyFeatureDrop {
   >>>
   parameter_meta {
     index: "Path to feature index input file.  [required]"
-    path_dropped_file: "Path to dropped feature index output file [index.dropped.tsv]"
-    columns: "Comma-delimited string of columns to drop or \"clean\" [clean]"
+    path_dropped_file: "Path to dropped feature index output file\\n[index.dropped.tsv]"
+    columns: "Comma-delimited string of columns to drop or \\\"clean\\\"\\n[clean]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_dropped_file = "${in_path_dropped_file}"
   }
 }

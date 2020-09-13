@@ -2,8 +2,8 @@ version 1.0
 
 task PanGenomeReorderSpreadsheet {
   input {
-    String? tree_filename
-    String? output_filename
+    File? tree_filename
+    File? output_filename
     String? tree_format_newicknexusnhxsvggraphtabtreelintree
     String? input_gene_presence
     String? search_strategy_depthbreadth
@@ -18,7 +18,7 @@ task PanGenomeReorderSpreadsheet {
       ~{if defined(input_gene_presence) then ("-s " +  '"' + input_gene_presence + '"') else ""} \
       ~{if defined(search_strategy_depthbreadth) then ("-a " +  '"' + search_strategy_depthbreadth + '"') else ""} \
       ~{if defined(sorting_method_heightcreationalpharevalpha) then ("-b " +  '"' + sorting_method_heightcreationalpharevalpha + '"') else ""} \
-      ~{true="-v" false="" verbose_output_stdout}
+      ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
   parameter_meta {
     tree_filename: "tree filename []"
@@ -28,5 +28,9 @@ task PanGenomeReorderSpreadsheet {
     search_strategy_depthbreadth: "search strategy (depth/breadth) [depth]"
     sorting_method_heightcreationalpharevalpha: "sorting method (height/creation/alpha/revalpha) [height]"
     verbose_output_stdout: "verbose output to STDOUT"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_filename = "${in_output_filename}"
   }
 }

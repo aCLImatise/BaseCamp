@@ -4,4 +4,7 @@ task GmtkOnline {
   command <<<
     gmtkOnline
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

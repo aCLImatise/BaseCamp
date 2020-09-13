@@ -2,10 +2,10 @@ version 1.0
 
 task Yamllint {
   input {
-    String? config_file
+    File? config_file
     String? config_data
     String? format
-    File file_or_dir
+    String file_or_dir
   }
   command <<<
     yamllint \
@@ -19,5 +19,8 @@ task Yamllint {
     config_data: "custom configuration (as YAML source)"
     format: "format for parsing output"
     file_or_dir: "files to check"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

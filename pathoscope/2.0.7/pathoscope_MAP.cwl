@@ -1,93 +1,106 @@
 class: CommandLineTool
 id: ../../../pathoscope_MAP.cwl
 inputs:
-- id: input_read_fastq_file_unpairedsingleend
+- id: in_input_read_file
   doc: Input Read Fastq File (Unpaired/Single-end)
-  type: string
+  type: File
   inputBinding:
     prefix: -U
-- id: one
+- id: in_one
   doc: Input Read Fastq File (Pair 1)
-  type: string
+  type: long
   inputBinding:
     prefix: '-1'
-- id: two
+- id: in_two
   doc: Input Read Fastq File (Pair 2)
-  type: string
+  type: long
   inputBinding:
     prefix: '-2'
-- id: target_ref_files
-  doc: Target Reference Genome Fasta Files Full Path (Comma Separated)
-  type: string
+- id: in_target_ref_files
+  doc: "Target Reference Genome Fasta Files Full Path (Comma\nSeparated)"
+  type: File
   inputBinding:
     prefix: -targetRefFiles
-- id: filter_ref_files
-  doc: Filter Reference Genome Fasta Files Full Path (Comma Separated)
-  type: string
+- id: in_filter_ref_files
+  doc: "Filter Reference Genome Fasta Files Full Path (Comma\nSeparated)"
+  type: File
   inputBinding:
     prefix: -filterRefFiles
-- id: target_align_params
-  doc: 'Target Mapping Bowtie2 Parameters (Default: Pathoscope chosen best parameters)'
-  type: string
+- id: in_target_align_params
+  doc: "Target Mapping Bowtie2 Parameters (Default: Pathoscope\nchosen best parameters)"
+  type: long
   inputBinding:
     prefix: -targetAlignParams
-- id: filter_align_params
-  doc: 'Filter Mapping Bowtie2 Parameters (Default: Use the same Target Mapping Bowtie2
-    parameters)'
-  type: string
+- id: in_filter_align_params
+  doc: "Filter Mapping Bowtie2 Parameters (Default: Use the\nsame Target Mapping Bowtie2\
+    \ parameters)"
+  type: long
   inputBinding:
     prefix: -filterAlignParams
-- id: outdir
+- id: in_outdir
   doc: Output Directory (Default=. (current directory))
-  type: string
+  type: Directory
   inputBinding:
     prefix: -outDir
-- id: out_align
+- id: in_out_align
   doc: Output Alignment File Name (Default=outalign.sam)
-  type: string
+  type: File
   inputBinding:
     prefix: -outAlign
-- id: index_dir
+- id: in_index_dir
   doc: Index Directory (Default=. (current directory))
-  type: string
+  type: Directory
   inputBinding:
     prefix: -indexDir
-- id: target_index_prefixes
+- id: in_target_index_prefixes
   doc: Target Index Prefixes (Comma Separated)
   type: string
   inputBinding:
     prefix: -targetIndexPrefixes
-- id: filter_index_prefixes
+- id: in_filter_index_prefixes
   doc: Filter Index Prefixes (Comma Separated)
   type: string
   inputBinding:
     prefix: -filterIndexPrefixes
-- id: target_align_files
+- id: in_target_align_files
   doc: Target Alignment Files Full Path (Comma Separated)
-  type: string
+  type: File
   inputBinding:
     prefix: -targetAlignFiles
-- id: filter_align_files
+- id: in_filter_align_files
   doc: Filter Alignment Files Full Path (Comma Separated)
-  type: string
+  type: File
   inputBinding:
     prefix: -filterAlignFiles
-- id: bt_home
-  doc: 'Full Path to Bowtie2 binary directory (Default: Uses bowtie2 in system path)'
-  type: string
+- id: in_bt_home
+  doc: "Full Path to Bowtie2 binary directory (Default: Uses\nbowtie2 in system path)"
+  type: File
   inputBinding:
     prefix: -btHome
-- id: num_threads
-  doc: Number of threads to use by aligner (bowtie2) if different from default (8)
-  type: string
+- id: in_num_threads
+  doc: "Number of threads to use by aligner (bowtie2) if\ndifferent from default (8)"
+  type: long
   inputBinding:
     prefix: -numThreads
-- id: exp_tag
-  doc: 'Experiment Tag added to files generated for identification (Default: pathomap)'
+- id: in_exp_tag
+  doc: "Experiment Tag added to files generated for\nidentification (Default: pathomap)\n"
   type: string
   inputBinding:
     prefix: -expTag
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: Output Directory (Default=. (current directory))
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_out_align
+  doc: Output Alignment File Name (Default=outalign.sam)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_align)
 cwlVersion: v1.1
 baseCommand:
 - pathoscope

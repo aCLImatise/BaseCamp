@@ -1,50 +1,58 @@
 class: CommandLineTool
 id: ../../../filter_gff_sequence.cwl
 inputs:
-- id: sorted
-  doc: If the GFF file is sorted (all of a sequence annotations are contiguos) can
-    use less memory, `sort -s -k 1,1` can be used
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_sorted
+  doc: "If the GFF file is sorted (all of a sequence\nannotations are contiguos) can\
+    \ use less\nmemory, `sort -s -k 1,1` can be used"
   type: boolean
   inputBinding:
     prefix: --sorted
-- id: attribute
-  doc: '[evalue|bitscore|identity|length] Attribute on which to apply the filter [default:
-    bitscore]'
+- id: in_attribute
+  doc: "[evalue|bitscore|identity|length]\nAttribute on which to apply the filter\n\
+    [default: bitscore]"
   type: boolean
   inputBinding:
     prefix: --attribute
-- id: function
-  doc: '[mean|median|quantile|std|max|min] Function for filtering  [default: mean]'
+- id: in_function
+  doc: "[mean|median|quantile|std|max|min]\nFunction for filtering  [default: mean]"
   type: boolean
   inputBinding:
     prefix: --function
-- id: value
-  doc: Value for the function (used for *std* and *quantile*)
+- id: in_value
+  doc: "Value for the function (used for *std* and\n*quantile*)"
   type: double
   inputBinding:
     prefix: --value
-- id: comparison
-  doc: '[gt|ge|lt|le]  Type of comparison (e.g. ge -> greater than or equal to)  [default:
-    ge]'
+- id: in_comparison
+  doc: "[gt|ge|lt|le]  Type of comparison (e.g. ge -> greater than\nor equal to) \
+    \ [default: ge]"
   type: boolean
   inputBinding:
     prefix: --comparison
-- id: progress
+- id: in_progress
   doc: Shows Progress Bar
   type: boolean
   inputBinding:
     prefix: --progress
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - filter-gff

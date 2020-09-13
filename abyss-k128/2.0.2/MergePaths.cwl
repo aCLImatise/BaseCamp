@@ -1,77 +1,80 @@
 class: CommandLineTool
 id: ../../../MergePaths.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: k-mer size
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: seed_length
+- id: in_seed_length
   doc: minimum length of a seed contig [0]
-  type: string
+  type: long
   inputBinding:
     prefix: --seed-length
-- id: out
+- id: in_out
   doc: write result to FILE
   type: File
   inputBinding:
     prefix: --out
-- id: no_greedy
+- id: in_no_greedy
   doc: use the non-greedy algorithm [default]
   type: boolean
   inputBinding:
     prefix: --no-greedy
-- id: greedy
+- id: in_greedy
   doc: use the greedy algorithm
   type: boolean
   inputBinding:
     prefix: --greedy
-- id: graph
+- id: in_graph
   doc: write the path overlap graph to FILE
   type: File
   inputBinding:
     prefix: --graph
-- id: threads
+- id: in_threads
   doc: use N parallel threads [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: db
+- id: in_db
   doc: specify path of database repository in FILE
   type: File
   inputBinding:
     prefix: --db
-- id: library
+- id: in_library
   doc: specify library NAME for database
   type: string
   inputBinding:
     prefix: --library
-- id: strain
+- id: in_strain
   doc: specify strain NAME for database
   type: string
   inputBinding:
     prefix: --strain
-- id: species
+- id: in_species
   doc: specify species NAME for database
   type: string
   inputBinding:
     prefix: --species
-- id: len
+- id: in_len
   doc: lengths of the contigs
   type: string
   inputBinding:
     position: 0
-- id: path
+- id: in_path
   doc: sequences of contig IDs
   type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MergePaths

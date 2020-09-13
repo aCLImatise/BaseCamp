@@ -2,7 +2,7 @@ version 1.0
 
 task OverlapConvert {
   input {
-    Boolean? needed_coords_default
+    Boolean? seqstore_needed_default
     Boolean? coords
     Boolean? hangs
     Boolean? unaligned
@@ -11,16 +11,19 @@ task OverlapConvert {
   command <<<
     overlapConvert \
       ~{file_do_to_vb} \
-      ~{true="-S" false="" needed_coords_default} \
-      ~{true="-coords" false="" coords} \
-      ~{true="-hangs" false="" hangs} \
-      ~{true="-unaligned" false="" unaligned}
+      ~{if (seqstore_needed_default) then "-S" else ""} \
+      ~{if (coords) then "-coords" else ""} \
+      ~{if (hangs) then "-hangs" else ""} \
+      ~{if (unaligned) then "-unaligned" else ""}
   >>>
   parameter_meta {
-    needed_coords_default: "seqStore (needed for -coords, the default)"
+    seqstore_needed_default: "seqStore (needed for -coords, the default)"
     coords: "output coordiantes on reads"
     hangs: "output hangs on reads"
     unaligned: "output unaligned regions on each read"
     file_do_to_vb: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,136 +1,141 @@
 class: CommandLineTool
 id: ../../../bedtools_map.cwl
 inputs:
-- id: specify_columns_map
-  doc: 'Specify columns from the B file to map onto intervals in A. Default: 5. Multiple
-    columns can be specified in a comma-delimited list.'
+- id: in_specify_columns_map
+  doc: "Specify columns from the B file to map onto intervals in A.\nDefault: 5.\n\
+    Multiple columns can be specified in a comma-delimited list."
   type: boolean
   inputBinding:
     prefix: -c
-- id: specify_operation_applied
-  doc: 'Specify the operation that should be applied to -c. Valid operations: sum,
-    min, max, absmin, absmax, mean, median, mode, antimode stdev, sstdev collapse
-    (i.e., print a delimited list (duplicates allowed)),  distinct (i.e., print a
-    delimited list (NO duplicates allowed)),  distinct_sort_num (as distinct, sorted
-    numerically, ascending), distinct_sort_num_desc (as distinct, sorted numerically,
-    desscending), distinct_only (delimited list of only unique values), count count_distinct
-    (i.e., a count of the unique values in the column),  first (i.e., just the first
-    value in the column),  last (i.e., just the last value in the column),  Default:
-    sum Multiple operations can be specified in a comma-delimited list. If there is
-    only column, but multiple operations, all operations will be applied on that column.
-    Likewise, if there is only one operation, but multiple columns, that operation
-    will be applied to all columns. Otherwise, the number of columns must match the
-    the number of operations, and will be applied in respective order. E.g., "-c 5,4,6
-    -o sum,mean,count" will give the sum of column 5, the mean of column 4, and the
-    count of column 6. The order of output columns will match the ordering given in
-    the command.'
+- id: in_specify_operation_applied
+  doc: "Specify the operation that should be applied to -c.\nValid operations:\nsum,\
+    \ min, max, absmin, absmax,\nmean, median, mode, antimode\nstdev, sstdev\ncollapse\
+    \ (i.e., print a delimited list (duplicates allowed)),\ndistinct (i.e., print\
+    \ a delimited list (NO duplicates allowed)),\ndistinct_sort_num (as distinct,\
+    \ sorted numerically, ascending),\ndistinct_sort_num_desc (as distinct, sorted\
+    \ numerically, desscending),\ndistinct_only (delimited list of only unique values),\n\
+    count\ncount_distinct (i.e., a count of the unique values in the column),\nfirst\
+    \ (i.e., just the first value in the column),\nlast (i.e., just the last value\
+    \ in the column),\nDefault: sum\nMultiple operations can be specified in a comma-delimited\
+    \ list.\nIf there is only column, but multiple operations, all operations will\
+    \ be\napplied on that column. Likewise, if there is only one operation, but\n\
+    multiple columns, that operation will be applied to all columns.\nOtherwise, the\
+    \ number of columns must match the the number of operations,\nand will be applied\
+    \ in respective order.\nE.g., \"-c 5,4,6 -o sum,mean,count\" will give the sum\
+    \ of column 5,\nthe mean of column 4, and the count of column 6.\nThe order of\
+    \ output columns will match the ordering given in the command."
   type: boolean
   inputBinding:
     prefix: -o
-- id: delim
-  doc: 'Specify a custom delimiter for the collapse operations. - Example: -delim
-    "|" - Default: ",".'
+- id: in_delim
+  doc: "Specify a custom delimiter for the collapse operations.\n- Example: -delim\
+    \ \"|\"\n- Default: \",\"."
   type: boolean
   inputBinding:
     prefix: -delim
-- id: prec
+- id: in_prec
   doc: 'Sets the decimal precision for output (Default: 5)'
   type: boolean
   inputBinding:
     prefix: -prec
-- id: require_same_strandedness
-  doc: Require same strandedness.  That is, only report hits in B that overlap A on
-    the _same_ strand. - By default, overlaps are reported without respect to strand.
+- id: in_require_same_strandedness
+  doc: "Require same strandedness.  That is, only report hits in B\nthat overlap A\
+    \ on the _same_ strand.\n- By default, overlaps are reported without respect to\
+    \ strand."
   type: boolean
   inputBinding:
     prefix: -s
-- id: require_different_strandedness
-  doc: Require different strandedness.  That is, only report hits in B that overlap
-    A on the _opposite_ strand. - By default, overlaps are reported without respect
-    to strand.
+- id: in_require_different_strandedness
+  doc: "Require different strandedness.  That is, only report hits in B\nthat overlap\
+    \ A on the _opposite_ strand.\n- By default, overlaps are reported without respect\
+    \ to strand."
   type: boolean
   inputBinding:
     prefix: -S
-- id: minimum_overlap_a
-  doc: Minimum overlap required as a fraction of A. - Default is 1E-9 (i.e., 1bp).
-    - FLOAT (e.g. 0.50)
+- id: in_minimum_overlap_a
+  doc: "Minimum overlap required as a fraction of A.\n- Default is 1E-9 (i.e., 1bp).\n\
+    - FLOAT (e.g. 0.50)"
   type: boolean
   inputBinding:
     prefix: -f
-- id: minimum_overlap_b
-  doc: Minimum overlap required as a fraction of B. - Default is 1E-9 (i.e., 1bp).
-    - FLOAT (e.g. 0.50)
+- id: in_minimum_overlap_b
+  doc: "Minimum overlap required as a fraction of B.\n- Default is 1E-9 (i.e., 1bp).\n\
+    - FLOAT (e.g. 0.50)"
   type: boolean
   inputBinding:
     prefix: -F
-- id: require_fraction_overlap
-  doc: Require that the fraction overlap be reciprocal for A AND B. - In other words,
-    if -f is 0.90 and -r is used, this requires that B overlap 90% of A and A _also_
-    overlaps 90% of B.
+- id: in_require_fraction_overlap
+  doc: "Require that the fraction overlap be reciprocal for A AND B.\n- In other words,\
+    \ if -f is 0.90 and -r is used, this requires\nthat B overlap 90% of A and A _also_\
+    \ overlaps 90% of B."
   type: boolean
   inputBinding:
     prefix: -r
-- id: require_minimum_fraction
-  doc: Require that the minimum fraction be satisfied for A OR B. - In other words,
-    if -e is used with -f 0.90 and -F 0.10 this requires that either 90% of A is covered
-    OR 10% of  B is covered. Without -e, both fractions would have to be satisfied.
+- id: in_require_minimum_fraction
+  doc: "Require that the minimum fraction be satisfied for A OR B.\n- In other words,\
+    \ if -e is used with -f 0.90 and -F 0.10 this requires\nthat either 90% of A is\
+    \ covered OR 10% of  B is covered.\nWithout -e, both fractions would have to be\
+    \ satisfied."
   type: boolean
   inputBinding:
     prefix: -e
-- id: split
+- id: in_split
   doc: Treat "split" BAM or BED12 entries as distinct BED intervals.
   type: boolean
   inputBinding:
     prefix: -split
-- id: provide_genome_file
-  doc: Provide a genome file to enforce consistent chromosome sort order across input
-    files. Only applies when used with -sorted option.
+- id: in_provide_genome_file
+  doc: "Provide a genome file to enforce consistent chromosome sort order\nacross\
+    \ input files. Only applies when used with -sorted option."
   type: boolean
   inputBinding:
     prefix: -g
-- id: no_name_check
-  doc: For sorted data, don't throw an error if the file has different naming conventions
-    for the same chromosome. ex. "chr1" vs "chr01".
+- id: in_no_name_check
+  doc: "For sorted data, don't throw an error if the file has different naming conventions\n\
+    for the same chromosome. ex. \"chr1\" vs \"chr01\"."
   type: boolean
   inputBinding:
     prefix: -nonamecheck
-- id: bed
+- id: in_bed
   doc: If using BAM input, write output as BED.
   type: boolean
   inputBinding:
     prefix: -bed
-- id: header
+- id: in_header
   doc: the header from the A file prior to results.
-  type: string
+  type: File
   inputBinding:
     prefix: -header
-- id: no_buf
-  doc: Disable buffered output. Using this option will cause each line of output to
-    be printed as it is generated, rather than saved in a buffer. This will make printing
-    large output files  noticeably slower, but can be useful in conjunction with other
-    software tools and scripts that need to process one line of bedtools output at
-    a time.
+- id: in_no_buf
+  doc: "Disable buffered output. Using this option will cause each line\nof output\
+    \ to be printed as it is generated, rather than saved\nin a buffer. This will\
+    \ make printing large output files\nnoticeably slower, but can be useful in conjunction\
+    \ with\nother software tools and scripts that need to process one\nline of bedtools\
+    \ output at a time."
   type: boolean
   inputBinding:
     prefix: -nobuf
-- id: i_obuf
-  doc: 'Specify amount of memory to use for input buffer. Takes an integer argument.
-    Optional suffixes K/M/G supported. Note: currently has no effect with compressed
-    files.'
+- id: in_i_obuf
+  doc: "Specify amount of memory to use for input buffer.\nTakes an integer argument.\
+    \ Optional suffixes K/M/G supported.\nNote: currently has no effect with compressed\
+    \ files."
   type: boolean
   inputBinding:
     prefix: -iobuf
-- id: a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -a
-- id: b
+- id: in_b
   doc: ''
   type: string
   inputBinding:
     prefix: -b
-outputs: []
+- id: in_a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedtools

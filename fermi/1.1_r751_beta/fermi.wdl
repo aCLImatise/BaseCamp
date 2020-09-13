@@ -4,4 +4,7 @@ task Fermi {
   command <<<
     fermi
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

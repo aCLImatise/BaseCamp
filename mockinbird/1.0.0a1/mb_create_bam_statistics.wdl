@@ -1,14 +1,14 @@
 version 1.0
 
-task MbCreateBamStatistics {
+task Mbcreatebamstatistics {
   input {
-    String? gff_file
+    File? gff_file
     String estimate_bam_statistics
     String bam_file
     String output_json
   }
   command <<<
-    mb-create-bam-statistics \
+    mb_create_bam_statistics \
       ~{estimate_bam_statistics} \
       ~{bam_file} \
       ~{output_json} \
@@ -19,5 +19,8 @@ task MbCreateBamStatistics {
     estimate_bam_statistics: ""
     bam_file: ""
     output_json: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

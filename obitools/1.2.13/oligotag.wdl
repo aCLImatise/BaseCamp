@@ -5,43 +5,46 @@ task Oligotag {
     Boolean? debug
     Boolean? without_progress_bar
     File? oligo_list
-    Boolean? _oligosize_size
-    Boolean? _familysize_size
-    Boolean? _distance_minimal
-    Boolean? _gcmax_maximum
+    Boolean? _oligosizesize_generate
+    Boolean? _familysizesize_generate
+    Boolean? _distanceminimal_distance
+    Boolean? _gcmaxmaximum_count
     String? accepted
     String? rejected
-    Boolean? _homopolymer_reject
-    Boolean? _homopolymermin_accept
-    String? timeout
+    Boolean? _homopolymerreject_oligo
+    Boolean? _homopolymerminaccept_only
+    Int? timeout
   }
   command <<<
     oligotag \
-      ~{true="--DEBUG" false="" debug} \
-      ~{true="--without-progress-bar" false="" without_progress_bar} \
+      ~{if (debug) then "--DEBUG" else ""} \
+      ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
       ~{if defined(oligo_list) then ("--oligo-list " +  '"' + oligo_list + '"') else ""} \
-      ~{true="-s" false="" _oligosize_size} \
-      ~{true="-f" false="" _familysize_size} \
-      ~{true="-d" false="" _distance_minimal} \
-      ~{true="-g" false="" _gcmax_maximum} \
+      ~{if (_oligosizesize_generate) then "-s" else ""} \
+      ~{if (_familysizesize_generate) then "-f" else ""} \
+      ~{if (_distanceminimal_distance) then "-d" else ""} \
+      ~{if (_gcmaxmaximum_count) then "-g" else ""} \
       ~{if defined(accepted) then ("--accepted " +  '"' + accepted + '"') else ""} \
       ~{if defined(rejected) then ("--rejected " +  '"' + rejected + '"') else ""} \
-      ~{true="-p" false="" _homopolymer_reject} \
-      ~{true="-P" false="" _homopolymermin_accept} \
+      ~{if (_homopolymerreject_oligo) then "-p" else ""} \
+      ~{if (_homopolymerminaccept_only) then "-P" else ""} \
       ~{if defined(timeout) then ("--timeout " +  '"' + timeout + '"') else ""}
   >>>
   parameter_meta {
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"
     oligo_list: "filename containing a list of oligonucleotide"
-    _oligosize_size: "<###>, --oligo-size=<###> Size of oligonucleotide to generate"
-    _familysize_size: "<###>, --family-size=<###> Size of oligonucleotide family to generate"
-    _distance_minimal: "<###>, --distance=<###> minimal distance between two oligonucleotides"
-    _gcmax_maximum: "<###>, --gc-max=<###> maximum count of G or C nucleotide acceptable in a word"
+    _oligosizesize_generate: "<###>, --oligo-size=<###>\\nSize of oligonucleotide to generate"
+    _familysizesize_generate: "<###>, --family-size=<###>\\nSize of oligonucleotide family to generate"
+    _distanceminimal_distance: "<###>, --distance=<###>\\nminimal distance between two oligonucleotides"
+    _gcmaxmaximum_count: "<###>, --gc-max=<###>\\nmaximum count of G or C nucleotide acceptable in a\\nword"
     accepted: "pattern of accepted oligonucleotide"
     rejected: "pattern of rejected oligonucleotide"
-    _homopolymer_reject: "<###>, --homopolymer=<###> reject oligo with homopolymer longer than."
-    _homopolymermin_accept: "<###>, --homopolymer-min=<###> accept only oligo with homopolymer longer or equal to."
-    timeout: "timeout to identify a clique of good size"
+    _homopolymerreject_oligo: "<###>, --homopolymer=<###>\\nreject oligo with homopolymer longer than."
+    _homopolymerminaccept_only: "<###>, --homopolymer-min=<###>\\naccept only oligo with homopolymer longer or equal to."
+    timeout: "timeout to identify a clique of good size\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

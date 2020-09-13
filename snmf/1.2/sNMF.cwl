@@ -1,73 +1,76 @@
 class: CommandLineTool
 id: ../../../sNMF.cwl
 inputs:
-- id: _genotype_file
+- id: in__genotype_file
   doc: -- genotype file (in .geno format)
-  type: string
+  type: File
   inputBinding:
     prefix: -x
-- id: _number_k
+- id: in__number_k
   doc: -- number K of ancestral populations
-  type: string
+  type: long
   inputBinding:
     prefix: -K
-- id: _regularization_parameter
+- id: in__regularization_parameter
   doc: '-- regularization parameter       (default: 0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -a
-- id: _individual_admixture_file
+- id: in__individual_admixture_file
   doc: '-- individual admixture file      (default: genotype_file.K.Q)'
-  type: string
+  type: File
   inputBinding:
     prefix: -q
-- id: _ancestral_frequencies
+- id: in__ancestral_frequencies
   doc: '-- ancestral frequencies file     (default: genotype_file.K.G)'
-  type: string
+  type: File
   inputBinding:
     prefix: -g
-- id: _crossentropy_masked
-  doc: "-- cross-entropy with 'perc'                          of masked genotypes\
-    \               (default: 0.05)"
-  type: string
+- id: in__crossentropy_masked
+  doc: "-- cross-entropy with 'perc'\nof masked genotypes               (default:\
+    \ 0.05)"
+  type: double
   inputBinding:
     prefix: -c
-- id: _tolerance_error
+- id: in__tolerance_error
   doc: '-- tolerance error                (default: 0.0001)'
-  type: string
+  type: double
   inputBinding:
     prefix: -e
-- id: _number_max
+- id: in__number_max
   doc: '-- number max of iterations       (default: 200)'
-  type: string
+  type: long
   inputBinding:
     prefix: -i
-- id: _number_snps
+- id: in__number_snps
   doc: '-- number of SNPs used to init Q  (default: min(10000,L/10)'
-  type: string
+  type: long
   inputBinding:
     prefix: -I
-- id: _individual_admixture_initialisation
+- id: in__individual_admixture_initialisation
   doc: -- individual admixture initialisation file
-  type: string
+  type: File
   inputBinding:
     prefix: -Q
-- id: _seed_random
+- id: in__seed_random
   doc: '-- seed random init               (default: random)'
   type: string
   inputBinding:
     prefix: -s
-- id: _haploid_default
+- id: in__haploid_diploid
   doc: '-- 1 if haploid, 2 if diploid     (default: 2)'
-  type: string
+  type: long
   inputBinding:
     prefix: -m
-- id: _number_processes
+- id: in__number_processes
   doc: '-- number of processes (CPU)      (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: -p
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sNMF

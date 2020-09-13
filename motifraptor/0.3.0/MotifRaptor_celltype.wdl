@@ -2,11 +2,11 @@ version 1.0
 
 task MotifRaptorCelltype {
   input {
-    String? snp_hit_with_seq
-    String? snp_hit
-    String? snp_non_hit
-    String? workdir
-    String? threads
+    Int? snp_hit_with_seq
+    Int? snp_hit
+    Int? snp_non_hit
+    Directory? workdir
+    Int? threads
   }
   command <<<
     MotifRaptor celltype \
@@ -17,10 +17,13 @@ task MotifRaptorCelltype {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    snp_hit_with_seq: "need header and columns in this text file with sequence (CHR is only a number): ID CHR POS REF ALT"
-    snp_hit: "need header and columns in this text file (CHR is only a number): ID CHR POS"
-    snp_non_hit: "need header and columns in this text file (CHR is only a number): ID CHR POS"
+    snp_hit_with_seq: "need header and columns in this text file with\\nsequence (CHR is only a number): ID CHR POS REF ALT"
+    snp_hit: "need header and columns in this text file (CHR is only\\na number): ID CHR POS"
+    snp_non_hit: "need header and columns in this text file (CHR is only\\na number): ID CHR POS"
     workdir: "Working directory"
-    threads: "number of threads"
+    threads: "number of threads\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

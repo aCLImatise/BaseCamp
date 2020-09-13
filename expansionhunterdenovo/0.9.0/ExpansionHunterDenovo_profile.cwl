@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../ExpansionHunterDenovo_profile.cwl
 inputs:
-- id: reads
+- id: in_reads
   doc: BAM or CRAM file with aligned reads
-  type: string
+  type: File
   inputBinding:
     prefix: --reads
-- id: reference
+- id: in_reference
   doc: FASTA file with reference assembly
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: output_prefix
+- id: in_output_prefix
   doc: Prefix for the output files
   type: string
   inputBinding:
     prefix: --output-prefix
-- id: min_unit_len
+- id: in_min_unit_len
   doc: (=2)     Shortest repeat unit to consider
-  type: string
+  type: long
   inputBinding:
     prefix: --min-unit-len
-- id: max_unit_len
+- id: in_max_unit_len
   doc: (=20)    Longest repeat unit to consider
-  type: string
+  type: long
   inputBinding:
     prefix: --max-unit-len
-- id: min_anchor_mapq
+- id: in_min_anchor_mapq
   doc: (=50) Minimum MAPQ of an anchor read
-  type: string
+  type: long
   inputBinding:
     prefix: --min-anchor-mapq
-- id: max_irr_mapq
+- id: in_max_irr_mapq
   doc: (=40)    Maximum MAPQ of an in-repeat read
-  type: string
+  type: long
   inputBinding:
     prefix: --max-irr-mapq
-- id: log_reads
+- id: in_log_reads
   doc: Log informative reads
   type: boolean
   inputBinding:
     prefix: --log-reads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ExpansionHunterDenovo

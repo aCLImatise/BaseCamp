@@ -1,52 +1,60 @@
 class: CommandLineTool
 id: ../../../phyluce_genetrees_run_raxml_genetrees.cwl
 inputs:
-- id: input
-  doc: The input directory containing alignments in phylip format
-  type: string
+- id: in_input
+  doc: The input directory containing alignments in phylip
+  type: Directory
   inputBinding:
     prefix: --input
-- id: output
-  doc: The output directory to hold alignments
-  type: string
-  inputBinding:
-    prefix: --output
-- id: out_group
+- id: in_out_group
   doc: The outgroup to use
   type: string
   inputBinding:
     prefix: --outgroup
-- id: threads
-  doc: The number of RAxML threads to run (best to determine empirically)
-  type: string
+- id: in_threads
+  doc: "The number of RAxML threads to run (best to determine\nempirically)"
+  type: long
   inputBinding:
     prefix: --threads
-- id: tree_searches
+- id: in_tree_searches
   doc: The number of tree searches to run.
-  type: string
+  type: long
   inputBinding:
     prefix: --tree-searches
-- id: cores
+- id: in_cores
   doc: The number of concurrent RAxML jobs to run
-  type: string
+  type: long
   inputBinding:
     prefix: --cores
-- id: quiet
+- id: in_quiet
   doc: Suppress the CPU usage question
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-outputs: []
+- id: in_output
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --output
+- id: in_format
+  doc: --output OUTPUT       The output directory to hold alignments
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_genetrees_run_raxml_genetrees

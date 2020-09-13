@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../a3m_database_filter.cwl
 inputs:
-- id: i
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -o
-- id: s
+- id: in_s
   doc: ''
   type: boolean
   inputBinding:
     prefix: -s
-- id: var_3
+- id: in_o
   doc: ''
-  type: string
+  type: boolean
+  inputBinding:
+    prefix: -o
+- id: in_i
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -i
+- id: in_ff_index_a_three_m_database_prefix
+  doc: ''
+  type: long
   inputBinding:
     position: 0
-- id: var_4
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: filter
+- id: in_filter
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - a3m_database_filter

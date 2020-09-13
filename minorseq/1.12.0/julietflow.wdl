@@ -17,18 +17,18 @@ task Julietflow {
   }
   command <<<
     julietflow \
-      ~{true="-i" false="" bam_ccs_file} \
-      ~{true="-r" false="" reference_fasta_file} \
-      ~{true="-c" false="" juliet_target_config} \
-      ~{true="-j" false="" number_cpu_cores} \
-      ~{true="-e" false="" maximal_number_realign} \
-      ~{true="-t" false="" target_reference_fasta} \
-      ~{true="-m" false="" minimal_variant_frequency} \
-      ~{true="-n" false="" maximal_variant_frequency} \
-      ~{true="-g" false="" genomic_region_interest} \
-      ~{true="-p" false="" phase_variants} \
-      ~{true="-k" false="" only_report_known} \
-      ~{true="-z" false="" keep_temporary_files}
+      ~{if (bam_ccs_file) then "-i" else ""} \
+      ~{if (reference_fasta_file) then "-r" else ""} \
+      ~{if (juliet_target_config) then "-c" else ""} \
+      ~{if (number_cpu_cores) then "-j" else ""} \
+      ~{if (maximal_number_realign) then "-e" else ""} \
+      ~{if (target_reference_fasta) then "-t" else ""} \
+      ~{if (minimal_variant_frequency) then "-m" else ""} \
+      ~{if (maximal_variant_frequency) then "-n" else ""} \
+      ~{if (genomic_region_interest) then "-g" else ""} \
+      ~{if (phase_variants) then "-p" else ""} \
+      ~{if (only_report_known) then "-k" else ""} \
+      ~{if (keep_temporary_files) then "-z" else ""}
   >>>
   parameter_meta {
     bam_ccs_file: "[arg]  BAM CCS file to process. Required."
@@ -43,5 +43,8 @@ task Julietflow {
     phase_variants: "Phase variants."
     only_report_known: "Only report known DRM positions."
     keep_temporary_files: "Keep temporary files."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

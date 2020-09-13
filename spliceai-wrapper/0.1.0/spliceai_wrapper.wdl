@@ -1,7 +1,10 @@
 version 1.0
 
-task SpliceaiWrapper {
+task Spliceaiwrapper {
   command <<<
-    spliceai-wrapper
+    spliceai_wrapper
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

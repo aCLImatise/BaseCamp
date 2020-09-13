@@ -11,4 +11,7 @@ task RnftoolsCheck {
   parameter_meta {
     rnf_tools: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,19 +1,19 @@
 version 1.0
 
-task SsuDraw {
+task Ssudraw {
   input {
     Boolean? commandline_argument_stockholm
     Boolean? force_windi_draw
-    Boolean? display_default_ssualign
-    String? display_single_mask
+    Boolean? display_default_masks
+    File? display_single_mask
     String? display_masks_modelnamesmask
-    String? cm_file_f
-    String? use_template_file
+    File? cm_file_f
+    File? use_template_file
     Boolean? i_used_ssualign
-    String? pstwo_pdf
+    Int? pstwo_pdf
     Boolean? ps_only
     String? i_file
-    String? key_out
+    File? key_out
     Boolean? no_mask
     Boolean? mask_key
     Boolean? info
@@ -38,57 +38,57 @@ task SsuDraw {
     Boolean? options
   }
   command <<<
-    ssu-draw \
-      ~{true="-a" false="" commandline_argument_stockholm} \
-      ~{true="-f" false="" force_windi_draw} \
-      ~{true="-d" false="" display_default_ssualign} \
+    ssu_draw \
+      ~{if (commandline_argument_stockholm) then "-a" else ""} \
+      ~{if (force_windi_draw) then "-f" else ""} \
+      ~{if (display_default_masks) then "-d" else ""} \
       ~{if defined(display_single_mask) then ("-s " +  '"' + display_single_mask + '"') else ""} \
       ~{if defined(display_masks_modelnamesmask) then ("-k " +  '"' + display_masks_modelnamesmask + '"') else ""} \
       ~{if defined(cm_file_f) then ("-m " +  '"' + cm_file_f + '"') else ""} \
       ~{if defined(use_template_file) then ("-t " +  '"' + use_template_file + '"') else ""} \
-      ~{true="-i" false="" i_used_ssualign} \
+      ~{if (i_used_ssualign) then "-i" else ""} \
       ~{if defined(pstwo_pdf) then ("--ps2pdf " +  '"' + pstwo_pdf + '"') else ""} \
-      ~{true="--ps-only" false="" ps_only} \
+      ~{if (ps_only) then "--ps-only" else ""} \
       ~{if defined(i_file) then ("--ifile " +  '"' + i_file + '"') else ""} \
       ~{if defined(key_out) then ("--key-out " +  '"' + key_out + '"') else ""} \
-      ~{true="--no-mask" false="" no_mask} \
-      ~{true="--mask-key" false="" mask_key} \
-      ~{true="--info" false="" info} \
-      ~{true="--mutinfo" false="" mut_info} \
-      ~{true="--ifreq" false="" ifreq} \
-      ~{true="--iavglen" false="" i_avg_len} \
-      ~{true="--dall" false="" d_all} \
-      ~{true="--dint" false="" dint} \
-      ~{true="--prob" false="" prob} \
-      ~{true="--span" false="" span} \
-      ~{true="--cnt" false="" cnt} \
-      ~{true="--no-aln" false="" no_aln} \
-      ~{true="--indi" false="" indi} \
-      ~{true="--cons" false="" cons} \
-      ~{true="--rf" false="" rf} \
-      ~{true="--no-pp" false="" no_pp} \
-      ~{true="--no-bp" false="" no_bp} \
-      ~{true="--no-ol" false="" no_ol} \
-      ~{true="--no-leg" false="" no_leg} \
-      ~{true="--no-head" false="" no_head} \
-      ~{true="--no-foot" false="" no_foot} \
-      ~{true="-options" false="" options}
+      ~{if (no_mask) then "--no-mask" else ""} \
+      ~{if (mask_key) then "--mask-key" else ""} \
+      ~{if (info) then "--info" else ""} \
+      ~{if (mut_info) then "--mutinfo" else ""} \
+      ~{if (ifreq) then "--ifreq" else ""} \
+      ~{if (i_avg_len) then "--iavglen" else ""} \
+      ~{if (d_all) then "--dall" else ""} \
+      ~{if (dint) then "--dint" else ""} \
+      ~{if (prob) then "--prob" else ""} \
+      ~{if (span) then "--span" else ""} \
+      ~{if (cnt) then "--cnt" else ""} \
+      ~{if (no_aln) then "--no-aln" else ""} \
+      ~{if (indi) then "--indi" else ""} \
+      ~{if (cons) then "--cons" else ""} \
+      ~{if (rf) then "--rf" else ""} \
+      ~{if (no_pp) then "--no-pp" else ""} \
+      ~{if (no_bp) then "--no-bp" else ""} \
+      ~{if (no_ol) then "--no-ol" else ""} \
+      ~{if (no_leg) then "--no-leg" else ""} \
+      ~{if (no_head) then "--no-head" else ""} \
+      ~{if (no_foot) then "--no-foot" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     commandline_argument_stockholm: ": the command-line argument is a stockholm alignment, not a directory"
     force_windi_draw: ": force; w/--indi, draw all seqs, even if predicted output >100 Mb"
-    display_default_ssualign: ": display default ssu-align-0.1 masks on drawings"
+    display_default_masks: ": display default ssu-align-0.1 masks on drawings"
     display_single_mask: ": display single mask in file <f> for single alignment (requires -a)"
-    display_masks_modelnamesmask: ": display masks from files named <modelname>.<s>.mask on drawings (<modelname> might be 'archaea', 'bacteria' or 'eukarya')"
+    display_masks_modelnamesmask: ": display masks from files named <modelname>.<s>.mask on drawings\\n(<modelname> might be 'archaea', 'bacteria' or 'eukarya')"
     cm_file_f: ": CM file <f> created the alignment(s) (with ssu-align -m <f>)"
     use_template_file: ": use template file <f>, not the default template file"
     i_used_ssualign: ": -i used with ssu-align, alignments are interleaved"
-    pstwo_pdf: ": <s> (!= \"ps2pdf\") is the command for converting ps to pdf"
+    pstwo_pdf: ": <s> (!= \\\"ps2pdf\\\") is the command for converting ps to pdf"
     ps_only: ": only save postscript secondary structure diagrams, no pdfs"
     i_file: ": insert info for alignment is in <s> (requires -a)"
     key_out: ": add <s> to all output file names, before the suffix"
     no_mask: ": do not use ssu-mask created '.mask' files in the aln dir"
-    mask_key: ": display masks from files named <dir>.<modelname>.<s>.mask on drawings (typically used after running 'ssu-mask --key-out <s>')"
+    mask_key: ": display masks from files named <dir>.<modelname>.<s>.mask on drawings\\n(typically used after running 'ssu-mask --key-out <s>')"
     info: ": draw sequence information content per position    (save as *.info.pdf)"
     mut_info: ": draw mutual information per position              (save as *.mutinfo.pdf)"
     ifreq: ": draw frequency of insertions per position         (save as *.ifreq.pdf)"
@@ -109,5 +109,9 @@ task SsuDraw {
     no_head: ": do not draw headers"
     no_foot: ": do not draw footers"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_key_out = "${in_key_out}"
   }
 }

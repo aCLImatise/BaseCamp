@@ -20,4 +20,7 @@ task DrawModelGraphOutput {
     sequence_number: ""
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

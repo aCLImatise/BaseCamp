@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- ExpansionHunterDenovo
+- profile
 positional: []
 named:
 - !Flag
@@ -56,18 +59,17 @@ named:
   - --log-reads
   args: !EmptyFlagArg {}
   optional: true
-command:
-- ExpansionHunterDenovo
-- profile
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - ExpansionHunterDenovo
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - ExpansionHunterDenovo
+    - merge
     positional: []
     named:
     - !Flag
@@ -105,11 +107,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: arg
       optional: true
-    command:
-    - ExpansionHunterDenovo
-    - merge
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Print help message
       synonyms:
@@ -126,6 +126,8 @@ parent: &id002 !Command
       \ arg (=20) Longest repeat unit to consider\n\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -134,6 +136,7 @@ parent: &id002 !Command
     \  Generate multisample STR profile from single-sample profiles\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print help message
   synonyms:

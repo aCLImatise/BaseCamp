@@ -2,8 +2,8 @@ version 1.0
 
 task MotifRaptorSnpspecific {
   input {
-    String? workdir
-    String? snp_motif_file
+    Directory? workdir
+    File? snp_motif_file
     String? snp_id
   }
   command <<<
@@ -15,6 +15,9 @@ task MotifRaptorSnpspecific {
   parameter_meta {
     workdir: "Working directory"
     snp_motif_file: "SNP motif pair-wise list File, usually from step2"
-    snp_id: "SNP id"
+    snp_id: "SNP id\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

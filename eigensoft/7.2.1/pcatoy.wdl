@@ -4,4 +4,7 @@ task Pcatoy {
   command <<<
     pcatoy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

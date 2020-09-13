@@ -4,4 +4,7 @@ task Bamtofastq {
   command <<<
     bamtofastq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,99 +1,115 @@
 class: CommandLineTool
 id: ../../../segtools_overlap.cwl
 inputs:
-- id: clobber
+- id: in_clobber
   doc: Overwrite any existing output files.
   type: boolean
   inputBinding:
     prefix: --clobber
-- id: quiet
+- id: in_quiet
   doc: Do not print diagnostic messages.
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: quick
+- id: in_quick
   doc: Compute values only for one chromosome.
   type: boolean
   inputBinding:
     prefix: --quick
-- id: replot
-  doc: Load data from output tab files and regenerate plots instead of recomputing
-    data.
+- id: in_replot
+  doc: "Load data from output tab files and regenerate plots\ninstead of recomputing\
+    \ data."
   type: boolean
   inputBinding:
     prefix: --replot
-- id: no_plot
+- id: in_no_plot
   doc: Do not generate any plots.
   type: boolean
   inputBinding:
     prefix: --noplot
-- id: cluster
+- id: in_cluster
   doc: Cluster rows and columns in heat map plot
   type: boolean
   inputBinding:
     prefix: --cluster
-- id: print_segments
-  doc: For each group in the SEGMENTATION, a separate output file will be created
-    that contains a list of all the segments that the group was found to overlap with.
-    Output files are named overlap.segments.X.txt, where X is the name of the SEGMENTATION
-    group.
-  type: boolean
+- id: in_print_segments
+  doc: "For each group in the SEGMENTATION, a separate output\nfile will be created\
+    \ that contains a list of all the\nsegments that the group was found to overlap\
+    \ with.\nOutput files are named overlap.segments.X.txt, where X\nis the name of\
+    \ the SEGMENTATION group."
+  type: File
   inputBinding:
     prefix: --print-segments
-- id: max_contrast
-  doc: Saturate color range instead of having it go from 0 to 1
+- id: in_max_contrast
+  doc: "Saturate color range instead of having it go from 0 to\n1"
   type: boolean
   inputBinding:
     prefix: --max-contrast
-- id: by
-  doc: "One of: ['segments', 'bases'], which determines the definition of overlap.\
-    \ @segments: The value associated with two features overlapping will be 1 if they\
-    \ overlap, and 0 otherwise. @bases: The value associated with two features overlapping\
-    \ will be number of base pairs which they overlap. [default: bases]"
-  type: string
+- id: in_by
+  doc: "One of: ['segments', 'bases'], which determines the\ndefinition of overlap.\
+    \ @segments: The value associated\nwith two features overlapping will be 1 if\
+    \ they\noverlap, and 0 otherwise. @bases: The value associated\nwith two features\
+    \ overlapping will be number of base\npairs which they overlap. [default: bases]"
+  type: long
   inputBinding:
     prefix: --by
-- id: min_overlap
-  doc: 'The minimum number of base pairs that two features must overlap for them to
-    be classified as overlapping. This integer can be either positive (features overlap
-    only if they share at least this many bases) or negative (features overlap if
-    there are no more than this many bases between them). Both a negative min- overlap
-    and --by=bases cannot be specified together. [default: 1]'
-  type: string
+- id: in_min_overlap
+  doc: "The minimum number of base pairs that two features\nmust overlap for them\
+    \ to be classified as overlapping.\nThis integer can be either positive (features\
+    \ overlap\nonly if they share at least this many bases) or\nnegative (features\
+    \ overlap if there are no more than\nthis many bases between them). Both a negative\
+    \ min-\noverlap and --by=bases cannot be specified together.\n[default: 1]"
+  type: long
   inputBinding:
     prefix: --min-overlap
-- id: mnemonic_file
-  doc: If specified, labels will be shown using mnemonics found in FILE
+- id: in_mnemonic_file
+  doc: "If specified, labels will be shown using mnemonics\nfound in FILE"
   type: File
   inputBinding:
     prefix: --mnemonic-file
-- id: feature_mnemonic_file
-  doc: If specified, ANNOTATION groups will be shown using mnemonics found in FILE.
+- id: in_feature_mnemonic_file
+  doc: "If specified, ANNOTATION groups will be shown using\nmnemonics found in FILE."
   type: File
   inputBinding:
     prefix: --feature-mnemonic-file
-- id: outdir
-  doc: 'File output directory (will be created if it does not exist) [default: overlap]'
-  type: string
+- id: in_outdir
+  doc: "File output directory (will be created if it does not\nexist) [default: overlap]"
+  type: File
   inputBinding:
     prefix: --outdir
-- id: val_pass_val
-  doc: =VAL        Pass VAL for PARAM when calling R functions. May be specified multiple
-    times.
+- id: in_val_pass_val
+  doc: "=VAL        Pass VAL for PARAM when calling R functions. May be\nspecified\
+    \ multiple times.\n"
   type: string
   inputBinding:
     prefix: -R
-- id: segmentation
+- id: in_segmentation
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: annotation
+- id: in_annotation
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_print_segments
+  doc: "For each group in the SEGMENTATION, a separate output\nfile will be created\
+    \ that contains a list of all the\nsegments that the group was found to overlap\
+    \ with.\nOutput files are named overlap.segments.X.txt, where X\nis the name of\
+    \ the SEGMENTATION group."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_print_segments)
+- id: out_outdir
+  doc: "File output directory (will be created if it does not\nexist) [default: overlap]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - segtools-overlap

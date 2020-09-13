@@ -4,17 +4,20 @@ task SmofCut {
   input {
     String? fields
     Boolean? complement
-    String input_fasta_sequence
+    String input_fasta_default
   }
   command <<<
     smof cut \
-      ~{input_fasta_sequence} \
+      ~{input_fasta_default} \
       ~{if defined(fields) then ("--fields " +  '"' + fields + '"') else ""} \
-      ~{true="--complement" false="" complement}
+      ~{if (complement) then "--complement" else ""}
   >>>
   parameter_meta {
     fields: "Indices to print, comma delimited, with ranges"
     complement: "Invert selection"
-    input_fasta_sequence: "input fasta sequence (default = stdin)"
+    input_fasta_default: "input fasta sequence (default = stdin)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

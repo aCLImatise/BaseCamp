@@ -3,7 +3,7 @@ version 1.0
 task ChromosomerAgp2mapOutputFile {
   input {
     String chromosome_r
-    String agp_two_map
+    Int agp_two_map
     String agp_file
     String output_file
   }
@@ -19,5 +19,8 @@ task ChromosomerAgp2mapOutputFile {
     agp_two_map: ""
     agp_file: ""
     output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

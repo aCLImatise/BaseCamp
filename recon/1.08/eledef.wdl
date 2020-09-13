@@ -23,4 +23,7 @@ task Eledef {
     method: ""
     cut_off: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

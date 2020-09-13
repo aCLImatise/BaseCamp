@@ -1,23 +1,29 @@
 version 1.0
 
-task FastaUtilsTranslate {
+task FastautilsTranslate {
   input {
+    Boolean? verbose
     Boolean? trans_table
     Boolean? progress
     String? fast_a_file
     String? output_file
   }
   command <<<
-    fasta-utils translate \
+    fasta_utils translate \
       ~{fast_a_file} \
       ~{output_file} \
-      ~{true="--trans-table" false="" trans_table} \
-      ~{true="--progress" false="" progress}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (trans_table) then "--trans-table" else ""} \
+      ~{if (progress) then "--progress" else ""}
   >>>
   parameter_meta {
-    trans_table: "[bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit] translation table  [default: universal]"
+    verbose: ""
+    trans_table: "[bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit]\\ntranslation table  [default: universal]"
     progress: "Shows Progress Bar"
     fast_a_file: ""
     output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

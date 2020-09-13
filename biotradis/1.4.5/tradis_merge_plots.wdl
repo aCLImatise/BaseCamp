@@ -4,4 +4,7 @@ task TradisMergePlots {
   command <<<
     tradis_merge_plots
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

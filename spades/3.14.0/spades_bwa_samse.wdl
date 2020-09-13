@@ -1,10 +1,10 @@
 version 1.0
 
-task SpadesBwaSamse {
+task SpadesbwaSamse {
   input {
-    Int? n
-    String? f
     String? r
+    String? f
+    Int? n
     String bwa
     String sam_se
     String prefix
@@ -12,24 +12,27 @@ task SpadesBwaSamse {
     String in_dot_fq
   }
   command <<<
-    spades-bwa samse \
+    spades_bwa samse \
       ~{bwa} \
       ~{sam_se} \
       ~{prefix} \
       ~{in_do_tsai} \
       ~{in_dot_fq} \
-      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
-      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
   parameter_meta {
-    n: ""
-    f: ""
     r: ""
+    f: ""
+    n: ""
     bwa: ""
     sam_se: ""
     prefix: ""
     in_do_tsai: ""
     in_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

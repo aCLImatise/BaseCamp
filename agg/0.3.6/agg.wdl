@@ -4,4 +4,7 @@ task Agg {
   command <<<
     agg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,6 +1,6 @@
 version 1.0
 
-task BiopetValidatefastq {
+task Biopetvalidatefastq {
   input {
     String? log_level
     File? fast_q_one
@@ -8,7 +8,7 @@ task BiopetValidatefastq {
     String validate_fast_q
   }
   command <<<
-    biopet-validatefastq \
+    biopet_validatefastq \
       ~{validate_fast_q} \
       ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""} \
       ~{if defined(fast_q_one) then ("--fastq1 " +  '"' + fast_q_one + '"') else ""} \
@@ -19,5 +19,8 @@ task BiopetValidatefastq {
     fast_q_one: "FASTQ file to be validated. (Required)"
     fast_q_two: "Second FASTQ to be validated if FASTQs are paired. (Optional)"
     validate_fast_q: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

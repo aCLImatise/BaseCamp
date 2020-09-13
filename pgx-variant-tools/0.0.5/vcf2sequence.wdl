@@ -16,8 +16,11 @@ task Vcf2sequence {
   >>>
   parameter_meta {
     vcf: "Path to input VCF  [required]"
-    sample: "Sample to consider. If not given, take fist sample in VCF"
+    sample: "Sample to consider. If not given, take fist sample\\nin VCF"
     region: "Region string of format chr:start-end"
     region_file: "Path to BED file containing regions"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

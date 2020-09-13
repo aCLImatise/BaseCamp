@@ -17,8 +17,8 @@ task BcftoolsMpileup {
     String? regions
     File? regions_file
     Boolean? ignore_rg
-    String? incl_flags
-    String? excl_flags
+    Int? incl_flags
+    Int? excl_flags
     String? samples
     File? samples_file
     String? targets
@@ -39,47 +39,47 @@ task BcftoolsMpileup {
     Int? open_prob
     Boolean? per_sample_mf
     String? platforms
-    String in_one_dot_bam
+    Int in_one_dot_bam
   }
   command <<<
     bcftools mpileup \
       ~{in_one_dot_bam} \
-      ~{true="--illumina1.3" false="" illumina_one_dot_three} \
-      ~{true="--count-orphans" false="" count_orphans} \
+      ~{if (illumina_one_dot_three) then "--illumina1.3" else ""} \
+      ~{if (count_orphans) then "--count-orphans" else ""} \
       ~{if defined(bam_list) then ("--bam-list " +  '"' + bam_list + '"') else ""} \
-      ~{true="--no-BAQ" false="" no_baq} \
+      ~{if (no_baq) then "--no-BAQ" else ""} \
       ~{if defined(adjust_mq) then ("--adjust-MQ " +  '"' + adjust_mq + '"') else ""} \
       ~{if defined(max_depth) then ("--max-depth " +  '"' + max_depth + '"') else ""} \
-      ~{true="--redo-BAQ" false="" redo_baq} \
+      ~{if (redo_baq) then "--redo-BAQ" else ""} \
       ~{if defined(fast_a_ref) then ("--fasta-ref " +  '"' + fast_a_ref + '"') else ""} \
-      ~{true="--no-reference" false="" no_reference} \
+      ~{if (no_reference) then "--no-reference" else ""} \
       ~{if defined(read_groups) then ("--read-groups " +  '"' + read_groups + '"') else ""} \
       ~{if defined(min_mq) then ("--min-MQ " +  '"' + min_mq + '"') else ""} \
       ~{if defined(min_bq) then ("--min-BQ " +  '"' + min_bq + '"') else ""} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
       ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
-      ~{true="--ignore-RG" false="" ignore_rg} \
+      ~{if (ignore_rg) then "--ignore-RG" else ""} \
       ~{if defined(incl_flags) then ("--incl-flags " +  '"' + incl_flags + '"') else ""} \
       ~{if defined(excl_flags) then ("--excl-flags " +  '"' + excl_flags + '"') else ""} \
       ~{if defined(samples) then ("--samples " +  '"' + samples + '"') else ""} \
       ~{if defined(samples_file) then ("--samples-file " +  '"' + samples_file + '"') else ""} \
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
-      ~{true="--ignore-overlaps" false="" ignore_overlaps} \
+      ~{if (ignore_overlaps) then "--ignore-overlaps" else ""} \
       ~{if defined(annotate) then ("--annotate " +  '"' + annotate + '"') else ""} \
       ~{if defined(gvc_f) then ("--gvcf " +  '"' + gvc_f + '"') else ""} \
-      ~{true="--no-version" false="" no_version} \
+      ~{if (no_version) then "--no-version" else ""} \
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(ext_prob) then ("--ext-prob " +  '"' + ext_prob + '"') else ""} \
       ~{if defined(gap_frac) then ("--gap-frac " +  '"' + gap_frac + '"') else ""} \
       ~{if defined(tandem_qual) then ("--tandem-qual " +  '"' + tandem_qual + '"') else ""} \
-      ~{true="--skip-indels" false="" skip_indels} \
+      ~{if (skip_indels) then "--skip-indels" else ""} \
       ~{if defined(max_i_depth) then ("--max-idepth " +  '"' + max_i_depth + '"') else ""} \
       ~{if defined(min_i_reads) then ("--min-ireads " +  '"' + min_i_reads + '"') else ""} \
       ~{if defined(open_prob) then ("--open-prob " +  '"' + open_prob + '"') else ""} \
-      ~{true="--per-sample-mF" false="" per_sample_mf} \
+      ~{if (per_sample_mf) then "--per-sample-mF" else ""} \
       ~{if defined(platforms) then ("--platforms " +  '"' + platforms + '"') else ""}
   >>>
   parameter_meta {
@@ -99,17 +99,17 @@ task BcftoolsMpileup {
     regions_file: "restrict to regions listed in a file"
     ignore_rg: "ignore RG tags (one BAM = one sample)"
     incl_flags: "|INT  required flags: skip reads with mask bits unset []"
-    excl_flags: "|INT  filter flags: skip reads with mask bits set [UNMAP,SECONDARY,QCFAIL,DUP]"
+    excl_flags: "|INT  filter flags: skip reads with mask bits set\\n[UNMAP,SECONDARY,QCFAIL,DUP]"
     samples: "comma separated list of samples to include"
     samples_file: "file of samples to include"
     targets: "[,...] similar to -r but streams rather than index-jumps"
     targets_file: "similar to -R but streams rather than index-jumps"
     ignore_overlaps: "disable read-pair overlap detection"
     annotate: "optional tags to output; '?' to list []"
-    gvc_f: "[,...]    group non-variant sites into gVCF blocks according to minimum per-sample DP"
+    gvc_f: "[,...]    group non-variant sites into gVCF blocks according\\nto minimum per-sample DP"
     no_version: "do not append version and command line to the header"
     write_output_file: "write output to FILE [standard output]"
-    output_type: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v' uncompressed VCF [v]"
+    output_type: "'b' compressed BCF; 'u' uncompressed BCF;\\n'z' compressed VCF; 'v' uncompressed VCF [v]"
     threads: "use multithreading with INT worker threads [0]"
     ext_prob: "Phred-scaled gap extension seq error probability [20]"
     gap_frac: "minimum fraction of gapped reads [0.002]"
@@ -121,5 +121,9 @@ task BcftoolsMpileup {
     per_sample_mf: "apply -m and -F per-sample for increased sensitivity"
     platforms: "comma separated list of platforms for indels [all]"
     in_one_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_write_output_file = "${in_write_output_file}"
   }
 }

@@ -4,4 +4,7 @@ task TgStoreFilter {
   command <<<
     tgStoreFilter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

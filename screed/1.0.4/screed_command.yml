@@ -1,45 +1,36 @@
 &id001 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: args
-  optional: true
-named: []
 command:
 - screed
 - command
+positional:
+- !Positional
+  description: 'optional arguments:'
+  position: 0
+  name: command
+  optional: false
+named: []
 parent: &id002 !Command
-  positional: []
-  named: []
   command:
   - screed
+  positional: []
+  named: []
   parent:
   subcommands:
   - *id001
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: screed
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: command
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: args
-      optional: true
-    named: []
     command:
     - screed
     - args
+    positional:
+    - !Positional
+      description: 'optional arguments:'
+      position: 0
+      name: command
+      optional: false
+    named: []
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -57,22 +48,18 @@ parent: &id002 !Command
       \ exit\n"
     generated_using: &id003
     - --help
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+  usage: []
+  help_flag:
   usage_flag:
   version_flag:
   help_text: "usage: screed <command> [<args>]\n\nAvailable:\n\n    db <filename>\
     \               Creates a screed database.\n    dump_fasta <db> <output>    Convert\
     \ a screed database to a FASTA file\n    dump_fastq <db> <output>    Convert a\
-    \ screed database to a FASTQ file\n\npositional arguments:\n  command\n\noptional\
-    \ arguments:\n  -h, --help  show this help message and exit\n"
-  generated_using: *id003
+    \ screed database to a FASTQ file\nscreed: error: the following arguments are\
+    \ required: command\n"
+  generated_using: []
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

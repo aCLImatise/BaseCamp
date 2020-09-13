@@ -1,113 +1,107 @@
 class: CommandLineTool
 id: ../../../gatk_to_gvcf.cwl
 inputs:
-- id: chrom_depth_file
-  doc: 'Read mean depth for each chromosome from file,  and use these values for maximum
-    site depth  filteration. File should contain one line per  chromosome, where each
-    line begins with:  "chrom_name<TAB>depth" (default: no chrom depth filtration)'
-  type: string
+- id: in_chrom_depth_file
+  doc: "Read mean depth for each chromosome from file,\nand use these values for maximum\
+    \ site depth\nfilteration. File should contain one line per\nchromosome, where\
+    \ each line begins with:\n\"chrom_name<TAB>depth\" (default: no chrom depth\n\
+    filtration)"
+  type: File
   inputBinding:
     prefix: --chrom-depth-file
-- id: max_depth_factor
-  doc: (=3.0) If a chrom depth file is supplied then loci  with depth exceeding the
-    mean chrom depth times this value are filtered
-  type: string
+- id: in_max_depth_factor
+  doc: "(=3.0) If a chrom depth file is supplied then loci\nwith depth exceeding the\
+    \ mean chrom depth times\nthis value are filtered"
+  type: long
   inputBinding:
     prefix: --max-depth-factor
-- id: min_gq_x
+- id: in_min_gq_x
   doc: (=20.0)         Minimum locus GQX
-  type: string
+  type: long
   inputBinding:
     prefix: --min-gqx
-- id: min_mq
+- id: in_min_mq
   doc: (=20.0)          Minimum site MQ
-  type: string
+  type: long
   inputBinding:
     prefix: --min-mq
-- id: min_qd
+- id: in_min_qd
   doc: (=3.73)          Minimum locus QD
-  type: string
+  type: long
   inputBinding:
     prefix: --min-qd
-- id: max_site_fs
+- id: in_max_site_fs
   doc: (=60.0)     Maximum site FS
-  type: string
+  type: long
   inputBinding:
     prefix: --max-site-fs
-- id: max_hap_score
+- id: in_max_hap_score
   doc: (=13.0)    Maximum site HaplotypeScore
-  type: string
+  type: long
   inputBinding:
     prefix: --max-hapscore
-- id: min_m_qrs
+- id: in_min_m_qrs
   doc: (=-12.5)       Minimum site MQRankSum
-  type: string
+  type: long
   inputBinding:
     prefix: --min-mqrs
-- id: min_site_r_prs
+- id: in_min_site_r_prs
   doc: (=-2.386) Minimum site ReadPosRankSum
-  type: string
+  type: long
   inputBinding:
     prefix: --min-site-rprs
-- id: max_in_del_fs
+- id: in_max_in_del_fs
   doc: (=200.0)   Maximum indel FS
-  type: string
+  type: long
   inputBinding:
     prefix: --max-indel-fs
-- id: min_in_del_r_prs
+- id: in_min_in_del_r_prs
   doc: (=-20.0) Minimum indel ReadPosRankSum
-  type: string
+  type: long
   inputBinding:
     prefix: --min-indel-rprs
-- id: no_default_filters
-  doc: Clear all default filters. Any individual  filter threshold changes above will
-    still be in effect
+- id: in_no_default_filters
+  doc: "Clear all default filters. Any individual\nfilter threshold changes above\
+    \ will still be in\neffect"
   type: boolean
   inputBinding:
     prefix: --no-default-filters
-- id: min_block_able_non_ref
-  doc: (=0.2) If AD present, only compress non-variant  site if 1-AD[0]/DP < value
-  type: string
+- id: in_min_block_able_non_ref
+  doc: "(=0.2) If AD present, only compress non-variant\nsite if 1-AD[0]/DP < value"
+  type: long
   inputBinding:
     prefix: --min-blockable-nonref
-- id: skip_header
+- id: in_skip_header
   doc: Write gVCF output without header
   type: boolean
   inputBinding:
     prefix: --skip-header
-- id: block_range_factor
-  doc: (=0.3)       Non-variant blocks are restricted to  range [x,y], y <= max(x+3,x*(1+block-ra
-    nge-factor))
-  type: string
+- id: in_block_range_factor
+  doc: "(=0.3)       Non-variant blocks are restricted to\nrange [x,y], y <= max(x+3,x*(1+block-ra\n\
+    nge-factor))"
+  type: long
   inputBinding:
     prefix: --block-range-factor
-- id: block_label
-  doc: (=BLOCKAVG_min30p3a) VCF INFO key used to annotate  compressed non-variant
-    blocks
-  type: string
+- id: in_block_label
+  doc: "(=BLOCKAVG_min30p3a)\nVCF INFO key used to annotate\ncompressed non-variant\
+    \ blocks"
+  type: long
   inputBinding:
     prefix: --block-label
-- id: block_stats
-  doc: Write non-variant block stats to the  file
+- id: in_block_stats
+  doc: Write non-variant block stats to the
   type: string
   inputBinding:
     prefix: --block-stats
-- id: no_block_compression
-  doc: Turn off block compression
-  type: boolean
-  inputBinding:
-    prefix: --no-block-compression
-- id: all_sites
-  doc: ''
-  type: string
+- id: in_file
+  doc: --no-block-compression                Turn off block compression
+  type: File
   inputBinding:
     position: 0
-- id: gvc_f
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gatk_to_gvcf

@@ -1,26 +1,30 @@
 version 1.0
 
-task PanarooGeneNeighbourhood {
+task Panaroogeneneighbourhood {
   input {
+    String? graph
     String? gene
     String? genome_id
-    String? graph
-    String? expand_no
-    String? out
+    File? expand_no
+    File? out
   }
   command <<<
-    panaroo-gene-neighbourhood \
+    panaroo_gene_neighbourhood \
+      ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
       ~{if defined(gene) then ("--gene " +  '"' + gene + '"') else ""} \
       ~{if defined(genome_id) then ("--genome_id " +  '"' + genome_id + '"') else ""} \
-      ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
       ~{if defined(expand_no) then ("--expand_no " +  '"' + expand_no + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
   parameter_meta {
+    graph: "[--expand_no EXPAND_NO]"
     gene: "gene of interest"
     genome_id: "genome ID of interest (default=ALL)"
-    graph: "genome graph gml ('final_graph.gml')"
-    expand_no: "lengths of the path that will be expanded on in a radius the target gene (default=5)"
+    expand_no: "lengths of the path that will be expanded on in a\\nradius the target gene (default=5)"
     out: "output file"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

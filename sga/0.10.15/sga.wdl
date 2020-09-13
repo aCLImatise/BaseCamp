@@ -4,4 +4,7 @@ task Sga {
   command <<<
     sga
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

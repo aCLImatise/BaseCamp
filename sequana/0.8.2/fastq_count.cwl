@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../fastq_count.cwl
 inputs:
-- id: input_fastq_gzipped
-  doc: input fastq gzipped or not
-  type: string
+- id: in_input_fastq_gzipped
+  doc: "input fastq gzipped or not\n"
+  type: File
   inputBinding:
     prefix: --input
-- id: var_1
+- id: in_var_1
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: n
+- id: in_n
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastq_count

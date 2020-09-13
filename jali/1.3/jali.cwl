@@ -1,57 +1,60 @@
 class: CommandLineTool
 id: ../../../jali.cwl
 inputs:
-- id: amino_acid_similarity
+- id: in_amino_acid_similarity
   doc: //amino acid similarity matrix
-  type: string
+  type: File
   inputBinding:
     prefix: -w
-- id: i
+- id: in_i
   doc: //must be smaller or equal to zero
   type: string
   inputBinding:
     prefix: -i
-- id: e
+- id: in_e
   doc: //must be smaller or equal to zero
   type: string
   inputBinding:
     prefix: -e
-- id: j
+- id: in_j
   doc: //must be smaller or equal to zero
   type: string
   inputBinding:
     prefix: -j
-- id: ascii_default_html
+- id: in_ascii_default_html
   doc: //0:ASCII (default) 1:HTML 2:double-spaced HTML
-  type: string
+  type: long
   inputBinding:
     prefix: -f
-- id: print_alignment
+- id: in_print_alignment
   doc: //print alignment
   type: boolean
   inputBinding:
     prefix: -p
-- id: run_verbose_mode
+- id: in_run_verbose_mode
   doc: //run in verbose mode
   type: boolean
   inputBinding:
     prefix: -o
-- id: print_version
+- id: in_print_version
   doc: //print version
   type: boolean
   inputBinding:
     prefix: -v
-- id: sequence_dot_fast_a
+- id: in_sequence_dot_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: alignment_dot_fast_a
+- id: in_alignment_dot_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - jali

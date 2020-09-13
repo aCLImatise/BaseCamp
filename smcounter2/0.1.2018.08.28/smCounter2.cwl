@@ -1,120 +1,123 @@
 class: CommandLineTool
 id: ../../../smCounter2.cwl
 inputs:
-- id: run_path
+- id: in_run_path
   doc: path to working directory
-  type: string
+  type: File
   inputBinding:
     prefix: --runPath
-- id: bed_target
+- id: in_bed_target
   doc: BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --bedTarget
-- id: bam_file
+- id: in_bam_file
   doc: BAM file
-  type: string
+  type: File
   inputBinding:
     prefix: --bamFile
-- id: out_prefix
+- id: in_out_prefix
   doc: file name prefix
-  type: string
+  type: File
   inputBinding:
     prefix: --outPrefix
-- id: n_cpu
+- id: in_n_cpu
   doc: number of CPU to use in parallel
-  type: string
+  type: long
   inputBinding:
     prefix: --nCPU
-- id: min_bq
+- id: in_min_bq
   doc: minimum base quality allowed for analysis
   type: long
   inputBinding:
     prefix: --minBQ
-- id: min_mq
-  doc: minimum mapping quality allowed for analysis. If the bam is tagged with its
-    mate's mapq, then the minimum of the R1 and R2 mapq will be used for comparison,
-    if not each read is compared independently.
+- id: in_min_mq
+  doc: "minimum mapping quality allowed for analysis. If the\nbam is tagged with its\
+    \ mate's mapq, then the minimum\nof the R1 and R2 mapq will be used for comparison,\
+    \ if\nnot each read is compared independently."
   type: long
   inputBinding:
     prefix: --minMQ
-- id: hp_len
+- id: in_hp_len
   doc: minimum length for homopolymers
-  type: string
+  type: long
   inputBinding:
     prefix: --hpLen
-- id: mismatch_thr
+- id: in_mismatch_thr
   doc: average number of mismatches per 100 bases allowed
-  type: string
+  type: long
   inputBinding:
     prefix: --mismatchThr
-- id: primer_dist
+- id: in_primer_dist
   doc: filter variants that are within X bases to primer
   type: string
   inputBinding:
     prefix: --primerDist
-- id: mt_threshold
-  doc: threshold on read proportion to determine MT level consensus
+- id: in_mt_threshold
+  doc: "threshold on read proportion to determine MT level\nconsensus"
   type: string
   inputBinding:
     prefix: --mtThreshold
-- id: rpb
-  doc: mean read pairs per UMI; default at 0 and will be calculated
-  type: string
+- id: in_rpb
+  doc: mean read pairs per UMI; default at 0 and will be
+  type: long
   inputBinding:
     prefix: --rpb
-- id: is_rna
-  doc: RNAseq varinat calling only; default is DNAseq
-  type: boolean
-  inputBinding:
-    prefix: --isRna
-- id: primer_side
+- id: in_primer_side
   doc: read end that includes the primer; default is 1
-  type: string
+  type: long
   inputBinding:
     prefix: --primerSide
-- id: minal_tumi
+- id: in_minal_tumi
   doc: minimum requirement of ALT UMIs; default is 3
   type: long
   inputBinding:
     prefix: --minAltUMI
-- id: maxalt_allele
-  doc: maximum ALT alleles that meet minAltUMI to be reported; default is 2 (tri-allelic
-    variants)
+- id: in_maxalt_allele
+  doc: "maximum ALT alleles that meet minAltUMI to be\nreported; default is 2 (tri-allelic\
+    \ variants)"
   type: long
   inputBinding:
     prefix: --maxAltAllele
-- id: ref_genome
+- id: in_ref_genome
   doc: Path to the reference fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --refGenome
-- id: rep_bed
+- id: in_rep_bed
   doc: Path to the simpleRepeat bed file
-  type: string
+  type: File
   inputBinding:
     prefix: --repBed
-- id: sr_bed
+- id: in_sr_bed
   doc: Path to the full repeat bed file
-  type: string
+  type: File
   inputBinding:
     prefix: --srBed
-- id: ds
-  doc: down sample if number of UMIs greater than this value (RNA only)
-  type: string
+- id: in_ds
+  doc: "down sample if number of UMIs greater than this value\n(RNA only)"
+  type: long
   inputBinding:
     prefix: --ds
-- id: bam_type
-  doc: 'raw (default): raw BAM file with UMIs; consensus: consensused BAM file'
-  type: string
+- id: in_bam_type
+  doc: "raw (default): raw BAM file with UMIs; consensus:\nconsensused BAM file"
+  type: File
   inputBinding:
     prefix: --bamType
-- id: input_vcf
+- id: in_input_vcf
   doc: optional input VCF file;
-  type: string
+  type: File
   inputBinding:
     prefix: --inputVCF
-outputs: []
+- id: in_calculated
+  doc: --isRna               RNAseq varinat calling only; default is DNAseq
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - smCounter2

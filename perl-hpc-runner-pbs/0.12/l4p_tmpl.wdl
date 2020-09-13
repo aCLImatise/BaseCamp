@@ -1,7 +1,10 @@
 version 1.0
 
-task L4pTmpl {
+task L4ptmpl {
   command <<<
-    l4p-tmpl
+    l4p_tmpl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

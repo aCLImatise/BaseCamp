@@ -6,39 +6,42 @@ task Hmmer2gff {
     Boolean? quiet
     Boolean? cite
     Boolean? manual
-    Boolean? o
-    String? discard
+    Float? discard
     Boolean? disable_evalue
     Boolean? no_custom_profiles
     String? database
     String? feature_type
     Boolean? no_frame
+    Boolean? o
   }
   command <<<
     hmmer2gff \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--cite" false="" cite} \
-      ~{true="--manual" false="" manual} \
-      ~{true="-o" false="" o} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (cite) then "--cite" else ""} \
+      ~{if (manual) then "--manual" else ""} \
       ~{if defined(discard) then ("--discard " +  '"' + discard + '"') else ""} \
-      ~{true="--disable-evalue" false="" disable_evalue} \
-      ~{true="--no-custom-profiles" false="" no_custom_profiles} \
+      ~{if (disable_evalue) then "--disable-evalue" else ""} \
+      ~{if (no_custom_profiles) then "--no-custom-profiles" else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(feature_type) then ("--feature-type " +  '"' + feature_type + '"') else ""} \
-      ~{true="--no-frame" false="" no_frame}
+      ~{if (no_frame) then "--no-frame" else ""} \
+      ~{if (o) then "-o" else ""}
   >>>
   parameter_meta {
     verbose: "more verbose - includes debug messages (default: 20)"
-    quiet: "less verbose - only error and critical messages (default: None)"
+    quiet: "less verbose - only error and critical messages\\n(default: None)"
     cite: "Show citation for the framework"
     manual: "Show the script manual"
-    o: "[OUTPUT_FILE], --output-file [OUTPUT_FILE]"
-    discard: "Evalue over which an hit will be discarded (default: 0.05)"
+    discard: "Evalue over which an hit will be discarded (default:\\n0.05)"
     disable_evalue: "Disable Evalue filter (default: False)"
-    no_custom_profiles: "Profiles names are not in the custom format (default: True)"
-    database: "Database from which the profiles are generated \" +\" (e.g. PFAM) (default: CUSTOM)"
+    no_custom_profiles: "Profiles names are not in the custom format (default:\\nTrue)"
+    database: "Database from which the profiles are generated \\\" +\\\"\\n(e.g. PFAM) (default: CUSTOM)"
     feature_type: "Type of feature (e.g. gene) (default: gene)"
-    no_frame: "Set if the sequences were not translated with translate_seq (default: False)"
+    no_frame: "Set if the sequences were not translated with\\ntranslate_seq (default: False)\\n"
+    o: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

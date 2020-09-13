@@ -2,17 +2,17 @@ version 1.0
 
 task MocaPlot {
   input {
-    String? meme_dir
-    String? centri_mo_dir
+    Directory? meme_dir
+    Directory? centri_mo_dir
     String? fimo_dir_sample
     String? fimo_dir_control
     String? name
     Int? flank_motif
     Int? motif
-    String? oc
-    String? configuration
+    Directory? oc
+    File? configuration
     Boolean? show_progress
-    String? genome_build
+    File? genome_build
   }
   command <<<
     moca plot \
@@ -25,7 +25,7 @@ task MocaPlot {
       ~{if defined(motif) then ("--motif " +  '"' + motif + '"') else ""} \
       ~{if defined(oc) then ("--oc " +  '"' + oc + '"') else ""} \
       ~{if defined(configuration) then ("--configuration " +  '"' + configuration + '"') else ""} \
-      ~{true="--show-progress" false="" show_progress} \
+      ~{if (show_progress) then "--show-progress" else ""} \
       ~{if defined(genome_build) then ("--genome-build " +  '"' + genome_build + '"') else ""}
   >>>
   parameter_meta {
@@ -34,11 +34,17 @@ task MocaPlot {
     fimo_dir_sample: "Sample fimo.txt  [required]"
     fimo_dir_control: "Control fimo.txt  [required]"
     name: "Plot title"
-    flank_motif: "Length of sequence flanking motif [required]"
+    flank_motif: "Length of sequence flanking motif\\n[required]"
     motif: "Motif number"
     oc: "Output Directory  [required]"
     configuration: "Configuration file  [required]"
     show_progress: "Print progress"
-    genome_build: "Key denoting genome build to use in configuration file  [required]"
+    genome_build: "Key denoting genome build to use in\\nconfiguration file  [required]"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_meme_dir = "${in_meme_dir}"
+    Directory out_centri_mo_dir = "${in_centri_mo_dir}"
+    Directory out_oc = "${in_oc}"
   }
 }

@@ -4,4 +4,7 @@ task AssembleRNAs {
   command <<<
     assembleRNAs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

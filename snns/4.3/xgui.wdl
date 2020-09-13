@@ -4,4 +4,7 @@ task Xgui {
   command <<<
     xgui
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

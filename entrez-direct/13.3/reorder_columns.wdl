@@ -1,7 +1,10 @@
 version 1.0
 
-task ReorderColumns {
+task Reordercolumns {
   command <<<
-    reorder-columns
+    reorder_columns
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

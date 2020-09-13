@@ -10,11 +10,14 @@ task Hmmindex2 {
     hmmindex2 \
       ~{hmm_index} \
       ~{hmm_file} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     hmm_index: ""
     hmm_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

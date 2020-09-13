@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../pslScore.cwl
 inputs:
-- id: file_dot_psl
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: more_files_dot_psl
-  doc: ''
+- id: in_not_valid_option
+  doc: not a valid option
   type: string
   inputBinding:
-    position: 1
-outputs: []
+    prefix: -h
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pslScore

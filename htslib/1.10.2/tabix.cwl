@@ -1,92 +1,95 @@
 class: CommandLineTool
 id: ../../../tabix.cwl
 inputs:
-- id: zero_based
+- id: in_zero_based
   doc: coordinates are zero-based
   type: boolean
   inputBinding:
     prefix: --zero-based
-- id: begin
+- id: in_begin
   doc: column number for region start [4]
   type: long
   inputBinding:
     prefix: --begin
-- id: comment
+- id: in_comment
   doc: skip comment lines starting with CHAR [null]
   type: string
   inputBinding:
     prefix: --comment
-- id: csi
+- id: in_csi
   doc: generate CSI index for VCF (default is TBI)
   type: boolean
   inputBinding:
     prefix: --csi
-- id: end
+- id: in_end
   doc: column number for region end (if no end, set INT to -b) [5]
   type: long
   inputBinding:
     prefix: --end
-- id: force
+- id: in_force
   doc: overwrite existing index without asking
   type: boolean
   inputBinding:
     prefix: --force
-- id: min_shift
+- id: in_min_shift
   doc: set minimal interval size for CSI indices to 2^INT [14]
   type: long
   inputBinding:
     prefix: --min-shift
-- id: preset
+- id: in_preset
   doc: gff, bed, sam, vcf
   type: string
   inputBinding:
     prefix: --preset
-- id: sequence
+- id: in_sequence
   doc: column number for sequence names (suppressed by -p) [1]
   type: long
   inputBinding:
     prefix: --sequence
-- id: skip_lines
+- id: in_skip_lines
   doc: skip first INT lines [0]
   type: long
   inputBinding:
     prefix: --skip-lines
-- id: only_header
+- id: in_only_header
   doc: print only the header lines
   type: boolean
   inputBinding:
     prefix: --only-header
-- id: list_chrom_s
+- id: in_list_chrom_s
   doc: list chromosome names
   type: boolean
   inputBinding:
     prefix: --list-chroms
-- id: re_header
+- id: in_re_header
   doc: replace the header with the content of FILE
   type: File
   inputBinding:
     prefix: --reheader
-- id: regions
+- id: in_regions
   doc: restrict to regions listed in the file
   type: File
   inputBinding:
     prefix: --regions
-- id: targets
+- id: in_targets
   doc: similar to -R but streams rather than index-jumps
   type: File
   inputBinding:
     prefix: --targets
-- id: download_index_file
+- id: in_download_index_file
   doc: do not download the index file
   type: boolean
   inputBinding:
     prefix: -D
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tabix

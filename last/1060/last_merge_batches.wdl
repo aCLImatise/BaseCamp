@@ -1,14 +1,17 @@
 version 1.0
 
-task LastMergeBatches {
+task Lastmergebatches {
   input {
-    File files
+    String files
   }
   command <<<
-    last-merge-batches \
+    last_merge_batches \
       ~{files}
   >>>
   parameter_meta {
     files: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

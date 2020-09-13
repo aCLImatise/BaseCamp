@@ -1,6 +1,6 @@
 version 1.0
 
-task RgtVizVenn {
+task RgtvizVenn {
   input {
     Boolean? s_one
     Boolean? s_two
@@ -10,23 +10,23 @@ task RgtVizVenn {
     Boolean? l_two
     Boolean? l_three
     Boolean? l_four
-    Boolean? directory_name_output
+    Directory? directory_name_output
     Boolean? title_shown_top
     Boolean? organism
   }
   command <<<
-    rgt-viz venn \
-      ~{true="-s1" false="" s_one} \
-      ~{true="-s2" false="" s_two} \
-      ~{true="-s3" false="" s_three} \
-      ~{true="-s4" false="" s_four} \
-      ~{true="-l1" false="" lone} \
-      ~{true="-l2" false="" l_two} \
-      ~{true="-l3" false="" l_three} \
-      ~{true="-l4" false="" l_four} \
-      ~{true="-o" false="" directory_name_output} \
-      ~{true="-t" false="" title_shown_top} \
-      ~{true="-organism" false="" organism}
+    rgt_viz venn \
+      ~{if (s_one) then "-s1" else ""} \
+      ~{if (s_two) then "-s2" else ""} \
+      ~{if (s_three) then "-s3" else ""} \
+      ~{if (s_four) then "-s4" else ""} \
+      ~{if (lone) then "-l1" else ""} \
+      ~{if (l_two) then "-l2" else ""} \
+      ~{if (l_three) then "-l3" else ""} \
+      ~{if (l_four) then "-l4" else ""} \
+      ~{if (directory_name_output) then "-o" else ""} \
+      ~{if (title_shown_top) then "-t" else ""} \
+      ~{if (organism) then "-organism" else ""}
   >>>
   parameter_meta {
     s_one: "Define the file for gene set 1 (BED or gene list)"
@@ -37,8 +37,12 @@ task RgtVizVenn {
     l_two: "Define label on venn diagram for set 2"
     l_three: "Define label on venn diagram for set 3"
     l_four: "Define label on venn diagram for set 4"
-    directory_name_output: "The directory name for the output files. For example, project name. (default: None)"
-    title_shown_top: "The title shown on the top of the plot and also the folder name. (default: venn_diagram)"
+    directory_name_output: "The directory name for the output files. For example, project\\nname. (default: None)"
+    title_shown_top: "The title shown on the top of the plot and also the folder\\nname. (default: venn_diagram)"
     organism: "Define the organism."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_directory_name_output = "${in_directory_name_output}"
   }
 }

@@ -24,21 +24,21 @@ task RemuRNA {
     remuRNA \
       ~{m_urna} \
       ~{input_file} \
-      ~{true="--NA" false="" na} \
-      ~{true="--energy" false="" energy} \
-      ~{true="--tmin" false="" tm_in} \
-      ~{true="--tinc" false="" tinc} \
-      ~{true="--tmax" false="" tmax} \
-      ~{true="--suffix" false="" suffix} \
-      ~{true="--log" false="" log} \
-      ~{true="--sodium" false="" sodium} \
-      ~{true="--magnesium" false="" magnesium} \
-      ~{true="--window" false="" window} \
-      ~{true="--proc" false="" proc} \
-      ~{true="--polymer" false="" polymer} \
-      ~{true="--zip" false="" zip} \
-      ~{true="--mutations" false="" mutations} \
-      ~{true="--nodangle" false="" no_dangle}
+      ~{if (na) then "--NA" else ""} \
+      ~{if (energy) then "--energy" else ""} \
+      ~{if (tm_in) then "--tmin" else ""} \
+      ~{if (tinc) then "--tinc" else ""} \
+      ~{if (tmax) then "--tmax" else ""} \
+      ~{if (suffix) then "--suffix" else ""} \
+      ~{if (log) then "--log" else ""} \
+      ~{if (sodium) then "--sodium" else ""} \
+      ~{if (magnesium) then "--magnesium" else ""} \
+      ~{if (window) then "--window" else ""} \
+      ~{if (proc) then "--proc" else ""} \
+      ~{if (polymer) then "--polymer" else ""} \
+      ~{if (zip) then "--zip" else ""} \
+      ~{if (mutations) then "--mutations" else ""} \
+      ~{if (no_dangle) then "--nodangle" else ""}
   >>>
   parameter_meta {
     na: "=RNA (default) | DNA"
@@ -58,5 +58,8 @@ task RemuRNA {
     no_dangle: "no dangle energy, (default, dangling energies will be added for the bases adjacent to a helix on both sides in any case)"
     m_urna: ""
     input_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../ixIxx.cwl
 inputs:
-- id: prefix_size
+- id: in_prefix_size
   doc: Size of prefix to index on in ixx.  Default is 5.
-  type: string
+  type: long
   inputBinding:
     prefix: -prefixSize
-- id: binsize
+- id: in_binsize
   doc: Size of bins in ixx.  Default is 64k.
-  type: string
+  type: long
   inputBinding:
     prefix: -binSize
-- id: in_dot_text
+- id: in_in_dot_text
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_do_tix
+- id: in_out_do_tix
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_do_tixx
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ixIxx

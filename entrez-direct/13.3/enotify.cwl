@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../enotify.cwl
 inputs:
-- id: email
+- id: in_email
   doc: Contact person's address
   type: boolean
   inputBinding:
     prefix: -email
-- id: tool
+- id: in_tool
   doc: Name of script or program
   type: boolean
   inputBinding:
     prefix: -tool
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - enotify

@@ -4,4 +4,7 @@ task Unmerge {
   command <<<
     unmerge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

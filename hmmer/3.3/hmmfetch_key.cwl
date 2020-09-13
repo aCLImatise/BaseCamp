@@ -1,22 +1,40 @@
 class: CommandLineTool
 id: ../../../hmmfetch_key.cwl
 inputs:
-- id: hmm_fetch
+- id: in_index
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --index
+- id: in_f
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -f
+- id: in_hmm_fetch
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: hmm_file
+- id: in_hmm_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: key
+- id: in_keyfile
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_key
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hmmfetch

@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../peakranger_lc.cwl
 inputs:
-- id: arg_data_file
+- id: in_arg_data_file
   doc: '[ --data ] arg      the data file'
   type: boolean
   inputBinding:
     prefix: -d
-- id: verbose
+- id: in_verbose
   doc: show progress when possible
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: input
+- id: in_input
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - peakranger

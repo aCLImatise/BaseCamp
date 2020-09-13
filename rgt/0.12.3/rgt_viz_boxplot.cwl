@@ -1,105 +1,107 @@
 class: CommandLineTool
 id: ../../../rgt_viz_boxplot.cwl
 inputs:
-- id: directory_name_output
-  doc: 'The directory name for the output files. For example, project name. (default:
-    None)'
-  type: boolean
+- id: in_directory_name_output
+  doc: "The directory name for the output files. For example, project\nname. (default:\
+    \ None)"
+  type: Directory
   inputBinding:
     prefix: -o
-- id: title_shown_top
-  doc: 'The title shown on the top of the plot and also the folder name. (default:
-    boxplot)'
+- id: in_title_shown_top
+  doc: "The title shown on the top of the plot and also the folder name.\n(default:\
+    \ boxplot)"
   type: boolean
   inputBinding:
     prefix: -t
-- id: group_data_readsneeds
-  doc: "Group the data by reads(needs 'factor' column), regions(needs 'factor' column),\
-    \ another name of column (for example, 'cell')in the header of experimental matrix,\
+- id: in_group_data_readsneeds
+  doc: "Group the data by reads(needs 'factor' column), regions(needs\n'factor' column),\
+    \ another name of column (for example, 'cell')in\nthe header of experimental matrix,\
     \ or None. (default: reads)"
   type: boolean
   inputBinding:
     prefix: -g
-- id: color_data_readsneeds
-  doc: "Color the data by reads(needs 'factor' column), regions(needs 'factor' column),\
-    \ another name of column (for example, 'cell')in the header of experimental matrix,\
+- id: in_color_data_readsneeds
+  doc: "Color the data by reads(needs 'factor' column), regions(needs\n'factor' column),\
+    \ another name of column (for example, 'cell')in\nthe header of experimental matrix,\
     \ or None. (default: regions)"
   type: boolean
   inputBinding:
     prefix: -c
-- id: sort_data_default
-  doc: "Sort the data by reads(needs 'factor' column), regions(needs 'factor' column),\
-    \ another name of column (for example, 'cell')in the header of experimental matrix,\
+- id: in_sort_data_readsneeds
+  doc: "Sort the data by reads(needs 'factor' column), regions(needs\n'factor' column),\
+    \ another name of column (for example, 'cell')in\nthe header of experimental matrix,\
     \ or None. (default: None)"
   type: boolean
   inputBinding:
     prefix: -s
-- id: scol
+- id: in_scol
   doc: 'Share y axis among columns. (default: False)'
   type: boolean
   inputBinding:
     prefix: -scol
-- id: n_log
+- id: in_n_log
   doc: 'Set y axis of the plot not in log scale. (default: True)'
   type: boolean
   inputBinding:
     prefix: -nlog
-- id: color
-  doc: 'Define the specific colors with the given column "color" in experimental matrix.
-    The color should be in the format of matplotlib.colors. For example, "r" for red,
-    "b" for blue, or "(100, 35, 138)" for RGB. (default: False)'
+- id: in_color
+  doc: "Define the specific colors with the given column \"color\" in\nexperimental\
+    \ matrix. The color should be in the format of\nmatplotlib.colors. For example,\
+    \ \"r\" for red, \"b\" for blue, or\n\"(100, 35, 138)\" for RGB. (default: False)"
   type: boolean
   inputBinding:
     prefix: -color
-- id: pw
+- id: in_pw
   doc: 'Define the width of single panel. (default: 3)'
   type: boolean
   inputBinding:
     prefix: -pw
-- id: ph
+- id: in_ph
   doc: 'Define the height of single panel. (default: 3)'
   type: boolean
   inputBinding:
     prefix: -ph
-- id: nq_n
+- id: in_nq_n
   doc: 'No quantile normalization in calculation. (default: False)'
   type: boolean
   inputBinding:
     prefix: -nqn
-- id: df
-  doc: 'Show the difference of the two signals which share the same labels.The result
-    is the subtraction of the first to the second. (default: False)'
+- id: in_df
+  doc: "Show the difference of the two signals which share the same\nlabels.The result\
+    \ is the subtraction of the first to the second.\n(default: False)"
   type: boolean
   inputBinding:
     prefix: -df
-- id: ylim
+- id: in_ylim
   doc: 'Define the limit of y axis. (default: None)'
   type: boolean
   inputBinding:
     prefix: -ylim
-- id: define_significance_level
+- id: in_define_significance_level
   doc: 'Define the significance level for multiple test. (default: 0.05)'
   type: boolean
   inputBinding:
     prefix: -p
-- id: show
+- id: in_show
   doc: 'Show the figure in the screen. (default: False)'
   type: boolean
   inputBinding:
     prefix: -show
-- id: table
+- id: in_table
   doc: 'Store the tables of the figure in text format. (default: False)'
   type: boolean
   inputBinding:
     prefix: -table
-- id: input
-  doc: 'The file name of the input Experimental Matrix file. Recommended to add more
-    columns for more information for ploting. For example, cell type or factors. (default:
-    None)'
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_directory_name_output
+  doc: "The directory name for the output files. For example, project\nname. (default:\
+    \ None)"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_directory_name_output)
 cwlVersion: v1.1
 baseCommand:
 - rgt-viz

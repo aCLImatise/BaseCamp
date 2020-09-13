@@ -3,13 +3,13 @@ version 1.0
 task CheckmTetraPlot {
   input {
     String? image_type
-    String? dpi
-    String? font_size
-    String? extension
-    String? width
-    String? height
-    String? td_window_size
-    String? td_bin_width
+    Int? dpi
+    Int? font_size
+    Directory? extension
+    Float? width
+    Float? height
+    Int? td_window_size
+    Float? td_bin_width
     Boolean? quiet
     String results_dir
     String bin_dir
@@ -32,7 +32,7 @@ task CheckmTetraPlot {
       ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
       ~{if defined(td_window_size) then ("--td_window_size " +  '"' + td_window_size + '"') else ""} \
       ~{if defined(td_bin_width) then ("--td_bin_width " +  '"' + td_bin_width + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     image_type: "desired image type (default: png)"
@@ -49,5 +49,8 @@ task CheckmTetraPlot {
     output_dir: "directory to hold plots"
     tetra_profile: "tetranucleotide profiles for each bin (see tetra command)"
     dist_value: "reference distribution(s) to plot; integer between 0 and 100"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

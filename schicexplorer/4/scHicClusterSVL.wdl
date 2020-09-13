@@ -3,12 +3,12 @@ version 1.0
 task ScHicClusterSVL {
   input {
     String? schic_matrix_m
-    String? number_of_clusters
+    Int? number_of_clusters
     String? cluster_method
-    String? out_filename
-    String? distance_short_range
-    String? distance_long_range
-    String? threads
+    File? out_filename
+    Int? distance_short_range
+    Int? distance_long_range
+    Int? threads
     String sch_i_c
     String var_8
   }
@@ -25,14 +25,18 @@ task ScHicClusterSVL {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction matrices to cluster. Needs to be in scool format (default: None)"
+    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to cluster.\\nNeeds to be in scool format (default: None)"
     number_of_clusters: "Number of to be computed clusters (default: 7)"
-    cluster_method: "Algorithm to cluster the Hi-C matrices (default: spectral)"
-    out_filename: "File name to save the resulting clusters (default: clusters.txt)"
-    distance_short_range: "Distance which should be considered as short range. Default 2MB. (default: 2000000)"
-    distance_long_range: "Distance which should be considered as short range. Default 12MB. (default: 12000000)"
-    threads: "Number of threads. Using the python multiprocessing module. (default: 4)"
+    cluster_method: "Algorithm to cluster the Hi-C matrices (default:\\nspectral)"
+    out_filename: "File name to save the resulting clusters (default:\\nclusters.txt)"
+    distance_short_range: "Distance which should be considered as short range.\\nDefault 2MB. (default: 2000000)"
+    distance_long_range: "Distance which should be considered as short range.\\nDefault 12MB. (default: 12000000)"
+    threads: "Number of threads. Using the python multiprocessing\\nmodule. (default: 4)"
     sch_i_c: ""
     var_8: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_filename = "${in_out_filename}"
   }
 }

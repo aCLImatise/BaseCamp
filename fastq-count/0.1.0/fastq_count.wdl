@@ -1,17 +1,20 @@
 version 1.0
 
-task FastqCount {
+task Fastqcount {
   input {
-    String r_one_dot_fq
-    String r_two_dot_fq
+    Int r_one_dot_fq
+    Int r_two_dot_fq
   }
   command <<<
-    fastq-count \
+    fastq_count \
       ~{r_one_dot_fq} \
       ~{r_two_dot_fq}
   >>>
   parameter_meta {
     r_one_dot_fq: ""
     r_two_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

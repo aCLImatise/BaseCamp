@@ -1,8 +1,8 @@
 version 1.0
 
-task RsegDiff {
+task Rsegdiff {
   input {
-    Boolean? out
+    File? out
     Boolean? score
     Boolean? read_count
     Boolean? boundary
@@ -11,7 +11,7 @@ task RsegDiff {
     Boolean? dead_zones
     Boolean? bam
     Boolean? param_in
-    Boolean? param_out
+    File? param_out
     Boolean? mode
     Boolean? max_it_r
     Boolean? bin_size
@@ -38,76 +38,81 @@ task RsegDiff {
     String mapped_read_locations_b
   }
   command <<<
-    rseg-diff \
+    rseg_diff \
       ~{mapped_read_locations_a} \
       ~{mapped_read_locations_b} \
-      ~{true="-out" false="" out} \
-      ~{true="-score" false="" score} \
-      ~{true="-readcount" false="" read_count} \
-      ~{true="-boundary" false="" boundary} \
-      ~{true="-boundary-score" false="" boundary_score} \
-      ~{true="-chrom" false="" chrom} \
-      ~{true="-deadzones" false="" dead_zones} \
-      ~{true="-bam" false="" bam} \
-      ~{true="-param-in" false="" param_in} \
-      ~{true="-param-out" false="" param_out} \
-      ~{true="-mode" false="" mode} \
-      ~{true="-maxitr" false="" max_it_r} \
-      ~{true="-bin-size" false="" bin_size} \
-      ~{true="-bin-step" false="" bin_step} \
-      ~{true="-duplicates" false="" duplicates} \
-      ~{true="-fragment_length" false="" fragment_length} \
-      ~{true="-Waterman" false="" waterman} \
-      ~{true="-Hideaki" false="" hideaki} \
-      ~{true="-Hideaki-emp" false="" hideaki_emp} \
-      ~{true="-smooth" false="" smooth} \
-      ~{true="-max-dead" false="" max_dead} \
-      ~{true="-domain-size" false="" domain_size} \
-      ~{true="-desert" false="" desert} \
-      ~{true="-fg" false="" fg} \
-      ~{true="-bg" false="" bg} \
-      ~{true="-training-size" false="" training_size} \
-      ~{true="-posterior" false="" posterior} \
-      ~{true="-posterior-cutoff" false="" posterior_cut_off} \
-      ~{true="-undefined" false="" undefined} \
-      ~{true="-cutoff" false="" cut_off} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-about" false="" about}
+      ~{if (out) then "-out" else ""} \
+      ~{if (score) then "-score" else ""} \
+      ~{if (read_count) then "-readcount" else ""} \
+      ~{if (boundary) then "-boundary" else ""} \
+      ~{if (boundary_score) then "-boundary-score" else ""} \
+      ~{if (chrom) then "-chrom" else ""} \
+      ~{if (dead_zones) then "-deadzones" else ""} \
+      ~{if (bam) then "-bam" else ""} \
+      ~{if (param_in) then "-param-in" else ""} \
+      ~{if (param_out) then "-param-out" else ""} \
+      ~{if (mode) then "-mode" else ""} \
+      ~{if (max_it_r) then "-maxitr" else ""} \
+      ~{if (bin_size) then "-bin-size" else ""} \
+      ~{if (bin_step) then "-bin-step" else ""} \
+      ~{if (duplicates) then "-duplicates" else ""} \
+      ~{if (fragment_length) then "-fragment_length" else ""} \
+      ~{if (waterman) then "-Waterman" else ""} \
+      ~{if (hideaki) then "-Hideaki" else ""} \
+      ~{if (hideaki_emp) then "-Hideaki-emp" else ""} \
+      ~{if (smooth) then "-smooth" else ""} \
+      ~{if (max_dead) then "-max-dead" else ""} \
+      ~{if (domain_size) then "-domain-size" else ""} \
+      ~{if (desert) then "-desert" else ""} \
+      ~{if (fg) then "-fg" else ""} \
+      ~{if (bg) then "-bg" else ""} \
+      ~{if (training_size) then "-training-size" else ""} \
+      ~{if (posterior) then "-posterior" else ""} \
+      ~{if (posterior_cut_off) then "-posterior-cutoff" else ""} \
+      ~{if (undefined) then "-undefined" else ""} \
+      ~{if (cut_off) then "-cutoff" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (about) then "-about" else ""}
   >>>
   parameter_meta {
-    out: "domain output file "
-    score: "Posterior scores file "
-    read_count: "readcounts file "
-    boundary: "domain boundary file "
-    boundary_score: "boundary transition scores file "
-    chrom: "file with chromosome sizes (BED format) "
-    dead_zones: "file of deadzones (BED format) "
-    bam: "Input reads file is BAM format "
-    param_in: "Input parameters file "
-    param_out: "Output parameters file "
-    mode: "running mode 2:test-control; 3: test-test "
-    max_it_r: "maximum iterations for training "
-    bin_size: "bin size (default: based on data) "
-    bin_step: "minimum bin size (default: 50) "
-    duplicates: "keep duplicate reads "
-    fragment_length: "Extend reads to fragment length (default not to  extend) "
-    waterman: "use Waterman's method for bin size "
-    hideaki: "use Hideaki's method for bin size "
-    hideaki_emp: "use Hideaki's empirical method (default) "
-    smooth: "Indicate whether the rate curve is assumed smooth "
-    max_dead: "max deadzone proportion for retained bins "
-    domain_size: "expected domain size (default: 20000) "
-    desert: "desert size (default: 20000) "
-    fg: "foreground emission distribution "
-    bg: "background emission distribution "
-    training_size: "Max number of data points for training (default: all) "
-    posterior: "use posterior decoding (default: Viterbi) "
-    posterior_cut_off: "Posterior threshold for signigicant bins "
-    undefined: "min size of unmappable region "
-    cut_off: "cutoff in cdf for identified domains "
-    verbose: "print more run information "
-    about: "print about message "
+    out: "domain output file"
+    score: "Posterior scores file"
+    read_count: "readcounts file"
+    boundary: "domain boundary file"
+    boundary_score: "boundary transition scores file"
+    chrom: "file with chromosome sizes (BED format)"
+    dead_zones: "file of deadzones (BED format)"
+    bam: "Input reads file is BAM format"
+    param_in: "Input parameters file"
+    param_out: "Output parameters file"
+    mode: "running mode 2:test-control; 3: test-test"
+    max_it_r: "maximum iterations for training"
+    bin_size: "bin size (default: based on data)"
+    bin_step: "minimum bin size (default: 50)"
+    duplicates: "keep duplicate reads"
+    fragment_length: "Extend reads to fragment length (default not to\\nextend)"
+    waterman: "use Waterman's method for bin size"
+    hideaki: "use Hideaki's method for bin size"
+    hideaki_emp: "use Hideaki's empirical method (default)"
+    smooth: "Indicate whether the rate curve is assumed smooth"
+    max_dead: "max deadzone proportion for retained bins"
+    domain_size: "expected domain size (default: 20000)"
+    desert: "desert size (default: 20000)"
+    fg: "foreground emission distribution"
+    bg: "background emission distribution"
+    training_size: "Max number of data points for training (default: all)"
+    posterior: "use posterior decoding (default: Viterbi)"
+    posterior_cut_off: "Posterior threshold for signigicant bins"
+    undefined: "min size of unmappable region"
+    cut_off: "cutoff in cdf for identified domains"
+    verbose: "print more run information"
+    about: "print about message"
     mapped_read_locations_a: ""
     mapped_read_locations_b: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_param_out = "${in_param_out}"
   }
 }

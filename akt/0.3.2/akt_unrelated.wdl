@@ -7,11 +7,14 @@ task AktUnrelated {
   }
   command <<<
     akt unrelated \
-      ~{true="--kmin" false="" km_in} \
-      ~{true="--its" false="" its}
+      ~{if (km_in) then "--kmin" else ""} \
+      ~{if (its) then "--its" else ""}
   >>>
   parameter_meta {
     km_in: ":                     threshold for relatedness (0.025)"
     its: ":                      number of iterations to find unrelated (10)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

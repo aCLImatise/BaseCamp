@@ -4,4 +4,7 @@ task Hint {
   command <<<
     hint
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

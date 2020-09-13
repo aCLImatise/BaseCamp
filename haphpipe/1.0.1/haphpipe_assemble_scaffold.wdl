@@ -2,13 +2,13 @@ version 1.0
 
 task HaphpipeAssembleScaffold {
   input {
-    String? contigs_fa
-    String? ref_fa
-    String? outdir
-    String? seqname
+    File? contigs_fa
+    File? ref_fa
+    Directory? outdir
+    Int? seqname
     Boolean? keep_tmp
     Boolean? quiet
-    String? log_file
+    File? log_file
     Boolean? debug
   }
   command <<<
@@ -17,19 +17,24 @@ task HaphpipeAssembleScaffold {
       ~{if defined(ref_fa) then ("--ref_fa " +  '"' + ref_fa + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(seqname) then ("--seqname " +  '"' + seqname + '"') else ""} \
-      ~{true="--keep_tmp" false="" keep_tmp} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (keep_tmp) then "--keep_tmp" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     contigs_fa: "Fasta file with assembled contigs"
     ref_fa: "Fasta file with reference genome to scaffold against"
     outdir: "Output directory (default: .)"
-    seqname: "Name to append to scaffold sequence. (default: sample01)"
+    seqname: "Name to append to scaffold sequence. (default:\\nsample01)"
     keep_tmp: "Additional options (default: False)"
-    quiet: "Do not write output to console (silence stdout and stderr) (default: False)"
+    quiet: "Do not write output to console (silence stdout and\\nstderr) (default: False)"
     log_file: "Append console output to this file"
     debug: "Print commands but do not run (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    File out_log_file = "${in_log_file}"
   }
 }

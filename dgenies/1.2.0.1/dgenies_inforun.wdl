@@ -10,11 +10,14 @@ task DgeniesInforun {
     dgenies inforun \
       ~{if defined(message) then ("--message " +  '"' + message + '"') else ""} \
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
-      ~{true="--clear" false="" clear}
+      ~{if (clear) then "--clear" else ""}
   >>>
   parameter_meta {
     message: "Message to add"
     type: "Type of message"
     clear: "Remove message"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

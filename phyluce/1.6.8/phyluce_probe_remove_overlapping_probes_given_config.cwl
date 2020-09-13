@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../phyluce_probe_remove_overlapping_probes_given_config.cwl
 inputs:
-- id: probes
+- id: in_probes
   doc: The input probe file
-  type: string
+  type: File
   inputBinding:
     prefix: --probes
-- id: config
+- id: in_config
   doc: The input conf file of probes names to remove
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: output
+- id: in_output
   doc: The output probe file to write
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output probe file to write
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_probe_remove_overlapping_probes_given_config

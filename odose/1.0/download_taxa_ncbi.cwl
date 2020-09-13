@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../download_taxa_ncbi.py.cwl
+id: ../../../download_taxa_ncbi.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- download_taxa_ncbi.py
+- download_taxa_ncbi

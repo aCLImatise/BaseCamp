@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../chainToPsl.cwl
 inputs:
-- id: in_dot_chain
+- id: in_in_dot_chain
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: t_sizes
+- id: in_t_sizes
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: q_sizes
+- id: in_q_sizes
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: target_dot_lst
+- id: in_target_dot_lst
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: query_dot_lst
+- id: in_query_dot_lst
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: out_dot_psl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chainToPsl

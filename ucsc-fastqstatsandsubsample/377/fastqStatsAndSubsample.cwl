@@ -1,42 +1,40 @@
 class: CommandLineTool
 id: ../../../fastqStatsAndSubsample.cwl
 inputs:
-- id: sample_size
+- id: in_sample_size
   doc: '- default 100000'
-  type: string
+  type: long
   inputBinding:
     prefix: -sampleSize
-- id: seed
+- id: in_seed
   doc: '- Use given seed for random number generator.  Default 0.'
-  type: string
+  type: long
   inputBinding:
     prefix: -seed
-- id: small_ok
+- id: in_small_ok
   doc: '- Not an error if less than sampleSize reads.  out.fastq will be entire in.fastq'
   type: boolean
   inputBinding:
     prefix: -smallOk
-- id: json
+- id: in_json
   doc: '- out.stats will be in json rather than text format'
   type: boolean
   inputBinding:
     prefix: -json
-- id: in_dot_fast_q
+- id: in_in_dot_fast_q
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_dot_stats
+- id: in_out_dot_stats
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_dot_fast_q
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastqStatsAndSubsample

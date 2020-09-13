@@ -1,15 +1,101 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: fastq-file
-  optional: false
-named: []
 command:
 - fastq-stats
+positional:
+- !Positional
+  description: ': #reads in the fastq file'
+  position: 0
+  name: reads
+  optional: false
+- !Positional
+  description: ': read length. mean and stdev are provided for variable read lengths'
+  position: 1
+  name: len
+  optional: false
+- !Positional
+  description: ': phred scale used'
+  position: 2
+  name: phred
+  optional: false
+- !Positional
+  description: ': Number of reads used to generate duplicate read statistics'
+  position: 3
+  name: window-size
+  optional: false
+- !Positional
+  description: ': Number of bases to assess for duplicity'
+  position: 4
+  name: cycle-max
+  optional: false
+- !Positional
+  description: ': Number of reads that are duplicates'
+  position: 5
+  name: dups
+  optional: false
+- !Positional
+  description: ': Base Quality min, max and mean'
+  position: 0
+  name: qual
+  optional: false
+named:
+- !Flag
+  description: 'cyclemax: max cycles for which following quality stats are produced
+    [35]'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'window: max window size for generating duplicate read statistics [2000000]'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'debug: prints out debug statements'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't do duplicate read statistics
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of top duplicate reads to display
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: output fastx statistics (requires an output filename)
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: FIL
+  optional: true
+- !Flag
+  description: "output base breakdown by per phred quality at every cycle.\nIt sets\
+    \ cylemax to longest read length"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: FIL
+  optional: true
+- !Flag
+  description: Output length counts
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: FIL
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

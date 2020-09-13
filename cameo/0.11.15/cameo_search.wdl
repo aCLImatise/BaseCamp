@@ -1,14 +1,10 @@
 version 1.0
 
 task CameoSearch {
-  input {
-    String product
-  }
   command <<<
-    cameo search \
-      ~{product}
+    cameo search
   >>>
-  parameter_meta {
-    product: ""
+  output {
+    File out_stdout = stdout()
   }
 }

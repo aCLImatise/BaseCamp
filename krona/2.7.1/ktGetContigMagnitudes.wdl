@@ -4,4 +4,7 @@ task KtGetContigMagnitudes {
   command <<<
     ktGetContigMagnitudes
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

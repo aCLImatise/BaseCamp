@@ -17,4 +17,7 @@ task Edgeredef {
     seq_list: ""
     start: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

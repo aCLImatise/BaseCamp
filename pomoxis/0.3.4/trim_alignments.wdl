@@ -15,9 +15,12 @@ task TrimAlignments {
       ~{if defined(reference_fast_a) then ("--reference_fasta " +  '"' + reference_fast_a + '"') else ""}
   >>>
   parameter_meta {
-    ref_name: "Reference to process, only needed if bams contain multiple references. (default: None)"
+    ref_name: "Reference to process, only needed if bams contain\\nmultiple references. (default: None)"
     output_prefix: "Prefix for outputs. (default: trimmed)"
-    reference_fast_a: "Reference fasta to trim to alignment window. (default: None)"
+    reference_fast_a: "Reference fasta to trim to alignment window. (default:\\nNone)\\n"
     bams: "input bam files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

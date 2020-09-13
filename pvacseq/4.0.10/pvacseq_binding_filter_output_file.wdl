@@ -17,4 +17,7 @@ task PvacseqBindingFilterOutputFile {
     pvac_seq: ""
     binding_filter: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

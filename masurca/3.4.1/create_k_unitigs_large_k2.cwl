@@ -1,67 +1,75 @@
 class: CommandLineTool
 id: ../../../create_k_unitigs_large_k2.cwl
 inputs:
-- id: mer
+- id: in_mer
   doc: '*k-mer size'
   type: long
   inputBinding:
     prefix: --mer
-- id: nb_mers
+- id: in_nb_mers
   doc: '*Estimated number of distinct k-mers'
-  type: string
+  type: long
   inputBinding:
     prefix: --nb-mers
-- id: val
+- id: in_val
   doc: Value field length in hash (7)
   type: long
   inputBinding:
     prefix: --val
-- id: threads
+- id: in_threads
   doc: Number of threads (1)
   type: long
   inputBinding:
     prefix: --threads
-- id: output
+- id: in_output
   doc: Ouput file (stdout)
   type: File
   inputBinding:
     prefix: --output
-- id: quality_threshold
+- id: in_quality_threshold
   doc: Count threshold for high-quality mers (2)
-  type: string
+  type: long
   inputBinding:
     prefix: --quality-threshold
-- id: cont_on_low
+- id: in_cont_on_low
   doc: Max length of low quality mer run (0)
-  type: string
+  type: long
   inputBinding:
     prefix: --cont-on-low
-- id: min_len
+- id: in_min_len
   doc: Minimum length of k-unitig to output (k+1)
-  type: string
+  type: long
   inputBinding:
     prefix: --min-len
-- id: gzip
+- id: in_gzip
   doc: Gzip output file. Ignored if -o not given. (false)
-  type: boolean
+  type: File
   inputBinding:
     prefix: --gzip
-- id: load
+- id: in_load
   doc: Load jellyfish hash
   type: File
   inputBinding:
     prefix: --load
-- id: cmdline_parse
+- id: in_cmdline_parse
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input
+- id: in_input
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_gzip
+  doc: Gzip output file. Ignored if -o not given. (false)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_gzip)
 cwlVersion: v1.1
 baseCommand:
 - create_k_unitigs_large_k2

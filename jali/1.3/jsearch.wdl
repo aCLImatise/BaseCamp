@@ -2,7 +2,7 @@ version 1.0
 
 task Jsearch {
   input {
-    String? amino_acid_similarity
+    File? amino_acid_similarity
     String? i
     String? e
     String? j
@@ -19,8 +19,8 @@ task Jsearch {
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
       ~{if defined(j) then ("-j " +  '"' + j + '"') else ""} \
-      ~{true="-o" false="" run_verbose_mode} \
-      ~{true="-v" false="" print_version}
+      ~{if (run_verbose_mode) then "-o" else ""} \
+      ~{if (print_version) then "-v" else ""}
   >>>
   parameter_meta {
     amino_acid_similarity: "//amino acid similarity matrix"
@@ -31,5 +31,8 @@ task Jsearch {
     print_version: "//print version"
     sequence_db_dot_fast_a: ""
     alignment_dot_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

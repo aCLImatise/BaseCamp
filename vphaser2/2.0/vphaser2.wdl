@@ -2,10 +2,9 @@ version 1.0
 
 task Vphaser2 {
   input {
-    Boolean? _input_sorted
-    Boolean? _output_directory
+    Directory? _output_directory
     Boolean? _default_pileup
-    Boolean? _default_alignment
+    Boolean? _default_size
     Boolean? ig
     Boolean? delta
     Boolean? ps
@@ -14,27 +13,27 @@ task Vphaser2 {
     Boolean? mp
     Boolean? qual
     Boolean? _default_significance
+    Int v_phaser_two
   }
   command <<<
     vphaser2 \
-      ~{true="-i" false="" _input_sorted} \
-      ~{true="-o" false="" _output_directory} \
-      ~{true="-e" false="" _default_pileup} \
-      ~{true="-w" false="" _default_alignment} \
-      ~{true="-ig" false="" ig} \
-      ~{true="-delta" false="" delta} \
-      ~{true="-ps" false="" ps} \
-      ~{true="-dt" false="" dt} \
-      ~{true="-cy" false="" cy} \
-      ~{true="-mp" false="" mp} \
-      ~{true="-qual" false="" qual} \
-      ~{true="-a" false="" _default_significance}
+      ~{v_phaser_two} \
+      ~{if (_output_directory) then "-o" else ""} \
+      ~{if (_default_pileup) then "-e" else ""} \
+      ~{if (_default_size) then "-w" else ""} \
+      ~{if (ig) then "-ig" else ""} \
+      ~{if (delta) then "-delta" else ""} \
+      ~{if (ps) then "-ps" else ""} \
+      ~{if (dt) then "-dt" else ""} \
+      ~{if (cy) then "-cy" else ""} \
+      ~{if (mp) then "-mp" else ""} \
+      ~{if (qual) then "-qual" else ""} \
+      ~{if (_default_significance) then "-a" else ""}
   >>>
   parameter_meta {
-    _input_sorted: "[input.bam] -- input sorted bam file"
     _output_directory: "[output DIR] -- output directory"
     _default_pileup: "[1 or 2] -- default 1; 1: pileup + phasing; 2: pileup"
-    _default_alignment: "-- default 500; alignment window size"
+    _default_size: "-- default 500; alignment window size"
     ig: "-- default 0; # of bases to ignore on both end of a read"
     delta: "-- default 2; constrain PE distance by delta x fragsize_variation (auto measured by program)"
     ps: "(0, 100] -- default 30; percentage of reads to sample to get stats."
@@ -43,5 +42,10 @@ task Vphaser2 {
     mp: "[0 or 1] -- default 1; 1: mate-pair for err calibr; 0: not"
     qual: "[0, 40] -- default 20; quantile of qual for err calibr"
     _default_significance: "-- default 0.05; significance value for stat test"
+    v_phaser_two: "-i  [input.bam] -- input sorted bam file"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out__output_directory = "${in__output_directory}"
   }
 }

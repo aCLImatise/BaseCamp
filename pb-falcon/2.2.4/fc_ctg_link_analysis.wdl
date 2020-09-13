@@ -4,4 +4,7 @@ task FcCtgLinkAnalysis {
   command <<<
     fc_ctg_link_analysis
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

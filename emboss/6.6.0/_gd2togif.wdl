@@ -1,8 +1,8 @@
 version 1.0
 
-task _gd2togif {
+task Gd2togif {
   input {
-    String gd_two_to_gif
+    Int gd_two_to_gif
     File filename_dot_gd_two
     File filename_do_tgif
   }
@@ -16,5 +16,8 @@ task _gd2togif {
     gd_two_to_gif: ""
     filename_dot_gd_two: ""
     filename_do_tgif: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task DDocentFilters {
   command <<<
     dDocent_filters
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

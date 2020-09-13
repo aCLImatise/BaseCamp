@@ -4,4 +4,7 @@ task DateRepeats {
   command <<<
     DateRepeats
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

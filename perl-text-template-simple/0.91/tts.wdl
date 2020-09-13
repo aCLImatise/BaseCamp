@@ -30,12 +30,11 @@ task Tts {
     String have
     String to
     String either
-    String var_28
+    String pass
     String a
     File file
     String name
     String or
-    String var_33
   }
   command <<<
     tts \
@@ -43,36 +42,35 @@ task Tts {
       ~{have} \
       ~{to} \
       ~{either} \
-      ~{var_28} \
+      ~{pass} \
       ~{a} \
       ~{file} \
       ~{name} \
       ~{or} \
-      ~{var_33} \
-      ~{true="-e" false="" string_template_execute} \
-      ~{true="--http-header" false="" http_header} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--debug-tokens" false="" debug_tokens} \
-      ~{true="--new-cache" false="" new_cache} \
-      ~{true="--new-capture-warnings" false="" new_capture_warnings} \
-      ~{true="--new-safe" false="" new_safe} \
-      ~{true="--new-stack" false="" new_stack} \
-      ~{true="--new-strict" false="" new_strict} \
-      ~{true="--new-verbose_errors" false="" new_verbose_errors} \
-      ~{true="--new-warn-ids" false="" new_warn_ids} \
-      ~{true="--new-monolith" false="" new_monolith} \
-      ~{true="--new-add-args" false="" new_add_args} \
-      ~{true="--new-cache-dir" false="" new_cache_dir} \
-      ~{true="--new-delimiters" false="" new_delimiters} \
-      ~{true="--new-header" false="" new_header} \
-      ~{true="--new-include-paths" false="" new_include_paths} \
-      ~{true="--new-iolayer" false="" new_io_layer} \
-      ~{true="--new-pre-chomp" false="" new_pre_chomp} \
-      ~{true="--new-post-chomp" false="" new_post_chomp} \
-      ~{true="--compile-param" false="" compile_param} \
-      ~{true="--compile-id" false="" compile_id} \
-      ~{true="--compile-map-keys" false="" compile_map_keys} \
-      ~{true="--compile-chkmt" false="" compile_chk_mt}
+      ~{if (string_template_execute) then "-e" else ""} \
+      ~{if (http_header) then "--http-header" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (debug_tokens) then "--debug-tokens" else ""} \
+      ~{if (new_cache) then "--new-cache" else ""} \
+      ~{if (new_capture_warnings) then "--new-capture-warnings" else ""} \
+      ~{if (new_safe) then "--new-safe" else ""} \
+      ~{if (new_stack) then "--new-stack" else ""} \
+      ~{if (new_strict) then "--new-strict" else ""} \
+      ~{if (new_verbose_errors) then "--new-verbose_errors" else ""} \
+      ~{if (new_warn_ids) then "--new-warn-ids" else ""} \
+      ~{if (new_monolith) then "--new-monolith" else ""} \
+      ~{if (new_add_args) then "--new-add-args" else ""} \
+      ~{if (new_cache_dir) then "--new-cache-dir" else ""} \
+      ~{if (new_delimiters) then "--new-delimiters" else ""} \
+      ~{if (new_header) then "--new-header" else ""} \
+      ~{if (new_include_paths) then "--new-include-paths" else ""} \
+      ~{if (new_io_layer) then "--new-iolayer" else ""} \
+      ~{if (new_pre_chomp) then "--new-pre-chomp" else ""} \
+      ~{if (new_post_chomp) then "--new-post-chomp" else ""} \
+      ~{if (compile_param) then "--compile-param" else ""} \
+      ~{if (compile_id) then "--compile-id" else ""} \
+      ~{if (compile_map_keys) then "--compile-map-keys" else ""} \
+      ~{if (compile_chk_mt) then "--compile-chkmt" else ""}
   >>>
   parameter_meta {
     string_template_execute: "String template to execute"
@@ -103,11 +101,13 @@ task Tts {
     have: ""
     to: ""
     either: ""
-    var_28: ""
+    pass: ""
     a: ""
     file: ""
     name: ""
     or: ""
-    var_33: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

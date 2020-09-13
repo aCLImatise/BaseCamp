@@ -1,40 +1,49 @@
 !Command
+command:
+- RNALalifold
 positional:
 - !Positional
-  description: -h, --help                    Print help and exit --detailed-help           Print
-    help, including all details and hidden  options, and exit --full-help               Print
-    help, including hidden options, and exit -V, --version                 Print version
-    and exit
+  description: -h, --help                    Print help and exit
   position: 0
   name: structures.
   optional: false
+- !Positional
+  description: "-L, --span=INT                Set the maximum allowed separation of\
+    \ a base \npair to span. I.e. no pairs (i,j) with\nj-i>span will be allowed.\n\
+    (default=`70')"
+  position: 0
+  name: program
+  optional: false
 named:
 - !Flag
-  description: Set the maximum allowed separation of a base  pair to span. I.e. no
-    pairs (i,j) with  j-i>span will be allowed. (default=`70')
+  description: "Print help, including all details and hidden\noptions, and exit"
   synonyms:
-  - -L
-  - --span
-  args: !SimpleFlagArg
-    name: INT
+  - --detailed-help
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Create comma seperated output (csv) (default=off)
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Create comma seperated output (csv)\n(default=off)"
   synonyms:
   - --csv
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "[=INT]          Calculate the partition function and base  pairing\
-    \ probability matrix in addition to the  mfe structure.  (default=`1')"
+  description: "[=INT]          Calculate the partition function and base\npairing\
+    \ probability matrix in addition to the\nmfe structure.  (default=`1')"
   synonyms:
   - -p
   - --partfunc
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Report only base pairs with an average  probability > cutoff in the
-    dot plot (default=`0.01')
+  description: "Report only base pairs with an average\nprobability > cutoff in the\
+    \ dot plot\n(default=`0.01')"
   synonyms:
   - -c
   - --cutoff
@@ -42,15 +51,16 @@ named:
     name: FLOAT
   optional: true
 - !Flag
-  description: 'Output "most informative sequence" instead of  simple consensus: For
-    each column of the  alignment output the set of nucleotides with  frequence greater
-    than average in IUPAC  notation. (default=off)'
+  description: "Output \"most informative sequence\" instead of\nsimple consensus:\
+    \ For each column of the\nalignment output the set of nucleotides with\nfrequence\
+    \ greater than average in IUPAC\nnotation.\n(default=off)"
   synonyms:
   - --mis
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Rescale energy parameters to a temperature of  temp C. Default is 37C.
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
   synonyms:
   - -T
   - --temp
@@ -58,16 +68,16 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Do not include special tabulated stabilizing  energies for tri-, tetra-
-    and hexaloop  hairpins. Mostly for testing. (default=off)
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins. Mostly for testing.\n(default=off)"
   synonyms:
   - '-4'
   - --noTetra
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: How to treat "dangling end" energies for  bases adjacent to helices
-    in free ends and  multi-loops (default=`2')
+  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
+    \ in free ends and\nmulti-loops\n(default=`2')"
   synonyms:
   - -d
   - --dangles
@@ -75,26 +85,27 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Produce structures without lonely pairs  (helices of length 1). (default=off)
+  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
+    (default=off)"
   synonyms:
   - --noLP
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not allow GU pairs (default=off)
+  description: "Do not allow GU pairs\n(default=off)"
   synonyms:
   - --noGU
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not allow GU pairs at the end of helices (default=off)
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
   synonyms:
   - --noClosingGU
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Read energy parameters from paramfile, instead  of using the default
-    parameter set.
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
   synonyms:
   - -P
   - --paramFile
@@ -102,24 +113,24 @@ named:
     name: paramfile
   optional: true
 - !Flag
-  description: Set the weight of the covariance term in the  energy function (default=`1.0')
+  description: "Set the weight of the covariance term in the\nenergy function\n(default=`1.0')"
   synonyms:
   - --cfactor
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: Set the penalty for non-compatible sequences in  the covariance term
-    of the energy function (default=`1.0')
+  description: "Set the penalty for non-compatible sequences in\nthe covariance term\
+    \ of the energy function\n(default=`1.0')"
   synonyms:
   - --nfactor
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: use specified Ribosum Matrix instead of normal  energy model. Matrixes
-    to use should be 6x6  matrices, the order of the terms is AU, CG,  GC, GU, UA,
-    UG.
+  description: "use specified Ribosum Matrix instead of normal\nenergy model. Matrixes\
+    \ to use should be 6x6\nmatrices, the order of the terms is AU, CG,\nGC, GU, UA,\
+    \ UG."
   synonyms:
   - -R
   - --ribosum_file
@@ -127,20 +138,25 @@ named:
     name: ribosumfile
   optional: true
 - !Flag
-  description: use ribosum scoring matrix. The matrix is  chosen according to the
-    minimal and maximal  pairwise identities of the sequences in the  file. (default=off)
+  description: "use ribosum scoring matrix. The matrix is\nchosen according to the\
+    \ minimal and maximal\npairwise identities of the sequences in the\nfile.\n(default=off)"
   synonyms:
   - -r
   - --ribosum_scoring
   args: !EmptyFlagArg {}
   optional: true
-command:
-- RNALalifold
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "RNALalifold 2.0.4\n\ncalculate locally stable secondary structures for\
   \ a set of aligned RNAs\n\nUsage: RNALalifold [options] <file1.aln>\n\nreads aligned\
   \ RNA sequences from stdin or file.aln and calculates locally \nstable RNA secondary\

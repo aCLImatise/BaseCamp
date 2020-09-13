@@ -15,8 +15,8 @@ task Gof3r {
       ~{get} \
       ~{put} \
       ~{rm} \
-      ~{true="--manpage" false="" man_page} \
-      ~{true="--writeini" false="" write_ini}
+      ~{if (man_page) then "--manpage" else ""} \
+      ~{if (write_ini) then "--writeini" else ""}
   >>>
   parameter_meta {
     man_page: "Create gof3r.man man page in current directory"
@@ -25,5 +25,8 @@ task Gof3r {
     get: "download from S3"
     put: "upload to S3"
     rm: "delete from S3"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

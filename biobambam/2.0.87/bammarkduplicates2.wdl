@@ -4,4 +4,7 @@ task Bammarkduplicates2 {
   command <<<
     bammarkduplicates2
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

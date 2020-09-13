@@ -1,47 +1,55 @@
 class: CommandLineTool
 id: ../../../convert_reference.cwl
 inputs:
-- id: name_target_contig
+- id: in_name_target_contig
   doc: Name of target contig
   type: string
   inputBinding:
     prefix: -t
-- id: print_more_information
+- id: in_print_more_information
   doc: Print more information
   type: boolean
   inputBinding:
     prefix: -v
-- id: msa_input_contigs
+- id: in_msa_input_contigs
   doc: MSA input of all contigs aligned
   type: string
   inputBinding:
     prefix: -m
-- id: input_sambam_file
+- id: in_input_sambam_file
   doc: Input SAM/BAM file
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: output_sambam_file
+- id: in_output_sambam_file
   doc: Output SAM/BAM file
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: insert_silent_padding
+- id: in_insert_padding_states
   doc: Insert silent padding states 'P' in CIGAR
   type: boolean
   inputBinding:
     prefix: -p
-- id: use_x_m
+- id: in_use_x_m
   doc: Use X/= instead of M for Match/Mismatch states
   type: boolean
   inputBinding:
     prefix: -X
-- id: hardclip_bases_default
+- id: in_hardclip_bases_softclipping
   doc: Hard-clip bases instead of the default soft-clipping
   type: boolean
   inputBinding:
     prefix: -H
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_sambam_file
+  doc: Output SAM/BAM file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_sambam_file)
 cwlVersion: v1.1
 baseCommand:
 - convert_reference

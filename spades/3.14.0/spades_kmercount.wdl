@@ -1,15 +1,15 @@
 version 1.0
 
-task SpadesKmercount {
+task Spadeskmercount {
   input {
-    String? km_er
+    Int? km_er
     String? dataset
     String? threads
-    String? workdir
-    String? bufsize
+    Directory? workdir
+    Int? bufsize
   }
   command <<<
-    spades-kmercount \
+    spades_kmercount \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
       ~{if defined(dataset) then ("--dataset " +  '"' + dataset + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
@@ -22,5 +22,8 @@ task SpadesKmercount {
     threads: "# of threads to use"
     workdir: "Working directory to use"
     bufsize: "Sorting buffer size, per thread"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task ValidateMummer {
   input {
-    String? min_contig
-    String? similar
+    Int? min_contig
+    Float? similar
     String validate_contigs_mummer
     String ref_dot_fa
     String contigs_dot_fa_dot
@@ -22,5 +22,8 @@ task ValidateMummer {
     validate_contigs_mummer: ""
     ref_dot_fa: ""
     contigs_dot_fa_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

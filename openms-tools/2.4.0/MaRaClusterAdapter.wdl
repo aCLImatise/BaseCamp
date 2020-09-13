@@ -6,11 +6,11 @@ task MaRaClusterAdapter {
     File? id_in
     File? out
     File? consensus_out
-    String? p_cut
-    String? min_cluster_size
+    Int? p_cut
+    Int? min_cluster_size
     String? mar_a_cluster_executable
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -26,7 +26,7 @@ task MaRaClusterAdapter {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                           Input file(s) (valid formats: 'mzML', 'mgf')"
@@ -40,5 +40,9 @@ task MaRaClusterAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

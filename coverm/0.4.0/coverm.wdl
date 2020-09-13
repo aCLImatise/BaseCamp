@@ -4,4 +4,7 @@ task Coverm {
   command <<<
     coverm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

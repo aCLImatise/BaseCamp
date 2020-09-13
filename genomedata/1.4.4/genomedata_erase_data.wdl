@@ -1,20 +1,20 @@
 version 1.0
 
-task GenomedataEraseData {
+task Genomedataerasedata {
   input {
     Array[String] track_name
     Boolean? verbose
-    String gd_archive
   }
   command <<<
-    genomedata-erase-data \
-      ~{gd_archive} \
+    genomedata_erase_data \
       ~{if defined(track_name) then ("--trackname " +  '"' + track_name + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     track_name: "tracknames to erase"
     verbose: "Print status updates and diagnostic messages"
-    gd_archive: "genomedata archive"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

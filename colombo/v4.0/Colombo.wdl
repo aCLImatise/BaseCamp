@@ -4,4 +4,7 @@ task Colombo {
   command <<<
     Colombo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

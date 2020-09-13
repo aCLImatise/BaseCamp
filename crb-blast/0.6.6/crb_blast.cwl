@@ -1,38 +1,51 @@
 class: CommandLineTool
 id: ../../../crb_blast.cwl
 inputs:
-- id: query
+- id: in_query
   doc: query fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --query
-- id: target
+- id: in_target
   doc: target fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --target
-- id: evalue
-  doc: 'e-value cut off for BLAST. Format 1e-5 (default: 1.0e-05)'
-  type: string
+- id: in_evalue
+  doc: "e-value cut off for BLAST. Format 1e-5 (default:\n1.0e-05)"
+  type: double
   inputBinding:
     prefix: --evalue
-- id: threads
+- id: in_threads
   doc: 'number of threads to run BLAST with (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: output
+- id: in_output
   doc: output file as tsv
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: split
-  doc: split the fasta files into chunks and run multiple blast jobs and then combine
-    them.
+- id: in_split
+  doc: "split the fasta files into chunks and run multiple blast\njobs and then combine\
+    \ them."
   type: boolean
   inputBinding:
     prefix: --split
-outputs: []
+- id: in_options
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output file as tsv
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - crb-blast

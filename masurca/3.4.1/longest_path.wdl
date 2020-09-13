@@ -2,20 +2,20 @@ version 1.0
 
 task LongestPath {
   input {
-    String? threads
+    Int? threads
     File? output_file
     File? dot
-    String? overlap_play
-    String? errors
+    Int? overlap_play
+    Int? errors
     Boolean? bases
     File? unit_igs_lengths
     File? unit_igs_sequences
-    String? k_mer
-    String? density
-    String? min_length
+    Int? k_mer
+    Float? density
+    Int? min_length
     String? tiling
     String? trim
-    String longest_path_overlap_graph_two_cmdline
+    Int longest_path_overlap_graph_two_cmdline
     String coords
   }
   command <<<
@@ -27,7 +27,7 @@ task LongestPath {
       ~{if defined(dot) then ("--dot " +  '"' + dot + '"') else ""} \
       ~{if defined(overlap_play) then ("--overlap-play " +  '"' + overlap_play + '"') else ""} \
       ~{if defined(errors) then ("--errors " +  '"' + errors + '"') else ""} \
-      ~{true="--bases" false="" bases} \
+      ~{if (bases) then "--bases" else ""} \
       ~{if defined(unit_igs_lengths) then ("--unitigs-lengths " +  '"' + unit_igs_lengths + '"') else ""} \
       ~{if defined(unit_igs_sequences) then ("--unitigs-sequences " +  '"' + unit_igs_sequences + '"') else ""} \
       ~{if defined(k_mer) then ("--k-mer " +  '"' + k_mer + '"') else ""} \
@@ -52,5 +52,9 @@ task LongestPath {
     trim: "|match|branch             How to trim mega-read (none)"
     longest_path_overlap_graph_two_cmdline: ""
     coords: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

@@ -4,4 +4,7 @@ task Neighbor {
   command <<<
     neighbor
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

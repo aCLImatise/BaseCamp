@@ -2,25 +2,25 @@ version 1.0
 
 task DASqv {
   input {
-    Boolean? v
-    Boolean? h
     Boolean? c
-    Int? var_3
-    Int var_4
+    Boolean? h
+    Boolean? v
+    Int? var_int
   }
   command <<<
     DASqv \
-      ~{var_3} \
-      ~{var_4} \
-      ~{true="-v" false="" v} \
-      ~{true="-H" false="" h} \
-      ~{true="-c" false="" c}
+      ~{var_int} \
+      ~{if (c) then "-c" else ""} \
+      ~{if (h) then "-H" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    v: ""
-    h: ""
     c: ""
-    var_3: ""
-    var_4: ""
+    h: ""
+    v: ""
+    var_int: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

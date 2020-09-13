@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../sonicparanoid_set_mmseqs2.cwl
 inputs:
-- id: mm_seqs_path
+- id: in_mm_seqs_path
   doc: The path to the MMseqs2 binary file.
-  type: string
+  type: File
   inputBinding:
     prefix: --mmseqs-path
-- id: debug
+- id: in_debug
   doc: Output debug information.
   type: boolean
   inputBinding:
     prefix: --debug
-- id: o
+- id: in_o
   doc: ''
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sonicparanoid-set-mmseqs2

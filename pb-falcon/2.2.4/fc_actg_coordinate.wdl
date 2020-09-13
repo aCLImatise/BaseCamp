@@ -4,4 +4,7 @@ task FcActgCoordinate {
   command <<<
     fc_actg_coordinate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Chain2dim {
   command <<<
     chain2dim
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

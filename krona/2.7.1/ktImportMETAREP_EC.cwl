@@ -1,20 +1,23 @@
 class: CommandLineTool
 id: ../../../ktImportMETAREP_EC.cwl
 inputs:
-- id: meta_rep_folder
-  doc: Unpacked METAREP data folder. By default, separate datasets will be created
-    for each input (see [-c]).
+- id: in_meta_rep_folder
+  doc: "Unpacked METAREP data folder. By default, separate datasets\nwill be created\
+    \ for each input (see [-c])."
   type: string
   inputBinding:
     position: 0
-- id: name
-  doc: A name to show in the list of datasets in the Krona chart (if multiple input
-    files are present and [-c] is not specified). By default, the basename of the
-    file will be used. _________
+- id: in_name
+  doc: "A name to show in the list of datasets in the Krona chart\n(if multiple input\
+    \ files are present and [-c] is not\nspecified). By default, the basename of the\
+    \ file will be\nused.\n_________"
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ktImportMETAREP-EC

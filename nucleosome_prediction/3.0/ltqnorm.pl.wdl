@@ -1,7 +1,10 @@
 version 1.0
 
-task Ltqnorm.pl.bak {
+task Ltqnormpl {
   command <<<
-    ltqnorm.pl.bak
+    ltqnorm_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

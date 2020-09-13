@@ -1,7 +1,10 @@
 version 1.0
 
-task GffutilsCliRegion {
+task GffutilscliRegion {
   command <<<
-    gffutils-cli region
+    gffutils_cli region
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

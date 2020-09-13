@@ -2,7 +2,7 @@ version 1.0
 
 task OverlapImport {
   input {
-    String? path_valid_sequence
+    File? path_valid_sequence
     File? output_file_name
     String? output_overlap_store
     Boolean? coords
@@ -13,9 +13,9 @@ task OverlapImport {
     Boolean? obt
     Boolean? utg
     String? random
-    String? a_read_ids_will_y
-    String? b_read_ids_will_y
-    String ascii_ovl_file_input_dot
+    String? read_ids_will
+    String? b_read_ids
+    File ascii_ovl_file_input_dot
   }
   command <<<
     overlapImport \
@@ -23,16 +23,16 @@ task OverlapImport {
       ~{if defined(path_valid_sequence) then ("-S " +  '"' + path_valid_sequence + '"') else ""} \
       ~{if defined(output_file_name) then ("-o " +  '"' + output_file_name + '"') else ""} \
       ~{if defined(output_overlap_store) then ("-O " +  '"' + output_overlap_store + '"') else ""} \
-      ~{true="-coords" false="" coords} \
-      ~{true="-hangs" false="" hangs} \
-      ~{true="-unaligned" false="" unaligned} \
-      ~{true="-paf" false="" paf} \
-      ~{true="-raw" false="" raw} \
-      ~{true="-obt" false="" obt} \
-      ~{true="-utg" false="" utg} \
+      ~{if (coords) then "-coords" else ""} \
+      ~{if (hangs) then "-hangs" else ""} \
+      ~{if (unaligned) then "-unaligned" else ""} \
+      ~{if (paf) then "-paf" else ""} \
+      ~{if (raw) then "-raw" else ""} \
+      ~{if (obt) then "-obt" else ""} \
+      ~{if (utg) then "-utg" else ""} \
       ~{if defined(random) then ("-random " +  '"' + random + '"') else ""} \
-      ~{if defined(a_read_ids_will_y) then ("-a " +  '"' + a_read_ids_will_y + '"') else ""} \
-      ~{if defined(b_read_ids_will_y) then ("-b " +  '"' + b_read_ids_will_y + '"') else ""}
+      ~{if defined(read_ids_will) then ("-a " +  '"' + read_ids_will + '"') else ""} \
+      ~{if defined(b_read_ids) then ("-b " +  '"' + b_read_ids + '"') else ""}
   >>>
   parameter_meta {
     path_valid_sequence: "path to valid sequence store"
@@ -46,8 +46,12 @@ task OverlapImport {
     obt: "corrected reads"
     utg: "trimmed reads"
     random: "create N random overlaps, for store testing"
-    a_read_ids_will_y: "A read IDs will be between x and y"
-    b_read_ids_will_y: "B read IDs will be between x and y"
+    read_ids_will: "A read IDs will be between x and y"
+    b_read_ids: "B read IDs will be between x and y"
     ascii_ovl_file_input_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

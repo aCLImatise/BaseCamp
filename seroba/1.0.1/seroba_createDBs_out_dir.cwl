@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../seroba_createDBs_out_dir.cwl
 inputs:
-- id: se_rob_a
+- id: in_se_rob_a
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: created_bs
+- id: in_created_bs
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: database_dir
+- id: in_database_dir
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: km_er_size
+- id: in_km_er_size
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - seroba

@@ -1,141 +1,149 @@
 class: CommandLineTool
 id: ../../../MetaProSIP.cwl
 inputs:
-- id: in_mzm_l
+- id: in_in_mzm_l
   doc: "*                  Centroided MS1 data (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -in_mzML
-- id: in_fast_a
+- id: in_in_fast_a
   doc: "*                 Protein sequence database (valid formats: 'fasta')"
   type: File
   inputBinding:
     prefix: -in_fasta
-- id: out_csv
+- id: in_out_csv
   doc: "*                  Column separated file with feature fitting result. (valid\
     \ formats: 'csv')"
   type: File
   inputBinding:
     prefix: -out_csv
-- id: out_peptide_centric_csv
+- id: in_out_peptide_centric_csv
   doc: "*  Column separated file with peptide centric result. (valid formats: 'csv')"
   type: File
   inputBinding:
     prefix: -out_peptide_centric_csv
-- id: in_feature_xml
+- id: in_in_feature_xml
   doc: "*            Feature data annotated with identifications (IDMapper) (valid\
     \ formats: 'featureXML')"
   type: File
   inputBinding:
     prefix: -in_featureXML
-- id: r_executable
+- id: in_r_executable
   doc: "Path to the R executable (default: 'R')"
   type: File
   inputBinding:
     prefix: -r_executable
-- id: mz_tolerance_ppm
+- id: in_mz_tolerance_ppm
   doc: "Tolerance in ppm (default: '10')"
-  type: string
+  type: long
   inputBinding:
     prefix: -mz_tolerance_ppm
-- id: rt_tolerance_s
+- id: in_rt_tolerance_s
   doc: "Rolerance window around feature rt for XIC extraction (default: '30')"
-  type: string
+  type: long
   inputBinding:
     prefix: -rt_tolerance_s
-- id: intensity_threshold
+- id: in_intensity_threshold
   doc: "Intensity threshold to collect peaks in the MS1 spectrum. (default: '10')"
-  type: string
+  type: long
   inputBinding:
     prefix: -intensity_threshold
-- id: correlation_threshold
+- id: in_correlation_threshold
   doc: "Correlation threshold for reporting a RIA (default: '0.7')"
-  type: string
+  type: double
   inputBinding:
     prefix: -correlation_threshold
-- id: xic_threshold
+- id: in_xic_threshold
   doc: "Minimum correlation to mono-isotopic peak for retaining a higher isotopic\
     \ peak. If featureXML from reference file is used it should be disabled (set to\
     \ -1) as no mono-isotopic peak is expected to be present. (default: '0.7')"
-  type: string
+  type: File
   inputBinding:
     prefix: -xic_threshold
-- id: decomposition_threshold
+- id: in_decomposition_threshold
   doc: "Minimum R-squared of decomposition that must be achieved for a peptide to\
     \ be reported. (default: '0.7')"
-  type: string
+  type: double
   inputBinding:
     prefix: -decomposition_threshold
-- id: weight_merge_window
+- id: in_weight_merge_window
   doc: "Decomposition coefficients within +- this rate window will be combined (default:\
     \ '5')"
-  type: string
+  type: long
   inputBinding:
     prefix: -weight_merge_window
-- id: plot_extension
+- id: in_plot_extension
   doc: "Extension used for plots (png|svg|pdf). (default: 'png' valid: 'png', 'svg',\
     \ 'pdf')"
   type: string
   inputBinding:
     prefix: -plot_extension
-- id: qc_output_directory
+- id: in_qc_output_directory
   doc: Output directory for the quality report
   type: Directory
   inputBinding:
     prefix: -qc_output_directory
-- id: labeling_element
+- id: in_labeling_element
   doc: "Which element (single letter code) is labeled. (default: 'C' valid: 'C', 'N',\
     \ 'H', 'O')"
   type: string
   inputBinding:
     prefix: -labeling_element
-- id: use_unassigned_ids
+- id: in_use_unassigned_ids
   doc: Include identifications not assigned to a feature in pattern detection.
   type: boolean
   inputBinding:
     prefix: -use_unassigned_ids
-- id: use_averag_in_e_ids
+- id: in_use_averag_in_e_ids
   doc: Use averagine peptides as model to perform pattern detection on unidentified
     peptides.
   type: boolean
   inputBinding:
     prefix: -use_averagine_ids
-- id: report_natural_peptides
+- id: in_report_natural_peptides
   doc: Whether purely natural peptides are reported in the quality report.
   type: boolean
   inputBinding:
     prefix: -report_natural_peptides
-- id: filter_mono_isotopic
+- id: in_filter_mono_isotopic
   doc: Try to filter out mono-isotopic patterns to improve detection of low RIA patterns
   type: boolean
   inputBinding:
     prefix: -filter_monoisotopic
-- id: cluster
+- id: in_cluster
   doc: Perform grouping
   type: boolean
   inputBinding:
     prefix: -cluster
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_qc_output_directory
+  doc: Output directory for the quality report
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_qc_output_directory)
 cwlVersion: v1.1
 baseCommand:
 - MetaProSIP

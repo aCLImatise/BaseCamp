@@ -4,4 +4,7 @@ task Bamfilterrefid {
   command <<<
     bamfilterrefid
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

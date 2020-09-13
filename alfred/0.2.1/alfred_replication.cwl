@@ -1,62 +1,70 @@
 class: CommandLineTool
 id: ../../../alfred_replication.cwl
 inputs:
-- id: arg_min_quality
+- id: in_arg_min_quality
   doc: '[ --qual ] arg (=1)          min. mapping quality'
   type: boolean
   inputBinding:
     prefix: -q
-- id: arg_sliding_size
+- id: in_arg_sliding_size
   doc: '[ --window ] arg (=50000)    sliding window size'
   type: boolean
   inputBinding:
     prefix: -w
-- id: arg_window_size
+- id: in_arg_window_offset
   doc: '[ --step ] arg (=1000)       window offset (step size)'
   type: boolean
   inputBinding:
     prefix: -s
-- id: arg_reference_fasta
+- id: in_arg_reference_fasta
   doc: '[ --reference ] arg          reference fasta file (required)'
   type: boolean
   inputBinding:
     prefix: -r
-- id: arg_pref_output
+- id: in_arg_pref_output
   doc: '[ --outprefix ] arg (=pref)  output file prefix'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: gone_b_dot_bam
+- id: in_gone_b_dot_bam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: s_one_dot_bam
+- id: in_s_one_dot_bam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: s_two_dot_bam
+- id: in_s_two_dot_bam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-- id: s_three_dot_bam
+- id: in_s_three_dot_bam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 3
-- id: s_four_dot_bam
+- id: in_s_four_dot_bam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 4
-- id: g_two_dot_bam
+- id: in_g_two_dot_bam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_pref_output
+  doc: '[ --outprefix ] arg (=pref)  output file prefix'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_pref_output)
 cwlVersion: v1.1
 baseCommand:
 - alfred

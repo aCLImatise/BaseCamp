@@ -1,9 +1,13 @@
-&id003 !Command
+&id001 !Command
+command:
+- delly
+- filter
 positional:
 - !Positional
-  description: ''
+  description: '-e [ --rddel ] arg (=0.800000012)     max. read-depth ratio of carrier
+    vs. '
   position: 0
-  name: input.bcf
+  name: non-carriers
   optional: false
 named:
 - !Flag
@@ -49,8 +53,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --samples ] arg                  Two-column sample file listing
-    sample  name and tumor or control'
+  description: "[ --samples ] arg                  Two-column sample file listing\
+    \ sample\nname and tumor or control"
   synonyms:
   - -s
   args: !EmptyFlagArg {}
@@ -62,43 +66,124 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --controlcontamination ] arg (=0) max. fractional ALT support in
-    control'
+  description: "[ --controlcontamination ] arg (=0)\nmax. fractional ALT support in\
+    \ control"
   synonyms:
   - -c
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --gq ] arg (=15)                 min. median GQ for carriers and  non-carriers'
+  description: '[ --gq ] arg (=15)                 min. median GQ for carriers and'
   synonyms:
   - -q
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --rddel ] arg (=0.800000012)     max. read-depth ratio of carrier
-    vs.  non-carrier for a deletion'
-  synonyms:
-  - -e
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[ --rddup ] arg (=1.20000005)      min. read-depth ratio of carrier
-    vs.  non-carrier for a duplication'
+  description: "[ --rddup ] arg (=1.20000005)      min. read-depth ratio of carrier\
+    \ vs.\nnon-carrier for a duplication\n"
   synonyms:
   - -u
   args: !EmptyFlagArg {}
   optional: true
-command:
-- delly
-- filter
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - delly
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - delly
+    - merge
+    positional:
+    - !Positional
+      description: -a [ --vaf ] arg (=0.150000006)       min. fractional ALT support
+      position: 0
+      name: files
+      optional: false
+    named:
+    - !Flag
+      description: '[ --outfile ] arg (="sv.bcf")      Merged SV BCF output file'
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '[ --chunks ] arg (=500)            max. chunk size to merge groups
+        of BCF'
+      synonyms:
+      - -u
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '[ --coverage ] arg (=10)           min. coverage'
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '[ --minsize ] arg (=0)             min. SV size'
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '[ --maxsize ] arg (=1000000)       max. SV size'
+      synonyms:
+      - -n
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '[ --precise ]                      Filter sites for PRECISE'
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '[ --pass ]                         Filter sites for PASS'
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '[ --bp-offset ] arg (=1000)        max. breakpoint offset'
+      synonyms:
+      - -b
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[ --rec-overlap ] arg (=0.800000012)\nmin. reciprocal overlap\n"
+      synonyms:
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nUsage: delly merge [OPTIONS] [<sample1.bcf> <sample2.bcf> ... |\
+      \ <list_of_bcf_files.txt>]\n\nGeneric options:\n  -? [ --help ]            \
+      \             show help message\n  -o [ --outfile ] arg (=\"sv.bcf\")      Merged\
+      \ SV BCF output file\n  -u [ --chunks ] arg (=500)            max. chunk size\
+      \ to merge groups of BCF \n                                        files\n \
+      \ -a [ --vaf ] arg (=0.150000006)       min. fractional ALT support\n  -v [\
+      \ --coverage ] arg (=10)           min. coverage\n  -m [ --minsize ] arg (=0)\
+      \             min. SV size\n  -n [ --maxsize ] arg (=1000000)       max. SV\
+      \ size\n  -c [ --precise ]                      Filter sites for PRECISE\n \
+      \ -p [ --pass ]                         Filter sites for PASS\n\nOverlap options:\n\
+      \  -b [ --bp-offset ] arg (=1000)        max. breakpoint offset\n  -r [ --rec-overlap\
+      \ ] arg (=0.800000012)\n                                        min. reciprocal\
+      \ overlap\n\n"
+    generated_using: &id003
+    - --help
+  - !Command
+    command:
+    - delly
+    - call
     positional:
     - !Positional
       description: ''
@@ -107,8 +192,8 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: '[ --svtype ] arg (=ALL)        SV type to compute [DEL, INS, DUP,
-        INV,  BND, ALL]'
+      description: "[ --svtype ] arg (=ALL)        SV type to compute [DEL, INS, DUP,\
+        \ INV,\nBND, ALL]"
       synonyms:
       - -t
       args: !EmptyFlagArg {}
@@ -144,8 +229,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: '[ --mad-cutoff ] arg (=9)      insert size cutoff, median+s*MAD
-        (deletions only)'
+      description: "[ --mad-cutoff ] arg (=9)      insert size cutoff, median+s*MAD\
+        \ (deletions\nonly)"
       synonyms:
       - -s
       args: !EmptyFlagArg {}
@@ -187,11 +272,9 @@ parent: &id001 !Command
       - -d
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - delly
-    - call
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -211,9 +294,11 @@ parent: &id001 !Command
       \  -u [ --geno-qual ] arg (=5)       min. mapping quality for genotyping\n \
       \ -d [ --dump ] arg                 gzipped output file for SV-reads (optional)\n\
       \n"
-    generated_using: &id002
-    - --help
+    generated_using: *id003
   - !Command
+    command:
+    - delly
+    - lr
     positional:
     - !Positional
       description: ''
@@ -222,8 +307,8 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: '[ --svtype ] arg (=ALL)        SV type to compute [DEL, INS, DUP,
-        INV,  BND, ALL]'
+      description: "[ --svtype ] arg (=ALL)        SV type to compute [DEL, INS, DUP,\
+        \ INV,\nBND, ALL]"
       synonyms:
       - -t
       args: !EmptyFlagArg {}
@@ -294,11 +379,9 @@ parent: &id001 !Command
       - -d
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - delly
-    - lr
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -316,94 +399,8 @@ parent: &id001 !Command
       \ VCF/BCF file for genotyping\n  -u [ --geno-qual ] arg (=5)       min. mapping\
       \ quality for genotyping\n  -d [ --dump ] arg                 gzipped output\
       \ file for SV-reads\n\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: '[ --outfile ] arg (="sv.bcf")      Merged SV BCF output file'
-      synonyms:
-      - -o
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --chunks ] arg (=500)            max. chunk size to merge groups
-        of BCF  files'
-      synonyms:
-      - -u
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --vaf ] arg (=0.150000006)       min. fractional ALT support'
-      synonyms:
-      - -a
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --coverage ] arg (=10)           min. coverage'
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --minsize ] arg (=0)             min. SV size'
-      synonyms:
-      - -m
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --maxsize ] arg (=1000000)       max. SV size'
-      synonyms:
-      - -n
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --precise ]                      Filter sites for PRECISE'
-      synonyms:
-      - -c
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --pass ]                         Filter sites for PASS'
-      synonyms:
-      - -p
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --bp-offset ] arg (=1000)        max. breakpoint offset'
-      synonyms:
-      - -b
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --rec-overlap ] arg (=0.800000012) min. reciprocal overlap'
-      synonyms:
-      - -r
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - delly
-    - merge
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "\nUsage: delly merge [OPTIONS] [<sample1.bcf> <sample2.bcf> ... |\
-      \ <list_of_bcf_files.txt>]\n\nGeneric options:\n  -? [ --help ]            \
-      \             show help message\n  -o [ --outfile ] arg (=\"sv.bcf\")      Merged\
-      \ SV BCF output file\n  -u [ --chunks ] arg (=500)            max. chunk size\
-      \ to merge groups of BCF \n                                        files\n \
-      \ -a [ --vaf ] arg (=0.150000006)       min. fractional ALT support\n  -v [\
-      \ --coverage ] arg (=10)           min. coverage\n  -m [ --minsize ] arg (=0)\
-      \             min. SV size\n  -n [ --maxsize ] arg (=1000000)       max. SV\
-      \ size\n  -c [ --precise ]                      Filter sites for PRECISE\n \
-      \ -p [ --pass ]                         Filter sites for PASS\n\nOverlap options:\n\
-      \  -b [ --bp-offset ] arg (=1000)        max. breakpoint offset\n  -r [ --rec-overlap\
-      \ ] arg (=0.800000012)\n                                        min. reciprocal\
-      \ overlap\n\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -417,8 +414,9 @@ parent: &id001 !Command
     \    merge        merge structural variants across VCF/BCF files and within a\
     \ single VCF/BCF file\n    filter       filter somatic or germline structural\
     \ variants\n\n\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -440,4 +438,4 @@ help_text: "\nUsage: delly filter [OPTIONS] <input.bcf>\n\nGeneric options:\n  -
   \                     non-carrier for a deletion\n  -u [ --rddup ] arg (=1.20000005)\
   \      min. read-depth ratio of carrier vs. \n                                 \
   \       non-carrier for a duplication\n\n"
-generated_using: *id002
+generated_using: *id003

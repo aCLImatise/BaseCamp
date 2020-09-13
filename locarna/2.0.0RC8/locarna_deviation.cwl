@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../locarna_deviation.cwl
 inputs:
-- id: deviation
+- id: in_deviation
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: aln_file
+- id: in_aln_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: ref_aln_file
+- id: in_ref_aln_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - locarna_deviation

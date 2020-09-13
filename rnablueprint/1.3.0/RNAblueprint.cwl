@@ -1,59 +1,68 @@
 class: CommandLineTool
 id: ../../../RNAblueprint.cwl
 inputs:
-- id: _be_verbose
+- id: in__be_verbose
   doc: '[ --verbose ]             be verbose'
   type: boolean
   inputBinding:
     prefix: -v
-- id: _verbose_debugging
+- id: in__verbose_debugging
   doc: '[ --debug ]               be verbose for debugging'
   type: boolean
   inputBinding:
     prefix: -d
-- id: _optional
-  doc: '[ --in ] arg              input file which contains the structures,  sequence
-    constraints and the start sequence  [string] structures: secondary structures
-    in dot-bracket  notation. one structure per input  line sequence constraints:
-    Permanent sequence  constraints in IUPAC  notation [ACGTUWSMKRYBDHVN ] (optional)
-    start sequence:  A initial RNA sequence to start the sampling from [ACGU]  (optional)'
+- id: in_arg_input_file
+  doc: "[ --in ] arg              input file which contains the structures,\nsequence\
+    \ constraints and the start sequence\n[string]\nstructures: secondary structures\
+    \ in dot-bracket\nnotation. one structure per input\nline\nsequence constraints:\
+    \ Permanent sequence\nconstraints in IUPAC\nnotation [ACGTUWSMKRYBDHVN\n] (optional)\n\
+    start sequence:  A initial RNA sequence to start\nthe sampling from [ACGU]\n(optional)"
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
-  doc: '[ --out ] arg             output file for writing the sequences (default:  stdout)
-    [string]'
-  type: boolean
+- id: in_arg_output_file
+  doc: "[ --out ] arg             output file for writing the sequences (default:\n\
+    stdout) [string]"
+  type: File
   inputBinding:
     prefix: -o
-- id: g
-  doc: '[ --graphml ] arg         write a GraphML file representing the dependency
-    graph to the given filename (optional) [string]'
+- id: in_arg_write_file
+  doc: "[ --graphml ] arg         write a GraphML file representing the dependency\n\
+    graph to the given filename (optional) [string]"
   type: boolean
   inputBinding:
     prefix: -g
-- id: sample_stochastic_sampling
-  doc: '[ --mode ] arg (=sample)  mode for sequence generation [string]: sample: stochastic
-    sampling of all positions  (default) sample-clocal: Only sample one connected  component
-    at a time starting from an initial sequence sample-plocal: Sample only single
-    paths starting from an initial sequence clocal-neighbors: Only find neighboring  sequences
-    to the initial start sequence by sampling one  connected component only plocal-neighbors:
-    Only find neighboring  sequences to the initial start sequence by sampling one
-    path  only'
+- id: in_sample_stochastic_sampling
+  doc: "[ --mode ] arg (=sample)  mode for sequence generation [string]:\nsample:\
+    \ stochastic sampling of all positions\n(default)\nsample-clocal: Only sample\
+    \ one connected\ncomponent at a time starting from\nan initial sequence\nsample-plocal:\
+    \ Sample only single paths starting\nfrom an initial sequence\nclocal-neighbors:\
+    \ Only find neighboring\nsequences to the initial start\nsequence by sampling\
+    \ one\nconnected component only\nplocal-neighbors: Only find neighboring\nsequences\
+    \ to the initial start\nsequence by sampling one path\nonly"
   type: boolean
   inputBinding:
     prefix: -m
-- id: s
+- id: in_s
   doc: '[ --seed ] arg            random number generator seed [unsigned long]'
   type: boolean
   inputBinding:
     prefix: -s
-- id: n
+- id: in_n
   doc: '[ --num ] arg (=10)       number of designs (default: 10) [unsigned int]'
   type: boolean
   inputBinding:
     prefix: -n
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_output_file
+  doc: "[ --out ] arg             output file for writing the sequences (default:\n\
+    stdout) [string]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_file)
 cwlVersion: v1.1
 baseCommand:
 - RNAblueprint

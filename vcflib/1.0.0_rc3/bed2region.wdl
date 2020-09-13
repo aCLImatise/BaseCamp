@@ -4,4 +4,7 @@ task Bed2region {
   command <<<
     bed2region
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

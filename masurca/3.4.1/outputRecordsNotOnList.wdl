@@ -4,4 +4,7 @@ task OutputRecordsNotOnList {
   command <<<
     outputRecordsNotOnList
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

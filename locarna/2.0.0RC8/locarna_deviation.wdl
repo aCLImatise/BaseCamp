@@ -3,8 +3,8 @@ version 1.0
 task LocarnaDeviation {
   input {
     String deviation
-    String aln_file
-    String ref_aln_file
+    File aln_file
+    File ref_aln_file
   }
   command <<<
     locarna_deviation \
@@ -16,5 +16,8 @@ task LocarnaDeviation {
     deviation: ""
     aln_file: ""
     ref_aln_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,24 +4,24 @@ task MyriMatchAdapter {
   input {
     File? in
     File? out
-    String? precursor_mass_tolerance
+    Int? precursor_mass_tolerance
     String? precursor_mass_tolerance_unit
     Boolean? precursor_mass_tolerance_avg
-    String? fragment_mass_tolerance
+    Float? fragment_mass_tolerance
     String? fragment_mass_tolerance_unit
-    String? database
-    String? fixed_modifications
-    String? variable_modifications
+    File? database
+    Int? fixed_modifications
+    Int? variable_modifications
     String? my_ri_match_executable
-    String? num_charge_states
-    String? tic_cut_off_percentage
-    String? max_dynamic_mods
-    String? max_result_rank
-    String? cleavage_rules
-    String? min_termini_cleavages
-    String? max_missed_cleavages
+    Int? num_charge_states
+    Float? tic_cut_off_percentage
+    Int? max_dynamic_mods
+    Int? max_result_rank
+    Int? cleavage_rules
+    Int? min_termini_cleavages
+    Int? max_missed_cleavages
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -31,7 +31,7 @@ task MyriMatchAdapter {
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(precursor_mass_tolerance) then ("-precursor_mass_tolerance " +  '"' + precursor_mass_tolerance + '"') else ""} \
       ~{if defined(precursor_mass_tolerance_unit) then ("-precursor_mass_tolerance_unit " +  '"' + precursor_mass_tolerance_unit + '"') else ""} \
-      ~{true="-precursor_mass_tolerance_avg" false="" precursor_mass_tolerance_avg} \
+      ~{if (precursor_mass_tolerance_avg) then "-precursor_mass_tolerance_avg" else ""} \
       ~{if defined(fragment_mass_tolerance) then ("-fragment_mass_tolerance " +  '"' + fragment_mass_tolerance + '"') else ""} \
       ~{if defined(fragment_mass_tolerance_unit) then ("-fragment_mass_tolerance_unit " +  '"' + fragment_mass_tolerance_unit + '"') else ""} \
       ~{if defined(database) then ("-database " +  '"' + database + '"') else ""} \
@@ -48,7 +48,7 @@ task MyriMatchAdapter {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                            Input file (valid formats: 'mzML')"
@@ -73,5 +73,9 @@ task MyriMatchAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

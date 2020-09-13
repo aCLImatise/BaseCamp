@@ -4,4 +4,7 @@ task Rangen {
   command <<<
     rangen
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

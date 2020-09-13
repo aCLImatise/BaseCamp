@@ -17,4 +17,7 @@ task ResetFragLibrary {
     bank_name: ""
     frag_id_dot_newlib_id: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

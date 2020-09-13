@@ -5,8 +5,8 @@ task GoalignRandom {
     Boolean? amino_acids
     Int? length
     Int? nb_seqs
-    String? out_align
-    String? align
+    File? out_align
+    File? align
     Boolean? auto_detect
     Boolean? clustal
     Boolean? ignore_identical
@@ -18,25 +18,23 @@ task GoalignRandom {
     Boolean? phylip
     Int? seed
     Int? threads
-    String? flags
   }
   command <<<
     goalign random \
-      ~{flags} \
-      ~{true="--amino-acids" false="" amino_acids} \
+      ~{if (amino_acids) then "--amino-acids" else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
       ~{if defined(nb_seqs) then ("--nb-seqs " +  '"' + nb_seqs + '"') else ""} \
       ~{if defined(out_align) then ("--out-align " +  '"' + out_align + '"') else ""} \
       ~{if defined(align) then ("--align " +  '"' + align + '"') else ""} \
-      ~{true="--auto-detect" false="" auto_detect} \
-      ~{true="--clustal" false="" clustal} \
-      ~{true="--ignore-identical" false="" ignore_identical} \
-      ~{true="--input-strict" false="" input_strict} \
-      ~{true="--nexus" false="" nexus} \
-      ~{true="--no-block" false="" no_block} \
-      ~{true="--one-line" false="" one_line} \
-      ~{true="--output-strict" false="" output_strict} \
-      ~{true="--phylip" false="" phylip} \
+      ~{if (auto_detect) then "--auto-detect" else ""} \
+      ~{if (clustal) then "--clustal" else ""} \
+      ~{if (ignore_identical) then "--ignore-identical" else ""} \
+      ~{if (input_strict) then "--input-strict" else ""} \
+      ~{if (nexus) then "--nexus" else ""} \
+      ~{if (no_block) then "--no-block" else ""} \
+      ~{if (one_line) then "--one-line" else ""} \
+      ~{if (output_strict) then "--output-strict" else ""} \
+      ~{if (phylip) then "--phylip" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
@@ -44,8 +42,8 @@ task GoalignRandom {
     amino_acids: "Aminoacid sequences (otherwise, nucleotides)"
     length: "Length of sequences to generate (default 100)"
     nb_seqs: "Number of sequences to generate (default 10)"
-    out_align: "Random alignment output file (default \"stdout\")"
-    align: "Alignment input file (default \"stdin\")"
+    out_align: "Random alignment output file (default \\\"stdout\\\")"
+    align: "Alignment input file (default \\\"stdin\\\")"
     auto_detect: "Auto detects input format (overrides -p, -x and -u)"
     clustal: "Alignment is in clustal? default fasta"
     ignore_identical: "Ignore duplicated sequences that have the same name and same sequences"
@@ -57,6 +55,9 @@ task GoalignRandom {
     phylip: "Alignment is in phylip? default fasta"
     seed: "Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)"
     threads: "Number of threads (default 1)"
-    flags: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_align = "${in_out_align}"
   }
 }

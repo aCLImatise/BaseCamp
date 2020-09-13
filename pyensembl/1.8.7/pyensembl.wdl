@@ -6,9 +6,12 @@ task Pyensembl {
   }
   command <<<
     pyensembl \
-      ~{true="--overwrite" false="" overwrite}
+      ~{if (overwrite) then "--overwrite" else ""}
   >>>
   parameter_meta {
-    overwrite: "Force download and indexing even if files already exist locally"
+    overwrite: "Force download and indexing even if files already\\nexist locally\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

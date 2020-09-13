@@ -4,4 +4,7 @@ task SimuReads {
   command <<<
     simuReads
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

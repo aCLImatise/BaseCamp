@@ -1,108 +1,118 @@
 class: CommandLineTool
 id: ../../../rgt_viz_projection.cwl
 inputs:
-- id: file_name_reference
-  doc: 'The file name of the reference Experimental Matrix. Multiple references are
-    acceptable. (default: None)'
+- id: in_file_name_reference
+  doc: "The file name of the reference Experimental Matrix. Multiple\nreferences are\
+    \ acceptable. (default: None)"
   type: boolean
   inputBinding:
     prefix: -r
-- id: file_name_query
-  doc: 'The file name of the query Experimental Matrix. Multiple queries are acceptable.
-    (default: None)'
+- id: in_file_name_query
+  doc: "The file name of the query Experimental Matrix. Multiple\nqueries are acceptable.\
+    \ (default: None)"
   type: boolean
   inputBinding:
     prefix: -q
-- id: directory_name_output
-  doc: 'The directory name for the output files. For example, project name. (default:
-    None)'
-  type: boolean
+- id: in_directory_name_output
+  doc: "The directory name for the output files. For example, project\nname. (default:\
+    \ None)"
+  type: Directory
   inputBinding:
     prefix: -o
-- id: title_shown_default
-  doc: 'The title shown on the top of the plot and also the folder name. (default:
-    projection_test)'
+- id: in_title_shown_top
+  doc: "The title shown on the top of the plot and also the folder\nname. (default:\
+    \ projection_test)"
   type: boolean
   inputBinding:
     prefix: -t
-- id: group_data_optional
-  doc: "Group the data by any optional column (for example, 'cell') of experimental\
+- id: in_group_data_matrix
+  doc: "Group the data by any optional column (for example, 'cell') of\nexperimental\
     \ matrix, or None. (default: None)"
   type: boolean
   inputBinding:
     prefix: -g
-- id: color_data_optional
-  doc: "Color the data by any optional column (for example, 'cell') of experimental\
+- id: in_color_data_optional
+  doc: "Color the data by any optional column (for example, 'cell') of\nexperimental\
     \ matrix, or None. (default: regions)"
   type: boolean
   inputBinding:
     prefix: -c
-- id: bg
-  doc: 'Define a BED file as background. If not defined, the background is whole genome
-    according to the given organism. (default: None)'
+- id: in_bg
+  doc: "Define a BED file as background. If not defined, the\nbackground is whole\
+    \ genome according to the given organism.\n(default: None)"
   type: boolean
   inputBinding:
     prefix: -bg
-- id: union
-  doc: 'Take the union of references as background for binominal test. (default: False)'
+- id: in_union
+  doc: "Take the union of references as background for binominal test.\n(default:\
+    \ False)"
   type: boolean
   inputBinding:
     prefix: -union
-- id: organism
+- id: in_organism
   doc: 'Define the organism. (default: hg19)'
   type: boolean
   inputBinding:
     prefix: -organism
-- id: log
+- id: in_log
   doc: 'Set y axis of the plot in log scale. (default: False)'
   type: boolean
   inputBinding:
     prefix: -log
-- id: color
-  doc: 'Define the specific colors with the given column "color" in experimental matrix.
-    The color should be in the format of matplotlib.colors. For example, "r" for red,
-    "b" for blue, or "(100, 35, 138)" for RGB. (default: False)'
+- id: in_color
+  doc: "Define the specific colors with the given column \"color\" in\nexperimental\
+    \ matrix. The color should be in the format of\nmatplotlib.colors. For example,\
+    \ \"r\" for red, \"b\" for blue, or\n\"(100, 35, 138)\" for RGB. (default: False)"
   type: boolean
   inputBinding:
     prefix: -color
-- id: show
+- id: in_show
   doc: 'Show the figure in the screen. (default: False)'
   type: boolean
   inputBinding:
     prefix: -show
-- id: table
-  doc: 'Store the tables of the figure in text format. (default: False)'
+- id: in_table
+  doc: "Store the tables of the figure in text format. (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: -table
-- id: bed
-  doc: 'Output BED files for the regions of query which overlap the reference. (default:
-    False)'
+- id: in_bed
+  doc: "Output BED files for the regions of query which overlap the\nreference. (default:\
+    \ False)"
   type: boolean
   inputBinding:
     prefix: -bed
-- id: pw
+- id: in_pw
   doc: 'Define the width of single panel. (default: 5)'
   type: boolean
   inputBinding:
     prefix: -pw
-- id: ph
+- id: in_ph
   doc: 'Define the height of single panel. (default: 3)'
   type: boolean
   inputBinding:
     prefix: -ph
-- id: cfp
+- id: in_cfp
   doc: 'Define the cutoff of the proportion. (default: 0)'
   type: boolean
   inputBinding:
     prefix: -cfp
-- id: load
-  doc: Load the BED files later during processing, which saves memory usage when dealing
-    with large number of BED files.
+- id: in_load
+  doc: "Load the BED files later during processing, which saves memory\nusage when\
+    \ dealing with large number of BED files.\n"
   type: boolean
   inputBinding:
     prefix: -load
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_directory_name_output
+  doc: "The directory name for the output files. For example, project\nname. (default:\
+    \ None)"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_directory_name_output)
 cwlVersion: v1.1
 baseCommand:
 - rgt-viz

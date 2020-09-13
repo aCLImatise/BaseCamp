@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../krakenhll_translate.cwl
 inputs:
-- id: db
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --db
-- id: mpa_format
+- id: in_mpa_format
   doc: ''
   type: boolean
   inputBinding:
     prefix: --mpa-format
-outputs: []
+- id: in_db
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --db
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - krakenhll-translate

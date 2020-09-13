@@ -1,50 +1,58 @@
 class: CommandLineTool
 id: ../../../mtsv_signature.cwl
 inputs:
-- id: family
-  doc: Enable to search for a common FAMILY among hits for a read (takes priority
-    over LCA search when a family exists for a taxonomic ID).
+- id: in_family
+  doc: "Enable to search for a common FAMILY among hits for a read (takes priority\
+    \ over LCA search when a\nfamily exists for a taxonomic ID)."
   type: boolean
   inputBinding:
     prefix: --family
-- id: genus
-  doc: Enable to search for a common GENUS among hits for a read (takes priority over
-    LCA search when a family exists for a taxonomic ID).
+- id: in_genus
+  doc: "Enable to search for a common GENUS among hits for a read (takes priority\
+    \ over LCA search when a\nfamily exists for a taxonomic ID)."
   type: boolean
   inputBinding:
     prefix: --genus
-- id: include_flag_trigger
+- id: in_include_flag_trigger
   doc: Include this flag to trigger debug-level logging.
   type: boolean
   inputBinding:
     prefix: -v
-- id: index
+- id: in_index
   doc: Path to index built by mtsv-tree-build utility.
-  type: string
+  type: File
   inputBinding:
     prefix: --index
-- id: input
+- id: in_input
   doc: Path to mtsv results file.
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: lca
-  doc: 'Height at which the search will attempt to find a common ancestor among the
-    hits for a read. [values: 0, 1, 2, 3]'
-  type: string
+- id: in_lca
+  doc: "Height at which the search will attempt to find a common ancestor among the\
+    \ hits for\na read. [values: 0, 1, 2, 3]"
+  type: long
   inputBinding:
     prefix: --lca
-- id: threads
+- id: in_threads
   doc: 'Number of worker threads to spawn. [default: 4]'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: output
+- id: in_output
   doc: Output path to write "informativeness" results.
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Output path to write "informativeness" results.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - mtsv-signature

@@ -2,9 +2,9 @@ version 1.0
 
 task GseapyBiomart {
   input {
-    String? value__filter
+    File? value__filter
     String? attributes
-    String? ofile
+    File? ofile
     String? dataset
     String? host
     String? mart
@@ -20,16 +20,20 @@ task GseapyBiomart {
       ~{if defined(dataset) then ("--dataset " +  '"' + dataset + '"') else ""} \
       ~{if defined(host) then ("--host " +  '"' + host + '"') else ""} \
       ~{if defined(mart) then ("--mart " +  '"' + mart + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    value__filter: "VALUE, --filter NAME VALUE Which filter to use. Input filter name, and value. If multi-value required, separate each value by comma. If value is a txt file, then one ID per row, exclude header."
-    attributes: "Which attribute(s) to retrieve. Separate each attr by comma."
+    value__filter: "VALUE, --filter NAME VALUE\\nWhich filter to use. Input filter name, and value. If\\nmulti-value required, separate each value by comma. If\\nvalue is a txt file, then one ID per row, exclude\\nheader."
+    attributes: "Which attribute(s) to retrieve. Separate each attr by\\ncomma."
     ofile: "Output file name"
     dataset: "Which dataset to use. Default: hsapiens_gene_ensembl"
-    host: "Which host to use. Select from {'www.ensembl.org', 'asia.ensembl.org', 'useast.ensembl.org'}."
+    host: "Which host to use. Select from {'www.ensembl.org',\\n'asia.ensembl.org', 'useast.ensembl.org'}."
     mart: "Which mart to use. Default: ENSEMBL_MART_ENSEMBL."
-    verbose: "Increase output verbosity, print out progress of your job"
+    verbose: "Increase output verbosity, print out progress of your\\njob\\n"
     value: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_ofile = "${in_ofile}"
   }
 }

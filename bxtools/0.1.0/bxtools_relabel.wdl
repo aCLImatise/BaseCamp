@@ -8,10 +8,13 @@ task BxtoolsRelabel {
   command <<<
     bxtools relabel \
       ~{input_dot_bam} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: "Select verbosity level (0-4). Default: 0 "
+    verbose: "Select verbosity level (0-4). Default: 0"
     input_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

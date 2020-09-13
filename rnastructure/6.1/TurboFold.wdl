@@ -2,13 +2,19 @@ version 1.0
 
 task TurboFold {
   input {
-    String configuration_file
+    String sequence_dot
+    String to_dot
   }
   command <<<
     TurboFold \
-      ~{configuration_file}
+      ~{sequence_dot} \
+      ~{to_dot}
   >>>
   parameter_meta {
-    configuration_file: ""
+    sequence_dot: "Default is no limit."
+    to_dot: "SHAPEintercept"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

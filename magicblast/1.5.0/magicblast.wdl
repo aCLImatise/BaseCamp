@@ -4,4 +4,7 @@ task Magicblast {
   command <<<
     magicblast
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

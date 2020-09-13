@@ -2,7 +2,7 @@ version 1.0
 
 task MmapConvert {
   input {
-    String? output_file
+    File? output_file
     File file_do_tm_hap
   }
   command <<<
@@ -13,5 +13,9 @@ task MmapConvert {
   parameter_meta {
     output_file: "output file"
     file_do_tm_hap: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

@@ -14,4 +14,8 @@ task PyprophetReduce {
     in: "Scored PyProphet input file.  [required]"
     out: "Reduced OSWR output file."
   }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+  }
 }

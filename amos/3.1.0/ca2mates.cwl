@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../ca2mates.cwl
 inputs:
-- id: asm_file
+- id: in_asm_file
   doc: .asm file
   type: boolean
   inputBinding:
     prefix: -a
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ca2mates

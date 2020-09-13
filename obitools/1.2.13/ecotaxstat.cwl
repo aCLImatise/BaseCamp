@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../ecotaxstat.cwl
 inputs:
-- id: debug
+- id: in_debug
   doc: Set logging in debug mode
   type: boolean
   inputBinding:
     prefix: --DEBUG
-- id: without_progress_bar
+- id: in_without_progress_bar
   doc: desactivate progress bar
   type: boolean
   inputBinding:
     prefix: --without-progress-bar
-- id: eco_pcr_db
+- id: in_eco_pcr_db
   doc: ecoPCR Database name
   type: File
   inputBinding:
     prefix: --ecopcrdb
-- id: required
-  doc: required taxid
+- id: in_required
+  doc: "required taxid\n"
   type: string
   inputBinding:
     prefix: --required
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ecotaxstat

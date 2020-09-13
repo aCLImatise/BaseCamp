@@ -11,4 +11,7 @@ task Vcfbreakmulti {
   parameter_meta {
     file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,7 +2,7 @@ version 1.0
 
 task NhoodInfo {
   input {
-    String arg_one
+    Int arg_one
   }
   command <<<
     NhoodInfo \
@@ -10,5 +10,8 @@ task NhoodInfo {
   >>>
   parameter_meta {
     arg_one: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

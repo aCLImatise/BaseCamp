@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../create_sr_frg.pl.cwl
+id: ../../../create_sr_frg.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- create_sr_frg.pl
+- create_sr_frg

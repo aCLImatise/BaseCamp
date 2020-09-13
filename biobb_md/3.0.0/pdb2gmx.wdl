@@ -2,10 +2,10 @@ version 1.0
 
 task Pdb2gmx {
   input {
-    String? config
-    String? input_pdb_path
-    String? output_gro_path
-    String? output_top_zip_path
+    File? config
+    File? input_pdb_path
+    File? output_gro_path
+    File? output_top_zip_path
   }
   command <<<
     pdb2gmx \
@@ -19,5 +19,10 @@ task Pdb2gmx {
     input_pdb_path: ""
     output_gro_path: ""
     output_top_zip_path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_gro_path = "${in_output_gro_path}"
+    File out_output_top_zip_path = "${in_output_top_zip_path}"
   }
 }

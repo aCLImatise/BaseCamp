@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- contig2contig
+- contigfile
 positional:
 - !Positional
   description: ''
@@ -21,17 +24,18 @@ positional:
   name: outcontigfile
   optional: false
 named: []
-command:
-- contig2contig
-- contigfile
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - contig2contig
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - contig2contig
+    - seqfile
     positional:
     - !Positional
       description: ''
@@ -44,11 +48,9 @@ parent: &id001 !Command
       name: outcontigfile
       optional: false
     named: []
-    command:
-    - contig2contig
-    - seqfile
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -56,8 +58,10 @@ parent: &id001 !Command
       \ open seqfile: No such file or directory\n"
     generated_using: &id003
     - --help
-  - *id002
   - !Command
+    command:
+    - contig2contig
+    - outcontigfile
     positional:
     - !Positional
       description: ''
@@ -80,17 +84,16 @@ parent: &id001 !Command
       name: outcontigfile
       optional: false
     named: []
-    command:
-    - contig2contig
-    - outcontigfile
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
     help_text: "Usage: contig2contig <seqfile> <contigfile> <outcontigfile>\nCannot\
       \ open outcontigfile: No such file or directory\n"
     generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -98,6 +101,7 @@ parent: &id001 !Command
     \ open : No such file or directory\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

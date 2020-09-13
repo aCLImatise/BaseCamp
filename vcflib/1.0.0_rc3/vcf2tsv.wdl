@@ -2,8 +2,8 @@ version 1.0
 
 task Vcf2tsv {
   input {
-    String? n
     Boolean? g
+    String? n
     String? vcf
     File? file
   }
@@ -11,13 +11,16 @@ task Vcf2tsv {
     vcf2tsv \
       ~{vcf} \
       ~{file} \
-      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
-      ~{true="-g" false="" g}
+      ~{if (g) then "-g" else ""} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
   parameter_meta {
-    n: ""
     g: ""
+    n: ""
     vcf: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task GetATBiasInCoverageForIlluminaV2 {
   command <<<
     getATBiasInCoverageForIllumina_v2
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

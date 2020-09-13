@@ -36,35 +36,35 @@ task Ifdata {
   command <<<
     ifdata \
       ~{i_face} \
-      ~{true="-e" false="" reports_interface_existence} \
-      ~{true="-p" false="" print_whole_config} \
-      ~{true="-pe" false="" pe} \
-      ~{true="-pa" false="" pa} \
-      ~{true="-pn" false="" print_netmask} \
-      ~{true="-pN" false="" print_network_address} \
-      ~{true="-pb" false="" pb} \
-      ~{true="-pm" false="" pm} \
-      ~{true="-ph" false="" ph} \
-      ~{true="-pf" false="" pf} \
-      ~{true="-si" false="" si} \
-      ~{true="-sip" false="" sip} \
-      ~{true="-sib" false="" sib} \
-      ~{true="-sie" false="" sie} \
-      ~{true="-sid" false="" sid} \
-      ~{true="-sif" false="" s_if} \
-      ~{true="-sic" false="" sic} \
-      ~{true="-sim" false="" sim} \
-      ~{true="-so" false="" so} \
-      ~{true="-sop" false="" sop} \
-      ~{true="-sob" false="" sob} \
-      ~{true="-soe" false="" soe} \
-      ~{true="-sod" false="" sod} \
-      ~{true="-sof" false="" s_of} \
-      ~{true="-sox" false="" sox} \
-      ~{true="-soc" false="" soc} \
-      ~{true="-som" false="" som} \
-      ~{true="-bips" false="" bips} \
-      ~{true="-bops" false="" bops}
+      ~{if (reports_interface_existence) then "-e" else ""} \
+      ~{if (print_whole_config) then "-p" else ""} \
+      ~{if (pe) then "-pe" else ""} \
+      ~{if (pa) then "-pa" else ""} \
+      ~{if (print_netmask) then "-pn" else ""} \
+      ~{if (print_network_address) then "-pN" else ""} \
+      ~{if (pb) then "-pb" else ""} \
+      ~{if (pm) then "-pm" else ""} \
+      ~{if (ph) then "-ph" else ""} \
+      ~{if (pf) then "-pf" else ""} \
+      ~{if (si) then "-si" else ""} \
+      ~{if (sip) then "-sip" else ""} \
+      ~{if (sib) then "-sib" else ""} \
+      ~{if (sie) then "-sie" else ""} \
+      ~{if (sid) then "-sid" else ""} \
+      ~{if (s_if) then "-sif" else ""} \
+      ~{if (sic) then "-sic" else ""} \
+      ~{if (sim) then "-sim" else ""} \
+      ~{if (so) then "-so" else ""} \
+      ~{if (sop) then "-sop" else ""} \
+      ~{if (sob) then "-sob" else ""} \
+      ~{if (soe) then "-soe" else ""} \
+      ~{if (sod) then "-sod" else ""} \
+      ~{if (s_of) then "-sof" else ""} \
+      ~{if (sox) then "-sox" else ""} \
+      ~{if (soc) then "-soc" else ""} \
+      ~{if (som) then "-som" else ""} \
+      ~{if (bips) then "-bips" else ""} \
+      ~{if (bops) then "-bops" else ""}
   >>>
   parameter_meta {
     reports_interface_existence: "Reports interface existence via return code"
@@ -97,5 +97,8 @@ task Ifdata {
     bips: "Print # of incoming bytes per second"
     bops: "Print # of outgoing bytes per second"
     i_face: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

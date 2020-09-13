@@ -1,51 +1,60 @@
 class: CommandLineTool
 id: ../../../ribo_score.cwl
 inputs:
-- id: output
+- id: in_output
   doc: directory in which to place the output files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: flanking_length
+- id: in_flanking_length
   doc: 'length of flanking regions, in bp; default: 1000'
-  type: string
+  type: long
   inputBinding:
     prefix: --flanking_length
-- id: min_percent
+- id: in_min_percent
   doc: minimum percent identity
   type: long
   inputBinding:
     prefix: --min_percent
-- id: assembly_ext
+- id: in_assembly_ext
   doc: extenssion of reference, usually fasta
   type: string
   inputBinding:
     prefix: --assembly_ext
-- id: ref_ext
+- id: in_ref_ext
   doc: extension of reference, usually .gb
   type: string
   inputBinding:
     prefix: --ref_ext
-- id: blast_full
-  doc: if true, blast full sequences along with just the flanking. Interpretation
-    is not implemented currently as false positives cant be detected this way
+- id: in_blast_full
+  doc: "if true, blast full sequences along with just the\nflanking. Interpretation\
+    \ is not implemented currently\nas false positives cant be detected this way"
   type: boolean
   inputBinding:
     prefix: --blast_Full
-- id: verbosity
-  doc: 'Logger writes debug to file in output dir; this sets verbosity level sent
-    to stderr. 1 = debug(), 2 = info(), 3 = warning(), 4 = error() and 5 = critical();
-    default: 2'
-  type: string
+- id: in_verbosity
+  doc: "Logger writes debug to file in output dir; this sets\nverbosity level sent\
+    \ to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 = critical();\n\
+    default: 2\n"
+  type: File
   inputBinding:
     prefix: --verbosity
-- id: in_dir
-  doc: dir containing a genbank file, assembly filesas fastas. Usually the 'mauve'
-    dir in the riboSeed results
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: directory in which to place the output files
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_verbosity
+  doc: "Logger writes debug to file in output dir; this sets\nverbosity level sent\
+    \ to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 = critical();\n\
+    default: 2\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_verbosity)
 cwlVersion: v1.1
 baseCommand:
 - ribo

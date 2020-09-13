@@ -10,43 +10,37 @@ task Bfconvert {
     Boolean? merge
     Boolean? expand
     Boolean? big_tiff
-    Boolean? series
-    Boolean? specify_file_mapped
-    Boolean? range
+    Boolean? compression
     Boolean? nogroup
-    Boolean? no_lookup
     Boolean? autoscale
-    Boolean? overwrite
-    Boolean? crop
+    File? overwrite
+    File? no_overwrite
     Boolean? channel
-    Boolean? only_convert_section
     Boolean? time_point
-    Boolean? padded
-    Boolean? option
+    Int converted_z_zero_t_zero_dot_tiff
+    Int converted_z_zero_t_two_dot_tiff
+    Int converted_z_four_t_two_dot_tiff
   }
   command <<<
     bfconvert \
-      ~{true="-version" false="" version} \
-      ~{true="-no-upgrade" false="" no_upgrade} \
-      ~{true="-debug" false="" debug} \
-      ~{true="-stitch" false="" stitch} \
-      ~{true="-separate" false="" separate} \
-      ~{true="-merge" false="" merge} \
-      ~{true="-expand" false="" expand} \
-      ~{true="-bigtiff" false="" big_tiff} \
-      ~{true="-series" false="" series} \
-      ~{true="-map" false="" specify_file_mapped} \
-      ~{true="-range" false="" range} \
-      ~{true="-nogroup" false="" nogroup} \
-      ~{true="-nolookup" false="" no_lookup} \
-      ~{true="-autoscale" false="" autoscale} \
-      ~{true="-overwrite" false="" overwrite} \
-      ~{true="-crop" false="" crop} \
-      ~{true="-channel" false="" channel} \
-      ~{true="-z" false="" only_convert_section} \
-      ~{true="-timepoint" false="" time_point} \
-      ~{true="-padded" false="" padded} \
-      ~{true="-option" false="" option}
+      ~{converted_z_zero_t_zero_dot_tiff} \
+      ~{converted_z_zero_t_two_dot_tiff} \
+      ~{converted_z_four_t_two_dot_tiff} \
+      ~{if (version) then "-version" else ""} \
+      ~{if (no_upgrade) then "-no-upgrade" else ""} \
+      ~{if (debug) then "-debug" else ""} \
+      ~{if (stitch) then "-stitch" else ""} \
+      ~{if (separate) then "-separate" else ""} \
+      ~{if (merge) then "-merge" else ""} \
+      ~{if (expand) then "-expand" else ""} \
+      ~{if (big_tiff) then "-bigtiff" else ""} \
+      ~{if (compression) then "-compression" else ""} \
+      ~{if (nogroup) then "-nogroup" else ""} \
+      ~{if (autoscale) then "-autoscale" else ""} \
+      ~{if (overwrite) then "-overwrite" else ""} \
+      ~{if (no_overwrite) then "-nooverwrite" else ""} \
+      ~{if (channel) then "-channel" else ""} \
+      ~{if (time_point) then "-timepoint" else ""}
   >>>
   parameter_meta {
     version: ": print the library version and exit"
@@ -57,18 +51,20 @@ task Bfconvert {
     merge: ": combine separate channels into RGB image"
     expand: ": expand indexed color to RGB"
     big_tiff: ": force BigTIFF files to be written"
-    series: ": specify which image series to convert"
-    specify_file_mapped: ": specify file on disk to which name should be mapped"
-    range: ": specify range of planes to convert (inclusive)"
-    nogroup: ": force multi-file datasets to be read as individual              files"
-    no_lookup: ": disable the conversion of lookup tables"
-    autoscale: ": automatically adjust brightness and contrast before converting; this may mean that the original pixel values are not preserved"
+    compression: ": specify the codec to use when saving images\\n-series: specify which image series to convert\\n-map: specify file on disk to which name should be mapped\\n-range: specify range of planes to convert (inclusive)"
+    nogroup: ": force multi-file datasets to be read as individual              files\\n-nolookup: disable the conversion of lookup tables"
+    autoscale: ": automatically adjust brightness and contrast before\\nconverting; this may mean that the original pixel\\nvalues are not preserved"
     overwrite: ": always overwrite the output file, if it already exists"
-    crop: ": crop images before converting; argument is 'x,y,w,h'"
-    channel: ": only convert the specified channel (indexed from 0)"
-    only_convert_section: ": only convert the specified Z section (indexed from 0)"
-    time_point: ": only convert the specified timepoint (indexed from 0)"
-    padded: ": filename indexes for series, z, c and t will be zero padded"
-    option: ": add the specified key/value pair to the options list"
+    no_overwrite: ": never overwrite the output file, if it already exists\\n-crop: crop images before converting; argument is 'x,y,w,h'"
+    channel: ": only convert the specified channel (indexed from 0)\\n-z: only convert the specified Z section (indexed from 0)"
+    time_point: ": only convert the specified timepoint (indexed from 0)\\n-padded: filename indexes for series, z, c and t will be zero padded\\n-option: add the specified key/value pair to the options list"
+    converted_z_zero_t_zero_dot_tiff: "converted_Z0_T1.tiff"
+    converted_z_zero_t_two_dot_tiff: "converted_Z1_T0.tiff"
+    converted_z_four_t_two_dot_tiff: "Each file would have a single image plane."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_overwrite = "${in_overwrite}"
+    File out_no_overwrite = "${in_no_overwrite}"
   }
 }

@@ -4,10 +4,10 @@ task Booster {
   input {
     Boolean? input_tree_file
     Boolean? boot
-    Boolean? out
-    Boolean? out_raw
+    File? out
+    File? out_raw
     Boolean? num_threads
-    Boolean? stat_file
+    File? stat_file
     Boolean? count_per_branch
     Boolean? dist_cut_off
     Boolean? algo
@@ -15,16 +15,16 @@ task Booster {
   }
   command <<<
     booster \
-      ~{true="--input" false="" input_tree_file} \
-      ~{true="--boot" false="" boot} \
-      ~{true="--out" false="" out} \
-      ~{true="--out-raw" false="" out_raw} \
-      ~{true="--num-threads" false="" num_threads} \
-      ~{true="--stat-file" false="" stat_file} \
-      ~{true="--count-per-branch" false="" count_per_branch} \
-      ~{true="--dist-cutoff" false="" dist_cut_off} \
-      ~{true="--algo" false="" algo} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (input_tree_file) then "--input" else ""} \
+      ~{if (boot) then "--boot" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (out_raw) then "--out-raw" else ""} \
+      ~{if (num_threads) then "--num-threads" else ""} \
+      ~{if (stat_file) then "--stat-file" else ""} \
+      ~{if (count_per_branch) then "--count-per-branch" else ""} \
+      ~{if (dist_cut_off) then "--dist-cutoff" else ""} \
+      ~{if (algo) then "--algo" else ""} \
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     input_tree_file: ": Input tree file"
@@ -37,5 +37,11 @@ task Booster {
     dist_cut_off: ": Distance cutoff to consider a branch for taxa transfer index computation (-a tbe only, default 0.3)"
     algo: ": tbe or fbp (default tbe)"
     quiet: ": Does not print progress messages during analysis"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_out_raw = "${in_out_raw}"
+    File out_stat_file = "${in_stat_file}"
   }
 }

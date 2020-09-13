@@ -1,23 +1,26 @@
 class: CommandLineTool
 id: ../../../rsem_preref.cwl
 inputs:
-- id: polyalen_specify_length
+- id: in_polyalen_specify_length
   doc: ': polyALen: specify the length of polyA tail you want to pad. Default is 100'
   type: boolean
   inputBinding:
     prefix: -l
-- id: exceptionf_file_contains
+- id: in_exceptionf_file_contains
   doc: ': exceptionF: file contains a list of exception reference ids. IDs starts
     from 1. Must set if polyAChoice = 2'
   type: boolean
   inputBinding:
     prefix: -f
-- id: _quiet
+- id: in__quiet
   doc: ': quiet'
   type: boolean
   inputBinding:
     prefix: -q
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rsem-preref

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../redbuild.cwl
 inputs:
-- id: b
-  doc: ''
+- id: in_b
+  doc: '# (required)'
   type: string
   inputBinding:
     prefix: -b
-- id: m
-  doc: ''
+- id: in_m
+  doc: '# (required)'
   type: long
   inputBinding:
     prefix: -m
-- id: g
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -g
-- id: r
+- id: in_r
   doc: ''
   type: boolean
   inputBinding:
     prefix: -r
-outputs: []
+- id: in_g
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -g
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - redbuild

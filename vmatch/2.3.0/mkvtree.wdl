@@ -11,4 +11,7 @@ task Mkvtree {
   parameter_meta {
     index_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

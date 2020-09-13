@@ -17,4 +17,7 @@ task Findphyl {
     rate_file: ""
     col_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

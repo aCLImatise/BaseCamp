@@ -4,4 +4,7 @@ task CPecanAlign {
   command <<<
     cPecanAlign
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

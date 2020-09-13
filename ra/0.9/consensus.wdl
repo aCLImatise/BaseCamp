@@ -2,16 +2,19 @@ version 1.0
 
 task Consensus {
   input {
-    String? reads
-    String? contigs
+    Boolean? reads
+    Boolean? contigs
   }
   command <<<
     consensus \
-      ~{if defined(reads) then ("--reads " +  '"' + reads + '"') else ""} \
-      ~{if defined(contigs) then ("--contigs " +  '"' + contigs + '"') else ""}
+      ~{if (reads) then "--reads" else ""} \
+      ~{if (contigs) then "--contigs" else ""}
   >>>
   parameter_meta {
-    reads: ""
-    contigs: ""
+    reads: "reads file (string)"
+    contigs: "contigs file (string)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

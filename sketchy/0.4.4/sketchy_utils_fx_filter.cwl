@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../sketchy_utils_fx_filter.cwl
 inputs:
-- id: fpath
+- id: in_fpath
   doc: Path to Fast{a,q} input file.  [required]
   type: File
   inputBinding:
     prefix: --fpath
-- id: output
+- id: in_output
   doc: Output to Fast{a,q} file. Default stdout [-]
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: ids
-  doc: Path to file containing the read IDs to get from Fast{a,q}.   [required]
+- id: in_ids
+  doc: "Path to file containing the read IDs to get from\nFast{a,q}.   [required]"
   type: File
   inputBinding:
     prefix: --ids
-- id: column
+- id: in_column
   doc: Column index that contains the IDs (0-based). [1]
   type: long
   inputBinding:
     prefix: --column
-- id: sep
+- id: in_sep
   doc: File separator to read columns. ['\t']
-  type: string
+  type: File
   inputBinding:
     prefix: --sep
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Output to Fast{a,q} file. Default stdout [-]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - sketchy

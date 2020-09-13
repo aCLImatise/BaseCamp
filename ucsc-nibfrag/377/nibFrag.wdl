@@ -12,7 +12,6 @@ task NibFrag {
     String start
     String end
     String strand
-    String out_dot_fa
   }
   command <<<
     nibFrag \
@@ -20,10 +19,9 @@ task NibFrag {
       ~{start} \
       ~{end} \
       ~{strand} \
-      ~{out_dot_fa} \
-      ~{true="-masked" false="" masked} \
-      ~{true="-hardMasked" false="" hard_masked} \
-      ~{true="-upper" false="" upper} \
+      ~{if (masked) then "-masked" else ""} \
+      ~{if (hard_masked) then "-hardMasked" else ""} \
+      ~{if (upper) then "-upper" else ""} \
       ~{if defined(name) then ("-name " +  '"' + name + '"') else ""} \
       ~{if defined(db_header) then ("-dbHeader " +  '"' + db_header + '"') else ""} \
       ~{if defined(tba_header) then ("-tbaHeader " +  '"' + tba_header + '"') else ""}
@@ -39,6 +37,8 @@ task NibFrag {
     start: ""
     end: ""
     strand: ""
-    out_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

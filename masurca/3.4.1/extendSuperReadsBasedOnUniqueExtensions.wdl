@@ -17,4 +17,7 @@ task ExtendSuperReadsBasedOnUniqueExtensions {
     mer: "*Length of mer"
     cmdline_parse: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

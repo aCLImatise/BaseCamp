@@ -1,43 +1,46 @@
 class: CommandLineTool
 id: ../../../zerone.cwl
 inputs:
-- id: mock
+- id: in_mock
   doc: ': given file is a mock control'
   type: boolean
   inputBinding:
     prefix: --mock
-- id: chip
+- id: in_chip
   doc: ': given file is a ChIP-seq experiment'
   type: boolean
   inputBinding:
     prefix: --chip
-- id: window
+- id: in_window
   doc: ': window size in bp (default 300)'
   type: boolean
   inputBinding:
     prefix: --window
-- id: quality
+- id: in_quality
   doc: ': minimum mapping quality (default 20)'
   type: boolean
   inputBinding:
     prefix: --quality
-- id: list_output
+- id: in_list_output
   doc: ': output list of targets (default table)'
   type: boolean
   inputBinding:
     prefix: --list-output
-- id: confidence
-  doc: ': print targets only with higher confidence restricts intervals accordingly
-    in list output'
+- id: in_confidence
+  doc: ": print targets only with higher confidence\nrestricts intervals accordingly\
+    \ in list output"
   type: boolean
   inputBinding:
     prefix: --confidence
-- id: input_file_n
+- id: in_input_file_n
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - zerone

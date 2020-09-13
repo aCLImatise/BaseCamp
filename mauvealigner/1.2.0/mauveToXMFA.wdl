@@ -14,4 +14,7 @@ task MauveToXMFA {
     mauve_alignment_input: ""
     x_mfa_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

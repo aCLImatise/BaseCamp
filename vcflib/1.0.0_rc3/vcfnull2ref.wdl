@@ -2,7 +2,7 @@ version 1.0
 
 task Vcfnull2ref {
   input {
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcfnull2ref \
@@ -10,5 +10,8 @@ task Vcfnull2ref {
   >>>
   parameter_meta {
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

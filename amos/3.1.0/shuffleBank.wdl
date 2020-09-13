@@ -3,7 +3,7 @@ version 1.0
 task ShuffleBank {
   input {
     String? bank
-    String? common_file_prefix
+    File? common_file_prefix
     Boolean? dump_contigs_bank
     Boolean? dump_reads_bank
     Boolean? eid
@@ -12,7 +12,7 @@ task ShuffleBank {
     Int? use_min_base
     Boolean? ignore_clear_range
     Boolean? display_details_header
-    String? set_maximum_number
+    Int? set_maximum_number
     Boolean? fofn_list_files
     String? list_files_specifying
   }
@@ -20,16 +20,16 @@ task ShuffleBank {
     shuffleBank \
       ~{if defined(bank) then ("-bank " +  '"' + bank + '"') else ""} \
       ~{if defined(common_file_prefix) then ("-p " +  '"' + common_file_prefix + '"') else ""} \
-      ~{true="-c" false="" dump_contigs_bank} \
-      ~{true="-r" false="" dump_reads_bank} \
-      ~{true="-eid" false="" eid} \
-      ~{true="-iid" false="" iid} \
-      ~{true="-f" false="" dump_fastq_format} \
+      ~{if (dump_contigs_bank) then "-c" else ""} \
+      ~{if (dump_reads_bank) then "-r" else ""} \
+      ~{if (eid) then "-eid" else ""} \
+      ~{if (iid) then "-iid" else ""} \
+      ~{if (dump_fastq_format) then "-f" else ""} \
       ~{if defined(use_min_base) then ("-Q " +  '"' + use_min_base + '"') else ""} \
-      ~{true="-a" false="" ignore_clear_range} \
-      ~{true="-d" false="" display_details_header} \
+      ~{if (ignore_clear_range) then "-a" else ""} \
+      ~{if (display_details_header) then "-d" else ""} \
       ~{if defined(set_maximum_number) then ("-L " +  '"' + set_maximum_number + '"') else ""} \
-      ~{true="-E" false="" fofn_list_files} \
+      ~{if (fofn_list_files) then "-E" else ""} \
       ~{if defined(list_files_specifying) then ("-I " +  '"' + list_files_specifying + '"') else ""}
   >>>
   parameter_meta {
@@ -46,5 +46,9 @@ task ShuffleBank {
     set_maximum_number: "Set the maximum number of bases per line (Default: 70)"
     fofn_list_files: "<fofn>      List of files specifying by EID where to write"
     list_files_specifying: "List of files specifying by EID where to write"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_common_file_prefix = "${in_common_file_prefix}"
   }
 }

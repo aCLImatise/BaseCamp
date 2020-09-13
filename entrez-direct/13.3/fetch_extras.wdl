@@ -1,7 +1,10 @@
 version 1.0
 
-task FetchExtras {
+task Fetchextras {
   command <<<
-    fetch-extras
+    fetch_extras
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task CdkInchiToSvg {
+task Cdkinchitosvg {
   command <<<
-    cdk-inchi-to-svg
+    cdk_inchi_to_svg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

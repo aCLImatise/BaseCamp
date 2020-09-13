@@ -1,14 +1,10 @@
 version 1.0
 
 task Nighthawk {
-  input {
-    String tool
-  }
   command <<<
-    nighthawk \
-      ~{tool}
+    nighthawk
   >>>
-  parameter_meta {
-    tool: ""
+  output {
+    File out_stdout = stdout()
   }
 }

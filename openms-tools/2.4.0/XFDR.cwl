@@ -1,95 +1,113 @@
 class: CommandLineTool
 id: ../../../XFDR.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "Crosslink Identifications in either xquest.xml, idXML, or mzIdentML format\
     \ (as produced by OpenPepXL) (valid formats: 'xml', 'idXML', 'mzid', 'xquest.xml')"
   type: File
   inputBinding:
     prefix: -in
-- id: in_type
+- id: in_in_type
   doc: "Type of input file provided with -in (valid: 'xml', 'idXML', 'mzid', 'xquest.xml')"
-  type: string
+  type: File
   inputBinding:
     prefix: -in_type
-- id: out_idxml
+- id: in_out_idxml
   doc: "Output as idXML file (valid formats: 'idXML')"
-  type: string
+  type: File
   inputBinding:
     prefix: -out_idXML
-- id: out_mz_ident_ml
+- id: in_out_mz_ident_ml
   doc: "Output as mzIdentML file (valid formats: 'mzid')"
-  type: string
+  type: File
   inputBinding:
     prefix: -out_mzIdentML
-- id: out_x_quest
+- id: in_out_x_quest
   doc: "Output as xquest.xml file (valid formats: 'xquest.xml')"
-  type: string
+  type: File
   inputBinding:
     prefix: -out_xquest
-- id: decoy_string
+- id: in_decoy_string
   doc: "Prefix of decoy protein ids. The correspondig target protein id should be\
     \ retrievable by deleting this prefix. (default: 'DECOY_')"
   type: string
   inputBinding:
     prefix: -decoy_string
-- id: min_border
+- id: in_min_border
   doc: "Filter for minimum precursor mass error (ppm). (default: '-1')"
   type: long
   inputBinding:
     prefix: -minborder
-- id: max_border
+- id: in_max_border
   doc: "Filter for maximum precursor mass error (ppm). (default: '-1')"
   type: long
   inputBinding:
     prefix: -maxborder
-- id: min_deltas
+- id: in_min_deltas
   doc: "Filter for delta score, 0 is no filter. Minimum delta score required, hits\
     \ are rejected if larger or equal. (default: '0' min: '0' max: '1')"
   type: long
   inputBinding:
     prefix: -mindeltas
-- id: minions_matched
+- id: in_minions_matched
   doc: "Filter for minimum matched ions per peptide. (default: '0' min: '0')"
   type: long
   inputBinding:
     prefix: -minionsmatched
-- id: unique_xl
+- id: in_unique_xl
   doc: Calculate statistics based only on unique IDs.
   type: boolean
   inputBinding:
     prefix: -uniquexl
-- id: no_q_values
+- id: in_no_q_values
   doc: Do not transform simple FDR to q-values
   type: boolean
   inputBinding:
     prefix: -no_qvalues
-- id: min_score
+- id: in_min_score
   doc: "Minimum score to be considered for FDR calculation (default: '0')"
   type: long
   inputBinding:
     prefix: -minscore
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_idxml
+  doc: "Output as idXML file (valid formats: 'idXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_idxml)
+- id: out_out_mz_ident_ml
+  doc: "Output as mzIdentML file (valid formats: 'mzid')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_mz_ident_ml)
+- id: out_out_x_quest
+  doc: "Output as xquest.xml file (valid formats: 'xquest.xml')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_x_quest)
 cwlVersion: v1.1
 baseCommand:
 - XFDR

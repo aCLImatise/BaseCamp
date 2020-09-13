@@ -20,21 +20,21 @@ task Abricate {
   }
   command <<<
     abricate \
-      ~{true="--debug" false="" debug} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--check" false="" check} \
-      ~{true="--threads" false="" threads} \
-      ~{true="--fofn" false="" fof_n} \
-      ~{true="--setupdb" false="" setup_db} \
-      ~{true="--list" false="" list} \
-      ~{true="--datadir" false="" datadir} \
-      ~{true="--db" false="" db} \
-      ~{true="--noheader" false="" noheader} \
-      ~{true="--csv" false="" csv} \
-      ~{true="--nopath" false="" no_path} \
-      ~{true="--minid" false="" mini_d} \
-      ~{true="--mincov" false="" min_cov} \
-      ~{true="--summary" false="" summary}
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (check) then "--check" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (fof_n) then "--fofn" else ""} \
+      ~{if (setup_db) then "--setupdb" else ""} \
+      ~{if (list) then "--list" else ""} \
+      ~{if (datadir) then "--datadir" else ""} \
+      ~{if (db) then "--db" else ""} \
+      ~{if (noheader) then "--noheader" else ""} \
+      ~{if (csv) then "--csv" else ""} \
+      ~{if (no_path) then "--nopath" else ""} \
+      ~{if (mini_d) then "--minid" else ""} \
+      ~{if (min_cov) then "--mincov" else ""} \
+      ~{if (summary) then "--summary" else ""}
   >>>
   parameter_meta {
     debug: "Verbose debug output."
@@ -44,7 +44,7 @@ task Abricate {
     fof_n: "[X]      Run on files listed in this file []."
     setup_db: "Format all the BLAST databases."
     list: "List included databases."
-    datadir: "[X]   Databases folder [/tmp/tmptbtde21b/db]."
+    datadir: "[X]   Databases folder [/usr/local/db]."
     db: "[X]        Database to use [ncbi]."
     noheader: "Suppress column header row."
     csv: "Output CSV instead of TSV."
@@ -52,5 +52,8 @@ task Abricate {
     mini_d: "[n.n]   Minimum DNA %identity [80]."
     min_cov: "[n.n]  Minimum DNA %coverage [80]."
     summary: "Summarize multiple reports into a table."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

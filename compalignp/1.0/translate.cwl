@@ -1,47 +1,55 @@
 class: CommandLineTool
 id: ../../../translate.cwl
 inputs:
-- id: translate_full_stops
+- id: in_translate_full_stops
   doc: ': translate in full, with stops; no individual ORFs'
   type: boolean
   inputBinding:
     prefix: -a
-- id: report_only_orfs
+- id: in_report_only_orfs
   doc: ': report only ORFs greater than minlen (default 20)'
   type: long
   inputBinding:
     prefix: -l
-- id: require_orfs_start
+- id: in_require_orfs_start
   doc: ': require ORFs to start with AUG/Met'
   type: boolean
   inputBinding:
     prefix: -m
-- id: save_results_output
+- id: in_save_results_output
   doc: ': save results in output file'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: quiet_silence_banner
+- id: in_quiet_silence_banner
   doc: ': quiet; silence banner, for piping or redirection'
   type: boolean
   inputBinding:
     prefix: -q
-- id: set_stop_character
+- id: in_set_stop_character
   doc: ': with -a, set stop character to <stopchar>'
   type: string
   inputBinding:
     prefix: -s
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: seq_file
+- id: in_seq_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_save_results_output
+  doc: ': save results in output file'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_save_results_output)
 cwlVersion: v1.1
 baseCommand:
 - translate

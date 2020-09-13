@@ -1,7 +1,10 @@
 version 1.0
 
-task NgmDebug {
+task Ngmdebug {
   command <<<
-    ngm-debug
+    ngm_debug
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

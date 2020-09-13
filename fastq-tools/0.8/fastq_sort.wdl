@@ -1,6 +1,6 @@
 version 1.0
 
-task FastqSort {
+task Fastqsort {
   input {
     Boolean? reverse
     Boolean? id
@@ -12,24 +12,27 @@ task FastqSort {
     Boolean? mean_qual
   }
   command <<<
-    fastq-sort \
-      ~{true="--reverse" false="" reverse} \
-      ~{true="--id" false="" id} \
-      ~{true="--idn" false="" idn} \
-      ~{true="--seq" false="" seq} \
-      ~{true="--random" false="" random} \
-      ~{true="--seed" false="" seed} \
-      ~{true="--gc" false="" gc} \
-      ~{true="--mean-qual" false="" mean_qual}
+    fastq_sort \
+      ~{if (reverse) then "--reverse" else ""} \
+      ~{if (id) then "--id" else ""} \
+      ~{if (idn) then "--idn" else ""} \
+      ~{if (seq) then "--seq" else ""} \
+      ~{if (random) then "--random" else ""} \
+      ~{if (seed) then "--seed" else ""} \
+      ~{if (gc) then "--gc" else ""} \
+      ~{if (mean_qual) then "--mean-qual" else ""}
   >>>
   parameter_meta {
     reverse: "sort in reverse (i.e., descending) order"
     id: "sort alphabetically by read identifier"
-    idn: "sort alphanumerically by read identifier according to \"samtools sort -n\""
+    idn: "sort alphanumerically by read identifier according to \\\"samtools sort -n\\\""
     seq: "sort alphabetically by sequence"
     random: "randomly shuffle the sequences"
     seed: "[=SEED]  seed to use for random shuffle."
     gc: "sort by GC content"
     mean_qual: "sort by median quality score"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

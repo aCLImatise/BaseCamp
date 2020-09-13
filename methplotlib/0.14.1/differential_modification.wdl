@@ -2,11 +2,11 @@ version 1.0
 
 task DifferentialModification {
   input {
-    String? bed
+    File? bed
     Array[String] a_group
     Array[String] b_group
-    String? cut_off
-    String? out
+    Float? cut_off
+    File? out
   }
   command <<<
     differential_modification \
@@ -22,5 +22,8 @@ task DifferentialModification {
     b_group: "Frequencies of group B."
     cut_off: "FDR cutoff. Default: 0.05"
     out: "File to write results to. Default: stdout."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

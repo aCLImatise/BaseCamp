@@ -4,4 +4,7 @@ task Bamadapterfind {
   command <<<
     bamadapterfind
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

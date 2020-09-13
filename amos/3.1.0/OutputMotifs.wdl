@@ -2,8 +2,8 @@ version 1.0
 
 task OutputMotifs {
   input {
-    Boolean? b
     String? version
+    Boolean? b
     String? an_k
     String bank_name
   }
@@ -11,13 +11,16 @@ task OutputMotifs {
     OutputMotifs \
       ~{an_k} \
       ~{bank_name} \
-      ~{true="-b" false="" b} \
-      ~{if defined(version) then ("-version " +  '"' + version + '"') else ""}
+      ~{if defined(version) then ("-version " +  '"' + version + '"') else ""} \
+      ~{if (b) then "-b" else ""}
   >>>
   parameter_meta {
-    b: ""
     version: ""
+    b: ""
     an_k: ""
     bank_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

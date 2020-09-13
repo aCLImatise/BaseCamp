@@ -1,63 +1,66 @@
 class: CommandLineTool
 id: ../../../cyvcf2.cwl
 inputs:
-- id: chrom
+- id: in_chrom
   doc: Specify what chromosome to include.
   type: string
   inputBinding:
     prefix: --chrom
-- id: start
+- id: in_start
   doc: Specify the start of region.
   type: long
   inputBinding:
     prefix: --start
-- id: end
+- id: in_end
   doc: Specify the end of the region.
   type: long
   inputBinding:
     prefix: --end
-- id: include
+- id: in_include
   doc: Specify what info field to include.
   type: string
   inputBinding:
     prefix: --include
-- id: exclude
+- id: in_exclude
   doc: Specify what info field to exclude.
   type: string
   inputBinding:
     prefix: --exclude
-- id: individual
+- id: in_individual
   doc: Only print genotype call for individual.
   type: string
   inputBinding:
     prefix: --individual
-- id: no_inds
+- id: in_no_inds
   doc: Do not print genotypes.
   type: boolean
   inputBinding:
     prefix: --no-inds
-- id: loglevel
-  doc: '[DEBUG|INFO|WARNING|ERROR|CRITICAL] Set the level of log output.  [default:
-    INFO]'
+- id: in_loglevel
+  doc: "[DEBUG|INFO|WARNING|ERROR|CRITICAL]\nSet the level of log output.  [default:\n\
+    INFO]"
   type: boolean
   inputBinding:
     prefix: --loglevel
-- id: silent
+- id: in_silent
   doc: Skip printing of vcf.
   type: boolean
   inputBinding:
     prefix: --silent
-- id: vcf_file
+- id: in_vcf_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: or
+- id: in_or
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cyvcf2

@@ -7,7 +7,7 @@ task PlassAssemble {
     Int? mask
     Int? mask_lower_case
     Int? kmer_size_range
-    String? split_memory_limit
+    Int? split_memory_limit
     Float? extend_sequences_evalue
     Float? list_matches_fraction
     Boolean? add_string_convert
@@ -18,8 +18,8 @@ task PlassAssemble {
     Int? km_er_per_seq
     Boolean? adjust_km_er_len
     Int? hash_shift
-    String? include_only_extendable
-    String? ignore_multi_km_er
+    Int? include_only_extendable
+    Int? ignore_multi_km_er
     Int? num_iterations
     Int? re_score_mode
     Boolean? wrapped_scoring
@@ -29,8 +29,8 @@ task PlassAssemble {
     Int? contig_start_mode
     Int? contig_end_mode
     Int? orf_start_mode
-    String? forward_frames
-    String? reverse_frames
+    Int? forward_frames
+    Int? reverse_frames
     Int? translation_table
     Int? translate
     Boolean? use_all_table_starts
@@ -39,13 +39,13 @@ task PlassAssemble {
     Int? filter_proteins
     Int? delete_tmp_inc
     Boolean? remove_tmp_files
-    String? sub_mat
+    File? sub_mat
     Int? db_load_mode
     Int? threads
     Int? compressed
     Int? verbosity_level_nothing
     Int? max_seq_len
-    String? mpi_runner
+    Int? mpi_runner
     Boolean? filter_hits
     Int? sort_results
     Float? km_er_per_seq_scale
@@ -53,7 +53,7 @@ task PlassAssemble {
   }
   command <<<
     plass assemble \
-      ~{true="--add-self-matches" false="" add_self_matches} \
+      ~{if (add_self_matches) then "--add-self-matches" else ""} \
       ~{if defined(alph_size) then ("--alph-size " +  '"' + alph_size + '"') else ""} \
       ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""} \
       ~{if defined(mask_lower_case) then ("--mask-lower-case " +  '"' + mask_lower_case + '"') else ""} \
@@ -61,19 +61,19 @@ task PlassAssemble {
       ~{if defined(split_memory_limit) then ("--split-memory-limit " +  '"' + split_memory_limit + '"') else ""} \
       ~{if defined(extend_sequences_evalue) then ("-e " +  '"' + extend_sequences_evalue + '"') else ""} \
       ~{if defined(list_matches_fraction) then ("-c " +  '"' + list_matches_fraction + '"') else ""} \
-      ~{true="-a" false="" add_string_convert} \
+      ~{if (add_string_convert) then "-a" else ""} \
       ~{if defined(cov_mode) then ("--cov-mode " +  '"' + cov_mode + '"') else ""} \
       ~{if defined(min_seq_id) then ("--min-seq-id " +  '"' + min_seq_id + '"') else ""} \
       ~{if defined(min_aln_len) then ("--min-aln-len " +  '"' + min_aln_len + '"') else ""} \
       ~{if defined(seq_id_mode) then ("--seq-id-mode " +  '"' + seq_id_mode + '"') else ""} \
       ~{if defined(km_er_per_seq) then ("--kmer-per-seq " +  '"' + km_er_per_seq + '"') else ""} \
-      ~{true="--adjust-kmer-len" false="" adjust_km_er_len} \
+      ~{if (adjust_km_er_len) then "--adjust-kmer-len" else ""} \
       ~{if defined(hash_shift) then ("--hash-shift " +  '"' + hash_shift + '"') else ""} \
       ~{if defined(include_only_extendable) then ("--include-only-extendable " +  '"' + include_only_extendable + '"') else ""} \
       ~{if defined(ignore_multi_km_er) then ("--ignore-multi-kmer " +  '"' + ignore_multi_km_er + '"') else ""} \
       ~{if defined(num_iterations) then ("--num-iterations " +  '"' + num_iterations + '"') else ""} \
       ~{if defined(re_score_mode) then ("--rescore-mode " +  '"' + re_score_mode + '"') else ""} \
-      ~{true="--wrapped-scoring" false="" wrapped_scoring} \
+      ~{if (wrapped_scoring) then "--wrapped-scoring" else ""} \
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""} \
       ~{if defined(max_length) then ("--max-length " +  '"' + max_length + '"') else ""} \
       ~{if defined(max_gaps) then ("--max-gaps " +  '"' + max_gaps + '"') else ""} \
@@ -84,12 +84,12 @@ task PlassAssemble {
       ~{if defined(reverse_frames) then ("--reverse-frames " +  '"' + reverse_frames + '"') else ""} \
       ~{if defined(translation_table) then ("--translation-table " +  '"' + translation_table + '"') else ""} \
       ~{if defined(translate) then ("--translate " +  '"' + translate + '"') else ""} \
-      ~{true="--use-all-table-starts" false="" use_all_table_starts} \
+      ~{if (use_all_table_starts) then "--use-all-table-starts" else ""} \
       ~{if defined(id_offset) then ("--id-offset " +  '"' + id_offset + '"') else ""} \
       ~{if defined(protein_filter_threshold) then ("--protein-filter-threshold " +  '"' + protein_filter_threshold + '"') else ""} \
       ~{if defined(filter_proteins) then ("--filter-proteins " +  '"' + filter_proteins + '"') else ""} \
       ~{if defined(delete_tmp_inc) then ("--delete-tmp-inc " +  '"' + delete_tmp_inc + '"') else ""} \
-      ~{true="--remove-tmp-files" false="" remove_tmp_files} \
+      ~{if (remove_tmp_files) then "--remove-tmp-files" else ""} \
       ~{if defined(sub_mat) then ("--sub-mat " +  '"' + sub_mat + '"') else ""} \
       ~{if defined(db_load_mode) then ("--db-load-mode " +  '"' + db_load_mode + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
@@ -97,7 +97,7 @@ task PlassAssemble {
       ~{if defined(verbosity_level_nothing) then ("-v " +  '"' + verbosity_level_nothing + '"') else ""} \
       ~{if defined(max_seq_len) then ("--max-seq-len " +  '"' + max_seq_len + '"') else ""} \
       ~{if defined(mpi_runner) then ("--mpi-runner " +  '"' + mpi_runner + '"') else ""} \
-      ~{true="--filter-hits" false="" filter_hits} \
+      ~{if (filter_hits) then "--filter-hits" else ""} \
       ~{if defined(sort_results) then ("--sort-results " +  '"' + sort_results + '"') else ""} \
       ~{if defined(km_er_per_seq_scale) then ("--kmer-per-seq-scale " +  '"' + km_er_per_seq_scale + '"') else ""} \
       ~{if defined(create_lookup) then ("--create-lookup " +  '"' + create_lookup + '"') else ""}
@@ -146,10 +146,14 @@ task PlassAssemble {
     compressed: "write results in compressed format [0]"
     verbosity_level_nothing: "verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info [3]"
     max_seq_len: "maximum sequence length (range 1-32768]) [65535]"
-    mpi_runner: "Use MPI on compute grid with this MPI command (e.g. \"mpirun -np 42\") []"
+    mpi_runner: "Use MPI on compute grid with this MPI command (e.g. \\\"mpirun -np 42\\\") []"
     filter_hits: "filter hits by seq.id. and coverage"
     sort_results: "Sort results: 0: no sorting, 1: sort by evalue (Alignment) or seq.id. (Hamming) [0]"
     km_er_per_seq_scale: "scale kmer per sequence based on sequence length as kmer-per-seq val + scale x seqlen [0.000]"
     create_lookup: "Create database lookup file (can be very large) [0]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_sub_mat = "${in_sub_mat}"
   }
 }

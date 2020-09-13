@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogCreateNewModule {
+task WatchdogcreateNewModule {
   command <<<
-    watchdog-createNewModule
+    watchdog_createNewModule
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

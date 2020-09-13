@@ -1,92 +1,85 @@
 class: CommandLineTool
 id: ../../../check_compression.cwl
 inputs:
-- id: input_path
+- id: in_input_path
   doc: Path to Fast5 file or directory of Fast5 files
-  type: string
+  type: File
   inputBinding:
     prefix: --input_path
-- id: check_all_reads
-  doc: 'Check all reads in a file individually (default: check only the first read)'
+- id: in_check_all_reads
+  doc: "Check all reads in a file individually (default: check\nonly the first read)"
   type: boolean
   inputBinding:
     prefix: --check_all_reads
-- id: recursive
-  doc: Search recursively through folders for MultiRead fast5 files
+- id: in_recursive
+  doc: Search recursively through folders for MultiRead fast5
   type: boolean
   inputBinding:
     prefix: --recursive
-- id: ignore_symlinks
-  doc: Ignore symlinks when searching recursively for fast5 files
-  type: boolean
-  inputBinding:
-    prefix: --ignore_symlinks
-- id: file_list
-  doc: File containing names of files to search in
-  type: File
-  inputBinding:
-    prefix: --file_list
-- id: tool
+- id: in_tool
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: for
+- id: in_for
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: checking
+- id: in_checking
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: the
+- id: in_the
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: compression
+- id: in_compression
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: type
+- id: in_type
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: of
+- id: in_of
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: raw
+- id: in_raw
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: data
+- id: in_data
   doc: ''
   type: string
   inputBinding:
     position: 8
-- id: in
+- id: in_in
   doc: ''
   type: string
   inputBinding:
     position: 9
-- id: fast_five
+- id: in_fast_five
+  doc: ''
+  type: long
+  inputBinding:
+    position: 10
+- id: in_files
   doc: ''
   type: string
   inputBinding:
-    position: 10
-- id: files
-  doc: ''
-  type: File
-  inputBinding:
     position: 11
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - check_compression

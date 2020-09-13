@@ -6,9 +6,12 @@ task Cai {
   }
   command <<<
     cai \
-      ~{true="-cfile" false="" c_file}
+      ~{if (c_file) then "-cfile" else ""}
   >>>
   parameter_meta {
     c_file: "codon      [Eyeast_cai.cut] Codon usage table name"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,17 +1,17 @@
 version 1.0
 
-task SnippyVcfToTab {
+task SnippyvcfToTab {
   input {
     Boolean? debug
     Boolean? auto
-    String? vcf
+    File? vcf
     String? ref
     String? gff
   }
   command <<<
-    snippy-vcf_to_tab \
-      ~{true="--debug" false="" debug} \
-      ~{true="--auto" false="" auto} \
+    snippy_vcf_to_tab \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (auto) then "--auto" else ""} \
       ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
       ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""}
@@ -22,5 +22,8 @@ task SnippyVcfToTab {
     vcf: "VCF input file (default '')."
     ref: "FASTA reference sequence (default '')."
     gff: "GFF reference features (default '')."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

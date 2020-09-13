@@ -4,4 +4,7 @@ task Seqboot {
   command <<<
     seqboot
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

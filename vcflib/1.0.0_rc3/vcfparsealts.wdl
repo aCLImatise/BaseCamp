@@ -4,4 +4,7 @@ task Vcfparsealts {
   command <<<
     vcfparsealts
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

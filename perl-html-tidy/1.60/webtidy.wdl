@@ -14,9 +14,9 @@ task Webtidy {
       ~{filename} \
       ~{or} \
       ~{url} \
-      ~{true="--context" false="" context} \
-      ~{true="--noerrors" false="" no_errors} \
-      ~{true="--nowarnings" false="" no_warnings}
+      ~{if (context) then "--context" else ""} \
+      ~{if (no_errors) then "--noerrors" else ""} \
+      ~{if (no_warnings) then "--nowarnings" else ""}
   >>>
   parameter_meta {
     context: "[=n]   Show the offending line (and n surrounding lines)"
@@ -25,5 +25,8 @@ task Webtidy {
     filename: ""
     or: ""
     url: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

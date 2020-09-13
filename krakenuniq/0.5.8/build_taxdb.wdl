@@ -23,4 +23,7 @@ task BuildTaxdb {
     three: ""
     arguments: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,32 +1,45 @@
 class: CommandLineTool
 id: ../../../coverage_stats.cwl
 inputs:
-- id: name_hxb_
+- id: in_name_target_contig
   doc: Name of target contig, e.g. HXB2:2253-2256
-  type: string
+  type: long
   inputBinding:
     prefix: -t
-- id: input_sambam_file
+- id: in_input_sambam_file
   doc: Input SAM/BAM file
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: output_tsv_file
+- id: in_output_tsv_file
   doc: Output TSV file
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: msa_of_contigs
+- id: in_msa_of_contigs
   doc: MSA of contigs
-  type: string
+  type: File
   inputBinding:
     prefix: -m
-- id: select
+- id: in_select
   doc: Name of contig that is of interest
   type: string
   inputBinding:
     prefix: --select
-outputs: []
+- id: in_contig
+  doc: 'optional arguments:'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_tsv_file
+  doc: Output TSV file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_tsv_file)
 cwlVersion: v1.1
 baseCommand:
 - coverage_stats

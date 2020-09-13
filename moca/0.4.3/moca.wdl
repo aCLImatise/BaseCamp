@@ -4,4 +4,7 @@ task Moca {
   command <<<
     moca
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

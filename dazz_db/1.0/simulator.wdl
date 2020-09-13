@@ -4,4 +4,7 @@ task Simulator {
   command <<<
     simulator
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

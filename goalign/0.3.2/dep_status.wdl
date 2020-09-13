@@ -7,26 +7,34 @@ task DepStatus {
     Boolean? examples
     Boolean? output_texttemplate_format
     Boolean? json
-    Boolean? lock
+    File? lock
     Boolean? missing
     Boolean? old
-    Boolean? out
+    File? out
     Boolean? enable_verbose_logging
-    String? package_dot_dot_dot
+    String project
+    String constraint
+    String version
+    String revision
+    String latest
   }
   command <<<
     dep status \
-      ~{package_dot_dot_dot} \
-      ~{true="-detail" false="" detail} \
-      ~{true="-dot" false="" dot} \
-      ~{true="-examples" false="" examples} \
-      ~{true="-f" false="" output_texttemplate_format} \
-      ~{true="-json" false="" json} \
-      ~{true="-lock" false="" lock} \
-      ~{true="-missing" false="" missing} \
-      ~{true="-old" false="" old} \
-      ~{true="-out" false="" out} \
-      ~{true="-v" false="" enable_verbose_logging}
+      ~{project} \
+      ~{constraint} \
+      ~{version} \
+      ~{revision} \
+      ~{latest} \
+      ~{if (detail) then "-detail" else ""} \
+      ~{if (dot) then "-dot" else ""} \
+      ~{if (examples) then "-examples" else ""} \
+      ~{if (output_texttemplate_format) then "-f" else ""} \
+      ~{if (json) then "-json" else ""} \
+      ~{if (lock) then "-lock" else ""} \
+      ~{if (missing) then "-missing" else ""} \
+      ~{if (old) then "-old" else ""} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (enable_verbose_logging) then "-v" else ""}
   >>>
   parameter_meta {
     detail: "include more detail in the chosen format (default: false)"
@@ -39,6 +47,15 @@ task DepStatus {
     old: "only show out-of-date dependencies (default: false)"
     out: "path to a file to which to write the output. Blank value will be ignored (default: <none>)"
     enable_verbose_logging: "enable verbose logging (default: false)"
-    package_dot_dot_dot: ""
+    project: "Import path"
+    constraint: "Version constraint, from the manifest"
+    version: "Version chosen, from the lock"
+    revision: "VCS revision of the chosen version"
+    latest: "Latest VCS revision available"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_lock = "${in_lock}"
+    File out_out = "${in_out}"
   }
 }

@@ -1,60 +1,78 @@
 class: CommandLineTool
 id: ../../../biopet_extractadaptersfastqc.cwl
 inputs:
-- id: log_level
+- id: in_log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\
     \ 'error'"
   type: string
   inputBinding:
     prefix: --log_level
-- id: input_file
+- id: in_input_file
   doc: Fastqc data file (i.e., fastqc_data.txt file in the FastQC output)
-  type: string
+  type: File
   inputBinding:
     prefix: --inputFile
-- id: adapter_output_file
+- id: in_adapter_output_file
   doc: Output file for adapters, if not supplied output will go to stdout
-  type: string
+  type: File
   inputBinding:
     prefix: --adapterOutputFile
-- id: contam_soutputfile
+- id: in_contam_soutputfile
   doc: Output file for adapters, if not supplied output will go to stdout
-  type: string
+  type: File
   inputBinding:
     prefix: --contamsOutputFile
-- id: skip_contam_s
+- id: in_skip_contam_s
   doc: If this is set only the adapters block is used, other wise contaminations is
     also used
   type: boolean
   inputBinding:
     prefix: --skipContams
-- id: known_contam_file
+- id: in_known_contam_file
   doc: This file should contain the known contaminations from fastqc
-  type: string
+  type: File
   inputBinding:
     prefix: --knownContamFile
-- id: known_adapter_file
+- id: in_known_adapter_file
   doc: This file should contain the known adapters from fastqc
-  type: string
+  type: File
   inputBinding:
     prefix: --knownAdapterFile
-- id: adapter_cut_off
+- id: in_adapter_cut_off
   doc: The fraction of the adapters in a read should be above this fraction, default
     is 0.001
-  type: string
+  type: double
   inputBinding:
     prefix: --adapterCutoff
-- id: output_as_fast_a
+- id: in_output_as_fast_a
   doc: Output in fasta format, default only sequences
   type: boolean
   inputBinding:
     prefix: --outputAsFasta
-- id: extract_adapters_fast_qc
+- id: in_extract_adapters_fast_qc
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_input_file
+  doc: Fastqc data file (i.e., fastqc_data.txt file in the FastQC output)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_input_file)
+- id: out_adapter_output_file
+  doc: Output file for adapters, if not supplied output will go to stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_adapter_output_file)
+- id: out_contam_soutputfile
+  doc: Output file for adapters, if not supplied output will go to stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_contam_soutputfile)
 cwlVersion: v1.1
 baseCommand:
 - biopet-extractadaptersfastqc

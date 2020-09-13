@@ -11,4 +11,7 @@ task Dcmftest {
   parameter_meta {
     file_dot_dot_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

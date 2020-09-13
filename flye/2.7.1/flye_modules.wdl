@@ -1,7 +1,10 @@
 version 1.0
 
-task FlyeModules {
+task Flyemodules {
   command <<<
-    flye-modules
+    flye_modules
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

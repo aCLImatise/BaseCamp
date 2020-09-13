@@ -1,82 +1,82 @@
 class: CommandLineTool
 id: ../../../PepNovoAdapter.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*                     Input file  (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: "*                    Output file  (valid formats: 'idXML')"
   type: File
   inputBinding:
     prefix: -out
-- id: pep_novo_executable
+- id: in_pep_novo_executable
   doc: '*     The PepNovo executable. Provide a full or relative path, or make sure
     it can be found in your PATH environment.'
   type: File
   inputBinding:
     prefix: -pepnovo_executable
-- id: model_directory
+- id: in_model_directory
   doc: '*        Name of the directory where the model files are kept.'
   type: File
   inputBinding:
     prefix: -model_directory
-- id: correct_pm
+- id: in_correct_pm
   doc: Find optimal precursor mass and charge values.
   type: boolean
   inputBinding:
     prefix: -correct_pm
-- id: use_spectrum_charge
+- id: in_use_spectrum_charge
   doc: Do not correct charge
   type: boolean
   inputBinding:
     prefix: -use_spectrum_charge
-- id: use_spectrum_mz
+- id: in_use_spectrum_mz
   doc: Do not correct the precursor m/z value that appears in the file.
   type: boolean
   inputBinding:
     prefix: -use_spectrum_mz
-- id: no_quality_filter
+- id: in_no_quality_filter
   doc: Do not remove low quality spectra.
   type: boolean
   inputBinding:
     prefix: -no_quality_filter
-- id: fragment_tolerance
+- id: in_fragment_tolerance
   doc: "The fragment tolerance (between 0 and 0.75 Da. Set to -1.0 to use model's\
     \ default setting) (default: '-1.0')"
   type: double
   inputBinding:
     prefix: -fragment_tolerance
-- id: pm_tolerance
+- id: in_pm_tolerance
   doc: "The precursor mass tolerance (between 0 and 5.0 Da. Set to -1.0 to use model's\
     \ default setting) (default: '-1.0')"
   type: double
   inputBinding:
     prefix: -pm_tolerance
-- id: model
+- id: in_model
   doc: "Name of the model that should be used (default: 'CID_IT_TRYP')"
   type: File
   inputBinding:
     prefix: -model
-- id: digest
+- id: in_digest
   doc: "Enzyme used for digestion (default TRYPSIN) (default: 'TRYPSIN' valid: 'TRYPSIN',\
     \ 'NON_SPECIFIC')"
   type: boolean
   inputBinding:
     prefix: -digest
-- id: tag_length
+- id: in_tag_length
   doc: "Returns peptide sequence of the specified length (only lengths 3-6 are allowed)\
     \ (default: '-1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -tag_length
-- id: num_solutions
+- id: in_num_solutions
   doc: "Number of solutions to be computed (default: '20' min: '1' max: '2000')"
-  type: string
+  type: long
   inputBinding:
     prefix: -num_solutions
-- id: fixed_modifications
+- id: in_fixed_modifications
   doc: "Fixed modifications, specified using Unimod (www.unimod.org) terms, e.g. 'Carbamidomethyl\
     \ (C)' or 'Oxidation (M)' (default: '[Carbamidomethyl (C)]' valid: '15N-oxobutanoic\
     \ (N-term C)', '15N-oxobutanoic (Protein N-term S)', '15N-oxobutanoic (Protein\
@@ -788,10 +788,10 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: string
+  type: long
   inputBinding:
     prefix: -fixed_modifications
-- id: variable_modifications
+- id: in_variable_modifications
   doc: "Variable modifications, specified using Unimod (www.unimod.org) terms, e.g.\
     \ 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Oxidation (M)]' valid:\
     \ '15N-oxobutanoic (N-term C)', '15N-oxobutanoic (Protein N-term S)', '15N-oxobutanoic\
@@ -1503,30 +1503,38 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: string
+  type: long
   inputBinding:
     prefix: -variable_modifications
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "*                    Output file  (valid formats: 'idXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - PepNovoAdapter

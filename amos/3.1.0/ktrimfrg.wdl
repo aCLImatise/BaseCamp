@@ -4,4 +4,7 @@ task Ktrimfrg {
   command <<<
     ktrimfrg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../OpenContactCLI.cwl
 inputs:
-- id: prot_a
+- id: in_prot_a
   doc: Path to proteinA.pdb
-  type: string
+  type: File
   inputBinding:
     prefix: --protA
-- id: prot_b
+- id: in_prot_b
   doc: Path to proteinB.pdb
-  type: string
+  type: File
   inputBinding:
     prefix: --protB
-- id: prot_a_chain
+- id: in_prot_a_chain
   doc: proteinA chain
   type: string
   inputBinding:
     prefix: --protA_chain
-- id: prot_b_chain
+- id: in_prot_b_chain
   doc: proteinB chain
   type: string
   inputBinding:
     prefix: --protB_chain
-- id: tabular
+- id: in_tabular
   doc: Create tab separated map files
   type: boolean
   inputBinding:
     prefix: --tabular
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - OpenContactCLI

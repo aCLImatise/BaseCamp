@@ -1,53 +1,66 @@
 class: CommandLineTool
 id: ../../../megahit_toolkit_iterate.cwl
 inputs:
-- id: contig_file
+- id: in_contig_file
   doc: (*) contigs file, fasta/fastq format, output by assembler
-  type: string
+  type: File
   inputBinding:
     prefix: --contig_file
-- id: bubble_file
+- id: in_bubble_file
   doc: (*) bubble file, fasta/fastq format, output by assembler
-  type: string
+  type: File
   inputBinding:
     prefix: --bubble_file
-- id: read_file
+- id: in_read_file
   doc: (*) reads to be aligned. "-" for stdin. Can be gzip'ed.
   type: string
   inputBinding:
     prefix: --read_file
-- id: num_cpu_threads
+- id: in_num_cpu_threads
   doc: (=0)         number of cpu threads, at least 2. 0 for auto detect.
-  type: string
+  type: long
   inputBinding:
     prefix: --num_cpu_threads
-- id: km_er_k
+- id: in_km_er_k
   doc: (=0)                  (*) current kmer size.
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer_k
-- id: step
+- id: in_step
   doc: (=0)                    (*) step for iteration (<= 28). i.e. this iteration
     is from kmer_k to (kmer_k + step)
-  type: string
+  type: long
   inputBinding:
     prefix: --step
-- id: output_prefix
+- id: in_output_prefix
   doc: (*) output_prefix.edges.0 will be created.
-  type: string
+  type: double
   inputBinding:
     prefix: --output_prefix
-- id: iterate
+- id: in_iterate
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: opt
+- id: in_opt
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_contig_file
+  doc: (*) contigs file, fasta/fastq format, output by assembler
+  type: File
+  outputBinding:
+    glob: $(inputs.in_contig_file)
+- id: out_bubble_file
+  doc: (*) bubble file, fasta/fastq format, output by assembler
+  type: File
+  outputBinding:
+    glob: $(inputs.in_bubble_file)
 cwlVersion: v1.1
 baseCommand:
 - megahit_toolkit

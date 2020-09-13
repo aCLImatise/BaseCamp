@@ -4,4 +4,7 @@ task Drawgram {
   command <<<
     drawgram
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

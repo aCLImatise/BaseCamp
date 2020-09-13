@@ -2,10 +2,10 @@ version 1.0
 
 task SplashUtrs {
   input {
-    String? reference
-    String? bed
-    String? read_length
-    String? output_dir
+    File? reference
+    File? bed
+    Int? read_length
+    Directory? output_dir
     String? snp_rate
   }
   command <<<
@@ -21,6 +21,10 @@ task SplashUtrs {
     bed: "BED file"
     read_length: "Read length"
     output_dir: "Output directory for mapped BAM files."
-    snp_rate: "SNP rate in UTRs"
+    snp_rate: "SNP rate in UTRs\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

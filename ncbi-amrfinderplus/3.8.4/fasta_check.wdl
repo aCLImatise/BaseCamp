@@ -2,19 +2,22 @@ version 1.0
 
 task FastaCheck {
   input {
-    Boolean? aa
     Boolean? hyphen
+    Boolean? aa
     String in
   }
   command <<<
     fasta_check \
       ~{in} \
-      ~{true="-aa" false="" aa} \
-      ~{true="-hyphen" false="" hyphen}
+      ~{if (hyphen) then "-hyphen" else ""} \
+      ~{if (aa) then "-aa" else ""}
   >>>
   parameter_meta {
-    aa: ""
     hyphen: ""
+    aa: ""
     in: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

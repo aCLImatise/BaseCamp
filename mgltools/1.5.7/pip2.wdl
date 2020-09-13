@@ -1,7 +1,10 @@
 version 1.0
 
-task Pip2.7 {
+task Pip2 {
   command <<<
-    pip2.7
+    pip2
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../varda2_client.cwl
 inputs:
-- id: protocol
+- id: in_protocol
   doc: Server protocol
   type: string
   inputBinding:
     prefix: --protocol
-- id: server
+- id: in_server
   doc: Server hostname
   type: string
   inputBinding:
     prefix: --server
-- id: certificate
-  doc: Certificate
+- id: in_certificate
+  doc: ''
   type: string
   inputBinding:
     prefix: --certificate
-- id: verbose
-  doc: Verbose output
+- id: in_v
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --verbose
-outputs: []
+    prefix: -v
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - varda2-client

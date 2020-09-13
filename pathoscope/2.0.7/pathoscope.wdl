@@ -6,9 +6,12 @@ task Pathoscope {
   }
   command <<<
     pathoscope \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     verbose: "Prints verbose text while running"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

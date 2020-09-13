@@ -1,7 +1,10 @@
 version 1.0
 
-task CasOffinder {
+task Casoffinder {
   command <<<
-    cas-offinder
+    cas_offinder
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

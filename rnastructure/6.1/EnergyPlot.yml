@@ -1,4 +1,6 @@
 !Command
+command:
+- EnergyPlot
 positional:
 - !Positional
   description: ''
@@ -10,14 +12,84 @@ positional:
   position: 1
   name: output file
   optional: false
-named: []
-command:
-- EnergyPlot
+named:
+- !Flag
+  description: "Specify that the output file should be an SVG image file, rather than\
+    \ a\nPostscript image file."
+  synonyms:
+  - --svg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specifies that output should be a dot plot (text) file.
+  synonyms:
+  - -t
+  - -T
+  - --text
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Configure the output of descriptions. Valid values are: (1) \"\" or\
+    \ \"~none\"\n-- Do not write a description (2) \"~file\" -- If the default description\n\
+    corresponds to a file or path, use only the base name of the path (i.e. no\ndirectory\
+    \ or file extension). (3) \"~~\" or \"~default\" -- Use the default\ndescription\
+    \ (this is the same as not specifying the flag) (4)\n\"~list|DESC1|DESC2|DESC3\"\
+    \ -- use this syntax when the output is expected to\nhave more than one plot.\
+    \ It specifies a list of descriptions will be\napplied in the order given. The\
+    \ character immediately after \"~list\" will be\nused as the separator (i.e. it\
+    \ need not be the bar (|) character. (5) Any\nother value is assumed to be the\
+    \ literal description you want to have\ndisplayed in the plot legend."
+  synonyms:
+  - --desc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specifies the number of colors in the dot plot.\nDefault is 5 colors.\
+    \ Minimum is 3 colors. Maximum is 15 colors."
+  synonyms:
+  - -e
+  - -E
+  - --entries
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specifies the maximum value that is viewable in the plot.\nDefault\
+    \ is the largest allowable point in a given data file. If the given\nvalue is\
+    \ greater than the default, it is ignored."
+  synonyms:
+  - -max
+  - -MAX
+  - --maximum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specifies the minimum value that is viewable in the plot.\nDefault\
+    \ is the smallest allowable point in a given data file. If the given\nvalue is\
+    \ less than the default, it is ignored.\n"
+  synonyms:
+  - -min
+  - -MIN
+  - --minimum
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: EnergyPlot <folding save file> <output file> [options]\nAll flags\
   \ are case-insensitive, and grouping of flags is not allowed.\n\n=============================\n\
   ==== Required Parameters ====\n=============================\n<folding save file>\n\

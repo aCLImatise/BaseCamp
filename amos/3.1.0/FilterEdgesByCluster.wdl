@@ -2,8 +2,8 @@ version 1.0
 
 task FilterEdgesByCluster {
   input {
-    Boolean? b
     File? clusters
+    Boolean? b
     String? an_k
     String bank_name
   }
@@ -11,13 +11,16 @@ task FilterEdgesByCluster {
     FilterEdgesByCluster \
       ~{an_k} \
       ~{bank_name} \
-      ~{true="-b" false="" b} \
-      ~{if defined(clusters) then ("-clusters " +  '"' + clusters + '"') else ""}
+      ~{if defined(clusters) then ("-clusters " +  '"' + clusters + '"') else ""} \
+      ~{if (b) then "-b" else ""}
   >>>
   parameter_meta {
-    b: ""
     clusters: ""
+    b: ""
     an_k: ""
     bank_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

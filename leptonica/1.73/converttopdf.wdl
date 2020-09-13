@@ -4,4 +4,7 @@ task Converttopdf {
   command <<<
     converttopdf
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

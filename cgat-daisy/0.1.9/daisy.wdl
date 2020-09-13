@@ -4,4 +4,7 @@ task Daisy {
   command <<<
     daisy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

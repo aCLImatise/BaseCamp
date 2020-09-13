@@ -9,16 +9,14 @@ task SmafaCluster {
     Int? divergence
     Int? km_er_length
     String? flags
-    String fast_a
   }
   command <<<
     smafa cluster \
       ~{flags} \
-      ~{fast_a} \
-      ~{true="--amino-acid" false="" amino_acid} \
-      ~{true="--fragment-method" false="" fragment_method} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (amino_acid) then "--amino-acid" else ""} \
+      ~{if (fragment_method) then "--fragment-method" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(divergence) then ("--divergence " +  '"' + divergence + '"') else ""} \
       ~{if defined(km_er_length) then ("--kmer-length " +  '"' + km_er_length + '"') else ""}
   >>>
@@ -30,6 +28,8 @@ task SmafaCluster {
     divergence: "Maximum number of mismatches in reported hits [default: 5]"
     km_er_length: "Length of kmer to query with [default 5]"
     flags: ""
-    fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

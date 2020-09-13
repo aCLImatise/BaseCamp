@@ -1,6 +1,6 @@
 version 1.0
 
-task GfapyMergelinear {
+task Gfapymergelinear {
   input {
     Boolean? redundant
     Boolean? no_progress
@@ -8,16 +8,19 @@ task GfapyMergelinear {
     String? v_level
   }
   command <<<
-    gfapy-mergelinear \
-      ~{true="--redundant" false="" redundant} \
-      ~{true="--no-progress" false="" no_progress} \
-      ~{true="--quiet" false="" quiet} \
+    gfapy_mergelinear \
+      ~{if (redundant) then "--redundant" else ""} \
+      ~{if (no_progress) then "--no-progress" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(v_level) then ("--vlevel " +  '"' + v_level + '"') else ""}
   >>>
   parameter_meta {
-    redundant: "create redundant paths, similar to the contigs constructed by Readjoiner"
+    redundant: "create redundant paths, similar to the contigs\\nconstructed by Readjoiner"
     no_progress: "do not show progress log"
     quiet: "suppress output"
     v_level: "validation level"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

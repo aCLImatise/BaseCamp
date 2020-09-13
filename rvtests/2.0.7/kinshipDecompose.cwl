@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../kinshipDecompose.cwl
 inputs:
-- id: in
+- id: in_in
   doc: ': Input kinship file'
   type: boolean
   inputBinding:
     prefix: --in
-- id: out
+- id: in_out
   doc: ': Output prefix for autosomal kinship calculation'
   type: boolean
   inputBinding:
     prefix: --out
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - kinshipDecompose

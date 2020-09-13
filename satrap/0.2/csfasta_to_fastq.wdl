@@ -2,19 +2,28 @@ version 1.0
 
 task CsfastaToFastq {
   input {
-    String? cs_fast_a
-    String? qual
+    Boolean? cs_fast_a
+    Boolean? qual
+    Boolean? warning
+    Boolean? log
     String cs_fast_a_fast_q
   }
   command <<<
     csfasta_to_fastq \
       ~{cs_fast_a_fast_q} \
-      ~{if defined(cs_fast_a) then ("-csfasta " +  '"' + cs_fast_a + '"') else ""} \
-      ~{if defined(qual) then ("-qual " +  '"' + qual + '"') else ""}
+      ~{if (cs_fast_a) then "-csfasta" else ""} \
+      ~{if (qual) then "-qual" else ""} \
+      ~{if (warning) then "-warning" else ""} \
+      ~{if (log) then "-log" else ""}
   >>>
   parameter_meta {
-    cs_fast_a: ""
-    qual: ""
+    cs_fast_a: "(string)        input SOLiD csfasta file."
+    qual: "(string)        input SOLiD quality file."
+    warning: "it reports warnigs to stderr"
+    log: "(string)        log file."
     cs_fast_a_fast_q: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

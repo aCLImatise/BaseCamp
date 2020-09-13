@@ -4,14 +4,14 @@ task Triform2 {
   input {
     Array[String] treatment
     Array[String] control
-    String? number_cores
+    Int? number_cores
     String? genome
-    String? bed_graph
+    File? bed_graph
     Int? max_p
     Int? min_shift
     Int? min_width
-    String? read_width
-    String? flank_distance
+    Int? read_width
+    Int? flank_distance
     Int? min_enrichment
   }
   command <<<
@@ -29,16 +29,19 @@ task Triform2 {
       ~{if defined(min_enrichment) then ("--min-enrichment " +  '"' + min_enrichment + '"') else ""}
   >>>
   parameter_meta {
-    treatment: "Treatment (pull-down) file(s) in bam/bed/bed.gz/bed.bz2 format."
-    control: "Control (input) file(s) in bam/bed/bed.gz/bed.bz2 format."
-    number_cores: "Number of cpus to use. Can use at most one per chromosome. Default: 1."
+    treatment: "Treatment (pull-down) file(s) in\\nbam/bed/bed.gz/bed.bz2 format."
+    control: "Control (input) file(s) in bam/bed/bed.gz/bed.bz2\\nformat."
+    number_cores: "Number of cpus to use. Can use at most one per\\nchromosome. Default: 1."
     genome: "Genome version to use."
     bed_graph: "Path to write bedgraph file to, if desired."
-    max_p: "Used to calculate minimum upper-tail z-value (default corresponds to standard normal p = 0.1)"
-    min_shift: "Minimum inter-strand shift (lag) between peak coverage distributions (default 10 bp)."
-    min_width: "Minimum number of bp (peak width) in peak-like region (default 10 bp)."
-    read_width: "Read width w, symmetrically extended to a fixed value. Must be larger than the flank size. Default: 100 bp."
-    flank_distance: "Fixed spacing between central and flanking locations (must be > w). Default: 150 bp."
-    min_enrichment: "Minimum local enrichment ratio (default 3/8 quantile of the enrichment ratio)"
+    max_p: "Used to calculate minimum upper-tail z-value (default\\ncorresponds to standard normal p = 0.1)"
+    min_shift: "Minimum inter-strand shift (lag) between peak coverage\\ndistributions (default 10 bp)."
+    min_width: "Minimum number of bp (peak width) in peak-like region\\n(default 10 bp)."
+    read_width: "Read width w, symmetrically extended to a fixed value.\\nMust be larger than the flank size. Default: 100 bp."
+    flank_distance: "Fixed spacing between central and flanking locations\\n(must be > w). Default: 150 bp."
+    min_enrichment: "Minimum local enrichment ratio (default 3/8 quantile\\nof the enrichment ratio)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

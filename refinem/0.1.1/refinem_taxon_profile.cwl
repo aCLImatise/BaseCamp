@@ -1,75 +1,78 @@
 class: CommandLineTool
 id: ../../../refinem_taxon_profile.cwl
 inputs:
-- id: per_to_classify
-  doc: 'minimum percentage of genes to assign a scaffold to a taxonomic group (default:
-    20.0)'
-  type: string
+- id: in_per_to_classify
+  doc: "minimum percentage of genes to assign a scaffold to a\ntaxonomic group (default:\
+    \ 20.0)"
+  type: double
   inputBinding:
     prefix: --per_to_classify
-- id: evalue
+- id: in_evalue
   doc: 'e-value of valid hits (default: 0.001)'
-  type: string
+  type: double
   inputBinding:
     prefix: --evalue
-- id: per_identity
+- id: in_per_identity
   doc: 'percent identity of valid hits (default: 30.0)'
-  type: string
+  type: double
   inputBinding:
     prefix: --per_identity
-- id: per_aln_len
-  doc: 'minimum percent coverage of query sequence for reporting an alignment (default:
-    50.0)'
-  type: string
+- id: in_per_aln_len
+  doc: "minimum percent coverage of query sequence for\nreporting an alignment (default:\
+    \ 50.0)"
+  type: double
   inputBinding:
     prefix: --per_aln_len
-- id: protein_ext
-  doc: 'extension of amino acid gene files (other files in directory are ignored)
-    (default: faa)'
-  type: string
+- id: in_protein_ext
+  doc: "extension of amino acid gene files (other files in\ndirectory are ignored)\
+    \ (default: faa)"
+  type: Directory
   inputBinding:
     prefix: --protein_ext
-- id: tmpdir
-  doc: 'specify alternative directory for temporary files (default: /tmp)'
-  type: string
+- id: in_tmpdir
+  doc: "specify alternative directory for temporary files\n(default: /tmp)"
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-- id: cpus
+- id: in_cpus
   doc: 'number of CPUs to use (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpus
-- id: silent
+- id: in_silent
   doc: suppress output of logger
   type: boolean
   inputBinding:
     prefix: --silent
-- id: genome_prot_dir
+- id: in_genome_prot_dir
   doc: directory containing amino acid genes for each genome
   type: string
   inputBinding:
     position: 0
-- id: scaffold_stats_file
+- id: in_scaffold_stats_file
   doc: file with statistics for each scaffold
   type: string
   inputBinding:
     position: 1
-- id: db_file
+- id: in_db_file
   doc: DIAMOND database of reference genomes
   type: string
   inputBinding:
     position: 2
-- id: taxonomy_file
+- id: in_taxonomy_file
   doc: taxonomic assignment of each reference genomes
   type: string
   inputBinding:
     position: 3
-- id: output_dir
+- id: in_output_dir
   doc: output directory
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - refinem

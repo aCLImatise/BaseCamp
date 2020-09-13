@@ -4,4 +4,7 @@ task Catmt {
   command <<<
     catmt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

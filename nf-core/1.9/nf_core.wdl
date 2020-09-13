@@ -1,14 +1,17 @@
 version 1.0
 
-task NfCore {
+task Nfcore {
   input {
     Boolean? verbose
   }
   command <<<
-    nf-core \
-      ~{true="--verbose" false="" verbose}
+    nf_core \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     verbose: "Verbose output (print debug statements)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

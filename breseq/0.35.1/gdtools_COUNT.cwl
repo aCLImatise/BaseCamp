@@ -1,44 +1,58 @@
 class: CommandLineTool
 id: ../../../gdtools_COUNT.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: produce output for each mutation counted.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: reference
+- id: in_reference
   doc: File containing reference sequences in GenBank, GFF3, or FASTA format. Option
     may be provided multiple times for multiple files (REQUIRED)
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: output
+- id: in_output
   doc: path to output CSV file with count data. (DEFAULT=count.csv)
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: detailed_output
+- id: in_detailed_output
   doc: path to optional output tab-delimited file with detailed information about
     all mutations (Default = OFF)
-  type: string
+  type: File
   inputBinding:
     prefix: --detailed-output
-- id: calculate_genome_size
+- id: in_calculate_genome_size
   doc: use APPLY to calculate final genome sizes
   type: boolean
   inputBinding:
     prefix: --calculate-genome-size
-- id: base_substitution_statistics
+- id: in_base_substitution_statistics
   doc: calculate detailed base substitution statistics
   type: boolean
   inputBinding:
     prefix: --base-substitution-statistics
-- id: count_polymorphisms
+- id: in_count_polymorphisms
   doc: count polymorphic mutations (those with frequencies < 1). (Default = FALSE)
   type: boolean
   inputBinding:
     prefix: --count-polymorphisms
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: path to output CSV file with count data. (DEFAULT=count.csv)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_detailed_output
+  doc: path to optional output tab-delimited file with detailed information about
+    all mutations (Default = OFF)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_detailed_output)
 cwlVersion: v1.1
 baseCommand:
 - gdtools

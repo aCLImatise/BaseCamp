@@ -2,10 +2,10 @@ version 1.0
 
 task SvtkVcfclusterFilelist {
   input {
-    String? r
-    String? d
-    String? f
     String? x
+    String? f
+    String? d
+    String? r
     String s_vtk
     String vcf_cluster
   }
@@ -13,17 +13,20 @@ task SvtkVcfclusterFilelist {
     svtk vcfcluster filelist \
       ~{s_vtk} \
       ~{vcf_cluster} \
-      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(x) then ("-x " +  '"' + x + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
-      ~{if defined(x) then ("-x " +  '"' + x + '"') else ""}
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
   parameter_meta {
-    r: ""
-    d: ""
-    f: ""
     x: ""
+    f: ""
+    d: ""
+    r: ""
     s_vtk: ""
     vcf_cluster: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

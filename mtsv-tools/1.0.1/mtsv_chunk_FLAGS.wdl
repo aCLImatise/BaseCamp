@@ -1,20 +1,20 @@
 version 1.0
 
-task MtsvChunkFLAGS {
+task MtsvchunkFLAGS {
   input {
-    String? var_input
     String? var_output
-    Int? gb
+    String? var_input
   }
   command <<<
-    mtsv-chunk FLAGS \
-      ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""} \
+    mtsv_chunk FLAGS \
       ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
-      ~{if defined(gb) then ("--gb " +  '"' + gb + '"') else ""}
+      ~{if defined(var_input) then ("--input " +  '"' + var_input + '"') else ""}
   >>>
   parameter_meta {
-    var_input: ""
     var_output: ""
-    gb: ""
+    var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

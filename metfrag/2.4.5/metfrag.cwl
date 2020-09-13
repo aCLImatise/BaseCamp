@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../metfrag.cwl
 inputs:
-- id: jar
+- id: in_jar
   doc: ''
   type: string
   inputBinding:
     prefix: -jar
-- id: java
+- id: in_java
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: parameter_file
+- id: in_parameter_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - metfrag

@@ -1,6 +1,6 @@
 version 1.0
 
-task ScalpelDiscovery {
+task Scalpeldiscovery {
   input {
     Boolean? verbose
     Boolean? single
@@ -9,18 +9,21 @@ task ScalpelDiscovery {
     String var_command
   }
   command <<<
-    scalpel-discovery \
+    scalpel_discovery \
       ~{var_command} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--single" false="" single} \
-      ~{true="--denovo" false="" de_novo} \
-      ~{true="--somatic" false="" somatic}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (single) then "--single" else ""} \
+      ~{if (de_novo) then "--denovo" else ""} \
+      ~{if (somatic) then "--somatic" else ""}
   >>>
   parameter_meta {
     verbose: ": verbose mode"
-    single: ": single exome study "
+    single: ": single exome study"
     de_novo: ": family study (mom,dad,affected,sibling)"
     somatic: ": normal/tumor study"
     var_command: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,41 +1,41 @@
 version 1.0
 
-task FilterGffValues {
+task FiltergffValues {
   input {
+    Boolean? verbose
     String? str_eq
     String? str_in
-    String? num_eq
-    String? num_ge
-    String? num_le
-    String? num_gt
-    String? num_lt
+    Int? num_eq
+    Int? num_ge
+    Int? num_le
+    Int? num_gt
     Boolean? progress
-    String? input_file
-    String? output_file
+    String than
   }
   command <<<
-    filter-gff values \
-      ~{input_file} \
-      ~{output_file} \
+    filter_gff values \
+      ~{than} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(str_eq) then ("--str-eq " +  '"' + str_eq + '"') else ""} \
       ~{if defined(str_in) then ("--str-in " +  '"' + str_in + '"') else ""} \
       ~{if defined(num_eq) then ("--num-eq " +  '"' + num_eq + '"') else ""} \
       ~{if defined(num_ge) then ("--num-ge " +  '"' + num_ge + '"') else ""} \
       ~{if defined(num_le) then ("--num-le " +  '"' + num_le + '"') else ""} \
       ~{if defined(num_gt) then ("--num-gt " +  '"' + num_gt + '"') else ""} \
-      ~{if defined(num_lt) then ("--num-lt " +  '"' + num_lt + '"') else ""} \
-      ~{true="--progress" false="" progress}
+      ~{if (progress) then "--progress" else ""}
   >>>
   parameter_meta {
-    str_eq: "filter by custom key:value, if the argument is 'key:value' the annotation is kept if it contains an attribute 'key' whose value is exactly 'value' as a string"
+    verbose: ""
+    str_eq: "filter by custom key:value, if the argument is 'key:value'\\nthe annotation is kept if it contains an attribute 'key'\\nwhose value is exactly 'value' as a string"
     str_in: "Same as '--str-eq' but 'value' is contained in the attribute"
-    num_eq: "Same as '--str-eq' but 'value' is a number which is equal or greater than"
-    num_ge: "Same as '--str-eq' but 'value' is a number which is equal or greater than"
-    num_le: "Same as '--num-ge' but 'value' is a number which is equal or less than"
-    num_gt: "Same as '--str-eq' but 'value' is a number which is greater than"
-    num_lt: "Same as '--num-ge' but 'value' is a number which is less than"
+    num_eq: "Same as '--str-eq' but 'value' is a number which is equal or\\ngreater than"
+    num_ge: "Same as '--str-eq' but 'value' is a number which is equal or\\ngreater than"
+    num_le: "Same as '--num-ge' but 'value' is a number which is equal or\\nless than"
+    num_gt: "Same as '--str-eq' but 'value' is a number which is greater"
     progress: "Shows Progress Bar"
-    input_file: ""
-    output_file: ""
+    than: "--num-lt TEXT  Same as '--num-ge' but 'value' is a number which is less than"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

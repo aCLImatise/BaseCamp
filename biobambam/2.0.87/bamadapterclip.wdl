@@ -4,4 +4,7 @@ task Bamadapterclip {
   command <<<
     bamadapterclip
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

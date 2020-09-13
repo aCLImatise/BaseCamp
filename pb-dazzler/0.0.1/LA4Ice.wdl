@@ -6,9 +6,12 @@ task LA4Ice {
   }
   command <<<
     LA4Ice \
-      ~{true="-carmEUF" false="" car_me_uf}
+      ~{if (car_me_uf) then "-carmEUF" else ""}
   >>>
   parameter_meta {
     car_me_uf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

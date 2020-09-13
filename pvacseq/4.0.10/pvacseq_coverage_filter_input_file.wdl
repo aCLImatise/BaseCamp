@@ -17,4 +17,7 @@ task PvacseqCoverageFilterInputFile {
     pvac_seq: ""
     coverage_filter: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

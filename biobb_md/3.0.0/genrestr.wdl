@@ -2,10 +2,10 @@ version 1.0
 
 task Genrestr {
   input {
-    String? config
-    String? input_structure_path
+    File? config
+    File? input_structure_path
     String? input_ndx_path
-    String? output_itp_path
+    File? output_itp_path
   }
   command <<<
     genrestr \
@@ -19,5 +19,9 @@ task Genrestr {
     input_structure_path: ""
     input_ndx_path: ""
     output_itp_path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_itp_path = "${in_output_itp_path}"
   }
 }

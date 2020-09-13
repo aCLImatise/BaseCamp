@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../build_icm.cwl
 inputs:
-- id: set_depth_model
+- id: in_set_depth_model
   doc: Set depth of model to <num>
-  type: string
+  type: long
   inputBinding:
     prefix: -d
-- id: ignore_input_strings
+- id: in_ignore_input_strings
   doc: Ignore input strings with in-frame stop codons
   type: boolean
   inputBinding:
     prefix: -F
-- id: set_period_model
+- id: in_set_period_model
   doc: Set period of model to <num>
-  type: string
+  type: long
   inputBinding:
     prefix: -p
-- id: use_reverse_build
+- id: in_use_reverse_build
   doc: Use the reverse of input strings to build the model
   type: boolean
   inputBinding:
     prefix: -r
-- id: output_model_text
+- id: in_output_model_text
   doc: Output model as text (for debugging only)
   type: boolean
   inputBinding:
     prefix: -t
-- id: set_level_higher
+- id: in_set_level_higher
   doc: Set verbose level; higher is more diagnostic printouts
-  type: string
+  type: long
   inputBinding:
     prefix: -v
-- id: set_length_num
-  doc: Set length of model window to <num>
-  type: string
+- id: in_set_length_model
+  doc: "Set length of model window to <num>\n"
+  type: long
   inputBinding:
     prefix: -w
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - build-icm

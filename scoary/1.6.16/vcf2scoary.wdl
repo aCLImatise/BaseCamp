@@ -2,19 +2,25 @@ version 1.0
 
 task Vcf2scoary {
   input {
-    String? out
-    String? types
-    Boolean? force
+    File? out
+    File? types
+    File? force
   }
   command <<<
     vcf2scoary \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(types) then ("--types " +  '"' + types + '"') else ""} \
-      ~{true="--force" false="" force}
+      ~{if (force) then "--force" else ""}
   >>>
   parameter_meta {
     out: "The path to the output file"
-    types: "The types of variants to include in the output. NOTE: This works if TYPE=XX can be found in the INFO column of the vcf file. The special keyword ALL includes all types. This is the default setting. Common types are snp, mnp, ins, del and complex. Give as comma-separated list. Example: --types snp,ins,del"
+    types: "The types of variants to include in the output. NOTE: This\\nworks if TYPE=XX can be found in the INFO column of the vcf\\nfile. The special keyword ALL includes all types. This is the\\ndefault setting. Common types are snp, mnp, ins, del and\\ncomplex. Give as comma-separated list. Example: --types\\nsnp,ins,del"
     force: "Force overwriting of output file. (If it already exists)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_types = "${in_types}"
+    File out_force = "${in_force}"
   }
 }

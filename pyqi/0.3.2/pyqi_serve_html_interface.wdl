@@ -1,14 +1,20 @@
 version 1.0
 
-task PyqiServeHtmlInterface {
+task PyqiServehtmlinterface {
   input {
-    Int? interface_module
+    Int? port
+    String? interface_module
   }
   command <<<
-    pyqi serve-html-interface \
+    pyqi serve_html_interface \
+      ~{if defined(port) then ("--port " +  '"' + port + '"') else ""} \
       ~{if defined(interface_module) then ("--interface-module " +  '"' + interface_module + '"') else ""}
   >>>
   parameter_meta {
-    interface_module: "The module to serve the interface for [REQUIRED]"
+    port: "The port to run the server on [default: 8080]"
+    interface_module: "The module to serve the interface for [REQUIRED]\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

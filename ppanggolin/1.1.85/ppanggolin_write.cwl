@@ -1,144 +1,163 @@
 class: CommandLineTool
 id: ../../../ppanggolin_write.cwl
 inputs:
-- id: pan_genome
+- id: in_pan_genome
   doc: 'The pangenome .h5 file (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --pangenome
-- id: output
-  doc: 'Output directory where the file(s) will be written (default: None)'
-  type: string
+- id: in_output
+  doc: "Output directory where the file(s) will be written\n(default: None)"
+  type: File
   inputBinding:
     prefix: --output
-- id: soft_core
+- id: in_soft_core
   doc: 'Soft core threshold to use (default: 0.95)'
-  type: string
+  type: double
   inputBinding:
     prefix: --soft_core
-- id: dup_margin
-  doc: "minimum ratio of organisms in which the family must have multiple genes for\
-    \ it to be considered 'duplicated' (default: 0.05)"
-  type: string
+- id: in_dup_margin
+  doc: "minimum ratio of organisms in which the family must\nhave multiple genes for\
+    \ it to be considered\n'duplicated' (default: 0.05)"
+  type: double
   inputBinding:
     prefix: --dup_margin
-- id: gex_f
-  doc: 'write a gexf file with all the annotations and all the genes of each gene
-    family (default: False)'
+- id: in_gex_f
+  doc: "write a gexf file with all the annotations and all the\ngenes of each gene\
+    \ family (default: False)"
   type: boolean
   inputBinding:
     prefix: --gexf
-- id: light_gex_f
-  doc: 'write a gexf file with the gene families and basic informations about them
-    (default: False)'
+- id: in_light_gex_f
+  doc: "write a gexf file with the gene families and basic\ninformations about them\
+    \ (default: False)"
   type: boolean
   inputBinding:
     prefix: --light_gexf
-- id: csv
-  doc: 'csv file format as used by Roary, among others. The alternative gene ID will
-    be the partition, if there is one (default: False)'
+- id: in_csv
+  doc: "csv file format as used by Roary, among others. The\nalternative gene ID will\
+    \ be the partition, if there is\none (default: False)"
   type: boolean
   inputBinding:
     prefix: --csv
-- id: r_tab
-  doc: 'tabular file for the gene binary presence absence matrix (default: False)'
+- id: in_r_tab
+  doc: "tabular file for the gene binary presence absence\nmatrix (default: False)"
   type: boolean
   inputBinding:
     prefix: --Rtab
-- id: projection
-  doc: 'a csv file for each organism providing informations on the projection of the
-    graph on the organism (default: False)'
+- id: in_projection
+  doc: "a csv file for each organism providing informations on\nthe projection of\
+    \ the graph on the organism (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --projection
-- id: stats
-  doc: 'tsv files with some statistics for each organism and for each gene family
-    (default: False)'
+- id: in_stats
+  doc: "tsv files with some statistics for each organism and\nfor each gene family\
+    \ (default: False)"
   type: boolean
   inputBinding:
     prefix: --stats
-- id: partitions
-  doc: 'list of families belonging to each partition, with one file per partitions
-    and one family per line (default: False)'
+- id: in_partitions
+  doc: "list of families belonging to each partition, with one\nfile per partitions\
+    \ and one family per line (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --partitions
-- id: compress
+- id: in_compress
   doc: 'Compress the files in .gz (default: False)'
   type: boolean
   inputBinding:
     prefix: --compress
-- id: json
-  doc: 'Writes the graph in a json file format (default: False)'
+- id: in_json
+  doc: "Writes the graph in a json file format (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --json
-- id: regions
-  doc: 'Write the RGP in a tab format, one file per genome (default: False)'
+- id: in_regions
+  doc: "Write the RGP in a tab format, one file per genome\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --regions
-- id: spots
-  doc: 'Write spot summary and a list of all rgp in each spot (default: False)'
+- id: in_spots
+  doc: "Write spot summary and a list of all rgp in each spot\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --spots
-- id: borders
+- id: in_borders
   doc: 'List all borders of each spot (default: False)'
   type: boolean
   inputBinding:
     prefix: --borders
-- id: families_tsv
-  doc: 'Write a tsv file providing the association between genes and gene families
-    (default: False)'
+- id: in_families_tsv
+  doc: "Write a tsv file providing the association between\ngenes and gene families\
+    \ (default: False)"
   type: boolean
   inputBinding:
     prefix: --families_tsv
-- id: all_genes
+- id: in_all_genes
   doc: 'Write all nucleotic CDS sequences (default: False)'
   type: boolean
   inputBinding:
     prefix: --all_genes
-- id: all_prot_families
-  doc: 'Write Write representative proteic sequences of all the gene families (default:
-    False)'
+- id: in_all_prot_families
+  doc: "Write Write representative proteic sequences of all\nthe gene families (default:\
+    \ False)"
   type: boolean
   inputBinding:
     prefix: --all_prot_families
-- id: all_gene_families
-  doc: 'Write representative nucleic sequences of all the gene families (default:
-    False)'
+- id: in_all_gene_families
+  doc: "Write representative nucleic sequences of all the gene\nfamilies (default:\
+    \ False)"
   type: boolean
   inputBinding:
     prefix: --all_gene_families
-- id: tmpdir
+- id: in_tmpdir
   doc: 'directory for storing temporary files (default: /tmp)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-- id: verbose
-  doc: 'Indicate verbose level (0 for warning and errors only, 1 for info, 2 for debug)
-    (default: 1)'
+- id: in_verbose
+  doc: "Indicate verbose level (0 for warning and errors only,\n1 for info, 2 for\
+    \ debug) (default: 1)"
   type: string
   inputBinding:
     prefix: --verbose
-- id: log
+- id: in_log
   doc: 'log output file (default: stdout)'
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: cpu
+- id: in_cpu
   doc: 'Number of available cpus (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpu
-- id: force
-  doc: 'Force writing in output directory and in pangenome output file. (default:
-    False)'
-  type: boolean
+- id: in_force
+  doc: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  type: File
   inputBinding:
     prefix: --force
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output directory where the file(s) will be written\n(default: None)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_log
+  doc: 'log output file (default: stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log)
+- id: out_force
+  doc: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_force)
 cwlVersion: v1.1
 baseCommand:
 - ppanggolin

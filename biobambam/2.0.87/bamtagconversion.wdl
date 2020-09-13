@@ -4,4 +4,7 @@ task Bamtagconversion {
   command <<<
     bamtagconversion
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

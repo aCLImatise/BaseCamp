@@ -11,4 +11,7 @@ task BiscuitAsm {
   parameter_meta {
     input_dot_epi_read: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

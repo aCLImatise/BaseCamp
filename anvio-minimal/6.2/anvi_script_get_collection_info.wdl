@@ -1,7 +1,10 @@
 version 1.0
 
-task AnviScriptGetCollectionInfo {
+task Anviscriptgetcollectioninfo {
   command <<<
-    anvi-script-get-collection-info
+    anvi_script_get_collection_info
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

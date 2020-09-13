@@ -1,14 +1,10 @@
 version 1.0
 
 task BedCommonRegions {
-  input {
-    File file_n
-  }
   command <<<
-    bedCommonRegions \
-      ~{file_n}
+    bedCommonRegions
   >>>
-  parameter_meta {
-    file_n: ""
+  output {
+    File out_stdout = stdout()
   }
 }

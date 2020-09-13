@@ -4,4 +4,7 @@ task Ipcontroller {
   command <<<
     ipcontroller
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

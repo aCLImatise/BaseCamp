@@ -4,4 +4,7 @@ task Bamfiltermc {
   command <<<
     bamfiltermc
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

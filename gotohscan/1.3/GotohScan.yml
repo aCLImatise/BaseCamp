@@ -1,18 +1,100 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: arguments
-  optional: true
-named: []
 command:
 - GotohScan
+positional:
+- !Positional
+  description: 'Date:    March 5, 2009'
+  position: 0
+  name: jana@bioinf.uni-leipzig.de
+  optional: false
+named:
+- !Flag
+  description: Input database FILE in FASTA format.
+  synonyms:
+  - -d
+  - --dbase
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Input query FILE in FASTA format.
+  synonyms:
+  - -q
+  - --query
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Input configuration FILE.
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Database is splitted into NUMBER nt large subsequences. Default: 10000'
+  synonyms:
+  - --split
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: 'Set Evalue (double!). NUMBER should be < 10. Default: 1e-3'
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: Set percent identity of aligned sequences. NUMBER should be in [0.0,100.0]
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: "Print score distribution data for each query to a file. Default: unset\n\
+    Produces an xmgrace (.agr) file!"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Give output format. Default: 0\n0 - Blast tabular output\n1 - Blast\
+    \ tabular output + aligned sequences\n2 - FASTA format. NOTE: Hit sequence only,\
+    \ without gaps !\n3 - MAF format. NOTE: Header truncated to 30 characters!\n4\
+    \ - BED + aligned sequences\n5 - GFF + aligned sequences"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: '|1        Print Warnings and Notes. Default: 0'
+  synonyms:
+  - --verbose
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Show this help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Show version information.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "\n         GotohScan 1.3\n         =============\n\nUsage: GotohScan [\
   \ arguments ] \n\narguments: [-d,--dbase FILE] [-q,--query FILE]\n           [-e\
   \ NUMBER] [-p NUMBER] [-o NUMBER]\n           [-s] [--verbose 0|1] [-c,--config\

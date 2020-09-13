@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../running_cmp.cwl
 inputs:
-- id: file_one
+- id: in_file_one
   doc: ''
-  type: File
+  type: long
   inputBinding:
     position: 0
-- id: file_two
+- id: in_file_two
   doc: ''
-  type: File
+  type: long
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - running-cmp

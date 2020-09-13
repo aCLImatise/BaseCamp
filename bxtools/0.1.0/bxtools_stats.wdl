@@ -13,8 +13,8 @@ task BxtoolsStats {
       ~{bx_tools} \
       ~{stat} \
       ~{bam_slash_sam_slash_cram} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--tag" false="" tag}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (tag) then "--tag" else ""}
   >>>
   parameter_meta {
     verbose: "Set verbose output"
@@ -22,5 +22,8 @@ task BxtoolsStats {
     bx_tools: ""
     stat: ""
     bam_slash_sam_slash_cram: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

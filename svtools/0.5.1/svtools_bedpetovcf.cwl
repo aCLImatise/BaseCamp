@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../svtools_bedpetovcf.cwl
 inputs:
-- id: input
+- id: in_input
   doc: 'BEDPE input (default: stdin)'
   type: string
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: 'Output VCF to write (default: stdout)'
   type: string
   inputBinding:
     prefix: --output
-- id: tempdir
+- id: in_tempdir
   doc: Directory for temp file downloads
-  type: string
+  type: File
   inputBinding:
     prefix: --tempdir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svtools

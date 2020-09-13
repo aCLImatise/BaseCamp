@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../arv_migrate_docker19.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: Print stdout/stderr even on success
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: force
+- id: in_force
   doc: Try to migrate even if there isn't enough space
   type: boolean
   inputBinding:
     prefix: --force
-- id: storage_driver
+- id: in_storage_driver
   doc: Docker storage driver, e.g. aufs, overlay, vfs
   type: string
   inputBinding:
     prefix: --storage-driver
-- id: dry_run
+- id: in_dry_run
   doc: Print number of pending migrations.
   type: boolean
   inputBinding:
     prefix: --dry-run
-- id: print_un_migrated
+- id: in_print_un_migrated
   doc: Print list of images needing migration.
   type: boolean
   inputBinding:
     prefix: --print-unmigrated
-- id: tempdir
+- id: in_tempdir
   doc: Set temporary directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tempdir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - arv-migrate-docker19

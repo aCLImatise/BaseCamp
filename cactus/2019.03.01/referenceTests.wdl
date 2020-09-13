@@ -4,4 +4,7 @@ task ReferenceTests {
   command <<<
     referenceTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

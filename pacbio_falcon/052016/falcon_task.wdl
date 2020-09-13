@@ -1,14 +1,17 @@
 version 1.0
 
-task FalconTask {
+task Falcontask {
   input {
     String? var_task
   }
   command <<<
-    falcon-task \
+    falcon_task \
       ~{var_task}
   >>>
   parameter_meta {
     var_task: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

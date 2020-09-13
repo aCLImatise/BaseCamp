@@ -1,32 +1,10 @@
 class: CommandLineTool
 id: ../../../gc_coverage_bias_plot.cwl
-inputs:
-- id: no
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: such
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 2
-- id: or
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: directory
-  doc: ''
-  type: Directory
-  inputBinding:
-    position: 4
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gc_coverage_bias_plot

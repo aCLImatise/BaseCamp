@@ -2,19 +2,22 @@ version 1.0
 
 task Gsutil {
   input {
-    Boolean? d
-    Boolean? dd
     String? h
+    Boolean? dd
+    Boolean? d
   }
   command <<<
     gsutil \
-      ~{true="-D" false="" d} \
-      ~{true="-DD" false="" dd} \
-      ~{if defined(h) then ("-h " +  '"' + h + '"') else ""}
+      ~{if defined(h) then ("-h " +  '"' + h + '"') else ""} \
+      ~{if (dd) then "-DD" else ""} \
+      ~{if (d) then "-D" else ""}
   >>>
   parameter_meta {
-    d: ""
-    dd: ""
     h: ""
+    dd: ""
+    d: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

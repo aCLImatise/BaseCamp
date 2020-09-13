@@ -14,4 +14,7 @@ task FermiSeqrank {
     fermi: ""
     seq_sort: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

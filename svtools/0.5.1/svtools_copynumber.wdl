@@ -9,7 +9,7 @@ task SvtoolsCopynumber {
     String? sample
     String? vcf_input
     File? output_vcf_write
-    String? tempdir
+    File? tempdir
   }
   command <<<
     svtools copynumber \
@@ -24,12 +24,15 @@ task SvtoolsCopynumber {
   >>>
   parameter_meta {
     cnv_nator: "[-i <VCF>] [-o <PATH>] [-t <DIR>]"
-    coordinates: "file containing coordinate for which to retrieve copynumber (required)"
+    coordinates: "file containing coordinate for which to retrieve\\ncopynumber (required)"
     root: "CNVnator .root histogram file (required)"
     window: "CNVnator window size (required)"
     sample: "sample to annotate (required)"
     vcf_input: "VCF input"
     output_vcf_write: "output VCF to write (default: stdout)"
     tempdir: "Directory for temp file downloads"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

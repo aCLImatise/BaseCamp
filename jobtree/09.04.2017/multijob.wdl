@@ -4,4 +4,7 @@ task Multijob {
   command <<<
     multijob
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

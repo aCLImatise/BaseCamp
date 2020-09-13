@@ -2,20 +2,20 @@ version 1.0
 
 task GuidescanProcesser {
   input {
-    String? path_fasta_file
-    String? project_name_use
+    File? path_fasta_file
+    Directory? project_name_use
     Int? min_chr
-    String? list_names_chromosomes
+    File? list_names_chromosomes
     Int? desired_length_including
     String? pam_sequence_default
-    String? alternative_pam_sequences
+    Int? alternative_pam_sequences
     String? pam_pos
-    String? minimum_mismatch_similarity
-    String? maximum_distance_consider
+    Int? minimum_mismatch_similarity
+    Int? maximum_distance_consider
     Int? max_off_pos
     Int? max_off_count
-    String? gnu_path
-    String? how_many_threads
+    File? gnu_path
+    Int? how_many_threads
   }
   command <<<
     guidescan_processer \
@@ -35,19 +35,23 @@ task GuidescanProcesser {
       ~{if defined(how_many_threads) then ("-t " +  '"' + how_many_threads + '"') else ""}
   >>>
   parameter_meta {
-    path_fasta_file: "path to fasta file or folder with fasta files (will use all .fa, .fasta, .fa.gz, .fasta.gz files found in the folder) (default: None)"
-    project_name_use: "project name, use in all output (will produce a folder with this name containing intermediate and final files in it) (default: myguides)"
-    min_chr: "minimum chromosome length to consider, chromosomes in input FASTA that are shorter than this will be excluded from analysis; simple way to exclude scaffolds unassigned to known chromosomes etc. (default: 10000)"
-    list_names_chromosomes: "list names of chromosomes (comma separated) that will be used in analysis, or name of file where this list is stored (default: )"
-    desired_length_including: "desired length of guideRNAs (not including PAM) (default: 20)"
+    path_fasta_file: "path to fasta file or folder with fasta files (will\\nuse all .fa, .fasta, .fa.gz, .fasta.gz files found in\\nthe folder) (default: None)"
+    project_name_use: "project name, use in all output (will produce a folder\\nwith this name containing intermediate and final files\\nin it) (default: myguides)"
+    min_chr: "minimum chromosome length to consider, chromosomes in\\ninput FASTA that are shorter than this will be\\nexcluded from analysis; simple way to exclude\\nscaffolds unassigned to known chromosomes etc.\\n(default: 10000)"
+    list_names_chromosomes: "list names of chromosomes (comma separated) that will\\nbe used in analysis, or name of file where this list\\nis stored (default: )"
+    desired_length_including: "desired length of guideRNAs (not including PAM)\\n(default: 20)"
     pam_sequence_default: "PAM sequence (default: NGG)"
-    alternative_pam_sequences: "alternative PAM sequences (separate multiple ones by commas), will not be used in primary guideRNAs, but will be considered in off-targets; all PAM sequences should be mutually exclusive and of the same length (default: NAG)"
-    pam_pos: "position of PAM with respect to guideRNA (default: end)"
-    minimum_mismatch_similarity: "minimum mismatch similarity between guideRNAs; a candidate guideRNA (with primary PAM) should not have alternative occurences in the genome (with any PAM) with less than this many mismatches (not including PAM) (default: 2)"
-    maximum_distance_consider: "maximum distance to consider from guideRNA to its off- target; off-target is an alternative occurrence (with any PAM) of this guideRNA in the genome at edit distance at most this number (including PAM); currently values larger than 4 are infeasible for large (e.g., mammalian) genomes, and value 3 will take long time to compute; use -1 if do not want any off- target info in resulting database (can add it later using bamdata) (default: 3)"
-    max_off_pos: "maximum number of positions of k-mers to remember; for k-mer occurring multiple times in the genome (such k-mers cannot be guideRNAs, but their positions can be off-targets of guideRNAs) store at most this many arbitrary their occurrences in the genome (default: 10)"
-    max_off_count: "maximum number of off-targets to store for a guideRNA in a resulting BAM library (default: 1000)"
-    gnu_path: "path to gnu utilities, e.g. \"/usr/local/bin\"; if empty, use system defaults; requires: cut, sort, uniq, shuf (default: )"
-    how_many_threads: "how many threads to use; do not specify more than you have on your system; currently not implemented (default: 1)"
+    alternative_pam_sequences: "alternative PAM sequences (separate multiple ones by\\ncommas), will not be used in primary guideRNAs, but\\nwill be considered in off-targets; all PAM sequences\\nshould be mutually exclusive and of the same length\\n(default: NAG)"
+    pam_pos: "position of PAM with respect to guideRNA (default:\\nend)"
+    minimum_mismatch_similarity: "minimum mismatch similarity between guideRNAs; a\\ncandidate guideRNA (with primary PAM) should not have\\nalternative occurences in the genome (with any PAM)\\nwith less than this many mismatches (not including\\nPAM) (default: 2)"
+    maximum_distance_consider: "maximum distance to consider from guideRNA to its off-\\ntarget; off-target is an alternative occurrence (with\\nany PAM) of this guideRNA in the genome at edit\\ndistance at most this number (including PAM);\\ncurrently values larger than 4 are infeasible for\\nlarge (e.g., mammalian) genomes, and value 3 will take\\nlong time to compute; use -1 if do not want any off-\\ntarget info in resulting database (can add it later\\nusing bamdata) (default: 3)"
+    max_off_pos: "maximum number of positions of k-mers to remember; for\\nk-mer occurring multiple times in the genome (such\\nk-mers cannot be guideRNAs, but their positions can be\\noff-targets of guideRNAs) store at most this many\\narbitrary their occurrences in the genome (default:\\n10)"
+    max_off_count: "maximum number of off-targets to store for a guideRNA\\nin a resulting BAM library (default: 1000)"
+    gnu_path: "path to gnu utilities, e.g. \\\"/usr/local/bin\\\"; if\\nempty, use system defaults; requires: cut, sort, uniq,\\nshuf (default: )"
+    how_many_threads: "how many threads to use; do not specify more than you\\nhave on your system; currently not implemented\\n(default: 1)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_project_name_use = "${in_project_name_use}"
   }
 }

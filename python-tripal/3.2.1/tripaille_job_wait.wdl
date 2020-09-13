@@ -11,4 +11,7 @@ task TripailleJobWait {
   parameter_meta {
     job_id: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

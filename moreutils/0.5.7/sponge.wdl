@@ -4,4 +4,7 @@ task Sponge {
   command <<<
     sponge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

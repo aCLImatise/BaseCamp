@@ -1,12 +1,15 @@
 class: CommandLineTool
-id: ../../../versions.py.cwl
+id: ../../../versions.cwl
 inputs:
-- id: target
+- id: in_target
   doc: Target output file for version numbers
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- versions.py
+- versions

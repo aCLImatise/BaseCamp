@@ -10,11 +10,14 @@ task Clk {
     clk \
       ~{an_k} \
       ~{bank_name} \
-      ~{true="-b" false="" b}
+      ~{if (b) then "-b" else ""}
   >>>
   parameter_meta {
     b: ""
     an_k: ""
     bank_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

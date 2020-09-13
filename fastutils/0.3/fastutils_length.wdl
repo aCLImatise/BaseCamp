@@ -2,8 +2,8 @@ version 1.0
 
 task FastutilsLength {
   input {
-    String? in
-    String? out
+    File? in
+    File? out
     Int? min_len
     Int? maxlen
     Boolean? total
@@ -14,7 +14,7 @@ task FastutilsLength {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(min_len) then ("--minLen " +  '"' + min_len + '"') else ""} \
       ~{if defined(maxlen) then ("--maxLen " +  '"' + maxlen + '"') else ""} \
-      ~{true="--total" false="" total}
+      ~{if (total) then "--total" else ""}
   >>>
   parameter_meta {
     in: "input file in fasta/q format [stdin]"
@@ -22,5 +22,9 @@ task FastutilsLength {
     min_len: "min read length [0]"
     maxlen: "max read length [LLONG_MAX]"
     total: "print total number of bases in third column"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

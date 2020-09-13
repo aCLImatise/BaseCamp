@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- referenceseeker_db
+- init
 positional: []
 named:
 - !Flag
@@ -17,18 +20,17 @@ named:
   args: !SimpleFlagArg
     name: DB
   optional: true
-command:
-- referenceseeker_db
-- init
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - referenceseeker_db
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - referenceseeker_db
+    - import
     positional: []
     named:
     - !Flag
@@ -48,7 +50,7 @@ parent: &id002 !Command
         name: GENOME
       optional: true
     - !Flag
-      description: Unique genome identifier (default sequence id of first record)
+      description: "Unique genome identifier (default sequence id of first\nrecord)"
       synonyms:
       - --id
       - -i
@@ -70,24 +72,22 @@ parent: &id002 !Command
       - -s
       args: !ChoiceFlagArg
         choices: !!set
-          ? chromosome
           ? contig
+          ? chromosome
           ? complete
           ? scaffold
       optional: true
     - !Flag
-      description: Organism name (default = "")
+      description: "Organism name (default = \"\")\n"
       synonyms:
       - --organism
       - -o
       args: !SimpleFlagArg
         name: ORGANISM
       optional: true
-    command:
-    - referenceseeker_db
-    - import
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -112,6 +112,8 @@ parent: &id002 !Command
       \             Organism name (default = \"\")\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag: !Flag
     description: Show this help message and exit
     synonyms:
@@ -137,6 +139,7 @@ parent: &id002 !Command
     \ Software, 5(46), 1994, https://doi.org/10.21105/joss.01994\n\nGitHub:\nhttps://github.com/oschwengers/referenceseeker\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../exon_utils.cwl
 inputs:
-- id: to
+- id: in_to
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: fetch
+- id: in_fetch
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: constitutive
+- id: in_constitutive
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: exons
+- id: in_exons
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: from
+- id: in_from
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: gff
+- id: in_gff
   doc: ''
   type: string
   inputBinding:
     position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - exon_utils

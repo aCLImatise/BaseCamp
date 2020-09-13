@@ -1,4 +1,6 @@
 !Command
+command:
+- EMBLmyGFF3
 positional:
 - !Positional
   description: Input gff-file.
@@ -10,23 +12,29 @@ positional:
   position: 1
   name: fasta
   optional: false
+- !Positional
+  description: --keep_duplicates     Do not remove duplicate features during the process.
+  position: 0
+  name: features.
+  optional: false
 named:
 - !Flag
-  description: 'Bolean. Accession number(s) for the entry. Default value: XXX. The
-    proper value is automatically filled up by ENA during the submission by a unique
-    accession number they will assign. The accession number is used to set up the
-    AC line and the first token of the ID line as well. Please visit [this page](https://www.ebi.ac.uk/ena/submit/accession-
-    number-formats) and [this one](https://www.ebi.ac.uk/ena/submit/sequence- submission)
-    to learn more about it. Activating the option will set the Accession number with
-    the fasta sequence identifier.'
+  description: "Bolean. Accession number(s) for the entry. Default\nvalue: XXX. The\
+    \ proper value is automatically filled\nup by ENA during the submission by a unique\
+    \ accession\nnumber they will assign. The accession number is used\nto set up\
+    \ the AC line and the first token of the ID\nline as well. Please visit [this\n\
+    page](https://www.ebi.ac.uk/ena/submit/accession-\nnumber-formats) and [this\n\
+    one](https://www.ebi.ac.uk/ena/submit/sequence-\nsubmission) to learn more about\
+    \ it. Activating the\noption will set the Accession number with the fasta\nsequence\
+    \ identifier."
   synonyms:
   - -a
   - --accession
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Creation time of the original entry. The default value is the date
-    of the day.
+  description: "Creation time of the original entry. The default value\nis the date\
+    \ of the day."
   synonyms:
   - -c
   - --created
@@ -34,24 +42,24 @@ named:
     name: CREATED
   optional: true
 - !Flag
-  description: Data class of the sample. Default value 'XXX'. This option is used
-    to set up the 5th token of the ID line.
+  description: "Data class of the sample. Default value 'XXX'. This\noption is used\
+    \ to set up the 5th token of the ID line."
   synonyms:
   - -d
   - --data_class
   args: !ChoiceFlagArg
     choices: !!set
-      ? STS
+      ? CON
       ? TSA
+      ? EST
+      ? PAT
+      ? HTC
+      ? MGA
+      ? WGS
+      ? STS
       ? STD
       ? HTG
-      ? WGS
-      ? MGA
-      ? PAT
       ? GSS
-      ? HTC
-      ? CON
-      ? EST
   optional: true
 - !Flag
   description: Sample organelle. No default value.
@@ -62,9 +70,9 @@ named:
     name: ORGANELLE
   optional: true
 - !Flag
-  description: Locus tag prefix used to set up the prefix of the locus_tag qualifier.
-    The locus tag has to be registered at ENA prior any submission. More information
-    [here](https://www.ebi.ac.uk/ena/submit/locus-tags).
+  description: "Locus tag prefix used to set up the prefix of the\nlocus_tag qualifier.\
+    \ The locus tag has to be\nregistered at ENA prior any submission. More\ninformation\n\
+    [here](https://www.ebi.ac.uk/ena/submit/locus-tags)."
   synonyms:
   - -i
   - --locus_tag
@@ -80,9 +88,10 @@ named:
     name: KEYWORD
   optional: true
 - !Flag
-  description: Organism classification e.g 'Eukaryota; Opisthokonta; Metazoa'. The
-    default value is the classification found in the NCBI taxonomy DB from the species/taxid
-    given as --species parameter. If none is found, 'Life' will be the default value.
+  description: "Organism classification e.g 'Eukaryota; Opisthokonta;\nMetazoa'. The\
+    \ default value is the classification\nfound in the NCBI taxonomy DB from the\
+    \ species/taxid\ngiven as --species parameter. If none is found, 'Life'\nwill\
+    \ be the default value."
   synonyms:
   - -l
   - --classification
@@ -96,17 +105,17 @@ named:
   - --molecule_type
   args: !ChoiceFlagArg
     choices: !!set
-      ? viral
-      ? DNA
-      ? genomic
-      ? other
-      ? cRNA
-      ? unassigned
       ? tRNA
-      ? rRNA
-      ? RNA
       ? mRNA
+      ? genomic
+      ? cRNA
+      ? rRNA
+      ? DNA
       ? transcribed
+      ? other
+      ? viral
+      ? unassigned
+      ? RNA
   optional: true
 - !Flag
   description: Output filename.
@@ -117,7 +126,7 @@ named:
     name: OUTPUT
   optional: true
 - !Flag
-  description: Project ID. Default is 'XXX' (This is used to set up the PR line).
+  description: "Project ID. Default is 'XXX' (This is used to set up\nthe PR line)."
   synonyms:
   - -p
   - --project_id
@@ -132,43 +141,44 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Translation table. No default. (This is used to set up the translation
-    table qualifier transl_table of the CDS features.) Please visit [NCBI genetic
-    code](https: //www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi) for more information.'
+  description: "Translation table. No default. (This is used to set up\nthe translation\
+    \ table qualifier transl_table of the\nCDS features.) Please visit [NCBI genetic\
+    \ code](https:\n//www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi)\nfor more\
+    \ information."
   synonyms:
   - -r
   - --transl_table
   args: !ChoiceFlagArg
     choices: !!set
-      ? "4"
-      ? "10"
-      ? "17"
-      ? "21"
-      ? "13"
-      ? "8"
-      ? "2"
-      ? "3"
-      ? "14"
-      ? "9"
-      ? "6"
-      ? "22"
-      ? "16"
+      ? "5"
       ? "23"
-      ? "19"
-      ? "7"
-      ? "20"
+      ? "3"
+      ? "25"
+      ? "16"
+      ? "17"
+      ? "6"
       ? "1"
       ? "11"
-      ? "25"
-      ? "24"
-      ? "15"
-      ? "18"
-      ? "5"
+      ? "4"
+      ? "10"
+      ? "8"
       ? "12"
+      ? "14"
+      ? "15"
+      ? "9"
+      ? "18"
+      ? "19"
+      ? "24"
+      ? "2"
+      ? "7"
+      ? "13"
+      ? "20"
+      ? "22"
+      ? "21"
   optional: true
 - !Flag
-  description: Sample species, formatted as 'Genus species' or taxid. No default.
-    (This is used to set up the OS line.)
+  description: "Sample species, formatted as 'Genus species' or taxid.\nNo default.\
+    \ (This is used to set up the OS line.)"
   synonyms:
   - -s
   - --species
@@ -176,8 +186,8 @@ named:
     name: SPECIES
   optional: true
 - !Flag
-  description: Sequence topology. No default. (This is used to set up the Topology
-    that is the 3rd token of the ID line.)
+  description: "Sequence topology. No default. (This is used to set up\nthe Topology\
+    \ that is the 3rd token of the ID line.)"
   synonyms:
   - -t
   - --topology
@@ -194,28 +204,28 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Source taxonomy. Default value 'XXX'. This option is used to set the
-    taxonomic division within ID line (6th token).
+  description: "Source taxonomy. Default value 'XXX'. This option is\nused to set\
+    \ the taxonomic division within ID line (6th\ntoken)."
   synonyms:
   - -x
   - --taxonomy
   args: !ChoiceFlagArg
     choices: !!set
-      ? MUS
       ? INV
-      ? VRL
-      ? SYN
-      ? PHG
-      ? ENV
-      ? FUN
-      ? MAM
+      ? MUS
       ? UNC
+      ? VRT
+      ? VRL
+      ? PHG
       ? TGN
+      ? PRO
       ? ROD
+      ? MAM
       ? HUM
       ? PLN
-      ? VRT
-      ? PRO
+      ? SYN
+      ? FUN
+      ? ENV
   optional: true
 - !Flag
   description: Gzip output file.
@@ -225,18 +235,18 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Display advanced information of the parameter specified or of all parameters
-    if none specified.
+  description: "Display advanced information of the parameter\nspecified or of all\
+    \ parameters if none specified."
   synonyms:
   - --ah
   - --advanced_help
   args: !ChoiceFlagArg
     choices: !!set
-      ? of
       ? One
-      ? above
       ? parameters
+      ? of
       ? the
+      ? above
   optional: true
 - !Flag
   description: Description. Default value 'XXX'.
@@ -261,8 +271,8 @@ named:
     name: RC
   optional: true
 - !Flag
-  description: Reference Group, the working groups/consortia that produced the record.
-    Default value 'XXX'.
+  description: "Reference Group, the working groups/consortia that\nproduced the record.\
+    \ Default value 'XXX'."
   synonyms:
   - --rg
   args: !SimpleFlagArg
@@ -290,46 +300,39 @@ named:
     name: RX
   optional: true
 - !Flag
-  description: Email used to fetch information from NCBI taxonomy database. Default
-    value 'EMBLmyGFF3@tool.org'.
+  description: "Email used to fetch information from NCBI taxonomy\ndatabase. Default\
+    \ value 'EMBLmyGFF3@tool.org'."
   synonyms:
   - --email
   args: !SimpleFlagArg
     name: EMAIL
   optional: true
 - !Flag
-  description: Copy feature and attribute mapping files to the working directory.
-    They will be used as mapping files instead of the default internal JSON files.
-    You may modify them as it suits you.
+  description: "Copy feature and attribute mapping files to the\nworking directory.\
+    \ They will be used as mapping files\ninstead of the default internal JSON files.\
+    \ You may\nmodify them as it suits you."
   synonyms:
   - --expose_translations
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Force to keep feature types not accepted by EMBL. /!\ Option not suitable
-    for submission purpose.
+  description: "Force to keep feature types not accepted by EMBL. /!\\\nOption not\
+    \ suitable for submission purpose."
   synonyms:
   - --force_unknown_features
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Force to keep features whithout all the mandatory qualifiers. /!\ Option
-    not suitable for submission purpose.
+  description: "Force to keep features whithout all the mandatory\nqualifiers. /!\\\
+    \ Option not suitable for submission\npurpose."
   synonyms:
   - --force_uncomplete_features
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Print gene features with interleaved mRNA and CDS features.
+  description: Print gene features with interleaved mRNA and CDS
   synonyms:
   - --interleave_genes
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Do not remove duplicate features during the process. /!\ Option not
-    suitable for submission purpose.
-  synonyms:
-  - --keep_duplicates
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -346,8 +349,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: By default there is a line wrapping at 80 characters. The cut is at
-    the world level. Activating this option will avoid the line-wrapping for the qualifiers.
+  description: "By default there is a line wrapping at 80 characters.\nThe cut is\
+    \ at the world level. Activating this option\nwill avoid the line-wrapping for\
+    \ the qualifiers."
   synonyms:
   - --no_wrap_qualifier
   args: !EmptyFlagArg {}
@@ -372,48 +376,47 @@ named:
     name: USE_ATTRIBUTE_VALUE_AS_LOCUS_TAG
   optional: true
 - !Flag
-  description: Some logs can be compressed for better lisibility, they won't.
+  description: "Some logs can be compressed for better lisibility,\nthey won't."
   synonyms:
   - --uncompressed_log
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Strain from which sequence was obtained. May be needed when organism
-    belongs to Bacteria.
+  description: "Strain from which sequence was obtained. May be needed\nwhen organism\
+    \ belongs to Bacteria."
   synonyms:
   - --strain
   args: !SimpleFlagArg
     name: STRAIN
   optional: true
 - !Flag
-  description: Bolean. Identifies sequences derived by direct molecular isolation
-    from a bulk environmental DNA sample with no reliable identification of the source
-    organism. May be needed when organism belongs to Bacteria.
+  description: "Bolean. Identifies sequences derived by direct\nmolecular isolation\
+    \ from a bulk environmental DNA\nsample with no reliable identification of the\
+    \ source\norganism. May be needed when organism belongs to\nBacteria."
   synonyms:
   - --environmental_sample
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Describes the physical, environmental and/or local geographical source
-    of the biological sample from which the sequence was derived. Mandatory when environmental_sample
-    option used.
+  description: "Describes the physical, environmental and/or local\ngeographical source\
+    \ of the biological sample from\nwhich the sequence was derived. Mandatory when\n\
+    environmental_sample option used."
   synonyms:
   - --isolation_source
   args: !SimpleFlagArg
     name: ISOLATION_SOURCE
   optional: true
 - !Flag
-  description: Individual isolate from which the sequence was obtained. May be needed
-    when organism belongs to Bacteria.
+  description: "Individual isolate from which the sequence was\nobtained. May be needed\
+    \ when organism belongs to\nBacteria.\n"
   synonyms:
   - --isolate
   args: !SimpleFlagArg
     name: ISOLATE
   optional: true
-command:
-- EMBLmyGFF3
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -1,6 +1,6 @@
 version 1.0
 
-task TepidMapSe {
+task Tepidmapse {
   input {
     Boolean? path_bowtie_index
     Boolean? path_yaha_index
@@ -11,14 +11,14 @@ task TepidMapSe {
     Boolean? gzip_fastq_files
   }
   command <<<
-    tepid-map-se \
-      ~{true="-x" false="" path_bowtie_index} \
-      ~{true="-y" false="" path_yaha_index} \
-      ~{true="-p" false="" number_cores_use} \
-      ~{true="-n" false="" sample_name} \
-      ~{true="-q" false="" fastq_file_containing} \
-      ~{true="-r" false="" recursive_optional} \
-      ~{true="-z" false="" gzip_fastq_files}
+    tepid_map_se \
+      ~{if (path_bowtie_index) then "-x" else ""} \
+      ~{if (path_yaha_index) then "-y" else ""} \
+      ~{if (number_cores_use) then "-p" else ""} \
+      ~{if (sample_name) then "-n" else ""} \
+      ~{if (fastq_file_containing) then "-q" else ""} \
+      ~{if (recursive_optional) then "-r" else ""} \
+      ~{if (gzip_fastq_files) then "-z" else ""}
   >>>
   parameter_meta {
     path_bowtie_index: "path to bowtie2 index"
@@ -28,5 +28,8 @@ task TepidMapSe {
     fastq_file_containing: "fastq file containing reads"
     recursive_optional: "recursive (optional)"
     gzip_fastq_files: "gzip fastq files (optional)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

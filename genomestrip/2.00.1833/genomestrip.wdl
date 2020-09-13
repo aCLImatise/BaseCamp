@@ -1,20 +1,10 @@
 version 1.0
 
 task Genomestrip {
-  input {
-    String? java_options
-    String subcommand
-    String? subcommand_args
-  }
   command <<<
-    genomestrip \
-      ~{java_options} \
-      ~{subcommand} \
-      ~{subcommand_args}
+    genomestrip
   >>>
-  parameter_meta {
-    java_options: ""
-    subcommand: ""
-    subcommand_args: ""
+  output {
+    File out_stdout = stdout()
   }
 }

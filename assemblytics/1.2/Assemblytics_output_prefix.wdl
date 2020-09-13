@@ -6,8 +6,8 @@ task AssemblyticsOutputPrefix {
     String delta
     String output_prefix
     String unique_length_required
-    Int min_size
-    Int max_size
+    String min_size
+    String max_size
   }
   command <<<
     Assemblytics output_prefix \
@@ -25,5 +25,8 @@ task AssemblyticsOutputPrefix {
     unique_length_required: ""
     min_size: ""
     max_size: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Clxdo {
   command <<<
     clxdo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

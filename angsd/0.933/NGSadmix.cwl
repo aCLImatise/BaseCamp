@@ -1,92 +1,95 @@
 class: CommandLineTool
 id: ../../../NGSadmix.cwl
 inputs:
-- id: likes
+- id: in_likes
   doc: likelihood filename
-  type: string
+  type: File
   inputBinding:
     prefix: -likes
-- id: of_ancestral_populations
+- id: in_of_ancestral_populations
   doc: of ancestral populations
-  type: string
+  type: long
   inputBinding:
     prefix: -K
-- id: fname
+- id: in_fname
   doc: population frequencies
   type: string
   inputBinding:
     prefix: -fname
-- id: qname
+- id: in_qname
   doc: proportions
   type: string
   inputBinding:
     prefix: -qname
-- id: out_files
+- id: in_out_files
   doc: for output files
   type: string
   inputBinding:
     prefix: -outfiles
-- id: print_info
+- id: in_print_info
   doc: ID and mean maf for the SNPs that were analysed
   type: string
   inputBinding:
     prefix: -printInfo
-- id: seed
+- id: in_seed
   doc: for initial guess in EM
   type: string
   inputBinding:
     prefix: -seed
-- id: of_threads
+- id: in_of_threads
   doc: of threads
-  type: string
+  type: long
   inputBinding:
     prefix: -P
-- id: method
+- id: in_method
   doc: 0 no acceleration of EM algorithm
-  type: string
+  type: long
   inputBinding:
     prefix: -method
-- id: mist_ol
+- id: in_mist_ol
   doc: for considering site as missing
   type: string
   inputBinding:
     prefix: -misTol
-- id: to_l_like_five_zero
+- id: in_to_l_like_five_zero
   doc: difference in 50 iterations
-  type: string
+  type: long
   inputBinding:
     prefix: -tolLike50
-- id: to_l
+- id: in_to_l
   doc: for convergence
   type: string
   inputBinding:
     prefix: -tol
-- id: dym_bound
+- id: in_dym_bound
   doc: 'dymamic boundaries (1: yes (default) 0: no)'
-  type: string
+  type: long
   inputBinding:
     prefix: -dymBound
-- id: maxiter
+- id: in_maxiter
   doc: number of EM iterations
   type: long
   inputBinding:
     prefix: -maxiter
-- id: min_maf
+- id: in_min_maf
   doc: minor allele frequency
-  type: long
+  type: string
   inputBinding:
     prefix: -minMaf
-- id: min_lrt
+- id: in_min_lrt
   doc: likelihood ratio value for maf>0
   type: long
   inputBinding:
     prefix: -minLrt
-- id: mini_nd
+- id: in_mini_nd
   doc: number of informative individuals
   type: long
   inputBinding:
     prefix: -minInd
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - NGSadmix

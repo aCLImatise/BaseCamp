@@ -11,13 +11,16 @@ task Humann2Config {
     humann2_config \
       ~{name} \
       ~{value} \
-      ~{true="--print" false="" print} \
+      ~{if (print) then "--print" else ""} \
       ~{if defined(update) then ("--update " +  '"' + update + '"') else ""}
   >>>
   parameter_meta {
     print: "print the configuration"
-    update: "<name> <value> update the section : name to the value provided"
+    update: "<name> <value>\\nupdate the section : name to the value provided\\n"
     name: ""
     value: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

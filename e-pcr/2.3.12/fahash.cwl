@@ -1,57 +1,65 @@
 class: CommandLineTool
 id: ../../../fahash.cwl
 inputs:
-- id: print_word_usage
+- id: in_print_word_usage
   doc: Print word usage statistics for hash-file
-  type: string
+  type: File
   inputBinding:
     prefix: -T
-- id: build_hash_tables
+- id: in_build_tables_hashfile
   doc: Build hash tables (hash-file) from sequence files,
-  type: string
+  type: File
   inputBinding:
     prefix: -b
-- id: set_word_size
+- id: in_set_word_size
   doc: Set word size when building hash tables
-  type: string
+  type: long
   inputBinding:
     prefix: -w
-- id: set_discontiguity_building
+- id: in_set_discontiguity_building
   doc: Set discontiguity when building hash tables
   type: string
   inputBinding:
     prefix: -f
-- id: skip_repeats_building
+- id: in_skip_repeats_building
   doc: Skip repeats when building hash-file
   type: boolean
   inputBinding:
     prefix: -k
-- id: max_set_watermarks
+- id: in_max_set_watermarks
   doc: ',max      Set watermarks for fragment size (in Mb) (version 1 only)'
   type: long
   inputBinding:
     prefix: -F
-- id: set_size_version
+- id: in_set_size_version
   doc: Set cache size (version 2 only)
-  type: string
+  type: long
   inputBinding:
     prefix: -c
-- id: use_format_version
+- id: in_use_format_version
   doc: Use format version (1|2, 2 is default)
-  type: string
+  type: long
   inputBinding:
     prefix: -v
-- id: write_output_file
+- id: in_write_output_file
   doc: Write output to file `outfile'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: hv
+- id: in_hv
   doc: ''
   type: boolean
   inputBinding:
     prefix: -hV
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_write_output_file
+  doc: Write output to file `outfile'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_write_output_file)
 cwlVersion: v1.1
 baseCommand:
 - fahash

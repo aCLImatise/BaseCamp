@@ -1,6 +1,6 @@
 version 1.0
 
-task CfmAnnotate {
+task Cfmannotate {
   input {
     String smiles_or_inch_i
     String spectrum_file
@@ -12,7 +12,7 @@ task CfmAnnotate {
     String output_filename
   }
   command <<<
-    cfm-annotate \
+    cfm_annotate \
       ~{smiles_or_inch_i} \
       ~{spectrum_file} \
       ~{id} \
@@ -31,5 +31,8 @@ task CfmAnnotate {
     param_filename: ""
     config_filename: ""
     output_filename: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

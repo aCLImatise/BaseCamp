@@ -4,4 +4,7 @@ task Treeass {
   command <<<
     treeass
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task TripailleDb {
   command <<<
     tripaille db
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Chips {
   command <<<
     chips
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

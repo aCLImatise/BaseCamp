@@ -2,7 +2,7 @@ version 1.0
 
 task BreakBlocks {
   input {
-    String? region_file
+    File? region_file
     String? ref
     Boolean? exclude_off_target
     Boolean? include_variants
@@ -11,13 +11,16 @@ task BreakBlocks {
     break_blocks \
       ~{if defined(region_file) then ("--region-file " +  '"' + region_file + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
-      ~{true="--exclude-off-target" false="" exclude_off_target} \
-      ~{true="--include-variants" false="" include_variants}
+      ~{if (exclude_off_target) then "--exclude-off-target" else ""} \
+      ~{if (include_variants) then "--include-variants" else ""}
   >>>
   parameter_meta {
-    region_file: "A bed file specifying regions where call blocks should  be broken into individual positions (required)"
+    region_file: "A bed file specifying regions where call blocks should\\nbe broken into individual positions (required)"
     ref: "samtools reference sequence (required)"
-    exclude_off_target: "Don't output off-target vcf records. 'targeted' records include all those intersecting the input region plus  any optionally included types specified below (default: output all records)"
-    include_variants: "Add all variant calls to the targeted record set (only  applies when exclude-off-target is used)"
+    exclude_off_target: "Don't output off-target vcf records. 'targeted' records\\ninclude all those intersecting the input region plus\\nany optionally included types specified below (default:\\noutput all records)"
+    include_variants: "Add all variant calls to the targeted record set (only\\napplies when exclude-off-target is used)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

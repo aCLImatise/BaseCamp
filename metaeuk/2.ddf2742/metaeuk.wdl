@@ -4,4 +4,7 @@ task Metaeuk {
   command <<<
     metaeuk
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

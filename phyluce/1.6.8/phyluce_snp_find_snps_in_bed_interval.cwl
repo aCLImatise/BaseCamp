@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../phyluce_snp_find_snps_in_bed_interval.cwl
 inputs:
-- id: uce
+- id: in_uce
   doc: The UCE BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --uce
-- id: snp
+- id: in_snp
   doc: The SNP intersection BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --snp
-- id: output
+- id: in_output
   doc: The output file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_snp_find_snps_in_bed_interval

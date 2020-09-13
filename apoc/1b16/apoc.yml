@@ -1,16 +1,58 @@
 !Command
+command:
+- apoc
 positional:
 - !Positional
   description: ''
   position: 0
-  name: pdbfile1
+  name: options
   optional: false
 - !Positional
   description: ''
   position: 1
+  name: pdbfile1
+  optional: false
+- !Positional
+  description: ''
+  position: 2
   name: pdbfile2
   optional: false
 named:
+- !Flag
+  description: 'Global structure alignment: 1 - enable (default), 0 - disable.'
+  synonyms:
+  - -fa
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Provide a list of templates to compare in a file.
+  synonyms:
+  - -lt
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Provide a list of queries (targets) to compare in a file.
+  synonyms:
+  - -lq
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "<str1,str2,...>\nNames of pockets in the first (template) structure\
+    \ for comparison."
+  synonyms:
+  - -pt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<str1,str2,...>\nNames of pockets in the second (query) structure\
+    \ for comparison."
+  synonyms:
+  - -pq
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Load a block of concatenated pdb files.
   synonyms:
@@ -71,15 +113,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Normalize the score by the maximum size of two structures.
+  description: "Normalize the score by the maximum size of two structures.\n"
   synonyms:
   - -c
   args: !EmptyFlagArg {}
   optional: true
-command:
-- apoc
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

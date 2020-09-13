@@ -14,4 +14,7 @@ task Bft {
     build: ""
     k: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

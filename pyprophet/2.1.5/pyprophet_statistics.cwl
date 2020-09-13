@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../pyprophet_statistics.cwl
 inputs:
-- id: in
+- id: in_in
   doc: PyProphet input file.  [required]
   type: File
   inputBinding:
     prefix: --in
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pyprophet

@@ -20,17 +20,17 @@ task Bgzip {
     bgzip \
       ~{file} \
       ~{if defined(offset) then ("--offset " +  '"' + offset + '"') else ""} \
-      ~{true="--stdout" false="" stdout} \
-      ~{true="--decompress" false="" decompress} \
-      ~{true="--force" false="" force} \
-      ~{true="--index" false="" index} \
+      ~{if (stdout) then "--stdout" else ""} \
+      ~{if (decompress) then "--decompress" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (index) then "--index" else ""} \
       ~{if defined(index_name) then ("--index-name " +  '"' + index_name + '"') else ""} \
       ~{if defined(compress_level) then ("--compress-level " +  '"' + compress_level + '"') else ""} \
-      ~{true="--reindex" false="" re_index} \
-      ~{true="--rebgzip" false="" reb_gzip} \
+      ~{if (re_index) then "--reindex" else ""} \
+      ~{if (reb_gzip) then "--rebgzip" else ""} \
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--test" false="" test}
+      ~{if (test) then "--test" else ""}
   >>>
   parameter_meta {
     offset: "decompress at virtual file pointer (0-based uncompressed offset)"
@@ -46,5 +46,8 @@ task Bgzip {
     threads: "number of compression threads to use [1]"
     test: "test integrity of compressed file"
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

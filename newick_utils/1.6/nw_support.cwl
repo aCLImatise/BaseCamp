@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../nw_support.cwl
 inputs:
-- id: hlp
+- id: in_hlp
   doc: ''
   type: boolean
   inputBinding:
     prefix: -hlp
-- id: target_tree_filename_vertical_line
+- id: in_target_tree_filename_vertical_line
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: replicates_filename
+- id: in_replicates_filename
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nw_support

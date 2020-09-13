@@ -1,6 +1,6 @@
 version 1.0
 
-task Varda2ClientMnv {
+task Varda2clientMnv {
   input {
     String? start
     String? end
@@ -8,7 +8,7 @@ task Varda2ClientMnv {
     String? reference
   }
   command <<<
-    varda2-client mnv \
+    varda2_client mnv \
       ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
       ~{if defined(end) then ("--end " +  '"' + end + '"') else ""} \
       ~{if defined(inserted) then ("--inserted " +  '"' + inserted + '"') else ""} \
@@ -18,6 +18,9 @@ task Varda2ClientMnv {
     start: "Start of region"
     end: "End of region"
     inserted: "Inserted sequence"
-    reference: "Chromosome to look at"
+    reference: "Chromosome to look at\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../sequana_gtf_fixer.cwl
 inputs:
-- id: input_gtf_file
+- id: in_input_gtf_file
   doc: input GTF file
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output_gtf_file
+- id: in_output_gtf_file
   doc: output GTF file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: gtf_fixer
+- id: in_gtf_fixer
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_3
+- id: in_var_3
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: n
+- id: in_n
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: var_5
+- id: in_var_5
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_gtf_file
+  doc: output GTF file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_gtf_file)
 cwlVersion: v1.1
 baseCommand:
 - sequana_gtf_fixer

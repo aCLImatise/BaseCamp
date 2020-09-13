@@ -20,4 +20,7 @@ task TripaillePhylogenyARGS {
     var_command: ""
     args: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

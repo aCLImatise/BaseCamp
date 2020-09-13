@@ -1,13 +1,10 @@
 class: CommandLineTool
-id: ../../../nanocompore.bak_plot.cwl
-inputs:
-- id: nano_compo_re_dot_bak
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+id: ../../../nanocompore.cwl
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- nanocompore.bak
-- plot
+- nanocompore

@@ -2,8 +2,8 @@ version 1.0
 
 task Pdb {
   input {
-    String? config
-    String? output_pdb_path
+    File? config
+    File? output_pdb_path
   }
   command <<<
     pdb \
@@ -12,6 +12,10 @@ task Pdb {
   >>>
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
-    output_pdb_path: "Output file name"
+    output_pdb_path: "Output file name\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_pdb_path = "${in_output_pdb_path}"
   }
 }

@@ -14,4 +14,7 @@ task Grabix {
     index: ""
     bg_zf_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

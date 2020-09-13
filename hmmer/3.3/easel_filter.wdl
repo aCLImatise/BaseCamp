@@ -2,20 +2,20 @@ version 1.0
 
 task EaselFilter {
   input {
-    String? send_output_msas
-    String? in_format
+    File? send_filtered_msas
+    File? in_format
     String? out_format
     Boolean? dna
     Boolean? rna
     Boolean? amino
     Boolean? ignore_rf
-    String? frag_thresh
-    String? sym_frac
+    Float? frag_thresh
+    Float? sym_frac
     Boolean? no_sampling
-    String? ns_amp
-    String? samp_thresh
-    String? max_frag
-    String? set_random_seed
+    Int? ns_amp
+    Int? samp_thresh
+    Int? max_frag
+    Int? set_random_seed
     Boolean? cons_cover
     Boolean? rand_order
     Boolean? orig_order
@@ -23,27 +23,27 @@ task EaselFilter {
   }
   command <<<
     easel filter \
-      ~{if defined(send_output_msas) then ("-o " +  '"' + send_output_msas + '"') else ""} \
+      ~{if defined(send_filtered_msas) then ("-o " +  '"' + send_filtered_msas + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--ignore-rf" false="" ignore_rf} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (ignore_rf) then "--ignore-rf" else ""} \
       ~{if defined(frag_thresh) then ("--fragthresh " +  '"' + frag_thresh + '"') else ""} \
       ~{if defined(sym_frac) then ("--symfrac " +  '"' + sym_frac + '"') else ""} \
-      ~{true="--no-sampling" false="" no_sampling} \
+      ~{if (no_sampling) then "--no-sampling" else ""} \
       ~{if defined(ns_amp) then ("--nsamp " +  '"' + ns_amp + '"') else ""} \
       ~{if defined(samp_thresh) then ("--sampthresh " +  '"' + samp_thresh + '"') else ""} \
       ~{if defined(max_frag) then ("--maxfrag " +  '"' + max_frag + '"') else ""} \
       ~{if defined(set_random_seed) then ("-s " +  '"' + set_random_seed + '"') else ""} \
-      ~{true="--conscover" false="" cons_cover} \
-      ~{true="--randorder" false="" rand_order} \
-      ~{true="--origorder" false="" orig_order} \
-      ~{true="-options" false="" options}
+      ~{if (cons_cover) then "--conscover" else ""} \
+      ~{if (rand_order) then "--randorder" else ""} \
+      ~{if (orig_order) then "--origorder" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
-    send_output_msas: ": send filtered output MSAs to file <f>, not stdout"
+    send_filtered_msas: ": send filtered output MSAs to file <f>, not stdout"
     in_format: ": specify the input MSA file is in format <s>"
     out_format: ": write the filtered output MSA in format <s>"
     dna: ": specify that input MSA is DNA (don't autodetect)"
@@ -61,5 +61,9 @@ task EaselFilter {
     rand_order: ":  ... or with random preference"
     orig_order: ":  ... or prefer seq that comes first in order"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_send_filtered_msas = "${in_send_filtered_msas}"
   }
 }

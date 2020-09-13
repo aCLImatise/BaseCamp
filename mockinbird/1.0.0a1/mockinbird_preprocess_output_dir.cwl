@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../mockinbird_preprocess_output_dir.cwl
 inputs:
-- id: log_level
+- id: in_log_level
   doc: ''
   type: string
   inputBinding:
     prefix: --log_level
-- id: mock_in_bird
+- id: in_mock_in_bird
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: preprocess
+- id: in_preprocess
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mockinbird

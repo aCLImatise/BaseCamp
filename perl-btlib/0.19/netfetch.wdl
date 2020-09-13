@@ -4,4 +4,7 @@ task Netfetch {
   command <<<
     netfetch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

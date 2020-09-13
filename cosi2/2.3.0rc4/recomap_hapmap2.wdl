@@ -2,7 +2,7 @@ version 1.0
 
 task RecomapHapmap2 {
   input {
-    String one_kg_map_directory
+    Directory one_kg_map_directory
   }
   command <<<
     recomap_hapmap2 \
@@ -10,5 +10,8 @@ task RecomapHapmap2 {
   >>>
   parameter_meta {
     one_kg_map_directory: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

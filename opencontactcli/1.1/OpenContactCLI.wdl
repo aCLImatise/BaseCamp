@@ -2,8 +2,8 @@ version 1.0
 
 task OpenContactCLI {
   input {
-    String? prot_a
-    String? prot_b
+    File? prot_a
+    File? prot_b
     String? prot_a_chain
     String? prot_b_chain
     Boolean? tabular
@@ -14,7 +14,7 @@ task OpenContactCLI {
       ~{if defined(prot_b) then ("--protB " +  '"' + prot_b + '"') else ""} \
       ~{if defined(prot_a_chain) then ("--protA_chain " +  '"' + prot_a_chain + '"') else ""} \
       ~{if defined(prot_b_chain) then ("--protB_chain " +  '"' + prot_b_chain + '"') else ""} \
-      ~{true="--tabular" false="" tabular}
+      ~{if (tabular) then "--tabular" else ""}
   >>>
   parameter_meta {
     prot_a: "Path to proteinA.pdb"
@@ -22,5 +22,8 @@ task OpenContactCLI {
     prot_a_chain: "proteinA chain"
     prot_b_chain: "proteinB chain"
     tabular: "Create tab separated map files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

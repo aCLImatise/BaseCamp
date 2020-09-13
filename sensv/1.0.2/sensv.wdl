@@ -3,16 +3,16 @@ version 1.0
 task Sensv {
   input {
     String? sample_name
-    String? fast_q_file
+    File? fast_q_file
     String? output_prefix
     Int? min_sv_size
     Int? max_sv_size
     String? disable_dp_filter
     String? disable_gen_alt_ref_bam
     String? target_sv_type
-    String? ref_ver
-    String? ref
-    String? nprocs
+    Int? ref_ver
+    File? ref
+    Int? nprocs
   }
   command <<<
     sensv \
@@ -39,6 +39,9 @@ task Sensv {
     target_sv_type: "target sv type"
     ref_ver: "reference version (default 37)"
     ref: "reference fasta file absolute path"
-    nprocs: "max # of processes to run sensv"
+    nprocs: "max # of processes to run sensv\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

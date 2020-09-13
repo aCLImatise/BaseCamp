@@ -3,10 +3,10 @@ version 1.0
 task GenePredToBigGenePred {
   input {
     Boolean? known
-    String? score
-    String? gene_names
-    String? colors
-    String? cds
+    File? score
+    File? gene_names
+    File? colors
+    File? cds
     File file_do_tgp
     String stdout
   }
@@ -14,7 +14,7 @@ task GenePredToBigGenePred {
     genePredToBigGenePred \
       ~{file_do_tgp} \
       ~{stdout} \
-      ~{true="-known" false="" known} \
+      ~{if (known) then "-known" else ""} \
       ~{if defined(score) then ("-score " +  '"' + score + '"') else ""} \
       ~{if defined(gene_names) then ("-geneNames " +  '"' + gene_names + '"') else ""} \
       ~{if defined(colors) then ("-colors " +  '"' + colors + '"') else ""} \
@@ -28,5 +28,8 @@ task GenePredToBigGenePred {
     cds: "cds is a five column file with id's mapping to cds status codes and exonFrames (see knownCds.as)"
     file_do_tgp: ""
     stdout: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

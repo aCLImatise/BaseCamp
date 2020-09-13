@@ -1,20 +1,23 @@
 version 1.0
 
-task AnviDeleteState {
+task Anvideletestate {
   input {
+    String? pan_or_profile_db
+    String? state
     Boolean? list_states
-    String? p
-    String? s
   }
   command <<<
-    anvi-delete-state \
-      ~{true="--list-states" false="" list_states} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
+    anvi_delete_state \
+      ~{if defined(pan_or_profile_db) then ("--pan-or-profile-db " +  '"' + pan_or_profile_db + '"') else ""} \
+      ~{if defined(state) then ("--state " +  '"' + state + '"') else ""} \
+      ~{if (list_states) then "--list-states" else ""}
   >>>
   parameter_meta {
+    pan_or_profile_db: "Anvi'o pan or profile database (and even genes\\ndatabase in appropriate contexts)."
+    state: ":("
     list_states: "Show available states and exit."
-    p: ""
-    s: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

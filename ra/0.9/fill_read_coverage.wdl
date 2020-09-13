@@ -2,13 +2,16 @@ version 1.0
 
 task FillReadCoverage {
   input {
-    String? depot
+    Boolean? depot
   }
   command <<<
     fill_read_coverage \
-      ~{if defined(depot) then ("--depot " +  '"' + depot + '"') else ""}
+      ~{if (depot) then "--depot" else ""}
   >>>
   parameter_meta {
-    depot: ""
+    depot: "depot path (string)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

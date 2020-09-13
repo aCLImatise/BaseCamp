@@ -4,7 +4,7 @@ task Cnvetti {
   input {
     Boolean? verbose
     Boolean? quiet
-    String? io_threads
+    Int? io_threads
     String cmd
     String quick
     String visualize
@@ -18,8 +18,8 @@ task Cnvetti {
       ~{visualize} \
       ~{annotate} \
       ~{help} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(io_threads) then ("--io-threads " +  '"' + io_threads + '"') else ""}
   >>>
   parameter_meta {
@@ -31,5 +31,8 @@ task Cnvetti {
     visualize: "Visualization of coverage information (on-target, off-target, and genome-wide bins)."
     annotate: "Perform annotate called CNV result BCF files"
     help: "Prints this message or the help of the given subcommand(s)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

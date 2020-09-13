@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../crux_subtract_index.cwl
 inputs:
-- id: tide_index_one
+- id: in_tide_index_one
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: tide_index_two
+- id: in_tide_index_two
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: output_index
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crux

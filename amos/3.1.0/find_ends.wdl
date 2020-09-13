@@ -4,4 +4,7 @@ task FindEnds {
   command <<<
     find_ends
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

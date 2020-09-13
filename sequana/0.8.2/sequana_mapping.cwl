@@ -1,52 +1,40 @@
 class: CommandLineTool
 id: ../../../sequana_mapping.cwl
 inputs:
-- id: file_one
+- id: in_file_one
   doc: R1 fastq file (zipped)
   type: File
   inputBinding:
     prefix: --file1
-- id: file_two
+- id: in_file_two
   doc: R2 fastq file (zipped)
   type: File
   inputBinding:
     prefix: --file2
-- id: reference
-  doc: reference
+- id: in_var_2
+  doc: ''
   type: string
   inputBinding:
     prefix: --reference
-- id: thread
-  doc: number of threads
-  type: string
-  inputBinding:
-    prefix: --thread
-- id: pac_bio
-  doc: specific pacbio parameters recommended by bwa mem are used
+- id: in_pac_bio
+  doc: specific pacbio parameters recommended by bwa mem are
   type: boolean
   inputBinding:
     prefix: --pacbio
-- id: use_samba_mba
-  doc: use sambamba instead of samtools for the sorting
-  type: boolean
-  inputBinding:
-    prefix: --use-sambamba
-- id: welcome
-  doc: ''
+- id: in__thread_thread
+  doc: --thread THREAD       number of threads
   type: string
   inputBinding:
     position: 0
-- id: to
-  doc: ''
+- id: in_used
+  doc: --use-sambamba        use sambamba instead of samtools for the sorting
   type: string
   inputBinding:
     position: 1
-- id: se_quan_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sequana_mapping

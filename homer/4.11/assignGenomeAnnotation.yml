@@ -1,4 +1,6 @@
 !Command
+command:
+- assignGenomeAnnotation
 positional:
 - !Positional
   description: ''
@@ -11,6 +13,27 @@ positional:
   name: annotation file
   optional: false
 named:
+- !Flag
+  description: (Use if first argument is a tag directory)
+  synonyms:
+  - -tags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#|auto> (Approximate fragment length, default: auto)'
+  synonyms:
+  - -fragLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(annotation file is just a peak file - hasn't been prioritized yet)\n\
+    A prioritized file will be created for future use with the program\nThis option\
+    \ should be used if the annotation file isn't prioritized"
+  synonyms:
+  - -prioritize
+  args: !SimpleFlagArg
+    name: outputfile
+  optional: true
 - !Flag
   description: (File to output annotations for each peak/tag, by default not created)
   synonyms:
@@ -25,10 +48,9 @@ named:
   args: !SimpleFlagArg
     name: filename
   optional: true
-command:
-- assignGenomeAnnotation
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

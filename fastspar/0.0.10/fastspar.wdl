@@ -11,7 +11,7 @@ task Fastspar {
     Int? threads
     Int? seed
     Boolean? yes
-    Boolean? _version_display
+    Boolean? _versiondisplay_version
   }
   command <<<
     fastspar \
@@ -23,8 +23,8 @@ task Fastspar {
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--yes" false="" yes} \
-      ~{true="-v" false="" _version_display}
+      ~{if (yes) then "--yes" else ""} \
+      ~{if (_versiondisplay_version) then "-v" else ""}
   >>>
   parameter_meta {
     otu_table: "OTU input OTU count table"
@@ -36,6 +36,9 @@ task Fastspar {
     threads: "Number of threads (default: 1)"
     seed: "Random number generator seed (default: 1)"
     yes: "Assume yes for prompts (default: unset)"
-    _version_display: "--version Display version information and exit"
+    _versiondisplay_version: "--version\\nDisplay version information and exit\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

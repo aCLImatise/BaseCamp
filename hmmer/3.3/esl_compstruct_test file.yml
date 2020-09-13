@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- esl-compstruct
+- test file
 positional:
 - !Positional
   description: ''
@@ -22,10 +25,9 @@ named:
   - -options
   args: !EmptyFlagArg {}
   optional: true
-command:
-- esl-compstruct
-- test file
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - esl-compstruct
   positional: []
   named:
   - !Flag
@@ -52,11 +54,13 @@ parent: &id001 !Command
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - esl-compstruct
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - esl-compstruct
+    - trusted file
     positional:
     - !Positional
       description: ''
@@ -70,11 +74,9 @@ parent: &id001 !Command
       - -options
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - esl-compstruct
-    - trusted file
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -84,7 +86,7 @@ parent: &id001 !Command
       \ in the two files.\n  The markup must be in WUSS notation.\n\n\n\nTo see more\
       \ help on available options, do esl-compstruct -h\n\n"
     generated_using: &id003 []
-  - *id002
+  usage: []
   help_flag: !Flag
     description: ': help; show brief info on version and usage'
     synonyms:
@@ -106,6 +108,7 @@ parent: &id001 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

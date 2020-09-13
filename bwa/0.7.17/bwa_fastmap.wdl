@@ -29,4 +29,7 @@ task BwaFastmap {
     idx_base: ""
     in_dot_fq: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

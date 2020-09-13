@@ -1,84 +1,92 @@
 class: CommandLineTool
 id: ../../../kraken.cwl
 inputs:
-- id: db
-  doc: 'Name for Kraken DB (default: none)'
+- id: in_db
+  doc: "Name for Kraken DB\n(default: none)"
   type: string
   inputBinding:
     prefix: --db
-- id: threads
+- id: in_threads
   doc: 'Number of threads (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: fast_a_input
+- id: in_fast_a_input
   doc: Input is FASTA format
   type: boolean
   inputBinding:
     prefix: --fasta-input
-- id: fast_q_input
+- id: in_fast_q_input
   doc: Input is FASTQ format
   type: boolean
   inputBinding:
     prefix: --fastq-input
-- id: gzip_compressed
+- id: in_gzip_compressed
   doc: Input is gzip compressed
   type: boolean
   inputBinding:
     prefix: --gzip-compressed
-- id: bzip_two_compressed
+- id: in_bzip_two_compressed
   doc: Input is bzip2 compressed
   type: boolean
   inputBinding:
     prefix: --bzip2-compressed
-- id: quick
+- id: in_quick
   doc: Quick operation (use first hit or hits)
   type: boolean
   inputBinding:
     prefix: --quick
-- id: min_hits
-  doc: "In quick op., number of hits req'd for classification NOTE: this is ignored\
+- id: in_min_hits
+  doc: "In quick op., number of hits req'd for classification\nNOTE: this is ignored\
     \ if --quick is not specified"
-  type: string
+  type: long
   inputBinding:
     prefix: --min-hits
-- id: unclassified_out
+- id: in_unclassified_out
   doc: Print unclassified sequences to filename
   type: File
   inputBinding:
     prefix: --unclassified-out
-- id: classified_out
+- id: in_classified_out
   doc: Print classified sequences to filename
   type: File
   inputBinding:
     prefix: --classified-out
-- id: output
-  doc: 'Print output to filename (default: stdout); "-" will suppress normal output'
+- id: in_output
+  doc: "Print output to filename (default: stdout); \"-\" will\nsuppress normal output"
   type: File
   inputBinding:
     prefix: --output
-- id: only_classified_output
+- id: in_only_classified_output
   doc: Print no Kraken output for unclassified sequences
   type: boolean
   inputBinding:
     prefix: --only-classified-output
-- id: preload
+- id: in_preload
   doc: Loads DB into memory before classification
   type: boolean
   inputBinding:
     prefix: --preload
-- id: paired
+- id: in_paired
   doc: The two filenames provided are paired-end reads
   type: boolean
   inputBinding:
     prefix: --paired
-- id: check_names
-  doc: Ensure each pair of reads have names that agree with each other; ignored if
-    --paired is not specified
+- id: in_check_names
+  doc: "Ensure each pair of reads have names that agree\nwith each other; ignored\
+    \ if --paired is not specified"
   type: boolean
   inputBinding:
     prefix: --check-names
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Print output to filename (default: stdout); \"-\" will\nsuppress normal output"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - kraken

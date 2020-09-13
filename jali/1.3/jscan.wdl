@@ -2,7 +2,7 @@ version 1.0
 
 task Jscan {
   input {
-    String? amino_acid_similarity
+    File? amino_acid_similarity
     String? i
     String? e
     String? j
@@ -21,8 +21,8 @@ task Jscan {
       ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
       ~{if defined(j) then ("-j " +  '"' + j + '"') else ""} \
       ~{if defined(print_best_l) then ("-l " +  '"' + print_best_l + '"') else ""} \
-      ~{true="-o" false="" run_verbose_mode} \
-      ~{true="-v" false="" print_version}
+      ~{if (run_verbose_mode) then "-o" else ""} \
+      ~{if (print_version) then "-v" else ""}
   >>>
   parameter_meta {
     amino_acid_similarity: "//amino acid similarity matrix"
@@ -34,5 +34,8 @@ task Jscan {
     print_version: "//print version"
     sequence_dot_fast_a: ""
     alignment_db_dot_prodom: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

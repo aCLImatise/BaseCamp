@@ -1,7 +1,10 @@
 version 1.0
 
-task WifiStatus {
+task Wifistatus {
   command <<<
-    wifi-status
+    wifi_status
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

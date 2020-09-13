@@ -11,4 +11,7 @@ task RevFasta {
   parameter_meta {
     reverse_complement_specified: "Reverse complement the specified id only"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

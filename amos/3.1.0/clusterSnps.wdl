@@ -4,4 +4,7 @@ task ClusterSnps {
   command <<<
     clusterSnps
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

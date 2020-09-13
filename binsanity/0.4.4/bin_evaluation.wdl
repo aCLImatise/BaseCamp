@@ -9,7 +9,7 @@ task BinEvaluation {
     String var_4
     String of
     String fast_a
-    File files
+    String files
   }
   command <<<
     bin_evaluation \
@@ -18,9 +18,9 @@ task BinEvaluation {
       ~{of} \
       ~{fast_a} \
       ~{files} \
-      ~{true="-b" false="" specify_directory_containing_putative_genomes} \
-      ~{true="-r" false="" specify_directory_containing_reference_genomes} \
-      ~{true="-l" false="" specify_suffix_bins}
+      ~{if (specify_directory_containing_putative_genomes) then "-b" else ""} \
+      ~{if (specify_directory_containing_reference_genomes) then "-r" else ""} \
+      ~{if (specify_suffix_bins) then "-l" else ""}
   >>>
   parameter_meta {
     specify_directory_containing_putative_genomes: "Specify the directory containing Putative genomes"
@@ -31,5 +31,8 @@ task BinEvaluation {
     of: ""
     fast_a: ""
     files: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

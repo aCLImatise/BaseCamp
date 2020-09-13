@@ -4,4 +4,7 @@ task RandomFQ {
   command <<<
     randomFQ
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

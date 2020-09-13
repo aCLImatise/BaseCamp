@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../arb_dnarates_dbname.cwl
 inputs:
-- id: arb_dna_rates
+- id: in_arb_dna_rates
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input
+- id: in_input
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: dbname
+- id: in_dbname
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: db_save_name
+- id: in_db_save_name
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - arb_dnarates

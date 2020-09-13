@@ -1,9 +1,21 @@
 !Command
+command:
+- sfetch
 positional:
 - !Positional
-  description: ''
+  description: genbank
   position: 0
-  name: seqname
+  name: fasta
+  optional: false
+- !Positional
+  description: gcg
+  position: 1
+  name: embl
+  optional: false
+- !Positional
+  description: raw
+  position: 2
+  name: pir
   optional: false
 named:
 - !Flag
@@ -55,12 +67,48 @@ named:
     name: outfile
   optional: true
 - !Flag
-  description: ': use output format of <format>; see below for list. Default is original
-    format of database.'
+  description: ": use output format of <format>; see below for\nlist. Default is original\
+    \ format of database."
   synonyms:
   - -F
   args: !SimpleFlagArg
     name: format
+  optional: true
+- !Flag
+  description: $SWDIR   SwissProt
+  synonyms:
+  - -Dsw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: $PIRDIR  PIR
+  synonyms:
+  - -Dpir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: $EMBLDIR EMBL
+  synonyms:
+  - -Dem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: $GBDIR   GenBank
+  synonyms:
+  - -Dgb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: $WORMDIR WormPep
+  synonyms:
+  - -Dwp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: $OWLDIR  OWL
+  synonyms:
+  - -Dowl
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ': specify input sequence file format <s>'
@@ -75,10 +123,9 @@ named:
   - -options
   args: !EmptyFlagArg {}
   optional: true
-command:
-- sfetch
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': help; print version and usage info'
   synonyms:

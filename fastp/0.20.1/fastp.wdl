@@ -2,11 +2,15 @@ version 1.0
 
 task Fastp {
   input {
+    Boolean? in_one
+    File? out_one
+    Boolean? in_two
+    File? out_two
     Boolean? unpaired_one
     Boolean? unpaired_two
     Boolean? failed_out
     Boolean? merge
-    Boolean? merged_out
+    File? merged_out
     Boolean? include_un_merged
     Boolean? phred_six_four
     Boolean? compression
@@ -54,8 +58,8 @@ task Fastp {
     Boolean? length_limit
     Boolean? low_complexity_filter
     Boolean? complexity_threshold
-    Boolean? filter_by_index_one
-    Boolean? filter_by_index_two
+    File? filter_by_index_one
+    File? filter_by_index_two
     Boolean? filter_by_index_threshold
     Boolean? correction
     Boolean? overlap_len_require
@@ -81,84 +85,92 @@ task Fastp {
   }
   command <<<
     fastp \
-      ~{true="--unpaired1" false="" unpaired_one} \
-      ~{true="--unpaired2" false="" unpaired_two} \
-      ~{true="--failed_out" false="" failed_out} \
-      ~{true="--merge" false="" merge} \
-      ~{true="--merged_out" false="" merged_out} \
-      ~{true="--include_unmerged" false="" include_un_merged} \
-      ~{true="--phred64" false="" phred_six_four} \
-      ~{true="--compression" false="" compression} \
-      ~{true="--stdin" false="" stdin} \
-      ~{true="--stdout" false="" stdout} \
-      ~{true="--interleaved_in" false="" interleaved_in} \
-      ~{true="--reads_to_process" false="" reads_to_process} \
-      ~{true="--dont_overwrite" false="" dont_overwrite} \
-      ~{true="--fix_mgi_id" false="" fix_mgi_id} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--disable_adapter_trimming" false="" disable_adapter_trimming} \
-      ~{true="--adapter_sequence" false="" adapter_sequence} \
-      ~{true="--adapter_sequence_r2" false="" adapter_sequence_r_two} \
-      ~{true="--adapter_fasta" false="" adapter_fast_a} \
-      ~{true="--detect_adapter_for_pe" false="" detect_adapter_for_pe} \
-      ~{true="--trim_front1" false="" trim_front_one} \
-      ~{true="--trim_tail1" false="" trim_tail_one} \
-      ~{true="--max_len1" false="" max_len_one} \
-      ~{true="--trim_front2" false="" trim_front_two} \
-      ~{true="--trim_tail2" false="" trim_tail_two} \
-      ~{true="--max_len2" false="" max_len_two} \
-      ~{true="--trim_poly_g" false="" trim_poly_g} \
-      ~{true="--poly_g_min_len" false="" poly_g_min_len} \
-      ~{true="--disable_trim_poly_g" false="" disable_trim_poly_g} \
-      ~{true="--trim_poly_x" false="" trim_poly_x} \
-      ~{true="--poly_x_min_len" false="" poly_x_min_len} \
-      ~{true="--cut_front" false="" cut_front} \
-      ~{true="--cut_tail" false="" cut_tail} \
-      ~{true="--cut_right" false="" cut_right} \
-      ~{true="--cut_window_size" false="" cut_window_size} \
-      ~{true="--cut_mean_quality" false="" cut_mean_quality} \
-      ~{true="--cut_front_window_size" false="" cut_front_window_size} \
-      ~{true="--cut_front_mean_quality" false="" cut_front_mean_quality} \
-      ~{true="--cut_tail_window_size" false="" cut_tail_window_size} \
-      ~{true="--cut_tail_mean_quality" false="" cut_tail_mean_quality} \
-      ~{true="--cut_right_window_size" false="" cut_right_window_size} \
-      ~{true="--cut_right_mean_quality" false="" cut_right_mean_quality} \
-      ~{true="--disable_quality_filtering" false="" disable_quality_filtering} \
-      ~{true="--qualified_quality_phred" false="" qualified_quality_phred} \
-      ~{true="--unqualified_percent_limit" false="" unqualified_percent_limit} \
-      ~{true="--n_base_limit" false="" n_base_limit} \
-      ~{true="--average_qual" false="" average_qual} \
-      ~{true="--disable_length_filtering" false="" disable_length_filtering} \
-      ~{true="--length_required" false="" length_required} \
-      ~{true="--length_limit" false="" length_limit} \
-      ~{true="--low_complexity_filter" false="" low_complexity_filter} \
-      ~{true="--complexity_threshold" false="" complexity_threshold} \
-      ~{true="--filter_by_index1" false="" filter_by_index_one} \
-      ~{true="--filter_by_index2" false="" filter_by_index_two} \
-      ~{true="--filter_by_index_threshold" false="" filter_by_index_threshold} \
-      ~{true="--correction" false="" correction} \
-      ~{true="--overlap_len_require" false="" overlap_len_require} \
-      ~{true="--overlap_diff_limit" false="" overlap_diff_limit} \
-      ~{true="--overlap_diff_percent_limit" false="" overlap_diff_percent_limit} \
-      ~{true="--umi" false="" umi} \
-      ~{true="--umi_loc" false="" umi_loc} \
-      ~{true="--umi_len" false="" umi_len} \
-      ~{true="--umi_prefix" false="" umi_prefix} \
-      ~{true="--umi_skip" false="" umi_skip} \
-      ~{true="--overrepresentation_analysis" false="" overrepresentation_analysis} \
-      ~{true="--overrepresentation_sampling" false="" overrepresentation_sampling} \
-      ~{true="--json" false="" json} \
-      ~{true="--report_title" false="" report_title} \
-      ~{true="--thread" false="" thread} \
-      ~{true="--split" false="" split} \
-      ~{true="--split_by_lines" false="" split_by_lines} \
-      ~{true="--split_prefix_digits" false="" split_prefix_digits} \
-      ~{true="--cut_by_quality5" false="" cut_by_quality_five} \
-      ~{true="--cut_by_quality3" false="" cut_by_quality_three} \
-      ~{true="--cut_by_quality_aggressive" false="" cut_by_quality_aggressive} \
-      ~{true="--discard_unmerged" false="" discard_un_merged}
+      ~{if (in_one) then "--in1" else ""} \
+      ~{if (out_one) then "--out1" else ""} \
+      ~{if (in_two) then "--in2" else ""} \
+      ~{if (out_two) then "--out2" else ""} \
+      ~{if (unpaired_one) then "--unpaired1" else ""} \
+      ~{if (unpaired_two) then "--unpaired2" else ""} \
+      ~{if (failed_out) then "--failed_out" else ""} \
+      ~{if (merge) then "--merge" else ""} \
+      ~{if (merged_out) then "--merged_out" else ""} \
+      ~{if (include_un_merged) then "--include_unmerged" else ""} \
+      ~{if (phred_six_four) then "--phred64" else ""} \
+      ~{if (compression) then "--compression" else ""} \
+      ~{if (stdin) then "--stdin" else ""} \
+      ~{if (stdout) then "--stdout" else ""} \
+      ~{if (interleaved_in) then "--interleaved_in" else ""} \
+      ~{if (reads_to_process) then "--reads_to_process" else ""} \
+      ~{if (dont_overwrite) then "--dont_overwrite" else ""} \
+      ~{if (fix_mgi_id) then "--fix_mgi_id" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (disable_adapter_trimming) then "--disable_adapter_trimming" else ""} \
+      ~{if (adapter_sequence) then "--adapter_sequence" else ""} \
+      ~{if (adapter_sequence_r_two) then "--adapter_sequence_r2" else ""} \
+      ~{if (adapter_fast_a) then "--adapter_fasta" else ""} \
+      ~{if (detect_adapter_for_pe) then "--detect_adapter_for_pe" else ""} \
+      ~{if (trim_front_one) then "--trim_front1" else ""} \
+      ~{if (trim_tail_one) then "--trim_tail1" else ""} \
+      ~{if (max_len_one) then "--max_len1" else ""} \
+      ~{if (trim_front_two) then "--trim_front2" else ""} \
+      ~{if (trim_tail_two) then "--trim_tail2" else ""} \
+      ~{if (max_len_two) then "--max_len2" else ""} \
+      ~{if (trim_poly_g) then "--trim_poly_g" else ""} \
+      ~{if (poly_g_min_len) then "--poly_g_min_len" else ""} \
+      ~{if (disable_trim_poly_g) then "--disable_trim_poly_g" else ""} \
+      ~{if (trim_poly_x) then "--trim_poly_x" else ""} \
+      ~{if (poly_x_min_len) then "--poly_x_min_len" else ""} \
+      ~{if (cut_front) then "--cut_front" else ""} \
+      ~{if (cut_tail) then "--cut_tail" else ""} \
+      ~{if (cut_right) then "--cut_right" else ""} \
+      ~{if (cut_window_size) then "--cut_window_size" else ""} \
+      ~{if (cut_mean_quality) then "--cut_mean_quality" else ""} \
+      ~{if (cut_front_window_size) then "--cut_front_window_size" else ""} \
+      ~{if (cut_front_mean_quality) then "--cut_front_mean_quality" else ""} \
+      ~{if (cut_tail_window_size) then "--cut_tail_window_size" else ""} \
+      ~{if (cut_tail_mean_quality) then "--cut_tail_mean_quality" else ""} \
+      ~{if (cut_right_window_size) then "--cut_right_window_size" else ""} \
+      ~{if (cut_right_mean_quality) then "--cut_right_mean_quality" else ""} \
+      ~{if (disable_quality_filtering) then "--disable_quality_filtering" else ""} \
+      ~{if (qualified_quality_phred) then "--qualified_quality_phred" else ""} \
+      ~{if (unqualified_percent_limit) then "--unqualified_percent_limit" else ""} \
+      ~{if (n_base_limit) then "--n_base_limit" else ""} \
+      ~{if (average_qual) then "--average_qual" else ""} \
+      ~{if (disable_length_filtering) then "--disable_length_filtering" else ""} \
+      ~{if (length_required) then "--length_required" else ""} \
+      ~{if (length_limit) then "--length_limit" else ""} \
+      ~{if (low_complexity_filter) then "--low_complexity_filter" else ""} \
+      ~{if (complexity_threshold) then "--complexity_threshold" else ""} \
+      ~{if (filter_by_index_one) then "--filter_by_index1" else ""} \
+      ~{if (filter_by_index_two) then "--filter_by_index2" else ""} \
+      ~{if (filter_by_index_threshold) then "--filter_by_index_threshold" else ""} \
+      ~{if (correction) then "--correction" else ""} \
+      ~{if (overlap_len_require) then "--overlap_len_require" else ""} \
+      ~{if (overlap_diff_limit) then "--overlap_diff_limit" else ""} \
+      ~{if (overlap_diff_percent_limit) then "--overlap_diff_percent_limit" else ""} \
+      ~{if (umi) then "--umi" else ""} \
+      ~{if (umi_loc) then "--umi_loc" else ""} \
+      ~{if (umi_len) then "--umi_len" else ""} \
+      ~{if (umi_prefix) then "--umi_prefix" else ""} \
+      ~{if (umi_skip) then "--umi_skip" else ""} \
+      ~{if (overrepresentation_analysis) then "--overrepresentation_analysis" else ""} \
+      ~{if (overrepresentation_sampling) then "--overrepresentation_sampling" else ""} \
+      ~{if (json) then "--json" else ""} \
+      ~{if (report_title) then "--report_title" else ""} \
+      ~{if (thread) then "--thread" else ""} \
+      ~{if (split) then "--split" else ""} \
+      ~{if (split_by_lines) then "--split_by_lines" else ""} \
+      ~{if (split_prefix_digits) then "--split_prefix_digits" else ""} \
+      ~{if (cut_by_quality_five) then "--cut_by_quality5" else ""} \
+      ~{if (cut_by_quality_three) then "--cut_by_quality3" else ""} \
+      ~{if (cut_by_quality_aggressive) then "--cut_by_quality_aggressive" else ""} \
+      ~{if (discard_un_merged) then "--discard_unmerged" else ""}
   >>>
   parameter_meta {
+    in_one: "read1 input file name (string [=])"
+    out_one: "read1 output file name (string [=])"
+    in_two: "read2 input file name (string [=])"
+    out_two: "read2 output file name (string [=])"
     unpaired_one: "for PE input, if read1 passed QC but read2 not, it will be written to unpaired1. Default is to discard it. (string [=])"
     unpaired_two: "for PE input, if read2 passed QC but read1 not, it will be written to unpaired2. If --unpaired2 is same as --unpaired1 (default mode), both unpaired reads will be written to this same file. (string [=])"
     failed_out: "specify the file to store reads that cannot pass the filters. (string [=])"
@@ -226,7 +238,7 @@ task Fastp {
     overrepresentation_analysis: "enable overrepresented sequence analysis."
     overrepresentation_sampling: "one in (--overrepresentation_sampling) reads will be computed for overrepresentation analysis (1~10000), smaller is slower, default is 20. (int [=20])"
     json: "the json format report file name (string [=fastp.json])"
-    report_title: "should be quoted with ' or \", default is \"fastp report\" (string [=fastp report])"
+    report_title: "should be quoted with ' or \\\", default is \\\"fastp report\\\" (string [=fastp report])"
     thread: "worker thread number, default is 2 (int [=2])"
     split: "split output by limiting total split file number with this option (2~999), a sequential number prefix will be added to output name ( 0001.out.fq, 0002.out.fq...), disabled by default (int [=0])"
     split_by_lines: "split output by limiting lines of each file with this option(>=1000), a sequential number prefix will be added to output name ( 0001.out.fq, 0002.out.fq...), disabled by default (long [=0])"
@@ -235,5 +247,13 @@ task Fastp {
     cut_by_quality_three: "DEPRECATED, use --cut_tail instead."
     cut_by_quality_aggressive: "DEPRECATED, use --cut_right instead."
     discard_un_merged: "DEPRECATED, no effect now, see the introduction for merging."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_one = "${in_out_one}"
+    File out_out_two = "${in_out_two}"
+    File out_merged_out = "${in_merged_out}"
+    File out_filter_by_index_one = "${in_filter_by_index_one}"
+    File out_filter_by_index_two = "${in_filter_by_index_two}"
   }
 }

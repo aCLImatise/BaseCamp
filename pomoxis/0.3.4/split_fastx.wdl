@@ -4,4 +4,7 @@ task SplitFastx {
   command <<<
     split_fastx
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

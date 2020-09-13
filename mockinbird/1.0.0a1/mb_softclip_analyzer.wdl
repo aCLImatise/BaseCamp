@@ -1,14 +1,17 @@
 version 1.0
 
-task MbSoftclipAnalyzer {
+task Mbsoftclipanalyzer {
   input {
-    String? top_n
+    Int? top_n
   }
   command <<<
-    mb-softclip-analyzer \
+    mb_softclip_analyzer \
       ~{if defined(top_n) then ("--top_n " +  '"' + top_n + '"') else ""}
   >>>
   parameter_meta {
     top_n: "number of most commonly clipped sequences printed"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

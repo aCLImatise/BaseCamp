@@ -4,4 +4,7 @@ task Featreport {
   command <<<
     featreport
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

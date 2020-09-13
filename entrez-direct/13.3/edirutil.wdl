@@ -4,4 +4,7 @@ task Edirutil {
   command <<<
     edirutil
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

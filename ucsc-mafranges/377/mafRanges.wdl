@@ -14,13 +14,16 @@ task MafRanges {
       ~{db} \
       ~{out_dot_bed} \
       ~{if defined(other_db) then ("-otherDb " +  '"' + other_db + '"') else ""} \
-      ~{true="-notAllOGap" false="" not_all_o_gap}
+      ~{if (not_all_o_gap) then "-notAllOGap" else ""}
   >>>
   parameter_meta {
-    other_db: "Output ranges only for alignments that include oDb. oDB can be comma-separated list."
+    other_db: "Output ranges only for alignments that include oDb.\\noDB can be comma-separated list."
     not_all_o_gap: "Don't include bases for which all other species have a gap."
     in_dot_maf: ""
     db: ""
     out_dot_bed: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

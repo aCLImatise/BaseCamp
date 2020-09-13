@@ -1,38 +1,46 @@
 class: CommandLineTool
 id: ../../../rnftools_wgsim2rnf.cwl
 inputs:
-- id: wg_sim_fast_q_one
+- id: in_wg_sim_fast_q_one
   doc: First WgSim FASTQ file (- for standard input)
   type: File
   inputBinding:
     prefix: --wgsim-fastq-1
-- id: wg_sim_fast_q_two
-  doc: 'Second WgSim FASTQ file (in case of paired-end reads, default: none).'
+- id: in_wg_sim_fast_q_two
+  doc: "Second WgSim FASTQ file (in case of paired-end reads,\ndefault: none)."
   type: File
   inputBinding:
     prefix: --wgsim-fastq-2
-- id: rnf_fast_q
+- id: in_rnf_fast_q
   doc: Output FASTQ file (- for standard output).
   type: File
   inputBinding:
     prefix: --rnf-fastq
-- id: fa_idx
-  doc: FAI index of the reference FASTA file (- for standard input). It can be created
-    using 'samtools faidx'.
+- id: in_fa_idx
+  doc: "FAI index of the reference FASTA file (- for standard\ninput). It can be created\
+    \ using 'samtools faidx'."
   type: File
   inputBinding:
     prefix: --faidx
-- id: genome_id
+- id: in_genome_id
   doc: 'Genome ID in RNF (default: 1).'
   type: long
   inputBinding:
     prefix: --genome-id
-- id: allow_unmapped
+- id: in_allow_unmapped
   doc: Allow unmapped reads.
   type: boolean
   inputBinding:
     prefix: --allow-unmapped
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_rnf_fast_q
+  doc: Output FASTQ file (- for standard output).
+  type: File
+  outputBinding:
+    glob: $(inputs.in_rnf_fast_q)
 cwlVersion: v1.1
 baseCommand:
 - rnftools

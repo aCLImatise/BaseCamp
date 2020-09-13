@@ -4,4 +4,7 @@ task Bamfilterlength {
   command <<<
     bamfilterlength
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

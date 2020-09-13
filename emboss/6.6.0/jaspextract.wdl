@@ -4,4 +4,7 @@ task Jaspextract {
   command <<<
     jaspextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

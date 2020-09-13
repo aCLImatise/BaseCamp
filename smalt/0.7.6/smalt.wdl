@@ -4,4 +4,7 @@ task Smalt {
   command <<<
     smalt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

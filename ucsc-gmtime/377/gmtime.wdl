@@ -11,4 +11,7 @@ task Gmtime {
   parameter_meta {
     time_stamp: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

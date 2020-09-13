@@ -1,7 +1,10 @@
 version 1.0
 
-task GffutilsCli {
+task Gffutilscli {
   command <<<
-    gffutils-cli
+    gffutils_cli
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -11,4 +11,7 @@ task GffCheck {
   parameter_meta {
     gff: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

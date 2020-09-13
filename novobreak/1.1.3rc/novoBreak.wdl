@@ -2,9 +2,9 @@ version 1.0
 
 task NovoBreak {
   input {
-    String? tumor_bam_file
-    String? normal_bam_file
-    String? reference_file_fasta
+    File? tumor_bam_file
+    File? normal_bam_file
+    File? reference_file_fasta
     Int? kmer_size_
     String? output_kmer
     Int? output_germline_events
@@ -28,5 +28,8 @@ task NovoBreak {
     output_kmer: "Output kmer"
     output_germline_events: "Output germline events [0]"
     minimum_kmer_count: "Minimum kmer count regarded as novo kmers [3]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

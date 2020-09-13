@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../multilign_smp.cwl
 inputs:
-- id: configuration_file
+- id: in_configuration_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - multilign-smp

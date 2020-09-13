@@ -11,7 +11,7 @@ task BcftoolsGtcheck {
     String? regions
     File? regions_file
     String? query_sample
-    String? target_sample
+    File? target_sample
     String? targets
     File? targets_file
     String query_dot_vcf_do_tgz
@@ -19,11 +19,11 @@ task BcftoolsGtcheck {
   command <<<
     bcftools gtcheck \
       ~{query_dot_vcf_do_tgz} \
-      ~{true="--all-sites" false="" all_sites} \
-      ~{true="--cluster" false="" cluster} \
+      ~{if (all_sites) then "--all-sites" else ""} \
+      ~{if (cluster) then "--cluster" else ""} \
       ~{if defined(genotypes) then ("--genotypes " +  '"' + genotypes + '"') else ""} \
       ~{if defined(gts_only) then ("--GTs-only " +  '"' + gts_only + '"') else ""} \
-      ~{true="--homs-only" false="" homs_only} \
+      ~{if (homs_only) then "--homs-only" else ""} \
       ~{if defined(plot) then ("--plot " +  '"' + plot + '"') else ""} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
       ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
@@ -46,5 +46,8 @@ task BcftoolsGtcheck {
     targets: "similar to -r but streams rather than index-jumps"
     targets_file: "similar to -R but streams rather than index-jumps"
     query_dot_vcf_do_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

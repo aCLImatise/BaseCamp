@@ -14,4 +14,7 @@ task HcaUploadAreas {
     log_level: ""
     hca: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

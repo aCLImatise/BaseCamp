@@ -2,25 +2,32 @@ version 1.0
 
 task NanoQC {
   input {
-    String? outdir
+    Directory? outdir
     Boolean? rna
-    Int? min_len
+    Int? l
     Boolean? v
     String fast_q
+    String nucleotides_dot
   }
   command <<<
     nanoQC \
       ~{fast_q} \
+      ~{nucleotides_dot} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
-      ~{true="--rna" false="" rna} \
-      ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if (rna) then "--rna" else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     outdir: "Specify directory in which output has to be created."
-    rna: "Fastq is from direct RNA-seq and contains U nucleotides."
-    min_len: "Filters the reads on a minimal length of the given range. Also plots the given length/2 of the begin and end of the reads."
+    rna: "Fastq is from direct RNA-seq and contains U"
+    l: ""
     v: ""
     fast_q: "Reads data in fastq.gz format."
+    nucleotides_dot: "-l MINLEN, --minlen MINLEN"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

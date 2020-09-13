@@ -11,4 +11,7 @@ task FcGetReadCtgMap {
   parameter_meta {
     basedir: "the base working dir of a FALCON assembly (default: ./)"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

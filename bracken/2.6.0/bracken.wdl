@@ -2,13 +2,13 @@ version 1.0
 
 task Bracken {
   input {
-    String? d
-    String? i
-    String? o
-    String? w
-    String? r
-    String? l
     String? t
+    String? l
+    String? r
+    String? w
+    String? o
+    String? i
+    String? d
     String my_db
     String kraken_report_file
     String file_name_bracken
@@ -26,22 +26,22 @@ task Bracken {
       ~{read_len} \
       ~{level} \
       ~{threshold} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(w) then ("-w " +  '"' + w + '"') else ""} \
-      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
+      ~{if defined(w) then ("-w " +  '"' + w + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
   parameter_meta {
-    d: ""
-    i: ""
-    o: ""
-    w: ""
-    r: ""
-    l: ""
     t: ""
+    l: ""
+    r: ""
+    w: ""
+    o: ""
+    i: ""
+    d: ""
     my_db: "location of Kraken database"
     kraken_report_file: "Kraken REPORT file to use for abundance estimation"
     file_name_bracken: "file name for Bracken default output"
@@ -49,5 +49,8 @@ task Bracken {
     read_len: "read length to get all classifications for (default: 100)"
     level: "level to estimate abundance at [options: D,P,C,O,F,G,S] (default: S)"
     threshold: "number of reads required PRIOR to abundance estimation to perform reestimation (default: 0)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

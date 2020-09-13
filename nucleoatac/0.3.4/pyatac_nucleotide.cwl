@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../pyatac_nucleotide.cwl
 inputs:
-- id: fast_a
+- id: in_fast_a
   doc: Accepts fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --fasta
-- id: bed
+- id: in_bed
   doc: Positions around which to get nucleotide frequencies
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: dinucleotide
-  doc: Compute dinucleotide frequencies instead of single nucleotide
+- id: in_dinucleotide
+  doc: Compute dinucleotide frequencies instead of single
   type: boolean
   inputBinding:
     prefix: --dinucleotide
-- id: up
-  doc: Bases upstream of site to get frequencies for
-  type: long
-  inputBinding:
-    prefix: --up
-- id: down
+- id: in_down
   doc: Bases downstream of site to get frequencies for
   type: long
   inputBinding:
     prefix: --down
-- id: strand
+- id: in_strand
   doc: Column in bedfile with strand info (1-based)
   type: long
   inputBinding:
     prefix: --strand
-- id: out
+- id: in_out
   doc: Basename for output
   type: string
   inputBinding:
     prefix: --out
-- id: cores
+- id: in_cores
   doc: number of cores to use
   type: long
   inputBinding:
     prefix: --cores
-- id: norm
+- id: in_norm
   doc: Normalize by background frequencies
   type: boolean
   inputBinding:
     prefix: --norm
-outputs: []
+- id: in_nucleotide
+  doc: --up int              Bases upstream of site to get frequencies for
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pyatac

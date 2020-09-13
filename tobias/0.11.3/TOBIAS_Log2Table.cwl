@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../TOBIAS_Log2Table.cwl
 inputs:
-- id: log_files
+- id: in_log_files
   doc: '[ [ ...]]  Logfiles from PlotAggregate'
   type: boolean
   inputBinding:
     prefix: --logfiles
-- id: outdir
+- id: in_outdir
   doc: 'Output directory for tables (default: current dir)'
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: prefix
+- id: in_prefix
   doc: Prefix of output files
   type: boolean
   inputBinding:
     prefix: --prefix
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory for tables (default: current dir)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

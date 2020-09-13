@@ -1,6 +1,6 @@
 version 1.0
 
-task SnippyVcfExtractSubs {
+task SnippyvcfExtractSubs {
   input {
     Boolean? debug
     String? ref
@@ -10,10 +10,10 @@ task SnippyVcfExtractSubs {
     String? filter
   }
   command <<<
-    snippy-vcf_extract_subs \
-      ~{true="--debug" false="" debug} \
+    snippy_vcf_extract_subs \
+      ~{if (debug) then "--debug" else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
-      ~{true="--haploid" false="" haploid} \
+      ~{if (haploid) then "--haploid" else ""} \
       ~{if defined(info_tags) then ("--info-tags " +  '"' + info_tags + '"') else ""} \
       ~{if defined(format_tags) then ("--format-tags " +  '"' + format_tags + '"') else ""} \
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""}
@@ -25,5 +25,8 @@ task SnippyVcfExtractSubs {
     info_tags: "Keep these INFO tags (default 'TYPE,DP,RO,AO,AF')."
     format_tags: "Keep these FORMAT tags (default 'GT,DP,RO,AO,QR,QA')."
     filter: "Set FILTER to this (default '')."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task EvaluateSvPredictions {
+task Evaluatesvpredictions {
   command <<<
-    evaluate-sv-predictions
+    evaluate_sv_predictions
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

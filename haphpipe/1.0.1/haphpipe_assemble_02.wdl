@@ -2,8 +2,8 @@ version 1.0
 
 task HaphpipeAssemble02 {
   input {
-    String? read_one
-    String? read_two
+    Int? read_one
+    Int? read_two
     String? amplicons_fast_a
     String? samp_id
     String outdir
@@ -22,5 +22,8 @@ task HaphpipeAssemble02 {
     amplicons_fast_a: ""
     samp_id: ""
     outdir: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

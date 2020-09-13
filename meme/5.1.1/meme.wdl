@@ -2,19 +2,16 @@ version 1.0
 
 task Meme {
   input {
-    String dataset
-    String? optional
-    String? arguments
+    String alignment
   }
   command <<<
     meme \
-      ~{dataset} \
-      ~{optional} \
-      ~{arguments}
+      ~{alignment}
   >>>
   parameter_meta {
-    dataset: ""
-    optional: ""
-    arguments: ""
+    alignment: "[-wg <wg>]              gap opening cost for multiple alignments"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

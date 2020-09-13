@@ -2,10 +2,10 @@ version 1.0
 
 task PhyluceAlignOutputListOfTaxonCounts {
   input {
-    String? fast_as
+    Directory? fast_as
     String? input_format
     Int? min_count
-    String? cores
+    Int? cores
   }
   command <<<
     phyluce_align_output_list_of_taxon_counts \
@@ -15,9 +15,12 @@ task PhyluceAlignOutputListOfTaxonCounts {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
   parameter_meta {
-    fast_as: "The directory containing fastas to checked. (default: None)"
+    fast_as: "The directory containing fastas to checked. (default:\\nNone)"
     input_format: "The input file format. (default: fasta)"
-    min_count: "The min count of taxa allowed in a fasta file (default: 3)"
-    cores: "Process alignments in parallel using --cores for alignment. This is the number of PHYSICAL CPUs. (default: 1)"
+    min_count: "The min count of taxa allowed in a fasta file\\n(default: 3)"
+    cores: "Process alignments in parallel using --cores for\\nalignment. This is the number of PHYSICAL CPUs.\\n(default: 1)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,4 +1,6 @@
 !Command
+command:
+- bowtie-align-s
 positional: []
 named:
 - !Flag
@@ -14,9 +16,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: :<int>,i:<int> query input files are continuous FASTA where reads are
-    substrings (k-mers) extracted from a FASTA file <s> and aligned at offsets 1,
-    1+i, 1+2i ... end of reference
+  description: ":<int>,i:<int> query input files are continuous FASTA where reads\n\
+    are substrings (k-mers) extracted from a FASTA file <s>\nand aligned at offsets\
+    \ 1, 1+i, 1+2i ... end of reference"
   synonyms:
   - -F
   args: !SimpleFlagArg
@@ -113,9 +115,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'max mismatches in seed (can be 0-3, default: -n 2)'
+  description: report end-to-end hits w/ <=v mismatches; ignore qualities
   synonyms:
-  - -n/--seedmms
+  - -v
   args: !SimpleFlagArg
     name: int
   optional: true
@@ -303,11 +305,11 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: approx. fraction of SNP bases (e.g. 0.001); sets --snpphred
+  description: 'Phred penalty for SNP when decoding colorspace (def: 30)'
   synonyms:
-  - --snpfrac
+  - --snpphred
   args: !SimpleFlagArg
-    name: dec
+    name: int
   optional: true
 - !Flag
   description: print aligned colorspace seqs as colors, not decoded bases
@@ -404,10 +406,9 @@ named:
   - -h/--help
   args: !EmptyFlagArg {}
   optional: true
-command:
-- bowtie-align-s
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag

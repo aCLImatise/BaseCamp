@@ -1,75 +1,88 @@
 class: CommandLineTool
 id: ../../../biom_add_metadata.cwl
 inputs:
-- id: input_fp
+- id: in_m
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -m
+- id: in_input_fp
   doc: The input BIOM table  [required]
   type: File
   inputBinding:
     prefix: --input-fp
-- id: output_fp
+- id: in_output_fp
   doc: The output BIOM table  [required]
   type: File
   inputBinding:
     prefix: --output-fp
-- id: sample_metadata_fp
-  doc: The sample metadata mapping file (will add sample metadata to the input BIOM
-    table, if provided).
+- id: in_sample_metadata_fp
+  doc: "The sample metadata mapping file (will add\nsample metadata to the input BIOM\
+    \ table, if\nprovided)."
   type: File
   inputBinding:
     prefix: --sample-metadata-fp
-- id: observation_metadata_fp
-  doc: The observation metadata mapping file (will add observation metadata to the
-    input BIOM table, if provided).
+- id: in_observation_metadata_fp
+  doc: "The observation metadata mapping file (will\nadd observation metadata to the\
+    \ input BIOM\ntable, if provided)."
   type: File
   inputBinding:
     prefix: --observation-metadata-fp
-- id: sc_separated
-  doc: Comma-separated list of the metadata fields to split on semicolons. This is
-    useful for hierarchical data such as taxonomy or functional categories.
+- id: in_sc_separated
+  doc: "Comma-separated list of the metadata fields\nto split on semicolons. This\
+    \ is useful for\nhierarchical data such as taxonomy or\nfunctional categories."
   type: string
   inputBinding:
     prefix: --sc-separated
-- id: sc_pipe_separated
-  doc: Comma-separated list of the metadata fields to split on semicolons and pipes
-    ("|"). This is useful for hierarchical data such as functional categories with
-    one-to-many mappings (e.g. x;y;z|x;y;w)).
+- id: in_sc_pipe_separated
+  doc: "Comma-separated list of the metadata fields\nto split on semicolons and pipes\
+    \ (\"|\"). This\nis useful for hierarchical data such as\nfunctional categories\
+    \ with one-to-many\nmappings (e.g. x;y;z|x;y;w))."
   type: string
   inputBinding:
     prefix: --sc-pipe-separated
-- id: int_fields
-  doc: Comma-separated list of the metadata fields to cast to integers. This is useful
-    for integer data such as "DaysSinceStart".
-  type: string
+- id: in_int_fields
+  doc: "Comma-separated list of the metadata fields\nto cast to integers. This is\
+    \ useful for\ninteger data such as \"DaysSinceStart\"."
+  type: long
   inputBinding:
     prefix: --int-fields
-- id: float_fields
-  doc: Comma-separated list of the metadata fields to cast to floating point numbers.
-    This is useful for real number data such as "pH".
-  type: string
+- id: in_float_fields
+  doc: "Comma-separated list of the metadata fields\nto cast to floating point numbers.\
+    \ This is\nuseful for real number data such as \"pH\"."
+  type: double
   inputBinding:
     prefix: --float-fields
-- id: sample_header
-  doc: Comma-separated list of the sample metadata field names. This is useful if
-    a header line is not provided with the metadata, if you want to rename the fields,
-    or if you want to include only the first n fields where n is the number of entries
-    provided here.
-  type: string
+- id: in_sample_header
+  doc: "Comma-separated list of the sample metadata\nfield names. This is useful if\
+    \ a header line\nis not provided with the metadata, if you\nwant to rename the\
+    \ fields, or if you want to\ninclude only the first n fields where n is\nthe number\
+    \ of entries provided here."
+  type: long
   inputBinding:
     prefix: --sample-header
-- id: observation_header
-  doc: Comma-separated list of the observation metadata field names. This is useful
-    if a header line is not provided with the metadata, if you want to rename the
-    fields, or if you want to include only the first n fields where n is the number
-    of entries provided here.
-  type: string
+- id: in_observation_header
+  doc: "Comma-separated list of the observation\nmetadata field names. This is useful\
+    \ if a\nheader line is not provided with the\nmetadata, if you want to rename\
+    \ the fields,\nor if you want to include only the first n\nfields where n is the\
+    \ number of entries\nprovided here."
+  type: long
   inputBinding:
     prefix: --observation-header
-- id: output_as_json
+- id: in_output_as_json
   doc: Write the output file in JSON format.
-  type: boolean
+  type: File
   inputBinding:
     prefix: --output-as-json
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_as_json
+  doc: Write the output file in JSON format.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_as_json)
 cwlVersion: v1.1
 baseCommand:
 - biom

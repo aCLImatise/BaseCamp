@@ -4,4 +4,7 @@ task DemoRegexp {
   command <<<
     demo_regexp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

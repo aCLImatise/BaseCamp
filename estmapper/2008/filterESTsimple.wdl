@@ -4,4 +4,7 @@ task FilterESTsimple {
   command <<<
     filterESTsimple
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

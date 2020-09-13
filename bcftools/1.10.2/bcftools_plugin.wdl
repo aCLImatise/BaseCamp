@@ -27,12 +27,12 @@ task BcftoolsPlugin {
       ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
-      ~{true="--no-version" false="" no_version} \
+      ~{if (no_version) then "--no-version" else ""} \
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--list-plugins" false="" list_plugins} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (list_plugins) then "--list-plugins" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     exclude: "exclude sites for which the expression is true"
@@ -49,5 +49,9 @@ task BcftoolsPlugin {
     verbose: "print verbose information, -vv increases verbosity"
     name: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_write_output_file = "${in_write_output_file}"
   }
 }

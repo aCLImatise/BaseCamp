@@ -14,7 +14,7 @@ task FilterOverlapFile {
       ~{fragments} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(output_file_devfd) then ("--output " +  '"' + output_file_devfd + '"') else ""} \
-      ~{true="--dump" false="" dump}
+      ~{if (dump) then "--dump" else ""}
   >>>
   parameter_meta {
     threads: "Number of threads (1)"
@@ -22,5 +22,9 @@ task FilterOverlapFile {
     dump: "Fragment in raw -dumpfragment format (false)"
     filter_overlap_file_cmdline: ""
     fragments: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_devfd = "${in_output_file_devfd}"
   }
 }

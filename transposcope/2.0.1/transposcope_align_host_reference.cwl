@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../transposcope_align_host_reference.cwl
 inputs:
-- id: genes
+- id: in_group_one
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: --group1
+- id: in_genes
   doc: ''
   type: string
   inputBinding:
     prefix: --genes
-- id: group_one
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --group1
-- id: transpo_scope
+- id: in_transpo_scope
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: align
+- id: in_align
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - transposcope

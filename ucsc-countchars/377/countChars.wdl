@@ -14,4 +14,7 @@ task CountChars {
     char: ""
     file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

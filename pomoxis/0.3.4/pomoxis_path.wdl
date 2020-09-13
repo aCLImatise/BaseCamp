@@ -11,4 +11,7 @@ task PomoxisPath {
   parameter_meta {
     program: "name of program."
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

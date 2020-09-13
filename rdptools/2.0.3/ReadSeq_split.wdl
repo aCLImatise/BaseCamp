@@ -20,4 +20,7 @@ task ReadSeqSplit {
     outdir: ""
     seq_per_split: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

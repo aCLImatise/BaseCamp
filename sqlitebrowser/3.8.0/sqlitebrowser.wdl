@@ -4,4 +4,7 @@ task Sqlitebrowser {
   command <<<
     sqlitebrowser
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../nw_stats.cwl
 inputs:
-- id: fhh
+- id: in_fhh
   doc: ''
   type: boolean
   inputBinding:
     prefix: -fHh
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nw_stats

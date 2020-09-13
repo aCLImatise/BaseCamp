@@ -1,58 +1,56 @@
 class: CommandLineTool
 id: ../../../rtg_genomesim.cwl
 inputs:
-- id: output
+- id: in_output
   doc: output SDF
   type: string
   inputBinding:
     prefix: --output
-- id: comment
+- id: in_comment
   doc: comment to include in the generated SDF
   type: string
   inputBinding:
     prefix: --comment
-- id: freq
-  doc: relative frequencies of A,C,G,T in the generated sequence (Default is 1,1,1,1)
-  type: string
+- id: in_freq
+  doc: "relative frequencies of A,C,G,T in the generated\nsequence (Default is 1,1,1,1)"
+  type: long
   inputBinding:
     prefix: --freq
-- id: length
-  doc: length of generated sequence. May be specified 0 or more times, or as a comma
-    separated list
+- id: in_length
+  doc: "length of generated sequence. May be specified 0 or\nmore times, or as a comma\
+    \ separated list"
   type: long
   inputBinding:
     prefix: --length
-- id: max_length
+- id: in_max_length
   doc: maximum sequence length
   type: long
   inputBinding:
     prefix: --max-length
-- id: min_length
+- id: in_min_length
   doc: minimum sequence length
   type: long
   inputBinding:
     prefix: --min-length
-- id: num_contigs
+- id: in_num_contigs
   doc: number of sequences to generate
   type: long
   inputBinding:
     prefix: --num-contigs
-- id: prefix
+- id: in_prefix
   doc: sequence name prefix (Default is simulatedSequence)
   type: string
   inputBinding:
     prefix: --prefix
-- id: seed
+- id: in_seed
   doc: seed for random number generator
   type: long
   inputBinding:
     prefix: --seed
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rtg

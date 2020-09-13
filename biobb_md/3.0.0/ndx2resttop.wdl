@@ -2,10 +2,10 @@ version 1.0
 
 task Ndx2resttop {
   input {
-    String? config
+    File? config
     String? input_ndx_path
-    String? input_top_zip_path
-    String? output_top_zip_path
+    File? input_top_zip_path
+    File? output_top_zip_path
   }
   command <<<
     ndx2resttop \
@@ -19,5 +19,9 @@ task Ndx2resttop {
     input_ndx_path: ""
     input_top_zip_path: ""
     output_top_zip_path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_top_zip_path = "${in_output_top_zip_path}"
   }
 }

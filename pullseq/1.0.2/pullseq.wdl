@@ -14,21 +14,25 @@ task Pullseq {
     Boolean? excluded
     Boolean? count
     Boolean? verbose
+    String cat
+    String names_to_select_from_stdin
   }
   command <<<
     pullseq \
-      ~{true="--input" false="" input_fastafastq_file} \
-      ~{true="--names" false="" names} \
-      ~{true="--names_stdin" false="" names_stdin} \
-      ~{true="--regex" false="" regex} \
-      ~{true="--min" false="" min} \
-      ~{true="--max" false="" max} \
-      ~{true="--length" false="" length} \
-      ~{true="--convert" false="" convert} \
-      ~{true="--quality" false="" quality} \
-      ~{true="--excluded" false="" excluded} \
-      ~{true="--count" false="" count} \
-      ~{true="--verbose" false="" verbose}
+      ~{cat} \
+      ~{names_to_select_from_stdin} \
+      ~{if (input_fastafastq_file) then "--input" else ""} \
+      ~{if (names) then "--names" else ""} \
+      ~{if (names_stdin) then "--names_stdin" else ""} \
+      ~{if (regex) then "--regex" else ""} \
+      ~{if (min) then "--min" else ""} \
+      ~{if (max) then "--max" else ""} \
+      ~{if (length) then "--length" else ""} \
+      ~{if (convert) then "--convert" else ""} \
+      ~{if (quality) then "--quality" else ""} \
+      ~{if (excluded) then "--excluded" else ""} \
+      ~{if (count) then "--count" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     input_fastafastq_file: ",       Input fasta/fastq file (required)"
@@ -43,5 +47,10 @@ task Pullseq {
     excluded: ",    Exclude the header id names in the list (-n)"
     count: ",       Just count the possible output, but don't write it"
     verbose: ",     Print extra details during the run"
+    cat: ""
+    names_to_select_from_stdin: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

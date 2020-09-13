@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../enano.cwl
 inputs:
-- id: use_compresion_default
+- id: in_use_compresion_default
   doc: To use MAX COMPRESION MODE. Default is FAST MODE.
   type: boolean
   inputBinding:
     prefix: -c
-- id: base_sequence_context
+- id: in_base_sequence_context
   doc: Base sequence context length. Default is 7 (max 13).
   type: long
   inputBinding:
     prefix: -k
-- id: length_dna_sequence
+- id: in_length_dna_sequence
   doc: Length of the DNA sequence context. Default is 6.
-  type: string
+  type: long
   inputBinding:
     prefix: -l
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - enano

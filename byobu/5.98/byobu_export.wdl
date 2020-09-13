@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuExport {
+task Byobuexport {
   command <<<
-    byobu-export
+    byobu_export
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,9 +2,10 @@ version 1.0
 
 task Dcmconv {
   input {
+    Boolean? arguments
     Boolean? _quiet_quiet
-    Boolean? _verbose_verbose
-    Boolean? _debug_debug
+    Boolean? _verbose_details
+    Boolean? _debug_information
     Boolean? ll
     Boolean? lc
     Boolean? _readdataset_read
@@ -17,6 +18,9 @@ task Dcmconv {
     Boolean? ignore_explicit_vr
     Boolean? assume_implicit
     Boolean? disable_cp_two_four_six
+    Boolean? retain_un
+    Boolean? maxlength_dict
+    Boolean? use_delim_items
     Boolean? handle_parse_errors
     Boolean? disable_correction
     Boolean? transliterate
@@ -25,6 +29,7 @@ task Dcmconv {
     Boolean? _writedataset_write
     Boolean? _disablenewvr_disable
     Boolean? _grouplengthremove_always
+    Boolean? _lengthundefined_write
     Boolean? abort_oversized
     String dcm_file_in
     String dcm_file_out
@@ -33,37 +38,43 @@ task Dcmconv {
     dcmconv \
       ~{dcm_file_in} \
       ~{dcm_file_out} \
-      ~{true="-q" false="" _quiet_quiet} \
-      ~{true="-v" false="" _verbose_verbose} \
-      ~{true="-d" false="" _debug_debug} \
-      ~{true="-ll" false="" ll} \
-      ~{true="-lc" false="" lc} \
-      ~{true="-f" false="" _readdataset_read} \
-      ~{true="-t" false="" _readxferauto_use} \
-      ~{true="--read-xfer-detect" false="" read_xfer_detect} \
-      ~{true="--read-xfer-little" false="" read_xfer_little} \
-      ~{true="--read-xfer-big" false="" read_xfer_big} \
-      ~{true="--read-xfer-implicit" false="" read_xfer_implicit} \
-      ~{true="--ignore-meta-length" false="" ignore_meta_length} \
-      ~{true="--ignore-explicit-vr" false="" ignore_explicit_vr} \
-      ~{true="--assume-implicit" false="" assume_implicit} \
-      ~{true="--disable-cp246" false="" disable_cp_two_four_six} \
-      ~{true="--handle-parse-errors" false="" handle_parse_errors} \
-      ~{true="--disable-correction" false="" disable_correction} \
-      ~{true="--transliterate" false="" transliterate} \
-      ~{true="--discard-illegal" false="" discard_illegal} \
-      ~{true="--no-invalid-groups" false="" no_invalid_groups} \
-      ~{true="-F" false="" _writedataset_write} \
-      ~{true="-u" false="" _disablenewvr_disable} \
-      ~{true="-g" false="" _grouplengthremove_always} \
-      ~{true="--abort-oversized" false="" abort_oversized}
+      ~{if (arguments) then "--arguments" else ""} \
+      ~{if (_quiet_quiet) then "-q" else ""} \
+      ~{if (_verbose_details) then "-v" else ""} \
+      ~{if (_debug_information) then "-d" else ""} \
+      ~{if (ll) then "-ll" else ""} \
+      ~{if (lc) then "-lc" else ""} \
+      ~{if (_readdataset_read) then "-f" else ""} \
+      ~{if (_readxferauto_use) then "-t" else ""} \
+      ~{if (read_xfer_detect) then "--read-xfer-detect" else ""} \
+      ~{if (read_xfer_little) then "--read-xfer-little" else ""} \
+      ~{if (read_xfer_big) then "--read-xfer-big" else ""} \
+      ~{if (read_xfer_implicit) then "--read-xfer-implicit" else ""} \
+      ~{if (ignore_meta_length) then "--ignore-meta-length" else ""} \
+      ~{if (ignore_explicit_vr) then "--ignore-explicit-vr" else ""} \
+      ~{if (assume_implicit) then "--assume-implicit" else ""} \
+      ~{if (disable_cp_two_four_six) then "--disable-cp246" else ""} \
+      ~{if (retain_un) then "--retain-un" else ""} \
+      ~{if (maxlength_dict) then "--maxlength-dict" else ""} \
+      ~{if (use_delim_items) then "--use-delim-items" else ""} \
+      ~{if (handle_parse_errors) then "--handle-parse-errors" else ""} \
+      ~{if (disable_correction) then "--disable-correction" else ""} \
+      ~{if (transliterate) then "--transliterate" else ""} \
+      ~{if (discard_illegal) then "--discard-illegal" else ""} \
+      ~{if (no_invalid_groups) then "--no-invalid-groups" else ""} \
+      ~{if (_writedataset_write) then "-F" else ""} \
+      ~{if (_disablenewvr_disable) then "-u" else ""} \
+      ~{if (_grouplengthremove_always) then "-g" else ""} \
+      ~{if (_lengthundefined_write) then "-e" else ""} \
+      ~{if (abort_oversized) then "--abort-oversized" else ""}
   >>>
   parameter_meta {
+    arguments: "print expanded command line arguments"
     _quiet_quiet: "--quiet                quiet mode, print no warnings and errors"
-    _verbose_verbose: "--verbose              verbose mode, print processing details"
-    _debug_debug: "--debug                debug mode, print debug information"
-    ll: "--log-level            [l]evel: string constant (fatal, error, warn, info, debug, trace) use level l for the logger"
-    lc: "--log-config           [f]ilename: string use config file f for the logger"
+    _verbose_details: "--verbose              verbose mode, print processing details"
+    _debug_information: "--debug                debug mode, print debug information"
+    ll: "--log-level            [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    lc: "--log-config           [f]ilename: string\\nuse config file f for the logger"
     _readdataset_read: "--read-dataset         read data set without file meta information"
     _readxferauto_use: "=  --read-xfer-auto       use TS recognition (default)"
     read_xfer_detect: "ignore TS specified in the file meta header"
@@ -74,16 +85,23 @@ task Dcmconv {
     ignore_explicit_vr: "ignore explicit VR (prefer data dictionary)"
     assume_implicit: "try to read with implicit VR little endian TS"
     disable_cp_two_four_six: "read undefined len UN as explicit VR"
+    retain_un: "retain elements as UN (default)"
+    maxlength_dict: "read as defined in dictionary (default)"
+    use_delim_items: "use delimitation items from dataset (default)"
     handle_parse_errors: "handle parse errors and stop parsing (default)"
     disable_correction: "disable automatic data correction"
-    transliterate: "try to approximate characters that cannot be represented through similar looking characters"
-    discard_illegal: "discard characters that cannot be represented in destination character set"
+    transliterate: "try to approximate characters that cannot be\\nrepresented through similar looking characters"
+    discard_illegal: "discard characters that cannot be represented\\nin destination character set"
     no_invalid_groups: "remove elements with invalid group number"
     _writedataset_write: "--write-dataset        write data set without file meta information"
     _disablenewvr_disable: "--disable-new-vr       disable support for new VRs, convert to OB"
     _grouplengthremove_always: "--group-length-remove  always write without group length elements"
+    _lengthundefined_write: "--length-undefined     write with undefined lengths"
     abort_oversized: "abort on oversized explicit sequences/items"
     dcm_file_in: "DICOM input filename to be converted"
     dcm_file_out: "DICOM output filename"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

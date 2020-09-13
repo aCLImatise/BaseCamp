@@ -8,7 +8,7 @@ task CollectReadSequencesForLocalGapClosing {
     File? reads_file
     File? dir_for_gaps
     Int? num_joins_per_directory
-    String? max_reads_in_memory
+    Int? max_reads_in_memory
     String cmdline_parse
   }
   command <<<
@@ -31,5 +31,8 @@ task CollectReadSequencesForLocalGapClosing {
     num_joins_per_directory: "Number of joins put in each directory (1)"
     max_reads_in_memory: "Number of reads to hold in memory for gap closing bins (100000000)"
     cmdline_parse: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

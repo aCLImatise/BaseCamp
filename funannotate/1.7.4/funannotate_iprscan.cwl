@@ -1,52 +1,60 @@
 class: CommandLineTool
 id: ../../../funannotate_iprscan.cwl
 inputs:
-- id: input
+- id: in_input
   doc: Funannotate folder or FASTA protein file. (Required)
   type: boolean
   inputBinding:
     prefix: --input
-- id: method
+- id: in_method
   doc: 'Search method to use: [local, docker] (Required)'
   type: boolean
   inputBinding:
     prefix: --method
-- id: num
+- id: in_num
   doc: 'Number of fasta files per chunk. Default: 1000'
   type: boolean
   inputBinding:
     prefix: --num
-- id: out
+- id: in_out
   doc: Output XML InterProScan5 file
-  type: boolean
+  type: File
   inputBinding:
     prefix: --out
-- id: debug
+- id: in_debug
   doc: Keep intermediate files
   type: boolean
   inputBinding:
     prefix: --debug
-- id: cpus
-  doc: 'Number of CPUs (total). Default: 12     '
+- id: in_cpus
+  doc: 'Number of CPUs (total). Default: 12'
   type: boolean
   inputBinding:
     prefix: --cpus
-- id: cpus_per_chunk
+- id: in_cpus_per_chunk
   doc: 'Number of cpus per Docker instance. Default: 4'
   type: boolean
   inputBinding:
     prefix: --cpus_per_chunk
-- id: iprs_can_path
+- id: in_iprs_can_path
   doc: 'Path to interproscan.sh. Default: which(interproscan.sh)'
   type: boolean
   inputBinding:
     prefix: --iprscan_path
-- id: arguments
+- id: in_arguments
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: Output XML InterProScan5 file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - funannotate

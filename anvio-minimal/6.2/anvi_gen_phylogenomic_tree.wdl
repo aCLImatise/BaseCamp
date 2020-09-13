@@ -1,20 +1,27 @@
 version 1.0
 
-task AnviGenPhylogenomicTree {
+task Anvigenphylogenomictree {
   input {
-    String? fast_a_file
     File? output_file
     String? program
+    String? f
+    String clusters
   }
   command <<<
-    anvi-gen-phylogenomic-tree \
-      ~{if defined(fast_a_file) then ("--fasta-file " +  '"' + fast_a_file + '"') else ""} \
+    anvi_gen_phylogenomic_tree \
+      ~{clusters} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
-      ~{if defined(program) then ("--program " +  '"' + program + '"') else ""}
+      ~{if defined(program) then ("--program " +  '"' + program + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
   parameter_meta {
-    fast_a_file: "A FASTA-formatted input file"
     output_file: "File path to store results."
-    program: "Program name."
+    program: "Program name.\\n"
+    f: ""
+    clusters: "-f FASTA, --fasta-file FASTA\\nA FASTA-formatted input file"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

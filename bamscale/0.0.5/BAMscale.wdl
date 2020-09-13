@@ -4,4 +4,7 @@ task BAMscale {
   command <<<
     BAMscale
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

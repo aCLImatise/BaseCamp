@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuLaunch {
+task Byobulaunch {
   command <<<
-    byobu-launch
+    byobu_launch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

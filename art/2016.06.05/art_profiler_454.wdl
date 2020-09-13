@@ -4,4 +4,7 @@ task ArtProfiler454 {
   command <<<
     art_profiler_454
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task SeSiMCMC {
   command <<<
     SeSiMCMC
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

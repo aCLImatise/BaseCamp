@@ -1,14 +1,33 @@
 !Command
+command:
+- makeHKY
 positional:
 - !Positional
-  description: ''
+  description: 'OPTIONS:'
   position: 0
-  name: kappa
+  name: below.
   optional: false
 named:
 - !Flag
-  description: Assume a tree consisting of a single branch of specified length. Default
-    value is 1.
+  description: "Define base composition according to specified G+C composition,\n\
+    assuming P(A)=P(T) and P(C)=P(G).  Default is 0.4."
+  synonyms:
+  - --gc
+  - -g
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: "<pi_A,pi_C,pi_G,pi_T>\nOverride --gc and define base composition explicitly.\
+    \  Values will\nbe renormalized to ensure they sum exactly to one."
+  synonyms:
+  - --pi
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Assume a tree consisting of a single branch of specified length.\n\
+    Default value is 1."
   synonyms:
   - --branch-length
   - -t
@@ -23,12 +42,11 @@ named:
   args: !SimpleFlagArg
     name: tree.nh
   optional: true
-command:
-- makeHKY
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: Display this help message and exit.
+  description: "Display this help message and exit.\n"
   synonyms:
   - --help
   - -h

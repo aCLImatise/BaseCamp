@@ -1,7 +1,10 @@
 version 1.0
 
-task StarchDiff {
+task Starchdiff {
   command <<<
-    starch-diff
+    starch_diff
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

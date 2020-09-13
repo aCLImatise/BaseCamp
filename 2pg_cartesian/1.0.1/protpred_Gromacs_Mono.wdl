@@ -2,6 +2,9 @@ version 1.0
 
 task ProtpredGromacsMono {
   command <<<
-    protpred-Gromacs-Mono
+    protpred_Gromacs_Mono
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

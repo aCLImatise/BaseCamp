@@ -1,7 +1,10 @@
 version 1.0
 
-task DxCwl {
+task Dxcwl {
   command <<<
-    dx-cwl
+    dx_cwl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

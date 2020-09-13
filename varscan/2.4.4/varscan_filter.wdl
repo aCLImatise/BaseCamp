@@ -9,7 +9,7 @@ task VarscanFilter {
     Boolean? min_var_freq
     Boolean? p_value
     Boolean? in_del_file
-    Boolean? output_file
+    File? output_file
     String? jar
     String java
     String filter
@@ -22,14 +22,14 @@ task VarscanFilter {
       ~{filter} \
       ~{variant} \
       ~{file} \
-      ~{true="--min-coverage" false="" min_coverage} \
-      ~{true="--min-reads2" false="" min_reads_two} \
-      ~{true="--min-strands2" false="" min_strands_two} \
-      ~{true="--min-avg-qual" false="" min_avg_qual} \
-      ~{true="--min-var-freq" false="" min_var_freq} \
-      ~{true="--p-value" false="" p_value} \
-      ~{true="--indel-file" false="" in_del_file} \
-      ~{true="--output-file" false="" output_file} \
+      ~{if (min_coverage) then "--min-coverage" else ""} \
+      ~{if (min_reads_two) then "--min-reads2" else ""} \
+      ~{if (min_strands_two) then "--min-strands2" else ""} \
+      ~{if (min_avg_qual) then "--min-avg-qual" else ""} \
+      ~{if (min_var_freq) then "--min-var-freq" else ""} \
+      ~{if (p_value) then "--p-value" else ""} \
+      ~{if (in_del_file) then "--indel-file" else ""} \
+      ~{if (output_file) then "--output-file" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
@@ -46,5 +46,9 @@ task VarscanFilter {
     filter: ""
     variant: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

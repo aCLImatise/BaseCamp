@@ -3,20 +3,20 @@ version 1.0
 task GdtoolsNORMALIZE {
   input {
     Boolean? verbose
-    String? output_genome_diff
-    String? reference
+    File? output_genome_diff
+    File? reference
     Boolean? reassign_ids
     Boolean? repeat_adjacent
     Boolean? dont_check_apply
   }
   command <<<
     gdtools NORMALIZE \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(output_genome_diff) then ("--output " +  '"' + output_genome_diff + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{true="--reassign-ids" false="" reassign_ids} \
-      ~{true="--repeat-adjacent" false="" repeat_adjacent} \
-      ~{true="--dont-check-apply" false="" dont_check_apply}
+      ~{if (reassign_ids) then "--reassign-ids" else ""} \
+      ~{if (repeat_adjacent) then "--repeat-adjacent" else ""} \
+      ~{if (dont_check_apply) then "--dont-check-apply" else ""}
   >>>
   parameter_meta {
     verbose: "verbose mode (flag)"
@@ -25,5 +25,9 @@ task GdtoolsNORMALIZE {
     reassign_ids: "reassign ids to lowest numbers possible."
     repeat_adjacent: "mark repeat-region adjacent, mediated, and between mutations."
     dont_check_apply: "skip step that checks consistency of normalize using APPLY."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_genome_diff = "${in_output_genome_diff}"
   }
 }

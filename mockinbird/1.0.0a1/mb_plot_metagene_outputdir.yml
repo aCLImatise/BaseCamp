@@ -1,4 +1,7 @@
-&id002 !Command
+&id003 !Command
+command:
+- mb-plot-metagene
+- outputdir
 positional:
 - !Positional
   description: ''
@@ -13,10 +16,9 @@ named:
   args: !SimpleFlagArg
     name: DOWNSTREAM_BP
   optional: true
-command:
-- mb-plot-metagene
-- outputdir
 parent: &id001 !Command
+  command:
+  - mb-plot-metagene
   positional: []
   named:
   - !Flag
@@ -113,17 +115,18 @@ parent: &id001 !Command
       name: N_BS_ITERATIONS
     optional: true
   - !Flag
-    description: number of parallel processes spawned
+    description: "number of parallel processes spawned\n"
     synonyms:
     - --n_processes
     args: !SimpleFlagArg
       name: N_PROCESSES
     optional: true
-  command:
-  - mb-plot-metagene
   parent:
   subcommands:
   - !Command
+    command:
+    - mb-plot-metagene
+    - pc_table
     positional:
     - !Positional
       description: ''
@@ -138,11 +141,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: DOWNSTREAM_BP
       optional: true
-    command:
-    - mb-plot-metagene
-    - pc_table
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -161,68 +162,29 @@ parent: &id001 !Command
       \ N_BS_ITERATIONS]\n                        [--n_processes N_PROCESSES]\n  \
       \                      pc_table outputdir prefix gff_file\nmb-plot-metagene:\
       \ error: argument pc_table: 'pc_table' does not exist\n"
-    generated_using: &id003
+    generated_using: &id002
     - --help
-  - *id002
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mb-plot-metagene
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --downstream_bp
-      args: !SimpleFlagArg
-        name: DOWNSTREAM_BP
-      optional: true
-    command:
-    - mb-plot-metagene
-    - prefix
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: mb-plot-metagene [-h] [--downstream_bp DOWNSTREAM_BP]\n   \
-      \                     [--upstream_bp UPSTREAM_BP] [--gene_bp GENE_BP]\n    \
-      \                    [--min_ts_len MIN_TS_LEN] [--max_ts_len MAX_TS_LEN]\n \
-      \                       [--smooth_window SMOOTH_WINDOW]\n                  \
-      \      [--labelCenterA LABELCENTERA] [--labelBody LABELBODY]\n             \
-      \           [--labelCenterB LABELCENTERB] [--title TITLE]\n                \
-      \        [--cleanup] [--seed SEED]\n                        [--n_bs_iterations\
-      \ N_BS_ITERATIONS]\n                        [--n_processes N_PROCESSES]\n  \
-      \                      pc_table outputdir prefix gff_file\nmb-plot-metagene:\
-      \ error: argument pc_table: 'prefix' does not exist\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mb-plot-metagene
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --downstream_bp
-      args: !SimpleFlagArg
-        name: DOWNSTREAM_BP
-      optional: true
     command:
     - mb-plot-metagene
     - gff_file
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mb-plot-metagene
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --downstream_bp
+      args: !SimpleFlagArg
+        name: DOWNSTREAM_BP
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -241,7 +203,49 @@ parent: &id001 !Command
       \ N_BS_ITERATIONS]\n                        [--n_processes N_PROCESSES]\n  \
       \                      pc_table outputdir prefix gff_file\nmb-plot-metagene:\
       \ error: argument pc_table: 'gff_file' does not exist\n"
-    generated_using: *id003
+    generated_using: *id002
+  - !Command
+    command:
+    - mb-plot-metagene
+    - prefix
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mb-plot-metagene
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --downstream_bp
+      args: !SimpleFlagArg
+        name: DOWNSTREAM_BP
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: mb-plot-metagene [-h] [--downstream_bp DOWNSTREAM_BP]\n   \
+      \                     [--upstream_bp UPSTREAM_BP] [--gene_bp GENE_BP]\n    \
+      \                    [--min_ts_len MIN_TS_LEN] [--max_ts_len MAX_TS_LEN]\n \
+      \                       [--smooth_window SMOOTH_WINDOW]\n                  \
+      \      [--labelCenterA LABELCENTERA] [--labelBody LABELBODY]\n             \
+      \           [--labelCenterB LABELCENTERB] [--title TITLE]\n                \
+      \        [--cleanup] [--seed SEED]\n                        [--n_bs_iterations\
+      \ N_BS_ITERATIONS]\n                        [--n_processes N_PROCESSES]\n  \
+      \                      pc_table outputdir prefix gff_file\nmb-plot-metagene:\
+      \ error: argument pc_table: 'prefix' does not exist\n"
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -281,8 +285,9 @@ parent: &id001 !Command
     \  remove temporary files\n  --seed SEED           random seed\n  --n_bs_iterations\
     \ N_BS_ITERATIONS\n                        number of bootstrap iterations\n  --n_processes\
     \ N_PROCESSES\n                        number of parallel processes spawned\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:
@@ -301,4 +306,4 @@ help_text: "usage: mb-plot-metagene [-h] [--downstream_bp DOWNSTREAM_BP]\n      
   \       [--n_processes N_PROCESSES]\n                        pc_table outputdir\
   \ prefix gff_file\nmb-plot-metagene: error: argument pc_table: 'outputdir' does\
   \ not exist\n"
-generated_using: *id003
+generated_using: *id002

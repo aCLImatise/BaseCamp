@@ -3,26 +3,24 @@ version 1.0
 task StrideFmwalk {
   input {
     Boolean? verbose
-    String? prefix
+    File? prefix
     File? outfile
-    String? threads
+    Int? threads
     String? algorithm
-    String? km_er_size
-    String? km_er_threshold
-    String? max_leaves
-    String? max_insert_size
-    String? min_overlap
-    String? max_overlap
+    Int? km_er_size
+    Int? km_er_threshold
+    Int? max_leaves
+    Int? max_insert_size
+    Int? min_overlap
+    Int? max_overlap
     String stride
     String fm_index_walk
-    String? option
   }
   command <<<
     stride fmwalk \
       ~{stride} \
       ~{fm_index_walk} \
-      ~{option} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
@@ -48,6 +46,8 @@ task StrideFmwalk {
     max_overlap: "the max overlap (default: avg read length*0.9)"
     stride: ""
     fm_index_walk: ""
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

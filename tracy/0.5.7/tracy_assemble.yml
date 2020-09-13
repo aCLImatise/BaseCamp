@@ -1,4 +1,7 @@
-&id003 !Command
+&id002 !Command
+command:
+- tracy
+- assemble
 positional:
 - !Positional
   description: ''
@@ -72,44 +75,17 @@ named:
   - -i
   args: !EmptyFlagArg {}
   optional: true
-command:
-- tracy
-- assemble
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - tracy
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: genome.fa.gz
-      optional: false
-    named:
-    - !Flag
-      description: '[ --output ] arg (="genome.fm9")  output file'
-      synonyms:
-      - -o
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - tracy
-    - index
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Usage: tracy index [OPTIONS] genome.fa.gz\n\nGeneric options:\n  -?\
-      \ [ --help ]                        show help message\n  -o [ --output ] arg\
-      \ (=\"genome.fm9\")  output file\n\n"
-    generated_using: &id002
-    - --help
-  - !Command
+    - basecall
     positional:
     - !Positional
       description: ''
@@ -135,11 +111,9 @@ parent: &id001 !Command
       - -o
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - tracy
-    - basecall
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -148,8 +122,13 @@ parent: &id001 !Command
       \ (=0.330000013)  peak ratio to call a base\n  -f [ --format ] arg (=json) \
       \        output format [json|tsv|fasta|fastq]\n  -o [ --output ] arg (=\"out.json\"\
       )   basecalling output\n\n"
-    generated_using: *id002
+    generated_using: &id003
+    - --help
+  - *id002
   - !Command
+    command:
+    - tracy
+    - align
     positional:
     - !Positional
       description: ''
@@ -213,8 +192,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: '[ --trim ] arg (=0)              trimming stringency [1:9], 0:
-        use  trimLeft and trimRight'
+      description: "[ --trim ] arg (=0)              trimming stringency [1:9], 0:\
+        \ use\ntrimLeft and trimRight"
       synonyms:
       - -t
       args: !EmptyFlagArg {}
@@ -243,11 +222,9 @@ parent: &id001 !Command
       - -o
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - tracy
-    - align
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -266,8 +243,11 @@ parent: &id001 !Command
       \ arg (=50)        trim size right\n\nOutput options:\n  -l [ --linelimit ]\
       \ arg (=60)        alignment line length\n  -o [ --outprefix ] arg (=out)  \
       \     output prefix\n\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - tracy
+    - decompose
     positional:
     - !Positional
       description: ''
@@ -307,8 +287,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: '[ --annotate ] arg               annotate variants [homo_sapiens|homo_sapi
-        ens_hg19|mus_musculus|danio_rerio|...]'
+      description: "[ --annotate ] arg               annotate variants [homo_sapiens|homo_sapi\n\
+        ens_hg19|mus_musculus|danio_rerio|...]"
       synonyms:
       - -a
       args: !EmptyFlagArg {}
@@ -344,8 +324,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: '[ --trim ] arg (=0)              trimming stringency [1:9], 0:
-        use  trimLeft and trimRight'
+      description: "[ --trim ] arg (=0)              trimming stringency [1:9], 0:\
+        \ use\ntrimLeft and trimRight"
       synonyms:
       - -t
       args: !EmptyFlagArg {}
@@ -374,11 +354,9 @@ parent: &id001 !Command
       - -o
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - tracy
-    - decompose
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -399,8 +377,35 @@ parent: &id001 !Command
       \         trim size left\n  -u [ --trimRight ] arg (=50)        trim size right\n\
       \nOutput options:\n  -l [ --linelimit ] arg (=60)        alignment line length\n\
       \  -o [ --outprefix ] arg (=out)       output prefix\n\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
+  - !Command
+    command:
+    - tracy
+    - index
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: genome.fa.gz
+      optional: false
+    named:
+    - !Flag
+      description: '[ --output ] arg (="genome.fm9")  output file'
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: tracy index [OPTIONS] genome.fa.gz\n\nGeneric options:\n  -?\
+      \ [ --help ]                        show help message\n  -o [ --output ] arg\
+      \ (=\"genome.fm9\")  output file\n\n"
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -413,8 +418,9 @@ parent: &id001 !Command
     \ reference file\n    basecall     basecall Chromatogram trace file\n    align\
     \        alignment of a trace file to a genome\n    decompose    variant calling\
     \ and indel decomposition\n    assemble     assemble a set of trace files\n\n\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -429,4 +435,4 @@ help_text: "Usage: tracy assemble [OPTIONS] trace1.ab1 trace2.ab1 ...\n\nGeneric
   \ ] arg (=0.100000001)  fraction of traces required for consensus\n  -o [ --outprefix\
   \ ] arg (=out)       output prefix\n  -i [ --inccons ]                    include\
   \ consensus in FASTA align\n\n"
-generated_using: *id002
+generated_using: *id003

@@ -4,4 +4,7 @@ task Ribotricer {
   command <<<
     ribotricer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

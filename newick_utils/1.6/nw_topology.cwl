@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../nw_topology.cwl
 inputs:
-- id: keep_branch_lengths
+- id: in_keep_branch_lengths
   doc: ': keep branch lengths'
   type: boolean
   inputBinding:
     prefix: -b
-- id: discard_inner_node
+- id: in_discard_inner_node
   doc: ': discard inner node labels'
   type: boolean
   inputBinding:
     prefix: -I
-- id: discard_leaf_labels
+- id: in_discard_leaf_labels
   doc: ': discard leaf labels'
   type: boolean
   inputBinding:
     prefix: -L
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nw_topology

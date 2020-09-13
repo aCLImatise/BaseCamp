@@ -1,9 +1,32 @@
 !Command
+command:
+- multiqc
 positional:
 - !Positional
-  description: ''
+  description: -t, --template [default|default_dev|gathered|geo|sections|simple]
   position: 0
-  name: analysis directory
+  name: directory.
+  optional: false
+- !Positional
+  description: -l, --file-list                 Supply a file containing a list of
+    file
+  position: 0
+  name: report
+  optional: false
+- !Positional
+  description: -z, --zip-data-dir              Compress the data directory.
+  position: 0
+  name: tsv
+  optional: false
+- !Positional
+  description: --pdf                           Creates PDF report with 'simple' template.
+  position: 1
+  name: development
+  optional: false
+- !Positional
+  description: -v, --verbose                   Increase output verbosity.
+  position: 0
+  name: line
   optional: false
 named:
 - !Flag
@@ -21,8 +44,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Prepend [INT] directories to sample names. Negative number to take
-    from start of path.
+  description: "Prepend [INT] directories to sample names.\nNegative number to take\
+    \ from start of path."
   synonyms:
   - -dd
   - --dirs-depth
@@ -30,15 +53,15 @@ named:
     name: INTEGER
   optional: true
 - !Flag
-  description: Do not clean the sample names (leave as full file name)
+  description: "Do not clean the sample names (leave as full\nfile name)"
   synonyms:
   - -s
   - --fullnames
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Report title. Printed as page header, used for filename if not otherwise
-    specified.
+  description: "Report title. Printed as page header, used\nfor filename if not otherwise\
+    \ specified."
   synonyms:
   - -i
   - --title
@@ -46,7 +69,7 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Custom comment, will be printed at the top of the report.
+  description: "Custom comment, will be printed at the top\nof the report."
   synonyms:
   - -b
   - --comment
@@ -54,7 +77,7 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Report filename. Use 'stdout' to print to standard out.
+  description: "Report filename. Use 'stdout' to print to\nstandard out."
   synonyms:
   - -n
   - --filename
@@ -62,7 +85,7 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Create report in the specified output directory.
+  description: Create report in the specified output
   synonyms:
   - -o
   - --outdir
@@ -70,22 +93,14 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: '[default|default_dev|gathered|geo|sections|simple] Report template
-    to use.'
-  synonyms:
-  - -t
-  - --template
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Use only modules which tagged with this keyword, eg. RNA
+  description: "Use only modules which tagged with this\nkeyword, eg. RNA"
   synonyms:
   - --tag
   args: !SimpleFlagArg
     name: TEXT
   optional: true
 - !Flag
-  description: View the available tags and which modules they load
+  description: "View the available tags and which modules\nthey load"
   synonyms:
   - --view-tags
   - --view_tags
@@ -120,63 +135,21 @@ named:
     name: PATH
   optional: true
 - !Flag
-  description: File containing show/hide patterns for the report
+  description: File containing show/hide patterns for the
   synonyms:
   - --sample-filters
   args: !SimpleFlagArg
     name: PATH
   optional: true
 - !Flag
-  description: Supply a file containing a list of file paths to be searched, one per
-    row
-  synonyms:
-  - -l
-  - --file-list
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[module name]     Do not use this module. Can specify multiple times.'
+  description: '[module name]     Do not use this module. Can specify multiple'
   synonyms:
   - -e
   - --exclude
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[module name]      Use only this module. Can specify multiple times.'
-  synonyms:
-  - -m
-  - --module
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Force the parsed data directory to be created.
-  synonyms:
-  - --data-dir
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Prevent the parsed data directory from being created.
-  synonyms:
-  - --no-data-dir
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[tsv|json|yaml] Output parsed data in a different format. Default:
-    tsv'
-  synonyms:
-  - -k
-  - --data-format
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Compress the data directory.
-  synonyms:
-  - -z
-  - --zip-data-dir
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Export plots as static images in addition to the report
+  description: "Export plots as static images in addition to\nthe report"
   synonyms:
   - -p
   - --export
@@ -190,34 +163,28 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use only interactive plots (HighCharts Javascript)
+  description: "Use only interactive plots (HighCharts\nJavascript)"
   synonyms:
   - -ip
   - --interactive
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use strict linting (validation) to help code development
+  description: Use strict linting (validation) to help code
   synonyms:
   - --lint
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Creates PDF report with 'simple' template. Requires Pandoc to be installed.
-  synonyms:
-  - --pdf
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Don't upload generated report to MegaQC, even if MegaQC options are
-    found
+  description: "Don't upload generated report to MegaQC,\neven if MegaQC options are\
+    \ found"
   synonyms:
   - --no-megaqc-upload
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Specific config file to load, after those in MultiQC dir / home dir
-    / working dir.
+  description: "Specific config file to load, after those in\nMultiQC dir / home dir\
+    \ / working dir."
   synonyms:
   - -c
   - --config
@@ -225,19 +192,12 @@ named:
     name: PATH
   optional: true
 - !Flag
-  description: Specify MultiQC config YAML on the command line
+  description: Specify MultiQC config YAML on the command
   synonyms:
   - --cl-config
   - --cl_config
   args: !SimpleFlagArg
     name: TEXT
-  optional: true
-- !Flag
-  description: Increase output verbosity.
-  synonyms:
-  - -v
-  - --verbose
-  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: Only show log warnings
@@ -247,7 +207,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Add analysis of how long MultiQC takes to run to the report
+  description: "Add analysis of how long MultiQC takes to\nrun to the report"
   synonyms:
   - --profile-runtime
   args: !EmptyFlagArg {}
@@ -258,10 +218,9 @@ named:
   - --no-ansi
   args: !EmptyFlagArg {}
   optional: true
-command:
-- multiqc
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:

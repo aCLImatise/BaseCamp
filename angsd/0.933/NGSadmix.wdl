@@ -2,21 +2,21 @@ version 1.0
 
 task NGSadmix {
   input {
-    String? likes
-    String? of_ancestral_populations
+    File? likes
+    Int? of_ancestral_populations
     String? fname
     String? qname
     String? out_files
     String? print_info
     String? seed
-    String? of_threads
-    String? method
+    Int? of_threads
+    Int? method
     String? mist_ol
-    String? to_l_like_five_zero
+    Int? to_l_like_five_zero
     String? to_l
-    String? dym_bound
+    Int? dym_bound
     Int? maxiter
-    Int? min_maf
+    String? min_maf
     Int? min_lrt
     Int? mini_nd
   }
@@ -58,5 +58,8 @@ task NGSadmix {
     min_maf: "minor allele frequency"
     min_lrt: "likelihood ratio value for maf>0"
     mini_nd: "number of informative individuals"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

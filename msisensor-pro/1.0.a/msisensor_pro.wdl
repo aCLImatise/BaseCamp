@@ -1,7 +1,10 @@
 version 1.0
 
-task MsisensorPro {
+task Msisensorpro {
   command <<<
-    msisensor-pro
+    msisensor_pro
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

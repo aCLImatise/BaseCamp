@@ -1,4 +1,6 @@
 !Command
+command:
+- featureBits
 positional:
 - !Positional
   description: ''
@@ -10,11 +12,142 @@ positional:
   position: 1
   name: table
   optional: false
-named: []
-command:
-- featureBits
+named:
+- !Flag
+  description: Put intersection into bed format. Can use stdout.
+  synonyms:
+  - -bed
+  args: !SimpleFlagArg
+    name: output.bed
+  optional: true
+- !Flag
+  description: Put sequence in intersection into .fa file
+  synonyms:
+  - -fa
+  args: !SimpleFlagArg
+    name: output.fa
+  optional: true
+- !Flag
+  description: For fa output merge overlapping features.
+  synonyms:
+  - -faMerge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum size to output (default 1)
+  synonyms:
+  - -minSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Restrict to one chromosome
+  synonyms:
+  - -chrom
+  args: !SimpleFlagArg
+    name: chrN
+  optional: true
+- !Flag
+  description: "Read chrom sizes from file instead of database.\n(chromInfo three\
+    \ column format)"
+  synonyms:
+  - -chromSize
+  args: !SimpleFlagArg
+    name: sizefile
+  optional: true
+- !Flag
+  description: Or tables together instead of anding them
+  synonyms:
+  - -or
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output negation of resulting bit set.
+  synonyms:
+  - -not
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Count gaps in denominator
+  synonyms:
+  - -countGaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't include _random (or Un) chromosomes
+  synonyms:
+  - -noRandom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't include _hap|_alt chromosomes
+  synonyms:
+  - -noHap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output dot every N chroms (scaffolds) processed
+  synonyms:
+  - -dots
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Don't include bits of the track that are smaller than\nminFeatureSize,\
+    \ useful for differentiating between\nalignment gaps and introns."
+  synonyms:
+  - -minFeatureSize
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Put bin counts in output file
+  synonyms:
+  - -bin
+  args: !SimpleFlagArg
+    name: output.bin
+  optional: true
+- !Flag
+  description: Bin size for generating counts in bin file (default 500000)
+  synonyms:
+  - -binSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Bin overlap for generating counts in bin file (default 250000)
+  synonyms:
+  - -binOverlap
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Read in a bed file for bin counts in specific regions\nand write to\
+    \ bedRegionsOut"
+  synonyms:
+  - -bedRegionIn
+  args: !SimpleFlagArg
+    name: input.bed
+  optional: true
+- !Flag
+  description: "Write a bed file of bin counts in specific regions\nfrom bedRegionIn"
+  synonyms:
+  - -bedRegionOut
+  args: !SimpleFlagArg
+    name: output.bed
+  optional: true
+- !Flag
+  description: "Calculates coverage and enrichment assuming first table\nis reference\
+    \ gene track and second track something else\nEnrichment is the amount of table1\
+    \ that covers table2 vs. the\namount of table1 that covers the genome. It's how\
+    \ much denser\ntable1 is in table2 than it is genome-wide."
+  synonyms:
+  - -enrichment
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

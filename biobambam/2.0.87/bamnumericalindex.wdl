@@ -4,4 +4,7 @@ task Bamnumericalindex {
   command <<<
     bamnumericalindex
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

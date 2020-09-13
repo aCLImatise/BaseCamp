@@ -1,4 +1,6 @@
 !Command
+command:
+- scHicClusterCompartments
 positional:
 - !Positional
   description: ''
@@ -12,8 +14,16 @@ positional:
   optional: false
 named:
 - !Flag
-  description: 'scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction
-    matrices to cluster. Needs to be in scool format (default: None)'
+  description: "File name to save the resulting clusters (default:\nclusters.txt)"
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to cluster.\nNeeds to be in scool format (default: None)"
   synonyms:
   - --matrix
   args: !SimpleFlagArg
@@ -28,15 +38,7 @@ named:
     name: NUMBEROFCLUSTERS
   optional: true
 - !Flag
-  description: 'File name to save the resulting clusters (default: clusters.txt)'
-  synonyms:
-  - --outFileName
-  - -o
-  args: !SimpleFlagArg
-    name: OUTFILENAME
-  optional: true
-- !Flag
-  description: 'Algorithm to cluster the Hi-C matrices (default: spectral)'
+  description: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
   synonyms:
   - --clusterMethod
   - -cm
@@ -46,56 +48,56 @@ named:
       ? spectral
   optional: true
 - !Flag
-  description: 'List of chromosomes to be included in the correlation. (default: None)'
+  description: "List of chromosomes to be included in the correlation.\n(default:\
+    \ None)"
   synonyms:
   - --chromosomes
   args: !RepeatFlagArg
     name: CHROMOSOMES
   optional: true
 - !Flag
-  description: 'Different obs-exp normalization as used by Homer software. (default:
-    False)'
+  description: "Different obs-exp normalization as used by Homer\nsoftware. (default:\
+    \ False)"
   synonyms:
   - --norm
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Set all positive values of eigenvector to 1 and all negative ones
-    to 0. (default: False)'
+  description: "Set all positive values of eigenvector to 1 and all\nnegative ones\
+    \ to 0. (default: False)"
   synonyms:
   - --binarization
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Either a gene track or a histon mark coverage file(preferably a broad
-    mark) is needed to decide if the values of the eigenvector need a sign flip or
-    not. (default: None)'
+  description: "Either a gene track or a histon mark coverage\nfile(preferably a broad\
+    \ mark) is needed to decide if\nthe values of the eigenvector need a sign flip\
+    \ or not.\n(default: None)"
   synonyms:
   - --extraTrack
   args: !SimpleFlagArg
     name: EXTRATRACK
   optional: true
 - !Flag
-  description: 'set it to active or inactive. This is only necessary if a histon mark
-    coverage file is given as an extraTrack. (default: active)'
+  description: "set it to active or inactive. This is only necessary\nif a histon\
+    \ mark coverage file is given as an\nextraTrack. (default: active)"
   synonyms:
   - --histonMarkType
   args: !SimpleFlagArg
     name: HISTONMARKTYPE
   optional: true
 - !Flag
-  description: 'Number of threads. Using the python multiprocessing module. (default:
-    4)'
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
   synonyms:
   - --threads
   - -t
   args: !SimpleFlagArg
     name: THREADS
   optional: true
-command:
-- scHicClusterCompartments
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

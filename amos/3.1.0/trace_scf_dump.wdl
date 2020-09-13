@@ -14,4 +14,7 @@ task TraceScfDump {
     scf_dump: ""
     scf_filename: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

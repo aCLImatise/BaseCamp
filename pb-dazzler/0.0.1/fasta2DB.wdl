@@ -8,13 +8,16 @@ task Fasta2DB {
   }
   command <<<
     fasta2DB \
-      ~{true="-f" false="" import_files_listed} \
-      ~{true="-i" false="" import_data_stdin} \
-      ~{true="-v" false="" v}
+      ~{if (import_files_listed) then "-f" else ""} \
+      ~{if (import_data_stdin) then "-i" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     import_files_listed: ": import files listed 1/line in given file."
-    import_data_stdin: ": import data from stdin, use optiona name as data source. : otherwise, import sequence of specified files."
+    import_data_stdin: ": import data from stdin, use optiona name as data source.\\n: otherwise, import sequence of specified files.\\n"
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

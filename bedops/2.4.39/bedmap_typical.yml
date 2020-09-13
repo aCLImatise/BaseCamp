@@ -1,23 +1,10 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: bedmap
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: process-flags
-  optional: true
-- !Positional
-  description: ''
-  position: 2
-  name: overlap-option
-  optional: true
+command:
+- bedmap-typical
+positional: []
 named:
 - !Flag
-  description: 'Jump to and process data for given <chromosome> only.                   '
+  description: Jump to and process data for given <chromosome> only.
   synonyms:
   - --chrom
   args: !SimpleFlagArg
@@ -31,124 +18,106 @@ named:
     name: delim
   optional: true
 - !Flag
-  description: 'Error check all input files (slower).                                   '
+  description: Error check all input files (slower).
   synonyms:
   - --ec
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '(advanced) Strong input assumptions are made.  Compatible with:          --bp-ovr,
-    --range, --fraction-both, and --exact overlap options only. '
+  description: '(advanced) Strong input assumptions are made.  Compatible with:'
   synonyms:
   - --faster
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Accept headers (VCF, GFF, SAM, BED, WIG) in any input file.             '
+  description: ', and --exact overlap options only.'
+  synonyms:
+  - --bp-ovr
+  - --range
+  - --fraction-both
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Accept headers (VCF, GFF, SAM, BED, WIG) in any input file.
   synonyms:
   - --header
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Minimize memory usage (slower).                                         '
+  description: Minimize memory usage (slower).
   synonyms:
   - --min-memory
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Change delimiter of multi-value output columns from ';' to <delim>.\
-    \     "
+  description: Change delimiter of multi-value output columns from ';' to <delim>.
   synonyms:
   - --multidelim
   args: !SimpleFlagArg
     name: delim
   optional: true
 - !Flag
-  description: 'Change the post-decimal precision of scores to <int>.  0 <= <int>.      '
+  description: Change the post-decimal precision of scores to <int>.  0 <= <int>.
   synonyms:
   - --prec
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: 'Use scientific notation for score outputs.                              '
+  description: Use scientific notation for score outputs.
   synonyms:
   - --sci
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Print no output for a row with no mapped elements.                      '
+  description: Print no output for a row with no mapped elements.
   synonyms:
   - --skip-unmapped
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Ensure <map-file> is read completely (helps to prevent broken pipes).   '
+  description: Ensure <map-file> is read completely (helps to prevent broken pipes).
   synonyms:
   - --sweep-all
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Print <val> on unmapped --echo-map* and --min/max-element* operations.   The
-    default is to print nothing.                                      '
+  description: "Print <val> on unmapped --echo-map* and --min/max-element* operations.\n\
+    The default is to print nothing."
   synonyms:
   - --unmapped-val
   args: !SimpleFlagArg
     name: val
   optional: true
 - !Flag
-  description: 'Require <int> bp overlap between elements of input files.            '
-  synonyms:
-  - --bp-ovr
-  args: !SimpleFlagArg
-    name: int
-  optional: true
-- !Flag
-  description: "First 3 fields from <map-file> must be identical to <ref-file>'s.\
-    \    "
+  description: First 3 fields from <map-file> must be identical to <ref-file>'s.
   synonyms:
   - --exact
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Both --fraction-ref <val> and --fraction-map <val> must be true to    qualify
-    as overlapping.  Expect 0 < val <= 1.                      '
-  synonyms:
-  - --fraction-both
-  args: !SimpleFlagArg
-    name: val
-  optional: true
-- !Flag
-  description: 'Either --fraction-ref <val> or --fraction-map <val> must be true to   qualify
-    as overlapping.  Expect 0 < val <= 1.                      '
+  description: "Either --fraction-ref <val> or --fraction-map <val> must be true to\n\
+    qualify as overlapping.  Expect 0 < val <= 1."
   synonyms:
   - --fraction-either
   args: !SimpleFlagArg
     name: val
   optional: true
 - !Flag
-  description: "The fraction of the element's size from <map-file> that must overlap\
-    \  the element in <ref-file>.  Expect 0 < val <= 1.                   "
+  description: "The fraction of the element's size from <map-file> that must overlap\n\
+    the element in <ref-file>.  Expect 0 < val <= 1."
   synonyms:
   - --fraction-map
   args: !SimpleFlagArg
     name: val
   optional: true
 - !Flag
-  description: "The fraction of the element's size from <ref-file> that must overlap\
-    \  an element in <map-file>.  Expect 0 < val <= 1.                    "
+  description: "The fraction of the element's size from <ref-file> that must overlap\n\
+    an element in <map-file>.  Expect 0 < val <= 1."
   synonyms:
   - --fraction-ref
   args: !SimpleFlagArg
     name: val
-  optional: true
-- !Flag
-  description: "Grab <map-file> elements within <int> bp of <ref-file>'s element,\
-    \     where 0 <= int.  --range 0 is an alias for --bp-ovr 1.             "
-  synonyms:
-  - --range
-  args: !SimpleFlagArg
-    name: int
   optional: true
 - !Flag
   description: The result of --stdev divided by the result of --mean.
@@ -157,17 +126,17 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Generalized median. Report the value, x, such that the fraction <val>
-    of overlapping elements' scores from <map-file> is less than x, and the fraction
-    1-<val> of scores is greater than x.  0 < val <= 1.
+  description: "Generalized median. Report the value, x, such that the fraction <val>\n\
+    of overlapping elements' scores from <map-file> is less than x,\nand the fraction\
+    \ 1-<val> of scores is greater than x.  0 < val <= 1."
   synonyms:
   - --kth
   args: !SimpleFlagArg
     name: val
   optional: true
 - !Flag
-  description: <mult=1>      The median absolute deviation of overlapping elements
-    in <map-file>. Multiply mad score by <mult>.  0 < mult, and mult is 1 by default.
+  description: "<mult=1>      The median absolute deviation of overlapping elements\
+    \ in <map-file>.\nMultiply mad score by <mult>.  0 < mult, and mult is 1 by default."
   synonyms:
   - --mad
   args: !EmptyFlagArg {}
@@ -233,9 +202,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <hi>  The mean score from overlapping elements in <map-file>, after
-    ignoring the bottom <low> and top <hi> fractions of those scores. 0 <= low <=
-    1.  0 <= hi <= 1.  low+hi <= 1.
+  description: "<hi>  The mean score from overlapping elements in <map-file>, after\n\
+    ignoring the bottom <low> and top <hi> fractions of those scores.\n0 <= low <=\
+    \ 1.  0 <= hi <= 1.  low+hi <= 1."
   synonyms:
   - --tmean
   args: !SimpleFlagArg
@@ -248,8 +217,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Weighted mean, scaled in proportion to the coverage of the <ref-file>
-    element by each overlapping <map-file> element.
+  description: "Weighted mean, scaled in proportion to the coverage of the <ref-file>\n\
+    element by each overlapping <map-file> element."
   synonyms:
   - --wmean
   args: !EmptyFlagArg {}
@@ -261,15 +230,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: The number of distinct bases from <ref-file>'s element covered by overlapping
-    elements in <map-file>.
+  description: "The number of distinct bases from <ref-file>'s element covered by\n\
+    overlapping elements in <map-file>."
   synonyms:
   - --bases-uniq
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: The fraction of distinct bases from <ref-file>'s element covered by
-    overlapping elements in <map-file>.
+  description: "The fraction of distinct bases from <ref-file>'s element covered by\n\
+    overlapping elements in <map-file>."
   synonyms:
   - --bases-uniq-f
   args: !EmptyFlagArg {}
@@ -353,19 +322,18 @@ named:
   - --indicator
   args: !EmptyFlagArg {}
   optional: true
-command:
-- bedmap-typical
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: 'Print this message and exit successfully.                               '
+  description: Print this message and exit successfully.
   synonyms:
   - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
 version_flag: !Flag
-  description: 'Print program information.                                              '
+  description: Print program information.
   synonyms:
   - --version
   args: !EmptyFlagArg {}

@@ -1,7 +1,10 @@
 version 1.0
 
-task UpdateSortBedStarchSlurmTypical {
+task Updatesortbedstarchslurmtypical {
   command <<<
-    update-sort-bed-starch-slurm-typical
+    update_sort_bed_starch_slurm_typical
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -7,18 +7,18 @@ task Any2fasta {
     Boolean? replace_ambiguous_letters
     Boolean? lowercase_the_sequence
     Boolean? uppercase_the_sequence
-    Boolean? options
     Boolean? more_options
+    Boolean? options
   }
   command <<<
     any2fasta \
-      ~{true="-v" false="" print_version_exit} \
-      ~{true="-q" false="" output_running_errors} \
-      ~{true="-n" false="" replace_ambiguous_letters} \
-      ~{true="-l" false="" lowercase_the_sequence} \
-      ~{true="-u" false="" uppercase_the_sequence} \
-      ~{true="-OPTIONS" false="" options} \
-      ~{true="-MORE_OPTIONS" false="" more_options}
+      ~{if (print_version_exit) then "-v" else ""} \
+      ~{if (output_running_errors) then "-q" else ""} \
+      ~{if (replace_ambiguous_letters) then "-n" else ""} \
+      ~{if (lowercase_the_sequence) then "-l" else ""} \
+      ~{if (uppercase_the_sequence) then "-u" else ""} \
+      ~{if (more_options) then "-MORE_OPTIONS" else ""} \
+      ~{if (options) then "-OPTIONS" else ""}
   >>>
   parameter_meta {
     print_version_exit: "Print version and exit"
@@ -26,7 +26,10 @@ task Any2fasta {
     replace_ambiguous_letters: "Replace ambiguous IUPAC letters with 'N'"
     lowercase_the_sequence: "Lowercase the sequence"
     uppercase_the_sequence: "Uppercase the sequence"
-    options: ""
     more_options: ""
+    options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

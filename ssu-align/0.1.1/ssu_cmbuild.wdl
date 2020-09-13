@@ -1,40 +1,40 @@
 version 1.0
 
-task SsuCmbuild {
+task Ssucmbuild {
   input {
-    String? name_cms_s
+    File? name_cms_s
     Boolean? append_cm_cmfile
     Boolean? force_allow_overwriting
     Boolean? _verbose_output
     Boolean? i_ins
-    String? w_beta
+    Int? w_beta
     Boolean? devhelp
-    String? r_search
+    File? r_search
     Boolean? binary
     Boolean? rf
-    String? gap_thresh
+    Float? gap_thresh
     Boolean? ignorant
     Boolean? wgs_c
     Boolean? w_blosum
     Boolean? wpb
     Boolean? w_none
     Boolean? w_given
-    String? pb_switch
-    String? wid
+    Int? pb_switch
+    Float? wid
     Boolean? e_ent
     Boolean? en_one
-    String? ere
-    String? e_hmm_re
-    String? null
-    String? prior
+    Int? ere
+    Int? e_hmm_re
+    File? null
+    File? prior
     String? c_target
-    String? cmax_id
+    Int? cmax_id
     Boolean? build_separate_cm
     Boolean? c_orig
-    String? c_dump
+    File? c_dump
     String? refine
     Boolean? gibbs
-    String? wgibbs_set_seed
+    Int? wgibbs_set_seed
     Boolean? wrefine_align_locally
     Boolean? print_individual_sequence
     Boolean? cy_k
@@ -42,61 +42,61 @@ task SsuCmbuild {
     Boolean? non_banded
     String? tau
     Boolean? fins
-    String? mx_size
+    Int? mx_size
     String? r_dump
     Boolean? i_leaved
     Boolean? options
     String cm_file_output
-    String alignment_file
+    File alignment_file
   }
   command <<<
-    ssu-cmbuild \
+    ssu_cmbuild \
       ~{cm_file_output} \
       ~{alignment_file} \
       ~{if defined(name_cms_s) then ("-n " +  '"' + name_cms_s + '"') else ""} \
-      ~{true="-A" false="" append_cm_cmfile} \
-      ~{true="-F" false="" force_allow_overwriting} \
-      ~{true="-v" false="" _verbose_output} \
-      ~{true="--iins" false="" i_ins} \
+      ~{if (append_cm_cmfile) then "-A" else ""} \
+      ~{if (force_allow_overwriting) then "-F" else ""} \
+      ~{if (_verbose_output) then "-v" else ""} \
+      ~{if (i_ins) then "--iins" else ""} \
       ~{if defined(w_beta) then ("--Wbeta " +  '"' + w_beta + '"') else ""} \
-      ~{true="--devhelp" false="" devhelp} \
+      ~{if (devhelp) then "--devhelp" else ""} \
       ~{if defined(r_search) then ("--rsearch " +  '"' + r_search + '"') else ""} \
-      ~{true="--binary" false="" binary} \
-      ~{true="--rf" false="" rf} \
+      ~{if (binary) then "--binary" else ""} \
+      ~{if (rf) then "--rf" else ""} \
       ~{if defined(gap_thresh) then ("--gapthresh " +  '"' + gap_thresh + '"') else ""} \
-      ~{true="--ignorant" false="" ignorant} \
-      ~{true="--wgsc" false="" wgs_c} \
-      ~{true="--wblosum" false="" w_blosum} \
-      ~{true="--wpb" false="" wpb} \
-      ~{true="--wnone" false="" w_none} \
-      ~{true="--wgiven" false="" w_given} \
+      ~{if (ignorant) then "--ignorant" else ""} \
+      ~{if (wgs_c) then "--wgsc" else ""} \
+      ~{if (w_blosum) then "--wblosum" else ""} \
+      ~{if (wpb) then "--wpb" else ""} \
+      ~{if (w_none) then "--wnone" else ""} \
+      ~{if (w_given) then "--wgiven" else ""} \
       ~{if defined(pb_switch) then ("--pbswitch " +  '"' + pb_switch + '"') else ""} \
       ~{if defined(wid) then ("--wid " +  '"' + wid + '"') else ""} \
-      ~{true="--eent" false="" e_ent} \
-      ~{true="--enone" false="" en_one} \
+      ~{if (e_ent) then "--eent" else ""} \
+      ~{if (en_one) then "--enone" else ""} \
       ~{if defined(ere) then ("--ere " +  '"' + ere + '"') else ""} \
       ~{if defined(e_hmm_re) then ("--ehmmre " +  '"' + e_hmm_re + '"') else ""} \
       ~{if defined(null) then ("--null " +  '"' + null + '"') else ""} \
       ~{if defined(prior) then ("--prior " +  '"' + prior + '"') else ""} \
       ~{if defined(c_target) then ("--ctarget " +  '"' + c_target + '"') else ""} \
       ~{if defined(cmax_id) then ("--cmaxid " +  '"' + cmax_id + '"') else ""} \
-      ~{true="--call" false="" build_separate_cm} \
-      ~{true="--corig" false="" c_orig} \
+      ~{if (build_separate_cm) then "--call" else ""} \
+      ~{if (c_orig) then "--corig" else ""} \
       ~{if defined(c_dump) then ("--cdump " +  '"' + c_dump + '"') else ""} \
       ~{if defined(refine) then ("--refine " +  '"' + refine + '"') else ""} \
-      ~{true="--gibbs" false="" gibbs} \
+      ~{if (gibbs) then "--gibbs" else ""} \
       ~{if defined(wgibbs_set_seed) then ("-s " +  '"' + wgibbs_set_seed + '"') else ""} \
-      ~{true="-l" false="" wrefine_align_locally} \
-      ~{true="-a" false="" print_individual_sequence} \
-      ~{true="--cyk" false="" cy_k} \
-      ~{true="--sub" false="" sub} \
-      ~{true="--nonbanded" false="" non_banded} \
+      ~{if (wrefine_align_locally) then "-l" else ""} \
+      ~{if (print_individual_sequence) then "-a" else ""} \
+      ~{if (cy_k) then "--cyk" else ""} \
+      ~{if (sub) then "--sub" else ""} \
+      ~{if (non_banded) then "--nonbanded" else ""} \
       ~{if defined(tau) then ("--tau " +  '"' + tau + '"') else ""} \
-      ~{true="--fins" false="" fins} \
+      ~{if (fins) then "--fins" else ""} \
       ~{if defined(mx_size) then ("--mxsize " +  '"' + mx_size + '"') else ""} \
       ~{if defined(r_dump) then ("--rdump " +  '"' + r_dump + '"') else ""} \
-      ~{true="--ileaved" false="" i_leaved} \
-      ~{true="-options" false="" options}
+      ~{if (i_leaved) then "--ileaved" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     name_cms_s: ": name the CM(s) <s>, (only if single aln in file)"
@@ -145,5 +145,8 @@ task SsuCmbuild {
     options: ""
     cm_file_output: ""
     alignment_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

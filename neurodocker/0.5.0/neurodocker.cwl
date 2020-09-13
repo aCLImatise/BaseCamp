@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../neurodocker.cwl
 inputs:
-- id: var_0
+- id: in_verbosity
   doc: ''
   type: string
   inputBinding:
-    prefix: -v
-- id: var_1
+    prefix: --verbosity
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -V
-outputs: []
+- id: in_generate
+  doc: generate recipes
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - neurodocker

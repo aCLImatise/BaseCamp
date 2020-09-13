@@ -4,18 +4,16 @@ task XmlToSql {
   input {
     String? prefix
     String? text_field
-    String? max_promote_size
+    Int? max_promote_size
     String in_dot_xml
     String in_dot_dtd
     String in_dot_stats
-    String outdir
   }
   command <<<
     xmlToSql \
       ~{in_dot_xml} \
       ~{in_dot_dtd} \
       ~{in_dot_stats} \
-      ~{outdir} \
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(text_field) then ("-textField " +  '"' + text_field + '"') else ""} \
       ~{if defined(max_promote_size) then ("-maxPromoteSize " +  '"' + max_promote_size + '"') else ""}
@@ -23,10 +21,12 @@ task XmlToSql {
   parameter_meta {
     prefix: "- A name to prefix all tables with"
     text_field: "- Name to use for text field (default 'text')"
-    max_promote_size: "- Maximum size (default 32) for a element that just defines a string to be promoted to a field in parent table"
+    max_promote_size: "- Maximum size (default 32) for a element that\\njust defines a string to be promoted to a field\\nin parent table\\n"
     in_dot_xml: ""
     in_dot_dtd: ""
     in_dot_stats: ""
-    outdir: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

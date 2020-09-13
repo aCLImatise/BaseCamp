@@ -1,43 +1,46 @@
 class: CommandLineTool
 id: ../../../pbdagcon.cwl
 inputs:
-- id: v
-  doc: ''
+- id: in__verboseturns_verbose
+  doc: ",  --verbose\nTurns on verbose logging"
   type: boolean
   inputBinding:
     prefix: -v
-- id: a
-  doc: ''
+- id: in__alignalign_sequences
+  doc: ",  --align\nAlign sequences before adding to consensus"
   type: boolean
   inputBinding:
     prefix: -a
-- id: t
-  doc: ''
-  type: string
+- id: in__trim_uinttrim
+  doc: ",  --trim <uint>\nTrim alignments on either size"
+  type: long
   inputBinding:
     prefix: -t
-- id: m
-  doc: ''
-  type: string
+- id: in__minlength_uintminimum
+  doc: ",  --min-length <uint>\nMinimum length for correction"
+  type: long
   inputBinding:
     prefix: -m
-- id: c
-  doc: ''
-  type: string
+- id: in__mincoverage_uintminimum
+  doc: ",  --min-coverage <uint>\nMinimum coverage for correction"
+  type: long
   inputBinding:
     prefix: -c
-- id: j
-  doc: ''
+- id: in__threads_intnumber
+  doc: ",  --threads <int>\nNumber of consensus threads"
   type: long
   inputBinding:
     prefix: -j
-- id: pbd_agc_on
-  doc: '[-v] [-a] [-t <uint>] [-m <uint>] [-c <uint>] [-j <int>] [--] [--version]
-    [-h] <either file path or stdin>'
+- id: in_pbd_agc_on
+  doc: "[-v] [-a] [-t <uint>] [-m <uint>] [-c <uint>] [-j <int>] [--]\n[--version]\
+    \ [-h] <either file path or stdin>"
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pbdagcon

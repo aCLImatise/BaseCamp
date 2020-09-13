@@ -23,4 +23,7 @@ task FfindexOrder {
     sorted_data_out_file: ""
     sorted_index_out_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

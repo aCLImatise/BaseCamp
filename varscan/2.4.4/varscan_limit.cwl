@@ -1,52 +1,50 @@
 class: CommandLineTool
 id: ../../../varscan_limit.cwl
 inputs:
-- id: positions_file
-  doc: '- a file of chromosome-positions, tab delimited, or VCF'
-  type: boolean
-  inputBinding:
-    prefix: --positions-file
-- id: regions_file
+- id: in_regions_file
   doc: '- a file of chromosome-start-stops, tab delimited'
   type: boolean
   inputBinding:
     prefix: --regions-file
-- id: margin_size
+- id: in_margin_size
   doc: '- shoulder bases to allow on either side of targets [0]'
   type: boolean
   inputBinding:
     prefix: --margin-size
-- id: output_file
+- id: in_output_file
   doc: '- Output file for the matching variants'
-  type: boolean
+  type: File
   inputBinding:
     prefix: --output-file
-- id: not_file
+- id: in_not_file
   doc: '- Output file for variants NOT matching regions/positions'
-  type: boolean
+  type: File
   inputBinding:
     prefix: --not-file
-- id: jar
+- id: in_jar
   doc: ''
   type: string
   inputBinding:
     prefix: -jar
-- id: java
-  doc: ''
+- id: in_options
+  doc: --positions-file - a file of chromosome-positions, tab delimited, or VCF
   type: string
   inputBinding:
     position: 0
-- id: limit
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: in_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: '- Output file for the matching variants'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
+- id: out_not_file
+  doc: '- Output file for variants NOT matching regions/positions'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_not_file)
 cwlVersion: v1.1
 baseCommand:
 - varscan

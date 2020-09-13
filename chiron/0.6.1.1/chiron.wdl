@@ -4,4 +4,7 @@ task Chiron {
   command <<<
     chiron
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

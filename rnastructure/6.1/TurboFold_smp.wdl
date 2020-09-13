@@ -1,14 +1,20 @@
 version 1.0
 
-task TurboFoldSmp {
+task TurboFoldsmp {
   input {
-    String configuration_file
+    String sequence_dot
+    String to_dot
   }
   command <<<
-    TurboFold-smp \
-      ~{configuration_file}
+    TurboFold_smp \
+      ~{sequence_dot} \
+      ~{to_dot}
   >>>
   parameter_meta {
-    configuration_file: ""
+    sequence_dot: "Default is no limit."
+    to_dot: "SHAPEintercept"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

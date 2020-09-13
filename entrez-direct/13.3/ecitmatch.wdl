@@ -10,11 +10,11 @@ task Ecitmatch {
   }
   command <<<
     ecitmatch \
-      ~{true="-journal" false="" journal} \
-      ~{true="-year" false="" year} \
-      ~{true="-volume" false="" volume} \
-      ~{true="-page" false="" page} \
-      ~{true="-author" false="" author}
+      ~{if (journal) then "-journal" else ""} \
+      ~{if (year) then "-year" else ""} \
+      ~{if (volume) then "-volume" else ""} \
+      ~{if (page) then "-page" else ""} \
+      ~{if (author) then "-author" else ""}
   >>>
   parameter_meta {
     journal: "Journal Title"
@@ -22,5 +22,8 @@ task Ecitmatch {
     volume: "Volume"
     page: "First Page"
     author: "Author Name"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

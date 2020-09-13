@@ -1,48 +1,51 @@
 class: CommandLineTool
 id: ../../../checkm_ssu_finder.cwl
 inputs:
-- id: extension
+- id: in_extension
   doc: 'extension of bins (other files in directory are ignored) (default: fna)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --extension
-- id: evalue
+- id: in_evalue
   doc: 'e-value threshold for identifying hits (default: 1e-05)'
-  type: string
+  type: double
   inputBinding:
     prefix: --evalue
-- id: concatenate
+- id: in_concatenate
   doc: 'concatenate hits that are within the specified number of base pairs (default:
     200)'
-  type: string
+  type: long
   inputBinding:
     prefix: --concatenate
-- id: threads
+- id: in_threads
   doc: 'number of threads (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: quiet
+- id: in_quiet
   doc: suppress console output
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: seq_file
+- id: in_seq_file
   doc: sequences used to generate bins (fasta format)
   type: string
   inputBinding:
     position: 0
-- id: bin_dir
+- id: in_bin_dir
   doc: directory containing bins (fasta format)
   type: string
   inputBinding:
     position: 1
-- id: output_dir
+- id: in_output_dir
   doc: directory to write output files
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkm

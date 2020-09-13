@@ -1,6 +1,6 @@
 version 1.0
 
-task NfCoreSync {
+task NfcoreSync {
   input {
     Boolean? make_template_branch
     String? from_branch
@@ -9,18 +9,18 @@ task NfCoreSync {
     String? repository
     String? auth_token
     Boolean? all
-    String pipeline_directory
+    Directory pipeline_directory
   }
   command <<<
-    nf-core sync \
+    nf_core sync \
       ~{pipeline_directory} \
-      ~{true="--make-template-branch" false="" make_template_branch} \
+      ~{if (make_template_branch) then "--make-template-branch" else ""} \
       ~{if defined(from_branch) then ("--from-branch " +  '"' + from_branch + '"') else ""} \
-      ~{true="--pull-request" false="" pull_request} \
+      ~{if (pull_request) then "--pull-request" else ""} \
       ~{if defined(username) then ("--username " +  '"' + username + '"') else ""} \
       ~{if defined(repository) then ("--repository " +  '"' + repository + '"') else ""} \
       ~{if defined(auth_token) then ("--auth-token " +  '"' + auth_token + '"') else ""} \
-      ~{true="--all" false="" all}
+      ~{if (all) then "--all" else ""}
   >>>
   parameter_meta {
     make_template_branch: "Create a TEMPLATE branch if none is found."
@@ -31,5 +31,8 @@ task NfCoreSync {
     auth_token: "GitHub API personal access token."
     all: "Sync template for all nf-core pipelines."
     pipeline_directory: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

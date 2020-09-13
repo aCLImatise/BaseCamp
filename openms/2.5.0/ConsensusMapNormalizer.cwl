@@ -1,17 +1,17 @@
 class: CommandLineTool
 id: ../../../ConsensusMapNormalizer.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*               Input file (valid formats: 'consensusXML')"
   type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: "*              Output file (valid formats: 'consensusXML')"
   type: File
   inputBinding:
     prefix: -out
-- id: algorithm_type
+- id: in_algorithm_type
   doc: "The normalization algorithm that is applied. 'robust_regression' scales each\
     \ map by a fator computed from the ratios of non-differential background features\
     \ (as determined by the ratio_threshold parameter), 'quantile' performs quantile\
@@ -23,34 +23,42 @@ inputs:
   type: string
   inputBinding:
     prefix: -algorithm_type
-- id: ratio_threshold
+- id: in_ratio_threshold
   doc: "Only for 'robust_regression': the parameter is used to distinguish between\
     \ non-outliers (ratio_threshold < intensity ratio < 1/ratio_threshold) and outliers.\
     \ (default: '0.67' min: '0.001' max: '1.0')"
-  type: string
+  type: long
   inputBinding:
     prefix: -ratio_threshold
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "*              Output file (valid formats: 'consensusXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - ConsensusMapNormalizer

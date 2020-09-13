@@ -4,4 +4,7 @@ task GmtkDTindex {
   command <<<
     gmtkDTindex
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

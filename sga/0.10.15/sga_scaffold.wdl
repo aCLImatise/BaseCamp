@@ -5,23 +5,21 @@ task SgaScaffold {
     Boolean? verbose
     File? pe
     File? mate_pair
-    String? min_length
+    Int? min_length
     File? as_qg_file
     File? a_statistic_file
     Float? unique_a_stat
     Float? min_copy_number
-    String? max_sv_size
+    Int? max_sv_size
     File? outfile
     Boolean? remove_conflicting
     Boolean? strict
     String scaffold
-    String? option
   }
   command <<<
     sga scaffold \
       ~{scaffold} \
-      ~{option} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(pe) then ("--pe " +  '"' + pe + '"') else ""} \
       ~{if defined(mate_pair) then ("--mate-pair " +  '"' + mate_pair + '"') else ""} \
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""} \
@@ -31,8 +29,8 @@ task SgaScaffold {
       ~{if defined(min_copy_number) then ("--min-copy-number " +  '"' + min_copy_number + '"') else ""} \
       ~{if defined(max_sv_size) then ("--max-sv-size " +  '"' + max_sv_size + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
-      ~{true="--remove-conflicting" false="" remove_conflicting} \
-      ~{true="--strict" false="" strict}
+      ~{if (remove_conflicting) then "--remove-conflicting" else ""} \
+      ~{if (strict) then "--strict" else ""}
   >>>
   parameter_meta {
     verbose: "display verbose output"
@@ -40,14 +38,16 @@ task SgaScaffold {
     mate_pair: "load links derived from mate-pair (long insert) libraries from FILE"
     min_length: "only use contigs at least N bp in length to build scaffolds (default: no minimun)."
     as_qg_file: "optionally load the sequence graph from FILE"
-    a_statistic_file: "load Myers' A-statistic values from FILE. This is used to determine unique and repetitive contigs with the -u/--unique-astat and -r/--repeat-astat parameters (required)"
+    a_statistic_file: "load Myers' A-statistic values from FILE. This is used to\\ndetermine unique and repetitive contigs with the -u/--unique-astat\\nand -r/--repeat-astat parameters (required)"
     unique_a_stat: "Contigs with an a-statitic value about FLOAT will be considered unique (default: 20.0)"
     min_copy_number: "remove vertices with estimated copy number less than FLOAT (default: 0.5f)"
     max_sv_size: "collapse heterozygous structural variation if the event size is less than N (default: 0)"
     outfile: "write the scaffolds to FILE (default: CONTIGSFILE.scaf"
-    remove_conflicting: "if two contigs have multiple distance estimates between them and they do not agree, break the scaffold at this point"
-    strict: "perform strict consistency checks on the scaffold links. If a vertex X has multiple edges, a path will be searched for that contains every vertex linked to X. If no such path can be found, the edge of X are removed. This builds very conservative scaffolds that should be highly accurate."
+    remove_conflicting: "if two contigs have multiple distance estimates between them and they do not agree, break the scaffold\\nat this point"
+    strict: "perform strict consistency checks on the scaffold links. If a vertex X has multiple edges, a path will\\nbe searched for that contains every vertex linked to X. If no such path can be found, the edge of X are removed.\\nThis builds very conservative scaffolds that should be highly accurate."
     scaffold: ""
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

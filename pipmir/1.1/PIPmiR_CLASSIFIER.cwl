@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../PIPmiR_CLASSIFIER.cwl
 inputs:
-- id: minimum_read_count
-  doc: 'Minimum read count for a mature to be considered expressed (Default: 10)'
+- id: in_file_putative_precursor
+  doc: File of putative miRNA precursor sequences and their fold structure (see README)
+  type: File
+  inputBinding:
+    prefix: -P
+- id: in_sorted_file_containing
+  doc: .bam Sorted .bam file containing alignment of the read data
+  type: File
+  inputBinding:
+    prefix: -a
+- id: in_basename_output_files
+  doc: basename of output files
   type: string
   inputBinding:
+    prefix: -o
+- id: in_minimum_read_count
+  doc: 'Minimum read count for a mature to be considered expressed (Default: 10)'
+  type: long
+  inputBinding:
     prefix: -m
-- id: maximum_amount_pipmir
+- id: in_maximum_amount_memory
   doc: 'Maximum amount of memory PIPmiR can use (Default: 4G)'
   type: long
   inputBinding:
     prefix: -X
-- id: file_containing_trainingdatadat
+- id: in_file_containing_data
   doc: 'File containing classifier training data (Default: TrainingData.dat)'
-  type: string
+  type: File
   inputBinding:
     prefix: -T
-- id: creates_log_file
+- id: in_creates_log_file
   doc: Creates a log file of PIPmiR results at <output_header>_log.csv
   type: boolean
   inputBinding:
     prefix: -d
-- id: p
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -P
-- id: a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -a
-- id: o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - PIPmiR

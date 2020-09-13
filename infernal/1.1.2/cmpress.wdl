@@ -7,11 +7,14 @@ task Cmpress {
   }
   command <<<
     cmpress \
-      ~{true="-F" false="" force_overwrite_files} \
-      ~{true="-options" false="" options}
+      ~{if (force_overwrite_files) then "-F" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     force_overwrite_files: ": force: overwrite any previous pressed files"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

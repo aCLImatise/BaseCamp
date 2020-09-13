@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../runSpliceMap.cwl
 inputs:
-- id: run_dot_cfg
+- id: in_run_dot_cfg
   doc: --  Configuration options for this run, see comments in file for details
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - runSpliceMap

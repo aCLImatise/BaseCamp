@@ -3,7 +3,7 @@ version 1.0
 task Ribosum2cc {
   input {
     String ribo_sum_name
-    String ribo_sum_file
+    File ribo_sum_file
   }
   command <<<
     ribosum2cc \
@@ -13,5 +13,8 @@ task Ribosum2cc {
   parameter_meta {
     ribo_sum_name: ""
     ribo_sum_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

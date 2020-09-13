@@ -2,12 +2,12 @@ version 1.0
 
 task SparsePredict {
   input {
-    String? dbname
+    Directory? dbname
     String? map_db
-    String? workspace
-    String? r_one
-    String? r_two
-    String? n_thread
+    Directory? workspace
+    Int? r_one
+    Int? r_two
+    Int? n_thread
   }
   command <<<
     sparse predict \
@@ -19,11 +19,14 @@ task SparsePredict {
       ~{if defined(n_thread) then ("--n_thread " +  '"' + n_thread + '"') else ""}
   >>>
   parameter_meta {
-    dbname: "Name for the database folder. REQUIRED "
-    map_db: "Comma delimited names for sub-databases. REQUIRED. Default: representative,subpopulation,Virus"
+    dbname: "Name for the database folder. REQUIRED"
+    map_db: "Comma delimited names for sub-databases. REQUIRED.\\nDefault: representative,subpopulation,Virus"
     workspace: "Folder name for all outputs and intermediate results. REQUIRED."
-    r_one: "SE read or first part of PE reads. REQUIRED. "
+    r_one: "SE read or first part of PE reads. REQUIRED."
     r_two: "Second part of PE reads."
-    n_thread: "Number of threads to use. Default: 20 "
+    n_thread: "Number of threads to use. Default: 20\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

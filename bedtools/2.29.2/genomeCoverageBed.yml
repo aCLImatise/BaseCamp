@@ -1,83 +1,87 @@
 !Command
+command:
+- genomeCoverageBed
 positional:
 - !Positional
-  description: ''
+  description: -bga            Report depth in BedGraph format, as above (-bg).
   position: 0
-  name: bedtools
+  name: genome.ucsc.edu/goldenPath/help/bedgraph.html
   optional: false
 - !Positional
-  description: ''
+  description: '249250621'
+  position: 0
+  name: chr1
+  optional: false
+- !Positional
+  description: '243199373'
   position: 1
-  name: genomecov
+  name: chr2
+  optional: false
+- !Positional
+  description: '4262'
+  position: 0
+  name: chr18_gl000207_random
   optional: false
 named:
 - !Flag
-  description: 'The input file is in BAM format. Note: BAM _must_ be sorted by position'
+  description: "The input file is in BAM format.\nNote: BAM _must_ be sorted by position"
   synonyms:
   - -ibam
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Report the depth at each genome position (with one-based coordinates).
-    Default behavior is to report a histogram.
+  description: "Report the depth at each genome position (with one-based coordinates).\n\
+    Default behavior is to report a histogram."
   synonyms:
   - -d
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Report the depth at each genome position (with zero-based coordinates).
-    Reports only non-zero positions. Default behavior is to report a histogram.
+  description: "Report the depth at each genome position (with zero-based coordinates).\n\
+    Reports only non-zero positions.\nDefault behavior is to report a histogram."
   synonyms:
   - -dz
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Report depth in BedGraph format. For details, see: genome.ucsc.edu/goldenPath/help/bedgraph.html'
+  description: 'Report depth in BedGraph format. For details, see:'
   synonyms:
   - -bg
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Report depth in BedGraph format, as above (-bg). However with this
-    option, regions with zero  coverage are also reported. This allows one to quickly
-    extract all regions of a genome with 0  coverage by applying: "grep -w 0$" to
-    the output.'
-  synonyms:
-  - -bga
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Treat "split" BAM or BED12 entries as distinct BED intervals. when
-    computing coverage. For BAM files, this uses the CIGAR "N" and "D" operations  to
-    infer the blocks for computing coverage. For BED12 files, this uses the BlockCount,
-    BlockStarts, and BlockEnds fields (i.e., columns 10,11,12).
+  description: "Treat \"split\" BAM or BED12 entries as distinct BED intervals.\n\
+    when computing coverage.\nFor BAM files, this uses the CIGAR \"N\" and \"D\" operations\n\
+    to infer the blocks for computing coverage.\nFor BED12 files, this uses the BlockCount,\
+    \ BlockStarts, and BlockEnds\nfields (i.e., columns 10,11,12)."
   synonyms:
   - -split
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Calculate coverage of intervals from a specific strand. With BED files,
-    requires at least 6 columns (strand is column 6).  - (STRING): can be + or -'
+  description: "Calculate coverage of intervals from a specific strand.\nWith BED\
+    \ files, requires at least 6 columns (strand is column 6).\n- (STRING): can be\
+    \ + or -"
   synonyms:
   - -strand
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Calculate coverage of pair-end fragments. Works for BAM files only
+  description: "Calculate coverage of pair-end fragments.\nWorks for BAM files only"
   synonyms:
   - -pc
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Force to use provided fragment size instead of read length Works for
-    BAM files only
+  description: "Force to use provided fragment size instead of read length\nWorks\
+    \ for BAM files only"
   synonyms:
   - -fs
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Change strand af the mate read (so both reads from the same strand)
-    useful for strand specific Works for BAM files only
+  description: "Change strand af the mate read (so both reads from the same strand)\
+    \ useful for strand specific\nWorks for BAM files only"
   synonyms:
   - -du
   args: !EmptyFlagArg {}
@@ -95,44 +99,37 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Combine all positions with a depth >= max into a single bin in the
-    histogram. Irrelevant for -d and -bedGraph - (INTEGER)
+  description: "Combine all positions with a depth >= max into\na single bin in the\
+    \ histogram. Irrelevant\nfor -d and -bedGraph\n- (INTEGER)"
   synonyms:
   - -max
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Scale the coverage by a constant factor. Each coverage value is multiplied
-    by this factor before being reported. Useful for normalizing coverage by, e.g.,
-    reads per million (RPM). - Default is 1.0; i.e., unscaled. - (FLOAT)
+  description: "Scale the coverage by a constant factor.\nEach coverage value is multiplied\
+    \ by this factor before being reported.\nUseful for normalizing coverage by, e.g.,\
+    \ reads per million (RPM).\n- Default is 1.0; i.e., unscaled.\n- (FLOAT)"
   synonyms:
   - -scale
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Adds a UCSC/Genome-Browser track line definition in the first line
-    of the output. - See here for more details about track line definition: http://genome.ucsc.edu/goldenPath/help/bedgraph.html
-    - NOTE: When adding a trackline definition, the output BedGraph can be easily
-    uploaded to the Genome Browser as a custom track, BUT CAN NOT be converted into
-    a BigWig file (w/o removing the first line).'
+  description: "Adds a UCSC/Genome-Browser track line definition in the first line\
+    \ of the output.\n- See here for more details about track line definition:\nhttp://genome.ucsc.edu/goldenPath/help/bedgraph.html\n\
+    - NOTE: When adding a trackline definition, the output BedGraph can be easily\n\
+    uploaded to the Genome Browser as a custom track,\nBUT CAN NOT be converted into\
+    \ a BigWig file (w/o removing the first line)."
   synonyms:
   - -trackline
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Writes additional track line definition parameters in the first line.\
-    \ - Example: -trackopts 'name=\"My Track\" visibility=2 color=255,30,30' Note\
-    \ the use of single-quotes if you have spaces in your parameters. - (TEXT)"
+  description: "Writes additional track line definition parameters in the first line.\n\
+    - Example:\n-trackopts 'name=\"My Track\" visibility=2 color=255,30,30'\nNote\
+    \ the use of single-quotes if you have spaces in your parameters.\n- (TEXT)"
   synonyms:
   - -trackopts
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: bed/gff/vcf
   optional: true
 - !Flag
   description: ''
@@ -141,10 +138,16 @@ named:
   args: !SimpleFlagArg
     name: genome
   optional: true
-command:
-- genomeCoverageBed
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: bed/gff/vcf
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

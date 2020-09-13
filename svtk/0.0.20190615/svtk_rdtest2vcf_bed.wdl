@@ -17,4 +17,7 @@ task SvtkRdtest2vcfBed {
     samples: ""
     f_out: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

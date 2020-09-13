@@ -8,13 +8,16 @@ task Humann2Databases {
   }
   command <<<
     humann2_databases \
-      ~{true="--available" false="" available} \
+      ~{if (available) then "--available" else ""} \
       ~{if defined(download) then ("--download " +  '"' + download + '"') else ""} \
       ~{if defined(update_config) then ("--update-config " +  '"' + update_config + '"') else ""}
   >>>
   parameter_meta {
     available: "print the available databases"
-    download: "<build> <install_location> download the selected database to the install location"
-    update_config: "update the config file to set the new database as the default [DEFAULT: yes]"
+    download: "<build> <install_location>\\ndownload the selected database to the install location"
+    update_config: "update the config file to set the new database as the default [DEFAULT: yes]\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../slicedimage_checksum_out_path.cwl
 inputs:
-- id: pretty
+- id: in_pretty
   doc: ''
   type: boolean
   inputBinding:
     prefix: --pretty
-- id: sliced_image
+- id: in_sliced_image
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: checksum
+- id: in_checksum
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: in_url
+- id: in_in_url
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: out_path
+- id: in_out_path
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - slicedimage

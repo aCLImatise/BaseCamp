@@ -4,4 +4,7 @@ task TCoffee {
   command <<<
     t_coffee
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

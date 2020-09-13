@@ -1,20 +1,77 @@
 !Command
+command:
+- gtfToGenePred
 positional:
 - !Positional
   description: ''
   position: 0
   name: gtf
   optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: genePred
-  optional: false
-named: []
-command:
-- gtfToGenePred
+named:
+- !Flag
+  description: "- create a extended genePred, including frame\ninformation and gene\
+    \ name"
+  synonyms:
+  - -genePredExt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- skip groups with errors rather than aborting.\nUseful for getting\
+    \ infomation about as many errors as possible."
+  synonyms:
+  - -allErrors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- skip groups contain no exons rather than\ngenerate an error."
+  synonyms:
+  - -ignoreGroupsWithoutExons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- write a file with information on each transcript'
+  synonyms:
+  - -infoOut
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "- only process entries where the source name has the\nspecified prefix.\
+    \  May be repeated."
+  synonyms:
+  - -sourcePrefix
+  args: !SimpleFlagArg
+    name: pre
+  optional: true
+- !Flag
+  description: '- implied stop codon in after CDS'
+  synonyms:
+  - -impliedStopAfterCds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- just check column validity, not hierarchy, resulting genePred may
+    be damaged'
+  synonyms:
+  - -simple
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- if specified, use gene_name for the name2 field\ninstead of gene_id."
+  synonyms:
+  - -geneNameAsName2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- it gene_version and/or transcript_version attributes exist, include\
+    \ the version\nin the corresponding identifiers.\n"
+  synonyms:
+  - -includeVersion
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

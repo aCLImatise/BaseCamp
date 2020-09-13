@@ -1,7 +1,10 @@
 version 1.0
 
-task ArvCrunchJob {
+task Arvcrunchjob {
   command <<<
-    arv-crunch-job
+    arv_crunch_job
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

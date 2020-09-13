@@ -5,18 +5,18 @@ task Binning {
     String? dm
     Boolean? index_file_reads
     Boolean? number_of_reads
-    String? nt
-    String? lu
-    String? ld
-    String? rt
-    String? size_bin
-    String? to_l
+    Int? nt
+    Int? lu
+    Int? ld
+    File? rt
+    Int? size_bin
+    Float? to_l
   }
   command <<<
     binning \
       ~{if defined(dm) then ("-dM " +  '"' + dm + '"') else ""} \
-      ~{true="-i" false="" index_file_reads} \
-      ~{true="-n" false="" number_of_reads} \
+      ~{if (index_file_reads) then "-i" else ""} \
+      ~{if (number_of_reads) then "-n" else ""} \
       ~{if defined(nt) then ("-nt " +  '"' + nt + '"') else ""} \
       ~{if defined(lu) then ("-lu " +  '"' + lu + '"') else ""} \
       ~{if defined(ld) then ("-ld " +  '"' + ld + '"') else ""} \
@@ -33,6 +33,9 @@ task Binning {
     ld: "of links to cut by Down threshold"
     rt: "FILE (comma delimted for several files)"
     size_bin: "of reads to report a bin (default 1)"
-    to_l: "error tolerance (default 0.5) "
+    to_l: "error tolerance (default 0.5)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task OGenerateMatchingQualFile {
+task Ogeneratematchingqualfile {
   command <<<
-    o-generate-matching-qual-file
+    o_generate_matching_qual_file
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

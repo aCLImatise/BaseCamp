@@ -1,58 +1,66 @@
 class: CommandLineTool
 id: ../../../dcmpssnd.cwl
 inputs:
-- id: _quiet_quiet
+- id: in_arguments
+  doc: print expanded command line arguments
+  type: boolean
+  inputBinding:
+    prefix: --arguments
+- id: in__quiet_quiet
   doc: --quiet       quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: _verbose_verbose
+- id: in__verbose_details
   doc: --verbose     verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: _debug_debug
+- id: in__debug_information
   doc: --debug       debug mode, print debug information
   type: boolean
   inputBinding:
     prefix: -d
-- id: log_level
-  doc: '[l]evel: string constant (fatal, error, warn, info, debug, trace) use level
-    l for the logger'
+- id: in_log_level
+  doc: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\nuse level\
+    \ l for the logger"
   type: boolean
   inputBinding:
     prefix: --log-level
-- id: log_config
-  doc: '[f]ilename: string use config file f for the logger'
+- id: in_log_config
+  doc: "[f]ilename: string\nuse config file f for the logger\n"
   type: boolean
   inputBinding:
     prefix: --log-config
-- id: config_file
+- id: in_config_file
   doc: configuration file to be read
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: target
+- id: in_target
   doc: symbolic identifier of send target in config file
   type: string
   inputBinding:
     position: 1
-- id: study
+- id: in_study
   doc: study instance UID of study in database to be sent
   type: string
   inputBinding:
     position: 2
-- id: series
+- id: in_series
   doc: 'series instance UID (default: send complete study)'
   type: string
   inputBinding:
     position: 3
-- id: instance
+- id: in_instance
   doc: 'SOP instance UID (default: send complete series)'
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dcmpssnd

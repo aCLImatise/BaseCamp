@@ -1,7 +1,10 @@
 version 1.0
 
-task LordecTrimSplit {
+task Lordectrimsplit {
   command <<<
-    lordec-trim-split
+    lordec_trim_split
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

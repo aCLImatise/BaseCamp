@@ -1,97 +1,105 @@
 class: CommandLineTool
 id: ../../../ssu_cmemit.cwl
 inputs:
-- id: generate_n_sequences
+- id: in_generate_n_sequences
   doc: ': generate <n> sequences  [10]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -n
-- id: write_generated_sequences_unaligned
+- id: in_write_generated_sequences_unaligned
   doc: ': write generated sequences as unaligned FASTA  [default]'
   type: boolean
   inputBinding:
     prefix: -u
-- id: write_generated_sequences_stockholm
+- id: in_write_generated_sequences_stockholm
   doc: ': write generated sequences as a STOCKHOLM alignment'
   type: boolean
   inputBinding:
     prefix: -a
-- id: generate_single_sequence
+- id: in_generate_single_sequence
   doc: ': generate a single "consensus" sequence only'
   type: boolean
   inputBinding:
     prefix: -c
-- id: local_emit_locally
+- id: in_local_emit_locally
   doc: ': local; emit from a locally configured model'
   type: boolean
   inputBinding:
     prefix: -l
-- id: start_sequence_numbering
+- id: in_start_sequence_numbering
   doc: ': start sequence numbering at <n>  [1]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -i
-- id: set_generator_seed
+- id: in_set_random_seed
   doc: ': set random number generator seed to <n>  [0]  (n>=0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -s
-- id: devhelp
+- id: in_devhelp
   doc: ': show list of otherwise undocumented developer options'
   type: boolean
   inputBinding:
     prefix: --devhelp
-- id: rna
+- id: in_rna
   doc: ': output alignment as RNA sequence data  [default]'
   type: boolean
   inputBinding:
     prefix: --rna
-- id: dna
+- id: in_dna
   doc: ': output alignment as DNA (not RNA) sequence data'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: i_leaved
+- id: in_i_leaved
   doc: ': with -a, output alnment in interleaved Stockholm format'
   type: boolean
   inputBinding:
     prefix: --ileaved
-- id: t_file
+- id: in_t_file
   doc: ': dump parsetrees to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --tfile
-- id: exp
+- id: in_exp
   doc: ': exponentiate CM probabilities by <x> before emitting  (x>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --exp
-- id: begin
+- id: in_begin
   doc: ': truncate alignment, begin at match column <n>  (n>=1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --begin
-- id: end
+- id: in_end
   doc: ': truncate alignment,   end at match column <n>  (n>=1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --end
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: cm_file
+- id: in_cm_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sequence_output_file
+- id: in_sequence_output_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_sequence_output_file
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_sequence_output_file)
 cwlVersion: v1.1
 baseCommand:
 - ssu-cmemit

@@ -1,13 +1,11 @@
 version 1.0
 
-task RibotricerLearnCutoff {
+task RibotricerLearncutoff {
   input {
-    String? ribo_bams
-    String? rna_bams
-    String? ribo_t_svs
-    String? rna_t_svs
-    String? ribot_ricer_index
-    String? prefix
+    File? ribo_bams
+    File? rna_t_svs
+    File? ribot_ricer_index
+    File? prefix
     String? filter_by_tx_annotation
     Float? phase_score_cut_off
     Int? min_valid_codons
@@ -15,10 +13,8 @@ task RibotricerLearnCutoff {
     Int? n_bootstraps
   }
   command <<<
-    ribotricer learn-cutoff \
+    ribotricer learn_cutoff \
       ~{if defined(ribo_bams) then ("--ribo_bams " +  '"' + ribo_bams + '"') else ""} \
-      ~{if defined(rna_bams) then ("--rna_bams " +  '"' + rna_bams + '"') else ""} \
-      ~{if defined(ribo_t_svs) then ("--ribo_tsvs " +  '"' + ribo_t_svs + '"') else ""} \
       ~{if defined(rna_t_svs) then ("--rna_tsvs " +  '"' + rna_t_svs + '"') else ""} \
       ~{if defined(ribot_ricer_index) then ("--ribotricer_index " +  '"' + ribot_ricer_index + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
@@ -29,16 +25,18 @@ task RibotricerLearnCutoff {
       ~{if defined(n_bootstraps) then ("--n_bootstraps " +  '"' + n_bootstraps + '"') else ""}
   >>>
   parameter_meta {
-    ribo_bams: "Path(s) to Ribo-seq BAM file separated by comma"
-    rna_bams: "Path(s) to RNA-seq BAM file separated by comma"
-    ribo_t_svs: "Path(s) to Ribo-seq *_translating_ORFs.tsv file separated by comma"
-    rna_t_svs: "Path(s) to RNA-seq *_translating_ORFs.tsv file separated by comma"
-    ribot_ricer_index: "Path to the index file of ribotricer This file should be generated using ribotricer prepare-orfs (required for BAM input)"
+    ribo_bams: "Path(s) to Ribo-seq BAM file separated by"
+    rna_t_svs: "Path(s) to RNA-seq *_translating_ORFs.tsv\\nfile separated by comma"
+    ribot_ricer_index: "Path to the index file of ribotricer This\\nfile should be generated using ribotricer\\nprepare-orfs (required for BAM input)"
     prefix: "Prefix to output file"
-    filter_by_tx_annotation: "transcript_type to filter regions by [default: protein_coding]"
-    phase_score_cut_off: "Phase score cutoff for determining active translation (required for BAM input) [default: 0.428571428571]"
-    min_valid_codons: "Minimum number of codons with non-zero reads for determining active translation (required for BAM input)  [default: 5]"
-    sampling_ratio: "Number of protein coding regions to sample per bootstrap  [default: 0.33]"
+    filter_by_tx_annotation: "transcript_type to filter regions by\\n[default: protein_coding]"
+    phase_score_cut_off: "Phase score cutoff for determining active\\ntranslation (required for BAM input)\\n[default: 0.428571428571]"
+    min_valid_codons: "Minimum number of codons with non-zero reads\\nfor determining active translation (required\\nfor BAM input)  [default: 5]"
+    sampling_ratio: "Number of protein coding regions to sample\\nper bootstrap  [default: 0.33]"
     n_bootstraps: "Number of bootstraps  [default: 20000]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_prefix = "${in_prefix}"
   }
 }

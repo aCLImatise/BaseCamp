@@ -1,29 +1,37 @@
 class: CommandLineTool
 id: ../../../bl_interleave.cwl
 inputs:
-- id: specify_multiple_files
+- id: in_specify_multiple_files
   doc: specify multiple INPUT files
   type: boolean
   inputBinding:
     prefix: -i
-- id: specify_output_file
+- id: in_specify_output_file
   doc: specify the OUTPUT file
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: reformat_paired_read
-  doc: reformat paired read ID lines by replacing everything after the first space,
-    tab or / with the specified SEP followed by the input file number (e.g. '/' will
-    use /1 as the ID suffix for the first input file, etc.)
+- id: in_reformat_paired_read
+  doc: "reformat paired read ID lines by replacing everything after the first\nspace,\
+    \ tab or / with the specified SEP followed by the input file number\n(e.g. '/'\
+    \ will use /1 as the ID suffix for the first input file, etc.)"
   type: boolean
   inputBinding:
     prefix: -s
-- id: interleave
+- id: in_interleave
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_specify_output_file
+  doc: specify the OUTPUT file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_specify_output_file)
 cwlVersion: v1.1
 baseCommand:
 - bl-interleave

@@ -1,24 +1,24 @@
 version 1.0
 
-task SsuEslCluster {
+task Ssueslcluster {
   input {
-    String? field_read_query
-    String? field_read_target
-    String? field_read_distance
-    String? _clustering_threshold
+    Int? field_read_query
+    Int? field_read_target
+    Int? field_read_distance
+    Float? _clustering_threshold
     Boolean? options
     String keyfile
     String tab_file
   }
   command <<<
-    ssu-esl-cluster \
+    ssu_esl_cluster \
       ~{keyfile} \
       ~{tab_file} \
       ~{if defined(field_read_query) then ("-q " +  '"' + field_read_query + '"') else ""} \
       ~{if defined(field_read_target) then ("-t " +  '"' + field_read_target + '"') else ""} \
       ~{if defined(field_read_distance) then ("-v " +  '"' + field_read_distance + '"') else ""} \
       ~{if defined(_clustering_threshold) then ("-x " +  '"' + _clustering_threshold + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     field_read_query: ": field to read as query name, 1..n  [8]  (n>0)"
@@ -28,5 +28,8 @@ task SsuEslCluster {
     options: ""
     keyfile: ""
     tab_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

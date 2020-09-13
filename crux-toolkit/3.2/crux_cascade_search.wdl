@@ -1,14 +1,10 @@
 version 1.0
 
-task CruxCascadeSearch {
-  input {
-    String tide_spectra_file
-  }
+task CruxCascadesearch {
   command <<<
-    crux cascade-search \
-      ~{tide_spectra_file}
+    crux cascade_search
   >>>
-  parameter_meta {
-    tide_spectra_file: ""
+  output {
+    File out_stdout = stdout()
   }
 }

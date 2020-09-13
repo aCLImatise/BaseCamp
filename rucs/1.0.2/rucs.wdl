@@ -4,4 +4,7 @@ task Rucs {
   command <<<
     rucs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

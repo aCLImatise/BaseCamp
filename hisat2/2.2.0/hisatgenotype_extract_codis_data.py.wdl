@@ -1,20 +1,23 @@
 version 1.0
 
-task HisatgenotypeExtractCodisData.py.bak {
+task HisatgenotypeExtractCodisDatapy {
   input {
-    String? base
-    String? locus_list
+    File? base
+    File? locus_list
     Boolean? verbose
   }
   command <<<
-    hisatgenotype_extract_codis_data.py.bak \
+    hisatgenotype_extract_codis_data_py \
       ~{if defined(base) then ("--base " +  '"' + base + '"') else ""} \
       ~{if defined(locus_list) then ("--locus-list " +  '"' + locus_list + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     base: "base filename (default: codis)"
     locus_list: "base filename (default: empty)"
     verbose: "also print some statistics to stderr"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

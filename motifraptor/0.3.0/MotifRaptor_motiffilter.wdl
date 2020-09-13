@@ -2,8 +2,8 @@ version 1.0
 
 task MotifRaptorMotiffilter {
   input {
-    String? workdir
-    String? motif_summary
+    Directory? workdir
+    File? motif_summary
   }
   command <<<
     MotifRaptor motiffilter \
@@ -12,6 +12,9 @@ task MotifRaptorMotiffilter {
   >>>
   parameter_meta {
     workdir: "Working directory"
-    motif_summary: "Motif Summary File, usually from step2"
+    motif_summary: "Motif Summary File, usually from step2\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

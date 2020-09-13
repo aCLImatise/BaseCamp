@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../nf_core_lint.cwl
 inputs:
-- id: release
+- id: in_release
   doc: Execute additional checks for release-ready workflows.
   type: boolean
   inputBinding:
     prefix: --release
-- id: pipeline_directory
+- id: in_pipeline_directory
   doc: ''
-  type: string
+  type: Directory
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nf-core

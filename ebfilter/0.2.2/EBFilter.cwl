@@ -1,67 +1,75 @@
 class: CommandLineTool
 id: ../../../EBFilter.cwl
 inputs:
-- id: format_mutation_file
-  doc: the format of mutation file vcf or annovar (tsv) format
+- id: in_format_annovar_tsv
+  doc: the format of mutation file vcf or annovar (tsv)
   type: string
   inputBinding:
     prefix: -f
-- id: the_number_threads
-  doc: the number of threads
-  type: string
-  inputBinding:
-    prefix: -t
-- id: threshold_mapping_quality
-  doc: threshold for mapping quality for calculating base counts
+- id: in_threshold_mapping_quality
+  doc: "threshold for mapping quality for calculating base\ncounts"
   type: string
   inputBinding:
     prefix: -q
-- id: threshold_base_quality
+- id: in_threshold_base_quality
   doc: threshold for base quality for calculating base counts
   type: string
   inputBinding:
     prefix: -Q
-- id: ff
+- id: in_ff
   doc: skip reads with mask bits set
   type: string
   inputBinding:
     prefix: --ff
-- id: l_option
+- id: in_l_option
   doc: use samtools mpileup -l option
   type: boolean
   inputBinding:
     prefix: --loption
-- id: region
-  doc: restrict the chromosomal region for mutation. active only if loption is on
+- id: in_region
+  doc: "restrict the chromosomal region for mutation. active\nonly if loption is on"
   type: string
   inputBinding:
     prefix: --region
-- id: debug
+- id: in_debug
   doc: keep intermediate files
   type: boolean
   inputBinding:
     prefix: --debug
-- id: target_dot_vcf
+- id: in_t
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -t
+- id: in_target_dot_vcf
   doc: the path to the mutation file
   type: string
   inputBinding:
     position: 0
-- id: target_dot_bam
+- id: in_target_dot_bam
   doc: the path to the target bam file
   type: string
   inputBinding:
     position: 1
-- id: control_bam_list_dot_txt
+- id: in_control_bam_list_dot_txt
   doc: the list of paths to control bam files
   type: string
   inputBinding:
     position: 2
-- id: output_dot_vcf
+- id: in_output_dot_vcf
   doc: the path to the output
   type: string
   inputBinding:
     position: 3
-outputs: []
+- id: in_format
+  doc: -t thread_num         the number of threads
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - EBFilter

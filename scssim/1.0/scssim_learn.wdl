@@ -2,14 +2,14 @@ version 1.0
 
 task ScssimLearn {
   input {
-    String? bam
-    String? target
-    String? vcf
-    String? ref
+    File? bam
+    File? target
+    File? vcf
+    File? ref
     Int? w_size
     Int? km_er
-    String? output_file
-    String? sam_tools
+    File? output_file
+    File? sam_tools
   }
   command <<<
     scssim learn \
@@ -31,5 +31,9 @@ task ScssimLearn {
     km_er: "the length of kmer sequence [default:3]"
     output_file: "output file"
     sam_tools: "the path of samtools [default:samtools]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

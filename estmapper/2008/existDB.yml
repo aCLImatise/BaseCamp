@@ -1,15 +1,65 @@
 !Command
+command:
+- existDB
 positional:
 - !Positional
   description: ''
   position: 0
   name: stuff
   optional: true
-named: []
-command:
-- existDB
+named:
+- !Flag
+  description: -- Use the specified mersize when building existDB tables.
+  synonyms:
+  - -mersize
+  args: !SimpleFlagArg
+    name: mersize
+  optional: true
+- !Flag
+  description: "prefix\n-- Build an existDB on all mers in some.fasta and save\nthe\
+    \ tables into prefix."
+  synonyms:
+  - -build
+  args: !SimpleFlagArg
+    name: some.fasta
+  optional: true
+- !Flag
+  description: -- Reports the state of some existDB file.
+  synonyms:
+  - -describe
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: "prefix\n-- Build an existDB table from some.fasta.  Write that table\
+    \ to disk.\nLoad the table back.  Compare that each mer in some.fasta is present\n\
+    in all three existDB tables created earlier."
+  synonyms:
+  - -testfiles
+  args: !SimpleFlagArg
+    name: some.fasta
+  optional: true
+- !Flag
+  description: "-- Build an existDB table from some.fasta, check that every\nmer in\
+    \ some.fasta can be found in the table.  Does not\nguarantee that every mer in\
+    \ the table is found in the file."
+  synonyms:
+  - -testexistence
+  args: !SimpleFlagArg
+    name: some.fasta
+  optional: true
+- !Flag
+  description: "some.meryl\n-- Build an existDB table from some.fasta, check _EVERY_\
+    \ mer\nfor existance.  Complain if a mer exists in the table but\nnot in the meryl\
+    \ database.  Assumes 'some.meryl' is the\nmercount of some.fasta.\n"
+  synonyms:
+  - -testexhaustive
+  args: !SimpleFlagArg
+    name: some.fasta
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

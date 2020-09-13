@@ -11,4 +11,7 @@ task EnasearchGetReturnableFields {
   parameter_meta {
     result: "Id of a result (accessible with get_results)  [required]"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

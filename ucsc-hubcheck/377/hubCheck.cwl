@@ -1,64 +1,62 @@
 class: CommandLineTool
 id: ../../../hubCheck.cwl
 inputs:
-- id: no_tracks
+- id: in_no_tracks
   doc: "- don't check remote files for tracks, just trackDb (faster)"
   type: boolean
   inputBinding:
     prefix: -noTracks
-- id: check_settings
+- id: in_check_settings
   doc: '- check trackDb settings to spec'
   type: boolean
   inputBinding:
     prefix: -checkSettings
-- id: version
-  doc: =[v?|url]     - version to validate settings against (defaults to version in
-    hub.txt, or current standard)
+- id: in_version
+  doc: "=[v?|url]     - version to validate settings against\n(defaults to version\
+    \ in hub.txt, or current standard)"
   type: boolean
   inputBinding:
     prefix: -version
-- id: extra
+- id: in_extra
   doc: =[file|url]     - accept settings in this file (or url)
   type: boolean
   inputBinding:
     prefix: -extra
-- id: level
+- id: in_level
   doc: '|required  - reject settings below this support level'
   type: string
   inputBinding:
     prefix: -level
-- id: settings
+- id: in_settings
   doc: '- just list settings with support level'
   type: boolean
   inputBinding:
     prefix: -settings
-- id: udc_dir
-  doc: =/dir/to/cache - place to put cache for remote bigBed/bigWigs. Will create
-    this directory if not existing
+- id: in_udc_dir
+  doc: "=/dir/to/cache - place to put cache for remote bigBed/bigWigs.\nWill create\
+    \ this directory if not existing"
   type: boolean
   inputBinding:
     prefix: -udcDir
-- id: print_meta
+- id: in_print_meta
   doc: '- print the metadata for each track'
   type: boolean
   inputBinding:
     prefix: -printMeta
-- id: cache_time
+- id: in_cache_time
   doc: '- set cache refresh time in seconds, default 1'
-  type: string
+  type: long
   inputBinding:
     prefix: -cacheTime
-- id: verbose
+- id: in_verbose
   doc: '- output verbosely'
-  type: string
+  type: long
   inputBinding:
     prefix: -verbose
-- id: http
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hubCheck

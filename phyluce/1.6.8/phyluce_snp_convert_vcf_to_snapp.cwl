@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../phyluce_snp_convert_vcf_to_snapp.cwl
 inputs:
-- id: input
+- id: in_input
   doc: The VCF file to process
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: The STRUCTURE file to write
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: filter_identical
+- id: in_filter_identical
   doc: Remove sites with only a single genotype.
   type: boolean
   inputBinding:
     prefix: --filter-identical
-- id: filter_informative
+- id: in_filter_informative
   doc: Remove uninformative sites.
   type: boolean
   inputBinding:
     prefix: --filter-informative
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_snp_convert_vcf_to_snapp

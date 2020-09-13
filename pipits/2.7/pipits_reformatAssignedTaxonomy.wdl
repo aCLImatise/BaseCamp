@@ -3,7 +3,7 @@ version 1.0
 task PipitsReformatAssignedTaxonomy {
   input {
     String? in
-    String? out
+    File? out
     String? minimum_confidence_record
     String re_format
     String taxonomy
@@ -34,5 +34,8 @@ task PipitsReformatAssignedTaxonomy {
     var_output: ""
     from: ""
     rdp_classifier_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

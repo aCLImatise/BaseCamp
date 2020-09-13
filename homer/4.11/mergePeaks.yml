@@ -1,4 +1,6 @@
 !Command
+command:
+- mergePeaks
 positional:
 - !Positional
   description: ''
@@ -28,10 +30,10 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<#|given> (Maximum distance between peak centers to merge, default:
-    given) Using "-d given" looks for literal overlaps in peak regions - DEFAULT since
-    v4.4 Use "-d given" when features have vastly different sizes (i.e. peaks vs.
-    introns)'
+  description: "<#|given> (Maximum distance between peak centers to merge, default:\
+    \ given)\nUsing \"-d given\" looks for literal overlaps in peak regions - DEFAULT\
+    \ since v4.4\nUse \"-d given\" when features have vastly different sizes (i.e.\
+    \ peaks vs. introns)"
   synonyms:
   - -d
   args: !EmptyFlagArg {}
@@ -50,6 +52,24 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: "(Generates separate files for overlapping and unique peaks)\nBy default\
+    \ all peaks are sent to stdout"
+  synonyms:
+  - -prefix
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "(Generates files with pairwise comparison statistics)\nfilename.logPvalue.matrix.txt\
+    \ - ln p-values for overlap, +values for divergence\nfilename.logRatio.matrix.txt\
+    \ - ln ratio of observed/expected overlaps\nfilename.count.matrix.txt - peak overlap\
+    \ counts"
+  synonyms:
+  - -matrix
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
   description: '(output venn diagram numbers to file, default: to stderr)'
   synonyms:
   - -venn
@@ -63,11 +83,13 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (generates similar files to above with pairwise overlap statistics)
+  description: "<#> (Maximum number of co-bound peaks to consider)\nWill output sets\
+    \ of peaks that are co-bound by various numbers of factors\nto files coBoundBy0.txt,\
+    \ coBoundBy1.txt, coboundBy2.txt, ...\nOr <prefix>.coBoundBy0.txt, <prefix>.coBoundBy1.txt,\
+    \ ..."
   synonyms:
-  - -matrix
-  args: !SimpleFlagArg
-    name: filename
+  - -cobound
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: :XXX-YYY (only analyze peaks within range)
@@ -83,10 +105,9 @@ named:
   args: !SimpleFlagArg
     name: output file
   optional: true
-command:
-- mergePeaks
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

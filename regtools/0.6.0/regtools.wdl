@@ -4,4 +4,7 @@ task Regtools {
   command <<<
     regtools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

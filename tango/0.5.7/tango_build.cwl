@@ -1,18 +1,21 @@
 class: CommandLineTool
 id: ../../../tango_build.cwl
 inputs:
-- id: dbfile
-  doc: Name of diamond database file. Defaults to diamond.dmnd in same directory as
-    the protein fasta file
-  type: string
+- id: in_dbfile
+  doc: "Name of diamond database file. Defaults to\ndiamond.dmnd in same directory\
+    \ as the protein fasta\nfile"
+  type: File
   inputBinding:
     prefix: --dbfile
-- id: cpus
+- id: in_cpus
   doc: Number of cpus to use when building (defaults to 1)
-  type: string
+  type: long
   inputBinding:
     prefix: --cpus
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tango

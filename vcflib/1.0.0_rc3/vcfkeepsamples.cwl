@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../vcfkeepsamples.cwl
 inputs:
-- id: vcf_file
+- id: in_vcf_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: sample_one
+- id: in_sample_one
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: sample_two
+- id: in_sample_two
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfkeepsamples

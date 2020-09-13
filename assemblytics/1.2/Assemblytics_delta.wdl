@@ -4,4 +4,7 @@ task AssemblyticsDelta {
   command <<<
     Assemblytics delta
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

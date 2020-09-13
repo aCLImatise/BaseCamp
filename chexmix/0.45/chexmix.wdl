@@ -2,9 +2,17 @@ version 1.0
 
 task Chexmix {
   input {
+    File? out
     Boolean? threads
     Boolean? verbose
     Boolean? config
+    File? geninfo
+    File? back
+    File? expt
+    Boolean? ctrl
+    Boolean? design
+    Boolean? fixed_pb
+    String? poisson_gauss_pb
     Boolean? non_unique
     Boolean? mapp_ability
     Boolean? nocache
@@ -15,11 +23,23 @@ task Chexmix {
     Boolean? fixed_scaling
     Boolean? scale_win
     Boolean? plot_scaling
+    Boolean? round
+    Boolean? bm_window_max
+    Boolean? no_model_update
+    Boolean? min_model_update_events
+    Boolean? pr_log_conf
+    Boolean? fixed_alpha
+    Boolean? alpha_scale
+    Boolean? beta_scale
+    Boolean? epsilon_scale
+    Boolean? min_subtype_frac
+    File? peak_f
     File? exclude
     Boolean? galaxy_html
     Boolean? standard
     Boolean? lenient
     Boolean? lenient_plus
+    File? mot_file
     Boolean? meme_path
     Boolean? no_motifs
     Boolean? no_motif_prior
@@ -41,47 +61,75 @@ task Chexmix {
   }
   command <<<
     chexmix \
-      ~{true="--threads" false="" threads} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--config" false="" config} \
-      ~{true="--nonunique" false="" non_unique} \
-      ~{true="--mappability" false="" mapp_ability} \
-      ~{true="--nocache" false="" nocache} \
-      ~{true="--noscaling" false="" no_scaling} \
-      ~{true="--medianscale" false="" median_scale} \
-      ~{true="--regressionscale" false="" regression_scale} \
-      ~{true="--sesscale" false="" ses_scale} \
-      ~{true="--fixedscaling" false="" fixed_scaling} \
-      ~{true="--scalewin" false="" scale_win} \
-      ~{true="--plotscaling" false="" plot_scaling} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (config) then "--config" else ""} \
+      ~{if defined(geninfo) then ("--geninfo " +  '"' + geninfo + '"') else ""} \
+      ~{if defined(back) then ("--back " +  '"' + back + '"') else ""} \
+      ~{if defined(expt) then ("--expt " +  '"' + expt + '"') else ""} \
+      ~{if (ctrl) then "--ctrl" else ""} \
+      ~{if (design) then "--design" else ""} \
+      ~{if (fixed_pb) then "--fixedpb" else ""} \
+      ~{if defined(poisson_gauss_pb) then ("--poissongausspb " +  '"' + poisson_gauss_pb + '"') else ""} \
+      ~{if (non_unique) then "--nonunique" else ""} \
+      ~{if (mapp_ability) then "--mappability" else ""} \
+      ~{if (nocache) then "--nocache" else ""} \
+      ~{if (no_scaling) then "--noscaling" else ""} \
+      ~{if (median_scale) then "--medianscale" else ""} \
+      ~{if (regression_scale) then "--regressionscale" else ""} \
+      ~{if (ses_scale) then "--sesscale" else ""} \
+      ~{if (fixed_scaling) then "--fixedscaling" else ""} \
+      ~{if (scale_win) then "--scalewin" else ""} \
+      ~{if (plot_scaling) then "--plotscaling" else ""} \
+      ~{if (round) then "--round" else ""} \
+      ~{if (bm_window_max) then "--bmwindowmax" else ""} \
+      ~{if (no_model_update) then "--nomodelupdate" else ""} \
+      ~{if (min_model_update_events) then "--minmodelupdateevents" else ""} \
+      ~{if (pr_log_conf) then "--prlogconf" else ""} \
+      ~{if (fixed_alpha) then "--fixedalpha" else ""} \
+      ~{if (alpha_scale) then "--alphascale" else ""} \
+      ~{if (beta_scale) then "--betascale" else ""} \
+      ~{if (epsilon_scale) then "--epsilonscale" else ""} \
+      ~{if (min_subtype_frac) then "--minsubtypefrac" else ""} \
+      ~{if defined(peak_f) then ("--peakf " +  '"' + peak_f + '"') else ""} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
-      ~{true="--galaxyhtml" false="" galaxy_html} \
-      ~{true="--standard" false="" standard} \
-      ~{true="--lenient" false="" lenient} \
-      ~{true="--lenientplus" false="" lenient_plus} \
-      ~{true="--memepath" false="" meme_path} \
-      ~{true="--nomotifs" false="" no_motifs} \
-      ~{true="--nomotifprior" false="" no_motif_prior} \
-      ~{true="--memenmotifs" false="" me_men_motifs} \
-      ~{true="--mememinw" false="" meme_min_w} \
-      ~{true="--mememaxw" false="" meme_max_w} \
-      ~{true="--memeargs" false="" meme_args} \
-      ~{true="--minroc" false="" min_roc} \
-      ~{true="--minmodelupdaterefs" false="" min_model_update_refs} \
-      ~{true="--seqrmthres" false="" seqr_mth_res} \
-      ~{true="--motifpccthres" false="" motif_pcc_th_res} \
-      ~{true="--noclustering" false="" no_clustering} \
-      ~{true="--pref" false="" pref} \
-      ~{true="--numcomps" false="" num_comps} \
-      ~{true="--win" false="" win} \
-      ~{true="--kldivergencethres" false="" kl_divergence_th_res} \
-      ~{true="--q" false="" qvalue_minimum_default} \
-      ~{true="--minfold" false="" min_fold}
+      ~{if (galaxy_html) then "--galaxyhtml" else ""} \
+      ~{if (standard) then "--standard" else ""} \
+      ~{if (lenient) then "--lenient" else ""} \
+      ~{if (lenient_plus) then "--lenientplus" else ""} \
+      ~{if defined(mot_file) then ("--motfile " +  '"' + mot_file + '"') else ""} \
+      ~{if (meme_path) then "--memepath" else ""} \
+      ~{if (no_motifs) then "--nomotifs" else ""} \
+      ~{if (no_motif_prior) then "--nomotifprior" else ""} \
+      ~{if (me_men_motifs) then "--memenmotifs" else ""} \
+      ~{if (meme_min_w) then "--mememinw" else ""} \
+      ~{if (meme_max_w) then "--mememaxw" else ""} \
+      ~{if (meme_args) then "--memeargs" else ""} \
+      ~{if (min_roc) then "--minroc" else ""} \
+      ~{if (min_model_update_refs) then "--minmodelupdaterefs" else ""} \
+      ~{if (seqr_mth_res) then "--seqrmthres" else ""} \
+      ~{if (motif_pcc_th_res) then "--motifpccthres" else ""} \
+      ~{if (no_clustering) then "--noclustering" else ""} \
+      ~{if (pref) then "--pref" else ""} \
+      ~{if (num_comps) then "--numcomps" else ""} \
+      ~{if (win) then "--win" else ""} \
+      ~{if (kl_divergence_th_res) then "--kldivergencethres" else ""} \
+      ~{if (qvalue_minimum_default) then "--q" else ""} \
+      ~{if (min_fold) then "--minfold" else ""}
   >>>
   parameter_meta {
+    out: ""
     threads: "<number of threads to use (default=1)>"
     verbose: "[flag to print intermediate files and extra output]"
     config: "<config file: all options here can be specified in a name<space>value text file, over-ridden by command-line args>"
+    geninfo: "AND --seq <fasta seq directory reqd if finding motif>"
+    back: ""
+    expt: "AND --format <SAM/BED/IDX>"
+    ctrl: "<file name (optional argument. must be same format as expt files)>"
+    design: "<experiment design file name to use instead of --expt and --ctrl; see website for format>"
+    fixed_pb: "<fixed per base limit (default: estimated from background model)>"
+    poisson_gauss_pb: ""
     non_unique: "[flag to use non-unique reads]"
     mapp_ability: "<fraction of the genome that is mappable for these experiments (default=0.8)>"
     nocache: "[flag to turn off caching of the entire set of experiments (i.e. run slower with less memory)]"
@@ -92,11 +140,23 @@ task Chexmix {
     fixed_scaling: "<multiply control counts by total tag count ratio and then by this factor (default: NCIS)>"
     scale_win: "<window size for scaling procedure (default=10000)>"
     plot_scaling: "[flag to plot diagnostic information for the chosen scaling method]"
+    round: "<max. model update rounds (default=3)>"
+    bm_window_max: "<max. window size for running a mixture model over binding events (default=2000)>"
+    no_model_update: "[flag to turn off binding model updates]"
+    min_model_update_events: "<minimum number of events to support an update using read distributions (default=100)>"
+    pr_log_conf: "<Poisson log threshold for potential region scanning (default=-6)>"
+    fixed_alpha: "<binding events must have at least this number of reads (default: set automatically)>"
+    alpha_scale: "<alpha scaling factor; increase for stricter event calls (default=1.0)>"
+    beta_scale: "<beta scaling factor; prior on subtype assignment (default=0.05)>"
+    epsilon_scale: "<epsilon scaling factor; increase for more weight on motif in subtype assignment (default=0.2)>"
+    min_subtype_frac: "<subtypes must have at least this percentage of associated binding events; increase for fewer subtypes (default=0.05)>"
+    peak_f: ""
     exclude: "OR --excludebed <file of regions to ignore in bed format>"
     galaxy_html: "[flag to produce a html output appropreate for galaxy]"
     standard: "[report events that pass significance threshold in condition as a whole (default mode)]"
     lenient: "[report events that pass significance in >=1 replicate *or* the condition as a whole.]"
     lenient_plus: "[report events that pass significance in condition OR (>=1 replicate AND no signif diff between replicates)]"
+    mot_file: ""
     meme_path: "<path to the meme bin dir (default: meme is in $PATH)>"
     no_motifs: "[flag to turn off motif-finding & motif priors]"
     no_motif_prior: "[flag to turn off motif priors only]"
@@ -115,5 +175,9 @@ task Chexmix {
     kl_divergence_th_res: "<KL divergence dissimilarity threshold for merging subtypes using read distributions; increase for fewer subtypes (default=-10)>"
     qvalue_minimum_default: "<Q-value minimum (default=0.01)>"
     min_fold: "<minimum event fold-change vs scaled control (default=1.5)>"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

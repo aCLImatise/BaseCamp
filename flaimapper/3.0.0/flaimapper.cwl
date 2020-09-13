@@ -1,50 +1,68 @@
 class: CommandLineTool
 id: ../../../flaimapper.cwl
 inputs:
-- id: parameters
-  doc: File containing the filtering parameters, using default if none is provided
-  type: string
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_quiet
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --quiet
+- id: in_parameters
+  doc: "File containing the filtering parameters, using\ndefault if none is provided"
+  type: File
   inputBinding:
     prefix: --parameters
-- id: output
+- id: in_output
   doc: output filename; '-' for stdout
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: format
-  doc: 'file format of the output: [1: table; per fragment], [2: GTF (default)]'
-  type: string
+- id: in_format
+  doc: "file format of the output: [1: table; per fragment],\n[2: GTF (default)]"
+  type: File
   inputBinding:
     prefix: --format
-- id: fast_a
-  doc: Single reference FASTA file (+faid index) containing all genomic reference
-    sequences
-  type: string
+- id: in_fast_a
+  doc: "Single reference FASTA file (+faid index) containing\nall genomic reference\
+    \ sequences"
+  type: File
   inputBinding:
     prefix: --fasta
-- id: offset_five_p
-  doc: Offset in bp added to the exon-type annotations in the GTF file. This offset
-    is used in tools estimating the expression levels (default=4)
-  type: string
+- id: in_offset_five_p
+  doc: "Offset in bp added to the exon-type annotations in the\nGTF file. This offset\
+    \ is used in tools estimating the\nexpression levels (default=4)"
+  type: long
   inputBinding:
     prefix: --offset5p
-- id: offset_three_p
-  doc: Offset in bp added to the exon-type annotations in the GTF file. This offset
-    is used in tools estimating the expression levels (default=4)
-  type: string
+- id: in_offset_three_p
+  doc: "Offset in bp added to the exon-type annotations in the\nGTF file. This offset\
+    \ is used in tools estimating the\nexpression levels (default=4)"
+  type: long
   inputBinding:
     prefix: --offset3p
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -V
-- id: alignment_file
-  doc: indexed SAM or BAM file
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output filename; '-' for stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_format
+  doc: "file format of the output: [1: table; per fragment],\n[2: GTF (default)]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_format)
 cwlVersion: v1.1
 baseCommand:
 - flaimapper

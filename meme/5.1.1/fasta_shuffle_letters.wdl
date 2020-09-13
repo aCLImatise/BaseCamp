@@ -1,17 +1,17 @@
 version 1.0
 
-task FastaShuffleLetters {
+task Fastashuffleletters {
   input {
-    String sequence_file
-    String? output_file
+    File sequence_file
   }
   command <<<
-    fasta-shuffle-letters \
-      ~{sequence_file} \
-      ~{output_file}
+    fasta_shuffle_letters \
+      ~{sequence_file}
   >>>
   parameter_meta {
     sequence_file: ""
-    output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogModuleValidator {
+task WatchdogmoduleValidator {
   command <<<
-    watchdog-moduleValidator
+    watchdog_moduleValidator
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

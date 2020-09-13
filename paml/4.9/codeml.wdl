@@ -4,4 +4,7 @@ task Codeml {
   command <<<
     codeml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

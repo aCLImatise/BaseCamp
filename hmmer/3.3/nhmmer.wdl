@@ -2,56 +2,56 @@ version 1.0
 
 task Nhmmer {
   input {
-    String? direct_output_file
-    String? save_multiple_alignment
-    String? tbl_out
-    String? df_am_tbl_out
+    File? direct_output_file
+    File? save_multiple_alignment
+    File? tbl_out
+    File? df_am_tbl_out
     String? ali_scores_out
-    String? hmm_out
+    File? hmm_out
     Boolean? acc
     Boolean? no_ali
     Boolean? no_text_w
-    String? text_w
+    Int? text_w
     Boolean? single_mx
-    String? popen
-    String? p_extend
-    String? mx_file
-    String? report_sequences_evalue
-    String? report_sequences_threshold
-    String? ince
+    Float? popen
+    Float? p_extend
+    File? mx_file
+    Float? report_sequences_evalue_threshold
+    String? report_sequences_score_threshold
+    Float? ince
     String? in_ct
     Boolean? cut_ga
     Boolean? cut_nc
     Boolean? cut_tc
     Boolean? max
-    String? fone
-    String? f_two
-    String? f_three
+    Int? fone
+    Int? f_two
+    Int? f_three
     Boolean? no_bias
     Boolean? dna
     Boolean? rna
-    String? seed_max_depth
-    String? seed_sc_thresh
-    String? seed_sc_density
-    String? seed_drop_max_len
-    String? seed_drop_lim
-    String? seed_req_pos
-    String? seed_con_sens_match
-    String? seed_ssv_length
+    Int? seed_max_depth
+    Int? seed_sc_thresh
+    Float? seed_sc_density
+    Int? seed_drop_max_len
+    Int? seed_drop_lim
+    Int? seed_req_pos
+    Int? seed_con_sens_match
+    Int? seed_ssv_length
     Boolean? q_hmm
     Boolean? q_fast_a
     Boolean? qms_a
     String? q_format
     String? t_format
     Boolean? no_null_two
-    String? set_size_megabases
-    String? seed
-    String? w_beta
-    String? w_length
-    String? block_length
+    Int? set_size_megabases
+    Int? seed
+    Int? w_beta
+    Int? w_length
+    Int? block_length
     Boolean? watson
     Boolean? crick
-    String? cpu
+    Int? cpu
   }
   command <<<
     nhmmer \
@@ -61,28 +61,28 @@ task Nhmmer {
       ~{if defined(df_am_tbl_out) then ("--dfamtblout " +  '"' + df_am_tbl_out + '"') else ""} \
       ~{if defined(ali_scores_out) then ("--aliscoresout " +  '"' + ali_scores_out + '"') else ""} \
       ~{if defined(hmm_out) then ("--hmmout " +  '"' + hmm_out + '"') else ""} \
-      ~{true="--acc" false="" acc} \
-      ~{true="--noali" false="" no_ali} \
-      ~{true="--notextw" false="" no_text_w} \
+      ~{if (acc) then "--acc" else ""} \
+      ~{if (no_ali) then "--noali" else ""} \
+      ~{if (no_text_w) then "--notextw" else ""} \
       ~{if defined(text_w) then ("--textw " +  '"' + text_w + '"') else ""} \
-      ~{true="--singlemx" false="" single_mx} \
+      ~{if (single_mx) then "--singlemx" else ""} \
       ~{if defined(popen) then ("--popen " +  '"' + popen + '"') else ""} \
       ~{if defined(p_extend) then ("--pextend " +  '"' + p_extend + '"') else ""} \
       ~{if defined(mx_file) then ("--mxfile " +  '"' + mx_file + '"') else ""} \
-      ~{if defined(report_sequences_evalue) then ("-E " +  '"' + report_sequences_evalue + '"') else ""} \
-      ~{if defined(report_sequences_threshold) then ("-T " +  '"' + report_sequences_threshold + '"') else ""} \
+      ~{if defined(report_sequences_evalue_threshold) then ("-E " +  '"' + report_sequences_evalue_threshold + '"') else ""} \
+      ~{if defined(report_sequences_score_threshold) then ("-T " +  '"' + report_sequences_score_threshold + '"') else ""} \
       ~{if defined(ince) then ("--incE " +  '"' + ince + '"') else ""} \
       ~{if defined(in_ct) then ("--incT " +  '"' + in_ct + '"') else ""} \
-      ~{true="--cut_ga" false="" cut_ga} \
-      ~{true="--cut_nc" false="" cut_nc} \
-      ~{true="--cut_tc" false="" cut_tc} \
-      ~{true="--max" false="" max} \
+      ~{if (cut_ga) then "--cut_ga" else ""} \
+      ~{if (cut_nc) then "--cut_nc" else ""} \
+      ~{if (cut_tc) then "--cut_tc" else ""} \
+      ~{if (max) then "--max" else ""} \
       ~{if defined(fone) then ("--F1 " +  '"' + fone + '"') else ""} \
       ~{if defined(f_two) then ("--F2 " +  '"' + f_two + '"') else ""} \
       ~{if defined(f_three) then ("--F3 " +  '"' + f_three + '"') else ""} \
-      ~{true="--nobias" false="" no_bias} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
+      ~{if (no_bias) then "--nobias" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
       ~{if defined(seed_max_depth) then ("--seed_max_depth " +  '"' + seed_max_depth + '"') else ""} \
       ~{if defined(seed_sc_thresh) then ("--seed_sc_thresh " +  '"' + seed_sc_thresh + '"') else ""} \
       ~{if defined(seed_sc_density) then ("--seed_sc_density " +  '"' + seed_sc_density + '"') else ""} \
@@ -91,19 +91,19 @@ task Nhmmer {
       ~{if defined(seed_req_pos) then ("--seed_req_pos " +  '"' + seed_req_pos + '"') else ""} \
       ~{if defined(seed_con_sens_match) then ("--seed_consens_match " +  '"' + seed_con_sens_match + '"') else ""} \
       ~{if defined(seed_ssv_length) then ("--seed_ssv_length " +  '"' + seed_ssv_length + '"') else ""} \
-      ~{true="--qhmm" false="" q_hmm} \
-      ~{true="--qfasta" false="" q_fast_a} \
-      ~{true="--qmsa" false="" qms_a} \
+      ~{if (q_hmm) then "--qhmm" else ""} \
+      ~{if (q_fast_a) then "--qfasta" else ""} \
+      ~{if (qms_a) then "--qmsa" else ""} \
       ~{if defined(q_format) then ("--qformat " +  '"' + q_format + '"') else ""} \
       ~{if defined(t_format) then ("--tformat " +  '"' + t_format + '"') else ""} \
-      ~{true="--nonull2" false="" no_null_two} \
+      ~{if (no_null_two) then "--nonull2" else ""} \
       ~{if defined(set_size_megabases) then ("-Z " +  '"' + set_size_megabases + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(w_beta) then ("--w_beta " +  '"' + w_beta + '"') else ""} \
       ~{if defined(w_length) then ("--w_length " +  '"' + w_length + '"') else ""} \
       ~{if defined(block_length) then ("--block_length " +  '"' + block_length + '"') else ""} \
-      ~{true="--watson" false="" watson} \
-      ~{true="--crick" false="" crick} \
+      ~{if (watson) then "--watson" else ""} \
+      ~{if (crick) then "--crick" else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""}
   >>>
   parameter_meta {
@@ -121,8 +121,8 @@ task Nhmmer {
     popen: ": gap open probability  [0.03125]  (0<=x<0.5)"
     p_extend: ": gap extend probability  [0.75]  (0<=x<1)"
     mx_file: ": read substitution score matrix from file <f>"
-    report_sequences_evalue: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
-    report_sequences_threshold: ": report sequences >= this score threshold in output"
+    report_sequences_evalue_threshold: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
+    report_sequences_score_threshold: ": report sequences >= this score threshold in output"
     ince: ": consider sequences <= this E-value threshold as significant  [0.01]  (x>0)"
     in_ct: ": consider sequences >= this score threshold as significant"
     cut_ga: ": use profile's GA gathering cutoffs to set all thresholding"
@@ -157,5 +157,9 @@ task Nhmmer {
     watson: ": only search the top strand"
     crick: ": only search the bottom strand"
     cpu: ": number of parallel CPU workers to use for multithreads  [2]  (n>=0)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_direct_output_file = "${in_direct_output_file}"
   }
 }

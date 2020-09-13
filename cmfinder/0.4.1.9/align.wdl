@@ -14,4 +14,7 @@ task Align {
     m: ""
     seq_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

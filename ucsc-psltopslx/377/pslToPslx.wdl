@@ -6,21 +6,21 @@ task PslToPslx {
     String in_dot_psl
     String q_seq_spec
     String tseq_spec
-    String out_dot_psl_x
   }
   command <<<
     pslToPslx \
       ~{in_dot_psl} \
       ~{q_seq_spec} \
       ~{tseq_spec} \
-      ~{out_dot_psl_x} \
-      ~{true="-masked" false="" masked}
+      ~{if (masked) then "-masked" else ""}
   >>>
   parameter_meta {
-    masked: "- if specified, repeats are in lower case cases, otherwise entire sequence is loader case."
+    masked: "- if specified, repeats are in lower case cases, otherwise entire\\nsequence is loader case.\\n"
     in_dot_psl: ""
     q_seq_spec: ""
     tseq_spec: ""
-    out_dot_psl_x: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

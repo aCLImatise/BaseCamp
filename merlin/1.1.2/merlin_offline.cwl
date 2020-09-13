@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../merlin_offline.cwl
 inputs:
-- id: dat_infer
+- id: in_dat_infer
   doc: '[merlin-infer.dat],'
   type: boolean
   inputBinding:
     prefix: --datinfer
-- id: ped_infer
+- id: in_ped_infer
   doc: '[merlin-infer.ped]'
   type: boolean
   inputBinding:
     prefix: --pedinfer
-- id: custom
+- id: in_custom
   doc: '[covars.tbl]'
   type: boolean
   inputBinding:
     prefix: --custom
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - merlin-offline

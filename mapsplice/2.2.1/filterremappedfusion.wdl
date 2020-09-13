@@ -4,4 +4,7 @@ task Filterremappedfusion {
   command <<<
     filterremappedfusion
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

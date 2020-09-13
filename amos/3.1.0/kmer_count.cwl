@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../kmer_count.cwl
 inputs:
-- id: km_er_cov
+- id: in_km_er_cov
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: km_er
+- id: in_km_er
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - kmer-count

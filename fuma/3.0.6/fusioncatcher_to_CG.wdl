@@ -1,26 +1,27 @@
 version 1.0
 
-task FusioncatcherToCG {
+task FusioncatchertoCG {
   input {
     String? input_format
-    String? data_directory
-    String? output_filename_stdout
+    Directory? data_directory
+    File? output_filename_stdout
     Boolean? v
-    String input_file
   }
   command <<<
-    fusioncatcher-to-CG \
-      ~{input_file} \
+    fusioncatcher_to_CG \
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
       ~{if defined(data_directory) then ("--data-directory " +  '"' + data_directory + '"') else ""} \
       ~{if defined(output_filename_stdout) then ("--output " +  '"' + output_filename_stdout + '"') else ""} \
-      ~{true="-V" false="" v}
+      ~{if (v) then "-V" else ""}
   >>>
   parameter_meta {
     input_format: "File type of the file to convert"
-    data_directory: "FusionCatcher's data dir (/opt/fusioncatcher/data/ensembl_v...)"
+    data_directory: "FusionCatcher's data dir\\n(/opt/fusioncatcher/data/ensembl_v...)"
     output_filename_stdout: "output filename; '-' for stdout"
     v: ""
-    input_file: "File to convert"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_filename_stdout = "${in_output_filename_stdout}"
   }
 }

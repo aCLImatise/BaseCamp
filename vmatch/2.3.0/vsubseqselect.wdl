@@ -4,4 +4,7 @@ task Vsubseqselect {
   command <<<
     vsubseqselect
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

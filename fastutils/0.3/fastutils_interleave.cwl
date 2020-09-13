@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../fastutils_interleave.cwl
 inputs:
-- id: in_one
+- id: in_in_one
   doc: fasta/q file containing forward (left) reads [required]
-  type: string
+  type: long
   inputBinding:
     prefix: --in1
-- id: in_two
+- id: in_in_two
   doc: fasta/q file containing reverse (right) reads [required]
-  type: string
+  type: long
   inputBinding:
     prefix: --in2
-- id: out
+- id: in_out
   doc: output interlaced reads in STR file [stdout]
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: fast_q
+- id: in_fast_q
   doc: output reads in fastq format if possible
   type: boolean
   inputBinding:
     prefix: --fastq
-- id: separator
+- id: in_separator
   doc: separator character [.]
   type: string
   inputBinding:
     prefix: --separator
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: output interlaced reads in STR file [stdout]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - fastutils

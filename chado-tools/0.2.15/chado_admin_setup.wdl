@@ -3,18 +3,16 @@ version 1.0
 task ChadoAdminSetup {
   input {
     Boolean? verbose
-    String? config
+    File? config
     Boolean? use_password
     String? schema
-    String? schema_file
-    String dbname
+    File? schema_file
   }
   command <<<
     chado admin setup \
-      ~{dbname} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
-      ~{true="--use_password" false="" use_password} \
+      ~{if (use_password) then "--use_password" else ""} \
       ~{if defined(schema) then ("--schema " +  '"' + schema + '"') else ""} \
       ~{if defined(schema_file) then ("--schema_file " +  '"' + schema_file + '"') else ""}
   >>>
@@ -23,7 +21,9 @@ task ChadoAdminSetup {
     config: "YAML file containing connection details"
     use_password: "connect with password (default: no password)"
     schema: "Database schema (default: GMOD schema 1.31)"
-    schema_file: "File with database schema"
-    dbname: "name of the database"
+    schema_file: "File with database schema\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../phyluce_ncbi_prep_uce_align_files_for_ncbi.cwl
 inputs:
-- id: alignments
-  doc: The directory containing alignments
-  type: string
-  inputBinding:
-    prefix: --alignments
-- id: conf
-  doc: The config file name
-  type: string
-  inputBinding:
-    prefix: --conf
-- id: output
-  doc: The output file name
+- id: in_output
+  doc: ''
   type: string
   inputBinding:
     prefix: --output
-- id: input_format
+- id: in_alignments
+  doc: The directory containing alignments
+  type: Directory
+  inputBinding:
+    prefix: --alignments
+- id: in_input_format
   doc: The input alignment format
   type: string
   inputBinding:
     prefix: --input-format
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_ncbi_prep_uce_align_files_for_ncbi

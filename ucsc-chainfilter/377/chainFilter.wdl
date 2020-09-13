@@ -2,11 +2,11 @@ version 1.0
 
 task ChainFilter {
   input {
-    String? chr_restrict_query_sequence_named
-    String? not_q
-    String? chr_restrict_side_sequence_named
-    String? not_t
-    String? id
+    Int? chr_restrict_query_sequence_named
+    Int? not_q
+    Int? chr_restrict_target_sequence_named
+    Int? not_t
+    Int? id
     String? min_score
     String? max_score
     String? q_start_min
@@ -25,24 +25,22 @@ task ChainFilter {
     Boolean? long
     Boolean? zero_gap
     String? min_gapless
-    String? qm_in_gap
-    String? tm_in_gap
-    String? qmax_gap
-    String? tmax_gap
-    String? qm_in_size
-    String? q_maxsize
-    String? tm_in_size
-    String? tmax_size
+    Int? qm_in_gap
+    Int? tm_in_gap
+    Int? qmax_gap
+    Int? tmax_gap
+    Int? qm_in_size
+    Int? q_maxsize
+    Int? tm_in_size
+    Int? tmax_size
     Boolean? no_random
     Boolean? no_hap
-    File file
   }
   command <<<
     chainFilter \
-      ~{file} \
       ~{if defined(chr_restrict_query_sequence_named) then ("-q " +  '"' + chr_restrict_query_sequence_named + '"') else ""} \
       ~{if defined(not_q) then ("-notQ " +  '"' + not_q + '"') else ""} \
-      ~{if defined(chr_restrict_side_sequence_named) then ("-t " +  '"' + chr_restrict_side_sequence_named + '"') else ""} \
+      ~{if defined(chr_restrict_target_sequence_named) then ("-t " +  '"' + chr_restrict_target_sequence_named + '"') else ""} \
       ~{if defined(not_t) then ("-notT " +  '"' + not_t + '"') else ""} \
       ~{if defined(id) then ("-id " +  '"' + id + '"') else ""} \
       ~{if defined(min_score) then ("-minScore " +  '"' + min_score + '"') else ""} \
@@ -59,9 +57,9 @@ task ChainFilter {
       ~{if defined(q_overlap_end) then ("-qOverlapEnd " +  '"' + q_overlap_end + '"') else ""} \
       ~{if defined(t_overlap_start) then ("-tOverlapStart " +  '"' + t_overlap_start + '"') else ""} \
       ~{if defined(t_overlap_end) then ("-tOverlapEnd " +  '"' + t_overlap_end + '"') else ""} \
-      ~{true="-strand" false="" strand} \
-      ~{true="-long" false="" long} \
-      ~{true="-zeroGap" false="" zero_gap} \
+      ~{if (strand) then "-strand" else ""} \
+      ~{if (long) then "-long" else ""} \
+      ~{if (zero_gap) then "-zeroGap" else ""} \
       ~{if defined(min_gapless) then ("-minGapless " +  '"' + min_gapless + '"') else ""} \
       ~{if defined(qm_in_gap) then ("-qMinGap " +  '"' + qm_in_gap + '"') else ""} \
       ~{if defined(tm_in_gap) then ("-tMinGap " +  '"' + tm_in_gap + '"') else ""} \
@@ -71,13 +69,13 @@ task ChainFilter {
       ~{if defined(q_maxsize) then ("-qMaxSize " +  '"' + q_maxsize + '"') else ""} \
       ~{if defined(tm_in_size) then ("-tMinSize " +  '"' + tm_in_size + '"') else ""} \
       ~{if defined(tmax_size) then ("-tMaxSize " +  '"' + tmax_size + '"') else ""} \
-      ~{true="-noRandom" false="" no_random} \
-      ~{true="-noHap" false="" no_hap}
+      ~{if (no_random) then "-noRandom" else ""} \
+      ~{if (no_hap) then "-noHap" else ""}
   >>>
   parameter_meta {
     chr_restrict_query_sequence_named: ",chr2 - restrict query side sequence to those named"
     not_q: ",chr2 - restrict query side sequence to those not named"
-    chr_restrict_side_sequence_named: ",chr2 - restrict target side sequence to those named"
+    chr_restrict_target_sequence_named: ",chr2 - restrict target side sequence to those named"
     not_t: ",chr2 - restrict target side sequence to those not named"
     id: "- only get one with ID number matching N"
     min_score: "- restrict to those scoring at least N"
@@ -108,6 +106,8 @@ task ChainFilter {
     tmax_size: "- maximum size of spanned target region"
     no_random: "- suppress chains involving '_random' chromosomes"
     no_hap: "- suppress chains involving '_hap|_alt' chromosomes"
-    file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

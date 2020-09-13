@@ -1,14 +1,17 @@
 version 1.0
 
-task GhostTreeSilvaCOMMAND {
+task GhosttreeSilvaCOMMAND {
   input {
     String? args
   }
   command <<<
-    ghost-tree silva COMMAND \
+    ghost_tree silva COMMAND \
       ~{args}
   >>>
   parameter_meta {
     args: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

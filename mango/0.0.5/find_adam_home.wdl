@@ -1,7 +1,10 @@
 version 1.0
 
-task FindAdamHome.py {
+task Findadamhome {
   command <<<
-    find_adam_home.py
+    find_adam_home
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

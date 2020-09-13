@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../eledef.cwl
 inputs:
-- id: ele_def
+- id: in_ele_def
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seq_list
+- id: in_seq_list
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: msp_file
+- id: in_msp_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: method
+- id: in_method
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: cut_off
+- id: in_cut_off
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - eledef

@@ -1,32 +1,25 @@
 class: CommandLineTool
 id: ../../../vcfcombine.cwl
 inputs:
-- id: region
+- id: in_region
   doc: A region specifier of the form chrN:x-y to bound the merge
   type: string
   inputBinding:
     prefix: --region
-- id: var_1
+- id: in_vcf
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_2
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 1
-- id: var_3
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: var_4
-  doc: ''
-  type: File
-  inputBinding:
-    position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfcombine

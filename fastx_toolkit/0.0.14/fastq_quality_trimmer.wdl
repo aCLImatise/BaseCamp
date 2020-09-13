@@ -2,28 +2,31 @@ version 1.0
 
 task FastqQualityTrimmer {
   input {
-    Boolean? v
-    String? t
-    String? l
-    Boolean? z
-    String? i
     String? o
+    File? i
+    Boolean? z
+    String? l
+    String? t
+    Boolean? v
   }
   command <<<
     fastq_quality_trimmer \
-      ~{true="-v" false="" v} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
-      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
-      ~{true="-z" false="" z} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if (z) then "-z" else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    v: ""
-    t: ""
-    l: ""
-    z: ""
-    i: ""
     o: ""
+    i: ""
+    z: ""
+    l: ""
+    t: ""
+    v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

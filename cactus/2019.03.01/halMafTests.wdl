@@ -4,4 +4,7 @@ task HalMafTests {
   command <<<
     halMafTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

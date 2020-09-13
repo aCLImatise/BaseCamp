@@ -1,6 +1,6 @@
 version 1.0
 
-task GenomedataQueryChrom {
+task GenomedataqueryChrom {
   input {
     String genome_data_query
     String gd_archive
@@ -10,7 +10,7 @@ task GenomedataQueryChrom {
     String end
   }
   command <<<
-    genomedata-query chrom \
+    genomedata_query chrom \
       ~{genome_data_query} \
       ~{gd_archive} \
       ~{track_name} \
@@ -25,5 +25,8 @@ task GenomedataQueryChrom {
     chrom: ""
     begin: ""
     end: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

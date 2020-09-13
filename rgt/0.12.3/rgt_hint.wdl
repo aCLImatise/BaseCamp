@@ -1,7 +1,10 @@
 version 1.0
 
-task RgtHint {
+task Rgthint {
   command <<<
-    rgt-hint
+    rgt_hint
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

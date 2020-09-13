@@ -1,14 +1,17 @@
 version 1.0
 
-task AbyssDbCsvSQLiteRepository {
+task AbyssdbcsvSQLiteRepository {
   input {
     String table_name
   }
   command <<<
-    abyss-db-csv SQLite_repository \
+    abyss_db_csv SQLite_repository \
       ~{table_name}
   >>>
   parameter_meta {
     table_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

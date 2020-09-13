@@ -1,24 +1,21 @@
 !Command
-positional:
-- !Positional
-  description: The file to count reads in (SAM/BAM or Fastq)
-  position: 0
-  name: readfilename
-  optional: false
+command:
+- htseq-qa
+positional: []
 named:
 - !Flag
-  description: 'type of read_file (one of: sam [default], bam, solexa- export, fastq,
-    solexa-fastq)'
+  description: "type of read_file (one of: sam [default], bam, solexa-\nexport, fastq,\
+    \ solexa-fastq)"
   synonyms:
   - -t
   - --type
   args: !ChoiceFlagArg
     choices: !!set
-      ? solexa-export
-      ? fastq
       ? sam
-      ? bam
+      ? solexa-export
       ? solexa-fastq
+      ? fastq
+      ? bam
   optional: true
 - !Flag
   description: output filename (default is <read_file>.pdf)
@@ -29,8 +26,8 @@ named:
     name: OUTFILE
   optional: true
 - !Flag
-  description: the maximum read length (when not specified, the script guesses from
-    the file
+  description: "the maximum read length (when not specified, the\nscript guesses from\
+    \ the file"
   synonyms:
   - -r
   - --readlength
@@ -38,7 +35,8 @@ named:
     name: READLEN
   optional: true
 - !Flag
-  description: the gamma factor for the contrast adjustment of the quality score plot
+  description: "the gamma factor for the contrast adjustment of the\nquality score\
+    \ plot"
   synonyms:
   - -g
   - --gamma
@@ -53,7 +51,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'the maximum quality score that appears in the data (default: 41)'
+  description: "the maximum quality score that appears in the data\n(default: 41)"
   synonyms:
   - -m
   - --maxqual
@@ -61,25 +59,24 @@ named:
     name: MAXQUAL
   optional: true
 - !Flag
-  description: For SAM/BAM input files, ignore alignments that are not primary. This
-    only affects 'multimapper' reads that align to several regions in the genome.
-    By choosing this option, each read will only count as one; without this option,
-    each of its alignments counts as one.
+  description: "For SAM/BAM input files, ignore alignments that are\nnot primary.\
+    \ This only affects 'multimapper' reads\nthat align to several regions in the\
+    \ genome. By\nchoosing this option, each read will only count as\none; without\
+    \ this option, each of its alignments\ncounts as one."
   synonyms:
   - --primary-only
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Limit the analysis to the first N reads/alignments.
+  description: "Limit the analysis to the first N reads/alignments.\n"
   synonyms:
   - --max-records
   args: !SimpleFlagArg
     name: MAX_RECORDS
   optional: true
-command:
-- htseq-qa
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -1,7 +1,10 @@
 version 1.0
 
-task ProkkaBiocycToFastaDb {
+task ProkkabiocycToFastaDb {
   command <<<
-    prokka-biocyc_to_fasta_db
+    prokka_biocyc_to_fasta_db
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

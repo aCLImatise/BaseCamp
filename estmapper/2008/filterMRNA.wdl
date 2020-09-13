@@ -4,4 +4,7 @@ task FilterMRNA {
   command <<<
     filterMRNA
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

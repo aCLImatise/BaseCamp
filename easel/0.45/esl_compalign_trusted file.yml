@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- esl-compalign
+- trusted file
 positional:
 - !Positional
   description: ''
@@ -12,10 +15,9 @@ named:
   - -options
   args: !EmptyFlagArg {}
   optional: true
-command:
-- esl-compalign
-- trusted file
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - esl-compalign
   positional: []
   named:
   - !Flag
@@ -68,12 +70,12 @@ parent: &id002 !Command
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - esl-compalign
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - esl-compalign
+    - test file
     positional:
     - !Positional
       description: ''
@@ -97,11 +99,9 @@ parent: &id002 !Command
       - -options
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - esl-compalign
-    - test file
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -113,6 +113,8 @@ parent: &id002 !Command
       \ the manual page for details on how accuracy is computed.\n\nTo see more help\
       \ on available options, do esl-compalign -h\n\n"
     generated_using: &id003 []
+  - *id002
+  usage: []
   help_flag: !Flag
     description: ': help; show brief info on version and usage'
     synonyms:
@@ -140,6 +142,7 @@ parent: &id002 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

@@ -1,4 +1,6 @@
 &id001 !Command
+command:
+- hmmer2gff
 positional: []
 named:
 - !Flag
@@ -9,7 +11,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'less verbose - only error and critical messages (default: None)'
+  description: "less verbose - only error and critical messages\n(default: None)"
   synonyms:
   - --quiet
   args: !EmptyFlagArg {}
@@ -27,13 +29,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[OUTPUT_FILE], --output-file [OUTPUT_FILE]'
-  synonyms:
-  - -o
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'Evalue over which an hit will be discarded (default: 0.05)'
+  description: "Evalue over which an hit will be discarded (default:\n0.05)"
   synonyms:
   - -t
   - --discard
@@ -48,15 +44,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Profiles names are not in the custom format (default: True)'
+  description: "Profiles names are not in the custom format (default:\nTrue)"
   synonyms:
   - -c
   - --no-custom-profiles
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Database from which the profiles are generated " +" (e.g. PFAM) (default:
-    CUSTOM)'
+  description: "Database from which the profiles are generated \" +\"\n(e.g. PFAM)\
+    \ (default: CUSTOM)"
   synonyms:
   - -db
   - --database
@@ -72,24 +68,54 @@ named:
     name: FEATURE_TYPE
   optional: true
 - !Flag
-  description: 'Set if the sequences were not translated with translate_seq (default:
-    False)'
+  description: "Set if the sequences were not translated with\ntranslate_seq (default:\
+    \ False)\n"
   synonyms:
   - -n
   - --no-frame
   args: !EmptyFlagArg {}
   optional: true
-command:
-- hmmer2gff
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands:
 - !Command
-  positional: []
+  command:
+  - hmmer2gff
+  - aa_file
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: hmmer2gff
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: OUTPUT_FILE
+    optional: true
   named:
   - !Flag
     description: ''
     synonyms:
-    - -o
+    - -db
+    args: !SimpleFlagArg
+      name: DATABASE
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -d
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
@@ -102,27 +128,12 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - -d
+    - -o
     args: !EmptyFlagArg {}
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -c
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -db
-    args: !SimpleFlagArg
-      name: DATABASE
-    optional: true
-  command:
-  - hmmer2gff
-  - OUTPUT_FILE
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -134,10 +145,76 @@ subcommands:
   help_text: "usage: hmmer2gff [-h] [-o [OUTPUT_FILE]] [-t DISCARD] [-d] [-c] [-db\
     \ DATABASE]\n                 [-f FEATURE_TYPE] [-n] [-v | --quiet] [--cite] [--manual]\n\
     \                 [--version]\n                 aa_file [hmmer_file]\nhmmer2gff:\
-    \ error: argument aa_file: can't open 'OUTPUT_FILE': [Errno 2] No such file or\
-    \ directory: 'OUTPUT_FILE'\n"
+    \ error: argument aa_file: can't open 'aa_file': [Errno 2] No such file or directory:\
+    \ 'aa_file'\n"
   generated_using: &id002
   - --help
+- !Command
+  command:
+  - hmmer2gff
+  - hmmer_file
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: hmmer2gff
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: OUTPUT_FILE
+    optional: true
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -db
+    args: !SimpleFlagArg
+      name: DATABASE
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: DISCARD
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: hmmer2gff [-h] [-o [OUTPUT_FILE]] [-t DISCARD] [-d] [-c] [-db\
+    \ DATABASE]\n                 [-f FEATURE_TYPE] [-n] [-v | --quiet] [--cite] [--manual]\n\
+    \                 [--version]\n                 aa_file [hmmer_file]\nhmmer2gff:\
+    \ error: argument aa_file: can't open 'hmmer_file': [Errno 2] No such file or\
+    \ directory: 'hmmer_file'\n"
+  generated_using: *id002
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

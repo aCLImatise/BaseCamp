@@ -1,35 +1,35 @@
 version 1.0
 
-task Filter.pl.bak {
+task Filterpl {
   input {
-    String? column_filter_applied
-    String? number_columns_headers
-    String? min
-    String? mins
-    String? min_l
-    String? max
-    String? maxs
-    String? max_l
-    String? abs
-    String? babs
+    Int? column_filter_applied
+    Int? number_columns_headers
+    Int? min
+    Int? mins
+    Int? min_l
+    Int? max
+    Int? maxs
+    Int? max_l
+    Int? abs
+    Int? babs
     String? str
     String? est_r
-    String? est_r_list
+    Int? est_r_list
     String? nstr
     Boolean? ne
     Boolean? e
-    String? min_pass
-    String? rel_min_pass
+    Int? min_pass
+    Int? rel_min_pass
     Boolean? numeric
     Boolean? pass_from
-    String? use_column_num
+    Int? use_column_num
     Boolean? print_num
-    String? sk
-    String? skip
+    Int? sk
+    Int? skip
     Boolean? quite_mode_default
   }
   command <<<
-    filter.pl.bak \
+    filter_pl \
       ~{if defined(column_filter_applied) then ("-c " +  '"' + column_filter_applied + '"') else ""} \
       ~{if defined(number_columns_headers) then ("-h " +  '"' + number_columns_headers + '"') else ""} \
       ~{if defined(min) then ("-min " +  '"' + min + '"') else ""} \
@@ -44,20 +44,20 @@ task Filter.pl.bak {
       ~{if defined(est_r) then ("-estr " +  '"' + est_r + '"') else ""} \
       ~{if defined(est_r_list) then ("-estr_list " +  '"' + est_r_list + '"') else ""} \
       ~{if defined(nstr) then ("-nstr " +  '"' + nstr + '"') else ""} \
-      ~{true="-ne" false="" ne} \
-      ~{true="-e" false="" e} \
+      ~{if (ne) then "-ne" else ""} \
+      ~{if (e) then "-e" else ""} \
       ~{if defined(min_pass) then ("-min_pass " +  '"' + min_pass + '"') else ""} \
       ~{if defined(rel_min_pass) then ("-rel_min_pass " +  '"' + rel_min_pass + '"') else ""} \
-      ~{true="-numeric" false="" numeric} \
-      ~{true="-pass_from" false="" pass_from} \
+      ~{if (numeric) then "-numeric" else ""} \
+      ~{if (pass_from) then "-pass_from" else ""} \
       ~{if defined(use_column_num) then ("-u " +  '"' + use_column_num + '"') else ""} \
-      ~{true="-print_num" false="" print_num} \
+      ~{if (print_num) then "-print_num" else ""} \
       ~{if defined(sk) then ("-sk " +  '"' + sk + '"') else ""} \
       ~{if defined(skip) then ("-skip " +  '"' + skip + '"') else ""} \
-      ~{true="-q" false="" quite_mode_default}
+      ~{if (quite_mode_default) then "-q" else ""}
   >>>
   parameter_meta {
-    column_filter_applied: ":           The column to which the filter is applied (if not specified, then if either column passes, the row passes."
+    column_filter_applied: ":           The column to which the filter is applied (if not specified,\\nthen if either column passes, the row passes."
     number_columns_headers: ":           Number of columns that are headers (default: 1)"
     min: ":         Filter passes if the number is above or equal to <num>"
     mins: ":        Filter passes if the number is strictly above <num>"
@@ -77,10 +77,13 @@ task Filter.pl.bak {
     rel_min_pass: ":Filter passes if at least int(num*rowlength) columns pass the filter"
     numeric: ":           Filter passes if string is numeric"
     pass_from: ":         Print all rows from the point that one row passed the filter"
-    use_column_num: ":           Use column <num> as the value for the the specified filters (e.g. for the parameters \" -c 1 -u 0 -mins \" rows whose value in the second column is greater than the value in the first column will pass)"
+    use_column_num: ":           Use column <num> as the value for the the specified filters (e.g.\\nfor the parameters \\\" -c 1 -u 0 -mins \\\" rows whose value in the second\\ncolumn is greater than the value in the first column will pass)"
     print_num: ":         Prints the number of columns that passed the filter"
     sk: ":          Print first num rows without filtering"
     skip: ":        Print first num rows without filtering"
     quite_mode_default: ":                 Quite mode (default is verbose)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

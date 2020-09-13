@@ -1,6 +1,6 @@
 version 1.0
 
-task CanSNPer2Download {
+task CanSNPer2download {
   input {
     Boolean? db
     Boolean? _source_source
@@ -9,12 +9,12 @@ task CanSNPer2Download {
     Boolean? verbose
   }
   command <<<
-    CanSNPer2-download \
-      ~{true="-db" false="" db} \
-      ~{true="-s" false="" _source_source} \
-      ~{true="-o" false="" _outdir_reference} \
-      ~{true="--logs" false="" logs} \
-      ~{true="--verbose" false="" verbose}
+    CanSNPer2_download \
+      ~{if (db) then "-db" else ""} \
+      ~{if (_source_source) then "-s" else ""} \
+      ~{if (_outdir_reference) then "-o" else ""} \
+      ~{if (logs) then "--logs" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     db: ", --database   CanSNP database"
@@ -22,5 +22,8 @@ task CanSNPer2Download {
     _outdir_reference: ", --outdir      reference genomes folder"
     logs: "Specify log directory"
     verbose: "Verbose logging"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

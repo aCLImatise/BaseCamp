@@ -4,11 +4,11 @@ task ProteinInference {
   input {
     File? in
     File? out
-    String? min_peptides_per_protein
+    Int? min_peptides_per_protein
     Boolean? treat_charge_variants_separately
     Boolean? treat_modification_variants_separately
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -17,12 +17,12 @@ task ProteinInference {
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(min_peptides_per_protein) then ("-min_peptides_per_protein " +  '"' + min_peptides_per_protein + '"') else ""} \
-      ~{true="-treat_charge_variants_separately" false="" treat_charge_variants_separately} \
-      ~{true="-treat_modification_variants_separately" false="" treat_modification_variants_separately} \
+      ~{if (treat_charge_variants_separately) then "-treat_charge_variants_separately" else ""} \
+      ~{if (treat_modification_variants_separately) then "-treat_modification_variants_separately" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                               Input file (valid formats: 'idXML')"
@@ -34,5 +34,9 @@ task ProteinInference {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

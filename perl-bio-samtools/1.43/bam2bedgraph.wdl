@@ -14,4 +14,7 @@ task Bam2bedgraph {
     in_dot_bam: ""
     region: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

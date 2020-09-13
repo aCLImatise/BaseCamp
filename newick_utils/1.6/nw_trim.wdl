@@ -6,9 +6,12 @@ task NwTrim {
   }
   command <<<
     nw_trim \
-      ~{true="-ah" false="" ah}
+      ~{if (ah) then "-ah" else ""}
   >>>
   parameter_meta {
     ah: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

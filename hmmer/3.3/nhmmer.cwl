@@ -1,257 +1,265 @@
 class: CommandLineTool
 id: ../../../nhmmer.cwl
 inputs:
-- id: direct_output_file
+- id: in_direct_output_file
   doc: ': direct output to file <f>, not stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: save_multiple_alignment
+- id: in_save_multiple_alignment
   doc: ': save multiple alignment of all hits to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: -A
-- id: tbl_out
+- id: in_tbl_out
   doc: ': save parseable table of hits to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --tblout
-- id: df_am_tbl_out
+- id: in_df_am_tbl_out
   doc: ': save table of hits to file, in Dfam format <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --dfamtblout
-- id: ali_scores_out
+- id: in_ali_scores_out
   doc: ': save scores for each position in each alignment to <f>'
   type: string
   inputBinding:
     prefix: --aliscoresout
-- id: hmm_out
+- id: in_hmm_out
   doc: ': if input is alignment(s), write produced hmms to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --hmmout
-- id: acc
+- id: in_acc
   doc: ': prefer accessions over names in output'
   type: boolean
   inputBinding:
     prefix: --acc
-- id: no_ali
+- id: in_no_ali
   doc: ": don't output alignments, so output is smaller"
   type: boolean
   inputBinding:
     prefix: --noali
-- id: no_text_w
+- id: in_no_text_w
   doc: ': unlimit ASCII text output line width'
   type: boolean
   inputBinding:
     prefix: --notextw
-- id: text_w
+- id: in_text_w
   doc: ': set max width of ASCII text output lines  [120]  (n>=120)'
-  type: string
+  type: long
   inputBinding:
     prefix: --textw
-- id: single_mx
+- id: in_single_mx
   doc: ': use substitution score matrix w/ single-sequence MSA-format inputs'
   type: boolean
   inputBinding:
     prefix: --singlemx
-- id: popen
+- id: in_popen
   doc: ': gap open probability  [0.03125]  (0<=x<0.5)'
-  type: string
+  type: double
   inputBinding:
     prefix: --popen
-- id: p_extend
+- id: in_p_extend
   doc: ': gap extend probability  [0.75]  (0<=x<1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --pextend
-- id: mx_file
+- id: in_mx_file
   doc: ': read substitution score matrix from file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --mxfile
-- id: report_sequences_evalue
+- id: in_report_sequences_evalue_threshold
   doc: ': report sequences <= this E-value threshold in output  [10.0]  (x>0)'
-  type: string
+  type: double
   inputBinding:
     prefix: -E
-- id: report_sequences_threshold
+- id: in_report_sequences_score_threshold
   doc: ': report sequences >= this score threshold in output'
   type: string
   inputBinding:
     prefix: -T
-- id: ince
+- id: in_ince
   doc: ': consider sequences <= this E-value threshold as significant  [0.01]  (x>0)'
-  type: string
+  type: double
   inputBinding:
     prefix: --incE
-- id: in_ct
+- id: in_in_ct
   doc: ': consider sequences >= this score threshold as significant'
   type: string
   inputBinding:
     prefix: --incT
-- id: cut_ga
+- id: in_cut_ga
   doc: ": use profile's GA gathering cutoffs to set all thresholding"
   type: boolean
   inputBinding:
     prefix: --cut_ga
-- id: cut_nc
+- id: in_cut_nc
   doc: ": use profile's NC noise cutoffs to set all thresholding"
   type: boolean
   inputBinding:
     prefix: --cut_nc
-- id: cut_tc
+- id: in_cut_tc
   doc: ": use profile's TC trusted cutoffs to set all thresholding"
   type: boolean
   inputBinding:
     prefix: --cut_tc
-- id: max
+- id: in_max
   doc: ': Turn all heuristic filters off (less speed, more power)'
   type: boolean
   inputBinding:
     prefix: --max
-- id: fone
+- id: in_fone
   doc: ': Stage 1 (SSV) threshold: promote hits w/ P <= F1'
-  type: string
+  type: long
   inputBinding:
     prefix: --F1
-- id: f_two
+- id: in_f_two
   doc: ': Stage 2 (Vit) threshold: promote hits w/ P <= F2  [3e-3]'
-  type: string
+  type: long
   inputBinding:
     prefix: --F2
-- id: f_three
+- id: in_f_three
   doc: ': Stage 3 (Fwd) threshold: promote hits w/ P <= F3  [3e-5]'
-  type: string
+  type: long
   inputBinding:
     prefix: --F3
-- id: no_bias
+- id: in_no_bias
   doc: ': turn off composition bias filter'
   type: boolean
   inputBinding:
     prefix: --nobias
-- id: dna
+- id: in_dna
   doc: ': input alignment is DNA sequence data'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: rna
+- id: in_rna
   doc: ': input alignment is RNA sequence data'
   type: boolean
   inputBinding:
     prefix: --rna
-- id: seed_max_depth
+- id: in_seed_max_depth
   doc: ': seed length at which bit threshold must be met  [15]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed_max_depth
-- id: seed_sc_thresh
+- id: in_seed_sc_thresh
   doc: ': Default req. score for FM seed (bits)  [15]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed_sc_thresh
-- id: seed_sc_density
+- id: in_seed_sc_density
   doc: ': seed must maintain this bit density from one of two ends  [0.8]'
-  type: string
+  type: double
   inputBinding:
     prefix: --seed_sc_density
-- id: seed_drop_max_len
+- id: in_seed_drop_max_len
   doc: ': maximum run length with score under (max - [fm_drop_lim])  [4]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed_drop_max_len
-- id: seed_drop_lim
+- id: in_seed_drop_lim
   doc: ': in seed, max drop in a run of length [fm_drop_max_len]  [0.3]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed_drop_lim
-- id: seed_req_pos
+- id: in_seed_req_pos
   doc: ': minimum number consecutive positive scores in seed  [5]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed_req_pos
-- id: seed_con_sens_match
+- id: in_seed_con_sens_match
   doc: ': <n> consecutive matches to consensus will override score threshold  [11]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed_consens_match
-- id: seed_ssv_length
+- id: in_seed_ssv_length
   doc: ': length of window around FM seed to get full SSV diagonal  [70]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed_ssv_length
-- id: q_hmm
+- id: in_q_hmm
   doc: ': assert query is an hmm file'
   type: boolean
   inputBinding:
     prefix: --qhmm
-- id: q_fast_a
+- id: in_q_fast_a
   doc: ': assert query is an unaligned fasta file'
   type: boolean
   inputBinding:
     prefix: --qfasta
-- id: qms_a
+- id: in_qms_a
   doc: ': assert query is an aligned file format; can use --qformat to specify'
   type: boolean
   inputBinding:
     prefix: --qmsa
-- id: q_format
+- id: in_q_format
   doc: ': assert query msa <seqfile> is in format <s>'
   type: string
   inputBinding:
     prefix: --qformat
-- id: t_format
+- id: in_t_format
   doc: ': assert target <seqdb> is in format <s>'
   type: string
   inputBinding:
     prefix: --tformat
-- id: no_null_two
+- id: in_no_null_two
   doc: ': turn off biased composition score corrections'
   type: boolean
   inputBinding:
     prefix: --nonull2
-- id: set_size_megabases
+- id: in_set_size_megabases
   doc: ': set database size (Megabases) to <x> for E-value calculations  (x>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -Z
-- id: seed
+- id: in_seed
   doc: ': set RNG seed to <n> (if 0: one-time arbitrary seed)  [42]  (n>=0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: w_beta
+- id: in_w_beta
   doc: ': tail mass at which window length is determined'
-  type: string
+  type: long
   inputBinding:
     prefix: --w_beta
-- id: w_length
+- id: in_w_length
   doc: ': window length - essentially max expected hit length'
-  type: string
+  type: long
   inputBinding:
     prefix: --w_length
-- id: block_length
+- id: in_block_length
   doc: ': length of blocks read from target database (threaded)   (n>=50000)'
-  type: string
+  type: long
   inputBinding:
     prefix: --block_length
-- id: watson
+- id: in_watson
   doc: ': only search the top strand'
   type: boolean
   inputBinding:
     prefix: --watson
-- id: crick
+- id: in_crick
   doc: ': only search the bottom strand'
   type: boolean
   inputBinding:
     prefix: --crick
-- id: cpu
+- id: in_cpu
   doc: ': number of parallel CPU workers to use for multithreads  [2]  (n>=0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpu
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_direct_output_file
+  doc: ': direct output to file <f>, not stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_direct_output_file)
 cwlVersion: v1.1
 baseCommand:
 - nhmmer

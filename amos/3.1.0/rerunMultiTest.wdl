@@ -4,4 +4,7 @@ task RerunMultiTest {
   command <<<
     rerunMultiTest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -20,4 +20,8 @@ task ReduceSr {
     cmdline_parse: ""
     largest_kuni_tig: ""
   }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
+  }
 }

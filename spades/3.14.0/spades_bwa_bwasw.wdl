@@ -1,6 +1,6 @@
 version 1.0
 
-task SpadesBwaBwasw {
+task SpadesbwaBwasw {
   input {
     Int? score_for_match
     Int? mismatch_penalty
@@ -25,10 +25,10 @@ task SpadesBwaBwasw {
     String b_was_w
     String target_dot_prefix
     String query_dot_fa
-    String? query_two_dot_fa
+    Int? query_two_dot_fa
   }
   command <<<
-    spades-bwa bwasw \
+    spades_bwa bwasw \
       ~{bwa} \
       ~{b_was_w} \
       ~{target_dot_prefix} \
@@ -42,10 +42,10 @@ task SpadesBwaBwasw {
       ~{if defined(mask_level) then ("-m " +  '"' + mask_level + '"') else ""} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(file_output_results) then ("-f " +  '"' + file_output_results + '"') else ""} \
-      ~{true="-H" false="" sam_output_use} \
-      ~{true="-C" false="" copy_fastaq_comment} \
-      ~{true="-M" false="" mark_multipart_alignments} \
-      ~{true="-S" false="" skip_smithwaterman_read} \
+      ~{if (sam_output_use) then "-H" else ""} \
+      ~{if (copy_fastaq_comment) then "-C" else ""} \
+      ~{if (mark_multipart_alignments) then "-M" else ""} \
+      ~{if (skip_smithwaterman_read) then "-S" else ""} \
       ~{if defined(ignore_pairs_insert) then ("-I " +  '"' + ignore_pairs_insert + '"') else ""} \
       ~{if defined(score_threshold_divided) then ("-T " +  '"' + score_threshold_divided + '"') else ""} \
       ~{if defined(coefficient_lengththreshold_adjustment) then ("-c " +  '"' + coefficient_lengththreshold_adjustment + '"') else ""} \
@@ -79,5 +79,9 @@ task SpadesBwaBwasw {
     target_dot_prefix: ""
     query_dot_fa: ""
     query_two_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_file_output_results = "${in_file_output_results}"
   }
 }

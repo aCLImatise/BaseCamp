@@ -4,4 +4,7 @@ task PrepareAlign {
   command <<<
     prepareAlign
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

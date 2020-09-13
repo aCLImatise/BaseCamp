@@ -4,4 +4,7 @@ task Acdlog {
   command <<<
     acdlog
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

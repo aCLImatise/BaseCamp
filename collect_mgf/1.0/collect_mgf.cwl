@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../collect_mgf.cwl
 inputs:
-- id: exp_no_directory
+- id: in_exp_no_directory
   doc: ''
-  type: string
+  type: Directory
   inputBinding:
     position: 0
-- id: dd_results_file
+- id: in_dd_results_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - collect_mgf

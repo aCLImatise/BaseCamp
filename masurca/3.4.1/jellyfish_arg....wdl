@@ -1,13 +1,13 @@
 version 1.0
 
-task JellyfishArg... {
+task JellyfishArg {
   input {
     String jellyfish
     String cmd
     String arg_dot_dot_dot
   }
   command <<<
-    jellyfish arg... \
+    jellyfish arg___ \
       ~{jellyfish} \
       ~{cmd} \
       ~{arg_dot_dot_dot}
@@ -16,5 +16,8 @@ task JellyfishArg... {
     jellyfish: ""
     cmd: ""
     arg_dot_dot_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

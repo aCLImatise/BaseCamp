@@ -4,4 +4,7 @@ task ExtractFastq {
   command <<<
     extract_fastq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,46 +1,112 @@
 !Command
+command:
+- biotdg
 positional: []
 named:
 - !Flag
-  description: ''
+  description: Reference genome for the sample.
   synonyms:
   - -r
+  - --reference
   args: !SimpleFlagArg
     name: REFERENCE
   optional: true
 - !Flag
-  description: ''
+  description: VCF file with mutations.
   synonyms:
   - --vcf
   args: !SimpleFlagArg
     name: VCF
   optional: true
 - !Flag
-  description: ''
+  description: "Tab-delimited file with two columns specifying the\nchromosome name\
+    \ and its ploidy. By default all\nchromosomes have a ploidy of 2."
   synonyms:
   - -p
+  - --ploidy-table
   args: !SimpleFlagArg
     name: PLOIDY_TABLE
   optional: true
 - !Flag
-  description: ''
+  description: "Name of the sample to generate. The sample must be in\nthe VCF file."
   synonyms:
   - -s
-  args: !EmptyFlagArg {}
+  - --sample-name
+  args: !SimpleFlagArg
+    name: SAMPLE_NAME
   optional: true
-command:
-- biotdg
-parent:
-subcommands: []
-help_flag: !Flag
+- !Flag
+  description: 'Random seed for dwgsim (default: 1).'
+  synonyms:
+  - -z
+  - --random-seed
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+  optional: true
+- !Flag
+  description: Read length to be used by dwgsim.
+  synonyms:
+  - -l
+  - --read-length
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+  optional: true
+- !Flag
+  description: "Average coverage for the generated reads. NOTE: This\nis multiplied\
+    \ by the ploidy of the chromosome."
+  synonyms:
+  - -C
+  - --coverage
+  args: !SimpleFlagArg
+    name: COVERAGE
+  optional: true
+- !Flag
+  description: "Same as -e flag in dwgsim. per base/color/flow error\nrate of the\
+    \ first read."
+  synonyms:
+  - -e
+  - --read1-error-rate
+  args: !SimpleFlagArg
+    name: READ1_ERROR_RATE
+  optional: true
+- !Flag
+  description: "Same as -E flag in dwgsim. per base/color/flow error\nrate of the\
+    \ second read."
+  synonyms:
+  - -E
+  - --read2-error-rate
+  args: !SimpleFlagArg
+    name: READ2_ERROR_RATE
+  optional: true
+- !Flag
+  description: Maximum number of Ns allowed in a given read.
+  synonyms:
+  - -n
+  - --maximum-n-number
+  args: !SimpleFlagArg
+    name: MAXIMUM_N_NUMBER
+  optional: true
+- !Flag
   description: ''
   synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
 version_flag: !Flag
-  description: ''
+  description: show program's version number and exit
   synonyms:
   - --version
   args: !EmptyFlagArg {}

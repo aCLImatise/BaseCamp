@@ -2,8 +2,8 @@ version 1.0
 
 task TangoBuildTaxonnodes {
   input {
-    String? d
     String? p
+    String? d
     String tango
     String build
     String fast_a_file
@@ -17,16 +17,19 @@ task TangoBuildTaxonnodes {
       ~{fast_a_file} \
       ~{taxon_map} \
       ~{tax_on_nodes} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
   parameter_meta {
-    d: ""
     p: ""
+    d: ""
     tango: ""
     build: ""
     fast_a_file: ""
     taxon_map: ""
     tax_on_nodes: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

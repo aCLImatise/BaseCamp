@@ -1,98 +1,117 @@
 class: CommandLineTool
 id: ../../../PrecursorIonSelector.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*            Input feature map file (featureXML) (valid formats: 'featureXML')"
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: "Modified feature map (valid formats: 'featureXML')"
-  type: string
+  type: File
   inputBinding:
     prefix: -out
-- id: next_feat
+- id: in_next_feat
   doc: "Feature map (featureXML) file with the selected precursors (valid formats:\
     \ 'featureXML')"
-  type: string
+  type: File
   inputBinding:
     prefix: -next_feat
-- id: ids
+- id: in_ids
   doc: "*              File containing results of identification (valid formats: 'idXML')"
-  type: string
+  type: File
   inputBinding:
     prefix: -ids
-- id: num_precursors
+- id: in_num_precursors
   doc: "Number of precursors to be selected (default: '1')"
   type: long
   inputBinding:
     prefix: -num_precursors
-- id: raw_data
+- id: in_raw_data
   doc: "Input profile data. (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -raw_data
-- id: load_preprocessing
+- id: in_load_preprocessing
   doc: The preprocessed db is loaded from file, not calculated.
   type: boolean
   inputBinding:
     prefix: -load_preprocessing
-- id: store_preprocessing
+- id: in_store_preprocessing
   doc: The preprocessed db is stored.
   type: boolean
   inputBinding:
     prefix: -store_preprocessing
-- id: simulation
+- id: in_simulation
   doc: Simulate the whole LC-MS/MS run.
   type: boolean
   inputBinding:
     prefix: -simulation
-- id: sim_results
+- id: in_sim_results
   doc: "File containing the results of the simulation run (valid formats: 'txt')"
-  type: string
+  type: File
   inputBinding:
     prefix: -sim_results
-- id: db_path
+- id: in_db_path
   doc: "Db file (valid formats: 'fasta')"
-  type: string
+  type: File
   inputBinding:
     prefix: -db_path
-- id: rt_model
+- id: in_rt_model
   doc: "SVM Model for RTPredict (valid formats: 'txt')"
-  type: string
+  type: File
   inputBinding:
     prefix: -rt_model
-- id: dt_model
+- id: in_dt_model
   doc: "SVM Model for PTPredict (valid formats: 'txt')"
-  type: string
+  type: File
   inputBinding:
     prefix: -dt_model
-- id: fixed_modifications
+- id: in_fixed_modifications
   doc: The modifications i.e. Carboxymethyl (C)
   type: string
   inputBinding:
     prefix: -fixed_modifications
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "Modified feature map (valid formats: 'featureXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
+- id: out_next_feat
+  doc: "Feature map (featureXML) file with the selected precursors (valid formats:\
+    \ 'featureXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_next_feat)
+- id: out_sim_results
+  doc: "File containing the results of the simulation run (valid formats: 'txt')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_sim_results)
 cwlVersion: v1.1
 baseCommand:
 - PrecursorIonSelector

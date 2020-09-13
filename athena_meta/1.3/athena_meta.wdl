@@ -1,26 +1,29 @@
 version 1.0
 
-task AthenaMeta {
+task Athenameta {
   input {
-    String? config
+    File? config
     Boolean? check_prereqs
     Boolean? test
     Boolean? force_reads
-    String? threads
+    Int? threads
   }
   command <<<
-    athena-meta \
+    athena_meta \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
-      ~{true="--check_prereqs" false="" check_prereqs} \
-      ~{true="--test" false="" test} \
-      ~{true="--force_reads" false="" force_reads} \
+      ~{if (check_prereqs) then "--check_prereqs" else ""} \
+      ~{if (test) then "--test" else ""} \
+      ~{if (force_reads) then "--force_reads" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    config: "input JSON config file for run, NOTE: dirname(config.json) specifies root output directory"
+    config: "input JSON config file for run, NOTE:\\ndirname(config.json) specifies root output directory"
     check_prereqs: "test if external deps visible in environment"
     test: "run tiny assembly test to check setup and prereqs"
-    force_reads: "proceed with subassembly even if input *bam and *fastq do not pass QC"
+    force_reads: "proceed with subassembly even if input *bam and *fastq do\\nnot pass QC"
     threads: "number of multiprocessing threads"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,4 +1,6 @@
 !Command
+command:
+- anvi-script-compute-ani-for-fasta
 positional: []
 named:
 - !Flag
@@ -26,11 +28,12 @@ named:
     name: PAN_DB
   optional: true
 - !Flag
-  description: Maximum number of threads to use for multithreading whenever possible.
-    Very conservatively, the default is 1. It is a good idea to not exceed the number
-    of CPUs / cores on your system. Plus, please be careful with this option if you
-    are running your commands on a SGE --if you are clusterizing your runs, and asking
-    for multiple threads to use, you may deplete your resources very fast.
+  description: "Maximum number of threads to use for multithreading\nwhenever possible.\
+    \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
+    \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
+    \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
+    \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
+    \ fast."
   synonyms:
   - -T
   - --num-threads
@@ -45,48 +48,47 @@ named:
     name: FILE_PATH
   optional: true
 - !Flag
-  description: "Method for pyANI. The default is ANIb. You must have the necessary\
-    \ binary in path for whichever method you choose. According to the pyANI help\
-    \ for v0.2.7 at https://github.com/widdowquinn/pyani, the method 'ANIm' uses MUMmer\
-    \ (NUCmer) to align the input sequences. 'ANIb' uses BLASTN+ to align 1020nt fragments\
-    \ of the input sequences. 'ANIblastall': uses the legacy BLASTN to align 1020nt\
-    \ fragments Finally, 'TETRA': calculates tetranucleotide frequencies of each input\
-    \ sequence"
+  description: "Method for pyANI. The default is ANIb. You must have\nthe necessary\
+    \ binary in path for whichever method you\nchoose. According to the pyANI help\
+    \ for v0.2.7 at\nhttps://github.com/widdowquinn/pyani, the method\n'ANIm' uses\
+    \ MUMmer (NUCmer) to align the input\nsequences. 'ANIb' uses BLASTN+ to align\
+    \ 1020nt\nfragments of the input sequences. 'ANIblastall': uses\nthe legacy BLASTN\
+    \ to align 1020nt fragments Finally,\n'TETRA': calculates tetranucleotide frequencies\
+    \ of\neach input sequence"
   synonyms:
   - --method
   args: !ChoiceFlagArg
     choices: !!set
-      ? ANIb
       ? ANIm
       ? ANIblastall
       ? TETRA
+      ? ANIb
   optional: true
 - !Flag
-  description: The distance metric for the hierarchical clustering. The default is
-    "euclidean".
+  description: "The distance metric for the hierarchical clustering.\nThe default\
+    \ is \"euclidean\"."
   synonyms:
   - --distance
   args: !SimpleFlagArg
     name: DISTANCE_METRIC
   optional: true
 - !Flag
-  description: The linkage method for the hierarchical clustering. The default is
-    "ward".
+  description: "The linkage method for the hierarchical clustering.\nThe default is\
+    \ \"ward\"."
   synonyms:
   - --linkage
   args: !SimpleFlagArg
     name: LINKAGE_METHOD
   optional: true
 - !Flag
-  description: Don't bother me with questions or warnings, just do it.
+  description: "Don't bother me with questions or warnings, just do\nit.\n"
   synonyms:
   - --just-do-it
   args: !EmptyFlagArg {}
   optional: true
-command:
-- anvi-script-compute-ani-for-fasta
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

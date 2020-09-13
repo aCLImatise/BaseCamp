@@ -22,21 +22,21 @@ task Filtlong {
   command <<<
     filtlong \
       ~{input_reads} \
-      ~{true="-t" false="" keep_only_best} \
-      ~{true="-p" false="" keep_only_percentage} \
-      ~{true="--min_length" false="" min_length} \
-      ~{true="--min_mean_q" false="" min_mean_q} \
-      ~{true="--min_window_q" false="" min_window_q} \
-      ~{true="-a" false="" reference_assembly_fasta} \
-      ~{true="-1" false="" one} \
-      ~{true="-2" false="" two} \
-      ~{true="--length_weight" false="" length_weight} \
-      ~{true="--mean_q_weight" false="" mean_q_weight} \
-      ~{true="--window_q_weight" false="" window_q_weight} \
-      ~{true="--trim" false="" trim} \
-      ~{true="--split" false="" split} \
-      ~{true="--window_size" false="" window_size} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (keep_only_best) then "-t" else ""} \
+      ~{if (keep_only_percentage) then "-p" else ""} \
+      ~{if (min_length) then "--min_length" else ""} \
+      ~{if (min_mean_q) then "--min_mean_q" else ""} \
+      ~{if (min_window_q) then "--min_window_q" else ""} \
+      ~{if (reference_assembly_fasta) then "-a" else ""} \
+      ~{if (one) then "-1" else ""} \
+      ~{if (two) then "-2" else ""} \
+      ~{if (length_weight) then "--length_weight" else ""} \
+      ~{if (mean_q_weight) then "--mean_q_weight" else ""} \
+      ~{if (window_q_weight) then "--window_q_weight" else ""} \
+      ~{if (trim) then "--trim" else ""} \
+      ~{if (split) then "--split" else ""} \
+      ~{if (window_size) then "--window_size" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     keep_only_best: "[int], --target_bases [int]          keep only the best reads up to this many total bases"
@@ -55,5 +55,8 @@ task Filtlong {
     window_size: "[int]                    size of sliding window used when measuring window quality (default: 250)"
     verbose: "verbose output to stderr with info for each read"
     input_reads: "input long reads to be filtered"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

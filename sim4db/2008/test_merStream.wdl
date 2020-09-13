@@ -1,7 +1,10 @@
 version 1.0
 
-task TestMerStream {
+task TestmerStream {
   command <<<
-    test-merStream
+    test_merStream
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

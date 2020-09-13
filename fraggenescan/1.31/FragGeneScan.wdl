@@ -4,4 +4,7 @@ task FragGeneScan {
   command <<<
     FragGeneScan
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

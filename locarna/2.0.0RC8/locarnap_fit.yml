@@ -1,6 +1,28 @@
 !Command
-positional: []
+command:
+- locarnap_fit
+positional:
+- !Positional
+  description: -d,--delta=<float>(0.5)
+  position: 0
+  name: Verbose
+  optional: false
 named:
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(6)\nInverse temperature"
+  synonyms:
+  - -b
+  - --beta
+  args: !SimpleFlagArg
+    name: float
+  optional: true
 - !Flag
   description: Fit a signal that is on only once
   synonyms:
@@ -21,13 +43,24 @@ named:
   args: !SimpleFlagArg
     name: file
   optional: true
-command:
-- locarnap_fit
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: This help
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Version info
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "locarnap_fit - Fit a two step function to a data series.\n\nUSAGE: locarnap_fit\
   \ [options]\n\nOptions:\n  -h,--help\n    This help\n\n  -V,--version\n    Version\
   \ info\n\n  -v,--verbose\n    Verbose\n\n  -d,--delta=<float>(0.5)\n    Penalty\

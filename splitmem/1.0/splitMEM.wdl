@@ -5,7 +5,7 @@ task SplitMEM {
     File? file
     String? mem
     File? many_mems
-    String? cdg
+    File? cdg
     Boolean? multi_fa
   }
   command <<<
@@ -14,13 +14,16 @@ task SplitMEM {
       ~{if defined(mem) then ("-mem " +  '"' + mem + '"') else ""} \
       ~{if defined(many_mems) then ("-manyMEMs " +  '"' + many_mems + '"') else ""} \
       ~{if defined(cdg) then ("-cdg " +  '"' + cdg + '"') else ""} \
-      ~{true="-multiFa" false="" multi_fa}
+      ~{if (multi_fa) then "-multiFa" else ""}
   >>>
   parameter_meta {
     file: "Load sequence from file"
-    mem: "Locate MEMs at least this long "
+    mem: "Locate MEMs at least this long"
     many_mems: "File of minimum MEM lengths"
     cdg: "Filename of compressed de Bruijn graph"
     multi_fa: "Indicates the input file is a multifasta file for pan-genome analysis"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

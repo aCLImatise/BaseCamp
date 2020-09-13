@@ -1,17 +1,20 @@
 version 1.0
 
-task OverlapAlign {
+task Overlapalign {
   input {
-    String fast_a_one
-    String fast_a_two
+    Int fast_a_one
+    Int fast_a_two
   }
   command <<<
-    overlap-align \
+    overlap_align \
       ~{fast_a_one} \
       ~{fast_a_two}
   >>>
   parameter_meta {
     fast_a_one: ""
     fast_a_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

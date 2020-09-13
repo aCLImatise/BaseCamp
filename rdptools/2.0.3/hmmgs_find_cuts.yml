@@ -1,4 +1,7 @@
-&id003 !Command
+&id002 !Command
+command:
+- hmmgs
+- find-cuts
 positional:
 - !Positional
   description: ''
@@ -21,17 +24,102 @@ positional:
   name: query files
   optional: false
 named: []
-command:
-- hmmgs
-- find-cuts
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - hmmgs
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - hmmgs
+    - search
+    positional:
+    - !Positional
+      description: dtime limit for individual searches (conservative suggestion =
+        100)
+      position: 0
+      name: limit_in_seconds
+      optional: false
+    - !Positional
+      description: bloom filter built using hmmgs build
+      position: 1
+      name: bloom_filter
+      optional: false
+    - !Positional
+      description: starting kmers (can use KmerFilter's fast_kmer_filter to identify
+        starting kmers)
+      position: 0
+      name: kmers
+      optional: false
+    named:
+    - !Flag
+      description: don't normalize the hmm input
+      synonyms:
+      - -u
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: prune the search if the score does not improve after n_nodes (default
+        20, set to 0 to disable pruning)
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: n_nodes
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: print this help information
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "USAGE: TimeLimitedSearch [-h] [-u] [-p <n_nodes>] <k> <limit_in_seconds>\
+      \ <bloom_filter> <for_hmm> <rev_hmm> <kmers>\n\nOptions:\n\t-h\n\t\tprint this\
+      \ help information\n\t-u\n\t\tdon't normalize the hmm input\n\t-p n_nodes\n\t\
+      \tprune the search if the score does not improve after n_nodes (default 20,\
+      \ set to 0 to disable pruning)\n\tk\n\t\tnumber of best local assemblies to\
+      \ return for each kmer\n\tlimit_in_seconds\n\t\tdtime limit for individual searches\
+      \ (conservative suggestion = 100)\n\tbloom_filter\n\t\tbloom filter built using\
+      \ hmmgs build\n\tfor_hmm, rev_hmm\n\t\tforward and reverse hidden markov models,\
+      \ HMMER3 format\n\tkmers\n\t\tstarting kmers (can use KmerFilter's fast_kmer_filter\
+      \ to identify starting kmers)\n"
+    generated_using:
+    - -h
+  - !Command
+    command:
+    - hmmgs
+    - stats
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: BloomFilterStats
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: bloom_filter
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "USAGE: BloomFilterStats <bloom_filter>\n"
+    generated_using: []
+  - *id002
+  - !Command
+    command:
+    - hmmgs
+    - build
     positional:
     - !Positional
       description: 'fasta or fastq files containing the reads to build the graph from '
@@ -72,11 +160,9 @@ parent: &id001 !Command
       name: bitsetSizeLog2
       optional: false
     named: []
-    command:
-    - hmmgs
-    - build
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -90,79 +176,12 @@ parent: &id001 !Command
       \ a kmer has to be observed in SEQFILE to be included in the final bloom filter\n\
       \thashCount\n\t\tnumber of hash functions, default 4\n\tbitsetSizeLog2\n\t\t\
       the size of one bitSet 2^bitsetSizeLog2, recommend 30, usually not changed\n"
-    generated_using: &id002
+    generated_using: &id003
     - --help
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: BloomFilterStats
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: bloom_filter
-      optional: false
-    named: []
     command:
     - hmmgs
-    - stats
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "USAGE: BloomFilterStats <bloom_filter>\n"
-    generated_using: []
-  - !Command
-    positional:
-    - !Positional
-      description: starting kmers (can use KmerFilter's fast_kmer_filter to identify
-        starting kmers)
-      position: 0
-      name: kmers
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -u
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -p
-      args: !SimpleFlagArg
-        name: n_nodes
-      optional: true
-    command:
-    - hmmgs
-    - search
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "USAGE: TimeLimitedSearch [-h] [-u] [-p <n_nodes>] <k> <limit_in_seconds>\
-      \ <bloom_filter> <for_hmm> <rev_hmm> <kmers>\n\nOptions:\n\t-h\n\t\tprint this\
-      \ help information\n\t-u\n\t\tdon't normalize the hmm input\n\t-p n_nodes\n\t\
-      \tprune the search if the score does not improve after n_nodes (default 20,\
-      \ set to 0 to disable pruning)\n\tk\n\t\tnumber of best local assemblies to\
-      \ return for each kmer\n\tlimit_in_seconds\n\t\tdtime limit for individual searches\
-      \ (conservative suggestion = 100)\n\tbloom_filter\n\t\tbloom filter built using\
-      \ hmmgs build\n\tfor_hmm, rev_hmm\n\t\tforward and reverse hidden markov models,\
-      \ HMMER3 format\n\tkmers\n\t\tstarting kmers (can use KmerFilter's fast_kmer_filter\
-      \ to identify starting kmers)\n"
-    generated_using:
-    - -h
-  - !Command
+    - merge
     positional:
     - !Positional
       description: ''
@@ -171,8 +190,8 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: Generate all combinations for multiple paths, instead of just the
-        best
+      description: "Generate all combinations for multiple\npaths, instead of just\
+        \ the best"
       synonyms:
       - -a
       - --all
@@ -203,19 +222,18 @@ parent: &id001 !Command
         name: arg
       optional: true
     - !Flag
-      description: short sample name, to be used as part of contig identifiers. This
-        allow analyzing contigs together from different samples in downstream analysis
+      description: "short sample name, to be used as part of\ncontig identifiers.\
+        \ This allow analyzing\ncontigs together from different samples in\ndownstream\
+        \ analysis\n"
       synonyms:
       - -s
       - --short_samplename
       args: !SimpleFlagArg
         name: arg
       optional: true
-    command:
-    - hmmgs
-    - merge
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -228,8 +246,8 @@ parent: &id001 !Command
       \                              contig identifiers. This allow analyzing\n  \
       \                             contigs together from different samples in\n \
       \                              downstream analysis\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -237,10 +255,11 @@ parent: &id001 !Command
     \tstats       - Display bloom filter stats\n\tsearch      - Search a bloom filter\
     \ with an hmm\n\tmerge       - Merge HMMgs left and right fragments\n\tlicense\
     \     - Print the license\n\tfind-cuts   - Search bloom filter for cuts\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
 help_text: "USAGE: CutFinder <kmer size> <bloom filter> <query files>\n"
-generated_using: *id002
+generated_using: *id003

@@ -9,6 +9,9 @@ task Bam2msa {
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""}
   >>>
   parameter_meta {
-    region: "only include sequences in a certain REGION"
+    region: "only include sequences in a certain REGION\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

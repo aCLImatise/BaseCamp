@@ -1,23 +1,23 @@
 version 1.0
 
-task MethylpyAllcToBigwig {
+task MethylpyAllctobigwig {
   input {
-    String? all_c_file
-    String? output_file
-    String? ref_fast_a
+    File? all_c_file
+    File? output_file
+    File? ref_fast_a
     Array[String] mc_type
-    String? bin_size
+    Int? bin_size
     Int? min_bin_sites
     Int? min_bin_cov
     Int? min_site_cov
     Int? max_site_cov
     File? path_to_wig_to_bigwig
     File? path_to_sam_tools
-    String? remove_chr_prefix
-    String? add_chr_prefix
+    Boolean? remove_chr_prefix
+    Boolean? add_chr_prefix
   }
   command <<<
-    methylpy allc-to-bigwig \
+    methylpy allc_to_bigwig \
       ~{if defined(all_c_file) then ("--allc-file " +  '"' + all_c_file + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(ref_fast_a) then ("--ref-fasta " +  '"' + ref_fast_a + '"') else ""} \
@@ -33,18 +33,22 @@ task MethylpyAllcToBigwig {
       ~{if defined(add_chr_prefix) then ("--add-chr-prefix " +  '"' + add_chr_prefix + '"') else ""}
   >>>
   parameter_meta {
-    all_c_file: "input allc file to be converted to bigwig format (default: None)"
+    all_c_file: "input allc file to be converted to bigwig format\\n(default: None)"
     output_file: "Name of output file (default: None)"
-    ref_fast_a: "string indicating the path to a fasta file containing the genome sequences (default: None)"
-    mc_type: "List of space separated mc nucleotide contexts for which you want to look for DMRs. These classifications may use the wildcards H (indicating anything but a G) and N (indicating any nucleotide). (default: ['CGN'])"
-    bin_size: "Genomic bin size for calculating methylation level (default: 100)"
-    min_bin_sites: "Minimum sites in a bin for it to be included. (default: 0)"
-    min_bin_cov: "Minimum total coverage of all sites in a bin for methylation level to be calculated. (default: 0)"
-    min_site_cov: "Minimum total coverage of a site for it to be included. (default: 0)"
-    max_site_cov: "Maximum total coverage of a site for it to be included. (default: None)"
+    ref_fast_a: "string indicating the path to a fasta file containing\\nthe genome sequences (default: None)"
+    mc_type: "List of space separated mc nucleotide contexts for\\nwhich you want to look for DMRs. These classifications\\nmay use the wildcards H (indicating anything but a G)\\nand N (indicating any nucleotide). (default: ['CGN'])"
+    bin_size: "Genomic bin size for calculating methylation level\\n(default: 100)"
+    min_bin_sites: "Minimum sites in a bin for it to be included.\\n(default: 0)"
+    min_bin_cov: "Minimum total coverage of all sites in a bin for\\nmethylation level to be calculated. (default: 0)"
+    min_site_cov: "Minimum total coverage of a site for it to be\\nincluded. (default: 0)"
+    max_site_cov: "Maximum total coverage of a site for it to be\\nincluded. (default: None)"
     path_to_wig_to_bigwig: "Path to wigToBigWig executable (default: )"
     path_to_sam_tools: "Path to samtools installation (default: )"
-    remove_chr_prefix: "Boolean indicates whether to remove \"chr\" in the chromosome names in genome sequence file to match chromosome names in input allc file. (default: True)"
-    add_chr_prefix: "Boolean indicates whether to add \"chr\" in the chromosome names in input allc file to match chromosome names in genome sequence file. This option overrides --remove-chr-prefix. (default: False)"
+    remove_chr_prefix: "Boolean indicates whether to remove \\\"chr\\\" in the\\nchromosome names in genome sequence file to match\\nchromosome names in input allc file. (default: True)"
+    add_chr_prefix: "Boolean indicates whether to add \\\"chr\\\" in the\\nchromosome names in input allc file to match\\nchromosome names in genome sequence file. This option\\noverrides --remove-chr-prefix. (default: False)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

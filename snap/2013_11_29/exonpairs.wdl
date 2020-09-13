@@ -14,8 +14,8 @@ task Exonpairs {
     Float? pair_score
     Int? flank_length
     Boolean? lc_mask
-    String hmm_file
-    String fast_a_file
+    File hmm_file
+    File fast_a_file
   }
   command <<<
     exonpairs \
@@ -32,7 +32,7 @@ task Exonpairs {
       ~{if defined(exon_score) then ("-exon-score " +  '"' + exon_score + '"') else ""} \
       ~{if defined(pair_score) then ("-pair-score " +  '"' + pair_score + '"') else ""} \
       ~{if defined(flank_length) then ("-flank-length " +  '"' + flank_length + '"') else ""} \
-      ~{true="-lcmask" false="" lc_mask}
+      ~{if (lc_mask) then "-lcmask" else ""}
   >>>
   parameter_meta {
     min_intron: "minimum Intron length [30]"
@@ -49,5 +49,8 @@ task Exonpairs {
     lc_mask: "treat lowercase as N"
     hmm_file: ""
     fast_a_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

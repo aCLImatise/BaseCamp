@@ -4,4 +4,7 @@ task PrintIcounts {
   command <<<
     printIcounts
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 version 1.0
 
-task HcaDssGetCollection {
+task HcaDssGetcollection {
   input {
-    String? uuid
+    Int? uuid
     String? replica
   }
   command <<<
-    hca dss get-collection \
+    hca dss get_collection \
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""} \
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""}
   >>>
   parameter_meta {
     uuid: "A RFC4122-compliant ID for the collection."
     replica: "Replica to fetch from."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

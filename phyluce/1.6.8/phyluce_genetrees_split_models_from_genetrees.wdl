@@ -2,8 +2,8 @@ version 1.0
 
 task PhyluceGenetreesSplitModelsFromGenetrees {
   input {
-    String? gene_trees
-    String? output_file_hold
+    File? gene_trees
+    File? output_file_hold
   }
   command <<<
     phyluce_genetrees_split_models_from_genetrees \
@@ -12,6 +12,10 @@ task PhyluceGenetreesSplitModelsFromGenetrees {
   >>>
   parameter_meta {
     gene_trees: "The cloudforest genetree file containing models"
-    output_file_hold: "The output file to hold the parsed substitution model data"
+    output_file_hold: "The output file to hold the parsed substitution model\\ndata\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_hold = "${in_output_file_hold}"
   }
 }

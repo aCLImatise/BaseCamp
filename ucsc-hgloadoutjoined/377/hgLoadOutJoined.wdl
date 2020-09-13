@@ -2,7 +2,7 @@ version 1.0
 
 task HgLoadOutJoined {
   input {
-    String? tab_file
+    File? tab_file
     String? table
     String database
     File file
@@ -19,5 +19,8 @@ task HgLoadOutJoined {
     table: "- use a different suffix other than the default (rmskOutBaseline)"
     database: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

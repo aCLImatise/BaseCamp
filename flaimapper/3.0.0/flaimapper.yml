@@ -1,14 +1,25 @@
 !Command
-positional:
-- !Positional
-  description: indexed SAM or BAM file
-  position: 0
-  name: alignment_file
-  optional: false
+command:
+- flaimapper
+positional: []
 named:
 - !Flag
-  description: File containing the filtering parameters, using default if none is
-    provided
+  description: ''
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "File containing the filtering parameters, using\ndefault if none is\
+    \ provided"
   synonyms:
   - -p
   - --parameters
@@ -24,18 +35,18 @@ named:
     name: OUTPUT
   optional: true
 - !Flag
-  description: 'file format of the output: [1: table; per fragment], [2: GTF (default)]'
+  description: "file format of the output: [1: table; per fragment],\n[2: GTF (default)]"
   synonyms:
   - -f
   - --format
   args: !ChoiceFlagArg
     choices: !!set
-      ? "2"
       ? "1"
+      ? "2"
   optional: true
 - !Flag
-  description: Single reference FASTA file (+faid index) containing all genomic reference
-    sequences
+  description: "Single reference FASTA file (+faid index) containing\nall genomic\
+    \ reference sequences"
   synonyms:
   - -r
   - --fasta
@@ -43,16 +54,16 @@ named:
     name: FASTA
   optional: true
 - !Flag
-  description: Offset in bp added to the exon-type annotations in the GTF file. This
-    offset is used in tools estimating the expression levels (default=4)
+  description: "Offset in bp added to the exon-type annotations in the\nGTF file.\
+    \ This offset is used in tools estimating the\nexpression levels (default=4)"
   synonyms:
   - --offset5p
   args: !SimpleFlagArg
     name: OFFSET5P
   optional: true
 - !Flag
-  description: Offset in bp added to the exon-type annotations in the GTF file. This
-    offset is used in tools estimating the expression levels (default=4)
+  description: "Offset in bp added to the exon-type annotations in the\nGTF file.\
+    \ This offset is used in tools estimating the\nexpression levels (default=4)"
   synonyms:
   - --offset3p
   args: !SimpleFlagArg
@@ -64,18 +75,24 @@ named:
   - -V
   args: !EmptyFlagArg {}
   optional: true
-command:
-- flaimapper
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "usage: flaimapper [-h] [-V] [-v | -q] [-p PARAMETERS] [-o OUTPUT] [-f\
   \ {1,2}]\n                  [-r FASTA] [--offset5p OFFSET5P] [--offset3p OFFSET3P]\n\
   \                  alignment_file\n\npositional arguments:\n  alignment_file   \

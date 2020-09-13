@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogGui {
+task Watchdoggui {
   command <<<
-    watchdog-gui
+    watchdog_gui
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task TICCalculator {
   command <<<
     TICCalculator
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

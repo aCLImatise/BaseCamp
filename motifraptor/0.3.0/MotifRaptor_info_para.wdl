@@ -14,4 +14,7 @@ task MotifRaptorInfoPara {
     motif_raptor: ""
     info: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

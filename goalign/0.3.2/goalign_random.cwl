@@ -1,92 +1,95 @@
 class: CommandLineTool
 id: ../../../goalign_random.cwl
 inputs:
-- id: amino_acids
+- id: in_amino_acids
   doc: Aminoacid sequences (otherwise, nucleotides)
   type: boolean
   inputBinding:
     prefix: --amino-acids
-- id: length
+- id: in_length
   doc: Length of sequences to generate (default 100)
   type: long
   inputBinding:
     prefix: --length
-- id: nb_seqs
+- id: in_nb_seqs
   doc: Number of sequences to generate (default 10)
   type: long
   inputBinding:
     prefix: --nb-seqs
-- id: out_align
+- id: in_out_align
   doc: Random alignment output file (default "stdout")
-  type: string
+  type: File
   inputBinding:
     prefix: --out-align
-- id: align
+- id: in_align
   doc: Alignment input file (default "stdin")
-  type: string
+  type: File
   inputBinding:
     prefix: --align
-- id: auto_detect
+- id: in_auto_detect
   doc: Auto detects input format (overrides -p, -x and -u)
   type: boolean
   inputBinding:
     prefix: --auto-detect
-- id: clustal
+- id: in_clustal
   doc: Alignment is in clustal? default fasta
   type: boolean
   inputBinding:
     prefix: --clustal
-- id: ignore_identical
+- id: in_ignore_identical
   doc: Ignore duplicated sequences that have the same name and same sequences
   type: boolean
   inputBinding:
     prefix: --ignore-identical
-- id: input_strict
+- id: in_input_strict
   doc: Strict phylip input format (only used with -p)
   type: boolean
   inputBinding:
     prefix: --input-strict
-- id: nexus
+- id: in_nexus
   doc: Alignment is in nexus? default fasta
   type: boolean
   inputBinding:
     prefix: --nexus
-- id: no_block
+- id: in_no_block
   doc: Write Phylip sequences without space separated blocks (only used with -p)
   type: boolean
   inputBinding:
     prefix: --no-block
-- id: one_line
+- id: in_one_line
   doc: Write Phylip sequences on 1 line (only used with -p)
   type: boolean
   inputBinding:
     prefix: --one-line
-- id: output_strict
+- id: in_output_strict
   doc: Strict phylip output format (only used with -p)
   type: boolean
   inputBinding:
     prefix: --output-strict
-- id: phylip
+- id: in_phylip
   doc: Alignment is in phylip? default fasta
   type: boolean
   inputBinding:
     prefix: --phylip
-- id: seed
+- id: in_seed
   doc: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)'
   type: long
   inputBinding:
     prefix: --seed
-- id: threads
+- id: in_threads
   doc: Number of threads (default 1)
   type: long
   inputBinding:
     prefix: --threads
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_align
+  doc: Random alignment output file (default "stdout")
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_align)
 cwlVersion: v1.1
 baseCommand:
 - goalign

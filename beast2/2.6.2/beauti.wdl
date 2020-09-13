@@ -4,4 +4,7 @@ task Beauti {
   command <<<
     beauti
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

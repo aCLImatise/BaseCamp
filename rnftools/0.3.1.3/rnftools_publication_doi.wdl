@@ -14,4 +14,7 @@ task RnftoolsPublicationDoi {
     rnf_tools: ""
     publication: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

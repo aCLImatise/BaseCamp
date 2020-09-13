@@ -4,7 +4,7 @@ task CheckmModify {
   input {
     String? add
     String? remove
-    String? outlier_file
+    File? outlier_file
     Boolean? quiet
     String seq_file
     String bin_file
@@ -18,7 +18,7 @@ task CheckmModify {
       ~{if defined(add) then ("--add " +  '"' + add + '"') else ""} \
       ~{if defined(remove) then ("--remove " +  '"' + remove + '"') else ""} \
       ~{if defined(outlier_file) then ("--outlier_file " +  '"' + outlier_file + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     add: "ID of sequence to add to bin (may specify multiple times)"
@@ -28,5 +28,8 @@ task CheckmModify {
     seq_file: "sequences used to generate bins (fasta format)"
     bin_file: "bin to be modified"
     output_file: "modified bin"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

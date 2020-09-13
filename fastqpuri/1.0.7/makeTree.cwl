@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../makeTree.cwl
 inputs:
-- id: fast_a
+- id: in_fast_a
   doc: Fasta input file. Mandatory option.
   type: boolean
   inputBinding:
     prefix: --fasta
-- id: depth
-  doc: 'of the tree structure. Mandatory option. '
+- id: in_depth
+  doc: of the tree structure. Mandatory option.
   type: string
   inputBinding:
     prefix: --depth
-- id: output
+- id: in_output
   doc: file. If the extension is not *gz, it is added. Mandatory option.
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - makeTree

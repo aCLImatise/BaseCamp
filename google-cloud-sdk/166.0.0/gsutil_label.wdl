@@ -2,16 +2,22 @@ version 1.0
 
 task GsutilLabel {
   input {
-    Boolean? add_update_label
-    Boolean? remove_label_specified
+    String? value
+    String? d
+    String command_dot
   }
   command <<<
     gsutil label \
-      ~{true="-l" false="" add_update_label} \
-      ~{true="-d" false="" remove_label_specified}
+      ~{command_dot} \
+      ~{if defined(value) then ("-l " +  '"' + value + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
   parameter_meta {
-    add_update_label: "Add or update a label with the specified key and value."
-    remove_label_specified: "Remove the label with the specified key."
+    value: ":<value>"
+    d: ""
+    command_dot: "SET"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

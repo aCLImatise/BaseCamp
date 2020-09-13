@@ -6,21 +6,21 @@ task SfldPostprocess {
     Boolean? hmmer_path
     Boolean? alignments
     Boolean? dom
-    Boolean? hmmer_out
+    File? hmmer_out
     Boolean? site_info
     Boolean? format
-    Boolean? o_file_output
+    File? file_output_file
   }
   command <<<
     sfld_postprocess \
-      ~{true="--nosearch" false="" no_search} \
-      ~{true="--hmmerpath" false="" hmmer_path} \
-      ~{true="--alignments" false="" alignments} \
-      ~{true="--dom" false="" dom} \
-      ~{true="--hmmer-out" false="" hmmer_out} \
-      ~{true="--site-info" false="" site_info} \
-      ~{true="--format" false="" format} \
-      ~{true="--output" false="" o_file_output}
+      ~{if (no_search) then "--nosearch" else ""} \
+      ~{if (hmmer_path) then "--hmmerpath" else ""} \
+      ~{if (alignments) then "--alignments" else ""} \
+      ~{if (dom) then "--dom" else ""} \
+      ~{if (hmmer_out) then "--hmmer-out" else ""} \
+      ~{if (site_info) then "--site-info" else ""} \
+      ~{if (format) then "--format" else ""} \
+      ~{if (file_output_file) then "--output" else ""}
   >>>
   parameter_meta {
     no_search: "| -S         don't run search if output files exist"
@@ -30,6 +30,11 @@ task SfldPostprocess {
     hmmer_out: "| -O         HMMER output file"
     site_info: "| -s         SFLD reside annotation file"
     format: "| -f FORMAT  output text format [not implemented]"
-    o_file_output: "| -o FILE    output file (otherwise STDOUT)"
+    file_output_file: "| -o FILE    output file (otherwise STDOUT)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_hmmer_out = "${in_hmmer_out}"
+    File out_file_output_file = "${in_file_output_file}"
   }
 }

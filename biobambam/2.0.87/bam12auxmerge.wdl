@@ -4,4 +4,7 @@ task Bam12auxmerge {
   command <<<
     bam12auxmerge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

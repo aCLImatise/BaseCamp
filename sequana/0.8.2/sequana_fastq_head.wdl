@@ -2,9 +2,9 @@ version 1.0
 
 task SequanaFastqHead {
   input {
-    String? nlines
-    String? input_fastq_gzipped
-    String? output_file_extension
+    Int? nlines
+    File? input_fastq_gzipped
+    File? output_file_extension
     String fast_q_head
     String var_4
     String var_5
@@ -21,9 +21,13 @@ task SequanaFastqHead {
   parameter_meta {
     nlines: "Number of lines to extract."
     input_fastq_gzipped: "input fastq gzipped or not"
-    output_file_extension: "output file with .gz extension or not"
+    output_file_extension: "output file with .gz extension or not\\n"
     fast_q_head: ""
     var_4: ""
     var_5: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_extension = "${in_output_file_extension}"
   }
 }

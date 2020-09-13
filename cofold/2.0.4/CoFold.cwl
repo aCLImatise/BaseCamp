@@ -1,94 +1,103 @@
 class: CommandLineTool
 id: ../../../CoFold.cwl
 inputs:
-- id: detailed_help
-  doc: Print help, including all details and hidden  options, and exit
+- id: in_detailed_help
+  doc: "Print help, including all details and hidden\noptions, and exit"
   type: boolean
   inputBinding:
     prefix: --detailed-help
-- id: full_help
+- id: in_full_help
   doc: Print help, including hidden options, and exit
   type: boolean
   inputBinding:
     prefix: --full-help
-- id: constraint
-  doc: Calculate structures subject to constraints. (default=off)
-  type: boolean
-  inputBinding:
-    prefix: --constraint
-- id: noconv
-  doc: Do not automatically substitude nucleotide  "T" with "U" (default=off)
+- id: in_noconv
+  doc: "Do not automatically substitude nucleotide\n\"T\" with \"U\"\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noconv
-- id: nops
-  doc: Do not produce postscript drawing of the mfe  structure. (default=off)
+- id: in_nops
+  doc: Do not produce postscript drawing of the mfe
   type: boolean
   inputBinding:
     prefix: --noPS
-- id: part_func
-  doc: "[=INT]          Calculate the partition function and base  pairing probability\
-    \ matrix. (default=`1')"
+- id: in_part_func
+  doc: "[=INT]          Calculate the partition function and base\npairing probability\
+    \ matrix.\n(default=`1')"
   type: boolean
   inputBinding:
     prefix: --partfunc
-- id: me_a
-  doc: "[=gamma]             Calculate an MEA (maximum expected accuracy)  structure,\
-    \ where the expected accuracy is  computed from the pair probabilities: each \
-    \ base pair (i,j) gets a score 2*gamma*p_ij and  the score of an unpaired base\
-    \ is given by the  probability of not forming a pair. (default=`1.')"
+- id: in_me_a
+  doc: "[=gamma]             Calculate an MEA (maximum expected accuracy)\nstructure,\
+    \ where the expected accuracy is\ncomputed from the pair probabilities: each\n\
+    base pair (i,j) gets a score 2*gamma*p_ij and\nthe score of an unpaired base is\
+    \ given by the\nprobability of not forming a pair.\n(default=`1.')"
   type: boolean
   inputBinding:
     prefix: --MEA
-- id: circ
-  doc: Assume a circular (instead of linear) RNA  molecule. (default=off)
+- id: in_circ
+  doc: Assume a circular (instead of linear) RNA
   type: boolean
   inputBinding:
     prefix: --circ
-- id: temp
-  doc: Rescale energy parameters to a temperature of  temp C. Default is 37C.
-  type: string
+- id: in_temp
+  doc: "Rescale energy parameters to a temperature of\ntemp C. Default is 37C."
+  type: long
   inputBinding:
     prefix: --temp
-- id: no_tetra
-  doc: Do not include special tabulated stabilizing  energies for tri-, tetra- and
-    hexaloop  hairpins. Mostly for testing. (default=off)
+- id: in_no_tetra
+  doc: "Do not include special tabulated stabilizing\nenergies for tri-, tetra- and\
+    \ hexaloop\nhairpins. Mostly for testing.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noTetra
-- id: dangles
-  doc: How to treat "dangling end" energies for  bases adjacent to helices in free
-    ends and  multi-loops (default=`2')
+- id: in_dangles
+  doc: "How to treat \"dangling end\" energies for\nbases adjacent to helices in free\
+    \ ends and\nmulti-loops\n(default=`2')"
   type: long
   inputBinding:
     prefix: --dangles
-- id: no_lp
-  doc: Produce structures without lonely pairs  (helices of length 1). (default=off)
+- id: in_no_lp
+  doc: "Produce structures without lonely pairs\n(helices of length 1).\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noLP
-- id: no_gu
-  doc: Do not allow GU pairs (default=off)
+- id: in_no_gu
+  doc: "Do not allow GU pairs\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noGU
-- id: no_closing_gu
-  doc: Do not allow GU pairs at the end of helices (default=off)
+- id: in_no_closing_gu
+  doc: "Do not allow GU pairs at the end of helices\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noClosingGU
-- id: param_file
-  doc: Read energy parameters from paramfile, instead  of using the default parameter
-    set.
-  type: string
+- id: in_param_file
+  doc: "Read energy parameters from paramfile, instead\nof using the default parameter\
+    \ set."
+  type: File
   inputBinding:
     prefix: --paramFile
-- id: rna_fold
-  doc: ''
+- id: in_program
+  doc: "-C, --constraint              Calculate structures subject to constraints.\n\
+    (default=off)"
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_structure_dot
+  doc: (default=off)
+  type: string
+  inputBinding:
+    position: 1
+- id: in_molecule_dot
+  doc: (default=off)
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - CoFold

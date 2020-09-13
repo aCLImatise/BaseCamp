@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../popera_dhs_count.cwl
 inputs:
-- id: data
-  doc: data file, should be sorted bam format, example=DH_sample1.bam,DH_sample2.bam
-  type: string
+- id: in_data
+  doc: "data file, should be sorted bam format,\nexample=DH_sample1.bam,DH_sample2.bam"
+  type: File
   inputBinding:
     prefix: --data
-- id: name
+- id: in_name
   doc: NH sample name default=DH_sample1,DH_sample2
-  type: string
+  type: long
   inputBinding:
     prefix: --name
-- id: bed
+- id: in_bed
   doc: bed file, example=DH_sample1.bed,DH_sample2.bed
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: minlength
+- id: in_minlength
   doc: minimum length of merged hot spots, default=5
   type: long
   inputBinding:
     prefix: --minlength
-- id: threads
+- id: in_threads
   doc: threads number or cpu number, default=4
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - popera_dhs_count

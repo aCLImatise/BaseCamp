@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../specialk.cwl
 inputs:
-- id: o
+- id: in_o
   doc: ''
   type: string
   inputBinding:
     prefix: -o
-- id: s
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -s
-- id: reads_file
+- id: in_reads_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - specialk

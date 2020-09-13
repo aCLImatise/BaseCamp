@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../rfheader.cwl
 inputs:
-- id: refine
+- id: in_refine
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: the
+- id: in_the
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: header
+- id: in_header
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rfheader

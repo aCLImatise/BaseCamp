@@ -1,7 +1,10 @@
 version 1.0
 
-task LoadArgs.pl.bak {
+task LoadArgspl {
   command <<<
-    load_args.pl.bak
+    load_args_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

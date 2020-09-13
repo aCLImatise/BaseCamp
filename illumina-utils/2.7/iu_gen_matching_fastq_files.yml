@@ -1,41 +1,50 @@
 !Command
-positional: []
+command:
+- iu-gen-matching-fastq-files
+positional:
+- !Positional
+  description: --sequential          Your identifier code parses an integer value
+    that can
+  position: 0
+  name: identifier.
+  optional: false
 named:
 - !Flag
-  description: Use this flag to indicate that you tested your identifier.
-  synonyms:
-  - --identifier-tested
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Your identifier code parses an integer value that can link pairs, and
-    is incremental throughout the file.
-  synonyms:
-  - --sequential
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
+  description: R1
   synonyms:
   - --r1
   args: !SimpleFlagArg
     name: FILE_PATH
   optional: true
 - !Flag
-  description: ''
+  description: R2
   synonyms:
   - --r2
   args: !SimpleFlagArg
     name: FILE_PATH
   optional: true
-command:
-- iu-gen-matching-fastq-files
+- !Flag
+  description: "CODE\nLambda function to parse the header. Default:\n'''lambda defline:\
+    \ defline.split()[0]'''."
+  synonyms:
+  - --identifier-code
+  args: !SimpleFlagArg
+    name: PYTHON
+  optional: true
+- !Flag
+  description: Use this flag to indicate that you tested your
+  synonyms:
+  - --identifier-tested
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:

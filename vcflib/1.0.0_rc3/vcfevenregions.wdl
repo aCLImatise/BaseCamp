@@ -2,13 +2,13 @@ version 1.0
 
 task Vcfevenregions {
   input {
-    String? fast_a_reference
-    String? number_of_regions
-    String? number_of_positions
+    File? fast_a_reference
+    Int? number_of_regions
+    Int? number_of_positions
     String? offset
-    String? overlap
+    Int? overlap
     String? separator
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcfevenregions \
@@ -24,9 +24,12 @@ task Vcfevenregions {
     fast_a_reference: "FASTA reference file to use to obtain primer sequences."
     number_of_regions: "The number of desired regions."
     number_of_positions: "The number of positions per region."
-    offset: "Add an offset to region positioning, to avoid boundary related artifacts in downstream processing."
+    offset: "Add an offset to region positioning, to avoid boundary\\nrelated artifacts in downstream processing."
     overlap: "The number of sites to overlap between regions.  Default 0."
     separator: "Specify string to use to separate region output.  Default '-'"
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

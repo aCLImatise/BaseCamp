@@ -1,93 +1,111 @@
 class: CommandLineTool
 id: ../../../goalign_subseq.cwl
 inputs:
-- id: length
+- id: in_length
   doc: Length of the sub alignment (default 10)
   type: long
   inputBinding:
     prefix: --length
-- id: output
+- id: in_output
   doc: Alignment output file (default "stdout")
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: start
+- id: in_start
   doc: Start position (0-based inclusive)
   type: long
   inputBinding:
     prefix: --start
-- id: step
+- id: in_step
   doc: 'Step: If > 0, then will generate several alignments, for each window of length
     l, with starts: [start,start+step, ..., end-l]*'
   type: long
   inputBinding:
     prefix: --step
-- id: align
+- id: in_align
   doc: Alignment input file (default "stdin")
-  type: string
+  type: File
   inputBinding:
     prefix: --align
-- id: auto_detect
+- id: in_auto_detect
   doc: Auto detects input format (overrides -p, -x and -u)
   type: boolean
   inputBinding:
     prefix: --auto-detect
-- id: clustal
+- id: in_clustal
   doc: Alignment is in clustal? default fasta
   type: boolean
   inputBinding:
     prefix: --clustal
-- id: ignore_identical
+- id: in_ignore_identical
   doc: Ignore duplicated sequences that have the same name and same sequences
   type: boolean
   inputBinding:
     prefix: --ignore-identical
-- id: input_strict
+- id: in_input_strict
   doc: Strict phylip input format (only used with -p)
   type: boolean
   inputBinding:
     prefix: --input-strict
-- id: nexus
+- id: in_nexus
   doc: Alignment is in nexus? default fasta
   type: boolean
   inputBinding:
     prefix: --nexus
-- id: no_block
+- id: in_no_block
   doc: Write Phylip sequences without space separated blocks (only used with -p)
   type: boolean
   inputBinding:
     prefix: --no-block
-- id: one_line
+- id: in_one_line
   doc: Write Phylip sequences on 1 line (only used with -p)
   type: boolean
   inputBinding:
     prefix: --one-line
-- id: output_strict
+- id: in_output_strict
   doc: Strict phylip output format (only used with -p)
   type: boolean
   inputBinding:
     prefix: --output-strict
-- id: phylip
+- id: in_phylip
   doc: Alignment is in phylip? default fasta
   type: boolean
   inputBinding:
     prefix: --phylip
-- id: seed
+- id: in_seed
   doc: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)'
   type: long
   inputBinding:
     prefix: --seed
-- id: threads
+- id: in_threads
   doc: Number of threads (default 1)
   type: long
   inputBinding:
     prefix: --threads
-- id: flags
-  doc: ''
-  type: string
+- id: in_one_two_three_four_five
+  doc: '23456'
+  type: long
   inputBinding:
     position: 0
-outputs: []
+- id: in_three_four_five_six_seven
+  doc: '45678'
+  type: long
+  inputBinding:
+    position: 1
+- id: in_warning_output_stdout
+  doc: 'Warning: If output is stdout, it works only if input format is Phylip, because '
+  type: long
+  inputBinding:
+    position: 2
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Alignment output file (default "stdout")
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - goalign

@@ -1,7 +1,10 @@
 version 1.0
 
-task SpadesTruseqScfcorrection {
+task Spadestruseqscfcorrection {
   command <<<
-    spades-truseq-scfcorrection
+    spades_truseq_scfcorrection
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,7 +2,7 @@ version 1.0
 
 task SixgillBuildFastqfiles {
   input {
-    Int? minlength
+    String? minlength
     String six_gill_build
   }
   command <<<
@@ -13,5 +13,8 @@ task SixgillBuildFastqfiles {
   parameter_meta {
     minlength: ""
     six_gill_build: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

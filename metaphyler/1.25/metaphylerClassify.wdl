@@ -4,4 +4,7 @@ task MetaphylerClassify {
   command <<<
     metaphylerClassify
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

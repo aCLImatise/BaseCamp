@@ -4,4 +4,7 @@ task Isatools {
   command <<<
     isatools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

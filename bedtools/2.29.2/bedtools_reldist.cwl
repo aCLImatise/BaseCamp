@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../bedtools_reldist.cwl
 inputs:
-- id: detail
+- id: in_detail
   doc: the relativedistance for each interval in A
   type: string
   inputBinding:
     prefix: -detail
-- id: a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -a
-- id: b
+- id: in_b
   doc: ''
   type: string
   inputBinding:
     prefix: -b
-outputs: []
+- id: in_a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedtools

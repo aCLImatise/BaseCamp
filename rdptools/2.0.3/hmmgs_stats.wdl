@@ -14,4 +14,7 @@ task HmmgsStats {
     bloom_filter_stats: ""
     bloom_filter: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

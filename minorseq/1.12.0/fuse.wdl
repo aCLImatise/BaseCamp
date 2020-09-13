@@ -12,9 +12,9 @@ task Fuse {
     fuse \
       ~{source} \
       ~{output_fasta_file} \
-      ~{true="--min-coverage" false="" min_coverage} \
-      ~{true="--emit-tool-contract" false="" emit_tool_contract} \
-      ~{true="--resolved-tool-contract" false="" resolved_tool_contract}
+      ~{if (min_coverage) then "--min-coverage" else ""} \
+      ~{if (emit_tool_contract) then "--emit-tool-contract" else ""} \
+      ~{if (resolved_tool_contract) then "--resolved-tool-contract" else ""}
   >>>
   parameter_meta {
     min_coverage: "Minimal coverage to call a position. [50]"
@@ -22,5 +22,8 @@ task Fuse {
     resolved_tool_contract: "Use args from resolved tool contract."
     source: "Source BAM or DataSet XML file."
     output_fasta_file: "Output fasta file."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

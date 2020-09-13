@@ -1,26 +1,27 @@
 version 1.0
 
-task AnviExportTable {
+task Anviexporttable {
   input {
     String? table
     Boolean? list
-    String? s__fields
+    Int? s__fields
     File? output_file
-    String db
   }
   command <<<
-    anvi-export-table \
-      ~{db} \
+    anvi_export_table \
       ~{if defined(table) then ("--table " +  '"' + table + '"') else ""} \
-      ~{true="--list" false="" list} \
+      ~{if (list) then "--list" else ""} \
       ~{if defined(s__fields) then ("-f " +  '"' + s__fields + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
   parameter_meta {
     table: "Table name to export."
-    list: "Gives a list of tables in a database and quits. If a table is already declared this time it lists all the fields in a given table, in case you would to export only a specific list of fields from the table using --fields parameter."
-    s__fields: "(S), --fields FIELD(S) Fields to report. Use --list-tables parameter with a table name to see available fields You can list fields using this notation: --fields 'field_1, field_2, ... field_N'."
-    output_file: "File path to store results."
-    db: "Anvi'o database to read from."
+    list: "Gives a list of tables in a database and quits. If a\\ntable is already declared this time it lists all the\\nfields in a given table, in case you would to export\\nonly a specific list of fields from the table using\\n--fields parameter."
+    s__fields: "(S), --fields FIELD(S)\\nFields to report. Use --list-tables parameter with a\\ntable name to see available fields You can list fields\\nusing this notation: --fields 'field_1, field_2, ...\\nfield_N'."
+    output_file: "File path to store results.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

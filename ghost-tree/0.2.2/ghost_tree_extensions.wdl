@@ -1,7 +1,10 @@
 version 1.0
 
-task GhostTreeExtensions {
+task GhosttreeExtensions {
   command <<<
-    ghost-tree extensions
+    ghost_tree extensions
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

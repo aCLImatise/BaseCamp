@@ -4,18 +4,22 @@ task Abruijn {
   input {
     Boolean? debug
     Boolean? resume
-    String? threads
-    String? iterations
+    Int? threads
+    Int? iterations
     String? platform
-    String? km_er_size
+    Int? km_er_size
     Int? min_overlap
     Int? min_coverage
     Int? max_coverage
+    String reads
+    String out_dir
   }
   command <<<
     abruijn \
-      ~{true="--debug" false="" debug} \
-      ~{true="--resume" false="" resume} \
+      ~{reads} \
+      ~{out_dir} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (resume) then "--resume" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(iterations) then ("--iterations " +  '"' + iterations + '"') else ""} \
       ~{if defined(platform) then ("--platform " +  '"' + platform + '"') else ""} \
@@ -34,5 +38,10 @@ task Abruijn {
     min_overlap: "minimum overlap between reads (default: 5000)"
     min_coverage: "minimum kmer coverage (default: auto)"
     max_coverage: "maximum kmer coverage (default: auto)"
+    reads: "path to reads file (FASTA format)"
+    out_dir: "output directory"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

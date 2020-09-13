@@ -1,4 +1,7 @@
-&id003 !Command
+&id002 !Command
+command:
+- akt
+- relatives
 positional: []
 named:
 - !Flag
@@ -29,17 +32,111 @@ named:
   - --prefix
   args: !EmptyFlagArg {}
   optional: true
-command:
-- akt
-- relatives
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - akt
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - akt
+    - pedphase
+    positional: []
+    named:
+    - !Flag
+      description: pedigree information in plink .fam format
+      synonyms:
+      - -p
+      - --pedigree
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: output file name [stdout]
+      synonyms:
+      - -o
+      - --output-file
+      args: !SimpleFlagArg
+        name: file
+      optional: true
+    - !Flag
+      description: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v:
+        uncompressed VCF [v]'
+      synonyms:
+      - -O
+      - --output-type
+      args: !SimpleFlagArg
+        name: b|u|z|v
+      optional: true
+    - !Flag
+      description: number of compression/decompression threads to use
+      synonyms:
+      - -@
+      - --threads
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: leave these chromosomes unphased (unphased lines will still be
+        in in output)  eg. -x chrM,chrY
+      synonyms:
+      - -x
+      - --exclude-chromosome
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nAbout:   akt pedphase - simple Mendel inheritance phasing of duos/trios\n\
+      Usage:   ./akt pedphase input.vcf.gz -p pedigree.fam\n\nOptions:\n    -p, --pedigree\
+      \                 pedigree information in plink .fam format\n    -o, --output-file\
+      \ <file>       output file name [stdout]\n    -O, --output-type <b|u|z|v>  \
+      \  b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed\
+      \ VCF [v]\n    -@, --threads                  number of compression/decompression\
+      \ threads to use\n    -x, --exclude-chromosome       leave these chromosomes\
+      \ unphased (unphased lines will still be in in output)  eg. -x chrM,chrY\n"
+    generated_using: []
+  - *id002
+  - !Command
+    command:
+    - akt
+    - unrelated
+    positional: []
+    named:
+    - !Flag
+      description: ':                     threshold for relatedness (0.025)'
+      synonyms:
+      - -k
+      - --kmin
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ':                      number of iterations to find unrelated
+        (10)'
+      synonyms:
+      - -i
+      - --its
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "akt: unrecognized option '--help'\nPrint a list of unrelated individuals\
+      \ taking the output from akt kin as input.\nUsage:\n./akt unrelated ibdfile\n\
+      \t -k --kmin:\t\t\tthreshold for relatedness (0.025)\n\t -i --its:\t\t\tnumber\
+      \ of iterations to find unrelated (10)\n"
+    generated_using: &id003
+    - --help
+  - !Command
+    command:
+    - akt
+    - pca
     positional: []
     named:
     - !Flag
@@ -162,11 +259,9 @@ parent: &id001 !Command
       - --assume-homref
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - akt
-    - pca
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -186,9 +281,11 @@ parent: &id001 !Command
       \t -F --svfile:\t\t\tFile containing singular values\n\t -H --assume-homref:\
       \            Assume missing genotypes/sites are homozygous reference (useful\
       \ for projecting a single sample)\n"
-    generated_using: &id002
-    - --help
+    generated_using: *id003
   - !Command
+    command:
+    - akt
+    - kin
     positional:
     - !Positional
       description: ''
@@ -281,11 +378,9 @@ parent: &id001 !Command
       - --samples-file
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - akt
-    - kin
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -303,98 +398,8 @@ parent: &id001 !Command
       \ than index-jumps\n\t    --force:\t\t\trun kin without -R/-T/-F\n\nSample filtering\
       \ options:\n\t -s --samples:\t\t\tlist of samples\n\t -S --samples-file:\t\t\
       list of samples, file\n\n"
-    generated_using: *id002
-  - *id003
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: ':                     threshold for relatedness (0.025)'
-      synonyms:
-      - -k
-      - --kmin
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ':                      number of iterations to find unrelated
-        (10)'
-      synonyms:
-      - -i
-      - --its
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - akt
-    - unrelated
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "akt: unrecognized option '--help'\nPrint a list of unrelated individuals\
-      \ taking the output from akt kin as input.\nUsage:\n./akt unrelated ibdfile\n\
-      \t -k --kmin:\t\t\tthreshold for relatedness (0.025)\n\t -i --its:\t\t\tnumber\
-      \ of iterations to find unrelated (10)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: pedigree information in plink .fam format
-      synonyms:
-      - -p
-      - --pedigree
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: output file name [stdout]
-      synonyms:
-      - -o
-      - --output-file
-      args: !SimpleFlagArg
-        name: file
-      optional: true
-    - !Flag
-      description: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v:
-        uncompressed VCF [v]'
-      synonyms:
-      - -O
-      - --output-type
-      args: !SimpleFlagArg
-        name: b|u|z|v
-      optional: true
-    - !Flag
-      description: number of compression/decompression threads to use
-      synonyms:
-      - -@
-      - --threads
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: leave these chromosomes unphased (unphased lines will still be
-        in in output)  eg. -x chrM,chrY
-      synonyms:
-      - -x
-      - --exclude-chromosome
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - akt
-    - pedphase
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "\nAbout:   akt pedphase - simple Mendel inheritance phasing of duos/trios\n\
-      Usage:   ./akt pedphase input.vcf.gz -p pedigree.fam\n\nOptions:\n    -p, --pedigree\
-      \                 pedigree information in plink .fam format\n    -o, --output-file\
-      \ <file>       output file name [stdout]\n    -O, --output-type <b|u|z|v>  \
-      \  b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed\
-      \ VCF [v]\n    -@, --threads                  number of compression/decompression\
-      \ threads to use\n    -x, --exclude-chromosome       leave these chromosomes\
-      \ unphased (unphased lines will still be in in output)  eg. -x chrM,chrY\n"
-    generated_using: []
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -405,8 +410,9 @@ parent: &id001 !Command
     \ kinship coefficients\n\trelatives                discover pedigrees\n\tunrelated\
     \                generate a list of unrelated individuals\n\tpedphase        \
     \         Mendelian transmission phasing for duos/trios\n\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -418,4 +424,4 @@ help_text: "akt: unrecognized option '--help'\nPrint a list of unrelated individ
   \ solid black\t= parent-child\n                : dotted black\t= siblings\n    \
   \            : blue \t\t= second order\n                : red\t\t= duplicates\n\
   \                : directed\t= from parent to child\n"
-generated_using: *id002
+generated_using: *id003

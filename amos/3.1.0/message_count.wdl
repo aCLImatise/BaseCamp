@@ -1,17 +1,20 @@
 version 1.0
 
-task MessageCount {
+task Messagecount {
   input {
     String? message
     File? path
   }
   command <<<
-    message-count \
+    message_count \
       ~{message} \
       ~{path}
   >>>
   parameter_meta {
     message: ""
     path: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task PhyluceSnpScreenVcfFiles {
   input {
-    String? vcf_file_process
-    String? vcf_file_write
+    File? vcf_file_process
+    File? vcf_file_write
     String? complete
   }
   command <<<
@@ -16,5 +16,8 @@ task PhyluceSnpScreenVcfFiles {
     vcf_file_process: "The vcf file to process"
     vcf_file_write: "The vcf file to write"
     complete: "The percentage of missing data to allow."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

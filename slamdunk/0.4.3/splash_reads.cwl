@@ -1,57 +1,65 @@
 class: CommandLineTool
 id: ../../../splash_reads.cwl
 inputs:
-- id: output_dir
+- id: in_output_dir
   doc: Output directory for mapped BAM files.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outputDir
-- id: sample_name
+- id: in_sample_name
   doc: Name of sample
   type: string
   inputBinding:
     prefix: --sample-name
-- id: bed
+- id: in_bed
   doc: BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: read_length
+- id: in_read_length
   doc: Read length
-  type: string
+  type: long
   inputBinding:
     prefix: --read-length
-- id: read_number
+- id: in_read_number
   doc: Number of reads to simulate
-  type: string
+  type: long
   inputBinding:
     prefix: --read-number
-- id: read_coverage
+- id: in_read_coverage
   doc: Read coverage (if read number is not specified)
-  type: string
+  type: long
   inputBinding:
     prefix: --read-coverage
-- id: sequencing_error
+- id: in_sequencing_error
   doc: Sequencing error
   type: string
   inputBinding:
     prefix: --sequencing-error
-- id: pulse
+- id: in_pulse
   doc: Pulse in minutes
   type: string
   inputBinding:
     prefix: --pulse
-- id: chase
+- id: in_chase
   doc: Chase in minutes
   type: string
   inputBinding:
     prefix: --chase
-- id: tc_rate
-  doc: T->C conversion rate
+- id: in_tc_rate
+  doc: "T->C conversion rate\n"
   type: string
   inputBinding:
     prefix: --tc-rate
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: Output directory for mapped BAM files.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - splash

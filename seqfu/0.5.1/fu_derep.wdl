@@ -1,7 +1,10 @@
 version 1.0
 
-task FuDerep {
+task Fuderep {
   command <<<
-    fu-derep
+    fu_derep
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

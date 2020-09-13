@@ -4,4 +4,7 @@ task Platypus {
   command <<<
     platypus
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

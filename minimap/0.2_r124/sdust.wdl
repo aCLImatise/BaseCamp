@@ -2,19 +2,22 @@ version 1.0
 
 task Sdust {
   input {
-    String? w
-    String? t
+    Int? t
+    Int? w
     String in_dot_fa
   }
   command <<<
     sdust \
       ~{in_dot_fa} \
-      ~{if defined(w) then ("-w " +  '"' + w + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(w) then ("-w " +  '"' + w + '"') else ""}
   >>>
   parameter_meta {
-    w: ""
     t: ""
+    w: ""
     in_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

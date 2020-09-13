@@ -1,53 +1,62 @@
 class: CommandLineTool
 id: ../../../droptag.cwl
 inputs:
-- id: config
+- id: in_config
   doc: ': xml file with droptag parameters'
   type: File
   inputBinding:
     prefix: --config
-- id: log_prefix
+- id: in_log_prefix
   doc: ': logs prefix'
   type: string
   inputBinding:
     prefix: --log-prefix
-- id: name
+- id: in_name
   doc: ': alternative output base name'
   type: string
   inputBinding:
     prefix: --name
-- id: parallel
+- id: in_parallel
   doc: ': number of threads'
-  type: string
+  type: long
   inputBinding:
     prefix: --parallel
-- id: save_reads_params
+- id: in_save_reads_params
   doc: ': serialize reads parameters to save quality info'
   type: boolean
   inputBinding:
     prefix: --save-reads-params
-- id: save_stats
+- id: in_save_stats
   doc: ': save stats to rds file'
   type: boolean
   inputBinding:
     prefix: --save-stats
-- id: reads_per_out_file
+- id: in_reads_per_out_file
   doc: ': maximum number of reads per output file; (0 - unlimited). Overrides corresponding
     xml parameter.'
-  type: boolean
+  type: File
   inputBinding:
     prefix: --reads-per-out-file
-- id: lib_tag
+- id: in_lib_tag
   doc: 'tag : (for IndropV3 with library tag only)'
-  type: string
+  type: long
   inputBinding:
     prefix: --lib-tag
-- id: quiet
+- id: in_quiet
   doc: ': disable logs'
   type: boolean
   inputBinding:
     prefix: --quiet
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_reads_per_out_file
+  doc: ': maximum number of reads per output file; (0 - unlimited). Overrides corresponding
+    xml parameter.'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_reads_per_out_file)
 cwlVersion: v1.1
 baseCommand:
 - droptag

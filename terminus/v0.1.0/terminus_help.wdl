@@ -20,4 +20,7 @@ task TerminusHelp {
     information: ""
     try: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -24,21 +24,21 @@ task Mdasim {
     mdasim \
       ~{optional} \
       ~{args} \
-      ~{true="--log" false="" log} \
-      ~{true="--mutationrate" false="" mutation_rate} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--input" false="" file_name_reference} \
-      ~{true="--output" false="" output_files_prefix} \
-      ~{true="--outputfragments" false="" output_fragments} \
-      ~{true="--primers" false="" primers} \
-      ~{true="--primerNo" false="" primer_no} \
-      ~{true="--frgLngth" false="" frg_lng_th} \
-      ~{true="--coverage" false="" coverage} \
-      ~{true="--stepSize" false="" step_size} \
-      ~{true="--alpha" false="" alpha} \
-      ~{true="--attachNum" false="" attach_num} \
-      ~{true="--readLength" false="" read_length} \
-      ~{true="--single" false="" single}
+      ~{if (log) then "--log" else ""} \
+      ~{if (mutation_rate) then "--mutationrate" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (file_name_reference) then "--input" else ""} \
+      ~{if (output_files_prefix) then "--output" else ""} \
+      ~{if (output_fragments) then "--outputfragments" else ""} \
+      ~{if (primers) then "--primers" else ""} \
+      ~{if (primer_no) then "--primerNo" else ""} \
+      ~{if (frg_lng_th) then "--frgLngth" else ""} \
+      ~{if (coverage) then "--coverage" else ""} \
+      ~{if (step_size) then "--stepSize" else ""} \
+      ~{if (alpha) then "--alpha" else ""} \
+      ~{if (attach_num) then "--attachNum" else ""} \
+      ~{if (read_length) then "--readLength" else ""} \
+      ~{if (single) then "--single" else ""}
   >>>
   parameter_meta {
     log: "= file name for a log file of all single nucleotide errors that happen during amplification"
@@ -58,5 +58,8 @@ task Mdasim {
     single: "Input reference is amplified as a single strand sequence"
     optional: ""
     args: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

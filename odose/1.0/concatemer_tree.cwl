@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../concatemer_tree.py.cwl
+id: ../../../concatemer_tree.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- concatemer_tree.py
+- concatemer_tree

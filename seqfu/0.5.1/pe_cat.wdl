@@ -1,7 +1,10 @@
 version 1.0
 
-task PeCat {
+task Pecat {
   command <<<
-    pe-cat
+    pe_cat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

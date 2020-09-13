@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../mtsv_signature_FLAGS.cwl
 inputs:
-- id: index
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --index
-- id: input
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --input
-- id: lca
+- id: in_lca
   doc: ''
   type: string
   inputBinding:
     prefix: --lca
-- id: output
+- id: in_input
   doc: ''
   type: string
   inputBinding:
-    prefix: --output
-outputs: []
+    prefix: --input
+- id: in_index
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --index
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mtsv-signature

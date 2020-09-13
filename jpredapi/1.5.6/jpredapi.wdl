@@ -8,23 +8,32 @@ task Jpredapi {
     String? mode
     String? format
     File? file
-    String? seq
+    File? seq
     String? email
     String? name
     String? jobid
     File? results
-    String? rest
-    String? jp_red_four
+    Int? rest
+    Int? jp_red_four
     Int? wait
     Int? attempts
+    Boolean? v
+    String check_rest_version
+    String get_results
+    String quota
+    String status
     String submit
   }
   command <<<
     jpredapi \
+      ~{check_rest_version} \
+      ~{get_results} \
+      ~{quota} \
+      ~{status} \
       ~{submit} \
-      ~{true="--silent" false="" silent} \
-      ~{true="--extract" false="" extract} \
-      ~{true="--skipPDB" false="" skip_pdb} \
+      ~{if (silent) then "--silent" else ""} \
+      ~{if (extract) then "--extract" else ""} \
+      ~{if (skip_pdb) then "--skipPDB" else ""} \
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
@@ -36,7 +45,8 @@ task Jpredapi {
       ~{if defined(rest) then ("--rest " +  '"' + rest + '"') else ""} \
       ~{if defined(jp_red_four) then ("--jpred4 " +  '"' + jp_red_four + '"') else ""} \
       ~{if defined(wait) then ("--wait " +  '"' + wait + '"') else ""} \
-      ~{if defined(attempts) then ("--attempts " +  '"' + attempts + '"') else ""}
+      ~{if defined(attempts) then ("--attempts " +  '"' + attempts + '"') else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     silent: "Do not print messages."
@@ -54,6 +64,14 @@ task Jpredapi {
     jp_red_four: "Address of Jpred4 server [default: http://www.compbio.dundee.ac.uk/jpred4]."
     wait: "Wait interval before retrying to check job status in seconds [default: 60]."
     attempts: "Maximum number of attempts to check job status [default: 10]."
+    v: ""
+    check_rest_version: ""
+    get_results: ""
+    quota: ""
+    status: ""
     submit: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

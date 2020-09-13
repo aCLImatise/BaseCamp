@@ -24,9 +24,12 @@ task TripailleOrganismAddOrganism {
     common: "The common name of the organism"
     abbr: "The abbreviation of the organism"
     comment: "A comment / description"
-    infraspecific_rank: "The type name of infraspecific name for any taxon below the rank of species. Must be one of ['subspecies', 'varietas', 'subvariety', 'forma', 'subforma']"
+    infraspecific_rank: "The type name of infraspecific name for any taxon\\nbelow the rank of species. Must be one of\\n['subspecies', 'varietas', 'subvariety', 'forma',\\n'subforma']"
     infraspecific_name: "The infraspecific name for this organism."
     genus: ""
     species: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

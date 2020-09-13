@@ -1,27 +1,40 @@
 class: CommandLineTool
 id: ../../../fasta_utils_split.cwl
 inputs:
-- id: prefix
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_prefix
   doc: 'Prefix for the file name in output  [default: split]'
-  type: string
+  type: File
   inputBinding:
     prefix: --prefix
-- id: number
-  doc: 'Number of chunks into which split the FASTA file [default: 10]'
+- id: in_number
+  doc: "Number of chunks into which split the FASTA file\n[default: 10]"
   type: long
   inputBinding:
     prefix: --number
-- id: gzip
+- id: in_gzip
   doc: gzip output files
   type: boolean
   inputBinding:
     prefix: --gzip
-- id: fast_a_file
+- id: in_fast_a_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prefix
+  doc: 'Prefix for the file name in output  [default: split]'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_prefix)
 cwlVersion: v1.1
 baseCommand:
 - fasta-utils

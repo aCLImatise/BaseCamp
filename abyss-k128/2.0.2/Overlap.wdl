@@ -2,8 +2,8 @@ version 1.0
 
 task Overlap {
   input {
-    String? kmer_size
-    String? min
+    Int? kmer_size
+    Int? min
     Boolean? scaffold
     Boolean? no_scaffold
     Boolean? mask_repeat
@@ -21,37 +21,35 @@ task Overlap {
     Boolean? verbose
     String var_17
     String out_dot_fa
-    String? option
   }
   command <<<
     Overlap \
       ~{var_17} \
       ~{out_dot_fa} \
-      ~{option} \
       ~{if defined(kmer_size) then ("--kmer " +  '"' + kmer_size + '"') else ""} \
       ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
-      ~{true="--scaffold" false="" scaffold} \
-      ~{true="--no-scaffold" false="" no_scaffold} \
-      ~{true="--mask-repeat" false="" mask_repeat} \
+      ~{if (scaffold) then "--scaffold" else ""} \
+      ~{if (no_scaffold) then "--no-scaffold" else ""} \
+      ~{if (mask_repeat) then "--mask-repeat" else ""} \
       ~{if defined(no_merge_repeat) then ("--no-merge-repeat " +  '"' + no_merge_repeat + '"') else ""} \
-      ~{true="--SS" false="" ss} \
-      ~{true="--no-SS" false="" no_ss} \
+      ~{if (ss) then "--SS" else ""} \
+      ~{if (no_ss) then "--no-SS" else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
-      ~{true="--adj" false="" adj} \
-      ~{true="--asqg" false="" as_qg} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--gv" false="" gv} \
-      ~{true="--gfa" false="" gfa} \
-      ~{true="--sam" false="" sam} \
+      ~{if (adj) then "--adj" else ""} \
+      ~{if (as_qg) then "--asqg" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (gv) then "--gv" else ""} \
+      ~{if (gfa) then "--gfa" else ""} \
+      ~{if (sam) then "--sam" else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     kmer_size: "k-mer size"
-    min: "require a minimum of OVERLAP bases default is 5 bases"
+    min: "require a minimum of OVERLAP bases\\ndefault is 5 bases"
     scaffold: "join contigs with Ns [default]"
     no_scaffold: "do not scaffold"
-    mask_repeat: "join contigs at a simple repeat and mask the repeat sequence [default]"
+    mask_repeat: "join contigs at a simple repeat and mask\\nthe repeat sequence [default]"
     no_merge_repeat: "'t join contigs at a repeat"
     ss: "expect contigs to be oriented correctly"
     no_ss: "no assumption about contig orientation [default]"
@@ -66,6 +64,8 @@ task Overlap {
     verbose: "display verbose output"
     var_17: ""
     out_dot_fa: ""
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

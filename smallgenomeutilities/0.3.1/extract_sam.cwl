@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../extract_sam.cwl
 inputs:
-- id: name_hxb_
+- id: in_name_target_contig
   doc: Name of target contig, e.g. HXB2:2253-2256
-  type: string
+  type: long
   inputBinding:
     prefix: -t
-- id: print_more_information
+- id: in_print_more_information
   doc: Print more information (such as subsequences in references)
   type: boolean
   inputBinding:
     prefix: -v
-- id: input_sambam_file
+- id: in_input_sambam_file
   doc: Input SAM/BAM file
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: output_fasta_file
+- id: in_output_fasta_file
   doc: Output FASTA file
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: mf
+- id: in_mf
   doc: Minimum frequency to output
   type: double
   inputBinding:
     prefix: --mf
-- id: mc
+- id: in_mc
   doc: Minimum count to output
   type: long
   inputBinding:
     prefix: --mc
-- id: prefix
+- id: in_prefix
   doc: Prefix to add to header
   type: string
   inputBinding:
     prefix: --prefix
-- id: rg
+- id: in_rg
   doc: Minimum frequency for gap containing sequences
   type: double
   inputBinding:
     prefix: --rg
-- id: rog
+- id: in_rog
   doc: Remove sequences consisting only of gaps and stop codons
   type: boolean
   inputBinding:
     prefix: --rog
-- id: output_sequences_translated
+- id: in_output_sequences_translated
   doc: Output sequences as translated proteins
   type: boolean
   inputBinding:
     prefix: -p
-- id: output_sequences_trait
+- id: in_output_sequences_trait
   doc: Output sequences in trait format (for SeTesT)
   type: boolean
   inputBinding:
     prefix: -T
-- id: msa_file
-  doc: file containing MSA
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_fasta_file
+  doc: Output FASTA file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_fasta_file)
 cwlVersion: v1.1
 baseCommand:
 - extract_sam

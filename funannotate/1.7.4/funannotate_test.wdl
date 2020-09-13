@@ -9,12 +9,15 @@ task FunannotateTest {
   command <<<
     funannotate test \
       ~{arguments} \
-      ~{true="--tests" false="" tests} \
-      ~{true="--cpus" false="" cpus}
+      ~{if (tests) then "--tests" else ""} \
+      ~{if (cpus) then "--cpus" else ""}
   >>>
   parameter_meta {
     tests: "Test sets to run. [all,clean,mask,predict,busco,rna-seq,annotate,compare]"
     cpus: "Number of cpus to use. Default: 2"
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

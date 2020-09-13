@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../fasten_kmer.cwl
 inputs:
-- id: num_cpus
+- id: in_num_cpus
   doc: 'Number of CPUs (default: 1)'
   type: long
   inputBinding:
     prefix: --numcpus
-- id: paired_end
+- id: in_paired_end
   doc: The input reads are interleaved paired-end
   type: boolean
   inputBinding:
     prefix: --paired-end
-- id: verbose
+- id: in_verbose
   doc: Print more status messages
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: km_er_length
-  doc: The size of the kmer
+- id: in_km_er_length
+  doc: "The size of the kmer\n"
   type: long
   inputBinding:
     prefix: --kmer-length
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fasten_kmer

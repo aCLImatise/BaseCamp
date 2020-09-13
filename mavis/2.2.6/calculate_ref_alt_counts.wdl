@@ -4,9 +4,9 @@ task CalculateRefAltCounts {
   input {
     File? path_output_file
     Array[File] path_input_mavis
-    String? filepath__bam
+    File? filepath__bam
     File? reference
-    String? event_size
+    Int? event_size
     String? buffer
   }
   command <<<
@@ -21,9 +21,13 @@ task CalculateRefAltCounts {
   parameter_meta {
     path_output_file: "Path to the output file"
     path_input_mavis: "Path to the Input mavis summary file"
-    filepath__bam: "FILEPATH, --bam <name> FILEPATH Name for the library and the path to its bam file"
+    filepath__bam: "FILEPATH, --bam <name> FILEPATH\\nName for the library and the path to its bam file"
     reference: "Path to the Input reference genome fasta file"
-    event_size: "The maximum size of a indel event to calculate the ref/alt counts"
-    buffer: "The amount of overhang (accounting for repeats) a read must have in order to be considered"
+    event_size: "The maximum size of a indel event to calculate the\\nref/alt counts"
+    buffer: "The amount of overhang (accounting for repeats) a read\\nmust have in order to be considered\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_file = "${in_path_output_file}"
   }
 }

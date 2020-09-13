@@ -1,14 +1,10 @@
 version 1.0
 
 task CatUncomment {
-  input {
-    File file
-  }
   command <<<
-    catUncomment \
-      ~{file}
+    catUncomment
   >>>
-  parameter_meta {
-    file: ""
+  output {
+    File out_stdout = stdout()
   }
 }

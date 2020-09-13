@@ -11,7 +11,10 @@ task GgdUninstall {
       ~{if defined(channel) then ("--channel " +  '"' + channel + '"') else ""}
   >>>
   parameter_meta {
-    channel: "The ggd channel of the recipe to uninstall. (Default = genomics)"
+    channel: "The ggd channel of the recipe to uninstall. (Default =\\ngenomics)\\n"
     name: "the name of the recipe to uninstall"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

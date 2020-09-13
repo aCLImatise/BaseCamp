@@ -4,4 +4,7 @@ task Compare {
   command <<<
     compare
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

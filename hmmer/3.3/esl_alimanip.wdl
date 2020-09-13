@@ -1,31 +1,31 @@
 version 1.0
 
-task EslAlimanip {
+task Eslalimanip {
   input {
-    String? output_alignment_file
-    String? in_format
+    File? output_alignment_file
+    File? in_format
     String? out_format
     Boolean? devhelp
-    String? ln_fract
-    String? lx_fract
-    String? lm_in
-    String? lmax
+    Int? ln_fract
+    Int? lx_fract
+    Int? lm_in
+    Int? lmax
     String? rf_fract
-    String? de_trunc
+    Int? de_trunc
     String? x_am_big
-    String? seq_r
+    File? seq_r
     String? seq_k
     Boolean? small
     Boolean? k_reorder
     String? seq_ins
-    String? seq_ni
-    String? seq_xi
+    Int? seq_ni
+    Int? seq_xi
     String? trim
     Boolean? t_keep_rf
     String? min_pp
     String? tree
     String? reorder
-    String? mask_two_rf
+    Int? mask_two_rf
     Boolean? m_keep_rf
     Boolean? num_all
     Boolean? num_rf
@@ -38,12 +38,12 @@ task EslAlimanip {
     String msa_file
   }
   command <<<
-    esl-alimanip \
+    esl_alimanip \
       ~{msa_file} \
       ~{if defined(output_alignment_file) then ("-o " +  '"' + output_alignment_file + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
-      ~{true="--devhelp" false="" devhelp} \
+      ~{if (devhelp) then "--devhelp" else ""} \
       ~{if defined(ln_fract) then ("--lnfract " +  '"' + ln_fract + '"') else ""} \
       ~{if defined(lx_fract) then ("--lxfract " +  '"' + lx_fract + '"') else ""} \
       ~{if defined(lm_in) then ("--lmin " +  '"' + lm_in + '"') else ""} \
@@ -53,26 +53,26 @@ task EslAlimanip {
       ~{if defined(x_am_big) then ("--xambig " +  '"' + x_am_big + '"') else ""} \
       ~{if defined(seq_r) then ("--seq-r " +  '"' + seq_r + '"') else ""} \
       ~{if defined(seq_k) then ("--seq-k " +  '"' + seq_k + '"') else ""} \
-      ~{true="--small" false="" small} \
-      ~{true="--k-reorder" false="" k_reorder} \
+      ~{if (small) then "--small" else ""} \
+      ~{if (k_reorder) then "--k-reorder" else ""} \
       ~{if defined(seq_ins) then ("--seq-ins " +  '"' + seq_ins + '"') else ""} \
       ~{if defined(seq_ni) then ("--seq-ni " +  '"' + seq_ni + '"') else ""} \
       ~{if defined(seq_xi) then ("--seq-xi " +  '"' + seq_xi + '"') else ""} \
       ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""} \
-      ~{true="--t-keeprf" false="" t_keep_rf} \
+      ~{if (t_keep_rf) then "--t-keeprf" else ""} \
       ~{if defined(min_pp) then ("--minpp " +  '"' + min_pp + '"') else ""} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
       ~{if defined(reorder) then ("--reorder " +  '"' + reorder + '"') else ""} \
       ~{if defined(mask_two_rf) then ("--mask2rf " +  '"' + mask_two_rf + '"') else ""} \
-      ~{true="--m-keeprf" false="" m_keep_rf} \
-      ~{true="--num-all" false="" num_all} \
-      ~{true="--num-rf" false="" num_rf} \
+      ~{if (m_keep_rf) then "--m-keeprf" else ""} \
+      ~{if (num_all) then "--num-all" else ""} \
+      ~{if (num_rf) then "--num-rf" else ""} \
       ~{if defined(rm_gc) then ("--rm-gc " +  '"' + rm_gc + '"') else ""} \
-      ~{true="--sindi" false="" sindi} \
-      ~{true="--post2pp" false="" post_two_pp} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna}
+      ~{if (sindi) then "--sindi" else ""} \
+      ~{if (post_two_pp) then "--post2pp" else ""} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""}
   >>>
   parameter_meta {
     output_alignment_file: ": output the alignment to file <f>, not stdout"
@@ -109,5 +109,9 @@ task EslAlimanip {
     dna: ": <msafile> contains DNA alignments"
     rna: ": <msafile> contains RNA alignments"
     msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_alignment_file = "${in_output_alignment_file}"
   }
 }

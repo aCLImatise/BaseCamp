@@ -1,23 +1,73 @@
 !Command
-positional: []
+command:
+- tree-events-dlc
+positional:
+- !Positional
+  description: --use-locus-recon     if set, use locus recon rather than MPR
+  position: 0
+  name: nodes
+  optional: false
 named:
 - !Flag
-  description: set to ignore extra lineages at implied speciation nodes
+  description: species tree (newick format)
+  synonyms:
+  - -s
+  - --stree
+  args: !SimpleFlagArg
+    name: species tree
+  optional: true
+- !Flag
+  description: mapping of gene names to species names
+  synonyms:
+  - -S
+  - --smap
+  args: !SimpleFlagArg
+    name: gene2species map
+  optional: true
+- !Flag
+  description: 'tree file extension (default: ".coal.tree")'
+  synonyms:
+  - -T
+  - --treeext
+  args: !SimpleFlagArg
+    name: coalescent tree file extension
+  optional: true
+- !Flag
+  description: 'tree file extension (default: ".coal.recon")'
+  synonyms:
+  - -R
+  - --reconext
+  args: !SimpleFlagArg
+    name: coalescent recon file extension
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --by-fam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --use-famid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set to ignore extra lineages at implied speciation
   synonyms:
   - --explicit
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: if set, use locus recon rather than MPR
-  synonyms:
-  - --use-locus-recon
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- tree-events-dlc
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: tree-events-dlc [options]\n\nOptions:\n  -h, --help           \

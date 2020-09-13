@@ -1,137 +1,130 @@
 class: CommandLineTool
 id: ../../../abyss_map_ssq.cwl
 inputs:
-- id: min_align
+- id: in_min_align
   doc: find matches at least N bp [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --min-align
-- id: threads
+- id: in_threads
   doc: use N parallel threads [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: append_comment
+- id: in_append_comment
   doc: append the FASTA/FASTQ comment to the SAM tags
   type: boolean
   inputBinding:
     prefix: --append-comment
-- id: sample
+- id: in_sample
   doc: sample the suffix array [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --sample
-- id: dup
-  doc: identify and print duplicate sequence IDs between QUERY and TARGET
+- id: in_dup
+  doc: "identify and print duplicate sequence\nIDs between QUERY and TARGET"
   type: boolean
   inputBinding:
     prefix: --dup
-- id: order
-  doc: print alignments in the same order as read from QUERY
+- id: in_order
+  doc: "print alignments in the same order as\nread from QUERY"
   type: boolean
   inputBinding:
     prefix: --order
-- id: no_order
+- id: in_no_order
   doc: print alignments ASAP [default]
   type: boolean
   inputBinding:
     prefix: --no-order
-- id: multi
-  doc: Align unaligned segments of primary alignment
+- id: in_multi
+  doc: Align unaligned segments of primary
   type: boolean
   inputBinding:
     prefix: --multi
-- id: no_multi
-  doc: don't Align unaligned segments [default]
-  type: boolean
-  inputBinding:
-    prefix: --no-multi
-- id: ss
+- id: in_ss
   doc: expect contigs to be oriented correctly
   type: boolean
   inputBinding:
     prefix: --SS
-- id: no_ss
+- id: in_no_ss
   doc: no assumption about contig orientation
   type: boolean
   inputBinding:
     prefix: --no-SS
-- id: rc
+- id: in_rc
   doc: map the sequence and its reverse complement [default]
   type: boolean
   inputBinding:
     prefix: --rc
-- id: no_rc
+- id: in_no_rc
   doc: do not map the reverse complement sequence
   type: boolean
   inputBinding:
     prefix: --no-rc
-- id: alphabet
+- id: in_alphabet
   doc: use the alphabet STRING [-ACGT]
   type: string
   inputBinding:
     prefix: --alphabet
-- id: alpha
+- id: in_alpha
   doc: equivalent to --no-rc -a' ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   type: boolean
   inputBinding:
     prefix: --alpha
-- id: dna
+- id: in_dna
   doc: equivalent to --rc    -a'-ACGT'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: protein
+- id: in_protein
   doc: equivalent to --no-rc -a'#*ACDEFGHIKLMNPQRSTVWY'
   type: boolean
   inputBinding:
     prefix: --protein
-- id: chastity
+- id: in_chastity
   doc: discard unchaste reads
   type: boolean
   inputBinding:
     prefix: --chastity
-- id: no_chastity
+- id: in_no_chastity
   doc: do not discard unchaste reads [default]
   type: boolean
   inputBinding:
     prefix: --no-chastity
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: db
+- id: in_db
   doc: specify path of database repository in FILE
   type: File
   inputBinding:
     prefix: --db
-- id: library
+- id: in_library
   doc: specify library NAME for database
   type: string
   inputBinding:
     prefix: --library
-- id: strain
+- id: in_strain
   doc: specify strain NAME for database
   type: string
   inputBinding:
     prefix: --strain
-- id: species
+- id: in_species
   doc: specify species NAME for database
   type: string
   inputBinding:
     prefix: --species
-- id: abyss_map
-  doc: ''
+- id: in_alignment
+  doc: --no-multi          don't Align unaligned segments [default]
   type: string
   inputBinding:
     position: 0
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - abyss-map-ssq

@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../colTransform.cwl
 inputs:
-- id: column
+- id: in_column
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_dot_tab
+- id: in_input_dot_tab
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: add_factor
+- id: in_add_factor
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: mul_factor
+- id: in_mul_factor
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: output_dot_tab
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - colTransform

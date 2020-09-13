@@ -4,4 +4,7 @@ task Mglobspectrophore {
   command <<<
     mglobspectrophore
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

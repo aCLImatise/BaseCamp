@@ -1,42 +1,40 @@
 class: CommandLineTool
 id: ../../../smafa_makedb.cwl
 inputs:
-- id: amino_acid
+- id: in_amino_acid
   doc: 'Sequences are amino acid [default: nucleotide]'
   type: boolean
   inputBinding:
     prefix: --amino-acid
-- id: quiet
+- id: in_quiet
   doc: Unless there is an error, do not print logging information
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: translate
+- id: in_translate
   doc: Translate input before generating DB
   type: boolean
   inputBinding:
     prefix: --translate
-- id: verbose
+- id: in_verbose
   doc: Print extra debug logging information
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: flags
+- id: in_flags
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: db_fast_a
+- id: in_db_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: db
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - smafa

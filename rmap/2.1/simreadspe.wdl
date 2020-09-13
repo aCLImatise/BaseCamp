@@ -2,7 +2,7 @@ version 1.0
 
 task Simreadspe {
   input {
-    Boolean? name_output_file
+    File? name_output_file
     Boolean? reads
     Boolean? width
     Boolean? min_sep
@@ -10,7 +10,7 @@ task Simreadspe {
     Boolean? err
     Boolean? verbose
     Boolean? fast_q
-    Boolean? prob
+    File? prob
     Boolean? seed
     Boolean? about
     String fast_a_chrom_files
@@ -18,30 +18,35 @@ task Simreadspe {
   command <<<
     simreadspe \
       ~{fast_a_chrom_files} \
-      ~{true="-output" false="" name_output_file} \
-      ~{true="-reads" false="" reads} \
-      ~{true="-width" false="" width} \
-      ~{true="-min-sep" false="" min_sep} \
-      ~{true="-max-sep" false="" max_sep} \
-      ~{true="-err" false="" err} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-fastq" false="" fast_q} \
-      ~{true="-prob" false="" prob} \
-      ~{true="-seed" false="" seed} \
-      ~{true="-about" false="" about}
+      ~{if (name_output_file) then "-output" else ""} \
+      ~{if (reads) then "-reads" else ""} \
+      ~{if (width) then "-width" else ""} \
+      ~{if (min_sep) then "-min-sep" else ""} \
+      ~{if (max_sep) then "-max-sep" else ""} \
+      ~{if (err) then "-err" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (fast_q) then "-fastq" else ""} \
+      ~{if (prob) then "-prob" else ""} \
+      ~{if (seed) then "-seed" else ""} \
+      ~{if (about) then "-about" else ""}
   >>>
   parameter_meta {
-    name_output_file: "Name of output file (default: stdout) "
-    reads: "number of reads to simulate "
-    width: "width of reads to simulate "
-    min_sep: "min fragment length "
-    max_sep: "max fragment length "
-    err: "maximum number of simulated sequencing errors "
-    verbose: "print more run info "
-    fast_q: "write FASTQ format reads "
-    prob: "prb output file "
-    seed: "random number seed "
-    about: "print about message "
+    name_output_file: "Name of output file (default: stdout)"
+    reads: "number of reads to simulate"
+    width: "width of reads to simulate"
+    min_sep: "min fragment length"
+    max_sep: "max fragment length"
+    err: "maximum number of simulated sequencing errors"
+    verbose: "print more run info"
+    fast_q: "write FASTQ format reads"
+    prob: "prb output file"
+    seed: "random number seed"
+    about: "print about message"
     fast_a_chrom_files: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_name_output_file = "${in_name_output_file}"
+    File out_prob = "${in_prob}"
   }
 }

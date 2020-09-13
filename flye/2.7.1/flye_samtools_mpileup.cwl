@@ -1,132 +1,146 @@
 class: CommandLineTool
 id: ../../../flye_samtools_mpileup.cwl
 inputs:
-- id: illumina_one_dot_three
+- id: in_illumina_one_dot_three
   doc: +      quality is in the Illumina-1.3+ encoding
   type: boolean
   inputBinding:
     prefix: --illumina1.3
-- id: count_orphans
+- id: in_count_orphans
   doc: do not discard anomalous read pairs
   type: boolean
   inputBinding:
     prefix: --count-orphans
-- id: bam_list
+- id: in_bam_list
   doc: list of input BAM filenames, one per line
   type: File
   inputBinding:
     prefix: --bam-list
-- id: no_baq
+- id: in_no_baq
   doc: disable BAQ (per-Base Alignment Quality)
   type: boolean
   inputBinding:
     prefix: --no-BAQ
-- id: adjust_mq
+- id: in_adjust_mq
   doc: adjust mapping quality; recommended:50, disable:0 [0]
   type: long
   inputBinding:
     prefix: --adjust-MQ
-- id: max_depth
+- id: in_max_depth
   doc: max per-file depth; avoids excessive memory usage [8000]
   type: long
   inputBinding:
     prefix: --max-depth
-- id: redo_baq
+- id: in_redo_baq
   doc: recalculate BAQ on the fly, ignore existing BQs
   type: boolean
   inputBinding:
     prefix: --redo-BAQ
-- id: fast_a_ref
+- id: in_fast_a_ref
   doc: faidx indexed reference sequence file
   type: File
   inputBinding:
     prefix: --fasta-ref
-- id: exclude_rg
+- id: in_exclude_rg
   doc: exclude read groups listed in FILE
   type: File
   inputBinding:
     prefix: --exclude-RG
-- id: positions
+- id: in_positions
   doc: skip unlisted positions (chr pos) or regions (BED)
   type: File
   inputBinding:
     prefix: --positions
-- id: min_mq
+- id: in_min_mq
   doc: skip alignments with mapQ smaller than INT [0]
   type: long
   inputBinding:
     prefix: --min-MQ
-- id: min_bq
+- id: in_min_bq
   doc: skip bases with baseQ/BAQ smaller than INT [13]
   type: long
   inputBinding:
     prefix: --min-BQ
-- id: region
+- id: in_region
   doc: region in which pileup is generated
   type: string
   inputBinding:
     prefix: --region
-- id: ignore_rg
+- id: in_ignore_rg
   doc: ignore RG tags (one BAM = one sample)
   type: boolean
   inputBinding:
     prefix: --ignore-RG
-- id: incl_flags
+- id: in_incl_flags
   doc: '|INT  required flags: skip reads with mask bits unset []'
-  type: string
+  type: long
   inputBinding:
     prefix: --incl-flags
-- id: excl_flags
-  doc: '|INT  filter flags: skip reads with mask bits set [UNMAP,SECONDARY,QCFAIL,DUP]'
-  type: string
+- id: in_excl_flags
+  doc: "|INT  filter flags: skip reads with mask bits set\n[UNMAP,SECONDARY,QCFAIL,DUP]"
+  type: long
   inputBinding:
     prefix: --excl-flags
-- id: ignore_overlaps
+- id: in_ignore_overlaps
   doc: disable read-pair overlap detection
   type: boolean
   inputBinding:
     prefix: --ignore-overlaps
-- id: output
+- id: in_output
   doc: write output to FILE [standard output]
   type: File
   inputBinding:
     prefix: --output
-- id: output_bp
+- id: in_output_bp
   doc: output base positions on reads
   type: boolean
   inputBinding:
     prefix: --output-BP
-- id: output_mq
+- id: in_output_mq
   doc: output mapping quality
   type: boolean
   inputBinding:
     prefix: --output-MQ
-- id: output_qname
+- id: in_output_qname
   doc: output read names
   type: boolean
   inputBinding:
     prefix: --output-QNAME
-- id: reference
+- id: in_input_fmt_option
+  doc: "[=VAL]\nSpecify a single input file format option in the form\nof OPTION or\
+    \ OPTION=VALUE"
+  type: File
+  inputBinding:
+    prefix: --input-fmt-option
+- id: in_reference
   doc: Reference sequence FASTA FILE [null]
   type: File
   inputBinding:
     prefix: --reference
-- id: sam_tools
+- id: in_sam_tools
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: m_pile_up
+- id: in_m_pile_up
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: in_one_dot_bam
+- id: in_in_one_dot_bam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: write output to FILE [standard output]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - flye-samtools

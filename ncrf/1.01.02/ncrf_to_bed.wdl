@@ -1,7 +1,10 @@
 version 1.0
 
-task NcrfToBed.py {
+task NcrfToBed {
   command <<<
-    ncrf_to_bed.py
+    ncrf_to_bed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

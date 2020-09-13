@@ -1,108 +1,106 @@
 class: CommandLineTool
 id: ../../../AdjList.cwl
 inputs:
-- id: length_when_set
-  doc: the length of a k-mer (when -K is not set) or the span of a k-mer pair (when
-    -K is set)
-  type: string
+- id: in_length_kmer_when
+  doc: "the length of a k-mer (when -K is not set)\nor the span of a k-mer pair (when\
+    \ -K is set)"
+  type: long
   inputBinding:
     prefix: --kmer
-- id: single_km_er
+- id: in_single_km_er
   doc: the length of a single k-mer in a k-mer pair
-  type: string
+  type: long
   inputBinding:
     prefix: --single-kmer
-- id: min_overlap
+- id: in_min_overlap
   doc: require a minimum overlap of M bases [50]
-  type: string
+  type: long
   inputBinding:
     prefix: --min-overlap
-- id: adj
+- id: in_adj
   doc: output the graph in ADJ format [default]
   type: boolean
   inputBinding:
     prefix: --adj
-- id: as_qg
+- id: in_as_qg
   doc: output the graph in ASQG format
   type: boolean
   inputBinding:
     prefix: --asqg
-- id: dot
+- id: in_dot
   doc: output the graph in GraphViz format
   type: boolean
   inputBinding:
     prefix: --dot
-- id: gfa
+- id: in_gfa
   doc: output the graph in GFA1 format
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: gfa_one
+- id: in_gfa_one
   doc: output the graph in GFA1 format
   type: boolean
   inputBinding:
     prefix: --gfa1
-- id: gfa_two
+- id: in_gfa_two
   doc: output the graph in GFA2 format
   type: boolean
   inputBinding:
     prefix: --gfa2
-- id: gv
+- id: in_gv
   doc: output the graph in GraphViz format
   type: boolean
   inputBinding:
     prefix: --gv
-- id: sam
+- id: in_sam
   doc: output the graph in SAM format
   type: boolean
   inputBinding:
     prefix: --sam
-- id: ss
+- id: in_ss
   doc: expect contigs to be oriented correctly
   type: boolean
   inputBinding:
     prefix: --SS
-- id: no_ss
+- id: in_no_ss
   doc: no assumption about contig orientation
   type: boolean
   inputBinding:
     prefix: --no-SS
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: db
+- id: in_db
   doc: specify path of database repository in FILE
   type: File
   inputBinding:
     prefix: --db
-- id: library
+- id: in_library
   doc: specify library NAME for database
   type: string
   inputBinding:
     prefix: --library
-- id: strain
+- id: in_strain
   doc: specify strain NAME for database
   type: string
   inputBinding:
     prefix: --strain
-- id: species
+- id: in_species
   doc: specify species NAME for database
   type: string
   inputBinding:
     prefix: --species
-- id: var_18
+- id: in_var_18
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - AdjList

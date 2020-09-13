@@ -26,13 +26,13 @@ task Svtyper {
       ~{if defined(lib_info) then ("--lib_info " +  '"' + lib_info + '"') else ""} \
       ~{if defined(min_aligned) then ("--min_aligned " +  '"' + min_aligned + '"') else ""} \
       ~{if defined(number_reads_sample) then ("-n " +  '"' + number_reads_sample + '"') else ""} \
-      ~{true="--sum_quals" false="" sum_quals} \
+      ~{if (sum_quals) then "--sum_quals" else ""} \
       ~{if defined(max_reads) then ("--max_reads " +  '"' + max_reads + '"') else ""} \
       ~{if defined(max_ci_dist) then ("--max_ci_dist " +  '"' + max_ci_dist + '"') else ""} \
       ~{if defined(split_weight) then ("--split_weight " +  '"' + split_weight + '"') else ""} \
       ~{if defined(disc_weight) then ("--disc_weight " +  '"' + disc_weight + '"') else ""} \
       ~{if defined(write_alignment) then ("--write_alignment " +  '"' + write_alignment + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     input_vcf: "VCF input (default: stdin)"
@@ -49,5 +49,8 @@ task Svtyper {
     disc_weight: "weight for discordant paired-end reads [1]"
     write_alignment: "write relevant reads to BAM file"
     verbose: "Report status updates"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

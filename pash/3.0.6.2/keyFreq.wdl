@@ -2,16 +2,20 @@ version 1.0
 
 task KeyFreq {
   input {
-    String? o
-    String? p
+    Int? p
+    File? o
   }
   command <<<
     keyFreq \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
-    o: ""
     p: ""
+    o: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_o = "${in_o}"
   }
 }

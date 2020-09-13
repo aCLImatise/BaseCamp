@@ -1,29 +1,10 @@
 version 1.0
 
-task DeterminePhred {
-  input {
-    String no
-    String such
-    File file
-    String or
-    Directory directory
-    String at
-  }
+task Determinephred {
   command <<<
-    determine-phred \
-      ~{no} \
-      ~{such} \
-      ~{file} \
-      ~{or} \
-      ~{directory} \
-      ~{at}
+    determine_phred
   >>>
-  parameter_meta {
-    no: ""
-    such: ""
-    file: ""
-    or: ""
-    directory: ""
-    at: ""
+  output {
+    File out_stdout = stdout()
   }
 }

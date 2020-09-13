@@ -4,4 +4,7 @@ task Benchmark2ca {
   command <<<
     benchmark2ca
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

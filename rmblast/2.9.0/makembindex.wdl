@@ -4,4 +4,7 @@ task Makembindex {
   command <<<
     makembindex
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../prophex_bwt2fa.cwl
 inputs:
-- id: idx_base
+- id: in_idx_base
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_dot_fa
+- id: in_output_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - prophex

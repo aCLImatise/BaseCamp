@@ -1,6 +1,6 @@
 version 1.0
 
-task SsuPrep {
+task Ssuprep {
   input {
     Boolean? force_dir_named
     Boolean? third_command_line
@@ -8,11 +8,11 @@ task SsuPrep {
     Boolean? no_bash
     Boolean? no_merge
     Boolean? keep_merge
-    String? use_file_f
-    String? set_bit_score
-    String? set_minimum_length
+    File? use_cm_file
+    Int? set_bit_score
+    Int? set_minimum_length
     Boolean? output_alignments_interleaved
-    String? only_search_align
+    File? only_search_align
     Boolean? dna
     Boolean? rf_only
     Boolean? no_align
@@ -21,46 +21,50 @@ task SsuPrep {
     Boolean? forward
     Boolean? global
     Boolean? keep_int
-    String? aln_one
+    File? aln_one
     Boolean? no_trunc
     Boolean? no_prob
-    String? mx_size
+    Int? mx_size
     Boolean? options
+    Boolean? y
+    Boolean? x
     String seq_file
     String output_dir
-    String num_jobs
-    String prefix_slash_suffix_file
+    Int num_jobs
+    File prefix_slash_suffix_file
   }
   command <<<
-    ssu-prep \
+    ssu_prep \
       ~{seq_file} \
       ~{output_dir} \
       ~{num_jobs} \
       ~{prefix_slash_suffix_file} \
-      ~{true="-f" false="" force_dir_named} \
-      ~{true="-q" false="" third_command_line} \
-      ~{true="-e" false="" split_seqs_job} \
-      ~{true="--no-bash" false="" no_bash} \
-      ~{true="--no-merge" false="" no_merge} \
-      ~{true="--keep-merge" false="" keep_merge} \
-      ~{if defined(use_file_f) then ("-m " +  '"' + use_file_f + '"') else ""} \
+      ~{if (force_dir_named) then "-f" else ""} \
+      ~{if (third_command_line) then "-q" else ""} \
+      ~{if (split_seqs_job) then "-e" else ""} \
+      ~{if (no_bash) then "--no-bash" else ""} \
+      ~{if (no_merge) then "--no-merge" else ""} \
+      ~{if (keep_merge) then "--keep-merge" else ""} \
+      ~{if defined(use_cm_file) then ("-m " +  '"' + use_cm_file + '"') else ""} \
       ~{if defined(set_bit_score) then ("-b " +  '"' + set_bit_score + '"') else ""} \
       ~{if defined(set_minimum_length) then ("-l " +  '"' + set_minimum_length + '"') else ""} \
-      ~{true="-i" false="" output_alignments_interleaved} \
+      ~{if (output_alignments_interleaved) then "-i" else ""} \
       ~{if defined(only_search_align) then ("-n " +  '"' + only_search_align + '"') else ""} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rfonly" false="" rf_only} \
-      ~{true="--no-align" false="" no_align} \
-      ~{true="--no-search" false="" no_search} \
-      ~{true="--toponly" false="" top_only} \
-      ~{true="--forward" false="" forward} \
-      ~{true="--global" false="" global} \
-      ~{true="--keep-int" false="" keep_int} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rf_only) then "--rfonly" else ""} \
+      ~{if (no_align) then "--no-align" else ""} \
+      ~{if (no_search) then "--no-search" else ""} \
+      ~{if (top_only) then "--toponly" else ""} \
+      ~{if (forward) then "--forward" else ""} \
+      ~{if (global) then "--global" else ""} \
+      ~{if (keep_int) then "--keep-int" else ""} \
       ~{if defined(aln_one) then ("--aln-one " +  '"' + aln_one + '"') else ""} \
-      ~{true="--no-trunc" false="" no_trunc} \
-      ~{true="--no-prob" false="" no_prob} \
+      ~{if (no_trunc) then "--no-trunc" else ""} \
+      ~{if (no_prob) then "--no-prob" else ""} \
       ~{if defined(mx_size) then ("--mxsize " +  '"' + mx_size + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""} \
+      ~{if (y) then "-y" else ""} \
+      ~{if (x) then "-x" else ""}
   >>>
   parameter_meta {
     force_dir_named: ": force; if dir named <output dir> already exists, empty it first"
@@ -69,13 +73,13 @@ task SsuPrep {
     no_bash: ": write generic shell script instead of a bash-specific one"
     no_merge: ": do not have final ssu-align job automatically merge all jobs"
     keep_merge: ": have final ssu-align job not remove small files as they are merged"
-    use_file_f: ": use CM file <f> instead of the default CM file"
+    use_cm_file: ": use CM file <f> instead of the default CM file"
     set_bit_score: ": set minimum bit score of a surviving subsequence as <x> [default: 50]"
     set_minimum_length: ": set minimum length    of a surviving subsequence as <n> [default: 1]"
     output_alignments_interleaved: ": output alignments in interleaved Stockholm format (not 1 line/seq)"
-    only_search_align: ": only search with and align to single CM named <s> in CM file (default CM file includes 'archaea', 'bacteria', 'eukarya')"
+    only_search_align: ": only search with and align to single CM named <s> in CM file\\n(default CM file includes 'archaea', 'bacteria', 'eukarya')"
     dna: ": output alignments as DNA, default is RNA (even if input is DNA)"
-    rf_only: ": discard inserts, only keep consensus (nongap RF) columns in alignments (alignments will be fixed width but won't include all target nucleotides)"
+    rf_only: ": discard inserts, only keep consensus (nongap RF) columns in alignments\\n(alignments will be fixed width but won't include all target nucleotides)"
     no_align: ": only search target sequence file for hits, skip alignment step"
     no_search: ": only align  target sequence file, skip initial search step"
     top_only: ": only search the top strand [default: search both strands]"
@@ -87,9 +91,14 @@ task SsuPrep {
     no_prob: ": do not append posterior probabilities to alignments"
     mx_size: ": increase mx size for cmalign to <f> Mb [default: 4096]"
     options: ""
+    y: ""
+    x: ""
     seq_file: ""
     output_dir: ""
     num_jobs: ""
     prefix_slash_suffix_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

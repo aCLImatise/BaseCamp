@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../clinvar_tsv_main.cwl
 inputs:
-- id: b_three_seven_path
+- id: in_b_three_seven_path
   doc: Path to GRCh37 FAI-indexed FASTA file.
-  type: string
+  type: long
   inputBinding:
     prefix: --b37-path
-- id: b_three_eight_path
+- id: in_b_three_eight_path
   doc: Path to GRCh38 FAI-indexed FASTA file.
-  type: string
+  type: long
   inputBinding:
     prefix: --b38-path
-- id: work_dir
+- id: in_work_dir
   doc: Path to working directory
-  type: string
+  type: File
   inputBinding:
     prefix: --work-dir
-- id: cores
+- id: in_cores
   doc: Number of cores to use
-  type: string
+  type: long
   inputBinding:
     prefix: --cores
-- id: debug
+- id: in_debug
   doc: Enables debugging helps
   type: boolean
   inputBinding:
     prefix: --debug
-- id: clin_var_tsv
+- id: in_clin_var_tsv
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: main
+- id: in_main
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - clinvar_tsv

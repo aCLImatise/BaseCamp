@@ -1,67 +1,75 @@
 class: CommandLineTool
 id: ../../../muscle.cwl
 inputs:
-- id: in
+- id: in_in
   doc: Input file in FASTA format (default stdin)
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: Output alignment in FASTA format (default stdout)
-  type: string
+  type: File
   inputBinding:
     prefix: -out
-- id: diags
+- id: in_diags
   doc: Find diagonals (faster for similar sequences)
   type: boolean
   inputBinding:
     prefix: -diags
-- id: maxiter_s
+- id: in_maxiter_s
   doc: Maximum number of iterations (integer, default 16)
-  type: string
+  type: long
   inputBinding:
     prefix: -maxiters
-- id: max_hours
+- id: in_max_hours
   doc: Maximum time to iterate in hours (default no limit)
   type: string
   inputBinding:
     prefix: -maxhours
-- id: html
+- id: in_html
   doc: Write output in HTML format (default FASTA)
   type: boolean
   inputBinding:
     prefix: -html
-- id: msf
+- id: in_msf
   doc: Write output in GCG MSF format (default FASTA)
   type: boolean
   inputBinding:
     prefix: -msf
-- id: clw
+- id: in_clw
   doc: Write output in CLUSTALW format (default FASTA)
   type: boolean
   inputBinding:
     prefix: -clw
-- id: cl_wstrict
+- id: in_cl_wstrict
   doc: As -clw, with 'CLUSTAL W (1.81)' header
   type: boolean
   inputBinding:
     prefix: -clwstrict
-- id: log
+- id: in_log
   doc: '[a] <logfile>  Log to file (append if -loga, overwrite if -log)'
   type: boolean
   inputBinding:
     prefix: -log
-- id: quiet
+- id: in_quiet
   doc: Do not write progress messages to stderr
   type: boolean
   inputBinding:
     prefix: -quiet
-- id: version
+- id: in_version
   doc: Display version information and exit
   type: boolean
   inputBinding:
     prefix: -version
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: Output alignment in FASTA format (default stdout)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - muscle

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../cent_adjust.cwl
 inputs:
-- id: input_center
+- id: in_input_center
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_data_file
+- id: in_input_data_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cent_adjust

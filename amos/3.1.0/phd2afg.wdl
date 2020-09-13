@@ -2,7 +2,7 @@ version 1.0
 
 task Phd2afg {
   input {
-    String? directory_where_located
+    Directory? directory_where_located
     File? name_output_file
     File? optional_file_containing_coordinates
     File? optional_file_containing_info
@@ -19,5 +19,9 @@ task Phd2afg {
     name_output_file: "name of the output file"
     optional_file_containing_coordinates: "optional: file containing clipping coordinates"
     optional_file_containing_info: "optional: file containing mate-pair info in Bambus .mates format"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_name_output_file = "${in_name_output_file}"
   }
 }

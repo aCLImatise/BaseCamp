@@ -1,7 +1,10 @@
 version 1.0
 
-task FindMangoHome {
+task Findmangohome {
   command <<<
-    find-mango-home
+    find_mango_home
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

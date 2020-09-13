@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- agg
+- ingest1
 positional:
 - !Positional
   description: ''
@@ -28,18 +31,17 @@ named:
   - --ignore-non-matching-ref
   args: !EmptyFlagArg {}
   optional: true
-command:
-- agg
-- ingest1
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - agg
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - agg
+    - ingest2
     positional:
     - !Positional
       description: ''
@@ -70,11 +72,9 @@ parent: &id002 !Command
       - --list
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - agg
-    - ingest2
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -85,7 +85,11 @@ parent: &id002 !Command
       \    number of compression threads [0]\n    -l, --list   files.txt         \
       \    plain text file listing agg chunks to merge]\n\n\n"
     generated_using: &id003 []
+  - *id002
   - !Command
+    command:
+    - agg
+    - genotype
     positional:
     - !Positional
       description: ''
@@ -122,11 +126,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - agg
-    - genotype
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -140,6 +142,9 @@ parent: &id002 !Command
     generated_using:
     - --help
   - !Command
+    command:
+    - agg
+    - anno
     positional:
     - !Positional
       description: ''
@@ -148,14 +153,14 @@ parent: &id002 !Command
       optional: false
     named:
     - !Flag
-      description: "filters to apply eg. -i 'QUAL>=10 && DP<100000 && HWE<10' "
+      description: filters to apply eg. -i 'QUAL>=10 && DP<100000 && HWE<10'
       synonyms:
       - -i
       - --include
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'a set of variants that are trusted (eg. 1000G) '
+      description: a set of variants that are trusted (eg. 1000G)
       synonyms:
       - -R
       - --regions
@@ -178,11 +183,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: b|u|z|v
       optional: true
-    command:
-    - agg
-    - anno
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -193,6 +196,7 @@ parent: &id002 !Command
       \       b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed\n\
       \n"
     generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -205,6 +209,7 @@ parent: &id002 !Command
     \ some QC metrics\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

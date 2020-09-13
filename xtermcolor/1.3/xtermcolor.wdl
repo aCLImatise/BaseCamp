@@ -12,6 +12,9 @@ task Xtermcolor {
   >>>
   parameter_meta {
     color: "Color to convert"
-    compat: "Compatibility mode. Defaults to xterm."
+    compat: "Compatibility mode. Defaults to xterm.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

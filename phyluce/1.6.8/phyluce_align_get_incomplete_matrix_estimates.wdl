@@ -24,6 +24,9 @@ task PhyluceAlignGetIncompleteMatrixEstimates {
     max: "The maximum of the range to evaluate"
     step: "The step of the range to evaluate"
     exclude: "Taxa to exclude"
-    include: "Taxa to include"
+    include: "Taxa to include\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

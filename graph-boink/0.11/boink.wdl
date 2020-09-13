@@ -4,4 +4,7 @@ task Boink {
   command <<<
     boink
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

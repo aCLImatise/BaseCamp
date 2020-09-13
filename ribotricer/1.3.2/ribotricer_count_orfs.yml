@@ -1,17 +1,20 @@
-&id001 !Command
+&id003 !Command
+command:
+- ribotricer
+- count-orfs
 positional: []
 named:
 - !Flag
-  description: Path to the index file of ribotricer This file should be generated
-    using ribotricer prepare-orfs [required]
+  description: "Path to the index file of ribotricer This file\nshould be generated\
+    \ using ribotricer prepare-orfs\n[required]"
   synonyms:
   - --ribotricer_index
   args: !SimpleFlagArg
     name: TEXT
   optional: true
 - !Flag
-  description: Path to the detected orfs file This file should be generated using
-    ribotricer detect-orfs  [required]
+  description: "Path to the detected orfs file This file should be\ngenerated using\
+    \ ribotricer detect-orfs  [required]"
   synonyms:
   - --detected_orfs
   args: !SimpleFlagArg
@@ -32,73 +35,76 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Whether output all ORFs including those non- translating ones
+  description: "Whether output all ORFs including those non-\ntranslating ones"
   synonyms:
   - --report_all
   args: !EmptyFlagArg {}
   optional: true
-command:
-- ribotricer
-- count-orfs
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - ribotricer
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - ribotricer
+    - prepare-orfs
     positional: []
     named:
     - !Flag
-      description: Path to the index file of ribotricer This file should be generated
-        using ribotricer prepare-orfs  [required]
+      description: Path to GTF file  [required]
       synonyms:
-      - --ribotricer_index
+      - --gtf
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: Path to the detected orfs file This file should be generated using
-        ribotricer detect- orfs  [required]
+      description: Path to FASTA file  [required]
       synonyms:
-      - --detected_orfs
+      - --fasta
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: ORF types separated with comma  [required]
-      synonyms:
-      - --features
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Path to ORF seq file  [required]
-      synonyms:
-      - --ribotricer_index_fasta
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Prefix for output files  [required]
+      description: Prefix to output file  [required]
       synonyms:
       - --prefix
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: Whether output all ORFs including those non- translating ones
+      description: "The minimum length (nts) of ORF to include\n[default: 60]"
       synonyms:
-      - --report_all
+      - --min_orf_length
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Comma separated list of start codons  [default:\nATG]"
+      synonyms:
+      - --start_codons
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Comma separated list of stop codons  [default:\nTAG,TAA,TGA]"
+      synonyms:
+      - --stop_codons
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Choose the most upstream start codon if multiple\nin frame ones\
+        \ exist"
+      synonyms:
+      - --longest
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ribotricer
-    - count-orfs-codon
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -108,23 +114,29 @@ parent: &id002 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "Usage: ribotricer count-orfs-codon [OPTIONS]\n\n  Count reads for\
-      \ detected ORFs at codon level\n\nOptions:\n  --ribotricer_index TEXT      \
-      \  Path to the index file of ribotricer This\n                             \
-      \    file should be generated using ribotricer\n                           \
-      \      prepare-orfs  [required]\n\n  --detected_orfs TEXT           Path to\
-      \ the detected orfs file This file\n                                 should\
-      \ be generated using ribotricer detect-\n                                 orfs\
-      \  [required]\n\n  --features TEXT                ORF types separated with comma\
-      \  [required]\n  --ribotricer_index_fasta TEXT  Path to ORF seq file  [required]\n\
-      \  --prefix TEXT                  Prefix for output files  [required]\n  --report_all\
-      \                   Whether output all ORFs including those non-\n         \
-      \                        translating ones\n\n  -h, --help                  \
-      \   Show this message and exit.\n"
-    generated_using: &id003
+    help_text: "Usage: ribotricer prepare-orfs [OPTIONS]\n\n  Extract candidate ORFS\
+      \ based on GTF and FASTA files\n\nOptions:\n  --gtf TEXT                Path\
+      \ to GTF file  [required]\n  --fasta TEXT              Path to FASTA file  [required]\n\
+      \  --prefix TEXT             Prefix to output file  [required]\n  --min_orf_length\
+      \ INTEGER  The minimum length (nts) of ORF to include\n                    \
+      \        [default: 60]\n\n  --start_codons TEXT       Comma separated list of\
+      \ start codons  [default:\n                            ATG]\n\n  --stop_codons\
+      \ TEXT        Comma separated list of stop codons  [default:\n             \
+      \               TAG,TAA,TGA]\n\n  --longest                 Choose the most\
+      \ upstream start codon if multiple\n                            in frame ones\
+      \ exist\n\n  -h, --help                Show this message and exit.\n"
+    generated_using: &id002
     - --help
   - !Command
-    positional: []
+    command:
+    - ribotricer
+    - detect-orfs
+    positional:
+    - !Positional
+      description: '[default: 0.428571428571]'
+      position: 0
+      name: translation
+      optional: false
     named:
     - !Flag
       description: Path to BAM file  [required]
@@ -134,8 +146,8 @@ parent: &id002 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: Path to the index file of ribotricer This file should be generated
-        using ribotricer prepare-orfs  [required]
+      description: "Path to the index file of ribotricer This\nfile should be generated\
+        \ using ribotricer\nprepare-orfs  [required]"
       synonyms:
       - --ribotricer_index
       args: !SimpleFlagArg
@@ -149,80 +161,78 @@ parent: &id002 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: '[yes|no|reverse]     whether the data is from a strand-specific
-        assay If not provided, the experimental protocol will be automatically inferred'
+      description: "[yes|no|reverse]     whether the data is from a strand-specific\n\
+        assay If not provided, the experimental\nprotocol will be automatically inferred"
       synonyms:
       - --stranded
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Comma separated read lengths to be used, such as 28,29,30 If not
-        provided, it will be automatically determined by assessing the metagene periodicity
+      description: "Comma separated read lengths to be used,\nsuch as 28,29,30 If\
+        \ not provided, it will be\nautomatically determined by assessing the\nmetagene\
+        \ periodicity"
       synonyms:
       - --read_lengths
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: Comma separated P-site offsets for each read length matching the
-        read lengths provided. If not provided, reads from different read lengths
-        will be automatically aligned using cross-correlation
+      description: "Comma separated P-site offsets for each read\nlength matching\
+        \ the read lengths provided.\nIf not provided, reads from different read\n\
+        lengths will be automatically aligned using\ncross-correlation"
       synonyms:
       - --psite_offsets
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: 'Phase score cutoff for determining active translation  [default:
-        0.428571428571]'
+      description: Phase score cutoff for determining active
       synonyms:
       - --phase_score_cutoff
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Minimum number of codons with non-zero reads for determining active
-        translation [default: 5]'
+      description: "Minimum number of codons with non-zero reads\nfor determining\
+        \ active translation\n[default: 5]"
       synonyms:
       - --min_valid_codons
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: 'Minimum number of reads per codon for determining active translation  [default:
-        0]'
+      description: "Minimum number of reads per codon for\ndetermining active translation\
+        \  [default: 0]"
       synonyms:
       - --min_reads_per_codon
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: 'Minimum ratio of codons with non-zero reads to total codons for
-        determining active translation  [default: 0]'
+      description: "Minimum ratio of codons with non-zero reads\nto total codons for\
+        \ determining active\ntranslation  [default: 0]"
       synonyms:
       - --min_valid_codons_ratio
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Minimum read density (total_reads/length) over an ORF total codons
-        for determining active translation  [default: 0.0]'
+      description: "Minimum read density (total_reads/length)\nover an ORF total codons\
+        \ for determining\nactive translation  [default: 0.0]"
       synonyms:
       - --min_read_density
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
     - !Flag
-      description: Whether output all ORFs including those non- translating ones
+      description: "Whether output all ORFs including those non-\ntranslating ones"
       synonyms:
       - --report_all
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ribotricer
-    - detect-orfs
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -265,41 +275,161 @@ parent: &id002 !Command
       \                    Whether output all ORFs including those non-\n        \
       \                          translating ones\n\n  -h, --help                \
       \      Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id002
+  - *id003
   - !Command
+    command:
+    - ribotricer
+    - count-orfs-codon
     positional: []
     named:
     - !Flag
-      description: Path(s) to Ribo-seq BAM file separated by comma
+      description: "Path to the index file of ribotricer This\nfile should be generated\
+        \ using ribotricer\nprepare-orfs  [required]"
+      synonyms:
+      - --ribotricer_index
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Path to the detected orfs file This file\nshould be generated\
+        \ using ribotricer detect-\norfs  [required]"
+      synonyms:
+      - --detected_orfs
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: ORF types separated with comma  [required]
+      synonyms:
+      - --features
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Path to ORF seq file  [required]
+      synonyms:
+      - --ribotricer_index_fasta
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Prefix for output files  [required]
+      synonyms:
+      - --prefix
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Whether output all ORFs including those non-\ntranslating ones"
+      synonyms:
+      - --report_all
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: ribotricer count-orfs-codon [OPTIONS]\n\n  Count reads for\
+      \ detected ORFs at codon level\n\nOptions:\n  --ribotricer_index TEXT      \
+      \  Path to the index file of ribotricer This\n                             \
+      \    file should be generated using ribotricer\n                           \
+      \      prepare-orfs  [required]\n\n  --detected_orfs TEXT           Path to\
+      \ the detected orfs file This file\n                                 should\
+      \ be generated using ribotricer detect-\n                                 orfs\
+      \  [required]\n\n  --features TEXT                ORF types separated with comma\
+      \  [required]\n  --ribotricer_index_fasta TEXT  Path to ORF seq file  [required]\n\
+      \  --prefix TEXT                  Prefix for output files  [required]\n  --report_all\
+      \                   Whether output all ORFs including those non-\n         \
+      \                        translating ones\n\n  -h, --help                  \
+      \   Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - ribotricer
+    - orfs-seq
+    positional: []
+    named:
+    - !Flag
+      description: "Path to the index file of ribotricer This file\nshould be generated\
+        \ using ribotricer prepare-orfs\n[required]"
+      synonyms:
+      - --ribotricer_index
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Path to FASTA file  [required]
+      synonyms:
+      - --fasta
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Output protein sequence instead of nucleotide
+      synonyms:
+      - --protein
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Path to output file  [required]
+      synonyms:
+      - --saveto
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: ribotricer orfs-seq [OPTIONS]\n\n  Generate sequence for ORFs\
+      \ in ribotricer's index\n\nOptions:\n  --ribotricer_index TEXT  Path to the\
+      \ index file of ribotricer This file\n                           should be generated\
+      \ using ribotricer prepare-orfs\n                           [required]\n\n \
+      \ --fasta TEXT             Path to FASTA file  [required]\n  --protein     \
+      \           Output protein sequence instead of nucleotide\n  --saveto TEXT \
+      \           Path to output file  [required]\n  -h, --help               Show\
+      \ this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - ribotricer
+    - learn-cutoff
+    positional: []
+    named:
+    - !Flag
+      description: Path(s) to Ribo-seq BAM file separated by
       synonyms:
       - --ribo_bams
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: Path(s) to RNA-seq BAM file separated by comma
-      synonyms:
-      - --rna_bams
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Path(s) to Ribo-seq *_translating_ORFs.tsv file separated by comma
-      synonyms:
-      - --ribo_tsvs
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Path(s) to RNA-seq *_translating_ORFs.tsv file separated by comma
+      description: "Path(s) to RNA-seq *_translating_ORFs.tsv\nfile separated by comma"
       synonyms:
       - --rna_tsvs
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: Path to the index file of ribotricer This file should be generated
-        using ribotricer prepare-orfs (required for BAM input)
+      description: "Path to the index file of ribotricer This\nfile should be generated\
+        \ using ribotricer\nprepare-orfs (required for BAM input)"
       synonyms:
       - --ribotricer_index
       args: !SimpleFlagArg
@@ -313,31 +443,31 @@ parent: &id002 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: 'transcript_type to filter regions by [default: protein_coding]'
+      description: "transcript_type to filter regions by\n[default: protein_coding]"
       synonyms:
       - --filter_by_tx_annotation
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: 'Phase score cutoff for determining active translation (required
-        for BAM input) [default: 0.428571428571]'
+      description: "Phase score cutoff for determining active\ntranslation (required\
+        \ for BAM input)\n[default: 0.428571428571]"
       synonyms:
       - --phase_score_cutoff
       args: !SimpleFlagArg
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Minimum number of codons with non-zero reads for determining active
-        translation (required for BAM input)  [default: 5]'
+      description: "Minimum number of codons with non-zero reads\nfor determining\
+        \ active translation (required\nfor BAM input)  [default: 5]"
       synonyms:
       - --min_valid_codons
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: 'Number of protein coding regions to sample per bootstrap  [default:
-        0.33]'
+      description: "Number of protein coding regions to sample\nper bootstrap  [default:\
+        \ 0.33]"
       synonyms:
       - --sampling_ratio
       args: !SimpleFlagArg
@@ -350,11 +480,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
-    command:
-    - ribotricer
-    - learn-cutoff
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -388,139 +516,8 @@ parent: &id002 !Command
       \          per bootstrap  [default: 0.33]\n\n  --n_bootstraps INTEGER      \
       \    Number of bootstraps  [default: 20000]\n  -h, --help                  \
       \    Show this message and exit.\n"
-    generated_using: *id003
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to the index file of ribotricer This file should be generated
-        using ribotricer prepare-orfs [required]
-      synonyms:
-      - --ribotricer_index
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Path to FASTA file  [required]
-      synonyms:
-      - --fasta
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Output protein sequence instead of nucleotide
-      synonyms:
-      - --protein
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Path to output file  [required]
-      synonyms:
-      - --saveto
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    command:
-    - ribotricer
-    - orfs-seq
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Usage: ribotricer orfs-seq [OPTIONS]\n\n  Generate sequence for ORFs\
-      \ in ribotricer's index\n\nOptions:\n  --ribotricer_index TEXT  Path to the\
-      \ index file of ribotricer This file\n                           should be generated\
-      \ using ribotricer prepare-orfs\n                           [required]\n\n \
-      \ --fasta TEXT             Path to FASTA file  [required]\n  --protein     \
-      \           Output protein sequence instead of nucleotide\n  --saveto TEXT \
-      \           Path to output file  [required]\n  -h, --help               Show\
-      \ this message and exit.\n"
-    generated_using: *id003
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to GTF file  [required]
-      synonyms:
-      - --gtf
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Path to FASTA file  [required]
-      synonyms:
-      - --fasta
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Prefix to output file  [required]
-      synonyms:
-      - --prefix
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: 'The minimum length (nts) of ORF to include [default: 60]'
-      synonyms:
-      - --min_orf_length
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: 'Comma separated list of start codons  [default: ATG]'
-      synonyms:
-      - --start_codons
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: 'Comma separated list of stop codons  [default: TAG,TAA,TGA]'
-      synonyms:
-      - --stop_codons
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Choose the most upstream start codon if multiple in frame ones
-        exist
-      synonyms:
-      - --longest
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - ribotricer
-    - prepare-orfs
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Usage: ribotricer prepare-orfs [OPTIONS]\n\n  Extract candidate ORFS\
-      \ based on GTF and FASTA files\n\nOptions:\n  --gtf TEXT                Path\
-      \ to GTF file  [required]\n  --fasta TEXT              Path to FASTA file  [required]\n\
-      \  --prefix TEXT             Prefix to output file  [required]\n  --min_orf_length\
-      \ INTEGER  The minimum length (nts) of ORF to include\n                    \
-      \        [default: 60]\n\n  --start_codons TEXT       Comma separated list of\
-      \ start codons  [default:\n                            ATG]\n\n  --stop_codons\
-      \ TEXT        Comma separated list of stop codons  [default:\n             \
-      \               TAG,TAA,TGA]\n\n  --longest                 Choose the most\
-      \ upstream start codon if multiple\n                            in frame ones\
-      \ exist\n\n  -h, --help                Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -542,8 +539,9 @@ parent: &id002 !Command
     \ ORFs from BAM file\n  learn-cutoff      Learn phase score cutoff from BAM/TSV\
     \ file\n  orfs-seq          Generate sequence for ORFs in ribotricer's index\n\
     \  prepare-orfs      Extract candidate ORFS based on GTF and FASTA files\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -563,4 +561,4 @@ help_text: "Usage: ribotricer count-orfs [OPTIONS]\n\n  Count reads for detected
   \  Path to output file  [required]\n  --report_all             Whether output all\
   \ ORFs including those non-\n                           translating ones\n\n  -h,\
   \ --help               Show this message and exit.\n"
-generated_using: *id003
+generated_using: *id002

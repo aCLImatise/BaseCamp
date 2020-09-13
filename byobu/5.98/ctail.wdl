@@ -4,4 +4,7 @@ task Ctail {
   command <<<
     ctail
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

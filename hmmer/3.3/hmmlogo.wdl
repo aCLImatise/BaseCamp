@@ -11,10 +11,10 @@ task Hmmlogo {
   command <<<
     hmmlogo \
       ~{hmm_file} \
-      ~{true="--height_relent_all" false="" height_relent_all} \
-      ~{true="--height_relent_abovebg" false="" height_relent_above_bg} \
-      ~{true="--height_score" false="" height_score} \
-      ~{true="--no_indel" false="" no_in_del}
+      ~{if (height_relent_all) then "--height_relent_all" else ""} \
+      ~{if (height_relent_above_bg) then "--height_relent_abovebg" else ""} \
+      ~{if (height_score) then "--height_score" else ""} \
+      ~{if (no_in_del) then "--no_indel" else ""}
   >>>
   parameter_meta {
     height_relent_all: ": total height = relative entropy ; all letters shown (default)"
@@ -22,5 +22,8 @@ task Hmmlogo {
     height_score: ": total height = sums of (pos|neg) scores; residue height = score"
     no_in_del: ": don't provide indel rate values"
     hmm_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

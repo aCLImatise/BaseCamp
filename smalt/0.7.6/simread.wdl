@@ -4,4 +4,7 @@ task Simread {
   command <<<
     simread
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

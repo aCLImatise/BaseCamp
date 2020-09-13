@@ -1,4 +1,6 @@
 !Command
+command:
+- genomedata-load-seq
 positional:
 - !Positional
   description: genomedata archive
@@ -10,36 +12,34 @@ positional:
   position: 1
   name: seqfiles
   optional: false
+- !Positional
+  description: -s, --sizes           SEQFILE contains list of sizes instead of sequence
+  position: 0
+  name: sequence
+  optional: false
 named:
 - !Flag
-  description: SEQFILE contains assembly (AGP) files instead of sequence
+  description: SEQFILE contains assembly (AGP) files instead of
   synonyms:
   - -a
   - --assembly
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: SEQFILE contains list of sizes instead of sequence
-  synonyms:
-  - -s
-  - --sizes
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: If specified, the Genomedata archive will be implemented as a single
-    file, with a separate h5 group for each Chromosome. This is recommended if there
-    are a large number of Chromosomes. The default behavior is to use a single file
-    if there are at least 100 Chromosomes being added.
+  description: "If specified, the Genomedata archive will be\nimplemented as a single\
+    \ file, with a separate h5 group\nfor each Chromosome. This is recommended if\
+    \ there are\na large number of Chromosomes. The default behavior is\nto use a\
+    \ single file if there are at least 100\nChromosomes being added."
   synonyms:
   - -f
   - --file-mode
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: If specified, the Genomedata archive will be implemented as a directory,
-    with a separate file for each Chromosome. This is recommended if there are a small
-    number of Chromosomes. The default behavior is to use a directory if there are
-    fewer than 100 Chromosomes being added.
+  description: "If specified, the Genomedata archive will be\nimplemented as a directory,\
+    \ with a separate file for\neach Chromosome. This is recommended if there are\
+    \ a\nsmall number of Chromosomes. The default behavior is\nto use a directory\
+    \ if there are fewer than 100\nChromosomes being added."
   synonyms:
   - -d
   - --directory-mode
@@ -51,10 +51,15 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- genomedata-load-seq
+- !Flag
+  description: ''
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

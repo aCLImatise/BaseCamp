@@ -1,43 +1,51 @@
 class: CommandLineTool
 id: ../../../ntcard.cwl
 inputs:
-- id: threads
+- id: in_threads
   doc: use N parallel threads [1] (N>=2 should be used when input files are >=2)
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: km_er
-  doc: 'the length of kmer '
-  type: string
+- id: in_km_er
+  doc: the length of kmer
+  type: long
   inputBinding:
     prefix: --kmer
-- id: gap
+- id: in_gap
   doc: the length of gap in the gap seed [0]. g mod 2 must equal k mod 2 unless g
-    == 0 -g does not support multiple k currently.
-  type: string
+    == 0
+  type: long
   inputBinding:
     prefix: --gap
-- id: cov
+- id: in_cov
   doc: the maximum coverage of kmer in output [1000]
-  type: string
+  type: long
   inputBinding:
     prefix: --cov
-- id: pref
+- id: in_pref
   doc: the prefix for output file name(s)
-  type: string
+  type: File
   inputBinding:
     prefix: --pref
-- id: output
+- id: in_output
   doc: the name for output file name (used when output should be a single file)
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_pref
+  doc: the prefix for output file name(s)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_pref)
+- id: out_output
+  doc: the name for output file name (used when output should be a single file)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - ntcard

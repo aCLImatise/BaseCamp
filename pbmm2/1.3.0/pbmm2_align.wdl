@@ -7,13 +7,13 @@ task Pbmm2Align {
     Boolean? sort_memory
     Boolean? sort_threads
     Boolean? preset
-    Boolean? int_size_larger
-    Boolean? int_window_size
+    Boolean? int_kmer_size
+    Boolean? int_minimizer_window
     Boolean? no_km_er_compression
     Boolean? int_matching_score
     Boolean? int_mismatch_penalty
-    Boolean? int__zdrop_score
-    Boolean? int_zdrop_inversion_score
+    Boolean? int_zdrop_score
+    Boolean? int_zdrop_inversion
     Boolean? int_bandwidth_used
     Boolean? int_stop_enlongation
     Boolean? gap_open_one
@@ -21,8 +21,8 @@ task Pbmm2Align {
     Boolean? gap_extend_one
     Boolean? gap_extend_two
     Boolean? lj_min_ratio
-    Boolean? int_length_changes
-    Boolean? int_cost_noncanonical
+    Boolean? int_max_intron
+    Boolean? int_cost_gtag
     Boolean? no_splice_flank
     Boolean? sample
     Boolean? rg
@@ -42,67 +42,69 @@ task Pbmm2Align {
     Boolean? num_threads
     Boolean? log_level
     Boolean? log_file
+    String sub_read
     String iso_seq
     String unrolled
   }
   command <<<
     pbmm2 align \
+      ~{sub_read} \
       ~{iso_seq} \
       ~{unrolled} \
-      ~{true="--chunk-size" false="" chunk_size} \
-      ~{true="--sort" false="" sort} \
-      ~{true="--sort-memory" false="" sort_memory} \
-      ~{true="--sort-threads" false="" sort_threads} \
-      ~{true="--preset" false="" preset} \
-      ~{true="-k" false="" int_size_larger} \
-      ~{true="-w" false="" int_window_size} \
-      ~{true="--no-kmer-compression" false="" no_km_er_compression} \
-      ~{true="-A" false="" int_matching_score} \
-      ~{true="-B" false="" int_mismatch_penalty} \
-      ~{true="-z" false="" int__zdrop_score} \
-      ~{true="-Z" false="" int_zdrop_inversion_score} \
-      ~{true="-r" false="" int_bandwidth_used} \
-      ~{true="-g" false="" int_stop_enlongation} \
-      ~{true="--gap-open-1" false="" gap_open_one} \
-      ~{true="--gap-open-2" false="" gap_open_two} \
-      ~{true="--gap-extend-1" false="" gap_extend_one} \
-      ~{true="--gap-extend-2" false="" gap_extend_two} \
-      ~{true="--lj-min-ratio" false="" lj_min_ratio} \
-      ~{true="-G" false="" int_length_changes} \
-      ~{true="-C" false="" int_cost_noncanonical} \
-      ~{true="--no-splice-flank" false="" no_splice_flank} \
-      ~{true="--sample" false="" sample} \
-      ~{true="--rg" false="" rg} \
-      ~{true="--min-concordance-perc" false="" min_concordance_perc} \
-      ~{true="--min-id-perc" false="" min_id_perc} \
-      ~{true="--min-gap-comp-id-perc" false="" min_gap_comp_id_perc} \
-      ~{true="--min-length" false="" min_length} \
-      ~{true="--best-n" false="" best_n} \
-      ~{true="--strip" false="" strip} \
-      ~{true="--split-by-sample" false="" split_by_sample} \
-      ~{true="--unmapped" false="" unmapped} \
-      ~{true="--bam-index" false="" bam_index} \
-      ~{true="--median-filter" false="" median_filter} \
-      ~{true="--zmw" false="" z_mw} \
-      ~{true="--hqregion" false="" hq_region} \
-      ~{true="--collapse-homopolymers" false="" collapse_homopolymers} \
-      ~{true="--num-threads" false="" num_threads} \
-      ~{true="--log-level" false="" log_level} \
-      ~{true="--log-file" false="" log_file}
+      ~{if (chunk_size) then "--chunk-size" else ""} \
+      ~{if (sort) then "--sort" else ""} \
+      ~{if (sort_memory) then "--sort-memory" else ""} \
+      ~{if (sort_threads) then "--sort-threads" else ""} \
+      ~{if (preset) then "--preset" else ""} \
+      ~{if (int_kmer_size) then "-k" else ""} \
+      ~{if (int_minimizer_window) then "-w" else ""} \
+      ~{if (no_km_er_compression) then "--no-kmer-compression" else ""} \
+      ~{if (int_matching_score) then "-A" else ""} \
+      ~{if (int_mismatch_penalty) then "-B" else ""} \
+      ~{if (int_zdrop_score) then "-z" else ""} \
+      ~{if (int_zdrop_inversion) then "-Z" else ""} \
+      ~{if (int_bandwidth_used) then "-r" else ""} \
+      ~{if (int_stop_enlongation) then "-g" else ""} \
+      ~{if (gap_open_one) then "--gap-open-1" else ""} \
+      ~{if (gap_open_two) then "--gap-open-2" else ""} \
+      ~{if (gap_extend_one) then "--gap-extend-1" else ""} \
+      ~{if (gap_extend_two) then "--gap-extend-2" else ""} \
+      ~{if (lj_min_ratio) then "--lj-min-ratio" else ""} \
+      ~{if (int_max_intron) then "-G" else ""} \
+      ~{if (int_cost_gtag) then "-C" else ""} \
+      ~{if (no_splice_flank) then "--no-splice-flank" else ""} \
+      ~{if (sample) then "--sample" else ""} \
+      ~{if (rg) then "--rg" else ""} \
+      ~{if (min_concordance_perc) then "--min-concordance-perc" else ""} \
+      ~{if (min_id_perc) then "--min-id-perc" else ""} \
+      ~{if (min_gap_comp_id_perc) then "--min-gap-comp-id-perc" else ""} \
+      ~{if (min_length) then "--min-length" else ""} \
+      ~{if (best_n) then "--best-n" else ""} \
+      ~{if (strip) then "--strip" else ""} \
+      ~{if (split_by_sample) then "--split-by-sample" else ""} \
+      ~{if (unmapped) then "--unmapped" else ""} \
+      ~{if (bam_index) then "--bam-index" else ""} \
+      ~{if (median_filter) then "--median-filter" else ""} \
+      ~{if (z_mw) then "--zmw" else ""} \
+      ~{if (hq_region) then "--hqregion" else ""} \
+      ~{if (collapse_homopolymers) then "--collapse-homopolymers" else ""} \
+      ~{if (num_threads) then "--num-threads" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_file) then "--log-file" else ""}
   >>>
   parameter_meta {
     chunk_size: "INT    Process N records per chunk. [100]"
     sort: "Generate sorted BAM file."
     sort_memory: "STR    Memory per thread for sorting. [768M]"
     sort_threads: "INT    Number of threads used for sorting; 0 means 25% of -j, maximum 8. [0]"
-    preset: "STR    Set alignment mode. See below for preset parameter details. Valid choices: (SUBREAD, CCS, HIFI, ISOSEQ, UNROLLED). [SUBREAD]"
-    int_size_larger: "INT    k-mer size (no larger than 28). [-1]"
-    int_window_size: "INT    Minimizer window size. [-1]"
-    no_km_er_compression: "Disable homopolymer-compressed k-mer (compression is active for SUBREAD & UNROLLED presets)."
+    preset: "STR    Set alignment mode. See below for preset parameter details. Valid choices:\\n(SUBREAD, CCS, HIFI, ISOSEQ, UNROLLED). [SUBREAD]"
+    int_kmer_size: "INT    k-mer size (no larger than 28). [-1]"
+    int_minimizer_window: "INT    Minimizer window size. [-1]"
+    no_km_er_compression: "Disable homopolymer-compressed k-mer (compression is active for SUBREAD & UNROLLED\\npresets)."
     int_matching_score: "INT    Matching score. [-1]"
     int_mismatch_penalty: "INT    Mismatch penalty. [-1]"
-    int__zdrop_score: "INT    Z-drop score. [-1]"
-    int_zdrop_inversion_score: "INT    Z-drop inversion score. [-1]"
+    int_zdrop_score: "INT    Z-drop score. [-1]"
+    int_zdrop_inversion: "INT    Z-drop inversion score. [-1]"
     int_bandwidth_used: "INT    Bandwidth used in chaining and DP-based alignment. [-1]"
     int_stop_enlongation: "INT    Stop chain enlongation if there are no minimizers in N bp. [-1]"
     gap_open_one: "INT    Gap open penalty 1. [-1]"
@@ -110,11 +112,11 @@ task Pbmm2Align {
     gap_extend_one: "INT    Gap extension penalty 1. [-1]"
     gap_extend_two: "INT    Gap extension penalty 2. [-1]"
     lj_min_ratio: "FLOAT  Long join flank ratio. [-1]"
-    int_length_changes: "INT    Max intron length (changes -r). [-1]"
-    int_cost_noncanonical: "INT    Cost for a non-canonical GT-AG splicing (effective in ISOSEQ preset). [-1]"
+    int_max_intron: "INT    Max intron length (changes -r). [-1]"
+    int_cost_gtag: "INT    Cost for a non-canonical GT-AG splicing (effective in ISOSEQ preset). [-1]"
     no_splice_flank: "Do not prefer splice flanks GT-AG (effective in ISOSEQ preset)."
-    sample: "STR    Sample name for all read groups. Defaults, in order of precedence: SM field in input read group, biosample name, well sample name, \"UnnamedSample\"."
-    rg: "STR    Read group header line such as '@RG\tID:xyz\tSM:abc'. Only for FASTA/Q inputs."
+    sample: "STR    Sample name for all read groups. Defaults, in order of precedence: SM field in\\ninput read group, biosample name, well sample name, \\\"UnnamedSample\\\"."
+    rg: "STR    Read group header line such as '@RG\\tID:xyz\\tSM:abc'. Only for FASTA/Q inputs."
     min_concordance_perc: "FLOAT  Minimum alignment concordance in percent. [70]"
     min_id_perc: "FLOAT  Minimum sequence identity in percent. [0]"
     min_gap_comp_id_perc: "FLOAT  Minimum gap compressed sequence identity in percent. [0]"
@@ -126,12 +128,16 @@ task Pbmm2Align {
     bam_index: "STR    Generate index for sorted BAM output. Valid choices: (NONE, BAI, CSI). [BAI]"
     median_filter: "Pick one read per ZMW of median length."
     z_mw: "Process ZMW Reads, subreadset.xml input required (activates UNROLLED preset)."
-    hq_region: "Process HQ region of each ZMW, subreadset.xml input required (activates UNROLLED preset)."
+    hq_region: "Process HQ region of each ZMW, subreadset.xml input required (activates UNROLLED\\npreset)."
     collapse_homopolymers: "Collapse homopolymers in reads and reference."
     num_threads: "INT    Number of threads to use, 0 means autodetection. [0]"
     log_level: "STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]"
     log_file: "FILE   Log to a file, instead of stderr."
+    sub_read: ": -k 19 -w 10    -o 5 -O 56 -e 4 -E 1 -A 2 -B 5 -z 400 -Z 50  -r 2000   -L 0.5 -g 5000"
     iso_seq: ": -k 15 -w 5  -u -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r 200000 -L 0.5 -g 2000 -C 5 -G 200000"
     unrolled: ": -k 15 -w 15    -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r 2000   -L 0.5 -g 10000"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,26 +2,26 @@ version 1.0
 
 task Cmalign {
   input {
-    String? output_alignment_file
+    File? output_alignment_file
     Boolean? configure_cm_global
     Boolean? opt_acc
     Boolean? cy_k
     Boolean? sample
-    String? seed
+    Int? seed
     Boolean? not_run_c
     Boolean? sub
     Boolean? h_banded
-    String? tau
-    String? mx_size
+    Float? tau
+    Int? mx_size
     Boolean? fixed_tau
-    String? max_tau
+    Int? max_tau
     Boolean? non_banded
     Boolean? small
-    String? s_file
-    String? t_file
-    String? i_file
-    String? el_file
-    String? map_ali
+    File? s_file
+    File? t_file
+    File? i_file
+    File? el_file
+    File? map_ali
     Boolean? map_str
     Boolean? noss
     String? in_format
@@ -30,9 +30,9 @@ task Cmalign {
     Boolean? no_prob
     Boolean? match_only
     Boolean? i_leaved
-    String? regress
+    File? regress
     Boolean? verbose
-    String? cpu
+    Int? cpu
     Boolean? options
     String cm_file
     String seq_file
@@ -42,37 +42,37 @@ task Cmalign {
       ~{cm_file} \
       ~{seq_file} \
       ~{if defined(output_alignment_file) then ("-o " +  '"' + output_alignment_file + '"') else ""} \
-      ~{true="-g" false="" configure_cm_global} \
-      ~{true="--optacc" false="" opt_acc} \
-      ~{true="--cyk" false="" cy_k} \
-      ~{true="--sample" false="" sample} \
+      ~{if (configure_cm_global) then "-g" else ""} \
+      ~{if (opt_acc) then "--optacc" else ""} \
+      ~{if (cy_k) then "--cyk" else ""} \
+      ~{if (sample) then "--sample" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--notrunc" false="" not_run_c} \
-      ~{true="--sub" false="" sub} \
-      ~{true="--hbanded" false="" h_banded} \
+      ~{if (not_run_c) then "--notrunc" else ""} \
+      ~{if (sub) then "--sub" else ""} \
+      ~{if (h_banded) then "--hbanded" else ""} \
       ~{if defined(tau) then ("--tau " +  '"' + tau + '"') else ""} \
       ~{if defined(mx_size) then ("--mxsize " +  '"' + mx_size + '"') else ""} \
-      ~{true="--fixedtau" false="" fixed_tau} \
+      ~{if (fixed_tau) then "--fixedtau" else ""} \
       ~{if defined(max_tau) then ("--maxtau " +  '"' + max_tau + '"') else ""} \
-      ~{true="--nonbanded" false="" non_banded} \
-      ~{true="--small" false="" small} \
+      ~{if (non_banded) then "--nonbanded" else ""} \
+      ~{if (small) then "--small" else ""} \
       ~{if defined(s_file) then ("--sfile " +  '"' + s_file + '"') else ""} \
       ~{if defined(t_file) then ("--tfile " +  '"' + t_file + '"') else ""} \
       ~{if defined(i_file) then ("--ifile " +  '"' + i_file + '"') else ""} \
       ~{if defined(el_file) then ("--elfile " +  '"' + el_file + '"') else ""} \
       ~{if defined(map_ali) then ("--mapali " +  '"' + map_ali + '"') else ""} \
-      ~{true="--mapstr" false="" map_str} \
-      ~{true="--noss" false="" noss} \
+      ~{if (map_str) then "--mapstr" else ""} \
+      ~{if (noss) then "--noss" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
-      ~{true="--dnaout" false="" dna_out} \
-      ~{true="--noprob" false="" no_prob} \
-      ~{true="--matchonly" false="" match_only} \
-      ~{true="--ileaved" false="" i_leaved} \
+      ~{if (dna_out) then "--dnaout" else ""} \
+      ~{if (no_prob) then "--noprob" else ""} \
+      ~{if (match_only) then "--matchonly" else ""} \
+      ~{if (i_leaved) then "--ileaved" else ""} \
       ~{if defined(regress) then ("--regress " +  '"' + regress + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     output_alignment_file: ": output the alignment to file <f>, not stdout"
@@ -109,5 +109,9 @@ task Cmalign {
     options: ""
     cm_file: ""
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_alignment_file = "${in_output_alignment_file}"
   }
 }

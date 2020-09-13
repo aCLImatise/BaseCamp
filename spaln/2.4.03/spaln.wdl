@@ -15,7 +15,7 @@ task Spaln {
     String? ls
     Boolean? number_outputs_query
     Boolean? dp_hspsearch_blocksearch
-    Boolean? read_information_file
+    Boolean? read_block_file
     Boolean? orientation_annotation_forward
     Boolean? subdirectory_where_reside
     Boolean? specify_aadb_must
@@ -23,7 +23,7 @@ task Spaln {
     Boolean? specify_genome_must
     Boolean? same_d_db
     Boolean? number_characters_line
-    Boolean? filedirectoryprefix_where_results
+    Boolean? filedirectoryprefix_where_written
     Boolean? pa
     Boolean? pw
     Boolean? pq
@@ -45,8 +45,8 @@ task Spaln {
     Boolean? ys
     Boolean? yx_zero
     Boolean? weight_intron_potential
-    Boolean? var_43
     Boolean? kd
+    Boolean? var_44
     String? genome_dot_bkn
     String? w_options
     String genome_dot_mfa
@@ -56,51 +56,51 @@ task Spaln {
       ~{genome_dot_bkn} \
       ~{w_options} \
       ~{genome_dot_mfa} \
-      ~{true="-E" false="" generate_local_table} \
-      ~{true="-XC" false="" xc} \
-      ~{true="-XG" false="" xg} \
-      ~{true="-Xk" false="" xk} \
-      ~{true="-Xb" false="" xb} \
-      ~{true="-Xa" false="" x_a} \
-      ~{true="-Xr" false="" xr} \
-      ~{true="-g" false="" gzipped_output} \
-      ~{true="-t" false="" mutlithread_operation_threads} \
-      ~{true="-H" false="" minimum_score_report} \
+      ~{if (generate_local_table) then "-E" else ""} \
+      ~{if (xc) then "-XC" else ""} \
+      ~{if (xg) then "-XG" else ""} \
+      ~{if (xk) then "-Xk" else ""} \
+      ~{if (xb) then "-Xb" else ""} \
+      ~{if (x_a) then "-Xa" else ""} \
+      ~{if (xr) then "-Xr" else ""} \
+      ~{if (gzipped_output) then "-g" else ""} \
+      ~{if (mutlithread_operation_threads) then "-t" else ""} \
+      ~{if (minimum_score_report) then "-H" else ""} \
       ~{if defined(ls) then ("-LS " +  '"' + ls + '"') else ""} \
-      ~{true="-M" false="" number_outputs_query} \
-      ~{true="-Q" false="" dp_hspsearch_blocksearch} \
-      ~{true="-R" false="" read_information_file} \
-      ~{true="-S" false="" orientation_annotation_forward} \
-      ~{true="-T" false="" subdirectory_where_reside} \
-      ~{true="-a" false="" specify_aadb_must} \
-      ~{true="-A" false="" same_db_sequences} \
-      ~{true="-d" false="" specify_genome_must} \
-      ~{true="-D" false="" same_d_db} \
-      ~{true="-l" false="" number_characters_line} \
-      ~{true="-o" false="" filedirectoryprefix_where_results} \
-      ~{true="-pa" false="" pa} \
-      ~{true="-pw" false="" pw} \
-      ~{true="-pq" false="" pq} \
-      ~{true="-r" false="" report_information_block} \
-      ~{true="-u" false="" _gapextension_penalty} \
-      ~{true="-v" false="" _gapopen_penalty} \
-      ~{true="-w" false="" band_width_dp} \
-      ~{true="-ya" false="" ya} \
-      ~{true="-yl3" false="" yl_three} \
-      ~{true="-ym" false="" ym} \
-      ~{true="-yn" false="" yn} \
-      ~{true="-yo" false="" yo} \
-      ~{true="-yx" false="" yx} \
-      ~{true="-yy" false="" yy} \
-      ~{true="-yz" false="" weight_coding_potential} \
-      ~{true="-yB" false="" yb} \
-      ~{true="-yI" false="" yi} \
-      ~{true="-yL" false="" yl} \
-      ~{true="-yS" false="" ys} \
-      ~{true="-yX0" false="" yx_zero} \
-      ~{true="-yZ" false="" weight_intron_potential} \
-      ~{true="-W" false="" var_43} \
-      ~{true="-KD" false="" kd}
+      ~{if (number_outputs_query) then "-M" else ""} \
+      ~{if (dp_hspsearch_blocksearch) then "-Q" else ""} \
+      ~{if (read_block_file) then "-R" else ""} \
+      ~{if (orientation_annotation_forward) then "-S" else ""} \
+      ~{if (subdirectory_where_reside) then "-T" else ""} \
+      ~{if (specify_aadb_must) then "-a" else ""} \
+      ~{if (same_db_sequences) then "-A" else ""} \
+      ~{if (specify_genome_must) then "-d" else ""} \
+      ~{if (same_d_db) then "-D" else ""} \
+      ~{if (number_characters_line) then "-l" else ""} \
+      ~{if (filedirectoryprefix_where_written) then "-o" else ""} \
+      ~{if (pa) then "-pa" else ""} \
+      ~{if (pw) then "-pw" else ""} \
+      ~{if (pq) then "-pq" else ""} \
+      ~{if (report_information_block) then "-r" else ""} \
+      ~{if (_gapextension_penalty) then "-u" else ""} \
+      ~{if (_gapopen_penalty) then "-v" else ""} \
+      ~{if (band_width_dp) then "-w" else ""} \
+      ~{if (ya) then "-ya" else ""} \
+      ~{if (yl_three) then "-yl3" else ""} \
+      ~{if (ym) then "-ym" else ""} \
+      ~{if (yn) then "-yn" else ""} \
+      ~{if (yo) then "-yo" else ""} \
+      ~{if (yx) then "-yx" else ""} \
+      ~{if (yy) then "-yy" else ""} \
+      ~{if (weight_coding_potential) then "-yz" else ""} \
+      ~{if (yb) then "-yB" else ""} \
+      ~{if (yi) then "-yI" else ""} \
+      ~{if (yl) then "-yL" else ""} \
+      ~{if (ys) then "-yS" else ""} \
+      ~{if (yx_zero) then "-yX0" else ""} \
+      ~{if (weight_intron_potential) then "-yZ" else ""} \
+      ~{if (kd) then "-KD" else ""} \
+      ~{if (var_44) then "-W" else ""}
   >>>
   parameter_meta {
     generate_local_table: "Generate local lookup table for each block"
@@ -114,9 +114,9 @@ task Spaln {
     mutlithread_operation_threads: "#     Mutli-thread operation with # threads"
     minimum_score_report: "#     Minimum score for report (35)"
     ls: "#        semi-global or local alignment (-L)"
-    number_outputs_query: "#[,#2]        Number of outputs per query (1) (4 if # is omitted) #2 (4) specifies the max number of candidate loci This option is effective only for map-and-align modes"
+    number_outputs_query: "#[,#2]        Number of outputs per query (1) (4 if # is omitted)\\n#2 (4) specifies the max number of candidate loci\\nThis option is effective only for map-and-align modes"
     dp_hspsearch_blocksearch: "#     0:DP; 1-3:HSP-Search; 4-7; Block-Search (3)"
-    read_information_file: "$     Read block information file *.bkn, *.bkp or *.bka"
+    read_block_file: "$     Read block information file *.bkn, *.bkp or *.bka"
     orientation_annotation_forward: "#     Orientation. 0:annotation; 1:forward; 2:reverse; 3:both (3)"
     subdirectory_where_reside: "$     Subdirectory where species-specific parameters reside"
     specify_aadb_must: "$     Specify AAdb. Must run `makeidx.pl -ia' breforehand"
@@ -124,7 +124,7 @@ task Spaln {
     specify_genome_must: "$     Specify genome. Must run `makeidx.pl -i[n|p]' breforehand"
     same_d_db: "$     Same as -d but db sequences are stored in memory"
     number_characters_line: "#     Number of characters per line in alignment (60)"
-    filedirectoryprefix_where_results: "$     File/directory/prefix where results are written (stdout)"
+    filedirectoryprefix_where_written: "$     File/directory/prefix where results are written (stdout)"
     pa: "#    Remove 3' poly A >= # (0: don't remove)"
     pw: "Report results even if the score is below the threshold"
     pq: "Quiet mode"
@@ -146,10 +146,13 @@ task Spaln {
     ys: "[#]  Use species-specific parameter set (0.0/0.5)"
     yx_zero: "Don't use parameter set for cross-species comparison"
     weight_intron_potential: "#    Weight for intron potential (0)"
-    var_43: ""
     kd: ""
+    var_44: ""
     genome_dot_bkn: ""
     w_options: ""
     genome_dot_mfa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

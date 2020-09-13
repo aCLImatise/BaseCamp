@@ -10,14 +10,17 @@ task Samcount {
   command <<<
     samcount \
       ~{file} \
-      ~{true="-l" false="" display_statistics_library} \
-      ~{true="-r" false="" display_statistics_read} \
-      ~{true="-lr" false="" lr}
+      ~{if (display_statistics_library) then "-l" else ""} \
+      ~{if (display_statistics_read) then "-r" else ""} \
+      ~{if (lr) then "-lr" else ""}
   >>>
   parameter_meta {
     display_statistics_library: "Display statistics for each library"
     display_statistics_read: "Display statistics for each read group (by default, displays both)"
     lr: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

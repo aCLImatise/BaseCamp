@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../grompp.cwl
 inputs:
-- id: c
-  doc: ''
-  type: string
+- id: in_config
+  doc: This file can be a YAML file, JSON file or JSON string
+  type: File
   inputBinding:
-    prefix: -c
-- id: input_gro_path
+    prefix: --config
+- id: in_input_cpt_path
   doc: ''
-  type: string
-  inputBinding:
-    prefix: --input_gro_path
-- id: input_top_zip_path
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --input_top_zip_path
-- id: output_tpr_path
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --output_tpr_path
-- id: input_cpt_path
-  doc: ''
-  type: string
+  type: File
   inputBinding:
     prefix: --input_cpt_path
-- id: input_ndx_path
+- id: in_input_ndx_path
   doc: ''
   type: string
   inputBinding:
     prefix: --input_ndx_path
-outputs: []
+- id: in_input_gro_path
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --input_gro_path
+- id: in_input_top_zip_path
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --input_top_zip_path
+- id: in_output_tpr_path
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --output_tpr_path
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_tpr_path
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_tpr_path)
 cwlVersion: v1.1
 baseCommand:
 - grompp

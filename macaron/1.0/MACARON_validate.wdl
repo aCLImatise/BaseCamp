@@ -4,4 +4,7 @@ task MACARONValidate {
   command <<<
     MACARON_validate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

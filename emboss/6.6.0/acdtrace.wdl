@@ -4,4 +4,7 @@ task Acdtrace {
   command <<<
     acdtrace
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

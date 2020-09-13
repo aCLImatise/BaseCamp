@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../smof_split.cwl
 inputs:
-- id: number
+- id: in_number
   doc: Number of output files or sequences per file
-  type: string
+  type: long
   inputBinding:
     prefix: --number
-- id: seqs
+- id: in_seqs
   doc: split by maximum sequences per file
   type: boolean
   inputBinding:
     prefix: --seqs
-- id: prefix
-  doc: prefix for output files (default="xxx")
+- id: in_prefix
+  doc: "prefix for output files (default=\"xxx\")\n"
   type: string
   inputBinding:
     prefix: --prefix
-- id: input
+- id: in_input
   doc: input fasta sequence (default = stdin)
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - smof

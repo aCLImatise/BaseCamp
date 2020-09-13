@@ -1,4 +1,7 @@
-&id003 !Command
+&id001 !Command
+command:
+- deblur
+- remove-artifacts
 positional:
 - !Positional
   description: ''
@@ -12,36 +15,36 @@ positional:
   optional: false
 named:
 - !Flag
-  description: 'Keep all sequences aligning to this FASTA database (for multiple databases,
-    use --ref- fp db1.fa --ref-fp db2.fa ..) default for positive filtering is: /tmp/tmpciswt9a4/lib/python3.6/site-
-    packages/deblur/support_files/88_otus.fasta default for negative filtering is:
-    /tmp/tmpciswt9a4/lib/python3.6/site- packages/deblur/support_files/artifacts.fa'
+  description: "Keep all sequences aligning to this FASTA\ndatabase (for multiple\
+    \ databases, use --ref-\nfp db1.fa --ref-fp db2.fa ..) default for\npositive filtering\
+    \ is:\n/usr/local/lib/python3.7/site-\npackages/deblur/support_files/88_otus.fasta\n\
+    default for negative filtering is:\n/usr/local/lib/python3.7/site-\npackages/deblur/support_files/artifacts.fa"
   synonyms:
   - --ref-fp
   args: !SimpleFlagArg
     name: PATH
   optional: true
 - !Flag
-  description: Keep all sequences aligning to this indexed database. For multiple
-    databases, the order must follow that of --ref-fp, for example, --ref-db-fp db1.idx
-    --ref-db-fp db2.idx ..
+  description: "Keep all sequences aligning to this indexed\ndatabase. For multiple\
+    \ databases, the order\nmust follow that of --ref-fp, for example,\n--ref-db-fp\
+    \ db1.idx --ref-db-fp db2.idx .."
   synonyms:
   - --ref-db-fp
   args: !SimpleFlagArg
     name: PATH
   optional: true
 - !Flag
-  description: '/ --only-pos       Use --negate (i.e. True) to discard all sequences
-    aligning to the database passed via --neg-ref-fp option. Alternatively, use --only-pos
-    (i.e. False) to filter by only keeping sequences similar to ones in --pos- ref-fp.  [default:
-    True]'
+  description: "/ --only-pos       Use --negate (i.e. True) to discard all\nsequences\
+    \ aligning to the database passed\nvia --neg-ref-fp option. Alternatively, use\n\
+    --only-pos (i.e. False) to filter by only\nkeeping sequences similar to ones in\
+    \ --pos-\nref-fp.  [default: True]"
   synonyms:
   - -n
   - --negate
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Number of threads to use per sample (0 to use all)  [default: 1]'
+  description: "Number of threads to use per sample (0 to\nuse all)  [default: 1]"
   synonyms:
   - -a
   - --threads-per-sample
@@ -49,8 +52,8 @@ named:
     name: INTEGER
   optional: true
 - !Flag
-  description: 'RANGE       Level of messages for log file(range 1-debug to 5-critical  [default:
-    2]'
+  description: "RANGE       Level of messages for log file(range 1-debug\nto 5-critical\
+    \  [default: 2]"
   synonyms:
   - --log-level
   args: !SimpleFlagArg
@@ -63,48 +66,35 @@ named:
   args: !SimpleFlagArg
     name: PATH
   optional: true
-command:
-- deblur
-- remove-artifacts
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - deblur
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - deblur
+    - trim
     positional:
     - !Positional
-      description: ''
+      description: '[default: 2]'
       position: 0
-      name: SEQS_FP
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: OUTPUT_BIOM_FP
+      name: 5-critical
       optional: false
     named:
     - !Flag
-      description: 'In output biom table - keep only sequences appearing at least
-        min-reads in all samples combined.  [default: 10]'
+      description: Sequence trim length  [required]
       synonyms:
-      - --min-reads
+      - -t
+      - --trim-length
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: 'ending of files to be added to the biom table [default: .fasta.trim.derep.no_artifacts.msa.debl
-        ur.no_chimeras]'
-      synonyms:
-      - --file_type
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: 'RANGE  Level of messages for log file(range 1-debug to 5-critical  [default:
-        2]'
+      description: RANGE  Level of messages for log file(range 1-debug to
       synonyms:
       - --log-level
       args: !SimpleFlagArg
@@ -117,11 +107,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: PATH
       optional: true
-    command:
-    - deblur
-    - build-biom-table
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -130,41 +118,22 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "Usage: deblur build-biom-table [OPTIONS] SEQS_FP OUTPUT_BIOM_FP\n\n\
-      \  Generate a BIOM table from a directory of chimera removed fasta files\n \
-      \ Parameters ---------- seqs_fp : str   the path to the directory containing\n\
-      \  the chimera removed fasta files output_biom_fp : str   the path where to\n\
-      \  save the output biom table files   ('all.biom', 'reference-hit.biom',\n \
-      \ 'reference-non-hit.biom') file_type : str   the files type to add to the\n\
-      \  table   (default='.trim.derep.no_artifacts.msa.deblur.no_chimeras',   can\n\
-      \  be '.fasta' or '.fa' if needed)\n\nOptions:\n  --min-reads INTEGER      \
-      \  In output biom table - keep only sequences\n                            \
-      \ appearing at least min-reads in all samples\n                            \
-      \ combined.  [default: 10]\n\n  --file_type TEXT           ending of files to\
-      \ be added to the biom table\n                             [default: .fasta.trim.derep.no_artifacts.msa.debl\n\
-      \                             ur.no_chimeras]\n\n  --log-level INTEGER RANGE\
-      \  Level of messages for log file(range 1-debug to\n                       \
-      \      5-critical  [default: 2]\n\n  --log-file PATH            log file name\
-      \  [default: deblur.log]\n  --help                     Show this message and\
-      \ exit.\n"
-    generated_using: &id002
+    help_text: "Usage: deblur trim [OPTIONS] SEQS_FP OUTPUT_FP\n\n  Trim FASTA sequences\n\
+      \nOptions:\n  -t, --trim-length INTEGER  Sequence trim length  [required]\n\
+      \  --log-level INTEGER RANGE  Level of messages for log file(range 1-debug to\n\
+      \                             5-critical  [default: 2]\n\n  --log-file PATH\
+      \            log file name  [default: deblur.log]\n  --help                \
+      \     Show this message and exit.\n"
+    generated_using: &id004
     - --help
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: REF_FP
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: OUTPUT_DIR
-      optional: false
+  - &id003 !Command
+    command:
+    - deblur
+    - remove-chimeras-denovo
+    positional: []
     named:
     - !Flag
-      description: 'RANGE  Level of messages for log file(range 1-debug to 5-critical  [default:
-        2]'
+      description: RANGE  Level of messages for log file(range 1-debug to
       synonyms:
       - --log-level
       args: !SimpleFlagArg
@@ -177,11 +146,121 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: PATH
       optional: true
+    parent: *id002
+    subcommands:
+    - !Command
+      command:
+      - deblur
+      - remove-chimeras-denovo
+      - 5-critical
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: deblur
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: remove-chimeras-denovo
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: SEQS_FP
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: OUTPUT_FP
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: deblur remove-chimeras-denovo [OPTIONS] SEQS_FP OUTPUT_FP\n\
+        Try 'deblur remove-chimeras-denovo --help' for help.\n\nError: no such option:\
+        \ -h\n"
+      generated_using: &id006
+      - -h
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: deblur remove-chimeras-denovo [OPTIONS] SEQS_FP OUTPUT_FP\n\
+      \n  Remove chimeras de novo using UCHIME (VSEARCH implementation)\n\nOptions:\n\
+      \  --log-level INTEGER RANGE  Level of messages for log file(range 1-debug to\n\
+      \                             5-critical  [default: 2]\n\n  --log-file PATH\
+      \            log file name  [default: deblur.log]\n  --help                \
+      \     Show this message and exit.\n"
+    generated_using: *id004
+  - &id005 !Command
     command:
     - deblur
     - build-db-index
-    parent: *id001
-    subcommands: []
+    positional: []
+    named:
+    - !Flag
+      description: RANGE  Level of messages for log file(range 1-debug to
+      synonyms:
+      - --log-level
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: 'log file name  [default: deblur.log]'
+      synonyms:
+      - --log-file
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    parent: *id002
+    subcommands:
+    - !Command
+      command:
+      - deblur
+      - build-db-index
+      - 5-critical
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: deblur
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: build-db-index
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: REF_FP
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: OUTPUT_DIR
+        optional: false
+      named: []
+      parent: *id005
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: deblur build-db-index [OPTIONS] REF_FP OUTPUT_DIR\nTry 'deblur\
+        \ build-db-index --help' for help.\n\nError: no such option: -h\n"
+      generated_using: *id006
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -197,18 +276,21 @@ parent: &id001 !Command
       \ file(range 1-debug to\n                             5-critical  [default:\
       \ 2]\n\n  --log-file PATH            log file name  [default: deblur.log]\n\
       \  --help                     Show this message and exit.\n"
-    generated_using: *id002
+    generated_using: *id004
   - !Command
+    command:
+    - deblur
+    - deblur-seqs
     positional:
     - !Positional
-      description: ''
+      description: '[default: 2]'
       position: 0
-      name: SEQS_FP
+      name: 5-critical
       optional: false
     named:
     - !Flag
-      description: 'The mean per nucleotide error, used for original sequence estimate.
-        If not passed typical illumina error rate is used  [default: 0.005]'
+      description: "The mean per nucleotide error, used for original\nsequence estimate.\
+        \ If not passed typical illumina\nerror rate is used  [default: 0.005]"
       synonyms:
       - -m
       - --mean-error
@@ -216,10 +298,10 @@ parent: &id001 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: 'A comma separated list of error probabilities for each hamming
-        distance. The length of the list determines the number of hamming distances
-        taken into account.  [default: 1, 0.06, 0.02, 0.02, 0.01, 0.005, 0.005, 0.005,
-        0.001, 0.001, 0.001, 0.0005]'
+      description: "A comma separated list of error probabilities for\neach hamming\
+        \ distance. The length of the list\ndetermines the number of hamming distances\
+        \ taken\ninto account.  [default: 1, 0.06, 0.02, 0.02,\n0.01, 0.005, 0.005,\
+        \ 0.005, 0.001, 0.001, 0.001,\n0.0005]"
       synonyms:
       - -d
       - --error-dist
@@ -227,7 +309,7 @@ parent: &id001 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: Insertion/deletion (indel) probability (same for N indels)
+      description: "Insertion/deletion (indel) probability (same for\nN indels)"
       synonyms:
       - -i
       - --indel-prob
@@ -242,8 +324,7 @@ parent: &id001 !Command
         name: INTEGER
       optional: true
     - !Flag
-      description: 'RANGE  Level of messages for log file(range 1-debug to 5-critical  [default:
-        2]'
+      description: RANGE  Level of messages for log file(range 1-debug to
       synonyms:
       - --log-level
       args: !SimpleFlagArg
@@ -256,11 +337,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: PATH
       optional: true
-    command:
-    - deblur
-    - deblur-seqs
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -285,31 +364,28 @@ parent: &id001 !Command
       \ log file(range 1-debug to\n                             5-critical  [default:\
       \ 2]\n\n  --log-file PATH            log file name  [default: deblur.log]\n\
       \  --help                     Show this message and exit.\n"
-    generated_using: *id002
+    generated_using: *id004
   - !Command
+    command:
+    - deblur
+    - dereplicate
     positional:
     - !Positional
-      description: ''
+      description: '[default: 2]'
       position: 0
-      name: SEQS_FP
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: OUTPUT_FP
+      name: 5-critical
       optional: false
     named:
     - !Flag
-      description: 'Discard sequences with an abundance value smaller than min-size  [default:
-        2]'
+      description: "Discard sequences with an abundance value smaller\nthan min-size\
+        \  [default: 2]"
       synonyms:
       - --min-size
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: 'RANGE  Level of messages for log file(range 1-debug to 5-critical  [default:
-        2]'
+      description: RANGE  Level of messages for log file(range 1-debug to
       synonyms:
       - --log-level
       args: !SimpleFlagArg
@@ -322,11 +398,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: PATH
       optional: true
-    command:
-    - deblur
-    - dereplicate
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -344,8 +418,11 @@ parent: &id001 !Command
       \                    5-critical  [default: 2]\n\n  --log-file PATH         \
       \   log file name  [default: deblur.log]\n  --help                     Show\
       \ this message and exit.\n"
-    generated_using: *id002
+    generated_using: *id004
   - !Command
+    command:
+    - deblur
+    - multiple-seq-alignment
     positional:
     - !Positional
       description: ''
@@ -359,8 +436,8 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: 'Number of threads to use per sample (0 to use all)  [default:
-        1]'
+      description: "Number of threads to use per sample (0 to\nuse all)  [default:\
+        \ 1]"
       synonyms:
       - -a
       - --threads-per-sample
@@ -368,8 +445,8 @@ parent: &id001 !Command
         name: INTEGER
       optional: true
     - !Flag
-      description: 'RANGE       Level of messages for log file(range 1-debug to 5-critical  [default:
-        2]'
+      description: "RANGE       Level of messages for log file(range 1-debug\nto 5-critical\
+        \  [default: 2]"
       synonyms:
       - --log-level
       args: !SimpleFlagArg
@@ -382,11 +459,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: PATH
       optional: true
-    command:
-    - deblur
-    - multiple-seq-alignment
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -403,135 +478,33 @@ parent: &id001 !Command
       \                   to 5-critical  [default: 2]\n\n  --log-file PATH       \
       \          log file name  [default: deblur.log]\n  --help                  \
       \        Show this message and exit.\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id004
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: SEQS_FP
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: OUTPUT_FP
-      optional: false
-    named:
-    - !Flag
-      description: 'RANGE  Level of messages for log file(range 1-debug to 5-critical  [default:
-        2]'
-      synonyms:
-      - --log-level
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: 'log file name  [default: deblur.log]'
-      synonyms:
-      - --log-file
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
     command:
     - deblur
-    - remove-chimeras-denovo
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Usage: deblur remove-chimeras-denovo [OPTIONS] SEQS_FP OUTPUT_FP\n\
-      \n  Remove chimeras de novo using UCHIME (VSEARCH implementation)\n\nOptions:\n\
-      \  --log-level INTEGER RANGE  Level of messages for log file(range 1-debug to\n\
-      \                             5-critical  [default: 2]\n\n  --log-file PATH\
-      \            log file name  [default: deblur.log]\n  --help                \
-      \     Show this message and exit.\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: SEQS_FP
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: OUTPUT_FP
-      optional: false
-    named:
-    - !Flag
-      description: Sequence trim length  [required]
-      synonyms:
-      - -t
-      - --trim-length
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: 'RANGE  Level of messages for log file(range 1-debug to 5-critical  [default:
-        2]'
-      synonyms:
-      - --log-level
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: 'log file name  [default: deblur.log]'
-      synonyms:
-      - --log-file
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    command:
-    - deblur
-    - trim
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Usage: deblur trim [OPTIONS] SEQS_FP OUTPUT_FP\n\n  Trim FASTA sequences\n\
-      \nOptions:\n  -t, --trim-length INTEGER  Sequence trim length  [required]\n\
-      \  --log-level INTEGER RANGE  Level of messages for log file(range 1-debug to\n\
-      \                             5-critical  [default: 2]\n\n  --log-file PATH\
-      \            log file name  [default: deblur.log]\n  --help                \
-      \     Show this message and exit.\n"
-    generated_using: *id002
-  - !Command
+    - workflow
     positional: []
     named:
     - !Flag
-      description: Either a Demultiplexed FASTA or FASTQ file including all samples,
-        or a directory of per-sample FASTA or FASTQ files. Gzip'd files are acceptable
-        (e.g., .fastq.gz). [required]
+      description: "Either a Demultiplexed FASTA or FASTQ file\nincluding all samples,\
+        \ or a directory of\nper-sample FASTA or FASTQ files. Gzip'd\nfiles are acceptable\
+        \ (e.g., .fastq.gz).\n[required]"
       synonyms:
       - --seqs-fp
       args: !SimpleFlagArg
         name: PATH
       optional: true
     - !Flag
-      description: Directory path to store output including BIOM table  [required]
+      description: "Directory path to store output including\nBIOM table  [required]"
       synonyms:
       - --output-dir
       args: !SimpleFlagArg
         name: PATH
       optional: true
     - !Flag
-      description: Sequence trim length. All reads shorter than the trim-length will
-        be discarded. A value of -1 can be specified to skip trimming; this assumes
-        all sequences have an identical length.  [required]
+      description: "Sequence trim length. All reads shorter than\nthe trim-length\
+        \ will be discarded. A value\nof -1 can be specified to skip trimming;\nthis\
+        \ assumes all sequences have an identical\nlength.  [required]"
       synonyms:
       - -t
       - --trim-length
@@ -539,67 +512,68 @@ parent: &id001 !Command
         name: INTEGER
       optional: true
     - !Flag
-      description: 'Trim the first N bases from every sequence. A value of 0 disables
-        this trim.  [default: 0]'
+      description: "Trim the first N bases from every sequence.\nA value of 0 disables\
+        \ this trim.  [default:\n0]"
       synonyms:
       - --left-trim-length
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: Positive reference filtering database. Keep all sequences permissively
-        aligning to any sequence in this FASTA file; these results are stored in the
-        reference-hit.biom output file. This defaults to the Greengenes 13_8 OTUs
-        at 88% identity. An e-value threshold of 10 is used with SortMeRNA against
-        the reference. For multiple databases, specify the argument multiple times,
-        e.g., --pos- ref-fp db1.fa --pos-ref-fp db2.fa
+      description: "Positive reference filtering database. Keep\nall sequences permissively\
+        \ aligning to any\nsequence in this FASTA file; these results\nare stored\
+        \ in the reference-hit.biom output\nfile. This defaults to the Greengenes\
+        \ 13_8\nOTUs at 88% identity. An e-value threshold\nof 10 is used with SortMeRNA\
+        \ against the\nreference. For multiple databases, specify\nthe argument multiple\
+        \ times, e.g., --pos-\nref-fp db1.fa --pos-ref-fp db2.fa"
       synonyms:
       - --pos-ref-fp
       args: !SimpleFlagArg
         name: PATH
       optional: true
     - !Flag
-      description: An indexed version of the positive filtering database. This can
-        be useful to avoid incurring the expense of reindexing on every run. If not
-        supplied, deblur will index the database. For multiple databases, the order
-        must follow that of --pos-ref-fp, for example, --pos-ref-db-fp db1.idx --pos-ref-
-        db-fp db2.idx ..
+      description: "An indexed version of the positive filtering\ndatabase. This can\
+        \ be useful to avoid\nincurring the expense of reindexing on every\nrun. If\
+        \ not supplied, deblur will index the\ndatabase. For multiple databases, the\
+        \ order\nmust follow that of --pos-ref-fp, for\nexample, --pos-ref-db-fp db1.idx\
+        \ --pos-ref-\ndb-fp db2.idx .."
       synonyms:
       - --pos-ref-db-fp
       args: !SimpleFlagArg
         name: PATH
       optional: true
     - !Flag
-      description: Negative (artifacts) filtering database. Drop all sequences which
-        align to any record in this FASTA file. This defaults to a database composed
-        of multiple PhiX genomes and known Illumina adapters. For multiple databases,
-        specify the argument mutiple times, e.g., --neg-ref-fp db1.fa --neg-ref- fp
-        db2.fa
+      description: "Negative (artifacts) filtering database.\nDrop all sequences which\
+        \ align to any record\nin this FASTA file. This defaults to a\ndatabase composed\
+        \ of multiple PhiX genomes\nand known Illumina adapters. For multiple\ndatabases,\
+        \ specify the argument mutiple\ntimes, e.g., --neg-ref-fp db1.fa --neg-ref-\n\
+        fp db2.fa"
       synonyms:
       - --neg-ref-fp
       args: !SimpleFlagArg
         name: PATH
       optional: true
     - !Flag
-      description: An indexed version of the negative filtering database. If not supplied,
-        deblur will index the database.For multiple databases, the order must follow
-        that of --neg-ref-fp, for example, --neg-ref-db-fp db1.idx --neg-ref- db-fp
-        db2.idx ..
+      description: "An indexed version of the negative filtering\ndatabase. If not\
+        \ supplied, deblur will index\nthe database.For multiple databases, the\n\
+        order must follow that of --neg-ref-fp, for\nexample, --neg-ref-db-fp db1.idx\
+        \ --neg-ref-\ndb-fp db2.idx .."
       synonyms:
       - --neg-ref-db-fp
       args: !SimpleFlagArg
         name: PATH
       optional: true
     - !Flag
-      description: 'Overwrite output directory if exists. [default: False]'
+      description: "Overwrite output directory if exists.\n[default: False]"
       synonyms:
       - -w
       - --overwrite
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'The mean per nucleotide error rate, used for original sequence
-        estimate. If not passed typical illumina error rate is used. [default: 0.005]'
+      description: "The mean per nucleotide error rate, used for\noriginal sequence\
+        \ estimate. If not passed\ntypical illumina error rate is used.\n[default:\
+        \ 0.005]"
       synonyms:
       - -m
       - --mean-error
@@ -607,10 +581,10 @@ parent: &id001 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: 'A comma separated list of error probabilities for each Hamming
-        distance. The length of the list determines the number of Hamming distances
-        taken into account. [default: 1, 0.06, 0.02, 0.02, 0.01, 0.005, 0.005, 0.005,
-        0.001, 0.001, 0.001, 0.0005]'
+      description: "A comma separated list of error\nprobabilities for each Hamming\
+        \ distance. The\nlength of the list determines the number of\nHamming distances\
+        \ taken into account.\n[default: 1, 0.06, 0.02, 0.02, 0.01, 0.005,\n0.005,\
+        \ 0.005, 0.001, 0.001, 0.001, 0.0005]"
       synonyms:
       - -d
       - --error-dist
@@ -618,8 +592,9 @@ parent: &id001 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: 'Insertion/deletion (indel) probability. This probability consistent
-        for multiple indels; there is not an added elongation penalty. [default: 0.01]'
+      description: "Insertion/deletion (indel) probability. This\nprobability consistent\
+        \ for multiple indels;\nthere is not an added elongation penalty.\n[default:\
+        \ 0.01]"
       synonyms:
       - -i
       - --indel-prob
@@ -627,31 +602,31 @@ parent: &id001 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: 'Maximum number of allowed indels.  [default: 3]'
+      description: "Maximum number of allowed indels.  [default:\n3]"
       synonyms:
       - --indel-max
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: 'Keep only the sequences which appear at least min-reads study
-        wide (as opposed to per-sample).  [default: 10]'
+      description: "Keep only the sequences which appear at\nleast min-reads study\
+        \ wide (as opposed to\nper-sample).  [default: 10]"
       synonyms:
       - --min-reads
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: 'Keep only sequences which appear at least min-size times per-sample
-        (as opposed to study wide).  [default: 2]'
+      description: "Keep only sequences which appear at least\nmin-size times per-sample\
+        \ (as opposed to\nstudy wide).  [default: 2]"
       synonyms:
       - --min-size
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: 'Number of threads to use per sample (0 to use all)  [default:
-        1]'
+      description: "Number of threads to use per sample (0 to\nuse all)  [default:\
+        \ 1]"
       synonyms:
       - -a
       - --threads-per-sample
@@ -659,14 +634,14 @@ parent: &id001 !Command
         name: INTEGER
       optional: true
     - !Flag
-      description: 'Keep temporary files (useful for debugging) [default: False]'
+      description: "Keep temporary files (useful for debugging)\n[default: False]"
       synonyms:
       - --keep-tmp-files
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'RANGE       Level of messages for log file(range 1-debug to 5-critical  [default:
-        2]'
+      description: "RANGE       Level of messages for log file(range 1-debug\nto 5-critical\
+        \  [default: 2]"
       synonyms:
       - --log-level
       args: !SimpleFlagArg
@@ -680,7 +655,7 @@ parent: &id001 !Command
         name: PATH
       optional: true
     - !Flag
-      description: 'Number of jobs to start (if to run in parallel)  [default: 1]'
+      description: "Number of jobs to start (if to run in\nparallel)  [default: 1]"
       synonyms:
       - -O
       - --jobs-to-start
@@ -688,17 +663,15 @@ parent: &id001 !Command
         name: INTEGER
       optional: true
     - !Flag
-      description: 'indicates this is not the main deblur process (used by the parallel
-        deblur - do not use manually)  [default: False]'
+      description: "indicates this is not the main deblur\nprocess (used by the parallel\
+        \ deblur - do\nnot use manually)  [default: False]"
       synonyms:
       - --is-worker-thread
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - deblur
-    - workflow
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -789,7 +762,88 @@ parent: &id001 !Command
       \             process (used by the parallel deblur - do\n                  \
       \                not use manually)  [default: False]\n\n  --help           \
       \               Show this message and exit.\n"
-    generated_using: *id002
+    generated_using: *id004
+  - !Command
+    command:
+    - deblur
+    - build-biom-table
+    positional:
+    - !Positional
+      description: the files type to add to the
+      position: 0
+      name: str
+      optional: false
+    - !Positional
+      description: (default='.trim.derep.no_artifacts.msa.deblur.no_chimeras',   can
+      position: 1
+      name: table
+      optional: false
+    - !Positional
+      description: '[default: 2]'
+      position: 0
+      name: 5-critical
+      optional: false
+    named:
+    - !Flag
+      description: "In output biom table - keep only sequences\nappearing at least\
+        \ min-reads in all samples\ncombined.  [default: 10]"
+      synonyms:
+      - --min-reads
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "ending of files to be added to the biom table\n[default: .fasta.trim.derep.no_artifacts.msa.debl\n\
+        ur.no_chimeras]"
+      synonyms:
+      - --file_type
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: RANGE  Level of messages for log file(range 1-debug to
+      synonyms:
+      - --log-level
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: 'log file name  [default: deblur.log]'
+      synonyms:
+      - --log-file
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: deblur build-biom-table [OPTIONS] SEQS_FP OUTPUT_BIOM_FP\n\n\
+      \  Generate a BIOM table from a directory of chimera removed fasta files\n \
+      \ Parameters ---------- seqs_fp : str   the path to the directory containing\n\
+      \  the chimera removed fasta files output_biom_fp : str   the path where to\n\
+      \  save the output biom table files   ('all.biom', 'reference-hit.biom',\n \
+      \ 'reference-non-hit.biom') file_type : str   the files type to add to the\n\
+      \  table   (default='.trim.derep.no_artifacts.msa.deblur.no_chimeras',   can\n\
+      \  be '.fasta' or '.fa' if needed)\n\nOptions:\n  --min-reads INTEGER      \
+      \  In output biom table - keep only sequences\n                            \
+      \ appearing at least min-reads in all samples\n                            \
+      \ combined.  [default: 10]\n\n  --file_type TEXT           ending of files to\
+      \ be added to the biom table\n                             [default: .fasta.trim.derep.no_artifacts.msa.debl\n\
+      \                             ur.no_chimeras]\n\n  --log-level INTEGER RANGE\
+      \  Level of messages for log file(range 1-debug to\n                       \
+      \      5-critical  [default: 2]\n\n  --log-file PATH            log file name\
+      \  [default: deblur.log]\n  --help                     Show this message and\
+      \ exit.\n"
+    generated_using: *id004
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -812,8 +866,9 @@ parent: &id001 !Command
     \ sequence alignment\n  remove-artifacts        Filter artifacts.\n  remove-chimeras-denovo\
     \  Remove chimeras de novo using UCHIME (VSEARCH...\n  trim                  \
     \  Trim FASTA sequences\n  workflow                Launch deblur workflow\n"
-  generated_using: []
+  generated_using: *id004
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -829,25 +884,24 @@ help_text: "Usage: deblur remove-artifacts [OPTIONS] SEQS_FP OUTPUT_DIR\n\n  Fil
   \ FASTA\n                                  database (for multiple databases, use\
   \ --ref-\n                                  fp db1.fa --ref-fp db2.fa ..) default\
   \ for\n                                  positive filtering is:\n              \
-  \                    /tmp/tmpciswt9a4/lib/python3.6/site-\n                    \
-  \              packages/deblur/support_files/88_otus.fasta\n                   \
-  \               default for negative filtering is:\n                           \
-  \       /tmp/tmpciswt9a4/lib/python3.6/site-\n                                 \
-  \ packages/deblur/support_files/artifacts.fa\n\n  --ref-db-fp PATH             \
-  \   Keep all sequences aligning to this indexed\n                              \
-  \    database. For multiple databases, the order\n                             \
-  \     must follow that of --ref-fp, for example,\n                             \
-  \     --ref-db-fp db1.idx --ref-db-fp db2.idx ..\n\n  -n, --negate / --only-pos\
-  \       Use --negate (i.e. True) to discard all\n                              \
-  \    sequences aligning to the database passed\n                               \
-  \   via --neg-ref-fp option. Alternatively, use\n                              \
-  \    --only-pos (i.e. False) to filter by only\n                               \
-  \   keeping sequences similar to ones in --pos-\n                              \
-  \    ref-fp.  [default: True]\n\n  -a, --threads-per-sample INTEGER\n          \
-  \                        Number of threads to use per sample (0 to\n           \
-  \                       use all)  [default: 1]\n\n  --log-level INTEGER RANGE  \
-  \     Level of messages for log file(range 1-debug\n                           \
-  \       to 5-critical  [default: 2]\n\n  --log-file PATH                 log file\
-  \ name  [default: deblur.log]\n  --help                          Show this message\
-  \ and exit.\n"
-generated_using: *id002
+  \                    /usr/local/lib/python3.7/site-\n                          \
+  \        packages/deblur/support_files/88_otus.fasta\n                         \
+  \         default for negative filtering is:\n                                 \
+  \ /usr/local/lib/python3.7/site-\n                                  packages/deblur/support_files/artifacts.fa\n\
+  \n  --ref-db-fp PATH                Keep all sequences aligning to this indexed\n\
+  \                                  database. For multiple databases, the order\n\
+  \                                  must follow that of --ref-fp, for example,\n\
+  \                                  --ref-db-fp db1.idx --ref-db-fp db2.idx ..\n\n\
+  \  -n, --negate / --only-pos       Use --negate (i.e. True) to discard all\n   \
+  \                               sequences aligning to the database passed\n    \
+  \                              via --neg-ref-fp option. Alternatively, use\n   \
+  \                               --only-pos (i.e. False) to filter by only\n    \
+  \                              keeping sequences similar to ones in --pos-\n   \
+  \                               ref-fp.  [default: True]\n\n  -a, --threads-per-sample\
+  \ INTEGER\n                                  Number of threads to use per sample\
+  \ (0 to\n                                  use all)  [default: 1]\n\n  --log-level\
+  \ INTEGER RANGE       Level of messages for log file(range 1-debug\n           \
+  \                       to 5-critical  [default: 2]\n\n  --log-file PATH       \
+  \          log file name  [default: deblur.log]\n  --help                      \
+  \    Show this message and exit.\n"
+generated_using: *id004

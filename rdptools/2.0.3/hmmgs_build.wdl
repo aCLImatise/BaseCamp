@@ -5,10 +5,10 @@ task HmmgsBuild {
     String read_file
     String bloom_out
     String km_er_size
-    String bloom_size_log_two
+    Int bloom_size_log_two
     String cut_off
     String hash_count
-    String bit_set_size_log_two
+    Int bit_set_size_log_two
   }
   command <<<
     hmmgs build \
@@ -28,5 +28,8 @@ task HmmgsBuild {
     cut_off: "minimum number of times a kmer has to be observed in SEQFILE to be included in the final bloom filter"
     hash_count: "number of hash functions, default 4"
     bit_set_size_log_two: "the size of one bitSet 2^bitsetSizeLog2, recommend 30, usually not changed"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

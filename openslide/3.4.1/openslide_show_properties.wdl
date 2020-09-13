@@ -1,7 +1,10 @@
 version 1.0
 
-task OpenslideShowProperties {
+task Openslideshowproperties {
   command <<<
-    openslide-show-properties
+    openslide_show_properties
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

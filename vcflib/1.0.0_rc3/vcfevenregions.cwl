@@ -1,43 +1,46 @@
 class: CommandLineTool
 id: ../../../vcfevenregions.cwl
 inputs:
-- id: fast_a_reference
+- id: in_fast_a_reference
   doc: FASTA reference file to use to obtain primer sequences.
-  type: string
+  type: File
   inputBinding:
     prefix: --fasta-reference
-- id: number_of_regions
+- id: in_number_of_regions
   doc: The number of desired regions.
-  type: string
+  type: long
   inputBinding:
     prefix: --number-of-regions
-- id: number_of_positions
+- id: in_number_of_positions
   doc: The number of positions per region.
-  type: string
+  type: long
   inputBinding:
     prefix: --number-of-positions
-- id: offset
-  doc: Add an offset to region positioning, to avoid boundary related artifacts in
-    downstream processing.
+- id: in_offset
+  doc: "Add an offset to region positioning, to avoid boundary\nrelated artifacts\
+    \ in downstream processing."
   type: string
   inputBinding:
     prefix: --offset
-- id: overlap
+- id: in_overlap
   doc: The number of sites to overlap between regions.  Default 0.
-  type: string
+  type: long
   inputBinding:
     prefix: --overlap
-- id: separator
+- id: in_separator
   doc: Specify string to use to separate region output.  Default '-'
   type: string
   inputBinding:
     prefix: --separator
-- id: vcf_file
+- id: in_vcf_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfevenregions

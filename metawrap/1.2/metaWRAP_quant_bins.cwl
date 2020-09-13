@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../metaWRAP_quant_bins.cwl
 inputs:
-- id: folder_containing_bins
+- id: in_folder_containing_bins
   doc: folder containing draft genomes (bins) in fasta format
-  type: string
+  type: Directory
   inputBinding:
     prefix: -b
-- id: output_directory
+- id: in_output_directory
   doc: output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: -o
-- id: fasta_file_entire
+- id: in_fasta_file_entire
   doc: fasta file with entire metagenomic assembly (strongly recommended!)
-  type: string
+  type: File
   inputBinding:
     prefix: -a
-- id: number_of_threads
+- id: in_number_of_threads
   doc: number of threads
   type: long
   inputBinding:
     prefix: -t
-- id: reads_x_one_dot_fast_q
+- id: in_reads_x_one_dot_fast_q
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: reads_x_two_dot_fast_q
+- id: in_reads_x_two_dot_fast_q
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory
+  doc: output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory)
 cwlVersion: v1.1
 baseCommand:
 - metaWRAP

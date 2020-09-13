@@ -1,54 +1,57 @@
 class: CommandLineTool
 id: ../../../prokka_genbank_to_fasta_db.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: "!      Verbose progress (default '0')."
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: format
+- id: in_format
   doc: Input format (default 'genbank').
   type: string
   inputBinding:
     prefix: --format
-- id: id_tag
+- id: in_id_tag
   doc: "What tag to use as Fasta ID (default = try first of: protein_id locus_tag\
     \ db_xref) (default '')."
   type: string
   inputBinding:
     prefix: --idtag
-- id: sep
+- id: in_sep
   doc: Separator between EC/gene/product (default '~~~').
   type: string
   inputBinding:
     prefix: --sep
-- id: blank
+- id: in_blank
   doc: Replace empty EC/gene/product with this (default '').
   type: string
   inputBinding:
     prefix: --blank
-- id: pseudo
+- id: in_pseudo
   doc: "!       Include /pseudo genes (default '0')."
   type: boolean
   inputBinding:
     prefix: --pseudo
-- id: hypo
+- id: in_hypo
   doc: "!         Include 'hypothetical protein' genes (default '0')."
   type: boolean
   inputBinding:
     prefix: --hypo
-- id: g_code
+- id: in_g_code
   doc: Force this genetic code for translation (otherwise /transl_table) (default
     '0').
-  type: string
+  type: long
   inputBinding:
     prefix: --gcode
-- id: min_len
+- id: in_min_len
   doc: Minimum peptide length (default '0').
-  type: string
+  type: long
   inputBinding:
     prefix: --minlen
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - prokka-genbank_to_fasta_db

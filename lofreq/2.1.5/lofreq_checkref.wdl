@@ -14,4 +14,7 @@ task LofreqCheckref {
     ref_dot_fa: ""
     in_dot_bam: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

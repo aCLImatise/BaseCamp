@@ -4,4 +4,7 @@ task GmtkDMLPtrain {
   command <<<
     gmtkDMLPtrain
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

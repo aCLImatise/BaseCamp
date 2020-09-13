@@ -10,14 +10,17 @@ task BxtoolsConvert {
   command <<<
     bxtools convert \
       ~{bam_slash_sam_slash_cram} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--keep-tags" false="" keep_tags} \
-      ~{true="--tag" false="" tag}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (keep_tags) then "--keep-tags" else ""} \
+      ~{if (tag) then "--tag" else ""}
   >>>
   parameter_meta {
     verbose: "Set verbose output"
     keep_tags: "Add chromosome tag (CR) and keep other tags. Default: delete all tags"
     tag: "Tag to flip for chromosome. Default: BX"
     bam_slash_sam_slash_cram: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -6,9 +6,12 @@ task Primer3Core {
   }
   command <<<
     primer3_core \
-      ~{true="--format_output" false="" format_output}
+      ~{if (format_output) then "--format_output" else ""}
   >>>
   parameter_meta {
     format_output: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

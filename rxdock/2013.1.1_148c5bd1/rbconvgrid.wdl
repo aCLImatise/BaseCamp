@@ -3,7 +3,7 @@ version 1.0
 task Rbconvgrid {
   input {
     Boolean? inputfile_input_filename
-    Boolean? outputfile_output_insightii
+    File? outputfile_output_insightii
     Boolean? gridnum_grid_number
     String input_file
     String? output_file
@@ -14,9 +14,9 @@ task Rbconvgrid {
       ~{input_file} \
       ~{output_file} \
       ~{grid_num} \
-      ~{true="-i" false="" inputfile_input_filename} \
-      ~{true="-o" false="" outputfile_output_insightii} \
-      ~{true="-n" false="" gridnum_grid_number}
+      ~{if (inputfile_input_filename) then "-i" else ""} \
+      ~{if (outputfile_output_insightii) then "-o" else ""} \
+      ~{if (gridnum_grid_number) then "-n" else ""}
   >>>
   parameter_meta {
     inputfile_input_filename: "<InputFile> - input RbtVdwGridSF binary grid filename"
@@ -25,5 +25,9 @@ task Rbconvgrid {
     input_file: ""
     output_file: ""
     grid_num: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outputfile_output_insightii = "${in_outputfile_output_insightii}"
   }
 }

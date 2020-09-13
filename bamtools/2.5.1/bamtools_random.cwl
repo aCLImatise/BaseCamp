@@ -1,46 +1,56 @@
 class: CommandLineTool
 id: ../../../bamtools_random.cwl
 inputs:
-- id: in
+- id: in_in
   doc: the input BAM file [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: list
-  doc: the input BAM file list, one line per file
+- id: in_list
+  doc: "the input BAM file list, one\nline per file"
   type: File
   inputBinding:
     prefix: -list
-- id: out
+- id: in_out
   doc: the output BAM file [stdout]
-  type: string
+  type: File
   inputBinding:
     prefix: -out
-- id: region
-  doc: only pull random alignments from within this genomic region. Index file is
-    recommended for better performance, and is used automatically if it exists. See
-    'bamtools help index' for more details on creating one
-  type: string
+- id: in_region
+  doc: "only pull random alignments\nfrom within this genomic region. Index\nfile\
+    \ is recommended for better\nperformance, and is used automatically if\nit exists.\
+    \ See 'bamtools help index' for\nmore details on creating one"
+  type: File
   inputBinding:
     prefix: -region
-- id: force_compression
-  doc: if results are sent to stdout (like when piping to another tool), default behavior
-    is to leave output uncompressed. Use this flag to override and force compression
+- id: in_force_compression
+  doc: "if results are sent to stdout\n(like when piping to another tool),\ndefault\
+    \ behavior is to leave output\nuncompressed. Use this flag to override\nand force\
+    \ compression"
   type: boolean
   inputBinding:
     prefix: -forceCompression
-- id: number_alignments_grab
-  doc: number of alignments to grab. Note - no duplicate checking is performed [10000]
-  type: string
+- id: in_number_alignments_grabnote
+  doc: "number of alignments to grab.\nNote - no duplicate checking is performed\n\
+    [10000]"
+  type: long
   inputBinding:
     prefix: -n
-- id: seed
-  doc: random number generator seed (for repeatable results). Current time is used
-    if no seed value is provided.
-  type: string
+- id: in_seed
+  doc: "random number generator seed\n(for repeatable results). Current time is\n\
+    used if no seed value is provided."
+  type: long
   inputBinding:
     prefix: -seed
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: the output BAM file [stdout]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - bamtools

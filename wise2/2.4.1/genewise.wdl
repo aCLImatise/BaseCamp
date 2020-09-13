@@ -4,4 +4,7 @@ task Genewise {
   command <<<
     genewise
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -10,10 +10,10 @@ task HgGcPercent {
     Boolean? no_dots
     Boolean? do_gaps
     Boolean? wig_out
-    String? overlap
+    Int? overlap
     String? verbose
-    String? bed_region_in
-    String? bed_region_out
+    File? bed_region_in
+    File? bed_region_out
     String database
     String nib_dir
   }
@@ -22,13 +22,13 @@ task HgGcPercent {
       ~{database} \
       ~{nib_dir} \
       ~{if defined(win) then ("-win " +  '"' + win + '"') else ""} \
-      ~{true="-noLoad" false="" no_load} \
+      ~{if (no_load) then "-noLoad" else ""} \
       ~{if defined(file) then ("-file " +  '"' + file + '"') else ""} \
       ~{if defined(chr) then ("-chr " +  '"' + chr + '"') else ""} \
-      ~{true="-noRandom" false="" no_random} \
-      ~{true="-noDots" false="" no_dots} \
-      ~{true="-doGaps" false="" do_gaps} \
-      ~{true="-wigOut" false="" wig_out} \
+      ~{if (no_random) then "-noRandom" else ""} \
+      ~{if (no_dots) then "-noDots" else ""} \
+      ~{if (do_gaps) then "-doGaps" else ""} \
+      ~{if (wig_out) then "-wigOut" else ""} \
       ~{if defined(overlap) then ("-overlap " +  '"' + overlap + '"') else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""} \
       ~{if defined(bed_region_in) then ("-bedRegionIn " +  '"' + bed_region_in + '"') else ""} \
@@ -49,5 +49,9 @@ task HgGcPercent {
     bed_region_out: "Write a bed file of GC content in specific regions from bedRegionIn"
     database: ""
     nib_dir: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_file = "${in_file}"
   }
 }

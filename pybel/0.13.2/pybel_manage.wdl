@@ -4,4 +4,7 @@ task PybelManage {
   command <<<
     pybel manage
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

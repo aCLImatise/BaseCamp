@@ -2,7 +2,7 @@ version 1.0
 
 task PathOverlap {
   input {
-    String? km_er
+    Int? km_er
     File? graph
     File? repeats
     Boolean? overlap
@@ -31,18 +31,18 @@ task PathOverlap {
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
       ~{if defined(repeats) then ("--repeats " +  '"' + repeats + '"') else ""} \
-      ~{true="--overlap" false="" overlap} \
-      ~{true="--assemble" false="" assemble} \
-      ~{true="--trim" false="" trim} \
-      ~{true="--adj" false="" output_graph_adj} \
-      ~{true="--asqg" false="" as_qg} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--gv" false="" gv} \
-      ~{true="--gfa" false="" gfa} \
-      ~{true="--sam" false="" sam} \
-      ~{true="--SS" false="" ss} \
-      ~{true="--no-SS" false="" no_ss} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (overlap) then "--overlap" else ""} \
+      ~{if (assemble) then "--assemble" else ""} \
+      ~{if (trim) then "--trim" else ""} \
+      ~{if (output_graph_adj) then "--adj" else ""} \
+      ~{if (as_qg) then "--asqg" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (gv) then "--gv" else ""} \
+      ~{if (gfa) then "--gfa" else ""} \
+      ~{if (sam) then "--sam" else ""} \
+      ~{if (ss) then "--SS" else ""} \
+      ~{if (no_ss) then "--no-SS" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
@@ -70,5 +70,8 @@ task PathOverlap {
     species: "specify species NAME for sqlite"
     contig_adjacency_graph: "contig adjacency graph"
     path: "sequences of contig IDs"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

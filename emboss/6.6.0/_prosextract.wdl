@@ -1,7 +1,10 @@
 version 1.0
 
-task _prosextract {
+task Prosextract {
   command <<<
     _prosextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

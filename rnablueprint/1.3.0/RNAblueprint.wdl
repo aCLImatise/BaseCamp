@@ -4,32 +4,36 @@ task RNAblueprint {
   input {
     Boolean? _be_verbose
     Boolean? _verbose_debugging
-    Boolean? _optional
-    Boolean? o
-    Boolean? g
+    Boolean? arg_input_file
+    File? arg_output_file
+    Boolean? arg_write_file
     Boolean? sample_stochastic_sampling
     Boolean? s
     Boolean? n
   }
   command <<<
     RNAblueprint \
-      ~{true="-v" false="" _be_verbose} \
-      ~{true="-d" false="" _verbose_debugging} \
-      ~{true="-i" false="" _optional} \
-      ~{true="-o" false="" o} \
-      ~{true="-g" false="" g} \
-      ~{true="-m" false="" sample_stochastic_sampling} \
-      ~{true="-s" false="" s} \
-      ~{true="-n" false="" n}
+      ~{if (_be_verbose) then "-v" else ""} \
+      ~{if (_verbose_debugging) then "-d" else ""} \
+      ~{if (arg_input_file) then "-i" else ""} \
+      ~{if (arg_output_file) then "-o" else ""} \
+      ~{if (arg_write_file) then "-g" else ""} \
+      ~{if (sample_stochastic_sampling) then "-m" else ""} \
+      ~{if (s) then "-s" else ""} \
+      ~{if (n) then "-n" else ""}
   >>>
   parameter_meta {
     _be_verbose: "[ --verbose ]             be verbose"
     _verbose_debugging: "[ --debug ]               be verbose for debugging"
-    _optional: "[ --in ] arg              input file which contains the structures,  sequence constraints and the start sequence  [string] structures: secondary structures in dot-bracket  notation. one structure per input  line sequence constraints: Permanent sequence  constraints in IUPAC  notation [ACGTUWSMKRYBDHVN ] (optional) start sequence:  A initial RNA sequence to start the sampling from [ACGU]  (optional)"
-    o: "[ --out ] arg             output file for writing the sequences (default:  stdout) [string]"
-    g: "[ --graphml ] arg         write a GraphML file representing the dependency graph to the given filename (optional) [string]"
-    sample_stochastic_sampling: "[ --mode ] arg (=sample)  mode for sequence generation [string]: sample: stochastic sampling of all positions  (default) sample-clocal: Only sample one connected  component at a time starting from an initial sequence sample-plocal: Sample only single paths starting from an initial sequence clocal-neighbors: Only find neighboring  sequences to the initial start sequence by sampling one  connected component only plocal-neighbors: Only find neighboring  sequences to the initial start sequence by sampling one path  only"
+    arg_input_file: "[ --in ] arg              input file which contains the structures,\\nsequence constraints and the start sequence\\n[string]\\nstructures: secondary structures in dot-bracket\\nnotation. one structure per input\\nline\\nsequence constraints: Permanent sequence\\nconstraints in IUPAC\\nnotation [ACGTUWSMKRYBDHVN\\n] (optional)\\nstart sequence:  A initial RNA sequence to start\\nthe sampling from [ACGU]\\n(optional)"
+    arg_output_file: "[ --out ] arg             output file for writing the sequences (default:\\nstdout) [string]"
+    arg_write_file: "[ --graphml ] arg         write a GraphML file representing the dependency\\ngraph to the given filename (optional) [string]"
+    sample_stochastic_sampling: "[ --mode ] arg (=sample)  mode for sequence generation [string]:\\nsample: stochastic sampling of all positions\\n(default)\\nsample-clocal: Only sample one connected\\ncomponent at a time starting from\\nan initial sequence\\nsample-plocal: Sample only single paths starting\\nfrom an initial sequence\\nclocal-neighbors: Only find neighboring\\nsequences to the initial start\\nsequence by sampling one\\nconnected component only\\nplocal-neighbors: Only find neighboring\\nsequences to the initial start\\nsequence by sampling one path\\nonly"
     s: "[ --seed ] arg            random number generator seed [unsigned long]"
     n: "[ --num ] arg (=10)       number of designs (default: 10) [unsigned int]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_arg_output_file = "${in_arg_output_file}"
   }
 }

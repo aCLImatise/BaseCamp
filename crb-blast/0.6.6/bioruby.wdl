@@ -4,4 +4,7 @@ task Bioruby {
   command <<<
     bioruby
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

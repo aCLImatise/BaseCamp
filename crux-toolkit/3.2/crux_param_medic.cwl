@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../crux_param_medic.cwl
 inputs:
-- id: spectrum_file
+- id: in_spectrum_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crux

@@ -2,10 +2,10 @@ version 1.0
 
 task SplashTurnover {
   input {
-    String? bed
+    File? bed
     Int? min_half_life
     Int? max_half_life
-    String? output_dir
+    Directory? output_dir
   }
   command <<<
     splash turnover \
@@ -18,6 +18,10 @@ task SplashTurnover {
     bed: "BED file"
     min_half_life: "Lower bound for the simulated half lifes in minutes"
     max_half_life: "Upper bound for the simulated half lifes in minutes"
-    output_dir: "Output directory for mapped BAM files."
+    output_dir: "Output directory for mapped BAM files.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

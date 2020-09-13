@@ -13,22 +13,38 @@ task Esearch {
     Boolean? pairs
     Boolean? spell
     Boolean? label
+    String gene
+    String geo_profiles
+    String deviation
+    String outliers
+    String pubmed
+    String journal
+    String relevance
+    String accession
     String snp
   }
   command <<<
     esearch \
+      ~{gene} \
+      ~{geo_profiles} \
+      ~{deviation} \
+      ~{outliers} \
+      ~{pubmed} \
+      ~{journal} \
+      ~{relevance} \
+      ~{accession} \
       ~{snp} \
-      ~{true="-db" false="" db} \
-      ~{true="-query" false="" query} \
-      ~{true="-sort" false="" sort} \
-      ~{true="-days" false="" days} \
-      ~{true="-datetype" false="" date_type} \
-      ~{true="-mindate" false="" min_date} \
-      ~{true="-maxdate" false="" maxdate} \
-      ~{true="-field" false="" field} \
-      ~{true="-pairs" false="" pairs} \
-      ~{true="-spell" false="" spell} \
-      ~{true="-label" false="" label}
+      ~{if (db) then "-db" else ""} \
+      ~{if (query) then "-query" else ""} \
+      ~{if (sort) then "-sort" else ""} \
+      ~{if (days) then "-days" else ""} \
+      ~{if (date_type) then "-datetype" else ""} \
+      ~{if (min_date) then "-mindate" else ""} \
+      ~{if (maxdate) then "-maxdate" else ""} \
+      ~{if (field) then "-field" else ""} \
+      ~{if (pairs) then "-pairs" else ""} \
+      ~{if (spell) then "-spell" else ""} \
+      ~{if (label) then "-label" else ""}
   >>>
   parameter_meta {
     db: "Database name"
@@ -42,6 +58,17 @@ task Esearch {
     pairs: "Query overlapping word pairs"
     spell: "Correct misspellings in query"
     label: "Alias for query step"
-    snp: "Chromosome Base Position Default Order Heterozygosity Organism SNP_ID Success Rate"
+    gene: "Chromosome\\nGene Weight\\nName\\nRelevance"
+    geo_profiles: "Default Order"
+    deviation: "Mean Value"
+    outliers: "Subgroup Effect"
+    pubmed: "First Author"
+    journal: "Last Author"
+    relevance: "Title"
+    accession: "Date Modified"
+    snp: "Chromosome Base Position\\nDefault Order\\nHeterozygosity\\nOrganism\\nSNP_ID\\nSuccess Rate\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

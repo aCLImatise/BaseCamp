@@ -6,9 +6,12 @@ task Fasta2DB {
   }
   command <<<
     fasta2DB \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

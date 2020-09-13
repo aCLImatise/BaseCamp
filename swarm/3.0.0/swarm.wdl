@@ -29,20 +29,20 @@ task Swarm {
       ~{fast_a_file} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(differences) then ("--differences " +  '"' + differences + '"') else ""} \
-      ~{true="--no-otu-breaking" false="" no_otu_breaking} \
+      ~{if (no_otu_breaking) then "--no-otu-breaking" else ""} \
       ~{if defined(boundary) then ("--boundary " +  '"' + boundary + '"') else ""} \
       ~{if defined(ceiling) then ("--ceiling " +  '"' + ceiling + '"') else ""} \
-      ~{true="--fastidious" false="" fastidious} \
+      ~{if (fastidious) then "--fastidious" else ""} \
       ~{if defined(bloom_bits) then ("--bloom-bits " +  '"' + bloom_bits + '"') else ""} \
       ~{if defined(append_abundance) then ("--append-abundance " +  '"' + append_abundance + '"') else ""} \
       ~{if defined(internal_structure) then ("--internal-structure " +  '"' + internal_structure + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
-      ~{true="--mothur" false="" mo_thur} \
+      ~{if (mo_thur) then "--mothur" else ""} \
       ~{if defined(statistics_file) then ("--statistics-file " +  '"' + statistics_file + '"') else ""} \
       ~{if defined(uc_lust_file) then ("--uclust-file " +  '"' + uc_lust_file + '"') else ""} \
       ~{if defined(seeds) then ("--seeds " +  '"' + seeds + '"') else ""} \
-      ~{true="--usearch-abundance" false="" u_search_abundance} \
+      ~{if (u_search_abundance) then "--usearch-abundance" else ""} \
       ~{if defined(match_reward) then ("--match-reward " +  '"' + match_reward + '"') else ""} \
       ~{if defined(mismatch_penalty) then ("--mismatch-penalty " +  '"' + mismatch_penalty + '"') else ""} \
       ~{if defined(gap_opening_penalty) then ("--gap-opening-penalty " +  '"' + gap_opening_penalty + '"') else ""} \
@@ -70,5 +70,10 @@ task Swarm {
     gap_opening_penalty: "gap open penalty (12)"
     gap_extension_penalty: "gap extension penalty (4)"
     fast_a_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+    File out_uc_lust_file = "${in_uc_lust_file}"
   }
 }

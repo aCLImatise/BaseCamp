@@ -4,4 +4,7 @@ task BlastzWrapper {
   command <<<
     blastzWrapper
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../tepid_refine.cwl
 inputs:
-- id: keep
+- id: in_keep
   doc: keep all intermediate files
   type: boolean
   inputBinding:
     prefix: --keep
-- id: insertions
-  doc: File containing collapsed TE insertions for all samples in population
-  type: string
+- id: in_insertions
+  doc: "File containing collapsed TE insertions for all\nsamples in population"
+  type: File
   inputBinding:
     prefix: --insertions
-- id: deletions
-  doc: File containing collapsed TE deletions for all samples in population
-  type: string
+- id: in_deletions
+  doc: "File containing collapsed TE deletions for all samples\nin population"
+  type: File
   inputBinding:
     prefix: --deletions
-- id: proc
+- id: in_proc
   doc: number of processors
-  type: string
+  type: long
   inputBinding:
     prefix: --proc
-- id: te
+- id: in_te
   doc: TE annotation bedfile
   type: string
   inputBinding:
     prefix: --te
-- id: name
+- id: in_name
   doc: sample name
   type: string
   inputBinding:
     prefix: --name
-- id: conc
+- id: in_conc
   doc: bam file from bowtie2
-  type: string
+  type: File
   inputBinding:
     prefix: --conc
-- id: split
+- id: in_split
   doc: split reads bam file from yaha
-  type: string
+  type: File
   inputBinding:
     prefix: --split
-- id: all_samples
-  doc: List of all sample names
+- id: in_all_samples
+  doc: "List of all sample names\n"
   type: string
   inputBinding:
     prefix: --all_samples
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tepid-refine

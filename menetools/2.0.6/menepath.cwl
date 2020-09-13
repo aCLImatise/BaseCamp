@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../menepath.cwl
 inputs:
-- id: draft_net
+- id: in_draft_net
   doc: metabolic network in SBML format
   type: string
   inputBinding:
     prefix: --draftnet
-- id: seeds
+- id: in_seeds
   doc: seeds in SBML format
   type: string
   inputBinding:
     prefix: --seeds
-- id: targets
+- id: in_targets
   doc: targets in SBML format
   type: string
   inputBinding:
     prefix: --targets
-- id: min
+- id: in_min
   doc: call this option to obtain minimal-size paths
   type: boolean
   inputBinding:
     prefix: --min
-- id: enumerate
+- id: in_enumerate
   doc: call this option for an enumeration of solutions
   type: boolean
   inputBinding:
     prefix: --enumerate
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - menepath

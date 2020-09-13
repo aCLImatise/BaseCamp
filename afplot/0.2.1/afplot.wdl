@@ -4,4 +4,7 @@ task Afplot {
   command <<<
     afplot
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

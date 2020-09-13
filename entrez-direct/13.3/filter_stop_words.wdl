@@ -1,7 +1,10 @@
 version 1.0
 
-task FilterStopWords {
+task Filterstopwords {
   command <<<
-    filter-stop-words
+    filter_stop_words
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

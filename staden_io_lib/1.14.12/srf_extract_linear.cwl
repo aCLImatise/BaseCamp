@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../srf_extract_linear.cwl
 inputs:
-- id: extract_linear_srf
+- id: in_extract_linear_srf
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: archive_name
+- id: in_archive_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: trace_name
+- id: in_trace_name
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - srf_extract_linear

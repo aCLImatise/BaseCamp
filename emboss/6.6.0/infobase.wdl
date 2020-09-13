@@ -4,4 +4,7 @@ task Infobase {
   command <<<
     infobase
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

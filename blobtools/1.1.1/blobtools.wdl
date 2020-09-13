@@ -4,4 +4,7 @@ task Blobtools {
   command <<<
     blobtools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

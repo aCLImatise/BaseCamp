@@ -4,19 +4,19 @@ task HmmpgmdShard {
   input {
     Boolean? master
     String? worker
-    String? c_port
-    String? w_port
-    String? cc_ncts
-    String? wcnc_ts
-    String? pid
+    Int? c_port
+    Int? w_port
+    Int? cc_ncts
+    Int? wcnc_ts
+    File? pid
     String? seq_db
     String? hmm_db
-    String? cpu
-    String? num_shards
+    Int? cpu
+    Int? num_shards
   }
   command <<<
     hmmpgmd_shard \
-      ~{true="--master" false="" master} \
+      ~{if (master) then "--master" else ""} \
       ~{if defined(worker) then ("--worker " +  '"' + worker + '"') else ""} \
       ~{if defined(c_port) then ("--cport " +  '"' + c_port + '"') else ""} \
       ~{if defined(w_port) then ("--wport " +  '"' + w_port + '"') else ""} \
@@ -40,5 +40,8 @@ task HmmpgmdShard {
     hmm_db: ": hmm database to cache for searches"
     cpu: ": number of parallel CPU workers to use for multithreads  [2]"
     num_shards: ": number of worker nodes that will connect to the master  [1]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

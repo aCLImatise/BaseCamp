@@ -2,7 +2,7 @@ version 1.0
 
 task Luciphor2 {
   input {
-    String? jar
+    Int? jar
     String java
     String input_file
   }
@@ -16,5 +16,8 @@ task Luciphor2 {
     jar: ""
     java: ""
     input_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

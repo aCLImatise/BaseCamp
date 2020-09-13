@@ -4,4 +4,7 @@ task Bamrecalculatecigar {
   command <<<
     bamrecalculatecigar
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

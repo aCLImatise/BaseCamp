@@ -4,4 +4,7 @@ task VcfSummary {
   command <<<
     vcfSummary
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

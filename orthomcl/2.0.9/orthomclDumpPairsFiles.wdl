@@ -23,4 +23,7 @@ task OrthomclDumpPairsFiles {
     potential_in_paralogs_dot_txt: "- inparalog relationships"
     potential_co_orthologs_dot_txt: "- coortholog relationships"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

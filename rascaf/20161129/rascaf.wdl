@@ -2,15 +2,15 @@ version 1.0
 
 task Rascaf {
   input {
-    String? required_path_coordinatesorted
-    String? recommended_paths_used
-    String? prefix_output_file
-    String? bc
+    File? required_path_coordinatesorted
+    File? recommended_paths_used
+    File? prefix_output_file
+    File? bc
     Int? ms
     Int? ml
     Int? break_n
     Int? size_you_want
-    Boolean? cs
+    File? cs
     Boolean? verbose_mode_default
   }
   command <<<
@@ -23,8 +23,8 @@ task Rascaf {
       ~{if defined(ml) then ("-ml " +  '"' + ml + '"') else ""} \
       ~{if defined(break_n) then ("-breakN " +  '"' + break_n + '"') else ""} \
       ~{if defined(size_you_want) then ("-k " +  '"' + size_you_want + '"') else ""} \
-      ~{true="-cs" false="" cs} \
-      ~{true="-v" false="" verbose_mode_default}
+      ~{if (cs) then "-cs" else ""} \
+      ~{if (verbose_mode_default) then "-v" else ""}
   >>>
   parameter_meta {
     required_path_coordinatesorted: "(required): the path to the coordinate-sorted alignment BAM file"
@@ -37,5 +37,10 @@ task Rascaf {
     size_you_want: ": the size of a kmer(<=32; <=0 if you do not want to use kmer. default: 23)"
     cs: ": output the genomic sequence involved in connections in file $prefix_cs.fa (default: not used)"
     verbose_mode_default: ": verbose mode (default: false)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_prefix_output_file = "${in_prefix_output_file}"
+    File out_cs = "${in_cs}"
   }
 }

@@ -1,6 +1,6 @@
 version 1.0
 
-task BlCoverage {
+task Blcoverage {
   input {
     Boolean? specify_sam_file
     Boolean? sam_input_single
@@ -8,16 +8,19 @@ task BlCoverage {
     String coverage
   }
   command <<<
-    bl-coverage \
+    bl_coverage \
       ~{coverage} \
-      ~{true="-i" false="" specify_sam_file} \
-      ~{true="-1" false="" sam_input_single} \
+      ~{if (specify_sam_file) then "-i" else ""} \
+      ~{if (sam_input_single) then "-1" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
     specify_sam_file: "specify SAM input file"
-    sam_input_single: "SAM input has a single reference: report coverage for each index in the reference"
+    sam_input_single: "SAM input has a single reference: report coverage for each index\\nin the reference\\n"
     o: ""
     coverage: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

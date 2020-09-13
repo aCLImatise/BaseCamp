@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../prophecy.cwl
 inputs:
-- id: type
-  doc: 'menu       [F] Select type (Values: F (Frequency); G (Gribskov); H (Henikoff))'
+- id: in_type
+  doc: "menu       [F] Select type (Values: F (Frequency); G\n(Gribskov); H (Henikoff))"
   type: boolean
   inputBinding:
     prefix: -type
-- id: name
-  doc: string     [mymatrix] Enter a name for the profile (Any string)
+- id: in_name
+  doc: "string     [mymatrix] Enter a name for the profile (Any\nstring)"
   type: boolean
   inputBinding:
     prefix: -name
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - prophecy

@@ -1,6 +1,6 @@
 version 1.0
 
-task _gdtopng {
+task Gdtopng {
   input {
     String gd_to_png
     File filename_dot_gd
@@ -16,5 +16,8 @@ task _gdtopng {
     gd_to_png: ""
     filename_dot_gd: ""
     filename_dot_png: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

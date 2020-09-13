@@ -4,4 +4,7 @@ task AssemblyPostProcessor {
   command <<<
     AssemblyPostProcessor
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

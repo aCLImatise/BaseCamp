@@ -1,20 +1,23 @@
 version 1.0
 
-task MbGenerateNegativeSet {
+task Mbgeneratenegativeset {
   input {
-    String? number
-    String? width
+    Int? number
+    Int? width
     Boolean? verbose
   }
   command <<<
-    mb-generate-negative-set \
+    mb_generate_negative_set \
       ~{if defined(number) then ("--number " +  '"' + number + '"') else ""} \
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     number: "set number or random drawings"
     width: "set number or nt +/- selected position"
     verbose: "verbose output"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

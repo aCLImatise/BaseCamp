@@ -13,25 +13,25 @@ task Vcffilter {
     Boolean? invert
     Boolean? or
     Boolean? region
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcffilter \
       ~{vcf_file} \
-      ~{true="--info-filter" false="" info_filter} \
+      ~{if (info_filter) then "--info-filter" else ""} \
       ~{if defined(genotype_filter) then ("--genotype-filter " +  '"' + genotype_filter + '"') else ""} \
-      ~{true="--keep-info" false="" keep_info} \
-      ~{true="--filter-sites" false="" filter_sites} \
-      ~{true="--tag-pass" false="" tag_pass} \
-      ~{true="--tag-fail" false="" tag_fail} \
-      ~{true="--append-filter" false="" append_filter} \
-      ~{true="--allele-tag" false="" allele_tag} \
-      ~{true="--invert" false="" invert} \
-      ~{true="--or" false="" or} \
-      ~{true="--region" false="" region}
+      ~{if (keep_info) then "--keep-info" else ""} \
+      ~{if (filter_sites) then "--filter-sites" else ""} \
+      ~{if (tag_pass) then "--tag-pass" else ""} \
+      ~{if (tag_fail) then "--tag-fail" else ""} \
+      ~{if (append_filter) then "--append-filter" else ""} \
+      ~{if (allele_tag) then "--allele-tag" else ""} \
+      ~{if (invert) then "--invert" else ""} \
+      ~{if (or) then "--or" else ""} \
+      ~{if (region) then "--region" else ""}
   >>>
   parameter_meta {
-    info_filter: "specifies a filter to apply to the info fields of records, removes alleles which do not pass the filter"
+    info_filter: "specifies a filter to apply to the info fields of records,\\nremoves alleles which do not pass the filter"
     genotype_filter: "a filter to apply to the genotype fields of records"
     keep_info: "used in conjunction with '-g', keeps variant info, but removes genotype"
     filter_sites: "filter entire records, not just alleles"
@@ -41,7 +41,10 @@ task Vcffilter {
     allele_tag: "apply -t on a per-allele basis.  adds or sets the corresponding INFO field tag"
     invert: "inverts the filter, e.g. grep -v"
     or: "use logical OR instead of AND to combine filters"
-    region: "specify a region on which to target the filtering, requires a BGZF compressed file which has been indexed with tabix.  any number of regions may be specified."
+    region: "specify a region on which to target the filtering, requires a BGZF\\ncompressed file which has been indexed with tabix.  any number of\\nregions may be specified."
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

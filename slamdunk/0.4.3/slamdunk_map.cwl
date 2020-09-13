@@ -1,79 +1,87 @@
 class: CommandLineTool
 id: ../../../slamdunk_map.cwl
 inputs:
-- id: reference
+- id: in_reference
   doc: Reference fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: output_dir
+- id: in_output_dir
   doc: Output directory for mapped BAM files.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outputDir
-- id: trim_five_p
-  doc: "Number of bp removed from 5' end of all reads. (default: 12)"
-  type: string
+- id: in_trim_five_p
+  doc: "Number of bp removed from 5' end of all reads.\n(default: 12)"
+  type: long
   inputBinding:
     prefix: --trim-5p
-- id: top_n
-  doc: 'Max. number of alignments to report per read (default: 1)'
-  type: string
+- id: in_top_n
+  doc: "Max. number of alignments to report per read (default:\n1)"
+  type: long
   inputBinding:
     prefix: --topn
-- id: max_polya
+- id: in_max_polya
   doc: "Max number of As at the 3' end of a read. (default: 4)"
   type: long
   inputBinding:
     prefix: --max-polya
-- id: threads
+- id: in_threads
   doc: 'Thread number (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: quant_seq
-  doc: 'Run plain Quantseq alignment without SLAM-seq scoring (default: False)'
+- id: in_quant_seq
+  doc: "Run plain Quantseq alignment without SLAM-seq scoring\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --quantseq
-- id: end_to_end
-  doc: 'Use a end to end alignment algorithm for mapping. (default: False)'
+- id: in_end_to_end
+  doc: "Use a end to end alignment algorithm for mapping.\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --endtoend
-- id: sample_name
-  doc: 'Use this sample name for all supplied samples (default: None)'
+- id: in_sample_name
+  doc: "Use this sample name for all supplied samples\n(default: None)"
   type: string
   inputBinding:
     prefix: --sampleName
-- id: sample_type
-  doc: 'Use this sample type for all supplied samples (default: pulse)'
+- id: in_sample_type
+  doc: "Use this sample type for all supplied samples\n(default: pulse)"
   type: string
   inputBinding:
     prefix: --sampleType
-- id: sample_time
-  doc: 'Use this sample time for all supplied samples (default: 0)'
-  type: string
+- id: in_sample_time
+  doc: "Use this sample time for all supplied samples\n(default: 0)"
+  type: long
   inputBinding:
     prefix: --sampleTime
-- id: sample_index
-  doc: 'Run analysis only for sample <i>. Use for distributing slamdunk analysis on
-    a cluster (index is 1-based). (default: -1)'
-  type: string
+- id: in_sample_index
+  doc: "Run analysis only for sample <i>. Use for distributing\nslamdunk analysis\
+    \ on a cluster (index is 1-based).\n(default: -1)"
+  type: long
   inputBinding:
     prefix: --sample-index
-- id: skip_sam
-  doc: 'Output BAM while mapping. Slower but, uses less hard disk. (default: False)'
+- id: in_skip_sam
+  doc: "Output BAM while mapping. Slower but, uses less hard\ndisk. (default: False)\n"
   type: boolean
   inputBinding:
     prefix: --skip-sam
-- id: files
-  doc: Single csv/tsv file (recommended) containing all sample files and sample info
-    or a list of all sample BAM/FASTA(gz)/FASTQ(gz) files
-  type: File
+- id: in_files
+  doc: "Single csv/tsv file (recommended) containing all\nsample files and sample\
+    \ info or a list of all sample\nBAM/FASTA(gz)/FASTQ(gz) files"
+  type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: Output directory for mapped BAM files.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - slamdunk

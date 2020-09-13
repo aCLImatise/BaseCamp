@@ -2,7 +2,7 @@ version 1.0
 
 task PipitsPhylotypeBiom {
   input {
-    String? _biom_file
+    File? _biom_file
     File? phylotype_txt_file
     Int? classification_level_species
   }
@@ -15,6 +15,9 @@ task PipitsPhylotypeBiom {
   parameter_meta {
     _biom_file: "[REQUIRED] BIOM file"
     phylotype_txt_file: "[REQUIRED] PHYLOTYPE txt file"
-    classification_level_species: "[REQUIRED] Classification Level. 6 = species, 5 = genus, 4 = family, 3 = order, 2 = class, 1 = phylum"
+    classification_level_species: "[REQUIRED] Classification Level. 6 = species, 5 = genus, 4 =\\nfamily, 3 = order, 2 = class, 1 = phylum\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,16 +1,16 @@
 version 1.0
 
-task AbruijnPolish {
+task Abruijnpolish {
   input {
-    String? path_file_verbose
-    String? number_parallel_threads
+    File? path_file_verbose
+    Int? number_parallel_threads
     String bubbles_file
     String subs_matrix
     String hop_o_matrix
     String out_file
   }
   command <<<
-    abruijn-polish \
+    abruijn_polish \
       ~{bubbles_file} \
       ~{subs_matrix} \
       ~{hop_o_matrix} \
@@ -25,5 +25,8 @@ task AbruijnPolish {
     subs_matrix: "path to substitution matrix"
     hop_o_matrix: "path to homopolymer matrix"
     out_file: "path to output file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

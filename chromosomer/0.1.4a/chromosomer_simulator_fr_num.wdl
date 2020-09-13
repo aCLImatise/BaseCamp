@@ -2,8 +2,8 @@ version 1.0
 
 task ChromosomerSimulatorFrNum {
   input {
-    String? g
     String? p
+    Int? g
     String chromosome_r
     String simulator
   }
@@ -11,13 +11,16 @@ task ChromosomerSimulatorFrNum {
     chromosomer simulator fr_num \
       ~{chromosome_r} \
       ~{simulator} \
-      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
   parameter_meta {
-    g: ""
     p: ""
+    g: ""
     chromosome_r: ""
     simulator: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

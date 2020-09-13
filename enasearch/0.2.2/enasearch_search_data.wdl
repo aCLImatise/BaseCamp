@@ -6,7 +6,7 @@ task EnasearchSearchData {
     String? query
     String? result
     String? display
-    String? download
+    File? download
     File? file
     String? fields
     String? sort_fields
@@ -15,7 +15,7 @@ task EnasearchSearchData {
   }
   command <<<
     enasearch search_data \
-      ~{true="--free_text_search" false="" free_text_search} \
+      ~{if (free_text_search) then "--free_text_search" else ""} \
       ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
       ~{if defined(result) then ("--result " +  '"' + result + '"') else ""} \
       ~{if defined(display) then ("--display " +  '"' + display + '"') else ""} \
@@ -27,15 +27,18 @@ task EnasearchSearchData {
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""}
   >>>
   parameter_meta {
-    free_text_search: "Use free text search, otherwise the data warehouse is used"
-    query: "Query string, made up of filtering conditions, joined by logical ANDs, ORs and NOTs and bound by double quotes; the filter fields for a query are accessible with get_filter_fields and the type of filters with get_filter_types  [required]"
-    result: "Id of a result (accessible with get_results) [required]"
-    display: "Display option to specify the display format (accessible with get_display_options)  [required]"
-    download: "Download option to specify that records are to be saved in a file (used with file option, list accessible with get_download_options)"
-    file: "File to save the content of the search (used with download option)"
-    fields: "Fields to return (accessible with get_returnable_fields, used only for report as display value) [multiple or comma-separated]"
-    sort_fields: "Fields to sort the results (accessible with get_sortable_fields, used only for report as display value) [multiple or comma-separated]"
-    offset: "RANGE  First record to get (used only for display different of fasta and fastq"
-    length: "RANGE  Number of records to retrieve (used only for display different of fasta and fastq"
+    free_text_search: "Use free text search, otherwise the data warehouse\\nis used"
+    query: "Query string, made up of filtering conditions,\\njoined by logical ANDs, ORs and NOTs and bound by\\ndouble quotes; the filter fields for a query are\\naccessible with get_filter_fields and the type of\\nfilters with get_filter_types  [required]"
+    result: "Id of a result (accessible with get_results)\\n[required]"
+    display: "Display option to specify the display format\\n(accessible with get_display_options)  [required]"
+    download: "Download option to specify that records are to be\\nsaved in a file (used with file option, list\\naccessible with get_download_options)"
+    file: "File to save the content of the search (used with\\ndownload option)"
+    fields: "Fields to return (accessible with\\nget_returnable_fields, used only for report as\\ndisplay value) [multiple or comma-separated]"
+    sort_fields: "Fields to sort the results (accessible with\\nget_sortable_fields, used only for report as display\\nvalue) [multiple or comma-separated]"
+    offset: "RANGE  First record to get (used only for display different\\nof fasta and fastq"
+    length: "RANGE  Number of records to retrieve (used only for display\\ndifferent of fasta and fastq"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

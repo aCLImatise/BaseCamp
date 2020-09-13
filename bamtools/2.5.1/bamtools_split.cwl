@@ -1,58 +1,51 @@
 class: CommandLineTool
 id: ../../../bamtools_split.cwl
 inputs:
-- id: in
+- id: in_in
   doc: the input BAM file [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: ref_prefix
-  doc: custom prefix for splitting by references. Currently files end with REF_<refName>.bam.
-    This option allows you to replace "REF_" with a prefix of your choosing.
+- id: in_ref_prefix
+  doc: "custom prefix for splitting by\nreferences. Currently files end with\nREF_<refName>.bam.\
+    \ This option allows you\nto replace \"REF_\" with a prefix of your\nchoosing."
   type: string
   inputBinding:
     prefix: -refPrefix
-- id: tag_prefix
-  doc: custom prefix for splitting by tags. Current files end with TAG_<tagname>_<tagvalue>.bam.
-    This option allows you to replace "TAG_" with a prefix of your choosing.
+- id: in_tag_prefix
+  doc: "custom prefix for splitting by\ntags. Current files end with\nTAG_<tagname>_<tagvalue>.bam.\
+    \ This option\nallows you to replace \"TAG_\" with a prefix\nof your choosing."
   type: string
   inputBinding:
     prefix: -tagPrefix
-- id: stub
-  doc: prefix stub for output BAM files (default behavior is to use input filename,
-    without .bam extension, as stub). If input is stdin and no stub provided, a timestamp
-    is generated as the stub.
+- id: in_stub
+  doc: "prefix stub for output BAM\nfiles (default behavior is to use input\nfilename,\
+    \ without .bam extension, as\nstub). If input is stdin and no stub\nprovided,\
+    \ a timestamp is generated as the\nstub."
   type: File
   inputBinding:
     prefix: -stub
-- id: taglist_delim
-  doc: delimiter used to separate values in the filenames generated from splitting
-    on list-type tags [--]
+- id: in_taglist_delim
+  doc: "delimiter used to separate\nvalues in the filenames generated from\nsplitting\
+    \ on list-type tags [--]"
   type: string
   inputBinding:
     prefix: -tagListDelim
-- id: mapped
-  doc: split mapped/unmapped alignments
+- id: in_mapped
+  doc: split mapped/unmapped
   type: boolean
   inputBinding:
     prefix: -mapped
-- id: paired
-  doc: split single-end/paired-end alignments
-  type: boolean
-  inputBinding:
-    prefix: -paired
-- id: reference
-  doc: split alignments by reference
-  type: boolean
-  inputBinding:
-    prefix: -reference
-- id: tag
-  doc: splits alignments based on all values of TAG encountered (i.e. -tag RG creates
-    a BAM file for each read group in original BAM file)
-  type: string
+- id: in_tag
+  doc: "splits alignments based on all\nvalues of TAG encountered (i.e. -tag RG\n\
+    creates a BAM file for each read group in\noriginal BAM file)"
+  type: File
   inputBinding:
     prefix: -tag
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bamtools

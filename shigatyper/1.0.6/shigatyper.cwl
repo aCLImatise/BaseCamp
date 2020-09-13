@@ -1,27 +1,20 @@
 class: CommandLineTool
 id: ../../../shigatyper.cwl
 inputs:
-- id: n
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -n
-- id: verbose
+- id: in_verbose
   doc: ''
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: read_one
+- id: in_n
   doc: ''
   type: string
   inputBinding:
-    position: 0
-- id: read_two
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+    prefix: -n
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - shigatyper

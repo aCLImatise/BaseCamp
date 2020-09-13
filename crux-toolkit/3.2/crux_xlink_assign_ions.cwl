@@ -1,47 +1,45 @@
 class: CommandLineTool
 id: ../../../crux_xlink_assign_ions.cwl
 inputs:
-- id: peptide_a
+- id: in_peptide_a
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: peptide_b
+- id: in_peptide_b
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: pos_a
+- id: in_pos_a
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: pos_b
+- id: in_pos_b
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: link_mass
+- id: in_link_mass
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: charge_state
+- id: in_charge_state
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: scan_number
+- id: in_scan_number
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 6
-- id: ms_two_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 7
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crux

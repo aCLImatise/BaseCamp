@@ -4,4 +4,7 @@ task Fixlib {
   command <<<
     fixlib
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

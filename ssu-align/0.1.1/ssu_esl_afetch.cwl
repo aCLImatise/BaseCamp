@@ -1,42 +1,60 @@
 class: CommandLineTool
 id: ../../../ssu_esl_afetch.cwl
 inputs:
-- id: second_cmdline_arg
+- id: in_second_cmdline_arg
   doc: ': second cmdline arg is a file of names to retrieve'
   type: boolean
   inputBinding:
     prefix: -f
-- id: output_alignments_file
+- id: in_output_alignments_file
   doc: ': output alignments to file <f> instead of stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: output_alignment_file
+- id: in_output_alignment_file
   doc: ': output alignment to file named <key>'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -O
-- id: in_format
+- id: in_in_format
   doc: ': specify that <msafile> is in format <s>'
   type: string
   inputBinding:
     prefix: --informat
-- id: index
+- id: in_index
   doc: ': index the <msafile>, creating <msafile>.ssi'
   type: boolean
   inputBinding:
     prefix: --index
-- id: msa_file
+- id: in_msa_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: name
+- id: in_name_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_alignments_file
+  doc: ': output alignments to file <f> instead of stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_alignments_file)
+- id: out_output_alignment_file
+  doc: ': output alignment to file named <key>'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_alignment_file)
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-afetch

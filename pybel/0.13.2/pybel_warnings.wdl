@@ -11,4 +11,7 @@ task PybelWarnings {
   parameter_meta {
     path: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

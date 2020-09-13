@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../KinamineY_shaker.cwl
 inputs:
-- id: jar
+- id: in_jar
   doc: ''
   type: string
   inputBinding:
     prefix: -jar
-- id: java
+- id: in_java
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: protein_pilot_distinct_peptide_summary
+- id: in_protein_pilot_distinct_peptide_summary
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: fast_a
+- id: in_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: output_dir
+- id: in_output_dir
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: fdr
+- id: in_fdr
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - KinamineY-shaker

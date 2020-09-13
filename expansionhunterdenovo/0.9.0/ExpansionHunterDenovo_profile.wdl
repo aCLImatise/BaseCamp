@@ -2,13 +2,13 @@ version 1.0
 
 task ExpansionHunterDenovoProfile {
   input {
-    String? reads
-    String? reference
+    File? reads
+    File? reference
     String? output_prefix
-    String? min_unit_len
-    String? max_unit_len
-    String? min_anchor_mapq
-    String? max_irr_mapq
+    Int? min_unit_len
+    Int? max_unit_len
+    Int? min_anchor_mapq
+    Int? max_irr_mapq
     Boolean? log_reads
   }
   command <<<
@@ -20,7 +20,7 @@ task ExpansionHunterDenovoProfile {
       ~{if defined(max_unit_len) then ("--max-unit-len " +  '"' + max_unit_len + '"') else ""} \
       ~{if defined(min_anchor_mapq) then ("--min-anchor-mapq " +  '"' + min_anchor_mapq + '"') else ""} \
       ~{if defined(max_irr_mapq) then ("--max-irr-mapq " +  '"' + max_irr_mapq + '"') else ""} \
-      ~{true="--log-reads" false="" log_reads}
+      ~{if (log_reads) then "--log-reads" else ""}
   >>>
   parameter_meta {
     reads: "BAM or CRAM file with aligned reads"
@@ -31,5 +31,8 @@ task ExpansionHunterDenovoProfile {
     min_anchor_mapq: "(=50) Minimum MAPQ of an anchor read"
     max_irr_mapq: "(=40)    Maximum MAPQ of an in-repeat read"
     log_reads: "Log informative reads"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

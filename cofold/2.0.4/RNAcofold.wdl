@@ -4,56 +4,59 @@ task RNAcofold {
   input {
     Boolean? detailed_help
     Boolean? full_help
-    Boolean? constraint
     Boolean? noconv
     Boolean? nops
     Boolean? part_func
     Boolean? all_pf
     Boolean? concentrations
     File? conc_file
-    String? temp
+    Int? temp
     Boolean? no_tetra
     Int? dangles
     Boolean? no_lp
     Boolean? no_gu
     Boolean? no_closing_gu
-    String? param_file
+    File? param_file
+    String program
   }
   command <<<
     RNAcofold \
-      ~{true="--detailed-help" false="" detailed_help} \
-      ~{true="--full-help" false="" full_help} \
-      ~{true="--constraint" false="" constraint} \
-      ~{true="--noconv" false="" noconv} \
-      ~{true="--noPS" false="" nops} \
-      ~{true="--partfunc" false="" part_func} \
-      ~{true="--all_pf" false="" all_pf} \
-      ~{true="--concentrations" false="" concentrations} \
+      ~{program} \
+      ~{if (detailed_help) then "--detailed-help" else ""} \
+      ~{if (full_help) then "--full-help" else ""} \
+      ~{if (noconv) then "--noconv" else ""} \
+      ~{if (nops) then "--noPS" else ""} \
+      ~{if (part_func) then "--partfunc" else ""} \
+      ~{if (all_pf) then "--all_pf" else ""} \
+      ~{if (concentrations) then "--concentrations" else ""} \
       ~{if defined(conc_file) then ("--concfile " +  '"' + conc_file + '"') else ""} \
       ~{if defined(temp) then ("--temp " +  '"' + temp + '"') else ""} \
-      ~{true="--noTetra" false="" no_tetra} \
+      ~{if (no_tetra) then "--noTetra" else ""} \
       ~{if defined(dangles) then ("--dangles " +  '"' + dangles + '"') else ""} \
-      ~{true="--noLP" false="" no_lp} \
-      ~{true="--noGU" false="" no_gu} \
-      ~{true="--noClosingGU" false="" no_closing_gu} \
+      ~{if (no_lp) then "--noLP" else ""} \
+      ~{if (no_gu) then "--noGU" else ""} \
+      ~{if (no_closing_gu) then "--noClosingGU" else ""} \
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""}
   >>>
   parameter_meta {
-    detailed_help: "Print help, including all details and hidden  options, and exit"
+    detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"
-    constraint: "Calculate structures subject to constraints. (default=off)"
-    noconv: "Do not automatically substitude nucleotide  \"T\" with \"U\" (default=off)"
-    nops: "Do not produce postscript output (default=off)"
-    part_func: "[=INT]          Calculate the partition function and base  pairing probability matrix in addition to the  mfe structure. Default is calculation of mfe  structure only. (default=`1')"
-    all_pf: "Compute the partition function and free  energies not only of the hetero-dimer  consisting of the two input sequences (the  \"AB dimer\"), but also of the homo-dimers AA  and BB as well as A and B monomers. (default=off)"
-    concentrations: "In addition to everything listed under the -a  option, read in initial monomer  concentrations and compute the expected  equilibrium concentrations of the 5 possible  species (AB, AA, BB, A, B). (default=off)"
-    conc_file: "Specify a file with initial concentrations for  the to sequences."
-    temp: "Rescale energy parameters to a temperature of  temp C. Default is 37C."
-    no_tetra: "Do not include special stabilizing energies for  certain tetra-loops. Mostly for testing. (default=off)"
-    dangles: "How to treat \"dangling end\" energies for  bases adjacent to helices in free ends and  multi-loops (default=`2')"
-    no_lp: "Produce structures without lonely pairs  (helices of length 1). (default=off)"
-    no_gu: "Do not allow GU pairs (default=off)"
-    no_closing_gu: "Do not allow GU pairs at the end of helices (default=off)"
-    param_file: "Read energy parameters from paramfile, instead  of using the default parameter set."
+    noconv: "Do not automatically substitude nucleotide\\n\\\"T\\\" with \\\"U\\\"\\n(default=off)"
+    nops: "Do not produce postscript output\\n(default=off)"
+    part_func: "[=INT]          Calculate the partition function and base\\npairing probability matrix in addition to the\\nmfe structure. Default is calculation of mfe\\nstructure only.\\n(default=`1')"
+    all_pf: "Compute the partition function and free\\nenergies not only of the hetero-dimer\\nconsisting of the two input sequences (the\\n\\\"AB dimer\\\"), but also of the homo-dimers AA\\nand BB as well as A and B monomers.\\n(default=off)"
+    concentrations: "In addition to everything listed under the -a\\noption, read in initial monomer\\nconcentrations and compute the expected\\nequilibrium concentrations of the 5 possible\\nspecies (AB, AA, BB, A, B).\\n(default=off)"
+    conc_file: "Specify a file with initial concentrations for\\nthe to sequences."
+    temp: "Rescale energy parameters to a temperature of\\ntemp C. Default is 37C."
+    no_tetra: "Do not include special stabilizing energies for\\ncertain tetra-loops. Mostly for testing.\\n(default=off)"
+    dangles: "How to treat \\\"dangling end\\\" energies for\\nbases adjacent to helices in free ends and\\nmulti-loops\\n(default=`2')"
+    no_lp: "Produce structures without lonely pairs\\n(helices of length 1).\\n(default=off)"
+    no_gu: "Do not allow GU pairs\\n(default=off)"
+    no_closing_gu: "Do not allow GU pairs at the end of helices\\n(default=off)"
+    param_file: "Read energy parameters from paramfile, instead\\nof using the default parameter set."
+    program: "-C, --constraint              Calculate structures subject to constraints.\\n(default=off)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

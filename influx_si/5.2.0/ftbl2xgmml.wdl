@@ -4,4 +4,7 @@ task Ftbl2xgmml {
   command <<<
     ftbl2xgmml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

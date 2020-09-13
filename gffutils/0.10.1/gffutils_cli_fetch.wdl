@@ -1,7 +1,10 @@
 version 1.0
 
-task GffutilsCliFetch {
+task GffutilscliFetch {
   command <<<
-    gffutils-cli fetch
+    gffutils_cli fetch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

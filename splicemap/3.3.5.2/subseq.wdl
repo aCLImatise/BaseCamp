@@ -4,4 +4,7 @@ task Subseq {
   command <<<
     subseq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

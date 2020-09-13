@@ -1,7 +1,10 @@
 version 1.0
 
-task ArchivePubmed {
+task Archivepubmed {
   command <<<
-    archive-pubmed
+    archive_pubmed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

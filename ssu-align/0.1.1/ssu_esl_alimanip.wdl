@@ -1,24 +1,28 @@
 version 1.0
 
-task SsuEslAlimanip {
+task Ssueslalimanip {
   input {
-    String? ln_fract
-    String? lx_fract
-    String? lm_in
-    String? lmax
-    String? de_trunc
-    String? seq_r
+    File? output_alignment_file
+    File? in_format
+    String? out_format
+    Boolean? devhelp
+    Int? ln_fract
+    Int? lx_fract
+    Int? lm_in
+    Int? lmax
+    Int? de_trunc
+    File? seq_r
     String? seq_k
     Boolean? small
     Boolean? k_reorder
     String? seq_ins
-    String? seq_ni
-    String? seq_xi
+    Int? seq_ni
+    Int? seq_xi
     String? trim
     Boolean? t_keep_rf
     String? tree
     String? reorder
-    String? mask_two_rf
+    Int? mask_two_rf
     Boolean? m_keep_rf
     Boolean? num_all
     Boolean? num_rf
@@ -31,8 +35,12 @@ task SsuEslAlimanip {
     String msa_file
   }
   command <<<
-    ssu-esl-alimanip \
+    ssu_esl_alimanip \
       ~{msa_file} \
+      ~{if defined(output_alignment_file) then ("-o " +  '"' + output_alignment_file + '"') else ""} \
+      ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
+      ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
+      ~{if (devhelp) then "--devhelp" else ""} \
       ~{if defined(ln_fract) then ("--lnfract " +  '"' + ln_fract + '"') else ""} \
       ~{if defined(lx_fract) then ("--lxfract " +  '"' + lx_fract + '"') else ""} \
       ~{if defined(lm_in) then ("--lmin " +  '"' + lm_in + '"') else ""} \
@@ -40,27 +48,31 @@ task SsuEslAlimanip {
       ~{if defined(de_trunc) then ("--detrunc " +  '"' + de_trunc + '"') else ""} \
       ~{if defined(seq_r) then ("--seq-r " +  '"' + seq_r + '"') else ""} \
       ~{if defined(seq_k) then ("--seq-k " +  '"' + seq_k + '"') else ""} \
-      ~{true="--small" false="" small} \
-      ~{true="--k-reorder" false="" k_reorder} \
+      ~{if (small) then "--small" else ""} \
+      ~{if (k_reorder) then "--k-reorder" else ""} \
       ~{if defined(seq_ins) then ("--seq-ins " +  '"' + seq_ins + '"') else ""} \
       ~{if defined(seq_ni) then ("--seq-ni " +  '"' + seq_ni + '"') else ""} \
       ~{if defined(seq_xi) then ("--seq-xi " +  '"' + seq_xi + '"') else ""} \
       ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""} \
-      ~{true="--t-keeprf" false="" t_keep_rf} \
+      ~{if (t_keep_rf) then "--t-keeprf" else ""} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
       ~{if defined(reorder) then ("--reorder " +  '"' + reorder + '"') else ""} \
       ~{if defined(mask_two_rf) then ("--mask2rf " +  '"' + mask_two_rf + '"') else ""} \
-      ~{true="--m-keeprf" false="" m_keep_rf} \
-      ~{true="--num-all" false="" num_all} \
-      ~{true="--num-rf" false="" num_rf} \
+      ~{if (m_keep_rf) then "--m-keeprf" else ""} \
+      ~{if (num_all) then "--num-all" else ""} \
+      ~{if (num_rf) then "--num-rf" else ""} \
       ~{if defined(rm_gc) then ("--rm-gc " +  '"' + rm_gc + '"') else ""} \
-      ~{true="--sindi" false="" sindi} \
-      ~{true="--post2pp" false="" post_two_pp} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna}
+      ~{if (sindi) then "--sindi" else ""} \
+      ~{if (post_two_pp) then "--post2pp" else ""} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""}
   >>>
   parameter_meta {
+    output_alignment_file: ": output the alignment to file <f>, not stdout"
+    in_format: ": specify that input file is in format <s>"
+    out_format: ": specify that output format be <s>"
+    devhelp: ": show list of undocumented developer options"
     ln_fract: ": remove sequences w/length < <x> fraction of median length"
     lx_fract: ": remove sequences w/length > <x> fraction of median length"
     lm_in: ": remove sequences w/length < <n> residues"
@@ -88,5 +100,9 @@ task SsuEslAlimanip {
     dna: ": <msafile> contains DNA alignments"
     rna: ": <msafile> contains RNA alignments"
     msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_alignment_file = "${in_output_alignment_file}"
   }
 }

@@ -2,10 +2,10 @@ version 1.0
 
 task Mpa {
   input {
-    String? mpa_directory
+    Directory? mpa_directory
     String? logging_level
-    String? vcf_file_annotate
-    String? output_vcf_file
+    File? vcf_file_annotate
+    File? output_vcf_file
   }
   command <<<
     mpa \
@@ -15,9 +15,13 @@ task Mpa {
       ~{if defined(output_vcf_file) then ("--output " +  '"' + output_vcf_file + '"') else ""}
   >>>
   parameter_meta {
-    mpa_directory: "The path to the MPA installation folder. [Default: /tmp/tmpjlb2c7kj/bin]"
+    mpa_directory: "The path to the MPA installation folder. [Default:\\n/usr/local/bin]"
     logging_level: "The logger level. [Default: INFO]"
-    vcf_file_annotate: "The vcf file to annotate (format: VCF). This vcf must be annotate with annovar."
-    output_vcf_file: "The output vcf file with annotation (format : VCF)"
+    vcf_file_annotate: "The vcf file to annotate (format: VCF). This vcf must\\nbe annotate with annovar."
+    output_vcf_file: "The output vcf file with annotation (format : VCF)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_vcf_file = "${in_output_vcf_file}"
   }
 }

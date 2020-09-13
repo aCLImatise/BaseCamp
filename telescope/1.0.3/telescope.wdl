@@ -4,4 +4,7 @@ task Telescope {
   command <<<
     telescope
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,22 +2,25 @@ version 1.0
 
 task FermiExample {
   input {
-    Boolean? ceu
-    String? k
     String? l
+    String? k
+    Boolean? ceu
     String in_dot_fq
   }
   command <<<
     fermi example \
       ~{in_dot_fq} \
-      ~{true="-ceU" false="" ceu} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
       ~{if defined(k) then ("-k " +  '"' + k + '"') else ""} \
-      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
+      ~{if (ceu) then "-ceU" else ""}
   >>>
   parameter_meta {
-    ceu: ""
-    k: ""
     l: ""
+    k: ""
+    ceu: ""
     in_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Toolshed {
   command <<<
     toolshed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

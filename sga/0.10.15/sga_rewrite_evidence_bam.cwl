@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../sga_rewrite_evidence_bam.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: fast_q
+- id: in_fast_q
   doc: parse the read names and sequences from the fastq file in F (required)
   type: File
   inputBinding:
     prefix: --fastq
-- id: merge_bam
+- id: in_merge_bam
   doc: merge the evidence BAM alignments with the alignments in F
   type: File
   inputBinding:
     prefix: --merge-bam
-- id: outfile
+- id: in_outfile
   doc: write the new BAM file to F
   type: File
   inputBinding:
     prefix: --outfile
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sga

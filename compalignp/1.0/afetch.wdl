@@ -7,11 +7,14 @@ task Afetch {
   }
   command <<<
     afetch \
-      ~{true="--index" false="" index} \
-      ~{true="-options" false="" options}
+      ~{if (index) then "--index" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     index: ": construct indices for the database"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

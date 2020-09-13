@@ -2,7 +2,7 @@ version 1.0
 
 task DrawTree {
   input {
-    Boolean? print_option_implies
+    Boolean? print_opposed_option
     Boolean? suppress_branch_lengths
     Boolean? vertical_layout
     Boolean? draw_branches_scale
@@ -12,18 +12,21 @@ task DrawTree {
   command <<<
     draw_tree \
       ~{tree_dot_nh} \
-      ~{true="-d" false="" print_option_implies} \
-      ~{true="-b" false="" suppress_branch_lengths} \
-      ~{true="-v" false="" vertical_layout} \
-      ~{true="-s" false="" draw_branches_scale} \
-      ~{true="-dbvs" false="" db_vs}
+      ~{if (print_opposed_option) then "-d" else ""} \
+      ~{if (suppress_branch_lengths) then "-b" else ""} \
+      ~{if (vertical_layout) then "-v" else ""} \
+      ~{if (draw_branches_scale) then "-s" else ""} \
+      ~{if (db_vs) then "-dbvs" else ""}
   >>>
   parameter_meta {
-    print_option_implies: "Print \"diagonal\" branches, instead of \"right-angle\" or  \"square\" ones (produces a \"cladogram\", as opposed to a  \"phenogram\").  This option implies -s."
+    print_opposed_option: "Print \\\"diagonal\\\" branches, instead of \\\"right-angle\\\" or\\n\\\"square\\\" ones (produces a \\\"cladogram\\\", as opposed to a\\n\\\"phenogram\\\").  This option implies -s."
     suppress_branch_lengths: "Suppress branch lengths."
     vertical_layout: "Vertical layout."
     draw_branches_scale: "Don't draw branches to scale."
     db_vs: ""
     tree_dot_nh: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

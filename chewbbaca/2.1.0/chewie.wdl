@@ -4,4 +4,7 @@ task Chewie {
   command <<<
     chewie
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

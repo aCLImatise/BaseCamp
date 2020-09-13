@@ -1,25 +1,23 @@
 version 1.0
 
-task CsbHhfrag {
+task Csbhhfrag {
   input {
-    String? hh_search
-    String? database
+    File? hh_search
+    Directory? database
     Int? min
     Int? max
-    String? step
-    String? cpu
-    String? gap_filling
-    String? filtered_filling
+    Int? step
+    Int? cpu
+    File? gap_filling
+    File? filtered_filling
     Boolean? filtered_map
     Boolean? c_alpha
-    String? confidence_threshold
-    String? verbosity
-    String? output_directory_default
-    String query
+    Float? confidence_threshold
+    Int? verbosity
+    Directory? output_directory_default
   }
   command <<<
-    csb-hhfrag \
-      ~{query} \
+    csb_hhfrag \
       ~{if defined(hh_search) then ("--hhsearch " +  '"' + hh_search + '"') else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
@@ -28,8 +26,8 @@ task CsbHhfrag {
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
       ~{if defined(gap_filling) then ("--gap-filling " +  '"' + gap_filling + '"') else ""} \
       ~{if defined(filtered_filling) then ("--filtered-filling " +  '"' + filtered_filling + '"') else ""} \
-      ~{true="--filtered-map" false="" filtered_map} \
-      ~{true="--c-alpha" false="" c_alpha} \
+      ~{if (filtered_map) then "--filtered-map" else ""} \
+      ~{if (c_alpha) then "--c-alpha" else ""} \
       ~{if defined(confidence_threshold) then ("--confidence-threshold " +  '"' + confidence_threshold + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(output_directory_default) then ("--output " +  '"' + output_directory_default + '"') else ""}
@@ -41,13 +39,16 @@ task CsbHhfrag {
     max: "maximum query segment length (default=21)"
     step: "query segmentation step (default=3)"
     cpu: "maximum degree of parallelism (default=8)"
-    gap_filling: "path to a fragment file (e.g. CSfrag or Rosetta NNmake), which will be used to complement low- confidence regions (when specified, a hybrid fragment library be produced)"
-    filtered_filling: "path to a filtered fragment file (e.g. filtered CSfrag-ments), which will be mixed with the HHfrag-set and then filtered, resulting in a double-filtered library"
-    filtered_map: "make an additional filtered fragment map of centroids and predict torsion angles (default=False)"
-    c_alpha: "include also C-alpha vectors in the output (default=False)"
+    gap_filling: "path to a fragment file (e.g. CSfrag or Rosetta\\nNNmake), which will be used to complement low-\\nconfidence regions (when specified, a hybrid fragment\\nlibrary be produced)"
+    filtered_filling: "path to a filtered fragment file (e.g. filtered\\nCSfrag-ments), which will be mixed with the HHfrag-set\\nand then filtered, resulting in a double-filtered\\nlibrary"
+    filtered_map: "make an additional filtered fragment map of centroids\\nand predict torsion angles (default=False)"
+    c_alpha: "include also C-alpha vectors in the output\\n(default=False)"
     confidence_threshold: "confidence threshold for gap filling (default=0.7)"
     verbosity: "verbosity level (default=2)"
-    output_directory_default: "output directory (default=.)"
-    query: "query profile HMM (e.g. created with csb.apps.buildhmm)"
+    output_directory_default: "output directory (default=.)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_default = "${in_output_directory_default}"
   }
 }

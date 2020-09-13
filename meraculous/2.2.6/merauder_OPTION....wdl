@@ -1,6 +1,6 @@
 version 1.0
 
-task MerauderOPTION... {
+task MerauderOPTION {
   input {
     Int max
     String insert
@@ -9,7 +9,7 @@ task MerauderOPTION... {
     String required
   }
   command <<<
-    merauder OPTION... \
+    merauder OPTION___ \
       ~{max} \
       ~{insert} \
       ~{size} \
@@ -22,5 +22,8 @@ task MerauderOPTION... {
     size: ""
     is: ""
     required: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

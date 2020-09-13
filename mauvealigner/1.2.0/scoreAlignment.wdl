@@ -4,4 +4,7 @@ task ScoreAlignment {
   command <<<
     scoreAlignment
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

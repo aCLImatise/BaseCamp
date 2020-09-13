@@ -4,4 +4,7 @@ task VisualizeBbd {
   command <<<
     visualize_bbd
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

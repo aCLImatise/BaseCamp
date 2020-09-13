@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../linknets.cwl
 inputs:
-- id: in_units
+- id: in_in_units
   doc: use copies of input units
   type: boolean
   inputBinding:
     prefix: -inunits
-- id: in_connect
+- id: in_in_connect
   doc: fully connect with <n> input units
   type: string
   inputBinding:
     prefix: -inconnect
-- id: direct
+- id: in_direct
   doc: connect input with output one-to-one
   type: boolean
   inputBinding:
     prefix: -direct
-- id: out_connect
+- id: in_out_connect
   doc: fully connect to <n> output units
   type: string
   inputBinding:
     prefix: -outconnect
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - linknets

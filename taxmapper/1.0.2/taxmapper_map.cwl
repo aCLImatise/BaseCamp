@@ -1,40 +1,48 @@
 class: CommandLineTool
 id: ../../../taxmapper_map.cwl
 inputs:
-- id: maximum_read_length
+- id: in_maximum_read_length
   doc: Maximum read length
   type: long
   inputBinding:
     prefix: -m
-- id: forward
+- id: in_forward
   doc: Forward read aln file
   type: File
   inputBinding:
     prefix: --forward
-- id: reverse
+- id: in_reverse
   doc: Reverse read aln file [optional]
   type: File
   inputBinding:
     prefix: --reverse
-- id: out
+- id: in_out
   doc: 'Output file [default: taxa.tsv]'
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: combine
-  doc: 'How to combine forward and reverse hits, for "concordant" forward and reverse
-    have to map to the same taxon, for "best" the best hit from forward and reverse
-    is returned [default: best]'
+- id: in_combine
+  doc: "How to combine forward and reverse hits, for\n\"concordant\" forward and reverse\
+    \ have to map to the\nsame taxon, for \"best\" the best hit from forward and\n\
+    reverse is returned [default: best]"
   type: string
   inputBinding:
     prefix: --combine
-- id: threads
-  doc: 'Number of threads, used to map forward and reverse reads in parallel [default:
-    2]'
-  type: string
+- id: in_threads
+  doc: "Number of threads, used to map forward and reverse\nreads in parallel [default:\
+    \ 2]\n"
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: 'Output file [default: taxa.tsv]'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - taxmapper

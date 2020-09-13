@@ -17,21 +17,21 @@ task BcftoolsConcat {
     String? regions
     File? regions_file
     Int? threads
-    String? verbose
+    Int? verbose
     String a_dot_vcf_do_tgz
   }
   command <<<
     bcftools concat \
       ~{a_dot_vcf_do_tgz} \
-      ~{true="--allow-overlaps" false="" allow_overlaps} \
-      ~{true="--compact-PS" false="" compact_ps} \
+      ~{if (allow_overlaps) then "--allow-overlaps" else ""} \
+      ~{if (compact_ps) then "--compact-PS" else ""} \
       ~{if defined(rm_dups) then ("--rm-dups " +  '"' + rm_dups + '"') else ""} \
-      ~{true="--remove-duplicates" false="" remove_duplicates} \
+      ~{if (remove_duplicates) then "--remove-duplicates" else ""} \
       ~{if defined(file_list) then ("--file-list " +  '"' + file_list + '"') else ""} \
-      ~{true="--ligate" false="" ligate} \
-      ~{true="--no-version" false="" no_version} \
-      ~{true="--naive" false="" naive} \
-      ~{true="--naive-force" false="" naive_force} \
+      ~{if (ligate) then "--ligate" else ""} \
+      ~{if (no_version) then "--no-version" else ""} \
+      ~{if (naive) then "--naive" else ""} \
+      ~{if (naive_force) then "--naive-force" else ""} \
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(min_pq) then ("--min-PQ " +  '"' + min_pq + '"') else ""} \
@@ -58,5 +58,9 @@ task BcftoolsConcat {
     threads: "Use multithreading with <int> worker threads [0]"
     verbose: "Set verbosity level [1]"
     a_dot_vcf_do_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_write_output_file = "${in_write_output_file}"
   }
 }

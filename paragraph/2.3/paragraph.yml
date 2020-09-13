@@ -1,66 +1,84 @@
 !Command
-positional: []
+command:
+- paragraph
+positional:
+- !Positional
+  description: --bad-align-uniq-kmer-len arg (=0)           Kmer length for uniqueness
+    check
+  position: 0
+  name: uniquely.
+  optional: false
+- !Positional
+  description: '-g [ --graph-spec ] arg                      JSON file(s) describing
+    the '
+  position: 0
+  name: alignment
+  optional: false
+- !Positional
+  description: '-T [ --target-regions ] arg                  Comma-separated list
+    of target '
+  position: 0
+  name: arguments
+  optional: false
+- !Positional
+  description: 'Failed to parse the options: ERROR: BAM file is missing.'
+  position: 0
+  name: information
+  optional: false
 named:
 - !Flag
-  description: (=0.800000012)          Fraction of read that needs to  be mapped in
-    order for it to be  used.
+  description: "(=0.800000012)          Fraction of read that needs to\nbe mapped\
+    \ in order for it to be\nused."
   synonyms:
   - --bad-align-frac
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: (=1)                 Remove reads that are not mapped uniquely.
+  description: (=1)                 Remove reads that are not mapped
   synonyms:
   - --bad-align-nonuniq
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: (=0)           Kmer length for uniqueness check during read filtering.
-  synonyms:
-  - --bad-align-uniq-kmer-len
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: '[ --bam ] arg                             Input BAM file(s) for read  extraction.
-    We align all reads  to all graphs.'
+  description: "[ --bam ] arg                             Input BAM file(s) for read\n\
+    extraction. We align all reads\nto all graphs."
   synonyms:
   - -b
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (=1)           Enables smith waterman graph  alignment
+  description: (=1)           Enables smith waterman graph
   synonyms:
   - --graph-sequence-matching
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: '[ --graph-spec ] arg                      JSON file(s) describing
-    the  graph(s)'
-  synonyms:
-  - -g
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: '[ --gzip-output ] [=arg(=1)] (=0)         gzip-compress output files.
-    If  -O is used, output file names  are appended with .gz'
+    If'
   synonyms:
   - -z
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: produce tab-delimited list of  command line options and their  default
-    values
+  description: used, output file names
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: is
+  optional: true
+- !Flag
+  description: "produce tab-delimited list of\ncommand line options and their\ndefault\
+    \ values"
   synonyms:
   - --help-defaults
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: produce help message  pre-formatted as a markdown file section and
-    exit
+  description: "produce help message\npre-formatted as a markdown file\nsection and\
+    \ exit"
   synonyms:
   - --help-md
   args: !EmptyFlagArg {}
@@ -94,62 +112,53 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: (=info)                      Set log level (error, warning,  info).
+  description: "(=info)                      Set log level (error, warning,\ninfo)."
   synonyms:
   - --log-level
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: '[ --max-reads-per-event ] arg (=10000)    Maximum number of reads
-    to  process for a single event.'
+  description: "[ --max-reads-per-event ] arg (=10000)    Maximum number of reads\
+    \ to\nprocess for a single event."
   synonyms:
   - -M
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --output-alignments ] arg (=0)          Output alignments for every
-    read (large).'
+  description: "[ --output-alignments ] arg (=0)          Output alignments for every\
+    \ read\n(large)."
   synonyms:
   - -a
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (=0)       Output detailed read counts not  just for paths but also
-    for each node/edge on the paths.
+  description: "(=0)       Output detailed read counts not\njust for paths but also\
+    \ for each\nnode/edge on the paths."
   synonyms:
   - --output-detailed-read-counts
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: '[ --output-everything ] arg (=0)          Write all information we
-    have  into JSON. (=enable all  --output-* above)'
+  description: "[ --output-everything ] arg (=0)          Write all information we\
+    \ have\ninto JSON. (=enable all\n--output-* above)"
   synonyms:
   - -E
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: "[ --output-file ] arg                     Output file name. Will output\
-    \ to stdout if '-' or neither of  output-file or output-folder  provided."
+    \ to\nstdout if '-' or neither of\noutput-file or output-folder\nprovided."
   synonyms:
   - -o
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --output-filtered-alignments ] arg (=0) Output alignments for every
-    read even when it was filtered  (larger).'
+  description: "[ --output-filtered-alignments ] arg (=0) Output alignments for every\
+    \ read\neven when it was filtered\n(larger)."
   synonyms:
   - -A
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[ --output-folder ] arg                   Output folder path. paragraph  will
-    attempt to create the  folder but not the entire path.  Will output to stdout
-    if neither of output-file or output-folder  provided. If specified,  paragraph
-    will produce one  output file for each input file  bearing the same name.'
-  synonyms:
-  - -O
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -167,15 +176,15 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: (=0)            Output graph haplotypes  supported by reads.
+  description: "(=0)            Output graph haplotypes\nsupported by reads."
   synonyms:
   - --output-read-haplotypes
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: '[ --output-variants ] arg (=0)            Output variants not present
-    in  the graph.'
+  description: "[ --output-variants ] arg (=0)            Output variants not present\
+    \ in\nthe graph."
   synonyms:
   - -v
   args: !EmptyFlagArg {}
@@ -194,55 +203,47 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: file with more command line  arguments
+  description: file with more command line
   synonyms:
   - --response-file
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: '[ --target-regions ] arg                  Comma-separated list of
-    target  regions, e.g. chr1:1-20,chr2:2-4 0. This overrides the target  regions
-    in the graph spec.'
-  synonyms:
-  - -T
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: (=8)                           Number of threads to use for  parallel
-    alignment.
+  description: "(=8)                           Number of threads to use for\nparallel\
+    \ alignment."
   synonyms:
   - --threads
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: '[=arg(=1)] (=0)        Use information in the input bam read names
-    to collect statistics about the accuracy of  alignments. Requires bam file  produced
-    with simulate-reads.sh'
+  description: "[=arg(=1)] (=0)        Use information in the input bam\nread names\
+    \ to collect statistics\nabout the accuracy of\nalignments. Requires bam file\n\
+    produced with simulate-reads.sh"
   synonyms:
   - --validate-alignments
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (=0.00999999978)      Minimum fraction of reads  required to report
-    a variant.
+  description: "(=0.00999999978)      Minimum fraction of reads\nrequired to report\
+    \ a variant."
   synonyms:
   - --variant-min-frac
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: (=3)                 Minimum number of reads required to report a variant.
+  description: "(=3)                 Minimum number of reads required\nto report a\
+    \ variant."
   synonyms:
   - --variant-min-reads
   args: !SimpleFlagArg
     name: arg
   optional: true
-command:
-- paragraph
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: '[ --help ]                                produce help message and
     exit'
@@ -252,11 +253,11 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
-help_text: "paragraph -r <reference> -g <graph(s)> -b <input cram(s)/bam(s)> [optional\
-  \ arguments]\n\nCommand line options:\n  --bad-align-frac arg (=0.800000012)   \
-  \       Fraction of read that needs to \n                                      \
-  \         be mapped in order for it to be \n                                   \
-  \            used.\n  --bad-align-nonuniq arg (=1)                 Remove reads\
+help_text: "no --response-file\nparagraph -r <reference> -g <graph(s)> -b <input cram(s)/bam(s)>\
+  \ [optional arguments]\n\nCommand line options:\n  --bad-align-frac arg (=0.800000012)\
+  \          Fraction of read that needs to \n                                   \
+  \            be mapped in order for it to be \n                                \
+  \               used.\n  --bad-align-nonuniq arg (=1)                 Remove reads\
   \ that are not mapped\n                                               uniquely.\n\
   \  --bad-align-uniq-kmer-len arg (=0)           Kmer length for uniqueness check\n\
   \                                               during read filtering.\n  -b [ --bam\
@@ -329,6 +330,6 @@ help_text: "paragraph -r <reference> -g <graph(s)> -b <input cram(s)/bam(s)> [op
   \ variant.\n  --variant-min-reads arg (=3)                 Minimum number of reads\
   \ required\n                                               to report a variant.\n\
   \  -v [ --version ]                             print program version \n       \
-  \                                        information\n\n\n"
-generated_using:
-- --help
+  \                                        information\n\n\nFailed to parse the options:\
+  \ ERROR: BAM file is missing.\n"
+generated_using: []

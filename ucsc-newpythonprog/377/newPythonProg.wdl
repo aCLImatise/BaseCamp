@@ -2,13 +2,16 @@ version 1.0
 
 task NewPythonProg {
   input {
-    String program_name
+    String? xxx
   }
   command <<<
     newPythonProg \
-      ~{program_name}
+      ~{if defined(xxx) then ("-xxx " +  '"' + xxx + '"') else ""}
   >>>
   parameter_meta {
-    program_name: ""
+    xxx: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

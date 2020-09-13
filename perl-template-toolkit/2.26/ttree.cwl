@@ -1,247 +1,250 @@
 class: CommandLineTool
 id: ../../../ttree.cwl
 inputs:
-- id: _process_files
+- id: in__process_files
   doc: (--all)          Process all files, regardless of modification
   type: boolean
   inputBinding:
     prefix: -a
-- id: _recurse_recurse
+- id: in__recurse_recurse
   doc: (--recurse)      Recurse into sub-directories
   type: boolean
   inputBinding:
     prefix: -r
-- id: _preserve_ownership
+- id: in__preserve_ownership
   doc: (--preserve)     Preserve file ownership and permission
   type: boolean
   inputBinding:
     prefix: -p
-- id: _nothing_nothing
+- id: in__nothing_nothing
   doc: (--nothing)      Do nothing, just print summary (enables -v)
   type: boolean
   inputBinding:
     prefix: -n
-- id: _verbose_verbose
+- id: in__verbose_mode
   doc: '(--verbose)      Verbose mode. Use twice for more verbosity: -v -v'
   type: boolean
   inputBinding:
     prefix: -v
-- id: _srcdir_source
+- id: in__srcdir_source
   doc: (--src=DIR)      Source directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: -s
-- id: _destdir_destination
+- id: in__destdir_destination
   doc: (--dest=DIR)     Destination directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: -d
-- id: _cfgdir_location
+- id: in__cfgdir_location
   doc: (--cfg=DIR)      Location of configuration files
   type: string
   inputBinding:
     prefix: -c
-- id: _libdir_directory
+- id: in__libdir_directory
   doc: (--lib=DIR)      Library directory (INCLUDE_PATH)  (multiple)
-  type: string
+  type: Directory
   inputBinding:
     prefix: -l
-- id: _filefile_read
+- id: in__filefile_read
   doc: (--file=FILE)    Read named configuration file     (multiple)
   type: File
   inputBinding:
     prefix: -f
-- id: colour
+- id: in_colour
   doc: / --color       Enable colo(u)rful verbose output.
   type: boolean
   inputBinding:
     prefix: --colour
-- id: summary
+- id: in_summary
   doc: Show processing summary.
   type: boolean
   inputBinding:
     prefix: --summary
-- id: ignore
+- id: in_ignore
   doc: Ignore files matching REGEX
   type: string
   inputBinding:
     prefix: --ignore
-- id: copy
+- id: in_copy
   doc: Copy files matching REGEX
   type: string
   inputBinding:
     prefix: --copy
-- id: link
+- id: in_link
   doc: Link files matching REGEX
   type: string
   inputBinding:
     prefix: --link
-- id: accept
-  doc: 'Process only files matching REGEX '
+- id: in_accept
+  doc: Process only files matching REGEX
   type: string
   inputBinding:
     prefix: --accept
-- id: depend
+- id: in_depend
   doc: =bar,baz     Specify that 'foo' depends on 'bar' and 'baz'.
   type: string
   inputBinding:
     prefix: --depend
-- id: depend_file
+- id: in_depend_file
   doc: Read file dependancies from FILE.
   type: File
   inputBinding:
     prefix: --depend_file
-- id: depend_debug
+- id: in_depend_debug
   doc: Enable debugging for dependencies
   type: boolean
   inputBinding:
     prefix: --depend_debug
-- id: suffix
+- id: in_suffix
   doc: =new         Change any '.old' suffix to '.new'
   type: string
   inputBinding:
     prefix: --suffix
-- id: binmode
+- id: in_binmode
   doc: Set binary mode of output files
   type: string
   inputBinding:
     prefix: --binmode
-- id: encoding
+- id: in_encoding
   doc: Set encoding of input files
   type: string
   inputBinding:
     prefix: --encoding
-- id: define
+- id: in_define
   doc: =value       Define template variable
   type: string
   inputBinding:
     prefix: --define
-- id: interpolate
+- id: in_interpolate
   doc: Interpolate '$var' references in text
   type: boolean
   inputBinding:
     prefix: --interpolate
-- id: any_case
+- id: in_any_case
   doc: Accept directive keywords in any case.
   type: boolean
   inputBinding:
     prefix: --anycase
-- id: pre_chomp
-  doc: 'Chomp leading whitespace '
+- id: in_pre_chomp
+  doc: Chomp leading whitespace
   type: boolean
   inputBinding:
     prefix: --pre_chomp
-- id: post_chomp
+- id: in_post_chomp
   doc: Chomp trailing whitespace
   type: boolean
   inputBinding:
     prefix: --post_chomp
-- id: trim
+- id: in_trim
   doc: Trim blank lines around template blocks
   type: boolean
   inputBinding:
     prefix: --trim
-- id: eval_perl
+- id: in_eval_perl
   doc: Evaluate [% PERL %] ... [% END %] code blocks
   type: boolean
   inputBinding:
     prefix: --eval_perl
-- id: load_perl
+- id: in_load_perl
   doc: Load regular Perl modules via USE directive
   type: boolean
   inputBinding:
     prefix: --load_perl
-- id: absolute
+- id: in_absolute
   doc: Enable the ABSOLUTE option
   type: boolean
   inputBinding:
     prefix: --absolute
-- id: relative
+- id: in_relative
   doc: Enable the RELATIVE option
   type: boolean
   inputBinding:
     prefix: --relative
-- id: pre_process
+- id: in_pre_process
   doc: Process TEMPLATE before each main template
   type: string
   inputBinding:
     prefix: --pre_process
-- id: post_process
+- id: in_post_process
   doc: Process TEMPLATE after each main template
   type: string
   inputBinding:
     prefix: --post_process
-- id: process
+- id: in_process
   doc: Process TEMPLATE instead of main template
   type: string
   inputBinding:
     prefix: --process
-- id: wrapper
+- id: in_wrapper
   doc: Process TEMPLATE wrapper around main template
   type: string
   inputBinding:
     prefix: --wrapper
-- id: default
+- id: in_default
   doc: Use TEMPLATE as default
   type: string
   inputBinding:
     prefix: --default
-- id: error
+- id: in_error
   doc: Use TEMPLATE to handle errors
   type: string
   inputBinding:
     prefix: --error
-- id: debug
+- id: in_debug
   doc: Set TT DEBUG option to STRING
   type: string
   inputBinding:
     prefix: --debug
-- id: start_tag
+- id: in_start_tag
   doc: STRING defines start of directive tag
   type: string
   inputBinding:
     prefix: --start_tag
-- id: end_tag
+- id: in_end_tag
   doc: STRING defined end of directive tag
   type: string
   inputBinding:
     prefix: --end_tag
-- id: tag_style
-  doc: 'Use pre-defined tag STYLE    '
+- id: in_tag_style
+  doc: Use pre-defined tag STYLE
   type: string
   inputBinding:
     prefix: --tag_style
-- id: plugin_base
-  doc: 'Base PACKAGE for plugins            '
+- id: in_plugin_base
+  doc: Base PACKAGE for plugins
   type: string
   inputBinding:
     prefix: --plugin_base
-- id: compile_ext
+- id: in_compile_ext
   doc: File extension for compiled template files
-  type: string
+  type: File
   inputBinding:
     prefix: --compile_ext
-- id: compile_dir
+- id: in_compile_dir
   doc: Directory for compiled template files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --compile_dir
-- id: perl_five_lib
+- id: in_perl_five_lib
   doc: Specify additional Perl library directories
-  type: string
+  type: long
   inputBinding:
     prefix: --perl5lib
-- id: template_module
+- id: in_template_module
   doc: Specify alternate Template module
   type: string
   inputBinding:
     prefix: --template_module
-- id: files
+- id: in_files
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ttree

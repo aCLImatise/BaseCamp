@@ -4,4 +4,7 @@ task CactusWorkflowFlowerStats {
   command <<<
     cactus_workflow_flowerStats
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

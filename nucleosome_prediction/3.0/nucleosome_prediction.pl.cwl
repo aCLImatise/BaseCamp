@@ -1,48 +1,61 @@
 class: CommandLineTool
-id: ../../../nucleosome_prediction.pl.bak.cwl
+id: ../../../nucleosome_prediction.pl.cwl
 inputs:
-- id: raw_binding
+- id: in_raw_binding
   doc: ': Output the raw nucleosome binding log-ratio per basepair instead of the
     default average occupancy probabilities.'
   type: boolean
   inputBinding:
     prefix: -raw_binding
-- id: _title
+- id: in__title
   doc: ':    Title.'
   type: string
   inputBinding:
     prefix: -t
-- id: sequence_file_format
+- id: in_sequence_file_fasta
   doc: ':    Sequence file (fasta format).'
-  type: string
+  type: File
   inputBinding:
     prefix: -s
-- id: nucleosomes_concentration_default
+- id: in_nucleosomes_concentration_default
   doc: ':    Nucleosomes concentration (default: 0.1).'
-  type: string
+  type: long
   inputBinding:
     prefix: -c
-- id: temp
+- id: in_temp
   doc: ': (Inverse) Temperature scaling (default: 1).'
-  type: string
+  type: long
   inputBinding:
     prefix: -temp
-- id: prefix_use_default
+- id: in_prefix_use_default
   doc: ':    Prefix of output files to use (default: the process id).'
   type: string
   inputBinding:
     prefix: -p
-- id: tab
+- id: in_tab
   doc: ':        Produce a tab delimited output file (otherwise, print output to STDOUT).'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -tab
-- id: gxp
+- id: in_gxp
   doc: ':        Produce a gxp (Genomica project file) output file.'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -gxp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_tab
+  doc: ':        Produce a tab delimited output file (otherwise, print output to STDOUT).'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_tab)
+- id: out_gxp
+  doc: ':        Produce a gxp (Genomica project file) output file.'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_gxp)
 cwlVersion: v1.1
 baseCommand:
-- nucleosome_prediction.pl.bak
+- nucleosome_prediction.pl

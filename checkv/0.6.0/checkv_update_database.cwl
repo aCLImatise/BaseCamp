@@ -1,38 +1,41 @@
 class: CommandLineTool
 id: ../../../checkv_update_database.cwl
 inputs:
-- id: quiet
+- id: in_quiet
   doc: Suppress logging messages
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: restart
+- id: in_restart
   doc: Overwrite existing database
   type: boolean
   inputBinding:
     prefix: --restart
-- id: threads
+- id: in_threads
   doc: Number of threads for Prodigal and DIAMOND
   type: long
   inputBinding:
     prefix: --threads
-- id: source_db
+- id: in_source_db
   doc: Path to current CheckV database.
   type: string
   inputBinding:
     position: 0
-- id: dest_db
+- id: in_dest_db
   doc: Path to updated CheckV database.
   type: string
   inputBinding:
     position: 1
-- id: genomes
-  doc: FASTA file of complete genomes to add to database, where each nucleotide sequence
-    represents one genome.
+- id: in_genomes
+  doc: "FASTA file of complete genomes to add to database, where each\nnucleotide\
+    \ sequence represents one genome."
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkv

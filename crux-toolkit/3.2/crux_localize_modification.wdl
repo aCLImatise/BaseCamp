@@ -1,14 +1,10 @@
 version 1.0
 
-task CruxLocalizeModification {
-  input {
-    String input_psm_file
-  }
+task CruxLocalizemodification {
   command <<<
-    crux localize-modification \
-      ~{input_psm_file}
+    crux localize_modification
   >>>
-  parameter_meta {
-    input_psm_file: ""
+  output {
+    File out_stdout = stdout()
   }
 }

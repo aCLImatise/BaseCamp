@@ -1,28 +1,28 @@
 version 1.0
 
-task EslTranslate {
+task Esltranslate {
   input {
-    String? use_alt_code
-    String? minimum_orf_length
+    Int? use_alt_code
+    Int? minimum_orf_length
     Boolean? orfs_must_initiate
     Boolean? orfs_must_start
     Boolean? use_windowed_reading
-    String? in_format
+    File? in_format
     Boolean? watson
     Boolean? crick
     Boolean? options
   }
   command <<<
-    esl-translate \
+    esl_translate \
       ~{if defined(use_alt_code) then ("-c " +  '"' + use_alt_code + '"') else ""} \
       ~{if defined(minimum_orf_length) then ("-l " +  '"' + minimum_orf_length + '"') else ""} \
-      ~{true="-m" false="" orfs_must_initiate} \
-      ~{true="-M" false="" orfs_must_start} \
-      ~{true="-W" false="" use_windowed_reading} \
+      ~{if (orfs_must_initiate) then "-m" else ""} \
+      ~{if (orfs_must_start) then "-M" else ""} \
+      ~{if (use_windowed_reading) then "-W" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--watson" false="" watson} \
-      ~{true="--crick" false="" crick} \
-      ~{true="-options" false="" options}
+      ~{if (watson) then "--watson" else ""} \
+      ~{if (crick) then "--crick" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     use_alt_code: ": use alt genetic code of NCBI transl table <n>  [1]"
@@ -34,5 +34,8 @@ task EslTranslate {
     watson: ": only translate top strand"
     crick: ": only translate bottom strand"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

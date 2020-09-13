@@ -1,11 +1,11 @@
 version 1.0
 
-task MsisensorProPro {
+task MsisensorproPro {
   input {
-    Boolean? string_homopolymer_microsates
+    Boolean? string_homopolymer_file
     Boolean? string_tumor_file
     Boolean? string_output_prefix
-    Boolean? string_bed_file
+    Boolean? string_file_optional
     Boolean? double_minimal_threshold
     Boolean? int_coverage_threshold
     Boolean? string_choose_format
@@ -20,29 +20,29 @@ task MsisensorProPro {
     Boolean? int_output_site
   }
   command <<<
-    msisensor-pro pro \
-      ~{true="-d" false="" string_homopolymer_microsates} \
-      ~{true="-t" false="" string_tumor_file} \
-      ~{true="-o" false="" string_output_prefix} \
-      ~{true="-e" false="" string_bed_file} \
-      ~{true="-i" false="" double_minimal_threshold} \
-      ~{true="-c" false="" int_coverage_threshold} \
-      ~{true="-r" false="" string_choose_format} \
-      ~{true="-p" false="" int_minimal_homopolymer} \
-      ~{true="-m" false="" int_maximal_homopolymer} \
-      ~{true="-s" false="" int_minimal_microsatellite} \
-      ~{true="-w" false="" int_maximal_microsatellite} \
-      ~{true="-u" false="" int_span_size} \
-      ~{true="-b" false="" int_threads_number} \
-      ~{true="-x" false="" int_output_homopolymer} \
-      ~{true="-y" false="" int_output_microsatellite} \
-      ~{true="-0" false="" int_output_site}
+    msisensor_pro pro \
+      ~{if (string_homopolymer_file) then "-d" else ""} \
+      ~{if (string_tumor_file) then "-t" else ""} \
+      ~{if (string_output_prefix) then "-o" else ""} \
+      ~{if (string_file_optional) then "-e" else ""} \
+      ~{if (double_minimal_threshold) then "-i" else ""} \
+      ~{if (int_coverage_threshold) then "-c" else ""} \
+      ~{if (string_choose_format) then "-r" else ""} \
+      ~{if (int_minimal_homopolymer) then "-p" else ""} \
+      ~{if (int_maximal_homopolymer) then "-m" else ""} \
+      ~{if (int_minimal_microsatellite) then "-s" else ""} \
+      ~{if (int_maximal_microsatellite) then "-w" else ""} \
+      ~{if (int_span_size) then "-u" else ""} \
+      ~{if (int_threads_number) then "-b" else ""} \
+      ~{if (int_output_homopolymer) then "-x" else ""} \
+      ~{if (int_output_microsatellite) then "-y" else ""} \
+      ~{if (int_output_site) then "-0" else ""}
   >>>
   parameter_meta {
-    string_homopolymer_microsates: "<string>   homopolymer and microsates file"
+    string_homopolymer_file: "<string>   homopolymer and microsates file"
     string_tumor_file: "<string>   tumor bam file"
     string_output_prefix: "<string>   output prefix"
-    string_bed_file: "<string>   bed file, optional"
+    string_file_optional: "<string>   bed file, optional"
     double_minimal_threshold: "<double>   minimal threshold for instable sites detection (just for tumor only data), default=0.1"
     int_coverage_threshold: "<int>      coverage threshold for msi analysis, WXS: 20; WGS: 15, default=1"
     string_choose_format: "<string>   choose one region, format: 1:10000000-20000000"
@@ -55,5 +55,8 @@ task MsisensorProPro {
     int_output_homopolymer: "<int>      output homopolymer only, 0: no; 1: yes, default=0"
     int_output_microsatellite: "<int>      output microsatellite only, 0: no; 1: yes, default=0"
     int_output_site: "<int>      output site have no read coverage, 1: no; 0: yes, default=0"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

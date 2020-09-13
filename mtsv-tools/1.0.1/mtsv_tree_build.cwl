@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../mtsv_tree_build.cwl
 inputs:
-- id: include_flag_trigger
+- id: in_include_flag_trigger
   doc: Include this flag to trigger debug-level logging.
   type: boolean
   inputBinding:
     prefix: -v
-- id: index
+- id: in_index
   doc: Output path to mtsv-inform index file.
-  type: string
+  type: File
   inputBinding:
     prefix: --index
-- id: dump
+- id: in_dump
   doc: Path to NCBI taxdump.tar.gz file which matches the given FASTA file.
-  type: string
+  type: File
   inputBinding:
     prefix: --dump
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_index
+  doc: Output path to mtsv-inform index file.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_index)
 cwlVersion: v1.1
 baseCommand:
 - mtsv-tree-build

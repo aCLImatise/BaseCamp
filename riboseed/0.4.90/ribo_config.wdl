@@ -2,8 +2,8 @@ version 1.0
 
 task RiboConfig {
   input {
-    String? outdir
-    String? name
+    Directory? outdir
+    File? name
     String ribo
   }
   command <<<
@@ -13,8 +13,12 @@ task RiboConfig {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
   parameter_meta {
-    outdir: "output directory; default: /tmp/tmpdvlbjbbn"
+    outdir: "output directory; default: /"
     name: "name of config file; default: timestamped"
     ribo: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

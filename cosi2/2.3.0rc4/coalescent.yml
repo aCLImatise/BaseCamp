@@ -1,5 +1,57 @@
 !Command
-positional: []
+command:
+- coalescent
+positional:
+- !Positional
+  description: -n [ --nsims ] arg (=1)               number of simulations to output
+  position: 0
+  name: trajectory
+  optional: false
+- !Positional
+  description: '-E [ --sweep-frac-sample ]            sweep end freq specifies exact
+    sample '
+  position: 1
+  name: delta
+  optional: false
+- !Positional
+  description: '--apx-with-traj-ok                    enable coalapx even when pop
+    size traj '
+  position: 2
+  name: fraction
+  optional: false
+- !Positional
+  description: '--pois-max-steps arg (=100000)        max # of steps when evaluating
+    waiting '
+  position: 0
+  name: sim
+  optional: false
+- !Positional
+  description: --pois-prec arg (=1.0000000000000001e-05)
+  position: 1
+  name: times
+  optional: false
+- !Positional
+  description: -m [ --outms ]                        write output to stdout in ms
+    format
+  position: 0
+  name: format
+  optional: false
+- !Positional
+  description: -T [ --write-tree-stats ]             output tree stats
+  position: 0
+  name: trajectory
+  optional: false
+- !Positional
+  description: --drop-singletons fraction            drop this fraction of singleton
+    SNPs
+  position: 1
+  name: locations
+  optional: false
+- !Positional
+  description: -v [ --verbose ]                      verbose output
+  position: 0
+  name: options
+  optional: false
 named:
 - !Flag
   description: '[ --paramfile ] arg                parameter file'
@@ -8,29 +60,23 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --recombfile ] arg               genetic map file (if specified,  overrides
-    the one in paramfile)'
+  description: "[ --recombfile ] arg               genetic map file (if specified,\n\
+    overrides the one in paramfile)"
   synonyms:
   - -R
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: for each simulation use a randomly  chosen subregion of the genetic
-    map
+  description: "for each simulation use a randomly\nchosen subregion of the genetic\
+    \ map"
   synonyms:
   - --genmapRandomRegions
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --trajfile ] arg                 file from which to read sweep  trajectory'
+  description: '[ --trajfile ] arg                 file from which to read sweep'
   synonyms:
   - -J
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[ --nsims ] arg (=1)               number of simulations to output'
-  synonyms:
-  - -n
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -52,27 +98,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --genmapshift ] arg              shift all genmap locations by this  delta'
+  description: '[ --genmapshift ] arg              shift all genmap locations by this'
   synonyms:
   - -G
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --sweep-frac-sample ]            sweep end freq specifies exact
-    sample  fraction'
-  synonyms:
-  - -E
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: enable coalapx even when pop size traj  specified (experimental)
-  synonyms:
-  - --apx-with-traj-ok
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: enable coalapx only when pop size  exceeds active sample size by this  factor
-    (experimental)
+  description: "enable coalapx only when pop size\nexceeds active sample size by this\n\
+    factor (experimental)"
   synonyms:
   - --apx-min-factor
   args: !SimpleFlagArg
@@ -92,45 +125,25 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: show progress of coalescence in each  sim
+  description: show progress of coalescence in each
   synonyms:
   - --show-one-sim-progress
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '(=100000)        max # of steps when evaluating waiting  times'
-  synonyms:
-  - --pois-max-steps
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: (=1.0000000000000001e-05) precision when evaluating waiting times
-  synonyms:
-  - --pois-prec
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: just simulate trajectories and output  present-day freqs
+  description: "just simulate trajectories and output\npresent-day freqs"
   synonyms:
   - --traj-only
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --outfilebase ] arg              base name for output files in cosi  format'
+  description: '[ --outfilebase ] arg              base name for output files in cosi'
   synonyms:
   - -o
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --outms ]                        write output to stdout in ms format'
-  synonyms:
-  - -m
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: write output to stdout in tped format,  to files pfx-rep-pop.tped
+  description: "write output to stdout in tped format,\nto files pfx-rep-pop.tped"
   synonyms:
   - --tped
   args: !SimpleFlagArg
@@ -149,22 +162,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --output-precision ] arg         number of decimal places used for  floats
-    in the outputs'
+  description: "[ --output-precision ] arg         number of decimal places used for\n\
+    floats in the outputs"
   synonyms:
   - -P
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --trajoutfile ] arg              file to which to output sweep  trajectory'
+  description: '[ --trajoutfile ] arg              file to which to output sweep'
   synonyms:
   - -j
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[ --write-tree-stats ]             output tree stats'
-  synonyms:
-  - -T
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -181,40 +188,27 @@ named:
   optional: true
 - !Flag
   description: "[ --output-ARG ]                   output ARG edges.  Edges are written\
-    \ in ms output format (see -m option), one  per line, after the '//' line but\
-    \  before the 'segsites: ' line of each  simulation. Format is: E <edgeKind> <node_1_id>\
-    \ <node_2_id>  <node_1_generation> <node_2_generation> <seg_1_beg> <seg_1_end>\
-    \ ... <seg_k_beg> <seg_k_end>. Edge kinds are: R, recombination; G,  gene conversion;\
-    \ C, coalescence.  seg_i_beg, seg_i_end give chromosomal  segments inherited along\
-    \ the edge;  locations are values in [0.0,1.0]  representing locations within\
-    \ the  simulated region."
+    \ in\nms output format (see -m option), one\nper line, after the '//' line but\n\
+    before the 'segsites: ' line of each\nsimulation. Format is:\nE <edgeKind> <node_1_id>\
+    \ <node_2_id>\n<node_1_generation> <node_2_generation>\n<seg_1_beg> <seg_1_end>\
+    \ ... <seg_k_beg>\n<seg_k_end>.\nEdge kinds are: R, recombination; G,\ngene conversion;\
+    \ C, coalescence.\nseg_i_beg, seg_i_end give chromosomal\nsegments inherited along\
+    \ the edge;\nlocations are values in [0.0,1.0]\nrepresenting locations within\
+    \ the\nsimulated region."
   synonyms:
   - -e
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ --write-mut-contexts ] position  output mutation contexts for these  locations'
+  description: '[ --write-mut-contexts ] position  output mutation contexts for these'
   synonyms:
   - -C
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: drop this fraction of singleton SNPs
-  synonyms:
-  - --drop-singletons
-  args: !SimpleFlagArg
-    name: fraction
-  optional: true
-- !Flag
-  description: '[ --version ]                      print version info and compile-time  options'
+  description: '[ --version ]                      print version info and compile-time'
   synonyms:
   - -V
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[ --verbose ]                      verbose output'
-  synonyms:
-  - -v
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -266,7 +260,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: for each sim output the generation at  which it ended
+  description: "for each sim output the generation at\nwhich it ended"
   synonyms:
   - --output-end-gens
   args: !EmptyFlagArg {}
@@ -285,16 +279,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (=-1)  when computing custom stats, exclude  this pop
+  description: "(=-1)  when computing custom stats, exclude\nthis pop\n"
   synonyms:
   - --custom-stats-exclude-pop
   args: !SimpleFlagArg
     name: arg
   optional: true
-command:
-- coalescent
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: '[ --help ]                         produce help message'
   synonyms:

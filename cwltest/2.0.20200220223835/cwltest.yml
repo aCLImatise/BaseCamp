@@ -1,4 +1,6 @@
 &id001 !Command
+command:
+- cwltest
 positional: []
 named:
 - !Flag
@@ -29,7 +31,7 @@ named:
     name: N
   optional: true
 - !Flag
-  description: Run specific tests using their short names separated by comma
+  description: "Run specific tests using their short names separated\nby comma"
   synonyms:
   - -s
   args: !SimpleFlagArg
@@ -69,15 +71,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ==--cache-dir Additional argument given in test cases and required
-    prefix for tool runner.
+  description: "==--cache-dir\nAdditional argument given in test cases and required\n\
+    prefix for tool runner."
   synonyms:
   - --test-arg
   args: !SimpleFlagArg
     name: cache
   optional: true
 - !Flag
-  description: Specifies the number of tests to run simultaneously (defaults to one).
+  description: "Specifies the number of tests to run simultaneously\n(defaults to\
+    \ one)."
   synonyms:
   - -j
   args: !SimpleFlagArg
@@ -97,8 +100,8 @@ named:
     name: CLASSNAME
   optional: true
 - !Flag
-  description: Time of execution in seconds after which the test will be skipped.
-    Defaults to 600 seconds (10.0 minutes).
+  description: "Time of execution in seconds after which the test will\nbe skipped.\
+    \ Defaults to 600 seconds (10.0 minutes)."
   synonyms:
   - --timeout
   args: !SimpleFlagArg
@@ -111,11 +114,12 @@ named:
   args: !SimpleFlagArg
     name: BADGEDIR
   optional: true
-command:
-- cwltest
 parent:
 subcommands:
 - !Command
+  command:
+  - cwltest
+  - args
   positional:
   - !Positional
     description: ''
@@ -126,22 +130,9 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --test
+    - -s
     args: !SimpleFlagArg
-      name: TEST
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --basedir
-    args: !SimpleFlagArg
-      name: BASEDIR
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -l
-    args: !EmptyFlagArg {}
+      name: S
     optional: true
   - !Flag
     description: ''
@@ -153,15 +144,26 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - -s
-    args: !SimpleFlagArg
-      name: S
+    - -l
+    args: !EmptyFlagArg {}
     optional: true
-  command:
-  - cwltest
-  - args
+  - !Flag
+    description: ''
+    synonyms:
+    - --basedir
+    args: !SimpleFlagArg
+      name: BASEDIR
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --test
+    args: !SimpleFlagArg
+      name: TEST
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -178,6 +180,7 @@ subcommands:
     \ error: the following arguments are required: --test\n"
   generated_using: &id002
   - --help
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

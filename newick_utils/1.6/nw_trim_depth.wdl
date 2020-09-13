@@ -6,9 +6,12 @@ task NwTrimDepth {
   }
   command <<<
     nw_trim depth \
-      ~{true="-a" false="" maximum_depth_expressed}
+      ~{if (maximum_depth_expressed) then "-a" else ""}
   >>>
   parameter_meta {
-    maximum_depth_expressed: ": the maximum depth is expressed in number of ancestors, not distance. Nodes are not shortened, but no node is retained that has more ancestors than the maximum."
+    maximum_depth_expressed: ": the maximum depth is expressed in number of ancestors, not distance.\\nNodes are not shortened, but no node is retained that has more\\nancestors than the maximum."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

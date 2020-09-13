@@ -2,12 +2,12 @@ version 1.0
 
 task PhyluceProbeRemoveDuplicateHitsFromProbesUsingLastz {
   input {
-    String? fast_a
-    String? last_z
+    File? fast_a
+    File? last_z
     String? probe_prefix
     String? probe_regex
-    String? probe_bed
-    String? locus_bed
+    File? probe_bed
+    File? locus_bed
     Boolean? long
   }
   command <<<
@@ -18,15 +18,18 @@ task PhyluceProbeRemoveDuplicateHitsFromProbesUsingLastz {
       ~{if defined(probe_regex) then ("--probe-regex " +  '"' + probe_regex + '"') else ""} \
       ~{if defined(probe_bed) then ("--probe-bed " +  '"' + probe_bed + '"') else ""} \
       ~{if defined(locus_bed) then ("--locus-bed " +  '"' + locus_bed + '"') else ""} \
-      ~{true="--long" false="" long}
+      ~{if (long) then "--long" else ""}
   >>>
   parameter_meta {
     fast_a: "The fasta file to screen"
     last_z: "The lastz file to use"
-    probe_prefix: "The prefix (e.g. \"uce-\") added to all probes designed"
+    probe_prefix: "The prefix (e.g. \\\"uce-\\\") added to all probes designed"
     probe_regex: "The regular expression to use for matching probes"
-    probe_bed: "The path to a file contaning the probe coordinates in BED format"
-    locus_bed: "The path to a file contaning the locus coordinates in BED format"
+    probe_bed: "The path to a file contaning the probe coordinates in\\nBED format"
+    locus_bed: "The path to a file contaning the locus coordinates in\\nBED format"
     long: "If the lastz output is the longfield format"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

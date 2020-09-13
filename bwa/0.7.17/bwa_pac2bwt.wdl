@@ -10,11 +10,14 @@ task BwaPac2bwt {
     bwa pac2bwt \
       ~{in_dot_pac} \
       ~{out_dot_bwt} \
-      ~{true="-d" false="" d}
+      ~{if (d) then "-d" else ""}
   >>>
   parameter_meta {
     d: ""
     in_dot_pac: ""
     out_dot_bwt: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

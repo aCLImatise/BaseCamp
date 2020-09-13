@@ -1,14 +1,17 @@
 version 1.0
 
-task GfapyConvert {
+task Gfapyconvert {
   input {
     File filename
   }
   command <<<
-    gfapy-convert \
+    gfapy_convert \
       ~{filename}
   >>>
   parameter_meta {
-    filename: ""
+    filename: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

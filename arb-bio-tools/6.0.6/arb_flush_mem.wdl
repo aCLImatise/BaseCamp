@@ -4,4 +4,7 @@ task ArbFlushMem {
   command <<<
     arb_flush_mem
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

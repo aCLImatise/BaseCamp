@@ -4,4 +4,7 @@ task Mkreport {
   command <<<
     mkreport
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

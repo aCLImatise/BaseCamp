@@ -1,139 +1,152 @@
 class: CommandLineTool
 id: ../../../slamdunk_all.cwl
 inputs:
-- id: reference
+- id: in_o
+  doc: '[-5 TRIM5] [-a MAXPOLYA] [-n TOPN]'
+  type: long
+  inputBinding:
+    prefix: -o
+- id: in_reference
   doc: Reference fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: bed
+- id: in_bed
   doc: BED file with 3'UTR coordinates
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: filter_bed
-  doc: BED file with 3'UTR coordinates to filter multimappers (activates -m)
-  type: string
+- id: in_filter_bed
+  doc: "BED file with 3'UTR coordinates to filter multimappers\n(activates -m)"
+  type: File
   inputBinding:
     prefix: --filterbed
-- id: vcf
+- id: in_vcf
   doc: Skip SNP step and provide custom variant file.
-  type: string
+  type: File
   inputBinding:
     prefix: --vcf
-- id: output_dir
+- id: in_output_dir
   doc: Output directory for slamdunk run.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outputDir
-- id: trim_five_p
-  doc: "Number of bp removed from 5' end of all reads (default: 12)"
-  type: string
+- id: in_trim_five_p
+  doc: "Number of bp removed from 5' end of all reads\n(default: 12)"
+  type: long
   inputBinding:
     prefix: --trim-5p
-- id: max_polya
+- id: in_max_polya
   doc: "Max number of As at the 3' end of a read (default: 4)"
   type: long
   inputBinding:
     prefix: --max-polya
-- id: top_n
-  doc: 'Max. number of alignments to report per read (default: 1)'
-  type: string
+- id: in_top_n
+  doc: "Max. number of alignments to report per read (default:\n1)"
+  type: long
   inputBinding:
     prefix: --topn
-- id: threads
+- id: in_threads
   doc: 'Thread number (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: quant_seq
+- id: in_quant_seq
   doc: Run plain Quantseq alignment without SLAM-seq scoring
   type: boolean
   inputBinding:
     prefix: --quantseq
-- id: end_to_end
+- id: in_end_to_end
   doc: Use a end to end alignment algorithm for mapping.
   type: boolean
   inputBinding:
     prefix: --endtoend
-- id: multimap
-  doc: Use reference to resolve multimappers (requires -n > 1).
+- id: in_multimap
+  doc: "Use reference to resolve multimappers (requires -n >\n1)."
   type: boolean
   inputBinding:
     prefix: --multimap
-- id: min_mq
+- id: in_min_mq
   doc: 'Minimum mapping quality (default: 2)'
-  type: string
+  type: long
   inputBinding:
     prefix: --min-mq
-- id: min_identity
+- id: in_min_identity
   doc: 'Minimum alignment identity (default: 0.95)'
-  type: string
+  type: long
   inputBinding:
     prefix: --min-identity
-- id: max_nm
+- id: in_max_nm
   doc: 'Maximum NM for alignments (default: -1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --max-nm
-- id: min_coverage
+- id: in_min_coverage
   doc: 'Minimimum coverage to call variant (default: 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: --min-coverage
-- id: var_fraction
-  doc: 'Minimimum variant fraction to call variant (default: 0.8)'
-  type: string
+- id: in_var_fraction
+  doc: "Minimimum variant fraction to call variant (default:\n0.8)"
+  type: double
   inputBinding:
     prefix: --var-fraction
-- id: conversion_threshold
-  doc: 'Number of T>C conversions required to count read as T>C read (default: 1)'
-  type: string
+- id: in_conversion_threshold
+  doc: "Number of T>C conversions required to count read as\nT>C read (default: 1)"
+  type: long
   inputBinding:
     prefix: --conversion-threshold
-- id: max_read_length
+- id: in_max_read_length
   doc: Max read length in BAM file
   type: long
   inputBinding:
     prefix: --max-read-length
-- id: min_base_qual
+- id: in_min_base_qual
   doc: 'Min base quality for T -> C conversions (default: 27)'
   type: long
   inputBinding:
     prefix: --min-base-qual
-- id: sample_name
+- id: in_sample_name
   doc: Use this sample name for all supplied samples
   type: string
   inputBinding:
     prefix: --sampleName
-- id: sample_type
+- id: in_sample_type
   doc: Use this sample type for all supplied samples
   type: string
   inputBinding:
     prefix: --sampleType
-- id: sample_time
+- id: in_sample_time
   doc: Use this sample time for all supplied samples
   type: string
   inputBinding:
     prefix: --sampleTime
-- id: sample_index
-  doc: Run analysis only for sample <i>. Use for distributing slamdunk analysis on
-    a cluster (index is 1-based).
-  type: string
+- id: in_sample_index
+  doc: "Run analysis only for sample <i>. Use for distributing\nslamdunk analysis\
+    \ on a cluster (index is 1-based)."
+  type: long
   inputBinding:
     prefix: --sample-index
-- id: skip_sam
-  doc: Output BAM while mapping. Slower but, uses less hard disk.
+- id: in_skip_sam
+  doc: "Output BAM while mapping. Slower but, uses less hard\ndisk.\n"
   type: boolean
   inputBinding:
     prefix: --skip-sam
-- id: files
-  doc: Single csv/tsv file (recommended) containing all sample files and sample info
-    or a list of all sample BAM/FASTA(gz)/FASTQ(gz) files
-  type: File
+- id: in_files
+  doc: "Single csv/tsv file (recommended) containing all\nsample files and sample\
+    \ info or a list of all sample\nBAM/FASTA(gz)/FASTQ(gz) files"
+  type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: Output directory for slamdunk run.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - slamdunk

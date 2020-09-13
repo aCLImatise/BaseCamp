@@ -1,52 +1,60 @@
 class: CommandLineTool
 id: ../../../samtools_merge.cwl
 inputs:
-- id: sort_by_read
+- id: in_sort_by_read
   doc: sort by read names
   type: boolean
   inputBinding:
     prefix: -n
-- id: attach_rg_tag
+- id: in_attach_tag_inferred
   doc: attach RG tag (inferred from file names)
   type: boolean
   inputBinding:
     prefix: -r
-- id: uncompressed_bam_output
+- id: in_uncompressed_bam_output
   doc: uncompressed BAM output
   type: boolean
   inputBinding:
     prefix: -u
-- id: merge_file_specified
+- id: in_merge_file_specified
   doc: merge file in the specified region STR [all]
-  type: string
+  type: File
   inputBinding:
     prefix: -R
-- id: copy_header_file
+- id: in_copy_header_file
   doc: copy the header in FILE to <out.bam> [in1.bam]
   type: File
   inputBinding:
     prefix: -h
-- id: nr
+- id: in_nr
   doc: ''
   type: boolean
   inputBinding:
     prefix: -nr
-- id: out_dot_bam
+- id: in_out_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_one_dot_bam
+- id: in_in_one_dot_bam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: in_two_dot_bam
+- id: in_in_two_dot_bam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_copy_header_file
+  doc: copy the header in FILE to <out.bam> [in1.bam]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_copy_header_file)
 cwlVersion: v1.1
 baseCommand:
 - samtools

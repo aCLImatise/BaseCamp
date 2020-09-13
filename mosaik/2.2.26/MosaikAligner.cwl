@@ -1,122 +1,152 @@
 class: CommandLineTool
 id: ../../../MosaikAligner.cwl
 inputs:
-- id: alignment_mode_def
-  doc: 'alignment mode: [unique, all]. def: all'
-  type: string
+- id: in_in
+  doc: the input read file
+  type: File
   inputBinding:
-    prefix: -m
-- id: hs
+    prefix: -in
+- id: in_out
+  doc: the output alignment file
+  type: File
+  inputBinding:
+    prefix: -out
+- id: in_ibs
+  doc: "enables colorspace to basespace conversion\nusing the supplied BASESPACE reference\n\
+    archive"
+  type: File
+  inputBinding:
+    prefix: -ibs
+- id: in_an_npe
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -annpe
+- id: in_hs
   doc: 'hash size [4 - 32]. def: 15'
-  type: string
+  type: long
   inputBinding:
     prefix: -hs
-- id: ls
+- id: in_ls
   doc: enable local alignment search for PE reads
   type: string
   inputBinding:
     prefix: -ls
-- id: mhp
+- id: in_mhp
   doc: 'the maximum # of positions stored per seed'
   type: string
   inputBinding:
     prefix: -mhp
-- id: mhr
+- id: in_mhr
   doc: 'the maximum # of regions for aligning'
   type: string
   inputBinding:
     prefix: -mhr
-- id: min
+- id: in_min
   doc: 'the minimum # of aligned nucleotides'
-  type: string
+  type: long
   inputBinding:
     prefix: -min
-- id: min_p
-  doc: the minimum alignment percentage [0.0 - 1.0]
-  type: string
+- id: in_min_p
+  doc: "the minimum alignment percentage [0.0 -\n1.0]"
+  type: double
   inputBinding:
     prefix: -minp
-- id: mm
+- id: in_mm
   doc: 'the # of mismatches allowed'
   type: string
   inputBinding:
     prefix: -mm
-- id: mmp
-  doc: the percentage of mismatches allowed [0.0 - 1.0]
-  type: string
+- id: in_mmp
+  doc: "the percentage of mismatches allowed [0.0\n- 1.0]"
+  type: double
   inputBinding:
     prefix: -mmp
-- id: ncg
+- id: in_ncg
   doc: not count gaps as mismatches
   type: boolean
   inputBinding:
     prefix: -ncg
-- id: bw
-  doc: 'specifies the Smith-Waterman bandwidth. def: 9'
-  type: string
+- id: in_bw
+  doc: "specifies the Smith-Waterman bandwidth.\ndef: 9"
+  type: long
   inputBinding:
     prefix: -bw
-- id: lm
+- id: in_lm
   doc: enable low-memory functions
   type: boolean
   inputBinding:
     prefix: -lm
-- id: kd
+- id: in_kd
   doc: keeps the keys file on disk
   type: boolean
   inputBinding:
     prefix: -kd
-- id: pd
+- id: in_pd
   doc: keeps the positions file on disk
   type: boolean
   inputBinding:
     prefix: -pd
-- id: sref
-  doc: specifies the prefixes of special references
+- id: in_sref
+  doc: specifies the prefixes of special
   type: string
   inputBinding:
     prefix: -sref
-- id: s_refn
-  doc: the maximum special hashes
-  type: string
-  inputBinding:
-    prefix: -srefn
-- id: omi
-  doc: output chromosome ids and positions of multiply mapped alignments in the multiple.bam
+- id: in_omi
+  doc: "output chromosome ids and positions of\nmultiply mapped alignments in the\n\
+    multiple.bam"
   type: boolean
   inputBinding:
     prefix: -omi
-- id: om
-  doc: output complete multiply mapped alignments in the multiple.bam
+- id: in_om
+  doc: "output complete multiply mapped alignments\nin the multiple.bam"
   type: boolean
   inputBinding:
     prefix: -om
-- id: zn
+- id: in_zn
   doc: output zn tags
   type: boolean
   inputBinding:
     prefix: -zn
-- id: mms
-  doc: 'the mismatch score. def: -9.00'
-  type: string
-  inputBinding:
-    prefix: -mms
-- id: gop
+- id: in_gop
   doc: 'the gap open penalty. def: 15.00'
-  type: string
+  type: double
   inputBinding:
     prefix: -gop
-- id: gep
+- id: in_gep
   doc: 'the gap extend penalty. def: 1.00'
-  type: string
+  type: double
   inputBinding:
     prefix: -gep
-- id: h_gop
+- id: in_h_gop
   doc: 'enables the homopolymer gop. def: 4.00'
-  type: string
+  type: double
   inputBinding:
     prefix: -hgop
-outputs: []
+- id: in_all
+  doc: '-m <mode>                         alignment mode: [unique, all]. def: all'
+  type: string
+  inputBinding:
+    position: 0
+- id: in_references
+  doc: -srefn <hashes>                   the maximum special hashes
+  type: string
+  inputBinding:
+    position: 0
+- id: in_one_zero_dot_zero_zero
+  doc: '-mms <mismatch score>             the mismatch score. def: -9.00'
+  type: double
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: the output alignment file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - MosaikAligner

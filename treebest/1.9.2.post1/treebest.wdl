@@ -4,4 +4,7 @@ task Treebest {
   command <<<
     treebest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

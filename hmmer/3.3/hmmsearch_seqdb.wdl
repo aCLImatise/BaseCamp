@@ -17,4 +17,7 @@ task HmmsearchSeqdb {
     hmm_file: ""
     seq_db: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

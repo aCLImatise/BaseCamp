@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../prefixEditDistance_matchLimitGenerate.cwl
 inputs:
-- id: mine_value
+- id: in_mine_value
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 0
-- id: max_evalue
+- id: in_max_evalue
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 1
-- id: step
+- id: in_step
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - prefixEditDistance-matchLimitGenerate

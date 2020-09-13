@@ -2,7 +2,7 @@ version 1.0
 
 task FcRun1Logger {
   input {
-    String fc_run_one
+    Int fc_run_one
     String config
     String? logger
   }
@@ -16,5 +16,8 @@ task FcRun1Logger {
     fc_run_one: ""
     config: ""
     logger: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

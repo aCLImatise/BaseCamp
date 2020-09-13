@@ -1,57 +1,65 @@
 class: CommandLineTool
 id: ../../../scram_merge.cwl
 inputs:
-- id: set_input_format
+- id: in_set_input_format
   doc: 'Set input format:  "bam", "sam" or "cram".'
   type: string
   inputBinding:
     prefix: -I
-- id: set_output_format
+- id: in_set_output_format
   doc: 'Set output format: "bam", "sam" or "cram".'
   type: string
   inputBinding:
     prefix: -O
-- id: set_zlib_level
+- id: in_set_zlib_compression
   doc: Set zlib compression level.
-  type: string
+  type: long
   inputBinding:
     prefix: '-1'
-- id: no_zlib_compression
+- id: in_no_zlib_compression
   doc: No zlib compression.
-  type: string
+  type: long
   inputBinding:
     prefix: '-0'
-- id: specifies_refseqstartend_range
+- id: in_specifies_refseqstartend_range
   doc: '[Cram] Specifies the refseq:start-end range'
   type: string
   inputBinding:
     prefix: -R
-- id: specifies_reference_file
+- id: in_specifies_reference_file
   doc: '[Cram] Specifies the reference file.'
-  type: string
+  type: File
   inputBinding:
     prefix: -r
-- id: sequences_slice_default
+- id: in_sequences_slice_default
   doc: '[Cram] Sequences per slice, default 10000.'
   type: long
   inputBinding:
     prefix: -s
-- id: slices_container_default
+- id: in_slices_container_default
   doc: '[Cram] Slices per container, default 1.'
   type: long
   inputBinding:
     prefix: -S
-- id: specify_format_version
+- id: in_specify_format_version
   doc: '[Cram] Specify the file format version to write (eg 1.1, 2.0)'
-  type: string
+  type: File
   inputBinding:
     prefix: -V
-- id: embed_reference_sequence
+- id: in_embed_reference_sequence
   doc: '[Cram] Embed reference sequence.'
   type: boolean
   inputBinding:
     prefix: -X
-outputs: []
+- id: in_input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - scram_merge

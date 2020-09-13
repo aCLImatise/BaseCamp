@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../cgatreport_build.cwl
 inputs:
-- id: num_jobs
+- id: in_num_jobs
   doc: number of parallel jobs to run [default=2]
-  type: string
+  type: long
   inputBinding:
     prefix: --num-jobs
-- id: verbose
-  doc: loglevel. The higher, the more output [default=10]
-  type: string
+- id: in_verbose
+  doc: "loglevel. The higher, the more output [default=10]\n"
+  type: long
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cgatreport-build

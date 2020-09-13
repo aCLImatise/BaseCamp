@@ -1,7 +1,10 @@
 version 1.0
 
-task IuVisualizeMismatchDistribution {
+task Iuvisualizemismatchdistribution {
   command <<<
-    iu-visualize-mismatch-distribution
+    iu_visualize_mismatch_distribution
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

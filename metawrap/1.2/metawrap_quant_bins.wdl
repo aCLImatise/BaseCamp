@@ -2,12 +2,12 @@ version 1.0
 
 task MetawrapQuantBins {
   input {
-    String? folder_containing_bins
-    String? output_directory
-    String? fasta_file_entire
+    Directory? folder_containing_bins
+    Directory? output_directory
+    File? fasta_file_entire
     Int? number_of_threads
-    String? reads_x_one_dot_fast_q
-    String? reads_x_two_dot_fast_q
+    Int? reads_x_one_dot_fast_q
+    Int? reads_x_two_dot_fast_q
   }
   command <<<
     metawrap quant_bins \
@@ -25,5 +25,9 @@ task MetawrapQuantBins {
     number_of_threads: "number of threads"
     reads_x_one_dot_fast_q: ""
     reads_x_two_dot_fast_q: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

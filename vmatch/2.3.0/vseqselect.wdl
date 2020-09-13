@@ -4,4 +4,7 @@ task Vseqselect {
   command <<<
     vseqselect
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

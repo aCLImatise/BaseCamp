@@ -4,4 +4,7 @@ task Cyclone {
   command <<<
     cyclone
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

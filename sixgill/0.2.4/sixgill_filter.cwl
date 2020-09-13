@@ -1,57 +1,65 @@
 class: CommandLineTool
 id: ../../../sixgill_filter.cwl
 inputs:
-- id: out
+- id: in_out
   doc: output metapeptide database file
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: minor_f_length
+- id: in_minor_f_length
   doc: minimum ORF length
   type: long
   inputBinding:
     prefix: --minorflength
-- id: mina_a_seq_length
+- id: in_mina_a_seq_length
   doc: minimum AA sequence length
   type: long
   inputBinding:
     prefix: --minaaseqlength
-- id: min_read_count
+- id: in_min_read_count
   doc: minimum read count
   type: long
   inputBinding:
     prefix: --minreadcount
-- id: min_qual_score
+- id: in_min_qual_score
   doc: minimum basecall quality
   type: long
   inputBinding:
     prefix: --minqualscore
-- id: min_longest_tryp_peple_n
+- id: in_min_longest_tryp_peple_n
   doc: minimum length of the longest tryptic peptide
   type: long
   inputBinding:
     prefix: --minlongesttryppeplen
-- id: min_meta_gene_score
+- id: in_min_meta_gene_score
   doc: Minimum MetaGene score (-1 for none)
   type: long
   inputBinding:
     prefix: --minmetagenescore
-- id: max_meta_peptides
+- id: in_max_meta_peptides
   doc: maximum number of metapeptides to write
   type: long
   inputBinding:
     prefix: --maxmetapeptides
-- id: no_gzip_out
-  doc: Write plaintetxt (non-gzipped) output (default gzipped)
+- id: in_no_gzip_out
+  doc: "Write plaintetxt (non-gzipped) output (default\ngzipped)"
   type: boolean
   inputBinding:
     prefix: --nogzipout
-- id: debug
+- id: in_debug
   doc: Enable debug logging
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: output metapeptide database file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - sixgill_filter

@@ -9,12 +9,11 @@ task FastsparPvalues {
     File? oslash_outfile
     Boolean? s_slash_pseudo
     Int? t_slash_threads
-    Boolean? _version_display
-    File? otu_table
-    File? correlation
-    String? prefix
+    Boolean? _versiondisplay_version
     Int? permutations
-    File? var_output
+    String? prefix
+    File? correlation
+    File? otu_table
   }
   command <<<
     fastspar_pvalues \
@@ -23,14 +22,13 @@ task FastsparPvalues {
       ~{if defined(p_slash_prefix) then ("-p/--prefix " +  '"' + p_slash_prefix + '"') else ""} \
       ~{if defined(n_slash_permutations) then ("-n/--permutations " +  '"' + n_slash_permutations + '"') else ""} \
       ~{if defined(oslash_outfile) then ("-o/--outfile " +  '"' + oslash_outfile + '"') else ""} \
-      ~{true="-s/--pseudo" false="" s_slash_pseudo} \
+      ~{if (s_slash_pseudo) then "-s/--pseudo" else ""} \
       ~{if defined(t_slash_threads) then ("-t/--threads " +  '"' + t_slash_threads + '"') else ""} \
-      ~{true="-v" false="" _version_display} \
-      ~{if defined(otu_table) then ("--otu_table " +  '"' + otu_table + '"') else ""} \
-      ~{if defined(correlation) then ("--correlation " +  '"' + correlation + '"') else ""} \
-      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if (_versiondisplay_version) then "-v" else ""} \
       ~{if defined(permutations) then ("--permutations " +  '"' + permutations + '"') else ""} \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""}
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(correlation) then ("--correlation " +  '"' + correlation + '"') else ""} \
+      ~{if defined(otu_table) then ("--otu_table " +  '"' + otu_table + '"') else ""}
   >>>
   parameter_meta {
     c_slash_otu_table: "OTU input table used to generated correlations"
@@ -40,11 +38,14 @@ task FastsparPvalues {
     oslash_outfile: "Output p-value matrix filename"
     s_slash_pseudo: "Calculate pseudo p-values rather than exact p-values (default: false)"
     t_slash_threads: "Number of threads (default: 1)"
-    _version_display: "--version Display version information and exit"
-    otu_table: ""
-    correlation: ""
-    prefix: ""
+    _versiondisplay_version: "--version\\nDisplay version information and exit\\n"
     permutations: ""
-    var_output: ""
+    prefix: ""
+    correlation: ""
+    otu_table: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_oslash_outfile = "${in_oslash_outfile}"
   }
 }

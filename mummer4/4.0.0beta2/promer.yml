@@ -1,4 +1,6 @@
 !Command
+command:
+- promer
 positional:
 - !Positional
   description: Set the input reference multi-FASTA DNA file
@@ -12,17 +14,126 @@ positional:
   optional: false
 named:
 - !Flag
-  description: '|matrix       Set the alignment matrix number to 1 [BLOSUM 45], 2
-    [BLOSUM 62] or 3 [BLOSUM 80] (default 2)'
+  description: "Use anchor matches that are unique in both the reference\nand query"
+  synonyms:
+  - --mum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as --mumreference
+  synonyms:
+  - --mumcand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use anchor matches that are unique in in the reference\nbut not necessarily\
+    \ unique in the query (default behavior)"
+  synonyms:
+  - --mumreference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use all anchor matches regardless of their uniqueness
+  synonyms:
+  - --maxmatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|breaklen     Set the distance an alignment extension will attempt\
+    \ to\nextend poor scoring regions before giving up, measured in\namino acids (default\
+    \ 60)"
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|mincluster   Sets the minimum length of a cluster of matches, measured\
+    \ in\namino acids (default 20)"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the dependency information and exit
+  synonyms:
+  - --depend
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|diagfactor   Set the clustering diagonal difference separation factor\n\
+    (default .11)"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|maxgap       Set the maximum gap between two adjacent matches in\
+    \ a\ncluster, measured in amino acids (default 30)"
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display help information and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|minmatch     Set the minimum length of a single match, measured in\
+    \ amino\nacids (default 6)"
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|masklen      Set the maximum bookend masking lenth, measured in amino\n\
+    acids (default 8)"
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Automatically generate the original PROmer1.1 \".coords\"\noutput\
+    \ file using the \"show-coords\" program"
+  synonyms:
+  - --coords
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|prefix       Set the prefix of the output files (default "out")'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|matrix       Set the alignment matrix number to 1 [BLOSUM 45], 2\
+    \ [BLOSUM\n62] or 3 [BLOSUM 80] (default 2)\n"
   synonyms:
   - -x
   args: !EmptyFlagArg {}
   optional: true
-command:
-- promer
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag: !Flag
   description: Display the version information and exit

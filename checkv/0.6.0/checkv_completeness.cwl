@@ -1,38 +1,42 @@
 class: CommandLineTool
 id: ../../../checkv_completeness.cwl
 inputs:
-- id: reference_database_path
-  doc: Reference database path. By default the CHECKVDB environment variable is used
+- id: in_reference_database_path
+  doc: "Reference database path. By default the CHECKVDB environment\nvariable is\
+    \ used"
   type: File
   inputBinding:
     prefix: -d
-- id: number_threads_use
+- id: in_number_threads_use
   doc: Number of threads to use for Prodigal and DIAMOND
   type: long
   inputBinding:
     prefix: -t
-- id: restart
-  doc: Overwrite existing intermediate files. By default CheckV continues where program
-    left off
+- id: in_restart
+  doc: "Overwrite existing intermediate files. By default CheckV\ncontinues where\
+    \ program left off"
   type: boolean
   inputBinding:
     prefix: --restart
-- id: quiet
+- id: in_quiet
   doc: Suppress logging messages
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: input
+- id: in_input
   doc: Input nucleotide sequences in FASTA format
   type: string
   inputBinding:
     position: 0
-- id: output
+- id: in_output
   doc: Output directory
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkv

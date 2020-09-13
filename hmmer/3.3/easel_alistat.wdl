@@ -10,11 +10,11 @@ task EaselAlistat {
   }
   command <<<
     easel alistat \
-      ~{true="-1" false="" use_tabular_output} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--amino" false="" amino} \
-      ~{true="-options" false="" options}
+      ~{if (use_tabular_output) then "-1" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     use_tabular_output: ": use tabular output, one line per alignment"
@@ -22,5 +22,8 @@ task EaselAlistat {
     rna: ": use RNA alphabet (don't autodetect)"
     amino: ": use protein alphabet (don't autodetect)"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

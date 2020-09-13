@@ -6,9 +6,12 @@ task BedparseCdsBedfile {
   }
   command <<<
     bedparse cds bedfile \
-      ~{true="--ignoreCDSonly" false="" ignore_cds_only}
+      ~{if (ignore_cds_only) then "--ignoreCDSonly" else ""}
   >>>
   parameter_meta {
     ignore_cds_only: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

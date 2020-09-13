@@ -1,66 +1,74 @@
 class: CommandLineTool
 id: ../../../stream_atac.cwl
 inputs:
-- id: file_count
+- id: in_file_count
   doc: 'scATAC-seq counts file name (default: None)'
   type: File
   inputBinding:
     prefix: --file_count
-- id: file_region
-  doc: 'scATAC-seq regions file name in .bed or .bed.gz format (default: None)'
+- id: in_file_region
+  doc: "scATAC-seq regions file name in .bed or .bed.gz format\n(default: None)"
   type: File
   inputBinding:
     prefix: --file_region
-- id: file_sample
+- id: in_file_sample
   doc: 'scATAC-seq samples file name (default: None)'
   type: File
   inputBinding:
     prefix: --file_sample
-- id: genome
-  doc: "Reference genome. Choose from {{'mm9', 'mm10', 'hg38', 'hg19'}} (default:\
+- id: in_genome
+  doc: "Reference genome. Choose from {{'mm9', 'mm10', 'hg38',\n'hg19'}} (default:\
     \ hg19)"
-  type: string
+  type: long
   inputBinding:
     prefix: --genome
-- id: feature
-  doc: "Features used to have the analysis. Choose from {{'kmer', 'motif'}} (default:\
+- id: in_feature
+  doc: "Features used to have the analysis. Choose from\n{{'kmer', 'motif'}} (default:\
     \ kmer)"
   type: string
   inputBinding:
     prefix: --feature
-- id: kmer_length_scatacseq
+- id: in_kmer_length_scatacseq
   doc: 'k-mer length for scATAC-seq analysis (default: 7)'
-  type: string
+  type: long
   inputBinding:
     prefix: -k
-- id: resize_peak
-  doc: 'Resize peaks when peaks have different widths. (default: False)'
+- id: in_resize_peak
+  doc: "Resize peaks when peaks have different widths.\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --resize_peak
-- id: peak_width
-  doc: 'Specify the width of peak when resizing them. Only valid when resize_peak
-    is True. (default: 450)'
-  type: string
+- id: in_peak_width
+  doc: "Specify the width of peak when resizing them. Only\nvalid when resize_peak\
+    \ is True. (default: 450)"
+  type: long
   inputBinding:
     prefix: --peak_width
-- id: n_jobs
-  doc: 'The number of parallel jobs to run. (default,1) (default: 1)'
-  type: string
+- id: in_n_jobs
+  doc: "The number of parallel jobs to run. (default,1)\n(default: 1)"
+  type: long
   inputBinding:
     prefix: --n_jobs
-- id: file_format
-  doc: "File format of file_count. Currently supported file formats: 'tsv','txt','csv','mtx'.\
+- id: in_file_format
+  doc: "File format of file_count. Currently supported file\nformats: 'tsv','txt','csv','mtx'.\
     \ (default: tsv)"
   type: File
   inputBinding:
     prefix: --file_format
-- id: output_folder
-  doc: 'Output folder (default: None)'
-  type: string
+- id: in_output_folder
+  doc: "Output folder (default: None)\n"
+  type: Directory
   inputBinding:
     prefix: --output_folder
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_folder
+  doc: "Output folder (default: None)\n"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_folder)
 cwlVersion: v1.1
 baseCommand:
 - stream_atac

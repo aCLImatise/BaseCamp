@@ -5,8 +5,8 @@ task ExtractBCITrees {
     String random_seed
     String bci_threshold
     Int max_output_trees
-    String mr_bayes_dot_tr_probs_input_file_one_dot_dot_n
-    String nexus_output_file
+    File mr_bayes_dot_tr_probs_input_file_one_dot_dot_n
+    File nexus_output_file
   }
   command <<<
     extractBCITrees \
@@ -22,5 +22,9 @@ task ExtractBCITrees {
     max_output_trees: ""
     mr_bayes_dot_tr_probs_input_file_one_dot_dot_n: ""
     nexus_output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_nexus_output_file = "${in_nexus_output_file}"
   }
 }

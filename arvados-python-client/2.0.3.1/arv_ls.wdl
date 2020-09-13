@@ -1,20 +1,26 @@
 version 1.0
 
-task ArvLs {
+task Arvls {
   input {
-    String? retries
+    Int? retries
     Boolean? list_file_sizes
     String locator
+    File path_dot
   }
   command <<<
-    arv-ls \
+    arv_ls \
       ~{locator} \
+      ~{path_dot} \
       ~{if defined(retries) then ("--retries " +  '"' + retries + '"') else ""} \
-      ~{true="-s" false="" list_file_sizes}
+      ~{if (list_file_sizes) then "-s" else ""}
   >>>
   parameter_meta {
-    retries: "Maximum number of times to retry server requests that encounter temporary failures (e.g., server down). Default 3."
+    retries: "Maximum number of times to retry server requests that\\nencounter temporary failures (e.g., server down). Default\\n3."
     list_file_sizes: "List file sizes, in KiB."
-    locator: "Collection UUID or locator, optionally with a subdir path."
+    locator: "Collection UUID or locator, optionally with a subdir"
+    path_dot: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

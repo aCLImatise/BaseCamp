@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../snap.cwl
 inputs:
-- id: lc_mask
+- id: in_lc_mask
   doc: treat lowercase as N
   type: boolean
   inputBinding:
     prefix: -lcmask
-- id: plus
+- id: in_plus
   doc: predict on plus strand only
   type: boolean
   inputBinding:
     prefix: -plus
-- id: minus
+- id: in_minus
   doc: predict on minus strand only
   type: boolean
   inputBinding:
     prefix: -minus
-- id: gff
+- id: in_gff
   doc: output annotation as GFF
   type: boolean
   inputBinding:
     prefix: -gff
-- id: ace
+- id: in_ace
   doc: output annotation as ACED
   type: boolean
   inputBinding:
     prefix: -ace
-- id: quiet
+- id: in_quiet
   doc: do not send progress to STDERR
   type: boolean
   inputBinding:
     prefix: -quiet
-- id: aa
+- id: in_aa
   doc: create FASTA file of proteins
   type: File
   inputBinding:
     prefix: -aa
-- id: tx
+- id: in_tx
   doc: create FASTA file of transcripts
   type: File
   inputBinding:
     prefix: -tx
-- id: xdef
+- id: in_xdef
   doc: external definitions
   type: File
   inputBinding:
     prefix: -xdef
-- id: name
+- id: in_name
   doc: name for the gene [default snap]
   type: string
   inputBinding:
     prefix: -name
-- id: hmm_file
+- id: in_hmm_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: fast_a_file
+- id: in_fast_a_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - snap

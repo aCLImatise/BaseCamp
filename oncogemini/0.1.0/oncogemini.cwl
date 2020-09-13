@@ -1,19 +1,22 @@
 class: CommandLineTool
 id: ../../../oncogemini.cwl
 inputs:
-- id: annotation_dir
-  doc: 'Path to the annotation database. This argument is optional and if given will
-    take precedence over the default location stored in the oncogemini config file.
-    (default: None)'
-  type: string
+- id: in_annotation_dir
+  doc: "Path to the annotation database. This argument is\noptional and if given will\
+    \ take precedence over the\ndefault location stored in the oncogemini config file.\n\
+    (default: None)"
+  type: File
   inputBinding:
     prefix: --annotation-dir
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - oncogemini

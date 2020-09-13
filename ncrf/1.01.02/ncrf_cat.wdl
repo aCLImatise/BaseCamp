@@ -1,7 +1,10 @@
 version 1.0
 
-task NcrfCat.py {
+task NcrfCat {
   command <<<
-    ncrf_cat.py
+    ncrf_cat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

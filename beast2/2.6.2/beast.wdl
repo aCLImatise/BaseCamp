@@ -4,19 +4,19 @@ task Beast {
   input {
     String? window
     String? options
-    String? working
-    String? seed
+    File? working
+    Int? seed
     String? prefix
-    String? state_file
+    File? state_file
     String? overwrite
     String? resume
     String? validate
-    String? errors
-    String? threads
+    Int? errors
+    Int? threads
     String? java
     String? noerr
     String? loglevel
-    String? instances
+    Int? instances
     String? beagle
     String? beagle_info
     String? beagle_order
@@ -28,9 +28,9 @@ task Beast {
     String? beagle_scaling
     String? version
     String? strict_versions
-    String? pairs_replaced_xml
+    Int? pairs_replaced_d
     String? sample_from_prior
-    String? input_file_name
+    File? input_file_name
   }
   command <<<
     beast \
@@ -61,7 +61,7 @@ task Beast {
       ~{if defined(beagle_scaling) then ("-beagle_scaling " +  '"' + beagle_scaling + '"') else ""} \
       ~{if defined(version) then ("-version " +  '"' + version + '"') else ""} \
       ~{if defined(strict_versions) then ("-strictversions " +  '"' + strict_versions + '"') else ""} \
-      ~{if defined(pairs_replaced_xml) then ("-D " +  '"' + pairs_replaced_xml + '"') else ""} \
+      ~{if defined(pairs_replaced_d) then ("-D " +  '"' + pairs_replaced_d + '"') else ""} \
       ~{if defined(sample_from_prior) then ("-sampleFromPrior " +  '"' + sample_from_prior + '"') else ""}
   >>>
   parameter_meta {
@@ -91,8 +91,11 @@ task Beast {
     beagle_scaling: ": specify scaling scheme to use"
     version: "version and stop"
     strict_versions: "only package versions as specified in the 'required' attribute"
-    pairs_replaced_xml: "pairs to be replaced in the XML, e.g., -D \"arg1=10,arg2=20\""
-    sample_from_prior: "from prior for MCMC analysis (by adding sampleFromPrior=\"true\" in the first run element)"
+    pairs_replaced_d: "pairs to be replaced in the XML, e.g., -D \\\"arg1=10,arg2=20\\\""
+    sample_from_prior: "from prior for MCMC analysis (by adding sampleFromPrior=\\\"true\\\" in the first run element)"
     input_file_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

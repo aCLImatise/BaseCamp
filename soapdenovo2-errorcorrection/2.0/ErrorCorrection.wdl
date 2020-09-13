@@ -4,4 +4,7 @@ task ErrorCorrection {
   command <<<
     ErrorCorrection
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

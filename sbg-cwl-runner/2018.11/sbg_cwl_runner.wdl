@@ -1,21 +1,19 @@
 version 1.0
 
-task SbgCwlRunner {
+task Sbgcwlrunner {
   input {
-    String? outdir
+    Directory? outdir
     Boolean? quiet
     String? api_profile
     String? project
-    String? poll_interval
+    Int? poll_interval
     String var_workflow
-    String? job
   }
   command <<<
-    sbg-cwl-runner \
+    sbg_cwl_runner \
       ~{var_workflow} \
-      ~{job} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(api_profile) then ("--api-profile " +  '"' + api_profile + '"') else ""} \
       ~{if defined(project) then ("--project " +  '"' + project + '"') else ""} \
       ~{if defined(poll_interval) then ("--poll-interval " +  '"' + poll_interval + '"') else ""}
@@ -27,6 +25,8 @@ task SbgCwlRunner {
     project: "Project to run tasks in [default: default-sbg-cwl-runner-project]"
     poll_interval: "Polling interval to check for job status (in min) [default: 1]"
     var_workflow: ""
-    job: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

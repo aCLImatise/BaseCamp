@@ -1,12 +1,21 @@
 !Command
+command:
+- heartbeat-wrapper
 positional:
 - !Positional
-  description: System call (to be joined by " "). We will block on this and return
-    its result.
+  description: "System call (to be joined by \" \"). We will block on\nthis and return\
+    \ its result."
   position: 0
   name: command
   optional: false
 named:
+- !Flag
+  description: '[--directory DIRECTORY]'
+  synonyms:
+  - --exit-file
+  args: !SimpleFlagArg
+    name: EXIT_FILE
+  optional: true
 - !Flag
   description: 'Heartbeat rate, in seconds (default: 1.0)'
   synonyms:
@@ -15,20 +24,12 @@ named:
     name: RATE
   optional: true
 - !Flag
-  description: "Path to heartbeat file. The first line will have the format '0 {pid}\
-    \ {pgid}\\n'. The rest are just elapsed time (default: None)"
+  description: "Path to heartbeat file. The first line will have the\nformat '0 {pid}\
+    \ {pgid}\\n'. The rest are just elapsed\ntime (default: None)"
   synonyms:
   - --heartbeat-file
   args: !SimpleFlagArg
     name: HEARTBEAT_FILE
-  optional: true
-- !Flag
-  description: "Path to exit sentinel file. At end, it will have the format '{exit_code}'\
-    \ (default: None)"
-  synonyms:
-  - --exit-file
-  args: !SimpleFlagArg
-    name: EXIT_FILE
   optional: true
 - !Flag
   description: 'Directory in which to run COMMAND. (default: .)'
@@ -37,10 +38,9 @@ named:
   args: !SimpleFlagArg
     name: DIRECTORY
   optional: true
-command:
-- heartbeat-wrapper
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

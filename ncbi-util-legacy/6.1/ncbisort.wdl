@@ -2,22 +2,25 @@ version 1.0
 
 task Ncbisort {
   input {
-    Boolean? cmu
-    Boolean? tc
-    File? o
     String? t
+    File? o
+    Boolean? tc
+    Boolean? cmu
   }
   command <<<
     ncbisort \
-      ~{true="-cmu" false="" cmu} \
-      ~{true="-tc" false="" tc} \
+      ~{if defined(t) then ("-T " +  '"' + t + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(t) then ("-T " +  '"' + t + '"') else ""}
+      ~{if (tc) then "-tc" else ""} \
+      ~{if (cmu) then "-cmu" else ""}
   >>>
   parameter_meta {
-    cmu: ""
-    tc: ""
-    o: ""
     t: ""
+    o: ""
+    tc: ""
+    cmu: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

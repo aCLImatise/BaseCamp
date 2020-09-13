@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- hmmsearch
+- seqdb
 positional:
 - !Positional
   description: ''
@@ -16,10 +19,9 @@ positional:
   name: seqdb
   optional: false
 named: []
-command:
-- hmmsearch
-- seqdb
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - hmmsearch
   positional: []
   named:
   - !Flag
@@ -230,11 +232,13 @@ parent: &id001 !Command
     args: !SimpleFlagArg
       name: n
     optional: true
-  command:
-  - hmmsearch
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - hmmsearch
+    - hmmfile
     positional:
     - !Positional
       description: ''
@@ -242,11 +246,9 @@ parent: &id001 !Command
       name: seqdb
       optional: false
     named: []
-    command:
-    - hmmsearch
-    - hmmfile
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ': show brief help on version and usage'
       synonyms:
@@ -260,7 +262,7 @@ parent: &id001 !Command
       \ on version and usage\n\nTo see more help on available options, do hmmsearch\
       \ -h\n\n"
     generated_using: &id003 []
-  - *id002
+  usage: []
   help_flag: !Flag
     description: ': show brief help on version and usage'
     synonyms:
@@ -309,6 +311,7 @@ parent: &id001 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
   synonyms:

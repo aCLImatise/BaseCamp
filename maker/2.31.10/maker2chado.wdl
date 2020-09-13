@@ -4,4 +4,7 @@ task Maker2chado {
   command <<<
     maker2chado
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

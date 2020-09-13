@@ -4,4 +4,7 @@ task Spacepharer {
   command <<<
     spacepharer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

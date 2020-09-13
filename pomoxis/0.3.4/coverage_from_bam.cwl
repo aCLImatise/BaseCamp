@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../coverage_from_bam.cwl
 inputs:
-- id: regions
+- id: in_regions
   doc: 'Only process given regions. (default: None)'
   type: string[]
   inputBinding:
     prefix: --regions
-- id: prefix
-  doc: 'Prefix for output, defaults to basename of bam. (default: None)'
+- id: in_prefix
+  doc: "Prefix for output, defaults to basename of bam.\n(default: None)"
   type: string
   inputBinding:
     prefix: --prefix
-- id: stride
+- id: in_stride
   doc: 'Stride in genomic coordinate. (default: 1000)'
-  type: string
+  type: long
   inputBinding:
     prefix: --stride
-- id: summary_only
-  doc: 'Output only the depth_summary.txt file (default: False)'
-  type: boolean
+- id: in_summary_only
+  doc: "Output only the depth_summary.txt file (default:\nFalse)\n"
+  type: File
   inputBinding:
     prefix: --summary_only
-- id: bam
-  doc: .fasta/fastq file.
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_summary_only
+  doc: "Output only the depth_summary.txt file (default:\nFalse)\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_summary_only)
 cwlVersion: v1.1
 baseCommand:
 - coverage_from_bam

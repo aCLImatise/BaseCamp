@@ -2,19 +2,32 @@ version 1.0
 
 task FunannotateRemote {
   input {
-    Boolean? genbank
-    Boolean? out
+    Boolean? methods
+    Boolean? email
+    Boolean? funannotate_input_folder
+    Directory? out
     Boolean? force
+    String or
   }
   command <<<
     funannotate remote \
-      ~{true="--genbank" false="" genbank} \
-      ~{true="--out" false="" out} \
-      ~{true="--force" false="" force}
+      ~{or} \
+      ~{if (methods) then "--methods" else ""} \
+      ~{if (email) then "--email" else ""} \
+      ~{if (funannotate_input_folder) then "--input" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (force) then "--force" else ""}
   >>>
   parameter_meta {
-    genbank: "GenBank file (must be annotated)."
-    out: "Output folder name. "
+    methods: "Which services to run, space separated [phobius,antismash,all]"
+    email: "Email address to identify yourself to services."
+    funannotate_input_folder: "Funannotate input folder."
+    out: "Output folder name."
     force: "Force query even if antiSMASH server looks busy"
+    or: "-g, --genbank       GenBank file (must be annotated)."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
   }
 }

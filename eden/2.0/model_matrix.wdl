@@ -2,10 +2,10 @@ version 1.0
 
 task ModelMatrix {
   input {
-    String? input_file
-    String? model_file
-    String? output_dir
-    String? output_format
+    File? input_file
+    File? model_file
+    File? output_dir
+    File? output_format
   }
   command <<<
     model matrix \
@@ -18,6 +18,11 @@ task ModelMatrix {
     input_file: "Path to file containing input. (default: None)"
     model_file: "Path to a fit model file. (default: model)"
     output_dir: "Path to output directory. (default: out)"
-    output_format: "Output file format. (default: MatrixMarket)"
+    output_format: "Output file format. (default: MatrixMarket)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_dir = "${in_output_dir}"
+    File out_output_format = "${in_output_format}"
   }
 }

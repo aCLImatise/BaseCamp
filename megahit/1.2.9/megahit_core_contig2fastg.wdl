@@ -2,7 +2,7 @@ version 1.0
 
 task MegahitCoreContig2fastg {
   input {
-    String contig_two_fast_g
+    Int contig_two_fast_g
     String km_er_size
     String k_km_er_size_dot_contigs_dot_fa
   }
@@ -16,5 +16,8 @@ task MegahitCoreContig2fastg {
     contig_two_fast_g: ""
     km_er_size: ""
     k_km_er_size_dot_contigs_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

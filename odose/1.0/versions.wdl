@@ -1,14 +1,17 @@
 version 1.0
 
-task Versions.py {
+task Versions {
   input {
     String target
   }
   command <<<
-    versions.py \
+    versions \
       ~{target}
   >>>
   parameter_meta {
     target: "Target output file for version numbers"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

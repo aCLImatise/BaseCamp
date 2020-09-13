@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- bam2msa
+- INPUT
 positional:
 - !Positional
   description: ''
@@ -13,26 +16,26 @@ named:
   args: !SimpleFlagArg
     name: REGION
   optional: true
-command:
-- bam2msa
-- INPUT
 parent: &id002 !Command
+  command:
+  - bam2msa
   positional: []
   named:
   - !Flag
-    description: only include sequences in a certain REGION
+    description: "only include sequences in a certain REGION\n"
     synonyms:
     - -r
     - --region
     args: !SimpleFlagArg
       name: REGION
     optional: true
-  command:
-  - bam2msa
   parent:
   subcommands:
   - *id001
   - !Command
+    command:
+    - bam2msa
+    - OUTPUT
     positional:
     - !Positional
       description: ''
@@ -57,11 +60,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: REGION
       optional: true
-    command:
-    - bam2msa
-    - OUTPUT
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -74,6 +75,7 @@ parent: &id002 !Command
       \ INPUT: can't open 'OUTPUT': [Errno 2] No such file or directory: 'OUTPUT'\n"
     generated_using: &id003
     - --help
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -90,6 +92,7 @@ parent: &id002 !Command
     \ REGION\n                        only include sequences in a certain REGION\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

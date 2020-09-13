@@ -11,13 +11,16 @@ task PaladinIndex {
     paladin index \
       ~{reference_dot_fast_a} \
       ~{annotation_dot_gff} \
-      ~{true="-f" false="" enable_indexing_frames} \
-      ~{true="-r" false="" reference_type_reference}
+      ~{if (enable_indexing_frames) then "-f" else ""} \
+      ~{if (reference_type_reference) then "-r" else ""}
   >>>
   parameter_meta {
     enable_indexing_frames: "Enable indexing all frames in nucleotide references"
-    reference_type_reference: "<#>  Reference type: 1: Reference contains nucleotide sequences (requires corresponding .gff annotation) 2: Reference contains nucleotide sequences (coding only, eg curated transcriptome) 3: Reference contains protein sequences (UniProt or other source) 4: Development tests"
+    reference_type_reference: "<#>  Reference type:\\n1: Reference contains nucleotide sequences (requires corresponding .gff annotation)\\n2: Reference contains nucleotide sequences (coding only, eg curated transcriptome)\\n3: Reference contains protein sequences (UniProt or other source)\\n4: Development tests"
     reference_dot_fast_a: ""
     annotation_dot_gff: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

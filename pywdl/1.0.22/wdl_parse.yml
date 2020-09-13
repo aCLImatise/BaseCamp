@@ -1,10 +1,12 @@
-&id002 !Command
-positional: []
-named: []
+&id001 !Command
 command:
 - wdl
 - parse
-parent: &id001 !Command
+positional: []
+named: []
+parent: &id002 !Command
+  command:
+  - wdl
   positional: []
   named:
   - !Flag
@@ -19,11 +21,13 @@ parent: &id001 !Command
     - --no-color
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - wdl
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - wdl
+    - run
     positional:
     - !Positional
       description: Path to WDL File
@@ -44,11 +48,9 @@ parent: &id001 !Command
       - --sge
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - wdl
-    - run
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -65,7 +67,7 @@ parent: &id001 !Command
       \ execute tasks\n"
     generated_using: &id003
     - --help
-  - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -89,6 +91,10 @@ parent: &id001 !Command
   generated_using: *id003
 subcommands:
 - !Command
+  command:
+  - wdl
+  - parse
+  - wdl_file
   positional:
   - !Positional
     description: ''
@@ -99,21 +105,18 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --debug
+    - --no-color
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
     description: ''
     synonyms:
-    - --no-color
+    - --debug
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - wdl
-  - parse
-  - wdl_file
-  parent: *id002
+  parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -131,6 +134,7 @@ subcommands:
     wdl: error: unrecognized arguments: --usage\n"
   generated_using:
   - --usage
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

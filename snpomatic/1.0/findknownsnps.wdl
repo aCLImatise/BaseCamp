@@ -4,4 +4,7 @@ task Findknownsnps {
   command <<<
     findknownsnps
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

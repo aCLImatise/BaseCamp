@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../abyss_db_csv_table_name.cwl
 inputs:
-- id: abyss_db_csv
+- id: in_abyss_db_csv
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sqlite_repository
+- id: in_sqlite_repository
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: table_name
+- id: in_table_name
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - abyss-db-csv

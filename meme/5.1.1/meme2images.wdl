@@ -6,17 +6,15 @@ task Meme2images {
     Boolean? eps
     Boolean? png
     Boolean? rc
-    String motifs_file
-    String output_directory
+    File motifs_file
   }
   command <<<
     meme2images \
       ~{motifs_file} \
-      ~{output_directory} \
       ~{if defined(motif) then ("-motif " +  '"' + motif + '"') else ""} \
-      ~{true="-eps" false="" eps} \
-      ~{true="-png" false="" png} \
-      ~{true="-rc" false="" rc}
+      ~{if (eps) then "-eps" else ""} \
+      ~{if (png) then "-png" else ""} \
+      ~{if (rc) then "-rc" else ""}
   >>>
   parameter_meta {
     motif: "output only a selected motif; repeatable"
@@ -24,6 +22,8 @@ task Meme2images {
     png: "output logos in png format"
     rc: "output reverse complement logos"
     motifs_file: ""
-    output_directory: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

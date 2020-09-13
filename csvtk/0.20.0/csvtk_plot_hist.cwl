@@ -1,178 +1,193 @@
 class: CommandLineTool
 id: ../../../csvtk_plot_hist.cwl
 inputs:
-- id: bins
+- id: in_bins
   doc: number of bins (default 50)
   type: long
   inputBinding:
     prefix: --bins
-- id: color_index
+- id: in_color_index
   doc: color index, 1-7 (default 1)
   type: long
   inputBinding:
     prefix: --color-index
-- id: percentiles
+- id: in_percentiles
   doc: calculate percentiles
   type: boolean
   inputBinding:
     prefix: --percentiles
-- id: axis_width
+- id: in_axis_width
   doc: axis width (default 1.5)
   type: double
   inputBinding:
     prefix: --axis-width
-- id: chunk_size
+- id: in_chunk_size
   doc: chunk size of CSV reader (default 50)
   type: long
   inputBinding:
     prefix: --chunk-size
-- id: comment_char
+- id: in_comment_char
   doc: lines starting with commment-character will be ignored. if your header row
     starts with '#', please assign "-C" another rare symbol, e.g. '$' (default "#")
   type: string
   inputBinding:
     prefix: --comment-char
-- id: data_field
+- id: in_data_field
   doc: column index or column name of data (default "1")
-  type: string
+  type: long
   inputBinding:
     prefix: --data-field
-- id: delimiter
+- id: in_delimiter
   doc: delimiting character of the input CSV file (default ",")
-  type: string
+  type: File
   inputBinding:
     prefix: --delimiter
-- id: format
+- id: in_format
   doc: 'image format for stdout when flag -o/--out-file not given. available values:
     eps, jpg|jpeg, pdf, png, svg, and tif|tiff. (default "png")'
-  type: string
+  type: File
   inputBinding:
     prefix: --format
-- id: group_field
+- id: in_group_field
   doc: column index or column name of group
   type: string
   inputBinding:
     prefix: --group-field
-- id: height
+- id: in_height
   doc: Figure height (default 4.5)
   type: double
   inputBinding:
     prefix: --height
-- id: ignore_empty_row
+- id: in_ignore_empty_row
   doc: ignore empty rows
   type: boolean
   inputBinding:
     prefix: --ignore-empty-row
-- id: ignore_illegal_row
+- id: in_ignore_illegal_row
   doc: ignore illegal rows
   type: boolean
   inputBinding:
     prefix: --ignore-illegal-row
-- id: in_file_list
+- id: in_in_file_list
   doc: file of input files list (one file per line), if given, they are appended to
     files from cli arguments
-  type: string
+  type: File
   inputBinding:
     prefix: --infile-list
-- id: label_size
+- id: in_label_size
   doc: label font size (default 14)
   type: long
   inputBinding:
     prefix: --label-size
-- id: lazy_quotes
+- id: in_lazy_quotes
   doc: if given, a quote may appear in an unquoted field and a non-doubled quote may
     appear in a quoted field
   type: boolean
   inputBinding:
     prefix: --lazy-quotes
-- id: no_header_row
+- id: in_no_header_row
   doc: specifies that the input CSV file does not have header row
   type: boolean
   inputBinding:
     prefix: --no-header-row
-- id: num_cpus
+- id: in_num_cpus
   doc: number of CPUs to use (default value depends on your computer) (default 8)
   type: long
   inputBinding:
     prefix: --num-cpus
-- id: out_delimiter
+- id: in_out_delimiter
   doc: delimiting character of the output CSV file, e.g., -D $'\t' for tab (default
     ",")
-  type: string
+  type: File
   inputBinding:
     prefix: --out-delimiter
-- id: out_file
+- id: in_out_file
   doc: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
-  type: string
+  type: File
   inputBinding:
     prefix: --out-file
-- id: out_tabs
+- id: in_out_tabs
   doc: specifies that the output is delimited with tabs. Overrides "-D"
   type: boolean
   inputBinding:
     prefix: --out-tabs
-- id: tabs
+- id: in_tabs
   doc: specifies that the input CSV file is delimited with tabs. Overrides "-d" and
     "-D"
   type: boolean
   inputBinding:
     prefix: --tabs
-- id: tick_width
+- id: in_tick_width
   doc: axis tick width (default 1.5)
   type: double
   inputBinding:
     prefix: --tick-width
-- id: title
+- id: in_title
   doc: Figure title
   type: string
   inputBinding:
     prefix: --title
-- id: title_size
+- id: in_title_size
   doc: title font size (default 16)
   type: long
   inputBinding:
     prefix: --title-size
-- id: width
+- id: in_width
   doc: Figure width (default 6)
   type: double
   inputBinding:
     prefix: --width
-- id: x_max
+- id: in_x_max
   doc: maximum value of X axis
-  type: string
+  type: long
   inputBinding:
     prefix: --x-max
-- id: x_min
+- id: in_x_min
   doc: minimum value of X axis
-  type: string
+  type: long
   inputBinding:
     prefix: --x-min
-- id: xlab
+- id: in_xlab
   doc: x label text
   type: string
   inputBinding:
     prefix: --xlab
-- id: y_max
+- id: in_y_max
   doc: maximum value of Y axis
-  type: string
+  type: long
   inputBinding:
     prefix: --y-max
-- id: y_min
+- id: in_y_min
   doc: minimum value of Y axis
-  type: string
+  type: long
   inputBinding:
     prefix: --y-min
-- id: ylab
+- id: in_ylab
   doc: y label text
   type: string
   inputBinding:
     prefix: --ylab
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_format
+  doc: 'image format for stdout when flag -o/--out-file not given. available values:
+    eps, jpg|jpeg, pdf, png, svg, and tif|tiff. (default "png")'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_format)
+- id: out_out_delimiter
+  doc: delimiting character of the output CSV file, e.g., -D $'\t' for tab (default
+    ",")
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_delimiter)
+- id: out_out_file
+  doc: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_file)
 cwlVersion: v1.1
 baseCommand:
 - csvtk

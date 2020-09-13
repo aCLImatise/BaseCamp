@@ -4,4 +4,7 @@ task Bamdownsamplerandom {
   command <<<
     bamdownsamplerandom
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

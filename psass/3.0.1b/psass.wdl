@@ -4,4 +4,7 @@ task Psass {
   command <<<
     psass
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

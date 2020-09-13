@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../ssu_esl_seqrange_sqfile.cwl
 inputs:
-- id: proc_idx
+- id: in_proc_idx
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: nproc
+- id: in_nproc
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-seqrange

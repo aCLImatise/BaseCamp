@@ -1,14 +1,10 @@
 version 1.0
 
 task Hidehead {
-  input {
-    String? option
-  }
   command <<<
-    hidehead \
-      ~{option}
+    hidehead
   >>>
-  parameter_meta {
-    option: ""
+  output {
+    File out_stdout = stdout()
   }
 }

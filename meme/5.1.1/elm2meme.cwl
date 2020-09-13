@@ -1,38 +1,201 @@
 class: CommandLineTool
 id: ../../../elm2meme.cwl
 inputs:
-- id: anchored
-  doc: 'allow anchored motifs;  default: skip anchored motifs'
+- id: in_allow_anchored_motifs
+  doc: "allow anchored motifs;\ndefault: skip anchored motifs"
   type: boolean
   inputBinding:
     prefix: -anchored
-- id: bg
-  doc: 'file with background frequencies of letters;  default: uniform background'
-  type: string
+- id: in_bg
+  doc: "file with background frequencies of letters;\ndefault: uniform background"
+  type: File
   inputBinding:
     prefix: -bg
-- id: pseudo
-  doc: 'add <total pseudocounts> times letter  background to each frequency; default:
-    0'
-  type: string
+- id: in_pseudo
+  doc: "add <total pseudocounts> times letter\nbackground to each frequency; default:\
+    \ 0"
+  type: long
   inputBinding:
     prefix: -pseudo
-- id: log_odds
-  doc: 'print log-odds matrix, too;  default: print frequency matrix only'
+- id: in_print_logodds_matrix
+  doc: "print log-odds matrix, too;\ndefault: print frequency matrix only"
   type: boolean
   inputBinding:
     prefix: -logodds
-- id: url
-  doc: website for the motif; The motif name is substituted for MOTIF_NAME;
+- id: in_url
+  doc: "website for the motif; The motif name\nis substituted for MOTIF_NAME;"
   type: string
   inputBinding:
     prefix: -url
-- id: elm_file
+- id: in_converts
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_elm_file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: in_writes
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_add
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_allow
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_default
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: in_is
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_print
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_website
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_elm
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_var_16
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_for
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_var_18
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_substituted
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_to
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_total_pseudo_counts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_with
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_background
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_matrix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_motifs
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_standard
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_the
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_times
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_motif_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_frequencies
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_into
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_letter
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_motif
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_meme
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: in_of
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: in_letters
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - elm2meme

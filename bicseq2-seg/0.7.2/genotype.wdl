@@ -1,14 +1,10 @@
 version 1.0
 
-task Genotype.pl {
-  input {
-    String? tmp
-  }
+task Genotype {
   command <<<
-    genotype.pl \
-      ~{if defined(tmp) then ("--tmp " +  '"' + tmp + '"') else ""}
+    genotype
   >>>
-  parameter_meta {
-    tmp: ": the tmp directory; If unspecified, use /tmp/tmpsomb5k_a/bin/tmp/"
+  output {
+    File out_stdout = stdout()
   }
 }

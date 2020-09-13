@@ -1,7 +1,8 @@
 version 1.0
 
-task GetGffInfoCov {
+task GetgffinfoCov {
   input {
+    Boolean? verbose
     File? reference
     Boolean? json_out
     Boolean? strand_specific
@@ -11,22 +12,27 @@ task GetGffInfoCov {
     String? output_file
   }
   command <<<
-    get-gff-info cov \
+    get_gff_info cov \
       ~{gff_file} \
       ~{output_file} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{true="--json-out" false="" json_out} \
-      ~{true="--strand-specific" false="" strand_specific} \
-      ~{true="--rename" false="" rename} \
-      ~{true="--progress" false="" progress}
+      ~{if (json_out) then "--json-out" else ""} \
+      ~{if (strand_specific) then "--strand-specific" else ""} \
+      ~{if (rename) then "--rename" else ""} \
+      ~{if (progress) then "--progress" else ""}
   >>>
   parameter_meta {
+    verbose: ""
     reference: "Reference FASTA file for the GFF  [required]"
     json_out: "The output will be a JSON dictionary"
     strand_specific: "If the coverage must be calculated on each strand"
-    rename: "Emulate BLAST output (use only the header part before the first space)"
+    rename: "Emulate BLAST output (use only the header part\\nbefore the first space)"
     progress: "Shows Progress Bar"
     gff_file: ""
     output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -20,4 +20,8 @@ task BiomHead {
     n_obs: "The number of observations to show"
     n_samp: "The number of samples to show"
   }
+  output {
+    File out_stdout = stdout()
+    File out_output_fp = "${in_output_fp}"
+  }
 }

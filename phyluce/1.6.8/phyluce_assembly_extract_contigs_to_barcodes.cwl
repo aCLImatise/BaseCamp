@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../phyluce_assembly_extract_contigs_to_barcodes.cwl
 inputs:
-- id: contigs
-  doc: The directory containing the assembled contigs.
-  type: string
-  inputBinding:
-    prefix: --contigs
-- id: config
-  doc: A config file containing the contigs to extract.
+- id: in_config
+  doc: ''
   type: string
   inputBinding:
     prefix: --config
-- id: output
-  doc: The output FASTA file to create
-  type: string
+- id: in_contigs
+  doc: The directory containing the assembled contigs.
+  type: Directory
   inputBinding:
-    prefix: --output
-- id: verbosity
+    prefix: --contigs
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-outputs: []
+- id: in_output
+  doc: '[--verbosity {INFO,WARN,CRITICAL}]'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_assembly_extract_contigs_to_barcodes

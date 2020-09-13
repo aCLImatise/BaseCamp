@@ -1,62 +1,65 @@
 class: CommandLineTool
 id: ../../../alfred_pwalign.cwl
 inputs:
-- id: arg_gap_open
+- id: in_arg_gap_open
   doc: '[ --gapopen ] arg (=-10)           gap open'
   type: boolean
   inputBinding:
     prefix: -g
-- id: arg_gap_extension
+- id: in_arg_gap_extension
   doc: '[ --gapext ] arg (=-1)             gap extension'
   type: boolean
   inputBinding:
     prefix: -e
-- id: _arg_match
+- id: in__arg_match
   doc: '[ --match ] arg (=5)               match'
   type: boolean
   inputBinding:
     prefix: -m
-- id: _arg_mismatch
+- id: in__arg_mismatch
   doc: '[ --mismatch ] arg (=-4)           mismatch'
   type: boolean
   inputBinding:
     prefix: -n
-- id: p
+- id: in_p
   doc: '[ --endsfree1 ]                    leading/trailing gaps free for seq1'
   type: boolean
   inputBinding:
     prefix: -p
-- id: q
+- id: in_q
   doc: '[ --endsfree2 ]                    leading/trailing gaps free for seq2'
   type: boolean
   inputBinding:
     prefix: -q
-- id: _local_alignment
+- id: in__local_alignment
   doc: '[ --local ]                        local alignment'
   type: boolean
   inputBinding:
     prefix: -l
-- id: f
+- id: in_f
   doc: '[ --format ] arg (=h)              output format [v|h]'
   type: boolean
   inputBinding:
     prefix: -f
-- id: arg_verticalhorizontal_alignment
+- id: in_arg_verticalhorizontal_alignment
   doc: '[ --alignment ] arg (="al.fa.gz")  vertical/horizontal alignment'
   type: boolean
   inputBinding:
     prefix: -a
-- id: seq_one_dot_fast_a
+- id: in_seq_one_dot_fast_a
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: seq_two_dot_fast_a
+- id: in_seq_two_dot_fast_a
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - alfred

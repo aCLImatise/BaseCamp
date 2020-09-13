@@ -1,6 +1,6 @@
 version 1.0
 
-task SvtyperSso {
+task Svtypersso {
   input {
     File? input_vcf
     File? output_vcf
@@ -18,7 +18,7 @@ task SvtyperSso {
     Int? batch_size
   }
   command <<<
-    svtyper-sso \
+    svtyper_sso \
       ~{if defined(input_vcf) then ("--input_vcf " +  '"' + input_vcf + '"') else ""} \
       ~{if defined(output_vcf) then ("--output_vcf " +  '"' + output_vcf + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
@@ -26,7 +26,7 @@ task SvtyperSso {
       ~{if defined(lib_info) then ("--lib_info " +  '"' + lib_info + '"') else ""} \
       ~{if defined(min_aligned) then ("--min_aligned " +  '"' + min_aligned + '"') else ""} \
       ~{if defined(number_reads_sample) then ("-n " +  '"' + number_reads_sample + '"') else ""} \
-      ~{true="--sum_quals" false="" sum_quals} \
+      ~{if (sum_quals) then "--sum_quals" else ""} \
       ~{if defined(max_reads) then ("--max_reads " +  '"' + max_reads + '"') else ""} \
       ~{if defined(max_ci_dist) then ("--max_ci_dist " +  '"' + max_ci_dist + '"') else ""} \
       ~{if defined(split_weight) then ("--split_weight " +  '"' + split_weight + '"') else ""} \
@@ -49,5 +49,8 @@ task SvtyperSso {
     disc_weight: "weight for discordant paired-end reads [1]"
     cores: "number of workers to use for parallel processing"
     batch_size: "number of breakpoints to batch for a parallel processing worker job"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

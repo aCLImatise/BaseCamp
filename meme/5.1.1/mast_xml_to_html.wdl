@@ -2,16 +2,16 @@ version 1.0
 
 task MastXmlToHtml {
   input {
-    String mast_xml_file
-    String mast_html_file
+    File mast_xml_file
   }
   command <<<
     mast_xml_to_html \
-      ~{mast_xml_file} \
-      ~{mast_html_file}
+      ~{mast_xml_file}
   >>>
   parameter_meta {
     mast_xml_file: ""
-    mast_html_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

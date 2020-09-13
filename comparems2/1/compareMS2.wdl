@@ -2,22 +2,26 @@ version 1.0
 
 task CompareMS2 {
   input {
-    String? one
-    String? two
-    String? o
-    Int? p
+    String? p
+    File? o
+    File? two
+    File? one
   }
   command <<<
     compareMS2 \
-      ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""} \
-      ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
+      ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
+      ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""}
   >>>
   parameter_meta {
-    one: ""
-    two: ""
-    o: ""
     p: ""
+    o: ""
+    two: ""
+    one: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_o = "${in_o}"
   }
 }

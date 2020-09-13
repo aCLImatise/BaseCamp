@@ -2,16 +2,16 @@ version 1.0
 
 task FaPolyASizes {
   input {
-    String in_dot_fa
-    String out_dot_tab
+    String? not_valid_option
   }
   command <<<
     faPolyASizes \
-      ~{in_dot_fa} \
-      ~{out_dot_tab}
+      ~{if defined(not_valid_option) then ("-h " +  '"' + not_valid_option + '"') else ""}
   >>>
   parameter_meta {
-    in_dot_fa: ""
-    out_dot_tab: ""
+    not_valid_option: "not a valid option"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

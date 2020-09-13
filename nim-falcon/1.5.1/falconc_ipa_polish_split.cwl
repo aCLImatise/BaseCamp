@@ -1,55 +1,67 @@
 class: CommandLineTool
 id: ../../../falconc_ipa_polish_split.cwl
 inputs:
-- id: help_syntax
-  doc: 'advanced: prepend,plurals,..'
+- id: in_help_syntax
+  doc: "advanced:prepen\nd,plurals,.."
   type: boolean
   inputBinding:
     prefix: --help-syntax
-- id: _maxnshards_int
-  doc: =, --max-nshards=           int     REQUIRED                     Maximum number
-    of distributed jobs
+- id: in__maxnshards_int
+  doc: "=, --max-nshards=           int     REQUIRED                     Maximum number\n\
+    of distributed\njobs"
   type: boolean
   inputBinding:
     prefix: -m
-- id: _shardprefix_string
-  doc: =, --shard-prefix=          string  "shard"                      The output.
-    Shard files are (prefix).(shard_id).block_ids
+- id: in__shardprefix_string
+  doc: "=, --shard-prefix=          string  \"shard\"                      The output.\n\
+    Shard files are\n(prefix).(shard_\nid).block_ids"
   type: boolean
   inputBinding:
     prefix: -s
-- id: _blockprefix_string
-  doc: =, --block-prefix=          string  "block"                      Block files
-    are (prefix).(block_id).reads (prepared previously)
+- id: in__blockprefix_string
+  doc: "=, --block-prefix=          string  \"block\"                      Block files\
+    \ are\n(prefix).(block_\nid).reads\n(prepared\npreviously)"
   type: boolean
   inputBinding:
     prefix: -b
-- id: _inreadtocontigfn_string
+- id: in__inreadtocontigfn_string
   doc: '=, --in-read-to-contig-fn=  string  "sorted.read_to_contig.csv"  2-columns:
-    read# ctg-name'
+    read#'
   type: boolean
   inputBinding:
     prefix: -i
-- id: _outidsfn_string
-  doc: =, --out-ids-fn=            string  "all_shard_ids"              If given,
-    this lists the shard_ids, 0 thru N-1, corresponding to the shard-prefix.block_id
-    files.
-  type: boolean
-  inputBinding:
-    prefix: -o
-- id: mb_per_block
-  doc: =               int     REQUIRED                     Try to target megabases
-    total in all contigs in any block
+- id: in_mb_per_block
+  doc: "=               int     REQUIRED                     Try to target\nmegabases\
+    \ total\nin all contigs\nin any block"
   type: boolean
   inputBinding:
     prefix: --mb-per-block
-- id: blacklist_fn
-  doc: =               string  ""                           Specifies a file with
-    a list of contigs to skip for polishing.
+- id: in_blacklist_fn
+  doc: "=               string  \"\"                           Specifies a file\n\
+    with a list of\ncontigs to skip\nfor polishing.\n"
   type: boolean
   inputBinding:
     prefix: --blacklist-fn
-outputs: []
+- id: in_cli_gen_erated
+  doc: help
+  type: string
+  inputBinding:
+    position: 0
+- id: in_ctg_name
+  doc: -o=, --out-ids-fn=            string  "all_shard_ids"              If given,
+    this
+  type: string
+  inputBinding:
+    position: 1
+- id: in_the_shard_prefix
+  doc: .block_id files.
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - falconc

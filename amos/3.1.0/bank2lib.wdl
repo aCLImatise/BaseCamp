@@ -10,8 +10,8 @@ task Bank2lib {
   command <<<
     bank2lib \
       ~{if defined(bank) then ("-bank " +  '"' + bank + '"') else ""} \
-      ~{true="-eid" false="" eid} \
-      ~{true="-iid" false="" iid} \
+      ~{if (eid) then "-eid" else ""} \
+      ~{if (iid) then "-iid" else ""} \
       ~{if defined(output_prefix) then ("-o " +  '"' + output_prefix + '"') else ""}
   >>>
   parameter_meta {
@@ -19,5 +19,8 @@ task Bank2lib {
     eid: "report eids"
     iid: "report iids (default)"
     output_prefix: "output prefix"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -11,4 +11,7 @@ task Fastatrans {
   parameter_meta {
     contig_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

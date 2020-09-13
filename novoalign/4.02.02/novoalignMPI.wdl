@@ -4,4 +4,7 @@ task NovoalignMPI {
   command <<<
     novoalignMPI
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

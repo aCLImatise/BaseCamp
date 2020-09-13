@@ -4,4 +4,7 @@ task Scanpy {
   command <<<
     scanpy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

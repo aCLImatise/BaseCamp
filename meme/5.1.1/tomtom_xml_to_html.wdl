@@ -2,16 +2,16 @@ version 1.0
 
 task TomtomXmlToHtml {
   input {
-    String tomtom_xml_file
-    String tomtom_html_file
+    File tomtom_xml_file
   }
   command <<<
     tomtom_xml_to_html \
-      ~{tomtom_xml_file} \
-      ~{tomtom_html_file}
+      ~{tomtom_xml_file}
   >>>
   parameter_meta {
     tomtom_xml_file: ""
-    tomtom_html_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

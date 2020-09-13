@@ -28,13 +28,13 @@ task FermiRopebwt {
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
       ~{if defined(temporary_sequence_file) then ("-f " +  '"' + temporary_sequence_file + '"') else ""} \
       ~{if defined(verbose_level_bcr) then ("-v " +  '"' + verbose_level_bcr + '"') else ""} \
-      ~{true="-b" false="" binary_output_runs} \
-      ~{true="-t" false="" enable_threading_bcr} \
-      ~{true="-F" false="" skip_forward_strand} \
-      ~{true="-R" false="" skip_reverse_strand} \
-      ~{true="-N" false="" cut_ambiguous_bases} \
-      ~{true="-O" false="" suppress_end_trimming} \
-      ~{true="-T" false="" print_tree_stdout}
+      ~{if (binary_output_runs) then "-b" else ""} \
+      ~{if (enable_threading_bcr) then "-t" else ""} \
+      ~{if (skip_forward_strand) then "-F" else ""} \
+      ~{if (skip_reverse_strand) then "-R" else ""} \
+      ~{if (cut_ambiguous_bases) then "-N" else ""} \
+      ~{if (suppress_end_trimming) then "-O" else ""} \
+      ~{if (print_tree_stdout) then "-T" else ""}
   >>>
   parameter_meta {
     algorithm_bpr_bcr: "algorithm: bpr or bcr [bpr]"
@@ -52,5 +52,9 @@ task FermiRopebwt {
     print_tree_stdout: "print the tree stdout (bpr only)"
     rope_bwt: ""
     in_dot_fq_do_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

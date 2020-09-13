@@ -2,14 +2,14 @@ version 1.0
 
 task HaphpipeEcReads {
   input {
-    String? fq_one
-    String? fq_two
-    String? f_qu
-    String? outdir
-    String? n_cpu
+    Int? fq_one
+    Int? fq_two
+    File? f_qu
+    Directory? outdir
+    Int? n_cpu
     Boolean? keep_tmp
     Boolean? quiet
-    String? log_file
+    File? log_file
     Boolean? debug
   }
   command <<<
@@ -19,10 +19,10 @@ task HaphpipeEcReads {
       ~{if defined(f_qu) then ("--fqU " +  '"' + f_qu + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(n_cpu) then ("--ncpu " +  '"' + n_cpu + '"') else ""} \
-      ~{true="--keep_tmp" false="" keep_tmp} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (keep_tmp) then "--keep_tmp" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     fq_one: "Fastq file with read 1"
@@ -31,8 +31,13 @@ task HaphpipeEcReads {
     outdir: "Output directory"
     n_cpu: "Number of CPU to use (default: 1)"
     keep_tmp: "Keep temporary directory (default: False)"
-    quiet: "Do not write output to console (silence stdout and stderr) (default: False)"
+    quiet: "Do not write output to console (silence stdout and\\nstderr) (default: False)"
     log_file: "Append console output to this file"
     debug: "Print commands but do not run (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    File out_log_file = "${in_log_file}"
   }
 }

@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- terminus
+- collapse
 positional: []
 named:
 - !Flag
@@ -26,26 +29,62 @@ named:
     name: out
   optional: true
 - !Flag
-  description: 'number of threads to use when writing down the collapsed quantifications
-    [default: 8]'
+  description: "number of threads to use when writing down the collapsed quantifications\
+    \ [default: 8]\n"
   synonyms:
   - -t
   - --threads
   args: !SimpleFlagArg
     name: threads
   optional: true
-command:
-- terminus
-- collapse
 parent: &id002 !Command
-  positional: []
-  named: []
   command:
   - terminus
+  positional: []
+  named: []
   parent:
   subcommands:
   - *id001
   - !Command
+    command:
+    - terminus
+    - help
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: For
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: more
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: information
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: try
+      optional: false
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tterminus\
+      \ help <subcommands>...\n\nFor more information try --help\n"
+    generated_using: &id003
+    - --help
+  - !Command
+    command:
+    - terminus
+    - group
     positional: []
     named:
     - !Flag
@@ -57,8 +96,8 @@ parent: &id002 !Command
         name: dir
       optional: true
     - !Flag
-      description: 'the minimum spread a transcript must exhibit to enable an attached
-        edge to be a collapse candidate [default: 0.1]'
+      description: "the minimum spread a transcript must exhibit to enable an attached\
+        \ edge to be a\ncollapse candidate [default: 0.1]"
       synonyms:
       - -m
       - --min-spread
@@ -74,26 +113,24 @@ parent: &id002 !Command
         name: out
       optional: true
     - !Flag
-      description: 'The allowable difference between the weights of transcripts in
-        same equivalence classes to treat them as identical [default: 10]'
+      description: "The allowable difference between the weights of transcripts in\
+        \ same equivalence\nclasses to treat them as identical [default: 10]"
       synonyms:
       - --seed
       args: !SimpleFlagArg
         name: seed
       optional: true
     - !Flag
-      description: 'The allowable difference between the weights of transcripts in
-        same equivalence classes to treat them as identical [default: 0.001]'
+      description: "The allowable difference between the weights of transcripts in\
+        \ same equivalence\nclasses to treat them as identical [default: 0.001]\n"
       synonyms:
       - --tolerance
       args: !SimpleFlagArg
         name: tolerance
       optional: true
-    command:
-    - terminus
-    - group
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Prints help information
       synonyms:
@@ -123,49 +160,8 @@ parent: &id002 !Command
       \    --tolerance <tolerance>      The allowable difference between the weights\
       \ of transcripts in same equivalence\n                                     classes\
       \ to treat them as identical [default: 0.001]\n"
-    generated_using: &id003
-    - --help
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: For
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: more
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: information
-      optional: false
-    - !Positional
-      description: ''
-      position: 3
-      name: try
-      optional: false
-    named: []
-    command:
-    - terminus
-    - help
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "terminus: Relink `/tmp/tmpmhla4wuf/bin/../lib/./libgfortran.so.4'\
-      \ with `/lib/x86_64-linux-gnu/librt.so.1' for IFUNC symbol `clock_gettime'\n\
-      error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tterminus help\
-      \ <subcommands>...\n\nFor more information try --help\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -190,6 +186,7 @@ parent: &id002 !Command
     \     Prints this message or the help of the given subcommand(s)\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Prints help information
   synonyms:

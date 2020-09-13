@@ -1,23 +1,26 @@
 version 1.0
 
-task MbGenerateNegativeSetGenome {
+task MbgeneratenegativesetGenome {
   input {
-    String? number
-    String? width
     Boolean? v
+    String? width
+    Int? number
     String mb_generate_negative_set
   }
   command <<<
-    mb-generate-negative-set genome \
+    mb_generate_negative_set genome \
       ~{mb_generate_negative_set} \
-      ~{if defined(number) then ("--number " +  '"' + number + '"') else ""} \
+      ~{if (v) then "-v" else ""} \
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if defined(number) then ("--number " +  '"' + number + '"') else ""}
   >>>
   parameter_meta {
-    number: ""
-    width: ""
     v: ""
+    width: ""
+    number: ""
     mb_generate_negative_set: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

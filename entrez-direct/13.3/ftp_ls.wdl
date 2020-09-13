@@ -1,7 +1,10 @@
 version 1.0
 
-task FtpLs {
+task Ftpls {
   command <<<
-    ftp-ls
+    ftp_ls
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

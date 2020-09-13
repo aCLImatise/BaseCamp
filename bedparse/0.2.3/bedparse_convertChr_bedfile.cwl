@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../bedparse_convertChr_bedfile.cwl
 inputs:
-- id: assembly
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --assembly
-- id: target
+- id: in_target
   doc: ''
   type: string
   inputBinding:
     prefix: --target
-- id: bed_parse
+- id: in_assembly
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --assembly
+- id: in_bed_parse
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: convert_chr
+- id: in_convert_chr
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedparse

@@ -17,4 +17,7 @@ task Rfheader {
     the: ""
     header: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

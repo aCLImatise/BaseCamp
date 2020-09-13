@@ -4,4 +4,7 @@ task MethylDackel {
   command <<<
     MethylDackel
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

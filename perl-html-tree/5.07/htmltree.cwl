@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../htmltree.cwl
 inputs:
-- id: sets_htmltreebuilderdebug_figure
+- id: in_sets_htmltreebuilderdebug_figure
   doc: '[number]  sets HTML::TreeBuilder::Debug to that figure.'
   type: boolean
   inputBinding:
     prefix: -D
-- id: turns_treewarn_new
+- id: in_turns_treewarn_new
   doc: turns on $tree->warn(1) for the new tree
   type: boolean
   inputBinding:
     prefix: -w
-- id: d_three
+- id: in_d_three
   doc: ''
   type: boolean
   inputBinding:
     prefix: -D3
-- id: file_two
+- id: in_file_two
   doc: ''
-  type: File
+  type: long
   inputBinding:
     position: 0
-- id: file_three
+- id: in_file_three
   doc: ''
-  type: File
+  type: long
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - htmltree

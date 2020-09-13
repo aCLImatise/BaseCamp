@@ -4,4 +4,7 @@ task Terminus {
   command <<<
     terminus
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,7 +2,7 @@ version 1.0
 
 task CheckmUnbinned {
   input {
-    String? extension
+    Directory? extension
     Int? min_seq_len
     Boolean? quiet
     String bin_dir
@@ -18,7 +18,7 @@ task CheckmUnbinned {
       ~{output_stats_file} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
       ~{if defined(min_seq_len) then ("--min_seq_len " +  '"' + min_seq_len + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     extension: "extension of bins (other files in directory are ignored) (default: fna)"
@@ -28,5 +28,8 @@ task CheckmUnbinned {
     seq_file: "sequences used to generate bins (fasta format)"
     output_seq_file: "write unbinned sequences to file"
     output_stats_file: "write unbinned sequence statistics to file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

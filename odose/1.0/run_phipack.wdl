@@ -1,7 +1,10 @@
 version 1.0
 
-task RunPhipack.py {
+task RunPhipack {
   command <<<
-    run_phipack.py
+    run_phipack
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

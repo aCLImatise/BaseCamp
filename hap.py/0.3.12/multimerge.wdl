@@ -2,12 +2,12 @@ version 1.0
 
 task Multimerge {
   input {
-    String? input_file
-    Boolean? arg_output_file
+    File? input_file
+    File? arg_output_file
     Boolean? arg_reference_fasta
     Boolean? arg_start_location
-    Boolean? arg_use_regions
-    Boolean? arg_use_targets
+    Boolean? arg_use_regionstraversal
+    Boolean? targetsstreaming_whole_file
     String? limit_records
     String? message_every
     Boolean? arg_apply_filtering
@@ -20,21 +20,23 @@ task Multimerge {
     String? hom_ref_vcf_out
     String? calls_only
     String? primitives
-    String? process_split
-    String? process_full
     String? process_formats
+    String realignment_dot
+    String left_shift_dot
   }
   command <<<
     multimerge \
+      ~{realignment_dot} \
+      ~{left_shift_dot} \
       ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
-      ~{true="-o" false="" arg_output_file} \
-      ~{true="-r" false="" arg_reference_fasta} \
-      ~{true="-l" false="" arg_start_location} \
-      ~{true="-R" false="" arg_use_regions} \
-      ~{true="-T" false="" arg_use_targets} \
+      ~{if (arg_output_file) then "-o" else ""} \
+      ~{if (arg_reference_fasta) then "-r" else ""} \
+      ~{if (arg_start_location) then "-l" else ""} \
+      ~{if (arg_use_regionstraversal) then "-R" else ""} \
+      ~{if (targetsstreaming_whole_file) then "-T" else ""} \
       ~{if defined(limit_records) then ("--limit-records " +  '"' + limit_records + '"') else ""} \
       ~{if defined(message_every) then ("--message-every " +  '"' + message_every + '"') else ""} \
-      ~{true="-f" false="" arg_apply_filtering} \
+      ~{if (arg_apply_filtering) then "-f" else ""} \
       ~{if defined(left_shift) then ("--leftshift " +  '"' + left_shift + '"') else ""} \
       ~{if defined(trim_alleles) then ("--trimalleles " +  '"' + trim_alleles + '"') else ""} \
       ~{if defined(split_alleles) then ("--splitalleles " +  '"' + split_alleles + '"') else ""} \
@@ -44,8 +46,6 @@ task Multimerge {
       ~{if defined(hom_ref_vcf_out) then ("--homref-vcf-out " +  '"' + hom_ref_vcf_out + '"') else ""} \
       ~{if defined(calls_only) then ("--calls-only " +  '"' + calls_only + '"') else ""} \
       ~{if defined(primitives) then ("--primitives " +  '"' + primitives + '"') else ""} \
-      ~{if defined(process_split) then ("--process-split " +  '"' + process_split + '"') else ""} \
-      ~{if defined(process_full) then ("--process-full " +  '"' + process_full + '"') else ""} \
       ~{if defined(process_formats) then ("--process-formats " +  '"' + process_formats + '"') else ""}
   >>>
   parameter_meta {
@@ -53,8 +53,8 @@ task Multimerge {
     arg_output_file: "[ --output-file ] arg   The output file name."
     arg_reference_fasta: "[ --reference ] arg     The reference fasta file."
     arg_start_location: "[ --location ] arg      Start location."
-    arg_use_regions: "[ --regions ] arg       Use a bed file for getting a subset of regions  (traversal via tabix)."
-    arg_use_targets: "[ --targets ] arg       Use a bed file for getting a subset of targets  (streaming the whole file, ignoring things outside the bed regions)."
+    arg_use_regionstraversal: "[ --regions ] arg       Use a bed file for getting a subset of regions\\n(traversal via tabix)."
+    targetsstreaming_whole_file: "[ --targets ] arg       Use a bed file for getting a subset of targets\\n(streaming the whole file, ignoring things outside\\nthe bed regions)."
     limit_records: "Maximum umber of records to process"
     message_every: "Print a message every N records."
     arg_apply_filtering: "[ --apply-filters ] arg Apply filtering in VCF."
@@ -66,9 +66,13 @@ task Multimerge {
     hom_ref_split: "Split homref blocks into per-nucleotide blocks."
     hom_ref_vcf_out: "Output split homref blocks as BCF/VCF."
     calls_only: "Remove homref blocks."
-    primitives: "Split complex alleles into primitives via  realignment."
-    process_split: "Enables splitalleles, trimalleles, unique-alleles, leftshift."
-    process_full: "Enables splitalleles, trimalleles, unique-alleles, leftshift, mergebylocation."
+    primitives: "Split complex alleles into primitives via"
     process_formats: "Process GQ/DP/AD format fields."
+    realignment_dot: "--process-split arg        Enables splitalleles, trimalleles, unique-alleles,"
+    left_shift_dot: "--process-full arg         Enables splitalleles, trimalleles, unique-alleles,"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_arg_output_file = "${in_arg_output_file}"
   }
 }

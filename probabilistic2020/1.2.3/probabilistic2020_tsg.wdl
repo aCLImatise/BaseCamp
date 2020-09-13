@@ -2,19 +2,19 @@ version 1.0
 
 task Probabilistic2020Tsg {
   input {
-    String? gene_fasta_file
-    String? mutations
-    String? bed
-    String? processes
-    String? num_iterations
-    String? context
-    String? output_text_file
-    String? stop_criteria
-    String? deleterious
+    File? gene_fasta_file
+    File? mutations
+    File? bed
+    Int? processes
+    Int? num_iterations
+    Int? context
+    File? output_text_file
+    Int? stop_criteria
+    Int? deleterious
     Boolean? unique
     Boolean? use_unmapped
-    String? genome
-    String? seed
+    File? genome
+    Int? seed
   }
   command <<<
     probabilistic2020 tsg \
@@ -27,24 +27,28 @@ task Probabilistic2020Tsg {
       ~{if defined(output_text_file) then ("--output " +  '"' + output_text_file + '"') else ""} \
       ~{if defined(stop_criteria) then ("--stop-criteria " +  '"' + stop_criteria + '"') else ""} \
       ~{if defined(deleterious) then ("--deleterious " +  '"' + deleterious + '"') else ""} \
-      ~{true="--unique" false="" unique} \
-      ~{true="--use-unmapped" false="" use_unmapped} \
+      ~{if (unique) then "--unique" else ""} \
+      ~{if (use_unmapped) then "--use-unmapped" else ""} \
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
   parameter_meta {
     gene_fasta_file: "gene FASTA file from extract_gene_seq.py script"
-    mutations: "DNA mutations file (MAF file). Columns can be in any order, but should contain the correct column header names."
+    mutations: "DNA mutations file (MAF file). Columns can be in any\\norder, but should contain the correct column header\\nnames."
     bed: "BED file annotation of genes"
-    processes: "Number of processes to use for parallelization. 0 indicates using a single process without using a multiprocessing pool (more means Faster, default: 0)."
-    num_iterations: "Number of iterations for null model. p-value precision increases with more iterations, however this will also increase the run time (Default: 100,000)."
-    context: "Number of DNA bases to use as context. 0 indicates no context. 1 indicates only use the mutated base. 1.5 indicates using the base context used in CHASM (http:/ /wiki.chasmsoftware.org/index.php/CHASM_Overview). 2 indicates using the mutated base and the upstream base. 3 indicates using the mutated base and both the upstream and downstream bases. (Default: 1.5)"
+    processes: "Number of processes to use for parallelization. 0\\nindicates using a single process without using a\\nmultiprocessing pool (more means Faster, default: 0)."
+    num_iterations: "Number of iterations for null model. p-value precision\\nincreases with more iterations, however this will also\\nincrease the run time (Default: 100,000)."
+    context: "Number of DNA bases to use as context. 0 indicates no\\ncontext. 1 indicates only use the mutated base. 1.5\\nindicates using the base context used in CHASM (http:/\\n/wiki.chasmsoftware.org/index.php/CHASM_Overview). 2\\nindicates using the mutated base and the upstream\\nbase. 3 indicates using the mutated base and both the\\nupstream and downstream bases. (Default: 1.5)"
     output_text_file: "Output text file of probabilistic 20/20 results"
-    stop_criteria: "Number of iterations more significant then the observed statistic to stop further computations. This decreases compute time spent in resolving p-values for non-significant genes. (Default: 1000)."
-    deleterious: "Perform tsg randomization-based test if gene has at least a user specified number of deleterious mutations (default: 1)"
-    unique: "Only keep unique mutations for each tumor sample. Mutations reported from heterogeneous sources may contain duplicates, e.g. a tumor sample was sequenced twice."
-    use_unmapped: "Use mutations that are not mapped to the the single reference transcript for a gene specified in the bed file indicated by the -b option."
-    genome: "Path to the genome fasta file. Required if --use- unmapped flag is used. (Default: None)"
-    seed: "Specify the seed for the pseudo random number generator. By default, the seed is randomly chosen. The seed will be used for the monte carlo simulations (Default: 101)."
+    stop_criteria: "Number of iterations more significant then the\\nobserved statistic to stop further computations. This\\ndecreases compute time spent in resolving p-values for\\nnon-significant genes. (Default: 1000)."
+    deleterious: "Perform tsg randomization-based test if gene has at\\nleast a user specified number of deleterious mutations\\n(default: 1)"
+    unique: "Only keep unique mutations for each tumor sample.\\nMutations reported from heterogeneous sources may\\ncontain duplicates, e.g. a tumor sample was sequenced\\ntwice."
+    use_unmapped: "Use mutations that are not mapped to the the single\\nreference transcript for a gene specified in the bed\\nfile indicated by the -b option."
+    genome: "Path to the genome fasta file. Required if --use-\\nunmapped flag is used. (Default: None)"
+    seed: "Specify the seed for the pseudo random number\\ngenerator. By default, the seed is randomly chosen.\\nThe seed will be used for the monte carlo simulations\\n(Default: 101).\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_text_file = "${in_output_text_file}"
   }
 }

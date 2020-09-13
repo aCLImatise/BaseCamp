@@ -1,244 +1,253 @@
 class: CommandLineTool
 id: ../../../create_test.cwl
 inputs:
-- id: debug
-  doc: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/create_test.log
+- id: in_debug
+  doc: Print debug information (very verbose) to file /create_test.log
   type: boolean
   inputBinding:
     prefix: --debug
-- id: verbose
+- id: in_verbose
   doc: Add additional context (time and file) to log messages
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: silent
+- id: in_silent
   doc: Print only warnings and error messages
   type: boolean
   inputBinding:
     prefix: --silent
-- id: no_run
+- id: in_no_run
   doc: Do not run generated tests
   type: boolean
   inputBinding:
     prefix: --no-run
-- id: no_build
+- id: in_no_build
   doc: Do not build generated tests, implies --no-run
   type: boolean
   inputBinding:
     prefix: --no-build
-- id: no_setup
+- id: in_no_setup
   doc: Do not setup generated tests, implies --no-build and --no-run
   type: boolean
   inputBinding:
     prefix: --no-setup
-- id: use_existing
-  doc: Use pre-existing case directories they will pick up at the  latest PEND state
-    or re-run the first failed state. Requires test-id
+- id: in_use_existing
+  doc: "Use pre-existing case directories they will pick up at the\nlatest PEND state\
+    \ or re-run the first failed state. Requires test-id"
   type: boolean
   inputBinding:
     prefix: --use-existing
-- id: save_timing
+- id: in_save_timing
   doc: Enable archiving of performance data.
   type: boolean
   inputBinding:
     prefix: --save-timing
-- id: no_batch
-  doc: Do not submit jobs to batch system, run locally. If false, this will default
-    to machine setting.
+- id: in_no_batch
+  doc: "Do not submit jobs to batch system, run locally.\nIf false, this will default\
+    \ to machine setting."
   type: boolean
   inputBinding:
     prefix: --no-batch
-- id: single_submit
-  doc: Use a single interactive allocation to run all the tests. This can  drastically
-    reduce queue waiting but only makes sense on batch machines.
+- id: in_single_submit
+  doc: "Use a single interactive allocation to run all the tests. This can\ndrastically\
+    \ reduce queue waiting but only makes sense on batch machines."
   type: boolean
   inputBinding:
     prefix: --single-submit
-- id: test_root
-  doc: Where test cases will be created. The default is output root as defined in
-    the config_machines file
-  type: string
+- id: in_test_root
+  doc: "Where test cases will be created. The default is output root\nas defined in\
+    \ the config_machines file"
+  type: File
   inputBinding:
     prefix: --test-root
-- id: output_root
+- id: in_output_root
   doc: Where the case output is written.
   type: string
   inputBinding:
     prefix: --output-root
-- id: baseline_root
-  doc: Specifies a root directory for baseline datasets that will  be used for Bit-for-bit
-    generate and/or compare testing.
-  type: string
+- id: in_baseline_root
+  doc: "Specifies a root directory for baseline datasets that will\nbe used for Bit-for-bit\
+    \ generate and/or compare testing."
+  type: Directory
   inputBinding:
     prefix: --baseline-root
-- id: clean
-  doc: Specifies if tests should be cleaned after run. If set, all object executables
-    and data files will be removed after the tests are run.
+- id: in_clean
+  doc: "Specifies if tests should be cleaned after run. If set, all object\nexecutables\
+    \ and data files will be removed after the tests are run."
   type: boolean
   inputBinding:
     prefix: --clean
-- id: machine
-  doc: 'The machine for creating and building tests. This machine must be defined
-    in the config_machines.xml file for the given model. The default is to  to match
-    the name of the machine in the test name or the name of the  machine this script
-    is run on to the NODENAME_REGEX field in  config_machines.xml. WARNING: This option
-    is highly unsafe and should  only be used if you are an expert.'
-  type: string
+- id: in_machine
+  doc: "The machine for creating and building tests. This machine must be defined\n\
+    in the config_machines.xml file for the given model. The default is to\nto match\
+    \ the name of the machine in the test name or the name of the\nmachine this script\
+    \ is run on to the NODENAME_REGEX field in\nconfig_machines.xml. WARNING: This\
+    \ option is highly unsafe and should\nonly be used if you are an expert."
+  type: File
   inputBinding:
     prefix: --machine
-- id: mpi_lib
-  doc: Specify the mpilib. To see list of supported MPI libraries for each machine,  invoke
-    ./query_config. The default is the first listing .
+- id: in_mpi_lib
+  doc: "Specify the mpilib. To see list of supported MPI libraries for each machine,\n\
+    invoke ./query_config. The default is the first listing ."
   type: string
   inputBinding:
     prefix: --mpilib
-- id: baseline_name
-  doc: If comparing or generating baselines, use this directory under baseline root.  Default
-    will be current branch name.
-  type: string
+- id: in_baseline_name
+  doc: "If comparing or generating baselines, use this directory under baseline root.\n\
+    Default will be current branch name."
+  type: Directory
   inputBinding:
     prefix: --baseline-name
-- id: compare
+- id: in_compare
   doc: While testing, compare baselines
   type: boolean
   inputBinding:
     prefix: --compare
-- id: generate
-  doc: 'While testing, generate baselines.  NOTE: this can also be done after the
-    fact with bless_test_results'
+- id: in_generate
+  doc: "While testing, generate baselines.\nNOTE: this can also be done after the\
+    \ fact with bless_test_results"
   type: boolean
   inputBinding:
     prefix: --generate
-- id: compiler
-  doc: Compiler for building cime. Default will be the name in the  Testname or the
-    default defined for the machine.
+- id: in_compiler
+  doc: "Compiler for building cime. Default will be the name in the\nTestname or the\
+    \ default defined for the machine."
   type: string
   inputBinding:
     prefix: --compiler
-- id: name_lists_only
+- id: in_name_lists_only
   doc: Only perform namelist actions for tests
   type: boolean
   inputBinding:
     prefix: --namelists-only
-- id: project
-  doc: Specify a project id for the case (optional). Used for accounting when on a
-    batch system. The default is user-specified environment variable PROJECT
+- id: in_project
+  doc: "Specify a project id for the case (optional).\nUsed for accounting when on\
+    \ a batch system.\nThe default is user-specified environment variable PROJECT"
   type: string
   inputBinding:
     prefix: --project
-- id: test_id
-  doc: "Specify an 'id' for the test. This is simply a string that is appended  to\
-    \ the end of a test name. If no test-id is specified, a time stamp plus a  random\
-    \ string will be used (ensuring a high probability of uniqueness).  If a test-id\
-    \ is specified, it is the user's responsibility to ensure that  each run of create_test\
-    \ uses a unique test-id. WARNING: problems will occur  if you use the same test-id\
-    \ twice on the same file system, even if the test  lists are completely different."
-  type: string
+- id: in_test_id
+  doc: "Specify an 'id' for the test. This is simply a string that is appended\nto\
+    \ the end of a test name. If no test-id is specified, a time stamp plus a\nrandom\
+    \ string will be used (ensuring a high probability of uniqueness).\nIf a test-id\
+    \ is specified, it is the user's responsibility to ensure that\neach run of create_test\
+    \ uses a unique test-id. WARNING: problems will occur\nif you use the same test-id\
+    \ twice on the same file system, even if the test\nlists are completely different."
+  type: File
   inputBinding:
     prefix: --test-id
-- id: parallel_jobs
-  doc: Number of tasks create_test should perform simultaneously. The default  is
-    min(num_cores, num_tests).
-  type: string
+- id: in_parallel_jobs
+  doc: "Number of tasks create_test should perform simultaneously. The default\nis\
+    \ min(num_cores, num_tests)."
+  type: long
   inputBinding:
     prefix: --parallel-jobs
-- id: proc_pool
-  doc: The size of the processor pool that create_test can use. The default is  MAX_MPITASKS_PER_NODE
-    + 25 percent.
-  type: string
+- id: in_proc_pool
+  doc: "The size of the processor pool that create_test can use. The default is\n\
+    MAX_MPITASKS_PER_NODE + 25 percent."
+  type: long
   inputBinding:
     prefix: --proc-pool
-- id: wall_time
-  doc: Set the wallclock limit for all tests in the suite.  Use the variable CIME_GLOBAL_WALLTIME
-    to set this for all tests.
+- id: in_wall_time
+  doc: "Set the wallclock limit for all tests in the suite.\nUse the variable CIME_GLOBAL_WALLTIME\
+    \ to set this for all tests."
   type: string
   inputBinding:
     prefix: --walltime
-- id: queue
+- id: in_queue
   doc: Force batch system to use a certain queue
   type: string
   inputBinding:
     prefix: --queue
-- id: test_file
+- id: in_test_file
   doc: A file containing an ascii list of tests to run
-  type: string
+  type: File
   inputBinding:
     prefix: --testfile
-- id: allow_baseline_overwrite
-  doc: 'If the --generate option is given, then an attempt to overwrite  an existing
-    baseline directory will raise an error. WARNING: Specifying this  option will
-    allow existing baseline directories to be silently overwritten.'
+- id: in_allow_baseline_overwrite
+  doc: "If the --generate option is given, then an attempt to overwrite\nan existing\
+    \ baseline directory will raise an error. WARNING: Specifying this\noption will\
+    \ allow existing baseline directories to be silently overwritten."
   type: boolean
   inputBinding:
     prefix: --allow-baseline-overwrite
-- id: wait
+- id: in_wait
   doc: On batch systems, wait for submitted jobs to complete
   type: boolean
   inputBinding:
     prefix: --wait
-- id: wait_check_throughput
+- id: in_wait_check_throughput
   doc: If waiting, fail if throughput check fails
   type: boolean
   inputBinding:
     prefix: --wait-check-throughput
-- id: wait_check_memory
+- id: in_wait_check_memory
   doc: If waiting, fail if memory check fails
   type: boolean
   inputBinding:
     prefix: --wait-check-memory
-- id: wait_ignore_name_lists
+- id: in_wait_ignore_name_lists
   doc: If waiting, ignore if namelist diffs
   type: boolean
   inputBinding:
     prefix: --wait-ignore-namelists
-- id: wait_ignore_memleak
+- id: in_wait_ignore_memleak
   doc: If waiting, ignore if there's a memleak
   type: boolean
   inputBinding:
     prefix: --wait-ignore-memleak
-- id: force_procs
+- id: in_force_procs
   doc: For all tests to run with this number of processors
-  type: string
+  type: long
   inputBinding:
     prefix: --force-procs
-- id: force_threads
+- id: in_force_threads
   doc: For all tests to run with this number of threads
-  type: string
+  type: long
   inputBinding:
     prefix: --force-threads
-- id: input_dir
+- id: in_input_dir
   doc: Use a non-default location for input files
   type: string
   inputBinding:
     prefix: --input-dir
-- id: pes_file
-  doc: Full pathname of an optional pes specification file. The file can follow either
-    the config_pes.xml or the env_mach_pes.xml format.
-  type: string
+- id: in_pes_file
+  doc: "Full pathname of an optional pes specification file. The file\ncan follow\
+    \ either the config_pes.xml or the env_mach_pes.xml format."
+  type: File
   inputBinding:
     prefix: --pesfile
-- id: retry
+- id: in_retry
   doc: Automatically retry failed tests. >0 implies --wait
-  type: string
+  type: long
   inputBinding:
     prefix: --retry
-- id: mail_user
+- id: in_mail_user
   doc: Email to be used for batch notification.
   type: string
   inputBinding:
     prefix: --mail-user
-- id: mail_type
-  doc: 'When to send user email. Options are: never, all, begin, end, fail. You can
-    specify multiple types with either comma-separated args or multiple -M flags.'
+- id: in_mail_type
+  doc: "When to send user email. Options are: never, all, begin, end, fail.\nYou can\
+    \ specify multiple types with either comma-separated args or multiple -M flags.\n"
   type: string
   inputBinding:
     prefix: --mail-type
-- id: test_args
+- id: in_test_args
   doc: Tests or test suites to run. Testname form is TEST.GRID.COMPSET[.MACHINE_COMPILER]
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_test_root
+  doc: "Where test cases will be created. The default is output root\nas defined in\
+    \ the config_machines file"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_test_root)
 cwlVersion: v1.1
 baseCommand:
 - create_test

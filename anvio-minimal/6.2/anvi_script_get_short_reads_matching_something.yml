@@ -1,15 +1,26 @@
 !Command
-positional:
-- !Positional
-  description: One or more FASTQ formatted files
-  position: 0
-  name: FASTQ_FILES
-  optional: false
+command:
+- anvi-script-get-short-reads-matching-something
+positional: []
 named:
 - !Flag
-  description: Minimum lenght of the remainder of the read after the match. If your
-    short read is XXXMMMMMMYYYYYYYYYYYYYY, where M indicates nucleotides of matchhing
-    sequence, min remainder length is len(Y). Default is 60.
+  description: '[-O PATH]'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "SEQUENCE\nShort sequence to look for.."
+  synonyms:
+  - --match-sequence
+  args: !SimpleFlagArg
+    name: SHORT
+  optional: true
+- !Flag
+  description: "Minimum lenght of the remainder of the read after the\nmatch. If your\
+    \ short read is XXXMMMMMMYYYYYYYYYYYYYY,\nwhere M indicates nucleotides of matchhing\
+    \ sequence,\nmin remainder length is len(Y). Default is 60."
   synonyms:
   - -m
   - --min-remainder-length
@@ -17,7 +28,7 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: A short sample name (use a single word without spaces or fancy chars)
+  description: "A short sample name (use a single word without spaces\nor fancy chars)"
   synonyms:
   - -s
   - --sample-name
@@ -25,8 +36,8 @@ named:
     name: NAME
   optional: true
 - !Flag
-  description: Output directory for results to be stored. The default is the current
-    working directory.
+  description: "Output directory for results to be stored. The default\nis the current\
+    \ working directory."
   synonyms:
   - -O
   - --output-directory
@@ -46,20 +57,14 @@ named:
   args: !SimpleFlagArg
     name: INT
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --match-sequence
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- anvi-script-get-short-reads-matching-something
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:

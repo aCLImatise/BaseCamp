@@ -5,10 +5,13 @@ task RgtTDF {
     Boolean? v
   }
   command <<<
-    rgt-TDF \
-      ~{true="-v" false="" v}
+    rgt_TDF \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

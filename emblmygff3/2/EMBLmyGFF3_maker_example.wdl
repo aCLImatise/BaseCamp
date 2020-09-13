@@ -1,7 +1,10 @@
 version 1.0
 
-task EMBLmyGFF3MakerExample {
+task EMBLmyGFF3makerexample {
   command <<<
-    EMBLmyGFF3-maker-example
+    EMBLmyGFF3_maker_example
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

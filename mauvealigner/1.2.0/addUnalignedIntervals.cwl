@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../addUnalignedIntervals.cwl
 inputs:
-- id: input_interval_file
+- id: in_input_interval_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: output_interval_file
+- id: in_output_interval_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_interval_file
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_interval_file)
 cwlVersion: v1.1
 baseCommand:
 - addUnalignedIntervals

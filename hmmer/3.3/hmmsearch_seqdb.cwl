@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../hmmsearch_seqdb.cwl
 inputs:
-- id: hmm_search
+- id: in_hmm_search
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: hmm_file
+- id: in_hmm_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: seq_db
+- id: in_seq_db
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hmmsearch

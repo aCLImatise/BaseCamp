@@ -1,22 +1,22 @@
 version 1.0
 
-task Bowtie2InspectS {
+task Bowtie2inspects {
   input {
     Int? a_slash_across
     Boolean? n_slash_names
     Boolean? s_slash_summary
     Boolean? v_slash_verbose
     Boolean? h_slash_help
-    String bowtie_two_inspect
+    Int bowtie_two_inspect
   }
   command <<<
-    bowtie2-inspect-s \
+    bowtie2_inspect_s \
       ~{bowtie_two_inspect} \
       ~{if defined(a_slash_across) then ("-a/--across " +  '"' + a_slash_across + '"') else ""} \
-      ~{true="-n/--names" false="" n_slash_names} \
-      ~{true="-s/--summary" false="" s_slash_summary} \
-      ~{true="-v/--verbose" false="" v_slash_verbose} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (n_slash_names) then "-n/--names" else ""} \
+      ~{if (s_slash_summary) then "-s/--summary" else ""} \
+      ~{if (v_slash_verbose) then "-v/--verbose" else ""} \
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
     a_slash_across: "Number of characters across in FASTA output (default: 60)"
@@ -25,5 +25,8 @@ task Bowtie2InspectS {
     v_slash_verbose: "Verbose output (for debugging)"
     h_slash_help: "print detailed description of tool and its options"
     bowtie_two_inspect: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

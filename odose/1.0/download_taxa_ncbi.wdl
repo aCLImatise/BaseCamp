@@ -1,7 +1,10 @@
 version 1.0
 
-task DownloadTaxaNcbi.py {
+task DownloadTaxaNcbi {
   command <<<
-    download_taxa_ncbi.py
+    download_taxa_ncbi
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

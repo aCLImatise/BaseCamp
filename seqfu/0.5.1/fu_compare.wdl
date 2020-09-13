@@ -1,7 +1,10 @@
 version 1.0
 
-task FuCompare {
+task Fucompare {
   command <<<
-    fu-compare
+    fu_compare
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

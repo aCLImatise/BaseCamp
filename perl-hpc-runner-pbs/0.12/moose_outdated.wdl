@@ -1,7 +1,10 @@
 version 1.0
 
-task MooseOutdated {
+task Mooseoutdated {
   command <<<
-    moose-outdated
+    moose_outdated
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

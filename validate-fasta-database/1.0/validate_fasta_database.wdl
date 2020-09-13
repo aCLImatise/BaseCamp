@@ -1,7 +1,10 @@
 version 1.0
 
-task ValidateFastaDatabase {
+task Validatefastadatabase {
   command <<<
-    validate-fasta-database
+    validate_fasta_database
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

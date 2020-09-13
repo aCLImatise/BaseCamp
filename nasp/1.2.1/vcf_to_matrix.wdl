@@ -3,15 +3,15 @@ version 1.0
 task VcfToMatrix {
   input {
     String? mode
-    String? reference_fast_a
-    String? reference_dups
+    File? reference_fast_a
+    File? reference_dups
     Array[String] input_files
-    String? matrix_folder
-    String? stats_folder
-    Int? minimum_coverage
-    Int? minimum_proportion
-    String? num_threads
-    String? d_to_file
+    Directory? matrix_folder
+    Directory? stats_folder
+    String? minimum_coverage
+    String? minimum_proportion
+    Int? num_threads
+    File? d_to_file
   }
   command <<<
     vcf_to_matrix \
@@ -27,15 +27,19 @@ task VcfToMatrix {
       ~{if defined(d_to_file) then ("--dto-file " +  '"' + d_to_file + '"') else ""}
   >>>
   parameter_meta {
-    mode: "Data passing mode, must be set to 'commandline' or 'xml'."
+    mode: "Data passing mode, must be set to 'commandline' or\\n'xml'."
     reference_fast_a: "Path to input reference fasta file."
     reference_dups: "Path to input reference dups file."
     input_files: "Path to input VCF/fasta files for matrix conversion."
     matrix_folder: "Name of folder to write output matries to."
     stats_folder: "Name of folder to write statistics files to."
     minimum_coverage: "Minimum coverage depth at a position."
-    minimum_proportion: "Minimum proportion of reads that must match the call at a position."
+    minimum_proportion: "Minimum proportion of reads that must match the call\\nat a position."
     num_threads: "Number of threads to use when processing input."
-    d_to_file: "Path to a matrix_dto XML file that defines all the parameters."
+    d_to_file: "Path to a matrix_dto XML file that defines all the\\nparameters.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_matrix_folder = "${in_matrix_folder}"
   }
 }

@@ -1,6 +1,6 @@
 version 1.0
 
-task Hisat2Build {
+task Hisat2build {
   input {
     Boolean? reference_sequences_given
     Boolean? large_index
@@ -28,22 +28,22 @@ task Hisat2Build {
     Boolean? q_slash_quiet
     Boolean? h_slash_help
     String reference_in
-    String his_at_two_index_base
+    Int his_at_two_index_base
   }
   command <<<
-    hisat2-build \
+    hisat2_build \
       ~{reference_in} \
       ~{his_at_two_index_base} \
-      ~{true="-c" false="" reference_sequences_given} \
-      ~{true="--large-index" false="" large_index} \
-      ~{true="-a/--noauto" false="" a_slash_no_auto} \
+      ~{if (reference_sequences_given) then "-c" else ""} \
+      ~{if (large_index) then "--large-index" else ""} \
+      ~{if (a_slash_no_auto) then "-a/--noauto" else ""} \
       ~{if defined(number_of_threads) then ("-p " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(bmax) then ("--bmax " +  '"' + bmax + '"') else ""} \
       ~{if defined(bmax_divn) then ("--bmaxdivn " +  '"' + bmax_divn + '"') else ""} \
       ~{if defined(dcv) then ("--dcv " +  '"' + dcv + '"') else ""} \
-      ~{true="--nodc" false="" no_dc} \
-      ~{true="-r/--noref" false="" r_slash_no_ref} \
-      ~{true="-3/--justref" false="" three_slash_just_ref} \
+      ~{if (no_dc) then "--nodc" else ""} \
+      ~{if (r_slash_no_ref) then "-r/--noref" else ""} \
+      ~{if (three_slash_just_ref) then "-3/--justref" else ""} \
       ~{if defined(oslash_off_rate) then ("-o/--offrate " +  '"' + oslash_off_rate + '"') else ""} \
       ~{if defined(t_slash_f_tab_chars) then ("-t/--ftabchars " +  '"' + t_slash_f_tab_chars + '"') else ""} \
       ~{if defined(local_off_rate) then ("--localoffrate " +  '"' + local_off_rate + '"') else ""} \
@@ -57,12 +57,12 @@ task Hisat2Build {
       ~{if defined(repeat_snp) then ("--repeat-snp " +  '"' + repeat_snp + '"') else ""} \
       ~{if defined(repeat_haplotype) then ("--repeat-haplotype " +  '"' + repeat_haplotype + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-q/--quiet" false="" q_slash_quiet} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (q_slash_quiet) then "-q/--quiet" else ""} \
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
-    reference_sequences_given: "reference sequences given on cmd line (as <reference_in>)"
-    large_index: "force generated index to be 'large', even if ref has fewer than 4 billion nucleotides"
+    reference_sequences_given: "reference sequences given on cmd line (as\\n<reference_in>)"
+    large_index: "force generated index to be 'large', even if ref\\nhas fewer than 4 billion nucleotides"
     a_slash_no_auto: "disable automatic -p/--bmax/--dcv memory-fitting"
     number_of_threads: "number of threads"
     bmax: "max bucket sz for blockwise suffix-array builder"
@@ -88,5 +88,8 @@ task Hisat2Build {
     h_slash_help: "print detailed description of tool and its options"
     reference_in: "comma-separated list of files with ref sequences"
     his_at_two_index_base: "write ht2 data to files with this dir/basename"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

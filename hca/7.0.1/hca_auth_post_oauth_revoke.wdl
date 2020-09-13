@@ -1,17 +1,20 @@
 version 1.0
 
-task HcaAuthPostOauthRevoke {
+task HcaAuthPostoauthrevoke {
   input {
-    String? token
     String? client_id
+    String? token
   }
   command <<<
-    hca auth post-oauth-revoke \
-      ~{if defined(token) then ("--token " +  '"' + token + '"') else ""} \
-      ~{if defined(client_id) then ("--client-id " +  '"' + client_id + '"') else ""}
+    hca auth post_oauth_revoke \
+      ~{if defined(client_id) then ("--client-id " +  '"' + client_id + '"') else ""} \
+      ~{if defined(token) then ("--token " +  '"' + token + '"') else ""}
   >>>
   parameter_meta {
-    token: "The refresh token to revoke."
     client_id: ""
+    token: "The refresh token to revoke."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

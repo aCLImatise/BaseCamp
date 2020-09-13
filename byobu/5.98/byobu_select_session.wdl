@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuSelectSession {
+task Byobuselectsession {
   command <<<
-    byobu-select-session
+    byobu_select_session
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

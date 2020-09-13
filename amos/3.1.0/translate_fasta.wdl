@@ -1,7 +1,10 @@
 version 1.0
 
-task TranslateFasta {
+task Translatefasta {
   command <<<
-    translate-fasta
+    translate_fasta
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Bamscrapcount {
   command <<<
     bamscrapcount
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

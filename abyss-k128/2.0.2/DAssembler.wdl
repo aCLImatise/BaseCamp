@@ -16,7 +16,7 @@ task DAssembler {
       ~{if defined(max_mismatch) then ("--max_mismatch " +  '"' + max_mismatch + '"') else ""} \
       ~{if defined(min_coverage) then ("--min_coverage " +  '"' + min_coverage + '"') else ""} \
       ~{if defined(read_length) then ("--read_length " +  '"' + read_length + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     max_overlap: "maximum tier overlap for consensus calling [10]"
@@ -25,5 +25,8 @@ task DAssembler {
     read_length: "read length"
     verbose: "display verbose output"
     reads: "fasta-formatted reads file: the first read is used as the seed."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

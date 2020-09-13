@@ -1,48 +1,56 @@
 class: CommandLineTool
 id: ../../../genomedata_load_assembly.cwl
 inputs:
-- id: assembly
-  doc: SEQFILE contains assembly (AGP) files instead of sequence
+- id: in_assembly
+  doc: SEQFILE contains assembly (AGP) files instead of
   type: boolean
   inputBinding:
     prefix: --assembly
-- id: sizes
-  doc: SEQFILE contains list of sizes instead of sequence
-  type: boolean
-  inputBinding:
-    prefix: --sizes
-- id: file_mode
-  doc: If specified, the Genomedata archive will be implemented as a single file,
-    with a separate h5 group for each Chromosome. This is recommended if there are
-    a large number of Chromosomes. The default behavior is to use a single file if
-    there are at least 100 Chromosomes being added.
+- id: in_file_mode
+  doc: "If specified, the Genomedata archive will be\nimplemented as a single file,\
+    \ with a separate h5 group\nfor each Chromosome. This is recommended if there\
+    \ are\na large number of Chromosomes. The default behavior is\nto use a single\
+    \ file if there are at least 100\nChromosomes being added."
   type: boolean
   inputBinding:
     prefix: --file-mode
-- id: directory_mode
-  doc: If specified, the Genomedata archive will be implemented as a directory, with
-    a separate file for each Chromosome. This is recommended if there are a small
-    number of Chromosomes. The default behavior is to use a directory if there are
-    fewer than 100 Chromosomes being added.
+- id: in_directory_mode
+  doc: "If specified, the Genomedata archive will be\nimplemented as a directory,\
+    \ with a separate file for\neach Chromosome. This is recommended if there are\
+    \ a\nsmall number of Chromosomes. The default behavior is\nto use a directory\
+    \ if there are fewer than 100\nChromosomes being added."
   type: boolean
   inputBinding:
     prefix: --directory-mode
-- id: verbose
+- id: in_verbose
   doc: Print status updates and diagnostic messages
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: gd_archive
+- id: in_s
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -s
+- id: in_gd_archive
   doc: genomedata archive
   type: string
   inputBinding:
     position: 0
-- id: seq_files
+- id: in_seq_files
   doc: sequences in FASTA format
   type: string
   inputBinding:
     position: 1
-outputs: []
+- id: in_sequence
+  doc: -s, --sizes           SEQFILE contains list of sizes instead of sequence
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genomedata-load-assembly

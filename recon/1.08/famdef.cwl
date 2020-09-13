@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../famdef.cwl
 inputs:
-- id: seq_list
+- id: in_seq_list
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - famdef

@@ -1,7 +1,10 @@
 version 1.0
 
-task JoinIntoGroupsOf {
+task Joinintogroupsof {
   command <<<
-    join-into-groups-of
+    join_into_groups_of
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

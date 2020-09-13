@@ -1,7 +1,10 @@
 version 1.0
 
-task Libstats.pl.bak {
+task Libstatspl {
   command <<<
-    libstats.pl.bak
+    libstats_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

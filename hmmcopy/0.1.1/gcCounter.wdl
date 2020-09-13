@@ -11,16 +11,19 @@ task GcCounter {
   command <<<
     gcCounter \
       ~{fast_a_reference} \
-      ~{true="--seg" false="" seg} \
+      ~{if (seg) then "--seg" else ""} \
       ~{if defined(window) then ("--window " +  '"' + window + '"') else ""} \
-      ~{true="--list" false="" list} \
+      ~{if (list) then "--list" else ""} \
       ~{if defined(chromosome) then ("--chromosome " +  '"' + chromosome + '"') else ""}
   >>>
   parameter_meta {
     seg: "Outputs in SEG format"
     window: "Specify the size of non-overlapping windows [1000]"
     list: "List all chromosomes in FASTA reference file"
-    chromosome: "Specify the entries and order of sequences to analyze [ALL], the <string> should be a comma-delimited list (NO spaces)"
+    chromosome: "Specify the entries and order of sequences to analyze [ALL],\\nthe <string> should be a comma-delimited list (NO spaces)"
     fast_a_reference: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Scaden {
   command <<<
     scaden
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

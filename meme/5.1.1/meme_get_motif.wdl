@@ -1,22 +1,22 @@
 version 1.0
 
-task MemeGetMotif {
+task Memegetmotif {
   input {
-    String? id
+    File? id
     Boolean? match_alternate_i
     Boolean? i_a
     Boolean? rc
     Boolean? all
-    String? meme_file
+    File? meme_file
   }
   command <<<
-    meme-get-motif \
+    meme_get_motif \
       ~{meme_file} \
       ~{if defined(id) then ("-id " +  '"' + id + '"') else ""} \
-      ~{true="-a" false="" match_alternate_i} \
-      ~{true="-ia" false="" i_a} \
-      ~{true="-rc" false="" rc} \
-      ~{true="-all" false="" all}
+      ~{if (match_alternate_i) then "-a" else ""} \
+      ~{if (i_a) then "-ia" else ""} \
+      ~{if (rc) then "-rc" else ""} \
+      ~{if (all) then "-all" else ""}
   >>>
   parameter_meta {
     id: "id of motif to extract from the MEME file"
@@ -25,5 +25,8 @@ task MemeGetMotif {
     rc: "reverse complement motifs (assuming alphabet allows)"
     all: "get all motifs in the MEME file"
     meme_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

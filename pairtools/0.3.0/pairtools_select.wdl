@@ -2,26 +2,24 @@ version 1.0
 
 task PairtoolsSelect {
   input {
-    String? output_file_path
-    String? output_rest
+    File? output_file_path
+    File? output_rest
     Boolean? send_comments_to
-    String? chrom_subset
+    File? chrom_subset
     String? startup_code
-    String? type_cast
+    Int? type_cast
     Int? nproc_in
     Int? nproc_out
-    String? cmd_in
-    String? cmd_out
-    String condition
-    String? pairs_path
+    File? cmd_in
+    File? cmd_out
+    String quote
   }
   command <<<
     pairtools select \
-      ~{condition} \
-      ~{pairs_path} \
+      ~{quote} \
       ~{if defined(output_file_path) then ("--output " +  '"' + output_file_path + '"') else ""} \
       ~{if defined(output_rest) then ("--output-rest " +  '"' + output_rest + '"') else ""} \
-      ~{true="--send-comments-to" false="" send_comments_to} \
+      ~{if (send_comments_to) then "--send-comments-to" else ""} \
       ~{if defined(chrom_subset) then ("--chrom-subset " +  '"' + chrom_subset + '"') else ""} \
       ~{if defined(startup_code) then ("--startup-code " +  '"' + startup_code + '"') else ""} \
       ~{if defined(type_cast) then ("--type-cast " +  '"' + type_cast + '"') else ""} \
@@ -31,17 +29,21 @@ task PairtoolsSelect {
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
   parameter_meta {
-    output_file_path: "output file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed. By default, the output is printed into stdout."
-    output_rest: "output file for pairs of other types.  If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed. By default, such pairs are dropped."
-    send_comments_to: "[selected|rest|both|none] Which of the outputs should receive header and comment lines  [default: both]"
-    chrom_subset: "A path to a chromosomes file (tab-separated, 1st column contains chromosome names) containing a chromosome subset of interest. If provided, additionally filter pairs with both sides originating from the provided subset of chromosomes. This operation modifies the #chromosomes: and #chromsize: header fields accordingly."
-    startup_code: "An auxiliary code to execute before filtering. Use to define functions that can be evaluated in the CONDITION statement"
-    type_cast: "...  Cast a given column to a given type. By default, only pos and mapq are cast to int, other columns are kept as str. Provide as -t <column_name> <type>, e.g. -t read_len1 int. Multiple entries are allowed."
-    nproc_in: "Number of processes used by the auto-guessed input decompressing command.  [default: 3]"
-    nproc_out: "Number of processes used by the auto-guessed output compressing command.  [default: 8]"
-    cmd_in: "A command to decompress the input file. If provided, fully overrides the auto-guessed command. Does not work with stdin. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -dc -n 3"
-    cmd_out: "A command to compress the output file. If provided, fully overrides the auto-guessed command. Does not work with stdout. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -c -n 8"
-    condition: ""
-    pairs_path: ""
+    output_file_path: "output file. If the path ends with .gz or\\n.lz4, the output is pbgzip-/lz4c-compressed.\\nBy default, the output is printed into\\nstdout."
+    output_rest: "output file for pairs of other types.  If\\nthe path ends with .gz or .lz4, the output\\nis pbgzip-/lz4c-compressed. By default, such\\npairs are dropped."
+    send_comments_to: "[selected|rest|both|none]\\nWhich of the outputs should receive header\\nand comment lines  [default: both]"
+    chrom_subset: "A path to a chromosomes file (tab-separated,\\n1st column contains chromosome names)\\ncontaining a chromosome subset of interest.\\nIf provided, additionally filter pairs with\\nboth sides originating from the provided\\nsubset of chromosomes. This operation\\nmodifies the #chromosomes: and #chromsize:\\nheader fields accordingly."
+    startup_code: "An auxiliary code to execute before\\nfiltering. Use to define functions that can\\nbe evaluated in the CONDITION statement"
+    type_cast: "...  Cast a given column to a given type. By\\ndefault, only pos and mapq are cast to int,\\nother columns are kept as str. Provide as -t\\n<column_name> <type>, e.g. -t read_len1 int.\\nMultiple entries are allowed."
+    nproc_in: "Number of processes used by the auto-guessed\\ninput decompressing command.  [default: 3]"
+    nproc_out: "Number of processes used by the auto-guessed\\noutput compressing command.  [default: 8]"
+    cmd_in: "A command to decompress the input file. If\\nprovided, fully overrides the auto-guessed\\ncommand. Does not work with stdin. Must read\\ninput from stdin and print output into\\nstdout. EXAMPLE: pbgzip -dc -n 3"
+    cmd_out: "A command to compress the output file. If\\nprovided, fully overrides the auto-guessed\\ncommand. Does not work with stdout. Must\\nread input from stdin and print output into\\nstdout. EXAMPLE: pbgzip -c -n 8"
+    quote: "CONDITION with single quotes, and use double quotes for string"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_path = "${in_output_file_path}"
+    File out_output_rest = "${in_output_rest}"
   }
 }

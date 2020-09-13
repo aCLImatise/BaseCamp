@@ -1,27 +1,40 @@
 class: CommandLineTool
 id: ../../../hmmfetch.cwl
 inputs:
-- id: second_cmdline_arg
+- id: in_second_cmdline_arg
   doc: ': second cmdline arg is a file of names to retrieve'
   type: boolean
   inputBinding:
     prefix: -f
-- id: output_hmm_file_f
+- id: in_output_hmm_file_f
   doc: ': output HMM to file <f> instead of stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: output_hmm_file_named
+- id: in_output_hmm_file_named
   doc: ': output HMM to file named <key>'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -O
-- id: index
+- id: in_index
   doc: ': index the <hmmfile>, creating <hmmfile>.ssi'
   type: boolean
   inputBinding:
     prefix: --index
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_hmm_file_f
+  doc: ': output HMM to file <f> instead of stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_hmm_file_f)
+- id: out_output_hmm_file_named
+  doc: ': output HMM to file named <key>'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_hmm_file_named)
 cwlVersion: v1.1
 baseCommand:
 - hmmfetch

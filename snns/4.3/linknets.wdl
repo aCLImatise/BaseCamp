@@ -9,9 +9,9 @@ task Linknets {
   }
   command <<<
     linknets \
-      ~{true="-inunits" false="" in_units} \
+      ~{if (in_units) then "-inunits" else ""} \
       ~{if defined(in_connect) then ("-inconnect " +  '"' + in_connect + '"') else ""} \
-      ~{true="-direct" false="" direct} \
+      ~{if (direct) then "-direct" else ""} \
       ~{if defined(out_connect) then ("-outconnect " +  '"' + out_connect + '"') else ""}
   >>>
   parameter_meta {
@@ -19,5 +19,8 @@ task Linknets {
     in_connect: "fully connect with <n> input units"
     direct: "connect input with output one-to-one"
     out_connect: "fully connect to <n> output units"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

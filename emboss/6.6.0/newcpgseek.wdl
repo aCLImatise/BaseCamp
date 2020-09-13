@@ -6,9 +6,12 @@ task Newcpgseek {
   }
   command <<<
     newcpgseek \
-      ~{true="-score" false="" score}
+      ~{if (score) then "-score" else ""}
   >>>
   parameter_meta {
     score: "integer    [17] CpG score (Integer from 1 to 200)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

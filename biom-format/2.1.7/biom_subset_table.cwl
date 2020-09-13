@@ -1,33 +1,42 @@
 class: CommandLineTool
 id: ../../../biom_subset_table.cwl
 inputs:
-- id: input_hdf_five_fp
+- id: in_input_hdf_five_fp
   doc: the input hdf5 BIOM table filepath to subset
   type: File
   inputBinding:
     prefix: --input-hdf5-fp
-- id: input_json_fp
+- id: in_input_json_fp
   doc: the input json BIOM table filepath to subset
   type: File
   inputBinding:
     prefix: --input-json-fp
-- id: axis
-  doc: '[sample|observation] the axis to subset over, either sample or observation  [required]'
+- id: in_axis
+  doc: "[sample|observation]\nthe axis to subset over, either sample or\nobservation\
+    \  [required]"
   type: boolean
   inputBinding:
     prefix: --axis
-- id: ids
-  doc: a file containing a single column of IDs to retain (either sample IDs or observation
-    IDs, depending on the axis)  [required]
+- id: in_ids
+  doc: "a file containing a single column of IDs to\nretain (either sample IDs or\
+    \ observation\nIDs, depending on the axis)  [required]"
   type: File
   inputBinding:
     prefix: --ids
-- id: output_fp
+- id: in_output_fp
   doc: the output BIOM table filepath  [required]
   type: File
   inputBinding:
     prefix: --output-fp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_fp
+  doc: the output BIOM table filepath  [required]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_fp)
 cwlVersion: v1.1
 baseCommand:
 - biom

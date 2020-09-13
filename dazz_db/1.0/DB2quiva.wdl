@@ -6,9 +6,12 @@ task DB2quiva {
   }
   command <<<
     DB2quiva \
-      ~{true="-vU" false="" vu}
+      ~{if (vu) then "-vU" else ""}
   >>>
   parameter_meta {
     vu: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

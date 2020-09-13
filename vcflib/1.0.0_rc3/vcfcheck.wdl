@@ -5,19 +5,22 @@ task Vcfcheck {
     Boolean? fast_a_reference
     String? exclude_failures
     Boolean? keep_failures
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcfcheck \
       ~{vcf_file} \
-      ~{true="--fasta-reference" false="" fast_a_reference} \
+      ~{if (fast_a_reference) then "--fasta-reference" else ""} \
       ~{if defined(exclude_failures) then ("--exclude-failures " +  '"' + exclude_failures + '"') else ""} \
-      ~{true="--keep-failures" false="" keep_failures}
+      ~{if (keep_failures) then "--keep-failures" else ""}
   >>>
   parameter_meta {
     fast_a_reference: "FASTA reference file to use to obtain primer sequences"
     exclude_failures: "a record fails, don't print it.  Otherwise do."
     keep_failures: "Print if the record fails, otherwise not."
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

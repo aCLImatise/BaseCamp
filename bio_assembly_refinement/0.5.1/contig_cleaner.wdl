@@ -12,12 +12,15 @@ task ContigCleaner {
       ~{if defined(cut_off_length) then ("--cutoff_length " +  '"' + cut_off_length + '"') else ""} \
       ~{if defined(hit_percent_id) then ("--hit_percent_id " +  '"' + hit_percent_id + '"') else ""} \
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     cut_off_length: "Minimum acceptable contig length [2000]"
-    hit_percent_id: "Minimum acceptable hit percent id for contained contigs [95]"
+    hit_percent_id: "Minimum acceptable hit percent id for contained\\ncontigs [95]"
     skip: "File of contig ids to skip"
     debug: "Keep all temp files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

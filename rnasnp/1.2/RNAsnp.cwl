@@ -1,41 +1,44 @@
 class: CommandLineTool
 id: ../../../RNAsnp.cwl
 inputs:
-- id: detailed_help
-  doc: Print help, including all details and hidden options, and exit
+- id: in_detailed_help
+  doc: "Print help, including all details and hidden\noptions, and exit"
   type: boolean
   inputBinding:
     prefix: --detailed-help
-- id: full_help
+- id: in_full_help
   doc: Print help, including hidden options, and exit
   type: boolean
   inputBinding:
     prefix: --full-help
-- id: seq
+- id: in_seq
   doc: File containing the input sequence
-  type: string
+  type: File
   inputBinding:
     prefix: --seq
-- id: snp
+- id: in_snp
   doc: File containing the list of SNP
-  type: string
+  type: File
   inputBinding:
     prefix: --snp
-- id: mode
-  doc: Select the mode of operation (default=`1') 1 - perform global folding by using
-    RNAfold and compute the difference in base pair probabilities for all sequence
-    intervals 2 - perform local folding by using RNAplfold and compute the difference
-    in base pair probabilities for all sequence intervals of fixed length 3 - screen
-    putative structure-disruptive SNPs in an RNA sequence
+- id: in_mode
+  doc: "Select the mode of operation (default=`1')\n1 - perform global folding by\
+    \ using RNAfold\nand compute the difference in base pair\nprobabilities for all\
+    \ sequence intervals\n2 - perform local folding by using RNAplfold\nand compute\
+    \ the difference in base pair\nprobabilities for all sequence intervals of\nfixed\
+    \ length\n3 - screen putative structure-disruptive SNPs\nin an RNA sequence"
   type: long
   inputBinding:
     prefix: --mode
-- id: winsize_fold
-  doc: length of flanking sequence on either side of SNP to fold  (default=`200')
+- id: in_winsize_fold
+  doc: "length of flanking sequence on either side of\nSNP to fold  (default=`200')"
   type: long
   inputBinding:
     prefix: --winsizeFold
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - RNAsnp

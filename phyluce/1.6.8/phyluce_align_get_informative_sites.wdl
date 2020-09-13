@@ -2,12 +2,12 @@ version 1.0
 
 task PhyluceAlignGetInformativeSites {
   input {
-    String? alignments
-    String? the_output_filename
+    Directory? alignments
+    File? the_output_filename
     String? input_format
-    String? cores
+    Int? cores
     String? verbosity
-    String? log_path
+    File? log_path
   }
   command <<<
     phyluce_align_get_informative_sites \
@@ -25,5 +25,9 @@ task PhyluceAlignGetInformativeSites {
     cores: "The number of cores to use."
     verbosity: "The logging level to use."
     log_path: "The path to a directory to hold logs."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_the_output_filename = "${in_the_output_filename}"
   }
 }

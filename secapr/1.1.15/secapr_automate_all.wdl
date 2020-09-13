@@ -2,12 +2,12 @@ version 1.0
 
 task SecaprAutomateAll {
   input {
-    String? directory_containing_cleaned
-    String? output_directory_stored
+    Directory? directory_containing_cleaned
+    Directory? output_directory_stored
     String? reference
     String? setting
     String? assembler
-    String? cores
+    Int? cores
   }
   command <<<
     secapr automate_all \
@@ -20,10 +20,14 @@ task SecaprAutomateAll {
   >>>
   parameter_meta {
     directory_containing_cleaned: "The directory containing cleaned fastq files"
-    output_directory_stored: "The output directory where all intermediate and final data files will be stored"
-    reference: "Provide a reference library (FASTA) containing sequences for the genes of interest (required to find contigs matching targeted regions)."
-    setting: "The setting you want to run SECAPR on. \"relaxed\" uses very non-restrictive default values (use when samples are expected to differ considerably from provided reference or are covering wide evolutionary range, e.g. different families or orders). \"conservative\" is very restrictive and can be used when samples are closely related and match provided reference very well."
-    assembler: "The assembler to use for de-novo assembly (default=abyss)."
-    cores: "Number of computational cores for parallelization of computation."
+    output_directory_stored: "The output directory where all intermediate and final\\ndata files will be stored"
+    reference: "Provide a reference library (FASTA) containing\\nsequences for the genes of interest (required to find\\ncontigs matching targeted regions)."
+    setting: "The setting you want to run SECAPR on. \\\"relaxed\\\" uses\\nvery non-restrictive default values (use when samples\\nare expected to differ considerably from provided\\nreference or are covering wide evolutionary range,\\ne.g. different families or orders). \\\"conservative\\\" is\\nvery restrictive and can be used when samples are\\nclosely related and match provided reference very\\nwell."
+    assembler: "The assembler to use for de-novo assembly\\n(default=abyss)."
+    cores: "Number of computational cores for parallelization of\\ncomputation.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_stored = "${in_output_directory_stored}"
   }
 }

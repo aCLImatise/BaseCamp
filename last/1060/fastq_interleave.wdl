@@ -1,7 +1,10 @@
 version 1.0
 
-task FastqInterleave {
+task Fastqinterleave {
   command <<<
-    fastq-interleave
+    fastq_interleave
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

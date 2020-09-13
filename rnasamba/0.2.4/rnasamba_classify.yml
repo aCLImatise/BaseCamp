@@ -1,25 +1,28 @@
-&id001 !Command
+&id002 !Command
+command:
+- rnasamba
+- classify
 positional:
 - !Positional
-  description: output TSV file containing the results of the classification.
+  description: output TSV file containing the results of the
   position: 0
   name: output_file
   optional: false
 - !Positional
-  description: input FASTA file containing transcript sequences.
+  description: fasta_file            input FASTA file containing transcript sequences.
   position: 1
-  name: fasta_file
+  name: classification.
   optional: false
 - !Positional
-  description: input HDF5 file(s) containing weights of a trained RNAsamba network
-    (if more than a file is provided, an ensembling of the models will be performed).
+  description: "input HDF5 file(s) containing weights of a trained\nRNAsamba network\
+    \ (if more than a file is provided, an\nensembling of the models will be performed)."
   position: 2
   name: weights
   optional: false
 named:
 - !Flag
-  description: 'output FASTA file containing translated sequences for the predicted
-    coding ORFs. (default: None)'
+  description: "output FASTA file containing translated sequences for\nthe predicted\
+    \ coding ORFs. (default: None)"
   synonyms:
   - -p
   - --protein_fasta
@@ -27,8 +30,8 @@ named:
     name: PROTEIN_FASTA
   optional: true
 - !Flag
-  description: 'print the progress of the classification. 0 = silent, 1 = current
-    step. (default: 0)'
+  description: "print the progress of the classification. 0 = silent,\n1 = current\
+    \ step. (default: 0)\n"
   synonyms:
   - -v
   - --verbose
@@ -37,40 +40,45 @@ named:
       ? "1"
       ? "0"
   optional: true
-command:
-- rnasamba
-- classify
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - rnasamba
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - rnasamba
+    - train
     positional:
     - !Positional
-      description: output HDF5 file containing weights of the newly trained RNAsamba
-        network.
+      description: "output HDF5 file containing weights of the newly\ntrained RNAsamba\
+        \ network."
       position: 0
       name: output_file
       optional: false
     - !Positional
-      description: input FASTA file containing sequences of protein- coding transcripts.
+      description: "input FASTA file containing sequences of protein-\ncoding transcripts."
       position: 1
       name: coding_file
       optional: false
     - !Positional
-      description: input FASTA file containing sequences of noncoding transcripts.
+      description: input FASTA file containing sequences of noncoding
       position: 2
       name: noncoding_file
       optional: false
+    - !Positional
+      description: 'optional arguments:'
+      position: 3
+      name: transcripts.
+      optional: false
     named:
     - !Flag
-      description: 'number of epochs after lowest validation loss before stopping
-        training (a fraction of 0.1 of the training set is set apart for validation
-        and the model with the lowest validation loss will be saved). (default: 0)'
+      description: "number of epochs after lowest validation loss before\nstopping\
+        \ training (a fraction of 0.1 of the training\nset is set apart for validation\
+        \ and the model with the\nlowest validation loss will be saved). (default:\
+        \ 0)"
       synonyms:
       - -s
       - --early_stopping
@@ -94,23 +102,21 @@ parent: &id002 !Command
         name: EPOCHS
       optional: true
     - !Flag
-      description: 'print the progress of the training. 0 = silent, 1 = current step,
-        2 = progress bar, 3 = one line per epoch. (default: 0)'
+      description: "print the progress of the training. 0 = silent, 1 =\ncurrent step,\
+        \ 2 = progress bar, 3 = one line per\nepoch. (default: 0)\n"
       synonyms:
       - -v
       - --verbose
       args: !ChoiceFlagArg
         choices: !!set
-          ? "2"
-          ? "1"
           ? "3"
+          ? "1"
+          ? "2"
           ? "0"
       optional: true
-    command:
-    - rnasamba
-    - train
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -148,6 +154,8 @@ parent: &id002 !Command
       \                 epoch. (default: 0)\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -170,6 +178,7 @@ parent: &id002 !Command
     \ number and exit\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

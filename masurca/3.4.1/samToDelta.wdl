@@ -4,4 +4,7 @@ task SamToDelta {
   command <<<
     samToDelta
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

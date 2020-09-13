@@ -1,57 +1,60 @@
 class: CommandLineTool
 id: ../../../SpecLibSearcher.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*                                      Input files (valid formats: 'mzML')"
-  type: File
+  type: string
   inputBinding:
     prefix: -in
-- id: lib
+- id: in_lib
   doc: "*                                      Searchable spectral library (MSP format)\
     \ (valid formats: 'msp')"
   type: File
   inputBinding:
     prefix: -lib
-- id: out
+- id: in_out
   doc: "*                                     Output files. Have to be as many as\
     \ input files (valid formats: 'idXML')"
-  type: File
+  type: string
   inputBinding:
     prefix: -out
-- id: fragment
+- id: in_fragment
   doc: ":mass_tolerance <tolerance>              Fragment mass tolerance (default:\
     \ '10.0')"
   type: boolean
   inputBinding:
     prefix: -fragment
-- id: compare_function
+- id: in_compare_function
   doc: "Function for similarity comparison (default: 'ZhangSimilarityScore' valid:\
     \ 'PeakAlignment', 'SpectrumAlignmentScore', 'SpectrumCheapDPCorr', 'SpectrumPrecursorComparator',\
     \ 'SteinScottImproveScore', 'ZhangSimilarityScore')"
   type: string
   inputBinding:
     prefix: -compare_function
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - SpecLibSearcher

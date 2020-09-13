@@ -1,7 +1,10 @@
 version 1.0
 
-task GhmmConfig {
+task Ghmmconfig {
   command <<<
-    ghmm-config
+    ghmm_config
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

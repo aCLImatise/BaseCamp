@@ -4,4 +4,7 @@ task Primersearch {
   command <<<
     primersearch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

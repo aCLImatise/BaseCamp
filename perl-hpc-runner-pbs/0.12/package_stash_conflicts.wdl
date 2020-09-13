@@ -1,7 +1,10 @@
 version 1.0
 
-task PackageStashConflicts {
+task Packagestashconflicts {
   command <<<
-    package-stash-conflicts
+    package_stash_conflicts
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

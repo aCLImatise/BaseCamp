@@ -2,12 +2,12 @@ version 1.0
 
 task SplashReads {
   input {
-    String? output_dir
+    Directory? output_dir
     String? sample_name
-    String? bed
-    String? read_length
-    String? read_number
-    String? read_coverage
+    File? bed
+    Int? read_length
+    Int? read_number
+    Int? read_coverage
     String? sequencing_error
     String? pulse
     String? chase
@@ -36,6 +36,10 @@ task SplashReads {
     sequencing_error: "Sequencing error"
     pulse: "Pulse in minutes"
     chase: "Chase in minutes"
-    tc_rate: "T->C conversion rate"
+    tc_rate: "T->C conversion rate\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

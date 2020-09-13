@@ -8,7 +8,7 @@ task Msms {
     Boolean? surface
     Boolean? no_area
     String? socket_name
-    String? socket_port
+    Int? socket_port
     Boolean? xdr
     Boolean? s_inetd
     Boolean? noh
@@ -27,22 +27,22 @@ task Msms {
       ~{if defined(probe_radius) then ("-probe_radius " +  '"' + probe_radius + '"') else ""} \
       ~{if defined(density) then ("-density " +  '"' + density + '"') else ""} \
       ~{if defined(h_density) then ("-hdensity " +  '"' + h_density + '"') else ""} \
-      ~{true="-surface" false="" surface} \
-      ~{true="-no_area" false="" no_area} \
+      ~{if (surface) then "-surface" else ""} \
+      ~{if (no_area) then "-no_area" else ""} \
       ~{if defined(socket_name) then ("-socketName " +  '"' + socket_name + '"') else ""} \
       ~{if defined(socket_port) then ("-socketPort " +  '"' + socket_port + '"') else ""} \
-      ~{true="-xdr" false="" xdr} \
-      ~{true="-sinetd" false="" s_inetd} \
-      ~{true="-noh" false="" noh} \
-      ~{true="-no_rest_on_pbr" false="" no_rest_on_pbr} \
-      ~{true="-no_rest" false="" no_rest} \
+      ~{if (xdr) then "-xdr" else ""} \
+      ~{if (s_inetd) then "-sinetd" else ""} \
+      ~{if (noh) then "-noh" else ""} \
+      ~{if (no_rest_on_pbr) then "-no_rest_on_pbr" else ""} \
+      ~{if (no_rest) then "-no_rest" else ""} \
       ~{if defined(sphere_input_file) then ("-if " +  '"' + sphere_input_file + '"') else ""} \
       ~{if defined(of) then ("-of " +  '"' + of + '"') else ""} \
       ~{if defined(af) then ("-af " +  '"' + af + '"') else ""} \
-      ~{true="-no_header" false="" no_header} \
-      ~{true="-free_vertices" false="" free_vertices} \
-      ~{true="-all_components" false="" all_components} \
-      ~{true="-one_cavity" false="" one_cavity}
+      ~{if (no_header) then "-no_header" else ""} \
+      ~{if (free_vertices) then "-free_vertices" else ""} \
+      ~{if (all_components) then "-all_components" else ""} \
+      ~{if (one_cavity) then "-one_cavity" else ""}
   >>>
   parameter_meta {
     probe_radius: ": probe sphere radius, [1.5]"
@@ -64,5 +64,8 @@ task Msms {
     free_vertices: ": turns on computation for isolated RS vertices"
     all_components: ": compute all the surfaces components"
     one_cavity: "#atoms at1 [at2][at3] : Compute the surface for an internal                        cavity for which at least one atom is specified"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

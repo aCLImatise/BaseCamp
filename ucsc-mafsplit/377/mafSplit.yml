@@ -1,4 +1,6 @@
 !Command
+command:
+- mafSplit
 positional:
 - !Positional
   description: ''
@@ -17,22 +19,51 @@ positional:
   optional: false
 named:
 - !Flag
-  description: 'For use only with -byTarget. Instead of auto-incrementing an integer
-    or requiring a unique number in the sequence name, use a hash function on the
-    sequence name to compute an N-bit number.  This limits the max #filenames to 2^N
-    and ensures that even if different subsets of sequences appear in different pairwise
-    mafs, the split file names will be consistent (due to hash function). This option
-    is useful when a "scaffold-based" assembly has more than one sequence name pattern,
-    e.g. both chroms and scaffolds.'
+  description: "Make one file per target sequence.  (splits.bed input\nis ignored)."
+  synonyms:
+  - -byTarget
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "For use only with -byTarget.\nCreate N levels of output directory\
+    \ under current dir.\nThis helps prevent NFS problems with a large number of\n\
+    file in a directory.  Using -outDirDepth=3 would\nproduce ./1/2/3/outRoot123.maf."
+  synonyms:
+  - -outDirDepth
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "For use only with -byTarget.\nInstead of auto-incrementing an integer\
+    \ to determine\noutput filename, expect each target sequence name to\nend with\
+    \ a unique number and use that number as the\ninteger to tack onto outRoot."
+  synonyms:
+  - -useSequenceName
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "For use only with -byTarget.\nInstead of auto-incrementing an integer\
+    \ to determine\noutput filename, use the target sequence name\nto tack onto outRoot."
+  synonyms:
+  - -useFullSequenceName
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "For use only with -byTarget.\nInstead of auto-incrementing an integer\
+    \ or requiring\na unique number in the sequence name, use a hash\nfunction on\
+    \ the sequence name to compute an N-bit\nnumber.  This limits the max #filenames\
+    \ to 2^N and\nensures that even if different subsets of sequences\nappear in different\
+    \ pairwise mafs, the split file\nnames will be consistent (due to hash function).\n\
+    This option is useful when a \"scaffold-based\"\nassembly has more than one sequence\
+    \ name pattern,\ne.g. both chroms and scaffolds.\n"
   synonyms:
   - -useHashedName
   args: !SimpleFlagArg
     name: N
   optional: true
-command:
-- mafSplit
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

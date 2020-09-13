@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../phyluce_assembly_get_fastq_lengths.cwl
 inputs:
-- id: input
+- id: in_input
   doc: The directory of fastq files to summarize
-  type: string
+  type: Directory
   inputBinding:
     prefix: --input
-- id: csv
+- id: in_csv
   doc: Give output in CSV
   type: boolean
   inputBinding:
     prefix: --csv
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_assembly_get_fastq_lengths

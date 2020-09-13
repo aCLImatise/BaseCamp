@@ -4,4 +4,7 @@ task Islandpath {
   command <<<
     islandpath
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

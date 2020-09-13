@@ -15,12 +15,12 @@ task Fetch {
     fetch \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(width_fasta_output) then ("-w " +  '"' + width_fasta_output + '"') else ""} \
-      ~{true="-f" false="" produce_fasta_output} \
-      ~{true="-s" false="" generate_crc_checksums} \
-      ~{true="-r" false="" reverse_complement_sequence} \
-      ~{true="-k" false="" keep_query_name} \
-      ~{true="-m" false="" print_entries_found} \
-      ~{true="-l" false="" append_sequence_length}
+      ~{if (produce_fasta_output) then "-f" else ""} \
+      ~{if (generate_crc_checksums) then "-s" else ""} \
+      ~{if (reverse_complement_sequence) then "-r" else ""} \
+      ~{if (keep_query_name) then "-k" else ""} \
+      ~{if (print_entries_found) then "-m" else ""} \
+      ~{if (append_sequence_length) then "-l" else ""}
   >>>
   parameter_meta {
     config: "Use <file> as configuration file"
@@ -31,5 +31,8 @@ task Fetch {
     keep_query_name: "Keep query name as FASTA header (implies -f)"
     print_entries_found: "Print all entries when multiple are found"
     append_sequence_length: "Append sequence length (; LEN=n) to the FASTA header"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

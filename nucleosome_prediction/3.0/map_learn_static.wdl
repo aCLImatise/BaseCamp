@@ -14,4 +14,7 @@ task MapLearnStatic {
     map_learn: ""
     map_xml_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

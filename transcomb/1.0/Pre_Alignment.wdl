@@ -4,4 +4,7 @@ task PreAlignment {
   command <<<
     Pre_Alignment
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

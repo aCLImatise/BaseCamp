@@ -2,11 +2,11 @@ version 1.0
 
 task PoperaDhsCount {
   input {
-    String? data
-    String? name
-    String? bed
+    File? data
+    Int? name
+    File? bed
     Int? minlength
-    String? threads
+    Int? threads
   }
   command <<<
     popera_dhs_count \
@@ -17,10 +17,13 @@ task PoperaDhsCount {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    data: "data file, should be sorted bam format, example=DH_sample1.bam,DH_sample2.bam"
+    data: "data file, should be sorted bam format,\\nexample=DH_sample1.bam,DH_sample2.bam"
     name: "NH sample name default=DH_sample1,DH_sample2"
     bed: "bed file, example=DH_sample1.bed,DH_sample2.bed"
     minlength: "minimum length of merged hot spots, default=5"
     threads: "threads number or cpu number, default=4"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

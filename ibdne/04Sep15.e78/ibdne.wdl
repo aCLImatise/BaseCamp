@@ -14,4 +14,7 @@ task Ibdne {
     cat: ""
     ibd: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

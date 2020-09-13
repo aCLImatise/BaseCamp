@@ -1,262 +1,296 @@
 class: CommandLineTool
 id: ../../../anise.cwl
 inputs:
-- id: quiet
+- id: in_quiet
   doc: Set verbosity to a minimum.
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: verbose
+- id: in_verbose
   doc: Enable verbose output.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: very_verbose
+- id: in_very_verbose
   doc: Enable very verbose output.
   type: boolean
   inputBinding:
     prefix: --very-verbose
-- id: num_threads
+- id: in_num_threads
   doc: 'Number of threads to use. In range [1..inf]. Default: 1.'
   type: long
   inputBinding:
     prefix: --num-threads
-- id: debug_site_id
+- id: in_debug_site_id
   doc: 'Debug site ID (-1 to disable). In range [-1..inf]. Default: -1.'
   type: long
   inputBinding:
     prefix: --debug-site-id
-- id: debug_step_no
+- id: in_debug_step_no
   doc: 'Debug step no (-1 to disable). In range [-1..inf]. Default: -1.'
   type: long
   inputBinding:
     prefix: --debug-step-no
-- id: no_auto_tuning
+- id: in_no_auto_tuning
   doc: Disable auto-tuning (see below).
   type: boolean
   inputBinding:
     prefix: --no-auto-tuning
-- id: output_fast_a
+- id: in_input_reference
+  doc: 'Input FASTA file with reference. Valid filetypes are: fa and fasta.'
+  type: File
+  inputBinding:
+    prefix: --input-reference
+- id: in_input_vcf
+  doc: 'Input VCF file with insert site candidates. Valid filetype is: vcf.'
+  type: File
+  inputBinding:
+    prefix: --input-vcf
+- id: in_input_mapping
+  doc: "{sam,bam}\nInput SAM/BAM mapping file. Valid filetypes are: sam and bam."
+  type: File
+  inputBinding:
+    prefix: --input-mapping
+- id: in_output_fast_a
   doc: 'Output FASTA with contigs Valid filetypes are: fa and fasta.'
   type: string
   inputBinding:
     prefix: --output-fasta
-- id: output_mapping
-  doc: 'Output SAM/BAM file with mapping fo reads to contigs in --output-fasta. Valid
-    filetypes are: sam and bam.'
-  type: string
+- id: in_output_mapping
+  doc: "Output SAM/BAM file with mapping fo reads to contigs in\n--output-fasta. Valid\
+    \ filetypes are: sam and bam."
+  type: File
   inputBinding:
     prefix: --output-mapping
-- id: output_debug_dir
+- id: in_output_debug_dir
   doc: Directory for debug output. Leave empty for no such output.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output-debug-dir
-- id: clean_up_tmp_files
+- id: in_clean_up_tmp_files
   doc: Clean up temporary files.
   type: boolean
   inputBinding:
     prefix: --clean-up-tmp-files
-- id: recursion_max_steps
-  doc: 'Maximal recursion depth. 0 for infinity. In range [0..inf]. Default: 50.'
+- id: in_recursion_max_steps
+  doc: "Maximal recursion depth. 0 for infinity. In range [0..inf]. Default:\n50."
   type: long
   inputBinding:
     prefix: --recursion-max-steps
-- id: no_realign_assembly
+- id: in_no_realign_assembly
   doc: Do not realign the reads after assembly.
   type: boolean
   inputBinding:
     prefix: --no-realign-assembly
-- id: max_reads_factor
-  doc: 'Factor to use for the maximal read computation. ANISE stops for a site if
-    more than the number of reads expected from the expected coverage times the max
-    reads factor are assigned to the site. In range [1..inf]. Default: 2.'
+- id: in_max_reads_factor
+  doc: "Factor to use for the maximal read computation. ANISE stops for a\nsite if\
+    \ more than the number of reads expected from the expected\ncoverage times the\
+    \ max reads factor are assigned to the site. In\nrange [1..inf]. Default: 2."
   type: double
   inputBinding:
     prefix: --max-reads-factor
-- id: stop_initial_read_count
-  doc: 'If there are more than this number of reads for a site in the initial round
-    then no assembly is performed. In range [0..inf]. Default: 4000.'
+- id: in_stop_initial_read_count
+  doc: "If there are more than this number of reads for a site in the\ninitial round\
+    \ then no assembly is performed. In range [0..inf].\nDefault: 4000."
   type: long
   inputBinding:
     prefix: --stop-initial-read-count
-- id: stop_tex_read_count
-  doc: 'If there are more than this number of reads for a site in a later round then
-    no triplet library extension is performed. In range [0..inf]. Default: 3000.'
+- id: in_stop_tex_read_count
+  doc: "If there are more than this number of reads for a site in a later\nround then\
+    \ no triplet library extension is performed. In range\n[0..inf]. Default: 3000."
   type: long
   inputBinding:
     prefix: --stop-tex-read-count
-- id: stop_read_count
-  doc: 'If there are more than this number of reads for a site in a later round then
-    no assembly is performed. In range [0..inf]. Default: 30000.'
+- id: in_stop_read_count
+  doc: "If there are more than this number of reads for a site in a later\nround then\
+    \ no assembly is performed. In range [0..inf]. Default:\n30000."
   type: long
   inputBinding:
     prefix: --stop-read-count
-- id: stop_coverage
-  doc: 'If the length sum of all reads for a site divided by the length sum of its
-    contigs is higher than this value before assembly then the site is deactivated.
-    Set to 0 to deactivate check. In range [0..inf]. Default: 100.'
+- id: in_stop_coverage
+  doc: "If the length sum of all reads for a site divided by the length sum\nof its\
+    \ contigs is higher than this value before assembly then the\nsite is deactivated.\
+    \ Set to 0 to deactivate check. In range\n[0..inf]. Default: 100."
   type: long
   inputBinding:
     prefix: --stop-coverage
-- id: realignment_bandwidth
-  doc: 'The bandwidth to use in the realignment step. In range [0..inf]. Default:
-    40.'
+- id: in_realignment_bandwidth
+  doc: "The bandwidth to use in the realignment step. In range [0..inf].\nDefault:\
+    \ 40."
   type: long
   inputBinding:
     prefix: --realignment-bandwidth
-- id: realignment_border
-  doc: 'The border from the profile to extract around alignments. In range [0..inf].
-    Default: 30.'
+- id: in_realignment_border
+  doc: "The border from the profile to extract around alignments. In range\n[0..inf].\
+    \ Default: 30."
   type: long
   inputBinding:
     prefix: --realignment-border
-- id: no_separate_repeats
+- id: in_no_separate_repeats
   doc: Dont' repeat separation algorithm after realignment.
   type: boolean
   inputBinding:
     prefix: --no-separate-repeats
-- id: rep_sep_tammi_method
-  doc: 'Variant of the Tammi method to use for repeat separation (simple or phred).
-    One of phred and simple. Default: simple.'
+- id: in_rep_sep_tammi_method
+  doc: "Variant of the Tammi method to use for repeat separation (simple or\nphred).\
+    \ One of phred and simple. Default: simple."
   type: string
   inputBinding:
     prefix: --repsep-tammi-method
-- id: rep_sep_p_err
-  doc: 'Repeat separation per-base error for simple Tammi method. In range [0.0..1.0].
-    Default: 0.01.'
+- id: in_rep_sep_p_err
+  doc: "Repeat separation per-base error for simple Tammi method. In range\n[0.0..1.0].\
+    \ Default: 0.01."
   type: double
   inputBinding:
     prefix: --repsep-p-err
-- id: rep_sep_max_random_correlation
-  doc: 'Repeat separation maximal random correlation. In range [0.0..1.0]. Default:
-    0.00001.'
+- id: in_rep_sep_max_random_correlation
+  doc: "Repeat separation maximal random correlation. In range [0.0..1.0].\nDefault:\
+    \ 0.00001."
   type: double
   inputBinding:
     prefix: --repsep-max-random-correlation
-- id: rep_sep_tau_min
+- id: in_rep_sep_tau_min
   doc: 'Repeat separation tau_min value. In range [0..inf]. Default: 100000.'
   type: long
   inputBinding:
     prefix: --repsep-tau-min
-- id: rep_sep_r_min
+- id: in_rep_sep_r_min
   doc: 'Repeat separation r_min value. In range [0..inf]. Default: 100000.'
   type: long
   inputBinding:
     prefix: --repsep-r-min
-- id: rep_sep_min_overlap
-  doc: 'Repeat separation minimal overlap value. In range [0..inf]. Default: 2.'
+- id: in_rep_sep_min_overlap
+  doc: "Repeat separation minimal overlap value. In range [0..inf]. Default:\n2."
   type: long
   inputBinding:
     prefix: --repsep-min-overlap
-- id: rep_sep_start_compression_at
-  doc: 'Repeat separation start compression. In range [2..inf]. Default: 100.'
+- id: in_rep_sep_start_compression_at
+  doc: "Repeat separation start compression. In range [2..inf]. Default:\n100."
   type: long
   inputBinding:
     prefix: --repsep-start-compression-at
-- id: rep_sep_split_d_min
+- id: in_rep_sep_split_d_min
   doc: Repeat separation split at d_min deviations.
   type: boolean
   inputBinding:
     prefix: --repsep-split-d-min
-- id: fragment_size_factor
-  doc: 'Factor to multiple fragment size stddev with to get allowed error. In range
-    [0..inf]. Default: 8.'
-  type: string
+- id: in_fragment_size_factor
+  doc: "Factor to multiple fragment size stddev with to get allowed error.\nIn range\
+    \ [0..inf]. Default: 8."
+  type: long
   inputBinding:
     prefix: --fragment-size-factor
-- id: auto_library_num_records
-  doc: 'Number of records to use for automatic library evaluation. Set to 0 to evaluate
-    all. In range [0..inf]. Default: 100000.'
-  type: string
+- id: in_auto_library_num_records
+  doc: "Number of records to use for automatic library evaluation. Set to 0\nto evaluate\
+    \ all. In range [0..inf]. Default: 100000."
+  type: long
   inputBinding:
     prefix: --auto-library-num-records
-- id: fragment_size_median
+- id: in_fragment_size_median
   doc: 'Median fragment size. In range [0..inf]. Default: 250.'
   type: long
   inputBinding:
     prefix: --fragment-size-median
-- id: fragment_size_std_dev
+- id: in_fragment_size_std_dev
   doc: 'Fragment size standard deviation. In range [0..inf]. Default: 30.'
-  type: string
+  type: long
   inputBinding:
     prefix: --fragment-size-std-dev
-- id: fragment_default_orientation
+- id: in_fragment_default_orientation
   doc: 'Default orientation. One of F+, F-, R+, and R-. Default: R+.'
   type: string
   inputBinding:
     prefix: --fragment-default-orientation
-- id: assembly_site_window_radius
-  doc: 'Radius around insert site to cut for initial contigs. In range [100..inf].
-    Default: 1000.'
+- id: in_assembly_site_window_radius
+  doc: "Radius around insert site to cut for initial contigs. In range\n[100..inf].\
+    \ Default: 1000."
   type: long
   inputBinding:
     prefix: --assembly-site-window-radius
-- id: assembly_site_fringe_radius
-  doc: 'Radius around insert site to cut for collecting clippings. Set to -1 (default)
-    to consider all records with >= 15 clipped bases. In range [-1..inf]. Default:
-    -1.'
+- id: in_assembly_site_fringe_radius
+  doc: "Radius around insert site to cut for collecting clippings. Set to -1\n(default)\
+    \ to consider all records with >= 15 clipped bases. In range\n[-1..inf]. Default:\
+    \ -1."
   type: long
   inputBinding:
     prefix: --assembly-site-fringe-radius
-- id: read_mapping_error_rate
-  doc: 'Error rate of internal read mapping step in percent. In range [0..20]. Default:
-    5.'
-  type: string
+- id: in_read_mapping_error_rate
+  doc: "Error rate of internal read mapping step in percent. In range\n[0..20]. Default:\
+    \ 5."
+  type: double
   inputBinding:
     prefix: --read-mapping-error-rate
-- id: read_mapping_batch_size
+- id: in_read_mapping_batch_size
   doc: 'Batch size for read mapping. In range [1..inf]. Default: 10000.'
   type: long
   inputBinding:
     prefix: --read-mapping-batch-size
-- id: overlap_per_min_overlap_ratio
-  doc: 'Overlapper min overlap rate in percent of the longer read. In range [0..inf].
-    Default: 40.'
-  type: string
+- id: in_overlap_per_min_overlap_ratio
+  doc: "Overlapper min overlap rate in percent of the longer read. In range\n[0..inf].\
+    \ Default: 40."
+  type: long
   inputBinding:
     prefix: --overlapper-min-overlap-ratio
-- id: overlap_per_max_error_rate
-  doc: 'Overlapper maximum error rate in percent. In range [0..30]. Default: 5.'
+- id: in_overlap_per_max_error_rate
+  doc: "Overlapper maximum error rate in percent. In range [0..30]. Default:\n5."
   type: long
   inputBinding:
     prefix: --overlapper-max-error-rate
-- id: no_read_correction
+- id: in_no_read_correction
   doc: Whether or not to perform read correction
   type: boolean
   inputBinding:
     prefix: --no-read-correction
-- id: msa_score_match
+- id: in_msa_score_match
   doc: 'PW match score in MSA. Default: 2.'
   type: long
   inputBinding:
     prefix: --msa-score-match
-- id: msa_score_mismatch
+- id: in_msa_score_mismatch
   doc: 'PW mismatch score in MSA. Default: -6.'
   type: long
   inputBinding:
     prefix: --msa-score-mismatch
-- id: msa_score_gap_open
+- id: in_msa_score_gap_open
   doc: 'PW gap open score in MSA. Default: -4.'
   type: long
   inputBinding:
     prefix: --msa-score-gap-open
-- id: msa_score_gap_extend
+- id: in_msa_score_gap_extend
   doc: 'PW gap extension score in MSA. Default: -9.'
   type: long
   inputBinding:
     prefix: --msa-score-gap-extend
-- id: consensus_min_base_support
-  doc: 'Minimal base support for non-N call in consensus calling. Default: 2.'
+- id: in_consensus_min_base_support
+  doc: "Minimal base support for non-N call in consensus calling. Default:\n2."
   type: long
   inputBinding:
     prefix: --consensus-min-base-support
-- id: consensus_min_contig_length_rate
-  doc: 'Minimal contig length in percent of average read length. Default: 150.'
-  type: string
+- id: in_consensus_min_contig_length_rate
+  doc: "Minimal contig length in percent of average read length. Default:\n150."
+  type: long
   inputBinding:
     prefix: --consensus-min-contig-length-rate
-outputs: []
+- id: in_repeat_dot
+  doc: AUTO TUNING
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_mapping
+  doc: "Output SAM/BAM file with mapping fo reads to contigs in\n--output-fasta. Valid\
+    \ filetypes are: sam and bam."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_mapping)
+- id: out_output_debug_dir
+  doc: Directory for debug output. Leave empty for no such output.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_debug_dir)
 cwlVersion: v1.1
 baseCommand:
 - anise

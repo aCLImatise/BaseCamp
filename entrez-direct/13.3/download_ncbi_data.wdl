@@ -1,7 +1,10 @@
 version 1.0
 
-task DownloadNcbiData {
+task Downloadncbidata {
   command <<<
-    download-ncbi-data
+    download_ncbi_data
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

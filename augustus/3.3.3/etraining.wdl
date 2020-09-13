@@ -14,4 +14,7 @@ task Etraining {
     species: ""
     train_filename: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -21,6 +21,9 @@ task PpaniniBarplot {
     p_panini_output: "PPANINI output table"
     summary_table: "Summary table"
     scale: "Scale: abundance or counts [default: abundance]"
-    output_plot: "output plot)"
+    output_plot: "output plot)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

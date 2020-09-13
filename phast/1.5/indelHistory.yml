@@ -1,29 +1,34 @@
 !Command
+command:
+- indelHistory
 positional:
 - !Positional
-  description: ''
+  description: The specified alignment may either contain sequences
   position: 0
-  name: alignment.fa
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: tree.mod
+  name: format.
   optional: false
 named:
 - !Flag
-  description: Instead of a summary of indels only, output an alignment in FASTA format
-    of sequences for all ancestral and leaf nodes.
+  description: "|MAF|SS|....\nRead alignment in specified file format (default FASTA)."
+  synonyms:
+  - --msa-format
+  - -i
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "Instead of a summary of indels only, output an alignment in FASTA\n\
+    format of sequences for all ancestral and leaf nodes."
   synonyms:
   - --output-alignment
   - -A
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Read an indel history directly from the specified file.  Useful for
-    debugging.  The alignment and tree arguments are not required; however in an alignment
-    is given with --read-history and --output-alignment, then actual bases can be
-    output for leaf species.
+  description: "Read an indel history directly from the specified file.  Useful for\n\
+    debugging.  The alignment and tree arguments are not required;\nhowever in an\
+    \ alignment is given with --read-history and\n--output-alignment, then actual\
+    \ bases can be output for leaf\nspecies."
   synonyms:
   - --read-history
   - -H
@@ -31,20 +36,20 @@ named:
     name: fname
   optional: true
 - !Flag
-  description: Assume ancestral sequences in alignment.fa are named according to the
-    convention used by Mathieu Blanchette's inferAncestors program, e.g., "RAT+MOUSE+RABBIT+"
-    for the last common ancestor of "rat", "mouse", and "rabbit".
+  description: "Assume ancestral sequences in alignment.fa are named according to\n\
+    the convention used by Mathieu Blanchette's inferAncestors program,\ne.g., \"\
+    RAT+MOUSE+RABBIT+\" for the last common ancestor of \"rat\",\n\"mouse\", and \"\
+    rabbit\"."
   synonyms:
   - --ia-names
   - -I
   args: !EmptyFlagArg {}
   optional: true
-command:
-- indelHistory
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: Display this help message.
+  description: "Display this help message.\n"
   synonyms:
   - --help
   - -h

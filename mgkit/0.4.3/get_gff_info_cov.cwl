@@ -1,42 +1,50 @@
 class: CommandLineTool
 id: ../../../get_gff_info_cov.cwl
 inputs:
-- id: reference
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_reference
   doc: Reference FASTA file for the GFF  [required]
   type: File
   inputBinding:
     prefix: --reference
-- id: json_out
+- id: in_json_out
   doc: The output will be a JSON dictionary
   type: boolean
   inputBinding:
     prefix: --json-out
-- id: strand_specific
+- id: in_strand_specific
   doc: If the coverage must be calculated on each strand
   type: boolean
   inputBinding:
     prefix: --strand-specific
-- id: rename
-  doc: Emulate BLAST output (use only the header part before the first space)
+- id: in_rename
+  doc: "Emulate BLAST output (use only the header part\nbefore the first space)"
   type: boolean
   inputBinding:
     prefix: --rename
-- id: progress
+- id: in_progress
   doc: Shows Progress Bar
   type: boolean
   inputBinding:
     prefix: --progress
-- id: gff_file
+- id: in_gff_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - get-gff-info

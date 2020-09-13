@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../ctg2umdcontig.cwl
 inputs:
-- id: file_dot_ctg
+- id: in_file_dot_ctg
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: file_dot_id_map
+- id: in_file_dot_id_map
   doc: ''
   type: File
   inputBinding:
     position: 1
-- id: tigr
+- id: in_tigr
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ctg2umdcontig

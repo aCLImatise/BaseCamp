@@ -1,18 +1,21 @@
 class: CommandLineTool
-id: ../../../fasta2stab.pl.bak.cwl
+id: ../../../fasta2stab.pl.cwl
 inputs:
-- id: extract_only_num
-  doc: ': Extract only line <num> of the fasta from each sequence (useful for parsing
-    alignments given in fasta)'
-  type: string
+- id: in_extract_only_line
+  doc: ": Extract only line <num> of the fasta from each sequence\n(useful for parsing\
+    \ alignments given in fasta)"
+  type: long
   inputBinding:
     prefix: -l
-- id: ignore_n
+- id: in_ignore_n
   doc: ':  Do not print sequences that contain N.'
   type: boolean
   inputBinding:
     prefix: -ignore_N
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- fasta2stab.pl.bak
+- fasta2stab.pl

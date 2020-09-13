@@ -4,4 +4,7 @@ task Funannotate {
   command <<<
     funannotate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

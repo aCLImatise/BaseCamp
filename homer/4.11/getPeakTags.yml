@@ -1,4 +1,6 @@
 !Command
+command:
+- getPeakTags
 positional:
 - !Positional
   description: ''
@@ -33,33 +35,64 @@ named:
   optional: true
 - !Flag
   description: (Count tags relative to actual peak start and stop - parameters -start
-    and -end will extend from start and end of peaks, not reference position)
+    and
   synonyms:
   - -fixed
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "(DEFAULT, Will output total/ratio tag counts to stdout) -strand <both|+|->\
-    \ (Strand [relative to peak] to count tags from, default:both) -tagAdjust <#>\
-    \ (bp to shift tag positions to estimate fragment centers, default: 0) '-tagAdjust\
-    \ auto' uses half of the estimated tag fragment length -tbp <#> (Maximum tags\
-    \ per bp to count, 0 = no limit, default: 0) -ratio (report tags per bp) -nfr\
-    \ (Return nucleosome free region score over the peak center) -nfrSize <#> (nucleosome\
-    \ free region size, default 100)"
+  description: (DEFAULT, Will output total/ratio tag counts to stdout)
   synonyms:
   - -count
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '(output locations of tags relative to peak reference position to stdout)
-    Columns: 1:peakname,2:tags separated by ","'
+  description: <both|+|-> (Strand [relative to peak] to count tags from, default:both)
+  synonyms:
+  - -strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<#> (bp to shift tag positions to estimate fragment centers, default:\
+    \ 0)\n'-tagAdjust auto' uses half of the estimated tag fragment length"
+  synonyms:
+  - -tagAdjust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Maximum tags per bp to count, 0 = no limit, default: 0)'
+  synonyms:
+  - -tbp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (report tags per bp)
+  synonyms:
+  - -ratio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Return nucleosome free region score over the peak center)
+  synonyms:
+  - -nfr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (nucleosome free region size, default 100)
+  synonyms:
+  - -nfrSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(output locations of tags relative to peak reference position to stdout)\n\
+    Columns: 1:peakname,2:tags separated by \",\""
   synonyms:
   - -peaktags
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '(output genomic locations of tags i.e. tags.tsv file to stdout) Columns:
-    1:none,2:chr,3:position,4:strand,5:value,6:length/-1'
+  description: "(output genomic locations of tags i.e. tags.tsv file to stdout)\n\
+    Columns: 1:none,2:chr,3:position,4:strand,5:value,6:length/-1"
   synonyms:
   - -tags
   args: !EmptyFlagArg {}
@@ -71,11 +104,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '(Center peaks on summit of peak) -nfr (Center on nucleosome free region
-    instead of maximum tag pile-up) -nfrSize <#> (nucleosome free region size, default
-    100) -fragLength <#> (sequencing fragment length estimate, default: auto)'
+  description: (Center peaks on summit of peak)
   synonyms:
   - -center
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (sequencing fragment length estimate, default: auto)'
+  synonyms:
+  - -fragLength
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -85,15 +122,42 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: '[name 2] ... (only report genotypes for these column headers)'
+  synonyms:
+  - -individuals
+  args: !SimpleFlagArg
+    name: name 1
+  optional: true
+- !Flag
+  description: "(By default, only SNPs with non-reference alleles in at least on individual\
+    \ are\nreported, \"-all\" will report all SNPs regardless of genotype)"
+  synonyms:
+  - -all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: (will individual SNPs and genotypes associated with each peak)
   synonyms:
   - -peaksnps
   args: !EmptyFlagArg {}
   optional: true
-command:
-- getPeakTags
+- !Flag
+  description: ''
+  synonyms:
+  - -vcf
+  args: !SimpleFlagArg
+    name: vcf file
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -wig
+  args: !SimpleFlagArg
+    name: wiggle file
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

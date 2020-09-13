@@ -4,4 +4,7 @@ task AmrReport {
   command <<<
     amr_report
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

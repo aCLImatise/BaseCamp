@@ -4,4 +4,7 @@ task Curlywhirly {
   command <<<
     curlywhirly
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

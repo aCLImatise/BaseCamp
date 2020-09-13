@@ -4,4 +4,7 @@ task HeadPolishes {
   command <<<
     headPolishes
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

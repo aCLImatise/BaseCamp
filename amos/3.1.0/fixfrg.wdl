@@ -4,4 +4,7 @@ task Fixfrg {
   command <<<
     fixfrg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

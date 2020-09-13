@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../faTrans.cwl
 inputs:
-- id: stop
+- id: in_stop
   doc: at first stop codon (otherwise puts in Z for stop codons)
   type: string
   inputBinding:
     prefix: -stop
-- id: offset
+- id: in_offset
   doc: start at a particular offset.
   type: string
   inputBinding:
     prefix: -offset
-- id: cds_upper
+- id: in_cds_upper
   doc: '- cds is in upper case'
   type: boolean
   inputBinding:
     prefix: -cdsUpper
-- id: in_dot_fa
+- id: in_in_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_dot_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - faTrans

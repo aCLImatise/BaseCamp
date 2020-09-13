@@ -1,7 +1,10 @@
 version 1.0
 
-task FormatXml.pl.bak {
+task FormatXmlpl {
   command <<<
-    format_xml.pl.bak
+    format_xml_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

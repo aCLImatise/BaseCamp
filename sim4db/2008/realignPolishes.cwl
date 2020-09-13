@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../realignPolishes.cwl
 inputs:
-- id: actually_work_just
+- id: in_actually_work_just
   doc: ": Don't actually do the work, just count the statistics"
   type: boolean
   inputBinding:
     prefix: -q
-- id: merge
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -merge
-- id: m
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -M
-- id: e
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -e
-- id: g
+- id: in_g
   doc: ''
   type: string
   inputBinding:
     prefix: -g
-- id: polishes
+- id: in_e
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -e
+- id: in_m
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -M
+- id: in_merge
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -merge
+- id: in_polishes
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: somewhere
+- id: in_somewhere
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - realignPolishes

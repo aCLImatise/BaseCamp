@@ -2,13 +2,13 @@ version 1.0
 
 task SimpleGraph {
   input {
-    String? km_er
-    String? n_pairs
-    String? seed_length
-    String? dist_error
-    String? max_cost
+    Int? km_er
+    Int? n_pairs
+    Int? seed_length
+    Int? dist_error
+    Int? max_cost
     File? out
-    String? threads
+    Int? threads
     Boolean? extend
     Boolean? no_extend
     Boolean? scaffold
@@ -32,11 +32,11 @@ task SimpleGraph {
       ~{if defined(max_cost) then ("--max-cost " +  '"' + max_cost + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--extend" false="" extend} \
-      ~{true="--no-extend" false="" no_extend} \
-      ~{true="--scaffold" false="" scaffold} \
-      ~{true="--no-scaffold" false="" no_scaffold} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (extend) then "--extend" else ""} \
+      ~{if (no_extend) then "--no-extend" else ""} \
+      ~{if (scaffold) then "--scaffold" else ""} \
+      ~{if (no_scaffold) then "--no-scaffold" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
@@ -46,7 +46,7 @@ task SimpleGraph {
     km_er: "k-mer size"
     n_pairs: "minimum number of pairs [0]"
     seed_length: "minimum seed contig length [0]"
-    dist_error: "acceptable error of a distance estimate default is 6 bp"
+    dist_error: "acceptable error of a distance estimate\\ndefault is 6 bp"
     max_cost: "maximum computational cost"
     out: "write result to FILE"
     threads: "use THREADS parallel threads [1]"
@@ -61,5 +61,8 @@ task SimpleGraph {
     species: "specify species NAME for sqlite"
     adj: "adjacency of the contigs"
     dist: "distance estimates between the contigs"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

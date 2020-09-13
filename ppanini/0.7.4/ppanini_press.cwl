@@ -1,38 +1,41 @@
 class: CommandLineTool
 id: ../../../ppanini_press.cwl
 inputs:
-- id: gene_path
+- id: in_gene_path
   doc: a directory path to ppanini_gene_caller outputs which includes txt, gff, and
     faa files for each sample.
-  type: string
+  type: File
   inputBinding:
     prefix: --gene-path
-- id: output
+- id: in_output
   doc: Path for outputs
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: resume
+- id: in_resume
   doc: bypass commands if the output files exist
   type: boolean
   inputBinding:
     prefix: --resume
-- id: threads
-  doc: 'number of threads/processes [DEFAULT: 1]'
-  type: string
+- id: in_threads
+  doc: "number of threads/processes\n[DEFAULT: 1]"
+  type: long
   inputBinding:
     prefix: --threads
-- id: scale
+- id: in_scale
   doc: scale the abundance table
   type: string
   inputBinding:
     prefix: --scale
-- id: memory
-  doc: 'memory for -M option in CD-Hit '
+- id: in_memory
+  doc: "memory for -M option in CD-Hit\n"
   type: string
   inputBinding:
     prefix: --memory
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ppanini_press

@@ -23,4 +23,7 @@ task TripailleJobAddJob {
     callback: ""
     arguments: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

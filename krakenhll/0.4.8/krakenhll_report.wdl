@@ -1,6 +1,6 @@
 version 1.0
 
-task KrakenhllReport {
+task Krakenhllreport {
   input {
     Boolean? show_zeros
     Boolean? tax_on_counts
@@ -8,10 +8,10 @@ task KrakenhllReport {
     String? db
   }
   command <<<
-    krakenhll-report \
-      ~{true="--show-zeros" false="" show_zeros} \
-      ~{true="--taxon-counts" false="" tax_on_counts} \
-      ~{true="--taxon-list" false="" tax_on_list} \
+    krakenhll_report \
+      ~{if (show_zeros) then "--show-zeros" else ""} \
+      ~{if (tax_on_counts) then "--taxon-counts" else ""} \
+      ~{if (tax_on_list) then "--taxon-list" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
   parameter_meta {
@@ -19,5 +19,8 @@ task KrakenhllReport {
     tax_on_counts: "Input files are in the format '<taxon ID><tab><count>' instead of Kraken output."
     tax_on_list: "Input files is list of taxon IDs instead of Kraken output."
     db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

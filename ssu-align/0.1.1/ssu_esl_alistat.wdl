@@ -1,14 +1,14 @@
 version 1.0
 
-task SsuEslAlistat {
+task Ssueslalistat {
   input {
     Boolean? use_tabular_output
-    String? in_format
+    File? in_format
     Boolean? amino
     Boolean? dna
     Boolean? rna
     Boolean? small
-    String? list
+    File? list
     String? ic_info
     String? r_info
     String? pc_info
@@ -17,14 +17,14 @@ task SsuEslAlistat {
     String msa_file
   }
   command <<<
-    ssu-esl-alistat \
+    ssu_esl_alistat \
       ~{msa_file} \
-      ~{true="-1" false="" use_tabular_output} \
+      ~{if (use_tabular_output) then "-1" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--small" false="" small} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (small) then "--small" else ""} \
       ~{if defined(list) then ("--list " +  '"' + list + '"') else ""} \
       ~{if defined(ic_info) then ("--icinfo " +  '"' + ic_info + '"') else ""} \
       ~{if defined(r_info) then ("--rinfo " +  '"' + r_info + '"') else ""} \
@@ -46,5 +46,9 @@ task SsuEslAlistat {
     ps_info: ": print per-sequence posterior probability info to <f>"
     i_info: ": print info on # of insertions b/t all non-gap RF cols to <f>"
     msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_list = "${in_list}"
   }
 }

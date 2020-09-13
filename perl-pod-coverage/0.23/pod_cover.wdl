@@ -4,4 +4,7 @@ task PodCover {
   command <<<
     pod_cover
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

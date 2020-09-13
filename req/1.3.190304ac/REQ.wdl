@@ -12,12 +12,15 @@ task REQ {
       ~{d_file} \
       ~{t_file} \
       ~{outfile} \
-      ~{true="-v" false="" verbose_mode}
+      ~{if (verbose_mode) then "-v" else ""}
   >>>
   parameter_meta {
     verbose_mode: "verbose mode"
     d_file: ""
     t_file: ""
     outfile: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

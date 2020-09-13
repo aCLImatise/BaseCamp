@@ -1,20 +1,109 @@
 !Command
+command:
+- unstarch-megarow
 positional:
 - !Positional
-  description: ''
+  description: '--------------------------------------------------------------------------'
   position: 0
-  name: unstarch
+  name: Modifiers
   optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: chromosome
-  optional: true
 named:
 - !Flag
-  description: List all or specified chromosome in starch archive (like "bedextract
-    --list- chr"). If <chromosome> is specified but is not in the output list, nothing
-    is returned.
+  description: '| --bases-uniq |'
+  synonyms:
+  - --elements-max-string-length
+  - --bases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --has-nested | --list |'
+  synonyms:
+  - --has-duplicates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --list-chromosomes |'
+  synonyms:
+  - --list-json
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --note |'
+  synonyms:
+  - --archive-timestamp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --is-starch |'
+  synonyms:
+  - --archive-version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --verify-signature ]'
+  synonyms:
+  - --signature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Show total element count for archive. If\n<chromosome> is specified,\
+    \ the result\nshows the element count for the\nchromosome."
+  synonyms:
+  - --elements
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Show total and unique base counts,\nrespectively, for archive. If\n\
+    <chromosome> is specified, the count is\nspecific to the chromosome, if available."
+  synonyms:
+  - --bases
+  - --bases-uniq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Show whether there is one or more\nduplicate elements in the specified\n\
+    chromosome, either as a numerical (1/0)\nor string (true/false) value. If no\n\
+    <chromosome> is specified, the value\ngiven indicates if there is one or more\n\
+    duplicate elements across all chromosome\nrecords."
+  synonyms:
+  - --has-duplicate-as-string
+  - --has-duplicate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Show whether there is one ore more nested\nelements in the specified\
+    \ chromosome,\neither as a numerical (1/0) or string\n(true/false) value. If no\
+    \ <chromosome> is\nspecified, the value given indicates if\nthere is one or more\
+    \ nested elements\nacross all chromosome records."
+  synonyms:
+  - --has-nested-as-string
+  - --has-nested
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "List archive metadata (output is in text\nformat). If chromosome is\
+    \ specified, the\nattributes of the given chromosome are\nshown."
+  synonyms:
+  - --list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "List archive metadata (output is in JSON\nformat)"
+  synonyms:
+  - --list-json
+  - --list-json-no-trailing-newline
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ','
+  synonyms:
+  - --list-chr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "List all or specified chromosome in\nstarch archive (like \"bedextract\
+    \ --list-\nchr\"). If <chromosome> is specified but\nis not in the output list,\
+    \ nothing is\nreturned."
   synonyms:
   - --list-chromosomes
   args: !EmptyFlagArg {}
@@ -26,24 +115,10 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Display the Base64-encoded SHA-1 data integrity signature for specified
-    <chromosome>, or the signatures of the metadata and all available chromosomes,
-    if the <chromosome> is unspecified.
-  synonyms:
-  - --signature
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Verify data integrity of specified <chromosome>, or the integrity of
-    all available chromosomes, if the <chromosome> is unspecified.
+  description: "Verify data integrity of specified\n<chromosome>, or the integrity\
+    \ of all\navailable chromosomes, if the\n<chromosome> is unspecified."
   synonyms:
   - --verify-signature
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Show archive creation timestamp (ISO 8601 format).
-  synonyms:
-  - --archive-timestamp
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -53,23 +128,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Show archive version.
-  synonyms:
-  - --archive-version
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Test if <starch-file> is a valid archive and print 0/1 (false/true)
-    to standard output. Unstarch will also return a non- zero error code if the input
-    file is not a valid archive.
+  description: "Test if <starch-file> is a valid archive\nand print 0/1 (false/true)\
+    \ to standard\noutput. Unstarch will also return a non-\nzero error code if the\
+    \ input file is not\na valid archive."
   synonyms:
   - --is-starch
   args: !EmptyFlagArg {}
   optional: true
-command:
-- unstarch-megarow
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this usage message.
   synonyms:

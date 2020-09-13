@@ -1,6 +1,6 @@
 version 1.0
 
-task CentrifugeBuild {
+task Centrifugebuild {
   input {
     Boolean? reference_sequences_given
     Boolean? a_slash_no_auto
@@ -25,31 +25,31 @@ task CentrifugeBuild {
     String centrifuge_index_base
   }
   command <<<
-    centrifuge-build \
+    centrifuge_build \
       ~{reference_in} \
       ~{centrifuge_index_base} \
-      ~{true="-c" false="" reference_sequences_given} \
-      ~{true="-a/--noauto" false="" a_slash_no_auto} \
+      ~{if (reference_sequences_given) then "-c" else ""} \
+      ~{if (a_slash_no_auto) then "-a/--noauto" else ""} \
       ~{if defined(bmax) then ("--bmax " +  '"' + bmax + '"') else ""} \
       ~{if defined(bmax_divn) then ("--bmaxdivn " +  '"' + bmax_divn + '"') else ""} \
       ~{if defined(dcv) then ("--dcv " +  '"' + dcv + '"') else ""} \
-      ~{true="--nodc" false="" no_dc} \
-      ~{true="-r/--noref" false="" r_slash_no_ref} \
-      ~{true="-3/--justref" false="" three_slash_just_ref} \
+      ~{if (no_dc) then "--nodc" else ""} \
+      ~{if (r_slash_no_ref) then "-r/--noref" else ""} \
+      ~{if (three_slash_just_ref) then "-3/--justref" else ""} \
       ~{if defined(oslash_off_rate) then ("-o/--offrate " +  '"' + oslash_off_rate + '"') else ""} \
       ~{if defined(t_slash_f_tab_chars) then ("-t/--ftabchars " +  '"' + t_slash_f_tab_chars + '"') else ""} \
       ~{if defined(conversion_table) then ("--conversion-table " +  '"' + conversion_table + '"') else ""} \
-      ~{true="--taxonomy-tree" false="" taxonomy_tree} \
-      ~{true="--name-table" false="" name_table} \
-      ~{true="--size-table" false="" size_table} \
+      ~{if (taxonomy_tree) then "--taxonomy-tree" else ""} \
+      ~{if (name_table) then "--name-table" else ""} \
+      ~{if (size_table) then "--size-table" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-q/--quiet" false="" q_slash_quiet} \
+      ~{if (q_slash_quiet) then "-q/--quiet" else ""} \
       ~{if defined(p_slash_threads) then ("-p/--threads " +  '"' + p_slash_threads + '"') else ""} \
       ~{if defined(km_er_count) then ("--kmer-count " +  '"' + km_er_count + '"') else ""} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
-    reference_sequences_given: "reference sequences given on cmd line (as <reference_in>)"
+    reference_sequences_given: "reference sequences given on cmd line (as\\n<reference_in>)"
     a_slash_no_auto: "disable automatic -p/--bmax/--dcv memory-fitting"
     bmax: "max bucket sz for blockwise suffix-array builder"
     bmax_divn: "max bucket sz as divisor of ref len (default: 4)"
@@ -70,5 +70,8 @@ task CentrifugeBuild {
     h_slash_help: "print detailed description of tool and its options"
     reference_in: "comma-separated list of files with ref sequences"
     centrifuge_index_base: "write cf data to files with this dir/basename"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

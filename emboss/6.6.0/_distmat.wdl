@@ -1,7 +1,17 @@
 version 1.0
 
-task _distmat {
+task Distmat {
+  input {
+    File file
+  }
   command <<<
-    _distmat
+    _distmat \
+      ~{file}
   >>>
+  parameter_meta {
+    file: "Additional (Optional) qualifiers (* if not always prompted):"
+  }
+  output {
+    File out_stdout = stdout()
+  }
 }

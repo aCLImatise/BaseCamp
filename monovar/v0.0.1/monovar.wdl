@@ -4,4 +4,7 @@ task Monovar {
   command <<<
     monovar
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -14,4 +14,7 @@ task SequanaFastqSummary {
     pattern: "input fastq gzipped or not"
     se_quan_a_fast_q_count: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,56 +1,117 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: Only
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: for
-  optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: VCF
-  optional: false
-- !Positional
-  description: ''
-  position: 3
-  name: using
-  optional: false
-- !Positional
-  description: ''
-  position: 4
-  name: mpileup
-  optional: false
-- !Positional
-  description: ''
-  position: 5
-  name: version
-  optional: false
-- !Positional
-  description: ''
-  position: 6
-  name: '4.1'
-  optional: false
-- !Positional
-  description: ''
-  position: 7
-  name: for
-  optional: false
-- !Positional
-  description: ''
-  position: 8
-  name: now
-  optional: false
-named: []
 command:
 - sequana_vcf_filter
+positional:
+- !Positional
+  description: 'DP>30&<60  # to keep only values in the range [30-60]'
+  position: 0
+  name: or
+  optional: false
+named:
+- !Flag
+  description: 'input fastq gzipped or not (default: None)'
+  synonyms:
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: 'filter sites below this quality (default: -1)'
+  synonyms:
+  - --quality
+  args: !SimpleFlagArg
+    name: QUALITY
+  optional: true
+- !Flag
+  description: 'remove INDELs (default: False)'
+  synonyms:
+  - --apply-indel-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "apply DP4 filters. see online doc, vcf_filter section\n(default: False)"
+  synonyms:
+  - --apply-dp4-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "apply AF1 filters. see online doc, vcf_filter section\n(default: False)"
+  synonyms:
+  - --apply-af1-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'default to 0.95 (default: 0.95)'
+  synonyms:
+  - --minimum-af1
+  args: !SimpleFlagArg
+    name: MINIMUM_AF1
+  optional: true
+- !Flag
+  description: 'default to 0.75 (default: 0.75)'
+  synonyms:
+  - --minimum-ratio
+  args: !SimpleFlagArg
+    name: MINIMUM_RATIO
+  optional: true
+- !Flag
+  description: 'default to 4 (default: 4)'
+  synonyms:
+  - --minimum-depth
+  args: !SimpleFlagArg
+    name: MINIMUM_DEPTH
+  optional: true
+- !Flag
+  description: 'default to 2 (default: 2)'
+  synonyms:
+  - --minimum_depth-strand
+  args: !SimpleFlagArg
+    name: MINIMUM_DEPTH_STRAND
+  optional: true
+- !Flag
+  description: "Provide as many filters as you want. See example above\n(default:\
+    \ [])"
+  synonyms:
+  - --filter
+  args: !SimpleFlagArg
+    name: FILTER
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --output-filtered
+  args: !SimpleFlagArg
+    name: OUTPUT_FILTERED_FILENAME
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --level
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? ERROR
+      ? INFO
+      ? DEBUG
+      ? WARNING
+      ? CRITICAL
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag: !Flag
   description: 'print version (default: False)'

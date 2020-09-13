@@ -1,6 +1,6 @@
 version 1.0
 
-task KinamineYShaker {
+task KinamineYshaker {
   input {
     String? jar
     String java
@@ -10,7 +10,7 @@ task KinamineYShaker {
     String fdr
   }
   command <<<
-    KinamineY-shaker \
+    KinamineY_shaker \
       ~{java} \
       ~{protein_pilot_distinct_peptide_summary} \
       ~{fast_a} \
@@ -25,5 +25,8 @@ task KinamineYShaker {
     fast_a: ""
     output_dir: ""
     fdr: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

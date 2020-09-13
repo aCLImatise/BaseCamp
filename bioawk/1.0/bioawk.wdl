@@ -11,4 +11,7 @@ task Bioawk {
   parameter_meta {
     f: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

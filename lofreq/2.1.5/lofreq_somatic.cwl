@@ -1,121 +1,124 @@
 class: CommandLineTool
 id: ../../../lofreq_somatic.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: Be verbose
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: normal
+- id: in_normal
   doc: Normal BAM file
-  type: string
+  type: File
   inputBinding:
     prefix: --normal
-- id: tumor
+- id: in_tumor
   doc: Tumor BAM file
-  type: string
+  type: File
   inputBinding:
     prefix: --tumor
-- id: out_prefix
+- id: in_out_prefix
   doc: Prefix for output files
   type: string
   inputBinding:
     prefix: --outprefix
-- id: ref
+- id: in_ref
   doc: Reference fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --ref
-- id: bed
+- id: in_bed
   doc: BED file listing regions to restrict analysis to
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: dbsnp
-  doc: vcf-file (bgzipped and index with tabix) containing known germline variants
-    (e.g. dbsnp for human
-  type: string
+- id: in_dbsnp
+  doc: "vcf-file (bgzipped and index with tabix) containing\nknown germline variants\
+    \ (e.g. dbsnp for human"
+  type: File
   inputBinding:
     prefix: --dbsnp
-- id: threads
+- id: in_threads
   doc: Use this many threads for each call
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: tumor_mtc
-  doc: 'Type of multiple testing correction for tumor (default: bonf)'
+- id: in_tumor_mtc
+  doc: "Type of multiple testing correction for tumor\n(default: bonf)"
   type: string
   inputBinding:
     prefix: --tumor-mtc
-- id: tumor_mtc_alpha
-  doc: 'Multiple testing correction alpha for tumor (default: 1.000000)'
-  type: string
+- id: in_tumor_mtc_alpha
+  doc: "Multiple testing correction alpha for tumor (default:\n1.000000)"
+  type: double
   inputBinding:
     prefix: --tumor-mtc-alpha
-- id: in_del_tumor_mtc
-  doc: 'Type of multiple testing correction for tumor (default: bonf)'
+- id: in_in_del_tumor_mtc
+  doc: "Type of multiple testing correction for tumor\n(default: bonf)"
   type: string
   inputBinding:
     prefix: --indel-tumor-mtc
-- id: in_del_tumor_mtc_alpha
-  doc: 'Multiple testing correction alpha for tumor (default: 0.010000)'
-  type: string
+- id: in_in_del_tumor_mtc_alpha
+  doc: "Multiple testing correction alpha for tumor (default:\n0.010000)"
+  type: double
   inputBinding:
     prefix: --indel-tumor-mtc-alpha
-- id: call_indels
-  doc: Also call indels (see documentation on how to preprocess your BAM files)
+- id: in_call_indels
+  doc: "Also call indels (see documentation on how to\npreprocess your BAM files)"
   type: boolean
   inputBinding:
     prefix: --call-indels
-- id: min_cov
+- id: in_min_cov
   doc: 'Minimum coverage for somatic calls (default: 7)'
   type: long
   inputBinding:
     prefix: --min-cov
-- id: germline
+- id: in_germline
   doc: Also list germline calls in separate file
   type: boolean
   inputBinding:
     prefix: --germline
-- id: ign_vcf
-  doc: Ignore variants in this vcf-file for source quality computation in tumor (collides
-    with --no-src-qual). Default is to use (stringently filtered) predictions in normal
-    sample
-  type: string
+- id: in_ign_vcf
+  doc: "Ignore variants in this vcf-file for source quality\ncomputation in tumor\
+    \ (collides with --no-src-qual).\nDefault is to use (stringently filtered) predictions\n\
+    in normal sample"
+  type: File
   inputBinding:
     prefix: --ign-vcf
-- id: use_orphan
+- id: in_use_orphan
   doc: Use orphaned/anomalous reads from pairs in all samples
   type: boolean
   inputBinding:
     prefix: --use-orphan
-- id: baq_off
+- id: in_baq_off
   doc: Switch use of BAQ off in all samples
   type: boolean
   inputBinding:
     prefix: --baq-off
-- id: call_rlx_extra_args
+- id: in_call_rlx_extra_args
   doc: Extra arguments to call_rlx (replace dashes with @)
   type: string
   inputBinding:
     prefix: --call-rlx-extra-args
-- id: no_src_qual
+- id: in_no_src_qual
   doc: Disable use of source quality in tumor (see also -V)
   type: boolean
   inputBinding:
     prefix: --no-src-qual
-- id: debug
+- id: in_debug
   doc: Enable debugging
   type: boolean
   inputBinding:
     prefix: --debug
-- id: continue
-  doc: continue interrupted run. Will reuse existing files, assuming they are complete
-    and created with identical options!
+- id: in_continue
+  doc: "continue interrupted run. Will reuse existing files,\nassuming they are complete\
+    \ and created with identical\noptions!\n"
   type: boolean
   inputBinding:
     prefix: --continue
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - lofreq

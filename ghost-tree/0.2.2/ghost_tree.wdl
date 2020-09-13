@@ -1,7 +1,10 @@
 version 1.0
 
-task GhostTree {
+task Ghosttree {
   command <<<
-    ghost-tree
+    ghost_tree
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -11,7 +11,7 @@ task VarscanPileup2indel {
     Boolean? variants
     String? jar
     String java
-    String pile_up_two_cns
+    Int pile_up_two_cns
     String? pile_up
     File? file
   }
@@ -21,13 +21,13 @@ task VarscanPileup2indel {
       ~{pile_up_two_cns} \
       ~{pile_up} \
       ~{file} \
-      ~{true="--min-coverage" false="" min_coverage} \
-      ~{true="--min-reads2" false="" min_reads_two} \
-      ~{true="--min-avg-qual" false="" min_avg_qual} \
-      ~{true="--min-var-freq" false="" min_var_freq} \
-      ~{true="--min-freq-for-hom" false="" min_freq_for_hom} \
-      ~{true="--p-value" false="" p_value} \
-      ~{true="--variants" false="" variants} \
+      ~{if (min_coverage) then "--min-coverage" else ""} \
+      ~{if (min_reads_two) then "--min-reads2" else ""} \
+      ~{if (min_avg_qual) then "--min-avg-qual" else ""} \
+      ~{if (min_var_freq) then "--min-var-freq" else ""} \
+      ~{if (min_freq_for_hom) then "--min-freq-for-hom" else ""} \
+      ~{if (p_value) then "--p-value" else ""} \
+      ~{if (variants) then "--variants" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
@@ -43,5 +43,8 @@ task VarscanPileup2indel {
     pile_up_two_cns: ""
     pile_up: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

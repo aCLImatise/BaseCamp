@@ -2,9 +2,9 @@ version 1.0
 
 task Clean {
   input {
-    String? assembly
+    File? assembly
     String? csv
-    String? filename_output_contigs
+    File? filename_output_contigs
   }
   command <<<
     clean \
@@ -15,6 +15,10 @@ task Clean {
   parameter_meta {
     assembly: "filename of assembly in FASTA format"
     csv: "Tapestry CSV output"
-    filename_output_contigs: "filename of output contigs, default filtered_assembly.fasta"
+    filename_output_contigs: "filename of output contigs, default\\nfiltered_assembly.fasta\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_filename_output_contigs = "${in_filename_output_contigs}"
   }
 }

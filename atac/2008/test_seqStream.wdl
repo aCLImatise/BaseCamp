@@ -1,7 +1,10 @@
 version 1.0
 
-task TestSeqStream {
+task TestseqStream {
   command <<<
-    test-seqStream
+    test_seqStream
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

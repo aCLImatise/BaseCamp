@@ -4,4 +4,7 @@ task CactusBatchMergeChunks {
   command <<<
     cactus_batch_mergeChunks
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

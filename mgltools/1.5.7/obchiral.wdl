@@ -1,14 +1,10 @@
 version 1.0
 
 task Obchiral {
-  input {
-    File filename
-  }
   command <<<
-    obchiral \
-      ~{filename}
+    obchiral
   >>>
-  parameter_meta {
-    filename: ""
+  output {
+    File out_stdout = stdout()
   }
 }

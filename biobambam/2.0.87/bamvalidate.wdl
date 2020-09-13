@@ -4,4 +4,7 @@ task Bamvalidate {
   command <<<
     bamvalidate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -44,4 +44,7 @@ task Daijin {
     seq: ""
     data_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

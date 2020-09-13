@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../kmer_cov.cwl
 inputs:
-- id: output_regions_features
+- id: in_output_regions_features
   doc: Output regions as Features
   type: boolean
   inputBinding:
     prefix: -F
-- id: min_length_report
+- id: in_min_length_report
   doc: Min Length to report as a feature
-  type: string
+  type: long
   inputBinding:
     prefix: -L
-- id: allow_codes_treated
+- id: in_allow_codes_treated
   doc: Allow Ambiguity Codes (treated as A's)
   type: boolean
   inputBinding:
     prefix: -A
-- id: output_uniquerepeatunsure_fasta
+- id: in_output_uniquerepeatunsure_fasta
   doc: Output unique/repeat/unsure fasta sequences
   type: boolean
   inputBinding:
     prefix: -f
-- id: repeats_x_covered
+- id: in_repeats_covered_kmers
   doc: Repeats are > <x>% covered by kmers
   type: string
   inputBinding:
     prefix: -r
-- id: uniques_x_covered
+- id: in_uniques_covered_kmers
   doc: Uniques are <= <x>% covered by kmers
   type: string
   inputBinding:
     prefix: -u
-- id: km_er_file
+- id: in_km_er_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - kmer-cov

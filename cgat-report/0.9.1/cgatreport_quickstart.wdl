@@ -1,14 +1,17 @@
 version 1.0
 
-task CgatreportQuickstart {
+task Cgatreportquickstart {
   input {
-    String? dest
+    Directory? dest
   }
   command <<<
-    cgatreport-quickstart \
+    cgatreport_quickstart \
       ~{if defined(dest) then ("--dest " +  '"' + dest + '"') else ""}
   >>>
   parameter_meta {
-    dest: "destination directory."
+    dest: "destination directory.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

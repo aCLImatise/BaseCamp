@@ -4,4 +4,7 @@ task Bamfilterheader {
   command <<<
     bamfilterheader
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

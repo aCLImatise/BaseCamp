@@ -2,8 +2,8 @@ version 1.0
 
 task VarscanSomatic {
   input {
-    Boolean? output_snp
-    Boolean? output_in_del
+    File? output_snp
+    File? output_in_del
     Boolean? min_coverage
     Boolean? min_coverage_normal
     Boolean? min_coverage_tumor
@@ -23,20 +23,20 @@ task VarscanSomatic {
     varscan somatic \
       ~{normal_pile_up} \
       ~{tumor_pile_up} \
-      ~{true="--output-snp" false="" output_snp} \
-      ~{true="--output-indel" false="" output_in_del} \
-      ~{true="--min-coverage" false="" min_coverage} \
-      ~{true="--min-coverage-normal" false="" min_coverage_normal} \
-      ~{true="--min-coverage-tumor" false="" min_coverage_tumor} \
-      ~{true="--min-var-freq" false="" min_var_freq} \
-      ~{true="--min-freq-for-hom" false="" min_freq_for_hom} \
-      ~{true="--normal-purity" false="" normal_purity} \
-      ~{true="--tumor-purity" false="" tumor_purity} \
-      ~{true="--p-value" false="" p_value} \
-      ~{true="--somatic-p-value" false="" somatic_p_value} \
-      ~{true="--strand-filter" false="" strand_filter} \
-      ~{true="--validation" false="" validation} \
-      ~{true="--output-vcf" false="" output_vcf}
+      ~{if (output_snp) then "--output-snp" else ""} \
+      ~{if (output_in_del) then "--output-indel" else ""} \
+      ~{if (min_coverage) then "--min-coverage" else ""} \
+      ~{if (min_coverage_normal) then "--min-coverage-normal" else ""} \
+      ~{if (min_coverage_tumor) then "--min-coverage-tumor" else ""} \
+      ~{if (min_var_freq) then "--min-var-freq" else ""} \
+      ~{if (min_freq_for_hom) then "--min-freq-for-hom" else ""} \
+      ~{if (normal_purity) then "--normal-purity" else ""} \
+      ~{if (tumor_purity) then "--tumor-purity" else ""} \
+      ~{if (p_value) then "--p-value" else ""} \
+      ~{if (somatic_p_value) then "--somatic-p-value" else ""} \
+      ~{if (strand_filter) then "--strand-filter" else ""} \
+      ~{if (validation) then "--validation" else ""} \
+      ~{if (output_vcf) then "--output-vcf" else ""}
   >>>
   parameter_meta {
     output_snp: "- Output file for SNP calls [output.snp]"
@@ -55,5 +55,10 @@ task VarscanSomatic {
     output_vcf: "- If set to 1, output VCF instead of VarScan native format"
     normal_pile_up: ""
     tumor_pile_up: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_snp = "${in_output_snp}"
+    File out_output_in_del = "${in_output_in_del}"
   }
 }

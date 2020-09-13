@@ -14,4 +14,7 @@ task TripailleJobGetLogs {
     stdout: ""
     stderr: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

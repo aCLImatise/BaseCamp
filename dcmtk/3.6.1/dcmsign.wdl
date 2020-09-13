@@ -2,9 +2,10 @@ version 1.0
 
 task Dcmsign {
   input {
+    Boolean? arguments
     Boolean? _quiet_quiet
-    Boolean? _verbose_verbose
-    Boolean? _debug_debug
+    Boolean? _verbose_details
+    Boolean? _debug_information
     Boolean? ll
     Boolean? lc
     Boolean? _readdataset_read
@@ -17,43 +18,49 @@ task Dcmsign {
     Boolean? pw
     Boolean? pem_keys
     Boolean? der_keys
+    Boolean? pf
     Boolean? tf
     Boolean? fn
     Boolean? fo
     Boolean? _lengthundefined_write
     String dcm_file_in
     String dcm_file_out
+    String use_specified_password
   }
   command <<<
     dcmsign \
       ~{dcm_file_in} \
       ~{dcm_file_out} \
-      ~{true="-q" false="" _quiet_quiet} \
-      ~{true="-v" false="" _verbose_verbose} \
-      ~{true="-d" false="" _debug_debug} \
-      ~{true="-ll" false="" ll} \
-      ~{true="-lc" false="" lc} \
-      ~{true="-f" false="" _readdataset_read} \
-      ~{true="-t" false="" _readxferauto_use} \
-      ~{true="-td" false="" td} \
-      ~{true="-te" false="" te} \
-      ~{true="-tb" false="" tb} \
-      ~{true="-ti" false="" ti} \
-      ~{true="--verify" false="" verify} \
-      ~{true="-pw" false="" pw} \
-      ~{true="--pem-keys" false="" pem_keys} \
-      ~{true="--der-keys" false="" der_keys} \
-      ~{true="-tf" false="" tf} \
-      ~{true="-fn" false="" fn} \
-      ~{true="-fo" false="" fo} \
-      ~{true="-e" false="" _lengthundefined_write}
+      ~{use_specified_password} \
+      ~{if (arguments) then "--arguments" else ""} \
+      ~{if (_quiet_quiet) then "-q" else ""} \
+      ~{if (_verbose_details) then "-v" else ""} \
+      ~{if (_debug_information) then "-d" else ""} \
+      ~{if (ll) then "-ll" else ""} \
+      ~{if (lc) then "-lc" else ""} \
+      ~{if (_readdataset_read) then "-f" else ""} \
+      ~{if (_readxferauto_use) then "-t" else ""} \
+      ~{if (td) then "-td" else ""} \
+      ~{if (te) then "-te" else ""} \
+      ~{if (tb) then "-tb" else ""} \
+      ~{if (ti) then "-ti" else ""} \
+      ~{if (verify) then "--verify" else ""} \
+      ~{if (pw) then "-pw" else ""} \
+      ~{if (pem_keys) then "--pem-keys" else ""} \
+      ~{if (der_keys) then "--der-keys" else ""} \
+      ~{if (pf) then "-pf" else ""} \
+      ~{if (tf) then "-tf" else ""} \
+      ~{if (fn) then "-fn" else ""} \
+      ~{if (fo) then "-fo" else ""} \
+      ~{if (_lengthundefined_write) then "-e" else ""}
   >>>
   parameter_meta {
+    arguments: "print expanded command line arguments"
     _quiet_quiet: "--quiet                quiet mode, print no warnings and errors"
-    _verbose_verbose: "--verbose              verbose mode, print processing details"
-    _debug_debug: "--debug                debug mode, print debug information"
-    ll: "--log-level            [l]evel: string constant (fatal, error, warn, info, debug, trace) use level l for the logger"
-    lc: "--log-config           [f]ilename: string use config file f for the logger"
+    _verbose_details: "--verbose              verbose mode, print processing details"
+    _debug_information: "--debug                debug mode, print debug information"
+    ll: "--log-level            [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    lc: "--log-config           [f]ilename: string\\nuse config file f for the logger"
     _readdataset_read: "--read-dataset         read data set without file meta information"
     _readxferauto_use: "=   --read-xfer-auto       use TS recognition (default)"
     td: "--read-xfer-detect     ignore TS specified in the file meta header"
@@ -64,11 +71,16 @@ task Dcmsign {
     pw: "--null-passwd          use empty string as password"
     pem_keys: "read keys/certificates as PEM file (default)"
     der_keys: "read keys/certificates as DER file"
-    tf: "--tag-file             [f]ilename: string read list of tags from text file"
+    pf: "--profile-none         don't enforce any signature profile (default)"
+    tf: "--tag-file             [f]ilename: string\\nread list of tags from text file"
     fn: "--format-new           use correct DICOM signature format (default)"
-    fo: "--format-old           use old (pre-3.5.4) DCMTK signature format, non-conformant if signature includes compressed pixel data"
+    fo: "--format-old           use old (pre-3.5.4) DCMTK signature format,\\nnon-conformant if signature includes\\ncompressed pixel data"
     _lengthundefined_write: "--length-undefined     write with undefined lengths"
     dcm_file_in: "DICOM input filename to be processed"
     dcm_file_out: "DICOM output filename"
+    use_specified_password: "use specified password"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

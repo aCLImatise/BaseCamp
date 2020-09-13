@@ -6,6 +6,7 @@ task SURVIVOR {
     String scan_reads
     String sim_reads
     String eval
+    String merge
     String filter
     String stats
     String comp_mummer
@@ -23,6 +24,7 @@ task SURVIVOR {
       ~{scan_reads} \
       ~{sim_reads} \
       ~{eval} \
+      ~{merge} \
       ~{filter} \
       ~{stats} \
       ~{comp_mummer} \
@@ -39,6 +41,7 @@ task SURVIVOR {
     scan_reads: "Obtain error profiles form mapped reads for simulation."
     sim_reads: "Simulates long reads (Pacio or ONT)."
     eval: "Evaluates a VCF file after SV calling over simulated data."
+    merge: "Compare or merge VCF files to generate a consensus or multi sample VCF files."
     filter: "Filter a vcf file based on size and/or regions to ignore"
     stats: "Report multipe stats over a VCF file"
     comp_mummer: "Annotates a VCF file with the breakpoints found with MUMMer (Show-diff)."
@@ -49,5 +52,8 @@ task SURVIVOR {
     bed_pe_to_vcf: "Converts a bedpe file ot a VCF file (beta version)"
     hap_cut_to_vcf: "Converts the Hapcut2 final file to a VCF file using the original SNP file provided to Hapcut2"
     convert_assembly_tics: "Converts Assemblytics to a VCF file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

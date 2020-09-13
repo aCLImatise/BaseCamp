@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../bam2msa_OUTPUT.cwl
 inputs:
-- id: r
+- id: in_r
   doc: ''
   type: string
   inputBinding:
     prefix: -r
-- id: bam_two_msa
+- id: in_bam_two_msa
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: input
+- id: in_input
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bam2msa

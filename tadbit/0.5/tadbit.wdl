@@ -4,4 +4,7 @@ task Tadbit {
   command <<<
     tadbit
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

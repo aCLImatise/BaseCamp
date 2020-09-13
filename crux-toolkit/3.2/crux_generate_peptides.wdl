@@ -1,14 +1,10 @@
 version 1.0
 
-task CruxGeneratePeptides {
-  input {
-    String protein_fast_a_file
-  }
+task CruxGeneratepeptides {
   command <<<
-    crux generate-peptides \
-      ~{protein_fast_a_file}
+    crux generate_peptides
   >>>
-  parameter_meta {
-    protein_fast_a_file: ""
+  output {
+    File out_stdout = stdout()
   }
 }

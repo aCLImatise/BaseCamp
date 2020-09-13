@@ -1,17 +1,21 @@
 class: CommandLineTool
 id: ../../../kneaddata_database.cwl
 inputs:
-- id: available
+- id: in_available
   doc: print the available databases
   type: boolean
   inputBinding:
     prefix: --available
-- id: download
-  doc: <build> <install_location> download the selected database to the install location
+- id: in_download
+  doc: "<build> <install_location>\ndownload the selected database to the install\
+    \ location\n"
   type: string
   inputBinding:
     prefix: --download
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - kneaddata_database

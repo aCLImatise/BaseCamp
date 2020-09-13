@@ -4,4 +4,7 @@ task Mkout {
   command <<<
     mkout
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

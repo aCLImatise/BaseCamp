@@ -1,7 +1,10 @@
 version 1.0
 
-task StarchDiffMegarow {
+task Starchdiffmegarow {
   command <<<
-    starch-diff-megarow
+    starch_diff_megarow
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

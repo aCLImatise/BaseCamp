@@ -2,10 +2,10 @@ version 1.0
 
 task Saffrontree {
   input {
-    String? km_er
+    Int? km_er
     Int? min_km_ers_threshold
     Int? max_km_ers_threshold
-    String? threads
+    Int? threads
     Boolean? keep_files
     Boolean? verbose
     String output_directory
@@ -19,8 +19,8 @@ task Saffrontree {
       ~{if defined(min_km_ers_threshold) then ("--min_kmers_threshold " +  '"' + min_km_ers_threshold + '"') else ""} \
       ~{if defined(max_km_ers_threshold) then ("--max_kmers_threshold " +  '"' + max_km_ers_threshold + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--keep_files" false="" keep_files} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (keep_files) then "--keep_files" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     km_er: "Kmer to use, depends on read length [31]"
@@ -31,5 +31,8 @@ task Saffrontree {
     verbose: "Turn on more debugging output [False]"
     output_directory: "Output directory"
     input_files: "FASTQ/FASTA files which may be gzipped"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

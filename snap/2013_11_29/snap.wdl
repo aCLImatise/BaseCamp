@@ -12,19 +12,19 @@ task Snap {
     File? tx
     File? xdef
     String? name
-    String hmm_file
-    String fast_a_file
+    File hmm_file
+    File fast_a_file
   }
   command <<<
     snap \
       ~{hmm_file} \
       ~{fast_a_file} \
-      ~{true="-lcmask" false="" lc_mask} \
-      ~{true="-plus" false="" plus} \
-      ~{true="-minus" false="" minus} \
-      ~{true="-gff" false="" gff} \
-      ~{true="-ace" false="" ace} \
-      ~{true="-quiet" false="" quiet} \
+      ~{if (lc_mask) then "-lcmask" else ""} \
+      ~{if (plus) then "-plus" else ""} \
+      ~{if (minus) then "-minus" else ""} \
+      ~{if (gff) then "-gff" else ""} \
+      ~{if (ace) then "-ace" else ""} \
+      ~{if (quiet) then "-quiet" else ""} \
       ~{if defined(aa) then ("-aa " +  '"' + aa + '"') else ""} \
       ~{if defined(tx) then ("-tx " +  '"' + tx + '"') else ""} \
       ~{if defined(xdef) then ("-xdef " +  '"' + xdef + '"') else ""} \
@@ -43,5 +43,8 @@ task Snap {
     name: "name for the gene [default snap]"
     hmm_file: ""
     fast_a_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

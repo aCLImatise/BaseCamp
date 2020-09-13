@@ -2,6 +2,9 @@ version 1.0
 
 task CircleMap {
   command <<<
-    Circle-Map
+    Circle_Map
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

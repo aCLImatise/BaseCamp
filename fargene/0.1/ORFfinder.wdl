@@ -4,4 +4,7 @@ task ORFfinder {
   command <<<
     ORFfinder
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -33,18 +33,18 @@ task Elink {
       ~{l_links} \
       ~{l_links_lib} \
       ~{pr_links} \
-      ~{true="-related" false="" related} \
-      ~{true="-target" false="" target} \
-      ~{true="-name" false="" name} \
-      ~{true="-db" false="" db} \
-      ~{true="-id" false="" id} \
-      ~{true="-cmd" false="" cmd} \
-      ~{true="-mode" false="" mode} \
-      ~{true="-holding" false="" holding} \
-      ~{true="-cited" false="" cited} \
-      ~{true="-cites" false="" cites} \
-      ~{true="-batch" false="" batch} \
-      ~{true="-label" false="" label}
+      ~{if (related) then "-related" else ""} \
+      ~{if (target) then "-target" else ""} \
+      ~{if (name) then "-name" else ""} \
+      ~{if (db) then "-db" else ""} \
+      ~{if (id) then "-id" else ""} \
+      ~{if (cmd) then "-cmd" else ""} \
+      ~{if (mode) then "-mode" else ""} \
+      ~{if (holding) then "-holding" else ""} \
+      ~{if (cited) then "-cited" else ""} \
+      ~{if (cites) then "-cites" else ""} \
+      ~{if (batch) then "-batch" else ""} \
+      ~{if (label) then "-label" else ""}
   >>>
   parameter_meta {
     related: "Neighbors in same database"
@@ -53,7 +53,7 @@ task Elink {
     db: "Database name"
     id: "Unique identifier(s)"
     cmd: "Command type (returns eLinkResult XML)"
-    mode: "\"ref\" uses LinkOut provider's web site"
+    mode: "\\\"ref\\\" uses LinkOut provider's web site"
     holding: "Name of LinkOut provider"
     cited: "References to this paper"
     cites: "Publication reference list"
@@ -66,6 +66,9 @@ task Elink {
     l_check: "Existence of external links (LinkOuts)"
     l_links: "Non-library LinkOut providers"
     l_links_lib: "All LinkOut providers"
-    pr_links: "Primary LinkOut provider, or URL for single UID with -mode ref"
+    pr_links: "Primary LinkOut provider,\\nor URL for single UID with -mode ref\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,37 +1,59 @@
 class: CommandLineTool
 id: ../../../bp_einfo.cwl
 inputs:
-- id: e_slash_email
+- id: in_e_slash_email
   doc: Valid email (required by NCBI policy)
   type: boolean
   inputBinding:
     prefix: -e/--email
-- id: d_slash_db_slash_database
-  doc: NCBI database to query (default = none, which shows available databases)
+- id: in_d_slash_db_slash_database
+  doc: "NCBI database to query\n(default = none, which shows available databases)"
   type: boolean
   inputBinding:
     prefix: -d/--db/--database
-- id: f_slash_field
-  doc: print out information about a specific field code (default = none)
+- id: in_f_slash_field
+  doc: "print out information about a specific field code\n(default = none)"
   type: boolean
   inputBinding:
     prefix: -f/--field
-- id: lslash_link
-  doc: print out information about a specific link name (default = none)
+- id: in_lslash_link
+  doc: "print out information about a specific link name\n(default = none)"
   type: boolean
   inputBinding:
     prefix: -l/--link
-- id: oslash_out
-  doc: outfile (default = STDOUT)
+- id: in_oslash_out
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -o/--out
-- id: h_slash_help
+- id: in_h_slash_help
   doc: show this documentation
   type: boolean
   inputBinding:
     prefix: -h/--help
-outputs: []
+- id: in_outfile
+  doc: (default = STDOUT)
+  type: string
+  inputBinding:
+    position: 0
+- id: in_bioperl_lat_bioperl_dot_org
+  doc: '- General discussion'
+  type: string
+  inputBinding:
+    position: 0
+- id: in_support
+  doc: "Please direct usage questions or support issues to the mailing list:\n*bioperl-l@bioperl.org*\n\
+    rather than to the module maintainer directly. Many experienced and\nreponsive\
+    \ experts will be able look at the problem and quickly address\nit. Please include\
+    \ a thorough description of the problem with code and\ndata examples if at all\
+    \ possible."
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bp_einfo

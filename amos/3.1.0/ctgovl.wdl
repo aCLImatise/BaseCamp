@@ -4,4 +4,7 @@ task Ctgovl {
   command <<<
     ctgovl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

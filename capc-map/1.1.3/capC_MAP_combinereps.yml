@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- capC-MAP
+- combinereps
 positional: []
 named:
 - !Flag
@@ -9,8 +12,8 @@ named:
     name: CONFIGFILE
   optional: true
 - !Flag
-  description: directory containing output from capC-MAP for a replicate (option must
-    appear multiple times).
+  description: "directory containing output from capC-MAP for a replicate\n(option\
+    \ must appear multiple times)."
   synonyms:
   - -i
   args: !SimpleFlagArg
@@ -23,17 +26,17 @@ named:
   args: !SimpleFlagArg
     name: OUTDIR
   optional: true
-command:
-- capC-MAP
-- combinereps
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - capC-MAP
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - capC-MAP
+    - genomedigest
     positional: []
     named:
     - !Flag
@@ -57,11 +60,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: OUTPUTBED
       optional: true
-    command:
-    - capC-MAP
-    - genomedigest
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -79,81 +80,14 @@ parent: &id001 !Command
     generated_using: &id002
     - --help
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: configuration file
-      synonyms:
-      - -c
-      args: !SimpleFlagArg
-        name: CONFIGFILE
-      optional: true
-    - !Flag
-      description: directory to be created for output
-      synonyms:
-      - -o
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
     command:
     - capC-MAP
-    - run
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: capC-MAP run [-h] -c CONFIGFILE -o OUTDIR\n\noptional arguments:\n\
-      \  -h, --help     show this help message and exit\n  -c CONFIGFILE  configuration\
-      \ file\n  -o OUTDIR      directory to be created for output\n"
-    generated_using: *id002
-  - !Command
+    - getchromsizes
     positional: []
     named:
     - !Flag
-      description: configuration file
-      synonyms:
-      - -c
-      args: !SimpleFlagArg
-        name: CONFIGFILE
-      optional: true
-    - !Flag
-      description: directory to be created for output
-      synonyms:
-      - -o
-      args: !SimpleFlagArg
-        name: OUTDIR
-      optional: true
-    command:
-    - capC-MAP
-    - postprocess
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: capC-MAP postprocess [-h] -c CONFIGFILE -o OUTDIR\n\noptional\
-      \ arguments:\n  -h, --help     show this help message and exit\n  -c CONFIGFILE\
-      \  configuration file\n  -o OUTDIR      directory to be created for output\n"
-    generated_using: *id002
-  - *id003
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: bed file continaing list of restriction enzyme fragments for genome
+      description: "bed file continaing list of restriction enzyme fragments\nfor\
+        \ genome"
       synonyms:
       - -f
       args: !SimpleFlagArg
@@ -166,11 +100,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: OUTFILE
       optional: true
-    command:
-    - capC-MAP
-    - getchromsizes
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -186,6 +118,80 @@ parent: &id001 !Command
       \                    for genome\n  -o OUTFILE        output file name (Default:\
       \ chrom.sizes)\n"
     generated_using: *id002
+  - !Command
+    command:
+    - capC-MAP
+    - run
+    positional: []
+    named:
+    - !Flag
+      description: configuration file
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: CONFIGFILE
+      optional: true
+    - !Flag
+      description: directory to be created for output
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: capC-MAP run [-h] -c CONFIGFILE -o OUTDIR\n\noptional arguments:\n\
+      \  -h, --help     show this help message and exit\n  -c CONFIGFILE  configuration\
+      \ file\n  -o OUTDIR      directory to be created for output\n"
+    generated_using: *id002
+  - *id003
+  - !Command
+    command:
+    - capC-MAP
+    - postprocess
+    positional: []
+    named:
+    - !Flag
+      description: configuration file
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: CONFIGFILE
+      optional: true
+    - !Flag
+      description: directory to be created for output
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: capC-MAP postprocess [-h] -c CONFIGFILE -o OUTDIR\n\noptional\
+      \ arguments:\n  -h, --help     show this help message and exit\n  -c CONFIGFILE\
+      \  configuration file\n  -o OUTDIR      directory to be created for output\n"
+    generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -216,6 +222,7 @@ parent: &id001 !Command
     \                 restriction enzyme fragments.\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

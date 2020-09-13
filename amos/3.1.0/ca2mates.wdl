@@ -6,9 +6,12 @@ task Ca2mates {
   }
   command <<<
     ca2mates \
-      ~{true="-a" false="" asm_file}
+      ~{if (asm_file) then "-a" else ""}
   >>>
   parameter_meta {
     asm_file: ".asm file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../fasten_metrics.cwl
 inputs:
-- id: num_cpus
+- id: in_num_cpus
   doc: 'Number of CPUs (default: 1)'
   type: long
   inputBinding:
     prefix: --numcpus
-- id: paired_end
+- id: in_paired_end
   doc: The input reads are interleaved paired-end
   type: boolean
   inputBinding:
     prefix: --paired-end
-- id: verbose
+- id: in_verbose
   doc: Print more status messages
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: each_read
-  doc: Print the metrics for each read. This creates very large output
+- id: in_each_read
+  doc: "Print the metrics for each read. This creates very\nlarge output"
   type: boolean
   inputBinding:
     prefix: --each-read
-- id: distribution
-  doc: Print the distribution for each metric. Must supply either 'normal' or 'nonparametric'
+- id: in_distribution
+  doc: "Print the distribution for each metric. Must supply\neither 'normal' or 'nonparametric'\n"
   type: string
   inputBinding:
     prefix: --distribution
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fasten_metrics

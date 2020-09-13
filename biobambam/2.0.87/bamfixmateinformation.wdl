@@ -4,4 +4,7 @@ task Bamfixmateinformation {
   command <<<
     bamfixmateinformation
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

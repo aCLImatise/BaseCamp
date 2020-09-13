@@ -1,0 +1,76 @@
+!Command
+command:
+- map_bed.py
+positional:
+- !Positional
+  description: Path to gzipped bed file
+  position: 0
+  name: bed_path
+  optional: false
+- !Positional
+  description: Path to gzipped output file
+  position: 1
+  name: out_path
+  optional: false
+- !Positional
+  description: Path to directory with uint8 binary files produced by
+  position: 2
+  name: umap_dir
+  optional: false
+- !Positional
+  description: kmer               The read length for defining single-read and multi-read
+  position: 3
+  name: Umap/Bismap.
+  optional: false
+- !Positional
+  description: 'optional arguments:'
+  position: 4
+  name: mappability.
+  optional: false
+named:
+- !Flag
+  description: use a faster algorithm.
+  synonyms:
+  - -wigdir
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: "If specified, assumes each region is only one nucleotide.\nYou must\
+    \ specify -wig as well."
+  synonyms:
+  - -SingleNucleotide
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: map_bed.py [-h] [-SingleNucleotide] [-wigdir WIGDIR]\n        \
+  \          bed_path out_path umap_dir kmer\n\nThis script expects an input gzipped\
+  \ BED file, a directory with umap/bismap\nproduced files names as <chr>.uint8.unique.gz.\
+  \ It will add one column to the\nbed file which would determine the fraction of\
+  \ uniquely mappable reads that\npassover this region. The first column added to\
+  \ input is single-read\nmappability, which is the percent of the region that is\
+  \ uniquely mappable. The\nsecond added column is the multi-read mappability; the\
+  \ probability that a\nrandonly selected read overlapping with that region is uniquely\
+  \ mappable. If\nthe input BED file has 1 bp intervals, you can specify -SingleNucleotide\
+  \ and\n-wigdir to use a faster algorithm.\n\npositional arguments:\n  bed_path \
+  \          Path to gzipped bed file\n  out_path           Path to gzipped output\
+  \ file\n  umap_dir           Path to directory with uint8 binary files produced\
+  \ by\n                     Umap/Bismap.\n  kmer               The read length for\
+  \ defining single-read and multi-read\n                     mappability.\n\noptional\
+  \ arguments:\n  -h, --help         show this help message and exit\n  -SingleNucleotide\
+  \  If specified, assumes each region is only one nucleotide.\n                 \
+  \    You must specify -wig as well.\n  -wigdir WIGDIR     Path to directory with\n\
+  \                     <chrom>.<kmer>.MultiReadMappability.wg.gz files.\n"
+generated_using:
+- --help

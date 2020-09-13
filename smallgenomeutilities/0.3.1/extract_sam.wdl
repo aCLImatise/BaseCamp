@@ -2,10 +2,10 @@ version 1.0
 
 task ExtractSam {
   input {
-    String? name_hxb_
+    Int? name_target_contig
     Boolean? print_more_information
-    String? input_sambam_file
-    String? output_fasta_file
+    File? input_sambam_file
+    File? output_fasta_file
     Float? mf
     Int? mc
     String? prefix
@@ -13,25 +13,23 @@ task ExtractSam {
     Boolean? rog
     Boolean? output_sequences_translated
     Boolean? output_sequences_trait
-    String msa_file
   }
   command <<<
     extract_sam \
-      ~{msa_file} \
-      ~{if defined(name_hxb_) then ("-t " +  '"' + name_hxb_ + '"') else ""} \
-      ~{true="-v" false="" print_more_information} \
+      ~{if defined(name_target_contig) then ("-t " +  '"' + name_target_contig + '"') else ""} \
+      ~{if (print_more_information) then "-v" else ""} \
       ~{if defined(input_sambam_file) then ("-i " +  '"' + input_sambam_file + '"') else ""} \
       ~{if defined(output_fasta_file) then ("-o " +  '"' + output_fasta_file + '"') else ""} \
       ~{if defined(mf) then ("--mf " +  '"' + mf + '"') else ""} \
       ~{if defined(mc) then ("--mc " +  '"' + mc + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(rg) then ("--rg " +  '"' + rg + '"') else ""} \
-      ~{true="--rog" false="" rog} \
-      ~{true="-p" false="" output_sequences_translated} \
-      ~{true="-T" false="" output_sequences_trait}
+      ~{if (rog) then "--rog" else ""} \
+      ~{if (output_sequences_translated) then "-p" else ""} \
+      ~{if (output_sequences_trait) then "-T" else ""}
   >>>
   parameter_meta {
-    name_hxb_: "Name of target contig, e.g. HXB2:2253-2256"
+    name_target_contig: "Name of target contig, e.g. HXB2:2253-2256"
     print_more_information: "Print more information (such as subsequences in references)"
     input_sambam_file: "Input SAM/BAM file"
     output_fasta_file: "Output FASTA file"
@@ -42,6 +40,9 @@ task ExtractSam {
     rog: "Remove sequences consisting only of gaps and stop codons"
     output_sequences_translated: "Output sequences as translated proteins"
     output_sequences_trait: "Output sequences in trait format (for SeTesT)"
-    msa_file: "file containing MSA"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_fasta_file = "${in_output_fasta_file}"
   }
 }

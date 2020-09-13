@@ -4,8 +4,8 @@ task MendelscanSibd {
   input {
     Boolean? ped_file
     Boolean? markers_file
-    Boolean? centromere_file
-    Boolean? output_windows
+    File? centromere_file
+    File? output_windows
     Boolean? ibd_score_threshold
     Boolean? window_resolution
     Boolean? inheritance
@@ -19,13 +19,13 @@ task MendelscanSibd {
       ~{java} \
       ~{s_ibd} \
       ~{fi_bd} \
-      ~{true="--ped-file" false="" ped_file} \
-      ~{true="--markers-file" false="" markers_file} \
-      ~{true="--centromere-file" false="" centromere_file} \
-      ~{true="--output-windows" false="" output_windows} \
-      ~{true="--ibd-score-threshold" false="" ibd_score_threshold} \
-      ~{true="--window-resolution" false="" window_resolution} \
-      ~{true="--inheritance" false="" inheritance} \
+      ~{if (ped_file) then "--ped-file" else ""} \
+      ~{if (markers_file) then "--markers-file" else ""} \
+      ~{if (centromere_file) then "--centromere-file" else ""} \
+      ~{if (output_windows) then "--output-windows" else ""} \
+      ~{if (ibd_score_threshold) then "--ibd-score-threshold" else ""} \
+      ~{if (window_resolution) then "--window-resolution" else ""} \
+      ~{if (inheritance) then "--inheritance" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
@@ -40,5 +40,10 @@ task MendelscanSibd {
     java: ""
     s_ibd: ""
     fi_bd: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_centromere_file = "${in_centromere_file}"
+    File out_output_windows = "${in_output_windows}"
   }
 }

@@ -2,22 +2,22 @@ version 1.0
 
 task Pipelign {
   input {
-    String? in_file
-    String? outfile
-    String? lent_hr
+    File? in_file
+    File? outfile
+    Int? lent_hr
     String? alphabet
     Boolean? keep_orphans
     Boolean? keep_bad_seqs
     Boolean? m_zip
-    String? simper
+    Float? simper
     String? run
     String? merge
-    String? thread
-    String? mite_rate_long
-    String? miter_at_emerge
-    String? outdir
-    Boolean? clear_existing_directory
-    String? am_big_per
+    Int? thread
+    Int? mite_rate_long
+    Int? miter_at_emerge
+    Directory? outdir
+    Directory? clear_existing_directory
+    Float? am_big_per
     String? stage
     Boolean? exclude_clusters
   }
@@ -27,9 +27,9 @@ task Pipelign {
       ~{if defined(outfile) then ("--outFile " +  '"' + outfile + '"') else ""} \
       ~{if defined(lent_hr) then ("--lenThr " +  '"' + lent_hr + '"') else ""} \
       ~{if defined(alphabet) then ("--alphabet " +  '"' + alphabet + '"') else ""} \
-      ~{true="--keepOrphans" false="" keep_orphans} \
-      ~{true="--keepBadSeqs" false="" keep_bad_seqs} \
-      ~{true="--mZip" false="" m_zip} \
+      ~{if (keep_orphans) then "--keepOrphans" else ""} \
+      ~{if (keep_bad_seqs) then "--keepBadSeqs" else ""} \
+      ~{if (m_zip) then "--mZip" else ""} \
       ~{if defined(simper) then ("--simPer " +  '"' + simper + '"') else ""} \
       ~{if defined(run) then ("--run " +  '"' + run + '"') else ""} \
       ~{if defined(merge) then ("--merge " +  '"' + merge + '"') else ""} \
@@ -37,10 +37,10 @@ task Pipelign {
       ~{if defined(mite_rate_long) then ("--mIterateLong " +  '"' + mite_rate_long + '"') else ""} \
       ~{if defined(miter_at_emerge) then ("--mIterateMerge " +  '"' + miter_at_emerge + '"') else ""} \
       ~{if defined(outdir) then ("--outDir " +  '"' + outdir + '"') else ""} \
-      ~{true="--clearExistingDirectory" false="" clear_existing_directory} \
+      ~{if (clear_existing_directory) then "--clearExistingDirectory" else ""} \
       ~{if defined(am_big_per) then ("--ambigPer " +  '"' + am_big_per + '"') else ""} \
       ~{if defined(stage) then ("--stage " +  '"' + stage + '"') else ""} \
-      ~{true="--excludeClusters" false="" exclude_clusters}
+      ~{if (exclude_clusters) then "--excludeClusters" else ""}
   >>>
   parameter_meta {
     in_file: "Input sequence file in FASTA format"
@@ -59,7 +59,13 @@ task Pipelign {
     outdir: "Name for output directory to hold intermediate files"
     clear_existing_directory: "Remove files from existing output directory"
     am_big_per: "Proportion of ambiguous characters allowed in the long sequences (default: 0.1)"
-    stage: "1  Make cluster alignments and HMM of long sequences 2  Align long sequences only 3  Assign fragments to clusters 4  Make cluster alignments with fragments 5  Align all sequences"
-    exclude_clusters: "Exclude clusters from final alignment"
+    stage: "1  Make cluster alignments and HMM of long sequences\\n2  Align long sequences only\\n3  Assign fragments to clusters\\n4  Make cluster alignments with fragments\\n5  Align all sequences"
+    exclude_clusters: "Exclude clusters from final alignment\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
+    Directory out_outdir = "${in_outdir}"
+    Directory out_clear_existing_directory = "${in_clear_existing_directory}"
   }
 }

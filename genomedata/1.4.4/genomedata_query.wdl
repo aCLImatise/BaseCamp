@@ -1,7 +1,10 @@
 version 1.0
 
-task GenomedataQuery {
+task Genomedataquery {
   command <<<
-    genomedata-query
+    genomedata_query
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

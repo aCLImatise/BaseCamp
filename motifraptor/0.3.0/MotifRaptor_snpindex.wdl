@@ -2,10 +2,10 @@ version 1.0
 
 task MotifRaptorSnpindex {
   input {
-    String? vcf_filename
+    File? vcf_filename
     String? indexed_genome_db
-    String? mk_sary
-    String? threads
+    File? mk_sary
+    Int? threads
   }
   command <<<
     MotifRaptor snpindex \
@@ -15,9 +15,12 @@ task MotifRaptorSnpindex {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    vcf_filename: "input - VCF file for SNPs, first five columns need to be CHR,POS,ID,REF,ALT"
+    vcf_filename: "input - VCF file for SNPs, first five columns need to\\nbe CHR,POS,ID,REF,ALT"
     indexed_genome_db: "output - indexed genome_database_folder"
     mk_sary: "Mksary program path"
-    threads: "number of threads"
+    threads: "number of threads\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -5,24 +5,24 @@ task Arcs {
     File? fof_name
     Boolean? mult_file
     File? file
-    String? min_reads
-    String? min_links
-    String? min_size
-    String? base_name
+    Int? min_reads
+    Int? min_links
+    Int? min_size
+    File? base_name
     File? graph
-    String? gap
+    Int? gap
     File? tsv
     File? barcode_counts
-    String? index_multiplicity
-    String? max_degree
-    String? end_length
-    String? error_percent
+    Int? index_multiplicity
+    Int? max_degree
+    Int? end_length
+    Float? error_percent
     Boolean? run_verbose
-    String? seq_id
+    Int? seq_id
     Boolean? k_value
     Boolean? j_index
     Boolean? threads
-    String? bin_size
+    Int? bin_size
     Boolean? dist_est
     Boolean? no_dist_est
     Boolean? dist_median
@@ -38,7 +38,7 @@ task Arcs {
       ~{list_of_alignment_files} \
       ~{or} \
       ~{if defined(fof_name) then ("--fofName " +  '"' + fof_name + '"') else ""} \
-      ~{true="--multfile" false="" mult_file} \
+      ~{if (mult_file) then "--multfile" else ""} \
       ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
       ~{if defined(min_reads) then ("--min_reads " +  '"' + min_reads + '"') else ""} \
       ~{if defined(min_links) then ("--min_links " +  '"' + min_links + '"') else ""} \
@@ -52,19 +52,19 @@ task Arcs {
       ~{if defined(max_degree) then ("--max_degree " +  '"' + max_degree + '"') else ""} \
       ~{if defined(end_length) then ("--end_length " +  '"' + end_length + '"') else ""} \
       ~{if defined(error_percent) then ("--error_percent " +  '"' + error_percent + '"') else ""} \
-      ~{true="--run_verbose" false="" run_verbose} \
+      ~{if (run_verbose) then "--run_verbose" else ""} \
       ~{if defined(seq_id) then ("--seq_id " +  '"' + seq_id + '"') else ""} \
-      ~{true="--k_value" false="" k_value} \
-      ~{true="--j_index" false="" j_index} \
-      ~{true="--threads" false="" threads} \
+      ~{if (k_value) then "--k_value" else ""} \
+      ~{if (j_index) then "--j_index" else ""} \
+      ~{if (threads) then "--threads" else ""} \
       ~{if defined(bin_size) then ("--bin_size " +  '"' + bin_size + '"') else ""} \
-      ~{true="--dist_est" false="" dist_est} \
-      ~{true="--no_dist_est" false="" no_dist_est} \
-      ~{true="--dist_median" false="" dist_median} \
-      ~{true="--dist_upper" false="" dist_upper} \
+      ~{if (dist_est) then "--dist_est" else ""} \
+      ~{if (no_dist_est) then "--no_dist_est" else ""} \
+      ~{if (dist_median) then "--dist_median" else ""} \
+      ~{if (dist_upper) then "--dist_upper" else ""} \
       ~{if defined(dist_tsv) then ("--dist_tsv " +  '"' + dist_tsv + '"') else ""} \
       ~{if defined(samples_tsv) then ("--samples_tsv " +  '"' + samples_tsv + '"') else ""} \
-      ~{true="--pair" false="" output_scaffolds_pairing}
+      ~{if (output_scaffolds_pairing) then "--pair" else ""}
   >>>
   parameter_meta {
     fof_name: "text file listing input filenames"
@@ -97,5 +97,9 @@ task Arcs {
     output_scaffolds_pairing: "output scaffolds pairing TSV with number of barcode links (no p-value threshold)supporting each of the 4 possible orientation"
     list_of_alignment_files: ""
     or: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_base_name = "${in_base_name}"
   }
 }

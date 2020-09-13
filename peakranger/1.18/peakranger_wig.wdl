@@ -3,7 +3,7 @@ version 1.0
 task PeakrangerWig {
   input {
     Boolean? arg_data_file
-    String? format
+    File? format
     Boolean? arg_output_location
     Boolean? generate_one_wig_file_chromosome
     Boolean? _compress_output
@@ -15,18 +15,18 @@ task PeakrangerWig {
   command <<<
     peakranger wig \
       ~{var_input} \
-      ~{true="-d" false="" arg_data_file} \
+      ~{if (arg_data_file) then "-d" else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
-      ~{true="-o" false="" arg_output_location} \
-      ~{true="-s" false="" generate_one_wig_file_chromosome} \
-      ~{true="-z" false="" _compress_output} \
-      ~{true="-x" false="" generate_one_wig_file_strand} \
-      ~{true="-l" false="" arg_read_length} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (arg_output_location) then "-o" else ""} \
+      ~{if (generate_one_wig_file_chromosome) then "-s" else ""} \
+      ~{if (_compress_output) then "-z" else ""} \
+      ~{if (generate_one_wig_file_strand) then "-x" else ""} \
+      ~{if (arg_read_length) then "-l" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     arg_data_file: "[ --data ] arg               data file"
-    format: "the format of the data file, can be one of :  bowtie, sam, bam and bed"
+    format: "the format of the data file, can be one of :\\nbowtie, sam, bam and bed"
     arg_output_location: "[ --output ] arg             the output location"
     generate_one_wig_file_chromosome: "[ --split ]                  generate one wig file per chromosome"
     _compress_output: "[ --gzip ]                   compress the output"
@@ -34,5 +34,8 @@ task PeakrangerWig {
     arg_read_length: "[ --ext_length ] arg (=200)  read extension length"
     verbose: "show progress"
     var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

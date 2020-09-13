@@ -1,7 +1,10 @@
 version 1.0
 
-task NetcdfMetadataInfo {
+task Netcdfmetadatainfo {
   command <<<
-    netcdf-metadata-info
+    netcdf_metadata_info
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

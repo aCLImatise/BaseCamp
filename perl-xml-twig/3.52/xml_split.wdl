@@ -4,4 +4,7 @@ task XmlSplit {
   command <<<
     xml_split
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

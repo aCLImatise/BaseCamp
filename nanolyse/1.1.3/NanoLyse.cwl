@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../NanoLyse.cwl
 inputs:
-- id: reference
+- id: in_reference
   doc: Specify a reference fasta file against which to filter.
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: log_file
+- id: in_log_file
   doc: Specify the path and filename for the log file.
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - NanoLyse

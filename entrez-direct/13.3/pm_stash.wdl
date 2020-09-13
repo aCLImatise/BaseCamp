@@ -1,7 +1,10 @@
 version 1.0
 
-task PmStash {
+task Pmstash {
   command <<<
-    pm-stash
+    pm_stash
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

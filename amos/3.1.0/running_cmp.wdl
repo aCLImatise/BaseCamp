@@ -1,17 +1,20 @@
 version 1.0
 
-task RunningCmp {
+task Runningcmp {
   input {
-    File file_one
-    File file_two
+    Int file_one
+    Int file_two
   }
   command <<<
-    running-cmp \
+    running_cmp \
       ~{file_one} \
       ~{file_two}
   >>>
   parameter_meta {
     file_one: ""
     file_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

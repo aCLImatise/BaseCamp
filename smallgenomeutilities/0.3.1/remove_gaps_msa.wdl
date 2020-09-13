@@ -2,7 +2,7 @@ version 1.0
 
 task RemoveGapsMsa {
   input {
-    String? name_write_sequences
+    File? name_write_sequences
     Int? minimum_case_coverage
     Boolean? use_bases_ones
     Boolean? print_loci_discarded
@@ -13,8 +13,8 @@ task RemoveGapsMsa {
       ~{msa_file} \
       ~{if defined(name_write_sequences) then ("-o " +  '"' + name_write_sequences + '"') else ""} \
       ~{if defined(minimum_case_coverage) then ("-p " +  '"' + minimum_case_coverage + '"') else ""} \
-      ~{true="-a" false="" use_bases_ones} \
-      ~{true="-q" false="" print_loci_discarded}
+      ~{if (use_bases_ones) then "-a" else ""} \
+      ~{if (print_loci_discarded) then "-q" else ""}
   >>>
   parameter_meta {
     name_write_sequences: "Name of output file to write sequences to"
@@ -22,5 +22,9 @@ task RemoveGapsMsa {
     use_bases_ones: "Use all bases, not just uppercase ones"
     print_loci_discarded: "Do not print which loci were discarded"
     msa_file: "file containing MSA"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_name_write_sequences = "${in_name_write_sequences}"
   }
 }

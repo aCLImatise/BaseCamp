@@ -11,4 +11,7 @@ task Ska {
   parameter_meta {
     subcommand: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

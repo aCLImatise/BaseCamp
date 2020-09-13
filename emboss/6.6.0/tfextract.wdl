@@ -4,4 +4,7 @@ task Tfextract {
   command <<<
     tfextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../proda.cwl
 inputs:
-- id: l
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -L
-- id: silent
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -silent
-- id: posterior
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -posterior
-- id: tran
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -tran
-- id: fast_a
+- id: in_fast_a
   doc: ''
   type: boolean
   inputBinding:
     prefix: -fasta
-- id: filename
+- id: in_tran
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -tran
+- id: in_posterior
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -posterior
+- id: in_silent
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -silent
+- id: in_l
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -L
+- id: in_filename
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - proda

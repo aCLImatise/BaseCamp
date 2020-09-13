@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../mfa2xmfa.cwl
 inputs:
-- id: mfa_alignment_input
+- id: in_mfa_alignment_input
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: x_mfa_alignment_output
+- id: in_x_mfa_alignment_output
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: unaligned
+- id: in_unaligned
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: fast_a
+- id: in_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mfa2xmfa

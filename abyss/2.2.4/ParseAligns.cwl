@@ -1,62 +1,60 @@
 class: CommandLineTool
 id: ../../../ParseAligns.cwl
 inputs:
-- id: min_align
+- id: in_min_align
   doc: minimum alignment length
-  type: string
+  type: long
   inputBinding:
     prefix: --min-align
-- id: dist
+- id: in_dist
   doc: write distance estimates to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --dist
-- id: frag
+- id: in_frag
   doc: write fragment sizes to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --frag
-- id: hist
+- id: in_hist
   doc: write the fragment size histogram to FILE
   type: File
   inputBinding:
     prefix: --hist
-- id: sam
+- id: in_sam
   doc: alignments are in SAM format
   type: boolean
   inputBinding:
     prefix: --sam
-- id: k_aligner
+- id: in_k_aligner
   doc: alignments are in KAligner format
   type: boolean
   inputBinding:
     prefix: --kaligner
-- id: cover
+- id: in_cover
   doc: coverage cut-off for distance estimates
   type: string
   inputBinding:
     prefix: --cover
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: k
+- id: in_k
   doc: ''
   type: boolean
   inputBinding:
     prefix: -k
-- id: km_er
+- id: in_km_er
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ParseAligns

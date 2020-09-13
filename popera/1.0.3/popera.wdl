@@ -2,13 +2,13 @@ version 1.0
 
 task Popera {
   input {
-    String? data
+    File? data
     String? name
-    String? bandwidth
-    String? threshold
+    Int? bandwidth
+    Float? threshold
     Int? minlength
-    String? threads
-    Boolean? bigwig
+    Int? threads
+    File? bigwig
     String? exclude_chr
   }
   command <<<
@@ -19,7 +19,7 @@ task Popera {
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(minlength) then ("--minlength " +  '"' + minlength + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--bigwig" false="" bigwig} \
+      ~{if (bigwig) then "--bigwig" else ""} \
       ~{if defined(exclude_chr) then ("--excludechr " +  '"' + exclude_chr + '"') else ""}
   >>>
   parameter_meta {
@@ -30,6 +30,10 @@ task Popera {
     minlength: "minimum length of hot spots, default=5"
     threads: "threads number or cpu number, default=4"
     bigwig: "whether out put bigwig file, default=False"
-    exclude_chr: "Don't count those DHs, example='-x ChrM,ChrC'"
+    exclude_chr: "Don't count those DHs, example='-x ChrM,ChrC'\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_bigwig = "${in_bigwig}"
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task _acdtrace {
+task Acdtrace {
   command <<<
     _acdtrace
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Mispipe {
   command <<<
     mispipe
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

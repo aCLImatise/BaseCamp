@@ -4,4 +4,7 @@ task Baseml {
   command <<<
     baseml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

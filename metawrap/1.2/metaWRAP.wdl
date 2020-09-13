@@ -6,9 +6,12 @@ task MetaWRAP {
   }
   command <<<
     metaWRAP \
-      ~{true="--show-config" false="" show_config}
+      ~{if (show_config) then "--show-config" else ""}
   >>>
   parameter_meta {
     show_config: "show where the metawrap configuration files are stored"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

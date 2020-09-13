@@ -1,78 +1,78 @@
 class: CommandLineTool
 id: ../../../TEsorter.cwl
 inputs:
-- id: hmm_database
+- id: in_hmm_database
   doc: the database used [default=rexdb]
   type: string
   inputBinding:
     prefix: --hmm-database
-- id: seq_type
+- id: in_seq_type
   doc: "'nucl' for DNA or 'prot' for protein [default=nucl]"
   type: string
   inputBinding:
     prefix: --seq-type
-- id: prefix
+- id: in_prefix
   doc: output prefix [default='{-s}.{-db}']
   type: string
   inputBinding:
     prefix: --prefix
-- id: force_write_hmms_can
-  doc: if False, will use the existed hmmscan outfile and skip hmmscan [default=False]
+- id: in_force_write_hmms_can
+  doc: "if False, will use the existed hmmscan outfile and\nskip hmmscan [default=False]"
   type: boolean
   inputBinding:
     prefix: --force-write-hmmscan
-- id: processors
+- id: in_processors
   doc: processors to use [default=4]
-  type: string
+  type: long
   inputBinding:
     prefix: --processors
-- id: tmp_dir
+- id: in_tmp_dir
   doc: directory for temporary files [default=./tmp]
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tmp-dir
-- id: min_coverage
-  doc: mininum coverage for protein domains in HMMScan output [default=20]
+- id: in_min_coverage
+  doc: "mininum coverage for protein domains in HMMScan output\n[default=20]"
   type: long
   inputBinding:
     prefix: --min-coverage
-- id: max_evalue
-  doc: maxinum E-value for protein domains in HMMScan output [default=0.001]
+- id: in_max_evalue
+  doc: "maxinum E-value for protein domains in HMMScan output\n[default=0.001]"
   type: long
   inputBinding:
     prefix: --max-evalue
-- id: disable_pass_two
-  doc: do not further classify the unclassified sequences [default=False for `nucl`,
-    True for `prot`]
+- id: in_disable_pass_two
+  doc: "do not further classify the unclassified sequences\n[default=False for `nucl`,\
+    \ True for `prot`]"
   type: boolean
   inputBinding:
     prefix: --disable-pass2
-- id: pass_two_rule
-  doc: classifying rule [identity-coverage-length] in pass-2 based on similarity [default=80-80-80]
-  type: string
+- id: in_pass_two_rule
+  doc: "classifying rule [identity-coverage-length] in pass-2\nbased on similarity\
+    \ [default=80-80-80]"
+  type: long
   inputBinding:
     prefix: --pass2-rule
-- id: no_library
-  doc: do not generate a library file for RepeatMasker [default=False]
+- id: in_no_library
+  doc: "do not generate a library file for RepeatMasker\n[default=False]"
   type: boolean
   inputBinding:
     prefix: --no-library
-- id: no_reverse
-  doc: do not reverse complement sequences if they are detected in minus strand [default=False]
+- id: in_no_reverse
+  doc: "do not reverse complement sequences if they are\ndetected in minus strand\
+    \ [default=False]"
   type: boolean
   inputBinding:
     prefix: --no-reverse
-- id: no_cleanup
-  doc: do not clean up the temporary directory [default=False]
+- id: in_no_cleanup
+  doc: "do not clean up the temporary directory\n[default=False]\n"
   type: boolean
   inputBinding:
     prefix: --no-cleanup
-- id: sequence
-  doc: input TE sequences in fasta format [required]
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - TEsorter

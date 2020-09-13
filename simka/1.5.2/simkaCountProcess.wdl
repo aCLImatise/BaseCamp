@@ -3,18 +3,21 @@ version 1.0
 task SimkaCountProcess {
   input {
     String nohup
-    String var_command
-    String? arg
+    String prog
+    String args
   }
   command <<<
     simkaCountProcess \
       ~{nohup} \
-      ~{var_command} \
-      ~{arg}
+      ~{prog} \
+      ~{args}
   >>>
   parameter_meta {
     nohup: ""
-    var_command: ""
-    arg: ""
+    prog: ""
+    args: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

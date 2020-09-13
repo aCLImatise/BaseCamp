@@ -1,5 +1,39 @@
 &id001 !Command
+command:
+- classifier
+- samplefile
 positional:
+- !Positional
+  description: '- classify one or multiple samples'
+  position: 0
+  name: classify
+  optional: false
+- !Positional
+  description: '- compare two samples'
+  position: 0
+  name: libcompare
+  optional: false
+- !Positional
+  description: '- leave one (sequence or taxon) out accuracy testing'
+  position: 1
+  name: loot
+  optional: false
+- !Positional
+  description: '- merge classification detail result files to create a taxon assignment
+    counts file'
+  position: 2
+  name: merge-detail
+  optional: false
+- !Positional
+  description: '- merge multiple taxon assignment count files to into one count file'
+  position: 3
+  name: merge-count
+  optional: false
+- !Positional
+  description: '- remove identical or any sequence contained by another sequence'
+  position: 0
+  name: rm-dupseq
+  optional: false
 - !Positional
   description: '- calculate and plot the similarities within taxa'
   position: 0
@@ -16,15 +50,14 @@ positional:
   name: version
   optional: false
 named: []
-command:
-- classifier
-- samplefile
 parent: !Command
+  command:
+  - classifier
   positional: []
   named:
   - !Flag
-    description: the output file containing the number of matching assignments out
-      of 100 bootstraps for major ranks. Default is null
+    description: "the output file containing the number of\nmatching assignments out\
+      \ of 100 bootstraps for\nmajor ranks. Default is null"
     synonyms:
     - -b
     - --bootstrap_outfile
@@ -32,8 +65,8 @@ parent: !Command
       name: arg
     optional: true
   - !Flag
-    description: assignment confidence cutoff used to determine the assignment count
-      for each taxon. Range [0-1], Default is 0.8.
+    description: "assignment confidence cutoff used to determine\nthe assignment count\
+      \ for each taxon. Range\n[0-1], Default is 0.8."
     synonyms:
     - -c
     - --conf
@@ -41,8 +74,8 @@ parent: !Command
       name: arg
     optional: true
   - !Flag
-    description: the tab delimited metadata file for the samples, with first row containing
-      attribute name and first column containing the sample name
+    description: "the tab delimited metadata file for the samples,\nwith first row\
+      \ containing attribute name and\nfirst column containing the sample name"
     synonyms:
     - -d
     - --metadata
@@ -50,14 +83,14 @@ parent: !Command
       name: arg
     optional: true
   - !Flag
-    description: 'tab-delimited output format: [allrank|fixrank|biom|filterbyconf|db].
-      Default is allRank. allrank: outputs the results for all ranks applied for each
-      sequence: seqname, orientation, taxon name, rank, conf, ... fixrank: only outputs
-      the results for fixed ranks in order: domain, phylum, class, order, family,
-      genus biom: outputs rich dense biom format if OTU or metadata provided filterbyconf:
-      only outputs the results for major ranks as in fixrank, results below the confidence
-      cutoff were bin to a higher rank unclassified_node db: outputs the seqname,
-      trainset_no, tax_id, conf.'
+    description: "tab-delimited output format:\n[allrank|fixrank|biom|filterbyconf|db].\
+      \ Default\nis allRank.\nallrank: outputs the results for all ranks\napplied\
+      \ for each sequence: seqname, orientation,\ntaxon name, rank, conf, ...\nfixrank:\
+      \ only outputs the results for fixed\nranks in order: domain, phylum, class,\
+      \ order,\nfamily, genus\nbiom: outputs rich dense biom format if OTU or\nmetadata\
+      \ provided\nfilterbyconf: only outputs the results for major\nranks as in fixrank,\
+      \ results below the\nconfidence cutoff were bin to a higher rank\nunclassified_node\n\
+      db: outputs the seqname, trainset_no, tax_id,\nconf."
     synonyms:
     - -f
     - --format
@@ -65,8 +98,8 @@ parent: !Command
       name: arg
     optional: true
   - !Flag
-    description: 16srrna, fungallsu, fungalits_warcup, fungalits_unite. Default is
-      16srrna. This option can be overwritten by -t option
+    description: "16srrna, fungallsu, fungalits_warcup,\nfungalits_unite. Default\
+      \ is 16srrna. This option\ncan be overwritten by -t option"
     synonyms:
     - -g
     - --gene
@@ -74,8 +107,8 @@ parent: !Command
       name: arg
     optional: true
   - !Flag
-    description: tab-delimited output file containing the assignment count for each
-      taxon in the hierarchical format. Default is null.
+    description: "tab-delimited output file containing the\nassignment count for each\
+      \ taxon in the\nhierarchical format. Default is null."
     synonyms:
     - -h
     - --hier_outfile
@@ -83,8 +116,8 @@ parent: !Command
       name: arg
     optional: true
   - !Flag
-    description: the input clluster biom file. The classification result will replace
-      the taxonomy of the corresponding cluster id.
+    description: "the input clluster biom file. The classification\nresult will replace\
+      \ the taxonomy of the\ncorresponding cluster id."
     synonyms:
     - -m
     - --biomFile
@@ -92,7 +125,7 @@ parent: !Command
       name: arg
     optional: true
   - !Flag
-    description: tab-delimited text output file for classification assignment.
+    description: "tab-delimited text output file for\nclassification assignment."
     synonyms:
     - -o
     - --outputFile
@@ -107,8 +140,8 @@ parent: !Command
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: the output file containing the sequence names that are too short
-      to be classified
+    description: "the output file containing the sequence names\nthat are too short\
+      \ to be classified"
     synonyms:
     - -s
     - --shortseq_outfile
@@ -116,9 +149,9 @@ parent: !Command
       name: arg
     optional: true
   - !Flag
-    description: 'property file containing the mapping of the training files if not
-      using the default. Note: the training files and the property file should be
-      in the same directory.'
+    description: "property file containing the mapping of the\ntraining files if not\
+      \ using the default. Note:\nthe training files and the property file should\n\
+      be in the same directory."
     synonyms:
     - -t
     - --train_propfile
@@ -126,19 +159,18 @@ parent: !Command
       name: arg
     optional: true
   - !Flag
-    description: minimum number of words for each bootstrap trial. Default(maximum)
-      is 1/8 of the words of each sequence. Minimum is 5
+    description: "minimum number of words for each bootstrap\ntrial. Default(maximum)\
+      \ is 1/8 of the words of\neach sequence. Minimum is 5\n"
     synonyms:
     - -w
     - --minWords
     args: !SimpleFlagArg
       name: arg
     optional: true
-  command:
-  - classifier
   parent:
   subcommands:
   - *id001
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -189,6 +221,7 @@ parent: !Command
   generated_using: &id002
   - --help
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

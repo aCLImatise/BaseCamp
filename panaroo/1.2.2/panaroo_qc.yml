@@ -1,9 +1,11 @@
 !Command
+command:
+- panaroo-qc
 positional:
 - !Positional
-  description: ''
+  description: --version             show program's version number and exit
   position: 0
-  name: plot_panaroo_qc
+  name: quantification.
   optional: false
 named:
 - !Flag
@@ -21,13 +23,13 @@ named:
   args: !ChoiceFlagArg
     choices: !!set
       ? contam
-      ? ngenes
+      ? all
       ? ncontigs
       ? mds
-      ? all
+      ? ngenes
   optional: true
 - !Flag
-  description: reference mash database for contamination quantification.
+  description: reference mash database for contamination
   synonyms:
   - --ref_db
   args: !SimpleFlagArg
@@ -42,17 +44,16 @@ named:
     name: INPUT_FILES
   optional: true
 - !Flag
-  description: location of an output directory
+  description: "location of an output directory\n"
   synonyms:
   - -o
   - --out_dir
   args: !SimpleFlagArg
     name: OUTPUT_DIR
   optional: true
-command:
-- panaroo-qc
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -61,18 +62,13 @@ help_flag: !Flag
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: plot_panaroo_qc [-h] -i INPUT_FILES [INPUT_FILES ...] -o OUTPUT_DIR\n\
-  \                       [-t N_CPU]\n                       [--graph_type {contam,ngenes,mds,all,ncontigs}]\n\
+  \                       [-t N_CPU]\n                       [--graph_type {ncontigs,all,contam,ngenes,mds}]\n\
   \                       [--ref_db REF_DB] [--version]\n\nGenerate quality control\
   \ plots prior to a Panaroo run\n\noptional arguments:\n  -h, --help            show\
   \ this help message and exit\n  -t N_CPU, --threads N_CPU\n                    \
-  \    number of threads to use (default=1)\n  --graph_type {contam,ngenes,mds,all,ncontigs}\n\
+  \    number of threads to use (default=1)\n  --graph_type {ncontigs,all,contam,ngenes,mds}\n\
   \                        the type of graph to generate (default='all')\n  --ref_db\
   \ REF_DB       reference mash database for contamination\n                     \
   \   quantification.\n  --version             show program's version number and exit\n\

@@ -25,18 +25,18 @@ task BcftoolsNorm {
     bcftools norm \
       ~{in_dot_vcf_do_tgz} \
       ~{if defined(check_ref) then ("--check-ref " +  '"' + check_ref + '"') else ""} \
-      ~{true="--remove-duplicates" false="" remove_duplicates} \
+      ~{if (remove_duplicates) then "--remove-duplicates" else ""} \
       ~{if defined(rm_dup) then ("--rm-dup " +  '"' + rm_dup + '"') else ""} \
       ~{if defined(fast_a_ref) then ("--fasta-ref " +  '"' + fast_a_ref + '"') else ""} \
-      ~{true="--force" false="" force} \
-      ~{true="--multiallelics" false="" multi_allelic_s} \
-      ~{true="--no-version" false="" no_version} \
-      ~{true="--do-not-normalize" false="" do_not_normalize} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (multi_allelic_s) then "--multiallelics" else ""} \
+      ~{if (no_version) then "--no-version" else ""} \
+      ~{if (do_not_normalize) then "--do-not-normalize" else ""} \
       ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
       ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
-      ~{true="--strict-filter" false="" strict_filter} \
+      ~{if (strict_filter) then "--strict-filter" else ""} \
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
@@ -61,5 +61,9 @@ task BcftoolsNorm {
     threads: "use multithreading with <int> worker threads [0]"
     site_win: "buffer for sorting lines which changed position during realignment [1000]"
     in_dot_vcf_do_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_write_output_file = "${in_write_output_file}"
   }
 }

@@ -4,4 +4,7 @@ task Fixfasta {
   command <<<
     fixfasta
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

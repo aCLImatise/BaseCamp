@@ -2,52 +2,62 @@ version 1.0
 
 task Rainbow {
   input {
-    String? input_fastafastq_file_supports_multiple
-    String? input_fastafastq_file_supports_multiple_
-    Int? read_default_variable
+    Int? input_fastafastq_file_supports_multiple
+    Int? input_fastafastq_file_supports_multiple_
+    Int? read_length_default
     Int? maximum_mismatches
     Int? exactly_matching_threshold
     Boolean? low_level_polymorphism
-    String? input_rbasm_output
+    File? input_file
+    File? output_file
+    Int? kallele_min_variants
+    Int? kallele_divide_regardless
+    Float? frequency_min_variant
     Boolean? output_assembly
-    String? output_file_line
     Int? maximum_number_merge
-    Float? minimum_fraction_valid
-    Int? minimum_number_opened
-    Int? maximum_number_opened
-    String cmd
+    Int? minimum_number_assemble
+    Int? maximum_number_assemble
+    String merge
   }
   command <<<
     rainbow \
-      ~{cmd} \
+      ~{merge} \
       ~{if defined(input_fastafastq_file_supports_multiple) then ("-1 " +  '"' + input_fastafastq_file_supports_multiple + '"') else ""} \
       ~{if defined(input_fastafastq_file_supports_multiple_) then ("-2 " +  '"' + input_fastafastq_file_supports_multiple_ + '"') else ""} \
-      ~{if defined(read_default_variable) then ("-l " +  '"' + read_default_variable + '"') else ""} \
+      ~{if defined(read_length_default) then ("-l " +  '"' + read_length_default + '"') else ""} \
       ~{if defined(maximum_mismatches) then ("-m " +  '"' + maximum_mismatches + '"') else ""} \
       ~{if defined(exactly_matching_threshold) then ("-e " +  '"' + exactly_matching_threshold + '"') else ""} \
-      ~{true="-L" false="" low_level_polymorphism} \
-      ~{if defined(input_rbasm_output) then ("-i " +  '"' + input_rbasm_output + '"') else ""} \
-      ~{true="-a" false="" output_assembly} \
-      ~{if defined(output_file_line) then ("-o " +  '"' + output_file_line + '"') else ""} \
+      ~{if (low_level_polymorphism) then "-L" else ""} \
+      ~{if defined(input_file) then ("-i " +  '"' + input_file + '"') else ""} \
+      ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
+      ~{if defined(kallele_min_variants) then ("-k " +  '"' + kallele_min_variants + '"') else ""} \
+      ~{if defined(kallele_divide_regardless) then ("-K " +  '"' + kallele_divide_regardless + '"') else ""} \
+      ~{if defined(frequency_min_variant) then ("-f " +  '"' + frequency_min_variant + '"') else ""} \
+      ~{if (output_assembly) then "-a" else ""} \
       ~{if defined(maximum_number_merge) then ("-N " +  '"' + maximum_number_merge + '"') else ""} \
-      ~{if defined(minimum_fraction_valid) then ("-f " +  '"' + minimum_fraction_valid + '"') else ""} \
-      ~{if defined(minimum_number_opened) then ("-r " +  '"' + minimum_number_opened + '"') else ""} \
-      ~{if defined(maximum_number_opened) then ("-R " +  '"' + maximum_number_opened + '"') else ""}
+      ~{if defined(minimum_number_assemble) then ("-r " +  '"' + minimum_number_assemble + '"') else ""} \
+      ~{if defined(maximum_number_assemble) then ("-R " +  '"' + maximum_number_assemble + '"') else ""}
   >>>
   parameter_meta {
     input_fastafastq_file_supports_multiple: "Input fasta/fastq file, supports multiple '-1'"
     input_fastafastq_file_supports_multiple_: "Input fasta/fastq file, supports multiple '-2' [null]"
-    read_default_variable: "Read length, default: 0 variable"
+    read_length_default: "Read length, default: 0 variable"
     maximum_mismatches: "Maximum mismatches [4]"
     exactly_matching_threshold: "Exactly matching threshold [2000]"
     low_level_polymorphism: "Low level of polymorphism"
-    input_rbasm_output: "Input rbasm output file [stdin]"
+    input_file: "Input file [stdin]"
+    output_file: "Output file [stdout]"
+    kallele_min_variants: "K_allele, min variants to create a new group [2]"
+    kallele_divide_regardless: "K_allele, divide regardless of frequency when num of variants exceed this value [50]"
+    frequency_min_variant: "Frequency, min variant frequency to create a new group [0.2]"
     output_assembly: "output assembly"
-    output_file_line: "Output file for merged contigs, one line per cluster [stdout]"
     maximum_number_merge: "Maximum number of divided clusters to merge [300]"
-    minimum_fraction_valid: "Minimum fraction of similarity when assembly (valid only when '-a' is opened) [0.90]"
-    minimum_number_opened: "Minimum number of reads to assemble (valid only when '-a' is opened) [5]"
-    maximum_number_opened: "Maximum number of reads to assemble (valid only when '-a' is opened) [300]"
-    cmd: ""
+    minimum_number_assemble: "Minimum number of reads to assemble (valid only when '-a' is opened) [5]"
+    maximum_number_assemble: "Maximum number of reads to assemble (valid only when '-a' is opened) [300]"
+    merge: "Input File Format: <seqid:int>\\t<cluster_id:int>\\t<read1:string>\\t<read2:string>[\\t<pre_cluster_id:int>]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

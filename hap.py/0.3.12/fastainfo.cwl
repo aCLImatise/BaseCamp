@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../fastainfo.cwl
 inputs:
-- id: input_file
+- id: in_input_file
   doc: The input files
-  type: string
+  type: File
   inputBinding:
     prefix: --input-file
-- id: output_file
+- id: in_output_file
   doc: The output file name.
-  type: string
+  type: File
   inputBinding:
     prefix: --output-file
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: The output file name.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - fastainfo

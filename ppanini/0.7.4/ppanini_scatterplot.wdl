@@ -2,28 +2,32 @@ version 1.0
 
 task PpaniniScatterplot {
   input {
+    String? p_panini_output
+    File? diamond_output
     Boolean? master_plot
     File? path
-    String? outfile
+    File? outfile
     Int? size
-    String? i
-    String? m_eight
   }
   command <<<
     ppanini_scatterplot \
-      ~{true="--master-plot" false="" master_plot} \
+      ~{if defined(p_panini_output) then ("--ppanini-output " +  '"' + p_panini_output + '"') else ""} \
+      ~{if defined(diamond_output) then ("--diamond-output " +  '"' + diamond_output + '"') else ""} \
+      ~{if (master_plot) then "--master-plot" else ""} \
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
-      ~{if defined(size) then ("--size " +  '"' + size + '"') else ""} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(m_eight) then ("-m8 " +  '"' + m_eight + '"') else ""}
+      ~{if defined(size) then ("--size " +  '"' + size + '"') else ""}
   >>>
   parameter_meta {
+    p_panini_output: "PPANINI output table"
+    diamond_output: "<feature id>\\na mapping file of gene-metagenom)"
     master_plot: "plotting master figure of the paper"
     path: "path for inputs and/or outputs"
     outfile: "output file"
     size: "size of the plot in inches"
-    i: ""
-    m_eight: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
   }
 }

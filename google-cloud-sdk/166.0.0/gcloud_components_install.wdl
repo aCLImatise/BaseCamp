@@ -1,0 +1,23 @@
+version 1.0
+
+task GcloudComponentsInstall {
+  input {
+    String? component_ids
+    String? optional
+    String? flags
+  }
+  command <<<
+    gcloud components install \
+      ~{component_ids} \
+      ~{optional} \
+      ~{flags}
+  >>>
+  parameter_meta {
+    component_ids: ""
+    optional: ""
+    flags: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
+}

@@ -1,7 +1,10 @@
 version 1.0
 
-task SpadesIonhammer {
+task Spadesionhammer {
   command <<<
-    spades-ionhammer
+    spades_ionhammer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

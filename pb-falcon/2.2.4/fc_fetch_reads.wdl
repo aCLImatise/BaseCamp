@@ -3,9 +3,9 @@ version 1.0
 task FcFetchReads {
   input {
     String? base_dir
-    String? fof_n
-    String? ctg_id
-    String? out_dir
+    File? fof_n
+    File? ctg_id
+    Directory? out_dir
     Int? min_ctg_lenth
   }
   command <<<
@@ -20,7 +20,11 @@ task FcFetchReads {
     base_dir: "the base working dir of a falcon assembly"
     fof_n: "path to the file of the list of raw read fasta files"
     ctg_id: "contig identifier in the contig fasta file"
-    out_dir: "the output base_dir, default to `base_dir/3-unzip/reads` directory"
-    min_ctg_lenth: "the minimum length of the contig for the outputs, default=20000"
+    out_dir: "the output base_dir, default to\\n`base_dir/3-unzip/reads` directory"
+    min_ctg_lenth: "the minimum length of the contig for the outputs,\\ndefault=20000\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out_dir = "${in_out_dir}"
   }
 }

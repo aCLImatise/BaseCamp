@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../hca_dss_delete_bundle.cwl
 inputs:
-- id: reason
+- id: in_reason
   doc: User-friendly reason for the bundle or timestamp-specfic bundle deletion.
   type: string
   inputBinding:
     prefix: --reason
-- id: uuid
+- id: in_uuid
   doc: A RFC4122-compliant ID for the bundle.
-  type: string
+  type: long
   inputBinding:
     prefix: --uuid
-- id: replica
+- id: in_replica
   doc: Replica to write to.
   type: string
   inputBinding:
     prefix: --replica
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

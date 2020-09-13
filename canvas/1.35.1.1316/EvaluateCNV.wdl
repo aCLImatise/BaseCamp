@@ -4,4 +4,7 @@ task EvaluateCNV {
   command <<<
     EvaluateCNV
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

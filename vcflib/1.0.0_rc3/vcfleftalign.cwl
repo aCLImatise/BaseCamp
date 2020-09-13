@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../vcfleftalign.cwl
 inputs:
-- id: reference
+- id: in_reference
   doc: Use this reference as a basis for realignment.
   type: File
   inputBinding:
     prefix: --reference
-- id: window
+- id: in_window
   doc: Use a window of this many bp when left aligning (150).
-  type: string
+  type: long
   inputBinding:
     prefix: --window
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfleftalign

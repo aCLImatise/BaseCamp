@@ -23,4 +23,7 @@ task Mfa2xmfa {
     fast_a: ""
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

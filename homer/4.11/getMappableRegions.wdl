@@ -4,4 +4,7 @@ task GetMappableRegions {
   command <<<
     getMappableRegions
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

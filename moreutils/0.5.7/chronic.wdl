@@ -4,4 +4,7 @@ task Chronic {
   command <<<
     chronic
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

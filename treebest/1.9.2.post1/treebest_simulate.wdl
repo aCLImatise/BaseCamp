@@ -2,10 +2,10 @@ version 1.0
 
 task TreebestSimulate {
   input {
-    String? duplication_probability
-    String? loss_probability
-    String? loss_probability_duplication
-    String? max_height
+    Float? duplication_probability
+    Float? loss_probability
+    Float? loss_probability_duplication
+    Int? max_height
     Boolean? show_internal_name
   }
   command <<<
@@ -14,7 +14,7 @@ task TreebestSimulate {
       ~{if defined(loss_probability) then ("-l " +  '"' + loss_probability + '"') else ""} \
       ~{if defined(loss_probability_duplication) then ("-p " +  '"' + loss_probability_duplication + '"') else ""} \
       ~{if defined(max_height) then ("-m " +  '"' + max_height + '"') else ""} \
-      ~{true="-n" false="" show_internal_name}
+      ~{if (show_internal_name) then "-n" else ""}
   >>>
   parameter_meta {
     duplication_probability: "duplication probability [0.05]"
@@ -22,5 +22,8 @@ task TreebestSimulate {
     loss_probability_duplication: "loss probability after duplication [0.25]"
     max_height: "max height [0.25]"
     show_internal_name: "not show internal name"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

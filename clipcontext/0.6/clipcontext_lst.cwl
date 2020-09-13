@@ -1,35 +1,43 @@
 class: CommandLineTool
 id: ../../../clipcontext_lst.cwl
 inputs:
-- id: min_len
-  doc: 'Accept only transcripts with length >= --min-len (default: False)'
+- id: in_min_len
+  doc: "Accept only transcripts with length >= --min-len (default:\nFalse)"
   type: long
   inputBinding:
     prefix: --min-len
-- id: strict
-  doc: 'Accept only transcripts with transcript support level (TSL) 1-5 (default:
-    False)'
+- id: in_strict
+  doc: "Accept only transcripts with transcript support level (TSL)\n1-5 (default:\
+    \ False)"
   type: boolean
   inputBinding:
     prefix: --strict
-- id: add_infos
-  doc: 'Add additional information columns (gene ID, TSL, length) to output file (default:
-    False)'
+- id: in_add_infos
+  doc: "Add additional information columns (gene ID, TSL, length) to\noutput file\
+    \ (default: False)"
   type: boolean
   inputBinding:
     prefix: --add-infos
-- id: gtf
-  doc: 'Genomic annotations (hg38) GTF file (.gtf or .gtf.gz) (NOTE: tested with Ensembl
-    GTF files, expects transcript support level (TSL) information)'
-  type: string
+- id: in_gtf
+  doc: "Genomic annotations (hg38) GTF file (.gtf or .gtf.gz) (NOTE:\ntested with\
+    \ Ensembl GTF files, expects transcript support\nlevel (TSL) information)"
+  type: File
   inputBinding:
     prefix: --gtf
-- id: out
+- id: in_out
   doc: Output transcript IDs list file
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: Output transcript IDs list file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - clipcontext

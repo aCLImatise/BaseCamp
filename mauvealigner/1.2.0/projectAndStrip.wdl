@@ -11,4 +11,7 @@ task ProjectAndStrip {
   parameter_meta {
     seq_n: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

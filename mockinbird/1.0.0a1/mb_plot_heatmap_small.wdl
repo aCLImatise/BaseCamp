@@ -1,20 +1,20 @@
 version 1.0
 
-task MbPlotHeatmapSmall {
+task Mbplotheatmapsmall {
   input {
     String? downstream
     String? upstream
     Int? min
     Int? max
-    String? x_bins
-    String? y_bins
+    Int? x_bins
+    Int? y_bins
     String? xp_x
     String? yp_x
     Boolean? remove
     Boolean? verbose
   }
   command <<<
-    mb-plot-heatmap-small \
+    mb_plot_heatmap_small \
       ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""} \
       ~{if defined(upstream) then ("--upstream " +  '"' + upstream + '"') else ""} \
       ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
@@ -23,8 +23,8 @@ task MbPlotHeatmapSmall {
       ~{if defined(y_bins) then ("--ybins " +  '"' + y_bins + '"') else ""} \
       ~{if defined(xp_x) then ("--xpx " +  '"' + xp_x + '"') else ""} \
       ~{if defined(yp_x) then ("--ypx " +  '"' + yp_x + '"') else ""} \
-      ~{true="--remove" false="" remove} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (remove) then "--remove" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     downstream: "set downstream range"
@@ -37,5 +37,8 @@ task MbPlotHeatmapSmall {
     yp_x: "height of final plot in px"
     remove: "remove temporary text files"
     verbose: "verbose output"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

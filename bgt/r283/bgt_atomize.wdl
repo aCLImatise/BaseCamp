@@ -12,11 +12,11 @@ task BgtAtomize {
   command <<<
     bgt atomize \
       ~{in_dot_bcf} \
-      ~{true="-b" false="" bcf_output} \
-      ~{true="-S" false="" vcf_input} \
+      ~{if (bcf_output) then "-b" else ""} \
+      ~{if (vcf_input) then "-S" else ""} \
       ~{if defined(list_contig_names) then ("-t " +  '"' + list_contig_names + '"') else ""} \
-      ~{true="-M" false="" use_m_multiallelic} \
-      ~{true="-0" false="" use_multiallelic_genotype}
+      ~{if (use_m_multiallelic) then "-M" else ""} \
+      ~{if (use_multiallelic_genotype) then "-0" else ""}
   >>>
   parameter_meta {
     bcf_output: "BCF output"
@@ -25,5 +25,8 @@ task BgtAtomize {
     use_m_multiallelic: "use <M> at a multi-allelic site (override -0)"
     use_multiallelic_genotype: "use 0 at a multi-allelic genotype"
     in_dot_bcf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

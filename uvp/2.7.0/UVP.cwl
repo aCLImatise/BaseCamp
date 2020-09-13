@@ -1,82 +1,90 @@
 class: CommandLineTool
 id: ../../../UVP.cwl
 inputs:
-- id: fast_q
+- id: in_fast_q
   doc: Input FASTQ file
-  type: string
+  type: File
   inputBinding:
     prefix: --fastq
-- id: reference
+- id: in_reference
   doc: Reference genome in FASTA format.
   type: string
   inputBinding:
     prefix: --reference
-- id: name
+- id: in_name
   doc: Sample name to be used as a prefix.
   type: string
   inputBinding:
     prefix: --name
-- id: fast_q_two
+- id: in_fast_q_two
   doc: Second paired-end FASTQ file.
-  type: string
+  type: long
   inputBinding:
     prefix: --fastq2
-- id: outdir
+- id: in_outdir
   doc: Output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: keep_files
+- id: in_keep_files
   doc: Keep intermediate files.
   type: boolean
   inputBinding:
     prefix: --keepfiles
-- id: bwa
+- id: in_bwa
   doc: Align Illumina reads using bwa. (Default)
   type: boolean
   inputBinding:
     prefix: --bwa
-- id: all
+- id: in_all
   doc: Run all SNP / InDel calling programs.
   type: boolean
   inputBinding:
     prefix: --all
-- id: g_atk
+- id: in_g_atk
   doc: Run GATK SNP / InDel calling. (Default)
   type: boolean
   inputBinding:
     prefix: --gatk
-- id: sam_tools
+- id: in_sam_tools
   doc: Run SamTools SNP / InDel calling.
   type: boolean
   inputBinding:
     prefix: --samtools
-- id: annotate
+- id: in_annotate
   doc: Run snpEff functional annotation.
   type: boolean
   inputBinding:
     prefix: --annotate
-- id: threads
+- id: in_threads
   doc: Num CPU threads for parallel execution
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: kraken_db
+- id: in_kraken_db
   doc: Path to kraken database
-  type: string
+  type: File
   inputBinding:
     prefix: --krakendb
-- id: config
+- id: in_config
   doc: Config file
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: verbose
+- id: in_verbose
   doc: Produce status updates of the run.
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: Output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - UVP

@@ -7,21 +7,23 @@ task Mreps {
     String? res
     String? from
     String? to
-    String? minsize
-    String? maxsize
+    Int? minsize
+    Int? maxsize
     String? min_period
     String? max_period
     String? exp
     Boolean? allow_small
-    String? win
+    Int? win
     Boolean? version
     File? xml_output
     Boolean? no_print
+    String? options
   }
   command <<<
     mreps \
+      ~{options} \
       ~{if defined(specifies_sequence_command) then ("-s " +  '"' + specifies_sequence_command + '"') else ""} \
-      ~{true="-fasta" false="" fast_a} \
+      ~{if (fast_a) then "-fasta" else ""} \
       ~{if defined(res) then ("-res " +  '"' + res + '"') else ""} \
       ~{if defined(from) then ("-from " +  '"' + from + '"') else ""} \
       ~{if defined(to) then ("-to " +  '"' + to + '"') else ""} \
@@ -30,16 +32,16 @@ task Mreps {
       ~{if defined(min_period) then ("-minperiod " +  '"' + min_period + '"') else ""} \
       ~{if defined(max_period) then ("-maxperiod " +  '"' + max_period + '"') else ""} \
       ~{if defined(exp) then ("-exp " +  '"' + exp + '"') else ""} \
-      ~{true="-allowsmall" false="" allow_small} \
+      ~{if (allow_small) then "-allowsmall" else ""} \
       ~{if defined(win) then ("-win " +  '"' + win + '"') else ""} \
-      ~{true="-version" false="" version} \
+      ~{if (version) then "-version" else ""} \
       ~{if defined(xml_output) then ("-xmloutput " +  '"' + xml_output + '"') else ""} \
-      ~{true="-noprint" false="" no_print}
+      ~{if (no_print) then "-noprint" else ""}
   >>>
   parameter_meta {
     specifies_sequence_command: ": specifies the sequence in command line"
-    fast_a: ": allows DNA sequences in FASTA format "
-    res: ": \"resolution\" (error level)"
+    fast_a: ": allows DNA sequences in FASTA format"
+    res: ": \\\"resolution\\\" (error level)"
     from: ": starting position n"
     to: ": end position n"
     minsize: ": repeats whose size is at least n"
@@ -51,6 +53,10 @@ task Mreps {
     win: ": process by sliding windows of size 2*n overlaping by n"
     version: ": show version"
     xml_output: ": outputs to <file> in xml format"
-    no_print: ": if specified, the repetition sequences will not be output "
+    no_print: ": if specified, the repetition sequences will not be output"
+    options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

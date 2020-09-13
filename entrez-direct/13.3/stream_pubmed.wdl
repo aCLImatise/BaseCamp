@@ -1,7 +1,10 @@
 version 1.0
 
-task StreamPubmed {
+task Streampubmed {
   command <<<
-    stream-pubmed
+    stream_pubmed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

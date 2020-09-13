@@ -14,4 +14,7 @@ task NovoutilBiseqstrandfixer {
     input_dots_am: ""
     output_dots_am: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

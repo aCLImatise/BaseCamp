@@ -4,4 +4,7 @@ task GmtkPrint {
   command <<<
     gmtkPrint
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

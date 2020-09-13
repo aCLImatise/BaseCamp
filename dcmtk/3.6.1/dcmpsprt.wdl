@@ -2,14 +2,16 @@ version 1.0
 
 task Dcmpsprt {
   input {
+    Boolean? arguments
     Boolean? _quiet_quiet
-    Boolean? _verbose_verbose
-    Boolean? _debug_debug
+    Boolean? _verbose_details
+    Boolean? _debug_information
     Boolean? ll
     Boolean? lc
-    Boolean? _config_ilename
+    Boolean? _config_stringprocess
     Boolean? _printer_ame
     Boolean? _spool_spool
+    Boolean? no_spool
     Boolean? portrait
     Boolean? landscape
     Boolean? default_orientation
@@ -33,56 +35,96 @@ task Dcmpsprt {
     Boolean? label
     Boolean? priority
     Boolean? owner
+    Boolean? no_annotation
+    Boolean? _annotation_ext
+    Boolean? pd
+    Boolean? pn
     Boolean? pl
-    Boolean? _layout_alue
+    Boolean? _layout_ows
+    Boolean? film_size
+    Boolean? magnification
+    Boolean? smoothing
+    Boolean? config_info
+    Boolean? resolution
+    Boolean? border
+    Boolean? empty_image
+    Boolean? max_density
+    Boolean? min_density
+    Boolean? img_polarity
+    Boolean? img_request_size
+    Boolean? img_magnification
+    Boolean? img_smoothing
+    Boolean? img_config_info
     String dcm_file_in
   }
   command <<<
     dcmpsprt \
       ~{dcm_file_in} \
-      ~{true="-q" false="" _quiet_quiet} \
-      ~{true="-v" false="" _verbose_verbose} \
-      ~{true="-d" false="" _debug_debug} \
-      ~{true="-ll" false="" ll} \
-      ~{true="-lc" false="" lc} \
-      ~{true="-c" false="" _config_ilename} \
-      ~{true="-p" false="" _printer_ame} \
-      ~{true="-s" false="" _spool_spool} \
-      ~{true="--portrait" false="" portrait} \
-      ~{true="--landscape" false="" landscape} \
-      ~{true="--default-orientation" false="" default_orientation} \
-      ~{true="--trim" false="" trim} \
-      ~{true="--no-trim" false="" no_trim} \
-      ~{true="--default-trim" false="" default_trim} \
-      ~{true="--request-decimate" false="" request_decimate} \
-      ~{true="--request-crop" false="" request_crop} \
-      ~{true="--request-fail" false="" request_fail} \
-      ~{true="--default-request" false="" default_request} \
-      ~{true="--default-plut" false="" default_plut} \
-      ~{true="--identity" false="" identity} \
-      ~{true="--lin-od" false="" lin_od} \
-      ~{true="--plut" false="" plut} \
-      ~{true="--inverse-plut" false="" inverse_plut} \
-      ~{true="--illumination" false="" illumination} \
-      ~{true="--reflection" false="" reflection} \
-      ~{true="--copies" false="" copies} \
-      ~{true="--medium-type" false="" medium_type} \
-      ~{true="--destination" false="" destination} \
-      ~{true="--label" false="" label} \
-      ~{true="--priority" false="" priority} \
-      ~{true="--owner" false="" owner} \
-      ~{true="-pl" false="" pl} \
-      ~{true="-l" false="" _layout_alue}
+      ~{if (arguments) then "--arguments" else ""} \
+      ~{if (_quiet_quiet) then "-q" else ""} \
+      ~{if (_verbose_details) then "-v" else ""} \
+      ~{if (_debug_information) then "-d" else ""} \
+      ~{if (ll) then "-ll" else ""} \
+      ~{if (lc) then "-lc" else ""} \
+      ~{if (_config_stringprocess) then "-c" else ""} \
+      ~{if (_printer_ame) then "-p" else ""} \
+      ~{if (_spool_spool) then "-s" else ""} \
+      ~{if (no_spool) then "--nospool" else ""} \
+      ~{if (portrait) then "--portrait" else ""} \
+      ~{if (landscape) then "--landscape" else ""} \
+      ~{if (default_orientation) then "--default-orientation" else ""} \
+      ~{if (trim) then "--trim" else ""} \
+      ~{if (no_trim) then "--no-trim" else ""} \
+      ~{if (default_trim) then "--default-trim" else ""} \
+      ~{if (request_decimate) then "--request-decimate" else ""} \
+      ~{if (request_crop) then "--request-crop" else ""} \
+      ~{if (request_fail) then "--request-fail" else ""} \
+      ~{if (default_request) then "--default-request" else ""} \
+      ~{if (default_plut) then "--default-plut" else ""} \
+      ~{if (identity) then "--identity" else ""} \
+      ~{if (lin_od) then "--lin-od" else ""} \
+      ~{if (plut) then "--plut" else ""} \
+      ~{if (inverse_plut) then "--inverse-plut" else ""} \
+      ~{if (illumination) then "--illumination" else ""} \
+      ~{if (reflection) then "--reflection" else ""} \
+      ~{if (copies) then "--copies" else ""} \
+      ~{if (medium_type) then "--medium-type" else ""} \
+      ~{if (destination) then "--destination" else ""} \
+      ~{if (label) then "--label" else ""} \
+      ~{if (priority) then "--priority" else ""} \
+      ~{if (owner) then "--owner" else ""} \
+      ~{if (no_annotation) then "--no-annotation" else ""} \
+      ~{if (_annotation_ext) then "-a" else ""} \
+      ~{if (pd) then "-pd" else ""} \
+      ~{if (pn) then "-pn" else ""} \
+      ~{if (pl) then "-pl" else ""} \
+      ~{if (_layout_ows) then "-l" else ""} \
+      ~{if (film_size) then "--filmsize" else ""} \
+      ~{if (magnification) then "--magnification" else ""} \
+      ~{if (smoothing) then "--smoothing" else ""} \
+      ~{if (config_info) then "--configinfo" else ""} \
+      ~{if (resolution) then "--resolution" else ""} \
+      ~{if (border) then "--border" else ""} \
+      ~{if (empty_image) then "--empty-image" else ""} \
+      ~{if (max_density) then "--max-density" else ""} \
+      ~{if (min_density) then "--min-density" else ""} \
+      ~{if (img_polarity) then "--img-polarity" else ""} \
+      ~{if (img_request_size) then "--img-request-size" else ""} \
+      ~{if (img_magnification) then "--img-magnification" else ""} \
+      ~{if (img_smoothing) then "--img-smoothing" else ""} \
+      ~{if (img_config_info) then "--img-configinfo" else ""}
   >>>
   parameter_meta {
+    arguments: "print expanded command line arguments"
     _quiet_quiet: "--quiet                quiet mode, print no warnings and errors"
-    _verbose_verbose: "--verbose              verbose mode, print processing details"
-    _debug_debug: "--debug                debug mode, print debug information"
-    ll: "--log-level            [l]evel: string constant (fatal, error, warn, info, debug, trace) use level l for the logger"
-    lc: "--log-config           [f]ilename: string use config file f for the logger"
-    _config_ilename: "--config               [f]ilename: string process using settings from configuration file f"
-    _printer_ame: "--printer              [n]ame: string (default: 1st printer in cfg file) select printer with identifier n from cfg file"
-    _spool_spool: "--spool                spool print job to DICOM printer --nospool              do not spool print job to DICOM printer (default)"
+    _verbose_details: "--verbose              verbose mode, print processing details"
+    _debug_information: "--debug                debug mode, print debug information"
+    ll: "--log-level            [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    lc: "--log-config           [f]ilename: string\\nuse config file f for the logger"
+    _config_stringprocess: "--config               [f]ilename: string\\nprocess using settings from configuration file f"
+    _printer_ame: "--printer              [n]ame: string (default: 1st printer in cfg file)\\nselect printer with identifier n from cfg file"
+    _spool_spool: "--spool                spool print job to DICOM printer"
+    no_spool: "do not spool print job to DICOM printer (default)"
     portrait: "set portrait orientation"
     landscape: "set landscape orientation"
     default_orientation: "use printer default (default)"
@@ -96,18 +138,39 @@ task Dcmpsprt {
     default_plut: "do not create presentation LUT (default)"
     identity: "set IDENTITY presentation LUT shape"
     lin_od: "set LIN OD presentation LUT shape"
-    plut: "[l]ut identifier: string add LUT [l] to print job"
-    inverse_plut: "render the inverse presentation LUT into the bitmap of the hardcopy grayscale image"
-    illumination: "[v]alue: integer (0..65535) set illumination to v (in cd/m^2)"
-    reflection: "[v]alue: integer (0..65535) set reflected ambient light to v (in cd/m^2)"
-    copies: "[v]alue: integer (1..100, default: 1) set number of copies to v"
-    medium_type: "[v]alue: string set medium type to v"
-    destination: "[v]alue: string set film destination to v"
-    label: "[v]alue: string set film session label to v"
-    priority: "[v]alue: string set print priority to v"
-    owner: "[v]alue: string set film session owner ID to v"
+    plut: "[l]ut identifier: string\\nadd LUT [l] to print job"
+    inverse_plut: "render the inverse presentation LUT into the\\nbitmap of the hardcopy grayscale image"
+    illumination: "[v]alue: integer (0..65535)\\nset illumination to v (in cd/m^2)"
+    reflection: "[v]alue: integer (0..65535)\\nset reflected ambient light to v (in cd/m^2)"
+    copies: "[v]alue: integer (1..100, default: 1)\\nset number of copies to v"
+    medium_type: "[v]alue: string\\nset medium type to v"
+    destination: "[v]alue: string\\nset film destination to v"
+    label: "[v]alue: string\\nset film session label to v"
+    priority: "[v]alue: string\\nset print priority to v"
+    owner: "[v]alue: string\\nset film session owner ID to v"
+    no_annotation: "do not create annotation (default)"
+    _annotation_ext: "--annotation           [t]ext: string\\ncreate annotation with text t"
+    pd: "--print-no-date        do not prepend date/time to annotation"
+    pn: "--print-no-name        do not prepend printer name to annotation"
     pl: "--print-no-lighting    do not prepend illumination to annotation"
-    _layout_alue: "--layout               [c]olumns [r]ows: integer (default: 1 1) use 'STANDARD\c,r' image display format --filmsize             [v]alue: string set film size ID to v --magnification        [v]alue: string set magnification type to v --smoothing            [v]alue: string set smoothing type to v --configinfo           [v]alue: string set configuration information to v --resolution           [v]alue: string set requested resolution ID to v --border               [v]alue: string set border density to v --empty-image          [v]alue: string set empty image density to v --max-density          [v]alue: string set max density to v --min-density          [v]alue: string set min density to v --img-polarity         [v]alue: string set image box polarity to v (NORMAL or REVERSE) --img-request-size     [v]alue: string set requested image size to v (width in mm) --img-magnification    [v]alue: string set image box magnification type to v --img-smoothing        [v]alue: string set image box smoothing type to v --img-configinfo       [v]alue: string set image box configuration information to v"
+    _layout_ows: "--layout               [c]olumns [r]ows: integer (default: 1 1)\\nuse 'STANDARD\\c,r' image display format"
+    film_size: "[v]alue: string\\nset film size ID to v"
+    magnification: "[v]alue: string\\nset magnification type to v"
+    smoothing: "[v]alue: string\\nset smoothing type to v"
+    config_info: "[v]alue: string\\nset configuration information to v"
+    resolution: "[v]alue: string\\nset requested resolution ID to v"
+    border: "[v]alue: string\\nset border density to v"
+    empty_image: "[v]alue: string\\nset empty image density to v"
+    max_density: "[v]alue: string\\nset max density to v"
+    min_density: "[v]alue: string\\nset min density to v"
+    img_polarity: "[v]alue: string\\nset image box polarity to v (NORMAL or REVERSE)"
+    img_request_size: "[v]alue: string\\nset requested image size to v (width in mm)"
+    img_magnification: "[v]alue: string\\nset image box magnification type to v"
+    img_smoothing: "[v]alue: string\\nset image box smoothing type to v"
+    img_config_info: "[v]alue: string\\nset image box configuration information to v\\n"
     dcm_file_in: "DICOM image file(s) to be printed"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

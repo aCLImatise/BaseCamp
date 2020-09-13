@@ -4,4 +4,7 @@ task Profit {
   command <<<
     profit
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

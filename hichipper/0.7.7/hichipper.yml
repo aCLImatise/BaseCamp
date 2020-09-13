@@ -1,13 +1,27 @@
 !Command
+command:
+- hichipper
 positional:
 - !Positional
-  description: ''
+  description: -ma, --max-dist TEXT           Maximum distance for loop calls; default
+    =
   position: 0
-  name: MODE
+  name: '5000'
+  optional: false
+- !Positional
+  description: --macs2-string TEXT            String of arguments to pass to MACS2;
+    only is
+  position: 1
+  name: '2000000'
+  optional: false
+- !Positional
+  description: --help                         Show this message and exit.
+  position: 0
+  name: PATH
   optional: false
 named:
 - !Flag
-  description: Output directory name; must not be already existing [Required]  [required]
+  description: "Output directory name; must not be already\nexisting [Required]  [required]"
   synonyms:
   - -o
   - --out
@@ -22,8 +36,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Comma-separted list of interactions files for loop calling; option
-    valid only in `call` mode
+  description: "Comma-separted list of interactions files for\nloop calling; option\
+    \ valid only in `call`\nmode"
   synonyms:
   - -ii
   - --input-vi
@@ -31,8 +45,8 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Filepath to restriction fragment files; will overwrite specification
-    of this file when a .yaml is supplied for mode
+  description: "Filepath to restriction fragment files; will\noverwrite specification\
+    \ of this file when a\n.yaml is supplied for mode"
   synonyms:
   - -rf
   - --restriction-frags
@@ -40,8 +54,8 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Either 1 of 4 peak logic strings or a valid filepath to a .bed (or
-    similary formatted) file; defers to what is in the .yaml
+  description: "Either 1 of 4 peak logic strings or a valid\nfilepath to a .bed (or\
+    \ similary formatted)\nfile; defers to what is in the .yaml"
   synonyms:
   - -p
   - --peaks
@@ -49,8 +63,8 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Comma separated list of sample names to keep; ALL (special string)
-    by default
+  description: "Comma separated list of sample names to keep;\nALL (special string)\
+    \ by default"
   synonyms:
   - -k
   - --keep-samples
@@ -58,8 +72,8 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Comma separated list of sample names to ignore; NONE (special string)
-    by default
+  description: "Comma separated list of sample names to\nignore; NONE (special string)\
+    \ by default"
   synonyms:
   - -x
   - --ignore-samples
@@ -67,7 +81,7 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Length of reads from sequencing runs; default = 75
+  description: "Length of reads from sequencing runs; default\n= 75"
   synonyms:
   - -l
   - --read-length
@@ -75,7 +89,7 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Minimum distance for loop calls; default = 5000
+  description: Minimum distance for loop calls; default =
   synonyms:
   - -mi
   - --min-dist
@@ -83,31 +97,15 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Maximum distance for loop calls; default = 2000000
-  synonyms:
-  - -ma
-  - --max-dist
-  args: !SimpleFlagArg
-    name: TEXT
-  optional: true
-- !Flag
-  description: String of arguments to pass to MACS2; only is called when peaks are
-    set to be called; default = "-q 0.01 --extsize 147 --nomodel"
-  synonyms:
-  - --macs2-string
-  args: !SimpleFlagArg
-    name: TEXT
-  optional: true
-- !Flag
-  description: Argument to pass to the -g variable in MACS2 (mm for mouse genome;
-    hs for human genome); default = "hs"
+  description: "Argument to pass to the -g variable in MACS2\n(mm for mouse genome;\
+    \ hs for human genome);\ndefault = \"hs\""
   synonyms:
   - --macs2-genome
   args: !SimpleFlagArg
     name: TEXT
   optional: true
 - !Flag
-  description: Peak padding width (applied on both left and right); default = 500
+  description: "Peak padding width (applied on both left and\nright); default = 500"
   synonyms:
   - -pp
   - --peak-pad
@@ -115,7 +113,7 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Merge nearby peaks (after all padding is complete; default = 500
+  description: "Merge nearby peaks (after all padding is\ncomplete; default = 500"
   synonyms:
   - -mg
   - --merge-gap
@@ -123,8 +121,8 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Completely skip anchor merging; will affect summary statistics. Not
-    recommended unless understood what is happening.
+  description: "Completely skip anchor merging; will affect\nsummary statistics. Not\
+    \ recommended unless\nunderstood what is happening."
   synonyms:
   - -nm
   - --no-merge
@@ -137,22 +135,22 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Skip restriction fragment aware background correction?
+  description: "Skip restriction fragment aware background\ncorrection?"
   synonyms:
   - --skip-background-correction
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Make additional output files that can support viewing in UCSC genome
-    browser; requires tabix and bgzip; does the same thing as --make-washu.
+  description: "Make additional output files that can support\nviewing in UCSC genome\
+    \ browser; requires\ntabix and bgzip; does the same thing as\n--make-washu."
   synonyms:
   - -mu
   - --make-ucsc
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Make additional output files that can support viewing in WashU genome
-    browser; requires tabix and bgzip; does the same thing as --make-ucsc.
+  description: "Make additional output files that can support\nviewing in WashU genome\
+    \ browser; requires\ntabix and bgzip; does the same thing as\n--make-ucsc."
   synonyms:
   - -mw
   - --make-washu
@@ -165,56 +163,50 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Skip analyses in diffloop (e.g. Mango loop calling; .rds generation)
+  description: "Skip analyses in diffloop (e.g. Mango loop\ncalling; .rds generation)"
   synonyms:
   - --skip-diffloop
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Path to bedtools; by default, assumes that bedtools is in PATH
+  description: "Path to bedtools; by default, assumes that\nbedtools is in PATH"
   synonyms:
   - --bedtools-path
   args: !SimpleFlagArg
     name: TEXT
   optional: true
 - !Flag
-  description: Path to macs2; by default, assumes that macs2 is in PATH
+  description: "Path to macs2; by default, assumes that macs2\nis in PATH"
   synonyms:
   - --macs2-path
   args: !SimpleFlagArg
     name: TEXT
   optional: true
 - !Flag
-  description: Path to samtools; by default, assumes that tabix is in PATH
+  description: "Path to samtools; by default, assumes that\ntabix is in PATH"
   synonyms:
   - --tabix-path
   args: !SimpleFlagArg
     name: TEXT
   optional: true
 - !Flag
-  description: Path to macs2; by default, assumes that bgzip is in PATH
+  description: "Path to macs2; by default, assumes that bgzip\nis in PATH"
   synonyms:
   - --bgzip-path
   args: !SimpleFlagArg
     name: TEXT
   optional: true
 - !Flag
-  description: Path to R; by default, assumes that R is in PATH
+  description: Path to R; by default, assumes that R is in
   synonyms:
   - --r-path
   args: !SimpleFlagArg
     name: TEXT
   optional: true
-command:
-- hichipper
 parent:
 subcommands: []
-help_flag: !Flag
-  description: Show this message and exit.
-  synonyms:
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+usage: []
+help_flag:
 usage_flag:
 version_flag: !Flag
   description: Show the version and exit.
@@ -229,55 +221,55 @@ help_text: "Usage: hichipper [OPTIONS] MODE\n\n  hichipper: a preprocessing and 
   \ options to be\n  parsed from a manifest file (see documentation)\n\nOptions:\n\
   \  --version                      Show the version and exit.\n  -o, --out TEXT \
   \                Output directory name; must not be already\n                  \
-  \               existing [Required]  [required]\n\n  -z, --keep-temp-files     \
-  \     Keep temporary files?\n  -ii, --input-vi TEXT           Comma-separted list\
+  \               existing [Required]  [required]\n  -z, --keep-temp-files       \
+  \   Keep temporary files?\n  -ii, --input-vi TEXT           Comma-separted list\
   \ of interactions files for\n                                 loop calling; option\
-  \ valid only in `call`\n                                 mode\n\n  -rf, --restriction-frags\
+  \ valid only in `call`\n                                 mode\n  -rf, --restriction-frags\
   \ TEXT  Filepath to restriction fragment files; will\n                         \
   \        overwrite specification of this file when a\n                         \
-  \        .yaml is supplied for mode\n\n  -p, --peaks TEXT               Either 1\
-  \ of 4 peak logic strings or a valid\n                                 filepath\
-  \ to a .bed (or similary formatted)\n                                 file; defers\
-  \ to what is in the .yaml\n\n  -k, --keep-samples TEXT        Comma separated list\
+  \        .yaml is supplied for mode\n  -p, --peaks TEXT               Either 1 of\
+  \ 4 peak logic strings or a valid\n                                 filepath to\
+  \ a .bed (or similary formatted)\n                                 file; defers\
+  \ to what is in the .yaml\n  -k, --keep-samples TEXT        Comma separated list\
   \ of sample names to keep;\n                                 ALL (special string)\
-  \ by default\n\n  -x, --ignore-samples TEXT      Comma separated list of sample\
-  \ names to\n                                 ignore; NONE (special string) by default\n\
-  \n  -l, --read-length TEXT         Length of reads from sequencing runs; default\n\
-  \                                 = 75\n\n  -mi, --min-dist TEXT           Minimum\
-  \ distance for loop calls; default =\n                                 5000\n\n\
-  \  -ma, --max-dist TEXT           Maximum distance for loop calls; default =\n \
-  \                                2000000\n\n  --macs2-string TEXT            String\
-  \ of arguments to pass to MACS2; only is\n                                 called\
-  \ when peaks are set to be called;\n                                 default = \"\
-  -q 0.01 --extsize 147 --nomodel\"\n\n  --macs2-genome TEXT            Argument to\
-  \ pass to the -g variable in MACS2\n                                 (mm for mouse\
-  \ genome; hs for human genome);\n                                 default = \"hs\"\
-  \n\n  -pp, --peak-pad TEXT           Peak padding width (applied on both left and\n\
-  \                                 right); default = 500\n\n  -mg, --merge-gap TEXT\
-  \          Merge nearby peaks (after all padding is\n                          \
-  \       complete; default = 500\n\n  -nm, --no-merge                Completely skip\
-  \ anchor merging; will affect\n                                 summary statistics.\
-  \ Not recommended unless\n                                 understood what is happening.\n\
-  \n  --skip-resfrag-pad             Skip restriction fragment aware padding\n  --skip-background-correction\
+  \ by default\n  -x, --ignore-samples TEXT      Comma separated list of sample names\
+  \ to\n                                 ignore; NONE (special string) by default\n\
+  \  -l, --read-length TEXT         Length of reads from sequencing runs; default\n\
+  \                                 = 75\n  -mi, --min-dist TEXT           Minimum\
+  \ distance for loop calls; default =\n                                 5000\n  -ma,\
+  \ --max-dist TEXT           Maximum distance for loop calls; default =\n       \
+  \                          2000000\n  --macs2-string TEXT            String of arguments\
+  \ to pass to MACS2; only is\n                                 called when peaks\
+  \ are set to be called;\n                                 default = \"-q 0.01 --extsize\
+  \ 147 --nomodel\"\n  --macs2-genome TEXT            Argument to pass to the -g variable\
+  \ in MACS2\n                                 (mm for mouse genome; hs for human\
+  \ genome);\n                                 default = \"hs\"\n  -pp, --peak-pad\
+  \ TEXT           Peak padding width (applied on both left and\n                \
+  \                 right); default = 500\n  -mg, --merge-gap TEXT          Merge\
+  \ nearby peaks (after all padding is\n                                 complete;\
+  \ default = 500\n  -nm, --no-merge                Completely skip anchor merging;\
+  \ will affect\n                                 summary statistics. Not recommended\
+  \ unless\n                                 understood what is happening.\n  --skip-resfrag-pad\
+  \             Skip restriction fragment aware padding\n  --skip-background-correction\
   \   Skip restriction fragment aware background\n                               \
-  \  correction?\n\n  -mu, --make-ucsc               Make additional output files\
-  \ that can support\n                                 viewing in UCSC genome browser;\
+  \  correction?\n  -mu, --make-ucsc               Make additional output files that\
+  \ can support\n                                 viewing in UCSC genome browser;\
   \ requires\n                                 tabix and bgzip; does the same thing\
-  \ as\n                                 --make-washu.\n\n  -mw, --make-washu    \
-  \          Make additional output files that can support\n                     \
-  \            viewing in WashU genome browser; requires\n                       \
-  \          tabix and bgzip; does the same thing as\n                           \
-  \      --make-ucsc.\n\n  --basic-qc                     Create a simple QC report\
-  \ without Pandoc\n  --skip-diffloop                Skip analyses in diffloop (e.g.\
-  \ Mango loop\n                                 calling; .rds generation)\n\n  --bedtools-path\
+  \ as\n                                 --make-washu.\n  -mw, --make-washu      \
+  \        Make additional output files that can support\n                       \
+  \          viewing in WashU genome browser; requires\n                         \
+  \        tabix and bgzip; does the same thing as\n                             \
+  \    --make-ucsc.\n  --basic-qc                     Create a simple QC report without\
+  \ Pandoc\n  --skip-diffloop                Skip analyses in diffloop (e.g. Mango\
+  \ loop\n                                 calling; .rds generation)\n  --bedtools-path\
   \ TEXT           Path to bedtools; by default, assumes that\n                  \
-  \               bedtools is in PATH\n\n  --macs2-path TEXT              Path to\
-  \ macs2; by default, assumes that macs2\n                                 is in\
-  \ PATH\n\n  --tabix-path TEXT              Path to samtools; by default, assumes\
-  \ that\n                                 tabix is in PATH\n\n  --bgzip-path TEXT\
-  \              Path to macs2; by default, assumes that bgzip\n                 \
-  \                is in PATH\n\n  --r-path TEXT                  Path to R; by default,\
-  \ assumes that R is in\n                                 PATH\n\n  --help      \
-  \                   Show this message and exit.\n"
+  \               bedtools is in PATH\n  --macs2-path TEXT              Path to macs2;\
+  \ by default, assumes that macs2\n                                 is in PATH\n\
+  \  --tabix-path TEXT              Path to samtools; by default, assumes that\n \
+  \                                tabix is in PATH\n  --bgzip-path TEXT         \
+  \     Path to macs2; by default, assumes that bgzip\n                          \
+  \       is in PATH\n  --r-path TEXT                  Path to R; by default, assumes\
+  \ that R is in\n                                 PATH\n  --help                \
+  \         Show this message and exit.\n"
 generated_using:
 - --help

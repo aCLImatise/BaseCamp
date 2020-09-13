@@ -1,87 +1,130 @@
 class: CommandLineTool
 id: ../../../prank.cwl
 inputs:
-- id: f
+- id: in_d
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -d
+- id: in_t
+  doc: '[default: no tree, generate approximate NJ tree]'
+  type: File
+  inputBinding:
+    prefix: -t
+- id: in_m
+  doc: '[default: HKY2/WAG]'
+  type: File
+  inputBinding:
+    prefix: -m
+- id: in_o
+  doc: "[default: 'output']"
+  type: File
+  inputBinding:
+    prefix: -o
+- id: in_var_4
+  doc: "[default: Fasta; type '--help' for details]"
+  type: string
+  inputBinding:
+    prefix: -f
+- id: in_short_names
+  doc: '[truncate names at first space]'
+  type: boolean
+  inputBinding:
+    prefix: -shortnames
+- id: in_quiet
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -quiet
+- id: in_var_7
   doc: '[equivalent]'
   type: boolean
   inputBinding:
     prefix: -F
-- id: gap_rate
+- id: in_gap_rate
   doc: '=# [gap opening rate; default: dna 0.025 / prot 0.005]'
   type: boolean
   inputBinding:
     prefix: -gaprate
-- id: gap_ext
+- id: in_gap_ext
   doc: '=# [gap extension probability; default: dna 0.75 / prot 0.5]'
   type: boolean
   inputBinding:
     prefix: -gapext
-- id: codon
+- id: in_codon
   doc: '[for coding DNA: use empirical codon model]'
   type: boolean
   inputBinding:
     prefix: -codon
-- id: dna
+- id: in_dna
   doc: '/ -protein [no autodetection: use dna or protein model]'
   type: boolean
   inputBinding:
     prefix: -DNA
-- id: term_gap
+- id: in_term_gap
   doc: '[penalise terminal gaps normally]'
   type: boolean
   inputBinding:
     prefix: -termgap
-- id: no_missing
+- id: in_no_missing
   doc: '[no missing data, use -F for terminal gaps ]'
   type: boolean
   inputBinding:
     prefix: -nomissing
-- id: e
+- id: in_e
   doc: '[pre-aligned sequences; do not remove gaps]'
   type: boolean
   inputBinding:
     prefix: -e
-- id: no_post
+- id: in_no_post
   doc: '[do not compute posterior support; default: compute]'
   type: boolean
   inputBinding:
     prefix: -nopost
-- id: once
+- id: in_once
   doc: '[run only once; default: twice if no guidetree given]'
   type: boolean
   inputBinding:
     prefix: -once
-- id: twice
+- id: in_twice
   doc: '[run always twice]'
   type: boolean
   inputBinding:
     prefix: -twice
-- id: use_logs
+- id: in_use_logs
   doc: '[slower but should work for a greater number of sequences]'
   type: boolean
   inputBinding:
     prefix: -uselogs
-- id: translate
+- id: in_translate
   doc: '[translate to protein]'
   type: boolean
   inputBinding:
     prefix: -translate
-- id: mt_translate
+- id: in_mt_translate
   doc: '[translate to protein using mt table]'
   type: boolean
   inputBinding:
     prefix: -mttranslate
-- id: max_pair_dist
+- id: in_max_pair_dist
   doc: =# [maximum pairwise distance for matrix computation]
   type: boolean
   inputBinding:
     prefix: -maxpairdist
-- id: convert
+- id: in_convert
   doc: '[no alignment, just convert to another format]'
   type: boolean
   inputBinding:
     prefix: -convert
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_o
+  doc: "[default: 'output']"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_o)
 cwlVersion: v1.1
 baseCommand:
 - prank

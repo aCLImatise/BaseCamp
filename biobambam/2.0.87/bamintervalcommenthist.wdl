@@ -4,4 +4,7 @@ task Bamintervalcommenthist {
   command <<<
     bamintervalcommenthist
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

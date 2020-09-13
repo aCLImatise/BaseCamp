@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../smartpca.cwl
 inputs:
-- id: bad
+- id: in_bad
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: params_dot_dot_dot_dot
+- id: in_params_dot_dot_dot_dot
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - smartpca

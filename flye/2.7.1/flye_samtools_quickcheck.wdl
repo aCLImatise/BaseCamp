@@ -1,26 +1,23 @@
 version 1.0
 
-task FlyeSamtoolsQuickcheck {
+task FlyesamtoolsQuickcheck {
   input {
     Boolean? verbose_output_repeat
     Boolean? suppress_warning_messages
-    String sam_tools
-    String quickcheck
-    String var_input
+    String status_dot
   }
   command <<<
-    flye-samtools quickcheck \
-      ~{sam_tools} \
-      ~{quickcheck} \
-      ~{var_input} \
-      ~{true="-v" false="" verbose_output_repeat} \
-      ~{true="-q" false="" suppress_warning_messages}
+    flye_samtools quickcheck \
+      ~{status_dot} \
+      ~{if (verbose_output_repeat) then "-v" else ""} \
+      ~{if (suppress_warning_messages) then "-q" else ""}
   >>>
   parameter_meta {
     verbose_output_repeat: "verbose output (repeat for more verbosity)"
     suppress_warning_messages: "suppress warning messages"
-    sam_tools: ""
-    quickcheck: ""
-    var_input: ""
+    status_dot: "One way to use quickcheck might be as a check that all BAM files in"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

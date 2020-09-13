@@ -1,97 +1,105 @@
 class: CommandLineTool
 id: ../../../mimeo_x.cwl
 inputs:
-- id: a_dir
+- id: in_a_dir
   doc: Name of directory containing sequences from A genome.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --adir
-- id: b_dir
+- id: in_b_dir
   doc: Name of directory containing sequences from B genome.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --bdir
-- id: a_fast_a
+- id: in_a_fast_a
   doc: A genome as multifasta.
   type: string
   inputBinding:
     prefix: --afasta
-- id: b_fast_a
+- id: in_b_fast_a
   doc: B genome as multifasta.
   type: string
   inputBinding:
     prefix: --bfasta
-- id: recycle
+- id: in_recycle
   doc: Use existing alignment "--outfile" if found.
   type: boolean
   inputBinding:
     prefix: --recycle
-- id: outdir
+- id: in_outdir
   doc: 'Write output files to this directory. (Default: cwd)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: gff_out
+- id: in_gff_out
   doc: Name of GFF3 annotation file.
-  type: string
+  type: File
   inputBinding:
     prefix: --gffout
-- id: outfile
+- id: in_outfile
   doc: Name of alignment result file.
-  type: string
+  type: File
   inputBinding:
     prefix: --outfile
-- id: verbose
+- id: in_verbose
   doc: If set report LASTZ progress.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: label
+- id: in_label
   doc: Set annotation TYPE field in gff.
   type: string
   inputBinding:
     prefix: --label
-- id: prefix
+- id: in_prefix
   doc: ID prefix for B-genome repeats annotated in A-genome.
   type: string
   inputBinding:
     prefix: --prefix
-- id: keep_temp
+- id: in_keep_temp
   doc: If set do not remove temp files.
   type: boolean
   inputBinding:
     prefix: --keeptemp
-- id: lz_path
+- id: in_lz_path
   doc: Custom path to LASTZ executable if not in $PATH.
-  type: string
+  type: File
   inputBinding:
     prefix: --lzpath
-- id: bed_tools
+- id: in_bed_tools
   doc: Custom path to bedtools executable if not in $PATH.
-  type: string
+  type: File
   inputBinding:
     prefix: --bedtools
-- id: mini_dt
+- id: in_mini_dt
   doc: Minimum alignment identity to report.
-  type: long
+  type: string
   inputBinding:
     prefix: --minIdt
-- id: min_len
+- id: in_min_len
   doc: Minimum alignment length to report.
   type: long
   inputBinding:
     prefix: --minLen
-- id: min_cov
-  doc: Minimum depth of B-genome hits to report feature in A-genome.
+- id: in_min_cov
+  doc: Minimum depth of B-genome hits to report feature in
   type: long
   inputBinding:
     prefix: --minCov
-- id: hsp_thresh
-  doc: Set HSP min score threshold for LASTZ.
+- id: in_a_genome_dot
+  doc: --hspthresh HSPTHRESH
   type: string
   inputBinding:
-    prefix: --hspthresh
-outputs: []
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Write output files to this directory. (Default: cwd)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - mimeo-x

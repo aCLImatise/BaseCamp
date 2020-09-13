@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuShell {
+task Byobushell {
   command <<<
-    byobu-shell
+    byobu_shell
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

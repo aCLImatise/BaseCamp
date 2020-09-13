@@ -1,44 +1,52 @@
 class: CommandLineTool
 id: ../../../pipits_retrain_rdp.cwl
 inputs:
-- id: rdp_classifier_file
+- id: in_rdp_classifier_file
   doc: '[REQUIRED] RDP Classifier .jar file'
-  type: string
+  type: File
   inputBinding:
     prefix: -j
-- id: unite_training_data_sequences
-  doc: '[REQUIRED] UNITE training data - FASTA sequences downloaded from http://sourceforge.net/projects/rdp-
-    classifier/files/RDP_Classifier_TrainingData'
+- id: in_unite_training_data_fasta
+  doc: "[REQUIRED] UNITE training data - FASTA sequences downloaded\nfrom http://sourceforge.net/projects/rdp-\n\
+    classifier/files/RDP_Classifier_TrainingData"
   type: string
   inputBinding:
     prefix: -f
-- id: unite_training_data_taxonomy
-  doc: '[REQUIRED] UNITE training data - taxonomy file downloaded from http://sourceforge.net/projects/rdp-
-    classifier/files/RDP_Classifier_TrainingData'
-  type: string
+- id: in_unite_training_data_downloadedfrom
+  doc: "[REQUIRED] UNITE training data - taxonomy file downloaded\nfrom http://sourceforge.net/projects/rdp-\n\
+    classifier/files/RDP_Classifier_TrainingData"
+  type: File
   inputBinding:
     prefix: -t
-- id: output_directory_stored
-  doc: Output directory where files and settings for retrained parameters are stored.
-  type: string
+- id: in_output_directory_where
+  doc: "Output directory where files and settings for retrained\nparameters are stored.\n"
+  type: Directory
   inputBinding:
     prefix: -o
-- id: re_trains
+- id: in_re_trains
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: rdp
+- id: in_rdp
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: classifier
+- id: in_classifier
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory_where
+  doc: "Output directory where files and settings for retrained\nparameters are stored.\n"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory_where)
 cwlVersion: v1.1
 baseCommand:
 - pipits_retrain_rdp

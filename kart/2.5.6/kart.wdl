@@ -5,7 +5,7 @@ task Kart {
     Int? number_of_threads
     Boolean? f
     Boolean? f_two
-    Boolean? alignment_filename_sam
+    File? alignment_filename_sam
     Boolean? bo
     Boolean? output_multiple_alignments
     Int? max_gaps_indels
@@ -17,15 +17,15 @@ task Kart {
   command <<<
     kart \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
-      ~{true="-f" false="" f} \
-      ~{true="-f2" false="" f_two} \
-      ~{true="-o" false="" alignment_filename_sam} \
-      ~{true="-bo" false="" bo} \
-      ~{true="-m" false="" output_multiple_alignments} \
+      ~{if (f) then "-f" else ""} \
+      ~{if (f_two) then "-f2" else ""} \
+      ~{if (alignment_filename_sam) then "-o" else ""} \
+      ~{if (bo) then "-bo" else ""} \
+      ~{if (output_multiple_alignments) then "-m" else ""} \
       ~{if defined(max_gaps_indels) then ("-g " +  '"' + max_gaps_indels + '"') else ""} \
-      ~{true="-p" false="" pairedend_reads_interlaced} \
-      ~{true="-pacbio" false="" pac_bio} \
-      ~{true="-v" false="" version} \
+      ~{if (pairedend_reads_interlaced) then "-p" else ""} \
+      ~{if (pac_bio) then "-pacbio" else ""} \
+      ~{if (version) then "-v" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
@@ -40,5 +40,9 @@ task Kart {
     pac_bio: "pacbio data"
     version: "version"
     i: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_alignment_filename_sam = "${in_alignment_filename_sam}"
   }
 }

@@ -2,14 +2,14 @@ version 1.0
 
 task SOAPdenovo63merAll {
   input {
-    String? configfile_config_file
-    String? outputgraph_prefix_output
-    Int? kmermin_max_size
-    Int? ncpu_number_cpu
+    File? configfile_config_file
+    File? outputgraph_prefix_output
+    Int? kmermin_max_kmer
+    Int? number_cpu_use
     Int? initmemoryassumption_memory_assumption
     Int? kmerfreqcutoff_kmers_larger
     Boolean? optional_resolve_repeats
-    Int? edgecovcutoff_edges_larger
+    Int? edgecovcutoff_edges_coverage
     Int? mergelevelmin_max_strength
     Int? two_edges_arcs
     Int? maxkmer_max_maximum
@@ -26,25 +26,27 @@ task SOAPdenovo63merAll {
     Float? bubblecoverage_remove_contig
     Int? genomesize_genome_size
     Boolean? optional_output_information
+    Int soapdenovo_s_configfile
   }
   command <<<
-    SOAPdenovo-63mer all \
+    SOAPdenovo_63mer all \
+      ~{soapdenovo_s_configfile} \
       ~{if defined(configfile_config_file) then ("-s " +  '"' + configfile_config_file + '"') else ""} \
       ~{if defined(outputgraph_prefix_output) then ("-o " +  '"' + outputgraph_prefix_output + '"') else ""} \
-      ~{if defined(kmermin_max_size) then ("-K " +  '"' + kmermin_max_size + '"') else ""} \
-      ~{if defined(ncpu_number_cpu) then ("-p " +  '"' + ncpu_number_cpu + '"') else ""} \
+      ~{if defined(kmermin_max_kmer) then ("-K " +  '"' + kmermin_max_kmer + '"') else ""} \
+      ~{if defined(number_cpu_use) then ("-p " +  '"' + number_cpu_use + '"') else ""} \
       ~{if defined(initmemoryassumption_memory_assumption) then ("-a " +  '"' + initmemoryassumption_memory_assumption + '"') else ""} \
       ~{if defined(kmerfreqcutoff_kmers_larger) then ("-d " +  '"' + kmerfreqcutoff_kmers_larger + '"') else ""} \
-      ~{true="-R" false="" optional_resolve_repeats} \
-      ~{if defined(edgecovcutoff_edges_larger) then ("-D " +  '"' + edgecovcutoff_edges_larger + '"') else ""} \
+      ~{if (optional_resolve_repeats) then "-R" else ""} \
+      ~{if defined(edgecovcutoff_edges_coverage) then ("-D " +  '"' + edgecovcutoff_edges_coverage + '"') else ""} \
       ~{if defined(mergelevelmin_max_strength) then ("-M " +  '"' + mergelevelmin_max_strength + '"') else ""} \
       ~{if defined(two_edges_arcs) then ("-e " +  '"' + two_edges_arcs + '"') else ""} \
       ~{if defined(maxkmer_max_maximum) then ("-m " +  '"' + maxkmer_max_maximum + '"') else ""} \
-      ~{true="-E" false="" optional_merge_bubble} \
+      ~{if (optional_merge_bubble) then "-E" else ""} \
       ~{if defined(kmerrcmin_max_kmer) then ("-k " +  '"' + kmerrcmin_max_kmer + '"') else ""} \
-      ~{true="-F" false="" optional_fill_gaps} \
-      ~{true="-u" false="" optional_unmask_contigs} \
-      ~{true="-w" false="" optional_keep_contigs} \
+      ~{if (optional_fill_gaps) then "-F" else ""} \
+      ~{if (optional_unmask_contigs) then "-u" else ""} \
+      ~{if (optional_keep_contigs) then "-w" else ""} \
       ~{if defined(gaplendiff_allowed_difference) then ("-G " +  '"' + gaplendiff_allowed_difference + '"') else ""} \
       ~{if defined(mincontiglen_shortest_contig) then ("-L " +  '"' + mincontiglen_shortest_contig + '"') else ""} \
       ~{if defined(mincontigcvg_minimum_contig) then ("-c " +  '"' + mincontigcvg_minimum_contig + '"') else ""} \
@@ -52,17 +54,17 @@ task SOAPdenovo63merAll {
       ~{if defined(insertsizeupperbound_bavgins_will) then ("-b " +  '"' + insertsizeupperbound_bavgins_will + '"') else ""} \
       ~{if defined(bubblecoverage_remove_contig) then ("-B " +  '"' + bubblecoverage_remove_contig + '"') else ""} \
       ~{if defined(genomesize_genome_size) then ("-N " +  '"' + genomesize_genome_size + '"') else ""} \
-      ~{true="-V" false="" optional_output_information}
+      ~{if (optional_output_information) then "-V" else ""}
   >>>
   parameter_meta {
     configfile_config_file: "configFile: the config file of solexa reads"
     outputgraph_prefix_output: "outputGraph: prefix of output graph file name"
-    kmermin_max_size: "kmer(min 13, max 63): kmer size, [23]"
-    ncpu_number_cpu: "n_cpu: number of cpu for use, [8]"
+    kmermin_max_kmer: "kmer(min 13, max 63): kmer size, [23]"
+    number_cpu_use: "n_cpu: number of cpu for use, [8]"
     initmemoryassumption_memory_assumption: "initMemoryAssumption: memory assumption initialized to avoid further reallocation, unit G, [0]"
     kmerfreqcutoff_kmers_larger: "kmerFreqCutoff: kmers with frequency no larger than KmerFreqCutoff will be deleted, [0]"
     optional_resolve_repeats: "(optional)  resolve repeats by reads, [NO]"
-    edgecovcutoff_edges_larger: "edgeCovCutoff: edges with coverage no larger than EdgeCovCutoff will be deleted, [1]"
+    edgecovcutoff_edges_coverage: "edgeCovCutoff: edges with coverage no larger than EdgeCovCutoff will be deleted, [1]"
     mergelevelmin_max_strength: "mergeLevel(min 0, max 3): the strength of merging similar sequences during contiging, [1]"
     two_edges_arcs: "arcWeight: two edges, between which the arc's weight is larger than arcWeight, will be linerized, [0]"
     maxkmer_max_maximum: "maxKmer (max 63): maximum kmer size used for multi-kmer, [NO]"
@@ -79,5 +81,10 @@ task SOAPdenovo63merAll {
     bubblecoverage_remove_contig: "bubbleCoverage: remove contig with lower cvoerage in bubble structure if both contigs' coverage are smaller than bubbleCoverage*avgCvg, [0.6]"
     genomesize_genome_size: "genomeSize: genome size for statistics, [0]"
     optional_output_information: "(optional)  output information for Hawkeye to visualize the assembly, [NO]"
+    soapdenovo_s_configfile: "SOAPdenovo all -s configFile -o outputGraph [-R -F -u -w] [-K kmer -p n_cpu -a initMemoryAssumption -d KmerFreqCutOff -D EdgeCovCutoff -M mergeLevel -k kmer_R2C, -G gapLenDiff -L minContigLen -c minContigCvg -C maxContigCvg -b insertSizeUpperBound -B bubbleCoverage -N genomeSize]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outputgraph_prefix_output = "${in_outputgraph_prefix_output}"
   }
 }

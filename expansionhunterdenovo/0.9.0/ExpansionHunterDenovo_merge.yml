@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- ExpansionHunterDenovo
+- merge
 positional: []
 named:
 - !Flag
@@ -36,17 +39,18 @@ named:
   args: !SimpleFlagArg
     name: arg
   optional: true
-command:
-- ExpansionHunterDenovo
-- merge
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - ExpansionHunterDenovo
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - ExpansionHunterDenovo
+    - profile
     positional: []
     named:
     - !Flag
@@ -104,11 +108,9 @@ parent: &id001 !Command
       - --log-reads
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ExpansionHunterDenovo
-    - profile
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Print help message
       synonyms:
@@ -128,7 +130,7 @@ parent: &id001 !Command
       \n"
     generated_using: &id003
     - --help
-  - *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -137,6 +139,7 @@ parent: &id001 !Command
     \  Generate multisample STR profile from single-sample profiles\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print help message
   synonyms:

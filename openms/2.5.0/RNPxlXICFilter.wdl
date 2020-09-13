@@ -9,7 +9,7 @@ task RNPxlXICFilter {
     Boolean? mz_to_l
     File? out
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -17,14 +17,14 @@ task RNPxlXICFilter {
     RNPxlXICFilter \
       ~{if defined(control) then ("-control " +  '"' + control + '"') else ""} \
       ~{if defined(treatment) then ("-treatment " +  '"' + treatment + '"') else ""} \
-      ~{true="-fold_change" false="" fold_change} \
-      ~{true="-rt_tol" false="" rt_to_l} \
-      ~{true="-mz_tol" false="" mz_to_l} \
+      ~{if (fold_change) then "-fold_change" else ""} \
+      ~{if (rt_to_l) then "-rt_tol" else ""} \
+      ~{if (mz_to_l) then "-mz_tol" else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     control: "*    Input mzML file (valid formats: 'mzML')"
@@ -37,5 +37,9 @@ task RNPxlXICFilter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

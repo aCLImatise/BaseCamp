@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../mtsv_chunk_FLAGS.cwl
 inputs:
-- id: input
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --input
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     prefix: --output
-- id: gb
+- id: in_input
   doc: ''
-  type: long
+  type: string
   inputBinding:
-    prefix: --gb
-outputs: []
+    prefix: --input
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mtsv-chunk

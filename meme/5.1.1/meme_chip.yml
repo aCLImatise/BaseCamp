@@ -1,30 +1,84 @@
 !Command
-positional: []
+command:
+- meme-chip
+positional:
+- !Positional
+  description: '-bfile            <path>  : background file'
+  position: 0
+  name: DNA
+  optional: false
 named:
 - !Flag
-  description: '<path>  : background file'
+  description: '<dir>   : output to the specified directory, failing if the directory
+    exists'
   synonyms:
-  - -bfile
+  - -o
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<ord>   : set the order of the Markov background model that is generated
-    from the sequences when a background file is not given; default: 1'
+  description: '<dir>   : output to the specified directory, overwriting if the directory
+    exists'
+  synonyms:
+  - -oc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<path>  : target database for use by Tomtom and CentriMo; if not present,\n\
+    Tomtom and CentriMo are not run"
+  synonyms:
+  - -db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<path>  : negative (control) sequence file name;\nthe control sequences\
+    \ will be input to MEME, CentriMo and DREME,\nand MEME will use the Differential\
+    \ Enrichment objective function;\nsequences are assumed to originate from the\
+    \ same alphabet as the\nprimary sequence file and should be the same length as\
+    \ those;\ndefault: no negative sequences are used for MEME\nor CentriMo, and for\
+    \ DREME, the primary sequences\nare shuffled to create the negative set"
+  synonyms:
+  - -neg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use the psp-gen program to create a position-specific\nprior for use\
+    \ by MEME with its Classic objective function;\nrequires -neg;  default: input\
+    \ control sequences directly\nto MEME and use its Differential Enrichment objective\
+    \ function"
+  synonyms:
+  - -psp-gen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set the alphabet to DNA; this is the default
+  synonyms:
+  - -dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set the alphabet to RNA
+  synonyms:
+  - -rna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<ord>   : set the order of the Markov background model\nthat is generated\
+    \ from the sequences when a\nbackground file is not given; default: 1"
   synonyms:
   - -order
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<seed>  : seed for the randomized selection of sequences for MEME
-    and the shuffling of sequences for DREME; default: seed randomly'
+  description: "<seed>  : seed for the randomized selection of sequences\nfor MEME\
+    \ and the shuffling of sequences for DREME;\ndefault: seed randomly"
   synonyms:
   - -seed
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<num>   : maximum size of a sequence before it is cut down  to a centered
-    section; a value of 0 indicates the sequences should not be cut down; default:
-    100'
+  description: "<num>   : maximum size of a sequence before it is cut down\nto a centered\
+    \ section; a value of 0 indicates the\nsequences should not be cut down; default:\
+    \ 100"
   synonyms:
   - -ccut
   args: !EmptyFlagArg {}
@@ -48,8 +102,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<minutes>  : maximum time that this program has to run and  create
-    output in; default: no limit'
+  description: "<minutes>  : maximum time that this program has to run and\ncreate\
+    \ output in; default: no limit"
   synonyms:
   - -time
   args: !EmptyFlagArg {}
@@ -73,9 +127,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': pick cluster seed motifs based only on significance; default: preferentially
-    select discovered motifs as clustering seeds even if there is a library motif
-    that appears more enriched'
+  description: ": pick cluster seed motifs based only on significance;\ndefault: preferentially\
+    \ select discovered motifs as\nclustering seeds even if there is a library motif\n\
+    that appears more enriched"
   synonyms:
   - -old-clustering
   args: !EmptyFlagArg {}
@@ -93,8 +147,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<num>   : reduce size of MEME output files if more than <num>  : primary
-    sequences'
+  description: "<num>   : reduce size of MEME output files if more than <num>\n: primary\
+    \ sequences"
   synonyms:
   - -meme-brief
   args: !EmptyFlagArg {}
@@ -148,8 +202,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "<num>   : the maximum portion of the primary sequences (in characters)\
-    \ : used for motif search; MEME's running time increases as  : roughly the square\
+  description: "<num>   : the maximum portion of the primary sequences (in characters)\n\
+    : used for motif search; MEME's running time increases as\n: roughly the square\
     \ of <num>"
   synonyms:
   - -meme-searchsize
@@ -222,17 +276,9 @@ named:
   - -fimo-skip
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -db
-  args: !SimpleFlagArg
-    name: motif file
-  optional: true
-command:
-- meme-chip
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': display this help message'
   synonyms:

@@ -1,26 +1,29 @@
 version 1.0
 
-task Varda2ClientVersion {
+task Varda2clientVersion {
   input {
-    String? p
-    String? s
-    String? c
     Boolean? v
-    String varda_two_client
+    String? c
+    String? s
+    String? p
+    Int varda_two_client
   }
   command <<<
-    varda2-client version \
+    varda2_client version \
       ~{varda_two_client} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if (v) then "-v" else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
   parameter_meta {
-    p: ""
-    s: ""
-    c: ""
     v: ""
+    c: ""
+    s: ""
+    p: ""
     varda_two_client: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

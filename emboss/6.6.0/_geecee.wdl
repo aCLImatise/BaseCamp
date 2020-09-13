@@ -1,7 +1,10 @@
 version 1.0
 
-task _geecee {
+task Geecee {
   command <<<
     _geecee
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

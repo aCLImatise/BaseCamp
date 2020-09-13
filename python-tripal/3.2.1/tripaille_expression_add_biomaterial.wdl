@@ -2,22 +2,22 @@ version 1.0
 
 task TripailleExpressionAddBiomaterial {
   input {
-    String? analysis_id
+    Int? analysis_id
     Boolean? no_wait
-    String organism_id
-    File file_path
+    String file_type
   }
   command <<<
     tripaille expression add_biomaterial \
-      ~{organism_id} \
-      ~{file_path} \
+      ~{file_type} \
       ~{if defined(analysis_id) then ("--analysis_id " +  '"' + analysis_id + '"') else ""} \
-      ~{true="--no_wait" false="" no_wait}
+      ~{if (no_wait) then "--no_wait" else ""}
   >>>
   parameter_meta {
     analysis_id: "The id of the associated analysis. Required for TripalV3"
     no_wait: "Do not wait for job to complete"
-    organism_id: ""
-    file_path: ""
+    file_type: "Add a new biomaterial file to the database"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

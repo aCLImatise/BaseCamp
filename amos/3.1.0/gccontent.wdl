@@ -4,4 +4,7 @@ task Gccontent {
   command <<<
     gccontent
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

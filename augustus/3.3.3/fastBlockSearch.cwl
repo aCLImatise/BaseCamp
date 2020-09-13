@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../fastBlockSearch.cwl
 inputs:
-- id: fast_blocks_search
+- id: in_fast_blocks_search
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seqs_dot_fa
+- id: in_seqs_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: fam_dot_pr_fl
+- id: in_fam_dot_pr_fl
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastBlockSearch

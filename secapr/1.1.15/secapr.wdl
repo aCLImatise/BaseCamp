@@ -4,4 +4,7 @@ task Secapr {
   command <<<
     secapr
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

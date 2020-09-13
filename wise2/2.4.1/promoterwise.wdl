@@ -5,7 +5,7 @@ task Promoterwise {
     Boolean? align
     Boolean? query_start_restriction
     Boolean? query_end_position
-    Boolean? target_start_restriction
+    Boolean? target_start_position
     Boolean? target_end_position
     Boolean? lh_window
     Boolean? lh_seed
@@ -24,12 +24,15 @@ task Promoterwise {
     Boolean? mm_spacer_in_del
     Boolean? mm_switch_motif
     Boolean? mm_switch_cons
+    Boolean? tfb_pseudo
     Boolean? tfm_type
     Boolean? tfm_cut_off
     Boolean? tfm_rel
     Boolean? tfm_rel_bits
     Boolean? hit_output
     Boolean? hit_help
+    Boolean? dy_mem
+    Boolean? kbyte
     Boolean? dy_debug
     Boolean? pal_debug
     Boolean? version
@@ -41,48 +44,51 @@ task Promoterwise {
   }
   command <<<
     promoterwise \
-      ~{true="-align" false="" align} \
-      ~{true="-s" false="" query_start_restriction} \
-      ~{true="-t" false="" query_end_position} \
-      ~{true="-u" false="" target_start_restriction} \
-      ~{true="-v" false="" target_end_position} \
-      ~{true="-lhwindow" false="" lh_window} \
-      ~{true="-lhseed" false="" lh_seed} \
-      ~{true="-lhaln" false="" lha_ln} \
-      ~{true="-lhscore" false="" lh_score} \
-      ~{true="-lhreject" false="" lh_reject} \
-      ~{true="-lhmax" false="" lh_max} \
-      ~{true="-lr" false="" lr} \
+      ~{if (align) then "-align" else ""} \
+      ~{if (query_start_restriction) then "-s" else ""} \
+      ~{if (query_end_position) then "-t" else ""} \
+      ~{if (target_start_position) then "-u" else ""} \
+      ~{if (target_end_position) then "-v" else ""} \
+      ~{if (lh_window) then "-lhwindow" else ""} \
+      ~{if (lh_seed) then "-lhseed" else ""} \
+      ~{if (lha_ln) then "-lhaln" else ""} \
+      ~{if (lh_score) then "-lhscore" else ""} \
+      ~{if (lh_reject) then "-lhreject" else ""} \
+      ~{if (lh_max) then "-lhmax" else ""} \
+      ~{if (lr) then "-lr" else ""} \
       ~{if defined(ben) then ("-ben " +  '"' + ben + '"') else ""} \
-      ~{true="-motiflib" false="" motif_lib} \
-      ~{true="-mm_motif" false="" mm_motif} \
-      ~{true="-mm_cons" false="" mm_cons} \
-      ~{true="-mm_spacer" false="" mm_spacer} \
-      ~{true="-mm_motif_indel" false="" mm_motif_in_del} \
-      ~{true="-mm_cons_indel" false="" mm_cons_in_del} \
-      ~{true="-mm_spacer_indel" false="" mm_spacer_in_del} \
-      ~{true="-mm_switch_motif" false="" mm_switch_motif} \
-      ~{true="-mm_switch_cons" false="" mm_switch_cons} \
-      ~{true="-tfm_type" false="" tfm_type} \
-      ~{true="-tfm_cutoff" false="" tfm_cut_off} \
-      ~{true="-tfm_rel" false="" tfm_rel} \
-      ~{true="-tfm_relbits" false="" tfm_rel_bits} \
-      ~{true="-hitoutput" false="" hit_output} \
-      ~{true="-hithelp" false="" hit_help} \
-      ~{true="-dydebug" false="" dy_debug} \
-      ~{true="-paldebug" false="" pal_debug} \
-      ~{true="-version" false="" version} \
-      ~{true="-silent" false="" silent} \
-      ~{true="-quiet" false="" quiet} \
+      ~{if (motif_lib) then "-motiflib" else ""} \
+      ~{if (mm_motif) then "-mm_motif" else ""} \
+      ~{if (mm_cons) then "-mm_cons" else ""} \
+      ~{if (mm_spacer) then "-mm_spacer" else ""} \
+      ~{if (mm_motif_in_del) then "-mm_motif_indel" else ""} \
+      ~{if (mm_cons_in_del) then "-mm_cons_indel" else ""} \
+      ~{if (mm_spacer_in_del) then "-mm_spacer_indel" else ""} \
+      ~{if (mm_switch_motif) then "-mm_switch_motif" else ""} \
+      ~{if (mm_switch_cons) then "-mm_switch_cons" else ""} \
+      ~{if (tfb_pseudo) then "-tfb_pseudo" else ""} \
+      ~{if (tfm_type) then "-tfm_type" else ""} \
+      ~{if (tfm_cut_off) then "-tfm_cutoff" else ""} \
+      ~{if (tfm_rel) then "-tfm_rel" else ""} \
+      ~{if (tfm_rel_bits) then "-tfm_relbits" else ""} \
+      ~{if (hit_output) then "-hitoutput" else ""} \
+      ~{if (hit_help) then "-hithelp" else ""} \
+      ~{if (dy_mem) then "-dymem" else ""} \
+      ~{if (kbyte) then "-kbyte" else ""} \
+      ~{if (dy_debug) then "-dydebug" else ""} \
+      ~{if (pal_debug) then "-paldebug" else ""} \
+      ~{if (version) then "-version" else ""} \
+      ~{if (silent) then "-silent" else ""} \
+      ~{if (quiet) then "-quiet" else ""} \
       ~{if defined(error_off_std) then ("-erroroffstd " +  '"' + error_off_std + '"') else ""} \
-      ~{true="-errorlog" false="" error_log} \
-      ~{true="-errorstyle" false="" error_style}
+      ~{if (error_log) then "-errorlog" else ""} \
+      ~{if (error_style) then "-errorstyle" else ""}
   >>>
   parameter_meta {
     align: "[normal/motif] use normal DBA or motif alignment [normal]"
     query_start_restriction: "query start position restriction"
     query_end_position: "query end position restriction"
-    target_start_restriction: "target start position restriction"
+    target_start_position: "target start position restriction"
     target_end_position: "target end position restriction"
     lh_window: "- sequence window given to alignment [50]"
     lh_seed: "- seed score cutoff [10.0 bits]"
@@ -101,12 +107,15 @@ task Promoterwise {
     mm_spacer_in_del: "[0.1]    indel inside a spacer"
     mm_switch_motif: "[0.05]    cost of switching to motif match"
     mm_switch_cons: "[0.000001]  cost of switching to conserved match"
+    tfb_pseudo: "simple pseudo count, default 0.3"
     tfm_type: "[abs/rel/relmix] type of cutoff: absolute, relative, relative mixed"
     tfm_cut_off: "(abs) bits cutoff for absolute matches, default 11.0"
     tfm_rel: "[0.95] (rel/relmix) Relative to best possible score, accept if above irregardless of score"
     tfm_rel_bits: "[11.0] (relmix) If above relsoft and above this bits score, accept"
     hit_output: "[pseudoblast/xml/tab] pseudoblast by default"
     hit_help: "more detailed help on hitlist formats"
+    dy_mem: "memory style [default/linear/explicit]"
+    kbyte: "memory amount to use [4000]"
     dy_debug: "drop into dynamite dp matrix debugger"
     pal_debug: "print PackAln after debugger run if used"
     version: "show version and compile info"
@@ -115,5 +124,8 @@ task Promoterwise {
     error_off_std: "warning messages to stderr"
     error_log: "[file] Log warning messages to file"
     error_style: "[server/program] style of error reporting (default program)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

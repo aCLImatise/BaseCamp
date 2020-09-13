@@ -4,4 +4,7 @@ task Scvis {
   command <<<
     scvis
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

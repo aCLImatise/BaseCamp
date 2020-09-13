@@ -3,8 +3,8 @@ version 1.0
 task LongFastx {
   input {
     String? longest
-    String? bases
-    String? others
+    Int? bases
+    File? others
     String input_fastq_file
     String output_fastq_file
   }
@@ -22,5 +22,8 @@ task LongFastx {
     others: "Write all other reads to file."
     input_fastq_file: "Input .fastq file."
     output_fastq_file: "Output .fastq file."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

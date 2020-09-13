@@ -9,11 +9,11 @@ task StrainestEst {
     Float? min_depth_base
     Float? max_ident_thr
     Int? threads
-    String examples
+    String indexed_dot
   }
   command <<<
     strainest est \
-      ~{examples} \
+      ~{indexed_dot} \
       ~{if defined(quality_thr) then ("--quality-thr " +  '"' + quality_thr + '"') else ""} \
       ~{if defined(min_depth_percentile) then ("--min-depth-percentile " +  '"' + min_depth_percentile + '"') else ""} \
       ~{if defined(max_depth_percentile) then ("--max-depth-percentile " +  '"' + max_depth_percentile + '"') else ""} \
@@ -24,12 +24,15 @@ task StrainestEst {
   >>>
   parameter_meta {
     quality_thr: "base quality threshold  [default: 20]"
-    min_depth_percentile: "discard positions where the depth of coverage is lower than the MIN_DEPTH_PERCENTILE percentile  [default: 10]"
-    max_depth_percentile: "discard positions where the depth of coverage is higher than the MAX_DEPTH_PERCENTILE percentile  [default: 90]"
-    min_depth_absolute: "discard positions where the depth of coverage is lower than the MIN_DEPTH_ABSOLUTE  [default: 6]"
-    min_depth_base: "filter base counts (set to 0) where they are lower then MIN_DEPTH_BASE x DoC (applied independently for each allelic position) [default: 0.01]"
-    max_ident_thr: "discard genomes with less than MAX_IDENT_THR maximum identity  [default: 0.95]"
-    threads: "number of threads to use in model selection [default: 1]"
-    examples: "strainest est snp.dgrp align.bam align -t 4"
+    min_depth_percentile: "discard positions where the depth of\\ncoverage is lower than the\\nMIN_DEPTH_PERCENTILE percentile  [default:\\n10]"
+    max_depth_percentile: "discard positions where the depth of\\ncoverage is higher than the\\nMAX_DEPTH_PERCENTILE percentile  [default:\\n90]"
+    min_depth_absolute: "discard positions where the depth of\\ncoverage is lower than the\\nMIN_DEPTH_ABSOLUTE  [default: 6]"
+    min_depth_base: "filter base counts (set to 0) where they are\\nlower then MIN_DEPTH_BASE x DoC (applied\\nindependently for each allelic position)\\n[default: 0.01]"
+    max_ident_thr: "discard genomes with less than MAX_IDENT_THR\\nmaximum identity  [default: 0.95]"
+    threads: "number of threads to use in model selection\\n[default: 1]"
+    indexed_dot: "EXAMPLES\\nstrainest est snp.dgrp align.bam align -t 4"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

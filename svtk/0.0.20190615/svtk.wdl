@@ -4,4 +4,7 @@ task Svtk {
   command <<<
     svtk
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../faFrag.cwl
 inputs:
-- id: mixed
+- id: in_mixed
   doc: '- preserve mixed-case in FASTA file'
   type: boolean
   inputBinding:
     prefix: -mixed
-- id: in_dot_fa
+- id: in_in_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: start
+- id: in_start
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: end
+- id: in_end
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: out_dot_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - faFrag

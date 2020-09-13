@@ -2,14 +2,14 @@ version 1.0
 
 task PhyluceAlignRemoveLocusNameFromNexusLines {
   input {
-    String? alignments
-    String? output_directory_hold
-    String? tax_a
+    Directory? alignments
+    Directory? output_directory_hold
+    Int? tax_a
     String? input_format
     String? output_format
     String? verbosity
-    String? log_path
-    String? cores
+    File? log_path
+    Int? cores
   }
   command <<<
     phyluce_align_remove_locus_name_from_nexus_lines \
@@ -30,6 +30,10 @@ task PhyluceAlignRemoveLocusNameFromNexusLines {
     output_format: "The output alignment format."
     verbosity: "The logging level to use."
     log_path: "The path to a directory to hold logs."
-    cores: "Process alignments in parallel using --cores for alignment. This is the number of PHYSICAL CPUs."
+    cores: "Process alignments in parallel using --cores for\\nalignment. This is the number of PHYSICAL CPUs.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_hold = "${in_output_directory_hold}"
   }
 }

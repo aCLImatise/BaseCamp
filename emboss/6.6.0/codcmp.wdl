@@ -4,4 +4,7 @@ task Codcmp {
   command <<<
     codcmp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

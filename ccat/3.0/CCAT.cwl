@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../CCAT.cwl
 inputs:
-- id: library_one_tag_file_name
+- id: in_library_one_tag_file_name
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: library_two_tag_file_name
+- id: in_library_two_tag_file_name
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: chromosome_length_file_name
+- id: in_chromosome_length_file_name
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-- id: config_file_name
+- id: in_config_file_name
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 3
-- id: project_name
+- id: in_project_name
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - CCAT

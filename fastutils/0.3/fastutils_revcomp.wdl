@@ -2,8 +2,8 @@ version 1.0
 
 task FastutilsRevcomp {
   input {
-    String? in
-    String? out
+    File? in
+    File? out
     Int? linewidth
     Boolean? fast_q
     Boolean? comment
@@ -14,9 +14,9 @@ task FastutilsRevcomp {
       ~{if defined(in) then ("--in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(linewidth) then ("--lineWidth " +  '"' + linewidth + '"') else ""} \
-      ~{true="--fastq" false="" fast_q} \
-      ~{true="--comment" false="" comment} \
-      ~{true="--lex" false="" lex}
+      ~{if (fast_q) then "--fastq" else ""} \
+      ~{if (comment) then "--comment" else ""} \
+      ~{if (lex) then "--lex" else ""}
   >>>
   parameter_meta {
     in: "input file in fasta/q format [stdin]"
@@ -25,5 +25,9 @@ task FastutilsRevcomp {
     fast_q: "output reads in fastq format if possible"
     comment: "print comments in headers"
     lex: "output lexicographically smaller sequence"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

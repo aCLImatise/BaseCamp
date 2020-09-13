@@ -2,7 +2,7 @@ version 1.0
 
 task AllPairsQuartetDist {
   input {
-    String input_filename
+    File input_filename
     String? var_output
     File? filename
   }
@@ -16,5 +16,8 @@ task AllPairsQuartetDist {
     input_filename: ""
     var_output: ""
     filename: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

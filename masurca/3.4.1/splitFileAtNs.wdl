@@ -4,4 +4,7 @@ task SplitFileAtNs {
   command <<<
     splitFileAtNs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

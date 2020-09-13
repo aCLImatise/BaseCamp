@@ -3,37 +3,37 @@ version 1.0
 task UnicyclerPolish {
   input {
     String? assembly
-    String? short_one
-    String? short_two
+    Int? short_one
+    Int? short_two
     Array[String] pb_bax
-    String? pb_bam
-    String? pb_fast_a
-    String? long_reads
+    File? pb_bam
+    File? pb_fast_a
+    File? long_reads
     Boolean? no_fix_local
     Int? min_insert
     Int? max_insert
     Int? min_align_length
-    String? homopolymer
-    String? large
-    String? illumina_alt
-    String? free_bayes_qual_cut_off
-    String? threads
-    String? verbosity
-    String? sam_tools
-    String? bowtie_two
+    Int? homopolymer
+    Int? large
+    Int? illumina_alt
+    Float? free_bayes_qual_cut_off
+    Int? threads
+    Int? verbosity
+    File? sam_tools
+    Int? bowtie_two
     Int? minimap_two
-    String? free_bayes
-    String? pitchfork
-    String? bax_two_bam
-    String? pb_align
-    String? arrow
-    String? pilon
-    String? java
-    String? ale
-    String? rac_on
-    Int? minimap
-    String? nuc_mer
-    String? shows_nps
+    File? free_bayes
+    File? pitchfork
+    Int? bax_two_bam
+    File? pb_align
+    File? arrow
+    File? pilon
+    File? java
+    File? ale
+    File? rac_on
+    File? minimap
+    File? nuc_mer
+    File? shows_nps
   }
   command <<<
     unicycler_polish \
@@ -44,7 +44,7 @@ task UnicyclerPolish {
       ~{if defined(pb_bam) then ("--pb_bam " +  '"' + pb_bam + '"') else ""} \
       ~{if defined(pb_fast_a) then ("--pb_fasta " +  '"' + pb_fast_a + '"') else ""} \
       ~{if defined(long_reads) then ("--long_reads " +  '"' + long_reads + '"') else ""} \
-      ~{true="--no_fix_local" false="" no_fix_local} \
+      ~{if (no_fix_local) then "--no_fix_local" else ""} \
       ~{if defined(min_insert) then ("--min_insert " +  '"' + min_insert + '"') else ""} \
       ~{if defined(max_insert) then ("--max_insert " +  '"' + max_insert + '"') else ""} \
       ~{if defined(min_align_length) then ("--min_align_length " +  '"' + min_align_length + '"') else ""} \
@@ -73,7 +73,7 @@ task UnicyclerPolish {
   parameter_meta {
     assembly: "Input assembly to be polished"
     short_one: "FASTQ file of short reads (first reads in each pair)"
-    short_two: "FASTQ file of short reads (second reads in each pair)"
+    short_two: "FASTQ file of short reads (second reads in each\\npair)"
     pb_bax: "PacBio raw bax.h5 read files"
     pb_bam: "PacBio BAM read file"
     pb_fast_a: "FASTA file of PacBio reads"
@@ -82,17 +82,17 @@ task UnicyclerPolish {
     min_insert: "minimum valid short read insert size (default: auto)"
     max_insert: "maximum valid short read insert size (default: auto)"
     min_align_length: "Minimum long read alignment length (default: 1000)"
-    homopolymer: "Long read polish changes to a homopolymer of this length or greater will be ignored (default: 4)"
-    large: "Variants of this size or greater will be assess as large variants (default: 10)"
-    illumina_alt: "When assessing long read changes with short read alignments, a variant will only be applied if the alternative occurrences in the short read alignments exceed this percentage (default: 5)"
-    free_bayes_qual_cut_off: "Reject Pilon substitutions from long reads if the FreeBayes quality is less than this value (default: 10.0)"
-    threads: "CPU threads to use in alignment and consensus (default: number of CPUs)"
-    verbosity: "Level of stdout information (0 to 3, default: 2) 0 = no stdout, 1 = basic progress indicators, 2 = extra info, 3 = debugging info"
+    homopolymer: "Long read polish changes to a homopolymer of this\\nlength or greater will be ignored (default: 4)"
+    large: "Variants of this size or greater will be assess as\\nlarge variants (default: 10)"
+    illumina_alt: "When assessing long read changes with short read\\nalignments, a variant will only be applied if the\\nalternative occurrences in the short read alignments\\nexceed this percentage (default: 5)"
+    free_bayes_qual_cut_off: "Reject Pilon substitutions from long reads if the\\nFreeBayes quality is less than this value (default:\\n10.0)"
+    threads: "CPU threads to use in alignment and consensus\\n(default: number of CPUs)"
+    verbosity: "Level of stdout information (0 to 3, default: 2)\\n0 = no stdout, 1 = basic progress indicators,\\n2 = extra info, 3 = debugging info"
     sam_tools: "path to samtools executable (default: samtools)"
     bowtie_two: "path to bowtie2 executable (default: bowtie2)"
     minimap_two: "path to minimap2 executable (default: minimap2)"
     free_bayes: "path to freebayes executable (default: freebayes)"
-    pitchfork: "Path to Pitchfork installation of PacBio tools (should contain bin and lib directories) (default: )"
+    pitchfork: "Path to Pitchfork installation of PacBio tools\\n(should contain bin and lib directories) (default: )"
     bax_two_bam: "path to bax2bam executable (default: bax2bam)"
     pb_align: "path to pbalign executable (default: pbalign)"
     arrow: "path to arrow executable (default: arrow)"
@@ -103,5 +103,8 @@ task UnicyclerPolish {
     minimap: "path to miniasm executable (default: minimap)"
     nuc_mer: "path to nucmer executable (default: nucmer)"
     shows_nps: "path to show-snps executable (default: show-snps)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

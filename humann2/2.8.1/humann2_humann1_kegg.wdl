@@ -12,11 +12,11 @@ task Humann2Humann1Kegg {
   command <<<
     humann2_humann1_kegg \
       ~{var_5} \
-      ~{true="--igenels" false="" var_0} \
-      ~{true="--ikeggtrans" false="" i_kegg_trans} \
-      ~{true="--ikoc" false="" i_koc} \
-      ~{true="--ikeggOrgId2OrgName" false="" i_kegg_orgid_two_orgname} \
-      ~{true="--o" false="" o}
+      ~{if (var_0) then "--igenels" else ""} \
+      ~{if (i_kegg_trans) then "--ikeggtrans" else ""} \
+      ~{if (i_koc) then "--ikoc" else ""} \
+      ~{if (i_kegg_orgid_two_orgname) then "--ikeggOrgId2OrgName" else ""} \
+      ~{if (o) then "--o" else ""}
   >>>
   parameter_meta {
     var_0: "[IGENELS]"
@@ -25,5 +25,8 @@ task Humann2Humann1Kegg {
     i_kegg_orgid_two_orgname: "[IKEGGORGID2ORGNAME]"
     o: "[O]"
     var_5: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

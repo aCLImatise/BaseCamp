@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- mb-cap-occupancy
+- inputfile
 positional:
 - !Positional
   description: ''
@@ -13,26 +16,25 @@ named:
   args: !SimpleFlagArg
     name: QUANTILE
   optional: true
-command:
-- mb-cap-occupancy
-- inputfile
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - mb-cap-occupancy
   positional: []
   named:
   - !Flag
-    description: quantile [0, 1.0]
+    description: "quantile [0, 1.0]\n"
     synonyms:
     - --quantile
     - -q
     args: !SimpleFlagArg
       name: QUANTILE
     optional: true
-  command:
-  - mb-cap-occupancy
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - mb-cap-occupancy
+    - outputfile
     positional:
     - !Positional
       description: ''
@@ -57,11 +59,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: QUANTILE
       optional: true
-    command:
-    - mb-cap-occupancy
-    - outputfile
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -74,6 +74,8 @@ parent: &id002 !Command
       mb-cap-occupancy: error: argument inputfile: 'outputfile' does not exist\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -91,6 +93,7 @@ parent: &id002 !Command
     \                        quantile [0, 1.0]\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

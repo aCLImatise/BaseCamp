@@ -1,112 +1,125 @@
 class: CommandLineTool
 id: ../../../shovill.cwl
 inputs:
-- id: check
+- id: in_check
   doc: Check dependencies are installed
   type: boolean
   inputBinding:
     prefix: --check
-- id: r_one
+- id: in_r_one
   doc: "Read 1 FASTQ (default: '')"
-  type: string
+  type: long
   inputBinding:
     prefix: --R1
-- id: r_two
+- id: in_r_two
   doc: "Read 2 FASTQ (default: '')"
-  type: string
+  type: long
   inputBinding:
     prefix: --R2
-- id: depth
+- id: in_depth
   doc: 'Sub-sample --R1/--R2 to this depth. Disable with --depth 0 (default: 150)'
-  type: string
+  type: long
   inputBinding:
     prefix: --depth
-- id: g_size
+- id: in_g_size
   doc: "Estimated genome size eg. 3.2M <blank=AUTODETECT> (default: '')"
-  type: string
+  type: long
   inputBinding:
     prefix: --gsize
-- id: outdir
+- id: in_outdir
   doc: "Output folder (default: '')"
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: force
+- id: in_force
   doc: 'Force overwite of existing output folder (default: OFF)'
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: --force
-- id: min_len
+- id: in_min_len
   doc: 'Minimum contig length <0=AUTO> (default: 0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --minlen
-- id: min_cov
+- id: in_min_cov
   doc: 'Minimum contig coverage <0=AUTO> (default: 2)'
-  type: string
+  type: long
   inputBinding:
     prefix: --mincov
-- id: name_fmt
+- id: in_name_fmt
   doc: "Format of contig FASTA IDs in 'printf' style (default: 'contig%05d')"
-  type: string
+  type: long
   inputBinding:
     prefix: --namefmt
-- id: keep_files
+- id: in_keep_files
   doc: 'Keep intermediate files (default: OFF)'
   type: boolean
   inputBinding:
     prefix: --keepfiles
-- id: tmpdir
+- id: in_tmpdir
   doc: "Fast temporary directory (default: '')"
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-- id: cpus
-  doc: 'Number of CPUs to use (0=ALL) (default: 8)'
-  type: string
+- id: in_cpus
+  doc: 'Number of CPUs to use (0=ALL) (default: 1)'
+  type: long
   inputBinding:
     prefix: --cpus
-- id: ram
+- id: in_ram
   doc: 'Try to keep RAM usage below this many GB (default: 15.64)'
-  type: string
+  type: double
   inputBinding:
     prefix: --ram
-- id: assembler
-  doc: "Assembler: megahit skesa spades velvet (default: 'spades')"
+- id: in_assembler
+  doc: "Assembler: skesa spades velvet megahit (default: 'spades')"
   type: string
   inputBinding:
     prefix: --assembler
-- id: opts
+- id: in_opts
   doc: "Extra assembler options in quotes eg. spades: '--sc' (default: '')"
   type: string
   inputBinding:
     prefix: --opts
-- id: km_ers
+- id: in_km_ers
   doc: "K-mers to use <blank=AUTO> (default: '')"
   type: string
   inputBinding:
     prefix: --kmers
-- id: trim
+- id: in_trim
   doc: 'Enable adaptor trimming (default: OFF)'
   type: boolean
   inputBinding:
     prefix: --trim
-- id: no_read_corr
+- id: in_no_read_corr
   doc: 'Disable read error correction (default: OFF)'
   type: boolean
   inputBinding:
     prefix: --noreadcorr
-- id: no_stitch
+- id: in_no_stitch
   doc: 'Disable read stitching (default: OFF)'
   type: boolean
   inputBinding:
     prefix: --nostitch
-- id: no_corr
+- id: in_no_corr
   doc: 'Disable post-assembly correction (default: OFF)'
   type: boolean
   inputBinding:
     prefix: --nocorr
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: "Output folder (default: '')"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_force
+  doc: 'Force overwite of existing output folder (default: OFF)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_force)
 cwlVersion: v1.1
 baseCommand:
 - shovill

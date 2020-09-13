@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../DASedit.cwl
 inputs:
-- id: v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: x
+- id: in_x
   doc: ''
   type: boolean
   inputBinding:
     prefix: -x
-- id: int
+- id: in_v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: in_int
   doc: ''
   type: long
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - DASedit

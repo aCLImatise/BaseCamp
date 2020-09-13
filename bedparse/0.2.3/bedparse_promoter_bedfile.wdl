@@ -2,19 +2,22 @@ version 1.0
 
 task BedparsePromoterBedfile {
   input {
-    String? up
-    String? down
     Boolean? un_stranded
+    String? down
+    String? up
   }
   command <<<
     bedparse promoter bedfile \
-      ~{if defined(up) then ("--up " +  '"' + up + '"') else ""} \
+      ~{if (un_stranded) then "--unstranded" else ""} \
       ~{if defined(down) then ("--down " +  '"' + down + '"') else ""} \
-      ~{true="--unstranded" false="" un_stranded}
+      ~{if defined(up) then ("--up " +  '"' + up + '"') else ""}
   >>>
   parameter_meta {
-    up: ""
-    down: ""
     un_stranded: ""
+    down: ""
+    up: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

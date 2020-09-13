@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../msaconverter.cwl
 inputs:
-- id: input_msa_file
+- id: in_input_msa_file
   doc: input msa file
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: output_msa_file
+- id: in_output_msa_file
   doc: output msa file
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: p
+- id: in_p
   doc: input msa format [fasta]
   type: string
   inputBinding:
     prefix: -p
-- id: q
-  doc: input msa format [phylip-relaxed]
+- id: in_q
+  doc: "input msa format [phylip-relaxed]\n"
   type: string
   inputBinding:
     prefix: -q
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_msa_file
+  doc: output msa file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_msa_file)
 cwlVersion: v1.1
 baseCommand:
 - msaconverter

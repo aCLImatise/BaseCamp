@@ -2,11 +2,11 @@ version 1.0
 
 task SlamdunkSnpBam {
   input {
-    String? o
-    String? r
-    String? c
-    String? f
     String? t
+    String? f
+    String? c
+    String? r
+    String? o
     String slam_dunk
     String snp
   }
@@ -14,19 +14,22 @@ task SlamdunkSnpBam {
     slamdunk snp bam \
       ~{slam_dunk} \
       ~{snp} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
-      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
-    o: ""
-    r: ""
-    c: ""
-    f: ""
     t: ""
+    f: ""
+    c: ""
+    r: ""
+    o: ""
     slam_dunk: ""
     snp: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,14 +1,10 @@
 version 1.0
 
-task DownloadPubmed {
-  input {
-    String pubmed_slash_usage
-  }
+task Downloadpubmed {
   command <<<
-    download-pubmed \
-      ~{pubmed_slash_usage}
+    download_pubmed
   >>>
-  parameter_meta {
-    pubmed_slash_usage: ""
+  output {
+    File out_stdout = stdout()
   }
 }

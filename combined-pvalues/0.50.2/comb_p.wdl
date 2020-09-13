@@ -1,14 +1,10 @@
 version 1.0
 
-task CombP {
-  input {
-    String pipeline
-  }
+task Combp {
   command <<<
-    comb-p \
-      ~{pipeline}
+    comb_p
   >>>
-  parameter_meta {
-    pipeline: "- run acf, slk, fdr, peaks, region_p in succesion"
+  output {
+    File out_stdout = stdout()
   }
 }

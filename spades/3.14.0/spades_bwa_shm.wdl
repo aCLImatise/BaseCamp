@@ -1,6 +1,6 @@
 version 1.0
 
-task SpadesBwaShm {
+task SpadesbwaShm {
   input {
     Boolean? destroy_indices_shared
     Boolean? list_names_indices
@@ -9,11 +9,11 @@ task SpadesBwaShm {
     String shm
   }
   command <<<
-    spades-bwa shm \
+    spades_bwa shm \
       ~{bwa} \
       ~{shm} \
-      ~{true="-d" false="" destroy_indices_shared} \
-      ~{true="-l" false="" list_names_indices} \
+      ~{if (destroy_indices_shared) then "-d" else ""} \
+      ~{if (list_names_indices) then "-l" else ""} \
       ~{if defined(temporary_file_reduce) then ("-f " +  '"' + temporary_file_reduce + '"') else ""}
   >>>
   parameter_meta {
@@ -22,5 +22,8 @@ task SpadesBwaShm {
     temporary_file_reduce: "temporary file to reduce peak memory"
     bwa: ""
     shm: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

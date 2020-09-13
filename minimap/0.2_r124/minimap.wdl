@@ -4,7 +4,7 @@ task Minimap {
   input {
     Int? kmer_size
     Int? minizer_window_size
-    String? split_index_num
+    Int? split_index_num
     File? dump_index_file
     Boolean? st_argument_index
     Float? filter_top_fraction
@@ -17,7 +17,7 @@ task Minimap {
     Boolean? skip_self_mappings
     Boolean? drop_isolated_hits
     Boolean? filtering_potential_repeats
-    String? preset_recommended_applied
+    Int? preset_recommended_applied
     Int? number_of_threads
     Boolean? show_version_number
     String target_dot_fa
@@ -31,7 +31,7 @@ task Minimap {
       ~{if defined(minizer_window_size) then ("-w " +  '"' + minizer_window_size + '"') else ""} \
       ~{if defined(split_index_num) then ("-I " +  '"' + split_index_num + '"') else ""} \
       ~{if defined(dump_index_file) then ("-d " +  '"' + dump_index_file + '"') else ""} \
-      ~{true="-l" false="" st_argument_index} \
+      ~{if (st_argument_index) then "-l" else ""} \
       ~{if defined(filter_top_fraction) then ("-f " +  '"' + filter_top_fraction + '"') else ""} \
       ~{if defined(bandwidth) then ("-r " +  '"' + bandwidth + '"') else ""} \
       ~{if defined(merge_two_chains) then ("-m " +  '"' + merge_two_chains + '"') else ""} \
@@ -39,12 +39,12 @@ task Minimap {
       ~{if defined(min_matching_length) then ("-L " +  '"' + min_matching_length + '"') else ""} \
       ~{if defined(split_mapping_there) then ("-g " +  '"' + split_mapping_there + '"') else ""} \
       ~{if defined(sdust_threshold_disable) then ("-T " +  '"' + sdust_threshold_disable + '"') else ""} \
-      ~{true="-S" false="" skip_self_mappings} \
-      ~{true="-O" false="" drop_isolated_hits} \
-      ~{true="-P" false="" filtering_potential_repeats} \
+      ~{if (skip_self_mappings) then "-S" else ""} \
+      ~{if (drop_isolated_hits) then "-O" else ""} \
+      ~{if (filtering_potential_repeats) then "-P" else ""} \
       ~{if defined(preset_recommended_applied) then ("-x " +  '"' + preset_recommended_applied + '"') else ""} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
-      ~{true="-V" false="" show_version_number}
+      ~{if (show_version_number) then "-V" else ""}
   >>>
   parameter_meta {
     kmer_size: "k-mer size [15]"
@@ -62,10 +62,13 @@ task Minimap {
     skip_self_mappings: "skip self and dual mappings"
     drop_isolated_hits: "drop isolated hits before chaining (EXPERIMENTAL)"
     filtering_potential_repeats: "filtering potential repeats after mapping (EXPERIMENTAL)"
-    preset_recommended_applied: "preset (recommended to be applied before other options) [] ava10k: -Sw5 -L100 -m0 (PacBio/ONT all-vs-all read mapping)"
+    preset_recommended_applied: "preset (recommended to be applied before other options) []\\nava10k: -Sw5 -L100 -m0 (PacBio/ONT all-vs-all read mapping)"
     number_of_threads: "number of threads [3]"
     show_version_number: "show version number"
     target_dot_fa: ""
     query_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

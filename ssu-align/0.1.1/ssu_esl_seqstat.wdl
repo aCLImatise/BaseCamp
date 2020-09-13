@@ -1,24 +1,24 @@
 version 1.0
 
-task SsuEslSeqstat {
+task Ssueslseqstat {
   input {
     Boolean? report_persequence_info
     Boolean? count_report_composition
-    String? in_format
+    File? in_format
     Boolean? rna
     Boolean? dna
     Boolean? amino
     String seq_file
   }
   command <<<
-    ssu-esl-seqstat \
+    ssu_esl_seqstat \
       ~{seq_file} \
-      ~{true="-a" false="" report_persequence_info} \
-      ~{true="-c" false="" count_report_composition} \
+      ~{if (report_persequence_info) then "-a" else ""} \
+      ~{if (count_report_composition) then "-c" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--amino" false="" amino}
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (amino) then "--amino" else ""}
   >>>
   parameter_meta {
     report_persequence_info: ": report per-sequence info line, not just a summary"
@@ -28,5 +28,8 @@ task SsuEslSeqstat {
     dna: ": specify that <seqfile> contains DNA sequence"
     amino: ": specify that <seqfile> contains protein sequence"
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

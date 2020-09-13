@@ -1,27 +1,36 @@
 class: CommandLineTool
 id: ../../../phyluce_probe_get_subsets_of_tiled_probes.cwl
 inputs:
-- id: probes
+- id: in_probes
   doc: The probe file to filter.
-  type: string
+  type: File
   inputBinding:
     prefix: --probes
-- id: tax_a
+- id: in_tax_a
   doc: The taxa for which to filter probes.
   type: string[]
   inputBinding:
     prefix: --taxa
-- id: output
+- id: in_output
   doc: The file in which to store the output.
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: regex
-  doc: A regular expression to apply to the probe names for replacement [default='^(uce-\d+)(?:_p\d+.*)'].
+- id: in_regex
+  doc: "A regular expression to apply to the probe names for\nreplacement [default='^(uce-\\\
+    d+)(?:_p\\d+.*)'].\n"
   type: string
   inputBinding:
     prefix: --regex
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The file in which to store the output.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_probe_get_subsets_of_tiled_probes

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../chromosomer_simulator_fr_len.cwl
 inputs:
-- id: g
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -g
-- id: p
+- id: in_p
   doc: ''
   type: string
   inputBinding:
     prefix: -p
-- id: chromosome_r
+- id: in_g
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -g
+- id: in_chromosome_r
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: simulator
+- id: in_simulator
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chromosomer

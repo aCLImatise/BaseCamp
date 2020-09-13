@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../phyluce_assembly_explode_get_fastas_file.cwl
 inputs:
-- id: input
+- id: in_input
   doc: The input fasta file to explode
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output
-  doc: The output directory to create and in which to store the fastas
-  type: string
+- id: in_output
+  doc: "The output directory to create and in which to store\nthe fastas"
+  type: Directory
   inputBinding:
     prefix: --output
-- id: by_tax_on
+- id: in_by_tax_on
   doc: Split file by taxon and not by locus
   type: boolean
   inputBinding:
     prefix: --by-taxon
-- id: split_char
-  doc: The character to split on
+- id: in_split_char
+  doc: "The character to split on\n"
   type: string
   inputBinding:
     prefix: --split-char
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "The output directory to create and in which to store\nthe fastas"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_assembly_explode_get_fastas_file

@@ -11,4 +11,7 @@ task ArbPrimer {
   parameter_meta {
     dbname: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

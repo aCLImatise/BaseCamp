@@ -8,10 +8,13 @@ task TreebestMfa2aln {
   command <<<
     treebest mfa2aln \
       ~{fast_a_align} \
-      ~{true="-n" false="" n}
+      ~{if (n) then "-n" else ""}
   >>>
   parameter_meta {
     n: ""
     fast_a_align: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

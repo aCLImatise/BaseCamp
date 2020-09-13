@@ -1,26 +1,29 @@
 version 1.0
 
-task Varda2ClientSave {
+task Varda2clientSave {
   input {
-    String? p
-    String? s
-    String? c
     Boolean? v
-    String varda_two_client
+    String? c
+    String? s
+    String? p
+    Int varda_two_client
   }
   command <<<
-    varda2-client save \
+    varda2_client save \
       ~{varda_two_client} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if (v) then "-v" else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
   parameter_meta {
-    p: ""
-    s: ""
-    c: ""
     v: ""
+    c: ""
+    s: ""
+    p: ""
     varda_two_client: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

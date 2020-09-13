@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../ragout_overlap.cwl
 inputs:
-- id: detect_km_er
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --detect-kmer
-- id: hist
+- id: in_hist
   doc: ''
   type: boolean
   inputBinding:
     prefix: --hist
-- id: overlap
+- id: in_detect_km_er
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --detect-kmer
+- id: in_overlap
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: fast_a_in
+- id: in_fast_a_in
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: dot_out
+- id: in_dot_out
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: min_k
+- id: in_min_k
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 3
-- id: max_k
+- id: in_max_k
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ragout-overlap

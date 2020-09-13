@@ -11,4 +11,7 @@ task Vcfcreatemulti {
   parameter_meta {
     file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

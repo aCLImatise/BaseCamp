@@ -11,4 +11,7 @@ task Ftbl2kvh {
   parameter_meta {
     network: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

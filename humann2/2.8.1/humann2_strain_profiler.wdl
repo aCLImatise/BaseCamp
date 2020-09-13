@@ -3,10 +3,10 @@ version 1.0
 task Humann2StrainProfiler {
   input {
     String? original_output_table
-    String? critical_mean
-    String? critical_count
-    String? pinterval__pinterval
-    String? critical_samples
+    Float? critical_mean
+    Int? critical_count
+    Float? pinterval__pinterval
+    Int? critical_samples
     String? limit
   }
   command <<<
@@ -22,8 +22,11 @@ task Humann2StrainProfiler {
     original_output_table: "Original output table (tsv or biom format); default=[TSV/STDIN]"
     critical_mean: "Default mean non-zero gene abundance for inclusion; default=10.0"
     critical_count: "Default non-zero number of genes for inclusion; default=500"
-    pinterval__pinterval: "PINTERVAL, --pinterval PINTERVAL PINTERVAL Only genes with prevalence in this interval are allowed; default=[1e-10, 1]"
+    pinterval__pinterval: "PINTERVAL, --pinterval PINTERVAL PINTERVAL\\nOnly genes with prevalence in this interval are allowed; default=[1e-10, 1]"
     critical_samples: "Threshold number of samples having strain; default=2"
-    limit: "Limit output to species matching a particular pattern, e.g. 'Streptococcus'; default=OFF"
+    limit: "Limit output to species matching a particular pattern, e.g. 'Streptococcus'; default=OFF\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

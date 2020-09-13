@@ -4,4 +4,7 @@ task MlRho {
   command <<<
     mlRho
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task FpaRename {
   input {
-    String? rename_reads_passed
-    String? write_rename_table
+    File? rename_reads_passed
+    File? write_rename_table
   }
   command <<<
     fpa rename \
@@ -13,5 +13,8 @@ task FpaRename {
   parameter_meta {
     rename_reads_passed: "Rename reads with value in path passed as parameter"
     write_rename_table: "Write rename table in path passed as parameter"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

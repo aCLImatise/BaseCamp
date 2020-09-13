@@ -4,4 +4,7 @@ task Catrep {
   command <<<
     catrep
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

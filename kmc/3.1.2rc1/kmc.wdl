@@ -3,7 +3,7 @@ version 1.0
 task Kmc {
   input {
     Boolean? verbose_mode_shows
-    Boolean? len_kmer_length
+    Boolean? len_length_k
     Boolean? size_max_amount
     Boolean? sm
     Boolean? par_signature_length
@@ -20,37 +20,37 @@ task Kmc {
     Boolean? sr
     Boolean? filename_file_name
     Boolean? _without_output
+    String at_input_file_names
     String input_file_name
     String output_file_name
-    String working_directory
   }
   command <<<
     kmc \
+      ~{at_input_file_names} \
       ~{input_file_name} \
       ~{output_file_name} \
-      ~{working_directory} \
-      ~{true="-v" false="" verbose_mode_shows} \
-      ~{true="-k" false="" len_kmer_length} \
-      ~{true="-m" false="" size_max_amount} \
-      ~{true="-sm" false="" sm} \
-      ~{true="-p" false="" par_signature_length} \
-      ~{true="-f" false="" aqmbam_input_fasta} \
-      ~{true="-ci" false="" ci} \
-      ~{true="-cs" false="" cs} \
-      ~{true="-cx" false="" cx} \
-      ~{true="-b" false="" turn_transformation_kmers} \
-      ~{true="-r" false="" turn_ramonly_mode} \
-      ~{true="-n" false="" value_number_bins} \
-      ~{true="-t" false="" value_total_number} \
-      ~{true="-sf" false="" sf} \
-      ~{true="-sp" false="" sp} \
-      ~{true="-sr" false="" sr} \
-      ~{true="-j" false="" filename_file_name} \
-      ~{true="-w" false="" _without_output}
+      ~{if (verbose_mode_shows) then "-v" else ""} \
+      ~{if (len_length_k) then "-k" else ""} \
+      ~{if (size_max_amount) then "-m" else ""} \
+      ~{if (sm) then "-sm" else ""} \
+      ~{if (par_signature_length) then "-p" else ""} \
+      ~{if (aqmbam_input_fasta) then "-f" else ""} \
+      ~{if (ci) then "-ci" else ""} \
+      ~{if (cs) then "-cs" else ""} \
+      ~{if (cx) then "-cx" else ""} \
+      ~{if (turn_transformation_kmers) then "-b" else ""} \
+      ~{if (turn_ramonly_mode) then "-r" else ""} \
+      ~{if (value_number_bins) then "-n" else ""} \
+      ~{if (value_total_number) then "-t" else ""} \
+      ~{if (sf) then "-sf" else ""} \
+      ~{if (sp) then "-sp" else ""} \
+      ~{if (sr) then "-sr" else ""} \
+      ~{if (filename_file_name) then "-j" else ""} \
+      ~{if (_without_output) then "-w" else ""}
   >>>
   parameter_meta {
     verbose_mode_shows: "- verbose mode (shows all parameter settings); default: false"
-    len_kmer_length: "<len> - k-mer length (k from 1 to 256; default: 25)"
+    len_length_k: "<len> - k-mer length (k from 1 to 256; default: 25)"
     size_max_amount: "<size> - max amount of RAM in GB (from 1 to 1024); default: 12"
     sm: "- use strict memory mode (memory limit from -m<n> switch will not be exceeded)"
     par_signature_length: "<par> - signature length (5, 6, 7, 8, 9, 10, 11); default: 9"
@@ -59,16 +59,19 @@ task Kmc {
     cs: "<value> - maximal value of a counter (default: 255)"
     cx: "<value> - exclude k-mers occurring more of than <value> times (default: 1e9)"
     turn_transformation_kmers: "- turn off transformation of k-mers into canonical form"
-    turn_ramonly_mode: "- turn on RAM-only mode "
-    value_number_bins: "<value> - number of bins "
+    turn_ramonly_mode: "- turn on RAM-only mode"
+    value_number_bins: "<value> - number of bins"
     value_total_number: "<value> - total number of threads (default: no. of CPU cores)"
     sf: "<value> - number of FASTQ reading threads"
     sp: "<value> - number of splitting threads"
     sr: "<value> - number of threads for 2nd stage"
     filename_file_name: "<file_name> - file name with execution summary in JSON format"
     _without_output: "- without output"
+    at_input_file_names: ""
     input_file_name: ""
     output_file_name: ""
-    working_directory: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

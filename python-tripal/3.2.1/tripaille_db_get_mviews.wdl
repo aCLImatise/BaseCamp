@@ -11,4 +11,7 @@ task TripailleDbGetMviews {
   parameter_meta {
     name: "filter on mview name"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

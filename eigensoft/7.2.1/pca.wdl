@@ -2,10 +2,10 @@ version 1.0
 
 task Pca {
   input {
-    Boolean? i
-    Boolean? o
-    Boolean? e
     String? l
+    Boolean? e
+    Boolean? o
+    Boolean? i
     String must
     String all
     String be
@@ -17,19 +17,22 @@ task Pca {
       ~{all} \
       ~{be} \
       ~{specified} \
-      ~{true="-i" false="" i} \
-      ~{true="-o" false="" o} \
-      ~{true="-e" false="" e} \
-      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if (e) then "-e" else ""} \
+      ~{if (o) then "-o" else ""} \
+      ~{if (i) then "-i" else ""}
   >>>
   parameter_meta {
-    i: ""
-    o: ""
-    e: ""
     l: ""
+    e: ""
+    o: ""
+    i: ""
     must: ""
     all: ""
     be: ""
     specified: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,73 +1,76 @@
 class: CommandLineTool
 id: ../../../postprocess_predictions.cwl
 inputs:
-- id: minimum_expected_support_deletion
-  doc: Minimum expected support for deletion cliques (cliques with lower support are
-    discarded).
-  type: long
+- id: in_minimum_expected_support_deletion
+  doc: "Minimum expected support for deletion cliques (cliques\nwith lower support\
+    \ are discarded)."
+  type: string
   inputBinding:
     prefix: -d
-- id: minimum_expected_support_insertion
-  doc: Minimum expected support for insertion cliques (cliques with lower support
-    are discarded).
-  type: long
+- id: in_minimum_expected_support_insertion
+  doc: "Minimum expected support for insertion cliques\n(cliques with lower support\
+    \ are discarded)."
+  type: string
   inputBinding:
     prefix: -i
-- id: cov_bal
-  doc: 'Minimum coverage balance (=support/coverage). Filter is applied after merging
-    (default: disabled).'
+- id: in_cov_bal
+  doc: "Minimum coverage balance (=support/coverage). Filter\nis applied after merging\
+    \ (default: disabled)."
   type: string
   inputBinding:
     prefix: --covbal
-- id: minimum_coverage_clique
+- id: in_minimum_coverage_clique
   doc: Minimum coverage at clique center.
   type: long
   inputBinding:
     prefix: -c
-- id: minimum_individual_coverage
-  doc: Minimum individual coverage at clique center, that is, only cliques are retains
-    for which ALL individuals have at least the given coverage.
-  type: long
+- id: in_minimum_individual_coverage
+  doc: "Minimum individual coverage at clique center, that is,\nonly cliques are retains\
+    \ for which ALL individuals\nhave at least the given coverage."
+  type: string
   inputBinding:
     prefix: -C
-- id: reevaluate_cliques_lead
-  doc: Re-evaluate which cliques lead to which sets of individuals (requires standard
-    deviation to be given).
+- id: in_reevaluate_cliques_lead
+  doc: "Re-evaluate which cliques lead to which sets of\nindividuals (requires standard\
+    \ deviation to be given)."
   type: boolean
   inputBinding:
     prefix: -R
-- id: stddev
-  doc: Standard deviation of insert size (necessary for some options).
-  type: string
+- id: in_stddev
+  doc: "Standard deviation of insert size (necessary for some\noptions)."
+  type: long
   inputBinding:
     prefix: --stddev
-- id: also_store_output
-  doc: 'Also store output in separate files for each sample. Parameter: prefix of
-    filenames for samplewise output.'
+- id: in_also_store_output
+  doc: "Also store output in separate files for each sample.\nParameter: prefix of\
+    \ filenames for samplewise output."
   type: string
   inputBinding:
     prefix: -S
-- id: filename_read_samplenames
+- id: in_filename_read_samplenames
   doc: Filename to read samplenames from.
-  type: string
+  type: File
   inputBinding:
     prefix: -N
-- id: only_del
+- id: in_only_del
   doc: Only process deletions.
   type: boolean
   inputBinding:
     prefix: --only-del
-- id: only_ins
+- id: in_only_ins
   doc: Only process insertions.
   type: boolean
   inputBinding:
     prefix: --only-ins
-- id: vcf
+- id: in_vcf
   doc: Output VCF format.
   type: boolean
   inputBinding:
     prefix: --vcf
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - postprocess-predictions

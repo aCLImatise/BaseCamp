@@ -4,4 +4,7 @@ task Bamsormadup {
   command <<<
     bamsormadup
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

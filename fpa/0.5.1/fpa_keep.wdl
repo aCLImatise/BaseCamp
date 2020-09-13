@@ -9,15 +9,15 @@ task FpaKeep {
     Int? length_lower
     Int? length_upper
     String? name_match
-    String? sequence_length_lower
-    String? sequence_length_upper
+    Int? sequence_length_lower
+    Int? sequence_length_upper
   }
   command <<<
     fpa keep \
-      ~{true="--containment" false="" containment} \
-      ~{true="--dovetail" false="" dovetail} \
-      ~{true="--internalmatch" false="" internal_match} \
-      ~{true="--same-name" false="" same_name} \
+      ~{if (containment) then "--containment" else ""} \
+      ~{if (dovetail) then "--dovetail" else ""} \
+      ~{if (internal_match) then "--internalmatch" else ""} \
+      ~{if (same_name) then "--same-name" else ""} \
       ~{if defined(length_lower) then ("--length-lower " +  '"' + length_lower + '"') else ""} \
       ~{if defined(length_upper) then ("--length-upper " +  '"' + length_upper + '"') else ""} \
       ~{if defined(name_match) then ("--name-match " +  '"' + name_match + '"') else ""} \
@@ -33,6 +33,9 @@ task FpaKeep {
     length_upper: "Keep only mapping with length upper than value"
     name_match: "Keep only mapping where one reads match with regex"
     sequence_length_lower: "Keep only mapping where one reads have length lower than value"
-    sequence_length_upper: "Keep only mapping where one reads have length upper than value"
+    sequence_length_upper: "Keep only mapping where one reads have length upper than value\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

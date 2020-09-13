@@ -2,17 +2,19 @@ version 1.0
 
 task PhyluceAlignFilterAlignments {
   input {
-    String? alignments
-    String? directory_write_alignments
+    Directory? alignments
+    Directory? directory_write_alignments
     String? input_format
     Array[String] containing_data_for
     Int? min_length
     Int? min_tax_a
     String? verbosity
-    String? log_path
+    File? log_path
+    String var_8
   }
   command <<<
     phyluce_align_filter_alignments \
+      ~{var_8} \
       ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
       ~{if defined(directory_write_alignments) then ("--output " +  '"' + directory_write_alignments + '"') else ""} \
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
@@ -31,5 +33,9 @@ task PhyluceAlignFilterAlignments {
     min_tax_a: "Filter out alignments with fewer than --min-taxa"
     verbosity: "The logging level to use."
     log_path: "The path to a directory to hold logs."
+    var_8: "[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

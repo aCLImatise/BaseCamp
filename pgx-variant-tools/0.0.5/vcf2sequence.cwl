@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../vcf2sequence.cwl
 inputs:
-- id: vcf
+- id: in_vcf
   doc: Path to input VCF  [required]
   type: File
   inputBinding:
     prefix: --vcf
-- id: sample
-  doc: Sample to consider. If not given, take fist sample in VCF
+- id: in_sample
+  doc: "Sample to consider. If not given, take fist sample\nin VCF"
   type: string
   inputBinding:
     prefix: --sample
-- id: region
+- id: in_region
   doc: Region string of format chr:start-end
   type: string
   inputBinding:
     prefix: --region
-- id: region_file
+- id: in_region_file
   doc: Path to BED file containing regions
   type: File
   inputBinding:
     prefix: --region-file
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcf2sequence

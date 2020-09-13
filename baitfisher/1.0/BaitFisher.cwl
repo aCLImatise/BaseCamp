@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../BaitFisher.cwl
 inputs:
-- id: parameter_file
+- id: in_parameter_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: gff_file_test
+- id: in_gff_file_test
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - BaitFisher

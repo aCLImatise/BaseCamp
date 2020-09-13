@@ -2,30 +2,37 @@ version 1.0
 
 task Swiftlink {
   input {
+    File? pedigree
+    File? var_map
+    File? dat
     String? default_
-    String? _iterationsnum_default
-    String? _burninnum_default
-    String? _sequentialimputationnum_default
-    String? _scoringperiodnum_default
+    Int? _iterationsnum_default
+    Int? _burninnum_default
+    Int? _sequentialimputationnum_default
+    Int? _scoringperiodnum_default
     Float? _lsamplerprobabilityfloat_default
-    String? _lodscoresnum_default
-    String? _runsnum_default
+    Int? _lodscoresnum_default
+    Int? _runsnum_default
     Boolean? __trace
     String? _traceprefixprefix_default
     Boolean? _elod
     Float? _frequencyfloat_default
     Float? _separationfloat_default
     Float? floatfloat__penetrancefloatfloatfloatdefault
-    String? _replicatesnum_default
-    String? _coresnum_default
+    Int? _replicatesnum_default
+    Int? _coresnum_default
     Boolean? __gpu
+    Boolean? __sexlinked
+    Boolean? __affectedonly
+    Int? _peelseqiternum_default
+    File? random_seeds
     Boolean? __verbose
-    String? var_18
-    String? m
-    String? d
   }
   command <<<
     swiftlink \
+      ~{if defined(pedigree) then ("--pedigree " +  '"' + pedigree + '"') else ""} \
+      ~{if defined(var_map) then ("--map " +  '"' + var_map + '"') else ""} \
+      ~{if defined(dat) then ("--dat " +  '"' + dat + '"') else ""} \
       ~{if defined(default_) then ("--output " +  '"' + default_ + '"') else ""} \
       ~{if defined(_iterationsnum_default) then ("-i " +  '"' + _iterationsnum_default + '"') else ""} \
       ~{if defined(_burninnum_default) then ("-b " +  '"' + _burninnum_default + '"') else ""} \
@@ -34,21 +41,25 @@ task Swiftlink {
       ~{if defined(_lsamplerprobabilityfloat_default) then ("-l " +  '"' + _lsamplerprobabilityfloat_default + '"') else ""} \
       ~{if defined(_lodscoresnum_default) then ("-n " +  '"' + _lodscoresnum_default + '"') else ""} \
       ~{if defined(_runsnum_default) then ("-R " +  '"' + _runsnum_default + '"') else ""} \
-      ~{true="-T" false="" __trace} \
+      ~{if (__trace) then "-T" else ""} \
       ~{if defined(_traceprefixprefix_default) then ("-P " +  '"' + _traceprefixprefix_default + '"') else ""} \
-      ~{true="-e" false="" _elod} \
+      ~{if (_elod) then "-e" else ""} \
       ~{if defined(_frequencyfloat_default) then ("-f " +  '"' + _frequencyfloat_default + '"') else ""} \
       ~{if defined(_separationfloat_default) then ("-w " +  '"' + _separationfloat_default + '"') else ""} \
       ~{if defined(floatfloat__penetrancefloatfloatfloatdefault) then ("-k " +  '"' + floatfloat__penetrancefloatfloatfloatdefault + '"') else ""} \
       ~{if defined(_replicatesnum_default) then ("-u " +  '"' + _replicatesnum_default + '"') else ""} \
       ~{if defined(_coresnum_default) then ("-c " +  '"' + _coresnum_default + '"') else ""} \
-      ~{true="-g" false="" __gpu} \
-      ~{true="-v" false="" __verbose} \
-      ~{if defined(var_18) then ("-p " +  '"' + var_18 + '"') else ""} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
+      ~{if (__gpu) then "-g" else ""} \
+      ~{if (__sexlinked) then "-X" else ""} \
+      ~{if (__affectedonly) then "-a" else ""} \
+      ~{if defined(_peelseqiternum_default) then ("-q " +  '"' + _peelseqiternum_default + '"') else ""} \
+      ~{if defined(random_seeds) then ("--randomseeds " +  '"' + random_seeds + '"') else ""} \
+      ~{if (__verbose) then "-v" else ""}
   >>>
   parameter_meta {
+    pedigree: ""
+    var_map: ""
+    dat: ""
     default_: "(default = 'swiftlink.out')"
     _iterationsnum_default: ",     --iterations=NUM            (default = 50000)"
     _burninnum_default: ",     --burnin=NUM                (default = 50000)"
@@ -66,9 +77,13 @@ task Swiftlink {
     _replicatesnum_default: "--replicates=NUM            (default = 1000000)"
     _coresnum_default: ",     --cores=NUM                 (default = 1)"
     __gpu: ",         --gpu                       [UNAVAILABLE, COMPILED WITHOUT CUDA]"
+    __sexlinked: ",         --sexlinked"
+    __affectedonly: ",         --affectedonly"
+    _peelseqiternum_default: ",     --peelseqiter=NUM           (default = 1000000)"
+    random_seeds: ""
     __verbose: ",         --verbose"
-    var_18: ""
-    m: ""
-    d: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

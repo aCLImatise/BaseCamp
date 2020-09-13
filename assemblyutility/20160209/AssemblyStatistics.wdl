@@ -4,4 +4,7 @@ task AssemblyStatistics {
   command <<<
     AssemblyStatistics
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -10,44 +10,35 @@ task Evaluator {
     Boolean? cpus
     Boolean? force
     Boolean? again
-    Boolean? quiet
     Boolean? ctl
-    String mpi_evaluator
-    String eval_opts
-    String eval_b_opts
-    String eval_exe
+    String changed_dot
   }
   command <<<
     evaluator \
-      ~{mpi_evaluator} \
-      ~{eval_opts} \
-      ~{eval_b_opts} \
-      ~{eval_exe} \
+      ~{changed_dot} \
       ~{if defined(genome_gff) then ("-genome_gff " +  '"' + genome_gff + '"') else ""} \
-      ~{true="-model_gff" false="" model_gff} \
-      ~{true="-genome" false="" genome} \
-      ~{true="-RM_off" false="" rm_off} \
-      ~{true="-retry" false="" retry} \
-      ~{true="-cpus" false="" cpus} \
-      ~{true="-force" false="" force} \
-      ~{true="-again" false="" again} \
-      ~{true="-quiet" false="" quiet} \
-      ~{true="-CTL" false="" ctl}
+      ~{if (model_gff) then "-model_gff" else ""} \
+      ~{if (genome) then "-genome" else ""} \
+      ~{if (rm_off) then "-RM_off" else ""} \
+      ~{if (retry) then "-retry" else ""} \
+      ~{if (cpus) then "-cpus" else ""} \
+      ~{if (force) then "-force" else ""} \
+      ~{if (again) then "-again" else ""} \
+      ~{if (ctl) then "-CTL" else ""}
   >>>
   parameter_meta {
     genome_gff: "Specify the maker gff file to evaluate."
     model_gff: "<file>  Specify the external gff file to evaluate."
-    genome: "<file>  Specify the genome fasta file.  This if optional if the fasta entries are also found in the gff file."
+    genome: "<file>  Specify the genome fasta file.  This if optional if the\\nfasta entries are also found in the gff file."
     rm_off: "|R           Turns all repeat masking off."
     retry: "<integer>  Rerun failed contigs up to the specified count."
     cpus: "|c  <integer>  Tells how many cpus to use for BLAST analysis."
-    force: "|f            Forces program to delete old files before running again. This will require all blast analyses to be rerun."
-    again: "|a            Caculate all output files again even if no settings have changed."
-    quiet: "|q            Silences most of the status messages."
+    force: "|f            Forces program to delete old files before running again.\\nThis will require all blast analyses to be rerun."
+    again: "|a            Caculate all output files again even if no settings have"
     ctl: "Generate empty control files in the current directory."
-    mpi_evaluator: ""
-    eval_opts: ""
-    eval_b_opts: ""
-    eval_exe: ""
+    changed_dot: "-quiet|q            Silences most of the status messages."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

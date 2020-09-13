@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../tango_build_taxonnodes.cwl
 inputs:
-- id: d
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -d
-- id: p
+- id: in_p
   doc: ''
   type: string
   inputBinding:
     prefix: -p
-- id: tango
+- id: in_d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: in_tango
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: build
+- id: in_build
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: fast_a_file
+- id: in_fast_a_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: taxon_map
+- id: in_taxon_map
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: tax_on_nodes
+- id: in_tax_on_nodes
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tango

@@ -4,10 +4,10 @@ task Hmmsim {
   input {
     Boolean? obtain_length_statistics
     Boolean? verbose_print_scores
-    String? length_random_target
-    String? number_random_target
-    String? direct_output_file
-    String? a_file
+    Int? length_random_target
+    Int? number_random_target
+    File? direct_output_file
+    File? a_file
     String? e_file
     String? f_file
     String? pfile
@@ -21,32 +21,32 @@ task Hmmsim {
     Boolean? hyb
     Boolean? msv
     Boolean? fast
-    String? tm_in
-    String? tmax
-    String? t_points
+    Float? tm_in
+    Float? tmax
+    Int? t_points
     Boolean? t_linear
-    String? eml
-    String? emn
-    String? evl
-    String? evn
-    String? efl
-    String? efn
-    String? eft
+    Int? eml
+    Int? emn
+    Int? evl
+    Int? evn
+    Int? efl
+    Int? efn
+    Float? eft
     Boolean? stall
-    String? seed
+    Int? seed
     Boolean? bg_flat
     Boolean? bg_comp
     Boolean? x_no_length_model
-    String? nu
-    String? p_thresh
+    Float? nu
+    Float? p_thresh
     Boolean? options
     String hmm_file
   }
   command <<<
     hmmsim \
       ~{hmm_file} \
-      ~{true="-a" false="" obtain_length_statistics} \
-      ~{true="-v" false="" verbose_print_scores} \
+      ~{if (obtain_length_statistics) then "-a" else ""} \
+      ~{if (verbose_print_scores) then "-v" else ""} \
       ~{if defined(length_random_target) then ("-L " +  '"' + length_random_target + '"') else ""} \
       ~{if defined(number_random_target) then ("-N " +  '"' + number_random_target + '"') else ""} \
       ~{if defined(direct_output_file) then ("-o " +  '"' + direct_output_file + '"') else ""} \
@@ -55,19 +55,19 @@ task Hmmsim {
       ~{if defined(f_file) then ("--ffile " +  '"' + f_file + '"') else ""} \
       ~{if defined(pfile) then ("--pfile " +  '"' + pfile + '"') else ""} \
       ~{if defined(x_file) then ("--xfile " +  '"' + x_file + '"') else ""} \
-      ~{true="--fs" false="" fs} \
-      ~{true="--sw" false="" sw} \
-      ~{true="--ls" false="" ls} \
-      ~{true="--s" false="" unihit_glocal_alignment} \
-      ~{true="--vit" false="" v_it} \
-      ~{true="--fwd" false="" fwd} \
-      ~{true="--hyb" false="" hyb} \
-      ~{true="--msv" false="" msv} \
-      ~{true="--fast" false="" fast} \
+      ~{if (fs) then "--fs" else ""} \
+      ~{if (sw) then "--sw" else ""} \
+      ~{if (ls) then "--ls" else ""} \
+      ~{if (unihit_glocal_alignment) then "--s" else ""} \
+      ~{if (v_it) then "--vit" else ""} \
+      ~{if (fwd) then "--fwd" else ""} \
+      ~{if (hyb) then "--hyb" else ""} \
+      ~{if (msv) then "--msv" else ""} \
+      ~{if (fast) then "--fast" else ""} \
       ~{if defined(tm_in) then ("--tmin " +  '"' + tm_in + '"') else ""} \
       ~{if defined(tmax) then ("--tmax " +  '"' + tmax + '"') else ""} \
       ~{if defined(t_points) then ("--tpoints " +  '"' + t_points + '"') else ""} \
-      ~{true="--tlinear" false="" t_linear} \
+      ~{if (t_linear) then "--tlinear" else ""} \
       ~{if defined(eml) then ("--EmL " +  '"' + eml + '"') else ""} \
       ~{if defined(emn) then ("--EmN " +  '"' + emn + '"') else ""} \
       ~{if defined(evl) then ("--EvL " +  '"' + evl + '"') else ""} \
@@ -75,14 +75,14 @@ task Hmmsim {
       ~{if defined(efl) then ("--EfL " +  '"' + efl + '"') else ""} \
       ~{if defined(efn) then ("--EfN " +  '"' + efn + '"') else ""} \
       ~{if defined(eft) then ("--Eft " +  '"' + eft + '"') else ""} \
-      ~{true="--stall" false="" stall} \
+      ~{if (stall) then "--stall" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--bgflat" false="" bg_flat} \
-      ~{true="--bgcomp" false="" bg_comp} \
-      ~{true="--x-no-lengthmodel" false="" x_no_length_model} \
+      ~{if (bg_flat) then "--bgflat" else ""} \
+      ~{if (bg_comp) then "--bgcomp" else ""} \
+      ~{if (x_no_length_model) then "--x-no-lengthmodel" else ""} \
       ~{if defined(nu) then ("--nu " +  '"' + nu + '"') else ""} \
       ~{if defined(p_thresh) then ("--pthresh " +  '"' + p_thresh + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     obtain_length_statistics: ": obtain alignment length statistics too"
@@ -124,5 +124,10 @@ task Hmmsim {
     p_thresh: ": set P-value threshold for --ffile  [0.02]"
     options: ""
     hmm_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_direct_output_file = "${in_direct_output_file}"
+    File out_a_file = "${in_a_file}"
   }
 }

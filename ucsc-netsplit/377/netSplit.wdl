@@ -2,16 +2,19 @@ version 1.0
 
 task NetSplit {
   input {
+    String? xxx
     String in_dotnet
-    String outdir
   }
   command <<<
     netSplit \
       ~{in_dotnet} \
-      ~{outdir}
+      ~{if defined(xxx) then ("-xxx " +  '"' + xxx + '"') else ""}
   >>>
   parameter_meta {
+    xxx: ""
     in_dotnet: ""
-    outdir: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task ExampleCpp {
   command <<<
     example_cpp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

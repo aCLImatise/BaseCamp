@@ -1,26 +1,29 @@
 version 1.0
 
-task FastaSubsample {
+task Fastasubsample {
   input {
-    String? seed
+    String? len
+    String? off
     Boolean? nor_and
-    String? rest
-    String fast_a
-    String n
+    String? seed
+    File file_dot
   }
   command <<<
-    fasta-subsample \
-      ~{fast_a} \
-      ~{n} \
-      ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""} \
-      ~{true="-norand" false="" nor_and} \
-      ~{if defined(rest) then ("-rest " +  '"' + rest + '"') else ""}
+    fasta_subsample \
+      ~{file_dot} \
+      ~{if defined(len) then ("-len " +  '"' + len + '"') else ""} \
+      ~{if defined(off) then ("-off " +  '"' + off + '"') else ""} \
+      ~{if (nor_and) then "-norand" else ""} \
+      ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""}
   >>>
   parameter_meta {
-    seed: ""
+    len: ""
+    off: ""
     nor_and: ""
-    rest: ""
-    fast_a: ""
-    n: ""
+    seed: ""
+    file_dot: "By default the sequences will be selected using a random number"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

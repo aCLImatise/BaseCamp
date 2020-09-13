@@ -20,17 +20,17 @@ task GuppyHeat {
     guppy heat \
       ~{heat} \
       ~{matrix_dot_csv} \
-      ~{true="-o" false="" specify_filename_write} \
-      ~{true="--out-dir" false="" out_dir} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="-c" false="" reference_package_path} \
-      ~{true="--min-fat" false="" min_fat} \
-      ~{true="--total-width" false="" total_width} \
-      ~{true="--width-factor" false="" width_factor} \
-      ~{true="--node-numbers" false="" node_numbers} \
-      ~{true="--gray-black" false="" gray_black} \
-      ~{true="--min-width" false="" min_width} \
-      ~{true="--help" false="" help}
+      ~{if (specify_filename_write) then "-o" else ""} \
+      ~{if (out_dir) then "--out-dir" else ""} \
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (reference_package_path) then "-c" else ""} \
+      ~{if (min_fat) then "--min-fat" else ""} \
+      ~{if (total_width) then "--total-width" else ""} \
+      ~{if (width_factor) then "--width-factor" else ""} \
+      ~{if (node_numbers) then "--node-numbers" else ""} \
+      ~{if (gray_black) then "--gray-black" else ""} \
+      ~{if (min_width) then "--min-width" else ""} \
+      ~{if (help) then "--help" else ""}
   >>>
   parameter_meta {
     specify_filename_write: "Specify the filename to write to."
@@ -46,5 +46,8 @@ task GuppyHeat {
     help: "Display this list of options"
     heat: ""
     matrix_dot_csv: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

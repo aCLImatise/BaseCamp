@@ -4,4 +4,7 @@ task Medaka {
   command <<<
     medaka
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

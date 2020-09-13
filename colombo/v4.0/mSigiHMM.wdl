@@ -4,4 +4,7 @@ task MSigiHMM {
   command <<<
     mSigiHMM
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

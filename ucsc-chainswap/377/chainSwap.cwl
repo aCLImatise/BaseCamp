@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../chainSwap.cwl
 inputs:
-- id: in_dot_chain
+- id: in_in_dot_chain
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_dot_chain
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chainSwap

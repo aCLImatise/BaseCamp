@@ -4,4 +4,7 @@ task Searchgui {
   command <<<
     searchgui
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

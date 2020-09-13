@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../wtmer.cwl
 inputs:
-- id: long_reads_file
+- id: in_long_reads_file
   doc: Long reads sequences file, + *
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: output_file_kmerfrequency
+- id: in_output_file_kmerfrequency
   doc: Output file of kmer_frequency, *
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: force_overwrite
+- id: in_force_overwrite
   doc: Force overwrite
   type: boolean
   inputBinding:
     prefix: -f
-- id: disable_homopolymer_compression
+- id: in_disable_homopolymer_compression
   doc: Disable homopolymer compression
   type: boolean
   inputBinding:
     prefix: -H
-- id: kmer_size_k
+- id: in_kmer_size_k
   doc: Kmer size, 5 <= <-k> <= 16, [16]
   type: long
   inputBinding:
     prefix: -k
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_kmerfrequency
+  doc: Output file of kmer_frequency, *
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_kmerfrequency)
 cwlVersion: v1.1
 baseCommand:
 - wtmer

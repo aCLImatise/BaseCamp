@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../rebaler_reads.cwl
 inputs:
-- id: d
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -d
-- id: t
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -t
-- id: random
+- id: in_random
   doc: ''
   type: boolean
   inputBinding:
     prefix: --random
-- id: re_baler
+- id: in_t
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -t
+- id: in_d
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -d
+- id: in_re_baler
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: reference
+- id: in_reference
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: reads
+- id: in_reads
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rebaler

@@ -23,24 +23,24 @@ task Quorum {
   }
   command <<<
     quorum \
-      ~{true="--size" false="" size} \
-      ~{true="--threads" false="" threads} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="--kmer-len" false="" km_er_len} \
-      ~{true="--min-q-char" false="" min_q_char} \
-      ~{true="--min-quality" false="" min_quality} \
-      ~{true="--window" false="" window} \
-      ~{true="--error" false="" error} \
-      ~{true="--min-count" false="" min_count} \
-      ~{true="--skip" false="" skip} \
-      ~{true="--anchor" false="" anchor} \
-      ~{true="--anchor-count" false="" anchor_count} \
-      ~{true="--contaminant" false="" contaminant} \
-      ~{true="--trim-contaminant" false="" trim_contaminant} \
-      ~{true="--no-discard" false="" no_discard} \
-      ~{true="--paired-files" false="" paired_files} \
-      ~{true="--homo-trim" false="" homo_trim} \
-      ~{true="--debug" false="" debug}
+      ~{if (size) then "--size" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (km_er_len) then "--kmer-len" else ""} \
+      ~{if (min_q_char) then "--min-q-char" else ""} \
+      ~{if (min_quality) then "--min-quality" else ""} \
+      ~{if (window) then "--window" else ""} \
+      ~{if (error) then "--error" else ""} \
+      ~{if (min_count) then "--min-count" else ""} \
+      ~{if (skip) then "--skip" else ""} \
+      ~{if (anchor) then "--anchor" else ""} \
+      ~{if (anchor_count) then "--anchor-count" else ""} \
+      ~{if (contaminant) then "--contaminant" else ""} \
+      ~{if (trim_contaminant) then "--trim-contaminant" else ""} \
+      ~{if (no_discard) then "--no-discard" else ""} \
+      ~{if (paired_files) then "--paired-files" else ""} \
+      ~{if (homo_trim) then "--homo-trim" else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     size: "Mer database size (default 200M)"
@@ -61,5 +61,8 @@ task Quorum {
     paired_files: "Preserve mate pairs in two files"
     homo_trim: "Trim homo-polymer on 3' end"
     debug: "Display debugging information"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

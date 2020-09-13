@@ -1,112 +1,135 @@
 class: CommandLineTool
 id: ../../../swiftlink.cwl
 inputs:
-- id: output
+- id: in_pedigree
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --pedigree
+- id: in_map
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --map
+- id: in_dat
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --dat
+- id: in_output
   doc: (default = 'swiftlink.out')
   type: string
   inputBinding:
     prefix: --output
-- id: _iterationsnum_default
+- id: in__iterationsnum_default
   doc: ',     --iterations=NUM            (default = 50000)'
-  type: string
+  type: long
   inputBinding:
     prefix: -i
-- id: _burninnum_default
+- id: in__burninnum_default
   doc: ',     --burnin=NUM                (default = 50000)'
-  type: string
+  type: long
   inputBinding:
     prefix: -b
-- id: _sequentialimputationnum_default
+- id: in__sequentialimputationnum_default
   doc: ',     --sequentialimputation=NUM  (default = 1000)'
-  type: string
+  type: long
   inputBinding:
     prefix: -s
-- id: _scoringperiodnum_default
+- id: in__scoringperiodnum_default
   doc: ',     --scoringperiod=NUM         (default = 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: -x
-- id: _lsamplerprobabilityfloat_default
+- id: in__lsamplerprobabilityfloat_default
   doc: ',   --lsamplerprobability=FLOAT (default = 0.5)'
   type: double
   inputBinding:
     prefix: -l
-- id: _lodscoresnum_default
+- id: in__lodscoresnum_default
   doc: ',     --lodscores=NUM             (default = 5)'
-  type: string
+  type: long
   inputBinding:
     prefix: -n
-- id: _runsnum_default
+- id: in__runsnum_default
   doc: ',     --runs=NUM                  (default = 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: -R
-- id: __trace
+- id: in___trace
   doc: ',         --trace'
   type: boolean
   inputBinding:
     prefix: -T
-- id: _traceprefixprefix_default
+- id: in__traceprefixprefix_default
   doc: ",  --traceprefix=PREFIX        (default = 'trace')"
   type: string
   inputBinding:
     prefix: -P
-- id: _elod
+- id: in__elod
   doc: --elod
   type: boolean
   inputBinding:
     prefix: -e
-- id: _frequencyfloat_default
+- id: in__frequencyfloat_default
   doc: --frequency=FLOAT           (default = 1.0e-04)
   type: double
   inputBinding:
     prefix: -f
-- id: _separationfloat_default
+- id: in__separationfloat_default
   doc: --separation=FLOAT          (default = 0.0500)
   type: double
   inputBinding:
     prefix: -w
-- id: floatfloat__penetrancefloatfloatfloatdefault
+- id: in_floatfloat__penetrancefloatfloatfloatdefault
   doc: ',FLOAT,FLOAT --penetrance=FLOAT,FLOAT,FLOAT(default = 0.00,0.00,1.00)'
   type: double
   inputBinding:
     prefix: -k
-- id: _replicatesnum_default
+- id: in__replicatesnum_default
   doc: --replicates=NUM            (default = 1000000)
-  type: string
+  type: long
   inputBinding:
     prefix: -u
-- id: _coresnum_default
+- id: in__coresnum_default
   doc: ',     --cores=NUM                 (default = 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: -c
-- id: __gpu
+- id: in___gpu
   doc: ',         --gpu                       [UNAVAILABLE, COMPILED WITHOUT CUDA]'
   type: boolean
   inputBinding:
     prefix: -g
-- id: __verbose
+- id: in___sexlinked
+  doc: ',         --sexlinked'
+  type: boolean
+  inputBinding:
+    prefix: -X
+- id: in___affectedonly
+  doc: ',         --affectedonly'
+  type: boolean
+  inputBinding:
+    prefix: -a
+- id: in__peelseqiternum_default
+  doc: ',     --peelseqiter=NUM           (default = 1000000)'
+  type: long
+  inputBinding:
+    prefix: -q
+- id: in_random_seeds
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --randomseeds
+- id: in___verbose
   doc: ',         --verbose'
   type: boolean
   inputBinding:
     prefix: -v
-- id: var_18
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -p
-- id: m
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -m
-- id: d
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -d
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - swiftlink

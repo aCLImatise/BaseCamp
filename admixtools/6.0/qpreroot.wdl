@@ -4,11 +4,11 @@ task Qpreroot {
   input {
     File? use_parameters_file
     String? use_nam_root
-    String? use_nam_graph
-    String? use_nam_out
+    String? _use_nam_as_graph_name
+    String? _use_nam_as_out_graph_name
     String? use_nam_dot
     String? use_nam_script
-    String? delete_population_nam
+    String? _delete_population
     Boolean? toggle_hash_calculation
     Boolean? print_version_exit
     Boolean? toggle_verbose_mode
@@ -20,28 +20,31 @@ task Qpreroot {
       ~{file} \
       ~{if defined(use_parameters_file) then ("-p " +  '"' + use_parameters_file + '"') else ""} \
       ~{if defined(use_nam_root) then ("-r " +  '"' + use_nam_root + '"') else ""} \
-      ~{if defined(use_nam_graph) then ("-g " +  '"' + use_nam_graph + '"') else ""} \
-      ~{if defined(use_nam_out) then ("-o " +  '"' + use_nam_out + '"') else ""} \
+      ~{if defined(_use_nam_as_graph_name) then ("-g " +  '"' + _use_nam_as_graph_name + '"') else ""} \
+      ~{if defined(_use_nam_as_out_graph_name) then ("-o " +  '"' + _use_nam_as_out_graph_name + '"') else ""} \
       ~{if defined(use_nam_dot) then ("-d " +  '"' + use_nam_dot + '"') else ""} \
       ~{if defined(use_nam_script) then ("-s " +  '"' + use_nam_script + '"') else ""} \
-      ~{if defined(delete_population_nam) then ("-x " +  '"' + delete_population_nam + '"') else ""} \
-      ~{true="-H" false="" toggle_hash_calculation} \
-      ~{true="-v" false="" print_version_exit} \
-      ~{true="-V" false="" toggle_verbose_mode} \
-      ~{true="-f" false="" new_output_format}
+      ~{if defined(_delete_population) then ("-x " +  '"' + _delete_population + '"') else ""} \
+      ~{if (toggle_hash_calculation) then "-H" else ""} \
+      ~{if (print_version_exit) then "-v" else ""} \
+      ~{if (toggle_verbose_mode) then "-V" else ""} \
+      ~{if (new_output_format) then "-f" else ""}
   >>>
   parameter_meta {
     use_parameters_file: "... use parameters from <file> ."
     use_nam_root: "... use <nam> as root name."
-    use_nam_graph: "... use <nam> as graph name."
-    use_nam_out: "... use <nam> as out graph name."
+    _use_nam_as_graph_name: "... use <nam> as graph name."
+    _use_nam_as_out_graph_name: "... use <nam> as out graph name."
     use_nam_dot: "... use <nam> as dot graph name."
     use_nam_script: "... use <nam> as script name."
-    delete_population_nam: "... delete population <nam>."
+    _delete_population: "... delete population <nam>."
     toggle_hash_calculation: "... toggle hash calculation ON."
     print_version_exit: "... print version and exit."
     toggle_verbose_mode: "... toggle verbose mode ON."
     new_output_format: "... new output format (edge not ledge etc."
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

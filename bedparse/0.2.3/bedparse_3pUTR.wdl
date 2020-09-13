@@ -1,14 +1,17 @@
 version 1.0
 
-task Bedparse3pUTR {
+task BedparsePUTR {
   input {
     String bed_file
   }
   command <<<
-    bedparse 3pUTR \
+    bedparse _pUTR \
       ~{bed_file}
   >>>
   parameter_meta {
     bed_file: "Path to the BED file."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

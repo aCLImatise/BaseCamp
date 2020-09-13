@@ -1,152 +1,183 @@
 class: CommandLineTool
 id: ../../../bogart.cwl
 inputs:
-- id: mandatory_path_existing_seqstore
+- id: in_mandatory_path_existing_seqstore
   doc: Mandatory path to an existing seqStore.
-  type: string
+  type: File
   inputBinding:
     prefix: -S
-- id: mandatory_path_existing_ovlstore
+- id: in_mandatory_path_existing_ovlstore
   doc: Mandatory path to an existing ovlStore.
-  type: string
+  type: File
   inputBinding:
     prefix: -O
-- id: mandatory_path_output
+- id: in_mandatory_path_output
   doc: Mandatory path to an output tigStore (can exist or not).
-  type: string
+  type: File
   inputBinding:
     prefix: -T
-- id: mandatory_prefix_output
+- id: in_mandatory_prefix_output
   doc: Mandatory prefix for the output files.
   type: string
   inputBinding:
     prefix: -o
-- id: threads
+- id: in_threads
   doc: Use at most T compute threads.
   type: string
   inputBinding:
     prefix: -threads
-- id: use_most_gigabytes
+- id: in_use_most_gigabytes
   doc: Use at most 'gb' gigabytes of memory.
   type: string
   inputBinding:
     prefix: -M
-- id: save
+- id: in_save
   doc: Save the overlap graph to disk, and continue (not implemented).
   type: boolean
   inputBinding:
     prefix: -save
-- id: gs
+- id: in_gs
   doc: Genome size in bases.
   type: boolean
   inputBinding:
     prefix: -gs
-- id: mr
+- id: in_mr
   doc: Force reads below 'len' bases to be singletons.
   type: string
   inputBinding:
     prefix: -mr
-- id: mo
+- id: in_mo
   doc: Ignore overlaps shorter than 'len' bases.
   type: string
   inputBinding:
     prefix: -mo
-- id: mi
+- id: in_mi
   doc: Create unitigs from contig intersections of at least 'len' bases.
   type: string
   inputBinding:
     prefix: -mi
-- id: mp
+- id: in_mp
   doc: Create unitigs from contig intersections with at most 'num' placements.
-  type: string
+  type: long
   inputBinding:
     prefix: -mp
-- id: no_filter
-  doc: "[coverageGap],[highError],[lopsided],[spur] Disable filtering of: coverageGap\
-    \ - reads that have a suspicious lack of overlaps in the middle highError   -\
-    \ overlaps that have error rates well outside the observed lopsided    - reads\
-    \ that have unusually asymmetric best overlaps spur        - reads that have no\
-    \ overlaps on one end The value supplied to -nofilter must be one word, case,\
-    \ order and punctuation do not matter.  The following examples behave the same:\
-    \ '-nofilter coverageGap,higherror' '-nofilter coveragegap-and-HIGHERROR'"
+- id: in_no_filter
+  doc: "[coverageGap],[highError],[lopsided],[spur]\nDisable filtering of:\ncoverageGap\
+    \ - reads that have a suspicious lack of overlaps in the middle\nhighError   -\
+    \ overlaps that have error rates well outside the observed\nlopsided    - reads\
+    \ that have unusually asymmetric best overlaps\nspur        - reads that have\
+    \ no overlaps on one end\nThe value supplied to -nofilter must be one word, case,\
+    \ order and punctuation\ndo not matter.  The following examples behave the same:\n\
+    '-nofilter coverageGap,higherror'\n'-nofilter coveragegap-and-HIGHERROR'"
   type: boolean
   inputBinding:
     prefix: -nofilter
-- id: eg
+- id: in_eg
   doc: Do not use overlaps more than F fraction error when when finding initial best
     edges.
   type: string
   inputBinding:
     prefix: -eg
-- id: em
+- id: in_em
   doc: Do not load overlaps more then F fraction error (useful only for -save).
   type: string
   inputBinding:
     prefix: -eM
-- id: ca
-  doc: 'Split a contig if there is an alternate path from an overlap of at least L
-    bases. Default: 2100.'
-  type: string
+- id: in_ca
+  doc: "Split a contig if there is an alternate path from an overlap of at least L\
+    \ bases.\nDefault: 2100."
+  type: File
   inputBinding:
     prefix: -ca
-- id: cp
-  doc: 'Split a contig if there is an alternate path from an overlap at most P percent
-    different from the length of the best overlap.  Default: 200.'
-  type: string
+- id: in_cp
+  doc: "Split a contig if there is an alternate path from an overlap at most P percent\n\
+    different from the length of the best overlap.  Default: 200."
+  type: long
   inputBinding:
     prefix: -cp
-- id: dg
-  doc: Use overlaps upto D standard deviations from the mean when building the best
-    overlap graph.  Default 6.0.
-  type: string
+- id: in_dg
+  doc: "Use overlaps upto D standard deviations from the mean when building the best\n\
+    overlap graph.  Default 6.0."
+  type: double
   inputBinding:
     prefix: -dg
-- id: db
+- id: in_db
   doc: Like -dg, but for merging bubbles into primary contigs.  Default 6.0.
-  type: string
+  type: double
   inputBinding:
     prefix: -db
-- id: dr
+- id: in_dr
   doc: Like -dg, but for breaking repeats.  Default 3.0.
-  type: string
+  type: double
   inputBinding:
     prefix: -dr
-- id: cov_gap_olap
+- id: in_cov_gap_olap
   doc: Require overlaps to overlap by at least n bases.
   type: string
   inputBinding:
     prefix: -covgapolap
-- id: lopsided
-  doc: n      Set how lopsided reads are detected and/or treated. m = off        -
-    don't detect at all (omit n parameter) m = noseed n   - detect, n% difference,
-    allow edges to but don't seed overlaps with them m = nobest n   - detect, n% difference,
-    exclude from bog graph completely
+- id: in_lopsided
+  doc: "n      Set how lopsided reads are detected and/or treated.\nm = off      \
+    \  - don't detect at all (omit n parameter)\nm = noseed n   - detect, n% difference,\
+    \ allow edges to but don't seed overlaps with them\nm = nobest n   - detect, n%\
+    \ difference, exclude from bog graph completely"
   type: string
   inputBinding:
     prefix: -lopsided
-- id: min_olap_percent
+- id: in_min_olap_percent
   doc: Set a minimum overlap length, per overlap, as f*min(readAlen, readBlen)
-  type: string
+  type: long
   inputBinding:
     prefix: -minolappercent
-- id: enable_loggingdebugging_specific
+- id: in_enable_loggingdebugging_specific
   doc: enable logging/debugging for a specific component.
   type: string
   inputBinding:
     prefix: -D
-- id: disable_loggingdebugging_optimizepositions
-  doc: disable logging/debugging for a specific component. overlapScoring bestOverlaps
-    errorProfiles optimizePositions chunkGraph buildUnitig placeUnplaced orphans splitDiscontinuous
-    intermediateTigs setParentAndHang stderr
+- id: in_disable_loggingdebugging_specific
+  doc: disable logging/debugging for a specific component.
   type: string
   inputBinding:
     prefix: -d
-- id: parameters
-  doc: ''
+- id: in_overlap_scoring
+  doc: bestOverlaps
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_error_profiles
+  doc: optimizePositions
+  type: string
+  inputBinding:
+    position: 1
+- id: in_chunk_graph
+  doc: buildUnitig
+  type: string
+  inputBinding:
+    position: 2
+- id: in_place_unplaced
+  doc: orphans
+  type: string
+  inputBinding:
+    position: 3
+- id: in_split_discontinuous
+  doc: intermediateTigs
+  type: string
+  inputBinding:
+    position: 4
+- id: in_setparent_and_hang
+  doc: stderr
+  type: string
+  inputBinding:
+    position: 5
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_mandatory_path_output
+  doc: Mandatory path to an output tigStore (can exist or not).
+  type: File
+  outputBinding:
+    glob: $(inputs.in_mandatory_path_output)
 cwlVersion: v1.1
 baseCommand:
 - bogart

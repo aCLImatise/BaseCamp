@@ -4,4 +4,7 @@ task PlotHaps {
   command <<<
     plotHaps
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

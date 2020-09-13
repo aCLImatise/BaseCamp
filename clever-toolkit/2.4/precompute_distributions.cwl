@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../precompute_distributions.cwl
 inputs:
-- id: arg_value_distributions
-  doc: '[ --max_count ] arg (=500) Value up to which distributions are to be  computed.'
+- id: in_arg_value_distributions
+  doc: "[ --max_count ] arg (=500) Value up to which distributions are to be\ncomputed.\n"
   type: boolean
   inputBinding:
     prefix: -N
-- id: distribution_file
+- id: in_distribution_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - precompute-distributions

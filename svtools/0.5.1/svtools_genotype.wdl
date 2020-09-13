@@ -4,9 +4,9 @@ task SvtoolsGenotype {
   input {
     String? input_vcf
     String? output_vcf
-    String? bam
-    String? ref_fast_a
-    String? lib_info
+    File? bam
+    File? ref_fast_a
+    File? lib_info
     Int? min_aligned
     Int? number_pairs_sample
     Boolean? sum_quals
@@ -14,7 +14,7 @@ task SvtoolsGenotype {
     Int? max_ci_dist
     Float? split_weight
     Float? disc_weight
-    String? write_alignment
+    File? write_alignment
   }
   command <<<
     svtools genotype \
@@ -25,7 +25,7 @@ task SvtoolsGenotype {
       ~{if defined(lib_info) then ("--lib_info " +  '"' + lib_info + '"') else ""} \
       ~{if defined(min_aligned) then ("--min_aligned " +  '"' + min_aligned + '"') else ""} \
       ~{if defined(number_pairs_sample) then ("-n " +  '"' + number_pairs_sample + '"') else ""} \
-      ~{true="--sum_quals" false="" sum_quals} \
+      ~{if (sum_quals) then "--sum_quals" else ""} \
       ~{if defined(max_reads) then ("--max_reads " +  '"' + max_reads + '"') else ""} \
       ~{if defined(max_ci_dist) then ("--max_ci_dist " +  '"' + max_ci_dist + '"') else ""} \
       ~{if defined(split_weight) then ("--split_weight " +  '"' + split_weight + '"') else ""} \
@@ -36,15 +36,18 @@ task SvtoolsGenotype {
     input_vcf: "VCF input (default: stdin)"
     output_vcf: "output VCF to write (default: stdout)"
     bam: "BAM or CRAM file"
-    ref_fast_a: "Indexed reference FASTA file (recommended for reading CRAM files)"
+    ref_fast_a: "Indexed reference FASTA file (recommended for reading\\nCRAM files)"
     lib_info: "create/read JSON file of library information"
-    min_aligned: "minimum number of aligned bases to consider read as evidence [20]"
-    number_pairs_sample: "number of pairs to sample from BAM file for building insert size distribution [1000000]"
-    sum_quals: "add genotyping quality to existing QUAL (default: overwrite QUAL field)"
-    max_reads: "maximum number of reads to assess at any variant (reduces processing time in high-depth regions, default: 10000)"
-    max_ci_dist: "maximum size of a confidence interval before 95% CI is used intead (default: 1e10)"
+    min_aligned: "minimum number of aligned bases to consider read as\\nevidence [20]"
+    number_pairs_sample: "number of pairs to sample from BAM file for building\\ninsert size distribution [1000000]"
+    sum_quals: "add genotyping quality to existing QUAL (default:\\noverwrite QUAL field)"
+    max_reads: "maximum number of reads to assess at any variant\\n(reduces processing time in high-depth regions,\\ndefault: 10000)"
+    max_ci_dist: "maximum size of a confidence interval before 95% CI is\\nused intead (default: 1e10)"
     split_weight: "weight for split reads [1]"
     disc_weight: "weight for discordant paired-end reads [1]"
-    write_alignment: "write relevant reads to BAM file"
+    write_alignment: "write relevant reads to BAM file\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

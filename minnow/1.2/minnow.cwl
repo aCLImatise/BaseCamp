@@ -1,210 +1,213 @@
 class: CommandLineTool
 id: ../../../minnow.cwl
 inputs:
-- id: a_levin_mode
+- id: in_a_levin_mode
   doc: The program would assume that the input matrix is obtained from Alevin
   type: boolean
   inputBinding:
     prefix: --alevin-mode
-- id: splatter_mode
+- id: in_splatter_mode
   doc: matrix file is obtained from running splatter
   type: boolean
   inputBinding:
     prefix: --splatter-mode
-- id: normal_mode
+- id: in_normal_mode
   doc: user provided matrix
   type: boolean
   inputBinding:
     prefix: --normal-mode
-- id: test_uniq_ness
+- id: in_test_uniq_ness
   doc: matrix file is obtained from running splatter
   type: boolean
   inputBinding:
     prefix: --testUniqness
-- id: reverse_uniq_ness
+- id: in_reverse_uniq_ness
   doc: matrix file is obtained from running splatter
   type: boolean
   inputBinding:
     prefix: --reverseUniqness
-- id: use_weibull
+- id: in_use_weibull
   doc: matrix file is obtained from running splatter
   type: boolean
   inputBinding:
     prefix: --useWeibull
-- id: num_of_doublets
+- id: in_num_of_doublets
   doc: Number of doublets to be generated
-  type: string
+  type: long
   inputBinding:
     prefix: --numOfDoublets
-- id: mat_dir
+- id: in_mat_dir
   doc: directory with matrix file/ if this is a file instead of a dir
-  type: string
+  type: File
   inputBinding:
     prefix: --matdir
-- id: outdir
+- id: in_outdir
   doc: the simulated reads will be written here
-  type: string
+  type: File
   inputBinding:
     prefix: --outdir
-- id: num_molfile
+- id: in_num_molfile
   doc: Number of molecules generated from each cell
-  type: string
+  type: long
   inputBinding:
     prefix: --numMolFile
-- id: gen_code
+- id: in_gen_code
   doc: gencode reference has | separator
   type: boolean
   inputBinding:
     prefix: --gencode
-- id: ref_file
+- id: in_ref_file
   doc: transcriptome reference file (assumed from fasta file)
-  type: string
+  type: File
   inputBinding:
     prefix: --reffile
-- id: g_two_t
+- id: in_g_two_t
   doc: tab separated list of Gene to Transcirpt mapping
-  type: string
+  type: long
   inputBinding:
     prefix: --g2t
-- id: r_spd
+- id: in_r_spd
   doc: tab separated read start position distribution
   type: string
   inputBinding:
     prefix: --rspd
-- id: bfh
+- id: in_bfh
   doc: BFH file
-  type: string
+  type: File
   inputBinding:
     prefix: --bfh
-- id: gene_prob
+- id: in_gene_prob
   doc: Gene level probability file (TSV)
-  type: string
+  type: File
   inputBinding:
     prefix: --geneProb
-- id: count_prob
+- id: in_count_prob
   doc: global scale count probability file
-  type: string
+  type: File
   inputBinding:
     prefix: --countProb
-- id: velocity
+- id: in_velocity
   doc: In velocity mode we generate reads from exon-exon junction
   type: boolean
   inputBinding:
     prefix: --velocity
-- id: binary
+- id: in_binary
   doc: If the matrix file is written in binary
   type: boolean
   inputBinding:
     prefix: --binary
-- id: dbg
+- id: in_dbg
   doc: Use the provided GFA file and BFH
   type: boolean
   inputBinding:
     prefix: --dbg
-- id: no_dump
+- id: in_no_dump
   doc: will use the model file made
   type: boolean
   inputBinding:
     prefix: --noDump
-- id: gfa
+- id: in_gfa
   doc: gfa file for contigs
-  type: string
+  type: File
   inputBinding:
     prefix: --gfa
-- id: dup_counts
+- id: in_dup_counts
   doc: for making minnow read the dup counts TSV filtered_cb_frequency.txt in the
     same folder
-  type: string
+  type: Directory
   inputBinding:
     prefix: --dupCounts
-- id: use_whitelist
+- id: in_use_whitelist
   doc: Flag for making minnow read the dup counts TSV filtered_cb_frequency.txt in
     the same folder
   type: boolean
   inputBinding:
     prefix: --useWhiteList
-- id: generate_noisy_cells
+- id: in_generate_noisy_cells
   doc: Flag for making minnow read the dup counts TSV filtered_cb_frequency.txt in
     the same folder
   type: boolean
   inputBinding:
     prefix: --generateNoisyCells
-- id: polya
+- id: in_polya
   doc: Flag to sample with polyA sites this should accompany --polyAsite and --polyAfraction
   type: boolean
   inputBinding:
     prefix: --polyA
-- id: polya_site
+- id: in_polya_site
   doc: Fasta file with polyA sites
-  type: string
+  type: File
   inputBinding:
     prefix: --polyAsite
-- id: poly_a_fraction
-  doc: 'File with polyA site fraction '
-  type: string
+- id: in_poly_a_fraction
+  doc: File with polyA site fraction
+  type: File
   inputBinding:
     prefix: --polyAfraction
-- id: sample_cells
+- id: in_sample_cells
   doc: sample this many cells from the set of all cells
   type: string
   inputBinding:
     prefix: --sampleCells
-- id: intron_file
+- id: in_intron_file
   doc: Intron bed file which contains the intron boundaries per transcript
-  type: long
+  type: File
   inputBinding:
     prefix: --intronfile
-- id: genome
+- id: in_genome
   doc: genome FASTA file
-  type: string
+  type: File
   inputBinding:
     prefix: --genome
-- id: number_of_cells
+- id: in_number_of_cells
   doc: Number of cells required for simulation (default = 10)
-  type: string
+  type: long
   inputBinding:
     prefix: --numberOfCells
-- id: number_of_transcripts
+- id: in_number_of_transcripts
   doc: Number of transcripts for simulation (default = 100)
-  type: string
+  type: long
   inputBinding:
     prefix: --numberOfTranscripts
-- id: clusters
+- id: in_clusters
   doc: Gene cluster file (should be ported with --dbg)
-  type: string
+  type: long
   inputBinding:
     prefix: --clusters
-- id: pcr
+- id: in_pcr
   doc: Maximum cycles to repeat PCR (default = 5)
-  type: string
+  type: long
   inputBinding:
     prefix: --PCR
-- id: pcr_model_six
+- id: in_pcr_model_six
   doc: from Best, Katharine et al. (2015)
-  type: string
+  type: long
   inputBinding:
     prefix: --PCRmodel6
-- id: error_rate
+- id: in_error_rate
   doc: error rate to be introduced while producing sequences
   type: string
   inputBinding:
     prefix: --error-rate
-- id: num_threads
+- id: in_num_threads
   doc: number of threads to parallelize the process
-  type: string
+  type: long
   inputBinding:
     prefix: --num-threads
-- id: eq_class_dir
+- id: in_eq_class_dir
   doc: directory containing relevent files produced by the python script
-  type: string
+  type: Directory
   inputBinding:
     prefix: --eqClassDir
-- id: cluster
+- id: in_cluster
   doc: Optional cluster file to model cluster based histogram
-  type: string
+  type: File
   inputBinding:
     prefix: --cluster
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - minnow

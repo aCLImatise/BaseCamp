@@ -2,9 +2,9 @@ version 1.0
 
 task MetaWRAPAnnotateBins {
   input {
-    String? output_directory
+    Directory? output_directory
     Int? number_threads_default
-    String? folder_metagenomic_bins
+    Directory? folder_metagenomic_bins
   }
   command <<<
     metaWRAP annotate_bins \
@@ -16,5 +16,9 @@ task MetaWRAPAnnotateBins {
     output_directory: "output directory"
     number_threads_default: "number of threads (default=1)"
     folder_metagenomic_bins: "folder with metagenomic bins in fasta format"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

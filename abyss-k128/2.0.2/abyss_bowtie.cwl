@@ -1,12 +1,10 @@
 class: CommandLineTool
 id: ../../../abyss_bowtie.cwl
-inputs:
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - abyss-bowtie

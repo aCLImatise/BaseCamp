@@ -2,43 +2,55 @@ version 1.0
 
 task Kccachetest {
   input {
-    String? th
-    Boolean? rnd
-    Boolean? etc
-    Boolean? tran
-    Boolean? tc
-    String? b_num
-    String? cap_cnt
-    String? caps_iz
     Boolean? lv
+    Int? caps_iz
+    Int? cap_cnt
+    Int? b_num
+    Boolean? tc
+    Int? it
+    Int? th
+    Boolean? rnd
+    Boolean? var_8
+    Boolean? etc
     String order
-    String rnum
+    String queue
+    String var_12
+    String wicked
   }
   command <<<
     kccachetest \
       ~{order} \
-      ~{rnum} \
-      ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
-      ~{true="-rnd" false="" rnd} \
-      ~{true="-etc" false="" etc} \
-      ~{true="-tran" false="" tran} \
-      ~{true="-tc" false="" tc} \
-      ~{if defined(b_num) then ("-bnum " +  '"' + b_num + '"') else ""} \
-      ~{if defined(cap_cnt) then ("-capcnt " +  '"' + cap_cnt + '"') else ""} \
+      ~{queue} \
+      ~{var_12} \
+      ~{wicked} \
+      ~{if (lv) then "-lv" else ""} \
       ~{if defined(caps_iz) then ("-capsiz " +  '"' + caps_iz + '"') else ""} \
-      ~{true="-lv" false="" lv}
+      ~{if defined(cap_cnt) then ("-capcnt " +  '"' + cap_cnt + '"') else ""} \
+      ~{if defined(b_num) then ("-bnum " +  '"' + b_num + '"') else ""} \
+      ~{if (tc) then "-tc" else ""} \
+      ~{if defined(it) then ("-it " +  '"' + it + '"') else ""} \
+      ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
+      ~{if (rnd) then "-rnd" else ""} \
+      ~{if (var_8) then "-tran" else ""} \
+      ~{if (etc) then "-etc" else ""}
   >>>
   parameter_meta {
+    lv: ""
+    caps_iz: ""
+    cap_cnt: ""
+    b_num: ""
+    tc: ""
+    it: ""
     th: ""
     rnd: ""
+    var_8: ""
     etc: ""
-    tran: ""
-    tc: ""
-    b_num: ""
-    cap_cnt: ""
-    caps_iz: ""
-    lv: ""
     order: ""
-    rnum: ""
+    queue: ""
+    var_12: ""
+    wicked: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

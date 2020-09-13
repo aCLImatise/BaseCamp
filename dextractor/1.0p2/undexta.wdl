@@ -6,9 +6,12 @@ task Undexta {
   }
   command <<<
     undexta \
-      ~{true="-vkU" false="" v_ku}
+      ~{if (v_ku) then "-vkU" else ""}
   >>>
   parameter_meta {
     v_ku: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

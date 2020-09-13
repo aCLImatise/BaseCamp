@@ -1,16 +1,15 @@
 version 1.0
 
-task AbyssMap {
+task Abyssmap {
   input {
-    String? min_align
-    String? threads
+    Int? min_align
+    Int? threads
     Boolean? append_comment
-    String? sample
+    Int? sample
     Boolean? dup
     Boolean? order
     Boolean? no_order
     Boolean? multi
-    Boolean? no_multi
     Boolean? ss
     Boolean? no_ss
     Boolean? rc
@@ -26,31 +25,30 @@ task AbyssMap {
     String? library
     String? strain
     String? species
-    String? option
+    String alignment
   }
   command <<<
-    abyss-map \
-      ~{option} \
+    abyss_map \
+      ~{alignment} \
       ~{if defined(min_align) then ("--min-align " +  '"' + min_align + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--append-comment" false="" append_comment} \
+      ~{if (append_comment) then "--append-comment" else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
-      ~{true="--dup" false="" dup} \
-      ~{true="--order" false="" order} \
-      ~{true="--no-order" false="" no_order} \
-      ~{true="--multi" false="" multi} \
-      ~{true="--no-multi" false="" no_multi} \
-      ~{true="--SS" false="" ss} \
-      ~{true="--no-SS" false="" no_ss} \
-      ~{true="--rc" false="" rc} \
-      ~{true="--no-rc" false="" no_rc} \
+      ~{if (dup) then "--dup" else ""} \
+      ~{if (order) then "--order" else ""} \
+      ~{if (no_order) then "--no-order" else ""} \
+      ~{if (multi) then "--multi" else ""} \
+      ~{if (ss) then "--SS" else ""} \
+      ~{if (no_ss) then "--no-SS" else ""} \
+      ~{if (rc) then "--rc" else ""} \
+      ~{if (no_rc) then "--no-rc" else ""} \
       ~{if defined(alphabet) then ("--alphabet " +  '"' + alphabet + '"') else ""} \
-      ~{true="--alpha" false="" alpha} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--protein" false="" protein} \
-      ~{true="--chastity" false="" chastity} \
-      ~{true="--no-chastity" false="" no_chastity} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (alpha) then "--alpha" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (protein) then "--protein" else ""} \
+      ~{if (chastity) then "--chastity" else ""} \
+      ~{if (no_chastity) then "--no-chastity" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
@@ -61,11 +59,10 @@ task AbyssMap {
     threads: "use N parallel threads [1]"
     append_comment: "append the FASTA/FASTQ comment to the SAM tags"
     sample: "sample the suffix array [1]"
-    dup: "identify and print duplicate sequence IDs between QUERY and TARGET"
-    order: "print alignments in the same order as read from QUERY"
+    dup: "identify and print duplicate sequence\\nIDs between QUERY and TARGET"
+    order: "print alignments in the same order as\\nread from QUERY"
     no_order: "print alignments ASAP [default]"
-    multi: "Align unaligned segments of primary alignment"
-    no_multi: "don't Align unaligned segments [default]"
+    multi: "Align unaligned segments of primary"
     ss: "expect contigs to be oriented correctly"
     no_ss: "no assumption about contig orientation"
     rc: "map the sequence and its reverse complement [default]"
@@ -81,6 +78,9 @@ task AbyssMap {
     library: "specify library NAME for database"
     strain: "specify strain NAME for database"
     species: "specify species NAME for database"
-    option: ""
+    alignment: "--no-multi          don't Align unaligned segments [default]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

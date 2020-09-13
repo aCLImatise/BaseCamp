@@ -11,4 +11,7 @@ task TdBignet {
   parameter_meta {
     link_definition: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

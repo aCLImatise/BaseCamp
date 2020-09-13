@@ -1,33 +1,41 @@
 class: CommandLineTool
 id: ../../../CIRCexplorer2_parse.cwl
 inputs:
-- id: aligner_tophatfusion_star
+- id: in_aligner_tophatfusion_star
   doc: Aligner (TopHat-Fusion, STAR, MapSplice, BWA, segemehl).
   type: string
   inputBinding:
     prefix: -t
-- id: bed
-  doc: 'Output file. [default: back_spliced_junction.bed]'
-  type: string
+- id: in_bed
+  doc: "Output file.\n[default: back_spliced_junction.bed]"
+  type: File
   inputBinding:
     prefix: --bed
-- id: pe
+- id: in_pe
   doc: Parse paired-end alignment file (only for TopHat-Fusion). If this is set, then
     -f is set automatically.
   type: boolean
   inputBinding:
     prefix: --pe
-- id: statistics_fragment_numbers
+- id: in_statistics_fragment_numbers
   doc: Statistics fragment numbers rather than read numbers.
   type: boolean
   inputBinding:
     prefix: -f
-- id: fusion
+- id: in_fusion
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_bed
+  doc: "Output file.\n[default: back_spliced_junction.bed]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_bed)
 cwlVersion: v1.1
 baseCommand:
 - CIRCexplorer2

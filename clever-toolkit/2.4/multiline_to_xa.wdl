@@ -1,7 +1,10 @@
 version 1.0
 
-task MultilineToXa {
+task Multilinetoxa {
   command <<<
-    multiline-to-xa
+    multiline_to_xa
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

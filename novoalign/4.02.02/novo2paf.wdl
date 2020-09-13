@@ -4,4 +4,7 @@ task Novo2paf {
   command <<<
     novo2paf
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

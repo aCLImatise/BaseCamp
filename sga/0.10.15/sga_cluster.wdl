@@ -4,27 +4,25 @@ task SgaCluster {
   input {
     Boolean? verbose
     File? out
-    String? min_cluster_size
-    String? max_cluster_size
-    String? min_overlap
+    Int? min_cluster_size
+    Int? max_cluster_size
+    Int? min_overlap
     Boolean? error_rate
-    String? threads
-    String? iterations
+    Int? threads
+    Int? iterations
     File? extend
     File? limit
-    String? option
     String reads
   }
   command <<<
     sga cluster \
-      ~{option} \
       ~{reads} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(min_cluster_size) then ("--min-cluster-size " +  '"' + min_cluster_size + '"') else ""} \
       ~{if defined(max_cluster_size) then ("--max-cluster-size " +  '"' + max_cluster_size + '"') else ""} \
       ~{if defined(min_overlap) then ("--min-overlap " +  '"' + min_overlap + '"') else ""} \
-      ~{true="--error-rate" false="" error_rate} \
+      ~{if (error_rate) then "--error-rate" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(iterations) then ("--iterations " +  '"' + iterations + '"') else ""} \
       ~{if defined(extend) then ("--extend " +  '"' + extend + '"') else ""} \
@@ -41,7 +39,9 @@ task SgaCluster {
     iterations: "limit cluster extension to NUM iterations"
     extend: "extend previously existing clusters in FILE"
     limit: "do not extend through the sequences in FILE"
-    option: ""
     reads: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

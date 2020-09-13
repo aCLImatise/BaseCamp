@@ -4,14 +4,20 @@ task Water {
   input {
     Boolean? gap_open
     Boolean? gap_extend
+    Boolean? data_file
   }
   command <<<
     water \
-      ~{true="-gapopen" false="" gap_open} \
-      ~{true="-gapextend" false="" gap_extend}
+      ~{if (gap_open) then "-gapopen" else ""} \
+      ~{if (gap_extend) then "-gapextend" else ""} \
+      ~{if (data_file) then "-datafile" else ""}
   >>>
   parameter_meta {
-    gap_open: "float      [10.0 for any sequence] The gap open penalty is the score taken away when a gap is created. The best value depends on the choice of comparison matrix. The default value assumes you are using the EBLOSUM62 matrix for protein sequences, and the EDNAFULL matrix for nucleotide sequences. (Number from 0.000 to 100.000)"
-    gap_extend: "float      [0.5 for any sequence] The gap extension penalty is added to the standard gap penalty for each base or residue in the gap. This is how long gaps are penalized. Usually you will expect a few long gaps rather than many short gaps, so the gap extension penalty should be lower than the gap penalty. An exception is where one or both sequences are single reads with possible sequencing errors in which case you would expect many single base gaps. You can get this result by setting the gap open penalty to zero (or very low) and using the gap extension penalty to control gap scoring. (Number from 0.000 to 10.000)"
+    gap_open: "float      [10.0 for any sequence] The gap open penalty\\nis the score taken away when a gap is\\ncreated. The best value depends on the\\nchoice of comparison matrix. The default\\nvalue assumes you are using the EBLOSUM62\\nmatrix for protein sequences, and the\\nEDNAFULL matrix for nucleotide sequences.\\n(Number from 0.000 to 100.000)"
+    gap_extend: "float      [0.5 for any sequence] The gap extension\\npenalty is added to the standard gap penalty\\nfor each base or residue in the gap. This\\nis how long gaps are penalized. Usually you\\nwill expect a few long gaps rather than many\\nshort gaps, so the gap extension penalty\\nshould be lower than the gap penalty. An\\nexception is where one or both sequences are\\nsingle reads with possible sequencing\\nerrors in which case you would expect many\\nsingle base gaps. You can get this result by\\nsetting the gap open penalty to zero (or\\nvery low) and using the gap extension\\npenalty to control gap scoring. (Number from\\n0.000 to 10.000)"
+    data_file: "matrixf    [EBLOSUM62 for protein, EDNAFULL for DNA]\\nThis is the scoring matrix file used when\\ncomparing sequences. By default it is the\\nfile 'EBLOSUM62' (for proteins) or the file\\n'EDNAFULL' (for nucleic sequences). These\\nfiles are found in the 'data' directory of\\nthe EMBOSS installation."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

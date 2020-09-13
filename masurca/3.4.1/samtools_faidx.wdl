@@ -14,4 +14,7 @@ task SamtoolsFaidx {
     fa_idx: ""
     in_dot_fast_a: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

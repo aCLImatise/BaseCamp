@@ -1,17 +1,20 @@
 version 1.0
 
-task LivekrakenFilter {
+task Livekrakenfilter {
   input {
+    Int? threshold
     String? db
-    String? threshold
   }
   command <<<
-    livekraken-filter \
-      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
+    livekraken_filter \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
   parameter_meta {
-    db: ""
     threshold: ""
+    db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

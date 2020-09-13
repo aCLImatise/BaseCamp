@@ -4,7 +4,7 @@ task MergraphTh128mer {
   input {
     String? mer_count_file_prefix
     String? mer_size
-    Int? min_depth
+    String? min_depth
     String? prefix_list_to_hash
     String? num_threads
     String? qual_offset
@@ -31,5 +31,8 @@ task MergraphTh128mer {
     qual_offset: ""
     output_prefix: ""
     input_descriptor_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

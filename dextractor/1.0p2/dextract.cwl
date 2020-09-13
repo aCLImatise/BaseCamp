@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../dextract.cwl
 inputs:
-- id: v_faq
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -vfaq
-- id: o
+- id: in_o
   doc: ''
   type: boolean
   inputBinding:
     prefix: -o
-- id: path
+- id: in_v_faq
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -vfaq
+- id: in_path
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dextract

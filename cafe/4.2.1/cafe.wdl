@@ -4,4 +4,7 @@ task Cafe {
   command <<<
     cafe
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

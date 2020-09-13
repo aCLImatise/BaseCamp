@@ -17,4 +17,7 @@ task GtfToFasta {
     genome_dot_fa: ""
     out_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,42 +1,50 @@
 class: CommandLineTool
 id: ../../../ffindex_apply.cwl
 inputs:
-- id: q
+- id: in_i
   doc: ''
-  type: boolean
+  type: File
   inputBinding:
-    prefix: -q
-- id: k
+    prefix: -i
+- id: in_d
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -d
+- id: in_k
   doc: ''
   type: boolean
   inputBinding:
     prefix: -k
-- id: d
+- id: in_q
   doc: ''
-  type: string
+  type: boolean
   inputBinding:
-    prefix: -d
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-- id: ff_index_apply_mpi
-  doc: ''
+    prefix: -q
+- id: in_data_filename
+  doc: Input ffindex data file.
   type: string
   inputBinding:
     position: 0
-- id: data_filename
-  doc: ''
+- id: in_index_filename
+  doc: Input ffindex index file.
   type: string
   inputBinding:
     position: 1
-- id: index_filename
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_i
   doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+  type: File
+  outputBinding:
+    glob: $(inputs.in_i)
+- id: out_d
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_d)
 cwlVersion: v1.1
 baseCommand:
 - ffindex_apply

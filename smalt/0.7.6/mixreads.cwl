@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../mixreads.cwl
 inputs:
-- id: root_name_fast_q_file_a
+- id: in_root_name_fast_q_file_a
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mixreads

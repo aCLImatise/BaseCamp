@@ -4,4 +4,7 @@ task Vcfjoincalls {
   command <<<
     vcfjoincalls
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

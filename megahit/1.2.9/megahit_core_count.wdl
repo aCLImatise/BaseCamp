@@ -2,15 +2,15 @@ version 1.0
 
 task MegahitCoreCount {
   input {
-    String? km_er_k
-    String? min_km_er_frequency
-    String? host_mem
-    String? num_cpu_threads
-    String? read_lib_file
+    Int? km_er_k
+    Int? min_km_er_frequency
+    Int? host_mem
+    Int? num_cpu_threads
+    File? read_lib_file
     String? output_prefix
-    String? mem_flag
-    String? input_file
+    Int? mem_flag
     String? o
+    File? input_file
     String s_dbg_builder
     String count
   }
@@ -25,8 +25,8 @@ task MegahitCoreCount {
       ~{if defined(read_lib_file) then ("--read_lib_file " +  '"' + read_lib_file + '"') else ""} \
       ~{if defined(output_prefix) then ("--output_prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if defined(mem_flag) then ("--mem_flag " +  '"' + mem_flag + '"') else ""} \
-      ~{if defined(input_file) then ("--input_file " +  '"' + input_file + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(input_file) then ("--input_file " +  '"' + input_file + '"') else ""}
   >>>
   parameter_meta {
     km_er_k: "(=21)                 kmer size"
@@ -36,9 +36,12 @@ task MegahitCoreCount {
     read_lib_file: "read library configuration file."
     output_prefix: "(=out)         output prefix"
     mem_flag: "(=1)                memory options. 0: minimize memory usage; 1: automatically use moderate memory; other: use all available mem specified by '--host_mem'"
-    input_file: ""
     o: ""
+    input_file: ""
     s_dbg_builder: ""
     count: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

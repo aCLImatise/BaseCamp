@@ -17,4 +17,7 @@ task FilterCNV {
     read_count_file: ""
     chrom_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -14,4 +14,7 @@ task SamtoolsGlfview {
     glf_view: ""
     in_dot_glf: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

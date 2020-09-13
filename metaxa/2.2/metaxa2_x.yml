@@ -1,25 +1,351 @@
 !Command
+command:
+- metaxa2_x
 positional: []
 named:
 - !Flag
-  description: ''
+  description: ': DNA FASTA input file to investigate'
   synonyms:
   - -i
-  args: !SimpleFlagArg
-    name: input file
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? file
   optional: true
 - !Flag
-  description: ''
+  description: ': Base for the names of output file(s)'
   synonyms:
   - -o
-  args: !SimpleFlagArg
-    name: output file
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? file
   optional: true
-command:
-- metaxa2_x
+- !Flag
+  description: ': A path to a directory of HMM-profile collections representing rRNA
+    conserved regions, default is in the same directory as metaxa itself'
+  synonyms:
+  - -p
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? directory
+  optional: true
+- !Flag
+  description: ': If the hmmsearch has already been performed, this option can be
+    used as the base for the hmmsearch output files, and the hmmsearch step will be
+    skipped. Overrides the -o option, while a DNA FASTA file must still be supplied!'
+  synonyms:
+  - --hmmsearch
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? file
+  optional: true
+- !Flag
+  description: ': Adds a date and time stamp to the output directory, off (F) by default'
+  synonyms:
+  - --date
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': Rebuilds the HMM database. Useful if HMMER has been updated or searches
+    seem to fail mysteriously, off (F) by default'
+  synonyms:
+  - --reset
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': Profile set to use for the search (comma-separated), default is
+    all'
+  synonyms:
+  - -t
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? A
+      ? a
+      ? b
+      ? archaea
+      ? eukaryota
+      ? all
+      ? e
+      ? bacteria
+      ? chloroplast
+      ? m
+      ? c
+      ? other
+      ? o
+      ? mitochondrial
+  optional: true
+- !Flag
+  description: ': Specifies the barcoding gene Metaxa should look for, default is
+    ssu'
+  synonyms:
+  - -g
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? ssu
+      ? string
+      ? lsu
+  optional: true
+- !Flag
+  description: ': Controls the Metaxa2 operating mode, default = metagenome'
+  synonyms:
+  - --mode
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? a
+      ? g
+      ? auto
+      ? genome
+      ? m
+      ? metagenome
+  optional: true
+- !Flag
+  description: ': Domain E-value cutoff for a sequence to be included in the output,
+    default = 1'
+  synonyms:
+  - -E
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? value
+  optional: true
+- !Flag
+  description: ': Domain score cutoff for a sequence to be included in the output,
+    default = 12'
+  synonyms:
+  - -S
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? value
+  optional: true
+- !Flag
+  description: ': The minimal number of domains that must match a sequence before
+    it is included, default = 2'
+  synonyms:
+  - -N
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? value
+  optional: true
+- !Flag
+  description: ': Selects what will be of highest priority when determining the origin
+    of the sequence, default is sum'
+  synonyms:
+  - --selection_priority
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? domains
+      ? eval
+      ? score
+      ? sum
+  optional: true
+- !Flag
+  description: ': The E-value cutoff used in the HMMER search, high numbers may slow
+    down the process, cannot be used with the --search_score option, default is to
+    use score cutoff, not E-value'
+  synonyms:
+  - --search_eval
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? value
+  optional: true
+- !Flag
+  description: ': The score cutoff used in the HMMER search, low numbers may slow
+    down the process, cannot be used with the --search_eval option, default = 0'
+  synonyms:
+  - --search_score
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? value
+  optional: true
+- !Flag
+  description: ': Allow inclusion of sequences that only find a single domain, given
+    that they meet the given E-value and score thresholds, on with parameters 1e-10,0
+    by default'
+  synonyms:
+  - --allow_single_domain
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? score
+      ? e-value
+      ? F
+  optional: true
+- !Flag
+  description: ': Allows profiles to be in the wrong order on extracted sequences,
+    on (T) by default'
+  synonyms:
+  - --allow_reorder
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': Checks both DNA strands against the database, creating reverse complements,
+    on (T) by default'
+  synonyms:
+  - --complement
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': the number of CPU threads to use, default is 1'
+  synonyms:
+  - --cpu
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? value
+  optional: true
+- !Flag
+  description: ': Multi-thread the HMMER-search, on (T) if number of CPUs (--cpu option
+    > 1), else off (F) by default'
+  synonyms:
+  - --multi_thread
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ": Selects whether to use HMMER's heuristic filtering, on (T) by default"
+  synonyms:
+  - --heuristics
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': Summary of results output, on (T) by default'
+  synonyms:
+  - --summary
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ": 'Graphical' output, on (T) by default"
+  synonyms:
+  - --graphical
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': FASTA-format output of extracted rRNA sequences, on (T) by default'
+  synonyms:
+  - --fasta
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': Table format output of sequences containing probable rRNAs, off
+    (F) by default'
+  synonyms:
+  - --table
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': Saves a list of non-found entries, off (F) by default'
+  synonyms:
+  - --not_found
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': Truncates the FASTA output to only contain the putative rRNA sequence
+    found, on (T) by default'
+  synonyms:
+  - --truncate
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': Supresses printing progress info to stderr, off (F) by default'
+  synonyms:
+  - --silent
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': Sets the scale of the graph output, if value is zero, a percentage
+    view is shown, default = 0'
+  synonyms:
+  - --graph_scale
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? value
+  optional: true
+- !Flag
+  description: ': Saves all raw data for searches etc. instead of removing it on finish,
+    off (F) by default'
+  synonyms:
+  - --save_raw
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? or
+      ? F
+      ? T
+  optional: true
+- !Flag
+  description: ': displays this help message'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': displays the bug fixes and known bugs in this version of Metaxa'
+  synonyms:
+  - --bugs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': displays licensing information'
+  synonyms:
+  - --license
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ': displays this help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: metaxa2_x -i <input file> -o <output file>\nOptions:\n-i {file}\

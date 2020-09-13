@@ -3,8 +3,8 @@ version 1.0
 task MafSplitPos {
   input {
     String? chrom
-    String? min_gap
-    String? min_repeat
+    Int? min_gap
+    Int? min_repeat
     String database
     Int size
   }
@@ -22,5 +22,8 @@ task MafSplitPos {
     min_repeat: "Split only on repeats >N bp, defaults to 100, specify -1 to disable"
     database: ""
     size: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

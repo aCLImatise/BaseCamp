@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../Fido.cwl
 inputs:
-- id: graph_file
+- id: in_graph_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: gamma
+- id: in_gamma
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: alpha
+- id: in_alpha
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: beta
+- id: in_beta
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - Fido

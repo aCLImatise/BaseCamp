@@ -11,10 +11,10 @@ task FunannotateSort {
   command <<<
     funannotate sort \
       ~{arguments} \
-      ~{true="--input" false="" multifasta_genome_file} \
-      ~{true="--out" false="" out} \
-      ~{true="--base" false="" base} \
-      ~{true="--minlen" false="" min_len}
+      ~{if (multifasta_genome_file) then "--input" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (base) then "--base" else ""} \
+      ~{if (min_len) then "--minlen" else ""}
   >>>
   parameter_meta {
     multifasta_genome_file: "Multi-fasta genome file. (Required)"
@@ -22,5 +22,8 @@ task FunannotateSort {
     base: "Base name to relabel contigs. Default: scaffold"
     min_len: "Shorter contigs are discarded. Default: 0"
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -17,16 +17,19 @@ task BioformatsFlanknfilter {
       ~{output_file} \
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
-      ~{true="--strict" false="" strict} \
-      ~{true="-v" false="" v}
+      ~{if (strict) then "--strict" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     type: "the input file type (default: bed)"
     length: "the flanking region length (default: 100)"
-    strict: "require flanks to have exactly the specified length (it may be shorter if a feature is located near a sequence start or end) (default: False)"
+    strict: "require flanks to have exactly the specified length\\n(it may be shorter if a feature is located near a\\nsequence start or end) (default: False)\\n"
     v: ""
     input_file: "an input file of features to be filtered"
     fast_a_file: "a FASTA file of sequences the features are related to"
     output_file: "an output file of filtered features"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

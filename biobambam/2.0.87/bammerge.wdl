@@ -4,4 +4,7 @@ task Bammerge {
   command <<<
     bammerge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

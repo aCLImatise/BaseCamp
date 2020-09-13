@@ -4,4 +4,7 @@ task Pydoc {
   command <<<
     pydoc
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Sandbag {
   command <<<
     sandbag
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

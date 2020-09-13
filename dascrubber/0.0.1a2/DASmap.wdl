@@ -6,9 +6,12 @@ task DASmap {
   }
   command <<<
     DASmap \
-      ~{true="-p" false="" p}
+      ~{if (p) then "-p" else ""}
   >>>
   parameter_meta {
     p: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task Shared.py {
+task Shared {
   command <<<
-    shared.py
+    shared
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

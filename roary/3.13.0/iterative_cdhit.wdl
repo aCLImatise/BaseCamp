@@ -2,11 +2,11 @@ version 1.0
 
 task IterativeCdhit {
   input {
-    String? input_fasta_file
+    File? input_fasta_file
     Int? number_of_threads
     Int? number_of_isolates
-    String? cdhit_output_filename
-    String? output_filename_filtered
+    File? cdhit_output_filename
+    File? output_filename_filtered
     Float? lower_bound_percentage
     Float? upper_bound_percentage
     Float? step_size_percentage
@@ -22,7 +22,7 @@ task IterativeCdhit {
       ~{if defined(lower_bound_percentage) then ("-l " +  '"' + lower_bound_percentage + '"') else ""} \
       ~{if defined(upper_bound_percentage) then ("-u " +  '"' + upper_bound_percentage + '"') else ""} \
       ~{if defined(step_size_percentage) then ("-s " +  '"' + step_size_percentage + '"') else ""} \
-      ~{true="-v" false="" verbose_output_stdout}
+      ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
   parameter_meta {
     input_fasta_file: "input FASTA file of protein sequences [_combined_files]"
@@ -34,5 +34,10 @@ task IterativeCdhit {
     upper_bound_percentage: "upper bound percentage identity [99.0]"
     step_size_percentage: "step size for percentage identity [0.5]"
     verbose_output_stdout: "verbose output to STDOUT"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_cdhit_output_filename = "${in_cdhit_output_filename}"
+    File out_output_filename_filtered = "${in_output_filename_filtered}"
   }
 }

@@ -1,22 +1,15 @@
 class: CommandLineTool
 id: ../../../pslToChain.cwl
 inputs:
-- id: ignore
+- id: in_ignore
   doc: ignore psl records with negative target strand rather than exiting
   type: boolean
   inputBinding:
     prefix: -ignore
-- id: psl_in
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: chain_out
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pslToChain

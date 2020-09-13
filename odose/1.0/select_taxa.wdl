@@ -1,7 +1,10 @@
 version 1.0
 
-task SelectTaxa.py {
+task SelectTaxa {
   command <<<
-    select_taxa.py
+    select_taxa
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

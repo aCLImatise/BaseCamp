@@ -1,42 +1,52 @@
 class: CommandLineTool
 id: ../../../secapr_automate_all.cwl
 inputs:
-- id: input
+- id: in_input
   doc: The directory containing cleaned fastq files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --input
-- id: output
-  doc: The output directory where all intermediate and final data files will be stored
-  type: string
+- id: in_output
+  doc: "The output directory where all intermediate and final\ndata files will be\
+    \ stored"
+  type: Directory
   inputBinding:
     prefix: --output
-- id: reference
-  doc: Provide a reference library (FASTA) containing sequences for the genes of interest
-    (required to find contigs matching targeted regions).
+- id: in_reference
+  doc: "Provide a reference library (FASTA) containing\nsequences for the genes of\
+    \ interest (required to find\ncontigs matching targeted regions)."
   type: string
   inputBinding:
     prefix: --reference
-- id: setting
-  doc: The setting you want to run SECAPR on. "relaxed" uses very non-restrictive
-    default values (use when samples are expected to differ considerably from provided
-    reference or are covering wide evolutionary range, e.g. different families or
-    orders). "conservative" is very restrictive and can be used when samples are closely
-    related and match provided reference very well.
+- id: in_setting
+  doc: "The setting you want to run SECAPR on. \"relaxed\" uses\nvery non-restrictive\
+    \ default values (use when samples\nare expected to differ considerably from provided\n\
+    reference or are covering wide evolutionary range,\ne.g. different families or\
+    \ orders). \"conservative\" is\nvery restrictive and can be used when samples\
+    \ are\nclosely related and match provided reference very\nwell."
   type: string
   inputBinding:
     prefix: --setting
-- id: assembler
-  doc: The assembler to use for de-novo assembly (default=abyss).
+- id: in_assembler
+  doc: "The assembler to use for de-novo assembly\n(default=abyss)."
   type: string
   inputBinding:
     prefix: --assembler
-- id: cores
-  doc: Number of computational cores for parallelization of computation.
-  type: string
+- id: in_cores
+  doc: "Number of computational cores for parallelization of\ncomputation.\n"
+  type: long
   inputBinding:
     prefix: --cores
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "The output directory where all intermediate and final\ndata files will be\
+    \ stored"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - secapr

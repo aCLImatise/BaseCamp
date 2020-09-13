@@ -2,19 +2,19 @@ version 1.0
 
 task QualimapClustering {
   input {
-    String? bin_size
+    Int? bin_size
     String? clusters
     String? control
     String? expr
-    String? fragment_length
-    String? upstream_offset_default
+    Int? fragment_length
+    Int? upstream_offset_default
     String? name
-    String? outdir
-    String? outfile
+    Directory? outdir
+    File? outfile
     String? out_format
-    String? r_script_path
-    String? downstream_offset_default
-    String? regions
+    File? r_script_path
+    Int? downstream_offset_default
+    File? regions
     String? sample
     String? viz
   }
@@ -45,12 +45,17 @@ task QualimapClustering {
     upstream_offset_default: "Upstream offset (default is 2000)"
     name: "Comma-separated names of the replicates"
     outdir: "Output folder for HTML report and raw data."
-    outfile: "Output file for PDF report (default value is report.pdf)."
-    out_format: "Format of the output report (PDF, HTML or both PDF:HTML, default is HTML)."
-    r_script_path: "Path to Rscript executable (by default it is assumed to be available from system $PATH)"
+    outfile: "Output file for PDF report (default value is\\nreport.pdf)."
+    out_format: "Format of the output report (PDF, HTML or both\\nPDF:HTML, default is HTML)."
+    r_script_path: "Path to Rscript executable (by default it is\\nassumed to be available from system $PATH)"
     downstream_offset_default: "Downstream offset (default is 500)"
     regions: "Path to regions file"
     sample: "Comma-separated list of sample BAM files"
     viz: "Visualization type: heatmap or line"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    File out_outfile = "${in_outfile}"
   }
 }

@@ -17,4 +17,7 @@ task SortPsl {
     ref_dot_fa: ""
     contigs_dot_fa_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

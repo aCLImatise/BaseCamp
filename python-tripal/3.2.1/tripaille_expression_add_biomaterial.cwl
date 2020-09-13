@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../tripaille_expression_add_biomaterial.cwl
 inputs:
-- id: analysis_id
+- id: in_analysis_id
   doc: The id of the associated analysis. Required for TripalV3
-  type: string
+  type: long
   inputBinding:
     prefix: --analysis_id
-- id: no_wait
+- id: in_no_wait
   doc: Do not wait for job to complete
   type: boolean
   inputBinding:
     prefix: --no_wait
-- id: organism_id
-  doc: ''
+- id: in_file_type
+  doc: Add a new biomaterial file to the database
   type: string
   inputBinding:
     position: 0
-- id: file_path
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tripaille

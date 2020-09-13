@@ -1,23 +1,27 @@
 version 1.0
 
-task DefuseClustersToCG {
+task DefuseclusterstoCG {
   input {
-    String? gene_annotation
-    String? output_filename_stdout
+    File? gene_annotation
+    File? output_filename_stdout
     Boolean? v
     String defuse_cluster_file
   }
   command <<<
-    defuse-clusters-to-CG \
+    defuse_clusters_to_CG \
       ~{defuse_cluster_file} \
       ~{if defined(gene_annotation) then ("--gene-annotation " +  '"' + gene_annotation + '"') else ""} \
       ~{if defined(output_filename_stdout) then ("--output " +  '"' + output_filename_stdout + '"') else ""} \
-      ~{true="-V" false="" v}
+      ~{if (v) then "-V" else ""}
   >>>
   parameter_meta {
     gene_annotation: "GTF-file used by defuse"
-    output_filename_stdout: "output filename; '-' for stdout"
+    output_filename_stdout: "output filename; '-' for stdout\\n"
     v: ""
     defuse_cluster_file: "Defuse cluster file"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_filename_stdout = "${in_output_filename_stdout}"
   }
 }

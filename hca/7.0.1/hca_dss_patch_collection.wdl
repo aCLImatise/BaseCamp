@@ -1,17 +1,17 @@
 version 1.0
 
-task HcaDssPatchCollection {
+task HcaDssPatchcollection {
   input {
     String? add_contents
     String? description
     String? details
     String? name
     String? remove_contents
-    String? uuid
+    Int? uuid
     String? replica
   }
   command <<<
-    hca dss patch-collection \
+    hca dss patch_collection \
       ~{if defined(add_contents) then ("--add-contents " +  '"' + add_contents + '"') else ""} \
       ~{if defined(description) then ("--description " +  '"' + description + '"') else ""} \
       ~{if defined(details) then ("--details " +  '"' + details + '"') else ""} \
@@ -28,5 +28,8 @@ task HcaDssPatchCollection {
     remove_contents: "List of items to remove from the collection. Items must match exactly to be removed. Items not found in the collection are ignored."
     uuid: "A RFC4122-compliant ID of the collection to update."
     replica: "Replica to update the collection on. Updates are propagated to other replicas."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

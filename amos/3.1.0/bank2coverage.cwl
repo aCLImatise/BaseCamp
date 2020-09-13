@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../bank2coverage.cwl
 inputs:
-- id: bank_name
+- id: in_bank_name
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_prefix
+- id: in_out_prefix
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bank2coverage

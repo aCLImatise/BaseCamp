@@ -1,43 +1,50 @@
 class: CommandLineTool
 id: ../../../tango_transfer.cwl
 inputs:
-- id: ignore_unc_rank
+- id: in_ignore_unc_rank
   doc: Ignore ORFs unclassified at <rank>
   type: string
   inputBinding:
     prefix: --ignore_unc_rank
-- id: orf_tax_out
+- id: in_orf_tax_out
   doc: Also transfer taxonomy back to ORFs and output to file
-  type: string
+  type: File
   inputBinding:
     prefix: --orf_tax_out
-- id: cpus
-  doc: Number of cpus to use when transferring taxonomy to contigs
-  type: string
+- id: in_cpus
+  doc: Number of cpus to use when transferring taxonomy to
+  type: long
   inputBinding:
     prefix: --cpus
-- id: chunksize
-  doc: Size of chunks sent to process pool. For large input files using a large chunksize
-    can make the job complete much faster than using the default value of 1.
-  type: string
-  inputBinding:
-    prefix: --chunksize
-- id: orf_taxonomy
+- id: in_orf_taxonomy
   doc: Taxonomy assigned to ORFs (ORF ids in first column)
   type: string
   inputBinding:
     position: 0
-- id: gff
-  doc: GFF or file with contig id in first column and ORF id in second column
+- id: in_gff
+  doc: "GFF or file with contig id in first column and ORF id\nin second column"
   type: string
   inputBinding:
     position: 1
-- id: contig_taxonomy
+- id: in_contig_taxonomy
   doc: Output file with assigned taxonomy for contigs
   type: string
   inputBinding:
     position: 2
-outputs: []
+- id: in_contigs
+  doc: -c CHUNKSIZE, --chunksize CHUNKSIZE
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_orf_tax_out
+  doc: Also transfer taxonomy back to ORFs and output to file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_orf_tax_out)
 cwlVersion: v1.1
 baseCommand:
 - tango

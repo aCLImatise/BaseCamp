@@ -1,64 +1,64 @@
 version 1.0
 
-task CathSsap {
+task Cathssap {
   input {
     Boolean? output_version_information
     Boolean? debug
-    Boolean? output_scores_file
+    File? output_scores_file
     File? clique_file
     File? domin_file
-    String? max_score_to_fast_rerun
-    String? max_score_to_slow_rerun
+    Int? max_score_to_fast_rerun
+    Int? max_score_to_slow_rerun
     Boolean? slow_ssap_only
     Boolean? local_ssap_score
     Boolean? all_scores
     String? prot_src_files
-    String? sup_dir
-    String? align_dir
-    String? min_score_for_files
-    String? min_sup_score
+    Directory? sup_dir
+    Directory? align_dir
+    Int? min_score_for_files
+    Int? min_sup_score
     Boolean? rasmol_script
     Boolean? xml_sup
     File? pdb_path
     File? dssp_path
     File? wolf_path
     File? sec_path
-    String? pdb_prefix
-    String? dssp_prefix
-    String? wolf_prefix
-    String? sec_prefix
-    String? pdb_suffix
-    String? dssp_suffix
-    String? wolf_suffix
-    String? sec_suffix
-    String? align_regions
+    File? pdb_prefix
+    File? dssp_prefix
+    File? wolf_prefix
+    File? sec_prefix
+    File? pdb_suffix
+    File? dssp_suffix
+    File? wolf_suffix
+    File? sec_suffix
+    Int? align_regions
     Boolean? alignment_help
     Boolean? citation_help
     Boolean? scores_help
-    String protein_one
-    String protein_two
+    Int protein_one
+    Int protein_two
   }
   command <<<
-    cath-ssap \
+    cath_ssap \
       ~{protein_one} \
       ~{protein_two} \
-      ~{true="-v" false="" output_version_information} \
-      ~{true="--debug" false="" debug} \
-      ~{true="-o" false="" output_scores_file} \
+      ~{if (output_version_information) then "-v" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (output_scores_file) then "-o" else ""} \
       ~{if defined(clique_file) then ("--clique-file " +  '"' + clique_file + '"') else ""} \
       ~{if defined(domin_file) then ("--domin-file " +  '"' + domin_file + '"') else ""} \
       ~{if defined(max_score_to_fast_rerun) then ("--max-score-to-fast-rerun " +  '"' + max_score_to_fast_rerun + '"') else ""} \
       ~{if defined(max_score_to_slow_rerun) then ("--max-score-to-slow-rerun " +  '"' + max_score_to_slow_rerun + '"') else ""} \
-      ~{true="--slow-ssap-only" false="" slow_ssap_only} \
-      ~{true="--local-ssap-score" false="" local_ssap_score} \
-      ~{true="--all-scores" false="" all_scores} \
+      ~{if (slow_ssap_only) then "--slow-ssap-only" else ""} \
+      ~{if (local_ssap_score) then "--local-ssap-score" else ""} \
+      ~{if (all_scores) then "--all-scores" else ""} \
       ~{if defined(prot_src_files) then ("--prot-src-files " +  '"' + prot_src_files + '"') else ""} \
       ~{if defined(sup_dir) then ("--supdir " +  '"' + sup_dir + '"') else ""} \
       ~{if defined(align_dir) then ("--aligndir " +  '"' + align_dir + '"') else ""} \
       ~{if defined(min_score_for_files) then ("--min-score-for-files " +  '"' + min_score_for_files + '"') else ""} \
       ~{if defined(min_sup_score) then ("--min-sup-score " +  '"' + min_sup_score + '"') else ""} \
-      ~{true="--rasmol-script" false="" rasmol_script} \
-      ~{true="--xmlsup" false="" xml_sup} \
+      ~{if (rasmol_script) then "--rasmol-script" else ""} \
+      ~{if (xml_sup) then "--xmlsup" else ""} \
       ~{if defined(pdb_path) then ("--pdb-path " +  '"' + pdb_path + '"') else ""} \
       ~{if defined(dssp_path) then ("--dssp-path " +  '"' + dssp_path + '"') else ""} \
       ~{if defined(wolf_path) then ("--wolf-path " +  '"' + wolf_path + '"') else ""} \
@@ -72,9 +72,9 @@ task CathSsap {
       ~{if defined(wolf_suffix) then ("--wolf-suffix " +  '"' + wolf_suffix + '"') else ""} \
       ~{if defined(sec_suffix) then ("--sec-suffix " +  '"' + sec_suffix + '"') else ""} \
       ~{if defined(align_regions) then ("--align-regions " +  '"' + align_regions + '"') else ""} \
-      ~{true="--alignment-help" false="" alignment_help} \
-      ~{true="--citation-help" false="" citation_help} \
-      ~{true="--scores-help" false="" scores_help}
+      ~{if (alignment_help) then "--alignment-help" else ""} \
+      ~{if (citation_help) then "--citation-help" else ""} \
+      ~{if (scores_help) then "--scores-help" else ""}
   >>>
   parameter_meta {
     output_version_information: "[ --version ]                         Output version information"
@@ -87,9 +87,9 @@ task CathSsap {
     slow_ssap_only: "Don't try any fast SSAPs; only use slow SSAP"
     local_ssap_score: "[DEPRECATED] Normalise the SSAP score over the length of the smallest domain rather than the largest"
     all_scores: "[DEPRECATED] Output all SSAP scores from fast and slow runs, not just the highest"
-    prot_src_files: "(=PDB)            Read the protein data from the set of files <set>, of available sets: PDB, PDB_DSSP, PDB_DSSP_SEC, WOLF_SEC"
+    prot_src_files: "(=PDB)            Read the protein data from the set of files <set>, of available sets:\\nPDB, PDB_DSSP, PDB_DSSP_SEC, WOLF_SEC"
     sup_dir: "[DEPRECATED] Output a superposition to directory <dir>"
-    align_dir: "(=\".\")                  Write alignment to directory <dir>"
+    align_dir: "(=\\\".\\\")                  Write alignment to directory <dir>"
     min_score_for_files: "(=0)       Only output alignment/superposition files if the SSAP score exceeds <score>"
     min_sup_score: "(=-0.25)         [DEPRECATED] Calculate superposition based on the residue-pairs with scores greater than <score>"
     rasmol_script: "[DEPRECATED] Write a rasmol superposition script to load and colour the superposed structures"
@@ -106,11 +106,16 @@ task CathSsap {
     dssp_suffix: "(=.dssp)             Append the suffix <suf> to a protein's name to form its DSSP filename"
     wolf_suffix: "(=.wolf)             Append the suffix <suf> to a protein's name to form its wolf filename"
     sec_suffix: "(=.sec)               Append the suffix <suf> to a protein's name to form its sec filename"
-    align_regions: "Handle region(s) <regions> as the alignment part of the structure. May be specified multiple times, in correspondence with the structures. Format is: D[5inwB02]251-348:B,408-416A:B (Put <regions> in quotes to prevent the square brackets confusing your shell (\"No match\"))"
+    align_regions: "Handle region(s) <regions> as the alignment part of the structure.\\nMay be specified multiple times, in correspondence with the structures.\\nFormat is: D[5inwB02]251-348:B,408-416A:B\\n(Put <regions> in quotes to prevent the square brackets confusing your shell (\\\"No match\\\"))"
     alignment_help: "Help on alignment format"
     citation_help: "Help on SSAP authorship & how to cite it"
     scores_help: "Help on scores format"
     protein_one: ""
     protein_two: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_scores_file = "${in_output_scores_file}"
+    Directory out_sup_dir = "${in_sup_dir}"
   }
 }

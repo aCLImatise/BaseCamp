@@ -1,7 +1,10 @@
 version 1.0
 
-task Udocker.py {
+task Udocker {
   command <<<
-    udocker.py
+    udocker
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

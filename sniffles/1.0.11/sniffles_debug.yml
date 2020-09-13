@@ -1,11 +1,34 @@
 !Command
+command:
+- sniffles-debug
 positional:
 - !Positional
-  description: ''
+  description: 'Input/Output:'
   position: 0
-  name: sniffles
+  name: fritz.sedlazeck@gmail.com
   optional: false
 named:
+- !Flag
+  description: ",  --mapped_reads <string>\n(required)  Sorted bam File"
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --vcf <string>\nVCF output file name []"
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --bedpe <string>\nbedpe output file name []"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: string
+  optional: true
 - !Flag
   description: Input VCF file name. Enable force calling []
   synonyms:
@@ -22,10 +45,103 @@ named:
     name: string
   optional: true
 - !Flag
+  description: ",  --min_support <int>\nMinimum number of reads that support a SV.\
+    \ [10]"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum number of splits per read to be still taken into account. [7]
+  synonyms:
+  - --max_num_splits
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --max_distance <int>\nMaximum distance to group SV together. [1000]"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --threads <int>\nNumber of threads to use. [3]"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --min_length <int>\nMinimum length of SV to be reported. [30]"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --minmapping_qual <int>\nMinimum Mapping Quality. [20]"
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --num_reads_report <int>\nReport up to N reads that support the\
+    \ SV in the vcf file. -1: report all. [0]"
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --min_seq_size <int>\nDiscard read if non of its segment is larger\
+    \ then this. [2000]"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --min_zmw <int>\nDiscard SV that are not supported by at least\
+    \ x zmws. This applies only for PacBio recognizable reads. [0]"
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
   description: Enables the scan of CS string instead of Cigar and MD.  [false]
   synonyms:
   - --cs_string
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables Sniffles to compute the genotypes. [false]
+  synonyms:
+  - --genotype
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables Sniffles to phase SVs that occur on the same reads [false]
+  synonyms:
+  - --cluster
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum number of reads supporting clustering of SV. [1]
+  synonyms:
+  - --cluster_support
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --allelefreq <float>\nThreshold on allele frequency (0-1).  [0]"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: float
   optional: true
 - !Flag
   description: Threshold on allele frequency (0-1).  [0.8]
@@ -99,30 +215,15 @@ named:
     name: int
   optional: true
 - !Flag
-  description: Maximum distance between alignment (indel) events. [4]
+  description: "Maximum distance between alignment (indel) events. [4]\n"
   synonyms:
   - --max_dist_aln_events
   args: !SimpleFlagArg
     name: int
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -m
-  args: !SimpleFlagArg
-    name: sorted.bam
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -v
-  args: !SimpleFlagArg
-    name: output.vcf
-  optional: true
-command:
-- sniffles-debug
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

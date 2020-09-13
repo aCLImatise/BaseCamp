@@ -1,126 +1,144 @@
 class: CommandLineTool
 id: ../../../echoscu.cwl
 inputs:
-- id: _quiet_quiet
+- id: in_arguments
+  doc: print expanded command line arguments
+  type: boolean
+  inputBinding:
+    prefix: --arguments
+- id: in__quiet_quiet
   doc: --quiet              quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: _verbose_verbose
+- id: in__verbose_details
   doc: --verbose            verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: _debug_debug
+- id: in__debug_information
   doc: --debug              debug mode, print debug information
   type: boolean
   inputBinding:
     prefix: -d
-- id: ll
-  doc: '--log-level          [l]evel: string constant (fatal, error, warn, info, debug,
-    trace) use level l for the logger'
+- id: in_ll
+  doc: "--log-level          [l]evel: string constant\n(fatal, error, warn, info,\
+    \ debug, trace)\nuse level l for the logger"
   type: boolean
   inputBinding:
     prefix: -ll
-- id: lc
-  doc: '--log-config         [f]ilename: string use config file f for the logger'
+- id: in_lc
+  doc: "--log-config         [f]ilename: string\nuse config file f for the logger"
   type: boolean
   inputBinding:
     prefix: -lc
-- id: ae_title
-  doc: '[a]etitle: string set my calling AE title (default: ECHOSCU)'
+- id: in_ae_title
+  doc: "[a]etitle: string\nset my calling AE title (default: ECHOSCU)"
   type: boolean
   inputBinding:
     prefix: --aetitle
-- id: call
-  doc: '[a]etitle: string set called AE title of peer (default: ANY-SCP)'
+- id: in_call
+  doc: "[a]etitle: string\nset called AE title of peer (default: ANY-SCP)"
   type: boolean
   inputBinding:
     prefix: --call
-- id: propose_ts
-  doc: '[n]umber: integer (1..36) propose n transfer syntaxes'
+- id: in_propose_ts
+  doc: "[n]umber: integer (1..36)\npropose n transfer syntaxes"
   type: boolean
   inputBinding:
     prefix: --propose-ts
-- id: propose_pc
-  doc: '[n]umber: integer (1..128) propose n presentation contexts'
+- id: in_propose_pc
+  doc: "[n]umber: integer (1..128)\npropose n presentation contexts"
   type: boolean
   inputBinding:
     prefix: --propose-pc
-- id: to
-  doc: '--timeout            [s]econds: integer (default: unlimited) timeout for connection
-    requests'
+- id: in_to
+  doc: "--timeout            [s]econds: integer (default: unlimited)\ntimeout for\
+    \ connection requests"
   type: boolean
   inputBinding:
     prefix: -to
-- id: ta
-  doc: '--acse-timeout       [s]econds: integer (default: 30) timeout for ACSE messages'
+- id: in_ta
+  doc: "--acse-timeout       [s]econds: integer (default: 30)\ntimeout for ACSE messages"
   type: boolean
   inputBinding:
     prefix: -ta
-- id: td
-  doc: '--dimse-timeout      [s]econds: integer (default: unlimited) timeout for DIMSE
-    messages'
+- id: in_td
+  doc: "--dimse-timeout      [s]econds: integer (default: unlimited)\ntimeout for\
+    \ DIMSE messages"
   type: boolean
   inputBinding:
     prefix: -td
-- id: max_pdu
-  doc: '[n]umber of bytes: integer (4096..131072) set max receive pdu to n bytes (default:
-    16384)'
+- id: in_max_pdu
+  doc: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to n bytes\
+    \ (default: 16384)"
   type: boolean
   inputBinding:
     prefix: --max-pdu
-- id: repeat
-  doc: '[n]umber: integer repeat n times'
+- id: in_repeat
+  doc: "[n]umber: integer\nrepeat n times"
   type: boolean
   inputBinding:
     prefix: --repeat
-- id: abort
+- id: in_abort
   doc: abort association instead of releasing it
   type: boolean
   inputBinding:
     prefix: --abort
-- id: pw
+- id: in_disable_tls
+  doc: use normal TCP/IP connection (default)
+  type: boolean
+  inputBinding:
+    prefix: --disable-tls
+- id: in_pw
   doc: --null-passwd        use empty string as password
   type: boolean
   inputBinding:
     prefix: -pw
-- id: pem_keys
+- id: in_pem_keys
   doc: read keys and certificates as PEM file (default)
   type: boolean
   inputBinding:
     prefix: --pem-keys
-- id: der_keys
+- id: in_der_keys
   doc: read keys and certificates as DER file
   type: boolean
   inputBinding:
     prefix: --der-keys
-- id: rc
+- id: in_rc
   doc: --require-peer-cert  verify peer certificate, fail if absent (default)
   type: boolean
   inputBinding:
     prefix: -rc
-- id: vc
+- id: in_vc
   doc: --verify-peer-cert   verify peer certificate if present
   type: boolean
   inputBinding:
     prefix: -vc
-- id: ic
+- id: in_ic
   doc: --ignore-peer-cert   don't verify peer certificate
   type: boolean
   inputBinding:
     prefix: -ic
-- id: peer
+- id: in_peer
   doc: hostname of DICOM peer
   type: string
   inputBinding:
     position: 0
-- id: port
+- id: in_port
   doc: tcp/ip port number of peer
   type: string
   inputBinding:
     position: 1
-outputs: []
+- id: in_string
+  doc: use specified password
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - echoscu

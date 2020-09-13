@@ -17,4 +17,7 @@ task SequenceMatch {
     train_vertical_line_seq_match: ""
     args: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

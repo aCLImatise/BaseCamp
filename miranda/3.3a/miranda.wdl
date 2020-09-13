@@ -3,9 +3,9 @@ version 1.0
 task Miranda {
   input {
     Boolean? license
-    String? sc
+    Float? sc
     Boolean? en
-    String? scale
+    Float? scale
     Boolean? strict
     Boolean? go
     Boolean? ge
@@ -15,8 +15,8 @@ task Miranda {
     Boolean? no_energy
     File? restrict
     Boolean? keyval
-    File file_one
-    File file_two
+    Int file_one
+    Int file_two
     String? options_dot_dot
   }
   command <<<
@@ -24,19 +24,19 @@ task Miranda {
       ~{file_one} \
       ~{file_two} \
       ~{options_dot_dot} \
-      ~{true="--license" false="" license} \
+      ~{if (license) then "--license" else ""} \
       ~{if defined(sc) then ("-sc " +  '"' + sc + '"') else ""} \
-      ~{true="-en" false="" en} \
+      ~{if (en) then "-en" else ""} \
       ~{if defined(scale) then ("-scale " +  '"' + scale + '"') else ""} \
-      ~{true="-strict" false="" strict} \
-      ~{true="-go" false="" go} \
-      ~{true="-ge" false="" ge} \
+      ~{if (strict) then "-strict" else ""} \
+      ~{if (go) then "-go" else ""} \
+      ~{if (ge) then "-ge" else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{true="-quiet" false="" quiet} \
+      ~{if (quiet) then "-quiet" else ""} \
       ~{if defined(trim) then ("-trim " +  '"' + trim + '"') else ""} \
-      ~{true="-noenergy" false="" no_energy} \
+      ~{if (no_energy) then "-noenergy" else ""} \
       ~{if defined(restrict) then ("-restrict " +  '"' + restrict + '"') else ""} \
-      ~{true="-keyval" false="" keyval}
+      ~{if (keyval) then "-keyval" else ""}
   >>>
   parameter_meta {
     license: "Display license information"
@@ -50,10 +50,14 @@ task Miranda {
     quiet: "Output fewer event notifications        [DEFAULT: off]"
     trim: "Trim reference sequences to T nt        [DEFAULT: off]"
     no_energy: "Do not perform thermodynamics           [DEFAULT: off]"
-    restrict: "Restricts scans to those between specific miRNAs and UTRs provided in a pairwise tab-separated file                      [DEFAULT: off]"
+    restrict: "Restricts scans to those between\\nspecific miRNAs and UTRs\\nprovided in a pairwise\\ntab-separated file                      [DEFAULT: off]"
     keyval: "Key value pairs ??                      [DEFAULT:]"
     file_one: ""
     file_two: ""
     options_dot_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

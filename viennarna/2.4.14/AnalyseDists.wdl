@@ -1,20 +1,10 @@
 version 1.0
 
 task AnalyseDists {
-  input {
-    Boolean? x
-    String analyse_dist
-    String? swn
-  }
   command <<<
-    AnalyseDists \
-      ~{analyse_dist} \
-      ~{swn} \
-      ~{true="-X" false="" x}
+    AnalyseDists
   >>>
-  parameter_meta {
-    x: ""
-    analyse_dist: ""
-    swn: ""
+  output {
+    File out_stdout = stdout()
   }
 }

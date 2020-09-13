@@ -3,7 +3,7 @@ version 1.0
 task Mcx {
   input {
     String mode
-    File? files
+    String? files
   }
   command <<<
     mcx \
@@ -13,5 +13,8 @@ task Mcx {
   parameter_meta {
     mode: ""
     files: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

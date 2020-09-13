@@ -2,7 +2,7 @@ version 1.0
 
 task Dbiprof {
   input {
-    String? number
+    Int? number
     String? sort
     Boolean? reverse
     String? match
@@ -15,12 +15,12 @@ task Dbiprof {
     dbiprof \
       ~{if defined(number) then ("-number " +  '"' + number + '"') else ""} \
       ~{if defined(sort) then ("-sort " +  '"' + sort + '"') else ""} \
-      ~{true="-reverse" false="" reverse} \
+      ~{if (reverse) then "-reverse" else ""} \
       ~{if defined(match) then ("-match " +  '"' + match + '"') else ""} \
       ~{if defined(exclude) then ("-exclude " +  '"' + exclude + '"') else ""} \
-      ~{true="-case_sensitive" false="" case_sensitive} \
-      ~{true="-delete" false="" delete} \
-      ~{true="-version" false="" version}
+      ~{if (case_sensitive) then "-case_sensitive" else ""} \
+      ~{if (delete) then "-delete" else ""} \
+      ~{if (version) then "-version" else ""}
   >>>
   parameter_meta {
     number: "show top N, defaults to 10"
@@ -31,5 +31,8 @@ task Dbiprof {
     case_sensitive: "for -match and -exclude"
     delete: "rename files before reading then delete afterwards"
     version: "print version number and exit"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

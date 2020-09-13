@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../read_file_names.cwl
 inputs:
-- id: in
+- id: in_in
   doc: '(1 arg) :    bank input'
   type: boolean
   inputBinding:
     prefix: -in
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - read_file_names

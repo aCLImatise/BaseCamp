@@ -1,11 +1,56 @@
 !Command
+command:
+- storescp
 positional:
 - !Positional
   description: tcp/ip port number to listen on
   position: 0
   name: port
   optional: false
+- !Positional
+  description: use specified password
+  position: 0
+  name: string
+  optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --quiet                quiet mode, print no warnings and errors
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --verbose              verbose mode, print processing details
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --debug                debug mode, print debug information
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-level            [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
+  synonyms:
+  - -ll
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-config           [f]ilename: string\nuse config file f for the\
+    \ logger"
+  synonyms:
+  - -lc
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: single process mode (default)
   synonyms:
@@ -19,8 +64,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--config-file          [f]ilename, [p]rofile: string use profile p
-    from config file f'
+  description: "--config-file          [f]ilename, [p]rofile: string\nuse profile\
+    \ p from config file f"
   synonyms:
   - -xf
   args: !EmptyFlagArg {}
@@ -32,29 +77,29 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--acse-timeout         [s]econds: integer (default: 30) timeout for
-    ACSE messages'
+  description: "--acse-timeout         [s]econds: integer (default: 30)\ntimeout for\
+    \ ACSE messages"
   synonyms:
   - -ta
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--dimse-timeout        [s]econds: integer (default: unlimited) timeout
-    for DIMSE messages'
+  description: "--dimse-timeout        [s]econds: integer (default: unlimited)\ntimeout\
+    \ for DIMSE messages"
   synonyms:
   - -td
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[a]etitle: string set my AE title (default: STORESCP)'
+  description: "[a]etitle: string\nset my AE title (default: STORESCP)"
   synonyms:
   - -aet
   - --aetitle
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[n]umber of bytes: integer (4096..131072) set max receive pdu to n
-    bytes (def.: 16384)'
+  description: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to\
+    \ n bytes (def.: 16384)"
   synonyms:
   - -pdu
   - --max-pdu
@@ -86,19 +131,20 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[s]econds: integer sleep s seconds after store (default: 0)'
+  description: "[s]econds: integer\nsleep s seconds after store (default: 0)"
   synonyms:
   - --sleep-after
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[s]econds: integer sleep s seconds during store (default: 0)'
+  description: "[s]econds: integer\nsleep s seconds during store (default: 0)"
   synonyms:
   - --sleep-during
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: abort association after receipt of C-STORE-RQ (but before sending response)
+  description: "abort association after receipt of C-STORE-RQ\n(but before sending\
+    \ response)"
   synonyms:
   - --abort-after
   args: !EmptyFlagArg {}
@@ -110,8 +156,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --promiscuous          promiscuous mode, accept unknown SOP classes
-    (not with --config-file)
+  description: "--promiscuous          promiscuous mode, accept unknown SOP classes\n\
+    (not with --config-file)"
   synonyms:
   - -pm
   args: !EmptyFlagArg {}
@@ -120,6 +166,13 @@ named:
   description: --uid-padding          silently correct space-padded UIDs
   synonyms:
   - -up
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use normal TCP/IP connection (default)
+  synonyms:
+  - -tls
+  - --disable-tls
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -161,10 +214,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--output-directory     [d]irectory: string (default: ".") write received
-    objects to existing directory d'
+  description: "--output-directory     [d]irectory: string (default: \".\")\nwrite\
+    \ received objects to existing directory d"
   synonyms:
   - -od
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --normal               allow implicit format conversions (default)
+  synonyms:
+  - -B
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -192,24 +251,36 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--sort-conc-studies    [p]refix: string sort studies using prefix
-    p and a timestamp'
+  description: --padding-off          no padding (default)
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--sort-conc-studies    [p]refix: string\nsort studies using prefix\
+    \ p and a timestamp"
   synonyms:
   - -ss
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--sort-on-study-uid    [p]refix: string sort studies using prefix
-    p and the Study Instance UID'
+  description: "--sort-on-study-uid    [p]refix: string\nsort studies using prefix\
+    \ p and the Study\nInstance UID"
   synonyms:
   - -su
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --sort-on-patientname  sort studies using the Patient's Name and a
-    timestamp
+  description: "--sort-on-patientname  sort studies using the Patient's Name and\n\
+    a timestamp"
   synonyms:
   - -sp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --default-filenames    generate filename from instance UID (default)
+  synonyms:
+  - -uf
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -219,35 +290,35 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--filename-extension   [e]xtension: string append e to all filenames'
+  description: "--filename-extension   [e]xtension: string\nappend e to all filenames"
   synonyms:
   - -fe
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--exec-on-reception    [c]ommand: string execute command c after having
-    received and processed one C-STORE-RQ message'
+  description: "--exec-on-reception    [c]ommand: string\nexecute command c after\
+    \ having received and\nprocessed one C-STORE-RQ message"
   synonyms:
   - -xcr
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--exec-on-eostudy      [c]ommand: string execute command c after having
-    received and processed all C-STORE-RQ messages that belong to one study'
+  description: "--exec-on-eostudy      [c]ommand: string\nexecute command c after\
+    \ having received and\nprocessed all C-STORE-RQ messages that belong\nto one study"
   synonyms:
   - -xcs
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --rename-on-eostudy    having received and processed all C-STORE-RQ
-    messages that belong to one study, rename output files according to certain pattern
+  description: "--rename-on-eostudy    having received and processed all C-STORE-RQ\n\
+    messages that belong to one study, rename\noutput files according to certain pattern"
   synonyms:
   - -rns
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--eostudy-timeout      [t]imeout: integer specifies a timeout of t
-    seconds for end-of-study determination'
+  description: "--eostudy-timeout      [t]imeout: integer\nspecifies a timeout of\
+    \ t seconds for\nend-of-study determination"
   synonyms:
   - -tos
   args: !EmptyFlagArg {}
@@ -258,13 +329,22 @@ named:
   - -xs
   args: !EmptyFlagArg {}
   optional: true
-command:
-- storescp
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: --help                 print this help text and exit
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: storescp v3.6.1 2016-11-02 $\n\nstorescp: DICOM storage (C-STORE)\
   \ SCP\nusage: storescp [options] [port]\n\nparameters:\n  port                 \
   \          tcp/ip port number to listen on\n\ngeneral options:\n  -h      --help\

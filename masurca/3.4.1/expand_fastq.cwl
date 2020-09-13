@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../expand_fastq.cwl
 inputs:
-- id: bccdehikllnnprsvzzzero
-  doc: ''
+- id: in_print_first_n
+  doc: '[-]N[kbm]    Print first N bytes'
   type: boolean
   inputBinding:
-    prefix: -bcCdEhikLlNnprsvzZ0
-- id: apple
-  doc: ''
+    prefix: -c
+- id: in_never_print_headers
+  doc: Never print headers
   type: boolean
   inputBinding:
-    prefix: --apple
-- id: extension
-  doc: ''
+    prefix: -q
+- id: in_always_print_headers
+  doc: Always print headers
   type: boolean
   inputBinding:
-    prefix: --extension
-- id: mime_encoding
+    prefix: -v
+- id: in_head
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
-    prefix: --mime-encoding
-- id: file
+    position: 0
+- id: in_file
   doc: ''
   type: File
   inputBinding:
-    position: 0
-outputs: []
+    position: 1
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - expand_fastq

@@ -1,24 +1,24 @@
 version 1.0
 
-task SpadesGsimplifier {
+task Spadesgsimplifier {
   input {
     Boolean? gfa
     String? spades_gp
     Boolean? use_cov_ratios
-    String? kmer_length_use
-    String? read_length
-    String? coverage
-    String? threads
+    Int? kmer_length_use
+    Int? read_length
+    Int? coverage
+    Int? threads
     File? profile
     File? stop_codons
     File? dead_ends
-    String? tmpdir
+    Directory? tmpdir
   }
   command <<<
-    spades-gsimplifier \
-      ~{true="--gfa" false="" gfa} \
+    spades_gsimplifier \
+      ~{if (gfa) then "--gfa" else ""} \
       ~{if defined(spades_gp) then ("--spades-gp " +  '"' + spades_gp + '"') else ""} \
-      ~{true="--use-cov-ratios" false="" use_cov_ratios} \
+      ~{if (use_cov_ratios) then "--use-cov-ratios" else ""} \
       ~{if defined(kmer_length_use) then ("-k " +  '"' + kmer_length_use + '"') else ""} \
       ~{if defined(read_length) then ("--read-length " +  '"' + read_length + '"') else ""} \
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""} \
@@ -39,6 +39,10 @@ task SpadesGsimplifier {
     profile: "file with edge coverage profiles across multiple samples"
     stop_codons: "file stop codon positions"
     dead_ends: "while processing a subgraph -- file listing edges which are dead-ends in the original graph"
-    tmpdir: "scratch directory to use (default: <output prefix>.tmp)"
+    tmpdir: "scratch directory to use (default: <output prefix>.tmp)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_tmpdir = "${in_tmpdir}"
   }
 }

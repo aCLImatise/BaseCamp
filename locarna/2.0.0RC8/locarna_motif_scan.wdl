@@ -1,7 +1,10 @@
 version 1.0
 
-task LocarnaMotifScan {
+task Locarnamotifscan {
   command <<<
-    locarna-motif-scan
+    locarna_motif_scan
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

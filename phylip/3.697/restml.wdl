@@ -4,4 +4,7 @@ task Restml {
   command <<<
     restml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

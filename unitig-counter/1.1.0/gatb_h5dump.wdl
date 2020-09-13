@@ -1,43 +1,53 @@
 version 1.0
 
-task GatbH5dump {
+task Gatbh5dump {
   input {
+    Boolean? _version_print
     Boolean? _contents_print
     Boolean? _superblock_print
     Boolean? _header_print
-    String? file_driver
-    String? output_raw_data
-    String? binary
-    String? ddl
+    File? file_driver
+    File? output_raw_data
+    File? binary
+    File? ddl
     String? attribute
     String? dataset
     String? group
     String? soft_link
     String? datatype
-    String? any_path
+    File? any_path
     Boolean? _onlyattr_print
     Boolean? _objectids_print
-    Boolean? _properties_print
-    String? packed_bits
+    Boolean? _properties_filters
+    Int? packed_bits
     Boolean? _region_dataset
-    Boolean? no_compact_subset
-    String? width
+    Boolean? _escape_escape
+    Boolean? _string_print
+    Boolean? _noindex_print
+    String? format
+    String? sort_by
+    String? sort_order
+    Int? enable_error_stack
+    Int? width
     Boolean? _xml_output
     Boolean? _output_using
     String? xml_dtd
-    String? xml_ns
+    File? xml_ns
     String? _startstart_offset
     String? stride
-    String? _countcount_number
-    String? _blockblock_size
+    Int? _countcount_number
+    Int? _blockblock_size
     String options
+    String occur_dot
   }
   command <<<
-    gatb-h5dump \
+    gatb_h5dump \
       ~{options} \
-      ~{true="-n" false="" _contents_print} \
-      ~{true="-B" false="" _superblock_print} \
-      ~{true="-H" false="" _header_print} \
+      ~{occur_dot} \
+      ~{if (_version_print) then "-V" else ""} \
+      ~{if (_contents_print) then "-n" else ""} \
+      ~{if (_superblock_print) then "-B" else ""} \
+      ~{if (_header_print) then "-H" else ""} \
       ~{if defined(file_driver) then ("--filedriver " +  '"' + file_driver + '"') else ""} \
       ~{if defined(output_raw_data) then ("--output " +  '"' + output_raw_data + '"') else ""} \
       ~{if defined(binary) then ("--binary " +  '"' + binary + '"') else ""} \
@@ -48,15 +58,21 @@ task GatbH5dump {
       ~{if defined(soft_link) then ("--soft-link " +  '"' + soft_link + '"') else ""} \
       ~{if defined(datatype) then ("--datatype " +  '"' + datatype + '"') else ""} \
       ~{if defined(any_path) then ("--any_path " +  '"' + any_path + '"') else ""} \
-      ~{true="-A" false="" _onlyattr_print} \
-      ~{true="-i" false="" _objectids_print} \
-      ~{true="-p" false="" _properties_print} \
+      ~{if (_onlyattr_print) then "-A" else ""} \
+      ~{if (_objectids_print) then "-i" else ""} \
+      ~{if (_properties_filters) then "-p" else ""} \
       ~{if defined(packed_bits) then ("--packedbits " +  '"' + packed_bits + '"') else ""} \
-      ~{true="-R" false="" _region_dataset} \
-      ~{true="--no-compact-subset" false="" no_compact_subset} \
+      ~{if (_region_dataset) then "-R" else ""} \
+      ~{if (_escape_escape) then "-e" else ""} \
+      ~{if (_string_print) then "-r" else ""} \
+      ~{if (_noindex_print) then "-y" else ""} \
+      ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
+      ~{if defined(sort_by) then ("--sort_by " +  '"' + sort_by + '"') else ""} \
+      ~{if defined(sort_order) then ("--sort_order " +  '"' + sort_order + '"') else ""} \
+      ~{if defined(enable_error_stack) then ("--enable-error-stack " +  '"' + enable_error_stack + '"') else ""} \
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
-      ~{true="-x" false="" _xml_output} \
-      ~{true="-u" false="" _output_using} \
+      ~{if (_xml_output) then "-x" else ""} \
+      ~{if (_output_using) then "-u" else ""} \
       ~{if defined(xml_dtd) then ("--xml-dtd " +  '"' + xml_dtd + '"') else ""} \
       ~{if defined(xml_ns) then ("--xml-ns " +  '"' + xml_ns + '"') else ""} \
       ~{if defined(_startstart_offset) then ("-s " +  '"' + _startstart_offset + '"') else ""} \
@@ -65,34 +81,48 @@ task GatbH5dump {
       ~{if defined(_blockblock_size) then ("-k " +  '"' + _blockblock_size + '"') else ""}
   >>>
   parameter_meta {
-    _contents_print: ",   --contents     Print a list of the file contents and exit Optional value 1 also prints attributes."
+    _version_print: ",   --version      Print version number and exit"
+    _contents_print: ",   --contents     Print a list of the file contents and exit\\nOptional value 1 also prints attributes."
     _superblock_print: ",   --superblock   Print the content of the super block"
     _header_print: ",   --header       Print the header only; no data is displayed"
     file_driver: "Specify which driver to open the file with"
     output_raw_data: "Output raw data into file F"
     binary: "Binary file output, of form B"
-    ddl: "Output ddl text into file F Use blank(empty) filename F to suppress ddl display"
-    attribute: "Print the specified attribute If an attribute name contains a slash (/), escape the slash with a preceding backslash (\). (See example section below.)"
+    ddl: "Output ddl text into file F\\nUse blank(empty) filename F to suppress ddl display"
+    attribute: "Print the specified attribute\\nIf an attribute name contains a slash (/), escape the\\nslash with a preceding backslash (\\).\\n(See example section below.)"
     dataset: "Print the specified dataset"
     group: "Print the specified group and all members"
     soft_link: "Print the value(s) of the specified soft link"
     datatype: "Print the specified named datatype"
-    any_path: "Print any attribute, dataset, group, datatype, or link that matches P P can be the absolute path or just a relative path."
-    _onlyattr_print: ",   --onlyattr     Print the header and value of attributes Optional value 0 suppresses printing attributes."
+    any_path: "Print any attribute, dataset, group, datatype, or link that matches P\\nP can be the absolute path or just a relative path."
+    _onlyattr_print: ",   --onlyattr     Print the header and value of attributes\\nOptional value 0 suppresses printing attributes."
     _objectids_print: ",   --object-ids   Print the object ids"
-    _properties_print: ",   --properties   Print dataset filters, storage layout and fill value"
-    packed_bits: "Print packed bits as unsigned integers, using mask format L for an integer dataset specified with option -d. L is a list of offset,length values, separated by commas. Offset is the beginning bit in the data value and length is the number of bits of the mask."
+    _properties_filters: ",   --properties   Print dataset filters, storage layout and fill value"
+    packed_bits: "Print packed bits as unsigned integers, using mask\\nformat L for an integer dataset specified with\\noption -d. L is a list of offset,length values,\\nseparated by commas. Offset is the beginning bit in\\nthe data value and length is the number of bits of\\nthe mask."
     _region_dataset: ",   --region       Print dataset pointed by region references"
-    no_compact_subset: "Disable compact form of subsetting and allow the use of \"[\" in dataset names."
-    width: "Set the number of columns of output. A value of 0 (zero) sets the number of columns to the maximum (65535). Default width is 80 columns."
+    _escape_escape: ",   --escape       Escape non printing characters"
+    _string_print: ",   --string       Print 1-byte integer datasets as ASCII"
+    _noindex_print: ",   --noindex      Do not print array indices with the data"
+    format: "Set the floating point output format"
+    sort_by: "Sort groups and attributes by index Q"
+    sort_order: "Sort groups and attributes by order Z"
+    enable_error_stack: "messages from the HDF5 error stack as they"
+    width: "Set the number of columns of output. A value of 0 (zero)\\nsets the number of columns to the maximum (65535).\\nDefault width is 80 columns."
     _xml_output: ",   --xml          Output in XML using Schema"
     _output_using: ",   --use-dtd      Output in XML using DTD"
     xml_dtd: "Use the DTD or schema at U"
-    xml_ns: "(XML Schema) Use qualified names n the XML \":\": no namespace, default: \"hdf5:\" E.g., to dump a file called `-f', use h5dump -- -f"
+    xml_ns: "(XML Schema) Use qualified names n the XML\\n\\\":\\\": no namespace, default: \\\"hdf5:\\\"\\nE.g., to dump a file called `-f', use h5dump -- -f"
     _startstart_offset: ",  --start=START    Offset of start of subsetting selection"
     stride: "Hyperslab stride"
     _countcount_number: ",  --count=COUNT    Number of blocks to include in selection"
     _blockblock_size: ",  --block=BLOCK    Size of block in hyperslab"
-    options: "-h,   --help         Print a usage message and exit -V,   --version      Print version number and exit"
+    options: "-h,   --help         Print a usage message and exit"
+    occur_dot: "--no-compact-subset  Disable compact form of subsetting and allow the use"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_raw_data = "${in_output_raw_data}"
+    File out_binary = "${in_binary}"
+    File out_ddl = "${in_ddl}"
   }
 }

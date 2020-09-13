@@ -11,22 +11,22 @@ task AlfredPwalign {
     Boolean? _local_alignment
     Boolean? f
     Boolean? arg_verticalhorizontal_alignment
-    String seq_one_dot_fast_a
-    String seq_two_dot_fast_a
+    Int seq_one_dot_fast_a
+    Int seq_two_dot_fast_a
   }
   command <<<
     alfred pwalign \
       ~{seq_one_dot_fast_a} \
       ~{seq_two_dot_fast_a} \
-      ~{true="-g" false="" arg_gap_open} \
-      ~{true="-e" false="" arg_gap_extension} \
-      ~{true="-m" false="" _arg_match} \
-      ~{true="-n" false="" _arg_mismatch} \
-      ~{true="-p" false="" p} \
-      ~{true="-q" false="" q} \
-      ~{true="-l" false="" _local_alignment} \
-      ~{true="-f" false="" f} \
-      ~{true="-a" false="" arg_verticalhorizontal_alignment}
+      ~{if (arg_gap_open) then "-g" else ""} \
+      ~{if (arg_gap_extension) then "-e" else ""} \
+      ~{if (_arg_match) then "-m" else ""} \
+      ~{if (_arg_mismatch) then "-n" else ""} \
+      ~{if (p) then "-p" else ""} \
+      ~{if (q) then "-q" else ""} \
+      ~{if (_local_alignment) then "-l" else ""} \
+      ~{if (f) then "-f" else ""} \
+      ~{if (arg_verticalhorizontal_alignment) then "-a" else ""}
   >>>
   parameter_meta {
     arg_gap_open: "[ --gapopen ] arg (=-10)           gap open"
@@ -37,8 +37,11 @@ task AlfredPwalign {
     q: "[ --endsfree2 ]                    leading/trailing gaps free for seq2"
     _local_alignment: "[ --local ]                        local alignment"
     f: "[ --format ] arg (=h)              output format [v|h]"
-    arg_verticalhorizontal_alignment: "[ --alignment ] arg (=\"al.fa.gz\")  vertical/horizontal alignment"
+    arg_verticalhorizontal_alignment: "[ --alignment ] arg (=\\\"al.fa.gz\\\")  vertical/horizontal alignment"
     seq_one_dot_fast_a: ""
     seq_two_dot_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

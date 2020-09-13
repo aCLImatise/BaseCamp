@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../MosaikText.cwl
 inputs:
-- id: fast_q
+- id: in_fast_q
   doc: stores the data in a FASTQ file
-  type: string
+  type: File
   inputBinding:
     prefix: -fastq
-- id: screen
+- id: in_screen
   doc: displays the reads on the screen
   type: boolean
   inputBinding:
     prefix: -screen
-- id: axt
+- id: in_axt
   doc: stores the data in an AXT file
-  type: string
+  type: File
   inputBinding:
     prefix: -axt
-- id: bam
+- id: in_bam
   doc: stores the data in a BAM file
-  type: string
+  type: File
   inputBinding:
     prefix: -bam
-- id: bed
+- id: in_bed
   doc: stores the data in a BED file
-  type: string
+  type: File
   inputBinding:
     prefix: -bed
-- id: el_and
+- id: in_el_and
   doc: stores the data in an Eland file
-  type: string
+  type: File
   inputBinding:
     prefix: -eland
-- id: ref
+- id: in_ref
   doc: displays output for a specific reference
   type: string
   inputBinding:
     prefix: -ref
-- id: sam
+- id: in_sam
   doc: stores the data in a SAM file
-  type: string
+  type: File
   inputBinding:
     prefix: -sam
-- id: limit_output_unique
+- id: in_limit_output_unique
   doc: limit output to unique reads
   type: boolean
   inputBinding:
     prefix: -u
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MosaikText

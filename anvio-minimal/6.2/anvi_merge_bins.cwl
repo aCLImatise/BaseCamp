@@ -1,37 +1,46 @@
 class: CommandLineTool
 id: ../../../anvi_merge_bins.cwl
 inputs:
-- id: pan_or_profile_db
-  doc: Anvi'o pan or profile database (and even genes database in appropriate contexts).
-  type: string
-  inputBinding:
-    prefix: --pan-or-profile-db
-- id: collection_name
+- id: in_collection_name
   doc: Collection name.
   type: string
   inputBinding:
     prefix: --collection-name
-- id: names__binnameslist
-  doc: NAMES, --bin-names-list BIN NAMES Comma-separated list of bin names.
+- id: in_names__binnameslist
+  doc: "NAMES, --bin-names-list BIN NAMES\nComma-separated list of bin names."
   type: string
   inputBinding:
     prefix: -b
-- id: name__newbinname
-  doc: NAME, --new-bin-name BIN NAME The new bin name.
+- id: in_name__bin
+  doc: "NAME, --new-bin-name BIN NAME\nThe new bin name."
   type: string
   inputBinding:
     prefix: -B
-- id: list_collections
+- id: in_list_collections
   doc: Show available collections and exit.
   type: boolean
   inputBinding:
     prefix: --list-collections
-- id: list_bins
+- id: in_list_bins
   doc: List available bins in a collection and exit.
   type: boolean
   inputBinding:
     prefix: --list-bins
-outputs: []
+- id: in_p
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -p
+- id: in_below_dot
+  doc: "-p PAN_OR_PROFILE_DB, --pan-or-profile-db PAN_OR_PROFILE_DB\nAnvi'o pan or\
+    \ profile database (and even genes\ndatabase in appropriate contexts)."
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - anvi-merge-bins

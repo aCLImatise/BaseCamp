@@ -20,4 +20,7 @@ task ChromosomerFragmentmapbedOutput {
     var_map: ""
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

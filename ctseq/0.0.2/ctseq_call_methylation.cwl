@@ -1,39 +1,42 @@
 class: CommandLineTool
 id: ../../../ctseq_call_methylation.cwl
 inputs:
-- id: ref_dir
-  doc: Full path to directory where you have already built your methylation reference
-    files. If no '--refDir' is specified, ctseq will look in your current directory.
-  type: string
+- id: in_ref_dir
+  doc: "Full path to directory where you have already built\nyour methylation reference\
+    \ files. If no '--refDir' is\nspecified, ctseq will look in your current directory."
+  type: File
   inputBinding:
     prefix: --refDir
-- id: dir
-  doc: Full path to directory where your '*allMolecules.txt' files are located. If
-    no '--dir' is specified, ctseq will look in your current directory.
-  type: string
+- id: in_dir
+  doc: "Full path to directory where your '*allMolecules.txt'\nfiles are located.\
+    \ If no '--dir' is specified, ctseq\nwill look in your current directory."
+  type: File
   inputBinding:
     prefix: --dir
-- id: name_run
-  doc: number of reads needed to be counted as a unique molecule (required)
-  type: string
+- id: in_name_run
+  doc: "number of reads needed to be counted as a unique\nmolecule (required)"
+  type: long
   inputBinding:
     prefix: --nameRun
-- id: processes
+- id: in_processes
   doc: number of processes (default=1)
-  type: string
+  type: long
   inputBinding:
     prefix: --processes
-- id: cisc_g
-  doc: cis-CG threshold to determine if a molecule is methylated (default=0.75)
-  type: string
+- id: in_cisc_g
+  doc: "cis-CG threshold to determine if a molecule is\nmethylated (default=0.75)"
+  type: double
   inputBinding:
     prefix: --cisCG
-- id: molecule_threshold
-  doc: number of reads needed to be counted as a unique molecule (default=5)
-  type: string
+- id: in_molecule_threshold
+  doc: "number of reads needed to be counted as a unique\nmolecule (default=5)\n"
+  type: long
   inputBinding:
     prefix: --moleculeThreshold
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ctseq

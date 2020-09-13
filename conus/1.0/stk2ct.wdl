@@ -10,11 +10,14 @@ task Stk2ct {
     stk2ct \
       ~{give_ct} \
       ~{seq_file_in} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     give_ct: ""
     seq_file_in: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

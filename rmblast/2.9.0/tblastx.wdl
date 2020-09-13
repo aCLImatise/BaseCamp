@@ -4,4 +4,7 @@ task Tblastx {
   command <<<
     tblastx
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

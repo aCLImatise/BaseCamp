@@ -2,9 +2,9 @@ version 1.0
 
 task GsortGENOME {
   input {
-    String? chromosome_mappings
-    String? memory
     Boolean? parent
+    String? memory
+    String? chromosome_mappings
     String g_sort
     File path
     String genome
@@ -14,16 +14,19 @@ task GsortGENOME {
       ~{g_sort} \
       ~{path} \
       ~{genome} \
-      ~{if defined(chromosome_mappings) then ("--chromosomemappings " +  '"' + chromosome_mappings + '"') else ""} \
+      ~{if (parent) then "--parent" else ""} \
       ~{if defined(memory) then ("--memory " +  '"' + memory + '"') else ""} \
-      ~{true="--parent" false="" parent}
+      ~{if defined(chromosome_mappings) then ("--chromosomemappings " +  '"' + chromosome_mappings + '"') else ""}
   >>>
   parameter_meta {
-    chromosome_mappings: ""
-    memory: ""
     parent: ""
+    memory: ""
+    chromosome_mappings: ""
     g_sort: ""
     path: ""
     genome: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

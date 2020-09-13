@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../portcullis.cwl
 inputs:
-- id: print_extra_information
+- id: in_print_extra_information
   doc: '[ --verbose ]      Print extra information'
   type: boolean
   inputBinding:
     prefix: -v
-- id: mode
-  doc: ''
+- id: in_junctions
+  doc: 'Usage: portcullis [options] <mode> <mode_args>'
   type: string
   inputBinding:
     position: 0
-- id: mode_args
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - portcullis

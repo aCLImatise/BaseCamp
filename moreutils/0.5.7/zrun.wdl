@@ -1,17 +1,10 @@
 version 1.0
 
 task Zrun {
-  input {
-    String var_command
-    String args
-  }
   command <<<
-    zrun \
-      ~{var_command} \
-      ~{args}
+    zrun
   >>>
-  parameter_meta {
-    var_command: ""
-    args: ""
+  output {
+    File out_stdout = stdout()
   }
 }

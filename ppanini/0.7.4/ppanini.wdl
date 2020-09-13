@@ -3,12 +3,12 @@ version 1.0
 task Ppanini {
   input {
     String? input_table
-    String? output_folder
+    Directory? output_folder
     String? basename
-    String? uniref_two_go
+    Int? uniref_two_go
     String? log_level
     String? abundance_detection_level
-    String? t_shld_abund
+    Int? t_shld_abund
     String? t_shld_prev
     String? beta
   }
@@ -34,5 +34,9 @@ task Ppanini {
     t_shld_abund: "[X] Percentile Cutoff for Abundance; Default=75th"
     t_shld_prev: "Percentile cutoff for Prevalence"
     beta: "Beta parameter for weights on percentiles"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_folder = "${in_output_folder}"
   }
 }

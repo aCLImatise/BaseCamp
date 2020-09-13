@@ -2,16 +2,22 @@ version 1.0
 
 task PslxToFa {
   input {
+    String? lift_target
+    String? lift_query
     String in_dot_psl
-    String out_dot_fa
   }
   command <<<
     pslxToFa \
       ~{in_dot_psl} \
-      ~{out_dot_fa}
+      ~{if defined(lift_target) then ("-liftTarget " +  '"' + lift_target + '"') else ""} \
+      ~{if defined(lift_query) then ("-liftQuery " +  '"' + lift_query + '"') else ""}
   >>>
   parameter_meta {
+    lift_target: ""
+    lift_query: ""
     in_dot_psl: ""
-    out_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

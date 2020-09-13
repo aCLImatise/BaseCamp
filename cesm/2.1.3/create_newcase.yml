@@ -1,8 +1,17 @@
 !Command
+command:
+- create_newcase
 positional: []
 named:
 - !Flag
-  description: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/create_newcase.log
+  description: '[--machine MACHINE] [--compiler COMPILER]'
+  synonyms:
+  - --res
+  args: !SimpleFlagArg
+    name: GRID
+  optional: true
+- !Flag
+  description: Print debug information (very verbose) to file /create_newcase.log
   synonyms:
   - -d
   - --debug
@@ -23,10 +32,11 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (required) Specify the case name.  If this is simply a name (not a
-    path), the case directory is created in the current working directory. This can
-    also be a relative or absolute path specifying where the case should be created;
-    with this usage, the name of the case will be the last component of the path.
+  description: "(required) Specify the case name.\nIf this is simply a name (not a\
+    \ path), the case directory is created in the current working directory.\nThis\
+    \ can also be a relative or absolute path specifying where the case should be\
+    \ created;\nwith this usage, the name of the case will be the last component of\
+    \ the path."
   synonyms:
   - --case
   - -case
@@ -34,8 +44,8 @@ named:
     name: CASENAME
   optional: true
 - !Flag
-  description: (required) Specify a compset.  To see list of current compsets, use
-    the utility ./query_config --compsets in this directory.
+  description: "(required) Specify a compset.\nTo see list of current compsets, use\
+    \ the utility ./query_config --compsets in this directory."
   synonyms:
   - --compset
   - -compset
@@ -43,18 +53,9 @@ named:
     name: COMPSET
   optional: true
 - !Flag
-  description: (required) Specify a model grid resolution.  To see list of current
-    model resolutions, use the utility  ./query_config --grids in this directory.
-  synonyms:
-  - --res
-  - -res
-  args: !SimpleFlagArg
-    name: GRID
-  optional: true
-- !Flag
-  description: Specify a machine. The default value is the match to NODENAME_REGEX
-    in config_machines.xml. To see  the list of current machines, invoke ./query_config
-    --machines.
+  description: "Specify a machine. The default value is the match to NODENAME_REGEX\
+    \ in config_machines.xml. To see\nthe list of current machines, invoke ./query_config\
+    \ --machines."
   synonyms:
   - --machine
   - -mach
@@ -62,9 +63,9 @@ named:
     name: MACHINE
   optional: true
 - !Flag
-  description: Specify a compiler.  To see list of supported compilers for each machine,
-    use the utility  ./query_config --machines in this directory.  The default value
-    will be the first one listed.
+  description: "Specify a compiler.\nTo see list of supported compilers for each machine,\
+    \ use the utility\n./query_config --machines in this directory.\nThe default value\
+    \ will be the first one listed."
   synonyms:
   - --compiler
   - -compiler
@@ -72,25 +73,25 @@ named:
     name: COMPILER
   optional: true
 - !Flag
-  description: Specify that --ninst should modify the number of driver/coupler instances.  The
-    default is to have one driver/coupler supporting multiple component instances.
+  description: "Specify that --ninst should modify the number of driver/coupler instances.\n\
+    The default is to have one driver/coupler supporting multiple component instances."
   synonyms:
   - --multi-driver
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Specify number of model ensemble instances.  The default is multiple
-    components and one driver/coupler.  Use --multi-driver to run multiple driver/couplers
-    in the ensemble.
+  description: "Specify number of model ensemble instances.\nThe default is multiple\
+    \ components and one driver/coupler.\nUse --multi-driver to run multiple driver/couplers\
+    \ in the ensemble."
   synonyms:
   - --ninst
   args: !SimpleFlagArg
     name: NINST
   optional: true
 - !Flag
-  description: Specify the MPI library. To see list of supported mpilibs for each
-    machine, invoke ./query_config --machines. The default is the first listing in
-    MPILIBS in config_machines.xml.
+  description: "Specify the MPI library. To see list of supported mpilibs for each\
+    \ machine, invoke ./query_config --machines.\nThe default is the first listing\
+    \ in MPILIBS in config_machines.xml."
   synonyms:
   - --mpilib
   - -mpilib
@@ -106,9 +107,9 @@ named:
     name: PROJECT
   optional: true
 - !Flag
-  description: Specify a target size description for the number of cores.  This is
-    used to query the appropriate config_pes.xml file and find the  optimal PE-layout
-    for your case - if it exists there.  Allowed options are  ('S','M','L','X1','X2','[0-9]x[0-9]','[0-9]').
+  description: "Specify a target size description for the number of cores.\nThis is\
+    \ used to query the appropriate config_pes.xml file and find the\noptimal PE-layout\
+    \ for your case - if it exists there.\nAllowed options are  ('S','M','L','X1','X2','[0-9]x[0-9]','[0-9]')."
   synonyms:
   - --pecount
   - -pecount
@@ -116,33 +117,33 @@ named:
     name: PECOUNT
   optional: true
 - !Flag
-  description: Full pathname to a directory containing any combination of user_nl_*
-    files  and a shell_commands script (typically containing xmlchange commands).  The
-    directory can also contain an SourceMods/ directory with the same structure  as
-    would be found in a case directory.
+  description: "Full pathname to a directory containing any combination of user_nl_*\
+    \ files\nand a shell_commands script (typically containing xmlchange commands).\n\
+    The directory can also contain an SourceMods/ directory with the same structure\n\
+    as would be found in a case directory."
   synonyms:
   - --user-mods-dir
   args: !SimpleFlagArg
     name: USER_MODS_DIR
   optional: true
 - !Flag
-  description: Full pathname of an optional pes specification file.  The file can
-    follow either the config_pes.xml or the env_mach_pes.xml format.
+  description: "Full pathname of an optional pes specification file.\nThe file can\
+    \ follow either the config_pes.xml or the env_mach_pes.xml format."
   synonyms:
   - --pesfile
   args: !SimpleFlagArg
     name: PESFILE
   optional: true
 - !Flag
-  description: 'Full pathname of config grid file to use.  This should be a copy of
-    config/config_grids.xml with the new user grid changes added to it. '
+  description: "Full pathname of config grid file to use.\nThis should be a copy of\
+    \ config/config_grids.xml with the new user grid changes added to it."
   synonyms:
   - --gridfile
   args: !SimpleFlagArg
     name: GRIDFILE
   optional: true
 - !Flag
-  description: 'A workflow from config_workflow.xml to apply to this case. '
+  description: A workflow from config_workflow.xml to apply to this case.
   synonyms:
   - --workflow
   args: !SimpleFlagArg
@@ -163,17 +164,17 @@ named:
     name: OUTPUT_ROOT
   optional: true
 - !Flag
-  description: Set the wallclock limit for this case in the format (the usual format
-    is HH:MM:SS).  You may use env var CIME_GLOBAL_WALLTIME to set this.  If CIME_GLOBAL_WALLTIME
-    is not defined in the environment, then the walltime will be the maximum allowed
-    time defined for the queue in config_batch.xml.
+  description: "Set the wallclock limit for this case in the format (the usual format\
+    \ is HH:MM:SS).\nYou may use env var CIME_GLOBAL_WALLTIME to set this.\nIf CIME_GLOBAL_WALLTIME\
+    \ is not defined in the environment, then the walltime\nwill be the maximum allowed\
+    \ time defined for the queue in config_batch.xml."
   synonyms:
   - --walltime
   args: !SimpleFlagArg
     name: WALLTIME
   optional: true
 - !Flag
-  description: 'Force batch system to use the specified queue. '
+  description: Force batch system to use the specified queue.
   synonyms:
   - -q
   - --queue
@@ -181,30 +182,29 @@ named:
     name: QUEUE
   optional: true
 - !Flag
-  description: Do not query how to handle pre-existing bld/exe dirs.  Valid options
-    are (a)bort (r)eplace or (u)se existing.  This can be useful if you need to run
-    create_newcase non-iteractively.
+  description: "Do not query how to handle pre-existing bld/exe dirs.\nValid options\
+    \ are (a)bort (r)eplace or (u)se existing.\nThis can be useful if you need to\
+    \ run create_newcase non-iteractively."
   synonyms:
   - --handle-preexisting-dirs
   args: !ChoiceFlagArg
     choices: !!set
       ? u
-      ? r
       ? a
+      ? r
   optional: true
 - !Flag
-  description: Use a non-default location for input files. This will change the xml
-    value of DIN_LOC_ROOT.
+  description: "Use a non-default location for input files. This will change the xml\
+    \ value of DIN_LOC_ROOT.\n"
   synonyms:
   - -i
   - --input-dir
   args: !SimpleFlagArg
     name: INPUT_DIR
   optional: true
-command:
-- create_newcase
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -224,42 +224,42 @@ help_text: "usage: create_newcase [-h] [-d] [-v] [-s] --case CASENAME --compset 
   \               [--handle-preexisting-dirs {a,r,u}] [-i INPUT_DIR]\n\nScript to\
   \ create a new CIME Case Control System (CSS) experimental case.\n\noptional arguments:\n\
   \  -h, --help            show this help message and exit\n  -d, --debug        \
-  \   Print debug information (very verbose) to file /tmp/tmpeksbd5_3/create_newcase.log\n\
-  \  -v, --verbose         Add additional context (time and file) to log messages\n\
-  \  -s, --silent          Print only warnings and error messages\n  --case CASENAME,\
-  \ -case CASENAME\n                        (required) Specify the case name. \n \
-  \                       If this is simply a name (not a path), the case directory\
-  \ is created in the current working directory.\n                        This can\
-  \ also be a relative or absolute path specifying where the case should be created;\n\
-  \                        with this usage, the name of the case will be the last\
-  \ component of the path.\n  --compset COMPSET, -compset COMPSET\n              \
-  \          (required) Specify a compset. \n                        To see list of\
-  \ current compsets, use the utility ./query_config --compsets in this directory.\n\
-  \  --res GRID, -res GRID\n                        (required) Specify a model grid\
-  \ resolution. \n                        To see list of current model resolutions,\
-  \ use the utility \n                        ./query_config --grids in this directory.\n\
-  \  --machine MACHINE, -mach MACHINE\n                        Specify a machine.\
-  \ The default value is the match to NODENAME_REGEX in config_machines.xml. To see\
-  \ \n                        the list of current machines, invoke ./query_config\
-  \ --machines.\n  --compiler COMPILER, -compiler COMPILER\n                     \
-  \   Specify a compiler. \n                        To see list of supported compilers\
-  \ for each machine, use the utility \n                        ./query_config --machines\
-  \ in this directory. \n                        The default value will be the first\
-  \ one listed.\n  --multi-driver        Specify that --ninst should modify the number\
-  \ of driver/coupler instances. \n                        The default is to have\
-  \ one driver/coupler supporting multiple component instances.\n  --ninst NINST \
-  \        Specify number of model ensemble instances. \n                        The\
-  \ default is multiple components and one driver/coupler. \n                    \
-  \    Use --multi-driver to run multiple driver/couplers in the ensemble.\n  --mpilib\
-  \ MPILIB, -mpilib MPILIB\n                        Specify the MPI library. To see\
-  \ list of supported mpilibs for each machine, invoke ./query_config --machines.\n\
-  \                        The default is the first listing in MPILIBS in config_machines.xml.\n\
-  \  --project PROJECT, -project PROJECT\n                        Specify a project\
-  \ id as used in batch system accounting.\n  --pecount PECOUNT, -pecount PECOUNT\n\
-  \                        Specify a target size description for the number of cores.\
-  \ \n                        This is used to query the appropriate config_pes.xml\
-  \ file and find the \n                        optimal PE-layout for your case -\
-  \ if it exists there. \n                        Allowed options are  ('S','M','L','X1','X2','[0-9]x[0-9]','[0-9]').\n\
+  \   Print debug information (very verbose) to file /create_newcase.log\n  -v, --verbose\
+  \         Add additional context (time and file) to log messages\n  -s, --silent\
+  \          Print only warnings and error messages\n  --case CASENAME, -case CASENAME\n\
+  \                        (required) Specify the case name. \n                  \
+  \      If this is simply a name (not a path), the case directory is created in the\
+  \ current working directory.\n                        This can also be a relative\
+  \ or absolute path specifying where the case should be created;\n              \
+  \          with this usage, the name of the case will be the last component of the\
+  \ path.\n  --compset COMPSET, -compset COMPSET\n                        (required)\
+  \ Specify a compset. \n                        To see list of current compsets,\
+  \ use the utility ./query_config --compsets in this directory.\n  --res GRID, -res\
+  \ GRID\n                        (required) Specify a model grid resolution. \n \
+  \                       To see list of current model resolutions, use the utility\
+  \ \n                        ./query_config --grids in this directory.\n  --machine\
+  \ MACHINE, -mach MACHINE\n                        Specify a machine. The default\
+  \ value is the match to NODENAME_REGEX in config_machines.xml. To see \n       \
+  \                 the list of current machines, invoke ./query_config --machines.\n\
+  \  --compiler COMPILER, -compiler COMPILER\n                        Specify a compiler.\
+  \ \n                        To see list of supported compilers for each machine,\
+  \ use the utility \n                        ./query_config --machines in this directory.\
+  \ \n                        The default value will be the first one listed.\n  --multi-driver\
+  \        Specify that --ninst should modify the number of driver/coupler instances.\
+  \ \n                        The default is to have one driver/coupler supporting\
+  \ multiple component instances.\n  --ninst NINST         Specify number of model\
+  \ ensemble instances. \n                        The default is multiple components\
+  \ and one driver/coupler. \n                        Use --multi-driver to run multiple\
+  \ driver/couplers in the ensemble.\n  --mpilib MPILIB, -mpilib MPILIB\n        \
+  \                Specify the MPI library. To see list of supported mpilibs for each\
+  \ machine, invoke ./query_config --machines.\n                        The default\
+  \ is the first listing in MPILIBS in config_machines.xml.\n  --project PROJECT,\
+  \ -project PROJECT\n                        Specify a project id as used in batch\
+  \ system accounting.\n  --pecount PECOUNT, -pecount PECOUNT\n                  \
+  \      Specify a target size description for the number of cores. \n           \
+  \             This is used to query the appropriate config_pes.xml file and find\
+  \ the \n                        optimal PE-layout for your case - if it exists there.\
+  \ \n                        Allowed options are  ('S','M','L','X1','X2','[0-9]x[0-9]','[0-9]').\n\
   \  --user-mods-dir USER_MODS_DIR\n                        Full pathname to a directory\
   \ containing any combination of user_nl_* files \n                        and a\
   \ shell_commands script (typically containing xmlchange commands). \n          \

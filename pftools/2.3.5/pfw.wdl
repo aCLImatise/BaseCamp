@@ -3,27 +3,30 @@ version 1.0
 task Pfw {
   input {
     Boolean? input_sequences_msa
-    Boolean? value_number_shuffles
-    Boolean? value_gap_excision
-    Boolean? value_random_number
-    Boolean? value_total_weight
+    Boolean? valuenumber_shuffles_sequence
+    Boolean? valuegap_excision_threshold
+    Boolean? valuerandom_number_seed
+    Boolean? valuetotal_weight_default
     Boolean? hmn_x_rw
   }
   command <<<
     pfw \
-      ~{true="-m" false="" input_sequences_msa} \
-      ~{true="-N" false="" value_number_shuffles} \
-      ~{true="-X" false="" value_gap_excision} \
-      ~{true="-R" false="" value_random_number} \
-      ~{true="-W" false="" value_total_weight} \
-      ~{true="-hmNXRW" false="" hmn_x_rw}
+      ~{if (input_sequences_msa) then "-m" else ""} \
+      ~{if (valuenumber_shuffles_sequence) then "-N" else ""} \
+      ~{if (valuegap_excision_threshold) then "-X" else ""} \
+      ~{if (valuerandom_number_seed) then "-R" else ""} \
+      ~{if (valuetotal_weight_default) then "-W" else ""} \
+      ~{if (hmn_x_rw) then "-hmNXRW" else ""}
   >>>
   parameter_meta {
     input_sequences_msa: ": input sequences in MSA format."
-    value_number_shuffles: "<value>: number of shuffles per sequence (default: 100)."
-    value_gap_excision: "<value>: gap excision threshold (default: 0.5)."
-    value_random_number: "<value>: random number seed, negative integer (default: -123456789)."
-    value_total_weight: "<value>: total weight (default: 1)."
+    valuenumber_shuffles_sequence: "<value>:\\nnumber of shuffles per sequence (default: 100)."
+    valuegap_excision_threshold: "<value>:\\ngap excision threshold (default: 0.5)."
+    valuerandom_number_seed: "<value>:\\nrandom number seed, negative integer (default: -123456789)."
+    valuetotal_weight_default: "<value>:\\ntotal weight (default: 1)."
     hmn_x_rw: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -5,7 +5,7 @@ task SerobaCreateDBsOutDir {
     String se_rob_a
     String created_bs
     String database_dir
-    String km_er_size
+    Int km_er_size
   }
   command <<<
     seroba createDBs out_dir \
@@ -19,5 +19,8 @@ task SerobaCreateDBsOutDir {
     created_bs: ""
     database_dir: ""
     km_er_size: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

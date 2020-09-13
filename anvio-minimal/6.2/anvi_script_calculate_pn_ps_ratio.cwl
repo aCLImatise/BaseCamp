@@ -1,53 +1,67 @@
 class: CommandLineTool
 id: ../../../anvi_script_calculate_pn_ps_ratio.cwl
 inputs:
-- id: engine
+- id: in_engine
   doc: and the output filename.
-  type: string
+  type: File
   inputBinding:
     prefix: --engine
-- id: sa_av_table
+- id: in_sa_av_table
   doc: Filepath to the SAAV table.
-  type: string
+  type: File
   inputBinding:
     prefix: --saav-table
-- id: scv_table
+- id: in_scv_table
   doc: Filepath to the SCV table.
-  type: string
+  type: File
   inputBinding:
     prefix: --scv-table
-- id: contigs_db
-  doc: Filepath to the contigs database used to generate variability tables.
-  type: string
+- id: in_contigs_db
+  doc: "Filepath to the contigs database used to generate\nvariability tables."
+  type: File
   inputBinding:
     prefix: --contigs-db
-- id: min_departure_from_consensus
-  doc: 'Variants (either SCVs or SAAVs) will be ignored if they have a departure from
-    consensus less than this value. Note: Keep in mind you may have already supplied
-    this parameter during anvi-gen-variability- profile. The default value is "0.10".'
+- id: in_min_departure_from_consensus
+  doc: "Variants (either SCVs or SAAVs) will be ignored if\nthey have a departure\
+    \ from consensus less than this\nvalue. Note: Keep in mind you may have already\n\
+    supplied this parameter during anvi-gen-variability-\nprofile. The default value\
+    \ is \"0.10\"."
   type: double
   inputBinding:
     prefix: --min-departure-from-consensus
-- id: minimum_num_variants
-  doc: Ignore genes with less than this number of single codon variants. This avoids
-    being impressed by pN/pS values of infinite, when in reality the gene had a single
-    SAAV and no synonymous SCVs. The default is 4 to ensure a default value with some
-    level of statistical importance.
+- id: in_minimum_num_variants
+  doc: "Ignore genes with less than this number of single\ncodon variants. This avoids\
+    \ being impressed by pN/pS\nvalues of infinite, when in reality the gene had a\n\
+    single SAAV and no synonymous SCVs. The default is 4\nto ensure a default value\
+    \ with some level of\nstatistical importance."
   type: long
   inputBinding:
     prefix: --minimum-num-variants
-- id: min_coverage
-  doc: If the coverage value at a codon is less than this amount, any SAAVs or SCVs
-    associated with it will be ignored. The default is 30.
+- id: in_min_coverage
+  doc: "If the coverage value at a codon is less than this\namount, any SAAVs or SCVs\
+    \ associated with it will be\nignored. The default is 30."
   type: long
   inputBinding:
     prefix: --min-coverage
-- id: output_dir
-  doc: Directory path for output files
-  type: string
+- id: in_output_dir
+  doc: "Directory path for output files\n"
+  type: File
   inputBinding:
     prefix: --output-dir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_engine
+  doc: and the output filename.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_engine)
+- id: out_output_dir
+  doc: "Directory path for output files\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - anvi-script-calculate-pn-ps-ratio

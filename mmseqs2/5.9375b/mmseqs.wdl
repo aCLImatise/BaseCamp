@@ -4,4 +4,7 @@ task Mmseqs {
   command <<<
     mmseqs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

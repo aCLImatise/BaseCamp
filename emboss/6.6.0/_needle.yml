@@ -1,36 +1,71 @@
 !Command
+command:
+- _needle
 positional: []
 named:
 - !Flag
-  description: float      [10.0 for any sequence] The gap open penalty is the score
-    taken away when a gap is created. The best value depends on the choice of comparison
-    matrix. The default value assumes you are using the EBLOSUM62 matrix for protein
-    sequences, and the EDNAFULL matrix for nucleotide sequences. (Floating point number
-    from 1.0 to 100.0)
+  description: "float      [10.0 for any sequence] The gap open penalty\nis the score\
+    \ taken away when a gap is\ncreated. The best value depends on the\nchoice of\
+    \ comparison matrix. The default\nvalue assumes you are using the EBLOSUM62\n\
+    matrix for protein sequences, and the\nEDNAFULL matrix for nucleotide sequences.\n\
+    (Floating point number from 1.0 to 100.0)"
   synonyms:
   - -gapopen
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: float      [0.5 for any sequence] The gap extension, penalty is added
-    to the standard gap penalty for each base or residue in the gap. This is how long
-    gaps are penalized. Usually you will expect a few long gaps rather than many short
-    gaps, so the gap extension penalty should be lower than the gap penalty. An exception
-    is where one or both sequences are single reads with possible sequencing errors
-    in which case you would expect many single base gaps. You can get this result
-    by setting the gap open penalty to zero (or very low) and using the gap extension
-    penalty to control gap scoring. (Floating point number from 0.0 to 10.0)
+  description: "float      [0.5 for any sequence] The gap extension,\npenalty is added\
+    \ to the standard gap penalty\nfor each base or residue in the gap. This\nis how\
+    \ long gaps are penalized. Usually you\nwill expect a few long gaps rather than\
+    \ many\nshort gaps, so the gap extension penalty\nshould be lower than the gap\
+    \ penalty. An\nexception is where one or both sequences are\nsingle reads with\
+    \ possible sequencing\nerrors in which case you would expect many\nsingle base\
+    \ gaps. You can get this result by\nsetting the gap open penalty to zero (or\n\
+    very low) and using the gap extension\npenalty to control gap scoring. (Floating\n\
+    point number from 0.0 to 10.0)"
   synonyms:
   - -gapextend
   args: !EmptyFlagArg {}
   optional: true
-command:
-- _needle
+- !Flag
+  description: "matrixf    [EBLOSUM62 for protein, EDNAFULL for DNA]\nThis is the\
+    \ scoring matrix file used when\ncomparing sequences. By default it is the\nfile\
+    \ 'EBLOSUM62' (for proteins) or the file\n'EDNAFULL' (for nucleic sequences).\
+    \ These\nfiles are found in the 'data' directory of\nthe EMBOSS installation."
+  synonyms:
+  - -datafile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: boolean    [N] Apply end gap penalties.
+  synonyms:
+  - -endweight
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "float      [10.0 for any sequence] The end gap open\npenalty is the\
+    \ score taken away when an end\ngap is created. The best value depends on\nthe\
+    \ choice of comparison matrix. The default\nvalue assumes you are using the EBLOSUM62\n\
+    matrix for protein sequences, and the\nEDNAFULL matrix for nucleotide sequences.\n\
+    (Floating point number from 1.0 to 100.0)"
+  synonyms:
+  - -endopen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "float      [0.5 for any sequence] The end gap\nextension, penalty\
+    \ is added to the end gap\npenalty for each base or residue in the end\ngap. This\
+    \ is how long end gaps are\npenalized. (Floating point number from 0.0\nto 10.0)"
+  synonyms:
+  - -endextend
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: boolean    Report command line options and exit. More information on
-    associated and general qualifiers can be found with -help -verbose
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   synonyms:
   - -help
   args: !EmptyFlagArg {}

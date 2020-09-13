@@ -1,171 +1,33 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - secapr
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - secapr
+  - join_exons
   positional: []
   named:
   - !Flag
-    description: Call the folder that contains the trimmed reads, organized in a separate
-      subfolder for each sample. The name of the subfolder has to start with the sample
-      name, delimited with an underscore [_] (default output of clean_reads function).
+    description: The directory containing the fasta-alignment-files
     synonyms:
-    - --reads
+    - --input
     args: !SimpleFlagArg
-      name: READS
+      name: INPUT
     optional: true
   - !Flag
-    description: Please choose which type of reference you want to map the samples
-      to. "alignment-consensus" will create a consensus sequence for each alignment
-      file which will be used as a reference for all samples. This is recommendable
-      when all samples are rather closely related to each other. "sample-specific"
-      will extract the sample specific sequences from an alignment and use these as
-      a separate reference for each individual sample. "user-ref-lib" enables to input
-      one single fasta file created by the user which will be used as a reference
-      library for all samples.
-    synonyms:
-    - --reference_type
-    args: !ChoiceFlagArg
-      choices: !!set
-        ? user-ref-lib
-        ? sample-specific
-        ? alignment-consensus
-    optional: true
-  - !Flag
-    description: When choosing "alignment-consensus" or "sample- specific" as reference_type,
-      this flag calls the folder containing the alignment files for your target loci
-      (fasta-format). In case of "user-ref-lib" as reference_type, this flag calls
-      one single fasta file that contains a user-prepared reference library which
-      will be applied to all samples.
-    synonyms:
-    - --reference
-    args: !SimpleFlagArg
-      name: REFERENCE
-    optional: true
-  - !Flag
-    description: The output directory where results will be safed.
+    description: The output directory where results will be saved
     synonyms:
     - --output
     args: !SimpleFlagArg
       name: OUTPUT
     optional: true
-  - !Flag
-    description: Use this flag if you do not want to discard all duplicate reads with
-      Picard.
-    synonyms:
-    - --keep_duplicates
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: Set the minimum read coverage. Only positions that are covered by
-      this number of reads will be called in the consensus sequence, otherwise the
-      program will add an ambiguity at this position.
-    synonyms:
-    - --min_coverage
-    args: !SimpleFlagArg
-      name: MIN_COVERAGE
-    optional: true
-  - !Flag
-    description: Number of computational cores for parallelization of computation.
-    synonyms:
-    - --cores
-    args: !SimpleFlagArg
-      name: CORES
-    optional: true
-  - !Flag
-    description: If the part of the read that sufficiently matches the reference is
-      shorter than this threshold, it will be discarded (minSeedLen).
-    synonyms:
-    - --k
-    args: !SimpleFlagArg
-      name: K
-    optional: true
-  - !Flag
-    description: Avoid introducing gaps in reads that are longer than this threshold.
-    synonyms:
-    - --w
-    args: !SimpleFlagArg
-      name: W
-    optional: true
-  - !Flag
-    description: Stop extension when the difference between the best and the current
-      extension score is above |i-j|*A+INT, where i and j are the current positions
-      of the query and reference, respectively, and A is the matching score.
-    synonyms:
-    - --d
-    args: !SimpleFlagArg
-      name: D
-    optional: true
-  - !Flag
-    description: Trigger re-seeding for a MEM longer than minSeedLen*FLOAT.
-    synonyms:
-    - --r
-    args: !SimpleFlagArg
-      name: R
-    optional: true
-  - !Flag
-    description: Discard a match if it has more than INT occurence in the genome
-    synonyms:
-    - --c
-    args: !SimpleFlagArg
-      name: C
-    optional: true
-  - !Flag
-    description: Matching score. Acts as a factor enhancing any match (higher value
-      makes it less conservative = allows reads that have fewer matches, since every
-      match is scored higher).
-    synonyms:
-    - --a
-    args: !SimpleFlagArg
-      name: A
-    optional: true
-  - !Flag
-    description: 'Mismatch penalty. The accepted mismatch rate per read on length
-      k is approximately: {.75 * exp[-log(4) * B/A]}'
-    synonyms:
-    - --b
-    args: !SimpleFlagArg
-      name: B
-    optional: true
-  - !Flag
-    description: Gap opening penalty
-    synonyms:
-    - --o
-    args: !SimpleFlagArg
-      name: O
-    optional: true
-  - !Flag
-    description: Gap extension penalty
-    synonyms:
-    - --e
-    args: !SimpleFlagArg
-      name: E
-    optional: true
-  - !Flag
-    description: Clipping penalty. During extension, the algorithm keeps track of
-      the best score reaching the end of query. If this score is larger than the best
-      extension score minus the clipping penalty, clipping will not be applied.
-    synonyms:
-    - --l
-    args: !SimpleFlagArg
-      name: L
-    optional: true
-  - !Flag
-    description: Penalty for an unpaired read pair. The lower the value, the more
-      unpaired reads will be allowed in the mapping.
-    synonyms:
-    - --u
-    args: !SimpleFlagArg
-      name: U
-    optional: true
-  command:
-  - secapr
-  - reference_assembly
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -175,80 +37,144 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "usage: secapr reference_assembly [-h] --reads READS\n              \
-    \                   [--reference_type {alignment-consensus,sample-specific,user-ref-lib}]\n\
-    \                                 --reference REFERENCE --output OUTPUT\n    \
-    \                             [--keep_duplicates]\n                          \
-    \       [--min_coverage MIN_COVERAGE] [--cores CORES]\n                      \
-    \           [--k K] [--w W] [--d D] [--r R] [--c C]\n                        \
-    \         [--a A] [--b B] [--o O] [--e E] [--l L]\n                          \
-    \       [--u U]\n\nCreate new reference library and map raw reads against the\
-    \ library (reference-\nbased assembly)\n\noptional arguments:\n  -h, --help  \
-    \          show this help message and exit\n  --reads READS         Call the folder\
-    \ that contains the trimmed reads,\n                        organized in a separate\
-    \ subfolder for each sample. The\n                        name of the subfolder\
-    \ has to start with the sample\n                        name, delimited with an\
-    \ underscore [_] (default output\n                        of clean_reads function).\n\
-    \  --reference_type {alignment-consensus,sample-specific,user-ref-lib}\n     \
-    \                   Please choose which type of reference you want to map\n  \
-    \                      the samples to. \"alignment-consensus\" will create a\n\
-    \                        consensus sequence for each alignment file which will\n\
-    \                        be used as a reference for all samples. This is\n   \
-    \                     recommendable when all samples are rather closely\n    \
-    \                    related to each other. \"sample-specific\" will extract\n\
-    \                        the sample specific sequences from an alignment and\n\
-    \                        use these as a separate reference for each individual\n\
-    \                        sample. \"user-ref-lib\" enables to input one single\n\
-    \                        fasta file created by the user which will be used as\
-    \ a\n                        reference library for all samples.\n  --reference\
-    \ REFERENCE\n                        When choosing \"alignment-consensus\" or\
-    \ \"sample-\n                        specific\" as reference_type, this flag calls\
-    \ the\n                        folder containing the alignment files for your\
-    \ target\n                        loci (fasta-format). In case of \"user-ref-lib\"\
-    \ as\n                        reference_type, this flag calls one single fasta\
-    \ file\n                        that contains a user-prepared reference library\
-    \ which\n                        will be applied to all samples.\n  --output OUTPUT\
-    \       The output directory where results will be safed.\n  --keep_duplicates\
-    \     Use this flag if you do not want to discard all\n                      \
-    \  duplicate reads with Picard.\n  --min_coverage MIN_COVERAGE\n             \
-    \           Set the minimum read coverage. Only positions that are\n         \
-    \               covered by this number of reads will be called in the\n      \
-    \                  consensus sequence, otherwise the program will add an\n   \
-    \                     ambiguity at this position.\n  --cores CORES         Number\
-    \ of computational cores for parallelization of\n                        computation.\n\
-    \  --k K                 If the part of the read that sufficiently matches the\n\
-    \                        reference is shorter than this threshold, it will be\n\
-    \                        discarded (minSeedLen).\n  --w W                 Avoid\
-    \ introducing gaps in reads that are longer than\n                        this\
-    \ threshold.\n  --d D                 Stop extension when the difference between\
-    \ the best\n                        and the current extension score is above |i-j|*A+INT,\n\
-    \                        where i and j are the current positions of the query\n\
-    \                        and reference, respectively, and A is the matching\n\
-    \                        score.\n  --r R                 Trigger re-seeding for\
-    \ a MEM longer than\n                        minSeedLen*FLOAT.\n  --c C      \
-    \           Discard a match if it has more than INT occurence in\n           \
-    \             the genome\n  --a A                 Matching score. Acts as a factor\
-    \ enhancing any match\n                        (higher value makes it less conservative\
-    \ = allows\n                        reads that have fewer matches, since every\
-    \ match is\n                        scored higher).\n  --b B                 Mismatch\
-    \ penalty. The accepted mismatch rate per read\n                        on length\
-    \ k is approximately: {.75 * exp[-log(4) *\n                        B/A]}\n  --o\
-    \ O                 Gap opening penalty\n  --e E                 Gap extension\
-    \ penalty\n  --l L                 Clipping penalty. During extension, the algorithm\n\
-    \                        keeps track of the best score reaching the end of\n \
-    \                       query. If this score is larger than the best extension\n\
-    \                        score minus the clipping penalty, clipping will not be\n\
-    \                        applied.\n  --u U                 Penalty for an unpaired\
-    \ read pair. The lower the\n                        value, the more unpaired reads\
-    \ will be allowed in the\n                        mapping.\n"
+  help_text: "usage: secapr join_exons [-h] --input INPUT --output OUTPUT\n\nJoin\
+    \ exon-alignment files belonging to the same gene\n\noptional arguments:\n  -h,\
+    \ --help       show this help message and exit\n  --input INPUT    The directory\
+    \ containing the fasta-alignment-files\n  --output OUTPUT  The output directory\
+    \ where results will be saved\n"
   generated_using: &id002
   - --help
 - !Command
+  command:
+  - secapr
+  - assemble_reads
   positional: []
   named:
   - !Flag
-    description: Call the folder that contains the results of the reference based
-      assembly (output of reference_assembly function, containing the bam-files).
+    description: "Call the folder that contains the trimmed reads,\norganized in a\
+      \ separate subfolder for each sample. The\nname of the subfolder has to start\
+      \ with the sample\nname, delimited with an underscore [_]"
+    synonyms:
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: The output directory where results will be saved
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: The assembler to use (default = abyss).
+    synonyms:
+    - --assembler
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? trinity
+        ? abyss
+    optional: true
+  - !Flag
+    description: Set the kmer value
+    synonyms:
+    - --kmer
+    args: !SimpleFlagArg
+      name: KMER
+    optional: true
+  - !Flag
+    description: "Set the minimum contig length for the assembly.\nContigs that are\
+      \ shorter than this threshold will be\ndiscarded."
+    synonyms:
+    - --contig_length
+    args: !SimpleFlagArg
+      name: CONTIG_LENGTH
+    optional: true
+  - !Flag
+    description: "[Option only for Trinity assembler] Set the maximum\nmemory for\
+      \ Trinity to use in this format: 1G or 1000M\n(default: 8G)."
+    synonyms:
+    - --max_memory
+    args: !SimpleFlagArg
+      name: MAX_MEMORY
+    optional: true
+  - !Flag
+    description: "Use this flag if you additionally want to use single\nreads for\
+      \ the assembly"
+    synonyms:
+    - --single_reads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Use this flag if you want to disabel generation of\nstats (can be\
+      \ necessary because previous stats files\ncan't be found if reads are used that\
+      \ were not\npreviously processed with SECAPR)"
+    synonyms:
+    - --disable_stats
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "For parallel processing you can set the number of\ncores you want\
+      \ to run the assembly on.\n"
+    synonyms:
+    - --cores
+    args: !SimpleFlagArg
+      name: CORES
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr assemble_reads [-h] --input INPUT --output OUTPUT\n  \
+    \                           [--assembler {abyss,trinity}] [--kmer KMER]\n    \
+    \                         [--contig_length CONTIG_LENGTH]\n                  \
+    \           [--max_memory MAX_MEMORY] [--single_reads]\n                     \
+    \        [--disable_stats] [--cores CORES]\n\nAssemble trimmed Illumina read files\
+    \ (fastq)\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --input INPUT         Call the folder that contains the trimmed\
+    \ reads,\n                        organized in a separate subfolder for each sample.\
+    \ The\n                        name of the subfolder has to start with the sample\n\
+    \                        name, delimited with an underscore [_]\n  --output OUTPUT\
+    \       The output directory where results will be saved\n  --assembler {abyss,trinity}\n\
+    \                        The assembler to use (default = abyss).\n  --kmer KMER\
+    \           Set the kmer value\n  --contig_length CONTIG_LENGTH\n            \
+    \            Set the minimum contig length for the assembly.\n               \
+    \         Contigs that are shorter than this threshold will be\n             \
+    \           discarded.\n  --max_memory MAX_MEMORY\n                        [Option\
+    \ only for Trinity assembler] Set the maximum\n                        memory\
+    \ for Trinity to use in this format: 1G or 1000M\n                        (default:\
+    \ 8G).\n  --single_reads        Use this flag if you additionally want to use\
+    \ single\n                        reads for the assembly\n  --disable_stats  \
+    \     Use this flag if you want to disabel generation of\n                   \
+    \     stats (can be necessary because previous stats files\n                 \
+    \       can't be found if reads are used that were not\n                     \
+    \   previously processed with SECAPR)\n  --cores CORES         For parallel processing\
+    \ you can set the number of\n                        cores you want to run the\
+    \ assembly on.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - secapr
+  - phase_alleles
+  positional:
+  - !Positional
+    description: Phase remapped reads form reference-based assembly into two separate
+      alleles.
+    position: 0
+    name: REFERENCE
+    optional: false
+  named:
+  - !Flag
+    description: "Call the folder that contains the results of the\nreference based\
+      \ assembly (output of reference_assembly\nfunction, containing the bam-files)."
     synonyms:
     - --input
     args: !SimpleFlagArg
@@ -262,28 +188,26 @@ subcommands:
       name: OUTPUT
     optional: true
   - !Flag
-    description: Set the minimum read coverage. Only positions that are covered by
-      this number of reads will be called in the consensus sequence, otherwise the
-      program will add an ambiguity at this position.
+    description: "Set the minimum read coverage. Only positions that are\ncovered\
+      \ by this number of reads will be called in the\nconsensus sequence, otherwise\
+      \ the program will add an\nambiguity at this position."
     synonyms:
     - --min_coverage
     args: !SimpleFlagArg
       name: MIN_COVERAGE
     optional: true
   - !Flag
-    description: Provide the reference that was used for read-mapping. If you used
-      the alignment-consensus method, provide the joined_fasta_library.fasta which
-      is found in the reference_seqs folder within the reference-assembly output.
+    description: "Provide the reference that was used for read-mapping.\nIf you used\
+      \ the alignment-consensus method, provide\nthe joined_fasta_library.fasta which\
+      \ is found in the\nreference_seqs folder within the reference-assembly\noutput.\n"
     synonyms:
     - --reference
     args: !SimpleFlagArg
       name: REFERENCE
     optional: true
-  command:
-  - secapr
-  - phase_alleles
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -313,6 +237,48 @@ subcommands:
     \                        output.\n"
   generated_using: *id002
 - !Command
+  command:
+  - secapr
+  - quality_check
+  positional: []
+  named:
+  - !Flag
+    description: The directory containing fastq files
+    synonyms:
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: "The output directory where quality-test results will be\nsaved\n"
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr quality_check [-h] --input INPUT --output OUTPUT\n\nThis\
+    \ script runs a fastqc test on all fastq samples in a user-provided folder\nand\
+    \ creates an overview plot,\n\noptional arguments:\n  -h, --help       show this\
+    \ help message and exit\n  --input INPUT    The directory containing fastq files\n\
+    \  --output OUTPUT  The output directory where quality-test results will be\n\
+    \                   saved\n"
+  generated_using: *id002
+- !Command
+  command:
+  - secapr
+  - add_missing_sequences
   positional: []
   named:
   - !Flag
@@ -329,11 +295,9 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTPUT
     optional: true
-  command:
-  - secapr
-  - add_missing_sequences
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -351,51 +315,104 @@ subcommands:
     \ alignments\n  --output OUTPUT  The output directory where results will be safed\n"
   generated_using: *id002
 - !Command
-  positional: []
+  command:
+  - secapr
+  - align_sequences
+  positional:
+  - !Positional
+    description: --aligner {muscle,mafft}
+    position: 0
+    name: alignments.
+    optional: false
   named:
   - !Flag
-    description: The folder with the results of the reference based assembly.
+    description: "The fasta file containing individual sequences for\nseveral samples\
+      \ and loci"
     synonyms:
-    - --input
+    - --sequences
     args: !SimpleFlagArg
-      name: INPUT
+      name: SEQUENCES
     optional: true
   - !Flag
-    description: The output directory where results will be safed.
+    description: The directory in which to store the resulting
     synonyms:
     - --output
     args: !SimpleFlagArg
       name: OUTPUT
     optional: true
   - !Flag
-    description: The n loci that are best represented accross all samples will be
-      extracted.
+    description: The output alignment format.
     synonyms:
-    - --n
-    args: !SimpleFlagArg
-      name: N
+    - --output-format
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? fasta
+        ? phylip
+        ? stockholm
+        ? nexus
+        ? emboss
+        ? clustal
     optional: true
   - !Flag
-    description: The threshold for what average read coverage the selected target
-      loci should at least have.
+    description: Align, but DO NOT trim alignments.
     synonyms:
-    - --read_cov
-    args: !SimpleFlagArg
-      name: READ_COV
+    - --no-trim
+    args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Path to reference library fasta file (secapr will find it by itself
-      if the reference assembly was executed with secapr).
+    description: Sliding window size for trimming.
     synonyms:
-    - --reference
+    - --window
     args: !SimpleFlagArg
-      name: REFERENCE
+      name: WINDOW
     optional: true
-  command:
-  - secapr
-  - locus_selection
+  - !Flag
+    description: "The proportion of taxa required to have sequence at\nalignment ends."
+    synonyms:
+    - --proportion
+    args: !SimpleFlagArg
+      name: PROPORTION
+    optional: true
+  - !Flag
+    description: "The proportion of residues required across the window\nin proportion\
+      \ of taxa."
+    synonyms:
+    - --threshold
+    args: !SimpleFlagArg
+      name: THRESHOLD
+    optional: true
+  - !Flag
+    description: "The max proportion of sequence divergence allowed\nbetween any row\
+      \ of the alignment and the alignment\nconsensus."
+    synonyms:
+    - --max-divergence
+    args: !SimpleFlagArg
+      name: MAX_DIVERGENCE
+    optional: true
+  - !Flag
+    description: The minimum length of alignments to keep.
+    synonyms:
+    - --min-length
+    args: !SimpleFlagArg
+      name: MIN_LENGTH
+    optional: true
+  - !Flag
+    description: Allow reads in alignments containing N-bases.
+    synonyms:
+    - --ambiguous
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Process alignments in parallel using --cores for\nalignment. This\
+      \ is the number of PHYSICAL CPUs.\n"
+    synonyms:
+    - --cores
+    args: !SimpleFlagArg
+      name: CORES
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -405,21 +422,63 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "usage: secapr locus_selection [-h] --input INPUT --output OUTPUT [--n\
-    \ N]\n                              [--read_cov READ_COV] [--reference REFERENCE]\n\
-    \nExtract the n loci with the best read-coverage from you reference-based\nassembly\
-    \ (bam-files)\n\noptional arguments:\n  -h, --help            show this help message\
-    \ and exit\n  --input INPUT         The folder with the results of the reference\
-    \ based\n                        assembly.\n  --output OUTPUT       The output\
-    \ directory where results will be safed.\n  --n N                 The n loci that\
-    \ are best represented accross all\n                        samples will be extracted.\n\
-    \  --read_cov READ_COV   The threshold for what average read coverage the\n  \
-    \                      selected target loci should at least have.\n  --reference\
-    \ REFERENCE\n                        Path to reference library fasta file (secapr\
-    \ will find\n                        it by itself if the reference assembly was\
-    \ executed\n                        with secapr).\n"
+  help_text: "usage: secapr align_sequences [-h] --sequences SEQUENCES --output OUTPUT\n\
+    \                              [--aligner {muscle,mafft}]\n                  \
+    \            [--output-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n\
+    \                              [--no-trim] [--window WINDOW]\n               \
+    \               [--proportion PROPORTION]\n                              [--threshold\
+    \ THRESHOLD]\n                              [--max-divergence MAX_DIVERGENCE]\n\
+    \                              [--min-length MIN_LENGTH] [--ambiguous]\n     \
+    \                         [--cores CORES]\n\nAlign sequences and produce separate\
+    \ alignment file for each locus, containing\nthe seqeunces of all taxa. Copyright\
+    \ (c) 2010-2012, Brant C. Faircloth All\nrights reserved. Redistribution and use\
+    \ in source and binary forms, with or\nwithout modification, are permitted provided\
+    \ that the following conditions are\nmet: * Redistributions of source code must\
+    \ retain the above copyright notice,\nthis list of conditions and the following\
+    \ disclaimer. * Redistributions in\nbinary form must reproduce the above copyright\
+    \ notice, this list of conditions\nand the following disclaimer in the documentation\
+    \ and/or other materials\nprovided with the distribution. * Neither the name of\
+    \ the University of\nCalifornia, Los Angeles nor the names of its contributors\
+    \ may be used to\nendorse or promote products derived from this software without\
+    \ specific prior\nwritten permission. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT\
+    \ HOLDERS AND\nCONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,\
+    \ BUT NOT\nLIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\
+    \ A\nPARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER\
+    \ OR\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\n\
+    EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,\nPROCUREMENT\
+    \ OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR\nBUSINESS\
+    \ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER\nIN CONTRACT,\
+    \ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY\
+    \ WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF\
+    \ SUCH DAMAGE. ________________________________________ Modified\nby Tobias Andermann\
+    \ (tobias.andermann@bioenv.gu.se): Additions include: -\nStandardizing script\
+    \ for incomplete data - More forgiving default options for\nnon-UCE datasets -\
+    \ Format the sequence headers of the output alignment files\nto simply the sample\
+    \ name (no locus information in the header, only in the\nfilename) ________________________________________\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  --sequences SEQUENCES\n                        The fasta file containing individual\
+    \ sequences for\n                        several samples and loci\n  --output\
+    \ OUTPUT       The directory in which to store the resulting\n               \
+    \         alignments.\n  --aligner {muscle,mafft}\n                        The\
+    \ alignment engine to use.\n  --output-format {fasta,nexus,phylip,clustal,emboss,stockholm}\n\
+    \                        The output alignment format.\n  --no-trim           \
+    \  Align, but DO NOT trim alignments.\n  --window WINDOW       Sliding window\
+    \ size for trimming.\n  --proportion PROPORTION\n                        The proportion\
+    \ of taxa required to have sequence at\n                        alignment ends.\n\
+    \  --threshold THRESHOLD\n                        The proportion of residues required\
+    \ across the window\n                        in proportion of taxa.\n  --max-divergence\
+    \ MAX_DIVERGENCE\n                        The max proportion of sequence divergence\
+    \ allowed\n                        between any row of the alignment and the alignment\n\
+    \                        consensus.\n  --min-length MIN_LENGTH\n             \
+    \           The minimum length of alignments to keep.\n  --ambiguous         \
+    \  Allow reads in alignments containing N-bases.\n  --cores CORES         Process\
+    \ alignments in parallel using --cores for\n                        alignment.\
+    \ This is the number of PHYSICAL CPUs.\n"
   generated_using: *id002
 - !Command
+  command:
+  - secapr
+  - automate_all
   positional: []
   named:
   - !Flag
@@ -430,27 +489,27 @@ subcommands:
       name: INPUT
     optional: true
   - !Flag
-    description: The output directory where all intermediate and final data files
-      will be stored
+    description: "The output directory where all intermediate and final\ndata files\
+      \ will be stored"
     synonyms:
     - --output
     args: !SimpleFlagArg
       name: OUTPUT
     optional: true
   - !Flag
-    description: Provide a reference library (FASTA) containing sequences for the
-      genes of interest (required to find contigs matching targeted regions).
+    description: "Provide a reference library (FASTA) containing\nsequences for the\
+      \ genes of interest (required to find\ncontigs matching targeted regions)."
     synonyms:
     - --reference
     args: !SimpleFlagArg
       name: REFERENCE
     optional: true
   - !Flag
-    description: The setting you want to run SECAPR on. "relaxed" uses very non-restrictive
-      default values (use when samples are expected to differ considerably from provided
-      reference or are covering wide evolutionary range, e.g. different families or
-      orders). "conservative" is very restrictive and can be used when samples are
-      closely related and match provided reference very well.
+    description: "The setting you want to run SECAPR on. \"relaxed\" uses\nvery non-restrictive\
+      \ default values (use when samples\nare expected to differ considerably from\
+      \ provided\nreference or are covering wide evolutionary range,\ne.g. different\
+      \ families or orders). \"conservative\" is\nvery restrictive and can be used\
+      \ when samples are\nclosely related and match provided reference very\nwell."
     synonyms:
     - --setting
     args: !ChoiceFlagArg
@@ -460,7 +519,7 @@ subcommands:
         ? relaxed
     optional: true
   - !Flag
-    description: The assembler to use for de-novo assembly (default=abyss).
+    description: "The assembler to use for de-novo assembly\n(default=abyss)."
     synonyms:
     - --assembler
     args: !ChoiceFlagArg
@@ -469,17 +528,15 @@ subcommands:
         ? abyss
     optional: true
   - !Flag
-    description: Number of computational cores for parallelization of computation.
+    description: "Number of computational cores for parallelization of\ncomputation.\n"
     synonyms:
     - --cores
     args: !SimpleFlagArg
       name: CORES
     optional: true
-  command:
-  - secapr
-  - automate_all
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -513,6 +570,390 @@ subcommands:
     \  --cores CORES         Number of computational cores for parallelization of\n\
     \                        computation.\n"
   generated_using: *id002
+- !Command
+  command:
+  - secapr
+  - find_target_contigs
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: "The directory containing the assembled contigs in\nfasta format."
+    synonyms:
+    - --contigs
+    args: !SimpleFlagArg
+      name: CONTIGS
+    optional: true
+  - !Flag
+    description: "The fasta-file containign the reference sequences\n(probe-order-file)."
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  - !Flag
+    description: "The minimum percent coverage required for a match\n[default=80]."
+    synonyms:
+    - --min-coverage
+    args: !SimpleFlagArg
+      name: MIN_COVERAGE
+    optional: true
+  - !Flag
+    description: "The minimum percent identity required for a match\n[default=80]."
+    synonyms:
+    - --min-identity
+    args: !SimpleFlagArg
+      name: MIN_IDENTITY
+    optional: true
+  - !Flag
+    description: "Use this flag in case you want to keep those contigs\nthat span\
+      \ across multiple exons."
+    synonyms:
+    - --keep-duplicates
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Use this flag in case you want to keep loci with signs\nof paralogy\
+      \ (multiple contig matches). One randomely\nselected contig will be selected\
+      \ for these loci."
+    synonyms:
+    - --keep-paralogs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Use this flag if you want to disable generation of\nstats (can be\
+      \ necessary because previous stats files\ncan't be found if files are used that\
+      \ were not\npreviously processed with SECAPR)\n"
+    synonyms:
+    - --disable_stats
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr find_target_contigs [-h] --contigs CONTIGS --reference\
+    \ REFERENCE\n                                  --output OUTPUT\n             \
+    \                     [--min-coverage MIN_COVERAGE]\n                        \
+    \          [--min-identity MIN_IDENTITY]\n                                  [--keep-duplicates]\
+    \ [--keep-paralogs]\n                                  [--disable_stats]\n\nExtract\
+    \ the contigs that match the reference database\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  --contigs CONTIGS     The\
+    \ directory containing the assembled contigs in\n                        fasta\
+    \ format.\n  --reference REFERENCE\n                        The fasta-file containign\
+    \ the reference sequences\n                        (probe-order-file).\n  --output\
+    \ OUTPUT       The directory in which to store the extracted target\n        \
+    \                contigs and lastz results.\n  --min-coverage MIN_COVERAGE\n \
+    \                       The minimum percent coverage required for a match\n  \
+    \                      [default=80].\n  --min-identity MIN_IDENTITY\n        \
+    \                The minimum percent identity required for a match\n         \
+    \               [default=80].\n  --keep-duplicates     Use this flag in case you\
+    \ want to keep those contigs\n                        that span across multiple\
+    \ exons.\n  --keep-paralogs       Use this flag in case you want to keep loci\
+    \ with signs\n                        of paralogy (multiple contig matches). One\
+    \ randomely\n                        selected contig will be selected for these\
+    \ loci.\n  --disable_stats       Use this flag if you want to disable generation\
+    \ of\n                        stats (can be necessary because previous stats files\n\
+    \                        can't be found if files are used that were not\n    \
+    \                    previously processed with SECAPR)\n"
+  generated_using: *id002
+- !Command
+  command:
+  - secapr
+  - clean_reads
+  positional: []
+  named:
+  - !Flag
+    description: "The directory containing the unzipped .fastq or .fq\nfiles (raw\
+      \ read files)"
+    synonyms:
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: "A configuration file containing the adapter\ninformation and the\
+      \ sample names"
+    synonyms:
+    - --config
+    args: !SimpleFlagArg
+      name: CONFIG
+    optional: true
+  - !Flag
+    description: The output directory where results will be saved
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: "Set the minimum read count threshold. Any read file\ncontaining\
+      \ fewer reads than this minimum threshold\nwill not be processed further. Default:\
+      \ 200000"
+    synonyms:
+    - --read_min
+    args: !SimpleFlagArg
+      name: READ_MIN
+    optional: true
+  - !Flag
+    description: "Specify if single- or double-indexed adapters were\nused for the\
+      \ library preparation (essential\ninformation in order to interpret the control-file\n\
+      correctly)."
+    synonyms:
+    - --index
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? double
+        ? single
+    optional: true
+  - !Flag
+    description: "Specifies the maximum mismatch count which will still\nallow a full\
+      \ match to be performed. For more\ninformation see trimmoatic tutorial. Default:\
+      \ 2"
+    synonyms:
+    - --seedMismatches
+    args: !SimpleFlagArg
+      name: SEEDMISMATCHES
+    optional: true
+  - !Flag
+    description: "Specifies how accurate the match between the two\n\"adapter ligated\"\
+      \ reads must be for PE palindrome read\nalignment. Default: 30"
+    synonyms:
+    - --palindromeClipThreshold
+    args: !SimpleFlagArg
+      name: PALINDROMECLIPTHRESHOLD
+    optional: true
+  - !Flag
+    description: "Specifies how accurate the match between any adapter\netc. sequence\
+      \ must be against a read. For more\ninformation see trimmoatic tutorial. Default:\
+      \ 10"
+    synonyms:
+    - --simpleClipThreshold
+    args: !SimpleFlagArg
+      name: SIMPLECLIPTHRESHOLD
+    optional: true
+  - !Flag
+    description: "Specifies the number of bases to average across. For\nmore information\
+      \ see trimmoatic tutorial. Default: 4"
+    synonyms:
+    - --windowSize
+    args: !SimpleFlagArg
+      name: WINDOWSIZE
+    optional: true
+  - !Flag
+    description: "Specifies the average quality required. For more\ninformation see\
+      \ trimmoatic tutorial. Default: 15"
+    synonyms:
+    - --requiredQuality
+    args: !SimpleFlagArg
+      name: REQUIREDQUALITY
+    optional: true
+  - !Flag
+    description: "Specifies the minimum quality required to keep a base\nat the beginning\
+      \ of the read. For more information see\ntrimmoatic tutorial. Default: 20"
+    synonyms:
+    - --leadingQuality
+    args: !SimpleFlagArg
+      name: LEADINGQUALITY
+    optional: true
+  - !Flag
+    description: "Specifies the minimum quality required to keep a base\nat the end\
+      \ of a read. For more information see\ntrimmoatic tutorial. Default: 20"
+    synonyms:
+    - --trailingQuality
+    args: !SimpleFlagArg
+      name: TRAILINGQUALITY
+    optional: true
+  - !Flag
+    description: "The number of bases to keep, from the start of the\nread. Everything\
+      \ exceeding this length will be removed\nfrom the end of the read. For more\
+      \ information see\ntrimmoatic tutorial. Default: 250"
+    synonyms:
+    - --cropToLength
+    args: !SimpleFlagArg
+      name: CROPTOLENGTH
+    optional: true
+  - !Flag
+    description: "The number of bases to remove from the start of the\nread. For more\
+      \ information see trimmoatic tutorial.\nDefault: 0"
+    synonyms:
+    - --headCrop
+    args: !SimpleFlagArg
+      name: HEADCROP
+    optional: true
+  - !Flag
+    description: "Specifies the minimum length of reads to be kept. For\nmore information\
+      \ see trimmoatic tutorial. Default: 40"
+    synonyms:
+    - --minLength
+    args: !SimpleFlagArg
+      name: MINLENGTH
+    optional: true
+  - !Flag
+    description: "Number of cores to be used for parallelization of\ntrimming algorithm.\n"
+    synonyms:
+    - --cores
+    args: !SimpleFlagArg
+      name: CORES
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr clean_reads [-h] --input INPUT --config CONFIG --output\
+    \ OUTPUT\n                          [--read_min READ_MIN] [--index {single,double}]\n\
+    \                          [--seedMismatches SEEDMISMATCHES]\n               \
+    \           [--palindromeClipThreshold PALINDROMECLIPTHRESHOLD]\n            \
+    \              [--simpleClipThreshold SIMPLECLIPTHRESHOLD]\n                 \
+    \         [--windowSize WINDOWSIZE]\n                          [--requiredQuality\
+    \ REQUIREDQUALITY]\n                          [--leadingQuality LEADINGQUALITY]\n\
+    \                          [--trailingQuality TRAILINGQUALITY]\n             \
+    \             [--cropToLength CROPTOLENGTH] [--headCrop HEADCROP]\n          \
+    \                [--minLength MINLENGTH] [--cores CORES]\n\nClean and trim raw\
+    \ Illumina read files\n\noptional arguments:\n  -h, --help            show this\
+    \ help message and exit\n  --input INPUT         The directory containing the\
+    \ unzipped .fastq or .fq\n                        files (raw read files)\n  --config\
+    \ CONFIG       A configuration file containing the adapter\n                 \
+    \       information and the sample names\n  --output OUTPUT       The output directory\
+    \ where results will be saved\n  --read_min READ_MIN   Set the minimum read count\
+    \ threshold. Any read file\n                        containing fewer reads than\
+    \ this minimum threshold\n                        will not be processed further.\
+    \ Default: 200000\n  --index {single,double}\n                        Specify\
+    \ if single- or double-indexed adapters were\n                        used for\
+    \ the library preparation (essential\n                        information in order\
+    \ to interpret the control-file\n                        correctly).\n  --seedMismatches\
+    \ SEEDMISMATCHES\n                        Specifies the maximum mismatch count\
+    \ which will still\n                        allow a full match to be performed.\
+    \ For more\n                        information see trimmoatic tutorial. Default:\
+    \ 2\n  --palindromeClipThreshold PALINDROMECLIPTHRESHOLD\n                   \
+    \     Specifies how accurate the match between the two\n                     \
+    \   \"adapter ligated\" reads must be for PE palindrome read\n               \
+    \         alignment. Default: 30\n  --simpleClipThreshold SIMPLECLIPTHRESHOLD\n\
+    \                        Specifies how accurate the match between any adapter\n\
+    \                        etc. sequence must be against a read. For more\n    \
+    \                    information see trimmoatic tutorial. Default: 10\n  --windowSize\
+    \ WINDOWSIZE\n                        Specifies the number of bases to average\
+    \ across. For\n                        more information see trimmoatic tutorial.\
+    \ Default: 4\n  --requiredQuality REQUIREDQUALITY\n                        Specifies\
+    \ the average quality required. For more\n                        information\
+    \ see trimmoatic tutorial. Default: 15\n  --leadingQuality LEADINGQUALITY\n  \
+    \                      Specifies the minimum quality required to keep a base\n\
+    \                        at the beginning of the read. For more information see\n\
+    \                        trimmoatic tutorial. Default: 20\n  --trailingQuality\
+    \ TRAILINGQUALITY\n                        Specifies the minimum quality required\
+    \ to keep a base\n                        at the end of a read. For more information\
+    \ see\n                        trimmoatic tutorial. Default: 20\n  --cropToLength\
+    \ CROPTOLENGTH\n                        The number of bases to keep, from the\
+    \ start of the\n                        read. Everything exceeding this length\
+    \ will be removed\n                        from the end of the read. For more\
+    \ information see\n                        trimmoatic tutorial. Default: 250\n\
+    \  --headCrop HEADCROP   The number of bases to remove from the start of the\n\
+    \                        read. For more information see trimmoatic tutorial.\n\
+    \                        Default: 0\n  --minLength MINLENGTH\n               \
+    \         Specifies the minimum length of reads to be kept. For\n            \
+    \            more information see trimmoatic tutorial. Default: 40\n  --cores\
+    \ CORES         Number of cores to be used for parallelization of\n          \
+    \              trimming algorithm.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - secapr
+  - locus_selection
+  positional:
+  - !Positional
+    description: --output OUTPUT       The output directory where results will be
+      safed.
+    position: 0
+    name: assembly.
+    optional: false
+  named:
+  - !Flag
+    description: The folder with the results of the reference based
+    synonyms:
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: "The n loci that are best represented accross all\nsamples will be\
+      \ extracted."
+    synonyms:
+    - --n
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "The threshold for what average read coverage the\nselected target\
+      \ loci should at least have."
+    synonyms:
+    - --read_cov
+    args: !SimpleFlagArg
+      name: READ_COV
+    optional: true
+  - !Flag
+    description: "Path to reference library fasta file (secapr will find\nit by itself\
+      \ if the reference assembly was executed\nwith secapr).\n"
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: secapr locus_selection [-h] --input INPUT --output OUTPUT [--n\
+    \ N]\n                              [--read_cov READ_COV] [--reference REFERENCE]\n\
+    \nExtract the n loci with the best read-coverage from you reference-based\nassembly\
+    \ (bam-files)\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --input INPUT         The folder with the results of the reference\
+    \ based\n                        assembly.\n  --output OUTPUT       The output\
+    \ directory where results will be safed.\n  --n N                 The n loci that\
+    \ are best represented accross all\n                        samples will be extracted.\n\
+    \  --read_cov READ_COV   The threshold for what average read coverage the\n  \
+    \                      selected target loci should at least have.\n  --reference\
+    \ REFERENCE\n                        Path to reference library fasta file (secapr\
+    \ will find\n                        it by itself if the reference assembly was\
+    \ executed\n                        with secapr).\n"
+  generated_using: *id002
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -551,5 +992,4 @@ help_text: "usage: secapr [-h] [--version]\n              {quality_check,clean_r
   \ from\n                        FASTQ files\n\noptional arguments:\n  -h, --help\
   \            show this help message and exit\n  --version             show program's\
   \ version number and exit\n"
-generated_using:
-- -h
+generated_using: *id002

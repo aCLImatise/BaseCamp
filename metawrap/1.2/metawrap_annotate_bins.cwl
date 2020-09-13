@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../metawrap_annotate_bins.cwl
 inputs:
-- id: output_directory
+- id: in_output_directory
   doc: output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: -o
-- id: number_threads_default
+- id: in_number_threads_default
   doc: number of threads (default=1)
   type: long
   inputBinding:
     prefix: -t
-- id: folder_metagenomic_bins
+- id: in_folder_metagenomic_bins
   doc: folder with metagenomic bins in fasta format
-  type: string
+  type: Directory
   inputBinding:
     prefix: -b
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory
+  doc: output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory)
 cwlVersion: v1.1
 baseCommand:
 - metawrap

@@ -1,80 +1,93 @@
 class: CommandLineTool
 id: ../../../mini_assemble.cwl
 inputs:
-- id: fastx_input_reads
+- id: in_fastx_input_reads
   doc: fastx input reads (required).
   type: boolean
   inputBinding:
     prefix: -i
-- id: reference_fasta_referenceguided
+- id: in_reference_fasta_referenceguided
   doc: reference fasta for reference-guided consensus (instead of de novo assembly)
   type: boolean
   inputBinding:
     prefix: -r
-- id: output_folder_default
+- id: in_output_folder_default
   doc: 'output folder (default: assm).'
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: -o
-- id: output_file_prefix
+- id: in_output_file_prefix
   doc: 'output file prefix (default: reads).'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -p
-- id: number_minimap_threads
+- id: in_number_minimap_racon
   doc: 'number of minimap and racon threads (default: 1).'
   type: boolean
   inputBinding:
     prefix: -t
-- id: number_racon_rounds
+- id: in_number_racon_rounds
   doc: 'number of racon rounds (default: 4).'
   type: boolean
   inputBinding:
     prefix: -m
-- id: number_racon_shuffles
+- id: in_number_racon_shuffles
   doc: 'number of racon shuffles (default: 1. If not 1, should be >10).'
   type: boolean
   inputBinding:
     prefix: -n
-- id: racon_window_length
+- id: in_racon_window_length
   doc: 'racon window length (default: 500).'
   type: boolean
   inputBinding:
     prefix: -w
-- id: keep_default_delete
+- id: in_keep_files_default
   doc: 'keep intermediate files (default: delete).'
   type: boolean
   inputBinding:
     prefix: -k
-- id: minimaps_k_option
+- id: in_minimaps_k_option
   doc: "minimap's -K option (default: 500M)."
   type: boolean
   inputBinding:
     prefix: -K
-- id: trim_adapters_reads
+- id: in_trim_adapters_prior
   doc: trim adapters from reads prior to everything else.
   type: boolean
   inputBinding:
     prefix: -c
-- id: error_correct_e
-  doc: error correct longest e% of reads prior to assembly, or an estimated coverage
-    (e.g. 2x). For an estimated coverage, the -l option must be a fastx or a length
-    (e.g. 4.8mb).
+- id: in_error_correct_e
+  doc: "error correct longest e% of reads prior to assembly, or an estimated coverage\
+    \ (e.g. 2x).\nFor an estimated coverage, the -l option must be a fastx or a length\
+    \ (e.g. 4.8mb)."
   type: boolean
   inputBinding:
     prefix: -e
-- id: reference_length_number
+- id: in_reference_length_number
   doc: Reference length, either as a number (e.g. 4.8mb) or fastx from which length
     will be calculated.
   type: boolean
   inputBinding:
     prefix: -l
-- id: log_commands_running
+- id: in_log_commands_running
   doc: log all commands before running.
   type: boolean
   inputBinding:
     prefix: -x
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_folder_default
+  doc: 'output folder (default: assm).'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_folder_default)
+- id: out_output_file_prefix
+  doc: 'output file prefix (default: reads).'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_prefix)
 cwlVersion: v1.1
 baseCommand:
 - mini_assemble

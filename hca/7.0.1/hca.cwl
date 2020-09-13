@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../hca.cwl
 inputs:
-- id: log_level
-  doc: "['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']"
+- id: in_log_level
+  doc: "['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']\n"
   type: string
   inputBinding:
     prefix: --log-level
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

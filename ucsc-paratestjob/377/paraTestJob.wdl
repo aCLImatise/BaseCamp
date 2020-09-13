@@ -8,13 +8,11 @@ task ParaTestJob {
     String? heavy
     File? make_it_read
     String? sleep
-    String count
   }
   command <<<
     paraTestJob \
-      ~{count} \
-      ~{true="-crash" false="" crash} \
-      ~{true="-err" false="" err} \
+      ~{if (crash) then "-crash" else ""} \
+      ~{if (err) then "-err" else ""} \
       ~{if defined(make_output_well) then ("-output " +  '"' + make_output_well + '"') else ""} \
       ~{if defined(heavy) then ("-heavy " +  '"' + heavy + '"') else ""} \
       ~{if defined(make_it_read) then ("-input " +  '"' + make_it_read + '"') else ""} \
@@ -27,6 +25,9 @@ task ParaTestJob {
     heavy: "Make output heavy: n extra lumberjack lines."
     make_it_read: "Make it read in a file too."
     sleep: "Sleep for N seconds."
-    count: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_make_output_well = "${in_make_output_well}"
   }
 }

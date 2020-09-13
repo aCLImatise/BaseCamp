@@ -1,8 +1,8 @@
 version 1.0
 
-task CgatreportGet {
+task Cgatreportget {
   input {
-    String? verbose
+    Int? verbose
     Boolean? view
     String? tracker
     String? tracks
@@ -12,10 +12,10 @@ task CgatreportGet {
     String python
   }
   command <<<
-    cgatreport-get \
+    cgatreport_get \
       ~{python} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
-      ~{true="--view" false="" view} \
+      ~{if (view) then "--view" else ""} \
       ~{if defined(tracker) then ("--tracker " +  '"' + tracker + '"') else ""} \
       ~{if defined(tracks) then ("--tracks " +  '"' + tracks + '"') else ""} \
       ~{if defined(slices) then ("--slices " +  '"' + slices + '"') else ""} \
@@ -29,7 +29,10 @@ task CgatreportGet {
     tracks: "tracks to include [default=none]"
     slices: "slices to include [default=none]"
     group_by: "groupby by track or slice [default=slice]"
-    format: "output format [default=tsv]"
+    format: "output format [default=tsv]\\n"
     python: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

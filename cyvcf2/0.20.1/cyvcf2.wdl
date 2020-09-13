@@ -24,9 +24,9 @@ task Cyvcf2 {
       ~{if defined(include) then ("--include " +  '"' + include + '"') else ""} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(individual) then ("--individual " +  '"' + individual + '"') else ""} \
-      ~{true="--no-inds" false="" no_inds} \
-      ~{true="--loglevel" false="" loglevel} \
-      ~{true="--silent" false="" silent}
+      ~{if (no_inds) then "--no-inds" else ""} \
+      ~{if (loglevel) then "--loglevel" else ""} \
+      ~{if (silent) then "--silent" else ""}
   >>>
   parameter_meta {
     chrom: "Specify what chromosome to include."
@@ -36,9 +36,12 @@ task Cyvcf2 {
     exclude: "Specify what info field to exclude."
     individual: "Only print genotype call for individual."
     no_inds: "Do not print genotypes."
-    loglevel: "[DEBUG|INFO|WARNING|ERROR|CRITICAL] Set the level of log output.  [default: INFO]"
+    loglevel: "[DEBUG|INFO|WARNING|ERROR|CRITICAL]\\nSet the level of log output.  [default:\\nINFO]"
     silent: "Skip printing of vcf."
     vcf_file: ""
     or: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

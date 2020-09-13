@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../mtsv_tree_build_FLAGS.cwl
 inputs:
-- id: index
+- id: in_index
   doc: ''
   type: string
   inputBinding:
     prefix: --index
-- id: dump
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --dump
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mtsv-tree-build

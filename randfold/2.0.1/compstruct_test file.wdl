@@ -1,23 +1,26 @@
 version 1.0
 
-task CompstructTest file {
+task CompstructTestfile {
   input {
     Boolean? options
     String comp_struct
-    String trusted_file
-    String test_file
+    File trusted_file
+    File test_file
   }
   command <<<
-    compstruct test file \
+    compstruct test_file \
       ~{comp_struct} \
       ~{trusted_file} \
       ~{test_file} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     comp_struct: ""
     trusted_file: ""
     test_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

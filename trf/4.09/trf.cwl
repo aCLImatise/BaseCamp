@@ -1,40 +1,53 @@
 class: CommandLineTool
 id: ../../../trf.cwl
 inputs:
-- id: masked_sequence_file
+- id: in_masked_sequence_file
   doc: masked sequence file
   type: boolean
   inputBinding:
     prefix: -m
-- id: flanking_sequence
+- id: in_flanking_sequence
   doc: flanking sequence
   type: boolean
   inputBinding:
     prefix: -f
-- id: data_file
+- id: in_data_file
   doc: data file
   type: boolean
   inputBinding:
     prefix: -d
-- id: no_redundancy_elimination
+- id: in_no_redundancy_elimination
   doc: no redundancy elimination
   type: boolean
   inputBinding:
     prefix: -r
-- id: maximum_tr_length
-  doc: maximum TR length expected (in millions) (eg, -l 3 or -l=3 for 3 million) Human
-    genome HG38 would need -l 6
-  type: string
+- id: in_maximum_tr_length
+  doc: "maximum TR length expected (in millions) (eg, -l 3 or -l=3 for 3 million)\n\
+    Human genome HG38 would need -l 6"
+  type: long
   inputBinding:
     prefix: -l
-- id: ngs
-  doc: more compact .dat output on multisequence files, returns 0 on success. Output
-    is printed to the screen, not a file. You may pipe input in with this option using
-    - for file name. Short 50 flanks are appended to .dat output.
+- id: in_ngs
+  doc: "more compact .dat output on multisequence files, returns 0 on success.\nOutput\
+    \ is printed to the screen, not a file. You may pipe input in with\nthis option\
+    \ using - for file name. Short 50 flanks are appended to .dat\noutput."
   type: boolean
   inputBinding:
     prefix: -ngs
-outputs: []
+- id: in_match
+  doc: = matching weight
+  type: string
+  inputBinding:
+    position: 0
+- id: in_mismatch
+  doc: = mismatching penalty
+  type: string
+  inputBinding:
+    position: 1
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - trf

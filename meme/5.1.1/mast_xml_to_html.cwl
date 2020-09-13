@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../mast_xml_to_html.cwl
 inputs:
-- id: mast_xml_file
+- id: in_mast_xml_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: mast_html_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mast_xml_to_html

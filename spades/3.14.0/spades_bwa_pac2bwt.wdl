@@ -1,20 +1,20 @@
 version 1.0
 
-task SpadesBwaPac2bwt {
+task SpadesbwaPac2bwt {
   input {
     Boolean? d
     String bwa
-    String pac_two_bwt
+    Int pac_two_bwt
     String in_dot_pac
     String out_dot_bwt
   }
   command <<<
-    spades-bwa pac2bwt \
+    spades_bwa pac2bwt \
       ~{bwa} \
       ~{pac_two_bwt} \
       ~{in_dot_pac} \
       ~{out_dot_bwt} \
-      ~{true="-d" false="" d}
+      ~{if (d) then "-d" else ""}
   >>>
   parameter_meta {
     d: ""
@@ -22,5 +22,8 @@ task SpadesBwaPac2bwt {
     pac_two_bwt: ""
     in_dot_pac: ""
     out_dot_bwt: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

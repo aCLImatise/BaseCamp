@@ -1,6 +1,6 @@
 version 1.0
 
-task JemallocConfig {
+task Jemallocconfig {
   input {
     Boolean? revision
     Boolean? config
@@ -17,20 +17,20 @@ task JemallocConfig {
     Boolean? libs
   }
   command <<<
-    jemalloc-config \
-      ~{true="--revision" false="" revision} \
-      ~{true="--config" false="" config} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="--bindir" false="" bindir} \
-      ~{true="--datadir" false="" datadir} \
-      ~{true="--includedir" false="" includedir} \
-      ~{true="--libdir" false="" libdir} \
-      ~{true="--mandir" false="" mandir} \
-      ~{true="--cc" false="" cc} \
-      ~{true="--cflags" false="" cflags} \
-      ~{true="--cppflags" false="" cppflags} \
-      ~{true="--ldflags" false="" ldflags} \
-      ~{true="--libs" false="" libs}
+    jemalloc_config \
+      ~{if (revision) then "--revision" else ""} \
+      ~{if (config) then "--config" else ""} \
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (bindir) then "--bindir" else ""} \
+      ~{if (datadir) then "--datadir" else ""} \
+      ~{if (includedir) then "--includedir" else ""} \
+      ~{if (libdir) then "--libdir" else ""} \
+      ~{if (mandir) then "--mandir" else ""} \
+      ~{if (cc) then "--cc" else ""} \
+      ~{if (cflags) then "--cflags" else ""} \
+      ~{if (cppflags) then "--cppflags" else ""} \
+      ~{if (ldflags) then "--ldflags" else ""} \
+      ~{if (libs) then "--libs" else ""}
   >>>
   parameter_meta {
     revision: ": Print shared library revision number."
@@ -46,5 +46,8 @@ task JemallocConfig {
     cppflags: ": Print preprocessor flags used to build jemalloc."
     ldflags: ": Print library flags used to build jemalloc."
     libs: ": Print libraries jemalloc was linked against."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

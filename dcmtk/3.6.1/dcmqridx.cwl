@@ -1,53 +1,61 @@
 class: CommandLineTool
 id: ../../../dcmqridx.cwl
 inputs:
-- id: _quiet_quiet
+- id: in_arguments
+  doc: print expanded command line arguments
+  type: boolean
+  inputBinding:
+    prefix: --arguments
+- id: in__quiet_quiet
   doc: --quiet       quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: _verbose_verbose
+- id: in__verbose_details
   doc: --verbose     verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: _debug_debug
+- id: in__debug_information
   doc: --debug       debug mode, print debug information
   type: boolean
   inputBinding:
     prefix: -d
-- id: log_level
-  doc: '[l]evel: string constant (fatal, error, warn, info, debug, trace) use level
-    l for the logger'
+- id: in_log_level
+  doc: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\nuse level\
+    \ l for the logger"
   type: boolean
   inputBinding:
     prefix: --log-level
-- id: log_config
-  doc: '[f]ilename: string use config file f for the logger'
+- id: in_log_config
+  doc: "[f]ilename: string\nuse config file f for the logger"
   type: boolean
   inputBinding:
     prefix: --log-config
-- id: _print_list
+- id: in__print_list
   doc: --print       list contents of database index file
   type: boolean
   inputBinding:
     prefix: -p
-- id: _set_instance
+- id: in__notnew_set
   doc: --not-new     set instance reviewed status to 'not new'
   type: boolean
   inputBinding:
     prefix: -n
-- id: index_out
+- id: in_index_out
   doc: storage area for the index file (directory)
   type: string
   inputBinding:
     position: 0
-- id: dcm_file_in
+- id: in_dcm_file_in
   doc: DICOM image file to be registered in the index file
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dcmqridx

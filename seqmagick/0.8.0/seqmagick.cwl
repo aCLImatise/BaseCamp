@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../seqmagick.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: Be more verbose. Specify -vv or -vvv for even more
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: quiet
+- id: in_quiet
   doc: Suppress output
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -V
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - seqmagick

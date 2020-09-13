@@ -1,23 +1,32 @@
 class: CommandLineTool
 id: ../../../msaboot.cwl
 inputs:
-- id: input
+- id: in_input
   doc: The file name of the FASTA file to be used as input.
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output
-  doc: The file name of the bootstrapped alignment data output, stored in relaxed
-    PHYLIP format.
-  type: string
+- id: in_output
+  doc: "The file name of the bootstrapped alignment data\noutput, stored in relaxed\
+    \ PHYLIP format."
+  type: File
   inputBinding:
     prefix: --output
-- id: number
-  doc: The number of bootstrap replicates.
-  type: string
+- id: in_number
+  doc: "The number of bootstrap replicates.\n"
+  type: long
   inputBinding:
     prefix: --number
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "The file name of the bootstrapped alignment data\noutput, stored in relaxed\
+    \ PHYLIP format."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - msaboot

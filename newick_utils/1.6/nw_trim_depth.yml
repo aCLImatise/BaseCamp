@@ -1,18 +1,20 @@
-&id002 !Command
+&id001 !Command
+command:
+- nw_trim
+- depth
 positional: []
 named:
 - !Flag
-  description: ': the maximum depth is expressed in number of ancestors, not distance.
-    Nodes are not shortened, but no node is retained that has more ancestors than
-    the maximum.'
+  description: ": the maximum depth is expressed in number of ancestors, not distance.\n\
+    Nodes are not shortened, but no node is retained that has more\nancestors than\
+    \ the maximum."
   synonyms:
   - -a
   args: !EmptyFlagArg {}
   optional: true
-command:
-- nw_trim
-- depth
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - nw_trim
   positional: []
   named:
   - !Flag
@@ -21,26 +23,26 @@ parent: &id001 !Command
     - -ah
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - nw_trim
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - nw_trim
+    - filename|-
     positional: []
     named:
     - !Flag
-      description: ': the maximum depth is expressed in number of ancestors, not distance.
-        Nodes are not shortened, but no node is retained that has more ancestors than
-        the maximum.'
+      description: ": the maximum depth is expressed in number of ancestors, not distance.\n\
+        Nodes are not shortened, but no node is retained that has more\nancestors\
+        \ than the maximum."
       synonyms:
       - -a
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - nw_trim
-    - filename|-
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ': print this message and exit'
       synonyms:
@@ -67,13 +69,14 @@ parent: &id001 !Command
       $ nw_trim -a data/catarrhini 3\n"
     generated_using: &id003
     - -h
-  - *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
   help_text: "Usage: nw_trim [-ah] <filename|-> [depth]\n"
   generated_using: []
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': print this message and exit'
   synonyms:

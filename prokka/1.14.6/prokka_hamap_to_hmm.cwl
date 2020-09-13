@@ -1,28 +1,31 @@
 class: CommandLineTool
 id: ../../../prokka_hamap_to_hmm.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: "!      Verbose progress (default '0')."
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: datadir
+- id: in_datadir
   doc: Path to downloaded HAMAP folder (ftp://ftp.expasy.org/databases/hamap/) (default
     '').
-  type: string
+  type: File
   inputBinding:
     prefix: --datadir
-- id: sep
+- id: in_sep
   doc: Separator between EC/gene/product (default '~~~').
   type: string
   inputBinding:
     prefix: --sep
-- id: blank
+- id: in_blank
   doc: Replace empty EC/gene/product with this (default '').
   type: string
   inputBinding:
     prefix: --blank
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - prokka-hamap_to_hmm

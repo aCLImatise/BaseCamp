@@ -1,14 +1,14 @@
 version 1.0
 
-task EpicEffective {
+task Epiceffective {
   input {
-    String? read_length
-    String? nb_cpu
-    String? tmpdir
+    Int? read_length
+    Int? nb_cpu
+    Directory? tmpdir
     File file
   }
   command <<<
-    epic-effective \
+    epic_effective \
       ~{file} \
       ~{if defined(read_length) then ("--read-length " +  '"' + read_length + '"') else ""} \
       ~{if defined(nb_cpu) then ("--nb-cpu " +  '"' + nb_cpu + '"') else ""} \
@@ -19,5 +19,8 @@ task EpicEffective {
     nb_cpu: "number of cores to use [default: 1]"
     tmpdir: "temporary directory. Default is to use $TMPDIR if set, otherwise /tmp."
     file: "Fasta genome"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

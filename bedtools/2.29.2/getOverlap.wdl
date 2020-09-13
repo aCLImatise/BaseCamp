@@ -7,11 +7,14 @@ task GetOverlap {
   }
   command <<<
     getOverlap \
-      ~{true="-i" false="" input_file_use} \
-      ~{true="-cols" false="" cols}
+      ~{if (input_file_use) then "-i" else ""} \
+      ~{if (cols) then "-cols" else ""}
   >>>
   parameter_meta {
-    input_file_use: "Input file. Use \"stdin\" for pipes."
-    cols: "Specify the columns (1-based) for the starts and ends of the features for which you'd like to compute the overlap/distance. The columns must be listed in the following order:  start1,end1,start2,end2"
+    input_file_use: "Input file. Use \\\"stdin\\\" for pipes."
+    cols: "Specify the columns (1-based) for the starts and ends of the\\nfeatures for which you'd like to compute the overlap/distance.\\nThe columns must be listed in the following order:\\nstart1,end1,start2,end2"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

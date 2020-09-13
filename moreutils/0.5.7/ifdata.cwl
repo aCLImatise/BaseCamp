@@ -1,157 +1,160 @@
 class: CommandLineTool
 id: ../../../ifdata.cwl
 inputs:
-- id: reports_interface_existence
+- id: in_reports_interface_existence
   doc: Reports interface existence via return code
   type: boolean
   inputBinding:
     prefix: -e
-- id: print_whole_config
+- id: in_print_whole_config
   doc: Print out the whole config of iface
   type: boolean
   inputBinding:
     prefix: -p
-- id: pe
+- id: in_pe
   doc: Print out yes or no according to existence
   type: boolean
   inputBinding:
     prefix: -pe
-- id: pa
+- id: in_pa
   doc: Print out the address
   type: boolean
   inputBinding:
     prefix: -pa
-- id: print_netmask
+- id: in_print_netmask
   doc: Print netmask
   type: boolean
   inputBinding:
     prefix: -pn
-- id: print_network_address
+- id: in_print_network_address
   doc: Print network address
   type: boolean
   inputBinding:
     prefix: -pN
-- id: pb
+- id: in_pb
   doc: Print broadcast
   type: boolean
   inputBinding:
     prefix: -pb
-- id: pm
+- id: in_pm
   doc: Print mtu
   type: boolean
   inputBinding:
     prefix: -pm
-- id: ph
+- id: in_ph
   doc: Print out the hardware address
   type: boolean
   inputBinding:
     prefix: -ph
-- id: pf
+- id: in_pf
   doc: Print flags
   type: boolean
   inputBinding:
     prefix: -pf
-- id: si
+- id: in_si
   doc: Print all statistics on input
   type: boolean
   inputBinding:
     prefix: -si
-- id: sip
+- id: in_sip
   doc: 'Print # of in packets'
   type: boolean
   inputBinding:
     prefix: -sip
-- id: sib
+- id: in_sib
   doc: 'Print # of in bytes'
   type: boolean
   inputBinding:
     prefix: -sib
-- id: sie
+- id: in_sie
   doc: 'Print # of in errors'
   type: boolean
   inputBinding:
     prefix: -sie
-- id: sid
+- id: in_sid
   doc: 'Print # of in drops'
   type: boolean
   inputBinding:
     prefix: -sid
-- id: s_if
+- id: in_s_if
   doc: 'Print # of in fifo overruns'
   type: boolean
   inputBinding:
     prefix: -sif
-- id: sic
+- id: in_sic
   doc: 'Print # of in compress'
   type: boolean
   inputBinding:
     prefix: -sic
-- id: sim
+- id: in_sim
   doc: 'Print # of in multicast'
   type: boolean
   inputBinding:
     prefix: -sim
-- id: so
+- id: in_so
   doc: Print all statistics on output
   type: boolean
   inputBinding:
     prefix: -so
-- id: sop
+- id: in_sop
   doc: 'Print # of out packets'
   type: boolean
   inputBinding:
     prefix: -sop
-- id: sob
+- id: in_sob
   doc: 'Print # of out bytes'
   type: boolean
   inputBinding:
     prefix: -sob
-- id: soe
+- id: in_soe
   doc: 'Print # of out errors'
   type: boolean
   inputBinding:
     prefix: -soe
-- id: sod
+- id: in_sod
   doc: 'Print # of out drops'
   type: boolean
   inputBinding:
     prefix: -sod
-- id: s_of
+- id: in_s_of
   doc: 'Print # of out fifo overruns'
   type: boolean
   inputBinding:
     prefix: -sof
-- id: sox
+- id: in_sox
   doc: 'Print # of out collisions'
   type: boolean
   inputBinding:
     prefix: -sox
-- id: soc
+- id: in_soc
   doc: 'Print # of out carrier loss'
   type: boolean
   inputBinding:
     prefix: -soc
-- id: som
+- id: in_som
   doc: 'Print # of out multicast'
   type: boolean
   inputBinding:
     prefix: -som
-- id: bips
+- id: in_bips
   doc: 'Print # of incoming bytes per second'
   type: boolean
   inputBinding:
     prefix: -bips
-- id: bops
+- id: in_bops
   doc: 'Print # of outgoing bytes per second'
   type: boolean
   inputBinding:
     prefix: -bops
-- id: i_face
+- id: in_i_face
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ifdata

@@ -3,26 +3,56 @@ version 1.0
 task Dawg {
   input {
     Boolean? help_trick
-    Boolean? arg_output_file
-    String? seed
-    String? reps
+    File? arg_output_file
+    Int? seed
+    Int? reps
     Boolean? split
-    Boolean? append
+    File? append
     Boolean? label
-    String? arg_file
+    File? arg_file
+    Boolean? var_8
     String allowed
+    String arg
+    String display
+    String read
+    String arguments
+    String description
+    String help
+    String var_16
+    String version
+    String from
+    String of
+    String to
+    String common
+    String this
+    String control
   }
   command <<<
     dawg \
       ~{allowed} \
-      ~{true="--help-trick" false="" help_trick} \
-      ~{true="-o" false="" arg_output_file} \
+      ~{arg} \
+      ~{display} \
+      ~{read} \
+      ~{arguments} \
+      ~{description} \
+      ~{help} \
+      ~{var_16} \
+      ~{version} \
+      ~{from} \
+      ~{of} \
+      ~{to} \
+      ~{common} \
+      ~{this} \
+      ~{control} \
+      ~{if (help_trick) then "--help-trick" else ""} \
+      ~{if (arg_output_file) then "-o" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(reps) then ("--reps " +  '"' + reps + '"') else ""} \
-      ~{true="--split" false="" split} \
-      ~{true="--append" false="" append} \
-      ~{true="--label" false="" label} \
-      ~{if defined(arg_file) then ("--arg-file " +  '"' + arg_file + '"') else ""}
+      ~{if (split) then "--split" else ""} \
+      ~{if (append) then "--append" else ""} \
+      ~{if (label) then "--label" else ""} \
+      ~{if defined(arg_file) then ("--arg-file " +  '"' + arg_file + '"') else ""} \
+      ~{if (var_8) then "--output" else ""}
   >>>
   parameter_meta {
     help_trick: "display description of common control variables"
@@ -33,6 +63,26 @@ task Dawg {
     append: "[=arg(=on)] (=null) append output to file"
     label: "[=arg(=on)] (=null)  label each simulation with a unique id"
     arg_file: "read arguments from file"
+    var_8: ""
     allowed: ""
+    arg: ""
+    display: ""
+    read: ""
+    arguments: ""
+    description: ""
+    help: ""
+    var_16: ""
+    version: ""
+    from: ""
+    of: ""
+    to: ""
+    common: ""
+    this: ""
+    control: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_arg_output_file = "${in_arg_output_file}"
+    File out_append = "${in_append}"
   }
 }

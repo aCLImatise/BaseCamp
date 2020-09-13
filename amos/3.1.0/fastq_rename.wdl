@@ -12,8 +12,8 @@ task FastqRename {
   command <<<
     fastq_rename \
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
-      ~{true="-renum" false="" renum} \
-      ~{true="-clean" false="" clean} \
+      ~{if (renum) then "-renum" else ""} \
+      ~{if (clean) then "-clean" else ""} \
       ~{if defined(tr) then ("-tr " +  '"' + tr + '"') else ""} \
       ~{if defined(trc) then ("-trc " +  '"' + trc + '"') else ""} \
       ~{if defined(suffix) then ("-suffix " +  '"' + suffix + '"') else ""}
@@ -25,5 +25,8 @@ task FastqRename {
     tr: ": replace these characters in the readname"
     trc: ": when replacing, replace with this (default: _)"
     suffix: ": add suffix to each readname"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

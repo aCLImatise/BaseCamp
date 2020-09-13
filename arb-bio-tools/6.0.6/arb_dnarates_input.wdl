@@ -4,4 +4,7 @@ task ArbDnaratesInput {
   command <<<
     arb_dnarates input
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

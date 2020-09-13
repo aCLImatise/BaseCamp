@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../csb_embd.cwl
 inputs:
-- id: psf_size
+- id: in_psf_size
   doc: size of the point spread function (default=15)
-  type: string
+  type: long
   inputBinding:
     prefix: --psf-size
-- id: output
+- id: in_output
   doc: output directory of the sharpened maps (default=.)
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: iterations
+- id: in_iterations
   doc: number of iterations (default=1000)
-  type: string
+  type: long
   inputBinding:
     prefix: --iterations
-- id: output_frequency
+- id: in_output_frequency
   doc: create a map file each f iterations (default=50)
-  type: string
+  type: File
   inputBinding:
     prefix: --output-frequency
-- id: verbose
+- id: in_verbose
   doc: verbose mode (default=False)
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: map_file
-  doc: Input Cryo EM file in CCP4 MRC format
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output directory of the sharpened maps (default=.)
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - csb-embd

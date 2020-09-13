@@ -10,7 +10,7 @@ task SortBed {
     Boolean? chr_then_scored
     Boolean? g
     Boolean? fa_idx
-    String? header
+    File? header
     String? i
     String bed_tools
     String sort
@@ -19,14 +19,14 @@ task SortBed {
     sortBed \
       ~{bed_tools} \
       ~{sort} \
-      ~{true="-sizeA" false="" size_a} \
-      ~{true="-sizeD" false="" sized} \
-      ~{true="-chrThenSizeA" false="" chr_then_size_a} \
-      ~{true="-chrThenSizeD" false="" chr_then_sized} \
-      ~{true="-chrThenScoreA" false="" chr_then_score_a} \
-      ~{true="-chrThenScoreD" false="" chr_then_scored} \
-      ~{true="-g" false="" g} \
-      ~{true="-faidx" false="" fa_idx} \
+      ~{if (size_a) then "-sizeA" else ""} \
+      ~{if (sized) then "-sizeD" else ""} \
+      ~{if (chr_then_size_a) then "-chrThenSizeA" else ""} \
+      ~{if (chr_then_sized) then "-chrThenSizeD" else ""} \
+      ~{if (chr_then_score_a) then "-chrThenScoreA" else ""} \
+      ~{if (chr_then_scored) then "-chrThenScoreD" else ""} \
+      ~{if (g) then "-g" else ""} \
+      ~{if (fa_idx) then "-faidx" else ""} \
       ~{if defined(header) then ("-header " +  '"' + header + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
@@ -37,11 +37,14 @@ task SortBed {
     chr_then_sized: "Sort by chrom (asc), then feature size (desc)."
     chr_then_score_a: "Sort by chrom (asc), then score (asc)."
     chr_then_scored: "Sort by chrom (asc), then score (desc)."
-    g: "(names.txt)  Sort according to the chromosomes declared in \"genome.txt\""
-    fa_idx: "(names.txt)      Sort according to the chromosomes declared in \"names.txt\""
+    g: "(names.txt)  Sort according to the chromosomes declared in \\\"genome.txt\\\""
+    fa_idx: "(names.txt)      Sort according to the chromosomes declared in \\\"names.txt\\\""
     header: "the header from the A file prior to results."
     i: ""
     bed_tools: ""
     sort: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

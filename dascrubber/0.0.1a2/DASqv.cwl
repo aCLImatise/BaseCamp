@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../DASqv.cwl
 inputs:
-- id: v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: h
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -H
-- id: c
+- id: in_c
   doc: ''
   type: boolean
   inputBinding:
     prefix: -c
-- id: var_3
+- id: in_h
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -H
+- id: in_v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: in_int
   doc: ''
   type: long
   inputBinding:
     position: 0
-- id: var_4
-  doc: ''
-  type: long
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - DASqv

@@ -2,15 +2,15 @@ version 1.0
 
 task ExtractConsensus {
   input {
-    String? fasta_file_containing
-    String? region_interested_bed
+    File? fasta_file_containing
+    Int? region_interested_bed
     Int? minimum_read_depth
     Int? minimum_phred_quality
     Float? minimum_frequency_ambiguous
     Int? read_count_reported
     String? patientsample_identifier_default
-    File? output_directory_default
-    String? input_bam_file
+    Directory? output_directory_default
+    File? input_bam_file
   }
   command <<<
     extract_consensus \
@@ -26,13 +26,17 @@ task ExtractConsensus {
   >>>
   parameter_meta {
     fasta_file_containing: "Fasta file containing the reference sequence (default: None)"
-    region_interested_bed: "Region of interested in BED format, e.g. HXB2:2253-3869. Loci are interpreted using 0-based indexing, and a half-open interval is used, i.e, [start:end) (default: None)"
-    minimum_read_depth: "Minimum read depth for reporting variants per locus (default: 50)"
-    minimum_phred_quality: "Minimum phred quality score a base has to reach to be counted (default: 15)"
+    region_interested_bed: "Region of interested in BED format, e.g. HXB2:2253-3869. Loci\\nare interpreted using 0-based indexing, and a half-open interval\\nis used, i.e, [start:end) (default: None)"
+    minimum_read_depth: "Minimum read depth for reporting variants per locus (default:\\n50)"
+    minimum_phred_quality: "Minimum phred quality score a base has to reach to be counted\\n(default: 15)"
     minimum_frequency_ambiguous: "Minimum frequency for an ambiguous nucleotide (default: 0.05)"
-    read_count_reported: "Read count below which ambiguous base 'n' is reported (default: None)"
+    read_count_reported: "Read count below which ambiguous base 'n' is reported (default:\\nNone)"
     patientsample_identifier_default: "Patient/sample identifier (default: CONSENSUS)"
-    output_directory_default: "Output directory (default: /tmp/tmp0coinnkt)"
+    output_directory_default: "Output directory (default: /)"
     input_bam_file: "Input BAM file (default: None)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory_default = "${in_output_directory_default}"
   }
 }

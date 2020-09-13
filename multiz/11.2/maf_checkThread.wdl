@@ -4,4 +4,7 @@ task MafCheckThread {
   command <<<
     maf_checkThread
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

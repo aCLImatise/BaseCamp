@@ -4,4 +4,7 @@ task FilterFusionAlignmentsByFilteredFusions {
   command <<<
     FilterFusionAlignmentsByFilteredFusions
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

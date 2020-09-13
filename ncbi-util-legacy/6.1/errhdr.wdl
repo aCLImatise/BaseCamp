@@ -2,7 +2,7 @@ version 1.0
 
 task Errhdr {
   input {
-    String? codesubcode_tuples
+    Int? codesubcode_tuples
     String? short_subcode_defines
     String msg_file
     String? hdr_file
@@ -19,5 +19,8 @@ task Errhdr {
     short_subcode_defines: "short subcode defines"
     msg_file: ""
     hdr_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

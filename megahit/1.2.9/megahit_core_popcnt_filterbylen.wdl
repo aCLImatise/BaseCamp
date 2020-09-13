@@ -14,4 +14,7 @@ task MegahitCorePopcntFilterbylen {
     cat: ""
     contigs_dot_fa: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

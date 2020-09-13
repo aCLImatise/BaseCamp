@@ -1,8 +1,8 @@
 version 1.0
 
-task _giftogd2 {
+task Giftogd2 {
   input {
-    String gift_ogd_two
+    Int gift_ogd_two
     File filename_do_tgif
     File filename_dot_gd_two
     String cs
@@ -22,5 +22,8 @@ task _giftogd2 {
     filename_dot_gd_two: ""
     cs: ""
     fmt: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

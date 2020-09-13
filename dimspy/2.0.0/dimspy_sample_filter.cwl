@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../dimspy_sample_filter.cwl
 inputs:
-- id: input
-  doc: HDF5 file or tab-delimited file that contains a peak matrix.
-  type: string
+- id: in_input
+  doc: "HDF5 file or tab-delimited file that contains a peak\nmatrix."
+  type: File
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: HDF5 file to save the peak matrix object to.
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: min_fraction
-  doc: Minimum percentage of samples a peak has to be present.
+- id: in_min_fraction
+  doc: "Minimum percentage of samples a peak has to be\npresent."
   type: long
   inputBinding:
     prefix: --min-fraction
-- id: within
+- id: in_within
   doc: Apply sample filter within each sample class.
   type: boolean
   inputBinding:
     prefix: --within
-- id: rsd_threshold
-  doc: Peaks where the associated QC peaks are above this threshold will be removed.
+- id: in_rsd_threshold
+  doc: "Peaks where the associated QC peaks are above this\nthreshold will be removed."
   type: string
   inputBinding:
     prefix: --rsd-threshold
-- id: qc_label
+- id: in_qc_label
   doc: Class label for QCs
   type: string
   inputBinding:
     prefix: --qc-label
-- id: labels
-  doc: Tab delimited file with at least two columns named 'filename' and 'classLabel'.
-  type: string
+- id: in_labels
+  doc: "Tab delimited file with at least two columns named\n'filename' and 'classLabel'.\n"
+  type: File
   inputBinding:
     prefix: --labels
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dimspy

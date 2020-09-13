@@ -1,9 +1,12 @@
-&id003 !Command
+&id002 !Command
+command:
+- peakranger
+- ccat
 positional:
 - !Positional
-  description: ''
+  description: --gene_annot_file arg           the gene annotation file
   position: 0
-  name: Input
+  name: report
   optional: false
 named:
 - !Flag
@@ -19,8 +22,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'the format of the data file, can be one of :  bowtie, sam, bam and
-    bed'
+  description: "the format of the data file, can be one of :\nbowtie, sam, bam and\
+    \ bed"
   synonyms:
   - --format
   args: !SimpleFlagArg
@@ -39,16 +42,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (=6000)       the length of the snapshort regions in the  report
+  description: (=6000)       the length of the snapshort regions in the
   synonyms:
   - --plot_region
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: the gene annotation file
-  synonyms:
-  - --gene_annot_file
   args: !SimpleFlagArg
     name: arg
   optional: true
@@ -104,17 +100,62 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- peakranger
-- ccat
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - peakranger
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - peakranger
+    - lc
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: Input
+      optional: false
+    named:
+    - !Flag
+      description: '[ --data ] arg      the data file'
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: show progress when possible
+      synonyms:
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: '[ --help ]          show the usage'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: output the version number
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "\nlc 1.18\n\nUsage:\n\nInput:\n  -d [ --data ] arg      the data file\n\
+      \nOther:\n  -h [ --help ]          show the usage\n  --verbose             \
+      \ show progress when possible\n  --version              output the version number\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - peakranger
+    - nr
     positional:
     - !Positional
       description: ''
@@ -135,8 +176,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'the format of the data file, can be one of :  bowtie, sam, bam
-        and bed'
+      description: "the format of the data file, can be one of :\nbowtie, sam, bam\
+        \ and bed"
       synonyms:
       - --format
       args: !SimpleFlagArg
@@ -154,11 +195,9 @@ parent: &id001 !Command
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - peakranger
-    - nr
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: '[ --help ]                   show the usage'
       synonyms:
@@ -179,51 +218,11 @@ parent: &id001 !Command
       \ ] arg (=200)  read extension length\n\nOther:\n  -h [ --help ]           \
       \        show the usage\n  --verbose                       show progress when\
       \ possible\n  --version                       output the version number\n"
-    generated_using: &id002
-    - --help
+    generated_using: *id003
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: Input
-      optional: false
-    named:
-    - !Flag
-      description: '[ --data ] arg      the data file'
-      synonyms:
-      - -d
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: show progress when possible
-      synonyms:
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - peakranger
-    - lc
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: '[ --help ]          show the usage'
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: output the version number
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "\nlc 1.18\n\nUsage:\n\nInput:\n  -d [ --data ] arg      the data file\n\
-      \nOther:\n  -h [ --help ]          show the usage\n  --verbose             \
-      \ show progress when possible\n  --version              output the version number\n"
-    generated_using: *id002
-  - !Command
+    - wig
     positional:
     - !Positional
       description: ''
@@ -238,8 +237,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'the format of the data file, can be one of :  bowtie, sam, bam
-        and bed'
+      description: "the format of the data file, can be one of :\nbowtie, sam, bam\
+        \ and bed"
       synonyms:
       - --format
       args: !SimpleFlagArg
@@ -281,11 +280,9 @@ parent: &id001 !Command
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - peakranger
-    - wig
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: '[ --help ]                   show the usage'
       synonyms:
@@ -309,8 +306,116 @@ parent: &id001 !Command
       \ extension length\n\nOther:\n  -h [ --help ]                   show the usage\n\
       \  --verbose                       show progress\n  --version              \
       \         output the version number\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - peakranger
+    - bcp
+    positional:
+    - !Positional
+      description: --gene_annot_file arg           the gene annotation file
+      position: 0
+      name: report
+      optional: false
+    named:
+    - !Flag
+      description: '[ --data ] arg               data file'
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '[ --control ] arg            control file'
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "the format of the data file, can be one of :\nbowtie, sam, bam\
+        \ and bed"
+      synonyms:
+      - --format
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: '[ --output ] arg             the output location'
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: generate html reports
+      synonyms:
+      - --report
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: (=6000)       the length of the snapshort regions in the
+      synonyms:
+      - --plot_region
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: '[ --pval ] arg (=0.0001)     p value cut-off'
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: (=500)           sliding window size
+      synonyms:
+      - --win_size
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: '[ --ext_length ] arg (=200)  read extension length'
+      synonyms:
+      - -l
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: show progress
+      synonyms:
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: '[ --help ]                   show the usage'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: output the version number
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "\nbcp 1.18\n\nUsage:\n\nInput:\n  -d [ --data ] arg              \
+      \ data file\n  -c [ --control ] arg            control file\n  --format arg\
+      \                    the format of the data file, can be one of : \n       \
+      \                           bowtie, sam, bam and bed\n\nOutput:\n  -o [ --output\
+      \ ] arg             the output location\n  --report                        generate\
+      \ html reports\n  --plot_region arg (=6000)       the length of the snapshort\
+      \ regions in the \n                                  report\n  --gene_annot_file\
+      \ arg           the gene annotation file\n\nQualities:\n  -p [ --pval ] arg\
+      \ (=0.0001)     p value cut-off\n  --win_size arg (=500)           sliding window\
+      \ size\n  -l [ --ext_length ] arg (=200)  read extension length\n\nOther:\n\
+      \  -h [ --help ]                   show the usage\n  --verbose             \
+      \          show progress\n  --version                       output the version\
+      \ number\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - peakranger
+    - wigpe
     positional:
     - !Positional
       description: ''
@@ -360,11 +465,9 @@ parent: &id001 !Command
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - peakranger
-    - wigpe
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: '[ --help ]                 show the usage'
       synonyms:
@@ -386,13 +489,16 @@ parent: &id001 !Command
       \ ] arg (=0)  read extension length\n\nOther:\n  -h [ --help ]             \
       \    show the usage\n  --verbose                     show progress when possible\n\
       \  --version                     output the version number\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - peakranger
+    - ranger
     positional:
     - !Positional
-      description: ''
+      description: --gene_annot_file arg           the gene annotation file
       position: 0
-      name: Input
+      name: report
       optional: false
     named:
     - !Flag
@@ -408,8 +514,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'the format of the data file, can be one of :  bowtie, sam, bam
-        and bed'
+      description: "the format of the data file, can be one of :\nbowtie, sam, bam\
+        \ and bed"
       synonyms:
       - --format
       args: !SimpleFlagArg
@@ -428,16 +534,9 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: (=6000)       the length of the snapshort regions in the  report
+      description: (=6000)       the length of the snapshort regions in the
       synonyms:
       - --plot_region
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: the gene annotation file
-      synonyms:
-      - --gene_annot_file
       args: !SimpleFlagArg
         name: arg
       optional: true
@@ -472,7 +571,7 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: pad read coverage profile to avoid false  positive summmits
+      description: "pad read coverage profile to avoid false\npositive summmits"
       synonyms:
       - --pad
       args: !EmptyFlagArg {}
@@ -489,11 +588,9 @@ parent: &id001 !Command
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - peakranger
-    - ranger
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: '[ --help ]                   show the usage'
       synonyms:
@@ -524,119 +621,8 @@ parent: &id001 !Command
       \nOther:\n  -h [ --help ]                   show the usage\n  --verbose    \
       \                   show progress\n  --version                       output\
       \ the version number\n"
-    generated_using: *id002
-  - *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: Input
-      optional: false
-    named:
-    - !Flag
-      description: '[ --data ] arg               data file'
-      synonyms:
-      - -d
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[ --control ] arg            control file'
-      synonyms:
-      - -c
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'the format of the data file, can be one of :  bowtie, sam, bam
-        and bed'
-      synonyms:
-      - --format
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: '[ --output ] arg             the output location'
-      synonyms:
-      - -o
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: generate html reports
-      synonyms:
-      - --report
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: (=6000)       the length of the snapshort regions in the  report
-      synonyms:
-      - --plot_region
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: the gene annotation file
-      synonyms:
-      - --gene_annot_file
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: '[ --pval ] arg (=0.0001)     p value cut-off'
-      synonyms:
-      - -p
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: (=500)           sliding window size
-      synonyms:
-      - --win_size
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: '[ --ext_length ] arg (=200)  read extension length'
-      synonyms:
-      - -l
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: show progress
-      synonyms:
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - peakranger
-    - bcp
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: '[ --help ]                   show the usage'
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: output the version number
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "\nbcp 1.18\n\nUsage:\n\nInput:\n  -d [ --data ] arg              \
-      \ data file\n  -c [ --control ] arg            control file\n  --format arg\
-      \                    the format of the data file, can be one of : \n       \
-      \                           bowtie, sam, bam and bed\n\nOutput:\n  -o [ --output\
-      \ ] arg             the output location\n  --report                        generate\
-      \ html reports\n  --plot_region arg (=6000)       the length of the snapshort\
-      \ regions in the \n                                  report\n  --gene_annot_file\
-      \ arg           the gene annotation file\n\nQualities:\n  -p [ --pval ] arg\
-      \ (=0.0001)     p value cut-off\n  --win_size arg (=500)           sliding window\
-      \ size\n  -l [ --ext_length ] arg (=200)  read extension length\n\nOther:\n\
-      \  -h [ --help ]                   show the usage\n  --verbose             \
-      \          show progress\n  --version                       output the version\
-      \ number\n"
-    generated_using: *id002
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -648,8 +634,9 @@ parent: &id001 !Command
     \  generate wiggle files for paired reads\n         ranger  peak calling for sharp\
     \ peaks\n         ccat    peak calling for broad peaks\n         bcp     peak\
     \ calling for complex broad peaks\n\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: '[ --help ]                   show the usage'
   synonyms:
@@ -678,4 +665,4 @@ help_text: "\nccat 1.18\n\nUsage:\n\nInput:\n  -d [ --data ] arg               d
   \ [ --thread ] arg (=7)        number of worker threads\n\nOther:\n  -h [ --help\
   \ ]                   show the usage\n  --verbose                       show progress\n\
   \  --version                       output the version number\n"
-generated_using: *id002
+generated_using: *id003

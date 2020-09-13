@@ -1,188 +1,196 @@
 class: CommandLineTool
 id: ../../../pepquery.cwl
 inputs:
-- id: aa
-  doc: Whether or not to consider aa substitution modifications when perform modification
-    filtering. In default, don't consider.
-  type: boolean
-  inputBinding:
-    prefix: -aa
-- id: an_no
+- id: in_an_no
   doc: Annotation files folder for VCF/BED/GTF
-  type: string
+  type: Directory
   inputBinding:
     prefix: -anno
-- id: max_missed_cleavages
+- id: in_max_missed_cleavages
   doc: The max missed cleavages, default is 2
-  type: string
+  type: long
   inputBinding:
     prefix: -c
-- id: cpu
+- id: in_cpu
   doc: The number of cpus used, default is 1
-  type: string
+  type: long
   inputBinding:
     prefix: -cpu
-- id: db
+- id: in_db
   doc: Fasta format database file
-  type: string
+  type: File
   inputBinding:
     prefix: -db
-- id: decoy
-  doc: In target protein identification mode, try to identity the decoy version of
-    the selected target protein. Default is false.
+- id: in_decoy
+  doc: "In target protein identification mode, try to\nidentity the decoy version\
+    \ of the selected target\nprotein. Default is false."
   type: boolean
   inputBinding:
     prefix: -decoy
-- id: non_enzyme_trypsin
-  doc: 0:Non enzyme, 1:Trypsin (default), 2:Trypsin (no P rule), 3:Arg-C, 4:Arg-C
-    (no P rule), 5:Arg-N, 6:Glu-C, 7:Lys-C
-  type: string
+- id: in_non_enzyme_rule
+  doc: "0:Non enzyme, 1:Trypsin (default), 2:Trypsin (no\nP rule), 3:Arg-C, 4:Arg-C\
+    \ (no P rule), 5:Arg-N,\n6:Glu-C, 7:Lys-C"
+  type: long
   inputBinding:
     prefix: -e
-- id: frame_translate_sequence
-  doc: 'The frame to translate DNA sequence to protein. The right format is like this:
-    "1,2,3,4,5,6","1,2,3","1". "0" means to keep the longest frame. In default, for
-    each frame only the longest protein is used.'
-  type: string
+- id: in_frame_translate_sequence
+  doc: "The frame to translate DNA sequence to protein.\nThe right format is like\
+    \ this:\n\"1,2,3,4,5,6\",\"1,2,3\",\"1\". \"0\" means to keep the\nlongest frame.\
+    \ In default, for each frame only\nthe longest protein is used."
+  type: long
   inputBinding:
     prefix: -f
-- id: fix_mod
-  doc: 'Fixed modification, the format is like : 1,2,3. Default is 6 (Carbamidomethylation(C)[57.02])'
-  type: string
+- id: in_fix_mod
+  doc: "Fixed modification, the format is like : 1,2,3.\nDefault is 6 (Carbamidomethylation(C)[57.02])"
+  type: double
   inputBinding:
     prefix: -fixMod
-- id: fragment_method
+- id: in_fragment_method
   doc: '1: CID/HCD (default), 2: ETD'
-  type: string
+  type: long
   inputBinding:
     prefix: -fragmentMethod
-- id: hc
-  doc: 'When perform validation with unrestricted modification searching (UMS), whether
-    or not to use more stringent criterion. TRUE: score(UMS)>=score(targetPSM); FALSE:
-    score(UMS)>score(targetPSM), default'
+- id: in_hc
+  doc: "When perform validation with unrestricted\nmodification searching (UMS), whether\
+    \ or not to\nuse more stringent criterion. TRUE:\nscore(UMS)>=score(targetPSM);\
+    \ FALSE:\nscore(UMS)>score(targetPSM), default"
   type: boolean
   inputBinding:
     prefix: -hc
-- id: take_protein_dna
+- id: in_take_protein_dna
   doc: Take protein, DNA or VCF as input
   type: string
   inputBinding:
     prefix: -i
-- id: it_ol
+- id: in_it_ol
   doc: Fragment ion m/z tolerance, default is 0.6da
-  type: string
+  type: double
   inputBinding:
     prefix: -itol
-- id: scoring_hyperscore_default
+- id: in_scoring_hyperscore_default
   doc: 'Scoring method: 1=HyperScore (default), 2=MVH'
-  type: string
+  type: long
   inputBinding:
     prefix: -m
-- id: max_charge
-  doc: The maximum charge to consider if the charge state is not available, default
-    is 3
-  type: string
+- id: in_max_charge
+  doc: "The maximum charge to consider if the charge\nstate is not available, default\
+    \ is 3"
+  type: long
   inputBinding:
     prefix: -maxCharge
-- id: maxlength
-  doc: The maximum length of peptide to consider, default is 45
-  type: string
+- id: in_maxlength
+  doc: "The maximum length of peptide to consider,\ndefault is 45"
+  type: long
   inputBinding:
     prefix: -maxLength
-- id: max_var
-  doc: Max number of variable modifications, default is 3
-  type: string
+- id: in_max_var
+  doc: "Max number of variable modifications, default is\n3"
+  type: long
   inputBinding:
     prefix: -maxVar
-- id: min_charge
-  doc: The minimum charge to consider if the charge state is not available, default
-    is 2
-  type: string
+- id: in_min_charge
+  doc: "The minimum charge to consider if the charge\nstate is not available, default\
+    \ is 2"
+  type: long
   inputBinding:
     prefix: -minCharge
-- id: minlength
-  doc: The minimum length of peptide to consider, default is 7
-  type: string
+- id: in_minlength
+  doc: "The minimum length of peptide to consider,\ndefault is 7"
+  type: long
   inputBinding:
     prefix: -minLength
-- id: min_peaks
+- id: in_min_peaks
   doc: Min peaks in spectrum, default is 10
-  type: string
+  type: long
   inputBinding:
     prefix: -minPeaks
-- id: min_score
-  doc: Minimum score to consider for peptide searching, default is 12
-  type: string
+- id: in_min_score
+  doc: "Minimum score to consider for peptide searching,\ndefault is 12"
+  type: long
   inputBinding:
     prefix: -minScore
-- id: ms
+- id: in_ms
   doc: Spectrum file used for identification, mgf format
-  type: string
+  type: File
   inputBinding:
     prefix: -ms
-- id: number_random_peptides
+- id: in_number_random_peptides
   doc: The number of random peptides, default is 1000
-  type: string
+  type: long
   inputBinding:
     prefix: -n
-- id: output_dir
+- id: in_output_dir
   doc: Output dir
   type: string
   inputBinding:
     prefix: -o
-- id: pep
+- id: in_pep
   doc: Peptide sequence which you want to search
   type: string
   inputBinding:
     prefix: -pep
-- id: prefix
+- id: in_prefix
   doc: Output file prefix
-  type: string
+  type: File
   inputBinding:
     prefix: -prefix
-- id: print_ptm
+- id: in_print_ptm
   doc: Print PTMs
   type: boolean
   inputBinding:
     prefix: -printPTM
-- id: input_type_proteindnavcfbedgtf
-  doc: 'Input type: 1=>protein,2=>DNA,3=>VCF,4=>BED,5=>GTF'
-  type: string
+- id: in_input_typeproteindnavcfbedgtf
+  doc: "Input type:\n1=>protein,2=>DNA,3=>VCF,4=>BED,5=>GTF"
+  type: long
   inputBinding:
     prefix: -t
-- id: tag
+- id: in_tag
   doc: A tag file
-  type: string
+  type: File
   inputBinding:
     prefix: -tag
-- id: to_l
+- id: in_to_l
   doc: Precursor ion m/z tolerance, default is 10
-  type: string
+  type: long
   inputBinding:
     prefix: -tol
-- id: to_lu
-  doc: The unit of precursor ion m/z tolerance, default is ppm
+- id: in_to_lu
+  doc: "The unit of precursor ion m/z tolerance, default\nis ppm"
   type: string
   inputBinding:
     prefix: -tolu
-- id: tp
-  doc: Whether or not to perform target protein identification. If you set this parameter,
-    then the input value for -i is a protein ID from the input reference protein database
-    (-db)
+- id: in_tp
+  doc: "Whether or not to perform target protein\nidentification. If you set this\
+    \ parameter, then\nthe input value for -i is a protein ID from the\ninput reference\
+    \ protein database (-db)"
   type: boolean
   inputBinding:
     prefix: -tp
-- id: um
-  doc: Validation with unrestricted modification searching
+- id: in_um
+  doc: Validation with unrestricted modification
   type: boolean
   inputBinding:
     prefix: -um
-- id: varmod
-  doc: 'Variable modification, the format is like : 1,2,3. Default is 117 (Oxidation(M)[15.99])'
+- id: in_options
+  doc: "-aa                     Whether or not to consider aa substitution\nmodifications\
+    \ when perform modification\nfiltering. In default, don't consider."
   type: string
   inputBinding:
-    prefix: -varMod
-outputs: []
+    position: 0
+- id: in_searching
+  doc: '-varMod <arg>           Variable modification, the format is like :'
+  type: string
+  inputBinding:
+    position: 1
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prefix
+  doc: Output file prefix
+  type: File
+  outputBinding:
+    glob: $(inputs.in_prefix)
 cwlVersion: v1.1
 baseCommand:
 - pepquery

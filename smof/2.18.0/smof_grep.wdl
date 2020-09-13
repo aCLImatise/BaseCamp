@@ -30,37 +30,37 @@ task SmofGrep {
     String? gff_type
     String? fasta_in
     String pattern
-    String input_fasta_sequence
+    String input_fasta_default
   }
   command <<<
     smof grep \
       ~{pattern} \
-      ~{input_fasta_sequence} \
-      ~{true="--match-sequence" false="" match_sequence} \
+      ~{input_fasta_default} \
+      ~{if (match_sequence) then "--match-sequence" else ""} \
       ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
-      ~{true="--files-without-match" false="" files_without_match} \
-      ~{true="--files-with-matches" false="" files_with_matches} \
+      ~{if (files_without_match) then "--files-without-match" else ""} \
+      ~{if (files_with_matches) then "--files-with-matches" else ""} \
       ~{if defined(wrap) then ("--wrap " +  '"' + wrap + '"') else ""} \
-      ~{true="--perl-regexp" false="" perl_regexp} \
-      ~{true="--ambiguous-nucl" false="" ambiguous_nucl} \
-      ~{true="--case-sensitive" false="" case_sensitive} \
-      ~{true="--invert-match" false="" invert_match} \
-      ~{true="--only-matching" false="" only_matching} \
+      ~{if (perl_regexp) then "--perl-regexp" else ""} \
+      ~{if (ambiguous_nucl) then "--ambiguous-nucl" else ""} \
+      ~{if (case_sensitive) then "--case-sensitive" else ""} \
+      ~{if (invert_match) then "--invert-match" else ""} \
+      ~{if (only_matching) then "--only-matching" else ""} \
       ~{if defined(before_context) then ("--before-context " +  '"' + before_context + '"') else ""} \
       ~{if defined(after_context) then ("--after-context " +  '"' + after_context + '"') else ""} \
       ~{if defined(context) then ("--context " +  '"' + context + '"') else ""} \
-      ~{true="--count" false="" count} \
-      ~{true="--count-matches" false="" count_matches} \
-      ~{true="--line-regexp" false="" line_regexp} \
-      ~{true="--exact" false="" exact} \
-      ~{true="--gapped" false="" gapped} \
-      ~{true="--both-strands" false="" both_strands} \
-      ~{true="--reverse-only" false="" reverse_only} \
-      ~{true="--no-color" false="" no_color} \
-      ~{true="--force-color" false="" force_color} \
-      ~{true="--preserve-color" false="" preserve_color} \
+      ~{if (count) then "--count" else ""} \
+      ~{if (count_matches) then "--count-matches" else ""} \
+      ~{if (line_regexp) then "--line-regexp" else ""} \
+      ~{if (exact) then "--exact" else ""} \
+      ~{if (gapped) then "--gapped" else ""} \
+      ~{if (both_strands) then "--both-strands" else ""} \
+      ~{if (reverse_only) then "--reverse-only" else ""} \
+      ~{if (no_color) then "--no-color" else ""} \
+      ~{if (force_color) then "--force-color" else ""} \
+      ~{if (preserve_color) then "--preserve-color" else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""} \
-      ~{true="--gff" false="" gff} \
+      ~{if (gff) then "--gff" else ""} \
       ~{if defined(gff_type) then ("--gff-type " +  '"' + gff_type + '"') else ""} \
       ~{if defined(fasta_in) then ("--fastain " +  '"' + fasta_in + '"') else ""}
   >>>
@@ -93,6 +93,9 @@ task SmofGrep {
     gff_type: "name of searched feature"
     fasta_in: "Search for exact sequence matches against FASTA"
     pattern: "pattern to match"
-    input_fasta_sequence: "input fasta sequence (default = stdin)"
+    input_fasta_default: "input fasta sequence (default = stdin)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

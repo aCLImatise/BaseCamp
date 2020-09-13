@@ -29,28 +29,28 @@ task Cpanm {
   command <<<
     cpanm \
       ~{module} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--interactive" false="" interactive} \
-      ~{true="--force" false="" force} \
-      ~{true="--notest" false="" not_est} \
-      ~{true="--test-only" false="" test_only} \
-      ~{true="--sudo" false="" sudo} \
-      ~{true="--installdeps" false="" install_deps} \
-      ~{true="--showdeps" false="" show_deps} \
-      ~{true="--reinstall" false="" reinstall} \
-      ~{true="--mirror" false="" mirror} \
-      ~{true="--mirror-only" false="" mirror_only} \
-      ~{true="--from" false="" from} \
-      ~{true="--prompt" false="" prompt} \
-      ~{true="--local-lib" false="" local_lib} \
-      ~{true="--local-lib-contained" false="" local_lib_contained} \
-      ~{true="--self-contained" false="" self_contained} \
-      ~{true="--auto-cleanup" false="" auto_cleanup} \
-      ~{true="--self-upgrade" false="" self_upgrade} \
-      ~{true="--info" false="" info} \
-      ~{true="--look" false="" look} \
-      ~{true="--uninstall" false="" uninstall}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (interactive) then "--interactive" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (not_est) then "--notest" else ""} \
+      ~{if (test_only) then "--test-only" else ""} \
+      ~{if (sudo) then "--sudo" else ""} \
+      ~{if (install_deps) then "--installdeps" else ""} \
+      ~{if (show_deps) then "--showdeps" else ""} \
+      ~{if (reinstall) then "--reinstall" else ""} \
+      ~{if (mirror) then "--mirror" else ""} \
+      ~{if (mirror_only) then "--mirror-only" else ""} \
+      ~{if (from) then "--from" else ""} \
+      ~{if (prompt) then "--prompt" else ""} \
+      ~{if (local_lib) then "--local-lib" else ""} \
+      ~{if (local_lib_contained) then "--local-lib-contained" else ""} \
+      ~{if (self_contained) then "--self-contained" else ""} \
+      ~{if (auto_cleanup) then "--auto-cleanup" else ""} \
+      ~{if (self_upgrade) then "--self-upgrade" else ""} \
+      ~{if (info) then "--info" else ""} \
+      ~{if (look) then "--look" else ""} \
+      ~{if (uninstall) then "--uninstall" else ""}
   >>>
   parameter_meta {
     verbose: "Turns on chatty output"
@@ -76,5 +76,8 @@ task Cpanm {
     look: "Opens the distribution with your SHELL"
     uninstall: "Uninstalls the modules (EXPERIMENTAL)"
     module: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

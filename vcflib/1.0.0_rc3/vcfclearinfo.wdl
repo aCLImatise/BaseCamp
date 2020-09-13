@@ -4,4 +4,7 @@ task Vcfclearinfo {
   command <<<
     vcfclearinfo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

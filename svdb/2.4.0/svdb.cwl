@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../svdb.cwl
 inputs:
-- id: build
+- id: in_build
   doc: create a db
   type: boolean
   inputBinding:
     prefix: --build
-- id: query
+- id: in_query
   doc: query a db
   type: boolean
   inputBinding:
     prefix: --query
-- id: merge
+- id: in_merge
   doc: merge similar structural variants within a vcf file
   type: boolean
   inputBinding:
     prefix: --merge
-- id: export
+- id: in_export
   doc: export a database
   type: boolean
   inputBinding:
     prefix: --export
-- id: sv_db_two_dot_four_dot_zero
+- id: in_sv_db_two_dot_four_dot_zero
   doc: ''
-  type: string
+  type: double
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svdb

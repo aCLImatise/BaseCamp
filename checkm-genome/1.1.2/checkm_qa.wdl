@@ -3,21 +3,21 @@ version 1.0
 task CheckmQa {
   input {
     String? out_format
-    String? exclude_markers
+    File? exclude_markers
     Boolean? individual_markers
     Boolean? skip_adj_correction
     Boolean? skip_pseudogene_correction
-    String? aai_strain
-    String? alignment_file
+    Float? aai_strain
+    File? alignment_file
     Boolean? ignore_thresholds
-    String? e_value
+    Float? e_value
     Int? length
-    String? coverage_file
+    File? coverage_file
     File? file
     Boolean? tab_table
-    String? threads
+    Int? threads
     Boolean? quiet
-    String? tmpdir
+    Directory? tmpdir
     String marker_file
     String analyze_dir
   }
@@ -27,23 +27,23 @@ task CheckmQa {
       ~{analyze_dir} \
       ~{if defined(out_format) then ("--out_format " +  '"' + out_format + '"') else ""} \
       ~{if defined(exclude_markers) then ("--exclude_markers " +  '"' + exclude_markers + '"') else ""} \
-      ~{true="--individual_markers" false="" individual_markers} \
-      ~{true="--skip_adj_correction" false="" skip_adj_correction} \
-      ~{true="--skip_pseudogene_correction" false="" skip_pseudogene_correction} \
+      ~{if (individual_markers) then "--individual_markers" else ""} \
+      ~{if (skip_adj_correction) then "--skip_adj_correction" else ""} \
+      ~{if (skip_pseudogene_correction) then "--skip_pseudogene_correction" else ""} \
       ~{if defined(aai_strain) then ("--aai_strain " +  '"' + aai_strain + '"') else ""} \
       ~{if defined(alignment_file) then ("--alignment_file " +  '"' + alignment_file + '"') else ""} \
-      ~{true="--ignore_thresholds" false="" ignore_thresholds} \
+      ~{if (ignore_thresholds) then "--ignore_thresholds" else ""} \
       ~{if defined(e_value) then ("--e_value " +  '"' + e_value + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
       ~{if defined(coverage_file) then ("--coverage_file " +  '"' + coverage_file + '"') else ""} \
       ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
-      ~{true="--tab_table" false="" tab_table} \
+      ~{if (tab_table) then "--tab_table" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
   parameter_meta {
-    out_format: "desired output: (default: 1) 1. summary of bin completeness and contamination 2. extended summary of bin statistics (includes GC, genome size, ...) 3. summary of bin quality for increasingly basal lineage-specific marker sets 4. list of marker genes and their counts 5. list of bin id, marker gene id, gene id 6. list of marker genes present multiple times in a bin 7. list of marker genes present multiple times on the same scaffold 8. list indicating position of each marker gene within a bin 9. FASTA file of marker genes identified in each bin"
+    out_format: "desired output: (default: 1)\\n1. summary of bin completeness and contamination\\n2. extended summary of bin statistics (includes GC, genome size, ...)\\n3. summary of bin quality for increasingly basal lineage-specific marker sets\\n4. list of marker genes and their counts\\n5. list of bin id, marker gene id, gene id\\n6. list of marker genes present multiple times in a bin\\n7. list of marker genes present multiple times on the same scaffold\\n8. list indicating position of each marker gene within a bin\\n9. FASTA file of marker genes identified in each bin"
     exclude_markers: "file specifying markers to exclude from marker sets"
     individual_markers: "treat marker as independent (i.e., ignore co-located set structure)"
     skip_adj_correction: "do not exclude adjacent marker genes when estimating contamination"
@@ -61,5 +61,8 @@ task CheckmQa {
     tmpdir: "specify an alternative directory for temporary files"
     marker_file: "marker file specified during analyze command"
     analyze_dir: "directory specified during analyze command"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

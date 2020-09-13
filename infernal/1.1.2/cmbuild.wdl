@@ -2,41 +2,41 @@ version 1.0
 
 task Cmbuild {
   input {
-    String? name_cms_s
+    File? name_cms_s
     Boolean? force_allow_overwriting
-    String? direct_summary_output
-    String? resave_consensusinsert_column
+    File? direct_summary_output
+    File? resave_consensusinsert_column
     Boolean? devhelp
     Boolean? fast
     Boolean? hand
-    String? sym_frac
+    Float? sym_frac
     Boolean? noss
-    String? r_search
-    String? null
-    String? prior
+    File? r_search
+    File? null
+    File? prior
     Boolean? wpb
     Boolean? wgs_c
     Boolean? w_none
     Boolean? w_given
     Boolean? w_blosum
-    String? wid
+    Float? wid
     Boolean? e_ent
     Boolean? en_one
     String? ere
     String? e_set
-    String? emin_seq
+    Int? emin_seq
     String? e_hmm_re
-    String? e_sigma
-    String? pse_venere
+    Float? e_sigma
+    Int? pse_venere
     Boolean? p_seven_ml
-    String? emn
-    String? evn
-    String? elf_n
-    String? eg_fn
+    Int? emn
+    Int? evn
+    Int? elf_n
+    Int? eg_fn
     String? refine
     Boolean? wrefine_configure_model
     Boolean? gibbs
-    String? seed
+    Int? seed
     Boolean? cy_k
     Boolean? not_run_c
     Boolean? options
@@ -48,43 +48,43 @@ task Cmbuild {
       ~{cm_file_out} \
       ~{msa_file} \
       ~{if defined(name_cms_s) then ("-n " +  '"' + name_cms_s + '"') else ""} \
-      ~{true="-F" false="" force_allow_overwriting} \
+      ~{if (force_allow_overwriting) then "-F" else ""} \
       ~{if defined(direct_summary_output) then ("-o " +  '"' + direct_summary_output + '"') else ""} \
       ~{if defined(resave_consensusinsert_column) then ("-O " +  '"' + resave_consensusinsert_column + '"') else ""} \
-      ~{true="--devhelp" false="" devhelp} \
-      ~{true="--fast" false="" fast} \
-      ~{true="--hand" false="" hand} \
+      ~{if (devhelp) then "--devhelp" else ""} \
+      ~{if (fast) then "--fast" else ""} \
+      ~{if (hand) then "--hand" else ""} \
       ~{if defined(sym_frac) then ("--symfrac " +  '"' + sym_frac + '"') else ""} \
-      ~{true="--noss" false="" noss} \
+      ~{if (noss) then "--noss" else ""} \
       ~{if defined(r_search) then ("--rsearch " +  '"' + r_search + '"') else ""} \
       ~{if defined(null) then ("--null " +  '"' + null + '"') else ""} \
       ~{if defined(prior) then ("--prior " +  '"' + prior + '"') else ""} \
-      ~{true="--wpb" false="" wpb} \
-      ~{true="--wgsc" false="" wgs_c} \
-      ~{true="--wnone" false="" w_none} \
-      ~{true="--wgiven" false="" w_given} \
-      ~{true="--wblosum" false="" w_blosum} \
+      ~{if (wpb) then "--wpb" else ""} \
+      ~{if (wgs_c) then "--wgsc" else ""} \
+      ~{if (w_none) then "--wnone" else ""} \
+      ~{if (w_given) then "--wgiven" else ""} \
+      ~{if (w_blosum) then "--wblosum" else ""} \
       ~{if defined(wid) then ("--wid " +  '"' + wid + '"') else ""} \
-      ~{true="--eent" false="" e_ent} \
-      ~{true="--enone" false="" en_one} \
+      ~{if (e_ent) then "--eent" else ""} \
+      ~{if (en_one) then "--enone" else ""} \
       ~{if defined(ere) then ("--ere " +  '"' + ere + '"') else ""} \
       ~{if defined(e_set) then ("--eset " +  '"' + e_set + '"') else ""} \
       ~{if defined(emin_seq) then ("--eminseq " +  '"' + emin_seq + '"') else ""} \
       ~{if defined(e_hmm_re) then ("--ehmmre " +  '"' + e_hmm_re + '"') else ""} \
       ~{if defined(e_sigma) then ("--esigma " +  '"' + e_sigma + '"') else ""} \
       ~{if defined(pse_venere) then ("--p7ere " +  '"' + pse_venere + '"') else ""} \
-      ~{true="--p7ml" false="" p_seven_ml} \
+      ~{if (p_seven_ml) then "--p7ml" else ""} \
       ~{if defined(emn) then ("--EmN " +  '"' + emn + '"') else ""} \
       ~{if defined(evn) then ("--EvN " +  '"' + evn + '"') else ""} \
       ~{if defined(elf_n) then ("--ElfN " +  '"' + elf_n + '"') else ""} \
       ~{if defined(eg_fn) then ("--EgfN " +  '"' + eg_fn + '"') else ""} \
       ~{if defined(refine) then ("--refine " +  '"' + refine + '"') else ""} \
-      ~{true="-l" false="" wrefine_configure_model} \
-      ~{true="--gibbs" false="" gibbs} \
+      ~{if (wrefine_configure_model) then "-l" else ""} \
+      ~{if (gibbs) then "--gibbs" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="--cyk" false="" cy_k} \
-      ~{true="--notrunc" false="" not_run_c} \
-      ~{true="-options" false="" options}
+      ~{if (cy_k) then "--cyk" else ""} \
+      ~{if (not_run_c) then "--notrunc" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     name_cms_s: ": name the CM(s) <s>, (only if single aln in file)"
@@ -127,5 +127,9 @@ task Cmbuild {
     options: ""
     cm_file_out: ""
     msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_direct_summary_output = "${in_direct_summary_output}"
   }
 }

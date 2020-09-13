@@ -4,4 +4,7 @@ task MakerFunctionalFasta {
   command <<<
     maker_functional_fasta
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

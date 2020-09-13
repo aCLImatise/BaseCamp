@@ -1,4 +1,6 @@
 !Command
+command:
+- efn2-smp
 positional:
 - !Positional
   description: ''
@@ -15,14 +17,134 @@ positional:
   position: 2
   name: output file
   optional: false
-named: []
-command:
-- efn2-smp
+named:
+- !Flag
+  description: "Specify that the sequence is DNA, and DNA parameters are to be used.\n\
+    Default is to use RNA parameters."
+  synonyms:
+  - -d
+  - -D
+  - --DNA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not calculate experimental uncertainties
+  synonyms:
+  - --ne
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Print the simple list file to standard output. This won't override\
+    \ default\nbehavior of writing to a file. Thermodynamic files (if written) are\
+    \ not\npiped. This option implies --quiet."
+  synonyms:
+  - -p
+  - -P
+  - --print
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Suppress unnecessary output. This option is implied when the output\
+    \ file is\n'-' (STDOUT) or when the --print flag is present."
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the simple energy function for multibranch loops, used by\
+    \ the\ndynamic programming algorithms (Fold, partition, stochastic, AllSub, etc.),\n\
+    should be used. If this is not specified, an more sophisticated energy\nfunction\
+    \ is used, and the energies might not match those estimated for\nstructures during\
+    \ structure prediction."
+  synonyms:
+  - -s
+  - -S
+  - --simple
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write a thermodynamic details file. The thermodynamic details file\
+    \ replaces\nthe list file that is outputted by default."
+  synonyms:
+  - -w
+  - -W
+  - --writedetails
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of a folding alphabet and associated nearest neighbor\n\
+    parameters. The alphabet is the prefix for the thermodynamic parameter\nfiles,\
+    \ e.g. \"rna\" for RNA parameters or \"dna\" for DNA parameters or a\ncustom extended/modified\
+    \ alphabet. The thermodynamic parameters need to\nreside in the at the location\
+    \ indicated by environment variable DATAPATH.\nThe default is \"rna\" (i.e. use\
+    \ RNA parameters). This option overrides the\n--DNA flag."
+  synonyms:
+  - -a
+  - --alphabet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify a file where parameter usage counts will be exported
+  synonyms:
+  - -c
+  - -C
+  - --count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a SHAPE constraints file to be applied. These constraints\
+    \ are\npseudoenergy constraints.\nDefault is to have no constraints applied."
+  synonyms:
+  - -sh
+  - -SH
+  - --SHAPE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify an intercept used with SHAPE constraints.\nDefault is -0.6\
+    \ kcal/mol."
+  synonyms:
+  - -si
+  - -SI
+  - --SHAPEintercept
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a slope used with SHAPE constraints.\nDefault is 1.8 kcal/mol."
+  synonyms:
+  - -sm
+  - -SM
+  - --SHAPEslope
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the temperature at which calculation takes place in Kelvin.\n\
+    Default is 310.15 K, which is 37 degrees C.\n"
+  synonyms:
+  - -t
+  - -T
+  - --temperature
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: efn2 <ct file> <output file> [options]\nAll flags are case-insensitive,\
   \ and grouping of flags is not allowed.\n\n=============================\n==== Required\
   \ Parameters ====\n=============================\n<ct file>\n    The name of a file\

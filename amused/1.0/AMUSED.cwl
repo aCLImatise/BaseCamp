@@ -1,82 +1,90 @@
 class: CommandLineTool
 id: ../../../AMUSED.cwl
 inputs:
-- id: _query_sequences
+- id: in__query_sequences
   doc: = query sequences
   type: string
   inputBinding:
     prefix: -q
-- id: compare_seqs_background
+- id: in_compare_seqs_background
   doc: = compare seqs to these background seqs
   type: string
   inputBinding:
     prefix: -b
-- id: bp
+- id: in_bp
   doc: = pseudocount to add to background [default=0.5]
-  type: string
+  type: double
   inputBinding:
     prefix: -bp
-- id: _output_file
+- id: in__output_file
   doc: = output file
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: max_nmer_consider
+- id: in_max_nmer_consider
   doc: = max n-mer to consider [default=8]
   type: long
   inputBinding:
     prefix: -s
-- id: minimum_absolute_subzscore
+- id: in_minimum_absolute_subzscore
   doc: = minimum absolute Sub-Z-score [default = 0; print all]
-  type: string
+  type: long
   inputBinding:
     prefix: -z
-- id: number_cpu_use
+- id: in_number_cpu_use
   doc: = number of CPU threads to use [default=1]
-  type: string
+  type: long
   inputBinding:
     prefix: -t
-- id: one_p
+- id: in_one_p
   doc: '= sequences not in fasta format: each line is a full sequence'
   type: boolean
   inputBinding:
     prefix: -1p
-- id: ng
+- id: in_ng
   doc: = no inserting gaps
   type: boolean
   inputBinding:
     prefix: -ng
-- id: nu
+- id: in_nu
   doc: = no changing to upper case before scan (non ATGC bases are discarded)
   type: boolean
   inputBinding:
     prefix: -nu
-- id: ds
+- id: in_ds
   doc: = double stranded (reverse complement sequences too)
   type: boolean
   inputBinding:
     prefix: -ds
-- id: ns
+- id: in_ns
   doc: = don't sort
   type: boolean
   inputBinding:
     prefix: -ns
-- id: do
+- id: in_do
   doc: '= descriptive output: lots of intermediate values also output (but many columns)'
   type: boolean
   inputBinding:
     prefix: -do
-- id: bc
+- id: in_bc
   doc: = add lines to output for base content
   type: boolean
   inputBinding:
     prefix: -bc
-- id: n_sz
+- id: in_n_sz
   doc: = don't calculate super Zs
   type: boolean
   inputBinding:
     prefix: -nsz
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out__output_file
+  doc: = output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in__output_file)
 cwlVersion: v1.1
 baseCommand:
 - AMUSED

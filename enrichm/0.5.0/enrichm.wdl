@@ -4,4 +4,7 @@ task Enrichm {
   command <<<
     enrichm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

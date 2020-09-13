@@ -1,8 +1,8 @@
 version 1.0
 
-task SvtkCollectPesr {
+task SvtkCollectpesr {
   input {
-    String? index_dir
+    Directory? index_dir
     String? region
     Boolean? b_gzip
     String bam
@@ -11,22 +11,25 @@ task SvtkCollectPesr {
     String disc_file
   }
   command <<<
-    svtk collect-pesr \
+    svtk collect_pesr \
       ~{bam} \
       ~{sample} \
       ~{split_file} \
       ~{disc_file} \
       ~{if defined(index_dir) then ("--index-dir " +  '"' + index_dir + '"') else ""} \
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
-      ~{true="--bgzip" false="" b_gzip}
+      ~{if (b_gzip) then "--bgzip" else ""}
   >>>
   parameter_meta {
-    index_dir: "Directory of local BAM indexes if accessing a remote S3 bam."
+    index_dir: "Directory of local BAM indexes if accessing a remote\\nS3 bam."
     region: "Tabix-formatted region to parse"
     b_gzip: "bgzip and tabix index output"
     bam: "Local or S3 path to bam"
     sample: "ID to append to each line of output files."
     split_file: "Output split counts."
     disc_file: "Output discordant pairs."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

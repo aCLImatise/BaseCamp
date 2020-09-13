@@ -4,4 +4,7 @@ task Alfred {
   command <<<
     alfred
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

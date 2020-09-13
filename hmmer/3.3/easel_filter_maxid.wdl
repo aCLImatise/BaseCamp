@@ -3,15 +3,15 @@ version 1.0
 task EaselFilterMaxid {
   input {
     Boolean? options
-    String msa_file
   }
   command <<<
     easel filter maxid \
-      ~{msa_file} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
-    msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

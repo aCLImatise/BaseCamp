@@ -1,7 +1,10 @@
 version 1.0
 
-task 2bwtBuilder {
+task Bwtbuilder {
   command <<<
-    2bwt-builder
+    _bwt_builder
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

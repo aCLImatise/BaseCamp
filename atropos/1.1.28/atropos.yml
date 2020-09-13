@@ -1,12 +1,14 @@
 &id001 !Command
+command:
+- atropos
 positional: []
 named:
 - !Flag
   description: ''
   synonyms:
-  - -a
+  - -se
   args: !SimpleFlagArg
-    name: ADAPTER
+    name: input.fastq
   optional: true
 - !Flag
   description: ''
@@ -18,15 +20,16 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -se
+  - -a
   args: !SimpleFlagArg
-    name: input.fastq
+    name: ADAPTER
   optional: true
-command:
-- atropos
 parent:
 subcommands:
 - !Command
+  command:
+  - atropos
+  - trim
   positional: []
   named:
   - !Flag
@@ -36,8 +39,8 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Show progress. bar = show progress bar; msg = show a status message.
-      (no)
+    description: "Show progress. bar = show progress bar; msg = show a\nstatus message.\
+      \ (no)"
     synonyms:
     - --progress
     args: !ChoiceFlagArg
@@ -57,10 +60,10 @@ subcommands:
     - --log-level
     args: !ChoiceFlagArg
       choices: !!set
+        ? DEBUG
         ? ERROR
         ? WARN
         ? INFO
-        ? DEBUG
     optional: true
   - !Flag
     description: File to write logging info. (stdout)
@@ -102,9 +105,9 @@ subcommands:
       name: FILE
     optional: true
   - !Flag
-    description: When treating an interleaved FASTQ or paired-end SAM/BAM file as
-      single-end, this option specifies which of the two reads to process. (both reads
-      used)
+    description: "When treating an interleaved FASTQ or paired-end\nSAM/BAM file as\
+      \ single-end, this option specifies\nwhich of the two reads to process. (both\
+      \ reads used)"
     synonyms:
     - --single-input-read
     args: !ChoiceFlagArg
@@ -121,8 +124,8 @@ subcommands:
       name: FILE
     optional: true
   - !Flag
-    description: Accession to stream from SRA (requires optional NGS dependency to
-      be installed).
+    description: "Accession to stream from SRA (requires optional NGS\ndependency\
+      \ to be installed)."
     synonyms:
     - -sra
     - --sra-accession
@@ -130,23 +133,23 @@ subcommands:
       name: ACCN
     optional: true
   - !Flag
-    description: Input file format. Ignored when reading csfasta/qual files. (auto-detect
-      from file name extension)
+    description: "Input file format. Ignored when reading csfasta/qual\nfiles. (auto-detect\
+      \ from file name extension)"
     synonyms:
     - -f
     - --format
     args: !ChoiceFlagArg
       choices: !!set
+        ? sam
+        ? fasta
+        ? fastq
         ? sra-fastq
         ? bam
-        ? sam
-        ? fastq
-        ? fasta
     optional: true
   - !Flag
-    description: Assume that quality values in FASTQ are encoded as ascii(quality
-      + QUALITY_BASE). This needs to be set to 64 for some old Illumina FASTQ files.
-      (33)
+    description: "Assume that quality values in FASTQ are encoded as\nascii(quality\
+      \ + QUALITY_BASE). This needs to be set to\n64 for some old Illumina FASTQ files.\
+      \ (33)"
     synonyms:
     - -Q
     - --quality-base
@@ -154,8 +157,8 @@ subcommands:
       name: QUALITY_BASE
     optional: true
   - !Flag
-    description: 'Enable colorspace mode: Also trim the color that is adjacent to
-      the found adapter. (no)'
+    description: "Enable colorspace mode: Also trim the color that is\nadjacent to\
+      \ the found adapter. (no)"
     synonyms:
     - -c
     - --colorspace
@@ -176,8 +179,8 @@ subcommands:
       name: PROB
     optional: true
   - !Flag
-    description: The seed to use for the pseudorandom number generator. Using the
-      same seed will result in the same subsampling of reads.
+    description: "The seed to use for the pseudorandom number generator.\nUsing the\
+      \ same seed will result in the same\nsubsampling of reads."
     synonyms:
     - --subsample-seed
     args: !SimpleFlagArg
@@ -199,17 +202,17 @@ subcommands:
       name: ID
     optional: true
   - !Flag
-    description: Specify a sequence alphabet to use for validating inputs. Currently,
-      only 'dna' is supported. (no validation)
+    description: "Specify a sequence alphabet to use for validating\ninputs. Currently,\
+      \ only 'dna' is supported. (no\nvalidation)"
     synonyms:
     - --alphabet
     args: !SimpleFlagArg
       name: NAME
     optional: true
   - !Flag
-    description: "Sequence of an adapter ligated to the 3' end (paired data: of the\
-      \ first read). The adapter and subsequent bases are trimmed. If a '$' character\
-      \ is appended ('anchoring'), the adapter is only found if it is a suffix of\
+    description: "Sequence of an adapter ligated to the 3' end (paired\ndata: of the\
+      \ first read). The adapter and subsequent\nbases are trimmed. If a '$' character\
+      \ is appended\n('anchoring'), the adapter is only found if it is a\nsuffix of\
       \ the read. (none)"
     synonyms:
     - -a
@@ -218,10 +221,10 @@ subcommands:
       name: ADAPTER
     optional: true
   - !Flag
-    description: "Sequence of an adapter ligated to the 5' end (paired data: of the\
-      \ first read). The adapter and any preceding bases are trimmed. Partial matches\
-      \ at the 5' end are allowed. If a '^' character is prepended ('anchoring'),\
-      \ the adapter is only found if it is a prefix of the read. (none)"
+    description: "Sequence of an adapter ligated to the 5' end (paired\ndata: of the\
+      \ first read). The adapter and any\npreceding bases are trimmed. Partial matches\
+      \ at the 5'\nend are allowed. If a '^' character is prepended\n('anchoring'),\
+      \ the adapter is only found if it is a\nprefix of the read. (none)"
     synonyms:
     - -g
     - --front
@@ -229,12 +232,12 @@ subcommands:
       name: ADAPTER
     optional: true
   - !Flag
-    description: "Sequence of an adapter that may be ligated to the 5' or 3' end (paired\
-      \ data: of the first read). Both types of matches as described under -a und\
-      \ -g are allowed. If the first base of the read is part of the match, the behavior\
-      \ is as with -g, otherwise as with -a. This option is mostly for rescuing failed\
-      \ library preparations - do not use if you know which end your adapter was ligated\
-      \ to! (none)"
+    description: "Sequence of an adapter that may be ligated to the 5'\nor 3' end\
+      \ (paired data: of the first read). Both types\nof matches as described under\
+      \ -a und -g are allowed.\nIf the first base of the read is part of the match,\n\
+      the behavior is as with -g, otherwise as with -a. This\noption is mostly for\
+      \ rescuing failed library\npreparations - do not use if you know which end your\n\
+      adapter was ligated to! (none)"
     synonyms:
     - -b
     - --anywhere
@@ -242,7 +245,7 @@ subcommands:
       name: ADAPTER
     optional: true
   - !Flag
-    description: Path or URL of a FASTA file containing adapter sequences.
+    description: "Path or URL of a FASTA file containing adapter\nsequences."
     synonyms:
     - -F
     - --known-adapters-file
@@ -250,35 +253,35 @@ subcommands:
       name: KNOWN_ADAPTERS_FILE
     optional: true
   - !Flag
-    description: Don't fetch the default adapter list (which is currently stored in
-      GitHub).
+    description: "Don't fetch the default adapter list (which is\ncurrently stored\
+      \ in GitHub)."
     synonyms:
     - --no-default-adapters
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: File where adapter sequences will be cached, unless --no-cache-adapters
-      is set.
+    description: "File where adapter sequences will be cached, unless\n--no-cache-adapters\
+      \ is set."
     synonyms:
     - --adapter-cache-file
     args: !SimpleFlagArg
       name: ADAPTER_CACHE_FILE
     optional: true
   - !Flag
-    description: Don't cache adapters list as '.adapters' in the working directory.
+    description: "Don't cache adapters list as '.adapters' in the\nworking directory."
     synonyms:
     - --no-cache-adapters
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Match and redirect reads to output/untrimmed-output as usual, but
-      do not remove adapters. (no)
+    description: "Match and redirect reads to output/untrimmed-output as\nusual, but\
+      \ do not remove adapters. (no)"
     synonyms:
     - --no-trim
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Mask adapters with 'N' characters instead of trimming them. (no)
+    description: "Mask adapters with 'N' characters instead of trimming\nthem. (no)"
     synonyms:
     - --mask-adapter
     args: !EmptyFlagArg {}
@@ -291,12 +294,12 @@ subcommands:
       name: GC_CONTENT
     optional: true
   - !Flag
-    description: Which alignment algorithm to use for identifying adapters. Currently,
-      you can choose between the semi- global alignment strategy used in Cutdapt ('adapter')
-      or the more accurate insert-based alignment algorithm ('insert'). Note that
-      insert-based alignment can only be used with paired-end reads containing 3'
-      adapters. New algorithms are being implemented and the default is likely to
-      change. (adapter)
+    description: "Which alignment algorithm to use for identifying\nadapters. Currently,\
+      \ you can choose between the semi-\nglobal alignment strategy used in Cutdapt\
+      \ ('adapter')\nor the more accurate insert-based alignment algorithm\n('insert').\
+      \ Note that insert-based alignment can only\nbe used with paired-end reads containing\
+      \ 3' adapters.\nNew algorithms are being implemented and the default\nis likely\
+      \ to change. (adapter)"
     synonyms:
     - --aligner
     args: !ChoiceFlagArg
@@ -305,8 +308,8 @@ subcommands:
         ? insert
     optional: true
   - !Flag
-    description: Maximum allowed error rate for adapter match (no. of errors divided
-      by the length of the matching region). (0.1)
+    description: "Maximum allowed error rate for adapter match (no. of\nerrors divided\
+      \ by the length of the matching region).\n(0.1)"
     synonyms:
     - -e
     - --error-rate
@@ -314,15 +317,16 @@ subcommands:
       name: ERROR_RATE
     optional: true
   - !Flag
-    description: Integer cost of insertions and deletions during adapter match. Substitutions
-      always have a cost of 1. (1)
+    description: "Integer cost of insertions and deletions during\nadapter match.\
+      \ Substitutions always have a cost of 1.\n(1)"
     synonyms:
     - --indel-cost
     args: !SimpleFlagArg
       name: COST
     optional: true
   - !Flag
-    description: Allow only mismatches in alignments. (allow both mismatches and indels)
+    description: "Allow only mismatches in alignments. (allow both\nmismatches and\
+      \ indels)"
     synonyms:
     - --no-indels
     args: !EmptyFlagArg {}
@@ -349,9 +353,9 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: If the overlap between the read and the adapter is shorter than MINLENGTH,
-      the read is not modified. Reduces the no. of bases trimmed due to random adapter
-      matches. (3)
+    description: "If the overlap between the read and the adapter is\nshorter than\
+      \ MINLENGTH, the read is not modified.\nReduces the no. of bases trimmed due\
+      \ to random adapter\nmatches. (3)"
     synonyms:
     - -O
     - --overlap
@@ -359,50 +363,52 @@ subcommands:
       name: MINLENGTH
     optional: true
   - !Flag
-    description: If no minimum overlap (-O) is specified, then adapters are only matched
-      when the probabilty of observing k out of n matching bases is <= PROB. (1E-6)
+    description: "If no minimum overlap (-O) is specified, then adapters\nare only\
+      \ matched when the probabilty of observing k\nout of n matching bases is <=\
+      \ PROB. (1E-6)"
     synonyms:
     - --adapter-max-rmp
     args: !SimpleFlagArg
       name: PROB
     optional: true
   - !Flag
-    description: Overlapping inserts only match when the probablity of observing k
-      of n matching bases is <= PROB. (1E-6)
+    description: "Overlapping inserts only match when the probablity of\nobserving\
+      \ k of n matching bases is <= PROB. (1E-6)"
     synonyms:
     - --insert-max-rmp
     args: !SimpleFlagArg
       name: PROB
     optional: true
   - !Flag
-    description: Maximum allowed error rate for insert match (no. of errors divided
-      by the length of the matching region). (0.2)
+    description: "Maximum allowed error rate for insert match (no. of\nerrors divided\
+      \ by the length of the matching region).\n(0.2)"
     synonyms:
     - --insert-match-error-rate
     args: !SimpleFlagArg
       name: INSERT_MATCH_ERROR_RATE
     optional: true
   - !Flag
-    description: Maximum allowed error rate for matching adapters after successful
-      insert match (no. of errors divided by the length of the matching region). (0.2)
+    description: "Maximum allowed error rate for matching adapters after\nsuccessful\
+      \ insert match (no. of errors divided by the\nlength of the matching region).\
+      \ (0.2)"
     synonyms:
     - --insert-match-adapter-error-rate
     args: !SimpleFlagArg
       name: INSERT_MATCH_ADAPTER_ERROR_RATE
     optional: true
   - !Flag
-    description: Merge read pairs that overlap into a single sequence. This is experimental.
-      (no)
+    description: "Merge read pairs that overlap into a single sequence.\nThis is experimental.\
+      \ (no)"
     synonyms:
     - -R
     - --merge-overlapping
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: The minimum overlap between reads required for merging. If this number
-      is (0,1.0], it specifies the minimum length as the fraction of the length of
-      the *shorter* read in the pair; otherwise it specifies the minimum number of
-      overlapping base pairs (with an absolute minimum of 2 bp). (0.9)
+    description: "The minimum overlap between reads required for\nmerging. If this\
+      \ number is (0,1.0], it specifies the\nminimum length as the fraction of the\
+      \ length of the\n*shorter* read in the pair; otherwise it specifies the\nminimum\
+      \ number of overlapping base pairs (with an\nabsolute minimum of 2 bp). (0.9)"
     synonyms:
     - --merge-min-overlap
     args: !SimpleFlagArg
@@ -416,35 +422,36 @@ subcommands:
       name: MERGE_ERROR_RATE
     optional: true
   - !Flag
-    description: How to handle mismatches while aligning/merging. 'Liberal' and 'conservative'
-      error correction both involve setting the base to the one with the best quality.
-      They differ only when the qualities are equal -- liberal means set it to the
-      base from the read with the overall best median base quality, while conservative
-      means to leave it unchanged. 'N' means to set the base to N. If exactly one
-      base is ambiguous, the non-ambiguous base is always used. (no error correction)
+    description: "How to handle mismatches while aligning/merging.\n'Liberal' and\
+      \ 'conservative' error correction both\ninvolve setting the base to the one\
+      \ with the best\nquality. They differ only when the qualities are equal\n--\
+      \ liberal means set it to the base from the read with\nthe overall best median\
+      \ base quality, while\nconservative means to leave it unchanged. 'N' means to\n\
+      set the base to N. If exactly one base is ambiguous,\nthe non-ambiguous base\
+      \ is always used. (no error\ncorrection)"
     synonyms:
     - --correct-mismatches
     args: !ChoiceFlagArg
       choices: !!set
+        ? conservative
         ? liberal
         ? N
-        ? conservative
     optional: true
   - !Flag
-    description: "The order in which trimming operations are be applied. This is a\
-      \ string of 1-5 of the following characters: A = adapter trimming; C = cutting\
-      \ (unconditional); G = NextSeq trimming; Q = quality trimming; W = overwrite\
-      \ poor quality reads. The default is 'WCGQA' to maintain compatibility with\
-      \ Cutadapt; however, this is likely to change to 'GAWCQ' in the near future."
+    description: "The order in which trimming operations are be applied.\nThis is\
+      \ a string of 1-5 of the following characters: A\n= adapter trimming; C = cutting\
+      \ (unconditional); G =\nNextSeq trimming; Q = quality trimming; W = overwrite\n\
+      poor quality reads. The default is 'WCGQA' to maintain\ncompatibility with Cutadapt;\
+      \ however, this is likely\nto change to 'GAWCQ' in the near future."
     synonyms:
     - --op-order
     args: !SimpleFlagArg
       name: OP_ORDER
     optional: true
   - !Flag
-    description: Remove bases from each read (first read only if paired). If LENGTH
-      is positive, remove bases from the beginning. If LENGTH is negative, remove
-      bases from the end. Can be used twice if LENGTHs have different signs. (no)
+    description: "Remove bases from each read (first read only if\npaired). If LENGTH\
+      \ is positive, remove bases from the\nbeginning. If LENGTH is negative, remove\
+      \ bases from\nthe end. Can be used twice if LENGTHs have different\nsigns. (no)"
     synonyms:
     - -u
     - --cut
@@ -452,18 +459,18 @@ subcommands:
       name: LENGTH
     optional: true
   - !Flag
-    description: "[5'CUTOFF,]3'CUTOFF, --quality-cutoff [5'CUTOFF,]3'CUTOFF Trim low-quality\
-      \ bases from 5' and/or 3' ends of each read before adapter removal. Applied\
-      \ to both reads if data is paired. If one value is given, only the 3' end is\
-      \ trimmed. If two comma-separated cutoffs are given, the 5' end is trimmed with\
-      \ the first cutoff, the 3' end with the second. (no)"
+    description: "[5'CUTOFF,]3'CUTOFF, --quality-cutoff [5'CUTOFF,]3'CUTOFF\nTrim\
+      \ low-quality bases from 5' and/or 3' ends of each\nread before adapter removal.\
+      \ Applied to both reads if\ndata is paired. If one value is given, only the\
+      \ 3' end\nis trimmed. If two comma-separated cutoffs are given,\nthe 5' end\
+      \ is trimmed with the first cutoff, the 3'\nend with the second. (no)"
     synonyms:
     - -q
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Similar to -u, except that cutting is done AFTER adapter trimming,
-      and only if a minimum of LENGTH bases was not already removed. (no)
+    description: "Similar to -u, except that cutting is done AFTER\nadapter trimming,\
+      \ and only if a minimum of LENGTH\nbases was not already removed. (no)"
     synonyms:
     - -i
     - --cut-min
@@ -471,8 +478,8 @@ subcommands:
       name: LENGTH
     optional: true
   - !Flag
-    description: "'CUTOFF NextSeq-specific quality trimming (each read). Trims also\
-      \ dark cycles appearing as high-quality G bases (EXPERIMENTAL). (no)"
+    description: "'CUTOFF\nNextSeq-specific quality trimming (each read). Trims\n\
+      also dark cycles appearing as high-quality G bases\n(EXPERIMENTAL). (no)"
     synonyms:
     - --nextseq-trim
     args: !SimpleFlagArg
@@ -485,8 +492,8 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Add this prefix to read names. Use {name} to insert the name of the
-      matching adapter. (no)
+    description: "Add this prefix to read names. Use {name} to insert\nthe name of\
+      \ the matching adapter. (no)"
     synonyms:
     - -x
     - --prefix
@@ -494,7 +501,7 @@ subcommands:
       name: PREFIX
     optional: true
   - !Flag
-    description: Add this suffix to read names; can also include {name}. (no)
+    description: "Add this suffix to read names; can also include\n{name}. (no)"
     synonyms:
     - -y
     - --suffix
@@ -502,26 +509,26 @@ subcommands:
       name: SUFFIX
     optional: true
   - !Flag
-    description: Remove this suffix from read names if present. Can be given multiple
-      times. (no)
+    description: "Remove this suffix from read names if present. Can be\ngiven multiple\
+      \ times. (no)"
     synonyms:
     - --strip-suffix
     args: !SimpleFlagArg
       name: STRIP_SUFFIX
     optional: true
   - !Flag
-    description: Search for TAG followed by a decimal number in the description field
-      of the read. Replace the decimal number with the correct length of the trimmed
-      read. For example, use --length-tag 'length=' to correct fields like 'length=123'.
-      (no)
+    description: "Search for TAG followed by a decimal number in the\ndescription\
+      \ field of the read. Replace the decimal\nnumber with the correct length of\
+      \ the trimmed read.\nFor example, use --length-tag 'length=' to correct\nfields\
+      \ like 'length=123'. (no)"
     synonyms:
     - --length-tag
     args: !SimpleFlagArg
       name: TAG
     optional: true
   - !Flag
-    description: Discard reads that contain an adapter. Also use -O to avoid discarding
-      too many randomly matching reads! (no)
+    description: "Discard reads that contain an adapter. Also use -O to\navoid discarding\
+      \ too many randomly matching reads!\n(no)"
     synonyms:
     - --discard-trimmed
     - --discard
@@ -535,9 +542,9 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Discard trimmed reads that are shorter than LENGTH. Reads that are
-      too short even before adapter removal are also discarded. In colorspace, an
-      initial primer is not counted. (0)
+    description: "Discard trimmed reads that are shorter than LENGTH.\nReads that\
+      \ are too short even before adapter removal\nare also discarded. In colorspace,\
+      \ an initial primer\nis not counted. (0)"
     synonyms:
     - -m
     - --minimum-length
@@ -545,9 +552,9 @@ subcommands:
       name: LENGTH
     optional: true
   - !Flag
-    description: Discard trimmed reads that are longer than LENGTH. Reads that are
-      too long even before adapter removal are also discarded. In colorspace, an initial
-      primer is not counted. (no limit)
+    description: "Discard trimmed reads that are longer than LENGTH.\nReads that are\
+      \ too long even before adapter removal\nare also discarded. In colorspace, an\
+      \ initial primer\nis not counted. (no limit)"
     synonyms:
     - -M
     - --maximum-length
@@ -555,18 +562,18 @@ subcommands:
       name: LENGTH
     optional: true
   - !Flag
-    description: Discard reads with too many N bases. If COUNT is an integer, it is
-      treated as the absolute number of N bases. If it is between 0 and 1, it is treated
-      as the proportion of N's allowed in a read. (no)
+    description: "Discard reads with too many N bases. If COUNT is an\ninteger, it\
+      \ is treated as the absolute number of N\nbases. If it is between 0 and 1, it\
+      \ is treated as the\nproportion of N's allowed in a read. (no)"
     synonyms:
     - --max-n
     args: !SimpleFlagArg
       name: COUNT
     optional: true
   - !Flag
-    description: Write trimmed reads to FILE. FASTQ or FASTA format is chosen depending
-      on input. The summary report is sent to standard output. Use '{name}' in FILE
-      to demultiplex reads into multiple files. (write to standard output)
+    description: "Write trimmed reads to FILE. FASTQ or FASTA format is\nchosen depending\
+      \ on input. The summary report is sent\nto standard output. Use '{name}' in\
+      \ FILE to\ndemultiplex reads into multiple files. (write to\nstandard output)"
     synonyms:
     - -o
     - --output
@@ -574,16 +581,16 @@ subcommands:
       name: FILE
     optional: true
   - !Flag
-    description: Write information about each read and its adapter matches into FILE.
-      See the documentation for the file format. (no)
+    description: "Write information about each read and its adapter\nmatches into\
+      \ FILE. See the documentation for the file\nformat. (no)"
     synonyms:
     - --info-file
     args: !SimpleFlagArg
       name: FILE
     optional: true
   - !Flag
-    description: When the adapter matches in the middle of a read, write the rest
-      (after the adapter) into FILE. (no)
+    description: "When the adapter matches in the middle of a read,\nwrite the rest\
+      \ (after the adapter) into FILE. (no)"
     synonyms:
     - -r
     - --rest-file
@@ -591,41 +598,41 @@ subcommands:
       name: FILE
     optional: true
   - !Flag
-    description: When the adapter has N bases (wildcards), write adapter bases matching
-      wildcard positions to FILE. When there are indels in the alignment, this will
-      often not be accurate. (no)
+    description: "When the adapter has N bases (wildcards), write\nadapter bases matching\
+      \ wildcard positions to FILE.\nWhen there are indels in the alignment, this\
+      \ will\noften not be accurate. (no)"
     synonyms:
     - --wildcard-file
     args: !SimpleFlagArg
       name: FILE
     optional: true
   - !Flag
-    description: Write reads that are too short (according to length specified by
-      -m) to FILE. (no - too short reads are discarded)
+    description: "Write reads that are too short (according to length\nspecified by\
+      \ -m) to FILE. (no - too short reads are\ndiscarded)"
     synonyms:
     - --too-short-output
     args: !SimpleFlagArg
       name: FILE
     optional: true
   - !Flag
-    description: Write reads that are too long (according to length specified by -M)
-      to FILE. (no - too long reads are discarded)
+    description: "Write reads that are too long (according to length\nspecified by\
+      \ -M) to FILE. (no - too long reads are\ndiscarded)"
     synonyms:
     - --too-long-output
     args: !SimpleFlagArg
       name: FILE
     optional: true
   - !Flag
-    description: Write reads that do not contain the adapter to FILE. (no - untrimmed
-      reads are written to default output)
+    description: "Write reads that do not contain the adapter to FILE.\n(no - untrimmed\
+      \ reads are written to default output)"
     synonyms:
     - --untrimmed-output
     args: !SimpleFlagArg
       name: FILE
     optional: true
   - !Flag
-    description: Write reads that have been merged to this file. (merged reads are
-      discarded)
+    description: "Write reads that have been merged to this file.\n(merged reads are\
+      \ discarded)"
     synonyms:
     - --merged-output
     args: !SimpleFlagArg
@@ -639,37 +646,38 @@ subcommands:
       name: FILE
     optional: true
   - !Flag
-    description: "[FORMAT [FORMAT ...]] Report type(s) to generate. If multiple, '--report-\
-      \ file' is treated as a prefix and the appropriate extensions are appended.\
-      \ If unspecified, the format is guessed from the file extension. Supported formats\
-      \ are: txt (legacy text format), json, yaml, pickle. See the documentation for\
-      \ a full description of the structured output (json/yaml/pickle formats)."
+    description: "[FORMAT [FORMAT ...]]\nReport type(s) to generate. If multiple,\
+      \ '--report-\nfile' is treated as a prefix and the appropriate\nextensions are\
+      \ appended. If unspecified, the format is\nguessed from the file extension.\
+      \ Supported formats\nare: txt (legacy text format), json, yaml, pickle. See\n\
+      the documentation for a full description of the\nstructured output (json/yaml/pickle\
+      \ formats)."
     synonyms:
     - --report-formats
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: "[STATS [STATS ...]] Which read-level statistics to compute. Can\
-      \ be 'none' (default), 'pre': only compute pre-trimming stats; 'post': only\
-      \ compute post-trimming stats; or 'both'. The keyword can be followed by ':'\
-      \ and then additional configuration parameters. E.g. 'pre:tiles' means to also\
-      \ collect tile-level statistics (Illumina data only), and 'pre:tiles=<regexp>'\
-      \ means to use the specified regular expression to extract key portions of read\
-      \ names to collect the tile statistics."
+    description: "[STATS [STATS ...]]\nWhich read-level statistics to compute. Can\
+      \ be 'none'\n(default), 'pre': only compute pre-trimming stats;\n'post': only\
+      \ compute post-trimming stats; or 'both'.\nThe keyword can be followed by ':'\
+      \ and then additional\nconfiguration parameters. E.g. 'pre:tiles' means to\n\
+      also collect tile-level statistics (Illumina data\nonly), and 'pre:tiles=<regexp>'\
+      \ means to use the\nspecified regular expression to extract key portions\nof\
+      \ read names to collect the tile statistics."
     synonyms:
     - --stats
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Double-encode colors (map 0,1,2,3,4 to A,C,G,T,N). (no)
+    description: "Double-encode colors (map 0,1,2,3,4 to A,C,G,T,N).\n(no)"
     synonyms:
     - -d
     - --double-encode
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Trim primer base and the first color (which is the transition to
-      the first nucleotide). (no)
+    description: "Trim primer base and the first color (which is the\ntransition to\
+      \ the first nucleotide). (no)"
     synonyms:
     - -t
     - --trim-primer
@@ -682,31 +690,32 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: MAQ- and BWA-compatible colorspace output. This enables -c, -d, -t,
-      --strip-f3 and -y '/1'. (no)
+    description: "MAQ- and BWA-compatible colorspace output. This\nenables -c, -d,\
+      \ -t, --strip-f3 and -y '/1'. (no)"
     synonyms:
     - --maq
     - --bwa
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Do not change negative quality values to zero in colorspace data.
-      By default, they are since many tools have problems with negative qualities.
-      (no)
+    description: "Do not change negative quality values to zero in\ncolorspace data.\
+      \ By default, they are since many tools\nhave problems with negative qualities.\
+      \ (no)"
     synonyms:
     - --no-zero-cap
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Change negative quality values to zero. This is enabled by default
-      when -c/--colorspace is also enabled. Use the above option to disable it. (no)
+    description: "Change negative quality values to zero. This is\nenabled by default\
+      \ when -c/--colorspace is also\nenabled. Use the above option to disable it.\
+      \ (no)"
     synonyms:
     - -z
     - --zero-cap
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 3' adapter to be removed from second read in a pair. (no)
+    description: "3' adapter to be removed from second read in a pair.\n(no)"
     synonyms:
     - -A
     - --adapter2
@@ -714,7 +723,7 @@ subcommands:
       name: ADAPTER
     optional: true
   - !Flag
-    description: 5' adapter to be removed from second read in a pair. (no)
+    description: "5' adapter to be removed from second read in a pair.\n(no)"
     synonyms:
     - -G
     - --front2
@@ -722,7 +731,7 @@ subcommands:
       name: ADAPTER
     optional: true
   - !Flag
-    description: 5'/3 adapter to be removed from second read in a pair. (no)
+    description: "5'/3 adapter to be removed from second read in a pair.\n(no)"
     synonyms:
     - -B
     - --anywhere2
@@ -730,7 +739,7 @@ subcommands:
       name: ADAPTER
     optional: true
   - !Flag
-    description: Remove LENGTH bases from second read in a pair (see --cut). (no)
+    description: "Remove LENGTH bases from second read in a pair (see\n--cut). (no)"
     synonyms:
     - -U
     - --cut2
@@ -738,9 +747,9 @@ subcommands:
       name: LENGTH
     optional: true
   - !Flag
-    description: Similar to -U, except that cutting is done AFTER adapter trimming,
-      and only if a minimum of LENGTH bases was not already removed (see --cut-min).
-      (no)
+    description: "Similar to -U, except that cutting is done AFTER\nadapter trimming,\
+      \ and only if a minimum of LENGTH\nbases was not already removed (see --cut-min).\
+      \ (no)"
     synonyms:
     - -I
     - --cut-min2
@@ -748,9 +757,9 @@ subcommands:
       name: LENGTH
     optional: true
   - !Flag
-    description: ',HIGHQ,WINDOW, --overwrite-low-quality LOWQ,HIGHQ,WINDOW When one
-      read has mean quality < LOWQ and the other read has mean quality >= HIGHQ over
-      the first WINDOW bases, overwrite the worse read with the better read.'
+    description: ",HIGHQ,WINDOW, --overwrite-low-quality LOWQ,HIGHQ,WINDOW\nWhen one\
+      \ read has mean quality < LOWQ and the other\nread has mean quality >= HIGHQ\
+      \ over the first WINDOW\nbases, overwrite the worse read with the better read."
     synonyms:
     - -w
     args: !SimpleFlagArg
@@ -773,46 +782,46 @@ subcommands:
       name: FILE
     optional: true
   - !Flag
-    description: (any|both) Which of the reads in a paired-end read have to match
-      the filtering criterion in order for it to be filtered. (any)
+    description: "(any|both)\nWhich of the reads in a paired-end read have to match\n\
+      the filtering criterion in order for it to be\nfiltered. (any)"
     synonyms:
     - --pair-filter
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Write second read in a pair to this FILE when no adapter was found
-      in the first read. Use this option together with --untrimmed-output when trimming
-      paired- end reads. (no - output to same file as trimmed reads)
+    description: "Write second read in a pair to this FILE when no\nadapter was found\
+      \ in the first read. Use this option\ntogether with --untrimmed-output when\
+      \ trimming paired-\nend reads. (no - output to same file as trimmed reads)"
     synonyms:
     - --untrimmed-paired-output
     args: !SimpleFlagArg
       name: FILE
     optional: true
   - !Flag
-    description: Write second read in a pair to this file if pair is too short. Use
-      together with --too-short-output. (no - too short reads are discarded)
+    description: "Write second read in a pair to this file if pair is\ntoo short.\
+      \ Use together with --too-short-output. (no -\ntoo short reads are discarded)"
     synonyms:
     - --too-short-paired-output
     args: !SimpleFlagArg
       name: FILE
     optional: true
   - !Flag
-    description: Write second read in a pair to this file if pair is too long. Use
-      together with --too-long-output. (no - too long reads are discarded)
+    description: "Write second read in a pair to this file if pair is\ntoo long. Use\
+      \ together with --too-long-output. (no -\ntoo long reads are discarded)"
     synonyms:
     - --too-long-paired-output
     args: !SimpleFlagArg
       name: FILE
     optional: true
   - !Flag
-    description: "Set default option values for bisulfite-treated data. The argument\
-      \ specifies the type of bisulfite library (rrbs, non-directional, non-directional-rrbs,\
-      \ truseq, epignome, or swift) or custom parameters for trimming: '<read1>[;<read2>]'\
-      \ where trimming parameters for each read are: '<5' cut>,<3' cut>,<include trimmed>,<only\
-      \ trimmed>' where 'include trimmed' is 1 or 0 for whether or not the bases already\
-      \ trimmed during/prior to adapter trimming should be counted towards the total\
-      \ bases to be cut and 'only trimmed' is 1 or 0 for whether or not only trimmed\
-      \ reads should be further cut. (no)"
+    description: "Set default option values for bisulfite-treated data.\nThe argument\
+      \ specifies the type of bisulfite library\n(rrbs, non-directional, non-directional-rrbs,\
+      \ truseq,\nepignome, or swift) or custom parameters for trimming:\n'<read1>[;<read2>]'\
+      \ where trimming parameters for each\nread are: '<5' cut>,<3' cut>,<include\
+      \ trimmed>,<only\ntrimmed>' where 'include trimmed' is 1 or 0 for\nwhether or\
+      \ not the bases already trimmed during/prior\nto adapter trimming should be\
+      \ counted towards the\ntotal bases to be cut and 'only trimmed' is 1 or 0 for\n\
+      whether or not only trimmed reads should be further\ncut. (no)"
     synonyms:
     - --bisulfite
     args: !SimpleFlagArg
@@ -825,8 +834,8 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Number of threads to use for read trimming. Set to 0 to use max available
-      threads. (Do not use multithreading)
+    description: "Number of threads to use for read trimming. Set to 0\nto use max\
+      \ available threads. (Do not use\nmultithreading)"
     synonyms:
     - -T
     - --threads
@@ -834,57 +843,56 @@ subcommands:
       name: THREADS
     optional: true
   - !Flag
-    description: Do not use a writer process; instead, each worker thread writes its
-      own output to a file with a '.N' suffix. (no)
+    description: "Do not use a writer process; instead, each worker\nthread writes\
+      \ its own output to a file with a '.N'\nsuffix. (no)"
     synonyms:
     - --no-writer-process
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Preserve order of reads in input files (ignored if --no-writer-process
-      is set). (no)
+    description: Preserve order of reads in input files (ignored if
     synonyms:
     - --preserve-order
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Number of seconds process should wait before escalating messages
-      to ERROR level. (60)
+    description: "Number of seconds process should wait before\nescalating messages\
+      \ to ERROR level. (60)"
     synonyms:
     - --process-timeout
     args: !SimpleFlagArg
       name: SECONDS
     optional: true
   - !Flag
-    description: Size of queue for batches of reads to be processed. (THREADS * 100)
+    description: "Size of queue for batches of reads to be processed.\n(THREADS *\
+      \ 100)"
     synonyms:
     - --read-queue-size
     args: !SimpleFlagArg
       name: SIZE
     optional: true
   - !Flag
-    description: Size of queue for batches of results to be written. (THREADS * 100)
+    description: "Size of queue for batches of results to be written.\n(THREADS *\
+      \ 100)"
     synonyms:
     - --result-queue-size
     args: !SimpleFlagArg
       name: SIZE
     optional: true
   - !Flag
-    description: Where data compression should be performed. Defaults to 'writer'
-      if system-level compression can be used and (1 < threads < 8), otherwise defaults
-      to 'worker'.
+    description: "Where data compression should be performed. Defaults\nto 'writer'\
+      \ if system-level compression can be used\nand (1 < threads < 8), otherwise\
+      \ defaults to 'worker'.\n"
     synonyms:
     - --compression
     args: !ChoiceFlagArg
       choices: !!set
-        ? writer
         ? worker
+        ? writer
     optional: true
-  command:
-  - atropos
-  - trim
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -1203,6 +1211,7 @@ subcommands:
     \                   and (1 < threads < 8), otherwise defaults to 'worker'.\n"
   generated_using:
   - --help
+usage: []
 help_flag:
 usage_flag:
 version_flag:

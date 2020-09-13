@@ -4,4 +4,7 @@ task UmiTools {
   command <<<
     umi_tools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

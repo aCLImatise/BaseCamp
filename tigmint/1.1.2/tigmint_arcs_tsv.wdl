@@ -1,7 +1,10 @@
 version 1.0
 
-task TigmintArcsTsv {
+task Tigmintarcstsv {
   command <<<
-    tigmint-arcs-tsv
+    tigmint_arcs_tsv
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

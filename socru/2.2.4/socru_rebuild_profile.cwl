@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../socru_rebuild_profile.cwl
 inputs:
-- id: output_file
+- id: in_output_file
   doc: 'Output filename (default: updated_profile.txt)'
-  type: string
+  type: File
   inputBinding:
     prefix: --output_file
-- id: prefix
+- id: in_prefix
   doc: 'Prefix (default: GS)'
   type: string
   inputBinding:
     prefix: --prefix
-- id: debug
+- id: in_debug
   doc: 'Turn on debugging (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-- id: verbose
+- id: in_verbose
   doc: 'Turn on verbose output (default: False)'
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: profile_filename
+- id: in_profile_filename
   doc: profile.txt from database
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: 'Output filename (default: updated_profile.txt)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - socru_rebuild_profile

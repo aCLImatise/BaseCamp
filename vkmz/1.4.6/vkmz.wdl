@@ -4,4 +4,7 @@ task Vkmz {
   command <<<
     vkmz
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

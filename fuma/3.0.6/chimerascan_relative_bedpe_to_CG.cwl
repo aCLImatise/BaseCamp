@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../chimerascan_relative_bedpe_to_CG.cwl
 inputs:
-- id: gene_annotation
+- id: in_gene_annotation
   doc: gene_features.txt file used by chimersacan
-  type: string
+  type: File
   inputBinding:
     prefix: --gene-annotation
-- id: output
-  doc: output filename; '-' for stdout
-  type: string
+- id: in_output
+  doc: "output filename; '-' for stdout\n"
+  type: File
   inputBinding:
     prefix: --output
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -V
-- id: input
-  doc: Chimerascan's relative BEDPE file (e.g. discordant_reads.srt.bedpe or tmp_chimeras.sorted3p.bedpe)
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "output filename; '-' for stdout\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - chimerascan-relative-bedpe-to-CG

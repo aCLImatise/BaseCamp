@@ -1,6 +1,6 @@
 version 1.0
 
-task ClosestFeaturesFloat128 {
+task Closestfeaturesfloat128 {
   input {
     String? chrom
     Boolean? closest
@@ -12,29 +12,29 @@ task ClosestFeaturesFloat128 {
     Boolean? no_ref
     String closest_features
     String? process_flags
-    String input_file
-    String query_file
+    File input_file
+    File query_file
   }
   command <<<
-    closest-features-float128 \
+    closest_features_float128 \
       ~{closest_features} \
       ~{process_flags} \
       ~{input_file} \
       ~{query_file} \
       ~{if defined(chrom) then ("--chrom " +  '"' + chrom + '"') else ""} \
-      ~{true="--closest" false="" closest} \
+      ~{if (closest) then "--closest" else ""} \
       ~{if defined(delim) then ("--delim " +  '"' + delim + '"') else ""} \
-      ~{true="--dist" false="" dist} \
-      ~{true="--ec" false="" ec} \
-      ~{true="--header" false="" header} \
-      ~{true="--no-overlaps" false="" no_overlaps} \
-      ~{true="--no-ref" false="" no_ref}
+      ~{if (dist) then "--dist" else ""} \
+      ~{if (ec) then "--ec" else ""} \
+      ~{if (header) then "--header" else ""} \
+      ~{if (no_overlaps) then "--no-overlaps" else ""} \
+      ~{if (no_ref) then "--no-ref" else ""}
   >>>
   parameter_meta {
     chrom: "Jump to and process data for given <chromosome> only."
     closest: "Choose the closest element for output only.  Ties go the left element."
-    delim: "Change output delimiter from '|' to <delim> between columns (e.g. '\t')"
-    dist: "Print the signed distances to the <input-file> element as additional columns of output.  An overlapping element has a distance of 0."
+    delim: "Change output delimiter from '|' to <delim> between columns (e.g. '\\t')"
+    dist: "Print the signed distances to the <input-file> element as additional\\ncolumns of output.  An overlapping element has a distance of 0."
     ec: "Error check all input files (slower)."
     header: "Accept headers (VCF, GFF, SAM, BED, WIG) in any input file."
     no_overlaps: "Overlapping elements from <query-file> will not be reported."
@@ -43,5 +43,8 @@ task ClosestFeaturesFloat128 {
     process_flags: ""
     input_file: ""
     query_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

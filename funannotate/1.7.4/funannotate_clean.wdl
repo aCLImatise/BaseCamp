@@ -3,7 +3,7 @@ version 1.0
 task FunannotateClean {
   input {
     Boolean? multifasta_genome_file
-    Boolean? out
+    File? out
     Boolean? p_ident
     Boolean? cov
     Boolean? min_len
@@ -13,12 +13,12 @@ task FunannotateClean {
   command <<<
     funannotate clean \
       ~{arguments} \
-      ~{true="--input" false="" multifasta_genome_file} \
-      ~{true="--out" false="" out} \
-      ~{true="--pident" false="" p_ident} \
-      ~{true="--cov" false="" cov} \
-      ~{true="--minlen" false="" min_len} \
-      ~{true="--exhaustive" false="" exhaustive}
+      ~{if (multifasta_genome_file) then "--input" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (p_ident) then "--pident" else ""} \
+      ~{if (cov) then "--cov" else ""} \
+      ~{if (min_len) then "--minlen" else ""} \
+      ~{if (exhaustive) then "--exhaustive" else ""}
   >>>
   parameter_meta {
     multifasta_genome_file: "Multi-fasta genome file (Required)"
@@ -28,5 +28,9 @@ task FunannotateClean {
     min_len: "Minimum length of contig to keep. Default = 500"
     exhaustive: "Test every contig. Default is to stop at N50 value."
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

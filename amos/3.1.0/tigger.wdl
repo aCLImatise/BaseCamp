@@ -4,17 +4,17 @@ task Tigger {
   input {
     Boolean? write_contig_graphs
     String? verbose_level
-    String? b
   }
   command <<<
     tigger \
-      ~{true="-g" false="" write_contig_graphs} \
-      ~{if defined(verbose_level) then ("-v " +  '"' + verbose_level + '"') else ""} \
-      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
+      ~{if (write_contig_graphs) then "-g" else ""} \
+      ~{if defined(verbose_level) then ("-v " +  '"' + verbose_level + '"') else ""}
   >>>
   parameter_meta {
-    write_contig_graphs: "Write contig graphs as dot files (fullgraph.dot and Contig-*.dot) "
+    write_contig_graphs: "Write contig graphs as dot files (fullgraph.dot and Contig-*.dot)"
     verbose_level: "Verbose level"
-    b: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

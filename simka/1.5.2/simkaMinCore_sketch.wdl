@@ -3,7 +3,7 @@ version 1.0
 task SimkaMinCoreSketch {
   input {
     Boolean? in
-    Boolean? out
+    File? out
     Boolean? seed
     Boolean? verbose
     Boolean? km_er_size
@@ -17,18 +17,18 @@ task SimkaMinCoreSketch {
   }
   command <<<
     simkaMinCore sketch \
-      ~{true="-in" false="" in} \
-      ~{true="-out" false="" out} \
-      ~{true="-seed" false="" seed} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-kmer-size" false="" km_er_size} \
-      ~{true="-nb-kmers" false="" nb_km_ers} \
-      ~{true="-filter" false="" filter} \
-      ~{true="-max-reads" false="" max_reads} \
-      ~{true="-min-read-size" false="" min_read_size} \
-      ~{true="-min-shannon-index" false="" min_shannon_index} \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-max-memory" false="" max_memory}
+      ~{if (in) then "-in" else ""} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (seed) then "-seed" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (km_er_size) then "-kmer-size" else ""} \
+      ~{if (nb_km_ers) then "-nb-kmers" else ""} \
+      ~{if (filter) then "-filter" else ""} \
+      ~{if (max_reads) then "-max-reads" else ""} \
+      ~{if (min_read_size) then "-min-read-size" else ""} \
+      ~{if (min_shannon_index) then "-min-shannon-index" else ""} \
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (max_memory) then "-max-memory" else ""}
   >>>
   parameter_meta {
     in: "(1 arg) :    input filename | TODO SPECIF"
@@ -43,5 +43,9 @@ task SimkaMinCoreSketch {
     min_shannon_index: "(1 arg) :    minimal Shannon index a read should have to be kept. Float in [0,2]  [default '0']"
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     max_memory: "(1 arg) :    max memory (MB). Only used if -filter is enabled  [default '8000']"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

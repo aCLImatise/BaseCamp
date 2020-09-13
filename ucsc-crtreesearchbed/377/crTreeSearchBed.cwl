@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../crTreeSearchBed.cwl
 inputs:
-- id: file_dot_bed
+- id: in_file_dot_bed
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: index_do_tcr
+- id: in_index_do_tcr
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: chrom
+- id: in_chrom
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: start
+- id: in_start
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: end
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crTreeSearchBed

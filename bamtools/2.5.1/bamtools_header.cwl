@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../bamtools_header.cwl
 inputs:
-- id: in
+- id: in_in
   doc: the input BAM file(s) [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: list
-  doc: the input BAM file list, one line per file
+- id: in_list
+  doc: "the input BAM file list, one\nline per file"
   type: File
   inputBinding:
     prefix: -list
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bamtools

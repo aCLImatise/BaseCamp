@@ -1,42 +1,50 @@
 class: CommandLineTool
 id: ../../../Consensus.cwl
 inputs:
-- id: out
+- id: in_out
   doc: write the output FASTA file to OUTPUT
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: pile_up
+- id: in_pile_up
   doc: write the pileup to PILEUP
   type: string
   inputBinding:
     prefix: --pileup
-- id: nt
+- id: in_nt
   doc: output nucleotide contigs [default]
   type: boolean
   inputBinding:
     prefix: --nt
-- id: cs
+- id: in_cs
   doc: output colour-space contigs
   type: boolean
   inputBinding:
     prefix: --cs
-- id: variants
+- id: in_variants
   doc: print only variants in the pileup
   type: boolean
   inputBinding:
     prefix: --variants
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: contig
+- id: in_contig
   doc: contigs in FASTA format
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: write the output FASTA file to OUTPUT
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - Consensus

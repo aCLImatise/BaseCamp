@@ -2,20 +2,20 @@ version 1.0
 
 task OpenSwathWorkflow {
   input {
-    File? in
+    String? in
     File? tr
-    String? tr_type
+    File? tr_type
     File? tr_irt
     File? out_features
     File? out_tsv
     File? out_osw
-    String? rt_extraction_window
-    String? ion_mobility_window
-    String? mz_extraction_window
+    Int? rt_extraction_window
+    Int? ion_mobility_window
+    Int? mz_extraction_window
     Boolean? ppm
     Boolean? sonar
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -31,17 +31,17 @@ task OpenSwathWorkflow {
       ~{if defined(rt_extraction_window) then ("-rt_extraction_window " +  '"' + rt_extraction_window + '"') else ""} \
       ~{if defined(ion_mobility_window) then ("-ion_mobility_window " +  '"' + ion_mobility_window + '"') else ""} \
       ~{if defined(mz_extraction_window) then ("-mz_extraction_window " +  '"' + mz_extraction_window + '"') else ""} \
-      ~{true="-ppm" false="" ppm} \
-      ~{true="-sonar" false="" sonar} \
+      ~{if (ppm) then "-ppm" else ""} \
+      ~{if (sonar) then "-sonar" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                    Input files separated by blank (valid formats: 'mzML', 'mzXML', 'sqMass')"
     tr: "*                     Transition file ('TraML','tsv','pqp') (valid formats: 'traML', 'tsv', 'pqp')"
-    tr_type: "Input file type -- default: determined from file extension or content (valid: 'traML', 'tsv', 'pqp')"
+    tr_type: "Input file type -- default: determined from file extension or content\\n(valid: 'traML', 'tsv', 'pqp')"
     tr_irt: "Transition file ('TraML') (valid formats: 'traML')"
     out_features: "Output file (valid formats: 'featureXML')"
     out_tsv: "TSV output file (mProphet compatible TSV file) (valid formats: 'tsv')"
@@ -55,5 +55,11 @@ task OpenSwathWorkflow {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_features = "${in_out_features}"
+    File out_out_tsv = "${in_out_tsv}"
+    File out_out_osw = "${in_out_osw}"
   }
 }

@@ -2,16 +2,19 @@ version 1.0
 
 task SummarizePolishes {
   input {
+    File? p
     Boolean? excel
-    String? p
   }
   command <<<
     summarizePolishes \
-      ~{true="-excel" false="" excel} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if (excel) then "-excel" else ""}
   >>>
   parameter_meta {
-    excel: ""
     p: ""
+    excel: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

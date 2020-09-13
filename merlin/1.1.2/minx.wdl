@@ -6,9 +6,12 @@ task Minx {
   }
   command <<<
     minx \
-      ~{true="--tabulate" false="" tabulate}
+      ~{if (tabulate) then "--tabulate" else ""}
   >>>
   parameter_meta {
     tabulate: "[merlin]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

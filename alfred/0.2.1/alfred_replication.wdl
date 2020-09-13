@@ -4,15 +4,15 @@ task AlfredReplication {
   input {
     Boolean? arg_min_quality
     Boolean? arg_sliding_size
-    Boolean? arg_window_size
+    Boolean? arg_window_offset
     Boolean? arg_reference_fasta
-    Boolean? arg_pref_output
-    String gone_b_dot_bam
-    String s_one_dot_bam
-    String s_two_dot_bam
-    String s_three_dot_bam
-    String s_four_dot_bam
-    String g_two_dot_bam
+    File? arg_pref_output
+    Int gone_b_dot_bam
+    Int s_one_dot_bam
+    Int s_two_dot_bam
+    Int s_three_dot_bam
+    Int s_four_dot_bam
+    Int g_two_dot_bam
   }
   command <<<
     alfred replication \
@@ -22,16 +22,16 @@ task AlfredReplication {
       ~{s_three_dot_bam} \
       ~{s_four_dot_bam} \
       ~{g_two_dot_bam} \
-      ~{true="-q" false="" arg_min_quality} \
-      ~{true="-w" false="" arg_sliding_size} \
-      ~{true="-s" false="" arg_window_size} \
-      ~{true="-r" false="" arg_reference_fasta} \
-      ~{true="-o" false="" arg_pref_output}
+      ~{if (arg_min_quality) then "-q" else ""} \
+      ~{if (arg_sliding_size) then "-w" else ""} \
+      ~{if (arg_window_offset) then "-s" else ""} \
+      ~{if (arg_reference_fasta) then "-r" else ""} \
+      ~{if (arg_pref_output) then "-o" else ""}
   >>>
   parameter_meta {
     arg_min_quality: "[ --qual ] arg (=1)          min. mapping quality"
     arg_sliding_size: "[ --window ] arg (=50000)    sliding window size"
-    arg_window_size: "[ --step ] arg (=1000)       window offset (step size)"
+    arg_window_offset: "[ --step ] arg (=1000)       window offset (step size)"
     arg_reference_fasta: "[ --reference ] arg          reference fasta file (required)"
     arg_pref_output: "[ --outprefix ] arg (=pref)  output file prefix"
     gone_b_dot_bam: ""
@@ -40,5 +40,9 @@ task AlfredReplication {
     s_three_dot_bam: ""
     s_four_dot_bam: ""
     g_two_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_arg_pref_output = "${in_arg_pref_output}"
   }
 }

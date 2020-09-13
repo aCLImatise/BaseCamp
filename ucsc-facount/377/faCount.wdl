@@ -5,19 +5,19 @@ task FaCount {
     Boolean? summary
     Boolean? din_uc
     Boolean? strands
-    File file
   }
   command <<<
     faCount \
-      ~{file} \
-      ~{true="-summary" false="" summary} \
-      ~{true="-dinuc" false="" din_uc} \
-      ~{true="-strands" false="" strands}
+      ~{if (summary) then "-summary" else ""} \
+      ~{if (din_uc) then "-dinuc" else ""} \
+      ~{if (strands) then "-strands" else ""}
   >>>
   parameter_meta {
     summary: "show only summary statistics"
     din_uc: "include statistics on dinucletoide frequencies"
     strands: "count bases on both strands"
-    file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

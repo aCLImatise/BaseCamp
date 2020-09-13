@@ -1,11 +1,11 @@
 version 1.0
 
-task AbyssOverlap {
+task Abyssoverlap {
   input {
-    String? min
-    String? max
-    String? threads
-    String? sample
+    Int? min
+    Int? max
+    Int? threads
+    Int? sample
     Boolean? tred
     Boolean? no_tred
     Boolean? adj
@@ -14,23 +14,21 @@ task AbyssOverlap {
     Boolean? ss
     Boolean? no_ss
     Boolean? verbose
-    String? option
   }
   command <<<
-    abyss-overlap \
-      ~{option} \
+    abyss_overlap \
       ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
       ~{if defined(max) then ("--max " +  '"' + max + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
-      ~{true="--tred" false="" tred} \
-      ~{true="--no-tred" false="" no_tred} \
-      ~{true="--adj" false="" adj} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--sam" false="" sam} \
-      ~{true="--SS" false="" ss} \
-      ~{true="--no-SS" false="" no_ss} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (tred) then "--tred" else ""} \
+      ~{if (no_tred) then "--no-tred" else ""} \
+      ~{if (adj) then "--adj" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (sam) then "--sam" else ""} \
+      ~{if (ss) then "--SS" else ""} \
+      ~{if (no_ss) then "--no-SS" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     min: "find matches at least N bp [50]"
@@ -45,6 +43,8 @@ task AbyssOverlap {
     ss: "expect contigs to be oriented correctly"
     no_ss: "no assumption about contig orientation"
     verbose: "display verbose output"
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

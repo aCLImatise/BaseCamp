@@ -1,63 +1,71 @@
 class: CommandLineTool
 id: ../../../phyluce_probe_slice_sequence_from_genomes.cwl
 inputs:
-- id: conf
+- id: in_conf
   doc: Path to the configuration file
-  type: string
+  type: File
   inputBinding:
     prefix: --conf
-- id: last_z
+- id: in_last_z
   doc: Path to the directory containing LASTZ results
-  type: string
+  type: File
   inputBinding:
     prefix: --lastz
-- id: output
+- id: in_output
   doc: Path to the output directory for storing FASTA files
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: name_pattern
-  doc: An alternate name pattern to transform the conf entry into
+- id: in_name_pattern
+  doc: "An alternate name pattern to transform the conf entry\ninto"
   type: string
   inputBinding:
     prefix: --name-pattern
-- id: probe_prefix
+- id: in_probe_prefix
   doc: The prefix (e.g. "uce-") added to all probes designed
   type: string
   inputBinding:
     prefix: --probe-prefix
-- id: probe_regex
+- id: in_probe_regex
   doc: The regular expression to use for matching probes
   type: string
   inputBinding:
     prefix: --probe-regex
-- id: exclude
+- id: in_exclude
   doc: Species to exclude from genome slicing
   type: string[]
   inputBinding:
     prefix: --exclude
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use
   type: string
   inputBinding:
     prefix: --verbosity
-- id: contig_orient
-  doc: Check orientation by contigs versus probes - useful for multi-species probe
-    sets
+- id: in_contig_orient
+  doc: "Check orientation by contigs versus probes - useful\nfor multi-species probe\
+    \ sets"
   type: boolean
   inputBinding:
     prefix: --contig_orient
-- id: flank
+- id: in_flank
   doc: The amount of flanking sequence to add to each match
   type: string
   inputBinding:
     prefix: --flank
-- id: probes
+- id: in_probes
   doc: The probe length to use
-  type: string
+  type: long
   inputBinding:
     prefix: --probes
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Path to the output directory for storing FASTA files
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_probe_slice_sequence_from_genomes

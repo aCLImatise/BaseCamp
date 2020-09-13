@@ -4,20 +4,26 @@ task EaselDownsample {
   input {
     Boolean? sequence_sampling_infile
     Boolean? big_sequence_sample
-    String? seed
+    Int? seed
     Boolean? options
+    String m
   }
   command <<<
     easel downsample \
-      ~{true="-s" false="" sequence_sampling_infile} \
-      ~{true="-S" false="" big_sequence_sample} \
+      ~{m} \
+      ~{if (sequence_sampling_infile) then "-s" else ""} \
+      ~{if (big_sequence_sample) then "-S" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     sequence_sampling_infile: ": sequence sampling: <infile> is file or stream of seqs"
     big_sequence_sample: ": big sequence sample: <infile> is (seekable) seq file"
     seed: ": set random number generator seed  [0]"
     options: ""
+    m: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

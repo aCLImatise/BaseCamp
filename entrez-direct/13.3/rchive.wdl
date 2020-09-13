@@ -1,7 +1,10 @@
 version 1.0
 
-task Rchive.Linux {
+task Rchive {
   command <<<
-    rchive.Linux
+    rchive
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

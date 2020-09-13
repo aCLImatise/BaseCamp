@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../treebest_subtree.cwl
 inputs:
-- id: tree
+- id: in_tree
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: list
+- id: in_list
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - treebest

@@ -4,4 +4,7 @@ task GraftM {
   command <<<
     graftM
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

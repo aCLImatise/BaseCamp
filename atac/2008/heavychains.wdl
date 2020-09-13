@@ -4,4 +4,7 @@ task Heavychains {
   command <<<
     heavychains
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

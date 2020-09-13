@@ -4,4 +4,7 @@ task CactusWorkflowExtendFlowers {
   command <<<
     cactus_workflow_extendFlowers
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

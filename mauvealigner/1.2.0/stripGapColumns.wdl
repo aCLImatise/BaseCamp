@@ -14,4 +14,7 @@ task StripGapColumns {
     input_x_mfa: ""
     output_x_mfa: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

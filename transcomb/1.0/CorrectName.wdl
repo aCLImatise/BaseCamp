@@ -4,4 +4,7 @@ task CorrectName {
   command <<<
     CorrectName
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,143 +1,164 @@
 class: CommandLineTool
 id: ../../../grmpy.cwl
 inputs:
-- id: arg_output_folder_alignments
-  doc: '[ --alignment-output-folder ] arg      Output folder for alignments. Note  these
-    can become very large and are only requiredfor curation /  visualisation or faster
-    reanalysis.'
-  type: boolean
+- id: in_arg_output_folder
+  doc: "[ --alignment-output-folder ] arg      Output folder for alignments. Note\n\
+    these can become very large and are\nonly requiredfor curation /\nvisualisation\
+    \ or faster reanalysis."
+  type: Directory
   inputBinding:
     prefix: -A
-- id: bad_align_frac
-  doc: (=0.800000012)       Fraction of read that needs to be  mapped in order for
-    it to be used.
-  type: string
+- id: in_bad_align_frac
+  doc: "(=0.800000012)       Fraction of read that needs to be\nmapped in order for\
+    \ it to be used."
+  type: double
   inputBinding:
     prefix: --bad-align-frac
-- id: bad_align_uniq_km_er_len
-  doc: (=0)        Kmer length for uniqueness check  during read filtering.
-  type: string
+- id: in_bad_align_uniq_km_er_len
+  doc: "(=0)        Kmer length for uniqueness check\nduring read filtering."
+  type: long
   inputBinding:
     prefix: --bad-align-uniq-kmer-len
-- id: arg_json_file
-  doc: '[ --genotyping-parameters ] arg        JSON file with genotyping model  parameters'
+- id: in_arg_json_file
+  doc: '[ --genotyping-parameters ] arg        JSON file with genotyping model'
   type: boolean
   inputBinding:
     prefix: -G
-- id: graph_sequence_matching
-  doc: (=1)        Enables smith waterman graph  alignment
-  type: string
-  inputBinding:
-    prefix: --graph-sequence-matching
-- id: arg_json_files
-  doc: '[ --graph-spec ] arg                   JSON file(s) describing the  graph(s)'
-  type: boolean
-  inputBinding:
-    prefix: -g
-- id: gzipcompress_output_files
-  doc: '[ --gzip-output ] [=arg(=1)] (=0)      gzip-compress output files. If -O  is
-    used, output file names are  appended with .gz'
-  type: boolean
+- id: in_gzipcompress_output_files
+  doc: "[ --gzip-output ] [=arg(=1)] (=0)      gzip-compress output files. If -O\n\
+    is used, output file names are\nappended with .gz"
+  type: File
   inputBinding:
     prefix: -z
-- id: help_defaults
-  doc: produce tab-delimited list of  command line options and their  default values
+- id: in_help_defaults
+  doc: "produce tab-delimited list of\ncommand line options and their\ndefault values"
   type: boolean
   inputBinding:
     prefix: --help-defaults
-- id: help_md
-  doc: produce help message pre-formatted  as a markdown file section and exit
+- id: in_help_md
+  doc: "produce help message pre-formatted\nas a markdown file section and exit"
   type: boolean
   inputBinding:
     prefix: --help-md
-- id: infer_read_haplotypes
-  doc: '[=arg(=1)] (=0)   Infer haplotype paths using read  and fragment information.'
+- id: in_infer_read_haplotypes
+  doc: "[=arg(=1)] (=0)   Infer haplotype paths using read\nand fragment information."
   type: boolean
   inputBinding:
     prefix: --infer-read-haplotypes
-- id: k_lib_sequence_matching
+- id: in_k_lib_sequence_matching
   doc: (=0)         Use klib smith-waterman aligner.
-  type: string
+  type: long
   inputBinding:
     prefix: --klib-sequence-matching
-- id: km_er_sequence_matching
+- id: in_km_er_sequence_matching
   doc: (=0)         Use kmer aligner.
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer-sequence-matching
-- id: log_async
+- id: in_log_async
   doc: (=0)                      Enable / disable async logging.
-  type: string
+  type: long
   inputBinding:
     prefix: --log-async
-- id: log_file
+- id: in_log_file
   doc: Log to a file instead of stderr.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-file
-- id: log_level
-  doc: (=info)                   Set log level (error, warning,  info).
+- id: in_log_level
+  doc: "(=info)                   Set log level (error, warning,\ninfo)."
   type: string
   inputBinding:
     prefix: --log-level
-- id: arg_manifest_bam
-  doc: '[ --manifest ] arg                     Manifest of samples with path and  bam
-    stats.'
+- id: in_arg_manifest_samples
+  doc: "[ --manifest ] arg                     Manifest of samples with path and\n\
+    bam stats."
   type: boolean
   inputBinding:
     prefix: -m
-- id: arg_maximum_number
-  doc: '[ --max-reads-per-event ] arg (=10000) Maximum number of reads to process  for
-    a single event.'
+- id: in_arg_maximum_number
+  doc: "[ --max-reads-per-event ] arg (=10000) Maximum number of reads to process\n\
+    for a single event."
   type: boolean
   inputBinding:
     prefix: -M
-- id: arg_output_file
-  doc: "[ --output-file ] arg                  Output file name. Will output to  stdout\
-    \ if omitted or '-'."
-  type: boolean
+- id: in_arg_output_file
+  doc: "[ --output-file ] arg                  Output file name. Will output to\n\
+    stdout if omitted or '-'."
+  type: File
   inputBinding:
     prefix: -o
-- id: arg_output_folder_path
-  doc: '[ --output-folder ] arg                Output folder path. paragraph will  attempt
-    to create the folder but  not the entire path. Will output to stdout if neither
-    of output-file or output-folder provided. If  specified, paragraph will produce  one
-    output file for each input file bearing the same name.'
+- id: in_arg_folder_paragraph
+  doc: "[ --output-folder ] arg                Output folder path. paragraph will\n\
+    attempt to create the folder but\nnot the entire path. Will output to\nstdout\
+    \ if neither of output-file or\noutput-folder provided. If\nspecified, paragraph\
+    \ will produce\none output file for each input file\nbearing the same name."
   type: boolean
   inputBinding:
     prefix: -O
-- id: path_sequence_matching
+- id: in_path_sequence_matching
   doc: (=0)         Enables alignment to paths
-  type: string
+  type: File
   inputBinding:
     prefix: --path-sequence-matching
-- id: progress
+- id: in_progress
   doc: '[=arg(=1)] (=1)'
   type: boolean
   inputBinding:
     prefix: --progress
-- id: arg_reference_genome
+- id: in_arg_reference_genome
   doc: '[ --reference ] arg                    Reference genome fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: response_file
-  doc: file with more command line  arguments
-  type: string
+- id: in_response_file
+  doc: file with more command line
+  type: File
   inputBinding:
     prefix: --response-file
-- id: arg_number_threads
-  doc: '[ --sample-threads ] arg (=8)          Number of threads for parallel  sample
-    processing.'
-  type: boolean
-  inputBinding:
-    prefix: -t
-- id: print_program_version
+- id: in_print_program_version
   doc: '[ --version ]                          print program version information'
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+- id: in_parameters
+  doc: '--graph-sequence-matching arg (=1)        Enables smith waterman graph '
+  type: string
+  inputBinding:
+    position: 0
+- id: in_alignment
+  doc: '-g [ --graph-spec ] arg                   JSON file(s) describing the '
+  type: string
+  inputBinding:
+    position: 1
+- id: in_arguments
+  doc: '-t [ --sample-threads ] arg (=8)          Number of threads for parallel '
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_output_folder
+  doc: "[ --alignment-output-folder ] arg      Output folder for alignments. Note\n\
+    these can become very large and are\nonly requiredfor curation /\nvisualisation\
+    \ or faster reanalysis."
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_arg_output_folder)
+- id: out_gzipcompress_output_files
+  doc: "[ --gzip-output ] [=arg(=1)] (=0)      gzip-compress output files. If -O\n\
+    is used, output file names are\nappended with .gz"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_gzipcompress_output_files)
+- id: out_arg_output_file
+  doc: "[ --output-file ] arg                  Output file name. Will output to\n\
+    stdout if omitted or '-'."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_file)
 cwlVersion: v1.1
 baseCommand:
 - grmpy

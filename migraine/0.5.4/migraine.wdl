@@ -4,4 +4,7 @@ task Migraine {
   command <<<
     migraine
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

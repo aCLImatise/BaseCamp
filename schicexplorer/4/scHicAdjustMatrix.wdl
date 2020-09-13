@@ -3,11 +3,11 @@ version 1.0
 task ScHicAdjustMatrix {
   input {
     String? matrix
-    String? out_filename
+    File? out_filename
     Array[String] chromosomes
     String? create_submatrix
     String? action
-    String? threads
+    Int? threads
   }
   command <<<
     scHicAdjustMatrix \
@@ -19,11 +19,15 @@ task ScHicAdjustMatrix {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    matrix: "The matrix to adjust in the scool format. (default: None)"
+    matrix: "The matrix to adjust in the scool format. (default:\\nNone)"
     out_filename: "File name to save the adjusted matrix. (default: None)"
     chromosomes: "List of chromosomes to keep / remove (default: None)"
-    create_submatrix: "Keep only first n matrices and remove the rest. Good for test data creation. (default: None)"
-    action: "Keep, remove or mask the list of specified chromosomes / regions (default: keep)"
-    threads: "Number of threads. Using the python multiprocessing module. (default: 4)"
+    create_submatrix: "Keep only first n matrices and remove the rest. Good\\nfor test data creation. (default: None)"
+    action: "Keep, remove or mask the list of specified chromosomes\\n/ regions (default: keep)"
+    threads: "Number of threads. Using the python multiprocessing\\nmodule. (default: 4)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_filename = "${in_out_filename}"
   }
 }

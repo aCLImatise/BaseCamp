@@ -2,7 +2,7 @@ version 1.0
 
 task PreseqCCurve {
   input {
-    Boolean? yield_output_file
+    File? yield_output_file
     Boolean? step
     Boolean? verbose
     Boolean? pe
@@ -13,35 +13,39 @@ task PreseqCCurve {
     Boolean? seed
     Boolean? about
     String c_curve
-    String sorted_bed_file
+    File sorted_bed_file
   }
   command <<<
     preseq c_curve \
       ~{c_curve} \
       ~{sorted_bed_file} \
-      ~{true="-output" false="" yield_output_file} \
-      ~{true="-step" false="" step} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-pe" false="" pe} \
-      ~{true="-hist" false="" hist} \
-      ~{true="-vals" false="" vals} \
-      ~{true="-bam" false="" bam} \
-      ~{true="-seg_len" false="" seg_len} \
-      ~{true="-seed" false="" seed} \
-      ~{true="-about" false="" about}
+      ~{if (yield_output_file) then "-output" else ""} \
+      ~{if (step) then "-step" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (pe) then "-pe" else ""} \
+      ~{if (hist) then "-hist" else ""} \
+      ~{if (vals) then "-vals" else ""} \
+      ~{if (bam) then "-bam" else ""} \
+      ~{if (seg_len) then "-seg_len" else ""} \
+      ~{if (seed) then "-seed" else ""} \
+      ~{if (about) then "-about" else ""}
   >>>
   parameter_meta {
-    yield_output_file: "yield output file (default: stdout) "
-    step: "step size in extrapolations (default: 1e+06) "
-    verbose: "print more information "
-    pe: "input is paired end read file "
-    hist: "input is a text file containing the observed histogram "
-    vals: "input is a text file containing only the observed counts "
-    bam: "input is in BAM format "
-    seg_len: "maximum segment length when merging paired end bam reads  (default: 5000) "
-    seed: "seed for random number generator "
-    about: "print about message "
+    yield_output_file: "yield output file (default: stdout)"
+    step: "step size in extrapolations (default: 1e+06)"
+    verbose: "print more information"
+    pe: "input is paired end read file"
+    hist: "input is a text file containing the observed histogram"
+    vals: "input is a text file containing only the observed counts"
+    bam: "input is in BAM format"
+    seg_len: "maximum segment length when merging paired end bam reads\\n(default: 5000)"
+    seed: "seed for random number generator"
+    about: "print about message"
     c_curve: ""
     sorted_bed_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_yield_output_file = "${in_yield_output_file}"
   }
 }

@@ -4,4 +4,7 @@ task Terminate {
   command <<<
     terminate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../genrestr.cwl
 inputs:
-- id: config
+- id: in_config
   doc: This file can be a YAML file, JSON file or JSON string
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: input_structure_path
+- id: in_input_structure_path
   doc: ''
-  type: string
+  type: File
   inputBinding:
     prefix: --input_structure_path
-- id: input_ndx_path
+- id: in_input_ndx_path
   doc: ''
   type: string
   inputBinding:
     prefix: --input_ndx_path
-- id: output_itp_path
+- id: in_output_itp_path
   doc: ''
-  type: string
+  type: File
   inputBinding:
     prefix: --output_itp_path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_itp_path
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_itp_path)
 cwlVersion: v1.1
 baseCommand:
 - genrestr

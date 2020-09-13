@@ -3,15 +3,18 @@ version 1.0
 task RemoveRedundant {
   input {
     Boolean? gff_three
-    String polishes_file
+    File polishes_file
   }
   command <<<
     removeRedundant \
       ~{polishes_file} \
-      ~{true="-gff3" false="" gff_three}
+      ~{if (gff_three) then "-gff3" else ""}
   >>>
   parameter_meta {
     gff_three: ""
     polishes_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

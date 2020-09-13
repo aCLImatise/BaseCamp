@@ -1,17 +1,20 @@
 version 1.0
 
-task _prophecy {
+task Prophecy {
   input {
     Boolean? type
     Boolean? name
   }
   command <<<
     _prophecy \
-      ~{true="-type" false="" type} \
-      ~{true="-name" false="" name}
+      ~{if (type) then "-type" else ""} \
+      ~{if (name) then "-name" else ""}
   >>>
   parameter_meta {
-    type: "menu       [F] Select type (Values: F (Frequency); G (Gribskov); H (Henikoff))"
-    name: "string     [mymatrix] Enter a name for the profile (Any string)"
+    type: "menu       [F] Select type (Values: F (Frequency); G\\n(Gribskov); H (Henikoff))"
+    name: "string     [mymatrix] Enter a name for the profile (Any\\nstring)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

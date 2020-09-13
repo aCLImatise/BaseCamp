@@ -4,4 +4,7 @@ task Fitch {
   command <<<
     fitch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

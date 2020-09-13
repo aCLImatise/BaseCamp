@@ -3,7 +3,7 @@ version 1.0
 task ScHicMergeToSCool {
   input {
     Array[String] matrices
-    String? out_filename
+    File? out_filename
   }
   command <<<
     scHicMergeToSCool \
@@ -13,5 +13,9 @@ task ScHicMergeToSCool {
   parameter_meta {
     matrices: "input file(s). (default: None)"
     out_filename: "File name to save the exported matrix. (default: None)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_filename = "${in_out_filename}"
   }
 }

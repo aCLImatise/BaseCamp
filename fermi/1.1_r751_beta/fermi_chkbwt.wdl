@@ -10,14 +10,17 @@ task FermiChkbwt {
   command <<<
     fermi chkbwt \
       ~{idx_based_ot_bwt} \
-      ~{true="-M" false="" load_fmindex_memory} \
-      ~{true="-r" false="" check_rank} \
-      ~{true="-p" false="" print_bwt_stdout}
+      ~{if (load_fmindex_memory) then "-M" else ""} \
+      ~{if (check_rank) then "-r" else ""} \
+      ~{if (print_bwt_stdout) then "-p" else ""}
   >>>
   parameter_meta {
     load_fmindex_memory: "load the FM-index as a memory mapped file"
     check_rank: "check rank"
     print_bwt_stdout: "print the BWT to the stdout"
     idx_based_ot_bwt: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

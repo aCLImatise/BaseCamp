@@ -1,14 +1,10 @@
 version 1.0
 
 task Obprop {
-  input {
-    File filename
-  }
   command <<<
-    obprop \
-      ~{filename}
+    obprop
   >>>
-  parameter_meta {
-    filename: ""
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../ssu_esl_seqstat.cwl
 inputs:
-- id: report_persequence_info
+- id: in_report_persequence_info
   doc: ': report per-sequence info line, not just a summary'
   type: boolean
   inputBinding:
     prefix: -a
-- id: count_report_composition
+- id: in_count_report_composition
   doc: ': count and report residue composition'
   type: boolean
   inputBinding:
     prefix: -c
-- id: in_format
+- id: in_in_format
   doc: ': specify that input file is in format <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --informat
-- id: rna
+- id: in_rna
   doc: ': specify that <seqfile> contains RNA sequence'
   type: boolean
   inputBinding:
     prefix: --rna
-- id: dna
+- id: in_dna
   doc: ': specify that <seqfile> contains DNA sequence'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: amino
+- id: in_amino
   doc: ': specify that <seqfile> contains protein sequence'
   type: boolean
   inputBinding:
     prefix: --amino
-- id: seq_file
+- id: in_seq_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-seqstat

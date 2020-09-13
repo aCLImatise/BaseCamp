@@ -4,4 +4,7 @@ task Clsify {
   command <<<
     clsify
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

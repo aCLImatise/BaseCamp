@@ -1,29 +1,32 @@
 version 1.0
 
-task MagpurifyGcContentOut {
+task MagpurifyGccontentOut {
   input {
-    String? cut_off
     Boolean? weighted_mean
+    String? cut_off
     String mag_purify
     String gc_content
     String fna
     String out
   }
   command <<<
-    magpurify gc-content out \
+    magpurify gc_content out \
       ~{mag_purify} \
       ~{gc_content} \
       ~{fna} \
       ~{out} \
-      ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
-      ~{true="--weighted-mean" false="" weighted_mean}
+      ~{if (weighted_mean) then "--weighted-mean" else ""} \
+      ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""}
   >>>
   parameter_meta {
-    cut_off: ""
     weighted_mean: ""
+    cut_off: ""
     mag_purify: ""
     gc_content: ""
     fna: ""
     out: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

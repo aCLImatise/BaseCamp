@@ -4,4 +4,7 @@ task Collectstats {
   command <<<
     collectstats
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

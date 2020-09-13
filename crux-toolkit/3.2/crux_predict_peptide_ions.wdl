@@ -1,17 +1,10 @@
 version 1.0
 
-task CruxPredictPeptideIons {
-  input {
-    String peptide_sequence
-    String charge_state
-  }
+task CruxPredictpeptideions {
   command <<<
-    crux predict-peptide-ions \
-      ~{peptide_sequence} \
-      ~{charge_state}
+    crux predict_peptide_ions
   >>>
-  parameter_meta {
-    peptide_sequence: ""
-    charge_state: ""
+  output {
+    File out_stdout = stdout()
   }
 }

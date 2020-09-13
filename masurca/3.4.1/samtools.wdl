@@ -4,4 +4,7 @@ task Samtools {
   command <<<
     samtools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

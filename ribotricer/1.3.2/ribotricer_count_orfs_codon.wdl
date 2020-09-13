@@ -1,29 +1,32 @@
 version 1.0
 
-task RibotricerCountOrfsCodon {
+task RibotricerCountorfscodon {
   input {
-    String? ribot_ricer_index
-    String? detected_orfs
+    File? ribot_ricer_index
+    File? detected_orfs
     String? features
-    String? ribot_ricer_index_fast_a
+    File? ribot_ricer_index_fast_a
     String? prefix
     Boolean? report_all
   }
   command <<<
-    ribotricer count-orfs-codon \
+    ribotricer count_orfs_codon \
       ~{if defined(ribot_ricer_index) then ("--ribotricer_index " +  '"' + ribot_ricer_index + '"') else ""} \
       ~{if defined(detected_orfs) then ("--detected_orfs " +  '"' + detected_orfs + '"') else ""} \
       ~{if defined(features) then ("--features " +  '"' + features + '"') else ""} \
       ~{if defined(ribot_ricer_index_fast_a) then ("--ribotricer_index_fasta " +  '"' + ribot_ricer_index_fast_a + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
-      ~{true="--report_all" false="" report_all}
+      ~{if (report_all) then "--report_all" else ""}
   >>>
   parameter_meta {
-    ribot_ricer_index: "Path to the index file of ribotricer This file should be generated using ribotricer prepare-orfs  [required]"
-    detected_orfs: "Path to the detected orfs file This file should be generated using ribotricer detect- orfs  [required]"
+    ribot_ricer_index: "Path to the index file of ribotricer This\\nfile should be generated using ribotricer\\nprepare-orfs  [required]"
+    detected_orfs: "Path to the detected orfs file This file\\nshould be generated using ribotricer detect-\\norfs  [required]"
     features: "ORF types separated with comma  [required]"
     ribot_ricer_index_fast_a: "Path to ORF seq file  [required]"
     prefix: "Prefix for output files  [required]"
-    report_all: "Whether output all ORFs including those non- translating ones"
+    report_all: "Whether output all ORFs including those non-\\ntranslating ones"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

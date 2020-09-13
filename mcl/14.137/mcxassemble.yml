@@ -1,13 +1,217 @@
 !Command
-positional: []
-named: []
 command:
 - mcxassemble
+positional: []
+named:
+- !Flag
+  description: use base.raw, base.hdr, and optionally base.map
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: base
+  optional: true
+- !Flag
+  description: read header file
+  synonyms:
+  - -hdr
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: read raw data file
+  synonyms:
+  - -raw
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: read from single data file
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: write to file fname
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: precision to use in interchange format
+  synonyms:
+  - -digits
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: write to base.suf (default .sym)
+  synonyms:
+  - -xo
+  args: !SimpleFlagArg
+    name: suf
+  optional: true
+- !Flag
+  description: write result matrices in binary format
+  synonyms:
+  - --write-binary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not write default symmetrized result
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: apply row/col map in file
+  synonyms:
+  - -map
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: apply col map in file
+  synonyms:
+  - -cmap
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: apply row map in base.tag
+  synonyms:
+  - -rtag
+  args: !SimpleFlagArg
+    name: tag
+  optional: true
+- !Flag
+  description: apply row map in base.cmap
+  synonyms:
+  - --rmap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: apply row/col map in base.tag
+  synonyms:
+  - -tag
+  args: !SimpleFlagArg
+    name: tag
+  optional: true
+- !Flag
+  description: apply col map in base.tag
+  synonyms:
+  - -ctag
+  args: !SimpleFlagArg
+    name: tag
+  optional: true
+- !Flag
+  description: write skew matrix to file
+  synonyms:
+  - -skw
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: write primary result to file
+  synonyms:
+  - -prm
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: check primary result symmetry by creating skew matrix
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <func(arg)[, func(arg)]*> apply unary transformations to raw values
+  synonyms:
+  - -raw-tf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <func(arg)[, func(arg)]*> apply unary transformations to primary matrix
+  synonyms:
+  - -prm-tf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <func(arg)[, func(arg)]*> apply unary transformations to symmetrified
+    matrix
+  synonyms:
+  - -sym-tf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: action for repeated vectors
+  synonyms:
+  - -rv
+  args: !SimpleFlagArg
+    name: add|max|mul|left|right
+  optional: true
+- !Flag
+  description: action for repeated entries
+  synonyms:
+  - -re
+  args: !SimpleFlagArg
+    name: add|max|mul|left|right
+  optional: true
+- !Flag
+  description: action for adding image with mirror
+  synonyms:
+  - -ri
+  args: !SimpleFlagArg
+    name: add|max|mul
+  optional: true
+- !Flag
+  description: same for entries and vectors and matrix
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: add|max|mul|left|right
+  optional: true
+- !Flag
+  description: do not warn for repeated entries
+  synonyms:
+  - --quiet-re
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not warn for repeated vectors
+  synonyms:
+  - --quiet-rv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the two above combined
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print this help
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: print this help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: mcxassemble [options]\nDefault output is the symmetrized result\
   \ of the matrix built from the raw data\n\n-b <base>            use base.raw, base.hdr,\
   \ and optionally base.map\n-hdr <fname>         read header file\n-raw <fname> \

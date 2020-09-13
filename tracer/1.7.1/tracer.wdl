@@ -4,4 +4,7 @@ task Tracer {
   command <<<
     tracer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

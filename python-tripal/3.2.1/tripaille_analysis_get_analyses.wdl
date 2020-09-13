@@ -35,4 +35,7 @@ task TripailleAnalysisGetAnalyses {
     source_uri: "analysis sourceuri"
     date_executed: "analysis date_executed (yyyy-mm-dd)"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

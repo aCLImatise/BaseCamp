@@ -4,4 +4,7 @@ task AmalgamateSAM {
   command <<<
     amalgamateSAM
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

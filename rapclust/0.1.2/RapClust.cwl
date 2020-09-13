@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../RapClust.cwl
 inputs:
-- id: config
+- id: in_config
   doc: Config file describing the experimental setup  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - RapClust

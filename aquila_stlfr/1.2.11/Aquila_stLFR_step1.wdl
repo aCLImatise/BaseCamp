@@ -2,22 +2,22 @@ version 1.0
 
 task AquilaStLFRStep1 {
   input {
-    String? fast_q_file
-    String? bam_file
-    String? vcf_file
-    String? chr_start
-    String? chr_end
-    String? sample_name
-    String? out_dir
-    String? uniq_map_dir
-    String? num_threads
-    String? block_threshold
-    String? block_len_use
-    String use
+    File? fast_q_file
+    File? bam_file
+    File? vcf_file
+    Int? chr_start
+    Int? chr_end
+    Int? sample_name
+    Directory? out_dir
+    Directory? uniq_map_dir
+    Int? num_threads
+    Int? block_threshold
+    Int? block_len_use
+    Int x_zhou_one_five_atcs_dot_stanford_dot_edu
   }
   command <<<
     Aquila_stLFR_step1 \
-      ~{use} \
+      ~{x_zhou_one_five_atcs_dot_stanford_dot_edu} \
       ~{if defined(fast_q_file) then ("--fastq_file " +  '"' + fast_q_file + '"') else ""} \
       ~{if defined(bam_file) then ("--bam_file " +  '"' + bam_file + '"') else ""} \
       ~{if defined(vcf_file) then ("--vcf_file " +  '"' + vcf_file + '"') else ""} \
@@ -36,12 +36,15 @@ task AquilaStLFRStep1 {
     vcf_file: "Required parameter; VCF file, called by FreeBayes"
     chr_start: "chromosome start from, default = 1"
     chr_end: "chromosome end by,default = 23"
-    sample_name: "Required parameter; sample name you can define, for example, S12878"
-    out_dir: "Directory to store assembly results, default = ./Assembly_results"
-    uniq_map_dir: "Required Parameter; Directory for 100-mer uniqness, run ./install to download it"
+    sample_name: "Required parameter; sample name you can define, for\\nexample, S12878"
+    out_dir: "Directory to store assembly results, default =\\n./Assembly_results"
+    uniq_map_dir: "Required Parameter; Directory for 100-mer uniqness,\\nrun ./install to download it"
     num_threads: "number of threads, default = 8 (recommended)"
     block_threshold: "phase block threshold, default = 200000"
-    block_len_use: "phase block len threshold, default = 100000"
-    use: ""
+    block_len_use: "phase block len threshold, default = 100000\\n"
+    x_zhou_one_five_atcs_dot_stanford_dot_edu: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

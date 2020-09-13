@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../Bundler.cwl
 inputs:
-- id: b
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -b
-- id: t
+- id: in_t
   doc: ''
   type: boolean
   inputBinding:
     prefix: -t
-- id: an_k
+- id: in_b
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -b
+- id: in_an_k
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: bank_name
+- id: in_bank_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: ype
+- id: in_ype
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: comma_separated_list_of_link_types_to_process
+- id: in_comma_separated_list_of_link_types_to_process
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - Bundler

@@ -4,4 +4,7 @@ task GeneFamilyPhylogenyBuilder {
   command <<<
     GeneFamilyPhylogenyBuilder
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

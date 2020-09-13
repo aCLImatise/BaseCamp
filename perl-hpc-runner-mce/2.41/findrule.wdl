@@ -4,4 +4,7 @@ task Findrule {
   command <<<
     findrule
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

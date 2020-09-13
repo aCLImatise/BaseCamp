@@ -1,48 +1,51 @@
 class: CommandLineTool
 id: ../../../svtk_bedcluster.cwl
 inputs:
-- id: frac
-  doc: Minimum reciprocal overlap fraction to link variants. [0.8]
-  type: string
+- id: in_frac
+  doc: "Minimum reciprocal overlap fraction to link variants.\n[0.8]"
+  type: double
   inputBinding:
     prefix: --frac
-- id: region
-  doc: Region to cluster (chrom:start-end). Requires tabixed bed.
+- id: in_region
+  doc: "Region to cluster (chrom:start-end). Requires tabixed\nbed."
   type: string
   inputBinding:
     prefix: --region
-- id: prefix
+- id: in_prefix
   doc: Cluster ID prefix
   type: string
   inputBinding:
     prefix: --prefix
-- id: merge_coordinates
-  doc: Report median of start and end positions in each cluster as final coordinates
-    of cluster.
+- id: in_merge_coordinates
+  doc: "Report median of start and end positions in each\ncluster as final coordinates\
+    \ of cluster."
   type: boolean
   inputBinding:
     prefix: --merge-coordinates
-- id: tmpdir
+- id: in_tmpdir
   doc: Temporary directory [/tmp]
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-- id: intersection
-  doc: Pre-computed self-intersection of bed.
-  type: long
+- id: in_intersection
+  doc: "Pre-computed self-intersection of bed.\n"
+  type: string
   inputBinding:
     prefix: --intersection
-- id: bed
-  doc: 'SV calls to cluster. Columns: #chr, start, end, name, sample, svtype'
+- id: in_bed
+  doc: "SV calls to cluster. Columns: #chr, start, end, name,\nsample, svtype"
   type: string
   inputBinding:
     position: 0
-- id: f_out
+- id: in_f_out
   doc: Clustered bed.
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svtk

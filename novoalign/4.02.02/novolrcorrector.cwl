@@ -1,111 +1,94 @@
 class: CommandLineTool
 id: ../../../novolrcorrector.cwl
 inputs:
-- id: in
+- id: in_in
   doc: the input BAM file [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: out
-  doc: the output file as alternative to stdout. [stdout]
+- id: in_out
+  doc: "the output file as alternative\nto stdout. [stdout]"
   type: File
   inputBinding:
     prefix: -out
-- id: region
-  doc: genomic region (chr:99..[chr:]999). Index file is recommended for better performance,
-    and is used automatically if it exists. See 'bamtools help index' for more details
-    on creating one
-  type: string
+- id: in_region
+  doc: "genomic region\n(chr:99..[chr:]999). Index file is\nrecommended for better\
+    \ performance, and is\nused automatically if it exists. See\n'bamtools help index'\
+    \ for more details on\ncreating one"
+  type: File
   inputBinding:
     prefix: -region
-- id: fast_a
-  doc: Original Pacbio FASTA reads file as used in alignment process.
-  type: string
+- id: in_fast_a
+  doc: "Original Pacbio FASTA reads\nfile as used in alignment process."
+  type: File
   inputBinding:
     prefix: -fasta
-- id: use
-  doc: Fraction of alignments to use when calling a consensus base. Chooses the alignments
-    with the lowest Alignment Score plus Single End Penalty. [0.3300]
-  type: string
+- id: in_use
+  doc: "Fraction of alignments to use\nwhen calling a consensus base. Chooses the\n\
+    alignments with the lowest Alignment Score\nplus Single End Penalty. [0.3300]"
+  type: long
   inputBinding:
     prefix: -use
-- id: at_least
-  doc: Use at least this many alignments if fraction rule would use less alignments.
-    [4]
-  type: string
+- id: in_at_least
+  doc: "Use at least this many\nalignments if fraction rule would use less\nalignments.\
+    \ [4]"
+  type: long
   inputBinding:
     prefix: -atLeast
-- id: at_most
-  doc: Don't use more this many alignments even if fraction rule would use more alignments.
-    [50]
-  type: string
+- id: in_at_most
+  doc: "Don't use more this many\nalignments even if fraction rule would use\nmore\
+    \ alignments. [50]"
+  type: long
   inputBinding:
     prefix: -atMost
-- id: min_cover
-  doc: Only correct if we have at least this many alignments. [2]
-  type: string
+- id: in_min_cover
+  doc: "Only correct if we have at\nleast this many alignments. [2]"
+  type: long
   inputBinding:
     prefix: -minCover
-- id: se_penalty
-  doc: Penalty applied to improper pairs and single end reads when ranking alignments.
-    [70]
-  type: string
+- id: in_se_penalty
+  doc: "Penalty applied to improper\npairs and single end reads when ranking\nalignments.\
+    \ [70]"
+  type: long
   inputBinding:
     prefix: -sePenalty
-- id: full_lr
-  doc: Output full length of Long Read read including uncorrected bases. Default trims
-    uncorrected ends of reads.
+- id: in_full_lr
+  doc: "Output full length of Long\nRead read including uncorrected bases.\nDefault\
+    \ trims uncorrected ends of reads."
   type: boolean
   inputBinding:
     prefix: -fullLR
-- id: sv_split
-  doc: Split Reads at locii not covered by a proper pair. Default is not to split
-    the reads.
+- id: in_sv_split
+  doc: "Split Reads at locii not\ncovered by a proper pair. Default is not\nto split\
+    \ the reads."
   type: boolean
   inputBinding:
     prefix: -SVSplit
-- id: uncorrected_lr
-  doc: Output all Long Reads including those with no alignments. Default is to skip
-    output of reads with no alignments.
+- id: in_uncorrected_lr
+  doc: "Output all Long Reads\nincluding those with no alignments.\nDefault is to\
+    \ skip output of reads with no\nalignments."
   type: boolean
   inputBinding:
     prefix: -uncorrectedLR
-- id: fq
-  doc: Output is in FASTQ, Default is FASTA format.
+- id: in_fq
+  doc: "Output is in FASTQ, Default is\nFASTA format."
   type: boolean
   inputBinding:
     prefix: -fq
-- id: base_q
-  doc: Assumed phred scaled base quality for input fasta. [10]
-  type: string
+- id: in_base_q
+  doc: "Assumed phred scaled base\nquality for input fasta. [10]"
+  type: long
   inputBinding:
     prefix: -baseq
-- id: novo_craft
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: long
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: read
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: correct_or
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: format_specific
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "the output file as alternative\nto stdout. [stdout]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - novolrcorrector

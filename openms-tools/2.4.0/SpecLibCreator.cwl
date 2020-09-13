@@ -1,53 +1,56 @@
 class: CommandLineTool
 id: ../../../SpecLibCreator.cwl
 inputs:
-- id: info
+- id: in_info
   doc: "*          Holds id, peptide, retention time etc. (valid formats: 'csv')"
   type: File
   inputBinding:
     prefix: -info
-- id: item_seperator
+- id: in_item_seperator
   doc: "Separator between items. e.g. , (default: ',')"
   type: string
   inputBinding:
     prefix: -itemseperator
-- id: item_enclosed
+- id: in_item_enclosed
   doc: "'true' or 'false' if true every item is enclosed e.g. '$peptide$,$run$...\
     \ (default: 'false' valid: 'true', 'false')"
   type: boolean
   inputBinding:
     prefix: -itemenclosed
-- id: spec
+- id: in_spec
   doc: "*          Spectra (valid formats: 'mzData', 'mzXML')"
   type: File
   inputBinding:
     prefix: -spec
-- id: out
+- id: in_out
   doc: "*           Output MSP formatted spectra library (valid formats: 'msp')"
   type: File
   inputBinding:
     prefix: -out
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - SpecLibCreator

@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../saffrontree.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: Kmer to use, depends on read length [31]
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: min_km_ers_threshold
+- id: in_min_km_ers_threshold
   doc: Exclude k-mers occurring less than this [5]
   type: long
   inputBinding:
     prefix: --min_kmers_threshold
-- id: max_km_ers_threshold
+- id: in_max_km_ers_threshold
   doc: Exclude k-mers occurring more than this [255]
   type: long
   inputBinding:
     prefix: --max_kmers_threshold
-- id: threads
+- id: in_threads
   doc: Number of threads [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: keep_files
+- id: in_keep_files
   doc: Keep intermediate files [False]
   type: boolean
   inputBinding:
     prefix: --keep_files
-- id: verbose
+- id: in_verbose
   doc: Turn on more debugging output [False]
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: output_directory
+- id: in_output_directory
   doc: Output directory
   type: string
   inputBinding:
     position: 0
-- id: input_files
+- id: in_input_files
   doc: FASTQ/FASTA files which may be gzipped
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - saffrontree

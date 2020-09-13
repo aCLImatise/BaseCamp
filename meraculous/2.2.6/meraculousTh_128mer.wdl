@@ -38,4 +38,7 @@ task MeraculousTh128mer {
     debug_mode: ""
     seed_list_filename: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

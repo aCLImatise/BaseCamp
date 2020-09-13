@@ -4,4 +4,7 @@ task ReferenceseekerDb {
   command <<<
     referenceseeker_db
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Vipe {
   command <<<
     vipe
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

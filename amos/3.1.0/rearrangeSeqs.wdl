@@ -11,4 +11,7 @@ task RearrangeSeqs {
   parameter_meta {
     good_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

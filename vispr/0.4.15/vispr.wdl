@@ -6,9 +6,12 @@ task Vispr {
   }
   command <<<
     vispr \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     debug: "Print debug info."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

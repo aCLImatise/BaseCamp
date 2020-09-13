@@ -1,48 +1,52 @@
 class: CommandLineTool
 id: ../../../nanoraw_plot_correction.cwl
 inputs:
-- id: fast_five_based_irs
+- id: in_fast_five_based_irs
   doc: Directories containing fast5 files.
-  type: string[]
+  type: long[]
   inputBinding:
     prefix: --fast5-basedirs
-- id: region_type
-  doc: 'Region to plot within each read. Choices are: random (default), start, end.'
+- id: in_region_type
+  doc: "Region to plot within each read. Choices are: random\n(default), start, end."
   type: string
   inputBinding:
     prefix: --region-type
-- id: corrected_group
-  doc: 'FAST5 group to access/plot created by genome_resquiggle script. Default: RawGenomeCorrected_000'
-  type: string
+- id: in_corrected_group
+  doc: "FAST5 group to access/plot created by\ngenome_resquiggle script. Default:\n\
+    RawGenomeCorrected_000"
+  type: long
   inputBinding:
     prefix: --corrected-group
-- id: base_call_subgroup
-  doc: 'FAST5 subgroup (under Analyses/[corrected-group]) where individual template
-    or complement read is stored. Default: BaseCalled_template'
-  type: string
+- id: in_base_call_subgroup
+  doc: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual template\
+    \ or complement read is\nstored. Default: BaseCalled_template"
+  type: long
   inputBinding:
     prefix: --basecall-subgroup
-- id: pdf_filename
-  doc: 'PDF filename to store plot(s). Default: Nanopore_genome_correction.pdf'
-  type: string
+- id: in_pdf_filename
+  doc: "PDF filename to store plot(s). Default:\nNanopore_genome_correction.pdf"
+  type: File
   inputBinding:
     prefix: --pdf-filename
-- id: num_reads
-  doc: 'Number of reads to plot (one region per read). Default: 10'
-  type: string
+- id: in_num_reads
+  doc: "Number of reads to plot (one region per read).\nDefault: 10"
+  type: long
   inputBinding:
     prefix: --num-reads
-- id: num_obs
-  doc: 'Number of observations to plot in each region. Default: 500'
-  type: string
+- id: in_num_obs
+  doc: "Number of observations to plot in each region.\nDefault: 500"
+  type: long
   inputBinding:
     prefix: --num-obs
-- id: quiet
+- id: in_quiet
   doc: Don't print status information.
   type: boolean
   inputBinding:
     prefix: --quiet
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nanoraw

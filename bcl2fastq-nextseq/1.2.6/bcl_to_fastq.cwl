@@ -1,89 +1,92 @@
 class: CommandLineTool
 id: ../../../bcl_to_fastq.cwl
 inputs:
-- id: input_dir
-  doc: path to input directory; default is RUNFOLDER- DIR/Data/Intensities/BaseCalls
-  type: string
+- id: in_input_dir
+  doc: path to input directory; default is RUNFOLDER-
+  type: File
   inputBinding:
     prefix: --input-dir
-- id: run_folder_dir
-  doc: 'path to directory containing run data [default: /tmp/tmp5fz1qsxd]'
-  type: string
-  inputBinding:
-    prefix: --runfolder-dir
-- id: output_dir
-  doc: path to demultiplexed output; default is same as INPUT-DIR
-  type: string
+- id: in_output_dir
+  doc: "path to demultiplexed output; default is same\nas INPUT-DIR"
+  type: File
   inputBinding:
     prefix: --output-dir
-- id: sample_sheet
-  doc: file path to sample sheet; default is RUNFOLDER-DIR/SampleSheet.csv
-  type: string
+- id: in_sample_sheet
+  doc: file path to sample sheet; default is
+  type: File
   inputBinding:
     prefix: --sample-sheet
-- id: loading
-  doc: 'number of threads used for loading BCL data [default: 12]'
-  type: long
-  inputBinding:
-    prefix: --loading
-- id: demultiplexing
-  doc: 'number of threads used for demultiplexing [default: 12]'
+- id: in_demultiplexing
+  doc: "number of threads used for demultiplexing\n[default: 12]"
   type: long
   inputBinding:
     prefix: --demultiplexing
-- id: processing
-  doc: 'number of threads used for processing demultiplexed data  [default: 24]'
+- id: in_processing
+  doc: "number of threads used for processing\ndemultiplexed data  [default: 24]"
   type: long
   inputBinding:
     prefix: --processing
-- id: writing
-  doc: 'number of threads used for writing FASTQ data [default: 12]'
+- id: in_writing
+  doc: "number of threads used for writing FASTQ data\n[default: 12]"
   type: long
   inputBinding:
     prefix: --writing
-- id: barcode_mismatches
-  doc: 'number of allowed mismatches per index [default: 0]'
+- id: in_barcode_mismatches
+  doc: "number of allowed mismatches per index\n[default: 0]"
   type: long
   inputBinding:
     prefix: --barcode-mismatches
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'save Undetermined reads  [default: False]'
   type: boolean
   inputBinding:
     prefix: --keep-tmp
-- id: reverse_complement
-  doc: 'reverse complement index 2 of the sample sheet [default: False]'
+- id: in_reverse_complement
+  doc: "reverse complement index 2 of the sample sheet\n[default: False]"
   type: boolean
   inputBinding:
     prefix: --reverse-complement
-- id: no_wait
-  doc: 'process the run without checking its completion status  [default: False]'
+- id: in_no_wait
+  doc: "process the run without checking its\ncompletion status  [default: False]"
   type: boolean
   inputBinding:
     prefix: --no-wait
-- id: overwrite
-  doc: 'overwrite existing fastq files in the output directory  [default: False]'
+- id: in_overwrite
+  doc: overwrite existing fastq files in the output
   type: boolean
   inputBinding:
     prefix: --overwrite
-- id: determine
-  doc: 'use barcodes in samplesheet as well as the reverse complement of index 2,
-    then demultiplex with best  [default: False]'
+- id: in_determine
+  doc: "use barcodes in samplesheet as well as the\nreverse complement of index 2,\
+    \ then\ndemultiplex with best  [default: False]"
   type: boolean
   inputBinding:
     prefix: --determine
-- id: no_cleanup
-  doc: 'skip all cleaning up -- do not rename fastq output and do not delete undetermined
-    files [default: False]'
+- id: in_no_cleanup
+  doc: "skip all cleaning up -- do not rename fastq\noutput and do not delete undetermined\
+    \ files\n[default: False]"
   type: boolean
   inputBinding:
     prefix: --no-cleanup
-- id: bcl_two_fast_q_args
-  doc: ''
+- id: in_dir_slash_data_slash_intensities_slash_base_calls
+  doc: -R, --runfolder-dir TEXT      path to directory containing run data
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_run_folder_dir_slash_sample_sheet_dot_csv
+  doc: --loading INTEGER             number of threads used for loading BCL data
+  type: string
+  inputBinding:
+    position: 0
+- id: in_directory
+  doc: '[default: False]'
+  type: Directory
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bcl_to_fastq

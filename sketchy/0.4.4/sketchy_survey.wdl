@@ -4,4 +4,7 @@ task SketchySurvey {
   command <<<
     sketchy survey
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

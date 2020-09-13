@@ -4,4 +4,7 @@ task Centreseq {
   command <<<
     centreseq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

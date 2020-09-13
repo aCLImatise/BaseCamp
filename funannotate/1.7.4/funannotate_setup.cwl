@@ -1,43 +1,46 @@
 class: CommandLineTool
 id: ../../../funannotate_setup.cwl
 inputs:
-- id: install
-  doc: 'Download format databases. Default: all [merops,uniprot,dbCAN,pfam,repeats,go,
-    mibig,interpro,busco_outgroups,gene2product]'
+- id: in_install
+  doc: "Download format databases. Default: all\n[merops,uniprot,dbCAN,pfam,repeats,go,\n\
+    mibig,interpro,busco_outgroups,gene2product]"
   type: boolean
   inputBinding:
     prefix: --install
-- id: busco_db
+- id: in_busco_db
   doc: 'Busco Databases to install. Default: dikarya [all,fungi,aves,etc]'
   type: boolean
   inputBinding:
     prefix: --busco_db
-- id: database
+- id: in_database
   doc: Path to funannotate database
   type: boolean
   inputBinding:
     prefix: --database
-- id: update
+- id: in_update
   doc: Check remote md5 and update if newer version found
   type: boolean
   inputBinding:
     prefix: --update
-- id: force
+- id: in_force
   doc: Force overwriting database
   type: boolean
   inputBinding:
     prefix: --force
-- id: wget
+- id: in_wget
   doc: Use wget to download instead of python requests
   type: boolean
   inputBinding:
     prefix: --wget
-- id: arguments
+- id: in_arguments
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - funannotate

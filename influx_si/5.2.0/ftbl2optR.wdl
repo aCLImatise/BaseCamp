@@ -4,4 +4,7 @@ task Ftbl2optR {
   command <<<
     ftbl2optR
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

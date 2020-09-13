@@ -5,19 +5,17 @@ task GrootIndex {
     Int? km_er_size
     Int? max_k
     Int? max_sketch_span
-    String? msa_dir
+    Directory? msa_dir
     Int? num_part
     Int? sketch_size
     Int? window_size
-    String? index_dir
-    String? log
+    Directory? index_dir
+    File? log
     Int? processors
     Boolean? profiling
-    String? flags
   }
   command <<<
     groot index \
-      ~{flags} \
       ~{if defined(km_er_size) then ("--kmerSize " +  '"' + km_er_size + '"') else ""} \
       ~{if defined(max_k) then ("--maxK " +  '"' + max_k + '"') else ""} \
       ~{if defined(max_sketch_span) then ("--maxSketchSpan " +  '"' + max_sketch_span + '"') else ""} \
@@ -28,7 +26,7 @@ task GrootIndex {
       ~{if defined(index_dir) then ("--indexDir " +  '"' + index_dir + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(processors) then ("--processors " +  '"' + processors + '"') else ""} \
-      ~{true="--profiling" false="" profiling}
+      ~{if (profiling) then "--profiling" else ""}
   >>>
   parameter_meta {
     km_er_size: "size of k-mer (default 31)"
@@ -39,9 +37,11 @@ task GrootIndex {
     sketch_size: "size of MinHash sketch (default 21)"
     window_size: "size of window to sketch graph traversals with (default 100)"
     index_dir: "directory for to write/read the GROOT index files"
-    log: "filename for log file (default \"groot.log\")"
+    log: "filename for log file (default \\\"groot.log\\\")"
     processors: "number of processors to use (default 1)"
     profiling: "create the files needed to profile GROOT using the go tool pprof"
-    flags: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

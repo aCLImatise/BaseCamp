@@ -2,20 +2,20 @@ version 1.0
 
 task Uvp {
   input {
-    String? fast_q
+    File? fast_q
     String? reference
     String? name
-    String? fast_q_two
-    String? outdir
+    Int? fast_q_two
+    Directory? outdir
     Boolean? keep_files
     Boolean? bwa
     Boolean? all
     Boolean? g_atk
     Boolean? sam_tools
     Boolean? annotate
-    String? threads
-    String? kraken_db
-    String? config
+    Int? threads
+    File? kraken_db
+    File? config
     Boolean? verbose
   }
   command <<<
@@ -25,16 +25,16 @@ task Uvp {
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(fast_q_two) then ("--fastq2 " +  '"' + fast_q_two + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
-      ~{true="--keepfiles" false="" keep_files} \
-      ~{true="--bwa" false="" bwa} \
-      ~{true="--all" false="" all} \
-      ~{true="--gatk" false="" g_atk} \
-      ~{true="--samtools" false="" sam_tools} \
-      ~{true="--annotate" false="" annotate} \
+      ~{if (keep_files) then "--keepfiles" else ""} \
+      ~{if (bwa) then "--bwa" else ""} \
+      ~{if (all) then "--all" else ""} \
+      ~{if (g_atk) then "--gatk" else ""} \
+      ~{if (sam_tools) then "--samtools" else ""} \
+      ~{if (annotate) then "--annotate" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(kraken_db) then ("--krakendb " +  '"' + kraken_db + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     fast_q: "Input FASTQ file"
@@ -52,5 +52,9 @@ task Uvp {
     kraken_db: "Path to kraken database"
     config: "Config file"
     verbose: "Produce status updates of the run."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

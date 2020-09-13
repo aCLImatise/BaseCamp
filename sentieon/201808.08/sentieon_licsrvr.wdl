@@ -1,7 +1,10 @@
 version 1.0
 
-task SentieonLicsrvr {
+task Sentieonlicsrvr {
   command <<<
-    sentieon-licsrvr
+    sentieon_licsrvr
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

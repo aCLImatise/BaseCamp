@@ -1,14 +1,10 @@
 version 1.0
 
 task CruxComet {
-  input {
-    String input_spectra
-  }
   command <<<
-    crux comet \
-      ~{input_spectra}
+    crux comet
   >>>
-  parameter_meta {
-    input_spectra: ""
+  output {
+    File out_stdout = stdout()
   }
 }

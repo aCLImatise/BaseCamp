@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../hgLoadNet.cwl
 inputs:
-- id: no_bin
+- id: in_no_bin
   doc: suppress bin field
   type: boolean
   inputBinding:
     prefix: -noBin
-- id: old_table
+- id: in_old_table
   doc: to existing table
   type: string
   inputBinding:
     prefix: -oldTable
-- id: sql_table
+- id: in_sql_table
   doc: Create table from .sql file
-  type: string
+  type: File
   inputBinding:
     prefix: -sqlTable
-- id: q_prefix
+- id: in_q_prefix
   doc: prepend "xxx-" to query name
   type: string
   inputBinding:
     prefix: -qPrefix
-- id: warn
+- id: in_warn
   doc: even with missing fields
   type: string
   inputBinding:
     prefix: -warn
-- id: test
+- id: in_test
   doc: loading table
   type: string
   inputBinding:
     prefix: -test
-- id: database
+- id: in_database
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: track
+- id: in_track
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: files
+- id: in_files
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hgLoadNet

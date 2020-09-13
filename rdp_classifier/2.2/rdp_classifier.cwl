@@ -1,40 +1,48 @@
 class: CommandLineTool
 id: ../../../rdp_classifier.cwl
 inputs:
-- id: format
-  doc: 'all tab delimited output format: [allrank|fixrank|db]. Default is allrank.
-    allrank: outputs the results for all ranks applied for each sequence: seqname,
-    orientation, taxon name, rank, conf, ... fixrank: only outputs the results for
-    fixed ranks in order: no rank, domain, phylum, class, order, family, genus db:
-    outputs the seqname, trainset_no, tax_id, conf. This is good for storing in a
-    database'
+- id: in_format
+  doc: "all tab delimited output format: [allrank|fixrank|db]. Default is allrank.\n\
+    allrank: outputs the results for all ranks applied for each sequence: seqname,\
+    \ orientation,\ntaxon name, rank, conf, ...\nfixrank: only outputs the results\
+    \ for fixed ranks in order: no rank, domain, phylum, class,\norder, family, genus\n\
+    db: outputs the seqname, trainset_no, tax_id, conf. This is good for storing in\
+    \ a database"
   type: string
   inputBinding:
     prefix: --format
-- id: output_file
+- id: in_output_file
   doc: output file name for classification assignment
-  type: string
+  type: File
   inputBinding:
     prefix: --outputFile
-- id: query_file
+- id: in_query_file
   doc: 'query file contains sequences in one of the following formats: Fasta, Genbank
     and EMBL'
-  type: string
+  type: File
   inputBinding:
     prefix: --queryFile
-- id: train_prop_file
-  doc: 'a property file contains the mapping of the training files. Note: the training
-    files and the property file should be in the same directory. The default property
-    file is set to data/classifier/rRNAClassifier.properties.'
-  type: string
+- id: in_train_prop_file
+  doc: "a property file contains the mapping of the training files.\nNote: the training\
+    \ files and the property file should be in the same directory.\nThe default property\
+    \ file is set to data/classifier/rRNAClassifier.properties.\n"
+  type: File
   inputBinding:
     prefix: --train_propfile
-- id: classifier_cmd
+- id: in_classifier_cmd
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: output file name for classification assignment
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - rdp_classifier

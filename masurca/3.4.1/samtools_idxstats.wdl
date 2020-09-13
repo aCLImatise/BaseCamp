@@ -11,4 +11,7 @@ task SamtoolsIdxstats {
   parameter_meta {
     in_dot_bam: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

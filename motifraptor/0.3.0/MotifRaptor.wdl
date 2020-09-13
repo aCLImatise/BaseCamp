@@ -4,4 +4,7 @@ task MotifRaptor {
   command <<<
     MotifRaptor
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

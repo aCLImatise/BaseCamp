@@ -1,21 +1,21 @@
 version 1.0
 
-task MaltRun {
+task Maltrun {
   input {
     Boolean? mode
     Boolean? alignment_type
     Boolean? in_file
     Boolean? index
-    Boolean? output_rma_files
-    Boolean? include_unaligned
-    Boolean? alignments
+    File? output_rma_files
+    File? include_unaligned
+    File? alignments
     Boolean? format
     Boolean? gzip_alignments
     Boolean? sam_soft_clip
     Boolean? sparse_sam
-    Boolean? out_aligned
+    File? out_aligned
     Boolean? gzip_aligned
-    Boolean? out_unaligned
+    File? out_unaligned
     Boolean? gzip_unaligned
     Boolean? num_threads
     Boolean? memory_mode
@@ -53,72 +53,72 @@ task MaltRun {
     Boolean? verbose
   }
   command <<<
-    malt-run \
-      ~{true="--mode" false="" mode} \
-      ~{true="--alignmentType" false="" alignment_type} \
-      ~{true="--inFile" false="" in_file} \
-      ~{true="--index" false="" index} \
-      ~{true="--output" false="" output_rma_files} \
-      ~{true="--includeUnaligned" false="" include_unaligned} \
-      ~{true="--alignments" false="" alignments} \
-      ~{true="--format" false="" format} \
-      ~{true="--gzipAlignments" false="" gzip_alignments} \
-      ~{true="--samSoftClip" false="" sam_soft_clip} \
-      ~{true="--sparseSAM" false="" sparse_sam} \
-      ~{true="--outAligned" false="" out_aligned} \
-      ~{true="--gzipAligned" false="" gzip_aligned} \
-      ~{true="--outUnaligned" false="" out_unaligned} \
-      ~{true="--gzipUnaligned" false="" gzip_unaligned} \
-      ~{true="--numThreads" false="" num_threads} \
-      ~{true="--memoryMode" false="" memory_mode} \
-      ~{true="--maxTables" false="" max_tables} \
-      ~{true="--replicateQueryCache" false="" replicate_query_cache} \
-      ~{true="--minBitScore" false="" min_bit_score} \
-      ~{true="--maxExpected" false="" max_expected} \
-      ~{true="--minPercentIdentity" false="" min_percent_identity} \
-      ~{true="--maxAlignmentsPerQuery" false="" max_alignments_per_query} \
-      ~{true="--maxAlignmentsPerRef" false="" max_alignments_per_ref} \
-      ~{true="--matchScore" false="" match_score} \
-      ~{true="--mismatchScore" false="" mismatch_score} \
-      ~{true="--setLambda" false="" set_lambda} \
-      ~{true="--setK" false="" set_k} \
-      ~{true="--subMatrix" false="" submatrix} \
-      ~{true="--forwardOnly" false="" forward_only} \
-      ~{true="--reverseOnly" false="" reverse_only} \
-      ~{true="--topPercent" false="" top_percent} \
-      ~{true="--minSupportPercent" false="" min_support_percent} \
-      ~{true="--minSupport" false="" min_support} \
-      ~{true="--minPercentIdentityLCA" false="" min_percent_identity_lca} \
-      ~{true="--useMinPercentIdentityFilterLCA" false="" use_min_percent_identity_filter_lca} \
-      ~{true="--weightedLCA" false="" weighted_lca} \
-      ~{true="--lcaCoveragePercent" false="" lca_coverage_percent} \
-      ~{true="--magnitudes" false="" magnitudes} \
-      ~{true="--conFile" false="" con_file} \
-      ~{true="--maxSeedsPerFrame" false="" max_seeds_per_frame} \
-      ~{true="--maxSeedsPerRef" false="" max_seeds_per_ref} \
-      ~{true="--seedShift" false="" seed_shift} \
-      ~{true="--gapOpen" false="" gap_open} \
-      ~{true="--gapExtend" false="" gap_extend} \
-      ~{true="--band" false="" band} \
-      ~{true="--replicateQueryCacheBits" false="" replicate_query_cache_bits} \
-      ~{true="--xPart" false="" x_part} \
-      ~{true="--verbose" false="" verbose}
+    malt_run \
+      ~{if (mode) then "--mode" else ""} \
+      ~{if (alignment_type) then "--alignmentType" else ""} \
+      ~{if (in_file) then "--inFile" else ""} \
+      ~{if (index) then "--index" else ""} \
+      ~{if (output_rma_files) then "--output" else ""} \
+      ~{if (include_unaligned) then "--includeUnaligned" else ""} \
+      ~{if (alignments) then "--alignments" else ""} \
+      ~{if (format) then "--format" else ""} \
+      ~{if (gzip_alignments) then "--gzipAlignments" else ""} \
+      ~{if (sam_soft_clip) then "--samSoftClip" else ""} \
+      ~{if (sparse_sam) then "--sparseSAM" else ""} \
+      ~{if (out_aligned) then "--outAligned" else ""} \
+      ~{if (gzip_aligned) then "--gzipAligned" else ""} \
+      ~{if (out_unaligned) then "--outUnaligned" else ""} \
+      ~{if (gzip_unaligned) then "--gzipUnaligned" else ""} \
+      ~{if (num_threads) then "--numThreads" else ""} \
+      ~{if (memory_mode) then "--memoryMode" else ""} \
+      ~{if (max_tables) then "--maxTables" else ""} \
+      ~{if (replicate_query_cache) then "--replicateQueryCache" else ""} \
+      ~{if (min_bit_score) then "--minBitScore" else ""} \
+      ~{if (max_expected) then "--maxExpected" else ""} \
+      ~{if (min_percent_identity) then "--minPercentIdentity" else ""} \
+      ~{if (max_alignments_per_query) then "--maxAlignmentsPerQuery" else ""} \
+      ~{if (max_alignments_per_ref) then "--maxAlignmentsPerRef" else ""} \
+      ~{if (match_score) then "--matchScore" else ""} \
+      ~{if (mismatch_score) then "--mismatchScore" else ""} \
+      ~{if (set_lambda) then "--setLambda" else ""} \
+      ~{if (set_k) then "--setK" else ""} \
+      ~{if (submatrix) then "--subMatrix" else ""} \
+      ~{if (forward_only) then "--forwardOnly" else ""} \
+      ~{if (reverse_only) then "--reverseOnly" else ""} \
+      ~{if (top_percent) then "--topPercent" else ""} \
+      ~{if (min_support_percent) then "--minSupportPercent" else ""} \
+      ~{if (min_support) then "--minSupport" else ""} \
+      ~{if (min_percent_identity_lca) then "--minPercentIdentityLCA" else ""} \
+      ~{if (use_min_percent_identity_filter_lca) then "--useMinPercentIdentityFilterLCA" else ""} \
+      ~{if (weighted_lca) then "--weightedLCA" else ""} \
+      ~{if (lca_coverage_percent) then "--lcaCoveragePercent" else ""} \
+      ~{if (magnitudes) then "--magnitudes" else ""} \
+      ~{if (con_file) then "--conFile" else ""} \
+      ~{if (max_seeds_per_frame) then "--maxSeedsPerFrame" else ""} \
+      ~{if (max_seeds_per_ref) then "--maxSeedsPerRef" else ""} \
+      ~{if (seed_shift) then "--seedShift" else ""} \
+      ~{if (gap_open) then "--gapOpen" else ""} \
+      ~{if (gap_extend) then "--gapExtend" else ""} \
+      ~{if (band) then "--band" else ""} \
+      ~{if (replicate_query_cache_bits) then "--replicateQueryCacheBits" else ""} \
+      ~{if (x_part) then "--xPart" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     mode: "[string]                  Program mode. Mandatory option. Legal values: Unknown, BlastN, BlastP, BlastX, Classifier"
     alignment_type: "[string]        Type of alignment to be performed. Default value: Local. Legal values: Local, SemiGlobal"
     in_file: "[string(s)]             Input file(s) containing queries in FastA or FastQ format (gzip or zip ok). Mandatory option."
     index: "[string]                 Index directory as generated by MaltBuild. Mandatory option."
-    output_rma_files: "[string(s)]             Output RMA file(s) or directory. "
+    output_rma_files: "[string(s)]             Output RMA file(s) or directory."
     include_unaligned: "Include unaligned queries in RMA output file. Default value: false."
-    alignments: "[string(s)]         Output alignment file(s) or directory or STDOUT. "
+    alignments: "[string(s)]         Output alignment file(s) or directory or STDOUT."
     format: "[string]                Alignment output format. Default value: SAM. Legal values: SAM, Tab, Text"
     gzip_alignments: "Compress alignments using gzip. Default value: true."
     sam_soft_clip: "Use soft clipping in SAM files (BlastN mode only). Default value: false."
     sparse_sam: "Produce sparse SAM format (smaller, faster, but only suitable for MEGAN). Default value: false."
-    out_aligned: "[string(s)]        Aligned reads output file(s) or directory or STDOUT. "
+    out_aligned: "[string(s)]        Aligned reads output file(s) or directory or STDOUT."
     gzip_aligned: "Compress aligned reads output using gzip. Default value: true."
-    out_unaligned: "[string(s)]      Unaligned reads output file(s) or directory or STDOUT. "
+    out_unaligned: "[string(s)]      Unaligned reads output file(s) or directory or STDOUT."
     gzip_unaligned: "Compress unaligned reads output using gzip. Default value: true."
     num_threads: "[number]            Number of worker threads. Default value: 8."
     memory_mode: "[string]          Memory mode. Default value: load. Legal values: load, page, map"
@@ -144,7 +144,7 @@ task MaltRun {
     weighted_lca: "Use the weighted LCA for taxonomic assignment. Default value: false."
     lca_coverage_percent: "[number]   Set the percent for the LCA to cover. Default value: 100.0."
     magnitudes: "Reads have magnitudes (to be used in taxonomic or functional analysis). Default value: false."
-    con_file: "[string]              File of contaminant taxa (one Id or name per line). "
+    con_file: "[string]              File of contaminant taxa (one Id or name per line)."
     max_seeds_per_frame: "[number]    Maximum number of seed matches per offset per read frame. Default value: 100."
     max_seeds_per_ref: "[number]      Maximum number of seed matches per read and reference. Default value: 20."
     seed_shift: "[number]            Seed shift. Default value: 1."
@@ -154,5 +154,13 @@ task MaltRun {
     replicate_query_cache_bits: "[number]   Bits used for caching replicate queries (size is then 2^bits). Default value: 20."
     x_part: "Show part of the table in human readable form for debugging. Default value: false."
     verbose: "Echo commandline options and be verbose. Default value: false."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_rma_files = "${in_output_rma_files}"
+    File out_include_unaligned = "${in_include_unaligned}"
+    File out_alignments = "${in_alignments}"
+    File out_out_aligned = "${in_out_aligned}"
+    File out_out_unaligned = "${in_out_unaligned}"
   }
 }

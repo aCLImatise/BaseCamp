@@ -1,7 +1,10 @@
 version 1.0
 
-task GenieHelpers.pl.bak {
+task GenieHelperspl {
   command <<<
-    genie_helpers.pl.bak
+    genie_helpers_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

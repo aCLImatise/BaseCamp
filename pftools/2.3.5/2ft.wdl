@@ -1,20 +1,23 @@
 version 1.0
 
-task 2ft {
+task Ft {
   input {
     Boolean? translate_only_reverse
-    Boolean? translate_only_strand
-    Boolean? value_specifies_default
+    Boolean? translate_sense_strand
+    Boolean? valuespecifies_width_default
   }
   command <<<
-    2ft \
-      ~{true="-r" false="" translate_only_reverse} \
-      ~{true="-s" false="" translate_only_strand} \
-      ~{true="-W" false="" value_specifies_default}
+    _ft \
+      ~{if (translate_only_reverse) then "-r" else ""} \
+      ~{if (translate_sense_strand) then "-s" else ""} \
+      ~{if (valuespecifies_width_default) then "-W" else ""}
   >>>
   parameter_meta {
     translate_only_reverse: ": translate only reverse (antisense) strand."
-    translate_only_strand: ": translate only sense strand."
-    value_specifies_default: "<value>: specifies the output width (default: 60)."
+    translate_sense_strand: ": translate only sense strand."
+    valuespecifies_width_default: "<value>:\\nspecifies the output width (default: 60).\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

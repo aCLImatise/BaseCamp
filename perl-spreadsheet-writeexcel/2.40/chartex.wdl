@@ -10,11 +10,14 @@ task Chartex {
     chartex \
       ~{file_dot_xls} \
       ~{if defined(man) then ("--man " +  '"' + man + '"') else ""} \
-      ~{true="--chartname" false="" chart_name}
+      ~{if (chart_name) then "--chartname" else ""}
   >>>
   parameter_meta {
-    man: "Prints the manual page and exits."
+    man: "Prints the manual page and exits.\\n"
     chart_name: ""
     file_dot_xls: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

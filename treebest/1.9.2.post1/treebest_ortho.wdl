@@ -11,4 +11,7 @@ task TreebestOrtho {
   parameter_meta {
     tree: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

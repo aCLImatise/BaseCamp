@@ -11,4 +11,7 @@ task CortexpyArgs {
   parameter_meta {
     cortex_py: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

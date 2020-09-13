@@ -1,72 +1,75 @@
 class: CommandLineTool
 id: ../../../cfm_id.cwl
 inputs:
-- id: spectrum_file
+- id: in_spectrum_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: id
+- id: in_id
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: candidate_file
+- id: in_candidate_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: num_highest
+- id: in_num_highest
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: ppm_mass_to_l
+- id: in_ppm_mass_to_l
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: abs_mass_to_l
+- id: in_abs_mass_to_l
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: prob_thresh_for_prune
+- id: in_prob_thresh_for_prune
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: param_filename
+- id: in_param_filename
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: config_filename
+- id: in_config_filename
   doc: ''
   type: string
   inputBinding:
     position: 8
-- id: score_type
+- id: in_score_type
   doc: ''
   type: string
   inputBinding:
     position: 9
-- id: apply_postprocessing
+- id: in_apply_postprocessing
   doc: ''
   type: string
   inputBinding:
     position: 10
-- id: output_filename
+- id: in_output_filename
   doc: ''
   type: string
   inputBinding:
     position: 11
-- id: output_msp_or_mgf
+- id: in_output_msp_or_mgf
   doc: ''
   type: string
   inputBinding:
     position: 12
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cfm-id

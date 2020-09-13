@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../fasta_get_markov.cwl
 inputs:
-- id: sequence
+- id: in_sequence
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_1
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 1
-- id: background
+- id: in_background
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: var_3
-  doc: ''
-  type: File
-  inputBinding:
-    position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fasta-get-markov

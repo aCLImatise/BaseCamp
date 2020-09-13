@@ -4,4 +4,7 @@ task GetAccssnTaxID {
   command <<<
     getAccssnTaxID
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

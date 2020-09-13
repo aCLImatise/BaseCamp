@@ -1,43 +1,51 @@
 class: CommandLineTool
 id: ../../../extractDEs.cwl
 inputs:
-- id: output
-  doc: 'Write output to this file (STDOUT if omitted). '
-  type: boolean
+- id: in_output
+  doc: Write output to this file (STDOUT if omitted).
+  type: File
   inputBinding:
     prefix: -output
-- id: regions
-  doc: 'the genomic regions, in BED format, corresponding to the input  sequences
-    for Zagros. '
+- id: in_regions
+  doc: "the genomic regions, in BED format, corresponding to the input\nsequences\
+    \ for Zagros."
   type: boolean
   inputBinding:
     prefix: -regions
-- id: mapper
-  doc: 'the mapper used to map the reads (Default: rmap) '
+- id: in_mapper
+  doc: 'the mapper used to map the reads (Default: rmap)'
   type: boolean
   inputBinding:
     prefix: -mapper
-- id: tech
-  doc: 'the technology type used in the experiment (default iCLIP) '
+- id: in_tech
+  doc: the technology type used in the experiment (default iCLIP)
   type: boolean
   inputBinding:
     prefix: -tech
-- id: verbose
-  doc: 'print more run info (default: false '
+- id: in_verbose
+  doc: 'print more run info (default: false'
   type: boolean
   inputBinding:
     prefix: -verbose
-- id: about
-  doc: 'print about message '
+- id: in_about
+  doc: print about message
   type: boolean
   inputBinding:
     prefix: -about
-- id: mapped_reads
+- id: in_mapped_reads
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Write output to this file (STDOUT if omitted).
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - extractDEs

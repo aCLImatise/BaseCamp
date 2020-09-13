@@ -1,23 +1,23 @@
 version 1.0
 
-task SsuCmscore {
+task Ssucmscore {
   input {
-    String? generate_n_sequences
-    Boolean? align_locally_model
-    String? set_rng_seed
+    Int? generate_n_sequences
+    Boolean? align_locally_wrt
+    Int? set_rng_seed
     Boolean? print_individual_timings
     Boolean? sub
-    String? mx_size
+    Int? mx_size
     Boolean? devhelp
     Boolean? emit
     Boolean? random
-    String? in_file
-    String? outfile
-    String? lm_in
-    String? lmax
+    File? in_file
+    File? outfile
+    Int? lm_in
+    Int? lmax
     Boolean? pad
     Boolean? h_banded
-    String? tau
+    Float? tau
     Boolean? aln_two_bands
     Boolean? h_safe
     Boolean? non_banded
@@ -26,47 +26,47 @@ task SsuCmscore {
     Boolean? search
     Boolean? inside
     Boolean? forward
-    String? taus
-    String? tau_e
-    String? t_file
+    Int? taus
+    Int? tau_e
+    File? t_file
     Boolean? options
     String cm_file
   }
   command <<<
-    ssu-cmscore \
+    ssu_cmscore \
       ~{cm_file} \
       ~{if defined(generate_n_sequences) then ("-n " +  '"' + generate_n_sequences + '"') else ""} \
-      ~{true="-l" false="" align_locally_model} \
+      ~{if (align_locally_wrt) then "-l" else ""} \
       ~{if defined(set_rng_seed) then ("-s " +  '"' + set_rng_seed + '"') else ""} \
-      ~{true="-a" false="" print_individual_timings} \
-      ~{true="--sub" false="" sub} \
+      ~{if (print_individual_timings) then "-a" else ""} \
+      ~{if (sub) then "--sub" else ""} \
       ~{if defined(mx_size) then ("--mxsize " +  '"' + mx_size + '"') else ""} \
-      ~{true="--devhelp" false="" devhelp} \
-      ~{true="--emit" false="" emit} \
-      ~{true="--random" false="" random} \
+      ~{if (devhelp) then "--devhelp" else ""} \
+      ~{if (emit) then "--emit" else ""} \
+      ~{if (random) then "--random" else ""} \
       ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(lm_in) then ("--Lmin " +  '"' + lm_in + '"') else ""} \
       ~{if defined(lmax) then ("--Lmax " +  '"' + lmax + '"') else ""} \
-      ~{true="--pad" false="" pad} \
-      ~{true="--hbanded" false="" h_banded} \
+      ~{if (pad) then "--pad" else ""} \
+      ~{if (h_banded) then "--hbanded" else ""} \
       ~{if defined(tau) then ("--tau " +  '"' + tau + '"') else ""} \
-      ~{true="--aln2bands" false="" aln_two_bands} \
-      ~{true="--hsafe" false="" h_safe} \
-      ~{true="--nonbanded" false="" non_banded} \
-      ~{true="--scoreonly" false="" score_only} \
-      ~{true="--viterbi" false="" viterbi} \
-      ~{true="--search" false="" search} \
-      ~{true="--inside" false="" inside} \
-      ~{true="--forward" false="" forward} \
+      ~{if (aln_two_bands) then "--aln2bands" else ""} \
+      ~{if (h_safe) then "--hsafe" else ""} \
+      ~{if (non_banded) then "--nonbanded" else ""} \
+      ~{if (score_only) then "--scoreonly" else ""} \
+      ~{if (viterbi) then "--viterbi" else ""} \
+      ~{if (search) then "--search" else ""} \
+      ~{if (inside) then "--inside" else ""} \
+      ~{if (forward) then "--forward" else ""} \
       ~{if defined(taus) then ("--taus " +  '"' + taus + '"') else ""} \
       ~{if defined(tau_e) then ("--taue " +  '"' + tau_e + '"') else ""} \
       ~{if defined(t_file) then ("--tfile " +  '"' + t_file + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     generate_n_sequences: ": generate <n> sequences  [10]"
-    align_locally_model: ": align locally w.r.t. the model"
+    align_locally_wrt: ": align locally w.r.t. the model"
     set_rng_seed: ": set RNG seed to <n> (if 0: one-time arbitrary seed)  [181]"
     print_individual_timings: ": print individual timings & scores, not just a summary"
     sub: ": build sub CM for columns b/t HMM predicted start/end points"
@@ -94,5 +94,8 @@ task SsuCmscore {
     t_file: ": dump parsetrees to file <f>"
     options: ""
     cm_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

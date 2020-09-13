@@ -4,4 +4,7 @@ task Atlas {
   command <<<
     atlas
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

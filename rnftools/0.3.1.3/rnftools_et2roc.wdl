@@ -11,7 +11,11 @@ task RnftoolsEt2roc {
       ~{if defined(roc) then ("--roc " +  '"' + roc + '"') else ""}
   >>>
   parameter_meta {
-    et: "Input ET file (evaluated read tuples, - for standard input)."
-    roc: "Output ROC file (evaluated reads, - for standard output)."
+    et: "Input ET file (evaluated read tuples, - for standard\\ninput)."
+    roc: "Output ROC file (evaluated reads, - for standard\\noutput).\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_roc = "${in_roc}"
   }
 }

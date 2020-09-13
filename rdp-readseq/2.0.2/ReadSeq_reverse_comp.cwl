@@ -1,33 +1,41 @@
 class: CommandLineTool
 id: ../../../ReadSeq_reverse_comp.cwl
 inputs:
-- id: check
+- id: in_check
   doc: If set, will check orientation of the rRNA sequenc, only reverse complement
     if needed
   type: boolean
   inputBinding:
     prefix: --check
-- id: format
+- id: in_format
   doc: output format, fasta or fastq. Default is fasta
   type: string
   inputBinding:
     prefix: --format
-- id: in_file
+- id: in_in_file
   doc: input fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --infile
-- id: outfile
+- id: in_outfile
   doc: output fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --outfile
-- id: rev_complement
+- id: in_rev_complement
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outfile
+  doc: output fasta file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
 cwlVersion: v1.1
 baseCommand:
 - ReadSeq

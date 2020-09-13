@@ -2,8 +2,8 @@ version 1.0
 
 task BedparseConvertChrBedfile {
   input {
-    String? assembly
     String? target
+    String? assembly
     String bed_parse
     String convert_chr
   }
@@ -11,13 +11,16 @@ task BedparseConvertChrBedfile {
     bedparse convertChr bedfile \
       ~{bed_parse} \
       ~{convert_chr} \
-      ~{if defined(assembly) then ("--assembly " +  '"' + assembly + '"') else ""} \
-      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""}
+      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""} \
+      ~{if defined(assembly) then ("--assembly " +  '"' + assembly + '"') else ""}
   >>>
   parameter_meta {
-    assembly: ""
     target: ""
+    assembly: ""
     bed_parse: ""
     convert_chr: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

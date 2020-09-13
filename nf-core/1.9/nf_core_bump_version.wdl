@@ -1,20 +1,23 @@
 version 1.0
 
-task NfCoreBumpVersion {
+task NfcoreBumpversion {
   input {
     Boolean? next_flow
-    String pipeline_directory
+    Directory pipeline_directory
     String new_version
   }
   command <<<
-    nf-core bump-version \
+    nf_core bump_version \
       ~{pipeline_directory} \
       ~{new_version} \
-      ~{true="--nextflow" false="" next_flow}
+      ~{if (next_flow) then "--nextflow" else ""}
   >>>
   parameter_meta {
     next_flow: "Bump required nextflow version instead of pipeline version"
     pipeline_directory: ""
     new_version: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

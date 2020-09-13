@@ -1,6 +1,6 @@
 version 1.0
 
-task FlyeSamtoolsFqidx {
+task FlyesamtoolsFqidx {
   input {
     File? write_fastq_file
     Int? length
@@ -13,13 +13,13 @@ task FlyeSamtoolsFqidx {
     File file_dot_fq_vertical_line_file_dot_fq_do_tgz
   }
   command <<<
-    flye-samtools fqidx \
+    flye_samtools fqidx \
       ~{sam_tools} \
       ~{fq_idx} \
       ~{file_dot_fq_vertical_line_file_dot_fq_do_tgz} \
       ~{if defined(write_fastq_file) then ("--output " +  '"' + write_fastq_file + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
-      ~{true="--continue" false="" continue} \
+      ~{if (continue) then "--continue" else ""} \
       ~{if defined(region_file) then ("--region-file " +  '"' + region_file + '"') else ""} \
       ~{if defined(reverse_complement) then ("--reverse-complement " +  '"' + reverse_complement + '"') else ""} \
       ~{if defined(mark_strand) then ("--mark-strand " +  '"' + mark_strand + '"') else ""}
@@ -30,9 +30,12 @@ task FlyeSamtoolsFqidx {
     continue: "Continue after trying to retrieve missing region."
     region_file: "File of regions.  Format is chr:from-to. One per line."
     reverse_complement: "complement sequences."
-    mark_strand: "Add strand indicator to sequence name TYPE = rc   for /rc on negative strand (default) no   for no strand indicator sign for (+) / (-) custom,<pos>,<neg> for custom indicator"
+    mark_strand: "Add strand indicator to sequence name\\nTYPE = rc   for /rc on negative strand (default)\\nno   for no strand indicator\\nsign for (+) / (-)\\ncustom,<pos>,<neg> for custom indicator"
     sam_tools: ""
     fq_idx: ""
     file_dot_fq_vertical_line_file_dot_fq_do_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

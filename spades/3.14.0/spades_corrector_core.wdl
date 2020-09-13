@@ -1,7 +1,10 @@
 version 1.0
 
-task SpadesCorrectorCore {
+task Spadescorrectorcore {
   command <<<
-    spades-corrector-core
+    spades_corrector_core
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

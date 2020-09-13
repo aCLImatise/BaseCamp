@@ -1,20 +1,10 @@
 version 1.0
 
-task TIDDIT.py {
-  input {
-    Boolean? sv
-    Boolean? cov
-    String tidd_it_two_do_tone_two_dot_zero
-  }
+task TIDDIT {
   command <<<
-    TIDDIT.py \
-      ~{tidd_it_two_do_tone_two_dot_zero} \
-      ~{true="--sv" false="" sv} \
-      ~{true="--cov" false="" cov}
+    TIDDIT
   >>>
-  parameter_meta {
-    sv: "call structural variation"
-    cov: "generate a coverage bed file"
-    tidd_it_two_do_tone_two_dot_zero: ""
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,91 +1,92 @@
 class: CommandLineTool
 id: ../../../flowcraft_build.cwl
 inputs:
-- id: tasks
+- id: in_tasks
   doc: Space separated tasks of the pipeline
   type: string
   inputBinding:
     prefix: --tasks
-- id: recipe
+- id: in_recipe
   doc: Use one of the available recipes
   type: string
   inputBinding:
     prefix: --recipe
-- id: name_pipeline_file
+- id: in_name_pipeline_file
   doc: Name of the pipeline file
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: provide_name_pipeline
+- id: in_provide_name_pipeline
   doc: Provide a name for your pipeline.
   type: string
   inputBinding:
     prefix: -n
-- id: merge_params
-  doc: Merges identical parameters from multiple components into the same one. Otherwise,
-    the parameters will be separated and unique to each component.
+- id: in_merge_params
+  doc: "Merges identical parameters from multiple components\ninto the same one. Otherwise,\
+    \ the parameters will be\nseparated and unique to each component."
   type: boolean
   inputBinding:
     prefix: --merge-params
-- id: pipeline_only
-  doc: Write only the pipeline files and not the templates, bin, and lib folders.
+- id: in_pipeline_only
+  doc: "Write only the pipeline files and not the templates,\nbin, and lib folders."
   type: boolean
   inputBinding:
     prefix: --pipeline-only
-- id: no_depend_ecy
+- id: in_no_depend_ecy
   doc: Do not automatically add dependencies to the pipeline.
   type: boolean
   inputBinding:
     prefix: --no-dependecy
-- id: check_pipeline
-  doc: Check only the validity of the pipeline string and exit.
+- id: in_check_pipeline
+  doc: Check only the validity of the pipeline string and
   type: boolean
   inputBinding:
     prefix: --check-pipeline
-- id: component_list
-  doc: Print a detailed description for all the currently available processes.
-  type: boolean
-  inputBinding:
-    prefix: --component-list
-- id: component_list_short
-  doc: Print a short list of the currently available processes.
+- id: in_component_list_short
+  doc: "Print a short list of the currently available\nprocesses."
   type: boolean
   inputBinding:
     prefix: --component-list-short
-- id: recipe_list
+- id: in_recipe_list
   doc: Print a short list of the currently available recipes.
   type: boolean
   inputBinding:
     prefix: --recipe-list
-- id: recipe_list_short
-  doc: Print a condensed list of the currently available recipes
+- id: in_recipe_list_short
+  doc: Print a condensed list of the currently available
   type: boolean
   inputBinding:
     prefix: --recipe-list-short
-- id: check_recipe
-  doc: Check tasks that the recipe contain and their flow. This option might be useful
-    if a user wants to change some components of a given recipe, by using the -t option.
-  type: boolean
-  inputBinding:
-    prefix: --check-recipe
-- id: export_params
-  doc: Only export the parameters for the provided components (via -t option) in JSON
-    format to stdout. No pipeline will be generated with this option.
-  type: boolean
-  inputBinding:
-    prefix: --export-params
-- id: export_directives
-  doc: Only export the directives for the provided components (via -t option) in JSON
-    format to stdout. No pipeline will be generated with this option.
+- id: in_export_directives
+  doc: "Only export the directives for the provided components\n(via -t option) in\
+    \ JSON format to stdout. No pipeline\nwill be generated with this option."
   type: boolean
   inputBinding:
     prefix: --export-directives
-- id: fetch_tags
-  doc: Allows to fetch all docker tags for the components listed with the -t flag.
+- id: in_fetch_tags
+  doc: "Allows to fetch all docker tags for the components\nlisted with the -t flag.\n"
   type: boolean
   inputBinding:
     prefix: --fetch-tags
-outputs: []
+- id: in_exit_dot
+  doc: -L, --component-list  Print a detailed description for all the currently
+  type: string
+  inputBinding:
+    position: 0
+- id: in_recipes
+  doc: -cr, --check-recipe   Check tasks that the recipe contain and their flow.
+  type: string
+  inputBinding:
+    position: 0
+- id: in_option_dot
+  doc: --export-params       Only export the parameters for the provided components
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - flowcraft

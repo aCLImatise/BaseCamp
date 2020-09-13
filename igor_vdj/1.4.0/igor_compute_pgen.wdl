@@ -1,7 +1,10 @@
 version 1.0
 
-task IgorComputePgen {
+task IgorcomputePgen {
   command <<<
-    igor-compute_pgen
+    igor_compute_pgen
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

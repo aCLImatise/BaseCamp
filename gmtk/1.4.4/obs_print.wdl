@@ -1,7 +1,10 @@
 version 1.0
 
-task ObsPrint {
+task Obsprint {
   command <<<
-    obs-print
+    obs_print
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

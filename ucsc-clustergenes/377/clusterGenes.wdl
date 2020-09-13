@@ -1,14 +1,10 @@
 version 1.0
 
 task ClusterGenes {
-  input {
-    String table_n
-  }
   command <<<
-    clusterGenes \
-      ~{table_n}
+    clusterGenes
   >>>
-  parameter_meta {
-    table_n: ""
+  output {
+    File out_stdout = stdout()
   }
 }

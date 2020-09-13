@@ -3,17 +3,17 @@ version 1.0
 task CheckmDistPlot {
   input {
     String? image_type
-    String? dpi
-    String? font_size
-    String? extension
-    String? width
-    String? height
-    String? gc_window_size
-    String? td_window_size
-    String? cd_window_size
-    String? gc_bin_width
-    String? td_bin_width
-    String? cd_bin_width
+    Int? dpi
+    Int? font_size
+    Directory? extension
+    Float? width
+    Int? height
+    Int? gc_window_size
+    Int? td_window_size
+    Int? cd_window_size
+    Float? gc_bin_width
+    Float? td_bin_width
+    Float? cd_bin_width
     Boolean? quiet
     String results_dir
     String bin_dir
@@ -40,7 +40,7 @@ task CheckmDistPlot {
       ~{if defined(gc_bin_width) then ("--gc_bin_width " +  '"' + gc_bin_width + '"') else ""} \
       ~{if defined(td_bin_width) then ("--td_bin_width " +  '"' + td_bin_width + '"') else ""} \
       ~{if defined(cd_bin_width) then ("--cd_bin_width " +  '"' + cd_bin_width + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     image_type: "desired image type (default: png)"
@@ -61,5 +61,8 @@ task CheckmDistPlot {
     output_dir: "directory to hold plots"
     tetra_profile: "tetranucleotide profiles for each sequence (see tetra command)"
     dist_value: "reference distribution(s) to plot; integer between 0 and 100"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

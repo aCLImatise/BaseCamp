@@ -3,22 +3,22 @@ version 1.0
 task SeedListGenerator {
   input {
     File? in
-    Boolean? out
+    File? out
     Boolean? use_peptide_mass
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
   command <<<
     SeedListGenerator \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
-      ~{true="-out" false="" out} \
-      ~{true="-use_peptide_mass" false="" use_peptide_mass} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (use_peptide_mass) then "-use_peptide_mass" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*         Input file (see below for details) (valid formats: 'mzML', 'idXML', 'featureXML', 'consensusXML')"
@@ -28,5 +28,9 @@ task SeedListGenerator {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

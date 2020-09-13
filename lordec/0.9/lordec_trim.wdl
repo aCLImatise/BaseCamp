@@ -1,7 +1,10 @@
 version 1.0
 
-task LordecTrim {
+task Lordectrim {
   command <<<
-    lordec-trim
+    lordec_trim
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

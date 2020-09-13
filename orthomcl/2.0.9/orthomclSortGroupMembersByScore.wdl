@@ -2,16 +2,19 @@ version 1.0
 
 task OrthomclSortGroupMembersByScore {
   input {
-    String groups_file
-    String pairs_dir
+    String orthologs_dot_txt
+    String co_orthologs_dot_txt
   }
   command <<<
     orthomclSortGroupMembersByScore \
-      ~{groups_file} \
-      ~{pairs_dir}
+      ~{orthologs_dot_txt} \
+      ~{co_orthologs_dot_txt}
   >>>
   parameter_meta {
-    groups_file: ""
-    pairs_dir: ""
+    orthologs_dot_txt: "paralogs.txt"
+    co_orthologs_dot_txt: "Output:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

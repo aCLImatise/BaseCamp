@@ -6,9 +6,12 @@ task HmmconvertHmmfile {
   }
   command <<<
     hmmconvert hmmfile \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

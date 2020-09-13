@@ -1,18 +1,21 @@
 class: CommandLineTool
 id: ../../../miso_pack.cwl
 inputs:
-- id: pack
-  doc: Pack a MISO output containing dir(s). Takes as input a directory or a comma-separated
-    set of directories that contain MISO output.
-  type: string
+- id: in_pack
+  doc: "Pack a MISO output containing dir(s). Takes as input a\ndirectory or a comma-separated\
+    \ set of directories that contain\nMISO output."
+  type: Directory
   inputBinding:
     prefix: --pack
-- id: view
+- id: in_view
   doc: View a MISO database (.miso_db file).
-  type: string
+  type: File
   inputBinding:
     prefix: --view
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - miso_pack

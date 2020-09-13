@@ -1,12 +1,12 @@
 class: CommandLineTool
 id: ../../../hca_dss_get_collections.cwl
 inputs:
-- id: per_page
+- id: in_per_page
   doc: Max number of results to return per page.
-  type: string
+  type: long
   inputBinding:
     prefix: --per-page
-- id: start_at
+- id: in_start_at
   doc: An internal state pointer parameter for use with pagination. This parameter
     is referenced by the `Link` header as described in the "Pagination" section. The
     API client should not need to set this parameter directly; it should instead directly
@@ -14,12 +14,15 @@ inputs:
   type: string
   inputBinding:
     prefix: --start-at
-- id: no_paginate
+- id: in_no_paginate
   doc: Do not automatically page the responses
   type: boolean
   inputBinding:
     prefix: --no-paginate
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

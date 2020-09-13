@@ -4,4 +4,7 @@ task Avro {
   command <<<
     avro
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

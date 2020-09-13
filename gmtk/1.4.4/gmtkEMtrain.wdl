@@ -4,4 +4,7 @@ task GmtkEMtrain {
   command <<<
     gmtkEMtrain
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

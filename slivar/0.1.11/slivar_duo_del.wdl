@@ -1,28 +1,26 @@
 version 1.0
 
-task SlivarDuoDel {
+task SlivarDuodel {
   input {
-    String? ped
-    String? g_notate
+    File? ped
+    File? g_notate
     Int? min_sites
     Int? min_size
-    String? exclude
+    File? exclude
     Boolean? affected_only
     String sli_var
     String duo_del
-    String? vcf
   }
   command <<<
-    slivar duo-del \
+    slivar duo_del \
       ~{sli_var} \
       ~{duo_del} \
-      ~{vcf} \
       ~{if defined(ped) then ("--ped " +  '"' + ped + '"') else ""} \
       ~{if defined(g_notate) then ("--gnotate " +  '"' + g_notate + '"') else ""} \
       ~{if defined(min_sites) then ("--min-sites " +  '"' + min_sites + '"') else ""} \
       ~{if defined(min_size) then ("--min-size " +  '"' + min_size + '"') else ""} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
-      ~{true="--affected-only" false="" affected_only}
+      ~{if (affected_only) then "--affected-only" else ""}
   >>>
   parameter_meta {
     ped: "required ped file describing the duos in the VCF"
@@ -33,6 +31,8 @@ task SlivarDuoDel {
     affected_only: "only output DEL calls for affected kids"
     sli_var: ""
     duo_del: ""
-    vcf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

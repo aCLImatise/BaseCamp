@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../orthomclInstallSchema.cwl
 inputs:
-- id: config_file
+- id: in_config_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sql_log_file
+- id: in_sql_log_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: table_suffix
+- id: in_table_suffix
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - orthomclInstallSchema

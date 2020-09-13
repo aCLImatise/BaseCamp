@@ -14,4 +14,7 @@ task Gb2fas {
     input_dot_gb: ""
     output_dot_fas: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

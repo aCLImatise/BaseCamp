@@ -1,27 +1,40 @@
 class: CommandLineTool
 id: ../../../SweepFinder2.cwl
 inputs:
-- id: to
+- id: in_to
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: get
+- id: in_find
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: frequency
+- id: in_get
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_frequency
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: spectrum
+- id: in_sweeps
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_spectrum
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - SweepFinder2

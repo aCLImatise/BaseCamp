@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- makehmmerdb
+- binaryfile
 positional:
 - !Positional
   description: ''
@@ -16,10 +19,9 @@ positional:
   name: binaryfile
   optional: false
 named: []
-command:
-- makehmmerdb
-- binaryfile
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - makehmmerdb
   positional: []
   named:
   - !Flag
@@ -50,11 +52,13 @@ parent: &id001 !Command
     args: !SimpleFlagArg
       name: n
     optional: true
-  command:
-  - makehmmerdb
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - makehmmerdb
+    - seqfile
     positional:
     - !Positional
       description: ''
@@ -62,11 +66,9 @@ parent: &id001 !Command
       name: binaryfile
       optional: false
     named: []
-    command:
-    - makehmmerdb
-    - seqfile
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ': show brief help on version and usage'
       synonyms:
@@ -80,7 +82,7 @@ parent: &id001 !Command
       \ on version and usage\n\nTo see more help on available options, do makehmmerdb\
       \ -h\n\n"
     generated_using: &id003 []
-  - *id002
+  usage: []
   help_flag: !Flag
     description: ': show brief help on version and usage'
     synonyms:
@@ -102,6 +104,7 @@ parent: &id001 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
   synonyms:

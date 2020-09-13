@@ -1,32 +1,32 @@
 version 1.0
 
-task RScapeSimNobps {
+task Rscapesimnobps {
   input {
     Boolean? _be_verbose
-    String? number_sequences_simulated
+    Int? number_sequences_simulated
     Boolean? noss
     String? in_format
-    String? outdir
-    String? send_output_file
+    Directory? outdir
+    File? send_output_file
     Boolean? one_msa
-    String? to_l
-    String? seed
+    Float? to_l
+    Int? seed
     Boolean? options
     String msa
   }
   command <<<
-    R-scape-sim-nobps \
+    R_scape_sim_nobps \
       ~{msa} \
-      ~{true="-v" false="" _be_verbose} \
+      ~{if (_be_verbose) then "-v" else ""} \
       ~{if defined(number_sequences_simulated) then ("-N " +  '"' + number_sequences_simulated + '"') else ""} \
-      ~{true="--noss" false="" noss} \
+      ~{if (noss) then "--noss" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
-      ~{true="--onemsa" false="" one_msa} \
+      ~{if (one_msa) then "--onemsa" else ""} \
       ~{if defined(to_l) then ("--tol " +  '"' + to_l + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     _be_verbose: ": be verbose"
@@ -40,5 +40,10 @@ task RScapeSimNobps {
     seed: ": set RNG seed to <n>  [0]"
     options: ""
     msa: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    File out_send_output_file = "${in_send_output_file}"
   }
 }

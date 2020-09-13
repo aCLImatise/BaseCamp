@@ -4,4 +4,7 @@ task Bammaskflags {
   command <<<
     bammaskflags
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

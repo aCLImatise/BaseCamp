@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../svtools_subcommand.cwl
 inputs:
-- id: support
+- id: in_support
   doc: ''
   type: boolean
   inputBinding:
     prefix: --support
-- id: var_1
+- id: in_svtools
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svtools

@@ -1,4 +1,6 @@
 !Command
+command:
+- dcmp2pgm
 positional:
 - !Positional
   description: input DICOM image
@@ -11,6 +13,12 @@ positional:
   name: bitmap-out
   optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet        quiet mode, print no warnings and errors
   synonyms:
@@ -30,54 +38,63 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[l]evel: string constant (fatal, error, warn, info, debug, trace)
-    use level l for the logger'
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
   synonyms:
   - -ll
   - --log-level
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[f]ilename: string use config file f for the logger'
+  description: "[f]ilename: string\nuse config file f for the logger"
   synonyms:
   - -lc
   - --log-config
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--pstate       [f]ilename: string process using presentation state
-    file'
+  description: "--pstate       [f]ilename: string\nprocess using presentation state\
+    \ file"
   synonyms:
   - -p
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--config       [f]ilename: string process using settings from configuration
-    file'
+  description: "--config       [f]ilename: string\nprocess using settings from configuration\
+    \ file"
   synonyms:
   - -c
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--frame        [f]rame: integer process using image frame f (default:
-    1)'
+  description: "--frame        [f]rame: integer\nprocess using image frame f (default:\
+    \ 1)"
   synonyms:
   - -f
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dcmp2pgm
+- !Flag
+  description: --pgm          save image as PGM (default)
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help         print this help text and exit --version      print version
-    information and exit --arguments    print expanded command line arguments
+  description: --help         print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dcmp2pgm v3.6.1 2016-11-02 $\n\ndcmp2pgm: Read DICOM image and\
   \ presentation state and render bitmap\nusage: dcmp2pgm [options] dcmfile-in [bitmap-out]\n\
   \nparameters:\n  dcmfile-in          input DICOM image\n  bitmap-out          output\

@@ -2,28 +2,32 @@ version 1.0
 
 task Sigoverlap {
   input {
-    Boolean? name_output_file
+    File? name_output_file
     Boolean? verbose
     Boolean? target
     Boolean? size
     Boolean? about
-    String bed_format_file
+    File bed_format_file
   }
   command <<<
     sigoverlap \
       ~{bed_format_file} \
-      ~{true="-output" false="" name_output_file} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-target" false="" target} \
-      ~{true="-size" false="" size} \
-      ~{true="-about" false="" about}
+      ~{if (name_output_file) then "-output" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (target) then "-target" else ""} \
+      ~{if (size) then "-size" else ""} \
+      ~{if (about) then "-about" else ""}
   >>>
   parameter_meta {
-    name_output_file: "Name of output file (default: stdout) "
-    verbose: "print more run info "
-    target: "target regions file "
-    size: "genome size "
-    about: "print about message "
+    name_output_file: "Name of output file (default: stdout)"
+    verbose: "print more run info"
+    target: "target regions file"
+    size: "genome size"
+    about: "print about message"
     bed_format_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_name_output_file = "${in_name_output_file}"
   }
 }

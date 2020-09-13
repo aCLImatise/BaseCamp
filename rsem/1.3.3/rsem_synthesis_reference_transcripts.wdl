@@ -1,6 +1,6 @@
 version 1.0
 
-task RsemSynthesisReferenceTranscripts {
+task Rsemsynthesisreferencetranscripts {
   input {
     String synthesis_ref
     String refname
@@ -8,7 +8,7 @@ task RsemSynthesisReferenceTranscripts {
     String has_mapping_file
   }
   command <<<
-    rsem-synthesis-reference-transcripts \
+    rsem_synthesis_reference_transcripts \
       ~{synthesis_ref} \
       ~{refname} \
       ~{quiet} \
@@ -19,5 +19,8 @@ task RsemSynthesisReferenceTranscripts {
     refname: ""
     quiet: ""
     has_mapping_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

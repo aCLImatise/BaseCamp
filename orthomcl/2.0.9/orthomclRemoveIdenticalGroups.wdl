@@ -14,4 +14,7 @@ task OrthomclRemoveIdenticalGroups {
     groups_dot_txt: ""
     ref_groups_dot_txt: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

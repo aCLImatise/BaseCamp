@@ -1,4 +1,6 @@
 &id001 !Command
+command:
+- vawk
 positional: []
 named:
 - !Flag
@@ -29,11 +31,12 @@ named:
   - --debug
   args: !EmptyFlagArg {}
   optional: true
-command:
-- vawk
 parent:
 subcommands:
 - !Command
+  command:
+  - vawk
+  - vcf
   positional:
   - !Positional
     description: ''
@@ -54,9 +57,14 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - -v
-    args: !SimpleFlagArg
-      name: VAR
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --header
+    args: !EmptyFlagArg {}
     optional: true
   - !Flag
     description: ''
@@ -68,20 +76,13 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --header
-    args: !EmptyFlagArg {}
+    - -v
+    args: !SimpleFlagArg
+      name: VAR
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --debug
-    args: !EmptyFlagArg {}
-    optional: true
-  command:
-  - vawk
-  - vcf
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -94,6 +95,7 @@ subcommands:
     vawk: error: unrecognized arguments: --usage\n"
   generated_using:
   - --usage
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

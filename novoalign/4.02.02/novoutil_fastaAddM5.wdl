@@ -9,6 +9,9 @@ task NovoutilFastaAddM5 {
       ~{in}
   >>>
   parameter_meta {
-    in: "is the fasta files to be processed. Input files may be compressed with gzip or bzip."
+    in: "is the fasta files to be processed.\\nInput files may be compressed with gzip or bzip."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

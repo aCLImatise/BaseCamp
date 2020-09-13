@@ -1,4 +1,6 @@
 !Command
+command:
+- scorer
 positional:
 - !Positional
   description: ''
@@ -15,14 +17,53 @@ positional:
   position: 2
   name: output file
   optional: false
-named: []
-command:
-- scorer
+named:
+- !Flag
+  description: "Specify exact comparison when structure comparison is scored.\nDefault\
+    \ is to allow flexible pairings."
+  synonyms:
+  - -e
+  - -E
+  - --exact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Prints the output file to standard output. This won't override the\
+    \ default\nbehavior of writing to a file."
+  synonyms:
+  - -p
+  - -P
+  - --print
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the index of a particular structure in the predicted CT to\
+    \ be\ncompared with the accepted CT, one-indexed.\nDefault is -1, which signifies\
+    \ all structures output to one file.\n"
+  synonyms:
+  - -n
+  - -N
+  - --number
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: scorer <predicted ct> <accepted ct> <output file> [options]\nAll\
   \ flags are case-insensitive, and grouping of flags is not allowed.\n\n=============================\n\
   ==== Required Parameters ====\n=============================\n<predicted ct>\n \

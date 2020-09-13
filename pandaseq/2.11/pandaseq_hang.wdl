@@ -1,7 +1,10 @@
 version 1.0
 
-task PandaseqHang {
+task Pandaseqhang {
   command <<<
-    pandaseq-hang
+    pandaseq_hang
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

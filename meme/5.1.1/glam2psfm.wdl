@@ -4,4 +4,7 @@ task Glam2psfm {
   command <<<
     glam2psfm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

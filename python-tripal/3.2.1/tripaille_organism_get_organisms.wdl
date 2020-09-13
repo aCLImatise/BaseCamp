@@ -26,4 +26,7 @@ task TripailleOrganismGetOrganisms {
     abbr: "The abbreviation of the organism"
     comment: "A comment / description"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

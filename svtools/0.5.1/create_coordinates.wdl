@@ -12,6 +12,9 @@ task CreateCoordinates {
   >>>
   parameter_meta {
     input_vcf: "VCF input"
-    output_coordinates_write: "output coordinates to write (default: stdout)"
+    output_coordinates_write: "output coordinates to write (default: stdout)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

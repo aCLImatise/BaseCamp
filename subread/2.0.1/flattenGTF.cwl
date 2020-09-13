@@ -1,35 +1,43 @@
 class: CommandLineTool
 id: ../../../flattenGTF.cwl
 inputs:
-- id: name_annotation_file
+- id: in_name_annotation_file
   doc: Name of an annotation file in GTF/GFF format.
   type: File
   inputBinding:
     prefix: -a
-- id: name_output_file
+- id: in_name_output_file
   doc: Name of output file.
   type: File
   inputBinding:
     prefix: -o
-- id: specify_feature_type
-  doc: Specify feature type in a GTF annotation. 'exon' by default. Features with
-    the specified feature type are extracted from the annotation for processing.
+- id: in_specify_feature_type
+  doc: "Specify feature type in a GTF annotation. 'exon' by default.\nFeatures with\
+    \ the specified feature type are extracted from the\nannotation for processing."
   type: string
   inputBinding:
     prefix: -t
-- id: specify_attribute_type
-  doc: Specify attribute type in GTF annotation. 'gene_id' by default. This attribute
-    type is used to group features into meta- features.
+- id: in_specify_attribute_type
+  doc: "Specify attribute type in GTF annotation. 'gene_id' by default.\nThis attribute\
+    \ type is used to group features into meta-\nfeatures."
   type: string
   inputBinding:
     prefix: -g
-- id: merging_overlapping_exons
-  doc: Merging overlapping exons into multiple non-overlapping exons but all the edges
-    are kept.
+- id: in_merging_overlapping_exons
+  doc: "Merging overlapping exons into multiple non-overlapping exons but\nall the\
+    \ edges are kept.\n"
   type: boolean
   inputBinding:
     prefix: -C
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_name_output_file
+  doc: Name of output file.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_name_output_file)
 cwlVersion: v1.1
 baseCommand:
 - flattenGTF

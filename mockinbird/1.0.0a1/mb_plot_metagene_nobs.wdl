@@ -1,13 +1,13 @@
 version 1.0
 
-task MbPlotMetageneNobs {
+task Mbplotmetagenenobs {
   input {
     String? downstream
     String? upstream
     String? gene
     Int? min
     Int? max
-    String? plot_smooth
+    Int? plot_smooth
     String? label_center_a
     String? label_body
     String? label_center_b
@@ -16,7 +16,7 @@ task MbPlotMetageneNobs {
     Boolean? verbose
   }
   command <<<
-    mb-plot-metagene-nobs \
+    mb_plot_metagene_nobs \
       ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""} \
       ~{if defined(upstream) then ("--upstream " +  '"' + upstream + '"') else ""} \
       ~{if defined(gene) then ("--gene " +  '"' + gene + '"') else ""} \
@@ -27,8 +27,8 @@ task MbPlotMetageneNobs {
       ~{if defined(label_body) then ("--labelBody " +  '"' + label_body + '"') else ""} \
       ~{if defined(label_center_b) then ("--labelCenterB " +  '"' + label_center_b + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
-      ~{true="--remove" false="" remove} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (remove) then "--remove" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     downstream: "set downstream range"
@@ -43,5 +43,8 @@ task MbPlotMetageneNobs {
     title: "plot title"
     remove: "remove temporary files"
     verbose: "verbose output"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

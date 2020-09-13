@@ -4,4 +4,7 @@ task BedGraphToBigWig {
   command <<<
     bedGraphToBigWig
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

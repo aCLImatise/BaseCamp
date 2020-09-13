@@ -4,4 +4,7 @@ task Seroba {
   command <<<
     seroba
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,38 +1,47 @@
 class: CommandLineTool
 id: ../../../cbUpgrade.cwl
 inputs:
-- id: debug
+- id: in_debug
   doc: show debug messages
   type: boolean
   inputBinding:
     prefix: --debug
-- id: output_directory_default
-  doc: 'output directory, default can be set through the env. variable CBOUT, current
-    value: none'
-  type: string
+- id: in_output_directory_default
+  doc: "output directory, default can be set through the env.\nvariable CBOUT, current\
+    \ value: none"
+  type: Directory
   inputBinding:
     prefix: --outDir
-- id: port
-  doc: after upgrade, start HTTP server bound to port and serve <outDir>
+- id: in_port
+  doc: "after upgrade, start HTTP server bound to port and\nserve <outDir>"
   type: string
   inputBinding:
     prefix: --port
-- id: code
+- id: in_code
   doc: also update the javascript code
   type: boolean
   inputBinding:
     prefix: --code
-- id: dev
-  doc: 'only for developers: do not add version to js/css links'
+- id: in_dev
+  doc: "only for developers: do not add version to js/css\nlinks\n"
   type: boolean
   inputBinding:
     prefix: --dev
-- id: var_5
+- id: in_var_5
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory_default
+  doc: "output directory, default can be set through the env.\nvariable CBOUT, current\
+    \ value: none"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory_default)
 cwlVersion: v1.1
 baseCommand:
 - cbUpgrade

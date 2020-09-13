@@ -1,19 +1,19 @@
 version 1.0
 
-task RsemEvalRunEm {
+task Rsemevalrunem {
   input {
     Boolean? number_user_wants
-    Boolean? produce_bam_default
+    File? produce_bam_default
     Boolean? set_it_quiet
     Boolean? sampling
-    String? seed
+    Int? seed
   }
   command <<<
-    rsem-eval-run-em \
-      ~{true="-p" false="" number_user_wants} \
-      ~{true="-b" false="" produce_bam_default} \
-      ~{true="-q" false="" set_it_quiet} \
-      ~{true="--sampling" false="" sampling} \
+    rsem_eval_run_em \
+      ~{if (number_user_wants) then "-p" else ""} \
+      ~{if (produce_bam_default) then "-b" else ""} \
+      ~{if (set_it_quiet) then "-q" else ""} \
+      ~{if (sampling) then "--sampling" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
   parameter_meta {
@@ -22,5 +22,9 @@ task RsemEvalRunEm {
     set_it_quiet: ": set it quiet"
     sampling: ": sample each read from its posterior distribution when bam file is generated. (default: off)"
     seed: ": the seed used for the BAM sampling. (default: off)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_produce_bam_default = "${in_produce_bam_default}"
   }
 }

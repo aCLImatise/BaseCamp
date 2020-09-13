@@ -2,13 +2,13 @@ version 1.0
 
 task MotifRaptorSnpmotif {
   input {
-    String? workdir
+    Directory? workdir
     String? cell_type
-    String? snp_hit_bed
-    String? snp_hit_seq
-    String? bg_snp
-    String? motifs
-    String? threads
+    File? snp_hit_bed
+    Int? snp_hit_seq
+    File? bg_snp
+    File? motifs
+    Int? threads
   }
   command <<<
     MotifRaptor snpmotif \
@@ -27,6 +27,9 @@ task MotifRaptorSnpmotif {
     snp_hit_seq: "hit snps with sequence information, usually from step1"
     bg_snp: "background snp list file or (genome)"
     motifs: "motif list file, no header, or (all)"
-    threads: "number of threads"
+    threads: "number of threads\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task PolydNdS {
   command <<<
     polydNdS
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

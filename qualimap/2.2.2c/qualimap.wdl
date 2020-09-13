@@ -6,9 +6,12 @@ task Qualimap {
   }
   command <<<
     qualimap \
-      ~{true="--java-mem-size" false="" java_mem_size}
+      ~{if (java_mem_size) then "--java-mem-size" else ""}
   >>>
   parameter_meta {
-    java_mem_size: "Use this argument to set Java memory heap size. Example: qualimap bamqc -bam very_large_alignment.bam --java-mem-size=4G"
+    java_mem_size: "Use this argument to set Java memory heap size. Example:\\nqualimap bamqc -bam very_large_alignment.bam --java-mem-size=4G\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

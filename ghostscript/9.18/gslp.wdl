@@ -4,4 +4,7 @@ task Gslp {
   command <<<
     gslp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

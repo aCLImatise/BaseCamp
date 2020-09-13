@@ -1,193 +1,206 @@
 class: CommandLineTool
 id: ../../../ribotish_tisdiff.cwl
 inputs:
-- id: one
+- id: in_one
   doc: Prediction results of group 1 TIS data
-  type: string
+  type: long
   inputBinding:
     prefix: '-1'
-- id: two
+- id: in_two
   doc: Prediction results of group 2 TIS data
-  type: string
+  type: long
   inputBinding:
     prefix: '-2'
-- id: a
-  doc: Group 1 TIS enriched riboseq bam files, comma seperated
-  type: string
+- id: in_group_tis_enriched
+  doc: Group 1 TIS enriched riboseq bam files, comma
+  type: long
   inputBinding:
     prefix: -a
-- id: b
-  doc: Group 2 TIS enriched riboseq bam files, comma seperated
-  type: string
-  inputBinding:
-    prefix: -b
-- id: gene_annotation_file
-  doc: Gene annotation file
-  type: string
-  inputBinding:
-    prefix: -g
-- id: output_result_file
+- id: in_output_result_file
   doc: Output result file
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: t_is_one_para
+- id: in_t_is_one_para
   doc: Input offset parameter files for group 1 bam files
-  type: string
+  type: long
   inputBinding:
     prefix: --tis1para
-- id: tis_two_para
+- id: in_tis_two_para
   doc: Input offset parameter files for group 2 bam files
-  type: string
+  type: long
   inputBinding:
     prefix: --tis2para
-- id: gene_format
-  doc: 'Gene annotation file format (gtf, bed, gpd, gff, default: auto)'
-  type: string
+- id: in_gene_format
+  doc: "Gene annotation file format (gtf, bed, gpd, gff,\ndefault: auto)"
+  type: File
   inputBinding:
     prefix: --geneformat
-- id: max_nh
+- id: in_max_nh
   doc: 'Max NH value allowed for bam alignments (default: 5)'
   type: long
   inputBinding:
     prefix: --maxNH
-- id: min_mapq
-  doc: 'Min MapQ value required for bam alignments (default: 1)'
+- id: in_min_mapq
+  doc: "Min MapQ value required for bam alignments (default:\n1)"
   type: long
   inputBinding:
     prefix: --minMapQ
-- id: secondary
+- id: in_secondary
   doc: Use bam secondary alignments
   type: boolean
   inputBinding:
     prefix: --secondary
-- id: paired
+- id: in_paired
   doc: Reads are paired end
   type: boolean
   inputBinding:
     prefix: --paired
-- id: lone
+- id: in_lone
   doc: Labels for group 1 TIS data
-  type: string
+  type: long
   inputBinding:
     prefix: --l1
-- id: l_two
+- id: in_l_two
   doc: Labels for group 2 TIS data
-  type: string
+  type: long
   inputBinding:
     prefix: --l2
-- id: no_compatible
-  doc: Do not require reads compatible with transcript splice junctions
+- id: in_no_compatible
+  doc: Do not require reads compatible with transcript splice
   type: boolean
   inputBinding:
     prefix: --nocompatible
-- id: compatible_mis
-  doc: Missed bases allowed in reads compatibility check
-  type: string
-  inputBinding:
-    prefix: --compatiblemis
-- id: chr_map
-  doc: Input chromosome id mapping table file if annotation chr ids are not same as
-    chr ids in bam/fasta files
-  type: string
+- id: in_chr_map
+  doc: "Input chromosome id mapping table file if annotation\nchr ids are not same\
+    \ as chr ids in bam/fasta files"
+  type: File
   inputBinding:
     prefix: --chrmap
-- id: norm_comm
-  doc: Use common TISs instead of union TISs for normalization
+- id: in_norm_comm
+  doc: Use common TISs instead of union TISs for
   type: boolean
   inputBinding:
     prefix: --normcomm
-- id: norman_no
-  doc: Use only annotated TISs for normalization
-  type: boolean
-  inputBinding:
-    prefix: --normanno
-- id: rnase_q
+- id: in_rnase_q
   doc: RNASeq count input
   type: string
   inputBinding:
     prefix: --rnaseq
-- id: scale_factor
+- id: in_scale_factor
   doc: 'Input TIS scale factor of 2/1 (default: auto)'
-  type: string
+  type: long
   inputBinding:
     prefix: --scalefactor
-- id: rna_scale
+- id: in_rna_scale
   doc: 'Input RNASeq scale factor of 2/1 (default: auto)'
-  type: string
+  type: long
   inputBinding:
     prefix: --rnascale
-- id: chi_two
-  doc: Use chisquare test instead of Fisher's exact test for mRNA referenced test
+- id: in_chi_two
+  doc: "Use chisquare test instead of Fisher's exact test for\nmRNA referenced test"
   type: boolean
   inputBinding:
     prefix: --chi2
-- id: beta_bin_om
-  doc: Use beta-binom test instead of Fisher's exact test for mRNA referenced test
+- id: in_beta_bin_om
+  doc: "Use beta-binom test instead of Fisher's exact test for\nmRNA referenced test"
   type: boolean
   inputBinding:
     prefix: --betabinom
-- id: export
-  doc: Export count table for differential analysis with other tools
+- id: in_export
+  doc: "Export count table for differential analysis with\nother tools"
   type: string
   inputBinding:
     prefix: --export
-- id: plot_out
+- id: in_plot_out
   doc: Scatter plot output pdf file
-  type: string
+  type: File
   inputBinding:
     prefix: --plotout
-- id: fig_size
+- id: in_fig_size
   doc: 'Scatter plot figure size (default: 8,8)'
-  type: string
+  type: long
   inputBinding:
     prefix: --figsize
-- id: plot_ma
+- id: in_plot_ma
   doc: TIS normalization MA plot output pdf file
-  type: string
+  type: File
   inputBinding:
     prefix: --plotma
-- id: qi
+- id: in_qi
   doc: 'Index of TIS q value, 0 based (default: 15)'
-  type: string
+  type: long
   inputBinding:
     prefix: --qi
-- id: minimum_fold_default
+- id: in_minimum_fold_change
   doc: 'Minimum fold change threshold (default: 1.5)'
-  type: string
+  type: double
   inputBinding:
     prefix: -f
-- id: ip_th
+- id: in_ip_th
   doc: 'Input TIS p value threshold (default: 0.05)'
-  type: string
+  type: double
   inputBinding:
     prefix: --ipth
-- id: i_qth
+- id: in_i_qth
   doc: 'Input TIS q value threshold (default: 0.05)'
-  type: string
+  type: double
   inputBinding:
     prefix: --iqth
-- id: opt_h
+- id: in_opt_h
   doc: 'Output TIS diff p value threshold (default: 0.05)'
-  type: string
+  type: double
   inputBinding:
     prefix: --opth
-- id: o_qth
+- id: in_o_qth
   doc: 'Output TIS diff q value threshold (default: 0.05)'
-  type: string
+  type: double
   inputBinding:
     prefix: --oqth
-- id: number_of_processes
+- id: in_number_of_processes
   doc: Number of processes
-  type: string
+  type: long
   inputBinding:
     prefix: -p
-- id: verbose
+- id: in_verbose
   doc: Increase output verbosity
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+- id: in_b
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -b
+- id: in_junctions
+  doc: --compatiblemis COMPATIBLEMIS
+  type: string
+  inputBinding:
+    position: 2
+- id: in_normalization
+  doc: --normanno            Use only annotated TISs for normalization
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_result_file
+  doc: Output result file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_result_file)
+- id: out_plot_out
+  doc: Scatter plot output pdf file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_plot_out)
+- id: out_plot_ma
+  doc: TIS normalization MA plot output pdf file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_plot_ma)
 cwlVersion: v1.1
 baseCommand:
 - ribotish

@@ -1,19 +1,25 @@
 class: CommandLineTool
 id: ../../../fdnadist.cwl
 inputs:
-- id: method
-  doc: 'menu       [F84 distance model] Choose the method to use (Values: f (F84 distance
-    model); k (Kimura 2-parameter distance); j (Jukes-Cantor distance); l (LogDet
-    distance); s (Similarity table))'
-  type: boolean
-  inputBinding:
-    prefix: -method
-- id: weights
+- id: in_weights
   doc: properties Weights file
   type: boolean
   inputBinding:
     prefix: -weights
-outputs: []
+- id: in_lower
+  doc: boolean    [N] Output as a lower triangular distance
+  type: boolean
+  inputBinding:
+    prefix: -lower
+- id: in_print_data
+  doc: boolean    [N] Print data at start of run
+  type: boolean
+  inputBinding:
+    prefix: -printdata
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fdnadist

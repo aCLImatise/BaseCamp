@@ -1,62 +1,65 @@
 class: CommandLineTool
 id: ../../../junctools.cwl
 inputs:
-- id: this
+- id: in_this
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: script
+- id: in_script
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: contains
+- id: in_contains
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: a
+- id: in_a
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: number
+- id: in_number
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 4
-- id: of
+- id: in_of
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: tools
+- id: in_tools
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: for
+- id: in_for
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: manipulating
+- id: in_manipulating
   doc: ''
   type: string
   inputBinding:
     position: 8
-- id: junction
+- id: in_junction
   doc: ''
   type: string
   inputBinding:
     position: 9
-- id: files_dot
+- id: in_files_dot
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 10
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - junctools

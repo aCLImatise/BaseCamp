@@ -1,7 +1,10 @@
 version 1.0
 
-task SegmentationFoldUtils {
+task Segmentationfoldutils {
   command <<<
-    segmentation-fold-utils
+    segmentation_fold_utils
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

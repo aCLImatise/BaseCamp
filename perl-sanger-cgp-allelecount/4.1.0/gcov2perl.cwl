@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../gcov2perl.cwl
 inputs:
-- id: i
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: db
+- id: in_db
   doc: ''
   type: string
   inputBinding:
     prefix: -db
-- id: gcov_files
+- id: in_v
   doc: ''
-  type: string
+  type: boolean
   inputBinding:
-    position: 0
-outputs: []
+    prefix: -v
+- id: in_i
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -i
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gcov2perl

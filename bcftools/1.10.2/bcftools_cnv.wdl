@@ -2,6 +2,9 @@ version 1.0
 
 task BcftoolsCnv {
   input {
+    String? control_sample
+    File? af_file
+    File? output_dir
     Float? plot_threshold
     String? regions
     File? regions_file
@@ -23,17 +26,20 @@ task BcftoolsCnv {
   command <<<
     bcftools cnv \
       ~{file_dot_vcf} \
+      ~{if defined(control_sample) then ("--control-sample " +  '"' + control_sample + '"') else ""} \
+      ~{if defined(af_file) then ("--AF-file " +  '"' + af_file + '"') else ""} \
+      ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
       ~{if defined(plot_threshold) then ("--plot-threshold " +  '"' + plot_threshold + '"') else ""} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
       ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
       ~{if defined(query_sample) then ("--query-sample " +  '"' + query_sample + '"') else ""} \
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
-      ~{true="--aberrant" false="" aberrant} \
+      ~{if (aberrant) then "--aberrant" else ""} \
       ~{if defined(baf_weight) then ("--BAF-weight " +  '"' + baf_weight + '"') else ""} \
-      ~{true="--BAF-dev" false="" baf_dev} \
+      ~{if (baf_dev) then "--BAF-dev" else ""} \
       ~{if defined(err_prob) then ("--err-prob " +  '"' + err_prob + '"') else ""} \
-      ~{true="--LRR-dev" false="" lrr_dev} \
+      ~{if (lrr_dev) then "--LRR-dev" else ""} \
       ~{if defined(lrr_weight) then ("--LRR-weight " +  '"' + lrr_weight + '"') else ""} \
       ~{if defined(lrr_smooth_win) then ("--LRR-smooth-win " +  '"' + lrr_smooth_win + '"') else ""} \
       ~{if defined(optimize) then ("--optimize " +  '"' + optimize + '"') else ""} \
@@ -41,6 +47,9 @@ task BcftoolsCnv {
       ~{if defined(xy_prob) then ("--xy-prob " +  '"' + xy_prob + '"') else ""}
   >>>
   parameter_meta {
+    control_sample: "optional control sample name to highlight differences"
+    af_file: "read allele frequencies from file (CHR\\tPOS\\tREF,ALT\\tAF)"
+    output_dir: ""
     plot_threshold: "plot aberrant chromosomes with quality at least 'float'"
     regions: "restrict to comma-separated list of regions"
     regions_file: "restrict to regions listed in a file"
@@ -58,5 +67,8 @@ task BcftoolsCnv {
     same_prob: "prior probability of -s/-c being the same [0.5]"
     xy_prob: "P(x|y) transition probability [1e-9]"
     file_dot_vcf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

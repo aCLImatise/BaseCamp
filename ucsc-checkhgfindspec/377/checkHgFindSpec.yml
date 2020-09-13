@@ -1,36 +1,53 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: database
-  optional: false
+&id001 !Command
+command:
+- checkHgFindSpec
+positional: []
 named:
 - !Flag
-  description: Show the order in which tables will be searched in general.  [This
-    will be done anyway if no termToSearch or options are specified.]
+  description: Show the order in which tables will be searched in
   synonyms:
   - -showSearches
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: For each search spec that includes a regular expression for terms,
-    make sure that all values of the table field to be searched match the regex.  (If
-    not, some of them could be excluded from searches.)
+  description: "For each search spec that includes a regular\nexpression for terms,\
+    \ make sure that all values of\nthe table field to be searched match the regex.\
+    \  (If\nnot, some of them could be excluded from searches.)"
   synonyms:
   - -checkTermRegex
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Make sure that an index is defined on each field to be searched.
+  description: "Make sure that an index is defined on each field to\nbe searched.\n"
   synonyms:
   - -checkIndexes
   args: !EmptyFlagArg {}
   optional: true
-command:
-- checkHgFindSpec
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - checkHgFindSpec
+  - general.
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using:
+  - -h
+usage: []
 help_flag:
 usage_flag:
 version_flag:

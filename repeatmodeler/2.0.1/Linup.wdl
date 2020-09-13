@@ -4,4 +4,7 @@ task Linup {
   command <<<
     Linup
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

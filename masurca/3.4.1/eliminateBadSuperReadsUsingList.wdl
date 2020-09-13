@@ -4,4 +4,7 @@ task EliminateBadSuperReadsUsingList {
   command <<<
     eliminateBadSuperReadsUsingList
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../ppanini_rename_contigs.cwl
 inputs:
-- id: input
+- id: in_input
   doc: fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: output
-  doc: fasta file
-  type: string
+- id: in_output
+  doc: "fasta file\n"
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ppanini_rename_contigs

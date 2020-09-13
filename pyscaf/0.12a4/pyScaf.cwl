@@ -1,87 +1,90 @@
 class: CommandLineTool
 id: ../../../pyScaf.cwl
 inputs:
-- id: fast_a
+- id: in_fast_a
   doc: assembly FASTA file
-  type: string
+  type: File
   inputBinding:
     prefix: --fasta
-- id: output
+- id: in_output
   doc: output stream [scaffolds.fa]
   type: string
   inputBinding:
     prefix: --output
-- id: threads
+- id: in_threads
   doc: max no. of threads to run [4]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: log
+- id: in_log
   doc: output log to [stderr]
   type: string
   inputBinding:
     prefix: --log
-- id: dotplot
-  doc: '{,png,gif,pdf} generate dotplot as [png]'
+- id: in_dotplot
+  doc: "{,png,gif,pdf}\ngenerate dotplot as [png]"
   type: boolean
   inputBinding:
     prefix: --dotplot
-- id: reference
+- id: in_reference
   doc: reference FastA file
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: identity
+- id: in_identity
   doc: min. identity [0.33]
-  type: string
+  type: long
   inputBinding:
     prefix: --identity
-- id: overlap
+- id: in_overlap
   doc: min. overlap  [0.66]
-  type: string
+  type: long
   inputBinding:
     prefix: --overlap
-- id: max_gap
+- id: in_max_gap
   doc: max. distance between adjacent contigs [0.01 * assembly_size]
   type: long
   inputBinding:
     prefix: --maxgap
-- id: no_rearrangements
+- id: in_no_rearrangements
   doc: high identity mode (rearrangements not allowed)
   type: boolean
   inputBinding:
     prefix: --norearrangements
-- id: long_reads
+- id: in_long_reads
   doc: FastQ/FastA file(s) with PacBio/ONT reads
   type: string[]
   inputBinding:
     prefix: --longreads
-- id: fast_q
+- id: in_fast_q
   doc: FASTQ PE/MP files
   type: string[]
   inputBinding:
     prefix: --fastq
-- id: joins
+- id: in_joins
   doc: min pairs to join contigs [5]
-  type: string
+  type: long
   inputBinding:
     prefix: --joins
-- id: link_ratio
+- id: in_link_ratio
   doc: max link ratio between two best contig pairs [0.7]
-  type: string
+  type: long
   inputBinding:
     prefix: --linkratio
-- id: load
+- id: in_load
   doc: align subset of reads [0.2]
-  type: string
+  type: double
   inputBinding:
     prefix: --load
-- id: mapq
+- id: in_mapq
   doc: min mapping quality [10]
-  type: string
+  type: long
   inputBinding:
     prefix: --mapq
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pyScaf

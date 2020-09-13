@@ -4,4 +4,7 @@ task Blastn {
   command <<<
     blastn
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -20,37 +20,119 @@ task Efetch {
     Boolean? stop
     Boolean? raw
     Boolean? json
-    String abstract
+    String full
+    String uid
+    String url
+    String xml
+    String bio_project
+    String xml_recordset_xml
+    String bio_sample
+    String xml_biosampleset_xml
+    String biosystems
+    String clin_var
+    String variation_id
+    String vcv
+    String clin_varset
+    String gds
+    String summary
+    String gene
+    String gene_table
+    String tabular
+    String alignmentscores_alignment_scores
+    String fast_a
+    String homologene_report
+    String mesh
+    String nlm_catalog
+    String xml_nlmcatalogrecordset_xml
+    String pmc
+    String var_43
+    String xml_pmcarticleset_xml
+    String pubmed
     String bioc
-    String medline
+    String var_47
+    String acc
+    String est
+    String fast_a_cds_aa
+    String fast_a_cds_na
+    String ft
+    String gbc
+    String gene_fast_a
+    String gpc
+    String gss
+    String seq_id
+    String snp
+    String sra
+    String run_info
     String structure
     String taxonomy
+    String xml_taxaset_xml
   }
   command <<<
     efetch \
-      ~{abstract} \
+      ~{full} \
+      ~{uid} \
+      ~{url} \
+      ~{xml} \
+      ~{bio_project} \
+      ~{xml_recordset_xml} \
+      ~{bio_sample} \
+      ~{xml_biosampleset_xml} \
+      ~{biosystems} \
+      ~{clin_var} \
+      ~{variation_id} \
+      ~{vcv} \
+      ~{clin_varset} \
+      ~{gds} \
+      ~{summary} \
+      ~{gene} \
+      ~{gene_table} \
+      ~{tabular} \
+      ~{alignmentscores_alignment_scores} \
+      ~{fast_a} \
+      ~{homologene_report} \
+      ~{mesh} \
+      ~{nlm_catalog} \
+      ~{xml_nlmcatalogrecordset_xml} \
+      ~{pmc} \
+      ~{var_43} \
+      ~{xml_pmcarticleset_xml} \
+      ~{pubmed} \
       ~{bioc} \
-      ~{medline} \
+      ~{var_47} \
+      ~{acc} \
+      ~{est} \
+      ~{fast_a_cds_aa} \
+      ~{fast_a_cds_na} \
+      ~{ft} \
+      ~{gbc} \
+      ~{gene_fast_a} \
+      ~{gpc} \
+      ~{gss} \
+      ~{seq_id} \
+      ~{snp} \
+      ~{sra} \
+      ~{run_info} \
       ~{structure} \
       ~{taxonomy} \
-      ~{true="-format" false="" format} \
-      ~{true="-mode" false="" mode} \
-      ~{true="-style" false="" style} \
-      ~{true="-db" false="" db} \
-      ~{true="-id" false="" id} \
-      ~{true="-seq_start" false="" seq_start} \
-      ~{true="-seq_stop" false="" seq_stop} \
-      ~{true="-strand" false="" strand} \
-      ~{true="-revcomp" false="" rev_comp} \
-      ~{true="-chr_start" false="" chr_start} \
-      ~{true="-chr_stop" false="" chr_stop} \
-      ~{true="-complexity" false="" complexity} \
-      ~{true="-extend" false="" extend} \
-      ~{true="-extrafeat" false="" extra_feat} \
-      ~{true="-start" false="" start} \
-      ~{true="-stop" false="" stop} \
-      ~{true="-raw" false="" raw} \
-      ~{true="-json" false="" json}
+      ~{xml_taxaset_xml} \
+      ~{if (format) then "-format" else ""} \
+      ~{if (mode) then "-mode" else ""} \
+      ~{if (style) then "-style" else ""} \
+      ~{if (db) then "-db" else ""} \
+      ~{if (id) then "-id" else ""} \
+      ~{if (seq_start) then "-seq_start" else ""} \
+      ~{if (seq_stop) then "-seq_stop" else ""} \
+      ~{if (strand) then "-strand" else ""} \
+      ~{if (rev_comp) then "-revcomp" else ""} \
+      ~{if (chr_start) then "-chr_start" else ""} \
+      ~{if (chr_stop) then "-chr_stop" else ""} \
+      ~{if (complexity) then "-complexity" else ""} \
+      ~{if (extend) then "-extend" else ""} \
+      ~{if (extra_feat) then "-extrafeat" else ""} \
+      ~{if (start) then "-start" else ""} \
+      ~{if (stop) then "-stop" else ""} \
+      ~{if (raw) then "-raw" else ""} \
+      ~{if (json) then "-json" else ""}
   >>>
   parameter_meta {
     format: "Format of record or report"
@@ -71,10 +153,54 @@ task Efetch {
     stop: "Last record to fetch"
     raw: "Skip database-specific XML modifications"
     json: "Convert adjusted XML output to JSON"
-    abstract: "Abstract"
+    full: "Same as native except for mesh"
+    uid: "Unique Identifier List"
+    url: "Entrez URL"
+    xml: "Same as -format full -mode xml"
+    bio_project: "native                      BioProject Report"
+    xml_recordset_xml: "xml      RecordSet XML"
+    bio_sample: "native                      BioSample Report"
+    xml_biosampleset_xml: "xml      BioSampleSet XML"
+    biosystems: "native             xml      Sys-set XML"
+    clin_var: "variation                   Older Format"
+    variation_id: "Transition Format"
+    vcv: "VCV Report"
+    clin_varset: "RCV Report"
+    gds: "native             xml      RecordSet XML"
+    summary: "Summary"
+    gene: "full_report                 Detailed Report"
+    gene_table: "Gene Table"
+    tabular: "Tabular Report"
+    alignmentscores_alignment_scores: "alignmentscores             Alignment Scores"
+    fast_a: "FASTA"
+    homologene_report: "Homologene Report"
+    mesh: "full                        Full Record"
+    nlm_catalog: "native                      Full Record"
+    xml_nlmcatalogrecordset_xml: "xml      NLMCatalogRecordSet XML"
+    pmc: "bioc                        PubTator Central BioC XML"
+    var_43: "MEDLINE"
+    xml_pmcarticleset_xml: "xml      pmc-articleset XML"
+    pubmed: "abstract                    Abstract"
     bioc: "PubTator Central BioC XML"
-    medline: "MEDLINE"
-    structure: "mmdb                        Ncbi-mime-asn1 strucseq ASN.1 native                      MMDB Report native             xml      RecordSet XML"
-    taxonomy: "native                      Taxonomy List native             xml      TaxaSet XML"
+    var_47: "MEDLINE"
+    acc: "Accession Number"
+    est: "EST Report"
+    fast_a_cds_aa: "FASTA of CDS Products"
+    fast_a_cds_na: "FASTA of Coding Regions"
+    ft: "Feature Table"
+    gbc: "xml      INSDSet XML"
+    gene_fast_a: "FASTA of Gene"
+    gpc: "xml      INSDSet XML"
+    gss: "GSS Report"
+    seq_id: "Seq-id ASN.1"
+    snp: "json                        Reference SNP Report"
+    sra: "native             xml      EXPERIMENT_PACKAGE_SET XML"
+    run_info: "xml      SraRunInfo XML"
+    structure: "mmdb                        Ncbi-mime-asn1 strucseq ASN.1"
+    taxonomy: "native                      Taxonomy List"
+    xml_taxaset_xml: "xml      TaxaSet XML"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

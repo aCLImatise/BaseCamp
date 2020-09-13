@@ -1,6 +1,6 @@
 version 1.0
 
-task _pngtogd {
+task Pngtogd {
   input {
     String png_to_gd
     File filename_dot_png
@@ -16,5 +16,8 @@ task _pngtogd {
     png_to_gd: ""
     filename_dot_png: ""
     filename_dot_gd: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

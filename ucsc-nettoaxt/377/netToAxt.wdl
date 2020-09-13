@@ -3,14 +3,13 @@ version 1.0
 task NetToAxt {
   input {
     Boolean? q_chain
-    String? max_gap
-    String? gap_out
+    Int? max_gap
+    File? gap_out
     Boolean? no_split
     String in_dotnet
     String in_dot_chain
-    String target_dot_two_bit
-    String query_dot_two_bit
-    String out_do_tax_t
+    Float target_dot_two_bit
+    Float query_dot_two_bit
   }
   command <<<
     netToAxt \
@@ -18,11 +17,10 @@ task NetToAxt {
       ~{in_dot_chain} \
       ~{target_dot_two_bit} \
       ~{query_dot_two_bit} \
-      ~{out_do_tax_t} \
-      ~{true="-qChain" false="" q_chain} \
+      ~{if (q_chain) then "-qChain" else ""} \
       ~{if defined(max_gap) then ("-maxGap " +  '"' + max_gap + '"') else ""} \
       ~{if defined(gap_out) then ("-gapOut " +  '"' + gap_out + '"') else ""} \
-      ~{true="-noSplit" false="" no_split}
+      ~{if (no_split) then "-noSplit" else ""}
   >>>
   parameter_meta {
     q_chain: "- net is with respect to the q side of chains."
@@ -33,6 +31,9 @@ task NetToAxt {
     in_dot_chain: ""
     target_dot_two_bit: ""
     query_dot_two_bit: ""
-    out_do_tax_t: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_gap_out = "${in_gap_out}"
   }
 }

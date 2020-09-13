@@ -1,172 +1,180 @@
 class: CommandLineTool
 id: ../../../repeatoire.cwl
 inputs:
-- id: allow_redundant
+- id: in_allow_redundant
   doc: (=1)        allow redundant alignments?
-  type: string
+  type: long
   inputBinding:
     prefix: --allow-redundant
-- id: chain
+- id: in_chain
   doc: (=1)                  chain seeds?
-  type: string
+  type: long
   inputBinding:
     prefix: --chain
-- id: extend
+- id: in_extend
   doc: (=1)                 perform gapped extension on chains?
-  type: string
+  type: long
   inputBinding:
     prefix: --extend
-- id: window
-  doc: (=-1)                size of window to use during gapped  extension
-  type: string
+- id: in_window
+  doc: (=-1)                size of window to use during gapped
+  type: long
   inputBinding:
     prefix: --window
-- id: gap_open
-  doc: (=0)                gap open penalty
-  type: string
-  inputBinding:
-    prefix: --gapopen
-- id: gap_extend
+- id: in_gap_extend
   doc: (=0)              gap extension penalty
-  type: string
+  type: long
   inputBinding:
     prefix: --gapextend
-- id: _transition_homologous
+- id: in__transition_homologous
   doc: (=0.00800000038)          Transition to Homologous
-  type: string
+  type: double
   inputBinding:
     prefix: --h
-- id: highest
-  doc: '(=procrast.highest) file containing highest scoring alignment  for each multiplicity '
-  type: string
+- id: in_highest
+  doc: "(=procrast.highest) file containing highest scoring alignment\nfor each multiplicity"
+  type: File
   inputBinding:
     prefix: --highest
-- id: minimum_repeat_length
+- id: in_minimum_repeat_length
   doc: (=1)                      minimum repeat length
-  type: string
+  type: long
   inputBinding:
     prefix: --l
-- id: large_repeats
+- id: in_large_repeats
   doc: (=0)          optimize for large repeats
-  type: string
+  type: long
   inputBinding:
     prefix: --large-repeats
-- id: load_sml
+- id: in_load_sml
   doc: (=0)               try to load existing SML file?
-  type: string
+  type: File
   inputBinding:
     prefix: --load-sml
-- id: only_direct
+- id: in_only_direct
   doc: (=0)             only process seed matches on same strand?
-  type: string
+  type: long
   inputBinding:
     prefix: --onlydirect
-- id: only_extended
+- id: in_only_extended
   doc: (=0)           only output extended matches?
-  type: string
+  type: long
   inputBinding:
     prefix: --onlyextended
-- id: output
-  doc: 'procrastAligner output '
+- id: in_output
+  doc: procrastAligner output
   type: string
   inputBinding:
     prefix: --output
-- id: percentid
+- id: in_percentid
   doc: (=0)              min repeat family % id
-  type: string
+  type: long
   inputBinding:
     prefix: --percentid
-- id: novel_subsets
+- id: in_novel_subsets
   doc: (=0)          find novel subset matches?
-  type: string
+  type: long
   inputBinding:
     prefix: --novel-subsets
-- id: novel_matches
-  doc: (=1)          use novel matches found during gapped  extension?
-  type: string
+- id: in_novel_matches
+  doc: "(=1)          use novel matches found during gapped\nextension?"
+  type: long
   inputBinding:
     prefix: --novel-matches
-- id: rmax
-  doc: (=500)                 maximum repeat multiplicity (max copy  number)
-  type: string
+- id: in_rmax
+  doc: "(=500)                 maximum repeat multiplicity (max copy\nnumber)"
+  type: long
   inputBinding:
     prefix: --rmax
-- id: rm_in
-  doc: (=2)                   minimum repeat multiplicity (min copy  number)
-  type: string
+- id: in_rm_in
+  doc: "(=2)                   minimum repeat multiplicity (min copy\nnumber)"
+  type: long
   inputBinding:
     prefix: --rmin
-- id: seeds
+- id: in_seeds
   doc: seed output file
-  type: string
+  type: File
   inputBinding:
     prefix: --seeds
-- id: sequence
+- id: in_sequence
   doc: FastA sequence file
-  type: string
+  type: File
   inputBinding:
     prefix: --sequence
-- id: small_repeats
+- id: in_small_repeats
   doc: (=0)          optimize for small repeats
-  type: string
+  type: long
   inputBinding:
     prefix: --small-repeats
-- id: score_out
-  doc: 'output with corresponding score and  alignment info '
+- id: in_score_out
+  doc: "output with corresponding score and\nalignment info"
   type: string
   inputBinding:
     prefix: --score-out
-- id: solid
+- id: in_solid
   doc: (=0)                  use solid/exact seeds?
-  type: string
+  type: long
   inputBinding:
     prefix: --solid
-- id: sp
+- id: in_sp
   doc: (=0)                     minimum Sum-of-Pairs alignment score
-  type: string
+  type: long
   inputBinding:
     prefix: --sp
-- id: tandem
+- id: in_tandem
   doc: (=1)                 allow tandem repeats?
-  type: string
+  type: long
   inputBinding:
     prefix: --tandem
-- id: two_hits
-  doc: (=0)               require two hits within w to trigger gapped extension?
-  type: string
+- id: in_two_hits
+  doc: "(=0)               require two hits within w to trigger gapped\nextension?"
+  type: long
   inputBinding:
     prefix: --two-hits
-- id: _transition_unrelated
+- id: in__transition_unrelated
   doc: (=0.00100000005)          Transition to Unrelated
-  type: string
+  type: double
   inputBinding:
     prefix: --u
-- id: un_align
+- id: in_un_align
   doc: (=1)                unalign non-homologous sequence?
-  type: string
+  type: long
   inputBinding:
     prefix: --unalign
-- id: max_gap_width
-  doc: '(=0)                      max gap width '
-  type: string
+- id: in_max_gap_width
+  doc: (=0)                      max gap width
+  type: long
   inputBinding:
     prefix: --w
-- id: x_mfa
+- id: in_x_mfa
   doc: XMFA format output
   type: string
   inputBinding:
     prefix: --xmfa
-- id: xml
+- id: in_xml
   doc: XML format output
   type: string
   inputBinding:
     prefix: --xml
-- id: _seed_weight
+- id: in__seed_weight
   doc: (=0)                      seed weight
-  type: string
+  type: long
   inputBinding:
     prefix: --z
-outputs: []
+- id: in_extension
+  doc: --gapopen arg (=0)                gap open penalty
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_seeds
+  doc: seed output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_seeds)
 cwlVersion: v1.1
 baseCommand:
 - repeatoire

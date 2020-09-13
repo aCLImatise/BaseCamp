@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../add_gff_info_kegg.cwl
 inputs:
-- id: email
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_email
   doc: Contact email  [required]
   type: string
   inputBinding:
     prefix: --email
-- id: description
+- id: in_description
   doc: Add Kegg description
   type: boolean
   inputBinding:
     prefix: --description
-- id: pathways
+- id: in_pathways
   doc: Add pathways ID involved
   type: boolean
   inputBinding:
     prefix: --pathways
-- id: kegg_id
-  doc: In which attribute the Kegg ID is stored (defaults to *gene_id*)
+- id: in_kegg_id
+  doc: "In which attribute the Kegg ID is stored (defaults to\n*gene_id*)"
   type: string
   inputBinding:
     prefix: --kegg-id
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - add-gff-info

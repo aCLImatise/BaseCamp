@@ -1,7 +1,10 @@
 version 1.0
 
-task ClusterPicker {
+task Clusterpicker {
   command <<<
-    cluster-picker
+    cluster_picker
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

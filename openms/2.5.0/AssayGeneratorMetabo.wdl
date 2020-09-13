@@ -10,32 +10,32 @@ task AssayGeneratorMetabo {
     String? method
     Boolean? use_exact_mass
     Boolean? exclude_ms_two_precursor
-    String? precursor_mz_distance
-    String? precursor_rt_tolerance
+    Int? precursor_mz_distance
+    Int? precursor_rt_tolerance
     Boolean? use_known_unknowns
     Int? min_transitions
     Int? max_transitions
-    String? cosine_similarity_threshold
-    String? transition_threshold
+    Int? cosine_similarity_threshold
+    Int? transition_threshold
     Directory? out_workspace_directory
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
   command <<<
     AssayGeneratorMetabo \
       ~{if defined(executable) then ("-executable " +  '"' + executable + '"') else ""} \
-      ~{true="-in" false="" in} \
-      ~{true="-in_id" false="" in_id} \
+      ~{if (in) then "-in" else ""} \
+      ~{if (in_id) then "-in_id" else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(fragment_annotation) then ("-fragment_annotation " +  '"' + fragment_annotation + '"') else ""} \
       ~{if defined(method) then ("-method " +  '"' + method + '"') else ""} \
-      ~{true="-use_exact_mass" false="" use_exact_mass} \
-      ~{true="-exclude_ms2_precursor" false="" exclude_ms_two_precursor} \
+      ~{if (use_exact_mass) then "-use_exact_mass" else ""} \
+      ~{if (exclude_ms_two_precursor) then "-exclude_ms2_precursor" else ""} \
       ~{if defined(precursor_mz_distance) then ("-precursor_mz_distance " +  '"' + precursor_mz_distance + '"') else ""} \
       ~{if defined(precursor_rt_tolerance) then ("-precursor_rt_tolerance " +  '"' + precursor_rt_tolerance + '"') else ""} \
-      ~{true="-use_known_unknowns" false="" use_known_unknowns} \
+      ~{if (use_known_unknowns) then "-use_known_unknowns" else ""} \
       ~{if defined(min_transitions) then ("-min_transitions " +  '"' + min_transitions + '"') else ""} \
       ~{if defined(max_transitions) then ("-max_transitions " +  '"' + max_transitions + '"') else ""} \
       ~{if defined(cosine_similarity_threshold) then ("-cosine_similarity_threshold " +  '"' + cosine_similarity_threshold + '"') else ""} \
@@ -44,7 +44,7 @@ task AssayGeneratorMetabo {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     executable: "SIRIUS executable e.g. sirius"
@@ -67,5 +67,10 @@ task AssayGeneratorMetabo {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    Directory out_out_workspace_directory = "${in_out_workspace_directory}"
   }
 }

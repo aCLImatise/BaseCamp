@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../gestimator.cwl
 inputs:
-- id: write_results_outfile
+- id: in_write_results_outfile
   doc: ': write results to outfile'
   type: string
   inputBinding:
     prefix: -o
-- id: get_verbose_output
+- id: in__verbose_output
   doc: ': get verbose output'
   type: boolean
   inputBinding:
     prefix: -v
-- id: max_hits_allowed
+- id: in_max_hits_allowed
   doc: ': max # of hits allowed per codon (default = 3)'
   type: boolean
   inputBinding:
     prefix: -m
-- id: remove_gaps_whole
+- id: in_remove_gaps_whole
   doc: ': remove gaps from the whole aligment before calculating (default = FALSE)'
   type: boolean
   inputBinding:
     prefix: -g
-- id: i
+- id: in_i
   doc: ''
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gestimator

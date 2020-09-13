@@ -4,4 +4,7 @@ task Vcfmultiallelic {
   command <<<
     vcfmultiallelic
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

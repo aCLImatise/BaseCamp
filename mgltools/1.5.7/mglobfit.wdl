@@ -4,4 +4,7 @@ task Mglobfit {
   command <<<
     mglobfit
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

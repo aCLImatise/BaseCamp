@@ -1,7 +1,10 @@
 version 1.0
 
-task Join.pl.bak {
+task Joinpl {
   command <<<
-    join.pl.bak
+    join_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

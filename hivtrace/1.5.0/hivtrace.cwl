@@ -1,90 +1,98 @@
 class: CommandLineTool
 id: ../../../hivtrace.cwl
 inputs:
-- id: input
+- id: in_input
   doc: FASTA file
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: ambiguities
-  doc: handle ambiguous nucleotides using the specified strategy
+- id: in_ambiguities
+  doc: "handle ambiguous nucleotides using the specified\nstrategy"
   type: string
   inputBinding:
     prefix: --ambiguities
-- id: reference
+- id: in_reference
   doc: reference to align to
   type: string
   inputBinding:
     prefix: --reference
-- id: threshold
-  doc: Only count edges where the distance is less than this threshold
+- id: in_threshold
+  doc: "Only count edges where the distance is less than this\nthreshold"
   type: string
   inputBinding:
     prefix: --threshold
-- id: min_overlap
+- id: in_min_overlap
   doc: Minimum Overlap
   type: long
   inputBinding:
     prefix: --minoverlap
-- id: fraction
-  doc: Fraction
+- id: in_var_5
+  doc: ''
   type: string
   inputBinding:
     prefix: --fraction
-- id: curate
-  doc: Filter contaminants
-  type: string
-  inputBinding:
-    prefix: --curate
-- id: filter
+- id: in_filter
   doc: Edge filtering option
   type: string
   inputBinding:
     prefix: --filter
-- id: strip_drams
-  doc: "Read in an aligned Fasta file (HIV prot/rt sequences) and remove DRAM (drug\
-    \ resistance associated mutation) codon sites. It will output a new alignment\
-    \ with these sites removed. It requires input/output file names along with the\
-    \ list of DRAM sites to remove: 'lewis' or 'wheeler'."
-  type: string
+- id: in_strip_drams
+  doc: "Read in an aligned Fasta file (HIV prot/rt sequences)\nand remove DRAM (drug\
+    \ resistance associated mutation)\ncodon sites. It will output a new alignment\
+    \ with these\nsites removed. It requires input/output file names\nalong with the\
+    \ list of DRAM sites to remove: 'lewis'\nor 'wheeler'."
+  type: File
   inputBinding:
     prefix: --strip_drams
-- id: compare
+- id: in_compare
   doc: Compare to supplied FASTA file
   type: boolean
   inputBinding:
     prefix: --compare
-- id: do_not_store_intermediate
+- id: in_do_not_store_intermediate
   doc: Store intermediate files
   type: boolean
   inputBinding:
     prefix: --do-not-store-intermediate
-- id: skip_alignment
+- id: in_skip_alignment
   doc: Skip alignment
   type: boolean
   inputBinding:
     prefix: --skip-alignment
-- id: attributes_file
+- id: in_attributes_file
   doc: Annotate with attributes
-  type: string
+  type: File
   inputBinding:
     prefix: --attributes-file
-- id: log
+- id: in_log
   doc: Write logs to specified directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --log
-- id: output
+- id: in_output
   doc: Specify output filename
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: prior
-  doc: Prior network configuration
+- id: in_prior
+  doc: "Prior network configuration\n"
   type: string
   inputBinding:
     prefix: --prior
-outputs: []
+- id: in_curate__curate
+  doc: -u CURATE, --curate CURATE
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Specify output filename
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - hivtrace

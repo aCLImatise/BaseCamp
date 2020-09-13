@@ -4,17 +4,20 @@ task Vcfprimers {
   input {
     Boolean? fast_a_reference
     Boolean? primer_length
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcfprimers \
       ~{vcf_file} \
-      ~{true="--fasta-reference" false="" fast_a_reference} \
-      ~{true="--primer-length" false="" primer_length}
+      ~{if (fast_a_reference) then "--fasta-reference" else ""} \
+      ~{if (primer_length) then "--primer-length" else ""}
   >>>
   parameter_meta {
     fast_a_reference: "FASTA reference file to use to obtain primer sequences"
     primer_length: "The length of the primer sequences on each side of the variant"
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

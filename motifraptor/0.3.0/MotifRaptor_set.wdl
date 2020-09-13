@@ -12,6 +12,9 @@ task MotifRaptorSet {
   >>>
   parameter_meta {
     parameter_name: "Parameter Name"
-    parameter_value: "Parameter Value"
+    parameter_value: "Parameter Value\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

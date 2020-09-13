@@ -1,28 +1,37 @@
 class: CommandLineTool
 id: ../../../summary_from_stats.cwl
 inputs:
-- id: output
-  doc: "Output summary to file instead of stderr. (default: <_io.TextIOWrapper name='<stderr>'\
-    \ mode='w' encoding='UTF-8'>)"
+- id: in_input
+  doc: ''
   type: string
   inputBinding:
+    prefix: --input
+- id: in_output
+  doc: "Output summary to file instead of stderr. (default:\n<_io.TextIOWrapper name='<stderr>'\
+    \ mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  type: File
+  inputBinding:
     prefix: --output
-- id: percentiles
+- id: in_percentiles
   doc: 'Percentiles for summary. (default: (10, 50, 90))'
   type: string[]
   inputBinding:
     prefix: --percentiles
-- id: per_reference
-  doc: 'Also output a summary for each reference. (default: False)'
+- id: in_per_reference
+  doc: "Also output a summary for each reference. (default:\nFalse)\n"
   type: boolean
   inputBinding:
     prefix: --per_reference
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output summary to file instead of stderr. (default:\n<_io.TextIOWrapper name='<stderr>'\
+    \ mode='w'\nencoding='ANSI_X3.4-1968'>)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - summary_from_stats

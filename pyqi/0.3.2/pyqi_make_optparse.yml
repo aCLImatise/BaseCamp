@@ -1,6 +1,54 @@
-&id003 !Command
+&id002 !Command
+command:
+- pyqi
+- make-optparse
 positional: []
 named:
+- !Flag
+  description: 'author/maintainer name [default: none]'
+  synonyms:
+  - -a
+  - --author
+  args: !SimpleFlagArg
+    name: AUTHOR
+  optional: true
+- !Flag
+  description: 'maintainer email address [default: none]'
+  synonyms:
+  - -e
+  - --email
+  args: !SimpleFlagArg
+    name: EMAIL
+  optional: true
+- !Flag
+  description: 'license (e.g., BSD) [default: none]'
+  synonyms:
+  - -l
+  - --license
+  args: !SimpleFlagArg
+    name: LICENSE
+  optional: true
+- !Flag
+  description: "copyright (e.g., Copyright 2013, The pyqi project)\n[default: none]"
+  synonyms:
+  - --copyright
+  args: !SimpleFlagArg
+    name: COPYRIGHT
+  optional: true
+- !Flag
+  description: 'version (e.g., 0.1) [default: none]'
+  synonyms:
+  - --config-version
+  args: !SimpleFlagArg
+    name: CONFIG_VERSION
+  optional: true
+- !Flag
+  description: 'comma-separated list of other authors [default: none]'
+  synonyms:
+  - --credits
+  args: !SimpleFlagArg
+    name: CREDITS
+  optional: true
 - !Flag
   description: an existing Command [REQUIRED]
   synonyms:
@@ -18,77 +66,80 @@ named:
     name: COMMAND_MODULE
   optional: true
 - !Flag
-  description: output filepath to store generated optparse Python configuration file
-    [REQUIRED]
+  description: "output filepath to store generated optparse Python\nconfiguration\
+    \ file [REQUIRED]\n"
   synonyms:
   - -o
   - --output-fp
   args: !SimpleFlagArg
     name: OUTPUT_FP
   optional: true
-command:
-- pyqi
-- make-optparse
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - pyqi
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: CLI command configuration module [REQUIRED]
-      synonyms:
-      - --command-config-module
-      args: !SimpleFlagArg
-        name: COMMAND_CONFIG_MODULE
-      optional: true
-    - !Flag
-      description: name of the driver script [REQUIRED]
-      synonyms:
-      - --driver-name
-      args: !SimpleFlagArg
-        name: DRIVER_NAME
-      optional: true
-    - !Flag
-      description: output filepath [REQUIRED]
-      synonyms:
-      - -o
-      - --output-fp
-      args: !SimpleFlagArg
-        name: OUTPUT_FP
-      optional: true
     command:
     - pyqi
-    - make-bash-completion
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Usage: pyqi make-bash-completion [options] {--command-config-module\
-      \ COMMAND-CONFIG-MODULE --driver-name DRIVER-NAME -o/--output-fp OUTPUT-FP}\n\
-      \n[] indicates optional input (order unimportant)\n{} indicates required input\
-      \ (order unimportant)\n\nConstruct a bash tab completion script that will search\
-      \ through available commands and options\n\nExample usage: \nPrint help message\
-      \ and exit\n pyqi make-bash-completion -h\n\nCreate a bash completion script:\
-      \ Create a bash completion script for use with a pyqi driver\n pyqi make-bash-completion\
-      \ --command-config-module pyqi.interfaces.optparse.config --driver-name pyqi\
-      \ -o ~/.bash_completion.d/pyqi\n\nOptions:\n  --version             show program's\
-      \ version number and exit\n  -h, --help            show this help message and\
-      \ exit\n\n  REQUIRED options:\n    The following options must be provided under\
-      \ all circumstances.\n\n    --command-config-module=COMMAND_CONFIG_MODULE\n\
-      \                        CLI command configuration module [REQUIRED]\n    --driver-name=DRIVER_NAME\n\
-      \                        name of the driver script [REQUIRED]\n    -o OUTPUT_FP,\
-      \ --output-fp=OUTPUT_FP\n                        output filepath [REQUIRED]\n"
-    generated_using: &id002
-    - --help
-  - !Command
+    - make-command
     positional: []
     named:
+    - !Flag
+      description: 'author/maintainer name [default: none]'
+      synonyms:
+      - -a
+      - --author
+      args: !SimpleFlagArg
+        name: AUTHOR
+      optional: true
+    - !Flag
+      description: 'maintainer email address [default: none]'
+      synonyms:
+      - -e
+      - --email
+      args: !SimpleFlagArg
+        name: EMAIL
+      optional: true
+    - !Flag
+      description: 'license (e.g., BSD) [default: none]'
+      synonyms:
+      - -l
+      - --license
+      args: !SimpleFlagArg
+        name: LICENSE
+      optional: true
+    - !Flag
+      description: "copyright (e.g., Copyright 2013, The pyqi project)\n[default:\
+        \ none]"
+      synonyms:
+      - -c
+      - --copyright
+      args: !SimpleFlagArg
+        name: COPYRIGHT
+      optional: true
+    - !Flag
+      description: 'version (e.g., 0.1) [default: none]'
+      synonyms:
+      - --command-version
+      args: !SimpleFlagArg
+        name: COMMAND_VERSION
+      optional: true
+    - !Flag
+      description: 'comma-separated list of other authors [default: none]'
+      synonyms:
+      - --credits
+      args: !SimpleFlagArg
+        name: CREDITS
+      optional: true
+    - !Flag
+      description: 'create stubbed out unit test code [default: False]'
+      synonyms:
+      - --test-code
+      args: !EmptyFlagArg {}
+      optional: true
     - !Flag
       description: the name of the Command [REQUIRED]
       synonyms:
@@ -98,21 +149,30 @@ parent: &id001 !Command
         name: NAME
       optional: true
     - !Flag
-      description: output filepath to store generated Python code [REQUIRED]
+      description: "output filepath to store generated Python code\n[REQUIRED]\n"
       synonyms:
       - -o
       - --output-fp
       args: !SimpleFlagArg
         name: OUTPUT_FP
       optional: true
-    command:
-    - pyqi
-    - make-command
     parent: *id001
     subcommands: []
-    help_flag:
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
     usage_flag:
-    version_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
     help_text: "Usage: pyqi make-command [options] {-n/--name NAME -o/--output-fp\
       \ OUTPUT-FP}\n\n[] indicates optional input (order unimportant)\n{} indicates\
       \ required input (order unimportant)\n\nThis command is intended to construct\
@@ -138,26 +198,45 @@ parent: &id001 !Command
       \ [REQUIRED]\n    -o OUTPUT_FP, --output-fp=OUTPUT_FP\n                    \
       \    output filepath to store generated Python code\n                      \
       \  [REQUIRED]\n"
-    generated_using: *id002
-  - *id003
+    generated_using: &id003
+    - --help
+  - *id002
   - !Command
+    command:
+    - pyqi
+    - make-release
     positional: []
     named:
     - !Flag
-      description: The name of the package to release [REQUIRED]
+      description: 'Perform a real run [default: False]'
+      synonyms:
+      - --real-run
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "The name of the package to release [REQUIRED]\n"
       synonyms:
       - --package-name
       args: !SimpleFlagArg
         name: PACKAGE_NAME
       optional: true
-    command:
-    - pyqi
-    - make-release
     parent: *id001
     subcommands: []
-    help_flag:
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
     usage_flag:
-    version_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
     help_text: "Usage: pyqi make-release [options] {--package-name PACKAGE-NAME}\n\
       \n[] indicates optional input (order unimportant)\n{} indicates required input\
       \ (order unimportant)\n\nDo all the things for a release\n\nExample usage: \n\
@@ -169,26 +248,107 @@ parent: &id001 !Command
       \ options:\n    The following options must be provided under all circumstances.\n\
       \n    --package-name=PACKAGE_NAME\n                        The name of the package\
       \ to release [REQUIRED]\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - pyqi
+    - make-bash-completion
     positional: []
     named:
     - !Flag
-      description: The module to serve the interface for [REQUIRED]
+      description: CLI command configuration module [REQUIRED]
+      synonyms:
+      - --command-config-module
+      args: !SimpleFlagArg
+        name: COMMAND_CONFIG_MODULE
+      optional: true
+    - !Flag
+      description: name of the driver script [REQUIRED]
+      synonyms:
+      - --driver-name
+      args: !SimpleFlagArg
+        name: DRIVER_NAME
+      optional: true
+    - !Flag
+      description: "output filepath [REQUIRED]\n"
+      synonyms:
+      - -o
+      - --output-fp
+      args: !SimpleFlagArg
+        name: OUTPUT_FP
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "Usage: pyqi make-bash-completion [options] {--command-config-module\
+      \ COMMAND-CONFIG-MODULE --driver-name DRIVER-NAME -o/--output-fp OUTPUT-FP}\n\
+      \n[] indicates optional input (order unimportant)\n{} indicates required input\
+      \ (order unimportant)\n\nConstruct a bash tab completion script that will search\
+      \ through available commands and options\n\nExample usage: \nPrint help message\
+      \ and exit\n pyqi make-bash-completion -h\n\nCreate a bash completion script:\
+      \ Create a bash completion script for use with a pyqi driver\n pyqi make-bash-completion\
+      \ --command-config-module pyqi.interfaces.optparse.config --driver-name pyqi\
+      \ -o ~/.bash_completion.d/pyqi\n\nOptions:\n  --version             show program's\
+      \ version number and exit\n  -h, --help            show this help message and\
+      \ exit\n\n  REQUIRED options:\n    The following options must be provided under\
+      \ all circumstances.\n\n    --command-config-module=COMMAND_CONFIG_MODULE\n\
+      \                        CLI command configuration module [REQUIRED]\n    --driver-name=DRIVER_NAME\n\
+      \                        name of the driver script [REQUIRED]\n    -o OUTPUT_FP,\
+      \ --output-fp=OUTPUT_FP\n                        output filepath [REQUIRED]\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - pyqi
+    - serve-html-interface
+    positional: []
+    named:
+    - !Flag
+      description: 'The port to run the server on [default: 8080]'
+      synonyms:
+      - -p
+      - --port
+      args: !SimpleFlagArg
+        name: PORT
+      optional: true
+    - !Flag
+      description: "The module to serve the interface for [REQUIRED]\n"
       synonyms:
       - -m
       - --interface-module
       args: !SimpleFlagArg
         name: INTERFACE_MODULE
       optional: true
-    command:
-    - pyqi
-    - serve-html-interface
     parent: *id001
     subcommands: []
-    help_flag:
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
     usage_flag:
-    version_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
     help_text: "Usage: pyqi serve-html-interface [options] {-m/--interface-module\
       \ INTERFACE-MODULE}\n\n[] indicates optional input (order unimportant)\n{} indicates\
       \ required input (order unimportant)\n\nStart the HTMLInterface server and load\
@@ -202,7 +362,8 @@ parent: &id001 !Command
       \ options must be provided under all circumstances.\n\n    -m INTERFACE_MODULE,\
       \ --interface-module=INTERFACE_MODULE\n                        The module to\
       \ serve the interface for [REQUIRED]\n"
-    generated_using: *id002
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -212,11 +373,23 @@ parent: &id001 !Command
     \ Consume a Command, stub out an optparse configuration\n   make-release     \
     \      Make the release\n   serve-html-interface   Start the HTMLInterface server\n\
     \nSee 'pyqi help <command>' for more information on a specific command.\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: pyqi make-optparse [options] {-c/--command COMMAND -m/--command-module\
   \ COMMAND-MODULE -o/--output-fp OUTPUT-FP}\n\n[] indicates optional input (order\
   \ unimportant)\n{} indicates required input (order unimportant)\n\nConstruct and\
@@ -251,4 +424,4 @@ help_text: "Usage: pyqi make-optparse [options] {-c/--command COMMAND -m/--comma
   \ [REQUIRED]\n    -o OUTPUT_FP, --output-fp=OUTPUT_FP\n                        output\
   \ filepath to store generated optparse Python\n                        configuration\
   \ file [REQUIRED]\n"
-generated_using: *id002
+generated_using: *id003

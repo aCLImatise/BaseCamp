@@ -18,17 +18,17 @@ task PbsvDiscover {
   command <<<
     pbsv discover \
       ~{refdotoutdotsvsigdotgz} \
-      ~{true="--sample" false="" sample} \
-      ~{true="--min-mapq" false="" min_mapq} \
-      ~{true="--min-ref-span" false="" min_ref_span} \
-      ~{true="--downsample-window-length" false="" down_sample_window_length} \
-      ~{true="--downsample-max-alignments" false="" down_sample_max_alignments} \
-      ~{true="--region" false="" region} \
-      ~{true="--min-svsig-length" false="" min_sv_sig_length} \
-      ~{true="--tandem-repeats" false="" tandem_repeats} \
-      ~{true="--max-skip-split" false="" max_skip_split} \
-      ~{true="--log-level" false="" log_level} \
-      ~{true="--log-file" false="" log_file}
+      ~{if (sample) then "--sample" else ""} \
+      ~{if (min_mapq) then "--min-mapq" else ""} \
+      ~{if (min_ref_span) then "--min-ref-span" else ""} \
+      ~{if (down_sample_window_length) then "--downsample-window-length" else ""} \
+      ~{if (down_sample_max_alignments) then "--downsample-max-alignments" else ""} \
+      ~{if (region) then "--region" else ""} \
+      ~{if (min_sv_sig_length) then "--min-svsig-length" else ""} \
+      ~{if (tandem_repeats) then "--tandem-repeats" else ""} \
+      ~{if (max_skip_split) then "--max-skip-split" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_file) then "--log-file" else ""}
   >>>
   parameter_meta {
     sample: "STR   Override sample name tag from BAM read group."
@@ -43,5 +43,8 @@ task PbsvDiscover {
     log_level: "STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]"
     log_file: "FILE  Log to a file, instead of stderr."
     refdotoutdotsvsigdotgz: "STR   Structural variant signatures output."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

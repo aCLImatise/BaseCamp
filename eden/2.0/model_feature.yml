@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- model
+- feature
 positional: []
 named:
 - !Flag
@@ -26,23 +29,29 @@ named:
     name: OUTPUT_DIR_PATH
   optional: true
 - !Flag
-  description: 'Output file format. (default: MatrixMarket)'
+  description: "Output file format. (default: MatrixMarket)\n"
   synonyms:
   - -t
   - --output-format
   args: !ChoiceFlagArg
     choices: !!set
       ? joblib
-      ? MatrixMarket
       ? text
       ? numpy
+      ? MatrixMarket
   optional: true
-command:
-- model
-- feature
 parent: &id001 !Command
+  command:
+  - model
   positional: []
   named:
+  - !Flag
+    description: 'using a fit model:'
+    synonyms:
+    - -for
+    args: !SimpleFlagArg
+      name: predicting
+    optional: true
   - !Flag
     description: 'Increase output verbosity (default: None)'
     synonyms:
@@ -57,30 +66,29 @@ parent: &id001 !Command
     - --no-logging
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - model
   parent:
   subcommands:
   - !Command
+    command:
+    - model
+    - matrix
     positional: []
     named:
     - !Flag
-      description: 'Path tofile containing input for the positive class. (default:
-        None)'
+      description: 'Path to file containing input. (default: None)'
       synonyms:
-      - -p
-      - --positive-input-file
+      - -i
+      - --input-file
       args: !SimpleFlagArg
-        name: POSITIVE_INPUT_FILE
+        name: INPUT_FILE
       optional: true
     - !Flag
-      description: 'Path to file containing input for the negative class. (default:
-        None)'
+      description: 'Path to a fit model file. (default: model)'
       synonyms:
-      - -n
-      - --negative-input-file
+      - -m
+      - --model-file
       args: !SimpleFlagArg
-        name: NEGATIVE_INPUT_FILE
+        name: MODEL_FILE
       optional: true
     - !Flag
       description: 'Path to output directory. (default: out)'
@@ -91,216 +99,20 @@ parent: &id001 !Command
         name: OUTPUT_DIR_PATH
       optional: true
     - !Flag
-      description: 'Model file name. Note: it will be located in the output directory.
-        (default: model)'
+      description: "Output file format. (default: MatrixMarket)\n"
       synonyms:
-      - -m
-      - --model-file
-      args: !SimpleFlagArg
-        name: MODEL_FILE
-      optional: true
-    - !Flag
-      description: 'Number of randomly generated hyper parameter configurations tried
-        during the discriminative model optimization. A value of 1 implies using the
-        estimator default values. (default: 20)'
-      synonyms:
-      - -e
-      - --n-iter
-      args: !SimpleFlagArg
-        name: N_ITER
-      optional: true
-    - !Flag
-      description: 'Number of randomly generated hyper parameter configurations tried
-        for the estimator for each parameter configuration of the pre-processor and
-        vectorizer during optimization. (default: 5)'
-      synonyms:
-      - --n-inner-iter-estimator
-      args: !SimpleFlagArg
-        name: N_INNER_ITER_ESTIMATOR
-      optional: true
-    - !Flag
-      description: 'Number of iterations in the active learning cycle. A value of
-        0 means to avoid active learning. (default: 0)'
-      synonyms:
-      - --n-active-learning-iterations
-      args: !SimpleFlagArg
-        name: N_ACTIVE_LEARNING_ITERATIONS
-      optional: true
-    - !Flag
-      description: 'Number of positive instances that have to be sampled in the active
-        learning cycle. A value of -1 means to use all instances, i.e. not to use
-        active learning for the positive instances. (default: -1)'
-      synonyms:
-      - --size-positive
-      args: !SimpleFlagArg
-        name: SIZE_POSITIVE
-      optional: true
-    - !Flag
-      description: 'Number of negative instances that have to be sampled in the active
-        learning cycle. A value of -1 means to use all instances, i.e. not to use
-        active learning for the negative instances. (default: -1)'
-      synonyms:
-      - --size-negative
-      args: !SimpleFlagArg
-        name: SIZE_NEGATIVE
-      optional: true
-    - !Flag
-      description: 'Value of the score threshold to determine when to accept positive
-        instances: positive instances with a score higher than the specified value
-        will be accepted as candidates. (default: -1)'
-      synonyms:
-      - --lower-bound-threshold-positive
-      args: !SimpleFlagArg
-        name: LOWER_BOUND_THRESHOLD_POSITIVE
-      optional: true
-    - !Flag
-      description: 'Value of the score threshold to determine when to accept negative
-        instances: negative instances with a score higher than the specified value
-        will be accepted as candidates. (default: -1)'
-      synonyms:
-      - --lower-bound-threshold-negative
-      args: !SimpleFlagArg
-        name: LOWER_BOUND_THRESHOLD_NEGATIVE
-      optional: true
-    - !Flag
-      description: 'Value of the score threshold to determine when to accept positive
-        instances: positive instances with a score lower than the specified value
-        will be accepted as candidates. (default: 1)'
-      synonyms:
-      - --upper-bound-threshold-positive
-      args: !SimpleFlagArg
-        name: UPPER_BOUND_THRESHOLD_POSITIVE
-      optional: true
-    - !Flag
-      description: 'Value of the score threshold to determine when to accept negative
-        instances: negative instances with a score lower than the specified value
-        will be accepted as candidates. (default: 1)'
-      synonyms:
-      - --upper-bound-threshold-negative
-      args: !SimpleFlagArg
-        name: UPPER_BOUND_THRESHOLD_NEGATIVE
-      optional: true
-    - !Flag
-      description: 'If set, activate the fitting procedure for the vectorizer on positive
-        instances only. (default: False)'
-      synonyms:
-      - --fit-vectorizer
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Maximal number of seconds for the duration of the optimization
-        phase. After that the procedure is forcefully stopped. A value of -1 means
-        no time limit. (default: -1)'
-      synonyms:
-      - --max-total-time
-      args: !SimpleFlagArg
-        name: MAX_TOTAL_TIME
-      optional: true
-    - !Flag
-      description: 'If set, activate a refinement procedure anfter n_iter/2 steps
-        that samples only among the parameters that have previously improved the results.
-        (default: False)'
-      synonyms:
-      - --two-steps-optimization
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'The scoring strategy for evaluating in cross validation the quality
-        of a hyper parameter combination. (default: roc_auc)'
-      synonyms:
-      - --scoring
+      - -t
+      - --output-format
       args: !ChoiceFlagArg
         choices: !!set
-          ? f1
-          ? roc_auc
-          ? precision
-          ? average_precision
-          ? f1_macro
-          ? f1_weighted
-          ? log_loss
-          ? accuracy
-          ? f1_micro
-          ? f1_samples
-          ? recall
+          ? joblib
+          ? text
+          ? numpy
+          ? MatrixMarket
       optional: true
-    - !Flag
-      description: 'Cross validation size. (default: 10)'
-      synonyms:
-      - --cv
-      args: !SimpleFlagArg
-        name: CV
-      optional: true
-    - !Flag
-      description: 'Number of bits used to express the graph kernel features. A value
-        of 20 corresponds to 2**20=1 million possible features. (default: 20)'
-      synonyms:
-      - -B
-      - --nbits
-      args: !SimpleFlagArg
-        name: NBITS
-      optional: true
-    - !Flag
-      description: 'Random seed. (default: 1)'
-      synonyms:
-      - -r
-      - --random-state
-      args: !SimpleFlagArg
-        name: RANDOM_STATE
-      optional: true
-    - !Flag
-      description: 'Number of cores to use in multiprocessing. (default: 2)'
-      synonyms:
-      - -j
-      - --n-jobs
-      args: !SimpleFlagArg
-        name: N_JOBS
-      optional: true
-    - !Flag
-      description: 'Number of blocks in which to divide the input for the multiprocessing
-        elaboration. (default: 8)'
-      synonyms:
-      - -b
-      - --n-blocks
-      args: !SimpleFlagArg
-        name: N_BLOCKS
-      optional: true
-    - !Flag
-      description: 'Number of instances per block for the multiprocessing elaboration.
-        (default: None)'
-      synonyms:
-      - -k
-      - -block-size
-      args: !SimpleFlagArg
-        name: BLOCK_SIZE
-      optional: true
-    - !Flag
-      description: 'Number of cores to use in multiprocessing. (default: 4)'
-      synonyms:
-      - --pre-processor-n-jobs
-      args: !SimpleFlagArg
-        name: PRE_PROCESSOR_N_JOBS
-      optional: true
-    - !Flag
-      description: 'Number of blocks in which to divide the input for the multiprocessing
-        elaboration. (default: 10)'
-      synonyms:
-      - --pre-processor-n-blocks
-      args: !SimpleFlagArg
-        name: PRE_PROCESSOR_N_BLOCKS
-      optional: true
-    - !Flag
-      description: 'Number of instances per block for the multiprocessing elaboration.
-        (default: None)'
-      synonyms:
-      - --pre-processor-block-size
-      args: !SimpleFlagArg
-        name: PRE_PROCESSOR_BLOCK_SIZE
-      optional: true
-    command:
-    - model
-    - fit
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -310,111 +122,129 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: model fit [-h] -p POSITIVE_INPUT_FILE -n NEGATIVE_INPUT_FILE\n\
-      \                 [-o OUTPUT_DIR_PATH] [-m MODEL_FILE] [-e N_ITER]\n       \
-      \          [--n-inner-iter-estimator N_INNER_ITER_ESTIMATOR]\n             \
-      \    [--n-active-learning-iterations N_ACTIVE_LEARNING_ITERATIONS]\n       \
-      \          [--size-positive SIZE_POSITIVE]\n                 [--size-negative\
-      \ SIZE_NEGATIVE]\n                 [--lower-bound-threshold-positive LOWER_BOUND_THRESHOLD_POSITIVE]\n\
-      \                 [--lower-bound-threshold-negative LOWER_BOUND_THRESHOLD_NEGATIVE]\n\
-      \                 [--upper-bound-threshold-positive UPPER_BOUND_THRESHOLD_POSITIVE]\n\
-      \                 [--upper-bound-threshold-negative UPPER_BOUND_THRESHOLD_NEGATIVE]\n\
-      \                 [--fit-vectorizer] [--max-total-time MAX_TOTAL_TIME]\n   \
-      \              [--two-steps-optimization]\n                 [--scoring {accuracy,roc_auc,average_precision,f1,f1_micro,f1_macro,f1_weighted,f1_samples,log_loss,precision,recall}]\n\
-      \                 [--cv CV] [-B NBITS] [-j N_JOBS] [-b N_BLOCKS]\n         \
-      \        [-k BLOCK_SIZE] [--pre-processor-n-jobs PRE_PROCESSOR_N_JOBS]\n   \
-      \              [--pre-processor-n-blocks PRE_PROCESSOR_N_BLOCKS]\n         \
-      \        [--pre-processor-block-size PRE_PROCESSOR_BLOCK_SIZE]\n           \
-      \      [-r RANDOM_STATE]\n\noptional arguments:\n  -h, --help            show\
-      \ this help message and exit\n  -p POSITIVE_INPUT_FILE, --positive-input-file\
-      \ POSITIVE_INPUT_FILE\n                        Path tofile containing input\
-      \ for the positive class.\n                        (default: None)\n  -n NEGATIVE_INPUT_FILE,\
-      \ --negative-input-file NEGATIVE_INPUT_FILE\n                        Path to\
-      \ file containing input for the negative class.\n                        (default:\
-      \ None)\n  -o OUTPUT_DIR_PATH, --output-dir OUTPUT_DIR_PATH\n              \
-      \          Path to output directory. (default: out)\n  -m MODEL_FILE, --model-file\
-      \ MODEL_FILE\n                        Model file name. Note: it will be located\
-      \ in the\n                        output directory. (default: model)\n  -e N_ITER,\
-      \ --n-iter N_ITER\n                        Number of randomly generated hyper\
-      \ parameter\n                        configurations tried during the discriminative\
-      \ model\n                        optimization. A value of 1 implies using the\
-      \ estimator\n                        default values. (default: 20)\n  --n-inner-iter-estimator\
-      \ N_INNER_ITER_ESTIMATOR\n                        Number of randomly generated\
-      \ hyper parameter\n                        configurations tried for the estimator\
-      \ for each\n                        parameter configuration of the pre-processor\
-      \ and\n                        vectorizer during optimization. (default: 5)\n\
-      \  --n-active-learning-iterations N_ACTIVE_LEARNING_ITERATIONS\n           \
-      \             Number of iterations in the active learning cycle. A\n       \
-      \                 value of 0 means to avoid active learning. (default:\n   \
-      \                     0)\n  --size-positive SIZE_POSITIVE\n                \
-      \        Number of positive instances that have to be sampled\n            \
-      \            in the active learning cycle. A value of -1 means to\n        \
-      \                use all instances, i.e. not to use active learning for\n  \
-      \                      the positive instances. (default: -1)\n  --size-negative\
-      \ SIZE_NEGATIVE\n                        Number of negative instances that have\
-      \ to be sampled\n                        in the active learning cycle. A value\
-      \ of -1 means to\n                        use all instances, i.e. not to use\
-      \ active learning for\n                        the negative instances. (default:\
-      \ -1)\n  --lower-bound-threshold-positive LOWER_BOUND_THRESHOLD_POSITIVE\n \
-      \                       Value of the score threshold to determine when to\n\
-      \                        accept positive instances: positive instances with\
-      \ a\n                        score higher than the specified value will be accepted\n\
-      \                        as candidates. (default: -1)\n  --lower-bound-threshold-negative\
-      \ LOWER_BOUND_THRESHOLD_NEGATIVE\n                        Value of the score\
-      \ threshold to determine when to\n                        accept negative instances:\
-      \ negative instances with a\n                        score higher than the specified\
-      \ value will be accepted\n                        as candidates. (default: -1)\n\
-      \  --upper-bound-threshold-positive UPPER_BOUND_THRESHOLD_POSITIVE\n       \
-      \                 Value of the score threshold to determine when to\n      \
-      \                  accept positive instances: positive instances with a\n  \
-      \                      score lower than the specified value will be accepted\n\
-      \                        as candidates. (default: 1)\n  --upper-bound-threshold-negative\
-      \ UPPER_BOUND_THRESHOLD_NEGATIVE\n                        Value of the score\
-      \ threshold to determine when to\n                        accept negative instances:\
-      \ negative instances with a\n                        score lower than the specified\
-      \ value will be accepted\n                        as candidates. (default: 1)\n\
-      \  --fit-vectorizer      If set, activate the fitting procedure for the\n  \
-      \                      vectorizer on positive instances only. (default:\n  \
-      \                      False)\n  --max-total-time MAX_TOTAL_TIME\n         \
-      \               Maximal number of seconds for the duration of the\n        \
-      \                optimization phase. After that the procedure is\n         \
-      \               forcefully stopped. A value of -1 means no time limit.\n   \
-      \                     (default: -1)\n  --two-steps-optimization\n          \
-      \              If set, activate a refinement procedure anfter\n            \
-      \            n_iter/2 steps that samples only among the parameters\n       \
-      \                 that have previously improved the results. (default:\n   \
-      \                     False)\n  --scoring {accuracy,roc_auc,average_precision,f1,f1_micro,f1_macro,f1_weighted,f1_samples,log_loss,precision,recall}\n\
-      \                        The scoring strategy for evaluating in cross\n    \
-      \                    validation the quality of a hyper parameter\n         \
-      \               combination. (default: roc_auc)\n  --cv CV               Cross\
-      \ validation size. (default: 10)\n  -B NBITS, --nbits NBITS\n              \
-      \          Number of bits used to express the graph kernel\n               \
-      \         features. A value of 20 corresponds to 2**20=1 million\n         \
-      \               possible features. (default: 20)\n  -r RANDOM_STATE, --random-state\
-      \ RANDOM_STATE\n                        Random seed. (default: 1)\n\nParallelization:\n\
-      \  These options define the granularity of the multicore parallelization.\n\n\
-      \  -j N_JOBS, --n-jobs N_JOBS\n                        Number of cores to use\
-      \ in multiprocessing. (default:\n                        2)\n  -b N_BLOCKS,\
-      \ --n-blocks N_BLOCKS\n                        Number of blocks in which to\
-      \ divide the input for the\n                        multiprocessing elaboration.\
-      \ (default: 8)\n  -k BLOCK_SIZE, -block-size BLOCK_SIZE\n                  \
-      \      Number of instances per block for the multiprocessing\n             \
-      \           elaboration. (default: None)\n  --pre-processor-n-jobs PRE_PROCESSOR_N_JOBS\n\
-      \                        Number of cores to use in multiprocessing. (default:\n\
-      \                        4)\n  --pre-processor-n-blocks PRE_PROCESSOR_N_BLOCKS\n\
-      \                        Number of blocks in which to divide the input for the\n\
-      \                        multiprocessing elaboration. (default: 10)\n  --pre-processor-block-size\
-      \ PRE_PROCESSOR_BLOCK_SIZE\n                        Number of instances per\
-      \ block for the multiprocessing\n                        elaboration. (default:\
-      \ None)\n"
+    help_text: "usage: model matrix [-h] -i INPUT_FILE [-m MODEL_FILE] [-o OUTPUT_DIR_PATH]\n\
+      \                    [-t {text,numpy,MatrixMarket,joblib}]\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  -i INPUT_FILE, --input-file\
+      \ INPUT_FILE\n                        Path to file containing input. (default:\
+      \ None)\n  -m MODEL_FILE, --model-file MODEL_FILE\n                        Path\
+      \ to a fit model file. (default: model)\n  -o OUTPUT_DIR_PATH, --output-dir\
+      \ OUTPUT_DIR_PATH\n                        Path to output directory. (default:\
+      \ out)\n  -t {text,numpy,MatrixMarket,joblib}, --output-format {text,numpy,MatrixMarket,joblib}\n\
+      \                        Output file format. (default: MatrixMarket)\n"
     generated_using: &id002
     - --help
   - !Command
+    command:
+    - model
+    - commands
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: model
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -x
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: ''
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "/usr/local/lib/python2.7/site-packages/sklearn/cross_validation.py:41:\
+      \ DeprecationWarning: This module was deprecated in version 0.18 in favor of\
+      \ the model_selection module into which all the refactored classes and functions\
+      \ are moved. Also note that the interface of the new CV iterators are different\
+      \ from that of this module. This module will be removed in 0.20.\n  \"This module\
+      \ will be removed in 0.20.\", DeprecationWarning)\n/usr/local/lib/python2.7/site-packages/sklearn/grid_search.py:42:\
+      \ DeprecationWarning: This module was deprecated in version 0.18 in favor of\
+      \ the model_selection module into which all the refactored classes and functions\
+      \ are moved. This module will be removed in 0.20.\n  DeprecationWarning)\nusage:\
+      \ model [-h] [--version] [-v] [-x]\n             {fit,estimate,predict,matrix,feature}\
+      \ ...\nmodel: error: invalid choice: 'commands' (choose from 'fit', 'estimate',\
+      \ 'predict', 'matrix', 'feature')\n"
+    generated_using: *id002
+  - *id003
+  - !Command
+    command:
+    - model
+    - predict
     positional: []
     named:
     - !Flag
-      description: 'Path tofile containing input for the positive class. (default:
-        None)'
+      description: 'Path to file containing input. (default: None)'
+      synonyms:
+      - -i
+      - --input-file
+      args: !SimpleFlagArg
+        name: INPUT_FILE
+      optional: true
+    - !Flag
+      description: 'Path to a fit model file. (default: model)'
+      synonyms:
+      - -m
+      - --model-file
+      args: !SimpleFlagArg
+        name: MODEL_FILE
+      optional: true
+    - !Flag
+      description: "Path to output directory. (default: out)\n"
+      synonyms:
+      - -o
+      - --output-dir
+      args: !SimpleFlagArg
+        name: OUTPUT_DIR_PATH
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: model predict [-h] -i INPUT_FILE [-m MODEL_FILE] [-o OUTPUT_DIR_PATH]\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -i INPUT_FILE, --input-file INPUT_FILE\n                        Path to file\
+      \ containing input. (default: None)\n  -m MODEL_FILE, --model-file MODEL_FILE\n\
+      \                        Path to a fit model file. (default: model)\n  -o OUTPUT_DIR_PATH,\
+      \ --output-dir OUTPUT_DIR_PATH\n                        Path to output directory.\
+      \ (default: out)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - model
+    - estimate
+    positional: []
+    named:
+    - !Flag
+      description: "Path tofile containing input for the positive class.\n(default:\
+        \ None)"
       synonyms:
       - -p
       - --positive-input-file
@@ -422,8 +252,8 @@ parent: &id001 !Command
         name: POSITIVE_INPUT_FILE
       optional: true
     - !Flag
-      description: 'Path to file containing input for the negative class. (default:
-        None)'
+      description: "Path to file containing input for the negative class.\n(default:\
+        \ None)"
       synonyms:
       - -n
       - --negative-input-file
@@ -447,18 +277,16 @@ parent: &id001 !Command
         name: OUTPUT_DIR_PATH
       optional: true
     - !Flag
-      description: "If set, report cross validated performance measures. The model's\
-        \ parameters are re-trained in each fold keeping the hyper-parameters of the\
-        \ given model. (default: False)"
+      description: "If set, report cross validated performance measures.\nThe model's\
+        \ parameters are re-trained in each fold\nkeeping the hyper-parameters of\
+        \ the given model.\n(default: False)\n"
       synonyms:
       - --cross-validation
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - model
-    - estimate
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -484,119 +312,7 @@ parent: &id001 !Command
       \          keeping the hyper-parameters of the given model.\n              \
       \          (default: False)\n"
     generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'Path to file containing input. (default: None)'
-      synonyms:
-      - -i
-      - --input-file
-      args: !SimpleFlagArg
-        name: INPUT_FILE
-      optional: true
-    - !Flag
-      description: 'Path to a fit model file. (default: model)'
-      synonyms:
-      - -m
-      - --model-file
-      args: !SimpleFlagArg
-        name: MODEL_FILE
-      optional: true
-    - !Flag
-      description: 'Path to output directory. (default: out)'
-      synonyms:
-      - -o
-      - --output-dir
-      args: !SimpleFlagArg
-        name: OUTPUT_DIR_PATH
-      optional: true
-    command:
-    - model
-    - predict
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: model predict [-h] -i INPUT_FILE [-m MODEL_FILE] [-o OUTPUT_DIR_PATH]\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  -i INPUT_FILE, --input-file INPUT_FILE\n                        Path to file\
-      \ containing input. (default: None)\n  -m MODEL_FILE, --model-file MODEL_FILE\n\
-      \                        Path to a fit model file. (default: model)\n  -o OUTPUT_DIR_PATH,\
-      \ --output-dir OUTPUT_DIR_PATH\n                        Path to output directory.\
-      \ (default: out)\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'Path to file containing input. (default: None)'
-      synonyms:
-      - -i
-      - --input-file
-      args: !SimpleFlagArg
-        name: INPUT_FILE
-      optional: true
-    - !Flag
-      description: 'Path to a fit model file. (default: model)'
-      synonyms:
-      - -m
-      - --model-file
-      args: !SimpleFlagArg
-        name: MODEL_FILE
-      optional: true
-    - !Flag
-      description: 'Path to output directory. (default: out)'
-      synonyms:
-      - -o
-      - --output-dir
-      args: !SimpleFlagArg
-        name: OUTPUT_DIR_PATH
-      optional: true
-    - !Flag
-      description: 'Output file format. (default: MatrixMarket)'
-      synonyms:
-      - -t
-      - --output-format
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? joblib
-          ? MatrixMarket
-          ? text
-          ? numpy
-      optional: true
-    command:
-    - model
-    - matrix
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: model matrix [-h] -i INPUT_FILE [-m MODEL_FILE] [-o OUTPUT_DIR_PATH]\n\
-      \                    [-t {text,numpy,MatrixMarket,joblib}]\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n  -i INPUT_FILE, --input-file\
-      \ INPUT_FILE\n                        Path to file containing input. (default:\
-      \ None)\n  -m MODEL_FILE, --model-file MODEL_FILE\n                        Path\
-      \ to a fit model file. (default: model)\n  -o OUTPUT_DIR_PATH, --output-dir\
-      \ OUTPUT_DIR_PATH\n                        Path to output directory. (default:\
-      \ out)\n  -t {text,numpy,MatrixMarket,joblib}, --output-format {text,numpy,MatrixMarket,joblib}\n\
-      \                        Output file format. (default: MatrixMarket)\n"
-    generated_using: *id002
-  - *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -635,6 +351,7 @@ parent: &id001 !Command
     \ on Machine\nLearning. 2010. \n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

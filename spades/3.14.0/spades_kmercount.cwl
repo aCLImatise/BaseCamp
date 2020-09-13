@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../spades_kmercount.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: K-mer length
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: dataset
+- id: in_dataset
   doc: Dataset description (in YAML), input files ignored
   type: string
   inputBinding:
     prefix: --dataset
-- id: threads
+- id: in_threads
   doc: '# of threads to use'
   type: string
   inputBinding:
     prefix: --threads
-- id: workdir
+- id: in_workdir
   doc: Working directory to use
-  type: string
+  type: Directory
   inputBinding:
     prefix: --workdir
-- id: bufsize
+- id: in_bufsize
   doc: Sorting buffer size, per thread
-  type: string
+  type: long
   inputBinding:
     prefix: --bufsize
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - spades-kmercount

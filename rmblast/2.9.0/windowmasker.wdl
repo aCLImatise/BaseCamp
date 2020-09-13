@@ -4,4 +4,7 @@ task Windowmasker {
   command <<<
     windowmasker
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

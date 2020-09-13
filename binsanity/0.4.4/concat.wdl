@@ -5,7 +5,7 @@ task Concat {
     Boolean? specify_directory_where
     Boolean? specify_extension_alignments
     Boolean? prefix
-    Boolean? specify_output_file
+    File? specify_output_file
     Boolean? specify_minimum_number
     String extension
     String linker
@@ -14,11 +14,11 @@ task Concat {
     concat \
       ~{extension} \
       ~{linker} \
-      ~{true="-f" false="" specify_directory_where} \
-      ~{true="-e" false="" specify_extension_alignments} \
-      ~{true="--Prefix" false="" prefix} \
-      ~{true="-o" false="" specify_output_file} \
-      ~{true="-N" false="" specify_minimum_number}
+      ~{if (specify_directory_where) then "-f" else ""} \
+      ~{if (specify_extension_alignments) then "-e" else ""} \
+      ~{if (prefix) then "--Prefix" else ""} \
+      ~{if (specify_output_file) then "-o" else ""} \
+      ~{if (specify_minimum_number) then "-N" else ""}
   >>>
   parameter_meta {
     specify_directory_where: "Specify directory where alignments are"
@@ -28,5 +28,9 @@ task Concat {
     specify_minimum_number: "Specify the minimum number of sequences needed to be included in concatenation"
     extension: ""
     linker: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_specify_output_file = "${in_specify_output_file}"
   }
 }

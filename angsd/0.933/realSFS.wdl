@@ -4,4 +4,7 @@ task RealSFS {
   command <<<
     realSFS
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

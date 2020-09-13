@@ -23,8 +23,8 @@ task QpGraph {
       ~{if defined(use_nam_graph_dot) then ("-d " +  '"' + use_nam_graph_dot + '"') else ""} \
       ~{if defined(use_nam_oulier) then ("-x " +  '"' + use_nam_oulier + '"') else ""} \
       ~{if defined(use_val_lambda) then ("-l " +  '"' + use_val_lambda + '"') else ""} \
-      ~{true="-v" false="" print_version_exit} \
-      ~{true="-V" false="" toggle_verbose_mode}
+      ~{if (print_version_exit) then "-v" else ""} \
+      ~{if (toggle_verbose_mode) then "-V" else ""}
   >>>
   parameter_meta {
     use_val_z: "... use <val> as Z threshold."
@@ -37,5 +37,8 @@ task QpGraph {
     use_val_lambda: "... use <val> as lambda scale value."
     print_version_exit: "... print version and exit."
     toggle_verbose_mode: "... toggle verbose mode ON."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Acdtable {
   command <<<
     acdtable
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Cvbio {
   command <<<
     cvbio
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task PbsDecode {
   input {
-    String? start
-    String? end
+    Int? start
+    Int? end
     Boolean? discard_gaps
     String input_dot_bin
     String code_file
@@ -14,13 +14,16 @@ task PbsDecode {
       ~{code_file} \
       ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
       ~{if defined(end) then ("--end " +  '"' + end + '"') else ""} \
-      ~{true="--discard-gaps" false="" discard_gaps}
+      ~{if (discard_gaps) then "--discard-gaps" else ""}
   >>>
   parameter_meta {
-    start: "Decode only the subsequence starting at position <sidx>. Indexing starts with 1."
-    end: "Decode only the subsequence ending at position <eidx>. Indexing starts with 1."
-    discard_gaps: "Do not report gaps in the PBS.  "
+    start: "Decode only the subsequence starting at position <sidx>.\\nIndexing starts with 1."
+    end: "Decode only the subsequence ending at position <eidx>.\\nIndexing starts with 1."
+    discard_gaps: "Do not report gaps in the PBS."
     input_dot_bin: ""
     code_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

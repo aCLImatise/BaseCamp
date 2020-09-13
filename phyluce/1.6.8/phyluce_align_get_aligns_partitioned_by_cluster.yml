@@ -1,5 +1,17 @@
 !Command
-positional: []
+command:
+- phyluce_align_get_aligns_partitioned_by_cluster
+positional:
+- !Positional
+  description: --cluster-csv
+  position: 0
+  name: ALIGNMENTS
+  optional: false
+- !Positional
+  description: '[--input-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]'
+  position: 0
+  name: OUTPUT
+  optional: false
 named:
 - !Flag
   description: The directory containing the alignment files
@@ -28,13 +40,13 @@ named:
   - --input-format
   args: !ChoiceFlagArg
     choices: !!set
+      ? fasta
+      ? phylip
+      ? stockholm
       ? nexus
+      ? emboss
       ? clustal
       ? phylip-sequential
-      ? fasta
-      ? stockholm
-      ? emboss
-      ? phylip
       ? phylip-relaxed
   optional: true
 - !Flag
@@ -43,13 +55,13 @@ named:
   - --output-format
   args: !ChoiceFlagArg
     choices: !!set
+      ? fasta
+      ? phylip
+      ? stockholm
       ? nexus
+      ? emboss
       ? clustal
       ? phylip-sequential
-      ? fasta
-      ? stockholm
-      ? emboss
-      ? phylip
       ? phylip-relaxed
   optional: true
 - !Flag
@@ -65,8 +77,8 @@ named:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      ? WARN
       ? CRITICAL
+      ? WARN
       ? INFO
   optional: true
 - !Flag
@@ -76,10 +88,9 @@ named:
   args: !SimpleFlagArg
     name: LOG_PATH
   optional: true
-command:
-- phyluce_align_get_aligns_partitioned_by_cluster
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

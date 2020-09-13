@@ -4,4 +4,7 @@ task RegtoolsJunctions {
   command <<<
     regtools junctions
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

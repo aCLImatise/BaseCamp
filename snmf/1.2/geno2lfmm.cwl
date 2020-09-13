@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../geno2lfmm.cwl
 inputs:
-- id: input
+- id: in_input
   doc: --help
   type: File
   inputBinding:
     prefix: -input
-- id: output
+- id: in_output
   doc: --help.lfmm
   type: File
   inputBinding:
     prefix: -output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - geno2lfmm

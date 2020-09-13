@@ -4,4 +4,7 @@ task SepdRangerfusion {
   command <<<
     sepdRangerfusion
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

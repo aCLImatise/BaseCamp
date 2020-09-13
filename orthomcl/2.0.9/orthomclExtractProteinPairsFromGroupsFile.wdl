@@ -4,4 +4,7 @@ task OrthomclExtractProteinPairsFromGroupsFile {
   command <<<
     orthomclExtractProteinPairsFromGroupsFile
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

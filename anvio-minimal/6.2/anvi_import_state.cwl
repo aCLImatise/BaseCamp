@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../anvi_import_state.cwl
 inputs:
-- id: pan_or_profile_db
-  doc: Anvi'o pan or profile database (and even genes database in appropriate contexts).
+- id: in_pan_or_profile_db
+  doc: "Anvi'o pan or profile database (and even genes\ndatabase in appropriate contexts)."
   type: string
   inputBinding:
     prefix: --pan-or-profile-db
-- id: state
+- id: in_state
   doc: JSON serializable anvi'o state file.
-  type: string
+  type: File
   inputBinding:
     prefix: --state
-- id: name
-  doc: State name.
+- id: in_name
+  doc: "State name.\n"
   type: string
   inputBinding:
     prefix: --name
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - anvi-import-state

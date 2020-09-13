@@ -1,83 +1,86 @@
 class: CommandLineTool
 id: ../../../scanpy_find_variable_genes.cwl
 inputs:
-- id: input_format
-  doc: '[anndata|loom] Input object format.  [default: anndata]'
+- id: in_input_format
+  doc: "[anndata|loom]\nInput object format.  [default: anndata]"
   type: boolean
   inputBinding:
     prefix: --input-format
-- id: output_format
-  doc: '[anndata|loom|zarr] Output object format.  [default: anndata]'
+- id: in_output_format
+  doc: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
   type: boolean
   inputBinding:
     prefix: --output-format
-- id: zarr_chunk_size
-  doc: 'Chunk size for writing output in zarr format.  [default: 1000]'
+- id: in_zarr_chunk_size
+  doc: Chunk size for writing output in zarr
   type: long
   inputBinding:
     prefix: --zarr-chunk-size
-- id: export_mtx
-  doc: When specified, using it as prefix for exporting mtx files. If not empty and
-    not ending with "/" or "_", a "_" will be appended.
+- id: in_export_mtx
+  doc: "When specified, using it as prefix for\nexporting mtx files. If not empty\
+    \ and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
   type: File
   inputBinding:
     prefix: --export-mtx
-- id: show_obj
-  doc: '[stdout|stderr]      Print output object summary info to specified stream.'
+- id: in_show_obj
+  doc: "[stdout|stderr]      Print output object summary info to\nspecified stream."
   type: boolean
   inputBinding:
     prefix: --show-obj
-- id: mean_limits
-  doc: '... Cutoffs for the mean of expressionin the format of "-m min max".  [default:
-    0.0125, 3]'
+- id: in_mean_limits
+  doc: "...\nCutoffs for the mean of expressionin the\nformat of \"-m min max\". \
+    \ [default: 0.0125,\n3]"
   type: double
   inputBinding:
     prefix: --mean-limits
-- id: disp_limits
-  doc: '... Cutoffs for the dispersion of expressionin the format of "-d min max".  [default:
-    0.5, inf]'
+- id: in_disp_limits
+  doc: "...\nCutoffs for the dispersion of expressionin\nthe format of \"-d min max\"\
+    .  [default: 0.5,\ninf]"
   type: double
   inputBinding:
     prefix: --disp-limits
-- id: n_bins
-  doc: 'Number of bins for binning the mean gene expression.  [default: 20]'
+- id: in_n_bins
+  doc: Number of bins for binning the mean gene
   type: long
   inputBinding:
     prefix: --n-bins
-- id: n_top_genes
+- id: in_n_top_genes
   doc: Number of highly-variable genes to keep.
   type: long
   inputBinding:
     prefix: --n-top-genes
-- id: flavor
-  doc: '[seurat|cellranger] Choose the flavor for computing normalized dispersion.  [default:
-    seurat]'
+- id: in_flavor
+  doc: "[seurat|cellranger]\nChoose the flavor for computing normalized\ndispersion.\
+    \  [default: seurat]"
   type: boolean
   inputBinding:
     prefix: --flavor
-- id: subset
-  doc: When set, inplace subset to highly-variable genes, otherwise only flag highly-variable
-    genes.
+- id: in_subset
+  doc: "When set, inplace subset to highly-variable\ngenes, otherwise only flag highly-variable\n\
+    genes."
   type: boolean
   inputBinding:
     prefix: --subset
-- id: by_batch
-  doc: '... Find highly variable genes within each batch defined by <TEXT> then pool
-    and keep those found in at least <INTEGER> batches. [default: None, None]'
-  type: string
+- id: in_by_batch
+  doc: "...\nFind highly variable genes within each batch\ndefined by <TEXT> then\
+    \ pool and keep those\nfound in at least <INTEGER> batches.\n[default: None, None]"
+  type: long
   inputBinding:
     prefix: --by-batch
-- id: input_obj
-  doc: ''
+- id: in_format_dot
+  doc: '[default: 1000]'
   type: string
   inputBinding:
     position: 0
-- id: output_obj
-  doc: ''
+- id: in_expression_dot
+  doc: '[default: 20]'
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - scanpy-find-variable-genes

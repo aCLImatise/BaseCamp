@@ -4,4 +4,7 @@ task Pirs {
   command <<<
     pirs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

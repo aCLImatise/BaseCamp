@@ -2,13 +2,13 @@ version 1.0
 
 task HashTar {
   input {
-    String? tar_archive_filename
-    Boolean? force_archive_name
+    File? tar_archive_filename
+    Boolean? force_archive_eg
     Boolean? set_arc_offset
     Boolean? verbose_mode
     Boolean? index_directory_names
-    String? set_file_header
-    String? set_file_footer
+    File? set_file_header
+    File? set_file_footer
     Boolean? use_only_portion
     String? reads_lines_renames
     String? tar_file
@@ -17,18 +17,18 @@ task HashTar {
     hash_tar \
       ~{tar_file} \
       ~{if defined(tar_archive_filename) then ("-a " +  '"' + tar_archive_filename + '"') else ""} \
-      ~{true="-A" false="" force_archive_name} \
-      ~{true="-O" false="" set_arc_offset} \
-      ~{true="-v" false="" verbose_mode} \
-      ~{true="-d" false="" index_directory_names} \
+      ~{if (force_archive_eg) then "-A" else ""} \
+      ~{if (set_arc_offset) then "-O" else ""} \
+      ~{if (verbose_mode) then "-v" else ""} \
+      ~{if (index_directory_names) then "-d" else ""} \
       ~{if defined(set_file_header) then ("-h " +  '"' + set_file_header + '"') else ""} \
       ~{if defined(set_file_footer) then ("-f " +  '"' + set_file_footer + '"') else ""} \
-      ~{true="-b" false="" use_only_portion} \
+      ~{if (use_only_portion) then "-b" else ""} \
       ~{if defined(reads_lines_renames) then ("-m " +  '"' + reads_lines_renames + '"') else ""}
   >>>
   parameter_meta {
     tar_archive_filename: "Tar archive filename: use if reading from stdin"
-    force_archive_name: "Force no archive name (eg will concat to archive itself)"
+    force_archive_eg: "Force no archive name (eg will concat to archive itself)"
     set_arc_offset: "Set arc. offset to size of hash (use when prepending)"
     verbose_mode: "Verbose mode"
     index_directory_names: "Index directory names (useless?)"
@@ -37,5 +37,8 @@ task HashTar {
     use_only_portion: "Use only the filename portion of a pathname"
     reads_lines_renames: "Reads lines of 'old new' and renames entries before indexing."
     tar_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

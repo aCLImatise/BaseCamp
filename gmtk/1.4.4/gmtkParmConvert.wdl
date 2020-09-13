@@ -4,4 +4,7 @@ task GmtkParmConvert {
   command <<<
     gmtkParmConvert
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

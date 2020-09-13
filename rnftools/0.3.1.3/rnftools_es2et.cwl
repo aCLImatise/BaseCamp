@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../rnftools_es2et.cwl
 inputs:
-- id: es
-  doc: Input ES file (evaluated segments, - for standard input).
+- id: in_es
+  doc: "Input ES file (evaluated segments, - for standard\ninput)."
   type: File
   inputBinding:
     prefix: --es
-- id: et
-  doc: Output ET file (evaluated read tuples, - for standard output).
+- id: in_et
+  doc: "Output ET file (evaluated read tuples, - for standard\noutput).\n"
   type: File
   inputBinding:
     prefix: --et
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_et
+  doc: "Output ET file (evaluated read tuples, - for standard\noutput).\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_et)
 cwlVersion: v1.1
 baseCommand:
 - rnftools

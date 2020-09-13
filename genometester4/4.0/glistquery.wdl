@@ -10,10 +10,10 @@ task Glistquery {
     Boolean? query_file
     Boolean? seq_file
     Boolean? list_file
-    String? mismatch
-    String? perfect_match
-    String? min_freq
-    String? max_freq
+    Int? mismatch
+    Int? perfect_match
+    Int? min_freq
+    Int? max_freq
     Boolean? all
     Boolean? increase_debug_level
     String input_list
@@ -21,20 +21,20 @@ task Glistquery {
   command <<<
     glistquery \
       ~{input_list} \
-      ~{true="-stat" false="" stat} \
-      ~{true="-median" false="" median} \
+      ~{if (stat) then "-stat" else ""} \
+      ~{if (median) then "-median" else ""} \
       ~{if defined(distribution) then ("-distribution " +  '"' + distribution + '"') else ""} \
-      ~{true="-gc" false="" gc} \
-      ~{true="--query" false="" query} \
-      ~{true="--queryfile" false="" query_file} \
-      ~{true="--seqfile" false="" seq_file} \
-      ~{true="--listfile" false="" list_file} \
+      ~{if (gc) then "-gc" else ""} \
+      ~{if (query) then "--query" else ""} \
+      ~{if (query_file) then "--queryfile" else ""} \
+      ~{if (seq_file) then "--seqfile" else ""} \
+      ~{if (list_file) then "--listfile" else ""} \
       ~{if defined(mismatch) then ("--mismatch " +  '"' + mismatch + '"') else ""} \
       ~{if defined(perfect_match) then ("--perfectmatch " +  '"' + perfect_match + '"') else ""} \
       ~{if defined(min_freq) then ("--minfreq " +  '"' + min_freq + '"') else ""} \
       ~{if defined(max_freq) then ("--maxfreq " +  '"' + max_freq + '"') else ""} \
-      ~{true="-all" false="" all} \
-      ~{true="-D" false="" increase_debug_level}
+      ~{if (all) then "-all" else ""} \
+      ~{if (increase_debug_level) then "-D" else ""}
   >>>
   parameter_meta {
     stat: "- print statistics of the list file and exit"
@@ -52,5 +52,8 @@ task Glistquery {
     all: "- in case of mismatches prints all found words"
     increase_debug_level: "- increase debug level"
     input_list: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

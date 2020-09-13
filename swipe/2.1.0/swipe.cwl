@@ -1,132 +1,145 @@
 class: CommandLineTool
 id: ../../../swipe.cwl
 inputs:
-- id: db
+- id: in_db
   doc: sequence database base name (required)
   type: File
   inputBinding:
     prefix: --db
-- id: query
+- id: in_query
   doc: query sequence filename (stdin)
   type: File
   inputBinding:
     prefix: --query
-- id: matrix
+- id: in_matrix
   doc: score matrix name or filename (BLOSUM62)
-  type: string
+  type: File
   inputBinding:
     prefix: --matrix
-- id: penalty
+- id: in_penalty
   doc: penalty for nucleotide mismatch (-3)
-  type: string
+  type: long
   inputBinding:
     prefix: --penalty
-- id: reward
+- id: in_reward
   doc: reward for nucleotide match (1)
-  type: string
+  type: long
   inputBinding:
     prefix: --reward
-- id: gap_open
+- id: in_gap_open
   doc: gap open penalty (11)
-  type: string
+  type: long
   inputBinding:
     prefix: --gapopen
-- id: gap_extend
+- id: in_gap_extend
   doc: gap extension penalty (1)
-  type: string
+  type: long
   inputBinding:
     prefix: --gapextend
-- id: num_descriptions
+- id: in_num_descriptions
   doc: sequence descriptions to show (250)
-  type: string
+  type: long
   inputBinding:
     prefix: --num_descriptions
-- id: num_alignments
+- id: in_num_alignments
   doc: sequence alignments to show (100)
-  type: string
+  type: long
   inputBinding:
     prefix: --num_alignments
-- id: evalue
+- id: in_evalue
   doc: maximum expect value of sequences to show (10.0)
-  type: string
+  type: double
   inputBinding:
     prefix: --evalue
-- id: mine_value
+- id: in_mine_value
   doc: minimum expect value of sequences to show (0.0)
-  type: string
+  type: double
   inputBinding:
     prefix: --minevalue
-- id: min_score
+- id: in_min_score
   doc: minimum score of sequences to show (1)
-  type: string
+  type: long
   inputBinding:
     prefix: --min_score
-- id: max_score
+- id: in_max_score
   doc: maximum score of sequences to show (inf.)
-  type: string
+  type: long
   inputBinding:
     prefix: --max_score
-- id: num_threads
+- id: in_num_threads
   doc: number of threads to use [1-256] (1)
-  type: string
+  type: long
   inputBinding:
     prefix: --num_threads
-- id: out_fmt
+- id: in_out_fmt
   doc: output format [0,7-9=plain,xml,tsv,tsv+] (0)
-  type: string
+  type: long
   inputBinding:
     prefix: --outfmt
-- id: show_gis
+- id: in_show_gis
   doc: show gi numbers in results (no)
   type: boolean
   inputBinding:
     prefix: --show_gis
-- id: sym_type
+- id: in_sym_type
   doc: symbol type/translation [0-4] (1)
-  type: string
+  type: long
   inputBinding:
     prefix: --symtype
-- id: strand
+- id: in_strand
   doc: query strands to search [1-3] (3)
-  type: string
+  type: long
   inputBinding:
     prefix: --strand
-- id: query_gen_code
+- id: in_query_gen_code
   doc: query genetic code [1-23] (1)
-  type: string
+  type: long
   inputBinding:
     prefix: --query_gencode
-- id: db_gen_code
+- id: in_db_gen_code
   doc: database genetic code [1-23] (1)
-  type: string
+  type: long
   inputBinding:
     prefix: --db_gencode
-- id: taxid_list
+- id: in_taxid_list
   doc: taxid list filename (none)
   type: File
   inputBinding:
     prefix: --taxidlist
-- id: dump
+- id: in_dump
   doc: dump database [0-2=no,yes,split headers] (0)
-  type: string
+  type: long
   inputBinding:
     prefix: --dump
-- id: show_taxid
+- id: in_show_taxid
   doc: show taxid etc in results (no)
   type: boolean
   inputBinding:
     prefix: --show_taxid
-- id: out
+- id: in_out
   doc: output file (stdout)
   type: File
   inputBinding:
     prefix: --out
-- id: db_size
+- id: in_db_size
   doc: set effective database size (0)
-  type: string
+  type: long
   inputBinding:
     prefix: --dbsize
-outputs: []
+- id: in_two_two_one_dot
+  doc: 'Usage: swipe [OPTIONS]'
+  type: long
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: output file (stdout)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - swipe

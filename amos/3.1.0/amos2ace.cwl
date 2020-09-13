@@ -1,12 +1,20 @@
 class: CommandLineTool
 id: ../../../amos2ace.cwl
 inputs:
-- id: see_below
-  doc: (see below).
-  type: boolean
+- id: in_location_of_chromatograms
+  doc: Location of the chromatograms
+  type: string
   inputBinding:
-    prefix: -o
-outputs: []
+    prefix: -c
+- id: in_location_phd_directory
+  doc: Location of the PHD directory
+  type: Directory
+  inputBinding:
+    prefix: -p
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - amos2ace

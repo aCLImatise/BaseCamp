@@ -4,4 +4,7 @@ task RemovePairNo {
   command <<<
     RemovePairNo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

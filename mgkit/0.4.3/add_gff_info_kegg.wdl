@@ -1,7 +1,8 @@
 version 1.0
 
-task AddGffInfoKegg {
+task AddgffinfoKegg {
   input {
+    Boolean? verbose
     String? email
     Boolean? description
     Boolean? pathways
@@ -10,20 +11,25 @@ task AddGffInfoKegg {
     String? output_file
   }
   command <<<
-    add-gff-info kegg \
+    add_gff_info kegg \
       ~{input_file} \
       ~{output_file} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(email) then ("--email " +  '"' + email + '"') else ""} \
-      ~{true="--description" false="" description} \
-      ~{true="--pathways" false="" pathways} \
+      ~{if (description) then "--description" else ""} \
+      ~{if (pathways) then "--pathways" else ""} \
       ~{if defined(kegg_id) then ("--kegg-id " +  '"' + kegg_id + '"') else ""}
   >>>
   parameter_meta {
+    verbose: ""
     email: "Contact email  [required]"
     description: "Add Kegg description"
     pathways: "Add pathways ID involved"
-    kegg_id: "In which attribute the Kegg ID is stored (defaults to *gene_id*)"
+    kegg_id: "In which attribute the Kegg ID is stored (defaults to\\n*gene_id*)"
     input_file: ""
     output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

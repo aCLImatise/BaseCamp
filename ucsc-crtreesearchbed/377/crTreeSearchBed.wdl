@@ -6,21 +6,21 @@ task CrTreeSearchBed {
     String index_do_tcr
     String chrom
     String start
-    String end
   }
   command <<<
     crTreeSearchBed \
       ~{file_dot_bed} \
       ~{index_do_tcr} \
       ~{chrom} \
-      ~{start} \
-      ~{end}
+      ~{start}
   >>>
   parameter_meta {
     file_dot_bed: ""
     index_do_tcr: ""
     chrom: ""
     start: ""
-    end: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

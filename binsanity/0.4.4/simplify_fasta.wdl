@@ -1,17 +1,21 @@
 version 1.0
 
-task SimplifyFasta {
+task Simplifyfasta {
   input {
     Boolean? specify_name_input
-    Boolean? specify_name_output
+    File? specify_name_output
   }
   command <<<
-    simplify-fasta \
-      ~{true="-i" false="" specify_name_input} \
-      ~{true="-o" false="" specify_name_output}
+    simplify_fasta \
+      ~{if (specify_name_input) then "-i" else ""} \
+      ~{if (specify_name_output) then "-o" else ""}
   >>>
   parameter_meta {
     specify_name_input: "Specify the name of the input file"
     specify_name_output: "Specify the name for the output file"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_specify_name_output = "${in_specify_name_output}"
   }
 }

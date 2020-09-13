@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- gsort
+- GENOME
 positional:
 - !Positional
   description: ''
@@ -19,9 +22,8 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - --chromosomemappings
-  args: !SimpleFlagArg
-    name: CHROMOSOMEMAPPINGS
+  - --parent
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ''
@@ -33,13 +35,13 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - --parent
-  args: !EmptyFlagArg {}
+  - --chromosomemappings
+  args: !SimpleFlagArg
+    name: CHROMOSOMEMAPPINGS
   optional: true
-command:
-- gsort
-- GENOME
 parent: !Command
+  command:
+  - gsort
   positional: []
   named:
   - !Flag
@@ -67,11 +69,10 @@ parent: !Command
     - -p
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - gsort
   parent:
   subcommands:
   - *id001
+  usage: []
   help_flag: !Flag
     description: display this help and exit
     synonyms:
@@ -93,6 +94,7 @@ parent: !Command
   generated_using:
   - --help
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

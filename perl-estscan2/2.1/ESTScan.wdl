@@ -4,4 +4,7 @@ task ESTScan {
   command <<<
     ESTScan
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,44 +1,41 @@
 class: CommandLineTool
 id: ../../../filter_gff_overlap.cwl
 inputs:
-- id: size
-  doc: 'Size of the overlap that triggers the filter [default: 100]'
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_size
+  doc: "Size of the overlap that triggers the filter\n[default: 100]"
   type: long
   inputBinding:
     prefix: --size
-- id: sorted
-  doc: If the GFF file is sorted (all of a sequence annotations are contiguos and
-    sorted by strand) can use less memory, `sort -s -k 1,1 -k 7,7` can be used
+- id: in_sorted
+  doc: "If the GFF file is sorted (all of a sequence\nannotations are contiguos and\
+    \ sorted by\nstrand) can use less memory, `sort -s -k 1,1\n-k 7,7` can be used"
   type: boolean
   inputBinding:
     prefix: --sorted
-- id: choose_func
-  doc: Function to choose between two overlapping annotations
+- id: in_choose_func
+  doc: Function to choose between two overlapping
   type: string
   inputBinding:
     prefix: --choose-func
-- id: sort_attr
-  doc: '[bitscore|identity|length] Attribute to sort annotations before filtering
-    (default bitscore)  [default: bitscore]'
-  type: boolean
-  inputBinding:
-    prefix: --sort-attr
-- id: progress
+- id: in_progress
   doc: Shows Progress Bar
   type: boolean
   inputBinding:
     prefix: --progress
-- id: input_file
-  doc: ''
+- id: in_annotations
+  doc: -a, --sort-attr [bitscore|identity|length]
   type: string
   inputBinding:
     position: 0
-- id: output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - filter-gff

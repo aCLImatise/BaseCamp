@@ -1,6 +1,6 @@
 version 1.0
 
-task CfmPredict {
+task Cfmpredict {
   input {
     String input_smiles_or_inch_i
     String prob_thresh_for_prune
@@ -11,7 +11,7 @@ task CfmPredict {
     String apply_post_processing
   }
   command <<<
-    cfm-predict \
+    cfm_predict \
       ~{input_smiles_or_inch_i} \
       ~{prob_thresh_for_prune} \
       ~{param_filename} \
@@ -28,5 +28,8 @@ task CfmPredict {
     include_annotations: ""
     output_filename: ""
     apply_post_processing: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

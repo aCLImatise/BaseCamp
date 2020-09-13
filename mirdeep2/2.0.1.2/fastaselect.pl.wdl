@@ -1,7 +1,10 @@
 version 1.0
 
-task Fastaselect.pl.orig {
+task Fastaselectpl {
   command <<<
-    fastaselect.pl.orig
+    fastaselect_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

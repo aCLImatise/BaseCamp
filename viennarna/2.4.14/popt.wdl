@@ -1,17 +1,10 @@
 version 1.0
 
 task Popt {
-  input {
-    Boolean? s
-    String rna_sub_opt
-  }
   command <<<
-    popt \
-      ~{rna_sub_opt} \
-      ~{true="-s" false="" s}
+    popt
   >>>
-  parameter_meta {
-    s: ""
-    rna_sub_opt: ""
+  output {
+    File out_stdout = stdout()
   }
 }

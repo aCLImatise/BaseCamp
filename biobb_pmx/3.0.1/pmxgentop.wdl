@@ -2,9 +2,9 @@ version 1.0
 
 task Pmxgentop {
   input {
-    String? config
-    String? input_top_zip_path
-    String? output_top_zip_path
+    File? config
+    File? input_top_zip_path
+    File? output_top_zip_path
   }
   command <<<
     pmxgentop \
@@ -15,6 +15,10 @@ task Pmxgentop {
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
     input_top_zip_path: "Path to the input topology zip file"
-    output_top_zip_path: "Path to the output topology zip file"
+    output_top_zip_path: "Path to the output topology zip file\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_top_zip_path = "${in_output_top_zip_path}"
   }
 }

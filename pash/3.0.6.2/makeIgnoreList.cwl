@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../makeIgnoreList.cwl
 inputs:
-- id: i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
-- id: c
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -c
-- id: m
+- id: in_m
   doc: ''
   type: long
   inputBinding:
     prefix: -m
-outputs: []
+- id: in_c
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -c
+- id: in_o
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -o
+- id: in_i
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -i
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_o
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_o)
 cwlVersion: v1.1
 baseCommand:
 - makeIgnoreList

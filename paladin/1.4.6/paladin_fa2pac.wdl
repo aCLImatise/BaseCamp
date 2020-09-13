@@ -4,7 +4,7 @@ task PaladinFa2pac {
   input {
     Boolean? f
     String bwa
-    String fa_two_pac
+    Int fa_two_pac
     String in_dot_fast_a
     String? out_dot_prefix
   }
@@ -14,7 +14,7 @@ task PaladinFa2pac {
       ~{fa_two_pac} \
       ~{in_dot_fast_a} \
       ~{out_dot_prefix} \
-      ~{true="-f" false="" f}
+      ~{if (f) then "-f" else ""}
   >>>
   parameter_meta {
     f: ""
@@ -22,5 +22,8 @@ task PaladinFa2pac {
     fa_two_pac: ""
     in_dot_fast_a: ""
     out_dot_prefix: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

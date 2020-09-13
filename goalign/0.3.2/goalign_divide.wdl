@@ -2,9 +2,10 @@ version 1.0
 
 task GoalignDivide {
   input {
+    Boolean? prefix_output_files
     Boolean? out_fast_a
     String? divided_alignment_output
-    String? align
+    File? align
     Boolean? auto_detect
     Boolean? clustal
     Boolean? ignore_identical
@@ -16,30 +17,30 @@ task GoalignDivide {
     Boolean? phylip
     Int? seed
     Int? threads
-    String? flags
   }
   command <<<
     goalign divide \
-      ~{flags} \
-      ~{true="--out-fasta" false="" out_fast_a} \
+      ~{if (prefix_output_files) then "-o" else ""} \
+      ~{if (out_fast_a) then "--out-fasta" else ""} \
       ~{if defined(divided_alignment_output) then ("--output " +  '"' + divided_alignment_output + '"') else ""} \
       ~{if defined(align) then ("--align " +  '"' + align + '"') else ""} \
-      ~{true="--auto-detect" false="" auto_detect} \
-      ~{true="--clustal" false="" clustal} \
-      ~{true="--ignore-identical" false="" ignore_identical} \
-      ~{true="--input-strict" false="" input_strict} \
-      ~{true="--nexus" false="" nexus} \
-      ~{true="--no-block" false="" no_block} \
-      ~{true="--one-line" false="" one_line} \
-      ~{true="--output-strict" false="" output_strict} \
-      ~{true="--phylip" false="" phylip} \
+      ~{if (auto_detect) then "--auto-detect" else ""} \
+      ~{if (clustal) then "--clustal" else ""} \
+      ~{if (ignore_identical) then "--ignore-identical" else ""} \
+      ~{if (input_strict) then "--input-strict" else ""} \
+      ~{if (nexus) then "--nexus" else ""} \
+      ~{if (no_block) then "--no-block" else ""} \
+      ~{if (one_line) then "--one-line" else ""} \
+      ~{if (output_strict) then "--output-strict" else ""} \
+      ~{if (phylip) then "--phylip" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
+    prefix_output_files: ": is the prefix of output files"
     out_fast_a: "Output files in fasta format"
-    divided_alignment_output: "Divided alignment output files prefix (default \"prefix\")"
-    align: "Alignment input file (default \"stdin\")"
+    divided_alignment_output: "Divided alignment output files prefix (default \\\"prefix\\\")"
+    align: "Alignment input file (default \\\"stdin\\\")"
     auto_detect: "Auto detects input format (overrides -p, -x and -u)"
     clustal: "Alignment is in clustal? default fasta"
     ignore_identical: "Ignore duplicated sequences that have the same name and same sequences"
@@ -51,6 +52,8 @@ task GoalignDivide {
     phylip: "Alignment is in phylip? default fasta"
     seed: "Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)"
     threads: "Number of threads (default 1)"
-    flags: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

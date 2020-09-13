@@ -2,17 +2,17 @@ version 1.0
 
 task HclusterSg {
   input {
-    String? minimum_edge_weight
-    String? minimum_edge_density
-    String? maximum_size
-    String? output_file
+    Int? minimum_edge_weight
+    Float? minimum_edge_density
+    Int? maximum_size
+    File? output_file
     Boolean? only_find_hcluster
     Boolean? verbose_mode
-    String? breaking_edge_density
+    Float? breaking_edge_density
     Boolean? the_oncefailinactiveforever_mode
     Boolean? weight_resolution_for
     File? category_file
-    String? stringent_level_strictest
+    Int? stringent_level_strictest
   }
   command <<<
     hcluster_sg \
@@ -20,11 +20,11 @@ task HclusterSg {
       ~{if defined(minimum_edge_density) then ("-s " +  '"' + minimum_edge_density + '"') else ""} \
       ~{if defined(maximum_size) then ("-m " +  '"' + maximum_size + '"') else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
-      ~{true="-c" false="" only_find_hcluster} \
-      ~{true="-v" false="" verbose_mode} \
+      ~{if (only_find_hcluster) then "-c" else ""} \
+      ~{if (verbose_mode) then "-v" else ""} \
       ~{if defined(breaking_edge_density) then ("-b " +  '"' + breaking_edge_density + '"') else ""} \
-      ~{true="-O" false="" the_oncefailinactiveforever_mode} \
-      ~{true="-r" false="" weight_resolution_for} \
+      ~{if (the_oncefailinactiveforever_mode) then "-O" else ""} \
+      ~{if (weight_resolution_for) then "-r" else ""} \
       ~{if defined(category_file) then ("-C " +  '"' + category_file + '"') else ""} \
       ~{if defined(stringent_level_strictest) then ("-L " +  '"' + stringent_level_strictest + '"') else ""}
   >>>
@@ -40,5 +40,9 @@ task HclusterSg {
     weight_resolution_for: "weight resolution for '-O' [5]"
     category_file: "category file"
     stringent_level_strictest: "stringent level ('3' is the strictest) [2]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

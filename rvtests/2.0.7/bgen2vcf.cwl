@@ -1,72 +1,75 @@
 class: CommandLineTool
 id: ../../../bgen2vcf.cwl
 inputs:
-- id: in_bg_en
+- id: in_in_bg_en
   doc: ': Input BGEN File'
   type: boolean
   inputBinding:
     prefix: --inBgen
-- id: in_bg_en_sample
+- id: in_in_bg_en_sample
   doc: ': Input SAMPLE file for the BGEN File'
   type: boolean
   inputBinding:
     prefix: --inBgenSample
-- id: out
+- id: in_out
   doc: ': Output prefix'
   type: boolean
   inputBinding:
     prefix: --out
-- id: people_include_id
+- id: in_people_include_id
   doc: ': give IDs of people that will be included in study'
   type: boolean
   inputBinding:
     prefix: --peopleIncludeID
-- id: people_include_file
-  doc: ': from given file, set IDs of people that will be included in study'
+- id: in_people_include_file
+  doc: ": from given file, set IDs of people that will be\nincluded in study"
   type: boolean
   inputBinding:
     prefix: --peopleIncludeFile
-- id: people_exclude_id
+- id: in_people_exclude_id
   doc: ': give IDs of people that will be included in study'
   type: boolean
   inputBinding:
     prefix: --peopleExcludeID
-- id: people_exclude_file
-  doc: ': from given file, set IDs of people that will be included in study'
+- id: in_people_exclude_file
+  doc: ": from given file, set IDs of people that will be\nincluded in study"
   type: boolean
   inputBinding:
     prefix: --peopleExcludeFile
-- id: range_list
-  doc: ': Specify some ranges to use, please use chr:begin-end format.'
+- id: in_range_list
+  doc: ': Specify some ranges to use, please use chr:begin-end'
   type: boolean
   inputBinding:
     prefix: --rangeList
-- id: range_file
-  doc: ': Specify the file containing ranges, please use chr:begin-end format.'
-  type: boolean
-  inputBinding:
-    prefix: --rangeFile
-- id: site_file
-  doc: ': Specify the file containing site to extract, please use chr:pos format.'
+- id: in_site_file
+  doc: ": Specify the file containing site to extract, please use\nchr:pos format."
   type: boolean
   inputBinding:
     prefix: --siteFile
-- id: hide_varid
+- id: in_hide_varid
   doc: ': Do not output Variant ID (only output rsid)'
   type: boolean
   inputBinding:
     prefix: --hideVarId
-- id: hide_gt
+- id: in_hide_gt
   doc: ': Do not call genotypes by skipping the GT tag'
   type: boolean
   inputBinding:
     prefix: --hideGT
-- id: show_ds
+- id: in_show_ds
   doc: ': Calculate bi-allelic dosage using the DS tag'
   type: boolean
   inputBinding:
     prefix: --showDS
-outputs: []
+- id: in_format_dot
+  doc: '--rangeFile: Specify the file containing ranges, please use'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bgen2vcf

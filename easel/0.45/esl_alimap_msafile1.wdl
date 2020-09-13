@@ -1,14 +1,17 @@
 version 1.0
 
-task EslAlimapMsafile1 {
+task EslalimapMsafile1 {
   input {
-    String msa_file_two
+    Int msa_file_two
   }
   command <<<
-    esl-alimap msafile1 \
+    esl_alimap msafile1 \
       ~{msa_file_two}
   >>>
   parameter_meta {
     msa_file_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

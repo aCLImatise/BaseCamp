@@ -4,4 +4,7 @@ task ListSurrogates {
   command <<<
     listSurrogates
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

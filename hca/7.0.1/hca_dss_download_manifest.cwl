@@ -1,53 +1,56 @@
 class: CommandLineTool
 id: ../../../hca_dss_download_manifest.cwl
 inputs:
-- id: manifest
-  doc: The path to a TSV (tab-separated values) file listing files to download. If
-    the directory for download already contains the manifest, the manifest will be
-    overwritten to include a column with paths into the filestore.
-  type: string
+- id: in_manifest
+  doc: "The path to a TSV (tab-separated values) file listing files to download. If\
+    \ the directory\nfor download already contains the manifest, the manifest will\
+    \ be overwritten to include a column with paths\ninto the filestore."
+  type: File
   inputBinding:
     prefix: --manifest
-- id: replica
-  doc: 'The replica from which to download. The supported replicas are: aws for Amazon
-    Web Services, and gcp for Google Cloud Platform. [aws, gcp]'
+- id: in_replica
+  doc: "The replica from which to download. The supported replicas are: aws for Amazon\
+    \ Web\nServices, and gcp for Google Cloud Platform. [aws, gcp]"
   type: string
   inputBinding:
     prefix: --replica
-- id: layout
-  doc: The layout of the downloaded files. Currently two options are supported, 'none'
-    (the default), and 'bundle'.
+- id: in_layout
+  doc: "The layout of the downloaded files. Currently two options are supported, 'none'\
+    \ (the\ndefault), and 'bundle'."
   type: string
   inputBinding:
     prefix: --layout
-- id: no_metadata
+- id: in_no_metadata
   doc: Exclude metadata files. Cannot be set when --metadata-filter is also set.
   type: boolean
   inputBinding:
     prefix: --no-metadata
-- id: no_data
+- id: in_no_data
   doc: Exclude data files. Cannot be set when --data-filter is also set.
   type: boolean
   inputBinding:
     prefix: --no-data
-- id: num_retries
-  doc: The initial quota of download failures to accept before exiting due to failures.
-    The number of retries increase and decrease as file chucks succeed and fail.
-  type: string
+- id: in_num_retries
+  doc: "The initial quota of download failures to accept before exiting due to\nfailures.\
+    \ The number of retries increase and decrease as file chucks succeed and fail."
+  type: long
   inputBinding:
     prefix: --num-retries
-- id: min_delay_seconds
-  doc: The minimum number of seconds to wait in between retries for downloading any
-    file
+- id: in_min_delay_seconds
+  doc: "The minimum number of seconds to wait in between retries for downloading any\n\
+    file"
   type: long
   inputBinding:
     prefix: --min-delay-seconds
-- id: download_dir
-  doc: The directory into which to download
-  type: string
+- id: in_download_dir
+  doc: "The directory into which to download\n"
+  type: Directory
   inputBinding:
     prefix: --download-dir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

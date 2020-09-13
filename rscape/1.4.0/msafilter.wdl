@@ -2,26 +2,26 @@ version 1.0
 
 task Msafilter {
   input {
-    String? outdir
+    Directory? outdir
     Boolean? _be_verbose
-    String? window
-    String? slide
+    Int? window
+    Int? slide
     Boolean? one_msa
-    String? filter_seqs_xseqcons
-    String? _require_seqs_x_i_d_
-    String? require_seqs_x_i_d__x
-    String? t_start
-    String? tend
+    Float? filter_seqs_xseqcons
+    Float? var_6
+    Float? var_7
+    Int? t_start
+    Int? tend
     Boolean? consensus
-    String? sub_msa
-    String? n_seq_min
-    String? gap_thresh
-    String? mini_d
-    String? max_id
+    Int? sub_msa
+    Int? n_seq_min
+    Float? gap_thresh
+    Float? mini_d
+    Float? max_id
     String? in_format
-    String? out_msa
-    String? out_map
-    String? seed
+    File? out_msa
+    File? out_map
+    Int? seed
     Boolean? options
     String msa_file
   }
@@ -29,16 +29,16 @@ task Msafilter {
     msafilter \
       ~{msa_file} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
-      ~{true="-v" false="" _be_verbose} \
+      ~{if (_be_verbose) then "-v" else ""} \
       ~{if defined(window) then ("--window " +  '"' + window + '"') else ""} \
       ~{if defined(slide) then ("--slide " +  '"' + slide + '"') else ""} \
-      ~{true="--onemsa" false="" one_msa} \
+      ~{if (one_msa) then "--onemsa" else ""} \
       ~{if defined(filter_seqs_xseqcons) then ("-F " +  '"' + filter_seqs_xseqcons + '"') else ""} \
-      ~{if defined(_require_seqs_x_i_d_) then ("-I " +  '"' + _require_seqs_x_i_d_ + '"') else ""} \
-      ~{if defined(require_seqs_x_i_d__x) then ("-i " +  '"' + require_seqs_x_i_d__x + '"') else ""} \
+      ~{if defined(var_6) then ("-I " +  '"' + var_6 + '"') else ""} \
+      ~{if defined(var_7) then ("-i " +  '"' + var_7 + '"') else ""} \
       ~{if defined(t_start) then ("--tstart " +  '"' + t_start + '"') else ""} \
       ~{if defined(tend) then ("--tend " +  '"' + tend + '"') else ""} \
-      ~{true="--consensus" false="" consensus} \
+      ~{if (consensus) then "--consensus" else ""} \
       ~{if defined(sub_msa) then ("--submsa " +  '"' + sub_msa + '"') else ""} \
       ~{if defined(n_seq_min) then ("--nseqmin " +  '"' + n_seq_min + '"') else ""} \
       ~{if defined(gap_thresh) then ("--gapthresh " +  '"' + gap_thresh + '"') else ""} \
@@ -48,7 +48,7 @@ task Msafilter {
       ~{if defined(out_msa) then ("--outmsa " +  '"' + out_msa + '"') else ""} \
       ~{if defined(out_map) then ("--outmap " +  '"' + out_map + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     outdir: ": specify a directory for all output files"
@@ -57,8 +57,8 @@ task Msafilter {
     slide: ": window slide  [50]  (n>0)"
     one_msa: ": if file has more than one msa, analyze only the first one"
     filter_seqs_xseqcons: ": filter out seqs <x*seq_cons residues  (0<x<=1.0)"
-    _require_seqs_x_i_d_: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
-    require_seqs_x_i_d__x: ": require seqs to have >= <x> id  (0<=x<1.0)"
+    var_6: ": require seqs to have < <x> id  [1.0]  (0<x<=1.0)"
+    var_7: ": require seqs to have >= <x> id  (0<=x<1.0)"
     t_start: ": min alignment position to analyze [1..alen]  (n>0)"
     tend: ": max alignment position to analyze [1..alen]  (n>0)"
     consensus: ": analyze only consensus (seq_cons) positions"
@@ -73,5 +73,9 @@ task Msafilter {
     seed: ": set RNG seed to <n>. Use 0 for a random seed.  [42]  (n>=0)"
     options: ""
     msa_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

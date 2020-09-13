@@ -2,9 +2,9 @@ version 1.0
 
 task IsONclustWriteFastq {
   input {
-    String? clusters
-    String? fast_q
-    String? out_folder
+    File? clusters
+    File? fast_q
+    Directory? out_folder
     String? write_clusters_more
   }
   command <<<
@@ -15,9 +15,13 @@ task IsONclustWriteFastq {
       ~{if defined(write_clusters_more) then ("--N " +  '"' + write_clusters_more + '"') else ""}
   >>>
   parameter_meta {
-    clusters: "the file \"final_clusters.csv created by isONclust.\""
+    clusters: "the file \\\"final_clusters.csv created by isONclust.\\\""
     fast_q: "Input fastq file"
     out_folder: "Output folder"
     write_clusters_more: "Write out clusters with more or equal than N reads"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out_folder = "${in_out_folder}"
   }
 }

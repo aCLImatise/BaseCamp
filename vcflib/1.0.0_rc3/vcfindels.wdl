@@ -4,4 +4,7 @@ task Vcfindels {
   command <<<
     vcfindels
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

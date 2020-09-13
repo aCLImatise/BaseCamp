@@ -1,26 +1,26 @@
 version 1.0
 
-task TepidDiscover {
+task Tepiddiscover {
   input {
     Boolean? keep
     Boolean? deletions
     Boolean? insertions
     Boolean? strict
-    String? mask
-    String? discordant
-    String? proc
+    File? mask
+    File? discordant
+    Int? proc
     String? name
-    String? conc
-    String? split
+    File? conc
+    File? split
     String? te
     Boolean? se
   }
   command <<<
-    tepid-discover \
-      ~{true="--keep" false="" keep} \
-      ~{true="--deletions" false="" deletions} \
-      ~{true="--insertions" false="" insertions} \
-      ~{true="--strict" false="" strict} \
+    tepid_discover \
+      ~{if (keep) then "--keep" else ""} \
+      ~{if (deletions) then "--deletions" else ""} \
+      ~{if (insertions) then "--insertions" else ""} \
+      ~{if (strict) then "--strict" else ""} \
       ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""} \
       ~{if defined(discordant) then ("--discordant " +  '"' + discordant + '"') else ""} \
       ~{if defined(proc) then ("--proc " +  '"' + proc + '"') else ""} \
@@ -28,7 +28,7 @@ task TepidDiscover {
       ~{if defined(conc) then ("--conc " +  '"' + conc + '"') else ""} \
       ~{if defined(split) then ("--split " +  '"' + split + '"') else ""} \
       ~{if defined(te) then ("--te " +  '"' + te + '"') else ""} \
-      ~{true="--se" false="" se}
+      ~{if (se) then "--se" else ""}
   >>>
   parameter_meta {
     keep: "keep all intermediate files"
@@ -43,5 +43,8 @@ task TepidDiscover {
     split: "split reads bam file from yaha"
     te: "TE annotation bedfile"
     se: "Run in single-end mode"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

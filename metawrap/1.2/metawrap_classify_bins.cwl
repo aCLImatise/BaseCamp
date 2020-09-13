@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../metawrap_classify_bins.cwl
 inputs:
-- id: folder_bins_classified
+- id: in_folder_bins_classified
   doc: folder with the bins to be classified (in fasta format)
-  type: string
+  type: Directory
   inputBinding:
     prefix: -b
-- id: output_directory
+- id: in_output_directory
   doc: output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: -o
-- id: number_of_threads
+- id: in_number_of_threads
   doc: number of threads
   type: long
   inputBinding:
     prefix: -t
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory
+  doc: output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory)
 cwlVersion: v1.1
 baseCommand:
 - metawrap

@@ -4,4 +4,7 @@ task ArbProbe {
   command <<<
     arb_probe
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

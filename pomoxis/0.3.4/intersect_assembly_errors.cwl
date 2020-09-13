@@ -1,28 +1,36 @@
 class: CommandLineTool
 id: ../../../intersect_assembly_errors.cwl
 inputs:
-- id: reference_should_fasta
-  doc: reference, should be a fasta file. If correspondng bwa indices do not exist
-    they will be created. (required).
+- id: in_reference_should_fasta
+  doc: "reference, should be a fasta file. If correspondng bwa indices\ndo not exist\
+    \ they will be created. (required)."
   type: boolean
   inputBinding:
     prefix: -r
-- id: fasta_input_assemblies
+- id: in_fasta_assemblies_required
   doc: fasta input assemblies (required).
   type: boolean
   inputBinding:
     prefix: -i
-- id: alignment_threads_default
+- id: in_alignment_threads_default
   doc: 'alignment threads (default: 1).'
   type: boolean
   inputBinding:
     prefix: -t
-- id: output_directory_default
+- id: in_output_directory_default
   doc: 'output directory (default: compare_assm).'
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: -o
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory_default
+  doc: 'output directory (default: compare_assm).'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory_default)
 cwlVersion: v1.1
 baseCommand:
 - intersect_assembly_errors

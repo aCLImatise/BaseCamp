@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../createBackboneMFA.cwl
 inputs:
-- id: input_interval_file
+- id: in_input_interval_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: output_mfa_name
+- id: in_output_mfa_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - createBackboneMFA

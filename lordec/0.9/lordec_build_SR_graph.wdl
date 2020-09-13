@@ -1,7 +1,10 @@
 version 1.0
 
-task LordecBuildSRGraph {
+task LordecbuildSRgraph {
   command <<<
-    lordec-build-SR-graph
+    lordec_build_SR_graph
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

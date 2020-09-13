@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../ribosum2cc.cwl
 inputs:
-- id: ribo_sum_name
+- id: in_ribo_sum_name
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: ribo_sum_file
+- id: in_ribo_sum_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ribosum2cc

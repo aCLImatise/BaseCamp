@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../genometreetk_combine.cwl
 inputs:
-- id: support_type
+- id: in_support_type
   doc: 'type of support values to compute (default: average)'
   type: string
   inputBinding:
     prefix: --support_type
-- id: silent
+- id: in_silent
   doc: suppress output
   type: boolean
   inputBinding:
     prefix: --silent
-- id: bootstrap_tree
+- id: in_combine_support_values
+  doc: Combine all support values into a single tree.
+  type: string
+  inputBinding:
+    position: 0
+- id: in_bootstrap_tree
   doc: tree with bootstrap support values
   type: string
   inputBinding:
     position: 0
-- id: jk_marker_tree
+- id: in_jk_marker_tree
   doc: tree with jackknife marker support values
   type: string
   inputBinding:
     position: 1
-- id: jk_tax_a_tree
+- id: in_jk_tax_a_tree
   doc: tree with jackknife taxa support values
   type: string
   inputBinding:
     position: 2
-- id: output_tree
+- id: in_output_tree
   doc: output tree
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genometreetk

@@ -4,4 +4,7 @@ task PrepMat {
   command <<<
     prepMat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

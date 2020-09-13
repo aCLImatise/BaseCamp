@@ -4,4 +4,7 @@ task DumpLA {
   command <<<
     dumpLA
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

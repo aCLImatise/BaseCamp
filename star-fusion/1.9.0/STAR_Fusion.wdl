@@ -2,6 +2,9 @@ version 1.0
 
 task STARFusion {
   command <<<
-    STAR-Fusion
+    STAR_Fusion
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

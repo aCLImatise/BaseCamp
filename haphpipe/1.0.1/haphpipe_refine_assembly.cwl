@@ -1,82 +1,95 @@
 class: CommandLineTool
 id: ../../../haphpipe_refine_assembly.cwl
 inputs:
-- id: fq_one
-  doc: Fastq file with read 1
-  type: string
-  inputBinding:
-    prefix: --fq1
-- id: fq_two
-  doc: Fastq file with read 2
-  type: string
-  inputBinding:
-    prefix: --fq2
-- id: f_qu
-  doc: Fastq file with unpaired reads
-  type: string
-  inputBinding:
-    prefix: --fqU
-- id: ref_fa
-  doc: Assembly to refine
+- id: in_ref_fa
+  doc: '[--outdir OUTDIR]'
   type: string
   inputBinding:
     prefix: --ref_fa
-- id: outdir
+- id: in_fq_one
+  doc: Fastq file with read 1
+  type: long
+  inputBinding:
+    prefix: --fq1
+- id: in_fq_two
+  doc: Fastq file with read 2
+  type: long
+  inputBinding:
+    prefix: --fq2
+- id: in_f_qu
+  doc: Fastq file with unpaired reads
+  type: File
+  inputBinding:
+    prefix: --fqU
+- id: in_outdir
   doc: 'Output directory (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: max_step
+- id: in_max_step
   doc: 'Maximum number of refinement steps (default: 1)'
   type: long
   inputBinding:
     prefix: --max_step
-- id: subsample
+- id: in_subsample
   doc: Use a subsample of reads for refinement.
   type: string
   inputBinding:
     prefix: --subsample
-- id: seed
-  doc: Seed for random number generator (ignored if not subsampling).
-  type: string
+- id: in_seed
+  doc: "Seed for random number generator (ignored if not\nsubsampling)."
+  type: long
   inputBinding:
     prefix: --seed
-- id: sample_id
-  doc: 'Sample ID. Used as read group ID in BAM (default: sampleXX)'
+- id: in_sample_id
+  doc: "Sample ID. Used as read group ID in BAM (default:\nsampleXX)"
   type: string
   inputBinding:
     prefix: --sample_id
-- id: n_cpu
+- id: in_n_cpu
   doc: 'Number of CPUs to use (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --ncpu
-- id: x_mx
+- id: in_x_mx
   doc: 'Maximum heap size for Java VM, in GB. (default: 32)'
-  type: string
+  type: long
   inputBinding:
     prefix: --xmx
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'Do not delete temporary directory (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_tmp
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Append console output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Append console output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - haphpipe

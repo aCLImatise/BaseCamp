@@ -2,13 +2,13 @@ version 1.0
 
 task TaxmapperRun {
   input {
-    String? database
+    File? database
     Directory? folder
     String? reverse
-    String? suffix
+    Int? suffix
     Int? maximum_read_length
-    String? out
-    String? threads
+    Directory? out
+    Int? threads
   }
   command <<<
     taxmapper run \
@@ -24,9 +24,13 @@ task TaxmapperRun {
     database: "Database path for RAPseach database index"
     folder: "Folder with reads in fasta or fastq format"
     reverse: "Reads also contain reverse read, [default: True]"
-    suffix: "Suffix of paired end reads, [default: \"_R1,_R2\"]"
+    suffix: "Suffix of paired end reads, [default: \\\"_R1,_R2\\\"]"
     maximum_read_length: "Maximum read length"
-    out: "Output folder, [default: \"results\"]"
-    threads: "Number of threads, [default: 4]"
+    out: "Output folder, [default: \\\"results\\\"]"
+    threads: "Number of threads, [default: 4]\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
   }
 }

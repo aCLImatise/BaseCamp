@@ -1,100 +1,67 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - bolt
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - bolt
+  - call
   positional:
   - !Positional
     description: ''
     position: 0
     name: command
     optional: true
-  - !Positional
-    description: ''
-    position: 1
-    name: arguments...
+  named:
+  - !Flag
+    description: sample file path (*required)
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
     optional: true
-  named: []
-  command:
-  - bolt
-  - command
+  - !Flag
+    description: reference file path (*required)
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output path (*required)
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: number of threads to use
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
-  help_text: "command : command not found\n\n\nNAME:\n\tBolt - a bioinformatics tool\n\
-    \nUSAGE:\n\tbolt command [command options] [arguments...]\n\nCOMMANDS:\n\tcall\t\
-    call variant\n\tversion\tShows version\n\n"
-  generated_using: &id002
+  help_text: "\nUSAGE:\n\tbolt call [command options] [arguments...]\n\nCOMMAND OPTIONS:\n\
+    \t-b\tsample file path (*required)\n\t-r\treference file path (*required)\n\t\
+    -o\toutput path (*required)\n\t-t\tnumber of threads to use\n\n"
+  generated_using:
+  - -h
+usage: []
+help_flag: !Flag
+  description: ': command not found'
+  synonyms:
   - --help
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: command
-    optional: true
-  - !Positional
-    description: ''
-    position: 1
-    name: arguments...
-    optional: true
-  named: []
-  command:
-  - bolt
-  - command
-  parent: *id001
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "command : command not found\n\n\nNAME:\n\tBolt - a bioinformatics tool\n\
-    \nUSAGE:\n\tbolt command [command options] [arguments...]\n\nCOMMANDS:\n\tcall\t\
-    call variant\n\tversion\tShows version\n\n"
-  generated_using: *id002
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: bolt
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: command
-    optional: false
-  - !Positional
-    description: ''
-    position: 2
-    name: command
-    optional: true
-  - !Positional
-    description: ''
-    position: 3
-    name: arguments...
-    optional: true
-  named: []
-  command:
-  - bolt
-  - arguments...
-  parent: *id001
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "arguments... : command not found\n\n\nNAME:\n\tBolt - a bioinformatics\
-    \ tool\n\nUSAGE:\n\tbolt command [command options] [arguments...]\n\nCOMMANDS:\n\
-    \tcall\tcall variant\n\tversion\tShows version\n\n"
-  generated_using: *id002
-help_flag:
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "--help : command not found\n\n\nNAME:\n\tBolt - a bioinformatics tool\n\
   \nUSAGE:\n\tbolt command [command options] [arguments...]\n\nCOMMANDS:\n\tcall\t\
   call variant\n\tversion\tShows version\n\n"
-generated_using: *id002
+generated_using:
+- --help

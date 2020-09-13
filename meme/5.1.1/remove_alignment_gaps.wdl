@@ -1,17 +1,20 @@
 version 1.0
 
-task RemoveAlignmentGaps {
+task Removealignmentgaps {
   input {
     String species
     String alignment
   }
   command <<<
-    remove-alignment-gaps \
+    remove_alignment_gaps \
       ~{species} \
       ~{alignment}
   >>>
   parameter_meta {
     species: ""
     alignment: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,9 +2,9 @@ version 1.0
 
 task PhyluceProbeRemoveOverlappingProbesGivenConfig {
   input {
-    String? probes
-    String? config
-    String? output_probe_file
+    File? probes
+    File? config
+    File? output_probe_file
   }
   command <<<
     phyluce_probe_remove_overlapping_probes_given_config \
@@ -16,5 +16,9 @@ task PhyluceProbeRemoveOverlappingProbesGivenConfig {
     probes: "The input probe file"
     config: "The input conf file of probes names to remove"
     output_probe_file: "The output probe file to write"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_probe_file = "${in_output_probe_file}"
   }
 }

@@ -4,4 +4,7 @@ task CoverageTable {
   command <<<
     coverage_table
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

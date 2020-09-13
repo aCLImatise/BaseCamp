@@ -12,12 +12,15 @@ task PhmmerSeqdb {
       ~{p_hmmer} \
       ~{seq_file} \
       ~{seq_db} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     p_hmmer: ""
     seq_file: ""
     seq_db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

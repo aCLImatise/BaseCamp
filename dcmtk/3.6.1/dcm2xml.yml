@@ -1,4 +1,6 @@
 !Command
+command:
+- dcm2xml
 positional:
 - !Positional
   description: DICOM input filename to be converted
@@ -11,6 +13,12 @@ positional:
   name: xmlfile-out
   optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet               quiet mode, print no warnings and errors
   synonyms:
@@ -30,15 +38,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-level           [l]evel: string constant (fatal, error, warn,
-    info, debug, trace) use level l for the logger'
+  description: "--log-level           [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
   synonyms:
   - -ll
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-config          [f]ilename: string use config file f for the
-    logger'
+  description: "--log-config          [f]ilename: string\nuse config file f for the\
+    \ logger"
   synonyms:
   - -lc
   args: !EmptyFlagArg {}
@@ -79,20 +87,48 @@ named:
   - -ti
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dcm2xml
+- !Flag
+  description: --load-short          do not load very long values (default)
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output in DCMTK-specific format (default)
+  synonyms:
+  - -dtk
+  - --dcmtk-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output in Native DICOM Model format (part 19)
+  synonyms:
+  - -nat
+  - --native-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-element-name     do not write name of the DICOM data elements
+  synonyms:
+  - -Wn
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help                print this help text and exit --version             print
-    version information and exit --arguments           print expanded command line
-    arguments
+  description: --help                print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dcm2xml v3.6.1 2016-11-02 $\n\ndcm2xml: Convert DICOM file and\
   \ data set to XML\nusage: dcm2xml [options] dcmfile-in [xmlfile-out]\n\nparameters:\n\
   \  dcmfile-in                    DICOM input filename to be converted\n  xmlfile-out\
@@ -132,7 +168,7 @@ help_text: "$dcmtk: dcm2xml v3.6.1 2016-11-02 $\n\ndcm2xml: Convert DICOM file a
   \   add reference to document type definition (DTD)\n    +Xe   --embed-dtd-content\
   \   embed document type definition into XML document\n    +Xf   --use-dtd-file \
   \       [f]ilename: string\n                                use specified DTD file\
-  \ (only with +Xe)\n                                (default: /tmp/tmpqmdno0st/share/dcmtk/dcm2xml.dtd)\n\
+  \ (only with +Xe)\n                                (default: /usr/local/share/dcmtk/dcm2xml.dtd)\n\
   \    +Wn   --write-element-name  write name of the DICOM data elements (default)\n\
   \    -Wn   --no-element-name     do not write name of the DICOM data elements\n\
   \    +Wb   --write-binary-data   write binary data of OB and OW elements\n     \

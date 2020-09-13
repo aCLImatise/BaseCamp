@@ -6,12 +6,12 @@ task IvarConsensus {
     Boolean? minimum_frequency_threshold
     Boolean? minimum_depth_call
     Boolean? will_override_option
-    Boolean? n__character
-    Boolean? required_prefix_output
-    Boolean? aa
+    Boolean? _character_print
+    File? required_prefix_output
+    Int? var_6
+    Int? d
     Boolean? a
-    String? d
-    String? var_9
+    Boolean? aa
     String sam_tools
     String m_pile_up
     String input_dot_bam
@@ -21,30 +21,34 @@ task IvarConsensus {
       ~{sam_tools} \
       ~{m_pile_up} \
       ~{input_dot_bam} \
-      ~{true="-q" false="" minimum_quality_score} \
-      ~{true="-t" false="" minimum_frequency_threshold} \
-      ~{true="-m" false="" minimum_depth_call} \
-      ~{true="-k" false="" will_override_option} \
-      ~{true="-n" false="" n__character} \
-      ~{true="-p" false="" required_prefix_output} \
-      ~{true="-aa" false="" aa} \
-      ~{true="-A" false="" a} \
+      ~{if (minimum_quality_score) then "-q" else ""} \
+      ~{if (minimum_frequency_threshold) then "-t" else ""} \
+      ~{if (minimum_depth_call) then "-m" else ""} \
+      ~{if (will_override_option) then "-k" else ""} \
+      ~{if (_character_print) then "-n" else ""} \
+      ~{if (required_prefix_output) then "-p" else ""} \
+      ~{if defined(var_6) then ("-Q " +  '"' + var_6 + '"') else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
-      ~{if defined(var_9) then ("-Q " +  '"' + var_9 + '"') else ""}
+      ~{if (a) then "-A" else ""} \
+      ~{if (aa) then "-aa" else ""}
   >>>
   parameter_meta {
     minimum_quality_score: "Minimum quality score threshold to count base (Default: 20)"
-    minimum_frequency_threshold: "Minimum frequency threshold(0 - 1) to call consensus. (Default: 0) Frequently used thresholds | Description ---------------------------|------------ 0 | Majority or most common base 0.2 | Bases that make up atleast 20% of the depth at a position 0.5 | Strict or bases that make up atleast 50% of the depth at a position 0.9 | Strict or bases that make up atleast 90% of the depth at a position 1 | Identical or bases that make up 100% of the depth at a position. Will have highest ambiguities"
+    minimum_frequency_threshold: "Minimum frequency threshold(0 - 1) to call consensus. (Default: 0)\\nFrequently used thresholds | Description\\n---------------------------|------------\\n0 | Majority or most common base\\n0.2 | Bases that make up atleast 20% of the depth at a position\\n0.5 | Strict or bases that make up atleast 50% of the depth at a position\\n0.9 | Strict or bases that make up atleast 90% of the depth at a position\\n1 | Identical or bases that make up 100% of the depth at a position. Will have highest ambiguities"
     minimum_depth_call: "Minimum depth to call consensus(Default: 10)"
-    will_override_option: "If '-k' flag is added, regions with depth less than minimum depth will not be added to the consensus sequence. Using '-k' will override any option specified using -n "
-    n__character: "(N/-) Character to print in regions with less than minimum coverage(Default: N)"
+    will_override_option: "If '-k' flag is added, regions with depth less than minimum depth will not be added to the consensus sequence. Using '-k' will override any option specified using -n"
+    _character_print: "(N/-) Character to print in regions with less than minimum coverage(Default: N)"
     required_prefix_output: "(Required) Prefix for the output fasta file and quality file"
-    aa: ""
-    a: ""
+    var_6: ""
     d: ""
-    var_9: ""
+    a: ""
+    aa: ""
     sam_tools: ""
     m_pile_up: ""
     input_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_required_prefix_output = "${in_required_prefix_output}"
   }
 }

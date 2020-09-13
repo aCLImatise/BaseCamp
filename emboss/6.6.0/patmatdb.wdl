@@ -4,4 +4,7 @@ task Patmatdb {
   command <<<
     patmatdb
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

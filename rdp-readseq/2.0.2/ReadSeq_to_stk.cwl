@@ -1,23 +1,32 @@
 class: CommandLineTool
 id: ../../../ReadSeq_to_stk.cwl
 inputs:
-- id: header
-  doc: 'the header of the output file in case a differenet stk version, default is
-    # STOCKHOLM 1.0'
-  type: string
+- id: in_header
+  doc: "the header of the output file in case a differenet\nstk version, default is\
+    \ # STOCKHOLM 1.0"
+  type: File
   inputBinding:
     prefix: --header
-- id: remove_ref
-  doc: is set, do not write the GC reference sequences to output
+- id: in_remove_ref
+  doc: "is set, do not write the GC reference sequences to\noutput\n"
   type: boolean
   inputBinding:
     prefix: --removeref
-- id: usage
+- id: in_usage
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_header
+  doc: "the header of the output file in case a differenet\nstk version, default is\
+    \ # STOCKHOLM 1.0"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_header)
 cwlVersion: v1.1
 baseCommand:
 - ReadSeq

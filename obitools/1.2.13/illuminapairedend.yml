@@ -1,6 +1,59 @@
 !Command
+command:
+- illuminapairedend
 positional: []
 named:
+- !Flag
+  description: Set logging in debug mode
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: desactivate progress bar
+  synonyms:
+  - --without-progress-bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filename containing reverse solexa reads
+  synonyms:
+  - -r
+  - --reverse-reads
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Filename containing illumina index reads
+  synonyms:
+  - --index-file
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "input file is in sanger fastq nucleic format (standard\nfastq)"
+  synonyms:
+  - --sanger
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "input file is in fastq nucleic format produced by\nsolexa sequencer"
+  synonyms:
+  - --solexa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "input file is in fastq nucleic format produced by old\nsolexa sequencer"
+  synonyms:
+  - --illumina
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =#.###     minimum score for keeping aligment
+  synonyms:
+  - --score-min
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Output sequences in obitools fasta format
   synonyms:
@@ -14,8 +67,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output sequences in ecopcr database format (sequence records are not
-    printed on standard output)
+  description: "Output sequences in ecopcr database format (sequence\nrecords are\
+    \ not printed on standard output)"
   synonyms:
   - --ecopcrdb-output
   args: !SimpleFlagArg
@@ -27,11 +80,16 @@ named:
   - --uppercase
   args: !EmptyFlagArg {}
   optional: true
-command:
-- illuminapairedend
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: illuminapairedend [options]\n\n***********\n* Options *\n***********\n\

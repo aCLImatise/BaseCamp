@@ -2,9 +2,9 @@ version 1.0
 
 task ChromosomerSimulator {
   input {
-    String? gap_size
-    String? unplaced
-    String? prefix
+    Int? gap_size
+    Int? unplaced
+    File? prefix
   }
   command <<<
     chromosomer simulator \
@@ -16,5 +16,9 @@ task ChromosomerSimulator {
     gap_size: "the size of gaps between fragments on a chromosome"
     unplaced: "the number of unplaced fragments"
     prefix: "the prefix for output file names"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_prefix = "${in_prefix}"
   }
 }

@@ -1,95 +1,98 @@
 class: CommandLineTool
 id: ../../../subsample_bam.cwl
 inputs:
-- id: output_prefix
+- id: in_output_prefix
   doc: 'Output prefix (default: sub_sampled)'
   type: string
   inputBinding:
     prefix: --output_prefix
-- id: regions
+- id: in_regions
   doc: 'Only process given regions. (default: None)'
   type: string[]
   inputBinding:
     prefix: --regions
-- id: profile
-  doc: 'Stride in genomic coordinates for depth profile. (default: 1000)'
-  type: string
+- id: in_profile
+  doc: "Stride in genomic coordinates for depth profile.\n(default: 1000)"
+  type: long
   inputBinding:
     prefix: --profile
-- id: orientation
+- id: in_orientation
   doc: 'Sample only forward or reverse reads. (default: None)'
   type: string
   inputBinding:
     prefix: --orientation
-- id: threads
+- id: in_threads
   doc: 'Number of threads to use. (default: -1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: quality
+- id: in_quality
   doc: 'Filter reads by mean qscore. (default: None)'
   type: string
   inputBinding:
     prefix: --quality
-- id: accuracy
+- id: in_accuracy
   doc: 'Filter reads by accuracy. (default: None)'
   type: string
   inputBinding:
     prefix: --accuracy
-- id: coverage
-  doc: 'Filter reads by coverage (what fraction of the read aligns). (default: None)'
+- id: in_coverage
+  doc: "Filter reads by coverage (what fraction of the read\naligns). (default: None)"
   type: string
   inputBinding:
     prefix: --coverage
-- id: length
+- id: in_length
   doc: 'Filter reads by read length. (default: None)'
   type: long
   inputBinding:
     prefix: --length
-- id: any_fail
-  doc: 'Exit with an error if any region has insufficient coverage. (default: False)'
+- id: in_any_fail
+  doc: "Exit with an error if any region has insufficient\ncoverage. (default: False)"
   type: boolean
   inputBinding:
     prefix: --any_fail
-- id: all_fail
-  doc: 'Exit with an error if all regions have insufficient coverage. (default: False)'
+- id: in_all_fail
+  doc: "Exit with an error if all regions have insufficient\ncoverage. (default: False)"
   type: boolean
   inputBinding:
     prefix: --all_fail
-- id: patience
-  doc: 'Maximum iterations with no change in median coverage before aborting. (default:
-    5)'
-  type: string
+- id: in_patience
+  doc: "Maximum iterations with no change in median coverage\nbefore aborting. (default:\
+    \ 5)"
+  type: long
   inputBinding:
     prefix: --patience
-- id: stride
-  doc: 'Stride in genomic coordinates when searching for new reads. Smaller can lead
-    to more compact pileup. (default: 1000)'
-  type: string
+- id: in_stride
+  doc: "Stride in genomic coordinates when searching for new\nreads. Smaller can lead\
+    \ to more compact pileup.\n(default: 1000)"
+  type: long
   inputBinding:
     prefix: --stride
-- id: proportional
-  doc: 'Activate proportional sampling, thus keeping depth variations of the pileup.
-    (default: False)'
+- id: in_proportional
+  doc: "Activate proportional sampling, thus keeping depth\nvariations of the pileup.\
+    \ (default: False)"
   type: boolean
   inputBinding:
     prefix: --proportional
-- id: seed
-  doc: 'Random seed for proportional downsampling of reads. (default: None)'
+- id: in_seed
+  doc: "Random seed for proportional downsampling of reads.\n(default: None)\n"
   type: string
   inputBinding:
     prefix: --seed
-- id: bam
+- id: in_bam
   doc: input bam file.
   type: string
   inputBinding:
     position: 0
-- id: depth
+- id: in_depth
   doc: Target depth.
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - subsample_bam

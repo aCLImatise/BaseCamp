@@ -4,4 +4,7 @@ task CountMutations {
   command <<<
     countMutations
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

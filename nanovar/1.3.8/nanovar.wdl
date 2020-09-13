@@ -35,9 +35,9 @@ task Nanovar {
       ~{if defined(score) then ("--score " +  '"' + score + '"') else ""} \
       ~{if defined(homo) then ("--homo " +  '"' + homo + '"') else ""} \
       ~{if defined(hetero) then ("--hetero " +  '"' + hetero + '"') else ""} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--force" false="" force} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
       ~{if defined(mm) then ("--mm " +  '"' + mm + '"') else ""} \
@@ -47,16 +47,16 @@ task Nanovar {
       ~{if defined(hsb) then ("--hsb " +  '"' + hsb + '"') else ""}
   >>>
   parameter_meta {
-    data_type: "type of long-read data [ont] ont - Oxford Nanopore Technologies pacbio-clr - Pacific Biosciences CLR pacbio-ccs - Pacific Biosciences CCS"
-    filter_bed: "BED file with genomic regions to be excluded [None] (e.g. telomeres and centromeres) Either specify name of in-built  reference genome filter (i.e. hg38, hg19, mm10) or provide full  path to own BED file."
+    data_type: "type of long-read data [ont]\\nont - Oxford Nanopore Technologies\\npacbio-clr - Pacific Biosciences CLR\\npacbio-ccs - Pacific Biosciences CCS"
+    filter_bed: "BED file with genomic regions to be excluded [None]\\n(e.g. telomeres and centromeres) Either specify name of in-built\\nreference genome filter (i.e. hg38, hg19, mm10) or provide full\\npath to own BED file."
     min_cov: "minimum number of reads required to call a breakend [2]"
     min_len: "minimum length of SV to be detected [25]"
-    split_pct: "minimum percentage of unmapped bases within a long read  to be considered as a split-read. 0.05<=p<=0.50 [0.05]"
+    split_pct: "minimum percentage of unmapped bases within a long read\\nto be considered as a split-read. 0.05<=p<=0.50 [0.05]"
     min_align: "minimum alignment length for single alignment reads [200]"
     buffer: "nucleotide length buffer for SV breakend clustering [50]"
-    score: "score threshold for defining PASS/FAIL SVs in VCF [1.0] Default score 1.0 was estimated from simulated analysis. "
-    homo: "lower limit of a breakend read ratio to classify a homozygous state [0.75] (i.e. Any breakend with homo<=ratio<=1.00 is classified as homozygous)"
-    hetero: "lower limit of a breakend read ratio to classify a heterozygous state [0.35] (i.e. Any breakend with hetero<=ratio<homo is classified as heterozygous)"
+    score: "score threshold for defining PASS/FAIL SVs in VCF [1.0]\\nDefault score 1.0 was estimated from simulated analysis."
+    homo: "lower limit of a breakend read ratio to classify a homozygous state [0.75]\\n(i.e. Any breakend with homo<=ratio<=1.00 is classified as homozygous)"
+    hetero: "lower limit of a breakend read ratio to classify a heterozygous state [0.35]\\n(i.e. Any breakend with hetero<=ratio<homo is classified as heterozygous)"
     debug: "run in debug mode"
     force: "run full pipeline (i.e. do not skip index generation)"
     quiet: "hide verbose"
@@ -67,5 +67,8 @@ task Nanovar {
     mdb: "specify path to 'makeblastdb' executable"
     wmk: "specify path to 'windowmasker' executable"
     hsb: "specify path to 'hs-blastn' executable"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

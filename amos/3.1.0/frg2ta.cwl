@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../frg2ta.cwl
 inputs:
-- id: check
+- id: in_check
   doc: Prints out those seqnames that are shorter than MINSEQ
   type: boolean
   inputBinding:
     prefix: -check
-- id: min_seq
+- id: in_min_seq
   doc: sets MINSEQ.  Default is 64
   type: boolean
   inputBinding:
     prefix: -minseq
-- id: output_prefix
+- id: in_output_prefix
   doc: Output prefix
   type: string
   inputBinding:
     prefix: -o
-- id: filter
+- id: in_filter
   doc: filters the .frg file for sequences shorter than MINSEQ
   type: boolean
   inputBinding:
     prefix: -filter
-- id: no_qual
+- id: in_no_qual
   doc: doesnt create .qual file
   type: boolean
   inputBinding:
     prefix: -noqual
-- id: quali_dx
+- id: in_quali_dx
   doc: creates an index for the qual file [needed by cutAsm]
   type: boolean
   inputBinding:
     prefix: -qualidx
-- id: mates
+- id: in_mates
   doc: creates a .mates file indicating which sequences are mates
   type: boolean
   inputBinding:
     prefix: -mates
-- id: no_names
+- id: in_no_names
   doc: Uses Ids rather than trying to figure out seqnames
   type: boolean
   inputBinding:
     prefix: -nonames
-- id: prints_version_information
+- id: in_prints_version_information
   doc: Prints version information
   type: boolean
   inputBinding:
     prefix: -V
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - frg2ta

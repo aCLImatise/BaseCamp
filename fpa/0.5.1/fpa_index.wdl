@@ -12,6 +12,9 @@ task FpaIndex {
   >>>
   parameter_meta {
     filename: "Write index of mapping passing filter in path passed as parameter"
-    type: "Type of index, only reference read when it's query, target or both of them [default: both]  [possible values: query, target, both]"
+    type: "Type of index, only reference read when it's query, target or both of them [default:\\nboth]  [possible values: query, target, both]\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

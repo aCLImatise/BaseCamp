@@ -2,25 +2,28 @@ version 1.0
 
 task Timescorealn {
   input {
-    Boolean? options
-    String? test
-    String? ref
-    String? program
     String? o
+    String? program
+    String? ref
+    String? test
+    Boolean? options
   }
   command <<<
     timescorealn \
-      ~{true="-options" false="" options} \
-      ~{if defined(test) then ("-test " +  '"' + test + '"') else ""} \
-      ~{if defined(ref) then ("-ref " +  '"' + ref + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(program) then ("-program " +  '"' + program + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if defined(ref) then ("-ref " +  '"' + ref + '"') else ""} \
+      ~{if defined(test) then ("-test " +  '"' + test + '"') else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
-    options: ""
-    test: ""
-    ref: ""
-    program: ""
     o: ""
+    program: ""
+    ref: ""
+    test: ""
+    options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

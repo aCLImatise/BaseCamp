@@ -11,10 +11,10 @@ task JoinKUnitigsV3 {
     File? num_k_unit_igs_file
     Int? max_nodes_allowed
     Int? join_aggressive
-    String? output_file_superreadsoutput
+    File? output_file_superreadsoutput
     Int? threads
     String cmdline_parse
-    String input_file
+    File input_file
   }
   command <<<
     joinKUnitigs_v3 \
@@ -46,5 +46,9 @@ task JoinKUnitigsV3 {
     threads: "Number of threads (1)"
     cmdline_parse: ""
     input_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_superreadsoutput = "${in_output_file_superreadsoutput}"
   }
 }

@@ -4,4 +4,7 @@ task Mtnucratio {
   command <<<
     mtnucratio
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

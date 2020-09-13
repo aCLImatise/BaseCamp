@@ -4,4 +4,7 @@ task GeneAsm {
   command <<<
     gene_asm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

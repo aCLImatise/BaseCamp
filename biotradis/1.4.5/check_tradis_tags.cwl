@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../check_tradis_tags.cwl
 inputs:
-- id: b
-  doc: ''
-  type: File
+- id: in_bam_file_tradis
+  doc: ': bam file with tradis tags'
+  type: boolean
   inputBinding:
     prefix: -b
-- id: check_tags
+- id: in_check_tags
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - check_tradis_tags

@@ -1,33 +1,42 @@
 class: CommandLineTool
 id: ../../../bamtools_revert.cwl
 inputs:
-- id: in
+- id: in_in
   doc: the input BAM file [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: the output BAM file [stdout]
-  type: string
+  type: File
   inputBinding:
     prefix: -out
-- id: force_compression
-  doc: if results are sent to stdout (like when piping to another tool), default behavior
-    is to leave output uncompressed. Use this flag to override and force compression
+- id: in_force_compression
+  doc: "if results are sent to stdout\n(like when piping to another tool),\ndefault\
+    \ behavior is to leave output\nuncompressed. Use this flag to override\nand force\
+    \ compression"
   type: boolean
   inputBinding:
     prefix: -forceCompression
-- id: keep_duplicate
+- id: in_keep_duplicate
   doc: keep duplicates marked
   type: boolean
   inputBinding:
     prefix: -keepDuplicate
-- id: keep_qualities
-  doc: keep base qualities (do not replace with OQ contents)
+- id: in_keep_qualities
+  doc: "keep base qualities (do not\nreplace with OQ contents)"
   type: boolean
   inputBinding:
     prefix: -keepQualities
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: the output BAM file [stdout]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - bamtools

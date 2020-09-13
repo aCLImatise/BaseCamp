@@ -2,23 +2,24 @@ version 1.0
 
 task Coinfinder {
   input {
-    String? path_genepresenceabsencecsv_output
+    File? path_genepresenceabsencecsv_output
+    Boolean? or
     String? input_roar_y
     String? phylogeny
     String? associate
     String? dissociate
-    String? level
+    Float? level
     String? bonferroni
     String? no_correction
     String? fraction
     String? greater
     String? less
     String? two_tailed
-    String? num_cores
+    Int? num_cores
     String? verbose
     String? filter
-    String? up_fil_threshold
-    String? fil_threshold
+    Float? up_fil_threshold
+    Float? fil_threshold
     String? query
     String? test
     String? all
@@ -27,6 +28,7 @@ task Coinfinder {
   command <<<
     coinfinder \
       ~{if defined(path_genepresenceabsencecsv_output) then ("--input " +  '"' + path_genepresenceabsencecsv_output + '"') else ""} \
+      ~{if (or) then "-or-" else ""} \
       ~{if defined(input_roar_y) then ("--inputroary " +  '"' + input_roar_y + '"') else ""} \
       ~{if defined(phylogeny) then ("--phylogeny " +  '"' + phylogeny + '"') else ""} \
       ~{if defined(associate) then ("--associate " +  '"' + associate + '"') else ""} \
@@ -49,7 +51,8 @@ task Coinfinder {
       ~{if defined(prefix_output_files) then ("--output " +  '"' + prefix_output_files + '"') else ""}
   >>>
   parameter_meta {
-    path_genepresenceabsencecsv_output: "The path to the gene_presence_absence.csv output from Roary -or- The path of the Alpha-to-Beta file with (alpha)(TAB)(beta)"
+    path_genepresenceabsencecsv_output: "The path to the gene_presence_absence.csv output from Roary"
+    or: ""
     input_roar_y: "Set if -i is in the gene_presence_absence.csv format from Roary"
     phylogeny: "Phylogeny of Betas in Newick format (required)"
     associate: "Overlap; identify groups that tend to associate/co-occur (default)."
@@ -70,5 +73,9 @@ task Coinfinder {
     test: "Runs the test cases and exits."
     all: "Outputs all results, regardless of significance."
     prefix_output_files: "The prefix of all output files (default: coincident)."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_genepresenceabsencecsv_output = "${in_path_genepresenceabsencecsv_output}"
   }
 }

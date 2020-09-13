@@ -14,4 +14,7 @@ task BgtBcfidx {
     s: ""
     in_dot_bcf: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

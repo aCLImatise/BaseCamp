@@ -1,29 +1,32 @@
 class: CommandLineTool
 id: ../../../coverage_from_fastx.cwl
 inputs:
-- id: coverage
-  doc: 'Calculate fraction of reads required for this coverage. (default: None)'
+- id: in_coverage
+  doc: "Calculate fraction of reads required for this coverage.\n(default: None)"
   type: string
   inputBinding:
     prefix: --coverage
-- id: longest
-  doc: 'Use the longest reads when calculating fraction reads required for a given
-    coverage. (default: False)'
+- id: in_longest
+  doc: "Use the longest reads when calculating fraction reads\nrequired for a given\
+    \ coverage. (default: False)\n"
   type: boolean
   inputBinding:
     prefix: --longest
-- id: base_calls
+- id: in_base_calls
   doc: input fastx file.
   type: string
   inputBinding:
     position: 0
-- id: ref_len
-  doc: reference length (e.g. 4.8kb/mb/gb) or reference fastx from which to calculate
-    length.
+- id: in_ref_len
+  doc: "reference length (e.g. 4.8kb/mb/gb) or reference fastx\nfrom which to calculate\
+    \ length."
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - coverage_from_fastx

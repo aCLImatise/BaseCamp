@@ -14,4 +14,7 @@ task TiptoftInputFastq {
     tip_to_ft: ""
     input_dot_fast_q: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

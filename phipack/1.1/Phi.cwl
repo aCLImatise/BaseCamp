@@ -1,53 +1,56 @@
 class: CommandLineTool
 id: ../../../Phi.cwl
 inputs:
-- id: filename_fasta_format
+- id: in_filename_fasta_format
   doc: ': Filename = FASTA format'
   type: boolean
   inputBinding:
     prefix: -f
-- id: filename_strict_phylip
+- id: in_filename_strict_file
   doc: ': Filename = Strict phylip file'
   type: boolean
   inputBinding:
     prefix: -s
-- id: filename_relaxed_phylip
+- id: in_filename_relaxed_file
   doc: ': Filename = Relaxed phylip file'
   type: boolean
   inputBinding:
     prefix: -r
-- id: alignmenttype_dao_aaa
-  doc: ': AlignmentType = D|A|O where D=DNA A=AA and O=OTHER [default DNA]'
+- id: in_alignmenttype_dao_ddnaaaa
+  doc: ": AlignmentType = D|A|O where D=DNA\nA=AA and O=OTHER [default DNA]"
   type: boolean
   inputBinding:
     prefix: -t
-- id: p
+- id: in_p
   doc: ': [#] = PHI permutation test [default = FALSE, #=1000]'
   type: boolean
   inputBinding:
     prefix: -p
-- id: change_default_window
+- id: in_change_default_window
   doc: ': # = Change default window size [default w = 100]'
   type: boolean
   inputBinding:
     prefix: -w
-- id: report_statistics_nss
+- id: in_report_statistics_nss
   doc: ': Report other statistics (NSS and Max Chi^2) [default = FALSE]'
   type: boolean
   inputBinding:
     prefix: -o
-- id: _verbose
+- id: in__verbose
   doc: ': Verbose [default = FALSE]'
   type: boolean
   inputBinding:
     prefix: -v
-- id: g
-  doc: ': [i] = Print color (scaled) incompatibility matrix (graph.ppm) i - Image
-    only (no ticks...) [default = FALSE]'
+- id: in_print_color_scaled
+  doc: ": [i] = Print color (scaled) incompatibility matrix (graph.ppm)\ni - Image\
+    \ only (no ticks...) [default = FALSE]\n"
   type: boolean
   inputBinding:
     prefix: -g
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - Phi

@@ -11,4 +11,7 @@ task TripailleExpressionGetBiomaterialsTripal {
   parameter_meta {
     biomaterial_id: "A biomaterial entity ID"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

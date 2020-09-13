@@ -1,14 +1,17 @@
 version 1.0
 
-task FastaGrep {
+task Fastagrep {
   input {
-    String re
+    String copyright
   }
   command <<<
-    fasta-grep \
-      ~{re}
+    fasta_grep \
+      ~{copyright}
   >>>
   parameter_meta {
-    re: ""
+    copyright: "(2014) The Regents of the University of California."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

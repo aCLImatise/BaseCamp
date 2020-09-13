@@ -4,4 +4,7 @@ task Vcfsitesummarize {
   command <<<
     vcfsitesummarize
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

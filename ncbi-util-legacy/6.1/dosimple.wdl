@@ -4,4 +4,7 @@ task Dosimple {
   command <<<
     dosimple
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

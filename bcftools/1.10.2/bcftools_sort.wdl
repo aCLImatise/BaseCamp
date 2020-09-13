@@ -23,4 +23,8 @@ task BcftoolsSort {
     temp_dir: "temporary files [/tmp/bcftools-sort.XXXXXX]"
     file_dot_vcf: ""
   }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+  }
 }

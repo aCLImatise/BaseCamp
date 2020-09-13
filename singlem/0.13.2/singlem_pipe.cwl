@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../singlem_pipe.cwl
 inputs:
-- id: threads
-  doc: Use N threads.
+- id: in_sequences
+  doc: ) [sequence_file(s) ...]
   type: string
   inputBinding:
-    prefix: --threads
-- id: output_extras
-  doc: Output more detailed information in the OTU table.
+    prefix: --sequences
+- id: in_full_help
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --output_extras
-- id: assignment_method
-  doc: 'Specify taxonomic assignment method [default: pplacer].'
-  type: string
+    prefix: --full_help
+- id: in_quiet
+  doc: ''
+  type: boolean
   inputBinding:
-    prefix: --assignment_method
-outputs: []
+    prefix: --quiet
+- id: in_debug
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --debug
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - singlem

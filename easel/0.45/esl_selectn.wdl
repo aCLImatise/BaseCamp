@@ -1,17 +1,20 @@
 version 1.0
 
-task EslSelectn {
+task Eslselectn {
   input {
-    String? seed
+    Int? seed
     Boolean? options
   }
   command <<<
-    esl-selectn \
+    esl_selectn \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     seed: ": set random number generator's seed to <n>  [0]"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

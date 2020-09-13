@@ -2,8 +2,8 @@ version 1.0
 
 task ClanIndex {
   input {
-    Boolean? f
     Boolean? d
+    Boolean? f
     String? reference_file
     String? index_prefix
   }
@@ -11,13 +11,16 @@ task ClanIndex {
     clan_index \
       ~{reference_file} \
       ~{index_prefix} \
-      ~{true="-f" false="" f} \
-      ~{true="-d" false="" d}
+      ~{if (d) then "-d" else ""} \
+      ~{if (f) then "-f" else ""}
   >>>
   parameter_meta {
-    f: ""
     d: ""
+    f: ""
     reference_file: ""
     index_prefix: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

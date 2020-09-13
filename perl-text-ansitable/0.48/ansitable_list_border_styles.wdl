@@ -1,7 +1,10 @@
 version 1.0
 
-task AnsitableListBorderStyles {
+task Ansitablelistborderstyles {
   command <<<
-    ansitable-list-border-styles
+    ansitable_list_border_styles
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

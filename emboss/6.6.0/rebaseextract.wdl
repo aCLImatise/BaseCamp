@@ -4,4 +4,7 @@ task Rebaseextract {
   command <<<
     rebaseextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

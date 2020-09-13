@@ -1,22 +1,35 @@
 class: CommandLineTool
 id: ../../../lwp_download.cwl
 inputs:
-- id: a
+- id: in_a
   doc: ''
   type: boolean
   inputBinding:
     prefix: -a
-- id: url
+- id: in_more_options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -MORE_OPTIONS
+- id: in_options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -OPTIONS
+- id: in_url
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: l_path
+- id: in_l_path
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - lwp-download

@@ -1,7 +1,10 @@
 version 1.0
 
-task ObsCat {
+task Obscat {
   command <<<
-    obs-cat
+    obs_cat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

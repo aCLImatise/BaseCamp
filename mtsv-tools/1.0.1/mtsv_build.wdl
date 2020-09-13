@@ -1,15 +1,15 @@
 version 1.0
 
-task MtsvBuild {
+task Mtsvbuild {
   input {
     Boolean? include_flag_trigger
-    String? fast_a
-    String? sample_interval
-    String? index
+    File? fast_a
+    Int? sample_interval
+    File? index
   }
   command <<<
-    mtsv-build \
-      ~{true="-v" false="" include_flag_trigger} \
+    mtsv_build \
+      ~{if (include_flag_trigger) then "-v" else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if defined(sample_interval) then ("--sample-interval " +  '"' + sample_interval + '"') else ""} \
       ~{if defined(index) then ("--index " +  '"' + index + '"') else ""}
@@ -17,7 +17,10 @@ task MtsvBuild {
   parameter_meta {
     include_flag_trigger: "Include this flag to trigger debug-level logging."
     fast_a: "Path to FASTA database file."
-    sample_interval: "Sampling interval for index generation. Smaller = more memory usage, slightly  faster queries. Larger = less memory usage slightly slower queries. [default: 32]"
+    sample_interval: "Sampling interval for index generation. Smaller = more memory usage, slightly  faster queries. Larger = less\\nmemory usage slightly slower queries. [default: 32]"
     index: "Absolute path to mtsv index file."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

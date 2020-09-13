@@ -1,57 +1,65 @@
 class: CommandLineTool
 id: ../../../berokka.cwl
 inputs:
-- id: debug
+- id: in_debug
   doc: Debug info.
   type: boolean
   inputBinding:
     prefix: --debug
-- id: check
+- id: in_check
   doc: Check dependencies and exit.
   type: boolean
   inputBinding:
     prefix: --check
-- id: test
+- id: in_test
   doc: Run a small test and exit.
   type: boolean
   inputBinding:
     prefix: --test
-- id: force
+- id: in_force
   doc: Force overwite of existing.
   type: boolean
   inputBinding:
     prefix: --force
-- id: outdir
+- id: in_outdir
   doc: '[X]    Output folder [].'
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: read_len
+- id: in_read_len
   doc: '[N]   Approximate max read length [60000].'
   type: boolean
   inputBinding:
     prefix: --readlen
-- id: fuzz
+- id: in_fuzz
   doc: '[N]      Accept local alignment within --fuzz bp of global [5].'
   type: boolean
   inputBinding:
     prefix: --fuzz
-- id: keep_files
+- id: in_keep_files
   doc: Keep intermediate files.
   type: boolean
   inputBinding:
     prefix: --keepfiles
-- id: no_an_no
+- id: in_no_an_no
   doc: Don't annotate FASTA with circular=true.
   type: boolean
   inputBinding:
     prefix: --noanno
-- id: filter
-  doc: '[X]    Contaminants to remove [/tmp/tmpr6cxn_ij/db/controls.fna].'
+- id: in_filter
+  doc: '[X]    Contaminants to remove [/usr/local/db/controls.fna].'
   type: boolean
   inputBinding:
     prefix: --filter
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: '[X]    Output folder [].'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - berokka

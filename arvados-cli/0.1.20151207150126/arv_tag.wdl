@@ -1,7 +1,10 @@
 version 1.0
 
-task ArvTag {
+task Arvtag {
   command <<<
-    arv-tag
+    arv_tag
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

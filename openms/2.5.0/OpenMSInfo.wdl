@@ -4,4 +4,7 @@ task OpenMSInfo {
   command <<<
     OpenMSInfo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

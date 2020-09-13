@@ -4,4 +4,7 @@ task RNAforester {
   command <<<
     RNAforester
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

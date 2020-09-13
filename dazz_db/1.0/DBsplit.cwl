@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../DBsplit.cwl
 inputs:
-- id: a
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -a
-- id: x
+- id: in_x
   doc: ''
   type: boolean
   inputBinding:
     prefix: -x
-- id: int
+- id: in_a
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -a
+- id: in_int
   doc: ''
   type: long
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - DBsplit

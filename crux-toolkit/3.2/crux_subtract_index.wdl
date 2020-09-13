@@ -1,20 +1,20 @@
 version 1.0
 
-task CruxSubtractIndex {
+task CruxSubtractindex {
   input {
-    String tide_index_one
-    String tide_index_two
-    String output_index
+    Int tide_index_one
+    Int tide_index_two
   }
   command <<<
-    crux subtract-index \
+    crux subtract_index \
       ~{tide_index_one} \
-      ~{tide_index_two} \
-      ~{output_index}
+      ~{tide_index_two}
   >>>
   parameter_meta {
     tide_index_one: ""
     tide_index_two: ""
-    output_index: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task Readinfo2cam {
   input {
-    String contig_info_file
-    String? repeat_coord_file
+    File contig_info_file
+    File? repeat_coord_file
   }
   command <<<
     readinfo2cam \
@@ -13,5 +13,8 @@ task Readinfo2cam {
   parameter_meta {
     contig_info_file: ""
     repeat_coord_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

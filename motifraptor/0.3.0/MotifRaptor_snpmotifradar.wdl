@@ -2,9 +2,9 @@ version 1.0
 
 task MotifRaptorSnpmotifradar {
   input {
-    String? workdir
-    String? snp_motif_file
-    String? snp_feature_file
+    Directory? workdir
+    File? snp_motif_file
+    File? snp_feature_file
     String? snp_motif_id
   }
   command <<<
@@ -18,6 +18,9 @@ task MotifRaptorSnpmotifradar {
     workdir: "Working directory"
     snp_motif_file: "SNP motif pair-wise list File, usually from step2"
     snp_feature_file: "SNP feature file, usually from step2"
-    snp_motif_id: "SNP motif pair-wise ID"
+    snp_motif_id: "SNP motif pair-wise ID\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

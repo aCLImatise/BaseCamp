@@ -9,7 +9,7 @@ task SnpEff {
     String? input_format_default
     Boolean? file_list
     String? ouput_format_default
-    Boolean? stats_htmlstats_create
+    Boolean? stats_htmlstats_file
     Boolean? no_stats
     Boolean? fi
     Boolean? no_downstream
@@ -33,12 +33,12 @@ task SnpEff {
     Boolean? oic_r
     Boolean? sequence_ontology
     Boolean? config_specify_config
-    String? config_option
+    File? config_option
     Boolean? debug_debug_mode
     File? datadir
     Boolean? no_download
     Boolean? no_log
-    Boolean? use_threads_implies
+    Boolean? use_multiple_threads
     Boolean? quiet_quiet_mode
     Boolean? verbose_verbose_mode
     Boolean? version
@@ -46,7 +46,7 @@ task SnpEff {
     File? canon_list
     Boolean? interaction
     File? interval
-    String? max_tsl
+    Int? max_tsl
     Boolean? motif
     Boolean? next_prot
     Boolean? no_genome
@@ -70,67 +70,67 @@ task SnpEff {
     snpEff \
       ~{variants_file} \
       ~{if defined(chr) then ("-chr " +  '"' + chr + '"') else ""} \
-      ~{true="-classic" false="" classic} \
+      ~{if (classic) then "-classic" else ""} \
       ~{if defined(csv_stats) then ("-csvStats " +  '"' + csv_stats + '"') else ""} \
-      ~{true="-download" false="" download} \
+      ~{if (download) then "-download" else ""} \
       ~{if defined(input_format_default) then ("-i " +  '"' + input_format_default + '"') else ""} \
-      ~{true="-fileList" false="" file_list} \
+      ~{if (file_list) then "-fileList" else ""} \
       ~{if defined(ouput_format_default) then ("-o " +  '"' + ouput_format_default + '"') else ""} \
-      ~{true="-s" false="" stats_htmlstats_create} \
-      ~{true="-noStats" false="" no_stats} \
-      ~{true="-fi" false="" fi} \
-      ~{true="-no-downstream" false="" no_downstream} \
-      ~{true="-no-intergenic" false="" no_intergenic} \
-      ~{true="-no-intron" false="" no_intron} \
-      ~{true="-no-upstream" false="" no_upstream} \
-      ~{true="-no-utr" false="" no_utr} \
+      ~{if (stats_htmlstats_file) then "-s" else ""} \
+      ~{if (no_stats) then "-noStats" else ""} \
+      ~{if (fi) then "-fi" else ""} \
+      ~{if (no_downstream) then "-no-downstream" else ""} \
+      ~{if (no_intergenic) then "-no-intergenic" else ""} \
+      ~{if (no_intron) then "-no-intron" else ""} \
+      ~{if (no_upstream) then "-no-upstream" else ""} \
+      ~{if (no_utr) then "-no-utr" else ""} \
       ~{if defined(no) then ("-no " +  '"' + no + '"') else ""} \
-      ~{true="-cancer" false="" cancer} \
+      ~{if (cancer) then "-cancer" else ""} \
       ~{if defined(cancer_samples) then ("-cancerSamples " +  '"' + cancer_samples + '"') else ""} \
-      ~{true="-formatEff" false="" format_eff} \
-      ~{true="-geneId" false="" geneid} \
-      ~{true="-hgvs" false="" hgvs} \
-      ~{true="-hgvsOld" false="" hgv_sold} \
-      ~{true="-hgvs1LetterAa" false="" hgvs_one_letter_aa} \
-      ~{true="-hgvsTrId" false="" hgv_strid} \
-      ~{true="-lof" false="" l_of} \
-      ~{true="-noHgvs" false="" no_hgvs} \
-      ~{true="-noLof" false="" nol_of} \
-      ~{true="-noShiftHgvs" false="" no_shift_hgvs} \
-      ~{true="-oicr" false="" oic_r} \
-      ~{true="-sequenceOntology" false="" sequence_ontology} \
-      ~{true="-c" false="" config_specify_config} \
+      ~{if (format_eff) then "-formatEff" else ""} \
+      ~{if (geneid) then "-geneId" else ""} \
+      ~{if (hgvs) then "-hgvs" else ""} \
+      ~{if (hgv_sold) then "-hgvsOld" else ""} \
+      ~{if (hgvs_one_letter_aa) then "-hgvs1LetterAa" else ""} \
+      ~{if (hgv_strid) then "-hgvsTrId" else ""} \
+      ~{if (l_of) then "-lof" else ""} \
+      ~{if (no_hgvs) then "-noHgvs" else ""} \
+      ~{if (nol_of) then "-noLof" else ""} \
+      ~{if (no_shift_hgvs) then "-noShiftHgvs" else ""} \
+      ~{if (oic_r) then "-oicr" else ""} \
+      ~{if (sequence_ontology) then "-sequenceOntology" else ""} \
+      ~{if (config_specify_config) then "-c" else ""} \
       ~{if defined(config_option) then ("-configOption " +  '"' + config_option + '"') else ""} \
-      ~{true="-d" false="" debug_debug_mode} \
+      ~{if (debug_debug_mode) then "-d" else ""} \
       ~{if defined(datadir) then ("-dataDir " +  '"' + datadir + '"') else ""} \
-      ~{true="-nodownload" false="" no_download} \
-      ~{true="-noLog" false="" no_log} \
-      ~{true="-t" false="" use_threads_implies} \
-      ~{true="-q" false="" quiet_quiet_mode} \
-      ~{true="-v" false="" verbose_verbose_mode} \
-      ~{true="-version" false="" version} \
-      ~{true="-canon" false="" canon} \
+      ~{if (no_download) then "-nodownload" else ""} \
+      ~{if (no_log) then "-noLog" else ""} \
+      ~{if (use_multiple_threads) then "-t" else ""} \
+      ~{if (quiet_quiet_mode) then "-q" else ""} \
+      ~{if (verbose_verbose_mode) then "-v" else ""} \
+      ~{if (version) then "-version" else ""} \
+      ~{if (canon) then "-canon" else ""} \
       ~{if defined(canon_list) then ("-canonList " +  '"' + canon_list + '"') else ""} \
-      ~{true="-interaction" false="" interaction} \
+      ~{if (interaction) then "-interaction" else ""} \
       ~{if defined(interval) then ("-interval " +  '"' + interval + '"') else ""} \
       ~{if defined(max_tsl) then ("-maxTSL " +  '"' + max_tsl + '"') else ""} \
-      ~{true="-motif" false="" motif} \
-      ~{true="-nextProt" false="" next_prot} \
-      ~{true="-noGenome" false="" no_genome} \
-      ~{true="-noExpandIUB" false="" noexpand_iub} \
-      ~{true="-noInteraction" false="" no_interaction} \
-      ~{true="-noMotif" false="" no_motif} \
-      ~{true="-noNextProt" false="" no_next_prot} \
-      ~{true="-onlyReg" false="" only_reg} \
-      ~{true="-onlyProtein" false="" only_protein} \
+      ~{if (motif) then "-motif" else ""} \
+      ~{if (next_prot) then "-nextProt" else ""} \
+      ~{if (no_genome) then "-noGenome" else ""} \
+      ~{if (noexpand_iub) then "-noExpandIUB" else ""} \
+      ~{if (no_interaction) then "-noInteraction" else ""} \
+      ~{if (no_motif) then "-noMotif" else ""} \
+      ~{if (no_next_prot) then "-noNextProt" else ""} \
+      ~{if (only_reg) then "-onlyReg" else ""} \
+      ~{if (only_protein) then "-onlyProtein" else ""} \
       ~{if defined(only_tr) then ("-onlyTr " +  '"' + only_tr + '"') else ""} \
       ~{if defined(reg) then ("-reg " +  '"' + reg + '"') else ""} \
-      ~{true="-ss" false="" ss} \
+      ~{if (ss) then "-ss" else ""} \
       ~{if defined(splice_region_exon_size) then ("-spliceRegionExonSize " +  '"' + splice_region_exon_size + '"') else ""} \
       ~{if defined(splice_region_intron_min) then ("-spliceRegionIntronMin " +  '"' + splice_region_intron_min + '"') else ""} \
       ~{if defined(splice_region_intron_max) then ("-spliceRegionIntronMax " +  '"' + splice_region_intron_max + '"') else ""} \
-      ~{true="-strict" false="" strict} \
-      ~{true="-ud" false="" ud}
+      ~{if (strict) then "-strict" else ""} \
+      ~{if (ud) then "-ud" else ""}
   >>>
   parameter_meta {
     chr: ": Prepend 'string' to chromosome name (e.g. 'chr1' instead of '1'). Only on TXT output."
@@ -140,7 +140,7 @@ task SnpEff {
     input_format_default: ": Input format [ vcf, bed ]. Default: VCF."
     file_list: ": Input actually contains a list of files to process."
     ouput_format_default: ": Ouput format [ vcf, gatk, bed, bedAnn ]. Default: VCF."
-    stats_htmlstats_create: ", -stats, -htmlStats         : Create HTML summary file.  Default is 'snpEff_summary.html'"
+    stats_htmlstats_file: ", -stats, -htmlStats         : Create HTML summary file.  Default is 'snpEff_summary.html'"
     no_stats: ": Do not create stats (summary) file"
     fi: ", -filterInterval  <file>   : Only analyze changes that intersect with the intervals specified in this file (you may use this option many times)"
     no_downstream: ": Do not show DOWNSTREAM changes"
@@ -150,7 +150,7 @@ task SnpEff {
     no_utr: ": Do not show 5_PRIME_UTR or 3_PRIME_UTR changes"
     no: ": Do not show 'EffectType'. This option can be used several times."
     cancer: ": Perform 'cancer' comparisons (Somatic vs Germline). Default: false"
-    cancer_samples: ": Two column TXT file defining 'oringinal \t derived' samples."
+    cancer_samples: ": Two column TXT file defining 'oringinal \\t derived' samples."
     format_eff: ": Use 'EFF' field compatible with older versions (instead of 'ANN')."
     geneid: ": Use gene ID instead of gene name (VCF output). Default: false"
     hgvs: ": Use HGVS annotations for amino acid sub-field. Default: true"
@@ -169,7 +169,7 @@ task SnpEff {
     datadir: ": Override data_dir parameter from config file."
     no_download: ": Do not download a SnpEff database, if not available locally."
     no_log: ": Do not report usage statistics to server"
-    use_threads_implies: ": Use multiple threads (implies '-noStats'). Default 'off'"
+    use_multiple_threads: ": Use multiple threads (implies '-noStats'). Default 'off'"
     quiet_quiet_mode: ", -quiet                  : Quiet mode (do not show any messages or errors)"
     verbose_verbose_mode: ", -verbose                : Verbose mode"
     version: ": Show version number and exit"
@@ -196,5 +196,8 @@ task SnpEff {
     strict: ": Only use 'validated' transcripts (i.e. sequence has been checked). Default: false"
     ud: ", -upDownStreamLen <int> : Set upstream downstream interval length (in bases)"
     variants_file: ": Default is STDIN"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,17 +1,17 @@
 version 1.0
 
-task CruxStatColumn {
+task CruxStatcolumn {
   input {
-    String tsv_file
-    String column_name
+    File tsv_file
   }
   command <<<
-    crux stat-column \
-      ~{tsv_file} \
-      ~{column_name}
+    crux stat_column \
+      ~{tsv_file}
   >>>
   parameter_meta {
     tsv_file: ""
-    column_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

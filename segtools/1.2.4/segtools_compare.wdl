@@ -1,26 +1,26 @@
 version 1.0
 
-task SegtoolsCompare {
+task Segtoolscompare {
   input {
     Boolean? edit_distance
     Boolean? quick
     Boolean? quiet
-    String var_3
-    String var_4
+    String segmentation
   }
   command <<<
-    segtools-compare \
-      ~{var_3} \
-      ~{var_4} \
-      ~{true="--edit-distance" false="" edit_distance} \
-      ~{true="--quick" false="" quick} \
-      ~{true="--quiet" false="" quiet}
+    segtools_compare \
+      ~{segmentation} \
+      ~{if (edit_distance) then "--edit-distance" else ""} \
+      ~{if (quick) then "--quick" else ""} \
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
-    edit_distance: "Measure the base-wise edit distance between the two specified segmentations"
+    edit_distance: "Measure the base-wise edit distance between the two\\nspecified segmentations"
     quick: "Compute values only for one chromosome."
     quiet: "Do not print diagnostic messages."
-    var_3: ""
-    var_4: ""
+    segmentation: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Nquire {
   command <<<
     nquire
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

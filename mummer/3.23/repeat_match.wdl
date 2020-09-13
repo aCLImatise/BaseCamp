@@ -1,22 +1,22 @@
 version 1.0
 
-task RepeatMatch {
+task Repeatmatch {
   input {
     Boolean? use_exhaustive_search
     Boolean? forward_strand_only
     Boolean? set_minimum_length
     Boolean? only_output_tandem
     Boolean? set_level_verbose
-    String genome_file
+    File genome_file
   }
   command <<<
-    repeat-match \
+    repeat_match \
       ~{genome_file} \
-      ~{true="-E" false="" use_exhaustive_search} \
-      ~{true="-f" false="" forward_strand_only} \
-      ~{true="-n" false="" set_minimum_length} \
-      ~{true="-t" false="" only_output_tandem} \
-      ~{true="-V" false="" set_level_verbose}
+      ~{if (use_exhaustive_search) then "-E" else ""} \
+      ~{if (forward_strand_only) then "-f" else ""} \
+      ~{if (set_minimum_length) then "-n" else ""} \
+      ~{if (only_output_tandem) then "-t" else ""} \
+      ~{if (set_level_verbose) then "-V" else ""}
   >>>
   parameter_meta {
     use_exhaustive_search: "Use exhaustive (slow) search to find matches"
@@ -25,5 +25,8 @@ task RepeatMatch {
     only_output_tandem: "Only output tandem repeats"
     set_level_verbose: "#  Set level of verbose (debugging) printing to #"
     genome_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

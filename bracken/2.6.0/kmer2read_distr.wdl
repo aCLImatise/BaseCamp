@@ -4,4 +4,7 @@ task Kmer2readDistr {
   command <<<
     kmer2read_distr
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

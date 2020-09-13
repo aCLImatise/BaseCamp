@@ -18,7 +18,7 @@ task Pbwt {
     File? read_vcf_q
     File? read_gen
     File? read_hap
-    String? read_hap_legend
+    File? read_hap_legend
     File? read_phase
     String? checkpoint
     File? merge
@@ -42,7 +42,7 @@ task Pbwt {
     String? subrange
     String? corrupt_sites
     String? corrupt_samples
-    String? copy_samples
+    Int? copy_samples
     File? select_sites
     File? remove_sites
     File? select_samples
@@ -54,10 +54,10 @@ task Pbwt {
     String? impute_explore
     String? phase
     String? reference_phase
-    String? reference_impute
+    Int? reference_impute
     String? genotype_compare
     Boolean? impute_missing
-    String? fit_alphabet_a
+    Float? fit_alphabet_a
     String? ll_copy_model
     File? paint
     File? paint_sparse
@@ -72,8 +72,8 @@ task Pbwt {
   command <<<
     pbwt \
       ~{if defined(log) then ("-log " +  '"' + log + '"') else ""} \
-      ~{true="-check" false="" check} \
-      ~{true="-stats" false="" stats} \
+      ~{if (check) then "-check" else ""} \
+      ~{if (stats) then "-stats" else ""} \
       ~{if defined(read) then ("-read " +  '"' + read + '"') else ""} \
       ~{if defined(read_sites) then ("-readSites " +  '"' + read_sites + '"') else ""} \
       ~{if defined(read_samples) then ("-readSamples " +  '"' + read_samples + '"') else ""} \
@@ -116,7 +116,7 @@ task Pbwt {
       ~{if defined(remove_sites) then ("-removeSites " +  '"' + remove_sites + '"') else ""} \
       ~{if defined(select_samples) then ("-selectSamples " +  '"' + select_samples + '"') else ""} \
       ~{if defined(long_within) then ("-longWithin " +  '"' + long_within + '"') else ""} \
-      ~{true="-maxWithin" false="" max_within} \
+      ~{if (max_within) then "-maxWithin" else ""} \
       ~{if defined(match_naive) then ("-matchNaive " +  '"' + match_naive + '"') else ""} \
       ~{if defined(match_indexed) then ("-matchIndexed " +  '"' + match_indexed + '"') else ""} \
       ~{if defined(match_dynamic) then ("-matchDynamic " +  '"' + match_dynamic + '"') else ""} \
@@ -125,18 +125,18 @@ task Pbwt {
       ~{if defined(reference_phase) then ("-referencePhase " +  '"' + reference_phase + '"') else ""} \
       ~{if defined(reference_impute) then ("-referenceImpute " +  '"' + reference_impute + '"') else ""} \
       ~{if defined(genotype_compare) then ("-genotypeCompare " +  '"' + genotype_compare + '"') else ""} \
-      ~{true="-imputeMissing" false="" impute_missing} \
+      ~{if (impute_missing) then "-imputeMissing" else ""} \
       ~{if defined(fit_alphabet_a) then ("-fitAlphaBeta " +  '"' + fit_alphabet_a + '"') else ""} \
       ~{if defined(ll_copy_model) then ("-llCopyModel " +  '"' + ll_copy_model + '"') else ""} \
       ~{if defined(paint) then ("-paint " +  '"' + paint + '"') else ""} \
       ~{if defined(paint_sparse) then ("-paintSparse " +  '"' + paint_sparse + '"') else ""} \
       ~{if defined(pretty) then ("-pretty " +  '"' + pretty + '"') else ""} \
-      ~{true="-sfs" false="" sfs} \
+      ~{if (sfs) then "-sfs" else ""} \
       ~{if defined(ref_freq) then ("-refFreq " +  '"' + ref_freq + '"') else ""} \
       ~{if defined(site_info) then ("-siteInfo " +  '"' + site_info + '"') else ""} \
-      ~{true="-buildReverse" false="" build_reverse} \
+      ~{if (build_reverse) then "-buildReverse" else ""} \
       ~{if defined(read_genetic_map) then ("-readGeneticMap " +  '"' + read_genetic_map + '"') else ""} \
-      ~{true="-4hapsStats" false="" four_haps_stats}
+      ~{if (four_haps_stats) then "-4hapsStats" else ""}
   >>>
   parameter_meta {
     log: "log file; '-' for stderr"
@@ -155,7 +155,7 @@ task Pbwt {
     read_vcf_q: "read VCFQ file; '-' for stdin"
     read_gen: "<chrom>   read impute2 gen file - must set chrom"
     read_hap: "<chrom>   read impute2 hap file - must set chrom"
-    read_hap_legend: "<legend_file> <chrom> read impute2 hap and legend file - must set chrom"
+    read_hap_legend: "<legend_file> <chrom>\\nread impute2 hap and legend file - must set chrom"
     read_phase: "read Li and Stephens phase file"
     checkpoint: "checkpoint every n sites while reading"
     merge: "...         merge two or more pbwt files"
@@ -191,7 +191,7 @@ task Pbwt {
     impute_explore: "n'th impute test"
     phase: "phase with n sparse pbwts"
     reference_phase: "phase current pbwt against reference whose root name is the argument - only keeps shared sites"
-    reference_impute: "[nSparse=1] [fSparse=1]  impute current pbwt into reference whose root name is the first argument; does not rephase either pbwt; optional nSparse > 1 also does sparse matching, fSparse is relative weight"
+    reference_impute: "[nSparse=1] [fSparse=1]  impute current pbwt into reference whose root name is the first argument;\\ndoes not rephase either pbwt; optional nSparse > 1 also does sparse matching, fSparse is relative weight"
     genotype_compare: "compare genotypes with those from reference whose root name is the argument - need compatible sites"
     impute_missing: "impute data marked as missing"
     fit_alphabet_a: "fit probabilistic model 1..3"
@@ -205,5 +205,9 @@ task Pbwt {
     build_reverse: "build reverse pbwt"
     read_genetic_map: "read Oxford format genetic map file"
     four_haps_stats: "mu:rho 4 hap test stats"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_read_macs = "${in_read_macs}"
   }
 }

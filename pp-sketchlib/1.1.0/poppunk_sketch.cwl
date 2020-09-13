@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../poppunk_sketch.cwl
 inputs:
-- id: sketch
+- id: in_sketch
   doc: Create a database of sketches
   type: boolean
   inputBinding:
     prefix: --sketch
-- id: query
+- id: in_query
   doc: Find distances between two sketch databases
   type: boolean
   inputBinding:
     prefix: --query
-- id: r_file
+- id: in_r_file
   doc: Samples to sketch
-  type: string
+  type: File
   inputBinding:
     prefix: --rfile
-- id: ref_db
+- id: in_ref_db
   doc: Prefix of reference database file
-  type: string
+  type: File
   inputBinding:
     prefix: --ref-db
-- id: query_db
+- id: in_query_db
   doc: Prefix of query database file
-  type: string
+  type: File
   inputBinding:
     prefix: --query-db
-- id: min_k
+- id: in_min_k
   doc: Minimum kmer length [default = 13]
   type: long
   inputBinding:
     prefix: --min-k
-- id: max_k
+- id: in_max_k
   doc: Maximum kmer length [default = 29]
   type: long
   inputBinding:
     prefix: --max-k
-- id: k_step
+- id: in_k_step
   doc: K-mer step size [default = 4]
-  type: string
+  type: long
   inputBinding:
     prefix: --k-step
-- id: sketch_size
+- id: in_sketch_size
   doc: Kmer sketch size [default = 10000]
-  type: string
+  type: long
   inputBinding:
     prefix: --sketch-size
-- id: min_count
+- id: in_min_count
   doc: Minimum k-mer count from reads [default = 20]
   type: long
   inputBinding:
     prefix: --min-count
-- id: cpus
+- id: in_cpus
   doc: Number of CPUs to use [default = 1]
-  type: string
+  type: long
   inputBinding:
     prefix: --cpus
-- id: pp_sketch
+- id: in_pp_sketch
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - poppunk_sketch

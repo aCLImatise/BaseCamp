@@ -11,13 +11,16 @@ task Filterfa {
     filterfa \
       ~{tmp_dot_fa} \
       ~{out_dot_fa} \
-      ~{true="--paired" false="" paired} \
-      ~{true="--merge" false="" merge}
+      ~{if (paired) then "--paired" else ""} \
+      ~{if (merge) then "--merge" else ""}
   >>>
   parameter_meta {
     paired: "if the reads are paired-end"
     merge: "if the reads are paired-end in two files"
     tmp_dot_fa: ""
     out_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

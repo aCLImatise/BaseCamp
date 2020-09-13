@@ -2,22 +2,22 @@ version 1.0
 
 task OpenSwathWorkflow {
   input {
-    File? in
+    String? in
     File? tr
-    String? tr_type
+    File? tr_type
     File? tr_irt
     File? tr_irt_nonlinear
     File? out_features
     File? out_tsv
     File? out_osw
     Boolean? sonar
-    String? rt_extraction_window
-    String? ion_mobility_window
-    String? mz_extraction_window
-    String? mz_extraction_window_ms_one
-    String? im_extraction_window_ms_one
+    Float? rt_extraction_window
+    Int? ion_mobility_window
+    Int? mz_extraction_window
+    Int? mz_extraction_window_ms_one
+    Int? im_extraction_window_ms_one
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -31,7 +31,7 @@ task OpenSwathWorkflow {
       ~{if defined(out_features) then ("-out_features " +  '"' + out_features + '"') else ""} \
       ~{if defined(out_tsv) then ("-out_tsv " +  '"' + out_tsv + '"') else ""} \
       ~{if defined(out_osw) then ("-out_osw " +  '"' + out_osw + '"') else ""} \
-      ~{true="-sonar" false="" sonar} \
+      ~{if (sonar) then "-sonar" else ""} \
       ~{if defined(rt_extraction_window) then ("-rt_extraction_window " +  '"' + rt_extraction_window + '"') else ""} \
       ~{if defined(ion_mobility_window) then ("-ion_mobility_window " +  '"' + ion_mobility_window + '"') else ""} \
       ~{if defined(mz_extraction_window) then ("-mz_extraction_window " +  '"' + mz_extraction_window + '"') else ""} \
@@ -40,12 +40,12 @@ task OpenSwathWorkflow {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                        Input files separated by blank (valid formats: 'mzML', 'mzXML', 'sqMass')"
     tr: "*                         Transition file ('TraML','tsv','pqp') (valid formats: 'traML', 'tsv', 'pqp')"
-    tr_type: "Input file type -- default: determined from file extension or content (valid: 'traML', 'tsv', 'pqp')"
+    tr_type: "Input file type -- default: determined from file extension or content\\n(valid: 'traML', 'tsv', 'pqp')"
     tr_irt: "Transition file ('TraML') (valid formats: 'traML', 'tsv', 'pqp')"
     tr_irt_nonlinear: "Additional nonlinear transition file ('TraML') (valid formats: 'traML', 'tsv', 'pqp')"
     out_features: "Output file (valid formats: 'featureXML')"
@@ -61,5 +61,11 @@ task OpenSwathWorkflow {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_features = "${in_out_features}"
+    File out_out_tsv = "${in_out_tsv}"
+    File out_out_osw = "${in_out_osw}"
   }
 }

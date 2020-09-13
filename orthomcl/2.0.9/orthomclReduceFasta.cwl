@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../orthomclReduceFasta.cwl
 inputs:
-- id: fast_a_file
+- id: in_fast_a_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: tax_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - orthomclReduceFasta

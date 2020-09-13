@@ -1,5 +1,14 @@
 &id005 !Command
-positional: []
+command:
+- afplot
+- whole-genome
+- scatter
+positional:
+- !Positional
+  description: '--dpi INTEGER               DPI for output PNGs (default: 300)'
+  position: 0
+  name: seaborn.set_palette
+  optional: false
 named:
 - !Flag
   description: Path to output file  [required]
@@ -18,8 +27,8 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Sample name(s) of VCF file(s). If not given, will use fist sample in
-    each VCF File
+  description: "Sample name(s) of VCF file(s). If not given,\nwill use fist sample\
+    \ in each VCF File"
   synonyms:
   - -s
   - --sample
@@ -43,137 +52,44 @@ named:
     name: PATH
   optional: true
 - !Flag
-  description: The name of a color palette to pass to seaborn.set_palette
+  description: The name of a color palette to pass to
   synonyms:
   - --color-palette
   args: !SimpleFlagArg
     name: TEXT
   optional: true
-- !Flag
-  description: 'DPI for output PNGs (default: 300)'
-  synonyms:
-  - --dpi
-  args: !SimpleFlagArg
-    name: INTEGER
-  optional: true
-command:
-- afplot
-- whole-genome
-- scatter
 parent: &id004 !Command
-  positional: []
-  named: []
   command:
   - afplot
   - whole-genome
+  positional: []
+  named: []
   parent: &id001 !Command
-    positional: []
-    named: []
     command:
     - afplot
+    positional: []
+    named: []
     parent:
     subcommands:
     - &id002 !Command
-      positional: []
-      named: []
       command:
       - afplot
       - regions
+      positional: []
+      named: []
       parent: *id001
       subcommands:
       - !Command
-        positional: []
-        named:
-        - !Flag
-          description: Margin around regions to plot
-          synonyms:
-          - -m
-          - --margin
-          args: !SimpleFlagArg
-            name: INTEGER
-          optional: true
-        - !Flag
-          description: Region string. Must be of format <contig:start-end>
-          synonyms:
-          - -R
-          - --region
-          args: !SimpleFlagArg
-            name: TEXT
-          optional: true
-        - !Flag
-          description: Path to region file
-          synonyms:
-          - -L
-          - --region-file
-          args: !SimpleFlagArg
-            name: PATH
-          optional: true
-        - !Flag
-          description: Optional title for plot
-          synonyms:
-          - -n
-          - --name
-          args: !SimpleFlagArg
-            name: TEXT
-          optional: true
-        - !Flag
-          description: Path to output directory  [required]
-          synonyms:
-          - -o
-          - --output-dir
-          args: !SimpleFlagArg
-            name: PATH
-          optional: true
-        - !Flag
-          description: Path to input VCF file  [required]
-          synonyms:
-          - -v
-          - --vcf
-          args: !SimpleFlagArg
-            name: PATH
-          optional: true
-        - !Flag
-          description: The name of a color palette to pass to seaborn.set_palette
-          synonyms:
-          - --color-palette
-          args: !SimpleFlagArg
-            name: TEXT
-          optional: true
-        - !Flag
-          description: 'DPI for output PNGs (default: 300)'
-          synonyms:
-          - --dpi
-          args: !SimpleFlagArg
-            name: INTEGER
-          optional: true
         command:
         - afplot
         - regions
-        - distance
-        parent: *id002
-        subcommands: []
-        help_flag: !Flag
-          description: Show this message and exit.
-          synonyms:
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "Usage: afplot regions distance [OPTIONS]\n\n  Create scatter plot\
-          \ of distance to theoretical AF over every region.\n\nOptions:\n  -m, --margin\
-          \ INTEGER    Margin around regions to plot\n  -R, --region TEXT       Region\
-          \ string. Must be of format <contig:start-end>\n  -L, --region-file PATH\
-          \  Path to region file\n  -n, --name TEXT         Optional title for plot\n\
-          \  -o, --output-dir PATH   Path to output directory  [required]\n  -v, --vcf\
-          \ PATH          Path to input VCF file  [required]\n  --color-palette TEXT\
-          \    The name of a color palette to pass to\n                          seaborn.set_palette\n\
-          \n  --dpi INTEGER           DPI for output PNGs (default: 300)\n  --help\
-          \                  Show this message and exit.\n"
-        generated_using: &id003
-        - --help
-      - !Command
-        positional: []
+        - histogram
+        positional:
+        - !Positional
+          description: '--dpi INTEGER           DPI for output PNGs (default: 300)'
+          position: 0
+          name: seaborn.set_palette
+          optional: false
         named:
         - !Flag
           description: Margin around regions to plot
@@ -224,18 +140,11 @@ parent: &id004 !Command
             name: PATH
           optional: true
         - !Flag
-          description: The name of a color palette to pass to seaborn.set_palette
+          description: The name of a color palette to pass to
           synonyms:
           - --color-palette
           args: !SimpleFlagArg
             name: TEXT
-          optional: true
-        - !Flag
-          description: 'DPI for output PNGs (default: 300)'
-          synonyms:
-          - --dpi
-          args: !SimpleFlagArg
-            name: INTEGER
           optional: true
         - !Flag
           description: Only show kernel density plot
@@ -244,12 +153,9 @@ parent: &id004 !Command
           - --kde-only
           args: !EmptyFlagArg {}
           optional: true
-        command:
-        - afplot
-        - regions
-        - histogram
         parent: *id002
         subcommands: []
+        usage: []
         help_flag: !Flag
           description: Show this message and exit.
           synonyms:
@@ -266,12 +172,22 @@ parent: &id004 !Command
           \ --output-dir PATH   Path to output directory  [required]\n  -v, --vcf\
           \ PATH          Path to input VCF file  [required]\n  --color-palette TEXT\
           \    The name of a color palette to pass to\n                          seaborn.set_palette\n\
-          \n  --dpi INTEGER           DPI for output PNGs (default: 300)\n  -k, --kde-only\
+          \  --dpi INTEGER           DPI for output PNGs (default: 300)\n  -k, --kde-only\
           \          Only show kernel density plot\n  --help                  Show\
           \ this message and exit.\n"
-        generated_using: *id003
+        generated_using: &id003
+        - --help
       - !Command
-        positional: []
+        command:
+        - afplot
+        - regions
+        - scatter
+        positional:
+        - !Positional
+          description: '--dpi INTEGER           DPI for output PNGs (default: 300)'
+          position: 0
+          name: seaborn.set_palette
+          optional: false
         named:
         - !Flag
           description: Margin around regions to plot
@@ -322,25 +238,15 @@ parent: &id004 !Command
             name: PATH
           optional: true
         - !Flag
-          description: The name of a color palette to pass to seaborn.set_palette
+          description: The name of a color palette to pass to
           synonyms:
           - --color-palette
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        - !Flag
-          description: 'DPI for output PNGs (default: 300)'
-          synonyms:
-          - --dpi
-          args: !SimpleFlagArg
-            name: INTEGER
-          optional: true
-        command:
-        - afplot
-        - regions
-        - scatter
         parent: *id002
         subcommands: []
+        usage: []
         help_flag: !Flag
           description: Show this message and exit.
           synonyms:
@@ -357,9 +263,99 @@ parent: &id004 !Command
           \ --output-dir PATH   Path to output directory  [required]\n  -v, --vcf\
           \ PATH          Path to input VCF file  [required]\n  --color-palette TEXT\
           \    The name of a color palette to pass to\n                          seaborn.set_palette\n\
-          \n  --dpi INTEGER           DPI for output PNGs (default: 300)\n  --help\
+          \  --dpi INTEGER           DPI for output PNGs (default: 300)\n  --help\
           \                  Show this message and exit.\n"
         generated_using: *id003
+      - !Command
+        command:
+        - afplot
+        - regions
+        - distance
+        positional:
+        - !Positional
+          description: '--dpi INTEGER           DPI for output PNGs (default: 300)'
+          position: 0
+          name: seaborn.set_palette
+          optional: false
+        named:
+        - !Flag
+          description: Margin around regions to plot
+          synonyms:
+          - -m
+          - --margin
+          args: !SimpleFlagArg
+            name: INTEGER
+          optional: true
+        - !Flag
+          description: Region string. Must be of format <contig:start-end>
+          synonyms:
+          - -R
+          - --region
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Path to region file
+          synonyms:
+          - -L
+          - --region-file
+          args: !SimpleFlagArg
+            name: PATH
+          optional: true
+        - !Flag
+          description: Optional title for plot
+          synonyms:
+          - -n
+          - --name
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Path to output directory  [required]
+          synonyms:
+          - -o
+          - --output-dir
+          args: !SimpleFlagArg
+            name: PATH
+          optional: true
+        - !Flag
+          description: Path to input VCF file  [required]
+          synonyms:
+          - -v
+          - --vcf
+          args: !SimpleFlagArg
+            name: PATH
+          optional: true
+        - !Flag
+          description: The name of a color palette to pass to
+          synonyms:
+          - --color-palette
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id002
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: afplot regions distance [OPTIONS]\n\n  Create scatter plot\
+          \ of distance to theoretical AF over every region.\n\nOptions:\n  -m, --margin\
+          \ INTEGER    Margin around regions to plot\n  -R, --region TEXT       Region\
+          \ string. Must be of format <contig:start-end>\n  -L, --region-file PATH\
+          \  Path to region file\n  -n, --name TEXT         Optional title for plot\n\
+          \  -o, --output-dir PATH   Path to output directory  [required]\n  -v, --vcf\
+          \ PATH          Path to input VCF file  [required]\n  --color-palette TEXT\
+          \    The name of a color palette to pass to\n                          seaborn.set_palette\n\
+          \  --dpi INTEGER           DPI for output PNGs (default: 300)\n  --help\
+          \                  Show this message and exit.\n"
+        generated_using: *id003
+      usage: []
       help_flag: !Flag
         description: Show this message and exit.
         synonyms:
@@ -378,6 +374,7 @@ parent: &id004 !Command
         \ scatter plot\n"
       generated_using: *id003
     - *id004
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -395,91 +392,16 @@ parent: &id004 !Command
     generated_using: *id003
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to output file  [required]
-      synonyms:
-      - -o
-      - --output
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    - !Flag
-      description: Regex pattern(s) to exclude from contig list
-      synonyms:
-      - -e
-      - --exclude-pattern
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Sample name(s) of VCF file(s). If not given, will use fist sample
-        in each VCF File
-      synonyms:
-      - -s
-      - --sample
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Label(s) to VCF file(s)  [required]
-      synonyms:
-      - -l
-      - --label
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Path(s) to input VCF file(s)  [required]
-      synonyms:
-      - -v
-      - --vcf
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    - !Flag
-      description: The name of a color palette to pass to seaborn.set_palette
-      synonyms:
-      - --color-palette
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: 'DPI for output PNGs (default: 300)'
-      synonyms:
-      - --dpi
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
     command:
     - afplot
     - whole-genome
-    - distance
-    parent: *id004
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Usage: afplot whole-genome distance [OPTIONS]\n\n  Create scatter\
-      \ plot distance to theoretical AF over very chromosome.\n\nOptions:\n  -o, --output\
-      \ PATH           Path to output file  [required]\n  -e, --exclude-pattern TEXT\
-      \  Regex pattern(s) to exclude from contig list\n  -s, --sample TEXT       \
-      \    Sample name(s) of VCF file(s). If not given,\n                        \
-      \      will use fist sample in each VCF File\n\n  -l, --label TEXT         \
-      \   Label(s) to VCF file(s)  [required]\n  -v, --vcf PATH              Path(s)\
-      \ to input VCF file(s)  [required]\n  --color-palette TEXT        The name of\
-      \ a color palette to pass to\n                              seaborn.set_palette\n\
-      \n  --dpi INTEGER               DPI for output PNGs (default: 300)\n  --help\
-      \                      Show this message and exit.\n"
-    generated_using: *id003
-  - !Command
-    positional: []
+    - histogram
+    positional:
+    - !Positional
+      description: '--dpi INTEGER               DPI for output PNGs (default: 300)'
+      position: 0
+      name: seaborn.set_palette
+      optional: false
     named:
     - !Flag
       description: Path to output file  [required]
@@ -498,8 +420,8 @@ parent: &id004 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: Sample name(s) of VCF file(s). If not given, will use fist sample
-        in each VCF File
+      description: "Sample name(s) of VCF file(s). If not given,\nwill use fist sample\
+        \ in each VCF File"
       synonyms:
       - -s
       - --sample
@@ -523,18 +445,11 @@ parent: &id004 !Command
         name: PATH
       optional: true
     - !Flag
-      description: The name of a color palette to pass to seaborn.set_palette
+      description: The name of a color palette to pass to
       synonyms:
       - --color-palette
       args: !SimpleFlagArg
         name: TEXT
-      optional: true
-    - !Flag
-      description: 'DPI for output PNGs (default: 300)'
-      synonyms:
-      - --dpi
-      args: !SimpleFlagArg
-        name: INTEGER
       optional: true
     - !Flag
       description: Only show kernel density plot
@@ -543,12 +458,9 @@ parent: &id004 !Command
       - --kde-only
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - afplot
-    - whole-genome
-    - histogram
     parent: *id004
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -562,15 +474,98 @@ parent: &id004 !Command
       \ output file  [required]\n  -e, --exclude-pattern TEXT  Regex pattern(s) to\
       \ exclude from contig list\n  -s, --sample TEXT           Sample name(s) of\
       \ VCF file(s). If not given,\n                              will use fist sample\
-      \ in each VCF File\n\n  -l, --label TEXT            Label(s) to VCF file(s)\
-      \  [required]\n  -v, --vcf PATH              Path(s) to input VCF file(s)  [required]\n\
-      \  --color-palette TEXT        The name of a color palette to pass to\n    \
-      \                          seaborn.set_palette\n\n  --dpi INTEGER          \
-      \     DPI for output PNGs (default: 300)\n  -k, --kde-only              Only\
-      \ show kernel density plot\n  --help                      Show this message\
-      \ and exit.\n"
+      \ in each VCF File\n  -l, --label TEXT            Label(s) to VCF file(s)  [required]\n\
+      \  -v, --vcf PATH              Path(s) to input VCF file(s)  [required]\n  --color-palette\
+      \ TEXT        The name of a color palette to pass to\n                     \
+      \         seaborn.set_palette\n  --dpi INTEGER               DPI for output\
+      \ PNGs (default: 300)\n  -k, --kde-only              Only show kernel density\
+      \ plot\n  --help                      Show this message and exit.\n"
     generated_using: *id003
   - *id005
+  - !Command
+    command:
+    - afplot
+    - whole-genome
+    - distance
+    positional:
+    - !Positional
+      description: '--dpi INTEGER               DPI for output PNGs (default: 300)'
+      position: 0
+      name: seaborn.set_palette
+      optional: false
+    named:
+    - !Flag
+      description: Path to output file  [required]
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Regex pattern(s) to exclude from contig list
+      synonyms:
+      - -e
+      - --exclude-pattern
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Sample name(s) of VCF file(s). If not given,\nwill use fist sample\
+        \ in each VCF File"
+      synonyms:
+      - -s
+      - --sample
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Label(s) to VCF file(s)  [required]
+      synonyms:
+      - -l
+      - --label
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Path(s) to input VCF file(s)  [required]
+      synonyms:
+      - -v
+      - --vcf
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: The name of a color palette to pass to
+      synonyms:
+      - --color-palette
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: afplot whole-genome distance [OPTIONS]\n\n  Create scatter\
+      \ plot distance to theoretical AF over very chromosome.\n\nOptions:\n  -o, --output\
+      \ PATH           Path to output file  [required]\n  -e, --exclude-pattern TEXT\
+      \  Regex pattern(s) to exclude from contig list\n  -s, --sample TEXT       \
+      \    Sample name(s) of VCF file(s). If not given,\n                        \
+      \      will use fist sample in each VCF File\n  -l, --label TEXT           \
+      \ Label(s) to VCF file(s)  [required]\n  -v, --vcf PATH              Path(s)\
+      \ to input VCF file(s)  [required]\n  --color-palette TEXT        The name of\
+      \ a color palette to pass to\n                              seaborn.set_palette\n\
+      \  --dpi INTEGER               DPI for output PNGs (default: 300)\n  --help\
+      \                      Show this message and exit.\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -594,6 +589,7 @@ parent: &id004 !Command
     \  histogram  Whole-genome histogram\n  scatter    Whole-genome scatter plot\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -607,9 +603,9 @@ help_text: "Usage: afplot whole-genome scatter [OPTIONS]\n\n  Create scatter plo
   \           Path to output file  [required]\n  -e, --exclude-pattern TEXT  Regex\
   \ pattern(s) to exclude from contig list\n  -s, --sample TEXT           Sample name(s)\
   \ of VCF file(s). If not given,\n                              will use fist sample\
-  \ in each VCF File\n\n  -l, --label TEXT            Label(s) to VCF file(s)  [required]\n\
+  \ in each VCF File\n  -l, --label TEXT            Label(s) to VCF file(s)  [required]\n\
   \  -v, --vcf PATH              Path(s) to input VCF file(s)  [required]\n  --color-palette\
   \ TEXT        The name of a color palette to pass to\n                         \
-  \     seaborn.set_palette\n\n  --dpi INTEGER               DPI for output PNGs (default:\
+  \     seaborn.set_palette\n  --dpi INTEGER               DPI for output PNGs (default:\
   \ 300)\n  --help                      Show this message and exit.\n"
 generated_using: *id003

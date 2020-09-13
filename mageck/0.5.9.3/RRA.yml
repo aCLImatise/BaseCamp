@@ -1,17 +1,102 @@
 !Command
+command:
+- RRA
 positional: []
 named:
 - !Flag
-  description: ''
+  description: '. Format: <item id> <group id> <list id> <value> [<probability>] [<chosen>]'
   synonyms:
   - -i
   args: !SimpleFlagArg
     name: input data file
   optional: true
-command:
-- RRA
+- !Flag
+  description: '. Format: <group id> <number of items in the group> <lo-value> <false
+    discovery rate>'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: output file
+  optional: true
+- !Flag
+  description: . RRA only consider the items with percentile smaller than this parameter.
+    Default=0.1
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: maximum percentile
+  optional: true
+- !Flag
+  description: . RRA only consider the items with percentile greater than this parameter.
+    Default=-1.0
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: minimum percentile
+  optional: true
+- !Flag
+  description: . A list of control sgRNA names.
+  synonyms:
+  - --control
+  args: !SimpleFlagArg
+    name: control_sgrna list
+  optional: true
+- !Flag
+  description: . The number of rounds of permutation. Increase this value if the number
+    of genes is small. Default 100.
+  synonyms:
+  - --permutation
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: default, gene permutation is performed separately, by their number
+    of sgRNAs. Turning this option will perform permutation on all genes together.
+    This makes the program faster, but the p value estimation is accurate only if
+    the number of sgRNAs per gene is approximately the same.
+  synonyms:
+  - --no-permutation-by-group.
+  args: !SimpleFlagArg
+    name: By
+  optional: true
+- !Flag
+  description: . Genes to skip from doing permutation. Specify it multiple times if
+    you need to skip more than 1 genes.
+  synonyms:
+  - --skip-gene
+  args: !SimpleFlagArg
+    name: gene_name
+  optional: true
+- !Flag
+  description: . Filter genes that have too few percentage of 'good sgrnas', or sgrnas
+    that fall below the -p threshold. Must be a number between 0-1. Default 0 (do
+    not filter genes).
+  synonyms:
+  - --min-percentage-goodsgrna
+  args: !SimpleFlagArg
+    name: min percentage
+  optional: true
+- !Flag
+  description: . Filter genes that have too few number of 'good sgrnas', or sgrnas
+    that fall below the -p threshold. Must be an integer. Default 0 (do not filter
+    genes).
+  synonyms:
+  - --min-number-goodsgrna
+  args: !SimpleFlagArg
+    name: min number
+  optional: true
+- !Flag
+  description: . Only permute genes by group if the number of sgRNAs per gene is smaller
+    than this number. This will save a lot of time if some regions are targeted by
+    a large number of sgRNAs (usually hundreds). Must be an integer. Default 100.
+  synonyms:
+  - --max-sgrnapergene-permutation
+  args: !SimpleFlagArg
+    name: max number
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

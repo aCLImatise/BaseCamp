@@ -1,24 +1,24 @@
 version 1.0
 
-task SnippyVcfReport {
+task SnippyvcfReport {
   input {
     Boolean? debug
     Boolean? auto
-    String? cpus
-    String? vcf
+    Int? cpus
+    File? vcf
     String? bam
     String? ref
     Boolean? html
   }
   command <<<
-    snippy-vcf_report \
-      ~{true="--debug" false="" debug} \
-      ~{true="--auto" false="" auto} \
+    snippy_vcf_report \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (auto) then "--auto" else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
       ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
-      ~{true="--html" false="" html}
+      ~{if (html) then "--html" else ""}
   >>>
   parameter_meta {
     debug: "!        Output verbose debug info (default '0')."
@@ -28,5 +28,8 @@ task SnippyVcfReport {
     bam: "BAM alignments (indexed) (default '')."
     ref: "FASTA reference (indexed) (default '')."
     html: "!         Write a HTML report instead of TXT (default '0')."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

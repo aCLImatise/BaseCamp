@@ -2,22 +2,26 @@ version 1.0
 
 task Quickmerge {
   input {
-    String? d
-    String? q
-    String? r
     Boolean? hco
+    String? r
+    String? q
+    File? d
   }
   command <<<
     quickmerge \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
-      ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
+      ~{if (hco) then "-hco" else ""} \
       ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
-      ~{true="-hco" false="" hco}
+      ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
   parameter_meta {
-    d: ""
-    q: ""
-    r: ""
     hco: ""
+    r: ""
+    q: ""
+    d: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_d = "${in_d}"
   }
 }

@@ -1,4 +1,6 @@
 !Command
+command:
+- extractreads
 positional:
 - !Positional
   description: ''
@@ -26,6 +28,81 @@ positional:
   name: '2012'
   optional: false
 named:
+- !Flag
+  description: Set logging in debug mode
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: desactivate progress bar
+  synonyms:
+  - --without-progress-bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: size of the sliding window
+  synonyms:
+  - -l
+  - --window-length
+  args: !SimpleFlagArg
+    name: WORD SIZE
+  optional: true
+- !Flag
+  description: position difference between two windows
+  synonyms:
+  - -s
+  - --step
+  args: !SimpleFlagArg
+    name: STEP
+  optional: true
+- !Flag
+  description: set for circular sequence
+  synonyms:
+  - -c
+  - --circular
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sequence file containing the reference sequences
+  synonyms:
+  - -R
+  - --reference
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Filename containing reverse solexa reads
+  synonyms:
+  - -r
+  - --reverse-reads
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Save the index to a dump file
+  synonyms:
+  - -D
+  - --write-dump
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Read the index from a dump file
+  synonyms:
+  - -d
+  - --read-dump
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Write singleton sequence in this file
+  synonyms:
+  - -S
+  - --singleton
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
 - !Flag
   description: skip the N first sequences
   synonyms:
@@ -59,7 +136,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fasta nucleic format (including obitools fasta extentions)
+  description: "Input file is in fasta nucleic format (including\nobitools fasta extentions)"
   synonyms:
   - --fasta
   args: !EmptyFlagArg {}
@@ -71,19 +148,19 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fasta format (but more tolerant to format variant)
+  description: "Input file is in fasta format (but more tolerant to\nformat variant)"
   synonyms:
   - --raw-fasta
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in sanger fastq nucleic format (standard fastq)
+  description: "Input file is in sanger fastq nucleic format (standard\nfastq)"
   synonyms:
   - --sanger
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fastq nucleic format produced by solexa sequencer
+  description: "Input file is in fastq nucleic format produced by\nsolexa sequencer"
   synonyms:
   - --solexa
   args: !EmptyFlagArg {}
@@ -119,8 +196,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output sequences in ecopcr database format (sequence records are not
-    printed on standard output)
+  description: "Output sequences in ecopcr database format (sequence\nrecords are\
+    \ not printed on standard output)"
   synonyms:
   - --ecopcrdb-output
   args: !SimpleFlagArg
@@ -132,11 +209,16 @@ named:
   - --uppercase
   args: !EmptyFlagArg {}
   optional: true
-command:
-- extractreads
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: \nCreated on 9 juin 2012\n\n@author: coissac\n\n\n***********\n\

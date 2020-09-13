@@ -3,9 +3,9 @@ version 1.0
 task Amap {
   input {
     Boolean? clustalw
-    String? consistency
-    String? iterative_refinement
-    String? pre_training
+    Int? consistency
+    Int? iterative_refinement
+    Int? pre_training
     Boolean? pairs
     Boolean? viterbi
     Boolean? verbose
@@ -14,37 +14,35 @@ task Amap {
     Boolean? emissions
     File? param_file
     Boolean? alignment_order
-    String? gap_factor
-    String? edge_weight_threshold
+    Int? gap_factor
+    Int? edge_weight_threshold
     Boolean? progressive
     Boolean? no_edge_reordering
     Boolean? use_max_step_size
     Boolean? print_posteriors
     Boolean? gui
-    String? option
   }
   command <<<
     amap \
-      ~{option} \
-      ~{true="-clustalw" false="" clustalw} \
+      ~{if (clustalw) then "-clustalw" else ""} \
       ~{if defined(consistency) then ("--consistency " +  '"' + consistency + '"') else ""} \
       ~{if defined(iterative_refinement) then ("--iterative-refinement " +  '"' + iterative_refinement + '"') else ""} \
       ~{if defined(pre_training) then ("--pre-training " +  '"' + pre_training + '"') else ""} \
-      ~{true="-pairs" false="" pairs} \
-      ~{true="-viterbi" false="" viterbi} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (pairs) then "-pairs" else ""} \
+      ~{if (viterbi) then "-viterbi" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(an_not) then ("-annot " +  '"' + an_not + '"') else ""} \
       ~{if defined(train) then ("--train " +  '"' + train + '"') else ""} \
-      ~{true="--emissions" false="" emissions} \
+      ~{if (emissions) then "--emissions" else ""} \
       ~{if defined(param_file) then ("--paramfile " +  '"' + param_file + '"') else ""} \
-      ~{true="--alignment-order" false="" alignment_order} \
+      ~{if (alignment_order) then "--alignment-order" else ""} \
       ~{if defined(gap_factor) then ("--gap-factor " +  '"' + gap_factor + '"') else ""} \
       ~{if defined(edge_weight_threshold) then ("--edge-weight-threshold " +  '"' + edge_weight_threshold + '"') else ""} \
-      ~{true="--progressive" false="" progressive} \
-      ~{true="--no-edge-reordering" false="" no_edge_reordering} \
-      ~{true="--use-max-stepsize" false="" use_max_step_size} \
-      ~{true="--print-posteriors" false="" print_posteriors} \
-      ~{true="-gui" false="" gui}
+      ~{if (progressive) then "--progressive" else ""} \
+      ~{if (no_edge_reordering) then "--no-edge-reordering" else ""} \
+      ~{if (use_max_step_size) then "--use-max-stepsize" else ""} \
+      ~{if (print_posteriors) then "--print-posteriors" else ""} \
+      ~{if (gui) then "-gui" else ""}
   >>>
   parameter_meta {
     clustalw: "use CLUSTALW output format instead of MFA"
@@ -60,12 +58,14 @@ task Amap {
     param_file: "read parameters from FILENAME (default: )"
     alignment_order: "print sequences in alignment order rather than input order (default: off)"
     gap_factor: "use GF as the gap-factor parameter, set to 0 for best sensitivity, higher values for better specificity (default: 1)"
-    edge_weight_threshold: "stop the sequence annealing process when best edge has lower weight than W, set to 0 for best sensitivity, higher values for better specificity (default: 0)"
+    edge_weight_threshold: "stop the sequence annealing process when best edge has lower weight than W,\\nset to 0 for best sensitivity, higher values for better specificity (default: 0)"
     progressive: "use progresive alignment instead of sequence annealing alignment (default: off)"
     no_edge_reordering: "disable reordring of edges during sequence annealing alignment (default: off)"
     use_max_step_size: "use maximum improvement step size instead of tGf edge ranking (default: off)"
     print_posteriors: "only print the posterior probability matrices (default: off)"
-    gui: "[START] [STEP] print output for the AMAP Display Java based GUI (default: off)  starting at weight START (default: infinity) with step size STEP (default: 1)"
-    option: ""
+    gui: "[START] [STEP]\\nprint output for the AMAP Display Java based GUI (default: off)\\nstarting at weight START (default: infinity) with step size STEP (default: 1)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,47 +1,60 @@
 class: CommandLineTool
 id: ../../../LoRMA.cwl
 inputs:
-- id: best_friends
+- id: in_best_friends
   doc: "(1 arg) :    Number of best friends  [default '3']"
   type: boolean
   inputBinding:
     prefix: -bestfriends
-- id: friends
+- id: in_friends
   doc: "(1 arg) :    Number of friends  [default '7']"
   type: boolean
   inputBinding:
     prefix: -friends
-- id: arg_kmer_length
+- id: in_arg_kmer_length
   doc: "(1 arg) :    kmer length  [default '31']"
   type: boolean
   inputBinding:
     prefix: -k
-- id: discarded
+- id: in_discarded
   doc: '(1 arg) :    output file for discarded reads'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -discarded
-- id: output
+- id: in_output
   doc: '(1 arg) :    output file for corrected reads'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -output
-- id: reads
+- id: in_reads
   doc: '(1 arg) :    file(s) of long reads'
   type: boolean
   inputBinding:
     prefix: -reads
-- id: nb_cores
+- id: in_nb_cores
   doc: "(1 arg) :    number of cores  [default '1']"
   type: boolean
   inputBinding:
     prefix: -nb-cores
-- id: verbose
+- id: in_verbose
   doc: "(1 arg) :    verbosity level  [default '1']"
   type: boolean
   inputBinding:
     prefix: -verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_discarded
+  doc: '(1 arg) :    output file for discarded reads'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_discarded)
+- id: out_output
+  doc: '(1 arg) :    output file for corrected reads'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - LoRMA

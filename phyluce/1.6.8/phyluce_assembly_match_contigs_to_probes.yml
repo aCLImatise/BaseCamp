@@ -1,28 +1,34 @@
 !Command
-positional: []
+command:
+- phyluce_assembly_match_contigs_to_probes
+positional:
+- !Positional
+  description: '[--verbosity {INFO,WARN,CRITICAL}]'
+  position: 0
+  name: OUTPUT
+  optional: false
 named:
 - !Flag
-  description: The directory containing the assembled contigs in which you are searching
-    for UCE loci.
-  synonyms:
-  - --contigs
-  args: !SimpleFlagArg
-    name: CONTIGS
-  optional: true
-- !Flag
-  description: The bait/probe file in FASTA format.
+  description: ''
   synonyms:
   - --probes
+  - --output
   args: !SimpleFlagArg
     name: PROBES
   optional: true
 - !Flag
-  description: The directory in which to store the resulting SQL database and LASTZ
-    files.
+  description: ='^(MyProbe-\W+)(?:_probe\d+.*)'
   synonyms:
-  - --output
+  - --regex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The directory containing the assembled contigs in\nwhich you are searching\
+    \ for UCE loci."
+  synonyms:
+  - --contigs
   args: !SimpleFlagArg
-    name: OUTPUT
+    name: CONTIGS
   optional: true
 - !Flag
   description: The logging level to use.
@@ -30,8 +36,8 @@ named:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      ? WARN
       ? CRITICAL
+      ? WARN
       ? INFO
   optional: true
 - !Flag
@@ -42,46 +48,38 @@ named:
     name: LOG_PATH
   optional: true
 - !Flag
-  description: The minimum percent coverage required for a match [default=80].
+  description: "The minimum percent coverage required for a match\n[default=80]."
   synonyms:
   - --min-coverage
   args: !SimpleFlagArg
     name: MIN_COVERAGE
   optional: true
 - !Flag
-  description: The minimum percent identity required for a match [default=80].
+  description: "The minimum percent identity required for a match\n[default=80]."
   synonyms:
   - --min-identity
   args: !SimpleFlagArg
     name: MIN_IDENTITY
   optional: true
 - !Flag
-  description: Path to self-to-self lastz results for baits to remove potential duplicate
-    probes.
+  description: "Path to self-to-self lastz results for baits to remove\npotential\
+    \ duplicate probes."
   synonyms:
   - --dupefile
   args: !SimpleFlagArg
     name: DUPEFILE
   optional: true
 - !Flag
-  description: A regular expression to apply to the probe names for replacement [default='^(uce-\d+)(?:_p\d+.*)'].
-  synonyms:
-  - --regex
-  args: !SimpleFlagArg
-    name: REGEX
-  optional: true
-- !Flag
-  description: A optional output file in which to store those loci that appear to
-    be duplicates.
+  description: "A optional output file in which to store those loci\nthat appear to\
+    \ be duplicates.\n"
   synonyms:
   - --keep-duplicates
   args: !SimpleFlagArg
     name: KEEP_DUPLICATES
   optional: true
-command:
-- phyluce_assembly_match_contigs_to_probes
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -1,14 +1,17 @@
 version 1.0
 
-task SsuCmcalibrateCmfile {
+task SsucmcalibrateCmfile {
   input {
     Boolean? options
   }
   command <<<
-    ssu-cmcalibrate cmfile \
-      ~{true="-options" false="" options}
+    ssu_cmcalibrate cmfile \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

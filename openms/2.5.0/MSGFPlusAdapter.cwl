@@ -1,55 +1,55 @@
 class: CommandLineTool
 id: ../../../MSGFPlusAdapter.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*                        Input file (MS-GF+ parameter '-s') (valid formats:\
     \ 'mzML', 'mzXML', 'mgf', 'ms2')"
   type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: "Output file (valid formats: 'idXML')"
   type: File
   inputBinding:
     prefix: -out
-- id: mz_id_out
-  doc: "Alternative output file (MS-GF+ parameter '-o') Either 'out' or 'mzid_out'\
+- id: in_mz_id_out
+  doc: "Alternative output file (MS-GF+ parameter '-o')\nEither 'out' or 'mzid_out'\
     \ are required. They can be used together. (valid formats: 'mzid')"
   type: File
   inputBinding:
     prefix: -mzid_out
-- id: executable
+- id: in_executable
   doc: '*                The MSGFPlus Java archive file. Provide a full or relative
     path, or make sure it can be found in your PATH environment.'
   type: File
   inputBinding:
     prefix: -executable
-- id: database
+- id: in_database
   doc: "*                  Protein sequence database (FASTA file; MS-GF+ parameter\
     \ '-d'). Non-existing relative filenames are looked up via 'OpenMS.ini:id_db_dir'.\
     \ (valid formats: 'FASTA')"
   type: File
   inputBinding:
     prefix: -database
-- id: add_decoys
+- id: in_add_decoys
   doc: Create decoy proteins (reversed sequences) and append them to the database
     for the search (MS-GF+ parameter '-tda'). This allows the calculation of FDRs,
     but should only be used if the database does not already contain decoys.
   type: boolean
   inputBinding:
     prefix: -add_decoys
-- id: precursor_mass_tolerance
+- id: in_precursor_mass_tolerance
   doc: "Precursor monoisotopic mass tolerance (MS-GF+ parameter '-t') (default: '10.0')"
-  type: string
+  type: double
   inputBinding:
     prefix: -precursor_mass_tolerance
-- id: precursor_error_units
+- id: in_precursor_error_units
   doc: "Unit of precursor mass tolerance (MS-GF+ parameter '-t') (default: 'ppm' valid:\
     \ 'Da', 'ppm')"
   type: string
   inputBinding:
     prefix: -precursor_error_units
-- id: isotope_error_range
+- id: in_isotope_error_range
   doc: "Range of allowed isotope peak errors (MS-GF+ parameter '-ti'). Takes into\
     \ account the error introduced by choosing a non-monoisotopic peak for fragmentation.\
     \ Combined with 'precursor_mass_tolerance'/'precursor_error_units', this determines\
@@ -57,24 +57,24 @@ inputs:
     \ mass 'calc', '-precursor_mass_tolerance 20 -precursor_error_units ppm -isotope_error_range\
     \ -1,2' tests '|exp - calc - n * 1.00335 Da| < 20 ppm' for n = -1, 0, 1, 2. (default:\
     \ '0,1')"
-  type: string
+  type: double
   inputBinding:
     prefix: -isotope_error_range
-- id: fragment_method
+- id: in_fragment_method
   doc: "Fragmentation method ('from_spectrum' relies on spectrum meta data and uses\
     \ CID as fallback option; MS-GF+ parameter '-m') (default: 'from_spectrum' valid:\
     \ 'from_spectrum', 'CID', 'ETD', 'HCD')"
   type: string
   inputBinding:
     prefix: -fragment_method
-- id: instrument
+- id: in_instrument
   doc: "Instrument that generated the data ('low_res'/'high_res' refer to LCQ and\
     \ LTQ instruments; MS-GF+ parameter '-inst') (default: 'low_res' valid: 'low_res',\
     \ 'high_res', 'TOF', 'Q_Exactive')"
   type: string
   inputBinding:
     prefix: -instrument
-- id: enzyme
+- id: in_enzyme
   doc: "Enzyme used for digestion, or type of cleavage. Note: MS-GF+ does not support\
     \ blocking rules. (MS-GF+ parameter '-e') (default: 'Trypsin/P' valid: 'Alpha-lytic\
     \ protease', 'Arg-C/P', 'Asp-N/B', 'Chymotrypsin/P', 'Lys-C/P', 'Lys-N', 'Trypsin/P',\
@@ -82,63 +82,63 @@ inputs:
   type: string
   inputBinding:
     prefix: -enzyme
-- id: protocol
+- id: in_protocol
   doc: "Labeling or enrichment protocol used, if any (MS-GF+ parameter '-p') (default:\
     \ 'automatic' valid: 'automatic', 'phospho', 'iTRAQ', 'iTRAQ_phospho', 'TMT',\
     \ 'none')"
   type: string
   inputBinding:
     prefix: -protocol
-- id: tryptic
+- id: in_tryptic
   doc: "Level of cleavage specificity required (MS-GF+ parameter '-ntt') (default:\
     \ 'fully' valid: 'non', 'semi', 'fully')"
   type: string
   inputBinding:
     prefix: -tryptic
-- id: min_precursor_charge
+- id: in_min_precursor_charge
   doc: "Minimum precursor ion charge (only used for spectra without charge information;\
     \ MS-GF+ parameter '-minCharge') (default: '2' min: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -min_precursor_charge
-- id: max_precursor_charge
+- id: in_max_precursor_charge
   doc: "Maximum precursor ion charge (only used for spectra without charge information;\
     \ MS-GF+ parameter '-maxCharge') (default: '3' min: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -max_precursor_charge
-- id: min_peptide_length
+- id: in_min_peptide_length
   doc: "Minimum peptide length to consider (MS-GF+ parameter '-minLength') (default:\
     \ '6' min: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -min_peptide_length
-- id: max_peptide_length
+- id: in_max_peptide_length
   doc: "Maximum peptide length to consider (MS-GF+ parameter '-maxLength') (default:\
     \ '40' min: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -max_peptide_length
-- id: matches_per_spec
+- id: in_matches_per_spec
   doc: "Number of matches per spectrum to be reported (MS-GF+ parameter '-n') (default:\
     \ '1' min: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -matches_per_spec
-- id: add_features
+- id: in_add_features
   doc: "Output additional features (MS-GF+ parameter '-addFeatures'). This is required\
     \ by Percolator and hence by default enabled. (default: 'true' valid: 'true',\
     \ 'false')"
   type: string
   inputBinding:
     prefix: -add_features
-- id: max_mods
+- id: in_max_mods
   doc: "Maximum number of modifications per peptide. If this value is large, the search\
     \ may take very long. (default: '2' min: '0')"
-  type: string
+  type: long
   inputBinding:
     prefix: -max_mods
-- id: fixed_modifications
+- id: in_fixed_modifications
   doc: "Fixed modifications, specified using Unimod (www.unimod.org) terms, e.g. 'Carbamidomethyl\
     \ (C)' or 'Oxidation (M)' (default: '[Carbamidomethyl (C)]' valid: '15N-oxobutanoic\
     \ (N-term C)', '15N-oxobutanoic (Protein N-term S)', '15N-oxobutanoic (Protein\
@@ -850,10 +850,10 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: string
+  type: long
   inputBinding:
     prefix: -fixed_modifications
-- id: variable_modifications
+- id: in_variable_modifications
   doc: "Variable modifications, specified using Unimod (www.unimod.org) terms, e.g.\
     \ 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Oxidation (M)]' valid:\
     \ '15N-oxobutanoic (N-term C)', '15N-oxobutanoic (Protein N-term S)', '15N-oxobutanoic\
@@ -1565,41 +1565,55 @@ inputs:
     \ 'Xlink:DTSSP (Protein N-term)', 'Xlink:EGS (K)', 'Xlink:EGS (Protein N-term)',\
     \ 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC (C)',\
     \ 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
-  type: string
+  type: long
   inputBinding:
     prefix: -variable_modifications
-- id: java_executable
+- id: in_java_executable
   doc: The Java executable. Usually Java is on the system PATH. If Java is not found,
     use this parameter to specify the full path to Java
   type: File
   inputBinding:
     prefix: -java_executable
-- id: java_memory
+- id: in_java_memory
   doc: "Maximum Java heap size (in MB) (default: '3500')"
-  type: string
+  type: long
   inputBinding:
     prefix: -java_memory
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "Output file (valid formats: 'idXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
+- id: out_mz_id_out
+  doc: "Alternative output file (MS-GF+ parameter '-o')\nEither 'out' or 'mzid_out'\
+    \ are required. They can be used together. (valid formats: 'mzid')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_mz_id_out)
 cwlVersion: v1.1
 baseCommand:
 - MSGFPlusAdapter

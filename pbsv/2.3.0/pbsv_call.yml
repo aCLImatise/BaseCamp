@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- pbsv
+- call
 positional:
 - !Positional
   description: STR   Variant call format (VCF) output.
@@ -21,8 +24,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'STR   Call these SV types: "DEL", "INS", "INV", "DUP", "BND", "CNV".
-    [DEL,INS,INV,DUP,BND,CNV]'
+  description: "STR   Call these SV types: \"DEL\", \"INS\", \"INV\", \"DUP\", \"\
+    BND\", \"CNV\".\n[DEL,INS,INV,DUP,BND,CNV]"
   synonyms:
   - -t
   - --types
@@ -106,8 +109,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: INT   Ignore calls supported by < N reads per strand total across samples
-    [1]
+  description: "INT   Ignore calls supported by < N reads per strand total across\
+    \ samples\n[1]"
   synonyms:
   - -S
   - --call-min-reads-per-strand-all-samples
@@ -135,15 +138,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: INT   Minimum supporting reads to assign a sample a non-reference genotype.
-    [1]
+  description: "INT   Minimum supporting reads to assign a sample a non-reference\n\
+    genotype. [1]"
   synonyms:
   - --gt-min-reads
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: FILE  Annotate variants by comparing with sequences in fasta.Default
-    annotations are ALU, L1, SVA.
+  description: "FILE  Annotate variants by comparing with sequences in fasta.Default\n\
+    annotations are ALU, L1, SVA."
   synonyms:
   - --annotations
   args: !EmptyFlagArg {}
@@ -180,8 +183,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
-    [WARN]'
+  description: "STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).\n\
+    [WARN]"
   synonyms:
   - --log-level
   args: !EmptyFlagArg {}
@@ -192,17 +195,18 @@ named:
   - --log-file
   args: !EmptyFlagArg {}
   optional: true
-command:
-- pbsv
-- call
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - pbsv
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - pbsv
+    - discover
     positional:
     - !Positional
       description: STR   Structural variant signatures output.
@@ -288,11 +292,9 @@ parent: &id001 !Command
       - --log-file
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - pbsv
-    - discover
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this help and exit.
       synonyms:
@@ -330,7 +332,7 @@ parent: &id001 !Command
       \    FILE  Log to a file, instead of stderr.\n\n"
     generated_using: &id003
     - --help
-  - *id002
+  usage: []
   help_flag: !Flag
     description: Show this help and exit.
     synonyms:
@@ -363,6 +365,7 @@ parent: &id001 !Command
     \ ref.var.vcf\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this help and exit.
   synonyms:

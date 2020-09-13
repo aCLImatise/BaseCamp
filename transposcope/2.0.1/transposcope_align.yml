@@ -1,9 +1,12 @@
-&id001 !Command
+&id002 !Command
+command:
+- transposcope
+- align
 positional: []
 named:
 - !Flag
-  description: Path to refFlat.txt (If information regarding the nearest gene should
-    be included.)
+  description: "Path to refFlat.txt (If information regarding the\nnearest gene should\
+    \ be included.)"
   synonyms:
   - --genes
   args: !SimpleFlagArg
@@ -24,24 +27,23 @@ named:
     name: GROUP2
   optional: true
 - !Flag
-  description: 'Flag which determines whether intermediate bam files and fasta files
-    are deleted (default: False)'
+  description: "Flag which determines whether intermediate bam files\nand fasta files\
+    \ are deleted (default: False)\n"
   synonyms:
   - --keep_files
   args: !EmptyFlagArg {}
   optional: true
-command:
-- transposcope
-- align
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - transposcope
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - transposcope
+    - view
     positional:
     - !Positional
       description: The path to the web directory created by the align tool.
@@ -49,11 +51,9 @@ parent: &id002 !Command
       name: web_directory
       optional: false
     named: []
-    command:
-    - transposcope
-    - view
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -68,6 +68,8 @@ parent: &id002 !Command
       \noptional arguments:\n  -h, --help     show this help message and exit\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -87,6 +89,10 @@ parent: &id002 !Command
   generated_using: *id003
 subcommands:
 - !Command
+  command:
+  - transposcope
+  - align
+  - sample_id
   positional:
   - !Positional
     description: ''
@@ -102,23 +108,20 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --genes
-    args: !SimpleFlagArg
-      name: GENES
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
     - --group1
     args: !SimpleFlagArg
       name: GROUP1
     optional: true
-  command:
-  - transposcope
-  - align
-  - index
-  parent: *id001
+  - !Flag
+    description: ''
+    synonyms:
+    - --genes
+    args: !SimpleFlagArg
+      name: GENES
+    optional: true
+  parent: *id002
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -131,88 +134,42 @@ subcommands:
     \                         [--group2 GROUP2] [--keep_files]\n                 \
     \         {melt,tipseqhunter} index bam me_reference\n                       \
     \   host_reference sample_id\nTranspoScope align: error: argument index_type:\
-    \ invalid choice: 'index' (choose from 'melt', 'tipseqhunter')\n"
+    \ invalid choice: 'sample_id' (choose from 'melt', 'tipseqhunter')\n"
   generated_using: *id003
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: TranspoScope
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: align
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --genes
-    args: !SimpleFlagArg
-      name: GENES
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --group1
-    args: !SimpleFlagArg
-      name: GROUP1
-    optional: true
-  command:
-  - transposcope
-  - align
-  - bam
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: ''
-    synonyms:
-    - -h
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n \
-    \                         [--group2 GROUP2] [--keep_files]\n                 \
-    \         {melt,tipseqhunter} index bam me_reference\n                       \
-    \   host_reference sample_id\nTranspoScope align: error: argument index_type:\
-    \ invalid choice: 'bam' (choose from 'melt', 'tipseqhunter')\n"
-  generated_using: *id003
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: TranspoScope
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: align
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --genes
-    args: !SimpleFlagArg
-      name: GENES
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --group1
-    args: !SimpleFlagArg
-      name: GROUP1
-    optional: true
   command:
   - transposcope
   - align
   - me_reference
-  parent: *id001
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: TranspoScope
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: align
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --group1
+    args: !SimpleFlagArg
+      name: GROUP1
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --genes
+    args: !SimpleFlagArg
+      name: GENES
+    optional: true
+  parent: *id002
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -228,6 +185,10 @@ subcommands:
     \ invalid choice: 'me_reference' (choose from 'melt', 'tipseqhunter')\n"
   generated_using: *id003
 - !Command
+  command:
+  - transposcope
+  - align
+  - host_reference
   positional:
   - !Positional
     description: ''
@@ -243,23 +204,20 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --genes
-    args: !SimpleFlagArg
-      name: GENES
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
     - --group1
     args: !SimpleFlagArg
       name: GROUP1
     optional: true
-  command:
-  - transposcope
-  - align
-  - host_reference
-  parent: *id001
+  - !Flag
+    description: ''
+    synonyms:
+    - --genes
+    args: !SimpleFlagArg
+      name: GENES
+    optional: true
+  parent: *id002
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -275,6 +233,10 @@ subcommands:
     \ invalid choice: 'host_reference' (choose from 'melt', 'tipseqhunter')\n"
   generated_using: *id003
 - !Command
+  command:
+  - transposcope
+  - align
+  - index
   positional:
   - !Positional
     description: ''
@@ -290,23 +252,20 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --genes
-    args: !SimpleFlagArg
-      name: GENES
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
     - --group1
     args: !SimpleFlagArg
       name: GROUP1
     optional: true
-  command:
-  - transposcope
-  - align
-  - sample_id
-  parent: *id001
+  - !Flag
+    description: ''
+    synonyms:
+    - --genes
+    args: !SimpleFlagArg
+      name: GENES
+    optional: true
+  parent: *id002
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -319,8 +278,57 @@ subcommands:
     \                         [--group2 GROUP2] [--keep_files]\n                 \
     \         {melt,tipseqhunter} index bam me_reference\n                       \
     \   host_reference sample_id\nTranspoScope align: error: argument index_type:\
-    \ invalid choice: 'sample_id' (choose from 'melt', 'tipseqhunter')\n"
+    \ invalid choice: 'index' (choose from 'melt', 'tipseqhunter')\n"
   generated_using: *id003
+- !Command
+  command:
+  - transposcope
+  - align
+  - bam
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: TranspoScope
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: align
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --group1
+    args: !SimpleFlagArg
+      name: GROUP1
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --genes
+    args: !SimpleFlagArg
+      name: GENES
+    optional: true
+  parent: *id002
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: TranspoScope align [-h] [--genes GENES] [--group1 GROUP1]\n \
+    \                         [--group2 GROUP2] [--keep_files]\n                 \
+    \         {melt,tipseqhunter} index bam me_reference\n                       \
+    \   host_reference sample_id\nTranspoScope align: error: argument index_type:\
+    \ invalid choice: 'bam' (choose from 'melt', 'tipseqhunter')\n"
+  generated_using: *id003
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

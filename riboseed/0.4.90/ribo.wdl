@@ -4,4 +4,7 @@ task Ribo {
   command <<<
     ribo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

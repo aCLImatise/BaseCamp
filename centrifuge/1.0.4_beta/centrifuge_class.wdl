@@ -1,6 +1,6 @@
 version 1.0
 
-task CentrifugeClass {
+task Centrifugeclass {
   input {
     Boolean? query_input_files_fastq
     Boolean? q_seq
@@ -18,11 +18,11 @@ task CentrifugeClass {
     Boolean? no_fw
     Boolean? norc
     Int? min_hit_len
-    Int? report_upto_int
+    Int? report_upto_assignments
     String? host_tax_ids
     String? exclude_tax_ids
     String? out_fmt
-    String? tab_fmt_cols
+    Int? tab_fmt_cols
     Boolean? t_slash_time
     Boolean? quiet
     File? met_file
@@ -34,41 +34,81 @@ task CentrifugeClass {
     Int? seed
     String? non_deterministic
     Boolean? h_slash_help
+    String cf_idx
+    Int m_one
+    Int m_two
+    String var_35
+    String report
+    String specified
+    File file
+    String files
+    String index
+    String many
+    File filename
+    String for
+    String times_dot
+    String with
+    String e_dot_gdot
+    String classification
+    String prefix
+    String tabular
+    String unpaired
+    String var_output
   }
   command <<<
-    centrifuge-class \
-      ~{true="-q" false="" query_input_files_fastq} \
-      ~{true="--qseq" false="" q_seq} \
-      ~{true="-f" false="" query_input_files_multifasta} \
-      ~{true="-r" false="" query_input_files_raw} \
-      ~{true="-c" false="" m_m_r} \
+    centrifuge_class \
+      ~{cf_idx} \
+      ~{m_one} \
+      ~{m_two} \
+      ~{var_35} \
+      ~{report} \
+      ~{specified} \
+      ~{file} \
+      ~{files} \
+      ~{index} \
+      ~{many} \
+      ~{filename} \
+      ~{for} \
+      ~{times_dot} \
+      ~{with} \
+      ~{e_dot_gdot} \
+      ~{classification} \
+      ~{prefix} \
+      ~{tabular} \
+      ~{unpaired} \
+      ~{var_output} \
+      ~{if (query_input_files_fastq) then "-q" else ""} \
+      ~{if (q_seq) then "--qseq" else ""} \
+      ~{if (query_input_files_multifasta) then "-f" else ""} \
+      ~{if (query_input_files_raw) then "-r" else ""} \
+      ~{if (m_m_r) then "-c" else ""} \
       ~{if defined(s_slash_skip) then ("-s/--skip " +  '"' + s_slash_skip + '"') else ""} \
       ~{if defined(us_lash_up_to) then ("-u/--upto " +  '"' + us_lash_up_to + '"') else ""} \
       ~{if defined(five_slash_trim_five) then ("-5/--trim5 " +  '"' + five_slash_trim_five + '"') else ""} \
       ~{if defined(three_slash_trim_three) then ("-3/--trim3 " +  '"' + three_slash_trim_three + '"') else ""} \
-      ~{true="--phred33" false="" phred_three_three} \
-      ~{true="--phred64" false="" phred_six_four} \
-      ~{true="--int-quals" false="" int_quals} \
-      ~{true="--ignore-quals" false="" ignore_quals} \
-      ~{true="--nofw" false="" no_fw} \
-      ~{true="--norc" false="" norc} \
+      ~{if (phred_three_three) then "--phred33" else ""} \
+      ~{if (phred_six_four) then "--phred64" else ""} \
+      ~{if (int_quals) then "--int-quals" else ""} \
+      ~{if (ignore_quals) then "--ignore-quals" else ""} \
+      ~{if (no_fw) then "--nofw" else ""} \
+      ~{if (norc) then "--norc" else ""} \
       ~{if defined(min_hit_len) then ("--min-hitlen " +  '"' + min_hit_len + '"') else ""} \
-      ~{if defined(report_upto_int) then ("-k " +  '"' + report_upto_int + '"') else ""} \
+      ~{if defined(report_upto_assignments) then ("-k " +  '"' + report_upto_assignments + '"') else ""} \
       ~{if defined(host_tax_ids) then ("--host-taxids " +  '"' + host_tax_ids + '"') else ""} \
       ~{if defined(exclude_tax_ids) then ("--exclude-taxids " +  '"' + exclude_tax_ids + '"') else ""} \
       ~{if defined(out_fmt) then ("--out-fmt " +  '"' + out_fmt + '"') else ""} \
       ~{if defined(tab_fmt_cols) then ("--tab-fmt-cols " +  '"' + tab_fmt_cols + '"') else ""} \
-      ~{true="-t/--time" false="" t_slash_time} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (t_slash_time) then "-t/--time" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(met_file) then ("--met-file " +  '"' + met_file + '"') else ""} \
-      ~{true="--met-stderr" false="" met_stderr} \
+      ~{if (met_stderr) then "--met-stderr" else ""} \
       ~{if defined(met) then ("--met " +  '"' + met + '"') else ""} \
       ~{if defined(p_slash_threads) then ("-p/--threads " +  '"' + p_slash_threads + '"') else ""} \
-      ~{true="--mm" false="" mm} \
-      ~{true="--qc-filter" false="" qc_filter} \
+      ~{if (mm) then "--mm" else ""} \
+      ~{if (qc_filter) then "--qc-filter" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(non_deterministic) then ("--non-deterministic " +  '"' + non_deterministic + '"') else ""} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
     query_input_files_fastq: "query input files are FASTQ .fq/.fastq (default)"
@@ -87,11 +127,11 @@ task CentrifugeClass {
     no_fw: "do not align forward (original) version of read (off)"
     norc: "do not align reverse-complement version of read (off)"
     min_hit_len: "minimum length of partial hits (default 22, must be greater than 15)"
-    report_upto_int: "report upto <int> distinct, primary assignments for each read or pair"
+    report_upto_assignments: "report upto <int> distinct, primary assignments for each read or pair"
     host_tax_ids: "comma-separated list of taxonomic IDs that will be preferred in classification"
     exclude_tax_ids: "comma-separated list of taxonomic IDs that will be excluded in classification"
     out_fmt: "define output format, either 'tab' or 'sam' (tab)"
-    tab_fmt_cols: "columns in tabular format, comma separated  default: readID,seqID,taxID,score,2ndBestScore,hitLength,queryLength,numMatches"
+    tab_fmt_cols: "columns in tabular format, comma separated\\ndefault: readID,seqID,taxID,score,2ndBestScore,hitLength,queryLength,numMatches"
     t_slash_time: "print wall-clock time taken by search phases"
     quiet: "print nothing to stderr except serious errors"
     met_file: "send metrics to file at <path> (off)"
@@ -103,5 +143,28 @@ task CentrifugeClass {
     seed: "seed for random number generator (0)"
     non_deterministic: "rand. gen. arbitrarily instead of using read attributes"
     h_slash_help: "print this usage message"
+    cf_idx: ""
+    m_one: ""
+    m_two: ""
+    var_35: ""
+    report: ""
+    specified: ""
+    file: ""
+    files: ""
+    index: ""
+    many: ""
+    filename: ""
+    for: ""
+    times_dot: ""
+    with: ""
+    e_dot_gdot: ""
+    classification: ""
+    prefix: ""
+    tabular: ""
+    unpaired: ""
+    var_output: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

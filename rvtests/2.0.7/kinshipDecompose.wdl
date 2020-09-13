@@ -7,11 +7,14 @@ task KinshipDecompose {
   }
   command <<<
     kinshipDecompose \
-      ~{true="--in" false="" in} \
-      ~{true="--out" false="" out}
+      ~{if (in) then "--in" else ""} \
+      ~{if (out) then "--out" else ""}
   >>>
   parameter_meta {
     in: ": Input kinship file"
     out: ": Output prefix for autosomal kinship calculation"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

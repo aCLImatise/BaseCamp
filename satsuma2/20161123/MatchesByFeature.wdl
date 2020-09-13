@@ -2,7 +2,7 @@ version 1.0
 
 task MatchesByFeature {
   input {
-    String gff_three_file
+    Int gff_three_file
     String gff_features
     String match_files
   }
@@ -16,5 +16,8 @@ task MatchesByFeature {
     gff_three_file: ""
     gff_features: ""
     match_files: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

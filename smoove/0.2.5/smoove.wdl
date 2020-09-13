@@ -4,4 +4,7 @@ task Smoove {
   command <<<
     smoove
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task SeMetaAssign {
   command <<<
     SeMeta_Assign
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task PrecipitateSAM {
   command <<<
     precipitateSAM
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

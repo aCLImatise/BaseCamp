@@ -2,40 +2,34 @@ version 1.0
 
 task Vcfsort {
   input {
-    Boolean? equivalent_to_ve
-    Boolean? show_ends
-    Boolean? number
-    Boolean? squeeze_blank
-    String? to_vt
-    String? show_tabs
-    Boolean? ignored
-    String? show_non_printing
+    Boolean? invalid_option_
+    Boolean? print_first_n
+    Boolean? never_print_headers
+    Boolean? always_print_headers
     String cat
-    String? option
+    String head
+    File? file
   }
   command <<<
     vcfsort \
       ~{cat} \
-      ~{option} \
-      ~{true="-e" false="" equivalent_to_ve} \
-      ~{true="--show-ends" false="" show_ends} \
-      ~{true="--number" false="" number} \
-      ~{true="--squeeze-blank" false="" squeeze_blank} \
-      ~{if defined(to_vt) then ("-t " +  '"' + to_vt + '"') else ""} \
-      ~{if defined(show_tabs) then ("--show-tabs " +  '"' + show_tabs + '"') else ""} \
-      ~{true="-u" false="" ignored} \
-      ~{if defined(show_non_printing) then ("--show-nonprinting " +  '"' + show_non_printing + '"') else ""}
+      ~{head} \
+      ~{file} \
+      ~{if (invalid_option_) then "-1000" else ""} \
+      ~{if (print_first_n) then "-c" else ""} \
+      ~{if (never_print_headers) then "-q" else ""} \
+      ~{if (always_print_headers) then "-v" else ""}
   >>>
   parameter_meta {
-    equivalent_to_ve: "equivalent to -vE"
-    show_ends: "display $ at end of each line"
-    number: "number all output lines"
-    squeeze_blank: "suppress repeated empty output lines"
-    to_vt: "to -vT"
-    show_tabs: "TAB characters as ^I"
-    ignored: "(ignored)"
-    show_non_printing: "^ and M- notation, except for LFD and TAB"
+    invalid_option_: ": invalid option -- '-'"
+    print_first_n: "[-]N[kbm]    Print first N bytes"
+    never_print_headers: "Never print headers"
+    always_print_headers: "Always print headers"
     cat: ""
-    option: ""
+    head: ""
+    file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

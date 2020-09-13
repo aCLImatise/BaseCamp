@@ -1,7 +1,10 @@
 version 1.0
 
-task _ssuMask {
+task Ssumask {
   command <<<
-    _ssu-mask
+    _ssu_mask
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

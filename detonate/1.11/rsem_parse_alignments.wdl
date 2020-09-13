@@ -1,7 +1,10 @@
 version 1.0
 
-task RsemParseAlignments {
+task Rsemparsealignments {
   command <<<
-    rsem-parse-alignments
+    rsem_parse_alignments
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

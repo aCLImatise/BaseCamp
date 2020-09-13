@@ -7,11 +7,14 @@ task Espell {
   }
   command <<<
     espell \
-      ~{true="-db" false="" db} \
-      ~{true="-query" false="" query}
+      ~{if (db) then "-db" else ""} \
+      ~{if (query) then "-query" else ""}
   >>>
   parameter_meta {
     db: "Database name"
     query: "Query string"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

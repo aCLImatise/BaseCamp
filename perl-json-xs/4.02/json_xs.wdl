@@ -4,4 +4,7 @@ task JsonXs {
   command <<<
     json_xs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task ValidateContigsMummer {
   input {
-    String? min_contig
-    String? similar
+    Int? min_contig
+    Float? similar
     String ref_dot_fa
     String contigs_dot_fa_dot
   }
@@ -19,5 +19,8 @@ task ValidateContigsMummer {
     similar: "(=0.95)              similarity"
     ref_dot_fa: ""
     contigs_dot_fa_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

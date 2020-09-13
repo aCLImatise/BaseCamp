@@ -4,4 +4,7 @@ task Scluster {
   command <<<
     scluster
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

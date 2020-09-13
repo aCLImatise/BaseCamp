@@ -4,4 +4,7 @@ task Tiling2cam {
   command <<<
     tiling2cam
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

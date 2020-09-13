@@ -20,4 +20,7 @@ task FfindexReduce {
     program: ""
     program_args: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

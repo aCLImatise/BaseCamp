@@ -1,7 +1,10 @@
 version 1.0
 
-task JaffaDirect {
+task Jaffadirect {
   command <<<
-    jaffa-direct
+    jaffa_direct
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

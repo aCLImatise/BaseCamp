@@ -17,7 +17,11 @@ task RnftoolsCuresim2rnf {
   parameter_meta {
     cure_sim_fast_q: "CuReSim FASTQ file (- for standard input)."
     rnf_fast_q: "Output FASTQ file (- for standard output)."
-    fa_idx: "FAI index of the reference FASTA file (- for standard input). It can be created using 'samtools faidx'."
-    genome_id: "Genome ID in RNF (default: 1)."
+    fa_idx: "FAI index of the reference FASTA file (- for standard\\ninput). It can be created using 'samtools faidx'."
+    genome_id: "Genome ID in RNF (default: 1).\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_rnf_fast_q = "${in_rnf_fast_q}"
   }
 }

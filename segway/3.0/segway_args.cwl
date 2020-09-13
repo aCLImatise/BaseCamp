@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../segway_args.cwl
 inputs:
-- id: segway
+- id: in_segway
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: global_args
+- id: in_global_args
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: command
+- id: in_command
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: args
+- id: in_args
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - segway

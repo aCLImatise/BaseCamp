@@ -2,9 +2,9 @@ version 1.0
 
 task CorrectOverlaps {
   input {
-    Boolean? path_sequence_store
-    Boolean? ovlstore_path_overlap
-    Boolean? bgn_end_only
+    Boolean? seqstore_path_sequence
+    Boolean? path_overlap_store
+    Boolean? bgn_end_compute
     Boolean? inputname_read_corrections
     Boolean? outputname_write_rates
     Boolean? numthreads_used_thread
@@ -26,20 +26,20 @@ task CorrectOverlaps {
       ~{a} \
       ~{sequence} \
       ~{store} \
-      ~{true="-S" false="" path_sequence_store} \
-      ~{true="-O" false="" ovlstore_path_overlap} \
-      ~{true="-R" false="" bgn_end_only} \
-      ~{true="-c" false="" inputname_read_corrections} \
-      ~{true="-o" false="" outputname_write_rates} \
-      ~{true="-t" false="" numthreads_used_thread} \
-      ~{true="-l" false="" ignore_overlaps_shorter} \
-      ~{true="-e" false="" maxerate_ignore_overlaps} \
-      ~{true="-s" false="" check_trival_dna}
+      ~{if (seqstore_path_sequence) then "-S" else ""} \
+      ~{if (path_overlap_store) then "-O" else ""} \
+      ~{if (bgn_end_compute) then "-R" else ""} \
+      ~{if (inputname_read_corrections) then "-c" else ""} \
+      ~{if (outputname_write_rates) then "-o" else ""} \
+      ~{if (numthreads_used_thread) then "-t" else ""} \
+      ~{if (ignore_overlaps_shorter) then "-l" else ""} \
+      ~{if (maxerate_ignore_overlaps) then "-e" else ""} \
+      ~{if (check_trival_dna) then "-s" else ""}
   >>>
   parameter_meta {
-    path_sequence_store: "seqStore           path to a sequence store"
-    ovlstore_path_overlap: "ovlStore           path to an overlap store"
-    bgn_end_only: "bgn end            only compute for reads bgn-end"
+    seqstore_path_sequence: "seqStore           path to a sequence store"
+    path_overlap_store: "ovlStore           path to an overlap store"
+    bgn_end_compute: "bgn end            only compute for reads bgn-end"
     inputname_read_corrections: "input-name         read corrections from 'input-name'"
     outputname_write_rates: "output-name        write updated error rates to 'output-name'"
     numthreads_used_thread: "num-threads        not used; only one thread used"
@@ -52,5 +52,8 @@ task CorrectOverlaps {
     a: ""
     sequence: ""
     store: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

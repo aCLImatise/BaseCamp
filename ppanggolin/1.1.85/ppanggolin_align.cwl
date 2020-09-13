@@ -1,88 +1,112 @@
 class: CommandLineTool
 id: ../../../ppanggolin_align.cwl
 inputs:
-- id: pan_genome
-  doc: 'The pangenome .h5 file (default: None)'
+- id: in_p
+  doc: '[--defrag]'
   type: string
+  inputBinding:
+    prefix: -p
+- id: in_pan_genome
+  doc: 'The pangenome .h5 file (default: None)'
+  type: File
   inputBinding:
     prefix: --pangenome
-- id: output
-  doc: 'Output directory where the file(s) will be written (default: None)'
-  type: string
+- id: in_output
+  doc: "Output directory where the file(s) will be written\n(default: None)"
+  type: File
   inputBinding:
     prefix: --output
-- id: proteins
-  doc: 'proteins sequences to align on the pangenome gene families (default: None)'
+- id: in_proteins
+  doc: "proteins sequences to align on the pangenome gene\nfamilies (default: None)"
   type: string
   inputBinding:
     prefix: --proteins
-- id: annotation
-  doc: 'annotation input file (gff or gbff) from which to predict RGPs and partitions
-    (default: None)'
-  type: string
+- id: in_annotation
+  doc: "annotation input file (gff or gbff) from which to\npredict RGPs and partitions\
+    \ (default: None)"
+  type: File
   inputBinding:
     prefix: --annotation
-- id: defrag
-  doc: 'Use the defragmentation strategy to associate potential fragments with their
-    original gene family. (default: False)'
+- id: in_defrag
+  doc: "Use the defragmentation strategy to associate\npotential fragments with their\
+    \ original gene family.\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --defrag
-- id: identity
+- id: in_identity
   doc: 'min identity percentage threshold (default: 0.5)'
-  type: string
+  type: long
   inputBinding:
     prefix: --identity
-- id: coverage
+- id: in_coverage
   doc: 'min coverage percentage threshold (default: 0.8)'
-  type: string
+  type: long
   inputBinding:
     prefix: --coverage
-- id: translation_table
+- id: in_translation_table
   doc: 'Translation table (genetic code) to use. (default: 11)'
-  type: string
+  type: long
   inputBinding:
     prefix: --translation_table
-- id: get_info
-  doc: 'Use this option to extract info related to the best hit of each query, such
-    as the RGP it is in, or the spots. (default: False)'
+- id: in_get_info
+  doc: "Use this option to extract info related to the best\nhit of each query, such\
+    \ as the RGP it is in, or the\nspots. (default: False)"
   type: boolean
   inputBinding:
     prefix: --getinfo
-- id: draw_related
-  doc: 'Draw figures and provide graphs in a gexf format of the eventual spots associated
-    to the input proteins (default: False)'
+- id: in_draw_related
+  doc: "Draw figures and provide graphs in a gexf format of\nthe eventual spots associated\
+    \ to the input proteins\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --draw_related
-- id: tmpdir
+- id: in_tmpdir
   doc: 'directory for storing temporary files (default: /tmp)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-- id: verbose
-  doc: 'Indicate verbose level (0 for warning and errors only, 1 for info, 2 for debug)
-    (default: 1)'
+- id: in_verbose
+  doc: "Indicate verbose level (0 for warning and errors only,\n1 for info, 2 for\
+    \ debug) (default: 1)"
   type: string
   inputBinding:
     prefix: --verbose
-- id: log
+- id: in_log
   doc: 'log output file (default: stdout)'
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: cpu
+- id: in_cpu
   doc: 'Number of available cpus (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpu
-- id: force
-  doc: 'Force writing in output directory and in pangenome output file. (default:
-    False)'
-  type: boolean
+- id: in_force
+  doc: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  type: File
   inputBinding:
     prefix: --force
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output directory where the file(s) will be written\n(default: None)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_log
+  doc: 'log output file (default: stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log)
+- id: out_force
+  doc: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_force)
 cwlVersion: v1.1
 baseCommand:
 - ppanggolin

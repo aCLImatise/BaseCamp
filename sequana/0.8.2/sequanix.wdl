@@ -4,4 +4,7 @@ task Sequanix {
   command <<<
     sequanix
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

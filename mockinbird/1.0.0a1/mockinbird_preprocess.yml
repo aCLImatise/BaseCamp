@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- mockinbird
+- preprocess
 positional: []
 named:
 - !Flag
@@ -7,28 +10,94 @@ named:
   - --log_level
   args: !ChoiceFlagArg
     choices: !!set
+      ? debug
+      ? info
       ? warn
       ? error
-      ? info
-      ? debug
   optional: true
-command:
-- mockinbird
-- preprocess
 parent: &id002 !Command
-  positional: []
-  named: []
   command:
   - mockinbird
+  positional: []
+  named: []
   parent:
   subcommands:
   - *id001
   - &id003 !Command
+    command:
+    - mockinbird
+    - flip_mate
+    positional: []
+    named: []
+    parent: *id002
+    subcommands:
+    - !Command
+      command:
+      - mockinbird
+      - flip_mate
+      - output_bam
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: mockinbird
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: flip_mate
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: input_bam
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: output_bam
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: mockinbird flip_mate [-h] input_bam output_bam\nmockinbird\
+        \ flip_mate: error: the following arguments are required: output_bam\n"
+      generated_using: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: mockinbird flip_mate [-h] input_bam output_bam\n\nflip the\
+      \ strand of the second read. Used for generating a normalizing pileup\nfrom\
+      \ a paired-end sequenced library\n\npositional arguments:\n  input_bam   path\
+      \ to paired-end bam file\n  output_bam  path to output bam file\n\noptional\
+      \ arguments:\n  -h, --help  show this help message and exit\n"
+    generated_using: &id005
+    - --help
+  - &id004 !Command
+    command:
+    - mockinbird
+    - postprocess
     positional: []
     named:
     - !Flag
-      description: 'preprocessing filename prefix - only required if there are multiple
-        table files in the specified preprocess directory (default: None)'
+      description: "preprocessing filename prefix - only required if there\nare multiple\
+        \ table files in the specified preprocess\ndirectory (default: None)"
       synonyms:
       - --prefix
       args: !SimpleFlagArg
@@ -40,83 +109,40 @@ parent: &id002 !Command
       - --log_level
       args: !ChoiceFlagArg
         choices: !!set
+          ? debug
+          ? info
           ? warn
           ? error
-          ? info
-          ? debug
       optional: true
-    command:
-    - mockinbird
-    - postprocess
     parent: *id002
     subcommands:
     - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: mockinbird
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: postprocess
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - --prefix
-        args: !SimpleFlagArg
-          name: PREFIX
-        optional: true
-      command:
-      - mockinbird
-      - postprocess
-      - preprocess_dir
-      parent: *id003
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: mockinbird postprocess [-h] [--prefix PREFIX]\n         \
-        \                     [--log_level {debug,info,warn,error}]\n            \
-        \                  [--version]\n                              preprocess_dir\
-        \ output_dir config_file\nmockinbird postprocess: error: argument preprocess_dir:\
-        \ 'preprocess_dir' is not an existing directory\n"
-      generated_using: &id004
-      - --help
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: mockinbird
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: postprocess
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - --prefix
-        args: !SimpleFlagArg
-          name: PREFIX
-        optional: true
       command:
       - mockinbird
       - postprocess
       - output_dir
-      parent: *id003
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: mockinbird
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: postprocess
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --prefix
+        args: !SimpleFlagArg
+          name: PREFIX
+        optional: true
+      parent: *id004
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: ''
         synonyms:
@@ -130,8 +156,12 @@ parent: &id002 !Command
         \                  [--version]\n                              preprocess_dir\
         \ output_dir config_file\nmockinbird postprocess: error: argument preprocess_dir:\
         \ 'output_dir' is not an existing directory\n"
-      generated_using: *id004
+      generated_using: *id005
     - !Command
+      command:
+      - mockinbird
+      - postprocess
+      - exist
       positional:
       - !Positional
         description: ''
@@ -151,12 +181,9 @@ parent: &id002 !Command
         args: !SimpleFlagArg
           name: PREFIX
         optional: true
-      command:
-      - mockinbird
-      - postprocess
-      - config_file
-      parent: *id003
+      parent: *id004
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: ''
         synonyms:
@@ -169,8 +196,50 @@ parent: &id002 !Command
         \                     [--log_level {debug,info,warn,error}]\n            \
         \                  [--version]\n                              preprocess_dir\
         \ output_dir config_file\nmockinbird postprocess: error: argument preprocess_dir:\
-        \ 'config_file' is not an existing directory\n"
-      generated_using: *id004
+        \ 'exist' is not an existing directory\n"
+      generated_using: *id005
+    - !Command
+      command:
+      - mockinbird
+      - postprocess
+      - preprocess_dir
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: mockinbird
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: postprocess
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --prefix
+        args: !SimpleFlagArg
+          name: PREFIX
+        optional: true
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: mockinbird postprocess [-h] [--prefix PREFIX]\n         \
+        \                     [--log_level {debug,info,warn,error}]\n            \
+        \                  [--version]\n                              preprocess_dir\
+        \ output_dir config_file\nmockinbird postprocess: error: argument preprocess_dir:\
+        \ 'preprocess_dir' is not an existing directory\n"
+      generated_using: *id005
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -200,70 +269,8 @@ parent: &id002 !Command
       \  --log_level {debug,info,warn,error}\n                        verbosity level\
       \ of the logger (default: info)\n  --version, -v         show program's version\
       \ number and exit\n"
-    generated_using: *id004
-  - &id005 !Command
-    positional: []
-    named: []
-    command:
-    - mockinbird
-    - flip_mate
-    parent: *id002
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: mockinbird
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: flip_mate
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: input_bam
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: output_bam
-        optional: false
-      named: []
-      command:
-      - mockinbird
-      - flip_mate
-      - output_bam
-      parent: *id005
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: mockinbird flip_mate [-h] input_bam output_bam\nmockinbird\
-        \ flip_mate: error: the following arguments are required: output_bam\n"
-      generated_using: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: mockinbird flip_mate [-h] input_bam output_bam\n\nflip the\
-      \ strand of the second read. Used for generating a normalizing pileup\nfrom\
-      \ a paired-end sequenced library\n\npositional arguments:\n  input_bam   path\
-      \ to paired-end bam file\n  output_bam  path to output bam file\n\noptional\
-      \ arguments:\n  -h, --help  show this help message and exit\n"
-    generated_using: *id004
+    generated_using: *id005
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -284,167 +291,39 @@ parent: &id002 !Command
     \  {preprocess,postprocess,flip_mate}\n    preprocess          run preprocessing\
     \ pipeline\n    postprocess         run postprocessing pipeline\n    flip_mate\
     \           flip strand of second read\n"
-  generated_using: *id004
+  generated_using: *id005
 subcommands:
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: mockinbird
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: preprocess
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --log_level
-    args: !ChoiceFlagArg
-      choices: !!set
-        ? warn
-        ? error
-        ? info
-        ? debug
-    optional: true
-  command:
-  - mockinbird
-  - preprocess
-  - parclip_fastq
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: ''
-    synonyms:
-    - -h
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: mockinbird preprocess [-h] [--log_level {debug,info,warn,error}]\n\
-    \                             [--version]\n                             parclip_fastq\
-    \ output_dir prefix config_file\nmockinbird preprocess: error: argument parclip_fastq:\
-    \ 'parclip_fastq' does not exist\n"
-  generated_using: *id004
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: mockinbird
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: preprocess
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --log_level
-    args: !ChoiceFlagArg
-      choices: !!set
-        ? warn
-        ? error
-        ? info
-        ? debug
-    optional: true
-  command:
-  - mockinbird
-  - preprocess
-  - output_dir
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: ''
-    synonyms:
-    - -h
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: mockinbird preprocess [-h] [--log_level {debug,info,warn,error}]\n\
-    \                             [--version]\n                             parclip_fastq\
-    \ output_dir prefix config_file\nmockinbird preprocess: error: argument parclip_fastq:\
-    \ 'output_dir' does not exist\n"
-  generated_using: *id004
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: mockinbird
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: preprocess
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --log_level
-    args: !ChoiceFlagArg
-      choices: !!set
-        ? warn
-        ? error
-        ? info
-        ? debug
-    optional: true
-  command:
-  - mockinbird
-  - preprocess
-  - prefix
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: ''
-    synonyms:
-    - -h
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: mockinbird preprocess [-h] [--log_level {debug,info,warn,error}]\n\
-    \                             [--version]\n                             parclip_fastq\
-    \ output_dir prefix config_file\nmockinbird preprocess: error: argument parclip_fastq:\
-    \ 'prefix' does not exist\n"
-  generated_using: *id004
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: mockinbird
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: preprocess
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --log_level
-    args: !ChoiceFlagArg
-      choices: !!set
-        ? warn
-        ? error
-        ? info
-        ? debug
-    optional: true
   command:
   - mockinbird
   - preprocess
   - config_file
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: mockinbird
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: preprocess
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --log_level
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? debug
+        ? info
+        ? warn
+        ? error
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -457,7 +336,140 @@ subcommands:
     \                             [--version]\n                             parclip_fastq\
     \ output_dir prefix config_file\nmockinbird preprocess: error: argument parclip_fastq:\
     \ 'config_file' does not exist\n"
-  generated_using: *id004
+  generated_using: *id005
+- !Command
+  command:
+  - mockinbird
+  - preprocess
+  - output_dir
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: mockinbird
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: preprocess
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --log_level
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? debug
+        ? info
+        ? warn
+        ? error
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: mockinbird preprocess [-h] [--log_level {debug,info,warn,error}]\n\
+    \                             [--version]\n                             parclip_fastq\
+    \ output_dir prefix config_file\nmockinbird preprocess: error: argument parclip_fastq:\
+    \ 'output_dir' does not exist\n"
+  generated_using: *id005
+- !Command
+  command:
+  - mockinbird
+  - preprocess
+  - parclip_fastq
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: mockinbird
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: preprocess
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --log_level
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? debug
+        ? info
+        ? warn
+        ? error
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: mockinbird preprocess [-h] [--log_level {debug,info,warn,error}]\n\
+    \                             [--version]\n                             parclip_fastq\
+    \ output_dir prefix config_file\nmockinbird preprocess: error: argument parclip_fastq:\
+    \ 'parclip_fastq' does not exist\n"
+  generated_using: *id005
+- !Command
+  command:
+  - mockinbird
+  - preprocess
+  - exist
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: mockinbird
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: preprocess
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --log_level
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? debug
+        ? info
+        ? warn
+        ? error
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: mockinbird preprocess [-h] [--log_level {debug,info,warn,error}]\n\
+    \                             [--version]\n                             parclip_fastq\
+    \ output_dir prefix config_file\nmockinbird preprocess: error: argument parclip_fastq:\
+    \ 'exist' does not exist\n"
+  generated_using: *id005
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -483,4 +495,4 @@ help_text: "usage: mockinbird preprocess [-h] [--log_level {debug,info,warn,erro
   \  -h, --help            show this help message and exit\n  --log_level {debug,info,warn,error}\n\
   \                        verbosity level of the logger (default: info)\n  --version,\
   \ -v         show program's version number and exit\n"
-generated_using: *id004
+generated_using: *id005

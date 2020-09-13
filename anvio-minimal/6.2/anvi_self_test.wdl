@@ -1,20 +1,23 @@
 version 1.0
 
-task AnviSelfTest {
+task Anviselftest {
   input {
-    String? suite
-    Boolean? debug
     Boolean? force
+    Boolean? debug
+    String? suite
   }
   command <<<
-    anvi-self-test \
-      ~{if defined(suite) then ("--suite " +  '"' + suite + '"') else ""} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--force" false="" force}
+    anvi_self_test \
+      ~{if (force) then "--force" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if defined(suite) then ("--suite " +  '"' + suite + '"') else ""}
   >>>
   parameter_meta {
-    suite: ""
-    debug: ""
     force: ""
+    debug: ""
+    suite: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Gmapindex {
   command <<<
     gmapindex
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

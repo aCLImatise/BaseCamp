@@ -11,4 +11,7 @@ task MockinbirdPreprocess {
   parameter_meta {
     log_level: "verbosity level of the logger (default: info)"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

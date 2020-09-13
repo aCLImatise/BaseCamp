@@ -1,6 +1,6 @@
 version 1.0
 
-task RsemScanForPairedEndReads {
+task Rsemscanforpairedendreads {
   input {
     String number_of_threads
     String input_dot
@@ -8,7 +8,7 @@ task RsemScanForPairedEndReads {
     String output_dot_bam
   }
   command <<<
-    rsem-scan-for-paired-end-reads \
+    rsem_scan_for_paired_end_reads \
       ~{number_of_threads} \
       ~{input_dot} \
       ~{sam_slash_bam_slash_cram} \
@@ -19,5 +19,8 @@ task RsemScanForPairedEndReads {
     input_dot: ""
     sam_slash_bam_slash_cram: ""
     output_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

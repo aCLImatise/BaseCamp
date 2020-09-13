@@ -2,22 +2,28 @@ version 1.0
 
 task PvacseqGenerateProteinFasta {
   input {
-    String? downstream_sequence_length
+    Int? downstream_sequence_length
+    String positional_arguments
     String input_file
     String peptide_sequence_length
-    String output_file
+    String output_fasta_file
   }
   command <<<
     pvacseq generate_protein_fasta \
+      ~{positional_arguments} \
       ~{input_file} \
       ~{peptide_sequence_length} \
-      ~{output_file} \
+      ~{output_fasta_file} \
       ~{if defined(downstream_sequence_length) then ("--downstream-sequence-length " +  '"' + downstream_sequence_length + '"') else ""}
   >>>
   parameter_meta {
-    downstream_sequence_length: "Cap to limit the downstream sequence length for frameshifts when creating the fasta file. Use 'full' to include the full downstream sequence. Default: 1000"
-    input_file: "A VEP-annotated single-sample VCF containing transcript, Wildtype protein sequence, and Downstream protein sequence information"
-    peptide_sequence_length: "Length of the peptide sequence to use when creating the FASTA."
-    output_file: "The output fasta file"
+    downstream_sequence_length: "Cap to limit the downstream sequence length for\\nframeshifts when creating the fasta file. Use 'full'\\nto include the full downstream sequence. Default: 1000\\n"
+    positional_arguments: "positional arguments:"
+    input_file: "A VEP-annotated single-sample VCF containing\\ntranscript, Wildtype protein sequence, and Downstream\\nprotein sequence information"
+    peptide_sequence_length: "Length of the peptide sequence to use when creating\\nthe FASTA."
+    output_fasta_file: "The output fasta file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

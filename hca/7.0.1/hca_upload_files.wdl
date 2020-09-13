@@ -12,15 +12,18 @@ task HcaUploadFiles {
     hca upload files \
       ~{if defined(target_filename) then ("--target-filename " +  '"' + target_filename + '"') else ""} \
       ~{if defined(file_extension) then ("--file-extension " +  '"' + file_extension + '"') else ""} \
-      ~{true="--no-transfer-acceleration" false="" no_transfer_acceleration} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--sync" false="" sync}
+      ~{if (no_transfer_acceleration) then "--no-transfer-acceleration" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (sync) then "--sync" else ""}
   >>>
   parameter_meta {
-    target_filename: "Filename to use in upload area (if you wish to change it during upload). Only valid when one file is being uploaded."
-    file_extension: "File extension to limit which files should be uploaded Only valid when directories are targeted for upload."
-    no_transfer_acceleration: "Don't use Amazon S3 Transfer Acceleration. By default we using the aforementioned service to upload via an endpoint geographically close to you, instead of directly to Virginia, USA. However, in some situations this can be slower. Use the S3 Transfer Acceleration Speed Comparison Tool to determine whether you should use this option: https://s3-accelerate- speedtest.s3-accelerate.amazonaws.com/en/accelerate- speed-comparsion.html."
+    target_filename: "Filename to use in upload area (if you wish to change\\nit during upload). Only valid when one file is being\\nuploaded."
+    file_extension: "File extension to limit which files should be uploaded\\nOnly valid when directories are targeted for upload."
+    no_transfer_acceleration: "Don't use Amazon S3 Transfer Acceleration. By default\\nwe using the aforementioned service to upload via an\\nendpoint geographically close to you, instead of\\ndirectly to Virginia, USA. However, in some situations\\nthis can be slower. Use the S3 Transfer Acceleration\\nSpeed Comparison Tool to determine whether you should\\nuse this option: https://s3-accelerate-\\nspeedtest.s3-accelerate.amazonaws.com/en/accelerate-\\nspeed-comparsion.html."
     quiet: "Suppress normal output."
-    sync: "If set to true, do not upload files to an area in which the file has already been uploaded before"
+    sync: "If set to true, do not upload files to an area in\\nwhich the file has already been uploaded before\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -7,25 +7,25 @@ task LuciphorAdapter {
     File? out
     File? executable
     String? fragment_method
-    String? fragment_mass_tolerance
+    Float? fragment_mass_tolerance
     String? fragment_error_units
-    String? min_mz
-    String? target_modifications
-    String? neutral_losses
-    String? decoy_mass
-    String? decoy_neutral_losses
-    String? max_charge_state
-    String? max_peptide_length
-    String? max_num_perm
-    String? modeling_score_threshold
-    String? scoring_threshold
-    String? min_num_psms_model
-    String? num_threads
-    String? run_mode
+    Int? min_mz
+    Int? target_modifications
+    Float? neutral_losses
+    Int? decoy_mass
+    Float? decoy_neutral_losses
+    Int? max_charge_state
+    Int? max_peptide_length
+    Int? max_num_perm
+    Int? modeling_score_threshold
+    Int? scoring_threshold
+    Int? min_num_psms_model
+    Int? num_threads
+    Int? run_mode
     File? java_executable
-    String? java_memory
+    Int? java_memory
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -56,13 +56,13 @@ task LuciphorAdapter {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                        Input spectrum file (valid formats: 'mzML')"
     id: "*                        Protein/peptide identifications file (valid formats: 'idXML')"
     out: "*                       Output file (valid formats: 'idXML')"
-    executable: "*                LuciPHOr2 .jar file, e.g. 'c:\program files\luciphor2.jar'"
+    executable: "*                LuciPHOr2 .jar file, e.g. 'c:\\program files\\luciphor2.jar'"
     fragment_method: "Fragmentation method (default: 'CID' valid: 'CID', 'HCD')"
     fragment_mass_tolerance: "Tolerance of the peaks in the fragment spectrum (default: '0.5')"
     fragment_error_units: "Unit of fragment mass tolerance (default: 'Da' valid: 'Da', 'ppm')"
@@ -85,5 +85,9 @@ task LuciphorAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

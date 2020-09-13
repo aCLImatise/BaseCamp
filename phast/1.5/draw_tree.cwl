@@ -1,38 +1,42 @@
 class: CommandLineTool
 id: ../../../draw_tree.cwl
 inputs:
-- id: print_option_implies
-  doc: Print "diagonal" branches, instead of "right-angle" or  "square" ones (produces
-    a "cladogram", as opposed to a  "phenogram").  This option implies -s.
+- id: in_print_opposed_option
+  doc: "Print \"diagonal\" branches, instead of \"right-angle\" or\n\"square\" ones\
+    \ (produces a \"cladogram\", as opposed to a\n\"phenogram\").  This option implies\
+    \ -s."
   type: boolean
   inputBinding:
     prefix: -d
-- id: suppress_branch_lengths
+- id: in_suppress_branch_lengths
   doc: Suppress branch lengths.
   type: boolean
   inputBinding:
     prefix: -b
-- id: vertical_layout
+- id: in_vertical_layout
   doc: Vertical layout.
   type: boolean
   inputBinding:
     prefix: -v
-- id: draw_branches_scale
+- id: in_draw_branches_scale
   doc: Don't draw branches to scale.
   type: boolean
   inputBinding:
     prefix: -s
-- id: db_vs
+- id: in_db_vs
   doc: ''
   type: boolean
   inputBinding:
     prefix: -dbvs
-- id: tree_dot_nh
+- id: in_tree_dot_nh
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - draw_tree

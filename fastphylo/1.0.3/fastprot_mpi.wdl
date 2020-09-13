@@ -4,4 +4,7 @@ task FastprotMpi {
   command <<<
     fastprot_mpi
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

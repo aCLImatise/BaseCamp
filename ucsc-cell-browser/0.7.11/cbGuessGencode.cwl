@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../cbGuessGencode.cwl
 inputs:
-- id: debug
+- id: in_debug
   doc: show debug messages
   type: boolean
   inputBinding:
     prefix: --debug
-- id: filename
+- id: in_filename
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cbGuessGencode

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../sketchy_pull.cwl
 inputs:
-- id: path
+- id: in_path
   doc: Path to sketchy home directory [~/.sketchy ]
   type: File
   inputBinding:
     prefix: --path
-- id: full
+- id: in_full
   doc: Pull the full default sketch collections [false]
   type: boolean
   inputBinding:
     prefix: --full
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sketchy

@@ -2,22 +2,25 @@ version 1.0
 
 task BedparseBed12tobed6Bedfile {
   input {
-    Boolean? append_exn
     String? which_exon
+    Boolean? append_exn
     String bed_parse
-    String be_done_two_to_bed_six
+    Int be_done_two_to_bed_six
   }
   command <<<
     bedparse bed12tobed6 bedfile \
       ~{bed_parse} \
       ~{be_done_two_to_bed_six} \
-      ~{true="--appendExN" false="" append_exn} \
-      ~{if defined(which_exon) then ("--whichExon " +  '"' + which_exon + '"') else ""}
+      ~{if defined(which_exon) then ("--whichExon " +  '"' + which_exon + '"') else ""} \
+      ~{if (append_exn) then "--appendExN" else ""}
   >>>
   parameter_meta {
-    append_exn: ""
     which_exon: ""
+    append_exn: ""
     bed_parse: ""
     be_done_two_to_bed_six: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

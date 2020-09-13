@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- mb-plot-metagene
+- pc_table
 positional:
 - !Positional
   description: ''
@@ -13,10 +16,9 @@ named:
   args: !SimpleFlagArg
     name: DOWNSTREAM_BP
   optional: true
-command:
-- mb-plot-metagene
-- pc_table
 parent: &id002 !Command
+  command:
+  - mb-plot-metagene
   positional: []
   named:
   - !Flag
@@ -113,18 +115,19 @@ parent: &id002 !Command
       name: N_BS_ITERATIONS
     optional: true
   - !Flag
-    description: number of parallel processes spawned
+    description: "number of parallel processes spawned\n"
     synonyms:
     - --n_processes
     args: !SimpleFlagArg
       name: N_PROCESSES
     optional: true
-  command:
-  - mb-plot-metagene
   parent:
   subcommands:
   - *id001
   - !Command
+    command:
+    - mb-plot-metagene
+    - gff_file
     positional:
     - !Positional
       description: ''
@@ -139,11 +142,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: DOWNSTREAM_BP
       optional: true
-    command:
-    - mb-plot-metagene
-    - outputdir
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -161,10 +162,13 @@ parent: &id002 !Command
       \        [--cleanup] [--seed SEED]\n                        [--n_bs_iterations\
       \ N_BS_ITERATIONS]\n                        [--n_processes N_PROCESSES]\n  \
       \                      pc_table outputdir prefix gff_file\nmb-plot-metagene:\
-      \ error: argument pc_table: 'outputdir' does not exist\n"
+      \ error: argument pc_table: 'gff_file' does not exist\n"
     generated_using: &id003
     - --help
   - !Command
+    command:
+    - mb-plot-metagene
+    - prefix
     positional:
     - !Positional
       description: ''
@@ -179,11 +183,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: DOWNSTREAM_BP
       optional: true
-    command:
-    - mb-plot-metagene
-    - prefix
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -204,6 +206,9 @@ parent: &id002 !Command
       \ error: argument pc_table: 'prefix' does not exist\n"
     generated_using: *id003
   - !Command
+    command:
+    - mb-plot-metagene
+    - outputdir
     positional:
     - !Positional
       description: ''
@@ -218,11 +223,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: DOWNSTREAM_BP
       optional: true
-    command:
-    - mb-plot-metagene
-    - gff_file
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -240,8 +243,9 @@ parent: &id002 !Command
       \        [--cleanup] [--seed SEED]\n                        [--n_bs_iterations\
       \ N_BS_ITERATIONS]\n                        [--n_processes N_PROCESSES]\n  \
       \                      pc_table outputdir prefix gff_file\nmb-plot-metagene:\
-      \ error: argument pc_table: 'gff_file' does not exist\n"
+      \ error: argument pc_table: 'outputdir' does not exist\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -283,6 +287,7 @@ parent: &id002 !Command
     \ N_PROCESSES\n                        number of parallel processes spawned\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

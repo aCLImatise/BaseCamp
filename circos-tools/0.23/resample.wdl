@@ -4,4 +4,7 @@ task Resample {
   command <<<
     resample
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task TestYaml {
+task Testyaml {
   command <<<
-    test-yaml
+    test_yaml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,66 +1,86 @@
 class: CommandLineTool
 id: ../../../qualimap_rnaseq.cwl
 inputs:
-- id: algorithm
-  doc: 'Counting algorithm: uniquely-mapped-reads(default) or proportional.'
+- id: in_algorithm
+  doc: "Counting algorithm:\nuniquely-mapped-reads(default) or\nproportional."
   type: string
   inputBinding:
     prefix: --algorithm
-- id: bam
+- id: in_bam
   doc: Input mapping file in BAM format.
-  type: string
+  type: File
   inputBinding:
     prefix: -bam
-- id: gtf
+- id: in_gtf
   doc: Annotations file in Ensembl GTF format.
-  type: string
+  type: File
   inputBinding:
     prefix: -gtf
-- id: oc
-  doc: Output file for computed counts. If only name of the file is provided, then
-    the file will be saved in the output folder.
-  type: string
+- id: in_oc
+  doc: "Output file for computed counts. If only name\nof the file is provided, then\
+    \ the file will be\nsaved in the output folder."
+  type: File
   inputBinding:
     prefix: -oc
-- id: outdir
+- id: in_outdir
   doc: Output folder for HTML report and raw data.
-  type: string
+  type: Directory
   inputBinding:
     prefix: -outdir
-- id: outfile
-  doc: Output file for PDF report (default value is report.pdf).
-  type: string
+- id: in_outfile
+  doc: "Output file for PDF report (default value is\nreport.pdf)."
+  type: File
   inputBinding:
     prefix: -outfile
-- id: out_format
-  doc: Format of the output report (PDF, HTML or both PDF:HTML, default is HTML).
+- id: in_out_format
+  doc: "Format of the output report (PDF, HTML or both\nPDF:HTML, default is HTML)."
   type: string
   inputBinding:
     prefix: -outformat
-- id: sequencing_protocol
-  doc: 'Sequencing library protocol: strand-specific-forward, strand-specific-reverse
-    or non-strand-specific (default)'
+- id: in_sequencing_protocol
+  doc: "Sequencing library protocol:\nstrand-specific-forward,\nstrand-specific-reverse\
+    \ or non-strand-specific\n(default)"
   type: string
   inputBinding:
     prefix: --sequencing-protocol
-- id: paired
-  doc: Setting this flag for paired-end experiments will result in counting fragments
-    instead of reads
+- id: in_paired
+  doc: "Setting this flag for paired-end experiments\nwill result in counting fragments\
+    \ instead of\nreads"
   type: boolean
   inputBinding:
     prefix: --paired
-- id: sorted
-  doc: This flag indicates that the input file is already sorted by name. If not set,
-    additional sorting by name will be performed. Only required for paired-end analysis.
+- id: in_sorted
+  doc: "This flag indicates that the input file is\nalready sorted by name. If not\
+    \ set, additional\nsorting by name will be performed. Only\nrequired for paired-end\
+    \ analysis.\n"
   type: boolean
   inputBinding:
     prefix: --sorted
-- id: arg
+- id: in_arg
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_oc
+  doc: "Output file for computed counts. If only name\nof the file is provided, then\
+    \ the file will be\nsaved in the output folder."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_oc)
+- id: out_outdir
+  doc: Output folder for HTML report and raw data.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_outfile
+  doc: "Output file for PDF report (default value is\nreport.pdf)."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
 cwlVersion: v1.1
 baseCommand:
 - qualimap

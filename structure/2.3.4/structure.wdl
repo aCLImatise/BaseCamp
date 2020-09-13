@@ -4,4 +4,7 @@ task Structure {
   command <<<
     structure
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

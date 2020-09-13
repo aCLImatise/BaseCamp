@@ -1,20 +1,21 @@
 version 1.0
 
-task SamplingUtilsSync {
+task SamplingutilsSync {
   input {
+    Boolean? verbose
     File? master_file
-    String? input_file
-    String? output_file
   }
   command <<<
-    sampling-utils sync \
-      ~{input_file} \
-      ~{output_file} \
+    sampling_utils sync \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(master_file) then ("--master-file " +  '"' + master_file + '"') else ""}
   >>>
   parameter_meta {
-    master_file: "Resampled FastQ file that is out of sync with the original pair  [required]"
-    input_file: ""
-    output_file: ""
+    verbose: ""
+    master_file: "Resampled FastQ file that is out of sync with\\nthe original pair  [required]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_master_file = "${in_master_file}"
   }
 }

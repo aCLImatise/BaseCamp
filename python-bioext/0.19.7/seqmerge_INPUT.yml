@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- seqmerge
+- INPUT
 positional:
 - !Positional
   description: ''
@@ -13,26 +16,26 @@ named:
   args: !SimpleFlagArg
     name: SEP
   optional: true
-command:
-- seqmerge
-- INPUT
 parent: &id002 !Command
+  command:
+  - seqmerge
   positional: []
   named:
   - !Flag
-    description: sequence count will be appended as '(SEP)COUNT'
+    description: "sequence count will be appended as '(SEP)COUNT'\n"
     synonyms:
     - -s
     - --separator
     args: !SimpleFlagArg
       name: SEP
     optional: true
-  command:
-  - seqmerge
   parent:
   subcommands:
   - *id001
   - !Command
+    command:
+    - seqmerge
+    - OUTPUT
     positional:
     - !Positional
       description: ''
@@ -57,11 +60,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: SEP
       optional: true
-    command:
-    - seqmerge
-    - OUTPUT
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -74,6 +75,7 @@ parent: &id002 !Command
       \ INPUT: can't open 'OUTPUT': [Errno 2] No such file or directory: 'OUTPUT'\n"
     generated_using: &id003
     - --help
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -90,6 +92,7 @@ parent: &id002 !Command
     \ SEP\n                        sequence count will be appended as '(SEP)COUNT'\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

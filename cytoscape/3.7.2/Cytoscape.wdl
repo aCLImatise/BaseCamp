@@ -4,4 +4,7 @@ task Cytoscape {
   command <<<
     Cytoscape
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

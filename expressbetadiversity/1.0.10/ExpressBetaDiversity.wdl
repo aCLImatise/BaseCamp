@@ -5,7 +5,7 @@ task ExpressBetaDiversity {
     Boolean? list_calc
     Boolean? unit_tests
     Boolean? tree_file
-    String? seq_count_file
+    File? seq_count_file
     Boolean? output_prefix
     Boolean? clustering
     Boolean? jackknife
@@ -19,30 +19,30 @@ task ExpressBetaDiversity {
     Boolean? max_data_vecs
     Boolean? all
     Boolean? threshold
-    Boolean? output_file
+    File? output_file
     Boolean? verbose
   }
   command <<<
     ExpressBetaDiversity \
-      ~{true="--list-calc" false="" list_calc} \
-      ~{true="--unit-tests" false="" unit_tests} \
-      ~{true="--tree-file" false="" tree_file} \
+      ~{if (list_calc) then "--list-calc" else ""} \
+      ~{if (unit_tests) then "--unit-tests" else ""} \
+      ~{if (tree_file) then "--tree-file" else ""} \
       ~{if defined(seq_count_file) then ("--seq-count-file " +  '"' + seq_count_file + '"') else ""} \
-      ~{true="--output-prefix" false="" output_prefix} \
-      ~{true="--clustering" false="" clustering} \
-      ~{true="--jackknife" false="" jackknife} \
-      ~{true="--seqs-to-draw" false="" seqs_to_draw} \
-      ~{true="--sample-size" false="" sample_size} \
-      ~{true="--calculator" false="" calculator} \
-      ~{true="--weighted" false="" weighted} \
-      ~{true="--mrca" false="" mrca} \
-      ~{true="--strict-mrca" false="" strict_mrca} \
-      ~{true="--count" false="" count} \
-      ~{true="--max-data-vecs" false="" max_data_vecs} \
-      ~{true="--all" false="" all} \
-      ~{true="--threshold" false="" threshold} \
-      ~{true="--output-file" false="" output_file} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (output_prefix) then "--output-prefix" else ""} \
+      ~{if (clustering) then "--clustering" else ""} \
+      ~{if (jackknife) then "--jackknife" else ""} \
+      ~{if (seqs_to_draw) then "--seqs-to-draw" else ""} \
+      ~{if (sample_size) then "--sample-size" else ""} \
+      ~{if (calculator) then "--calculator" else ""} \
+      ~{if (weighted) then "--weighted" else ""} \
+      ~{if (mrca) then "--mrca" else ""} \
+      ~{if (strict_mrca) then "--strict-mrca" else ""} \
+      ~{if (count) then "--count" else ""} \
+      ~{if (max_data_vecs) then "--max-data-vecs" else ""} \
+      ~{if (all) then "--all" else ""} \
+      ~{if (threshold) then "--threshold" else ""} \
+      ~{if (output_file) then "--output-file" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     list_calc: "List all supported calculators."
@@ -64,5 +64,9 @@ task ExpressBetaDiversity {
     threshold: "Correlation threshold for clustering calculators (default = 0.8)."
     output_file: "Output file for cluster of calculators (default = clusters.txt)."
     verbose: "Provide additional information on program execution."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

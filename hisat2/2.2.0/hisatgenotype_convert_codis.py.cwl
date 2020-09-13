@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_convert_codis.py.bak.cwl
+id: ../../../hisatgenotype_convert_codis.py.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- hisatgenotype_convert_codis.py.bak
+- hisatgenotype_convert_codis.py

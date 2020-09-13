@@ -11,13 +11,16 @@ task GenometreetkPull {
     genometreetk pull \
       ~{input_tree} \
       ~{output_taxonomy} \
-      ~{true="--no_validation" false="" no_validation} \
-      ~{true="--silent" false="" silent}
+      ~{if (no_validation) then "--no_validation" else ""} \
+      ~{if (silent) then "--silent" else ""}
   >>>
   parameter_meta {
     no_validation: "do not assume decorated nodes adhear to standard taxonomy"
     silent: "suppress output"
     input_tree: "decorated tree"
     output_taxonomy: "output taxonomy file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

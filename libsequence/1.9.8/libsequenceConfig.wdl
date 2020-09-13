@@ -5,9 +5,8 @@ task LibsequenceConfig {
     String print
     String out
     String version
-    String number
+    Int number
     String and
-    String exit
   }
   command <<<
     libsequenceConfig \
@@ -15,8 +14,7 @@ task LibsequenceConfig {
       ~{out} \
       ~{version} \
       ~{number} \
-      ~{and} \
-      ~{exit}
+      ~{and}
   >>>
   parameter_meta {
     print: ""
@@ -24,6 +22,8 @@ task LibsequenceConfig {
     version: ""
     number: ""
     and: ""
-    exit: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

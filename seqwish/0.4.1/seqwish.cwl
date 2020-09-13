@@ -1,77 +1,85 @@
 class: CommandLineTool
 id: ../../../seqwish.cwl
 inputs:
-- id: allows_filtering_inputs
-  doc: '[FILE], --paf-alns=[FILE]       Induce the graph from these PAF formatted
-    alignments. Optionally, a list of filenames and minimum match lengths: [file_1]:[min_match_length_1],...
-    This allows the differential filtering of short matches from some but not all
-    inputs, in effect allowing `-k` to be specified differently for each input.'
+- id: in_induce_graph_pafformatted
+  doc: "[FILE], --paf-alns=[FILE]       Induce the graph from these PAF\nformatted\
+    \ alignments. Optionally, a list\nof filenames and minimum match lengths:\n[file_1]:[min_match_length_1],...\
+    \ This\nallows the differential filtering of\nshort matches from some but not\
+    \ all\ninputs, in effect allowing `-k` to be\nspecified differently for each input."
   type: boolean
   inputBinding:
     prefix: -p
-- id: sequences_used_generate
-  doc: '[FILE], --seqs=[FILE]           The sequences used to generate the alignments
-    (FASTA, FASTQ, .seq)'
+- id: in_sequences_used_generate
+  doc: "[FILE], --seqs=[FILE]           The sequences used to generate the\nalignments\
+    \ (FASTA, FASTQ, .seq)"
   type: boolean
   inputBinding:
     prefix: -s
-- id: build_graph_using
+- id: in_build_graph_using
   doc: '[BASE], --base=[BASE]           Build graph using this basename'
   type: boolean
   inputBinding:
     prefix: -b
-- id: write_graph_file
+- id: in_write_graph_file
   doc: '[FILE], --gfa=[FILE]            Write the graph in GFA to FILE'
   type: boolean
   inputBinding:
     prefix: -g
-- id: use_match_list
-  doc: '[FILE], --match-list=[FILE]     Use the sequence match list in FILE to subset
-    the input alignments'
+- id: in_use_match_list
+  doc: "[FILE], --match-list=[FILE]     Use the sequence match list in FILE to\nsubset\
+    \ the input alignments"
   type: boolean
   inputBinding:
     prefix: -m
-- id: write_graph_vgp
-  doc: '[BASE], --vgp-out=[BASE]        Write the graph in VGP format with basename
-    FILE'
-  type: boolean
+- id: in_write_graph_vgp
+  doc: "[BASE], --vgp-out=[BASE]        Write the graph in VGP format with\nbasename\
+    \ FILE"
+  type: File
   inputBinding:
     prefix: -o
-- id: use_many_threads
-  doc: '[N], --threads=[N]              Use this many threads during parallel steps'
+- id: in_use_many_threads
+  doc: '[N], --threads=[N]              Use this many threads during parallel'
   type: boolean
   inputBinding:
     prefix: -t
-- id: limit_transitive_closure
-  doc: '[N], --repeat-max=[N]           Limit transitive closure to include no more
-    than N copies of a given input base'
-  type: boolean
-  inputBinding:
-    prefix: -r
-- id: filter_exact_matches
-  doc: '[N], --min-match-len=[N]        Filter exact matches below this length. This
-    can smooth the graph locally and prevent the formation of complex local graph
-    topologies from forming due to differential alignments.'
+- id: in_filter_exact_matches
+  doc: "[N], --min-match-len=[N]        Filter exact matches below this length.\n\
+    This can smooth the graph locally and\nprevent the formation of complex local\n\
+    graph topologies from forming due to\ndifferential alignments."
   type: boolean
   inputBinding:
     prefix: -k
-- id: number_bp_use
-  doc: '[N], --transclose-batch=[N]     Number of bp to use for transitive closure
-    batch (default 1M)'
+- id: in_number_bp_use
+  doc: "[N], --transclose-batch=[N]     Number of bp to use for transitive\nclosure\
+    \ batch (default 1M)"
   type: boolean
   inputBinding:
     prefix: -B
-- id: keep_temp
-  doc: keep intermediate files generated during graph induction
+- id: in_keep_temp
+  doc: "keep intermediate files generated during\ngraph induction"
   type: boolean
   inputBinding:
     prefix: --keep-temp
-- id: debug
+- id: in_debug
   doc: enable debugging
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+- id: in_steps
+  doc: -r[N], --repeat-max=[N]           Limit transitive closure to include no
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_write_graph_vgp
+  doc: "[BASE], --vgp-out=[BASE]        Write the graph in VGP format with\nbasename\
+    \ FILE"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_write_graph_vgp)
 cwlVersion: v1.1
 baseCommand:
 - seqwish

@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../capC_MAP_getchromsizes.cwl
 inputs:
-- id: bed_file_continaing
-  doc: bed file continaing list of restriction enzyme fragments for genome
-  type: string
+- id: in_bed_file_continaing
+  doc: "bed file continaing list of restriction enzyme fragments\nfor genome"
+  type: File
   inputBinding:
     prefix: -f
-- id: output_file_name
+- id: in_output_file_name
   doc: 'output file name (Default: chrom.sizes)'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_name
+  doc: 'output file name (Default: chrom.sizes)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_name)
 cwlVersion: v1.1
 baseCommand:
 - capC-MAP

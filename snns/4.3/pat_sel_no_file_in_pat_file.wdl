@@ -11,4 +11,7 @@ task PatSelNoFileInPatFile {
   parameter_meta {
     out_pat_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

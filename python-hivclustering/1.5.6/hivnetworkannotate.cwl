@@ -1,74 +1,82 @@
 class: CommandLineTool
 id: ../../../hivnetworkannotate.cwl
 inputs:
-- id: output_annotated_file
-  doc: '[OUTPUT], --output [OUTPUT] Output the annotated JSON network file to'
-  type: boolean
+- id: in_output_annotated_file
+  doc: "[OUTPUT], --output [OUTPUT]\nOutput the annotated JSON network file to"
+  type: File
   inputBinding:
     prefix: -o
-- id: input_network_file
-  doc: '[NETWORK], --network [NETWORK] The input network file to process'
+- id: in_input_network_file
+  doc: "[NETWORK], --network [NETWORK]\nThe input network file to process"
   type: boolean
   inputBinding:
     prefix: -n
-- id: missing__missing
-  doc: MISSING, --missing MISSING MISSING If desired, provide a value to inject for
-    nodes that do not have an attribute value specified
+- id: in_missing__missing
+  doc: "MISSING, --missing MISSING MISSING\nIf desired, provide a value to inject\
+    \ for nodes that\ndo not have an attribute value specified"
   type: string
   inputBinding:
     prefix: -x
-- id: clear
+- id: in_clear
   doc: Flush existing attributes
   type: boolean
   inputBinding:
     prefix: --clear
-- id: index
-  doc: The name of the column that indexes records (patient ID); default is to index
-    on the first column
+- id: in_index
+  doc: "The name of the column that indexes records (patient\nID); default is to index\
+    \ on the first column"
   type: string
   inputBinding:
     prefix: --index
-- id: in_place
+- id: in_in_place
   doc: Write attributes to the input file (cannot be stdin)
   type: boolean
   inputBinding:
     prefix: --inplace
-- id: attributes
+- id: in_attributes
   doc: The JSON file with node attributes
-  type: string
+  type: File
   inputBinding:
     prefix: --attributes
-- id: tab
+- id: in_tab
   doc: A TSV file with node attributes
-  type: string
+  type: File
   inputBinding:
     prefix: --tab
-- id: csv
+- id: in_csv
   doc: A CSV file with node attributes
-  type: string
+  type: File
   inputBinding:
     prefix: --csv
-- id: field_field_field
-  doc: FIELD FIELD FIELD, --field FIELD FIELD FIELD FIELD Describe an argument to
-    be added to invididual nodes as "name" "label" "type" "transform"; currently supported
-    types are "String", "enum", "Date", "Number"; transform must be specified as a
-    lambda, an empty string to use an identity map, or a python style dict to specify
-    an enum; "fulldate" is a predefined option to reformat the date using the default
-    hivtrace-viz format
-  type: string
+- id: in_field_field_field
+  doc: "FIELD FIELD FIELD, --field FIELD FIELD FIELD FIELD\nDescribe an argument to\
+    \ be added to invididual nodes\nas \"name\" \"label\" \"type\" \"transform\";\
+    \ currently\nsupported types are \"String\", \"enum\", \"Date\",\n\"Number\";\
+    \ transform must be specified as a lambda, an\nempty string to use an identity\
+    \ map, or a python style\ndict to specify an enum; \"fulldate\" is a predefined\n\
+    option to reformat the date using the default\nhivtrace-viz format\n"
+  type: long
   inputBinding:
     prefix: -f
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: network
+- id: in_network
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_annotated_file
+  doc: "[OUTPUT], --output [OUTPUT]\nOutput the annotated JSON network file to"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_annotated_file)
 cwlVersion: v1.1
 baseCommand:
 - hivnetworkannotate

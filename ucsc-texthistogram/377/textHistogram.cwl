@@ -1,73 +1,71 @@
 class: CommandLineTool
 id: ../../../textHistogram.cwl
 inputs:
-- id: binsize
+- id: in_binsize
   doc: '- Size of bins, default 1'
-  type: string
+  type: long
   inputBinding:
     prefix: -binSize
-- id: max_bin_count
+- id: in_max_bin_count
   doc: '- Maximum # of bins, default 25'
-  type: string
+  type: long
   inputBinding:
     prefix: -maxBinCount
-- id: min_val
+- id: in_min_val
   doc: '- Minimum value to put in histogram, default 0'
-  type: string
+  type: long
   inputBinding:
     prefix: -minVal
-- id: log
+- id: in_log
   doc: '- Do log transformation before plotting'
   type: boolean
   inputBinding:
     prefix: -log
-- id: no_star
+- id: in_no_star
   doc: "- Don't draw asterisks"
   type: boolean
   inputBinding:
     prefix: -noStar
-- id: col
+- id: in_col
   doc: '- Which column to use. Default 1'
-  type: string
+  type: long
   inputBinding:
     prefix: -col
-- id: ave_col
-  doc: '- A second column to average over. The averages will be output in place of
-    counts of primary column.'
+- id: in_ave_col
+  doc: "- A second column to average over. The averages\nwill be output in place of\
+    \ counts of primary column."
   type: string
   inputBinding:
     prefix: -aveCol
-- id: real
+- id: in_real
   doc: '- Data input are real values (default is integer)'
   type: boolean
   inputBinding:
     prefix: -real
-- id: autoscale
+- id: in_autoscale
   doc: '- autoscale to N # of bins'
   type: string
   inputBinding:
     prefix: -autoScale
-- id: prob_values
+- id: in_prob_values
   doc: '- show prob-Values (density and cum.distr.) (sets -noStar too)'
   type: boolean
   inputBinding:
     prefix: -probValues
-- id: freq
+- id: in_freq
   doc: '- show frequences instead of counts'
   type: boolean
   inputBinding:
     prefix: -freq
-- id: skip
+- id: in_skip
   doc: '- skip N lines before starting, default 0'
-  type: string
+  type: long
   inputBinding:
     prefix: -skip
-- id: in_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - textHistogram

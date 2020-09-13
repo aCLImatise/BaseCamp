@@ -4,4 +4,7 @@ task GmtkViterbi {
   command <<<
     gmtkViterbi
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

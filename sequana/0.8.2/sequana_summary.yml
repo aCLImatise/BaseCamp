@@ -1,4 +1,6 @@
 !Command
+command:
+- sequana_summary
 positional:
 - !Positional
   description: ''
@@ -17,7 +19,21 @@ positional:
   optional: false
 named:
 - !Flag
-  description: one filename (either FastQ or BED file; see DESCRIPTION)
+  description: ''
+  synonyms:
+  - -m
+  - --multiple
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "one filename (either FastQ or BED file; see\nDESCRIPTION)"
   synonyms:
   - -f
   - --file
@@ -25,8 +41,8 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: a glob/pattern of files. Must use quotes e.g. "*.fastq.gz" (See --file
-    or DESCRIPTION for details)
+  description: "a glob/pattern of files. Must use quotes e.g.\n\"*.fastq.gz\" (See\
+    \ --file or DESCRIPTION for details)"
   synonyms:
   - -g
   - --glob
@@ -34,8 +50,8 @@ named:
     name: GLOB
   optional: true
 - !Flag
-  description: If input FastQ files, analyse entire file. You may restrict analysis
-    to set of reads
+  description: "If input FastQ files, analyse entire file. You may\nrestrict analysis\
+    \ to set of reads"
   synonyms:
   - -n
   - --sample
@@ -43,19 +59,24 @@ named:
     name: SAMPLE
   optional: true
 - !Flag
-  description: Several files may be processed in parallel. By default 4 threads are
-    used
+  description: "Several files may be processed in parallel. By default\n4 threads\
+    \ are used\n"
   synonyms:
   - -t
   - --thread
   args: !SimpleFlagArg
     name: THREAD
   optional: true
-command:
-- sequana_summary
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Welcome to SEQUANA - Summary standalone\n\n            sequana_summary\

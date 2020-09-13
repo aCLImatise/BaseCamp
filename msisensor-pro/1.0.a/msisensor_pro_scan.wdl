@@ -1,35 +1,39 @@
 version 1.0
 
-task MsisensorProScan {
+task MsisensorproScan {
   input {
-    Boolean? string_reference_genome
-    Boolean? string_output_homopolymers
+    Boolean? string_sequences_file
+    File? string_output_homopolymers
     Boolean? int_minimal_homopolymerrepeat
-    Boolean? int_context_length
-    Boolean? int_maximal_default
+    Boolean? int_context_default
+    Boolean? int_maximal_homopolymer
     Boolean? int_maximal_length
     Boolean? int_minimal_repeat
     Boolean? int_output_homopolymer
   }
   command <<<
-    msisensor-pro scan \
-      ~{true="-d" false="" string_reference_genome} \
-      ~{true="-o" false="" string_output_homopolymers} \
-      ~{true="-l" false="" int_minimal_homopolymerrepeat} \
-      ~{true="-c" false="" int_context_length} \
-      ~{true="-m" false="" int_maximal_default} \
-      ~{true="-s" false="" int_maximal_length} \
-      ~{true="-r" false="" int_minimal_repeat} \
-      ~{true="-p" false="" int_output_homopolymer}
+    msisensor_pro scan \
+      ~{if (string_sequences_file) then "-d" else ""} \
+      ~{if (string_output_homopolymers) then "-o" else ""} \
+      ~{if (int_minimal_homopolymerrepeat) then "-l" else ""} \
+      ~{if (int_context_default) then "-c" else ""} \
+      ~{if (int_maximal_homopolymer) then "-m" else ""} \
+      ~{if (int_maximal_length) then "-s" else ""} \
+      ~{if (int_minimal_repeat) then "-r" else ""} \
+      ~{if (int_output_homopolymer) then "-p" else ""}
   >>>
   parameter_meta {
-    string_reference_genome: "<string>   reference genome sequences file, *.fasta or *.fa format"
+    string_sequences_file: "<string>   reference genome sequences file, *.fasta or *.fa format"
     string_output_homopolymers: "<string>   output homopolymers and microsatellites file"
     int_minimal_homopolymerrepeat: "<int>      minimal homopolymer(repeat unit length = 1) size, default=10"
-    int_context_length: "<int>      context length, default=5"
-    int_maximal_default: "<int>      maximal homopolymer size, default=50"
+    int_context_default: "<int>      context length, default=5"
+    int_maximal_homopolymer: "<int>      maximal homopolymer size, default=50"
     int_maximal_length: "<int>      maximal length of microsatellite, default=5"
     int_minimal_repeat: "<int>      minimal repeat times of microsatellite(repeat unit length>=2), default=5"
     int_output_homopolymer: "<int>      output homopolymer only, 0: no; 1: yes, default=0"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_string_output_homopolymers = "${in_string_output_homopolymers}"
   }
 }

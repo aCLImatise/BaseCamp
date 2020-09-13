@@ -4,4 +4,7 @@ task DDocent {
   command <<<
     dDocent
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

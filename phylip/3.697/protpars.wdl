@@ -4,4 +4,7 @@ task Protpars {
   command <<<
     protpars
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

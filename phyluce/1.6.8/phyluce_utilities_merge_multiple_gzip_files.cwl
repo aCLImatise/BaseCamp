@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../phyluce_utilities_merge_multiple_gzip_files.cwl
 inputs:
-- id: config
-  doc: The path to the config file to use for merging.
-  type: string
-  inputBinding:
-    prefix: --config
-- id: output
-  doc: The path to a directory in which to store the output.
+- id: in_output
+  doc: ''
   type: string
   inputBinding:
     prefix: --output
-- id: section
+- id: in_config
+  doc: The path to the config file to use for merging.
+  type: File
+  inputBinding:
+    prefix: --config
+- id: in_section
   doc: The section holding the merge info.
   type: string
   inputBinding:
     prefix: --section
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-- id: trimmed
+- id: in_trimmed
   doc: If the reads have already been trimmed.
   type: boolean
   inputBinding:
     prefix: --trimmed
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_utilities_merge_multiple_gzip_files

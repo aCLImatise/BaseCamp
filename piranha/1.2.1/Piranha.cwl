@@ -1,109 +1,123 @@
 class: CommandLineTool
 id: ../../../Piranha.cwl
 inputs:
-- id: output
-  doc: 'Name of output file, STDOUT if omitted '
-  type: boolean
+- id: in_output
+  doc: Name of output file, STDOUT if omitted
+  type: File
   inputBinding:
     prefix: -output
-- id: sort
-  doc: 'indicates that input is unsorted and Piranha should  sort it for you '
+- id: in_sort
+  doc: "indicates that input is unsorted and Piranha should\nsort it for you"
   type: boolean
   inputBinding:
     prefix: -sort
-- id: p_threshold
-  doc: 'significance threshold for sites '
+- id: in_p_threshold
+  doc: significance threshold for sites
   type: boolean
   inputBinding:
     prefix: -p_threshold
-- id: no_pval_correct
-  doc: "don't correct p-values for multiple hypothesis  testing. We correct by default\
-    \ using B&H. "
+- id: in_no_pval_correct
+  doc: "don't correct p-values for multiple hypothesis\ntesting. We correct by default\
+    \ using B&H."
   type: boolean
   inputBinding:
     prefix: -no_pval_correct
-- id: background_thresh
-  doc: 'indicates that this proportion of the lowest scores  should be considered
-    the background. Default is 0.99 '
+- id: in_background_thresh
+  doc: "indicates that this proportion of the lowest scores\nshould be considered\
+    \ the background. Default is 0.99"
   type: boolean
   inputBinding:
     prefix: -background_thresh
-- id: bin_size_reponse
-  doc: 'indicates that the response (first input file) is raw  reads and should be
-    binned into bins of this size '
+- id: in_bin_size_reponse
+  doc: "indicates that the response (first input file) is raw\nreads and should be\
+    \ binned into bins of this size"
   type: boolean
   inputBinding:
     prefix: -bin_size_reponse
-- id: bin_size_co_vars
-  doc: 'indicates that the covariates (all except first  file) are raw reads and should
-    be binned into bins of  this size '
+- id: in_bin_size_co_vars
+  doc: "indicates that the covariates (all except first\nfile) are raw reads and should\
+    \ be binned into bins of\nthis size"
   type: boolean
   inputBinding:
     prefix: -bin_size_covars
-- id: bin_size_both
-  doc: 'synonymous with -b x -i x for any x '
+- id: in_bin_size_both
+  doc: synonymous with -b x -i x for any x
   type: boolean
   inputBinding:
     prefix: -bin_size_both
-- id: cluster_dist
-  doc: 'merge significant bins within this distance.  Setting to 0 disables merging,
-    default is 1 (merge  adjacent) '
+- id: in_cluster_dist
+  doc: "merge significant bins within this distance.\nSetting to 0 disables merging,\
+    \ default is 1 (merge\nadjacent)"
   type: boolean
   inputBinding:
     prefix: -cluster_dist
-- id: suppress_co_vars
-  doc: "don't print covariate values in output "
+- id: in_suppress_co_vars
+  doc: don't print covariate values in output
   type: boolean
   inputBinding:
     prefix: -suppress_covars
-- id: fit
-  doc: 'Fit only, output model to file '
-  type: boolean
+- id: in_fit
+  doc: Fit only, output model to file
+  type: File
   inputBinding:
     prefix: -fit
-- id: dist
-  doc: 'Distribution type. Currently supports Poisson,  NegativeBinomial, ZeroTruncatedPoisson,  ZeroTruncatedNegativeBinomial
-    (default with no  covariates), PoissonRegression,  NegativeBinomialRegression,  ZeroTruncatedPoissonRegression,  ZeroTruncatedNegativeBinomialRegression  (default
-    with covariates) '
+- id: in_dist
+  doc: "Distribution type. Currently supports Poisson,\nNegativeBinomial, ZeroTruncatedPoisson,\n\
+    ZeroTruncatedNegativeBinomial (default with no\ncovariates), PoissonRegression,\n\
+    NegativeBinomialRegression,\nZeroTruncatedPoissonRegression,\nZeroTruncatedNegativeBinomialRegression\n\
+    (default with covariates)"
   type: boolean
   inputBinding:
     prefix: -dist
-- id: fit_method
-  doc: 'component fitting method '
+- id: in_fit_method
+  doc: component fitting method
   type: boolean
   inputBinding:
     prefix: -fitMethod
-- id: model
-  doc: 'Use the specified model file instead of fitting to  input data '
+- id: in_model
+  doc: "Use the specified model file instead of fitting to\ninput data"
   type: boolean
   inputBinding:
     prefix: -model
-- id: verbose
-  doc: 'output additional messages about run to stderr if set '
+- id: in_verbose
+  doc: output additional messages about run to stderr if set
   type: boolean
   inputBinding:
     prefix: -VERBOSE
-- id: un_stranded
-  doc: "Don't preserve strand (puts all the peaks in positive  strand) "
+- id: in_un_stranded
+  doc: "Don't preserve strand (puts all the peaks in positive\nstrand)"
   type: boolean
   inputBinding:
     prefix: -UNSTRANDED
-- id: no_normalisation
-  doc: "don't normalise covariates "
+- id: in_no_normalisation
+  doc: don't normalise covariates
   type: boolean
   inputBinding:
     prefix: -no_normalisation
-- id: log_co_vars
-  doc: 'convert covariates to log scale '
+- id: in_log_co_vars
+  doc: convert covariates to log scale
   type: boolean
   inputBinding:
     prefix: -log_covars
-- id: about
-  doc: 'print about message '
+- id: in_about
+  doc: print about message
   type: boolean
   inputBinding:
     prefix: -about
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Name of output file, STDOUT if omitted
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_fit
+  doc: Fit only, output model to file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_fit)
 cwlVersion: v1.1
 baseCommand:
 - Piranha

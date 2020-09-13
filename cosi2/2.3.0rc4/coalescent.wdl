@@ -6,35 +6,26 @@ task Coalescent {
     Boolean? arg_genetic_map
     Boolean? gen_map_random_regions
     Boolean? arg_file_read
-    Boolean? arg_number_output
     Boolean? arg_random_seed
     Boolean? arg_max_dist
     Boolean? use_convex_hull
     Boolean? arg_shift_locations
-    Boolean? sweep_end_freq
-    Boolean? apx_with_t_raj_ok
-    String? apx_min_factor
-    String? apx_rej_samp
+    Int? apx_min_factor
+    Int? apx_rej_samp
     Boolean? sweep_three_no_one_sided_re_combs
     Boolean? show_one_sim_progress
-    String? po_is_max_steps
-    String? po_is_prec
     Boolean? t_raj_only
     Boolean? arg_base_name
-    Boolean? write_output_stdout_ms
     String? tp_ed
     Boolean? output_pop_info
     Boolean? output_gen_map
     Boolean? arg_number_decimal
-    Boolean? arg_file_output
-    Boolean? output_tree_stats
+    File? arg_file_output
     Boolean? output_mutation_ages
     Boolean? output_recombination_locations
-    Boolean? representing_locations_simulated
-    Boolean? position_output_mutation
-    String? drop_singletons
+    Boolean? output_arg_edges
+    Boolean? position_mutation_contexts
     Boolean? print_version_info
-    Boolean? _verbose_output
     Boolean? _show_progress
     Boolean? arg_log_file
     Boolean? arg_seg_file
@@ -44,92 +35,92 @@ task Coalescent {
     Boolean? _simulation_quit
     Boolean? output_sim_times
     Boolean? output_end_gens
-    String? stop_after_minutes
+    Int? stop_after_minutes
     Boolean? custom_stats
-    String? custom_stats_exclude_pop
+    Int? custom_stats_exclude_pop
+    String n_arg_number
+    String delta
+    String fraction
+    String sim
+    String times
+    String format
+    String t_output_tree
+    String locations
+    String options
   }
   command <<<
     coalescent \
-      ~{true="-p" false="" arg_parameter_file} \
-      ~{true="-R" false="" arg_genetic_map} \
-      ~{true="--genmapRandomRegions" false="" gen_map_random_regions} \
-      ~{true="-J" false="" arg_file_read} \
-      ~{true="-n" false="" arg_number_output} \
-      ~{true="-r" false="" arg_random_seed} \
-      ~{true="-u" false="" arg_max_dist} \
-      ~{true="-U" false="" use_convex_hull} \
-      ~{true="-G" false="" arg_shift_locations} \
-      ~{true="-E" false="" sweep_end_freq} \
-      ~{true="--apx-with-traj-ok" false="" apx_with_t_raj_ok} \
+      ~{n_arg_number} \
+      ~{delta} \
+      ~{fraction} \
+      ~{sim} \
+      ~{times} \
+      ~{format} \
+      ~{t_output_tree} \
+      ~{locations} \
+      ~{options} \
+      ~{if (arg_parameter_file) then "-p" else ""} \
+      ~{if (arg_genetic_map) then "-R" else ""} \
+      ~{if (gen_map_random_regions) then "--genmapRandomRegions" else ""} \
+      ~{if (arg_file_read) then "-J" else ""} \
+      ~{if (arg_random_seed) then "-r" else ""} \
+      ~{if (arg_max_dist) then "-u" else ""} \
+      ~{if (use_convex_hull) then "-U" else ""} \
+      ~{if (arg_shift_locations) then "-G" else ""} \
       ~{if defined(apx_min_factor) then ("--apx-min-factor " +  '"' + apx_min_factor + '"') else ""} \
       ~{if defined(apx_rej_samp) then ("--apx-rej-samp " +  '"' + apx_rej_samp + '"') else ""} \
-      ~{true="--sweep3-no-one-sided-recombs" false="" sweep_three_no_one_sided_re_combs} \
-      ~{true="--show-one-sim-progress" false="" show_one_sim_progress} \
-      ~{if defined(po_is_max_steps) then ("--pois-max-steps " +  '"' + po_is_max_steps + '"') else ""} \
-      ~{if defined(po_is_prec) then ("--pois-prec " +  '"' + po_is_prec + '"') else ""} \
-      ~{true="--traj-only" false="" t_raj_only} \
-      ~{true="-o" false="" arg_base_name} \
-      ~{true="-m" false="" write_output_stdout_ms} \
+      ~{if (sweep_three_no_one_sided_re_combs) then "--sweep3-no-one-sided-recombs" else ""} \
+      ~{if (show_one_sim_progress) then "--show-one-sim-progress" else ""} \
+      ~{if (t_raj_only) then "--traj-only" else ""} \
+      ~{if (arg_base_name) then "-o" else ""} \
       ~{if defined(tp_ed) then ("--tped " +  '"' + tp_ed + '"') else ""} \
-      ~{true="--output-pop-info" false="" output_pop_info} \
-      ~{true="--output-gen-map" false="" output_gen_map} \
-      ~{true="-P" false="" arg_number_decimal} \
-      ~{true="-j" false="" arg_file_output} \
-      ~{true="-T" false="" output_tree_stats} \
-      ~{true="-M" false="" output_mutation_ages} \
-      ~{true="-L" false="" output_recombination_locations} \
-      ~{true="-e" false="" representing_locations_simulated} \
-      ~{true="-C" false="" position_output_mutation} \
-      ~{if defined(drop_singletons) then ("--drop-singletons " +  '"' + drop_singletons + '"') else ""} \
-      ~{true="-V" false="" print_version_info} \
-      ~{true="-v" false="" _verbose_output} \
-      ~{true="-g" false="" _show_progress} \
-      ~{true="-l" false="" arg_log_file} \
-      ~{true="-s" false="" arg_seg_file} \
-      ~{true="-d" false="" arg_delta_factor} \
-      ~{true="-t" false="" compute_tree_size} \
-      ~{true="-k" false="" print_number_recombs} \
-      ~{true="-S" false="" _simulation_quit} \
-      ~{true="--output-sim-times" false="" output_sim_times} \
-      ~{true="--output-end-gens" false="" output_end_gens} \
+      ~{if (output_pop_info) then "--output-pop-info" else ""} \
+      ~{if (output_gen_map) then "--output-gen-map" else ""} \
+      ~{if (arg_number_decimal) then "-P" else ""} \
+      ~{if (arg_file_output) then "-j" else ""} \
+      ~{if (output_mutation_ages) then "-M" else ""} \
+      ~{if (output_recombination_locations) then "-L" else ""} \
+      ~{if (output_arg_edges) then "-e" else ""} \
+      ~{if (position_mutation_contexts) then "-C" else ""} \
+      ~{if (print_version_info) then "-V" else ""} \
+      ~{if (_show_progress) then "-g" else ""} \
+      ~{if (arg_log_file) then "-l" else ""} \
+      ~{if (arg_seg_file) then "-s" else ""} \
+      ~{if (arg_delta_factor) then "-d" else ""} \
+      ~{if (compute_tree_size) then "-t" else ""} \
+      ~{if (print_number_recombs) then "-k" else ""} \
+      ~{if (_simulation_quit) then "-S" else ""} \
+      ~{if (output_sim_times) then "--output-sim-times" else ""} \
+      ~{if (output_end_gens) then "--output-end-gens" else ""} \
       ~{if defined(stop_after_minutes) then ("--stop-after-minutes " +  '"' + stop_after_minutes + '"') else ""} \
-      ~{true="--custom-stats" false="" custom_stats} \
+      ~{if (custom_stats) then "--custom-stats" else ""} \
       ~{if defined(custom_stats_exclude_pop) then ("--custom-stats-exclude-pop " +  '"' + custom_stats_exclude_pop + '"') else ""}
   >>>
   parameter_meta {
     arg_parameter_file: "[ --paramfile ] arg                parameter file"
-    arg_genetic_map: "[ --recombfile ] arg               genetic map file (if specified,  overrides the one in paramfile)"
-    gen_map_random_regions: "for each simulation use a randomly  chosen subregion of the genetic map"
-    arg_file_read: "[ --trajfile ] arg                 file from which to read sweep  trajectory"
-    arg_number_output: "[ --nsims ] arg (=1)               number of simulations to output"
+    arg_genetic_map: "[ --recombfile ] arg               genetic map file (if specified,\\noverrides the one in paramfile)"
+    gen_map_random_regions: "for each simulation use a randomly\\nchosen subregion of the genetic map"
+    arg_file_read: "[ --trajfile ] arg                 file from which to read sweep"
     arg_random_seed: "[ --seed ] arg (=0)                random seed (0 to use current time)"
     arg_max_dist: "[ --max-coal-dist ] arg            max dist betw segs for coalescence"
     use_convex_hull: "[ --max-coal-dist-cvx-hull ]       use convex hull for max coal dist"
-    arg_shift_locations: "[ --genmapshift ] arg              shift all genmap locations by this  delta"
-    sweep_end_freq: "[ --sweep-frac-sample ]            sweep end freq specifies exact sample  fraction"
-    apx_with_t_raj_ok: "enable coalapx even when pop size traj  specified (experimental)"
-    apx_min_factor: "enable coalapx only when pop size  exceeds active sample size by this  factor (experimental)"
+    arg_shift_locations: "[ --genmapshift ] arg              shift all genmap locations by this"
+    apx_min_factor: "enable coalapx only when pop size\\nexceeds active sample size by this\\nfactor (experimental)"
     apx_rej_samp: "(=1)               use rejection sampling (experimental)"
     sweep_three_no_one_sided_re_combs: "handle one-sided recombs (experimental)"
-    show_one_sim_progress: "show progress of coalescence in each  sim"
-    po_is_max_steps: "(=100000)        max # of steps when evaluating waiting  times"
-    po_is_prec: "(=1.0000000000000001e-05) precision when evaluating waiting times"
-    t_raj_only: "just simulate trajectories and output  present-day freqs"
-    arg_base_name: "[ --outfilebase ] arg              base name for output files in cosi  format"
-    write_output_stdout_ms: "[ --outms ]                        write output to stdout in ms format"
-    tp_ed: "write output to stdout in tped format,  to files pfx-rep-pop.tped"
+    show_one_sim_progress: "show progress of coalescence in each"
+    t_raj_only: "just simulate trajectories and output\\npresent-day freqs"
+    arg_base_name: "[ --outfilebase ] arg              base name for output files in cosi"
+    tp_ed: "write output to stdout in tped format,\\nto files pfx-rep-pop.tped"
     output_pop_info: "output pop info in ms format output"
     output_gen_map: "output genetic map in ms format output"
-    arg_number_decimal: "[ --output-precision ] arg         number of decimal places used for  floats in the outputs"
-    arg_file_output: "[ --trajoutfile ] arg              file to which to output sweep  trajectory"
-    output_tree_stats: "[ --write-tree-stats ]             output tree stats"
+    arg_number_decimal: "[ --output-precision ] arg         number of decimal places used for\\nfloats in the outputs"
+    arg_file_output: "[ --trajoutfile ] arg              file to which to output sweep"
     output_mutation_ages: "[ --write-mut-ages ]               output mutation ages"
     output_recombination_locations: "[ --write-recomb-locs ]            output recombination locations"
-    representing_locations_simulated: "[ --output-ARG ]                   output ARG edges.  Edges are written in ms output format (see -m option), one  per line, after the '//' line but  before the 'segsites: ' line of each  simulation. Format is: E <edgeKind> <node_1_id> <node_2_id>  <node_1_generation> <node_2_generation> <seg_1_beg> <seg_1_end> ... <seg_k_beg> <seg_k_end>. Edge kinds are: R, recombination; G,  gene conversion; C, coalescence.  seg_i_beg, seg_i_end give chromosomal  segments inherited along the edge;  locations are values in [0.0,1.0]  representing locations within the  simulated region."
-    position_output_mutation: "[ --write-mut-contexts ] position  output mutation contexts for these  locations"
-    drop_singletons: "drop this fraction of singleton SNPs"
-    print_version_info: "[ --version ]                      print version info and compile-time  options"
-    _verbose_output: "[ --verbose ]                      verbose output"
+    output_arg_edges: "[ --output-ARG ]                   output ARG edges.  Edges are written in\\nms output format (see -m option), one\\nper line, after the '//' line but\\nbefore the 'segsites: ' line of each\\nsimulation. Format is:\\nE <edgeKind> <node_1_id> <node_2_id>\\n<node_1_generation> <node_2_generation>\\n<seg_1_beg> <seg_1_end> ... <seg_k_beg>\\n<seg_k_end>.\\nEdge kinds are: R, recombination; G,\\ngene conversion; C, coalescence.\\nseg_i_beg, seg_i_end give chromosomal\\nsegments inherited along the edge;\\nlocations are values in [0.0,1.0]\\nrepresenting locations within the\\nsimulated region."
+    position_mutation_contexts: "[ --write-mut-contexts ] position  output mutation contexts for these"
+    print_version_info: "[ --version ]                      print version info and compile-time"
     _show_progress: "[ --show-progress ] [=arg(=10)]    show progress"
     arg_log_file: "[ --logfile ] arg                  log file"
     arg_seg_file: "[ --segfile ] arg                  seg file"
@@ -138,9 +129,22 @@ task Coalescent {
     print_number_recombs: "[ --show-num-recombs ]             print number of recombs"
     _simulation_quit: "[ --sim-and-quit ]                 do simulation and quit"
     output_sim_times: "for each sim output the time it took"
-    output_end_gens: "for each sim output the generation at  which it ended"
+    output_end_gens: "for each sim output the generation at\\nwhich it ended"
     stop_after_minutes: "(=0)         stop simulation after this many minutes"
     custom_stats: "compute custom stats"
-    custom_stats_exclude_pop: "(=-1)  when computing custom stats, exclude  this pop"
+    custom_stats_exclude_pop: "(=-1)  when computing custom stats, exclude\\nthis pop\\n"
+    n_arg_number: "-n [ --nsims ] arg (=1)               number of simulations to output"
+    delta: "-E [ --sweep-frac-sample ]            sweep end freq specifies exact sample "
+    fraction: "--apx-with-traj-ok                    enable coalapx even when pop size traj "
+    sim: "--pois-max-steps arg (=100000)        max # of steps when evaluating waiting "
+    times: "--pois-prec arg (=1.0000000000000001e-05)"
+    format: "-m [ --outms ]                        write output to stdout in ms format"
+    t_output_tree: "-T [ --write-tree-stats ]             output tree stats"
+    locations: "--drop-singletons fraction            drop this fraction of singleton SNPs"
+    options: "-v [ --verbose ]                      verbose output"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_arg_file_output = "${in_arg_file_output}"
   }
 }

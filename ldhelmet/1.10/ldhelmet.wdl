@@ -4,4 +4,7 @@ task Ldhelmet {
   command <<<
     ldhelmet
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

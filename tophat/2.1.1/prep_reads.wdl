@@ -11,4 +11,7 @@ task PrepReads {
   parameter_meta {
     filter_multi: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,19 +2,22 @@ version 1.0
 
 task MafToBigMaf {
   input {
+    String? xxx
     String referenced_b
     String input_dot_maf
-    String out_dot_bed
   }
   command <<<
     mafToBigMaf \
       ~{referenced_b} \
       ~{input_dot_maf} \
-      ~{out_dot_bed}
+      ~{if defined(xxx) then ("-xxx " +  '"' + xxx + '"') else ""}
   >>>
   parameter_meta {
+    xxx: ""
     referenced_b: ""
     input_dot_maf: ""
-    out_dot_bed: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task Geo2fasta.pl.orig {
+task Geo2fastapl {
   command <<<
-    geo2fasta.pl.orig
+    geo2fasta_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

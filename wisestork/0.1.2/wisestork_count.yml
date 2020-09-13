@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- wisestork
+- count
 positional: []
 named:
 - !Flag
@@ -41,127 +44,18 @@ named:
   args: !SimpleFlagArg
     name: PATH
   optional: true
-command:
-- wisestork
-- count
 parent: &id002 !Command
-  positional: []
-  named: []
   command:
   - wisestork
+  positional: []
+  named: []
   parent:
   subcommands:
   - *id001
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: RANGE  Bin size to use. Default = 50000
-      synonyms:
-      - -B
-      - --binsize
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: Path to reference fasta  [required]
-      synonyms:
-      - -R
-      - --reference
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    - !Flag
-      description: Optional path to region BED file
-      synonyms:
-      - -L
-      - --bin-file
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    - !Flag
-      description: Path to output BED file  [required]
-      synonyms:
-      - -O
-      - --output
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    - !Flag
-      description: Path to input BED file  [required]
-      synonyms:
-      - -I
-      - --input
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    - !Flag
-      description: Maximum fraction of N-bases per bin. Default = 0.1
-      synonyms:
-      - -n
-      - --frac-n
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
-    - !Flag
-      description: Minimum fraction of reads per bin. Default = 0.0001
-      synonyms:
-      - -r
-      - --frac-r
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
-    - !Flag
-      description: Number of iterations for LOWESS function. Default = 3
-      synonyms:
-      - -t
-      - --iter
-      args: !SimpleFlagArg
-        name: INTEGER
-      optional: true
-    - !Flag
-      description: Fraction of data to use for LOWESS function. Default = 0.1
-      synonyms:
-      - -l
-      - --frac-lowess
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
     command:
     - wisestork
-    - gc-correct
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: Show the version and exit.
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "Usage: wisestork gc-correct [OPTIONS]\n\n  GC-correct a BED file containing\
-      \ counts per region\n\nOptions:\n  -B, --binsize INTEGER RANGE  Bin size to\
-      \ use. Default = 50000\n  -R, --reference PATH         Path to reference fasta\
-      \  [required]\n  -L, --bin-file PATH          Optional path to region BED file\n\
-      \  --version                    Show the version and exit.\n  -O, --output PATH\
-      \            Path to output BED file  [required]\n  -I, --input PATH       \
-      \      Path to input BED file  [required]\n  -n, --frac-n FLOAT           Maximum\
-      \ fraction of N-bases per bin. Default =\n                               0.1\n\
-      \n  -r, --frac-r FLOAT           Minimum fraction of reads per bin. Default\
-      \ =\n                               0.0001\n\n  -t, --iter INTEGER         \
-      \  Number of iterations for LOWESS function.\n                             \
-      \  Default = 3\n\n  -l, --frac-lowess FLOAT      Fraction of data to use for\
-      \ LOWESS function.\n                               Default = 0.1\n\n  --help\
-      \                       Show this message and exit.\n"
-    generated_using: &id003
-    - --help
-  - !Command
+    - newref
     positional: []
     named:
     - !Flag
@@ -212,11 +106,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
-    command:
-    - wisestork
-    - newref
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -242,8 +134,116 @@ parent: &id002 !Command
       \ to output BED file  [required]\n  -n, --n-bins INTEGER         Amount of neighbours\
       \ bins to consider per bin\n  --help                       Show this message\
       \ and exit.\n"
+    generated_using: &id003
+    - --help
+  - !Command
+    command:
+    - wisestork
+    - gc-correct
+    positional:
+    - !Positional
+      description: -r, --frac-r FLOAT           Minimum fraction of reads per bin.
+        Default =
+      position: 0
+      name: '0.1'
+      optional: false
+    - !Positional
+      description: -t, --iter INTEGER           Number of iterations for LOWESS function.
+      position: 1
+      name: '0.0001'
+      optional: false
+    named:
+    - !Flag
+      description: RANGE  Bin size to use. Default = 50000
+      synonyms:
+      - -B
+      - --binsize
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Path to reference fasta  [required]
+      synonyms:
+      - -R
+      - --reference
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Optional path to region BED file
+      synonyms:
+      - -L
+      - --bin-file
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to output BED file  [required]
+      synonyms:
+      - -O
+      - --output
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to input BED file  [required]
+      synonyms:
+      - -I
+      - --input
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Maximum fraction of N-bases per bin. Default =
+      synonyms:
+      - -n
+      - --frac-n
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: "Fraction of data to use for LOWESS function.\nDefault = 0.1"
+      synonyms:
+      - -l
+      - --frac-lowess
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Show the version and exit.
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "Usage: wisestork gc-correct [OPTIONS]\n\n  GC-correct a BED file containing\
+      \ counts per region\n\nOptions:\n  -B, --binsize INTEGER RANGE  Bin size to\
+      \ use. Default = 50000\n  -R, --reference PATH         Path to reference fasta\
+      \  [required]\n  -L, --bin-file PATH          Optional path to region BED file\n\
+      \  --version                    Show the version and exit.\n  -O, --output PATH\
+      \            Path to output BED file  [required]\n  -I, --input PATH       \
+      \      Path to input BED file  [required]\n  -n, --frac-n FLOAT           Maximum\
+      \ fraction of N-bases per bin. Default =\n                               0.1\n\
+      \n  -r, --frac-r FLOAT           Minimum fraction of reads per bin. Default\
+      \ =\n                               0.0001\n\n  -t, --iter INTEGER         \
+      \  Number of iterations for LOWESS function.\n                             \
+      \  Default = 3\n\n  -l, --frac-lowess FLOAT      Fraction of data to use for\
+      \ LOWESS function.\n                               Default = 0.1\n\n  --help\
+      \                       Show this message and exit.\n"
     generated_using: *id003
   - !Command
+    command:
+    - wisestork
+    - zscore
     positional: []
     named:
     - !Flag
@@ -294,11 +294,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: PATH
       optional: true
-    command:
-    - wisestork
-    - zscore
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -325,6 +323,7 @@ parent: &id002 !Command
       \ PATH   Path to dictionary BED file  [required]\n  --help                 \
       \      Show this message and exit.\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -350,6 +349,7 @@ parent: &id002 !Command
     \      Create new reference\n  zscore      Calculate Z-scores\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:

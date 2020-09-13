@@ -1,4 +1,7 @@
-&id004 !Command
+&id002 !Command
+command:
+- bxtools
+- mol
 positional:
 - !Positional
   description: ''
@@ -13,17 +16,17 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- bxtools
-- mol
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - bxtools
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - bxtools
+    - split
     positional:
     - !Positional
       description: ''
@@ -32,7 +35,7 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: 'Select verbosity level (0-4). Default: 0 '
+      description: 'Select verbosity level (0-4). Default: 0'
       synonyms:
       - -v
       - --verbose
@@ -66,11 +69,9 @@ parent: &id001 !Command
       - --tag
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bxtools
-    - split
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Display this help and exit
       synonyms:
@@ -90,7 +91,11 @@ parent: &id001 !Command
       \ see before writing [0]\n  -t, --tag                            Split by a\
       \ tag other than BX (e.g. MI)\n\n"
     generated_using: &id003 []
+  - *id002
   - !Command
+    command:
+    - bxtools
+    - stats
     positional:
     - !Positional
       description: ''
@@ -122,11 +127,9 @@ parent: &id001 !Command
       - --tag
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bxtools
-    - stats
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -134,9 +137,92 @@ parent: &id001 !Command
       \ BX-level statistics\n\n  General options\n  -v, --verbose                \
       \        Set verbose output\n  -t, --tag                            Collect\
       \ stats by a tag other than BX (e.g. MI)\n\n"
-    generated_using: &id002
+    generated_using: &id004
     - --help
   - !Command
+    command:
+    - bxtools
+    - relabel
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: input.bam
+      optional: false
+    named:
+    - !Flag
+      description: 'Select verbosity level (0-4). Default: 0'
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Display this help and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "\nUsage: bxtools relabel input.bam > relabeled.bam \nDescription:\
+      \ Move BX barcodes from BX tag to qname\n\n  General options\n  -v, --verbose\
+      \                        Select verbosity level (0-4). Default: 0 \n  -h, --help\
+      \                           Display this help and exit\n\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - bxtools
+    - convert
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: BAM/SAM/CRAM
+      optional: false
+    named:
+    - !Flag
+      description: Set verbose output
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Add chromosome tag (CR) and keep other tags. Default: delete all
+        tags'
+      synonyms:
+      - -k
+      - --keep-tags
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Tag to flip for chromosome. Default: BX'
+      synonyms:
+      - -t
+      - --tag
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nUsage: bxtools convert <BAM/SAM/CRAM> > converted.bam\nDescription:\
+      \ Convert a BAM to a BX sorted BAM by switching BX and chromosome\n\n  General\
+      \ options\n  -v, --verbose         Set verbose output\n  -k, --keep-tags   \
+      \    Add chromosome tag (CR) and keep other tags. Default: delete all tags\n\
+      \  -t, --tag             Tag to flip for chromosome. Default: BX\n\n"
+    generated_using: *id004
+  - !Command
+    command:
+    - bxtools
+    - tile
     positional:
     - !Positional
       description: ''
@@ -179,11 +265,9 @@ parent: &id001 !Command
       - --tag
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bxtools
-    - tile
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -193,86 +277,8 @@ parent: &id001 !Command
       \         Overlap of the tiles [0]\n  -b, --bed             Rather than tile\
       \ genome, input BED with regions\n  -t, --tag             Tag other than BX\
       \ to evaluate (e.g. MI)\n\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: input.bam
-      optional: false
-    named:
-    - !Flag
-      description: 'Select verbosity level (0-4). Default: 0 '
-      synonyms:
-      - -v
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - bxtools
-    - relabel
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: Display this help and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "\nUsage: bxtools relabel input.bam > relabeled.bam \nDescription:\
-      \ Move BX barcodes from BX tag to qname\n\n  General options\n  -v, --verbose\
-      \                        Select verbosity level (0-4). Default: 0 \n  -h, --help\
-      \                           Display this help and exit\n\n"
-    generated_using: *id003
-  - *id004
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: BAM/SAM/CRAM
-      optional: false
-    named:
-    - !Flag
-      description: Set verbose output
-      synonyms:
-      - -v
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Add chromosome tag (CR) and keep other tags. Default: delete all
-        tags'
-      synonyms:
-      - -k
-      - --keep-tags
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Tag to flip for chromosome. Default: BX'
-      synonyms:
-      - -t
-      - --tag
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - bxtools
-    - convert
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "\nUsage: bxtools convert <BAM/SAM/CRAM> > converted.bam\nDescription:\
-      \ Convert a BAM to a BX sorted BAM by switching BX and chromosome\n\n  General\
-      \ options\n  -v, --verbose         Set verbose output\n  -k, --keep-tags   \
-      \    Add chromosome tag (CR) and keep other tags. Default: delete all tags\n\
-      \  -t, --tag             Tag to flip for chromosome. Default: BX\n\n"
-    generated_using: *id002
+    generated_using: *id004
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -286,12 +292,13 @@ parent: &id001 !Command
     \ BED with footprint of each molecule (from MI tag)\n           convert      \
     \  Flip the BX tag and chromosome, so as to allow for a BX-sorted and indexable\
     \ BAM\n\nReport bugs to jwala@broadinstitute.org \n\n"
-  generated_using: *id002
+  generated_using: *id004
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
 help_text: "\nUsage: bxtools mol <BAM/SAM/CRAM> > mol.bed\nDescription: Return span\
   \ of molecules from 10X data (using MI tag)\n\n  General options\n  -v, --verbose\
   \         Set verbose output\n\n"
-generated_using: *id002
+generated_using: *id004

@@ -1,119 +1,137 @@
 class: CommandLineTool
 id: ../../../ribotish_quality.cwl
 inputs:
-- id: riboseq_bam_file
+- id: in_riboseq_bam_file
   doc: Riboseq bam file
-  type: string
+  type: File
   inputBinding:
     prefix: -b
-- id: gene_annotation_file
+- id: in_gene_annotation_file
   doc: Gene annotation file
-  type: string
+  type: File
   inputBinding:
     prefix: -g
-- id: output_data_file
-  doc: "Output data file (default: ribobampath[:-4]+ '_qual.txt')"
-  type: string
+- id: in_output_data_file
+  doc: "Output data file (default: ribobampath[:-4]+\n'_qual.txt')"
+  type: File
   inputBinding:
     prefix: -o
-- id: tis
+- id: in_tis
   doc: The data is TIS enriched (for LTM & Harritonine)
   type: boolean
   inputBinding:
     prefix: --tis
-- id: input_previous_output
-  doc: Input previous output file, do not read gene file and bam file again
-  type: string
+- id: in_input_previous_output
+  doc: "Input previous output file, do not read gene file and\nbam file again"
+  type: File
   inputBinding:
     prefix: -i
-- id: gene_format
-  doc: 'Gene annotation file format (gtf, bed, gpd, gff, default: auto)'
-  type: string
+- id: in_gene_format
+  doc: "Gene annotation file format (gtf, bed, gpd, gff,\ndefault: auto)"
+  type: File
   inputBinding:
     prefix: --geneformat
-- id: chr_map
-  doc: Input chromosome id mapping table file if annotation chr ids are not same as
-    chr ids in bam/fasta files
-  type: string
+- id: in_chr_map
+  doc: "Input chromosome id mapping table file if annotation\nchr ids are not same\
+    \ as chr ids in bam/fasta files"
+  type: File
   inputBinding:
     prefix: --chrmap
-- id: output_pdf_figure
-  doc: "Output pdf figure file (default: ribobampath[:-4]+ '_qual.pdf')"
-  type: string
+- id: in_output_pdf_figure
+  doc: "Output pdf figure file (default: ribobampath[:-4]+\n'_qual.pdf')"
+  type: File
   inputBinding:
     prefix: -f
-- id: output_offset_ribobampath
-  doc: "Output offset parameter file (default: ribobampath[:-4]+ '.para.py')"
-  type: string
+- id: in_output_offset_defaultribobampath
+  doc: "Output offset parameter file (default:\nribobampath[:-4]+ '.para.py')"
+  type: File
   inputBinding:
     prefix: -r
-- id: range_tag_length
+- id: in_range_tag_length
   doc: 'Range of tag length (default: 25,35)'
-  type: string
+  type: long
   inputBinding:
     prefix: -l
-- id: position_range_start
-  doc: 'Position range near start codon or stop codon (default: -40,20)'
-  type: string
+- id: in_position_range_stop
+  doc: "Position range near start codon or stop codon\n(default: -40,20)"
+  type: long
   inputBinding:
     prefix: -d
-- id: bins
+- id: in_bins
   doc: 'Bins for cds profile (default: 20)'
-  type: string
+  type: long
   inputBinding:
     prefix: --bins
-- id: nom_zero
-  doc: Do not consider reads with mismatch at position 0 as a new group
+- id: in_nom_zero
+  doc: "Do not consider reads with mismatch at position 0 as a\nnew group"
   type: boolean
   inputBinding:
     prefix: --nom0
-- id: th
+- id: in_th
   doc: 'Threshold for quality (default: 0.5)'
-  type: string
+  type: double
   inputBinding:
     prefix: --th
-- id: max_nh
+- id: in_max_nh
   doc: 'Max NH value allowed for bam alignments (default: 1)'
   type: long
   inputBinding:
     prefix: --maxNH
-- id: min_mapq
-  doc: 'Min MapQ value required for bam alignments (default: 1)'
+- id: in_min_mapq
+  doc: "Min MapQ value required for bam alignments (default:\n1)"
   type: long
   inputBinding:
     prefix: --minMapQ
-- id: secondary
+- id: in_secondary
   doc: Use bam secondary alignments
   type: boolean
   inputBinding:
     prefix: --secondary
-- id: paired
+- id: in_paired
   doc: Reads are paired end
   type: boolean
   inputBinding:
     prefix: --paired
-- id: colorblind
-  doc: Use a color style readable for color blind people ('#F00078,#00F000,#0078F0')
+- id: in_colorblind
+  doc: "Use a color style readable for color blind people\n('#F00078,#00F000,#0078F0')"
   type: boolean
   inputBinding:
     prefix: --colorblind
-- id: colors
-  doc: "User specified Matplotlib accepted color codes for three frames (default:\
+- id: in_colors
+  doc: "User specified Matplotlib accepted color codes for\nthree frames (default:\
     \ 'r,g,b')"
   type: string
   inputBinding:
     prefix: --colors
-- id: number_processes_default
+- id: in_number_processes_default
   doc: 'Number of processes (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: -p
-- id: verbose
+- id: in_verbose
   doc: Increase output verbosity
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_data_file
+  doc: "Output data file (default: ribobampath[:-4]+\n'_qual.txt')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_data_file)
+- id: out_output_pdf_figure
+  doc: "Output pdf figure file (default: ribobampath[:-4]+\n'_qual.pdf')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_pdf_figure)
+- id: out_output_offset_defaultribobampath
+  doc: "Output offset parameter file (default:\nribobampath[:-4]+ '.para.py')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_offset_defaultribobampath)
 cwlVersion: v1.1
 baseCommand:
 - ribotish

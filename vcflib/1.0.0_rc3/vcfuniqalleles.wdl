@@ -4,4 +4,7 @@ task Vcfuniqalleles {
   command <<<
     vcfuniqalleles
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Omssacl {
   command <<<
     omssacl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task SegtoolsSignalDistribution {
+task Segtoolssignaldistribution {
   command <<<
-    segtools-signal-distribution
+    segtools_signal_distribution
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

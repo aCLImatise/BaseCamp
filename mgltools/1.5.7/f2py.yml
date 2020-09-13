@@ -1,17 +1,101 @@
 !Command
+command:
+- f2py
 positional:
 - !Positional
-  description: ''
+  description: --help-link [..] List system resources found by system_info.py. See
+    also
   position: 0
-  name: '1'
+  name: directories.
   optional: false
 named:
 - !Flag
-  description: "[..] List system resources found by system_info.py. See also --link-<resource>\
-    \ switch below. [..] is optional list of resources names. E.g. try 'f2py --help-link\
-    \ lapack_opt'."
+  description: Use numpy.f2py tool with NumPy support. [DEFAULT]
   synonyms:
-  - --help-link
+  - --2d-numpy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use f2py2e tool with Numeric support.
+  synonyms:
+  - --2d-numeric
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use f2py2e tool with Numarray support.
+  synonyms:
+  - --2d-numarray
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use 3rd generation f2py from the separate f2py package.\n[NOT AVAILABLE\
+    \ YET]"
+  synonyms:
+  - --g3-numpy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write signatures of the fortran routines to file <filename>\nand exit.\
+    \ You can then edit <filename> and use it instead\nof <fortran files>. If <filename>==stdout\
+    \ then the\nsignatures are printed to stdout."
+  synonyms:
+  - -h
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "Name of the module; f2py generates a Python/C API\nfile <modulename>module.c\
+    \ or extension module <modulename>.\nDefault is 'untitled'."
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: modulename
+  optional: true
+- !Flag
+  description: assumed with -h key, and --no-lower without -h key.
+  synonyms:
+  - --lower
+  args: !SimpleFlagArg
+    name: is
+  optional: true
+- !Flag
+  description: "All f2py generated files are created in <dirname>.\nDefault is tempfile.mkdtemp()."
+  synonyms:
+  - --build-dir
+  args: !SimpleFlagArg
+    name: dirname
+  optional: true
+- !Flag
+  description: Overwrite existing signature file.
+  synonyms:
+  - --overwrite-signature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Create 'incomplete' LaTeX document (without commands\n\\documentclass,\
+    \ \\tableofcontents, and \\begin{document},\n\\end{document})."
+  synonyms:
+  - --short-latex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Create C/API code that reports the state of the wrappers\nduring runtime.\
+    \ Useful for debugging."
+  synonyms:
+  - --debug-capi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :<path2>:...   Search include files from the given
+  synonyms:
+  - --include-paths
+  args: !SimpleFlagArg
+    name: path1
+  optional: true
+- !Flag
+  description: <resource> switch below. [..] is optional list
+  synonyms:
+  - --link-
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -104,10 +188,42 @@ named:
   - --debug
   args: !EmptyFlagArg {}
   optional: true
-command:
-- f2py
+- !Flag
+  description: <libname>
+  synonyms:
+  - -L/path/to/lib/
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <define> -U<name>
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -I/path/to/include/
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -DPREPEND_FORTRAN
+  - -DNO_APPEND_FORTRAN
+  - -DUPPERCASE_FORTRAN
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -DUNDERSCORE_G77
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../fq.cwl
 inputs:
-- id: quiet
+- id: in_quiet
   doc: "!        Quiet mode: no progress output (default '0')."
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: ref
+- id: in_ref
   doc: Reference FASTA file OR size in bp (default '').
-  type: string
+  type: long
   inputBinding:
     prefix: --ref
-- id: hist
+- id: in_hist
   doc: Length histogram (NO LONGER SUPPORTED) (default '0').
   type: boolean
   inputBinding:
     prefix: --hist
-- id: file_dot_fq_vertical_line_file_dot_fq_do_tgz_dot_dot_dot
+- id: in_file_dot_fq_vertical_line_file_dot_fq_do_tgz_dot_dot_dot
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fq

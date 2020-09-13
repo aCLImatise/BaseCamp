@@ -4,4 +4,7 @@ task Blastdbcheck {
   command <<<
     blastdbcheck
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

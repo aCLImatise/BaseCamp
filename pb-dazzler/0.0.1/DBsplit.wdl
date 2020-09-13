@@ -12,11 +12,11 @@ task DBsplit {
   command <<<
     DBsplit \
       ~{var_int} \
-      ~{true="-s" false="" target_size_blocks} \
-      ~{true="-x" false="" trimmed_db_reads} \
-      ~{true="-a" false="" trimmed_db_contains} \
-      ~{true="-f" false="" force_split_occur} \
-      ~{true="-af" false="" af}
+      ~{if (target_size_blocks) then "-s" else ""} \
+      ~{if (trimmed_db_reads) then "-x" else ""} \
+      ~{if (trimmed_db_contains) then "-a" else ""} \
+      ~{if (force_split_occur) then "-f" else ""} \
+      ~{if (af) then "-af" else ""}
   >>>
   parameter_meta {
     target_size_blocks: ": Target size of blocks (in Mbp)."
@@ -25,5 +25,8 @@ task DBsplit {
     force_split_occur: ": Force the split to occur even if already split."
     af: ""
     var_int: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

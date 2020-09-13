@@ -1,55 +1,64 @@
 class: CommandLineTool
 id: ../../../OpenSwathFeatureXMLToTSV.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*                     Input files separated by blank (valid formats: 'featureXML')"
-  type: File
+  type: string
   inputBinding:
     prefix: -in
-- id: tr
+- id: in_tr
   doc: "*                      TraML transition file (valid formats: 'traML')"
   type: File
   inputBinding:
     prefix: -tr
-- id: out
+- id: in_out
   doc: "*                     Tsv output file (mProphet compatible) (valid formats:\
     \ 'csv')"
   type: File
   inputBinding:
     prefix: -out
-- id: short_format
+- id: in_short_format
   doc: Whether to write short (one peptide per line) or long format (one transition
     per line).
   type: boolean
   inputBinding:
     prefix: -short_format
-- id: best_scoring_peptide
+- id: in_best_scoring_peptide
   doc: If only the best scoring feature per peptide should be printed, give the variable
     name
   type: string
   inputBinding:
     prefix: -best_scoring_peptide
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "*                     Tsv output file (mProphet compatible) (valid formats:\
+    \ 'csv')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - OpenSwathFeatureXMLToTSV

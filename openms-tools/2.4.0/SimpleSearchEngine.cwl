@@ -1,54 +1,62 @@
 class: CommandLineTool
 id: ../../../SimpleSearchEngine.cwl
 inputs:
-- id: in
+- id: in_in
   doc: "*                                    Input file  (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -in
-- id: database
+- id: in_database
   doc: "*                              Input file  (valid formats: 'fasta')"
   type: File
   inputBinding:
     prefix: -database
-- id: out
+- id: in_out
   doc: "*                                   Output file  (valid formats: 'idXML')"
   type: File
   inputBinding:
     prefix: -out
-- id: enzyme
-  doc: "The enzyme used for peptide digestion. (default: 'Trypsin' valid: 'PepsinA',\
-    \ 'Lys-N', 'Lys-C/P', 'Lys-C', 'Formic_acid', 'Chymotrypsin/P', 'CNBr', 'Trypsin',\
-    \ 'no cleavage', 'unspecific cleavage', 'Trypsin/P', 'V8-DE', 'TrypChymo', 'proline\
-    \ endopeptidase', 'Arg-C/P', 'Asp-N', 'Clostripain/P', 'elastase-trypsin-chymotrypsin',\
-    \ 'Chymotrypsin', 'Asp-N/B', '2-iodobenzoate', 'iodosobenzoate', 'Arg-C', 'V8-E',\
-    \ 'leukocyte elastase', 'glutamyl endopeptidase', 'Alpha-lytic protease', 'Glu-C+P',\
-    \ 'PepsinA + P', 'cyanogen-bromide', 'Asp-N_ambic', 'staphylococcal protease/D',\
-    \ 'proline-endopeptidase/HKR')"
-  type: string
+- id: in_enzyme
+  doc: "The enzyme used for peptide digestion. (default: 'Trypsin' valid: 'Arg-C/P',\
+    \ 'Trypsin', 'Lys-C/P', 'PepsinA', 'Arg-C', 'PepsinA + P', 'cyanogen-bromide',\
+    \ 'Clostripain/P', 'unspecific cleavage', 'Asp-N', 'Asp-N/B', 'Trypsin/P', 'V8-DE',\
+    \ 'Lys-C', 'Lys-N', 'CNBr', 'Formic_acid', 'Chymotrypsin', 'Chymotrypsin/P', 'no\
+    \ cleavage', 'TrypChymo', 'V8-E', 'leukocyte elastase', 'proline endopeptidase',\
+    \ 'Asp-N_ambic', 'proline-endopeptidase/HKR', 'Glu-C+P', '2-iodobenzoate', 'iodosobenzoate',\
+    \ 'staphylococcal protease/D', 'glutamyl endopeptidase', 'Alpha-lytic protease',\
+    \ 'elastase-trypsin-chymotrypsin')"
+  type: long
   inputBinding:
     prefix: -enzyme
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "*                                   Output file  (valid formats: 'idXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - SimpleSearchEngine

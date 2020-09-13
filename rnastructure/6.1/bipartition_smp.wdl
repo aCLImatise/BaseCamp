@@ -1,14 +1,14 @@
 version 1.0
 
-task BipartitionSmp {
+task Bipartitionsmp {
   input {
     String bi_partition
-    String seq_file_one
-    String seq_file_two
-    String pfs_file
+    File seq_file_one
+    File seq_file_two
+    File pfs_file
   }
   command <<<
-    bipartition-smp \
+    bipartition_smp \
       ~{bi_partition} \
       ~{seq_file_one} \
       ~{seq_file_two} \
@@ -19,5 +19,8 @@ task BipartitionSmp {
     seq_file_one: ""
     seq_file_two: ""
     pfs_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

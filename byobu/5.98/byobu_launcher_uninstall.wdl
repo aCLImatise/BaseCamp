@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuLauncherUninstall {
+task Byobulauncheruninstall {
   command <<<
-    byobu-launcher-uninstall
+    byobu_launcher_uninstall
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

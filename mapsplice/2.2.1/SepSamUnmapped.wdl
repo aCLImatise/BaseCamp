@@ -4,4 +4,7 @@ task SepSamUnmapped {
   command <<<
     SepSamUnmapped
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

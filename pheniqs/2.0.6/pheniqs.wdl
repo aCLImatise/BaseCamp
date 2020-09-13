@@ -1,14 +1,10 @@
 version 1.0
 
 task Pheniqs {
-  input {
-    String mux
-  }
   command <<<
-    pheniqs \
-      ~{mux}
+    pheniqs
   >>>
-  parameter_meta {
-    mux: "Multiplex and Demultiplex annotated DNA sequence reads"
+  output {
+    File out_stdout = stdout()
   }
 }

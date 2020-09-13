@@ -4,4 +4,7 @@ task PslCDnaFilter {
   command <<<
     pslCDnaFilter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

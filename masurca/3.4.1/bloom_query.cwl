@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../bloom_query.cwl
 inputs:
-- id: mer
+- id: in_mer
   doc: '*k-mer size'
   type: long
   inputBinding:
     prefix: --mer
-- id: bloom_query_cmdline
+- id: in_bloom_query_cmdline
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input
+- id: in_input
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bloom_query

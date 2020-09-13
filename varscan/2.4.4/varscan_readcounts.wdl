@@ -2,8 +2,8 @@ version 1.0
 
 task VarscanReadcounts {
   input {
-    String? variants_file
-    Boolean? output_file
+    File? variants_file
+    File? output_file
     Boolean? min_coverage
     Int? min_base_qual
     String? jar
@@ -17,8 +17,8 @@ task VarscanReadcounts {
       ~{read_counts} \
       ~{pile_up} \
       ~{if defined(variants_file) then ("--variants-file " +  '"' + variants_file + '"') else ""} \
-      ~{true="--output-file" false="" output_file} \
-      ~{true="--min-coverage" false="" min_coverage} \
+      ~{if (output_file) then "--output-file" else ""} \
+      ~{if (min_coverage) then "--min-coverage" else ""} \
       ~{if defined(min_base_qual) then ("--min-base-qual " +  '"' + min_base_qual + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
@@ -31,5 +31,9 @@ task VarscanReadcounts {
     java: ""
     read_counts: ""
     pile_up: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

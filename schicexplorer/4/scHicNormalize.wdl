@@ -3,9 +3,9 @@ version 1.0
 task ScHicNormalize {
   input {
     String? schic_matrix_m
-    String? out_filename
-    String? threads
-    String? set_to_zero_threshold
+    File? out_filename
+    Int? threads
+    Float? set_to_zero_threshold
     String sch_i_c
     String var_5
   }
@@ -19,11 +19,15 @@ task ScHicNormalize {
       ~{if defined(set_to_zero_threshold) then ("--setToZeroThreshold " +  '"' + set_to_zero_threshold + '"') else ""}
   >>>
   parameter_meta {
-    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction matrices to investigate for QC. Needs to be in scool format (default: None)"
-    out_filename: "File name of the consensus scool matrix. (default: None)"
-    threads: "Number of threads. Using the python multiprocessing module. (default: 4)"
-    set_to_zero_threshold: "Values smaller as this threshold are set to 0. (default: 1.0)"
+    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to\\ninvestigate for QC. Needs to be in scool format\\n(default: None)"
+    out_filename: "File name of the consensus scool matrix. (default:\\nNone)"
+    threads: "Number of threads. Using the python multiprocessing\\nmodule. (default: 4)"
+    set_to_zero_threshold: "Values smaller as this threshold are set to 0.\\n(default: 1.0)"
     sch_i_c: ""
     var_5: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_filename = "${in_out_filename}"
   }
 }

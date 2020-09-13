@@ -4,4 +4,7 @@ task Dimspy {
   command <<<
     dimspy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

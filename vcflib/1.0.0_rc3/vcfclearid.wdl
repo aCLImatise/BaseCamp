@@ -4,4 +4,7 @@ task Vcfclearid {
   command <<<
     vcfclearid
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

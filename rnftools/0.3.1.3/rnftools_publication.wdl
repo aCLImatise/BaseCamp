@@ -4,4 +4,7 @@ task RnftoolsPublication {
   command <<<
     rnftools publication
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

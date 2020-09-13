@@ -1,52 +1,60 @@
 class: CommandLineTool
 id: ../../../moca_find_motifs.cwl
 inputs:
-- id: bed_file
+- id: in_bed_file
   doc: Bed file input  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --bedfile
-- id: oc
+- id: in_oc
   doc: Output Directory  [required]
-  type: string
+  type: Directory
   inputBinding:
     prefix: --oc
-- id: configuration
+- id: in_configuration
   doc: Configuration file  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --configuration
-- id: slop_length
+- id: in_slop_length
   doc: Flanking sequence length
   type: long
   inputBinding:
     prefix: --slop-length
-- id: flank_motif
+- id: in_flank_motif
   doc: Length of sequence flanking motif
   type: long
   inputBinding:
     prefix: --flank-motif
-- id: n_motif
+- id: in_n_motif
   doc: Number of motifs
   type: long
   inputBinding:
     prefix: --n-motif
-- id: cores
+- id: in_cores
   doc: Number of parallel MEME jobs  [required]
   type: long
   inputBinding:
     prefix: --cores
-- id: genome_build
-  doc: Key denoting genome build to use in configuration file  [required]
-  type: string
+- id: in_genome_build
+  doc: "Key denoting genome build to use in\nconfiguration file  [required]"
+  type: File
   inputBinding:
     prefix: --genome-build
-- id: show_progress
+- id: in_show_progress
   doc: Print progress
   type: boolean
   inputBinding:
     prefix: --show-progress
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_oc
+  doc: Output Directory  [required]
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_oc)
 cwlVersion: v1.1
 baseCommand:
 - moca

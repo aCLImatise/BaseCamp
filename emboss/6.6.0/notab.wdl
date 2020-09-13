@@ -4,4 +4,7 @@ task Notab {
   command <<<
     notab
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

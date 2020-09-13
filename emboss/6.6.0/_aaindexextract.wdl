@@ -1,7 +1,10 @@
 version 1.0
 
-task _aaindexextract {
+task Aaindexextract {
   command <<<
     _aaindexextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

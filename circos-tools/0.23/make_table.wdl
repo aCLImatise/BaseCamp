@@ -1,17 +1,20 @@
 version 1.0
 
-task MakeTable {
+task Maketable {
   input {
-    Int? rows
     Int? cols
+    Int? rows
   }
   command <<<
-    make-table \
-      ~{if defined(rows) then ("-rows " +  '"' + rows + '"') else ""} \
-      ~{if defined(cols) then ("-cols " +  '"' + cols + '"') else ""}
+    make_table \
+      ~{if defined(cols) then ("-cols " +  '"' + cols + '"') else ""} \
+      ~{if defined(rows) then ("-rows " +  '"' + rows + '"') else ""}
   >>>
   parameter_meta {
-    rows: ""
     cols: ""
+    rows: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

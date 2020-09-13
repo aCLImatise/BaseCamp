@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../RNAsoup.cwl
 inputs:
-- id: t
-  doc: ''
-  type: string
+- id: in_tree_newick_format
+  doc: Tree in NEWICK format
+  type: File
   inputBinding:
     prefix: -t
-- id: f
-  doc: ''
-  type: string
+- id: in_fasta_file_sequences
+  doc: FASTA file of all sequences in tree
+  type: File
   inputBinding:
     prefix: -f
-- id: m
-  doc: ''
-  type: string
+- id: in_file_containing_mfe
+  doc: File containing the RNAalifold consensus MFE for each subtree < 500 sequences
+  type: File
   inputBinding:
     prefix: -m
-- id: o
-  doc: ''
-  type: string
+- id: in_output_directory_created
+  doc: Output directory which is created to store the output
+  type: Directory
   inputBinding:
     prefix: -o
-- id: k
-  doc: ''
-  type: string
+- id: in_significance_level_k
+  doc: Significance level k
+  type: double
   inputBinding:
     prefix: -k
-- id: v
-  doc: ''
+- id: in_print_version_information
+  doc: Print version information
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory_created
+  doc: Output directory which is created to store the output
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory_created)
 cwlVersion: v1.1
 baseCommand:
 - RNAsoup

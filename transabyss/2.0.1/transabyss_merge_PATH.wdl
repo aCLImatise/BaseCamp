@@ -1,20 +1,23 @@
 version 1.0
 
-task TransabyssMergePATH {
+task TransabyssmergePATH {
   input {
-    Int? mink
     Int? max_k
+    Int? mink
     String trans_abyss_merge
   }
   command <<<
-    transabyss-merge PATH \
+    transabyss_merge PATH \
       ~{trans_abyss_merge} \
-      ~{if defined(mink) then ("--mink " +  '"' + mink + '"') else ""} \
-      ~{if defined(max_k) then ("--maxk " +  '"' + max_k + '"') else ""}
+      ~{if defined(max_k) then ("--maxk " +  '"' + max_k + '"') else ""} \
+      ~{if defined(mink) then ("--mink " +  '"' + mink + '"') else ""}
   >>>
   parameter_meta {
-    mink: ""
     max_k: ""
+    mink: ""
     trans_abyss_merge: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

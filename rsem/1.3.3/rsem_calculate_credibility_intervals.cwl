@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../rsem_calculate_credibility_intervals.cwl
 inputs:
-- id: reference_name
+- id: in_reference_name
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: imd_name
+- id: in_imd_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: stat_name
+- id: in_stat_name
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: confidence
+- id: in_confidence
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: ncv
+- id: in_ncv
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: ns_pc
+- id: in_ns_pc
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: nmb
+- id: in_nmb
   doc: ''
   type: string
   inputBinding:
     position: 6
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rsem-calculate-credibility-intervals

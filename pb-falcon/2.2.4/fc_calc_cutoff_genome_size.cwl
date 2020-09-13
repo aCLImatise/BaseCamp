@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../fc_calc_cutoff_genome_size.cwl
 inputs:
-- id: coverage
+- id: in_coverage
   doc: ''
   type: string
   inputBinding:
     prefix: --coverage
-- id: capture
+- id: in_capture
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fc_calc_cutoff

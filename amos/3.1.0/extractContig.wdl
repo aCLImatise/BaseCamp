@@ -17,4 +17,7 @@ task ExtractContig {
     contig_iid: ""
     new_bank: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

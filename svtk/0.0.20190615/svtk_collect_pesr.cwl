@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../svtk_collect_pesr.cwl
 inputs:
-- id: index_dir
-  doc: Directory of local BAM indexes if accessing a remote S3 bam.
-  type: string
+- id: in_index_dir
+  doc: "Directory of local BAM indexes if accessing a remote\nS3 bam."
+  type: Directory
   inputBinding:
     prefix: --index-dir
-- id: region
+- id: in_region
   doc: Tabix-formatted region to parse
   type: string
   inputBinding:
     prefix: --region
-- id: b_gzip
+- id: in_b_gzip
   doc: bgzip and tabix index output
   type: boolean
   inputBinding:
     prefix: --bgzip
-- id: bam
+- id: in_bam
   doc: Local or S3 path to bam
   type: string
   inputBinding:
     position: 0
-- id: sample
+- id: in_sample
   doc: ID to append to each line of output files.
   type: string
   inputBinding:
     position: 1
-- id: split_file
+- id: in_split_file
   doc: Output split counts.
   type: string
   inputBinding:
     position: 2
-- id: disc_file
+- id: in_disc_file
   doc: Output discordant pairs.
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svtk

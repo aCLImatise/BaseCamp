@@ -2,25 +2,28 @@ version 1.0
 
 task Allegro {
   input {
-    String? l
-    Boolean? t
-    Boolean? n
     Boolean? m
+    Boolean? n
+    Boolean? t
+    File? l
     String options_file
   }
   command <<<
     allegro \
       ~{options_file} \
-      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
-      ~{true="-t" false="" t} \
-      ~{true="-n" false="" n} \
-      ~{true="-m" false="" m}
+      ~{if (m) then "-m" else ""} \
+      ~{if (n) then "-n" else ""} \
+      ~{if (t) then "-t" else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
   parameter_meta {
-    l: ""
-    t: ""
-    n: ""
     m: ""
+    n: ""
+    t: ""
+    l: ""
     options_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

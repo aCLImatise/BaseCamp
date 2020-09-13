@@ -2,7 +2,7 @@ version 1.0
 
 task SocruRebuildProfile {
   input {
-    String? output_file
+    File? output_file
     String? prefix
     Boolean? debug
     Boolean? verbose
@@ -13,8 +13,8 @@ task SocruRebuildProfile {
       ~{profile_filename} \
       ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     output_file: "Output filename (default: updated_profile.txt)"
@@ -22,5 +22,9 @@ task SocruRebuildProfile {
     debug: "Turn on debugging (default: False)"
     verbose: "Turn on verbose output (default: False)"
     profile_filename: "profile.txt from database"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

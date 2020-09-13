@@ -10,11 +10,11 @@ task Epost {
   }
   command <<<
     epost \
-      ~{true="-db" false="" db} \
-      ~{true="-id" false="" id} \
-      ~{true="-format" false="" format} \
-      ~{true="-input" false="" read_file_instead} \
-      ~{true="-label" false="" label}
+      ~{if (db) then "-db" else ""} \
+      ~{if (id) then "-id" else ""} \
+      ~{if (format) then "-format" else ""} \
+      ~{if (read_file_instead) then "-input" else ""} \
+      ~{if (label) then "-label" else ""}
   >>>
   parameter_meta {
     db: "Database name"
@@ -22,5 +22,8 @@ task Epost {
     format: "uid or acc"
     read_file_instead: "Read from file instead of stdin"
     label: "Alias for query step"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

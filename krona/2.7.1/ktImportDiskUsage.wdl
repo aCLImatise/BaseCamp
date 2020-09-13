@@ -4,4 +4,7 @@ task KtImportDiskUsage {
   command <<<
     ktImportDiskUsage
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

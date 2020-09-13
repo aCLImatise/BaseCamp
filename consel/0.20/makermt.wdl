@@ -4,4 +4,7 @@ task Makermt {
   command <<<
     makermt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

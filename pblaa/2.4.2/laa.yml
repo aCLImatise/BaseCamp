@@ -1,5 +1,39 @@
 !Command
+command:
+- laa
 positional:
+- !Positional
+  description: 'General Options:'
+  position: 0
+  name: 3-BSD
+  optional: false
+- !Positional
+  description: -m,--modelSpec            Name of chemistry or model to use, overriding
+  position: 1
+  name: files.
+  optional: false
+- !Positional
+  description: --doBc                    Comma-separated list of barcode pairs to
+    analyze,
+  position: 0
+  name: barcodes.
+  optional: false
+- !Positional
+  description: 'Data Filtering Options:'
+  position: 0
+  name: sample.
+  optional: false
+- !Positional
+  description: --minGuideScore           Minimum score of a query alignment to the
+    cluster
+  position: 1
+  name: clustering
+  optional: false
+- !Positional
+  description: 'Result Options:'
+  position: 0
+  name: consensus
+  optional: false
 - !Positional
   description: Input file.
   position: 0
@@ -7,73 +41,59 @@ positional:
   optional: false
 named:
 - !Flag
-  description: RNG seed, modulates reservoir filtering of reads. [42]
+  description: "RNG seed, modulates reservoir filtering of reads.\n[42]"
   synonyms:
   - --rngSeed
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Generate PacBio indicies (*.pbi) for BAM files that don't have them.
+  description: "Generate PacBio indicies (*.pbi) for BAM files that\ndon't have them."
   synonyms:
   - --generateBamIndex
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ignore PacBio indicies (*.pbi) for BAM files if they exist.
+  description: "Ignore PacBio indicies (*.pbi) for BAM files if\nthey exist."
   synonyms:
   - --ignoreBamIndex
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Number of threads to use, <= 0 means autodetection. [-1]
+  description: "Number of threads to use, <= 0 means autodetection.\n[-1]"
   synonyms:
   - --numThreads
   - -n
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Path to a model file or directory containing model files.
+  description: Path to a model file or directory containing model
   synonyms:
   - -M
   - --modelPath
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Name of chemistry or model to use, overriding default selection.
-  synonyms:
-  - -m
-  - --modelSpec
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'Fasta file of the barcode sequences used, overwriting any names in
-    the DataSet. NOTE: Only used to find barcode names'
+  description: "Fasta file of the barcode sequences used,\noverwriting any names in\
+    \ the DataSet. NOTE: Only\nused to find barcode names"
   synonyms:
   - -b
   - --barcodes
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimum average barcode score to require of subreads. [26]
+  description: "Minimum average barcode score to require of\nsubreads. [26]"
   synonyms:
   - --minBarcodeScore
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Filter input reads by presence of both flanking barcodes.
+  description: Filter input reads by presence of both flanking
   synonyms:
   - --fullLength
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Comma-separated list of barcode pairs to analyze, either by name, such
-    as 'lbc1--lbc1', or by index, such as '0--0'.
-  synonyms:
-  - --doBc
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Disable barcode filtering and treat all data as one sample.
+  description: Disable barcode filtering and treat all data as one
   synonyms:
   - --ignoreBc
   args: !EmptyFlagArg {}
@@ -86,7 +106,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximum length of input reads, set 0 to disable. [0]
+  description: "Maximum length of input reads, set 0 to disable.\n[0]"
   synonyms:
   - -L
   - --maxLength
@@ -106,40 +126,34 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Path to a fasta file of sequences to use for guided clustering
+  description: Path to a fasta file of sequences to use for guided
   synonyms:
   - -g
   - --clusterGuide
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimum score of a query alignment to the cluster guide [50]
-  synonyms:
-  - --minGuideScore
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Minimum span of a query alignment to the cluster guide [500]
+  description: "Minimum span of a query alignment to the cluster\nguide [500]"
   synonyms:
   - --minGuideSpan
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: A file of ReadIds, as either Text or Fasta, to allow from the input
-    file. ["None"]
+  description: "A file of ReadIds, as either Text or Fasta, to\nallow from the input\
+    \ file. [\"None\"]"
   synonyms:
   - --whitelist
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximum number of input reads to cluster per barcode. [2000]
+  description: "Maximum number of input reads to cluster per\nbarcode. [2000]"
   synonyms:
   - -r
   - --maxReads
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximum number of input reads to cluster per barcode. [400]
+  description: "Maximum number of input reads to cluster per\nbarcode. [400]"
   synonyms:
   - -c
   - --maxClusteringReads
@@ -170,13 +184,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Skip some high-scoring alignments to disperse the cluster more. [0]
+  description: "Skip some high-scoring alignments to disperse the\ncluster more. [0]"
   synonyms:
   - --skipRate
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimum number reads supporting a cluster before it is reported. [20]
+  description: "Minimum number reads supporting a cluster before it\nis reported.\
+    \ [20]"
   synonyms:
   - --minClusterSize
   args: !EmptyFlagArg {}
@@ -200,53 +215,53 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: When splitting, ignore N bases at the ends. Use to prevent excessive
-    splitting caused by degenerate primers. [0]
+  description: "When splitting, ignore N bases at the ends. Use to\nprevent excessive\
+    \ splitting caused by degenerate\nprimers. [0]"
   synonyms:
   - -i
   - --ignoreEnds
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximum number of reads to use for phasing/consensus. [500]
+  description: "Maximum number of reads to use for\nphasing/consensus. [500]"
   synonyms:
   - --maxPhasingReads
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimum score to require of mutations  used for phasing. [20]
+  description: "Minimum score to require of mutations  used for\nphasing. [20]"
   synonyms:
   - --minQScore
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimum prevalence to require of mutations used for phasing. [0.09]
+  description: "Minimum prevalence to require of mutations used for\nphasing. [0.09]"
   synonyms:
   - --minPrevalence
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimum number reads favoring the minor phase required to split a haplotype.
-    [20]
+  description: "Minimum number reads favoring the minor phase\nrequired to split a\
+    \ haplotype. [20]"
   synonyms:
   - --minSplitReads
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimum fraction of reads favoring the minor phase required to split
-    a haplotype. [0.1]
+  description: "Minimum fraction of reads favoring the minor phase\nrequired to split\
+    \ a haplotype. [0.1]"
   synonyms:
   - --minSplitFraction
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Global likelihood improvement required to split a haplotype. [500]
+  description: "Global likelihood improvement required to split a\nhaplotype. [500]"
   synonyms:
   - --minSplitScore
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimum ZScore to allow before adding a read to a haplotype. [-10]
+  description: "Minimum ZScore to allow before adding a read to a\nhaplotype. [-10]"
   synonyms:
   - --minZScore
   args: !EmptyFlagArg {}
@@ -264,8 +279,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Report only the top N consensus sequences for each barcode, set <1
-    to disable. [0]
+  description: "Report only the top N consensus sequences for each\nbarcode, set <1\
+    \ to disable. [0]"
   synonyms:
   - --takeN
   args: !EmptyFlagArg {}
@@ -278,8 +293,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimum predicted consensus accuracy below which a consensus is called
-    'noise'. [0.95]
+  description: "Minimum predicted consensus accuracy below which a\nconsensus is called\
+    \ 'noise'. [0.95]"
   synonyms:
   - --minPredictedAccuracy
   args: !EmptyFlagArg {}
@@ -291,13 +306,13 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Activate the chimera filter and separate chimeric consensus outputs
+  description: "Activate the chimera filter and separate chimeric\nconsensus outputs"
   synonyms:
   - --ChimeraFilter
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Deactivate the chimera filter and output all consensus
+  description: Deactivate the chimera filter and output all
   synonyms:
   - --noChimeraFilter
   args: !EmptyFlagArg {}
@@ -309,43 +324,50 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output file for high-quality results. ["amplicon_analysis.fastq"]
+  description: "Output file for high-quality results.\n[\"amplicon_analysis.fastq\"\
+    ]"
   synonyms:
   - --resultFile
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output file for low-quality or chimeric results. ["amplicon_analysis_chimeras_noise.fastq"]
+  description: "Output file for low-quality or chimeric results.\n[\"amplicon_analysis_chimeras_noise.fastq\"\
+    ]"
   synonyms:
   - --junkFile
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output file for summary report. ["amplicon_analysis_summary.csv"]
+  description: "Output file for summary report.\n[\"amplicon_analysis_summary.csv\"\
+    ]"
   synonyms:
   - --reportFile
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output estimates of input PCR quality based on subread mappings ["amplicon_analysis_input.csv"]
+  description: "Output estimates of input PCR quality based on\nsubread mappings [\"\
+    amplicon_analysis_input.csv\"]"
   synonyms:
   - --inputReportFile
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output estimates of sample mixture based on ZMW/subread mappings ["amplicon_analysis_per_locus.csv"]
+  description: "Output estimates of sample mixture based on\nZMW/subread mappings\n\
+    [\"amplicon_analysis_per_locus.csv\"]"
   synonyms:
   - --locusReportFile
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output barcode/locus mappings for each subread seen ["amplicon_analysis_whitelist.csv"]
+  description: "Output barcode/locus mappings for each subread seen\n[\"amplicon_analysis_whitelist.csv\"\
+    ]"
   synonyms:
   - --whitelistReportFile
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output prefix for subreads report. ["amplicon_analysis_subreads"]
+  description: "Output prefix for subreads report.\n[\"amplicon_analysis_subreads\"\
+    ]"
   synonyms:
   - --subreadsReportPrefix
   args: !EmptyFlagArg {}
@@ -376,10 +398,9 @@ named:
   - --resolved-tool-contract
   args: !EmptyFlagArg {}
   optional: true
-command:
-- laa
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Output this help.
   synonyms:

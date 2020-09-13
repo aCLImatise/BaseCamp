@@ -12,23 +12,23 @@ task TracyAssemble {
     Boolean? _arg_mismatch
     Boolean? arg_fraction_traces
     Boolean? arg_output_prefix
-    Boolean? include_consensus_fasta
+    Boolean? include_consensus_align
     String generic
   }
   command <<<
     tracy assemble \
       ~{generic} \
-      ~{true="-r" false="" arg_referenceguided_assembly} \
-      ~{true="-p" false="" arg_peak_ratio} \
-      ~{true="-t" false="" t} \
-      ~{true="-f" false="" f} \
-      ~{true="-g" false="" arg_gap_open} \
-      ~{true="-e" false="" arg_gap_extension} \
-      ~{true="-m" false="" _arg_match} \
-      ~{true="-n" false="" _arg_mismatch} \
-      ~{true="-d" false="" arg_fraction_traces} \
-      ~{true="-o" false="" arg_output_prefix} \
-      ~{true="-i" false="" include_consensus_fasta}
+      ~{if (arg_referenceguided_assembly) then "-r" else ""} \
+      ~{if (arg_peak_ratio) then "-p" else ""} \
+      ~{if (t) then "-t" else ""} \
+      ~{if (f) then "-f" else ""} \
+      ~{if (arg_gap_open) then "-g" else ""} \
+      ~{if (arg_gap_extension) then "-e" else ""} \
+      ~{if (_arg_match) then "-m" else ""} \
+      ~{if (_arg_mismatch) then "-n" else ""} \
+      ~{if (arg_fraction_traces) then "-d" else ""} \
+      ~{if (arg_output_prefix) then "-o" else ""} \
+      ~{if (include_consensus_align) then "-i" else ""}
   >>>
   parameter_meta {
     arg_referenceguided_assembly: "[ --reference ] arg              reference-guided assembly (optional)"
@@ -41,7 +41,10 @@ task TracyAssemble {
     _arg_mismatch: "[ --mismatch ] arg (=-5)         mismatch"
     arg_fraction_traces: "[ --called ] arg (=0.100000001)  fraction of traces required for consensus"
     arg_output_prefix: "[ --outprefix ] arg (=out)       output prefix"
-    include_consensus_fasta: "[ --inccons ]                    include consensus in FASTA align"
+    include_consensus_align: "[ --inccons ]                    include consensus in FASTA align"
     generic: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

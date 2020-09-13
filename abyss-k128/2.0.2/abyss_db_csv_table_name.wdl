@@ -1,13 +1,13 @@
 version 1.0
 
-task AbyssDbCsvTableName {
+task AbyssdbcsvTableName {
   input {
     String abyss_db_csv
     String sqlite_repository
     String table_name
   }
   command <<<
-    abyss-db-csv table_name \
+    abyss_db_csv table_name \
       ~{abyss_db_csv} \
       ~{sqlite_repository} \
       ~{table_name}
@@ -16,5 +16,8 @@ task AbyssDbCsvTableName {
     abyss_db_csv: ""
     sqlite_repository: ""
     table_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

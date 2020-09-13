@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../novoutil_biseqstrandfixer.cwl
 inputs:
-- id: input_dots_am
+- id: in_input_dots_am
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_dots_am
+- id: in_output_dots_am
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - novoutil

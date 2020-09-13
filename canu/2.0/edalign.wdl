@@ -4,7 +4,7 @@ task Edalign {
   input {
     File? mandatory_path_first
     File? mandatory_path_second
-    Array[File] ref
+    String? ref
   }
   command <<<
     edalign \
@@ -16,5 +16,8 @@ task Edalign {
     mandatory_path_first: "Mandatory, path to first input file"
     mandatory_path_second: "Mandatory, path to second input file"
     ref: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

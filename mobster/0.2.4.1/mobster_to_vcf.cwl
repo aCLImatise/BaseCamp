@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../mobster_to_vcf.cwl
 inputs:
-- id: mobster_to_vcf
+- id: in_mobster_to_vcf
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mobster-to-vcf

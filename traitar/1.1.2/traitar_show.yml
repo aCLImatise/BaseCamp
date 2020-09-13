@@ -1,24 +1,43 @@
 &id003 !Command
-positional:
-- !Positional
-  description: phenotype under investigation
-  position: 0
-  name: phenotype
-  optional: false
+command:
+- traitar
+- show
+positional: []
 named:
 - !Flag
-  description: phenotype models archive; if set, look for the target in the phenotype
-    in the given phenotype collection
+  description: "{phypat,phypat+PGL}\npick phypat or phypat+PGL classifier"
+  synonyms:
+  - --predictor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --strategy
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? majority
+      ? non-zero
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  - --include_negative
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "phenotype models archive; if set, look for the target\nin the phenotype\
+    \ in the given phenotype collection\n"
   synonyms:
   - -p
   - --models_f
   args: !SimpleFlagArg
     name: MODELS_F
   optional: true
-command:
-- traitar
-- show
 parent: &id001 !Command
+  command:
+  - traitar
   positional: []
   named:
   - !Flag
@@ -27,35 +46,328 @@ parent: &id001 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - traitar
   parent:
   subcommands:
   - !Command
+    command:
+    - traitar
+    - new
     positional:
     - !Positional
-      description: directory for the output; will be created if it doesn't exist yet
+      description: directory with phenotype models to be included
+      position: 0
+      name: models_dir
+      optional: false
+    - !Positional
+      description: a mapping between Pfam families and phenotype ids to
+      position: 1
+      name: pf_acc2desc
+      optional: false
+    - !Positional
+      description: pt_id2acc_desc  a mapping between phenotype ids and descriptions
+      position: 2
+      name: accessions
+      optional: false
+    - !Positional
+      description: hmm database compatible with the phenotype archive
+      position: 0
+      name: hmm_model_f
+      optional: false
+    - !Positional
+      description: name of the model, which is created
+      position: 1
+      name: archive_name
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: traitar new [-h]\n                   models_dir pf_acc2desc\
+      \ pt_id2acc_desc {dbcan,pfam}\n                   hmm_model_f archive_name\n\
+      \npositional arguments:\n  models_dir      directory with phenotype models to\
+      \ be included\n  pf_acc2desc     a mapping between Pfam families and phenotype\
+      \ ids to\n                  accessions\n  pt_id2acc_desc  a mapping between\
+      \ phenotype ids and descriptions\n  {dbcan,pfam}    hmm database used\n  hmm_model_f\
+      \     hmm database compatible with the phenotype archive\n  archive_name   \
+      \ name of the model, which is created\n\noptional arguments:\n  -h, --help \
+      \     show this help message and exit\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    command:
+    - traitar
+    - annotate
+    positional:
+    - !Positional
+      description: 'positional arguments:'
+      position: 0
+      name: output_dir
+      optional: false
+    - !Positional
+      description: directory with the input data
+      position: 1
+      name: input_dir
+      optional: false
+    - !Positional
+      description: "mapping from samples to fasta files (also see gitHub\nhelp): sample1_file_name{tab}sample1_name\n\
+        sample2_file_name{tab}sample2_name"
+      position: 2
+      name: sample2file
+      optional: false
+    - !Positional
+      description: "directory for the output; will be created if it\ndoesn't exist\
+        \ yet"
       position: 0
       name: output_dir
       optional: false
     named:
     - !Flag
-      description: if the input is amino acids the type of gene prediction GFF file
-        can be specified for mapping the phenotype predictions to the genes
+      description: "if the input is amino acids the type of gene\nprediction GFF file\
+        \ can be specified for mapping the\nphenotype predictions to the genes"
       synonyms:
       - -g
       - --gene_gff_type
       args: !ChoiceFlagArg
         choices: !!set
+          ? genbank
           ? img
           ? metagenemark
-          ? prodigal
           ? refseq
-          ? genbank
+          ? prodigal
       optional: true
     - !Flag
-      description: number of cpus used for the individual steps; maximum is number
-        of samples; needs parallel
+      description: "number of cpus used for the individual steps; maximum\nis number\
+        \ of samples; needs parallel\n"
+      synonyms:
+      - -c
+      - --cpus
+      args: !SimpleFlagArg
+        name: CPUS
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: traitar annotate [-h] [-g {genbank,refseq,img,prodigal,metagenemark}]\n\
+      \                        [-c CPUS]\n                        input_dir sample2file\n\
+      \                        {from_genes,from_nucleotides,from_annotation_summary}\n\
+      \                        output_dir\n\npositional arguments:\n  input_dir  \
+      \           directory with the input data\n  sample2file           mapping from\
+      \ samples to fasta files (also see gitHub\n                        help): sample1_file_name{tab}sample1_name\n\
+      \                        sample2_file_name{tab}sample2_name\n  {from_genes,from_nucleotides,from_annotation_summary}\n\
+      \                        either from_genes if gene prediction amino acid fasta\n\
+      \                        is available in input_dir otherwise from_nucleotides\n\
+      \                        in this case Prodigal is used to determine the ORFs\n\
+      \                        from the nucleotide fasta files in input_dir\n  output_dir\
+      \            directory for the output; will be created if it\n             \
+      \           doesn't exist yet\n\noptional arguments:\n  -h, --help         \
+      \   show this help message and exit\n  -g {genbank,refseq,img,prodigal,metagenemark},\
+      \ --gene_gff_type {genbank,refseq,img,prodigal,metagenemark}\n             \
+      \           if the input is amino acids the type of gene\n                 \
+      \       prediction GFF file can be specified for mapping the\n             \
+      \           phenotype predictions to the genes\n  -c CPUS, --cpus CPUS  number\
+      \ of cpus used for the individual steps; maximum\n                        is\
+      \ number of samples; needs parallel\n"
+    generated_using: *id002
+  - *id003
+  - &id004 !Command
+    command:
+    - traitar
+    - remove
+    positional: []
+    named:
+    - !Flag
+      description: "instead of remove the given phenotypes, keep them and forget the\n\
+        rest\n"
+      synonyms:
+      - --keep
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands:
+    - !Command
+      command:
+      - traitar
+      - remove
+      - phenotypes
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: traitar
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: remove
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: archive_f
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: phenotypes
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: out_f
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --keep
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes out_f\n\
+        traitar remove: error: too few arguments\n"
+      generated_using: &id005 []
+    - !Command
+      command:
+      - traitar
+      - remove
+      - out_f
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: traitar
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: remove
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: archive_f
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: phenotypes
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: out_f
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --keep
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes out_f\n\
+        traitar remove: error: too few arguments\n"
+      generated_using: *id005
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes out_f\n\n\
+      positional arguments:\n  archive_f   phenotype model archive file, which shall\
+      \ be modified\n  phenotypes  phenotypes to be removed\n  out_f       out file\
+      \ for the modified phenotype tar archive\n\noptional arguments:\n  -h, --help\
+      \  show this help message and exit\n  --keep      instead of remove the given\
+      \ phenotypes, keep them and forget the\n              rest\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - traitar
+    - phenotype
+    positional:
+    - !Positional
+      description: 'positional arguments:'
+      position: 0
+      name: output_dir
+      optional: false
+    - !Positional
+      description: directory with the input data
+      position: 1
+      name: input_dir
+      optional: false
+    - !Positional
+      description: "mapping from samples to fasta files (also see gitHub\nhelp): sample1_file_name{tab}sample1_name\n\
+        sample2_file_name{tab}sample2_name"
+      position: 2
+      name: sample2file
+      optional: false
+    - !Positional
+      description: "directory for the output; will be created if it\ndoesn't exist\
+        \ yet"
+      position: 0
+      name: output_dir
+      optional: false
+    named:
+    - !Flag
+      description: "if the input is amino acids the type of gene\nprediction GFF file\
+        \ can be specified for mapping the\nphenotype predictions to the genes"
+      synonyms:
+      - -g
+      - --gene_gff_type
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? genbank
+          ? img
+          ? metagenemark
+          ? refseq
+          ? prodigal
+      optional: true
+    - !Flag
+      description: "number of cpus used for the individual steps; maximum\nis number\
+        \ of samples; needs parallel"
       synonyms:
       - -c
       - --cpus
@@ -79,8 +391,8 @@ parent: &id001 !Command
         name: SECONDARY_MODELS
       optional: true
     - !Flag
-      description: recompute the phenotype heatmaps based on a subset of previously
-        annotated and phenotyped samples
+      description: "recompute the phenotype heatmaps based on a subset of\npreviously\
+        \ annotated and phenotyped samples"
       synonyms:
       - -r
       - --rearrange_heatmap
@@ -88,36 +400,34 @@ parent: &id001 !Command
         name: REARRANGE_HEATMAP
       optional: true
     - !Flag
-      description: if option is set, don't cluster the phenotype heatmaps by samples
-        and keep input ordering
+      description: "if option is set, don't cluster the phenotype heatmaps\nby samples\
+        \ and keep input ordering"
       synonyms:
       - --no_heatmap_sample_clustering
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: if option is set, don't cluster the heatmaps by phenotype and keep
-        input ordering
+      description: "if option is set, don't cluster the heatmaps by\nphenotype and\
+        \ keep input ordering"
       synonyms:
       - --no_heatmap_phenotype_clustering
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: choose file format for the heatmap
+      description: "choose file format for the heatmap\n"
       synonyms:
       - -f
       - --heatmap_format
       args: !ChoiceFlagArg
         choices: !!set
-          ? svg
           ? jpg
-          ? pdf
           ? png
+          ? svg
+          ? pdf
       optional: true
-    command:
-    - traitar
-    - phenotype
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -162,13 +472,15 @@ parent: &id001 !Command
       \         if option is set, don't cluster the heatmaps by\n                \
       \        phenotype and keep input ordering\n  -f {png,pdf,svg,jpg}, --heatmap_format\
       \ {png,pdf,svg,jpg}\n                        choose file format for the heatmap\n"
-    generated_using: &id002
-    - --help
+    generated_using: *id002
   - !Command
+    command:
+    - traitar
+    - pfam
     positional:
     - !Positional
-      description: download Pfam HMMs into the given download directory and untar
-        and unzip it
+      description: "download Pfam HMMs into the given download directory and untar\n\
+        and unzip it"
       position: 0
       name: download
       optional: false
@@ -180,11 +492,9 @@ parent: &id001 !Command
       - -l
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - traitar
-    - pfam
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -201,243 +511,9 @@ parent: &id001 !Command
       \ with name 'Pfam-A.hmm'\n"
     generated_using: *id002
   - !Command
-    positional:
-    - !Positional
-      description: directory for the output; will be created if it doesn't exist yet
-      position: 0
-      name: output_dir
-      optional: false
-    named:
-    - !Flag
-      description: if the input is amino acids the type of gene prediction GFF file
-        can be specified for mapping the phenotype predictions to the genes
-      synonyms:
-      - -g
-      - --gene_gff_type
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? img
-          ? metagenemark
-          ? prodigal
-          ? refseq
-          ? genbank
-      optional: true
-    - !Flag
-      description: number of cpus used for the individual steps; maximum is number
-        of samples; needs parallel
-      synonyms:
-      - -c
-      - --cpus
-      args: !SimpleFlagArg
-        name: CPUS
-      optional: true
     command:
     - traitar
-    - annotate
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: traitar annotate [-h] [-g {genbank,refseq,img,prodigal,metagenemark}]\n\
-      \                        [-c CPUS]\n                        input_dir sample2file\n\
-      \                        {from_genes,from_nucleotides,from_annotation_summary}\n\
-      \                        output_dir\n\npositional arguments:\n  input_dir  \
-      \           directory with the input data\n  sample2file           mapping from\
-      \ samples to fasta files (also see gitHub\n                        help): sample1_file_name{tab}sample1_name\n\
-      \                        sample2_file_name{tab}sample2_name\n  {from_genes,from_nucleotides,from_annotation_summary}\n\
-      \                        either from_genes if gene prediction amino acid fasta\n\
-      \                        is available in input_dir otherwise from_nucleotides\n\
-      \                        in this case Prodigal is used to determine the ORFs\n\
-      \                        from the nucleotide fasta files in input_dir\n  output_dir\
-      \            directory for the output; will be created if it\n             \
-      \           doesn't exist yet\n\noptional arguments:\n  -h, --help         \
-      \   show this help message and exit\n  -g {genbank,refseq,img,prodigal,metagenemark},\
-      \ --gene_gff_type {genbank,refseq,img,prodigal,metagenemark}\n             \
-      \           if the input is amino acids the type of gene\n                 \
-      \       prediction GFF file can be specified for mapping the\n             \
-      \           phenotype predictions to the genes\n  -c CPUS, --cpus CPUS  number\
-      \ of cpus used for the individual steps; maximum\n                        is\
-      \ number of samples; needs parallel\n"
-    generated_using: *id002
-  - *id003
-  - !Command
-    positional:
-    - !Positional
-      description: hmm database compatible with the phenotype archive
-      position: 0
-      name: hmm_model_f
-      optional: false
-    - !Positional
-      description: name of the model, which is created
-      position: 1
-      name: archive_name
-      optional: false
-    named: []
-    command:
-    - traitar
-    - new
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: traitar new [-h]\n                   models_dir pf_acc2desc\
-      \ pt_id2acc_desc {dbcan,pfam}\n                   hmm_model_f archive_name\n\
-      \npositional arguments:\n  models_dir      directory with phenotype models to\
-      \ be included\n  pf_acc2desc     a mapping between Pfam families and phenotype\
-      \ ids to\n                  accessions\n  pt_id2acc_desc  a mapping between\
-      \ phenotype ids and descriptions\n  {dbcan,pfam}    hmm database used\n  hmm_model_f\
-      \     hmm database compatible with the phenotype archive\n  archive_name   \
-      \ name of the model, which is created\n\noptional arguments:\n  -h, --help \
-      \     show this help message and exit\n"
-    generated_using: *id002
-  - &id004 !Command
-    positional: []
-    named:
-    - !Flag
-      description: instead of remove the given phenotypes, keep them and forget the
-        rest
-      synonyms:
-      - --keep
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - traitar
-    - remove
-    parent: *id001
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: traitar
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: remove
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: archive_f
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: phenotypes
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: out_f
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - --keep
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - traitar
-      - remove
-      - phenotypes
-      parent: *id004
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes out_f\n\
-        traitar remove: error: too few arguments\n"
-      generated_using: &id005 []
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: traitar
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: remove
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: archive_f
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: phenotypes
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: out_f
-        optional: false
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - --keep
-        args: !EmptyFlagArg {}
-        optional: true
-      command:
-      - traitar
-      - remove
-      - out_f
-      parent: *id004
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes out_f\n\
-        traitar remove: error: too few arguments\n"
-      generated_using: *id005
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes out_f\n\n\
-      positional arguments:\n  archive_f   phenotype model archive file, which shall\
-      \ be modified\n  phenotypes  phenotypes to be removed\n  out_f       out file\
-      \ for the modified phenotype tar archive\n\noptional arguments:\n  -h, --help\
-      \  show this help message and exit\n  --keep      instead of remove the given\
-      \ phenotypes, keep them and forget the\n              rest\n"
-    generated_using: *id002
-  - !Command
+    - evaluate
     positional:
     - !Positional
       description: phenotype prediction matrix as return by Traitar
@@ -456,33 +532,31 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: set if the gold standard phenotype are index via phenotype ids
-        rather than accessions
+      description: "set if the gold standard phenotype are index via\nphenotype ids\
+        \ rather than accessions"
       synonyms:
       - --are_pt_ids
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: need if gold standard uses an accession index for mapping
+      description: "need if gold standard uses an accession index for\nmapping"
       synonyms:
       - --phenotype_archive
       args: !SimpleFlagArg
         name: PHENOTYPE_ARCHIVE
       optional: true
     - !Flag
-      description: minimum number of positive and negative samples to consider phenotypes
-        for calculation of the macro accuracy
+      description: "minimum number of positive and negative samples to\nconsider phenotypes\
+        \ for calculation of the macro\naccuracy\n"
       synonyms:
       - --min_samples
       - -m
       args: !SimpleFlagArg
         name: MIN_SAMPLES
       optional: true
-    command:
-    - traitar
-    - evaluate
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -507,6 +581,7 @@ parent: &id001 !Command
       \                        consider phenotypes for calculation of the macro\n\
       \                        accuracy\n"
     generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -534,10 +609,12 @@ parent: &id001 !Command
     \         show program's version number and exit\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:

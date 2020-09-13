@@ -8,10 +8,13 @@ task TiptoftDatabaseDownloader {
   command <<<
     tiptoft_database_downloader \
       ~{output_prefix} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     verbose: "Turn on debugging (default: False)"
     output_prefix: "Output prefix"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

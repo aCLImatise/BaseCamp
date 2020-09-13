@@ -1,127 +1,145 @@
 class: CommandLineTool
 id: ../../../PathConsensus.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: k-mer size
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: dist_error
-  doc: 'acceptable error of a distance estimate default: 6 bp'
-  type: string
+- id: in_dist_error
+  doc: "acceptable error of a distance estimate\ndefault: 6 bp"
+  type: long
   inputBinding:
     prefix: --dist-error
-- id: out
+- id: in_out
   doc: output contig paths to FILE
   type: File
   inputBinding:
     prefix: --out
-- id: consensus
+- id: in_consensus
   doc: output consensus sequences to FILE
   type: File
   inputBinding:
     prefix: --consensus
-- id: graph
+- id: in_graph
   doc: output the contig adjacency graph to FILE
   type: File
   inputBinding:
     prefix: --graph
-- id: output_graph_adj
+- id: in_output_graph_adj
   doc: output the graph in ADJ format [default]
   type: boolean
   inputBinding:
     prefix: --adj
-- id: as_qg
+- id: in_as_qg
   doc: output the graph in ASQG format
   type: boolean
   inputBinding:
     prefix: --asqg
-- id: dot
+- id: in_dot
   doc: output the graph in GraphViz format
   type: boolean
   inputBinding:
     prefix: --dot
-- id: gv
+- id: in_gv
   doc: output the graph in GraphViz format
   type: boolean
   inputBinding:
     prefix: --gv
-- id: gfa
+- id: in_gfa
   doc: output the graph in GFA format
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: sam
+- id: in_sam
   doc: output the graph in SAM format
   type: boolean
   inputBinding:
     prefix: --sam
-- id: branches
-  doc: 'maximum number of sequences to align default: 4'
-  type: string
+- id: in_branches
+  doc: "maximum number of sequences to align\ndefault: 4"
+  type: long
   inputBinding:
     prefix: --branches
-- id: identity
+- id: in_identity
   doc: 'minimum identity, default: 0.9'
-  type: string
+  type: double
   inputBinding:
     prefix: --identity
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: db
+- id: in_db
   doc: specify path of database repository in FILE
   type: File
   inputBinding:
     prefix: --db
-- id: library
+- id: in_library
   doc: specify library NAME for database
   type: string
   inputBinding:
     prefix: --library
-- id: strain
+- id: in_strain
   doc: specify strain NAME for database
   type: string
   inputBinding:
     prefix: --strain
-- id: species
+- id: in_species
   doc: specify species NAME for database
   type: string
   inputBinding:
     prefix: --species
-- id: di_align_d
+- id: in_di_align_d
   doc: 'dialign debug level, default: 0'
-  type: string
+  type: long
   inputBinding:
     prefix: --dialign-d
-- id: di_align_m
+- id: in_di_align_m
   doc: 'score matrix, default: dna_matrix.scr'
   type: File
   inputBinding:
     prefix: --dialign-m
-- id: di_align_p
-  doc: 'diagonal length probability distribution default: dna_diag_prob_100_exp_550000'
+- id: in_di_align_p
+  doc: "diagonal length probability distribution\ndefault: dna_diag_prob_100_exp_550000"
   type: File
   inputBinding:
     prefix: --dialign-p
-- id: fast_a
+- id: in_fast_a
   doc: contigs in FASTA format
   type: string
   inputBinding:
     position: 0
-- id: contig_adjacency_graph
+- id: in_contig_adjacency_graph
   doc: contig adjacency graph
   type: string
   inputBinding:
     position: 1
-- id: path
+- id: in_path
   doc: paths of these contigs
   type: File
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: output contig paths to FILE
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
+- id: out_consensus
+  doc: output consensus sequences to FILE
+  type: File
+  outputBinding:
+    glob: $(inputs.in_consensus)
+- id: out_graph
+  doc: output the contig adjacency graph to FILE
+  type: File
+  outputBinding:
+    glob: $(inputs.in_graph)
 cwlVersion: v1.1
 baseCommand:
 - PathConsensus

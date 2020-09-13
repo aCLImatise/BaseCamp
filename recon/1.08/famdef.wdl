@@ -11,4 +11,7 @@ task Famdef {
   parameter_meta {
     seq_list: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

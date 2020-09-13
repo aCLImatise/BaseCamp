@@ -59,4 +59,7 @@ task MargeKey {
     or: ""
     mouse_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

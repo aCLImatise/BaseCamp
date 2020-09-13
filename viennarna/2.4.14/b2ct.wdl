@@ -4,4 +4,7 @@ task B2ct {
   command <<<
     b2ct
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

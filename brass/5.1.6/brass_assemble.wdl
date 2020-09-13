@@ -1,7 +1,10 @@
 version 1.0
 
-task BrassAssemble {
+task Brassassemble {
   command <<<
-    brass-assemble
+    brass_assemble
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

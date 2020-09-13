@@ -4,4 +4,7 @@ task Amos2sq {
   command <<<
     amos2sq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

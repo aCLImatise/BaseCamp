@@ -1,14 +1,10 @@
 version 1.0
 
 task ExistDB {
-  input {
-    String? stuff
-  }
   command <<<
-    existDB \
-      ~{stuff}
+    existDB
   >>>
-  parameter_meta {
-    stuff: ""
+  output {
+    File out_stdout = stdout()
   }
 }

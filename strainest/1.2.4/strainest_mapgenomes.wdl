@@ -17,4 +17,7 @@ task StrainestMapgenomes {
     reference: ""
     mapped: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

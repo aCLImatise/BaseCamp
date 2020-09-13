@@ -12,10 +12,10 @@ task Wgsim {
     Float? fraction_of_indels
     Float? probability_indel_extended
     Int? seed_random_generator
-    Float? discard_fraction_higher
+    Float? discard_fraction_ambiguous
     String in_dot_ref_dot_fa
-    String out_dot_read_one_dot_fq
-    String out_dot_read_two_dot_fq
+    Int out_dot_read_one_dot_fq
+    Int out_dot_read_two_dot_fq
   }
   command <<<
     wgsim \
@@ -32,7 +32,7 @@ task Wgsim {
       ~{if defined(fraction_of_indels) then ("-R " +  '"' + fraction_of_indels + '"') else ""} \
       ~{if defined(probability_indel_extended) then ("-X " +  '"' + probability_indel_extended + '"') else ""} \
       ~{if defined(seed_random_generator) then ("-S " +  '"' + seed_random_generator + '"') else ""} \
-      ~{if defined(discard_fraction_higher) then ("-A " +  '"' + discard_fraction_higher + '"') else ""}
+      ~{if defined(discard_fraction_ambiguous) then ("-A " +  '"' + discard_fraction_ambiguous + '"') else ""}
   >>>
   parameter_meta {
     base_error_rate: "base error rate [0.000]"
@@ -45,9 +45,12 @@ task Wgsim {
     fraction_of_indels: "fraction of indels [0.15]"
     probability_indel_extended: "probability an indel is extended [0.30]"
     seed_random_generator: "seed for random generator [0, use the current time]"
-    discard_fraction_higher: "discard if the fraction of ambiguous bases higher than FLOAT [0.05]"
+    discard_fraction_ambiguous: "discard if the fraction of ambiguous bases higher than FLOAT [0.05]"
     in_dot_ref_dot_fa: ""
     out_dot_read_one_dot_fq: ""
     out_dot_read_two_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../compute_prior_dist.cwl
 inputs:
-- id: num_bins
+- id: in_num_bins
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: psp_file
+- id: in_psp_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - compute-prior-dist

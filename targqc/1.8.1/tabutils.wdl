@@ -4,4 +4,7 @@ task Tabutils {
   command <<<
     tabutils
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

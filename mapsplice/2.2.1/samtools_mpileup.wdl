@@ -11,7 +11,7 @@ task SamtoolsMpileup {
     Boolean? generate_bcf_output
     Boolean? compress_bcf_output
     Boolean? disable_baq_computation
-    String in_one_dot_bam
+    Int in_one_dot_bam
   }
   command <<<
     samtools mpileup \
@@ -22,9 +22,9 @@ task SamtoolsMpileup {
       ~{if defined(cap_mapping_quality) then ("-M " +  '"' + cap_mapping_quality + '"') else ""} \
       ~{if defined(min_base_quality) then ("-Q " +  '"' + min_base_quality + '"') else ""} \
       ~{if defined(filter_alignment_mq) then ("-q " +  '"' + filter_alignment_mq + '"') else ""} \
-      ~{true="-g" false="" generate_bcf_output} \
-      ~{true="-u" false="" compress_bcf_output} \
-      ~{true="-B" false="" disable_baq_computation}
+      ~{if (generate_bcf_output) then "-g" else ""} \
+      ~{if (compress_bcf_output) then "-u" else ""} \
+      ~{if (disable_baq_computation) then "-B" else ""}
   >>>
   parameter_meta {
     reference_sequence_file: "reference sequence file [null]"
@@ -37,5 +37,8 @@ task SamtoolsMpileup {
     compress_bcf_output: "do not compress BCF output"
     disable_baq_computation: "disable BAQ computation"
     in_one_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

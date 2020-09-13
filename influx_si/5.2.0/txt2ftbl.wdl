@@ -4,4 +4,7 @@ task Txt2ftbl {
   command <<<
     txt2ftbl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

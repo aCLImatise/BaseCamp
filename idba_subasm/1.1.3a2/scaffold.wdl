@@ -2,14 +2,14 @@ version 1.0
 
 task Scaffold {
   input {
-    String? out
-    String? num_threads
-    String? seed_km_er
-    String? min_contig
-    String? similar
-    String? min_pairs
-    String reads_lib_one_dot_fa
-    String? reads_lib_two_dot_fa
+    Directory? out
+    Int? num_threads
+    Int? seed_km_er
+    Int? min_contig
+    Float? similar
+    Int? min_pairs
+    Int reads_lib_one_dot_fa
+    Int? reads_lib_two_dot_fa
   }
   command <<<
     scaffold \
@@ -31,5 +31,9 @@ task Scaffold {
     min_pairs: "(=3)               minimum number of pairs"
     reads_lib_one_dot_fa: ""
     reads_lib_two_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
   }
 }

@@ -1,42 +1,50 @@
 class: CommandLineTool
 id: ../../../ssu_esl_mask.cwl
 inputs:
-- id: output_masked_sequences
+- id: in_output_masked_sequences
   doc: ': output masked sequences to file <f> instead of stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: reverse_mask_exclusive
+- id: in_reverse_mask_exclusive
   doc: ': reverse: mask exclusive of <start>..<end>, not inclusive'
   type: boolean
   inputBinding:
     prefix: -r
-- id: random_access_fetch
+- id: in_random_access_fetch
   doc: ': random access: fetch seqs from ssi-indexed <sqfile>'
   type: boolean
   inputBinding:
     prefix: -R
-- id: convert_masked_residues_lower
+- id: in_convert_masked_residues_lower
   doc: ': convert masked residues to lower case'
   type: boolean
   inputBinding:
     prefix: -l
-- id: convert_masked_residues_character
+- id: in_convert_masked_residues_character
   doc: ': convert masked residues to character <c>'
   type: string
   inputBinding:
     prefix: -m
-- id: mask_additional_residues
+- id: in_mask_additional_n
   doc: ': mask additional <n> residues beyond <start>,<end>'
   type: string
   inputBinding:
     prefix: -x
-- id: in_format
+- id: in_in_format
   doc: ': specify that input file is in format <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --informat
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_masked_sequences
+  doc: ': output masked sequences to file <f> instead of stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_masked_sequences)
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-mask

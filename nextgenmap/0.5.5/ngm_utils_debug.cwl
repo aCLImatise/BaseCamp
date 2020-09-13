@@ -1,12 +1,10 @@
 class: CommandLineTool
 id: ../../../ngm_utils_debug.cwl
-inputs:
-- id: ngm_utils
-  doc: '[--] <name>'
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ngm-utils-debug

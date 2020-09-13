@@ -11,7 +11,7 @@ task ChainSplit {
     chainSplit \
       ~{outdir} \
       ~{in_chain} \
-      ~{true="-q" false="" split_query_default} \
+      ~{if (split_query_default) then "-q" else ""} \
       ~{if defined(lump) then ("-lump " +  '"' + lump + '"') else ""}
   >>>
   parameter_meta {
@@ -19,5 +19,8 @@ task ChainSplit {
     lump: "Lump together so have only N split files."
     outdir: ""
     in_chain: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

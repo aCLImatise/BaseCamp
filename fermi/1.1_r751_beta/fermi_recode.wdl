@@ -11,4 +11,7 @@ task FermiRecode {
   parameter_meta {
     in_dot_rld: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

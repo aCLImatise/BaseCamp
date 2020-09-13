@@ -1,7 +1,10 @@
 version 1.0
 
-task MpaServer {
+task Mpaserver {
   command <<<
-    mpa-server
+    mpa_server
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

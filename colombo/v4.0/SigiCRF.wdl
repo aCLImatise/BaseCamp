@@ -4,4 +4,7 @@ task SigiCRF {
   command <<<
     SigiCRF
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

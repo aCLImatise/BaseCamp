@@ -14,4 +14,7 @@ task UpdateBankPositions {
     bank_name: ""
     pos_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

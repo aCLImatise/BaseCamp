@@ -2,9 +2,9 @@ version 1.0
 
 task DgeniesClear {
   input {
-    Boolean? _clear_crons
-    Boolean? _clear_logs
-    Boolean? _clear_jobs
+    Boolean? clear_crons
+    Boolean? clear_logs
+    Boolean? clear_jobs
     Int? max_age
     Boolean? add_option_use
     String? cron_s
@@ -16,20 +16,23 @@ task DgeniesClear {
       ~{cron_s} \
       ~{logs} \
       ~{jobs} \
-      ~{true="-c" false="" _clear_crons} \
-      ~{true="-l" false="" _clear_logs} \
-      ~{true="-j" false="" _clear_jobs} \
+      ~{if (clear_crons) then "-c" else ""} \
+      ~{if (clear_logs) then "-l" else ""} \
+      ~{if (clear_jobs) then "-j" else ""} \
       ~{if defined(max_age) then ("--max-age " +  '"' + max_age + '"') else ""} \
-      ~{true="-w" false="" add_option_use}
+      ~{if (add_option_use) then "-w" else ""}
   >>>
   parameter_meta {
-    _clear_crons: "[CRONS], --crons [CRONS] Clear crons"
-    _clear_logs: "[LOGS], --logs [LOGS] Clear logs"
-    _clear_jobs: "[JOBS], --jobs [JOBS] Clear jobs"
+    clear_crons: "[CRONS], --crons [CRONS]\\nClear crons"
+    clear_logs: "[LOGS], --logs [LOGS]\\nClear logs"
+    clear_jobs: "[JOBS], --jobs [JOBS]\\nClear jobs"
     max_age: "Max age for job to delete (0 for all)"
-    add_option_use: "[WEB], --web [WEB] Add this option with -j option, if you use the webserver mode"
+    add_option_use: "[WEB], --web [WEB]\\nAdd this option with -j option, if you use the\\nwebserver mode\\n"
     cron_s: ""
     logs: ""
     jobs: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

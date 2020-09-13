@@ -1,6 +1,27 @@
 !Command
-positional: []
+command:
+- canu
+positional:
+- !Positional
+  description: It is used primarily to estimate coverage in reads, NOT as the desired
+  position: 0
+  name: assembled.
+  optional: false
 named:
+- !Flag
+  description: \
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: assembly-prefix
+  optional: true
+- !Flag
+  description: \
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: assembly-directory
+  optional: true
 - !Flag
   description: '] file1 file2 ...'
   synonyms:
@@ -55,7 +76,19 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -version
+  - -corrected
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -trimmed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <files>
+  synonyms:
+  - -pacbio
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -64,10 +97,15 @@ named:
   - -citation
   args: !EmptyFlagArg {}
   optional: true
-command:
-- canu
+- !Flag
+  description: ''
+  synonyms:
+  - -version
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

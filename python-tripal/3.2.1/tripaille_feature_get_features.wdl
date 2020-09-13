@@ -11,4 +11,7 @@ task TripailleFeatureGetFeatures {
   parameter_meta {
     feature_id: "A feature entity/node ID"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

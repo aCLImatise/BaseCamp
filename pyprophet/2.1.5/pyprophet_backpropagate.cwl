@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../pyprophet_backpropagate.cwl
 inputs:
-- id: in
+- id: in_in
   doc: Single run PyProphet input file.  [required]
   type: File
   inputBinding:
     prefix: --in
-- id: out
-  doc: Single run (with multi-run scores) PyProphet output file.
+- id: in_out
+  doc: Single run (with multi-run scores) PyProphet output
   type: File
   inputBinding:
     prefix: --out
-- id: apply_scores
-  doc: PyProphet multi-run scores file to apply.  [required]
-  type: File
-  inputBinding:
-    prefix: --apply_scores
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pyprophet

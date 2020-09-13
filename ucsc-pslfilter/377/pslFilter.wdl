@@ -3,12 +3,12 @@ version 1.0
 task PslFilter {
   input {
     Boolean? dir
-    String? reward
-    String? cost
-    String? gap_open_cost
-    String? gap_size_log_mod
-    String? min_score
-    String? min_match
+    Int? reward
+    Int? cost
+    Int? gap_open_cost
+    Float? gap_size_log_mod
+    Int? min_score
+    Int? min_match
     Boolean? min_unique_match
     Boolean? max_bad_ppt
     Boolean? min_ali
@@ -17,18 +17,18 @@ task PslFilter {
   }
   command <<<
     pslFilter \
-      ~{true="-dir" false="" dir} \
+      ~{if (dir) then "-dir" else ""} \
       ~{if defined(reward) then ("-reward " +  '"' + reward + '"') else ""} \
       ~{if defined(cost) then ("-cost " +  '"' + cost + '"') else ""} \
       ~{if defined(gap_open_cost) then ("-gapOpenCost " +  '"' + gap_open_cost + '"') else ""} \
       ~{if defined(gap_size_log_mod) then ("-gapSizeLogMod " +  '"' + gap_size_log_mod + '"') else ""} \
       ~{if defined(min_score) then ("-minScore " +  '"' + min_score + '"') else ""} \
       ~{if defined(min_match) then ("-minMatch " +  '"' + min_match + '"') else ""} \
-      ~{true="-minUniqueMatch" false="" min_unique_match} \
-      ~{true="-maxBadPpt" false="" max_bad_ppt} \
-      ~{true="-minAli" false="" min_ali} \
-      ~{true="-noHead" false="" no_head} \
-      ~{true="-minAliT" false="" minal_it}
+      ~{if (min_unique_match) then "-minUniqueMatch" else ""} \
+      ~{if (max_bad_ppt) then "-maxBadPpt" else ""} \
+      ~{if (min_ali) then "-minAli" else ""} \
+      ~{if (no_head) then "-noHead" else ""} \
+      ~{if (minal_it) then "-minAliT" else ""}
   >>>
   parameter_meta {
     dir: "Input files are directories rather than single files"
@@ -43,5 +43,8 @@ task PslFilter {
     min_ali: "(default 600) Minimum ratio query in alignment in ppt"
     no_head: "Don't output psl header"
     minal_it: "(default 0) Like minAli for target"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

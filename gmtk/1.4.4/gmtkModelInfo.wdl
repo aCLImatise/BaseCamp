@@ -4,4 +4,7 @@ task GmtkModelInfo {
   command <<<
     gmtkModelInfo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

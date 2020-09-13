@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogDownloadModuleMaker {
+task WatchdogdownloadModuleMaker {
   command <<<
-    watchdog-downloadModuleMaker
+    watchdog_downloadModuleMaker
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task OGetSampleInfoFromFasta {
+task Ogetsampleinfofromfasta {
   command <<<
-    o-get-sample-info-from-fasta
+    o_get_sample_info_from_fasta
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,34 +1,37 @@
 class: CommandLineTool
 id: ../../../vcfanno.cwl
 inputs:
-- id: base_path
+- id: in_base_path
   doc: optional base-path to prepend to annotation files in the config
-  type: string
+  type: File
   inputBinding:
     prefix: -base-path
-- id: ends
+- id: in_ends
   doc: annotate the start and end as well as the interval itself.
   type: boolean
   inputBinding:
     prefix: -ends
-- id: lua
+- id: in_lua
   doc: optional path to a file containing custom javascript functions to be used as
     ops
-  type: string
+  type: File
   inputBinding:
     prefix: -lua
-- id: number_use_default
+- id: in_number_use_default
   doc: number of processes to use. (default 2)
   type: long
   inputBinding:
     prefix: -p
-- id: permissive_overlap
-  doc: annotate with an overlapping variant even it doesn't share the same ref and
-    alt alleles. Default is to require exact match between variants.
+- id: in_permissive_overlap
+  doc: "annotate with an overlapping variant even it doesn't share the same ref and\
+    \ alt alleles. Default is to require exact match between variants.\n"
   type: boolean
   inputBinding:
     prefix: -permissive-overlap
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfanno

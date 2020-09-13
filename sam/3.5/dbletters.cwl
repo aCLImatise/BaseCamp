@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../dbletters.cwl
 inputs:
-- id: db
+- id: in_db
   doc: '[-db seq_filen]*     one or more sequence files'
-  type: string
+  type: File
   inputBinding:
     prefix: -db
-- id: option
+- id: in_option
   doc: ''
   type: string
   inputBinding:
     prefix: -option
-- id: run_name
+- id: in_run_name
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dbletters

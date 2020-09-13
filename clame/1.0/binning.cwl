@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../binning.cwl
 inputs:
-- id: dm
+- id: in_dm
   doc: MAD processs (default enabled)
   type: string
   inputBinding:
     prefix: -dM
-- id: index_file_reads
+- id: in_index_file_reads
   doc: Index file with reads name
   type: boolean
   inputBinding:
     prefix: -i
-- id: number_of_reads
+- id: in_number_of_reads
   doc: number of reads
   type: boolean
   inputBinding:
     prefix: -n
-- id: nt
+- id: in_nt
   doc: of threads to use
-  type: string
+  type: long
   inputBinding:
     prefix: -nt
-- id: lu
+- id: in_lu
   doc: of links to cut by UP threshold
-  type: string
+  type: long
   inputBinding:
     prefix: -lu
-- id: ld
+- id: in_ld
   doc: of links to cut by Down threshold
-  type: string
+  type: long
   inputBinding:
     prefix: -ld
-- id: rt
+- id: in_rt
   doc: FILE (comma delimted for several files)
-  type: string
+  type: File
   inputBinding:
     prefix: -rt
-- id: size_bin
+- id: in_size_bin
   doc: of reads to report a bin (default 1)
-  type: string
+  type: long
   inputBinding:
     prefix: -sizeBin
-- id: to_l
-  doc: 'error tolerance (default 0.5) '
-  type: string
+- id: in_to_l
+  doc: error tolerance (default 0.5)
+  type: double
   inputBinding:
     prefix: -tol
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - binning

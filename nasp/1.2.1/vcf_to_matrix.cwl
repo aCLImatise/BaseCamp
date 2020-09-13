@@ -1,57 +1,65 @@
 class: CommandLineTool
 id: ../../../vcf_to_matrix.cwl
 inputs:
-- id: mode
-  doc: Data passing mode, must be set to 'commandline' or 'xml'.
+- id: in_mode
+  doc: "Data passing mode, must be set to 'commandline' or\n'xml'."
   type: string
   inputBinding:
     prefix: --mode
-- id: reference_fast_a
+- id: in_reference_fast_a
   doc: Path to input reference fasta file.
-  type: string
+  type: File
   inputBinding:
     prefix: --reference-fasta
-- id: reference_dups
+- id: in_reference_dups
   doc: Path to input reference dups file.
-  type: string
+  type: File
   inputBinding:
     prefix: --reference-dups
-- id: input_files
+- id: in_input_files
   doc: Path to input VCF/fasta files for matrix conversion.
   type: string[]
   inputBinding:
     prefix: --input-files
-- id: matrix_folder
+- id: in_matrix_folder
   doc: Name of folder to write output matries to.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --matrix-folder
-- id: stats_folder
+- id: in_stats_folder
   doc: Name of folder to write statistics files to.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --stats-folder
-- id: minimum_coverage
+- id: in_minimum_coverage
   doc: Minimum coverage depth at a position.
-  type: long
+  type: string
   inputBinding:
     prefix: --minimum-coverage
-- id: minimum_proportion
-  doc: Minimum proportion of reads that must match the call at a position.
-  type: long
+- id: in_minimum_proportion
+  doc: "Minimum proportion of reads that must match the call\nat a position."
+  type: string
   inputBinding:
     prefix: --minimum-proportion
-- id: num_threads
+- id: in_num_threads
   doc: Number of threads to use when processing input.
-  type: string
+  type: long
   inputBinding:
     prefix: --num-threads
-- id: d_to_file
-  doc: Path to a matrix_dto XML file that defines all the parameters.
-  type: string
+- id: in_d_to_file
+  doc: "Path to a matrix_dto XML file that defines all the\nparameters.\n"
+  type: File
   inputBinding:
     prefix: --dto-file
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_matrix_folder
+  doc: Name of folder to write output matries to.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_matrix_folder)
 cwlVersion: v1.1
 baseCommand:
 - vcf_to_matrix

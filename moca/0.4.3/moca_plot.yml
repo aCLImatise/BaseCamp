@@ -1,4 +1,7 @@
 &id002 !Command
+command:
+- moca
+- plot
 positional: []
 named:
 - !Flag
@@ -41,7 +44,7 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Length of sequence flanking motif [required]
+  description: "Length of sequence flanking motif\n[required]"
   synonyms:
   - --flank-motif
   args: !SimpleFlagArg
@@ -77,7 +80,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Key denoting genome build to use in configuration file  [required]
+  description: "Key denoting genome build to use in\nconfiguration file  [required]"
   synonyms:
   - -g
   - -gb
@@ -85,17 +88,17 @@ named:
   args: !SimpleFlagArg
     name: TEXT
   optional: true
-command:
-- moca
-- plot
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - moca
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - moca
+    - find_motifs
     positional: []
     named:
     - !Flag
@@ -156,7 +159,7 @@ parent: &id001 !Command
         name: INTEGER
       optional: true
     - !Flag
-      description: Key denoting genome build to use in configuration file  [required]
+      description: "Key denoting genome build to use in\nconfiguration file  [required]"
       synonyms:
       - -g
       - -gb
@@ -170,11 +173,9 @@ parent: &id001 !Command
       - --show-progress
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - moca
-    - find_motifs
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -193,12 +194,13 @@ parent: &id001 !Command
       \ of sequence flanking motif\n  --n-motif INTEGER               Number of motifs\n\
       \  -t, --cores INTEGER             Number of parallel MEME jobs  [required]\n\
       \  -g, -gb, --genome-build TEXT    Key denoting genome build to use in\n   \
-      \                               configuration file  [required]\n\n  --show-progress\
+      \                               configuration file  [required]\n  --show-progress\
       \                 Print progress\n  -h, --help                      Show this\
       \ message and exit.\n"
     generated_using: &id003
     - --help
   - *id002
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -218,6 +220,7 @@ parent: &id001 !Command
     \ conservation plots\n  plot         Create conservation plots\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -234,11 +237,10 @@ help_text: "Usage: moca plot [OPTIONS]\n\n  Create conservation plots\n\nOptions
   \               Sample fimo.txt  [required]\n  --fimo-dir-control, --fimo_dir_control\
   \ TEXT\n                                  Control fimo.txt  [required]\n  --name\
   \ TEXT                     Plot title\n  --flank-motif INTEGER           Length\
-  \ of sequence flanking motif\n                                  [required]\n\n \
-  \ --motif INTEGER                 Motif number\n  -o, --oc TEXT                \
-  \   Output Directory  [required]\n  -c, --configuration TEXT        Configuration\
-  \ file  [required]\n  --show-progress                 Print progress\n  -g, -gb,\
-  \ --genome-build TEXT    Key denoting genome build to use in\n                 \
-  \                 configuration file  [required]\n\n  -h, --help               \
-  \       Show this message and exit.\n"
+  \ of sequence flanking motif\n                                  [required]\n  --motif\
+  \ INTEGER                 Motif number\n  -o, --oc TEXT                   Output\
+  \ Directory  [required]\n  -c, --configuration TEXT        Configuration file  [required]\n\
+  \  --show-progress                 Print progress\n  -g, -gb, --genome-build TEXT\
+  \    Key denoting genome build to use in\n                                  configuration\
+  \ file  [required]\n  -h, --help                      Show this message and exit.\n"
 generated_using: *id003

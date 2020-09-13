@@ -2,9 +2,9 @@ version 1.0
 
 task OvStoreBuild {
   input {
-    String? path_overlap_store
-    String? path_sequence_store
-    String? path_ovstoreconfig_file
+    File? path_overlap_store
+    File? path_sequence_store
+    File? path_ovstoreconfig_file
     String? filter_overlaps_e
     Boolean? be_overly_verbose
     String? opts
@@ -16,7 +16,7 @@ task OvStoreBuild {
       ~{if defined(path_sequence_store) then ("-S " +  '"' + path_sequence_store + '"') else ""} \
       ~{if defined(path_ovstoreconfig_file) then ("-C " +  '"' + path_ovstoreconfig_file + '"') else ""} \
       ~{if defined(filter_overlaps_e) then ("-e " +  '"' + filter_overlaps_e + '"') else ""} \
-      ~{true="-v" false="" be_overly_verbose}
+      ~{if (be_overly_verbose) then "-v" else ""}
   >>>
   parameter_meta {
     path_overlap_store: "path to overlap store to create"
@@ -25,5 +25,8 @@ task OvStoreBuild {
     filter_overlaps_e: "filter overlaps above e fraction error"
     be_overly_verbose: "be overly verbose"
     opts: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

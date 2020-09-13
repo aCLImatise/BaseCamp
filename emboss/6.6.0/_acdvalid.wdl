@@ -1,7 +1,10 @@
 version 1.0
 
-task _acdvalid {
+task Acdvalid {
   command <<<
     _acdvalid
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

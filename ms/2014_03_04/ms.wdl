@@ -4,4 +4,7 @@ task Ms {
   command <<<
     ms
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

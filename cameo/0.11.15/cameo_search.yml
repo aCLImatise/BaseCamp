@@ -1,22 +1,21 @@
-&id002 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: PRODUCT
-  optional: false
-named: []
+&id001 !Command
 command:
 - cameo
 - search
-parent: &id001 !Command
-  positional: []
-  named: []
+positional: []
+named: []
+parent: &id002 !Command
   command:
   - cameo
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - cameo
+    - design
     positional:
     - !Positional
       description: ''
@@ -25,8 +24,8 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: Output filename. Multiple output files can be provided (pair with
-        respective format options).
+      description: "Output filename. Multiple output files can\nbe provided (pair\
+        \ with respective format\noptions)."
       synonyms:
       - -o
       - --output
@@ -34,15 +33,15 @@ parent: &id001 !Command
         name: PATH
       optional: true
     - !Flag
-      description: '[xlsx|csv|tsv|pickle] Output file format (default csv).'
+      description: "[xlsx|csv|tsv|pickle]\nOutput file format (default csv)."
       synonyms:
       - -f
       - --format
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: / --anaerobic         Make oxygen available to the host organism
-        (default).
+      description: "/ --anaerobic         Make oxygen available to the host organism\n\
+        (default)."
       synonyms:
       - --aerobic
       args: !EmptyFlagArg {}
@@ -55,60 +54,58 @@ parent: &id001 !Command
         name: INTEGER
       optional: true
     - !Flag
-      description: / --no-differential-fva Perform differential flux variability analysis
-        to determine flux modulation targets (default).
+      description: "/ --no-differential-fva\nPerform differential flux variability\n\
+        analysis to determine flux modulation\ntargets (default)."
       synonyms:
       - --differential-fva
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: / --no-heuristic-optimization Find gene knockout targets through
-        heuristic optimization (default).
+      description: "/ --no-heuristic-optimization\nFind gene knockout targets through\
+        \ heuristic\noptimization (default)."
       synonyms:
       - --heuristic-optimization
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Maximum number of heterologous pathways to predict (default 1).
+      description: "Maximum number of heterologous pathways to\npredict (default 1)."
       synonyms:
       - --max-pathway-predictions
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: Grid points for differential FVA (default 10).
+      description: "Grid points for differential FVA (default\n10)."
       synonyms:
       - --differential-fva-points
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: Time limit (min) for individual pathway predictions (default 10
-        min).
+      description: "Time limit (min) for individual pathway\npredictions (default\
+        \ 10 min)."
       synonyms:
       - --pathway-prediction-timeout
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: Time limit (min) on individual heuristic optimizations (default
-        45 min).
+      description: "Time limit (min) on individual heuristic\noptimizations (default\
+        \ 45 min)."
       synonyms:
       - --heuristic-optimization-timeout
       args: !SimpleFlagArg
         name: INTEGER
       optional: true
     - !Flag
-      description: '[CRITICAL|ERROR|WARNING|INFO|DEBUG] Logging level (default WARNING).'
+      description: "[CRITICAL|ERROR|WARNING|INFO|DEBUG]\nLogging level (default WARNING)."
       synonyms:
       - --logging
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - cameo
-    - design
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -121,33 +118,33 @@ parent: &id001 !Command
       \ for desired product.\n\nOptions:\n  -o, --output PATH               Output\
       \ filename. Multiple output files can\n                                  be\
       \ provided (pair with respective format\n                                  options).\n\
-      \n  -f, --format [xlsx|csv|tsv|pickle]\n                                  Output\
+      \  -f, --format [xlsx|csv|tsv|pickle]\n                                  Output\
       \ file format (default csv).\n  -h, --host [ecoli|scerevisiae]  The host organisms\
       \ to consider (default:\n                                  all). Multiple hosts\
       \ can be specified by\n                                  repeating --host HOST.\n\
-      \n  --aerobic / --anaerobic         Make oxygen available to the host organism\n\
-      \                                  (default).\n\n  --cores INTEGER RANGE   \
-      \        Number of CPU cores to use (default 1).\n  --differential-fva / --no-differential-fva\n\
+      \  --aerobic / --anaerobic         Make oxygen available to the host organism\n\
+      \                                  (default).\n  --cores INTEGER RANGE     \
+      \      Number of CPU cores to use (default 1).\n  --differential-fva / --no-differential-fva\n\
       \                                  Perform differential flux variability\n \
       \                                 analysis to determine flux modulation\n  \
-      \                                targets (default).\n\n  --heuristic-optimization\
+      \                                targets (default).\n  --heuristic-optimization\
       \ / --no-heuristic-optimization\n                                  Find gene\
       \ knockout targets through heuristic\n                                  optimization\
-      \ (default).\n\n  --max-pathway-predictions INTEGER\n                      \
-      \            Maximum number of heterologous pathways to\n                  \
-      \                predict (default 1).\n\n  --differential-fva-points INTEGER\n\
-      \                                  Grid points for differential FVA (default\n\
-      \                                  10).\n\n  --pathway-prediction-timeout INTEGER\n\
+      \ (default).\n  --max-pathway-predictions INTEGER\n                        \
+      \          Maximum number of heterologous pathways to\n                    \
+      \              predict (default 1).\n  --differential-fva-points INTEGER\n \
+      \                                 Grid points for differential FVA (default\n\
+      \                                  10).\n  --pathway-prediction-timeout INTEGER\n\
       \                                  Time limit (min) for individual pathway\n\
-      \                                  predictions (default 10 min).\n\n  --heuristic-optimization-timeout\
+      \                                  predictions (default 10 min).\n  --heuristic-optimization-timeout\
       \ INTEGER\n                                  Time limit (min) on individual\
       \ heuristic\n                                  optimizations (default 45 min).\n\
-      \n  --logging [CRITICAL|ERROR|WARNING|INFO|DEBUG]\n                        \
-      \          Logging level (default WARNING).\n  --help                      \
-      \    Show this message and exit.\n"
+      \  --logging [CRITICAL|ERROR|WARNING|INFO|DEBUG]\n                         \
+      \         Logging level (default WARNING).\n  --help                       \
+      \   Show this message and exit.\n"
     generated_using: &id003
     - --help
-  - *id002
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -166,7 +163,40 @@ parent: &id001 !Command
     \ message and exit.\n\nCommands:\n  design  Compute strain designs for desired\
     \ product.\n  search  Search for available products.\n"
   generated_using: *id003
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - cameo
+  - search
+  - ID.
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: cameo
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: search
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: PRODUCT
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cameo search [OPTIONS] PRODUCT\nTry \"cameo search --help\" for\
+    \ help.\n\nError: no such option: -h\n"
+  generated_using:
+  - -h
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:

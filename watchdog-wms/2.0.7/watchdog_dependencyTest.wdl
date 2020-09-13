@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogDependencyTest {
+task WatchdogdependencyTest {
   command <<<
-    watchdog-dependencyTest
+    watchdog_dependencyTest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,14 +1,17 @@
 version 1.0
 
-task _mwcontam {
+task Mwcontam {
   input {
     Boolean? tolerance
   }
   command <<<
     _mwcontam \
-      ~{true="-tolerance" false="" tolerance}
+      ~{if (tolerance) then "-tolerance" else ""}
   >>>
   parameter_meta {
     tolerance: "float      [50.0] Ppm tolerance (Any numeric value)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

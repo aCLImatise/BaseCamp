@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../maq2sam_short.cwl
 inputs:
-- id: maq_two_sam
+- id: in_maq_two_sam
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: in_dot_map
+- id: in_in_dot_map
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: read_group
+- id: in_read_group
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - maq2sam-short

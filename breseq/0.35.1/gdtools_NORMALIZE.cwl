@@ -1,38 +1,46 @@
 class: CommandLineTool
 id: ../../../gdtools_NORMALIZE.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: verbose mode (flag)
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: output
+- id: in_output
   doc: output Genome Diff file. (DEFAULT=output.gd)
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: reference
+- id: in_reference
   doc: File containing reference sequences in GenBank, GFF3, or FASTA format. Option
     may be provided multiple times for multiple files (REQUIRED)
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: reassign_ids
+- id: in_reassign_ids
   doc: reassign ids to lowest numbers possible.
   type: boolean
   inputBinding:
     prefix: --reassign-ids
-- id: repeat_adjacent
+- id: in_repeat_adjacent
   doc: mark repeat-region adjacent, mediated, and between mutations.
   type: boolean
   inputBinding:
     prefix: --repeat-adjacent
-- id: dont_check_apply
+- id: in_dont_check_apply
   doc: skip step that checks consistency of normalize using APPLY.
   type: boolean
   inputBinding:
     prefix: --dont-check-apply
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output Genome Diff file. (DEFAULT=output.gd)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - gdtools

@@ -3,13 +3,13 @@ version 1.0
 task Cromwell {
   input {
     String? workflow_root
-    String? inputs
-    String? options
+    File? inputs
+    File? options
     String? type
     String? type_version
-    String? labels
-    String? imports
-    String? metadata_output
+    File? labels
+    Directory? imports
+    File? metadata_output
     String? host
     Boolean? jar
     String java
@@ -26,7 +26,7 @@ task Cromwell {
       ~{if defined(imports) then ("--imports " +  '"' + imports + '"') else ""} \
       ~{if defined(metadata_output) then ("--metadata-output " +  '"' + metadata_output + '"') else ""} \
       ~{if defined(host) then ("--host " +  '"' + host + '"') else ""} \
-      ~{true="-jar" false="" jar}
+      ~{if (jar) then "-jar" else ""}
   >>>
   parameter_meta {
     workflow_root: "Workflow root."
@@ -40,5 +40,9 @@ task Cromwell {
     host: "Cromwell server URL."
     jar: ""
     java: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_metadata_output = "${in_metadata_output}"
   }
 }

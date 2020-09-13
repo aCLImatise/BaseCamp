@@ -5,25 +5,25 @@ task MedakaTrain {
     Boolean? debug
     Boolean? quiet
     String? train_name
-    String? model
-    String? epochs
-    String? batch_size
+    Int? model
+    Int? epochs
+    Int? batch_size
     Int? max_samples
     Int? mini_epochs
     String? seed
-    String? threads_io
-    String? device
+    Int? threads_io
+    Int? device
     String? optimizer
-    String? optim_args
-    String? validation_split
+    Int? optim_args
+    Float? validation_split
     Array[String] validation_features
     String features
   }
   command <<<
     medaka train \
       ~{features} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(train_name) then ("--train_name " +  '"' + train_name + '"') else ""} \
       ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
       ~{if defined(epochs) then ("--epochs " +  '"' + epochs + '"') else ""} \
@@ -42,18 +42,21 @@ task MedakaTrain {
     debug: "Verbose logging of debug information. (default: 20)"
     quiet: "Minimal logging; warnings only). (default: 20)"
     train_name: "Name for training run. (default: keras_train)"
-    model: "Model definition and initial weights .hdf, or .yml with kwargs to build model. {r103_min_high_g345, r103_min_high_g360, r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303, r10_min_high_g340, r941_min_fast_g303, r941_min_high_g303, r941_min_high_g330, r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360, r941_prom_fast_g303, r941_prom_high_g303, r941_prom_high_g330, r941_prom_high_g344, r941_prom_high_g360, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360, r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360} (default: None)"
+    model: "Model definition and initial weights .hdf, or .yml\\nwith kwargs to build model. {r103_min_high_g345,\\nr103_min_high_g360, r103_prom_high_g360,\\nr103_prom_snp_g3210, r103_prom_variant_g3210,\\nr10_min_high_g303, r10_min_high_g340,\\nr941_min_fast_g303, r941_min_high_g303,\\nr941_min_high_g330, r941_min_high_g340_rle,\\nr941_min_high_g344, r941_min_high_g351,\\nr941_min_high_g360, r941_prom_fast_g303,\\nr941_prom_high_g303, r941_prom_high_g330,\\nr941_prom_high_g344, r941_prom_high_g360,\\nr941_prom_snp_g303, r941_prom_snp_g322,\\nr941_prom_snp_g360, r941_prom_variant_g303,\\nr941_prom_variant_g322, r941_prom_variant_g360}\\n(default: None)"
     epochs: "Maximum number of trainig epochs. (default: 5000)"
     batch_size: "Training batch size. (default: 100)"
     max_samples: "Only train on max_samples. (default: inf)"
-    mini_epochs: "Reduce fraction of data per epoch by this factor (default: 1)"
+    mini_epochs: "Reduce fraction of data per epoch by this factor\\n(default: 1)"
     seed: "Seed for random batch shuffling. (default: None)"
     threads_io: "Number of threads for parallel IO. (default: 1)"
     device: "GPU device to use. (default: 0)"
     optimizer: "Optimizer to use. (default: rmsprop)"
-    optim_args: "=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2... ...] Optimizer key-word arguments. (default: None)"
+    optim_args: "=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2... ...]\\nOptimizer key-word arguments. (default: None)"
     validation_split: "Fraction of data to validate on. (default: 0.2)"
-    validation_features: "Paths to validation data (default: None)"
+    validation_features: "Paths to validation data (default: None)\\n"
     features: "Paths to training data."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

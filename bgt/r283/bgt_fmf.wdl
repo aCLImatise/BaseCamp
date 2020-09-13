@@ -14,9 +14,9 @@ task BgtFmf {
       ~{fmf} \
       ~{in_dot_fmf} \
       ~{condition} \
-      ~{true="-m" false="" load_entire_fmf} \
-      ~{true="-n" false="" only_output_name} \
-      ~{true="-mn" false="" mn}
+      ~{if (load_entire_fmf) then "-m" else ""} \
+      ~{if (only_output_name) then "-n" else ""} \
+      ~{if (mn) then "-mn" else ""}
   >>>
   parameter_meta {
     load_entire_fmf: "load the entire FMF into RAM"
@@ -25,5 +25,8 @@ task BgtFmf {
     fmf: ""
     in_dot_fmf: ""
     condition: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

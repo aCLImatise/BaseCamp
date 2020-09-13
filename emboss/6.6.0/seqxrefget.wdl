@@ -4,4 +4,7 @@ task Seqxrefget {
   command <<<
     seqxrefget
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -14,7 +14,7 @@ task AdvntrDelmodelGenotype {
       ~{del_model} \
       ~{if defined(vid_slash_vntr_id) then ("-vid/--vntr_id " +  '"' + vid_slash_vntr_id + '"') else ""} \
       ~{if defined(m_slash_models) then ("-m/--models " +  '"' + m_slash_models + '"') else ""} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
     vid_slash_vntr_id: "VNTR ID"
@@ -22,5 +22,8 @@ task AdvntrDelmodelGenotype {
     h_slash_help: "show this help message and exit"
     ad_vntr: ""
     del_model: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

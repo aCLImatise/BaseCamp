@@ -13,14 +13,14 @@ task Seqdiff {
   }
   command <<<
     seqdiff \
-      ~{true="--first" false="" first} \
-      ~{true="--second" false="" second} \
-      ~{true="--a_output" false="" a_output} \
-      ~{true="--b_output" false="" b_output} \
-      ~{true="--c_output" false="" c_output} \
-      ~{true="--headers" false="" headers} \
-      ~{true="--summary" false="" summary} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (first) then "--first" else ""} \
+      ~{if (second) then "--second" else ""} \
+      ~{if (a_output) then "--a_output" else ""} \
+      ~{if (b_output) then "--b_output" else ""} \
+      ~{if (c_output) then "--c_output" else ""} \
+      ~{if (headers) then "--headers" else ""} \
+      ~{if (summary) then "--summary" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     first: ",      First sequence file (required)"
@@ -31,5 +31,8 @@ task Seqdiff {
     headers: ",    Compare headers instead of sequences (default: false)"
     summary: ", Just show summary stats? (default: false)"
     verbose: ",    Print extra details during the run"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -11,4 +11,7 @@ task Transit {
   parameter_meta {
     python: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

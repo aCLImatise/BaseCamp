@@ -1,15 +1,15 @@
 version 1.0
 
-task SpadesReadFilter {
+task Spadesreadfilter {
   input {
-    String? km_er
+    Int? km_er
     String? cov
     String? dataset
     String? threads
-    String? outdir
+    Directory? outdir
   }
   command <<<
-    spades-read-filter \
+    spades_read_filter \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
       ~{if defined(cov) then ("--cov " +  '"' + cov + '"') else ""} \
       ~{if defined(dataset) then ("--dataset " +  '"' + dataset + '"') else ""} \
@@ -22,5 +22,9 @@ task SpadesReadFilter {
     dataset: "Dataset description (in YAML)"
     threads: "# of threads to use"
     outdir: "Output directory to use"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

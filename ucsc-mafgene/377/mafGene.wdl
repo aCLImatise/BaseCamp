@@ -4,14 +4,14 @@ task MafGene {
   input {
     Boolean? use_file
     String? gene_name
-    String? gene_list
-    String? gene_beds
-    String? chrom
+    File? gene_list
+    File? gene_beds
+    Int? chrom
     Boolean? exons
     Boolean? no_trans
     Boolean? uniq_aa
     Boolean? include_utr
-    String? delay
+    Int? delay
     Boolean? no_dash
     String dbname
     String maf_table
@@ -26,17 +26,17 @@ task MafGene {
       ~{gene_pred_table} \
       ~{species_dot_lst} \
       ~{put_output_here} \
-      ~{true="-useFile" false="" use_file} \
+      ~{if (use_file) then "-useFile" else ""} \
       ~{if defined(gene_name) then ("-geneName " +  '"' + gene_name + '"') else ""} \
       ~{if defined(gene_list) then ("-geneList " +  '"' + gene_list + '"') else ""} \
       ~{if defined(gene_beds) then ("-geneBeds " +  '"' + gene_beds + '"') else ""} \
       ~{if defined(chrom) then ("-chrom " +  '"' + chrom + '"') else ""} \
-      ~{true="-exons" false="" exons} \
-      ~{true="-noTrans" false="" no_trans} \
-      ~{true="-uniqAA" false="" uniq_aa} \
-      ~{true="-includeUtr" false="" include_utr} \
+      ~{if (exons) then "-exons" else ""} \
+      ~{if (no_trans) then "-noTrans" else ""} \
+      ~{if (uniq_aa) then "-uniqAA" else ""} \
+      ~{if (include_utr) then "-includeUtr" else ""} \
       ~{if defined(delay) then ("-delay " +  '"' + delay + '"') else ""} \
-      ~{true="-noDash" false="" no_dash}
+      ~{if (no_dash) then "-noDash" else ""}
   >>>
   parameter_meta {
     use_file: "genePredTable argument is a genePred file name"
@@ -55,5 +55,8 @@ task MafGene {
     gene_pred_table: "name of the genePred table"
     species_dot_lst: "list of species names"
     put_output_here: "put output here"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

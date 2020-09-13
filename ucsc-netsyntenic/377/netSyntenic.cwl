@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../netSyntenic.cwl
 inputs:
-- id: in_dotnet
+- id: in_xxx
   doc: ''
   type: string
   inputBinding:
-    position: 0
-- id: out_dotnet
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+    prefix: -xxx
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - netSyntenic

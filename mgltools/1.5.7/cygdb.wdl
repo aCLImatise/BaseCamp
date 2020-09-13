@@ -4,4 +4,7 @@ task Cygdb {
   command <<<
     cygdb
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

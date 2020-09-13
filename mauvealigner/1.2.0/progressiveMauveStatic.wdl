@@ -2,16 +2,16 @@ version 1.0
 
 task ProgressiveMauveStatic {
   input {
-    String? island_gap_size
+    Int? island_gap_size
     File? profile
     File? apply_backbone
     String? disable_backbone
     String? mums
-    String? seed_weight
+    Int? seed_weight
     File? output_file_name
     File? backbone_output
     File? match_input
-    String? max_gapped_aligner_length
+    Int? max_gapped_aligner_length
     File? input_guide_tree
     File? output_guide_tree
     String? debug
@@ -25,41 +25,25 @@ task ProgressiveMauveStatic {
     String? muscle_args
     String? skip_refinement
     String? skip_gapped_alignment
-    String? bp_dist_estimate_min_score
+    Int? bp_dist_estimate_min_score
     String? mem_clean
-    String? gap_open
+    Int? gap_open
     String? repeat_penalty
-    String? gap_extend
+    Int? gap_extend
     File? substitution_matrix
-    String? weight
-    String? min_scaled_penalty
-    String? hmm_p_go_homologous
-    String? hmm_p_go_unrelated
-    String? hmm_identity
+    Int? weight
+    Int? min_scaled_penalty
+    Int? hmm_p_go_homologous
+    Int? hmm_p_go_unrelated
+    Int? hmm_identity
     String? seed_family
     String? solid_seeds
-    String? coding_seeds
+    Int? coding_seeds
     String? disable_cache
     String? no_recursion
-    String when
-    String each
-    String genome
-    String resides
-    String in
-    String a
-    String separate
-    File file
   }
   command <<<
     progressiveMauveStatic \
-      ~{when} \
-      ~{each} \
-      ~{genome} \
-      ~{resides} \
-      ~{in} \
-      ~{a} \
-      ~{separate} \
-      ~{file} \
       ~{if defined(island_gap_size) then ("--island-gap-size " +  '"' + island_gap_size + '"') else ""} \
       ~{if defined(profile) then ("--profile " +  '"' + profile + '"') else ""} \
       ~{if defined(apply_backbone) then ("--apply-backbone " +  '"' + apply_backbone + '"') else ""} \
@@ -78,8 +62,8 @@ task ProgressiveMauveStatic {
       ~{if defined(collinear) then ("--collinear " +  '"' + collinear + '"') else ""} \
       ~{if defined(scoring_scheme) then ("--scoring-scheme " +  '"' + scoring_scheme + '"') else ""} \
       ~{if defined(no_weight_scaling) then ("--no-weight-scaling " +  '"' + no_weight_scaling + '"') else ""} \
-      ~{true="--max-breakpoint-distance-scale" false="" max_breakpoint_distance_scale} \
-      ~{true="--conservation-distance-scale" false="" conservation_distance_scale} \
+      ~{if (max_breakpoint_distance_scale) then "--max-breakpoint-distance-scale" else ""} \
+      ~{if (conservation_distance_scale) then "--conservation-distance-scale" else ""} \
       ~{if defined(muscle_args) then ("--muscle-args " +  '"' + muscle_args + '"') else ""} \
       ~{if defined(skip_refinement) then ("--skip-refinement " +  '"' + skip_refinement + '"') else ""} \
       ~{if defined(skip_gapped_alignment) then ("--skip-gapped-alignment " +  '"' + skip_gapped_alignment + '"') else ""} \
@@ -140,13 +124,11 @@ task ProgressiveMauveStatic {
     coding_seeds: "coding pattern seeds. Useful to generate matches coding regions with 3rd codon position degeneracy."
     disable_cache: "recursive anchor search cacheing to workaround a crash bug"
     no_recursion: "recursive anchor search"
-    when: ""
-    each: ""
-    genome: ""
-    resides: ""
-    in: ""
-    a: ""
-    separate: ""
-    file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
+    File out_backbone_output = "${in_backbone_output}"
+    File out_output_guide_tree = "${in_output_guide_tree}"
   }
 }

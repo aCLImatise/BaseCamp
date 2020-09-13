@@ -1,34 +1,37 @@
 class: CommandLineTool
 id: ../../../arv_federation_migrate.cwl
 inputs:
-- id: report
-  doc: Generate report .csv file listing users by email address and their associated
-    Arvados accounts
-  type: string
-  inputBinding:
-    prefix: --report
-- id: migrate
-  doc: Consume report .csv and migrate users to designated Arvados accounts
-  type: string
-  inputBinding:
-    prefix: --migrate
-- id: dry_run
-  doc: Consume report .csv and report how user would be migrated to designated Arvados
-    accounts
-  type: string
-  inputBinding:
-    prefix: --dry-run
-- id: check
-  doc: Check that tokens are usable and the federation is well connected
-  type: boolean
-  inputBinding:
-    prefix: --check
-- id: tokens
+- id: in_tokens
   doc: ''
   type: string
   inputBinding:
     prefix: --tokens
-outputs: []
+- id: in_report
+  doc: "Generate report .csv file listing users by email address\nand their associated\
+    \ Arvados accounts"
+  type: File
+  inputBinding:
+    prefix: --report
+- id: in_migrate
+  doc: "Consume report .csv and migrate users to designated\nArvados accounts"
+  type: string
+  inputBinding:
+    prefix: --migrate
+- id: in_dry_run
+  doc: "Consume report .csv and report how user would be migrated\nto designated Arvados\
+    \ accounts"
+  type: string
+  inputBinding:
+    prefix: --dry-run
+- id: in_check
+  doc: "Check that tokens are usable and the federation is well\nconnected\n"
+  type: boolean
+  inputBinding:
+    prefix: --check
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - arv-federation-migrate

@@ -1,9 +1,17 @@
 &id002 !Command
+command:
+- esl-alimask
+- maskfile
 positional:
 - !Positional
   description: ''
   position: 0
   name: esl-alimask
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: coords
   optional: false
 - !Positional
   description: ''
@@ -15,13 +23,48 @@ positional:
   position: 2
   name: maskfile
   optional: false
-named: []
-command:
-- esl-alimask
-- maskfile
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --rf-is-mask
+  args: !SimpleFlagArg
+    name: msafile
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: msafile
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: msafile
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: msafile
+  optional: true
 parent: &id001 !Command
+  command:
+  - esl-alimask
   positional: []
   named:
+  - !Flag
+    description: ', which can be used in combination with each other.'
+    synonyms:
+    - -p
+    - -g
+    args: !SimpleFlagArg
+      name: and
+    optional: true
   - !Flag
     description: ': output the final alignment to file <f>, not stdout'
     synonyms:
@@ -174,23 +217,74 @@ parent: &id001 !Command
     - --keepins
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - esl-alimask
+  - !Flag
+    description: ''
+    synonyms:
+    - --rf-is-mask
+    args: !SimpleFlagArg
+      name: msafile
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: msafile
+    optional: true
   parent:
   subcommands:
   - !Command
+    command:
+    - esl-alimask
+    - coords
     positional:
     - !Positional
       description: ''
       position: 0
+      name: esl-alimask
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: msafile
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
       name: maskfile
       optional: false
-    named: []
-    command:
-    - esl-alimask
-    - msafile
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --rf-is-mask
+      args: !SimpleFlagArg
+        name: msafile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: msafile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -g
+      args: !SimpleFlagArg
+        name: msafile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: msafile
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -203,6 +297,70 @@ parent: &id001 !Command
       \ help on available options, do esl-alimask -h\n\n"
     generated_using: &id003 []
   - *id002
+  - !Command
+    command:
+    - esl-alimask
+    - msafile
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: esl-alimask
+      optional: false
+    - !Positional
+      description: ''
+      position: 0
+      name: maskfile
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: coords
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --rf-is-mask
+      args: !SimpleFlagArg
+        name: msafile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: msafile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -g
+      args: !SimpleFlagArg
+        name: msafile
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: msafile
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Incorrect number of command line arguments.\nUsage: esl-alimask [options]\
+      \ <msafile> <maskfile>   (use mask from maskfile)\nUsage: esl-alimask [options]\
+      \ -t <msafile> <coords>  (truncate alignment to coords)\nUsage: esl-alimask\
+      \ [options] -g <msafile>           (use gap frequencies in aln)\nUsage: esl-alimask\
+      \ [options] -p <msafile>           (use post probs (PP) in aln)\nUsage: esl-alimask\
+      \ [options] --rf-is-mask <msafile> (use #=GC RF in aln as mask)\n\nTo see more\
+      \ help on available options, do esl-alimask -h\n\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: ': help; show brief info on version and usage'
     synonyms:
@@ -259,6 +417,7 @@ parent: &id001 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

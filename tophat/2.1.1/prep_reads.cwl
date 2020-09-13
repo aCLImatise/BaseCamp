@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../prep_reads.cwl
 inputs:
-- id: filter_multi
+- id: in_filter_multi
   doc: ''
   type: string
   inputBinding:
     prefix: --filter-multi
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - prep_reads

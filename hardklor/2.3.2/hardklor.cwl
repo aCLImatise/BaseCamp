@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../hardklor.cwl
 inputs:
-- id: config_file
+- id: in_config_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hardklor

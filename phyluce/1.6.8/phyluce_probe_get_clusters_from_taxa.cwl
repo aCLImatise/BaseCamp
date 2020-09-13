@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../phyluce_probe_get_clusters_from_taxa.cwl
 inputs:
-- id: clusters
+- id: in_clusters
   doc: The directory containing cluster files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --clusters
-- id: db
+- id: in_db
   doc: The database to update
   type: string
   inputBinding:
     prefix: --db
-- id: tax_a
-  doc: The taxon overlaps to use
+- id: in_tax_a
+  doc: "The taxon overlaps to use\n"
   type: string[]
   inputBinding:
     prefix: --taxa
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_probe_get_clusters_from_taxa

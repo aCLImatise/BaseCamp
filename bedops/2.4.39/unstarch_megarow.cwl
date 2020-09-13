@@ -1,64 +1,119 @@
 class: CommandLineTool
 id: ../../../unstarch_megarow.cwl
 inputs:
-- id: list_chromosomes
-  doc: List all or specified chromosome in starch archive (like "bedextract --list-
-    chr"). If <chromosome> is specified but is not in the output list, nothing is
-    returned.
+- id: in_elements_max_string_length
+  doc: '| --bases-uniq |'
+  type: boolean
+  inputBinding:
+    prefix: --elements-max-string-length
+- id: in_has_duplicates
+  doc: '| --has-nested | --list |'
+  type: boolean
+  inputBinding:
+    prefix: --has-duplicates
+- id: in_list_json
+  doc: '| --list-chromosomes |'
+  type: boolean
+  inputBinding:
+    prefix: --list-json
+- id: in_archive_timestamp
+  doc: '| --note |'
+  type: boolean
+  inputBinding:
+    prefix: --archive-timestamp
+- id: in_archive_version
+  doc: '| --is-starch |'
+  type: boolean
+  inputBinding:
+    prefix: --archive-version
+- id: in_signature
+  doc: '| --verify-signature ]'
+  type: boolean
+  inputBinding:
+    prefix: --signature
+- id: in_elements
+  doc: "Show total element count for archive. If\n<chromosome> is specified, the result\n\
+    shows the element count for the\nchromosome."
+  type: boolean
+  inputBinding:
+    prefix: --elements
+- id: in_bases_uniq
+  doc: "Show total and unique base counts,\nrespectively, for archive. If\n<chromosome>\
+    \ is specified, the count is\nspecific to the chromosome, if available."
+  type: boolean
+  inputBinding:
+    prefix: --bases-uniq
+- id: in_has_duplicate_as_string
+  doc: "Show whether there is one or more\nduplicate elements in the specified\nchromosome,\
+    \ either as a numerical (1/0)\nor string (true/false) value. If no\n<chromosome>\
+    \ is specified, the value\ngiven indicates if there is one or more\nduplicate\
+    \ elements across all chromosome\nrecords."
+  type: boolean
+  inputBinding:
+    prefix: --has-duplicate-as-string
+- id: in_has_nested_as_string
+  doc: "Show whether there is one ore more nested\nelements in the specified chromosome,\n\
+    either as a numerical (1/0) or string\n(true/false) value. If no <chromosome>\
+    \ is\nspecified, the value given indicates if\nthere is one or more nested elements\n\
+    across all chromosome records."
+  type: boolean
+  inputBinding:
+    prefix: --has-nested-as-string
+- id: in_list
+  doc: "List archive metadata (output is in text\nformat). If chromosome is specified,\
+    \ the\nattributes of the given chromosome are\nshown."
+  type: boolean
+  inputBinding:
+    prefix: --list
+- id: in_list_json_no_trailing_new_line
+  doc: "List archive metadata (output is in JSON\nformat)"
+  type: boolean
+  inputBinding:
+    prefix: --list-json-no-trailing-newline
+- id: in_list_chr
+  doc: ','
+  type: boolean
+  inputBinding:
+    prefix: --list-chr
+- id: in_list_chromosomes
+  doc: "List all or specified chromosome in\nstarch archive (like \"bedextract --list-\n\
+    chr\"). If <chromosome> is specified but\nis not in the output list, nothing is\n\
+    returned."
   type: boolean
   inputBinding:
     prefix: --list-chromosomes
-- id: note
+- id: in_note
   doc: Show descriptive note, if available.
   type: boolean
   inputBinding:
     prefix: --note
-- id: signature
-  doc: Display the Base64-encoded SHA-1 data integrity signature for specified <chromosome>,
-    or the signatures of the metadata and all available chromosomes, if the <chromosome>
-    is unspecified.
-  type: boolean
-  inputBinding:
-    prefix: --signature
-- id: verify_signature
-  doc: Verify data integrity of specified <chromosome>, or the integrity of all available
-    chromosomes, if the <chromosome> is unspecified.
+- id: in_verify_signature
+  doc: "Verify data integrity of specified\n<chromosome>, or the integrity of all\n\
+    available chromosomes, if the\n<chromosome> is unspecified."
   type: boolean
   inputBinding:
     prefix: --verify-signature
-- id: archive_timestamp
-  doc: Show archive creation timestamp (ISO 8601 format).
-  type: boolean
-  inputBinding:
-    prefix: --archive-timestamp
-- id: archive_type
+- id: in_archive_type
   doc: Show archive compression type.
   type: boolean
   inputBinding:
     prefix: --archive-type
-- id: archive_version
-  doc: Show archive version.
-  type: boolean
-  inputBinding:
-    prefix: --archive-version
-- id: is_starch
-  doc: Test if <starch-file> is a valid archive and print 0/1 (false/true) to standard
-    output. Unstarch will also return a non- zero error code if the input file is
-    not a valid archive.
+- id: in_is_starch
+  doc: "Test if <starch-file> is a valid archive\nand print 0/1 (false/true) to standard\n\
+    output. Unstarch will also return a non-\nzero error code if the input file is\
+    \ not\na valid archive."
   type: boolean
   inputBinding:
     prefix: --is-starch
-- id: un_starch
-  doc: ''
+- id: in_modifiers
+  doc: '--------------------------------------------------------------------------'
   type: string
   inputBinding:
     position: 0
-- id: chromosome
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - unstarch-megarow

@@ -1,14 +1,10 @@
 version 1.0
 
-task 2ndscore {
-  input {
-    String in_dot_fast_a
-  }
+task Ndscore {
   command <<<
-    2ndscore \
-      ~{in_dot_fast_a}
+    _ndscore
   >>>
-  parameter_meta {
-    in_dot_fast_a: ""
+  output {
+    File out_stdout = stdout()
   }
 }

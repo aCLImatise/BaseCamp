@@ -2,31 +2,43 @@ version 1.0
 
 task Kcprototest {
   input {
+    Int? it
+    Int? th
     Boolean? tree
-    String? th
     Boolean? rnd
+    Boolean? var_4
     Boolean? etc
-    Boolean? tran
     String order
-    String rnum
+    String queue
+    String var_8
+    String wicked
   }
   command <<<
     kcprototest \
       ~{order} \
-      ~{rnum} \
-      ~{true="-tree" false="" tree} \
+      ~{queue} \
+      ~{var_8} \
+      ~{wicked} \
+      ~{if defined(it) then ("-it " +  '"' + it + '"') else ""} \
       ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
-      ~{true="-rnd" false="" rnd} \
-      ~{true="-etc" false="" etc} \
-      ~{true="-tran" false="" tran}
+      ~{if (tree) then "-tree" else ""} \
+      ~{if (rnd) then "-rnd" else ""} \
+      ~{if (var_4) then "-tran" else ""} \
+      ~{if (etc) then "-etc" else ""}
   >>>
   parameter_meta {
-    tree: ""
+    it: ""
     th: ""
+    tree: ""
     rnd: ""
+    var_4: ""
     etc: ""
-    tran: ""
     order: ""
-    rnum: ""
+    queue: ""
+    var_8: ""
+    wicked: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

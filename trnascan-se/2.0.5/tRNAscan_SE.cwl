@@ -1,221 +1,282 @@
 class: CommandLineTool
 id: ../../../tRNAscan_SE.cwl
 inputs:
-- id: search_eukaryotic_trnas
+- id: in_search_eukaryotic_trnas
   doc: ': search for eukaryotic tRNAs (default)'
   type: boolean
   inputBinding:
     prefix: -E
-- id: search_bacterial_trnas
+- id: in_search_bacterial_trnas
   doc: ': search for bacterial tRNAs'
   type: boolean
   inputBinding:
     prefix: -B
-- id: _search_archaeal
+- id: in__search_archaeal
   doc: ': search for archaeal tRNAs'
   type: boolean
   inputBinding:
     prefix: -A
-- id: search_mitochondrial_trnas
-  doc: ': search for mitochondrial tRNAs options: mammal, vert'
+- id: in_search_mitochondrial_trnasoptions
+  doc: ": search for mitochondrial tRNAs\noptions: mammal, vert"
   type: string
   inputBinding:
     prefix: -M
-- id: search_other_trnas
+- id: in_search_other_trnas
   doc: ': search for other organellar tRNAs'
   type: boolean
   inputBinding:
     prefix: -O
-- id: use_model_cytoslic
+- id: in_use_model_cytoslic
   doc: ': use general tRNA model (cytoslic tRNAs from all 3 domains included)'
   type: boolean
   inputBinding:
     prefix: -G
-- id: mt
-  doc: ': use mito tRNA models for cytosolic/mito detemination (if not specified,
-    only cytosolic isotype-specific model scan will be performed)'
+- id: in_mt
+  doc: ": use mito tRNA models for cytosolic/mito detemination\n(if not specified,\
+    \ only cytosolic isotype-specific model scan will be performed)"
   type: string
   inputBinding:
     prefix: --mt
-- id: search_using_use
-  doc: ': search using Infernal default use with -E, -B, -A, or -G; optional for -O'
+- id: in_search_using_use
+  doc: ": search using Infernal\ndefault use with -E, -B, -A, or -G; optional for\
+    \ -O"
   type: boolean
   inputBinding:
     prefix: -I
-- id: max
+- id: in_max
   doc: ': maximum sensitivity mode - search using Infernal without hmm filter (very
     slow)'
   type: boolean
   inputBinding:
     prefix: --max
-- id: search_using_method
-  doc: ': search using the legacy method (tRNAscan, EufindtRNA, and COVE) use with
-    -E, -B, -A or -G'
+- id: in_search_using_method_trnascan
+  doc: ": search using the legacy method (tRNAscan, EufindtRNA, and COVE)\nuse with\
+    \ -E, -B, -A or -G"
   type: boolean
   inputBinding:
     prefix: -L
-- id: cove
-  doc: ': search using COVE analysis only (legacy, extremely slow) default use with
-    -O'
+- id: in_cove
+  doc: ": search using COVE analysis only (legacy, extremely slow)\ndefault use with\
+    \ -O"
   type: boolean
   inputBinding:
     prefix: --cove
-- id: breakdown
-  doc: ': show breakdown of primary and secondary structure components to covariance
-    model bit scores'
+- id: in_breakdown
+  doc: ": show breakdown of primary and secondary structure components to\ncovariance\
+    \ model bit scores"
   type: boolean
   inputBinding:
     prefix: --breakdown
-- id: no_pseudo
+- id: in_no_pseudo
   doc: ': disable pseudogene checking'
   type: boolean
   inputBinding:
     prefix: --nopseudo
-- id: prefix
+- id: in_output
+  doc: ': save final results in <file>'
+  type: File
+  inputBinding:
+    prefix: --output
+- id: in_struct
+  doc: ': save tRNA secondary structures to <file>'
+  type: File
+  inputBinding:
+    prefix: --struct
+- id: in_iso_specific
+  doc: ': save results using isotype-specific models in <file>'
+  type: File
+  inputBinding:
+    prefix: --isospecific
+- id: in_stats
+  doc: ": save statistics summary for run in <file>\n(speed, # tRNAs found in each\
+    \ part of search, etc)"
+  type: File
+  inputBinding:
+    prefix: --stats
+- id: in_bed
+  doc: ': save results in BED file format of <file>'
+  type: File
+  inputBinding:
+    prefix: --bed
+- id: in_fast_a
+  doc: ': save predicted tRNA sequences in FASTA file format of <file>'
+  type: File
+  inputBinding:
+    prefix: --fasta
+- id: in_log
+  doc: ': save log of program progress in <file>'
+  type: File
+  inputBinding:
+    prefix: --log
+- id: in_detail
+  doc: ': display prediction outputs in detailed view'
+  type: boolean
+  inputBinding:
+    prefix: --detail
+- id: in_brief
+  doc: ': brief output format (no column headers)'
+  type: boolean
+  inputBinding:
+    prefix: --brief
+- id: in_prefix
   doc: ': use <label> prefix for all default output file names'
-  type: string
+  type: File
   inputBinding:
     prefix: --prefix
-- id: progress
+- id: in_progress
   doc: ': display program progress messages'
   type: boolean
   inputBinding:
     prefix: --progress
-- id: quiet
+- id: in_quiet
   doc: ': quiet mode (credits & run option selections suppressed)'
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: hit_src
-  doc: ': show origin of hits (Ts=tRNAscan 1.4, Eu=EufindtRNA,  Bo=Both Ts and Eu,
-    Inf=Infernal)'
+- id: in_hit_src
+  doc: ": show origin of hits (Ts=tRNAscan 1.4, Eu=EufindtRNA,\nBo=Both Ts and Eu,\
+    \ Inf=Infernal)"
   type: boolean
   inputBinding:
     prefix: --hitsrc
-- id: score
+- id: in_score
   doc: ': set cutoff score (in bits) for reporting tRNAs (default=20)'
-  type: string
+  type: long
   inputBinding:
     prefix: --score
-- id: gen_code
-  doc: ': use alternate genetic codes specified in <file> for determining tRNA type'
+- id: in_gen_code
+  doc: ": use alternate genetic codes specified in <file> for\ndetermining tRNA type"
   type: File
   inputBinding:
     prefix: --gencode
-- id: pad
-  doc: ': use <number> nucleotides padding when passing first-pass tRNA bounds predictions
-    to CM analysis (default=8)'
-  type: string
+- id: in_pad
+  doc: ": use <number> nucleotides padding when passing first-pass\ntRNA bounds predictions\
+    \ to CM analysis (default=8)"
+  type: long
   inputBinding:
     prefix: --pad
-- id: len
-  doc: ': set max length of tRNA intron+variable region for legacy search mode (default=116bp)'
+- id: in_len
+  doc: ": set max length of tRNA intron+variable region for legacy search mode\n(default=116bp)"
   type: long
   inputBinding:
     prefix: --len
-- id: conf
+- id: in_conf
   doc: ': tRNAscan-SE configuration file (default: tRNAscan-SE.conf)'
   type: File
   inputBinding:
     prefix: --conf
-- id: force_ow
-  doc: ': do not prompt user before overwriting pre-existing result files  (for batch
-    processing)'
+- id: in_force_ow
+  doc: ": do not prompt user before overwriting pre-existing\nresult files  (for batch\
+    \ processing)"
   type: boolean
   inputBinding:
     prefix: --forceow
-- id: match
-  doc: ': search only sequences with names matching <EXPR> string (<EXPR> may contain
-    * or ? wildcard chars)'
+- id: in_match
+  doc: ": search only sequences with names matching <EXPR> string\n(<EXPR> may contain\
+    \ * or ? wildcard chars)"
   type: string
   inputBinding:
     prefix: --match
-- id: search
-  doc: ': start search at sequence with name matching <EXPR> string and continue to
-    end of input sequence file(s)'
-  type: string
+- id: in_search
+  doc: ": start search at sequence with name matching <EXPR> string\nand continue\
+    \ to end of input sequence file(s)"
+  type: File
   inputBinding:
     prefix: --search
-- id: search_trnas_alternate
+- id: in_search_trnas_alternate
   doc: ': search for tRNAs with alternate models defined in configuration file'
   type: boolean
   inputBinding:
     prefix: -U
-- id: ts_can
+- id: in_ts_can
   doc: ': search using tRNAscan only (defaults to strict params)'
   type: boolean
   inputBinding:
     prefix: --tscan
-- id: t_mode
-  doc: ': explicitly set tRNAscan params, where <mode>=R or S (R=relaxed, S=strict
-    tRNAscan v1.3 params)'
-  type: string
+- id: in_t_mode
+  doc: ": explicitly set tRNAscan params, where <mode>=R or S\n(R=relaxed, S=strict\
+    \ tRNAscan v1.3 params)"
+  type: double
   inputBinding:
     prefix: --tmode
-- id: verbose
+- id: in_verbose
   doc: ': save verbose tRNAscan 1.3 output to <file>'
   type: File
   inputBinding:
     prefix: --verbose
-- id: no_merge
-  doc: ": Keep redundant tRNAscan 1.3 hits (don't filter out multiple predictions\
+- id: in_no_merge
+  doc: ": Keep redundant tRNAscan 1.3 hits (don't filter out multiple\npredictions\
     \ per tRNA identification)"
   type: boolean
   inputBinding:
     prefix: --nomerge
-- id: eu_find
-  doc: ': search using Eukaryotic tRNA finder (EufindtRNA) only (defaults to Normal
-    seach parameters when run alone, or to Relaxed search params when run with Cove)'
+- id: in_eu_find
+  doc: ": search using Eukaryotic tRNA finder (EufindtRNA) only\n(defaults to Normal\
+    \ seach parameters when run alone,\nor to Relaxed search params when run with\
+    \ Cove)"
   type: boolean
   inputBinding:
     prefix: --eufind
-- id: e_mode
-  doc: ': explicitly set EufindtRNA params, where <mode>=R, N, or S (relaxed, normal,
-    or strict)'
+- id: in_e_mode
+  doc: ": explicitly set EufindtRNA params, where <mode>=R, N, or S\n(relaxed, normal,\
+    \ or strict)"
   type: string
   inputBinding:
     prefix: --emode
-- id: is_core
+- id: in_is_core
   doc: ': manually set "intermediate" cutoff score for EufindtRNA'
   type: string
   inputBinding:
     prefix: --iscore
-- id: fs_res
-  doc: ': save first-pass scan results from EufindtRNA, tRNAscan, or Infernal hmm
-    in <file> in tabular results format'
+- id: in_fs_res
+  doc: ": save first-pass scan results from EufindtRNA, tRNAscan, or\nInfernal hmm\
+    \ in <file> in tabular results format"
   type: File
   inputBinding:
     prefix: --fsres
-- id: mid
+- id: in_mid
   doc: ': fast scan mode - search using Infernal with mid-level strictness of hmm
     filter'
   type: boolean
   inputBinding:
     prefix: --mid
-- id: false_pos
-  doc: ': save first-pass candidate tRNAs in <file> that were then found to be false
-    positives by second-pass analysis'
+- id: in_false_pos
+  doc: ": save first-pass candidate tRNAs in <file> that were then\nfound to be false\
+    \ positives by second-pass analysis"
   type: File
   inputBinding:
     prefix: --falsepos
-- id: missed
-  doc: ': save all seqs that do NOT have at least one tRNA prediction in them (aka
-    "missed" seqs)'
+- id: in_missed
+  doc: ": save all seqs that do NOT have at least one\ntRNA prediction in them (aka\
+    \ \"missed\" seqs)"
   type: File
   inputBinding:
     prefix: --missed
-- id: thread
+- id: in_thread
   doc: ': number of threads used for running infernal (default is to use available
     threads)'
-  type: string
+  type: long
   inputBinding:
     prefix: --thread
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prefix
+  doc: ': use <label> prefix for all default output file names'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_prefix)
+- id: out_verbose
+  doc: ': save verbose tRNAscan 1.3 output to <file>'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_verbose)
 cwlVersion: v1.1
 baseCommand:
 - tRNAscan-SE

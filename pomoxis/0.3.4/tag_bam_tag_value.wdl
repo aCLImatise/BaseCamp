@@ -23,4 +23,7 @@ task TagBamTagValue {
     tag_name: ""
     tag_value: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

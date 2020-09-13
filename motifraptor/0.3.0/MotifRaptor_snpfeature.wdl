@@ -2,9 +2,9 @@ version 1.0
 
 task MotifRaptorSnpfeature {
   input {
-    String? workdir
+    Directory? workdir
     String? cell_type
-    String? snp_bed_files
+    File? snp_bed_files
   }
   command <<<
     MotifRaptor snpfeature \
@@ -15,6 +15,9 @@ task MotifRaptorSnpfeature {
   parameter_meta {
     workdir: "Working directory"
     cell_type: "Cell type or Tissue type ID"
-    snp_bed_files: "SNP cell type bed file folder, usually from step1"
+    snp_bed_files: "SNP cell type bed file folder, usually from step1\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

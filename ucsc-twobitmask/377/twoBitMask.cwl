@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../twoBitMask.cwl
 inputs:
-- id: add
+- id: in_add
   doc: Don't remove pre-existing masking before applying maskFile.
   type: boolean
   inputBinding:
     prefix: -add
-- id: type
+- id: in_type
   doc: =.XXX   Type of maskFile is XXX (bed or out).
   type: boolean
   inputBinding:
     prefix: -type
-- id: input_dot_two_bit
+- id: in_input_dot_two_bit
   doc: ''
-  type: string
+  type: double
   inputBinding:
     position: 0
-- id: mask_file
+- id: in_mask_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_dot_two_bit
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - twoBitMask

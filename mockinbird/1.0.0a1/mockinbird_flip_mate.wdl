@@ -4,4 +4,7 @@ task MockinbirdFlipMate {
   command <<<
     mockinbird flip_mate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,12 +2,12 @@ version 1.0
 
 task Fastqe {
   input {
-    String? min_len
+    Int? min_len
     Boolean? mean
     Boolean? bin
     Boolean? min
     Boolean? max
-    String? log
+    File? log
     Boolean? scale
     String fast_a_file
   }
@@ -15,12 +15,12 @@ task Fastqe {
     fastqe \
       ~{fast_a_file} \
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""} \
-      ~{true="--mean" false="" mean} \
-      ~{true="--bin" false="" bin} \
-      ~{true="--min" false="" min} \
-      ~{true="--max" false="" max} \
+      ~{if (mean) then "--mean" else ""} \
+      ~{if (bin) then "--bin" else ""} \
+      ~{if (min) then "--min" else ""} \
+      ~{if (max) then "--max" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
-      ~{true="--scale" false="" scale}
+      ~{if (scale) then "--scale" else ""}
   >>>
   parameter_meta {
     min_len: "Minimum length sequence to include in stats (default 0)"
@@ -31,5 +31,8 @@ task Fastqe {
     log: "record program progress in LOG_FILE"
     scale: "show relevant scale in output"
     fast_a_file: "Input FASTQ files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

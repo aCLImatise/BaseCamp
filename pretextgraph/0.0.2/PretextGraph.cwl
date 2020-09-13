@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../PretextGraph.sse42.cwl
+id: ../../../PretextGraph.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- PretextGraph.sse42
+- PretextGraph

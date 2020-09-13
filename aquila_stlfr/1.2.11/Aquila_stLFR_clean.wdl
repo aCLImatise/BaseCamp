@@ -2,10 +2,10 @@ version 1.0
 
 task AquilaStLFRClean {
   input {
-    String? assembly_dir
+    Directory? assembly_dir
     String? chr_start
     String? chr_end
-    String? num_of_threads
+    Int? num_of_threads
   }
   command <<<
     Aquila_stLFR_clean \
@@ -18,6 +18,9 @@ task AquilaStLFRClean {
     assembly_dir: "assembly folder"
     chr_start: "chromosome start from"
     chr_end: "chromosome end by"
-    num_of_threads: "number of threads"
+    num_of_threads: "number of threads\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

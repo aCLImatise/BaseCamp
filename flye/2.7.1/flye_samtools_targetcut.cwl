@@ -1,52 +1,61 @@
 class: CommandLineTool
 id: ../../../flye_samtools_targetcut.cwl
 inputs:
-- id: reference
-  doc: Reference sequence FASTA FILE [null]
+- id: in_input_fmt_option
+  doc: "[=VAL]\nSpecify a single input file format option in the form\nof OPTION or\
+    \ OPTION=VALUE"
+  type: File
+  inputBinding:
+    prefix: --input-fmt-option
+- id: in_reference
+  doc: "Reference sequence FASTA FILE [null]\n"
   type: File
   inputBinding:
     prefix: --reference
-- id: q
+- id: in_two
   doc: ''
   type: long
   inputBinding:
-    prefix: -Q
-- id: i
+    prefix: '-2'
+- id: in_one
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: '-1'
+- id: in_zero
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: '-0'
+- id: in_i
   doc: ''
   type: string
   inputBinding:
     prefix: -i
-- id: zero
+- id: in_q
   doc: ''
-  type: string
+  type: long
   inputBinding:
-    prefix: '-0'
-- id: one
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: '-1'
-- id: two
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: '-2'
-- id: sam_tools
+    prefix: -Q
+- id: in_sam_tools
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: target_cut
+- id: in_target_cut
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: in_dot_bam
+- id: in_in_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - flye-samtools

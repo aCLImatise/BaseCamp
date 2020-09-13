@@ -6,39 +6,39 @@ task JobTreeRun {
     Boolean? loginfo
     Boolean? log_debug
     String? loglevel
-    String? log_file
+    File? log_file
     Boolean? rotating_logging
-    String? job_tree
+    File? job_tree
     Boolean? stats
     String? batch_system
     Int? max_threads
     String? parasol_command
-    String? default_memory
-    String? default_cpu
+    Int? default_memory
+    Int? default_cpu
     Int? max_cpus
     Int? max_memory
-    String? retry_count
+    Int? retry_count
     Int? max_job_duration
     String? rescue_jobs_frequency
     String? big_batch_system
-    String? big_memory_threshold
-    String? big_cpu_threshold
-    String? big_max_cpus
-    String? big_max_memory
-    String? job_time
+    Int? big_memory_threshold
+    Int? big_cpu_threshold
+    Int? big_max_cpus
+    Int? big_max_memory
+    Int? job_time
     Int? max_log_file_size
     String? command_run_generate
   }
   command <<<
     jobTreeRun \
-      ~{true="--logOff" false="" logoff} \
-      ~{true="--logInfo" false="" loginfo} \
-      ~{true="--logDebug" false="" log_debug} \
+      ~{if (logoff) then "--logOff" else ""} \
+      ~{if (loginfo) then "--logInfo" else ""} \
+      ~{if (log_debug) then "--logDebug" else ""} \
       ~{if defined(loglevel) then ("--logLevel " +  '"' + loglevel + '"') else ""} \
       ~{if defined(log_file) then ("--logFile " +  '"' + log_file + '"') else ""} \
-      ~{true="--rotatingLogging" false="" rotating_logging} \
+      ~{if (rotating_logging) then "--rotatingLogging" else ""} \
       ~{if defined(job_tree) then ("--jobTree " +  '"' + job_tree + '"') else ""} \
-      ~{true="--stats" false="" stats} \
+      ~{if (stats) then "--stats" else ""} \
       ~{if defined(batch_system) then ("--batchSystem " +  '"' + batch_system + '"') else ""} \
       ~{if defined(max_threads) then ("--maxThreads " +  '"' + max_threads + '"') else ""} \
       ~{if defined(parasol_command) then ("--parasolCommand " +  '"' + parasol_command + '"') else ""} \
@@ -62,28 +62,31 @@ task JobTreeRun {
     logoff: "Turn off logging. (default is CRITICAL)"
     loginfo: "Turn on logging at INFO level. (default is CRITICAL)"
     log_debug: "Turn on logging at DEBUG level. (default is CRITICAL)"
-    loglevel: "Log at level (may be either OFF/INFO/DEBUG/CRITICAL). (default is CRITICAL)"
+    loglevel: "Log at level (may be either OFF/INFO/DEBUG/CRITICAL).\\n(default is CRITICAL)"
     log_file: "File to log in"
-    rotating_logging: "Turn on rotating logging, which prevents log files getting too big."
-    job_tree: "Directory in which to place job management files and the global accessed temporary file directories(this needs to be globally accessible by all machines running jobs). If you pass an existing directory it will check if it's a valid existing job tree, then try and restart the jobs in it. The default=./jobTree"
-    stats: "Records statistics about the job-tree to be used by jobTreeStats. default=False"
-    batch_system: "The type of batch system to run the job(s) with, currently can be 'singleMachine'/'parasol'/'acidTest'/ 'gridEngine'/'lsf'. default=singleMachine"
-    max_threads: "The maximum number of threads (technically processes at this point) to use when running in single machine mode. Increasing this will allow more jobs to run concurrently when running on a single machine. default=4"
+    rotating_logging: "Turn on rotating logging, which prevents log files\\ngetting too big."
+    job_tree: "Directory in which to place job management files and\\nthe global accessed temporary file directories(this\\nneeds to be globally accessible by all machines\\nrunning jobs). If you pass an existing directory it\\nwill check if it's a valid existing job tree, then try\\nand restart the jobs in it. The default=./jobTree"
+    stats: "Records statistics about the job-tree to be used by\\njobTreeStats. default=False"
+    batch_system: "The type of batch system to run the job(s) with,\\ncurrently can be 'singleMachine'/'parasol'/'acidTest'/\\n'gridEngine'/'lsf'. default=singleMachine"
+    max_threads: "The maximum number of threads (technically processes\\nat this point) to use when running in single machine\\nmode. Increasing this will allow more jobs to run\\nconcurrently when running on a single machine.\\ndefault=4"
     parasol_command: "The command to run the parasol program default=parasol"
-    default_memory: "The default amount of memory to request for a job (in bytes), by default is 2^31 = 2 gigabytes, default=2147483648"
-    default_cpu: "The default the number of cpus to dedicate a job. default=1"
-    max_cpus: "The maximum number of cpus to request from the batch system at any one time. default=9223372036854775807"
-    max_memory: "The maximum amount of memory to request from the batch system at any one time. default=9223372036854775807"
-    retry_count: "Number of times to retry a failing job before giving up and labeling job failed. default=0"
-    max_job_duration: "Maximum runtime of a job (in seconds) before we kill it (this is a lower bound, and the actual time before killing the job may be longer). default=9223372036854775807"
-    rescue_jobs_frequency: "Period of time to wait (in seconds) between checking for missing/overlong jobs, that is jobs which get lost by the batch system. Expert parameter. (default is set by the batch system)"
-    big_batch_system: "The batch system to run for jobs with larger memory/cpus requests, currently can be 'singleMachine'/'parasol'/'acidTest'/'gridEngine'. default=none"
-    big_memory_threshold: "The memory threshold above which to submit to the big queue. default=9223372036854775807"
-    big_cpu_threshold: "The cpu threshold above which to submit to the big queue. default=9223372036854775807"
-    big_max_cpus: "The maximum number of big batch system cpus to allow at one time on the big queue. default=9223372036854775807"
-    big_max_memory: "The maximum amount of memory to request from the big batch system at any one time. default=9223372036854775807"
-    job_time: "The approximate time (in seconds) that you'd like a list of child jobs to be run serially before being parallelized. This parameter allows one to avoid over parallelizing tiny jobs, and therefore paying significant scheduling overhead, by running tiny jobs in series on a single node/core of the cluster. default=30"
-    max_log_file_size: "The maximum size of a job log file to keep (in bytes), log files larger than this will be truncated to the last X bytes. Default is 50 kilobytes, default=50120"
-    command_run_generate: "The command to run (which will generate subsequent jobs). This is deprecated"
+    default_memory: "The default amount of memory to request for a job (in\\nbytes), by default is 2^31 = 2 gigabytes,\\ndefault=2147483648"
+    default_cpu: "The default the number of cpus to dedicate a job.\\ndefault=1"
+    max_cpus: "The maximum number of cpus to request from the batch\\nsystem at any one time. default=9223372036854775807"
+    max_memory: "The maximum amount of memory to request from the batch\\nsystem at any one time. default=9223372036854775807"
+    retry_count: "Number of times to retry a failing job before giving\\nup and labeling job failed. default=0"
+    max_job_duration: "Maximum runtime of a job (in seconds) before we kill\\nit (this is a lower bound, and the actual time before\\nkilling the job may be longer).\\ndefault=9223372036854775807"
+    rescue_jobs_frequency: "Period of time to wait (in seconds) between checking\\nfor missing/overlong jobs, that is jobs which get lost\\nby the batch system. Expert parameter. (default is set\\nby the batch system)"
+    big_batch_system: "The batch system to run for jobs with larger\\nmemory/cpus requests, currently can be\\n'singleMachine'/'parasol'/'acidTest'/'gridEngine'.\\ndefault=none"
+    big_memory_threshold: "The memory threshold above which to submit to the big\\nqueue. default=9223372036854775807"
+    big_cpu_threshold: "The cpu threshold above which to submit to the big\\nqueue. default=9223372036854775807"
+    big_max_cpus: "The maximum number of big batch system cpus to allow\\nat one time on the big queue.\\ndefault=9223372036854775807"
+    big_max_memory: "The maximum amount of memory to request from the big\\nbatch system at any one time.\\ndefault=9223372036854775807"
+    job_time: "The approximate time (in seconds) that you'd like a\\nlist of child jobs to be run serially before being\\nparallelized. This parameter allows one to avoid over\\nparallelizing tiny jobs, and therefore paying\\nsignificant scheduling overhead, by running tiny jobs\\nin series on a single node/core of the cluster.\\ndefault=30"
+    max_log_file_size: "The maximum size of a job log file to keep (in bytes),\\nlog files larger than this will be truncated to the\\nlast X bytes. Default is 50 kilobytes, default=50120"
+    command_run_generate: "The command to run (which will generate subsequent\\njobs). This is deprecated\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

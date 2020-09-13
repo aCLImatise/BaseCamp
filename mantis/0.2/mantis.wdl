@@ -4,4 +4,7 @@ task Mantis {
   command <<<
     mantis
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

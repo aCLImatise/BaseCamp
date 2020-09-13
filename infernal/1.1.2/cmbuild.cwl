@@ -1,207 +1,215 @@
 class: CommandLineTool
 id: ../../../cmbuild.cwl
 inputs:
-- id: name_cms_s
+- id: in_name_cms_s
   doc: ': name the CM(s) <s>, (only if single aln in file)'
-  type: string
+  type: File
   inputBinding:
     prefix: -n
-- id: force_allow_overwriting
+- id: in_force_allow_overwriting
   doc: ': force; allow overwriting of <cmfile_out>'
   type: boolean
   inputBinding:
     prefix: -F
-- id: direct_summary_output
+- id: in_direct_summary_output
   doc: ': direct summary output to file <f>, not stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: resave_consensusinsert_column
+- id: in_resave_consensusinsert_column
   doc: ': resave consensus/insert column annotated MSA to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: -O
-- id: devhelp
+- id: in_devhelp
   doc: ': show list of otherwise hidden developer/expert options'
   type: boolean
   inputBinding:
     prefix: --devhelp
-- id: fast
+- id: in_fast
   doc: ': assign cols w/ >= symfrac residues as consensus'
   type: boolean
   inputBinding:
     prefix: --fast
-- id: hand
+- id: in_hand
   doc: ': use reference coordinate annotation to specify consensus'
   type: boolean
   inputBinding:
     prefix: --hand
-- id: sym_frac
+- id: in_sym_frac
   doc: ': fraction of non-gaps to require in a consensus column [0..1]'
-  type: string
+  type: double
   inputBinding:
     prefix: --symfrac
-- id: noss
+- id: in_noss
   doc: ': ignore secondary structure annotation in input alignment'
   type: boolean
   inputBinding:
     prefix: --noss
-- id: r_search
+- id: in_r_search
   doc: ': use RSEARCH parameterization with RIBOSUM matrix file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --rsearch
-- id: 'null'
+- id: in_null
   doc: ': read null (random sequence) model from file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --null
-- id: prior
+- id: in_prior
   doc: ': read priors from file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --prior
-- id: wpb
+- id: in_wpb
   doc: ': Henikoff position-based weights  [default]'
   type: boolean
   inputBinding:
     prefix: --wpb
-- id: wgs_c
+- id: in_wgs_c
   doc: ': Gerstein/Sonnhammer/Chothia tree weights'
   type: boolean
   inputBinding:
     prefix: --wgsc
-- id: w_none
+- id: in_w_none
   doc: ": don't do any relative weighting; set all to 1"
   type: boolean
   inputBinding:
     prefix: --wnone
-- id: w_given
+- id: in_w_given
   doc: ': use weights as given in MSA file'
   type: boolean
   inputBinding:
     prefix: --wgiven
-- id: w_blosum
+- id: in_w_blosum
   doc: ': Henikoff simple filter weights'
   type: boolean
   inputBinding:
     prefix: --wblosum
-- id: wid
+- id: in_wid
   doc: ': for --wblosum: set identity cutoff  [0.62]  (0<=x<=1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --wid
-- id: e_ent
+- id: in_e_ent
   doc: ': adjust eff seq # to achieve relative entropy target  [default]'
   type: boolean
   inputBinding:
     prefix: --eent
-- id: en_one
+- id: in_en_one
   doc: ': no effective seq # weighting: just use nseq'
   type: boolean
   inputBinding:
     prefix: --enone
-- id: ere
+- id: in_ere
   doc: ': for --eent: set CM target relative entropy to <x>'
   type: string
   inputBinding:
     prefix: --ere
-- id: e_set
+- id: in_e_set
   doc: ': set eff seq # for all models to <x>'
   type: string
   inputBinding:
     prefix: --eset
-- id: emin_seq
+- id: in_emin_seq
   doc: ': for --eent: set minimum effective sequence number to <x>  [0.1]'
-  type: string
+  type: long
   inputBinding:
     prefix: --eminseq
-- id: e_hmm_re
+- id: in_e_hmm_re
   doc: ': for --eent: set minimum HMM relative entropy to <x>'
   type: string
   inputBinding:
     prefix: --ehmmre
-- id: e_sigma
+- id: in_e_sigma
   doc: ': for --eent: set sigma param to <x>  [45.0]'
-  type: string
+  type: double
   inputBinding:
     prefix: --esigma
-- id: pse_venere
+- id: in_pse_venere
   doc: ': for the filter p7 HMM, set minimum rel entropy/posn to <x>'
-  type: string
+  type: long
   inputBinding:
     prefix: --p7ere
-- id: p_seven_ml
+- id: in_p_seven_ml
   doc: ': define the filter p7 HMM as the ML p7 HMM'
   type: boolean
   inputBinding:
     prefix: --p7ml
-- id: emn
+- id: in_emn
   doc: ': number of sampled seqs to use for p7 local MSV calibration  [200]'
-  type: string
+  type: long
   inputBinding:
     prefix: --EmN
-- id: evn
+- id: in_evn
   doc: ': number of sampled seqs to use for p7 local Vit calibration  [200]'
-  type: string
+  type: long
   inputBinding:
     prefix: --EvN
-- id: elf_n
+- id: in_elf_n
   doc: ': number of sampled seqs to use for p7 local Fwd calibration  [200]'
-  type: string
+  type: long
   inputBinding:
     prefix: --ElfN
-- id: eg_fn
+- id: in_eg_fn
   doc: ': number of sampled seqs to use for p7 glocal Fwd calibration  [200]'
-  type: string
+  type: long
   inputBinding:
     prefix: --EgfN
-- id: refine
+- id: in_refine
   doc: ': refine input aln w/Expectation-Maximization, save to <f>'
   type: string
   inputBinding:
     prefix: --refine
-- id: wrefine_configure_model
+- id: in_wrefine_configure_model
   doc: ': w/--refine, configure model for local alignment [default: global]'
   type: boolean
   inputBinding:
     prefix: -l
-- id: gibbs
+- id: in_gibbs
   doc: ': w/--refine, use Gibbs sampling instead of EM'
   type: boolean
   inputBinding:
     prefix: --gibbs
-- id: seed
+- id: in_seed
   doc: ': w/--gibbs, set RNG seed to <n> (if 0: one-time arbitrary seed)'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: cy_k
+- id: in_cy_k
   doc: ': w/--refine, use CYK instead of optimal accuracy'
   type: boolean
   inputBinding:
     prefix: --cyk
-- id: not_run_c
+- id: in_not_run_c
   doc: ': w/--refine, do not use truncated alignment algorithm'
   type: boolean
   inputBinding:
     prefix: --notrunc
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: cm_file_out
+- id: in_cm_file_out
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: msa_file
+- id: in_msa_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_direct_summary_output
+  doc: ': direct summary output to file <f>, not stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_direct_summary_output)
 cwlVersion: v1.1
 baseCommand:
 - cmbuild

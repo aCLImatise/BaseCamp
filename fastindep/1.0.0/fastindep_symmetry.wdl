@@ -1,7 +1,10 @@
 version 1.0
 
-task FastindepSymmetry {
+task Fastindepsymmetry {
   command <<<
-    fastindep-symmetry
+    fastindep_symmetry
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

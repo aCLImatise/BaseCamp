@@ -11,20 +11,20 @@ task Bank2contig {
     Boolean? simple_layout_style
     Boolean? sam_format_httpsamtoolssfnet
     Boolean? xml_format_suitable
-    String bank_two_contig
+    Int bank_two_contig
   }
   command <<<
     bank2contig \
       ~{bank_two_contig} \
-      ~{true="-v" false="" display_compatible_version} \
-      ~{true="-e" false="" use_eids_names} \
-      ~{true="-i" false="" use_iids_names} \
+      ~{if (display_compatible_version) then "-v" else ""} \
+      ~{if (use_eids_names) then "-e" else ""} \
+      ~{if (use_iids_names) then "-i" else ""} \
       ~{if defined(dump_just_eids) then ("-E " +  '"' + dump_just_eids + '"') else ""} \
       ~{if defined(dump_just_iids) then ("-I " +  '"' + dump_just_iids + '"') else ""} \
-      ~{true="-L" false="" just_create_file} \
-      ~{true="-S" false="" simple_layout_style} \
-      ~{true="-s" false="" sam_format_httpsamtoolssfnet} \
-      ~{true="-T" false="" xml_format_suitable}
+      ~{if (just_create_file) then "-L" else ""} \
+      ~{if (simple_layout_style) then "-S" else ""} \
+      ~{if (sam_format_httpsamtoolssfnet) then "-s" else ""} \
+      ~{if (xml_format_suitable) then "-T" else ""}
   >>>
   parameter_meta {
     display_compatible_version: "Display the compatible bank version"
@@ -37,5 +37,8 @@ task Bank2contig {
     sam_format_httpsamtoolssfnet: "SAM Format (http://samtools.sf.net)"
     xml_format_suitable: "XML Format suitable for DNPTrapper"
     bank_two_contig: "[options]  <bank path>"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

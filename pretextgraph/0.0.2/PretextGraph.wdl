@@ -1,7 +1,10 @@
 version 1.0
 
-task PretextGraph.sse42 {
+task PretextGraph {
   command <<<
-    PretextGraph.sse42
+    PretextGraph
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

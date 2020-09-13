@@ -2,11 +2,11 @@ version 1.0
 
 task PopBubbles {
   input {
-    String? km_er
-    String? branches
-    String? bubble_length
-    String? identity
-    String? coverage
+    Int? km_er
+    Int? branches
+    Int? bubble_length
+    Float? identity
+    Int? coverage
     Boolean? scaffold
     Boolean? no_scaffold
     Boolean? ss
@@ -21,7 +21,7 @@ task PopBubbles {
     Boolean? gv
     Boolean? sam
     Boolean? bubble_graph
-    String? threads
+    Int? threads
     Boolean? verbose
     String fast_a
     String contig_adjacency_graph
@@ -35,30 +35,30 @@ task PopBubbles {
       ~{if defined(bubble_length) then ("--bubble-length " +  '"' + bubble_length + '"') else ""} \
       ~{if defined(identity) then ("--identity " +  '"' + identity + '"') else ""} \
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""} \
-      ~{true="--scaffold" false="" scaffold} \
-      ~{true="--no-scaffold" false="" no_scaffold} \
-      ~{true="--SS" false="" ss} \
-      ~{true="--no-SS" false="" no_ss} \
+      ~{if (scaffold) then "--scaffold" else ""} \
+      ~{if (no_scaffold) then "--no-scaffold" else ""} \
+      ~{if (ss) then "--SS" else ""} \
+      ~{if (no_ss) then "--no-SS" else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
-      ~{true="--adj" false="" output_graph_adj} \
-      ~{true="--asqg" false="" as_qg} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--gfa" false="" gfa} \
-      ~{true="--gfa1" false="" gfa_one} \
-      ~{true="--gfa2" false="" gfa_two} \
-      ~{true="--gv" false="" gv} \
-      ~{true="--sam" false="" sam} \
-      ~{true="--bubble-graph" false="" bubble_graph} \
+      ~{if (output_graph_adj) then "--adj" else ""} \
+      ~{if (as_qg) then "--asqg" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (gfa) then "--gfa" else ""} \
+      ~{if (gfa_one) then "--gfa1" else ""} \
+      ~{if (gfa_two) then "--gfa2" else ""} \
+      ~{if (gv) then "--gv" else ""} \
+      ~{if (sam) then "--sam" else ""} \
+      ~{if (bubble_graph) then "--bubble-graph" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     km_er: "k-mer size"
     branches: "maximum number of branches, default: 2"
-    bubble_length: "pop bubbles shorter than N bp default is 10000"
+    bubble_length: "pop bubbles shorter than N bp\\ndefault is 10000"
     identity: "minimum identity, default: 0.9"
-    coverage: "remove contigs with mean k-mer coverage less than this threshold [0]"
-    scaffold: "scaffold over bubbles that have insufficient identity"
+    coverage: "remove contigs with mean k-mer coverage\\nless than this threshold [0]"
+    scaffold: "scaffold over bubbles that have\\ninsufficient identity"
     no_scaffold: "disable scaffolding [default]"
     ss: "expect contigs to be oriented correctly"
     no_ss: "no assumption about contig orientation [default]"
@@ -76,5 +76,8 @@ task PopBubbles {
     verbose: "display verbose output"
     fast_a: "contigs in FASTA format"
     contig_adjacency_graph: "contig adjacency graph"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

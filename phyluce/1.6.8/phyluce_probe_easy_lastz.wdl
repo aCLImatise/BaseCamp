@@ -2,9 +2,9 @@ version 1.0
 
 task PhyluceProbeEasyLastz {
   input {
-    String? target
-    String? query
-    String? path_output_file
+    File? target
+    File? query
+    File? path_output_file
     String? identity
     String? coverage
     Int? min_match
@@ -24,6 +24,10 @@ task PhyluceProbeEasyLastz {
     path_output_file: "The path to the output file"
     identity: "The minimum percent identity to require for a match"
     coverage: "The minimum coverage (%) required for a match"
-    min_match: "The minimum number of base pairs required for a match"
+    min_match: "The minimum number of base pairs required for a match\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_file = "${in_path_output_file}"
   }
 }

@@ -4,4 +4,7 @@ task Sdm {
   command <<<
     sdm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

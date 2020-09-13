@@ -14,24 +14,24 @@ task Nxtrim {
     Boolean? ignore_pf
     Boolean? separate
     Boolean? aggressive
-    String? similarity
-    String? min_overlap
-    String? minlength
+    Int? similarity
+    Int? min_overlap
+    Int? minlength
   }
   command <<<
     nxtrim \
-      ~{true="-1" false="" one} \
-      ~{true="-2" false="" two} \
-      ~{true="-O" false="" arg_output_prefix} \
-      ~{true="--justmp" false="" just_mp} \
-      ~{true="--stdout" false="" stdout} \
-      ~{true="--stdout-mp" false="" stdout_mp} \
-      ~{true="--stdout-un" false="" stdout_un} \
-      ~{true="--rf" false="" rf} \
-      ~{true="--preserve-mp" false="" preserve_mp} \
-      ~{true="--ignorePF" false="" ignore_pf} \
-      ~{true="--separate" false="" separate} \
-      ~{true="--aggressive" false="" aggressive} \
+      ~{if (one) then "-1" else ""} \
+      ~{if (two) then "-2" else ""} \
+      ~{if (arg_output_prefix) then "-O" else ""} \
+      ~{if (just_mp) then "--justmp" else ""} \
+      ~{if (stdout) then "--stdout" else ""} \
+      ~{if (stdout_mp) then "--stdout-mp" else ""} \
+      ~{if (stdout_un) then "--stdout-un" else ""} \
+      ~{if (rf) then "--rf" else ""} \
+      ~{if (preserve_mp) then "--preserve-mp" else ""} \
+      ~{if (ignore_pf) then "--ignorePF" else ""} \
+      ~{if (separate) then "--separate" else ""} \
+      ~{if (aggressive) then "--aggressive" else ""} \
       ~{if defined(similarity) then ("--similarity " +  '"' + similarity + '"') else ""} \
       ~{if defined(min_overlap) then ("--minoverlap " +  '"' + min_overlap + '"') else ""} \
       ~{if defined(minlength) then ("--minlength " +  '"' + minlength + '"') else ""}
@@ -52,5 +52,8 @@ task Nxtrim {
     similarity: "(=0.85)    The minimum similarity between strings to be considered a match (Hamming distance divided by string length)"
     min_overlap: "(=12)      The minimum overlap to be considered for matching"
     minlength: "(=21)      The minimum read length to output (smaller reads will be filtered)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

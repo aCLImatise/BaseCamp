@@ -1,95 +1,103 @@
 class: CommandLineTool
 id: ../../../cgatreport_test.cwl
 inputs:
-- id: tracker
+- id: in_tracker
   doc: tracker to use [default=none]
   type: string
   inputBinding:
     prefix: --tracker
-- id: page
+- id: in_page
   doc: render an rst page [default=none]
   type: string
   inputBinding:
     prefix: --page
-- id: tracks
+- id: in_tracks
   doc: tracks to use [default=none]
   type: string
   inputBinding:
     prefix: --tracks
-- id: transformer
+- id: in_transformer
   doc: add transformation [default=[]]
   type: string
   inputBinding:
     prefix: --transformer
-- id: slices
+- id: in_slices
   doc: slices to use [default=none]
   type: string
   inputBinding:
     prefix: --slices
-- id: renderer
+- id: in_renderer
   doc: renderer to use [default=table]
   type: string
   inputBinding:
     prefix: --renderer
-- id: tracker_dir
+- id: in_tracker_dir
   doc: path to trackers [default=trackers]
-  type: string
+  type: File
   inputBinding:
     prefix: --trackerdir
-- id: force
-  doc: force recomputation of data by deleting cached results [default=False]
+- id: in_force
+  doc: "force recomputation of data by deleting cached results\n[default=False]"
   type: boolean
   inputBinding:
     prefix: --force
-- id: option
-  doc: renderer options - supply as key=value pairs (without spaces). [default=[]]
+- id: in_option
+  doc: "renderer options - supply as key=value pairs (without\nspaces). [default=[]]"
   type: string
   inputBinding:
     prefix: --option
-- id: language
-  doc: output language for snippet. Use ``rst`` to create a snippet to paste into
-    a cgatreport document. Use ``notebook`` to create a snippet to paste into an ipython
-    notebook [default=rst]
+- id: in_language
+  doc: "output language for snippet. Use ``rst`` to create a\nsnippet to paste into\
+    \ a cgatreport document. Use\n``notebook`` to create a snippet to paste into an\n\
+    ipython notebook [default=rst]"
   type: string
   inputBinding:
     prefix: --language
-- id: no_print
-  doc: do not print an rst text element to create the displayed plots [default=True].
+- id: in_no_print
+  doc: "do not print an rst text element to create the\ndisplayed plots [default=True]."
   type: boolean
   inputBinding:
     prefix: --no-print
-- id: no_show
+- id: in_no_show
   doc: do not show a plot [default=True].
   type: boolean
   inputBinding:
     prefix: --no-show
-- id: layout
+- id: in_layout
   doc: output rst with layout [default=none].
   type: string
   inputBinding:
     prefix: --layout
-- id: start_interpreter
-  doc: do not render, but start python interpreter [default=False].
+- id: in_start_interpreter
+  doc: "do not render, but start python interpreter\n[default=False]."
   type: boolean
   inputBinding:
     prefix: --start-interpreter
-- id: start_ipython
-  doc: do not render, start ipython interpreter [default=False].
+- id: in_start_ipython
+  doc: "do not render, start ipython interpreter\n[default=False]."
   type: boolean
   inputBinding:
     prefix: --start-ipython
-- id: workdir
-  doc: working directory - change to this directory before executing [default=none]
-  type: string
+- id: in_workdir
+  doc: "working directory - change to this directory before\nexecuting [default=none]"
+  type: Directory
   inputBinding:
     prefix: --workdir
-- id: hard_copy
-  doc: output images of plots. The parameter should contain one or more %s The suffix
-    determines the type of plot. [default=none].
+- id: in_hard_copy
+  doc: "output images of plots. The parameter should contain\none or more %s The suffix\
+    \ determines the type of plot.\n[default=none].\n"
   type: string
   inputBinding:
     prefix: --hardcopy
-outputs: []
+- id: in_cgat_report_test
+  doc: will collect all:class:`Trackers` and will execute them.
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cgatreport-test

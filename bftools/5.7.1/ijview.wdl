@@ -4,4 +4,7 @@ task Ijview {
   command <<<
     ijview
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

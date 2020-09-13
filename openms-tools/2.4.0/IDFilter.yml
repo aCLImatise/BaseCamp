@@ -1,4 +1,6 @@
 !Command
+command:
+- IDFilter
 positional: []
 named:
 - !Flag
@@ -100,10 +102,9 @@ named:
   - --helphelp
   args: !EmptyFlagArg {}
   optional: true
-command:
-- IDFilter
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Shows options
   synonyms:
@@ -112,34 +113,35 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
-help_text: "\nIDFilter -- Filters results from protein or peptide identification engines\
-  \ based on different criteria.\nVersion: 2.4.0 Jan  8 2020, 08:35:33, Revision:\
-  \ 2116a70\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow C et al..\
-  \ OpenMS: a flexible open-source software platform for mass spectrometry data analysis.\
-  \ Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n  IDFilter\
-  \ <options>\n\nOptions (mandatory options marked with '*'):\n  -in <file>*     \
-  \                                          Input file  (valid formats: 'idXML')\n\
-  \  -out <file>*                                              Output file  (valid\
-  \ formats: 'idXML')\n\nFiltering by precursor RT or m/z:\n  -precursor:rt [min]:[max]\
-  \                                 Retention time range to extract. (default: ':')\n\
-  \  -precursor:mz [min]:[max]                                 Mass-to-charge range\
-  \ to extract. (default: ':')\n\nFiltering by peptide/protein score.:\n  -score:pep\
-  \ <score>                                        The score which should be reached\
-  \ by a peptide hit to be kept. (default: '0')\n  -score:prot <score>           \
-  \                            The score which should be reached by a protein hit\
-  \ to be kept. Use in combination with 'delete_unreferenced_peptide_hits' to remove\
-  \ affected peptides. (default: '0')\n\nFiltering by whitelisting (only peptides/proteins\
-  \ from a given set can pass):\n  -whitelist:proteins <file>                    \
-  \            Filename of a FASTA file containing protein sequences.\n          \
-  \                                                  All peptides that are not referencing\
-  \ a protein in this file are removed.\n                                        \
-  \                    All proteins whose accessions are not present in this file\
-  \ are removed. (valid formats: 'fasta')\n  -whitelist:protein_accessions <accessions>\
-  \                All peptides that do not reference at least one of the provided\
-  \ protein accession are removed.\n                                             \
-  \               Only proteins of the provided list are retained.\n  -whitelist:peptides\
-  \ <file>                                Only peptides with the same sequence and\
-  \ modification assignment as any peptide in this file are kept. Use with 'whitelist:ignore_modifications'\
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nIDFilter -- Filters\
+  \ results from protein or peptide identification engines based on different criteria.\n\
+  Version: 2.4.0 Jan  8 2020, 08:35:33, Revision: 2116a70\nTo cite OpenMS:\n  Rost\
+  \ HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  IDFilter <options>\n\nOptions (mandatory\
+  \ options marked with '*'):\n  -in <file>*                                     \
+  \          Input file  (valid formats: 'idXML')\n  -out <file>*                \
+  \                              Output file  (valid formats: 'idXML')\n\nFiltering\
+  \ by precursor RT or m/z:\n  -precursor:rt [min]:[max]                         \
+  \        Retention time range to extract. (default: ':')\n  -precursor:mz [min]:[max]\
+  \                                 Mass-to-charge range to extract. (default: ':')\n\
+  \nFiltering by peptide/protein score.:\n  -score:pep <score>                   \
+  \                     The score which should be reached by a peptide hit to be kept.\
+  \ (default: '0')\n  -score:prot <score>                                       The\
+  \ score which should be reached by a protein hit to be kept. Use in combination\
+  \ with 'delete_unreferenced_peptide_hits' to remove affected peptides. (default:\
+  \ '0')\n\nFiltering by whitelisting (only peptides/proteins from a given set can\
+  \ pass):\n  -whitelist:proteins <file>                                Filename of\
+  \ a FASTA file containing protein sequences.\n                                 \
+  \                           All peptides that are not referencing a protein in this\
+  \ file are removed.\n                                                          \
+  \  All proteins whose accessions are not present in this file are removed. (valid\
+  \ formats: 'fasta')\n  -whitelist:protein_accessions <accessions>              \
+  \  All peptides that do not reference at least one of the provided protein accession\
+  \ are removed.\n                                                            Only\
+  \ proteins of the provided list are retained.\n  -whitelist:peptides <file>    \
+  \                            Only peptides with the same sequence and modification\
+  \ assignment as any peptide in this file are kept. Use with 'whitelist:ignore_modifications'\
   \ to only compare by sequence.\n                                               \
   \             (valid formats: 'idXML')\n  -whitelist:ignore_modifications      \
   \                     Compare whitelisted peptides by sequence only.\n  -whitelist:modifications\
@@ -1487,39 +1489,39 @@ help_text: "\nIDFilter -- Filters results from protein or peptide identification
   \ below:\n  -in_silico_digestion:fasta <file>                         Fasta protein\
   \ sequence database. (valid formats: 'fasta')\n  -in_silico_digestion:enzyme <enzyme>\
   \                      Enzyme used for the digestion of the sample (default: 'Trypsin'\
-  \ valid: 'PepsinA', 'Lys-N', 'Lys-C/P', 'Lys-C', 'Formic_acid', 'Chymotrypsin/P',\
-  \ 'CNBr', 'Alpha-lytic protease', '2-iodobenzoate', 'iodosobenzoate', 'Trypsin',\
-  \ 'staphylococcal protease/D', 'proline-endopeptidase/HKR', 'Glu-C+P', 'TrypChymo',\
-  \ 'Trypsin/P', 'V8-DE', 'elastase-trypsin-chymotrypsin', 'no cleavage', 'unspecific\
-  \ cleavage', 'V8-E', 'leukocyte elastase', 'proline endopeptidase', 'glutamyl endopeptidase',\
-  \ 'Chymotrypsin', 'Arg-C', 'Asp-N', 'Asp-N/B', 'Asp-N_ambic', 'PepsinA + P', 'cyanogen-bromide',\
-  \ 'Clostripain/P', 'Arg-C/P')\n  -in_silico_digestion:specificity <specificity>\
-  \            Specificity of the filter (default: 'full' valid: 'full', 'semi', 'none')\n\
-  \  -in_silico_digestion:missed_cleavages <integer>           Range of allowed missed\
-  \ cleavages in the peptide sequences\n                                         \
-  \                   By default missed cleavages are ignored (default: '-1' min:\
-  \ '-1')\n  -in_silico_digestion:methionine_cleavage                  Allow methionine\
-  \ cleavage at the N-terminus of the protein.\n\nThis filter option removes peptide\
-  \ hits which do not confirm with the allowed missed cleavages specified below.:\n\
-  \  -missed_cleavages:number_of_missed_cleavages [min]:[max]  Range of allowed missed\
-  \ cleavages in the peptide sequences.\n                                        \
-  \                    For example: 0:1 -> peptides with two or more missed cleavages\
-  \ will be removed,\n                                                           \
-  \ 0:0 -> peptides with any missed cleavages will be removed (default: ':')\n  -missed_cleavages:enzyme\
-  \ <enzyme>                         Enzyme used for the digestion of the sample (default:\
-  \ 'Trypsin' valid: 'PepsinA', 'Lys-N', 'Lys-C/P', 'Lys-C', 'Formic_acid', 'Chymotrypsin/P',\
-  \ 'CNBr', 'Alpha-lytic protease', '2-iodobenzoate', 'iodosobenzoate', 'Trypsin',\
-  \ 'staphylococcal protease/D', 'proline-endopeptidase/HKR', 'Glu-C+P', 'TrypChymo',\
-  \ 'Trypsin/P', 'V8-DE', 'elastase-trypsin-chymotrypsin', 'no cleavage', 'unspecific\
-  \ cleavage', 'V8-E', 'leukocyte elastase', 'proline endopeptidase', 'glutamyl endopeptidase',\
-  \ 'Chymotrypsin', 'Arg-C', 'Asp-N', 'Asp-N/B', 'Asp-N_ambic', 'PepsinA + P', 'cyanogen-bromide',\
-  \ 'Clostripain/P', 'Arg-C/P')\n\nFiltering by mass error:\n  -mz:error <float> \
-  \                                        Filtering by deviation to theoretical mass\
-  \ (disabled for negative values). (default: '-1')\n  -mz:unit <String>         \
-  \                                Absolute or relative error. (default: 'ppm' valid:\
-  \ 'Da', 'ppm')\n\nFiltering best hits per spectrum (for peptides) or from proteins:\n\
-  \  -best:n_peptide_hits <integer>                            Keep only the 'n' highest\
-  \ scoring peptide hits per spectrum (for n > 0). (default: '0' min: '0')\n  -best:n_protein_hits\
+  \ valid: 'CNBr', 'Formic_acid', 'Chymotrypsin', 'Chymotrypsin/P', 'Asp-N/B', 'Asp-N_ambic',\
+  \ 'no cleavage', 'TrypChymo', 'leukocyte elastase', 'proline endopeptidase', 'Arg-C/P',\
+  \ 'Asp-N', 'cyanogen-bromide', 'Clostripain/P', 'unspecific cleavage', 'glutamyl\
+  \ endopeptidase', 'Alpha-lytic protease', '2-iodobenzoate', 'iodosobenzoate', 'staphylococcal\
+  \ protease/D', 'proline-endopeptidase/HKR', 'Glu-C+P', 'PepsinA + P', 'elastase-trypsin-chymotrypsin',\
+  \ 'Trypsin', 'Trypsin/P', 'V8-E', 'V8-DE', 'Lys-C', 'Lys-N', 'Arg-C', 'Lys-C/P',\
+  \ 'PepsinA')\n  -in_silico_digestion:specificity <specificity>            Specificity\
+  \ of the filter (default: 'full' valid: 'full', 'semi', 'none')\n  -in_silico_digestion:missed_cleavages\
+  \ <integer>           Range of allowed missed cleavages in the peptide sequences\n\
+  \                                                            By default missed cleavages\
+  \ are ignored (default: '-1' min: '-1')\n  -in_silico_digestion:methionine_cleavage\
+  \                  Allow methionine cleavage at the N-terminus of the protein.\n\
+  \nThis filter option removes peptide hits which do not confirm with the allowed\
+  \ missed cleavages specified below.:\n  -missed_cleavages:number_of_missed_cleavages\
+  \ [min]:[max]  Range of allowed missed cleavages in the peptide sequences.\n   \
+  \                                                         For example: 0:1 -> peptides\
+  \ with two or more missed cleavages will be removed,\n                         \
+  \                                   0:0 -> peptides with any missed cleavages will\
+  \ be removed (default: ':')\n  -missed_cleavages:enzyme <enzyme>               \
+  \          Enzyme used for the digestion of the sample (default: 'Trypsin' valid:\
+  \ 'CNBr', 'Formic_acid', 'Chymotrypsin', 'Chymotrypsin/P', 'Asp-N/B', 'Asp-N_ambic',\
+  \ 'no cleavage', 'TrypChymo', 'leukocyte elastase', 'proline endopeptidase', 'Arg-C/P',\
+  \ 'Asp-N', 'cyanogen-bromide', 'Clostripain/P', 'unspecific cleavage', 'glutamyl\
+  \ endopeptidase', 'Alpha-lytic protease', '2-iodobenzoate', 'iodosobenzoate', 'staphylococcal\
+  \ protease/D', 'proline-endopeptidase/HKR', 'Glu-C+P', 'PepsinA + P', 'elastase-trypsin-chymotrypsin',\
+  \ 'Trypsin', 'Trypsin/P', 'V8-E', 'V8-DE', 'Lys-C', 'Lys-N', 'Arg-C', 'Lys-C/P',\
+  \ 'PepsinA')\n\nFiltering by mass error:\n  -mz:error <float>                  \
+  \                       Filtering by deviation to theoretical mass (disabled for\
+  \ negative values). (default: '-1')\n  -mz:unit <String>                       \
+  \                  Absolute or relative error. (default: 'ppm' valid: 'Da', 'ppm')\n\
+  \nFiltering best hits per spectrum (for peptides) or from proteins:\n  -best:n_peptide_hits\
+  \ <integer>                            Keep only the 'n' highest scoring peptide\
+  \ hits per spectrum (for n > 0). (default: '0' min: '0')\n  -best:n_protein_hits\
   \ <integer>                            Keep only the 'n' highest scoring protein\
   \ hits (for n > 0). (default: '0' min: '0')\n  -best:strict                    \
   \                          Keep only the highest scoring peptide hit.\n        \

@@ -3,16 +3,16 @@ version 1.0
 task FileFilter {
   input {
     File? in
-    String? in_type
+    File? in_type
     File? out
-    String? out_type
+    File? out_type
     Boolean? rt
     Boolean? mz
     Boolean? intensity_range_extract
     Boolean? sort
     Boolean? feature
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -22,15 +22,15 @@ task FileFilter {
       ~{if defined(in_type) then ("-in_type " +  '"' + in_type + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(out_type) then ("-out_type " +  '"' + out_type + '"') else ""} \
-      ~{true="-rt" false="" rt} \
-      ~{true="-mz" false="" mz} \
-      ~{true="-int" false="" intensity_range_extract} \
-      ~{true="-sort" false="" sort} \
-      ~{true="-feature" false="" feature} \
+      ~{if (rt) then "-rt" else ""} \
+      ~{if (mz) then "-mz" else ""} \
+      ~{if (intensity_range_extract) then "-int" else ""} \
+      ~{if (sort) then "-sort" else ""} \
+      ~{if (feature) then "-feature" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                                                  Input file (valid formats: 'mzML', 'featureXML', 'consensusXML')"
@@ -46,5 +46,10 @@ task FileFilter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_out_type = "${in_out_type}"
   }
 }

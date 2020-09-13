@@ -17,4 +17,7 @@ task ScfUpdate {
     source: ""
     destination: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

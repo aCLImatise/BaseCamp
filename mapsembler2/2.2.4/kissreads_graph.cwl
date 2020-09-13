@@ -1,39 +1,30 @@
 class: CommandLineTool
 id: ../../../kissreads_graph.cwl
 inputs:
-- id: this_message_exit
+- id: in_this_message_exit
   doc: this message and exit
   type: string
   inputBinding:
     prefix: -h
-- id: t
-  doc: '"c" "coverage"  "m" "modify" '
+- id: in_t
+  doc: "\"c\" \"coverage\"\n\"m\" \"modify\""
   type: string
   inputBinding:
     prefix: -t
-- id: write_obtained_output
-  doc: ': write obtained graph. Default: standard output '
-  type: File
+- id: in_input_considered_obtained
+  doc: ": the input is considered as a Mapsembler output\n-o file_name: write obtained\
+    \ graph. Default: standard output\n-k size_seed: will use seeds of length size_seed.\
+    \ Default: 25.\n-c min_coverage: Will consider an edge as coherent if coverage\
+    \ (number of reads from all sets using this edge) is at least min_coverage. Default:\
+    \ 2\n-d max_substitutions: Will map a read on the graph with at most max_substitutions\
+    \ substitutions. Default: 1\n"
+  type: boolean
   inputBinding:
-    prefix: -o
-- id: will_use_seeds
-  doc: ': will use seeds of length size_seed. Default: 25.'
-  type: long
-  inputBinding:
-    prefix: -k
-- id: will_consider_edge
-  doc: ': Will consider an edge as coherent if coverage (number of reads from all
-    sets using this edge) is at least min_coverage. Default: 2 '
-  type: long
-  inputBinding:
-    prefix: -c
-- id: will_map_read
-  doc: ': Will map a read on the graph with at most max_substitutions substitutions.
-    Default: 1 '
-  type: long
-  inputBinding:
-    prefix: -d
-outputs: []
+    prefix: -M
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - kissreads_graph

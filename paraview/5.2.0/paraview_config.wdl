@@ -1,7 +1,10 @@
 version 1.0
 
-task ParaviewConfig {
+task Paraviewconfig {
   command <<<
-    paraview-config
+    paraview_config
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

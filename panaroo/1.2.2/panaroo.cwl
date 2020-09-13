@@ -1,144 +1,142 @@
 class: CommandLineTool
 id: ../../../panaroo.cwl
 inputs:
-- id: threads
-  doc: number of threads to use (default=1)
+- id: in_clean_mode
+  doc: '[-c ID]'
   type: string
   inputBinding:
+    prefix: --clean-mode
+- id: in_threads
+  doc: number of threads to use (default=1)
+  type: long
+  inputBinding:
     prefix: --threads
-- id: quiet
+- id: in_quiet
   doc: suppress additional output
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: input
-  doc: input GFF3 files (usually output from running Prokka). Can also take a file
-    listing each gff file line by line.
+- id: in_input
+  doc: "input GFF3 files (usually output from running Prokka).\nCan also take a file\
+    \ listing each gff file line by\nline."
   type: string[]
   inputBinding:
     prefix: --input
-- id: out_dir
+- id: in_out_dir
   doc: location of an output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --out_dir
-- id: clean_mode
-  doc: "The stringency mode at which to run panaroo. Must be one of 'strict','moderate'\
-    \ or 'sensitive'. Each of these modes can be fine tuned using the additional parameters\
-    \ in the 'Graph correction' section. strict: Requires fairly strong evidence (present\
-    \ in  at least 5% of genomes) to keep likely contaminant genes. Will remove genes\
-    \ that are refound more often than they were called originally. moderate: Requires\
-    \ moderate evidence (present in  at least 1% of genomes) to keep likely contaminant\
-    \ genes. Keeps genes that are refound more often than they were called originally.\
-    \ sensitive: Does not delete any genes and only performes merge and refinding\
-    \ operations. Useful if rare plasmids are of interest as these are often hard\
-    \ to disguish from contamination. Results will likely include  higher number of\
-    \ spurious annotations."
-  type: string
-  inputBinding:
-    prefix: --clean-mode
-- id: threshold
+- id: in_threshold
   doc: sequence identity threshold (default=0.95)
-  type: string
+  type: double
   inputBinding:
     prefix: --threshold
-- id: family_threshold
-  doc: protein family sequence identity threshold (default=0.7)
-  type: string
+- id: in_family_threshold
+  doc: "protein family sequence identity threshold\n(default=0.7)"
+  type: double
   inputBinding:
     prefix: --family_threshold
-- id: len_dif_percent
+- id: in_len_dif_percent
   doc: length difference cutoff (default=0.95)
-  type: string
+  type: long
   inputBinding:
     prefix: --len_dif_percent
-- id: merge_paralogs
+- id: in_merge_paralogs
   doc: don't split paralogs
   type: boolean
   inputBinding:
     prefix: --merge_paralogs
-- id: search_radius
-  doc: the distance in nucleotides surronding the neighbour of an accessory gene in
-    which to search for it
+- id: in_search_radius
+  doc: "the distance in nucleotides surronding the neighbour\nof an accessory gene\
+    \ in which to search for it"
   type: string
   inputBinding:
     prefix: --search_radius
-- id: re_find_prop_match
-  doc: the proportion of an accessory gene that must be found in order to consider
-    it a match
+- id: in_re_find_prop_match
+  doc: "the proportion of an accessory gene that must be found\nin order to consider\
+    \ it a match"
   type: string
   inputBinding:
     prefix: --refind_prop_match
-- id: min_trailing_support
-  doc: minimum cluster size to keep a gene called at the end of a contig
+- id: in_min_trailing_support
+  doc: "minimum cluster size to keep a gene called at the end\nof a contig"
   type: long
   inputBinding:
     prefix: --min_trailing_support
-- id: trailing_recursive
-  doc: number of times to perform recursive trimming of low support nodes near the
-    end of contigs
-  type: string
+- id: in_trailing_recursive
+  doc: "number of times to perform recursive trimming of low\nsupport nodes near the\
+    \ end of contigs"
+  type: long
   inputBinding:
     prefix: --trailing_recursive
-- id: edge_support_threshold
-  doc: minimum support required to keep and edge that has been flagged as a possible
-    mis-assembly
+- id: in_edge_support_threshold
+  doc: "minimum support required to keep and edge that has\nbeen flagged as a possible\
+    \ mis-assembly"
   type: string
   inputBinding:
     prefix: --edge_support_threshold
-- id: length_outlier_support_proportion
-  doc: proportion of genomes supporting a gene with a length more than 1.5x outside
-    the interquatile range for genes in the same cluster (default=0.01). Genes failing
-    this test will be re-annotated at the shorter length
+- id: in_length_outlier_support_proportion
+  doc: "proportion of genomes supporting a gene with a length\nmore than 1.5x outside\
+    \ the interquatile range for\ngenes in the same cluster (default=0.01). Genes\n\
+    failing this test will be re-annotated at the shorter\nlength"
   type: long
   inputBinding:
     prefix: --length_outlier_support_proportion
-- id: remove_by_consensus
-  doc: if a gene is called in the same region with similar sequence a minority of
-    the time, remove it. One of 'True' or 'False'
+- id: in_remove_by_consensus
+  doc: "if a gene is called in the same region with similar\nsequence a minority of\
+    \ the time, remove it. One of\n'True' or 'False'"
   type: string
   inputBinding:
     prefix: --remove_by_consensus
-- id: high_var_flag
-  doc: minimum number of nested cycles to call a highly variable gene region (default
-    = 5).
-  type: string
+- id: in_high_var_flag
+  doc: "minimum number of nested cycles to call a highly\nvariable gene region (default\
+    \ = 5)."
+  type: long
   inputBinding:
     prefix: --high_var_flag
-- id: min_edge_support_sv
-  doc: minimum edge support required to call structural variants in the presence/absence
-    sv file
+- id: in_min_edge_support_sv
+  doc: "minimum edge support required to call structural\nvariants in the presence/absence\
+    \ sv file"
   type: long
   inputBinding:
     prefix: --min_edge_support_sv
-- id: all_seq_in_graph
-  doc: Retains all DNA sequence for each gene cluster in the graph output. Off by
-    default as it uses a large amount of space.
+- id: in_all_seq_in_graph
+  doc: "Retains all DNA sequence for each gene cluster in the\ngraph output. Off by\
+    \ default as it uses a large amount\nof space."
   type: boolean
   inputBinding:
     prefix: --all_seq_in_graph
-- id: no_clean_edges
+- id: in_no_clean_edges
   doc: Turn off edge filtering in the final output graph.
   type: boolean
   inputBinding:
     prefix: --no_clean_edges
-- id: alignment
-  doc: "Output alignments of core genes or all genes. Options are 'core' and 'pan'.\
+- id: in_alignment
+  doc: "Output alignments of core genes or all genes. Options\nare 'core' and 'pan'.\
     \ Default: 'None'"
   type: string
   inputBinding:
     prefix: --alignment
-- id: aligner
-  doc: "Specify an aligner. Options:'prank', 'clustal', and default: 'mafft'"
+- id: in_aligner
+  doc: "Specify an aligner. Options:'prank', 'clustal', and\ndefault: 'mafft'"
   type: string
   inputBinding:
     prefix: --aligner
-- id: core_threshold
-  doc: Core-genome sample threshold (default=0.95)
-  type: string
+- id: in_core_threshold
+  doc: "Core-genome sample threshold (default=0.95)\n"
+  type: double
   inputBinding:
     prefix: --core_threshold
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_dir
+  doc: location of an output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_out_dir)
 cwlVersion: v1.1
 baseCommand:
 - panaroo

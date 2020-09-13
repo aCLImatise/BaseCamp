@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- mb-normalize
+- normalization_pileup
 positional:
 - !Positional
   description: ''
@@ -13,77 +16,42 @@ named:
   args: !SimpleFlagArg
     name: MUT_SNP_RATIO
   optional: true
-command:
-- mb-normalize
-- normalization_pileup
 parent: &id001 !Command
+  command:
+  - mb-normalize
   positional: []
   named:
   - !Flag
-    description: remove positions with SNP-ratio > r
+    description: "remove positions with SNP-ratio > r\n"
     synonyms:
     - --mut_snp_ratio
     - -r
     args: !SimpleFlagArg
       name: MUT_SNP_RATIO
     optional: true
-  command:
-  - mb-normalize
   parent:
   subcommands:
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mb-normalize
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --mut_snp_ratio
-      args: !SimpleFlagArg
-        name: MUT_SNP_RATIO
-      optional: true
-    command:
-    - mb-normalize
-    - input_file
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: mb-normalize [-h] [--mut_snp_ratio MUT_SNP_RATIO]\n       \
-      \             input_file output_file normalization_pileup\nmb-normalize: error:\
-      \ argument input_file: 'input_file' does not exist\n"
-    generated_using: &id002
-    - --help
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mb-normalize
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --mut_snp_ratio
-      args: !SimpleFlagArg
-        name: MUT_SNP_RATIO
-      optional: true
     command:
     - mb-normalize
     - output_file
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mb-normalize
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --mut_snp_ratio
+      args: !SimpleFlagArg
+        name: MUT_SNP_RATIO
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -95,8 +63,43 @@ parent: &id001 !Command
     help_text: "usage: mb-normalize [-h] [--mut_snp_ratio MUT_SNP_RATIO]\n       \
       \             input_file output_file normalization_pileup\nmb-normalize: error:\
       \ argument input_file: 'output_file' does not exist\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    command:
+    - mb-normalize
+    - input_file
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mb-normalize
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --mut_snp_ratio
+      args: !SimpleFlagArg
+        name: MUT_SNP_RATIO
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: mb-normalize [-h] [--mut_snp_ratio MUT_SNP_RATIO]\n       \
+      \             input_file output_file normalization_pileup\nmb-normalize: error:\
+      \ argument input_file: 'input_file' does not exist\n"
     generated_using: *id002
   - *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -117,6 +120,7 @@ parent: &id001 !Command
     \ MUT_SNP_RATIO\n                        remove positions with SNP-ratio > r\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

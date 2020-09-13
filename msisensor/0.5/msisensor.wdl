@@ -4,4 +4,7 @@ task Msisensor {
   command <<<
     msisensor
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

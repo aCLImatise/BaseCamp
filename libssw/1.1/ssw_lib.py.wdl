@@ -1,7 +1,10 @@
 version 1.0
 
-task SswLib.py.bak {
+task SswLibpy {
   command <<<
-    ssw_lib.py.bak
+    ssw_lib_py
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

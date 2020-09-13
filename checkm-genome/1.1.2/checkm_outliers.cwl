@@ -1,49 +1,52 @@
 class: CommandLineTool
 id: ../../../checkm_outliers.cwl
 inputs:
-- id: distributions
+- id: in_distributions
   doc: 'reference distribution used to identify outliers; integer between 0 and 100
     (default: 95)'
-  type: string
+  type: long
   inputBinding:
     prefix: --distributions
-- id: report_type
+- id: in_report_type
   doc: "report sequences that are outliers in 'all' or 'any' reference distribution\
     \ (default: any)"
   type: string
   inputBinding:
     prefix: --report_type
-- id: extension
+- id: in_extension
   doc: 'extension of bins (other files in directory are ignored) (default: fna)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --extension
-- id: quiet
+- id: in_quiet
   doc: suppress console output
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: results_dir
+- id: in_results_dir
   doc: directory specified during qa command
   type: string
   inputBinding:
     position: 0
-- id: bin_dir
+- id: in_bin_dir
   doc: directory containing bins (fasta format)
   type: string
   inputBinding:
     position: 1
-- id: tetra_profile
+- id: in_tetra_profile
   doc: tetranucleotide profiles for each sequence (see tetra command)
   type: string
   inputBinding:
     position: 2
-- id: output_file
+- id: in_output_file
   doc: print results to file
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkm

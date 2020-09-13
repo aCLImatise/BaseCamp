@@ -4,4 +4,7 @@ task GmtkMMItrain {
   command <<<
     gmtkMMItrain
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task Hmmalign {
   input {
-    String? output_alignment_file
-    String? map_ali
+    File? output_alignment_file
+    File? map_ali
     Boolean? trim
     Boolean? amino
     Boolean? dna
@@ -16,13 +16,13 @@ task Hmmalign {
     hmmalign \
       ~{if defined(output_alignment_file) then ("-o " +  '"' + output_alignment_file + '"') else ""} \
       ~{if defined(map_ali) then ("--mapali " +  '"' + map_ali + '"') else ""} \
-      ~{true="--trim" false="" trim} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
+      ~{if (trim) then "--trim" else ""} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     output_alignment_file: ": output alignment to file <f>, not stdout"
@@ -34,5 +34,9 @@ task Hmmalign {
     in_format: ": assert <seqfile> is in format <s>: no autodetection"
     out_format: ": output alignment in format <s>  [Stockholm]"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_alignment_file = "${in_output_alignment_file}"
   }
 }

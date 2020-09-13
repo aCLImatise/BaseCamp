@@ -1,26 +1,29 @@
 version 1.0
 
-task ByobuTmux {
+task Byobutmux {
   input {
-    Boolean? two_clu_vv
-    String? c
-    File? f
     String? l
+    File? f
+    String? c
+    Boolean? two_clu_vv
     String t_mux
   }
   command <<<
-    byobu-tmux \
+    byobu_tmux \
       ~{t_mux} \
-      ~{true="-2CluvV" false="" two_clu_vv} \
-      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(l) then ("-L " +  '"' + l + '"') else ""} \
       ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
-      ~{if defined(l) then ("-L " +  '"' + l + '"') else ""}
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if (two_clu_vv) then "-2CluvV" else ""}
   >>>
   parameter_meta {
-    two_clu_vv: ""
-    c: ""
-    f: ""
     l: ""
+    f: ""
+    c: ""
+    two_clu_vv: ""
     t_mux: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

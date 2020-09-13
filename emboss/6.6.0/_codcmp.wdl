@@ -1,7 +1,10 @@
 version 1.0
 
-task _codcmp {
+task Codcmp {
   command <<<
     _codcmp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

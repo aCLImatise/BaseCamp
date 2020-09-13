@@ -4,4 +4,7 @@ task Contrast {
   command <<<
     contrast
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

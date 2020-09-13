@@ -4,4 +4,7 @@ task PurgeHaplotigs {
   command <<<
     purge_haplotigs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

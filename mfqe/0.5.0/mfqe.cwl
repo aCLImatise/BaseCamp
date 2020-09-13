@@ -1,52 +1,65 @@
 class: CommandLineTool
 id: ../../../mfqe.cwl
 inputs:
-- id: output_uncompressed
+- id: in_input_fast_q
+  doc: ': Use this file as input FASTQ [default: Use STDIN]'
+  type: File
+  inputBinding:
+    prefix: --input-fastq
+- id: in_output_fast_a_files
+  doc: ..
+  type: long
+  inputBinding:
+    prefix: --output-fasta-files
+- id: in_input_fast_a
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --input-fasta
+- id: in_output_uncompressed
   doc: 'Output sequences uncompressed [default: gzip compress outputs]'
   type: boolean
   inputBinding:
     prefix: --output-uncompressed
-- id: input_fast_a
-  doc: 'File containing uncompressed input FASTA sequences [default: Use STDIN]'
+- id: in_fast_a_read_name_lists
+  doc: "...\nList of files each containing sequence IDs [alias for --sequence-name-lists]"
   type: string
   inputBinding:
-    prefix: --input-fasta
-- id: input_fast_q
-  doc: 'File containing uncompressed input FASTQ sequences [default: Use STDIN]'
+    prefix: --fasta-read-name-lists
+- id: in_fast_q_read_name_lists
+  doc: "...\nList of files each containing sequence IDs [alias for --sequence-name-lists]"
   type: string
   inputBinding:
-    prefix: --input-fastq
-- id: output_fast_a_files
-  doc: '...          List of files to write FASTA to'
-  type: string
-  inputBinding:
-    prefix: --output-fasta-files
-- id: output_fast_q_files
+    prefix: --fastq-read-name-lists
+- id: in_output_fast_q_files
   doc: '...          List of files to write FASTQ to'
   type: string
   inputBinding:
     prefix: --output-fastq-files
-- id: sequence_name_lists
+- id: in_sequence_name_lists
   doc: '...        List of files each containing sequence IDs'
   type: string
   inputBinding:
     prefix: --sequence-name-lists
-- id: usage
+- id: in_usage
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: for
+- id: in_for
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: fast_q
+- id: in_fast_q
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mfqe

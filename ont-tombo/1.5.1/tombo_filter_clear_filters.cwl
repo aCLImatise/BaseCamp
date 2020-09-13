@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../tombo_filter_clear_filters.cwl
 inputs:
-- id: fast_five_based_irs
+- id: in_fast_five_based_irs
   doc: Directories containing fast5 files.
-  type: string[]
+  type: long[]
   inputBinding:
     prefix: --fast5-basedirs
-- id: corrected_group
-  doc: 'FAST5 group created by resquiggle command. Default: RawGenomeCorrected_000'
-  type: string
+- id: in_corrected_group
+  doc: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  type: long
   inputBinding:
     prefix: --corrected-group
-- id: quiet
+- id: in_quiet
   doc: Don't print status information.
   type: boolean
   inputBinding:
     prefix: --quiet
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tombo

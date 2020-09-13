@@ -4,4 +4,7 @@ task Penny {
   command <<<
     penny
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

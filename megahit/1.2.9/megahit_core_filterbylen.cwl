@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../megahit_core_filterbylen.cwl
 inputs:
-- id: cat
+- id: in_cat
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: contigs_dot_fa
+- id: in_contigs_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - megahit_core

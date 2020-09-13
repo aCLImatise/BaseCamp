@@ -4,4 +4,7 @@ task Multiz {
   command <<<
     multiz
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

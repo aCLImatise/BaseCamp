@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../daijin.cwl
 inputs:
-- id: a
+- id: in_a
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: directed
+- id: in_directed
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: acyclic
+- id: in_acyclic
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: pipeline
+- id: in_pipeline
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: for
+- id: in_for
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: gene
+- id: in_gene
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: model
+- id: in_model
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: reconstruction
+- id: in_reconstruction
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: from
+- id: in_from
   doc: ''
   type: string
   inputBinding:
     position: 8
-- id: rna
+- id: in_rna
   doc: ''
   type: string
   inputBinding:
     position: 9
-- id: seq
+- id: in_seq
   doc: ''
   type: string
   inputBinding:
     position: 10
-- id: data_dot
+- id: in_data_dot
   doc: ''
   type: string
   inputBinding:
     position: 11
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - daijin

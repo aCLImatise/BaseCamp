@@ -1,32 +1,38 @@
 version 1.0
 
-task SetupDataLibraries {
+task Setupdatalibraries {
   input {
+    File? in_file
     Boolean? training
     Boolean? legacy
     Boolean? verbose
     String? galaxy
     String? user
     String? password
-    String? api_key
+    File? api_key
   }
   command <<<
-    setup-data-libraries \
-      ~{true="--training" false="" training} \
-      ~{true="--legacy" false="" legacy} \
-      ~{true="--verbose" false="" verbose} \
+    setup_data_libraries \
+      ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""} \
+      ~{if (training) then "--training" else ""} \
+      ~{if (legacy) then "--legacy" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(galaxy) then ("--galaxy " +  '"' + galaxy + '"') else ""} \
       ~{if defined(user) then ("--user " +  '"' + user + '"') else ""} \
       ~{if defined(password) then ("--password " +  '"' + password + '"') else ""} \
       ~{if defined(api_key) then ("--api_key " +  '"' + api_key + '"') else ""}
   >>>
   parameter_meta {
+    in_file: ""
     training: "Set defaults that make sense for training data."
-    legacy: "Use legacy APIs even for newer Galaxies that should have a batch upload API enabled."
+    legacy: "Use legacy APIs even for newer Galaxies that should\\nhave a batch upload API enabled."
     verbose: "Increase output verbosity."
     galaxy: "Target Galaxy instance URL/IP address"
     user: "Galaxy user email address"
     password: "Password for the Galaxy user"
-    api_key: "Galaxy admin user API key (required if not defined in the tools list file)"
+    api_key: "Galaxy admin user API key (required if not defined in\\nthe tools list file)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

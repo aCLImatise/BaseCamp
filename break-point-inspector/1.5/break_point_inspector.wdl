@@ -1,19 +1,19 @@
 version 1.0
 
-task BreakPointInspector {
+task Breakpointinspector {
   input {
     String? contamination_fraction
-    String? output_vcf
-    String? proximity
+    File? output_vcf
+    Int? proximity
     String? ref
     String? ref_slice
     String? tumor
     String? tumor_slice
-    String? vcf
+    File? vcf
     String? arg
   }
   command <<<
-    break-point-inspector \
+    break_point_inspector \
       ~{arg} \
       ~{if defined(contamination_fraction) then ("-contamination_fraction " +  '"' + contamination_fraction + '"') else ""} \
       ~{if defined(output_vcf) then ("-output_vcf " +  '"' + output_vcf + '"') else ""} \
@@ -25,14 +25,18 @@ task BreakPointInspector {
       ~{if defined(vcf) then ("-vcf " +  '"' + vcf + '"') else ""}
   >>>
   parameter_meta {
-    contamination_fraction: "fraction of allowable normal support per tumor support read"
+    contamination_fraction: "fraction of allowable normal support per\\ntumor support read"
     output_vcf: "VCF output file (optional)"
-    proximity: "distance to scan around breakpoint (optional, default=500)"
+    proximity: "distance to scan around breakpoint\\n(optional, default=500)"
     ref: "the Reference BAM (required)"
-    ref_slice: "the sliced Reference BAM to output (optional)"
+    ref_slice: "the sliced Reference BAM to output\\n(optional)"
     tumor: "the Tumor BAM (required)"
     tumor_slice: "the sliced Tumor BAM to output (optional)"
-    vcf: "Manta VCF file to batch inspect (required)"
+    vcf: "Manta VCF file to batch inspect\\n(required)\\n"
     arg: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_vcf = "${in_output_vcf}"
   }
 }

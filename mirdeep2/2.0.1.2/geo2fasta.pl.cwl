@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../geo2fasta.pl.orig.cwl
+id: ../../../geo2fasta.pl.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- geo2fasta.pl.orig
+- geo2fasta.pl

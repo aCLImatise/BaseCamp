@@ -4,4 +4,7 @@ task Reads2unmappedsam {
   command <<<
     reads2unmappedsam
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 version 1.0
 
-task FraggraphGen {
+task Fraggraphgen {
   input {
     String smiles_or_inch_i_string
-    Int max_depth
+    String max_depth
   }
   command <<<
-    fraggraph-gen \
+    fraggraph_gen \
       ~{smiles_or_inch_i_string} \
       ~{max_depth}
   >>>
   parameter_meta {
     smiles_or_inch_i_string: ""
     max_depth: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

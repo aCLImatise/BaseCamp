@@ -1,133 +1,170 @@
 class: CommandLineTool
 id: ../../../mclpipeline.cwl
 inputs:
-- id: what_if
+- id: in_what_if
   doc: shows only what would be done.
   type: boolean
   inputBinding:
     prefix: --whatif
-- id: start_assemble
+- id: in_start_assemble
   doc: skip the parse step, assume needed files exist already.
   type: boolean
   inputBinding:
     prefix: --start-assemble
-- id: start_mcl
+- id: in_start_mcl
   doc: start running mcl immediately, as above.
   type: boolean
   inputBinding:
     prefix: --start-mcl
-- id: start_format
+- id: in_start_format
   doc: only (re)do the formatting stage, as above.
   type: boolean
   inputBinding:
     prefix: --start-format
-- id: prepare_mcl
+- id: in_prepare_mcl
   doc: create the input file for mcl, then quit.
   type: boolean
   inputBinding:
     prefix: --prepare-mcl
-- id: parser
+- id: in_xi
+  doc: strip <suf> from file-name for use as base stem.
+  type: File
+  inputBinding:
+    prefix: --xi
+- id: in_xo_dat
+  doc: attach <suf> to parse result.
+  type: string
+  inputBinding:
+    prefix: --xo-dat
+- id: in_xo_ass
+  doc: attach <suf> to mcxassemble result.
+  type: string
+  inputBinding:
+    prefix: --xo-ass
+- id: in_xo_mcl
+  doc: use <suf> as mcl result attachment.
+  type: string
+  inputBinding:
+    prefix: --xo-mcl
+- id: in_x_a_mcl
+  doc: append to mcl suffix.
+  type: string
+  inputBinding:
+    prefix: --xa-mcl
+- id: in_xe_mcl
+  doc: append to mcl file name.
+  type: File
+  inputBinding:
+    prefix: --xe-mcl
+- id: in_xo_fmt
+  doc: "attach <suf> to clmformat result.\nmnemonics: eXtension In, Out, Append, Extra."
+  type: string
+  inputBinding:
+    prefix: --xo-fmt
+- id: in_parser
   doc: name of parse script
   type: string
   inputBinding:
     prefix: --parser
-- id: parser_tag
+- id: in_parser_tag
   doc: tag of options to pass to parse script.
   type: string
   inputBinding:
     prefix: --parser-tag
-- id: ass_repeat
+- id: in_ass_repeat
   doc: str in <add|max|mul|left|right>
-  type: string
+  type: long
   inputBinding:
     prefix: --ass-repeat
-- id: ass_no_map
+- id: in_ass_no_map
   doc: map file does not exist or should be ignored.
   type: boolean
   inputBinding:
     prefix: --ass-nomap
-- id: ass
+- id: in_ass
   doc: <-opt[=val]> add '-opt [val]' to mcxassemble command line.
   type: boolean
   inputBinding:
     prefix: --ass
-- id: mcl_te
+- id: in_mcl_te
   doc: number of expansion threads.
-  type: string
+  type: long
   inputBinding:
     prefix: --mcl-te
-- id: inflation_value_main
+- id: in_inflation_value_main
   doc: inflation value, MAIN mcl handle.
   type: double
   inputBinding:
     prefix: --mcl-I
-- id: initial_inflation_value
+- id: in_initial_inflation_value
   doc: initial inflation value.
   type: double
   inputBinding:
     prefix: --mcl-i
-- id: mcl_l
+- id: in_mcl_l
   doc: initial loop length.
   type: long
   inputBinding:
     prefix: --mcl-l
-- id: mcl_pi
+- id: in_mcl_pi
   doc: pre-inflation value.
   type: double
   inputBinding:
     prefix: --mcl-pi
-- id: mcl_c
+- id: in_mcl_c
   doc: center value.
   type: double
   inputBinding:
     prefix: --mcl-c
-- id: mcl_scheme
+- id: in_mcl_scheme
   doc: i in 1..5, resource allocation level.
-  type: string
+  type: double
   inputBinding:
     prefix: --mcl-scheme
-- id: mcl_o
+- id: in_mcl_o
   doc: if you *need* to use this, I must be improved.
   type: string
   inputBinding:
     prefix: --mcl-o
-- id: mcl
-  doc: <-opt[=val]> add '-opt [val]' to mcl command line, e.g. --mcl-v=all adds '-v
-    all' to the mcl command line.
+- id: in_mcl
+  doc: <-opt[=val]> add '-opt [val]' to mcl command line, e.g.
   type: boolean
   inputBinding:
     prefix: --mcl
-- id: fmt_lump_size
-  doc: collect clusters of size lq <num> in a single file.
+- id: in_mcl_v
+  doc: adds '-v all' to the mcl command line.
   type: string
+  inputBinding:
+    prefix: --mcl-v
+- id: in_fmt_lump_size
+  doc: collect clusters of size lq <num> in a single file.
+  type: long
   inputBinding:
     prefix: --fmt-lump-size
-- id: fmt_lump_count
+- id: in_fmt_lump_count
   doc: make batches containing approximately <num> nodes.
-  type: string
+  type: long
   inputBinding:
     prefix: --fmt-lump-count
-- id: fmt_not_ab
+- id: in_fmt_not_ab
   doc: tab file does not exist or should be ignored.
   type: boolean
   inputBinding:
     prefix: --fmt-notab
-- id: fmt_tab
+- id: in_fmt_tab
   doc: use tab file fname.
-  type: string
+  type: File
   inputBinding:
     prefix: --fmt-tab
-- id: fmt
+- id: in_fmt
   doc: <-opt[=val]>       add '-opt [val]' to clmformat command line.
   type: boolean
   inputBinding:
     prefix: --fmt
-- id: file_name
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mclpipeline

@@ -8,10 +8,13 @@ task KseqCount {
   command <<<
     kseq_count \
       ~{filename} \
-      ~{true="-a" false="" a}
+      ~{if (a) then "-a" else ""}
   >>>
   parameter_meta {
     a: ""
     filename: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

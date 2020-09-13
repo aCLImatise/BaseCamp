@@ -1,12 +1,10 @@
 class: CommandLineTool
-id: ../../../genotype.pl.cwl
-inputs:
-- id: tmp
-  doc: ': the tmp directory; If unspecified, use /tmp/tmpsomb5k_a/bin/tmp/'
-  type: string
-  inputBinding:
-    prefix: --tmp
-outputs: []
+id: ../../../genotype.cwl
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- genotype.pl
+- genotype

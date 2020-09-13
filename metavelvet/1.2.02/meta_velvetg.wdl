@@ -1,7 +1,10 @@
 version 1.0
 
-task MetaVelvetg {
+task Metavelvetg {
   command <<<
-    meta-velvetg
+    meta_velvetg
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

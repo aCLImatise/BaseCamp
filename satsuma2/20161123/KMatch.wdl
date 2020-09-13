@@ -6,9 +6,9 @@ task KMatch {
     String target_dot_fa
     String k
     String output_dot_fa
-    Int min_length
+    String min_length
     String jump
-    Int max_freq
+    String max_freq
   }
   command <<<
     KMatch \
@@ -28,5 +28,8 @@ task KMatch {
     min_length: ""
     jump: ""
     max_freq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

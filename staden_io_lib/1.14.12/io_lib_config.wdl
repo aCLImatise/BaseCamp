@@ -1,20 +1,20 @@
 version 1.0
 
-task IoLibConfig {
+task IoLibconfig {
   input {
     Boolean? cflags
     Boolean? libs
-    String? option
   }
   command <<<
-    io_lib-config \
-      ~{option} \
-      ~{true="--cflags" false="" cflags} \
-      ~{true="--libs" false="" libs}
+    io_lib_config \
+      ~{if (cflags) then "--cflags" else ""} \
+      ~{if (libs) then "--libs" else ""}
   >>>
   parameter_meta {
     cflags: "C and preprocessor flags (eg -I/foo/include)"
     libs: "Link-line parameters, eg -L/foo/lib -lstaden-read"
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

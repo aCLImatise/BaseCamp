@@ -1,17 +1,20 @@
 version 1.0
 
-task KrakenhllFilter {
+task Krakenhllfilter {
   input {
+    Int? threshold
     String? db
-    String? threshold
   }
   command <<<
-    krakenhll-filter \
-      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
+    krakenhll_filter \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""}
   >>>
   parameter_meta {
-    db: ""
     threshold: ""
+    db: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

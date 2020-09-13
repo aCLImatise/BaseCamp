@@ -4,10 +4,10 @@ task TaxmapperSearch {
   input {
     File? forward
     File? reverse
-    String? rap_search
-    String? database
+    File? rap_search
+    File? database
     String? out
-    String? threads
+    Int? threads
   }
   command <<<
     taxmapper search \
@@ -21,9 +21,12 @@ task TaxmapperSearch {
   parameter_meta {
     forward: "Forward reads in fasta or fastq format"
     reverse: "Reads in fasta or fastq format [optional]"
-    rap_search: "Rapsearch path, version >=2.24 [default: rapsearch set in PATH variable]"
+    rap_search: "Rapsearch path, version >=2.24 [default: rapsearch set\\nin PATH variable]"
     database: "Path to RAPSearch database index"
     out: "Basename for output files [default: <input>_hits]"
-    threads: "Number of threads [default: 4]"
+    threads: "Number of threads [default: 4]\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -17,4 +17,7 @@ task SrfExtractLinear {
     archive_name: ""
     trace_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

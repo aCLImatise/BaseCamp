@@ -4,4 +4,7 @@ task Cpinsim {
   command <<<
     cpinsim
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

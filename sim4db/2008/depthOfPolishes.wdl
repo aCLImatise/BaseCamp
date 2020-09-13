@@ -4,4 +4,7 @@ task DepthOfPolishes {
   command <<<
     depthOfPolishes
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

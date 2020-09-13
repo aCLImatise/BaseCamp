@@ -2,21 +2,21 @@ version 1.0
 
 task HpAlignReads {
   input {
-    String? fq_one
-    String? fq_two
-    String? f_qu
-    String? ref_fa
-    String? outdir
+    Int? fq_one
+    Int? fq_two
+    File? f_qu
+    File? ref_fa
+    Directory? outdir
     String? bt_two_preset
     String? sample_id
     Boolean? no_realign
     Boolean? remove_duplicates
     Boolean? encoding
-    String? n_cpu
-    String? x_mx
+    Int? n_cpu
+    Int? x_mx
     Boolean? keep_tmp
     Boolean? quiet
-    String? log_file
+    File? log_file
     Boolean? debug
   }
   command <<<
@@ -28,15 +28,15 @@ task HpAlignReads {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(bt_two_preset) then ("--bt2_preset " +  '"' + bt_two_preset + '"') else ""} \
       ~{if defined(sample_id) then ("--sample_id " +  '"' + sample_id + '"') else ""} \
-      ~{true="--no_realign" false="" no_realign} \
-      ~{true="--remove_duplicates" false="" remove_duplicates} \
-      ~{true="--encoding" false="" encoding} \
+      ~{if (no_realign) then "--no_realign" else ""} \
+      ~{if (remove_duplicates) then "--remove_duplicates" else ""} \
+      ~{if (encoding) then "--encoding" else ""} \
       ~{if defined(n_cpu) then ("--ncpu " +  '"' + n_cpu + '"') else ""} \
       ~{if defined(x_mx) then ("--xmx " +  '"' + x_mx + '"') else ""} \
-      ~{true="--keep_tmp" false="" keep_tmp} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (keep_tmp) then "--keep_tmp" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     fq_one: "Fastq file with read 1"
@@ -45,15 +45,20 @@ task HpAlignReads {
     ref_fa: "Reference fasta file."
     outdir: "Output directory (default: .)"
     bt_two_preset: "Bowtie2 preset (default: sensitive-local)"
-    sample_id: "Sample ID. Used as read group ID in BAM (default: sampleXX)"
+    sample_id: "Sample ID. Used as read group ID in BAM (default:\\nsampleXX)"
     no_realign: "Do not realign indels (default: False)"
-    remove_duplicates: "Remove duplicates from final alignment. Otherwise duplicates are marked but not removed. (default: False)"
-    encoding: "{Phred+33,Phred+64} Quality score encoding"
+    remove_duplicates: "Remove duplicates from final alignment. Otherwise\\nduplicates are marked but not removed. (default:\\nFalse)"
+    encoding: "{Phred+33,Phred+64}\\nQuality score encoding"
     n_cpu: "Number of CPUs to use (default: 1)"
     x_mx: "Maximum heap size for Java VM, in GB. (default: 32)"
     keep_tmp: "Do not delete temporary directory (default: False)"
-    quiet: "Do not write output to console (silence stdout and stderr) (default: False)"
+    quiet: "Do not write output to console (silence stdout and\\nstderr) (default: False)"
     log_file: "Append console output to this file"
     debug: "Print commands but do not run (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    File out_log_file = "${in_log_file}"
   }
 }

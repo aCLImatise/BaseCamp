@@ -11,4 +11,7 @@ task GraftMUtilities {
   parameter_meta {
     graft_m: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

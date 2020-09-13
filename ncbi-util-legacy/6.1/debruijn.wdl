@@ -7,11 +7,14 @@ task Debruijn {
   }
   command <<<
     debruijn \
-      ~{true="-n" false="" word_size} \
-      ~{true="-a" false="" alphabet}
+      ~{if (word_size) then "-n" else ""} \
+      ~{if (alphabet) then "-a" else ""}
   >>>
   parameter_meta {
     word_size: "word size [Integer]"
     alphabet: "alphabet"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

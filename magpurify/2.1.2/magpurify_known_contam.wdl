@@ -1,17 +1,17 @@
 version 1.0
 
-task MagpurifyKnownContam {
+task MagpurifyKnowncontam {
   input {
-    String? db
-    String? pid
-    String? evalue
-    String? q_cov
-    String? threads
+    File? db
+    Int? pid
+    Float? evalue
+    Int? q_cov
+    Int? threads
     String fna
     String out
   }
   command <<<
-    magpurify known-contam \
+    magpurify known_contam \
       ~{fna} \
       ~{out} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
@@ -21,12 +21,15 @@ task MagpurifyKnownContam {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    db: "Path to reference database. By default, the IMAGEN_DB environmental variable is used (default: None)"
+    db: "Path to reference database. By default, the IMAGEN_DB\\nenvironmental variable is used (default: None)"
     pid: "Minimum % identity to reference (default: 98)"
     evalue: "Maximum evalue (default: 1e-05)"
     q_cov: "Minimum percent query coverage (default: 25)"
     threads: "Number of CPUs to use (default: 1)"
     fna: "Path to input genome in FASTA format"
     out: "Output directory to store results and intermediate files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuEnable {
+task Byobuenable {
   command <<<
-    byobu-enable
+    byobu_enable
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

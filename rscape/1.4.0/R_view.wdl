@@ -1,27 +1,27 @@
 version 1.0
 
-task RView {
+task Rview {
   input {
     Boolean? _be_verbose
-    String? maxd
-    String? min_l
+    Int? maxd
+    Int? min_l
     Boolean? min
     Boolean? cb
     Boolean? inter
-    String? send_output_file
-    String? to_l
-    String? seed
+    File? send_output_file
+    Float? to_l
+    Int? seed
     String peptides
   }
   command <<<
-    R-view \
+    R_view \
       ~{peptides} \
-      ~{true="-v" false="" _be_verbose} \
+      ~{if (_be_verbose) then "-v" else ""} \
       ~{if defined(maxd) then ("--maxD " +  '"' + maxd + '"') else ""} \
       ~{if defined(min_l) then ("--minL " +  '"' + min_l + '"') else ""} \
-      ~{true="--MIN" false="" min} \
-      ~{true="--CB" false="" cb} \
-      ~{true="--inter" false="" inter} \
+      ~{if (min) then "--MIN" else ""} \
+      ~{if (cb) then "--CB" else ""} \
+      ~{if (inter) then "--inter" else ""} \
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
       ~{if defined(to_l) then ("--tol " +  '"' + to_l + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
@@ -37,5 +37,9 @@ task RView {
     to_l: ": tolerance  [1e-6]"
     seed: ": set RNG seed to <n>. Use 0 for a random seed.  [42]  (n>=0)"
     peptides: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_send_output_file = "${in_send_output_file}"
   }
 }

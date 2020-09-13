@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../ReadSeq_to_fasta.cwl
 inputs:
-- id: mask
+- id: in_mask
   doc: Mask sequence name indicating columns to drop
   type: string
   inputBinding:
     prefix: --mask
-- id: usage
+- id: in_usage
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ReadSeq

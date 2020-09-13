@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../slamdunk_snp.cwl
 inputs:
-- id: output_dir
+- id: in_output_dir
   doc: Output directory for mapped BAM files.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outputDir
-- id: reference
+- id: in_reference
   doc: Reference fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: min_coverage
+- id: in_min_coverage
   doc: 'Minimimum coverage to call variant (default: 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: --min-coverage
-- id: var_fraction
-  doc: 'Minimimum variant fraction to call variant (default: 0.8)'
-  type: string
+- id: in_var_fraction
+  doc: "Minimimum variant fraction to call variant (default:\n0.8)"
+  type: double
   inputBinding:
     prefix: --var-fraction
-- id: threads
-  doc: 'Thread number (default: 1)'
-  type: string
+- id: in_threads
+  doc: "Thread number (default: 1)\n"
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_dir
+  doc: Output directory for mapped BAM files.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - slamdunk

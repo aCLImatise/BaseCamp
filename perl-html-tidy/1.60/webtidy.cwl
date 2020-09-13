@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../webtidy.cwl
 inputs:
-- id: context
+- id: in_context
   doc: '[=n]   Show the offending line (and n surrounding lines)'
   type: boolean
   inputBinding:
     prefix: --context
-- id: no_errors
+- id: in_no_errors
   doc: Ignore errors
   type: boolean
   inputBinding:
     prefix: --noerrors
-- id: no_warnings
+- id: in_no_warnings
   doc: Ignore warnings
   type: boolean
   inputBinding:
     prefix: --nowarnings
-- id: filename
+- id: in_filename
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: or
+- id: in_or
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: url
+- id: in_url
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - webtidy

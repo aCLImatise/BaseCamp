@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../bank2lib.cwl
 inputs:
-- id: bank
+- id: in_bank
   doc: bank where assembly is stored
   type: string
   inputBinding:
     prefix: -bank
-- id: eid
+- id: in_eid
   doc: report eids
   type: boolean
   inputBinding:
     prefix: -eid
-- id: iid
+- id: in_iid
   doc: report iids (default)
   type: boolean
   inputBinding:
     prefix: -iid
-- id: output_prefix
+- id: in_output_prefix
   doc: output prefix
   type: string
   inputBinding:
     prefix: -o
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bank2lib

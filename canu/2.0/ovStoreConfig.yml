@@ -1,4 +1,6 @@
 !Command
+command:
+- ovStoreConfig
 positional:
 - !Positional
   description: 2 words of 64 bits each.
@@ -11,12 +13,12 @@ positional:
   name: ovOverlapSortSize
   optional: false
 - !Positional
-  description: 63942 processes
+  description: -1 processes
   position: 2
   name: SC_CHILD_MAX
   optional: false
 - !Positional
-  description: 1024 files
+  description: 1048576 files
   position: 3
   name: SC_OPEN_MAX
   optional: false
@@ -36,8 +38,8 @@ named:
     name: fileList
   optional: true
 - !Flag
-  description: use up to 'g' gigabytes memory for sorting overlaps default 4; g-0.25
-    gb is available for sorting overlaps
+  description: "use up to 'g' gigabytes memory for sorting overlaps\ndefault 4; g-0.25\
+    \ gb is available for sorting overlaps"
   synonyms:
   - -M
   args: !SimpleFlagArg
@@ -83,10 +85,9 @@ named:
   args: !SimpleFlagArg
     name: n
   optional: true
-command:
-- ovStoreConfig
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -103,7 +104,7 @@ help_text: "usage: ovStoreConfig -S asm.seqStore -create out.config [opts] [-L f
   \ the input ovb files needed for bucketizer job 'n'  -listslices n         write\
   \ a list of the input slice files needed for sorter job 'n'\n\n\nSizes and Limits:\n\
   \  ovOverlap             2 words of 64 bits each.\n  ovOverlapSortSize     192 bits\n\
-  \  SC_CHILD_MAX          63942 processes\n  SC_OPEN_MAX           1024 files\n\n\
+  \  SC_CHILD_MAX          -1 processes\n  SC_OPEN_MAX           1048576 files\n\n\
   ovStoreConfig: unknown option '--help'.\nERROR: No sequence store (-S) supplied.\n\
   ERROR: No input overlap files (-L or last on the command line) supplied.\nERROR:\
   \ Must supply one of -create or -describe.\n"

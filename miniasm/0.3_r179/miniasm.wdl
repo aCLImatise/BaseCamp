@@ -15,7 +15,7 @@ task Miniasm {
     Int? small_unitig_threshold
     File? read_sequences
     Int? rounds_short_overlap
-    Array[Float] max_min_ratio
+    Array[Float] max_min_overlap
     Float? aggressive_overlap_drop
     String? output_information_bed
     Boolean? directions_arc_present
@@ -27,7 +27,7 @@ task Miniasm {
   command <<<
     miniasm \
       ~{in_dot_paf} \
-      ~{true="-R" false="" prefilter_clearly_contained} \
+      ~{if (prefilter_clearly_contained) then "-R" else ""} \
       ~{if defined(min_match_length) then ("-m " +  '"' + min_match_length + '"') else ""} \
       ~{if defined(min_identity) then ("-i " +  '"' + min_identity + '"') else ""} \
       ~{if defined(min_span) then ("-s " +  '"' + min_span + '"') else ""} \
@@ -40,13 +40,13 @@ task Miniasm {
       ~{if defined(small_unitig_threshold) then ("-e " +  '"' + small_unitig_threshold + '"') else ""} \
       ~{if defined(read_sequences) then ("-f " +  '"' + read_sequences + '"') else ""} \
       ~{if defined(rounds_short_overlap) then ("-n " +  '"' + rounds_short_overlap + '"') else ""} \
-      ~{if defined(max_min_ratio) then ("-r " +  '"' + max_min_ratio + '"') else ""} \
+      ~{if defined(max_min_overlap) then ("-r " +  '"' + max_min_overlap + '"') else ""} \
       ~{if defined(aggressive_overlap_drop) then ("-F " +  '"' + aggressive_overlap_drop + '"') else ""} \
       ~{if defined(output_information_bed) then ("-p " +  '"' + output_information_bed + '"') else ""} \
-      ~{true="-b" false="" directions_arc_present} \
-      ~{true="-1" false="" one} \
-      ~{true="-2" false="" two} \
-      ~{true="-V" false="" print_version_number}
+      ~{if (directions_arc_present) then "-b" else ""} \
+      ~{if (one) then "-1" else ""} \
+      ~{if (two) then "-2" else ""} \
+      ~{if (print_version_number) then "-V" else ""}
   >>>
   parameter_meta {
     prefilter_clearly_contained: "prefilter clearly contained reads (2-pass required)"
@@ -62,7 +62,7 @@ task Miniasm {
     small_unitig_threshold: "small unitig threshold [4]"
     read_sequences: "read sequences []"
     rounds_short_overlap: "rounds of short overlap removal [3]"
-    max_min_ratio: "max and min overlap drop ratio [0.7,0.5]"
+    max_min_overlap: "max and min overlap drop ratio [0.7,0.5]"
     aggressive_overlap_drop: "aggressive overlap drop ratio in the end [0.8]"
     output_information_bed: "output information: bed, paf, sg or ug [ug]"
     directions_arc_present: "both directions of an arc are present in input"
@@ -70,5 +70,8 @@ task Miniasm {
     two: "skip 2-pass read selection"
     print_version_number: "print version number"
     in_dot_paf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

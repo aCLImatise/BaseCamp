@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../treebest_sortleaf.cwl
 inputs:
-- id: tree_one
+- id: in_tree_one
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: tree_two
+- id: in_tree_two
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - treebest

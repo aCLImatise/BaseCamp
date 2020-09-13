@@ -1,7 +1,10 @@
 version 1.0
 
-task ExtractOrthologs.py {
+task ExtractOrthologs {
   command <<<
-    extract_orthologs.py
+    extract_orthologs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

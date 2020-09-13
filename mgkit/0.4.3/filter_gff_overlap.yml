@@ -1,18 +1,23 @@
 &id002 !Command
+command:
+- filter-gff
+- overlap
 positional:
 - !Positional
-  description: ''
+  description: -a, --sort-attr [bitscore|identity|length]
   position: 0
-  name: INPUT_FILE
-  optional: true
-- !Positional
-  description: ''
-  position: 1
-  name: OUTPUT_FILE
-  optional: true
+  name: annotations
+  optional: false
 named:
 - !Flag
-  description: 'Size of the overlap that triggers the filter [default: 100]'
+  description: ''
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Size of the overlap that triggers the filter\n[default: 100]"
   synonyms:
   - -s
   - --size
@@ -20,15 +25,16 @@ named:
     name: INTEGER
   optional: true
 - !Flag
-  description: If the GFF file is sorted (all of a sequence annotations are contiguos
-    and sorted by strand) can use less memory, `sort -s -k 1,1 -k 7,7` can be used
+  description: "If the GFF file is sorted (all of a sequence\nannotations are contiguos\
+    \ and sorted by\nstrand) can use less memory, `sort -s -k 1,1\n-k 7,7` can be\
+    \ used"
   synonyms:
   - -t
   - --sorted
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Function to choose between two overlapping annotations
+  description: Function to choose between two overlapping
   synonyms:
   - -c
   - --choose-func
@@ -36,30 +42,28 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: '[bitscore|identity|length] Attribute to sort annotations before filtering
-    (default bitscore)  [default: bitscore]'
-  synonyms:
-  - -a
-  - --sort-attr
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: Shows Progress Bar
   synonyms:
   - --progress
   args: !EmptyFlagArg {}
   optional: true
-command:
-- filter-gff
-- overlap
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - filter-gff
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --cite
+    args: !EmptyFlagArg {}
+    optional: true
   parent:
   subcommands:
   - !Command
+    command:
+    - filter-gff
+    - cov
     positional:
     - !Positional
       description: ''
@@ -72,6 +76,13 @@ parent: &id001 !Command
       name: OUTPUT_FILE
       optional: true
     named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
     - !Flag
       description: Reference FASTA file for the GFF  [required]
       synonyms:
@@ -103,8 +114,8 @@ parent: &id001 !Command
         name: FLOAT
       optional: true
     - !Flag
-      description: Emulates BLAST in reading the FASTA file (keeps only the header
-        before the first space)
+      description: "Emulates BLAST in reading the FASTA file (keeps\nonly the header\
+        \ before the first space)"
       synonyms:
       - -r
       - --rename
@@ -116,11 +127,9 @@ parent: &id001 !Command
       - --progress
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - filter-gff
-    - cov
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -142,109 +151,28 @@ parent: &id001 !Command
     - --help
   - *id002
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: INPUT_FILE
-      optional: true
-    - !Positional
-      description: ''
-      position: 1
-      name: OUTPUT_FILE
-      optional: true
-    named:
-    - !Flag
-      description: If the GFF file is sorted (all of a sequence annotations are contiguos)
-        can use less memory, `sort -s -k 1,1` can be used
-      synonyms:
-      - -t
-      - --sorted
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[evalue|bitscore|identity|length] Attribute on which to apply
-        the filter [default: bitscore]'
-      synonyms:
-      - -a
-      - --attribute
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: '[mean|median|quantile|std|max|min] Function for filtering  [default:
-        mean]'
-      synonyms:
-      - -f
-      - --function
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Value for the function (used for *std* and *quantile*)
-      synonyms:
-      - -l
-      - --value
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
-    - !Flag
-      description: '[gt|ge|lt|le]  Type of comparison (e.g. ge -> greater than or
-        equal to)  [default: ge]'
-      synonyms:
-      - -c
-      - --comparison
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Shows Progress Bar
-      synonyms:
-      - --progress
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - filter-gff
-    - sequence
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Usage: filter-gff sequence [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n\
-      \  Filter on a per sequence basis\n\nOptions:\n  -v, --verbose\n  -t, --sorted\
-      \                    If the GFF file is sorted (all of a sequence\n        \
-      \                          annotations are contiguos) can use less\n       \
-      \                           memory, `sort -s -k 1,1` can be used\n\n  -a, --attribute\
-      \ [evalue|bitscore|identity|length]\n                                  Attribute\
-      \ on which to apply the filter\n                                  [default:\
-      \ bitscore]\n\n  -f, --function [mean|median|quantile|std|max|min]\n       \
-      \                           Function for filtering  [default: mean]\n  -l, --value\
-      \ FLOAT               Value for the function (used for *std* and\n         \
-      \                         *quantile*)\n\n  -c, --comparison [gt|ge|lt|le]  Type\
-      \ of comparison (e.g. ge -> greater than\n                                 \
-      \ or equal to)  [default: ge]\n\n  --progress                      Shows Progress\
-      \ Bar\n  --help                          Show this message and exit.\n"
-    generated_using: *id003
-  - !Command
+    - values
     positional:
     - !Positional
-      description: ''
+      description: --num-lt TEXT  Same as '--num-ge' but 'value' is a number which
+        is less than
       position: 0
-      name: INPUT_FILE
-      optional: true
-    - !Positional
-      description: ''
-      position: 1
-      name: OUTPUT_FILE
-      optional: true
+      name: than
+      optional: false
     named:
     - !Flag
-      description: filter by custom key:value, if the argument is 'key:value' the
-        annotation is kept if it contains an attribute 'key' whose value is exactly
-        'value' as a string
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "filter by custom key:value, if the argument is 'key:value'\nthe\
+        \ annotation is kept if it contains an attribute 'key'\nwhose value is exactly\
+        \ 'value' as a string"
       synonyms:
       - --str-eq
       args: !SimpleFlagArg
@@ -258,40 +186,33 @@ parent: &id001 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: Same as '--str-eq' but 'value' is a number which is equal or greater
-        than
+      description: "Same as '--str-eq' but 'value' is a number which is equal or\n\
+        greater than"
       synonyms:
       - --num-eq
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: Same as '--str-eq' but 'value' is a number which is equal or greater
-        than
+      description: "Same as '--str-eq' but 'value' is a number which is equal or\n\
+        greater than"
       synonyms:
       - --num-ge
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: Same as '--num-ge' but 'value' is a number which is equal or less
-        than
+      description: "Same as '--num-ge' but 'value' is a number which is equal or\n\
+        less than"
       synonyms:
       - --num-le
       args: !SimpleFlagArg
         name: TEXT
       optional: true
     - !Flag
-      description: Same as '--str-eq' but 'value' is a number which is greater than
+      description: Same as '--str-eq' but 'value' is a number which is greater
       synonyms:
       - --num-gt
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Same as '--num-ge' but 'value' is a number which is less than
-      synonyms:
-      - --num-lt
       args: !SimpleFlagArg
         name: TEXT
       optional: true
@@ -301,11 +222,9 @@ parent: &id001 !Command
       - --progress
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - filter-gff
-    - values
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -329,6 +248,102 @@ parent: &id001 !Command
       \ which is less than\n  --progress     Shows Progress Bar\n  --help        \
       \ Show this message and exit.\n"
     generated_using: *id003
+  - !Command
+    command:
+    - filter-gff
+    - sequence
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: INPUT_FILE
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: OUTPUT_FILE
+      optional: true
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "If the GFF file is sorted (all of a sequence\nannotations are\
+        \ contiguos) can use less\nmemory, `sort -s -k 1,1` can be used"
+      synonyms:
+      - -t
+      - --sorted
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[evalue|bitscore|identity|length]\nAttribute on which to apply\
+        \ the filter\n[default: bitscore]"
+      synonyms:
+      - -a
+      - --attribute
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[mean|median|quantile|std|max|min]\nFunction for filtering  [default:\
+        \ mean]"
+      synonyms:
+      - -f
+      - --function
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Value for the function (used for *std* and\n*quantile*)"
+      synonyms:
+      - -l
+      - --value
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: "[gt|ge|lt|le]  Type of comparison (e.g. ge -> greater than\nor\
+        \ equal to)  [default: ge]"
+      synonyms:
+      - -c
+      - --comparison
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Shows Progress Bar
+      synonyms:
+      - --progress
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: filter-gff sequence [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n\
+      \  Filter on a per sequence basis\n\nOptions:\n  -v, --verbose\n  -t, --sorted\
+      \                    If the GFF file is sorted (all of a sequence\n        \
+      \                          annotations are contiguos) can use less\n       \
+      \                           memory, `sort -s -k 1,1` can be used\n\n  -a, --attribute\
+      \ [evalue|bitscore|identity|length]\n                                  Attribute\
+      \ on which to apply the filter\n                                  [default:\
+      \ bitscore]\n\n  -f, --function [mean|median|quantile|std|max|min]\n       \
+      \                           Function for filtering  [default: mean]\n  -l, --value\
+      \ FLOAT               Value for the function (used for *std* and\n         \
+      \                         *quantile*)\n\n  -c, --comparison [gt|ge|lt|le]  Type\
+      \ of comparison (e.g. ge -> greater than\n                                 \
+      \ or equal to)  [default: ge]\n\n  --progress                      Shows Progress\
+      \ Bar\n  --help                          Show this message and exit.\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -336,7 +351,12 @@ parent: &id001 !Command
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
-  version_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
   help_text: "Usage: filter-gff [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\n\
     Options:\n  --version  Show the version and exit.\n  --cite\n  --help     Show\
     \ this message and exit.\n\nCommands:\n  cov       Filter on a per coverage basis\n\
@@ -344,6 +364,7 @@ parent: &id001 !Command
     \  values    Filter based on values\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:

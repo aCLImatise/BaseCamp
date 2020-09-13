@@ -2,8 +2,8 @@ version 1.0
 
 task PynnotatorOr {
   input {
-    String? vcf_file_annotated
-    String? hg_genome_build
+    File? vcf_file_annotated
+    Int? hg_genome_build
     String options
   }
   command <<<
@@ -16,5 +16,8 @@ task PynnotatorOr {
     vcf_file_annotated: "a VCF file to be annotated"
     hg_genome_build: "or hg38  The genome build you want to use"
     options: "install test"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

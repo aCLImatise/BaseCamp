@@ -1,7 +1,10 @@
 version 1.0
 
-task Yamlpp5Load {
+task Yamlpp5load {
   command <<<
-    yamlpp5-load
+    yamlpp5_load
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

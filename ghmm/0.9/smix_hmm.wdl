@@ -4,4 +4,7 @@ task SmixHmm {
   command <<<
     smix_hmm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,142 +1,105 @@
 class: CommandLineTool
 id: ../../../exclude_uid_lists.cwl
 inputs:
-- id: batch_size
-  doc: merge at most NMERGE inputs at once;
-  type: string
-  inputBinding:
-    prefix: --batch-size
-- id: ignore_leading_blanks
-  doc: leading blanks
-  type: string
-  inputBinding:
-    prefix: --ignore-leading-blanks
-- id: compress_program
-  doc: compress temporaries with PROG;
-  type: string
-  inputBinding:
-    prefix: --compress-program
-- id: dictionary_order
-  doc: only blanks and alphanumeric characters
-  type: string
-  inputBinding:
-    prefix: --dictionary-order
-- id: debug
-  doc: annotate the part of the line used to sort, decompress them with PROG -d
+- id: in_ignore_leading_blanks
+  doc: Ignore leading blanks
   type: boolean
   inputBinding:
-    prefix: --debug
-- id: ignore_case
-  doc: lower case to upper case characters
-  type: string
-  inputBinding:
-    prefix: --ignore-case
-- id: files_zero_from
-  doc: read input from the files specified by for more use temp files
-  type: string
-  inputBinding:
-    prefix: --files0-from
-- id: general_numeric_sort
-  doc: compare according to general numerical value
+    prefix: -b
+- id: in_check_input_sorted
+  doc: Check whether input is sorted
   type: boolean
   inputBinding:
-    prefix: --general-numeric-sort
-- id: ignore_non_printing
-  doc: consider only printable characters
+    prefix: -c
+- id: in_dictionary_order_blank
+  doc: Dictionary order (blank or alphanumeric only)
   type: boolean
   inputBinding:
-    prefix: --ignore-nonprinting
-- id: key
-  doc: sort via a key; KEYDEF gives location and type
-  type: string
-  inputBinding:
-    prefix: --key
-- id: merge
-  doc: merge already sorted files; do not sort
+    prefix: -d
+- id: in_ignore_case
+  doc: Ignore case
   type: boolean
   inputBinding:
-    prefix: --merge
-- id: month_sort
-  doc: compare (unknown) < 'JAN' < ... < 'DEC' multiple options specify multiple directories
+    prefix: -f
+- id: in_general_numerical_sort
+  doc: General numerical sort
   type: boolean
   inputBinding:
-    prefix: --month-sort
-- id: output
-  doc: write result to FILE instead of standard output
+    prefix: -g
+- id: in_ignore_unprintable_characters
+  doc: Ignore unprintable characters
+  type: boolean
+  inputBinding:
+    prefix: -i
+- id: in_sort_key
+  doc: Sort key
+  type: boolean
+  inputBinding:
+    prefix: -k
+- id: in_sort_month
+  doc: Sort month
+  type: boolean
+  inputBinding:
+    prefix: -M
+- id: in_sort_numbers
+  doc: Sort numbers
+  type: boolean
+  inputBinding:
+    prefix: -n
+- id: in_output_to_file
+  doc: Output to file
   type: File
   inputBinding:
-    prefix: --output
-- id: parallel
-  doc: change the number of sorts run concurrently to N
+    prefix: -o
+- id: in_key_separator
+  doc: Key separator
   type: string
   inputBinding:
-    prefix: --parallel
-- id: random_source
-  doc: get random bytes from FILE
-  type: File
-  inputBinding:
-    prefix: --random-source
-- id: random_sort
-  doc: shuffle, but group identical keys.  See shuf(1)
+    prefix: -t
+- id: in_reverse_sort_order
+  doc: Reverse sort order
   type: boolean
   inputBinding:
-    prefix: --random-sort
-- id: reverse
-  doc: reverse the result of comparisons
+    prefix: -r
+- id: in_stable_sort_ties
+  doc: Stable (don't sort ties alphabetically)
   type: boolean
   inputBinding:
-    prefix: --reverse
-- id: buffer_size
-  doc: use SIZE for main memory buffer
-  type: long
-  inputBinding:
-    prefix: --buffer-size
-- id: sort_according_word
-  doc: 'sort according to WORD:'
-  type: string
-  inputBinding:
-    prefix: --sort
-- id: stable
-  doc: stabilize sort by disabling last-resort comparison
+    prefix: -s
+- id: in_suppress_duplicate_lines
+  doc: Suppress duplicate lines
   type: boolean
   inputBinding:
-    prefix: --stable
-- id: field_separator
-  doc: use SEP instead of non-blank to blank transition
-  type: string
-  inputBinding:
-    prefix: --field-separator
-- id: temporary_directory
-  doc: use DIR for temporaries, not $TMPDIR or /tmp;
-  type: string
-  inputBinding:
-    prefix: --temporary-directory
-- id: unique
-  doc: with -c, check for strict ordering;
+    prefix: -u
+- id: in_lines_terminated_newline
+  doc: Lines are terminated by NUL, not newline
   type: boolean
   inputBinding:
-    prefix: --unique
-- id: version_sort
-  doc: natural sort of (version) numbers within text
+    prefix: -z
+- id: in_mst
+  doc: Ignored for GNU compatibility
   type: boolean
   inputBinding:
-    prefix: --version-sort
-- id: zero_terminated
-  doc: line delimiter is NUL, not newline
+    prefix: -mST
+- id: in_nrugmcszbdfimstokt
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --zero-terminated
-- id: var_25
+    prefix: -nrugMcszbdfimSTokt
+- id: in_sort
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_to_file
+  doc: Output to file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_to_file)
 cwlVersion: v1.1
 baseCommand:
 - exclude-uid-lists

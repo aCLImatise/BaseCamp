@@ -1,7 +1,10 @@
 version 1.0
 
-task NgmCore {
+task Ngmcore {
   command <<<
-    ngm-core
+    ngm_core
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

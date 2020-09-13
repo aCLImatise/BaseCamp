@@ -4,4 +4,7 @@ task GmtkNGramIndex {
   command <<<
     gmtkNGramIndex
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

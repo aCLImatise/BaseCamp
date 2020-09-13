@@ -1,45 +1,45 @@
 class: CommandLineTool
-id: ../../../behst.py.cwl
+id: ../../../behst.cwl
 inputs:
-- id: target_extension
-  doc: target extension basepair integer. Default is 9400.
-  type: string
-  inputBinding:
-    prefix: --target-extension
-- id: query_extension
-  doc: query extension basepair integer. Default is 24100.
-  type: string
-  inputBinding:
-    prefix: --query-extension
-- id: gene_annotation_file
-  doc: path of the gene annotation file (.gtf format). Default is the GENCODE annotation
-    v.19 file (gencode.v19.annotation_withproteinids.gtf).
-  type: string
-  inputBinding:
-    prefix: --gene-annotation-file
-- id: transcript_file
-  doc: path to the principal transcript file (.bed format). Default is APPRIS transcript
-    2017_01.v20 file (appris_data_principal.bed)
-  type: string
-  inputBinding:
-    prefix: --transcript-file
-- id: interaction_file
-  doc: path to the chromatin interactions file (.hiccups format). Default is the Hi-C
-    HiCCUPS from Lieberman- Aiden 2014 (hic_8celltypes.hiccups).
+- id: in_target_extension
+  doc: extend target regions by BP base pairs (default 9400)
   type: long
   inputBinding:
+    prefix: --target-extension
+- id: in_query_extension
+  doc: extend query regions by BP base pairs (default 24100)
+  type: long
+  inputBinding:
+    prefix: --query-extension
+- id: in_data
+  doc: "path to directory with reference data (default\n~/.local/share/behst)"
+  type: File
+  inputBinding:
+    prefix: --data
+- id: in_gene_annotation_file
+  doc: "path of gene annotation file (GTF format, default\nDATADIR/gencode.v19.annotation_withproteinids.gtf)."
+  type: File
+  inputBinding:
+    prefix: --gene-annotation-file
+- id: in_transcript_file
+  doc: "path to the principal transcript file (BED format,\ndefault DATADIR/appris_data_principal.bed)"
+  type: File
+  inputBinding:
+    prefix: --transcript-file
+- id: in_interaction_file
+  doc: "path to the chromatin interactions file (HICCUPS\nFormat, default DATADIR/hic_8celltypes.hiccups)."
+  type: File
+  inputBinding:
     prefix: --interaction-file
-- id: input_bed_file
-  doc: input BED file of genomic regions
-  type: string
+- id: in_no_g_profiler
+  doc: "If activated, generate the gene list and do not call\ng:ProfileR)"
+  type: boolean
   inputBinding:
-    position: 0
-- id: be_hst_data_files_folder
-  doc: path to the folder where you downloaded the default BEHST data files with ./download_behst_data.sh
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+    prefix: --no-gprofiler
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- behst.py
+- behst

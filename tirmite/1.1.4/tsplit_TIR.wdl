@@ -2,31 +2,29 @@ version 1.0
 
 task TsplitTIR {
   input {
-    String? in_file
+    File? in_file
     String? prefix
-    String? outdir
+    Directory? outdir
     String? split_mode
     Boolean? make_mites
-    Boolean? keep_temp
     Boolean? verbose
     Int? max_dist
-    Int? mini_d
+    Float? mini_d
     Int? min_term
     Int? min_seed
-    String? diag_factor
+    Float? diag_factor
     String? method
-    String exterminate
+    String t_irs_dot
   }
   command <<<
-    tsplit-TIR \
-      ~{exterminate} \
+    tsplit_TIR \
+      ~{t_irs_dot} \
       ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(split_mode) then ("--splitmode " +  '"' + split_mode + '"') else ""} \
-      ~{true="--makemites" false="" make_mites} \
-      ~{true="--keeptemp" false="" keep_temp} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (make_mites) then "--makemites" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(max_dist) then ("--maxdist " +  '"' + max_dist + '"') else ""} \
       ~{if defined(mini_d) then ("--minid " +  '"' + mini_d + '"') else ""} \
       ~{if defined(min_term) then ("--minterm " +  '"' + min_term + '"') else ""} \
@@ -36,18 +34,21 @@ task TsplitTIR {
   >>>
   parameter_meta {
     in_file: "Multifasta containing complete elements."
-    prefix: "All output files begin with this string. (Default: [infile name])"
+    prefix: "All output files begin with this string. (Default:\\n[infile name])"
     outdir: "Write output files to this directory. (Default: cwd)"
-    split_mode: "all= Report input sequence as well as internal and external segments. split= Report internal and external segments after splitting. internal = Report only internal segments external = Report only terminal repeat segments. If set to \"None\" then only synthetic MITES will be reported if --makemites is also set. (Default: split)"
-    make_mites: "Attempt to construct synthetic MITE sequences from TIRs."
-    keep_temp: "If set do not remove temp directory on completion."
+    split_mode: "all= Report input sequence as well as internal and\\nexternal segments. split= Report internal and external\\nsegments after splitting. internal = Report only\\ninternal segments external = Report only terminal\\nrepeat segments. If set to \\\"None\\\" then only synthetic\\nMITES will be reported if --makemites is also set.\\n(Default: split)"
+    make_mites: "Attempt to construct synthetic MITE sequences from"
     verbose: "If set, report progress."
-    max_dist: "Terminal repeat candidates must be no more than this many bases from end of input element. (Default: 2) Note: Increase this value if you suspect that your element is nested within some flanking sequence."
-    mini_d: "Minimum identity between terminal repeat pairs. As float. (Default: 80.0)"
-    min_term: "Minimum length for a terminal repeat to be considered. Equivalent to nucmer \"--mincluster\" (Default: 10)"
-    min_seed: "Minimum length of a maximal exact match to be included in final match cluster. Equivalent to nucmer \"-- minmatch\". (Default: 5)"
-    diag_factor: "Maximum diagonal difference factor for clustering of matches within nucmer, i.e. diagonal difference / match separation (default 0.20) Note: Increase value for greater tolerance of indels between terminal repeats."
-    method: "Select alignment method: \"blastn\" or \"nucmer\".(Default: nucmer)"
-    exterminate: ""
+    max_dist: "Terminal repeat candidates must be no more than this\\nmany bases from end of input element. (Default: 2)\\nNote: Increase this value if you suspect that your\\nelement is nested within some flanking sequence."
+    mini_d: "Minimum identity between terminal repeat pairs. As\\nfloat. (Default: 80.0)"
+    min_term: "Minimum length for a terminal repeat to be considered.\\nEquivalent to nucmer \\\"--mincluster\\\" (Default: 10)"
+    min_seed: "Minimum length of a maximal exact match to be included\\nin final match cluster. Equivalent to nucmer \\\"--\\nminmatch\\\". (Default: 5)"
+    diag_factor: "Maximum diagonal difference factor for clustering of\\nmatches within nucmer, i.e. diagonal difference /\\nmatch separation (default 0.20) Note: Increase value\\nfor greater tolerance of indels between terminal\\nrepeats."
+    method: "Select alignment method: \\\"blastn\\\" or\\n\\\"nucmer\\\".(Default: nucmer)\\n"
+    t_irs_dot: "--keeptemp            If set do not remove temp directory on completion."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task CannoliSubmit {
+task Cannolisubmit {
   command <<<
-    cannoli-submit
+    cannoli_submit
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

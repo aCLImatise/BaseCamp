@@ -4,4 +4,7 @@ task CactusAPITests {
   command <<<
     cactusAPITests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

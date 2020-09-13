@@ -11,19 +11,22 @@ task Fdiscboot {
   }
   command <<<
     fdiscboot \
-      ~{true="-mixfile" false="" mix_file} \
-      ~{true="-ancfile" false="" anc_file} \
-      ~{true="-weights" false="" weights} \
-      ~{true="-factorfile" false="" factor_file} \
-      ~{true="-test" false="" test} \
-      ~{true="-printdata" false="" print_data}
+      ~{if (mix_file) then "-mixfile" else ""} \
+      ~{if (anc_file) then "-ancfile" else ""} \
+      ~{if (weights) then "-weights" else ""} \
+      ~{if (factor_file) then "-factorfile" else ""} \
+      ~{if (test) then "-test" else ""} \
+      ~{if (print_data) then "-printdata" else ""}
   >>>
   parameter_meta {
     mix_file: "properties File of mixtures"
     anc_file: "properties File of ancestors"
     weights: "properties Weights file"
     factor_file: "properties Factors file"
-    test: "menu       [b] Choose test (Values: b (Bootstrap); j (Jackknife); c (Permute species for each character); o (Permute character order); s (Permute within species); r (Rewrite data))"
+    test: "menu       [b] Choose test (Values: b (Bootstrap); j\\n(Jackknife); c (Permute species for each\\ncharacter); o (Permute character order); s\\n(Permute within species); r (Rewrite data))"
     print_data: "boolean    [N] Print out the data at start of run"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

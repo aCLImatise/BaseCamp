@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../consensus.cwl
 inputs:
-- id: reads
-  doc: ''
-  type: string
+- id: in_reads
+  doc: reads file (string)
+  type: boolean
   inputBinding:
     prefix: --reads
-- id: contigs
-  doc: ''
-  type: string
+- id: in_contigs
+  doc: contigs file (string)
+  type: boolean
   inputBinding:
     prefix: --contigs
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - consensus

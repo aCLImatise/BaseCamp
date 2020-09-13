@@ -2,9 +2,9 @@ version 1.0
 
 task ScHicCorrectMatrices {
   input {
-    String? matrix
-    String? out_filename
-    String? threads
+    Int? matrix
+    File? out_filename
+    Int? threads
   }
   command <<<
     scHicCorrectMatrices \
@@ -14,7 +14,11 @@ task ScHicCorrectMatrices {
   >>>
   parameter_meta {
     matrix: "Matrix to reduce in h5 format. (default: None)"
-    out_filename: "File name to save the resulting matrix, please add the scool prefix. (default: None)"
-    threads: "Number of threads. Using the python multiprocessing module. (default: 4)"
+    out_filename: "File name to save the resulting matrix, please add the\\nscool prefix. (default: None)"
+    threads: "Number of threads. Using the python multiprocessing\\nmodule. (default: 4)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_filename = "${in_out_filename}"
   }
 }

@@ -1,170 +1,171 @@
 class: CommandLineTool
 id: ../../../showinf.cwl
 inputs:
-- id: no_pix
+- id: in_version
+  doc: ": print the library version and exit\nfile: the image file to read"
+  type: boolean
+  inputBinding:
+    prefix: -version
+- id: in_no_pix
   doc: ': read metadata only, not pixels'
   type: boolean
   inputBinding:
     prefix: -nopix
-- id: no_core
+- id: in_no_core
   doc: ': do not output core metadata'
   type: boolean
   inputBinding:
     prefix: -nocore
-- id: no_meta
+- id: in_no_meta
   doc: ': do not parse format-specific metadata table'
   type: boolean
   inputBinding:
     prefix: -nometa
-- id: no_filter
+- id: in_no_filter
   doc: ': do not filter metadata fields'
   type: boolean
   inputBinding:
     prefix: -nofilter
-- id: thumbs
+- id: in_thumbs
   doc: ': read thumbnails instead of normal pixels'
   type: boolean
   inputBinding:
     prefix: -thumbs
-- id: minmax
+- id: in_minmax
   doc: ': compute min/max statistics'
   type: boolean
   inputBinding:
     prefix: -minmax
-- id: merge
+- id: in_merge
   doc: ': combine separate channels into RGB image'
   type: boolean
   inputBinding:
     prefix: -merge
-- id: nogroup
+- id: in_nogroup
   doc: ': force multi-file datasets to be read as individual files'
   type: boolean
   inputBinding:
     prefix: -nogroup
-- id: stitch
+- id: in_stitch
   doc: ': stitch files with similar names'
   type: boolean
   inputBinding:
     prefix: -stitch
-- id: separate
+- id: in_separate
   doc: ': split RGB image into separate channels'
   type: boolean
   inputBinding:
     prefix: -separate
-- id: expand
+- id: in_expand
   doc: ': expand indexed color to RGB'
   type: boolean
   inputBinding:
     prefix: -expand
-- id: ome_xml
+- id: in_ome_xml
   doc: ': populate OME-XML metadata'
   type: boolean
   inputBinding:
     prefix: -omexml
-- id: normalize
+- id: in_normalize
   doc: ': normalize floating point images (*)'
   type: boolean
   inputBinding:
     prefix: -normalize
-- id: fast
+- id: in_fast
   doc: ': paint RGB images as quickly as possible (*)'
   type: boolean
   inputBinding:
     prefix: -fast
-- id: debug
+- id: in_debug
   doc: ': turn on debugging output'
   type: boolean
   inputBinding:
     prefix: -debug
-- id: range
+- id: in_range
   doc: ': specify range of planes to read (inclusive)'
   type: boolean
   inputBinding:
     prefix: -range
-- id: series
+- id: in_series
   doc: ': specify which image series to read'
   type: boolean
   inputBinding:
     prefix: -series
-- id: no_flat
+- id: in_no_flat
   doc: ': do not flatten subresolutions'
   type: boolean
   inputBinding:
     prefix: -noflat
-- id: resolution
-  doc: ': used in combination with -noflat to specify which subresolution to read
-    (for images with subresolutions)'
+- id: in_resolution
+  doc: ": used in combination with -noflat to specify which\nsubresolution to read\
+    \ (for images with subresolutions)"
   type: boolean
   inputBinding:
     prefix: -resolution
-- id: swap
+- id: in_swap
   doc: ': override the default input dimension order'
   type: boolean
   inputBinding:
     prefix: -swap
-- id: shuffle
+- id: in_shuffle
   doc: ': override the default output dimension order'
   type: boolean
   inputBinding:
     prefix: -shuffle
-- id: map
+- id: in_map
   doc: ': specify file on disk to which name should be mapped'
   type: boolean
   inputBinding:
     prefix: -map
-- id: preload
-  doc: ': pre-read entire file into a buffer; significantly reduces the time required
-    to read the images, but requires more memory'
+- id: in_preload
+  doc: ": pre-read entire file into a buffer; significantly\nreduces the time required\
+    \ to read the images, but\nrequires more memory"
   type: boolean
   inputBinding:
     prefix: -preload
-- id: crop
+- id: in_crop
   doc: ": crop images before displaying; argument is 'x,y,w,h'"
   type: boolean
   inputBinding:
     prefix: -crop
-- id: autoscale
+- id: in_autoscale
   doc: ': automatically adjust brightness and contrast (*)'
   type: boolean
   inputBinding:
     prefix: -autoscale
-- id: no_valid
+- id: in_no_valid
   doc: ': do not perform validation of OME-XML'
   type: boolean
   inputBinding:
     prefix: -novalid
-- id: no_sas
-  doc: ': do not output OME-XML StructuredAnnotation elements'
+- id: in_ome_xml_only
+  doc: ": only output the generated OME-XML\n-no-sas: do not output OME-XML StructuredAnnotation\
+    \ elements"
   type: boolean
   inputBinding:
-    prefix: -no-sas
-- id: no_upgrade
-  doc: ': do not perform the upgrade check'
+    prefix: -omexml-only
+- id: in_no_upgrade
+  doc: ": do not perform the upgrade check\n-format: read file with a particular reader\
+    \ (e.g., ZeissZVI)\n-cache: cache the initialized reader"
   type: boolean
   inputBinding:
     prefix: -no-upgrade
-- id: format
-  doc: ': read file with a particular reader (e.g., ZeissZVI)'
-  type: boolean
-  inputBinding:
-    prefix: -format
-- id: cache
-  doc: ': cache the initialized reader'
-  type: boolean
-  inputBinding:
-    prefix: -cache
-- id: cache_dir
-  doc: ': use the specified directory to store the cached initialized reader. If unspecified,
-    the cached reader will be stored under the same folder as the image file'
+- id: in_cache_dir
+  doc: ": use the specified directory to store the cached\ninitialized reader. If\
+    \ unspecified, the cached reader\nwill be stored under the same folder as the\
+    \ image file"
   type: boolean
   inputBinding:
     prefix: -cache-dir
-- id: option
+- id: in_option
   doc: ": add the specified key/value pair to the reader's options list"
   type: boolean
   inputBinding:
     prefix: -option
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - showinf

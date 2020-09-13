@@ -4,4 +4,7 @@ task Nohtml {
   command <<<
     nohtml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

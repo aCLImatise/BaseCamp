@@ -1,20 +1,26 @@
 version 1.0
 
-task FastqUtilsIl {
+task FastqutilsIl {
   input {
-    String mate_one_file
-    String mate_two_file
+    Boolean? verbose
+    Int mate_one_file
+    Int mate_two_file
     String? fast_q_file
   }
   command <<<
-    fastq-utils il \
+    fastq_utils il \
       ~{mate_one_file} \
       ~{mate_two_file} \
-      ~{fast_q_file}
+      ~{fast_q_file} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
+    verbose: ""
     mate_one_file: ""
     mate_two_file: ""
     fast_q_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

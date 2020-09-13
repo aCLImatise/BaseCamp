@@ -6,9 +6,12 @@ task Dexqv {
   }
   command <<<
     dexqv \
-      ~{true="-vkl" false="" v_kl}
+      ~{if (v_kl) then "-vkl" else ""}
   >>>
   parameter_meta {
     v_kl: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

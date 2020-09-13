@@ -6,7 +6,7 @@ task PlassNuclassemble {
     Int? mask
     Int? mask_lower_case
     Int? kmer_size_range
-    String? split_memory_limit
+    Int? split_memory_limit
     Boolean? add_self_matches
     Float? min_seq_id
     Int? cov_mode
@@ -18,19 +18,19 @@ task PlassNuclassemble {
     Int? km_er_per_seq
     Boolean? adjust_km_er_len
     Int? hash_shift
-    String? include_only_extendable
-    String? ignore_multi_km_er
+    Int? include_only_extendable
+    Int? ignore_multi_km_er
     Int? num_iterations
-    String? cycle_check
+    Int? cycle_check
     Int? min_contig_len
     Float? clust_thr
     Boolean? remove_tmp_files
     Int? delete_tmp_inc
     Int? re_score_mode
     Boolean? wrapped_scoring
-    String? chop_cycle
-    String? mpi_runner
-    String? sub_mat
+    Int? chop_cycle
+    Int? mpi_runner
+    File? sub_mat
     Int? max_seq_len
     Int? threads
     Int? compressed
@@ -47,16 +47,16 @@ task PlassNuclassemble {
       ~{if defined(mask_lower_case) then ("--mask-lower-case " +  '"' + mask_lower_case + '"') else ""} \
       ~{if defined(kmer_size_range) then ("-k " +  '"' + kmer_size_range + '"') else ""} \
       ~{if defined(split_memory_limit) then ("--split-memory-limit " +  '"' + split_memory_limit + '"') else ""} \
-      ~{true="--add-self-matches" false="" add_self_matches} \
+      ~{if (add_self_matches) then "--add-self-matches" else ""} \
       ~{if defined(min_seq_id) then ("--min-seq-id " +  '"' + min_seq_id + '"') else ""} \
       ~{if defined(cov_mode) then ("--cov-mode " +  '"' + cov_mode + '"') else ""} \
       ~{if defined(list_matches_fraction) then ("-c " +  '"' + list_matches_fraction + '"') else ""} \
       ~{if defined(extend_sequences_evalue) then ("-e " +  '"' + extend_sequences_evalue + '"') else ""} \
-      ~{true="-a" false="" add_string_convert} \
+      ~{if (add_string_convert) then "-a" else ""} \
       ~{if defined(min_aln_len) then ("--min-aln-len " +  '"' + min_aln_len + '"') else ""} \
       ~{if defined(seq_id_mode) then ("--seq-id-mode " +  '"' + seq_id_mode + '"') else ""} \
       ~{if defined(km_er_per_seq) then ("--kmer-per-seq " +  '"' + km_er_per_seq + '"') else ""} \
-      ~{true="--adjust-kmer-len" false="" adjust_km_er_len} \
+      ~{if (adjust_km_er_len) then "--adjust-kmer-len" else ""} \
       ~{if defined(hash_shift) then ("--hash-shift " +  '"' + hash_shift + '"') else ""} \
       ~{if defined(include_only_extendable) then ("--include-only-extendable " +  '"' + include_only_extendable + '"') else ""} \
       ~{if defined(ignore_multi_km_er) then ("--ignore-multi-kmer " +  '"' + ignore_multi_km_er + '"') else ""} \
@@ -64,10 +64,10 @@ task PlassNuclassemble {
       ~{if defined(cycle_check) then ("--cycle-check " +  '"' + cycle_check + '"') else ""} \
       ~{if defined(min_contig_len) then ("--min-contig-len " +  '"' + min_contig_len + '"') else ""} \
       ~{if defined(clust_thr) then ("--clust-thr " +  '"' + clust_thr + '"') else ""} \
-      ~{true="--remove-tmp-files" false="" remove_tmp_files} \
+      ~{if (remove_tmp_files) then "--remove-tmp-files" else ""} \
       ~{if defined(delete_tmp_inc) then ("--delete-tmp-inc " +  '"' + delete_tmp_inc + '"') else ""} \
       ~{if defined(re_score_mode) then ("--rescore-mode " +  '"' + re_score_mode + '"') else ""} \
-      ~{true="--wrapped-scoring" false="" wrapped_scoring} \
+      ~{if (wrapped_scoring) then "--wrapped-scoring" else ""} \
       ~{if defined(chop_cycle) then ("--chop-cycle " +  '"' + chop_cycle + '"') else ""} \
       ~{if defined(mpi_runner) then ("--mpi-runner " +  '"' + mpi_runner + '"') else ""} \
       ~{if defined(sub_mat) then ("--sub-mat " +  '"' + sub_mat + '"') else ""} \
@@ -77,7 +77,7 @@ task PlassNuclassemble {
       ~{if defined(verbosity_level_nothing) then ("-v " +  '"' + verbosity_level_nothing + '"') else ""} \
       ~{if defined(db_load_mode) then ("--db-load-mode " +  '"' + db_load_mode + '"') else ""} \
       ~{if defined(km_er_per_seq_scale) then ("--kmer-per-seq-scale " +  '"' + km_er_per_seq_scale + '"') else ""} \
-      ~{true="--filter-hits" false="" filter_hits} \
+      ~{if (filter_hits) then "--filter-hits" else ""} \
       ~{if defined(sort_results) then ("--sort-results " +  '"' + sort_results + '"') else ""}
   >>>
   parameter_meta {
@@ -108,7 +108,7 @@ task PlassNuclassemble {
     re_score_mode: "Rescore diagonal with: 0: Hamming distance, 1: local alignment (score only), 2: local alignment, 3: global alignment or 4: longest alignment fullfilling window quality criterion [3]"
     wrapped_scoring: "Double the (nucleotide) query sequence during the scoring process to allow wrapped diagonal scoring around end and start"
     chop_cycle: "Remove superfluous part of circular fragments [1, set to 0 to disable]"
-    mpi_runner: "Use MPI on compute grid with this MPI command (e.g. \"mpirun -np 42\") []"
+    mpi_runner: "Use MPI on compute grid with this MPI command (e.g. \\\"mpirun -np 42\\\") []"
     sub_mat: "amino acid substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]"
     max_seq_len: "maximum sequence length (range 1-32768]) [65535]"
     threads: "number of cores used for the computation (uses all cores by default) [8]"
@@ -118,5 +118,9 @@ task PlassNuclassemble {
     km_er_per_seq_scale: "scale kmer per sequence based on sequence length as kmer-per-seq val + scale x seqlen [0.100]"
     filter_hits: "filter hits by seq.id. and coverage"
     sort_results: "Sort results: 0: no sorting, 1: sort by evalue (Alignment) or seq.id. (Hamming) [0]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_sub_mat = "${in_sub_mat}"
   }
 }

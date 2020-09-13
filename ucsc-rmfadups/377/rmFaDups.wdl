@@ -4,4 +4,7 @@ task RmFaDups {
   command <<<
     rmFaDups
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

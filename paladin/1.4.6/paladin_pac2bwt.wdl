@@ -14,4 +14,7 @@ task PaladinPac2bwt {
     in_dot_pac: ""
     out_dot_bwt: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

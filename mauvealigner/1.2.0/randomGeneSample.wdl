@@ -3,9 +3,9 @@ version 1.0
 task RandomGeneSample {
   input {
     String input_x_mfa
-    String backbone_seq_file
+    File backbone_seq_file
     String sample_genome
-    String number_of_genes
+    Int number_of_genes
     String output_base_name
     String? random
     String? seed
@@ -28,5 +28,8 @@ task RandomGeneSample {
     output_base_name: ""
     random: ""
     seed: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

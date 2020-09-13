@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../_gd2topng.cwl
 inputs:
-- id: gd_two_to_png
+- id: in_gd_two_to_png
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: filename_dot_gd_two
+- id: in_filename_dot_gd_two
   doc: ''
   type: File
   inputBinding:
     position: 1
-- id: filename_dot_png
+- id: in_filename_dot_png
   doc: ''
   type: File
   inputBinding:
     position: 2
-- id: srcx
+- id: in_srcx
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: src_y
+- id: in_src_y
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: width
+- id: in_width
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: height
+- id: in_height
   doc: ''
   type: string
   inputBinding:
     position: 6
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - _gd2topng

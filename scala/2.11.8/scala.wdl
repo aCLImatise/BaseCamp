@@ -11,4 +11,7 @@ task Scala {
   parameter_meta {
     or: "scala -help"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

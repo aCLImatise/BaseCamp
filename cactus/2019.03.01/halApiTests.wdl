@@ -4,4 +4,7 @@ task HalApiTests {
   command <<<
     halApiTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

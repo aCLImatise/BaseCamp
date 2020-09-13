@@ -1,13 +1,13 @@
 version 1.0
 
-task CirclatorRequired arguments {
+task CirclatorRequiredarguments {
   input {
     String circ_lator
     String var_command
     String required_arguments
   }
   command <<<
-    circlator required arguments \
+    circlator required_arguments \
       ~{circ_lator} \
       ~{var_command} \
       ~{required_arguments}
@@ -16,5 +16,8 @@ task CirclatorRequired arguments {
     circ_lator: ""
     var_command: ""
     required_arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

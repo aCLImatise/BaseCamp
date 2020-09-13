@@ -20,4 +20,7 @@ task NaspOutputFolder {
     reference_fast_a: ""
     output_folder: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

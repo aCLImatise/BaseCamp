@@ -2,10 +2,10 @@ version 1.0
 
 task CpinsimParse {
   input {
-    Array[Int] interactions_without_constraints
+    Array[String] interactions_without_constraints
     Array[String] competitions
     Array[String] allosteric_effects
-    String? output_file_containing
+    File? output_file_containing
   }
   command <<<
     cpinsim parse \
@@ -18,6 +18,10 @@ task CpinsimParse {
     interactions_without_constraints: "Files containing the annotated pairwise interactions."
     competitions: "Files containing the annotated competitions."
     allosteric_effects: "Files containing the annotated allosteric effects."
-    output_file_containing: "Output file containing the parsed proteins."
+    output_file_containing: "Output file containing the parsed proteins.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_containing = "${in_output_file_containing}"
   }
 }

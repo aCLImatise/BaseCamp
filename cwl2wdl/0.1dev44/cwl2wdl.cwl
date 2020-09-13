@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../cwl2wdl.cwl
 inputs:
-- id: format
+- id: in_format
   doc: 'specify the output format (default: wdl)'
   type: string
   inputBinding:
     prefix: --format
-- id: validate
-  doc: 'validate the resulting WDL code with PyWDL (default: False)'
+- id: in_validate
+  doc: "validate the resulting WDL code with PyWDL (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --validate
-- id: file
+- id: in_file
   doc: CWL file.
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cwl2wdl

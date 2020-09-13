@@ -4,4 +4,7 @@ task Jembossctl {
   command <<<
     jembossctl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

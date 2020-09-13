@@ -1,7 +1,10 @@
 version 1.0
 
-task ProteinNeighbors {
+task Proteinneighbors {
   command <<<
-    protein-neighbors
+    protein_neighbors
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

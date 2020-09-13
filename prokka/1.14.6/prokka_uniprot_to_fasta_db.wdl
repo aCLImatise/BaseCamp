@@ -1,7 +1,10 @@
 version 1.0
 
-task ProkkaUniprotToFastaDb {
+task ProkkauniprotToFastaDb {
   command <<<
-    prokka-uniprot_to_fasta_db
+    prokka_uniprot_to_fasta_db
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task AlignmentTools {
   command <<<
     AlignmentTools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,102 +1,110 @@
 class: CommandLineTool
 id: ../../../jannovar_annotate_csv.cwl
 inputs:
-- id: database
+- id: in_r
+  doc: '[-t {Default,TDF,RFC4180,Excel,MySQL}]'
+  type: long
+  inputBinding:
+    prefix: -r
+- id: in_database
   doc: Path to database .ser file
-  type: string
+  type: File
   inputBinding:
     prefix: --database
-- id: input
+- id: in_input
   doc: CSV file
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: chr
+- id: in_chr
   doc: Column of chr (1 based)
-  type: string
+  type: long
   inputBinding:
     prefix: --chr
-- id: pos
+- id: in_pos
   doc: Column of pos (1 based)
-  type: string
+  type: long
   inputBinding:
     prefix: --pos
-- id: ref
+- id: in_ref
   doc: Column of ref (1 based)
-  type: string
+  type: long
   inputBinding:
     prefix: --ref
-- id: alt
+- id: in_alt
   doc: Column of alt (1 based)
-  type: string
+  type: long
   inputBinding:
     prefix: --alt
-- id: type
-  doc: 'Type of csv file. '
+- id: in_type
+  doc: Type of csv file.
   type: string
   inputBinding:
     prefix: --type
-- id: header
-  doc: 'Set if the file contains a header. '
+- id: in_header
+  doc: Set if the file contains a header.
   type: boolean
   inputBinding:
     prefix: --header
-- id: show_all
+- id: in_show_all
   doc: Show all effects
   type: boolean
   inputBinding:
     prefix: --show-all
-- id: no_three_prime_shifting
+- id: in_no_three_prime_shifting
   doc: Disable shifting towards 3' of transcript
   type: boolean
   inputBinding:
     prefix: --no-3-prime-shifting
-- id: three_letter_amino_acids
+- id: in_three_letter_amino_acids
   doc: Enable usage of 3 letter amino acid codes
   type: boolean
   inputBinding:
     prefix: --3-letter-amino-acids
-- id: report_no_progress
+- id: in_report_no_progress
   doc: Disable progress report, more quiet mode
   type: boolean
   inputBinding:
     prefix: --report-no-progress
-- id: verbose
+- id: in_verbose
   doc: Enable verbose mode
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: very_verbose
+- id: in_very_verbose
   doc: Enable very verbose mode
   type: boolean
   inputBinding:
     prefix: --very-verbose
-- id: http_proxy
+- id: in_http_proxy
   doc: Set HTTP proxy to use, if any
   type: string
   inputBinding:
     prefix: --http-proxy
-- id: https_proxy
+- id: in_https_proxy
   doc: Set HTTPS proxy to use, if any
   type: string
   inputBinding:
     prefix: --https-proxy
-- id: ftp_proxy
+- id: in_ftp_proxy
   doc: Set FTP proxy to use, if any
   type: string
   inputBinding:
     prefix: --ftp-proxy
-- id: jan_novar_cli
+- id: in_jan_novar_cli
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: annotate_csv
+- id: in_annotate_csv
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - jannovar

@@ -13,8 +13,8 @@ task Hmmfetch2 {
       ~{hmm_fetch} \
       ~{hmm_file} \
       ~{hmm_name} \
-      ~{true="-n" false="" interpret_hmm_name} \
-      ~{true="-options" false="" options}
+      ~{if (interpret_hmm_name) then "-n" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     interpret_hmm_name: ": interpret <HMM name> instead as an HMM number (0..nhmm-1)"
@@ -22,5 +22,8 @@ task Hmmfetch2 {
     hmm_fetch: ""
     hmm_file: ""
     hmm_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

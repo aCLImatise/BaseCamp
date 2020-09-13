@@ -2,28 +2,28 @@ version 1.0
 
 task JfAligner {
   input {
-    String? size
-    String? mer
-    String? fine_mer
-    String? psa_min
-    String? threads
+    Int? size
+    Int? mer
+    Int? fine_mer
+    Int? psa_min
+    Int? threads
     Int? stretch_constant
-    String? stretch_factor
-    String? stretch_cap
-    String? window_size
+    Float? stretch_factor
+    Float? stretch_cap
+    Int? window_size
     Boolean? forward
-    String? bases_matching
-    String? mers_matching
+    Float? bases_matching
+    Float? mers_matching
     File? details
     File? coords
     Boolean? max_match
     Boolean? no_header
     Boolean? zero_match
-    String? max_count
+    Int? max_count
     File? unit_igs_lengths
     File? unit_igs_sequences
     Boolean? compact
-    String? k_mer
+    Int? k_mer
     File? super_reads
     File? pac_bio
     String jf_aligner_cmdline
@@ -40,18 +40,18 @@ task JfAligner {
       ~{if defined(stretch_factor) then ("--stretch-factor " +  '"' + stretch_factor + '"') else ""} \
       ~{if defined(stretch_cap) then ("--stretch-cap " +  '"' + stretch_cap + '"') else ""} \
       ~{if defined(window_size) then ("--window-size " +  '"' + window_size + '"') else ""} \
-      ~{true="--forward" false="" forward} \
+      ~{if (forward) then "--forward" else ""} \
       ~{if defined(bases_matching) then ("--bases-matching " +  '"' + bases_matching + '"') else ""} \
       ~{if defined(mers_matching) then ("--mers-matching " +  '"' + mers_matching + '"') else ""} \
       ~{if defined(details) then ("--details " +  '"' + details + '"') else ""} \
       ~{if defined(coords) then ("--coords " +  '"' + coords + '"') else ""} \
-      ~{true="--max-match" false="" max_match} \
-      ~{true="--no-header" false="" no_header} \
-      ~{true="--zero-match" false="" zero_match} \
+      ~{if (max_match) then "--max-match" else ""} \
+      ~{if (no_header) then "--no-header" else ""} \
+      ~{if (zero_match) then "--zero-match" else ""} \
       ~{if defined(max_count) then ("--max-count " +  '"' + max_count + '"') else ""} \
       ~{if defined(unit_igs_lengths) then ("--unitigs-lengths " +  '"' + unit_igs_lengths + '"') else ""} \
       ~{if defined(unit_igs_sequences) then ("--unitigs-sequences " +  '"' + unit_igs_sequences + '"') else ""} \
-      ~{true="--compact" false="" compact} \
+      ~{if (compact) then "--compact" else ""} \
       ~{if defined(k_mer) then ("--k-mer " +  '"' + k_mer + '"') else ""} \
       ~{if defined(super_reads) then ("--superreads " +  '"' + super_reads + '"') else ""} \
       ~{if defined(pac_bio) then ("--pacbio " +  '"' + pac_bio + '"') else ""}
@@ -82,5 +82,8 @@ task JfAligner {
     super_reads: "SuperReads sequence file"
     pac_bio: "PacBio read sequence file"
     jf_aligner_cmdline: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,6 +1,6 @@
 version 1.0
 
-task ProkkaGenpeptToFastaDb {
+task ProkkagenpeptToFastaDb {
   input {
     Boolean? verbose
     String? format
@@ -8,16 +8,16 @@ task ProkkaGenpeptToFastaDb {
     String? blank
     Boolean? pseudo
     Boolean? hypo
-    String? min_len
+    Int? min_len
   }
   command <<<
-    prokka-genpept_to_fasta_db \
-      ~{true="--verbose" false="" verbose} \
+    prokka_genpept_to_fasta_db \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(sep) then ("--sep " +  '"' + sep + '"') else ""} \
       ~{if defined(blank) then ("--blank " +  '"' + blank + '"') else ""} \
-      ~{true="--pseudo" false="" pseudo} \
-      ~{true="--hypo" false="" hypo} \
+      ~{if (pseudo) then "--pseudo" else ""} \
+      ~{if (hypo) then "--hypo" else ""} \
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""}
   >>>
   parameter_meta {
@@ -28,5 +28,8 @@ task ProkkaGenpeptToFastaDb {
     pseudo: "!       Include /pseudo genes (default '0')."
     hypo: "!         Include 'hypothetical protein' genes (default '0')."
     min_len: "Minimum peptide length (default '0')."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../permute_structure.pl.orig.cwl
+id: ../../../permute_structure.pl.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- permute_structure.pl.orig
+- permute_structure.pl

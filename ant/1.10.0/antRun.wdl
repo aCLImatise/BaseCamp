@@ -1,26 +1,10 @@
 version 1.0
 
-task AntRun.pl {
-  input {
-    String no
-    String such
-    File file
-    String or
-    Directory directory
-  }
+task AntRun {
   command <<<
-    antRun.pl \
-      ~{no} \
-      ~{such} \
-      ~{file} \
-      ~{or} \
-      ~{directory}
+    antRun
   >>>
-  parameter_meta {
-    no: ""
-    such: ""
-    file: ""
-    or: ""
-    directory: ""
+  output {
+    File out_stdout = stdout()
   }
 }

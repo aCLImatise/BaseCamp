@@ -1,179 +1,187 @@
 class: CommandLineTool
 id: ../../../ssu_draw.cwl
 inputs:
-- id: commandline_argument_stockholm
+- id: in_commandline_argument_stockholm
   doc: ': the command-line argument is a stockholm alignment, not a directory'
   type: boolean
   inputBinding:
     prefix: -a
-- id: force_windi_draw
+- id: in_force_windi_draw
   doc: ': force; w/--indi, draw all seqs, even if predicted output >100 Mb'
   type: boolean
   inputBinding:
     prefix: -f
-- id: display_default_ssualign
+- id: in_display_default_masks
   doc: ': display default ssu-align-0.1 masks on drawings'
   type: boolean
   inputBinding:
     prefix: -d
-- id: display_single_mask
+- id: in_display_single_mask
   doc: ': display single mask in file <f> for single alignment (requires -a)'
-  type: string
+  type: File
   inputBinding:
     prefix: -s
-- id: display_masks_modelnamesmask
-  doc: ": display masks from files named <modelname>.<s>.mask on drawings (<modelname>\
+- id: in_display_masks_modelnamesmask
+  doc: ": display masks from files named <modelname>.<s>.mask on drawings\n(<modelname>\
     \ might be 'archaea', 'bacteria' or 'eukarya')"
   type: string
   inputBinding:
     prefix: -k
-- id: cm_file_f
+- id: in_cm_file_f
   doc: ': CM file <f> created the alignment(s) (with ssu-align -m <f>)'
-  type: string
+  type: File
   inputBinding:
     prefix: -m
-- id: use_template_file
+- id: in_use_template_file
   doc: ': use template file <f>, not the default template file'
-  type: string
+  type: File
   inputBinding:
     prefix: -t
-- id: i_used_ssualign
+- id: in_i_used_ssualign
   doc: ': -i used with ssu-align, alignments are interleaved'
   type: boolean
   inputBinding:
     prefix: -i
-- id: pstwo_pdf
+- id: in_pstwo_pdf
   doc: ': <s> (!= "ps2pdf") is the command for converting ps to pdf'
-  type: string
+  type: long
   inputBinding:
     prefix: --ps2pdf
-- id: ps_only
+- id: in_ps_only
   doc: ': only save postscript secondary structure diagrams, no pdfs'
   type: boolean
   inputBinding:
     prefix: --ps-only
-- id: i_file
+- id: in_i_file
   doc: ': insert info for alignment is in <s> (requires -a)'
   type: string
   inputBinding:
     prefix: --ifile
-- id: key_out
+- id: in_key_out
   doc: ': add <s> to all output file names, before the suffix'
-  type: string
+  type: File
   inputBinding:
     prefix: --key-out
-- id: no_mask
+- id: in_no_mask
   doc: ": do not use ssu-mask created '.mask' files in the aln dir"
   type: boolean
   inputBinding:
     prefix: --no-mask
-- id: mask_key
-  doc: ": display masks from files named <dir>.<modelname>.<s>.mask on drawings (typically\
-    \ used after running 'ssu-mask --key-out <s>')"
+- id: in_mask_key
+  doc: ": display masks from files named <dir>.<modelname>.<s>.mask on drawings\n\
+    (typically used after running 'ssu-mask --key-out <s>')"
   type: boolean
   inputBinding:
     prefix: --mask-key
-- id: info
+- id: in_info
   doc: ': draw sequence information content per position    (save as *.info.pdf)'
   type: boolean
   inputBinding:
     prefix: --info
-- id: mut_info
+- id: in_mut_info
   doc: ': draw mutual information per position              (save as *.mutinfo.pdf)'
   type: boolean
   inputBinding:
     prefix: --mutinfo
-- id: ifreq
+- id: in_ifreq
   doc: ': draw frequency of insertions per position         (save as *.ifreq.pdf)'
   type: boolean
   inputBinding:
     prefix: --ifreq
-- id: i_avg_len
+- id: in_i_avg_len
   doc: ': draw average length of insertions per position    (save as *.iavglen.pdf)'
   type: boolean
   inputBinding:
     prefix: --iavglen
-- id: d_all
+- id: in_d_all
   doc: ': draw frequency of deletions per position          (save as *.dall.pdf)'
   type: boolean
   inputBinding:
     prefix: --dall
-- id: dint
+- id: in_dint
   doc: ': draw frequency of internal deletions per position (save as *.dint.pdf)'
   type: boolean
   inputBinding:
     prefix: --dint
-- id: prob
+- id: in_prob
   doc: ': draw average posterior probability per position   (save as *.prob.pdf)'
   type: boolean
   inputBinding:
     prefix: --prob
-- id: span
+- id: in_span
   doc: ': draw fraction of seqs that span each position     (save as *.span.pdf)'
   type: boolean
   inputBinding:
     prefix: --span
-- id: cnt
+- id: in_cnt
   doc: ': draw consensus nucleotides on alignment summary diagrams'
   type: boolean
   inputBinding:
     prefix: --cnt
-- id: no_aln
+- id: in_no_aln
   doc: ': do not create multi-page pdf with all alignment stats'
   type: boolean
   inputBinding:
     prefix: --no-aln
-- id: indi
+- id: in_indi
   doc: ': draw sequence and probability diagrams for all aligned sequences'
   type: boolean
   inputBinding:
     prefix: --indi
-- id: cons
+- id: in_cons
   doc: ': draw alignment consensus sequence       (save as *.cons.pdf)'
   type: boolean
   inputBinding:
     prefix: --cons
-- id: rf
+- id: in_rf
   doc: ': draw model reference (#=GC RF) sequence (save as *.rf.pdf)'
   type: boolean
   inputBinding:
     prefix: --rf
-- id: no_pp
+- id: in_no_pp
   doc: ': with --indi, omit probability diagrams'
   type: boolean
   inputBinding:
     prefix: --no-pp
-- id: no_bp
+- id: in_no_bp
   doc: ': w/--indi,--rf or --cons, do not color nts based on basepair type'
   type: boolean
   inputBinding:
     prefix: --no-bp
-- id: no_ol
+- id: in_no_ol
   doc: ': w/--indi, do not outline nts that are not most common nt'
   type: boolean
   inputBinding:
     prefix: --no-ol
-- id: no_leg
+- id: in_no_leg
   doc: ': do not draw legends'
   type: boolean
   inputBinding:
     prefix: --no-leg
-- id: no_head
+- id: in_no_head
   doc: ': do not draw headers'
   type: boolean
   inputBinding:
     prefix: --no-head
-- id: no_foot
+- id: in_no_foot
   doc: ': do not draw footers'
   type: boolean
   inputBinding:
     prefix: --no-foot
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_key_out
+  doc: ': add <s> to all output file names, before the suffix'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_key_out)
 cwlVersion: v1.1
 baseCommand:
 - ssu-draw

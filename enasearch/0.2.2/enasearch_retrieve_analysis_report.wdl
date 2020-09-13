@@ -13,8 +13,11 @@ task EnasearchRetrieveAnalysisReport {
       ~{if defined(file) then ("--file " +  '"' + file + '"') else ""}
   >>>
   parameter_meta {
-    accession: "Accession id (study accessions (ERP, SRP, DRP, PRJ prefixes), experiment accessions (ERX, SRX, DRX prefixes), sample accessions (ERS, SRS, DRS, SAM prefixes) and run accessions))  [required]"
-    fields: "Fields to return (accessible with get_analysis_fields) [multiple or comma-separated]"
+    accession: "Accession id (study accessions (ERP, SRP, DRP, PRJ\\nprefixes), experiment accessions (ERX, SRX, DRX prefixes),\\nsample accessions (ERS, SRS, DRS, SAM prefixes) and run\\naccessions))  [required]"
+    fields: "Fields to return (accessible with get_analysis_fields)\\n[multiple or comma-separated]"
     file: "File to save the report"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

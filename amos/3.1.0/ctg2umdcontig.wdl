@@ -17,4 +17,7 @@ task Ctg2umdcontig {
     file_dot_id_map: ""
     tigr: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

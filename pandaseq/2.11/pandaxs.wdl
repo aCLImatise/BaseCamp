@@ -4,4 +4,7 @@ task Pandaxs {
   command <<<
     pandaxs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Simqual {
   command <<<
     simqual
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

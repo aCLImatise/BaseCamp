@@ -1,9 +1,28 @@
 !Command
+command:
+- cath-resolve-hits
 positional:
 - !Positional
-  description: ''
+  description: '- HMMER domtblout format (must assume all hits are continuous)'
   position: 0
-  name: input_file
+  name: hmmer_domtblout
+  optional: false
+- !Positional
+  description: '- HMMER hmmscan output format (can be used to deduce discontinuous
+    hits)'
+  position: 1
+  name: hmmscan_out
+  optional: false
+- !Positional
+  description: '- HMMER hmmsearch output format (can be used to deduce discontinuous
+    hits)'
+  position: 2
+  name: hmmsearch_out
+  optional: false
+- !Positional
+  description: '- "raw" format with scores'
+  position: 3
+  name: raw_with_scores
   optional: false
 named:
 - !Flag
@@ -14,11 +33,7 @@ named:
   optional: true
 - !Flag
   description: '(=raw_with_scores)     Parse the input data from <format>, one of
-    available formats: hmmer_domtblout  - HMMER domtblout format (must assume all
-    hits are continuous) hmmscan_out      - HMMER hmmscan output format (can be used
-    to deduce discontinuous hits) hmmsearch_out    - HMMER hmmsearch output format
-    (can be used to deduce discontinuous hits) raw_with_scores  - "raw" format with
-    scores raw_with_evalues - "raw" format with evalues'
+    available formats:'
   synonyms:
   - --input-format
   args: !SimpleFlagArg
@@ -33,20 +48,19 @@ named:
     name: length
   optional: true
 - !Flag
-  description: Rely on the input hits being grouped by query protein (so the run is
-    faster and uses less memory)
+  description: "Rely on the input hits being grouped by query protein\n(so the run\
+    \ is faster and uses less memory)"
   synonyms:
   - --input-hits-are-grouped
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: "(=30/10)            Allow different hits' segments to overlap a bit\
-    \ by trimming all segments using spec <trim> of the form n/m (n is a segment length;\
-    \ m is the *total* length to be trimmed off both ends) For longer segments, total\
-    \ trim stays at m; for shorter, it decreases linearly (to 0 for length 1). To\
-    \ choose: set m to the biggest total trim you'd want for a really long segment;\
-    \ then, set n to length of the shortest segment you'd want to have that total\
-    \ trim"
+    \ by trimming all segments using spec <trim>\nof the form n/m (n is a segment\
+    \ length; m is the *total* length to be trimmed off both ends)\nFor longer segments,\
+    \ total trim stays at m; for shorter, it decreases linearly (to 0 for length 1).\n\
+    To choose: set m to the biggest total trim you'd want for a really long segment;\n\
+    then, set n to length of the shortest segment you'd want to have that total trim"
   synonyms:
   - --overlap-trim-spec
   args: !SimpleFlagArg
@@ -61,16 +75,16 @@ named:
     name: length
   optional: true
 - !Flag
-  description: (=0)           Prefer longer hits to degree <val> (<val> may be negative
-    to prefer shorter; 0 leaves scores unaffected)
+  description: "(=0)           Prefer longer hits to degree <val>\n(<val> may be negative\
+    \ to prefer shorter; 0 leaves scores unaffected)"
   synonyms:
   - --long-domains-preference
   args: !SimpleFlagArg
     name: val
   optional: true
 - !Flag
-  description: (=0)            Prefer higher scores to degree <val> (<val> may be
-    negative to reduce preference for higher scores; 0 leaves scores unaffected)
+  description: "(=0)            Prefer higher scores to degree <val>\n(<val> may be\
+    \ negative to reduce preference for higher scores; 0 leaves scores unaffected)"
   synonyms:
   - --high-scores-preference
   args: !SimpleFlagArg
@@ -112,8 +126,8 @@ named:
     name: score
   optional: true
 - !Flag
-  description: Ignore all input data except that for query protein(s) <id> (may be
-    specified multiple times for multiple query proteins)
+  description: "Ignore all input data except that for query protein(s) <id>\n(may\
+    \ be specified multiple times for multiple query proteins)"
   synonyms:
   - --filter-query-id
   args: !SimpleFlagArg
@@ -176,8 +190,8 @@ named:
     name: file
   optional: true
 - !Flag
-  description: Restrict HTML output to the contents of the body tag. The contents
-    should be included inside a body tag of class crh-body
+  description: "Restrict HTML output to the contents of the body tag.\nThe contents\
+    \ should be included inside a body tag of class crh-body"
   synonyms:
   - --restrict-html-within-body
   args: !EmptyFlagArg {}
@@ -208,10 +222,9 @@ named:
   - --raw-format-help
   args: !EmptyFlagArg {}
   optional: true
-command:
-- cath-resolve-hits
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: '[ --help ]                                  Output help message'
   synonyms:

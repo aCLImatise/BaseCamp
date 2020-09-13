@@ -2,31 +2,34 @@ version 1.0
 
 task ReadreduceFASTA {
   input {
-    String? o
-    String? a
-    String? l
-    String? d
-    Int? s
-    Boolean? q
     Boolean? j
+    Boolean? q
+    Int? s
+    String? d
+    String? l
+    String? a
+    String? o
   }
   command <<<
     readreduce FASTA \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
-      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if (j) then "-j" else ""} \
+      ~{if (q) then "-q" else ""} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
-      ~{true="-q" false="" q} \
-      ~{true="-j" false="" j}
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
-    o: ""
-    a: ""
-    l: ""
-    d: ""
-    s: ""
-    q: ""
     j: ""
+    q: ""
+    s: ""
+    d: ""
+    l: ""
+    a: ""
+    o: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

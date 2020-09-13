@@ -1,75 +1,78 @@
 class: CommandLineTool
 id: ../../../cromwell_tools_submit.cwl
 inputs:
-- id: url
-  doc: The URL to the Cromwell server. e.g. "https://cromwell.server.org/"
+- id: in_url
+  doc: "The URL to the Cromwell server. e.g.\n\"https://cromwell.server.org/\""
   type: string
   inputBinding:
     prefix: --url
-- id: username
+- id: in_username
   doc: Cromwell username for HTTPBasicAuth.
   type: string
   inputBinding:
     prefix: --username
-- id: password
+- id: in_password
   doc: Cromwell password for HTTPBasicAuth.
   type: string
   inputBinding:
     prefix: --password
-- id: secrets_file
-  doc: Path to the JSON file containing username, password, and url fields.
-  type: string
+- id: in_secrets_file
+  doc: "Path to the JSON file containing username, password,\nand url fields."
+  type: File
   inputBinding:
     prefix: --secrets-file
-- id: service_account_key
-  doc: Path to the JSON key file for authenticating with CaaS.
-  type: string
+- id: in_service_account_key
+  doc: "Path to the JSON key file for authenticating with\nCaaS."
+  type: File
   inputBinding:
     prefix: --service-account-key
-- id: wdl_file
-  doc: Path to the workflow source file to submit for execution.
-  type: string
+- id: in_wdl_file
+  doc: "Path to the workflow source file to submit for\nexecution."
+  type: File
   inputBinding:
     prefix: --wdl-file
-- id: inputs_files
-  doc: Path(s) to the input file(s) containing input data in JSON format, separated
-    by space.
+- id: in_inputs_files
+  doc: "Path(s) to the input file(s) containing input data in\nJSON format, separated\
+    \ by space."
   type: string[]
   inputBinding:
     prefix: --inputs-files
-- id: deps_file
-  doc: Path to the Zip file containing dependencies, or a list of raw dependency files
-    to be zipped together separated by space.
+- id: in_deps_file
+  doc: "Path to the Zip file containing dependencies, or a\nlist of raw dependency\
+    \ files to be zipped together\nseparated by space."
   type: string[]
   inputBinding:
     prefix: --deps-file
-- id: options_file
+- id: in_options_file
   doc: Path to the Cromwell configs JSON file.
-  type: string
+  type: File
   inputBinding:
     prefix: --options-file
-- id: label_file
-  doc: Path to the JSON file containing a collection of key/value pairs for workflow
-    labels.
-  type: string
+- id: in_label_file
+  doc: "Path to the JSON file containing a collection of\nkey/value pairs for workflow\
+    \ labels."
+  type: File
   inputBinding:
     prefix: --label-file
-- id: collection_name
-  doc: Collection in SAM that the workflow should belong to, if use CaaS.
+- id: in_collection_name
+  doc: "Collection in SAM that the workflow should belong to,\nif use CaaS."
   type: string
   inputBinding:
     prefix: --collection-name
-- id: on_hold
+- id: in_on_hold
   doc: Whether to submit the workflow in "On Hold" status.
   type: string
   inputBinding:
     prefix: --on-hold
-- id: validate_labels
-  doc: Whether to validate cromwell labels.
+- id: in_validate_labels
+  doc: "Whether to validate cromwell labels.\n"
   type: string
   inputBinding:
     prefix: --validate-labels
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cromwell-tools

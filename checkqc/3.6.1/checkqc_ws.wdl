@@ -1,6 +1,6 @@
 version 1.0
 
-task CheckqcWs {
+task Checkqcws {
   input {
     Int? port
     File? config
@@ -9,12 +9,12 @@ task CheckqcWs {
     String monitor_path
   }
   command <<<
-    checkqc-ws \
+    checkqc_ws \
       ~{monitor_path} \
       ~{if defined(port) then ("--port " +  '"' + port + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
       ~{if defined(log_config) then ("--log_config " +  '"' + log_config + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     port: "Port which checkqc-ws will listen to (default: 9999)."
@@ -22,5 +22,8 @@ task CheckqcWs {
     log_config: "Path to the checkQC logging configuration file (optional)"
     debug: "Enable debug mode."
     monitor_path: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

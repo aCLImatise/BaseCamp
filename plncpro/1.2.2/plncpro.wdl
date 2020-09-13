@@ -4,4 +4,7 @@ task Plncpro {
   command <<<
     plncpro
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

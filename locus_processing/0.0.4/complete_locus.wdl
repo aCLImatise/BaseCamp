@@ -20,4 +20,8 @@ task CompleteLocus {
     output_directory: "Path to output directory"
     suppress_warnings: "Suppress warnings"
   }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory = "${in_output_directory}"
+  }
 }

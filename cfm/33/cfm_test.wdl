@@ -1,7 +1,10 @@
 version 1.0
 
-task CfmTest {
+task Cfmtest {
   command <<<
-    cfm-test
+    cfm_test
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task ColorJunction {
   command <<<
     colorJunction
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

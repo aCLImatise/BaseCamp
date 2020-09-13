@@ -4,4 +4,7 @@ task Pyqi {
   command <<<
     pyqi
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

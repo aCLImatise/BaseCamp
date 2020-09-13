@@ -2,13 +2,13 @@ version 1.0
 
 task TaxmapperFilter {
   input {
-    String? tax
-    String? out
-    String? auto
+    File? tax
+    File? out
+    Float? auto
     String? identity
-    String? identity_ratio
+    Int? identity_ratio
     String? evalue
-    String? evalue_diff
+    Int? evalue_diff
   }
   command <<<
     taxmapper filter \
@@ -21,12 +21,16 @@ task TaxmapperFilter {
       ~{if defined(evalue_diff) then ("--evalue-diff " +  '"' + evalue_diff + '"') else ""}
   >>>
   parameter_meta {
-    tax: "Taxonomy mapping file (taxa.tsv if not specified otherwise)."
+    tax: "Taxonomy mapping file (taxa.tsv if not specified\\notherwise)."
     out: "Output file [default: taxa_filtered.tsv]"
-    auto: "Automatic filter with probability threshold, if automatic filter is chosen all other thresholds will be ignored [nan or 0 - 1, default: 0.4]"
+    auto: "Automatic filter with probability threshold, if\\nautomatic filter is chosen all other thresholds will\\nbe ignored [nan or 0 - 1, default: 0.4]"
     identity: "Threshold for identity of best hit [default: nan]"
     identity_ratio: "Threshold for identity ratio [1 - 10, default: nan]"
     evalue: "Threshold for log e-values of best hit [default: nan]"
-    evalue_diff: "Threshold for absolute difference in e-values [0 - 100, default: nan]"
+    evalue_diff: "Threshold for absolute difference in e-values [0 -\\n100, default: nan]\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

@@ -7,41 +7,47 @@ task RNApdist {
     Boolean? noconv
     String? compare
     Boolean? backtrack
-    String? temp
+    Int? temp
     Boolean? no_tetra
     Int? dangles
     Boolean? no_lp
     Boolean? no_gu
     Boolean? no_closing_gu
-    String? param_file
+    File? param_file
+    String bases
   }
   command <<<
     RNApdist \
-      ~{true="--detailed-help" false="" detailed_help} \
-      ~{true="--full-help" false="" full_help} \
-      ~{true="--noconv" false="" noconv} \
+      ~{bases} \
+      ~{if (detailed_help) then "--detailed-help" else ""} \
+      ~{if (full_help) then "--full-help" else ""} \
+      ~{if (noconv) then "--noconv" else ""} \
       ~{if defined(compare) then ("--compare " +  '"' + compare + '"') else ""} \
-      ~{true="--backtrack" false="" backtrack} \
+      ~{if (backtrack) then "--backtrack" else ""} \
       ~{if defined(temp) then ("--temp " +  '"' + temp + '"') else ""} \
-      ~{true="--noTetra" false="" no_tetra} \
+      ~{if (no_tetra) then "--noTetra" else ""} \
       ~{if defined(dangles) then ("--dangles " +  '"' + dangles + '"') else ""} \
-      ~{true="--noLP" false="" no_lp} \
-      ~{true="--noGU" false="" no_gu} \
-      ~{true="--noClosingGU" false="" no_closing_gu} \
+      ~{if (no_lp) then "--noLP" else ""} \
+      ~{if (no_gu) then "--noGU" else ""} \
+      ~{if (no_closing_gu) then "--noClosingGU" else ""} \
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""}
   >>>
   parameter_meta {
-    detailed_help: "Print help, including all details and hidden options, and exit"
+    detailed_help: "Print help, including all details and hidden\\noptions, and exit"
     full_help: "Print help, including hidden options, and exit"
-    noconv: "Do not automatically substitude nucleotide \"T\" with \"U\" (default=off)"
-    compare: "|m|f|c         Specify the comparison directive. (default=`p')"
-    backtrack: "[=<filename>]  Print an \"alignment\" with gaps of the profiles. The aligned structures are written to <filename>, if specified. (default=`none')"
-    temp: "Rescale energy parameters to a temperature of temp C. Default is 37C."
-    no_tetra: "Do not include special tabulated stabilizing energies for tri-, tetra- and hexaloop hairpins. Mostly for testing. (default=off)"
-    dangles: "set energy model for treatment of dangling bases (possible values=\"0\", \"2\" default=`2')"
-    no_lp: "Produce structures without lonely pairs (helices of length 1). (default=off)"
-    no_gu: "Do not allow GU pairs (default=off)"
-    no_closing_gu: "Do not allow GU pairs at the end of helices (default=off)"
-    param_file: "Read energy parameters from paramfile, instead of using the default parameter set."
+    noconv: "Do not automatically substitude nucleotide\\n\\\"T\\\" with \\\"U\\\"\\n(default=off)"
+    compare: "|m|f|c         Specify the comparison directive.\\n(default=`p')"
+    backtrack: "[=<filename>]  Print an \\\"alignment\\\" with gaps of the\\nprofiles. The aligned structures are written\\nto <filename>, if specified.\\n(default=`none')"
+    temp: "Rescale energy parameters to a temperature of\\ntemp C. Default is 37C."
+    no_tetra: "Do not include special tabulated stabilizing\\nenergies for tri-, tetra- and hexaloop\\nhairpins. Mostly for testing.\\n(default=off)"
+    dangles: "set energy model for treatment of dangling"
+    no_lp: "Produce structures without lonely pairs\\n(helices of length 1).\\n(default=off)"
+    no_gu: "Do not allow GU pairs\\n(default=off)"
+    no_closing_gu: "Do not allow GU pairs at the end of helices\\n(default=off)"
+    param_file: "Read energy parameters from paramfile, instead\\nof using the default parameter set."
+    bases: "(possible values=\\\"0\\\", \\\"2\\\" default=`2')"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

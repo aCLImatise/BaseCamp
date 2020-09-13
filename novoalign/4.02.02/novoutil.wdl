@@ -4,4 +4,7 @@ task Novoutil {
   command <<<
     novoutil
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

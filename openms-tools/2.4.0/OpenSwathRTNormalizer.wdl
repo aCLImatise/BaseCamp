@@ -2,15 +2,15 @@ version 1.0
 
 task OpenSwathRTNormalizer {
   input {
-    File? in
+    String? in
     File? tr
     File? out
     File? rt_norm
-    String? min_rsq
-    String? min_coverage
+    Float? min_rsq
+    Float? min_coverage
     Boolean? estimate_best_peptides
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -22,11 +22,11 @@ task OpenSwathRTNormalizer {
       ~{if defined(rt_norm) then ("-rt_norm " +  '"' + rt_norm + '"') else ""} \
       ~{if defined(min_rsq) then ("-min_rsq " +  '"' + min_rsq + '"') else ""} \
       ~{if defined(min_coverage) then ("-min_coverage " +  '"' + min_coverage + '"') else ""} \
-      ~{true="-estimateBestPeptides" false="" estimate_best_peptides} \
+      ~{if (estimate_best_peptides) then "-estimateBestPeptides" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*            Input files separated by blank (valid formats: 'mzML')"
@@ -40,5 +40,9 @@ task OpenSwathRTNormalizer {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

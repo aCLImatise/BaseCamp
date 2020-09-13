@@ -14,4 +14,7 @@ task PybelManageNetworks {
     drop: "Drop a network by its identifier or drop all networks."
     ls: "List network names, versions, and optionally, descriptions."
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

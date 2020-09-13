@@ -2,16 +2,19 @@ version 1.0
 
 task TgTigDisplay {
   input {
+    File? t
     String? s
-    String? t
   }
   command <<<
     tgTigDisplay \
-      ~{if defined(s) then ("-S " +  '"' + s + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(s) then ("-S " +  '"' + s + '"') else ""}
   >>>
   parameter_meta {
-    s: ""
     t: ""
+    s: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

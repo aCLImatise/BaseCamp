@@ -1,21 +1,21 @@
 version 1.0
 
-task SnippyCore {
+task Snippycore {
   input {
     Boolean? debug
     Boolean? check
     String? ref
     String? prefix
-    String? max_hap
-    String? mask
+    Int? max_hap
+    File? mask
     String? gap_char
     String? mask_char
     String? in_prefix
   }
   command <<<
-    snippy-core \
-      ~{true="--debug" false="" debug} \
-      ~{true="--check" false="" check} \
+    snippy_core \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (check) then "--check" else ""} \
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(max_hap) then ("--maxhap " +  '"' + max_hap + '"') else ""} \
@@ -34,5 +34,8 @@ task SnippyCore {
     gap_char: "Gap/deletion character (default '-')."
     mask_char: "Masking character (default 'X')."
     in_prefix: "Expected prefix of Snippy output files (default 'snps')."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

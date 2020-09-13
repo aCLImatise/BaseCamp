@@ -4,4 +4,7 @@ task Vcfnosnps {
   command <<<
     vcfnosnps
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

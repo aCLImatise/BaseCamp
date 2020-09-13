@@ -1,17 +1,30 @@
 class: CommandLineTool
 id: ../../../glam2format.cwl
 inputs:
-- id: my_format
-  doc: ''
-  type: string
+- id: in_output_file_stdout
+  doc: ': output file (stdout)'
+  type: File
   inputBinding:
-    position: 0
-- id: my_motif_dot_glam_two
-  doc: ''
-  type: string
+    prefix: -o
+- id: in_make_compact_alignment
+  doc: ': make a compact alignment'
+  type: boolean
   inputBinding:
-    position: 1
-outputs: []
+    prefix: -c
+- id: in_sequence_file_flanking
+  doc: ': sequence file for flanking sequences'
+  type: boolean
+  inputBinding:
+    prefix: -f
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_stdout
+  doc: ': output file (stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_stdout)
 cwlVersion: v1.1
 baseCommand:
 - glam2format

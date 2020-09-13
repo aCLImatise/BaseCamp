@@ -6,21 +6,21 @@ task Dsk2ascii {
     Boolean? fast_a
     Boolean? fast_q
     Boolean? file
-    Boolean? out
+    File? out
     Boolean? nb_cores
     Boolean? verbose
     Boolean? version
   }
   command <<<
     dsk2ascii \
-      ~{true="-c" false="" arg_output_stdout} \
-      ~{true="-fasta" false="" fast_a} \
-      ~{true="-fastq" false="" fast_q} \
-      ~{true="-file" false="" file} \
-      ~{true="-out" false="" out} \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-version" false="" version}
+      ~{if (arg_output_stdout) then "-c" else ""} \
+      ~{if (fast_a) then "-fasta" else ""} \
+      ~{if (fast_q) then "-fastq" else ""} \
+      ~{if (file) then "-file" else ""} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (version) then "-version" else ""}
   >>>
   parameter_meta {
     arg_output_stdout: "(0 arg) :    output to stdout"
@@ -31,5 +31,9 @@ task Dsk2ascii {
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"
     version: "(0 arg) :    version"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

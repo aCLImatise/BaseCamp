@@ -4,4 +4,7 @@ task Abawaca {
   command <<<
     abawaca
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

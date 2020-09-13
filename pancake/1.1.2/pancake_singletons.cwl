@@ -1,65 +1,70 @@
 class: CommandLineTool
 id: ../../../pancake_singletons.cwl
 inputs:
-- id: pan_file
+- id: in_pan_file
   doc: Name of PanCake Data Object File (required)
-  type: string
+  type: File
   inputBinding:
     prefix: --panfile
-- id: ref_chrom
-  doc: Reference CHROMOSOME (define either ONE reference chromosome or ONE reference
-    genome)
+- id: in_ref_chrom
+  doc: "Reference CHROMOSOME (define either ONE reference\nchromosome or ONE reference\
+    \ genome)"
   type: string
   inputBinding:
     prefix: --ref_chrom
-- id: ref_genome
-  doc: Reference GENOME (define either ONE reference chromosome or ONE reference genome)
+- id: in_ref_genome
+  doc: "Reference GENOME (define either ONE reference\nchromosome or ONE reference\
+    \ genome)"
   type: string
   inputBinding:
     prefix: --ref_genome
-- id: non_ref_chrom_s
-  doc: 'Names of non-reference CHROMOSOMES (DEFAULT: ALL non- reference chromosomes)'
+- id: in_non_ref_chrom_s
+  doc: "Names of non-reference CHROMOSOMES (DEFAULT: ALL non-\nreference chromosomes)"
   type: string[]
   inputBinding:
     prefix: --non_ref_chroms
-- id: non_ref_genomes
-  doc: 'Names of non-reference GENOMES (DEFAULT: ALL non- reference genomes)'
+- id: in_non_ref_genomes
+  doc: "Names of non-reference GENOMES (DEFAULT: ALL non-\nreference genomes)"
   type: string[]
   inputBinding:
     prefix: --non_ref_genomes
-- id: exclude_genomes
-  doc: 'Names of GENOMES to exclude from singleton analysis (DEFAULT: No genomes excluded)'
+- id: in_exclude_genomes
+  doc: "Names of GENOMES to exclude from singleton analysis\n(DEFAULT: No genomes\
+    \ excluded)"
   type: string[]
   inputBinding:
     prefix: --exclude_genomes
-- id: exclude_chromosomes
-  doc: 'Names of CHROMOSOMES to exclude from singleton analysis (DEFAULT: No chromosomes
-    excluded)'
+- id: in_exclude_chromosomes
+  doc: "Names of CHROMOSOMES to exclude from singleton\nanalysis (DEFAULT: No chromosomes\
+    \ excluded)"
   type: string[]
   inputBinding:
     prefix: --exclude_chromosomes
-- id: min_len
-  doc: minimum length of regions to identify as a singleton region (INTEGER, DEFAULT=25)
+- id: in_min_len
+  doc: "minimum length of regions to identify as a singleton\nregion (INTEGER, DEFAULT=25)"
   type: long
   inputBinding:
     prefix: --min_len
-- id: output
-  doc: 'directory to which .fasta files of singleton regions are written (DEFAULT:
-    singletons_{REF_CHROM|REF_GENOME})'
-  type: string
+- id: in_output
+  doc: "directory to which .fasta files of singleton regions\nare written (DEFAULT:\n\
+    singletons_{REF_CHROM|REF_GENOME})"
+  type: Directory
   inputBinding:
     prefix: --output
-- id: no_output
+- id: in_no_output
   doc: if set, supress .fasta output of singleton regions
   type: boolean
   inputBinding:
     prefix: --no_output
-- id: bed_file
-  doc: .bed file to which singleton regions are written (DEFAULT= singletons_{REF_CHROM|REF_GENOME}.bed)
-  type: string
+- id: in_bed_file
+  doc: ".bed file to which singleton regions are written\n(DEFAULT= singletons_{REF_CHROM|REF_GENOME}.bed)\n"
+  type: File
   inputBinding:
     prefix: --bed_file
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pancake

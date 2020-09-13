@@ -2,30 +2,28 @@ version 1.0
 
 task PePr {
   input {
-    String? parameter_file
-    String? chip_one
-    String? input_one
-    String? chip_two
-    String? input_two
-    String? file_format
-    String? shift_size
-    String? window_size
+    File? parameter_file
+    Int? chip_one
+    Int? input_one
+    Int? chip_two
+    Int? input_two
+    File? file_format
+    Int? shift_size
+    Int? window_size
     Boolean? diff
     String? name
-    String? threshold
+    Float? threshold
     String? peak_type
-    String? num_processors
-    String? input_directory
-    String? output_directory
+    Int? num_processors
+    Directory? input_directory
+    Directory? output_directory
     String? normalization
-    String? keep_max_dup
-    String basic
-    String usage
+    Int? keep_max_dup
+    String pep_r_post_process
   }
   command <<<
     PePr \
-      ~{basic} \
-      ~{usage} \
+      ~{pep_r_post_process} \
       ~{if defined(parameter_file) then ("--parameter-file " +  '"' + parameter_file + '"') else ""} \
       ~{if defined(chip_one) then ("--chip1 " +  '"' + chip_one + '"') else ""} \
       ~{if defined(input_one) then ("--input1 " +  '"' + input_one + '"') else ""} \
@@ -34,7 +32,7 @@ task PePr {
       ~{if defined(file_format) then ("--file-format " +  '"' + file_format + '"') else ""} \
       ~{if defined(shift_size) then ("--shiftsize " +  '"' + shift_size + '"') else ""} \
       ~{if defined(window_size) then ("--windowsize " +  '"' + window_size + '"') else ""} \
-      ~{true="--diff" false="" diff} \
+      ~{if (diff) then "--diff" else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(peak_type) then ("--peaktype " +  '"' + peak_type + '"') else ""} \
@@ -60,9 +58,12 @@ task PePr {
     num_processors: "number of cores for use."
     input_directory: "where the data files are. Absolute path recommended."
     output_directory: "where you want the output files to be"
-    normalization: "Normalization method. inter-group, intra-group, scale or no. Must manually specify for differential binding analysis."
-    keep_max_dup: "maximum number of reads to keep at each position. if not specified, will not remove any duplicate."
-    basic: ""
-    usage: ""
+    normalization: "Normalization method. inter-group, intra-group, scale\\nor no. Must manually specify for differential binding\\nanalysis."
+    keep_max_dup: "maximum number of reads to keep at each position.\\nif not specified, will not remove any duplicate."
+    pep_r_post_process: "Options:"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

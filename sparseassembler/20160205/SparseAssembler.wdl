@@ -4,4 +4,7 @@ task SparseAssembler {
   command <<<
     SparseAssembler
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

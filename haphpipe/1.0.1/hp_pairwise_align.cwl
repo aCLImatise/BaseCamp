@@ -1,48 +1,60 @@
 class: CommandLineTool
 id: ../../../hp_pairwise_align.cwl
 inputs:
-- id: amplicons_fa
+- id: in_ref_gtf
+  doc: '[--outdir OUTDIR] [--keep_tmp]'
+  type: string
+  inputBinding:
+    prefix: --ref_gtf
+- id: in_amplicons_fa
   doc: Assembled amplicons (fasta)
   type: string
   inputBinding:
     prefix: --amplicons_fa
-- id: ref_fa
+- id: in_ref_fa
   doc: Reference fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --ref_fa
-- id: ref_gtf
-  doc: GTF format file containing amplicon regions. Primary and alternate coding regions
-    should be provided in the attribute field (for amino acid alignment).
-  type: string
-  inputBinding:
-    prefix: --ref_gtf
-- id: outdir
+- id: in_outdir
   doc: 'Output directory (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'Do not delete temporary directory (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_tmp
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Append console output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Append console output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - hp_pairwise_align

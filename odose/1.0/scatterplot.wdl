@@ -1,7 +1,10 @@
 version 1.0
 
-task Scatterplot.py {
+task Scatterplot {
   command <<<
-    scatterplot.py
+    scatterplot
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

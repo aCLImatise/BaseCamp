@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../ansible_vault.cwl
 inputs:
-- id: create_vertical_line_decrypt_vertical_line_edit_vertical_line_encrypt_vertical_line_re_key_vertical_line_view
+- id: in_create_vertical_line_decrypt_vertical_line_edit_vertical_line_encrypt_vertical_line_re_key_vertical_line_view
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: file_name
+- id: in_file_name
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ansible-vault

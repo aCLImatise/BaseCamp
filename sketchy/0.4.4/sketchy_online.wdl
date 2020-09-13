@@ -4,4 +4,7 @@ task SketchyOnline {
   command <<<
     sketchy online
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

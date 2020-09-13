@@ -4,4 +4,7 @@ task Cusp {
   command <<<
     cusp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

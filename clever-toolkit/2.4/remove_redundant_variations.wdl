@@ -1,17 +1,20 @@
 version 1.0
 
-task RemoveRedundantVariations {
+task Removeredundantvariations {
   input {
     String reference_dot_fast_a
-    String variants_file
+    File variants_file
   }
   command <<<
-    remove-redundant-variations \
+    remove_redundant_variations \
       ~{reference_dot_fast_a} \
       ~{variants_file}
   >>>
   parameter_meta {
     reference_dot_fast_a: ""
     variants_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

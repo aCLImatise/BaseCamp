@@ -1,21 +1,69 @@
 !Command
+command:
+- qcli_make_script
 positional: []
 named:
 - !Flag
-  description: The output filepath. [REQUIRED]
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The script author's (probably you) name to be included\nin the header\
+    \ variables. This will typically need to\nbe enclosed  in quotes to handle spaces.\n\
+    [default:AUTHOR_NAME]"
+  synonyms:
+  - -a
+  - --author_name
+  args: !SimpleFlagArg
+    name: AUTHOR_NAME
+  optional: true
+- !Flag
+  description: "The script author's (probably you) e-mail address to\nbe included\
+    \ in the header variables.\n[default:AUTHOR_EMAIL]"
+  synonyms:
+  - -e
+  - --author_email
+  args: !SimpleFlagArg
+    name: AUTHOR_EMAIL
+  optional: true
+- !Flag
+  description: "The copyright information to be included in the header\nvariables.\
+    \ [default:Copyright 2013, The BiPy project]"
+  synonyms:
+  - -c
+  - --copyright
+  args: !SimpleFlagArg
+    name: COPYRIGHT
+  optional: true
+- !Flag
+  description: "The output filepath. [REQUIRED]\n"
   synonyms:
   - -o
   - --output_fp
   args: !SimpleFlagArg
     name: OUTPUT_FP
   optional: true
-command:
-- qcli_make_script
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: qcli_make_script [options] {-o/--output_fp OUTPUT_FP}\n\n[] indicates\
   \ optional input (order unimportant)\n{} indicates required input (order unimportant)\n\
   \nThis script will create a template qcli script and make it executable.\n\nExample\

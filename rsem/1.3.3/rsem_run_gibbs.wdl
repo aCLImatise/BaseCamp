@@ -1,6 +1,6 @@
 version 1.0
 
-task RsemRunGibbs {
+task Rsemrungibbs {
   input {
     String reference_name
     String imd_name
@@ -10,7 +10,7 @@ task RsemRunGibbs {
     String gap
   }
   command <<<
-    rsem-run-gibbs \
+    rsem_run_gibbs \
       ~{reference_name} \
       ~{imd_name} \
       ~{stat_name} \
@@ -25,5 +25,8 @@ task RsemRunGibbs {
     burnin: ""
     n_samples: ""
     gap: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

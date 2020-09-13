@@ -11,4 +11,7 @@ task BedparseIntrons {
   parameter_meta {
     bed_file: "Path to the BED file."
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

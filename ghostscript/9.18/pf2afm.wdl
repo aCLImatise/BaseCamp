@@ -8,10 +8,13 @@ task Pf2afm {
   command <<<
     pf2afm \
       ~{gs} \
-      ~{true="-dNODISPLAY" false="" d_no_display}
+      ~{if (d_no_display) then "-dNODISPLAY" else ""}
   >>>
   parameter_meta {
     d_no_display: ""
     gs: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

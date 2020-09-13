@@ -4,4 +4,7 @@ task Frestdist {
   command <<<
     frestdist
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Clustalw {
   command <<<
     clustalw
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

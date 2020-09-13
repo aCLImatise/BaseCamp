@@ -1,9 +1,9 @@
 version 1.0
 
-task AdamShell {
+task Adamshell {
   input {
     File? preload_file_enforcing
-    String? master
+    Int? master
     String? deploy_mode
     String? class
     String? name
@@ -15,49 +15,49 @@ task AdamShell {
     File? files
     String? conf
     File? properties_file
-    String? driver_memory
+    Int? driver_memory
     Boolean? driver_java_options
     Boolean? driver_library_path
     Boolean? driver_class_path
-    String? executor_memory
+    Int? executor_memory
     String? proxy_user
     Boolean? verbose
-    String? driver_cores
+    Int? driver_cores
     Boolean? supervise
     String? kill
     String? status
-    String? total_executor_cores
-    String? executor_cores
+    Int? total_executor_cores
+    Int? executor_cores
     String? queue
-    String? num_executors
-    String? archives
+    Int? num_executors
+    Directory? archives
     String? principal
-    String? keytab
+    File? keytab
   }
   command <<<
-    adam-shell \
+    adam_shell \
       ~{if defined(preload_file_enforcing) then ("-I " +  '"' + preload_file_enforcing + '"') else ""} \
       ~{if defined(master) then ("--master " +  '"' + master + '"') else ""} \
       ~{if defined(deploy_mode) then ("--deploy-mode " +  '"' + deploy_mode + '"') else ""} \
       ~{if defined(class) then ("--class " +  '"' + class + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
       ~{if defined(jars) then ("--jars " +  '"' + jars + '"') else ""} \
-      ~{true="--packages" false="" packages} \
-      ~{true="--exclude-packages" false="" exclude_packages} \
-      ~{true="--repositories" false="" repositories} \
+      ~{if (packages) then "--packages" else ""} \
+      ~{if (exclude_packages) then "--exclude-packages" else ""} \
+      ~{if (repositories) then "--repositories" else ""} \
       ~{if defined(py_files) then ("--py-files " +  '"' + py_files + '"') else ""} \
       ~{if defined(files) then ("--files " +  '"' + files + '"') else ""} \
       ~{if defined(conf) then ("--conf " +  '"' + conf + '"') else ""} \
       ~{if defined(properties_file) then ("--properties-file " +  '"' + properties_file + '"') else ""} \
       ~{if defined(driver_memory) then ("--driver-memory " +  '"' + driver_memory + '"') else ""} \
-      ~{true="--driver-java-options" false="" driver_java_options} \
-      ~{true="--driver-library-path" false="" driver_library_path} \
-      ~{true="--driver-class-path" false="" driver_class_path} \
+      ~{if (driver_java_options) then "--driver-java-options" else ""} \
+      ~{if (driver_library_path) then "--driver-library-path" else ""} \
+      ~{if (driver_class_path) then "--driver-class-path" else ""} \
       ~{if defined(executor_memory) then ("--executor-memory " +  '"' + executor_memory + '"') else ""} \
       ~{if defined(proxy_user) then ("--proxy-user " +  '"' + proxy_user + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(driver_cores) then ("--driver-cores " +  '"' + driver_cores + '"') else ""} \
-      ~{true="--supervise" false="" supervise} \
+      ~{if (supervise) then "--supervise" else ""} \
       ~{if defined(kill) then ("--kill " +  '"' + kill + '"') else ""} \
       ~{if defined(status) then ("--status " +  '"' + status + '"') else ""} \
       ~{if defined(total_executor_cores) then ("--total-executor-cores " +  '"' + total_executor_cores + '"') else ""} \
@@ -70,35 +70,38 @@ task AdamShell {
   >>>
   parameter_meta {
     preload_file_enforcing: "preload <file>, enforcing line-by-line interpretation"
-    master: "spark://host:port, mesos://host:port, yarn, k8s://https://host:port, or local (Default: local[*])."
-    deploy_mode: "Whether to launch the driver program locally (\"client\") or on one of the worker machines inside the cluster (\"cluster\") (Default: client)."
+    master: "spark://host:port, mesos://host:port, yarn,\\nk8s://https://host:port, or local (Default: local[*])."
+    deploy_mode: "Whether to launch the driver program locally (\\\"client\\\") or\\non one of the worker machines inside the cluster (\\\"cluster\\\")\\n(Default: client)."
     class: "Your application's main class (for Java / Scala apps)."
     name: "A name of your application."
-    jars: "Comma-separated list of jars to include on the driver and executor classpaths."
-    packages: "Comma-separated list of maven coordinates of jars to include on the driver and executor classpaths. Will search the local maven repo, then maven central and any additional remote repositories given by --repositories. The format for the coordinates should be groupId:artifactId:version."
-    exclude_packages: "Comma-separated list of groupId:artifactId, to exclude while resolving the dependencies provided in --packages to avoid dependency conflicts."
-    repositories: "Comma-separated list of additional remote repositories to search for the maven coordinates given with --packages."
-    py_files: "Comma-separated list of .zip, .egg, or .py files to place on the PYTHONPATH for Python apps."
-    files: "Comma-separated list of files to be placed in the working directory of each executor. File paths of these files in executors can be accessed via SparkFiles.get(fileName)."
+    jars: "Comma-separated list of jars to include on the driver\\nand executor classpaths."
+    packages: "Comma-separated list of maven coordinates of jars to include\\non the driver and executor classpaths. Will search the local\\nmaven repo, then maven central and any additional remote\\nrepositories given by --repositories. The format for the\\ncoordinates should be groupId:artifactId:version."
+    exclude_packages: "Comma-separated list of groupId:artifactId, to exclude while\\nresolving the dependencies provided in --packages to avoid\\ndependency conflicts."
+    repositories: "Comma-separated list of additional remote repositories to\\nsearch for the maven coordinates given with --packages."
+    py_files: "Comma-separated list of .zip, .egg, or .py files to place\\non the PYTHONPATH for Python apps."
+    files: "Comma-separated list of files to be placed in the working\\ndirectory of each executor. File paths of these files\\nin executors can be accessed via SparkFiles.get(fileName)."
     conf: "=VALUE           Arbitrary Spark configuration property."
-    properties_file: "Path to a file from which to load extra properties. If not specified, this will look for conf/spark-defaults.conf."
+    properties_file: "Path to a file from which to load extra properties. If not\\nspecified, this will look for conf/spark-defaults.conf."
     driver_memory: "Memory for driver (e.g. 1000M, 2G) (Default: 1024M)."
     driver_java_options: "Extra Java options to pass to the driver."
     driver_library_path: "Extra library path entries to pass to the driver."
-    driver_class_path: "Extra class path entries to pass to the driver. Note that jars added with --jars are automatically included in the classpath."
+    driver_class_path: "Extra class path entries to pass to the driver. Note that\\njars added with --jars are automatically included in the\\nclasspath."
     executor_memory: "Memory per executor (e.g. 1000M, 2G) (Default: 1G)."
-    proxy_user: "User to impersonate when submitting the application. This argument does not work with --principal / --keytab."
+    proxy_user: "User to impersonate when submitting the application.\\nThis argument does not work with --principal / --keytab."
     verbose: "Print additional debug output."
-    driver_cores: "Number of cores used by the driver, only in cluster mode (Default: 1)."
+    driver_cores: "Number of cores used by the driver, only in cluster mode\\n(Default: 1)."
     supervise: "If given, restarts the driver on failure."
     kill: "If given, kills the driver specified."
     status: "If given, requests the status of the driver specified."
     total_executor_cores: "Total cores for all executors."
-    executor_cores: "Number of cores per executor. (Default: 1 in YARN mode, or all available cores on the worker in standalone mode)"
-    queue: "The YARN queue to submit to (Default: \"default\")."
-    num_executors: "Number of executors to launch (Default: 2). If dynamic allocation is enabled, the initial number of executors will be at least NUM."
-    archives: "Comma separated list of archives to be extracted into the working directory of each executor."
-    principal: "Principal to be used to login to KDC, while running on secure HDFS."
-    keytab: "The full path to the file that contains the keytab for the principal specified above. This keytab will be copied to the node running the Application Master via the Secure Distributed Cache, for renewing the login tickets and the delegation tokens periodically."
+    executor_cores: "Number of cores per executor. (Default: 1 in YARN mode,\\nor all available cores on the worker in standalone mode)"
+    queue: "The YARN queue to submit to (Default: \\\"default\\\")."
+    num_executors: "Number of executors to launch (Default: 2).\\nIf dynamic allocation is enabled, the initial number of\\nexecutors will be at least NUM."
+    archives: "Comma separated list of archives to be extracted into the\\nworking directory of each executor."
+    principal: "Principal to be used to login to KDC, while running on\\nsecure HDFS."
+    keytab: "The full path to the file that contains the keytab for the\\nprincipal specified above. This keytab will be copied to\\nthe node running the Application Master via the Secure\\nDistributed Cache, for renewing the login tickets and the\\ndelegation tokens periodically.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../purge.cwl
 inputs:
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: score
+- id: in_score
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+- id: in_options
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - purge

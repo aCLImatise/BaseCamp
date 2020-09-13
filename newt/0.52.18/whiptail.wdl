@@ -33,7 +33,7 @@ task Whiptail {
   command <<<
     whiptail \
       ~{if defined(msgbox) then ("--msgbox " +  '"' + msgbox + '"') else ""} \
-      ~{true="--yesno" false="" yes_no} \
+      ~{if (yes_no) then "--yesno" else ""} \
       ~{if defined(infobox) then ("--infobox " +  '"' + infobox + '"') else ""} \
       ~{if defined(input_box) then ("--inputbox " +  '"' + input_box + '"') else ""} \
       ~{if defined(password_box) then ("--passwordbox " +  '"' + password_box + '"') else ""} \
@@ -42,30 +42,30 @@ task Whiptail {
       ~{if defined(checklist) then ("--checklist " +  '"' + checklist + '"') else ""} \
       ~{if defined(radio_list) then ("--radiolist " +  '"' + radio_list + '"') else ""} \
       ~{if defined(gauge) then ("--gauge " +  '"' + gauge + '"') else ""} \
-      ~{true="--clear" false="" clear} \
-      ~{true="--defaultno" false="" default_no} \
+      ~{if (clear) then "--clear" else ""} \
+      ~{if (default_no) then "--defaultno" else ""} \
       ~{if defined(default_item) then ("--default-item " +  '"' + default_item + '"') else ""} \
-      ~{true="--fullbuttons" false="" full_buttons} \
-      ~{true="--nocancel" false="" no_cancel} \
+      ~{if (full_buttons) then "--fullbuttons" else ""} \
+      ~{if (no_cancel) then "--nocancel" else ""} \
       ~{if defined(yes_button) then ("--yes-button " +  '"' + yes_button + '"') else ""} \
       ~{if defined(no_button) then ("--no-button " +  '"' + no_button + '"') else ""} \
       ~{if defined(ok_button) then ("--ok-button " +  '"' + ok_button + '"') else ""} \
       ~{if defined(cancel_button) then ("--cancel-button " +  '"' + cancel_button + '"') else ""} \
-      ~{true="--noitem" false="" no_item} \
-      ~{true="--notags" false="" no_tags} \
-      ~{true="--separate-output" false="" separate_output} \
+      ~{if (no_item) then "--noitem" else ""} \
+      ~{if (no_tags) then "--notags" else ""} \
+      ~{if (separate_output) then "--separate-output" else ""} \
       ~{if defined(output_fd) then ("--output-fd " +  '"' + output_fd + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
       ~{if defined(back_title) then ("--backtitle " +  '"' + back_title + '"') else ""} \
-      ~{true="--scrolltext" false="" scroll_text} \
-      ~{true="--topleft" false="" top_left}
+      ~{if (scroll_text) then "--scrolltext" else ""} \
+      ~{if (top_left) then "--topleft" else ""}
   >>>
   parameter_meta {
     msgbox: "<height> <width>"
     yes_no: "<text> <height> <width>"
     infobox: "<height> <width>"
-    input_box: "<height> <width> [init] "
-    password_box: "<height> <width> [init] "
+    input_box: "<height> <width> [init]"
+    password_box: "<height> <width> [init]"
     text_box: "<height> <width>"
     menu: "<height> <width> <listheight> [tag item] ..."
     checklist: "<height> <width> <listheight> [tag item status]..."
@@ -88,5 +88,8 @@ task Whiptail {
     back_title: "display backtitle"
     scroll_text: "force vertical scrollbars"
     top_left: "put window in top-left corner"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,4 +1,6 @@
 !Command
+command:
+- kmer-mask
 positional: []
 named:
 - !Flag
@@ -9,7 +11,7 @@ named:
     name: mer-database
   optional: true
 - !Flag
-  description: 'mer-size          '
+  description: mer-size
   synonyms:
   - -ms
   args: !EmptyFlagArg {}
@@ -36,10 +38,11 @@ named:
     name: in.2.fastq
   optional: true
 - !Flag
-  description: "out                output reads: out.fullymasked.[12].fastq      -\
-    \ reads with below 'lowthreshold' bases retained out.partiallymasked.[12].fastq\
-    \  - reads in between out.retained.[12].fastq         - reads with more than 'hightreshold'\
-    \ bases retained out.discarded.[12].fastq        - reads with conflicting status"
+  description: "out                output reads:\nout.fullymasked.[12].fastq     \
+    \ - reads with below 'lowthreshold' bases retained\nout.partiallymasked.[12].fastq\
+    \  - reads in between\nout.retained.[12].fastq         - reads with more than\
+    \ 'hightreshold' bases retained\nout.discarded.[12].fastq        - reads with\
+    \ conflicting status"
   synonyms:
   - -o
   args: !EmptyFlagArg {}
@@ -71,22 +74,22 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: promote the lesser RETAINED read to the status of the more RETAINED
-    read read1=fullymasked and read2=partiallymasked -> both are partiallymasked
+  description: "promote the lesser RETAINED read to the status of the more RETAINED\
+    \ read\nread1=fullymasked and read2=partiallymasked -> both are partiallymasked"
   synonyms:
   - -promote
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: demote the more RETAINED read to the status of the lesser RETAINED
-    read read1=fullymasked and read2=partiallymasked -> both are fullymasked
+  description: "demote the more RETAINED read to the status of the lesser RETAINED\
+    \ read\nread1=fullymasked and read2=partiallymasked -> both are fullymasked"
   synonyms:
   - -demote
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: discard pairs with conflicting status (DEFAULT) read1=fullymasked and
-    read2=partiallymasked -> both are discarded
+  description: "discard pairs with conflicting status (DEFAULT)\nread1=fullymasked\
+    \ and read2=partiallymasked -> both are discarded"
   synonyms:
   - -discard
   args: !EmptyFlagArg {}
@@ -103,6 +106,20 @@ named:
   synonyms:
   - -nomasking
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (0.3333)
+  synonyms:
+  - -lowthreshold
+  args: !SimpleFlagArg
+    name: t
+  optional: true
+- !Flag
+  description: (0.6667)
+  synonyms:
+  - -highthreshold
+  args: !SimpleFlagArg
+    name: t
   optional: true
 - !Flag
   description: write a histogram of the amount of sequence RETAINED
@@ -124,10 +141,9 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- kmer-mask
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

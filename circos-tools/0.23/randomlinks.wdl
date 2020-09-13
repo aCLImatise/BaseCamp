@@ -2,16 +2,19 @@ version 1.0
 
 task Randomlinks {
   input {
-    String? karyotype
     String? ruleset
+    File? karyotype
   }
   command <<<
     randomlinks \
-      ~{if defined(karyotype) then ("-karyotype " +  '"' + karyotype + '"') else ""} \
-      ~{if defined(ruleset) then ("-ruleset " +  '"' + ruleset + '"') else ""}
+      ~{if defined(ruleset) then ("-ruleset " +  '"' + ruleset + '"') else ""} \
+      ~{if defined(karyotype) then ("-karyotype " +  '"' + karyotype + '"') else ""}
   >>>
   parameter_meta {
-    karyotype: ""
     ruleset: ""
+    karyotype: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

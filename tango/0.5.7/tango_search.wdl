@@ -3,13 +3,13 @@ version 1.0
 task TangoSearch {
   input {
     String? mode
-    String? cpus
-    String? block_size
-    String? chunks
-    String? top
-    String? evalue
+    Int? cpus
+    Int? block_size
+    Int? chunks
+    Int? top
+    Float? evalue
     Int? min_len
-    String? tmpdir
+    Directory? tmpdir
     String query
     String dbfile
     String outfile
@@ -29,16 +29,19 @@ task TangoSearch {
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
   parameter_meta {
-    mode: "Choice of search mode for diamond: 'blastx' (default) for DNA query sequences or 'blastp' for amino acid query sequences"
+    mode: "Choice of search mode for diamond: 'blastx' (default)\\nfor DNA query sequences or 'blastp' for amino acid\\nquery sequences"
     cpus: "Number of cpus to use for diamond"
-    block_size: "Sequence block size in billions of letters (default=2.0). Set to 20 on clusters"
+    block_size: "Sequence block size in billions of letters\\n(default=2.0). Set to 20 on clusters"
     chunks: "Number of chunks for index processing (default=4)"
-    top: "Report alignments within this percentage range of top bitscore (default=10)"
+    top: "Report alignments within this percentage range of top\\nbitscore (default=10)"
     evalue: "maximum e-value to report alignments (default=0.001)"
-    min_len: "Minimum length of queries. Shorter queries will be filtered prior to search."
-    tmpdir: "directory for temporary files"
+    min_len: "Minimum length of queries. Shorter queries will be\\nfiltered prior to search."
+    tmpdir: "directory for temporary files\\n"
     query: "Query contig nucleotide file"
     dbfile: "Diamond database file"
     outfile: "Diamond output file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

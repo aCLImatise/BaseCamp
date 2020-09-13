@@ -4,4 +4,7 @@ task Pyatac {
   command <<<
     pyatac
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

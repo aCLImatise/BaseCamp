@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../pvacseq_binding_filter_input_file.cwl
 inputs:
-- id: b
+- id: in_b
   doc: ''
   type: string
   inputBinding:
     prefix: -b
-- id: pvac_seq
+- id: in_pvac_seq
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: binding_filter
+- id: in_binding_filter
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pvacseq

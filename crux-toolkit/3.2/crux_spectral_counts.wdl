@@ -1,14 +1,10 @@
 version 1.0
 
-task CruxSpectralCounts {
-  input {
-    String input_psms
-  }
+task CruxSpectralcounts {
   command <<<
-    crux spectral-counts \
-      ~{input_psms}
+    crux spectral_counts
   >>>
-  parameter_meta {
-    input_psms: ""
+  output {
+    File out_stdout = stdout()
   }
 }

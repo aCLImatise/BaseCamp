@@ -2,7 +2,19 @@ version 1.0
 
 task F2py {
   input {
-    Boolean? help_link
+    Boolean? two_d_numpy
+    Boolean? two_d_numeric
+    Boolean? two_d_numarray
+    Boolean? g_three_numpy
+    File? write_signatures_file
+    File? name_module_fpy
+    String? lower
+    Int? build_dir
+    Boolean? overwrite_signature
+    Boolean? short_latex
+    Boolean? debug_capi
+    Int? include_paths
+    Boolean? link
     Boolean? quiet
     Boolean? verbose
     Boolean? print_fpy_version
@@ -18,30 +30,64 @@ task F2py {
     Boolean? no_opt
     Boolean? noarch
     Boolean? debug
-    String one
+    Boolean? lslash_path_slash_to_slash_lib_slash
+    Boolean? define_uname
+    Boolean? i_slash_path_slash_to_slash_include_slash
+    Boolean? d_no_append_fortran
+    Boolean? d_underscore_g_seven_seven
+    String directories_dot
   }
   command <<<
     f2py \
-      ~{one} \
-      ~{true="--help-link" false="" help_link} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="-v" false="" print_fpy_version} \
-      ~{true="--fcompiler" false="" f_compiler} \
-      ~{true="--compiler" false="" compiler} \
-      ~{true="--help-fcompiler" false="" help_f_compiler} \
-      ~{true="--f77exec" false="" f_seven_seven_exec} \
-      ~{true="--f90exec" false="" f_nine_zero_exec} \
-      ~{true="--f77flags" false="" f_seven_seven_flags} \
-      ~{true="--f90flags" false="" f_nine_zero_flags} \
-      ~{true="--opt" false="" opt} \
-      ~{true="--arch" false="" arch} \
-      ~{true="--noopt" false="" no_opt} \
-      ~{true="--noarch" false="" noarch} \
-      ~{true="--debug" false="" debug}
+      ~{directories_dot} \
+      ~{if (two_d_numpy) then "--2d-numpy" else ""} \
+      ~{if (two_d_numeric) then "--2d-numeric" else ""} \
+      ~{if (two_d_numarray) then "--2d-numarray" else ""} \
+      ~{if (g_three_numpy) then "--g3-numpy" else ""} \
+      ~{if defined(write_signatures_file) then ("-h " +  '"' + write_signatures_file + '"') else ""} \
+      ~{if defined(name_module_fpy) then ("-m " +  '"' + name_module_fpy + '"') else ""} \
+      ~{if defined(lower) then ("--lower " +  '"' + lower + '"') else ""} \
+      ~{if defined(build_dir) then ("--build-dir " +  '"' + build_dir + '"') else ""} \
+      ~{if (overwrite_signature) then "--overwrite-signature" else ""} \
+      ~{if (short_latex) then "--short-latex" else ""} \
+      ~{if (debug_capi) then "--debug-capi" else ""} \
+      ~{if defined(include_paths) then ("--include-paths " +  '"' + include_paths + '"') else ""} \
+      ~{if (link) then "--link-" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (print_fpy_version) then "-v" else ""} \
+      ~{if (f_compiler) then "--fcompiler" else ""} \
+      ~{if (compiler) then "--compiler" else ""} \
+      ~{if (help_f_compiler) then "--help-fcompiler" else ""} \
+      ~{if (f_seven_seven_exec) then "--f77exec" else ""} \
+      ~{if (f_nine_zero_exec) then "--f90exec" else ""} \
+      ~{if (f_seven_seven_flags) then "--f77flags" else ""} \
+      ~{if (f_nine_zero_flags) then "--f90flags" else ""} \
+      ~{if (opt) then "--opt" else ""} \
+      ~{if (arch) then "--arch" else ""} \
+      ~{if (no_opt) then "--noopt" else ""} \
+      ~{if (noarch) then "--noarch" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (lslash_path_slash_to_slash_lib_slash) then "-L/path/to/lib/" else ""} \
+      ~{if (define_uname) then "-D" else ""} \
+      ~{if (i_slash_path_slash_to_slash_include_slash) then "-I/path/to/include/" else ""} \
+      ~{if (d_no_append_fortran) then "-DNO_APPEND_FORTRAN" else ""} \
+      ~{if (d_underscore_g_seven_seven) then "-DUNDERSCORE_G77" else ""}
   >>>
   parameter_meta {
-    help_link: "[..] List system resources found by system_info.py. See also --link-<resource> switch below. [..] is optional list of resources names. E.g. try 'f2py --help-link lapack_opt'."
+    two_d_numpy: "Use numpy.f2py tool with NumPy support. [DEFAULT]"
+    two_d_numeric: "Use f2py2e tool with Numeric support."
+    two_d_numarray: "Use f2py2e tool with Numarray support."
+    g_three_numpy: "Use 3rd generation f2py from the separate f2py package.\\n[NOT AVAILABLE YET]"
+    write_signatures_file: "Write signatures of the fortran routines to file <filename>\\nand exit. You can then edit <filename> and use it instead\\nof <fortran files>. If <filename>==stdout then the\\nsignatures are printed to stdout."
+    name_module_fpy: "Name of the module; f2py generates a Python/C API\\nfile <modulename>module.c or extension module <modulename>.\\nDefault is 'untitled'."
+    lower: "assumed with -h key, and --no-lower without -h key."
+    build_dir: "All f2py generated files are created in <dirname>.\\nDefault is tempfile.mkdtemp()."
+    overwrite_signature: "Overwrite existing signature file."
+    short_latex: "Create 'incomplete' LaTeX document (without commands\\n\\documentclass, \\tableofcontents, and \\begin{document},\\n\\end{document})."
+    debug_capi: "Create C/API code that reports the state of the wrappers\\nduring runtime. Useful for debugging."
+    include_paths: ":<path2>:...   Search include files from the given"
+    link: "<resource> switch below. [..] is optional list"
     quiet: "Run quietly."
     verbose: "Run with extra verbosity."
     print_fpy_version: "Print f2py version ID and exit."
@@ -57,6 +103,14 @@ task F2py {
     no_opt: "Compile without optimization"
     noarch: "Compile without arch-dependent optimization"
     debug: "Compile with debugging information"
-    one: ""
+    lslash_path_slash_to_slash_lib_slash: "<libname>"
+    define_uname: "<define> -U<name>"
+    i_slash_path_slash_to_slash_include_slash: ""
+    d_no_append_fortran: ""
+    d_underscore_g_seven_seven: ""
+    directories_dot: "--help-link [..] List system resources found by system_info.py. See also"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task SetUnmappedBitFlag {
   command <<<
     SetUnmappedBitFlag
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

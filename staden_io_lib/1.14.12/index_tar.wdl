@@ -8,10 +8,13 @@ task IndexTar {
   command <<<
     index_tar \
       ~{tar_file} \
-      ~{true="-d" false="" d}
+      ~{if (d) then "-d" else ""}
   >>>
   parameter_meta {
     d: ""
     tar_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

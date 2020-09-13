@@ -1,7 +1,10 @@
 version 1.0
 
-task GhostTreeSilva {
+task GhosttreeSilva {
   command <<<
-    ghost-tree silva
+    ghost_tree silva
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

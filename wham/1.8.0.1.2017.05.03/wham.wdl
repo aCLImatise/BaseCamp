@@ -14,4 +14,7 @@ task Wham {
     find_bug_open: "find a bug, please open a report on github!"
     the: ", and -p, control the sensitivity and specificity"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

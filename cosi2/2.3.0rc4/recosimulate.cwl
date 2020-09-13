@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../recosimulate.cwl
 inputs:
-- id: reco_sim
+- id: in_reco_sim
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: parameter_file_name
+- id: in_parameter_file_name
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - recosimulate

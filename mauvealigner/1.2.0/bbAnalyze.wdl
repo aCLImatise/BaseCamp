@@ -4,4 +4,7 @@ task BbAnalyze {
   command <<<
     bbAnalyze
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

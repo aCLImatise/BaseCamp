@@ -2,13 +2,12 @@ version 1.0
 
 task Dsk {
   input {
-    Int? t
-    Int? m
-    Int? d
-    String? o
-    Boolean? histo
     Boolean? c
-    Boolean? b
+    Boolean? histo
+    String? o
+    Int? d
+    Int? m
+    Int? t
     String input_file
     String km_er_size
   }
@@ -16,23 +15,24 @@ task Dsk {
     dsk \
       ~{input_file} \
       ~{km_er_size} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if (c) then "-c" else ""} \
+      ~{if (histo) then "-histo" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{true="-histo" false="" histo} \
-      ~{true="-c" false="" c} \
-      ~{true="-b" false="" b}
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
   parameter_meta {
-    t: ""
-    m: ""
-    d: ""
-    o: ""
-    histo: ""
     c: ""
-    b: ""
+    histo: ""
+    o: ""
+    d: ""
+    m: ""
+    t: ""
     input_file: ""
     km_er_size: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

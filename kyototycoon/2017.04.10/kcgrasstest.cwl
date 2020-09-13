@@ -1,52 +1,75 @@
 class: CommandLineTool
 id: ../../../kcgrasstest.cwl
 inputs:
-- id: th
+- id: in_pc_cap
   doc: ''
-  type: string
+  type: long
   inputBinding:
-    prefix: -th
-- id: rnd
+    prefix: -pccap
+- id: in_psi_z
   doc: ''
-  type: boolean
+  type: long
   inputBinding:
-    prefix: -rnd
-- id: etc
+    prefix: -psiz
+- id: in_b_num
   doc: ''
-  type: boolean
+  type: long
   inputBinding:
-    prefix: -etc
-- id: tran
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -tran
-- id: tc
+    prefix: -bnum
+- id: in_tc
   doc: ''
   type: boolean
   inputBinding:
     prefix: -tc
-- id: b_num
+- id: in_it
   doc: ''
-  type: string
+  type: long
   inputBinding:
-    prefix: -bnum
-- id: psi_z
+    prefix: -it
+- id: in_th
   doc: ''
-  type: string
+  type: long
   inputBinding:
-    prefix: -psiz
-- id: pc_cap
+    prefix: -th
+- id: in_rnd
   doc: ''
-  type: string
+  type: boolean
   inputBinding:
-    prefix: -pccap
-- id: order
+    prefix: -rnd
+- id: in_var_7
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -tran
+- id: in_etc
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -etc
+- id: in_order
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_queue
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_var_11
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_wicked
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - kcgrasstest

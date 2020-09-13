@@ -1,4 +1,6 @@
 !Command
+command:
+- recalladapters
 positional: []
 named:
 - !Flag
@@ -25,8 +27,8 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Number of threads for parallel BAM compression, can only be set when
-    not generating pbindex inline with --inlinePbi
+  description: "Number of threads for parallel BAM compression, can only\nbe set when\
+    \ not generating pbindex inline with --inlinePbi"
   synonyms:
   - -b
   args: !SimpleFlagArg
@@ -42,6 +44,65 @@ named:
   description: No progress output.
   synonyms:
   - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --disableAdapterFinding
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --adapters
+  args: !SimpleFlagArg
+    name: adapterSequences.fasta
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --globalAlnFlanking
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --flankLength
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --minSoftAccuracy
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --minHardAccuracy
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --minFlankingScore
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --disableAdapterCorrection
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --adpqc
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -72,13 +133,23 @@ named:
   args: !SimpleFlagArg
     name: RANGES
   optional: true
-command:
-- recalladapters
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: -s subreadset.xml -o outputPrefix [options]\n\nVersion:9.0.0.da2e8977c\n\
   \nrecalladapters operates on BAM files in one convention (subreads+scraps or\nhqregions+scraps),\
   \ allows reprocessing adapter calls then outputs the resulting\nBAM files as subreads\

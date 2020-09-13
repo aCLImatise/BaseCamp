@@ -11,24 +11,22 @@ task Barrnap {
     Boolean? evalue
     Boolean? in_cseq
     Boolean? out_seq
-    String chr_dot_fa
   }
   command <<<
     barrnap \
-      ~{chr_dot_fa} \
-      ~{true="--citation" false="" citation} \
-      ~{true="--kingdom" false="" kingdom} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--threads" false="" threads} \
-      ~{true="--lencutoff" false="" len_cut_off} \
-      ~{true="--reject" false="" reject} \
-      ~{true="--evalue" false="" evalue} \
-      ~{true="--incseq" false="" in_cseq} \
-      ~{true="--outseq" false="" out_seq}
+      ~{if (citation) then "--citation" else ""} \
+      ~{if (kingdom) then "--kingdom" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (len_cut_off) then "--lencutoff" else ""} \
+      ~{if (reject) then "--reject" else ""} \
+      ~{if (evalue) then "--evalue" else ""} \
+      ~{if (in_cseq) then "--incseq" else ""} \
+      ~{if (out_seq) then "--outseq" else ""}
   >>>
   parameter_meta {
     citation: "Print citation for referencing barrnap"
-    kingdom: "[X]     Kingdom: euk bac mito arc (default 'bac')"
+    kingdom: "[X]     Kingdom: arc mito bac euk (default 'bac')"
     quiet: "No screen output (default OFF)"
     threads: "[N]     Number of threads/cores/CPUs to use (default '1')"
     len_cut_off: "[n.n] Proportional length threshold to label as partial (default '0.8')"
@@ -36,6 +34,8 @@ task Barrnap {
     evalue: "[n.n]    Similarity e-value cut-off (default '1e-06')"
     in_cseq: "Include FASTA _input_ sequences in GFF3 output (default OFF)"
     out_seq: "[X]      Save rRNA hit seqs to this FASTA file (default '')"
-    chr_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

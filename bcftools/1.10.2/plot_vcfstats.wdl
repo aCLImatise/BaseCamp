@@ -1,9 +1,9 @@
 version 1.0
 
-task PlotVcfstats {
+task Plotvcfstats {
   input {
     Boolean? merge
-    String? prefix
+    Directory? prefix
     Boolean? no_pdf
     Boolean? raster_ize
     Boolean? sample_names
@@ -12,15 +12,15 @@ task PlotVcfstats {
     Boolean? vectors
   }
   command <<<
-    plot-vcfstats \
-      ~{true="--merge" false="" merge} \
+    plot_vcfstats \
+      ~{if (merge) then "--merge" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
-      ~{true="--no-PDF" false="" no_pdf} \
-      ~{true="--rasterize" false="" raster_ize} \
-      ~{true="--sample-names" false="" sample_names} \
+      ~{if (no_pdf) then "--no-PDF" else ""} \
+      ~{if (raster_ize) then "--rasterize" else ""} \
+      ~{if (sample_names) then "--sample-names" else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
       ~{if defined(main_title) then ("--main-title " +  '"' + main_title + '"') else ""} \
-      ~{true="--vectors" false="" vectors}
+      ~{if (vectors) then "--vectors" else ""}
   >>>
   parameter_meta {
     merge: "Merge vcfstats files to STDOUT, skip plotting."
@@ -31,5 +31,9 @@ task PlotVcfstats {
     title: "Identify files by these titles in plots. Can be given multiple times."
     main_title: "Main title for the PDF."
     vectors: "Generate vector graphics for PDF images, the opposite of -r"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_prefix = "${in_prefix}"
   }
 }

@@ -11,4 +11,7 @@ task GenomepyGenomes {
   parameter_meta {
     provider: "provider"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

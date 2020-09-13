@@ -1,7 +1,10 @@
 version 1.0
 
-task BtSave {
+task Btsave {
   command <<<
-    bt-save
+    bt_save
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

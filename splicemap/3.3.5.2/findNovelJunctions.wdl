@@ -11,4 +11,7 @@ task FindNovelJunctions {
   parameter_meta {
     or: "./findNovelJunction refFlat.bed junction.bed"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

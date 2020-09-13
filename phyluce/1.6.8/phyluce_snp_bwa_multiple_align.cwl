@@ -1,48 +1,51 @@
 class: CommandLineTool
 id: ../../../phyluce_snp_bwa_multiple_align.cwl
 inputs:
-- id: config
-  doc: A configuration file containing the reference-to-read sample mapping and some
-    metadata
-  type: string
+- id: in_config
+  doc: "A configuration file containing the reference-to-read\nsample mapping and\
+    \ some metadata"
+  type: File
   inputBinding:
     prefix: --config
-- id: output
+- id: in_output
   doc: The directory in which to store the SNPs files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: subfolder
-  doc: A subdirectory, below the level of the group, containing the reads
+- id: in_subfolder
+  doc: "A subdirectory, below the level of the group,\ncontaining the reads"
   type: string
   inputBinding:
     prefix: --subfolder
-- id: cores
+- id: in_cores
   doc: The number of compute cores/threads to use
-  type: string
+  type: long
   inputBinding:
     prefix: --cores
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-- id: no_remove_duplicates
+- id: in_no_remove_duplicates
   doc: Do not remove duplicate reads.
   type: boolean
   inputBinding:
     prefix: --no-remove-duplicates
-- id: mem
+- id: in_mem
   doc: Use bwa mem.
   type: boolean
   inputBinding:
     prefix: --mem
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_snp_bwa_multiple_align

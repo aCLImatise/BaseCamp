@@ -1,32 +1,36 @@
 class: CommandLineTool
 id: ../../../falconc_bam2clippedFasta.cwl
 inputs:
-- id: help_syntax
+- id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'
   type: boolean
   inputBinding:
     prefix: --help-syntax
-- id: _inbam_string
+- id: in__inbam_string
   doc: =, --in-bam=  string  REQUIRED  input bam name
   type: boolean
   inputBinding:
     prefix: -i
-- id: _region_string
+- id: in__region_string
   doc: =, --region=  string  REQUIRED  htslib formatted region seqid:start-end
   type: boolean
   inputBinding:
     prefix: -r
-- id: _flag_int
+- id: in__flag_int
   doc: =, --flag=    int     3844      filter reads with flag
   type: boolean
   inputBinding:
     prefix: -f
-- id: flip_rc
-  doc: bool    false     reverse complement (RC) the sequence if alignment is in RC
+- id: in_flip_rc
+  doc: "bool    false     reverse complement (RC) the sequence if\nalignment is in\
+    \ RC\n"
   type: boolean
   inputBinding:
     prefix: --flip-rc
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - falconc

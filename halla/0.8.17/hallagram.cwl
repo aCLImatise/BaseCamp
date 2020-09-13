@@ -1,62 +1,70 @@
 class: CommandLineTool
 id: ../../../hallagram.cwl
 inputs:
-- id: strongest
+- id: in_strongest
   doc: isolate the N strongest associations
   type: string
   inputBinding:
     prefix: --strongest
-- id: largest
+- id: in_largest
   doc: isolate the N largest associations
   type: string
   inputBinding:
     prefix: --largest
-- id: mask
+- id: in_mask
   doc: mask feature pairs not in associations
   type: boolean
   inputBinding:
     prefix: --mask
-- id: cmap
+- id: in_cmap
   doc: matplotlib color map
   type: string
   inputBinding:
     prefix: --cmap
-- id: a_x_labels
-  doc: AXLABELS axis labels
+- id: in_a_x_labels
+  doc: "AXLABELS\naxis labels"
   type: string
   inputBinding:
     prefix: --axlabels
-- id: outfile
+- id: in_outfile
   doc: output file name
-  type: string
+  type: File
   inputBinding:
     prefix: --outfile
-- id: similarity
-  doc: Similarity metric has been used for similarity measurement
+- id: in_similarity
+  doc: "Similarity metric has been used for similarity\nmeasurement"
   type: string
   inputBinding:
     prefix: --similarity
-- id: order_by
-  doc: Order the significant association by similarity, pvalue, or qvalue
+- id: in_order_by
+  doc: "Order the significant association by similarity,\npvalue, or qvalue\n"
   type: string
   inputBinding:
     prefix: --orderby
-- id: sim_table
+- id: in_sim_table
   doc: table of pairwise similarity scores
   type: string
   inputBinding:
     position: 0
-- id: tree
+- id: in_tree
   doc: hypothesis tree (for getting feature order)
   type: string
   inputBinding:
     position: 1
-- id: associations
+- id: in_associations
   doc: HAllA associations
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outfile
+  doc: output file name
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
 cwlVersion: v1.1
 baseCommand:
 - hallagram

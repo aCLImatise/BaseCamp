@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- mendelscan
+- rhro
 positional:
 - !Positional
   description: ''
@@ -48,10 +51,9 @@ named:
   args: !SimpleFlagArg
     name: MendelScan.jar
   optional: true
-command:
-- mendelscan
-- rhro
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - mendelscan
   positional: []
   named:
   - !Flag
@@ -61,11 +63,104 @@ parent: &id001 !Command
     args: !SimpleFlagArg
       name: MendelScan.jar
     optional: true
-  command:
-  - mendelscan
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - mendelscan
+    - sibd
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: java
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: sibd
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: FIBD
+      optional: true
+    named:
+    - !Flag
+      description: Pedigree file in 6-column tab-delimited format
+      synonyms:
+      - --ped-file
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Markers file in BEAGLE format
+      synonyms:
+      - --markers-file
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: A tab-delimited, BED-like file indicating centromere locations
+        by chromosome    --output-file   Output file to contain IBD markers with chromosomal
+        coordinates
+      synonyms:
+      - --centromere-file
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Output file to contain RHRO windows. Otherwise they print to STDOUT
+      synonyms:
+      - --output-windows
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Maximum Beagle FastIBD score below which segments will be used
+        [10e-10]
+      synonyms:
+      - --ibd-score-threshold
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Window size in base pairs to use for SIBD region binning [100000]
+      synonyms:
+      - --window-resolution
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Presumed model of inheritance: dominant, recessive, x-linked [dominant]'
+      synonyms:
+      - --inheritance
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -jar
+      args: !SimpleFlagArg
+        name: MendelScan.jar
+      optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "USAGE: java -jar MendelScan.jar sibd [FIBD] OPTIONS\n\tFIBD: The uncompressed\
+      \ FastIBD output file from BEAGLE\n\tOPTIONS:\n\t--ped-file\tPedigree file in\
+      \ 6-column tab-delimited format\n\t--markers-file\tMarkers file in BEAGLE format\n\
+      \t--centromere-file\tA tab-delimited, BED-like file indicating centromere locations\
+      \ by chromosome\t--output-file\tOutput file to contain IBD markers with chromosomal\
+      \ coordinates\n\t--output-windows\tOutput file to contain RHRO windows. Otherwise\
+      \ they print to STDOUT\n\t--ibd-score-threshold\tMaximum Beagle FastIBD score\
+      \ below which segments will be used [10e-10]\n\t--window-resolution\tWindow\
+      \ size in base pairs to use for SIBD region binning [100000]\n\t--inheritance\t\
+      Presumed model of inheritance: dominant, recessive, x-linked [dominant]\n\n"
+    generated_using: &id003
+    - --help
+  - !Command
+    command:
+    - mendelscan
+    - score
     positional:
     - !Positional
       description: ''
@@ -83,6 +178,42 @@ parent: &id001 !Command
       name: VCF
       optional: true
     named:
+    - !Flag
+      description: Variant annotation in VEP format
+      synonyms:
+      - --vep-file
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Pedigree file in 6-column tab-delimited format
+      synonyms:
+      - --ped-file
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: A list of gene expression values for tissue of interest
+      synonyms:
+      - --gene-file
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Output file to contain human-friendly scored variants
+      synonyms:
+      - --output-file
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Output file to contain scored variants in VCF format
+      synonyms:
+      - --output-vcf
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Presumed model of inheritance: dominant, recessive, x-linked [dominant]'
+      synonyms:
+      - --inheritance
+      args: !EmptyFlagArg {}
+      optional: true
     - !Flag
       description: A case sample was called reference/wild-type (0.50/0.10)
       synonyms:
@@ -114,6 +245,56 @@ parent: &id001 !Command
       - --seg-score-control-hom
       args: !SimpleFlagArg
         name: A
+      optional: true
+    - !Flag
+      description: Maximum non-ref (variant) allele frequency at ref site to count
+        as ref [0.05]
+      synonyms:
+      - --max-vaf-for-ref
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Minimum VAF at which a reference genotype will be considered het.
+        To disable recall, set to 1.01 [0.20]
+      synonyms:
+      - --min-vaf-to-recall
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Variant is not present in dbSNP according to VCF (1.00)
+      synonyms:
+      - --pop-score-novel
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Variant from mutation (OMIM) or locus-specific databases (0.95)
+      synonyms:
+      - --pop-score-mutation
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Variant known to dbSNP but no mutation or GMAF info (0.60)
+      synonyms:
+      - --pop-score-known
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Variant in dbSNP with GMAF < 0.01 (0.20)
+      synonyms:
+      - --pop-score-rare
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Variant in dbSNP with GMAF 0.01-0.05 (0.02)
+      synonyms:
+      - --pop-score-uncommon
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Variant in dbSNP with GMAF >= 0.05 (0.01)
+      synonyms:
+      - --pop-score-common
+      args: !EmptyFlagArg {}
       optional: true
     - !Flag
       description: Score for intergenic mutations [0.01]
@@ -232,11 +413,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: MendelScan.jar
       optional: true
-    command:
-    - mendelscan
-    - score
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -278,99 +457,11 @@ parent: &id001 !Command
       \ damaging by 3/3 algorithms [0.95]\n\t--anno-score-15\tScore for essential\
       \ splice site mutations [1.00]\n\t--anno-score-16\tScore for frameshift mutations\
       \ [1.00]\n\t--anno-score-17\tScore for nonsense mutations [1.00]\n\n"
-    generated_using: &id003
-    - --help
-  - *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: java
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: sibd
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: FIBD
-      optional: true
-    named:
-    - !Flag
-      description: Pedigree file in 6-column tab-delimited format
-      synonyms:
-      - --ped-file
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Markers file in BEAGLE format
-      synonyms:
-      - --markers-file
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: A tab-delimited, BED-like file indicating centromere locations
-        by chromosome    --output-file   Output file to contain IBD markers with chromosomal
-        coordinates
-      synonyms:
-      - --centromere-file
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Output file to contain RHRO windows. Otherwise they print to STDOUT
-      synonyms:
-      - --output-windows
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Maximum Beagle FastIBD score below which segments will be used
-        [10e-10]
-      synonyms:
-      - --ibd-score-threshold
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Window size in base pairs to use for SIBD region binning [100000]
-      synonyms:
-      - --window-resolution
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Presumed model of inheritance: dominant, recessive, x-linked [dominant]'
-      synonyms:
-      - --inheritance
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -jar
-      args: !SimpleFlagArg
-        name: MendelScan.jar
-      optional: true
-    command:
-    - mendelscan
-    - sibd
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "USAGE: java -jar MendelScan.jar sibd [FIBD] OPTIONS\n\tFIBD: The uncompressed\
-      \ FastIBD output file from BEAGLE\n\tOPTIONS:\n\t--ped-file\tPedigree file in\
-      \ 6-column tab-delimited format\n\t--markers-file\tMarkers file in BEAGLE format\n\
-      \t--centromere-file\tA tab-delimited, BED-like file indicating centromere locations\
-      \ by chromosome\t--output-file\tOutput file to contain IBD markers with chromosomal\
-      \ coordinates\n\t--output-windows\tOutput file to contain RHRO windows. Otherwise\
-      \ they print to STDOUT\n\t--ibd-score-threshold\tMaximum Beagle FastIBD score\
-      \ below which segments will be used [10e-10]\n\t--window-resolution\tWindow\
-      \ size in base pairs to use for SIBD region binning [100000]\n\t--inheritance\t\
-      Presumed model of inheritance: dominant, recessive, x-linked [dominant]\n\n"
     generated_using: *id003
   - !Command
+    command:
+    - mendelscan
+    - trio
     positional:
     - !Positional
       description: ''
@@ -432,11 +523,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: MendelScan.jar
       optional: true
-    command:
-    - mendelscan
-    - trio
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -447,6 +536,7 @@ parent: &id001 !Command
       \t--output-recessive\tOutput file to contain scored variants in VCF format\n\
       \t--output-denovo\tOutput file for possible de novo variants\n\n"
     generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -458,6 +548,7 @@ parent: &id001 !Command
     \ novo)\n\n\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

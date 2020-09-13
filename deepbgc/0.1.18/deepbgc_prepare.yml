@@ -1,4 +1,7 @@
-&id002 !Command
+&id003 !Command
+command:
+- deepbgc
+- prepare
 positional:
 - !Positional
   description: Input sequence file path(s) (FASTA/GenBank)
@@ -6,6 +9,12 @@ positional:
   name: inputs
   optional: false
 named:
+- !Flag
+  description: ''
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Process only specific record ID. Can be provided multiple times
   synonyms:
@@ -34,29 +43,23 @@ named:
     name: OUTPUT_GBK
   optional: true
 - !Flag
-  description: Output TSV file path
+  description: "Output TSV file path\n"
   synonyms:
   - --output-tsv
   args: !SimpleFlagArg
     name: OUTPUT_TSV
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --debug
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- deepbgc
-- prepare
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - deepbgc
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - deepbgc
+    - info
     positional: []
     named:
     - !Flag
@@ -65,29 +68,146 @@ parent: &id001 !Command
       - --debug
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - deepbgc
-    - download
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
-      description: ''
+      description: show this help message and exit
       synonyms:
       - -h
+      - --help
       args: !EmptyFlagArg {}
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: deepbgc download [-h] [--debug]\n\n    Download trained models\
-      \ and other file dependencies to the DeepBGC downloads directory.\n    \n  \
-      \  By default, files are downloaded to: '/home/ubuntu/.local/share/deepbgc/data'\n\
-      \    Set DEEPBGC_DOWNLOADS_DIR env variable to specify a different downloads\
-      \ directory.\"\n    \n\noptional arguments:\n  -h, --help  show this help message\
-      \ and exit\n  --debug\n"
-    generated_using: &id003
+    help_text: "usage: deepbgc info [-h] [--debug]\n\nShow DeepBGC summary information\
+      \ about downloaded models and dependencies.\n\noptional arguments:\n  -h, --help\
+      \  show this help message and exit\n  --debug\n"
+    generated_using: &id002
     - --help
-  - *id002
   - !Command
+    command:
+    - deepbgc
+    - train
+    positional:
+    - !Positional
+      description: Training sequences (Pfam TSV) file paths
+      position: 0
+      name: inputs
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Path to JSON model config file
+      synonyms:
+      - -m
+      - --model
+      args: !SimpleFlagArg
+        name: MODEL
+      optional: true
+    - !Flag
+      description: Target column to predict in sequence prediction
+      synonyms:
+      - -t
+      - --target
+      args: !SimpleFlagArg
+        name: TARGET
+      optional: true
+    - !Flag
+      description: Output trained model file path
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: Progress log output path (e.g. TensorBoard)
+      synonyms:
+      - -l
+      - --log
+      args: !SimpleFlagArg
+        name: LOG
+      optional: true
+    - !Flag
+      description: Class TSV file path - train a sequence classifier using provided
+        classes (binary columns), indexed by sequence_id column
+      synonyms:
+      - -c
+      - --classes
+      args: !SimpleFlagArg
+        name: CLASSES
+      optional: true
+    - !Flag
+      description: "CONFIG\nVariables in model JSON file to replace (e.g. --config\
+        \ PFAM2VEC path/to/pfam2vec.csv)"
+      synonyms:
+      - --config
+      args: !SimpleFlagArg
+        name: CONFIG
+      optional: true
+    - !Flag
+      description: Validation sequence file path. Repeat to specify multiple files
+      synonyms:
+      - -v
+      - --validation
+      args: !SimpleFlagArg
+        name: VALIDATION
+      optional: true
+    - !Flag
+      description: 'Verbosity level: 0=none, 1=progress bar, 2=once per epoch (default:
+        2)'
+      synonyms:
+      - --verbose
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET] -o OUTPUT\
+      \ [-l LOG]\n                     [-c CLASSES] [--config CONFIG CONFIG] [-v VALIDATION]\n\
+      \                     [--verbose INT]\n                     inputs [inputs ...]\n\
+      \nTrain a BGC detector/classifier on a set of BGC samples.\n    \nExamples:\n\
+      \    \n  # Train a detector using pre-processed samples in Pfam CSV format.\
+      \ \n  deepbgc train --model deepbgc.json --output MyDeepBGCDetector.pkl BGCs.pfam.tsv\
+      \ negatives.pfam.tsv\n    \n  # Train a BGC classifier using a TSV classes file\
+      \ and a set of BGC samples in Pfam TSV format and save the trained classifier\
+      \ to a file. \n  deepbgc train --model random_forest.json --output MyDeepBGCClassifier.pkl\
+      \ --classes path/to/BGCs.classes.csv BGCs.pfam.tsv\n  \n\npositional arguments:\n\
+      \  inputs                Training sequences (Pfam TSV) file paths\n\noptional\
+      \ arguments:\n  -h, --help            show this help message and exit\n  --debug\n\
+      \  -m MODEL, --model MODEL\n                        Path to JSON model config\
+      \ file\n  -t TARGET, --target TARGET\n                        Target column\
+      \ to predict in sequence prediction\n  -o OUTPUT, --output OUTPUT\n        \
+      \                Output trained model file path\n  -l LOG, --log LOG     Progress\
+      \ log output path (e.g. TensorBoard)\n  -c CLASSES, --classes CLASSES\n    \
+      \                    Class TSV file path - train a sequence classifier using\
+      \ provided classes (binary columns), indexed by sequence_id column\n  --config\
+      \ CONFIG CONFIG\n                        Variables in model JSON file to replace\
+      \ (e.g. --config PFAM2VEC path/to/pfam2vec.csv)\n  -v VALIDATION, --validation\
+      \ VALIDATION\n                        Validation sequence file path. Repeat\
+      \ to specify multiple files\n  --verbose INT         Verbosity level: 0=none,\
+      \ 1=progress bar, 2=once per epoch (default: 2)\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - deepbgc
+    - pipeline
     positional:
     - !Positional
       description: Input sequence file path (FASTA, GenBank, Pfam CSV)
@@ -95,6 +215,12 @@ parent: &id001 !Command
       name: inputs
       optional: false
     named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
     - !Flag
       description: Custom output directory path
       synonyms:
@@ -131,8 +257,9 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Trained detection model name (deepbgc) or path to trained model
-        pickle file. Can be provided multiple times (-d first -d second)
+      description: Trained detection model name (run "deepbgc download" to download
+        models) or path to trained model pickle file. Can be provided multiple times
+        (-d first -d second)
       synonyms:
       - -d
       - --detector
@@ -225,28 +352,21 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'DeepBGC classification score threshold for assigning classes to
-        BGCs (default: 0.5)'
+      description: "DeepBGC classification score threshold for assigning classes to\
+        \ BGCs (default: 0.5)\n"
       synonyms:
       - --classifier-score
       args: !SimpleFlagArg
         name: CLASSIFIER_SCORE
       optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - deepbgc
-    - pipeline
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
-      description: ''
+      description: show this help message and exit
       synonyms:
       - -h
+      - --help
       args: !EmptyFlagArg {}
       optional: true
     usage_flag:
@@ -281,147 +401,34 @@ parent: &id001 !Command
       \ protein sequences as input (experimental). Will treat each file as a single\
       \ record with multiple proteins.\n\nBGC detection options:\n\n  -d DETECTORS,\
       \ --detector DETECTORS\n                        Trained detection model name\
-      \ (deepbgc) or path to trained model pickle file. Can be provided multiple times\
-      \ (-d first -d second)\n  --no-detector         Disable BGC detection\n  -l\
-      \ LABELS, --label LABELS\n                        Label for detected clusters\
-      \ (equal to --detector by default). If multiple detectors are provided, a label\
-      \ should be provided for each one\n  -s SCORE, --score SCORE\n             \
-      \           Average protein-wise DeepBGC score threshold for extracting BGC\
-      \ regions from Pfam sequences (default: 0.5)\n  --merge-max-protein-gap MERGE_MAX_PROTEIN_GAP\n\
-      \                        Merge detected BGCs within given number of proteins\
-      \ (default: 0)\n  --merge-max-nucl-gap MERGE_MAX_NUCL_GAP\n                \
-      \        Merge detected BGCs within given number of nucleotides (default: 0)\n\
-      \  --min-nucl MIN_NUCL   Minimum BGC nucleotide length (default: 1)\n  --min-proteins\
-      \ MIN_PROTEINS\n                        Minimum number of proteins in a BGC\
-      \ (default: 1)\n  --min-domains MIN_DOMAINS\n                        Minimum\
-      \ number of protein domains in a BGC (default: 1)\n  --min-bio-domains MIN_BIO_DOMAINS\n\
-      \                        Minimum number of known biosynthetic (as defined by\
-      \ antiSMASH) protein domains in a BGC (default: 0)\n\nBGC classification options:\n\
-      \n  -c CLASSIFIERS, --classifier CLASSIFIERS\n                        Trained\
-      \ classification model name (run \"deepbgc download\" to download models) or\
-      \ path to trained model pickle file. Can be provided multiple times (-c first\
-      \ -c second)\n  --no-classifier       Disable BGC classification\n  --classifier-score\
-      \ CLASSIFIER_SCORE\n                        DeepBGC classification score threshold\
-      \ for assigning classes to BGCs (default: 0.5)\n"
-    generated_using: *id003
+      \ (run \"deepbgc download\" to download models) or path to trained model pickle\
+      \ file. Can be provided multiple times (-d first -d second)\n  --no-detector\
+      \         Disable BGC detection\n  -l LABELS, --label LABELS\n             \
+      \           Label for detected clusters (equal to --detector by default). If\
+      \ multiple detectors are provided, a label should be provided for each one\n\
+      \  -s SCORE, --score SCORE\n                        Average protein-wise DeepBGC\
+      \ score threshold for extracting BGC regions from Pfam sequences (default: 0.5)\n\
+      \  --merge-max-protein-gap MERGE_MAX_PROTEIN_GAP\n                        Merge\
+      \ detected BGCs within given number of proteins (default: 0)\n  --merge-max-nucl-gap\
+      \ MERGE_MAX_NUCL_GAP\n                        Merge detected BGCs within given\
+      \ number of nucleotides (default: 0)\n  --min-nucl MIN_NUCL   Minimum BGC nucleotide\
+      \ length (default: 1)\n  --min-proteins MIN_PROTEINS\n                     \
+      \   Minimum number of proteins in a BGC (default: 1)\n  --min-domains MIN_DOMAINS\n\
+      \                        Minimum number of protein domains in a BGC (default:\
+      \ 1)\n  --min-bio-domains MIN_BIO_DOMAINS\n                        Minimum number\
+      \ of known biosynthetic (as defined by antiSMASH) protein domains in a BGC (default:\
+      \ 0)\n\nBGC classification options:\n\n  -c CLASSIFIERS, --classifier CLASSIFIERS\n\
+      \                        Trained classification model name (run \"deepbgc download\"\
+      \ to download models) or path to trained model pickle file. Can be provided\
+      \ multiple times (-c first -c second)\n  --no-classifier       Disable BGC classification\n\
+      \  --classifier-score CLASSIFIER_SCORE\n                        DeepBGC classification\
+      \ score threshold for assigning classes to BGCs (default: 0.5)\n"
+    generated_using: *id002
+  - *id003
   - !Command
-    positional:
-    - !Positional
-      description: Training sequences (Pfam TSV) file paths
-      position: 0
-      name: inputs
-      optional: false
-    named:
-    - !Flag
-      description: Path to JSON model config file
-      synonyms:
-      - -m
-      - --model
-      args: !SimpleFlagArg
-        name: MODEL
-      optional: true
-    - !Flag
-      description: Target column to predict in sequence prediction
-      synonyms:
-      - -t
-      - --target
-      args: !SimpleFlagArg
-        name: TARGET
-      optional: true
-    - !Flag
-      description: Output trained model file path
-      synonyms:
-      - -o
-      - --output
-      args: !SimpleFlagArg
-        name: OUTPUT
-      optional: true
-    - !Flag
-      description: Progress log output path (e.g. TensorBoard)
-      synonyms:
-      - -l
-      - --log
-      args: !SimpleFlagArg
-        name: LOG
-      optional: true
-    - !Flag
-      description: Class TSV file path - train a sequence classifier using provided
-        classes (binary columns), indexed by sequence_id column
-      synonyms:
-      - -c
-      - --classes
-      args: !SimpleFlagArg
-        name: CLASSES
-      optional: true
-    - !Flag
-      description: CONFIG Variables in model JSON file to replace (e.g. --config PFAM2VEC
-        path/to/pfam2vec.csv)
-      synonyms:
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: Validation sequence file path. Repeat to specify multiple files
-      synonyms:
-      - -v
-      - --validation
-      args: !SimpleFlagArg
-        name: VALIDATION
-      optional: true
-    - !Flag
-      description: 'Verbosity level: 0=none, 1=progress bar, 2=once per epoch (default:
-        2)'
-      synonyms:
-      - --verbose
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - deepbgc
-    - train
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: deepbgc train [-h] [--debug] -m MODEL [-t TARGET] -o OUTPUT\
-      \ [-l LOG]\n                     [-c CLASSES] [--config CONFIG CONFIG] [-v VALIDATION]\n\
-      \                     [--verbose INT]\n                     inputs [inputs ...]\n\
-      \nTrain a BGC detector/classifier on a set of BGC samples.\n    \nExamples:\n\
-      \    \n  # Train a detector using pre-processed samples in Pfam CSV format.\
-      \ \n  deepbgc train --model deepbgc.json --output MyDeepBGCDetector.pkl BGCs.pfam.tsv\
-      \ negatives.pfam.tsv\n    \n  # Train a BGC classifier using a TSV classes file\
-      \ and a set of BGC samples in Pfam TSV format and save the trained classifier\
-      \ to a file. \n  deepbgc train --model random_forest.json --output MyDeepBGCClassifier.pkl\
-      \ --classes path/to/BGCs.classes.csv BGCs.pfam.tsv\n  \n\npositional arguments:\n\
-      \  inputs                Training sequences (Pfam TSV) file paths\n\noptional\
-      \ arguments:\n  -h, --help            show this help message and exit\n  --debug\n\
-      \  -m MODEL, --model MODEL\n                        Path to JSON model config\
-      \ file\n  -t TARGET, --target TARGET\n                        Target column\
-      \ to predict in sequence prediction\n  -o OUTPUT, --output OUTPUT\n        \
-      \                Output trained model file path\n  -l LOG, --log LOG     Progress\
-      \ log output path (e.g. TensorBoard)\n  -c CLASSES, --classes CLASSES\n    \
-      \                    Class TSV file path - train a sequence classifier using\
-      \ provided classes (binary columns), indexed by sequence_id column\n  --config\
-      \ CONFIG CONFIG\n                        Variables in model JSON file to replace\
-      \ (e.g. --config PFAM2VEC path/to/pfam2vec.csv)\n  -v VALIDATION, --validation\
-      \ VALIDATION\n                        Validation sequence file path. Repeat\
-      \ to specify multiple files\n  --verbose INT         Verbosity level: 0=none,\
-      \ 1=progress bar, 2=once per epoch (default: 2)\n"
-    generated_using: *id003
-  - !Command
+    - download
     positional: []
     named:
     - !Flag
@@ -430,23 +437,26 @@ parent: &id001 !Command
       - --debug
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - deepbgc
-    - info
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
-      description: ''
+      description: show this help message and exit
       synonyms:
       - -h
+      - --help
       args: !EmptyFlagArg {}
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: deepbgc info [-h] [--debug]\n\nShow DeepBGC summary information\
-      \ about downloaded models and dependencies.\n\noptional arguments:\n  -h, --help\
-      \  show this help message and exit\n  --debug\n"
-    generated_using: *id003
+    help_text: "usage: deepbgc download [-h] [--debug]\n\n    Download trained models\
+      \ and other file dependencies to the DeepBGC downloads directory.\n    \n  \
+      \  By default, files are downloaded to: '/root/.local/share/deepbgc/data'\n\
+      \    Set DEEPBGC_DOWNLOADS_DIR env variable to specify a different downloads\
+      \ directory.\"\n    \n\noptional arguments:\n  -h, --help  show this help message\
+      \ and exit\n  --debug\n"
+    generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -461,7 +471,7 @@ parent: &id001 !Command
     \ help message and exit\n\nAvailable Commands:\n  COMMAND     Use: deepbgc COMMAND\
     \ --help for command-specific help\n    download  \n                  Download\
     \ trained models and other file dependencies to the DeepBGC downloads directory.\n\
-    \                  \n                  By default, files are downloaded to: '/home/ubuntu/.local/share/deepbgc/data'\n\
+    \                  \n                  By default, files are downloaded to: '/root/.local/share/deepbgc/data'\n\
     \                  Set DEEPBGC_DOWNLOADS_DIR env variable to specify a different\
     \ downloads directory.\"\n                  \n    prepare   Prepare genomic sequence\
     \ by annotating proteins and Pfam domains.\n                  \n             \
@@ -491,12 +501,14 @@ parent: &id001 !Command
     \ MyDeepBGCClassifier.pkl --classes path/to/BGCs.classes.csv BGCs.pfam.tsv\n \
     \               \n    info      Show DeepBGC summary information about downloaded\
     \ models and dependencies.\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
@@ -518,4 +530,4 @@ help_text: "usage: deepbgc prepare [-h] [--debug] [--limit-to-record LIMIT_TO_RE
   \ with multiple proteins.\n  --output-gbk OUTPUT_GBK\n                        Output\
   \ GenBank file path\n  --output-tsv OUTPUT_TSV\n                        Output TSV\
   \ file path\n"
-generated_using: *id003
+generated_using: *id002

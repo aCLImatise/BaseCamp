@@ -2,9 +2,9 @@ version 1.0
 
 task TaxmapperCount {
   input {
-    String? tax
-    String? out_one
-    String? out_two
+    File? tax
+    File? out_one
+    File? out_two
   }
   command <<<
     taxmapper count \
@@ -14,7 +14,12 @@ task TaxmapperCount {
   >>>
   parameter_meta {
     tax: "Filtered taxonomy mapping file."
-    out_one: "Output file 1, counted taxa for first taxonomic hierarchy [default: taxa_counts_level1.tsv]"
-    out_two: "Output file 2, counted taxa for second taxonomic hierarchy [default: taxa_counts_level2.tsv]"
+    out_one: "Output file 1, counted taxa for first taxonomic\\nhierarchy [default: taxa_counts_level1.tsv]"
+    out_two: "Output file 2, counted taxa for second taxonomic\\nhierarchy [default: taxa_counts_level2.tsv]\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_one = "${in_out_one}"
+    File out_out_two = "${in_out_two}"
   }
 }

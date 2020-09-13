@@ -4,4 +4,7 @@ task Netperf {
   command <<<
     netperf
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

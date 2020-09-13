@@ -1,42 +1,38 @@
 !Command
-positional:
-- !Positional
-  description: 'Path, URL or URI for metadata.json for a workflow Example: /scratch/sample1/metadata.json,
-    gs://some/where/metadata.json, http://hello.com/world/metadata.json'
-  position: 0
-  name: metadata_json
-  optional: false
+command:
+- croo
+positional: []
 named:
 - !Flag
-  description: Output definition JSON file for a WDL file corresponding to the specified
-    metadata.json file
+  description: "Output definition JSON file for a WDL file\ncorresponding to the specified\
+    \ metadata.json file"
   synonyms:
   - --out-def-json
   args: !SimpleFlagArg
     name: OUT_DEF_JSON
   optional: true
 - !Flag
-  description: Method to localize files on output directory/bucket. "link" means a
-    soft-linking and it's for local directory only. Original output files will be
-    kept in Cromwell's output directory. "copy" makes copies of Cromwell's original
-    outputs
+  description: "Method to localize files on output directory/bucket.\n\"link\" means\
+    \ a soft-linking and it's for local\ndirectory only. Original output files will\
+    \ be kept in\nCromwell's output directory. \"copy\" makes copies of\nCromwell's\
+    \ original outputs"
   synonyms:
   - --method
   args: !ChoiceFlagArg
     choices: !!set
-      ? link
       ? copy
+      ? link
   optional: true
 - !Flag
-  description: UCSC genome browser's "db=" parameter. (e.g. hg38 for GRCh38 and mm10
-    for mm10)
+  description: "UCSC genome browser's \"db=\" parameter. (e.g. hg38 for\nGRCh38 and\
+    \ mm10 for mm10)"
   synonyms:
   - --ucsc-genome-db
   args: !SimpleFlagArg
     name: UCSC_GENOME_DB
   optional: true
 - !Flag
-  description: UCSC genome browser's "position=" parameter. (e.g. chr1:35000-40000)
+  description: "UCSC genome browser's \"position=\" parameter. (e.g.\nchr1:35000-40000)"
   synonyms:
   - --ucsc-genome-pos
   args: !SimpleFlagArg
@@ -55,72 +51,72 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Generate presigned URLS for files on gs://. --gcp- private-key must
-    be provided.
+  description: "Generate presigned URLS for files on gs://. --gcp-\nprivate-key must\
+    \ be provided."
   synonyms:
   - --use-presigned-url-gcs
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Private key file (JSON/PKCS12) of a service account on Google Cloud
-    Platform (GCP). This key will be used to make presigned URLs on files on gs://.
+  description: "Private key file (JSON/PKCS12) of a service account on\nGoogle Cloud\
+    \ Platform (GCP). This key will be used to\nmake presigned URLs on files on gs://."
   synonyms:
   - --gcp-private-key
   args: !SimpleFlagArg
     name: GCP_PRIVATE_KEY
   optional: true
 - !Flag
-  description: Duration for presigned URLs for files on s3:// in seconds.
+  description: "Duration for presigned URLs for files on s3:// in\nseconds."
   synonyms:
   - --duration-presigned-url-s3
   args: !SimpleFlagArg
     name: DURATION_PRESIGNED_URL_S3
   optional: true
 - !Flag
-  description: Duration for presigned URLs for files on gs:// in seconds.
+  description: "Duration for presigned URLs for files on gs:// in\nseconds."
   synonyms:
   - --duration-presigned-url-gcs
   args: !SimpleFlagArg
     name: DURATION_PRESIGNED_URL_GCS
   optional: true
 - !Flag
-  description: A 2-column TSV file with local path prefix and corresponding URL prefix.
-    For example, using 1-line 2-col TSV file with /var/www[TAB]http://my.server.com
-    will replace a local path /var/www/here/a.txt to a URL http://my.server.com/here/a.txt.
+  description: "A 2-column TSV file with local path prefix and\ncorresponding URL\
+    \ prefix. For example, using 1-line\n2-col TSV file with /var/www[TAB]http://my.server.com\n\
+    will replace a local path /var/www/here/a.txt to a URL\nhttp://my.server.com/here/a.txt."
   synonyms:
   - --tsv-mapping-path-to-url
   args: !SimpleFlagArg
     name: TSV_MAPPING_PATH_TO_URL
   optional: true
 - !Flag
-  description: Output directory/bucket (LOCAL OR REMOTE). This can be a local path,
-    gs:// or s3://.
+  description: "Output directory/bucket (LOCAL OR REMOTE). This can be\na local path,\
+    \ gs:// or s3://."
   synonyms:
   - --out-dir
   args: !SimpleFlagArg
     name: OUT_DIR
   optional: true
 - !Flag
-  description: LOCAL temporary cache directory. All temporary files for auto-inter-storage
-    transfer will be stored here. You can clean it up but will lose all cached files
-    so that remote files will be re-downloaded.
+  description: "LOCAL temporary cache directory. All temporary files\nfor auto-inter-storage\
+    \ transfer will be stored here.\nYou can clean it up but will lose all cached\
+    \ files so\nthat remote files will be re-downloaded."
   synonyms:
   - --tmp-dir
   args: !SimpleFlagArg
     name: TMP_DIR
   optional: true
 - !Flag
-  description: Use gsutil for direct tranfer between GCS and S3 buckets. Make sure
-    that you have "gsutil" installed and configured to have access to credentials
-    for GCS and S3 (e.g. ~/.boto or ~/.aws/credientials)
+  description: "Use gsutil for direct tranfer between GCS and S3\nbuckets. Make sure\
+    \ that you have \"gsutil\" installed\nand configured to have access to credentials\
+    \ for GCS\nand S3 (e.g. ~/.boto or ~/.aws/credientials)"
   synonyms:
   - --use-gsutil-for-s3
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Always overwrite on output directory/bucket (--out- dir) even if md5-identical
-    files (or soft links) already exist there. Md5 hash/filename/filesize checking
-    will be skipped.
+  description: "Always overwrite on output directory/bucket (--out-\ndir) even if\
+    \ md5-identical files (or soft links)\nalready exist there. Md5 hash/filename/filesize\n\
+    checking will be skipped."
   synonyms:
   - --no-checksum
   args: !EmptyFlagArg {}
@@ -132,10 +128,9 @@ named:
   - --debug
   args: !EmptyFlagArg {}
   optional: true
-command:
-- croo
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

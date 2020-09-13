@@ -2,12 +2,12 @@ version 1.0
 
 task Pizzly {
   input {
-    String? kmer_size_used
-    String? align_score
-    String? insert_size
+    Int? kmer_size_used
+    Int? align_score
+    Int? insert_size
     String? prefix_output_files
     String? gtf
-    String? cache
+    File? cache
     String? fast_a
     Boolean? ignore_protein
   }
@@ -20,7 +20,7 @@ task Pizzly {
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""} \
       ~{if defined(cache) then ("--cache " +  '"' + cache + '"') else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
-      ~{true="--ignore-protein" false="" ignore_protein}
+      ~{if (ignore_protein) then "--ignore-protein" else ""}
   >>>
   parameter_meta {
     kmer_size_used: "k-mer size used in kallisto"
@@ -28,8 +28,11 @@ task Pizzly {
     insert_size: "Maximum fragment size of library (default: 400)"
     prefix_output_files: "Prefix for output files"
     gtf: "Annotation in GTF format"
-    cache: "File for caching annotation (created if not present, otherwise reused from previous runs)"
+    cache: "File for caching annotation (created if not present, otherwise\\nreused from previous runs)"
     fast_a: "Fasta reference"
     ignore_protein: "Ignore any protein coding information in annotation"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

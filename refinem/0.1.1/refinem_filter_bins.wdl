@@ -2,28 +2,32 @@ version 1.0
 
 task RefinemFilterBins {
   input {
-    String? genome_ext
-    Boolean? modified_only
+    Directory? genome_ext
+    Directory? modified_only
     Boolean? silent
     String genome_nt_dir
-    String filter_file
+    String genome
     String output_dir
   }
   command <<<
     refinem filter_bins \
       ~{genome_nt_dir} \
-      ~{filter_file} \
+      ~{genome} \
       ~{output_dir} \
       ~{if defined(genome_ext) then ("--genome_ext " +  '"' + genome_ext + '"') else ""} \
-      ~{true="--modified_only" false="" modified_only} \
-      ~{true="--silent" false="" silent}
+      ~{if (modified_only) then "--modified_only" else ""} \
+      ~{if (silent) then "--silent" else ""}
   >>>
   parameter_meta {
-    genome_ext: "extension of genomes (other files in directory are ignored) (default: fna)"
+    genome_ext: "extension of genomes (other files in directory are\\nignored) (default: fna)"
     modified_only: "only copy modified bins to the output folder"
     silent: "suppress output of logger"
-    genome_nt_dir: "directory containing nucleotide scaffolds for each genome"
-    filter_file: "file specifying scaffolds to remove"
+    genome_nt_dir: "directory containing nucleotide scaffolds for each"
+    genome: "filter_file           file specifying scaffolds to remove"
     output_dir: "output directory"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_modified_only = "${in_modified_only}"
   }
 }

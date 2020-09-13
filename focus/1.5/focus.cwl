@@ -1,52 +1,60 @@
 class: CommandLineTool
 id: ../../../focus.cwl
 inputs:
-- id: query
+- id: in_query
   doc: Path to directory with FAST(A/Q) files
-  type: string
+  type: File
   inputBinding:
     prefix: --query
-- id: output_directory
+- id: in_output_directory
   doc: Path to output files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output_directory
-- id: km_er_size
+- id: in_km_er_size
   doc: 'K-mer size (6 or 7) (Default: 6)'
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer_size
-- id: alternate_directory
+- id: in_alternate_directory
   doc: Alternate directory for your databases
-  type: string
+  type: Directory
   inputBinding:
     prefix: --alternate_directory
-- id: output_prefix
+- id: in_output_prefix
   doc: 'Output prefix (Default: output)'
   type: string
   inputBinding:
     prefix: --output_prefix
-- id: threads
+- id: in_threads
   doc: 'Number Threads used in the k-mer counting (Default: 4)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: list_output
+- id: in_list_output
   doc: Output results as a list
   type: boolean
   inputBinding:
     prefix: --list_output
-- id: log
+- id: in_log
   doc: 'Path to log file (Default: STDOUT).'
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory
+  doc: Path to output files
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory)
 cwlVersion: v1.1
 baseCommand:
 - focus

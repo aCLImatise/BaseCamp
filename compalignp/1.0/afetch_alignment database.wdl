@@ -1,17 +1,20 @@
 version 1.0
 
-task AfetchAlignment database {
+task AfetchAlignmentdatabase {
   input {
     Boolean? options
     String name_or_accession
   }
   command <<<
-    afetch alignment database \
+    afetch alignment_database \
       ~{name_or_accession} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     name_or_accession: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

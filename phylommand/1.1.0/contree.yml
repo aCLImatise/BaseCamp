@@ -1,4 +1,6 @@
 !Command
+command:
+- contree
 positional:
 - !Positional
   description: ''
@@ -12,24 +14,120 @@ positional:
   optional: false
 named:
 - !Flag
-  description: as last argument).
+  description: "/ -a           add one to the value of the internal node for\neach\
+    \ tree that that split is present in."
   synonyms:
-  - -f
-  args: !SimpleFlagArg
-    name: or
+  - --add_to_support
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (default w).
+  description: "/ -s        same as --add_to_support but divide the number\nby number\
+    \ of trees compared against."
+  synonyms:
+  - --calculate_support
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -c [value]          output conflicting splits where at least one\n\
+    branch support the conflict with more than given\nsupport, e.g. -c 0.7."
+  synonyms:
+  - --compare
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -d [file]          give a second file of trees to compare against\n\
+    instead of comparing within the ordinary input.\nIf - is given input will be taken\
+    \ from standard\nin instead of file, e.g. -d -. In that case the\ninput compared\
+    \ to must  be given in a file (by\n-f or as last argument)."
+  synonyms:
+  - --database
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -D [genes]     calculates proportion of random trees for which\n\
+    given gene sampling is decisive and the mean\nproportion of branches that are\
+    \ distinguished.\n(Sanderson et al. 2010, BMC Evol. Biol. 19:\n155). The genes\
+    \ for each taxon are given as a\ncomma (,) separated string, the genes for\ndifferent\
+    \ taxon are separated by a bar (|). E.g\n-D 'ITS,RPB2|ITS|ITS,RPB2|RPB2|RPB2|ITS',\
+    \ or in\na file (given by -f or as last argument) with a\ncomma separated string\
+    \ with the genes for each\ntaxa on a separate row. No taxon names, trees,\nor\
+    \ sequences are needed."
+  synonyms:
+  - --decisiveness
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -i [number]      give numbers of iterations to do when\ncalculating\
+    \ decisiveness, e.g. -i 1000."
+  synonyms:
+  - --iterations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -f [file]              give file name for trees, or decisiveness,\
+    \ e.g.\n-f file.tree."
+  synonyms:
+  - --file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[newick/nexus]         give format of input, e.g. --format nexus.\
+    \ If no\nformat is given and the input is a file contree\nwill try to guess the\
+    \ format, if it is through\nstandard in it will assume newick format. A\nseparate\
+    \ file format can be given for the\ndatabase file after a ',', e.g. --format\n\
+    newick,nexus. If only one format is given, it\nwill be used for both tree files/inputs."
+  synonyms:
+  - --format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "give output as tree in html (svg) format with\nconflicting tips coloured\
+    \ green and red when\ndoing --compare."
+  synonyms:
+  - --html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: / -t          print tip names not present in the other tree.
+  synonyms:
+  - --non_shared_tips
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[newick/nexus]         give tree format for output, nexus (nex or\
+    \ x for\nshort) or newick (new or w for short), e.g\n--output x. (default w)."
   synonyms:
   - --output
-  args: !SimpleFlagArg
-    name: x.
+  args: !EmptyFlagArg {}
   optional: true
-command:
-- contree
+- !Flag
+  description: / -r          compute Robinson-Foulds metric between trees.
+  synonyms:
+  - --robinson_foulds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -R                   treat trees as rooted for --add_to_support\
+    \ and\n--calculate_support."
+  synonyms:
+  - --rooted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: / -v                  get additional output.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: / -h                     print this help.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Contree 1.0 is a command line program for comparing trees. It can compare\n\

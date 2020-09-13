@@ -11,7 +11,7 @@ task SeqtkSubseq {
     seqtk subseq \
       ~{in_dot_fa} \
       ~{in_dot_bed} \
-      ~{true="-t" false="" tab_delimited_output} \
+      ~{if (tab_delimited_output) then "-t" else ""} \
       ~{if defined(sequence_line_length) then ("-l " +  '"' + sequence_line_length + '"') else ""}
   >>>
   parameter_meta {
@@ -19,5 +19,8 @@ task SeqtkSubseq {
     sequence_line_length: "sequence line length [0]"
     in_dot_fa: ""
     in_dot_bed: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

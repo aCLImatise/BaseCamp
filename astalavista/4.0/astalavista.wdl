@@ -4,4 +4,7 @@ task Astalavista {
   command <<<
     astalavista
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

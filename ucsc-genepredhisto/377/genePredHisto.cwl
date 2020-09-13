@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../genePredHisto.cwl
 inputs:
-- id: ids
+- id: in_ids
   doc: '- a second column with the gene name, useful for finding outliers.'
   type: boolean
   inputBinding:
     prefix: -ids
-- id: what
+- id: in_what
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: gene_pred_file
+- id: in_gene_pred_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: histo_out
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genePredHisto

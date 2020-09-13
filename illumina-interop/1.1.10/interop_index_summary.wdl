@@ -1,23 +1,26 @@
 version 1.0
 
-task InteropIndexSummary {
+task InteropIndexsummary {
   input {
     Boolean? csv
-    String? option_one
-    String? option_two
+    Int? option_two
+    Int? option_one
     String run_folder
   }
   command <<<
-    interop_index-summary \
+    interop_index_summary \
       ~{run_folder} \
-      ~{true="--csv" false="" csv} \
-      ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""} \
-      ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""}
+      ~{if (csv) then "--csv" else ""} \
+      ~{if defined(option_two) then ("--option2 " +  '"' + option_two + '"') else ""} \
+      ~{if defined(option_one) then ("--option1 " +  '"' + option_one + '"') else ""}
   >>>
   parameter_meta {
     csv: "[0]: Format output as CSV only"
-    option_one: ""
     option_two: ""
+    option_one: ""
     run_folder: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

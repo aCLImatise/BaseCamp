@@ -1,68 +1,76 @@
 class: CommandLineTool
-id: ../../../sort_snos.pl.cwl
+id: ../../../sort_snos.cwl
 inputs:
-- id: sort_snos_position_hit
+- id: in_sort_snos_position_hit
   doc: ':  sort snos by position of hit in query sequence'
   type: boolean
   inputBinding:
     prefix: -H
-- id: sort_snos_position_remove
-  doc: ':  sort snos by position & Remove lower-scoring duplicate hits (both start
-    & end bounds must match'
+- id: in_sort_snos_position_remove
+  doc: ":  sort snos by position & Remove lower-scoring duplicate hits\n(both start\
+    \ & end bounds must match"
   type: boolean
   inputBinding:
     prefix: -R
-- id: same_start_match
+- id: in_same_start_bound
   doc: ':  same as -R, but only start bound must match to count as duplicate'
   type: boolean
   inputBinding:
     prefix: -r
-- id: sort_snos_mapped
+- id: in_sort_snos_mapped
   doc: ':  sort snos, output only hits to Mapped sites'
   type: boolean
   inputBinding:
     prefix: -M
-- id: sort_snos_unmapped
+- id: in_sort_snos_unmapped
   doc: ':  sort snos, output only hits to Unmapped sites'
   type: boolean
   inputBinding:
     prefix: -U
-- id: sort_snos_output
+- id: in_sort_snos_output
   doc: ':  sort snos, output only top <int> hits per meth site (def=50)'
   type: long
   inputBinding:
     prefix: -T
-- id: sort_snos_require
+- id: in_sort_snos_require
   doc: ':  sort snos, require minimum score'
   type: string
   inputBinding:
     prefix: -S
-- id: sort_snos_include
+- id: in_sort_snos_include
   doc: ":  sort snos, don't include hits _over_ max <score>"
-  type: string
+  type: long
   inputBinding:
     prefix: -m
-- id: extract_only_snos
+- id: in_extract_only_snos
   doc: ':  Extract only snos with <expr> in header line'
   type: string
   inputBinding:
     prefix: -e
-- id: sort__output
+- id: in_sort__filter
   doc: ":  Don't sort -- just filter & output in same order"
   type: boolean
   inputBinding:
     prefix: -F
-- id: options
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -OPTIONS
-- id: more_options
+- id: in_more_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -MORE_OPTIONS
-outputs: []
+- id: in_options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -OPTIONS
+- id: in_snorna_hits_file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- sort-snos.pl
+- sort-snos

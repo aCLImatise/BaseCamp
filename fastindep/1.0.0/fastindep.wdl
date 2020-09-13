@@ -4,4 +4,7 @@ task Fastindep {
   command <<<
     fastindep
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

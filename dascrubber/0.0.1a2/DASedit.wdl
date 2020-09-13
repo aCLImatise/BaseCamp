@@ -2,19 +2,22 @@ version 1.0
 
 task DASedit {
   input {
-    Boolean? v
     Boolean? x
+    Boolean? v
     Int? var_int
   }
   command <<<
     DASedit \
       ~{var_int} \
-      ~{true="-v" false="" v} \
-      ~{true="-x" false="" x}
+      ~{if (x) then "-x" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    v: ""
     x: ""
+    v: ""
     var_int: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

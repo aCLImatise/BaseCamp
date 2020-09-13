@@ -8,22 +8,34 @@ task BpEinfo {
     Boolean? lslash_link
     Boolean? oslash_out
     Boolean? h_slash_help
+    String outfile
+    String bioperl_lat_bioperl_dot_org
+    String support
   }
   command <<<
     bp_einfo \
-      ~{true="-e/--email" false="" e_slash_email} \
-      ~{true="-d/--db/--database" false="" d_slash_db_slash_database} \
-      ~{true="-f/--field" false="" f_slash_field} \
-      ~{true="-l/--link" false="" lslash_link} \
-      ~{true="-o/--out" false="" oslash_out} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{outfile} \
+      ~{bioperl_lat_bioperl_dot_org} \
+      ~{support} \
+      ~{if (e_slash_email) then "-e/--email" else ""} \
+      ~{if (d_slash_db_slash_database) then "-d/--db/--database" else ""} \
+      ~{if (f_slash_field) then "-f/--field" else ""} \
+      ~{if (lslash_link) then "-l/--link" else ""} \
+      ~{if (oslash_out) then "-o/--out" else ""} \
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
     e_slash_email: "Valid email (required by NCBI policy)"
-    d_slash_db_slash_database: "NCBI database to query (default = none, which shows available databases)"
-    f_slash_field: "print out information about a specific field code (default = none)"
-    lslash_link: "print out information about a specific link name (default = none)"
-    oslash_out: "outfile (default = STDOUT)"
+    d_slash_db_slash_database: "NCBI database to query\\n(default = none, which shows available databases)"
+    f_slash_field: "print out information about a specific field code\\n(default = none)"
+    lslash_link: "print out information about a specific link name\\n(default = none)"
+    oslash_out: ""
     h_slash_help: "show this documentation"
+    outfile: "(default = STDOUT)"
+    bioperl_lat_bioperl_dot_org: "- General discussion"
+    support: "Please direct usage questions or support issues to the mailing list:\\n*bioperl-l@bioperl.org*\\nrather than to the module maintainer directly. Many experienced and\\nreponsive experts will be able look at the problem and quickly address\\nit. Please include a thorough description of the problem with code and\\ndata examples if at all possible."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

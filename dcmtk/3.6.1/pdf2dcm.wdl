@@ -2,9 +2,10 @@ version 1.0
 
 task Pdf2dcm {
   input {
+    Boolean? arguments
     Boolean? _quiet_quiet
-    Boolean? _verbose_verbose
-    Boolean? _debug_debug
+    Boolean? _verbose_details
+    Boolean? _debug_information
     Boolean? ll
     Boolean? lc
     Boolean? annotation_no
@@ -15,21 +16,26 @@ task Pdf2dcm {
     pdf2dcm \
       ~{pdf_file_in} \
       ~{dcm_file_out} \
-      ~{true="-q" false="" _quiet_quiet} \
-      ~{true="-v" false="" _verbose_verbose} \
-      ~{true="-d" false="" _debug_debug} \
-      ~{true="-ll" false="" ll} \
-      ~{true="-lc" false="" lc} \
-      ~{true="--annotation-no" false="" annotation_no}
+      ~{if (arguments) then "--arguments" else ""} \
+      ~{if (_quiet_quiet) then "-q" else ""} \
+      ~{if (_verbose_details) then "-v" else ""} \
+      ~{if (_debug_information) then "-d" else ""} \
+      ~{if (ll) then "-ll" else ""} \
+      ~{if (lc) then "-lc" else ""} \
+      ~{if (annotation_no) then "--annotation-no" else ""}
   >>>
   parameter_meta {
+    arguments: "print expanded command line arguments"
     _quiet_quiet: "--quiet              quiet mode, print no warnings and errors"
-    _verbose_verbose: "--verbose            verbose mode, print processing details"
-    _debug_debug: "--debug              debug mode, print debug information"
-    ll: "--log-level          [l]evel: string constant (fatal, error, warn, info, debug, trace) use level l for the logger"
-    lc: "--log-config         [f]ilename: string use config file f for the logger"
+    _verbose_details: "--verbose            verbose mode, print processing details"
+    _debug_information: "--debug              debug mode, print debug information"
+    ll: "--log-level          [l]evel: string constant\\n(fatal, error, warn, info, debug, trace)\\nuse level l for the logger"
+    lc: "--log-config         [f]ilename: string\\nuse config file f for the logger"
     annotation_no: "PDF does not contain patient identifying data"
     pdf_file_in: "PDF input filename to be converted"
     dcm_file_out: "DICOM output filename"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

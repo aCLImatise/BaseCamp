@@ -4,4 +4,7 @@ task GetGammaDensity {
   command <<<
     getGammaDensity
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

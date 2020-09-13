@@ -12,12 +12,15 @@ task CheckvRepeats {
       ~{input_viral_sequences} \
       ~{output_directory} \
       ~{if defined(min_tr_len) then ("--min_tr_len " +  '"' + min_tr_len + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     min_tr_len: "Min length of TR"
     quiet: "Suppress logging messages"
     input_viral_sequences: "Input viral sequences in FASTA format"
     output_directory: "Output directory"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

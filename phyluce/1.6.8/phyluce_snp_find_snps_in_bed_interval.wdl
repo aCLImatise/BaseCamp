@@ -2,9 +2,9 @@ version 1.0
 
 task PhyluceSnpFindSnpsInBedInterval {
   input {
-    String? uce
-    String? snp
-    String? the_output_file
+    File? uce
+    File? snp
+    File? the_output_file
   }
   command <<<
     phyluce_snp_find_snps_in_bed_interval \
@@ -16,5 +16,9 @@ task PhyluceSnpFindSnpsInBedInterval {
     uce: "The UCE BED file"
     snp: "The SNP intersection BED file"
     the_output_file: "The output file"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_the_output_file = "${in_the_output_file}"
   }
 }

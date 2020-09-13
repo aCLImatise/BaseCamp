@@ -3,16 +3,16 @@ version 1.0
 task CryptoTyper {
   input {
     Boolean? verbose
-    String? path_directory_forward
-    String? marker
+    File? path_directory_forward
+    Int? marker
     String? seqtype
-    String? forward_primer_name
-    String? reverse_primer_name
+    Int? forward_primer_name
+    Int? reverse_primer_name
     String? output_prefix
   }
   command <<<
     crypto_typer \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(path_directory_forward) then ("--input " +  '"' + path_directory_forward + '"') else ""} \
       ~{if defined(marker) then ("--marker " +  '"' + marker + '"') else ""} \
       ~{if defined(seqtype) then ("--seqtype " +  '"' + seqtype + '"') else ""} \
@@ -22,11 +22,14 @@ task CryptoTyper {
   >>>
   parameter_meta {
     verbose: "Turn on verbose logging [False]."
-    path_directory_forward: "Path to directory with AB1 forward and reverse files OR path to a single AB1 file"
-    marker: "Name of the marker. Currently gp60 and 18S markers are supported"
-    seqtype: "Input sequences type. Select one option out of these three: contig - both F and R sequences provided forward - forward only sequence provided reverse - reverse only sequence provided"
-    forward_primer_name: "Name of the forward primer to identify forward read (e.g. gp60F, SSUF)"
-    reverse_primer_name: "Name of the reverse primer to identify forward read (e.g. gp60R, SSUR)"
-    output_prefix: "Output name prefix for the results (e.g. test results in test_report.fa)"
+    path_directory_forward: "Path to directory with AB1 forward and reverse files\\nOR path to a single AB1 file"
+    marker: "Name of the marker. Currently gp60 and 18S markers are\\nsupported"
+    seqtype: "Input sequences type. Select one option out of these\\nthree: contig - both F and R sequences provided\\nforward - forward only sequence provided reverse -\\nreverse only sequence provided"
+    forward_primer_name: "Name of the forward primer to identify forward read\\n(e.g. gp60F, SSUF)"
+    reverse_primer_name: "Name of the reverse primer to identify forward read\\n(e.g. gp60R, SSUR)"
+    output_prefix: "Output name prefix for the results (e.g. test results\\nin test_report.fa)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

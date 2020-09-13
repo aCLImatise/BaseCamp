@@ -1,4 +1,6 @@
 !Command
+command:
+- findPeaks
 positional:
 - !Positional
   description: ''
@@ -6,6 +8,30 @@ positional:
   name: tag directory
   optional: false
 named:
+- !Flag
+  description: "(file name for to output peaks, default: stdout)\n\"-o auto\" will\
+    \ send output to \"<tag directory>/peaks.txt\", \".../regions.txt\",\nor \".../transcripts.txt\"\
+    \ depending on the \"-style\" option"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: filename|auto
+  optional: true
+- !Flag
+  description: "(Specialized options for specific analysis strategies)\nfactor (transcription\
+    \ factor ChIP-Seq, uses -center, output: peaks.txt,  default)\nhistone (histone\
+    \ modification ChIP-Seq, region based, uses -region -size 500 -L 0, regions.txt)\n\
+    groseq (de novo transcript identification from GroSeq data, transcripts.txt)\n\
+    tss (TSS identification from 5' RNA sequencing, tss.txt)\ndnase (Hypersensitivity\
+    \ [crawford style (nicking)], peaks.txt)\nsuper (Super Enhancers, superEnhancers.txt)\n\
+    superhistone (Super Enhancers from H3K27ac data, superEnhancers.txt)\nmC (Cytosine\
+    \ methylation (BS-seq/methylC-seq), regions.txt)\ndamid (DamID enrichment from\
+    \ DpnI digestion, regions.txt)\nclip (CLIP-Seq enrichment, strand specific, peaks.txt)"
+  synonyms:
+  - -style
+  args: !SimpleFlagArg
+    name: option
+  optional: true
 - !Flag
   description: (Experiment to use as IgG/Input/Control)
   synonyms:
@@ -70,11 +96,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "(extends start/stop coordinates to cover full region considered \"\
-    enriched\") -regionRes <#> (number of fractions peaks are divided in when extending\
-    \ 'regions', def: 4)"
+  description: (extends start/stop coordinates to cover full region considered "enriched")
   synonyms:
   - -region
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<#> (number of fractions peaks are divided in when extending 'regions',\
+    \ def: 4)"
+  synonyms:
+  - -regionRes
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -84,8 +115,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (Centers peaks on most likely nucleosome free region [works best with
-    mnase data]) (-center and -nfr can be performed later with "getPeakTags"
+  description: "(Centers peaks on most likely nucleosome free region [works best with\
+    \ mnase data])\n(-center and -nfr can be performed later with \"getPeakTags\""
   synonyms:
   - -nfr
   args: !EmptyFlagArg {}
@@ -219,10 +250,88 @@ named:
   - -minNumC
   args: !EmptyFlagArg {}
   optional: true
-command:
-- findPeaks
+- !Flag
+  description: '<#> (size of region for initiation detection/artifact size, default:
+    250)'
+  synonyms:
+  - -tssSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (size of regoin for transcript body detection, default: 1000)'
+  synonyms:
+  - -minBodySize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (fold enrichment for new initiation dectection, default: 4.0)'
+  synonyms:
+  - -tssFold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (fold enrichment for new transcript dectection, default: 4.0)'
+  synonyms:
+  - -bodyFold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (end transcript when levels are this much less than the start,
+    default: 10.0)'
+  synonyms:
+  - -endFold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(method used for identifying new transcripts, default: fold)'
+  synonyms:
+  - -method
+  args: !SimpleFlagArg
+    name: fold|level
+  optional: true
+- !Flag
+  description: "(directory of binary files specifying uniquely mappable locations)\n\
+    Download from http://biowhat.ucsd.edu/homer/groseq/"
+  synonyms:
+  - -uniqmap
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: '<#> (confidence p-value: 1.00e-05)'
+  synonyms:
+  - -confPvalue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Minimum initial read depth for transcripts, default: auto)'
+  synonyms:
+  - -minReadDepth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Pseudo tag count, default: 2.0)'
+  synonyms:
+  - -pseudoCount
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (reverse strand of reads - for first-strand rna-seq/gro-seq)
+  synonyms:
+  - -rev
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Output de novo transcripts in GTF format)\n\"-o auto\" will produce\
+    \ <dir>/transcripts.txt and <dir>/transcripts.gtf\n"
+  synonyms:
+  - -gtf
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

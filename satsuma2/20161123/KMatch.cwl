@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../KMatch.cwl
 inputs:
-- id: query_dot_fa
+- id: in_query_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: target_dot_fa
+- id: in_target_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: k
+- id: in_k
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: output_dot_fa
+- id: in_output_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: min_length
+- id: in_min_length
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 4
-- id: jump
+- id: in_jump
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: max_freq
+- id: in_max_freq
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 6
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - KMatch

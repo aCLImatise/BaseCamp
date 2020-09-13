@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../pyprophet_filter.cwl
 inputs:
-- id: in
+- id: in_in
   doc: PyProphet input file.  [required]
   type: File
   inputBinding:
     prefix: --in
-- id: max_precursor_pep
-  doc: 'Maximum PEP to retain scored precursors in sqMass.  [default: 0.7]'
+- id: in_max_precursor_pep
+  doc: Maximum PEP to retain scored precursors in
   type: double
   inputBinding:
     prefix: --max_precursor_pep
-- id: max_peak_group_pep
-  doc: 'Maximum PEP to retain scored peak groups in sqMass.  [default: 0.7]'
+- id: in_max_peak_group_pep
+  doc: Maximum PEP to retain scored peak groups in
   type: double
   inputBinding:
     prefix: --max_peakgroup_pep
-- id: max_transition_pep
-  doc: 'Maximum PEP to retain scored transitions in sqMass.  [default: 0.7]'
+- id: in_max_transition_pep
+  doc: Maximum PEP to retain scored transitions in
   type: double
   inputBinding:
     prefix: --max_transition_pep
-- id: sq_mass_files
+- id: in_sq_mass_files
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pyprophet

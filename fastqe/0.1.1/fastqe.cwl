@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../fastqe.cwl
 inputs:
-- id: min_len
+- id: in_min_len
   doc: Minimum length sequence to include in stats (default 0)
-  type: string
+  type: long
   inputBinding:
     prefix: --minlen
-- id: mean
+- id: in_mean
   doc: show mean quality per position (DEFAULT)
   type: boolean
   inputBinding:
     prefix: --mean
-- id: bin
+- id: in_bin
   doc: use binned scores
   type: boolean
   inputBinding:
     prefix: --bin
-- id: min
+- id: in_min
   doc: show minimum quality per position
   type: boolean
   inputBinding:
     prefix: --min
-- id: max
+- id: in_max
   doc: show maximum quality per position
   type: boolean
   inputBinding:
     prefix: --max
-- id: log
+- id: in_log
   doc: record program progress in LOG_FILE
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: scale
+- id: in_scale
   doc: show relevant scale in output
   type: boolean
   inputBinding:
     prefix: --scale
-- id: fast_a_file
+- id: in_fast_a_file
   doc: Input FASTQ files
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fastqe

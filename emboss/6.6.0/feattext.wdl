@@ -4,4 +4,7 @@ task Feattext {
   command <<<
     feattext
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

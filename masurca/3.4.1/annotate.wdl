@@ -14,4 +14,7 @@ task Annotate {
     gap_file: ""
     data_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

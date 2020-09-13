@@ -1,18 +1,40 @@
 !Command
+command:
+- RNAalifold
 positional:
 - !Positional
-  description: ''
+  description: (default=off)
   position: 0
-  name: input0.aln
-  optional: true
+  name: structure.
+  optional: false
 - !Positional
-  description: ''
+  description: (default=off)
   position: 1
-  name: input1.aln
-  optional: true
+  name: alignment.
+  optional: false
+- !Positional
+  description: --shapeMethod=D[mX][bY]   Specify the method how to convert SHAPE
+  position: 0
+  name: predictions
+  optional: false
+- !Positional
+  description: (default=`D')
+  position: 0
+  name: contributions
+  optional: false
+- !Positional
+  description: (default=off)
+  position: 0
+  name: molecule.
+  optional: false
+- !Positional
+  description: (default=off)
+  position: 0
+  name: characters.
+  optional: false
 named:
 - !Flag
-  description: Print help, including all details and hidden options, and exit
+  description: "Print help, including all details and hidden\noptions, and exit"
   synonyms:
   - --detailed-help
   args: !EmptyFlagArg {}
@@ -24,69 +46,70 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Be verbose. (default=off)
+  description: "Be verbose.\n(default=off)"
   synonyms:
   - -v
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Be quiet. (default=off)
+  description: "Be quiet.\n(default=off)"
   synonyms:
   - -q
   - --quiet
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "[=number]           Split batch input into jobs and start processing\
-    \ in parallel using multiple threads. A value of 0 indicates to use as many parallel\
-    \ threads as computation cores are available. (default=`0')"
+  description: "[=number]           Split batch input into jobs and start\nprocessing\
+    \ in parallel using multiple\nthreads. A value of 0 indicates to use as\nmany\
+    \ parallel threads as computation cores\nare available.\n(default=`0')"
   synonyms:
   - -j
   - --jobs
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not automatically substitute nucleotide "T" with "U" (default=off)
+  description: "Do not automatically substitute nucleotide\n\"T\" with \"U\"\n(default=off)"
   synonyms:
   - --noconv
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Produce a colored version of the consensus structure plot "alirna.ps"
-    (default b&w only) (default=off)
+  description: "Produce a colored version of the consensus\nstructure plot \"alirna.ps\"\
+    \ (default b&w\nonly)\n(default=off)"
   synonyms:
   - --color
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Produce a colored and structure annotated alignment in PostScript format
-    in the file "aln.ps" in the current directory. (default=off)
+  description: "Produce a colored and structure annotated\nalignment in PostScript\
+    \ format in the file\n\"aln.ps\" in the current directory.\n(default=off)"
   synonyms:
   - --aln
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "[=prefix]        Create a multi-Stockholm formatted output file. (default=`RNAalifold_results')"
+  description: "[=prefix]        Create a multi-Stockholm formatted output file.\n\
+    (default=`RNAalifold_results')"
   synonyms:
   - --aln-stk
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not produce postscript drawing of the mfe structure. (default=off)
+  description: Do not produce postscript drawing of the mfe
   synonyms:
   - --noPS
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not produce dot-plot postscript file containing base pair or stack
-    probabilitities. (default=off)
+  description: "Do not produce dot-plot postscript file\ncontaining base pair or stack\n\
+    probabilitities.\n(default=off)"
   synonyms:
   - --noDP
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '|S|F|M    File format of the input multiple sequence alignment (MSA).'
+  description: "|S|F|M    File format of the input multiple sequence\nalignment (MSA)."
   synonyms:
   - -f
   - --input-format
@@ -94,107 +117,99 @@ named:
     name: C
   optional: true
 - !Flag
-  description: Use continuous alignment ID numbering when no alignment ID can be retrieved
-    from input data. (default=off)
+  description: "Use continuous alignment ID numbering when no\nalignment ID can be\
+    \ retrieved from input\ndata.\n(default=off)"
   synonyms:
   - -n
   - --continuous-ids
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Automatically generate an ID for each alignment. (default=off)
+  description: Automatically generate an ID for each
   synonyms:
   - --auto-id
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Prefix for automatically generated IDs (as used in output file names)
-    (default=`alignment')
+  description: "Prefix for automatically generated IDs (as used\nin output file names)\n\
+    (default=`alignment')"
   synonyms:
   - --id-prefix
   args: !SimpleFlagArg
     name: prefix
   optional: true
 - !Flag
-  description: Set the maximum base pair span (default=`-1')
+  description: "Set the maximum base pair span\n(default=`-1')"
   synonyms:
   - --maxBPspan
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: "[=<filename>] Calculate structures subject to constraints. The constraining\
-    \ structure will be read from 'stdin', the alignment has to be given as a file\
-    \ name on the command line. (default=`')"
+  description: "[=<filename>] Calculate structures subject to constraints.\nThe constraining\
+    \ structure will be read from\n'stdin', the alignment has to be given as a\nfile\
+    \ name on the command line.\n(default=`')"
   synonyms:
   - -C
   - --constraint
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use constraints for all alignment records. (default=off)
+  description: "Use constraints for all alignment records.\n(default=off)"
   synonyms:
   - --batch
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Enforce base pairs given by round brackets ( ) in structure constraint
-    (default=off)
+  description: "Enforce base pairs given by round brackets ( )\nin structure constraint\n\
+    (default=off)"
   synonyms:
   - --enforceConstraint
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use consensus structures from Stockholm file (#=GF SS_cons) as constraint
-    (default=off)
+  description: "Use consensus structures from Stockholm file\n(#=GF SS_cons) as constraint\n\
+    (default=off)"
   synonyms:
   - --SS_cons
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',file2       Use SHAPE reactivity data to guide structure predictions'
+  description: ',file2       Use SHAPE reactivity data to guide structure'
   synonyms:
   - --shape
   args: !SimpleFlagArg
     name: file1
   optional: true
 - !Flag
-  description: "[mX][bY]   Specify the method how to convert SHAPE reactivity data\
-    \ to pseudo energy contributions (default=`D')"
-  synonyms:
-  - --shapeMethod
-  args: !SimpleFlagArg
-    name: D
-  optional: true
-- !Flag
-  description: "[=INT]          Calculate the partition function and base pairing\
-    \ probability matrix in addition to the mfe structure. Default is calculation\
-    \ of mfe structure only. (default=`1')"
+  description: "[=INT]          Calculate the partition function and base\npairing\
+    \ probability matrix in addition to the\nmfe structure. Default is calculation\
+    \ of mfe\nstructure only.\n(default=`1')"
   synonyms:
   - -p
   - --partfunc
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "[=gamma]             Calculate an MEA (maximum expected accuracy)\
-    \ structure, where the expected accuracy is computed from the pair probabilities:\
-    \ each base pair (i,j) gets a score 2*gamma*p_ij and the score of an unpaired\
-    \ base is given by the probability of not forming a pair. (default=`1.')"
+  description: "[=gamma]             Calculate an MEA (maximum expected accuracy)\n\
+    structure, where the expected accuracy is\ncomputed from the pair probabilities:\
+    \ each\nbase pair (i,j) gets a score 2*gamma*p_ij and\nthe score of an unpaired\
+    \ base is given by the\nprobability of not forming a pair.\n(default=`1.')"
   synonyms:
   - --MEA
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Output "most informative sequence" instead of simple consensus: For
-    each column of the alignment output the set of nucleotides with frequency greater
-    than average in IUPAC notation. (default=off)'
+  description: "Output \"most informative sequence\" instead of\nsimple consensus:\
+    \ For each column of the\nalignment output the set of nucleotides with\nfrequency\
+    \ greater than average in IUPAC\nnotation.\n(default=off)"
   synonyms:
   - --mis
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Stochastic backtrack. Compute a certain number of random structures
-    with a probability dependend on the partition function. See -p option in RNAsubopt.
+  description: "Stochastic backtrack. Compute a certain number\nof random structures\
+    \ with a probability\ndependend on the partition function. See -p\noption in RNAsubopt."
   synonyms:
   - -s
   - --stochBT
@@ -202,44 +217,45 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: same as "-s" but also print out the energies and probabilities of the
-    backtraced structures.
+  description: "same as \"-s\" but also print out the energies\nand probabilities\
+    \ of the backtraced\nstructures."
   synonyms:
   - --stochBT_en
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: Enable non-redundant sampling strategy. (default=off)
+  description: "Enable non-redundant sampling strategy.\n(default=off)"
   synonyms:
   - -N
   - --nonRedundant
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Assume a circular (instead of linear) RNA molecule. (default=off)
+  description: Assume a circular (instead of linear) RNA
   synonyms:
   - -c
   - --circ
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Incoorporate G-Quadruplex formation into the structure prediction algorithm.
-    (default=off)
+  description: "Incoorporate G-Quadruplex formation into the\nstructure prediction\
+    \ algorithm.\n(default=off)"
   synonyms:
   - -g
   - --gquad
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Compute the structure conservation index (SCI) for the MFE consensus
-    structure of the alignment (default=off)
+  description: "Compute the structure conservation index (SCI)\nfor the MFE consensus\
+    \ structure of the\nalignment\n(default=off)"
   synonyms:
   - --sci
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Rescale energy parameters to a temperature of temp C. Default is 37C.
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
   synonyms:
   - -T
   - --temp
@@ -247,16 +263,16 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Do not include special tabulated stabilizing energies for tri-, tetra-
-    and hexaloop hairpins. (default=off)
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins.\n(default=off)"
   synonyms:
   - '-4'
   - --noTetra
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: How to treat "dangling end" energies for bases adjacent to helices
-    in free ends and multi-loops (default=`2')
+  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
+    \ in free ends and\nmulti-loops\n(default=`2')"
   synonyms:
   - -d
   - --dangles
@@ -264,48 +280,50 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Produce structures without lonely pairs (helices of length 1). (default=off)
+  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
+    (default=off)"
   synonyms:
   - --noLP
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not allow GU pairs (default=off)
+  description: "Do not allow GU pairs\n(default=off)"
   synonyms:
   - --noGU
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not allow GU pairs at the end of helices (default=off)
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
   synonyms:
   - --noClosingGU
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Set the weight of the covariance term in the energy function (default=`1.0')
+  description: "Set the weight of the covariance term in the\nenergy function\n(default=`1.0')"
   synonyms:
   - --cfactor
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: Set the penalty for non-compatible sequences in the covariance term
-    of the energy function (default=`1.0')
+  description: "Set the penalty for non-compatible sequences in\nthe covariance term\
+    \ of the energy function\n(default=`1.0')"
   synonyms:
   - --nfactor
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: Score pairs with endgaps same as gap-gap pairs. (default=off)
+  description: "Score pairs with endgaps same as gap-gap pairs.\n(default=off)"
   synonyms:
   - -E
   - --endgaps
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: use specified Ribosum Matrix instead of normal energy model. Matrixes
-    to use should be 6x6 matrices, the order of the terms is AU, CG, GC, GU, UA, UG.
+  description: "use specified Ribosum Matrix instead of normal\nenergy model. Matrixes\
+    \ to use should be 6x6\nmatrices, the order of the terms is AU, CG,\nGC, GU, UA,\
+    \ UG."
   synonyms:
   - -R
   - --ribosum_file
@@ -313,32 +331,31 @@ named:
     name: ribosumfile
   optional: true
 - !Flag
-  description: use ribosum scoring matrix. The matrix is chosen according to the minimal
-    and maximal pairwise identities of the sequences in the file. (default=off)
+  description: "use ribosum scoring matrix. The matrix is\nchosen according to the\
+    \ minimal and maximal\npairwise identities of the sequences in the\nfile.\n(default=off)"
   synonyms:
   - -r
   - --ribosum_scoring
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: use old energy evaluation, treating gaps as characters. (default=off)
+  description: use old energy evaluation, treating gaps as
   synonyms:
   - --old
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Read energy parameters from paramfile, instead of using the default
-    parameter set.
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
   synonyms:
   - -P
   - --paramFile
   args: !SimpleFlagArg
     name: paramfile
   optional: true
-command:
-- RNAalifold
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print help and exit
   synonyms:

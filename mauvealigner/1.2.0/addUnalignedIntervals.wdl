@@ -2,8 +2,8 @@ version 1.0
 
 task AddUnalignedIntervals {
   input {
-    String input_interval_file
-    String output_interval_file
+    File input_interval_file
+    File output_interval_file
   }
   command <<<
     addUnalignedIntervals \
@@ -13,5 +13,9 @@ task AddUnalignedIntervals {
   parameter_meta {
     input_interval_file: ""
     output_interval_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_interval_file = "${in_output_interval_file}"
   }
 }

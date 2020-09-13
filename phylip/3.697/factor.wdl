@@ -4,4 +4,7 @@ task Factor {
   command <<<
     factor
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

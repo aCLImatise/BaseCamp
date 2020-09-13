@@ -1,47 +1,60 @@
 class: CommandLineTool
 id: ../../../taxon_utils_filter.cwl
 inputs:
-- id: taxonomy
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_table
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --table
+- id: in_taxonomy
   doc: Taxonomy file  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --taxonomy
-- id: include_tax_on_id
+- id: in_include_tax_on_id
   doc: Include only taxon_ids
   type: long
   inputBinding:
     prefix: --include-taxon-id
-- id: include_tax_on_name
+- id: in_include_tax_on_name
   doc: Include only taxon_names
   type: string
   inputBinding:
     prefix: --include-taxon-name
-- id: exclude_tax_on_id
+- id: in_exclude_tax_on_id
   doc: Exclude taxon_ids
   type: long
   inputBinding:
     prefix: --exclude-taxon-id
-- id: exclude_tax_on_name
+- id: in_exclude_tax_on_name
   doc: Exclude taxon_names
   type: string
   inputBinding:
     prefix: --exclude-taxon-name
-- id: progress
+- id: in_progress
   doc: Shows Progress Bar
   type: boolean
   inputBinding:
     prefix: --progress
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - taxon-utils

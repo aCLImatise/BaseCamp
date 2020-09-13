@@ -1,21 +1,148 @@
 !Command
+command:
+- Sibelia
 positional:
 - !Positional
-  description: '{-s <loose|fine|far>|-k <file name>} [-o <dir name>] [--noblocks]
-    [-r] [-a] [-m <integer>] [-q] [-g] [-v] [-t <dir name>] [--lastk <integer > 1>]
-    [--allstages] [--gff] [--nopostprocess] [--correctboundaries] [-i <integer > 0>]
-    [--] [--version] [-h] <fasta files with genomes> ...'
+  description: "{-s <loose|fine|far>|-k <file name>} [-o <dir name>]\n[--noblocks]\
+    \ [-r] [-a] [-m <integer>] [-q] [-g] [-v] [-t <dir\nname>] [--lastk <integer >\
+    \ 1>] [--allstages] [--gff]\n[--nopostprocess] [--correctboundaries] [-i <integer\
+    \ > 0>] [--]\n[--version] [-h] <fasta files with genomes> ..."
   position: 0
   name: Sibelia
   optional: false
-named: []
-command:
-- Sibelia
+named:
+- !Flag
+  description: ",  --parameters <loose|fine|far>\n(OR required)  Parameters set, used\
+    \ for the simplification. Option\n\"loose\" produces fewer blocks, but they are\
+    \ larger (\"fine\" is\nopposite).\n-- OR --"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: loose|fine|far
+  optional: true
+- !Flag
+  description: ",  --stagefile <file name>\n(OR required)  File that contains manually\
+    \ chosen simplifications\nparameters. See USAGE file for more information."
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: file name
+  optional: true
+- !Flag
+  description: ",  --outdir <dir name>\nDirectory where output files are written"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: dir name
+  optional: true
+- !Flag
+  description: Do not compute synteny blocks
+  synonyms:
+  - --noblocks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --inram\nPerform all computations in RAM, don't create temp files."
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --sharedonly\nOutput only blocks that occur exactly once in each\
+    \ input sequence."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --minblocksize <integer>\nMinimum size of a synteny block, default\
+    \ value = 5000 BP."
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ",  --sequencesfile\nOutput sequences of synteny blocks (FASTA format)."
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --graphfile\nOutput resulting condensed de Bruijn graph (in dot\
+    \ format)."
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --visualize\nDraw circos diagram with blocks at different stages."
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --tempdir <dir name>\nDirectory where temporary files are stored."
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: dir name
+  optional: true
+- !Flag
+  description: "1>\nValue of K used for the synteny blocks inferring."
+  synonyms:
+  - --lastk
+  args: !SimpleFlagArg
+    name: 'integer '
+  optional: true
+- !Flag
+  description: Output coordinates of synteny blocks from all stages
+  synonyms:
+  - --allstages
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use GFF format for reporting blocks coordinates
+  synonyms:
+  - --gff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not perform postprocessing (stripe gluing).
+  synonyms:
+  - --nopostprocess
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Correct boundaries of unique synteny blocks.
+  synonyms:
+  - --correctboundaries
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "0>,  --maxiterations <integer > 0>\nMaximum number of iterations during\
+    \ a stage of simplification, default\n= 4."
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: 'integer '
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ",  --help\nDisplays usage information and exits."
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Displays version information and exits.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "\nUSAGE: \n\n   Sibelia  {-s <loose|fine|far>|-k <file name>} [-o <dir\
   \ name>]\n            [--noblocks] [-r] [-a] [-m <integer>] [-q] [-g] [-v] [-t <dir\n\
   \            name>] [--lastk <integer > 1>] [--allstages] [--gff]\n            [--nopostprocess]\

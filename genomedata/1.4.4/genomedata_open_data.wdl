@@ -1,6 +1,6 @@
 version 1.0
 
-task GenomedataOpenData {
+task Genomedataopendata {
   input {
     Array[String] track_names
     Boolean? verbose
@@ -8,16 +8,19 @@ task GenomedataOpenData {
     String gd_archive
   }
   command <<<
-    genomedata-open-data \
+    genomedata_open_data \
       ~{gd_archive} \
       ~{if defined(track_names) then ("--tracknames " +  '"' + track_names + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="-v" false="" v}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     track_names: "tracknames to open"
     verbose: "Print status updates and diagnostic messages"
     v: ""
     gd_archive: "genomedata archive"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

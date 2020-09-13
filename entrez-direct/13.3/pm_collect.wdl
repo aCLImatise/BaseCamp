@@ -1,7 +1,10 @@
 version 1.0
 
-task PmCollect {
+task Pmcollect {
   command <<<
-    pm-collect
+    pm_collect
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

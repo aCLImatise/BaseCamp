@@ -6,9 +6,12 @@ task Kpal {
   }
   command <<<
     kpal \
-      ~{true="-v" false="" show_programs_version}
+      ~{if (show_programs_version) then "-v" else ""}
   >>>
   parameter_meta {
     show_programs_version: "show program's version number and exit"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

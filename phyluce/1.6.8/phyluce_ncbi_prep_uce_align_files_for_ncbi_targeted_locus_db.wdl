@@ -2,12 +2,12 @@ version 1.0
 
 task PhyluceNcbiPrepUceAlignFilesForNcbiTargetedLocusDb {
   input {
-    String? alignments
-    String? conf
-    String? directory_store_files
+    Directory? alignments
+    File? conf
+    Directory? directory_store_files
     String? input_format
     String? verbosity
-    String? log_path
+    File? log_path
   }
   command <<<
     phyluce_ncbi_prep_uce_align_files_for_ncbi_targeted_locus_db \
@@ -25,5 +25,9 @@ task PhyluceNcbiPrepUceAlignFilesForNcbiTargetedLocusDb {
     input_format: "The input alignment format"
     verbosity: "The logging level to use."
     log_path: "The path to a directory to hold logs."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_directory_store_files = "${in_directory_store_files}"
   }
 }

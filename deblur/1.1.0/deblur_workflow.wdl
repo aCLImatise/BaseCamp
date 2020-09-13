@@ -10,9 +10,9 @@ task DeblurWorkflow {
     File? pos_ref_db_fp
     File? neg_ref_fp
     File? neg_ref_db_fp
-    Boolean? overwrite
+    Directory? overwrite
     Float? mean_error
-    String? error_dist
+    Int? error_dist
     Float? in_del_prob
     Int? in_del_max
     Int? min_reads
@@ -34,7 +34,7 @@ task DeblurWorkflow {
       ~{if defined(pos_ref_db_fp) then ("--pos-ref-db-fp " +  '"' + pos_ref_db_fp + '"') else ""} \
       ~{if defined(neg_ref_fp) then ("--neg-ref-fp " +  '"' + neg_ref_fp + '"') else ""} \
       ~{if defined(neg_ref_db_fp) then ("--neg-ref-db-fp " +  '"' + neg_ref_db_fp + '"') else ""} \
-      ~{true="--overwrite" false="" overwrite} \
+      ~{if (overwrite) then "--overwrite" else ""} \
       ~{if defined(mean_error) then ("--mean-error " +  '"' + mean_error + '"') else ""} \
       ~{if defined(error_dist) then ("--error-dist " +  '"' + error_dist + '"') else ""} \
       ~{if defined(in_del_prob) then ("--indel-prob " +  '"' + in_del_prob + '"') else ""} \
@@ -42,33 +42,39 @@ task DeblurWorkflow {
       ~{if defined(min_reads) then ("--min-reads " +  '"' + min_reads + '"') else ""} \
       ~{if defined(min_size) then ("--min-size " +  '"' + min_size + '"') else ""} \
       ~{if defined(threads_per_sample) then ("--threads-per-sample " +  '"' + threads_per_sample + '"') else ""} \
-      ~{true="--keep-tmp-files" false="" keep_tmp_files} \
+      ~{if (keep_tmp_files) then "--keep-tmp-files" else ""} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""} \
       ~{if defined(jobs_to_start) then ("--jobs-to-start " +  '"' + jobs_to_start + '"') else ""} \
-      ~{true="--is-worker-thread" false="" is_worker_thread}
+      ~{if (is_worker_thread) then "--is-worker-thread" else ""}
   >>>
   parameter_meta {
-    seqs_fp: "Either a Demultiplexed FASTA or FASTQ file including all samples, or a directory of per-sample FASTA or FASTQ files. Gzip'd files are acceptable (e.g., .fastq.gz). [required]"
-    output_dir: "Directory path to store output including BIOM table  [required]"
-    trim_length: "Sequence trim length. All reads shorter than the trim-length will be discarded. A value of -1 can be specified to skip trimming; this assumes all sequences have an identical length.  [required]"
-    left_trim_length: "Trim the first N bases from every sequence. A value of 0 disables this trim.  [default: 0]"
-    pos_ref_fp: "Positive reference filtering database. Keep all sequences permissively aligning to any sequence in this FASTA file; these results are stored in the reference-hit.biom output file. This defaults to the Greengenes 13_8 OTUs at 88% identity. An e-value threshold of 10 is used with SortMeRNA against the reference. For multiple databases, specify the argument multiple times, e.g., --pos- ref-fp db1.fa --pos-ref-fp db2.fa"
-    pos_ref_db_fp: "An indexed version of the positive filtering database. This can be useful to avoid incurring the expense of reindexing on every run. If not supplied, deblur will index the database. For multiple databases, the order must follow that of --pos-ref-fp, for example, --pos-ref-db-fp db1.idx --pos-ref- db-fp db2.idx .."
-    neg_ref_fp: "Negative (artifacts) filtering database. Drop all sequences which align to any record in this FASTA file. This defaults to a database composed of multiple PhiX genomes and known Illumina adapters. For multiple databases, specify the argument mutiple times, e.g., --neg-ref-fp db1.fa --neg-ref- fp db2.fa"
-    neg_ref_db_fp: "An indexed version of the negative filtering database. If not supplied, deblur will index the database.For multiple databases, the order must follow that of --neg-ref-fp, for example, --neg-ref-db-fp db1.idx --neg-ref- db-fp db2.idx .."
-    overwrite: "Overwrite output directory if exists. [default: False]"
-    mean_error: "The mean per nucleotide error rate, used for original sequence estimate. If not passed typical illumina error rate is used. [default: 0.005]"
-    error_dist: "A comma separated list of error probabilities for each Hamming distance. The length of the list determines the number of Hamming distances taken into account. [default: 1, 0.06, 0.02, 0.02, 0.01, 0.005, 0.005, 0.005, 0.001, 0.001, 0.001, 0.0005]"
-    in_del_prob: "Insertion/deletion (indel) probability. This probability consistent for multiple indels; there is not an added elongation penalty. [default: 0.01]"
-    in_del_max: "Maximum number of allowed indels.  [default: 3]"
-    min_reads: "Keep only the sequences which appear at least min-reads study wide (as opposed to per-sample).  [default: 10]"
-    min_size: "Keep only sequences which appear at least min-size times per-sample (as opposed to study wide).  [default: 2]"
-    threads_per_sample: "Number of threads to use per sample (0 to use all)  [default: 1]"
-    keep_tmp_files: "Keep temporary files (useful for debugging) [default: False]"
-    log_level: "RANGE       Level of messages for log file(range 1-debug to 5-critical  [default: 2]"
+    seqs_fp: "Either a Demultiplexed FASTA or FASTQ file\\nincluding all samples, or a directory of\\nper-sample FASTA or FASTQ files. Gzip'd\\nfiles are acceptable (e.g., .fastq.gz).\\n[required]"
+    output_dir: "Directory path to store output including\\nBIOM table  [required]"
+    trim_length: "Sequence trim length. All reads shorter than\\nthe trim-length will be discarded. A value\\nof -1 can be specified to skip trimming;\\nthis assumes all sequences have an identical\\nlength.  [required]"
+    left_trim_length: "Trim the first N bases from every sequence.\\nA value of 0 disables this trim.  [default:\\n0]"
+    pos_ref_fp: "Positive reference filtering database. Keep\\nall sequences permissively aligning to any\\nsequence in this FASTA file; these results\\nare stored in the reference-hit.biom output\\nfile. This defaults to the Greengenes 13_8\\nOTUs at 88% identity. An e-value threshold\\nof 10 is used with SortMeRNA against the\\nreference. For multiple databases, specify\\nthe argument multiple times, e.g., --pos-\\nref-fp db1.fa --pos-ref-fp db2.fa"
+    pos_ref_db_fp: "An indexed version of the positive filtering\\ndatabase. This can be useful to avoid\\nincurring the expense of reindexing on every\\nrun. If not supplied, deblur will index the\\ndatabase. For multiple databases, the order\\nmust follow that of --pos-ref-fp, for\\nexample, --pos-ref-db-fp db1.idx --pos-ref-\\ndb-fp db2.idx .."
+    neg_ref_fp: "Negative (artifacts) filtering database.\\nDrop all sequences which align to any record\\nin this FASTA file. This defaults to a\\ndatabase composed of multiple PhiX genomes\\nand known Illumina adapters. For multiple\\ndatabases, specify the argument mutiple\\ntimes, e.g., --neg-ref-fp db1.fa --neg-ref-\\nfp db2.fa"
+    neg_ref_db_fp: "An indexed version of the negative filtering\\ndatabase. If not supplied, deblur will index\\nthe database.For multiple databases, the\\norder must follow that of --neg-ref-fp, for\\nexample, --neg-ref-db-fp db1.idx --neg-ref-\\ndb-fp db2.idx .."
+    overwrite: "Overwrite output directory if exists.\\n[default: False]"
+    mean_error: "The mean per nucleotide error rate, used for\\noriginal sequence estimate. If not passed\\ntypical illumina error rate is used.\\n[default: 0.005]"
+    error_dist: "A comma separated list of error\\nprobabilities for each Hamming distance. The\\nlength of the list determines the number of\\nHamming distances taken into account.\\n[default: 1, 0.06, 0.02, 0.02, 0.01, 0.005,\\n0.005, 0.005, 0.001, 0.001, 0.001, 0.0005]"
+    in_del_prob: "Insertion/deletion (indel) probability. This\\nprobability consistent for multiple indels;\\nthere is not an added elongation penalty.\\n[default: 0.01]"
+    in_del_max: "Maximum number of allowed indels.  [default:\\n3]"
+    min_reads: "Keep only the sequences which appear at\\nleast min-reads study wide (as opposed to\\nper-sample).  [default: 10]"
+    min_size: "Keep only sequences which appear at least\\nmin-size times per-sample (as opposed to\\nstudy wide).  [default: 2]"
+    threads_per_sample: "Number of threads to use per sample (0 to\\nuse all)  [default: 1]"
+    keep_tmp_files: "Keep temporary files (useful for debugging)\\n[default: False]"
+    log_level: "RANGE       Level of messages for log file(range 1-debug\\nto 5-critical  [default: 2]"
     log_file: "log file name  [default: deblur.log]"
-    jobs_to_start: "Number of jobs to start (if to run in parallel)  [default: 1]"
-    is_worker_thread: "indicates this is not the main deblur process (used by the parallel deblur - do not use manually)  [default: False]"
+    jobs_to_start: "Number of jobs to start (if to run in\\nparallel)  [default: 1]"
+    is_worker_thread: "indicates this is not the main deblur\\nprocess (used by the parallel deblur - do\\nnot use manually)  [default: False]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_dir = "${in_output_dir}"
+    File out_pos_ref_fp = "${in_pos_ref_fp}"
+    Directory out_overwrite = "${in_overwrite}"
   }
 }

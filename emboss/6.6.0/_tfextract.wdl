@@ -1,7 +1,10 @@
 version 1.0
 
-task _tfextract {
+task Tfextract {
   command <<<
     _tfextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

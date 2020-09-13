@@ -1,4 +1,7 @@
-&id003 !Command
+&id001 !Command
+command:
+- ipa
+- validate
 positional:
 - !Positional
   description: ''
@@ -6,17 +9,18 @@ positional:
   name: ipa
   optional: false
 named: []
-command:
-- ipa
-- validate
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - ipa
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - ipa
+    - local
     positional: []
     named:
     - !Flag
@@ -146,11 +150,9 @@ parent: &id001 !Command
       - --resume
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ipa
-    - local
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -194,9 +196,12 @@ parent: &id001 !Command
       \ exit. (default: False)\n  --resume              Restart snakemake, but after\
       \ regenerating the config file. In this case, run-dir may already exist. (Without\
       \ --resume, run-dir must not already exist.) (default: False)\n"
-    generated_using: &id002
+    generated_using: &id003
     - --help
   - !Command
+    command:
+    - ipa
+    - dist
     positional: []
     named:
     - !Flag
@@ -319,18 +324,16 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: '(Required) Pass this along to snakemake, for conveniently running
-        in a compute cluster. (default: )'
+      description: "(Required) Pass this along to snakemake, for conveniently running\
+        \ in a compute cluster. (default: )\n"
       synonyms:
       - --cluster-args
       args: !SimpleFlagArg
         name: CLUSTER_ARGS
       optional: true
-    command:
-    - ipa
-    - dist
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -374,8 +377,8 @@ parent: &id001 !Command
       \ the snakemake command and exit. (default: False)\n  --cluster-args CLUSTER_ARGS\n\
       \                        (Required) Pass this along to snakemake, for conveniently\
       \ running in a compute cluster. (default: )\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -399,8 +402,9 @@ parent: &id001 !Command
     \ your local machine.\n    dist                Distribute IPA jobs to your cluster.\n\
     \    validate            Check dependencies.\n\nTry \"ipa local --help\".\nOr\
     \ \"ipa validate\" to validate dependencies.\nhttps://github.com/PacificBiosciences/pbbioconda/wiki/Improved-Phased-Assember\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

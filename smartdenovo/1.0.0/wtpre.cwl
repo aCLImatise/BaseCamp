@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../wtpre.cwl
 inputs:
-- id: output_processed_reads
+- id: in_output_processed_reads
   doc: Output of processed reads, [-]
   type: string
   inputBinding:
     prefix: -o
-- id: force_overwrite_output
+- id: in_force_overwrite_output
   doc: Force overwrite output file
-  type: boolean
+  type: File
   inputBinding:
     prefix: -f
-- id: keep_subreads_one
+- id: in_keep_subreads_one
   doc: 'Keep all subreads in a well, default: the longest one'
   type: boolean
   inputBinding:
     prefix: -L
-- id: jack_knife_read
+- id: in_jack_knife_read
   doc: Jack knife of read length, [0]
   type: long
   inputBinding:
     prefix: -J
-- id: clip_c_bases
+- id: in_clip_c_bases
   doc: Clip <-c> bases at both ends, [0]
   type: long
   inputBinding:
     prefix: -c
-- id: change_read_name
+- id: in_change_read_name
   doc: Change the read name into {"%s%012d", <-p>}, [pb]
-  type: string
+  type: long
   inputBinding:
     prefix: -p
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_force_overwrite_output
+  doc: Force overwrite output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_force_overwrite_output)
 cwlVersion: v1.1
 baseCommand:
 - wtpre

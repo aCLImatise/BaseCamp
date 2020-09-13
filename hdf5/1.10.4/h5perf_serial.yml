@@ -1,0 +1,128 @@
+!Command
+command:
+- h5perf_serial
+positional:
+- !Positional
+  description: -h                Print an usage message and exit
+  position: 0
+  name: OPTIONS
+  optional: false
+- !Positional
+  description: "- is an HDF5 file driver specifier. Valid values are:\nsec2, stdio,\
+    \ core, split, multi, family, direct"
+  position: 0
+  name: VFD
+  optional: false
+- !Positional
+  description: Do not remove data files if set [default remove]
+  position: 0
+  name: HDF5_NOCLEANUP
+  optional: false
+- !Positional
+  description: Data file prefix
+  position: 1
+  name: HDF5_PREFIX
+  optional: false
+named:
+- !Flag
+  description: "Which APIs to test\n[default: all of them]"
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: AL
+  optional: true
+- !Flag
+  description: "Selects chunked storage and defines chunks dimensions\nand sizes\n\
+    [default: Off]"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: SL
+  optional: true
+- !Flag
+  description: "Dimensions and sizes of dataset\n[default: 100,200]"
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: SL
+  optional: true
+- !Flag
+  description: "Number of iterations to perform\n[default: 1]"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Dimension access order (see below for description)\n[default: 1,2]"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: NL
+  optional: true
+- !Flag
+  description: "Selects extendable dimensions for HDF5 dataset\n[default: Off]"
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Selects file driver for HDF5 access\n[default: sec2]"
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: VFD
+  optional: true
+- !Flag
+  description: "Perform write tests, not the read tests\n[default: Off]"
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dimensions and sizes of the transfer buffer\n[default: 10,20]"
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: SL
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "h5perf_serial: Version 1.10.4\nusage: h5perf_serial [OPTIONS]\n  OPTIONS\n\
+  \     -h                Print an usage message and exit\n     -A AL            \
+  \ Which APIs to test\n                       [default: all of them]\n     -c SL\
+  \             Selects chunked storage and defines chunks dimensions\n          \
+  \             and sizes\n                       [default: Off]\n     -e SL     \
+  \        Dimensions and sizes of dataset\n                       [default: 100,200]\n\
+  \     -i N              Number of iterations to perform\n                      \
+  \ [default: 1]\n     -r NL             Dimension access order (see below for description)\n\
+  \                       [default: 1,2]\n     -t                Selects extendable\
+  \ dimensions for HDF5 dataset\n                       [default: Off]\n     -v VFD\
+  \            Selects file driver for HDF5 access\n                       [default:\
+  \ sec2]\n     -w                Perform write tests, not the read tests\n      \
+  \                 [default: Off]\n     -x SL             Dimensions and sizes of\
+  \ the transfer buffer\n                       [default: 10,20]\n\n  N  - is an integer\
+  \ > 0.\n\n  S  - is a size specifier, an integer > 0 followed by a size indicator:\n\
+  \          K - Kilobyte (1024)\n          M - Megabyte (1048576)\n          G -\
+  \ Gigabyte (1073741824)\n\n      Example: '37M' is 37 megabytes or 38797312 bytes\n\
+  \n  AL - is an API list. Valid values are:\n          hdf5 - HDF5\n          posix\
+  \ - POSIX\n\n      Example: -A posix,hdf5\n\n  NL - is list of integers (N) separated\
+  \ by commas.\n\n      Example: 1,2,3\n\n  SL - is list of size specifiers (S) separated\
+  \ by commas.\n\n      Example: 2K,2K,3K\n\n      The example defines an object (dataset,\
+  \ tranfer buffer) with three\n      dimensions. Be aware that as the number of dimensions\
+  \ increases, the\n      the total size of the object increases exponentially.\n\n\
+  \  VFD  - is an HDF5 file driver specifier. Valid values are:\n          sec2, stdio,\
+  \ core, split, multi, family, direct\n\n  Dimension access order:\n      Data access\
+  \ starts at the cardinal origin of the dataset using the\n      transfer buffer.\
+  \ The next access occurs on a dataset region next to\n      the previous one. For\
+  \ a multidimensional dataset, there are several\n      directions as to where to\
+  \ proceed. This can be specified in the dimension\n      access order. For example,\
+  \ -r 1,2 states that the tool should traverse\n      dimension 1 first, and then\
+  \ dimension 2.\n\n  Environment variables:\n      HDF5_NOCLEANUP   Do not remove\
+  \ data files if set [default remove]\n      HDF5_PREFIX      Data file prefix\n\n"
+generated_using:
+- --help

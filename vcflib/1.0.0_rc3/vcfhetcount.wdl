@@ -4,4 +4,7 @@ task Vcfhetcount {
   command <<<
     vcfhetcount
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

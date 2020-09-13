@@ -4,4 +4,7 @@ task DnaMutation {
   command <<<
     dna_mutation
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -23,4 +23,7 @@ task TripailleExpressionGetBiomaterials {
     organism_id: "Limit query to the selected organism"
     dbxref_id: "Limit query to the selected ref"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

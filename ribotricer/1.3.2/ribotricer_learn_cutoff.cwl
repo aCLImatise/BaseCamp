@@ -1,65 +1,63 @@
 class: CommandLineTool
 id: ../../../ribotricer_learn_cutoff.cwl
 inputs:
-- id: ribo_bams
-  doc: Path(s) to Ribo-seq BAM file separated by comma
-  type: string
+- id: in_ribo_bams
+  doc: Path(s) to Ribo-seq BAM file separated by
+  type: File
   inputBinding:
     prefix: --ribo_bams
-- id: rna_bams
-  doc: Path(s) to RNA-seq BAM file separated by comma
-  type: string
-  inputBinding:
-    prefix: --rna_bams
-- id: ribo_t_svs
-  doc: Path(s) to Ribo-seq *_translating_ORFs.tsv file separated by comma
-  type: string
-  inputBinding:
-    prefix: --ribo_tsvs
-- id: rna_t_svs
-  doc: Path(s) to RNA-seq *_translating_ORFs.tsv file separated by comma
-  type: string
+- id: in_rna_t_svs
+  doc: "Path(s) to RNA-seq *_translating_ORFs.tsv\nfile separated by comma"
+  type: File
   inputBinding:
     prefix: --rna_tsvs
-- id: ribot_ricer_index
-  doc: Path to the index file of ribotricer This file should be generated using ribotricer
-    prepare-orfs (required for BAM input)
-  type: string
+- id: in_ribot_ricer_index
+  doc: "Path to the index file of ribotricer This\nfile should be generated using\
+    \ ribotricer\nprepare-orfs (required for BAM input)"
+  type: File
   inputBinding:
     prefix: --ribotricer_index
-- id: prefix
+- id: in_prefix
   doc: Prefix to output file
-  type: string
+  type: File
   inputBinding:
     prefix: --prefix
-- id: filter_by_tx_annotation
-  doc: 'transcript_type to filter regions by [default: protein_coding]'
+- id: in_filter_by_tx_annotation
+  doc: "transcript_type to filter regions by\n[default: protein_coding]"
   type: string
   inputBinding:
     prefix: --filter_by_tx_annotation
-- id: phase_score_cut_off
-  doc: 'Phase score cutoff for determining active translation (required for BAM input)
-    [default: 0.428571428571]'
+- id: in_phase_score_cut_off
+  doc: "Phase score cutoff for determining active\ntranslation (required for BAM input)\n\
+    [default: 0.428571428571]"
   type: double
   inputBinding:
     prefix: --phase_score_cutoff
-- id: min_valid_codons
-  doc: 'Minimum number of codons with non-zero reads for determining active translation
-    (required for BAM input)  [default: 5]'
+- id: in_min_valid_codons
+  doc: "Minimum number of codons with non-zero reads\nfor determining active translation\
+    \ (required\nfor BAM input)  [default: 5]"
   type: long
   inputBinding:
     prefix: --min_valid_codons
-- id: sampling_ratio
-  doc: 'Number of protein coding regions to sample per bootstrap  [default: 0.33]'
+- id: in_sampling_ratio
+  doc: "Number of protein coding regions to sample\nper bootstrap  [default: 0.33]"
   type: double
   inputBinding:
     prefix: --sampling_ratio
-- id: n_bootstraps
+- id: in_n_bootstraps
   doc: 'Number of bootstraps  [default: 20000]'
   type: long
   inputBinding:
     prefix: --n_bootstraps
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prefix
+  doc: Prefix to output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_prefix)
 cwlVersion: v1.1
 baseCommand:
 - ribotricer

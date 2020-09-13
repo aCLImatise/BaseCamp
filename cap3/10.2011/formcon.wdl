@@ -2,9 +2,9 @@ version 1.0
 
 task Formcon {
   input {
-    File file_of_reads
-    Int min_distance
-    Int max_distance
+    String file_of_reads
+    String min_distance
+    String max_distance
   }
   command <<<
     formcon \
@@ -16,5 +16,8 @@ task Formcon {
     file_of_reads: "file of DNA reads in FASTA format"
     min_distance: "minimum length in bp of subclones"
     max_distance: "maximum length in bp of subclones"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

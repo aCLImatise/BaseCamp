@@ -4,4 +4,7 @@ task SparsetableUnittest {
   command <<<
     sparsetable_unittest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

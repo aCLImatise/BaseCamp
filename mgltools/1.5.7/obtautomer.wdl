@@ -1,17 +1,10 @@
 version 1.0
 
 task Obtautomer {
-  input {
-    Boolean? c
-    File filename
-  }
   command <<<
-    obtautomer \
-      ~{filename} \
-      ~{true="-c" false="" c}
+    obtautomer
   >>>
-  parameter_meta {
-    c: ""
-    filename: ""
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,10 +2,10 @@ version 1.0
 
 task OvStoreBucketizer {
   input {
-    String? path_overlap_store
-    String? path_sequence_store
-    String? path_ovstoreconfig_file
-    String? bucket_create_n
+    File? path_overlap_store
+    File? path_sequence_store
+    File? path_ovstoreconfig_file
+    Int? bucket_create_n
     String? filter_overlaps_e
     Boolean? force_overwriting_data
     Boolean? be_overly_verbose
@@ -19,8 +19,8 @@ task OvStoreBucketizer {
       ~{if defined(path_ovstoreconfig_file) then ("-C " +  '"' + path_ovstoreconfig_file + '"') else ""} \
       ~{if defined(bucket_create_n) then ("-b " +  '"' + bucket_create_n + '"') else ""} \
       ~{if defined(filter_overlaps_e) then ("-e " +  '"' + filter_overlaps_e + '"') else ""} \
-      ~{true="-f" false="" force_overwriting_data} \
-      ~{true="-v" false="" be_overly_verbose}
+      ~{if (force_overwriting_data) then "-f" else ""} \
+      ~{if (be_overly_verbose) then "-v" else ""}
   >>>
   parameter_meta {
     path_overlap_store: "path to overlap store to create"
@@ -31,5 +31,8 @@ task OvStoreBucketizer {
     force_overwriting_data: "force overwriting existing data"
     be_overly_verbose: "be overly verbose"
     opts: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -16,7 +16,7 @@ task Prophasm {
       ~{if defined(output_fasta_file) then ("-o " +  '"' + output_fasta_file + '"') else ""} \
       ~{if defined(compute_intersection_subtract) then ("-x " +  '"' + compute_intersection_subtract + '"') else ""} \
       ~{if defined(output_file_kmer) then ("-s " +  '"' + output_file_kmer + '"') else ""} \
-      ~{true="-S" false="" silent_mode}
+      ~{if (silent_mode) then "-S" else ""}
   >>>
   parameter_meta {
     kmer_size: "K-mer size."
@@ -25,5 +25,10 @@ task Prophasm {
     compute_intersection_subtract: "Compute intersection, subtract it, save it."
     output_file_kmer: "Output file with k-mer statistics."
     silent_mode: "Silent mode."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_fasta_file = "${in_output_fasta_file}"
+    File out_output_file_kmer = "${in_output_file_kmer}"
   }
 }

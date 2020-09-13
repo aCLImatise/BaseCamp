@@ -1,4 +1,7 @@
-&id001 !Command
+&id003 !Command
+command:
+- mb-generate-negative-set
+- gff
 positional:
 - !Positional
   description: ''
@@ -9,9 +12,8 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - --number
-  args: !SimpleFlagArg
-    name: RNUMBER
+  - -v
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ''
@@ -23,13 +25,13 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -v
-  args: !EmptyFlagArg {}
+  - --number
+  args: !SimpleFlagArg
+    name: RNUMBER
   optional: true
-command:
-- mb-generate-negative-set
-- gff
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - mb-generate-negative-set
   positional: []
   named:
   - !Flag
@@ -53,12 +55,12 @@ parent: &id002 !Command
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - mb-generate-negative-set
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - mb-generate-negative-set
+    - genome
     positional:
     - !Positional
       description: ''
@@ -69,9 +71,8 @@ parent: &id002 !Command
     - !Flag
       description: ''
       synonyms:
-      - --number
-      args: !SimpleFlagArg
-        name: RNUMBER
+      - -v
+      args: !EmptyFlagArg {}
       optional: true
     - !Flag
       description: ''
@@ -83,14 +84,13 @@ parent: &id002 !Command
     - !Flag
       description: ''
       synonyms:
-      - -v
-      args: !EmptyFlagArg {}
+      - --number
+      args: !SimpleFlagArg
+        name: RNUMBER
       optional: true
-    command:
-    - mb-generate-negative-set
-    - genome
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -102,9 +102,12 @@ parent: &id002 !Command
     help_text: "usage: mb-generate-negative-set [-h] [--number RNUMBER] [--width WIDTH]\
       \ [-v]\n                                gff genome prefix outdir\nmb-generate-negative-set:\
       \ error: argument gff: 'genome' does not exist\n"
-    generated_using: &id003
+    generated_using: &id002
     - --help
   - !Command
+    command:
+    - mb-generate-negative-set
+    - prefix
     positional:
     - !Positional
       description: ''
@@ -115,9 +118,8 @@ parent: &id002 !Command
     - !Flag
       description: ''
       synonyms:
-      - --number
-      args: !SimpleFlagArg
-        name: RNUMBER
+      - -v
+      args: !EmptyFlagArg {}
       optional: true
     - !Flag
       description: ''
@@ -129,14 +131,13 @@ parent: &id002 !Command
     - !Flag
       description: ''
       synonyms:
-      - -v
-      args: !EmptyFlagArg {}
+      - --number
+      args: !SimpleFlagArg
+        name: RNUMBER
       optional: true
-    command:
-    - mb-generate-negative-set
-    - prefix
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -148,8 +149,11 @@ parent: &id002 !Command
     help_text: "usage: mb-generate-negative-set [-h] [--number RNUMBER] [--width WIDTH]\
       \ [-v]\n                                gff genome prefix outdir\nmb-generate-negative-set:\
       \ error: argument gff: 'prefix' does not exist\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
+    command:
+    - mb-generate-negative-set
+    - outdir
     positional:
     - !Positional
       description: ''
@@ -160,9 +164,8 @@ parent: &id002 !Command
     - !Flag
       description: ''
       synonyms:
-      - --number
-      args: !SimpleFlagArg
-        name: RNUMBER
+      - -v
+      args: !EmptyFlagArg {}
       optional: true
     - !Flag
       description: ''
@@ -174,14 +177,13 @@ parent: &id002 !Command
     - !Flag
       description: ''
       synonyms:
-      - -v
-      args: !EmptyFlagArg {}
+      - --number
+      args: !SimpleFlagArg
+        name: RNUMBER
       optional: true
-    command:
-    - mb-generate-negative-set
-    - outdir
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -193,7 +195,9 @@ parent: &id002 !Command
     help_text: "usage: mb-generate-negative-set [-h] [--number RNUMBER] [--width WIDTH]\
       \ [-v]\n                                gff genome prefix outdir\nmb-generate-negative-set:\
       \ error: argument gff: 'outdir' does not exist\n"
-    generated_using: *id003
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -211,8 +215,9 @@ parent: &id002 !Command
     \ directory\n\noptional arguments:\n  -h, --help        show this help message\
     \ and exit\n  --number RNUMBER  set number or random drawings\n  --width WIDTH\
     \     set number or nt +/- selected position\n  -v, --verbose     verbose output\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:
@@ -224,4 +229,4 @@ version_flag:
 help_text: "usage: mb-generate-negative-set [-h] [--number RNUMBER] [--width WIDTH]\
   \ [-v]\n                                gff genome prefix outdir\nmb-generate-negative-set:\
   \ error: argument gff: 'gff' does not exist\n"
-generated_using: *id003
+generated_using: *id002

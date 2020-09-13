@@ -1,13 +1,9 @@
 &id001 !Command
+command:
+- longshot
+- FLAGS
 positional: []
 named:
-- !Flag
-  description: ''
-  synonyms:
-  - --bam
-  args: !SimpleFlagArg
-    name: BAM
-  optional: true
 - !Flag
   description: ''
   synonyms:
@@ -18,28 +14,27 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - --out
+  - --bam
   args: !SimpleFlagArg
-    name: VCF
+    name: BAM
   optional: true
-command:
-- longshot
-- FLAGS
 parent: !Command
+  command:
+  - longshot
   positional: []
   named:
   - !Flag
-    description: Automatically calculate mean coverage for region and set max coverage
-      to mean_coverage + 5*sqrt(mean_coverage). (SLOWER)
+    description: "Automatically calculate mean coverage for region and set max coverage\
+      \ to mean_coverage +\n5*sqrt(mean_coverage). (SLOWER)"
     synonyms:
     - -A
     - --auto_max_cov
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Use numerically-stable (logspace) pair HMM forward algorithm. Is
-      significantly slower but may be more accurate. Tests have shown this not to
-      be necessary for highly error prone reads (PacBio CLR).
+    description: "Use numerically-stable (logspace) pair HMM forward algorithm. Is\
+      \ significantly slower but\nmay be more accurate. Tests have shown this not\
+      \ to be necessary for highly error prone\nreads (PacBio CLR)."
     synonyms:
     - -S
     - --stable_alignment
@@ -93,8 +88,8 @@ parent: !Command
       name: VCF
     optional: true
   - !Flag
-    description: Region in format <chrom> or <chrom:start-stop> in which to call variants
-      (1-based, inclusive).
+    description: "Region in format <chrom> or <chrom:start-stop> in which to call\
+      \ variants\n(1-based, inclusive)."
     synonyms:
     - -r
     - --region
@@ -102,13 +97,13 @@ parent: !Command
       name: string
     optional: true
   - !Flag
-    description: 'Genotype and phase the variants in this VCF instead of using pileup
-      method to find variants. NOTES: VCF must be gzipped and tabix indexed or contain
-      contig information. Use with caution because excessive false potential variants
-      can lead to inaccurate results. Every variant is used and only the allele fields
-      are considered -- Genotypes, filters, qualities etc are ignored. Indel variants
-      will be genotyped but not phased. Triallelic variants and structural variants
-      are currently not supported.'
+    description: "Genotype and phase the variants in this VCF instead of using pileup\n\
+      method to find variants. NOTES: VCF must be gzipped and tabix indexed or\ncontain\
+      \ contig information. Use with caution because excessive false\npotential variants\
+      \ can lead to inaccurate results. Every variant is used\nand only the allele\
+      \ fields are considered -- Genotypes, filters,\nqualities etc are ignored. Indel\
+      \ variants will be genotyped but not\nphased. Triallelic variants and structural\
+      \ variants are currently not\nsupported."
     synonyms:
     - -v
     - --potential_variants
@@ -116,8 +111,8 @@ parent: !Command
       name: VCF
     optional: true
   - !Flag
-    description: Write new bam file with haplotype tags (HP:i:1 and HP:i:2) for reads
-      assigned to each haplotype, any existing HP and PS tags are removed
+    description: "Write new bam file with haplotype tags (HP:i:1 and HP:i:2) for reads\n\
+      assigned to each haplotype, any existing HP and PS tags are removed"
     synonyms:
     - -O
     - --out_bam
@@ -125,8 +120,8 @@ parent: !Command
       name: BAM
     optional: true
   - !Flag
-    description: 'Minimum coverage (of reads passing filters) to consider position
-      as a potential SNV. [default: 6]'
+    description: "Minimum coverage (of reads passing filters) to consider position\
+      \ as a\npotential SNV. [default: 6]"
     synonyms:
     - -c
     - --min_cov
@@ -134,8 +129,8 @@ parent: !Command
       name: int
     optional: true
   - !Flag
-    description: 'Maximum coverage (of reads passing filters) to consider position
-      as a potential SNV. [default: 8000]'
+    description: "Maximum coverage (of reads passing filters) to consider position\
+      \ as a\npotential SNV. [default: 8000]"
     synonyms:
     - -C
     - --max_cov
@@ -151,8 +146,8 @@ parent: !Command
       name: int
     optional: true
   - !Flag
-    description: 'Minimum estimated quality (Phred-scaled) of allele observation on
-      read to use for genotyping/haplotyping. [default: 7.0]'
+    description: "Minimum estimated quality (Phred-scaled) of allele observation on\
+      \ read to\nuse for genotyping/haplotyping. [default: 7.0]"
     synonyms:
     - -a
     - --min_allele_qual
@@ -160,8 +155,8 @@ parent: !Command
       name: float
     optional: true
   - !Flag
-    description: 'Minimum quality (Phred-scaled) of read->haplotype assignment (for
-      read separation). [default: 20.0]'
+    description: "Minimum quality (Phred-scaled) of read->haplotype assignment (for\
+      \ read\nseparation). [default: 20.0]"
     synonyms:
     - -y
     - --hap_assignment_qual
@@ -169,9 +164,9 @@ parent: !Command
       name: float
     optional: true
   - !Flag
-    description: 'Consider a site as a potential SNV if the original PHRED-scaled
-      QUAL score for 0/0 genotype is below this amount (a larger value considers more
-      potential SNV sites). [default: 20.0]'
+    description: "Consider a site as a potential SNV if the original PHRED-scaled\
+      \ QUAL\nscore for 0/0 genotype is below this amount (a larger value considers\n\
+      more potential SNV sites). [default: 20.0]"
     synonyms:
     - -Q
     - --potential_snv_cutoff
@@ -179,8 +174,8 @@ parent: !Command
       name: float
     optional: true
   - !Flag
-    description: 'Require a potential SNV to have at least this many alternate allele
-      observations. [default: 3]'
+    description: "Require a potential SNV to have at least this many alternate allele\n\
+      observations. [default: 3]"
     synonyms:
     - -e
     - --min_alt_count
@@ -188,8 +183,8 @@ parent: !Command
       name: int
     optional: true
   - !Flag
-    description: 'Require a potential SNV to have at least this fraction of alternate
-      allele observations. [default: 0.125]'
+    description: "Require a potential SNV to have at least this fraction of alternate\n\
+      allele observations. [default: 0.125]"
     synonyms:
     - -E
     - --min_alt_frac
@@ -197,9 +192,10 @@ parent: !Command
       name: float
     optional: true
   - !Flag
-    description: 'Terminate the haplotype/genotype iteration when the relative change
-      in log-likelihood falls below this amount. Setting a larger value results in
-      faster termination but potentially less accurate results. [default: 0.0001]'
+    description: "Terminate the haplotype/genotype iteration when the relative change\
+      \ in\nlog-likelihood falls below this amount. Setting a larger value results\
+      \ in\nfaster termination but potentially less accurate results. [default:\n\
+      0.0001]"
     synonyms:
     - -L
     - --hap_converge_delta
@@ -207,8 +203,8 @@ parent: !Command
       name: float
     optional: true
   - !Flag
-    description: 'Length of indel-free anchor sequence on the left and right side
-      of read realignment window. [default: 6]'
+    description: "Length of indel-free anchor sequence on the left and right side\
+      \ of read\nrealignment window. [default: 6]"
     synonyms:
     - -l
     - --anchor_length
@@ -216,9 +212,9 @@ parent: !Command
       name: int
     optional: true
   - !Flag
-    description: 'Cut off variant clusters after this many variants. 2^m haplotypes
-      must be aligned against per read for a variant cluster of size m. [default:
-      3]'
+    description: "Cut off variant clusters after this many variants. 2^m haplotypes\
+      \ must be\naligned against per read for a variant cluster of size m. [default:\
+      \ 3]"
     synonyms:
     - -m
     - --max_snvs
@@ -226,8 +222,8 @@ parent: !Command
       name: int
     optional: true
   - !Flag
-    description: 'Maximum "padding" bases on either side of variant realignment window
-      [default: 50]'
+    description: "Maximum \"padding\" bases on either side of variant realignment\
+      \ window\n[default: 50]"
     synonyms:
     - -W
     - --max_window
@@ -235,8 +231,8 @@ parent: !Command
       name: int
     optional: true
   - !Flag
-    description: 'Throw away a read-variant during allelotyping if there is a CIGAR
-      indel (I/D/N) longer than this amount in its window. [default: 20]'
+    description: "Throw away a read-variant during allelotyping if there is a CIGAR\
+      \ indel\n(I/D/N) longer than this amount in its window. [default: 20]"
     synonyms:
     - -I
     - --max_cigar_indel
@@ -244,8 +240,8 @@ parent: !Command
       name: int
     optional: true
   - !Flag
-    description: 'Minimum width of alignment band. Band will increase in size if sequences
-      are different lengths. [default: 20]'
+    description: "Minimum width of alignment band. Band will increase in size if sequences\n\
+      are different lengths. [default: 20]"
     synonyms:
     - -B
     - --band_width
@@ -253,9 +249,9 @@ parent: !Command
       name: Band width
     optional: true
   - !Flag
-    description: 'Parameters to flag a variant as part of a "dense cluster". Format
-      <n>:<l>:<gq>. If there are at least n variants within l base pairs with genotype
-      quality >=gq, then these variants are flagged as "dn" [default: 10:500:50]'
+    description: "Parameters to flag a variant as part of a \"dense cluster\". Format\n\
+      <n>:<l>:<gq>. If there are at least n variants within l base pairs with\ngenotype\
+      \ quality >=gq, then these variants are flagged as \"dn\" [default:\n10:500:50]"
     synonyms:
     - -D
     - --density_params
@@ -271,24 +267,24 @@ parent: !Command
       name: string
     optional: true
   - !Flag
-    description: 'Specify the homozygous SNV Rate for genotype prior estimation [default:
-      0.0005]'
+    description: "Specify the homozygous SNV Rate for genotype prior estimation [default:\n\
+      0.0005]"
     synonyms:
     - --hom_snv_rate
     args: !SimpleFlagArg
       name: float
     optional: true
   - !Flag
-    description: 'Specify the heterozygous SNV Rate for genotype prior estimation
-      [default: 0.001]'
+    description: "Specify the heterozygous SNV Rate for genotype prior estimation\
+      \ [default:\n0.001]"
     synonyms:
     - --het_snv_rate
     args: !SimpleFlagArg
       name: float
     optional: true
   - !Flag
-    description: 'Specify the transition/transversion rate for genotype grior estimation
-      [default: 0.5]'
+    description: "Specify the transition/transversion rate for genotype grior estimation\n\
+      [default: 0.5]"
     synonyms:
     - --ts_tv_ratio
     args: !SimpleFlagArg
@@ -296,8 +292,8 @@ parent: !Command
     optional: true
   - !Flag
     description: "Remove a variant if the allele observations are biased toward one\
-      \ strand (forward or reverse) according to Fisher's exact test. Use this cutoff\
-      \ for the two-tailed P-value. [default: 0.01]"
+      \ strand\n(forward or reverse) according to Fisher's exact test. Use this cutoff\n\
+      for the two-tailed P-value. [default: 0.01]"
     synonyms:
     - -P
     - --strand_bias_pvalue_cutoff
@@ -305,19 +301,18 @@ parent: !Command
       name: float
     optional: true
   - !Flag
-    description: write out current information about variants at each step of algorithm
-      to files in this directory
+    description: "write out current information about variants at each step of algorithm\
+      \ to\nfiles in this directory\n"
     synonyms:
     - -d
     - --variant_debug_dir
     args: !SimpleFlagArg
       name: path
     optional: true
-  command:
-  - longshot
   parent:
   subcommands:
   - *id001
+  usage: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -429,6 +424,7 @@ parent: !Command
   generated_using: &id002
   - --help
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

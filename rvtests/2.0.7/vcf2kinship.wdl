@@ -5,7 +5,6 @@ task Vcf2kinship {
     Boolean? in_vcf
     Boolean? out
     Boolean? x_hemi
-    Boolean? xlabel
     Boolean? x_region
     Boolean? ped
     Boolean? ibs
@@ -18,7 +17,6 @@ task Vcf2kinship {
     Boolean? people_exclude_id
     Boolean? people_exclude_file
     Boolean? range_list
-    Boolean? range_file
     Boolean? min_maf
     Boolean? max_miss
     Boolean? mins_it_equal
@@ -27,60 +25,65 @@ task Vcf2kinship {
     Boolean? ming_d
     Boolean? update_id
     Boolean? thread
+    String markers_dot
+    String format_dot
   }
   command <<<
     vcf2kinship \
-      ~{true="--inVcf" false="" in_vcf} \
-      ~{true="--out" false="" out} \
-      ~{true="--xHemi" false="" x_hemi} \
-      ~{true="--xLabel" false="" xlabel} \
-      ~{true="--xRegion" false="" x_region} \
-      ~{true="--ped" false="" ped} \
-      ~{true="--ibs" false="" ibs} \
-      ~{true="--bn" false="" bn} \
-      ~{true="--pca" false="" pc_a} \
-      ~{true="--storeGenotype" false="" store_genotype} \
-      ~{true="--dosage" false="" dosage} \
-      ~{true="--peopleIncludeID" false="" people_include_id} \
-      ~{true="--peopleIncludeFile" false="" people_include_file} \
-      ~{true="--peopleExcludeID" false="" people_exclude_id} \
-      ~{true="--peopleExcludeFile" false="" people_exclude_file} \
-      ~{true="--rangeList" false="" range_list} \
-      ~{true="--rangeFile" false="" range_file} \
-      ~{true="--minMAF" false="" min_maf} \
-      ~{true="--maxMiss" false="" max_miss} \
-      ~{true="--minSiteQual" false="" mins_it_equal} \
-      ~{true="--anno" false="" an_no} \
-      ~{true="--minGQ" false="" ming_q} \
-      ~{true="--minGD" false="" ming_d} \
-      ~{true="--update-id" false="" update_id} \
-      ~{true="--thread" false="" thread}
+      ~{markers_dot} \
+      ~{format_dot} \
+      ~{if (in_vcf) then "--inVcf" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (x_hemi) then "--xHemi" else ""} \
+      ~{if (x_region) then "--xRegion" else ""} \
+      ~{if (ped) then "--ped" else ""} \
+      ~{if (ibs) then "--ibs" else ""} \
+      ~{if (bn) then "--bn" else ""} \
+      ~{if (pc_a) then "--pca" else ""} \
+      ~{if (store_genotype) then "--storeGenotype" else ""} \
+      ~{if (dosage) then "--dosage" else ""} \
+      ~{if (people_include_id) then "--peopleIncludeID" else ""} \
+      ~{if (people_include_file) then "--peopleIncludeFile" else ""} \
+      ~{if (people_exclude_id) then "--peopleExcludeID" else ""} \
+      ~{if (people_exclude_file) then "--peopleExcludeFile" else ""} \
+      ~{if (range_list) then "--rangeList" else ""} \
+      ~{if (min_maf) then "--minMAF" else ""} \
+      ~{if (max_miss) then "--maxMiss" else ""} \
+      ~{if (mins_it_equal) then "--minSiteQual" else ""} \
+      ~{if (an_no) then "--anno" else ""} \
+      ~{if (ming_q) then "--minGQ" else ""} \
+      ~{if (ming_d) then "--minGD" else ""} \
+      ~{if (update_id) then "--update-id" else ""} \
+      ~{if (thread) then "--thread" else ""}
   >>>
   parameter_meta {
     in_vcf: ": Input VCF File"
     out: ": Output prefix for autosomal kinship calculation"
-    x_hemi: ": Calculate kinship using non-PAR region X chromosome markers."
-    xlabel: ": Specify X chromosome label (default: 23,X"
-    x_region: ": Specify PAR region (default: hg19), can be build number e.g. hg38, b37; or specify region, e.g. '60001-2699520,154931044-155260560'"
-    ped: ": Use pedigree method or specify ped file for X chromosome analysis."
+    x_hemi: ": Calculate kinship using non-PAR region X chromosome"
+    x_region: ": Specify PAR region (default: hg19), can be build number\\ne.g. hg38, b37; or specify region, e.g.\\n'60001-2699520,154931044-155260560'"
+    ped: ": Use pedigree method or specify ped file for X\\nchromosome analysis."
     ibs: ": Use IBS method."
     bn: ": Use Balding-Nicols method."
     pc_a: ": Decomoposite calculated kinship matrix."
     store_genotype: ": Store genotye matrix (sample by genotype)."
-    dosage: ": Specify which dosage tag to use (e.g. EC/DS). Typical dosage are between 0.0 and 2.0."
+    dosage: ": Specify which dosage tag to use (e.g. EC/DS). Typical\\ndosage are between 0.0 and 2.0."
     people_include_id: ": List IDs of people that will be included in study"
-    people_include_file: ": From given file, set IDs of people that will be included in study"
+    people_include_file: ": From given file, set IDs of people that will be\\nincluded in study"
     people_exclude_id: ": List IDs of people that will be included in study"
-    people_exclude_file: ": From given file, set IDs of people that will be included in study"
-    range_list: ": Specify some ranges to use, please use chr:begin-end format."
-    range_file: ": Specify the file containing ranges, please use chr:begin-end format."
-    min_maf: ": Specify the minimum MAF threshold to be included in calculating kinship."
-    max_miss: ": Specify the maximum allows missing rate to be inclued in calculating kinship."
+    people_exclude_file: ": From given file, set IDs of people that will be\\nincluded in study"
+    range_list: ": Specify some ranges to use, please use chr:begin-end"
+    min_maf: ": Specify the minimum MAF threshold to be included in\\ncalculating kinship."
+    max_miss: ": Specify the maximum allows missing rate to be inclued\\nin calculating kinship."
     mins_it_equal: ": Specify minimum site qual"
-    an_no: ": Specify the annotation type to be included in calculating kinship."
-    ming_q: ": Specify the minimum genotype quality, otherwise marked as missing genotype"
-    ming_d: ": Specify the minimum genotype depth, otherwise marked as missing genotype"
-    update_id: ": Update VCF sample id using given file (column 1 and 2 are old and new id)."
+    an_no: ": Specify the annotation type to be included in\\ncalculating kinship."
+    ming_q: ": Specify the minimum genotype quality, otherwise marked\\nas missing genotype"
+    ming_d: ": Specify the minimum genotype depth, otherwise marked as\\nmissing genotype"
+    update_id: ": Update VCF sample id using given file (column 1 and 2\\nare old and new id)."
     thread: ": Specify number of parallel threads to speed up"
+    markers_dot: "--xLabel: Specify X chromosome label (default: 23,X"
+    format_dot: "--rangeFile: Specify the file containing ranges, please use"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

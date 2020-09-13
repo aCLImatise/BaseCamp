@@ -1,17 +1,20 @@
 version 1.0
 
-task HcaAuthPutV1User {
+task HcaAuthPutv1user {
   input {
     String? user_id
     String? status
   }
   command <<<
-    hca auth put-v1-user \
+    hca auth put_v1_user \
       ~{if defined(user_id) then ("--user-id " +  '"' + user_id + '"') else ""} \
       ~{if defined(status) then ("--status " +  '"' + status + '"') else ""}
   >>>
   parameter_meta {
-    user_id: ""
+    user_id: "User ID (email)."
     status: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

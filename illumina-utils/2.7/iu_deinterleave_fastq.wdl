@@ -1,26 +1,26 @@
 version 1.0
 
-task IuDeinterleaveFastq {
+task Iudeinterleavefastq {
   input {
-    String? one
-    String? two
-    String var_2
-    String var_3
+    Int? two
+    Int? one
+    String fast_q
     String var_input
   }
   command <<<
-    iu-deinterleave-fastq \
-      ~{var_2} \
-      ~{var_3} \
+    iu_deinterleave_fastq \
+      ~{fast_q} \
       ~{var_input} \
-      ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""} \
-      ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""}
+      ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
+      ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""}
   >>>
   parameter_meta {
-    one: ""
     two: ""
-    var_2: ""
-    var_3: ""
+    one: ""
+    fast_q: ""
     var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

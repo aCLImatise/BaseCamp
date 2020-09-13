@@ -4,4 +4,7 @@ task Splitreads {
   command <<<
     splitreads
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

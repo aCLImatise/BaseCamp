@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../galaxy_wait.cwl
 inputs:
-- id: timeout
-  doc: Galaxy startup timeout in seconds. The default value of 0 waits forever
-  type: string
+- id: in_timeout
+  doc: "Galaxy startup timeout in seconds. The default value\nof 0 waits forever"
+  type: long
   inputBinding:
     prefix: --timeout
-- id: verbose
+- id: in_verbose
   doc: Increase output verbosity.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: galaxy
-  doc: Target Galaxy instance URL/IP address
+- id: in_galaxy
+  doc: "Target Galaxy instance URL/IP address\n"
   type: string
   inputBinding:
     prefix: --galaxy
-- id: usage
+- id: in_usage
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - galaxy-wait

@@ -1,7 +1,10 @@
 version 1.0
 
-task RsemPlotModel {
+task Rsemplotmodel {
   command <<<
-    rsem-plot-model
+    rsem_plot_model
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

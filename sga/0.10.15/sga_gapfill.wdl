@@ -4,19 +4,17 @@ task SgaGapfill {
   input {
     Boolean? verbose
     String? prefix
-    String? start_km_er
-    String? end_km_er
+    Int? start_km_er
+    Int? end_km_er
     String? km_er_threshold
-    String? threads
-    String? sample_rate
-    String? option
+    Int? threads
+    Int? sample_rate
     String scaffolds_dot_fa
   }
   command <<<
     sga gapfill \
-      ~{option} \
       ~{scaffolds_dot_fa} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(start_km_er) then ("--start-kmer " +  '"' + start_km_er + '"') else ""} \
       ~{if defined(end_km_er) then ("--end-kmer " +  '"' + end_km_er + '"') else ""} \
@@ -31,8 +29,10 @@ task SgaGapfill {
     end_km_er: "Last kmer size used to attempt to resolve each gap (default: 51)"
     km_er_threshold: "only use kmers seen at least T times"
     threads: "use NUM computation threads"
-    sample_rate: "use occurrence array sample rate of N in the FM-index. Higher values use significantly less memory at the cost of higher runtime. This value must be a power of 2 (default: 128)"
-    option: ""
+    sample_rate: "use occurrence array sample rate of N in the FM-index. Higher values use significantly\\nless memory at the cost of higher runtime. This value must be a power of 2 (default: 128)"
     scaffolds_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

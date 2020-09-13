@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../asndhuff.cwl
 inputs:
-- id: input_file
+- id: in_input_file
   doc: Input file [File In]
   type: boolean
   inputBinding:
     prefix: -i
-- id: output_file_optional
+- id: in_output_file_optional
   doc: Output file [File Out]  Optional
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_optional
+  doc: Output file [File Out]  Optional
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_optional)
 cwlVersion: v1.1
 baseCommand:
 - asndhuff

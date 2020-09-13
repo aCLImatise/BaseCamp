@@ -7,29 +7,38 @@ task GsutilLs {
     Boolean? list_matching_names
     Boolean? prints_info_used
     String? specifies_project_id
-    Boolean? requests_listing_performing
-    Boolean? includes_noncurrent_object
+    Boolean? requests_recursive_listing
+    Boolean? includes_object_versions
     Boolean? include_etag_long
+    Int two_two_seven_six_two_two_four
+    Int three_nine_one_four_six_two_four
   }
   command <<<
     gsutil ls \
-      ~{true="-l" false="" prints_long_listing} \
-      ~{true="-L" false="" prints_more_detail} \
-      ~{true="-d" false="" list_matching_names} \
-      ~{true="-b" false="" prints_info_used} \
+      ~{two_two_seven_six_two_two_four} \
+      ~{three_nine_one_four_six_two_four} \
+      ~{if (prints_long_listing) then "-l" else ""} \
+      ~{if (prints_more_detail) then "-L" else ""} \
+      ~{if (list_matching_names) then "-d" else ""} \
+      ~{if (prints_info_used) then "-b" else ""} \
       ~{if defined(specifies_project_id) then ("-p " +  '"' + specifies_project_id + '"') else ""} \
-      ~{true="-R" false="" requests_listing_performing} \
-      ~{true="-a" false="" includes_noncurrent_object} \
-      ~{true="-e" false="" include_etag_long}
+      ~{if (requests_recursive_listing) then "-R" else ""} \
+      ~{if (includes_object_versions) then "-a" else ""} \
+      ~{if (include_etag_long) then "-e" else ""}
   >>>
   parameter_meta {
     prints_long_listing: "Prints long listing (owner, length)."
-    prints_more_detail: "Prints even more detail than -l.  Note: If you use this option with the (non-default) XML API it will generate an additional request per object being listed, which makes the -L option run much more slowly (and cost more) using the XML API than the default JSON API."
-    list_matching_names: "List matching subdirectory names instead of contents, and do not recurse into matching subdirectories even if the -R option is specified."
+    prints_more_detail: "Prints even more detail than -l.  Note: If you use this option\\nwith the (non-default) XML API it will generate an additional\\nrequest per object being listed, which makes the -L option run\\nmuch more slowly (and cost more) using the XML API than the\\ndefault JSON API."
+    list_matching_names: "List matching subdirectory names instead of contents, and do not\\nrecurse into matching subdirectories even if the -R option is\\nspecified."
     prints_info_used: "Prints info about the bucket when used with a bucket URL."
     specifies_project_id: "Specifies the project ID to use for listing buckets."
-    requests_listing_performing: "Requests a recursive listing, performing at least one listing operation per subdirectory. If you have a large number of subdirectories and do not require recursive-style output ordering, you may be able to instead use wildcards to perform a flat listing, e.g.  `gsutil ls gs://mybucket/**`, which will generally perform fewer listing operations."
-    includes_noncurrent_object: "Includes non-current object versions / generations in the listing (only useful with a versioning-enabled bucket). If combined with -l option also prints metageneration for each listed object."
+    requests_recursive_listing: "Requests a recursive listing, performing at least one listing\\noperation per subdirectory. If you have a large number of\\nsubdirectories and do not require recursive-style output ordering,\\nyou may be able to instead use wildcards to perform a flat\\nlisting, e.g.  `gsutil ls gs://mybucket/**`, which will generally\\nperform fewer listing operations."
+    includes_object_versions: "Includes non-current object versions / generations in the listing\\n(only useful with a versioning-enabled bucket). If combined with\\n-l option also prints metageneration for each listed object."
     include_etag_long: "Include ETag in long listing (-l) output."
+    two_two_seven_six_two_two_four: "2012-03-02T19:25:17Z  gs://bucket/obj1"
+    three_nine_one_four_six_two_four: "2012-03-02T19:30:27Z  gs://bucket/obj2"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

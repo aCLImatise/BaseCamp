@@ -4,4 +4,7 @@ task Bamflagsplit {
   command <<<
     bamflagsplit
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

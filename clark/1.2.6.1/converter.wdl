@@ -4,4 +4,7 @@ task Converter {
   command <<<
     converter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

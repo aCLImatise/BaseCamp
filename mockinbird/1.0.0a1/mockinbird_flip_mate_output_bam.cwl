@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../mockinbird_flip_mate_output_bam.cwl
 inputs:
-- id: mock_in_bird
+- id: in_mock_in_bird
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: flip_mate
+- id: in_flip_mate
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: input_bam
+- id: in_input_bam
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: output_bam
+- id: in_output_bam
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mockinbird

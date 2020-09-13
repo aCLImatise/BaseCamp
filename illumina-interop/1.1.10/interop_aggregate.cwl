@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../interop_aggregate.cwl
 inputs:
-- id: max_tile
+- id: in_max_tile
   doc: '[0]: Maximum tile number to include'
   type: boolean
   inputBinding:
     prefix: --max-tile
-- id: option_one
+- id: in_option_two
   doc: ''
-  type: string
-  inputBinding:
-    prefix: --option1
-- id: option_two
-  doc: ''
-  type: string
+  type: long
   inputBinding:
     prefix: --option2
-- id: run_folder
+- id: in_option_one
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: --option1
+- id: in_run_folder
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - interop_aggregate

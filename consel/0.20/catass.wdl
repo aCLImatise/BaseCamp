@@ -4,4 +4,7 @@ task Catass {
   command <<<
     catass
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

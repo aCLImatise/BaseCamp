@@ -2,12 +2,12 @@ version 1.0
 
 task Effectivet3 {
   input {
-    String? jar
-    String? f
-    String? m
-    String? t
-    String? o
     Boolean? q
+    File? o
+    String? t
+    String? m
+    File? f
+    String? jar
     String java
     String or
   }
@@ -15,21 +15,25 @@ task Effectivet3 {
     effectivet3 \
       ~{java} \
       ~{or} \
-      ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""} \
-      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if (q) then "-q" else ""} \
       ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{true="-q" false="" q}
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
-    jar: ""
-    f: ""
-    m: ""
-    t: ""
-    o: ""
     q: ""
+    o: ""
+    t: ""
+    m: ""
+    f: ""
+    jar: ""
     java: ""
     or: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_o = "${in_o}"
   }
 }

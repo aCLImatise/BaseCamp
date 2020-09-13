@@ -1,4 +1,6 @@
 !Command
+command:
+- dcmgpdir
 positional:
 - !Positional
   description: ref. DICOM file (or directory to be scanned)
@@ -6,6 +8,12 @@ positional:
   name: dcmfile-in
   optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet                  quiet mode, print no warnings and errors
   synonyms:
@@ -25,17 +33,35 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-level              [l]evel: string constant (fatal, error, warn,
-    info, debug, trace) use level l for the logger'
+  description: "--log-level              [l]evel: string constant\n(fatal, error,\
+    \ warn, info, debug, trace)\nuse level l for the logger"
   synonyms:
   - -ll
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-config             [f]ilename: string use config file f for
-    the logger'
+  description: "--log-config             [f]ilename: string\nuse config file f for\
+    \ the logger"
   synonyms:
   - -lc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --keep-filenames         expect filenames to be in DICOM format (def.)
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-recurse             do not recurse within directories (default)
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-consistency-check   do not check files for consistency
+  synonyms:
+  - -W
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -45,16 +71,35 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: do not reject images with non-standard transfer syntax (just warn)
+  description: "--strict                 exit with error if DICOMDIR type 1 attributes\n\
+    are missing in DICOM file (default)"
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not reject images with non-standard\ntransfer syntax (just warn)"
   synonyms:
   - -Nxc
   - --no-xfer-check
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: --replace                replace existing DICOMDIR (default)
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: --discard                do not write out DICOMDIR
   synonyms:
   - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: create a backup of existing DICOMDIR (def.)
+  synonyms:
+  - --create-backup
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -70,25 +115,33 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: --group-length-remove    write without group length elements (default)
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: --length-undefined       write with undefined lengths
   synonyms:
   - -e
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dcmgpdir
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help                   print this help text and exit --version                print
-    version information and exit --arguments              print expanded command line
-    arguments
+  description: --help                   print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dcmgpdir v3.6.1 2016-11-02 $\n\ndcmgpdir: Create a general purpose\
   \ DICOMDIR\nusage: dcmgpdir [options] [dcmfile-in...]\n\nparameters:\n  dcmfile-in\
   \                       ref. DICOM file (or directory to be scanned)\n\ngeneral\

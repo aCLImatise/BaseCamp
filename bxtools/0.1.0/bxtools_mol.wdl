@@ -8,10 +8,13 @@ task BxtoolsMol {
   command <<<
     bxtools mol \
       ~{bam_slash_sam_slash_cram} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     verbose: "Set verbose output"
     bam_slash_sam_slash_cram: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,49 +1,47 @@
 class: CommandLineTool
 id: ../../../groot_get.cwl
 inputs:
-- id: database
+- id: in_database
   doc: 'database to download (please choose: arg-annot/resfinder/card/groot-db/groot-core-db)
     (default "arg-annot")'
   type: string
   inputBinding:
     prefix: --database
-- id: identity
+- id: in_identity
   doc: the sequence identity used to cluster the database (only 90 available atm)
     (default "90")
-  type: string
+  type: long
   inputBinding:
     prefix: --identity
-- id: out
+- id: in_out
   doc: directory to save the database to (default ".")
-  type: string
+  type: Directory
   inputBinding:
     prefix: --out
-- id: index_dir
+- id: in_index_dir
   doc: directory for to write/read the GROOT index files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --indexDir
-- id: log
+- id: in_log
   doc: filename for log file (default "groot.log")
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: processors
+- id: in_processors
   doc: number of processors to use (default 1)
   type: long
   inputBinding:
     prefix: --processors
-- id: profiling
+- id: in_profiling
   doc: create the files needed to profile GROOT using the go tool pprof
   type: boolean
   inputBinding:
     prefix: --profiling
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - groot

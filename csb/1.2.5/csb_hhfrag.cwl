@@ -1,81 +1,85 @@
 class: CommandLineTool
 id: ../../../csb_hhfrag.cwl
 inputs:
-- id: hh_search
+- id: in_hh_search
   doc: path to the HHsearch executable (default=hhsearch)
-  type: string
+  type: File
   inputBinding:
     prefix: --hhsearch
-- id: database
+- id: in_database
   doc: database directory (containing PDBS25.hhm)
-  type: string
+  type: Directory
   inputBinding:
     prefix: --database
-- id: min
+- id: in_min
   doc: minimum query segment length (default=6)
   type: long
   inputBinding:
     prefix: --min
-- id: max
+- id: in_max
   doc: maximum query segment length (default=21)
   type: long
   inputBinding:
     prefix: --max
-- id: step
+- id: in_step
   doc: query segmentation step (default=3)
-  type: string
+  type: long
   inputBinding:
     prefix: --step
-- id: cpu
+- id: in_cpu
   doc: maximum degree of parallelism (default=8)
-  type: string
+  type: long
   inputBinding:
     prefix: --cpu
-- id: gap_filling
-  doc: path to a fragment file (e.g. CSfrag or Rosetta NNmake), which will be used
-    to complement low- confidence regions (when specified, a hybrid fragment library
-    be produced)
-  type: string
+- id: in_gap_filling
+  doc: "path to a fragment file (e.g. CSfrag or Rosetta\nNNmake), which will be used\
+    \ to complement low-\nconfidence regions (when specified, a hybrid fragment\n\
+    library be produced)"
+  type: File
   inputBinding:
     prefix: --gap-filling
-- id: filtered_filling
-  doc: path to a filtered fragment file (e.g. filtered CSfrag-ments), which will be
-    mixed with the HHfrag-set and then filtered, resulting in a double-filtered library
-  type: string
+- id: in_filtered_filling
+  doc: "path to a filtered fragment file (e.g. filtered\nCSfrag-ments), which will\
+    \ be mixed with the HHfrag-set\nand then filtered, resulting in a double-filtered\n\
+    library"
+  type: File
   inputBinding:
     prefix: --filtered-filling
-- id: filtered_map
-  doc: make an additional filtered fragment map of centroids and predict torsion angles
-    (default=False)
+- id: in_filtered_map
+  doc: "make an additional filtered fragment map of centroids\nand predict torsion\
+    \ angles (default=False)"
   type: boolean
   inputBinding:
     prefix: --filtered-map
-- id: c_alpha
-  doc: include also C-alpha vectors in the output (default=False)
+- id: in_c_alpha
+  doc: "include also C-alpha vectors in the output\n(default=False)"
   type: boolean
   inputBinding:
     prefix: --c-alpha
-- id: confidence_threshold
+- id: in_confidence_threshold
   doc: confidence threshold for gap filling (default=0.7)
-  type: string
+  type: double
   inputBinding:
     prefix: --confidence-threshold
-- id: verbosity
+- id: in_verbosity
   doc: verbosity level (default=2)
-  type: string
+  type: long
   inputBinding:
     prefix: --verbosity
-- id: output
-  doc: output directory (default=.)
-  type: string
+- id: in_output
+  doc: "output directory (default=.)\n"
+  type: Directory
   inputBinding:
     prefix: --output
-- id: query
-  doc: query profile HMM (e.g. created with csb.apps.buildhmm)
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "output directory (default=.)\n"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - csb-hhfrag

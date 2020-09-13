@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../bgt_bcfidx.cwl
 inputs:
-- id: s
+- id: in_s
   doc: ''
   type: long
   inputBinding:
     prefix: -s
-- id: in_dot_bcf
+- id: in_in_dot_bcf
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bgt

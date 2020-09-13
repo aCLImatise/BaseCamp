@@ -1,145 +1,165 @@
 class: CommandLineTool
 id: ../../../img2dcm.cwl
 inputs:
-- id: _quiet_quiet
+- id: in_arguments
+  doc: print expanded command line arguments
+  type: boolean
+  inputBinding:
+    prefix: --arguments
+- id: in__quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: _verbose_verbose
+- id: in__verbose_details
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: _debug_debug
+- id: in__debug_information
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
     prefix: -d
-- id: ll
-  doc: '--log-level            [l]evel: string constant (fatal, error, warn, info,
-    debug, trace) use level l for the logger'
+- id: in_ll
+  doc: "--log-level            [l]evel: string constant\n(fatal, error, warn, info,\
+    \ debug, trace)\nuse level l for the logger"
   type: boolean
   inputBinding:
     prefix: -ll
-- id: lc
-  doc: '--log-config           [f]ilename: string use config file f for the logger'
+- id: in_lc
+  doc: "--log-config           [f]ilename: string\nuse config file f for the logger"
   type: boolean
   inputBinding:
     prefix: -lc
-- id: _inputformat_nput
-  doc: '--input-format         [i]nput file format: string supported formats: JPEG
-    (default), BMP'
+- id: in__inputformat_nput
+  doc: "--input-format         [i]nput file format: string\nsupported formats: JPEG\
+    \ (default), BMP"
   type: boolean
   inputBinding:
     prefix: -i
-- id: df
-  doc: '--dataset-from         [f]ilename: string use dataset from DICOM file f'
+- id: in_df
+  doc: "--dataset-from         [f]ilename: string\nuse dataset from DICOM file f"
   type: boolean
   inputBinding:
     prefix: -df
-- id: study_from
-  doc: '[f]ilename: string read patient/study from DICOM file f'
+- id: in_study_from
+  doc: "[f]ilename: string\nread patient/study from DICOM file f"
   type: boolean
   inputBinding:
     prefix: --study-from
-- id: series_from
-  doc: '[f]ilename: string read patient/study/series from DICOM file f'
+- id: in_series_from
+  doc: "[f]ilename: string\nread patient/study/series from DICOM file f"
   type: boolean
   inputBinding:
     prefix: --series-from
-- id: ii
+- id: in_ii
   doc: --instance-inc         increase instance number read from DICOM file
   type: boolean
   inputBinding:
     prefix: -ii
-- id: dp
+- id: in_dp
   doc: --disable-progr        disable support for progressive JPEG
   type: boolean
   inputBinding:
     prefix: -dp
-- id: de
+- id: in_de
   doc: --disable-ext          disable support for extended sequential JPEG
   type: boolean
   inputBinding:
     prefix: -de
-- id: jf
+- id: in_jf
   doc: --insist-on-jfif       insist on JFIF header
   type: boolean
   inputBinding:
     prefix: -jf
-- id: ka
+- id: in_ka
   doc: --keep-appn            keep APPn sections (except JFIF)
   type: boolean
   inputBinding:
     prefix: -ka
-- id: do_checks
+- id: in_do_checks
   doc: enable attribute validity checking (default)
   type: boolean
   inputBinding:
     prefix: --do-checks
-- id: no_checks
+- id: in_no_checks
   doc: disable attribute validity checking
   type: boolean
   inputBinding:
     prefix: --no-checks
-- id: i_one
-  doc: --no-type1-invent      do not invent missing type 1 attributes (only with --do-checks)
+- id: in_i_two
+  doc: "--no-type2-insert      do not insert missing type 2 attributes\n(only with\
+    \ --do-checks)"
+  type: boolean
+  inputBinding:
+    prefix: -i2
+- id: in_i_one
+  doc: "--no-type1-invent      do not invent missing type 1 attributes\n(only with\
+    \ --do-checks)"
   type: boolean
   inputBinding:
     prefix: -i1
-- id: lone
+- id: in_lone
   doc: --no-latin1            keep 7-bit ASCII as standard character set
   type: boolean
   inputBinding:
     prefix: -l1
-- id: _key_ggggeeee
-  doc: '--key                  [k]ey: gggg,eeee="str", path or dict. name="str" add
-    further attribute'
+- id: in__key_ey
+  doc: "--key                  [k]ey: gggg,eeee=\"str\", path or dict. name=\"str\"\
+    \nadd further attribute"
   type: boolean
   inputBinding:
     prefix: -k
-- id: sc
+- id: in_sc
   doc: --sec-capture          write Secondary Capture SOP class (default)
   type: boolean
   inputBinding:
     prefix: -sc
-- id: new_sc
+- id: in_new_sc
   doc: write new Secondary Capture SOP classes
   type: boolean
   inputBinding:
     prefix: --new-sc
-- id: vl_photo
+- id: in_vl_photo
   doc: write Visible Light Photographic SOP class
   type: boolean
   inputBinding:
     prefix: --vl-photo
-- id: _writedataset_write
+- id: in__writedataset_write
   doc: --write-dataset        write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: _grouplengthremove_always
+- id: in__grouplengthremove_always
   doc: --group-length-remove  always write without group length elements
   type: boolean
   inputBinding:
     prefix: -g
-- id: _lengthundefined_write
+- id: in__lengthundefined_write
   doc: --length-undefined     write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -e
-- id: img_file_in
+- id: in__paddingoff_padding
+  doc: --padding-off          no padding (implicit if --write-dataset)
+  type: boolean
+  inputBinding:
+    prefix: -p
+- id: in_img_file_in
   doc: image input filename
   type: string
   inputBinding:
     position: 0
-- id: dcm_file_out
+- id: in_dcm_file_out
   doc: DICOM output filename
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - img2dcm

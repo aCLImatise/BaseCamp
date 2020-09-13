@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../smof_consensus.cwl
 inputs:
-- id: table
+- id: in_table
   doc: Print count table instead of consensus
   type: boolean
   inputBinding:
     prefix: --table
-- id: input
+- id: in_input
   doc: input fasta sequence (default = stdin)
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - smof

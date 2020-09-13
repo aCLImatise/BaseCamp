@@ -1,110 +1,120 @@
 class: CommandLineTool
 id: ../../../albatradis.cwl
 inputs:
-- id: span_gaps
-  doc: 'Span a gap if it is this multiple of a window size (default: 1)'
-  type: string
+- id: in_span_gaps
+  doc: "Span a gap if it is this multiple of a window size\n(default: 1)"
+  type: long
   inputBinding:
     prefix: --span_gaps
-- id: iterations
+- id: in_iterations
   doc: 'No. of times to rescan (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --iterations
-- id: minimum_block
-  doc: 'Minimum number of reads which must be in 1 block in comparison (default: 100)'
+- id: in_minimum_block
+  doc: "Minimum number of reads which must be in 1 block in\ncomparison (default:\
+    \ 100)"
   type: long
   inputBinding:
     prefix: --minimum_block
-- id: minimum_log_fc
+- id: in_minimum_log_fc
   doc: 'Minimum log fold change +/- (default: 1)'
   type: long
   inputBinding:
     prefix: --minimum_logfc
-- id: minimum_log_cpm
+- id: in_minimum_log_cpm
   doc: 'Minimum log counts per million +/- (default: 8.0)'
-  type: long
+  type: double
   inputBinding:
     prefix: --minimum_logcpm
-- id: minimum_threshold
-  doc: 'Only include insert sites with this number or greater insertions (default:
-    5)'
+- id: in_minimum_threshold
+  doc: "Only include insert sites with this number or greater\ninsertions (default:\
+    \ 5)"
   type: long
   inputBinding:
     prefix: --minimum_threshold
-- id: minimum_proportion_insertions
-  doc: 'If the proportion of insertions is too low compared to control, dont call
-    decreased insertions below this level (default: 0.1)'
-  type: long
+- id: in_minimum_proportion_insertions
+  doc: "If the proportion of insertions is too low compared to\ncontrol, dont call\
+    \ decreased insertions below this\nlevel (default: 0.1)"
+  type: double
   inputBinding:
     prefix: --minimum_proportion_insertions
-- id: dont_normalise_plots
+- id: in_dont_normalise_plots
   doc: 'Dont normalise input plots (default: False)'
   type: boolean
   inputBinding:
     prefix: --dont_normalise_plots
-- id: prefix
+- id: in_prefix
   doc: 'Output directory prefix (default: output)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --prefix
-- id: p_value
-  doc: 'Dont report anything above this p-value (default: 0.05)'
-  type: string
+- id: in_p_value
+  doc: "Dont report anything above this p-value (default:\n0.05)"
+  type: double
   inputBinding:
     prefix: --pvalue
-- id: q_value
-  doc: 'Dont report anything above this q-value (default: 0.05)'
-  type: string
+- id: in_q_value
+  doc: "Dont report anything above this q-value (default:\n0.05)"
+  type: double
   inputBinding:
     prefix: --qvalue
-- id: strict_signal
-  doc: 'A result must be present in the combined plots to be returned (default: False)'
+- id: in_strict_signal
+  doc: "A result must be present in the combined plots to be\nreturned (default: False)"
   type: boolean
   inputBinding:
     prefix: --strict_signal
-- id: use_annotation
-  doc: 'Use the reference annotation rather than a sliding window (default: False)'
+- id: in_use_annotation
+  doc: "Use the reference annotation rather than a sliding\nwindow (default: False)"
   type: boolean
   inputBinding:
     prefix: --use_annotation
-- id: prime_feature_size
-  doc: 'Feature size when adding 5/3 prime block when --use_annotation (default: 198)'
-  type: string
+- id: in_prime_feature_size
+  doc: "Feature size when adding 5/3 prime block when\n--use_annotation (default:\
+    \ 198)"
+  type: long
   inputBinding:
     prefix: --prime_feature_size
-- id: window_interval
+- id: in_window_interval
   doc: 'Window interval (default: 25)'
-  type: string
+  type: long
   inputBinding:
     prefix: --window_interval
-- id: window_size
+- id: in_window_size
   doc: 'Window size (default: 100)'
-  type: string
+  type: long
   inputBinding:
     prefix: --window_size
-- id: verbose
-  doc: 'Print out more information about the analysis while it runs (default: False)'
+- id: in_verbose
+  doc: "Print out more information about the analysis while it\nruns (default: False)"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: debug
+- id: in_debug
   doc: 'Turn on debugging (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-- id: embl_file
+- id: in_embl_file
   doc: Annotation file in EMBL format
   type: string
   inputBinding:
     position: 0
-- id: plot_files
-  doc: Input plot files (optionally gzipped). There must be an equal number of condition
-    and control files
+- id: in_plot_files
+  doc: "Input plot files (optionally gzipped). There must be\nan equal number of condition\
+    \ and control files"
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prefix
+  doc: 'Output directory prefix (default: output)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_prefix)
 cwlVersion: v1.1
 baseCommand:
 - albatradis

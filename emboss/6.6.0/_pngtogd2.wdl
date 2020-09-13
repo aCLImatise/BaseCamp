@@ -1,8 +1,8 @@
 version 1.0
 
-task _pngtogd2 {
+task Pngtogd2 {
   input {
-    String png_to_gd_two
+    Int png_to_gd_two
     File filename_dot_png
     File filename_dot_gd_two
     String cs
@@ -22,5 +22,8 @@ task _pngtogd2 {
     filename_dot_gd_two: ""
     cs: ""
     fmt: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

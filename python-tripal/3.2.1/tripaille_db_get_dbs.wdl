@@ -14,4 +14,7 @@ task TripailleDbGetDbs {
     db_id: "A db ID"
     name: "filter on db name"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

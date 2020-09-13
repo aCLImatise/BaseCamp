@@ -12,11 +12,11 @@ task Bam2fastq {
   command <<<
     bam2fastq \
       ~{input_file} \
-      ~{true="--output" false="" prefix_output_filenames} \
-      ~{true="-c" false="" gzip_compression_level} \
-      ~{true="-u" false="" compress_case_we} \
-      ~{true="--split-barcodes" false="" split_barcodes} \
-      ~{true="--seqid-prefix" false="" seq_id_prefix}
+      ~{if (prefix_output_filenames) then "--output" else ""} \
+      ~{if (gzip_compression_level) then "-c" else ""} \
+      ~{if (compress_case_we) then "-u" else ""} \
+      ~{if (split_barcodes) then "--split-barcodes" else ""} \
+      ~{if (seq_id_prefix) then "--seqid-prefix" else ""}
   >>>
   parameter_meta {
     prefix_output_filenames: "Prefix of output filenames"
@@ -25,5 +25,8 @@ task Bam2fastq {
     split_barcodes: "Split output into multiple FASTQ files, by barcode pairs."
     seq_id_prefix: "Prefix for sequence IDs in headers"
     input_file: "Input file."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

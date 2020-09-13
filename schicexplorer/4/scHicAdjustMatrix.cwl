@@ -1,39 +1,47 @@
 class: CommandLineTool
 id: ../../../scHicAdjustMatrix.cwl
 inputs:
-- id: matrix
-  doc: 'The matrix to adjust in the scool format. (default: None)'
+- id: in_matrix
+  doc: "The matrix to adjust in the scool format. (default:\nNone)"
   type: string
   inputBinding:
     prefix: --matrix
-- id: out_filename
+- id: in_out_filename
   doc: 'File name to save the adjusted matrix. (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --outFileName
-- id: chromosomes
+- id: in_chromosomes
   doc: 'List of chromosomes to keep / remove (default: None)'
   type: string[]
   inputBinding:
     prefix: --chromosomes
-- id: create_submatrix
-  doc: 'Keep only first n matrices and remove the rest. Good for test data creation.
-    (default: None)'
+- id: in_create_submatrix
+  doc: "Keep only first n matrices and remove the rest. Good\nfor test data creation.\
+    \ (default: None)"
   type: string
   inputBinding:
     prefix: --createSubmatrix
-- id: action
-  doc: 'Keep, remove or mask the list of specified chromosomes / regions (default:
-    keep)'
+- id: in_action
+  doc: "Keep, remove or mask the list of specified chromosomes\n/ regions (default:\
+    \ keep)"
   type: string
   inputBinding:
     prefix: --action
-- id: threads
-  doc: 'Number of threads. Using the python multiprocessing module. (default: 4)'
-  type: string
+- id: in_threads
+  doc: "Number of threads. Using the python multiprocessing\nmodule. (default: 4)"
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_filename
+  doc: 'File name to save the adjusted matrix. (default: None)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_filename)
 cwlVersion: v1.1
 baseCommand:
 - scHicAdjustMatrix

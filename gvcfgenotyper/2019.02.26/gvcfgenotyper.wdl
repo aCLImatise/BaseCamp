@@ -4,7 +4,7 @@ task Gvcfgenotyper {
   input {
     Boolean? list
     Boolean? fast_a_ref
-    Boolean? output_file
+    File? output_file
     Boolean? log_file
     Boolean? output_type
     Boolean? region
@@ -12,13 +12,13 @@ task Gvcfgenotyper {
   }
   command <<<
     gvcfgenotyper \
-      ~{true="--list" false="" list} \
-      ~{true="--fasta-ref" false="" fast_a_ref} \
-      ~{true="--output-file" false="" output_file} \
-      ~{true="--log-file" false="" log_file} \
-      ~{true="--output-type" false="" output_type} \
-      ~{true="--region" false="" region} \
-      ~{true="--max-alleles" false="" max_alleles}
+      ~{if (list) then "--list" else ""} \
+      ~{if (fast_a_ref) then "--fasta-ref" else ""} \
+      ~{if (output_file) then "--output-file" else ""} \
+      ~{if (log_file) then "--log-file" else ""} \
+      ~{if (output_type) then "--output-type" else ""} \
+      ~{if (region) then "--region" else ""} \
+      ~{if (max_alleles) then "--max-alleles" else ""}
   >>>
   parameter_meta {
     list: "<file>          plain text list of gvcfs to merge"
@@ -28,5 +28,9 @@ task Gvcfgenotyper {
     output_type: "<b|u|z|v>       b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed VCF [v]"
     region: "<region>        region to genotype eg. chr1 or chr20:5000000-6000000"
     max_alleles: "INT             maximum number of alleles [50]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

@@ -4,4 +4,7 @@ task Vecfix {
   command <<<
     vecfix
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

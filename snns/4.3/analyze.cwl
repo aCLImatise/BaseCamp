@@ -1,79 +1,87 @@
 class: CommandLineTool
 id: ../../../analyze.cwl
 inputs:
-- id: report_wrong_default
+- id: in_report_wrong_classified
   doc: ': report wrong classified patterns (default)'
   type: boolean
   inputBinding:
     prefix: -w
-- id: report_right_patterns
+- id: in_report_right_classified
   doc: ': report right classified patterns'
   type: boolean
   inputBinding:
     prefix: -r
-- id: report_unclassified_patterns
+- id: in_report_unclassified_patterns
   doc: ': report unclassified patterns'
   type: boolean
   inputBinding:
     prefix: -u
-- id: same_w_r
+- id: in_same_w_r
   doc: ': same as -w -r -u'
   type: boolean
   inputBinding:
     prefix: -a
-- id: report_confusion_class
+- id: in_report_confusion_class
   doc: '"t c"         : report confusion from class t to c (-1 = noclass)'
   type: boolean
   inputBinding:
     prefix: -S
-- id: show_statistic_information
+- id: in_show_statistic_information
   doc: ': show statistic information'
   type: boolean
   inputBinding:
     prefix: -s
-- id: show_class_information
+- id: in_show_class_statistic
   doc: ': show class statistic information'
   type: boolean
   inputBinding:
     prefix: -c
-- id: show_confusion_matrix
+- id: in_show_confusion_matrix
   doc: ': show confusion matrix'
   type: boolean
   inputBinding:
     prefix: -m
-- id: _verbous_mode
+- id: in__verbous_mode
   doc: ': verbous mode'
   type: boolean
   inputBinding:
     prefix: -v
-- id: select_error_function
-  doc: ': select error function  <function> = [402040 | WTA | band] default = 402040'
-  type: string
+- id: in_select_error_functionfunction
+  doc: ": select error function\n<function> = [402040 | WTA | band]\ndefault = 402040"
+  type: long
   inputBinding:
     prefix: -e
-- id: lower_bound_level
-  doc: ': lower bound level (see documentation)  default: 0.4 for 402040 default:
-    0.0 for WTA default: 0.1 for band'
+- id: in_lower_bound_level
+  doc: ": lower bound level (see documentation)\ndefault: 0.4 for 402040\ndefault:\
+    \ 0.0 for WTA\ndefault: 0.1 for band"
   type: double
   inputBinding:
     prefix: -l
-- id: upper_bound_level
-  doc: ': upper bound level (see documentation)  default: 0.6 for 402040 default:
-    0.0 for WTA default: 0.1 for band'
+- id: in_upper_bound_level
+  doc: ": upper bound level (see documentation)\ndefault: 0.6 for 402040\ndefault:\
+    \ 0.0 for WTA\ndefault: 0.1 for band"
   type: double
   inputBinding:
     prefix: -h
-- id: input_result_file
+- id: in_input_result_stdin
   doc: ': input result file (default stdin)'
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: output_file_default
+- id: in_output_file_default
   doc: ': output file (default stdout)'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_default
+  doc: ': output file (default stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_default)
 cwlVersion: v1.1
 baseCommand:
 - analyze

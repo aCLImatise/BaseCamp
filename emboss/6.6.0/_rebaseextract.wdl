@@ -1,7 +1,10 @@
 version 1.0
 
-task _rebaseextract {
+task Rebaseextract {
   command <<<
     _rebaseextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

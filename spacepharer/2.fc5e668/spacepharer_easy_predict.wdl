@@ -1,28 +1,28 @@
 version 1.0
 
-task SpacepharerEasyPredict {
+task SpacepharerEasypredict {
   input {
     Int? comp_bias_corr
     Boolean? add_self_matches
-    String? seed_sub_mat
+    File? seed_sub_mat
     Float? sensitivity_faster_fast
     Int? kmer_length_automatically
     Int? k_score
-    String? alph_size
+    Int? alph_size
     Int? max_seqs
     Int? split
     Int? split_mode
-    String? split_memory_limit
+    Int? split_memory_limit
     Boolean? diag_score
     Int? exact_km_er_matching
     Int? mask
     Int? mask_lower_case
     Int? min_un_gapped_score
     Int? spaced_km_er_mode
-    String? spaced_km_er_pattern
-    String? local_tmp
-    String? disk_space_limit
-    Boolean? add_string_convert
+    Int? spaced_km_er_pattern
+    File? local_tmp
+    Int? disk_space_limit
+    Boolean? add_backtrace_string
     Int? alignment_mode
     Boolean? wrapped_scoring
     Float? list_matches_evalue
@@ -36,8 +36,8 @@ task SpacepharerEasyPredict {
     Int? max_rejected
     Int? max_accept
     Float? score_bias
-    String? gap_open
-    String? gap_extend
+    Int? gap_open
+    Int? gap_extend
     Int? z_drop
     Float? pc_a
     Float? pcb
@@ -60,8 +60,8 @@ task SpacepharerEasyPredict {
     Int? contig_start_mode
     Int? contig_end_mode
     Int? orf_start_mode
-    String? forward_frames
-    String? reverse_frames
+    Int? forward_frames
+    Int? reverse_frames
     Int? translation_table
     Int? translate
     Boolean? use_all_table_starts
@@ -76,13 +76,13 @@ task SpacepharerEasyPredict {
     Float? fdr
     Int? fmt
     Int? report_pam
-    String? sub_mat
+    File? sub_mat
     Int? max_seq_len
     Int? db_load_mode
     Int? threads
     Int? compressed
     Int? verbosity_level_errors
-    String? mpi_runner
+    Int? mpi_runner
     Boolean? force_reuse
     Boolean? remove_tmp_files
     Boolean? filter_hits
@@ -94,7 +94,7 @@ task SpacepharerEasyPredict {
     Int? strand
   }
   command <<<
-    spacepharer easy-predict \
+    spacepharer easy_predict \
       ~{if defined(comp_bias_corr) then ("--comp-bias-corr " +  '"' + comp_bias_corr + '"') else ""} \
       ~{if defined(add_self_matches) then ("--add-self-matches " +  '"' + add_self_matches + '"') else ""} \
       ~{if defined(seed_sub_mat) then ("--seed-sub-mat " +  '"' + seed_sub_mat + '"') else ""} \
@@ -115,7 +115,7 @@ task SpacepharerEasyPredict {
       ~{if defined(spaced_km_er_pattern) then ("--spaced-kmer-pattern " +  '"' + spaced_km_er_pattern + '"') else ""} \
       ~{if defined(local_tmp) then ("--local-tmp " +  '"' + local_tmp + '"') else ""} \
       ~{if defined(disk_space_limit) then ("--disk-space-limit " +  '"' + disk_space_limit + '"') else ""} \
-      ~{if defined(add_string_convert) then ("-a " +  '"' + add_string_convert + '"') else ""} \
+      ~{if defined(add_backtrace_string) then ("-a " +  '"' + add_backtrace_string + '"') else ""} \
       ~{if defined(alignment_mode) then ("--alignment-mode " +  '"' + alignment_mode + '"') else ""} \
       ~{if defined(wrapped_scoring) then ("--wrapped-scoring " +  '"' + wrapped_scoring + '"') else ""} \
       ~{if defined(list_matches_evalue) then ("-e " +  '"' + list_matches_evalue + '"') else ""} \
@@ -207,8 +207,8 @@ task SpacepharerEasyPredict {
     spaced_km_er_pattern: "User-specified spaced k-mer pattern [11011101]"
     local_tmp: "Path where some of the temporary files will be created []"
     disk_space_limit: "Set max disk space to use for reverse profile searches. E.g. 800B, 5K, 10M, 1G. Default (0) to all available disk space in the temp folder [0]"
-    add_string_convert: "Add backtrace string (convert to alignments with mmseqs convertalis module) [1]"
-    alignment_mode: "How to compute the alignment: 0: automatic 1: only score and end_pos 2: also start_pos and cov 3: also seq.id 4: only ungapped alignment [2]"
+    add_backtrace_string: "Add backtrace string (convert to alignments with mmseqs convertalis module) [1]"
+    alignment_mode: "How to compute the alignment:\\n0: automatic\\n1: only score and end_pos\\n2: also start_pos and cov\\n3: also seq.id\\n4: only ungapped alignment [2]"
     wrapped_scoring: "Double the (nucleotide) query sequence during the scoring process to allow wrapped diagonal scoring around end and start [0]"
     list_matches_evalue: "List matches below this E-value (range 0.0-inf) [200.000]"
     min_seq_id: "List matches above this sequence identity (for clustering) (range 0.0-1.0) [0.000]"
@@ -216,7 +216,7 @@ task SpacepharerEasyPredict {
     seq_id_mode: "0: alignment length 1: shorter, 2: longer sequence [0]"
     alt_ali: "Show up to this many alternative alignments [0]"
     list_matches_fraction: "List matches above this fraction of aligned (covered) residues (see --cov-mode) [0.000]"
-    cov_mode: "0: coverage of query and target 1: coverage of target 2: coverage of query 3: target seq. length has to be at least x% of query length 4: query seq. length has to be at least x% of target length 5: short seq. needs to be at least x% of the other seq. length [0]"
+    cov_mode: "0: coverage of query and target\\n1: coverage of target\\n2: coverage of query\\n3: target seq. length has to be at least x% of query length\\n4: query seq. length has to be at least x% of target length\\n5: short seq. needs to be at least x% of the other seq. length [0]"
     realign: "Compute more conservative, shorter alignments (scores and E-values not changed) [0]"
     max_rejected: "Maximum rejected alignments before alignment calculation for a query is stopped [2147483647]"
     max_accept: "Maximum accepted alignments before alignment calculation for a query is stopped [2147483647]"
@@ -237,7 +237,7 @@ task SpacepharerEasyPredict {
     diff: "Filter MSAs by selecting most diverse set of sequences, keeping at least this many seqs in each MSA block of length 50 [1000]"
     num_iterations: "Number of iterative profile search iterations [1]"
     slice_search: "For bigger profile DB, run iteratively the search by greedily swapping the search results [0]"
-    re_score_mode: "Rescore diagonals with: 0: Hamming distance 1: local alignment (score only) 2: local alignment 3: global alignment 4: longest alignment fullfilling window quality criterion [0]"
+    re_score_mode: "Rescore diagonals with:\\n0: Hamming distance\\n1: local alignment (score only)\\n2: local alignment\\n3: global alignment\\n4: longest alignment fullfilling window quality criterion [0]"
     allow_deletion: "Allow deletions in a MSA [0]"
     min_length: "Minimum codon number in open reading frames [9]"
     max_length: "Maximum codon number in open reading frames [32734]"
@@ -247,7 +247,7 @@ task SpacepharerEasyPredict {
     orf_start_mode: "Orf fragment can be 0: from start to stop, 1: from any to stop, 2: from last encountered start to stop (no start in the middle) [1]"
     forward_frames: "Comma-seperated list of frames on the forward strand to be extracted [1,2,3]"
     reverse_frames: "Comma-seperated list of frames on the reverse strand to be extracted [1,2,3]"
-    translation_table: "1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE 9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL 15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL, 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA 29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA [1]"
+    translation_table: "1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE\\n9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL\\n15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\\n23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL, 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\\n29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA [1]"
     translate: "Translate ORF to amino acid [0]"
     use_all_table_starts: "Use all alteratives for a start codon in the genetic table, if false - only ATG (AUG) [0]"
     id_offset: "Numeric ids in index file are offset by this value [0]"
@@ -267,7 +267,7 @@ task SpacepharerEasyPredict {
     threads: "Number of CPU-cores used (all by default) [8]"
     compressed: "Write compressed output [0]"
     verbosity_level_errors: "Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]"
-    mpi_runner: "Use MPI on compute cluster with this MPI command (e.g. \"mpirun -np 42\") []"
+    mpi_runner: "Use MPI on compute cluster with this MPI command (e.g. \\\"mpirun -np 42\\\") []"
     force_reuse: "Reuse tmp filse in tmp/latest folder ignoring parameters and version changes [0]"
     remove_tmp_files: "Delete temporary files [0]"
     filter_hits: "Filter hits by seq.id. and coverage [0]"
@@ -277,5 +277,10 @@ task SpacepharerEasyPredict {
     chain_alignments: "Chain overlapping alignments [0]"
     merge_query: "Combine ORFs/split sequences to a single entry [1]"
     strand: "Strand selection only works for DNA/DNA search 0: reverse, 1: forward, 2: both [1]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_seed_sub_mat = "${in_seed_sub_mat}"
+    File out_sub_mat = "${in_sub_mat}"
   }
 }

@@ -2,7 +2,7 @@ version 1.0
 
 task BamtoolsCoverage {
   input {
-    String? in
+    File? in
     File? out
   }
   command <<<
@@ -13,5 +13,9 @@ task BamtoolsCoverage {
   parameter_meta {
     in: "the input BAM file [stdin]"
     out: "the output file [stdout]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

@@ -1,16 +1,42 @@
 !Command
+command:
+- getSeq
 positional:
 - !Positional
   description: ''
   position: 0
   name: MySQL
   optional: false
-named: []
-command:
-- getSeq
+named:
+- !Flag
+  description: output the reverse complement of the sequence
+  synonyms:
+  - --rc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: retrieve subsequence starting at position N (coordinates are 1-based)
+  synonyms:
+  - --start
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: retrieve subsequence ending at position N (coordinates are 1-based)
+  synonyms:
+  - --end
+  args: !SimpleFlagArg
+    name: N
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: print this usage info
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "usage:\nMySQL:\n    getSeq [parameters] --species=SPECIES --seq=SEQUENCE\

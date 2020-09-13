@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../starchstrip_typical.cwl
 inputs:
-- id: include
+- id: in_include
   doc: Include specified chromosomes from <starch-file>.
-  type: string
+  type: File
   inputBinding:
     prefix: --include
-- id: exclude
+- id: in_exclude
   doc: Exclude specified chromosomes from <starch-file>.
-  type: string
+  type: File
   inputBinding:
     prefix: --exclude
-- id: starch_strip
+- id: in_starch_strip
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - starchstrip-typical

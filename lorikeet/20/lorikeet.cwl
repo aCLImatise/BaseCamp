@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../lorikeet.cwl
 inputs:
-- id: jar
+- id: in_jar
   doc: ''
   type: string
   inputBinding:
     prefix: -jar
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - lorikeet

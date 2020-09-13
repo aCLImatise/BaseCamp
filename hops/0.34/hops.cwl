@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../hops.cwl
 inputs:
-- id: config_file
+- id: in_config_file
   doc: Path to Config File
-  type: string
+  type: File
   inputBinding:
     prefix: --configFile
-- id: input
+- id: in_input
   doc: Specify input directory or files valid option depend on mode
-  type: string
+  type: Directory
   inputBinding:
     prefix: --input
-- id: mode
+- id: in_mode
   doc: HOPS Mode to run accpeted full, malt, maltex, post
   type: string
   inputBinding:
     prefix: --mode
-- id: output
+- id: in_output
   doc: Specify out directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Specify out directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - hops

@@ -2,13 +2,16 @@ version 1.0
 
 task Treesapp {
   input {
-    String? var_command
+    String optional_arguments
   }
   command <<<
     treesapp \
-      ~{var_command}
+      ~{optional_arguments}
   >>>
   parameter_meta {
-    var_command: ""
+    optional_arguments: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

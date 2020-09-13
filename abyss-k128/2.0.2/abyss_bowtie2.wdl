@@ -1,14 +1,10 @@
 version 1.0
 
-task AbyssBowtie2 {
-  input {
-    String? option
-  }
+task Abyssbowtie2 {
   command <<<
-    abyss-bowtie2 \
-      ~{option}
+    abyss_bowtie2
   >>>
-  parameter_meta {
-    option: ""
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Prosextract {
   command <<<
     prosextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

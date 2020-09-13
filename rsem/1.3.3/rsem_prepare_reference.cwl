@@ -1,176 +1,187 @@
 class: CommandLineTool
 id: ../../../rsem_prepare_reference.cwl
 inputs:
-- id: gtf
-  doc: "If this option is on, RSEM assumes that 'reference_fasta_file(s)' contains\
-    \ the sequence of a genome, and will extract transcript reference sequences using\
-    \ the gene annotations specified in <file>, which should be in GTF format. If\
-    \ this and '--gff3' options are off, RSEM will assume 'reference_fasta_file(s)'\
-    \ contains the reference transcripts. In this case, RSEM assumes that name of\
-    \ each sequence in the Multi-FASTA files is its transcript_id. (Default: off)"
+- id: in_gtf
+  doc: "If this option is on, RSEM assumes that 'reference_fasta_file(s)'\ncontains\
+    \ the sequence of a genome, and will extract transcript\nreference sequences using\
+    \ the gene annotations specified in <file>,\nwhich should be in GTF format.\n\
+    If this and '--gff3' options are off, RSEM will assume\n'reference_fasta_file(s)'\
+    \ contains the reference transcripts. In\nthis case, RSEM assumes that name of\
+    \ each sequence in the\nMulti-FASTA files is its transcript_id.\n(Default: off)"
   type: File
   inputBinding:
     prefix: --gtf
-- id: gff_three
-  doc: "The annotation file is in GFF3 format instead of GTF format. RSEM will first\
-    \ convert it to GTF format with the file name 'reference_name.gtf'. Please make\
-    \ sure that 'reference_name.gtf' does not exist. (Default: off)"
+- id: in_gff_three
+  doc: "The annotation file is in GFF3 format instead of GTF format. RSEM\nwill first\
+    \ convert it to GTF format with the file name\n'reference_name.gtf'. Please make\
+    \ sure that 'reference_name.gtf'\ndoes not exist. (Default: off)"
   type: File
   inputBinding:
     prefix: --gff3
-- id: gff_three_rna_patterns
-  doc: '<pattern> is a comma-separated list of transcript categories, e.g. "mRNA,rRNA".
-    Only transcripts that match the <pattern> will be extracted. (Default: "mRNA")'
-  type: string
+- id: in_gff_three_rna_patterns
+  doc: "<pattern> is a comma-separated list of transcript categories, e.g.\n\"mRNA,rRNA\"\
+    . Only transcripts that match the <pattern> will be\nextracted. (Default: \"mRNA\"\
+    )"
+  type: long
   inputBinding:
     prefix: --gff3-RNA-patterns
-- id: gff_three_genes_as_transcripts
-  doc: This option is designed for untypical organisms, such as viruses, whose GFF3
-    files only contain genes. RSEM will assume each gene as a unique transcript when
-    it converts the GFF3 file into GTF format.
+- id: in_gff_three_genes_as_transcripts
+  doc: "This option is designed for untypical organisms, such as viruses,\nwhose GFF3\
+    \ files only contain genes. RSEM will assume each gene as a\nunique transcript\
+    \ when it converts the GFF3 file into GTF format."
   type: boolean
   inputBinding:
     prefix: --gff3-genes-as-transcripts
-- id: trusted_sources
-  doc: '<sources> is a comma-separated list of trusted sources, e.g. "ENSEMBL,HAVANA".
-    Only transcripts coming from these sources will be extracted. If this option is
-    off, all sources are accepted. (Default: off)'
+- id: in_trusted_sources
+  doc: "<sources> is a comma-separated list of trusted sources, e.g.\n\"ENSEMBL,HAVANA\"\
+    . Only transcripts coming from these sources will be\nextracted. If this option\
+    \ is off, all sources are accepted.\n(Default: off)"
   type: string
   inputBinding:
     prefix: --trusted-sources
-- id: transcript_to_gene_map
-  doc: "Use information from <file> to map from transcript (isoform) ids to gene ids.\
-    \ Each line of <file> should be of the form: gene_id transcript_id with the two\
-    \ fields separated by a tab character. If you are using a GTF file for the \"\
-    UCSC Genes\" gene set from the UCSC Genome Browser, then the \"knownIsoforms.txt\"\
-    \ file (obtained from the \"Downloads\" section of the UCSC Genome Browser site)\
-    \ is of this format. If this option is off, then the mapping of isoforms to genes\
-    \ depends on whether the '--gtf' option is specified. If '--gtf' is specified,\
-    \ then RSEM uses the \"gene_id\" and \"transcript_id\" attributes in the GTF file.\
-    \ Otherwise, RSEM assumes that each sequence in the reference sequence files is\
-    \ a separate gene. (Default: off)"
+- id: in_transcript_to_gene_map
+  doc: "Use information from <file> to map from transcript (isoform) ids to\ngene\
+    \ ids. Each line of <file> should be of the form:\ngene_id transcript_id\nwith\
+    \ the two fields separated by a tab character.\nIf you are using a GTF file for\
+    \ the \"UCSC Genes\" gene set from the\nUCSC Genome Browser, then the \"knownIsoforms.txt\"\
+    \ file (obtained\nfrom the \"Downloads\" section of the UCSC Genome Browser site)\
+    \ is of\nthis format.\nIf this option is off, then the mapping of isoforms to\
+    \ genes depends\non whether the '--gtf' option is specified. If '--gtf' is specified,\n\
+    then RSEM uses the \"gene_id\" and \"transcript_id\" attributes in the\nGTF file.\
+    \ Otherwise, RSEM assumes that each sequence in the\nreference sequence files\
+    \ is a separate gene.\n(Default: off)"
   type: File
   inputBinding:
     prefix: --transcript-to-gene-map
-- id: allele_to_gene_map
-  doc: "Use information from <file> to provide gene_id and transcript_id information\
-    \ for each allele-specific transcript. Each line of <file> should be of the form:\
-    \ gene_id transcript_id allele_id with the fields separated by a tab character.\
-    \ This option is designed for quantifying allele-specific expression. It is only\
-    \ valid if '--gtf' option is not specified. allele_id should be the sequence names\
-    \ presented in the Multi-FASTA-formatted files. (Default: off)"
+- id: in_allele_to_gene_map
+  doc: "Use information from <file> to provide gene_id and transcript_id\ninformation\
+    \ for each allele-specific transcript. Each line of <file>\nshould be of the form:\n\
+    gene_id transcript_id allele_id\nwith the fields separated by a tab character.\n\
+    This option is designed for quantifying allele-specific expression.\nIt is only\
+    \ valid if '--gtf' option is not specified. allele_id\nshould be the sequence\
+    \ names presented in the Multi-FASTA-formatted\nfiles.\n(Default: off)"
   type: File
   inputBinding:
     prefix: --allele-to-gene-map
-- id: polya
-  doc: "Add poly(A) tails to the end of all reference isoforms. The length of poly(A)\
-    \ tail added is specified by '--polyA-length' option. STAR aligner users may not\
-    \ want to use this option. (Default: do not add poly(A) tail to any of the isoforms)"
+- id: in_polya
+  doc: "Add poly(A) tails to the end of all reference isoforms. The length\nof poly(A)\
+    \ tail added is specified by '--polyA-length' option. STAR\naligner users may\
+    \ not want to use this option. (Default: do not add\npoly(A) tail to any of the\
+    \ isoforms)"
   type: boolean
   inputBinding:
     prefix: --polyA
-- id: polya_length
+- id: in_polya_length
   doc: 'The length of the poly(A) tails to be added. (Default: 125)'
   type: long
   inputBinding:
     prefix: --polyA-length
-- id: no_polya_subset
-  doc: "Only meaningful if '--polyA' is specified. Do not add poly(A) tails to those\
-    \ transcripts listed in <file>. <file> is a file containing a list of transcript_ids.\
+- id: in_no_polya_subset
+  doc: "Only meaningful if '--polyA' is specified. Do not add poly(A) tails\nto those\
+    \ transcripts listed in <file>. <file> is a file containing a\nlist of transcript_ids.\
     \ (Default: off)"
   type: File
   inputBinding:
     prefix: --no-polyA-subset
-- id: bowtie
+- id: in_bowtie
   doc: 'Build Bowtie indices. (Default: off)'
   type: boolean
   inputBinding:
     prefix: --bowtie
-- id: bowtie_path
-  doc: "The path to the Bowtie executables. (Default: the path to Bowtie executables\
-    \ is assumed to be in the user's PATH environment variable)"
+- id: in_bowtie_path
+  doc: "The path to the Bowtie executables. (Default: the path to Bowtie\nexecutables\
+    \ is assumed to be in the user's PATH environment\nvariable)"
   type: File
   inputBinding:
     prefix: --bowtie-path
-- id: bowtie_two
+- id: in_bowtie_two
   doc: 'Build Bowtie 2 indices. (Default: off)'
   type: boolean
   inputBinding:
     prefix: --bowtie2
-- id: bowtie_two_path
-  doc: "The path to the Bowtie 2 executables. (Default: the path to Bowtie 2 executables\
-    \ is assumed to be in the user's PATH environment variable)"
+- id: in_bowtie_two_path
+  doc: "The path to the Bowtie 2 executables. (Default: the path to Bowtie 2\nexecutables\
+    \ is assumed to be in the user's PATH environment\nvariable)"
   type: File
   inputBinding:
     prefix: --bowtie2-path
-- id: star
+- id: in_star
   doc: 'Build STAR indices. (Default: off)'
   type: boolean
   inputBinding:
     prefix: --star
-- id: star_path
-  doc: "The path to STAR's executable. (Default: the path to STAR executable is assumed\
+- id: in_star_path
+  doc: "The path to STAR's executable. (Default: the path to STAR executable\nis assumed\
     \ to be in user's PATH environment variable)"
   type: File
   inputBinding:
     prefix: --star-path
-- id: star_sj_db_overhang
-  doc: "Length of the genomic sequence around annotated junction. It is only used\
-    \ for STAR to build splice junctions database and not needed for Bowtie or Bowtie2.\
-    \ It will be passed as the --sjdbOverhang option to STAR. According to STAR's\
-    \ manual, its ideal value is max(ReadLength)-1, e.g. for 2x101 paired-end reads,\
-    \ the ideal value is 101-1=100. In most cases, the default value of 100 will work\
-    \ as well as the ideal value. (Default: 100)"
+- id: in_star_sj_db_overhang
+  doc: "Length of the genomic sequence around annotated junction. It is only\nused\
+    \ for STAR to build splice junctions database and not needed for\nBowtie or Bowtie2.\
+    \ It will be passed as the --sjdbOverhang option to\nSTAR. According to STAR's\
+    \ manual, its ideal value is\nmax(ReadLength)-1, e.g. for 2x101 paired-end reads,\
+    \ the ideal value\nis 101-1=100. In most cases, the default value of 100 will\
+    \ work as\nwell as the ideal value. (Default: 100)"
   type: long
   inputBinding:
     prefix: --star-sjdboverhang
-- id: his_at_two_hca
-  doc: 'Build HISAT2 indices on the transcriptome according to Human Cell Atlas (HCA)
-    SMART-Seq2 pipeline. (Default: off)'
+- id: in_his_at_two_hca
+  doc: "Build HISAT2 indices on the transcriptome according to Human Cell\nAtlas (HCA)\
+    \ SMART-Seq2 pipeline. (Default: off)"
   type: boolean
   inputBinding:
     prefix: --hisat2-hca
-- id: his_at_two_path
-  doc: "The path to the HISAT2 executables. (Default: the path to HISAT2 executables\
-    \ is assumed to be in the user's PATH environment variable)"
+- id: in_his_at_two_path
+  doc: "The path to the HISAT2 executables. (Default: the path to HISAT2\nexecutables\
+    \ is assumed to be in the user's PATH environment\nvariable)"
   type: File
   inputBinding:
     prefix: --hisat2-path
-- id: p_slash_num_threads
-  doc: "Number of threads to use for building STAR's genome indices. (Default: 1)"
+- id: in_p_slash_num_threads
+  doc: "Number of threads to use for building STAR's genome indices.\n(Default: 1)"
   type: long
   inputBinding:
     prefix: -p/--num-threads
-- id: q_slash_quiet
+- id: in_q_slash_quiet
   doc: 'Suppress the output of logging information. (Default: off)'
   type: boolean
   inputBinding:
     prefix: -q/--quiet
-- id: h_slash_help
+- id: in_h_slash_help
   doc: Show help information.
   type: boolean
   inputBinding:
     prefix: -h/--help
-- id: prep_pr_sem
-  doc: 'A Boolean indicating whether to prepare reference files for pRSEM, including
-    building Bowtie indices for a genome and selecting training set isoforms. The
-    index files will be used for aligning ChIP-seq reads in prior-enhanced RSEM and
-    the training set isoforms will be used for learning prior. A path to Bowtie executables
-    and a mappability file in bigWig format are required when this option is on. Currently,
-    Bowtie2 is not supported for prior-enhanced RSEM. (Default: off)'
+- id: in_prep_pr_sem
+  doc: "A Boolean indicating whether to prepare reference files for pRSEM,\nincluding\
+    \ building Bowtie indices for a genome and selecting\ntraining set isoforms. The\
+    \ index files will be used for aligning\nChIP-seq reads in prior-enhanced RSEM\
+    \ and the training set isoforms\nwill be used for learning prior. A path to Bowtie\
+    \ executables and a\nmappability file in bigWig format are required when this\
+    \ option is\non. Currently, Bowtie2 is not supported for prior-enhanced RSEM.\n\
+    (Default: off)"
   type: boolean
   inputBinding:
     prefix: --prep-pRSEM
-- id: mapp_ability_bigwig_file
-  doc: 'Full path to a whole-genome mappability file in bigWig format. This file is
-    required for running prior-enhanced RSEM. It is used for selecting a training
-    set of isoforms for prior-learning. This file can be either downloaded from UCSC
-    Genome Browser or generated by GEM (Derrien et al., 2012, PLoS One). (Default:
-    "")'
-  type: string
+- id: in_mapp_ability_bigwig_file
+  doc: "Full path to a whole-genome mappability file in bigWig format. This\nfile\
+    \ is required for running prior-enhanced RSEM. It is used for\nselecting a training\
+    \ set of isoforms for prior-learning. This file\ncan be either downloaded from\
+    \ UCSC Genome Browser or generated by\nGEM (Derrien et al., 2012, PLoS One). (Default:\
+    \ \"\")"
+  type: File
   inputBinding:
     prefix: --mappability-bigwig-file
-outputs: []
+- id: in_p
+  doc: \
+  type: long
+  inputBinding:
+    prefix: -p
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rsem-prepare-reference

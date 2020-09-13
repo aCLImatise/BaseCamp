@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../ktserver.cwl
 inputs:
-- id: host
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -host
-- id: port
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -port
-- id: tout
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -tout
-- id: th
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -th
-- id: log
+- id: in_log
   doc: ''
   type: File
   inputBinding:
     prefix: -log
-outputs: []
+- id: in_th
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -th
+- id: in_tout
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -tout
+- id: in_port
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -port
+- id: in_host
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -host
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ktserver

@@ -4,4 +4,7 @@ task Pedwipe {
   command <<<
     pedwipe
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

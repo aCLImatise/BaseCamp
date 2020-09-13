@@ -5,7 +5,7 @@ task Menecof {
     String? draft_net
     String? seeds
     String? targets
-    String? cofactors
+    File? cofactors
     String? suffix
     Boolean? weight
     Boolean? enumerate
@@ -17,16 +17,19 @@ task Menecof {
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if defined(cofactors) then ("--cofactors " +  '"' + cofactors + '"') else ""} \
       ~{if defined(suffix) then ("--suffix " +  '"' + suffix + '"') else ""} \
-      ~{true="--weight" false="" weight} \
-      ~{true="--enumerate" false="" enumerate}
+      ~{if (weight) then "--weight" else ""} \
+      ~{if (enumerate) then "--enumerate" else ""}
   >>>
   parameter_meta {
     draft_net: "metabolic network in SBML format"
     seeds: "seeds in SBML format"
     targets: "targets in SBML format"
     cofactors: "cofactors, in one-per-line text file format"
-    suffix: "suffix to be added to the compounds of the database. It can be the suffix for the cytosolic compartment or external one. Cytosolic one is prefered to ensure the impact of the added cofactors. Default = None"
-    weight: "call this option if cofactors are weighted according to their occurrence frequency in database. If so, cofactors file must be tabulated with per line compound' 'occurrence"
+    suffix: "suffix to be added to the compounds of the database.\\nIt can be the suffix for the cytosolic compartment or\\nexternal one. Cytosolic one is prefered to ensure the\\nimpact of the added cofactors. Default = None"
+    weight: "call this option if cofactors are weighted according\\nto their occurrence frequency in database. If so,\\ncofactors file must be tabulated with per line\\ncompound' 'occurrence"
     enumerate: "enumerates all cofactors solutions"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,4 +1,7 @@
 &id002 !Command
+command:
+- taxmapper
+- map
 positional: []
 named:
 - !Flag
@@ -33,9 +36,9 @@ named:
     name: OUTPUT
   optional: true
 - !Flag
-  description: 'How to combine forward and reverse hits, for "concordant" forward
-    and reverse have to map to the same taxon, for "best" the best hit from forward
-    and reverse is returned [default: best]'
+  description: "How to combine forward and reverse hits, for\n\"concordant\" forward\
+    \ and reverse have to map to the\nsame taxon, for \"best\" the best hit from forward\
+    \ and\nreverse is returned [default: best]"
   synonyms:
   - -c
   - --combine
@@ -43,18 +46,17 @@ named:
     name: COMBINE
   optional: true
 - !Flag
-  description: 'Number of threads, used to map forward and reverse reads in parallel
-    [default: 2]'
+  description: "Number of threads, used to map forward and reverse\nreads in parallel\
+    \ [default: 2]\n"
   synonyms:
   - -t
   - --threads
   args: !SimpleFlagArg
     name: THREADS
   optional: true
-command:
-- taxmapper
-- map
 parent: &id001 !Command
+  command:
+  - taxmapper
   positional: []
   named:
   - !Flag
@@ -63,11 +65,12 @@ parent: &id001 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - taxmapper
   parent:
   subcommands:
   - !Command
+    command:
+    - taxmapper
+    - search
     positional: []
     named:
     - !Flag
@@ -87,8 +90,8 @@ parent: &id001 !Command
         name: FILE2
       optional: true
     - !Flag
-      description: 'Rapsearch path, version >=2.24 [default: rapsearch set in PATH
-        variable]'
+      description: "Rapsearch path, version >=2.24 [default: rapsearch set\nin PATH\
+        \ variable]"
       synonyms:
       - --rapsearch
       args: !SimpleFlagArg
@@ -111,18 +114,16 @@ parent: &id001 !Command
         name: OUTPUT
       optional: true
     - !Flag
-      description: 'Number of threads [default: 4]'
+      description: "Number of threads [default: 4]\n"
       synonyms:
       - -t
       - --threads
       args: !SimpleFlagArg
         name: THREADS
       optional: true
-    command:
-    - taxmapper
-    - search
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -148,95 +149,9 @@ parent: &id001 !Command
     - --help
   - *id002
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Taxonomy mapping file (taxa.tsv if not specified otherwise).
-      synonyms:
-      - -i
-      - --tax
-      args: !SimpleFlagArg
-        name: TAXA
-      optional: true
-    - !Flag
-      description: 'Output file [default: taxa_filtered.tsv]'
-      synonyms:
-      - -o
-      - --out
-      args: !SimpleFlagArg
-        name: OUTPUT
-      optional: true
-    - !Flag
-      description: 'Automatic filter with probability threshold, if automatic filter
-        is chosen all other thresholds will be ignored [nan or 0 - 1, default: 0.4]'
-      synonyms:
-      - -a
-      - --auto
-      args: !SimpleFlagArg
-        name: AUTOMATIC
-      optional: true
-    - !Flag
-      description: 'Threshold for identity of best hit [default: nan]'
-      synonyms:
-      - --identity
-      args: !SimpleFlagArg
-        name: IDENTITY
-      optional: true
-    - !Flag
-      description: 'Threshold for identity ratio [1 - 10, default: nan]'
-      synonyms:
-      - -r
-      - --identity-ratio
-      args: !SimpleFlagArg
-        name: RATIO
-      optional: true
-    - !Flag
-      description: 'Threshold for log e-values of best hit [default: nan]'
-      synonyms:
-      - --evalue
-      args: !SimpleFlagArg
-        name: EVALUE
-      optional: true
-    - !Flag
-      description: 'Threshold for absolute difference in e-values [0 - 100, default:
-        nan]'
-      synonyms:
-      - -d
-      - --evalue-diff
-      args: !SimpleFlagArg
-        name: DIFF
-      optional: true
     command:
     - taxmapper
-    - filter
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: taxmapper filter [-h] -i TAXA [-o OUTPUT] [-a AUTOMATIC]\n\
-      \                        [--identity IDENTITY] [-r RATIO] [--evalue EVALUE]\n\
-      \                        [-d DIFF]\n\noptional arguments:\n  -h, --help    \
-      \        show this help message and exit\n  -i TAXA, --tax TAXA   Taxonomy mapping\
-      \ file (taxa.tsv if not specified\n                        otherwise).\n  -o\
-      \ OUTPUT, --out OUTPUT\n                        Output file [default: taxa_filtered.tsv]\n\
-      \  -a AUTOMATIC, --auto AUTOMATIC\n                        Automatic filter\
-      \ with probability threshold, if\n                        automatic filter is\
-      \ chosen all other thresholds will\n                        be ignored [nan\
-      \ or 0 - 1, default: 0.4]\n  --identity IDENTITY   Threshold for identity of\
-      \ best hit [default: nan]\n  -r RATIO, --identity-ratio RATIO\n            \
-      \            Threshold for identity ratio [1 - 10, default: nan]\n  --evalue\
-      \ EVALUE       Threshold for log e-values of best hit [default: nan]\n  -d DIFF,\
-      \ --evalue-diff DIFF\n                        Threshold for absolute difference\
-      \ in e-values [0 -\n                        100, default: nan]\n"
-    generated_using: *id003
-  - !Command
+    - count
     positional: []
     named:
     - !Flag
@@ -248,26 +163,24 @@ parent: &id001 !Command
         name: TAXA
       optional: true
     - !Flag
-      description: 'Output file 1, counted taxa for first taxonomic hierarchy [default:
-        taxa_counts_level1.tsv]'
+      description: "Output file 1, counted taxa for first taxonomic\nhierarchy [default:\
+        \ taxa_counts_level1.tsv]"
       synonyms:
       - --out1
       args: !SimpleFlagArg
         name: OUTPUT1
       optional: true
     - !Flag
-      description: 'Output file 2, counted taxa for second taxonomic hierarchy [default:
-        taxa_counts_level2.tsv]'
+      description: "Output file 2, counted taxa for second taxonomic\nhierarchy [default:\
+        \ taxa_counts_level2.tsv]\n"
       synonyms:
       - --out2
       args: !SimpleFlagArg
         name: OUTPUT2
       optional: true
-    command:
-    - taxmapper
-    - count
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -286,10 +199,13 @@ parent: &id001 !Command
       \ [default: taxa_counts_level2.tsv]\n"
     generated_using: *id003
   - !Command
+    command:
+    - taxmapper
+    - plot
     positional: []
     named:
     - !Flag
-      description: Taxonomy file(s), counted taxa for a taxonomic hierarchy
+      description: "Taxonomy file(s), counted taxa for a taxonomic\nhierarchy"
       synonyms:
       - -t
       - --taxa
@@ -297,9 +213,9 @@ parent: &id001 !Command
         name: TAXA
       optional: true
     - !Flag
-      description: Optional sample names, sample names have to be in the same order
-        as taxonomy input files. If no samplenames are provided, the base names of
-        the taxa file(s) will be used.
+      description: "Optional sample names, sample names have to be in the\nsame order\
+        \ as taxonomy input files. If no samplenames\nare provided, the base names\
+        \ of the taxa file(s) will\nbe used."
       synonyms:
       - -s
       - --samples
@@ -307,8 +223,8 @@ parent: &id001 !Command
         name: SAMPLES
       optional: true
     - !Flag
-      description: 'Output file 1, taxon matrix with normalized frequencies [default:
-        taxa_freq_norm.tsv]'
+      description: "Output file 1, taxon matrix with normalized\nfrequencies [default:\
+        \ taxa_freq_norm.tsv]"
       synonyms:
       - -f
       - --freq
@@ -316,7 +232,7 @@ parent: &id001 !Command
         name: FREQ
       optional: true
     - !Flag
-      description: 'Output file 2, taxon matrix with counts [default: taxa_counts.tsv]'
+      description: "Output file 2, taxon matrix with counts [default:\ntaxa_counts.tsv]"
       synonyms:
       - -c
       - --counts
@@ -324,19 +240,17 @@ parent: &id001 !Command
         name: COUNTS
       optional: true
     - !Flag
-      description: 'Output file 3, stacked barplot of total count normalized taxa
-        [default: taxa_freq_norm.svg]'
+      description: "Output file 3, stacked barplot of total count\nnormalized taxa\
+        \ [default: taxa_freq_norm.svg]\n"
       synonyms:
       - -p
       - --plot
       args: !SimpleFlagArg
         name: PLOT
       optional: true
-    command:
-    - taxmapper
-    - plot
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -363,6 +277,9 @@ parent: &id001 !Command
       \    normalized taxa [default: taxa_freq_norm.svg]\n"
     generated_using: *id003
   - !Command
+    command:
+    - taxmapper
+    - run
     positional: []
     named:
     - !Flag
@@ -413,18 +330,16 @@ parent: &id001 !Command
         name: OUTPUT
       optional: true
     - !Flag
-      description: 'Number of threads, [default: 4]'
+      description: "Number of threads, [default: 4]\n"
       synonyms:
       - -t
       - --threads
       args: !SimpleFlagArg
         name: THREADS
       optional: true
-    command:
-    - taxmapper
-    - run
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -446,14 +361,113 @@ parent: &id001 !Command
       \                        Output folder, [default: \"results\"]\n  -t THREADS,\
       \ --threads THREADS\n                        Number of threads, [default: 4]\n"
     generated_using: *id003
+  - !Command
+    command:
+    - taxmapper
+    - filter
+    positional: []
+    named:
+    - !Flag
+      description: "Taxonomy mapping file (taxa.tsv if not specified\notherwise)."
+      synonyms:
+      - -i
+      - --tax
+      args: !SimpleFlagArg
+        name: TAXA
+      optional: true
+    - !Flag
+      description: 'Output file [default: taxa_filtered.tsv]'
+      synonyms:
+      - -o
+      - --out
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: "Automatic filter with probability threshold, if\nautomatic filter\
+        \ is chosen all other thresholds will\nbe ignored [nan or 0 - 1, default:\
+        \ 0.4]"
+      synonyms:
+      - -a
+      - --auto
+      args: !SimpleFlagArg
+        name: AUTOMATIC
+      optional: true
+    - !Flag
+      description: 'Threshold for identity of best hit [default: nan]'
+      synonyms:
+      - --identity
+      args: !SimpleFlagArg
+        name: IDENTITY
+      optional: true
+    - !Flag
+      description: 'Threshold for identity ratio [1 - 10, default: nan]'
+      synonyms:
+      - -r
+      - --identity-ratio
+      args: !SimpleFlagArg
+        name: RATIO
+      optional: true
+    - !Flag
+      description: 'Threshold for log e-values of best hit [default: nan]'
+      synonyms:
+      - --evalue
+      args: !SimpleFlagArg
+        name: EVALUE
+      optional: true
+    - !Flag
+      description: "Threshold for absolute difference in e-values [0 -\n100, default:\
+        \ nan]\n"
+      synonyms:
+      - -d
+      - --evalue-diff
+      args: !SimpleFlagArg
+        name: DIFF
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: taxmapper filter [-h] -i TAXA [-o OUTPUT] [-a AUTOMATIC]\n\
+      \                        [--identity IDENTITY] [-r RATIO] [--evalue EVALUE]\n\
+      \                        [-d DIFF]\n\noptional arguments:\n  -h, --help    \
+      \        show this help message and exit\n  -i TAXA, --tax TAXA   Taxonomy mapping\
+      \ file (taxa.tsv if not specified\n                        otherwise).\n  -o\
+      \ OUTPUT, --out OUTPUT\n                        Output file [default: taxa_filtered.tsv]\n\
+      \  -a AUTOMATIC, --auto AUTOMATIC\n                        Automatic filter\
+      \ with probability threshold, if\n                        automatic filter is\
+      \ chosen all other thresholds will\n                        be ignored [nan\
+      \ or 0 - 1, default: 0.4]\n  --identity IDENTITY   Threshold for identity of\
+      \ best hit [default: nan]\n  -r RATIO, --identity-ratio RATIO\n            \
+      \            Threshold for identity ratio [1 - 10, default: nan]\n  --evalue\
+      \ EVALUE       Threshold for log e-values of best hit [default: nan]\n  -d DIFF,\
+      \ --evalue-diff DIFF\n                        Threshold for absolute difference\
+      \ in e-values [0 -\n                        100, default: nan]\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
-  version_flag:
+  version_flag: !Flag
+    description: ''
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
   help_text: "usage: taxmapper [-h] [-v] {search,map,filter,count,plot,run} ...\n\n\
     positional arguments:\n  {search,map,filter,count,plot,run}\n    search      \
     \        RAPSearch wrapper to search with reads in database\n    map         \
@@ -464,6 +478,7 @@ parent: &id001 !Command
     \ help message and exit\n  -v, --version\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

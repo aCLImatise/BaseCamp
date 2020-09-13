@@ -4,4 +4,7 @@ task Bamrecompress {
   command <<<
     bamrecompress
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

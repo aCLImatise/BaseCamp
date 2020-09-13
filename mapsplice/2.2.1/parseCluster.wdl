@@ -4,4 +4,7 @@ task ParseCluster {
   command <<<
     parseCluster
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,11 +4,11 @@ task AMUSED {
   input {
     String? _query_sequences
     String? compare_seqs_background
-    String? bp
-    String? _output_file
+    Float? bp
+    File? _output_file
     Int? max_nmer_consider
-    String? minimum_absolute_subzscore
-    String? number_cpu_use
+    Int? minimum_absolute_subzscore
+    Int? number_cpu_use
     Boolean? one_p
     Boolean? ng
     Boolean? nu
@@ -27,14 +27,14 @@ task AMUSED {
       ~{if defined(max_nmer_consider) then ("-s " +  '"' + max_nmer_consider + '"') else ""} \
       ~{if defined(minimum_absolute_subzscore) then ("-z " +  '"' + minimum_absolute_subzscore + '"') else ""} \
       ~{if defined(number_cpu_use) then ("-t " +  '"' + number_cpu_use + '"') else ""} \
-      ~{true="-1p" false="" one_p} \
-      ~{true="-ng" false="" ng} \
-      ~{true="-nu" false="" nu} \
-      ~{true="-ds" false="" ds} \
-      ~{true="-ns" false="" ns} \
-      ~{true="-do" false="" do} \
-      ~{true="-bc" false="" bc} \
-      ~{true="-nsz" false="" n_sz}
+      ~{if (one_p) then "-1p" else ""} \
+      ~{if (ng) then "-ng" else ""} \
+      ~{if (nu) then "-nu" else ""} \
+      ~{if (ds) then "-ds" else ""} \
+      ~{if (ns) then "-ns" else ""} \
+      ~{if (do) then "-do" else ""} \
+      ~{if (bc) then "-bc" else ""} \
+      ~{if (n_sz) then "-nsz" else ""}
   >>>
   parameter_meta {
     _query_sequences: "= query sequences"
@@ -52,5 +52,9 @@ task AMUSED {
     do: "= descriptive output: lots of intermediate values also output (but many columns)"
     bc: "= add lines to output for base content"
     n_sz: "= don't calculate super Zs"
+  }
+  output {
+    File out_stdout = stdout()
+    File out__output_file = "${in__output_file}"
   }
 }

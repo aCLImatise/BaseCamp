@@ -1,7 +1,10 @@
 version 1.0
 
-task BgBpipe {
+task Bgbpipe {
   command <<<
-    bg-bpipe
+    bg_bpipe
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

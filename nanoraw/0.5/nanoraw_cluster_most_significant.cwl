@@ -1,114 +1,118 @@
 class: CommandLineTool
 id: ../../../nanoraw_cluster_most_significant.cwl
 inputs:
-- id: base_call_subgroups
-  doc: "FAST5 subgroup (under Analyses/[corrected-group]) where individual template\
-    \ and/or complement reads are stored. Default: ['BaseCalled_template']"
+- id: in_base_call_subgroups
+  doc: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual template\
+    \ and/or complement reads are\nstored. Default: ['BaseCalled_template']"
   type: string[]
   inputBinding:
     prefix: --basecall-subgroups
-- id: two_d
-  doc: Input contains 2D reads. Equivalent to `--basecall- subgroups BaseCalled_template
-    BaseCalled_complement`
+- id: in_two_d
+  doc: "Input contains 2D reads. Equivalent to `--basecall-\nsubgroups BaseCalled_template\
+    \ BaseCalled_complement`"
   type: boolean
   inputBinding:
     prefix: --2d
-- id: fast_five_based_irs
+- id: in_fast_five_based_irs
   doc: Directories containing fast5 files.
-  type: string[]
+  type: long[]
   inputBinding:
     prefix: --fast5-basedirs
-- id: fast_five_based_irs_two
-  doc: Second set of directories containing fast5 files to compare.
-  type: string[]
+- id: in_fast_five_based_irs_two
+  doc: "Second set of directories containing fast5 files to\ncompare."
+  type: long[]
   inputBinding:
     prefix: --fast5-basedirs2
-- id: corrected_group
-  doc: 'FAST5 group to access/plot created by genome_resquiggle script. Default: RawGenomeCorrected_000'
-  type: string
+- id: in_corrected_group
+  doc: "FAST5 group to access/plot created by\ngenome_resquiggle script. Default:\n\
+    RawGenomeCorrected_000"
+  type: long
   inputBinding:
     prefix: --corrected-group
-- id: obs_per_base_filter
-  doc: Filter reads for plotting baseed on threshold of percentiles of the number
-    of observations assigned to a base (default no filter). Format thresholds as "percentile:thresh
-    [pctl2:thresh2 ...]" E.g. reads with 99th pctl <200 obs and max <5k obs would
-    be "99:200 100:5000".
+- id: in_obs_per_base_filter
+  doc: "Filter reads for plotting baseed on threshold of\npercentiles of the number\
+    \ of observations assigned to\na base (default no filter). Format thresholds as\n\
+    \"percentile:thresh [pctl2:thresh2 ...]\" E.g. reads\nwith 99th pctl <200 obs\
+    \ and max <5k obs would be\n\"99:200 100:5000\"."
   type: string[]
   inputBinding:
     prefix: --obs-per-base-filter
-- id: test_type
-  doc: 'Type of significance test to apply. Choices are: mw_utest (default; mann-whitney
-    u-test), ttest.'
+- id: in_test_type
+  doc: "Type of significance test to apply. Choices are:\nmw_utest (default; mann-whitney\
+    \ u-test), ttest."
   type: string
   inputBinding:
     prefix: --test-type
-- id: fishers_method_offset
-  doc: "Offset up and downstream over which to compute combined p-values using Fisher's\
+- id: in_fishers_method_offset
+  doc: "Offset up and downstream over which to compute\ncombined p-values using Fisher's\
     \ method. Default: 2."
-  type: string
+  type: long
   inputBinding:
     prefix: --fishers-method-offset
-- id: minimum_test_reads
-  doc: 'Number of reads required from both samples to test for significant difference
-    in signal level. Default: 5'
+- id: in_minimum_test_reads
+  doc: "Number of reads required from both samples to test for\nsignificant difference\
+    \ in signal level. Default: 5"
   type: long
   inputBinding:
     prefix: --minimum-test-reads
-- id: genome_fast_a
-  doc: FASTA file used to map reads with "genome_resquiggle" command.
-  type: string
+- id: in_genome_fast_a
+  doc: "FASTA file used to map reads with \"genome_resquiggle\"\ncommand."
+  type: File
   inputBinding:
     prefix: --genome-fasta
-- id: processes
+- id: in_processes
   doc: 'Number of processes. Default: 1'
-  type: string
+  type: long
   inputBinding:
     prefix: --processes
-- id: pdf_filename
-  doc: 'PDF filename to store plot(s). Default: Nanopore_most_significant_clustering.pdf'
-  type: string
+- id: in_pdf_filename
+  doc: "PDF filename to store plot(s). Default:\nNanopore_most_significant_clustering.pdf"
+  type: File
   inputBinding:
     prefix: --pdf-filename
-- id: statistics_filename
-  doc: "Filename to save/load base by base signal difference statistics. If file exists\
-    \ it will try to be loaded, if it does not exist it will be created to save statistics.\
-    \ Default: Don't save/load."
-  type: string
+- id: in_statistics_filename
+  doc: "Filename to save/load base by base signal difference\nstatistics. If file\
+    \ exists it will try to be loaded,\nif it does not exist it will be created to\
+    \ save\nstatistics. Default: Don't save/load."
+  type: File
   inputBinding:
     prefix: --statistics-filename
-- id: r_data_filename
+- id: in_r_data_filename
   doc: "Filename to save R data structure. Defualt: Don't save"
-  type: string
+  type: File
   inputBinding:
     prefix: --r-data-filename
-- id: num_regions
+- id: in_num_regions
   doc: 'Number of regions to plot. Default: 10'
-  type: string
+  type: long
   inputBinding:
     prefix: --num-regions
-- id: q_value_threshold
-  doc: Choose the number of regions to select by the FDR corrected p-values. Note
-    that --num-regions will be ignored if this option is set.
-  type: string
+- id: in_q_value_threshold
+  doc: "Choose the number of regions to select by the FDR\ncorrected p-values. Note\
+    \ that --num-regions will be\nignored if this option is set."
+  type: long
   inputBinding:
     prefix: --q-value-threshold
-- id: num_bases
+- id: in_num_bases
   doc: 'Number of bases to plot from region. Default: 5'
-  type: string
+  type: long
   inputBinding:
     prefix: --num-bases
-- id: slide_span
-  doc: 'Number of bases to slide up and down when computing distances for signal cluster
-    plotting. Default: Exact position'
-  type: string
+- id: in_slide_span
+  doc: "Number of bases to slide up and down when computing\ndistances for signal\
+    \ cluster plotting. Default: Exact\nposition"
+  type: long
   inputBinding:
     prefix: --slide-span
-- id: quiet
+- id: in_quiet
   doc: Don't print status information.
   type: boolean
   inputBinding:
     prefix: --quiet
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nanoraw

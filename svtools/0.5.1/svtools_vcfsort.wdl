@@ -3,18 +3,18 @@ version 1.0
 task SvtoolsVcfsort {
   input {
     Boolean? support
-    String var_1
-    String var_2
+    String svtools
   }
   command <<<
     svtools vcfsort \
-      ~{var_1} \
-      ~{var_2} \
-      ~{true="--support" false="" support}
+      ~{svtools} \
+      ~{if (support) then "--support" else ""}
   >>>
   parameter_meta {
     support: ""
-    var_1: ""
-    var_2: ""
+    svtools: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

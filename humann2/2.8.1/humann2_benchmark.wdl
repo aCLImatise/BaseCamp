@@ -4,4 +4,7 @@ task Humann2Benchmark {
   command <<<
     humann2_benchmark
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

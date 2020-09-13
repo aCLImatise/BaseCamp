@@ -4,4 +4,7 @@ task HailctlDev {
   command <<<
     hailctl dev
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

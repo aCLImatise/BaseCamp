@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../phyluce_align_parallel_sate.cwl
 inputs:
-- id: sate_conf
+- id: in_sate_conf
   doc: '[--cores CORES]'
   type: string
   inputBinding:
     prefix: --sate-conf
-- id: input
+- id: in_input
   doc: The input directory containing fasta files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: The output directory to hold alignments
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: cores
+- id: in_cores
   doc: The number of compute cores to use
-  type: string
+  type: long
   inputBinding:
     prefix: --cores
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output directory to hold alignments
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_align_parallel_sate

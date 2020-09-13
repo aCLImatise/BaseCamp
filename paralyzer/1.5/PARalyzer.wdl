@@ -4,4 +4,7 @@ task PARalyzer {
   command <<<
     PARalyzer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

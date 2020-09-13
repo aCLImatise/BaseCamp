@@ -2,12 +2,12 @@ version 1.0
 
 task PairtoolsSplit {
   input {
-    String? output_pairs
-    String? output_sam
+    File? output_pairs
+    File? output_sam
     Int? nproc_in
     Int? nproc_out
-    String? cmd_in
-    String? cmd_out
+    File? cmd_in
+    File? cmd_out
     String from
   }
   command <<<
@@ -21,12 +21,17 @@ task PairtoolsSplit {
       ~{if defined(cmd_out) then ("--cmd-out " +  '"' + cmd_out + '"') else ""}
   >>>
   parameter_meta {
-    output_pairs: "output pairs file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed. If -, pairs are printed to stdout. If not specified, pairs are dropped."
-    output_sam: "output sam file. If the path ends with .bam, the output is compressed into a bam file. If -, sam entries are printed to stdout. If not specified, sam entries are dropped."
-    nproc_in: "Number of processes used by the auto-guessed input decompressing command.  [default: 3]"
-    nproc_out: "Number of processes used by the auto-guessed output compressing command.  [default: 8]"
-    cmd_in: "A command to decompress the input file. If provided, fully overrides the auto-guessed command. Does not work with stdin. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -dc -n 3"
-    cmd_out: "A command to compress the output file. If provided, fully overrides the auto-guessed command. Does not work with stdout. Must read input from stdin and print output into stdout. EXAMPLE: pbgzip -c -n 8"
+    output_pairs: "output pairs file. If the path ends with .gz or .lz4,\\nthe output is pbgzip-/lz4c-compressed. If -, pairs are\\nprinted to stdout. If not specified, pairs are dropped."
+    output_sam: "output sam file. If the path ends with .bam, the output\\nis compressed into a bam file. If -, sam entries are\\nprinted to stdout. If not specified, sam entries are\\ndropped."
+    nproc_in: "Number of processes used by the auto-guessed input\\ndecompressing command.  [default: 3]"
+    nproc_out: "Number of processes used by the auto-guessed output\\ncompressing command.  [default: 8]"
+    cmd_in: "A command to decompress the input file. If provided,\\nfully overrides the auto-guessed command. Does not work\\nwith stdin. Must read input from stdin and print output\\ninto stdout. EXAMPLE: pbgzip -dc -n 3"
+    cmd_out: "A command to compress the output file. If provided,\\nfully overrides the auto-guessed command. Does not work\\nwith stdout. Must read input from stdin and print\\noutput into stdout. EXAMPLE: pbgzip -c -n 8"
     from: "stdin."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_pairs = "${in_output_pairs}"
+    File out_output_sam = "${in_output_sam}"
   }
 }

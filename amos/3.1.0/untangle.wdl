@@ -4,4 +4,7 @@ task Untangle {
   command <<<
     untangle
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

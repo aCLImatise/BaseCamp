@@ -1,29 +1,49 @@
 class: CommandLineTool
 id: ../../../seqmagick_info.cwl
 inputs:
-- id: input_format
+- id: in_input_format
   doc: Input format. Overrides extension for all input files
   type: string
   inputBinding:
     prefix: --input-format
-- id: out_file
+- id: in_out_file
   doc: 'Output destination. Default: STDOUT'
-  type: string
+  type: File
   inputBinding:
     prefix: --out-file
-- id: format
-  doc: Specify output format as tab-delimited, CSV or aligned in a borderless table.
-    Default is tab-delimited if the output is directed to a file, aligned if output
-    to the console.
-  type: string
+- id: in_format
+  doc: "Specify output format as tab-delimited, CSV or aligned\nin a borderless table.\
+    \ Default is tab-delimited if the\noutput is directed to a file, aligned if output\
+    \ to the\nconsole."
+  type: File
   inputBinding:
     prefix: --format
-- id: threads
+- id: in_threads
   doc: Number of threads (CPUs). [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+- id: in_sequence_files
+  doc: 'optional arguments:'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_file
+  doc: 'Output destination. Default: STDOUT'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_file)
+- id: out_format
+  doc: "Specify output format as tab-delimited, CSV or aligned\nin a borderless table.\
+    \ Default is tab-delimited if the\noutput is directed to a file, aligned if output\
+    \ to the\nconsole."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_format)
 cwlVersion: v1.1
 baseCommand:
 - seqmagick

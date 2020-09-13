@@ -29,8 +29,8 @@ task RunByDirectory {
       ~{if defined(num_threads) then ("--num-threads " +  '"' + num_threads + '"') else ""} \
       ~{if defined(output_file_read) then ("--output " +  '"' + output_file_read + '"') else ""} \
       ~{if defined(error_out) then ("--error-out " +  '"' + error_out + '"') else ""} \
-      ~{true="--keep-directories" false="" keep_directories} \
-      ~{true="--jumping-read-joining-run" false="" jumping_read_joining_run} \
+      ~{if (keep_directories) then "--keep-directories" else ""} \
+      ~{if (jumping_read_joining_run) then "--jumping-read-joining-run" else ""} \
       ~{if defined(celera_terminator_directory) then ("--Celera-terminator-directory " +  '"' + celera_terminator_directory + '"') else ""} \
       ~{if defined(max_nodes) then ("--max-nodes " +  '"' + max_nodes + '"') else ""} \
       ~{if defined(min_km_er_len) then ("--min-kmer-len " +  '"' + min_km_er_len + '"') else ""} \
@@ -67,5 +67,10 @@ task RunByDirectory {
     skip_gaps: "Number of gaps to skip -- useful for restarting (0)"
     dir_for_read_sequences: "*Name of dir where readFile.### exist; should be absolute"
     cmdline_parse: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_read = "${in_output_file_read}"
+    File out_error_out = "${in_error_out}"
   }
 }

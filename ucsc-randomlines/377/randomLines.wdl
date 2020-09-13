@@ -6,21 +6,21 @@ task RandomLines {
     Boolean? de_comment
     String in_file
     String count
-    String outfile
   }
   command <<<
     randomLines \
       ~{in_file} \
       ~{count} \
-      ~{outfile} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""} \
-      ~{true="-decomment" false="" de_comment}
+      ~{if (de_comment) then "-decomment" else ""}
   >>>
   parameter_meta {
     seed: "- Set seed used for randomizing, useful for debugging."
-    de_comment: "- remove blank lines and those starting with "
+    de_comment: "- remove blank lines and those starting with"
     in_file: ""
     count: ""
-    outfile: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

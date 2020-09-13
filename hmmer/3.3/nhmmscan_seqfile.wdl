@@ -12,12 +12,15 @@ task NhmmscanSeqfile {
       ~{nh_mms_can} \
       ~{hmm_db} \
       ~{seq_file} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     nh_mms_can: ""
     hmm_db: ""
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

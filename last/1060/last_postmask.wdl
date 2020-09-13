@@ -1,14 +1,17 @@
 version 1.0
 
-task LastPostmask {
+task Lastpostmask {
   input {
     String in_dot_maf
   }
   command <<<
-    last-postmask \
+    last_postmask \
       ~{in_dot_maf}
   >>>
   parameter_meta {
     in_dot_maf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

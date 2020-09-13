@@ -1,7 +1,10 @@
 version 1.0
 
-task PeptideShaker {
+task Peptideshaker {
   command <<<
-    peptide-shaker
+    peptide_shaker
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

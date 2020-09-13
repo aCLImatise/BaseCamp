@@ -4,4 +4,7 @@ task Gseapy {
   command <<<
     gseapy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

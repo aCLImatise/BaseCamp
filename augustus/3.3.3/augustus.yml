@@ -1,32 +1,168 @@
 !Command
+command:
+- augustus
 positional:
 - !Positional
-  description: ': allow prediction of incomplete genes at the sequence boundaries
-    (default)'
+  description: ''
   position: 0
-  name: partial
-  optional: false
+  name: parameters
+  optional: true
 - !Positional
-  description: ': only predict single-exon genes like in prokaryotes and some eukaryotes'
+  description: ''
   position: 1
-  name: intronless
-  optional: false
-- !Positional
-  description: ': only predict complete genes'
-  position: 2
-  name: complete
-  optional: false
-- !Positional
-  description: ': predict at least one complete gene'
-  position: 3
-  name: atleastone
-  optional: false
-- !Positional
-  description: ': predict exactly one complete gene'
-  position: 4
-  name: exactlyone
+  name: queryfilename
   optional: false
 named:
+- !Flag
+  description: or --strand=backward
+  synonyms:
+  - --strand
+  - --strand
+  args: !SimpleFlagArg
+    name: both
+  optional: true
+- !Flag
+  description: "or --genemodel=exactlyone\npartial      : allow prediction of incomplete\
+    \ genes at the sequence boundaries (default)\nintronless   : only predict single-exon\
+    \ genes like in prokaryotes and some eukaryotes\ncomplete     : only predict complete\
+    \ genes\natleastone   : predict at least one complete gene\nexactlyone   : predict\
+    \ exactly one complete gene"
+  synonyms:
+  - --genemodel
+  - --genemodel
+  - --genemodel
+  - --genemodel
+  args: !SimpleFlagArg
+    name: partial
+  optional: true
+- !Flag
+  description: "predict genes independently on each strand, allow overlapping genes\
+    \ on opposite strands\nThis option is turned off by default."
+  synonyms:
+  - --singlestrand
+  args: !SimpleFlagArg
+    name: 'true'
+  optional: true
+- !Flag
+  description: "When this option is used the prediction considering hints (extrinsic\
+    \ information) is turned on.\nhintsfilename contains the hints in gff format."
+  synonyms:
+  - --hintsfile
+  args: !SimpleFlagArg
+    name: hintsfilename
+  optional: true
+- !Flag
+  description: path to config directory (if not specified as environment variable)
+  synonyms:
+  - --AUGUSTUS_CONFIG_PATH
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: report alternative transcripts when they are suggested by hints
+  synonyms:
+  - --alternatives-from-evidence
+  args: !SimpleFlagArg
+    name: true/false
+  optional: true
+- !Flag
+  description: report alternative transcripts generated through probabilistic sampling
+  synonyms:
+  - --alternatives-from-sampling
+  args: !SimpleFlagArg
+    name: true/false
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --sample
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --minexonintronprob
+  args: !SimpleFlagArg
+    name: p
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --minmeanexonintronprob
+  args: !SimpleFlagArg
+    name: p
+  optional: true
+- !Flag
+  description: For a description of these parameters see section 4 of README.TXT.
+  synonyms:
+  - --maxtracks
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: "When this option is used the prediction will consider the protein\
+    \ profile provided as parameter.\nThe protein profile extension is described in\
+    \ section 7 of README.TXT."
+  synonyms:
+  - --proteinprofile
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: show a progressmeter
+  synonyms:
+  - --progress
+  args: !SimpleFlagArg
+    name: 'true'
+  optional: true
+- !Flag
+  description: output in gff3 format
+  synonyms:
+  - --gff3
+  args: !SimpleFlagArg
+    name: on/off
+  optional: true
+- !Flag
+  description: A and B define the range of the sequence for which predictions should
+    be found.
+  synonyms:
+  - --predictionStart
+  - --predictionEnd
+  args: !SimpleFlagArg
+    name: A
+  optional: true
+- !Flag
+  description: predict the untranslated regions in addition to the coding sequence.
+    This currently works only for a subset of species.
+  synonyms:
+  - --UTR
+  args: !SimpleFlagArg
+    name: on/off
+  optional: true
+- !Flag
+  description: 'Do not report transcripts with in-frame stop codons. Otherwise, intron-spanning
+    stop codons could occur. Default: false'
+  synonyms:
+  - --noInFrameStop
+  args: !SimpleFlagArg
+    name: true/false
+  optional: true
+- !Flag
+  description: If true and input is in genbank format, no prediction is made. Useful
+    for getting the annotated protein sequences.
+  synonyms:
+  - --noprediction
+  args: !SimpleFlagArg
+    name: true/false
+  optional: true
+- !Flag
+  description: 'If true, output gene identifyers like this: seqname.gN'
+  synonyms:
+  - --uniqueGeneId
+  args: !SimpleFlagArg
+    name: true/false
+  optional: true
 - !Flag
   description: ''
   synonyms:
@@ -34,10 +170,9 @@ named:
   args: !SimpleFlagArg
     name: SPECIES
   optional: true
-command:
-- augustus
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

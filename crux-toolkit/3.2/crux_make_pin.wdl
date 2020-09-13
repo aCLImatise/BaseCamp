@@ -1,14 +1,17 @@
 version 1.0
 
-task CruxMakePin {
+task CruxMakepin {
   input {
-    String target_input
+    String? sida_k
   }
   command <<<
-    crux make-pin \
-      ~{target_input}
+    crux make_pin \
+      ~{if defined(sida_k) then ("--sidak " +  '"' + sida_k + '"') else ""}
   >>>
   parameter_meta {
-    target_input: ""
+    sida_k: "set to T, then the \\\"distinct matches/spectrum\\\" column must be"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

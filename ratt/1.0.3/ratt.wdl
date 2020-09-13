@@ -4,4 +4,7 @@ task Ratt {
   command <<<
     ratt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

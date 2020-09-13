@@ -17,4 +17,7 @@ task MockinbirdPreprocessParclipFastq {
     mock_in_bird: ""
     preprocess: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

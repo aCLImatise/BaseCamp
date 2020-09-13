@@ -4,4 +4,7 @@ task ProjectFeatures {
   command <<<
     projectFeatures
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

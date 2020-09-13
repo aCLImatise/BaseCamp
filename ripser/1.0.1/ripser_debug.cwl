@@ -1,35 +1,38 @@
 class: CommandLineTool
 id: ../../../ripser_debug.cwl
 inputs:
-- id: format
-  doc: 'use the specified file format for the input. Options are: lower-distance (lower
-    triangular distance matrix; default) upper-distance (upper triangular distance
-    matrix) distance       (full distance matrix) point-cloud    (point cloud in Euclidean
-    space) dipha          (distance matrix in DIPHA file format)'
+- id: in_format
+  doc: "use the specified file format for the input. Options are:\nlower-distance\
+    \ (lower triangular distance matrix; default)\nupper-distance (upper triangular\
+    \ distance matrix)\ndistance       (full distance matrix)\npoint-cloud    (point\
+    \ cloud in Euclidean space)\ndipha          (distance matrix in DIPHA file format)"
   type: boolean
   inputBinding:
     prefix: --format
-- id: dim
+- id: in_dim
   doc: compute persistent homology up to dimension <k>
   type: string
   inputBinding:
     prefix: --dim
-- id: threshold
+- id: in_threshold
   doc: compute Rips complexes up to diameter <t>
   type: string
   inputBinding:
     prefix: --threshold
-- id: rip_ser
+- id: in_rip_ser
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: filename
+- id: in_filename
   doc: ''
   type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ripser-debug

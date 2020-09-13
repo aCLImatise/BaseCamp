@@ -2,11 +2,11 @@ version 1.0
 
 task GenerateCorrectionLayouts {
   input {
-    String? mandatory_path_to
-    String? mandatory_path_ovlstore
+    File? mandatory_path_to_seqstore
+    File? mandatory_path_to_ovlstore
     String? scores
     String? output_layouts_store
-    Boolean? write_extremely_verbose
+    Boolean? write_verbose_logging
     Boolean? dump_data_used
     String? process_reads_starting
     String? process_reads_including
@@ -16,12 +16,12 @@ task GenerateCorrectionLayouts {
   }
   command <<<
     generateCorrectionLayouts \
-      ~{if defined(mandatory_path_to) then ("-S " +  '"' + mandatory_path_to + '"') else ""} \
-      ~{if defined(mandatory_path_ovlstore) then ("-O " +  '"' + mandatory_path_ovlstore + '"') else ""} \
+      ~{if defined(mandatory_path_to_seqstore) then ("-S " +  '"' + mandatory_path_to_seqstore + '"') else ""} \
+      ~{if defined(mandatory_path_to_ovlstore) then ("-O " +  '"' + mandatory_path_to_ovlstore + '"') else ""} \
       ~{if defined(scores) then ("-scores " +  '"' + scores + '"') else ""} \
       ~{if defined(output_layouts_store) then ("-C " +  '"' + output_layouts_store + '"') else ""} \
-      ~{true="-V" false="" write_extremely_verbose} \
-      ~{true="-D" false="" dump_data_used} \
+      ~{if (write_verbose_logging) then "-V" else ""} \
+      ~{if (dump_data_used) then "-D" else ""} \
       ~{if defined(process_reads_starting) then ("-b " +  '"' + process_reads_starting + '"') else ""} \
       ~{if defined(process_reads_including) then ("-e " +  '"' + process_reads_including + '"') else ""} \
       ~{if defined(el) then ("-eL " +  '"' + el + '"') else ""} \
@@ -29,16 +29,19 @@ task GenerateCorrectionLayouts {
       ~{if defined(ec) then ("-eC " +  '"' + ec + '"') else ""}
   >>>
   parameter_meta {
-    mandatory_path_to: "mandatory path to seqStore"
-    mandatory_path_ovlstore: "mandatory path to ovlStore"
-    scores: "overlap score thresholds (from filterCorrectionOverlaps) if not supplied, will be estimated from ovlStore"
+    mandatory_path_to_seqstore: "mandatory path to seqStore"
+    mandatory_path_to_ovlstore: "mandatory path to ovlStore"
+    scores: "overlap score thresholds (from filterCorrectionOverlaps)\\nif not supplied, will be estimated from ovlStore"
     output_layouts_store: "output layouts to store 'corStore'"
-    write_extremely_verbose: "write extremely verbose logging to 'corStore.log'"
+    write_verbose_logging: "write extremely verbose logging to 'corStore.log'"
     dump_data_used: "dump the data used to estimate overlap scores to 'corStore.scores'"
     process_reads_starting: "process reads starting at bgnID"
     process_reads_including: "process reads up to but not including endID"
     el: "minimum length of evidence overlaps"
     ee: "maximum error rate of evidence overlaps"
     ec: "maximum coverage of evidence reads to emit"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

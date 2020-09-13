@@ -11,4 +11,7 @@ task HcaUploadCreds {
   parameter_meta {
     uuid_or_alias: "Full or partial (alias) UUID of an upload area."
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

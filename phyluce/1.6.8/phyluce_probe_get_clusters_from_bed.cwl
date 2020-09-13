@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../phyluce_probe_get_clusters_from_bed.cwl
 inputs:
-- id: bed
+- id: in_bed
   doc: The BED directory you want to search for clusters
-  type: string
+  type: Directory
   inputBinding:
     prefix: --bed
-- id: outdir
+- id: in_outdir
   doc: The output directory to store results
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: files
-  doc: Specific files in the directory you want to process
-  type: File[]
+- id: in_files
+  doc: "Specific files in the directory you want to process\n"
+  type: string[]
   inputBinding:
     prefix: --files
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: The output directory to store results
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_probe_get_clusters_from_bed

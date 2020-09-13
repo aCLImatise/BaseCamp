@@ -2,10 +2,10 @@ version 1.0
 
 task CCAT {
   input {
-    String library_one_tag_file_name
-    String library_two_tag_file_name
-    String chromosome_length_file_name
-    String config_file_name
+    File library_one_tag_file_name
+    File library_two_tag_file_name
+    Int chromosome_length_file_name
+    File config_file_name
     String project_name
   }
   command <<<
@@ -22,5 +22,8 @@ task CCAT {
     chromosome_length_file_name: ""
     config_file_name: ""
     project_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

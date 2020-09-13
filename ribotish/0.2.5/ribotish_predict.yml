@@ -1,5 +1,19 @@
-&id002 !Command
-positional: []
+&id003 !Command
+command:
+- ribotish
+- predict
+positional:
+- !Positional
+  description: --harr                The data is treated with harringtonine (instead
+    of
+  position: 0
+  name: provided
+  optional: false
+- !Positional
+  description: --compatiblemis COMPATIBLEMIS
+  position: 0
+  name: junctions
+  optional: false
 named:
 - !Flag
   description: TIS enriched riboseq bam files, comma seperated
@@ -37,15 +51,15 @@ named:
     name: OUTPUT
   optional: true
 - !Flag
-  description: 'Only test input candidate ORFs, format: transID start stop (0 based,
-    half open)'
+  description: "Only test input candidate ORFs, format: transID start\nstop (0 based,\
+    \ half open)"
   synonyms:
   - -i
   args: !SimpleFlagArg
     name: INPUT
   optional: true
 - !Flag
-  description: 'Gene annotation file format (gtf, bed, gpd, gff, default: auto)'
+  description: "Gene annotation file format (gtf, bed, gpd, gff,\ndefault: auto)"
   synonyms:
   - --geneformat
   args: !SimpleFlagArg
@@ -66,30 +80,30 @@ named:
     name: RIBOPARA
   optional: true
 - !Flag
-  description: 'Group transcript according to TIS reads density quantile (default:
-    10)'
+  description: "Group transcript according to TIS reads density\nquantile (default:\
+    \ 10)"
   synonyms:
   - --nparts
   args: !SimpleFlagArg
     name: NPARTS
   optional: true
 - !Flag
-  description: Gene file for known protein coding gene annotation and TIS background
-    estimation instead of -g gene file
+  description: "Gene file for known protein coding gene annotation and\nTIS background\
+    \ estimation instead of -g gene file"
   synonyms:
   - -a
   args: !SimpleFlagArg
     name: AGENEPATH
   optional: true
 - !Flag
-  description: 'Output TIS background estimation result (default: tisBackground.txt)'
+  description: "Output TIS background estimation result (default:\ntisBackground.txt)"
   synonyms:
   - -e
   args: !SimpleFlagArg
     name: ESTPATH
   optional: true
 - !Flag
-  description: Input background estimation result file instead of instant estimation
+  description: "Input background estimation result file instead of\ninstant estimation"
   synonyms:
   - -s
   args: !SimpleFlagArg
@@ -103,53 +117,47 @@ named:
     name: TRANSPROFILE
   optional: true
 - !Flag
-  description: Input RPF P-site profile for each transcript, instead of reading bam
-    reads, save time for re-running
+  description: "Input RPF P-site profile for each transcript, instead\nof reading\
+    \ bam reads, save time for re-running"
   synonyms:
   - --inprofile
   args: !SimpleFlagArg
     name: INPROFILE
   optional: true
 - !Flag
-  description: Input chromosome id mapping table file if annotation chr ids are not
-    same as chr ids in bam/fasta files
+  description: "Input chromosome id mapping table file if annotation\nchr ids are\
+    \ not same as chr ids in bam/fasta files"
   synonyms:
   - --chrmap
   args: !SimpleFlagArg
     name: CHRMAP
   optional: true
 - !Flag
-  description: "All result output without FDR q-value threshold (default: output +\
-    \ '_all.txt', 'off' to turn off)"
+  description: "All result output without FDR q-value threshold\n(default: output\
+    \ + '_all.txt', 'off' to turn off)"
   synonyms:
   - --allresult
   args: !SimpleFlagArg
     name: ALLRESULT
   optional: true
 - !Flag
-  description: Use alternative start codons (all codons with 1 base different from
-    ATG)
+  description: "Use alternative start codons (all codons with 1 base\ndifferent from\
+    \ ATG)"
   synonyms:
   - --alt
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use provided alternative start codons, comma seperated, eg. CTG,GTG,ACG
+  description: "Use provided alternative start codons, comma\nseperated, eg. CTG,GTG,ACG"
   synonyms:
   - --altcodons
   args: !SimpleFlagArg
     name: ALTCODONS
   optional: true
 - !Flag
-  description: Add TIS bam counts to ribo, if specified or -b not provided
+  description: Add TIS bam counts to ribo, if specified or -b not
   synonyms:
   - --tis2ribo
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: The data is treated with harringtonine (instead of LTM)
-  synonyms:
-  - --harr
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -194,8 +202,8 @@ named:
     name: FPTH
   optional: true
 - !Flag
-  description: 'At least one of TIS or frame p value should be lower than this threshold
-    (default: 0.05)'
+  description: "At least one of TIS or frame p value should be lower\nthan this threshold\
+    \ (default: 0.05)"
   synonyms:
   - --minpth
   args: !SimpleFlagArg
@@ -259,7 +267,7 @@ named:
     name: MAXNH
   optional: true
 - !Flag
-  description: 'Min MapQ value required for bam alignments (default: 1)'
+  description: "Min MapQ value required for bam alignments (default:\n1)"
   synonyms:
   - --minMapQ
   args: !SimpleFlagArg
@@ -278,17 +286,10 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not require reads compatible with transcript splice junctions
+  description: Do not require reads compatible with transcript splice
   synonyms:
   - --nocompatible
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'Missed bases allowed in reads compatibility check (default: 2)'
-  synonyms:
-  - --compatiblemis
-  args: !SimpleFlagArg
-    name: COMPATIBLEMIS
   optional: true
 - !Flag
   description: Number of processes
@@ -304,224 +305,28 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- ribotish
-- predict
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - ribotish
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Riboseq bam file
-      synonyms:
-      - -b
-      args: !SimpleFlagArg
-        name: RIBOBAMPATH
-      optional: true
-    - !Flag
-      description: Gene annotation file
-      synonyms:
-      - -g
-      args: !SimpleFlagArg
-        name: GENEPATH
-      optional: true
-    - !Flag
-      description: "Output data file (default: ribobampath[:-4]+ '_qual.txt')"
-      synonyms:
-      - -o
-      args: !SimpleFlagArg
-        name: OUTPUT
-      optional: true
-    - !Flag
-      description: The data is TIS enriched (for LTM & Harritonine)
-      synonyms:
-      - -t
-      - --tis
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Input previous output file, do not read gene file and bam file
-        again
-      synonyms:
-      - -i
-      args: !SimpleFlagArg
-        name: INPUT
-      optional: true
-    - !Flag
-      description: 'Gene annotation file format (gtf, bed, gpd, gff, default: auto)'
-      synonyms:
-      - --geneformat
-      args: !SimpleFlagArg
-        name: GENEFORMAT
-      optional: true
-    - !Flag
-      description: Input chromosome id mapping table file if annotation chr ids are
-        not same as chr ids in bam/fasta files
-      synonyms:
-      - --chrmap
-      args: !SimpleFlagArg
-        name: CHRMAP
-      optional: true
-    - !Flag
-      description: "Output pdf figure file (default: ribobampath[:-4]+ '_qual.pdf')"
-      synonyms:
-      - -f
-      args: !SimpleFlagArg
-        name: FIGPDFPATH
-      optional: true
-    - !Flag
-      description: "Output offset parameter file (default: ribobampath[:-4]+ '.para.py')"
-      synonyms:
-      - -r
-      args: !SimpleFlagArg
-        name: PARAPATH
-      optional: true
-    - !Flag
-      description: 'Range of tag length (default: 25,35)'
-      synonyms:
-      - -l
-      args: !SimpleFlagArg
-        name: LENS
-      optional: true
-    - !Flag
-      description: 'Position range near start codon or stop codon (default: -40,20)'
-      synonyms:
-      - -d
-      args: !SimpleFlagArg
-        name: DIS
-      optional: true
-    - !Flag
-      description: 'Bins for cds profile (default: 20)'
-      synonyms:
-      - --bins
-      args: !SimpleFlagArg
-        name: BINS
-      optional: true
-    - !Flag
-      description: Do not consider reads with mismatch at position 0 as a new group
-      synonyms:
-      - --nom0
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Threshold for quality (default: 0.5)'
-      synonyms:
-      - --th
-      args: !SimpleFlagArg
-        name: TH
-      optional: true
-    - !Flag
-      description: 'Max NH value allowed for bam alignments (default: 1)'
-      synonyms:
-      - --maxNH
-      args: !SimpleFlagArg
-        name: MAXNH
-      optional: true
-    - !Flag
-      description: 'Min MapQ value required for bam alignments (default: 1)'
-      synonyms:
-      - --minMapQ
-      args: !SimpleFlagArg
-        name: MINMAPQ
-      optional: true
-    - !Flag
-      description: Use bam secondary alignments
-      synonyms:
-      - --secondary
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Reads are paired end
-      synonyms:
-      - --paired
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Use a color style readable for color blind people ('#F00078,#00F000,#0078F0')
-      synonyms:
-      - --colorblind
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "User specified Matplotlib accepted color codes for three frames\
-        \ (default: 'r,g,b')"
-      synonyms:
-      - --colors
-      args: !SimpleFlagArg
-        name: COLORS
-      optional: true
-    - !Flag
-      description: 'Number of processes (default: 1)'
-      synonyms:
-      - -p
-      args: !SimpleFlagArg
-        name: NUMPROC
-      optional: true
-    - !Flag
-      description: Increase output verbosity
-      synonyms:
-      - -v
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - ribotish
-    - quality
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: ribotish quality [-h] -b RIBOBAMPATH [-g GENEPATH] [-o OUTPUT]\
-      \ [-t]\n                        [-i INPUT] [--geneformat GENEFORMAT] [--chrmap\
-      \ CHRMAP]\n                        [-f FIGPDFPATH] [-r PARAPATH] [-l LENS] [-d\
-      \ DIS]\n                        [--bins BINS] [--nom0] [--th TH] [--maxNH MAXNH]\n\
-      \                        [--minMapQ MINMAPQ] [--secondary] [--paired]\n    \
-      \                    [--colorblind] [--colors COLORS] [-p NUMPROC] [-v]\n\n\
-      optional arguments:\n  -h, --help            show this help message and exit\n\
-      \  -b RIBOBAMPATH        Riboseq bam file\n  -g GENEPATH           Gene annotation\
-      \ file\n  -o OUTPUT             Output data file (default: ribobampath[:-4]+\n\
-      \                        '_qual.txt')\n  -t, --tis             The data is TIS\
-      \ enriched (for LTM & Harritonine)\n  -i INPUT              Input previous output\
-      \ file, do not read gene file and\n                        bam file again\n\
-      \  --geneformat GENEFORMAT\n                        Gene annotation file format\
-      \ (gtf, bed, gpd, gff,\n                        default: auto)\n  --chrmap CHRMAP\
-      \       Input chromosome id mapping table file if annotation\n             \
-      \           chr ids are not same as chr ids in bam/fasta files\n  -f FIGPDFPATH\
-      \         Output pdf figure file (default: ribobampath[:-4]+\n             \
-      \           '_qual.pdf')\n  -r PARAPATH           Output offset parameter file\
-      \ (default:\n                        ribobampath[:-4]+ '.para.py')\n  -l LENS\
-      \               Range of tag length (default: 25,35)\n  -d DIS             \
-      \   Position range near start codon or stop codon\n                        (default:\
-      \ -40,20)\n  --bins BINS           Bins for cds profile (default: 20)\n  --nom0\
-      \                Do not consider reads with mismatch at position 0 as a\n  \
-      \                      new group\n  --th TH               Threshold for quality\
-      \ (default: 0.5)\n  --maxNH MAXNH         Max NH value allowed for bam alignments\
-      \ (default: 1)\n  --minMapQ MINMAPQ     Min MapQ value required for bam alignments\
-      \ (default:\n                        1)\n  --secondary           Use bam secondary\
-      \ alignments\n  --paired              Reads are paired end\n  --colorblind \
-      \         Use a color style readable for color blind people\n              \
-      \          ('#F00078,#00F000,#0078F0')\n  --colors COLORS       User specified\
-      \ Matplotlib accepted color codes for\n                        three frames\
-      \ (default: 'r,g,b')\n  -p NUMPROC            Number of processes (default:\
-      \ 1)\n  -v, --verbose         Increase output verbosity\n"
-    generated_using: &id003
-    - --help
-  - *id002
-  - !Command
-    positional: []
+    - tisdiff
+    positional:
+    - !Positional
+      description: --compatiblemis COMPATIBLEMIS
+      position: 2
+      name: junctions
+      optional: false
+    - !Positional
+      description: --normanno            Use only annotated TISs for normalization
+      position: 0
+      name: normalization
+      optional: false
     named:
     - !Flag
       description: Prediction results of group 1 TIS data
@@ -538,25 +343,11 @@ parent: &id001 !Command
         name: TIS2PATHS
       optional: true
     - !Flag
-      description: Group 1 TIS enriched riboseq bam files, comma seperated
+      description: Group 1 TIS enriched riboseq bam files, comma
       synonyms:
       - -a
       args: !SimpleFlagArg
         name: TIS1BAMPATHS
-      optional: true
-    - !Flag
-      description: Group 2 TIS enriched riboseq bam files, comma seperated
-      synonyms:
-      - -b
-      args: !SimpleFlagArg
-        name: TIS2BAMPATHS
-      optional: true
-    - !Flag
-      description: Gene annotation file
-      synonyms:
-      - -g
-      args: !SimpleFlagArg
-        name: GENEPATH
       optional: true
     - !Flag
       description: Output result file
@@ -580,7 +371,7 @@ parent: &id001 !Command
         name: TIS2PARA
       optional: true
     - !Flag
-      description: 'Gene annotation file format (gtf, bed, gpd, gff, default: auto)'
+      description: "Gene annotation file format (gtf, bed, gpd, gff,\ndefault: auto)"
       synonyms:
       - --geneformat
       args: !SimpleFlagArg
@@ -594,7 +385,7 @@ parent: &id001 !Command
         name: MAXNH
       optional: true
     - !Flag
-      description: 'Min MapQ value required for bam alignments (default: 1)'
+      description: "Min MapQ value required for bam alignments (default:\n1)"
       synonyms:
       - --minMapQ
       args: !SimpleFlagArg
@@ -627,36 +418,23 @@ parent: &id001 !Command
         name: TIS2LABELS
       optional: true
     - !Flag
-      description: Do not require reads compatible with transcript splice junctions
+      description: Do not require reads compatible with transcript splice
       synonyms:
       - --nocompatible
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Missed bases allowed in reads compatibility check
-      synonyms:
-      - --compatiblemis
-      args: !SimpleFlagArg
-        name: COMPATIBLEMIS
-      optional: true
-    - !Flag
-      description: Input chromosome id mapping table file if annotation chr ids are
-        not same as chr ids in bam/fasta files
+      description: "Input chromosome id mapping table file if annotation\nchr ids\
+        \ are not same as chr ids in bam/fasta files"
       synonyms:
       - --chrmap
       args: !SimpleFlagArg
         name: CHRMAP
       optional: true
     - !Flag
-      description: Use common TISs instead of union TISs for normalization
+      description: Use common TISs instead of union TISs for
       synonyms:
       - --normcomm
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Use only annotated TISs for normalization
-      synonyms:
-      - --normanno
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
@@ -681,21 +459,21 @@ parent: &id001 !Command
         name: RNASCALE
       optional: true
     - !Flag
-      description: Use chisquare test instead of Fisher's exact test for mRNA referenced
-        test
+      description: "Use chisquare test instead of Fisher's exact test for\nmRNA referenced\
+        \ test"
       synonyms:
       - --chi2
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Use beta-binom test instead of Fisher's exact test for mRNA referenced
-        test
+      description: "Use beta-binom test instead of Fisher's exact test for\nmRNA referenced\
+        \ test"
       synonyms:
       - --betabinom
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Export count table for differential analysis with other tools
+      description: "Export count table for differential analysis with\nother tools"
       synonyms:
       - --export
       args: !SimpleFlagArg
@@ -778,11 +556,15 @@ parent: &id001 !Command
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ribotish
-    - tisdiff
+    - !Flag
+      description: ''
+      synonyms:
+      - -b
+      args: !EmptyFlagArg {}
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -844,7 +626,215 @@ parent: &id001 !Command
       \ diff p value threshold (default: 0.05)\n  --oqth OQTH           Output TIS\
       \ diff q value threshold (default: 0.05)\n  -p NUMPROC            Number of\
       \ processes\n  -v, --verbose         Increase output verbosity\n"
-    generated_using: *id003
+    generated_using: &id002
+    - --help
+  - !Command
+    command:
+    - ribotish
+    - quality
+    positional: []
+    named:
+    - !Flag
+      description: Riboseq bam file
+      synonyms:
+      - -b
+      args: !SimpleFlagArg
+        name: RIBOBAMPATH
+      optional: true
+    - !Flag
+      description: Gene annotation file
+      synonyms:
+      - -g
+      args: !SimpleFlagArg
+        name: GENEPATH
+      optional: true
+    - !Flag
+      description: "Output data file (default: ribobampath[:-4]+\n'_qual.txt')"
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: The data is TIS enriched (for LTM & Harritonine)
+      synonyms:
+      - -t
+      - --tis
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Input previous output file, do not read gene file and\nbam file\
+        \ again"
+      synonyms:
+      - -i
+      args: !SimpleFlagArg
+        name: INPUT
+      optional: true
+    - !Flag
+      description: "Gene annotation file format (gtf, bed, gpd, gff,\ndefault: auto)"
+      synonyms:
+      - --geneformat
+      args: !SimpleFlagArg
+        name: GENEFORMAT
+      optional: true
+    - !Flag
+      description: "Input chromosome id mapping table file if annotation\nchr ids\
+        \ are not same as chr ids in bam/fasta files"
+      synonyms:
+      - --chrmap
+      args: !SimpleFlagArg
+        name: CHRMAP
+      optional: true
+    - !Flag
+      description: "Output pdf figure file (default: ribobampath[:-4]+\n'_qual.pdf')"
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: FIGPDFPATH
+      optional: true
+    - !Flag
+      description: "Output offset parameter file (default:\nribobampath[:-4]+ '.para.py')"
+      synonyms:
+      - -r
+      args: !SimpleFlagArg
+        name: PARAPATH
+      optional: true
+    - !Flag
+      description: 'Range of tag length (default: 25,35)'
+      synonyms:
+      - -l
+      args: !SimpleFlagArg
+        name: LENS
+      optional: true
+    - !Flag
+      description: "Position range near start codon or stop codon\n(default: -40,20)"
+      synonyms:
+      - -d
+      args: !SimpleFlagArg
+        name: DIS
+      optional: true
+    - !Flag
+      description: 'Bins for cds profile (default: 20)'
+      synonyms:
+      - --bins
+      args: !SimpleFlagArg
+        name: BINS
+      optional: true
+    - !Flag
+      description: "Do not consider reads with mismatch at position 0 as a\nnew group"
+      synonyms:
+      - --nom0
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Threshold for quality (default: 0.5)'
+      synonyms:
+      - --th
+      args: !SimpleFlagArg
+        name: TH
+      optional: true
+    - !Flag
+      description: 'Max NH value allowed for bam alignments (default: 1)'
+      synonyms:
+      - --maxNH
+      args: !SimpleFlagArg
+        name: MAXNH
+      optional: true
+    - !Flag
+      description: "Min MapQ value required for bam alignments (default:\n1)"
+      synonyms:
+      - --minMapQ
+      args: !SimpleFlagArg
+        name: MINMAPQ
+      optional: true
+    - !Flag
+      description: Use bam secondary alignments
+      synonyms:
+      - --secondary
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Reads are paired end
+      synonyms:
+      - --paired
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Use a color style readable for color blind people\n('#F00078,#00F000,#0078F0')"
+      synonyms:
+      - --colorblind
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "User specified Matplotlib accepted color codes for\nthree frames\
+        \ (default: 'r,g,b')"
+      synonyms:
+      - --colors
+      args: !SimpleFlagArg
+        name: COLORS
+      optional: true
+    - !Flag
+      description: 'Number of processes (default: 1)'
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: NUMPROC
+      optional: true
+    - !Flag
+      description: Increase output verbosity
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: ribotish quality [-h] -b RIBOBAMPATH [-g GENEPATH] [-o OUTPUT]\
+      \ [-t]\n                        [-i INPUT] [--geneformat GENEFORMAT] [--chrmap\
+      \ CHRMAP]\n                        [-f FIGPDFPATH] [-r PARAPATH] [-l LENS] [-d\
+      \ DIS]\n                        [--bins BINS] [--nom0] [--th TH] [--maxNH MAXNH]\n\
+      \                        [--minMapQ MINMAPQ] [--secondary] [--paired]\n    \
+      \                    [--colorblind] [--colors COLORS] [-p NUMPROC] [-v]\n\n\
+      optional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -b RIBOBAMPATH        Riboseq bam file\n  -g GENEPATH           Gene annotation\
+      \ file\n  -o OUTPUT             Output data file (default: ribobampath[:-4]+\n\
+      \                        '_qual.txt')\n  -t, --tis             The data is TIS\
+      \ enriched (for LTM & Harritonine)\n  -i INPUT              Input previous output\
+      \ file, do not read gene file and\n                        bam file again\n\
+      \  --geneformat GENEFORMAT\n                        Gene annotation file format\
+      \ (gtf, bed, gpd, gff,\n                        default: auto)\n  --chrmap CHRMAP\
+      \       Input chromosome id mapping table file if annotation\n             \
+      \           chr ids are not same as chr ids in bam/fasta files\n  -f FIGPDFPATH\
+      \         Output pdf figure file (default: ribobampath[:-4]+\n             \
+      \           '_qual.pdf')\n  -r PARAPATH           Output offset parameter file\
+      \ (default:\n                        ribobampath[:-4]+ '.para.py')\n  -l LENS\
+      \               Range of tag length (default: 25,35)\n  -d DIS             \
+      \   Position range near start codon or stop codon\n                        (default:\
+      \ -40,20)\n  --bins BINS           Bins for cds profile (default: 20)\n  --nom0\
+      \                Do not consider reads with mismatch at position 0 as a\n  \
+      \                      new group\n  --th TH               Threshold for quality\
+      \ (default: 0.5)\n  --maxNH MAXNH         Max NH value allowed for bam alignments\
+      \ (default: 1)\n  --minMapQ MINMAPQ     Min MapQ value required for bam alignments\
+      \ (default:\n                        1)\n  --secondary           Use bam secondary\
+      \ alignments\n  --paired              Reads are paired end\n  --colorblind \
+      \         Use a color style readable for color blind people\n              \
+      \          ('#F00078,#00F000,#0078F0')\n  --colors COLORS       User specified\
+      \ Matplotlib accepted color codes for\n                        three frames\
+      \ (default: 'r,g,b')\n  -p NUMPROC            Number of processes (default:\
+      \ 1)\n  -v, --verbose         Increase output verbosity\n"
+    generated_using: *id002
+  - *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -866,8 +856,9 @@ parent: &id001 !Command
     optional arguments:\n  -h, --help            show this help message and exit\n\
     \  --version             show program's version number and exit\n\nFor command\
     \ line options of each command, type: ribotish COMMAND -h\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -943,4 +934,4 @@ help_text: "usage: ribotish predict [-h] [-t TISBAMPATHS] [-b RIBOBAMPATHS] -g G
   \              Missed bases allowed in reads compatibility check\n             \
   \           (default: 2)\n  -p NUMPROC            Number of processes\n  -v, --verbose\
   \         Increase output verbosity\n"
-generated_using: *id003
+generated_using: *id002

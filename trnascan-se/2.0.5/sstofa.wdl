@@ -2,7 +2,7 @@ version 1.0
 
 task Sstofa {
   input {
-    String sec_struct_file
+    File sec_struct_file
   }
   command <<<
     sstofa \
@@ -10,5 +10,8 @@ task Sstofa {
   >>>
   parameter_meta {
     sec_struct_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

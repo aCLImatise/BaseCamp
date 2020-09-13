@@ -4,4 +4,7 @@ task Seqmt {
   command <<<
     seqmt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

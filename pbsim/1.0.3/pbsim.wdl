@@ -23,22 +23,22 @@ task Pbsim {
   command <<<
     pbsim \
       ~{reference} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="--data-type" false="" data_type} \
-      ~{true="--depth" false="" depth} \
-      ~{true="--length-min" false="" length_min} \
-      ~{true="--length-max" false="" length_max} \
-      ~{true="--accuracy-min" false="" accuracy_min} \
-      ~{true="--accuracy-max" false="" accuracy_max} \
-      ~{true="--difference-ratio" false="" difference_ratio} \
-      ~{true="--seed" false="" seed} \
-      ~{true="--sample-fastq" false="" sample_fast_q} \
-      ~{true="--sample-profile-id" false="" sample_profile_id} \
-      ~{true="--model_qc" false="" model_qc} \
-      ~{true="--length-mean" false="" length_mean} \
-      ~{true="--length-sd" false="" length_sd} \
-      ~{true="--accuracy-mean" false="" accuracy_mean} \
-      ~{true="--accuracy-sd" false="" accuracy_sd}
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (data_type) then "--data-type" else ""} \
+      ~{if (depth) then "--depth" else ""} \
+      ~{if (length_min) then "--length-min" else ""} \
+      ~{if (length_max) then "--length-max" else ""} \
+      ~{if (accuracy_min) then "--accuracy-min" else ""} \
+      ~{if (accuracy_max) then "--accuracy-max" else ""} \
+      ~{if (difference_ratio) then "--difference-ratio" else ""} \
+      ~{if (seed) then "--seed" else ""} \
+      ~{if (sample_fast_q) then "--sample-fastq" else ""} \
+      ~{if (sample_profile_id) then "--sample-profile-id" else ""} \
+      ~{if (model_qc) then "--model_qc" else ""} \
+      ~{if (length_mean) then "--length-mean" else ""} \
+      ~{if (length_sd) then "--length-sd" else ""} \
+      ~{if (accuracy_mean) then "--accuracy-mean" else ""} \
+      ~{if (accuracy_sd) then "--accuracy-sd" else ""}
   >>>
   parameter_meta {
     prefix: "prefix of output files (sd)."
@@ -46,17 +46,20 @@ task Pbsim {
     depth: "depth of coverage (CLR: 20.0, CCS: 50.0)."
     length_min: "minimum length (100)."
     length_max: "maximum length (CLR: 25000, CCS: 2500)."
-    accuracy_min: "minimum accuracy. (CLR: 0.75, CCS: fixed as 0.75). this option can be used only in case of CLR."
-    accuracy_max: "maximum accuracy. (CLR: 1.00, CCS: fixed as 1.00). this option can be used only in case of CLR."
-    difference_ratio: "ratio of differences. substitution:insertion:deletion. each value up to 1000 (CLR: 10:60:30, CCS:6:21:73)."
+    accuracy_min: "minimum accuracy.\\n(CLR: 0.75, CCS: fixed as 0.75).\\nthis option can be used only in case of CLR."
+    accuracy_max: "maximum accuracy.\\n(CLR: 1.00, CCS: fixed as 1.00).\\nthis option can be used only in case of CLR."
+    difference_ratio: "ratio of differences. substitution:insertion:deletion.\\neach value up to 1000 (CLR: 10:60:30, CCS:6:21:73)."
     seed: "for a pseudorandom number generator (Unix time)."
     sample_fast_q: "FASTQ format file to sample."
-    sample_profile_id: "sample-fastq (filtered) profile ID. when using --sample-fastq, profile is stored. 'sample_profile_<ID>.fastq', and 'sample_profile_<ID>.stats' are created. when not using --sample-fastq, profile is re-used. Note that when profile is used, --length-min,max, --accuracy-min,max would be the same as the profile."
+    sample_profile_id: "sample-fastq (filtered) profile ID.\\nwhen using --sample-fastq, profile is stored.\\n'sample_profile_<ID>.fastq', and\\n'sample_profile_<ID>.stats' are created.\\nwhen not using --sample-fastq, profile is re-used.\\nNote that when profile is used, --length-min,max,\\n--accuracy-min,max would be the same as the profile."
     model_qc: "model of quality code."
     length_mean: "mean of length model (CLR: 3000.0, CCS:450.0)."
-    length_sd: "standard deviation of length model. (CLR: 2300.0, CCS: 170.0)."
-    accuracy_mean: "mean of accuracy model. (CLR: 0.78, CCS: fixed as 0.98). this option can be used only in case of CLR."
-    accuracy_sd: "standard deviation of accuracy model. (CLR: 0.02, CCS: fixed as 0.02). this option can be used only in case of CLR."
+    length_sd: "standard deviation of length model.\\n(CLR: 2300.0, CCS: 170.0)."
+    accuracy_mean: "mean of accuracy model.\\n(CLR: 0.78, CCS: fixed as 0.98).\\nthis option can be used only in case of CLR."
+    accuracy_sd: "standard deviation of accuracy model.\\n(CLR: 0.02, CCS: fixed as 0.02).\\nthis option can be used only in case of CLR.\\n"
     reference: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task MetaCluster52 {
   command <<<
     MetaCluster5_2
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

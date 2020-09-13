@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../contigMerDepth_56mer.cwl
 inputs:
-- id: mer_count_file_prefix
+- id: in_mer_count_file_prefix
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: mer_size
+- id: in_mer_size
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: min_depth
+- id: in_min_depth
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 2
-- id: prefix_list_to_hash
+- id: in_prefix_list_to_hash
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: num_threads
+- id: in_num_threads
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: output_prefix
+- id: in_output_prefix
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: contigs_file
+- id: in_contigs_file
   doc: ''
   type: string
   inputBinding:
     position: 6
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - contigMerDepth_56mer

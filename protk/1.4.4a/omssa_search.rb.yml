@@ -1,0 +1,259 @@
+!Command
+command:
+- omssa_search.rb
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: file2.mgf
+  optional: false
+named:
+- !Flag
+  description: Dont skip analyses for which the output file already exists [false]
+  synonyms:
+  - -r
+  - --replace-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: An explicitly named output file.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: out
+  optional: true
+- !Flag
+  description: Number of processing threads to use. Set to 0 to autodetect an appropriate
+    value [1]
+  synonyms:
+  - -n
+  - --threads
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Specify the database to use for this search. Can be a named protk database
+    or the path to a fasta file [sphuman]
+  synonyms:
+  - -d
+  - --database
+  args: !SimpleFlagArg
+    name: dbname
+  optional: true
+- !Flag
+  description: Enzyme [Trypsin]
+  synonyms:
+  - --enzyme
+  args: !SimpleFlagArg
+    name: enz
+  optional: true
+- !Flag
+  description: Variable modifications. These should be provided in a comma separated
+    list
+  synonyms:
+  - --var-mods
+  args: !SimpleFlagArg
+    name: vm
+  optional: true
+- !Flag
+  description: Fixed modifications. These should be provided in a comma separated
+    list
+  synonyms:
+  - --fix-mods
+  args: !SimpleFlagArg
+    name: fm
+  optional: true
+- !Flag
+  description: Instrument [ESI-QUAD-TOF]
+  synonyms:
+  - --instrument
+  args: !SimpleFlagArg
+    name: instrument
+  optional: true
+- !Flag
+  description: Fragment ion mass tolerance units (Da or mmu). [Da]
+  synonyms:
+  - --fragment-ion-tol-units
+  args: !SimpleFlagArg
+    name: tolu
+  optional: true
+- !Flag
+  description: Precursor ion mass tolerance units (ppm or Da). [ppm]
+  synonyms:
+  - --precursor-ion-tol-units
+  args: !SimpleFlagArg
+    name: tolu
+  optional: true
+- !Flag
+  description: Fragment ion mass tolerance (unit dependent). [0.65]
+  synonyms:
+  - -f
+  - --fragment-ion-tol
+  args: !SimpleFlagArg
+    name: tol
+  optional: true
+- !Flag
+  description: Precursor ion mass tolerance. [200]
+  synonyms:
+  - -p
+  - --precursor-ion-tol
+  args: !SimpleFlagArg
+    name: tol
+  optional: true
+- !Flag
+  description: Use monoisotopic or average precursor masses. (monoisotopic or average)
+    [monoisotopic]
+  synonyms:
+  - -a
+  - --search-type
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: Number of missed cleavages allowed [2]
+  synonyms:
+  - -v
+  - --num-missed-cleavages
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Dont respect charges in the input file. Instead impute them by trying
+    various options [false]
+  synonyms:
+  - -q
+  - --respect-charges
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ion series to search
+  synonyms:
+  - --searched-ions
+  args: !SimpleFlagArg
+    name: si
+  optional: true
+- !Flag
+  description: Number of peaks to include in multi-isotope search [0]
+  synonyms:
+  - --num-peaks-for-multi-isotope-search
+  args: !SimpleFlagArg
+    name: np
+  optional: true
+- !Flag
+  description: Expect N-Glycosylation modifications as variable mod in a search or
+    as a parameter when building statistical models [false]
+  synonyms:
+  - -g
+  - --glyco
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Expect Oxidised Methionine modifications as variable mod in a search
+    [false]
+  synonyms:
+  - -m
+  - --methionineo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Expect Carbamidomethyl C modifications as fixed mod in a search [false]
+  synonyms:
+  - -c
+  - --carbamidomethyl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't post process the output to add retention times [true]
+  synonyms:
+  - -R
+  - --no-add-retention-times
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Expect values less than this are considered to be hits [1]
+  synonyms:
+  - --max-hit-expect
+  args: !SimpleFlagArg
+    name: exp
+  optional: true
+- !Flag
+  description: Peak intensity cut-off as a fraction of maximum peak intensity [0.0005]
+  synonyms:
+  - --intensity-cut-off
+  args: !SimpleFlagArg
+    name: co
+  optional: true
+- !Flag
+  description: Specify galaxy index directory, will search for mods file there.
+  synonyms:
+  - --galaxy-index-dir
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: Specify path for additional OMX output (optional).
+  synonyms:
+  - --omx-output
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Send OMSSA stdout to a logfile
+  synonyms:
+  - --logfile
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this screen
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Run an OMSSA msms search on a set of mgf input files.\n\nUsage: omssa_search.rb\
+  \ [options] file1.mgf file2.mgf ...\n    -h, --help                            \
+  \   Display this screen\n    -r, --replace-output                     Dont skip\
+  \ analyses for which the output file already exists [false]\n    -o, --output out\
+  \                         An explicitly named output file.\n    -n, --threads num\
+  \                        Number of processing threads to use. Set to 0 to autodetect\
+  \ an appropriate value [1]\n    -d, --database dbname                    Specify\
+  \ the database to use for this search. Can be a named protk database or the path\
+  \ to a fasta file [sphuman]\n        --enzyme enz                         Enzyme\
+  \ [Trypsin]\n        --var-mods vm                        Variable modifications.\
+  \ These should be provided in a comma separated list\n        --fix-mods fm    \
+  \                    Fixed modifications. These should be provided in a comma separated\
+  \ list\n        --instrument instrument              Instrument [ESI-QUAD-TOF]\n\
+  \        --fragment-ion-tol-units tolu        Fragment ion mass tolerance units\
+  \ (Da or mmu). [Da]\n        --precursor-ion-tol-units tolu       Precursor ion\
+  \ mass tolerance units (ppm or Da). [ppm]\n    -f, --fragment-ion-tol tol      \
+  \         Fragment ion mass tolerance (unit dependent). [0.65]\n    -p, --precursor-ion-tol\
+  \ tol              Precursor ion mass tolerance. [200]\n    -a, --search-type type\
+  \                   Use monoisotopic or average precursor masses. (monoisotopic\
+  \ or average) [monoisotopic]\n    -v, --num-missed-cleavages num           Number\
+  \ of missed cleavages allowed [2]\n    -q, --respect-charges                   \
+  \ Dont respect charges in the input file. Instead impute them by trying various\
+  \ options [false]\n        --searched-ions si                   Ion series to search\n\
+  \        --num-peaks-for-multi-isotope-search np\n                             \
+  \                Number of peaks to include in multi-isotope search [0]\n    -g,\
+  \ --glyco                              Expect N-Glycosylation modifications as variable\
+  \ mod in a search or as a parameter when building statistical models [false]\n \
+  \   -m, --methionineo                        Expect Oxidised Methionine modifications\
+  \ as variable mod in a search [false]\n    -c, --carbamidomethyl               \
+  \     Expect Carbamidomethyl C modifications as fixed mod in a search [false]\n\
+  \    -R, --no-add-retention-times             Don't post process the output to add\
+  \ retention times [true]\n        --max-hit-expect exp                 Expect values\
+  \ less than this are considered to be hits [1]\n        --intensity-cut-off co \
+  \              Peak intensity cut-off as a fraction of maximum peak intensity [0.0005]\n\
+  \        --galaxy-index-dir dir               Specify galaxy index directory, will\
+  \ search for mods file there.\n        --omx-output path                    Specify\
+  \ path for additional OMX output (optional).\n        --logfile path           \
+  \            Send OMSSA stdout to a logfile\n"
+generated_using:
+- --help

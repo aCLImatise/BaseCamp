@@ -4,4 +4,7 @@ task Parsimplify {
   command <<<
     parsimplify
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

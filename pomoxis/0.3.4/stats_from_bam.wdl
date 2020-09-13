@@ -2,31 +2,33 @@ version 1.0
 
 task StatsFromBam {
   input {
+    File? bed
+    String? min_length
     Boolean? all_alignments
-    String? output_alignment_stats
-    String? summary
-    String? threads
-    String? bed
-    Int? m
-    String bam
+    File? output_alignment_stats
+    File? summary
+    Int? threads
   }
   command <<<
     stats_from_bam \
-      ~{bam} \
-      ~{true="--all_alignments" false="" all_alignments} \
+      ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
+      ~{if defined(min_length) then ("--min_length " +  '"' + min_length + '"') else ""} \
+      ~{if (all_alignments) then "--all_alignments" else ""} \
       ~{if defined(output_alignment_stats) then ("--output " +  '"' + output_alignment_stats + '"') else ""} \
       ~{if defined(summary) then ("--summary " +  '"' + summary + '"') else ""} \
-      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    all_alignments: "Include secondary and supplementary alignments. (default: False)"
-    output_alignment_stats: "Output alignment stats to file instead of stdout. (default: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='UTF-8'>)"
-    summary: "Output summary to file instead of stderr. (default: <_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>)"
-    threads: "Number of threads for parallel processing. (default: 1)"
-    bed: ""
-    m: ""
-    bam: "Path to bam file."
+    bed: ".bed file of reference regions to include. (default:\\nNone)"
+    min_length: ""
+    all_alignments: "Include secondary and supplementary alignments.\\n(default: False)"
+    output_alignment_stats: "Output alignment stats to file instead of stdout.\\n(default: <_io.TextIOWrapper name='<stdout>' mode='w'\\nencoding='ANSI_X3.4-1968'>)"
+    summary: "Output summary to file instead of stderr. (default:\\n<_io.TextIOWrapper name='<stderr>' mode='w'\\nencoding='ANSI_X3.4-1968'>)"
+    threads: "Number of threads for parallel processing. (default:\\n1)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_alignment_stats = "${in_output_alignment_stats}"
+    File out_summary = "${in_summary}"
   }
 }

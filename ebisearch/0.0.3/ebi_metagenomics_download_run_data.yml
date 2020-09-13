@@ -1,5 +1,13 @@
-&id001 !Command
-positional: []
+&id002 !Command
+command:
+- ebi_metagenomics
+- download_run_data
+positional:
+- !Positional
+  description: --file PATH  File to export downloaded data
+  position: 0
+  name: get_possible_run_data
+  optional: false
 named:
 - !Flag
   description: Id of a run in EBI metagenomics
@@ -9,31 +17,23 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: Data to download for the run (accessible with get_possible_run_data
+  description: Data to download for the run (accessible with
   synonyms:
   - --data
   args: !SimpleFlagArg
     name: TEXT
   optional: true
-- !Flag
-  description: File to export downloaded data
-  synonyms:
-  - --file
-  args: !SimpleFlagArg
-    name: PATH
-  optional: true
-command:
-- ebi_metagenomics
-- download_run_data
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - ebi_metagenomics
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - ebi_metagenomics
+    - print_possible_run_data
     positional: []
     named:
     - !Flag
@@ -43,11 +43,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    command:
-    - ebi_metagenomics
-    - print_possible_run_data
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -62,6 +60,8 @@ parent: &id002 !Command
       \ exit.\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -75,6 +75,7 @@ parent: &id002 !Command
     \ run data\n  print_possible_run_data  Get possible data for a run\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -86,6 +87,6 @@ version_flag:
 help_text: "Usage: ebi_metagenomics download_run_data [OPTIONS]\n\n  Download data\
   \ for a run\n\nOptions:\n  --run TEXT   Id of a run in EBI metagenomics\n  --data\
   \ TEXT  Data to download for the run (accessible with\n               get_possible_run_data\n\
-  \n  --file PATH  File to export downloaded data\n  --help       Show this message\
+  \  --file PATH  File to export downloaded data\n  --help       Show this message\
   \ and exit.\n"
 generated_using: *id003

@@ -1,26 +1,28 @@
 !Command
+command:
+- RTModel
 positional: []
 named:
 - !Flag
   description: "This is the name of the input file (RT prediction). It is assumed\
     \ that the file type is idXML. Alternatively you can provide a .txt file having\
-    \ a sequence and the corresponding rt per line. (valid formats: 'idXML', 'txt')"
+    \ a sequence and the corresponding rt per line.\n(valid formats: 'idXML', 'txt')"
   synonyms:
   - -in
   args: !SimpleFlagArg
     name: file
   optional: true
 - !Flag
-  description: "Input file with positive examples (peptide separation prediction)\
-    \ (valid formats: 'idXML')"
+  description: "Input file with positive examples (peptide separation prediction)\n\
+    (valid formats: 'idXML')"
   synonyms:
   - -in_positive
   args: !SimpleFlagArg
     name: file
   optional: true
 - !Flag
-  description: "Input file with negative examples (peptide separation prediction)\
-    \ (valid formats: 'idXML')"
+  description: "Input file with negative examples (peptide separation prediction)\n\
+    (valid formats: 'idXML')"
   synonyms:
   - -in_negative
   args: !SimpleFlagArg
@@ -52,7 +54,7 @@ named:
   optional: true
 - !Flag
   description: "The type of the svm (NU_SVR or EPSILON_SVR for RT prediction, automatically\
-    \ set to C_SVC for separation prediction) (default: 'NU_SVR' valid: 'NU_SVR',\
+    \ set\nto C_SVC for separation prediction)\n(default: 'NU_SVR' valid: 'NU_SVR',\
     \ 'NU_SVC', 'EPSILON_SVR', 'C_SVC')"
   synonyms:
   - -svm_type
@@ -90,8 +92,8 @@ named:
     name: type
   optional: true
 - !Flag
-  description: "The degree parameter of the kernel function of the svm (POLY kernel)\
-    \ (default: '1' min: '1')"
+  description: "The degree parameter of the kernel function of the svm (POLY kernel)\n\
+    (default: '1' min: '1')"
   synonyms:
   - -degree
   args: !SimpleFlagArg
@@ -142,8 +144,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: If the step sizes should be interpreted additively (otherwise the actual
-    value is multiplied with the step size to get the new value
+  description: "If the step sizes should be interpreted additively (otherwise the\
+    \ actual value is multiplied\nwith the step size to get the new value"
   synonyms:
   - -additive_cv
   args: !EmptyFlagArg {}
@@ -176,10 +178,9 @@ named:
   - --helphelp
   args: !EmptyFlagArg {}
   optional: true
-command:
-- RTModel
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Shows options
   synonyms:
@@ -188,48 +189,49 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
-help_text: "\nRTModel -- Trains a model for the retention time prediction of peptides\
-  \ from a training set.\nFull documentation: http://www.openms.de/documentation/TOPP_RTModel.html\n\
-  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND May 19 2020, 23:12:02, Revision:\
-  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
-  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
-  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
-  \  RTModel <options>\n\nOptions (mandatory options marked with '*'):\n  -in <file>\
-  \                      This is the name of the input file (RT prediction). It is\
-  \ assumed that the file type is idXML. Alternatively you can provide a .txt file\
-  \ having a sequence and the corresponding rt per line.\n                       \
-  \           (valid formats: 'idXML', 'txt')\n  -in_positive <file>             Input\
-  \ file with positive examples (peptide separation prediction)\n                \
-  \                  (valid formats: 'idXML')\n  -in_negative <file>             Input\
-  \ file with negative examples (peptide separation prediction)\n                \
-  \                  (valid formats: 'idXML')\n  -out <file>*                    Output\
-  \ file: the model in libsvm format (valid formats: 'txt')\n  -out_oligo_params <file>\
-  \        Output file with additional model parameters when using the OLIGO kernel\
-  \ (valid formats: 'paramXML')\n  -out_oligo_trainset <file>      Output file with\
-  \ the used training dataset when using the OLIGO kernel (valid formats: 'txt')\n\
-  \  -svm_type <type>                The type of the svm (NU_SVR or EPSILON_SVR for\
-  \ RT prediction, automatically set\n                                  to C_SVC for\
-  \ separation prediction)\n                                  (default: 'NU_SVR' valid:\
-  \ 'NU_SVR', 'NU_SVC', 'EPSILON_SVR', 'C_SVC')\n  -nu <float>                   \
-  \  The nu parameter [0..1] of the svm (for nu-SVR) (default: '0.5' min: '0.0' max:\
-  \ '1.0')\n  -p <float>                      The epsilon parameter of the svm (for\
-  \ epsilon-SVR) (default: '0.1')\n  -c <float>                      The penalty parameter\
-  \ of the svm (default: '1.0')\n  -kernel_type <type>             The kernel type\
-  \ of the svm (default: 'OLIGO' valid: 'LINEAR', 'RBF', 'POLY', 'OLIGO')\n  -degree\
-  \ <int>                   The degree parameter of the kernel function of the svm\
-  \ (POLY kernel)\n                                  (default: '1' min: '1')\n  -border_length\
-  \ <int>            Length of the POBK (default: '22' min: '1')\n  -max_std <float>\
-  \                Max standard deviation for a peptide to be included (if there are\
-  \ several ones for one peptide string)(median is taken) (default: '10.0' min: '0.0')\n\
-  \  -k_mer_length <int>             K_mer length of the POBK (default: '1' min: '1')\n\
-  \  -sigma <float>                  Sigma of the POBK (default: '5.0')\n  -total_gradient_time\
-  \ <time>     The time (in seconds) of the gradient (only for RT prediction) (default:\
-  \ '1.0' min: '1.0e-05')\n  -first_dim_rt                   If set the model will\
-  \ be built for first_dim_rt\n  -additive_cv                    If the step sizes\
-  \ should be interpreted additively (otherwise the actual value is multiplied\n \
-  \                                 with the step size to get the new value\n    \
-  \                              \n\nParameters for the grid search / cross validation::\n\
-  \  -cv:skip_cv                     Set to enable Cross-Validation or set to true\
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nRTModel -- Trains\
+  \ a model for the retention time prediction of peptides from a training set.\nFull\
+  \ documentation: http://www.openms.de/documentation/TOPP_RTModel.html\nVersion:\
+  \ 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision: HEAD-HASH-NOTFOUND\n\
+  To cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible\
+  \ open-source software platform for mass spectrometry data analysis. Nat Meth. 2016;\
+  \ 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n  RTModel <options>\n\nOptions\
+  \ (mandatory options marked with '*'):\n  -in <file>                      This is\
+  \ the name of the input file (RT prediction). It is assumed that the file type is\
+  \ idXML. Alternatively you can provide a .txt file having a sequence and the corresponding\
+  \ rt per line.\n                                  (valid formats: 'idXML', 'txt')\n\
+  \  -in_positive <file>             Input file with positive examples (peptide separation\
+  \ prediction)\n                                  (valid formats: 'idXML')\n  -in_negative\
+  \ <file>             Input file with negative examples (peptide separation prediction)\n\
+  \                                  (valid formats: 'idXML')\n  -out <file>*    \
+  \                Output file: the model in libsvm format (valid formats: 'txt')\n\
+  \  -out_oligo_params <file>        Output file with additional model parameters\
+  \ when using the OLIGO kernel (valid formats: 'paramXML')\n  -out_oligo_trainset\
+  \ <file>      Output file with the used training dataset when using the OLIGO kernel\
+  \ (valid formats: 'txt')\n  -svm_type <type>                The type of the svm\
+  \ (NU_SVR or EPSILON_SVR for RT prediction, automatically set\n                \
+  \                  to C_SVC for separation prediction)\n                       \
+  \           (default: 'NU_SVR' valid: 'NU_SVR', 'NU_SVC', 'EPSILON_SVR', 'C_SVC')\n\
+  \  -nu <float>                     The nu parameter [0..1] of the svm (for nu-SVR)\
+  \ (default: '0.5' min: '0.0' max: '1.0')\n  -p <float>                      The\
+  \ epsilon parameter of the svm (for epsilon-SVR) (default: '0.1')\n  -c <float>\
+  \                      The penalty parameter of the svm (default: '1.0')\n  -kernel_type\
+  \ <type>             The kernel type of the svm (default: 'OLIGO' valid: 'LINEAR',\
+  \ 'RBF', 'POLY', 'OLIGO')\n  -degree <int>                   The degree parameter\
+  \ of the kernel function of the svm (POLY kernel)\n                            \
+  \      (default: '1' min: '1')\n  -border_length <int>            Length of the\
+  \ POBK (default: '22' min: '1')\n  -max_std <float>                Max standard\
+  \ deviation for a peptide to be included (if there are several ones for one peptide\
+  \ string)(median is taken) (default: '10.0' min: '0.0')\n  -k_mer_length <int> \
+  \            K_mer length of the POBK (default: '1' min: '1')\n  -sigma <float>\
+  \                  Sigma of the POBK (default: '5.0')\n  -total_gradient_time <time>\
+  \     The time (in seconds) of the gradient (only for RT prediction) (default: '1.0'\
+  \ min: '1.0e-05')\n  -first_dim_rt                   If set the model will be built\
+  \ for first_dim_rt\n  -additive_cv                    If the step sizes should be\
+  \ interpreted additively (otherwise the actual value is multiplied\n           \
+  \                       with the step size to get the new value\n              \
+  \                    \n\nParameters for the grid search / cross validation::\n \
+  \ -cv:skip_cv                     Set to enable Cross-Validation or set to true\
   \ if the model should just be trained with 1 set of specified parameters.\n  -cv:number_of_runs\
   \ <int>        Number of runs for the CV (each run creates a new random partition\
   \ of the data) (default: '1' min: '1')\n  -cv:number_of_partitions <int>  Number\

@@ -1,17 +1,20 @@
 version 1.0
 
-task HcaAuthPutV1UserPolicy {
+task HcaAuthPutv1userpolicy {
   input {
-    String? user_id
     String? policy
+    String? user_id
   }
   command <<<
-    hca auth put-v1-user-policy \
-      ~{if defined(user_id) then ("--user-id " +  '"' + user_id + '"') else ""} \
-      ~{if defined(policy) then ("--policy " +  '"' + policy + '"') else ""}
+    hca auth put_v1_user_policy \
+      ~{if defined(policy) then ("--policy " +  '"' + policy + '"') else ""} \
+      ~{if defined(user_id) then ("--user-id " +  '"' + user_id + '"') else ""}
   >>>
   parameter_meta {
-    user_id: "User ID (email)."
     policy: ""
+    user_id: "User ID (email)."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

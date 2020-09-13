@@ -17,4 +17,7 @@ task ArbProto2Xsub {
     xs_header: ""
     type_map: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

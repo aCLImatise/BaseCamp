@@ -4,4 +4,7 @@ task Dnacomp {
   command <<<
     dnacomp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,67 +1,75 @@
 class: CommandLineTool
 id: ../../../preseq_c_curve.cwl
 inputs:
-- id: output
-  doc: 'yield output file (default: stdout) '
-  type: boolean
+- id: in_output
+  doc: 'yield output file (default: stdout)'
+  type: File
   inputBinding:
     prefix: -output
-- id: step
-  doc: 'step size in extrapolations (default: 1e+06) '
+- id: in_step
+  doc: 'step size in extrapolations (default: 1e+06)'
   type: boolean
   inputBinding:
     prefix: -step
-- id: verbose
-  doc: 'print more information '
+- id: in_verbose
+  doc: print more information
   type: boolean
   inputBinding:
     prefix: -verbose
-- id: pe
-  doc: 'input is paired end read file '
+- id: in_pe
+  doc: input is paired end read file
   type: boolean
   inputBinding:
     prefix: -pe
-- id: hist
-  doc: 'input is a text file containing the observed histogram '
+- id: in_hist
+  doc: input is a text file containing the observed histogram
   type: boolean
   inputBinding:
     prefix: -hist
-- id: vals
-  doc: 'input is a text file containing only the observed counts '
+- id: in_vals
+  doc: input is a text file containing only the observed counts
   type: boolean
   inputBinding:
     prefix: -vals
-- id: bam
-  doc: 'input is in BAM format '
+- id: in_bam
+  doc: input is in BAM format
   type: boolean
   inputBinding:
     prefix: -bam
-- id: seg_len
-  doc: 'maximum segment length when merging paired end bam reads  (default: 5000) '
+- id: in_seg_len
+  doc: "maximum segment length when merging paired end bam reads\n(default: 5000)"
   type: boolean
   inputBinding:
     prefix: -seg_len
-- id: seed
-  doc: 'seed for random number generator '
+- id: in_seed
+  doc: seed for random number generator
   type: boolean
   inputBinding:
     prefix: -seed
-- id: about
-  doc: 'print about message '
+- id: in_about
+  doc: print about message
   type: boolean
   inputBinding:
     prefix: -about
-- id: c_curve
+- id: in_c_curve
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sorted_bed_file
+- id: in_sorted_bed_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: 'yield output file (default: stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - preseq

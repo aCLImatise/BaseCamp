@@ -1,12 +1,10 @@
 class: CommandLineTool
 id: ../../../pheniqs.cwl
-inputs:
-- id: mux
-  doc: Multiplex and Demultiplex annotated DNA sequence reads
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pheniqs

@@ -1,40 +1,48 @@
 class: CommandLineTool
 id: ../../../sketchy_survey_popmap.cwl
 inputs:
-- id: ssh
-  doc: Path to sum of shared hashes file to map to population [required]  [required]
+- id: in_ssh
+  doc: "Path to sum of shared hashes file to map to population\n[required]  [required]"
   type: File
   inputBinding:
     prefix: --ssh
-- id: tree
-  doc: 'Path to phylogeny [newick] to use as population map [required] NOTE: This
-    argument is mutually exclusive with arguments: [graph].'
+- id: in_tree
+  doc: "Path to phylogeny [newick] to use as population map\n[required] NOTE: This\
+    \ argument is mutually exclusive with\narguments: [graph]."
   type: File
   inputBinding:
     prefix: --tree
-- id: graph
-  doc: 'Path to a population graph to use as population map [none] NOTE: This argument
-    is mutually exclusive with arguments: [tree].'
+- id: in_graph
+  doc: "Path to a population graph to use as population map\n[none] NOTE: This argument\
+    \ is mutually exclusive with\narguments: [tree]."
   type: File
   inputBinding:
     prefix: --graph
-- id: index
-  doc: Path to lineage index file to use as validation population [required]  [required]
+- id: in_index
+  doc: "Path to lineage index file to use as validation\npopulation [required]  [required]"
   type: File
   inputBinding:
     prefix: --index
-- id: column
-  doc: Column in index file that map the indices from the sum of shared hashes file
-    to the population
-  type: string
+- id: in_column
+  doc: "Column in index file that map the indices from the sum of\nshared hashes file\
+    \ to the population"
+  type: File
   inputBinding:
     prefix: --column
-- id: output
+- id: in_output
   doc: Path to a output GIF [pop.gif]
   type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Path to a output GIF [pop.gif]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - sketchy

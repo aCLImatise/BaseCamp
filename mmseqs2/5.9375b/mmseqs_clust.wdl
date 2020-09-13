@@ -10,17 +10,20 @@ task MmseqsClust {
   }
   command <<<
     mmseqs clust \
-      ~{true="--cluster-mode" false="" cluster_mode} \
-      ~{true="--max-iterations" false="" max_iterations} \
-      ~{true="--similarity-type" false="" similarity_type} \
-      ~{true="--threads" false="" threads} \
-      ~{true="-v" false="" verbosity_level_nothing}
+      ~{if (cluster_mode) then "--cluster-mode" else ""} \
+      ~{if (max_iterations) then "--max-iterations" else ""} \
+      ~{if (similarity_type) then "--similarity-type" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (verbosity_level_nothing) then "-v" else ""}
   >>>
   parameter_meta {
     cluster_mode: "0               0: Setcover, 1: connected component, 2: Greedy clustering by sequence length  3: Greedy clustering by sequence length (low mem)"
     max_iterations: "1000            maximum depth of breadth first search in connected component"
-    similarity_type: "2               type of score used for clustering [1:2]. 1=alignment score. 2=sequence identity "
+    similarity_type: "2               type of score used for clustering [1:2]. 1=alignment score. 2=sequence identity"
     threads: "8               number of cores used for the computation (uses all cores by default)"
     verbosity_level_nothing: "3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

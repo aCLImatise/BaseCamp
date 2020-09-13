@@ -1,20 +1,20 @@
 version 1.0
 
-task HcaMtxTo10x {
+task Hcamtxto10x {
   input {
-    String invalid
-    String var_input
-    Directory directory
+    String in
+    String? out
   }
   command <<<
-    hca-mtx-to-10x \
-      ~{invalid} \
-      ~{var_input} \
-      ~{directory}
+    hca_mtx_to_10x \
+      ~{in} \
+      ~{out}
   >>>
   parameter_meta {
-    invalid: ""
-    var_input: ""
-    directory: ""
+    in: ""
+    out: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

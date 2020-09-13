@@ -1,8 +1,10 @@
 !Command
+command:
+- svviz
 positional:
 - !Positional
-  description: reference fasta file (a .faidx index file will be created if it doesn't
-    exist so you need  write permissions for this directory)
+  description: "reference fasta file (a .faidx index file will be created if it doesn't\
+    \ exist so you need \nwrite permissions for this directory)"
   position: 0
   name: ref
   optional: false
@@ -13,8 +15,8 @@ positional:
   optional: false
 named:
 - !Flag
-  description: sorted, indexed bam file containing reads of interest to plot; can
-    be specified multiple  times to load multiple samples
+  description: "sorted, indexed bam file containing reads of interest to plot; can\
+    \ be specified multiple\ntimes to load multiple samples"
   synonyms:
   - -b
   - --bam
@@ -22,9 +24,9 @@ named:
     name: BAM
   optional: true
 - !Flag
-  description: 'event type: either del[etion], ins[ertion], inv[ersion], mei (mobile
-    element insertion),  tra[nslocation], largedeletion (ldel), breakend (bkend) or
-    batch (for reading variants   from a VCF file in batch mode)'
+  description: "event type: either del[etion], ins[ertion], inv[ersion], mei (mobile\
+    \ element insertion),\ntra[nslocation], largedeletion (ldel), breakend (bkend)\
+    \ or batch (for reading variants\nfrom a VCF file in batch mode)"
   synonyms:
   - -t
   - --type
@@ -32,9 +34,9 @@ named:
     name: TYPE
   optional: true
 - !Flag
-  description: bed or gtf file containing annotations to plot; will be compressed
-    and indexed using  samtools tabix in place if needed (can specify multiple annotations
-    files)
+  description: "bed or gtf file containing annotations to plot; will be compressed\
+    \ and indexed using\nsamtools tabix in place if needed (can specify multiple annotations\
+    \ files)"
   synonyms:
   - -A
   - --annotations
@@ -42,8 +44,8 @@ named:
     name: ANNOTATIONS
   optional: true
 - !Flag
-  description: An additional indexable fasta file specifying insertion sequences (eg
-    mobile element  sequences)
+  description: "An additional indexable fasta file specifying insertion sequences\
+    \ (eg mobile element\nsequences)"
   synonyms:
   - --fasta
   args: !SimpleFlagArg
@@ -58,24 +60,24 @@ named:
     name: MAPQ
   optional: true
 - !Flag
-  description: 'include only read pairs where at least one read end both exceeds PAIR_MAPQ
-    and  falls near the variant being analyzed (default: 0)'
+  description: "include only read pairs where at least one read end both exceeds PAIR_MAPQ\
+    \ and\nfalls near the variant being analyzed (default: 0)"
   synonyms:
   - --pair-min-mapq
   args: !SimpleFlagArg
     name: PAIR_MAPQ
   optional: true
 - !Flag
-  description: 'maximum ratio between best and second-best alignment scores within
-    visualization  region in order to retain read (default: 0.95)'
+  description: "maximum ratio between best and second-best alignment scores within\
+    \ visualization\nregion in order to retain read (default: 0.95)"
   synonyms:
   - --max-multimapping-similarity
   args: !SimpleFlagArg
     name: MAX_SIMILARITY
   optional: true
 - !Flag
-  description: minimum score of the Smith-Waterman alignment against the ref or alt
-    allele in order to be  considered (multiplied by 2)
+  description: "minimum score of the Smith-Waterman alignment against the ref or alt\
+    \ allele in order to be\nconsidered (multiplied by 2)"
   synonyms:
   - -a
   - --aln-quality
@@ -83,50 +85,50 @@ named:
     name: QUALITY
   optional: true
 - !Flag
-  description: 'minimum difference in scores between ref alignment score and alt alignment
-    score  to be assigned to one allele (use an integer to specify a hard score difference  threshold,
-    or a float to specify a score difference relative to the read size;  default:
-    2)'
+  description: "minimum difference in scores between ref alignment score and alt alignment\
+    \ score\nto be assigned to one allele (use an integer to specify a hard score\
+    \ difference\nthreshold, or a float to specify a score difference relative to\
+    \ the read size;\ndefault: 2)"
   synonyms:
   - --aln-score-delta
   args: !SimpleFlagArg
     name: DELTA
   optional: true
 - !Flag
-  description: 'include supplementary alignments (ie, those with the 0x800 bit set
-    in the bam flags);  default: false'
+  description: "include supplementary alignments (ie, those with the 0x800 bit set\
+    \ in the bam flags);\ndefault: false"
   synonyms:
   - --include-supplementary
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'implements some optimizations designed to find exact sequence matches
-    quickly; will substantially increase speed on Illumina data but may result in
-    some inexact results; default: false'
+  description: "implements some optimizations designed to find exact sequence matches\
+    \ quickly;\nwill substantially increase speed on Illumina data but may result\
+    \ in some inexact\nresults; default: false"
   synonyms:
   - --fast
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'use at most this many reads (pairs), sampling randomly if need be,
-    useful  when running in batch mode (default: use all reads)'
+  description: "use at most this many reads (pairs), sampling randomly if need be,\
+    \ useful\nwhen running in batch mode (default: use all reads)"
   synonyms:
   - --sample-reads
   args: !SimpleFlagArg
     name: SAMPLE_READS
   optional: true
 - !Flag
-  description: 'maximum number of reads allowed, totaled across all samples, useful
-    when running in batch  mode (default: unlimited)'
+  description: "maximum number of reads allowed, totaled across all samples, useful\
+    \ when running in batch\nmode (default: unlimited)"
   synonyms:
   - --max-reads
   args: !SimpleFlagArg
     name: MAX_READS
   optional: true
 - !Flag
-  description: 'maximum event size allowed, totaled across all chromosome parts in
-    bp; if either the ref  allele or alt allele exceeds this size, it will be skipped
-    (default: unlimited)'
+  description: "maximum event size allowed, totaled across all chromosome parts in\
+    \ bp; if either the ref\nallele or alt allele exceeds this size, it will be skipped\
+    \ (default: unlimited)"
   synonyms:
   - --max-size
   args: !SimpleFlagArg
@@ -134,7 +136,7 @@ named:
   optional: true
 - !Flag
   description: "deletion size above which the deletion is analyzed in breakend mode\
-    \ (default: don't  convert to breakend mode)"
+    \ (default: don't\nconvert to breakend mode)"
   synonyms:
   - --max-deletion-size
   args: !SimpleFlagArg
@@ -177,10 +179,10 @@ named:
     name: VERBOSE
   optional: true
 - !Flag
-  description: export view to file; in single variant-mode, the exported file format
-    is determined from  the filename extension unless --format is specified; in batch
-    mode, this should be the name  of a directory into which to save the files (use
-    --format to set format); setting --export  automatically sets --no-web
+  description: "export view to file; in single variant-mode, the exported file format\
+    \ is determined from\nthe filename extension unless --format is specified; in\
+    \ batch mode, this should be the name\nof a directory into which to save the files\
+    \ (use --format to set format); setting --export\nautomatically sets --no-web"
   synonyms:
   - -e
   - --export
@@ -188,8 +190,8 @@ named:
     name: EXPORT
   optional: true
 - !Flag
-  description: file export format, either svg, png or  pdf; by default, this is pdf
-    (batch mode) or automatically identified from the file  extension of --export
+  description: "file export format, either svg, png or\npdf; by default, this is pdf\
+    \ (batch mode) or automatically identified from the file\nextension of --export"
   synonyms:
   - --format
   args: !SimpleFlagArg
@@ -203,31 +205,31 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'which program should be used to convert the output into PDF or PNG;
-    choose from [webkitToPDF,  librsvg, inkscape] (default: auto)'
+  description: "which program should be used to convert the output into PDF or PNG;\
+    \ choose from [webkitToPDF,\nlibrsvg, inkscape] (default: auto)"
   synonyms:
   - --converter
   args: !SimpleFlagArg
     name: CONVERTER
   optional: true
 - !Flag
-  description: Reads are shown with thicker lines, potentially overlapping one another,
-    but increasing  contrast when zoomed out
+  description: "Reads are shown with thicker lines, potentially overlapping one another,\
+    \ but increasing\ncontrast when zoomed out"
   synonyms:
   - --thicker-lines
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Number of additional nucleotides of genomic context to either side
-    of the visualization  (useful for showing nearby annotations)
+  description: "Number of additional nucleotides of genomic context to either side\
+    \ of the visualization\n(useful for showing nearby annotations)"
   synonyms:
   - --context
   args: !SimpleFlagArg
     name: CONTEXT
   optional: true
 - !Flag
-  description: 'Show reads in regions flanking the structural variant; these reads
-    do not  contribute to the ref or alt allele read counts (default: false)'
+  description: "Show reads in regions flanking the structural variant; these reads\
+    \ do not\ncontribute to the ref or alt allele read counts (default: false)"
   synonyms:
   - -f
   - --flanks
@@ -240,9 +242,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: generate dotplots to show sequence homology within the aligned region;
-    requires some  additional optional python libraries (scipy and PIL) and may take
-    several minutes for  longer variants
+  description: "generate dotplots to show sequence homology within the aligned region;\
+    \ requires some\nadditional optional python libraries (scipy and PIL) and may\
+    \ take several minutes for\nlonger variants"
   synonyms:
   - --dotplots
   args: !EmptyFlagArg {}
@@ -261,17 +263,17 @@ named:
     name: SUMMARY_FILE
   optional: true
 - !Flag
-  description: lowers the minimum alignment quality, showing reads even when breakpoints
-    are only  approximately correct, or reads of lower quality (eg PacBio); and requires
-    a larger  difference in alignment scores in order to assign a read to an allele
+  description: "lowers the minimum alignment quality, showing reads even when breakpoints\
+    \ are only\napproximately correct, or reads of lower quality (eg PacBio); and\
+    \ requires a larger\ndifference in alignment scores in order to assign a read\
+    \ to an allele"
   synonyms:
   - --lenient
   args: !EmptyFlagArg {}
   optional: true
-command:
-- svviz
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

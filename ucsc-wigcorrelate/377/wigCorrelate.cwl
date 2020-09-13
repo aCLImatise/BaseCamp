@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../wigCorrelate.cwl
 inputs:
-- id: clamp_max
-  doc: '- values larger than this are clipped to this value'
+- id: in_not_valid_option
+  doc: not a valid option
   type: string
   inputBinding:
-    prefix: -clampMax
-- id: n_do_twig
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+    prefix: -h
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - wigCorrelate

@@ -1,14 +1,14 @@
 version 1.0
 
-task RsemTbam2gbam {
+task Rsemtbam2gbam {
   input {
-    String? p
+    Int? p
     String reference_name
     String unsorted_transcript_bam_input
     String genome_bam_output
   }
   command <<<
-    rsem-tbam2gbam \
+    rsem_tbam2gbam \
       ~{reference_name} \
       ~{unsorted_transcript_bam_input} \
       ~{genome_bam_output} \
@@ -19,5 +19,8 @@ task RsemTbam2gbam {
     reference_name: ""
     unsorted_transcript_bam_input: ""
     genome_bam_output: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

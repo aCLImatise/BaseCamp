@@ -1,17 +1,59 @@
-&id003 !Command
-positional: []
+&id002 !Command
+command:
+- pauvre
+- synplot
+positional:
+- !Positional
+  description: --center_on CENTER_ON
+  position: 0
+  name: contained.
+  optional: false
+- !Positional
+  description: --fileform {png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff}
+    [{png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff} ...]
+  position: 0
+  name: higher
+  optional: false
 named:
 - !Flag
-  description: The input filepath. for the gff annotation to plot. Individual filepaths
-    separated by spaces. For example, --gff_paths sp1.gff sp2.gff sp3.gff
+  description: Do not output warnings to stderr
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The directory where all the fasta alignments are
+  synonyms:
+  - --aln_dir
+  args: !SimpleFlagArg
+    name: aln_dir
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --center_on
+  args: !SimpleFlagArg
+    name: COI
+  optional: true
+- !Flag
+  description: Change the dpi from the default 600 if you need it
+  synonyms:
+  - --dpi
+  args: !SimpleFlagArg
+    name: dpi
+  optional: true
+- !Flag
+  description: "The input filepath. for the gff annotation to plot.\nIndividual filepaths\
+    \ separated by spaces. For example,\n--gff_paths sp1.gff sp2.gff sp3.gff"
   synonyms:
   - --gff_paths
   args: !RepeatFlagArg
     name: gff_paths
   optional: true
 - !Flag
-  description: In case the gff names and sequence names don't match, change the labels
-    that will appear over the text.
+  description: "In case the gff names and sequence names don't match,\nchange the\
+    \ labels that will appear over the text."
   synonyms:
   - --gff_labels
   args: !RepeatFlagArg
@@ -24,17 +66,17 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: If selected, this doesn't plot the optimum arrangement of things as
-    they are input into gff_paths. Instead, it uses the first gff file as the top-most
-    sequence in the plot, and reorganizes the remaining gff files to minimize the
-    number of intersections.
+  description: "If selected, this doesn't plot the optimum arrangement\nof things\
+    \ as they are input into gff_paths. Instead,\nit uses the first gff file as the\
+    \ top-most sequence in\nthe plot, and reorganizes the remaining gff files to\n\
+    minimize the number of intersections."
   synonyms:
   - --optimum_order
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Specify a base name for the output file(s). The input file base name
-    is the default.
+  description: "Specify a base name for the output file(s). The input\nfile base name\
+    \ is the default."
   synonyms:
   - -o
   - --output-basename
@@ -42,66 +84,45 @@ named:
     name: BASENAME
   optional: true
 - !Flag
-  description: 'Enter the dimensions (arbitrary units) to plot the figure. For example
-    a figure that is seven times wider than tall is: --ratio 7 1'
+  description: "Enter the dimensions (arbitrary units) to plot the\nfigure. For example\
+    \ a figure that is seven times wider\nthan tall is: --ratio 7 1"
   synonyms:
   - --ratio
   args: !RepeatFlagArg
     name: RATIO
   optional: true
 - !Flag
-  description: Put an additional copy of the first gff file on the bottom of the plot
-    for comparison.
+  description: "Put an additional copy of the first gff file on the\nbottom of the\
+    \ plot for comparison."
   synonyms:
   - --sandwich
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Minimizes the number of intersections but only selects combos where
-    the first gene in each sequence is aligned.
+  description: "Minimizes the number of intersections but only selects\ncombos where\
+    \ the first gene in each sequence is\naligned."
   synonyms:
   - --start_with_aligned_genes
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Performs some internal corrections if the gff annotation includes the
-    stop codons in the coding sequences.
+  description: "Performs some internal corrections if the gff\nannotation includes\
+    \ the stop codons in the coding\nsequences."
   synonyms:
   - --stop_codons
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Specify this option if you DON'T want a transparent background. Default
-    is on.
+  description: "Specify this option if you DON'T want a transparent\nbackground. Default\
+    \ is on.\n"
   synonyms:
   - -T
   - --transparent
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -q
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --aln_dir
-  args: !SimpleFlagArg
-    name: aln_dir
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --center_on
-  args: !SimpleFlagArg
-    name: CENTER_ON
-  optional: true
-command:
-- pauvre
-- synplot
 parent: &id001 !Command
+  command:
+  - pauvre
   positional: []
   named:
   - !Flag
@@ -110,164 +131,12 @@ parent: &id001 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - pauvre
   parent:
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Do not output warnings to stderr
-      synonyms:
-      - -q
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: The fasta sequence to observe. Use the header name of the fasta
-        file without the '>' character
-      synonyms:
-      - -c
-      - --chromosomeid
-      args: !SimpleFlagArg
-        name: Chr
-      optional: true
-    - !Flag
-      description: Change the dpi from the default 600 if you need it higher
-      synonyms:
-      - --dpi
-      args: !SimpleFlagArg
-        name: dpi
-      optional: true
-    - !Flag
-      description: Which output format would you like? Def.=png
-      synonyms:
-      - --fileform
-      args: !RepeatFlagArg
-        name: STRING
-      optional: true
-    - !Flag
-      description: Turn off time stamps in the filename output.
-      synonyms:
-      - --no_timestamp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Specify a base name for the output file( s). The input file base
-        name is the default.
-      synonyms:
-      - -o
-      - --output-base-name
-      args: !SimpleFlagArg
-        name: BASENAME
-      optional: true
-    - !Flag
-      description: Set an explicit filepath for the output. Only do this if you have
-        selected one output type.
-      synonyms:
-      - --path
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    - !Flag
-      description: 'Write strings here to select what to plot. The format for each
-        track is: <type>:<path>:<style>:<options> To plot the reference, the format
-        is: ref:<style>:<options> Surround each track string with double quotes and
-        a space between subsequent strings. "bam:mybam.bam:depth" "ref:colorful"'
-      synonyms:
-      - -p
-      - --plot_commands
-      args: !RepeatFlagArg
-        name: CMD
-      optional: true
-    - !Flag
-      description: 'Enter the dimensions (arbitrary units) to plot the figure. For
-        example a figure that is seven times wider than tall is: --ratio 7 1'
-      synonyms:
-      - --ratio
-      args: !RepeatFlagArg
-        name: RATIO
-      optional: true
-    - !Flag
-      description: The reference fasta file.
-      synonyms:
-      - -r
-      - --reference
-      args: !SimpleFlagArg
-        name: REF
-      optional: true
-    - !Flag
-      description: The start position to observe on the fasta file. Uses 1-based indexing.
-      synonyms:
-      - --start
-      args: !SimpleFlagArg
-        name: START
-      optional: true
-    - !Flag
-      description: The stop position to observe on the fasta file. Uses 1-based indexing.
-      synonyms:
-      - --stop
-      args: !SimpleFlagArg
-        name: STOP
-      optional: true
-    - !Flag
-      description: Specify this option if you DON'T want a transparent background.
-        Default is on.
-      synonyms:
-      - -T
-      - --transparent
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - pauvre
-    - browser
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pauvre browser [-h] [-q] [-c Chr] [--dpi dpi]\n           \
-      \           [--fileform STRING [STRING ...]] [--no_timestamp]\n            \
-      \          [-o BASENAME] [--path PATH] [-p CMD [CMD ...]]\n                \
-      \      [--ratio RATIO [RATIO ...]] [-r REF] [--start START]\n              \
-      \        [--stop STOP] [-T]\n\noptional arguments:\n  -h, --help           \
-      \ show this help message and exit\n  -q, --quiet           Do not output warnings\
-      \ to stderr\n  -c Chr, --chromosomeid Chr\n                        The fasta\
-      \ sequence to observe. Use the header name of\n                        the fasta\
-      \ file without the '>' character\n  --dpi dpi             Change the dpi from\
-      \ the default 600 if you need it\n                        higher\n  --fileform\
-      \ STRING [STRING ...]\n                        Which output format would you\
-      \ like? Def.=png\n  --no_timestamp        Turn off time stamps in the filename\
-      \ output.\n  -o BASENAME, --output-base-name BASENAME\n                    \
-      \    Specify a base name for the output file( s). The input\n              \
-      \          file base name is the default.\n  --path PATH           Set an explicit\
-      \ filepath for the output. Only do this\n                        if you have\
-      \ selected one output type.\n  -p CMD [CMD ...], --plot_commands CMD [CMD ...]\n\
-      \                        Write strings here to select what to plot. The format\n\
-      \                        for each track is: <type>:<path>:<style>:<options>\
-      \ To\n                        plot the reference, the format is:\n         \
-      \               ref:<style>:<options> Surround each track string with\n    \
-      \                    double quotes and a space between subsequent strings.\n\
-      \                        \"bam:mybam.bam:depth\" \"ref:colorful\"\n  --ratio\
-      \ RATIO [RATIO ...]\n                        Enter the dimensions (arbitrary\
-      \ units) to plot the\n                        figure. For example a figure that\
-      \ is seven times wider\n                        than tall is: --ratio 7 1\n\
-      \  -r REF, --reference REF\n                        The reference fasta file.\n\
-      \  --start START         The start position to observe on the fasta file. Uses\n\
-      \                        1-based indexing.\n  --stop STOP           The stop\
-      \ position to observe on the fasta file. Uses\n                        1-based\
-      \ indexing.\n  -T, --transparent     Specify this option if you DON'T want a\
-      \ transparent\n                        background. Default is on.\n"
-    generated_using: &id002
-    - --help
-  - !Command
+    - stats
     positional: []
     named:
     - !Flag
@@ -276,197 +145,6 @@ parent: &id001 !Command
       - -q
       - --quiet
       args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Change the dpi from the default 600 if you need it higher
-      synonyms:
-      - --dpi
-      args: !SimpleFlagArg
-        name: dpi
-      optional: true
-    - !Flag
-      description: Which output format would you like? Def.=png
-      synonyms:
-      - --fileform
-      args: !RepeatFlagArg
-        name: STRING
-      optional: true
-    - !Flag
-      description: A tab-separated file with a header row of column names.
-      synonyms:
-      - -i
-      - --input_file
-      args: !SimpleFlagArg
-        name: INPUT_FILE
-      optional: true
-    - !Flag
-      description: The column name of the data to plot on the x-axis
-      synonyms:
-      - --xcol
-      args: !SimpleFlagArg
-        name: XCOL
-      optional: true
-    - !Flag
-      description: The column name of the data to plot on the y-axis
-      synonyms:
-      - --ycol
-      args: !SimpleFlagArg
-        name: YCOL
-      optional: true
-    - !Flag
-      description: Specify this option if you don't want a transparent background.
-        Default is on.
-      synonyms:
-      - -n
-      - --no_transparent
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Turn off time stamps in the filename output.
-      synonyms:
-      - --no_timestamp
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Specify a base name for the output file(s). The input file base
-        name is the default.
-      synonyms:
-      - -o
-      - --output_base_name
-      args: !SimpleFlagArg
-        name: OUTPUT_BASE_NAME
-      optional: true
-    - !Flag
-      description: Sets the maximum viewing area in the length dimension.
-      synonyms:
-      - --plot_max_y
-      args: !SimpleFlagArg
-        name: PLOT_MAX_Y
-      optional: true
-    - !Flag
-      description: Sets the maximum viewing area in the quality dimension.
-      synonyms:
-      - --plot_max_x
-      args: !SimpleFlagArg
-        name: PLOT_MAX_X
-      optional: true
-    - !Flag
-      description: Sets the minimum viewing area in the length dimension. Default
-        value = 0
-      synonyms:
-      - --plot_min_y
-      args: !SimpleFlagArg
-        name: PLOT_MIN_Y
-      optional: true
-    - !Flag
-      description: Sets the minimum viewing area in the quality dimension. Default
-        value = 0
-      synonyms:
-      - --plot_min_x
-      args: !SimpleFlagArg
-        name: PLOT_MIN_X
-      optional: true
-    - !Flag
-      description: changes the hexmap into a square map quantized by ints.
-      synonyms:
-      - --square
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: This sets the title for the whole plot. Use --title "Crustacean's
-        DNA read quality" if you need single quote or apostrophe inside title.
-      synonyms:
-      - -t
-      - --title
-      args: !SimpleFlagArg
-        name: TITLE
-      optional: true
-    - !Flag
-      description: This sets the bin size to use for length.
-      synonyms:
-      - --ybin
-      args: !SimpleFlagArg
-        name: YBIN
-      optional: true
-    - !Flag
-      description: This sets the bin size to use for quality
-      synonyms:
-      - --xbin
-      args: !SimpleFlagArg
-        name: XBIN
-      optional: true
-    - !Flag
-      description: Add Y-axes to both marginal histograms.
-      synonyms:
-      - --add-yaxes
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - pauvre
-    - custommargin
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: pauvre custommargin [-h] [-q] [--dpi dpi]\n               \
-      \            [--fileform STRING [STRING ...]] [-i INPUT_FILE]\n            \
-      \               [--xcol XCOL] [--ycol YCOL] [-n] [--no_timestamp]\n        \
-      \                   [-o OUTPUT_BASE_NAME] [--plot_max_y PLOT_MAX_Y]\n      \
-      \                     [--plot_max_x PLOT_MAX_X] [--plot_min_y PLOT_MIN_Y]\n\
-      \                           [--plot_min_x PLOT_MIN_X] [--square] [-t TITLE]\n\
-      \                           [--ybin YBIN] [--xbin XBIN] [--add-yaxes]\n\noptional\
-      \ arguments:\n  -h, --help            show this help message and exit\n  -q,\
-      \ --quiet           Do not output warnings to stderr\n  --dpi dpi          \
-      \   Change the dpi from the default 600 if you need it\n                   \
-      \     higher\n  --fileform STRING [STRING ...]\n                        Which\
-      \ output format would you like? Def.=png\n  -i INPUT_FILE, --input_file INPUT_FILE\n\
-      \                        A tab-separated file with a header row of column\n\
-      \                        names.\n  --xcol XCOL           The column name of\
-      \ the data to plot on the x-axis\n  --ycol YCOL           The column name of\
-      \ the data to plot on the y-axis\n  -n, --no_transparent  Specify this option\
-      \ if you don't want a transparent\n                        background. Default\
-      \ is on.\n  --no_timestamp        Turn off time stamps in the filename output.\n\
-      \  -o OUTPUT_BASE_NAME, --output_base_name OUTPUT_BASE_NAME\n              \
-      \          Specify a base name for the output file(s). The input\n         \
-      \               file base name is the default.\n  --plot_max_y PLOT_MAX_Y\n\
-      \                        Sets the maximum viewing area in the length dimension.\n\
-      \  --plot_max_x PLOT_MAX_X\n                        Sets the maximum viewing\
-      \ area in the quality\n                        dimension.\n  --plot_min_y PLOT_MIN_Y\n\
-      \                        Sets the minimum viewing area in the length dimension.\n\
-      \                        Default value = 0\n  --plot_min_x PLOT_MIN_X\n    \
-      \                    Sets the minimum viewing area in the quality\n        \
-      \                dimension. Default value = 0\n  --square              changes\
-      \ the hexmap into a square map quantized by\n                        ints.\n\
-      \  -t TITLE, --title TITLE\n                        This sets the title for\
-      \ the whole plot. Use --title\n                        \"Crustacean's DNA read\
-      \ quality\" if you need single\n                        quote or apostrophe\
-      \ inside title.\n  --ybin YBIN           This sets the bin size to use for length.\n\
-      \  --xbin XBIN           This sets the bin size to use for quality\n  --add-yaxes\
-      \           Add Y-axes to both marginal histograms.\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Do not output warnings to stderr
-      synonyms:
-      - -q
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Change the dpi from the default 600 if you need it higher
-      synonyms:
-      - --dpi
-      args: !SimpleFlagArg
-        name: dpi
       optional: true
     - !Flag
       description: The input FASTQ file.
@@ -475,6 +153,94 @@ parent: &id001 !Command
       - --fastq
       args: !SimpleFlagArg
         name: FASTQ
+      optional: true
+    - !Flag
+      description: "Make a histogram of the read lengths and saves it to a\nnew file"
+      synonyms:
+      - -H
+      - --histogram
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: This sets the max read length filter reads.
+      synonyms:
+      - --filt_maxlen
+      args: !SimpleFlagArg
+        name: FILT_MAXLEN
+      optional: true
+    - !Flag
+      description: This sets the max mean read quality to filter reads.
+      synonyms:
+      - --filt_maxqual
+      args: !SimpleFlagArg
+        name: FILT_MAXQUAL
+      optional: true
+    - !Flag
+      description: This sets the min read length to filter reads.
+      synonyms:
+      - --filt_minlen
+      args: !SimpleFlagArg
+        name: FILT_MINLEN
+      optional: true
+    - !Flag
+      description: "This sets the min mean read quality to filter reads.\n"
+      synonyms:
+      - --filt_minqual
+      args: !SimpleFlagArg
+        name: FILT_MINQUAL
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pauvre stats [-h] [-q] [-f FASTQ] [-H] [--filt_maxlen FILT_MAXLEN]\n\
+      \                    [--filt_maxqual FILT_MAXQUAL] [--filt_minlen FILT_MINLEN]\n\
+      \                    [--filt_minqual FILT_MINQUAL]\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  -q, --quiet    \
+      \       Do not output warnings to stderr\n  -f FASTQ, --fastq FASTQ\n      \
+      \                  The input FASTQ file.\n  -H, --histogram       Make a histogram\
+      \ of the read lengths and saves it to a\n                        new file\n\
+      \  --filt_maxlen FILT_MAXLEN\n                        This sets the max read\
+      \ length filter reads.\n  --filt_maxqual FILT_MAXQUAL\n                    \
+      \    This sets the max mean read quality to filter reads.\n  --filt_minlen FILT_MINLEN\n\
+      \                        This sets the min read length to filter reads.\n  --filt_minqual\
+      \ FILT_MINQUAL\n                        This sets the min mean read quality\
+      \ to filter reads.\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - pauvre
+    - marginplot
+    positional:
+    - !Positional
+      description: -f FASTQ, --fastq FASTQ
+      position: 0
+      name: higher
+      optional: false
+    named:
+    - !Flag
+      description: Do not output warnings to stderr
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Change the dpi from the default 600 if you need it
+      synonyms:
+      - --dpi
+      args: !SimpleFlagArg
+        name: dpi
       optional: true
     - !Flag
       description: Which output format would you like? Def.=png
@@ -512,19 +278,19 @@ parent: &id001 !Command
         name: FILT_MINQUAL
       optional: true
     - !Flag
-      description: "Pass the filename of a data matrix if you would like to plot read\
-        \ length versus number of kmers in that read. The data matrix is a tab-separated\
-        \ text file with columns \"id length numks and kmers\", where: <id> = read\
-        \ id <length> = the length of the read <numks> = the number of canonical kmers\
-        \ in the read <kmers> = a list representation of kmers ie ['GAT', 'GTA']"
+      description: "Pass the filename of a data matrix if you would like\nto plot\
+        \ read length versus number of kmers in that\nread. The data matrix is a tab-separated\
+        \ text file\nwith columns \"id length numks and kmers\", where: <id>\n= read\
+        \ id <length> = the length of the read <numks> =\nthe number of canonical\
+        \ kmers in the read <kmers> = a\nlist representation of kmers ie ['GAT', 'GTA']"
       synonyms:
       - --kmerdf
       args: !SimpleFlagArg
         name: KMERDF
       optional: true
     - !Flag
-      description: Specify this option if you don't want a transparent background.
-        Default is on.
+      description: "Specify this option if you don't want a transparent\nbackground.\
+        \ Default is on."
       synonyms:
       - -n
       - --no_transparent
@@ -537,8 +303,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Specify a base name for the output file(s). The input file base
-        name is the default.
+      description: "Specify a base name for the output file(s). The input\nfile base\
+        \ name is the default."
       synonyms:
       - -o
       - --output_base_name
@@ -553,7 +319,7 @@ parent: &id001 !Command
         name: PLOT_MAXLEN
       optional: true
     - !Flag
-      description: Sets the maximum viewing area in the quality dimension.
+      description: "Sets the maximum viewing area in the quality\ndimension."
       synonyms:
       - --plot_maxqual
       args: !SimpleFlagArg
@@ -567,7 +333,7 @@ parent: &id001 !Command
         name: PLOT_MINLEN
       optional: true
     - !Flag
-      description: Sets the minimum viewing area in the quality dimension.
+      description: "Sets the minimum viewing area in the quality\ndimension."
       synonyms:
       - --plot_minqual
       args: !SimpleFlagArg
@@ -588,8 +354,8 @@ parent: &id001 !Command
         name: QUALBIN
       optional: true
     - !Flag
-      description: This sets the title for the whole plot. Use --title "Crustacean's
-        DNA read quality" if you need single quote or apostrophe inside title.
+      description: "This sets the title for the whole plot. Use --title\n\"Crustacean's\
+        \ DNA read quality\" if you need single\nquote or apostrophe inside title."
       synonyms:
       - -t
       - --title
@@ -603,11 +369,16 @@ parent: &id001 !Command
       - --add-yaxes
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - pauvre
-    - marginplot
+    - !Flag
+      description: ''
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: FASTQ
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -662,9 +433,17 @@ parent: &id001 !Command
       \ --title\n                        \"Crustacean's DNA read quality\" if you\
       \ need single\n                        quote or apostrophe inside title.\n \
       \ -y, --add-yaxes       Add Y-axes to both marginal histograms.\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
-    positional: []
+    command:
+    - pauvre
+    - redwood
+    positional:
+    - !Positional
+      description: --fileform STRING [STRING ...]
+      position: 0
+      name: higher
+      optional: false
     named:
     - !Flag
       description: Do not output warnings to stderr
@@ -674,30 +453,23 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: "[{main,rnaseq} ...], --doubled {main,rnaseq} [{main,rnaseq} ...]\
-        \ If your fasta file was doubled to map circularly, use this flag or you may\
-        \ encounter plotting errors. Accepts multiple arguments. 'main' is for the\
-        \ sam file passed with --sam, 'rnaseq' is for the sam file passed with --rnaseq"
+      description: "[{main,rnaseq} ...], --doubled {main,rnaseq} [{main,rnaseq} ...]\n\
+        If your fasta file was doubled to map circularly, use\nthis flag or you may\
+        \ encounter plotting errors.\nAccepts multiple arguments. 'main' is for the\
+        \ sam file\npassed with --sam, 'rnaseq' is for the sam file passed\nwith --rnaseq"
       synonyms:
       - -d
       args: !ChoiceFlagArg
         choices: !!set
-          ? main
           ? rnaseq
+          ? main
       optional: true
     - !Flag
-      description: Change the dpi from the default 600 if you need it higher
+      description: Change the dpi from the default 600 if you need it
       synonyms:
       - --dpi
       args: !SimpleFlagArg
         name: dpi
-      optional: true
-    - !Flag
-      description: Which output format would you like? Def.=png
-      synonyms:
-      - --fileform
-      args: !RepeatFlagArg
-        name: STRING
       optional: true
     - !Flag
       description: The input filepath for the gff annotation to plot
@@ -707,16 +479,16 @@ parent: &id001 !Command
         name: gff
       optional: true
     - !Flag
-      description: Interlace the reads so the pileup plot looks better. Doesn't work
-        currently
+      description: "Interlace the reads so the pileup plot looks better.\nDoesn't\
+        \ work currently"
       synonyms:
       - -I
       - --interlace
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: invert the image so that it looks better on a dark background.
-        DOESN'T DO ANYTHING.
+      description: "invert the image so that it looks better on a dark\nbackground.\
+        \ DOESN'T DO ANYTHING."
       synonyms:
       - -i
       - --invert
@@ -730,10 +502,10 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: The input filepath for the bam file to plot. Ideally was plotted
-        with a fasta file that is two copies of the mitochondrial genome concatenated.
-        This should be long reads (ONT, PB) and will be displayed in the interior
-        of the redwood plot.
+      description: "The input filepath for the bam file to plot. Ideally\nwas plotted\
+        \ with a fasta file that is two copies of\nthe mitochondrial genome concatenated.\
+        \ This should be\nlong reads (ONT, PB) and will be displayed in the\ninterior\
+        \ of the redwood plot."
       synonyms:
       - -M
       - --main_bam
@@ -747,8 +519,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Specify a base name for the output file(s). The input file base
-        name is the default.
+      description: "Specify a base name for the output file(s). The input\nfile base\
+        \ name is the default."
       synonyms:
       - -o
       - --output-base-name
@@ -771,26 +543,27 @@ parent: &id001 !Command
         name: rnabam
       optional: true
     - !Flag
-      description: 'This determines where the shortest of the filtered reads will
-        appear on the redwood plot: on the outside or on the inside? The default option
-        puts the longest reads on the outside and the shortest reads on the inside.'
+      description: "This determines where the shortest of the filtered\nreads will\
+        \ appear on the redwood plot: on the outside\nor on the inside? The default\
+        \ option puts the longest\nreads on the outside and the shortest reads on\
+        \ the\ninside."
       synonyms:
       - --small_start
       args: !ChoiceFlagArg
         choices: !!set
-          ? inside
           ? outside
+          ? inside
       optional: true
     - !Flag
-      description: What value to use to sort the order in which the reads are plotted?
+      description: "What value to use to sort the order in which the reads\nare plotted?"
       synonyms:
       - --sort
       args: !ChoiceFlagArg
         choices: !!set
-          ? MAPLEN
-          ? TRULEN
           ? POS
+          ? TRULEN
           ? ALNLEN
+          ? MAPLEN
       optional: true
     - !Flag
       description: Specify control for the number of ticks.
@@ -800,18 +573,16 @@ parent: &id001 !Command
         name: TICKS
       optional: true
     - !Flag
-      description: Specify this option if you DON'T want a transparent background.
-        Default is on.
+      description: "Specify this option if you DON'T want a transparent\nbackground.\
+        \ Default is on.\n"
       synonyms:
       - -T
       - --transparent
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - pauvre
-    - redwood
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -864,9 +635,22 @@ parent: &id001 !Command
       \                 Specify control for the number of ticks.\n  -T, --transparent\
       \     Specify this option if you DON'T want a transparent\n                \
       \        background. Default is on.\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
-    positional: []
+    command:
+    - pauvre
+    - custommargin
+    positional:
+    - !Positional
+      description: --fileform STRING [STRING ...]
+      position: 0
+      name: higher
+      optional: false
+    - !Positional
+      description: -t TITLE, --title TITLE
+      position: 0
+      name: ints.
+      optional: false
     named:
     - !Flag
       description: Do not output warnings to stderr
@@ -876,53 +660,116 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: The input FASTQ file.
+      description: Change the dpi from the default 600 if you need it
       synonyms:
-      - -f
-      - --fastq
+      - --dpi
       args: !SimpleFlagArg
-        name: FASTQ
+        name: dpi
       optional: true
     - !Flag
-      description: Make a histogram of the read lengths and saves it to a new file
+      description: "A tab-separated file with a header row of column\nnames."
       synonyms:
-      - -H
-      - --histogram
+      - -i
+      - --input_file
+      args: !SimpleFlagArg
+        name: INPUT_FILE
+      optional: true
+    - !Flag
+      description: The column name of the data to plot on the x-axis
+      synonyms:
+      - --xcol
+      args: !SimpleFlagArg
+        name: XCOL
+      optional: true
+    - !Flag
+      description: The column name of the data to plot on the y-axis
+      synonyms:
+      - --ycol
+      args: !SimpleFlagArg
+        name: YCOL
+      optional: true
+    - !Flag
+      description: "Specify this option if you don't want a transparent\nbackground.\
+        \ Default is on."
+      synonyms:
+      - -n
+      - --no_transparent
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: This sets the max read length filter reads.
+      description: Turn off time stamps in the filename output.
       synonyms:
-      - --filt_maxlen
-      args: !SimpleFlagArg
-        name: FILT_MAXLEN
+      - --no_timestamp
+      args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: This sets the max mean read quality to filter reads.
+      description: "Specify a base name for the output file(s). The input\nfile base\
+        \ name is the default."
       synonyms:
-      - --filt_maxqual
+      - -o
+      - --output_base_name
       args: !SimpleFlagArg
-        name: FILT_MAXQUAL
+        name: OUTPUT_BASE_NAME
       optional: true
     - !Flag
-      description: This sets the min read length to filter reads.
+      description: Sets the maximum viewing area in the length dimension.
       synonyms:
-      - --filt_minlen
+      - --plot_max_y
       args: !SimpleFlagArg
-        name: FILT_MINLEN
+        name: PLOT_MAX_Y
       optional: true
     - !Flag
-      description: This sets the min mean read quality to filter reads.
+      description: "Sets the maximum viewing area in the quality\ndimension."
       synonyms:
-      - --filt_minqual
+      - --plot_max_x
       args: !SimpleFlagArg
-        name: FILT_MINQUAL
+        name: PLOT_MAX_X
       optional: true
-    command:
-    - pauvre
-    - stats
+    - !Flag
+      description: "Sets the minimum viewing area in the length dimension.\nDefault\
+        \ value = 0"
+      synonyms:
+      - --plot_min_y
+      args: !SimpleFlagArg
+        name: PLOT_MIN_Y
+      optional: true
+    - !Flag
+      description: "Sets the minimum viewing area in the quality\ndimension. Default\
+        \ value = 0"
+      synonyms:
+      - --plot_min_x
+      args: !SimpleFlagArg
+        name: PLOT_MIN_X
+      optional: true
+    - !Flag
+      description: changes the hexmap into a square map quantized by
+      synonyms:
+      - --square
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: This sets the bin size to use for length.
+      synonyms:
+      - --ybin
+      args: !SimpleFlagArg
+        name: YBIN
+      optional: true
+    - !Flag
+      description: This sets the bin size to use for quality
+      synonyms:
+      - --xbin
+      args: !SimpleFlagArg
+        name: XBIN
+      optional: true
+    - !Flag
+      description: Add Y-axes to both marginal histograms.
+      synonyms:
+      - --add-yaxes
+      args: !EmptyFlagArg {}
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -932,21 +779,196 @@ parent: &id001 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: pauvre stats [-h] [-q] [-f FASTQ] [-H] [--filt_maxlen FILT_MAXLEN]\n\
-      \                    [--filt_maxqual FILT_MAXQUAL] [--filt_minlen FILT_MINLEN]\n\
-      \                    [--filt_minqual FILT_MINQUAL]\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n  -q, --quiet    \
-      \       Do not output warnings to stderr\n  -f FASTQ, --fastq FASTQ\n      \
-      \                  The input FASTQ file.\n  -H, --histogram       Make a histogram\
-      \ of the read lengths and saves it to a\n                        new file\n\
-      \  --filt_maxlen FILT_MAXLEN\n                        This sets the max read\
-      \ length filter reads.\n  --filt_maxqual FILT_MAXQUAL\n                    \
-      \    This sets the max mean read quality to filter reads.\n  --filt_minlen FILT_MINLEN\n\
-      \                        This sets the min read length to filter reads.\n  --filt_minqual\
-      \ FILT_MINQUAL\n                        This sets the min mean read quality\
-      \ to filter reads.\n"
-    generated_using: *id002
-  - *id003
+    help_text: "usage: pauvre custommargin [-h] [-q] [--dpi dpi]\n               \
+      \            [--fileform STRING [STRING ...]] [-i INPUT_FILE]\n            \
+      \               [--xcol XCOL] [--ycol YCOL] [-n] [--no_timestamp]\n        \
+      \                   [-o OUTPUT_BASE_NAME] [--plot_max_y PLOT_MAX_Y]\n      \
+      \                     [--plot_max_x PLOT_MAX_X] [--plot_min_y PLOT_MIN_Y]\n\
+      \                           [--plot_min_x PLOT_MIN_X] [--square] [-t TITLE]\n\
+      \                           [--ybin YBIN] [--xbin XBIN] [--add-yaxes]\n\noptional\
+      \ arguments:\n  -h, --help            show this help message and exit\n  -q,\
+      \ --quiet           Do not output warnings to stderr\n  --dpi dpi          \
+      \   Change the dpi from the default 600 if you need it\n                   \
+      \     higher\n  --fileform STRING [STRING ...]\n                        Which\
+      \ output format would you like? Def.=png\n  -i INPUT_FILE, --input_file INPUT_FILE\n\
+      \                        A tab-separated file with a header row of column\n\
+      \                        names.\n  --xcol XCOL           The column name of\
+      \ the data to plot on the x-axis\n  --ycol YCOL           The column name of\
+      \ the data to plot on the y-axis\n  -n, --no_transparent  Specify this option\
+      \ if you don't want a transparent\n                        background. Default\
+      \ is on.\n  --no_timestamp        Turn off time stamps in the filename output.\n\
+      \  -o OUTPUT_BASE_NAME, --output_base_name OUTPUT_BASE_NAME\n              \
+      \          Specify a base name for the output file(s). The input\n         \
+      \               file base name is the default.\n  --plot_max_y PLOT_MAX_Y\n\
+      \                        Sets the maximum viewing area in the length dimension.\n\
+      \  --plot_max_x PLOT_MAX_X\n                        Sets the maximum viewing\
+      \ area in the quality\n                        dimension.\n  --plot_min_y PLOT_MIN_Y\n\
+      \                        Sets the minimum viewing area in the length dimension.\n\
+      \                        Default value = 0\n  --plot_min_x PLOT_MIN_X\n    \
+      \                    Sets the minimum viewing area in the quality\n        \
+      \                dimension. Default value = 0\n  --square              changes\
+      \ the hexmap into a square map quantized by\n                        ints.\n\
+      \  -t TITLE, --title TITLE\n                        This sets the title for\
+      \ the whole plot. Use --title\n                        \"Crustacean's DNA read\
+      \ quality\" if you need single\n                        quote or apostrophe\
+      \ inside title.\n  --ybin YBIN           This sets the bin size to use for length.\n\
+      \  --xbin XBIN           This sets the bin size to use for quality\n  --add-yaxes\
+      \           Add Y-axes to both marginal histograms.\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - pauvre
+    - browser
+    positional:
+    - !Positional
+      description: --fileform STRING [STRING ...]
+      position: 0
+      name: higher
+      optional: false
+    named:
+    - !Flag
+      description: Do not output warnings to stderr
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "The fasta sequence to observe. Use the header name of\nthe fasta\
+        \ file without the '>' character"
+      synonyms:
+      - -c
+      - --chromosomeid
+      args: !SimpleFlagArg
+        name: Chr
+      optional: true
+    - !Flag
+      description: Change the dpi from the default 600 if you need it
+      synonyms:
+      - --dpi
+      args: !SimpleFlagArg
+        name: dpi
+      optional: true
+    - !Flag
+      description: Turn off time stamps in the filename output.
+      synonyms:
+      - --no_timestamp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Specify a base name for the output file( s). The input\nfile base\
+        \ name is the default."
+      synonyms:
+      - -o
+      - --output-base-name
+      args: !SimpleFlagArg
+        name: BASENAME
+      optional: true
+    - !Flag
+      description: "Set an explicit filepath for the output. Only do this\nif you\
+        \ have selected one output type."
+      synonyms:
+      - --path
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: "Write strings here to select what to plot. The format\nfor each\
+        \ track is: <type>:<path>:<style>:<options> To\nplot the reference, the format\
+        \ is:\nref:<style>:<options> Surround each track string with\ndouble quotes\
+        \ and a space between subsequent strings.\n\"bam:mybam.bam:depth\" \"ref:colorful\""
+      synonyms:
+      - -p
+      - --plot_commands
+      args: !RepeatFlagArg
+        name: CMD
+      optional: true
+    - !Flag
+      description: "Enter the dimensions (arbitrary units) to plot the\nfigure. For\
+        \ example a figure that is seven times wider\nthan tall is: --ratio 7 1"
+      synonyms:
+      - --ratio
+      args: !RepeatFlagArg
+        name: RATIO
+      optional: true
+    - !Flag
+      description: The reference fasta file.
+      synonyms:
+      - -r
+      - --reference
+      args: !SimpleFlagArg
+        name: REF
+      optional: true
+    - !Flag
+      description: "The start position to observe on the fasta file. Uses\n1-based\
+        \ indexing."
+      synonyms:
+      - --start
+      args: !SimpleFlagArg
+        name: START
+      optional: true
+    - !Flag
+      description: "The stop position to observe on the fasta file. Uses\n1-based\
+        \ indexing."
+      synonyms:
+      - --stop
+      args: !SimpleFlagArg
+        name: STOP
+      optional: true
+    - !Flag
+      description: "Specify this option if you DON'T want a transparent\nbackground.\
+        \ Default is on.\n"
+      synonyms:
+      - -T
+      - --transparent
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pauvre browser [-h] [-q] [-c Chr] [--dpi dpi]\n           \
+      \           [--fileform STRING [STRING ...]] [--no_timestamp]\n            \
+      \          [-o BASENAME] [--path PATH] [-p CMD [CMD ...]]\n                \
+      \      [--ratio RATIO [RATIO ...]] [-r REF] [--start START]\n              \
+      \        [--stop STOP] [-T]\n\noptional arguments:\n  -h, --help           \
+      \ show this help message and exit\n  -q, --quiet           Do not output warnings\
+      \ to stderr\n  -c Chr, --chromosomeid Chr\n                        The fasta\
+      \ sequence to observe. Use the header name of\n                        the fasta\
+      \ file without the '>' character\n  --dpi dpi             Change the dpi from\
+      \ the default 600 if you need it\n                        higher\n  --fileform\
+      \ STRING [STRING ...]\n                        Which output format would you\
+      \ like? Def.=png\n  --no_timestamp        Turn off time stamps in the filename\
+      \ output.\n  -o BASENAME, --output-base-name BASENAME\n                    \
+      \    Specify a base name for the output file( s). The input\n              \
+      \          file base name is the default.\n  --path PATH           Set an explicit\
+      \ filepath for the output. Only do this\n                        if you have\
+      \ selected one output type.\n  -p CMD [CMD ...], --plot_commands CMD [CMD ...]\n\
+      \                        Write strings here to select what to plot. The format\n\
+      \                        for each track is: <type>:<path>:<style>:<options>\
+      \ To\n                        plot the reference, the format is:\n         \
+      \               ref:<style>:<options> Surround each track string with\n    \
+      \                    double quotes and a space between subsequent strings.\n\
+      \                        \"bam:mybam.bam:depth\" \"ref:colorful\"\n  --ratio\
+      \ RATIO [RATIO ...]\n                        Enter the dimensions (arbitrary\
+      \ units) to plot the\n                        figure. For example a figure that\
+      \ is seven times wider\n                        than tall is: --ratio 7 1\n\
+      \  -r REF, --reference REF\n                        The reference fasta file.\n\
+      \  --start START         The start position to observe on the fasta file. Uses\n\
+      \                        1-based indexing.\n  --stop STOP           The stop\
+      \ position to observe on the fasta file. Uses\n                        1-based\
+      \ indexing.\n  -T, --transparent     Specify this option if you DON'T want a\
+      \ transparent\n                        background. Default is on.\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -972,12 +994,14 @@ parent: &id001 !Command
     \ make a redwood plot from a bam file\n    stats               outputs stats from\
     \ a fastq file\n    synplot             make a synteny plot from a gff file, protein\n\
     \                        alignment, and partition file\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
@@ -1025,4 +1049,4 @@ help_text: "usage: pauvre synplot [-h] [-q] [--aln_dir aln_dir] [--center_on CEN
   \                        sequences.\n  -T, --transparent     Specify this option\
   \ if you DON'T want a transparent\n                        background. Default is\
   \ on.\n"
-generated_using: *id002
+generated_using: *id003

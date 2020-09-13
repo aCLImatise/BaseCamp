@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../randomLines.cwl
 inputs:
-- id: seed
+- id: in_seed
   doc: '- Set seed used for randomizing, useful for debugging.'
   type: string
   inputBinding:
     prefix: -seed
-- id: de_comment
-  doc: '- remove blank lines and those starting with '
+- id: in_de_comment
+  doc: '- remove blank lines and those starting with'
   type: boolean
   inputBinding:
     prefix: -decomment
-- id: in_file
+- id: in_in_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: count
+- id: in_count
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: outfile
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - randomLines

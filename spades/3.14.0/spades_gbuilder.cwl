@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../spades_gbuilder.cwl
 inputs:
-- id: kmer_length_use
+- id: in_kmer_length_use
   doc: k-mer length to use
-  type: string
+  type: long
   inputBinding:
     prefix: -k
-- id: _threads_use
+- id: in__threads_use
   doc: '# of threads to use'
   type: string
   inputBinding:
     prefix: -t
-- id: tmp_dir
+- id: in_tmp_dir
   doc: scratch directory to use
-  type: string
+  type: Directory
   inputBinding:
     prefix: -tmp-dir
-- id: sorting_buffer_size
+- id: in_sorting_buffer_size
   doc: sorting buffer size, per thread
-  type: string
+  type: long
   inputBinding:
     prefix: -b
-- id: unit_igs
+- id: in_unit_igs
   doc: produce unitigs (default)
   type: boolean
   inputBinding:
     prefix: --unitigs
-- id: fast_g
+- id: in_fast_g
   doc: produce graph in FASTG format
   type: boolean
   inputBinding:
     prefix: --fastg
-- id: gfa
+- id: in_gfa
   doc: produce graph in GFA1 format
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: spades
+- id: in_spades
   doc: produce graph in SPAdes internal format
   type: boolean
   inputBinding:
     prefix: --spades
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - spades-gbuilder

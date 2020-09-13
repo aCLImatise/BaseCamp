@@ -17,4 +17,7 @@ task MockinbirdPostprocessPreprocessDir {
     mock_in_bird: ""
     post_process: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

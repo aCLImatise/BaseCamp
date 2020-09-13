@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../ace2contig.cwl
 inputs:
-- id: file
+- id: in_file
   doc: file
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: prefix_output_prefixcontig
+- id: in_prefix_output_prefixcontig
   doc: prefix (output is <prefix>.contig)
   type: string
   inputBinding:
     prefix: -o
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ace2contig

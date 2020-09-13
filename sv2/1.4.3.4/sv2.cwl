@@ -1,132 +1,150 @@
 class: CommandLineTool
 id: ../../../sv2.cwl
 inputs:
-- id: bam
+- id: in_bam
   doc: '...     bam file(s)'
   type: boolean
   inputBinding:
     prefix: -bam
-- id: vcf
+- id: in_vcf
   doc: '...     vcf files(s) of SVs'
   type: boolean
   inputBinding:
     prefix: -vcf
-- id: bed
+- id: in_bed
   doc: '...     bed files(s) of SVs'
   type: boolean
   inputBinding:
     prefix: -bed
-- id: snv
+- id: in_snv
   doc: '...     snv vcf files(s), must be bgzipped and tabixed'
   type: boolean
   inputBinding:
     prefix: -snv
-- id: ped
+- id: in_ped
   doc: '...     ped files(s)'
   type: boolean
   inputBinding:
     prefix: -ped
-- id: genome
+- id: in_genome
   doc: 'reference genome build <hg19, hg38, mm10> [default: hg19]'
   type: boolean
   inputBinding:
     prefix: -genome
-- id: pcr_free
+- id: in_pcr_free
   doc: GC content normalization for pcr free sequences
   type: boolean
   inputBinding:
     prefix: -pcrfree
-- id: bwa_mem_m
+- id: in_bwa_mem_m
   doc: bwa mem -M compatibility, split-reads flagged as secondary instead of supplementary
   type: boolean
   inputBinding:
     prefix: -M
-- id: merge
+- id: in_merge
   doc: merge overlapping SV breakpoints after genotyping
   type: boolean
   inputBinding:
     prefix: -merge
-- id: min_ovr
+- id: in_min_ovr
   doc: 'minimum reciprocal overlap for merging [default: 0.8]'
   type: boolean
   inputBinding:
     prefix: -min-ovr
-- id: no_an_no
-  doc: 'genotype without annotating variants   '
+- id: in_no_an_no
+  doc: genotype without annotating variants
   type: boolean
   inputBinding:
     prefix: -no-anno
-- id: pre
+- id: in_pre
   doc: preprocessing output directory, skips preprocessing
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: -pre
-- id: feats
+- id: in_feats
   doc: feature extraction output directory, skips feature extraction
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: -feats
-- id: load_clf
+- id: in_load_clf
   doc: add custom classifiers (-load-clf <clf.json>)
   type: boolean
   inputBinding:
     prefix: -load-clf
-- id: clf
+- id: in_clf
   doc: define classifier for genotyping [default:default]
   type: boolean
   inputBinding:
     prefix: -clf
-- id: download
+- id: in_download
   doc: download required data files
   type: boolean
   inputBinding:
     prefix: -download
-- id: h_gone_nine
+- id: in_h_gone_nine
   doc: hg19 fasta file
   type: boolean
   inputBinding:
     prefix: -hg19
-- id: hg_three_eight
+- id: in_hg_three_eight
   doc: hg38 fasta file
   type: boolean
   inputBinding:
     prefix: -hg38
-- id: mm_one_zero
+- id: in_mm_one_zero
   doc: mm10 fasta file
   type: boolean
   inputBinding:
     prefix: -mm10
-- id: ini
+- id: in_ini
   doc: 'configuration INI file [default: $SV2_INSTALL_PATH/config/sv2.ini]'
   type: boolean
   inputBinding:
     prefix: -ini
-- id: log
+- id: in_log
   doc: 'log file for standard error messages [default: STDOUT]'
   type: boolean
   inputBinding:
     prefix: -log
-- id: tmp_dir
+- id: in_tmp_dir
   doc: 'directory for temporary files [default: working directory]'
   type: boolean
   inputBinding:
     prefix: -tmp-dir
-- id: seed
+- id: in_seed
   doc: 'random seed for preprocessing shuffling [default: 42]'
   type: boolean
   inputBinding:
     prefix: -seed
-- id: out
+- id: in_out
   doc: 'output prefix [default: sv2_genotypes]'
   type: boolean
   inputBinding:
     prefix: -out
-- id: o_dir
+- id: in_o_dir
   doc: 'output path, location for sv2 output directories [default: working directory]'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -odir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_pre
+  doc: preprocessing output directory, skips preprocessing
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_pre)
+- id: out_feats
+  doc: feature extraction output directory, skips feature extraction
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_feats)
+- id: out_o_dir
+  doc: 'output path, location for sv2 output directories [default: working directory]'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_o_dir)
 cwlVersion: v1.1
 baseCommand:
 - sv2

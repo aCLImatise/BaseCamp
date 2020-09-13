@@ -1,79 +1,87 @@
 class: CommandLineTool
 id: ../../../bcftools_plugin.cwl
 inputs:
-- id: exclude
+- id: in_exclude
   doc: exclude sites for which the expression is true
   type: string
   inputBinding:
     prefix: --exclude
-- id: include
+- id: in_include
   doc: select sites for which the expression is true
   type: string
   inputBinding:
     prefix: --include
-- id: regions
+- id: in_regions
   doc: restrict to comma-separated list of regions
   type: string
   inputBinding:
     prefix: --regions
-- id: regions_file
+- id: in_regions_file
   doc: restrict to regions listed in a file
   type: File
   inputBinding:
     prefix: --regions-file
-- id: targets
+- id: in_targets
   doc: similar to -r but streams rather than index-jumps
   type: string
   inputBinding:
     prefix: --targets
-- id: targets_file
+- id: in_targets_file
   doc: similar to -R but streams rather than index-jumps
   type: File
   inputBinding:
     prefix: --targets-file
-- id: no_version
+- id: in_no_version
   doc: do not append version and command line to the header
   type: boolean
   inputBinding:
     prefix: --no-version
-- id: output
+- id: in_output
   doc: write output to a file [standard output]
   type: File
   inputBinding:
     prefix: --output
-- id: output_type
+- id: in_output_type
   doc: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v' uncompressed\
     \ VCF [v]"
   type: string
   inputBinding:
     prefix: --output-type
-- id: threads
+- id: in_threads
   doc: use multithreading with <int> worker threads [0]
   type: long
   inputBinding:
     prefix: --threads
-- id: list_plugins
+- id: in_list_plugins
   doc: list available plugins. See BCFTOOLS_PLUGINS environment variable and man page
     for details
   type: boolean
   inputBinding:
     prefix: --list-plugins
-- id: verbose
+- id: in_verbose
   doc: print verbose information, -vv increases verbosity
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: name
+- id: in_name
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: write output to a file [standard output]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - bcftools

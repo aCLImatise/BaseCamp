@@ -1,7 +1,10 @@
 version 1.0
 
-task BcbioVariationRecall {
+task Bcbiovariationrecall {
   command <<<
-    bcbio-variation-recall
+    bcbio_variation_recall
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

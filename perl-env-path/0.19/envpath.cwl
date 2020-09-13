@@ -1,47 +1,60 @@
 class: CommandLineTool
 id: ../../../envpath.cwl
 inputs:
-- id: prepend_token_path
-  doc: Prepend TOKEN to the path variable named 'VAR'
+- id: in_append_token_path
+  doc: Append TOKEN to the path variable named 'VAR'
+  type: File
+  inputBinding:
+    prefix: -A
+- id: in_newdir_change_olddir
+  doc: =newdir     Change <olddir> to <newdir> within 'VAR'
   type: string
   inputBinding:
+    prefix: -C
+- id: in_prepend_token_path
+  doc: Prepend TOKEN to the path variable named 'VAR'
+  type: File
+  inputBinding:
     prefix: -P
-- id: token_insert_token
+- id: in_token_insert_token
   doc: ",(-|+)TOKEN]   Insert TOKEN before (-) or after (+) 'dir' in VAR"
   type: string
   inputBinding:
     prefix: -I
-- id: list_specified_pathvars
+- id: in_list_specified_pathvars
   doc: '[VAR]             List specified pathvar(s) in one-entry-per-line fmt'
   type: boolean
   inputBinding:
     prefix: -L
-- id: remove_entries_exist
+- id: in_remove_entries_exist
   doc: Remove entries which don't exist
   type: boolean
   inputBinding:
     prefix: -N
-- id: remove_specified_dir
+- id: in_remove_specified_dir
   doc: Remove specified dir from path
-  type: string
+  type: File
   inputBinding:
     prefix: -R
-- id: print_specified_pathvars
+- id: in_print_specified_pathvars
   doc: '[VAR]             Print specified pathvars in form suitable for `eval`'
   type: boolean
   inputBinding:
     prefix: -S
-- id: remove_redundant_entries
+- id: in_remove_redundant_entries
   doc: Remove redundant entries from path
   type: boolean
   inputBinding:
     prefix: -U
-- id: like__path
+- id: in_like__path
   doc: Like 'whence' ksh builtin - look for 'file' on PATH
   type: File
   inputBinding:
     prefix: -W
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - envpath

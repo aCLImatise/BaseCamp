@@ -4,4 +4,7 @@ task TripaillePhylogeny {
   command <<<
     tripaille phylogeny
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

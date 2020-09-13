@@ -4,4 +4,7 @@ task ExpansionHunterDenovo {
   command <<<
     ExpansionHunterDenovo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

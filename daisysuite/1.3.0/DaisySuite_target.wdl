@@ -14,10 +14,10 @@ task DaisySuiteTarget {
     DaisySuite target \
       ~{daisy_suite} \
       ~{snake_make} \
-      ~{true="--cores" false="" cores} \
-      ~{true="--keep-going" false="" keep_going} \
-      ~{true="--dryrun" false="" dry_run} \
-      ~{true="--printshellcmds" false="" print_shell_cmds} \
+      ~{if (cores) then "--cores" else ""} \
+      ~{if (keep_going) then "--keep-going" else ""} \
+      ~{if (dry_run) then "--dryrun" else ""} \
+      ~{if (print_shell_cmds) then "--printshellcmds" else ""} \
       ~{if defined(config_file) then ("--configfile " +  '"' + config_file + '"') else ""}
   >>>
   parameter_meta {
@@ -28,5 +28,8 @@ task DaisySuiteTarget {
     config_file: ""
     daisy_suite: ""
     snake_make: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

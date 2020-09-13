@@ -4,4 +4,7 @@ task Vcfmultiwayscripts {
   command <<<
     vcfmultiwayscripts
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

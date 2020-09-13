@@ -15,9 +15,12 @@ task Gfold {
       ~{version}
   >>>
   parameter_meta {
-    g_fold: ":   Generalized fold change for ranking differentially expressed    genes from RNA-seq data."
+    g_fold: ":   Generalized fold change for ranking differentially expressed   \\ngenes from RNA-seq data."
     author: ":   Jianxing Feng (jianxing.tongji@gmail.com)"
     date: ":   Sun May 24 07:42:36 CST 2015"
     version: ":   V1.1.4"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -14,4 +14,7 @@ task Mkpat {
     xsize: ""
     ysize: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

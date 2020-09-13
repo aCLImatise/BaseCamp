@@ -3,9 +3,9 @@ version 1.0
 task DuckSmdRuns {
   input {
     String? equilibrated_system_input
-    String? pickle
-    String? num_runs
-    String? md_len
+    File? pickle
+    Int? num_runs
+    Int? md_len
     String? start_dist
     String? in_it_velocity
     String? gpu_id
@@ -28,5 +28,8 @@ task DuckSmdRuns {
     start_dist: "Starting distance"
     in_it_velocity: "Initial velocity"
     gpu_id: "GPU ID (optional); if not specified, runs on CPU only."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

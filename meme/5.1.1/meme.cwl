@@ -1,22 +1,15 @@
 class: CommandLineTool
 id: ../../../meme.cwl
 inputs:
-- id: dataset
-  doc: ''
+- id: in_alignment
+  doc: '[-wg <wg>]              gap opening cost for multiple alignments'
   type: string
   inputBinding:
     position: 0
-- id: optional
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - meme

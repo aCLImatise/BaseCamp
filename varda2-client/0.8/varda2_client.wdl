@@ -1,23 +1,26 @@
 version 1.0
 
-task Varda2Client {
+task Varda2client {
   input {
     String? protocol
     String? server
     String? certificate
-    Boolean? verbose
+    Boolean? v
   }
   command <<<
-    varda2-client \
+    varda2_client \
       ~{if defined(protocol) then ("--protocol " +  '"' + protocol + '"') else ""} \
       ~{if defined(server) then ("--server " +  '"' + server + '"') else ""} \
       ~{if defined(certificate) then ("--certificate " +  '"' + certificate + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     protocol: "Server protocol"
     server: "Server hostname"
-    certificate: "Certificate"
-    verbose: "Verbose output"
+    certificate: ""
+    v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

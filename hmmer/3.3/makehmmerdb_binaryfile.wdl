@@ -17,4 +17,7 @@ task MakehmmerdbBinaryfile {
     seq_file: ""
     binary_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

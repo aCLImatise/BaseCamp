@@ -4,4 +4,7 @@ task SonLibFastaCTest {
   command <<<
     sonLib_fastaCTest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

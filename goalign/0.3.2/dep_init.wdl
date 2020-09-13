@@ -11,10 +11,10 @@ task DepInit {
   command <<<
     dep init \
       ~{root} \
-      ~{true="-gopath" false="" go_path} \
-      ~{true="-no-examples" false="" no_examples} \
-      ~{true="-skip-tools" false="" skip_tools} \
-      ~{true="-v" false="" enable_verbose_logging}
+      ~{if (go_path) then "-gopath" else ""} \
+      ~{if (no_examples) then "-no-examples" else ""} \
+      ~{if (skip_tools) then "-skip-tools" else ""} \
+      ~{if (enable_verbose_logging) then "-v" else ""}
   >>>
   parameter_meta {
     go_path: "search in GOPATH for dependencies (default: false)"
@@ -22,5 +22,8 @@ task DepInit {
     skip_tools: "skip importing configuration from other dependency managers (default: false)"
     enable_verbose_logging: "enable verbose logging (default: false)"
     root: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

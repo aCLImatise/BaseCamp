@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../hailctl_dataproc_describe.cwl
 inputs:
-- id: file
+- id: in_file
   doc: Path to hail file (either MatrixTable or Table).
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hailctl

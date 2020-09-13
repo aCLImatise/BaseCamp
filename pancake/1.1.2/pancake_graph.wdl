@@ -2,7 +2,7 @@ version 1.0
 
 task PancakeGraph {
   input {
-    String? pan_file
+    File? pan_file
     Array[String] chrom_s
     Array[String] starts
     Array[String] stops
@@ -22,20 +22,24 @@ task PancakeGraph {
       ~{if defined(max_nodes) then ("--max_nodes " +  '"' + max_nodes + '"') else ""} \
       ~{if defined(max_edges) then ("--max_edges " +  '"' + max_edges + '"') else ""} \
       ~{if defined(max_entries) then ("--max_entries " +  '"' + max_entries + '"') else ""} \
-      ~{true="-all" false="" all} \
-      ~{true="-regions" false="" regions} \
+      ~{if (all) then "-all" else ""} \
+      ~{if (regions) then "-regions" else ""} \
       ~{if defined(output_dot_file) then ("--output " +  '"' + output_dot_file + '"') else ""}
   >>>
   parameter_meta {
     pan_file: "Name of PanCake Data Object File (required)"
-    chrom_s: "Chromosomes in Output (by default all chromosomes covered in PAN_FILE)"
-    starts: "Start positions (in same order as chromosomes), DEFAULT=1 on all chromosomes"
-    stops: "Stop positions (in same order as chromosomes), DEFAULT=length of chromosomes"
-    max_nodes: "Maximal number of nodes in output graph. (DEFAULT=10,000): if exceeded, PanCake will warn and interrupt!"
-    max_edges: "Maximal number of edges in output graph. (DEFAULT=10,000): if exceeded, PanCake will warn and interrupt!"
-    max_entries: "Shared features are truncated in output if number of contained feature instances > MAX_ENTRIES (DEFAULT: MAX_ENTRIES=50)"
-    all: "if set, all chromosomes contained in PAN_FILE appear in output (irrespective to CHROMS), DEFAULT=False"
-    regions: "if set, only specified regions are shown in output (DEFAULT=False), ignored if -all is set"
-    output_dot_file: "output DOT file (DEFAULT: STDOUT)"
+    chrom_s: "Chromosomes in Output (by default all chromosomes\\ncovered in PAN_FILE)"
+    starts: "Start positions (in same order as chromosomes),\\nDEFAULT=1 on all chromosomes"
+    stops: "Stop positions (in same order as chromosomes),\\nDEFAULT=length of chromosomes"
+    max_nodes: "Maximal number of nodes in output graph.\\n(DEFAULT=10,000): if exceeded, PanCake will warn and\\ninterrupt!"
+    max_edges: "Maximal number of edges in output graph.\\n(DEFAULT=10,000): if exceeded, PanCake will warn and\\ninterrupt!"
+    max_entries: "Shared features are truncated in output if number of\\ncontained feature instances > MAX_ENTRIES (DEFAULT:\\nMAX_ENTRIES=50)"
+    all: "if set, all chromosomes contained in PAN_FILE appear\\nin output (irrespective to CHROMS), DEFAULT=False"
+    regions: "if set, only specified regions are shown in output\\n(DEFAULT=False), ignored if -all is set"
+    output_dot_file: "output DOT file (DEFAULT: STDOUT)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_dot_file = "${in_output_dot_file}"
   }
 }

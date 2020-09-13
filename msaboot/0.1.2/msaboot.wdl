@@ -2,19 +2,23 @@ version 1.0
 
 task Msaboot {
   input {
-    String? file_name_fasta
-    String? file_name_bootstrapped
-    String? number
+    File? file_name_used
+    File? file_name_bootstrapped
+    Int? number
   }
   command <<<
     msaboot \
-      ~{if defined(file_name_fasta) then ("--input " +  '"' + file_name_fasta + '"') else ""} \
+      ~{if defined(file_name_used) then ("--input " +  '"' + file_name_used + '"') else ""} \
       ~{if defined(file_name_bootstrapped) then ("--output " +  '"' + file_name_bootstrapped + '"') else ""} \
       ~{if defined(number) then ("--number " +  '"' + number + '"') else ""}
   >>>
   parameter_meta {
-    file_name_fasta: "The file name of the FASTA file to be used as input."
-    file_name_bootstrapped: "The file name of the bootstrapped alignment data output, stored in relaxed PHYLIP format."
-    number: "The number of bootstrap replicates."
+    file_name_used: "The file name of the FASTA file to be used as input."
+    file_name_bootstrapped: "The file name of the bootstrapped alignment data\\noutput, stored in relaxed PHYLIP format."
+    number: "The number of bootstrap replicates.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_file_name_bootstrapped = "${in_file_name_bootstrapped}"
   }
 }

@@ -1,22 +1,77 @@
-!Command
-positional: []
-named: []
+&id001 !Command
 command:
 - pybedtools
+positional: []
+named: []
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - pybedtools
+  - annotate
+  positional: []
+  named:
+  - !Flag
+    description: not specified only 2 colummns are added to the
+    synonyms:
+    - --upstream
+    - --downstream
+    args: !SimpleFlagArg
+      name: and
+    optional: true
+  - !Flag
+    description: file to annotate
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: A
+    optional: true
+  - !Flag
+    description: file with annotations
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: B
+    optional: true
+  - !Flag
+    description: report the distance, not just the genes
+    synonyms:
+    - --report-distance
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: /usr/local/lib/python2.7/site-packages/pybedtools/__main__.py\n\
+    \       [-h] [-a A] [-b B] [--upstream UPSTREAM] [--downstream DOWNSTREAM]\n \
+    \      [--report-distance]\n\nannotate a file with the nearest features in another.\
+    \ %prog [options] if\n--upstream and --downstream are not specified only 2 colummns\
+    \ are added to the\n[a] file: nearest_name, nearest_distance. if they are specified\n\
+    upstream_names, downstream_names are specified. if --report-distance is\nincluded,\
+    \ the format will be: gene:dist,gene2:dist2 for each of the up and\ndownstream\
+    \ columns.\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -a A                  file to annotate\n  -b B                 \
+    \ file with annotations\n  --upstream UPSTREAM   distance upstream of [a] to look\
+    \ for [b]\n  --downstream DOWNSTREAM\n                        distance downstream\
+    \ of [a] to look for [b]\n  --report-distance     report the distance, not just\
+    \ the genes\n"
+  generated_using: &id002
+  - --help
+usage: []
 help_flag:
 usage_flag:
 version_flag:
-help_text: "/tmp/tmphzr59vlh/lib/python3.7/runpy.py:125: RuntimeWarning: 'pybedtools.__main__'\
-  \ found in sys.modules after import of package 'pybedtools', but prior to execution\
-  \ of 'pybedtools.__main__'; this may result in unpredictable behaviour\n  warn(RuntimeWarning(msg))\n\
-  Traceback (most recent call last):\n  File \"/tmp/tmphzr59vlh/lib/python3.7/runpy.py\"\
-  , line 193, in _run_module_as_main\n    \"__main__\", mod_spec)\n  File \"/tmp/tmphzr59vlh/lib/python3.7/runpy.py\"\
-  , line 85, in _run_code\n    exec(code, run_globals)\n  File \"/tmp/tmphzr59vlh/lib/python3.7/site-packages/pybedtools/__main__.py\"\
-  , line 45, in <module>\n    main()\n  File \"/tmp/tmphzr59vlh/lib/python3.7/site-packages/pybedtools/__main__.py\"\
-  , line 21, in main\n    m = import_module(\"pybedtools.scripts\")\n  File \"/tmp/tmphzr59vlh/lib/python3.7/site-packages/pybedtools/__main__.py\"\
-  , line 12, in import_module\n    __import__(\"%s\" % (name,), globals(), locals(),\
-  \ [], -1)\nValueError: level must be >= 0\n"
-generated_using:
-- --help
+help_text: "pybedtools utility scripts:\n\n annotate              :  annotate a file\
+  \ with the neearest features in\n                          another.\n\n intersection_matrix\
+  \   :  Creates a pairwise matrix containing overlapping\n                      \
+  \    feature counts for many BED files\n\n"
+generated_using: *id002

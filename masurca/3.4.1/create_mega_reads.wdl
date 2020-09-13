@@ -2,29 +2,29 @@ version 1.0
 
 task CreateMegaReads {
   input {
-    String? size
-    String? mer
-    String? fine_mer
-    String? psa_min
+    Int? size
+    Int? mer
+    Int? fine_mer
+    Int? psa_min
     File? unit_igs_lengths
     File? unit_igs_sequences
-    String? k_mer
-    String? threads
+    Int? k_mer
+    Int? threads
     File? output_file_stdout
     File? dot
     Int? stretch_constant
-    String? stretch_factor
-    String? stretch_cap
-    String? window_size
-    String? overlap_play
-    String? errors
-    String? bases_matching
-    String? mers_matching
+    Float? stretch_factor
+    Float? stretch_cap
+    Int? window_size
+    Int? overlap_play
+    Int? errors
+    Float? bases_matching
+    Float? mers_matching
     Boolean? max_match
-    String? max_count
+    Int? max_count
     Boolean? bases
-    String? density
-    String? min_length
+    Float? density
+    Int? min_length
     String? tiling
     String? trim
     File? super_reads
@@ -52,9 +52,9 @@ task CreateMegaReads {
       ~{if defined(errors) then ("--errors " +  '"' + errors + '"') else ""} \
       ~{if defined(bases_matching) then ("--bases-matching " +  '"' + bases_matching + '"') else ""} \
       ~{if defined(mers_matching) then ("--mers-matching " +  '"' + mers_matching + '"') else ""} \
-      ~{true="--max-match" false="" max_match} \
+      ~{if (max_match) then "--max-match" else ""} \
       ~{if defined(max_count) then ("--max-count " +  '"' + max_count + '"') else ""} \
-      ~{true="--bases" false="" bases} \
+      ~{if (bases) then "--bases" else ""} \
       ~{if defined(density) then ("--density " +  '"' + density + '"') else ""} \
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""} \
       ~{if defined(tiling) then ("--tiling " +  '"' + tiling + '"') else ""} \
@@ -86,10 +86,14 @@ task CreateMegaReads {
     bases: "Maximize number of bases in path, not the number of mers (false)"
     density: "Minimum density of k-mers in mega-read (0.029)"
     min_length: "Minimum length of a mega-read (100.0)"
-    tiling: "|greedy|maximal|weighted Option for tiling mega-reads (greedy)"
+    tiling: "|greedy|maximal|weighted\\nOption for tiling mega-reads (greedy)"
     trim: "|match|branch             How to trim mega-read (none)"
     super_reads: "SuperReads sequence file"
     pac_bio: "PacBio read sequence file"
     create_mega_reads_cmdline: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_stdout = "${in_output_file_stdout}"
   }
 }

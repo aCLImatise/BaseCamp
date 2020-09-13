@@ -4,4 +4,7 @@ task Printimage {
   command <<<
     printimage
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

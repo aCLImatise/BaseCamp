@@ -17,4 +17,7 @@ task MapDIA {
     parameter: ""
     file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../test_install.bak.cwl
+id: ../../../test_install.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- test_install.bak
+- test_install

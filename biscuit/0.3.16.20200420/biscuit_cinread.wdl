@@ -3,8 +3,8 @@ version 1.0
 task BiscuitCinread {
   input {
     Boolean? region
-    Boolean? target_c_cg
-    Boolean? content_print_delimited
+    Boolean? target_c_ch
+    Boolean? content_print_cgrposcqpos
     Boolean? consider_secondary_mapping
     Boolean? o
     String cin_read
@@ -16,20 +16,23 @@ task BiscuitCinread {
       ~{cin_read} \
       ~{ref_dot_fa} \
       ~{in_dot_bam} \
-      ~{true="-g" false="" region} \
-      ~{true="-t" false="" target_c_cg} \
-      ~{true="-p" false="" content_print_delimited} \
-      ~{true="-s" false="" consider_secondary_mapping} \
-      ~{true="-o" false="" o}
+      ~{if (region) then "-g" else ""} \
+      ~{if (target_c_ch) then "-t" else ""} \
+      ~{if (content_print_cgrposcqpos) then "-p" else ""} \
+      ~{if (consider_secondary_mapping) then "-s" else ""} \
+      ~{if (o) then "-o" else ""}
   >>>
   parameter_meta {
     region: "region."
-    target_c_cg: "target (c, cg, ch, hcg, gch, hch) [cg]"
-    content_print_delimited: "content to print, \",\"-delimited: QNAME, QPAIR, STRAND, BSSTRAND, MAPQ QBEG, QEND, CHRM, CRPOS, CGRPOS CQPOS, CRBASE, CCTXT, CQBASE, CRETENTION [QNAME,QPAIR,BSSTRAND,CRBASE,CQBASE]"
+    target_c_ch: "target (c, cg, ch, hcg, gch, hch) [cg]"
+    content_print_cgrposcqpos: "content to print, \\\",\\\"-delimited:\\nQNAME, QPAIR, STRAND, BSSTRAND, MAPQ\\nQBEG, QEND, CHRM, CRPOS, CGRPOS\\nCQPOS, CRBASE, CCTXT, CQBASE, CRETENTION\\n[QNAME,QPAIR,BSSTRAND,CRBASE,CQBASE]"
     consider_secondary_mapping: "consider secondary mapping."
     o: "output."
     cin_read: ""
     ref_dot_fa: ""
     in_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

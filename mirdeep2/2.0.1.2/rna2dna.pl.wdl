@@ -1,7 +1,10 @@
 version 1.0
 
-task Rna2dna.pl.orig {
+task Rna2dnapl {
   command <<<
-    rna2dna.pl.orig
+    rna2dna_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

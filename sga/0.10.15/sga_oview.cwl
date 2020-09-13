@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../sga_oview.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: id
+- id: in_id
   doc: only show overlaps for read with ID
   type: string
   inputBinding:
     prefix: --id
-- id: max_overhang
+- id: in_max_overhang
   doc: 'only show D overhanging bases of the alignments (default: 6)'
-  type: string
+  type: long
   inputBinding:
     prefix: --max-overhang
-- id: default_padding
+- id: in_default_padding
   doc: 'pad the overlap lines with D characters (default: 20)'
-  type: string
+  type: long
   inputBinding:
     prefix: --default-padding
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sga

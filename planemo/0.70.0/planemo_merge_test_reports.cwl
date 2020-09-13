@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../planemo_merge_test_reports.cwl
 inputs:
-- id: input_paths
+- id: in_input_paths
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: file_path
+- id: in_file_path
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - planemo

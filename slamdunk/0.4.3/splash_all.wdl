@@ -2,12 +2,12 @@ version 1.0
 
 task SplashAll {
   input {
-    String? reference
-    String? bed
-    String? read_length
-    String? output_dir
+    File? reference
+    File? bed
+    Int? read_length
+    Directory? output_dir
     String? snp_rate
-    String? read_coverage
+    Int? read_coverage
     String? sequencing_error
     String? pulse
     String? rates
@@ -15,8 +15,8 @@ task SplashAll {
     String? tc_rate
     Int? min_half_life
     Int? max_half_life
-    String? threads
-    String? replicates
+    Int? threads
+    Int? replicates
     Boolean? skip_turnover
   }
   command <<<
@@ -36,7 +36,7 @@ task SplashAll {
       ~{if defined(max_half_life) then ("--max-halflife " +  '"' + max_half_life + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(replicates) then ("--replicates " +  '"' + replicates + '"') else ""} \
-      ~{true="--skip-turnover" false="" skip_turnover}
+      ~{if (skip_turnover) then "--skip-turnover" else ""}
   >>>
   parameter_meta {
     reference: "Reference fasta file"
@@ -55,5 +55,9 @@ task SplashAll {
     threads: "Thread number"
     replicates: "Number of replicates"
     skip_turnover: "Take half-life from score filed of input BED file"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

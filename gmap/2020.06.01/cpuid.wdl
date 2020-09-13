@@ -4,4 +4,7 @@ task Cpuid {
   command <<<
     cpuid
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

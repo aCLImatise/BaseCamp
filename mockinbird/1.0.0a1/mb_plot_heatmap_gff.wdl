@@ -1,20 +1,23 @@
 version 1.0
 
-task MbPlotHeatmapGff {
+task MbplotheatmapGff {
   input {
-    String? downstream
     String? upstream
+    String? downstream
     String mb_plot_heat_map
   }
   command <<<
-    mb-plot-heatmap gff \
+    mb_plot_heatmap gff \
       ~{mb_plot_heat_map} \
-      ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""} \
-      ~{if defined(upstream) then ("--upstream " +  '"' + upstream + '"') else ""}
+      ~{if defined(upstream) then ("--upstream " +  '"' + upstream + '"') else ""} \
+      ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""}
   >>>
   parameter_meta {
-    downstream: ""
     upstream: ""
+    downstream: ""
     mb_plot_heat_map: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

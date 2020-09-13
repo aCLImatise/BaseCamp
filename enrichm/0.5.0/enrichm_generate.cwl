@@ -1,57 +1,70 @@
 class: CommandLineTool
 id: ../../../enrichm_generate.cwl
 inputs:
-- id: log
+- id: in_log
   doc: Output logging information to this file.
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: verbosity
+- id: in_verbosity
   doc: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
-  type: string
+  type: long
   inputBinding:
     prefix: --verbosity
-- id: output
+- id: in_output
   doc: Output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: force
+- id: in_force
   doc: Overwrite previous run
   type: boolean
   inputBinding:
     prefix: --force
-- id: input_matrix
+- id: in_input_matrix
   doc: input matrix of results
   type: string
   inputBinding:
     prefix: --input_matrix
-- id: groups
+- id: in_groups
   doc: defined outcomes to train the data to
   type: string
   inputBinding:
     prefix: --groups
-- id: model_type
+- id: in_model_type
   doc: regressor or classifier
   type: string
   inputBinding:
     prefix: --model_type
-- id: testing_portion
+- id: in_testing_portion
   doc: portion of the input data to use for testing (default = 0.2)
-  type: string
+  type: double
   inputBinding:
     prefix: --testing_portion
-- id: grid_search
+- id: in_grid_search
   doc: grid search
   type: boolean
   inputBinding:
     prefix: --grid_search
-- id: threads
+- id: in_threads
   doc: number of threads to use for hyperparameterization (default = all available)
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_log
+  doc: Output logging information to this file.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log)
+- id: out_output
+  doc: Output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - enrichm

@@ -4,4 +4,7 @@ task NeighborFilter {
   command <<<
     neighborFilter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

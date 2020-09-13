@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../phyluce_align_convert_one_align_to_another.cwl
 inputs:
-- id: alignments
-  doc: The directory containing the alignments to convert.
-  type: string
-  inputBinding:
-    prefix: --alignments
-- id: output
-  doc: An output directory to hold the converted alignments.
+- id: in_output
+  doc: ''
   type: string
   inputBinding:
     prefix: --output
-- id: input_format
+- id: in_alignments
+  doc: The directory containing the alignments to convert.
+  type: Directory
+  inputBinding:
+    prefix: --alignments
+- id: in_input_format
   doc: The input alignment format
   type: string
   inputBinding:
     prefix: --input-format
-- id: output_format
+- id: in_output_format
   doc: The input alignment format
   type: string
   inputBinding:
     prefix: --output-format
-- id: cores
+- id: in_cores
   doc: The number of compute cores to use
-  type: string
+  type: long
   inputBinding:
     prefix: --cores
-- id: shorten_names
+- id: in_shorten_names
   doc: Convert names to a 6 or 7 character representation
   type: boolean
   inputBinding:
     prefix: --shorten-names
-- id: name_conf
-  doc: A config-formatted file containing full-name:shortname mappings
-  type: string
+- id: in_name_conf
+  doc: "A config-formatted file containing full-name:shortname\nmappings"
+  type: File
   inputBinding:
     prefix: --name-conf
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_align_convert_one_align_to_another

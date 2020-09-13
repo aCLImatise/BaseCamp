@@ -1,17 +1,20 @@
 version 1.0
 
-task ParseCategory {
+task Parsecategory {
   input {
     String cat
     String data_dot_txt
   }
   command <<<
-    parse-category \
+    parse_category \
       ~{cat} \
       ~{data_dot_txt}
   >>>
   parameter_meta {
     cat: ""
     data_dot_txt: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

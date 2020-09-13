@@ -1,44 +1,53 @@
 class: CommandLineTool
 id: ../../../IsobaricAnalyzer.cwl
 inputs:
-- id: type
+- id: in_type
   doc: "Isobaric Quantitation method used in the experiment. (default: 'itraq4plex'\
     \ valid: 'itraq4plex', 'itraq8plex', 'tmt10plex', 'tmt11plex', 'tmt6plex')"
-  type: string
+  type: long
   inputBinding:
     prefix: -type
-- id: in
+- id: in_in
   doc: "*        Input raw/picked data file  (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: "*       Output consensusXML file with quantitative information (valid formats:\
     \ 'consensusXML')"
   type: File
   inputBinding:
     prefix: -out
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "*       Output consensusXML file with quantitative information (valid formats:\
+    \ 'consensusXML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - IsobaricAnalyzer

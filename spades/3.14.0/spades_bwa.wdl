@@ -1,7 +1,10 @@
 version 1.0
 
-task SpadesBwa {
+task Spadesbwa {
   command <<<
-    spades-bwa
+    spades_bwa
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

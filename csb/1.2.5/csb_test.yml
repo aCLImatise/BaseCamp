@@ -1,30 +1,32 @@
 !Command
+command:
+- csb-test
 positional:
 - !Positional
-  description: "An optional list of CSB test dotted namespaces, from which to load\
-    \ tests. '__main__' and '.' are interpreted as the current module. If a namespace\
-    \ ends with an asterisk '.*', all sub-packages will be scanned as well. Examples:\
-    \ \"csb.test.cases.bio.*\" \"csb.test.cases.bio.io\" \"csb.test.cases.bio.utils\"\
-    \ \".\")"
+  description: "An optional list of CSB test dotted namespaces, from\nwhich to load\
+    \ tests. '__main__' and '.' are\ninterpreted as the current module. If a namespace\
+    \ ends\nwith an asterisk '.*', all sub-packages will be\nscanned as well. Examples:\
+    \ \"csb.test.cases.bio.*\"\n\"csb.test.cases.bio.io\" \"csb.test.cases.bio.utils\"\
+    \n\".\")"
   position: 0
   name: namespaces
   optional: false
 named:
 - !Flag
-  description: Type of tests to load from each namespace (default=any)
+  description: "Type of tests to load from each namespace\n(default=any)"
   synonyms:
   - -t
   - --type
   args: !ChoiceFlagArg
     choices: !!set
       ? any
+      ? unit
+      ? custom
       ? functional
       ? regression
-      ? custom
-      ? unit
   optional: true
 - !Flag
-  description: Verbosity level passed to unittest.TextTestRunner (default=1).
+  description: "Verbosity level passed to unittest.TextTestRunner\n(default=1)."
   synonyms:
   - -v
   - --verbosity
@@ -32,26 +34,24 @@ named:
     name: VERBOSITY
   optional: true
 - !Flag
-  description: Force update of the test pickles in /tmp/tmp55avv5mq/lib/python3.8/site-
-    packages/csb/test/data
+  description: "Force update of the test pickles in\n/usr/local/lib/python3.6/site-packages/csb/test/data"
   synonyms:
   - -u
   - --update-files
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Generate, store and load additional test resources in this directory
-    (default=/tmp/tmp55avv5mq/lib/python3.8/site- packages/csb/test/data)
+  description: "Generate, store and load additional test resources in\nthis directory\
+    \ (default=/usr/local/lib/python3.6/site-\npackages/csb/test/data)\n"
   synonyms:
   - -g
   - --generated-resources
   args: !SimpleFlagArg
     name: GENERATED_RESOURCES
   optional: true
-command:
-- csb-test
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -75,10 +75,10 @@ help_text: "usage: csb-test [-h] [-t {unit,functional,custom,any,regression}]\n 
   \ tests to load from each namespace\n                        (default=any)\n  -v\
   \ VERBOSITY, --verbosity VERBOSITY\n                        Verbosity level passed\
   \ to unittest.TextTestRunner\n                        (default=1).\n  -u, --update-files\
-  \    Force update of the test pickles in\n                        /tmp/tmp55avv5mq/lib/python3.8/site-\n\
-  \                        packages/csb/test/data\n  -g GENERATED_RESOURCES, --generated-resources\
-  \ GENERATED_RESOURCES\n                        Generate, store and load additional\
-  \ test resources in\n                        this directory\n                  \
-  \      (default=/tmp/tmp55avv5mq/lib/python3.8/site-\n                        packages/csb/test/data)\n"
+  \    Force update of the test pickles in\n                        /usr/local/lib/python3.6/site-packages/csb/test/data\n\
+  \  -g GENERATED_RESOURCES, --generated-resources GENERATED_RESOURCES\n         \
+  \               Generate, store and load additional test resources in\n        \
+  \                this directory (default=/usr/local/lib/python3.6/site-\n      \
+  \                  packages/csb/test/data)\n"
 generated_using:
 - --help

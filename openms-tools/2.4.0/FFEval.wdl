@@ -4,14 +4,14 @@ task FFEval {
   input {
     File? in
     File? truth
-    String? rt_to_l
-    String? rt_to_l_abs
-    String? mz_to_l
+    Int? rt_to_l
+    Int? rt_to_l_abs
+    Int? mz_to_l
     File? out
     File? abort_reasons
     File? out_roc
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -28,7 +28,7 @@ task FFEval {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*            Feature input file, which contains the data to be tested against the truth file. (valid formats: 'featureXML')"
@@ -43,5 +43,8 @@ task FFEval {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

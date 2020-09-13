@@ -1,15 +1,15 @@
 version 1.0
 
-task ProkkaClustersToHmm {
+task ProkkaclustersToHmm {
   input {
     Boolean? verbose
-    String? dir
+    Directory? dir
     String? lib
-    String? outdir
+    Directory? outdir
   }
   command <<<
-    prokka-clusters_to_hmm \
-      ~{true="--verbose" false="" verbose} \
+    prokka_clusters_to_hmm \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""} \
       ~{if defined(lib) then ("--lib " +  '"' + lib + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
@@ -19,5 +19,9 @@ task ProkkaClustersToHmm {
     dir: "Source CLUSTERS folder (default '/bio/data/CLUSTERS/latest')."
     lib: "Library: PHA PRK ... (default '')."
     outdir: "Output folder for .hmm files and indices (default '.')."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

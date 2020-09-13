@@ -3,11 +3,11 @@ version 1.0
 task Wtmsa {
   input {
     Int? total_parallel_jobs
-    Int? index_current_based
-    String? input_file_layout
-    String? output_file_consensus
-    String? print_backbone_sequences
-    String? print_dot_graph
+    Int? index_run_wtmsa
+    File? input_file_layout
+    File? output_file_consensus
+    File? print_backbone_sequences
+    File? print_dot_graph
     Boolean? force_overwrite
     Boolean? trun_homopolymer_compression
     Int? zmer_size_z
@@ -33,13 +33,13 @@ task Wtmsa {
   command <<<
     wtmsa \
       ~{if defined(total_parallel_jobs) then ("-P " +  '"' + total_parallel_jobs + '"') else ""} \
-      ~{if defined(index_current_based) then ("-p " +  '"' + index_current_based + '"') else ""} \
+      ~{if defined(index_run_wtmsa) then ("-p " +  '"' + index_run_wtmsa + '"') else ""} \
       ~{if defined(input_file_layout) then ("-i " +  '"' + input_file_layout + '"') else ""} \
       ~{if defined(output_file_consensus) then ("-o " +  '"' + output_file_consensus + '"') else ""} \
       ~{if defined(print_backbone_sequences) then ("-B " +  '"' + print_backbone_sequences + '"') else ""} \
       ~{if defined(print_dot_graph) then ("-G " +  '"' + print_dot_graph + '"') else ""} \
-      ~{true="-f" false="" force_overwrite} \
-      ~{true="-H" false="" trun_homopolymer_compression} \
+      ~{if (force_overwrite) then "-f" else ""} \
+      ~{if (trun_homopolymer_compression) then "-H" else ""} \
       ~{if defined(zmer_size_z) then ("-z " +  '"' + zmer_size_z + '"') else ""} \
       ~{if defined(zmer_window) then ("-y " +  '"' + zmer_window + '"') else ""} \
       ~{if defined(minimum_size_seeding) then ("-R " +  '"' + minimum_size_seeding + '"') else ""} \
@@ -51,18 +51,18 @@ task Wtmsa {
       ~{if defined(turn_homopolymer_merge) then ("-V " +  '"' + turn_homopolymer_merge + '"') else ""} \
       ~{if defined(alignment_penalty_gap) then ("-E " +  '"' + alignment_penalty_gap + '"') else ""} \
       ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""} \
-      ~{true="-F" false="" disable_phreadqv_refinealignment} \
+      ~{if (disable_phreadqv_refinealignment) then "-F" else ""} \
       ~{if defined(minimum_bandwidth_pairwise) then ("-w " +  '"' + minimum_bandwidth_pairwise + '"') else ""} \
       ~{if defined(maximum_bandwidth_pairwise) then ("-W " +  '"' + maximum_bandwidth_pairwise + '"') else ""} \
       ~{if defined(maximum_bandwidth_ending) then ("-e " +  '"' + maximum_bandwidth_ending + '"') else ""} \
       ~{if defined(basic_bandwidth_graph) then ("-g " +  '"' + basic_bandwidth_graph + '"') else ""} \
       ~{if defined(minimum_alignment_identity) then ("-m " +  '"' + minimum_alignment_identity + '"') else ""} \
       ~{if defined(number_iterations_consensus) then ("-n " +  '"' + number_iterations_consensus + '"') else ""} \
-      ~{true="-v" false="" verbose}
+      ~{if (verbose) then "-v" else ""}
   >>>
   parameter_meta {
     total_parallel_jobs: "Total parallel jobs, [1]"
-    index_current_based: "Index of current job (0-based), [0] Suppose to run wtmsa for the same layout file parallelly in 60 cpu. For cpu1, -P 60 -p 0; cpu2, -P 60 -p 1, ..."
+    index_run_wtmsa: "Index of current job (0-based), [0]\\nSuppose to run wtmsa for the same layout file parallelly in 60 cpu. For cpu1, -P 60 -p 0; cpu2, -P 60 -p 1, ..."
     input_file_layout: "Input file, layout from wtlay, +, *"
     output_file_consensus: "Output file, consensus sequences, *"
     print_backbone_sequences: "Print backbone sequences on file for debug [NULL]"
@@ -88,5 +88,9 @@ task Wtmsa {
     minimum_alignment_identity: "Minimum alignment identity, [0.5]"
     number_iterations_consensus: "Number of iterations for consensus calling, the more, the accurater, the slower [2]"
     verbose: "Verbose, +"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_consensus = "${in_output_file_consensus}"
   }
 }

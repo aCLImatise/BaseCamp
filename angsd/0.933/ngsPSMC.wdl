@@ -4,4 +4,7 @@ task NgsPSMC {
   command <<<
     ngsPSMC
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

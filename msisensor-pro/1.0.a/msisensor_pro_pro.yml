@@ -1,4 +1,7 @@
-&id003 !Command
+&id002 !Command
+command:
+- msisensor-pro
+- pro
 positional: []
 named:
 - !Flag
@@ -99,17 +102,17 @@ named:
   - '-0'
   args: !EmptyFlagArg {}
   optional: true
-command:
-- msisensor-pro
-- pro
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - msisensor-pro
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - msisensor-pro
+    - scan
     positional: []
     named:
     - !Flag
@@ -161,11 +164,9 @@ parent: &id001 !Command
       - -p
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - msisensor-pro
-    - scan
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: help
       synonyms:
@@ -192,9 +193,18 @@ parent: &id001 !Command
       \ Zhang, Charles Lu, Mingchao Xie, Michael D. McLellan, Michael C. Wendl and\
       \ Li Ding#.MSIsensor: microsatellite instability detection using paired tumor-normal\
       \ sequence data. Bioinformatics 30, 1015–1016 (2014).\n \n\n"
-    generated_using: &id002 []
+    generated_using: &id003 []
+  - *id002
   - !Command
-    positional: []
+    command:
+    - msisensor-pro
+    - baseline
+    positional:
+    - !Positional
+      description: case1     /path/to/case1_sorted.bam
+      position: 0
+      name: e.g.
+      optional: false
     named:
     - !Flag
       description: <string>   homopolymer and microsatellite file
@@ -203,8 +213,7 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: <string>   configure files for building baseline (text file)  e.g.
-        case1     /path/to/case1_sorted.bam case2     /path/to/case1_sorted.bam case2     /path/to/case1-sorted.bam
+      description: <string>   configure files for building baseline (text file)
       synonyms:
       - -i
       args: !EmptyFlagArg {}
@@ -285,11 +294,9 @@ parent: &id001 !Command
       - '-0'
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - msisensor-pro
-    - baseline
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: help
       synonyms:
@@ -323,8 +330,11 @@ parent: &id001 !Command
       \ -i /path/to/configure.txt -o /path/to/baseline/directory \n\nNote:\n\n   If\
       \ you have any questions, please contact with Peng Jia (pengjia@stu.xjtu.edu.cn)\
       \ or Kai Ye (kaiye@xjtu.edu.cn) .\n\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - msisensor-pro
+    - msi
     positional: []
     named:
     - !Flag
@@ -441,11 +451,9 @@ parent: &id001 !Command
       - '-0'
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - msisensor-pro
-    - msi
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: help
       synonyms:
@@ -482,8 +490,8 @@ parent: &id001 !Command
       \ D. McLellan, Michael C. Wendl and Li Ding#.MSIsensor: microsatellite instability\
       \ detection using paired tumor-normal sequence data. Bioinformatics 30, 1015–1016\
       \ (2014).\n \n\n"
-    generated_using: *id002
-  - *id003
+    generated_using: *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -510,8 +518,9 @@ parent: &id001 !Command
     \ information with baseline on our github or use -i option in pro module to set\
     \ a hard cutoff directly.\n\n    If you have any questions, please contact with\
     \ Peng Jia (pengjia@stu.xjtu.edu.cn) or Kai Ye (kaiye@xjtu.edu.cn) .\n\n\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: help
   synonyms:
@@ -545,4 +554,4 @@ help_text: "\nUsage:  msisensor-pro pro [options] \n\n       -d   <string>   hom
   \      * You can use also use soft threshold train by your self or download on our\
   \ github(GRCh38.d1.vd1).\n\n   If you have any questions, please contact with Peng\
   \ Jia (pengjia@stu.xjtu.edu.cn) or Kai Ye (kaiye@xjtu.edu.cn) .\n\n"
-generated_using: *id002
+generated_using: *id003

@@ -3,17 +3,17 @@ version 1.0
 task Vcfroc {
   input {
     File? truth_vcf
-    String? window_size
+    Int? window_size
     Boolean? complex
     File? reference
-    String? vcf_file
+    File? vcf_file
   }
   command <<<
     vcfroc \
       ~{vcf_file} \
       ~{if defined(truth_vcf) then ("--truth-vcf " +  '"' + truth_vcf + '"') else ""} \
       ~{if defined(window_size) then ("--window-size " +  '"' + window_size + '"') else ""} \
-      ~{true="--complex" false="" complex} \
+      ~{if (complex) then "--complex" else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
   >>>
   parameter_meta {
@@ -22,5 +22,8 @@ task Vcfroc {
     complex: "directly compare complex alleles, don't parse into primitives"
     reference: "FASTA reference file"
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

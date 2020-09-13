@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../quasitools_dnds.cwl
 inputs:
-- id: csv
+- id: in_output
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --output
+- id: in_csv
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: reference
+- id: in_reference
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: offset
+- id: in_offset
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - quasitools

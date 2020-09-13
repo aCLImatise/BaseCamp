@@ -2,7 +2,7 @@ version 1.0
 
 task Astats {
   input {
-    String bank_path
+    File bank_path
   }
   command <<<
     astats \
@@ -10,5 +10,8 @@ task Astats {
   >>>
   parameter_meta {
     bank_path: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

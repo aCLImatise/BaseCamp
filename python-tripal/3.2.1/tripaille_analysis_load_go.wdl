@@ -4,12 +4,12 @@ task TripailleAnalysisLoadGo {
   input {
     String? organism
     Int? organism_id
-    String? gaf_ext
+    Directory? gaf_ext
     String? query_type
     String? query_matching
     String? method
     Int? name_column
-    String? re_name
+    File? re_name
     Boolean? no_wait
     String? algorithm
     String? source_version
@@ -33,7 +33,7 @@ task TripailleAnalysisLoadGo {
       ~{if defined(method) then ("--method " +  '"' + method + '"') else ""} \
       ~{if defined(name_column) then ("--name_column " +  '"' + name_column + '"') else ""} \
       ~{if defined(re_name) then ("--re_name " +  '"' + re_name + '"') else ""} \
-      ~{true="--no_wait" false="" no_wait} \
+      ~{if (no_wait) then "--no_wait" else ""} \
       ~{if defined(algorithm) then ("--algorithm " +  '"' + algorithm + '"') else ""} \
       ~{if defined(source_version) then ("--sourceversion " +  '"' + source_version + '"') else ""} \
       ~{if defined(source_uri) then ("--sourceuri " +  '"' + source_uri + '"') else ""} \
@@ -43,12 +43,12 @@ task TripailleAnalysisLoadGo {
   parameter_meta {
     organism: "Organism common name or abbreviation"
     organism_id: "Organism ID"
-    gaf_ext: "If looking for files in a directory, extension of the GAF files"
-    query_type: "The feature type (e.g. 'gene', 'mRNA', 'contig') of the query. It must be a valid Sequence Ontology term."
-    query_matching: "Method to match identifiers to features in the database. ('name', 'uniquename' or 'dbxref') [default: uniquename]"
+    gaf_ext: "If looking for files in a directory, extension of the\\nGAF files"
+    query_type: "The feature type (e.g. 'gene', 'mRNA', 'contig') of\\nthe query. It must be a valid Sequence Ontology term."
+    query_matching: "Method to match identifiers to features in the\\ndatabase. ('name', 'uniquename' or 'dbxref')\\n[default: uniquename]"
     method: "Import method ('add' or 'remove')  [default: add]"
-    name_column: "Column containing the feature identifiers (2, 3, 10 or 11; default=2).  [default: 2]"
-    re_name: "Regular expression to extract the feature name from GAF file."
+    name_column: "Column containing the feature identifiers (2, 3, 10\\nor 11; default=2).  [default: 2]"
+    re_name: "Regular expression to extract the feature name from\\nGAF file."
     no_wait: "Do not wait for job to complete"
     algorithm: "analysis algorithm"
     source_version: "analysis sourceversion"
@@ -58,5 +58,8 @@ task TripailleAnalysisLoadGo {
     name: ""
     program: ""
     program_version: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

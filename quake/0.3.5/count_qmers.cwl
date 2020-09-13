@@ -1,32 +1,41 @@
 class: CommandLineTool
 id: ../../../count_qmers.cwl
 inputs:
-- id: fastq_file_count
+- id: in_fastq_file_count
   doc: fastq file to count
-  type: string
+  type: File
   inputBinding:
     prefix: -f
-- id: length_of_kmer
-  doc: 'Length of kmer '
-  type: string
-  inputBinding:
-    prefix: -k
-- id: minimum_count_report
-  doc: 'Minimum count to report (default: >0)'
+- id: in_length_of_kmer
+  doc: Length of kmer
   type: long
   inputBinding:
-    prefix: -m
-- id: gigabyte_limit_ram
-  doc: Gigabyte limit on RAM. If limited, the output will contain redundancies
+    prefix: -k
+- id: in_gigabyte_limit_ram
+  doc: "Gigabyte limit on RAM. If limited, the output will\ncontain redundancies"
   type: string
   inputBinding:
     prefix: -l
-- id: quality_value_ascii
-  doc: Quality value ascii scale, generally 64 or 33.  If not specified, it will guess.
-  type: string
+- id: in_define_hash_table
+  doc: 'Define hash table size explicitly. [Default: chosen via k]'
+  type: long
+  inputBinding:
+    prefix: -t
+- id: in_maximum_kmer_count
+  doc: 'Maximum k-mer count. [Default: 500]'
+  type: long
+  inputBinding:
+    prefix: -m
+- id: in_quality_value_ascii
+  doc: "Quality value ascii scale, generally 64 or 33.  If\nnot specified, it will\
+    \ guess.\n"
+  type: long
   inputBinding:
     prefix: -q
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- count-qmers
+- count_qmers

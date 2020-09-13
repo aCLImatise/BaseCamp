@@ -2,16 +2,20 @@ version 1.0
 
 task Glam2mask {
   input {
-    String my_motif_dot_glam_two
-    String my_seqs_dot_fa
+    File? output_file_stdout
+    Boolean? _mask_character
   }
   command <<<
     glam2mask \
-      ~{my_motif_dot_glam_two} \
-      ~{my_seqs_dot_fa}
+      ~{if (output_file_stdout) then "-o" else ""} \
+      ~{if (_mask_character) then "-x" else ""}
   >>>
   parameter_meta {
-    my_motif_dot_glam_two: ""
-    my_seqs_dot_fa: ""
+    output_file_stdout: ": output file (stdout)"
+    _mask_character: ": mask character (x)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_stdout = "${in_output_file_stdout}"
   }
 }

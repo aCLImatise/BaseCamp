@@ -12,6 +12,9 @@ task KtImportRDPComparison {
   >>>
   parameter_meta {
     rdp_comparison: "RDP comparison result downloaded as text."
-    name: "A name for each library to appear in the chart. The default is \"Library [1/2]\". _________"
+    name: "A name for each library to appear in the chart. The default\\nis \\\"Library [1/2]\\\".\\n_________"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

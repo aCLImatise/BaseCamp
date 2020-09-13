@@ -1,27 +1,80 @@
 class: CommandLineTool
 id: ../../../pmp_bf.cwl
 inputs:
-- id: verbosity
+- id: in_hb
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --hb
+- id: in_model
+  doc: '|average|jc|k2|f81|f84|hky|tn (default=f81)'
+  type: long
+  inputBinding:
+    prefix: --model
+- id: in_pur_pyr
+  doc: (default=1.0)
+  type: double
+  inputBinding:
+    prefix: --pur-pyr
+- id: in_transition_transversion
+  doc: (default=0.5)
+  type: double
+  inputBinding:
+    prefix: --transition-transversion
+- id: in_bg
+  doc: (default=1.0)
+  type: double
+  inputBinding:
+    prefix: --bg
+- id: in_fg
+  doc: (default=1.0)
+  type: double
+  inputBinding:
+    prefix: --fg
+- id: in_motif
+  doc: (default=all)
+  type: string
+  inputBinding:
+    prefix: --motif
+- id: in_b_file
+  doc: (default from motif file)
+  type: File
+  inputBinding:
+    prefix: --bfile
+- id: in_pseudo_count
+  doc: (default=0.1)
+  type: double
+  inputBinding:
+    prefix: --pseudocount
+- id: in_ustar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --ustar
+- id: in_verbosity
   doc: '[1|2|3|4] (default 2)'
   type: boolean
   inputBinding:
     prefix: --verbosity
-- id: pmp
+- id: in_pmp
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: tree_file
+- id: in_tree_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: meme_file
+- id: in_meme_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pmp_bf

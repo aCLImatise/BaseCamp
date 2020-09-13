@@ -1,56 +1,14 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - agg
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: input_gvcf
-    optional: false
-  named:
-  - !Flag
-    description: agg will output output_prefix.bcf and output_prefix.tmp
-    synonyms:
-    - -o
-    - --output
-    args: !SimpleFlagArg
-      name: output_prefix
-    optional: true
-  - !Flag
-    description: reference sequence
-    synonyms:
-    - -f
-    - --fasta-ref
-    args: !SimpleFlagArg
-      name: file
-    optional: true
-  - !Flag
-    description: skip non-matching ref alleles (will warn)
-    synonyms:
-    - --ignore-non-matching-ref
-    args: !EmptyFlagArg {}
-    optional: true
   command:
   - agg
-  - ingest1
-  parent: *id001
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "\nAbout:   ingests a single sample gvcf into a variant-only .bcf and\
-    \ tempory depth interval (.tmp)\nUsage:   agg ingest1 <input_gvcf>\n\nRequired\
-    \ options:\n    -o, --output <output_prefix>      agg will output output_prefix.bcf\
-    \ and output_prefix.tmp\n    -f, --fasta-ref <file>            reference sequence\n\
-    \        --ignore-non-matching-ref     skip non-matching ref alleles (will warn)\n\
-    \n\n"
-  generated_using: &id002 []
-- !Command
+  - ingest2
   positional:
   - !Positional
     description: ''
@@ -81,11 +39,9 @@ subcommands:
     - --list
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - agg
-  - ingest2
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -95,8 +51,57 @@ subcommands:
     \ output_prefix.dpt\nOptional options:\n    -@, --thread INT                 \
     \  number of compression threads [0]\n    -l, --list   files.txt             plain\
     \ text file listing agg chunks to merge]\n\n\n"
+  generated_using: &id002 []
+- !Command
+  command:
+  - agg
+  - ingest1
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input_gvcf
+    optional: false
+  named:
+  - !Flag
+    description: agg will output output_prefix.bcf and output_prefix.tmp
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: output_prefix
+    optional: true
+  - !Flag
+    description: reference sequence
+    synonyms:
+    - -f
+    - --fasta-ref
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: skip non-matching ref alleles (will warn)
+    synonyms:
+    - --ignore-non-matching-ref
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nAbout:   ingests a single sample gvcf into a variant-only .bcf and\
+    \ tempory depth interval (.tmp)\nUsage:   agg ingest1 <input_gvcf>\n\nRequired\
+    \ options:\n    -o, --output <output_prefix>      agg will output output_prefix.bcf\
+    \ and output_prefix.tmp\n    -f, --fasta-ref <file>            reference sequence\n\
+    \        --ignore-non-matching-ref     skip non-matching ref alleles (will warn)\n\
+    \n\n"
   generated_using: *id002
 - !Command
+  command:
+  - agg
+  - genotype
   positional:
   - !Positional
     description: ''
@@ -133,11 +138,9 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  command:
-  - agg
-  - genotype
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -151,6 +154,9 @@ subcommands:
   generated_using:
   - --help
 - !Command
+  command:
+  - agg
+  - anno
   positional:
   - !Positional
     description: ''
@@ -159,14 +165,14 @@ subcommands:
     optional: false
   named:
   - !Flag
-    description: "filters to apply eg. -i 'QUAL>=10 && DP<100000 && HWE<10' "
+    description: filters to apply eg. -i 'QUAL>=10 && DP<100000 && HWE<10'
     synonyms:
     - -i
     - --include
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 'a set of variants that are trusted (eg. 1000G) '
+    description: a set of variants that are trusted (eg. 1000G)
     synonyms:
     - -R
     - --regions
@@ -188,11 +194,9 @@ subcommands:
     args: !SimpleFlagArg
       name: b|u|z|v
     optional: true
-  command:
-  - agg
-  - anno
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -202,6 +206,7 @@ subcommands:
     \          output file name [stdout]\n    -O, --output-type <b|u|z|v>       b:\
     \ compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed\n\n"
   generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:

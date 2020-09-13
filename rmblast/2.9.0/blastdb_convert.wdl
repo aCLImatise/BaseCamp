@@ -11,4 +11,7 @@ task BlastdbConvert {
   parameter_meta {
     out: "[-logfile File_Name] [-version]"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -14,4 +14,7 @@ task Jasmine {
     var_command: ""
     line: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

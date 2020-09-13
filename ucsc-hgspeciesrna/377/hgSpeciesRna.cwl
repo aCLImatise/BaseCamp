@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../hgSpeciesRna.cwl
 inputs:
-- id: est
+- id: in_est
   doc: '- If set will get ESTs rather than mRNAs'
   type: boolean
   inputBinding:
     prefix: -est
-- id: filter
+- id: in_filter
   doc: '- only read accessions listed in file'
   type: File
   inputBinding:
     prefix: -filter
-- id: database
+- id: in_database
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: genus
+- id: in_genus
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: species
+- id: in_species
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: output_dot_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hgSpeciesRna

@@ -11,4 +11,7 @@ task RefSeqsFromBam {
   parameter_meta {
     bam: "input bam file, MD tag must be set (mini_align -m)."
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

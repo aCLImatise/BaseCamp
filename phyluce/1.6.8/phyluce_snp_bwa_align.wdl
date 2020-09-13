@@ -2,12 +2,12 @@ version 1.0
 
 task PhyluceSnpBwaAlign {
   input {
-    String? config
-    String? directory_store_files
+    File? config
+    Directory? directory_store_files
     String? subfolder
-    String? cores
+    Int? cores
     String? verbosity
-    String? log_path
+    File? log_path
     Boolean? no_remove_duplicates
     Boolean? mem
   }
@@ -19,17 +19,20 @@ task PhyluceSnpBwaAlign {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
-      ~{true="--no-remove-duplicates" false="" no_remove_duplicates} \
-      ~{true="--mem" false="" mem}
+      ~{if (no_remove_duplicates) then "--no-remove-duplicates" else ""} \
+      ~{if (mem) then "--mem" else ""}
   >>>
   parameter_meta {
     config: "A configuration file containing"
     directory_store_files: "The directory in which to store the SNPs files"
-    subfolder: "A subdirectory, below the level of the group, containing the reads"
+    subfolder: "A subdirectory, below the level of the group,\\ncontaining the reads"
     cores: "The number of compute cores/threads to use"
     verbosity: "The logging level to use"
     log_path: "The path to a directory to hold logs."
     no_remove_duplicates: "Do not remove duplicate reads."
     mem: "Use bwa mem."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

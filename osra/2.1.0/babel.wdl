@@ -2,28 +2,28 @@ version 1.0
 
 task Babel {
   input {
-    Boolean? i
     Boolean? o
+    Boolean? i
     String? input_type
-    String var_3
+    String name
     String? output_type
-    String var_5
   }
   command <<<
     babel \
       ~{input_type} \
-      ~{var_3} \
+      ~{name} \
       ~{output_type} \
-      ~{var_5} \
-      ~{true="-i" false="" i} \
-      ~{true="-o" false="" o}
+      ~{if (o) then "-o" else ""} \
+      ~{if (i) then "-i" else ""}
   >>>
   parameter_meta {
-    i: ""
     o: ""
+    i: ""
     input_type: ""
-    var_3: ""
+    name: ""
     output_type: ""
-    var_5: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

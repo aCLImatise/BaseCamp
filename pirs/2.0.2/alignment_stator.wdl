@@ -2,7 +2,7 @@ version 1.0
 
 task AlignmentStator {
   input {
-    String? pause_batch_runsm
+    Int? pause_batch_runsm
   }
   command <<<
     alignment_stator \
@@ -10,5 +10,8 @@ task AlignmentStator {
   >>>
   parameter_meta {
     pause_batch_runsm: "pause for batch runs[32;1m"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

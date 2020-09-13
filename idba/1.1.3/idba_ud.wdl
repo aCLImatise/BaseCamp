@@ -2,27 +2,27 @@ version 1.0
 
 task IdbaUd {
   input {
-    String? out
-    String? read
-    String? read_level_two
-    String? read_level_three
-    String? read_level_four
-    String? read_level_five
-    String? long_read
-    String? mink
-    String? max_k
-    String? step
-    String? inner_mink
-    String? inner_step
-    String? prefix
-    String? min_count
-    String? min_support
-    String? num_threads
-    String? seed_km_er
-    String? min_contig
-    String? similar
-    String? max_mismatch
-    String? min_pairs
+    Directory? out
+    File? read
+    Int? read_level_two
+    Int? read_level_three
+    Int? read_level_four
+    Int? read_level_five
+    File? long_read
+    Int? mink
+    Int? max_k
+    Int? step
+    Int? inner_mink
+    Int? inner_step
+    Int? prefix
+    Int? min_count
+    Int? min_support
+    Int? num_threads
+    Int? seed_km_er
+    Int? min_contig
+    Float? similar
+    Int? max_mismatch
+    Int? min_pairs
     Boolean? no_bubble
     Boolean? no_local
     Boolean? no_coverage
@@ -52,11 +52,11 @@ task IdbaUd {
       ~{if defined(similar) then ("--similar " +  '"' + similar + '"') else ""} \
       ~{if defined(max_mismatch) then ("--max_mismatch " +  '"' + max_mismatch + '"') else ""} \
       ~{if defined(min_pairs) then ("--min_pairs " +  '"' + min_pairs + '"') else ""} \
-      ~{true="--no_bubble" false="" no_bubble} \
-      ~{true="--no_local" false="" no_local} \
-      ~{true="--no_coverage" false="" no_coverage} \
-      ~{true="--no_correct" false="" no_correct} \
-      ~{true="--pre_correction" false="" pre_correction}
+      ~{if (no_bubble) then "--no_bubble" else ""} \
+      ~{if (no_local) then "--no_local" else ""} \
+      ~{if (no_coverage) then "--no_coverage" else ""} \
+      ~{if (no_correct) then "--no_correct" else ""} \
+      ~{if (pre_correction) then "--pre_correction" else ""}
   >>>
   parameter_meta {
     out: "(=out)                   output directory"
@@ -85,5 +85,9 @@ task IdbaUd {
     no_coverage: "do not iterate on coverage"
     no_correct: "do not do correction"
     pre_correction: "perform pre-correction before assembly"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
   }
 }

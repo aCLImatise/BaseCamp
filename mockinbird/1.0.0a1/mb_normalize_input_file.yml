@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- mb-normalize
+- input_file
 positional:
 - !Positional
   description: ''
@@ -13,26 +16,25 @@ named:
   args: !SimpleFlagArg
     name: MUT_SNP_RATIO
   optional: true
-command:
-- mb-normalize
-- input_file
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - mb-normalize
   positional: []
   named:
   - !Flag
-    description: remove positions with SNP-ratio > r
+    description: "remove positions with SNP-ratio > r\n"
     synonyms:
     - --mut_snp_ratio
     - -r
     args: !SimpleFlagArg
       name: MUT_SNP_RATIO
     optional: true
-  command:
-  - mb-normalize
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - mb-normalize
+    - output_file
     positional:
     - !Positional
       description: ''
@@ -47,11 +49,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: MUT_SNP_RATIO
       optional: true
-    command:
-    - mb-normalize
-    - output_file
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -65,7 +65,11 @@ parent: &id002 !Command
       \ argument input_file: 'output_file' does not exist\n"
     generated_using: &id003
     - --help
+  - *id002
   - !Command
+    command:
+    - mb-normalize
+    - normalization_pileup
     positional:
     - !Positional
       description: ''
@@ -80,11 +84,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: MUT_SNP_RATIO
       optional: true
-    command:
-    - mb-normalize
-    - normalization_pileup
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -97,6 +99,7 @@ parent: &id002 !Command
       \             input_file output_file normalization_pileup\nmb-normalize: error:\
       \ argument input_file: 'normalization_pileup' does not exist\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -117,6 +120,7 @@ parent: &id002 !Command
     \ MUT_SNP_RATIO\n                        remove positions with SNP-ratio > r\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

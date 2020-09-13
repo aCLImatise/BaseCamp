@@ -1,13 +1,13 @@
 version 1.0
 
-task ReduceAlignment {
+task Reducealignment {
   input {
     String start
     String width
     String alignment
   }
   command <<<
-    reduce-alignment \
+    reduce_alignment \
       ~{start} \
       ~{width} \
       ~{alignment}
@@ -16,5 +16,8 @@ task ReduceAlignment {
     start: ""
     width: ""
     alignment: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -15,9 +15,12 @@ task GsutilMb {
       ~{if defined(same_as_c) then ("-s " +  '"' + same_as_c + '"') else ""}
   >>>
   parameter_meta {
-    specifies_default_storage: "Specifies the default storage class. Default is \"Standard\"."
-    can_multiregional_regional: "Can be any multi-regional or regional location. See https://cloud.google.com/storage/docs/storage-classes for a discussion of this distinction. Default is US. Locations are case insensitive."
+    specifies_default_storage: "Specifies the default storage class. Default is \\\"Standard\\\"."
+    can_multiregional_regional: "Can be any multi-regional or regional location. See\\nhttps://cloud.google.com/storage/docs/storage-classes\\nfor a discussion of this distinction. Default is US.\\nLocations are case insensitive."
     specifies_project_id: "Specifies the project ID under which to create the bucket."
     same_as_c: "Same as -c."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

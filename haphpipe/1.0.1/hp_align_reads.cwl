@@ -1,88 +1,101 @@
 class: CommandLineTool
 id: ../../../hp_align_reads.cwl
 inputs:
-- id: fq_one
+- id: in_fq_one
   doc: Fastq file with read 1
-  type: string
+  type: long
   inputBinding:
     prefix: --fq1
-- id: fq_two
+- id: in_fq_two
   doc: Fastq file with read 2
-  type: string
+  type: long
   inputBinding:
     prefix: --fq2
-- id: f_qu
+- id: in_f_qu
   doc: Fastq file with unpaired reads
-  type: string
+  type: File
   inputBinding:
     prefix: --fqU
-- id: ref_fa
+- id: in_ref_fa
   doc: Reference fasta file.
-  type: string
+  type: File
   inputBinding:
     prefix: --ref_fa
-- id: outdir
+- id: in_outdir
   doc: 'Output directory (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: bt_two_preset
+- id: in_bt_two_preset
   doc: 'Bowtie2 preset (default: sensitive-local)'
   type: string
   inputBinding:
     prefix: --bt2_preset
-- id: sample_id
-  doc: 'Sample ID. Used as read group ID in BAM (default: sampleXX)'
+- id: in_sample_id
+  doc: "Sample ID. Used as read group ID in BAM (default:\nsampleXX)"
   type: string
   inputBinding:
     prefix: --sample_id
-- id: no_realign
+- id: in_no_realign
   doc: 'Do not realign indels (default: False)'
   type: boolean
   inputBinding:
     prefix: --no_realign
-- id: remove_duplicates
-  doc: 'Remove duplicates from final alignment. Otherwise duplicates are marked but
-    not removed. (default: False)'
+- id: in_remove_duplicates
+  doc: "Remove duplicates from final alignment. Otherwise\nduplicates are marked but\
+    \ not removed. (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --remove_duplicates
-- id: encoding
-  doc: '{Phred+33,Phred+64} Quality score encoding'
+- id: in_encoding
+  doc: "{Phred+33,Phred+64}\nQuality score encoding"
   type: boolean
   inputBinding:
     prefix: --encoding
-- id: n_cpu
+- id: in_n_cpu
   doc: 'Number of CPUs to use (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --ncpu
-- id: x_mx
+- id: in_x_mx
   doc: 'Maximum heap size for Java VM, in GB. (default: 32)'
-  type: string
+  type: long
   inputBinding:
     prefix: --xmx
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'Do not delete temporary directory (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_tmp
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Append console output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Append console output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - hp_align_reads

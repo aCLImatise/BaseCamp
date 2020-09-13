@@ -1,7 +1,10 @@
 version 1.0
 
-task SketchyRs {
+task Sketchyrs {
   command <<<
-    sketchy-rs
+    sketchy_rs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

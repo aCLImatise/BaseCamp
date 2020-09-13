@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuSelectBackend {
+task Byobuselectbackend {
   command <<<
-    byobu-select-backend
+    byobu_select_backend
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

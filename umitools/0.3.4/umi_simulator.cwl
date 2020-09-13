@@ -1,65 +1,68 @@
 class: CommandLineTool
 id: ../../../umi_simulator.cwl
 inputs:
-- id: pcr_cycle
+- id: in_pcr_cycle
   doc: 'number of PCR cycles (default: 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: --pcr-cycle
-- id: umi_length
+- id: in_umi_length
   doc: 'length of UMI (default: 18)'
-  type: string
+  type: long
   inputBinding:
     prefix: --umi-length
-- id: pool_size
-  doc: 'initial pool size (number of molecules before PCR) (default: 100)'
-  type: string
+- id: in_pool_size
+  doc: "initial pool size (number of molecules before PCR)\n(default: 100)"
+  type: long
   inputBinding:
     prefix: --pool-size
-- id: output_size
-  doc: 'final pool size (sequencing depth, i.e. number of reads sampled from the PCR
-    amplified pool) (default: 100)'
-  type: string
+- id: in_output_size
+  doc: "final pool size (sequencing depth, i.e. number of\nreads sampled from the\
+    \ PCR amplified pool) (default:\n100)"
+  type: long
   inputBinding:
     prefix: --output-size
-- id: amplification_rate
-  doc: 'successful rate of PCR amplification. The actual amplification rate is uniformally
-    distributed between this number and 1 (default: 0.8)'
-  type: string
+- id: in_amplification_rate
+  doc: "successful rate of PCR amplification. The actual\namplification rate is uniformally\
+    \ distributed between\nthis number and 1 (default: 0.8)"
+  type: long
   inputBinding:
     prefix: --amplification-rate
-- id: pcr_error
+- id: in_pcr_error
   doc: 'error rate of PCR amplification (default: 3e-05)'
-  type: string
+  type: double
   inputBinding:
     prefix: --pcr-error
-- id: sequencing_error
+- id: in_sequencing_error
   doc: 'error rate of sequencing (default: 0.001)'
-  type: string
+  type: double
   inputBinding:
     prefix: --sequencing-error
-- id: task
-  doc: 'tasks to simulate multiple conditions. Other PCR- related arguments are ignored
-    when this option is used (default: None)'
+- id: in_task
+  doc: "tasks to simulate multiple conditions. Other PCR-\nrelated arguments are ignored\
+    \ when this option is used\n(default: None)"
   type: string
   inputBinding:
     prefix: --task
-- id: task_rep
+- id: in_task_rep
   doc: 'number of replicates when doing tasks (default: 100)'
-  type: string
+  type: long
   inputBinding:
     prefix: --task-rep
-- id: cpu
+- id: in_cpu
   doc: 'Tasks supporting multiprocessing. (default: 16)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpu
-- id: seed
+- id: in_seed
   doc: 'starting seed (default: 0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - umi_simulator

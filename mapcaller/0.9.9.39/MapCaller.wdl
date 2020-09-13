@@ -3,7 +3,7 @@ version 1.0
 task MapCaller {
   input {
     String? bwtindexprefix
-    String? reference_filename_formatfa
+    File? reference_filename_formatfa
     Boolean? f
     Boolean? f_two
     Int? number_of_threads
@@ -13,12 +13,12 @@ task MapCaller {
     Int? dup
     Float? max_mm
     Int? max_clip
-    Boolean? sam
-    Boolean? bam
-    String? alg
-    Boolean? vcf
+    File? sam
+    File? bam
+    Int? alg
+    File? vcf
     Boolean? gvc_f
-    String? log
+    File? log
     Boolean? monomorphic
     Int? min_cnv
     Int? min_gap
@@ -34,31 +34,31 @@ task MapCaller {
     MapCaller \
       ~{if defined(bwtindexprefix) then ("-i " +  '"' + bwtindexprefix + '"') else ""} \
       ~{if defined(reference_filename_formatfa) then ("-r " +  '"' + reference_filename_formatfa + '"') else ""} \
-      ~{true="-f" false="" f} \
-      ~{true="-f2" false="" f_two} \
+      ~{if (f) then "-f" else ""} \
+      ~{if (f_two) then "-f2" else ""} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
-      ~{true="-size" false="" size} \
+      ~{if (size) then "-size" else ""} \
       ~{if defined(in_del) then ("-indel " +  '"' + in_del + '"') else ""} \
       ~{if defined(ad) then ("-ad " +  '"' + ad + '"') else ""} \
       ~{if defined(dup) then ("-dup " +  '"' + dup + '"') else ""} \
       ~{if defined(max_mm) then ("-maxmm " +  '"' + max_mm + '"') else ""} \
       ~{if defined(max_clip) then ("-maxclip " +  '"' + max_clip + '"') else ""} \
-      ~{true="-sam" false="" sam} \
-      ~{true="-bam" false="" bam} \
+      ~{if (sam) then "-sam" else ""} \
+      ~{if (bam) then "-bam" else ""} \
       ~{if defined(alg) then ("-alg " +  '"' + alg + '"') else ""} \
-      ~{true="-vcf" false="" vcf} \
-      ~{true="-gvcf" false="" gvc_f} \
+      ~{if (vcf) then "-vcf" else ""} \
+      ~{if (gvc_f) then "-gvcf" else ""} \
       ~{if defined(log) then ("-log " +  '"' + log + '"') else ""} \
-      ~{true="-monomorphic" false="" monomorphic} \
+      ~{if (monomorphic) then "-monomorphic" else ""} \
       ~{if defined(min_cnv) then ("-min_cnv " +  '"' + min_cnv + '"') else ""} \
       ~{if defined(min_gap) then ("-min_gap " +  '"' + min_gap + '"') else ""} \
       ~{if defined(ploidy) then ("-ploidy " +  '"' + ploidy + '"') else ""} \
-      ~{true="-m" false="" output_multiple_alignments} \
-      ~{true="-somatic" false="" somatic} \
-      ~{true="-no_vcf" false="" no_vcf} \
-      ~{true="-p" false="" pairedend_reads_interlaced} \
-      ~{true="-filter" false="" filter} \
-      ~{true="-v" false="" version}
+      ~{if (output_multiple_alignments) then "-m" else ""} \
+      ~{if (somatic) then "-somatic" else ""} \
+      ~{if (no_vcf) then "-no_vcf" else ""} \
+      ~{if (pairedend_reads_interlaced) then "-p" else ""} \
+      ~{if (filter) then "-filter" else ""} \
+      ~{if (version) then "-v" else ""}
   >>>
   parameter_meta {
     bwtindexprefix: "BWT_Index_Prefix"
@@ -88,5 +88,11 @@ task MapCaller {
     pairedend_reads_interlaced: "paired-end reads are interlaced in the same file"
     filter: "apply variant filters (under test) [false]"
     version: "version"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_sam = "${in_sam}"
+    File out_bam = "${in_bam}"
+    File out_vcf = "${in_vcf}"
   }
 }

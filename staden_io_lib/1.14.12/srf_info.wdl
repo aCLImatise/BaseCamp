@@ -2,7 +2,7 @@ version 1.0
 
 task SrfInfo {
   input {
-    String? count_goodbad_reads
+    Int? count_goodbad_reads
     String? level
     String var_input
   }
@@ -13,8 +13,11 @@ task SrfInfo {
       ~{if defined(level) then ("-level " +  '"' + level + '"') else ""}
   >>>
   parameter_meta {
-    count_goodbad_reads: "1 Count of good/bad reads. 2 Counts for selected chunk types. 4 Trace count and trace name prefix for each trace_header. 8 Base count."
+    count_goodbad_reads: "1 Count of good/bad reads.\\n2 Counts for selected chunk types.\\n4 Trace count and trace name prefix for each trace_header.\\n8 Base count.\\n"
     level: ""
     var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

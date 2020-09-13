@@ -4,4 +4,7 @@ task Randomdata {
   command <<<
     randomdata
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

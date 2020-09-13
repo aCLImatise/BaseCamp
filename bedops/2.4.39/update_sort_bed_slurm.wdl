@@ -1,7 +1,10 @@
 version 1.0
 
-task UpdateSortBedSlurm {
+task Updatesortbedslurm {
   command <<<
-    update-sort-bed-slurm
+    update_sort_bed_slurm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

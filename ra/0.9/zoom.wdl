@@ -2,19 +2,22 @@ version 1.0
 
 task Zoom {
   input {
-    Int? root
-    Int? depth
-    String? depot
+    Boolean? root
+    Boolean? depth
+    Boolean? depot
   }
   command <<<
     zoom \
-      ~{if defined(root) then ("--root " +  '"' + root + '"') else ""} \
-      ~{if defined(depth) then ("--depth " +  '"' + depth + '"') else ""} \
-      ~{if defined(depot) then ("--depot " +  '"' + depot + '"') else ""}
+      ~{if (root) then "--root" else ""} \
+      ~{if (depth) then "--depth" else ""} \
+      ~{if (depot) then "--depot" else ""}
   >>>
   parameter_meta {
-    root: ""
-    depth: ""
-    depot: ""
+    root: "root read (int)"
+    depth: "neighborhood depth (int)"
+    depot: "depot path (string)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

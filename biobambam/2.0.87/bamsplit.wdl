@@ -4,4 +4,7 @@ task Bamsplit {
   command <<<
     bamsplit
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

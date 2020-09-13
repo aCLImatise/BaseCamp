@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../sorted_merge.cwl
 inputs:
-- id: key
+- id: in_key
   doc: Key (1 base column number) for sorting (1)
-  type: string
+  type: long
   inputBinding:
     prefix: --key
-- id: output
+- id: in_output
   doc: Output file instead of stdout (/dev/fd/1)
   type: File
   inputBinding:
     prefix: --output
-- id: numerical
+- id: in_numerical
   doc: Numerical sort (false)
   type: boolean
   inputBinding:
     prefix: --numerical
-- id: input
+- id: in_input
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Output file instead of stdout (/dev/fd/1)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - sorted_merge

@@ -2,7 +2,7 @@ version 1.0
 
 task Makehist {
   input {
-    String? distfile
+    File? distfile
     String? option
     String run_name
   }
@@ -16,5 +16,8 @@ task Makehist {
     distfile: ".dist    Score file to read (required)."
     option: ""
     run_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

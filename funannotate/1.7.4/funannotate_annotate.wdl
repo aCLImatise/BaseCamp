@@ -2,14 +2,14 @@ version 1.0
 
 task FunannotateAnnotate {
   input {
-    Boolean? gff
+    Boolean? folder_funannotate_predict
+    Directory? out
     Boolean? fast_a
     Boolean? species
-    Boolean? out
     Boolean? sbt
     Boolean? annotations
     Boolean? eggnog
-    Boolean? anti_smash
+    File? anti_smash
     Boolean? iprs_can
     Boolean? ph_obius
     Boolean? isolate
@@ -20,39 +20,39 @@ task FunannotateAnnotate {
     Boolean? busco_db
     Boolean? tbl_two_asn
     Boolean? database
-    Boolean? force
+    Directory? force
     Boolean? cpus
     String arguments
   }
   command <<<
     funannotate annotate \
       ~{arguments} \
-      ~{true="--gff" false="" gff} \
-      ~{true="--fasta" false="" fast_a} \
-      ~{true="--species" false="" species} \
-      ~{true="--out" false="" out} \
-      ~{true="--sbt" false="" sbt} \
-      ~{true="--annotations" false="" annotations} \
-      ~{true="--eggnog" false="" eggnog} \
-      ~{true="--antismash" false="" anti_smash} \
-      ~{true="--iprscan" false="" iprs_can} \
-      ~{true="--phobius" false="" ph_obius} \
-      ~{true="--isolate" false="" isolate} \
-      ~{true="--strain" false="" strain} \
-      ~{true="--rename" false="" rename} \
-      ~{true="--fix" false="" fix} \
-      ~{true="--remove" false="" remove} \
-      ~{true="--busco_db" false="" busco_db} \
-      ~{true="--tbl2asn" false="" tbl_two_asn} \
-      ~{true="--database" false="" database} \
-      ~{true="--force" false="" force} \
-      ~{true="--cpus" false="" cpus}
+      ~{if (folder_funannotate_predict) then "--input" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (fast_a) then "--fasta" else ""} \
+      ~{if (species) then "--species" else ""} \
+      ~{if (sbt) then "--sbt" else ""} \
+      ~{if (annotations) then "--annotations" else ""} \
+      ~{if (eggnog) then "--eggnog" else ""} \
+      ~{if (anti_smash) then "--antismash" else ""} \
+      ~{if (iprs_can) then "--iprscan" else ""} \
+      ~{if (ph_obius) then "--phobius" else ""} \
+      ~{if (isolate) then "--isolate" else ""} \
+      ~{if (strain) then "--strain" else ""} \
+      ~{if (rename) then "--rename" else ""} \
+      ~{if (fix) then "--fix" else ""} \
+      ~{if (remove) then "--remove" else ""} \
+      ~{if (busco_db) then "--busco_db" else ""} \
+      ~{if (tbl_two_asn) then "--tbl2asn" else ""} \
+      ~{if (database) then "--database" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (cpus) then "--cpus" else ""}
   >>>
   parameter_meta {
-    gff: "Genome GFF3 annotation file"
-    fast_a: "Genome in multi-fasta format"
-    species: "Species name, use quotes for binomial, e.g. \"Aspergillus fumigatus\""
+    folder_funannotate_predict: "Folder from funannotate predict"
     out: "Output folder for results"
+    fast_a: "Genome in multi-fasta format"
+    species: "Species name, use quotes for binomial, e.g. \\\"Aspergillus fumigatus\\\""
     sbt: "NCBI submission template file. (Recommended)"
     annotations: "Custom annotations (3 column tsv file)"
     eggnog: "Eggnog-mapper annotations file (if NOT installed)"
@@ -65,10 +65,16 @@ task FunannotateAnnotate {
     fix: "Gene/Product names fixed (TSV: GeneID      Name    Product)"
     remove: "Gene/Product names to remove (TSV: Gene    Product)"
     busco_db: "BUSCO models. Default: dikarya"
-    tbl_two_asn: "Additional parameters for tbl2asn. Default: \"-l paired-ends\""
+    tbl_two_asn: "Additional parameters for tbl2asn. Default: \\\"-l paired-ends\\\""
     database: "Path to funannotate database. Default: $FUNANNOTATE_DB"
     force: "Force over-write of output folder"
     cpus: "Number of CPUs to use. Default: 2"
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
+    File out_anti_smash = "${in_anti_smash}"
+    Directory out_force = "${in_force}"
   }
 }

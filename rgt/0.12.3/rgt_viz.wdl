@@ -1,14 +1,17 @@
 version 1.0
 
-task RgtViz {
+task Rgtviz {
   input {
     Boolean? v
   }
   command <<<
-    rgt-viz \
-      ~{true="-v" false="" v}
+    rgt_viz \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

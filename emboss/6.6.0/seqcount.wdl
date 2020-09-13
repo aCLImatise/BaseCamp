@@ -4,4 +4,7 @@ task Seqcount {
   command <<<
     seqcount
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,18 +2,18 @@ version 1.0
 
 task Hmmsearch {
   input {
-    String? direct_output_file
-    String? save_multiple_alignment
-    String? tbl_out
-    String? dom_tbl_out
-    String? pfam_tbl_out
+    File? direct_output_file
+    File? save_multiple_alignment
+    File? tbl_out
+    File? dom_tbl_out
+    File? pfam_tbl_out
     Boolean? acc
     Boolean? no_ali
     Boolean? no_text_w
-    String? text_w
-    String? report_sequences_evalue
-    String? report_sequences_threshold
-    String? dome
+    Int? text_w
+    Float? report_sequences_evalue_threshold
+    String? report_sequences_score_threshold
+    Float? dome
     String? do_mt
     String? ince
     String? in_ct
@@ -23,16 +23,16 @@ task Hmmsearch {
     Boolean? cut_nc
     Boolean? cut_tc
     Boolean? max
-    String? fone
-    String? f_two
-    String? f_three
+    Int? fone
+    Int? f_two
+    Int? f_three
     Boolean? no_bias
     Boolean? no_null_two
     String? set_comparisons_done
     String? do_mz
-    String? seed
+    Int? seed
     String? t_format
-    String? cpu
+    Int? cpu
   }
   command <<<
     hmmsearch \
@@ -41,27 +41,27 @@ task Hmmsearch {
       ~{if defined(tbl_out) then ("--tblout " +  '"' + tbl_out + '"') else ""} \
       ~{if defined(dom_tbl_out) then ("--domtblout " +  '"' + dom_tbl_out + '"') else ""} \
       ~{if defined(pfam_tbl_out) then ("--pfamtblout " +  '"' + pfam_tbl_out + '"') else ""} \
-      ~{true="--acc" false="" acc} \
-      ~{true="--noali" false="" no_ali} \
-      ~{true="--notextw" false="" no_text_w} \
+      ~{if (acc) then "--acc" else ""} \
+      ~{if (no_ali) then "--noali" else ""} \
+      ~{if (no_text_w) then "--notextw" else ""} \
       ~{if defined(text_w) then ("--textw " +  '"' + text_w + '"') else ""} \
-      ~{if defined(report_sequences_evalue) then ("-E " +  '"' + report_sequences_evalue + '"') else ""} \
-      ~{if defined(report_sequences_threshold) then ("-T " +  '"' + report_sequences_threshold + '"') else ""} \
+      ~{if defined(report_sequences_evalue_threshold) then ("-E " +  '"' + report_sequences_evalue_threshold + '"') else ""} \
+      ~{if defined(report_sequences_score_threshold) then ("-T " +  '"' + report_sequences_score_threshold + '"') else ""} \
       ~{if defined(dome) then ("--domE " +  '"' + dome + '"') else ""} \
       ~{if defined(do_mt) then ("--domT " +  '"' + do_mt + '"') else ""} \
       ~{if defined(ince) then ("--incE " +  '"' + ince + '"') else ""} \
       ~{if defined(in_ct) then ("--incT " +  '"' + in_ct + '"') else ""} \
       ~{if defined(inc_dome) then ("--incdomE " +  '"' + inc_dome + '"') else ""} \
       ~{if defined(inc_do_mt) then ("--incdomT " +  '"' + inc_do_mt + '"') else ""} \
-      ~{true="--cut_ga" false="" cut_ga} \
-      ~{true="--cut_nc" false="" cut_nc} \
-      ~{true="--cut_tc" false="" cut_tc} \
-      ~{true="--max" false="" max} \
+      ~{if (cut_ga) then "--cut_ga" else ""} \
+      ~{if (cut_nc) then "--cut_nc" else ""} \
+      ~{if (cut_tc) then "--cut_tc" else ""} \
+      ~{if (max) then "--max" else ""} \
       ~{if defined(fone) then ("--F1 " +  '"' + fone + '"') else ""} \
       ~{if defined(f_two) then ("--F2 " +  '"' + f_two + '"') else ""} \
       ~{if defined(f_three) then ("--F3 " +  '"' + f_three + '"') else ""} \
-      ~{true="--nobias" false="" no_bias} \
-      ~{true="--nonull2" false="" no_null_two} \
+      ~{if (no_bias) then "--nobias" else ""} \
+      ~{if (no_null_two) then "--nonull2" else ""} \
       ~{if defined(set_comparisons_done) then ("-Z " +  '"' + set_comparisons_done + '"') else ""} \
       ~{if defined(do_mz) then ("--domZ " +  '"' + do_mz + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
@@ -78,8 +78,8 @@ task Hmmsearch {
     no_ali: ": don't output alignments, so output is smaller"
     no_text_w: ": unlimit ASCII text output line width"
     text_w: ": set max width of ASCII text output lines  [120]  (n>=120)"
-    report_sequences_evalue: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
-    report_sequences_threshold: ": report sequences >= this score threshold in output"
+    report_sequences_evalue_threshold: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
+    report_sequences_score_threshold: ": report sequences >= this score threshold in output"
     dome: ": report domains <= this E-value threshold in output  [10.0]  (x>0)"
     do_mt: ": report domains >= this score cutoff in output"
     ince: ": consider sequences <= this E-value threshold as significant"
@@ -100,5 +100,9 @@ task Hmmsearch {
     seed: ": set RNG seed to <n> (if 0: one-time arbitrary seed)  [42]"
     t_format: ": assert target <seqfile> is in format <s>: no autodetection"
     cpu: ": number of parallel CPU workers to use for multithreads  [2]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_direct_output_file = "${in_direct_output_file}"
   }
 }

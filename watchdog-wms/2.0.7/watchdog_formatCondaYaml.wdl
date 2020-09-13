@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogFormatCondaYaml {
+task WatchdogformatCondaYaml {
   command <<<
-    watchdog-formatCondaYaml
+    watchdog_formatCondaYaml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

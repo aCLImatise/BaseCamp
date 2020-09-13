@@ -1,54 +1,54 @@
 class: CommandLineTool
 id: ../../../NovorAdapter.cwl
 inputs:
-- id: executable
+- id: in_executable
   doc: Novor.jar
   type: string
   inputBinding:
     prefix: -executable
-- id: in
+- id: in_in
   doc: "*                         MzML Input file (valid formats: 'mzml')"
   type: File
   inputBinding:
     prefix: -in
-- id: out
+- id: in_out
   doc: "*                        Novor idXML output (valid formats: 'idXML')"
   type: File
   inputBinding:
     prefix: -out
-- id: enzyme
+- id: in_enzyme
   doc: "Digestion enzyme - currently only Trypsin is supported  (default: 'Trypsin'\
     \ valid: 'Trypsin')"
   type: string
   inputBinding:
     prefix: -enzyme
-- id: fragmentation
+- id: in_fragmentation
   doc: "Fragmentation method (default: 'CID' valid: 'CID', 'HCD')"
   type: string
   inputBinding:
     prefix: -fragmentation
-- id: mass_analyzer
+- id: in_mass_analyzer
   doc: "MassAnalyzer e.g. (Oritrap CID-Trap, CID-FT, HCD-FT; QTof CID-TOF) (default:\
     \ 'Trap' valid: 'Trap', 'TOF', 'FT')"
   type: string
   inputBinding:
     prefix: -massAnalyzer
-- id: fragment_mass_tolerance
+- id: in_fragment_mass_tolerance
   doc: "Fragmentation error tolerance  (Da) (default: '0.5')"
-  type: string
+  type: double
   inputBinding:
     prefix: -fragment_mass_tolerance
-- id: precursor_mass_tolerance
+- id: in_precursor_mass_tolerance
   doc: "Precursor error tolerance  (ppm or Da) (default: '15')"
-  type: string
+  type: long
   inputBinding:
     prefix: -precursor_mass_tolerance
-- id: precursor_error_units
+- id: in_precursor_error_units
   doc: "Unit of precursor mass tolerance (default: 'ppm' valid: 'ppm', 'Da')"
   type: string
   inputBinding:
     prefix: -precursor_error_units
-- id: variable_modifications
+- id: in_variable_modifications
   doc: "Variable modifications (valid: 'Acetyl (K)', 'Acetyl (N-term)', 'Amidated\
     \ (C-term)', 'Ammonia-loss (N-term C)', 'Biotin (K)', 'Biotin (N-term)', 'Carbamidomethyl\
     \ (C)', 'Carbamyl (K)', 'Carbamyl (N-term)', 'Carboxymethyl (C)', 'Deamidated\
@@ -59,7 +59,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -variable_modifications
-- id: fixed_modifications
+- id: in_fixed_modifications
   doc: "Fixed modifications (valid: 'Acetyl (K)', 'Acetyl (N-term)', 'Amidated (C-term)',\
     \ 'Ammonia-loss (N-term C)', 'Biotin (K)', 'Biotin (N-term)', 'Carbamidomethyl\
     \ (C)', 'Carbamyl (K)', 'Carbamyl (N-term)', 'Carboxymethyl (C)', 'Deamidated\
@@ -70,49 +70,52 @@ inputs:
   type: string
   inputBinding:
     prefix: -fixed_modifications
-- id: forbidden_residues
+- id: in_forbidden_residues
   doc: "Forbidden Resiudes (valid: 'I', 'U')"
   type: string
   inputBinding:
     prefix: -forbiddenResidues
-- id: nov_or_file
+- id: in_nov_or_file
   doc: "File to introduce customized algorithm parameters for advanced users (otional\
     \ .novor file) (valid formats: 'novor')"
   type: File
   inputBinding:
     prefix: -novorFile
-- id: java_executable
+- id: in_java_executable
   doc: The Java executable. Usually Java is on the system PATH. If Java is not found,
     use this parameter to specify the full path to Java
   type: File
   inputBinding:
     prefix: -java_executable
-- id: java_memory
+- id: in_java_memory
   doc: "Maximum Java heap size (in MB) (default: '3500')"
-  type: string
+  type: long
   inputBinding:
     prefix: -java_memory
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - NovorAdapter

@@ -1,17 +1,20 @@
 version 1.0
 
-task _cutseq {
+task Cutseq {
   input {
     Boolean? from
     Boolean? to
   }
   command <<<
     _cutseq \
-      ~{true="-from" false="" from} \
-      ~{true="-to" false="" to}
+      ~{if (from) then "-from" else ""} \
+      ~{if (to) then "-to" else ""}
   >>>
   parameter_meta {
-    from: "integer    [Start of sequence (0)] This is the start position (inclusive) of the section of the sequence that you wish to remove. (Any integer value)"
-    to: "integer    [End of sequence (0)] This is the end position (inclusive) of the section of the sequence that you wish to remove. (Any integer value)"
+    from: "integer    [Start of sequence (0)] This is the start\\nposition (inclusive) of the section of the\\nsequence that you wish to remove. (Any\\ninteger value)"
+    to: "integer    [End of sequence (0)] This is the end\\nposition (inclusive) of the section of the\\nsequence that you wish to remove. (Any\\ninteger value)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

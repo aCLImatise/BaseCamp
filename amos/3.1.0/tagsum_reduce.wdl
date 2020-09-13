@@ -1,7 +1,10 @@
 version 1.0
 
-task TagsumReduce {
+task Tagsumreduce {
   command <<<
-    tagsum-reduce
+    tagsum_reduce
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

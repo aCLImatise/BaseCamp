@@ -5,12 +5,12 @@ task FermiContrast {
     Int? minimum_occurrence
     Int? number_of_threads
     Int? kmer_length
-    String idx_one_dot_fmd
-    String idx_one_dot_rank
-    String one_two_dot_sub
-    String idx_two_dot_fmd
-    String idx_two_dot_rank
-    String two_one_dot_sub
+    Int idx_one_dot_fmd
+    Int idx_one_dot_rank
+    Int one_two_dot_sub
+    Int idx_two_dot_fmd
+    Int idx_two_dot_rank
+    Int two_one_dot_sub
   }
   command <<<
     fermi contrast \
@@ -34,5 +34,8 @@ task FermiContrast {
     idx_two_dot_fmd: ""
     idx_two_dot_rank: ""
     two_one_dot_sub: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,92 +1,95 @@
 class: CommandLineTool
 id: ../../../marge_software.cwl
 inputs:
-- id: marge
+- id: in_marge
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: is
+- id: in_is
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: a
+- id: in_a
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: free
+- id: in_free
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: software
+- id: in_software
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: to
+- id: in_to
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: predict
+- id: in_predict
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: key
+- id: in_key
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: regulated
+- id: in_regulated
   doc: ''
   type: string
   inputBinding:
     position: 8
-- id: genes
+- id: in_genes
   doc: ''
   type: string
   inputBinding:
     position: 9
-- id: and
+- id: in_and
   doc: ''
   type: string
   inputBinding:
     position: 10
-- id: cis_regulatory
+- id: in_cis_regulatory
   doc: ''
   type: string
   inputBinding:
     position: 11
-- id: regions
+- id: in_regions
   doc: ''
   type: string
   inputBinding:
     position: 12
-- id: in
+- id: in_in
   doc: ''
   type: string
   inputBinding:
     position: 13
-- id: human
+- id: in_human
   doc: ''
   type: string
   inputBinding:
     position: 14
-- id: or
+- id: in_or
   doc: ''
   type: string
   inputBinding:
     position: 15
-- id: mouse_dot
+- id: in_mouse_dot
   doc: ''
   type: string
   inputBinding:
     position: 16
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - marge

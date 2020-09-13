@@ -9,15 +9,18 @@ task Fseqboot {
   }
   command <<<
     fseqboot \
-      ~{true="-categories" false="" categories} \
-      ~{true="-weights" false="" weights} \
-      ~{true="-test" false="" test} \
-      ~{true="-printdata" false="" print_data}
+      ~{if (categories) then "-categories" else ""} \
+      ~{if (weights) then "-weights" else ""} \
+      ~{if (test) then "-test" else ""} \
+      ~{if (print_data) then "-printdata" else ""}
   >>>
   parameter_meta {
     categories: "properties File of input categories"
     weights: "properties Weights file"
-    test: "menu       [b] Choose test (Values: b (Bootstrap); j (Jackknife); c (Permute species for each character); o (Permute character order); s (Permute within species); r (Rewrite data))"
+    test: "menu       [b] Choose test (Values: b (Bootstrap); j\\n(Jackknife); c (Permute species for each\\ncharacter); o (Permute character order); s\\n(Permute within species); r (Rewrite data))"
     print_data: "boolean    [N] Print out the data at start of run"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

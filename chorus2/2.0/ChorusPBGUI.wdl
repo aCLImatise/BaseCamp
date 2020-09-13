@@ -4,4 +4,7 @@ task ChorusPBGUI {
   command <<<
     ChorusPBGUI
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

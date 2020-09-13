@@ -1,10 +1,10 @@
 version 1.0
 
-task AnviGetSequencesForGeneClusters {
+task Anvigetsequencesforgeneclusters {
   input {
     String? pan_db
-    String? genomes_storage
-    String? output_file
+    File? genomes_storage
+    File? output_file
     Boolean? report_dna_sequences
     String? gene_cluster_id
     File? gene_cluster_ids_file
@@ -30,14 +30,17 @@ task AnviGetSequencesForGeneClusters {
     String? align_with
     Boolean? list_aligners
     Boolean? just_do_it
-    Boolean? dry_run
+    String alignment_dot
+    String it_dot
   }
   command <<<
-    anvi-get-sequences-for-gene-clusters \
+    anvi_get_sequences_for_gene_clusters \
+      ~{alignment_dot} \
+      ~{it_dot} \
       ~{if defined(pan_db) then ("--pan-db " +  '"' + pan_db + '"') else ""} \
       ~{if defined(genomes_storage) then ("--genomes-storage " +  '"' + genomes_storage + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
-      ~{true="--report-DNA-sequences" false="" report_dna_sequences} \
+      ~{if (report_dna_sequences) then "--report-DNA-sequences" else ""} \
       ~{if defined(gene_cluster_id) then ("--gene-cluster-id " +  '"' + gene_cluster_id + '"') else ""} \
       ~{if defined(gene_cluster_ids_file) then ("--gene-cluster-ids-file " +  '"' + gene_cluster_ids_file + '"') else ""} \
       ~{if defined(collection_name) then ("--collection-name " +  '"' + collection_name + '"') else ""} \
@@ -54,45 +57,50 @@ task AnviGetSequencesForGeneClusters {
       ~{if defined(min_combined_homogeneity_index) then ("--min-combined-homogeneity-index " +  '"' + min_combined_homogeneity_index + '"') else ""} \
       ~{if defined(max_combined_homogeneity_index) then ("--max-combined-homogeneity-index " +  '"' + max_combined_homogeneity_index + '"') else ""} \
       ~{if defined(add_into_items_additional_data_table) then ("--add-into-items-additional-data-table " +  '"' + add_into_items_additional_data_table + '"') else ""} \
-      ~{true="--list-collections" false="" list_collections} \
-      ~{true="--list-bins" false="" list_bins} \
-      ~{true="--concatenate-gene-clusters" false="" concatenate_gene_clusters} \
+      ~{if (list_collections) then "--list-collections" else ""} \
+      ~{if (list_bins) then "--list-bins" else ""} \
+      ~{if (concatenate_gene_clusters) then "--concatenate-gene-clusters" else ""} \
       ~{if defined(partition_file) then ("--partition-file " +  '"' + partition_file + '"') else ""} \
       ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
       ~{if defined(align_with) then ("--align-with " +  '"' + align_with + '"') else ""} \
-      ~{true="--list-aligners" false="" list_aligners} \
-      ~{true="--just-do-it" false="" just_do_it} \
-      ~{true="--dry-run" false="" dry_run}
+      ~{if (list_aligners) then "--list-aligners" else ""} \
+      ~{if (just_do_it) then "--just-do-it" else ""}
   >>>
   parameter_meta {
     pan_db: "Anvi'o pan database"
     genomes_storage: "Anvi'o genomes storage file"
     output_file: "File path to store results."
-    report_dna_sequences: "By default, this program reports amino acid sequences. Use this flag to report DNA sequences instead."
+    report_dna_sequences: "By default, this program reports amino acid sequences.\\nUse this flag to report DNA sequences instead."
     gene_cluster_id: "Gene cluster ID you are interested in."
-    gene_cluster_ids_file: "Text file for gene clusters (each line should contain be a unique gene cluster id)."
+    gene_cluster_ids_file: "Text file for gene clusters (each line should contain\\nbe a unique gene cluster id)."
     collection_name: "Collection name."
     bin_id: "Bin name you are interested in."
-    min_num_genomes_gene_cluster_occurs: "This filter will remove gene clusters from your report. Let's assume you have 100 genomes in your pan genome analysis. You can use this parameter if you want to work only with gene clusters that occur in at least X number of genomes. If you say '--min-num- genomes-gene-cluster-occurs 90', each gene cluster in the analysis will be required at least to appear in 90 genomes. If a gene occurs in less than that number of genomes, it simply will not be reported. This is especially useful for phylogenomic analyses, where you may want to only focus on gene clusters that are prevalent across the set of genomes you wish to analyze."
-    max_num_genomes_gene_cluster_occurs: "This filter will remove gene clusters from your report. Let's assume you have 100 genomes in your pan genome analysis. You can use this parameter if you want to work only with gene clusters that occur in at most X number of genomes. If you say '--max-num- genomes-gene-cluster-occurs 1', you will get gene clusters that are singletons. Combining this parameter with --min-num-genomes-gene-cluster-occurs can give you a very precise way to filter your gene clusters."
-    min_num_genes_from_each_genome: "This filter will remove gene clusters from your report. If you say '--min-num-genes-from-each-genome 2', this filter will remove every gene cluster, to which every genome in your analysis contributed less than 2 genes. This can be useful to find out gene clusters with many genes from many genomes (such as conserved multi-copy genes within a clade)."
-    max_num_genes_from_each_genome: "This filter will remove gene clusters from your report. If you say '--max-num-genes-from-each-genome 1', every gene cluster that has more than one gene from any genome that contributes to it will be removed from your analysis. This could be useful to remove gene clusters with paralogs from your report for appropriate phylogenomic analyses. For instance, using '--max-num-genes-from-each-genome 1' and 'min-num- genomes-gene-cluster-occurs X' where X is the total number of your genomes, would give you the single-copy gene clusters in your pan genome."
-    max_num_gene_clusters_missing_from_genome: "This filter will remove genomes from your report. If you have a list of gene cluster names, you can use this parameter to omit any genome from your report if it is missing more than a number of genes you desire. For instance, if you have 100 genomes in your pan genome, and you are interested in working only with genomes that have all 5 specific gene clusters of your choice, you can use '--max-num-gene-clusters-missing- from-genome 4' to remove remove the bins that are missing more than 4 of those 5 genes. This is especially useful for phylogenomic analyses. Parameter 0 will remove any genome that is missing any of the genes."
-    min_functional_homogeneity_index: "This filter will remove gene clusters from your report. If you say '--min-functional-homogeneity-index 0.3', every gene cluster with a functional homogeneity index less than 0.3 will be removed from your analysis. This can be useful if you only want to look at gene clusters that are highly conserved in resulting function"
-    max_functional_homogeneity_index: "This filter will remove gene clusters from your report. If you say '--max-functional-homogeneity-index 0.5', every gene cluster with a functional homogeneity index greater than 0.5 will be removed from your analysis. This can be useful if you only want to look at gene clusters that don't seem to be functionally conserved"
-    min_geometric_homogeneity_index: "This filter will remove gene clusters from your report. If you say '--min-geometric-homogeneity-index 0.3', every gene cluster with a geometric homogeneity index less than 0.3 will be removed from your analysis. This can be useful if you only want to look at gene clusters that are highly conserved in geometric configuration"
-    max_geometric_homogeneity_index: "This filter will remove gene clusters from your report. If you say '--max-geometric-homogeneity-index 0.5', every gene cluster with a geometric homogeneity index greater than 0.5 will be removed from your analysis. This can be useful if you only want to look at gene clusters that have many not be as conserved as others"
-    min_combined_homogeneity_index: "This filter will remove gene clusters from your report. If you say '--min-combined-homogeneity-index 0.3', every gene cluster with a combined homogeneity index less than 0.3 will be removed from your analysis. This can be useful if you only want to look at gene clusters that are highly conserved overall"
-    max_combined_homogeneity_index: "This filter will remove gene clusters from your report. If you say '--max-combined-homogeneity-index 0.5', every gene cluster with a combined homogeneity index greater than 0.5 will be removed from your analysis. This can be useful if you only want to look at gene clusters that have many not be as conserved overall as others"
-    add_into_items_additional_data_table: "If you use any of the filters, and would like to add the resulting item names into the items additional data table of your database, you can use this parameter. You will need to give a name for these results to be saved. If the given name is already in the items additional data table, its contents will be replaced with the new one. Then you can run anvi- interactive or anvi-display-pan to 'see' the results of your filters."
+    min_num_genomes_gene_cluster_occurs: "This filter will remove gene clusters from your\\nreport. Let's assume you have 100 genomes in your pan\\ngenome analysis. You can use this parameter if you\\nwant to work only with gene clusters that occur in at\\nleast X number of genomes. If you say '--min-num-\\ngenomes-gene-cluster-occurs 90', each gene cluster in\\nthe analysis will be required at least to appear in 90\\ngenomes. If a gene occurs in less than that number of\\ngenomes, it simply will not be reported. This is\\nespecially useful for phylogenomic analyses, where you\\nmay want to only focus on gene clusters that are\\nprevalent across the set of genomes you wish to\\nanalyze."
+    max_num_genomes_gene_cluster_occurs: "This filter will remove gene clusters from your\\nreport. Let's assume you have 100 genomes in your pan\\ngenome analysis. You can use this parameter if you\\nwant to work only with gene clusters that occur in at\\nmost X number of genomes. If you say '--max-num-\\ngenomes-gene-cluster-occurs 1', you will get gene\\nclusters that are singletons. Combining this parameter\\nwith --min-num-genomes-gene-cluster-occurs can give\\nyou a very precise way to filter your gene clusters."
+    min_num_genes_from_each_genome: "This filter will remove gene clusters from your\\nreport. If you say '--min-num-genes-from-each-genome\\n2', this filter will remove every gene cluster, to\\nwhich every genome in your analysis contributed less\\nthan 2 genes. This can be useful to find out gene\\nclusters with many genes from many genomes (such as\\nconserved multi-copy genes within a clade)."
+    max_num_genes_from_each_genome: "This filter will remove gene clusters from your\\nreport. If you say '--max-num-genes-from-each-genome\\n1', every gene cluster that has more than one gene\\nfrom any genome that contributes to it will be removed\\nfrom your analysis. This could be useful to remove\\ngene clusters with paralogs from your report for\\nappropriate phylogenomic analyses. For instance, using\\n'--max-num-genes-from-each-genome 1' and 'min-num-\\ngenomes-gene-cluster-occurs X' where X is the total\\nnumber of your genomes, would give you the single-copy\\ngene clusters in your pan genome."
+    max_num_gene_clusters_missing_from_genome: "This filter will remove genomes from your report. If\\nyou have a list of gene cluster names, you can use\\nthis parameter to omit any genome from your report if\\nit is missing more than a number of genes you desire.\\nFor instance, if you have 100 genomes in your pan\\ngenome, and you are interested in working only with\\ngenomes that have all 5 specific gene clusters of your\\nchoice, you can use '--max-num-gene-clusters-missing-\\nfrom-genome 4' to remove remove the bins that are\\nmissing more than 4 of those 5 genes. This is\\nespecially useful for phylogenomic analyses. Parameter\\n0 will remove any genome that is missing any of the\\ngenes."
+    min_functional_homogeneity_index: "This filter will remove gene clusters from your\\nreport. If you say '--min-functional-homogeneity-index\\n0.3', every gene cluster with a functional homogeneity\\nindex less than 0.3 will be removed from your\\nanalysis. This can be useful if you only want to look\\nat gene clusters that are highly conserved in\\nresulting function"
+    max_functional_homogeneity_index: "This filter will remove gene clusters from your\\nreport. If you say '--max-functional-homogeneity-index\\n0.5', every gene cluster with a functional homogeneity\\nindex greater than 0.5 will be removed from your\\nanalysis. This can be useful if you only want to look\\nat gene clusters that don't seem to be functionally\\nconserved"
+    min_geometric_homogeneity_index: "This filter will remove gene clusters from your\\nreport. If you say '--min-geometric-homogeneity-index\\n0.3', every gene cluster with a geometric homogeneity\\nindex less than 0.3 will be removed from your\\nanalysis. This can be useful if you only want to look\\nat gene clusters that are highly conserved in\\ngeometric configuration"
+    max_geometric_homogeneity_index: "This filter will remove gene clusters from your\\nreport. If you say '--max-geometric-homogeneity-index\\n0.5', every gene cluster with a geometric homogeneity\\nindex greater than 0.5 will be removed from your\\nanalysis. This can be useful if you only want to look\\nat gene clusters that have many not be as conserved as\\nothers"
+    min_combined_homogeneity_index: "This filter will remove gene clusters from your\\nreport. If you say '--min-combined-homogeneity-index\\n0.3', every gene cluster with a combined homogeneity\\nindex less than 0.3 will be removed from your\\nanalysis. This can be useful if you only want to look\\nat gene clusters that are highly conserved overall"
+    max_combined_homogeneity_index: "This filter will remove gene clusters from your\\nreport. If you say '--max-combined-homogeneity-index\\n0.5', every gene cluster with a combined homogeneity\\nindex greater than 0.5 will be removed from your\\nanalysis. This can be useful if you only want to look\\nat gene clusters that have many not be as conserved\\noverall as others"
+    add_into_items_additional_data_table: "If you use any of the filters, and would like to add\\nthe resulting item names into the items additional\\ndata table of your database, you can use this\\nparameter. You will need to give a name for these\\nresults to be saved. If the given name is already in\\nthe items additional data table, its contents will be\\nreplaced with the new one. Then you can run anvi-\\ninteractive or anvi-display-pan to 'see' the results\\nof your filters."
     list_collections: "Show available collections and exit."
     list_bins: "List available bins in a collection and exit."
-    concatenate_gene_clusters: "Concatenate output gene clusters in the same order to create a multi-gene alignment output that is suitable for phylogenomic analyses."
-    partition_file: "Some commonly used software for phylogenetic analyses (e.g., IQ-TREE, RAxML, etc) allow users to specify/test different substitution models for each gene of a concatenated multiple sequence alignments. For this, they use a special file format called a 'partition file', which indicates the site for each gene in the alignment. You can use this parameter to declare an output path for anvi'o to report a NEXUS format partition file in addition to your FASTA output (requested by Massimiliano Molari in #1333)."
-    separator: "Characters to separate things (the default is whatever is most suitable)."
-    align_with: "The multiple sequence alignment program to use when multiple sequence alignment is necessary. To see all available options, use the flag `--list-aligners`."
-    list_aligners: "Show available software for multiple sequence alignment."
-    just_do_it: "Don't bother me with questions or warnings, just do it."
-    dry_run: "Don't do anything real. Test everything, and stop right before wherever the developer said 'well, this is enough testing', and decided to print out results."
+    concatenate_gene_clusters: "Concatenate output gene clusters in the same order to\\ncreate a multi-gene alignment output that is suitable\\nfor phylogenomic analyses."
+    partition_file: "Some commonly used software for phylogenetic analyses\\n(e.g., IQ-TREE, RAxML, etc) allow users to\\nspecify/test different substitution models for each\\ngene of a concatenated multiple sequence alignments.\\nFor this, they use a special file format called a\\n'partition file', which indicates the site for each\\ngene in the alignment. You can use this parameter to\\ndeclare an output path for anvi'o to report a NEXUS\\nformat partition file in addition to your FASTA output\\n(requested by Massimiliano Molari in #1333)."
+    separator: "Characters to separate things (the default is whatever\\nis most suitable)."
+    align_with: "The multiple sequence alignment program to use when\\nmultiple sequence alignment is necessary. To see all\\navailable options, use the flag `--list-aligners`."
+    list_aligners: "Show available software for multiple sequence"
+    just_do_it: "Don't bother me with questions or warnings, just do"
+    alignment_dot: "LIFE SAVERS:"
+    it_dot: "--dry-run             Don't do anything real. Test everything, and stop"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+    File out_partition_file = "${in_partition_file}"
   }
 }

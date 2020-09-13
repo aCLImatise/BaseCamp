@@ -12,7 +12,7 @@ task FeatureFinderMetaboIdent {
     Boolean? detect
     Boolean? model
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -25,12 +25,12 @@ task FeatureFinderMetaboIdent {
       ~{if defined(chrom_out) then ("-chrom_out " +  '"' + chrom_out + '"') else ""} \
       ~{if defined(candidates_out) then ("-candidates_out " +  '"' + candidates_out + '"') else ""} \
       ~{if defined(traf_o_out) then ("-trafo_out " +  '"' + traf_o_out + '"') else ""} \
-      ~{true="-detect" false="" detect} \
-      ~{true="-model" false="" model} \
+      ~{if (detect) then "-detect" else ""} \
+      ~{if (model) then "-model" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                   Input file: LC-MS raw data (valid formats: 'mzML')"
@@ -46,5 +46,13 @@ task FeatureFinderMetaboIdent {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_lib_out = "${in_lib_out}"
+    File out_chrom_out = "${in_chrom_out}"
+    File out_candidates_out = "${in_candidates_out}"
+    File out_traf_o_out = "${in_traf_o_out}"
   }
 }

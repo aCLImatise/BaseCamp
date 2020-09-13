@@ -1,7 +1,10 @@
 version 1.0
 
-task LordecStat {
+task Lordecstat {
   command <<<
-    lordec-stat
+    lordec_stat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

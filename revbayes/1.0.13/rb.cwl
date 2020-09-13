@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../rb.cwl
 inputs:
-- id: show_version_exit
+- id: in_show_version_exit
   doc: '[ --version ]      Show version and exit.'
   type: boolean
   inputBinding:
     prefix: -v
-- id: run_batch_mode
+- id: in_run_batch_mode
   doc: '[ --batch ]        Run in batch mode.'
   type: boolean
   inputBinding:
     prefix: -b
-- id: args
-  doc: Command line arguments to initialize RevBayes  variables.
+- id: in_args
+  doc: Command line arguments to initialize RevBayes
   type: string
   inputBinding:
     prefix: --args
-- id: cmd
-  doc: Script and command line arguments to initialize  RevBayes variables.
-  type: string
-  inputBinding:
-    prefix: --cmd
-- id: file
+- id: in_file
   doc: File(s) to source.
-  type: string
+  type: File
   inputBinding:
     prefix: --file
-- id: setoption
+- id: in_setoption
   doc: Set an option key=value.
   type: string
   inputBinding:
     prefix: --setOption
-outputs: []
+- id: in_variables_dot
+  doc: '--cmd arg             Script and command line arguments to initialize '
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rb

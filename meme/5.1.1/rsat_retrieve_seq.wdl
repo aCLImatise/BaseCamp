@@ -1,7 +1,10 @@
 version 1.0
 
-task RsatRetrieveSeq {
+task Rsatretrieveseq {
   command <<<
-    rsat-retrieve-seq
+    rsat_retrieve_seq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

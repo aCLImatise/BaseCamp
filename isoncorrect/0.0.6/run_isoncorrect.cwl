@@ -1,95 +1,103 @@
 class: CommandLineTool
 id: ../../../run_isoncorrect.cwl
 inputs:
-- id: fast_q_folder
-  doc: 'Path to input fastq folder with reads in clusters (default: False)'
-  type: string
+- id: in_fast_q_folder
+  doc: "Path to input fastq folder with reads in clusters\n(default: False)"
+  type: Directory
   inputBinding:
     prefix: --fastq_folder
-- id: number_cores_allocated
+- id: in_number_cores_allocated
   doc: 'Number of cores allocated for clustering (default: 8)'
-  type: string
+  type: long
   inputBinding:
     prefix: --t
-- id: kmer_size_default
+- id: in_kmer_size_default
   doc: 'Kmer size (default: 9)'
-  type: string
+  type: long
   inputBinding:
     prefix: --k
-- id: window_size_default
+- id: in_window_size_default
   doc: 'Window size (default: 10)'
-  type: string
+  type: long
   inputBinding:
     prefix: --w
-- id: xmin
+- id: in_xmin
   doc: 'Lower interval length (default: 14)'
-  type: string
+  type: long
   inputBinding:
     prefix: --xmin
-- id: xmax
+- id: in_xmax
   doc: 'Upper interval length (default: 80)'
-  type: string
+  type: long
   inputBinding:
     prefix: --xmax
-- id: minimum_fraction_keeping
+- id: in_minimum_fraction_keeping
   doc: 'Minimum fraction keeping substitution (default: 0.1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --T
-- id: exact_instance_limit
-  doc: 'Do exact correction for clusters under this threshold (default: 50)'
-  type: string
+- id: in_exact_instance_limit
+  doc: "Do exact correction for clusters under this threshold\n(default: 50)"
+  type: long
   inputBinding:
     prefix: --exact_instance_limit
-- id: keep_old
-  doc: 'Do not recompute previous results if corrected_reads.fq is found and has the
-    smae number of reads as input file (i.e., is complete). (default: False)'
+- id: in_keep_old
+  doc: "Do not recompute previous results if\ncorrected_reads.fq is found and has\
+    \ the smae number of\nreads as input file (i.e., is complete). (default:\nFalse)"
   type: boolean
   inputBinding:
     prefix: --keep_old
-- id: set_w_dynamically
-  doc: 'Set w = k + max(2*k, floor(cluster_size/1000)). (default: False)'
+- id: in_set_w_dynamically
+  doc: "Set w = k + max(2*k, floor(cluster_size/1000)).\n(default: False)"
   type: boolean
   inputBinding:
     prefix: --set_w_dynamically
-- id: max_seqs
-  doc: 'Maximum number of seqs to correct at a time (in case of large clusters). (default:
-    1000)'
+- id: in_max_seqs
+  doc: "Maximum number of seqs to correct at a time (in case\nof large clusters).\
+    \ (default: 1000)"
   type: long
   inputBinding:
     prefix: --max_seqs
-- id: use_rac_on
-  doc: 'Use racon to polish consensus after spoa (more time consuming but higher accuracy).
-    (default: False)'
+- id: in_use_rac_on
+  doc: "Use racon to polish consensus after spoa (more time\nconsuming but higher\
+    \ accuracy). (default: False)"
   type: boolean
   inputBinding:
     prefix: --use_racon
-- id: split_mod
-  doc: 'Splits cluster ids in n (default=1) partitions by computing residual of cluster_id
-    divided by n. this parameter needs to be combined with --residual to take effect.
-    (default: 1)'
-  type: string
+- id: in_split_mod
+  doc: "Splits cluster ids in n (default=1) partitions by\ncomputing residual of cluster_id\
+    \ divided by n. this\nparameter needs to be combined with --residual to take\n\
+    effect. (default: 1)"
+  type: long
   inputBinding:
     prefix: --split_mod
-- id: residual
-  doc: 'Run isONcorrect on cluster ids with residual (default 0) of cluster_id divided
-    by --split_mod. (default: 0)'
-  type: string
+- id: in_residual
+  doc: "Run isONcorrect on cluster ids with residual (default\n0) of cluster_id divided\
+    \ by --split_mod. (default: 0)"
+  type: long
   inputBinding:
     prefix: --residual
-- id: split_wrt_batches
-  doc: 'Process reads per batch (of max_seqs sequences) instead of per cluster. Significantly
-    decrease runtime when few very large clusters are less than the number of cores
-    used. (default: False)'
+- id: in_split_wrt_batches
+  doc: "Process reads per batch (of max_seqs sequences)\ninstead of per cluster. Significantly\
+    \ decrease runtime\nwhen few very large clusters are less than the number\nof\
+    \ cores used. (default: False)"
   type: boolean
   inputBinding:
     prefix: --split_wrt_batches
-- id: out_folder
-  doc: 'Outfolder with all corrected reads. (default: None)'
-  type: string
+- id: in_out_folder
+  doc: "Outfolder with all corrected reads. (default: None)\n"
+  type: Directory
   inputBinding:
     prefix: --outfolder
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_folder
+  doc: "Outfolder with all corrected reads. (default: None)\n"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_out_folder)
 cwlVersion: v1.1
 baseCommand:
 - run_isoncorrect

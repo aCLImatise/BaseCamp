@@ -12,12 +12,15 @@ task GenometreetkAppend {
       ~{input_tree} \
       ~{input_taxonomy} \
       ~{output_tree} \
-      ~{true="--silent" false="" silent}
+      ~{if (silent) then "--silent" else ""}
   >>>
   parameter_meta {
     silent: "suppress output"
     input_tree: "input tree to decorate"
     input_taxonomy: "input taxonomy file"
     output_tree: "output tree with taxonomy appended to extant taxon labels"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task Genomepy {
   command <<<
     genomepy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

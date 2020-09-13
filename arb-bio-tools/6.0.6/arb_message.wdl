@@ -4,4 +4,7 @@ task ArbMessage {
   command <<<
     arb_message
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

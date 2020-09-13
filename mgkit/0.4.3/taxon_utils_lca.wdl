@@ -1,8 +1,9 @@
 version 1.0
 
-task TaxonUtilsLca {
+task TaxonutilsLca {
   input {
-    String? taxonomy
+    Boolean? verbose
+    File? taxonomy
     File? no_lca
     Boolean? only_ranked
     Float? bit_score
@@ -12,42 +13,49 @@ task TaxonUtilsLca {
     File? reference
     Boolean? simple_table
     Int? krona_total
-    Boolean? out_format
+    File? out_format
     Boolean? progress
     String? gff_file
     String? output_file
   }
   command <<<
-    taxon-utils lca \
+    taxon_utils lca \
       ~{gff_file} \
       ~{output_file} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(taxonomy) then ("--taxonomy " +  '"' + taxonomy + '"') else ""} \
       ~{if defined(no_lca) then ("--no-lca " +  '"' + no_lca + '"') else ""} \
-      ~{true="--only-ranked" false="" only_ranked} \
+      ~{if (only_ranked) then "--only-ranked" else ""} \
       ~{if defined(bit_score) then ("--bitscore " +  '"' + bit_score + '"') else ""} \
-      ~{true="--rename" false="" rename} \
-      ~{true="--sorted" false="" sorted} \
+      ~{if (rename) then "--rename" else ""} \
+      ~{if (sorted) then "--sorted" else ""} \
       ~{if defined(feat_type) then ("--feat-type " +  '"' + feat_type + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{true="--simple-table" false="" simple_table} \
+      ~{if (simple_table) then "--simple-table" else ""} \
       ~{if defined(krona_total) then ("--krona-total " +  '"' + krona_total + '"') else ""} \
-      ~{true="--out-format" false="" out_format} \
-      ~{true="--progress" false="" progress}
+      ~{if (out_format) then "--out-format" else ""} \
+      ~{if (progress) then "--progress" else ""}
   >>>
   parameter_meta {
+    verbose: ""
     taxonomy: "Taxonomy file  [required]"
     no_lca: "File to which write records with no LCA"
-    only_ranked: "If set, only taxa that have a rank will be used in the lineageself. This is not advised for lineages such as Viruses, where the top levels have no rank"
+    only_ranked: "If set, only taxa that have a rank will be\\nused in the lineageself. This is not advised\\nfor lineages such as Viruses, where the top\\nlevels have no rank"
     bit_score: "Minimum bitscore accepted  [default: 0]"
-    rename: "Emulates BLAST behaviour for headers (keep left of first space)"
-    sorted: "If the GFF file is sorted (all of a sequence annotations are contiguos) can use less memory, `sort -s -k 1,1` can be used"
-    feat_type: "Feature type used if the output is a GFF (default is *LCA*)  [default: LCA]"
-    reference: "Reference file for the GFF, if supplied a GFF file is the output"
-    simple_table: "Uses a 2 column table format (seq_id taxon_id) TAB separated"
-    krona_total: "Total number of raw sequences (used to output correct percentages in Krona"
-    out_format: "[krona|json|tab|gff] Format of output file  [default: tab]"
+    rename: "Emulates BLAST behaviour for headers (keep\\nleft of first space)"
+    sorted: "If the GFF file is sorted (all of a sequence\\nannotations are contiguos) can use less\\nmemory, `sort -s -k 1,1` can be used"
+    feat_type: "Feature type used if the output is a GFF\\n(default is *LCA*)  [default: LCA]"
+    reference: "Reference file for the GFF, if supplied a\\nGFF file is the output"
+    simple_table: "Uses a 2 column table format (seq_id\\ntaxon_id) TAB separated"
+    krona_total: "Total number of raw sequences (used to\\noutput correct percentages in Krona"
+    out_format: "[krona|json|tab|gff]\\nFormat of output file  [default: tab]"
     progress: "Shows Progress Bar"
     gff_file: ""
     output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_reference = "${in_reference}"
+    File out_out_format = "${in_out_format}"
   }
 }

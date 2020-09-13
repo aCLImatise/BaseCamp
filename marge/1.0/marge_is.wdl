@@ -53,4 +53,7 @@ task MargeIs {
     or: ""
     mouse_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

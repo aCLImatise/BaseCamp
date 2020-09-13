@@ -10,11 +10,14 @@ task CheckvQualitySummary {
     checkv quality_summary \
       ~{input_viral_sequences} \
       ~{output_directory} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     quiet: "Suppress logging messages"
     input_viral_sequences: "Input viral sequences in FASTA format"
     output_directory: "Output directory"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

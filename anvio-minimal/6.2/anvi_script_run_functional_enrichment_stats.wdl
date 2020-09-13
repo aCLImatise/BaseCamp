@@ -1,7 +1,10 @@
 version 1.0
 
-task AnviScriptRunFunctionalEnrichmentStats {
+task Anviscriptrunfunctionalenrichmentstats {
   command <<<
-    anvi-script-run-functional-enrichment-stats
+    anvi_script_run_functional_enrichment_stats
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -5,7 +5,7 @@ task FlashLFQ {
     Boolean? idt
     Boolean? rep
     Boolean? sil
-    Boolean? out
+    Directory? out
     Boolean? nor
     Boolean? ppm
     Boolean? iso
@@ -18,35 +18,35 @@ task FlashLFQ {
     Boolean? rmc
     Boolean? bay
     Boolean? ctr
-    Boolean? fcc
     Boolean? mcm
     Boolean? bur
-    Boolean? sha
-    Boolean? rns
+    String analysis
+    String iterations
+    String quantification
   }
   command <<<
     FlashLFQ \
-      ~{true="--idt" false="" idt} \
-      ~{true="--rep" false="" rep} \
-      ~{true="--sil" false="" sil} \
-      ~{true="--out" false="" out} \
-      ~{true="--nor" false="" nor} \
-      ~{true="--ppm" false="" ppm} \
-      ~{true="--iso" false="" iso} \
-      ~{true="--int" false="" default_false_bool_integrate} \
-      ~{true="--nis" false="" nis} \
-      ~{true="--chg" false="" chg} \
-      ~{true="--thr" false="" thr} \
-      ~{true="--mbr" false="" mbr} \
-      ~{true="--mrt" false="" mrt} \
-      ~{true="--rmc" false="" rmc} \
-      ~{true="--bay" false="" bay} \
-      ~{true="--ctr" false="" ctr} \
-      ~{true="--fcc" false="" fcc} \
-      ~{true="--mcm" false="" mcm} \
-      ~{true="--bur" false="" bur} \
-      ~{true="--sha" false="" sha} \
-      ~{true="--rns" false="" rns}
+      ~{analysis} \
+      ~{iterations} \
+      ~{quantification} \
+      ~{if (idt) then "--idt" else ""} \
+      ~{if (rep) then "--rep" else ""} \
+      ~{if (sil) then "--sil" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (nor) then "--nor" else ""} \
+      ~{if (ppm) then "--ppm" else ""} \
+      ~{if (iso) then "--iso" else ""} \
+      ~{if (default_false_bool_integrate) then "--int" else ""} \
+      ~{if (nis) then "--nis" else ""} \
+      ~{if (chg) then "--chg" else ""} \
+      ~{if (thr) then "--thr" else ""} \
+      ~{if (mbr) then "--mbr" else ""} \
+      ~{if (mrt) then "--mrt" else ""} \
+      ~{if (rmc) then "--rmc" else ""} \
+      ~{if (bay) then "--bay" else ""} \
+      ~{if (ctr) then "--ctr" else ""} \
+      ~{if (mcm) then "--mcm" else ""} \
+      ~{if (bur) then "--bur" else ""}
   >>>
   parameter_meta {
     idt: "Required. string; identification file path"
@@ -64,11 +64,15 @@ task FlashLFQ {
     mrt: "(Default: 2.5) double; maximum MBR window in minutes"
     rmc: "(Default: false) bool; require MS/MS ID in condition"
     bay: "(Default: false) bool; Bayesian protein fold-change analysis"
-    ctr: "string; control condition for Bayesian protein fold-change analysis"
-    fcc: "(Default: 0.1) double; fold-change cutoff for Bayesian protein fold-change analysis"
-    mcm: "(Default: 3000) int; number of markov-chain monte carlo iterations for the Bayesian protein fold-change analysis"
-    bur: "(Default: 1000) int; number of markov-chain monte carlo burn-in iterations"
-    sha: "(Default: false) bool; use shared peptides for protein quantification"
-    rns: "int; random seed for the Bayesian protein fold-change analysis"
+    ctr: "string; control condition for Bayesian protein fold-change"
+    mcm: "(Default: 3000) int; number of markov-chain monte carlo\\niterations for the Bayesian protein fold-change analysis"
+    bur: "(Default: 1000) int; number of markov-chain monte carlo burn-in"
+    analysis: "--fcc        (Default: 0.1) double; fold-change cutoff for Bayesian protein"
+    iterations: "--sha        (Default: false) bool; use shared peptides for protein"
+    quantification: "--rns        int; random seed for the Bayesian protein fold-change analysis"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
   }
 }

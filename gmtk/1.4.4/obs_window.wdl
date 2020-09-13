@@ -1,7 +1,10 @@
 version 1.0
 
-task ObsWindow {
+task Obswindow {
   command <<<
-    obs-window
+    obs_window
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

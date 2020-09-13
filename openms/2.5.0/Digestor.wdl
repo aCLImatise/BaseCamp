@@ -4,13 +4,13 @@ task Digestor {
   input {
     File? in
     File? out
-    String? out_type
-    String? missed_cleavages
-    String? min_length
-    String? max_length
-    String? enzyme
+    File? out_type
+    Int? missed_cleavages
+    Int? min_length
+    Int? max_length
+    Int? enzyme
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -26,7 +26,7 @@ task Digestor {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                  Input file (valid formats: 'fasta')"
@@ -35,10 +35,15 @@ task Digestor {
     missed_cleavages: "The number of allowed missed cleavages (default: '1' min: '0')"
     min_length: "Minimum length of peptide (default: '6')"
     max_length: "Maximum length of peptide (default: '40')"
-    enzyme: "The type of digestion enzyme (default: 'Trypsin' valid: 'Arg-C', 'Arg-C/P', 'Asp-N', 'proline endopeptidase', 'glutamyl endopeptidase', 'proline-endopeptidase/HKR', 'Glu-C+P', 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'Asp-N/B', 'Asp-N_ambic', 'Chymotrypsin', 'Chymotrypsin/P', 'CNBr', 'Formic_acid', 'Lys-C', 'Lys-N', 'Lys-C/P', 'PepsinA', 'TrypChymo', 'Trypsin/P', 'V8-DE', 'V8-E', 'leukocyte elastase', 'elastase-trypsin-chymotrypsin', 'no cleavage', 'unspecific cleavage', 'Alpha-lytic protease', '2-iodobenzoate', 'iodosobenzoate', 'staphylococcal protease/D', 'Trypsin')"
+    enzyme: "The type of digestion enzyme (default: 'Trypsin' valid: 'Glu-C+P', 'PepsinA + P', 'no cleavage', 'unspecific cleavage', 'Formic_acid', 'Lys-C', 'Chymotrypsin/P', 'CNBr', 'Asp-N', 'Asp-N/B', 'PepsinA', 'Trypsin/P', 'V8-DE', 'Arg-C', 'Arg-C/P', 'cyanogen-bromide', 'Clostripain/P', 'elastase-trypsin-chymotrypsin', 'V8-E', 'leukocyte elastase', 'proline endopeptidase', 'glutamyl endopeptidase', 'Alpha-lytic protease', '2-iodobenzoate', 'iodosobenzoate', 'staphylococcal protease/D', 'proline-endopeptidase/HKR', 'Lys-N', 'Lys-C/P', 'Trypsin', 'Asp-N_ambic', 'Chymotrypsin', 'TrypChymo')"
     ini: "Use the given TOPP INI file"
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+    File out_out_type = "${in_out_type}"
   }
 }

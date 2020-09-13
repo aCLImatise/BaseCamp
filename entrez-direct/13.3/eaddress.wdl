@@ -4,4 +4,7 @@ task Eaddress {
   command <<<
     eaddress
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task ObsInfo {
+task Obsinfo {
   command <<<
-    obs-info
+    obs_info
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

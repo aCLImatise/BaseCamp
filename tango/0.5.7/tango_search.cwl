@@ -1,63 +1,66 @@
 class: CommandLineTool
 id: ../../../tango_search.cwl
 inputs:
-- id: mode
-  doc: "Choice of search mode for diamond: 'blastx' (default) for DNA query sequences\
-    \ or 'blastp' for amino acid query sequences"
+- id: in_mode
+  doc: "Choice of search mode for diamond: 'blastx' (default)\nfor DNA query sequences\
+    \ or 'blastp' for amino acid\nquery sequences"
   type: string
   inputBinding:
     prefix: --mode
-- id: cpus
+- id: in_cpus
   doc: Number of cpus to use for diamond
-  type: string
+  type: long
   inputBinding:
     prefix: --cpus
-- id: block_size
-  doc: Sequence block size in billions of letters (default=2.0). Set to 20 on clusters
-  type: string
+- id: in_block_size
+  doc: "Sequence block size in billions of letters\n(default=2.0). Set to 20 on clusters"
+  type: long
   inputBinding:
     prefix: --blocksize
-- id: chunks
+- id: in_chunks
   doc: Number of chunks for index processing (default=4)
-  type: string
+  type: long
   inputBinding:
     prefix: --chunks
-- id: top
-  doc: Report alignments within this percentage range of top bitscore (default=10)
-  type: string
+- id: in_top
+  doc: "Report alignments within this percentage range of top\nbitscore (default=10)"
+  type: long
   inputBinding:
     prefix: --top
-- id: evalue
+- id: in_evalue
   doc: maximum e-value to report alignments (default=0.001)
-  type: string
+  type: double
   inputBinding:
     prefix: --evalue
-- id: min_len
-  doc: Minimum length of queries. Shorter queries will be filtered prior to search.
+- id: in_min_len
+  doc: "Minimum length of queries. Shorter queries will be\nfiltered prior to search."
   type: long
   inputBinding:
     prefix: --minlen
-- id: tmpdir
-  doc: directory for temporary files
-  type: string
+- id: in_tmpdir
+  doc: "directory for temporary files\n"
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-- id: query
+- id: in_query
   doc: Query contig nucleotide file
   type: string
   inputBinding:
     position: 0
-- id: dbfile
+- id: in_dbfile
   doc: Diamond database file
   type: string
   inputBinding:
     position: 1
-- id: outfile
+- id: in_outfile
   doc: Diamond output file
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tango

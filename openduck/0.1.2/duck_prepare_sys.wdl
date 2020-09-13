@@ -5,7 +5,7 @@ task DuckPrepareSys {
     String? protein
     String? ligand
     String? chunk
-    Int? interaction
+    String? interaction
     String? seed
     String? gpu_id
     String? force_constant_eq
@@ -27,6 +27,9 @@ task DuckPrepareSys {
     interaction: "Protein atom to use for ligand interaction."
     seed: "Random seed."
     gpu_id: "GPU ID (optional); if not specified, runs on CPU only."
-    force_constant_eq: "Force constant for equilibration."
+    force_constant_eq: "Force constant for equilibration.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

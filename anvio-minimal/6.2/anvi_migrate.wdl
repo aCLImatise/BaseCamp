@@ -1,7 +1,10 @@
 version 1.0
 
-task AnviMigrate {
+task Anvimigrate {
   command <<<
-    anvi-migrate
+    anvi_migrate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

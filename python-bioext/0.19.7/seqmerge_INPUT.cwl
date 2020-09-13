@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../seqmerge_INPUT.cwl
 inputs:
-- id: s
+- id: in_s
   doc: ''
   type: string
   inputBinding:
     prefix: -s
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - seqmerge

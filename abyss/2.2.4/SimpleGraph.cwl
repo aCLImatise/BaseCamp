@@ -1,97 +1,100 @@
 class: CommandLineTool
 id: ../../../SimpleGraph.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: k-mer size
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: n_pairs
+- id: in_n_pairs
   doc: minimum number of pairs [0]
-  type: string
+  type: long
   inputBinding:
     prefix: --npairs
-- id: seed_length
+- id: in_seed_length
   doc: minimum seed contig length [0]
-  type: string
+  type: long
   inputBinding:
     prefix: --seed-length
-- id: dist_error
-  doc: acceptable error of a distance estimate default is 6 bp
-  type: string
+- id: in_dist_error
+  doc: "acceptable error of a distance estimate\ndefault is 6 bp"
+  type: long
   inputBinding:
     prefix: --dist-error
-- id: max_cost
+- id: in_max_cost
   doc: maximum computational cost
-  type: string
+  type: long
   inputBinding:
     prefix: --max-cost
-- id: out
+- id: in_out
   doc: write result to FILE
   type: File
   inputBinding:
     prefix: --out
-- id: threads
+- id: in_threads
   doc: use THREADS parallel threads [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: extend
+- id: in_extend
   doc: extend unambiguous paths
   type: boolean
   inputBinding:
     prefix: --extend
-- id: no_extend
+- id: in_no_extend
   doc: do not extend unambiguous paths [default]
   type: boolean
   inputBinding:
     prefix: --no-extend
-- id: scaffold
+- id: in_scaffold
   doc: join contigs with Ns [default]
   type: boolean
   inputBinding:
     prefix: --scaffold
-- id: no_scaffold
+- id: in_no_scaffold
   doc: do not scaffold
   type: boolean
   inputBinding:
     prefix: --no-scaffold
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: db
+- id: in_db
   doc: specify path of database repository in FILE
   type: File
   inputBinding:
     prefix: --db
-- id: library
+- id: in_library
   doc: specify library NAME for sqlite
   type: string
   inputBinding:
     prefix: --library
-- id: strain
+- id: in_strain
   doc: specify strain NAME for sqlite
   type: string
   inputBinding:
     prefix: --strain
-- id: species
+- id: in_species
   doc: specify species NAME for sqlite
   type: string
   inputBinding:
     prefix: --species
-- id: adj
+- id: in_adj
   doc: adjacency of the contigs
   type: string
   inputBinding:
     position: 0
-- id: dist
+- id: in_dist
   doc: distance estimates between the contigs
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - SimpleGraph

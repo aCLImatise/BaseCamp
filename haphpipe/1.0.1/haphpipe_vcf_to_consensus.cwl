@@ -1,52 +1,65 @@
 class: CommandLineTool
 id: ../../../haphpipe_vcf_to_consensus.cwl
 inputs:
-- id: vcf
+- id: in_vcf
   doc: VCF file (created with all sites).
-  type: string
+  type: File
   inputBinding:
     prefix: --vcf
-- id: outdir
+- id: in_outdir
   doc: 'Output directory (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: samp_idx
+- id: in_samp_idx
   doc: 'Index for sample if multi-sample VCF (default: 0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --sampidx
-- id: min_dp
+- id: in_min_dp
   doc: 'Minimum depth to call site (default: 5)'
   type: long
   inputBinding:
     prefix: --min_dp
-- id: major
+- id: in_major
   doc: 'Allele fraction to make unambiguous call (default: 0.5)'
-  type: string
+  type: double
   inputBinding:
     prefix: --major
-- id: minor
+- id: in_minor
   doc: 'Allele fraction to make ambiguous call (default: 0.2)'
-  type: long
+  type: double
   inputBinding:
     prefix: --minor
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'Do not delete temporary directory (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_tmp
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Append console output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Output directory (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Append console output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - haphpipe

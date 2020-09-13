@@ -10,71 +10,74 @@ task BarriersRNA2 {
     Boolean? b_size
     Boolean? s_size
     Int? max
-    String? minh
+    Float? minh
     Boolean? saddle
     Boolean? rates
     Int? poset
-    String? path
+    Int? path
     Boolean? sb_map
     Boolean? trans
-    String point_mutation_default
-    String flip_nd_half
+    String basins
+    String neighbors
+    String rna
+    String rna_no_lp
+    Int rna_two
+    Int rna_two_no_lp
+    Int q_two
     String nni
-    String permutations
-    String transpositions
-    String canonical_transpositions
-    String reversals
-    String exchange_moves_balances
   }
   command <<<
-    barriers-RNA2 \
-      ~{point_mutation_default} \
-      ~{flip_nd_half} \
+    barriers_RNA2 \
+      ~{basins} \
+      ~{neighbors} \
+      ~{rna} \
+      ~{rna_no_lp} \
+      ~{rna_two} \
+      ~{rna_two_no_lp} \
+      ~{q_two} \
       ~{nni} \
-      ~{permutations} \
-      ~{transpositions} \
-      ~{canonical_transpositions} \
-      ~{reversals} \
-      ~{exchange_moves_balances} \
-      ~{true="--full-help" false="" full_help} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (full_help) then "--full-help" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
       ~{if defined(moves) then ("--moves " +  '"' + moves + '"') else ""} \
-      ~{true="--bsize" false="" b_size} \
-      ~{true="--ssize" false="" s_size} \
+      ~{if (b_size) then "--bsize" else ""} \
+      ~{if (s_size) then "--ssize" else ""} \
       ~{if defined(max) then ("--max " +  '"' + max + '"') else ""} \
       ~{if defined(minh) then ("--minh " +  '"' + minh + '"') else ""} \
-      ~{true="--saddle" false="" saddle} \
-      ~{true="--rates" false="" rates} \
+      ~{if (saddle) then "--saddle" else ""} \
+      ~{if (rates) then "--rates" else ""} \
       ~{if defined(poset) then ("--poset " +  '"' + poset + '"') else ""} \
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""} \
-      ~{true="--sbmap" false="" sb_map} \
-      ~{true="--trans" false="" trans}
+      ~{if (sb_map) then "--sbmap" else ""} \
+      ~{if (trans) then "--trans" else ""}
   >>>
   parameter_meta {
     full_help: "Print help, including hidden options, and exit"
     quiet: "be quiet, inhibit PS output  (default=off)"
     verbose: "print more information  (default=off)"
     graph: "define graph type  (default=`RNA')"
-    moves: "select move-set (if Graph allows several different ones)"
+    moves: "select move-set (if Graph allows several different\\nones)"
     b_size: "print basin sizes  (default=off)"
     s_size: "print saddle component sizes  (default=off)"
-    max: "compute only the lowest <num> local minima (default=`100')"
-    minh: "print only minima with barrier > dE (default=`0.000001')"
+    max: "compute only the lowest <num> local minima\\n(default=`100')"
+    minh: "print only minima with barrier > dE\\n(default=`0.000001')"
     saddle: "print saddle point structures  (default=off)"
-    rates: "compute rates between macro states (basins) (default=off)"
-    poset: "input is a poset from n objective functions (default=`0')"
-    path: "=<l2>  backtrack path between lmins l2 and l1 (l1 < l2), can be specified multiple times"
-    sb_map: "FK: output map of structures and their respective basins  (default=off)"
-    trans: "FK: output a list of all transient structures and their neighbors  (default=off)"
-    point_mutation_default: "point mutation (default)"
-    flip_nd_half: "flip 2nd half"
+    rates: "compute rates between macro states (basins)\\n(default=off)"
+    poset: "input is a poset from n objective functions\\n(default=`0')"
+    path: "=<l2>  backtrack path between lmins l2 and l1 (l1 < l2),\\ncan be specified multiple times"
+    sb_map: "FK: output map of structures and their respective"
+    trans: "FK: output a list of all transient structures and their"
+    basins: "(default=off)"
+    neighbors: "(default=off)"
+    rna: "RNA secondary structures"
+    rna_no_lp: "canonical RNA structures\\n[no]Shift       with/out shift moves [default with]"
+    rna_two: "RNA secondary structures\\n[no]Shift       with/out shift moves [default with]"
+    rna_two_no_lp: "canonical RNA structures, no lonely pairs\\n[no]Shift       with/out shift moves [default with]"
+    q_two: "Spin Glass\\np               point mutation (default)\\nc               flip 2nd half"
     nni: "NNI moves [no other options yet]"
-    permutations: "Permutations"
-    transpositions: "Transpositions [default]"
-    canonical_transpositions: "Canonical Transpositions"
-    reversals: "Reversals"
-    exchange_moves_balances: "Exchange Moves on balances +/- strings"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

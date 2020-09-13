@@ -1,57 +1,70 @@
 class: CommandLineTool
 id: ../../../phylophlan_strain_finder.cwl
 inputs:
-- id: input
-  doc: 'Specify the file of the phylogenetic tree as generated from phylophlan.py
-    (default: None)'
-  type: string
+- id: in_input
+  doc: "Specify the file of the phylogenetic tree as generated\nfrom phylophlan.py\
+    \ (default: None)"
+  type: File
   inputBinding:
     prefix: --input
-- id: mutation_rates
-  doc: 'Specify the file of the mutation rates as generated from phylophlan.py (default:
-    None)'
-  type: string
+- id: in_mutation_rates
+  doc: "Specify the file of the mutation rates as generated\nfrom phylophlan.py (default:\
+    \ None)"
+  type: File
   inputBinding:
     prefix: --mutation_rates
-- id: phylo_thr
-  doc: 'Maximum phylogenetic distance threshold for every pair of nodes in the same
-    subtree (inclusive) (default: 0.05)'
-  type: string
+- id: in_phylo_thr
+  doc: "Maximum phylogenetic distance threshold for every pair\nof nodes in the same\
+    \ subtree (inclusive) (default:\n0.05)"
+  type: double
   inputBinding:
     prefix: --phylo_thr
-- id: mut_rate_thr
-  doc: 'Maximum mutation rate ratio for every pair of nodes in the same subtree (inclusive)
-    (default: 0.05)'
-  type: string
+- id: in_mut_rate_thr
+  doc: "Maximum mutation rate ratio for every pair of nodes in\nthe same subtree (inclusive)\
+    \ (default: 0.05)"
+  type: double
   inputBinding:
     prefix: --mutrate_thr
-- id: tree_format
+- id: in_tree_format
   doc: 'Specify the format of the input tree (default: newick)'
   type: string
   inputBinding:
     prefix: --tree_format
-- id: output
-  doc: 'Specify the output filename, if not specified will be stdout (default: None)'
-  type: string
+- id: in_output
+  doc: "Specify the output filename, if not specified will be\nstdout (default: None)"
+  type: File
   inputBinding:
     prefix: --output
-- id: overwrite
+- id: in_overwrite
   doc: 'Overwrite the output file if exists (default: False)'
-  type: boolean
+  type: File
   inputBinding:
     prefix: --overwrite
-- id: specify_separator_use
-  doc: '{;,,,      }, --separator {;,,,    } Specify the separator to use in the output
-    (default: )'
+- id: in_specify_separator_use
+  doc: "{;,,,      }, --separator {;,,,    }\nSpecify the separator to use in the\
+    \ output (default: )"
   type: boolean
   inputBinding:
     prefix: -s
-- id: verbose
+- id: in_verbose
   doc: 'Write more stuff (default: False)'
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Specify the output filename, if not specified will be\nstdout (default: None)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_overwrite
+  doc: 'Overwrite the output file if exists (default: False)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_overwrite)
 cwlVersion: v1.1
 baseCommand:
 - phylophlan_strain_finder

@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- varda2-client
+- version
 positional:
 - !Positional
   description: ''
@@ -9,18 +12,8 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -p
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? http
-      ? https
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -s
-  args: !SimpleFlagArg
-    name: SERVER
+  - -v
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ''
@@ -32,13 +25,22 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -v
-  args: !EmptyFlagArg {}
+  - -s
+  args: !SimpleFlagArg
+    name: SERVER
   optional: true
-command:
-- varda2-client
-- version
+- !Flag
+  description: ''
+  synonyms:
+  - -p
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? http
+      ? https
+  optional: true
 parent: &id001 !Command
+  command:
+  - varda2-client
   positional: []
   named:
   - !Flag
@@ -60,7 +62,7 @@ parent: &id001 !Command
       name: SERVER
     optional: true
   - !Flag
-    description: Certificate
+    description: ''
     synonyms:
     - -c
     - --certificate
@@ -68,17 +70,426 @@ parent: &id001 !Command
       name: CERTIFICATE
     optional: true
   - !Flag
-    description: Verbose output
+    description: ''
     synonyms:
     - -v
-    - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - varda2-client
   parent:
   subcommands:
   - !Command
+    command:
+    - varda2-client
+    - save
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: varda2-client
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: CERTIFICATE
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: SERVER
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -p
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? http
+          ? https
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: varda2-client [-h] [-p {http,https}] [-s SERVER] [-c CERTIFICATE]\
+      \ [-v]\n                     {submit,monitor,save,version,annotate,stab,seq,snv,mnv,task,sample}\n\
+      \                     ...\nvarda2-client: error: unrecognized arguments: --usage\n"
+    generated_using: &id004
+    - --usage
+  - !Command
+    command:
+    - varda2-client
+    - seq
+    positional: []
+    named:
+    - !Flag
+      description: "Sequence\n"
+      synonyms:
+      - -s
+      - --sequence
+      args: !SimpleFlagArg
+        name: SEQUENCE
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: varda2-client seq [-h] -s SEQUENCE\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  -s SEQUENCE, --sequence\
+      \ SEQUENCE\n                        Sequence\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    command:
+    - varda2-client
+    - task
+    positional: []
+    named:
+    - !Flag
+      description: Task UUID
+      synonyms:
+      - -u
+      - --uuid
+      args: !SimpleFlagArg
+        name: UUID
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: varda2-client task [-h] -u UUID\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n  -u UUID, --uuid UUID\
+      \  Task UUID\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - varda2-client
+    - monitor
+    positional: []
+    named:
+    - !Flag
+      description: "Filename of tasks to monitor\n"
+      synonyms:
+      - -t
+      - --task-file
+      args: !SimpleFlagArg
+        name: TASKS_FN
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: varda2-client monitor [-h] -t TASKS_FN\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  -t TASKS_FN, --task-file\
+      \ TASKS_FN\n                        Filename of tasks to monitor\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - varda2-client
+    - snv
+    positional: []
+    named:
+    - !Flag
+      description: Locus position
+      synonyms:
+      - -p
+      - --position
+      args: !SimpleFlagArg
+        name: POSITION
+      optional: true
+    - !Flag
+      description: Inserted base
+      synonyms:
+      - -i
+      - --inserted
+      args: !SimpleFlagArg
+        name: INSERTED
+      optional: true
+    - !Flag
+      description: "Chromosome to look at\n"
+      synonyms:
+      - -r
+      - --reference
+      args: !SimpleFlagArg
+        name: REFERENCE
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: varda2-client snv [-h] -p POSITION -i INSERTED -r REFERENCE\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -p POSITION, --position POSITION\n                        Locus position\n\
+      \  -i INSERTED, --inserted INSERTED\n                        Inserted base\n\
+      \  -r REFERENCE, --reference REFERENCE\n                        Chromosome to\
+      \ look at\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - varda2-client
+    - sample
+    positional: []
+    named:
+    - !Flag
+      description: Sample UUID
+      synonyms:
+      - -u
+      - --uuid
+      args: !SimpleFlagArg
+        name: UUID
+      optional: true
+    - !Flag
+      description: Disease indication code
+      synonyms:
+      - -d
+      - --disease-code
+      args: !SimpleFlagArg
+        name: DISEASE_CODE
+      optional: true
+    - !Flag
+      description: "Local sample id\n"
+      synonyms:
+      - -l
+      - --lab-sample-id
+      args: !SimpleFlagArg
+        name: LAB_SAMPLE_ID
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: varda2-client sample [-h] -u UUID [-d DISEASE_CODE] [-l LAB_SAMPLE_ID]\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -u UUID, --uuid UUID  Sample UUID\n  -d DISEASE_CODE, --disease-code DISEASE_CODE\n\
+      \                        Disease indication code\n  -l LAB_SAMPLE_ID, --lab-sample-id\
+      \ LAB_SAMPLE_ID\n                        Local sample id\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - varda2-client
+    - mnv
+    positional: []
+    named:
+    - !Flag
+      description: Start of region
+      synonyms:
+      - -s
+      - --start
+      args: !SimpleFlagArg
+        name: START
+      optional: true
+    - !Flag
+      description: End of region
+      synonyms:
+      - -e
+      - --end
+      args: !SimpleFlagArg
+        name: END
+      optional: true
+    - !Flag
+      description: Inserted sequence
+      synonyms:
+      - -i
+      - --inserted
+      args: !SimpleFlagArg
+        name: INSERTED
+      optional: true
+    - !Flag
+      description: "Chromosome to look at\n"
+      synonyms:
+      - -r
+      - --reference
+      args: !SimpleFlagArg
+        name: REFERENCE
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: varda2-client mnv [-h] -s START -e END -i INSERTED -r REFERENCE\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -s START, --start START\n                        Start of region\n  -e END,\
+      \ --end END     End of region\n  -i INSERTED, --inserted INSERTED\n        \
+      \                Inserted sequence\n  -r REFERENCE, --reference REFERENCE\n\
+      \                        Chromosome to look at\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - varda2-client
+    - annotate
+    positional: []
+    named:
+    - !Flag
+      description: 'Sample sheet file: sample_id, gvcf, vcf, bam'
+      synonyms:
+      - -s
+      - --sample-sheet
+      args: !SimpleFlagArg
+        name: SAMPLESHEET_FN
+      optional: true
+    - !Flag
+      description: Varda variants file
+      synonyms:
+      - -v
+      - --variants-file
+      args: !SimpleFlagArg
+        name: VAR_FN
+      optional: true
+    - !Flag
+      description: "Local sample id\n"
+      synonyms:
+      - -l
+      - --lab-sample-id
+      args: !SimpleFlagArg
+        name: LAB_SAMPLE_ID
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: varda2-client annotate [-h] (-s SAMPLESHEET_FN | -v VAR_FN)\n\
+      \                              [-l LAB_SAMPLE_ID]\n\noptional arguments:\n \
+      \ -h, --help            show this help message and exit\n  -s SAMPLESHEET_FN,\
+      \ --sample-sheet SAMPLESHEET_FN\n                        Sample sheet file:\
+      \ sample_id, gvcf, vcf, bam\n  -v VAR_FN, --variants-file VAR_FN\n         \
+      \               Varda variants file\n  -l LAB_SAMPLE_ID, --lab-sample-id LAB_SAMPLE_ID\n\
+      \                        Local sample id\n"
+    generated_using: *id002
+  - *id003
+  - !Command
+    command:
+    - varda2-client
+    - Certificate
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: varda2-client
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: CERTIFICATE
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: SERVER
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -p
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? http
+          ? https
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: varda2-client [-h] [-p {http,https}] [-s SERVER] [-c CERTIFICATE]\
+      \ [-v]\n                     {submit,monitor,save,version,annotate,stab,seq,snv,mnv,task,sample}\n\
+      \                     ...\nvarda2-client: error: invalid choice: 'Certificate'\
+      \ (choose from 'submit', 'monitor', 'save', 'version', 'annotate', 'stab', 'seq',\
+      \ 'snv', 'mnv', 'task', 'sample')\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - varda2-client
+    - submit
     positional: []
     named:
     - !Flag
@@ -114,18 +525,16 @@ parent: &id001 !Command
         name: SAMPLESHEET_FN
       optional: true
     - !Flag
-      description: Varda variants file
+      description: "Varda variants file\n"
       synonyms:
       - -v
       - --variants-file
       args: !SimpleFlagArg
         name: VAR_FN
       optional: true
-    command:
-    - varda2-client
-    - submit
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -145,143 +554,11 @@ parent: &id001 !Command
       \ SAMPLESHEET_FN\n                        Sample sheet file: sample_id, gvcf,\
       \ vcf, bam\n  -v VAR_FN, --variants-file VAR_FN\n                        Varda\
       \ variants file\n"
-    generated_using: &id002
-    - --help
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Filename of tasks to monitor
-      synonyms:
-      - -t
-      - --task-file
-      args: !SimpleFlagArg
-        name: TASKS_FN
-      optional: true
-    command:
-    - varda2-client
-    - monitor
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: varda2-client monitor [-h] -t TASKS_FN\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n  -t TASKS_FN, --task-file\
-      \ TASKS_FN\n                        Filename of tasks to monitor\n"
     generated_using: *id002
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: varda2-client
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -p
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? http
-          ? https
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -s
-      args: !SimpleFlagArg
-        name: SERVER
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -c
-      args: !SimpleFlagArg
-        name: CERTIFICATE
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - varda2-client
-    - save
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: varda2-client [-h] [-p {http,https}] [-s SERVER] [-c CERTIFICATE]\
-      \ [-v]\n                     {submit,monitor,save,version,annotate,stab,seq,snv,mnv,task,sample}\n\
-      \                     ...\nvarda2-client: error: unrecognized arguments: --usage\n"
-    generated_using: &id004
-    - --usage
-  - *id003
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'Sample sheet file: sample_id, gvcf, vcf, bam'
-      synonyms:
-      - -s
-      - --sample-sheet
-      args: !SimpleFlagArg
-        name: SAMPLESHEET_FN
-      optional: true
-    - !Flag
-      description: Varda variants file
-      synonyms:
-      - -v
-      - --variants-file
-      args: !SimpleFlagArg
-        name: VAR_FN
-      optional: true
-    - !Flag
-      description: Local sample id
-      synonyms:
-      - -l
-      - --lab-sample-id
-      args: !SimpleFlagArg
-        name: LAB_SAMPLE_ID
-      optional: true
-    command:
-    - varda2-client
-    - annotate
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: varda2-client annotate [-h] (-s SAMPLESHEET_FN | -v VAR_FN)\n\
-      \                              [-l LAB_SAMPLE_ID]\n\noptional arguments:\n \
-      \ -h, --help            show this help message and exit\n  -s SAMPLESHEET_FN,\
-      \ --sample-sheet SAMPLESHEET_FN\n                        Sample sheet file:\
-      \ sample_id, gvcf, vcf, bam\n  -v VAR_FN, --variants-file VAR_FN\n         \
-      \               Varda variants file\n  -l LAB_SAMPLE_ID, --lab-sample-id LAB_SAMPLE_ID\n\
-      \                        Local sample id\n"
-    generated_using: *id002
-  - !Command
+    - stab
     positional: []
     named:
     - !Flag
@@ -301,18 +578,16 @@ parent: &id001 !Command
         name: END
       optional: true
     - !Flag
-      description: Chromosome to look at
+      description: "Chromosome to look at\n"
       synonyms:
       - -r
       - --reference
       args: !SimpleFlagArg
         name: REFERENCE
       optional: true
-    command:
-    - varda2-client
-    - stab
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -328,215 +603,7 @@ parent: &id001 !Command
       \ END     End of region\n  -r REFERENCE, --reference REFERENCE\n           \
       \             Chromosome to look at\n"
     generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Sequence
-      synonyms:
-      - -s
-      - --sequence
-      args: !SimpleFlagArg
-        name: SEQUENCE
-      optional: true
-    command:
-    - varda2-client
-    - seq
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: varda2-client seq [-h] -s SEQUENCE\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n  -s SEQUENCE, --sequence\
-      \ SEQUENCE\n                        Sequence\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Locus position
-      synonyms:
-      - -p
-      - --position
-      args: !SimpleFlagArg
-        name: POSITION
-      optional: true
-    - !Flag
-      description: Inserted base
-      synonyms:
-      - -i
-      - --inserted
-      args: !SimpleFlagArg
-        name: INSERTED
-      optional: true
-    - !Flag
-      description: Chromosome to look at
-      synonyms:
-      - -r
-      - --reference
-      args: !SimpleFlagArg
-        name: REFERENCE
-      optional: true
-    command:
-    - varda2-client
-    - snv
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: varda2-client snv [-h] -p POSITION -i INSERTED -r REFERENCE\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  -p POSITION, --position POSITION\n                        Locus position\n\
-      \  -i INSERTED, --inserted INSERTED\n                        Inserted base\n\
-      \  -r REFERENCE, --reference REFERENCE\n                        Chromosome to\
-      \ look at\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Start of region
-      synonyms:
-      - -s
-      - --start
-      args: !SimpleFlagArg
-        name: START
-      optional: true
-    - !Flag
-      description: End of region
-      synonyms:
-      - -e
-      - --end
-      args: !SimpleFlagArg
-        name: END
-      optional: true
-    - !Flag
-      description: Inserted sequence
-      synonyms:
-      - -i
-      - --inserted
-      args: !SimpleFlagArg
-        name: INSERTED
-      optional: true
-    - !Flag
-      description: Chromosome to look at
-      synonyms:
-      - -r
-      - --reference
-      args: !SimpleFlagArg
-        name: REFERENCE
-      optional: true
-    command:
-    - varda2-client
-    - mnv
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: varda2-client mnv [-h] -s START -e END -i INSERTED -r REFERENCE\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  -s START, --start START\n                        Start of region\n  -e END,\
-      \ --end END     End of region\n  -i INSERTED, --inserted INSERTED\n        \
-      \                Inserted sequence\n  -r REFERENCE, --reference REFERENCE\n\
-      \                        Chromosome to look at\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Task UUID
-      synonyms:
-      - -u
-      - --uuid
-      args: !SimpleFlagArg
-        name: UUID
-      optional: true
-    command:
-    - varda2-client
-    - task
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: varda2-client task [-h] -u UUID\n\noptional arguments:\n  -h,\
-      \ --help            show this help message and exit\n  -u UUID, --uuid UUID\
-      \  Task UUID\n"
-    generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Sample UUID
-      synonyms:
-      - -u
-      - --uuid
-      args: !SimpleFlagArg
-        name: UUID
-      optional: true
-    - !Flag
-      description: Disease indication code
-      synonyms:
-      - -d
-      - --disease-code
-      args: !SimpleFlagArg
-        name: DISEASE_CODE
-      optional: true
-    - !Flag
-      description: Local sample id
-      synonyms:
-      - -l
-      - --lab-sample-id
-      args: !SimpleFlagArg
-        name: LAB_SAMPLE_ID
-      optional: true
-    command:
-    - varda2-client
-    - sample
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: varda2-client sample [-h] -u UUID [-d DISEASE_CODE] [-l LAB_SAMPLE_ID]\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  -u UUID, --uuid UUID  Sample UUID\n  -d DISEASE_CODE, --disease-code DISEASE_CODE\n\
-      \                        Disease indication code\n  -l LAB_SAMPLE_ID, --lab-sample-id\
-      \ LAB_SAMPLE_ID\n                        Local sample id\n"
-    generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -562,6 +629,7 @@ parent: &id001 !Command
     \ output\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

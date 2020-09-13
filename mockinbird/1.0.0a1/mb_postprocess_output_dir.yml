@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- mb-postprocess
+- output_dir
 positional:
 - !Positional
   description: ''
@@ -13,15 +16,14 @@ named:
   args: !SimpleFlagArg
     name: PREFIX
   optional: true
-command:
-- mb-postprocess
-- output_dir
-parent: &id001 !Command
+parent: &id002 !Command
+  command:
+  - mb-postprocess
   positional: []
   named:
   - !Flag
-    description: preprocessing filename prefix - only required if there are multiple
-      table files in the specified preprocess directory
+    description: "preprocessing filename prefix - only required if there\nare multiple\
+      \ table files in the specified preprocess\ndirectory"
     synonyms:
     - --prefix
     args: !SimpleFlagArg
@@ -33,16 +35,18 @@ parent: &id001 !Command
     - --log_level
     args: !ChoiceFlagArg
       choices: !!set
+        ? debug
+        ? info
         ? warn
         ? error
-        ? info
-        ? debug
     optional: true
-  command:
-  - mb-postprocess
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - mb-postprocess
+    - exist
     positional:
     - !Positional
       description: ''
@@ -57,11 +61,45 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: PREFIX
       optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n           \
+      \                   [--log_level {debug,info,warn,error}]\n                \
+      \              [--version]\n                              preprocess_dir output_dir\
+      \ config_file\nmockinbird-postprocess: error: argument preprocess_dir: 'exist'\
+      \ is not an existing directory\n"
+    generated_using: &id003
+    - --help
+  - !Command
     command:
     - mb-postprocess
     - preprocess_dir
-    parent: *id001
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: mockinbird-postprocess
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -75,43 +113,8 @@ parent: &id001 !Command
       \              [--version]\n                              preprocess_dir output_dir\
       \ config_file\nmockinbird-postprocess: error: argument preprocess_dir: 'preprocess_dir'\
       \ is not an existing directory\n"
-    generated_using: &id003
-    - --help
-  - *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: mockinbird-postprocess
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --prefix
-      args: !SimpleFlagArg
-        name: PREFIX
-      optional: true
-    command:
-    - mb-postprocess
-    - config_file
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n           \
-      \                   [--log_level {debug,info,warn,error}]\n                \
-      \              [--version]\n                              preprocess_dir output_dir\
-      \ config_file\nmockinbird-postprocess: error: argument preprocess_dir: 'config_file'\
-      \ is not an existing directory\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -142,6 +145,7 @@ parent: &id001 !Command
     \ show program's version number and exit\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

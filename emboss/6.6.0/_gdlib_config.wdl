@@ -1,6 +1,6 @@
 version 1.0
 
-task _gdlibConfig {
+task Gdlibconfig {
   input {
     Boolean? libdir
     Boolean? includedir
@@ -16,19 +16,19 @@ task _gdlibConfig {
     String gd_lib_config
   }
   command <<<
-    _gdlib-config \
+    _gdlib_config \
       ~{gd_lib_config} \
-      ~{true="--libdir" false="" libdir} \
-      ~{true="--includedir" false="" includedir} \
-      ~{true="--majorversion" false="" major_version} \
-      ~{true="--minorversion" false="" minor_version} \
-      ~{true="--revision" false="" revision} \
-      ~{true="--ldflags" false="" ldflags} \
-      ~{true="--libs" false="" libs} \
-      ~{true="--cflags" false="" cflags} \
-      ~{true="--includes" false="" includes} \
-      ~{true="--features" false="" features} \
-      ~{true="--all" false="" all}
+      ~{if (libdir) then "--libdir" else ""} \
+      ~{if (includedir) then "--includedir" else ""} \
+      ~{if (major_version) then "--majorversion" else ""} \
+      ~{if (minor_version) then "--minorversion" else ""} \
+      ~{if (revision) then "--revision" else ""} \
+      ~{if (ldflags) then "--ldflags" else ""} \
+      ~{if (libs) then "--libs" else ""} \
+      ~{if (cflags) then "--cflags" else ""} \
+      ~{if (includes) then "--includes" else ""} \
+      ~{if (features) then "--features" else ""} \
+      ~{if (all) then "--all" else ""}
   >>>
   parameter_meta {
     libdir: "# directory where GD library is installed"
@@ -40,8 +40,11 @@ task _gdlibConfig {
     libs: "# libs required for linking against GD library"
     cflags: "# options required for compiling GD library apps"
     includes: "# same as --cflags"
-    features: "# lists features compiled into gd, separated by spaces. # Currently (as of 2.2.5) the optional features # are GD_PNG, GD_JPEG, GD_XPM, GD_FREETYPE, and  # GD_FONTCONFIG. When these features are reported by # --features, it is safe to include calls to the # related functions in your code."
+    features: "# lists features compiled into gd, separated by spaces.\\n# Currently (as of 2.2.5) the optional features\\n# are GD_PNG, GD_JPEG, GD_XPM, GD_FREETYPE, and\\n# GD_FONTCONFIG. When these features are reported by\\n# --features, it is safe to include calls to the\\n# related functions in your code."
     all: "# print a summary of all GD library configure options"
     gd_lib_config: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

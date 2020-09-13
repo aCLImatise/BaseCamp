@@ -1,7 +1,10 @@
 version 1.0
 
-task AminoAcidComposition {
+task Aminoacidcomposition {
   command <<<
-    amino-acid-composition
+    amino_acid_composition
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

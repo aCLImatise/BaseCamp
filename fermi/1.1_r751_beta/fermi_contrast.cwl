@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../fermi_contrast.cwl
 inputs:
-- id: minimum_occurrence
+- id: in_minimum_occurrence
   doc: minimum occurrence [3]
   type: long
   inputBinding:
     prefix: -o
-- id: number_of_threads
+- id: in_number_of_threads
   doc: number of threads [1]
   type: long
   inputBinding:
     prefix: -t
-- id: kmer_length
+- id: in_kmer_length
   doc: k-mer length [55]
   type: long
   inputBinding:
     prefix: -k
-- id: idx_one_dot_fmd
+- id: in_idx_one_dot_fmd
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: idx_one_dot_rank
+- id: in_idx_one_dot_rank
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: one_two_dot_sub
+- id: in_one_two_dot_sub
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-- id: idx_two_dot_fmd
+- id: in_idx_two_dot_fmd
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 3
-- id: idx_two_dot_rank
+- id: in_idx_two_dot_rank
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 4
-- id: two_one_dot_sub
+- id: in_two_one_dot_sub
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fermi

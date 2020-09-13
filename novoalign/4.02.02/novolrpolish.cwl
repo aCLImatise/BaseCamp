@@ -1,86 +1,69 @@
 class: CommandLineTool
 id: ../../../novolrpolish.cwl
 inputs:
-- id: in
+- id: in_in
   doc: the input BAM file [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: lb_short
-  doc: <Library ID's for short  identifies the libraries that contain short reads
-    (e.g. Illumina) []
+- id: in_lb_short
+  doc: "<Library ID's for short  identifies the libraries that\ncontain short reads\
+    \ (e.g. Illumina) []"
   type: boolean
   inputBinding:
     prefix: -LBShort
-- id: lb_long
-  doc: <Library ID's for long si identifies the libraries with long single molecule
-    reads []
+- id: in_lb_long
+  doc: "<Library ID's for long si identifies the libraries with\nlong single molecule\
+    \ reads []"
   type: boolean
   inputBinding:
     prefix: -LBLong
-- id: out
-  doc: the output file as alternative to stdout. [stdout]
+- id: in_out
+  doc: "the output file as alternative\nto stdout. [stdout]"
   type: File
   inputBinding:
     prefix: -out
-- id: region
-  doc: genomic region (chr:99..[chr:]999). Index file is recommended for better performance,
-    and is used automatically if it exists. See 'bamtools help index' for more details
-    on creating one
-  type: string
+- id: in_region
+  doc: "genomic region\n(chr:99..[chr:]999). Index file is\nrecommended for better\
+    \ performance, and is\nused automatically if it exists. See\n'bamtools help index'\
+    \ for more details on\ncreating one"
+  type: File
   inputBinding:
     prefix: -region
-- id: fast_a
+- id: in_fast_a
   doc: The contigs to be polished.
-  type: string
+  type: File
   inputBinding:
     prefix: -fasta
-- id: fq
-  doc: Output is in FASTQ, Default is FASTA format.
+- id: in_fq
+  doc: "Output is in FASTQ, Default is\nFASTA format."
   type: boolean
   inputBinding:
     prefix: -fq
-- id: base_q
-  doc: Assumed phred scaled base quality for fasta input. [30]
-  type: string
+- id: in_base_q
+  doc: "Assumed phred scaled base\nquality for fasta input. [30]"
+  type: long
   inputBinding:
     prefix: -baseq
-- id: min_q
-  doc: Minimum quality for a correction. [30]
-  type: string
+- id: in_min_q
+  doc: "Minimum quality for a\ncorrection. [30]"
+  type: long
   inputBinding:
     prefix: -minq
-- id: min_mapq
-  doc: Minimum MAPQ for using a read in pileup. [2]
-  type: string
+- id: in_min_mapq
+  doc: "Minimum MAPQ for using a read\nin pileup. [2]"
+  type: long
   inputBinding:
     prefix: -minMAPQ
-- id: novo_craft
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: long
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: read
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: polisher
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: format_specific
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "the output file as alternative\nto stdout. [stdout]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - novolrpolish

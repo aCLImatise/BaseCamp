@@ -26,4 +26,7 @@ task MerfishtoolsMultidiffexpFLAGS {
     information: ""
     try: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

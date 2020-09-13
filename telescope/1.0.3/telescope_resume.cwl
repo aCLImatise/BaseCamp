@@ -1,84 +1,93 @@
 class: CommandLineTool
 id: ../../../telescope_resume.cwl
 inputs:
-- id: quiet
+- id: in_quiet
   doc: 'Silence (most) output. (default: False)'
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: debug
+- id: in_debug
   doc: 'Print debug messages. (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-- id: log_file
+- id: in_log_file
   doc: 'Log output to this file. (default: None)'
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: outdir
+- id: in_outdir
   doc: 'Output directory. (default: .)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: exp_tag
+- id: in_exp_tag
   doc: 'Experiment tag (default: telescope)'
   type: string
   inputBinding:
     prefix: --exp_tag
-- id: reassign_mode
-  doc: 'Reassignment mode. After EM is complete, each fragment is reassigned according
-    to the expected value of its membership weights. The reassignment method is the
-    method for resolving the "best" reassignment for fragments that have multiple
-    possible reassignments. Available modes are: "exclude" - fragments with multiple
-    best assignments are excluded from the final counts; "choose" - the best assignment
-    is randomly chosen from among the set of best assignments; "average" - the fragment
-    is divided evenly among the best assignments; "conf" - only assignments that exceed
-    a certain threshold (see --conf_prob) are accepted; "unique" - only uniquely aligned
-    reads are included. NOTE: Results using all assignment modes are included in the
-    Telescope report by default. This argument determines what mode will be used for
-    the "final counts" column. (default: exclude)'
+- id: in_reassign_mode
+  doc: "Reassignment mode. After EM is complete, each fragment\nis reassigned according\
+    \ to the expected value of its\nmembership weights. The reassignment method is\
+    \ the\nmethod for resolving the \"best\" reassignment for\nfragments that have\
+    \ multiple possible reassignments.\nAvailable modes are: \"exclude\" - fragments\
+    \ with\nmultiple best assignments are excluded from the final\ncounts; \"choose\"\
+    \ - the best assignment is randomly\nchosen from among the set of best assignments;\n\
+    \"average\" - the fragment is divided evenly among the\nbest assignments; \"conf\"\
+    \ - only assignments that\nexceed a certain threshold (see --conf_prob) are\n\
+    accepted; \"unique\" - only uniquely aligned reads are\nincluded. NOTE: Results\
+    \ using all assignment modes are\nincluded in the Telescope report by default.\
+    \ This\nargument determines what mode will be used for the\n\"final counts\" column.\
+    \ (default: exclude)"
   type: string
   inputBinding:
     prefix: --reassign_mode
-- id: conf_prob
-  doc: 'Minimum probability for high confidence assignment. (default: 0.9)'
-  type: string
+- id: in_conf_prob
+  doc: "Minimum probability for high confidence assignment.\n(default: 0.9)"
+  type: double
   inputBinding:
     prefix: --conf_prob
-- id: pi_prior
-  doc: 'Prior on π. Equivalent to adding n unique reads. (default: 0)'
-  type: string
+- id: in_pi_prior
+  doc: "Prior on π. Equivalent to adding n unique reads.\n(default: 0)"
+  type: long
   inputBinding:
     prefix: --pi_prior
-- id: theta_prior
-  doc: 'Prior on θ. Equivalent to adding n non-unique reads. NOTE: It is recommended
-    to set this prior to a large value. This increases the penalty for non-unique
-    reads and improves accuracy. (default: 200000)'
-  type: string
+- id: in_theta_prior
+  doc: "Prior on θ. Equivalent to adding n non-unique reads.\nNOTE: It is recommended\
+    \ to set this prior to a large\nvalue. This increases the penalty for non-unique\
+    \ reads\nand improves accuracy. (default: 200000)"
+  type: long
   inputBinding:
     prefix: --theta_prior
-- id: em_epsilon
+- id: in_em_epsilon
   doc: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
-  type: string
+  type: double
   inputBinding:
     prefix: --em_epsilon
-- id: max_iter
+- id: in_max_iter
   doc: 'EM Algorithm maximum iterations (default: 100)'
   type: long
   inputBinding:
     prefix: --max_iter
-- id: use_likelihood
-  doc: 'Use difference in log-likelihood as convergence criteria. (default: False)'
+- id: in_use_likelihood
+  doc: "Use difference in log-likelihood as convergence\ncriteria. (default: False)\n"
   type: boolean
   inputBinding:
     prefix: --use_likelihood
-- id: checkpoint
-  doc: Path to checkpoint file.
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_log_file
+  doc: 'Log output to this file. (default: None)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
+- id: out_outdir
+  doc: 'Output directory. (default: .)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - telescope

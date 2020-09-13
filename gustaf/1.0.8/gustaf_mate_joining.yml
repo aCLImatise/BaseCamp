@@ -1,6 +1,25 @@
 !Command
+command:
+- gustaf_mate_joining
 positional: []
 named:
+- !Flag
+  description: "Turn this option off to disable version update notifications of the\n\
+    application. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\nDefault: 1."
+  synonyms:
+  - --version-check
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: "of OUTPUT_FILE's\nSet name of output FASTA/FASTQ file(s). Valid filetypes\
+    \ are: .fq,\n.fastq, .fasta, and .fa. Default: joined_mates.fa."
+  synonyms:
+  - -o
+  - --outPath
+  args: !SimpleFlagArg
+    name: List
+  optional: true
 - !Flag
   description: Disable reverse complementing second input file.
   synonyms:
@@ -29,13 +48,23 @@ named:
   - --very-verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- gustaf_mate_joining
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "gustaf_mate_joining - Joining paired-end files.\n===============================================\n\
   \nSYNOPSIS\n    gustaf_mate_joining [OPTIONS] \"MATES1 FASTA/FASTQ FILE\" \"MATES2\n\
   \    FASTA/FASTQ FILE\"\n    gustaf_mate_joining [OPTIONS] \"MATES FASTA/FASTQ FILE\"\

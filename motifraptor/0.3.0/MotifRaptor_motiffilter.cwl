@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../MotifRaptor_motiffilter.cwl
 inputs:
-- id: workdir
+- id: in_workdir
   doc: Working directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --workdir
-- id: motif_summary
-  doc: Motif Summary File, usually from step2
-  type: string
+- id: in_motif_summary
+  doc: "Motif Summary File, usually from step2\n"
+  type: File
   inputBinding:
     prefix: --motif_summary
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - MotifRaptor

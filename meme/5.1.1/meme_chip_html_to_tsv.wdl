@@ -1,17 +1,17 @@
 version 1.0
 
-task MemeChipHtmlToTsv {
+task MemechipHtmlToTsv {
   input {
-    String meme_chip_html_file
-    String summary_tsv_file
+    File meme_chip_html_file
   }
   command <<<
-    meme-chip_html_to_tsv \
-      ~{meme_chip_html_file} \
-      ~{summary_tsv_file}
+    meme_chip_html_to_tsv \
+      ~{meme_chip_html_file}
   >>>
   parameter_meta {
     meme_chip_html_file: ""
-    summary_tsv_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

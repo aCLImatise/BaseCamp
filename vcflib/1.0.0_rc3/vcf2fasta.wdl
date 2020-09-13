@@ -3,8 +3,8 @@ version 1.0
 task Vcf2fasta {
   input {
     String? reference
-    String? prefix
-    String? default_ploidy
+    File? prefix
+    Int? default_ploidy
     File? file
   }
   command <<<
@@ -19,5 +19,9 @@ task Vcf2fasta {
     prefix: "Affix this output prefix to each file, none by default"
     default_ploidy: "Set a default ploidy for samples which do not have information in the first record (2)."
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_prefix = "${in_prefix}"
   }
 }

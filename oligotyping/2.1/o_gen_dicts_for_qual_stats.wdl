@@ -1,7 +1,10 @@
 version 1.0
 
-task OGenDictsForQualStats {
+task Ogendictsforqualstats {
   command <<<
-    o-gen-dicts-for-qual-stats
+    o_gen_dicts_for_qual_stats
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

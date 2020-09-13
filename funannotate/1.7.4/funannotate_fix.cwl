@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../funannotate_fix.cwl
 inputs:
-- id: input
+- id: in_input
   doc: Annotated genome in GenBank format.
   type: boolean
   inputBinding:
     prefix: --input
-- id: tbl
+- id: in_tbl
   doc: NCBI tbl annotation file.
   type: boolean
   inputBinding:
     prefix: --tbl
-- id: drop
+- id: in_drop
   doc: Gene models to remove/drop from annotation. File with locus_tag 1 per line.
   type: boolean
   inputBinding:
     prefix: --drop
-- id: out
+- id: in_out
   doc: Output folder
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: --out
-- id: tbl_two_asn
+- id: in_tbl_two_asn
   doc: 'Parameters for tbl2asn. Default: "-l paired-ends"'
   type: boolean
   inputBinding:
     prefix: --tbl2asn
-- id: arguments
+- id: in_arguments
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: Output folder
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - funannotate

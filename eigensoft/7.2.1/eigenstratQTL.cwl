@@ -1,47 +1,50 @@
 class: CommandLineTool
 id: ../../../eigenstratQTL.cwl
 inputs:
-- id: i
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: j
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -j
-- id: p
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -p
-- id: o
+- id: in_o
   doc: ''
   type: string
   inputBinding:
     prefix: -o
-- id: must
+- id: in_p
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -p
+- id: in_j
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -j
+- id: in_i
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -i
+- id: in_must
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: all
+- id: in_all
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: be
+- id: in_be
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: specified
+- id: in_specified
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - eigenstratQTL

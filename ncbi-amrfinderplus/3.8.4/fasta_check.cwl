@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../fasta_check.cwl
 inputs:
-- id: aa
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -aa
-- id: hyphen
+- id: in_hyphen
   doc: ''
   type: boolean
   inputBinding:
     prefix: -hyphen
-- id: in
+- id: in_aa
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -aa
+- id: in_in
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fasta_check

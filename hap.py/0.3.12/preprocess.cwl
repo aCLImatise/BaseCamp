@@ -1,70 +1,73 @@
 class: CommandLineTool
 id: ../../../preprocess.cwl
 inputs:
-- id: input_vcf
-  doc: VCF files to preprocess (use file:sample for a specific sample column).
-  type: string
+- id: in_input_vcf
+  doc: "VCF files to preprocess (use file:sample for\na specific sample column)."
+  type: File
   inputBinding:
     prefix: --input-vcf
-- id: arg_output_variant
+- id: in_arg_output_variant
   doc: '[ --output-vcf ] arg          Output variant comparison results to VCF.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: arg_reference_fasta
+- id: in_arg_reference_fasta
   doc: '[ --reference ] arg           The reference fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: arg_location_start
+- id: in_arg_location_start
   doc: '[ --location ] arg            The location to start at.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: arg_use_regions
-  doc: '[ --regions ] arg             Use a bed file for getting a subset of  regions
-    (traversal via tabix).'
+- id: in_arg_subset_ofregions
+  doc: "[ --regions ] arg             Use a bed file for getting a subset of\nregions\
+    \ (traversal via tabix)."
   type: boolean
   inputBinding:
     prefix: -R
-- id: targets_streaming_file
-  doc: '[ --targets ] arg             Use a bed file for getting a subset of  targets
-    (streaming the whole file, ignoring  things outside the bed regions).'
+- id: in_subset_oftargets_streaming
+  doc: "[ --targets ] arg             Use a bed file for getting a subset of\ntargets\
+    \ (streaming the whole file, ignoring\nthings outside the bed regions)."
   type: boolean
   inputBinding:
     prefix: -T
-- id: progress
+- id: in_progress
   doc: Set to true to output progress information.
   type: string
   inputBinding:
     prefix: --progress
-- id: haploid_x
+- id: in_haploid_x
   doc: 'Expand GTs on chrX: turn 1 into 1/1'
-  type: string
+  type: long
   inputBinding:
     prefix: --haploid-x
-- id: progress_seconds
+- id: in_progress_seconds
   doc: Output progress information every n seconds.
   type: string
   inputBinding:
     prefix: --progress-seconds
-- id: limit
+- id: in_limit
   doc: Maximum number of records to process.
-  type: string
+  type: long
   inputBinding:
     prefix: --limit
-- id: arg_apply_normalisations
-  doc: '[ --preprocess-variants ] arg Apply variant normalisations, trimming,  realignment
-    for complex variants (off by  default).'
+- id: in_arg_apply_trimmingrealignment
+  doc: "[ --preprocess-variants ] arg Apply variant normalisations, trimming,\nrealignment\
+    \ for complex variants (off by\ndefault)."
   type: boolean
   inputBinding:
     prefix: -V
-- id: arg_leftshift_indel
+- id: in_arg_leftshift_indel
   doc: '[ --leftshift ] arg           Left-shift indel alleles (off by default).'
   type: boolean
   inputBinding:
     prefix: -L
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - preprocess

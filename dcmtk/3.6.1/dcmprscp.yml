@@ -1,6 +1,14 @@
 !Command
+command:
+- dcmprscp
 positional: []
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet       quiet mode, print no warnings and errors
   synonyms:
@@ -20,15 +28,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[l]evel: string constant (fatal, error, warn, info, debug, trace)
-    use level l for the logger'
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
   synonyms:
   - -ll
   - --log-level
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[f]ilename: string use config file f for the logger'
+  description: "[f]ilename: string\nuse config file f for the logger"
   synonyms:
   - -lc
   - --log-config
@@ -40,19 +48,36 @@ named:
   - -l
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dcmprscp
+- !Flag
+  description: "--config      [f]ilename: string\nprocess using settings from configuration\
+    \ file"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--printer     [n]ame: string (default: 1st printer in config file)\n\
+    select printer with identifier n from config file"
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help        print this help text and exit --version     print version
-    information and exit --arguments   print expanded command line arguments
+  description: --help        print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dcmprscp v3.6.1 2016-11-02 $\n\ndcmprscp: DICOM basic grayscale\
   \ print management SCP\nusage: dcmprscp [options]\n\ngeneral options:\n  -h   --help\
   \        print this help text and exit\n       --version     print version information\

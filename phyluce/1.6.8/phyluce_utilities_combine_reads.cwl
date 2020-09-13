@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../phyluce_utilities_combine_reads.cwl
 inputs:
-- id: config
+- id: in_config
   doc: The configuration file for reads we are combining
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: output
+- id: in_output
   doc: The configuration file for reads we are combining
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: subfolder
-  doc: A subdirectory, below the level of the group, containing the reads
+- id: in_subfolder
+  doc: "A subdirectory, below the level of the group,\ncontaining the reads\n"
   type: string
   inputBinding:
     prefix: --subfolder
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_utilities_combine_reads

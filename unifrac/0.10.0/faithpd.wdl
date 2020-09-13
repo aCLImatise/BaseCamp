@@ -8,13 +8,16 @@ task Faithpd {
   }
   command <<<
     faithpd \
-      ~{true="-i" false="" input_biom_table} \
-      ~{true="-t" false="" input_phylogeny_newick} \
-      ~{true="-o" false="" the_output_series}
+      ~{if (input_biom_table) then "-i" else ""} \
+      ~{if (input_phylogeny_newick) then "-t" else ""} \
+      ~{if (the_output_series) then "-o" else ""}
   >>>
   parameter_meta {
     input_biom_table: "The input BIOM table."
     input_phylogeny_newick: "The input phylogeny in newick."
     the_output_series: "The output series."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

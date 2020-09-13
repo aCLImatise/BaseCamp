@@ -5,16 +5,16 @@ task SvtoolsClassify {
     String? vcf_input
     String? vcf_output
     File? gender
-    String? annotation
+    File? annotation
     Float? fraction
     File? exclude
     Float? slope_threshold
     Float? r_squared_threshold
     String? t_set
     String? method
-    String? diag_file
+    File? diag_file
     String? sex_chrom
-    String? tempdir
+    File? tempdir
   }
   command <<<
     svtools classify \
@@ -35,16 +35,20 @@ task SvtoolsClassify {
   parameter_meta {
     vcf_input: "VCF input"
     vcf_output: "VCF output [stdout]"
-    gender: "tab delimited file of sample genders (male=1, female=2) ex: SAMPLE_A 2"
+    gender: "tab delimited file of sample genders (male=1,\\nfemale=2) ex: SAMPLE_A 2"
     annotation: "BED file of annotated elements"
-    fraction: "fraction of reciprocal overlap to apply annotation to variant [0.9]"
-    exclude: "list of samples to exclude from classification algorithms"
-    slope_threshold: "minimum slope absolute value of regression line to classify as DEL or DUP[1.0]"
-    r_squared_threshold: "minimum R^2 correlation value of regression line to classify as DEL or DUP [0.2], for large sample reclassification"
-    t_set: "high quality deletions & duplications training dataset[vcf], required by naive Bayes reclassification"
-    method: "reclassification method, one of (large_sample, naive_bayes, hybrid)"
+    fraction: "fraction of reciprocal overlap to apply annotation to\\nvariant [0.9]"
+    exclude: "list of samples to exclude from classification\\nalgorithms"
+    slope_threshold: "minimum slope absolute value of regression line to\\nclassify as DEL or DUP[1.0]"
+    r_squared_threshold: "minimum R^2 correlation value of regression line to\\nclassify as DEL or DUP [0.2], for large sample\\nreclassification"
+    t_set: "high quality deletions & duplications training\\ndataset[vcf], required by naive Bayes reclassification"
+    method: "reclassification method, one of (large_sample,\\nnaive_bayes, hybrid)"
     diag_file: "text file to output method comparisons"
-    sex_chrom: "Comma-separated list of sex chromosome names [chrX,chrY]"
+    sex_chrom: "Comma-separated list of sex chromosome names\\n[chrX,chrY]"
     tempdir: "Directory for temp file downloads"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_diag_file = "${in_diag_file}"
   }
 }

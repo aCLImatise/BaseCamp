@@ -4,4 +4,7 @@ task Kallisto {
   command <<<
     kallisto
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,7 +2,7 @@ version 1.0
 
 task Bam2fnaOUTPUT {
   input {
-    String bam_two_fna
+    Int bam_two_fna
     String var_input
     String var_output
   }
@@ -16,5 +16,8 @@ task Bam2fnaOUTPUT {
     bam_two_fna: ""
     var_input: ""
     var_output: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,8 +1,39 @@
 !Command
-positional: []
+command:
+- fdnapenny
+positional:
+- !Positional
+  description: '[-outfile]           outfile    [*.fdnapenny] Phylip dnapenny program
+    output'
+  position: 0
+  name: alignments
+  optional: false
+- !Positional
+  description: 'Additional (Optional) qualifiers (* if not always prompted):'
+  position: 1
+  name: file
+  optional: false
 named:
 - !Flag
-  description: integer    [0] Species number to use as outgroup (Integer 0 or more)
+  description: properties (no help text) properties value
+  synonyms:
+  - -weights
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "integer    [100] How often to report, in trees (Any\ninteger value)"
+  synonyms:
+  - -howoften
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "integer    [1000] How many groups of trees (Any integer\nvalue)"
+  synonyms:
+  - -howmany
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "integer    [0] Species number to use as outgroup\n(Integer 0 or more)"
   synonyms:
   - -outgrno
   args: !EmptyFlagArg {}
@@ -13,13 +44,30 @@ named:
   - -dothreshold
   args: !EmptyFlagArg {}
   optional: true
-command:
-- fdnapenny
+- !Flag
+  description: boolean    [N] Print data at start of run
+  synonyms:
+  - -printdata
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: boolean    [N] Print out steps in each site
+  synonyms:
+  - -stepbox
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: boolean    [N] Print sequences at all nodes of tree
+  synonyms:
+  - -ancseq
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: boolean    Report command line options and exit. More information on
-    associated and general qualifiers can be found with -help -verbose
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   synonyms:
   - -help
   args: !EmptyFlagArg {}

@@ -17,4 +17,7 @@ task TreebestEstlen {
     matrix: ""
     tag: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

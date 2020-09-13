@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- phmmer
+- seqfile
 positional:
 - !Positional
   description: ''
@@ -12,10 +15,9 @@ named:
   - -options
   args: !EmptyFlagArg {}
   optional: true
-command:
-- phmmer
-- seqfile
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - phmmer
   positional: []
   named:
   - !Flag
@@ -298,12 +300,12 @@ parent: &id002 !Command
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - phmmer
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - phmmer
+    - seqdb
     positional:
     - !Positional
       description: ''
@@ -327,11 +329,9 @@ parent: &id002 !Command
       - -options
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - phmmer
-    - seqdb
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ': show brief help on version and usage'
       synonyms:
@@ -344,6 +344,8 @@ parent: &id002 !Command
       \ <seqfile> <seqdb>\n\nwhere basic options are:\n  -h : show brief help on version\
       \ and usage\n\nTo see more help on available options, do phmmer -h\n\n"
     generated_using: &id003 []
+  - *id002
+  usage: []
   help_flag: !Flag
     description: ': show brief help on version and usage'
     synonyms:
@@ -400,6 +402,7 @@ parent: &id002 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
   synonyms:

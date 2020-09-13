@@ -4,4 +4,7 @@ task VcfregionreduceUncompressed {
   command <<<
     vcfregionreduce_uncompressed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

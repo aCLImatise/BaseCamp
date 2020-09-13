@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../iu_trim_fastq.cwl
 inputs:
-- id: trim_from
+- id: in_trim_from
   doc: Trim from
   type: long
   inputBinding:
     prefix: --trim-from
-- id: trim_to
-  doc: Trim to
+- id: in_trim_to
+  doc: "Trim to\n"
   type: long
   inputBinding:
     prefix: --trim-to
-- id: var_2
+- id: in_file_path
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 0
-- id: var_3
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - iu-trim-fastq

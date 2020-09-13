@@ -4,4 +4,7 @@ task Goetia {
   command <<<
     goetia
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

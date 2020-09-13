@@ -3,10 +3,11 @@ version 1.0
 task GotreeStats {
   input {
     String? input_tree_default
-    String? output_file_default
+    File? output_file_default
     String? format
     Int? seed
     Int? threads
+    String edges
     String nodes
     String rooted
     String splits
@@ -14,6 +15,7 @@ task GotreeStats {
   }
   command <<<
     gotree stats \
+      ~{edges} \
       ~{nodes} \
       ~{rooted} \
       ~{splits} \
@@ -25,14 +27,19 @@ task GotreeStats {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    input_tree_default: "Input tree (default \"stdin\")"
-    output_file_default: "Output file (default \"stdout\")"
-    format: "Input tree format (newick, nexus, or phyloxml) (default \"newick\")"
+    input_tree_default: "Input tree (default \\\"stdin\\\")"
+    output_file_default: "Output file (default \\\"stdout\\\")"
+    format: "Input tree format (newick, nexus, or phyloxml) (default \\\"newick\\\")"
     seed: "Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)"
     threads: "Number of threads (Max=8) (default 1)"
+    edges: "Displays statistics on edges of input tree"
     nodes: "Displays statistics on nodes of input tree"
     rooted: "Tells wether the tree is rooted or unrooted"
     splits: "Prints all the splits from an input tree"
     tips: "Displays statistics on tips of input tree"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_default = "${in_output_file_default}"
   }
 }

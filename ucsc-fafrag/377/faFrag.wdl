@@ -6,21 +6,21 @@ task FaFrag {
     String in_dot_fa
     String start
     String end
-    String out_dot_fa
   }
   command <<<
     faFrag \
       ~{in_dot_fa} \
       ~{start} \
       ~{end} \
-      ~{out_dot_fa} \
-      ~{true="-mixed" false="" mixed}
+      ~{if (mixed) then "-mixed" else ""}
   >>>
   parameter_meta {
     mixed: "- preserve mixed-case in FASTA file"
     in_dot_fa: ""
     start: ""
     end: ""
-    out_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

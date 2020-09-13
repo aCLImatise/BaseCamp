@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../crux_print_processed_spectra.cwl
 inputs:
-- id: ms_two_file
+- id: in_ms_two_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crux

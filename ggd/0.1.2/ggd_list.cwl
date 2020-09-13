@@ -1,19 +1,22 @@
 class: CommandLineTool
 id: ../../../ggd_list.cwl
 inputs:
-- id: pattern
-  doc: (Optional) pattern to match the name of the ggd data package.
+- id: in_pattern
+  doc: "(Optional) pattern to match the name of the ggd data\npackage."
   type: string
   inputBinding:
     prefix: --pattern
-- id: prefix
-  doc: (Optional) The name or the full directory path to a conda environment where
-    a ggd recipe is stored. (Only needed if not getting file paths for files in the
-    current conda enviroment)
-  type: string
+- id: in_prefix
+  doc: "(Optional) The name or the full directory path to a\nconda environment where\
+    \ a ggd recipe is stored. (Only\nneeded if not getting file paths for files in\
+    \ the\ncurrent conda enviroment)\n"
+  type: File
   inputBinding:
     prefix: --prefix
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ggd

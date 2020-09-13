@@ -1,6 +1,6 @@
 version 1.0
 
-task EslSeqrangeNproc {
+task EslseqrangeNproc {
   input {
     String esl_seq_range
     String sq_file
@@ -8,7 +8,7 @@ task EslSeqrangeNproc {
     String nproc
   }
   command <<<
-    esl-seqrange nproc \
+    esl_seqrange nproc \
       ~{esl_seq_range} \
       ~{sq_file} \
       ~{proc_idx} \
@@ -19,5 +19,8 @@ task EslSeqrangeNproc {
     sq_file: ""
     proc_idx: ""
     nproc: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

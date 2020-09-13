@@ -4,4 +4,7 @@ task SeMetaCluster {
   command <<<
     SeMeta_Cluster
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

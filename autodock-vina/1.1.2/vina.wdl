@@ -8,23 +8,21 @@ task Vina {
     String? center_x
     String? center_y
     String? center_z
-    String? size_x
-    String? size_y
-    String? size_z
-    String? out
-    String? log
-    String? cpu
+    Int? size_x
+    Int? size_y
+    Int? size_z
+    File? out
+    File? log
+    Int? cpu
     String? seed
-    String? exhaustive_ness
-    String? num_modes
-    String? energy_range
+    Int? exhaustive_ness
+    Int? num_modes
+    Int? energy_range
     String? config
     Boolean? help_advanced
-    String var_input
   }
   command <<<
     vina \
-      ~{var_input} \
       ~{if defined(receptor) then ("--receptor " +  '"' + receptor + '"') else ""} \
       ~{if defined(flex) then ("--flex " +  '"' + flex + '"') else ""} \
       ~{if defined(ligand) then ("--ligand " +  '"' + ligand + '"') else ""} \
@@ -42,7 +40,7 @@ task Vina {
       ~{if defined(num_modes) then ("--num_modes " +  '"' + num_modes + '"') else ""} \
       ~{if defined(energy_range) then ("--energy_range " +  '"' + energy_range + '"') else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
-      ~{true="--help_advanced" false="" help_advanced}
+      ~{if (help_advanced) then "--help_advanced" else ""}
   >>>
   parameter_meta {
     receptor: "rigid part of the receptor (PDBQT)"
@@ -54,15 +52,18 @@ task Vina {
     size_x: "size in the X dimension (Angstroms)"
     size_y: "size in the Y dimension (Angstroms)"
     size_z: "size in the Z dimension (Angstroms)"
-    out: "output models (PDBQT), the default is chosen based on  the ligand file name"
+    out: "output models (PDBQT), the default is chosen based on\\nthe ligand file name"
     log: "optionally, write log file"
-    cpu: "the number of CPUs to use (the default is to try to detect the number of CPUs or, failing that, use 1)"
+    cpu: "the number of CPUs to use (the default is to try to\\ndetect the number of CPUs or, failing that, use 1)"
     seed: "explicit random seed"
-    exhaustive_ness: "(=8) exhaustiveness of the global search (roughly  proportional to time): 1+"
+    exhaustive_ness: "(=8) exhaustiveness of the global search (roughly\\nproportional to time): 1+"
     num_modes: "(=9)      maximum number of binding modes to generate"
-    energy_range: "(=3)   maximum energy difference between the best binding  mode and the worst one displayed (kcal/mol)"
+    energy_range: "(=3)   maximum energy difference between the best binding\\nmode and the worst one displayed (kcal/mol)"
     config: "the above options can be put here"
     help_advanced: "display usage summary with advanced options"
-    var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

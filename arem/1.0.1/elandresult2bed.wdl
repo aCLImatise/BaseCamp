@@ -4,4 +4,7 @@ task Elandresult2bed {
   command <<<
     elandresult2bed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

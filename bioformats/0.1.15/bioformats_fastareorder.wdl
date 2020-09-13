@@ -13,14 +13,17 @@ task BioformatsFastareorder {
       ~{fast_a} \
       ~{order_file} \
       ~{output_fasta_file} \
-      ~{true="--ignore_missing" false="" ignore_missing} \
-      ~{true="-v" false="" v}
+      ~{if (ignore_missing) then "--ignore_missing" else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    ignore_missing: "ignore sequences in the specified order file that are missing in the input FASTA file"
+    ignore_missing: "ignore sequences in the specified order file that are\\nmissing in the input FASTA file\\n"
     v: ""
     fast_a: "a FASTA file of sequences to reorder"
     order_file: "a file with the sequence order"
     output_fasta_file: "an output FASTA file of reordered sequences"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

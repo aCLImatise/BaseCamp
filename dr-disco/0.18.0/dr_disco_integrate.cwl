@@ -1,29 +1,32 @@
 class: CommandLineTool
 id: ../../../dr_disco_integrate.cwl
 inputs:
-- id: gtf
-  doc: Use gene annotation for estimating fusion genes and improve classification
-    of exonic (GTF file)
-  type: string
+- id: in_gtf
+  doc: "Use gene annotation for estimating fusion genes and improve\nclassification\
+    \ of exonic (GTF file)"
+  type: File
   inputBinding:
     prefix: --gtf
-- id: fast_a
-  doc: Use reference sequences to estimate edit distances to splice junction motifs
-    (FASTA file)
-  type: string
+- id: in_fast_a
+  doc: "Use reference sequences to estimate edit distances to splice\njunction motifs\
+    \ (FASTA file)"
+  type: File
   inputBinding:
     prefix: --fasta
-- id: table_input_file
+- id: in_table_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: table_output_file
+- id: in_table_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dr-disco

@@ -1,4 +1,8 @@
 &id005 !Command
+command:
+- pvacseq
+- coverage_filter
+- input_file
 positional:
 - !Positional
   description: ''
@@ -18,73 +22,71 @@ named:
   args: !SimpleFlagArg
     name: NORMAL_COV
   optional: true
-command:
-- pvacseq
-- coverage_filter
-- input_file
 parent: &id004 !Command
+  command:
+  - pvacseq
+  - coverage_filter
   positional: []
   named:
   - !Flag
-    description: 'Normal Coverage Cutoff. Sites above this cutoff will be considered.
-      Default: 5'
+    description: "Normal Coverage Cutoff. Sites above this cutoff will\nbe considered.\
+      \ Default: 5"
     synonyms:
     - --normal-cov
     args: !SimpleFlagArg
       name: NORMAL_COV
     optional: true
   - !Flag
-    description: 'Tumor DNA Coverage Cutoff. Sites above this cutoff will be considered.
-      Default: 10'
+    description: "Tumor DNA Coverage Cutoff. Sites above this cutoff\nwill be considered.\
+      \ Default: 10"
     synonyms:
     - --tdna-cov
     args: !SimpleFlagArg
       name: TDNA_COV
     optional: true
   - !Flag
-    description: 'Tumor RNA Coverage Cutoff. Sites above this cutoff will be considered.
-      Default: 10'
+    description: "Tumor RNA Coverage Cutoff. Sites above this cutoff\nwill be considered.\
+      \ Default: 10"
     synonyms:
     - --trna-cov
     args: !SimpleFlagArg
       name: TRNA_COV
     optional: true
   - !Flag
-    description: 'Normal VAF Cutoff. Sites BELOW this cutoff in normal will be considered.
-      Default: 2'
+    description: "Normal VAF Cutoff. Sites BELOW this cutoff in normal\nwill be considered.\
+      \ Default: 2"
     synonyms:
     - --normal-vaf
     args: !SimpleFlagArg
       name: NORMAL_VAF
     optional: true
   - !Flag
-    description: 'Tumor DNA VAF Cutoff. Sites above this cutoff will be considered.
-      Default: 40'
+    description: "Tumor DNA VAF Cutoff. Sites above this cutoff will be\nconsidered.\
+      \ Default: 40"
     synonyms:
     - --tdna-vaf
     args: !SimpleFlagArg
       name: TDNA_VAF
     optional: true
   - !Flag
-    description: 'Tumor RNA VAF Cutoff. Sites above this cutoff will be considered.
-      Default: 40'
+    description: "Tumor RNA VAF Cutoff. Sites above this cutoff will be\nconsidered.\
+      \ Default: 40"
     synonyms:
     - --trna-vaf
     args: !SimpleFlagArg
       name: TRNA_VAF
     optional: true
   - !Flag
-    description: 'Gene and Transcript Expression cutoff. Sites above this cutoff will
-      be consideredDefault: 1'
+    description: "Gene and Transcript Expression cutoff. Sites above\nthis cutoff\
+      \ will be consideredDefault: 1\n"
     synonyms:
     - --expn-val
     args: !SimpleFlagArg
       name: EXPN_VAL
     optional: true
-  command:
-  - pvacseq
-  - coverage_filter
   parent: &id001 !Command
+    command:
+    - pvacseq
     positional: []
     named:
     - !Flag
@@ -93,22 +95,76 @@ parent: &id004 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - pvacseq
     parent:
     subcommands:
     - !Command
+      command:
+      - pvacseq
+      - download_example_data
       positional:
       - !Positional
-        description: The directory for writing all result files
+        description: Directory for downloading example data
+        position: 0
+        name: destination_directory
+        optional: false
+      named: []
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: pvacseq download_example_data [-h] destination_directory\n\
+        \npositional arguments:\n  destination_directory\n                       \
+        \ Directory for downloading example data\n\noptional arguments:\n  -h, --help\
+        \            show this help message and exit\n"
+      generated_using: &id002
+      - --help
+    - !Command
+      command:
+      - pvacseq
+      - run
+      positional:
+      - !Positional
+        description: 'positional arguments:'
         position: 0
         name: output_dir
         optional: false
+      - !Positional
+        description: "A VEP-annotated single-sample VCF containing\ntranscript, Wildtype\
+          \ protein sequence, and Downstream\nprotein sequence information"
+        position: 1
+        name: input_file
+        optional: false
+      - !Positional
+        description: "The name of the sample being processed. This will be\nused as\
+          \ a prefix for output files"
+        position: 2
+        name: sample_name
+        optional: false
+      - !Positional
+        description: "Name of the allele to use for epitope prediction.\nMultiple\
+          \ alleles can be specified using a comma-\nseparated list. For a list of\
+          \ available alleles, use:\n`pvacseq valid_alleles`"
+        position: 3
+        name: allele
+        optional: false
+      - !Positional
+        description: output_dir            The directory for writing all result files
+        position: 0
+        name: spaces
+        optional: false
       named:
       - !Flag
-        description: Length of subpeptides (neoepitopes) to predict. Multiple epitope
-          lengths can be specified using a comma-separated list. Typical epitope lengths
-          vary between 8-11. Required for Class I prediction algorithms
+        description: "Length of subpeptides (neoepitopes) to predict.\nMultiple epitope\
+          \ lengths can be specified using a\ncomma-separated list. Typical epitope\
+          \ lengths vary\nbetween 8-11. Required for Class I prediction\nalgorithms"
         synonyms:
         - -e
         - --epitope-length
@@ -116,8 +172,8 @@ parent: &id004 !Command
           name: EPITOPE_LENGTH
         optional: true
       - !Flag
-        description: 'Length of the peptide sequence to use when creating the FASTA.
-          Default: 21'
+        description: "Length of the peptide sequence to use when creating\nthe FASTA.\
+          \ Default: 21"
         synonyms:
         - -l
         - --peptide-sequence-length
@@ -125,17 +181,17 @@ parent: &id004 !Command
           name: PEPTIDE_SEQUENCE_LENGTH
         optional: true
       - !Flag
-        description: Directory that contains the local installation of IEDB MHC I
-          and/or MHC II
+        description: "Directory that contains the local installation of IEDB\nMHC\
+          \ I and/or MHC II"
         synonyms:
         - --iedb-install-directory
         args: !SimpleFlagArg
           name: IEDB_INSTALL_DIRECTORY
         optional: true
       - !Flag
-        description: yaml file of additional files to be used as inputs, e.g. cufflinks
-          output files. For an example of this yaml file run `pvacseq config_files
-          additional_input_file_list`.
+        description: "yaml file of additional files to be used as inputs,\ne.g. cufflinks\
+          \ output files. For an example of this\nyaml file run `pvacseq config_files\n\
+          additional_input_file_list`."
         synonyms:
         - -i
         - --additional-input-file-list
@@ -143,8 +199,8 @@ parent: &id004 !Command
           name: ADDITIONAL_INPUT_FILE_LIST
         optional: true
       - !Flag
-        description: NetChop prediction method to use ("cterm" for C term 3.0, "20s"
-          for 20S 3.0).
+        description: "NetChop prediction method to use (\"cterm\" for C term\n3.0,\
+          \ \"20s\" for 20S 3.0)."
         synonyms:
         - --net-chop-method
         args: !ChoiceFlagArg
@@ -153,26 +209,27 @@ parent: &id004 !Command
             ? 20s
         optional: true
       - !Flag
-        description: Run NetMHCStabPan after all filtering and add stability predictions
-          to predicted epitopes
+        description: "Run NetMHCStabPan after all filtering and add\nstability predictions\
+          \ to predicted epitopes"
         synonyms:
         - --netmhc-stab
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
-        description: 'Output only the top scoring result for each allele- peptide
-          length combination for each variant. Default: False'
+        description: "Output only the top scoring result for each allele-\npeptide\
+          \ length combination for each variant. Default:\nFalse"
         synonyms:
         - -t
         - --top-result-per-mutation
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
-        description: 'The ic50 scoring metric to use when filtering epitopes by binding-threshold
-          or minimum fold change. lowest: Best MT Score/Corresponding Fold Change
-          - lowest MT ic50 binding score/corresponding fold change of all chosen prediction
-          methods. median: Median MT Score/Median Fold Change - median MT ic50 binding
-          score/fold change of all chosen prediction methods. Default: median'
+        description: "The ic50 scoring metric to use when filtering epitopes\nby binding-threshold\
+          \ or minimum fold change. lowest:\nBest MT Score/Corresponding Fold Change\
+          \ - lowest MT\nic50 binding score/corresponding fold change of all\nchosen\
+          \ prediction methods. median: Median MT\nScore/Median Fold Change - median\
+          \ MT ic50 binding\nscore/fold change of all chosen prediction methods.\n\
+          Default: median"
         synonyms:
         - -m
         - --top-score-metric
@@ -182,8 +239,8 @@ parent: &id004 !Command
             ? lowest
         optional: true
       - !Flag
-        description: 'Report only epitopes where the mutant allele has ic50 binding
-          scores below this value. Default: 500'
+        description: "Report only epitopes where the mutant allele has ic50\nbinding\
+          \ scores below this value. Default: 500"
         synonyms:
         - -b
         - --binding-threshold
@@ -191,9 +248,10 @@ parent: &id004 !Command
           name: BINDING_THRESHOLD
         optional: true
       - !Flag
-        description: 'Minimum fold change between mutant binding score and wild-type
-          score. The default is 0, which filters no results, but 1 is often a sensible
-          choice (requiring that binding is better to the MT than WT). Default: 0'
+        description: "Minimum fold change between mutant binding score and\nwild-type\
+          \ score. The default is 0, which filters no\nresults, but 1 is often a sensible\
+          \ choice (requiring\nthat binding is better to the MT than WT). Default:\
+          \ 0"
         synonyms:
         - -c
         - --minimum-fold-change
@@ -201,56 +259,56 @@ parent: &id004 !Command
           name: MINIMUM_FOLD_CHANGE
         optional: true
       - !Flag
-        description: 'Normal Coverage Cutoff. Sites above this cutoff will be considered.
-          Default: 5'
+        description: "Normal Coverage Cutoff. Sites above this cutoff will\nbe considered.\
+          \ Default: 5"
         synonyms:
         - --normal-cov
         args: !SimpleFlagArg
           name: NORMAL_COV
         optional: true
       - !Flag
-        description: 'Tumor DNA Coverage Cutoff. Sites above this cutoff will be considered.
-          Default: 10'
+        description: "Tumor DNA Coverage Cutoff. Sites above this cutoff\nwill be\
+          \ considered. Default: 10"
         synonyms:
         - --tdna-cov
         args: !SimpleFlagArg
           name: TDNA_COV
         optional: true
       - !Flag
-        description: 'Tumor RNA Coverage Cutoff. Sites above this cutoff will be considered.
-          Default: 10'
+        description: "Tumor RNA Coverage Cutoff. Sites above this cutoff\nwill be\
+          \ considered. Default: 10"
         synonyms:
         - --trna-cov
         args: !SimpleFlagArg
           name: TRNA_COV
         optional: true
       - !Flag
-        description: 'Normal VAF Cutoff. Sites BELOW this cutoff in normal will be
-          considered. Default: 2'
+        description: "Normal VAF Cutoff. Sites BELOW this cutoff in normal\nwill be\
+          \ considered. Default: 2"
         synonyms:
         - --normal-vaf
         args: !SimpleFlagArg
           name: NORMAL_VAF
         optional: true
       - !Flag
-        description: 'Tumor DNA VAF Cutoff. Sites above this cutoff will be considered.
-          Default: 40'
+        description: "Tumor DNA VAF Cutoff. Sites above this cutoff will be\nconsidered.\
+          \ Default: 40"
         synonyms:
         - --tdna-vaf
         args: !SimpleFlagArg
           name: TDNA_VAF
         optional: true
       - !Flag
-        description: 'Tumor RNA VAF Cutoff. Sites above this cutoff will be considered.
-          Default: 40'
+        description: "Tumor RNA VAF Cutoff. Sites above this cutoff will be\nconsidered.\
+          \ Default: 40"
         synonyms:
         - --trna-vaf
         args: !SimpleFlagArg
           name: TRNA_VAF
         optional: true
       - !Flag
-        description: 'Gene and Transcript Expression cutoff. Sites above this cutoff
-          will be considered. Default: 1'
+        description: "Gene and Transcript Expression cutoff. Sites above\nthis cutoff\
+          \ will be considered. Default: 1"
         synonyms:
         - --expn-val
         args: !SimpleFlagArg
@@ -273,9 +331,9 @@ parent: &id004 !Command
             ? sample_name
         optional: true
       - !Flag
-        description: Number of fasta entries per IEDB request. For some resource-intensive
-          prediction algorithms like Pickpocket and NetMHCpan it might be helpful
-          to reduce this number. Needs to be an even number.
+        description: "Number of fasta entries per IEDB request. For some\nresource-intensive\
+          \ prediction algorithms like\nPickpocket and NetMHCpan it might be helpful\
+          \ to reduce\nthis number. Needs to be an even number."
         synonyms:
         - -s
         - --fasta-size
@@ -283,8 +341,8 @@ parent: &id004 !Command
           name: FASTA_SIZE
         optional: true
       - !Flag
-        description: 'Number of retries when making requests to the IEDB RESTful web
-          interface. Must be less than or equal to 100.Default: 5'
+        description: "Number of retries when making requests to the IEDB\nRESTful\
+          \ web interface. Must be less than or equal to\n100.Default: 5"
         synonyms:
         - -r
         - --iedb-retries
@@ -292,8 +350,8 @@ parent: &id004 !Command
           name: IEDB_RETRIES
         optional: true
       - !Flag
-        description: "Cap to limit the downstream sequence length for frameshifts\
-          \ when creating the fasta file. Use 'full' to include the full downstream\
+        description: "Cap to limit the downstream sequence length for\nframeshifts\
+          \ when creating the fasta file. Use 'full'\nto include the full downstream\
           \ sequence. Default: 1000"
         synonyms:
         - -d
@@ -302,18 +360,16 @@ parent: &id004 !Command
           name: DOWNSTREAM_SEQUENCE_LENGTH
         optional: true
       - !Flag
-        description: Keep intermediate output files. This migt be useful for debugging
-          purposes.
+        description: "Keep intermediate output files. This migt be useful\nfor debugging\
+          \ purposes.\n"
         synonyms:
         - -k
         - --keep-tmp-files
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - pvacseq
-      - run
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -418,14 +474,16 @@ parent: &id004 !Command
         \                 to include the full downstream sequence. Default: 1000\n\
         \  -k, --keep-tmp-files  Keep intermediate output files. This migt be useful\n\
         \                        for debugging purposes.\n"
-      generated_using: &id003
-      - --help
-    - &id002 !Command
+      generated_using: *id002
+    - &id003 !Command
+      command:
+      - pvacseq
+      - binding_filter
       positional: []
       named:
       - !Flag
-        description: 'Report only epitopes where the mutant allele has ic50 binding
-          scores below this value. Default: 500'
+        description: "Report only epitopes where the mutant allele has ic50\nbinding\
+          \ scores below this value. Default: 500"
         synonyms:
         - -b
         - --binding-threshold
@@ -433,9 +491,10 @@ parent: &id004 !Command
           name: BINDING_THRESHOLD
         optional: true
       - !Flag
-        description: 'Minimum fold change between mutant binding score and wild-type
-          score. The default is 0, which filters no results, but 1 is often a sensible
-          option (requiring that binding is better to the MT than WT). Default: 0'
+        description: "Minimum fold change between mutant binding score and\nwild-type\
+          \ score. The default is 0, which filters no\nresults, but 1 is often a sensible\
+          \ option (requiring\nthat binding is better to the MT than WT). Default:\
+          \ 0"
         synonyms:
         - -c
         - --minimum-fold-change
@@ -443,11 +502,12 @@ parent: &id004 !Command
           name: MINIMUM_FOLD_CHANGE
         optional: true
       - !Flag
-        description: 'The ic50 scoring metric to use when filtering epitopes by binding-threshold
-          or minimum fold change. lowest: Best MT Score/Corresponding Fold Change
-          - lowest MT ic50 binding score/corresponding fold change of all chosen prediction
-          methods. median: Median MT Score/Median Fold Change - median MT ic50 binding
-          score/fold change of all chosen prediction methods. Default: median'
+        description: "The ic50 scoring metric to use when filtering epitopes\nby binding-threshold\
+          \ or minimum fold change. lowest:\nBest MT Score/Corresponding Fold Change\
+          \ - lowest MT\nic50 binding score/corresponding fold change of all\nchosen\
+          \ prediction methods. median: Median MT\nScore/Median Fold Change - median\
+          \ MT ic50 binding\nscore/fold change of all chosen prediction methods.\n\
+          Default: median\n"
         synonyms:
         - -m
         - --top-score-metric
@@ -456,77 +516,35 @@ parent: &id004 !Command
             ? median
             ? lowest
         optional: true
-      command:
-      - pvacseq
-      - binding_filter
       parent: *id001
       subcommands:
       - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: pvacseq
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: binding_filter
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - -b
-          args: !SimpleFlagArg
-            name: BINDING_THRESHOLD
-          optional: true
-        command:
-        - pvacseq
-        - binding_filter
-        - input_file
-        parent: *id002
-        subcommands: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: pvacseq binding_filter [-h] [-b BINDING_THRESHOLD]\n  \
-          \                            [-c MINIMUM_FOLD_CHANGE] [-m {lowest,median}]\n\
-          \                              input_file output_file\npvacseq binding_filter:\
-          \ error: argument input_file: can't open 'input_file': [Errno 2] No such\
-          \ file or directory: 'input_file'\n"
-        generated_using: *id003
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: pvacseq
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: binding_filter
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - -b
-          args: !SimpleFlagArg
-            name: BINDING_THRESHOLD
-          optional: true
         command:
         - pvacseq
         - binding_filter
         - output_file
-        parent: *id002
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: pvacseq
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: binding_filter
+          optional: false
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - -b
+          args: !SimpleFlagArg
+            name: BINDING_THRESHOLD
+          optional: true
+        parent: *id003
         subcommands: []
+        usage: []
         help_flag: !Flag
           description: ''
           synonyms:
@@ -540,7 +558,49 @@ parent: &id004 !Command
           \                              input_file output_file\npvacseq binding_filter:\
           \ error: argument input_file: can't open 'output_file': [Errno 2] No such\
           \ file or directory: 'output_file'\n"
-        generated_using: *id003
+        generated_using: *id002
+      - !Command
+        command:
+        - pvacseq
+        - binding_filter
+        - input_file
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: pvacseq
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: binding_filter
+          optional: false
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - -b
+          args: !SimpleFlagArg
+            name: BINDING_THRESHOLD
+          optional: true
+        parent: *id003
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: pvacseq binding_filter [-h] [-b BINDING_THRESHOLD]\n  \
+          \                            [-c MINIMUM_FOLD_CHANGE] [-m {lowest,median}]\n\
+          \                              input_file output_file\npvacseq binding_filter:\
+          \ error: argument input_file: can't open 'input_file': [Errno 2] No such\
+          \ file or directory: 'input_file'\n"
+        generated_using: *id002
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -573,42 +633,75 @@ parent: &id004 !Command
         \ Median MT\n                        Score/Median Fold Change - median MT\
         \ ic50 binding\n                        score/fold change of all chosen prediction\
         \ methods.\n                        Default: median\n"
-      generated_using: *id003
+      generated_using: *id002
     - *id004
     - !Command
+      command:
+      - pvacseq
+      - install_vep_plugin
       positional:
       - !Positional
-        description: A VEP-annotated single-sample VCF containing transcript, Wildtype
-          protein sequence, and Downstream protein sequence information
+        description: Path to your VEP_plugins directory
         position: 0
+        name: vep_plugins_path
+        optional: false
+      named: []
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: pvacseq install_vep_plugin [-h] vep_plugins_path\n\npositional\
+        \ arguments:\n  vep_plugins_path  Path to your VEP_plugins directory\n\noptional\
+        \ arguments:\n  -h, --help        show this help message and exit\n"
+      generated_using: *id002
+    - !Command
+      command:
+      - pvacseq
+      - generate_protein_fasta
+      positional:
+      - !Positional
+        description: 'positional arguments:'
+        position: 0
+        name: output_file
+        optional: false
+      - !Positional
+        description: "A VEP-annotated single-sample VCF containing\ntranscript, Wildtype\
+          \ protein sequence, and Downstream\nprotein sequence information"
+        position: 1
         name: input_file
         optional: false
       - !Positional
-        description: Length of the peptide sequence to use when creating the FASTA.
-        position: 1
+        description: "Length of the peptide sequence to use when creating\nthe FASTA."
+        position: 2
         name: peptide_sequence_length
         optional: false
       - !Positional
         description: The output fasta file
-        position: 2
+        position: 3
         name: output_file
         optional: false
       named:
       - !Flag
-        description: "Cap to limit the downstream sequence length for frameshifts\
-          \ when creating the fasta file. Use 'full' to include the full downstream\
-          \ sequence. Default: 1000"
+        description: "Cap to limit the downstream sequence length for\nframeshifts\
+          \ when creating the fasta file. Use 'full'\nto include the full downstream\
+          \ sequence. Default: 1000\n"
         synonyms:
         - -d
         - --downstream-sequence-length
         args: !SimpleFlagArg
           name: DOWNSTREAM_SEQUENCE_LENGTH
         optional: true
-      command:
-      - pvacseq
-      - generate_protein_fasta
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -632,101 +725,8 @@ parent: &id004 !Command
         \ sequence length for\n                        frameshifts when creating the\
         \ fasta file. Use 'full'\n                        to include the full downstream\
         \ sequence. Default: 1000\n"
-      generated_using: *id003
-    - !Command
-      positional:
-      - !Positional
-        description: Directory for downloading example data
-        position: 0
-        name: destination_directory
-        optional: false
-      named: []
-      command:
-      - pvacseq
-      - download_example_data
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: pvacseq download_example_data [-h] destination_directory\n\
-        \npositional arguments:\n  destination_directory\n                       \
-        \ Directory for downloading example data\n\noptional arguments:\n  -h, --help\
-        \            show this help message and exit\n"
-      generated_using: *id003
-    - !Command
-      positional:
-      - !Positional
-        description: Path to your VEP_plugins directory
-        position: 0
-        name: vep_plugins_path
-        optional: false
-      named: []
-      command:
-      - pvacseq
-      - install_vep_plugin
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: pvacseq install_vep_plugin [-h] vep_plugins_path\n\npositional\
-        \ arguments:\n  vep_plugins_path  Path to your VEP_plugins directory\n\noptional\
-        \ arguments:\n  -h, --help        show this help message and exit\n"
-      generated_using: *id003
-    - !Command
-      positional: []
-      named:
-      - !Flag
-        description: The epitope prediction algorithms to use
-        synonyms:
-        - -p
-        - --prediction-algorithm
-        args: !ChoiceFlagArg
-          choices: !!set
-            ? NetMHCIIpan
-            ? NetMHCpan
-            ? SMMPMBEC
-            ? SMM
-            ? SMMalign
-            ? PickPocket
-            ? NetMHC
-            ? NNalign
-            ? NetMHCcons
-        optional: true
-      command:
-      - pvacseq
-      - valid_alleles
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: pvacseq valid_alleles [-h]\n                            \
-        \ [-p {NNalign,NetMHC,NetMHCIIpan,NetMHCcons,NetMHCpan,PickPocket,SMM,SMMPMBEC,SMMalign}]\n\
-        \noptional arguments:\n  -h, --help            show this help message and\
-        \ exit\n  -p {NNalign,NetMHC,NetMHCIIpan,NetMHCcons,NetMHCpan,PickPocket,SMM,SMMPMBEC,SMMalign},\
-        \ --prediction-algorithm {NNalign,NetMHC,NetMHCIIpan,NetMHCcons,NetMHCpan,PickPocket,SMM,SMMPMBEC,SMMalign}\n\
-        \                        The epitope prediction algorithms to use\n"
-      generated_using: *id003
+      generated_using: *id002
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -756,10 +756,13 @@ parent: &id004 !Command
       \    config_files        Documentation for the configuration files\n\noptional\
       \ arguments:\n  -h, --help            show this help message and exit\n  -v,\
       \ --version         Display the currently installed pvacseq version\n"
-    generated_using: *id003
+    generated_using: *id002
   subcommands:
-  - *id005
   - !Command
+    command:
+    - pvacseq
+    - coverage_filter
+    - output_file
     positional:
     - !Positional
       description: ''
@@ -779,12 +782,9 @@ parent: &id004 !Command
       args: !SimpleFlagArg
         name: NORMAL_COV
       optional: true
-    command:
-    - pvacseq
-    - coverage_filter
-    - output_file
     parent: *id004
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -800,7 +800,9 @@ parent: &id004 !Command
       \                               input_file output_file\npvacseq coverage_filter:\
       \ error: argument input_file: can't open 'output_file': [Errno 2] No such file\
       \ or directory: 'output_file'\n"
-    generated_using: *id003
+    generated_using: *id002
+  - *id005
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -832,8 +834,9 @@ parent: &id004 !Command
     \     considered. Default: 40\n  --expn-val EXPN_VAL   Gene and Transcript Expression\
     \ cutoff. Sites above\n                        this cutoff will be consideredDefault:\
     \ 1\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:
@@ -849,4 +852,4 @@ help_text: "usage: pvacseq coverage_filter [-h] [--normal-cov NORMAL_COV]\n     
   \                       input_file output_file\npvacseq coverage_filter: error:\
   \ argument input_file: can't open 'input_file': [Errno 2] No such file or directory:\
   \ 'input_file'\n"
-generated_using: *id003
+generated_using: *id002

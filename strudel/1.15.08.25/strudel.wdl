@@ -4,4 +4,7 @@ task Strudel {
   command <<<
     strudel
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

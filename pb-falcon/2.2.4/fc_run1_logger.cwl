@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../fc_run1_logger.cwl
 inputs:
-- id: fc_run_one
+- id: in_fc_run_one
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: config
+- id: in_config
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: logger
+- id: in_logger
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fc_run1

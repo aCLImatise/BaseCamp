@@ -1,7 +1,10 @@
 version 1.0
 
-task Epic2Bw {
+task Epic2bw {
   command <<<
-    epic2-bw
+    epic2_bw
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task ExtractVba {
   command <<<
     extract_vba
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

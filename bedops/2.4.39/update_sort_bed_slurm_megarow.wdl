@@ -1,7 +1,10 @@
 version 1.0
 
-task UpdateSortBedSlurmMegarow {
+task Updatesortbedslurmmegarow {
   command <<<
-    update-sort-bed-slurm-megarow
+    update_sort_bed_slurm_megarow
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,44 +1,32 @@
 version 1.0
 
-task Quast.py {
+task Quast {
   input {
-    Boolean? fungus
-    Boolean? large
+    Boolean? output_dir
+    Boolean? filename_reference_genome
+    Boolean? features
+    Boolean? min_contig
+    Boolean? threads
+    Boolean? split_scaffolds
+    Boolean? labels
+    Boolean? take_assembly_names
+    Boolean? eukaryote
+    Boolean? k_mer_stats
     Boolean? k_mer_size
-    Boolean? circo_s
-    Boolean? mgm
-    Boolean? glimmer
-    Boolean? gene_thresholds
-    Boolean? rna_finding
-    Boolean? operons
-    Int? est_ref_size
-    Boolean? contig_thresholds
-    Float? min_identity
+    Boolean? gene_finding
+    Boolean? conserved_genes_finding
+    Boolean? use_all_alignments
+    Int? min_alignment
+    String? ambiguity_usage
     Float? ambiguity_score
     Boolean? strict_na
+    Boolean? extensive_mis_size
     Boolean? scaffold_gap_max_size
     Boolean? unaligned_part_size
     Boolean? skip_unaligned_mis_contigs
     Boolean? fragmented
-    Boolean? fragmented_max_indent
-    Boolean? upper_bound_assembly
-    Boolean? upper_bound_min_con
-    Boolean? est_insert_size
-    Boolean? plots_format
-    Boolean? memory_efficient
-    Boolean? space_efficient
-    Boolean? pe_one_two
-    Boolean? mp_one
-    Boolean? mp_two
-    Boolean? mp_one_two
-    Boolean? single
-    Boolean? pac_bio
-    Boolean? nano_pore
-    File? ref_sam
-    File? ref_bam
-    Boolean? sam
-    Boolean? bam
-    Boolean? sv_bed_pe
+    Boolean? pe_one
+    Boolean? pe_two
     Boolean? no_check
     Boolean? no_plots
     Boolean? no_html
@@ -50,102 +38,78 @@ task Quast.py {
     Boolean? no_read_stats
     Boolean? fast
     Boolean? silent
-    Boolean? test
-    Boolean? test_sv
+    Directory? test
+    Directory? test_sv
     String python
   }
   command <<<
-    quast.py \
+    quast \
       ~{python} \
-      ~{true="--fungus" false="" fungus} \
-      ~{true="--large" false="" large} \
-      ~{true="--k-mer-size" false="" k_mer_size} \
-      ~{true="--circos" false="" circo_s} \
-      ~{true="--mgm" false="" mgm} \
-      ~{true="--glimmer" false="" glimmer} \
-      ~{true="--gene-thresholds" false="" gene_thresholds} \
-      ~{true="--rna-finding" false="" rna_finding} \
-      ~{true="--operons" false="" operons} \
-      ~{if defined(est_ref_size) then ("--est-ref-size " +  '"' + est_ref_size + '"') else ""} \
-      ~{true="--contig-thresholds" false="" contig_thresholds} \
-      ~{if defined(min_identity) then ("--min-identity " +  '"' + min_identity + '"') else ""} \
+      ~{if (output_dir) then "--output-dir" else ""} \
+      ~{if (filename_reference_genome) then "-r" else ""} \
+      ~{if (features) then "--features" else ""} \
+      ~{if (min_contig) then "--min-contig" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (split_scaffolds) then "--split-scaffolds" else ""} \
+      ~{if (labels) then "--labels" else ""} \
+      ~{if (take_assembly_names) then "-L" else ""} \
+      ~{if (eukaryote) then "--eukaryote" else ""} \
+      ~{if (k_mer_stats) then "--k-mer-stats" else ""} \
+      ~{if (k_mer_size) then "--k-mer-size" else ""} \
+      ~{if (gene_finding) then "--gene-finding" else ""} \
+      ~{if (conserved_genes_finding) then "--conserved-genes-finding" else ""} \
+      ~{if (use_all_alignments) then "--use-all-alignments" else ""} \
+      ~{if defined(min_alignment) then ("--min-alignment " +  '"' + min_alignment + '"') else ""} \
+      ~{if defined(ambiguity_usage) then ("--ambiguity-usage " +  '"' + ambiguity_usage + '"') else ""} \
       ~{if defined(ambiguity_score) then ("--ambiguity-score " +  '"' + ambiguity_score + '"') else ""} \
-      ~{true="--strict-NA" false="" strict_na} \
-      ~{true="--scaffold-gap-max-size" false="" scaffold_gap_max_size} \
-      ~{true="--unaligned-part-size" false="" unaligned_part_size} \
-      ~{true="--skip-unaligned-mis-contigs" false="" skip_unaligned_mis_contigs} \
-      ~{true="--fragmented" false="" fragmented} \
-      ~{true="--fragmented-max-indent" false="" fragmented_max_indent} \
-      ~{true="--upper-bound-assembly" false="" upper_bound_assembly} \
-      ~{true="--upper-bound-min-con" false="" upper_bound_min_con} \
-      ~{true="--est-insert-size" false="" est_insert_size} \
-      ~{true="--plots-format" false="" plots_format} \
-      ~{true="--memory-efficient" false="" memory_efficient} \
-      ~{true="--space-efficient" false="" space_efficient} \
-      ~{true="--pe12" false="" pe_one_two} \
-      ~{true="--mp1" false="" mp_one} \
-      ~{true="--mp2" false="" mp_two} \
-      ~{true="--mp12" false="" mp_one_two} \
-      ~{true="--single" false="" single} \
-      ~{true="--pacbio" false="" pac_bio} \
-      ~{true="--nanopore" false="" nano_pore} \
-      ~{if defined(ref_sam) then ("--ref-sam " +  '"' + ref_sam + '"') else ""} \
-      ~{if defined(ref_bam) then ("--ref-bam " +  '"' + ref_bam + '"') else ""} \
-      ~{true="--sam" false="" sam} \
-      ~{true="--bam" false="" bam} \
-      ~{true="--sv-bedpe" false="" sv_bed_pe} \
-      ~{true="--no-check" false="" no_check} \
-      ~{true="--no-plots" false="" no_plots} \
-      ~{true="--no-html" false="" no_html} \
-      ~{true="--no-icarus" false="" no_icarus} \
-      ~{true="--no-snps" false="" no_snps} \
-      ~{true="--no-gc" false="" no_gc} \
-      ~{true="--no-sv" false="" no_sv} \
-      ~{true="--no-gzip" false="" no_gzip} \
-      ~{true="--no-read-stats" false="" no_read_stats} \
-      ~{true="--fast" false="" fast} \
-      ~{true="--silent" false="" silent} \
-      ~{true="--test" false="" test} \
-      ~{true="--test-sv" false="" test_sv}
+      ~{if (strict_na) then "--strict-NA" else ""} \
+      ~{if (extensive_mis_size) then "--extensive-mis-size" else ""} \
+      ~{if (scaffold_gap_max_size) then "--scaffold-gap-max-size" else ""} \
+      ~{if (unaligned_part_size) then "--unaligned-part-size" else ""} \
+      ~{if (skip_unaligned_mis_contigs) then "--skip-unaligned-mis-contigs" else ""} \
+      ~{if (fragmented) then "--fragmented" else ""} \
+      ~{if (pe_one) then "--pe1" else ""} \
+      ~{if (pe_two) then "--pe2" else ""} \
+      ~{if (no_check) then "--no-check" else ""} \
+      ~{if (no_plots) then "--no-plots" else ""} \
+      ~{if (no_html) then "--no-html" else ""} \
+      ~{if (no_icarus) then "--no-icarus" else ""} \
+      ~{if (no_snps) then "--no-snps" else ""} \
+      ~{if (no_gc) then "--no-gc" else ""} \
+      ~{if (no_sv) then "--no-sv" else ""} \
+      ~{if (no_gzip) then "--no-gzip" else ""} \
+      ~{if (no_read_stats) then "--no-read-stats" else ""} \
+      ~{if (fast) then "--fast" else ""} \
+      ~{if (silent) then "--silent" else ""} \
+      ~{if (test) then "--test" else ""} \
+      ~{if (test_sv) then "--test-sv" else ""}
   >>>
   parameter_meta {
-    fungus: "Genome is fungal (primarily affects gene prediction)"
-    large: "Use optimal parameters for evaluation of large genomes In particular, imposes '-e -m 3000 -i 500 -x 7000' (can be overridden manually)"
-    k_mer_size: "Size of k used in --k-mer-stats [default: 101]"
-    circo_s: "Draw Circos plot"
-    mgm: "Use MetaGeneMark for gene prediction (instead of the default finder, see above)"
-    glimmer: "Use GlimmerHMM for gene prediction (instead of the default finder, see above)"
-    gene_thresholds: "<int,int,...>   Comma-separated list of threshold lengths of genes to search with Gene Finding module [default: 0,300,1500,3000]"
-    rna_finding: "Predict ribosomal RNA genes using Barrnap"
-    operons: "<filename>             File with operon coordinates in the reference (GFF, BED, NCBI or TXT)"
-    est_ref_size: "Estimated reference size (for computing NGx metrics without a reference)"
-    contig_thresholds: "<int,int,...> Comma-separated list of contig length thresholds [default: 0,1000,5000,10000,25000,50000]"
-    min_identity: "The minimum alignment identity (80.0, 100.0) [default: 95.0]"
-    ambiguity_score: "Score S for defining equally good alignments of a single contig. All alignments are sorted  by decreasing LEN * IDY% value. All alignments with LEN * IDY% < S * best(LEN * IDY%) are  discarded. S should be between 0.8 and 1.0 [default: 0.99]"
-    strict_na: "Break contigs in any misassembly event when compute NAx and NGAx. By default, QUAST breaks contigs only by extensive misassemblies (not local ones)"
-    scaffold_gap_max_size: "<int>    Max allowed scaffold gap length difference. All relocations with inconsistency less than scaffold-gap-size are counted as scaffold gap misassemblies [default: 10000]"
-    unaligned_part_size: "<int>      Lower threshold for detecting partially unaligned contigs. Such contig should have at least one unaligned fragment >= the threshold [default: 500]"
-    skip_unaligned_mis_contigs: "Do not distinguish contigs with >= 50% unaligned bases as a separate group By default, QUAST does not count misassemblies in them"
-    fragmented: "Reference genome may be fragmented into small pieces (e.g. scaffolded reference) "
-    fragmented_max_indent: "<int>    Mark translocation as fake if both alignments are located no further than N bases  from the ends of the reference fragments [default: 85] Requires --fragmented option"
-    upper_bound_assembly: "Simulate upper bound assembly based on the reference genome and reads"
-    upper_bound_min_con: "<int>      Minimal number of 'connecting reads' needed for joining upper bound contigs into a scaffold [default: 2 for mate-pairs and 1 for long reads]"
-    est_insert_size: "<int>          Use provided insert size in upper bound assembly simulation [default: auto detect from reads or 255]"
-    plots_format: "<str>             Save plots in specified format [default: pdf]. Supported formats: emf, eps, pdf, png, ps, raw, rgba, svg, svgz"
-    memory_efficient: "Run everything using one thread, separately per each assembly. This may significantly reduce memory consumption on large genomes"
-    space_efficient: "Create only reports and plots files. Aux files including .stdout, .stderr, .coords will not be created. This may significantly reduce space consumption on large genomes. Icarus viewers also will not be built"
-    pe_one_two: "<filename>              File with interlaced forward and reverse paired-end reads. (in FASTQ format, may be gzipped)"
-    mp_one: "<filename>              File with forward mate-pair reads (in FASTQ format, may be gzipped)"
-    mp_two: "<filename>              File with reverse mate-pair reads (in FASTQ format, may be gzipped)"
-    mp_one_two: "<filename>              File with interlaced forward and reverse mate-pair reads (in FASTQ format, may be gzipped)"
-    single: "<filename>              File with unpaired short reads (in FASTQ format, may be gzipped)"
-    pac_bio: "<filename>           File with PacBio reads (in FASTQ format, may be gzipped)"
-    nano_pore: "<filename>           File with Oxford Nanopore reads (in FASTQ format, may be gzipped)"
-    ref_sam: "SAM alignment file obtained by aligning reads to reference genome file"
-    ref_bam: "BAM alignment file obtained by aligning reads to reference genome file"
-    sam: "<filename,filename,...> Comma-separated list of SAM alignment files obtained by aligning reads to assemblies (use the same order as for files with contigs)"
-    bam: "<filename,filename,...> Comma-separated list of BAM alignment files obtained by aligning reads to assemblies (use the same order as for files with contigs) Reads (or SAM/BAM file) are used for structural variation detection and coverage histogram building in Icarus"
-    sv_bed_pe: "<filename>            File with structural variations (in BEDPE format)"
+    output_dir: "<dirname>       Directory to store all result files [default: quast_results/results_<datetime>]"
+    filename_reference_genome: "<filename>      Reference genome file"
+    features: "[type:]<filename>  File with genomic feature coordinates in the reference (GFF, BED, NCBI or TXT)\\nOptional 'type' can be specified for extracting only a specific feature type from GFF"
+    min_contig: "<int>           Lower threshold for contig length [default: 500]"
+    threads: "<int>           Maximum number of threads [default: 25% of CPUs]"
+    split_scaffolds: "Split assemblies by continuous fragments of N's and add such \\\"contigs\\\" to the comparison"
+    labels: "\\\"label, label, ...\\\"      Names of assemblies to use in reports, comma-separated. If contain spaces, use quotes"
+    take_assembly_names: "Take assembly names from their parent directory names"
+    eukaryote: "Genome is eukaryotic (primarily affects gene prediction)\\n--fungus                          Genome is fungal (primarily affects gene prediction)\\n--large                           Use optimal parameters for evaluation of large genomes\\nIn particular, imposes '-e -m 3000 -i 500 -x 7000' (can be overridden manually)"
+    k_mer_stats: "Compute k-mer-based quality metrics (recommended for large genomes)\\nThis may significantly increase memory and time consumption on large genomes"
+    k_mer_size: "Size of k used in --k-mer-stats [default: 101]\\n--circos                          Draw Circos plot"
+    gene_finding: "Predict genes using GeneMarkS (prokaryotes, default) or GeneMark-ES (eukaryotes, use --eukaryote)\\n--mgm                             Use MetaGeneMark for gene prediction (instead of the default finder, see above)\\n--glimmer                         Use GlimmerHMM for gene prediction (instead of the default finder, see above)\\n--gene-thresholds <int,int,...>   Comma-separated list of threshold lengths of genes to search with Gene Finding module\\n[default: 0,300,1500,3000]\\n--rna-finding                     Predict ribosomal RNA genes using Barrnap"
+    conserved_genes_finding: "Count conserved orthologs using BUSCO (only on Linux)\\n--operons  <filename>             File with operon coordinates in the reference (GFF, BED, NCBI or TXT)\\n--est-ref-size <int>              Estimated reference size (for computing NGx metrics without a reference)\\n--contig-thresholds <int,int,...> Comma-separated list of contig length thresholds [default: 0,1000,5000,10000,25000,50000]"
+    use_all_alignments: "Compute genome fraction, # genes, # operons in QUAST v1.* style.\\nBy default, QUAST filters Minimap's alignments to keep only best ones"
+    min_alignment: "The minimum alignment length [default: 65]\\n--min-identity <float>            The minimum alignment identity (80.0, 100.0) [default: 95.0]"
+    ambiguity_usage: "Use none, one, or all alignments of a contig when all of them\\nare almost equally good (see --ambiguity-score) [default: one]"
+    ambiguity_score: "Score S for defining equally good alignments of a single contig. All alignments are sorted\\nby decreasing LEN * IDY% value. All alignments with LEN * IDY% < S * best(LEN * IDY%) are\\ndiscarded. S should be between 0.8 and 1.0 [default: 0.99]"
+    strict_na: "Break contigs in any misassembly event when compute NAx and NGAx.\\nBy default, QUAST breaks contigs only by extensive misassemblies (not local ones)"
+    extensive_mis_size: "<int>       Lower threshold for extensive misassembly size. All relocations with inconsistency\\nless than extensive-mis-size are counted as local misassemblies [default: 1000]"
+    scaffold_gap_max_size: "<int>    Max allowed scaffold gap length difference. All relocations with inconsistency\\nless than scaffold-gap-size are counted as scaffold gap misassemblies [default: 10000]"
+    unaligned_part_size: "<int>      Lower threshold for detecting partially unaligned contigs. Such contig should have\\nat least one unaligned fragment >= the threshold [default: 500]"
+    skip_unaligned_mis_contigs: "Do not distinguish contigs with >= 50% unaligned bases as a separate group\\nBy default, QUAST does not count misassemblies in them"
+    fragmented: "Reference genome may be fragmented into small pieces (e.g. scaffolded reference)\\n--fragmented-max-indent  <int>    Mark translocation as fake if both alignments are located no further than N bases\\nfrom the ends of the reference fragments [default: 85]\\nRequires --fragmented option\\n--upper-bound-assembly            Simulate upper bound assembly based on the reference genome and reads\\n--upper-bound-min-con  <int>      Minimal number of 'connecting reads' needed for joining upper bound contigs into a scaffold\\n[default: 2 for mate-pairs and 1 for long reads]\\n--est-insert-size  <int>          Use provided insert size in upper bound assembly simulation [default: auto detect from reads or 255]\\n--plots-format  <str>             Save plots in specified format [default: pdf].\\nSupported formats: emf, eps, pdf, png, ps, raw, rgba, svg, svgz\\n--memory-efficient                Run everything using one thread, separately per each assembly.\\nThis may significantly reduce memory consumption on large genomes\\n--space-efficient                 Create only reports and plots files. Aux files including .stdout, .stderr, .coords will not be created.\\nThis may significantly reduce space consumption on large genomes. Icarus viewers also will not be built"
+    pe_one: "<filename>              File with forward paired-end reads (in FASTQ format, may be gzipped)"
+    pe_two: "<filename>              File with reverse paired-end reads (in FASTQ format, may be gzipped)\\n--pe12    <filename>              File with interlaced forward and reverse paired-end reads. (in FASTQ format, may be gzipped)\\n--mp1     <filename>              File with forward mate-pair reads (in FASTQ format, may be gzipped)\\n--mp2     <filename>              File with reverse mate-pair reads (in FASTQ format, may be gzipped)\\n--mp12    <filename>              File with interlaced forward and reverse mate-pair reads (in FASTQ format, may be gzipped)\\n--single  <filename>              File with unpaired short reads (in FASTQ format, may be gzipped)\\n--pacbio     <filename>           File with PacBio reads (in FASTQ format, may be gzipped)\\n--nanopore   <filename>           File with Oxford Nanopore reads (in FASTQ format, may be gzipped)\\n--ref-sam <filename>              SAM alignment file obtained by aligning reads to reference genome file\\n--ref-bam <filename>              BAM alignment file obtained by aligning reads to reference genome file\\n--sam     <filename,filename,...> Comma-separated list of SAM alignment files obtained by aligning reads to assemblies\\n(use the same order as for files with contigs)\\n--bam     <filename,filename,...> Comma-separated list of BAM alignment files obtained by aligning reads to assemblies\\n(use the same order as for files with contigs)\\nReads (or SAM/BAM file) are used for structural variation detection and\\ncoverage histogram building in Icarus\\n--sv-bedpe  <filename>            File with structural variations (in BEDPE format)"
     no_check: "Do not check and correct input fasta files. Use at your own risk (see manual)"
     no_plots: "Do not draw plots"
     no_html: "Do not build html reports and Icarus viewers"
@@ -154,11 +118,16 @@ task Quast.py {
     no_gc: "Do not compute GC% and GC-distribution"
     no_sv: "Do not run structural variation detection (make sense only if reads are specified)"
     no_gzip: "Do not compress large output files"
-    no_read_stats: "Do not align reads to assemblies Reads will be aligned to reference and used for coverage analysis, upper bound assembly simulation, and structural variation detection. Use this option if you do not need read statistics for assemblies."
+    no_read_stats: "Do not align reads to assemblies\\nReads will be aligned to reference and used for coverage analysis,\\nupper bound assembly simulation, and structural variation detection.\\nUse this option if you do not need read statistics for assemblies."
     fast: "A combination of all speedup options except --no-check"
     silent: "Do not print detailed information about each step to stdout (log file is not affected)"
     test: "Run QUAST on the data from the test_data folder, output to quast_test_output"
-    test_sv: "Run QUAST with structural variants detection on the data from the test_data folder, output to quast_test_output"
+    test_sv: "Run QUAST with structural variants detection on the data from the test_data folder,\\noutput to quast_test_output"
     python: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_test = "${in_test}"
+    Directory out_test_sv = "${in_test_sv}"
   }
 }

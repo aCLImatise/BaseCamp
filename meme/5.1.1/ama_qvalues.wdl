@@ -1,7 +1,17 @@
 version 1.0
 
-task AmaQvalues {
+task Amaqvalues {
+  input {
+    String copyright
+  }
   command <<<
-    ama-qvalues
+    ama_qvalues \
+      ~{copyright}
   >>>
+  parameter_meta {
+    copyright: "(2010) The University of Queensland"
+  }
+  output {
+    File out_stdout = stdout()
+  }
 }

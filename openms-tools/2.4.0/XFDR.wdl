@@ -3,10 +3,10 @@ version 1.0
 task XFDR {
   input {
     File? in
-    String? in_type
-    String? out_idxml
-    String? out_mz_ident_ml
-    String? out_x_quest
+    File? in_type
+    File? out_idxml
+    File? out_mz_ident_ml
+    File? out_x_quest
     String? decoy_string
     Int? min_border
     Int? max_border
@@ -16,7 +16,7 @@ task XFDR {
     Boolean? no_q_values
     Int? min_score
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -32,13 +32,13 @@ task XFDR {
       ~{if defined(max_border) then ("-maxborder " +  '"' + max_border + '"') else ""} \
       ~{if defined(min_deltas) then ("-mindeltas " +  '"' + min_deltas + '"') else ""} \
       ~{if defined(minions_matched) then ("-minionsmatched " +  '"' + minions_matched + '"') else ""} \
-      ~{true="-uniquexl" false="" unique_xl} \
-      ~{true="-no_qvalues" false="" no_q_values} \
+      ~{if (unique_xl) then "-uniquexl" else ""} \
+      ~{if (no_q_values) then "-no_qvalues" else ""} \
       ~{if defined(min_score) then ("-minscore " +  '"' + min_score + '"') else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "Crosslink Identifications in either xquest.xml, idXML, or mzIdentML format (as produced by OpenPepXL) (valid formats: 'xml', 'idXML', 'mzid', 'xquest.xml')"
@@ -58,5 +58,11 @@ task XFDR {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_idxml = "${in_out_idxml}"
+    File out_out_mz_ident_ml = "${in_out_mz_ident_ml}"
+    File out_out_x_quest = "${in_out_x_quest}"
   }
 }

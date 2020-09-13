@@ -1,108 +1,127 @@
 class: CommandLineTool
 id: ../../../TOBIAS_ATACorrect.cwl
 inputs:
-- id: bam
+- id: in_bam
   doc: A .bam-file containing reads to be corrected
-  type: string
+  type: File
   inputBinding:
     prefix: --bam
-- id: genome
+- id: in_genome
   doc: A .fasta-file containing whole genomic sequence
-  type: string
+  type: File
   inputBinding:
     prefix: --genome
-- id: peaks
+- id: in_peaks
   doc: A .bed-file containing ATAC peak regions
-  type: string
+  type: File
   inputBinding:
     prefix: --peaks
-- id: regions_in
-  doc: 'Input regions for estimating bias (default: regions not in peaks.bed)'
+- id: in_regions_in
+  doc: "Input regions for estimating bias (default: regions not\nin peaks.bed)"
   type: string
   inputBinding:
     prefix: --regions-in
-- id: regions_out
+- id: in_regions_out
   doc: 'Output regions (default: peaks.bed)'
   type: string
   inputBinding:
     prefix: --regions-out
-- id: blacklist
+- id: in_blacklist
   doc: 'Blacklisted regions in .bed-format (default: None)'
   type: string
   inputBinding:
     prefix: --blacklist
-- id: extend
-  doc: 'Extend output regions with basepairs upstream/downstream (default: 100)'
+- id: in_extend
+  doc: "Extend output regions with basepairs\nupstream/downstream (default: 100)"
   type: long
   inputBinding:
     prefix: --extend
-- id: split_strands
+- id: in_split_strands
   doc: Write out tracks per strand
   type: boolean
   inputBinding:
     prefix: --split-strands
-- id: norm_off
+- id: in_norm_off
   doc: Switches off normalization based on number of reads
   type: boolean
   inputBinding:
     prefix: --norm-off
-- id: track_off
-  doc: '[<track> [<track> ...]] Switch off writing of individual .bigwig-tracks (uncorrected/bias/expected/corrected)'
+- id: in_track_off
+  doc: "[<track> [<track> ...]]\nSwitch off writing of individual .bigwig-tracks\n\
+    (uncorrected/bias/expected/corrected)"
   type: boolean
   inputBinding:
     prefix: --track-off
-- id: k_flank
-  doc: 'Flank +/- of cutsite to estimate bias from (default: 12)'
+- id: in_k_flank
+  doc: "Flank +/- of cutsite to estimate bias from (default:\n12)"
   type: long
   inputBinding:
     prefix: --k_flank
-- id: read_shift
-  doc: '<int>         Read shift for forward and reverse reads (default: 4 -5)'
+- id: in_read_shift
+  doc: '<int>         Read shift for forward and reverse reads (default: 4'
   type: long
   inputBinding:
     prefix: --read_shift
-- id: bg_shift
-  doc: 'Read shift for estimation of background frequencies (default: 100)'
+- id: in_five
+  doc: )
+  type: boolean
+  inputBinding:
+    prefix: '-5'
+- id: in_bg_shift
+  doc: "Read shift for estimation of background frequencies\n(default: 100)"
   type: long
   inputBinding:
     prefix: --bg_shift
-- id: window
-  doc: 'Window size for calculating expected signal (default: 100)'
+- id: in_window
+  doc: "Window size for calculating expected signal (default:\n100)"
   type: long
   inputBinding:
     prefix: --window
-- id: score_mat
-  doc: 'Type of matrix to use for bias estimation (PWM/DWM) (default: DWM)'
+- id: in_score_mat
+  doc: "Type of matrix to use for bias estimation (PWM/DWM)\n(default: DWM)"
   type: string
   inputBinding:
     prefix: --score_mat
-- id: prefix
+- id: in_prefix
   doc: 'Prefix for output files (default: same as .bam file)'
-  type: string
+  type: File
   inputBinding:
     prefix: --prefix
-- id: outdir
-  doc: 'Output directory for files (default: current working directory)'
+- id: in_outdir
+  doc: "Output directory for files (default: current working\ndirectory)"
   type: Directory
   inputBinding:
     prefix: --outdir
-- id: cores
+- id: in_cores
   doc: 'Number of cores to use for computation (default: 1)'
   type: long
   inputBinding:
     prefix: --cores
-- id: split
+- id: in_split
   doc: 'Split of multiprocessing jobs (default: 100)'
   type: long
   inputBinding:
     prefix: --split
-- id: verbosity
-  doc: 'Level of output logging (0: silent, 1: errors/warnings, 2: info, 3: stats,
-    4: debug, 5: spam) (default: 3)'
+- id: in_verbosity
+  doc: "Level of output logging (0: silent, 1: errors/warnings,\n2: info, 3: stats,\
+    \ 4: debug, 5: spam) (default: 3)\n"
   type: long
   inputBinding:
     prefix: --verbosity
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prefix
+  doc: 'Prefix for output files (default: same as .bam file)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_prefix)
+- id: out_outdir
+  doc: "Output directory for files (default: current working\ndirectory)"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

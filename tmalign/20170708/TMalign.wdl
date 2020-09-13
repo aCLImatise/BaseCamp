@@ -4,4 +4,7 @@ task TMalign {
   command <<<
     TMalign
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

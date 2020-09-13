@@ -2,8 +2,8 @@ version 1.0
 
 task CheckmAnalysis {
   input {
-    String? check_m
-    String? identify_what_suffix
+    File? check_m
+    File? identify_what_suffix
     String suffix
   }
   command <<<
@@ -16,5 +16,9 @@ task CheckmAnalysis {
     check_m: "Specify the CHeckM output File (should be the one created using --tab_table"
     identify_what_suffix: "Identify what your suffix for fasta file is [default: .fna]"
     suffix: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_check_m = "${in_check_m}"
   }
 }

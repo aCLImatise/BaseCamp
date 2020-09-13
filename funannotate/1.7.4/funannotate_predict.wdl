@@ -3,7 +3,7 @@ version 1.0
 task FunannotatePredict {
   input {
     Boolean? genome_multifasta_file
-    Boolean? out
+    Directory? out
     Boolean? species
     Boolean? parameters
     Boolean? isolate
@@ -45,68 +45,76 @@ task FunannotatePredict {
     Boolean? seq_accession
     Boolean? force
     Boolean? cpus
+    Boolean? evm_home
+    Boolean? augustus_config_path
+    Boolean? genemark_path
+    Boolean? bam_tools_path
     String arguments
   }
   command <<<
     funannotate predict \
       ~{arguments} \
-      ~{true="--input" false="" genome_multifasta_file} \
-      ~{true="--out" false="" out} \
-      ~{true="--species" false="" species} \
-      ~{true="--parameters" false="" parameters} \
-      ~{true="--isolate" false="" isolate} \
-      ~{true="--strain" false="" strain} \
-      ~{true="--name" false="" name} \
-      ~{true="--numbering" false="" numbering} \
-      ~{true="--maker_gff" false="" maker_gff} \
-      ~{true="--pasa_gff" false="" pasa_gff} \
-      ~{true="--other_gff" false="" other_gff} \
-      ~{true="--rna_bam" false="" rna_bam} \
-      ~{true="--stringtie" false="" string_tie} \
-      ~{true="--weights" false="" weights} \
-      ~{true="--augustus_species" false="" augustus_species} \
-      ~{true="--min_training_models" false="" min_training_models} \
-      ~{true="--genemark_mode" false="" genemark_mode} \
-      ~{true="--genemark_mod" false="" genemark_mod} \
-      ~{true="--busco_seed_species" false="" busco_seed_species} \
-      ~{true="--optimize_augustus" false="" optimize_augustus} \
-      ~{true="--busco_db" false="" busco_db} \
-      ~{true="--organism" false="" organism} \
-      ~{true="--ploidy" false="" ploidy} \
-      ~{true="--tbl2asn" false="" tbl_two_asn} \
-      ~{true="--database" false="" database} \
-      ~{true="--protein_evidence" false="" protein_evidence} \
-      ~{true="--protein_alignments" false="" protein_alignments} \
-      ~{true="--transcript_evidence" false="" transcript_evidence} \
-      ~{true="--transcript_alignments" false="" transcript_alignments} \
-      ~{true="--augustus_gff" false="" augustus_gff} \
-      ~{true="--genemark_gtf" false="" genemark_gtf} \
-      ~{true="--min_intronlen" false="" min_intron_len} \
-      ~{true="--max_intronlen" false="" max_intron_len} \
-      ~{true="--soft_mask" false="" soft_mask} \
-      ~{true="--min_protlen" false="" min_prot_len} \
-      ~{true="--repeats2evm" false="" repeats_two_evm} \
-      ~{true="--repeat_filter" false="" repeat_filter} \
-      ~{true="--keep_no_stops" false="" keep_no_stops} \
-      ~{true="--keep_evm" false="" keep_evm} \
-      ~{true="--SeqCenter" false="" seq_center} \
-      ~{true="--SeqAccession" false="" seq_accession} \
-      ~{true="--force" false="" force} \
-      ~{true="--cpus" false="" cpus}
+      ~{if (genome_multifasta_file) then "--input" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (species) then "--species" else ""} \
+      ~{if (parameters) then "--parameters" else ""} \
+      ~{if (isolate) then "--isolate" else ""} \
+      ~{if (strain) then "--strain" else ""} \
+      ~{if (name) then "--name" else ""} \
+      ~{if (numbering) then "--numbering" else ""} \
+      ~{if (maker_gff) then "--maker_gff" else ""} \
+      ~{if (pasa_gff) then "--pasa_gff" else ""} \
+      ~{if (other_gff) then "--other_gff" else ""} \
+      ~{if (rna_bam) then "--rna_bam" else ""} \
+      ~{if (string_tie) then "--stringtie" else ""} \
+      ~{if (weights) then "--weights" else ""} \
+      ~{if (augustus_species) then "--augustus_species" else ""} \
+      ~{if (min_training_models) then "--min_training_models" else ""} \
+      ~{if (genemark_mode) then "--genemark_mode" else ""} \
+      ~{if (genemark_mod) then "--genemark_mod" else ""} \
+      ~{if (busco_seed_species) then "--busco_seed_species" else ""} \
+      ~{if (optimize_augustus) then "--optimize_augustus" else ""} \
+      ~{if (busco_db) then "--busco_db" else ""} \
+      ~{if (organism) then "--organism" else ""} \
+      ~{if (ploidy) then "--ploidy" else ""} \
+      ~{if (tbl_two_asn) then "--tbl2asn" else ""} \
+      ~{if (database) then "--database" else ""} \
+      ~{if (protein_evidence) then "--protein_evidence" else ""} \
+      ~{if (protein_alignments) then "--protein_alignments" else ""} \
+      ~{if (transcript_evidence) then "--transcript_evidence" else ""} \
+      ~{if (transcript_alignments) then "--transcript_alignments" else ""} \
+      ~{if (augustus_gff) then "--augustus_gff" else ""} \
+      ~{if (genemark_gtf) then "--genemark_gtf" else ""} \
+      ~{if (min_intron_len) then "--min_intronlen" else ""} \
+      ~{if (max_intron_len) then "--max_intronlen" else ""} \
+      ~{if (soft_mask) then "--soft_mask" else ""} \
+      ~{if (min_prot_len) then "--min_protlen" else ""} \
+      ~{if (repeats_two_evm) then "--repeats2evm" else ""} \
+      ~{if (repeat_filter) then "--repeat_filter" else ""} \
+      ~{if (keep_no_stops) then "--keep_no_stops" else ""} \
+      ~{if (keep_evm) then "--keep_evm" else ""} \
+      ~{if (seq_center) then "--SeqCenter" else ""} \
+      ~{if (seq_accession) then "--SeqAccession" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (cpus) then "--cpus" else ""} \
+      ~{if (evm_home) then "--EVM_HOME" else ""} \
+      ~{if (augustus_config_path) then "--AUGUSTUS_CONFIG_PATH" else ""} \
+      ~{if (genemark_path) then "--GENEMARK_PATH" else ""} \
+      ~{if (bam_tools_path) then "--BAMTOOLS_PATH" else ""}
   >>>
   parameter_meta {
     genome_multifasta_file: "Genome multi-FASTA file (softmasked repeats)"
     out: "Output folder name"
-    species: "Species name, use quotes for binomial, e.g. \"Aspergillus fumigatus\""
+    species: "Species name, use quotes for binomial, e.g. \\\"Aspergillus fumigatus\\\""
     parameters: "Ab intio parameters JSON file to use for gene predictors"
     isolate: "Isolate name, e.g. Af293"
-    strain: "Strain name, e.g. FGSCA4           "
+    strain: "Strain name, e.g. FGSCA4"
     name: "Locus tag name (assigned by NCBI?). Default: FUN_"
     numbering: "Specify where gene numbering starts. Default: 1"
     maker_gff: "MAKER2 GFF file. Parse results directly to EVM."
     pasa_gff: "PASA generated gene models. filename:weight"
     other_gff: "Annotation pass-through to EVM. filename:weight"
-    rna_bam: "RNA-seq mapped to genome to train Augustus/GeneMark-ET "
+    rna_bam: "RNA-seq mapped to genome to train Augustus/GeneMark-ET"
     string_tie: "StringTie GTF result"
     weights: "Ab-initio predictor and EVM weight. Example: augustus:2 or pasa:10"
     augustus_species: "Augustus species config. Default: uses species name"
@@ -118,7 +126,7 @@ task FunannotatePredict {
     busco_db: "BUSCO models. Default: dikarya. `funannotate outgroups --show_buscos`"
     organism: "Fungal-specific options. Default: fungus. [fungus,other]"
     ploidy: "Ploidy of assembly. Default: 1"
-    tbl_two_asn: "Assembly parameters for tbl2asn. Default: \"-l paired-ends\""
+    tbl_two_asn: "Assembly parameters for tbl2asn. Default: \\\"-l paired-ends\\\""
     database: "Path to funannotate database. Default: $FUNANNOTATE_DB"
     protein_evidence: "Proteins to map to genome (prot1.fa prot2.fa uniprot.fa). Default: uniprot.fa"
     protein_alignments: "Pre-computed protein alignments in GFF3 format"
@@ -138,6 +146,14 @@ task FunannotatePredict {
     seq_accession: "Sequence accession number for NCBI tbl file. Default: 12345"
     force: "Annotated unmasked genome"
     cpus: "Number of CPUs to use. Default: 2"
+    evm_home: ""
+    augustus_config_path: ""
+    genemark_path: ""
+    bam_tools_path: ""
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
   }
 }

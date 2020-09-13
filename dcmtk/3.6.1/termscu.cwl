@@ -1,59 +1,67 @@
 class: CommandLineTool
 id: ../../../termscu.cwl
 inputs:
-- id: _quiet_quiet
+- id: in_arguments
+  doc: print expanded command line arguments
+  type: boolean
+  inputBinding:
+    prefix: --arguments
+- id: in__quiet_quiet
   doc: --quiet       quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: _verbose_verbose
+- id: in__verbose_details
   doc: --verbose     verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: _debug_debug
+- id: in__debug_information
   doc: --debug       debug mode, print debug information
   type: boolean
   inputBinding:
     prefix: -d
-- id: ll
-  doc: '--log-level   [l]evel: string constant (fatal, error, warn, info, debug, trace)
-    use level l for the logger'
+- id: in_ll
+  doc: "--log-level   [l]evel: string constant\n(fatal, error, warn, info, debug,\
+    \ trace)\nuse level l for the logger"
   type: boolean
   inputBinding:
     prefix: -ll
-- id: lc
-  doc: '--log-config  [f]ilename: string use config file f for the logger'
+- id: in_lc
+  doc: "--log-config  [f]ilename: string\nuse config file f for the logger"
   type: boolean
   inputBinding:
     prefix: -lc
-- id: ae_title
-  doc: '[a]etitle: string set my calling AE title (default: TERMSCU)'
+- id: in_ae_title
+  doc: "[a]etitle: string\nset my calling AE title (default: TERMSCU)"
   type: boolean
   inputBinding:
     prefix: --aetitle
-- id: call
-  doc: '[a]etitle: string set called AE title of peer (default: ANY-SCP)'
+- id: in_call
+  doc: "[a]etitle: string\nset called AE title of peer (default: ANY-SCP)"
   type: boolean
   inputBinding:
     prefix: --call
-- id: max_pdu
-  doc: '[n]umber of bytes: integer (4096..131072) set max receive pdu to n bytes (default:
-    16384)'
+- id: in_max_pdu
+  doc: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to n bytes\
+    \ (default: 16384)\n"
   type: boolean
   inputBinding:
     prefix: --max-pdu
-- id: peer
+- id: in_peer
   doc: hostname of DICOM peer
   type: string
   inputBinding:
     position: 0
-- id: port
+- id: in_port
   doc: tcp/ip port number of peer
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - termscu

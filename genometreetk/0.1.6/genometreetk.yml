@@ -1,11 +1,14 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - genometreetk
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - genometreetk
+  - jk_taxa
   positional:
   - !Positional
     description: tree inferred from original data
@@ -49,7 +52,7 @@ subcommands:
       name: PERC_TAXA
     optional: true
   - !Flag
-    description: 'number of jackknife replicates to perform (default: 100)'
+    description: "number of jackknife replicates to perform (default:\n100)"
     synonyms:
     - -r
     - --num_replicates
@@ -70,11 +73,9 @@ subcommands:
     - --silent
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - genometreetk
-  - jk_taxa
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -101,7 +102,62 @@ subcommands:
   generated_using: &id002
   - --help
 - !Command
+  command:
+  - genometreetk
+  - pull
   positional:
+  - !Positional
+    description: decorated tree
+    position: 0
+    name: input_tree
+    optional: false
+  - !Positional
+    description: output taxonomy file
+    position: 1
+    name: output_taxonomy
+    optional: false
+  named:
+  - !Flag
+    description: do not assume decorated nodes adhear to standard taxonomy
+    synonyms:
+    - --no_validation
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: suppress output
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: genometreetk pull [-h] [--no_validation] [--silent]\n       \
+    \                  input_tree output_taxonomy\n\nCreate taxonomy file from a decorated\
+    \ tree.\n\npositional arguments:\n  input_tree       decorated tree\n  output_taxonomy\
+    \  output taxonomy file\n\noptional arguments:\n  -h, --help       show this help\
+    \ message and exit\n  --no_validation  do not assume decorated nodes adhear to\
+    \ standard taxonomy\n  --silent         suppress output\n"
+  generated_using: *id002
+- !Command
+  command:
+  - genometreetk
+  - combine
+  positional:
+  - !Positional
+    description: Combine all support values into a single tree.
+    position: 0
+    name: output_tree
+    optional: false
   - !Positional
     description: tree with bootstrap support values
     position: 0
@@ -139,11 +195,9 @@ subcommands:
     - --silent
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - genometreetk
-  - combine
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -165,52 +219,9 @@ subcommands:
     \              suppress output\n"
   generated_using: *id002
 - !Command
-  positional:
-  - !Positional
-    description: decorated tree
-    position: 0
-    name: input_tree
-    optional: false
-  - !Positional
-    description: output taxonomy file
-    position: 1
-    name: output_taxonomy
-    optional: false
-  named:
-  - !Flag
-    description: do not assume decorated nodes adhear to standard taxonomy
-    synonyms:
-    - --no_validation
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: suppress output
-    synonyms:
-    - --silent
-    args: !EmptyFlagArg {}
-    optional: true
   command:
   - genometreetk
-  - pull
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: genometreetk pull [-h] [--no_validation] [--silent]\n       \
-    \                  input_tree output_taxonomy\n\nCreate taxonomy file from a decorated\
-    \ tree.\n\npositional arguments:\n  input_tree       decorated tree\n  output_taxonomy\
-    \  output taxonomy file\n\noptional arguments:\n  -h, --help       show this help\
-    \ message and exit\n  --no_validation  do not assume decorated nodes adhear to\
-    \ standard taxonomy\n  --silent         suppress output\n"
-  generated_using: *id002
-- !Command
+  - append
   positional:
   - !Positional
     description: input tree to decorate
@@ -234,11 +245,9 @@ subcommands:
     - --silent
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - genometreetk
-  - append
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -255,6 +264,306 @@ subcommands:
     \ extant taxon labels\n\noptional arguments:\n  -h, --help      show this help\
     \ message and exit\n  --silent        suppress output\n"
   generated_using: *id002
+- !Command
+  command:
+  - genometreetk
+  - propagate
+  positional:
+  - !Positional
+    description: input taxonomy file
+    position: 0
+    name: input_taxonomy
+    optional: false
+  - !Positional
+    description: metadata file for all genomes in the GTDB
+    position: 1
+    name: metadata_file
+    optional: false
+  - !Positional
+    description: output taxonomy file
+    position: 2
+    name: output_taxonomy
+    optional: false
+  named:
+  - !Flag
+    description: suppress output
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: genometreetk propagate [-h] [--silent]\n                    \
+    \          input_taxonomy metadata_file output_taxonomy\n\nPropagate labels to\
+    \ all genomes in a cluster.\n\npositional arguments:\n  input_taxonomy   input\
+    \ taxonomy file\n  metadata_file    metadata file for all genomes in the GTDB\n\
+    \  output_taxonomy  output taxonomy file\n\noptional arguments:\n  -h, --help\
+    \       show this help message and exit\n  --silent         suppress output\n"
+  generated_using: *id002
+- &id003 !Command
+  command:
+  - genometreetk
+  - strip
+  positional: []
+  named:
+  - !Flag
+    description: suppress output
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - genometreetk
+    - strip
+    - output_tree
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: genometreetk
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: strip
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: input_tree
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: output_tree
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --silent
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: genometreetk strip [-h] [--silent] input_tree output_tree\n\
+      genometreetk strip: error: the following arguments are required: output_tree\n"
+    generated_using: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: genometreetk strip [-h] [--silent] input_tree output_tree\n\n\
+    Remove taxonomic labels from a tree.\n\npositional arguments:\n  input_tree  \
+    \ tree to strip\n  output_tree  output tree\n\noptional arguments:\n  -h, --help\
+    \   show this help message and exit\n  --silent     suppress output\n"
+  generated_using: *id002
+- !Command
+  command:
+  - genometreetk
+  - bootstrap
+  positional:
+  - !Positional
+    description: tree inferred from original data
+    position: 0
+    name: input_tree
+    optional: false
+  - !Positional
+    description: "file containing multiple sequence alignment (or 'NONE'\nif '--boot_dir'\
+      \ is given)"
+    position: 1
+    name: msa_file
+    optional: false
+  - !Positional
+    description: output directory
+    position: 2
+    name: output_dir
+    optional: false
+  named:
+  - !Flag
+    description: "directory containing pre-computed bootstrap trees\n(must have '.tree',\
+      \ '.tre', or '.treefile' extension)"
+    synonyms:
+    - --boot_dir
+    args: !SimpleFlagArg
+      name: BOOT_DIR
+    optional: true
+  - !Flag
+    description: "indicates if bases are nucleotides or amino acids\n(default: prot)"
+    synonyms:
+    - -b
+    - --base_type
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? nt
+        ? prot
+    optional: true
+  - !Flag
+    description: 'model of evolution to use (default: wag)'
+    synonyms:
+    - -m
+    - --model
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? jtt
+        ? wag
+        ? lg
+    optional: true
+  - !Flag
+    description: indicates that the GAMMA model should be used
+    synonyms:
+    - -g
+    - --gamma
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "number of bootstrap replicates to perform (default:\n100)"
+    synonyms:
+    - -r
+    - --num_replicates
+    args: !SimpleFlagArg
+      name: NUM_REPLICATES
+    optional: true
+  - !Flag
+    description: 'fraction of alignment to subsample (default: 1.0)'
+    synonyms:
+    - -f
+    - --fraction
+    args: !SimpleFlagArg
+      name: FRACTION
+    optional: true
+  - !Flag
+    description: 'number of cpus (default: 1)'
+    synonyms:
+    - -c
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: suppress output
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: genometreetk bootstrap [-h] [--boot_dir BOOT_DIR] [-b {nt,prot}]\n\
+    \                              [-m {wag,lg,jtt}] [-g] [-r NUM_REPLICATES]\n  \
+    \                            [-f FRACTION] [-c CPUS] [--silent]\n            \
+    \                  input_tree msa_file output_dir\n\nBootstrap multiple sequence\
+    \ alignment.\n\npositional arguments:\n  input_tree            tree inferred from\
+    \ original data\n  msa_file              file containing multiple sequence alignment\
+    \ (or 'NONE'\n                        if '--boot_dir' is given)\n  output_dir\
+    \            output directory\n\noptional arguments:\n  -h, --help           \
+    \ show this help message and exit\n  --boot_dir BOOT_DIR   directory containing\
+    \ pre-computed bootstrap trees\n                        (must have '.tree', '.tre',\
+    \ or '.treefile' extension)\n  -b, --base_type {nt,prot}\n                   \
+    \     indicates if bases are nucleotides or amino acids\n                    \
+    \    (default: prot)\n  -m, --model {wag,lg,jtt}\n                        model\
+    \ of evolution to use (default: wag)\n  -g, --gamma           indicates that the\
+    \ GAMMA model should be used\n  -r, --num_replicates NUM_REPLICATES\n        \
+    \                number of bootstrap replicates to perform (default:\n       \
+    \                 100)\n  -f, --fraction FRACTION\n                        fraction\
+    \ of alignment to subsample (default: 1.0)\n  -c, --cpus CPUS       number of\
+    \ cpus (default: 1)\n  --silent              suppress output\n"
+  generated_using: *id002
+- !Command
+  command:
+  - genometreetk
+  - pd
+  positional:
+  - !Positional
+    description: newick tree
+    position: 0
+    name: tree
+    optional: false
+  - !Positional
+    description: list of ingroup taxa, one per line, to calculated PD
+    position: 1
+    name: taxa_list
+    optional: false
+  - !Positional
+    description: 'optional arguments:'
+    position: 2
+    name: over
+    optional: false
+  named:
+  - !Flag
+    description: "file to record phylogenetic gain of each ingroup taxa\nrelative\
+      \ to the outgroup"
+    synonyms:
+    - --per_taxa_pg_file
+    args: !SimpleFlagArg
+      name: PER_TAXA_PG_FILE
+    optional: true
+  - !Flag
+    description: suppress output
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: genometreetk pd [-h] [--per_taxa_pg_file PER_TAXA_PG_FILE] [--silent]\n\
+    \                       tree taxa_list\n\nCalculate phylogenetic diversity of\
+    \ specified taxa.\n\npositional arguments:\n  tree                  newick tree\n\
+    \  taxa_list             list of ingroup taxa, one per line, to calculated PD\n\
+    \                        over\n\noptional arguments:\n  -h, --help           \
+    \ show this help message and exit\n  --per_taxa_pg_file PER_TAXA_PG_FILE\n   \
+    \                     file to record phylogenetic gain of each ingroup taxa\n\
+    \                        relative to the outgroup\n  --silent              suppress\
+    \ output\n"
+  generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:

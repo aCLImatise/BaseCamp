@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../hca_dss_head_file.cwl
 inputs:
-- id: uuid
+- id: in_uuid
   doc: A RFC4122-compliant ID for the file.
-  type: string
+  type: File
   inputBinding:
     prefix: --uuid
-- id: replica
+- id: in_replica
   doc: Replica to fetch from.
   type: string
   inputBinding:
     prefix: --replica
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

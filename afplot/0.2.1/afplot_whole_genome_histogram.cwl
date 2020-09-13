@@ -1,48 +1,56 @@
 class: CommandLineTool
 id: ../../../afplot_whole_genome_histogram.cwl
 inputs:
-- id: output
+- id: in_output
   doc: Path to output file  [required]
   type: File
   inputBinding:
     prefix: --output
-- id: exclude_pattern
+- id: in_exclude_pattern
   doc: Regex pattern(s) to exclude from contig list
   type: string
   inputBinding:
     prefix: --exclude-pattern
-- id: sample
-  doc: Sample name(s) of VCF file(s). If not given, will use fist sample in each VCF
-    File
-  type: string
+- id: in_sample
+  doc: "Sample name(s) of VCF file(s). If not given,\nwill use fist sample in each\
+    \ VCF File"
+  type: File
   inputBinding:
     prefix: --sample
-- id: label
+- id: in_label
   doc: Label(s) to VCF file(s)  [required]
-  type: string
+  type: File
   inputBinding:
     prefix: --label
-- id: vcf
+- id: in_vcf
   doc: Path(s) to input VCF file(s)  [required]
   type: File
   inputBinding:
     prefix: --vcf
-- id: color_palette
-  doc: The name of a color palette to pass to seaborn.set_palette
+- id: in_color_palette
+  doc: The name of a color palette to pass to
   type: string
   inputBinding:
     prefix: --color-palette
-- id: dpi
-  doc: 'DPI for output PNGs (default: 300)'
-  type: long
-  inputBinding:
-    prefix: --dpi
-- id: kde_only
+- id: in_kde_only
   doc: Only show kernel density plot
   type: boolean
   inputBinding:
     prefix: --kde-only
-outputs: []
+- id: in_seaborn_dot_set_palette
+  doc: '--dpi INTEGER               DPI for output PNGs (default: 300)'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Path to output file  [required]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - afplot

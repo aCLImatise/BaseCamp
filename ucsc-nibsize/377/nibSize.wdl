@@ -2,13 +2,16 @@ version 1.0
 
 task NibSize {
   input {
-    String nib_one
+    String? not_valid_option
   }
   command <<<
     nibSize \
-      ~{nib_one}
+      ~{if defined(not_valid_option) then ("-h " +  '"' + not_valid_option + '"') else ""}
   >>>
   parameter_meta {
-    nib_one: ""
+    not_valid_option: "not a valid option"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

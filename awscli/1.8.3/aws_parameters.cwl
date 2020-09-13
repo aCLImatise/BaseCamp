@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../aws_parameters.cwl
 inputs:
-- id: aws
+- id: in_aws
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: command
+- id: in_command
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: subcommand
+- id: in_subcommand
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: parameters
+- id: in_parameters
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - aws

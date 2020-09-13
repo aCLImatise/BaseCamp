@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../fermi_seqrank.cwl
 inputs:
-- id: fermi
+- id: in_fermi
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seq_sort
+- id: in_seq_sort
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fermi

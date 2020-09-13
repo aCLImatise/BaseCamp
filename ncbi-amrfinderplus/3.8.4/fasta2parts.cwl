@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../fasta2parts.cwl
 inputs:
-- id: qc
+- id: in_threads
   doc: ''
-  type: boolean
+  type: long
   inputBinding:
-    prefix: -qc
-- id: verbose
+    prefix: -threads
+- id: in_seed
   doc: ''
-  type: string
+  type: long
   inputBinding:
-    prefix: -verbose
-- id: no_progress
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -noprogress
-- id: profile
+    prefix: -seed
+- id: in_profile
   doc: ''
   type: boolean
   inputBinding:
     prefix: -profile
-- id: seed
+- id: in_no_progress
   doc: ''
-  type: string
+  type: boolean
   inputBinding:
-    prefix: -seed
-- id: threads
+    prefix: -noprogress
+- id: in_verbose
   doc: ''
-  type: string
+  type: long
   inputBinding:
-    prefix: -threads
-- id: in
+    prefix: -verbose
+- id: in_qc
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -qc
+- id: in_in
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: parts_max
+- id: in_parts_max
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: dir
+- id: in_dir
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fasta2parts

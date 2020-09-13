@@ -11,4 +11,7 @@ task IpaValidate {
   parameter_meta {
     ipa: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

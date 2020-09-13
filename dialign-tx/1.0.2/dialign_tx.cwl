@@ -1,169 +1,177 @@
 class: CommandLineTool
 id: ../../../dialign_tx.cwl
 inputs:
-- id: debugmode_debug_statements
-  doc: Debug-Mode  [DEFAULT 0] 0 no debug statements 1 debugs the current phase of
-    the processing 2 very loquacious debugging 5 hardcore debugging
+- id: in_debugmode_debug_statements
+  doc: "Debug-Mode  [DEFAULT 0]\n0 no debug statements\n1 debugs the current phase\
+    \ of the processing\n2 very loquacious debugging\n5 hardcore debugging"
   type: boolean
   inputBinding:
     prefix: -d
-- id: maximum_amount_input
+- id: in_maximum_amount_input
   doc: maximum amount of input sequences [DEFAULT 5000]
   type: boolean
   inputBinding:
     prefix: -s
-- id: maximum_number_characters
+- id: in_maximum_number_characters
   doc: maximum number of characters per line in a FASTA file [DEFAULT 100]
   type: boolean
   inputBinding:
     prefix: -a
-- id: maximum_amount_printing
-  doc: maximum amount of characters per line when printing a sequence [DEFAULT 80]
+- id: in_maximum_amount_printing
+  doc: "maximum amount of characters per line when printing a sequence\n[DEFAULT 80]"
   type: boolean
   inputBinding:
     prefix: -c
-- id: sensitivity_mode_higher
-  doc: sensitivity mode, the higher the level the less likely spurious random fragments
-    are aligned in local alignments  [DEFAULT 0] 0 switched off  1 level-1, reduced
-    sensitivity 2 level-2, strongly reduced sensitivity
+- id: in_sensitivity_mode_level
+  doc: "sensitivity mode, the higher the level the less likely\nspurious random fragments\
+    \ are aligned in local alignments\n[DEFAULT 0]\n0 switched off\n1 level-1, reduced\
+    \ sensitivity\n2 level-2, strongly reduced sensitivity"
   type: boolean
   inputBinding:
     prefix: -l
-- id: score_matrix_file
-  doc: 'score matrix file name (in the configuration directory) [DEFAULT PROTEIN:
-    BLOSUM.scr] [DEFAULT DNA: dna_matrix.scr]'
+- id: in_score_matrix_file
+  doc: "score matrix file name (in the configuration directory)\n[DEFAULT PROTEIN:\
+    \ BLOSUM.scr]\n[DEFAULT DNA: dna_matrix.scr]"
   type: boolean
   inputBinding:
     prefix: -m
-- id: defines_minimum_weight
-  doc: defines the minimum weight when the weight formula is changed to 1-pow(1-prob,
-    factor) [DEFAULT 0.000000065]
+- id: in_defines_minimum_weight
+  doc: "defines the minimum weight when the weight formula is changed\nto 1-pow(1-prob,\
+    \ factor) [DEFAULT 0.000000065]"
   type: boolean
   inputBinding:
     prefix: -w
-- id: probability_distribution_file
-  doc: 'probability distribution file name (in the configuration directory)  [DEFAULT
-    PROTEIN: BLOSUM.diag_prob_t10] [DEFAULT DNA: dna_diag_prob_100_exp_550000]'
+- id: in_probability_distribution_file
+  doc: "probability distribution file name (in the configuration\ndirectory)\n[DEFAULT\
+    \ PROTEIN: BLOSUM.diag_prob_t10]\n[DEFAULT DNA: dna_diag_prob_100_exp_550000]"
   type: boolean
   inputBinding:
     prefix: -p
-- id: add_prevent_values
+- id: in_add_prevent_values
   doc: add to each score (to prevent negative values) [DEFAULT 0]
   type: boolean
   inputBinding:
     prefix: -v
-- id: threshold_low_score
-  doc: '"even" threshold for low score for sequences alignment  [DEFAULT PROTEIN:
-    4] [DEFAULT DNA: 0]'
+- id: in_threshold_low_score
+  doc: "\"even\" threshold for low score for sequences alignment\n[DEFAULT PROTEIN:\
+    \ 4]\n[DEFAULT DNA: 0]"
   type: boolean
   inputBinding:
     prefix: -t
-- id: maximum_number_consecutive
-  doc: 'maximum number of consecutive positions for window containing low scoring
-    positions  [DEFAULT PROTEIN: 4] [DEFAULT DNA: 4]'
+- id: in_maximum_number_consecutive
+  doc: "maximum number of consecutive positions for window containing\nlow scoring\
+    \ positions\n[DEFAULT PROTEIN: 4]\n[DEFAULT DNA: 4]"
   type: boolean
   inputBinding:
     prefix: -n
-- id: global_minimum_fragment
-  doc: 'global minimum fragment length for stop criterion  [DEFAULT PROTEIN: 40]  [DEFAULT
-    DNA: 40]'
+- id: in_global_minimum_fragment
+  doc: "global minimum fragment length for stop criterion\n[DEFAULT PROTEIN: 40]\n\
+    [DEFAULT DNA: 40]"
   type: boolean
   inputBinding:
     prefix: -g
-- id: overlap_weights_calculated
+- id: in_wether_overlap_weights
   doc: wether overlap weights are calculated or not [DEFAULT 0]
   type: boolean
   inputBinding:
     prefix: -o
-- id: minimum_fragment_length
+- id: in_minimum_fragment_length
   doc: minimum fragment length [DEFAULT 1]
   type: boolean
   inputBinding:
     prefix: -f
-- id: threshold_weight_consider
+- id: in_threshold_weight_consider
   doc: threshold weight to consider the fragment at all [DEFAULT 0.0]
   type: boolean
   inputBinding:
     prefix: -r
-- id: only_use_stripe
-  doc: '[DEFAULT 0] 1: only use a sqrt(amount_of_seqs) stripe of neighbour sequences
-    to calculate pairwise alignments (increase performance) 0: all pairwise alignments
-    will be calculated'
+- id: in_only_use_stripe
+  doc: "[DEFAULT 0]\n1: only use a sqrt(amount_of_seqs) stripe of neighbour\nsequences\
+    \ to calculate pairwise alignments (increase performance)\n0: all pairwise alignments\
+    \ will be calculated"
   type: boolean
   inputBinding:
     prefix: -u
-- id: optional_anchor_file
+- id: in_optional_anchor_file
   doc: optional anchor file [DEFAULT none]
   type: boolean
   inputBinding:
     prefix: -A
-- id: input_is_dnasequence
+- id: in_input_is_dnasequence
   doc: input is DNA-sequence
   type: boolean
   inputBinding:
     prefix: -D
-- id: translate_dna_aminoacids_begin
-  doc: 'translate DNA into aminoacids from begin to end (length will be cut to mod
-    3 = 0) WARNING: Do not use -D with this option  (Default values for PROTEIN input
-    will be loaded)'
+- id: in_translate_dna_aminoacids_begin
+  doc: "translate DNA into aminoacids from begin to end (length will be cut to mod\
+    \ 3 = 0)\nWARNING: Do not use -D with this option\n(Default values for PROTEIN\
+    \ input will be loaded)"
   type: boolean
   inputBinding:
     prefix: -T
-- id: compare_only_warning
-  doc: 'compare only longest Open Reading Frame WARNING: Do not use -D with this option  (Default
-    values for PROTEIN input will be loaded)'
+- id: in_compare_only_longest
+  doc: "compare only longest Open Reading Frame\nWARNING: Do not use -D with this\
+    \ option\n(Default values for PROTEIN input will be loaded)"
   type: boolean
   inputBinding:
     prefix: -L
-- id: translate_dna_aminoacids_reading
-  doc: 'translate DNA to aminoacids, reading frame for each sequence calculated due
-    to its longest ORF WARNING: Do not use -D with this option  (Default values for
-    PROTEIN input will be loaded)'
+- id: in_translate_dna_aminoacids_reading
+  doc: "translate DNA to aminoacids, reading frame for each sequence calculated due\
+    \ to its longest ORF\nWARNING: Do not use -D with this option\n(Default values\
+    \ for PROTEIN input will be loaded)"
   type: boolean
   inputBinding:
     prefix: -O
-- id: output_aminoacids_retranslation
-  doc: 'output in aminoacids, no retranslation of DNA sequences [DEFAULT: input =
-    output]'
+- id: in_output_aminoacids_retranslation
+  doc: "output in aminoacids, no retranslation of DNA sequences\n[DEFAULT: input =\
+    \ output]"
   type: boolean
   inputBinding:
     prefix: -P
-- id: fast_mode_implies
+- id: in_fast_mode_implies
   doc: fast mode (implies -l0, since it already significantly reduces sensitivity)
   type: boolean
   inputBinding:
     prefix: -F
-- id: generate_probability_table
+- id: in_generate_probability_table
   doc: generate probability table saved in <config_dir>/prob_table and exit
   type: boolean
   inputBinding:
     prefix: -C
-- id: this_message
+- id: in_this_message
   doc: this message
   type: string
   inputBinding:
     prefix: -H
-- id: di_align_t
+- id: in_di_align_t
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: conf_directory
+- id: in_conf_directory
   doc: ''
-  type: string
+  type: Directory
   inputBinding:
     position: 1
-- id: fast_a_file
+- id: in_fast_a_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 2
-- id: fast_a_out_file
+- id: in_fast_a_out_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_fast_a_out_file
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_fast_a_out_file)
 cwlVersion: v1.1
 baseCommand:
 - dialign-tx

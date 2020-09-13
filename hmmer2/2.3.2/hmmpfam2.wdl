@@ -4,7 +4,7 @@ task Hmmpfam2 {
   input {
     Boolean? nucleic_acid_modelssequence
     String? sets_alignment_limit
-    String? sets_cutoff_globe
+    Int? sets_cutoff_globe
     String? sets_bit_threshold
     String? sets_z_models
     Boolean? acc
@@ -13,42 +13,42 @@ task Hmmpfam2 {
     Boolean? cut_ga
     Boolean? cut_nc
     Boolean? cut_tc
-    String? dome
-    String? do_mt
+    Int? dome
+    Int? do_mt
     Boolean? forward
-    String? in_format
+    File? in_format
     Boolean? null_two
     Boolean? pvm
     Boolean? xnu
     Boolean? options
     String hmmpfam
     String hmm_database
-    String sequence_file_or_database
+    File sequence_file_or_database
   }
   command <<<
     hmmpfam2 \
       ~{hmmpfam} \
       ~{hmm_database} \
       ~{sequence_file_or_database} \
-      ~{true="-n" false="" nucleic_acid_modelssequence} \
+      ~{if (nucleic_acid_modelssequence) then "-n" else ""} \
       ~{if defined(sets_alignment_limit) then ("-A " +  '"' + sets_alignment_limit + '"') else ""} \
       ~{if defined(sets_cutoff_globe) then ("-E " +  '"' + sets_cutoff_globe + '"') else ""} \
       ~{if defined(sets_bit_threshold) then ("-T " +  '"' + sets_bit_threshold + '"') else ""} \
       ~{if defined(sets_z_models) then ("-Z " +  '"' + sets_z_models + '"') else ""} \
-      ~{true="--acc" false="" acc} \
-      ~{true="--compat" false="" compat} \
+      ~{if (acc) then "--acc" else ""} \
+      ~{if (compat) then "--compat" else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
-      ~{true="--cut_ga" false="" cut_ga} \
-      ~{true="--cut_nc" false="" cut_nc} \
-      ~{true="--cut_tc" false="" cut_tc} \
+      ~{if (cut_ga) then "--cut_ga" else ""} \
+      ~{if (cut_nc) then "--cut_nc" else ""} \
+      ~{if (cut_tc) then "--cut_tc" else ""} \
       ~{if defined(dome) then ("--domE " +  '"' + dome + '"') else ""} \
       ~{if defined(do_mt) then ("--domT " +  '"' + do_mt + '"') else ""} \
-      ~{true="--forward" false="" forward} \
+      ~{if (forward) then "--forward" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--null2" false="" null_two} \
-      ~{true="--pvm" false="" pvm} \
-      ~{true="--xnu" false="" xnu} \
-      ~{true="-options" false="" options}
+      ~{if (null_two) then "--null2" else ""} \
+      ~{if (pvm) then "--pvm" else ""} \
+      ~{if (xnu) then "--xnu" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     nucleic_acid_modelssequence: ": nucleic acid models/sequence (default protein)"
@@ -73,5 +73,8 @@ task Hmmpfam2 {
     hmmpfam: ""
     hmm_database: ""
     sequence_file_or_database: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

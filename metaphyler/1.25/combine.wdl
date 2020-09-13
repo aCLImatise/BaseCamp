@@ -4,4 +4,7 @@ task Combine {
   command <<<
     combine
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

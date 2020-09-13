@@ -2,8 +2,8 @@ version 1.0
 
 task FermiSub {
   input {
-    Boolean? c
     String? t
+    Boolean? c
     String in_dot_fmd
     String array_dot_bits
   }
@@ -11,13 +11,16 @@ task FermiSub {
     fermi sub \
       ~{in_dot_fmd} \
       ~{array_dot_bits} \
-      ~{true="-c" false="" c} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if (c) then "-c" else ""}
   >>>
   parameter_meta {
-    c: ""
     t: ""
+    c: ""
     in_dot_fmd: ""
     array_dot_bits: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

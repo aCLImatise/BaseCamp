@@ -1,17 +1,17 @@
 version 1.0
 
-task MtsvTreeBuildFLAGS {
+task MtsvtreebuildFLAGS {
   input {
     String? index
-    String? dump
   }
   command <<<
-    mtsv-tree-build FLAGS \
-      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
-      ~{if defined(dump) then ("--dump " +  '"' + dump + '"') else ""}
+    mtsv_tree_build FLAGS \
+      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""}
   >>>
   parameter_meta {
     index: ""
-    dump: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

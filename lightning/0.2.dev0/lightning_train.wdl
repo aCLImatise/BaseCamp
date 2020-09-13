@@ -4,4 +4,7 @@ task LightningTrain {
   command <<<
     lightning_train
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

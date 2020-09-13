@@ -1,29 +1,10 @@
 version 1.0
 
-task SanityCheckMatureRef.pl.orig {
-  input {
-    String no
-    String such
-    File file
-    String or
-    Directory directory
-    String at
-  }
+task SanityCheckMatureRefpl {
   command <<<
-    sanity_check_mature_ref.pl.orig \
-      ~{no} \
-      ~{such} \
-      ~{file} \
-      ~{or} \
-      ~{directory} \
-      ~{at}
+    sanity_check_mature_ref_pl
   >>>
-  parameter_meta {
-    no: ""
-    such: ""
-    file: ""
-    or: ""
-    directory: ""
-    at: ""
+  output {
+    File out_stdout = stdout()
   }
 }

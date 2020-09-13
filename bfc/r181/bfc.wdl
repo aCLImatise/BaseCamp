@@ -29,14 +29,14 @@ task Bfc {
       ~{if defined(set_bloom_size) then ("-b " +  '"' + set_bloom_size + '"') else ""} \
       ~{if defined(use_int_functions) then ("-H " +  '"' + use_int_functions + '"') else ""} \
       ~{if defined(dump_hash_table) then ("-d " +  '"' + dump_hash_table + '"') else ""} \
-      ~{true="-E" false="" skip_error_correction} \
-      ~{true="-R" false="" refine_bfccorrected_reads} \
+      ~{if (skip_error_correction) then "-E" else ""} \
+      ~{if (refine_bfccorrected_reads) then "-R" else ""} \
       ~{if defined(restore_hash_table) then ("-r " +  '"' + restore_hash_table + '"') else ""} \
       ~{if defined(more_ec_ec) then ("-w " +  '"' + more_ec_ec + '"') else ""} \
       ~{if defined(min_kmer_coverage) then ("-c " +  '"' + min_kmer_coverage + '"') else ""} \
-      ~{true="-Q" false="" force_fasta_output} \
-      ~{true="-1" false="" drop_reads_containing} \
-      ~{true="-v" false="" show_version_number}
+      ~{if (force_fasta_output) then "-Q" else ""} \
+      ~{if (drop_reads_containing) then "-1" else ""} \
+      ~{if (show_version_number) then "-v" else ""}
   >>>
   parameter_meta {
     approx_genome_size: "approx genome size (k/m/g allowed; change -k and -b) [unset]"
@@ -55,5 +55,8 @@ task Bfc {
     show_version_number: "show version number"
     to_count_dot_fq: ""
     to_correct_dot_fq: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

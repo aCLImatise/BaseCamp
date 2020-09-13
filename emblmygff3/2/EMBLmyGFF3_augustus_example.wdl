@@ -1,7 +1,10 @@
 version 1.0
 
-task EMBLmyGFF3AugustusExample {
+task EMBLmyGFF3augustusexample {
   command <<<
-    EMBLmyGFF3-augustus-example
+    EMBLmyGFF3_augustus_example
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

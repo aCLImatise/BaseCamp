@@ -4,4 +4,7 @@ task Squeakr {
   command <<<
     squeakr
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

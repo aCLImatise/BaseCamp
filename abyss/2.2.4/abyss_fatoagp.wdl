@@ -1,7 +1,10 @@
 version 1.0
 
-task AbyssFatoagp {
+task Abyssfatoagp {
   command <<<
-    abyss-fatoagp
+    abyss_fatoagp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -11,4 +11,7 @@ task Pedmerge {
   parameter_meta {
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

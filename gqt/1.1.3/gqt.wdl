@@ -4,4 +4,7 @@ task Gqt {
   command <<<
     gqt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

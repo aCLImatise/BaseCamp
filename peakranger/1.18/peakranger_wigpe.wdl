@@ -14,13 +14,13 @@ task PeakrangerWigpe {
   command <<<
     peakranger wigpe \
       ~{var_input} \
-      ~{true="-d" false="" arg_data_file} \
-      ~{true="-o" false="" arg_output_location} \
-      ~{true="-s" false="" generate_one_wig_file_chromosome} \
-      ~{true="-z" false="" _compress_output} \
-      ~{true="-x" false="" generate_one_wig_file_strand} \
-      ~{true="-l" false="" arg_read_length} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (arg_data_file) then "-d" else ""} \
+      ~{if (arg_output_location) then "-o" else ""} \
+      ~{if (generate_one_wig_file_chromosome) then "-s" else ""} \
+      ~{if (_compress_output) then "-z" else ""} \
+      ~{if (generate_one_wig_file_strand) then "-x" else ""} \
+      ~{if (arg_read_length) then "-l" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     arg_data_file: "[ --data ] arg             the data file"
@@ -31,5 +31,8 @@ task PeakrangerWigpe {
     arg_read_length: "[ --ext_length ] arg (=0)  read extension length"
     verbose: "show progress when possible"
     var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

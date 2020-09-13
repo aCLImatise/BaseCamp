@@ -11,4 +11,7 @@ task Sirius {
   parameter_meta {
     arguments_dot_dot_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

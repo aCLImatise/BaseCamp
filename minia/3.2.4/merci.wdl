@@ -10,11 +10,11 @@ task Merci {
   }
   command <<<
     merci \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-kmer-size" false="" km_er_size} \
-      ~{true="-assembly" false="" assembly} \
-      ~{true="-reads" false="" reads}
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (km_er_size) then "-kmer-size" else ""} \
+      ~{if (assembly) then "-assembly" else ""} \
+      ~{if (reads) then "-reads" else ""}
   >>>
   parameter_meta {
     verbose: "(1 arg) :    verbosity level  [default '1']"
@@ -22,5 +22,8 @@ task Merci {
     km_er_size: "(1 arg) :    kmer size"
     assembly: "(1 arg) :    assembly to improve"
     reads: "(1 arg) :    input reads (fasta/fastq/compressed)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,20 +1,23 @@
 version 1.0
 
-task SeqmagickPrimerTrimForwardPrimer {
+task SeqmagickPrimertrimForwardPrimer {
   input {
     Boolean? reverse_is_rev_comp
     String seq_magick
     String primer_trim
   }
   command <<<
-    seqmagick primer-trim forward_primer \
+    seqmagick primer_trim forward_primer \
       ~{seq_magick} \
       ~{primer_trim} \
-      ~{true="--reverse-is-revcomp" false="" reverse_is_rev_comp}
+      ~{if (reverse_is_rev_comp) then "--reverse-is-revcomp" else ""}
   >>>
   parameter_meta {
     reverse_is_rev_comp: ""
     seq_magick: ""
     primer_trim: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

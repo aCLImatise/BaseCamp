@@ -6,9 +6,12 @@ task SplitByP7Barcode {
   }
   command <<<
     split_by_p7_barcode \
-      ~{true="--force" false="" force}
+      ~{if (force) then "--force" else ""}
   >>>
   parameter_meta {
     force: "Overwrite existing files when creating the output."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

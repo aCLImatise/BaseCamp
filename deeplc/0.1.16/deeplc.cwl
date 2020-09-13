@@ -1,38 +1,67 @@
 class: CommandLineTool
 id: ../../../deeplc.cwl
 inputs:
-- id: batch_num
-  doc: Batch size (in peptides) for predicting the retention time. Set lower to decrease
-    memory footprint (optional, default=250000)
-  type: string
-  inputBinding:
-    prefix: --batch_num
-- id: plot_predictions
-  doc: Save scatter plot of predictions vs observations (default=False)
-  type: boolean
-  inputBinding:
-    prefix: --plot_predictions
-- id: n_threads
-  doc: Number of threads to use (optional, default=maximum available)
-  type: string
-  inputBinding:
-    prefix: --n_threads
-- id: log_level
-  doc: Logging level (debug, info, warning, error, or critical; default=info)
-  type: string
-  inputBinding:
-    prefix: --log_level
-- id: file_pred
-  doc: ''
+- id: in_file_pred
+  doc: "Path to peptide file for which to make predictions\n(required)"
   type: File
   inputBinding:
     prefix: --file_pred
-- id: file_cal
-  doc: ''
+- id: in_file_cal
+  doc: "Path to peptide file with retention times to use for\ncalibration (optional)"
   type: File
   inputBinding:
     prefix: --file_cal
-outputs: []
+- id: in_file_pred_out
+  doc: Path to output file with predictions (optional)
+  type: File
+  inputBinding:
+    prefix: --file_pred_out
+- id: in_file_model
+  doc: "Path to prediction model(s). Seperate with spaces.\nLeave empty to select\
+    \ the best of the default models\n(optional)"
+  type: File[]
+  inputBinding:
+    prefix: --file_model
+- id: in_split_cal
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --split_cal
+- id: in_dict_divider
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --dict_divider
+- id: in_batch_num
+  doc: "Batch size (in peptides) for predicting the retention\ntime. Set lower to\
+    \ decrease memory footprint\n(optional, default=250000)"
+  type: long
+  inputBinding:
+    prefix: --batch_num
+- id: in_plot_predictions
+  doc: "Save scatter plot of predictions vs observations\n(default=False)"
+  type: boolean
+  inputBinding:
+    prefix: --plot_predictions
+- id: in_n_threads
+  doc: "Number of threads to use (optional, default=maximum\navailable)"
+  type: long
+  inputBinding:
+    prefix: --n_threads
+- id: in_log_level
+  doc: "Logging level (debug, info, warning, error, or\ncritical; default=info)"
+  type: string
+  inputBinding:
+    prefix: --log_level
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_file_pred_out
+  doc: Path to output file with predictions (optional)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_file_pred_out)
 cwlVersion: v1.1
 baseCommand:
 - deeplc

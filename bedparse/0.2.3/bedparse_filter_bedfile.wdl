@@ -2,8 +2,8 @@ version 1.0
 
 task BedparseFilterBedfile {
   input {
-    String? annotation
     String? column
+    String? annotation
     String bed_parse
     String filter
   }
@@ -11,13 +11,16 @@ task BedparseFilterBedfile {
     bedparse filter bedfile \
       ~{bed_parse} \
       ~{filter} \
-      ~{if defined(annotation) then ("--annotation " +  '"' + annotation + '"') else ""} \
-      ~{if defined(column) then ("--column " +  '"' + column + '"') else ""}
+      ~{if defined(column) then ("--column " +  '"' + column + '"') else ""} \
+      ~{if defined(annotation) then ("--annotation " +  '"' + annotation + '"') else ""}
   >>>
   parameter_meta {
-    annotation: ""
     column: ""
+    annotation: ""
     bed_parse: ""
     filter: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

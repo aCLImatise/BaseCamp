@@ -1,7 +1,10 @@
 version 1.0
 
-task ExactTandems {
+task Exacttandems {
   command <<<
-    exact-tandems
+    exact_tandems
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

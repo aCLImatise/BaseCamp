@@ -1,93 +1,96 @@
 class: CommandLineTool
 id: ../../../RNApaln.cwl
 inputs:
-- id: detailed_help
-  doc: Print help, including all details and hidden  options, and exit
+- id: in_detailed_help
+  doc: "Print help, including all details and hidden\noptions, and exit"
   type: boolean
   inputBinding:
     prefix: --detailed-help
-- id: full_help
+- id: in_full_help
   doc: Print help, including hidden options, and exit
   type: boolean
   inputBinding:
     prefix: --full-help
-- id: print_alignment
-  doc: "[=filename] Print an \"alignment\" with gaps of the  profiles The aligned\
-    \ structures are written to  filename, if specified Otherwise output is written\
-    \ to stdout, unless  the -Xm option is set in which case  \"backtrack.file\" is\
-    \ used. (default=`stdout')"
-  type: boolean
-  inputBinding:
-    prefix: --printAlignment
-- id: noconv
-  doc: Do not automatically substitude nucleotide  "T" with "U" (default=off)
+- id: in_noconv
+  doc: "Do not automatically substitude nucleotide\n\"T\" with \"U\"\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noconv
-- id: mode
+- id: in_mode
   doc: Set the alignment mode to be used
   type: string
   inputBinding:
     prefix: --mode
-- id: gap_o
+- id: in_gap_o
   doc: Set the gap open penalty
   type: string
   inputBinding:
     prefix: --gapo
-- id: gape
+- id: in_gape
   doc: Set the gap extension penalty
   type: string
   inputBinding:
     prefix: --gape
-- id: seq_w
-  doc: Set the weight of sequence (compared to  structure) in the scoring function.
+- id: in_seq_w
+  doc: "Set the weight of sequence (compared to\nstructure) in the scoring function."
   type: string
   inputBinding:
     prefix: --seqw
-- id: end_gaps
-  doc: Use free end-gaps (default=off)
+- id: in_end_gaps
+  doc: "Use free end-gaps\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --endgaps
-- id: temp
-  doc: Rescale energy parameters to a temperature of  temp C. Default is 37C.
-  type: string
+- id: in_temp
+  doc: "Rescale energy parameters to a temperature of\ntemp C. Default is 37C."
+  type: long
   inputBinding:
     prefix: --temp
-- id: no_tetra
-  doc: Do not include special tabulated stabilizing  energies for tri-, tetra- and
-    hexaloop  hairpins. Mostly for testing. (default=off)
+- id: in_no_tetra
+  doc: "Do not include special tabulated stabilizing\nenergies for tri-, tetra- and\
+    \ hexaloop\nhairpins. Mostly for testing.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noTetra
-- id: dangles
-  doc: How to treat "dangling end" energies for  bases adjacent to helices in free
-    ends and  multi-loops (default=`2')
+- id: in_dangles
+  doc: "How to treat \"dangling end\" energies for\nbases adjacent to helices in free\
+    \ ends and\nmulti-loops\n(default=`2')"
   type: long
   inputBinding:
     prefix: --dangles
-- id: no_lp
-  doc: Produce structures without lonely pairs  (helices of length 1). (default=off)
+- id: in_no_lp
+  doc: "Produce structures without lonely pairs\n(helices of length 1).\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noLP
-- id: no_gu
-  doc: Do not allow GU pairs (default=off)
+- id: in_no_gu
+  doc: "Do not allow GU pairs\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noGU
-- id: no_closing_gu
-  doc: Do not allow GU pairs at the end of helices (default=off)
+- id: in_no_closing_gu
+  doc: "Do not allow GU pairs at the end of helices\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noClosingGU
-- id: param_file
-  doc: Read energy parameters from paramfile, instead  of using the default parameter
-    set.
-  type: string
+- id: in_param_file
+  doc: "Read energy parameters from paramfile, instead\nof using the default parameter\
+    \ set."
+  type: File
   inputBinding:
     prefix: --paramFile
-outputs: []
+- id: in_program
+  doc: "-B, --printAlignment[=filename]\nPrint an \"alignment\" with gaps of the\n\
+    profiles\nThe aligned structures are written to\nfilename, if specified\nOtherwise\
+    \ output is written to stdout, unless\nthe -Xm option is set in which case\n\"\
+    backtrack.file\" is used.\n(default=`stdout')"
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - RNApaln

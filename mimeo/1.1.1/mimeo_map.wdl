@@ -1,48 +1,48 @@
 version 1.0
 
-task MimeoMap {
+task Mimeomap {
   input {
-    String? a_dir
-    String? b_dir
+    Directory? a_dir
+    Directory? b_dir
     String? a_fast_a
     String? b_fast_a
     Boolean? recycle
-    String? outdir
-    String? gff_out
-    String? outfile
+    Directory? outdir
+    File? gff_out
     Boolean? verbose
     String? label
     String? prefix
     Boolean? keep_temp
-    String? lz_path
-    Int? mini_dt
+    File? lz_path
+    String? mini_dt
     Int? min_len
-    String? hsp_thresh
-    String? trf_path
+    Int? hsp_thresh
+    File? trf_path
     String? t_match
     String? t_mismatch
     String? t_delta
     String? tpm
     String? tpi
     String? tm_in_score
-    String? tmax_period
+    Int? tmax_period
     Int? max_tandem
     Boolean? write_trf
+    String output_dot
   }
   command <<<
-    mimeo-map \
+    mimeo_map \
+      ~{output_dot} \
       ~{if defined(a_dir) then ("--adir " +  '"' + a_dir + '"') else ""} \
       ~{if defined(b_dir) then ("--bdir " +  '"' + b_dir + '"') else ""} \
       ~{if defined(a_fast_a) then ("--afasta " +  '"' + a_fast_a + '"') else ""} \
       ~{if defined(b_fast_a) then ("--bfasta " +  '"' + b_fast_a + '"') else ""} \
-      ~{true="--recycle" false="" recycle} \
+      ~{if (recycle) then "--recycle" else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(gff_out) then ("--gffout " +  '"' + gff_out + '"') else ""} \
-      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(label) then ("--label " +  '"' + label + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
-      ~{true="--keeptemp" false="" keep_temp} \
+      ~{if (keep_temp) then "--keeptemp" else ""} \
       ~{if defined(lz_path) then ("--lzpath " +  '"' + lz_path + '"') else ""} \
       ~{if defined(mini_dt) then ("--minIdt " +  '"' + mini_dt + '"') else ""} \
       ~{if defined(min_len) then ("--minLen " +  '"' + min_len + '"') else ""} \
@@ -56,17 +56,16 @@ task MimeoMap {
       ~{if defined(tm_in_score) then ("--tminscore " +  '"' + tm_in_score + '"') else ""} \
       ~{if defined(tmax_period) then ("--tmaxperiod " +  '"' + tmax_period + '"') else ""} \
       ~{if defined(max_tandem) then ("--maxtandem " +  '"' + max_tandem + '"') else ""} \
-      ~{true="--writeTRF" false="" write_trf}
+      ~{if (write_trf) then "--writeTRF" else ""}
   >>>
   parameter_meta {
     a_dir: "Name of directory containing sequences from A genome."
     b_dir: "Name of directory containing sequences from B genome."
     a_fast_a: "A genome as multifasta."
     b_fast_a: "B genome as multifasta."
-    recycle: "Use existing alignment \"--outfile\" if found."
+    recycle: "Use existing alignment \\\"--outfile\\\" if found."
     outdir: "Write output files to this directory. (Default: cwd)"
-    gff_out: "Name of GFF3 annotation file. If not set, suppress output."
-    outfile: "Name of alignment result file."
+    gff_out: "Name of GFF3 annotation file. If not set, suppress"
     verbose: "If set report LASTZ progress."
     label: "Set annotation TYPE field in gff."
     prefix: "ID prefix for B-genome hits annotated in A-genome."
@@ -83,7 +82,12 @@ task MimeoMap {
     tpi: "TRF indel probability"
     tm_in_score: "TRF minimum alignment score to report"
     tmax_period: "TRF maximum period size to report"
-    max_tandem: "Max percentage of an A-genome alignment which may be masked by TRF. If exceeded, alignment will be discarded."
-    write_trf: "If set write TRF filtered alignment file for use with other mimeo modules."
+    max_tandem: "Max percentage of an A-genome alignment which may be\\nmasked by TRF. If exceeded, alignment will be\\ndiscarded."
+    write_trf: "If set write TRF filtered alignment file for use with\\nother mimeo modules.\\n"
+    output_dot: "--outfile OUTFILE     Name of alignment result file."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

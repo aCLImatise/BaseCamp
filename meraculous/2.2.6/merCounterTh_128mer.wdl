@@ -3,7 +3,7 @@ version 1.0
 task MerCounterTh128mer {
   input {
     String? mer_size
-    Int? min_count_to_report
+    String? min_count_to_report
     String? num_threads
     String? prefix_list_to_hash
     String? output_prefix
@@ -28,5 +28,8 @@ task MerCounterTh128mer {
     output_prefix: ""
     fast_q_descriptor_file: ""
     trim_flag: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

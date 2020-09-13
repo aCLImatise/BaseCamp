@@ -1,34 +1,37 @@
 class: CommandLineTool
 id: ../../../hivtrace_viz.cwl
 inputs:
-- id: hostname
+- id: in_hostname
   doc: 'hostname to bind to (default: 127.0.0.1'
-  type: string
+  type: double
   inputBinding:
     prefix: --hostname
-- id: port
-  doc: 'port to bind to; if this port is already in use a free port will be selected
-    automatically (default: 8080)'
-  type: string
+- id: in_port
+  doc: "port to bind to; if this port is already in use a free\nport will be selected\
+    \ automatically (default: 8080)"
+  type: long
   inputBinding:
     prefix: --port
-- id: browser
-  doc: "name of webbrowser to launch as described in the documentation of Python's\
-    \ webbrowser module: https://docs.python.org/3/library/webbrowser.html"
+- id: in_browser
+  doc: "name of webbrowser to launch as described in the\ndocumentation of Python's\
+    \ webbrowser module:\nhttps://docs.python.org/3/library/webbrowser.html"
   type: File
   inputBinding:
     prefix: --browser
-- id: server
-  doc: start hivtrace in server-only mode--no attempt will be to open a browser
+- id: in_server
+  doc: "start hivtrace in server-only mode--no attempt will be\nto open a browser\n"
   type: boolean
   inputBinding:
     prefix: --server
-- id: filename
+- id: in_filename
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hivtrace_viz

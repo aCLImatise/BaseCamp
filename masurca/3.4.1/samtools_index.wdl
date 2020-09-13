@@ -14,4 +14,7 @@ task SamtoolsIndex {
     in_dot_bam: ""
     out_dot_index: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

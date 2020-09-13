@@ -23,11 +23,9 @@ task EasypqpLibrary {
     Boolean? proteo_typic
     Boolean? consensus
     Boolean? no_fdr
-    String? in_files
   }
   command <<<
     easypqp library \
-      ~{in_files} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(psm_tsv) then ("--psmtsv " +  '"' + psm_tsv + '"') else ""} \
       ~{if defined(peptide_tsv) then ("--peptidetsv " +  '"' + peptide_tsv + '"') else ""} \
@@ -46,32 +44,35 @@ task EasypqpLibrary {
       ~{if defined(peptide_plot) then ("--peptide_plot " +  '"' + peptide_plot + '"') else ""} \
       ~{if defined(protein_plot) then ("--protein_plot " +  '"' + protein_plot + '"') else ""} \
       ~{if defined(min_peptides) then ("--min_peptides " +  '"' + min_peptides + '"') else ""} \
-      ~{true="--proteotypic" false="" proteo_typic} \
-      ~{true="--consensus" false="" consensus} \
-      ~{true="--nofdr" false="" no_fdr}
+      ~{if (proteo_typic) then "--proteotypic" else ""} \
+      ~{if (consensus) then "--consensus" else ""} \
+      ~{if (no_fdr) then "--nofdr" else ""}
   >>>
   parameter_meta {
-    out: "Output TSV peptide query parameter file. [required]"
+    out: "Output TSV peptide query parameter file.\\n[required]"
     psm_tsv: "psm.tsv file from Philosopher."
     peptide_tsv: "peptide.tsv file from Philosopher."
     rt_reference: "Optional iRT/CiRT reference file."
-    rt_filter: "Optional tag to filter candidate RT reference runs."
+    rt_filter: "Optional tag to filter candidate RT\\nreference runs."
     im_reference: "Optional IM reference file."
-    im_filter: "Optional tag to filter candidate IM reference runs."
+    im_filter: "Optional tag to filter candidate IM\\nreference runs."
     psm_fdr_threshold: "PSM FDR threshold.  [default: 0.01]"
     peptide_fdr_threshold: "Peptide FDR threshold.  [default: 0.01]"
     protein_fdr_threshold: "Protein FDR threshold.  [default: 0.01]"
-    rt_lowess_fraction: "Fraction of data points to use for RT lowess regression.  [default: 0.05]"
-    rt_psm_fdr_threshold: "PSM FDR threshold used for RT alignment. [default: 0.001]"
-    im_lowess_fraction: "Fraction of data points to use for IM lowess regression.  [default: 1.0]"
-    im_psm_fdr_threshold: "PSM FDR threshold used for IM alignment. [default: 0.001]"
-    pi_zero_lambda: "... Use non-parametric estimation of p-values. Either use <START END STEPS>, e.g. 0.1, 1.0, 0.1 or set to fixed value, e.g. 0.4, 0, 0. [default: 0.1, 0.5, 0.05]"
-    peptide_plot: "Output peptide-level PDF report.  [default: easypqp_peptide_report.pdf; required]"
-    protein_plot: "Output protein-level PDF report.  [default: easypqp_protein_report.pdf; required]"
-    min_peptides: "Minimum peptides required for successful alignment.  [default: 5]"
-    proteo_typic: "/ --no-proteotypic Use only proteotypic, unique, non-shared peptides.  [default: True]"
-    consensus: "/ --no-consensus    Generate consensus instead of best replicate spectra.  [default: True]"
-    no_fdr: "/ --no-fdr-filtering    Do not reassess or filter by FDR, as library was already provided using customized FDR filtering.  [default: False]"
-    in_files: ""
+    rt_lowess_fraction: "Fraction of data points to use for RT lowess"
+    rt_psm_fdr_threshold: "PSM FDR threshold used for RT alignment.\\n[default: 0.001]"
+    im_lowess_fraction: "Fraction of data points to use for IM lowess"
+    im_psm_fdr_threshold: "PSM FDR threshold used for IM alignment.\\n[default: 0.001]"
+    pi_zero_lambda: "...\\nUse non-parametric estimation of p-values.\\nEither use <START END STEPS>, e.g. 0.1, 1.0,\\n0.1 or set to fixed value, e.g. 0.4, 0, 0.\\n[default: 0.1, 0.5, 0.05]"
+    peptide_plot: "Output peptide-level PDF report.  [default:\\neasypqp_peptide_report.pdf; required]"
+    protein_plot: "Output protein-level PDF report.  [default:\\neasypqp_protein_report.pdf; required]"
+    min_peptides: "Minimum peptides required for successful"
+    proteo_typic: "/ --no-proteotypic\\nUse only proteotypic, unique, non-shared\\npeptides.  [default: True]"
+    consensus: "/ --no-consensus    Generate consensus instead of best replicate"
+    no_fdr: "/ --no-fdr-filtering    Do not reassess or filter by FDR, as library\\nwas already provided using customized FDR\\nfiltering.  [default: False]"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

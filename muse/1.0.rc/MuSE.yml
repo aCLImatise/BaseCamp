@@ -1,11 +1,14 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - MuSE
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - MuSE
+  - call
   positional:
   - !Positional
     description: ''
@@ -26,31 +29,29 @@ subcommands:
       name: FILE
     optional: true
   - !Flag
-    description: single region (chr:pos-pos) where somatic mutations are called
+    description: "single region (chr:pos-pos) where somatic\nmutations are called"
     synonyms:
     - -r
     args: !SimpleFlagArg
       name: STR
     optional: true
   - !Flag
-    description: list of regions (chr:pos-pos or BED), one region per line
+    description: "list of regions (chr:pos-pos or BED), one\nregion per line"
     synonyms:
     - -l
     args: !SimpleFlagArg
       name: FILE
     optional: true
   - !Flag
-    description: output file name (suffix '.MuSE.txt' is automatically added)
+    description: "output file name (suffix '.MuSE.txt' is\nautomatically added)\n"
     synonyms:
     - -O
     args: !SimpleFlagArg
       name: STR
     optional: true
-  command:
-  - MuSE
-  - call
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -62,6 +63,9 @@ subcommands:
     \ '.MuSE.txt' is\n                    automatically added)\n\n"
   generated_using: &id002 []
 - !Command
+  command:
+  - MuSE
+  - sump
   positional: []
   named:
   - !Flag
@@ -91,18 +95,16 @@ subcommands:
       name: STR
     optional: true
   - !Flag
-    description: dbSNP vcf file that should be bgzip compressed, tabix indexed and
-      based on the same reference genome used in 'MuSE call'
+    description: "dbSNP vcf file that should be bgzip compressed,\ntabix indexed and\
+      \ based on the same reference\ngenome used in 'MuSE call'\n"
     synonyms:
     - -D
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  command:
-  - MuSE
-  - sump
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -114,11 +116,12 @@ subcommands:
     \            tabix indexed and based on the same reference\n                 \
     \   genome used in 'MuSE call'\n\n"
   generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:
 help_text: "\nProgram: MuSE (Tools for calling somatic point mutations)\n\nVersion:\
-  \ v1.0rc\n         Build Date Mar  9 2019\n         Build Time 14:39:01\n\nUsage:\
+  \ v1.0rc\n         Build Date Jul 13 2020\n         Build Time 01:43:30\n\nUsage:\
   \   MuSE <command> [options]\n\nCommand: call    Call somatic point mutations.\n\
   \                 Raw output file will be created. If WGS\n                 data\
   \ is used, it is recommended to split\n                 the WGS data into small\

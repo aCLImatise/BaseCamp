@@ -2,28 +2,31 @@ version 1.0
 
 task FidoChooseParameters {
   input {
-    Boolean? p
-    Boolean? a
-    Boolean? g
     String? c
-    String graph_file
-    String target_decoy_file
+    Boolean? g
+    Boolean? a
+    Boolean? p
+    File graph_file
+    File target_decoy_file
   }
   command <<<
     FidoChooseParameters \
       ~{graph_file} \
       ~{target_decoy_file} \
-      ~{true="-p" false="" p} \
-      ~{true="-a" false="" a} \
-      ~{true="-g" false="" g} \
-      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if (g) then "-g" else ""} \
+      ~{if (a) then "-a" else ""} \
+      ~{if (p) then "-p" else ""}
   >>>
   parameter_meta {
-    p: ""
-    a: ""
-    g: ""
     c: ""
+    g: ""
+    a: ""
+    p: ""
     graph_file: ""
     target_decoy_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

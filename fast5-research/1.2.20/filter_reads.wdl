@@ -4,4 +4,7 @@ task FilterReads {
   command <<<
     filter_reads
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../rsem_synthesis_reference_transcripts.cwl
 inputs:
-- id: synthesis_ref
+- id: in_synthesis_ref
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: refname
+- id: in_refname
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: minimum_length
+- id: in_minimum_length
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 2
-- id: quiet
+- id: in_quiet
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: has_mapping_file
+- id: in_has_mapping_file
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - rsem-synthesis-reference-transcripts

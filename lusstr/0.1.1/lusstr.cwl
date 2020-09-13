@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../lusstr.cwl
 inputs:
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-- id: sub_cmd
+- id: in_sub_cmd
   doc: annotate, format
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - lusstr

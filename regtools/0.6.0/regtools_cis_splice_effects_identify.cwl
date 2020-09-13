@@ -1,104 +1,122 @@
 class: CommandLineTool
 id: ../../../regtools_cis_splice_effects_identify.cwl
 inputs:
-- id: output_file_containing_aberrant_splice_junctions
+- id: in_output_file_containing_aberrant_splice_junctions
   doc: Output file containing the aberrant splice junctions with annotations. [STDOUT]
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: output_file_containing_variants
+- id: in_output_file_containing_variants
   doc: Output file containing variants annotated as splice relevant (VCF format).
-  type: string
+  type: File
   inputBinding:
     prefix: -v
-- id: output_file_containing_aberrant_junctions_bed
+- id: in_output_file_containing_aberrant_junctions_bed
   doc: Output file containing the aberrant junctions in BED12 format.
-  type: string
+  type: File
   inputBinding:
     prefix: -j
-- id: strand_specificity_rna
-  doc: Strand specificity of RNA library preparation  (0 = unstranded, 1 = first-strand/RF,
-    2, = second-strand/FR). REQUIRED
+- id: in_strand_specificity_rna
+  doc: "Strand specificity of RNA library preparation\n(0 = unstranded, 1 = first-strand/RF,\
+    \ 2, = second-strand/FR). REQUIRED"
   type: long
   inputBinding:
     prefix: -s
-- id: tag_used_label
+- id: in_tag_used_label
   doc: Tag used in bam to label strand. [XS]
   type: string
   inputBinding:
     prefix: -t
-- id: minimum_anchor_length
-  doc: Minimum anchor length. Junctions which satisfy a minimum  anchor length on
-    both sides are reported. [8]
+- id: in_minimum_anchor_length
+  doc: "Minimum anchor length. Junctions which satisfy a minimum\nanchor length on\
+    \ both sides are reported. [8]"
   type: long
   inputBinding:
     prefix: -a
-- id: minimum_intron_length
+- id: in_minimum_intron_length
   doc: Minimum intron length. [70]
   type: long
   inputBinding:
     prefix: -m
-- id: maximum_intron_length
+- id: in_maximum_intron_length
   doc: Maximum intron length. [500000]
   type: long
   inputBinding:
     prefix: -M
-- id: window_size_identify
-  doc: Window size in b.p to identify splicing events in. The tool identifies events
-    in variant.start +/- w basepairs. Default behaviour is to look at the window between
-    previous and next exons.
+- id: in_window_size_identify
+  doc: "Window size in b.p to identify splicing events in.\nThe tool identifies events\
+    \ in variant.start +/- w basepairs.\nDefault behaviour is to look at the window\
+    \ between previous and next exons."
   type: long
   inputBinding:
     prefix: -w
-- id: maximum_distance_exonic
-  doc: Maximum distance from the start/end of an exon  to annotate a variant as relevant
-    to splicing, the variant  is in exonic space, i.e a coding variant. [3]
+- id: in_maximum_distance_exonic
+  doc: "Maximum distance from the start/end of an exon\nto annotate a variant as relevant\
+    \ to splicing, the variant\nis in exonic space, i.e a coding variant. [3]"
   type: long
   inputBinding:
     prefix: -e
-- id: maximum_distance_intronic
-  doc: Maximum distance from the start/end of an exon  to annotate a variant as relevant
-    to splicing, the variant  is in intronic space. [2]
+- id: in_maximum_distance_intronic
+  doc: "Maximum distance from the start/end of an exon\nto annotate a variant as relevant\
+    \ to splicing, the variant\nis in intronic space. [2]"
   type: long
   inputBinding:
     prefix: -i
-- id: annotate_variants_intronic
+- id: in_annotate_variants_intronic
   doc: Annotate variants in intronic space within a transcript(not to be used with
     -i).
   type: boolean
   inputBinding:
     prefix: -I
-- id: annotate_variants_exonic
+- id: in_annotate_variants_used
   doc: Annotate variants in exonic space within a transcript(not to be used with -e).
   type: boolean
   inputBinding:
     prefix: -E
-- id: skip_single_transcripts
+- id: in_skip_single_transcripts
   doc: Don't skip single exon transcripts.
   type: boolean
   inputBinding:
     prefix: -S
-- id: variants_dot_vcf
+- id: in_variants_dot_vcf
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: alignments_dot_bam
+- id: in_alignments_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: ref_dot_fa
+- id: in_ref_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: annotations_dot_gtf
+- id: in_annotations_dot_gtf
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_containing_aberrant_splice_junctions
+  doc: Output file containing the aberrant splice junctions with annotations. [STDOUT]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_containing_aberrant_splice_junctions)
+- id: out_output_file_containing_variants
+  doc: Output file containing variants annotated as splice relevant (VCF format).
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_containing_variants)
+- id: out_output_file_containing_aberrant_junctions_bed
+  doc: Output file containing the aberrant junctions in BED12 format.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_containing_aberrant_junctions_bed)
 cwlVersion: v1.1
 baseCommand:
 - regtools

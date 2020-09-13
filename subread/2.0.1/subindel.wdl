@@ -2,19 +2,22 @@ version 1.0
 
 task Subindel {
   input {
-    String? i
-    String? g
     String? o
+    String? g
+    File? i
   }
   command <<<
     subindel \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
-    g: ""
     o: ""
+    g: ""
+    i: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

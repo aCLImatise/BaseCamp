@@ -2,37 +2,42 @@ version 1.0
 
 task ChadoExportGaf {
   input {
+    String? a
     Boolean? verbose
-    String? config
+    File? config
     Boolean? use_password
-    String? output_file
+    File? output_file
     String? abbreviation
-    String? database_authority
-    String? annotation_level
+    File? database_authority
+    File? annotation_level
     Boolean? include_obsolete
-    String dbname
   }
   command <<<
     chado export gaf \
-      ~{dbname} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if defined(a) then ("-A " +  '"' + a + '"') else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
-      ~{true="--use_password" false="" use_password} \
+      ~{if (use_password) then "--use_password" else ""} \
       ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""} \
       ~{if defined(abbreviation) then ("--abbreviation " +  '"' + abbreviation + '"') else ""} \
       ~{if defined(database_authority) then ("--database_authority " +  '"' + database_authority + '"') else ""} \
       ~{if defined(annotation_level) then ("--annotation_level " +  '"' + annotation_level + '"') else ""} \
-      ~{true="--include_obsolete" false="" include_obsolete}
+      ~{if (include_obsolete) then "--include_obsolete" else ""}
   >>>
   parameter_meta {
+    a: ""
     verbose: "verbose mode"
     config: "YAML file containing connection details"
     use_password: "connect with password (default: no password)"
     output_file: "GAF output file"
     abbreviation: "abbreviation/short name of the organism"
-    database_authority: "database from which the file is created, e.g. 'UniProtKB'"
-    annotation_level: "level to which GO terms are related in the output file (default: same level as in the database)"
+    database_authority: "database from which the file is created, e.g.\\n'UniProtKB'"
+    annotation_level: "level to which GO terms are related in the output file\\n(default: same level as in the database)"
     include_obsolete: "export all features, including obsoletes"
-    dbname: "name of the database"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+    File out_annotation_level = "${in_annotation_level}"
   }
 }

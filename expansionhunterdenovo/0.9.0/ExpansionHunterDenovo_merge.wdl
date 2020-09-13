@@ -2,11 +2,11 @@ version 1.0
 
 task ExpansionHunterDenovoMerge {
   input {
-    String? reference
+    File? reference
     String? manifest
     String? output_prefix
-    String? min_unit_len
-    String? max_unit_len
+    Int? min_unit_len
+    Int? max_unit_len
   }
   command <<<
     ExpansionHunterDenovo merge \
@@ -22,5 +22,8 @@ task ExpansionHunterDenovoMerge {
     output_prefix: "Prefix for the output files"
     min_unit_len: "(=2)  Shortest repeat unit to consider"
     max_unit_len: "(=20) Longest repeat unit to consider"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

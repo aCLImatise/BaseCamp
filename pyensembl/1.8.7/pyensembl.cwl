@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../pyensembl.cwl
 inputs:
-- id: overwrite
-  doc: Force download and indexing even if files already exist locally
+- id: in_overwrite
+  doc: "Force download and indexing even if files already\nexist locally\n"
   type: boolean
   inputBinding:
     prefix: --overwrite
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pyensembl

@@ -2,12 +2,12 @@ version 1.0
 
 task Yanagiba {
   input {
-    String? in_file
-    String? summary_file
-    String? outfile
+    File? in_file
+    File? summary_file
+    File? outfile
     Int? min_len
     Int? min_qual
-    String? head_trim
+    Int? head_trim
     String? tail_trim
     Boolean? force_unique
   }
@@ -20,7 +20,7 @@ task Yanagiba {
       ~{if defined(min_qual) then ("--minqual " +  '"' + min_qual + '"') else ""} \
       ~{if defined(head_trim) then ("--headtrim " +  '"' + head_trim + '"') else ""} \
       ~{if defined(tail_trim) then ("--tailtrim " +  '"' + tail_trim + '"') else ""} \
-      ~{true="--forceunique" false="" force_unique}
+      ~{if (force_unique) then "--forceunique" else ""}
   >>>
   parameter_meta {
     in_file: "Input fastq.gz file."
@@ -30,6 +30,9 @@ task Yanagiba {
     min_qual: "Minimum quality score to retain a read. Default: 10"
     head_trim: "Trim x bases from begining of each read. Default: 0"
     tail_trim: "Trim x bases from end of each read. Default: None"
-    force_unique: "Enforce unique reads. Only store first instance of a read from fastq input where readID occurs multiple times."
+    force_unique: "Enforce unique reads. Only store first instance of a\\nread from fastq input where readID occurs multiple\\ntimes.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

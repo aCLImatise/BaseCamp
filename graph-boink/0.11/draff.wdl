@@ -4,4 +4,7 @@ task Draff {
   command <<<
     draff
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

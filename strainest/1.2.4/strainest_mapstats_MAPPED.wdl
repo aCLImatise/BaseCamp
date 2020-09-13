@@ -11,4 +11,7 @@ task StrainestMapstatsMAPPED {
   parameter_meta {
     examples: "strainest mapstats mapped.fna stats"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

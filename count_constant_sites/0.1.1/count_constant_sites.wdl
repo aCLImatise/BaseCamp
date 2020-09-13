@@ -1,14 +1,10 @@
 version 1.0
 
 task CountConstantSites {
-  input {
-    String fast_a_file
-  }
   command <<<
-    count_constant_sites \
-      ~{fast_a_file}
+    count_constant_sites
   >>>
-  parameter_meta {
-    fast_a_file: ""
+  output {
+    File out_stdout = stdout()
   }
 }

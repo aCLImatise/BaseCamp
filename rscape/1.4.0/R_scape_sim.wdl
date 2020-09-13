@@ -1,6 +1,6 @@
 version 1.0
 
-task RScapeSim {
+task Rscapesim {
   input {
     Boolean? _be_verbose
     Boolean? dna
@@ -9,16 +9,16 @@ task RScapeSim {
     Boolean? naive
     Boolean? rn_ass
     Boolean? potts
-    String? potts_file
-    String? cnt_maxd
+    File? potts_file
+    Int? cnt_maxd
     String? pdb_file
-    String? pott_sigma
+    Int? pott_sigma
     Boolean? ptp_gauss
     Boolean? ptp_file
-    String? _length_alignment
-    String? number_sequences_simulated
-    String? abl
-    String? at_bl
+    Int? _length_alignment
+    Int? number_sequences_simulated
+    Int? abl
+    Int? at_bl
     Boolean? no_indels
     Boolean? eq_branch
     Boolean? star
@@ -27,10 +27,10 @@ task RScapeSim {
     Boolean? sim
     String? uses_q
     String? evo_model
-    String? ribo_file
+    File? ribo_file
     String? mx
-    String? outdir
-    String? send_output_file
+    Directory? outdir
+    File? send_output_file
     String? in_format
     Boolean? one_msa
     String? filter_seqs_xseqcons
@@ -45,31 +45,31 @@ task RScapeSim {
     String msa
   }
   command <<<
-    R-scape-sim \
+    R_scape_sim \
       ~{msa} \
-      ~{true="-v" false="" _be_verbose} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--amino" false="" amino} \
-      ~{true="--naive" false="" naive} \
-      ~{true="--rnass" false="" rn_ass} \
-      ~{true="--potts" false="" potts} \
+      ~{if (_be_verbose) then "-v" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (amino) then "--amino" else ""} \
+      ~{if (naive) then "--naive" else ""} \
+      ~{if (rn_ass) then "--rnass" else ""} \
+      ~{if (potts) then "--potts" else ""} \
       ~{if defined(potts_file) then ("--pottsfile " +  '"' + potts_file + '"') else ""} \
       ~{if defined(cnt_maxd) then ("--cntmaxD " +  '"' + cnt_maxd + '"') else ""} \
       ~{if defined(pdb_file) then ("--pdbfile " +  '"' + pdb_file + '"') else ""} \
       ~{if defined(pott_sigma) then ("--pottsigma " +  '"' + pott_sigma + '"') else ""} \
-      ~{true="--ptpgauss" false="" ptp_gauss} \
-      ~{true="--ptpfile" false="" ptp_file} \
+      ~{if (ptp_gauss) then "--ptpgauss" else ""} \
+      ~{if (ptp_file) then "--ptpfile" else ""} \
       ~{if defined(_length_alignment) then ("-L " +  '"' + _length_alignment + '"') else ""} \
       ~{if defined(number_sequences_simulated) then ("-N " +  '"' + number_sequences_simulated + '"') else ""} \
       ~{if defined(abl) then ("--abl " +  '"' + abl + '"') else ""} \
       ~{if defined(at_bl) then ("--atbl " +  '"' + at_bl + '"') else ""} \
-      ~{true="--noindels" false="" no_indels} \
-      ~{true="--eqbranch" false="" eq_branch} \
-      ~{true="--star" false="" star} \
-      ~{true="--rand" false="" rand} \
-      ~{true="--given" false="" given} \
-      ~{true="--sim" false="" sim} \
+      ~{if (no_indels) then "--noindels" else ""} \
+      ~{if (eq_branch) then "--eqbranch" else ""} \
+      ~{if (star) then "--star" else ""} \
+      ~{if (rand) then "--rand" else ""} \
+      ~{if (given) then "--given" else ""} \
+      ~{if (sim) then "--sim" else ""} \
       ~{if defined(uses_q) then ("--usesq " +  '"' + uses_q + '"') else ""} \
       ~{if defined(evo_model) then ("--evomodel " +  '"' + evo_model + '"') else ""} \
       ~{if defined(ribo_file) then ("--ribofile " +  '"' + ribo_file + '"') else ""} \
@@ -77,7 +77,7 @@ task RScapeSim {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--onemsa" false="" one_msa} \
+      ~{if (one_msa) then "--onemsa" else ""} \
       ~{if defined(filter_seqs_xseqcons) then ("-F " +  '"' + filter_seqs_xseqcons + '"') else ""} \
       ~{if defined(var_32) then ("-I " +  '"' + var_32 + '"') else ""} \
       ~{if defined(var_33) then ("-i " +  '"' + var_33 + '"') else ""} \
@@ -86,7 +86,7 @@ task RScapeSim {
       ~{if defined(max_id) then ("--maxid " +  '"' + max_id + '"') else ""} \
       ~{if defined(to_l) then ("--tol " +  '"' + to_l + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     _be_verbose: ": be verbose"
@@ -130,5 +130,10 @@ task RScapeSim {
     seed: ": set RNG seed to <n>"
     options: ""
     msa: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    File out_send_output_file = "${in_send_output_file}"
   }
 }

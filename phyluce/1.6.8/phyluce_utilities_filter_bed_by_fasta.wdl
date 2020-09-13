@@ -2,9 +2,9 @@ version 1.0
 
 task PhyluceUtilitiesFilterBedByFasta {
   input {
-    String? bed
-    String? fast_a
-    String? output_bed_file
+    File? bed
+    File? fast_a
+    File? output_bed_file
   }
   command <<<
     phyluce_utilities_filter_bed_by_fasta \
@@ -16,5 +16,9 @@ task PhyluceUtilitiesFilterBedByFasta {
     bed: "The BED file to filter."
     fast_a: "The FASTA file to use as a filter."
     output_bed_file: "The output BED file"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_bed_file = "${in_output_bed_file}"
   }
 }

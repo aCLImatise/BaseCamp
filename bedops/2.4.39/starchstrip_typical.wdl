@@ -1,13 +1,13 @@
 version 1.0
 
-task StarchstripTypical {
+task Starchstriptypical {
   input {
-    String? include
-    String? exclude
+    File? include
+    File? exclude
     String starch_strip
   }
   command <<<
-    starchstrip-typical \
+    starchstrip_typical \
       ~{starch_strip} \
       ~{if defined(include) then ("--include " +  '"' + include + '"') else ""} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""}
@@ -16,5 +16,8 @@ task StarchstripTypical {
     include: "Include specified chromosomes from <starch-file>."
     exclude: "Exclude specified chromosomes from <starch-file>."
     starch_strip: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -3,26 +3,26 @@ version 1.0
 task Gerpcol {
   input {
     Boolean? verbose_mode
-    String? evolutionary_tree
+    File? evolutionary_tree
     File? alignment_filename
     Boolean? alignment_mfa_format
     String? name_reference_sequence
     Boolean? project_reference_sequence
-    String? trtv_ratio
-    String? tolerance_rate_estimation
-    String? start_at_position
+    Float? trtv_ratio
+    Float? tolerance_rate_estimation
+    Int? start_at_position
     String? tree_neutral_rate
-    String? tree_scaling_factor
+    Float? tree_scaling_factor
     String? suffix_naming_files
   }
   command <<<
     gerpcol \
-      ~{true="-v" false="" verbose_mode} \
+      ~{if (verbose_mode) then "-v" else ""} \
       ~{if defined(evolutionary_tree) then ("-t " +  '"' + evolutionary_tree + '"') else ""} \
       ~{if defined(alignment_filename) then ("-f " +  '"' + alignment_filename + '"') else ""} \
-      ~{true="-a" false="" alignment_mfa_format} \
+      ~{if (alignment_mfa_format) then "-a" else ""} \
       ~{if defined(name_reference_sequence) then ("-e " +  '"' + name_reference_sequence + '"') else ""} \
-      ~{true="-j" false="" project_reference_sequence} \
+      ~{if (project_reference_sequence) then "-j" else ""} \
       ~{if defined(trtv_ratio) then ("-r " +  '"' + trtv_ratio + '"') else ""} \
       ~{if defined(tolerance_rate_estimation) then ("-p " +  '"' + tolerance_rate_estimation + '"') else ""} \
       ~{if defined(start_at_position) then ("-z " +  '"' + start_at_position + '"') else ""} \
@@ -42,6 +42,9 @@ task Gerpcol {
     start_at_position: "start at position 0 [default = false]"
     tree_neutral_rate: "tree neutral rate [default = compute from tree]"
     tree_scaling_factor: "tree scaling factor [default = 1.0]"
-    suffix_naming_files: "suffix for naming output files [default = \".rates\"]"
+    suffix_naming_files: "suffix for naming output files [default = \\\".rates\\\"]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

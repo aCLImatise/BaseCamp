@@ -1,7 +1,10 @@
 version 1.0
 
-task CrosstableGeneIds.py {
+task CrosstableGeneIds {
   command <<<
-    crosstable_gene_ids.py
+    crosstable_gene_ids
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

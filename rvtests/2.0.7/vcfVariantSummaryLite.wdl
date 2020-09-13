@@ -4,4 +4,7 @@ task VcfVariantSummaryLite {
   command <<<
     vcfVariantSummaryLite
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

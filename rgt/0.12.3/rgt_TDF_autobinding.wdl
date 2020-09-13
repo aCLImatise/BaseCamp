@@ -8,16 +8,19 @@ task RgtTDFAutobinding {
     Boolean? abo
   }
   command <<<
-    rgt-TDF autobinding \
-      ~{true="-i" false="" input_fasta_file} \
-      ~{true="-l" false="" define_minimum_length} \
-      ~{true="-e" false="" set_maximal_errorrate} \
-      ~{true="-abo" false="" abo}
+    rgt_TDF autobinding \
+      ~{if (input_fasta_file) then "-i" else ""} \
+      ~{if (define_minimum_length) then "-l" else ""} \
+      ~{if (set_maximal_errorrate) then "-e" else ""} \
+      ~{if (abo) then "-abo" else ""}
   >>>
   parameter_meta {
     input_fasta_file: "Input FASTA file of the whole genome"
     define_minimum_length: "[Triplexes] Define the minimum length of triplex (default: 20)"
-    set_maximal_errorrate: "[Triplexes] Set the maximal error-rate in % tolerated (default: 20)"
-    abo: "[Triplexes] Autobinding offset. Maximum offset between autobinding regions (must be positive, >= 0), e.g., 1 for regions to be at least adjacent, 2 if there can be 1 bp space between segments, etc. (default: 5)"
+    set_maximal_errorrate: "[Triplexes] Set the maximal error-rate in % tolerated (default:\\n20)"
+    abo: "[Triplexes] Autobinding offset. Maximum offset between\\nautobinding regions (must be positive, >= 0), e.g., 1 for\\nregions to be at least adjacent, 2 if there can be 1 bp space\\nbetween segments, etc. (default: 5)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

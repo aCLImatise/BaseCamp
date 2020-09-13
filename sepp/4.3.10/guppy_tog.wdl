@@ -18,13 +18,13 @@ task GuppyTog {
       ~{tog} \
       ~{place_file} \
       ~{s} \
-      ~{true="--pp" false="" pp} \
-      ~{true="-o" false="" specify_filename_write} \
-      ~{true="--out-dir" false="" out_dir} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="--xml" false="" xml} \
-      ~{true="--node-numbers" false="" node_numbers} \
-      ~{true="--help" false="" help}
+      ~{if (pp) then "--pp" else ""} \
+      ~{if (specify_filename_write) then "-o" else ""} \
+      ~{if (out_dir) then "--out-dir" else ""} \
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (xml) then "--xml" else ""} \
+      ~{if (node_numbers) then "--node-numbers" else ""} \
+      ~{if (help) then "--help" else ""}
   >>>
   parameter_meta {
     pp: "Use posterior probability for the weight."
@@ -37,5 +37,8 @@ task GuppyTog {
     tog: ""
     place_file: ""
     s: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

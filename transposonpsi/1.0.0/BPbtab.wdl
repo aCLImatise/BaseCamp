@@ -4,4 +4,7 @@ task BPbtab {
   command <<<
     BPbtab
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

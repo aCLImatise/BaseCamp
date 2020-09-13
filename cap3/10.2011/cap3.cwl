@@ -1,127 +1,135 @@
 class: CommandLineTool
 id: ../../../cap3.cwl
 inputs:
-- id: n_specify_size
+- id: in_n_specify_size
   doc: N  specify band expansion size N > 10 (20)
   type: boolean
   inputBinding:
     prefix: -a
-- id: n_specify_differences
+- id: in_n_specify_differences
   doc: N  specify base quality cutoff for differences N > 15 (20)
   type: boolean
   inputBinding:
     prefix: -b
-- id: n_clipping_n
+- id: in_n_clipping_n
   doc: N  specify base quality cutoff for clipping N > 5 (12)
   type: boolean
   inputBinding:
     prefix: -c
-- id: n_specify_sum
+- id: in_n_specify_sum
   doc: N  specify max qscore sum at differences N > 20 (200)
   type: boolean
   inputBinding:
     prefix: -d
-- id: n_specify_clearance
+- id: in_n_specify_clearance
   doc: N  specify clearance between no. of diff N > 10 (30)
   type: boolean
   inputBinding:
     prefix: -e
-- id: n_specify_length
+- id: in_n_specify_length
   doc: N  specify max gap length in any overlap N > 1 (20)
   type: boolean
   inputBinding:
     prefix: -f
-- id: n_specify_gap
+- id: in_n_specify_gap
   doc: N  specify gap penalty factor N > 0 (6)
   type: boolean
   inputBinding:
     prefix: -g
-- id: n_specify_score_cutoff
+- id: in_n_specify_pair_cutoff
   doc: N  specify segment pair score cutoff N > 20 (40)
   type: boolean
   inputBinding:
     prefix: -i
-- id: n_specify_chain
+- id: in_n_specify_chain_cutoff
   doc: N  specify chain score cutoff N > 30 (80)
   type: boolean
   inputBinding:
     prefix: -j
-- id: n_specify_end
+- id: in_n_specify_flag
   doc: N  specify end clipping flag N >= 0 (1)
   type: boolean
   inputBinding:
     prefix: -k
-- id: n_specify_match
+- id: in_n_specify_score_factor
   doc: N  specify match score factor N > 0 (2)
   type: boolean
   inputBinding:
     prefix: -m
-- id: n_specify_factor
+- id: in_n_specify_mismatch_factor
   doc: N  specify mismatch score factor N < 0 (-5)
   type: boolean
   inputBinding:
     prefix: -n
-- id: n_specify_length_cutoff
+- id: in_n_specify_length_cutoff
   doc: N  specify overlap length cutoff > 15 (40)
   type: boolean
   inputBinding:
     prefix: -o
-- id: n_specify_percent_cutoff
+- id: in_n_specify_percent_cutoff
   doc: N  specify overlap percent identity cutoff N > 65 (90)
   type: boolean
   inputBinding:
     prefix: -p
-- id: n_specify_value
+- id: in_n_specify_value
   doc: N  specify reverse orientation value N >= 0 (1)
   type: boolean
   inputBinding:
     prefix: -r
-- id: n_specify_cutoff_n
+- id: in_n_specify_overlap
   doc: N  specify overlap similarity score cutoff N > 250 (900)
   type: boolean
   inputBinding:
     prefix: -s
-- id: n_specify_matches
+- id: in_n_specify_number
   doc: N  specify max number of word matches N > 30 (300)
   type: boolean
   inputBinding:
     prefix: -t
-- id: n_specify_correction
+- id: in_n_correction_n
   doc: N  specify min number of constraints for correction N > 0 (3)
   type: boolean
   inputBinding:
     prefix: -u
-- id: n_linking_n
+- id: in_n_linking_n
   doc: N  specify min number of constraints for linking N > 0 (2)
   type: boolean
   inputBinding:
     prefix: -v
-- id: n_specify_file
+- id: in_n_specify_name
   doc: N  specify file name for clipping information (none)
   type: boolean
   inputBinding:
     prefix: -w
-- id: n_specify_prefix
+- id: in_n_specify_string
   doc: N  specify prefix string for output file names (cap)
-  type: boolean
+  type: File
   inputBinding:
     prefix: -x
-- id: n_specify_range_n
+- id: in_n_specify_range
   doc: N  specify clipping range N > 5 (100)
   type: boolean
   inputBinding:
     prefix: -y
-- id: n_specify_min
+- id: in_n_specify_min
   doc: N  specify min no. of good reads at clip pos N > 0 (3)
   type: boolean
   inputBinding:
     prefix: -z
-- id: file_of_reads
+- id: in_file_of_reads
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_n_specify_string
+  doc: N  specify prefix string for output file names (cap)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_n_specify_string)
 cwlVersion: v1.1
 baseCommand:
 - cap3

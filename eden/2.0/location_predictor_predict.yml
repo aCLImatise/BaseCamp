@@ -1,4 +1,7 @@
 &id002 !Command
+command:
+- location_predictor
+- predict
 positional: []
 named:
 - !Flag
@@ -26,17 +29,16 @@ named:
     name: GENE_DOMAIN_SCORE_FNAME
   optional: true
 - !Flag
-  description: 'Path to output directory. (default: out)'
+  description: "Path to output directory. (default: out)\n"
   synonyms:
   - -o
   - --output-dir
   args: !SimpleFlagArg
     name: OUTPUT_DIR_PATH
   optional: true
-command:
-- location_predictor
-- predict
 parent: &id001 !Command
+  command:
+  - location_predictor
   positional: []
   named:
   - !Flag
@@ -53,11 +55,12 @@ parent: &id001 !Command
     - --no-logging
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - location_predictor
   parent:
   subcommands:
   - !Command
+    command:
+    - location_predictor
+    - fit
     positional: []
     named:
     - !Flag
@@ -148,17 +151,15 @@ parent: &id001 !Command
         name: MIN_SUBARRAY_SIZE
       optional: true
     - !Flag
-      description: '... (default: 15)'
+      description: "... (default: 15)\n"
       synonyms:
       - --max-subarray-size
       args: !SimpleFlagArg
         name: MAX_SUBARRAY_SIZE
       optional: true
-    command:
-    - location_predictor
-    - fit
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -195,6 +196,7 @@ parent: &id001 !Command
     generated_using: &id003
     - --help
   - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -223,9 +225,9 @@ parent: &id001 !Command
     Author: Fabrizio Costa\nCopyright: 2015\nLicense: GPL\nMaintainer: Fabrizio Costa\n\
     Email: costa@informatik.uni-freiburg.de\nStatus: Production\nVersion: 0.2.1\n\n\
     Cite:\n"
-  generated_using:
-  - -h
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../etraining.cwl
 inputs:
-- id: species
+- id: in_species
   doc: ''
   type: string
   inputBinding:
     prefix: --species
-- id: train_filename
+- id: in_train_filename
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - etraining

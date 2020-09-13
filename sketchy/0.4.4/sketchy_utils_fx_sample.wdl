@@ -1,20 +1,20 @@
 version 1.0
 
-task SketchyUtilsFxSample {
+task SketchyUtilsFxsample {
   input {
     File? fast_x
-    String? output_fast_file
+    File? output_fast_file
     Int? sample
     Boolean? replacement
     Boolean? seed
   }
   command <<<
-    sketchy utils fx-sample \
+    sketchy utils fx_sample \
       ~{if defined(fast_x) then ("--fastx " +  '"' + fast_x + '"') else ""} \
       ~{if defined(output_fast_file) then ("--output " +  '"' + output_fast_file + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
-      ~{true="--replacement" false="" replacement} \
-      ~{true="--seed" false="" seed}
+      ~{if (replacement) then "--replacement" else ""} \
+      ~{if (seed) then "--seed" else ""}
   >>>
   parameter_meta {
     fast_x: "Path to Fast{a,q} input file.  [required]"
@@ -22,5 +22,9 @@ task SketchyUtilsFxSample {
     sample: "Sample size in number of reads [1000]."
     replacement: "Sample with replacement [false]."
     seed: "Seed for sampling function [none]."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_fast_file = "${in_output_fast_file}"
   }
 }

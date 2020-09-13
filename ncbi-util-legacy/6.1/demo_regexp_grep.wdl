@@ -11,20 +11,22 @@ task DemoRegexpGrep {
     Boolean? invert_match
     Boolean? line_regex
     Boolean? line_regexp
-    Boolean? filename__filefilename
+    Boolean? filename__filefilenameread
+    String pc_regrep
   }
   command <<<
     demo_regexp_grep \
-      ~{true="--count" false="" count} \
-      ~{true="--ignore-case" false="" ignore_case} \
-      ~{true="--files-with-matches" false="" files_with_matches} \
-      ~{true="--line-number" false="" line_number} \
-      ~{true="--recursive" false="" recursive} \
-      ~{true="--no-messages" false="" no_messages} \
-      ~{true="--invert-match" false="" invert_match} \
-      ~{true="--line-regex" false="" line_regex} \
-      ~{true="--line-regexp" false="" line_regexp} \
-      ~{true="-f" false="" filename__filefilename}
+      ~{pc_regrep} \
+      ~{if (count) then "--count" else ""} \
+      ~{if (ignore_case) then "--ignore-case" else ""} \
+      ~{if (files_with_matches) then "--files-with-matches" else ""} \
+      ~{if (line_number) then "--line-number" else ""} \
+      ~{if (recursive) then "--recursive" else ""} \
+      ~{if (no_messages) then "--no-messages" else ""} \
+      ~{if (invert_match) then "--invert-match" else ""} \
+      ~{if (line_regex) then "--line-regex" else ""} \
+      ~{if (line_regexp) then "--line-regexp" else ""} \
+      ~{if (filename__filefilenameread) then "-f" else ""}
   >>>
   parameter_meta {
     count: "print only a count of matching lines per FILE"
@@ -36,6 +38,10 @@ task DemoRegexpGrep {
     invert_match: "select non-matching lines"
     line_regex: "force PATTERN to match only whole lines"
     line_regexp: "force PATTERN to match only whole lines"
-    filename__filefilename: "<filename>  or  --file=<filename> Read patterns from <filename> instead of using a command line option. Trailing white space is removed; blanks lines are ignored. There is a maximum of 100 patterns."
+    filename__filefilenameread: "<filename>  or  --file=<filename>\\nRead patterns from <filename> instead of using a command line option.\\nTrailing white space is removed; blanks lines are ignored.\\nThere is a maximum of 100 patterns."
+    pc_regrep: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,212 +1,220 @@
 class: CommandLineTool
 id: ../../../phmmer.cwl
 inputs:
-- id: direct_output_file
+- id: in_direct_output_file
   doc: ': direct output to file <f>, not stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: save_multiple_alignment
+- id: in_save_multiple_alignment
   doc: ': save multiple alignment of hits to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: -A
-- id: tbl_out
+- id: in_tbl_out
   doc: ': save parseable table of per-sequence hits to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --tblout
-- id: dom_tbl_out
+- id: in_dom_tbl_out
   doc: ': save parseable table of per-domain hits to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --domtblout
-- id: pfam_tbl_out
+- id: in_pfam_tbl_out
   doc: ': save table of hits and domains to file, in Pfam format <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --pfamtblout
-- id: acc
+- id: in_acc
   doc: ': prefer accessions over names in output'
   type: boolean
   inputBinding:
     prefix: --acc
-- id: no_ali
+- id: in_no_ali
   doc: ": don't output alignments, so output is smaller"
   type: boolean
   inputBinding:
     prefix: --noali
-- id: no_text_w
+- id: in_no_text_w
   doc: ': unlimit ASCII text output line width'
   type: boolean
   inputBinding:
     prefix: --notextw
-- id: text_w
+- id: in_text_w
   doc: ': set max width of ASCII text output lines  [120]  (n>=120)'
-  type: string
+  type: long
   inputBinding:
     prefix: --textw
-- id: popen
+- id: in_popen
   doc: ': gap open probability'
   type: string
   inputBinding:
     prefix: --popen
-- id: p_extend
+- id: in_p_extend
   doc: ': gap extend probability'
   type: string
   inputBinding:
     prefix: --pextend
-- id: mx
+- id: in_mx
   doc: ': substitution score matrix choice (of some built-in matrices)'
   type: string
   inputBinding:
     prefix: --mx
-- id: mx_file
+- id: in_mx_file
   doc: ': read substitution score matrix from file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --mxfile
-- id: report_sequences_evalue
+- id: in_report_sequences_evalue_threshold
   doc: ': report sequences <= this E-value threshold in output  [10.0]  (x>0)'
-  type: string
+  type: double
   inputBinding:
     prefix: -E
-- id: report_sequences_threshold
+- id: in_report_sequences_score_threshold
   doc: ': report sequences >= this score threshold in output'
   type: string
   inputBinding:
     prefix: -T
-- id: dome
+- id: in_dome
   doc: ': report domains <= this E-value threshold in output  [10.0]  (x>0)'
-  type: string
+  type: double
   inputBinding:
     prefix: --domE
-- id: do_mt
+- id: in_do_mt
   doc: ': report domains >= this score cutoff in output'
   type: string
   inputBinding:
     prefix: --domT
-- id: ince
+- id: in_ince
   doc: ': consider sequences <= this E-value threshold as significant'
   type: string
   inputBinding:
     prefix: --incE
-- id: in_ct
+- id: in_in_ct
   doc: ': consider sequences >= this score threshold as significant'
   type: string
   inputBinding:
     prefix: --incT
-- id: inc_dome
+- id: in_inc_dome
   doc: ': consider domains <= this E-value threshold as significant'
   type: string
   inputBinding:
     prefix: --incdomE
-- id: inc_do_mt
+- id: in_inc_do_mt
   doc: ': consider domains >= this score threshold as significant'
   type: string
   inputBinding:
     prefix: --incdomT
-- id: max
+- id: in_max
   doc: ': Turn all heuristic filters off (less speed, more power)'
   type: boolean
   inputBinding:
     prefix: --max
-- id: fone
+- id: in_fone
   doc: ': Stage 1 (MSV) threshold: promote hits w/ P <= F1  [0.02]'
-  type: string
+  type: long
   inputBinding:
     prefix: --F1
-- id: f_two
+- id: in_f_two
   doc: ': Stage 2 (Vit) threshold: promote hits w/ P <= F2  [1e-3]'
-  type: string
+  type: long
   inputBinding:
     prefix: --F2
-- id: f_three
+- id: in_f_three
   doc: ': Stage 3 (Fwd) threshold: promote hits w/ P <= F3  [1e-5]'
-  type: string
+  type: long
   inputBinding:
     prefix: --F3
-- id: no_bias
+- id: in_no_bias
   doc: ': turn off composition bias filter'
   type: boolean
   inputBinding:
     prefix: --nobias
-- id: eml
+- id: in_eml
   doc: ': length of sequences for MSV Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EmL
-- id: emn
+- id: in_emn
   doc: ': number of sequences for MSV Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EmN
-- id: evl
+- id: in_evl
   doc: ': length of sequences for Viterbi Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EvL
-- id: evn
+- id: in_evn
   doc: ': number of sequences for Viterbi Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EvN
-- id: efl
+- id: in_efl
   doc: ': length of sequences for Forward exp tail tau fit  [100]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EfL
-- id: efn
+- id: in_efn
   doc: ': number of sequences for Forward exp tail tau fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EfN
-- id: eft
+- id: in_eft
   doc: ': tail mass for Forward exponential tail tau fit  [0.04]  (0<x<1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --Eft
-- id: no_null_two
+- id: in_no_null_two
   doc: ': turn off biased composition score corrections'
   type: boolean
   inputBinding:
     prefix: --nonull2
-- id: set_comparisons_done
+- id: in_set_comparisons_done
   doc: ': set # of comparisons done, for E-value calculation'
   type: string
   inputBinding:
     prefix: -Z
-- id: do_mz
+- id: in_do_mz
   doc: ': set # of significant seqs, for domain E-value calculation'
   type: string
   inputBinding:
     prefix: --domZ
-- id: seed
+- id: in_seed
   doc: ': set RNG seed to <n> (if 0: one-time arbitrary seed)  [42]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: q_format
+- id: in_q_format
   doc: ': assert query <seqfile> is in format <s>: no autodetection'
   type: string
   inputBinding:
     prefix: --qformat
-- id: t_format
+- id: in_t_format
   doc: ': assert target <seqdb> is in format <s>>: no autodetection'
   type: string
   inputBinding:
     prefix: --tformat
-- id: cpu
+- id: in_cpu
   doc: ': number of parallel CPU workers to use for multithreads  [2]'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpu
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_direct_output_file
+  doc: ': direct output to file <f>, not stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_direct_output_file)
 cwlVersion: v1.1
 baseCommand:
 - phmmer

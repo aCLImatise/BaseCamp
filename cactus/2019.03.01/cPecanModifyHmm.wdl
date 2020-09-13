@@ -4,4 +4,7 @@ task CPecanModifyHmm {
   command <<<
     cPecanModifyHmm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

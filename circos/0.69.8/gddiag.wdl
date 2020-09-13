@@ -4,4 +4,7 @@ task Gddiag {
   command <<<
     gddiag
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

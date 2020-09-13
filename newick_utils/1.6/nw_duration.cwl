@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../nw_duration.cwl
 inputs:
-- id: bh_il
+- id: in_bh_il
   doc: ''
   type: boolean
   inputBinding:
     prefix: -bhIL
-- id: filename_vertical_line
+- id: in_filename_vertical_line
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nw_duration

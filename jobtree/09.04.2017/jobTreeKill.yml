@@ -1,4 +1,6 @@
 !Command
+command:
+- jobTreeKill
 positional:
 - !Positional
   description: ''
@@ -11,6 +13,21 @@ positional:
   name: more
   optional: true
 named:
+- !Flag
+  description: "Path to where temporary directory containing all temp\nfiles are created,\
+    \ by default uses the current working\ndirectory as the base."
+  synonyms:
+  - --tempDirRoot
+  args: !SimpleFlagArg
+    name: TEMPDIRROOT
+  optional: true
+- !Flag
+  description: Directory containing the job tree to kill
+  synonyms:
+  - --jobTree
+  args: !SimpleFlagArg
+    name: JOBTREE
+  optional: true
 - !Flag
   description: Turn off logging. (default is CRITICAL)
   synonyms:
@@ -30,7 +47,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Log at level (may be either OFF/INFO/DEBUG/CRITICAL). (default is CRITICAL)
+  description: "Log at level (may be either OFF/INFO/DEBUG/CRITICAL).\n(default is\
+    \ CRITICAL)"
   synonyms:
   - --logLevel
   args: !SimpleFlagArg
@@ -44,24 +62,28 @@ named:
     name: LOGFILE
   optional: true
 - !Flag
-  description: Turn on rotating logging, which prevents log files getting too big.
+  description: "Turn on rotating logging, which prevents log files\ngetting too big.\n"
   synonyms:
   - --rotatingLogging
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --jobTree
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- jobTreeKill
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: jobTreeKill [--jobTree] JOB_TREE_DIR [more options]\n\nOptions:\n\
   \  --version             show program's version number and exit\n  -h, --help  \
   \          show this help message and exit\n  --tempDirRoot=TEMPDIRROOT\n      \

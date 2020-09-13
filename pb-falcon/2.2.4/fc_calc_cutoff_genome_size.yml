@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- fc_calc_cutoff
+- genome_size
 positional:
 - !Positional
   description: ''
@@ -13,10 +16,9 @@ named:
   args: !SimpleFlagArg
     name: COVERAGE
   optional: true
-command:
-- fc_calc_cutoff
-- genome_size
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - fc_calc_cutoff
   positional: []
   named:
   - !Flag
@@ -26,12 +28,12 @@ parent: &id002 !Command
     args: !SimpleFlagArg
       name: COVERAGE
     optional: true
-  command:
-  - fc_calc_cutoff
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - fc_calc_cutoff
+    - capture
     positional:
     - !Positional
       description: ''
@@ -56,11 +58,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: COVERAGE
       optional: true
-    command:
-    - fc_calc_cutoff
-    - capture
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -74,6 +74,8 @@ parent: &id002 !Command
       \ error: argument genome_size: invalid int value: 'capture'\n"
     generated_using: &id003
     - --help
+  - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -97,6 +99,7 @@ parent: &id002 !Command
     \ write errors there in addition to stderr.\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

@@ -4,4 +4,7 @@ task SelectLongestReads {
   command <<<
     SelectLongestReads
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

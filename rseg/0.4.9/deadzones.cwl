@@ -1,42 +1,50 @@
 class: CommandLineTool
 id: ../../../deadzones.cwl
 inputs:
-- id: output
-  doc: 'Name of output file (default: stdout) '
-  type: boolean
+- id: in_output
+  doc: 'Name of output file (default: stdout)'
+  type: File
   inputBinding:
     prefix: -output
-- id: km_er
-  doc: 'Width of k-mers '
+- id: in_km_er
+  doc: Width of k-mers
   type: boolean
   inputBinding:
     prefix: -kmer
-- id: prefix
-  doc: 'prefix length (default 5) '
+- id: in_prefix
+  doc: prefix length (default 5)
   type: boolean
   inputBinding:
     prefix: -prefix
-- id: suffix
-  doc: 'suffix of FASTA files (assumes -c indicates dir) '
+- id: in_suffix
+  doc: suffix of FASTA files (assumes -c indicates dir)
   type: boolean
   inputBinding:
     prefix: -suffix
-- id: verbose
-  doc: 'print more run information '
+- id: in_verbose
+  doc: print more run information
   type: boolean
   inputBinding:
     prefix: -verbose
-- id: about
-  doc: 'print about message '
+- id: in_about
+  doc: print about message
   type: boolean
   inputBinding:
     prefix: -about
-- id: one_or_more_fast_a_chrom_files
+- id: in_one_or_more_fast_a_chrom_files
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: 'Name of output file (default: stdout)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - deadzones

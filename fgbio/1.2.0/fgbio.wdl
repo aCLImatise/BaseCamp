@@ -4,4 +4,7 @@ task Fgbio {
   command <<<
     fgbio
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

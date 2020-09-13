@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../treebest_simulate.cwl
 inputs:
-- id: duplication_probability
+- id: in_duplication_probability
   doc: duplication probability [0.05]
-  type: string
+  type: double
   inputBinding:
     prefix: -d
-- id: loss_probability
+- id: in_loss_probability
   doc: loss probability [0.01]
-  type: string
+  type: double
   inputBinding:
     prefix: -l
-- id: loss_probability_duplication
+- id: in_loss_probability_duplication
   doc: loss probability after duplication [0.25]
-  type: string
+  type: double
   inputBinding:
     prefix: -p
-- id: max_height
+- id: in_max_height
   doc: max height [0.25]
-  type: string
+  type: long
   inputBinding:
     prefix: -m
-- id: show_internal_name
+- id: in_show_internal_name
   doc: not show internal name
   type: boolean
   inputBinding:
     prefix: -n
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - treebest

@@ -20,4 +20,7 @@ task Eleredef {
     start: ""
     clan_ct: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

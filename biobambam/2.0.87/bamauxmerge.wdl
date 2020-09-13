@@ -4,4 +4,7 @@ task Bamauxmerge {
   command <<<
     bamauxmerge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

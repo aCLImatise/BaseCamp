@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../allegro.cwl
 inputs:
-- id: l
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -l
-- id: t
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -t
-- id: n
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -n
-- id: m
+- id: in_m
   doc: ''
   type: boolean
   inputBinding:
     prefix: -m
-- id: options_file
+- id: in_n
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -n
+- id: in_t
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -t
+- id: in_l
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -l
+- id: in_options_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - allegro

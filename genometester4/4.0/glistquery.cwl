@@ -1,82 +1,85 @@
 class: CommandLineTool
 id: ../../../glistquery.cwl
 inputs:
-- id: stat
+- id: in_stat
   doc: '- print statistics of the list file and exit'
   type: boolean
   inputBinding:
     prefix: -stat
-- id: median
+- id: in_median
   doc: '- print min/max/median/average and exit'
   type: boolean
   inputBinding:
     prefix: -median
-- id: distribution
+- id: in_distribution
   doc: '- print distribution up to MAX'
   type: long
   inputBinding:
     prefix: -distribution
-- id: gc
+- id: in_gc
   doc: '- print average GC content of all words'
   type: boolean
   inputBinding:
     prefix: -gc
-- id: query
+- id: in_query
   doc: '- single query word'
   type: boolean
   inputBinding:
     prefix: --query
-- id: query_file
+- id: in_query_file
   doc: '- list of query words in a file'
   type: boolean
   inputBinding:
     prefix: --queryfile
-- id: seq_file
+- id: in_seq_file
   doc: '- FastA/FastQ file'
   type: boolean
   inputBinding:
     prefix: --seqfile
-- id: list_file
+- id: in_list_file
   doc: '- list file made by glistmaker'
   type: boolean
   inputBinding:
     prefix: --listfile
-- id: mismatch
+- id: in_mismatch
   doc: '- specify number of mismatches (default 0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --mismatch
-- id: perfect_match
+- id: in_perfect_match
   doc: "- specify number of 3' perfect matches (default 0)"
-  type: string
+  type: long
   inputBinding:
     prefix: --perfectmatch
-- id: min_freq
+- id: in_min_freq
   doc: '- minimum frequency of the printed words (default 0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --minfreq
-- id: max_freq
+- id: in_max_freq
   doc: '- maximum frequency of the printed words (default MAX_UINT)'
-  type: string
+  type: long
   inputBinding:
     prefix: --maxfreq
-- id: all
+- id: in_all
   doc: '- in case of mismatches prints all found words'
   type: boolean
   inputBinding:
     prefix: -all
-- id: increase_debug_level
+- id: in_increase_debug_level
   doc: '- increase debug level'
   type: boolean
   inputBinding:
     prefix: -D
-- id: input_list
+- id: in_input_list
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - glistquery

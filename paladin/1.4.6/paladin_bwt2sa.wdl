@@ -2,7 +2,7 @@ version 1.0
 
 task PaladinBwt2sa {
   input {
-    String? i
+    Int? i
     String in_dot_bwt
     String out_dots_a
   }
@@ -16,5 +16,8 @@ task PaladinBwt2sa {
     i: ""
     in_dot_bwt: ""
     out_dots_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

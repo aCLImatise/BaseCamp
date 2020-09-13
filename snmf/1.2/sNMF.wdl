@@ -2,19 +2,19 @@ version 1.0
 
 task SNMF {
   input {
-    String? _genotype_file
-    String? _number_k
-    String? _regularization_parameter
-    String? _individual_admixture_file
-    String? _ancestral_frequencies
-    String? _crossentropy_masked
-    String? _tolerance_error
-    String? _number_max
-    String? _number_snps
-    String? _individual_admixture_initialisation
+    File? _genotype_file
+    Int? _number_k
+    Int? _regularization_parameter
+    File? _individual_admixture_file
+    File? _ancestral_frequencies
+    Float? _crossentropy_masked
+    Float? _tolerance_error
+    Int? _number_max
+    Int? _number_snps
+    File? _individual_admixture_initialisation
     String? _seed_random
-    String? _haploid_default
-    String? _number_processes
+    Int? _haploid_diploid
+    Int? _number_processes
   }
   command <<<
     sNMF \
@@ -29,7 +29,7 @@ task SNMF {
       ~{if defined(_number_snps) then ("-I " +  '"' + _number_snps + '"') else ""} \
       ~{if defined(_individual_admixture_initialisation) then ("-Q " +  '"' + _individual_admixture_initialisation + '"') else ""} \
       ~{if defined(_seed_random) then ("-s " +  '"' + _seed_random + '"') else ""} \
-      ~{if defined(_haploid_default) then ("-m " +  '"' + _haploid_default + '"') else ""} \
+      ~{if defined(_haploid_diploid) then ("-m " +  '"' + _haploid_diploid + '"') else ""} \
       ~{if defined(_number_processes) then ("-p " +  '"' + _number_processes + '"') else ""}
   >>>
   parameter_meta {
@@ -38,13 +38,16 @@ task SNMF {
     _regularization_parameter: "-- regularization parameter       (default: 0)"
     _individual_admixture_file: "-- individual admixture file      (default: genotype_file.K.Q)"
     _ancestral_frequencies: "-- ancestral frequencies file     (default: genotype_file.K.G)"
-    _crossentropy_masked: "-- cross-entropy with 'perc'                          of masked genotypes               (default: 0.05)"
+    _crossentropy_masked: "-- cross-entropy with 'perc'\\nof masked genotypes               (default: 0.05)"
     _tolerance_error: "-- tolerance error                (default: 0.0001)"
     _number_max: "-- number max of iterations       (default: 200)"
     _number_snps: "-- number of SNPs used to init Q  (default: min(10000,L/10)"
     _individual_admixture_initialisation: "-- individual admixture initialisation file"
     _seed_random: "-- seed random init               (default: random)"
-    _haploid_default: "-- 1 if haploid, 2 if diploid     (default: 2)"
+    _haploid_diploid: "-- 1 if haploid, 2 if diploid     (default: 2)"
     _number_processes: "-- number of processes (CPU)      (default: 1)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../fusioncatcher_to_CG.cwl
 inputs:
-- id: input_format
+- id: in_input_format
   doc: File type of the file to convert
   type: string
   inputBinding:
     prefix: --input-format
-- id: data_directory
-  doc: FusionCatcher's data dir (/opt/fusioncatcher/data/ensembl_v...)
-  type: string
+- id: in_data_directory
+  doc: "FusionCatcher's data dir\n(/opt/fusioncatcher/data/ensembl_v...)"
+  type: Directory
   inputBinding:
     prefix: --data-directory
-- id: output
+- id: in_output
   doc: output filename; '-' for stdout
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -V
-- id: input_file
-  doc: File to convert
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output filename; '-' for stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - fusioncatcher-to-CG

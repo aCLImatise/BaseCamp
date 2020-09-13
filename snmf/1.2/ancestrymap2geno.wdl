@@ -14,4 +14,7 @@ task Ancestrymap2geno {
     _help: "--help"
     _helpgeno: "--help.geno"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

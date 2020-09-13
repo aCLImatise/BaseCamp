@@ -1,6 +1,6 @@
 version 1.0
 
-task CfmTrain {
+task Cfmtrain {
   input {
     String input_filename
     String feature_filename
@@ -12,7 +12,7 @@ task CfmTrain {
     String start_energy
   }
   command <<<
-    cfm-train \
+    cfm_train \
       ~{input_filename} \
       ~{feature_filename} \
       ~{config_filename} \
@@ -31,5 +31,8 @@ task CfmTrain {
     status_filename: ""
     no_train: ""
     start_energy: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

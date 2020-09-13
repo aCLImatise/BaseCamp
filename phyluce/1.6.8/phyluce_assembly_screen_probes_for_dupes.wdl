@@ -11,4 +11,7 @@ task PhyluceAssemblyScreenProbesForDupes {
   parameter_meta {
     last_z: "The lastz input"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

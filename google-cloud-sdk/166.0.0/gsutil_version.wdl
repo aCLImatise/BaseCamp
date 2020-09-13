@@ -6,9 +6,12 @@ task GsutilVersion {
   }
   command <<<
     gsutil version \
-      ~{true="-l" false="" prints_additional_information}
+      ~{if (prints_additional_information) then "-l" else ""}
   >>>
   parameter_meta {
-    prints_additional_information: "Prints additional information, such as the version of Python being used, the version of the Boto library, a checksum of the code, the path to gsutil, and the path to gsutil's configuration file."
+    prints_additional_information: "Prints additional information, such as the version of Python\\nbeing used, the version of the Boto library, a checksum of the\\ncode, the path to gsutil, and the path to gsutil's configuration\\nfile.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,14 +1,10 @@
 version 1.0
 
 task PATHOGISTVisualize {
-  input {
-    String var_input
-  }
   command <<<
-    PATHOGIST visualize \
-      ~{var_input}
+    PATHOGIST visualize
   >>>
-  parameter_meta {
-    var_input: ""
+  output {
+    File out_stdout = stdout()
   }
 }

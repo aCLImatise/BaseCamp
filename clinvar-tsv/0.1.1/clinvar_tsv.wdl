@@ -4,4 +4,7 @@ task ClinvarTsv {
   command <<<
     clinvar_tsv
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

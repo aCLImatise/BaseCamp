@@ -1,4 +1,6 @@
 !Command
+command:
+- panaroo-msa
 positional:
 - !Positional
   description: ''
@@ -29,37 +31,36 @@ named:
     name: OUTPUT_DIR
   optional: true
 - !Flag
-  description: "Output alignments of core genes or all genes. Options are 'core' and\
-    \ 'pan'. Default: 'None'"
+  description: "Output alignments of core genes or all genes. Options\nare 'core'\
+    \ and 'pan'. Default: 'None'"
   synonyms:
   - -a
   - --alignment
   args: !ChoiceFlagArg
     choices: !!set
-      ? core
       ? pan
+      ? core
   optional: true
 - !Flag
-  description: "Specify an aligner. Options:'prank', 'clustal', and default: 'mafft'"
+  description: "Specify an aligner. Options:'prank', 'clustal', and\ndefault: 'mafft'"
   synonyms:
   - --aligner
   args: !ChoiceFlagArg
     choices: !!set
-      ? clustal
-      ? prank
       ? mafft
+      ? prank
+      ? clustal
   optional: true
 - !Flag
-  description: Core-genome sample threshold (default=0.95)
+  description: "Core-genome sample threshold (default=0.95)\n"
   synonyms:
   - --core_threshold
   args: !SimpleFlagArg
     name: CORE
   optional: true
-command:
-- panaroo-msa
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -74,8 +75,8 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
-help_text: "usage: generate_panaroo_msa [-h] -o OUTPUT_DIR [-a {core,pan}]\n     \
-  \                       [--aligner {clustal,mafft,prank}]\n                    \
+help_text: "usage: generate_panaroo_msa [-h] -o OUTPUT_DIR [-a {pan,core}]\n     \
+  \                       [--aligner {prank,mafft,clustal}]\n                    \
   \        [--core_threshold CORE] [-t N_CPU] [--verbose]\n                      \
   \      [--version]\n\nGenerate multiple sequence alignments after running Panaroo\n\
   \noptional arguments:\n  -h, --help            show this help message and exit\n\
@@ -83,9 +84,9 @@ help_text: "usage: generate_panaroo_msa [-h] -o OUTPUT_DIR [-a {core,pan}]\n    
   \  --verbose             print additional output\n  --version             show program's\
   \ version number and exit\n\nInput/output:\n  -o OUTPUT_DIR, --out_dir OUTPUT_DIR\n\
   \                        location of the Panaroo output directory\n\nGene alignment:\n\
-  \  -a {core,pan}, --alignment {core,pan}\n                        Output alignments\
+  \  -a {pan,core}, --alignment {pan,core}\n                        Output alignments\
   \ of core genes or all genes. Options\n                        are 'core' and 'pan'.\
-  \ Default: 'None'\n  --aligner {clustal,mafft,prank}\n                        Specify\
+  \ Default: 'None'\n  --aligner {prank,mafft,clustal}\n                        Specify\
   \ an aligner. Options:'prank', 'clustal', and\n                        default:\
   \ 'mafft'\n  --core_threshold CORE\n                        Core-genome sample threshold\
   \ (default=0.95)\n"

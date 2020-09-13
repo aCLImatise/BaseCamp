@@ -1,7 +1,10 @@
 version 1.0
 
-task Epic2Df {
+task Epic2df {
   command <<<
-    epic2-df
+    epic2_df
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

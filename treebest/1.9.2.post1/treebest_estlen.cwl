@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../treebest_estlen.cwl
 inputs:
-- id: tree
+- id: in_tree
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: matrix
+- id: in_matrix
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: tag
+- id: in_tag
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - treebest

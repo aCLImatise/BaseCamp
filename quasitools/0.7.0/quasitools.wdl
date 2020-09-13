@@ -6,9 +6,12 @@ task Quasitools {
   }
   command <<<
     quasitools \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     verbose: "Enables verbose mode."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

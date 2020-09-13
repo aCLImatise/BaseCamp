@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuConfig {
+task Byobuconfig {
   command <<<
-    byobu-config
+    byobu_config
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

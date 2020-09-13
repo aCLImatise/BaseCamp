@@ -27,28 +27,28 @@ task Circminer {
   }
   command <<<
     circminer \
-      ~{true="--index" false="" index} \
-      ~{true="--compact-index" false="" compact_index} \
-      ~{true="--kmer" false="" km_er} \
-      ~{true="--reference" false="" reference} \
-      ~{true="--gtf" false="" gtf} \
-      ~{true="--seq" false="" seq} \
-      ~{true="--seq1" false="" seq_one} \
-      ~{true="--seq2" false="" seq_two} \
-      ~{true="--rlen" false="" rlen} \
-      ~{true="--max-ed" false="" max_ed} \
-      ~{true="--max-sc" false="" max_sc} \
-      ~{true="--band" false="" band} \
-      ~{true="--seed-lim" false="" seed_lim} \
-      ~{true="--max-tlen" false="" max_tlen} \
-      ~{true="--max-intron" false="" max_intron} \
-      ~{true="--max-chain-list" false="" max_chain_list} \
-      ~{true="--output" false="" prefix_output_files} \
-      ~{true="--thread" false="" thread} \
-      ~{true="--sam" false="" sam} \
-      ~{true="--pam" false="" pam} \
-      ~{true="--verbosity" false="" verbosity} \
-      ~{true="--scan-lev" false="" scan_lev}
+      ~{if (index) then "--index" else ""} \
+      ~{if (compact_index) then "--compact-index" else ""} \
+      ~{if (km_er) then "--kmer" else ""} \
+      ~{if (reference) then "--reference" else ""} \
+      ~{if (gtf) then "--gtf" else ""} \
+      ~{if (seq) then "--seq" else ""} \
+      ~{if (seq_one) then "--seq1" else ""} \
+      ~{if (seq_two) then "--seq2" else ""} \
+      ~{if (rlen) then "--rlen" else ""} \
+      ~{if (max_ed) then "--max-ed" else ""} \
+      ~{if (max_sc) then "--max-sc" else ""} \
+      ~{if (band) then "--band" else ""} \
+      ~{if (seed_lim) then "--seed-lim" else ""} \
+      ~{if (max_tlen) then "--max-tlen" else ""} \
+      ~{if (max_intron) then "--max-intron" else ""} \
+      ~{if (max_chain_list) then "--max-chain-list" else ""} \
+      ~{if (prefix_output_files) then "--output" else ""} \
+      ~{if (thread) then "--thread" else ""} \
+      ~{if (sam) then "--sam" else ""} \
+      ~{if (pam) then "--pam" else ""} \
+      ~{if (verbosity) then "--verbosity" else ""} \
+      ~{if (scan_lev) then "--scan-lev" else ""}
   >>>
   parameter_meta {
     index: ":            Indicates the indexing stage."
@@ -72,6 +72,9 @@ task Circminer {
     sam: ":              Enables SAM output for aligned reads. Cannot be set along with --pam."
     pam: ":              Enables custom pam output for aligned reads. Cannot be set along with --sam."
     verbosity: ":        Verbosity mode: 0 or 1. Higher values output more information (default = 0)."
-    scan_lev: ":         Transcriptome/Genome scan level: 0 to 2. (default = 0) 0: Report the first mapping. 1: Continue processing the read unless it is perfectly mapped to cDNA. 2: Report the best mapping."
+    scan_lev: ":         Transcriptome/Genome scan level: 0 to 2. (default = 0)\\n0: Report the first mapping.\\n1: Continue processing the read unless it is perfectly mapped to cDNA.\\n2: Report the best mapping."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

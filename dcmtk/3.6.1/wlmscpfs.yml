@@ -1,4 +1,6 @@
 !Command
+command:
+- wlmscpfs
 positional:
 - !Positional
   description: tcp/ip port number to listen on
@@ -6,6 +8,12 @@ positional:
   name: port
   optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet                quiet mode, print no warnings and errors
   synonyms:
@@ -25,35 +33,40 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-level            [l]evel: string constant (fatal, error, warn,
-    info, debug, trace) use level l for the logger'
+  description: "--log-level            [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
   synonyms:
   - -ll
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-config           [f]ilename: string use config file f for the
-    logger'
+  description: "--log-config           [f]ilename: string\nuse config file f for the\
+    \ logger"
   synonyms:
   - -lc
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --single-process       single process mode --fork                 fork
-    child process for each association (def.)
+  description: --single-process       single process mode
   synonyms:
   - -s
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[p]ath: string (default: /home/www/wlist) path to worklist data files'
+  description: fork child process for each association (def.)
+  synonyms:
+  - --fork
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[p]ath: string (default: /home/www/wlist)\npath to worklist data files"
   synonyms:
   - -dfp
   - --data-files-path
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: enable rejection of incomplete worklist files (default)
+  description: "enable rejection of incomplete worklist files\n(default)"
   synonyms:
   - -efr
   - --enable-file-reject
@@ -88,7 +101,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: disable expansion of empty sequences in C-FIND request messages
+  description: "disable expansion of empty sequences in C-FIND\nrequest messages"
   synonyms:
   - -nse
   - --no-sq-expansion
@@ -101,27 +114,59 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--acse-timeout         [s]econds: integer (default: 30) timeout for
-    ACSE messages'
+  description: "--acse-timeout         [s]econds: integer (default: 30)\ntimeout for\
+    \ ACSE messages"
   synonyms:
   - -ta
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "--dimse-timeout        [s]econds: integer (default: unlimited) timeout\
-    \ for DIMSE messages --max-associations     [a]ssocs: integer (default: 50) limit\
-    \ maximum number of parallel associations --refuse               refuse association\
-    \ --reject               reject association if no implement. class UID --no-fail\
-    \              don't fail on an invalid query --sleep-after          [s]econds:\
-    \ integer sleep s seconds after find (default: 0) --sleep-during         [s]econds:\
-    \ integer sleep s seconds during find (default: 0)"
+  description: "--dimse-timeout        [s]econds: integer (default: unlimited)\ntimeout\
+    \ for DIMSE messages"
   synonyms:
   - -td
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[n]umber of bytes: integer (4096..131072) set max receive pdu to n
-    bytes (default: 16384)'
+  description: "[a]ssocs: integer (default: 50)\nlimit maximum number of parallel\
+    \ associations"
+  synonyms:
+  - --max-associations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: refuse association
+  synonyms:
+  - --refuse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reject association if no implement. class UID
+  synonyms:
+  - --reject
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't fail on an invalid query
+  synonyms:
+  - --no-fail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[s]econds: integer\nsleep s seconds after find (default: 0)"
+  synonyms:
+  - --sleep-after
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[s]econds: integer\nsleep s seconds during find (default: 0)"
+  synonyms:
+  - --sleep-during
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to\
+    \ n bytes (default: 16384)"
   synonyms:
   - -pdu
   - --max-pdu
@@ -134,20 +179,22 @@ named:
   - --disable-host-lookup
   args: !EmptyFlagArg {}
   optional: true
-command:
-- wlmscpfs
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help                 print this help text and exit --version              print
-    version information and exit --arguments            print expanded command line
-    arguments
+  description: --help                 print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: wlmscpfs v3.6.1 2016-11-02 $\n\nwlmscpfs: DICOM Basic Worklist\
   \ Management SCP (based on data files)\nusage: wlmscpfs [options] port\n\nparameters:\n\
   \  port                           tcp/ip port number to listen on\n\ngeneral options:\n\

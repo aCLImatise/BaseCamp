@@ -4,4 +4,7 @@ task Printsextract {
   command <<<
     printsextract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

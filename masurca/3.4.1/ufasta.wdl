@@ -4,4 +4,7 @@ task Ufasta {
   command <<<
     ufasta
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -17,4 +17,7 @@ task SketchyFeaturePrepare {
     drop: "Comma separated string of columns to drop"
     prefix: "Prefix for prepared feature index output files"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,15 +4,15 @@ task Toulligqc {
   input {
     File? conf_file
     String? report_name
-    String? fast_five_source
+    Int? fast_five_source
     String? sequencing_summary_source
-    String? sequencing_summary_one_d_sqr_source
+    Int? sequencing_summary_one_d_sqr_source
     String? albacore_pipeline_source
-    String? fast_q_source
-    String? telemetry_source
-    String? output_directory
+    File? fast_q_source
+    File? telemetry_source
+    Directory? output_directory
     Boolean? barcoding
-    String? sample_sheet_file
+    File? sample_sheet_file
     String? barcodes
     Boolean? quiet
   }
@@ -27,10 +27,10 @@ task Toulligqc {
       ~{if defined(fast_q_source) then ("--fastq-source " +  '"' + fast_q_source + '"') else ""} \
       ~{if defined(telemetry_source) then ("--telemetry-source " +  '"' + telemetry_source + '"') else ""} \
       ~{if defined(output_directory) then ("--output " +  '"' + output_directory + '"') else ""} \
-      ~{true="--barcoding" false="" barcoding} \
+      ~{if (barcoding) then "--barcoding" else ""} \
       ~{if defined(sample_sheet_file) then ("--samplesheet-file " +  '"' + sample_sheet_file + '"') else ""} \
       ~{if defined(barcodes) then ("--barcodes " +  '"' + barcodes + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     conf_file: "Specify config file"
@@ -46,5 +46,9 @@ task Toulligqc {
     sample_sheet_file: "Path to sample sheet file"
     barcodes: "Coma separated barcode list"
     quiet: "Quiet mode"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

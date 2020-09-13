@@ -1,242 +1,250 @@
 class: CommandLineTool
 id: ../../../hmmerbuild.cwl
 inputs:
-- id: name_hmm_s
+- id: in_name_hmm_s
   doc: ': name the HMM <s>'
   type: string
   inputBinding:
     prefix: -n
-- id: direct_summary_output
+- id: in_direct_summary_output
   doc: ': direct summary output to file <f>, not stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: resave_annotated_possibly
+- id: in_resave_annotated_modified
   doc: ': resave annotated, possibly modified MSA to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: -O
-- id: amino
+- id: in_amino
   doc: ': input alignment is protein sequence data'
   type: boolean
   inputBinding:
     prefix: --amino
-- id: dna
+- id: in_dna
   doc: ': input alignment is DNA sequence data'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: rna
+- id: in_rna
   doc: ': input alignment is RNA sequence data'
   type: boolean
   inputBinding:
     prefix: --rna
-- id: fast
+- id: in_fast
   doc: ': assign cols w/ >= symfrac residues as consensus  [default]'
   type: boolean
   inputBinding:
     prefix: --fast
-- id: hand
+- id: in_hand
   doc: ': manual construction (requires reference annotation)'
   type: boolean
   inputBinding:
     prefix: --hand
-- id: sym_frac
+- id: in_sym_frac
   doc: ': sets sym fraction controlling --fast construction  [0.5]'
-  type: string
+  type: double
   inputBinding:
     prefix: --symfrac
-- id: frag_thresh
+- id: in_frag_thresh
   doc: ': if L <= x*alen, tag sequence as a fragment  [0.5]'
-  type: string
+  type: double
   inputBinding:
     prefix: --fragthresh
-- id: wpb
+- id: in_wpb
   doc: ': Henikoff position-based weights  [default]'
   type: boolean
   inputBinding:
     prefix: --wpb
-- id: wgs_c
+- id: in_wgs_c
   doc: ': Gerstein/Sonnhammer/Chothia tree weights'
   type: boolean
   inputBinding:
     prefix: --wgsc
-- id: w_blosum
+- id: in_w_blosum
   doc: ': Henikoff simple filter weights'
   type: boolean
   inputBinding:
     prefix: --wblosum
-- id: w_none
+- id: in_w_none
   doc: ": don't do any relative weighting; set all to 1"
   type: boolean
   inputBinding:
     prefix: --wnone
-- id: w_given
+- id: in_w_given
   doc: ': use weights as given in MSA file'
   type: boolean
   inputBinding:
     prefix: --wgiven
-- id: wid
+- id: in_wid
   doc: ': for --wblosum: set identity cutoff  [0.62]  (0<=x<=1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --wid
-- id: e_ent
+- id: in_e_ent
   doc: ': adjust eff seq # to achieve relative entropy target  [default]'
   type: boolean
   inputBinding:
     prefix: --eent
-- id: ec_lust
+- id: in_ec_lust
   doc: ': eff seq # is # of single linkage clusters'
   type: boolean
   inputBinding:
     prefix: --eclust
-- id: en_one
+- id: in_en_one
   doc: ': no effective seq # weighting: just use nseq'
   type: boolean
   inputBinding:
     prefix: --enone
-- id: e_set
+- id: in_e_set
   doc: ': set eff seq # for all models to <x>'
   type: string
   inputBinding:
     prefix: --eset
-- id: ere
+- id: in_ere
   doc: ': for --eent: set minimum rel entropy/position to <x>'
   type: string
   inputBinding:
     prefix: --ere
-- id: e_sigma
+- id: in_e_sigma
   doc: ': for --eent: set sigma param to <x>  [45.0]'
-  type: string
+  type: double
   inputBinding:
     prefix: --esigma
-- id: eid
+- id: in_eid
   doc: ': for --eclust: set fractional identity cutoff to <x>  [0.62]'
-  type: string
+  type: double
   inputBinding:
     prefix: --eid
-- id: p_none
+- id: in_p_none
   doc: ": don't use any prior; parameters are frequencies"
   type: boolean
   inputBinding:
     prefix: --pnone
-- id: pla_place
+- id: in_pla_place
   doc: ': use a Laplace +1 prior'
   type: boolean
   inputBinding:
     prefix: --plaplace
-- id: single_mx
+- id: in_single_mx
   doc: ': use substitution score matrix for single-sequence inputs'
   type: boolean
   inputBinding:
     prefix: --singlemx
-- id: popen
+- id: in_popen
   doc: ': gap open probability (with --singlemx)'
   type: string
   inputBinding:
     prefix: --popen
-- id: p_extend
+- id: in_p_extend
   doc: ': gap extend probability (with --singlemx)'
   type: string
   inputBinding:
     prefix: --pextend
-- id: mx
+- id: in_mx
   doc: ': substitution score matrix (built-in matrices, with --singlemx)'
   type: string
   inputBinding:
     prefix: --mx
-- id: mx_file
+- id: in_mx_file
   doc: ': read substitution score matrix from file <f> (with --singlemx)'
-  type: string
+  type: File
   inputBinding:
     prefix: --mxfile
-- id: eml
+- id: in_eml
   doc: ': length of sequences for MSV Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EmL
-- id: emn
+- id: in_emn
   doc: ': number of sequences for MSV Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EmN
-- id: evl
+- id: in_evl
   doc: ': length of sequences for Viterbi Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EvL
-- id: evn
+- id: in_evn
   doc: ': number of sequences for Viterbi Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EvN
-- id: efl
+- id: in_efl
   doc: ': length of sequences for Forward exp tail tau fit  [100]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EfL
-- id: efn
+- id: in_efn
   doc: ': number of sequences for Forward exp tail tau fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EfN
-- id: eft
+- id: in_eft
   doc: ': tail mass for Forward exponential tail tau fit  [0.04]  (0<x<1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --Eft
-- id: cpu
+- id: in_cpu
   doc: ': number of parallel CPU workers for multithreads'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpu
-- id: stall
+- id: in_stall
   doc: ': arrest after start: for attaching debugger to process'
   type: boolean
   inputBinding:
     prefix: --stall
-- id: in_format
+- id: in_in_format
   doc: ': assert input alifile is in format <s> (no autodetect)'
   type: string
   inputBinding:
     prefix: --informat
-- id: seed
+- id: in_seed
   doc: ': set RNG seed to <n> (if 0: one-time arbitrary seed)  [42]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: w_beta
+- id: in_w_beta
   doc: ': tail mass at which window length is determined'
-  type: string
+  type: long
   inputBinding:
     prefix: --w_beta
-- id: w_length
-  doc: ': window length '
-  type: string
+- id: in_w_length
+  doc: ': window length'
+  type: long
   inputBinding:
     prefix: --w_length
-- id: max_insert_len
+- id: in_max_insert_len
   doc: ': pretend all inserts are length <= <n>'
-  type: string
+  type: long
   inputBinding:
     prefix: --maxinsertlen
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: hmm_file_out
+- id: in_hmm_file_out
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: msa_file
+- id: in_msa_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_direct_summary_output
+  doc: ': direct summary output to file <f>, not stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_direct_summary_output)
 cwlVersion: v1.1
 baseCommand:
 - hmmerbuild

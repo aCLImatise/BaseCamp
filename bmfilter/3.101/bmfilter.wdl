@@ -2,51 +2,51 @@ version 1.0
 
 task Bmfilter {
   input {
-    String? quality_channels
+    Int? quality_channels
     Boolean? read_one
     Boolean? read_two
     Boolean? word_bitmask
     Boolean? use_mmap
-    String? max_ambiguities
+    Int? max_ambiguities
     Boolean? clip_lowercase
-    String? clip_n_win
-    String? clip_quality
+    Int? clip_n_win
+    Int? clip_quality
     Boolean? output_base_name
     Boolean? tag
     Boolean? post
     Boolean? report
     Boolean? post_clipped
-    String? complexity
-    String? short_seq
-    String? no_post_len
-    String? chop_length
-    String? chop_step
-    String? mask_early
-    String? post_low_complexity
-    String? heur_min_words
-    String? heur_many_words
-    String? heur_count_long_pct
-    String? heur_count_short_pct
-    String? heur_run_long_pct
-    String? heur_run_short_pct
-    String? heur_negligible_length
+    Int? complexity
+    Int? short_seq
+    Int? no_post_len
+    Int? chop_length
+    Int? chop_step
+    Int? mask_early
+    Int? post_low_complexity
+    Int? heur_min_words
+    Int? heur_many_words
+    Int? heur_count_long_pct
+    Int? heur_count_short_pct
+    Int? heur_run_long_pct
+    Int? heur_run_short_pct
+    Int? heur_negligible_length
   }
   command <<<
     bmfilter \
       ~{if defined(quality_channels) then ("--quality-channels " +  '"' + quality_channels + '"') else ""} \
-      ~{true="--read-1" false="" read_one} \
-      ~{true="--read-2" false="" read_two} \
-      ~{true="--word-bitmask" false="" word_bitmask} \
-      ~{true="--use-mmap" false="" use_mmap} \
+      ~{if (read_one) then "--read-1" else ""} \
+      ~{if (read_two) then "--read-2" else ""} \
+      ~{if (word_bitmask) then "--word-bitmask" else ""} \
+      ~{if (use_mmap) then "--use-mmap" else ""} \
       ~{if defined(max_ambiguities) then ("--max-ambiguities " +  '"' + max_ambiguities + '"') else ""} \
-      ~{true="--clip-lowercase" false="" clip_lowercase} \
+      ~{if (clip_lowercase) then "--clip-lowercase" else ""} \
       ~{if defined(clip_n_win) then ("--clip-N-win " +  '"' + clip_n_win + '"') else ""} \
       ~{if defined(clip_quality) then ("--clip-quality " +  '"' + clip_quality + '"') else ""} \
-      ~{true="--output" false="" output_base_name} \
-      ~{true="--tag" false="" tag} \
-      ~{true="--post" false="" post} \
-      ~{true="--report" false="" report} \
-      ~{true="--post-clipped" false="" post_clipped} \
+      ~{if (output_base_name) then "--output" else ""} \
+      ~{if (tag) then "--tag" else ""} \
+      ~{if (post) then "--post" else ""} \
+      ~{if (report) then "--report" else ""} \
+      ~{if (post_clipped) then "--post-clipped" else ""} \
       ~{if defined(complexity) then ("--complexity " +  '"' + complexity + '"') else ""} \
       ~{if defined(short_seq) then ("--short-seq " +  '"' + short_seq + '"') else ""} \
       ~{if defined(no_post_len) then ("--no-post-len " +  '"' + no_post_len + '"') else ""} \
@@ -91,5 +91,8 @@ task Bmfilter {
     heur_run_long_pct: ":20                    Set watermarks for longest match run for long sequences, int % of good words"
     heur_run_short_pct: ":40                   Set watermarks for longest match run for short sequences, int % of good words"
     heur_negligible_length: "Set cutoff for sequences to consider - these and shorter (after clipping) will be marked as foreign"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

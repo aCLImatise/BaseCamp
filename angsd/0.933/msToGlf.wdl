@@ -4,4 +4,7 @@ task MsToGlf {
   command <<<
     msToGlf
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

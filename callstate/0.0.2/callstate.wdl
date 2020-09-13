@@ -2,17 +2,17 @@ version 1.0
 
 task Callstate {
   input {
-    String? threads
-    String? output_bed_file
-    String? base_depth_output
-    String? min_base_qual
-    String? min_mapq
-    String? min_depth
-    String? max_low_mapq
-    String? max_depth
-    String? min_depth_low_mapq
-    String? low_mapq_frac
-    String? flag
+    Int? threads
+    File? output_bed_file
+    File? base_depth_output
+    Int? min_base_qual
+    Int? min_mapq
+    Int? min_depth
+    Int? max_low_mapq
+    Int? max_depth
+    Int? min_depth_low_mapq
+    Float? low_mapq_frac
+    Int? flag
     String bed
     String bam
   }
@@ -46,5 +46,9 @@ task Callstate {
     flag: "exclude reads with any of the bits in FLAG set [default: 1796]"
     bed: ""
     bam: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_bed_file = "${in_output_bed_file}"
   }
 }

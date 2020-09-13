@@ -1,44 +1,52 @@
 class: CommandLineTool
 id: ../../../add_gff_info_cov_samtools.cwl
 inputs:
-- id: average
-  doc: if one or more samples are provided, the average coverage is calculated
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_average
+  doc: "if one or more samples are provided, the average\ncoverage is calculated"
   type: boolean
   inputBinding:
     prefix: --average
-- id: samples
-  doc: Sample name, will add a `sample_cov` in the GFF file. If not passed, the attribute
-    will be `cov`
-  type: string
+- id: in_samples
+  doc: "Sample name, will add a `sample_cov` in the GFF\nfile. If not passed, the\
+    \ attribute will be `cov`"
+  type: File
   inputBinding:
     prefix: --samples
-- id: depths
+- id: in_depths
   doc: '`samtools depth -aa` file  [required]'
-  type: string
+  type: File
   inputBinding:
     prefix: --depths
-- id: num_seqs
-  doc: 'Number of sequences to update the log. If 0, no message is logged  [default:
-    0]'
+- id: in_num_seqs
+  doc: "Number of sequences to update the log. If 0, no\nmessage is logged  [default:\
+    \ 0]"
   type: long
   inputBinding:
     prefix: --num-seqs
-- id: progress
+- id: in_progress
   doc: Shows Progress Bar
   type: boolean
   inputBinding:
     prefix: --progress
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - add-gff-info

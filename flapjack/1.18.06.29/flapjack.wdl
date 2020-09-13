@@ -4,4 +4,7 @@ task Flapjack {
   command <<<
     flapjack
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

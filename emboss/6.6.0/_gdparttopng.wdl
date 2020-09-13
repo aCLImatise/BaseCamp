@@ -1,6 +1,6 @@
 version 1.0
 
-task _gdparttopng {
+task Gdparttopng {
   input {
     String gd_part_to_png
     File filename_dot_gd
@@ -28,5 +28,8 @@ task _gdparttopng {
     y: ""
     w: ""
     h: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,6 +1,6 @@
 version 1.0
 
-task RaxmlNg {
+task Raxmlng {
   input {
     Boolean? evaluate
     Boolean? search
@@ -24,7 +24,7 @@ task RaxmlNg {
     Boolean? msa_format
     Boolean? data_type
     File? tree_constraint
-    Boolean? prefix
+    File? prefix
     Boolean? log
     Boolean? redo
     Boolean? no_files
@@ -33,10 +33,10 @@ task RaxmlNg {
     Boolean? seed
     Boolean? pat_comp
     Boolean? tip_inner
-    String? site_repeats
+    Int? site_repeats
     Boolean? threads
     Boolean? simd
-    String? rate_scalers
+    Int? rate_scalers
     Boolean? force
     Boolean? model
     Boolean? br_len
@@ -53,76 +53,76 @@ task RaxmlNg {
     Boolean? bs_metric
   }
   command <<<
-    raxml-ng \
-      ~{true="--evaluate" false="" evaluate} \
-      ~{true="--search" false="" search} \
-      ~{true="--bootstrap" false="" bootstrap} \
-      ~{true="--all" false="" all} \
-      ~{true="--support" false="" support} \
-      ~{true="--bsconverge" false="" bs_converge} \
-      ~{true="--bsmsa" false="" bsms_a} \
-      ~{true="--terrace" false="" terrace} \
-      ~{true="--check" false="" check} \
-      ~{true="--parse" false="" parse} \
-      ~{true="--start" false="" start} \
-      ~{true="--rfdist" false="" rf_dist} \
-      ~{true="--consense" false="" con_sense} \
-      ~{true="--ancestral" false="" ancestral} \
-      ~{true="--search1" false="" search_one} \
-      ~{true="--loglh" false="" log_lh} \
-      ~{true="--rf" false="" rf} \
-      ~{true="--tree" false="" tree} \
-      ~{true="--msa" false="" msa} \
-      ~{true="--msa-format" false="" msa_format} \
-      ~{true="--data-type" false="" data_type} \
+    raxml_ng \
+      ~{if (evaluate) then "--evaluate" else ""} \
+      ~{if (search) then "--search" else ""} \
+      ~{if (bootstrap) then "--bootstrap" else ""} \
+      ~{if (all) then "--all" else ""} \
+      ~{if (support) then "--support" else ""} \
+      ~{if (bs_converge) then "--bsconverge" else ""} \
+      ~{if (bsms_a) then "--bsmsa" else ""} \
+      ~{if (terrace) then "--terrace" else ""} \
+      ~{if (check) then "--check" else ""} \
+      ~{if (parse) then "--parse" else ""} \
+      ~{if (start) then "--start" else ""} \
+      ~{if (rf_dist) then "--rfdist" else ""} \
+      ~{if (con_sense) then "--consense" else ""} \
+      ~{if (ancestral) then "--ancestral" else ""} \
+      ~{if (search_one) then "--search1" else ""} \
+      ~{if (log_lh) then "--loglh" else ""} \
+      ~{if (rf) then "--rf" else ""} \
+      ~{if (tree) then "--tree" else ""} \
+      ~{if (msa) then "--msa" else ""} \
+      ~{if (msa_format) then "--msa-format" else ""} \
+      ~{if (data_type) then "--data-type" else ""} \
       ~{if defined(tree_constraint) then ("--tree-constraint " +  '"' + tree_constraint + '"') else ""} \
-      ~{true="--prefix" false="" prefix} \
-      ~{true="--log" false="" log} \
-      ~{true="--redo" false="" redo} \
-      ~{true="--nofiles" false="" no_files} \
-      ~{true="--precision" false="" precision} \
-      ~{true="--outgroup" false="" out_group} \
-      ~{true="--seed" false="" seed} \
-      ~{true="--pat-comp" false="" pat_comp} \
-      ~{true="--tip-inner" false="" tip_inner} \
+      ~{if (prefix) then "--prefix" else ""} \
+      ~{if (log) then "--log" else ""} \
+      ~{if (redo) then "--redo" else ""} \
+      ~{if (no_files) then "--nofiles" else ""} \
+      ~{if (precision) then "--precision" else ""} \
+      ~{if (out_group) then "--outgroup" else ""} \
+      ~{if (seed) then "--seed" else ""} \
+      ~{if (pat_comp) then "--pat-comp" else ""} \
+      ~{if (tip_inner) then "--tip-inner" else ""} \
       ~{if defined(site_repeats) then ("--site-repeats " +  '"' + site_repeats + '"') else ""} \
-      ~{true="--threads" false="" threads} \
-      ~{true="--simd" false="" simd} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (simd) then "--simd" else ""} \
       ~{if defined(rate_scalers) then ("--rate-scalers " +  '"' + rate_scalers + '"') else ""} \
-      ~{true="--force" false="" force} \
-      ~{true="--model" false="" model} \
-      ~{true="--brlen" false="" br_len} \
-      ~{true="--blmin" false="" blm_in} \
-      ~{true="--blmax" false="" bl_max} \
-      ~{true="--blopt" false="" bl_opt} \
-      ~{true="--opt-model" false="" opt_model} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (model) then "--model" else ""} \
+      ~{if (br_len) then "--brlen" else ""} \
+      ~{if (blm_in) then "--blmin" else ""} \
+      ~{if (bl_max) then "--blmax" else ""} \
+      ~{if (bl_opt) then "--blopt" else ""} \
+      ~{if (opt_model) then "--opt-model" else ""} \
       ~{if defined(opt_branches) then ("--opt-branches " +  '"' + opt_branches + '"') else ""} \
-      ~{true="--prob-msa" false="" prob_msa} \
-      ~{true="--lh-epsilon" false="" lh_epsilon} \
-      ~{true="--spr-radius" false="" spr_radius} \
-      ~{true="--spr-cutoff" false="" spr_cut_off} \
-      ~{true="--bs-cutoff" false="" bs_cut_off} \
-      ~{true="--bs-metric" false="" bs_metric}
+      ~{if (prob_msa) then "--prob-msa" else ""} \
+      ~{if (lh_epsilon) then "--lh-epsilon" else ""} \
+      ~{if (spr_radius) then "--spr-radius" else ""} \
+      ~{if (spr_cut_off) then "--spr-cutoff" else ""} \
+      ~{if (bs_cut_off) then "--bs-cutoff" else ""} \
+      ~{if (bs_metric) then "--bs-metric" else ""}
   >>>
   parameter_meta {
     evaluate: "evaluate the likelihood of a tree (with model+brlen optimization)"
     search: "ML tree search (default: 10 parsimony + 10 random starting trees)"
     bootstrap: "bootstrapping (default: use bootstopping to auto-detect #replicates)"
     all: "all-in-one (ML search + bootstrapping)"
-    support: "compute bipartition support for a given reference tree (e.g., best ML tree) and a set of replicate trees (e.g., from a bootstrap analysis)"
+    support: "compute bipartition support for a given reference tree (e.g., best ML tree)\\nand a set of replicate trees (e.g., from a bootstrap analysis)"
     bs_converge: "test for bootstrapping convergence using autoMRE criterion"
     bsms_a: "generate bootstrap replicate MSAs"
-    terrace: "check whether a tree lies on a phylogenetic terrace "
+    terrace: "check whether a tree lies on a phylogenetic terrace"
     check: "check alignment correctness and remove empty columns/rows"
     parse: "parse alignment, compress patterns and create binary MSA file"
     start: "generate parsimony/random starting trees and exit"
     rf_dist: "compute pair-wise Robinson-Foulds (RF) distances between trees"
-    con_sense: "[ STRICT | MR | MR<n> | MRE ]   build strict, majority-rule (MR) or extended MR (MRE) consensus tree (default: MR) eg: --consense MR75 --tree bsrep.nw"
+    con_sense: "[ STRICT | MR | MR<n> | MRE ]   build strict, majority-rule (MR) or extended MR (MRE) consensus tree (default: MR)\\neg: --consense MR75 --tree bsrep.nw"
     ancestral: "ancestral state reconstruction at all inner nodes"
     search_one: "Alias for: --search --tree rand{1}"
     log_lh: "Alias for: --evaluate --opt-model off --opt-branches off --nofiles --log result"
     rf: "Alias for: --rfdist --nofiles --log result"
-    tree: "rand{N} | pars{N} | FILE starting tree: rand(om), pars(imony) or user-specified (newick file) N = number of trees (default: rand{10},pars{10})"
+    tree: "rand{N} | pars{N} | FILE starting tree: rand(om), pars(imony) or user-specified (newick file)\\nN = number of trees (default: rand{10},pars{10})"
     msa: "FILE                     alignment file"
     msa_format: "VALUE                    alignment file format: FASTA, PHYLIP, CATG or AUTO-detect (default)"
     data_type: "VALUE                    data type: DNA, AA, BIN(ary) or AUTO-detect (default)"
@@ -145,7 +145,7 @@ task RaxmlNg {
     br_len: "linked | scaled | unlinked  branch length linkage between partitions (default: scaled)"
     blm_in: "VALUE                       minimum branch length (default: 1e-6)"
     bl_max: "VALUE                       maximum branch length (default: 100)"
-    bl_opt: "nr_fast    | nr_safe        branch length optimization method (default: nr_fast) nr_oldfast | nr_oldsafe     "
+    bl_opt: "nr_fast    | nr_safe        branch length optimization method (default: nr_fast)\\nnr_oldfast | nr_oldsafe"
     opt_model: "on | off                    ML optimization of all model parameters (default: ON)"
     opt_branches: "| off                    ML optimization of all branch lengths (default: ON)"
     prob_msa: "on | off                    use probabilistic alignment (works with CATG and VCF)"
@@ -154,5 +154,9 @@ task RaxmlNg {
     spr_cut_off: "VALUE | off                 relative LH cutoff for descending into subtrees (default: 1.0)"
     bs_cut_off: "VALUE                       cutoff threshold for the MRE-based bootstopping criteria (default: 0.03)"
     bs_metric: "fbp | tbe                   branch support metric: fbp = Felsenstein bootstrap (default), tbe = transfer distance"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_prefix = "${in_prefix}"
   }
 }

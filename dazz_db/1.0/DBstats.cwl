@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../DBstats.cwl
 inputs:
-- id: nu
+- id: in_nu
   doc: ''
   type: boolean
   inputBinding:
     prefix: -nu
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - DBstats

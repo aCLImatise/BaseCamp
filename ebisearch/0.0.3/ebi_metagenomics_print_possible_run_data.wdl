@@ -11,4 +11,7 @@ task EbiMetagenomicsPrintPossibleRunData {
   parameter_meta {
     run: "Id of a run in EBI metagenomics"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

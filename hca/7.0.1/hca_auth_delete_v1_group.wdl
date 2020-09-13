@@ -1,14 +1,17 @@
 version 1.0
 
-task HcaAuthDeleteV1Group {
+task HcaAuthDeletev1group {
   input {
     String? group_id
   }
   command <<<
-    hca auth delete-v1-group \
+    hca auth delete_v1_group \
       ~{if defined(group_id) then ("--group-id " +  '"' + group_id + '"') else ""}
   >>>
   parameter_meta {
     group_id: "The name of the group."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

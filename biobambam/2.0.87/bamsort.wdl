@@ -4,4 +4,7 @@ task Bamsort {
   command <<<
     bamsort
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

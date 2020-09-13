@@ -4,4 +4,7 @@ task Acdgalaxy {
   command <<<
     acdgalaxy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

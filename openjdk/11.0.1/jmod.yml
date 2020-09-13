@@ -1,0 +1,199 @@
+!Command
+command:
+- jmod
+positional:
+- !Positional
+  description: '- Creates a new jmod archive'
+  position: 0
+  name: create
+  optional: false
+- !Positional
+  description: '- Extracts all the files from the archive'
+  position: 1
+  name: extract
+  optional: false
+- !Positional
+  description: '- Prints the names of all the entries'
+  position: 2
+  name: list
+  optional: false
+- !Positional
+  description: '- Prints the module details'
+  position: 3
+  name: describe
+  optional: false
+- !Positional
+  description: '- Records hashes of tied modules.'
+  position: 4
+  name: hash
+  optional: false
+- !Positional
+  description: 'Description                           '
+  position: 5
+  name: Option
+  optional: false
+- !Positional
+  description: '--cmds <path>                       Location of native commands           '
+  position: 0
+  name: classes
+  optional: false
+named:
+- !Flag
+  description: Application jar files|dir containing
+  synonyms:
+  - --class-path
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Location of user-editable config files
+  synonyms:
+  - --config
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Target directory for extract
+  synonyms:
+  - --dir
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Dry run of hash mode
+  synonyms:
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Exclude files matching the supplied\ncomma separated pattern list,\
+    \ each\nelement using one the following\nforms: <glob-pattern>, glob:<glob-\n\
+    pattern> or regex:<regex-pattern>"
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: pattern-list
+  optional: true
+- !Flag
+  description: "Compute and record hashes to tie a\npackaged module with modules\n\
+    matching the given <regex-pattern>\nand depending upon it directly or\nindirectly.\
+    \ The hashes are recorded\nin the JMOD file being created, or a\nJMOD file or\
+    \ modular JAR on the\nmodule path specified the jmod hash\ncommand."
+  synonyms:
+  - --hash-modules
+  args: !SimpleFlagArg
+    name: regex-pattern
+  optional: true
+- !Flag
+  description: Location of header files
+  synonyms:
+  - --header-files
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Print help on extra options
+  synonyms:
+  - --help-extra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Location of legal notices
+  synonyms:
+  - --legal-notices
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Location of native libraries
+  synonyms:
+  - --libs
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: '<String: class-name>   Main class'
+  synonyms:
+  - --main-class
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Location of man pages
+  synonyms:
+  - --man-pages
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Module version
+  synonyms:
+  - --module-version
+  args: !SimpleFlagArg
+    name: module-version
+  optional: true
+- !Flag
+  description: Module path
+  synonyms:
+  - -p
+  - --module-path
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "<String: target-  Target platform\nplatform>"
+  synonyms:
+  - --target-platform
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Version information
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: jmod (create|extract|list|describe|hash) <OPTIONS> <jmod-file>\n\
+  \nMain operation modes:\n  create    - Creates a new jmod archive\n  extract   -\
+  \ Extracts all the files from the archive\n  list      - Prints the names of all\
+  \ the entries\n  describe  - Prints the module details\n  hash      - Records hashes\
+  \ of tied modules.\n\n Option                              Description         \
+  \                  \n ------                              -----------          \
+  \                 \n  -?, -h, --help                      Print this help message\
+  \               \n  --class-path <path>                 Application jar files|dir\
+  \ containing  \n                                        classes                \
+  \             \n  --cmds <path>                       Location of native commands\
+  \           \n  --config <path>                     Location of user-editable config\
+  \ files\n  --dir <path>                        Target directory for extract    \
+  \      \n  --dry-run                           Dry run of hash mode            \
+  \      \n  --exclude <pattern-list>            Exclude files matching the supplied\
+  \   \n                                        comma separated pattern list, each\
+  \  \n                                        element using one the following   \
+  \  \n                                        forms: <glob-pattern>, glob:<glob-\
+  \  \n                                        pattern> or regex:<regex-pattern> \
+  \  \n  --hash-modules <regex-pattern>      Compute and record hashes to tie a  \
+  \  \n                                        packaged module with modules      \
+  \  \n                                        matching the given <regex-pattern>\
+  \  \n                                        and depending upon it directly or \
+  \  \n                                        indirectly. The hashes are recorded\
+  \ \n                                        in the JMOD file being created, or a\n\
+  \                                        JMOD file or modular JAR on the     \n\
+  \                                        module path specified the jmod hash \n\
+  \                                        command.                            \n\
+  \  --header-files <path>               Location of header files              \n\
+  \  --help-extra                        Print help on extra options           \n\
+  \  --legal-notices <path>              Location of legal notices             \n\
+  \  --libs <path>                       Location of native libraries          \n\
+  \  --main-class <String: class-name>   Main class                            \n\
+  \  --man-pages <path>                  Location of man pages                 \n\
+  \  --module-version <module-version>   Module version                        \n\
+  \  -p, --module-path <path>            Module path                           \n\
+  \  --target-platform <String: target-  Target platform                       \n\
+  \    platform>                                                               \n\
+  \  --version                           Version information                   \n\
+  \  @<filename>                         Read options from the specified file  \n"
+generated_using:
+- --help

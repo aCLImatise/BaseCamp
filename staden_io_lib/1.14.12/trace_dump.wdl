@@ -2,7 +2,7 @@ version 1.0
 
 task TraceDump {
   input {
-    String trace_file
+    File trace_file
   }
   command <<<
     trace_dump \
@@ -10,5 +10,8 @@ task TraceDump {
   >>>
   parameter_meta {
     trace_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

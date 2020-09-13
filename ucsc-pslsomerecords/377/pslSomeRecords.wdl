@@ -3,24 +3,25 @@ version 1.0
 task PslSomeRecords {
   input {
     Boolean? not
-    Boolean? t_too
+    File? t_too
     String psl_in
     String list_file
-    String psl_out
   }
   command <<<
     pslSomeRecords \
       ~{psl_in} \
       ~{list_file} \
-      ~{psl_out} \
-      ~{true="-not" false="" not} \
-      ~{true="-tToo" false="" t_too}
+      ~{if (not) then "-not" else ""} \
+      ~{if (t_too) then "-tToo" else ""}
   >>>
   parameter_meta {
     not: "- include psl if name is NOT in list"
-    t_too: "- if set, the list file is two column, qName and tName. In this case only records matching on both q and t are output"
+    t_too: "- if set, the list file is two column, qName and tName.\\nIn this case only records matching on both q and t are\\noutput\\n"
     psl_in: ""
     list_file: ""
-    psl_out: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_t_too = "${in_t_too}"
   }
 }

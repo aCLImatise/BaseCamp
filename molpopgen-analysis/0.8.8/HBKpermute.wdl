@@ -4,4 +4,7 @@ task HBKpermute {
   command <<<
     HBKpermute
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

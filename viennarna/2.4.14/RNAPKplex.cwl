@@ -1,78 +1,81 @@
 class: CommandLineTool
 id: ../../../RNAPKplex.cwl
 inputs:
-- id: detailed_help
-  doc: Print help, including all details and hidden options, and exit
+- id: in_detailed_help
+  doc: "Print help, including all details and hidden\noptions, and exit"
   type: boolean
   inputBinding:
     prefix: --detailed-help
-- id: cut_off
-  doc: Report only base pairs with an average probability > cutoff in the dot plot
-    (default=`0.01')
+- id: in_cut_off
+  doc: "Report only base pairs with an average probability\n> cutoff in the dot plot\n\
+    (default=`0.01')"
   type: double
   inputBinding:
     prefix: --cutoff
-- id: temp
-  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
-  type: string
+- id: in_temp
+  doc: "Rescale energy parameters to a temperature of temp\nC. Default is 37C."
+  type: long
   inputBinding:
     prefix: --temp
-- id: no_tetra
-  doc: Do not include special stabilizing energies for certain tetra-loops. Mostly
-    for testing. (default=off)
+- id: in_no_tetra
+  doc: "Do not include special stabilizing energies for\ncertain tetra-loops. Mostly\
+    \ for testing.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noTetra
-- id: no_lp
-  doc: Produce structures without lonely pairs (helices of length 1). (default=off)
+- id: in_no_lp
+  doc: "Produce structures without lonely pairs (helices\nof length 1).\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noLP
-- id: no_gu
-  doc: Do not allow GU pairs (default=off)
+- id: in_no_gu
+  doc: "Do not allow GU pairs\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noGU
-- id: no_closing_gu
-  doc: Do not allow GU pairs at the end of helices (default=off)
+- id: in_no_closing_gu
+  doc: "Do not allow GU pairs at the end of helices\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noClosingGU
-- id: noconv
-  doc: Do not automatically substitude nucleotide "T" with "U" (default=off)
+- id: in_noconv
+  doc: "Do not automatically substitude nucleotide \"T\"\nwith \"U\"\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noconv
-- id: nsp
-  doc: Allow other pairs in addition to the usual AU,GC,and GU pairs. (default=`empty')
+- id: in_nsp
+  doc: "Allow other pairs in addition to the usual\nAU,GC,and GU pairs.\n(default=`empty')"
   type: string
   inputBinding:
     prefix: --nsp
-- id: energy_cut_off
-  doc: Energy cutoff or pseudoknot initiation cost. Minimum energy gain of a pseudoknot
-    interaction for it to be returned. Pseudoknots with smaller energy gains are rejected.
-    (default=`-8.10')
-  type: string
+- id: in_energy_cut_off
+  doc: "Energy cutoff or pseudoknot initiation cost.\nMinimum energy gain of a pseudoknot\
+    \ interaction\nfor it to be returned. Pseudoknots with smaller\nenergy gains are\
+    \ rejected.\n(default=`-8.10')"
+  type: double
   inputBinding:
     prefix: --energyCutoff
-- id: param_file
-  doc: Read energy parameters from paramfile, instead of using the default parameter
-    set.
-  type: string
+- id: in_param_file
+  doc: "Read energy parameters from paramfile, instead of\nusing the default parameter\
+    \ set."
+  type: File
   inputBinding:
     prefix: --paramFile
-- id: verbose
-  doc: print verbose output (default=off)
+- id: in_verbose
+  doc: "print verbose output\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: sub_opts
-  doc: print suboptimal structures whose energy difference of the pseudoknot to the
-    optimum pseudoknot is smaller than the given value. (default=`0.0')
-  type: string
+- id: in_sub_opts
+  doc: "print suboptimal structures whose energy\ndifference of the pseudoknot to\
+    \ the optimum\npseudoknot is smaller than the given value.\n(default=`0.0')"
+  type: double
   inputBinding:
     prefix: --subopts
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - RNAPKplex

@@ -11,4 +11,7 @@ task CheckReference {
   parameter_meta {
     ref: "samtools reference sequence (required)"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,47 +1,55 @@
 class: CommandLineTool
 id: ../../../funannotate_mask.cwl
 inputs:
-- id: input
+- id: in_input
   doc: Multi-FASTA genome file. (Required)
   type: boolean
   inputBinding:
     prefix: --input
-- id: out
+- id: in_out
   doc: Output softmasked FASTA file. (Required)
-  type: boolean
+  type: File
   inputBinding:
     prefix: --out
-- id: method
+- id: in_method
   doc: 'Method to use. Default: tantan [repeatmasker, repeatmodeler]'
   type: boolean
   inputBinding:
     prefix: --method
-- id: repeatmasker_species
+- id: in_repeatmasker_species
   doc: Species to use for RepeatMasker
   type: boolean
   inputBinding:
     prefix: --repeatmasker_species
-- id: repeat_modeler_lib
+- id: in_repeat_modeler_lib
   doc: Custom repeat database (FASTA format)
   type: boolean
   inputBinding:
     prefix: --repeatmodeler_lib
-- id: cpus
+- id: in_cpus
   doc: 'Number of cpus to use. Default: 2'
   type: boolean
   inputBinding:
     prefix: --cpus
-- id: debug
+- id: in_debug
   doc: Keep intermediate files
   type: boolean
   inputBinding:
     prefix: --debug
-- id: arguments
+- id: in_arguments
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: Output softmasked FASTA file. (Required)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - funannotate

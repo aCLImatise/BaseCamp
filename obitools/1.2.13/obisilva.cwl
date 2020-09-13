@@ -1,58 +1,61 @@
 class: CommandLineTool
 id: ../../../obisilva.cwl
 inputs:
-- id: debug
+- id: in_debug
   doc: Set logging in debug mode
   type: boolean
   inputBinding:
     prefix: --DEBUG
-- id: without_progress_bar
+- id: in_without_progress_bar
   doc: desactivate progress bar
   type: boolean
   inputBinding:
     prefix: --without-progress-bar
-- id: ssu
+- id: in_ssu
   doc: specify that you are interested in the SSU database
   type: boolean
   inputBinding:
     prefix: --ssu
-- id: lsu
+- id: in_lsu
   doc: specify that you are interested in the LSU database
   type: boolean
   inputBinding:
     prefix: --lsu
-- id: parc
-  doc: specify that you are interested in the parc version of the database
+- id: in_parc
+  doc: "specify that you are interested in the parc version of\nthe database"
   type: boolean
   inputBinding:
     prefix: --parc
-- id: ref
-  doc: specify that you are interested in the reference version of the database
+- id: in_ref
+  doc: "specify that you are interested in the reference\nversion of the database"
   type: boolean
   inputBinding:
     prefix: --ref
-- id: nr
-  doc: specify that you are interested in the non redundant version of the database
+- id: in_nr
+  doc: "specify that you are interested in the non redundant\nversion of the database"
   type: boolean
   inputBinding:
     prefix: --nr
-- id: trunc
-  doc: specify that you are interested in the truncated version of database
+- id: in_trunc
+  doc: "specify that you are interested in the truncated\nversion of database"
   type: boolean
   inputBinding:
     prefix: --trunc
-- id: local_db
-  doc: Local copy of the files located in the specified directory will be used instead
-    of those present on the ARB-Silva web site
-  type: string
+- id: in_local_db
+  doc: "Local copy of the files located in the specified\ndirectory will be used instead\
+    \ of those present on the\nARB-Silva web site"
+  type: Directory
   inputBinding:
     prefix: --localdb
-- id: _mintaxid_minimal
-  doc: '####, --min-taxid=#### minimal taxid for the species taxid'
+- id: in__mintaxidminimal_taxid
+  doc: "####, --min-taxid=####\nminimal taxid for the species taxid\n"
   type: boolean
   inputBinding:
     prefix: -m
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - obisilva

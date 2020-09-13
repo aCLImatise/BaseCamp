@@ -4,4 +4,7 @@ task CactusCalculateMappingQualities {
   command <<<
     cactus_calculateMappingQualities
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

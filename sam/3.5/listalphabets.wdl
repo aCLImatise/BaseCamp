@@ -14,4 +14,7 @@ task Listalphabets {
     option: ""
     run_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

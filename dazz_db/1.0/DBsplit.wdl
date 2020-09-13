@@ -2,19 +2,22 @@ version 1.0
 
 task DBsplit {
   input {
-    Boolean? a
     Boolean? x
+    Boolean? a
     Int? var_int
   }
   command <<<
     DBsplit \
       ~{var_int} \
-      ~{true="-a" false="" a} \
-      ~{true="-x" false="" x}
+      ~{if (x) then "-x" else ""} \
+      ~{if (a) then "-a" else ""}
   >>>
   parameter_meta {
-    a: ""
     x: ""
+    a: ""
     var_int: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

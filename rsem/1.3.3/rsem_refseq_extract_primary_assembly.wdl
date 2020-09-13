@@ -1,17 +1,10 @@
 version 1.0
 
-task RsemRefseqExtractPrimaryAssembly {
-  input {
-    String input_top_level_assembly_dot_fna
-    String output_primary_assembly_dot_fna
-  }
+task Rsemrefseqextractprimaryassembly {
   command <<<
-    rsem-refseq-extract-primary-assembly \
-      ~{input_top_level_assembly_dot_fna} \
-      ~{output_primary_assembly_dot_fna}
+    rsem_refseq_extract_primary_assembly
   >>>
-  parameter_meta {
-    input_top_level_assembly_dot_fna: ""
-    output_primary_assembly_dot_fna: ""
+  output {
+    File out_stdout = stdout()
   }
 }

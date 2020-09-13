@@ -14,4 +14,7 @@ task Contig2contigSeqfile {
     contig_file: ""
     out_contig_file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

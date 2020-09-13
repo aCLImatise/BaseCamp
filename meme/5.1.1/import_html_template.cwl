@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../import_html_template.cwl
 inputs:
-- id: variable_name
+- id: in_variable_name
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: file_name
+- id: in_file_name
   doc: ''
   type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - import-html-template

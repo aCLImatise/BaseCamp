@@ -6,19 +6,19 @@ task Pash2SAM {
     Boolean? fast_q_file
     Boolean? references_equ_nces
     Boolean? bisulfite_seq_flag
-    Boolean? sam_file
+    File? sam_file
     Boolean? sample
     Boolean? center
   }
   command <<<
     pash2SAM \
-      ~{true="--pashMappings" false="" pash_mappings} \
-      ~{true="--fastqFile" false="" fast_q_file} \
-      ~{true="--referenceSequnces" false="" references_equ_nces} \
-      ~{true="--bisulfiteSeqFlag" false="" bisulfite_seq_flag} \
-      ~{true="--SAMFile" false="" sam_file} \
-      ~{true="--sample" false="" sample} \
-      ~{true="--center" false="" center}
+      ~{if (pash_mappings) then "--pashMappings" else ""} \
+      ~{if (fast_q_file) then "--fastqFile" else ""} \
+      ~{if (references_equ_nces) then "--referenceSequnces" else ""} \
+      ~{if (bisulfite_seq_flag) then "--bisulfiteSeqFlag" else ""} \
+      ~{if (sam_file) then "--SAMFile" else ""} \
+      ~{if (sample) then "--sample" else ""} \
+      ~{if (center) then "--center" else ""}
   >>>
   parameter_meta {
     pash_mappings: "| -p    pash mappings file"
@@ -28,5 +28,9 @@ task Pash2SAM {
     sam_file: "| -S    output SAM file"
     sample: "| -s    sample name"
     center: "| -C    center name"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_sam_file = "${in_sam_file}"
   }
 }

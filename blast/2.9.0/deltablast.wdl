@@ -4,4 +4,7 @@ task Deltablast {
   command <<<
     deltablast
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

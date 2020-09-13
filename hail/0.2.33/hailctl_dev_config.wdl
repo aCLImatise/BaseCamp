@@ -14,7 +14,10 @@ task HailctlDevConfig {
   >>>
   parameter_meta {
     location: "Location. (default: external)"
-    override: "List of comma-separated service=namespace overrides. (default: none)"
-    namespace: "Default namespace. Show the current configuration if not specified."
+    override: "List of comma-separated service=namespace overrides.\\n(default: none)\\n"
+    namespace: "Default namespace. Show the current configuration if\\nnot specified."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

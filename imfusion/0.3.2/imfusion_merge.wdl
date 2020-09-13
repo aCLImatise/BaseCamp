@@ -1,14 +1,14 @@
 version 1.0
 
-task ImfusionMerge {
+task Imfusionmerge {
   input {
     Array[String] sample_dirs
-    String? output_path_merged_insertion
+    File? output_path_merged_insertion
     Array[String] names
-    String? output_expression
+    File? output_expression
   }
   command <<<
-    imfusion-merge \
+    imfusion_merge \
       ~{if defined(sample_dirs) then ("--sample_dirs " +  '"' + sample_dirs + '"') else ""} \
       ~{if defined(output_path_merged_insertion) then ("--output " +  '"' + output_path_merged_insertion + '"') else ""} \
       ~{if defined(names) then ("--names " +  '"' + names + '"') else ""} \
@@ -17,7 +17,12 @@ task ImfusionMerge {
   parameter_meta {
     sample_dirs: "Path to sample directories."
     output_path_merged_insertion: "Output path for merged insertion file."
-    names: "Alternative sample names to use for samples in merged dataset."
-    output_expression: "Output path for merged expression file."
+    names: "Alternative sample names to use for samples in merged\\ndataset."
+    output_expression: "Output path for merged expression file.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_path_merged_insertion = "${in_output_path_merged_insertion}"
+    File out_output_expression = "${in_output_expression}"
   }
 }

@@ -1,33 +1,41 @@
 class: CommandLineTool
 id: ../../../svtools_prune.cwl
 inputs:
-- id: distance
-  doc: max separation distance (bp) of adjacent loci in cluster [50]
+- id: in_distance
+  doc: "max separation distance (bp) of adjacent loci in\ncluster [50]"
   type: long
   inputBinding:
     prefix: --distance
-- id: eval_param
-  doc: evaluating parameter for choosing best bedpe in a cluster(e.g. af=AlleleFrequency
-    default:af)
+- id: in_eval_param
+  doc: "evaluating parameter for choosing best bedpe in a\ncluster(e.g. af=AlleleFrequency\
+    \ default:af)"
   type: string
   inputBinding:
     prefix: --eval-param
-- id: is_sorted
-  doc: specify if an input file is sorted. Sort with svtools bedpesort. (default=False)
+- id: in_is_sorted
+  doc: "specify if an input file is sorted. Sort with svtools\nbedpesort. (default=False)"
   type: boolean
   inputBinding:
     prefix: --is-sorted
-- id: output
+- id: in_output
   doc: 'output bedpe to write (default: stdout)'
   type: string
   inputBinding:
     prefix: --output
-- id: tempdir
+- id: in_tempdir
   doc: Directory for temp file downloads
-  type: string
+  type: File
   inputBinding:
     prefix: --tempdir
-outputs: []
+- id: in_stdin_dot
+  doc: 'optional arguments:'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svtools

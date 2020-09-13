@@ -9,6 +9,9 @@ task PATHOGIST {
       ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""}
   >>>
   parameter_meta {
-    loglevel: "Set the logging level"
+    loglevel: "Set the logging level\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

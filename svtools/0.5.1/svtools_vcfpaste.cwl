@@ -1,27 +1,31 @@
 class: CommandLineTool
 id: ../../../svtools_vcfpaste.cwl
 inputs:
-- id: vcf_list
-  doc: file containing a line-delimited list of VCF files to paste (required)
+- id: in_vcf_list
+  doc: "file containing a line-delimited list of VCF files to\npaste (required)"
   type: File
   inputBinding:
     prefix: --vcf-list
-- id: master
-  doc: VCF file to set first 8 columns of variant info (otherwise first file in --vcf-list)
-  type: string
+- id: in_master
+  doc: "VCF file to set first 8 columns of variant info\n(otherwise first file in\
+    \ --vcf-list)"
+  type: File
   inputBinding:
     prefix: --master
-- id: tempdir
+- id: in_tempdir
   doc: Directory for temp file downloads
-  type: string
+  type: File
   inputBinding:
     prefix: --tempdir
-- id: sum_quals
+- id: in_sum_quals
   doc: sum QUAL scores of input VCFs as output QUAL score
   type: boolean
   inputBinding:
     prefix: --sum-quals
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svtools

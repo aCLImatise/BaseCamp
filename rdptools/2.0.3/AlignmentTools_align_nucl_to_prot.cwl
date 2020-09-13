@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../AlignmentTools_align_nucl_to_prot.cwl
 inputs:
-- id: align_nucleotide_to_protein
+- id: in_align_nucleotide_to_protein
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: aligned_prot_seqs
+- id: in_aligned_prot_seqs
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: unaligned_nucl_seqs
+- id: in_unaligned_nucl_seqs
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: aligned_nucl_out
+- id: in_aligned_nucl_out
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: stats_out
+- id: in_stats_out
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - AlignmentTools

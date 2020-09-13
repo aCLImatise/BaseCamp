@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../DAStrim.cwl
 inputs:
-- id: v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: g
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -g
-- id: b
+- id: in_b
   doc: ''
   type: boolean
   inputBinding:
     prefix: -b
-- id: var_3
+- id: in_g
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -g
+- id: in_v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: in_int
   doc: ''
   type: long
   inputBinding:
     position: 0
-- id: var_4
-  doc: ''
-  type: long
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - DAStrim

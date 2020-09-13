@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- mb-remove-duplicates
+- input_fastq
 positional:
 - !Positional
   description: ''
@@ -12,10 +15,9 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- mb-remove-duplicates
-- input_fastq
 parent: &id002 !Command
+  command:
+  - mb-remove-duplicates
   positional: []
   named:
   - !Flag
@@ -25,12 +27,13 @@ parent: &id002 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - mb-remove-duplicates
   parent:
   subcommands:
   - *id001
   - !Command
+    command:
+    - mb-remove-duplicates
+    - output_fastq
     positional:
     - !Positional
       description: ''
@@ -54,11 +57,9 @@ parent: &id002 !Command
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - mb-remove-duplicates
-    - output_fastq
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -71,6 +72,7 @@ parent: &id002 !Command
       mb-remove-duplicates: error: argument input_fastq: 'output_fastq' does not exist\n"
     generated_using: &id003
     - --help
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -86,6 +88,7 @@ parent: &id002 !Command
     \ help message and exit\n  --verbose, -v  verbose output\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

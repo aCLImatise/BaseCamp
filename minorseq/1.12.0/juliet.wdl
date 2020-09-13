@@ -19,21 +19,21 @@ task Juliet {
   command <<<
     juliet \
       ~{source} \
-      ~{true="--config" false="" config} \
-      ~{true="--mode-phasing" false="" mode_phasing} \
-      ~{true="--region" false="" region} \
-      ~{true="--drm-only" false="" drm_only} \
-      ~{true="--min-perc" false="" min_perc} \
-      ~{true="--max-perc" false="" max_perc} \
-      ~{true="--sub" false="" sub} \
-      ~{true="--del" false="" del} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--emit-tool-contract" false="" emit_tool_contract} \
-      ~{true="--resolved-tool-contract" false="" resolved_tool_contract}
+      ~{if (config) then "--config" else ""} \
+      ~{if (mode_phasing) then "--mode-phasing" else ""} \
+      ~{if (region) then "--region" else ""} \
+      ~{if (drm_only) then "--drm-only" else ""} \
+      ~{if (min_perc) then "--min-perc" else ""} \
+      ~{if (max_perc) then "--max-perc" else ""} \
+      ~{if (sub) then "--sub" else ""} \
+      ~{if (del) then "--del" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (emit_tool_contract) then "--emit-tool-contract" else ""} \
+      ~{if (resolved_tool_contract) then "--resolved-tool-contract" else ""}
   >>>
   parameter_meta {
-    config: "Defines genes of interest within the reference for reporting purposes. Enter either 1) the predefined target config \"HIV_HXB2\" or a custom target config through either 2a) the path to the target config JSON file or 2b) the JSON string."
+    config: "Defines genes of interest within the reference for reporting purposes. Enter either 1) the predefined target config \\\"HIV_HXB2\\\" or a custom target config through either 2a) the path to the target config JSON file or 2b) the JSON string."
     mode_phasing: "Phase variants and cluster haplotypes."
     region: "Clip reads to this genomic region. Empty means all reads."
     drm_only: "Only report variants that confer drug resistance, as listed in the target configuration file."
@@ -46,5 +46,8 @@ task Juliet {
     emit_tool_contract: "Emit tool contract."
     resolved_tool_contract: "Use args from resolved tool contract."
     source: "Source BAM or DataSet XML file."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

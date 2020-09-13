@@ -1,19 +1,27 @@
 class: CommandLineTool
 id: ../../../anvi_script_gen_CPR_classifier.cwl
 inputs:
-- id: output
-  doc: Output file name for the classifier.
-  type: string
+- id: in_output
+  doc: "Output file name for the classifier.\n"
+  type: File
   inputBinding:
     prefix: --output
-- id: matrix_file
-  doc: TAB-delimited matrix of CPR genome names, classes, and presence absence of
-    single-copy genes. Headers of the first two rows should be "genome", and "class".
-    The rest of the rows shold be single-copy genes.
+- id: in_matrix_file
+  doc: "TAB-delimited matrix of CPR genome names, classes, and\npresence absence of\
+    \ single-copy genes. Headers of the\nfirst two rows should be \"genome\", and\
+    \ \"class\". The\nrest of the rows shold be single-copy genes."
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output file name for the classifier.\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - anvi-script-gen-CPR-classifier

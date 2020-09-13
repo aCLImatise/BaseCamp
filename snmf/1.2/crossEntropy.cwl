@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../crossEntropy.cwl
 inputs:
-- id: _genotype_file_geno
+- id: in__genotype_file_geno
   doc: -- genotype file (in .geno format)
-  type: string
+  type: File
   inputBinding:
     prefix: -x
-- id: _number_ancestral
+- id: in_number_ancestral_populations
   doc: -- the number of ancestral populations
-  type: string
+  type: long
   inputBinding:
     prefix: -K
-- id: _haploid_diploid
+- id: in__haploid_diploid
   doc: '-- 1 if haploid, 2 if diploid              (default: 2)'
-  type: string
+  type: long
   inputBinding:
     prefix: -m
-- id: _individual_admixture
+- id: in__individual_admixture
   doc: '-- individual admixture coefficient file (default: genotype_file_I.K.Q)'
-  type: string
+  type: File
   inputBinding:
     prefix: -q
-- id: _ancestral_genotype
+- id: in__ancestral_genotype
   doc: '-- ancestral genotype frequency file       (default: genotype_file_I.K.G)'
-  type: string
+  type: File
   inputBinding:
     prefix: -g
-- id: _genotype_file_masked
+- id: in__genotype_file_masked
   doc: '-- genotype file with masked genotypes     (default: genotype_file_I.geno)'
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crossEntropy

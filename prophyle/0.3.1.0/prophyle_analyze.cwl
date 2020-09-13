@@ -1,23 +1,30 @@
 class: CommandLineTool
-id: ../../../prophyle_analyze.py.cwl
+id: ../../../prophyle_analyze.cwl
 inputs:
-- id: statistics_use_computation
-  doc: "['w', 'u', 'wl', 'ul'] Statistics to use for the computation of histograms:\
-    \ w (default) => weighted assignments; u => unique assignments, non-weighted;\
-    \ wl => weighted assignments, propagated to leaves; ul => unique assignments,\
+- id: in_statistics_use_default
+  doc: "['w', 'u', 'wl', 'ul']\nstatistics to use for the computation of\nhistograms:\
+    \ w (default) => weighted assignments; u\n=> unique assignments, non-weighted;\
+    \ wl => weighted\nassignments, propagated to leaves; ul => unique\nassignments,\
     \ propagated to leaves."
   type: boolean
   inputBinding:
     prefix: -s
-- id: selected_program_expects
-  doc: "['sam', 'bam', 'cram', 'uncompressed_bam', 'kraken', 'histo'] Input format\
-    \ of assignments [auto]. If 'histo' is selected the program expects hit count\
-    \ histograms (*_rawhits.tsv) previously computed using prophyle analyze, it merges\
-    \ them and compute OTU table from the result (assignment files are not required)"
+- id: in_input_format_assignments
+  doc: "['sam', 'bam', 'cram', 'uncompressed_bam', 'kraken', 'histo']\nInput format\
+    \ of assignments [auto]"
   type: boolean
   inputBinding:
     prefix: -f
-outputs: []
+- id: in_advanced_configuration_json
+  doc: '[STR [STR ...]]       advanced configuration (a JSON dictionary)'
+  type: boolean
+  inputBinding:
+    prefix: -c
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- prophyle_analyze.py
+- prophyle
+- analyze

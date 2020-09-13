@@ -15,9 +15,12 @@ task Xsd {
       ~{cxx_parser}
   >>>
   parameter_meta {
-    help: "Print usage information and exit. Use 'help <cmd>' for command-specific options."
+    help: "Print usage information and exit. Use\\n'help <cmd>' for command-specific options."
     version: "Print version and exit."
     cxx_tree: "Generate the C++/Tree mapping."
     cxx_parser: "Generate the C++/Parser mapping."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task CactusBlastChunkSequences {
   command <<<
     cactus_blast_chunkSequences
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../ssu_esl_selectn.cwl
 inputs:
-- id: seed
+- id: in_seed
   doc: ": set random number generator's seed to <n>  [0]"
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ssu-esl-selectn

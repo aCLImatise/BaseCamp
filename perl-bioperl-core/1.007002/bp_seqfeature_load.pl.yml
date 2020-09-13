@@ -1,0 +1,196 @@
+!Command
+command:
+- bp_seqfeature_load.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Try
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: gff_or_fasta_file1
+  optional: false
+named:
+- !Flag
+  description: DBI data source (default dbi:mysql:test)
+  synonyms:
+  - -d
+  - --dsn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The table prefix to use (default undef) Allows several independent\n\
+    sequence feature databases to be stored in a single database"
+  synonyms:
+  - -n
+  - --namespace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The type of SeqFeature to create... RTSC (default\nBio::DB::SeqFeature)"
+  synonyms:
+  - -s
+  - --seqfeature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The storage adaptor (class) to use (default DBI::mysql)
+  synonyms:
+  - -a
+  - --adaptor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Turn on verbose progress reporting (default true) Use --noverbose\
+    \ to\nswitch this off."
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Activate fast loading. (default 0) Only available for some adaptors.
+  synonyms:
+  - -f
+  - --fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify temporary directory for fast loading (default\nFile::Spec->tmpdir())"
+  synonyms:
+  - -T
+  - --temporary-directory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If true, then ignore ##sequence-region directives in the GFF3 file\n\
+    (default, create a feature for each region)"
+  synonyms:
+  - -i
+  - --ignore-seqregion
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Create the database and reinitialize it (default false) Note, this\n\
+    will erase previous database contents, if any."
+  synonyms:
+  - -c
+  - --create
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: User to connect to database as
+  synonyms:
+  - -u
+  - --user
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Password to use to connect to database
+  synonyms:
+  - -p
+  - --password
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compress database tables to save space (default false)
+  synonyms:
+  - -z
+  - --zip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Turn on indexing of subfeatures (default true) Use --nosubfeatures\n\
+    to switch this off."
+  synonyms:
+  - -S
+  - --subfeatures
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Index the attribute table for full-text search (default false).\n\
+    Applicable only when --create is specified. Currently applicable to\nthe DBI::SQLite\
+    \ storage adaptor only (using the most recent\nsupported FTS indexing method,\
+    \ which may not be portable to older\nDBI::SQLite versions)."
+  synonyms:
+  - --fts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Generate summary statistics for coverage graphs (default false) This\n\
+    can be run on a previously loaded database or during the load. It\nwill default\
+    \ to true if --create is used."
+  synonyms:
+  - --summary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not generate summary statistics to save some space and load time\n\
+    (default if --create is not specified, use this option to explicitly\nturn off\
+    \ summary statistics when --create is specified)"
+  synonyms:
+  - -N
+  - --nosummary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't create an Alias attribute whose value is the target_id in a\n\
+    Target attribute (if the feature contains a Target attribute, the\ndefault is\
+    \ to create an Alias attribute whose value is the target_id\nin the Target attribute)"
+  synonyms:
+  - --noalias-target
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n     bp_seqfeature_load.pl [options] gff_or_fasta_file1 [gff_or_fasta_file2\
+  \ [...]]\n\n    Try 'bp_seqfeature_load.pl --help' or '--man' for more information.\n\
+  \nOptions:\n    -d, --dsn\n        DBI data source (default dbi:mysql:test)\n\n\
+  \    -n, --namespace\n        The table prefix to use (default undef) Allows several\
+  \ independent\n        sequence feature databases to be stored in a single database\n\
+  \n    -s, --seqfeature\n        The type of SeqFeature to create... RTSC (default\n\
+  \        Bio::DB::SeqFeature)\n\n    -a, --adaptor\n        The storage adaptor\
+  \ (class) to use (default DBI::mysql)\n\n    -v, --verbose\n        Turn on verbose\
+  \ progress reporting (default true) Use --noverbose to\n        switch this off.\n\
+  \n    -f, --fast\n        Activate fast loading. (default 0) Only available for\
+  \ some adaptors.\n\n    -T, --temporary-directory\n        Specify temporary directory\
+  \ for fast loading (default\n        File::Spec->tmpdir())\n\n    -i, --ignore-seqregion\n\
+  \        If true, then ignore ##sequence-region directives in the GFF3 file\n  \
+  \      (default, create a feature for each region)\n\n    -c, --create\n       \
+  \ Create the database and reinitialize it (default false) Note, this\n        will\
+  \ erase previous database contents, if any.\n\n    -u, --user\n        User to connect\
+  \ to database as\n\n    -p, --password\n        Password to use to connect to database\n\
+  \n    -z, --zip\n        Compress database tables to save space (default false)\n\
+  \n    -S, --subfeatures\n        Turn on indexing of subfeatures (default true)\
+  \ Use --nosubfeatures\n        to switch this off.\n\n    --fts\n        Index the\
+  \ attribute table for full-text search (default false).\n        Applicable only\
+  \ when --create is specified. Currently applicable to\n        the DBI::SQLite storage\
+  \ adaptor only (using the most recent\n        supported FTS indexing method, which\
+  \ may not be portable to older\n        DBI::SQLite versions).\n\n    --summary\n\
+  \        Generate summary statistics for coverage graphs (default false) This\n\
+  \        can be run on a previously loaded database or during the load. It\n   \
+  \     will default to true if --create is used.\n\n    -N, --nosummary\n       \
+  \ Do not generate summary statistics to save some space and load time\n        (default\
+  \ if --create is not specified, use this option to explicitly\n        turn off\
+  \ summary statistics when --create is specified)\n\n    --noalias-target\n     \
+  \   Don't create an Alias attribute whose value is the target_id in a\n        Target\
+  \ attribute (if the feature contains a Target attribute, the\n        default is\
+  \ to create an Alias attribute whose value is the target_id\n        in the Target\
+  \ attribute)\n\n    Please see http://www.sequenceontology.org/gff3.shtml for information\n\
+  \    about the GFF3 format. BioPerl extends the format slightly by adding a\n  \
+  \  ##index-subfeatures directive. Set this to a true value if you wish the\n   \
+  \ database to be able to retrieve a feature's individual parts (such as\n    the\
+  \ exons of a transcript) independently of the top level feature:\n\n      ##index-subfeatures\
+  \ 1\n\n    It is also possible to control the indexing of subfeatures on a\n   \
+  \ case-by-case basis by adding \"index=1\" or \"index=0\" to the feature's\n   \
+  \ attribute list. This should only be used for subfeatures.\n\n    Subfeature indexing\
+  \ is true by default. Set to false (0) to save lots of\n    database space and speed\
+  \ performance. You may use --nosubfeatures to\n    force this.\n\n"
+generated_using:
+- --help

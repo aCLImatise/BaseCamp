@@ -1,20 +1,10 @@
 version 1.0
 
-task _bdftogd {
-  input {
-    String bdf_to_gd
-    String fontname
-    File filename
-  }
+task Bdftogd {
   command <<<
-    _bdftogd \
-      ~{bdf_to_gd} \
-      ~{fontname} \
-      ~{filename}
+    _bdftogd
   >>>
-  parameter_meta {
-    bdf_to_gd: ""
-    fontname: ""
-    filename: ""
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../Linearize.cwl
 inputs:
-- id: b
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -b
-- id: version
+- id: in_version
   doc: ''
   type: string
   inputBinding:
     prefix: -version
-- id: output_text
+- id: in_b
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -b
+- id: in_output_text
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: an_k
+- id: in_an_k
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: bank_name
+- id: in_bank_name
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - Linearize

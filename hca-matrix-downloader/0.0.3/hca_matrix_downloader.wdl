@@ -1,9 +1,9 @@
 version 1.0
 
-task HcaMatrixDownloader {
+task Hcamatrixdownloader {
   input {
     String? project
-    String? query
+    Int? query
     String? format
     String? out_prefix
     String download
@@ -12,7 +12,7 @@ task HcaMatrixDownloader {
     String hca
   }
   command <<<
-    hca-matrix-downloader \
+    hca_matrix_downloader \
       ~{download} \
       ~{data} \
       ~{via} \
@@ -23,13 +23,16 @@ task HcaMatrixDownloader {
       ~{if defined(out_prefix) then ("--outprefix " +  '"' + out_prefix + '"') else ""}
   >>>
   parameter_meta {
-    project: "The project's Project Title, Project Label or link- derived ID, obtained from the HCA DCP, wrapped in quotes."
-    query: "A complete /v1/matrix/ POST query in JSON format. Consult https://matrix.dev.data.humancellatlas.org/ for details."
-    format: "Format to download matrix in: loom, csv or mtx (Matrix Market). Defaults to loom."
-    out_prefix: "Output prefix for downloaded matrix. Leave default name (the Matrix API request ID) if not specified."
+    project: "The project's Project Title, Project Label or link-\\nderived ID, obtained from the HCA DCP, wrapped in\\nquotes."
+    query: "A complete /v1/matrix/ POST query in JSON format.\\nConsult https://matrix.dev.data.humancellatlas.org/\\nfor details."
+    format: "Format to download matrix in: loom, csv or mtx (Matrix\\nMarket). Defaults to loom."
+    out_prefix: "Output prefix for downloaded matrix. Leave default\\nname (the Matrix API request ID) if not specified.\\n"
     download: ""
     data: ""
     via: ""
     hca: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

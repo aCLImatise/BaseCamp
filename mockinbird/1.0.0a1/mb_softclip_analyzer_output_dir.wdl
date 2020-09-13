@@ -1,6 +1,6 @@
 version 1.0
 
-task MbSoftclipAnalyzerOutputDir {
+task MbsoftclipanalyzerOutputDir {
   input {
     String? top_n
     String mb_soft_clip_analyzer
@@ -8,7 +8,7 @@ task MbSoftclipAnalyzerOutputDir {
     String output_dir
   }
   command <<<
-    mb-softclip-analyzer output_dir \
+    mb_softclip_analyzer output_dir \
       ~{mb_soft_clip_analyzer} \
       ~{bam_file} \
       ~{output_dir} \
@@ -19,5 +19,8 @@ task MbSoftclipAnalyzerOutputDir {
     mb_soft_clip_analyzer: ""
     bam_file: ""
     output_dir: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

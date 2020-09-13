@@ -1,10 +1,23 @@
 !Command
-positional: []
+command:
+- kmds
+positional:
+- !Positional
+  description: --max_length arg (=100)  maximum kmer length
+  position: 0
+  name: file
+  optional: false
 named:
 - !Flag
-  description: '[ --kmers ] arg       dsm kmer output file (not needed if using  --mds_concat)'
+  description: '[ --kmers ] arg       dsm kmer output file (not needed if using'
   synonyms:
   - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: )
+  synonyms:
+  - --mds_concat
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -32,14 +45,6 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: list of subsampled matrices to use in MDS. Performs  only MDS; implies
-    --no_filtering
-  synonyms:
-  - --mds_concat
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
   description: (=10)           number of principal coordinates to output
   synonyms:
   - --pc
@@ -61,17 +66,10 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: turn off all filtering and do not output new kmer  file
+  description: turn off all filtering and do not output new kmer
   synonyms:
   - --no_filtering
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: (=100)  maximum kmer length
-  synonyms:
-  - --max_length
-  args: !SimpleFlagArg
-    name: arg
   optional: true
 - !Flag
   description: (=0.01)        minimum kmer frequency
@@ -87,10 +85,9 @@ named:
   args: !SimpleFlagArg
     name: arg
   optional: true
-command:
-- kmds
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: '[ --help ]            full help message'
   synonyms:

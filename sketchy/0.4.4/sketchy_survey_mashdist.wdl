@@ -5,7 +5,7 @@ task SketchySurveyMashdist {
     File? fast_a
     File? index
     File? path_output_file
-    String? km_er_size
+    Int? km_er_size
     Int? sketch_size
   }
   command <<<
@@ -17,10 +17,14 @@ task SketchySurveyMashdist {
       ~{if defined(sketch_size) then ("--sketch_size " +  '"' + sketch_size + '"') else ""}
   >>>
   parameter_meta {
-    fast_a: "Path to list containing path to genomes per line [required]  [required]"
+    fast_a: "Path to list containing path to genomes per line\\n[required]  [required]"
     index: "Path to lineage index file [required]  [required]"
     path_output_file: "Path to output file [required]"
-    km_er_size: "K-mer size to estimate genome distance between all genomes"
-    sketch_size: "Sketch size to estimate genome distance between all genomes"
+    km_er_size: "K-mer size to estimate genome distance between\\nall genomes"
+    sketch_size: "Sketch size to estimate genome distance between\\nall genomes"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_file = "${in_path_output_file}"
   }
 }

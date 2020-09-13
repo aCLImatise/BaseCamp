@@ -1,43 +1,46 @@
 class: CommandLineTool
 id: ../../../bioformats_flanknfilter.cwl
 inputs:
-- id: type
+- id: in_type
   doc: 'the input file type (default: bed)'
   type: string
   inputBinding:
     prefix: --type
-- id: length
+- id: in_length
   doc: 'the flanking region length (default: 100)'
   type: long
   inputBinding:
     prefix: --length
-- id: strict
-  doc: 'require flanks to have exactly the specified length (it may be shorter if
-    a feature is located near a sequence start or end) (default: False)'
+- id: in_strict
+  doc: "require flanks to have exactly the specified length\n(it may be shorter if\
+    \ a feature is located near a\nsequence start or end) (default: False)\n"
   type: boolean
   inputBinding:
     prefix: --strict
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-- id: input_file
+- id: in_input_file
   doc: an input file of features to be filtered
   type: string
   inputBinding:
     position: 0
-- id: fast_a_file
+- id: in_fast_a_file
   doc: a FASTA file of sequences the features are related to
   type: string
   inputBinding:
     position: 1
-- id: output_file
+- id: in_output_file
   doc: an output file of filtered features
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bioformats

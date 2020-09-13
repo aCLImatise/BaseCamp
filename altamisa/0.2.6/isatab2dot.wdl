@@ -2,8 +2,8 @@ version 1.0
 
 task Isatab2dot {
   input {
-    String? investigation_file
-    String? output_file
+    File? investigation_file
+    File? output_file
   }
   command <<<
     isatab2dot \
@@ -12,6 +12,10 @@ task Isatab2dot {
   >>>
   parameter_meta {
     investigation_file: "Path to investigation file"
-    output_file: "Path to output file, stdout (\"-\") by default"
+    output_file: "Path to output file, stdout (\\\"-\\\") by default\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

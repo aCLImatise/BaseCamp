@@ -1,112 +1,142 @@
 class: CommandLineTool
 id: ../../../IRFinder.cwl
 inputs:
-- id: version_number_current
+- id: in_version_number_irfinder
   doc: version number of current IRFinder.
-  type: string
+  type: long
   inputBinding:
     prefix: -v
-- id: this_usage_information
+- id: in_this_usage_information
   doc: this usage information.
   type: string
   inputBinding:
     prefix: -h
-- id: fastq_default_quantifies
-  doc: FastQ (default. Quantifies intron retention from FASTQ file); BAM (quantifies
-    intron retention from a name-sorted BAM file); BuildRef (builds IRFinder reference
-    from Ensembl FTP site. Requires Internet), BuildRefDownload (only downloads FASTA
-    and GTF files from Ensembl FTP site, without building IRFinder reference. Requires
-    Internet), BuildRefProcess (builds IRFinder reference from local FASTA and GTF
-    files), BuildRefFromSTARRef (builds IRFinder reference from a local STAR reference).
-  type: string
+- id: in_fastq_default_quantifies
+  doc: "FastQ (default. Quantifies intron retention from FASTQ file);\nBAM (quantifies\
+    \ intron retention from a name-sorted BAM file);\nBuildRef (builds IRFinder reference\
+    \ from Ensembl FTP site. Requires Internet),\nBuildRefDownload (only downloads\
+    \ FASTA and GTF files from Ensembl FTP site, without building IRFinder reference.\
+    \ Requires Internet),\nBuildRefProcess (builds IRFinder reference from local FASTA\
+    \ and GTF files),\nBuildRefFromSTARRef (builds IRFinder reference from a local\
+    \ STAR reference)."
+  type: File
   inputBinding:
     prefix: -m
-- id: directory_should_yet
+- id: in_directory_should_yet
   doc: ': Directory should not yet exist, will be created.'
-  type: string
+  type: Directory
   inputBinding:
     prefix: -r
-- id: integer_parsed_mode
+- id: in_integer_parsed_mode
   doc: ": an integer that is parsed to '--sjdbOverhang' under STAR 'genomeGenerate'\
     \ mode. Default: 150."
   type: long
   inputBinding:
     prefix: -j
-- id: typically_ercc_reference
+- id: in_typically_ercc_reference
   doc: ': Typically an ERCC reference.'
   type: string
   inputBinding:
     prefix: -e
-- id: bed_regions_excluded
+- id: in_bed_regions_excluded
   doc: ': BED of regions to be excluded from analysis.'
   type: string
   inputBinding:
     prefix: -b
-- id: nonoverlapping_bed_file
+- id: in_a_bed_file
   doc: ': A non-overlapping BED file of additional Regions of Interest for read counts.'
-  type: string
+  type: File
   inputBinding:
     prefix: -R
-- id: must_same_fasta
+- id: in_existing_star_reference
+  doc: "An existing STAR reference folder.\nPlease note: By default, BuildRefFromSTARRef\
+    \ mode automatically looks for the original FASTA and GTF files used to generate\
+    \ STARRefDir.\nSpecifically, IRFinder investigates 'genomeParameters.txt' in STARRefDir.\n\
+    If both files can be located, IRFinder will continue to generate reference, ignoring\
+    \ '-f' and '-g' options.\nIf either file is missing, IRFinder will quit and you\
+    \ have to re-run it by giving both '-f' and '-g' options."
+  type: File
+  inputBinding:
+    prefix: -x
+- id: in_must_same_fasta
   doc: ': This MUST be the same FASTA file used to generate STARRefDir. Ignored when
     IRFinder can automatically locate the original file.'
-  type: string
+  type: File
   inputBinding:
     prefix: -f
-- id: must_same_gtf
+- id: in_must_same_gtf
   doc: ': This MUST be the same GTF file used to generate STARRefDir. Ignored when
     IRFinder can automatically locate the original file.'
-  type: string
+  type: File
   inputBinding:
     prefix: -g
-- id: sequence_disable_universal
+- id: in_sequence_disable_universal
   doc: "sequence: 'none' to disable. Default: Illumina Universal is trimmed."
   type: string
   inputBinding:
     prefix: -a
-- id: default_number_physical
+- id: in_default_number_physical
   doc: ': Default is the number of physical CPUs'
-  type: string
+  type: long
   inputBinding:
     prefix: -t
-- id: directory_default_current
+- id: in_directory_default_current
   doc: 'Directory: Default is the current directory.'
-  type: string
+  type: Directory
   inputBinding:
     prefix: -d
-- id: memory_mode_nosharedmemory
+- id: in_memory_mode_nosharedmemory
   doc: 'memory mode: NoSharedMemory (default), LoadAndKeep, LoadAndRemove.'
   type: string
   inputBinding:
     prefix: -s
-- id: executable_default_is
+- id: in_executable_default_is
   doc: "executable: Default is 'STAR'."
   type: string
   inputBinding:
     prefix: -S
-- id: extra_string_parsed
+- id: in_extra_string_parsed
   doc: ': an extra string that is parsed to STAR for reads alignment.'
   type: string
   inputBinding:
     prefix: -y
-- id: output_sort_fragment
+- id: in_output_sort_read
   doc: 'output: Do not sort the read fragment BAM file. Default is to sort ONLY IF
     a novosort license is present.'
-  type: string
+  type: File
   inputBinding:
     prefix: -u
-- id: memory_maximum_memory
+- id: in_memory_maximum_memory
   doc: memory. Maximum memory to use for sort, in MB. Default, auto-detected no greater
     than 10,000MB.
-  type: string
+  type: long
   inputBinding:
     prefix: -M
-- id: raw_reads_one_dot_fast_q
+- id: in_unsorted_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_ftp
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_raw_reads_one_dot_fast_q
+  doc: ''
+  type: long
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_sort_read
+  doc: 'output: Do not sort the read fragment BAM file. Default is to sort ONLY IF
+    a novosort license is present.'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_sort_read)
 cwlVersion: v1.1
 baseCommand:
 - IRFinder

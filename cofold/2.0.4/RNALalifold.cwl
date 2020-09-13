@@ -1,106 +1,117 @@
 class: CommandLineTool
 id: ../../../RNALalifold.cwl
 inputs:
-- id: span
-  doc: Set the maximum allowed separation of a base  pair to span. I.e. no pairs (i,j)
-    with  j-i>span will be allowed. (default=`70')
-  type: long
+- id: in_detailed_help
+  doc: "Print help, including all details and hidden\noptions, and exit"
+  type: boolean
   inputBinding:
-    prefix: --span
-- id: csv
-  doc: Create comma seperated output (csv) (default=off)
+    prefix: --detailed-help
+- id: in_full_help
+  doc: Print help, including hidden options, and exit
+  type: boolean
+  inputBinding:
+    prefix: --full-help
+- id: in_csv
+  doc: "Create comma seperated output (csv)\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --csv
-- id: part_func
-  doc: "[=INT]          Calculate the partition function and base  pairing probability\
-    \ matrix in addition to the  mfe structure.  (default=`1')"
+- id: in_part_func
+  doc: "[=INT]          Calculate the partition function and base\npairing probability\
+    \ matrix in addition to the\nmfe structure.  (default=`1')"
   type: boolean
   inputBinding:
     prefix: --partfunc
-- id: cut_off
-  doc: Report only base pairs with an average  probability > cutoff in the dot plot
-    (default=`0.01')
+- id: in_cut_off
+  doc: "Report only base pairs with an average\nprobability > cutoff in the dot plot\n\
+    (default=`0.01')"
   type: double
   inputBinding:
     prefix: --cutoff
-- id: mis
-  doc: 'Output "most informative sequence" instead of  simple consensus: For each
-    column of the  alignment output the set of nucleotides with  frequence greater
-    than average in IUPAC  notation. (default=off)'
+- id: in_mis
+  doc: "Output \"most informative sequence\" instead of\nsimple consensus: For each\
+    \ column of the\nalignment output the set of nucleotides with\nfrequence greater\
+    \ than average in IUPAC\nnotation.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --mis
-- id: temp
-  doc: Rescale energy parameters to a temperature of  temp C. Default is 37C.
-  type: string
+- id: in_temp
+  doc: "Rescale energy parameters to a temperature of\ntemp C. Default is 37C."
+  type: long
   inputBinding:
     prefix: --temp
-- id: no_tetra
-  doc: Do not include special tabulated stabilizing  energies for tri-, tetra- and
-    hexaloop  hairpins. Mostly for testing. (default=off)
+- id: in_no_tetra
+  doc: "Do not include special tabulated stabilizing\nenergies for tri-, tetra- and\
+    \ hexaloop\nhairpins. Mostly for testing.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noTetra
-- id: dangles
-  doc: How to treat "dangling end" energies for  bases adjacent to helices in free
-    ends and  multi-loops (default=`2')
+- id: in_dangles
+  doc: "How to treat \"dangling end\" energies for\nbases adjacent to helices in free\
+    \ ends and\nmulti-loops\n(default=`2')"
   type: long
   inputBinding:
     prefix: --dangles
-- id: no_lp
-  doc: Produce structures without lonely pairs  (helices of length 1). (default=off)
+- id: in_no_lp
+  doc: "Produce structures without lonely pairs\n(helices of length 1).\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noLP
-- id: no_gu
-  doc: Do not allow GU pairs (default=off)
+- id: in_no_gu
+  doc: "Do not allow GU pairs\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noGU
-- id: no_closing_gu
-  doc: Do not allow GU pairs at the end of helices (default=off)
+- id: in_no_closing_gu
+  doc: "Do not allow GU pairs at the end of helices\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noClosingGU
-- id: param_file
-  doc: Read energy parameters from paramfile, instead  of using the default parameter
-    set.
-  type: string
+- id: in_param_file
+  doc: "Read energy parameters from paramfile, instead\nof using the default parameter\
+    \ set."
+  type: File
   inputBinding:
     prefix: --paramFile
-- id: c_factor
-  doc: Set the weight of the covariance term in the  energy function (default=`1.0')
-  type: string
+- id: in_c_factor
+  doc: "Set the weight of the covariance term in the\nenergy function\n(default=`1.0')"
+  type: double
   inputBinding:
     prefix: --cfactor
-- id: n_factor
-  doc: Set the penalty for non-compatible sequences in  the covariance term of the
-    energy function (default=`1.0')
-  type: string
+- id: in_n_factor
+  doc: "Set the penalty for non-compatible sequences in\nthe covariance term of the\
+    \ energy function\n(default=`1.0')"
+  type: double
   inputBinding:
     prefix: --nfactor
-- id: ribo_sum_file
-  doc: use specified Ribosum Matrix instead of normal  energy model. Matrixes to use
-    should be 6x6  matrices, the order of the terms is AU, CG,  GC, GU, UA, UG.
-  type: string
+- id: in_ribo_sum_file
+  doc: "use specified Ribosum Matrix instead of normal\nenergy model. Matrixes to\
+    \ use should be 6x6\nmatrices, the order of the terms is AU, CG,\nGC, GU, UA,\
+    \ UG."
+  type: File
   inputBinding:
     prefix: --ribosum_file
-- id: ribo_sum_scoring
-  doc: use ribosum scoring matrix. The matrix is  chosen according to the minimal
-    and maximal  pairwise identities of the sequences in the  file. (default=off)
+- id: in_ribo_sum_scoring
+  doc: "use ribosum scoring matrix. The matrix is\nchosen according to the minimal\
+    \ and maximal\npairwise identities of the sequences in the\nfile.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --ribosum_scoring
-- id: structures_dot
-  doc: -h, --help                    Print help and exit --detailed-help           Print
-    help, including all details and hidden  options, and exit --full-help               Print
-    help, including hidden options, and exit -V, --version                 Print version
-    and exit
+- id: in_structures_dot
+  doc: -h, --help                    Print help and exit
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_program
+  doc: "-L, --span=INT                Set the maximum allowed separation of a base\
+    \ \npair to span. I.e. no pairs (i,j) with\nj-i>span will be allowed.\n(default=`70')"
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - RNALalifold

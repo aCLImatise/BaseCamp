@@ -3,7 +3,7 @@ version 1.0
 task FunannotateCompare {
   input {
     Boolean? list_funannotate_genome
-    Boolean? out
+    Directory? out
     Boolean? database
     Boolean? cpus
     Boolean? run_dnds
@@ -19,18 +19,18 @@ task FunannotateCompare {
   command <<<
     funannotate compare \
       ~{arguments} \
-      ~{true="--input" false="" list_funannotate_genome} \
-      ~{true="--out" false="" out} \
-      ~{true="--database" false="" database} \
-      ~{true="--cpus" false="" cpus} \
-      ~{true="--run_dnds" false="" run_dnds} \
-      ~{true="--go_fdr" false="" go_fdr} \
-      ~{true="--heatmap_stdev" false="" heat_map_stdev} \
-      ~{true="--num_orthos" false="" num_or_thos} \
-      ~{true="--bootstrap" false="" bootstrap} \
-      ~{true="--outgroup" false="" out_group} \
-      ~{true="--proteinortho" false="" protein_ortho} \
-      ~{true="--ml_method" false="" ml_method}
+      ~{if (list_funannotate_genome) then "--input" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (database) then "--database" else ""} \
+      ~{if (cpus) then "--cpus" else ""} \
+      ~{if (run_dnds) then "--run_dnds" else ""} \
+      ~{if (go_fdr) then "--go_fdr" else ""} \
+      ~{if (heat_map_stdev) then "--heatmap_stdev" else ""} \
+      ~{if (num_or_thos) then "--num_orthos" else ""} \
+      ~{if (bootstrap) then "--bootstrap" else ""} \
+      ~{if (out_group) then "--outgroup" else ""} \
+      ~{if (protein_ortho) then "--proteinortho" else ""} \
+      ~{if (ml_method) then "--ml_method" else ""}
   >>>
   parameter_meta {
     list_funannotate_genome: "List of funannotate genome folders or GBK files"
@@ -44,7 +44,11 @@ task FunannotateCompare {
     bootstrap: "Number of boostrap replicates to run with RAxML. Default: 100"
     out_group: "Name of species to use for ML outgroup. Default: no outgroup"
     protein_ortho: "ProteinOrtho5 POFF results."
-    ml_method: "Maxmimum Liklihood method: Default: raxml [raxml,iqtree]         "
+    ml_method: "Maxmimum Liklihood method: Default: raxml [raxml,iqtree]"
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
   }
 }

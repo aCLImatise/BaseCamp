@@ -1,7 +1,10 @@
 version 1.0
 
-task _frestdist {
+task Frestdist {
   command <<<
     _frestdist
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

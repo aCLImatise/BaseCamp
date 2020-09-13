@@ -11,4 +11,7 @@ task WisecondorX {
   parameter_meta {
     loglevel: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

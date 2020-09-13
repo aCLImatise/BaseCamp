@@ -1,23 +1,20 @@
 version 1.0
 
-task BiopetBamstats {
+task Biopetbamstats {
   input {
-    String bam_stats
-    String? tool_name
-    String? tool
-    String? args
+    String? log_level
+    String tool_name
   }
   command <<<
-    biopet-bamstats \
-      ~{bam_stats} \
+    biopet_bamstats \
       ~{tool_name} \
-      ~{tool} \
-      ~{args}
+      ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""}
   >>>
   parameter_meta {
-    bam_stats: ""
-    tool_name: ""
-    tool: ""
-    args: ""
+    log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
+    tool_name: "Name of the tool to execute"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

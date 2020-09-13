@@ -2,7 +2,7 @@ version 1.0
 
 task Oncofuse {
   input {
-    String? genome_assembly_version
+    Int? genome_assembly_version
     Int? number_threads_uses
     String input_file
     String input_type
@@ -19,5 +19,8 @@ task Oncofuse {
     number_threads_uses: "Number of threads, uses all available processors by default"
     input_file: ""
     input_type: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

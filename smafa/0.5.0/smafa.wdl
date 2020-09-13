@@ -7,11 +7,14 @@ task Smafa {
   }
   command <<<
     smafa \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     quiet: "Unless there is an error, do not print logging information"
     verbose: "Print extra debug logging information"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

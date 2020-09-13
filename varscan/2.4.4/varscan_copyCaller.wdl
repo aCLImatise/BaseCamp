@@ -2,16 +2,16 @@ version 1.0
 
 task VarscanCopyCaller {
   input {
-    Boolean? output_file
-    Boolean? output_hom_del_file
+    File? output_file
+    File? output_hom_del_file
     Boolean? min_coverage
     Boolean? min_tumor_coverage
     Boolean? max_hom_del_coverage
-    String? amp_threshold
-    String? del_threshold
+    Float? amp_threshold
+    Int? del_threshold
     Boolean? min_region_size
     Boolean? recenter_up
-    String? recenter_down
+    Int? recenter_down
     String? jar
     String java
     String copy_caller
@@ -22,15 +22,15 @@ task VarscanCopyCaller {
       ~{java} \
       ~{copy_caller} \
       ~{vars_can_dot_copy_number} \
-      ~{true="--output-file" false="" output_file} \
-      ~{true="--output-homdel-file" false="" output_hom_del_file} \
-      ~{true="--min-coverage" false="" min_coverage} \
-      ~{true="--min-tumor-coverage" false="" min_tumor_coverage} \
-      ~{true="--max-homdel-coverage" false="" max_hom_del_coverage} \
+      ~{if (output_file) then "--output-file" else ""} \
+      ~{if (output_hom_del_file) then "--output-homdel-file" else ""} \
+      ~{if (min_coverage) then "--min-coverage" else ""} \
+      ~{if (min_tumor_coverage) then "--min-tumor-coverage" else ""} \
+      ~{if (max_hom_del_coverage) then "--max-homdel-coverage" else ""} \
       ~{if defined(amp_threshold) then ("--amp-threshold " +  '"' + amp_threshold + '"') else ""} \
       ~{if defined(del_threshold) then ("--del-threshold " +  '"' + del_threshold + '"') else ""} \
-      ~{true="--min-region-size" false="" min_region_size} \
-      ~{true="--recenter-up" false="" recenter_up} \
+      ~{if (min_region_size) then "--min-region-size" else ""} \
+      ~{if (recenter_up) then "--recenter-up" else ""} \
       ~{if defined(recenter_down) then ("--recenter-down " +  '"' + recenter_down + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
@@ -49,5 +49,10 @@ task VarscanCopyCaller {
     java: ""
     copy_caller: ""
     vars_can_dot_copy_number: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+    File out_output_hom_del_file = "${in_output_hom_del_file}"
   }
 }

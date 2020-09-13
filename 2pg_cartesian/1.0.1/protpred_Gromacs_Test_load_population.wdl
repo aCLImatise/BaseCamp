@@ -2,6 +2,9 @@ version 1.0
 
 task ProtpredGromacsTestLoadPopulation {
   command <<<
-    protpred-Gromacs-Test_load_population
+    protpred_Gromacs_Test_load_population
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

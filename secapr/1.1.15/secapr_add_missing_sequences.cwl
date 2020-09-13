@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../secapr_add_missing_sequences.cwl
 inputs:
-- id: input
+- id: in_input
   doc: The directory containing fasta alignments
-  type: string
+  type: Directory
   inputBinding:
     prefix: --input
-- id: output
+- id: in_output
   doc: The output directory where results will be safed
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output directory where results will be safed
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - secapr

@@ -2,22 +2,22 @@ version 1.0
 
 task PyScaf {
   input {
-    String? fast_a
+    File? fast_a
     String? output_stream
-    String? threads
+    Int? threads
     String? log
     Boolean? dotplot
-    String? reference
-    String? identity
-    String? overlap
+    File? reference
+    Int? identity
+    Int? overlap
     Int? max_gap
     Boolean? no_rearrangements
     Array[String] long_reads
     Array[String] fast_q
-    String? joins
-    String? link_ratio
-    String? load
-    String? mapq
+    Int? joins
+    Int? link_ratio
+    Float? load
+    Int? mapq
   }
   command <<<
     pyScaf \
@@ -25,12 +25,12 @@ task PyScaf {
       ~{if defined(output_stream) then ("--output " +  '"' + output_stream + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
-      ~{true="--dotplot" false="" dotplot} \
+      ~{if (dotplot) then "--dotplot" else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(identity) then ("--identity " +  '"' + identity + '"') else ""} \
       ~{if defined(overlap) then ("--overlap " +  '"' + overlap + '"') else ""} \
       ~{if defined(max_gap) then ("--maxgap " +  '"' + max_gap + '"') else ""} \
-      ~{true="--norearrangements" false="" no_rearrangements} \
+      ~{if (no_rearrangements) then "--norearrangements" else ""} \
       ~{if defined(long_reads) then ("--longreads " +  '"' + long_reads + '"') else ""} \
       ~{if defined(fast_q) then ("--fastq " +  '"' + fast_q + '"') else ""} \
       ~{if defined(joins) then ("--joins " +  '"' + joins + '"') else ""} \
@@ -43,7 +43,7 @@ task PyScaf {
     output_stream: "output stream [scaffolds.fa]"
     threads: "max no. of threads to run [4]"
     log: "output log to [stderr]"
-    dotplot: "{,png,gif,pdf} generate dotplot as [png]"
+    dotplot: "{,png,gif,pdf}\\ngenerate dotplot as [png]"
     reference: "reference FastA file"
     identity: "min. identity [0.33]"
     overlap: "min. overlap  [0.66]"
@@ -55,5 +55,8 @@ task PyScaf {
     link_ratio: "max link ratio between two best contig pairs [0.7]"
     load: "align subset of reads [0.2]"
     mapq: "min mapping quality [10]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

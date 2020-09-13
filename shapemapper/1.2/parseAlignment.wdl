@@ -4,4 +4,7 @@ task ParseAlignment {
   command <<<
     parseAlignment
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,6 +1,6 @@
 version 1.0
 
-task SketchyRsHelp {
+task SketchyrsHelp {
   input {
     String for
     String more
@@ -8,7 +8,7 @@ task SketchyRsHelp {
     String try
   }
   command <<<
-    sketchy-rs help \
+    sketchy_rs help \
       ~{for} \
       ~{more} \
       ~{information} \
@@ -19,5 +19,8 @@ task SketchyRsHelp {
     more: ""
     information: ""
     try: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

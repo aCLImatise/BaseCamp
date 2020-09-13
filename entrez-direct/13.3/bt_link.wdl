@@ -1,7 +1,10 @@
 version 1.0
 
-task BtLink {
+task Btlink {
   command <<<
-    bt-link
+    bt_link
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

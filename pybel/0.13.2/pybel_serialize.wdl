@@ -5,7 +5,7 @@ task PybelSerialize {
     File? csv
     File? s_if
     File? g_sea
-    String? graph_ml
+    File? graph_ml
     File? json
     File? bel
     File path
@@ -28,5 +28,13 @@ task PybelSerialize {
     json: "Path to output a node-link JSON file."
     bel: "Output canonical BEL."
     path: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_csv = "${in_csv}"
+    File out_s_if = "${in_s_if}"
+    File out_g_sea = "${in_g_sea}"
+    File out_graph_ml = "${in_graph_ml}"
+    File out_json = "${in_json}"
   }
 }

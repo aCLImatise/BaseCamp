@@ -4,4 +4,7 @@ task REPqv {
   command <<<
     REPqv
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

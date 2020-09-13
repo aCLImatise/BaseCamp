@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../seq_to_first_iso.cwl
 inputs:
-- id: output
+- id: in_output
   doc: name of output file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: unlabelled_aa
+- id: in_unlabelled_aa
   doc: amino acids with default abundance
   type: string
   inputBinding:
     prefix: --unlabelled-aa
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-- id: input_file_name
+- id: in_input_file_name
   doc: file to parse in .tsv format
   type: string
   inputBinding:
     position: 0
-- id: sequence_col_name
+- id: in_sequence_col_name
   doc: column name with sequences
   type: string
   inputBinding:
     position: 1
-- id: charge_col_name
+- id: in_charge_col_name
   doc: column name with charges
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: name of output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - seq-to-first-iso

@@ -11,4 +11,7 @@ task ToGrimmFormat {
   parameter_meta {
     genome_n_chr_lengths: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

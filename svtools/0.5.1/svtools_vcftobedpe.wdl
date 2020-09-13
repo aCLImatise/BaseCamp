@@ -4,7 +4,7 @@ task SvtoolsVcftobedpe {
   input {
     String? vcf_input_default
     String? output_bedpe_write
-    String? tempdir
+    File? tempdir
   }
   command <<<
     svtools vcftobedpe \
@@ -16,5 +16,8 @@ task SvtoolsVcftobedpe {
     vcf_input_default: "VCF input (default: stdin)"
     output_bedpe_write: "output BEDPE to write (default: stdout)"
     tempdir: "Directory for temp file downloads"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

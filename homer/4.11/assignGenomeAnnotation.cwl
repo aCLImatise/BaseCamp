@@ -1,27 +1,64 @@
 class: CommandLineTool
 id: ../../../assignGenomeAnnotation.cwl
 inputs:
-- id: ann
+- id: in_tags
+  doc: (Use if first argument is a tag directory)
+  type: boolean
+  inputBinding:
+    prefix: -tags
+- id: in_frag_length
+  doc: '<#|auto> (Approximate fragment length, default: auto)'
+  type: boolean
+  inputBinding:
+    prefix: -fragLength
+- id: in_prioritize
+  doc: "(annotation file is just a peak file - hasn't been prioritized yet)\nA prioritized\
+    \ file will be created for future use with the program\nThis option should be\
+    \ used if the annotation file isn't prioritized"
+  type: File
+  inputBinding:
+    prefix: -prioritize
+- id: in_ann
   doc: (File to output annotations for each peak/tag, by default not created)
   type: File
   inputBinding:
     prefix: -ann
-- id: stats
+- id: in_stats
   doc: (File to output annotation statistics, default to stdout)
   type: File
   inputBinding:
     prefix: -stats
-- id: peak_file_or_tag_directory
+- id: in_peak_file_or_tag_directory
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: annotation_file
+- id: in_annotation_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_prioritize
+  doc: "(annotation file is just a peak file - hasn't been prioritized yet)\nA prioritized\
+    \ file will be created for future use with the program\nThis option should be\
+    \ used if the annotation file isn't prioritized"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_prioritize)
+- id: out_ann
+  doc: (File to output annotations for each peak/tag, by default not created)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_ann)
+- id: out_stats
+  doc: (File to output annotation statistics, default to stdout)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_stats)
 cwlVersion: v1.1
 baseCommand:
 - assignGenomeAnnotation

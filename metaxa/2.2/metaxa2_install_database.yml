@@ -1,17 +1,37 @@
 !Command
+command:
+- metaxa2_install_database
 positional: []
 named:
 - !Flag
-  description: ''
+  description: ": Specify the name of the database to install (usually a gene name)\n\
+    If not specified, the program will show a list of available database options"
   synonyms:
   - -g
-  args: !SimpleFlagArg
-    name: gene name
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? string
   optional: true
-command:
-- metaxa2_install_database
+- !Flag
+  description: ': The directory where to install the database. Default is in the metaxa2_db
+    directory in the same directory as Metaxa2 itself'
+  synonyms:
+  - -d
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? directory
+  optional: true
+- !Flag
+  description: ': The repository to download the files from. Default is http://microbiology.se/sw/metaxa2_dbs'
+  synonyms:
+  - -r
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? http-address
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

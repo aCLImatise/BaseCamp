@@ -4,4 +4,7 @@ task DBrm {
   command <<<
     DBrm
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task ContigsMerger {
   command <<<
     ContigsMerger
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

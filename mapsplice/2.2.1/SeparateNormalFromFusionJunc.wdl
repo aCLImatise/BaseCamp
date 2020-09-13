@@ -4,4 +4,7 @@ task SeparateNormalFromFusionJunc {
   command <<<
     SeparateNormalFromFusionJunc
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Snakefile {
   command <<<
     Snakefile
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

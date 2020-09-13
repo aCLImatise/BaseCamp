@@ -4,4 +4,7 @@ task StPinchesAndCactiTests {
   command <<<
     stPinchesAndCactiTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

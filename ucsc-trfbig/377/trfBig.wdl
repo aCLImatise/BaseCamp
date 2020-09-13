@@ -2,26 +2,24 @@ version 1.0
 
 task TrfBig {
   input {
-    String? bed
+    File? bed
     File? bed_at
     String? tempdir
     String? trf
-    String? max_period
+    Int? max_period
     Boolean? keep
-    String? when_used_here
+    Int? when_used_here
     String in_file
-    String outfile
   }
   command <<<
     trfBig \
       ~{in_file} \
-      ~{outfile} \
       ~{if defined(bed) then ("-bed " +  '"' + bed + '"') else ""} \
       ~{if defined(bed_at) then ("-bedAt " +  '"' + bed_at + '"') else ""} \
       ~{if defined(tempdir) then ("-tempDir " +  '"' + tempdir + '"') else ""} \
       ~{if defined(trf) then ("-trf " +  '"' + trf + '"') else ""} \
       ~{if defined(max_period) then ("-maxPeriod " +  '"' + max_period + '"') else ""} \
-      ~{true="-keep" false="" keep} \
+      ~{if (keep) then "-keep" else ""} \
       ~{if defined(when_used_here) then ("-l " +  '"' + when_used_here + '"') else ""}
   >>>
   parameter_meta {
@@ -31,8 +29,10 @@ task TrfBig {
     trf: "explicitly specifies trf executable name"
     max_period: "Maximum period size of repeat (default 2000)"
     keep: "don't delete tmp files"
-    when_used_here: "when used here, for new trf v4.09 option: maximum TR length expected (in millions) (eg, -l=3 for 3 million), Human genome hg38 would need -l=6"
+    when_used_here: "when used here, for new trf v4.09 option:\\nmaximum TR length expected (in millions)\\n(eg, -l=3 for 3 million), Human genome hg38 would need -l=6\\n"
     in_file: ""
-    outfile: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

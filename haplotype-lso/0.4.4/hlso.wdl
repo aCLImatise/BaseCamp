@@ -4,4 +4,7 @@ task Hlso {
   command <<<
     hlso
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

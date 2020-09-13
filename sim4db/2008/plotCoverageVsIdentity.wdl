@@ -4,4 +4,7 @@ task PlotCoverageVsIdentity {
   command <<<
     plotCoverageVsIdentity
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

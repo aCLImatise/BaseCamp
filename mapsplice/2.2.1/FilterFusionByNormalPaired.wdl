@@ -4,4 +4,7 @@ task FilterFusionByNormalPaired {
   command <<<
     FilterFusionByNormalPaired
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -17,4 +17,8 @@ task SbpipeMoveDatasets {
     input_path: "the path containing the input files"
     output_path: "the path to store the output files"
   }
+  output {
+    File out_stdout = stdout()
+    File out_output_path = "${in_output_path}"
+  }
 }

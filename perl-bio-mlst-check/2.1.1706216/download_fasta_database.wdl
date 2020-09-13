@@ -4,4 +4,7 @@ task DownloadFastaDatabase {
   command <<<
     download_fasta_database
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

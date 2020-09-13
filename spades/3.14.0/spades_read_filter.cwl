@@ -1,33 +1,41 @@
 class: CommandLineTool
 id: ../../../spades_read_filter.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: K-mer length
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: cov
+- id: in_cov
   doc: Median kmer count threshold (read pairs, s.t. kmer count median for BOTH reads
     LESS OR EQUAL to this value will be ignored)
   type: string
   inputBinding:
     prefix: --cov
-- id: dataset
+- id: in_dataset
   doc: Dataset description (in YAML)
   type: string
   inputBinding:
     prefix: --dataset
-- id: threads
+- id: in_threads
   doc: '# of threads to use'
   type: string
   inputBinding:
     prefix: --threads
-- id: outdir
+- id: in_outdir
   doc: Output directory to use
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: Output directory to use
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - spades-read-filter

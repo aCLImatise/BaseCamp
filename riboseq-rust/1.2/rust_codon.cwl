@@ -1,34 +1,37 @@
 class: CommandLineTool
-id: ../../../rust_codon.bak.cwl
+id: ../../../rust_codon.cwl
 inputs:
-- id: directory_path_outputfile
+- id: in_directory_path_outputfile
   doc: directory  path to outputfile, default is "codon"
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: transcriptome
-  doc: fasta file of transcripts, CDS start and end may be provided on description
-    line using tab separation e.g. >NM_0001 10 5000, otherwise it searches for longest
-    ORF
+- id: in_transcriptome
+  doc: "fasta file of transcripts, CDS start and end may be\nprovided on description\
+    \ line using tab separation e.g.\n>NM_0001 10 5000, otherwise it searches for\
+    \ longest\nORF"
   type: string
   inputBinding:
     position: 0
-- id: alignment
+- id: in_alignment
   doc: sorted bam file of alignments to transcriptome
   type: string
   inputBinding:
     position: 1
-- id: offset
+- id: in_offset
   doc: nucleotide offset to A-site
   type: string
   inputBinding:
     position: 2
-- id: lengths
-  doc: lengths of footprints included, for example 28:32 is 28,29,30,31,32
-  type: long
+- id: in_lengths
+  doc: "lengths of footprints included, for example 28:32 is\n28,29,30,31,32"
+  type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- rust_codon.bak
+- rust_codon

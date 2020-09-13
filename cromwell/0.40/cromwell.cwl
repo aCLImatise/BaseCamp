@@ -1,62 +1,70 @@
 class: CommandLineTool
 id: ../../../cromwell.cwl
 inputs:
-- id: workflow_root
+- id: in_workflow_root
   doc: Workflow root.
   type: string
   inputBinding:
     prefix: --workflow-root
-- id: inputs
+- id: in_inputs
   doc: Workflow inputs file.
-  type: string
+  type: File
   inputBinding:
     prefix: --inputs
-- id: options
+- id: in_options
   doc: Workflow options file.
-  type: string
+  type: File
   inputBinding:
     prefix: --options
-- id: type
+- id: in_type
   doc: Workflow type.
   type: string
   inputBinding:
     prefix: --type
-- id: type_version
+- id: in_type_version
   doc: Workflow type version.
   type: string
   inputBinding:
     prefix: --type-version
-- id: labels
+- id: in_labels
   doc: Workflow labels file.
-  type: string
+  type: File
   inputBinding:
     prefix: --labels
-- id: imports
+- id: in_imports
   doc: A directory or zipfile to search for workflow imports.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --imports
-- id: metadata_output
+- id: in_metadata_output
   doc: An optional directory path to output metadata.
-  type: string
+  type: File
   inputBinding:
     prefix: --metadata-output
-- id: host
+- id: in_host
   doc: Cromwell server URL.
   type: string
   inputBinding:
     prefix: --host
-- id: jar
+- id: in_jar
   doc: ''
   type: boolean
   inputBinding:
     prefix: -jar
-- id: java
+- id: in_java
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_metadata_output
+  doc: An optional directory path to output metadata.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_metadata_output)
 cwlVersion: v1.1
 baseCommand:
 - cromwell

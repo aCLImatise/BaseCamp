@@ -11,18 +11,17 @@ task TripailleAnalysisLoadFasta {
     String? re_unique_name
     String? db_ext_id
     String? re_accession
-    String? rel_type
     String? rel_subject_re
     String? rel_subject_type
     String? method
     String? match_type
     String? job_name
     Boolean? no_wait
-    String fast_a
+    String db
   }
   command <<<
     tripaille analysis load_fasta \
-      ~{fast_a} \
+      ~{db} \
       ~{if defined(organism) then ("--organism " +  '"' + organism + '"') else ""} \
       ~{if defined(organism_id) then ("--organism_id " +  '"' + organism_id + '"') else ""} \
       ~{if defined(analysis) then ("--analysis " +  '"' + analysis + '"') else ""} \
@@ -32,13 +31,12 @@ task TripailleAnalysisLoadFasta {
       ~{if defined(re_unique_name) then ("--re_uniquename " +  '"' + re_unique_name + '"') else ""} \
       ~{if defined(db_ext_id) then ("--db_ext_id " +  '"' + db_ext_id + '"') else ""} \
       ~{if defined(re_accession) then ("--re_accession " +  '"' + re_accession + '"') else ""} \
-      ~{if defined(rel_type) then ("--rel_type " +  '"' + rel_type + '"') else ""} \
       ~{if defined(rel_subject_re) then ("--rel_subject_re " +  '"' + rel_subject_re + '"') else ""} \
       ~{if defined(rel_subject_type) then ("--rel_subject_type " +  '"' + rel_subject_type + '"') else ""} \
       ~{if defined(method) then ("--method " +  '"' + method + '"') else ""} \
       ~{if defined(match_type) then ("--match_type " +  '"' + match_type + '"') else ""} \
       ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
-      ~{true="--no_wait" false="" no_wait}
+      ~{if (no_wait) then "--no_wait" else ""}
   >>>
   parameter_meta {
     organism: "Organism common name or abbreviation"
@@ -49,14 +47,16 @@ task TripailleAnalysisLoadFasta {
     re_name: "Regular expression for the name"
     re_unique_name: "Regular expression for the unique name"
     db_ext_id: "External DB ID"
-    re_accession: "Regular expression for the accession from external DB"
-    rel_type: "Relation type (part_of or derives_from)"
-    rel_subject_re: "Relation subject regular expression (used to extract id of related entity)"
-    rel_subject_type: "Relation subject type (must match already loaded data, e.g. mRNA)"
-    method: "Insertion method (insert, update or insup, default=insup (Insert and Update))  [default: insup]"
-    match_type: "Match type for already loaded features (name or uniquename; default=uniquename; used for \"Update only\" or \"Insert and update\" methods)'  [default: uniquename]"
+    re_accession: "Regular expression for the accession from external"
+    rel_subject_re: "Relation subject regular expression (used to\\nextract id of related entity)"
+    rel_subject_type: "Relation subject type (must match already loaded\\ndata, e.g. mRNA)"
+    method: "Insertion method (insert, update or insup,\\ndefault=insup (Insert and Update))  [default:\\ninsup]"
+    match_type: "Match type for already loaded features (name or\\nuniquename; default=uniquename; used for \\\"Update\\nonly\\\" or \\\"Insert and update\\\" methods)'  [default:\\nuniquename]"
     job_name: "Name of the job"
     no_wait: "Do not wait for job to complete"
-    fast_a: ""
+    db: "--rel_type TEXT          Relation type (part_of or derives_from)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

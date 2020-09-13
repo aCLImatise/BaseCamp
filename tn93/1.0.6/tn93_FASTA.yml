@@ -1,84 +1,13 @@
 &id001 !Command
+command:
+- tn93
+- FASTA
 positional: []
 named:
 - !Flag
   description: ''
   synonyms:
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -t
-  args: !SimpleFlagArg
-    name: THRESHOLD
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -a
-  args: !SimpleFlagArg
-    name: AMBIGS
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -g
-  args: !SimpleFlagArg
-    name: FRACTION
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -l
-  args: !SimpleFlagArg
-    name: OVERLAP
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -d
-  args: !SimpleFlagArg
-    name: COUNTS_IN_NAME
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -f
-  args: !SimpleFlagArg
-    name: FORMAT
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -s
-  args: !SimpleFlagArg
-    name: SECOND_FASTA
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -b
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -r
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -c
+  - -q
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -90,13 +19,86 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -q
+  - -c
   args: !EmptyFlagArg {}
   optional: true
-command:
-- tn93
-- FASTA
+- !Flag
+  description: ''
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: SECOND_FASTA
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: COUNTS_IN_NAME
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: OVERLAP
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: FRACTION
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: AMBIGS
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
 parent: !Command
+  command:
+  - tn93
   positional: []
   named:
   - !Flag
@@ -115,33 +117,33 @@ parent: !Command
     optional: true
   - !Flag
     description: "handle ambigous nucleotides using one of the following strategies\
-      \ (default=resolve) resolve: resolve ambiguities to minimize distance (e.g.R\
-      \ matches A); average: average ambiguities (e.g.R-A is 0.5 A-A and 0.5 G-A);\
-      \ skip: do not include sites with ambiguous nucleotides in distance calculations;\
-      \ gapmm: a gap ('-') matched to anything other than another gap is like matching\
-      \ an N (4-fold ambig) to it; a string (e.g. RY): any ambiguity in the list is\
-      \ RESOLVED; any ambiguitiy NOT in the list is averaged (LIST-NOT LIST will also\
-      \ be averaged);"
+      \ (default=resolve)\nresolve: resolve ambiguities to minimize distance (e.g.R\
+      \ matches A);\naverage: average ambiguities (e.g.R-A is 0.5 A-A and 0.5 G-A);\n\
+      skip: do not include sites with ambiguous nucleotides in distance calculations;\n\
+      gapmm: a gap ('-') matched to anything other than another gap is like matching\
+      \ an N (4-fold ambig) to it;\na string (e.g. RY): any ambiguity in the list\
+      \ is RESOLVED; any ambiguitiy NOT in the list is averaged (LIST-NOT LIST will\
+      \ also be averaged);"
     synonyms:
     - -a
     args: !SimpleFlagArg
       name: AMBIGS
     optional: true
   - !Flag
-    description: in combination with AMBIGS, works to limit (for resolve and string
-      options to AMBIG) the maximum tolerated FRACTION of ambiguous characters; sequences
-      whose pairwise comparisons include no more than FRACTION [0,1] of sites with
-      resolvable ambiguities will be resolved while all others will be AVERAGED (default
-      = 1.0)
+    description: "in combination with AMBIGS, works to limit (for resolve and string\
+      \ options to AMBIG)\nthe maximum tolerated FRACTION of ambiguous characters;\
+      \ sequences whose pairwise comparisons\ninclude no more than FRACTION [0,1]\
+      \ of sites with resolvable ambiguities will be resolved\nwhile all others will\
+      \ be AVERAGED (default = 1.0)"
     synonyms:
     - -g
     args: !SimpleFlagArg
       name: FRACTION
     optional: true
   - !Flag
-    description: 'controls the format of the output unless -c is set (default=csv)
-      csv: seqname1, seqname2, distance; csvn: 1, 2, distance; hyphy: {{d11,d12,..,d1n}...{dn1,dn2,...,dnn}},
-      where distances above THRESHOLD are set to 100;'
+    description: "controls the format of the output unless -c is set (default=csv)\n\
+      csv: seqname1, seqname2, distance;\ncsvn: 1, 2, distance;\nhyphy: {{d11,d12,..,d1n}...{dn1,dn2,...,dnn}},\
+      \ where distances above THRESHOLD are set to 100;"
     synonyms:
     - -f
     args: !SimpleFlagArg
@@ -157,7 +159,7 @@ parent: !Command
     optional: true
   - !Flag
     description: "if sequence name is of the form 'somethingCOUNTS_IN_NAMEinteger'\
-      \ then treat the integer as a copy number when computing distance histograms\
+      \ then treat the integer as a copy number\nwhen computing distance histograms\
       \ (a character, default=':'):"
     synonyms:
     - -d
@@ -173,30 +175,30 @@ parent: !Command
       name: SECOND_FASTA
     optional: true
   - !Flag
-    description: bootstrap alignment columns before computing distances (default =
-      false) when -s is supplied, permutes the assigment of sequences to files interacts
-      with -r option
+    description: "bootstrap alignment columns before computing distances (default\
+      \ = false)\nwhen -s is supplied, permutes the assigment of sequences to files\n\
+      interacts with -r option"
     synonyms:
     - -b
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: if -b is specified AND -s is supplied, using -r will bootstrap across
-      sites instead of allocating sequences to 'compartments' randomly
+    description: "if -b is specified AND -s is supplied, using -r will bootstrap across\
+      \ sites\ninstead of allocating sequences to 'compartments' randomly"
     synonyms:
     - -r
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 'only count the pairs below a threshold, do not write out all the
-      pairs '
+    description: only count the pairs below a threshold, do not write out all the
+      pairs
     synonyms:
     - -c
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: compute inter- and intra-population means suitable for FST caclulations
-      only applied when -s is used to provide a second file
+    description: "compute inter- and intra-population means suitable for FST caclulations\n\
+      only applied when -s is used to provide a second file"
     synonyms:
     - -m
     args: !EmptyFlagArg {}
@@ -210,15 +212,15 @@ parent: !Command
       name: PROBABILITY
     optional: true
   - !Flag
-    description: report distances between each sequence and itself (as 0); this is
-      useful to ensure every sequence in the input file appears in the output, e.g.
-      for network construction to contrast clustered/unclustered
+    description: "report distances between each sequence and itself (as 0); this is\
+      \ useful to ensure every sequence\nin the input file appears in the output,\
+      \ e.g. for network construction to contrast clustered/unclustered"
     synonyms:
     - '-0'
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 'do not report progress updates and other diagnostics to stderr '
+    description: do not report progress updates and other diagnostics to stderr
     synonyms:
     - -q
     args: !EmptyFlagArg {}
@@ -229,11 +231,10 @@ parent: !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - tn93
   parent:
   subcommands:
   - *id001
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -243,7 +244,7 @@ parent: !Command
     optional: true
   usage_flag:
   version_flag: !Flag
-    description: 'show tn93 version '
+    description: show tn93 version
     synonyms:
     - -v
     - --version
@@ -300,6 +301,7 @@ parent: !Command
   generated_using: &id002
   - --help
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

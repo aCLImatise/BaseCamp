@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../supersim.cwl
 inputs:
-- id: out_files
+- id: in_out_files
   doc: PREFIX.seq PREFIX.glf PREFIX.frq PREFIX.arg
   type: string
   inputBinding:
     prefix: -outfiles
-- id: n_pop
+- id: in_n_pop
   doc: Number of populations. This MUST be set before -nind [1]
   type: boolean
   inputBinding:
     prefix: -npop
-- id: n_ind
+- id: in_n_ind
   doc: Number of diploid individuals for each population [10]
   type: boolean
   inputBinding:
     prefix: -nind
-- id: n_sites
+- id: in_n_sites
   doc: of sites [500000]
-  type: string
+  type: long
   inputBinding:
     prefix: -nsites
-- id: er_rate
+- id: in_er_rate
   doc: sequencing error rate [0.0075]
-  type: string
+  type: double
   inputBinding:
     prefix: -errate
-- id: depth
+- id: in_depth
   doc: Mean sequencing depth [5]
   type: boolean
   inputBinding:
     prefix: -depth
-- id: p_var
+- id: in_p_var
   doc: Probability that a site is variable in the population [0.015]
   type: boolean
   inputBinding:
     prefix: -pvar
-- id: m_freq
+- id: in_m_freq
   doc: Minimum population frequency [0.0001]
   type: boolean
   inputBinding:
     prefix: -mfreq
-- id: inbreeding_coefficient_population
+- id: in_inbreeding_coefficient_population
   doc: inbreeding coefficient for each population [0]
   type: boolean
   inputBinding:
     prefix: -F
-- id: model
+- id: in_model
   doc: 0=fixed errate 1=variable errate [1]
   type: boolean
   inputBinding:
     prefix: -model
-- id: simpler_and
+- id: in_simpler_and
   doc: boolean [1]
   type: boolean
   inputBinding:
     prefix: -simpleRand
-- id: base_freq
+- id: in_base_freq
   doc: Background allele frequencies for A,C,G,T [0.25 0.25 0.25 0.25]
   type: boolean
   inputBinding:
     prefix: -base_freq
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - supersim

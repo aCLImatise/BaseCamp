@@ -1,14 +1,26 @@
 version 1.0
 
-task BedextractTypical {
+task Bedextracttypical {
   input {
-    String zero
+    Int zero
+    Int one
+    Int two
+    Int three
   }
   command <<<
-    bedextract-typical \
-      ~{zero}
+    bedextract_typical \
+      ~{zero} \
+      ~{one} \
+      ~{two} \
+      ~{three}
   >>>
   parameter_meta {
     zero: ""
+    one: ""
+    two: ""
+    three: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

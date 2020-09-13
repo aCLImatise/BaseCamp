@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../genomedata_query_chrom.cwl
 inputs:
-- id: genome_data_query
+- id: in_genome_data_query
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: gd_archive
+- id: in_gd_archive
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: track_name
+- id: in_track_name
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: chrom
+- id: in_chrom
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: begin
+- id: in_begin
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: end
+- id: in_end
   doc: ''
   type: string
   inputBinding:
     position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genomedata-query

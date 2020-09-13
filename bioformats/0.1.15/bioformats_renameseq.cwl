@@ -1,59 +1,62 @@
 class: CommandLineTool
 id: ../../../bioformats_renameseq.cwl
 inputs:
-- id: fast_a
+- id: in_fast_a
   doc: the input file is of the FASTA format
   type: boolean
   inputBinding:
     prefix: --fasta
-- id: column
-  doc: the number of the column that contains sequence names to be changed staring
-    from 1
-  type: string
+- id: in_column
+  doc: "the number of the column that contains sequence names\nto be changed staring\
+    \ from 1"
+  type: long
   inputBinding:
     prefix: --column
-- id: revert
-  doc: perform reverse renaming, that is, change original and new names in the renaming
-    table
+- id: in_revert
+  doc: "perform reverse renaming, that is, change original and\nnew names in the renaming\
+    \ table"
   type: boolean
   inputBinding:
     prefix: --revert
-- id: no_description
+- id: in_no_description
   doc: remove descriptions from FASTA sequence names
   type: boolean
   inputBinding:
     prefix: --no_description
-- id: comment_char
-  doc: a character that designates comment lines in the specified plain-text file
-  type: string
+- id: in_comment_char
+  doc: "a character that designates comment lines in the\nspecified plain-text file"
+  type: File
   inputBinding:
     prefix: --comment_char
-- id: separator
-  doc: a symbol that separates columns in the specified plain-text file
-  type: string
+- id: in_separator
+  doc: "a symbol that separates columns in the specified\nplain-text file\n"
+  type: File
   inputBinding:
     prefix: --separator
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-- id: renaming_table
-  doc: a file containing a table of original and new sequence names
+- id: in_renaming_table
+  doc: a file containing a table of original and new sequence
   type: string
   inputBinding:
     position: 0
-- id: input_file
-  doc: a file to change sequence names in
+- id: in_names
+  doc: input_file            a file to change sequence names in
   type: string
   inputBinding:
     position: 1
-- id: output_file
+- id: in_output_file
   doc: an output file with renamed sequences
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bioformats

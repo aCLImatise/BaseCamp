@@ -2,16 +2,16 @@ version 1.0
 
 task Nohead {
   input {
-    String? lines
-    String? option
+    Int? lines
   }
   command <<<
     nohead \
-      ~{option} \
       ~{if defined(lines) then ("--lines " +  '"' + lines + '"') else ""}
   >>>
   parameter_meta {
     lines: "suppress NUM lines (default 1)"
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

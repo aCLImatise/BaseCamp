@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../menescope.cwl
 inputs:
-- id: draft_net
+- id: in_draft_net
   doc: metabolic network in SBML format
   type: string
   inputBinding:
     prefix: --draftnet
-- id: seeds
-  doc: seeds in SBML format
+- id: in_seeds
+  doc: "seeds in SBML format\n"
   type: string
   inputBinding:
     prefix: --seeds
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - menescope

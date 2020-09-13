@@ -14,4 +14,7 @@ task ExtractFastqread {
     r: ""
     prog: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

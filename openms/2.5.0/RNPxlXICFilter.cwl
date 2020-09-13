@@ -1,59 +1,68 @@
 class: CommandLineTool
 id: ../../../RNPxlXICFilter.cwl
 inputs:
-- id: control
+- id: in_control
   doc: "*    Input mzML file (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -control
-- id: treatment
+- id: in_treatment
   doc: "*  Input mzML file (valid formats: 'mzML')"
   type: File
   inputBinding:
     prefix: -treatment
-- id: fold_change
+- id: in_fold_change
   doc: "Fold change between XICs (default: '2.0')"
   type: boolean
   inputBinding:
     prefix: -fold_change
-- id: rt_to_l
+- id: in_rt_to_l
   doc: "RT tolerance in [s] for finding max peak (whole RT range around RT middle)\
     \ (default: '20.0')"
   type: boolean
   inputBinding:
     prefix: -rt_tol
-- id: mz_to_l
+- id: in_mz_to_l
   doc: "M/z tolerance in [ppm] for finding a peak (default: '10.0')"
   type: boolean
   inputBinding:
     prefix: -mz_tol
-- id: out
+- id: in_out
   doc: "*        Output of the treatment file after XIC filtering. (valid formats:\
     \ 'mzML')"
   type: File
   inputBinding:
     prefix: -out
-- id: ini
+- id: in_ini
   doc: Use the given TOPP INI file
   type: File
   inputBinding:
     prefix: -ini
-- id: threads
+- id: in_threads
   doc: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
-  type: string
+  type: long
   inputBinding:
     prefix: -threads
-- id: write_ini
+- id: in_write_ini
   doc: Writes the default configuration file
   type: File
   inputBinding:
     prefix: -write_ini
-- id: helphelp
+- id: in_helphelp
   doc: Shows all options (including advanced)
   type: boolean
   inputBinding:
     prefix: --helphelp
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: "*        Output of the treatment file after XIC filtering. (valid formats:\
+    \ 'mzML')"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - RNPxlXICFilter

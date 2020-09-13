@@ -4,4 +4,7 @@ task King {
   command <<<
     king
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

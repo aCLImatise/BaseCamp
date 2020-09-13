@@ -1,50 +1,59 @@
 class: CommandLineTool
 id: ../../../pairtools_restrict.cwl
 inputs:
-- id: frags
-  doc: a tab-separated BED file with the positions of restriction fragments (chrom,
-    start, end). Can be generated using cooler digest.  [required]
-  type: string
+- id: in_frags
+  doc: "a tab-separated BED file with the positions of\nrestriction fragments (chrom,\
+    \ start, end). Can be\ngenerated using cooler digest.  [required]"
+  type: File
   inputBinding:
     prefix: --frags
-- id: output
-  doc: output .pairs/.pairsam file. If the path ends with .gz/.lz4, the output is
-    compressed by pbgzip/lz4c. By default, the output is printed into stdout.
-  type: string
+- id: in_output
+  doc: "output .pairs/.pairsam file. If the path ends with\n.gz/.lz4, the output is\
+    \ compressed by pbgzip/lz4c. By\ndefault, the output is printed into stdout."
+  type: File
   inputBinding:
     prefix: --output
-- id: nproc_in
-  doc: 'Number of processes used by the auto-guessed input decompressing command.  [default:
-    3]'
+- id: in_nproc_in
+  doc: "Number of processes used by the auto-guessed input\ndecompressing command.\
+    \  [default: 3]"
   type: long
   inputBinding:
     prefix: --nproc-in
-- id: nproc_out
-  doc: 'Number of processes used by the auto-guessed output compressing command.  [default:
-    8]'
+- id: in_nproc_out
+  doc: "Number of processes used by the auto-guessed output\ncompressing command.\
+    \  [default: 8]"
   type: long
   inputBinding:
     prefix: --nproc-out
-- id: cmd_in
-  doc: 'A command to decompress the input file. If provided, fully overrides the auto-guessed
-    command. Does not work with stdin. Must read input from stdin and print output
-    into stdout. EXAMPLE: pbgzip -dc -n 3'
-  type: string
+- id: in_cmd_in
+  doc: "A command to decompress the input file. If provided,\nfully overrides the\
+    \ auto-guessed command. Does not work\nwith stdin. Must read input from stdin\
+    \ and print output\ninto stdout. EXAMPLE: pbgzip -dc -n 3"
+  type: File
   inputBinding:
     prefix: --cmd-in
-- id: cmd_out
-  doc: 'A command to compress the output file. If provided, fully overrides the auto-guessed
-    command. Does not work with stdout. Must read input from stdin and print output
-    into stdout. EXAMPLE: pbgzip -c -n 8'
-  type: string
+- id: in_cmd_out
+  doc: "A command to compress the output file. If provided,\nfully overrides the auto-guessed\
+    \ command. Does not work\nwith stdout. Must read input from stdin and print\n\
+    output into stdout. EXAMPLE: pbgzip -c -n 8"
+  type: File
   inputBinding:
     prefix: --cmd-out
-- id: pairs_path
-  doc: ''
+- id: in_the
+  doc: input is decompressed by pbgzip/lz4c. By default, the input is read
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "output .pairs/.pairsam file. If the path ends with\n.gz/.lz4, the output is\
+    \ compressed by pbgzip/lz4c. By\ndefault, the output is printed into stdout."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - pairtools

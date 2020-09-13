@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../novoBreak.cwl
 inputs:
-- id: tumor_bam_file
+- id: in_tumor_bam_file
   doc: Tumor bam file
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: normal_bam_file
+- id: in_normal_bam_file
   doc: Normal bam file
-  type: string
+  type: File
   inputBinding:
     prefix: -c
-- id: reference_file_fasta
+- id: in_reference_file_fasta
   doc: Reference file in fasta format
-  type: string
+  type: File
   inputBinding:
     prefix: -r
-- id: kmer_size_
+- id: in_kmer_size_
   doc: Kmer size, <=31 [31]
   type: long
   inputBinding:
     prefix: -k
-- id: output_kmer
+- id: in_output_kmer
   doc: Output kmer
   type: string
   inputBinding:
     prefix: -o
-- id: output_germline_events
+- id: in_output_germline_events
   doc: Output germline events [0]
   type: long
   inputBinding:
     prefix: -g
-- id: minimum_kmer_count
+- id: in_minimum_kmer_count
   doc: Minimum kmer count regarded as novo kmers [3]
   type: long
   inputBinding:
     prefix: -m
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - novoBreak

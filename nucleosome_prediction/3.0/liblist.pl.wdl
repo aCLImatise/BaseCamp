@@ -1,7 +1,10 @@
 version 1.0
 
-task Liblist.pl.bak {
+task Liblistpl {
   command <<<
-    liblist.pl.bak
+    liblist_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

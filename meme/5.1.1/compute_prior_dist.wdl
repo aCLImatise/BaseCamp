@@ -1,17 +1,20 @@
 version 1.0
 
-task ComputePriorDist {
+task Computepriordist {
   input {
-    String num_bins
-    String psp_file
+    Int num_bins
+    File psp_file
   }
   command <<<
-    compute-prior-dist \
+    compute_prior_dist \
       ~{num_bins} \
       ~{psp_file}
   >>>
   parameter_meta {
     num_bins: ""
     psp_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

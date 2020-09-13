@@ -1,16 +1,16 @@
 version 1.0
 
-task ParallelFastqDump {
+task Parallelfastqdump {
   input {
     String? sra_id
-    String? threads
-    String? outdir
-    String? tmpdir
+    Int? threads
+    Directory? outdir
+    Directory? tmpdir
     Int? min_spot_id
     Int? max_spot_id
   }
   command <<<
-    parallel-fastq-dump \
+    parallel_fastq_dump \
       ~{if defined(sra_id) then ("--sra-id " +  '"' + sra_id + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
@@ -25,5 +25,9 @@ task ParallelFastqDump {
     tmpdir: "temporary directory"
     min_spot_id: "Minimum spot id"
     max_spot_id: "Maximum spot id"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

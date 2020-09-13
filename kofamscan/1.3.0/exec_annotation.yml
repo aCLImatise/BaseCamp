@@ -1,4 +1,6 @@
 !Command
+command:
+- exec_annotation
 positional:
 - !Positional
   description: ''
@@ -7,38 +9,109 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Create domain annotation files for each sequence They will be located
-    in the tmp directory Incompatible with -r
+  description: File to output the result  [stdout]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Profile HMM database
+  synonyms:
+  - -p
+  - --profile
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: KO information file
+  synonyms:
+  - -k
+  - --ko-list
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Number of CPU to use  [1]
+  synonyms:
+  - --cpu
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Config file
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Temporary directory  [./tmp]
+  synonyms:
+  - --tmp-dir
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: Largest E-value required of the hits
+  synonyms:
+  - -E
+  - --e-value
+  args: !SimpleFlagArg
+    name: e_value
+  optional: true
+- !Flag
+  description: The score thresholds will be multiplied by this value
+  synonyms:
+  - -T
+  - --threshold-scale
+  args: !SimpleFlagArg
+    name: scale
+  optional: true
+- !Flag
+  description: "Format of the output [detail]\ndetail:          Detail for each hits\
+    \ (including hits below threshold)\ndetail-tsv:      Tab separeted values for\
+    \ detail format\nmapper:          KEGG Mapper compatible format\nmapper-one-line:\
+    \ Similar to mapper, but all hit KOs are listed in one line"
+  synonyms:
+  - -f
+  - --format
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: "Create domain annotation files for each sequence\nThey will be located\
+    \ in the tmp directory\nIncompatible with -r"
   synonyms:
   - --create-alignment
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Skip hmmsearch Incompatible with --create-alignment
+  description: "Skip hmmsearch\nIncompatible with --create-alignment"
   synonyms:
   - -r
   - --reannotate
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Neither create tabular.txt nor delete K number files By default, all
-    K number files will be combined into a tabular.txt and delete them
+  description: "Neither create tabular.txt nor delete K number files\nBy default,\
+    \ all K number files will be combined into\na tabular.txt and delete them"
   synonyms:
   - --keep-tabular
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Neither create output.txt nor delete K number files By default, all
-    K number files will be combined into a output.txt and delete them Must be with
-    --create-alignment
+  description: "Neither create output.txt nor delete K number files\nBy default, all\
+    \ K number files will be combined into\na output.txt and delete them\nMust be\
+    \ with --create-alignment"
   synonyms:
   - --keep-output
   args: !EmptyFlagArg {}
   optional: true
-command:
-- exec_annotation
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit
   synonyms:

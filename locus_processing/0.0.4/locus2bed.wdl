@@ -17,4 +17,7 @@ task Locus2bed {
     input_directory: "Path to directory containing locus files"
     prefix: "Prefix to region names"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

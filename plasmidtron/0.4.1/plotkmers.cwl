@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../plotkmers.cwl
 inputs:
-- id: plot_filename
+- id: in_plot_filename
   doc: Kmer to use, depends on read length [kmerplot.png]
-  type: string
+  type: File
   inputBinding:
     prefix: --plot_filename
-- id: km_er
+- id: in_km_er
   doc: Kmer to use, depends on read length [51]
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: max_km_ers_threshold
+- id: in_max_km_ers_threshold
   doc: Exclude k-mers occurring more than this [254]
   type: long
   inputBinding:
     prefix: --max_kmers_threshold
-- id: max_km_ers_to_show
-  doc: If there are too many kmers to view, subsample [100000]
+- id: in_max_km_ers_to_show
+  doc: "If there are too many kmers to view, subsample\n[100000]"
   type: long
   inputBinding:
     prefix: --max_kmers_to_show
-- id: threads
+- id: in_threads
   doc: Number of threads [1]
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: keep_files
+- id: in_keep_files
   doc: Keep intermediate files [False]
   type: boolean
   inputBinding:
     prefix: --keep_files
-- id: verbose
+- id: in_verbose
   doc: Turn on debugging [0]
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: output_directory
+- id: in_output_directory
   doc: Output directory
   type: string
   inputBinding:
     position: 0
-- id: assemblies
+- id: in_assemblies
   doc: FASTA files which may be gzipped
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - plotkmers

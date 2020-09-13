@@ -1,7 +1,10 @@
 version 1.0
 
-task CalculationsNew.py {
+task CalculationsNew {
   command <<<
-    calculations_new.py
+    calculations_new
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

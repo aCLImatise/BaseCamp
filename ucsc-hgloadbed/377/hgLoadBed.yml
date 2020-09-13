@@ -1,4 +1,6 @@
 !Command
+command:
+- hgLoadBed
 positional:
 - !Positional
   description: ''
@@ -17,8 +19,134 @@ positional:
   optional: false
 named:
 - !Flag
-  description: '- path to directory for creation of temporary .tab file - which will
-    be removed after loading'
+  description: don't sort (you better be sorting before this)
+  synonyms:
+  - -noSort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: suppress bin field
+  synonyms:
+  - -noBin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: to existing table
+  synonyms:
+  - -oldTable
+  args: !SimpleFlagArg
+    name: add
+  optional: true
+- !Flag
+  description: "will speed things up if you're running in a directory that\nthe mysql\
+    \ server can access."
+  synonyms:
+  - -onServer
+  args: !SimpleFlagArg
+    name: This
+  optional: true
+- !Flag
+  description: Create table from .sql file
+  synonyms:
+  - -sqlTable
+  args: !SimpleFlagArg
+    name: table.sql
+  optional: true
+- !Flag
+  description: table created with -sqlTable to match track
+  synonyms:
+  - -renameSqlTable
+  args: !SimpleFlagArg
+    name: Rename
+  optional: true
+- !Flag
+  description: If sqlTable has n fields, and input has m fields, only load m fields,
+    meaning the last n-m fields in the sqlTable are optional
+  synonyms:
+  - -trimSqlTable
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[+[P]] :\nN is between 3 and 15,\noptional (+) if extra \"bedPlus\"\
+    \ fields,\noptional P specifies the number of extra fields. Not required, but\
+    \ preferred.\nExamples: -type=bed6 or -type=bed6+ or -type=bed6+3\n(see http://genome.ucsc.edu/FAQ/FAQformat.html#format1)\n\
+    Recommended to use with -as option for better bedPlus validation."
+  synonyms:
+  - -type
+  args: !SimpleFlagArg
+    name: bedN
+  optional: true
+- !Flag
+  description: "If you have extra \"bedPlus\" fields, it's great to put a definition\n\
+    of each field in a row in AutoSql format here."
+  synonyms:
+  - -as
+  args: !SimpleFlagArg
+    name: fields.as
+  optional: true
+- !Flag
+  description: Specify chromInfo file to validate chrom names and sizes.
+  synonyms:
+  - -chromInfo
+  args: !SimpleFlagArg
+    name: file.txt
+  optional: true
+- !Flag
+  description: Separate by tabs rather than space
+  synonyms:
+  - -tab
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input bed file starts with a bin field.
+  synonyms:
+  - -hasBin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Do not load database and do not clean up tab files'
+  synonyms:
+  - -noLoad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Do not add history table comments (for custom tracks)'
+  synonyms:
+  - -noHistory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Do not parse column nine as r,g,b when commas seen (bacEnds)'
+  synonyms:
+  - -notItemRgb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- wiggle graph column N of the input file as float dataValue\n- bedGraph\
+    \ N is typically 4: -bedGraph=4"
+  synonyms:
+  - -bedGraph
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "- bedDetail format with id and text for hgc clicks\n- requires tab\
+    \ and sqlTable options"
+  synonyms:
+  - -bedDetail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- specify max chromName length to avoid\n- reference to chromInfo\
+    \ table"
+  synonyms:
+  - -maxChromNameLength
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "- path to directory for creation of temporary .tab file\n- which will\
+    \ be removed after loading"
   synonyms:
   - -tmpDir
   args: !SimpleFlagArg
@@ -37,28 +165,30 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "- don't perform coord sanity checks - by default we abort when: chromStart\
+  description: "- don't perform coord sanity checks\n- by default we abort when: chromStart\
     \ >= chromEnd"
   synonyms:
   - -noStrict
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '- even when doing strict checks, allow chromStart==chromEnd (zero-length
-    e.g. insertion)'
+  description: "- even when doing strict checks, allow\nchromStart==chromEnd (zero-length\
+    \ e.g. insertion)"
   synonyms:
   - -allowStartEqualEnd
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '- sql definition of score column is int, not unsigned'
+  description: ''
   synonyms:
+  - -allowStartEqualEnd
   - -allowNegativeScores
-  args: !EmptyFlagArg {}
+  - -verbose
+  args: !SimpleFlagArg
+    name: '0'
   optional: true
 - !Flag
-  description: '- turns on: -noNameIx, -noHistory, -ignoreEmpty, -allowStartEqualEnd,
-    -allowNegativeScores, -verbose=0 Plus, this turns on a 20 minute time-out exit.'
+  description: '- turns on: -noNameIx, -noHistory, -ignoreEmpty,'
   synonyms:
   - -customTrackLoader
   args: !EmptyFlagArg {}
@@ -79,13 +209,6 @@ named:
     name: N
   optional: true
 - !Flag
-  description: '- verbose level for extra information to STDERR'
-  synonyms:
-  - -verbose
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
   description: "- if the specified field is a '.' the replace it with -1"
   synonyms:
   - -dotIsNull
@@ -99,10 +222,9 @@ named:
   args: !SimpleFlagArg
     name: N
   optional: true
-command:
-- hgLoadBed
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

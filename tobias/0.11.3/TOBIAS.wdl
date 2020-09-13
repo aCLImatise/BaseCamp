@@ -4,4 +4,7 @@ task TOBIAS {
   command <<<
     TOBIAS
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

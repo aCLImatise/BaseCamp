@@ -1,127 +1,135 @@
 class: CommandLineTool
 id: ../../../spades_bwa_bwasw.cwl
 inputs:
-- id: score_for_match
+- id: in_score_for_match
   doc: score for a match [1]
   type: long
   inputBinding:
     prefix: -a
-- id: mismatch_penalty
+- id: in_mismatch_penalty
   doc: mismatch penalty [3]
   type: long
   inputBinding:
     prefix: -b
-- id: gap_open_penalty
+- id: in_gap_open_penalty
   doc: gap open penalty [5]
   type: long
   inputBinding:
     prefix: -q
-- id: gap_extension_penalty
+- id: in_gap_extension_penalty
   doc: gap extension penalty [2]
   type: long
   inputBinding:
     prefix: -r
-- id: band_width
+- id: in_band_width
   doc: band width [50]
   type: long
   inputBinding:
     prefix: -w
-- id: mask_level
+- id: in_mask_level
   doc: mask level [0.50]
   type: double
   inputBinding:
     prefix: -m
-- id: number_of_threads
+- id: in_number_of_threads
   doc: number of threads [1]
   type: long
   inputBinding:
     prefix: -t
-- id: file_output_results
+- id: in_file_output_results
   doc: file to output results to instead of stdout
   type: File
   inputBinding:
     prefix: -f
-- id: sam_output_use
+- id: in_sam_output_use
   doc: in SAM output, use hard clipping instead of soft clipping
   type: boolean
   inputBinding:
     prefix: -H
-- id: copy_fastaq_comment
+- id: in_copy_fastaq_comment
   doc: copy FASTA/Q comment to SAM output
   type: boolean
   inputBinding:
     prefix: -C
-- id: mark_multipart_alignments
+- id: in_mark_multipart_alignments
   doc: mark multi-part alignments as secondary
   type: boolean
   inputBinding:
     prefix: -M
-- id: skip_smithwaterman_read
+- id: in_skip_smithwaterman_read
   doc: skip Smith-Waterman read pairing
   type: boolean
   inputBinding:
     prefix: -S
-- id: ignore_pairs_insert
+- id: in_ignore_pairs_insert
   doc: ignore pairs with insert >=INT for inferring the size distr [20000]
   type: long
   inputBinding:
     prefix: -I
-- id: score_threshold_divided
+- id: in_score_threshold_divided
   doc: score threshold divided by a [30]
   type: long
   inputBinding:
     prefix: -T
-- id: coefficient_lengththreshold_adjustment
+- id: in_coefficient_lengththreshold_adjustment
   doc: coefficient of length-threshold adjustment [5.5]
   type: double
   inputBinding:
     prefix: -c
-- id: zbest
+- id: in_zbest
   doc: Z-best [1]
   type: long
   inputBinding:
     prefix: -z
-- id: maximum_seeding_interval
+- id: in_maximum_seeding_interval
   doc: maximum seeding interval size [3]
   type: long
   inputBinding:
     prefix: -s
-- id: seeds_trigger_int
+- id: in_seeds_trigger_int
   doc: '# seeds to trigger rev aln; 2*INT is also the chaining threshold [5]'
   type: long
   inputBinding:
     prefix: -N
-- id: maximum_gap_size
+- id: in_maximum_gap_size
   doc: maximum gap size during chaining [10000]
   type: long
   inputBinding:
     prefix: -G
-- id: bwa
+- id: in_bwa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: b_was_w
+- id: in_b_was_w
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: target_dot_prefix
+- id: in_target_dot_prefix
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: query_dot_fa
+- id: in_query_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: query_two_dot_fa
+- id: in_query_two_dot_fa
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_file_output_results
+  doc: file to output results to instead of stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_file_output_results)
 cwlVersion: v1.1
 baseCommand:
 - spades-bwa

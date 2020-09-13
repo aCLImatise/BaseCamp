@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../sixgill_build_fastqfiles.cwl
 inputs:
-- id: minlength
+- id: in_minlength
   doc: ''
-  type: long
+  type: string
   inputBinding:
     prefix: --minlength
-- id: six_gill_build
+- id: in_six_gill_build
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sixgill_build

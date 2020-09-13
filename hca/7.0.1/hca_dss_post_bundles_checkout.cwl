@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../hca_dss_post_bundles_checkout.cwl
 inputs:
-- id: destination
+- id: in_destination
   doc: User-owned destination storage bucket.
   type: string
   inputBinding:
     prefix: --destination
-- id: email
+- id: in_email
   doc: An email address to send status updates to.
   type: string
   inputBinding:
     prefix: --email
-- id: uuid
+- id: in_uuid
   doc: A RFC4122-compliant ID for the bundle.
-  type: string
+  type: long
   inputBinding:
     prefix: --uuid
-- id: replica
+- id: in_replica
   doc: Replica to fetch from.
   type: string
   inputBinding:
     prefix: --replica
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

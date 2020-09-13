@@ -1,14 +1,17 @@
 version 1.0
 
-task BankCombine {
+task Bankcombine {
   input {
     String in_n
   }
   command <<<
-    bank-combine \
+    bank_combine \
       ~{in_n}
   >>>
   parameter_meta {
     in_n: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

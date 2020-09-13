@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../mergePolishes.cwl
 inputs:
-- id: o
+- id: in_m
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -m
+- id: in_o
   doc: ''
   type: string
   inputBinding:
     prefix: -o
-- id: m
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -m
-- id: cdna
+- id: in_cdna
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: cdna_one
+- id: in_cdna_one
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 1
-- id: cdna_two
+- id: in_cdna_two
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mergePolishes

@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../merge_contigs.cwl
 inputs:
-- id: output_outprefixmali_file
+- id: in_output_outprefixmali_file
   doc: Output the <out-prefix>.mali file
-  type: boolean
+  type: File
   inputBinding:
     prefix: -a
-- id: coords_file
+- id: in_coords_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: cco_file
+- id: in_cco_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-- id: bank_name
+- id: in_bank_name
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_outprefixmali_file
+  doc: Output the <out-prefix>.mali file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_outprefixmali_file)
 cwlVersion: v1.1
 baseCommand:
 - merge-contigs

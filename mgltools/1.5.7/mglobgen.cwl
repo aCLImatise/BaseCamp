@@ -1,22 +1,10 @@
 class: CommandLineTool
 id: ../../../mglobgen.cwl
-inputs:
-- id: ff
-  doc: select a forcefield
-  type: boolean
-  inputBinding:
-    prefix: -ff
-- id: ob_gen
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: filename
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mglobgen

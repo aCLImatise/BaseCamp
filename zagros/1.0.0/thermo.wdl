@@ -2,7 +2,7 @@ version 1.0
 
 task Thermo {
   input {
-    Boolean? output_file_name
+    File? output_file_name
     Boolean? chrom
     Boolean? verbose
     Boolean? about
@@ -11,16 +11,20 @@ task Thermo {
   command <<<
     thermo \
       ~{target_regions_slash_sequences} \
-      ~{true="-output" false="" output_file_name} \
-      ~{true="-chrom" false="" chrom} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-about" false="" about}
+      ~{if (output_file_name) then "-output" else ""} \
+      ~{if (chrom) then "-chrom" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (about) then "-about" else ""}
   >>>
   parameter_meta {
-    output_file_name: "output file name (default: stdout) "
-    chrom: "directory with chrom files (FASTA format) "
-    verbose: "print more run info "
-    about: "print about message "
+    output_file_name: "output file name (default: stdout)"
+    chrom: "directory with chrom files (FASTA format)"
+    verbose: "print more run info"
+    about: "print about message"
     target_regions_slash_sequences: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_name = "${in_output_file_name}"
   }
 }

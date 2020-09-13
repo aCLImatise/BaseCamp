@@ -1,96 +1,116 @@
 class: CommandLineTool
 id: ../../../tango_assign.cwl
 inputs:
-- id: format
-  doc: Type of file format for diamond results. blast=blast tabular output, 'tango'=blast
-    tabular output with taxid in 12th column
-  type: string
+- id: in_format
+  doc: "Type of file format for diamond results. blast=blast\ntabular output, 'tango'=blast\
+    \ tabular output with\ntaxid in 12th column"
+  type: File
   inputBinding:
     prefix: --format
-- id: taxid_map
+- id: in_taxid_map
   doc: Provide custom protein to taxid mapfile.
   type: string
   inputBinding:
     prefix: --taxidmap
-- id: tax_dir
-  doc: Directory specified during 'tango download taxonomy'. Defaults to taxonomy/.
-  type: string
+- id: in_tax_dir
+  doc: "Directory specified during 'tango download taxonomy'.\nDefaults to taxonomy/."
+  type: Directory
   inputBinding:
     prefix: --taxdir
-- id: sqlite_db
-  doc: Name of ete3 sqlite file to be created within --taxdir. Defaults to 'taxonomy.sqlite'
-  type: string
+- id: in_sqlite_db
+  doc: Name of ete3 sqlite file to be created within
+  type: File
   inputBinding:
     prefix: --sqlitedb
-- id: blob_out
+- id: in_tax_dir_dot
+  doc: to 'taxonomy.sqlite'
+  type: string
+  inputBinding:
+    prefix: --taxdir.
+- id: in_blob_out
   doc: Output hits.tsv table compatible with blobtools
   type: string
   inputBinding:
     prefix: --blobout
-- id: taxid_out
-  doc: Write output with taxonomy ids instead of taxonomy names to file
-  type: string
+- id: in_taxid_out
+  doc: "Write output with taxonomy ids instead of taxonomy\nnames to file"
+  type: File
   inputBinding:
     prefix: --taxidout
-- id: mode
-  doc: "Mode to use for parsing taxonomy: 'rank_lca' (default), 'rank_vote' or 'score'"
+- id: in_mode
+  doc: "Mode to use for parsing taxonomy: 'rank_lca'\n(default), 'rank_vote' or 'score'"
   type: string
   inputBinding:
     prefix: --mode
-- id: assign_ranks
-  doc: Ranks to use when assigning taxa. Defaults to phylum genus species
+- id: in_assign_ranks
+  doc: "Ranks to use when assigning taxa. Defaults to phylum\ngenus species"
   type: string[]
   inputBinding:
     prefix: --assignranks
-- id: report_ranks
-  doc: Ranks to report in output. Defaults to superkingom phylum class orderfamily
-    genus species
+- id: in_report_ranks
+  doc: "Ranks to report in output. Defaults to superkingom\nphylum class orderfamily\
+    \ genus species"
   type: string[]
   inputBinding:
     prefix: --reportranks
-- id: rank_thresholds
-  doc: Rank-specific thresholds corresponding to percent identity of a hit.Defaults
-    to 45 (phylum), 60 (genus) and 85 (species)
+- id: in_rank_thresholds
+  doc: "Rank-specific thresholds corresponding to percent\nidentity of a hit.Defaults\
+    \ to 45 (phylum), 60 (genus)\nand 85 (species)"
   type: string[]
   inputBinding:
     prefix: --rank_thresholds
-- id: vote_threshold
-  doc: Minimum fraction required when voting on rank assignments.
+- id: in_vote_threshold
+  doc: "Minimum fraction required when voting on rank\nassignments."
   type: string
   inputBinding:
     prefix: --vote_threshold
-- id: top
-  doc: Top percent of best score to consider hits for (default=5)
-  type: string
+- id: in_top
+  doc: "Top percent of best score to consider hits for\n(default=5)"
+  type: long
   inputBinding:
     prefix: --top
-- id: evalue
+- id: in_evalue
   doc: Maximum e-value to store hits. Default 0.001
-  type: string
+  type: double
   inputBinding:
     prefix: --evalue
-- id: cpus
+- id: in_cpus
   doc: Number of cpus to use. Defaults to 1.
-  type: string
+  type: long
   inputBinding:
     prefix: --cpus
-- id: chunksize
-  doc: Size of chunks sent to process pool. For large input files using a large chunksize
-    can make the job complete much faster than using the default value of 1.
-  type: string
+- id: in_chunksize
+  doc: "Size of chunks sent to process pool. For large input\nfiles using a large\
+    \ chunksize can make the job\ncomplete much faster than using the default value\
+    \ of\n1.\n"
+  type: long
   inputBinding:
     prefix: --chunksize
-- id: diamond_results
+- id: in_diamond_results
   doc: Diamond blastx results
   type: string
   inputBinding:
     position: 0
-- id: outfile
+- id: in_outfile
   doc: Output file
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_format
+  doc: "Type of file format for diamond results. blast=blast\ntabular output, 'tango'=blast\
+    \ tabular output with\ntaxid in 12th column"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_format)
+- id: out_taxid_out
+  doc: "Write output with taxonomy ids instead of taxonomy\nnames to file"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_taxid_out)
 cwlVersion: v1.1
 baseCommand:
 - tango

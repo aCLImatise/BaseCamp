@@ -1,47 +1,45 @@
 class: CommandLineTool
 id: ../../../phyluce_genetrees_run_raxml_bootstraps.cwl
 inputs:
-- id: alignments
-  doc: The directory containing alignments to be summarized.
-  type: string
-  inputBinding:
-    prefix: --alignments
-- id: best_trees
-  doc: The directory containing the best trees
+- id: in_best_trees
+  doc: ''
   type: string
   inputBinding:
     prefix: --best-trees
-- id: output
-  doc: The output directory to hold alignments
-  type: string
+- id: in_alignments
+  doc: The directory containing alignments to be summarized.
+  type: Directory
   inputBinding:
-    prefix: --output
-- id: boot_reps
+    prefix: --alignments
+- id: in_boot_reps
   doc: The number of bootstrap replicates to run
-  type: string
+  type: long
   inputBinding:
     prefix: --bootreps
-- id: out_group
+- id: in_out_group
   doc: The outgroup to use
   type: string
   inputBinding:
     prefix: --outgroup
-- id: threads
-  doc: The number of RAxML threads to run (best to determine empirically)
-  type: string
+- id: in_threads
+  doc: "The number of RAxML threads to run (best to determine\nempirically)"
+  type: long
   inputBinding:
     prefix: --threads
-- id: cores
+- id: in_cores
   doc: The number of concurrent RAxML jobs to run
-  type: string
+  type: long
   inputBinding:
     prefix: --cores
-- id: quiet
+- id: in_quiet
   doc: Suppress the CPU usage question
   type: boolean
   inputBinding:
     prefix: --quiet
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_genetrees_run_raxml_bootstraps

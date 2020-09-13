@@ -1,47 +1,60 @@
 class: CommandLineTool
 id: ../../../phastaf.cwl
 inputs:
-- id: check
+- id: in_check
   doc: Check dependencies are installed
   type: boolean
   inputBinding:
     prefix: --check
-- id: force
+- id: in_force
   doc: 'Force overwite of existing output folder (default: OFF)'
-  type: boolean
+  type: Directory
   inputBinding:
     prefix: --force
-- id: keep_files
+- id: in_keep_files
   doc: 'Keep intermediate files (default: OFF)'
   type: boolean
   inputBinding:
     prefix: --keepfiles
-- id: outdir
+- id: in_outdir
   doc: "Output folder (default: '')"
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: db
-  doc: "Diamond database of phage proteins (default: '/tmp/tmpgzbnm9m3/db/phastaf.dmnd')"
+- id: in_db
+  doc: "Diamond database of phage proteins (default: '/usr/local/db/phastaf.dmnd')"
   type: string
   inputBinding:
     prefix: --db
-- id: cpus
+- id: in_cpus
   doc: 'Number of CPUs to use (0=ALL) (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --cpus
-- id: i_gff
+- id: in_i_gff
   doc: 'Intergenic fuzz factor (default: 2000)'
-  type: string
+  type: long
   inputBinding:
     prefix: --igff
-- id: min_genes
+- id: in_min_genes
   doc: 'Minimum genes in cluster (default: 5)'
-  type: string
+  type: long
   inputBinding:
     prefix: --mingenes
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_force
+  doc: 'Force overwite of existing output folder (default: OFF)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_force)
+- id: out_outdir
+  doc: "Output folder (default: '')"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - phastaf

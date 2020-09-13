@@ -6,9 +6,12 @@ task NwPrune {
   }
   command <<<
     nw_prune \
-      ~{true="-hv" false="" hv}
+      ~{if (hv) then "-hv" else ""}
   >>>
   parameter_meta {
     hv: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

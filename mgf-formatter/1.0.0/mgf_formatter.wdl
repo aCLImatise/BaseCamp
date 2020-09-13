@@ -1,6 +1,6 @@
 version 1.0
 
-task MgfFormatter {
+task Mgfformatter {
   input {
     Boolean? it_raq_filter
     Boolean? mgf_format
@@ -10,13 +10,13 @@ task MgfFormatter {
     String var_input
   }
   command <<<
-    mgf-formatter \
+    mgf_formatter \
       ~{main_class} \
       ~{var_input} \
-      ~{true="--itraq_filter" false="" it_raq_filter} \
-      ~{true="--mgf_format" false="" mgf_format} \
-      ~{true="--no_split_multiple_charge_states" false="" no_split_multiple_charge_states} \
-      ~{true="--output" false="" var_output}
+      ~{if (it_raq_filter) then "--itraq_filter" else ""} \
+      ~{if (mgf_format) then "--mgf_format" else ""} \
+      ~{if (no_split_multiple_charge_states) then "--no_split_multiple_charge_states" else ""} \
+      ~{if (var_output) then "--output" else ""}
   >>>
   parameter_meta {
     it_raq_filter: "Default: false"
@@ -25,5 +25,8 @@ task MgfFormatter {
     var_output: "Output"
     main_class: ""
     var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

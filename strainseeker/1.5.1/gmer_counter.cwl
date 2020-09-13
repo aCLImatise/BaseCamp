@@ -1,67 +1,65 @@
 class: CommandLineTool
 id: ../../../gmer_counter.cwl
 inputs:
-- id: db
+- id: in_db
   doc: '- SNP/KMER database file'
-  type: string
+  type: File
   inputBinding:
     prefix: -db
-- id: dbb
+- id: in_dbb
   doc: '- binary database file'
-  type: string
+  type: File
   inputBinding:
     prefix: -dbb
-- id: write_binary_database
+- id: in_write_binary_database
   doc: '- write binary database to file'
   type: File
   inputBinding:
     prefix: -w
-- id: max_km_ers
+- id: in_max_km_ers
   doc: '- maximum number of kmers per node'
-  type: string
+  type: long
   inputBinding:
     prefix: --max_kmers
-- id: header
+- id: in_header
   doc: '- print header row'
   type: boolean
   inputBinding:
     prefix: --header
-- id: total
+- id: in_total
   doc: '- print the total number of kmers per node'
   type: boolean
   inputBinding:
     prefix: --total
-- id: unique
+- id: in_unique
   doc: '- print the number of nonzero kmers per node'
   type: boolean
   inputBinding:
     prefix: --unique
-- id: km_ers
+- id: in_km_ers
   doc: '- print individual kmer counts (default if no other output)'
   type: boolean
   inputBinding:
     prefix: --kmers
-- id: distribution
+- id: in_distribution
   doc: '- print kmer distribution (up to given number)'
-  type: string
+  type: long
   inputBinding:
     prefix: --distribution
-- id: increase_debug_level
+- id: in_increase_debug_level
   doc: '- increase debug level'
   type: boolean
   inputBinding:
     prefix: -D
-- id: arguments
+- id: in_arguments
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sequences_dot_dot_dot
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gmer_counter

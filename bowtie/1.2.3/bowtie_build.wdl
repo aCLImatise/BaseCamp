@@ -1,6 +1,6 @@
 version 1.0
 
-task BowtieBuild {
+task Bowtiebuild {
   input {
     Boolean? reference_files_fasta
     Boolean? reference_sequences_given
@@ -25,33 +25,33 @@ task BowtieBuild {
     String e_bwt_outfile_base
   }
   command <<<
-    bowtie-build \
+    bowtie_build \
       ~{reference_in} \
       ~{e_bwt_outfile_base} \
-      ~{true="-f" false="" reference_files_fasta} \
-      ~{true="-c" false="" reference_sequences_given} \
-      ~{true="--large-index" false="" large_index} \
-      ~{true="-C/--color" false="" c_slash_color} \
-      ~{true="-a/--noauto" false="" a_slash_no_auto} \
-      ~{true="-p/--packed" false="" p_slash_packed} \
+      ~{if (reference_files_fasta) then "-f" else ""} \
+      ~{if (reference_sequences_given) then "-c" else ""} \
+      ~{if (large_index) then "--large-index" else ""} \
+      ~{if (c_slash_color) then "-C/--color" else ""} \
+      ~{if (a_slash_no_auto) then "-a/--noauto" else ""} \
+      ~{if (p_slash_packed) then "-p/--packed" else ""} \
       ~{if defined(bmax) then ("--bmax " +  '"' + bmax + '"') else ""} \
       ~{if defined(bmax_divn) then ("--bmaxdivn " +  '"' + bmax_divn + '"') else ""} \
       ~{if defined(dcv) then ("--dcv " +  '"' + dcv + '"') else ""} \
-      ~{true="--nodc" false="" no_dc} \
-      ~{true="-r/--noref" false="" r_slash_no_ref} \
-      ~{true="-3/--justref" false="" three_slash_just_ref} \
+      ~{if (no_dc) then "--nodc" else ""} \
+      ~{if (r_slash_no_ref) then "-r/--noref" else ""} \
+      ~{if (three_slash_just_ref) then "-3/--justref" else ""} \
       ~{if defined(oslash_off_rate) then ("-o/--offrate " +  '"' + oslash_off_rate + '"') else ""} \
       ~{if defined(t_slash_f_tab_chars) then ("-t/--ftabchars " +  '"' + t_slash_f_tab_chars + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--ntoa" false="" n_to_a} \
+      ~{if (n_to_a) then "--ntoa" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{true="-q/--quiet" false="" q_slash_quiet} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (q_slash_quiet) then "-q/--quiet" else ""} \
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
     reference_files_fasta: "reference files are Fasta (default)"
     reference_sequences_given: "reference sequences given on cmd line (as <seq_in>)"
-    large_index: "force generated index to be 'large', even if ref has fewer than 4 billion nucleotides"
+    large_index: "force generated index to be 'large', even if ref\\nhas fewer than 4 billion nucleotides"
     c_slash_color: "build a colorspace index"
     a_slash_no_auto: "disable automatic -p/--bmax/--dcv memory-fitting"
     p_slash_packed: "use packed strings internally; slower, uses less mem"
@@ -70,5 +70,8 @@ task BowtieBuild {
     h_slash_help: "print detailed description of tool and its options"
     reference_in: "comma-separated list of files with ref sequences"
     e_bwt_outfile_base: "write Ebwt data to files with this dir/basename"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

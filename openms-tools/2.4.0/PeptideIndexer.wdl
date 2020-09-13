@@ -12,11 +12,11 @@ task PeptideIndexer {
     Boolean? write_protein_description
     Boolean? keep_unreferenced_proteins
     Boolean? allow_unmatched
-    String? aaa_max
-    String? mismatches_max
+    Int? aaa_max
+    Int? mismatches_max
     Boolean? il_equivalent
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -28,17 +28,17 @@ task PeptideIndexer {
       ~{if defined(decoy_string) then ("-decoy_string " +  '"' + decoy_string + '"') else ""} \
       ~{if defined(decoy_string_position) then ("-decoy_string_position " +  '"' + decoy_string_position + '"') else ""} \
       ~{if defined(missing_decoy_action) then ("-missing_decoy_action " +  '"' + missing_decoy_action + '"') else ""} \
-      ~{true="-write_protein_sequence" false="" write_protein_sequence} \
-      ~{true="-write_protein_description" false="" write_protein_description} \
-      ~{true="-keep_unreferenced_proteins" false="" keep_unreferenced_proteins} \
-      ~{true="-allow_unmatched" false="" allow_unmatched} \
+      ~{if (write_protein_sequence) then "-write_protein_sequence" else ""} \
+      ~{if (write_protein_description) then "-write_protein_description" else ""} \
+      ~{if (keep_unreferenced_proteins) then "-keep_unreferenced_proteins" else ""} \
+      ~{if (allow_unmatched) then "-allow_unmatched" else ""} \
       ~{if defined(aaa_max) then ("-aaa_max " +  '"' + aaa_max + '"') else ""} \
       ~{if defined(mismatches_max) then ("-mismatches_max " +  '"' + mismatches_max + '"') else ""} \
-      ~{true="-IL_equivalent" false="" il_equivalent} \
+      ~{if (il_equivalent) then "-IL_equivalent" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                      Input idXML file containing the identifications. (valid formats: 'idXML')"
@@ -58,5 +58,9 @@ task PeptideIndexer {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

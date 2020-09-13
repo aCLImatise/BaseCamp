@@ -23,4 +23,8 @@ task RegtoolsJunctionsAnnotate {
     ref_dot_fa: ""
     annotations_dot_gtf: ""
   }
+  output {
+    File out_stdout = stdout()
+    File out_file_write_output = "${in_file_write_output}"
+  }
 }

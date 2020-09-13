@@ -1,7 +1,8 @@
 version 1.0
 
-task GetGffInfoSequence {
+task GetgffinfoSequence {
   input {
+    Boolean? verbose
     Boolean? reverse
     Boolean? no_wrap
     Boolean? split
@@ -11,22 +12,27 @@ task GetGffInfoSequence {
     String? fast_a_file
   }
   command <<<
-    get-gff-info sequence \
+    get_gff_info sequence \
       ~{gff_file} \
       ~{fast_a_file} \
-      ~{true="--reverse" false="" reverse} \
-      ~{true="--no-wrap" false="" no_wrap} \
-      ~{true="--split" false="" split} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (reverse) then "--reverse" else ""} \
+      ~{if (no_wrap) then "--no-wrap" else ""} \
+      ~{if (split) then "--split" else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{true="--progress" false="" progress}
+      ~{if (progress) then "--progress" else ""}
   >>>
   parameter_meta {
+    verbose: ""
     reverse: "Reverse complement sequences on the - strand"
     no_wrap: "Write the sequences on one line"
-    split: "Split the sequence header of the reference at the first space, to emulate BLAST behaviour"
-    reference: "Fasta file containing the reference sequences of the GFF file"
+    split: "Split the sequence header of the reference at the\\nfirst space, to emulate BLAST behaviour"
+    reference: "Fasta file containing the reference sequences of\\nthe GFF file"
     progress: "Shows Progress Bar"
     gff_file: ""
     fast_a_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

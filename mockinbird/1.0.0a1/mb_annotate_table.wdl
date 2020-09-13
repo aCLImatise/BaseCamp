@@ -1,14 +1,14 @@
 version 1.0
 
-task MbAnnotateTable {
+task Mbannotatetable {
   input {
     Int? max_n
     String par_clip_table
     String output_dir
-    String gff_three_an_not
+    Int gff_three_an_not
   }
   command <<<
-    mb-annotate-table \
+    mb_annotate_table \
       ~{par_clip_table} \
       ~{output_dir} \
       ~{gff_three_an_not} \
@@ -19,5 +19,8 @@ task MbAnnotateTable {
     par_clip_table: "path to parclip table"
     output_dir: "output directory"
     gff_three_an_not: "paths to one or more gff3 annotation files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

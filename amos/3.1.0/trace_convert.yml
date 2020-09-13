@@ -1,4 +1,6 @@
 !Command
+command:
+- trace_convert
 positional:
 - !Positional
   description: ''
@@ -25,11 +27,92 @@ positional:
   position: 4
   name: out
   optional: false
-named: []
-command:
-- trace_convert
+named:
+- !Flag
+  description: Format for input (defaults to any
+  synonyms:
+  - -in_format
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: Format for output (default ztr)
+  synonyms:
+  - -out_format
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: Get "Input Output" names from a fofn
+  synonyms:
+  - -fofn
+  args: !SimpleFlagArg
+    name: file_of_filenames
+  optional: true
+- !Flag
+  description: Output fofn of passed names
+  synonyms:
+  - -passed
+  args: !SimpleFlagArg
+    name: fofn
+  optional: true
+- !Flag
+  description: Redirect stderr to file stderrfn (default is stderr)
+  synonyms:
+  - -error
+  args: !SimpleFlagArg
+    name: errorfn
+  optional: true
+- !Flag
+  description: Output fofn of failed names
+  synonyms:
+  - -failed
+  args: !SimpleFlagArg
+    name: fofn
+  optional: true
+- !Flag
+  description: ID line for experiment file output
+  synonyms:
+  - -name
+  args: !SimpleFlagArg
+    name: id
+  optional: true
+- !Flag
+  description: Subtracts the trace background
+  synonyms:
+  - -subtract_background
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Normalises peak heights
+  synonyms:
+  - -normalise
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Downscales peaks to 0-range
+  synonyms:
+  - -scale
+  args: !SimpleFlagArg
+    name: range
+  optional: true
+- !Flag
+  description: Compress file output (not if stdout)
+  synonyms:
+  - -compress
+  args: !SimpleFlagArg
+    name: mode
+  optional: true
+- !Flag
+  description: 'ABI DATA lanes to copy: eg 9,10,11,12'
+  synonyms:
+  - -abi_data
+  args: !SimpleFlagArg
+    name: counts
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

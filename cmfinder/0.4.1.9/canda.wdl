@@ -2,7 +2,7 @@ version 1.0
 
 task Canda {
   input {
-    String? t
+    File? t
     String c_and_file
     String seq_file
     String out_file
@@ -19,5 +19,8 @@ task Canda {
     c_and_file: ""
     seq_file: ""
     out_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,152 +1,155 @@
 class: CommandLineTool
 id: ../../../ssu_cmscore.cwl
 inputs:
-- id: generate_n_sequences
+- id: in_generate_n_sequences
   doc: ': generate <n> sequences  [10]'
-  type: string
+  type: long
   inputBinding:
     prefix: -n
-- id: align_locally_model
+- id: in_align_locally_wrt
   doc: ': align locally w.r.t. the model'
   type: boolean
   inputBinding:
     prefix: -l
-- id: set_rng_seed
+- id: in_set_rng_seed
   doc: ': set RNG seed to <n> (if 0: one-time arbitrary seed)  [181]'
-  type: string
+  type: long
   inputBinding:
     prefix: -s
-- id: print_individual_timings
+- id: in_print_individual_timings
   doc: ': print individual timings & scores, not just a summary'
   type: boolean
   inputBinding:
     prefix: -a
-- id: sub
+- id: in_sub
   doc: ': build sub CM for columns b/t HMM predicted start/end points'
   type: boolean
   inputBinding:
     prefix: --sub
-- id: mx_size
+- id: in_mx_size
   doc: ': set maximum allowable DP matrix size to <x> Mb  [2048.0]'
-  type: string
+  type: long
   inputBinding:
     prefix: --mxsize
-- id: devhelp
+- id: in_devhelp
   doc: ': show list of undocumented developer options'
   type: boolean
   inputBinding:
     prefix: --devhelp
-- id: emit
+- id: in_emit
   doc: ': emit <n> sequences from each CM  [default]'
   type: boolean
   inputBinding:
     prefix: --emit
-- id: random
+- id: in_random
   doc: ': emit <n> random seq from cm->null model'
   type: boolean
   inputBinding:
     prefix: --random
-- id: in_file
+- id: in_in_file
   doc: ': read sequences to align from file <s>'
-  type: string
+  type: File
   inputBinding:
     prefix: --infile
-- id: outfile
+- id: in_outfile
   doc: ': save seqs to file <s> in FASTA format'
-  type: string
+  type: File
   inputBinding:
     prefix: --outfile
-- id: lm_in
+- id: in_lm_in
   doc: ': with --random, specify minimum length of random sequences as <n>'
-  type: string
+  type: long
   inputBinding:
     prefix: --Lmin
-- id: lmax
+- id: in_lmax
   doc: ': with --random, specify maximum length of random sequences as <n>'
-  type: string
+  type: long
   inputBinding:
     prefix: --Lmax
-- id: pad
+- id: in_pad
   doc: ': with --emit, pad (W-L) residues on each side of emitted seqs'
   type: boolean
   inputBinding:
     prefix: --pad
-- id: h_banded
+- id: in_h_banded
   doc: ': compare d&c optimal CYK versus HMM banded CYK  [default]'
   type: boolean
   inputBinding:
     prefix: --hbanded
-- id: tau
+- id: in_tau
   doc: ': set tail loss prob for --hbanded to <x>  [1E-7]  (0<x<1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --tau
-- id: aln_two_bands
+- id: in_aln_two_bands
   doc: ': w/--hbanded derive HMM bands w/o scanning Forward/Backward'
   type: boolean
   inputBinding:
     prefix: --aln2bands
-- id: h_safe
+- id: in_h_safe
   doc: ': realign (non-banded) seqs with HMM banded CYK score < 0 bits'
   type: boolean
   inputBinding:
     prefix: --hsafe
-- id: non_banded
+- id: in_non_banded
   doc: ': compare divide and conquer (d&c) versus standard non-banded CYK'
   type: boolean
   inputBinding:
     prefix: --nonbanded
-- id: score_only
+- id: in_score_only
   doc: ': with --nonbanded, do only score, save memory'
   type: boolean
   inputBinding:
     prefix: --scoreonly
-- id: viterbi
+- id: in_viterbi
   doc: ': align to a CM Plan 9 HMM with the Viterbi algorithm'
   type: boolean
   inputBinding:
     prefix: --viterbi
-- id: search
+- id: in_search
   doc: ': run algorithms in scanning search mode'
   type: boolean
   inputBinding:
     prefix: --search
-- id: inside
+- id: in_inside
   doc: ': with --search, use Inside instead of CYK'
   type: boolean
   inputBinding:
     prefix: --inside
-- id: forward
+- id: in_forward
   doc: ': with --search, use HMM  Forward instead of CYK'
   type: boolean
   inputBinding:
     prefix: --forward
-- id: taus
+- id: in_taus
   doc: ': set initial (stage 2) tail loss prob to 1E-<x> for HMM banding'
-  type: string
+  type: long
   inputBinding:
     prefix: --taus
-- id: tau_e
+- id: in_tau_e
   doc: ': set final   (stage N) tail loss prob to 1E-<x> for HMM banding'
-  type: string
+  type: long
   inputBinding:
     prefix: --taue
-- id: t_file
+- id: in_t_file
   doc: ': dump parsetrees to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --tfile
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: cm_file
+- id: in_cm_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ssu-cmscore

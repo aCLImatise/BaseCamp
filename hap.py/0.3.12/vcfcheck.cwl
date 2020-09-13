@@ -1,53 +1,61 @@
 class: CommandLineTool
 id: ../../../vcfcheck.cwl
 inputs:
-- id: input_file
+- id: in_input_file
   doc: The input file
-  type: string
+  type: File
   inputBinding:
     prefix: --input-file
-- id: arg_output_json
+- id: in_arg_output_json
   doc: '[ --output-file ] arg   The output JSON file with basic counts.'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -o
-- id: arg_start_location
+- id: in_arg_start_location
   doc: '[ --location ] arg      Start location.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: limit_records
+- id: in_limit_records
   doc: Maximum number of records to process
-  type: string
+  type: long
   inputBinding:
     prefix: --limit-records
-- id: message_every
+- id: in_message_every
   doc: Print a message every N records.
   type: string
   inputBinding:
     prefix: --message-every
-- id: arg_apply_filtering
+- id: in_arg_apply_filtering
   doc: '[ --apply-filters ] arg Apply filtering in VCF.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: arg_strict_assertions
-  doc: "[ --strict-homref ] arg Be strict about hom-ref assertions (i.e. don't  allow\
+- id: in_arg_strict_homref
+  doc: "[ --strict-homref ] arg Be strict about hom-ref assertions (i.e. don't\nallow\
     \ these to overlap)."
   type: boolean
   inputBinding:
     prefix: -H
-- id: check_bcf_errors
-  doc: Check if turning this file into BCF will succeed  or fail.
-  type: string
+- id: in_check_bcf_errors
+  doc: "Check if turning this file into BCF will succeed\nor fail."
+  type: File
   inputBinding:
     prefix: --check-bcf-errors
-- id: arg_show_warnings
+- id: in_arg_show_warnings
   doc: '[ --all-warnings ] arg  Show all warnings, not just the first instance.'
   type: boolean
   inputBinding:
     prefix: -W
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_output_json
+  doc: '[ --output-file ] arg   The output JSON file with basic counts.'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_json)
 cwlVersion: v1.1
 baseCommand:
 - vcfcheck

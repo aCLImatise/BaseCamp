@@ -1,4 +1,6 @@
 !Command
+command:
+- IDFilter
 positional: []
 named:
 - !Flag
@@ -26,8 +28,8 @@ named:
   optional: true
 - !Flag
   description: ":number_of_missed_cleavages [min]:[max]  Range of allowed missed cleavages\
-    \ in the peptide sequences. For example: 0:1 -> peptides with two or more missed\
-    \ cleavages will be removed, 0:0 -> peptides with any missed cleavages will be\
+    \ in the peptide sequences.\nFor example: 0:1 -> peptides with two or more missed\
+    \ cleavages will be removed,\n0:0 -> peptides with any missed cleavages will be\
     \ removed (default: ':')"
   synonyms:
   - -missed_cleavages
@@ -95,10 +97,9 @@ named:
   - --helphelp
   args: !EmptyFlagArg {}
   optional: true
-command:
-- IDFilter
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Shows options
   synonyms:
@@ -107,52 +108,53 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
-help_text: "\nIDFilter -- Filters results from protein or peptide identification engines\
-  \ based on different criteria.\nFull documentation: http://www.openms.de/documentation/TOPP_IDFilter.html\n\
-  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND May 19 2020, 23:12:02, Revision:\
-  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
-  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
-  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
-  \  IDFilter <options>\n\nOptions (mandatory options marked with '*'):\n  -in <file>*\
-  \                                               Input file  (valid formats: 'idXML')\n\
-  \  -out <file>*                                              Output file  (valid\
-  \ formats: 'idXML')\n\nFiltering by precursor attributes (RT, m/z, charge, length):\n\
-  \  -precursor:rt [min]:[max]                                 Retention time range\
-  \ to extract. (default: ':')\n  -precursor:mz [min]:[max]                      \
-  \           Mass-to-charge range to extract. (default: ':')\n  -precursor:length\
-  \ [min]:[max]                             Keep only peptide hits with a sequence\
-  \ length in this range. (default: ':')\n  -precursor:charge [min]:[max]        \
-  \                     Keep only peptide hits with charge states in this range. (default:\
-  \ ':')\n\nFiltering by peptide/protein score.:\n  -score:pep <score>           \
-  \                             The score which should be reached by a peptide hit\
-  \ to be kept. (default: '0.0')\n  -score:prot <score>                          \
-  \             The score which should be reached by a protein hit to be kept. Use\
-  \ in combination with 'delete_unreferenced_peptide_hits' to remove affected peptides.\
-  \ (default: '0.0')\n\nFiltering by whitelisting (only peptides/proteins from a given\
-  \ set can pass):\n  -whitelist:proteins <file>                                Filename\
-  \ of a FASTA file containing protein sequences.\n                              \
-  \                              All peptides that are not referencing a protein in\
-  \ this file are removed.\n                                                     \
-  \       All proteins whose accessions are not present in this file are removed.\
-  \ (valid formats: 'fasta')\n  -whitelist:protein_accessions <accessions>       \
-  \         All peptides that do not reference at least one of the provided protein\
-  \ accession are removed.\n                                                     \
-  \       Only proteins of the provided list are retained.\n  -whitelist:peptides\
-  \ <file>                                Only peptides with the same sequence and\
-  \ modification assignment as any peptide in this file are kept. Use with 'whitelist:ignore_modifications'\
-  \ to only compare by sequence.\n                                               \
-  \             (valid formats: 'idXML')\n\nFiltering by blacklisting (only peptides/proteins\
-  \ NOT present in a given set can pass):\n  -blacklist:proteins <file>          \
-  \                      Filename of a FASTA file containing protein sequences.\n\
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nIDFilter -- Filters\
+  \ results from protein or peptide identification engines based on different criteria.\n\
+  Full documentation: http://www.openms.de/documentation/TOPP_IDFilter.html\nVersion:\
+  \ 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision: HEAD-HASH-NOTFOUND\n\
+  To cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible\
+  \ open-source software platform for mass spectrometry data analysis. Nat Meth. 2016;\
+  \ 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n  IDFilter <options>\n\nOptions\
+  \ (mandatory options marked with '*'):\n  -in <file>*                          \
+  \                     Input file  (valid formats: 'idXML')\n  -out <file>*     \
+  \                                         Output file  (valid formats: 'idXML')\n\
+  \nFiltering by precursor attributes (RT, m/z, charge, length):\n  -precursor:rt\
+  \ [min]:[max]                                 Retention time range to extract. (default:\
+  \ ':')\n  -precursor:mz [min]:[max]                                 Mass-to-charge\
+  \ range to extract. (default: ':')\n  -precursor:length [min]:[max]            \
+  \                 Keep only peptide hits with a sequence length in this range. (default:\
+  \ ':')\n  -precursor:charge [min]:[max]                             Keep only peptide\
+  \ hits with charge states in this range. (default: ':')\n\nFiltering by peptide/protein\
+  \ score.:\n  -score:pep <score>                                        The score\
+  \ which should be reached by a peptide hit to be kept. (default: '0.0')\n  -score:prot\
+  \ <score>                                       The score which should be reached\
+  \ by a protein hit to be kept. Use in combination with 'delete_unreferenced_peptide_hits'\
+  \ to remove affected peptides. (default: '0.0')\n\nFiltering by whitelisting (only\
+  \ peptides/proteins from a given set can pass):\n  -whitelist:proteins <file>  \
+  \                              Filename of a FASTA file containing protein sequences.\n\
   \                                                            All peptides that are\
-  \ referencing a protein in this file are removed.\n                            \
-  \                                All proteins whose accessions are present in this\
-  \ file are removed. (valid formats: 'fasta')\n  -blacklist:protein_accessions <accessions>\
-  \                All peptides that reference at least one of the provided protein\
-  \ accession are removed.\n                                                     \
-  \       Only proteins not in the provided list are retained.\n  -blacklist:peptides\
-  \ <file>                                Peptides with the same sequence and modification\
-  \ assignment as any peptide in this file are filtered out. Use with 'blacklist:ignore_modifications'\
+  \ not referencing a protein in this file are removed.\n                        \
+  \                                    All proteins whose accessions are not present\
+  \ in this file are removed. (valid formats: 'fasta')\n  -whitelist:protein_accessions\
+  \ <accessions>                All peptides that do not reference at least one of\
+  \ the provided protein accession are removed.\n                                \
+  \                            Only proteins of the provided list are retained.\n\
+  \  -whitelist:peptides <file>                                Only peptides with\
+  \ the same sequence and modification assignment as any peptide in this file are\
+  \ kept. Use with 'whitelist:ignore_modifications' to only compare by sequence.\n\
+  \                                                            (valid formats: 'idXML')\n\
+  \nFiltering by blacklisting (only peptides/proteins NOT present in a given set can\
+  \ pass):\n  -blacklist:proteins <file>                                Filename of\
+  \ a FASTA file containing protein sequences.\n                                 \
+  \                           All peptides that are referencing a protein in this\
+  \ file are removed.\n                                                          \
+  \  All proteins whose accessions are present in this file are removed. (valid formats:\
+  \ 'fasta')\n  -blacklist:protein_accessions <accessions>                All peptides\
+  \ that reference at least one of the provided protein accession are removed.\n \
+  \                                                           Only proteins not in\
+  \ the provided list are retained.\n  -blacklist:peptides <file>                \
+  \                Peptides with the same sequence and modification assignment as\
+  \ any peptide in this file are filtered out. Use with 'blacklist:ignore_modifications'\
   \ to only compare by sequence.\n                                               \
   \             (valid formats: 'idXML')\n\nThis filter option removes peptide hits\
   \ which are not in the list of in silico peptides generated by the rules specified\

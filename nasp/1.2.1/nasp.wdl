@@ -2,7 +2,7 @@ version 1.0
 
 task Nasp {
   input {
-    String? config
+    File? config
   }
   command <<<
     nasp \
@@ -10,5 +10,8 @@ task Nasp {
   >>>
   parameter_meta {
     config: "Path to the configuration xml file."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

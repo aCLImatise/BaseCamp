@@ -1,39 +1,42 @@
 class: CommandLineTool
 id: ../../../bedJoinTabOffset.cwl
 inputs:
-- id: debug
+- id: in_debug
   doc: show debug messages
   type: boolean
   inputBinding:
     prefix: --debug
-- id: tab_key_field
-  doc: the index of the key field in the tab file that matches the key field in the
-    bed file. default 0
-  type: string
+- id: in_tab_key_field
+  doc: "the index of the key field in the tab file that\nmatches the key field in\
+    \ the bed file. default 0"
+  type: File
   inputBinding:
     prefix: --tabKeyField
-- id: bed_key_field
-  doc: the index of the key field in the bed file that matches the key field in the
-    tab file. default 3
-  type: string
+- id: in_bed_key_field
+  doc: "the index of the key field in the bed file that\nmatches the key field in\
+    \ the tab file. default 3\n"
+  type: File
   inputBinding:
     prefix: --bedKeyField
-- id: in_tab_file
+- id: in_in_tab_file
   doc: ''
-  type: long
+  type: string
   inputBinding:
     position: 0
-- id: in_bed_file
+- id: in_in_bed_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_bed_file
+- id: in_out_bed_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedJoinTabOffset

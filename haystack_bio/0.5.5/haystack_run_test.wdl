@@ -4,4 +4,7 @@ task HaystackRunTest {
   command <<<
     haystack_run_test
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -7,7 +7,7 @@ task GapToLift {
     Boolean? insane
     File? bed_file
     Boolean? allow_bridged
-    String? verbose
+    Int? verbose
     String db
     String lift_file_dot_lft
   }
@@ -17,9 +17,9 @@ task GapToLift {
       ~{lift_file_dot_lft} \
       ~{if defined(chr) then ("-chr " +  '"' + chr + '"') else ""} \
       ~{if defined(min_gap) then ("-minGap " +  '"' + min_gap + '"') else ""} \
-      ~{true="-insane" false="" insane} \
+      ~{if (insane) then "-insane" else ""} \
       ~{if defined(bed_file) then ("-bedFile " +  '"' + bed_file + '"') else ""} \
-      ~{true="-allowBridged" false="" allow_bridged} \
+      ~{if (allow_bridged) then "-allowBridged" else ""} \
       ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
   parameter_meta {
@@ -31,5 +31,9 @@ task GapToLift {
     verbose: "- N > 1 see more information about procedure"
     db: ""
     lift_file_dot_lft: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_bed_file = "${in_bed_file}"
   }
 }

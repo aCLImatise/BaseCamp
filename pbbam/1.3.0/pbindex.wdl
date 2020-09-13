@@ -11,4 +11,7 @@ task Pbindex {
   parameter_meta {
     in_dot_bam: "FILE  Input BAM file"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

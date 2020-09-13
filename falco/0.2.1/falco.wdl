@@ -10,10 +10,8 @@ task Falco {
     Boolean? nogroup
     Boolean? format
     Boolean? threads
-    Boolean? contaminants
-    Boolean? adapters
+    Boolean? nondefault_filer_list
     Boolean? limits
-    Boolean? skip_text
     Boolean? skip_html
     Boolean? skip_short_summary
     Boolean? quiet
@@ -22,50 +20,55 @@ task Falco {
     Boolean? bisulfite
     Boolean? reverse_complement
     Boolean? about
+    String _adapters_nondefault
+    String criteria
   }
   command <<<
     falco \
-      ~{true="--outdir" false="" outdir} \
-      ~{true="--casava" false="" casa_va} \
-      ~{true="--nano" false="" nano} \
-      ~{true="--nofilter" false="" no_filter} \
-      ~{true="--noextract" false="" no_extract} \
-      ~{true="--nogroup" false="" nogroup} \
-      ~{true="--format" false="" format} \
-      ~{true="--threads" false="" threads} \
-      ~{true="--contaminants" false="" contaminants} \
-      ~{true="--adapters" false="" adapters} \
-      ~{true="--limits" false="" limits} \
-      ~{true="--skip-text" false="" skip_text} \
-      ~{true="--skip-html" false="" skip_html} \
-      ~{true="--skip-short-summary" false="" skip_short_summary} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--dir" false="" dir} \
-      ~{true="--advanced-mode" false="" advanced_mode} \
-      ~{true="--bisulfite" false="" bisulfite} \
-      ~{true="--reverse-complement" false="" reverse_complement} \
-      ~{true="-about" false="" about}
+      ~{_adapters_nondefault} \
+      ~{criteria} \
+      ~{if (outdir) then "--outdir" else ""} \
+      ~{if (casa_va) then "--casava" else ""} \
+      ~{if (nano) then "--nano" else ""} \
+      ~{if (no_filter) then "--nofilter" else ""} \
+      ~{if (no_extract) then "--noextract" else ""} \
+      ~{if (nogroup) then "--nogroup" else ""} \
+      ~{if (format) then "--format" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (nondefault_filer_list) then "--contaminants" else ""} \
+      ~{if (limits) then "--limits" else ""} \
+      ~{if (skip_html) then "--skip-html" else ""} \
+      ~{if (skip_short_summary) then "--skip-short-summary" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (dir) then "--dir" else ""} \
+      ~{if (advanced_mode) then "--advanced-mode" else ""} \
+      ~{if (bisulfite) then "--bisulfite" else ""} \
+      ~{if (reverse_complement) then "--reverse-complement" else ""} \
+      ~{if (about) then "-about" else ""}
   >>>
   parameter_meta {
-    outdir: "Create all output files in the specified  output directory. If notprovided, files  will be created in the same directory as  the input file. "
-    casa_va: "Files come from raw casava output  (currently ignored) "
-    nano: "Files come from fast5 nanopore sequences "
-    no_filter: "If running with --casava do not sequences  (currently ignored) "
-    no_extract: "If running with --casava do not remove poor  quality sequences (currently ignored) "
-    nogroup: "Disable grouping of bases for reads >50bp "
-    format: "Force file format "
-    threads: "Specifies number of simultaneous files "
-    contaminants: "Non-default filer with a list of  contaminants "
-    adapters: "Non-default file with a list of adapters "
-    limits: "Non-default file with limits and warn/fail  criteria "
-    skip_text: "Skip generating text file (Default = false) "
-    skip_html: "Skip generating HTML file (Default = false) "
-    skip_short_summary: "Skip short summary(Default = false) "
-    quiet: "print more run info "
-    dir: "directory in which to create temp files "
-    advanced_mode: "advanced mode: adds more information to the  FastQC output depending on non-fastqc user  flags "
-    bisulfite: "reads are whole genome bisulfite  sequencing, and more Ts and fewer Cs are  therefore expected and will be accounted  for in base content (advanced mode) "
-    reverse_complement: "The input is a reverse-complement. All  modules will be tested by swapping A/T and  C/G "
-    about: "print about message "
+    outdir: "Create all output files in the specified\\noutput directory. If notprovided, files\\nwill be created in the same directory as\\nthe input file."
+    casa_va: "Files come from raw casava output\\n(currently ignored)"
+    nano: "Files come from fast5 nanopore sequences"
+    no_filter: "If running with --casava do not sequences\\n(currently ignored)"
+    no_extract: "If running with --casava do not remove poor\\nquality sequences (currently ignored)"
+    nogroup: "Disable grouping of bases for reads >50bp"
+    format: "Force file format"
+    threads: "Specifies number of simultaneous files"
+    nondefault_filer_list: "Non-default filer with a list of"
+    limits: "Non-default file with limits and warn/fail"
+    skip_html: "Skip generating HTML file (Default = false)"
+    skip_short_summary: "Skip short summary(Default = false)"
+    quiet: "print more run info"
+    dir: "directory in which to create temp files"
+    advanced_mode: "advanced mode: adds more information to the\\nFastQC output depending on non-fastqc user\\nflags"
+    bisulfite: "reads are whole genome bisulfite\\nsequencing, and more Ts and fewer Cs are\\ntherefore expected and will be accounted\\nfor in base content (advanced mode)"
+    reverse_complement: "The input is a reverse-complement. All\\nmodules will be tested by swapping A/T and\\nC/G"
+    about: "print about message"
+    _adapters_nondefault: "-a, --adapters            Non-default file with a list of adapters "
+    criteria: "-T, --skip-text           Skip generating text file (Default = false) "
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

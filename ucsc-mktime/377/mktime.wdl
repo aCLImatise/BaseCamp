@@ -14,4 +14,7 @@ task Mktime {
     yyyy_mm_dd: ""
     hh: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

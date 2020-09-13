@@ -4,4 +4,7 @@ task Pyprophet {
   command <<<
     pyprophet
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

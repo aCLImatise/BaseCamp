@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../KmerStreamJoin.cwl
 inputs:
-- id: verbose
-  doc: Print output at the end
-  type: boolean
+- id: in_output
+  doc: "Filename for output\n--verbose            Print output at the end\n"
+  type: File
   inputBinding:
-    prefix: --verbose
-- id: o
+    prefix: --output
+- id: in_merged_file
   doc: ''
-  type: string[]
-  inputBinding:
-    prefix: -o
-- id: merged_file
-  doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Filename for output\n--verbose            Print output at the end\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - KmerStreamJoin

@@ -1,52 +1,50 @@
 class: CommandLineTool
 id: ../../../phyluce_genetrees_rename_tree_leaves.cwl
 inputs:
-- id: input
-  doc: The input tree file
-  type: string
-  inputBinding:
-    prefix: --input
-- id: config
-  doc: A python config file mapping one name to another
-  type: string
-  inputBinding:
-    prefix: --config
-- id: output
-  doc: The output tree file
-  type: string
-  inputBinding:
-    prefix: --output
-- id: section
-  doc: The section of the conf file to use
+- id: in_section
+  doc: ''
   type: string
   inputBinding:
     prefix: --section
-- id: order
-  doc: '{left:right,right:left} Map the names as entered or in reverse'
+- id: in_input
+  doc: The input tree file
+  type: File
+  inputBinding:
+    prefix: --input
+- id: in_config
+  doc: A python config file mapping one name to another
+  type: File
+  inputBinding:
+    prefix: --config
+- id: in_order
+  doc: "{left:right,right:left}\nMap the names as entered or in reverse"
   type: boolean
   inputBinding:
     prefix: --order
-- id: input_format
+- id: in_input_format
   doc: The tree file format
   type: string
   inputBinding:
     prefix: --input-format
-- id: output_format
+- id: in_output_format
   doc: The tree file format
   type: string
   inputBinding:
     prefix: --output-format
-- id: re_root
+- id: in_re_root
   doc: The resulting name to root the tree on
   type: string
   inputBinding:
     prefix: --reroot
-- id: do_not_preserve_spaces
-  doc: Do not retain spaces in output names
+- id: in_do_not_preserve_spaces
+  doc: "Do not retain spaces in output names\n"
   type: string
   inputBinding:
     prefix: --do-not-preserve-spaces
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_genetrees_rename_tree_leaves

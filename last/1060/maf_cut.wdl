@@ -1,14 +1,17 @@
 version 1.0
 
-task MafCut {
+task Mafcut {
   input {
     String chr_n
   }
   command <<<
-    maf-cut \
+    maf_cut \
       ~{chr_n}
   >>>
   parameter_meta {
     chr_n: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

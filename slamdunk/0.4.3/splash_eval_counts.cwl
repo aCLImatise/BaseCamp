@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../splash_eval_counts.cwl
 inputs:
-- id: s
+- id: in_simulated
   doc: ''
   type: string
   inputBinding:
-    prefix: -s
-- id: d
+    prefix: --simulated
+- id: in_slam_dun
   doc: ''
   type: string
   inputBinding:
-    prefix: -d
-- id: o
+    prefix: --slamdun
+- id: in_output_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
-    prefix: -o
-outputs: []
+    prefix: --outputFile
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - splash

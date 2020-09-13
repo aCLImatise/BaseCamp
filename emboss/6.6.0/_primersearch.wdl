@@ -1,7 +1,10 @@
 version 1.0
 
-task _primersearch {
+task Primersearch {
   command <<<
     _primersearch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

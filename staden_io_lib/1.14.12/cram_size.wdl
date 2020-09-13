@@ -11,4 +11,7 @@ task CramSize {
   parameter_meta {
     filename_dot_cram: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

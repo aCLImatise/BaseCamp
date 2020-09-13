@@ -1,12 +1,20 @@
 class: CommandLineTool
 id: ../../../olapsFromContig.cwl
 inputs:
-- id: option
-  doc: ''
-  type: string
+- id: in_set_maximum_default
+  doc: Set maximum overlap error, default 0.05
+  type: double
   inputBinding:
-    position: 0
-outputs: []
+    prefix: -e
+- id: in_set_default_messages
+  doc: "Set minimum overlap length, default 20\nConverts bank CTG messages to overlaps.\n"
+  type: long
+  inputBinding:
+    prefix: -o
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - olapsFromContig

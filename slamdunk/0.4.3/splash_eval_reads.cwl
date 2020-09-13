@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../splash_eval_reads.cwl
 inputs:
-- id: bed
+- id: in_output_file
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --outputFile
+- id: in_bed
   doc: BED file
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: reference
-  doc: Reference fasta file
-  type: string
+- id: in_reference
+  doc: "Reference fasta file\n"
+  type: File
   inputBinding:
     prefix: --reference
-- id: o
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
   doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
-outputs: []
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - splash

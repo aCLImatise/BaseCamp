@@ -4,4 +4,7 @@ task Ctgvalidate {
   command <<<
     ctgvalidate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

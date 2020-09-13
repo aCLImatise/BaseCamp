@@ -1,32 +1,32 @@
 version 1.0
 
-task _xml2Config {
+task Xml2config {
   input {
     String? prefix
     String? exec_prefix
     Boolean? libs
     Boolean? cflags
     Boolean? modules
-    String xml_two_config
-    String? option
+    Int xml_two_config
   }
   command <<<
-    _xml2-config \
+    _xml2_config \
       ~{xml_two_config} \
-      ~{option} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(exec_prefix) then ("--exec-prefix " +  '"' + exec_prefix + '"') else ""} \
-      ~{true="--libs" false="" libs} \
-      ~{true="--cflags" false="" cflags} \
-      ~{true="--modules" false="" modules}
+      ~{if (libs) then "--libs" else ""} \
+      ~{if (cflags) then "--cflags" else ""} \
+      ~{if (modules) then "--modules" else ""}
   >>>
   parameter_meta {
-    prefix: "change libxml prefix [default /tmp/tmpa5dnn8jt]"
-    exec_prefix: "change libxml exec prefix [default /tmp/tmpa5dnn8jt]"
-    libs: "print library linking information add --dynamic to print only shared libraries"
+    prefix: "change libxml prefix [default /usr/local]"
+    exec_prefix: "change libxml exec prefix [default /usr/local]"
+    libs: "print library linking information\\nadd --dynamic to print only shared libraries"
     cflags: "print pre-processor and compiler flags"
     modules: "module support enabled"
     xml_two_config: ""
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

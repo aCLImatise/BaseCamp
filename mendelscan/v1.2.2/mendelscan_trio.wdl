@@ -5,9 +5,9 @@ task MendelscanTrio {
     Boolean? vep_file
     Boolean? ped_file
     Boolean? gene_file
-    Boolean? output_file
-    Boolean? output_recessive
-    String? output_de_novo
+    File? output_file
+    File? output_recessive
+    File? output_de_novo
     String? jar
     String java
     String trio
@@ -18,11 +18,11 @@ task MendelscanTrio {
       ~{java} \
       ~{trio} \
       ~{vcf} \
-      ~{true="--vep-file" false="" vep_file} \
-      ~{true="--ped-file" false="" ped_file} \
-      ~{true="--gene-file" false="" gene_file} \
-      ~{true="--output-file" false="" output_file} \
-      ~{true="--output-recessive" false="" output_recessive} \
+      ~{if (vep_file) then "--vep-file" else ""} \
+      ~{if (ped_file) then "--ped-file" else ""} \
+      ~{if (gene_file) then "--gene-file" else ""} \
+      ~{if (output_file) then "--output-file" else ""} \
+      ~{if (output_recessive) then "--output-recessive" else ""} \
       ~{if defined(output_de_novo) then ("--output-denovo " +  '"' + output_de_novo + '"') else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
@@ -37,5 +37,10 @@ task MendelscanTrio {
     java: ""
     trio: ""
     vcf: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
+    File out_output_recessive = "${in_output_recessive}"
   }
 }

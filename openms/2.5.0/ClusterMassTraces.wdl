@@ -4,14 +4,14 @@ task ClusterMassTraces {
   input {
     File? in
     File? out
-    String? min_pearson_correlation
-    String? min_peak_nr
-    String? max_lag
-    String? max_rt_apex_difference
-    String? max_intensity_cut_off
-    String? add_precursor
+    Float? min_pearson_correlation
+    Int? min_peak_nr
+    Int? max_lag
+    Float? max_rt_apex_difference
+    Float? max_intensity_cut_off
+    Float? add_precursor
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -28,7 +28,7 @@ task ClusterMassTraces {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                        Mass traces (valid formats: 'consensusXML')"
@@ -43,5 +43,9 @@ task ClusterMassTraces {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

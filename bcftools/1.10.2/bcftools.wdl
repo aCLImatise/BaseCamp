@@ -4,4 +4,7 @@ task Bcftools {
   command <<<
     bcftools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

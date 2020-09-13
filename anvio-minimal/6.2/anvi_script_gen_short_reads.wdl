@@ -1,17 +1,18 @@
 version 1.0
 
-task AnviScriptGenShortReads {
+task Anviscriptgenshortreads {
   input {
-    String? output_file_path
-    String config_file
+    File? output_file_path
   }
   command <<<
-    anvi-script-gen-short-reads \
-      ~{config_file} \
+    anvi_script_gen_short_reads \
       ~{if defined(output_file_path) then ("--output-file-path " +  '"' + output_file_path + '"') else ""}
   >>>
   parameter_meta {
-    output_file_path: "Output FASTA file path"
-    config_file: "Configuration file"
+    output_file_path: "Output FASTA file path\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_path = "${in_output_file_path}"
   }
 }

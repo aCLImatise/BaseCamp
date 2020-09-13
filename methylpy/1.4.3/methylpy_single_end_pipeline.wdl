@@ -1,60 +1,58 @@
 version 1.0
 
-task MethylpySingleEndPipeline {
+task MethylpySingleendpipeline {
   input {
+    String? forward_ref
     Array[String] read_files
     String? sample
-    String? forward_ref
-    String? reverse_ref
-    String? ref_fast_a
+    File? ref_fast_a
     Array[String] libraries
     File? path_to_output
-    String? pb_at
-    String? check_dependency
-    String? num_procs
-    String? sort_mem
-    String? num_upstream_bases
-    String? num_downstream_bases
-    String? generate_all_c_file
-    String? generate_m_pile_up_file
-    String? compress_output
-    String? b_gzip
+    Boolean? pb_at
+    Boolean? check_dependency
+    Int? num_procs
+    Int? sort_mem
+    Int? num_upstream_bases
+    Int? num_downstream_bases
+    File? generate_all_c_file
+    File? generate_m_pile_up_file
+    Boolean? compress_output
+    Boolean? b_gzip
     File? path_to_b_gzip
     File? path_to_tab_ix
-    String? trim_reads
+    Boolean? trim_reads
     File? path_to_cut_adapt
     File? path_to_aligner
-    String? aligner
+    Int? aligner
     Array[String] aligner_options
-    String? merge_by_max_mapq
-    String? remove_clonal
+    Int? merge_by_max_mapq
+    Boolean? remove_clonal
     File? path_to_picard
-    String? keep_clonal_stats
+    Boolean? keep_clonal_stats
     String? java_options
     File? path_to_sam_tools
-    String? adapter_seq
-    String? remove_chr_prefix
-    String? add_snp_info
-    String? unmethylated_control
+    Int? adapter_seq
+    Boolean? remove_chr_prefix
+    Boolean? add_snp_info
+    Float? unmethylated_control
     String? bin_om_test
-    String? sig_cut_off
+    Float? sig_cut_off
     Int? min_mapq
     Int? min_cov
     Int? max_adapter_removal
-    String? overlap_length
+    Int? overlap_length
     String? zero_cap
-    String? error_rate
+    Int? error_rate
     Int? min_qual_score
     Int? min_read_len
     Int? min_base_quality
-    String? keep_temp_files
+    Boolean? keep_temp_files
   }
   command <<<
-    methylpy single-end-pipeline \
+    methylpy single_end_pipeline \
+      ~{if defined(forward_ref) then ("--forward-ref " +  '"' + forward_ref + '"') else ""} \
       ~{if defined(read_files) then ("--read-files " +  '"' + read_files + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
-      ~{if defined(forward_ref) then ("--forward-ref " +  '"' + forward_ref + '"') else ""} \
-      ~{if defined(reverse_ref) then ("--reverse-ref " +  '"' + reverse_ref + '"') else ""} \
       ~{if defined(ref_fast_a) then ("--ref-fasta " +  '"' + ref_fast_a + '"') else ""} \
       ~{if defined(libraries) then ("--libraries " +  '"' + libraries + '"') else ""} \
       ~{if defined(path_to_output) then ("--path-to-output " +  '"' + path_to_output + '"') else ""} \
@@ -99,51 +97,54 @@ task MethylpySingleEndPipeline {
       ~{if defined(keep_temp_files) then ("--keep-temp-files " +  '"' + keep_temp_files + '"') else ""}
   >>>
   parameter_meta {
-    read_files: "list of all the fastq files you would like to run through the pipeline. Note that globbing is supported here (i.e., you can use * in your paths) (default: None)"
-    sample: "String indicating the name of the sample you are processing. It will be included in the output files. (default: None)"
-    forward_ref: "string indicating the path to the forward strand reference created by build_ref (default: None)"
-    reverse_ref: "string indicating the path to the reverse strand reference created by build_ref (default: None)"
-    ref_fast_a: "string indicating the path to a fasta file containing the sequences you used for mapping (default: None)"
-    libraries: "list of library IDs (in the same order as the files list) indiciating which libraries each set of fastq files belong to. If you use a glob, you only need to indicate the library ID for those fastqs once (i.e., the length of files and libraries should be the same) (default: ['libA'])"
-    path_to_output: "Path to a directory where you would like the output to be stored. The default is the same directory as the input fastqs. (default: )"
-    pb_at: "Boolean indicating whether to process data in PBAT (Post-Bisulfite Adaptor Tagging) mode, in which reads will be mapped to opposite strand of C-T converted genome and the forward strand of G-A converted genome. (default: False)"
-    check_dependency: "Boolean indicating whether to check dependency requirements are met. (default: False)"
-    num_procs: "Number of processors you wish to use to parallelize this function (default: 1)"
-    sort_mem: "Parameter to pass to unix sort with -S/--buffer-size command (default: 500M)"
-    num_upstream_bases: "Number of base(s) upstream of each cytosine that you wish to include in output file. Recommend value 1 for NOMe-seq processing since the upstream base is required to tell apart cytosine at GC context. (default: 0)"
-    num_downstream_bases: "Number of base(s) downstream of each cytosine that you wish to include in output file. Recommend value to be at least 1 to separate cytosines at different sequence context. (default: 2)"
-    generate_all_c_file: "Boolean indicating whether to generate the final output file that contains the methylation state of each cytosine. If set to be false, only alignment file (in BAM format) will be generated. (default: True)"
-    generate_m_pile_up_file: "Boolean indicating whether to generate intermediate mpileup file to save space. However, skipping mpileup step may cause problem due to the nature of python. Not skipping this step is recommended. (default: True)"
-    compress_output: "Boolean indicating whether to compress (by gzip) the final output (allc file(s)). (default: True)"
-    b_gzip: "Boolean indicating whether to bgzip compressed allc files and tabix index. (default: False)"
+    forward_ref: ""
+    read_files: "list of all the fastq files you would like to run\\nthrough the pipeline. Note that globbing is supported\\nhere (i.e., you can use * in your paths) (default:\\nNone)"
+    sample: "String indicating the name of the sample you are\\nprocessing. It will be included in the output files.\\n(default: None)"
+    ref_fast_a: "string indicating the path to a fasta file containing\\nthe sequences you used for mapping (default: None)"
+    libraries: "list of library IDs (in the same order as the files\\nlist) indiciating which libraries each set of fastq\\nfiles belong to. If you use a glob, you only need to\\nindicate the library ID for those fastqs once (i.e.,\\nthe length of files and libraries should be the same)\\n(default: ['libA'])"
+    path_to_output: "Path to a directory where you would like the output to\\nbe stored. The default is the same directory as the\\ninput fastqs. (default: )"
+    pb_at: "Boolean indicating whether to process data in PBAT\\n(Post-Bisulfite Adaptor Tagging) mode, in which reads\\nwill be mapped to opposite strand of C-T converted\\ngenome and the forward strand of G-A converted genome.\\n(default: False)"
+    check_dependency: "Boolean indicating whether to check dependency\\nrequirements are met. (default: False)"
+    num_procs: "Number of processors you wish to use to parallelize\\nthis function (default: 1)"
+    sort_mem: "Parameter to pass to unix sort with -S/--buffer-size\\ncommand (default: 500M)"
+    num_upstream_bases: "Number of base(s) upstream of each cytosine that you\\nwish to include in output file. Recommend value 1 for\\nNOMe-seq processing since the upstream base is\\nrequired to tell apart cytosine at GC context.\\n(default: 0)"
+    num_downstream_bases: "Number of base(s) downstream of each cytosine that you\\nwish to include in output file. Recommend value to be\\nat least 1 to separate cytosines at different sequence\\ncontext. (default: 2)"
+    generate_all_c_file: "Boolean indicating whether to generate the final\\noutput file that contains the methylation state of\\neach cytosine. If set to be false, only alignment file\\n(in BAM format) will be generated. (default: True)"
+    generate_m_pile_up_file: "Boolean indicating whether to generate intermediate\\nmpileup file to save space. However, skipping mpileup\\nstep may cause problem due to the nature of python.\\nNot skipping this step is recommended. (default: True)"
+    compress_output: "Boolean indicating whether to compress (by gzip) the\\nfinal output (allc file(s)). (default: True)"
+    b_gzip: "Boolean indicating whether to bgzip compressed allc\\nfiles and tabix index. (default: False)"
     path_to_b_gzip: "Path to bgzip installation (default: )"
     path_to_tab_ix: "Path to tabix installation (default: )"
-    trim_reads: "Boolean indicating whether to trim reads using cutadapt. (default: True)"
+    trim_reads: "Boolean indicating whether to trim reads using\\ncutadapt. (default: True)"
     path_to_cut_adapt: "Path to cutadapt installation (default: )"
     path_to_aligner: "Path to bowtie/bowtie2 installation (default: )"
-    aligner: "Aligner to use. Currently, methylpy supports bowtie, bowtie2 and minimap2. (default: bowtie2)"
-    aligner_options: "list of strings indicating options you would like passed to bowtie (e.g., \"-k 1 -l 2\") (default: None)"
-    merge_by_max_mapq: "Boolean indicates whether to merge alignment results from two converted genomes by MAPQ score. Be default, we only keep reads that are mapped to only one of the two converted genomes. If this option is set to True, for a read that could be mapped to both converted genomes, the alignment that achieves larger MAPQ score will be kept. (default: False)"
-    remove_clonal: "Boolean indicates whether to remove clonal reads or not (default: False)"
-    path_to_picard: "The path to the picard.jar in picard tools. The jar file can be downloaded from https://broadinstitute.github.io/picard/index.html (default is current dir) (default: )"
-    keep_clonal_stats: "Boolean indicates whether to store the metric file from picard. (default: True)"
-    java_options: "String indicating the option pass the java when running picard. (default: -Xmx20g)"
+    aligner: "Aligner to use. Currently, methylpy supports bowtie,\\nbowtie2 and minimap2. (default: bowtie2)"
+    aligner_options: "list of strings indicating options you would like\\npassed to bowtie (e.g., \\\"-k 1 -l 2\\\") (default: None)"
+    merge_by_max_mapq: "Boolean indicates whether to merge alignment results\\nfrom two converted genomes by MAPQ score. Be default,\\nwe only keep reads that are mapped to only one of the\\ntwo converted genomes. If this option is set to True,\\nfor a read that could be mapped to both converted\\ngenomes, the alignment that achieves larger MAPQ score\\nwill be kept. (default: False)"
+    remove_clonal: "Boolean indicates whether to remove clonal reads or\\nnot (default: False)"
+    path_to_picard: "The path to the picard.jar in picard tools. The jar\\nfile can be downloaded from\\nhttps://broadinstitute.github.io/picard/index.html\\n(default is current dir) (default: )"
+    keep_clonal_stats: "Boolean indicates whether to store the metric file\\nfrom picard. (default: True)"
+    java_options: "String indicating the option pass the java when\\nrunning picard. (default: -Xmx20g)"
     path_to_sam_tools: "Path to samtools installation (default: )"
-    adapter_seq: "sequence of an adapter that was ligated to the 3' end. The adapter itself and anything that follows is trimmed. (default: AGATCGGAAGAGCACACGTCTG)"
-    remove_chr_prefix: "Boolean indicates whether to remove in the final output the \"chr\" prefix in the chromosome name (default: True)"
-    add_snp_info: "Boolean indicates whether to add extra two columns in the output (allc) file regarding the genotype information of each site. The first (second) column contain the number of basecalls that support the reference gentype (variant) for nucleotides in the sequence context. (default: False)"
-    unmethylated_control: "name of the chromosome/region that you want to use to estimate the non-conversion rate of your sample, or the non-conversion rate you would like to use. Consequently, control is either a string, or a decimal. If control is a string then it should be in the following format: \"chrom:start-end\". If you would like to specify an entire chromosome simply use \"chrom:\" (default: None)"
-    bin_om_test: "Indicates that you would like to perform a binomial test on each cytosine to delineate cytosines that are significantly methylated than noise due to the failure of bisulfite conversion. (default: False)"
-    sig_cut_off: "float indicating the adjusted p-value cutoff you wish to use for determining whether or not a site is methylated (default: 0.01)"
+    adapter_seq: "sequence of an adapter that was ligated to the 3' end.\\nThe adapter itself and anything that follows is\\ntrimmed. (default: AGATCGGAAGAGCACACGTCTG)"
+    remove_chr_prefix: "Boolean indicates whether to remove in the final\\noutput the \\\"chr\\\" prefix in the chromosome name\\n(default: True)"
+    add_snp_info: "Boolean indicates whether to add extra two columns in\\nthe output (allc) file regarding the genotype\\ninformation of each site. The first (second) column\\ncontain the number of basecalls that support the\\nreference gentype (variant) for nucleotides in the\\nsequence context. (default: False)"
+    unmethylated_control: "name of the chromosome/region that you want to use to\\nestimate the non-conversion rate of your sample, or\\nthe non-conversion rate you would like to use.\\nConsequently, control is either a string, or a\\ndecimal. If control is a string then it should be in\\nthe following format: \\\"chrom:start-end\\\". If you would\\nlike to specify an entire chromosome simply use\\n\\\"chrom:\\\" (default: None)"
+    bin_om_test: "Indicates that you would like to perform a binomial\\ntest on each cytosine to delineate cytosines that are\\nsignificantly methylated than noise due to the failure\\nof bisulfite conversion. (default: False)"
+    sig_cut_off: "float indicating the adjusted p-value cutoff you wish\\nto use for determining whether or not a site is\\nmethylated (default: 0.01)"
     min_mapq: "Minimum MAPQ for reads to be included. (default: 30)"
-    min_cov: "Integer indicating the minimum number of reads for a site to be tested. (default: 0)"
-    max_adapter_removal: "Indicates the maximum number of times to try to remove adapters. Useful when an adapter gets appended multiple times. (default: None)"
-    overlap_length: "Minimum overlap length. If the overlap between the read and the adapter is shorter than LENGTH, the read is not modified. This reduces the no. of bases trimmed purely due to short random adapter matches. (default: None)"
-    zero_cap: "Flag that causes negative quality values to be set to zero (workaround to avoid segmentation faults in BWA) (default: None)"
-    error_rate: "maximum allowed error rate (no. of errors divided by the length of the matching region) (default: None)"
-    min_qual_score: "allows you to trim low-quality ends from reads before adapter removal. The algorithm is the same as the one used by BWA (Subtract CUTOFF from all qualities; compute partial sums from all indices to the end of the sequence; cut sequence at the index at which the sum is minimal). (default: 10)"
-    min_read_len: "indicates the minimum length a read must be to be kept. Reads that are too short even before adapter removal are also discarded. In colorspace, an initial primer is not counted. (default: 30)"
-    min_base_quality: "Integer indicating the minimum PHRED quality score for a base to be included in the mpileup file (and subsequently to be considered for methylation calling). (default: 1)"
-    keep_temp_files: "Boolean indicating that you would like to keep the intermediate files generated by this function. This can be useful for debugging, but in general should be left False. (default: False)"
+    min_cov: "Integer indicating the minimum number of reads for a\\nsite to be tested. (default: 0)"
+    max_adapter_removal: "Indicates the maximum number of times to try to remove\\nadapters. Useful when an adapter gets appended\\nmultiple times. (default: None)"
+    overlap_length: "Minimum overlap length. If the overlap between the\\nread and the adapter is shorter than LENGTH, the read\\nis not modified. This reduces the no. of bases trimmed\\npurely due to short random adapter matches. (default:\\nNone)"
+    zero_cap: "Flag that causes negative quality values to be set to\\nzero (workaround to avoid segmentation faults in BWA)\\n(default: None)"
+    error_rate: "maximum allowed error rate (no. of errors divided by\\nthe length of the matching region) (default: None)"
+    min_qual_score: "allows you to trim low-quality ends from reads before\\nadapter removal. The algorithm is the same as the one\\nused by BWA (Subtract CUTOFF from all qualities;\\ncompute partial sums from all indices to the end of\\nthe sequence; cut sequence at the index at which the\\nsum is minimal). (default: 10)"
+    min_read_len: "indicates the minimum length a read must be to be\\nkept. Reads that are too short even before adapter\\nremoval are also discarded. In colorspace, an initial\\nprimer is not counted. (default: 30)"
+    min_base_quality: "Integer indicating the minimum PHRED quality score for\\na base to be included in the mpileup file (and\\nsubsequently to be considered for methylation\\ncalling). (default: 1)"
+    keep_temp_files: "Boolean indicating that you would like to keep the\\nintermediate files generated by this function. This\\ncan be useful for debugging, but in general should be\\nleft False. (default: False)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_to_output = "${in_path_to_output}"
   }
 }

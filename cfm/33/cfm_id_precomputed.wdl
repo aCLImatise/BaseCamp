@@ -1,6 +1,6 @@
 version 1.0
 
-task CfmIdPrecomputed {
+task Cfmidprecomputed {
   input {
     String cfm_id_dot_exe
     String spectrum_file
@@ -13,7 +13,7 @@ task CfmIdPrecomputed {
     String output_filename
   }
   command <<<
-    cfm-id-precomputed \
+    cfm_id_precomputed \
       ~{cfm_id_dot_exe} \
       ~{spectrum_file} \
       ~{id} \
@@ -34,5 +34,8 @@ task CfmIdPrecomputed {
     abs_mass_to_l: ""
     score_type: ""
     output_filename: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

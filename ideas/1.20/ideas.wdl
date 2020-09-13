@@ -4,4 +4,7 @@ task Ideas {
   command <<<
     ideas
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

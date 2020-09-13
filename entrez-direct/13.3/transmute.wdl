@@ -4,4 +4,7 @@ task Transmute {
   command <<<
     transmute
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

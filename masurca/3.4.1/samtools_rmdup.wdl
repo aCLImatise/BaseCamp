@@ -12,9 +12,9 @@ task SamtoolsRmdup {
     samtools rmdup \
       ~{input_dots_rt_dot_bam} \
       ~{output_dot_bam} \
-      ~{true="-s" false="" rmdup_se_reads} \
-      ~{true="-S" false="" treat_pe_reads} \
-      ~{true="-sS" false="" ss}
+      ~{if (rmdup_se_reads) then "-s" else ""} \
+      ~{if (treat_pe_reads) then "-S" else ""} \
+      ~{if (ss) then "-sS" else ""}
   >>>
   parameter_meta {
     rmdup_se_reads: "rmdup for SE reads"
@@ -22,5 +22,8 @@ task SamtoolsRmdup {
     ss: ""
     input_dots_rt_dot_bam: ""
     output_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

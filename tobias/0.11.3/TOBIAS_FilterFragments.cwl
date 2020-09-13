@@ -1,39 +1,42 @@
 class: CommandLineTool
 id: ../../../TOBIAS_FilterFragments.cwl
 inputs:
-- id: bam
+- id: in_bam
   doc: .bam-file to filter
   type: boolean
   inputBinding:
     prefix: --bam
-- id: regions
+- id: in_regions
   doc: .bed-file containing regions to filter fragments from
   type: boolean
   inputBinding:
     prefix: --regions
-- id: mode
-  doc: 'Mode 1: Remove fragment if both reads overlap .bed-regions. Mode 2: Remove
-    whole fragment if one read is overlapping .bed-regions (default: 1)'
+- id: in_mode
+  doc: "Mode 1: Remove fragment if both reads overlap .bed-regions. Mode 2:\nRemove\
+    \ whole fragment if one read is overlapping .bed-regions\n(default: 1)"
   type: string
   inputBinding:
     prefix: --mode
-- id: output
-  doc: 'Path to the filtered .bam-file (default: <prefix of --bam>_filtered.bam)'
+- id: in_output
+  doc: 'Path to the filtered .bam-file (default: <prefix of'
   type: boolean
   inputBinding:
     prefix: --output
-- id: threads
-  doc: 'Number of threads used for decompressing/compressing bam (default: 10)'
+- id: in_threads
+  doc: "Number of threads used for decompressing/compressing bam (default:\n10)"
   type: boolean
   inputBinding:
     prefix: --threads
-- id: verbosity
-  doc: 'Level of output logging (0: silent, 1: errors/warnings, 2: info, 3: stats,
-    4: debug, 5: spam) (default: 3)'
+- id: in_verbosity
+  doc: "Level of output logging (0: silent, 1: errors/warnings, 2: info, 3:\nstats,\
+    \ 4: debug, 5: spam) (default: 3)\n"
   type: long
   inputBinding:
     prefix: --verbosity
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

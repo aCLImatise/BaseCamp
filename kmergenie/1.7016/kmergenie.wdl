@@ -4,27 +4,25 @@ task Kmergenie {
   input {
     Boolean? diploid
     Boolean? one_pass
-    String? largest_kmer_size
-    String? smallest_kmer_size
-    String? interval_consecutive_kmer
-    String? kmer_sampling_value
-    String? number_threads_default
+    Int? largest_kmer_size
+    Int? smallest_kmer_size
+    Int? interval_consecutive_kmer
+    Int? kmer_sampling_value
+    Int? number_threads_default
     String? prefix_output_files
     Boolean? debug
-    String read_file
   }
   command <<<
     kmergenie \
-      ~{read_file} \
-      ~{true="--diploid" false="" diploid} \
-      ~{true="--one-pass" false="" one_pass} \
+      ~{if (diploid) then "--diploid" else ""} \
+      ~{if (one_pass) then "--one-pass" else ""} \
       ~{if defined(largest_kmer_size) then ("-k " +  '"' + largest_kmer_size + '"') else ""} \
       ~{if defined(smallest_kmer_size) then ("-l " +  '"' + smallest_kmer_size + '"') else ""} \
       ~{if defined(interval_consecutive_kmer) then ("-s " +  '"' + interval_consecutive_kmer + '"') else ""} \
       ~{if defined(kmer_sampling_value) then ("-e " +  '"' + kmer_sampling_value + '"') else ""} \
       ~{if defined(number_threads_default) then ("-t " +  '"' + number_threads_default + '"') else ""} \
       ~{if defined(prefix_output_files) then ("-o " +  '"' + prefix_output_files + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     diploid: "use the diploid model (default: haploid model)"
@@ -36,6 +34,8 @@ task Kmergenie {
     number_threads_default: "number of threads (default: number of cores minus one)"
     prefix_output_files: "prefix of the output files (default: histograms)"
     debug: "developer output of R scripts"
-    read_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

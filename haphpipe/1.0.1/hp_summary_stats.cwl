@@ -1,42 +1,55 @@
 class: CommandLineTool
 id: ../../../hp_summary_stats.cwl
 inputs:
-- id: dir_list
-  doc: List of directories which include the required files, one on each line
+- id: in_dir_list
+  doc: "List of directories which include the required files,\none on each line"
   type: string
   inputBinding:
     prefix: --dir_list
-- id: ph_list
-  doc: List of directories which include haplotype summary files, one on each line
+- id: in_ph_list
+  doc: "List of directories which include haplotype summary\nfiles, one on each line"
   type: string
   inputBinding:
     prefix: --ph_list
-- id: amplicons
+- id: in_amplicons
   doc: 'Amplicons used in assembly (default: False)'
   type: boolean
   inputBinding:
     prefix: --amplicons
-- id: outdir
+- id: in_outdir
   doc: Output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Name for log file (output)
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: Output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Name for log file (output)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - hp_summary_stats

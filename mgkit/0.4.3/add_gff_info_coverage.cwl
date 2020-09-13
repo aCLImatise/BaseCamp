@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../add_gff_info_coverage.cwl
 inputs:
-- id: sample_alignment
-  doc: sample name and correspondent alignment file separated by comma  [required]
-  type: string
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_sample_alignment
+  doc: "sample name and correspondent alignment file\nseparated by comma  [required]"
+  type: File
   inputBinding:
     prefix: --sample-alignment
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - add-gff-info

@@ -1,6 +1,15 @@
 !Command
+command:
+- anvi-get-enriched-functions-per-pan-group
 positional: []
 named:
+- !Flag
+  description: '[-F FILE]'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
 - !Flag
   description: Anvi'o pan database
   synonyms:
@@ -18,6 +27,23 @@ named:
     name: GENOMES_STORAGE
   optional: true
 - !Flag
+  description: "The additional layers data variable name that divides\nlayers into\
+    \ multiple categories."
+  synonyms:
+  - --category-variable
+  args: !SimpleFlagArg
+    name: CATEGORY
+  optional: true
+- !Flag
+  description: "NAME\nGet functional annotations for a specific annotation\nsource.\
+    \ You can use the flag '--list-annotation-\nsources' to learn about what sources\
+    \ are available."
+  synonyms:
+  - --annotation-source
+  args: !SimpleFlagArg
+    name: SOURCE
+  optional: true
+- !Flag
   description: List available functional annotation sources.
   synonyms:
   - -l
@@ -25,13 +51,13 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: This is an option that asks anvi'o to treat gene cluster names as functions.
-    By doing so, you are in fact creating an opportunity to study functional enrichment
-    statistics for each gene cluster independently. For instance, multiple gene clusters
-    may have the same COG function. But if you wish to use the same enrichment analysis
-    in your pangenome without collapsing multiple gene clusters into a single function
-    name, you can use this flag, and ask for 'IDENTITY' as the functional annotation
-    source.
+  description: "This is an option that asks anvi'o to treat gene\ncluster names as\
+    \ functions. By doing so, you are in\nfact creating an opportunity to study functional\n\
+    enrichment statistics for each gene cluster\nindependently. For instance, multiple\
+    \ gene clusters\nmay have the same COG function. But if you wish to use\nthe same\
+    \ enrichment analysis in your pangenome without\ncollapsing multiple gene clusters\
+    \ into a single\nfunction name, you can use this flag, and ask for\n'IDENTITY'\
+    \ as the functional annotation source."
   synonyms:
   - --include-gc-identity-as-function
   args: !EmptyFlagArg {}
@@ -45,9 +71,9 @@ named:
     name: FILE_PATH
   optional: true
 - !Flag
-  description: Saves the occurrence frequency information for functions in genomes
-    in a TAB-delimited format. A file name must be provided. To learn more about how
-    the functional occurrence is computed, please refer to the tutorial.
+  description: "Saves the occurrence frequency information for\nfunctions in genomes\
+    \ in a TAB-delimited format. A file\nname must be provided. To learn more about\
+    \ how the\nfunctional occurrence is computed, please refer to the\ntutorial."
   synonyms:
   - -F
   - --functional-occurrence-table-output
@@ -55,24 +81,23 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: Use this flag if you want anvi'o to ignore genomes with no value set
-    for the catergory variable (which you specified using --category-variable). By
-    default all variables with no value will be considered as a single group when
-    preforming the statistical analysis.
+  description: "Use this flag if you want anvi'o to ignore genomes\nwith no value\
+    \ set for the catergory variable (which\nyou specified using --category-variable).\
+    \ By default\nall variables with no value will be considered as a\nsingle group\
+    \ when preforming the statistical analysis."
   synonyms:
   - --exclude-ungrouped
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Don't bother me with questions or warnings, just do it.
+  description: "Don't bother me with questions or warnings, just do\nit.\n"
   synonyms:
   - --just-do-it
   args: !EmptyFlagArg {}
   optional: true
-command:
-- anvi-get-enriched-functions-per-pan-group
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

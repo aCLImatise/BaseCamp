@@ -1,7 +1,10 @@
 version 1.0
 
-task HasAsp {
+task Hasasp {
   command <<<
-    has-asp
+    has_asp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

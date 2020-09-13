@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../bwt_index.cwl
 inputs:
-- id: ref_file
+- id: in_ref_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_1
+- id: in_ex_dot
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: ref_dot_fa
+- id: in_ref_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: prefix
+- id: in_prefix
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: var_4
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: my_ref
+- id: in_my_ref
   doc: ''
   type: string
   inputBinding:
     position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bwt_index

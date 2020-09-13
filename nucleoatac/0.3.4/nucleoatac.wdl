@@ -4,4 +4,7 @@ task Nucleoatac {
   command <<<
     nucleoatac
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

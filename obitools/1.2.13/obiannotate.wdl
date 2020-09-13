@@ -2,26 +2,28 @@ version 1.0
 
 task Obiannotate {
   input {
-    String? with_tax_on_at_rank
+    Int? with_tax_on_at_rank
+    Boolean? debug
+    Boolean? without_progress_bar
     String? sequence
     String? definition
     String? identifier
     File? id_list
-    String? regularpattern__attributeattributenameregularpattern
+    String? regularpattern__attributeattributenameregularpatternregular
     String? has_attribute
-    String? predic_at
-    Boolean? _lmax_keep
-    Boolean? _lmin_keep
+    Boolean? predic_at
+    Boolean? _lmaxkeep_sequences
+    Boolean? _lminkeep_sequences
     Boolean? inverse_match
     File? database
     File? taxonomy_dump
     String? require_rank
-    String? required
+    Int? required
     String? ignore
     Boolean? seq_rank
-    Boolean? oldnamenewname__renametagoldnamenewname
+    Boolean? oldnamenewname__renametagoldnamenewnamechange
     String? delete_tag
-    Boolean? tagnamepythonexpression__settagtagnamepythonexpression
+    Boolean? tagnamepythonexpression__settagtagnamepythonexpressionadd
     File? tag_list
     String? set_identifier
     String? run
@@ -31,7 +33,7 @@ task Obiannotate {
     Boolean? clear
     String? keep
     Boolean? length
-    String? mcl
+    File? mcl
     Boolean? uniq_id
     String? skip
     String? only
@@ -50,106 +52,116 @@ task Obiannotate {
     Boolean? fast_q_output
     String? eco_pcr_db_output
     Boolean? uppercase
+    String bash
   }
   command <<<
     obiannotate \
+      ~{bash} \
       ~{if defined(with_tax_on_at_rank) then ("--with-taxon-at-rank " +  '"' + with_tax_on_at_rank + '"') else ""} \
+      ~{if (debug) then "--DEBUG" else ""} \
+      ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
       ~{if defined(sequence) then ("--sequence " +  '"' + sequence + '"') else ""} \
       ~{if defined(definition) then ("--definition " +  '"' + definition + '"') else ""} \
       ~{if defined(identifier) then ("--identifier " +  '"' + identifier + '"') else ""} \
       ~{if defined(id_list) then ("--id-list " +  '"' + id_list + '"') else ""} \
-      ~{if defined(regularpattern__attributeattributenameregularpattern) then ("-a " +  '"' + regularpattern__attributeattributenameregularpattern + '"') else ""} \
+      ~{if defined(regularpattern__attributeattributenameregularpatternregular) then ("-a " +  '"' + regularpattern__attributeattributenameregularpatternregular + '"') else ""} \
       ~{if defined(has_attribute) then ("--has-attribute " +  '"' + has_attribute + '"') else ""} \
       ~{if defined(predic_at) then ("--predicat " +  '"' + predic_at + '"') else ""} \
-      ~{true="-L" false="" _lmax_keep} \
-      ~{true="-l" false="" _lmin_keep} \
-      ~{true="--inverse-match" false="" inverse_match} \
+      ~{if (_lmaxkeep_sequences) then "-L" else ""} \
+      ~{if (_lminkeep_sequences) then "-l" else ""} \
+      ~{if (inverse_match) then "--inverse-match" else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(taxonomy_dump) then ("--taxonomy-dump " +  '"' + taxonomy_dump + '"') else ""} \
       ~{if defined(require_rank) then ("--require-rank " +  '"' + require_rank + '"') else ""} \
       ~{if defined(required) then ("--required " +  '"' + required + '"') else ""} \
       ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""} \
-      ~{true="--seq-rank" false="" seq_rank} \
-      ~{true="-R" false="" oldnamenewname__renametagoldnamenewname} \
+      ~{if (seq_rank) then "--seq-rank" else ""} \
+      ~{if (oldnamenewname__renametagoldnamenewnamechange) then "-R" else ""} \
       ~{if defined(delete_tag) then ("--delete-tag " +  '"' + delete_tag + '"') else ""} \
-      ~{true="-S" false="" tagnamepythonexpression__settagtagnamepythonexpression} \
+      ~{if (tagnamepythonexpression__settagtagnamepythonexpressionadd) then "-S" else ""} \
       ~{if defined(tag_list) then ("--tag-list " +  '"' + tag_list + '"') else ""} \
       ~{if defined(set_identifier) then ("--set-identifier " +  '"' + set_identifier + '"') else ""} \
       ~{if defined(run) then ("--run " +  '"' + run + '"') else ""} \
       ~{if defined(set_sequence) then ("--set-sequence " +  '"' + set_sequence + '"') else ""} \
       ~{if defined(set_definition) then ("--set-definition " +  '"' + set_definition + '"') else ""} \
-      ~{true="--only-valid-python" false="" only_valid_python} \
-      ~{true="--clear" false="" clear} \
+      ~{if (only_valid_python) then "--only-valid-python" else ""} \
+      ~{if (clear) then "--clear" else ""} \
       ~{if defined(keep) then ("--keep " +  '"' + keep + '"') else ""} \
-      ~{true="--length" false="" length} \
+      ~{if (length) then "--length" else ""} \
       ~{if defined(mcl) then ("--mcl " +  '"' + mcl + '"') else ""} \
-      ~{true="--uniq-id" false="" uniq_id} \
+      ~{if (uniq_id) then "--uniq-id" else ""} \
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
       ~{if defined(only) then ("--only " +  '"' + only + '"') else ""} \
-      ~{true="--genbank" false="" genbank} \
-      ~{true="--embl" false="" embl} \
-      ~{true="--skip-on-error" false="" skip_on_error} \
-      ~{true="--fasta" false="" fast_a} \
-      ~{true="--ecopcr" false="" eco_pcr} \
-      ~{true="--raw-fasta" false="" raw_fast_a} \
-      ~{true="--sanger" false="" sanger} \
-      ~{true="--solexa" false="" solexa} \
-      ~{true="--ecopcrdb" false="" eco_pcr_db} \
-      ~{true="--nuc" false="" nuc} \
-      ~{true="--prot" false="" prot} \
-      ~{true="--fasta-output" false="" fast_a_output} \
-      ~{true="--fastq-output" false="" fast_q_output} \
+      ~{if (genbank) then "--genbank" else ""} \
+      ~{if (embl) then "--embl" else ""} \
+      ~{if (skip_on_error) then "--skip-on-error" else ""} \
+      ~{if (fast_a) then "--fasta" else ""} \
+      ~{if (eco_pcr) then "--ecopcr" else ""} \
+      ~{if (raw_fast_a) then "--raw-fasta" else ""} \
+      ~{if (sanger) then "--sanger" else ""} \
+      ~{if (solexa) then "--solexa" else ""} \
+      ~{if (eco_pcr_db) then "--ecopcrdb" else ""} \
+      ~{if (nuc) then "--nuc" else ""} \
+      ~{if (prot) then "--prot" else ""} \
+      ~{if (fast_a_output) then "--fasta-output" else ""} \
+      ~{if (fast_q_output) then "--fastq-output" else ""} \
       ~{if defined(eco_pcr_db_output) then ("--ecopcrdb-output " +  '"' + eco_pcr_db_output + '"') else ""} \
-      ~{true="--uppercase" false="" uppercase}
+      ~{if (uppercase) then "--uppercase" else ""}
   >>>
   parameter_meta {
     with_tax_on_at_rank: "seq1.fasta > seq2.fasta"
-    sequence: "regular expression pattern used to select the sequence. The pattern is case insensitive"
-    definition: "regular expression pattern matched against the definition of the sequence. The pattern is case sensitive"
-    identifier: "regular expression pattern matched against the identifier of the sequence. The pattern is case sensitive"
+    debug: "Set logging in debug mode"
+    without_progress_bar: "desactivate progress bar"
+    sequence: "regular expression pattern used to select the\\nsequence. The pattern is case insensitive"
+    definition: "regular expression pattern matched against the\\ndefinition of the sequence. The pattern is case\\nsensitive"
+    identifier: "regular expression pattern matched against the\\nidentifier of the sequence. The pattern is case\\nsensitive"
     id_list: "file containing identifiers of sequences to select"
-    regularpattern__attributeattributenameregularpattern: ":<REGULAR_PATTERN>, --attribute=<ATTRIBUTE_NAME>:<REGULAR_PATTERN> regular expression pattern matched against the attributes of the sequence. the value of this atribute is of the form : attribute_name:regular_pattern. The pattern is case sensitive.Several -a option can be used on the same commande line."
-    has_attribute: "select sequence with attribute <ATTRIBUTE_NAME> defined"
-    predic_at: "python boolean expression to be evaluated in the sequence context. The attribute name can be used in the expression as variable name .An extra variable named 'sequence' refersto the sequence object itself. Several -p option can be used on the same commande line."
-    _lmax_keep: "<##>, --lmax=<##> keep sequences shorter than lmax"
-    _lmin_keep: "<##>, --lmin=<##> keep sequences longer than lmin"
+    regularpattern__attributeattributenameregularpatternregular: ":<REGULAR_PATTERN>, --attribute=<ATTRIBUTE_NAME>:<REGULAR_PATTERN>\\nregular expression pattern matched against the\\nattributes of the sequence. the value of this atribute\\nis of the form : attribute_name:regular_pattern. The\\npattern is case sensitive.Several -a option can be\\nused on the same commande line."
+    has_attribute: "select sequence with attribute <ATTRIBUTE_NAME>\\ndefined"
+    predic_at: "python boolean expression to be evaluated in the\\nsequence context. The attribute name can be used in\\nthe expression as variable name .An extra variable\\nnamed 'sequence' refersto the sequence object itself.\\nSeveral -p option can be used on the same commande\\nline."
+    _lmaxkeep_sequences: "<##>, --lmax=<##>\\nkeep sequences shorter than lmax"
+    _lminkeep_sequences: "<##>, --lmin=<##>\\nkeep sequences longer than lmin"
     inverse_match: "revert the sequence selection [default : False]"
     database: "ecoPCR taxonomy Database name"
     taxonomy_dump: "NCBI Taxonomy dump repository name"
-    require_rank: "select sequence with taxid tag containing a parent of rank <RANK_NAME>"
-    required: "Select the sequences having the ancestor of taxid <TAXID>. If several ancestors are specified (with  '-r taxid1 -r taxid2'), the sequences having at least one of them are selected"
+    require_rank: "select sequence with taxid tag containing a parent of\\nrank <RANK_NAME>"
+    required: "Select the sequences having the ancestor of taxid\\n<TAXID>. If several ancestors are specified (with  '-r\\ntaxid1 -r taxid2'), the sequences having at least one\\nof them are selected"
     ignore: "ignored taxid"
-    seq_rank: "add a rank attribute to the sequence indicating the sequence position in the input data"
-    oldnamenewname__renametagoldnamenewname: "<OLD_NAME:NEW_NAME>, --rename-tag=<OLD_NAME:NEW_NAME> change tag name from OLD_NAME to NEW_NAME"
+    seq_rank: "add a rank attribute to the sequence indicating the\\nsequence position in the input data"
+    oldnamenewname__renametagoldnamenewnamechange: "<OLD_NAME:NEW_NAME>, --rename-tag=<OLD_NAME:NEW_NAME>\\nchange tag name from OLD_NAME to NEW_NAME"
     delete_tag: "delete tag TAG_NAME"
-    tagnamepythonexpression__settagtagnamepythonexpression: "<TAG_NAME:PYTHON_EXPRESSION>, --set-tag=<TAG_NAME:PYTHON_EXPRESSION> Add a new tag named TAG_NAME with a value computed from PYTHON_EXPRESSION"
-    tag_list: "Indicate a file containing tag and values to modify on specified sequences"
-    set_identifier: "Set sequence identifier with a value computed from PYTHON_EXPRESSION"
+    tagnamepythonexpression__settagtagnamepythonexpressionadd: "<TAG_NAME:PYTHON_EXPRESSION>, --set-tag=<TAG_NAME:PYTHON_EXPRESSION>\\nAdd a new tag named TAG_NAME with a value computed\\nfrom PYTHON_EXPRESSION"
+    tag_list: "Indicate a file containing tag and values to modify on\\nspecified sequences"
+    set_identifier: "Set sequence identifier with a value computed from\\nPYTHON_EXPRESSION"
     run: "Run a python expression on each selected sequence"
-    set_sequence: "Change the sequence itself with a value computed from PYTHON_EXPRESSION"
-    set_definition: "Set sequence definition with a value computed from PYTHON_EXPRESSION"
+    set_sequence: "Change the sequence itself with a value computed from\\nPYTHON_EXPRESSION"
+    set_definition: "Set sequence definition with a value computed from\\nPYTHON_EXPRESSION"
     only_valid_python: "only valid python expressions are allowed"
     clear: "clear all tags associated to the sequences"
     keep: "only keep this tag"
     length: "add seqLength tag with sequence length"
-    mcl: "add cluster tag to sequences according to a mcl graph clustering partition"
+    mcl: "add cluster tag to sequences according to a mcl graph\\nclustering partition"
     uniq_id: "force sequence ids to be uniq"
     skip: "skip the N first sequences"
     only: "treat only N sequences"
     genbank: "Input file is in genbank format"
     embl: "Input file is in embl format"
     skip_on_error: "Skip sequence entries with parse error"
-    fast_a: "Input file is in fasta nucleic format (including obitools fasta extentions)"
+    fast_a: "Input file is in fasta nucleic format (including\\nobitools fasta extentions)"
     eco_pcr: "Input file is in ecopcr format"
-    raw_fast_a: "Input file is in fasta format (but more tolerant to format variant)"
-    sanger: "Input file is in sanger fastq nucleic format (standard fastq)"
-    solexa: "Input file is in fastq nucleic format produced by solexa sequencer"
+    raw_fast_a: "Input file is in fasta format (but more tolerant to\\nformat variant)"
+    sanger: "Input file is in sanger fastq nucleic format (standard\\nfastq)"
+    solexa: "Input file is in fastq nucleic format produced by\\nsolexa sequencer"
     eco_pcr_db: "Input file is an ecopcr database"
     nuc: "Input file contains nucleic sequences"
     prot: "Input file contains protein sequences"
     fast_a_output: "Output sequences in obitools fasta format"
     fast_q_output: "Output sequences in sanger fastq format"
-    eco_pcr_db_output: "Output sequences in ecopcr database format (sequence records are not printed on standard output)"
+    eco_pcr_db_output: "Output sequences in ecopcr database format (sequence\\nrecords are not printed on standard output)"
     uppercase: "Print sequences in upper case (default is lower case)"
+    bash: "> obiannotate -d my_ecopcr_database \\"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

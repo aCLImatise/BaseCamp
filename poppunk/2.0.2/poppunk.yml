@@ -1,5 +1,23 @@
 !Command
-positional: []
+command:
+- poppunk
+positional:
+- !Positional
+  description: --fit-model           Fit a mixture model to a reference database
+  position: 0
+  name: sequences
+  optional: false
+- !Positional
+  description: --threshold THRESHOLD
+  position: 1
+  name: database
+  optional: false
+- !Positional
+  description: --no-local            Do not perform the local optimization step (speed
+    up
+  position: 0
+  name: individually
+  optional: false
 named:
 - !Flag
   description: Create clusters from assemblies with default settings
@@ -8,15 +26,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Create pairwise distances database between reference sequences
+  description: Create pairwise distances database between reference
   synonyms:
   - --create-db
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Fit a mixture model to a reference database
-  synonyms:
-  - --fit-model
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -26,27 +38,21 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Assign the cluster of query sequences without re- running the whole
-    mixture model
+  description: "Assign the cluster of query sequences without re-\nrunning the whole\
+    \ mixture model"
   synonyms:
   - --assign-query
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Generate files for a visualisation from an existing database
+  description: Generate files for a visualisation from an existing
   synonyms:
   - --generate-viz
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Create model at this core distance threshold
-  synonyms:
-  - --threshold
-  args: !SimpleFlagArg
-    name: THRESHOLD
-  optional: true
-- !Flag
-  description: Apply a fitted model to a reference database to restore database files
+  description: "Apply a fitted model to a reference database to\nrestore database\
+    \ files"
   synonyms:
   - --use-model
   args: !EmptyFlagArg {}
@@ -80,8 +86,8 @@ named:
     name: DISTANCES
   optional: true
 - !Flag
-  description: File with cluster definitions or other labels generated with any other
-    method.
+  description: "File with cluster definitions or other labels\ngenerated with any\
+    \ other method."
   synonyms:
   - --external-clustering
   args: !SimpleFlagArg
@@ -95,8 +101,8 @@ named:
     name: OUTPUT
   optional: true
 - !Flag
-  description: Create this many plots of some fits relating k-mer to core/accessory
-    distances [default = 0]
+  description: "Create this many plots of some fits relating k-mer to\ncore/accessory\
+    \ distances [default = 0]"
   synonyms:
   - --plot-fit
   args: !SimpleFlagArg
@@ -149,21 +155,21 @@ named:
     name: SKETCH_SIZE
   optional: true
 - !Flag
-  description: Minimum k-mer count when using reads as input [default = 0]
+  description: "Minimum k-mer count when using reads as input [default\n= 0]"
   synonyms:
   - --min-kmer-count
   args: !SimpleFlagArg
     name: MIN_KMER_COUNT
   optional: true
 - !Flag
-  description: Use the exact k-mer counter with reads [default = use countmin counter]
+  description: "Use the exact k-mer counter with reads [default = use\ncountmin counter]"
   synonyms:
   - --exact-count
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Treat input as being on the same strand, and ignore reverse complement
-    k-mers [default = use canonical k-mers]
+  description: "Treat input as being on the same strand, and ignore\nreverse complement\
+    \ k-mers [default = use canonical\nk-mers]"
   synonyms:
   - --strand-preserved
   args: !EmptyFlagArg {}
@@ -176,14 +182,14 @@ named:
     name: MAX_A_DIST
   optional: true
 - !Flag
-  description: Ignore outliers in terms of assembly length [default = False]
+  description: "Ignore outliers in terms of assembly length [default =\nFalse]"
   synonyms:
   - --ignore-length
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Provide an integer estimated genome length when using "--ignore-length"
-    [default = 2000000]
+  description: "Provide an integer estimated genome length when using\n\"--ignore-length\"\
+    \ [default = 2000000]"
   synonyms:
   - --estimated-length
   args: !SimpleFlagArg
@@ -203,87 +209,81 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximum number of clusters in DBSCAN fitting [default = 100]
+  description: "Maximum number of clusters in DBSCAN fitting [default\n= 100]"
   synonyms:
   - --D
   args: !SimpleFlagArg
     name: D
   optional: true
 - !Flag
-  description: Minimum proportion of points in a cluster in DBSCAN fitting [default
-    = 0.0001]
+  description: "Minimum proportion of points in a cluster in DBSCAN\nfitting [default\
+    \ = 0.0001]"
   synonyms:
   - --min-cluster-prop
   args: !SimpleFlagArg
     name: MIN_CLUSTER_PROP
   optional: true
 - !Flag
-  description: Maximum amount to move the boundary away from origin [default = 0.2]
+  description: "Maximum amount to move the boundary away from origin\n[default = 0.2]"
   synonyms:
   - --pos-shift
   args: !SimpleFlagArg
     name: POS_SHIFT
   optional: true
 - !Flag
-  description: Maximum amount to move the boundary towards the origin [default = 0.4]
+  description: "Maximum amount to move the boundary towards the origin\n[default =\
+    \ 0.4]"
   synonyms:
   - --neg-shift
   args: !SimpleFlagArg
     name: NEG_SHIFT
   optional: true
 - !Flag
-  description: A file containing information for a start point. See documentation
-    for help.
+  description: "A file containing information for a start point. See\ndocumentation\
+    \ for help."
   synonyms:
   - --manual-start
   args: !SimpleFlagArg
     name: MANUAL_START
   optional: true
 - !Flag
-  description: Also run refinement for core and accessory individually
+  description: Also run refinement for core and accessory
   synonyms:
   - --indiv-refine
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not perform the local optimization step (speed up on very large
-    datasets)
-  synonyms:
-  - --no-local
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Directory containing model to use for assigning queries to clusters
-    [default = reference database directory]
+  description: "Directory containing model to use for assigning\nqueries to clusters\
+    \ [default = reference database\ndirectory]"
   synonyms:
   - --model-dir
   args: !SimpleFlagArg
     name: MODEL_DIR
   optional: true
 - !Flag
-  description: Directory containing previous cluster definitions and network [default
-    = use that in the directory containing the model]
+  description: "Directory containing previous cluster definitions and\nnetwork [default\
+    \ = use that in the directory\ncontaining the model]"
   synonyms:
   - --previous-clustering
   args: !SimpleFlagArg
     name: PREVIOUS_CLUSTERING
   optional: true
 - !Flag
-  description: Use a core-distance only model for assigning queries [default = False]
+  description: "Use a core-distance only model for assigning queries\n[default = False]"
   synonyms:
   - --core-only
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use an accessory-distance only model for assigning queries [default
-    = False]
+  description: "Use an accessory-distance only model for assigning\nqueries [default\
+    \ = False]"
   synonyms:
   - --accessory-only
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: File with list of sequences to include in visualisation (with --generate-viz
-    only)
+  description: "File with list of sequences to include in\nvisualisation (with --generate-viz\
+    \ only)"
   synonyms:
   - --subset
   args: !SimpleFlagArg
@@ -321,15 +321,16 @@ named:
     name: RAPIDNJ
   optional: true
 - !Flag
-  description: Perplexity used to calculate t-SNE projection (with --microreact) [default=20.0]
+  description: "Perplexity used to calculate t-SNE projection (with\n--microreact)\
+    \ [default=20.0]"
   synonyms:
   - --perplexity
   args: !SimpleFlagArg
     name: PERPLEXITY
   optional: true
 - !Flag
-  description: Epidemiological information CSV formatted for microreact (can be used
-    with other outputs)
+  description: "Epidemiological information CSV formatted for\nmicroreact (can be\
+    \ used with other outputs)"
   synonyms:
   - --info-csv
   args: !SimpleFlagArg
@@ -369,16 +370,15 @@ named:
     name: DEVICEID
   optional: true
 - !Flag
-  description: Use temporary files for mash dist interfacing. Reduce memory use/increase
-    disk use for large datasets
+  description: "Use temporary files for mash dist interfacing. Reduce\nmemory use/increase\
+    \ disk use for large datasets"
   synonyms:
   - --no-stream
   args: !EmptyFlagArg {}
   optional: true
-command:
-- poppunk
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

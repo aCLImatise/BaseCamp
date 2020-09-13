@@ -1,7 +1,10 @@
 version 1.0
 
-task OGenStackbarWithSetsFromENVIRONMENT {
+task OgenstackbarwithsetsfromENVIRONMENT {
   command <<<
-    o-gen-stackbar-with-sets-from-ENVIRONMENT
+    o_gen_stackbar_with_sets_from_ENVIRONMENT
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

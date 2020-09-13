@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../sketchy_online_watch.cwl
 inputs:
-- id: directory
+- id: in_directory
   doc: Path to directory to watch [required]  [required]
   type: File
   inputBinding:
     prefix: --directory
-- id: regex
+- id: in_regex
   doc: Regex to identify read files [.*\.fastq$]
   type: string
   inputBinding:
     prefix: --regex
-- id: now
+- id: in_now
   doc: Disable waiting for file completion.
   type: boolean
   inputBinding:
     prefix: --now
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sketchy

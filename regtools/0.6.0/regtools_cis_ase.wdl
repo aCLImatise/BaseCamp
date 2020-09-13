@@ -1,14 +1,17 @@
 version 1.0
 
-task RegtoolsCisAse {
+task RegtoolsCisase {
   input {
     String var_command
   }
   command <<<
-    regtools cis-ase \
+    regtools cis_ase \
       ~{var_command}
   >>>
   parameter_meta {
     var_command: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

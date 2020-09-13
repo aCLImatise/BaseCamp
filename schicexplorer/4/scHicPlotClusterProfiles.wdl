@@ -3,15 +3,15 @@ version 1.0
 task ScHicPlotClusterProfiles {
   input {
     String? schic_matrix_m
-    String? clusters
+    File? clusters
     Array[String] chromosomes
     Int? maximal_distance
-    String? distance_short_range
-    String? distance_long_range
+    Int? distance_short_range
+    Int? distance_long_range
     String? order_by
-    String? out_filename
-    String? dpi
-    String? threads
+    File? out_filename
+    Int? dpi
+    Int? threads
     String sch_i_c
     String var_11
   }
@@ -31,17 +31,21 @@ task ScHicPlotClusterProfiles {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction matrices to investigate for QC. Needs to be in scool format (default: None)"
-    clusters: "file, -c cluster file Text file which contains per matrix the associated cluster. (default: None)"
+    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to\\ninvestigate for QC. Needs to be in scool format\\n(default: None)"
+    clusters: "file, -c cluster file\\nText file which contains per matrix the associated\\ncluster. (default: None)"
     chromosomes: "List of to be plotted chromosomes (default: None)"
     maximal_distance: "maximal distance in bases (default: 50000000)"
-    distance_short_range: "Distance which should be considered as short range. Default 2MB. (default: 2000000)"
-    distance_long_range: "Distance which should be considered as short range. Default 12MB. (default: 12000000)"
+    distance_short_range: "Distance which should be considered as short range.\\nDefault 2MB. (default: 2000000)"
+    distance_long_range: "Distance which should be considered as short range.\\nDefault 12MB. (default: 12000000)"
     order_by: "Algorithm to cluster the Hi-C matrices (default: svl)"
-    out_filename: "File name to save the resulting cluster profile. (default: clusters_profile.png)"
+    out_filename: "File name to save the resulting cluster profile.\\n(default: clusters_profile.png)"
     dpi: "The dpi of the plot. (default: 300)"
-    threads: "Number of threads. Using the python multiprocessing module. (default: 4)"
+    threads: "Number of threads. Using the python multiprocessing\\nmodule. (default: 4)"
     sch_i_c: ""
     var_11: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_filename = "${in_out_filename}"
   }
 }

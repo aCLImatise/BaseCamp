@@ -3,18 +3,18 @@ version 1.0
 task Portcullis {
   input {
     Boolean? print_extra_information
-    String mode
-    String mode_args
+    String junctions
   }
   command <<<
     portcullis \
-      ~{mode} \
-      ~{mode_args} \
-      ~{true="-v" false="" print_extra_information}
+      ~{junctions} \
+      ~{if (print_extra_information) then "-v" else ""}
   >>>
   parameter_meta {
     print_extra_information: "[ --verbose ]      Print extra information"
-    mode: ""
-    mode_args: ""
+    junctions: "Usage: portcullis [options] <mode> <mode_args>"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

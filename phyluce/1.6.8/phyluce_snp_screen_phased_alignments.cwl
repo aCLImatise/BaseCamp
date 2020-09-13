@@ -1,58 +1,61 @@
 class: CommandLineTool
 id: ../../../phyluce_snp_screen_phased_alignments.cwl
 inputs:
-- id: alignments
-  doc: The directory containing the alignment files
-  type: string
-  inputBinding:
-    prefix: --alignments
-- id: output
-  doc: The directory in which to store the output files
+- id: in_output
+  doc: ''
   type: string
   inputBinding:
     prefix: --output
-- id: input_format
+- id: in_alignments
+  doc: The directory containing the alignment files
+  type: Directory
+  inputBinding:
+    prefix: --alignments
+- id: in_input_format
   doc: The input alignment format
   type: string
   inputBinding:
     prefix: --input-format
-- id: output_format
+- id: in_output_format
   doc: The input alignment format
   type: string
   inputBinding:
     prefix: --output-format
-- id: include_missing
-  doc: Include sites within missing/ambiguous information (-, ?, N, X)
+- id: in_include_missing
+  doc: "Include sites within missing/ambiguous information (-,\n?, N, X)"
   type: boolean
   inputBinding:
     prefix: --include-missing
-- id: random
+- id: in_random
   doc: Pick one random site from each locus
   type: boolean
   inputBinding:
     prefix: --random
-- id: numerical_encoding
-  doc: Output SNP calls encoded as 0 (ref/ref), 1 (ref/alt), or 2 (alt/alt)
+- id: in_numerical_encoding
+  doc: "Output SNP calls encoded as 0 (ref/ref), 1 (ref/alt),\nor 2 (alt/alt)"
   type: boolean
   inputBinding:
     prefix: --numerical-encoding
-- id: cores
-  doc: Process alignments in parallel using --cores for alignment. This is the number
-    of PHYSICAL CPUs.
-  type: string
+- id: in_cores
+  doc: "Process alignments in parallel using --cores for\nalignment. This is the number\
+    \ of PHYSICAL CPUs."
+  type: long
   inputBinding:
     prefix: --cores
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_snp_screen_phased_alignments

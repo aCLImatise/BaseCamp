@@ -4,4 +4,7 @@ task Cameo {
   command <<<
     cameo
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

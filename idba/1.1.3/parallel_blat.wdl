@@ -2,8 +2,8 @@ version 1.0
 
 task ParallelBlat {
   input {
-    String? num_threads
-    String? similar
+    Int? num_threads
+    Float? similar
     String ref_dot_fa
     String query_dot_fa
   }
@@ -19,5 +19,8 @@ task ParallelBlat {
     similar: "(=0.95)              similarity"
     ref_dot_fa: ""
     query_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

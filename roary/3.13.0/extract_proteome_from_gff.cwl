@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../extract_proteome_from_gff.cwl
 inputs:
-- id: output_suffix
+- id: in_output_suffix
   doc: output suffix [proteome.faa]
   type: string
   inputBinding:
     prefix: -o
-- id: translation_table
+- id: in_translation_table
   doc: translation table [11]
   type: long
   inputBinding:
     prefix: -t
-- id: filter_sequences_missing
+- id: in_filter_sequences_missing
   doc: filter sequences with missing data
   type: boolean
   inputBinding:
     prefix: -f
-- id: verbose_output_stdout
+- id: in_verbose_output_stdout
   doc: verbose output to STDOUT
   type: boolean
   inputBinding:
     prefix: -v
-- id: output_directory
+- id: in_output_directory
   doc: output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: -d
-- id: print_version_exit
+- id: in_print_version_exit
   doc: print version and exit
   type: boolean
   inputBinding:
     prefix: -w
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_directory
+  doc: output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_directory)
 cwlVersion: v1.1
 baseCommand:
 - extract_proteome_from_gff

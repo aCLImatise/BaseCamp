@@ -3,11 +3,10 @@ version 1.0
 task AlfredConsensus {
   input {
     Boolean? f
-    Boolean? arg__fraction
-    Boolean? t
+    Boolean? arg_fraction_reads
     Boolean? arg_min_quality
     Boolean? arg_chr_position
-    Boolean? arg_window_position
+    Boolean? arg_window_fetch
     Boolean? consider_secondary_alignments
     Boolean? trim_reads_window
     Boolean? arg_gap_open
@@ -17,34 +16,32 @@ task AlfredConsensus {
     Boolean? u
     Boolean? arg_verticalhorizontal_alignment
     Boolean? _arg_consensus
-    String input_dot_bam_vertical_line_input_dot_fado_tgz
+    String consensus
   }
   command <<<
     alfred consensus \
-      ~{input_dot_bam_vertical_line_input_dot_fado_tgz} \
-      ~{true="-f" false="" f} \
-      ~{true="-d" false="" arg__fraction} \
-      ~{true="-t" false="" t} \
-      ~{true="-q" false="" arg_min_quality} \
-      ~{true="-p" false="" arg_chr_position} \
-      ~{true="-w" false="" arg_window_position} \
-      ~{true="-s" false="" consider_secondary_alignments} \
-      ~{true="-r" false="" trim_reads_window} \
-      ~{true="-g" false="" arg_gap_open} \
-      ~{true="-e" false="" arg_gap_extension} \
-      ~{true="-m" false="" _arg_match} \
-      ~{true="-n" false="" _arg_mismatch} \
-      ~{true="-u" false="" u} \
-      ~{true="-a" false="" arg_verticalhorizontal_alignment} \
-      ~{true="-c" false="" _arg_consensus}
+      ~{consensus} \
+      ~{if (f) then "-f" else ""} \
+      ~{if (arg_fraction_reads) then "-d" else ""} \
+      ~{if (arg_min_quality) then "-q" else ""} \
+      ~{if (arg_chr_position) then "-p" else ""} \
+      ~{if (arg_window_fetch) then "-w" else ""} \
+      ~{if (consider_secondary_alignments) then "-s" else ""} \
+      ~{if (trim_reads_window) then "-r" else ""} \
+      ~{if (arg_gap_open) then "-g" else ""} \
+      ~{if (arg_gap_extension) then "-e" else ""} \
+      ~{if (_arg_match) then "-m" else ""} \
+      ~{if (_arg_mismatch) then "-n" else ""} \
+      ~{if (u) then "-u" else ""} \
+      ~{if (arg_verticalhorizontal_alignment) then "-a" else ""} \
+      ~{if (_arg_consensus) then "-c" else ""}
   >>>
   parameter_meta {
     f: "[ --format ] arg (=bam)            input format [bam|fasta]"
-    arg__fraction: "[ --called ] arg (=0.5)            fraction of reads required for  consensus"
-    t: "[ --seqtype ] arg (=ill)           seq. type [ill|ont|pacbio|custom]"
+    arg_fraction_reads: "[ --called ] arg (=0.5)            fraction of reads required for"
     arg_min_quality: "[ --mapqual ] arg (=10)            min. mapping quality"
     arg_chr_position: "[ --position ] arg (=chr4:500500)  position to generate consensus"
-    arg_window_position: "[ --window ] arg (=5)              window around position to fetch reads"
+    arg_window_fetch: "[ --window ] arg (=5)              window around position to fetch reads"
     consider_secondary_alignments: "[ --secondary ]                    consider secondary alignments"
     trim_reads_window: "[ --trimreads ]                    trim reads to window"
     arg_gap_open: "[ --gapopen ] arg (=-10)           gap open"
@@ -52,8 +49,11 @@ task AlfredConsensus {
     _arg_match: "[ --match ] arg (=5)               match"
     _arg_mismatch: "[ --mismatch ] arg (=-4)           mismatch"
     u: "[ --outformat ] arg (=v)           output format [v|h]"
-    arg_verticalhorizontal_alignment: "[ --alignment ] arg (=\"al.fa.gz\")  vertical/horizontal alignment"
-    _arg_consensus: "[ --consensus ] arg (=\"cs.fa.gz\")  consensus"
-    input_dot_bam_vertical_line_input_dot_fado_tgz: ""
+    arg_verticalhorizontal_alignment: "[ --alignment ] arg (=\\\"al.fa.gz\\\")  vertical/horizontal alignment"
+    _arg_consensus: "[ --consensus ] arg (=\\\"cs.fa.gz\\\")  consensus"
+    consensus: "-t [ --seqtype ] arg (=ill)           seq. type [ill|ont|pacbio|custom]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

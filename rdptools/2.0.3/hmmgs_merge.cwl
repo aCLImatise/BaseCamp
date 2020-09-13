@@ -1,38 +1,46 @@
 class: CommandLineTool
 id: ../../../hmmgs_merge.cwl
 inputs:
-- id: all
-  doc: Generate all combinations for multiple paths, instead of just the best
+- id: in_all
+  doc: "Generate all combinations for multiple\npaths, instead of just the best"
   type: boolean
   inputBinding:
     prefix: --all
-- id: min_bits
+- id: in_min_bits
   doc: Minimum bits score
-  type: string
+  type: long
   inputBinding:
     prefix: --min-bits
-- id: min_length
+- id: in_min_length
   doc: Minimum length
-  type: string
+  type: long
   inputBinding:
     prefix: --min-length
-- id: out
+- id: in_out
   doc: Write output to file instead of stdout
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: short_sample_name
-  doc: short sample name, to be used as part of contig identifiers. This allow analyzing
-    contigs together from different samples in downstream analysis
+- id: in_short_sample_name
+  doc: "short sample name, to be used as part of\ncontig identifiers. This allow analyzing\n\
+    contigs together from different samples in\ndownstream analysis\n"
   type: string
   inputBinding:
     prefix: --short_samplename
-- id: usage
+- id: in_usage
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: Write output to file instead of stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - hmmgs

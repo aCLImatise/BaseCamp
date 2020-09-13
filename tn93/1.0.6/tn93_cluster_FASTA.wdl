@@ -1,35 +1,38 @@
 version 1.0
 
-task Tn93ClusterFASTA {
+task Tn93clusterFASTA {
   input {
-    String? o
-    String? a
-    String? l
-    String? t
-    String? c
-    String? m
-    String? g
     Boolean? q
+    String? g
+    String? m
+    String? c
+    String? t
+    String? l
+    String? a
+    String? o
   }
   command <<<
-    tn93-cluster FASTA \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
-      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
-      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+    tn93_cluster FASTA \
+      ~{if (q) then "-q" else ""} \
       ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
-      ~{true="-q" false="" q}
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
-    o: ""
-    a: ""
-    l: ""
-    t: ""
-    c: ""
-    m: ""
-    g: ""
     q: ""
+    g: ""
+    m: ""
+    c: ""
+    t: ""
+    l: ""
+    a: ""
+    o: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../fuma_gencode_gtf_to_bed.cwl
 inputs:
-- id: output
+- id: in_output
   doc: output filename; '-' for stdout
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -V
-- id: gene_code_gtf_file
-  doc: Input GTF file, e.g. 'gencode_gtf_file.gtf' - not as .gz
+- id: in_gene_code_gtf_file
+  doc: "Input GTF file, e.g. 'gencode_gtf_file.gtf' - not as\n.gz"
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: output filename; '-' for stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - fuma-gencode-gtf-to-bed

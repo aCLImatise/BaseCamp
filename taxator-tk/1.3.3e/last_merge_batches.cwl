@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../last_merge_batches.cwl
 inputs:
-- id: files
+- id: in_files
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - last-merge-batches

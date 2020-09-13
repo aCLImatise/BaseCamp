@@ -1,7 +1,10 @@
 version 1.0
 
-task ByobuScreen {
+task Byobuscreen {
   command <<<
-    byobu-screen
+    byobu_screen
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task SvmLearn {
   command <<<
     svm_learn
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

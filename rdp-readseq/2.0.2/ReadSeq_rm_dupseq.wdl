@@ -1,19 +1,19 @@
 version 1.0
 
-task ReadSeqRmDupseq {
+task ReadSeqRmdupseq {
   input {
     Boolean? duplicates
     Boolean? debug
-    String? in_file
-    String? min_seq_length
-    String? outfile
+    File? in_file
+    Int? min_seq_length
+    File? outfile
     String rm_redundant_seqs
   }
   command <<<
-    ReadSeq rm-dupseq \
+    ReadSeq rm_dupseq \
       ~{rm_redundant_seqs} \
-      ~{true="--duplicates" false="" duplicates} \
-      ~{true="--debug" false="" debug} \
+      ~{if (duplicates) then "--duplicates" else ""} \
+      ~{if (debug) then "--debug" else ""} \
       ~{if defined(in_file) then ("--infile " +  '"' + in_file + '"') else ""} \
       ~{if defined(min_seq_length) then ("--min_seq_length " +  '"' + min_seq_length + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
@@ -25,5 +25,9 @@ task ReadSeqRmDupseq {
     min_seq_length: "filter sequence by minimum sequence length, default is 0"
     outfile: "output fasta file"
     rm_redundant_seqs: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_outfile = "${in_outfile}"
   }
 }

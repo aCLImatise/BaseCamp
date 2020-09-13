@@ -1,7 +1,17 @@
 version 1.0
 
-task GetGffInfo {
+task Getgffinfo {
+  input {
+    Boolean? cite
+  }
   command <<<
-    get-gff-info
+    get_gff_info \
+      ~{if (cite) then "--cite" else ""}
   >>>
+  parameter_meta {
+    cite: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
 }

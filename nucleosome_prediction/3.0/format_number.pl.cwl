@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../format_number.pl.bak.cwl
+id: ../../../format_number.pl.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- format_number.pl.bak
+- format_number.pl

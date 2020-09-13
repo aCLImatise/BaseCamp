@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../fpa_keep_FLAGS.cwl
 inputs:
-- id: input
+- id: in_input
   doc: ''
   type: string
   inputBinding:
     prefix: --input
-- id: output
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --output
-- id: fpa
+- id: in_fpa
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fpa

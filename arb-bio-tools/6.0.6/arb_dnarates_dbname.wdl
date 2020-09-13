@@ -20,4 +20,7 @@ task ArbDnaratesDbname {
     dbname: ""
     db_save_name: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

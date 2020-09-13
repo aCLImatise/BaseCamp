@@ -1,6 +1,6 @@
 version 1.0
 
-task AfetchName or accession {
+task AfetchNameoraccession {
   input {
     Boolean? options
     String a_fetch
@@ -8,16 +8,19 @@ task AfetchName or accession {
     String name_or_accession
   }
   command <<<
-    afetch name or accession \
+    afetch name_or_accession \
       ~{a_fetch} \
       ~{alignment_database} \
       ~{name_or_accession} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     a_fetch: ""
     alignment_database: ""
     name_or_accession: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

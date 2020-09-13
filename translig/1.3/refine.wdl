@@ -4,4 +4,7 @@ task Refine {
   command <<<
     refine
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

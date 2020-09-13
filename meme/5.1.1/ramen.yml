@@ -1,4 +1,6 @@
 !Command
+command:
+- ramen
 positional:
 - !Positional
   description: ''
@@ -11,6 +13,37 @@ positional:
   name: motif file
   optional: false
 named:
+- !Flag
+  description: "[on|off] Regression on the log_e of the fluorescence scores\non: (Default)\
+    \ Use the log_e(fluorescence) in the regression.\noff: Use the score directly\
+    \ provided in the sequence file."
+  synonyms:
+  - --log-fscores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[on|off] Regression on the log_e of the PWM scores\non: Use the log_e(RMA\
+    \ or AMA Score) in the regression.\noff: (Default) Use the RMA/AMA score directly."
+  synonyms:
+  - --log-pwmscores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[on|off] Normalise the motif scores so that the motifs are comparable\n\
+    on: (Default) Normalise motifs for comparison (Use RMA score).\noff: Use raw AMA\
+    \ score (Not recommended)."
+  synonyms:
+  - --normalise-motifs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[on|on] Switch the x and y axis for the linear regression\non: y-points\
+    \ are PWM scores, x-values are fluorescence scores.\noff: (Default) y-points are\
+    \ fluorescence scores, x-points are PWM scores."
+  synonyms:
+  - --linreg-switchxy
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Dump (R-format) TSV files of each regression.
   synonyms:
@@ -33,8 +66,8 @@ named:
     name: float
   optional: true
 - !Flag
-  description: '[0|2|3] source used to determine background frequencies 0: uniform
-    background 1: MEME motif file 2: Background file'
+  description: "[0|2|3] source used to determine background frequencies\n0: uniform\
+    \ background\n1: MEME motif file\n2: Background file"
   synonyms:
   - --bgformat
   args: !EmptyFlagArg {}
@@ -65,10 +98,9 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- ramen
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message again
   synonyms:

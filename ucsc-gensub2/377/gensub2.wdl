@@ -6,17 +6,15 @@ task Gensub2 {
     Boolean? group_two
     File file_list_one
     File file_list_two
-    String template_file
-    String output_file
+    File template_file
   }
   command <<<
     gensub2 \
       ~{file_list_one} \
       ~{file_list_two} \
       ~{template_file} \
-      ~{output_file} \
-      ~{true="-group1" false="" group_one} \
-      ~{true="-group2" false="" group_two}
+      ~{if (group_one) then "-group1" else ""} \
+      ~{if (group_two) then "-group2" else ""}
   >>>
   parameter_meta {
     group_one: "- write elements in order Aa Ab Ac Ba Bb Bc Ca Cb Cc"
@@ -24,6 +22,8 @@ task Gensub2 {
     file_list_one: ""
     file_list_two: ""
     template_file: ""
-    output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

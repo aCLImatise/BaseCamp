@@ -4,4 +4,7 @@ task Seqxref {
   command <<<
     seqxref
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

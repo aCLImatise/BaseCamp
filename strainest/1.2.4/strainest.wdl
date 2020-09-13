@@ -4,4 +4,7 @@ task Strainest {
   command <<<
     strainest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

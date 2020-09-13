@@ -4,4 +4,7 @@ task Consensus {
   command <<<
     consensus
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

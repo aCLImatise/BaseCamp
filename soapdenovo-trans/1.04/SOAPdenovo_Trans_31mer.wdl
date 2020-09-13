@@ -2,6 +2,9 @@ version 1.0
 
 task SOAPdenovoTrans31mer {
   command <<<
-    SOAPdenovo-Trans-31mer
+    SOAPdenovo_Trans_31mer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

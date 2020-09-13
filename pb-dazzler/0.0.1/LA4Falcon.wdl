@@ -6,9 +6,12 @@ task LA4Falcon {
   }
   command <<<
     LA4Falcon \
-      ~{true="-smfocargyUFMPI" false="" smfocargyufmpi}
+      ~{if (smfocargyufmpi) then "-smfocargyUFMPI" else ""}
   >>>
   parameter_meta {
     smfocargyufmpi: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

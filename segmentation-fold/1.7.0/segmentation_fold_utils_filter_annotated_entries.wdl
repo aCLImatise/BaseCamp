@@ -1,14 +1,23 @@
 version 1.0
 
-task SegmentationFoldUtilsFilterAnnotatedEntries {
+task SegmentationfoldutilsFilterannotatedentries {
   input {
-    String? regex
+    File? regex
+    String dbn_input_file
+    String bn_output_file_non_ove
   }
   command <<<
-    segmentation-fold-utils filter-annotated-entries \
+    segmentation_fold_utils filter_annotated_entries \
+      ~{dbn_input_file} \
+      ~{bn_output_file_non_ove} \
       ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""}
   >>>
   parameter_meta {
-    regex: "Regex to capture the targeted location in DBN file (default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)' )"
+    regex: "Regex to capture the targeted location in DBN file\\n(default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)' )"
+    dbn_input_file: "BED_INPUT_FILE DBN_OUT"
+    bn_output_file_non_ove: "RLAPPING"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

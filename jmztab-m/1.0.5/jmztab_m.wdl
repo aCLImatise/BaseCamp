@@ -1,35 +1,35 @@
 version 1.0
 
-task JmztabM {
+task Jmztabm {
   input {
-    String? check
     Boolean? from_json
     String? level
     Boolean? message
     String? outfile
-    String? check_semantic
+    File? check_semantic
     Boolean? to_json
     String jm_z_tab_m_cli
   }
   command <<<
-    jmztab-m \
+    jmztab_m \
       ~{jm_z_tab_m_cli} \
-      ~{if defined(check) then ("--check " +  '"' + check + '"') else ""} \
-      ~{true="--fromJson" false="" from_json} \
+      ~{if (from_json) then "--fromJson" else ""} \
       ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
-      ~{true="--message" false="" message} \
+      ~{if (message) then "--message" else ""} \
       ~{if defined(outfile) then ("--outFile " +  '"' + outfile + '"') else ""} \
       ~{if defined(check_semantic) then ("--checkSemantic " +  '"' + check_semantic + '"') else ""} \
-      ~{true="--toJson" false="" to_json}
+      ~{if (to_json) then "--toJson" else ""}
   >>>
   parameter_meta {
-    check: "Example: -c /path/to/file.mztab. Check and validate the provided a mzTab file."
-    from_json: "Example: --fromJson. Will parse inFile as JSON and write mzTab representation to disk. Requires validation to be successful!"
-    level: "Choose validation level (Info, Warn, Error), default level is Info!"
-    message: "Example: -m 1002. Print validation message detail information based on error code."
-    outfile: "Example: -o \"output.txt\". Record validation messages into outfile. If not set, print validation messages to stdout/stderr."
-    check_semantic: "Example: -s /path/to/mappingFile.xml. Use the provided mapping file for semantic validation. If no mapping file is provided, the default one will be used. Requires an active internet connection!"
-    to_json: "Example: --toJson. Will write a json representation of inFile to disk. Requires validation to be successful!"
-    jm_z_tab_m_cli: ""
+    from_json: "Example: --fromJson. Will parse inFile as JSON\\nand write mzTab representation to disk.\\nRequires validation to be successful!"
+    level: "Choose validation level (Info, Warn, Error),\\ndefault level is Info!"
+    message: "Example: -m 1002. Print validation message\\ndetail information based on error code."
+    outfile: "Example: -o \\\"output.txt\\\". Record validation\\nmessages into outfile. If not set, print\\nvalidation messages to stdout/stderr."
+    check_semantic: "Example: -s /path/to/mappingFile.xml. Use the\\nprovided mapping file for semantic validation.\\nIf no mapping file is provided, the default\\none will be used. Requires an active internet\\nconnection!"
+    to_json: "Example: --toJson. Will write a json\\nrepresentation of inFile to disk. Requires\\nvalidation to be successful!"
+    jm_z_tab_m_cli: "-c,--check <arg>           Example: -c /path/to/file.mztab. Check and\\nvalidate the provided a mzTab file."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

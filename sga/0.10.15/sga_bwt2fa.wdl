@@ -5,12 +5,10 @@ task SgaBwt2fa {
     Boolean? verbose
     File? outfile
     String? prefix
-    String? option
   }
   command <<<
     sga bwt2fa \
-      ~{option} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
@@ -18,6 +16,8 @@ task SgaBwt2fa {
     verbose: "display verbose output"
     outfile: "write the sequences to FILE"
     prefix: "prefix the names of the reads with STR"
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

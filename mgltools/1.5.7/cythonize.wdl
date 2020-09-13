@@ -4,4 +4,7 @@ task Cythonize {
   command <<<
     cythonize
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

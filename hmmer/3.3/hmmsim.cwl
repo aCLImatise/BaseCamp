@@ -1,202 +1,215 @@
 class: CommandLineTool
 id: ../../../hmmsim.cwl
 inputs:
-- id: obtain_length_statistics
+- id: in_obtain_length_statistics
   doc: ': obtain alignment length statistics too'
   type: boolean
   inputBinding:
     prefix: -a
-- id: verbose_print_scores
+- id: in_verbose_print_scores
   doc: ': verbose: print scores'
   type: boolean
   inputBinding:
     prefix: -v
-- id: length_random_target
+- id: in_length_random_target
   doc: ': length of random target seqs  [100]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -L
-- id: number_random_target
+- id: in_number_random_target
   doc: ': number of random target seqs  [1000]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: -N
-- id: direct_output_file
+- id: in_direct_output_file
   doc: ': direct output to file <f>, not stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: a_file
+- id: in_a_file
   doc: ': output alignment lengths to file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --afile
-- id: e_file
+- id: in_e_file
   doc: ': output E vs. E plots to <f> in xy format'
   type: string
   inputBinding:
     prefix: --efile
-- id: f_file
+- id: in_f_file
   doc: ': output filter fraction: # seqs passing P thresh'
   type: string
   inputBinding:
     prefix: --ffile
-- id: pfile
+- id: in_pfile
   doc: ': output P(S>x) plots to <f> in xy format'
   type: string
   inputBinding:
     prefix: --pfile
-- id: x_file
+- id: in_x_file
   doc: ': output bitscores as binary double vector to <f>'
   type: string
   inputBinding:
     prefix: --xfile
-- id: fs
+- id: in_fs
   doc: ': multihit local alignment  [default]'
   type: boolean
   inputBinding:
     prefix: --fs
-- id: sw
+- id: in_sw
   doc: ': unihit local alignment'
   type: boolean
   inputBinding:
     prefix: --sw
-- id: ls
+- id: in_ls
   doc: ': multihit glocal alignment'
   type: boolean
   inputBinding:
     prefix: --ls
-- id: unihit_glocal_alignment
+- id: in_unihit_glocal_alignment
   doc: ': unihit glocal alignment'
   type: boolean
   inputBinding:
     prefix: --s
-- id: v_it
+- id: in_v_it
   doc: ': score seqs with the Viterbi algorithm  [default]'
   type: boolean
   inputBinding:
     prefix: --vit
-- id: fwd
+- id: in_fwd
   doc: ': score seqs with the Forward algorithm'
   type: boolean
   inputBinding:
     prefix: --fwd
-- id: hyb
+- id: in_hyb
   doc: ': score seqs with the Hybrid algorithm'
   type: boolean
   inputBinding:
     prefix: --hyb
-- id: msv
+- id: in_msv
   doc: ': score seqs with the MSV algorithm'
   type: boolean
   inputBinding:
     prefix: --msv
-- id: fast
+- id: in_fast
   doc: ': use the optimized versions of the above'
   type: boolean
   inputBinding:
     prefix: --fast
-- id: tm_in
+- id: in_tm_in
   doc: ': set lower bound tail mass for fwd,island  [0.02]'
-  type: string
+  type: double
   inputBinding:
     prefix: --tmin
-- id: tmax
+- id: in_tmax
   doc: ': set lower bound tail mass for fwd,island  [0.02]'
-  type: string
+  type: double
   inputBinding:
     prefix: --tmax
-- id: t_points
+- id: in_t_points
   doc: ': set number of tail probs to try  [1]'
-  type: string
+  type: long
   inputBinding:
     prefix: --tpoints
-- id: t_linear
+- id: in_t_linear
   doc: ': use linear not log spacing of tail probs'
   type: boolean
   inputBinding:
     prefix: --tlinear
-- id: eml
+- id: in_eml
   doc: ': length of sequences for MSV Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EmL
-- id: emn
+- id: in_emn
   doc: ': number of sequences for MSV Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EmN
-- id: evl
+- id: in_evl
   doc: ': length of sequences for Viterbi Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EvL
-- id: evn
+- id: in_evn
   doc: ': number of sequences for Viterbi Gumbel mu fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EvN
-- id: efl
+- id: in_efl
   doc: ': length of sequences for Forward exp tail tau fit  [100]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EfL
-- id: efn
+- id: in_efn
   doc: ': number of sequences for Forward exp tail tau fit  [200]  (n>0)'
-  type: string
+  type: long
   inputBinding:
     prefix: --EfN
-- id: eft
+- id: in_eft
   doc: ': tail mass for Forward exponential tail tau fit  [0.04]  (0<x<1)'
-  type: string
+  type: double
   inputBinding:
     prefix: --Eft
-- id: stall
+- id: in_stall
   doc: ': arrest after start: for debugging MPI under gdb'
   type: boolean
   inputBinding:
     prefix: --stall
-- id: seed
+- id: in_seed
   doc: ': set random number seed to <n>  [0]'
-  type: string
+  type: long
   inputBinding:
     prefix: --seed
-- id: bg_flat
+- id: in_bg_flat
   doc: ': set uniform background frequencies'
   type: boolean
   inputBinding:
     prefix: --bgflat
-- id: bg_comp
+- id: in_bg_comp
   doc: ": set bg frequencies to model's average composition"
   type: boolean
   inputBinding:
     prefix: --bgcomp
-- id: x_no_length_model
+- id: in_x_no_length_model
   doc: ': turn the H3 length model off'
   type: boolean
   inputBinding:
     prefix: --x-no-lengthmodel
-- id: nu
+- id: in_nu
   doc: ': set nu parameter (# expected HSPs) for GMSV  [2.0]'
-  type: string
+  type: double
   inputBinding:
     prefix: --nu
-- id: p_thresh
+- id: in_p_thresh
   doc: ': set P-value threshold for --ffile  [0.02]'
-  type: string
+  type: double
   inputBinding:
     prefix: --pthresh
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: hmm_file
+- id: in_hmm_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_direct_output_file
+  doc: ': direct output to file <f>, not stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_direct_output_file)
+- id: out_a_file
+  doc: ': output alignment lengths to file <f>'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_a_file)
 cwlVersion: v1.1
 baseCommand:
 - hmmsim

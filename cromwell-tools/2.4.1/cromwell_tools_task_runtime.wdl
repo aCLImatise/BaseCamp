@@ -1,17 +1,17 @@
 version 1.0
 
-task CromwellToolsTaskRuntime {
+task CromwelltoolsTaskRuntime {
   input {
     String? url
     String? username
     String? password
-    String? secrets_file
-    String? service_account_key
-    String? metadata
+    File? secrets_file
+    File? service_account_key
+    File? metadata
     String? uuid
   }
   command <<<
-    cromwell-tools task_runtime \
+    cromwell_tools task_runtime \
       ~{if defined(url) then ("--url " +  '"' + url + '"') else ""} \
       ~{if defined(username) then ("--username " +  '"' + username + '"') else ""} \
       ~{if defined(password) then ("--password " +  '"' + password + '"') else ""} \
@@ -21,12 +21,15 @@ task CromwellToolsTaskRuntime {
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""}
   >>>
   parameter_meta {
-    url: "The URL to the Cromwell server. e.g. \"https://cromwell.server.org/\""
+    url: "The URL to the Cromwell server. e.g.\\n\\\"https://cromwell.server.org/\\\""
     username: "Cromwell username for HTTPBasicAuth."
     password: "Cromwell password for HTTPBasicAuth."
-    secrets_file: "Path to the JSON file containing username, password, and url fields."
-    service_account_key: "Path to the JSON key file for authenticating with CaaS."
+    secrets_file: "Path to the JSON file containing username, password,\\nand url fields."
+    service_account_key: "Path to the JSON key file for authenticating with\\nCaaS."
     metadata: "Metadata json file to calculate cost on"
-    uuid: "A Cromwell workflow UUID, which is the workflow identifier."
+    uuid: "A Cromwell workflow UUID, which is the workflow\\nidentifier.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

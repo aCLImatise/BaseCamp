@@ -4,4 +4,7 @@ task Hmmpair {
   command <<<
     hmmpair
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

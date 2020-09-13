@@ -8,7 +8,7 @@ task DumpContigsAsReads {
   }
   command <<<
     dumpContigsAsReads \
-      ~{true="-bank" false="" bank} \
+      ~{if (bank) then "-bank" else ""} \
       ~{if defined(dump_just_eids) then ("-E " +  '"' + dump_just_eids + '"') else ""} \
       ~{if defined(dump_just_iids) then ("-I " +  '"' + dump_just_iids + '"') else ""}
   >>>
@@ -16,5 +16,8 @@ task DumpContigsAsReads {
     bank: "bank where assembly is stored"
     dump_just_eids: "Dump just the contig eids listed in file"
     dump_just_iids: "Dump just the contig iids listed in file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

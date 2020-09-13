@@ -13,10 +13,10 @@ task Compalign {
     compalign \
       ~{trusted_dot_ali} \
       ~{test_dot_ali} \
-      ~{true="-c" false="" only_compare_marked} \
+      ~{if (only_compare_marked) then "-c" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="-options" false="" options}
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     only_compare_marked: ": only compare under marked #=CS consensus structure"
@@ -25,5 +25,8 @@ task Compalign {
     options: ""
     trusted_dot_ali: ""
     test_dot_ali: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

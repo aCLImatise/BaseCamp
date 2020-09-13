@@ -14,4 +14,7 @@ task GenomepySearch {
     provider: "provider"
     term: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,16 +2,22 @@ version 1.0
 
 task FastaptamerCluster {
   input {
-    String? i
     String? o
+    File? i
+    String sequence
   }
   command <<<
     fastaptamer_cluster \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{sequence} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
     o: ""
+    i: ""
+    sequence: "To prevent clustering of sequences not highly sampled (and improve execution ti-"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

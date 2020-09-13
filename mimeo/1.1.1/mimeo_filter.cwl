@@ -1,79 +1,87 @@
 class: CommandLineTool
 id: ../../../mimeo_filter.cwl
 inputs:
-- id: in_file
+- id: in_in_file
   doc: Name of directory containing sequences from A genome.
-  type: string
+  type: File
   inputBinding:
     prefix: --infile
-- id: outdir
+- id: in_outdir
   doc: 'Write output files to this directory. (Default: cwd)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: outfile
+- id: in_outfile
   doc: Name of alignment result file.
-  type: string
+  type: File
   inputBinding:
     prefix: --outfile
-- id: keep_temp
+- id: in_keep_temp
   doc: If set do not remove temp files.
   type: boolean
   inputBinding:
     prefix: --keeptemp
-- id: verbose
+- id: in_verbose
   doc: If set report LASTZ progress.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: trf_path
+- id: in_trf_path
   doc: Custom path to TRF executable if not in $PATH.
-  type: string
+  type: File
   inputBinding:
     prefix: --TRFpath
-- id: t_match
+- id: in_t_match
   doc: TRF matching weight
   type: string
   inputBinding:
     prefix: --tmatch
-- id: t_mismatch
+- id: in_t_mismatch
   doc: TRF mismatching penalty
   type: string
   inputBinding:
     prefix: --tmismatch
-- id: t_delta
+- id: in_t_delta
   doc: TRF indel penalty
   type: string
   inputBinding:
     prefix: --tdelta
-- id: tpm
+- id: in_tpm
   doc: TRF match probability
   type: string
   inputBinding:
     prefix: --tPM
-- id: tpi
+- id: in_tpi
   doc: TRF indel probability
   type: string
   inputBinding:
     prefix: --tPI
-- id: tm_in_score
+- id: in_tm_in_score
   doc: TRF minimum alignment score to report
   type: string
   inputBinding:
     prefix: --tminscore
-- id: tmax_period
-  doc: 'TRF maximum period size to report. Note: Setting this score too high may exclude
-    some LTR retrotransposons. Optimal len to exclude only SSRs is 10-50bp.'
-  type: string
+- id: in_tmax_period
+  doc: "TRF maximum period size to report. Note: Setting this\nscore too high may\
+    \ exclude some LTR retrotransposons.\nOptimal len to exclude only SSRs is 10-50bp."
+  type: long
   inputBinding:
     prefix: --tmaxperiod
-- id: max_tandem
-  doc: Max percentage of a sequence which may be masked by TRF. If exceeded, element
-    will be discarded.
+- id: in_max_tandem
+  doc: "Max percentage of a sequence which may be masked by\nTRF. If exceeded, element\
+    \ will be discarded.\n"
   type: long
   inputBinding:
     prefix: --maxtandem
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Write output files to this directory. (Default: cwd)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - mimeo-filter

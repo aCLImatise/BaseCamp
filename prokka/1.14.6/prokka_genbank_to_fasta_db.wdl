@@ -1,6 +1,6 @@
 version 1.0
 
-task ProkkaGenbankToFastaDb {
+task ProkkagenbankToFastaDb {
   input {
     Boolean? verbose
     String? format
@@ -9,18 +9,18 @@ task ProkkaGenbankToFastaDb {
     String? blank
     Boolean? pseudo
     Boolean? hypo
-    String? g_code
-    String? min_len
+    Int? g_code
+    Int? min_len
   }
   command <<<
-    prokka-genbank_to_fasta_db \
-      ~{true="--verbose" false="" verbose} \
+    prokka_genbank_to_fasta_db \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(id_tag) then ("--idtag " +  '"' + id_tag + '"') else ""} \
       ~{if defined(sep) then ("--sep " +  '"' + sep + '"') else ""} \
       ~{if defined(blank) then ("--blank " +  '"' + blank + '"') else ""} \
-      ~{true="--pseudo" false="" pseudo} \
-      ~{true="--hypo" false="" hypo} \
+      ~{if (pseudo) then "--pseudo" else ""} \
+      ~{if (hypo) then "--hypo" else ""} \
       ~{if defined(g_code) then ("--gcode " +  '"' + g_code + '"') else ""} \
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""}
   >>>
@@ -34,5 +34,8 @@ task ProkkaGenbankToFastaDb {
     hypo: "!         Include 'hypothetical protein' genes (default '0')."
     g_code: "Force this genetic code for translation (otherwise /transl_table) (default '0')."
     min_len: "Minimum peptide length (default '0')."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

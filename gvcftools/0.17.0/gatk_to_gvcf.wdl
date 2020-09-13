@@ -2,31 +2,28 @@ version 1.0
 
 task GatkToGvcf {
   input {
-    String? chrom_depth_file
-    String? max_depth_factor
-    String? min_gq_x
-    String? min_mq
-    String? min_qd
-    String? max_site_fs
-    String? max_hap_score
-    String? min_m_qrs
-    String? min_site_r_prs
-    String? max_in_del_fs
-    String? min_in_del_r_prs
+    File? chrom_depth_file
+    Int? max_depth_factor
+    Int? min_gq_x
+    Int? min_mq
+    Int? min_qd
+    Int? max_site_fs
+    Int? max_hap_score
+    Int? min_m_qrs
+    Int? min_site_r_prs
+    Int? max_in_del_fs
+    Int? min_in_del_r_prs
     Boolean? no_default_filters
-    String? min_block_able_non_ref
+    Int? min_block_able_non_ref
     Boolean? skip_header
-    String? block_range_factor
-    String? block_label
+    Int? block_range_factor
+    Int? block_label
     String? block_stats
-    Boolean? no_block_compression
-    String all_sites
-    String gvc_f
+    File file
   }
   command <<<
     gatk_to_gvcf \
-      ~{all_sites} \
-      ~{gvc_f} \
+      ~{file} \
       ~{if defined(chrom_depth_file) then ("--chrom-depth-file " +  '"' + chrom_depth_file + '"') else ""} \
       ~{if defined(max_depth_factor) then ("--max-depth-factor " +  '"' + max_depth_factor + '"') else ""} \
       ~{if defined(min_gq_x) then ("--min-gqx " +  '"' + min_gq_x + '"') else ""} \
@@ -38,17 +35,16 @@ task GatkToGvcf {
       ~{if defined(min_site_r_prs) then ("--min-site-rprs " +  '"' + min_site_r_prs + '"') else ""} \
       ~{if defined(max_in_del_fs) then ("--max-indel-fs " +  '"' + max_in_del_fs + '"') else ""} \
       ~{if defined(min_in_del_r_prs) then ("--min-indel-rprs " +  '"' + min_in_del_r_prs + '"') else ""} \
-      ~{true="--no-default-filters" false="" no_default_filters} \
+      ~{if (no_default_filters) then "--no-default-filters" else ""} \
       ~{if defined(min_block_able_non_ref) then ("--min-blockable-nonref " +  '"' + min_block_able_non_ref + '"') else ""} \
-      ~{true="--skip-header" false="" skip_header} \
+      ~{if (skip_header) then "--skip-header" else ""} \
       ~{if defined(block_range_factor) then ("--block-range-factor " +  '"' + block_range_factor + '"') else ""} \
       ~{if defined(block_label) then ("--block-label " +  '"' + block_label + '"') else ""} \
-      ~{if defined(block_stats) then ("--block-stats " +  '"' + block_stats + '"') else ""} \
-      ~{true="--no-block-compression" false="" no_block_compression}
+      ~{if defined(block_stats) then ("--block-stats " +  '"' + block_stats + '"') else ""}
   >>>
   parameter_meta {
-    chrom_depth_file: "Read mean depth for each chromosome from file,  and use these values for maximum site depth  filteration. File should contain one line per  chromosome, where each line begins with:  \"chrom_name<TAB>depth\" (default: no chrom depth filtration)"
-    max_depth_factor: "(=3.0) If a chrom depth file is supplied then loci  with depth exceeding the mean chrom depth times this value are filtered"
+    chrom_depth_file: "Read mean depth for each chromosome from file,\\nand use these values for maximum site depth\\nfilteration. File should contain one line per\\nchromosome, where each line begins with:\\n\\\"chrom_name<TAB>depth\\\" (default: no chrom depth\\nfiltration)"
+    max_depth_factor: "(=3.0) If a chrom depth file is supplied then loci\\nwith depth exceeding the mean chrom depth times\\nthis value are filtered"
     min_gq_x: "(=20.0)         Minimum locus GQX"
     min_mq: "(=20.0)          Minimum site MQ"
     min_qd: "(=3.73)          Minimum locus QD"
@@ -58,14 +54,15 @@ task GatkToGvcf {
     min_site_r_prs: "(=-2.386) Minimum site ReadPosRankSum"
     max_in_del_fs: "(=200.0)   Maximum indel FS"
     min_in_del_r_prs: "(=-20.0) Minimum indel ReadPosRankSum"
-    no_default_filters: "Clear all default filters. Any individual  filter threshold changes above will still be in effect"
-    min_block_able_non_ref: "(=0.2) If AD present, only compress non-variant  site if 1-AD[0]/DP < value"
+    no_default_filters: "Clear all default filters. Any individual\\nfilter threshold changes above will still be in\\neffect"
+    min_block_able_non_ref: "(=0.2) If AD present, only compress non-variant\\nsite if 1-AD[0]/DP < value"
     skip_header: "Write gVCF output without header"
-    block_range_factor: "(=0.3)       Non-variant blocks are restricted to  range [x,y], y <= max(x+3,x*(1+block-ra nge-factor))"
-    block_label: "(=BLOCKAVG_min30p3a) VCF INFO key used to annotate  compressed non-variant blocks"
-    block_stats: "Write non-variant block stats to the  file"
-    no_block_compression: "Turn off block compression"
-    all_sites: ""
-    gvc_f: ""
+    block_range_factor: "(=0.3)       Non-variant blocks are restricted to\\nrange [x,y], y <= max(x+3,x*(1+block-ra\\nnge-factor))"
+    block_label: "(=BLOCKAVG_min30p3a)\\nVCF INFO key used to annotate\\ncompressed non-variant blocks"
+    block_stats: "Write non-variant block stats to the"
+    file: "--no-block-compression                Turn off block compression"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

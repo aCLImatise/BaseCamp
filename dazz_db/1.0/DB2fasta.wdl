@@ -6,9 +6,12 @@ task DB2fasta {
   }
   command <<<
     DB2fasta \
-      ~{true="-vU" false="" vu}
+      ~{if (vu) then "-vU" else ""}
   >>>
   parameter_meta {
     vu: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

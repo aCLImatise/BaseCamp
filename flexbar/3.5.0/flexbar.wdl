@@ -6,19 +6,19 @@ task Flexbar {
     Boolean? versions
     Boolean? cite
     Int? threads
-    String? target
-    String? reads
-    String? reads_two
-    String? barcodes
-    String? barcode_reads
+    File? target
+    File? reads
+    File? reads_two
+    File? barcodes
+    File? barcode_reads
     Int? barcode_min_overlap
-    String? barcode_error_rate
+    Float? barcode_error_rate
     String? barcode_trim_end
-    String? adapters
-    String? adapters_two
+    File? adapters
+    File? adapters_two
     String? adapter_preset
     Int? adapter_min_overlap
-    String? adapter_error_rate
+    Float? adapter_error_rate
     String? adapter_trim_end
     String? adapter_pair_overlap
     Int? max_uncalled
@@ -26,13 +26,13 @@ task Flexbar {
     Int? pre_trim_right
     Int? min_read_length
     String? q_trim
-    String? q_trim_format
+    Float? q_trim_format
     Int? q_trim_threshold
     String? h_trim_right
     Int? h_trim_min_length
-    String? h_trim_error_rate
+    Float? h_trim_error_rate
     Boolean? fast_a_output
-    String? zip_output
+    Int? zip_output
     Boolean? stdout_reads
     String? align_log
     Boolean? stdout_log
@@ -40,9 +40,9 @@ task Flexbar {
   }
   command <<<
     flexbar \
-      ~{true="--full-help" false="" full_help} \
-      ~{true="--versions" false="" versions} \
-      ~{true="--cite" false="" cite} \
+      ~{if (full_help) then "--full-help" else ""} \
+      ~{if (versions) then "--versions" else ""} \
+      ~{if (cite) then "--cite" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(target) then ("--target " +  '"' + target + '"') else ""} \
       ~{if defined(reads) then ("--reads " +  '"' + reads + '"') else ""} \
@@ -69,12 +69,12 @@ task Flexbar {
       ~{if defined(h_trim_right) then ("--htrim-right " +  '"' + h_trim_right + '"') else ""} \
       ~{if defined(h_trim_min_length) then ("--htrim-min-length " +  '"' + h_trim_min_length + '"') else ""} \
       ~{if defined(h_trim_error_rate) then ("--htrim-error-rate " +  '"' + h_trim_error_rate + '"') else ""} \
-      ~{true="--fasta-output" false="" fast_a_output} \
+      ~{if (fast_a_output) then "--fasta-output" else ""} \
       ~{if defined(zip_output) then ("--zip-output " +  '"' + zip_output + '"') else ""} \
-      ~{true="--stdout-reads" false="" stdout_reads} \
+      ~{if (stdout_reads) then "--stdout-reads" else ""} \
       ~{if defined(align_log) then ("--align-log " +  '"' + align_log + '"') else ""} \
-      ~{true="--stdout-log" false="" stdout_log} \
-      ~{true="--removal-tags" false="" removal_tags}
+      ~{if (stdout_log) then "--stdout-log" else ""} \
+      ~{if (removal_tags) then "--removal-tags" else ""}
   >>>
   parameter_meta {
     full_help: "Display the help message with advanced options."
@@ -112,5 +112,9 @@ task Flexbar {
     align_log: "Print chosen read alignments. One of ALL, MOD, and TAB."
     stdout_log: "Write statistics to stdout instead of target log file."
     removal_tags: "Tag reads that are subject to adapter or barcode removal."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_target = "${in_target}"
   }
 }

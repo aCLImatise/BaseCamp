@@ -4,4 +4,7 @@ task Gepard {
   command <<<
     gepard
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

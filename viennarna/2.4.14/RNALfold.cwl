@@ -1,80 +1,93 @@
 class: CommandLineTool
 id: ../../../RNALfold.cwl
 inputs:
-- id: detailed_help
-  doc: Print help, including all details and hidden options, and exit
+- id: in_detailed_help
+  doc: "Print help, including all details and hidden\noptions, and exit"
   type: boolean
   inputBinding:
     prefix: --detailed-help
-- id: full_help
+- id: in_full_help
   doc: Print help, including hidden options, and exit
   type: boolean
   inputBinding:
     prefix: --full-help
-- id: verbose
-  doc: Be verbose (default=off)
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: span
-  doc: Set the maximum distance between any two pairing nucleotides. (default=`150')
+- id: in_span
+  doc: "Set the maximum distance between any two\npairing nucleotides.\n(default=`150')"
   type: long
   inputBinding:
     prefix: --span
-- id: outfile
+- id: in_outfile
   doc: '[=<filename>]    Print output to file instead of stdout'
-  type: boolean
+  type: File
   inputBinding:
     prefix: --outfile
-- id: in_file
+- id: in_in_file
   doc: Read a file instead of reading from stdin
   type: File
   inputBinding:
     prefix: --infile
-- id: auto_id
-  doc: Automatically generate an ID for each sequence. (default=off)
+- id: in_auto_id
+  doc: "Automatically generate an ID for each sequence.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --auto-id
-- id: zscore
-  doc: "[=DOUBLE]         Limit the output to predictions with a Z-score below a threshold\
-    \ (default=`-2')"
+- id: in_zscore
+  doc: "[=DOUBLE]         Limit the output to predictions with a Z-score\nbelow a\
+    \ threshold\n(default=`-2')"
   type: boolean
   inputBinding:
     prefix: --zscore
-- id: g_quad
-  doc: Incoorporate G-Quadruplex formation into the structure prediction algorithm
-    (default=off)
+- id: in_g_quad
+  doc: "Incoorporate G-Quadruplex formation into the\nstructure prediction algorithm\n\
+    (default=off)"
   type: boolean
   inputBinding:
     prefix: --gquad
-- id: shape
-  doc: Use SHAPE reactivity data to guide structure predictions.
+- id: in_shape
+  doc: Use SHAPE reactivity data to guide structure
   type: File
   inputBinding:
     prefix: --shape
-- id: temp
-  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
-  type: string
+- id: in_temp
+  doc: "Rescale energy parameters to a temperature of\ntemp C. Default is 37C."
+  type: long
   inputBinding:
     prefix: --temp
-- id: dangles
-  doc: Change the dangling end model (default=`2')
+- id: in_dangles
+  doc: "Change the dangling end model\n(default=`2')"
   type: long
   inputBinding:
     prefix: --dangles
-- id: no_lp
-  doc: Produce structures without lonely pairs (helices of length 1). (default=off)
+- id: in_no_lp
+  doc: "Produce structures without lonely pairs\n(helices of length 1).\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noLP
-- id: param_file
-  doc: Read energy parameters from paramfile, instead of using the default parameter
-    set.
-  type: string
+- id: in_param_file
+  doc: "Read energy parameters from paramfile, instead\nof using the default parameter\
+    \ set."
+  type: File
   inputBinding:
     prefix: --paramFile
-outputs: []
+- id: in_program
+  doc: "-v, --verbose                 Be verbose\n(default=off)"
+  type: string
+  inputBinding:
+    position: 0
+- id: in_predictions_dot
+  doc: 'Model Details:'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outfile
+  doc: '[=<filename>]    Print output to file instead of stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
 cwlVersion: v1.1
 baseCommand:
 - RNALfold

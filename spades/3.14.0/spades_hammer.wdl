@@ -1,7 +1,10 @@
 version 1.0
 
-task SpadesHammer {
+task Spadeshammer {
   command <<<
-    spades-hammer
+    spades_hammer
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

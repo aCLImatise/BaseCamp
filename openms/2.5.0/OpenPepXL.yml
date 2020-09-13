@@ -1,4 +1,6 @@
 !Command
+command:
+- OpenPepXL
 positional: []
 named:
 - !Flag
@@ -111,10 +113,9 @@ named:
   - --helphelp
   args: !EmptyFlagArg {}
   optional: true
-command:
-- OpenPepXL
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Shows options
   synonyms:
@@ -123,25 +124,26 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
-help_text: "\nOpenPepXL -- Tool for protein-protein cross-linking identification using\
-  \ labeled linkers.\nFull documentation: http://www.openms.de/documentation/TOPP_OpenPepXL.html\n\
-  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND May 19 2020, 23:12:02, Revision:\
-  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
-  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
-  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
-  \  OpenPepXL <options>\n\nOptions (mandatory options marked with '*'):\n  -in <file>*\
-  \                                       Input file containing the spectra. (valid\
-  \ formats: 'mzML')\n  -consensus <file>*                                Input file\
-  \ containing the linked mass peaks. (valid formats: 'consensusXML')\n  -database\
-  \ <file>*                                 Input file containing the protein database.\
-  \ (valid formats: 'fasta')\n  -decoy_string <text>                             \
-  \ String that was appended (or prefixed - see 'prefix' flag below) to the accessions\
-  \ in the protein database to indicate decoy proteins. (default: 'DECOY_')\n  -decoy_prefix\
-  \ <choice>                            Set to true, if the decoy_string is a prefix\
-  \ of accessions in the protein database. Otherwise it is a suffix. (default: 'true'\
-  \ valid: 'true', 'false')\n\nPrecursor filtering settings:\n  -precursor:mass_tolerance\
-  \ <value>                 Width of precursor mass tolerance window (default: '10.0')\n\
-  \  -precursor:mass_tolerance_unit <choice>           Unit of precursor mass tolerance.\
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nOpenPepXL -- Tool\
+  \ for protein-protein cross-linking identification using labeled linkers.\nFull\
+  \ documentation: http://www.openms.de/documentation/TOPP_OpenPepXL.html\nVersion:\
+  \ 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision: HEAD-HASH-NOTFOUND\n\
+  To cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible\
+  \ open-source software platform for mass spectrometry data analysis. Nat Meth. 2016;\
+  \ 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n  OpenPepXL <options>\n\nOptions\
+  \ (mandatory options marked with '*'):\n  -in <file>*                          \
+  \             Input file containing the spectra. (valid formats: 'mzML')\n  -consensus\
+  \ <file>*                                Input file containing the linked mass peaks.\
+  \ (valid formats: 'consensusXML')\n  -database <file>*                         \
+  \        Input file containing the protein database. (valid formats: 'fasta')\n\
+  \  -decoy_string <text>                              String that was appended (or\
+  \ prefixed - see 'prefix' flag below) to the accessions in the protein database\
+  \ to indicate decoy proteins. (default: 'DECOY_')\n  -decoy_prefix <choice>    \
+  \                        Set to true, if the decoy_string is a prefix of accessions\
+  \ in the protein database. Otherwise it is a suffix. (default: 'true' valid: 'true',\
+  \ 'false')\n\nPrecursor filtering settings:\n  -precursor:mass_tolerance <value>\
+  \                 Width of precursor mass tolerance window (default: '10.0')\n \
+  \ -precursor:mass_tolerance_unit <choice>           Unit of precursor mass tolerance.\
   \ (default: 'ppm' valid: 'ppm', 'Da')\n  -precursor:min_charge <number>        \
   \            Minimum precursor charge to be considered. (default: '3')\n  -precursor:max_charge\
   \ <number>                    Maximum precursor charge to be considered. (default:\
@@ -1551,32 +1553,32 @@ help_text: "\nOpenPepXL -- Tool for protein-protein cross-linking identification
   \ in the search. (default: '5')\n  -peptide:missed_cleavages <number>          \
   \      Number of missed cleavages. (default: '2')\n  -peptide:enzyme <choice>  \
   \                        The enzyme used for peptide digestion. (default: 'Trypsin'\
-  \ valid: 'Trypsin', 'proline endopeptidase', 'glutamyl endopeptidase', 'Alpha-lytic\
-  \ protease', '2-iodobenzoate', 'Asp-N/B', 'Asp-N_ambic', 'Trypsin/P', 'V8-DE', 'V8-E',\
-  \ 'leukocyte elastase', 'Arg-C/P', 'iodosobenzoate', 'staphylococcal protease/D',\
-  \ 'proline-endopeptidase/HKR', 'Glu-C+P', 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P',\
-  \ 'elastase-trypsin-chymotrypsin', 'no cleavage', 'unspecific cleavage', 'Chymotrypsin',\
-  \ 'Chymotrypsin/P', 'CNBr', 'Formic_acid', 'Lys-C', 'Asp-N', 'Lys-N', 'Lys-C/P',\
-  \ 'PepsinA', 'TrypChymo', 'Arg-C')\n\nDescription of the cross-linker reagent:\n\
-  \  -cross_linker:residue1 <list>                     Comma separated residues, that\
-  \ the first side of a bifunctional cross-linker can attach to (default: '[K N-term]')\n\
-  \  -cross_linker:residue2 <list>                     Comma separated residues, that\
-  \ the second side of a bifunctional cross-linker can attach to (default: '[K N-term]')\n\
-  \  -cross_linker:mass_light <value>                  Mass of the light cross-linker,\
-  \ linking two residues on one or two peptides (default: '138.068079600000004')\n\
-  \  -cross_linker:mass_iso_shift <value>              Mass of the isotopic shift\
-  \ between the light and heavy linkers (default: '12.075321000000001')\n  -cross_linker:mass_mono_link\
-  \ <values>             Possible masses of the linker, when attached to only one\
-  \ peptide (default: '[156.078644309999987 155.094628714999999]')\n  -cross_linker:name\
-  \ <text>                         Name of the searched cross-link, used to resolve\
-  \ ambiguity of equal masses (e.g. DSS or BS3) (default: 'DSS')\n\nAdditional algorithm\
-  \ settings:\n  -algorithm:number_top_hits <number>               Number of top hits\
-  \ reported for each spectrum pair (default: '5')\n\n  -out_idXML <idXML_file>  \
-  \                         Results in idXML format (at least one of these output\
-  \ parameters should be set, otherwise you will not have any results) (valid formats:\
-  \ 'idXML')\n  -out_mzIdentML <mzIdentML_file>                   Results in mzIdentML\
-  \ (.mzid) format (at least one of these output parameters should be set, otherwise\
-  \ you will not have any results) (valid formats: 'mzid')\n  -out_xquestxml <xQuestXML_file>\
+  \ valid: 'Asp-N/B', 'Asp-N_ambic', 'Chymotrypsin', 'Chymotrypsin/P', 'CNBr', 'PepsinA',\
+  \ 'TrypChymo', 'Trypsin/P', 'V8-DE', 'Lys-N', 'Lys-C/P', 'V8-E', 'leukocyte elastase',\
+  \ 'proline endopeptidase', 'glutamyl endopeptidase', 'Alpha-lytic protease', '2-iodobenzoate',\
+  \ 'iodosobenzoate', 'staphylococcal protease/D', 'proline-endopeptidase/HKR', 'Glu-C+P',\
+  \ 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'elastase-trypsin-chymotrypsin',\
+  \ 'no cleavage', 'unspecific cleavage', 'Trypsin', 'Asp-N', 'Arg-C/P', 'Arg-C',\
+  \ 'Formic_acid', 'Lys-C')\n\nDescription of the cross-linker reagent:\n  -cross_linker:residue1\
+  \ <list>                     Comma separated residues, that the first side of a\
+  \ bifunctional cross-linker can attach to (default: '[K N-term]')\n  -cross_linker:residue2\
+  \ <list>                     Comma separated residues, that the second side of a\
+  \ bifunctional cross-linker can attach to (default: '[K N-term]')\n  -cross_linker:mass_light\
+  \ <value>                  Mass of the light cross-linker, linking two residues\
+  \ on one or two peptides (default: '138.068079600000004')\n  -cross_linker:mass_iso_shift\
+  \ <value>              Mass of the isotopic shift between the light and heavy linkers\
+  \ (default: '12.075321000000001')\n  -cross_linker:mass_mono_link <values>     \
+  \        Possible masses of the linker, when attached to only one peptide (default:\
+  \ '[156.078644309999987 155.094628714999999]')\n  -cross_linker:name <text>    \
+  \                     Name of the searched cross-link, used to resolve ambiguity\
+  \ of equal masses (e.g. DSS or BS3) (default: 'DSS')\n\nAdditional algorithm settings:\n\
+  \  -algorithm:number_top_hits <number>               Number of top hits reported\
+  \ for each spectrum pair (default: '5')\n\n  -out_idXML <idXML_file>           \
+  \                Results in idXML format (at least one of these output parameters\
+  \ should be set, otherwise you will not have any results) (valid formats: 'idXML')\n\
+  \  -out_mzIdentML <mzIdentML_file>                   Results in mzIdentML (.mzid)\
+  \ format (at least one of these output parameters should be set, otherwise you will\
+  \ not have any results) (valid formats: 'mzid')\n  -out_xquestxml <xQuestXML_file>\
   \                   Results in the xquest.xml format (at least one of these output\
   \ parameters should be set, otherwise you will not have any results). (valid formats:\
   \ 'xquest.xml')\n  -out_xquest_specxml <xQuestSpecXML_file>          Matched spectra\

@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../circulargenerator.cwl
 inputs:
-- id: elongation
-  doc: the elongation factor [INT]
-  type: string
-  inputBinding:
-    prefix: --elongation
-- id: input
+- id: in_input
   doc: the input FastA File
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: seq
-  doc: the names of the sequences that should to be elongated
+- id: in_seq
+  doc: "the names of the sequences that should to\nbe elongated\n"
   type: string
   inputBinding:
     prefix: --seq
-- id: circular_generator_v_one_dot_zero
-  doc: ''
-  type: string
+- id: in_circular_generator_v_one_dot_zero
+  doc: -e,--elongation <ELONGATION>   the elongation factor [INT]
+  type: double
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - circulargenerator

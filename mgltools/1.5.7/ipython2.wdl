@@ -4,4 +4,7 @@ task Ipython2 {
   command <<<
     ipython2
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,17 @@
 version 1.0
 
-task AlignmentToolsRmPartialseq {
+task AlignmentToolsRmpartialseq {
   input {
     String? alignment_mode
-    String? min_gaps
-    String? knn
-    String? alignment_out
+    Int? min_gaps
+    Int? knn
+    File? alignment_out
     String full_length_seq_file
     String query_file
     String passed_seq_outfile
   }
   command <<<
-    AlignmentTools rm-partialseq \
+    AlignmentTools rm_partialseq \
       ~{full_length_seq_file} \
       ~{query_file} \
       ~{passed_seq_outfile} \
@@ -21,12 +21,16 @@ task AlignmentToolsRmPartialseq {
       ~{if defined(alignment_out) then ("--alignment-out " +  '"' + alignment_out + '"') else ""}
   >>>
   parameter_meta {
-    alignment_mode: "Alignment mode: overlap, glocal, local or global. default = overlap"
-    min_gaps: "The minimum number of continuous gaps in the beginning or end of the query alignment. If above the cutoff, the query is marked as partial. default = 50"
-    knn: "The top k closest targets using a heuristic method. (default = 20)"
+    alignment_mode: "Alignment mode: overlap, glocal, local or global.\\ndefault = overlap"
+    min_gaps: "The minimum number of continuous gaps in the\\nbeginning or end of the query alignment. If above\\nthe cutoff, the query is marked as partial. default\\n= 50"
+    knn: "The top k closest targets using a heuristic method.\\n(default = 20)"
     alignment_out: "The output file containing the pairwise alignment"
     full_length_seq_file: ""
     query_file: ""
     passed_seq_outfile: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_alignment_out = "${in_alignment_out}"
   }
 }

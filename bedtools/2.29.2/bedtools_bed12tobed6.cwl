@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../bedtools_bed12tobed6.cwl
 inputs:
-- id: force_score_based
+- id: in_force_score_based
   doc: Force the score to be the (1-based) block number from the BED12.
   type: boolean
   inputBinding:
     prefix: -n
-- id: i
+- id: in_i
   doc: ''
-  type: string
+  type: long
   inputBinding:
     prefix: -i
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bedtools

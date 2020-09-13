@@ -11,12 +11,12 @@ task SimkaMinCoreExport {
   }
   command <<<
     simkaMinCore export \
-      ~{true="-in" false="" in} \
-      ~{true="-in1" false="" in_one} \
-      ~{true="-in2" false="" in_two} \
-      ~{true="-out" false="" out} \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-verbose" false="" verbose}
+      ~{if (in) then "-in" else ""} \
+      ~{if (in_one) then "-in1" else ""} \
+      ~{if (in_two) then "-in2" else ""} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (verbose) then "-verbose" else ""}
   >>>
   parameter_meta {
     in: "(1 arg) :    input dir containing distance matrices in binary format (-out argument of ./simkaMin distance)"
@@ -25,5 +25,8 @@ task SimkaMinCoreExport {
     out: "(1 arg) :    output dir for distance matrices  [default './simkaMin_results']"
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task AnviThresholdTaxonomy {
+task Anvithresholdtaxonomy {
   command <<<
-    anvi-threshold-taxonomy
+    anvi_threshold_taxonomy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

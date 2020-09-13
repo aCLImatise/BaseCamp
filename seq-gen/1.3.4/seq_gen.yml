@@ -1,4 +1,6 @@
 !Command
+command:
+- seq-gen
 positional: []
 named:
 - !Flag
@@ -38,8 +40,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': MODEL = HKY, F84, GTR, JTT, WAG, PAM, BLOSUM, MTREV, CPREV45, MTART,
-    LG, GENERAL HKY, F84 & GTR are for nucleotides the rest are for amino acids'
+  description: ": MODEL = HKY, F84, GTR, JTT, WAG, PAM, BLOSUM, MTREV, CPREV45, MTART,\
+    \ LG, GENERAL\nHKY, F84 & GTR are for nucleotides the rest are for amino acids"
   synonyms:
   - -m
   args: !EmptyFlagArg {}
@@ -86,11 +88,47 @@ named:
   - -f
   args: !EmptyFlagArg {}
   optional: true
-command:
-- seq-gen
+- !Flag
+  description: ': # = seed for random number generator [default = system generated].'
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Output file format [default = PHYLIP]\np PHYLIP format\nr relaxed\
+    \ PHYLIP format\nn NEXUS format\nf FASTA format"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Write additional information [default = none]\na Write ancestral\
+    \ sequences for each node\nr Write rate for each site"
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': NAME = a text file to insert after every dataset [default = none].'
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Quiet'
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ': Give this help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "No model has been specified (use the -m option)\n\nUsage: seq-gen [-m\

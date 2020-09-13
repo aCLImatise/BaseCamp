@@ -4,14 +4,20 @@ task SerobaSummaryOutDir {
   input {
     String se_rob_a
     String var_command
+    String options
   }
   command <<<
     seroba summary out_dir \
       ~{se_rob_a} \
-      ~{var_command}
+      ~{var_command} \
+      ~{options}
   >>>
   parameter_meta {
     se_rob_a: ""
     var_command: ""
+    options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

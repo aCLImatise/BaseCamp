@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../motif_shuffle_columns.cwl
 inputs:
-- id: output_file_name
+- id: in_output_file_name
   doc: output file name
   type: File
   inputBinding:
     prefix: -o
-- id: seed
+- id: in_seed
   doc: pseudo-random number generator seed
-  type: string
+  type: long
   inputBinding:
     prefix: -seed
-- id: motif_db
+- id: in_motif_db
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_name
+  doc: output file name
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_name)
 cwlVersion: v1.1
 baseCommand:
 - motif-shuffle-columns

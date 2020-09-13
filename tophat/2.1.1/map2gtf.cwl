@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../map2gtf.cwl
 inputs:
-- id: annotation_do_ttl_st
+- id: in_annotation_do_ttl_st
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: alignments_dot_bam
+- id: in_alignments_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_file_dot_bam
+- id: in_out_file_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - map2gtf

@@ -1,23 +1,26 @@
 version 1.0
 
-task EslCompalignTest file {
+task EslcompalignTestfile {
   input {
     Boolean? options
     String esl_comp_align
-    String trusted_file
-    String test_file
+    File trusted_file
+    File test_file
   }
   command <<<
-    esl-compalign test file \
+    esl_compalign test_file \
       ~{esl_comp_align} \
       ~{trusted_file} \
       ~{test_file} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     esl_comp_align: ""
     trusted_file: ""
     test_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

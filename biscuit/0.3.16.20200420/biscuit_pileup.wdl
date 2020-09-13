@@ -8,9 +8,9 @@ task BiscuitPileup {
     Boolean? somatic_mode_must
     Boolean? somatic_mode_tumor
     Boolean? somatic_mode_normal
-    Boolean? pileup_output_file
+    File? pileup_output_file
     Boolean? pileup_statistics_output
-    Boolean? verbose_print_additional
+    Boolean? verbose_print_info
     Boolean? min_base_quality
     Boolean? minimum_mapping_quality
     Boolean? minimum_alignment_score
@@ -38,33 +38,33 @@ task BiscuitPileup {
       ~{pile_up} \
       ~{ref_dot_fa} \
       ~{in_dot_bam_dot_dot} \
-      ~{true="-g" false="" region_optional_specified} \
-      ~{true="-q" false="" number_of_threads} \
-      ~{true="-N" false="" nomeseq_mode} \
-      ~{true="-S" false="" somatic_mode_must} \
-      ~{true="-T" false="" somatic_mode_tumor} \
-      ~{true="-I" false="" somatic_mode_normal} \
-      ~{true="-o" false="" pileup_output_file} \
-      ~{true="-w" false="" pileup_statistics_output} \
-      ~{true="-v" false="" verbose_print_additional} \
-      ~{true="-b" false="" min_base_quality} \
-      ~{true="-m" false="" minimum_mapping_quality} \
-      ~{true="-a" false="" minimum_alignment_score} \
-      ~{true="-t" false="" max_cytosine_retention} \
-      ~{true="-l" false="" minimum_read_length} \
-      ~{true="-e" false="" minimum_distance_end} \
-      ~{true="-r" false="" redistribution_ambiguous_yr} \
-      ~{true="-c" false="" filtering_secondary_mapping} \
-      ~{true="-d" false="" double_counting_cytosine} \
-      ~{true="-u" false="" no_filtering_duplicate} \
-      ~{true="-p" false="" filtering_improper_pair} \
-      ~{true="-n" false="" maximum_nm_tag} \
-      ~{true="-E" false="" error_rate_} \
-      ~{true="-M" false="" mutation_rate_} \
-      ~{true="-x" false="" somatic_mutation_rate} \
-      ~{true="-C" false="" contamination_rate_} \
-      ~{true="-P" false="" prior_probability_heterozygous} \
-      ~{true="-Q" false="" prior_probability_homozygous}
+      ~{if (region_optional_specified) then "-g" else ""} \
+      ~{if (number_of_threads) then "-q" else ""} \
+      ~{if (nomeseq_mode) then "-N" else ""} \
+      ~{if (somatic_mode_must) then "-S" else ""} \
+      ~{if (somatic_mode_tumor) then "-T" else ""} \
+      ~{if (somatic_mode_normal) then "-I" else ""} \
+      ~{if (pileup_output_file) then "-o" else ""} \
+      ~{if (pileup_statistics_output) then "-w" else ""} \
+      ~{if (verbose_print_info) then "-v" else ""} \
+      ~{if (min_base_quality) then "-b" else ""} \
+      ~{if (minimum_mapping_quality) then "-m" else ""} \
+      ~{if (minimum_alignment_score) then "-a" else ""} \
+      ~{if (max_cytosine_retention) then "-t" else ""} \
+      ~{if (minimum_read_length) then "-l" else ""} \
+      ~{if (minimum_distance_end) then "-e" else ""} \
+      ~{if (redistribution_ambiguous_yr) then "-r" else ""} \
+      ~{if (filtering_secondary_mapping) then "-c" else ""} \
+      ~{if (double_counting_cytosine) then "-d" else ""} \
+      ~{if (no_filtering_duplicate) then "-u" else ""} \
+      ~{if (filtering_improper_pair) then "-p" else ""} \
+      ~{if (maximum_nm_tag) then "-n" else ""} \
+      ~{if (error_rate_) then "-E" else ""} \
+      ~{if (mutation_rate_) then "-M" else ""} \
+      ~{if (somatic_mutation_rate) then "-x" else ""} \
+      ~{if (contamination_rate_) then "-C" else ""} \
+      ~{if (prior_probability_heterozygous) then "-P" else ""} \
+      ~{if (prior_probability_homozygous) then "-Q" else ""}
   >>>
   parameter_meta {
     region_optional_specified: "region (optional, if not specified the whole bam will be processed)."
@@ -75,7 +75,7 @@ task BiscuitPileup {
     somatic_mode_normal: "somatic mode, normal BAM"
     pileup_output_file: "pileup output file [stdout]"
     pileup_statistics_output: "pileup statistics output prefix [same as output]"
-    verbose_print_additional: "verbose (<5 print additional info for diagnosis, >5 debug)."
+    verbose_print_info: "verbose (<5 print additional info for diagnosis, >5 debug)."
     min_base_quality: "min base quality [20]."
     minimum_mapping_quality: "minimum mapping quality [40]."
     minimum_alignment_score: "minimum alignment score (from AS-tag) [40]."
@@ -97,5 +97,9 @@ task BiscuitPileup {
     pile_up: ""
     ref_dot_fa: ""
     in_dot_bam_dot_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_pileup_output_file = "${in_pileup_output_file}"
   }
 }

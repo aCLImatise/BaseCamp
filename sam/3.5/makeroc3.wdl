@@ -2,7 +2,7 @@ version 1.0
 
 task Makeroc3 {
   input {
-    String? distfile
+    File? distfile
     String? option
     String run_name
   }
@@ -16,5 +16,8 @@ task Makeroc3 {
     distfile: ".dist    Score file to read (required)."
     option: ""
     run_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

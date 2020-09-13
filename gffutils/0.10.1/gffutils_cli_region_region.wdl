@@ -1,23 +1,23 @@
 version 1.0
 
-task GffutilsCliRegionRegion {
+task GffutilscliRegionRegion {
   input {
     String gff_utils_cli
-    String var_1
+    String region
     String db
-    String var_3
   }
   command <<<
-    gffutils-cli region region \
+    gffutils_cli region region \
       ~{gff_utils_cli} \
-      ~{var_1} \
-      ~{db} \
-      ~{var_3}
+      ~{region} \
+      ~{db}
   >>>
   parameter_meta {
     gff_utils_cli: ""
-    var_1: ""
+    region: ""
     db: ""
-    var_3: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,16 +2,16 @@ version 1.0
 
 task GenePredToBed {
   input {
-    String in_dot_gene_pred
-    String out_dot_bed
+    String? xxx
   }
   command <<<
     genePredToBed \
-      ~{in_dot_gene_pred} \
-      ~{out_dot_bed}
+      ~{if defined(xxx) then ("-xxx " +  '"' + xxx + '"') else ""}
   >>>
   parameter_meta {
-    in_dot_gene_pred: ""
-    out_dot_bed: ""
+    xxx: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

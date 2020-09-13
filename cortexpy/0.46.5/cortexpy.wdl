@@ -4,4 +4,7 @@ task Cortexpy {
   command <<<
     cortexpy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

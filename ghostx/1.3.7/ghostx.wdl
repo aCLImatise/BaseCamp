@@ -9,10 +9,10 @@ task Ghostx {
     String? database_name_must
     Int? maximum_number_alignments
     Int? maximum_number_output
-    String? score_matrix_file
+    File? score_matrix_file
     Int? open_gap_penalty
     Int? extend_gap_penalty
-    Int? lower_limit_cutoff
+    Int? lower_limit_score
     Int? upper_limit_cutoff
     Int? maximum_length_alignments
     String? query_sequence_type
@@ -32,7 +32,7 @@ task Ghostx {
       ~{if defined(score_matrix_file) then ("-M " +  '"' + score_matrix_file + '"') else ""} \
       ~{if defined(open_gap_penalty) then ("-G " +  '"' + open_gap_penalty + '"') else ""} \
       ~{if defined(extend_gap_penalty) then ("-E " +  '"' + extend_gap_penalty + '"') else ""} \
-      ~{if defined(lower_limit_cutoff) then ("-s " +  '"' + lower_limit_cutoff + '"') else ""} \
+      ~{if defined(lower_limit_score) then ("-s " +  '"' + lower_limit_score + '"') else ""} \
       ~{if defined(upper_limit_cutoff) then ("-T " +  '"' + upper_limit_cutoff + '"') else ""} \
       ~{if defined(maximum_length_alignments) then ("-S " +  '"' + maximum_length_alignments + '"') else ""} \
       ~{if defined(query_sequence_type) then ("-q " +  '"' + query_sequence_type + '"') else ""} \
@@ -51,12 +51,15 @@ task Ghostx {
     score_matrix_file: "Score matrix file[BLOSUM62]"
     open_gap_penalty: "Open gap penalty [11]"
     extend_gap_penalty: "Extend gap penalty [1]"
-    lower_limit_cutoff: "Lower limit cutoff score for seed search [4]"
+    lower_limit_score: "Lower limit cutoff score for seed search [4]"
     upper_limit_cutoff: "Upper limit cutoff score for seed search [30]"
     maximum_length_alignments: "Maximum length of alignments in seed search [10]"
     query_sequence_type: "Query sequence type, p (protein) or d (dna) [p]"
-    filter_query_sequence: "Filter query sequence, T (enable) or F (disable) [T] "
+    filter_query_sequence: "Filter query sequence, T (enable) or F (disable) [T]"
     the_number_threads: "The number of threads [1]"
     maximum_number_hits: "Maximum number of hits [67108864]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

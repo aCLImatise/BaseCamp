@@ -1,7 +1,10 @@
 version 1.0
 
-task GxwfViz {
+task Gxwfviz {
   command <<<
-    gxwf-viz
+    gxwf_viz
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

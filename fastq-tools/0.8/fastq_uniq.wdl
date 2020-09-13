@@ -1,14 +1,17 @@
 version 1.0
 
-task FastqUniq {
+task Fastquniq {
   input {
     Boolean? verbose
   }
   command <<<
-    fastq-uniq \
-      ~{true="--verbose" false="" verbose}
+    fastq_uniq \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     verbose: "print status along the way"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

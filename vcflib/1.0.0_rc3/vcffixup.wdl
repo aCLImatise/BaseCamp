@@ -2,7 +2,7 @@ version 1.0
 
 task Vcffixup {
   input {
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcffixup \
@@ -10,5 +10,8 @@ task Vcffixup {
   >>>
   parameter_meta {
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

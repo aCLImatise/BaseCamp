@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../isONclust_write_fastq.cwl
 inputs:
-- id: clusters
+- id: in_clusters
   doc: the file "final_clusters.csv created by isONclust."
-  type: string
+  type: File
   inputBinding:
     prefix: --clusters
-- id: fast_q
+- id: in_fast_q
   doc: Input fastq file
-  type: string
+  type: File
   inputBinding:
     prefix: --fastq
-- id: out_folder
+- id: in_out_folder
   doc: Output folder
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outfolder
-- id: write_clusters_more
+- id: in_write_clusters_more
   doc: Write out clusters with more or equal than N reads
   type: string
   inputBinding:
     prefix: --N
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_folder
+  doc: Output folder
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_out_folder)
 cwlVersion: v1.1
 baseCommand:
 - isONclust

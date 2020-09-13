@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../sampling_utils_sample_stream.cwl
 inputs:
-- id: prob
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_prob
   doc: Probability of picking a sequence
   type: double
   inputBinding:
     prefix: --prob
-- id: max_seq
+- id: in_max_seq
   doc: Maximum number of sequences
   type: long
   inputBinding:
     prefix: --max-seq
-- id: fast_q
+- id: in_fast_q
   doc: The input file is a fastq file
   type: boolean
   inputBinding:
     prefix: --fastq
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sampling-utils

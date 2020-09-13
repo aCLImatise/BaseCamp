@@ -17,4 +17,7 @@ task HtsboxBcfidx {
     bam_idx: ""
     in_dot_bam: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task FindReadCount.pl.orig {
+task FindReadCountpl {
   command <<<
-    find_read_count.pl.orig
+    find_read_count_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

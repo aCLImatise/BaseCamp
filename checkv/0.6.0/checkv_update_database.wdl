@@ -14,8 +14,8 @@ task CheckvUpdateDatabase {
       ~{source_db} \
       ~{dest_db} \
       ~{genomes} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--restart" false="" restart} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (restart) then "--restart" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
@@ -24,6 +24,9 @@ task CheckvUpdateDatabase {
     threads: "Number of threads for Prodigal and DIAMOND"
     source_db: "Path to current CheckV database."
     dest_db: "Path to updated CheckV database."
-    genomes: "FASTA file of complete genomes to add to database, where each nucleotide sequence represents one genome."
+    genomes: "FASTA file of complete genomes to add to database, where each\\nnucleotide sequence represents one genome."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

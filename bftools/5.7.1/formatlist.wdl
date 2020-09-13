@@ -4,4 +4,7 @@ task Formatlist {
   command <<<
     formatlist
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- htsbox
+- peovlp
 positional:
 - !Positional
   description: ''
@@ -85,17 +88,17 @@ named:
   - -d
   args: !EmptyFlagArg {}
   optional: true
-command:
-- htsbox
-- peovlp
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - htsbox
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - htsbox
+    - samview
     positional:
     - !Positional
       description: ''
@@ -111,15 +114,9 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - -bSIpO
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -L
+      - -e
       args: !SimpleFlagArg
-        name: reg.bed
+        name: dropRate
       optional: true
     - !Flag
       description: ''
@@ -131,15 +128,19 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - -e
+      - -L
       args: !SimpleFlagArg
-        name: dropRate
+        name: reg.bed
       optional: true
-    command:
-    - htsbox
-    - samview
+    - !Flag
+      description: ''
+      synonyms:
+      - -bSIpO
+      args: !EmptyFlagArg {}
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -148,88 +149,9 @@ parent: &id001 !Command
     generated_using: &id002
     - --help
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: vcfview
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: in.bcf
-      optional: false
-    named:
-    - !Flag
-      description: output in BCF
-      synonyms:
-      - -b
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: input is VCF
-      synonyms:
-      - -S
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: output file name [stdout]
-      synonyms:
-      - -o
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    - !Flag
-      description: compression level [0]
-      synonyms:
-      - -l
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: list of reference names and lengths [null]
-      synonyms:
-      - -t
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    - !Flag
-      description: list of samples (STR if started with ':'; FILE otherwise) [null]
-      synonyms:
-      - -s
-      args: !SimpleFlagArg
-        name: FILE/STR
-      optional: true
-    - !Flag
-      description: drop individual genotype information
-      synonyms:
-      - -G
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: exclude INDELs
-      synonyms:
-      - -I
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - htsbox
-    - vcfview
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "vcfview: invalid option -- '-'\nvcfview: invalid option -- 'h'\nvcfview:\
-      \ invalid option -- 'e'\n\nUsage:   vcfview [options] <in.bcf>|<in.vcf>|<in.vcf.gz>\n\
-      \nOptions: -b           output in BCF\n         -S           input is VCF\n\
-      \         -o FILE      output file name [stdout]\n         -l INT       compression\
-      \ level [0]\n         -t FILE      list of reference names and lengths [null]\n\
-      \         -s FILE/STR  list of samples (STR if started with ':'; FILE otherwise)\
-      \ [null]\n         -G           drop individual genotype information\n     \
-      \    -I           exclude INDELs\n\n"
-    generated_using: *id002
-  - !Command
+    - tabix
     positional:
     - !Positional
       description: ''
@@ -310,11 +232,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - htsbox
-    - tabix
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -330,41 +250,92 @@ parent: &id001 !Command
       \ to 1<<INT; 0 for the old tabix index [0]\n\n"
     generated_using: *id002
   - !Command
+    command:
+    - htsbox
+    - vcfview
     positional:
     - !Positional
       description: ''
       position: 0
-      name: bamidx
+      name: vcfview
       optional: false
     - !Positional
       description: ''
       position: 1
-      name: in.bam
+      name: in.bcf
       optional: false
     named:
     - !Flag
-      description: ''
+      description: output in BCF
+      synonyms:
+      - -b
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: input is VCF
+      synonyms:
+      - -S
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: output file name [stdout]
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: compression level [0]
+      synonyms:
+      - -l
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: list of reference names and lengths [null]
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: list of samples (STR if started with ':'; FILE otherwise) [null]
       synonyms:
       - -s
       args: !SimpleFlagArg
-        name: minBits
+        name: FILE/STR
       optional: true
-    command:
-    - htsbox
-    - bamidx
+    - !Flag
+      description: drop individual genotype information
+      synonyms:
+      - -G
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: exclude INDELs
+      synonyms:
+      - -I
+      args: !EmptyFlagArg {}
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
-    help_text: "bamidx: invalid option -- '-'\nbamidx: invalid option -- 'h'\nbamidx:\
-      \ invalid option -- 'e'\nbamidx: invalid option -- 'l'\nbamidx: invalid option\
-      \ -- 'p'\n\nUsage: bamidx [-s minBits] <in.bam>\n\nNote:  The minimal interval\
-      \ size equals 1<<minBits. If '-s' is unset, bamidx\n       creates an old BAM\
-      \ index with file extension '.bai'; otherwise it\n       writes a new index\
-      \ with extension '.csi'.\n\n"
+    help_text: "vcfview: invalid option -- '-'\nvcfview: invalid option -- 'h'\nvcfview:\
+      \ invalid option -- 'e'\n\nUsage:   vcfview [options] <in.bcf>|<in.vcf>|<in.vcf.gz>\n\
+      \nOptions: -b           output in BCF\n         -S           input is VCF\n\
+      \         -o FILE      output file name [stdout]\n         -l INT       compression\
+      \ level [0]\n         -t FILE      list of reference names and lengths [null]\n\
+      \         -s FILE/STR  list of samples (STR if started with ':'; FILE otherwise)\
+      \ [null]\n         -G           drop individual genotype information\n     \
+      \    -I           exclude INDELs\n\n"
     generated_using: *id002
   - !Command
+    command:
+    - htsbox
+    - bcfidx
     positional:
     - !Positional
       description: ''
@@ -384,11 +355,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: minShift
       optional: true
-    command:
-    - htsbox
-    - bcfidx
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -397,157 +366,9 @@ parent: &id001 !Command
       \ -- 'p'\nUsage: bamidx [-s minShift] <in.bam>\n"
     generated_using: *id002
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: faidx
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: in.fasta
-      optional: false
-    named: []
     command:
     - htsbox
-    - faidx
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Usage: faidx <in.fasta> [<reg> [...]]\n"
-    generated_using: &id004 []
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: bgzip
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: file
-      optional: true
-    named:
-    - !Flag
-      description: write on standard output, keep original files unchanged
-      synonyms:
-      - -c
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: decompress
-      synonyms:
-      - -d
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: overwrite files without asking
-      synonyms:
-      - -f
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: decompress at virtual file pointer INT
-      synonyms:
-      - -b
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: decompress INT bytes in the uncompressed file
-      synonyms:
-      - -s
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    command:
-    - htsbox
-    - bgzip
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: give this help
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "bgzip: invalid option -- '-'\n\nUsage:   bgzip [options] [file] ...\n\
-      \nOptions: -c      write on standard output, keep original files unchanged\n\
-      \         -d      decompress\n         -f      overwrite files without asking\n\
-      \         -b INT  decompress at virtual file pointer INT\n         -s INT  decompress\
-      \ INT bytes in the uncompressed file\n         -h      give this help\n\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: razip
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: file
-      optional: true
-    named:
-    - !Flag
-      description: write on standard output, keep original files unchanged
-      synonyms:
-      - -c
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: decompress
-      synonyms:
-      - -d
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: list compressed file contents
-      synonyms:
-      - -l
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: decompress at INT position in the uncompressed file
-      synonyms:
-      - -b
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: decompress INT bytes in the uncompressed file
-      synonyms:
-      - -s
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    command:
-    - htsbox
-    - razip
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: give this help
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "\nUsage:   razip [options] [file] ...\n\nOptions: -c      write on\
-      \ standard output, keep original files unchanged\n         -d      decompress\n\
-      \         -l      list compressed file contents\n         -b INT  decompress\
-      \ at INT position in the uncompressed file\n         -s INT  decompress INT\
-      \ bytes in the uncompressed file\n         -h      give this help\n\n"
-    generated_using: *id002
-  - !Command
+    - samsort
     positional:
     - !Positional
       description: ''
@@ -563,8 +384,9 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - -S
-      args: !EmptyFlagArg {}
+      - -t
+      args: !SimpleFlagArg
+        name: nThreads
       optional: true
     - !Flag
       description: ''
@@ -576,15 +398,12 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - -t
-      args: !SimpleFlagArg
-        name: nThreads
+      - -S
+      args: !EmptyFlagArg {}
       optional: true
-    command:
-    - htsbox
-    - samsort
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -592,162 +411,9 @@ parent: &id001 !Command
       \ invalid option -- 'e'\nUsage: samsort [-S] [-l clevel] [-t nThreads] <in.bam>|<in.sam>\n"
     generated_using: *id002
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: bamshuf
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: in.bam
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: out.prefix
-      optional: false
-    named:
-    - !Flag
-      description: output to stdout
-      synonyms:
-      - -O
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: uncompressed BAM output
-      synonyms:
-      - -u
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: compression level [3]
-      synonyms:
-      - -l
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: number of temporary files [64]
-      synonyms:
-      - -n
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -Ou
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -c
-      args: !SimpleFlagArg
-        name: cLevel
-      optional: true
     command:
     - htsbox
-    - bamshuf
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "bamshuf: invalid option -- '-'\nbamshuf: invalid option -- 'h'\nbamshuf:\
-      \ invalid option -- 'e'\n\nUsage:   bamshuf [-Ou] [-n nFiles] [-c cLevel] <in.bam>\
-      \ <out.prefix>\n\nOptions: -O      output to stdout\n         -u      uncompressed\
-      \ BAM output\n         -l INT  compression level [3]\n         -n INT  number\
-      \ of temporary files [64]\n\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: bam2fq
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: in.bam
-      optional: false
-    named:
-    - !Flag
-      description: append /1 and /2 to the read name
-      synonyms:
-      - -a
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: output quality in the OQ tag if present
-      synonyms:
-      - -O
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: copy RG, BC and QT tags to the FASTQ header line
-      synonyms:
-      - -t
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: write singleton reads to FILE [assume single-end]
-      synonyms:
-      - -s
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    command:
-    - htsbox
-    - bam2fq
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "bam2fq: invalid option -- '-'\nbam2fq: invalid option -- 'h'\nbam2fq:\
-      \ invalid option -- 'e'\nbam2fq: invalid option -- 'l'\nbam2fq: invalid option\
-      \ -- 'p'\n\nUsage:   bam2fq [-a] [-s outSE] <in.bam>\n\nOptions: -a        append\
-      \ /1 and /2 to the read name\n         -O        output quality in the OQ tag\
-      \ if present\n         -t        copy RG, BC and QT tags to the FASTQ header\
-      \ line\n         -s FILE   write singleton reads to FILE [assume single-end]\n\
-      \n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: bam2bed
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: in.bam
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -Se
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - htsbox
-    - bam2bed
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "bam2bed: invalid option -- '-'\nbam2bed: invalid option -- 'h'\nbam2bed:\
-      \ invalid option -- 'l'\nbam2bed: invalid option -- 'p'\nUsage: bam2bed [-Se]\
-      \ <in.bam> | <in.sam>\n"
-    generated_using: *id002
-  - !Command
+    - mapchk
     positional:
     - !Positional
       description: ''
@@ -807,11 +473,9 @@ parent: &id001 !Command
       - '-2'
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - htsbox
-    - mapchk
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -825,6 +489,9 @@ parent: &id001 !Command
       \ read2\n\n"
     generated_using: *id002
   - !Command
+    command:
+    - htsbox
+    - qualbin
     positional:
     - !Positional
       description: ''
@@ -870,11 +537,9 @@ parent: &id001 !Command
       - -u
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - htsbox
-    - qualbin
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -885,7 +550,163 @@ parent: &id001 !Command
       \  -m INT    number of bins (0, 1, 2, 3 or 7) [2]\n  -b        the input is\
       \ a BAM file\n  -u        output uncompressed BAM (force -b)\n"
     generated_using: *id002
+  - *id003
   - !Command
+    command:
+    - htsbox
+    - bam2fq
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: bam2fq
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: in.bam
+      optional: false
+    named:
+    - !Flag
+      description: append /1 and /2 to the read name
+      synonyms:
+      - -a
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: output quality in the OQ tag if present
+      synonyms:
+      - -O
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: copy RG, BC and QT tags to the FASTQ header line
+      synonyms:
+      - -t
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: write singleton reads to FILE [assume single-end]
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "bam2fq: invalid option -- '-'\nbam2fq: invalid option -- 'h'\nbam2fq:\
+      \ invalid option -- 'e'\nbam2fq: invalid option -- 'l'\nbam2fq: invalid option\
+      \ -- 'p'\n\nUsage:   bam2fq [-a] [-s outSE] <in.bam>\n\nOptions: -a        append\
+      \ /1 and /2 to the read name\n         -O        output quality in the OQ tag\
+      \ if present\n         -t        copy RG, BC and QT tags to the FASTQ header\
+      \ line\n         -s FILE   write singleton reads to FILE [assume single-end]\n\
+      \n"
+    generated_using: *id002
+  - !Command
+    command:
+    - htsbox
+    - bam2bed
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: bam2bed
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: in.bam
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -Se
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "bam2bed: invalid option -- '-'\nbam2bed: invalid option -- 'h'\nbam2bed:\
+      \ invalid option -- 'l'\nbam2bed: invalid option -- 'p'\nUsage: bam2bed [-Se]\
+      \ <in.bam> | <in.sam>\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - htsbox
+    - razip
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: razip
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: file
+      optional: true
+    named:
+    - !Flag
+      description: write on standard output, keep original files unchanged
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: decompress
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: list compressed file contents
+      synonyms:
+      - -l
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: decompress at INT position in the uncompressed file
+      synonyms:
+      - -b
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: decompress INT bytes in the uncompressed file
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: give this help
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "\nUsage:   razip [options] [file] ...\n\nOptions: -c      write on\
+      \ standard output, keep original files unchanged\n         -d      decompress\n\
+      \         -l      list compressed file contents\n         -b INT  decompress\
+      \ at INT position in the uncompressed file\n         -s INT  decompress INT\
+      \ bytes in the uncompressed file\n         -h      give this help\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - htsbox
+    - pileup
     positional:
     - !Positional
       description: ''
@@ -1036,11 +857,9 @@ parent: &id001 !Command
       - -u
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - htsbox
-    - pileup
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -1064,6 +883,206 @@ parent: &id001 !Command
       \ calling mode (-d -V.01 -S300 -q20 -Q3 -s5)\n\n"
     generated_using: *id002
   - !Command
+    command:
+    - htsbox
+    - bamidx
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: bamidx
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: in.bam
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: minBits
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "bamidx: invalid option -- '-'\nbamidx: invalid option -- 'h'\nbamidx:\
+      \ invalid option -- 'e'\nbamidx: invalid option -- 'l'\nbamidx: invalid option\
+      \ -- 'p'\n\nUsage: bamidx [-s minBits] <in.bam>\n\nNote:  The minimal interval\
+      \ size equals 1<<minBits. If '-s' is unset, bamidx\n       creates an old BAM\
+      \ index with file extension '.bai'; otherwise it\n       writes a new index\
+      \ with extension '.csi'.\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - htsbox
+    - bamshuf
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: bamshuf
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: in.bam
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: out.prefix
+      optional: false
+    named:
+    - !Flag
+      description: output to stdout
+      synonyms:
+      - -O
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: uncompressed BAM output
+      synonyms:
+      - -u
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: compression level [3]
+      synonyms:
+      - -l
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: number of temporary files [64]
+      synonyms:
+      - -n
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: cLevel
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -Ou
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "bamshuf: invalid option -- '-'\nbamshuf: invalid option -- 'h'\nbamshuf:\
+      \ invalid option -- 'e'\n\nUsage:   bamshuf [-Ou] [-n nFiles] [-c cLevel] <in.bam>\
+      \ <out.prefix>\n\nOptions: -O      output to stdout\n         -u      uncompressed\
+      \ BAM output\n         -l INT  compression level [3]\n         -n INT  number\
+      \ of temporary files [64]\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - htsbox
+    - faidx
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: faidx
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: in.fasta
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: faidx <in.fasta> [<reg> [...]]\n"
+    generated_using: &id004 []
+  - !Command
+    command:
+    - htsbox
+    - bgzip
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: bgzip
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: file
+      optional: true
+    named:
+    - !Flag
+      description: write on standard output, keep original files unchanged
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: decompress
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: overwrite files without asking
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: decompress at virtual file pointer INT
+      synonyms:
+      - -b
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: decompress INT bytes in the uncompressed file
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: give this help
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "bgzip: invalid option -- '-'\n\nUsage:   bgzip [options] [file] ...\n\
+      \nOptions: -c      write on standard output, keep original files unchanged\n\
+      \         -d      decompress\n         -f      overwrite files without asking\n\
+      \         -b INT  decompress at virtual file pointer INT\n         -s INT  decompress\
+      \ INT bytes in the uncompressed file\n         -h      give this help\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - htsbox
+    - abreak
     positional:
     - !Positional
       description: ''
@@ -1156,11 +1175,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: INT
       optional: true
-    command:
-    - htsbox
-    - abreak
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -1182,7 +1199,7 @@ parent: &id001 !Command
       \        [CXV]  tName1  tEnd1  strand1  tName2    tEnd2    strand2  qGapLen\
       \  minMapQ     minSc\n\n"
     generated_using: *id002
-  - *id003
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -1200,6 +1217,7 @@ parent: &id001 !Command
     \       merge overlapping ends and trim adapters\n\n"
   generated_using: *id004
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

@@ -2,10 +2,10 @@ version 1.0
 
 task CheckmSsuFinder {
   input {
-    String? extension
-    String? evalue
-    String? concatenate
-    String? threads
+    Directory? extension
+    Float? evalue
+    Int? concatenate
+    Int? threads
     Boolean? quiet
     String seq_file
     String bin_dir
@@ -20,7 +20,7 @@ task CheckmSsuFinder {
       ~{if defined(evalue) then ("--evalue " +  '"' + evalue + '"') else ""} \
       ~{if defined(concatenate) then ("--concatenate " +  '"' + concatenate + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     extension: "extension of bins (other files in directory are ignored) (default: fna)"
@@ -31,5 +31,8 @@ task CheckmSsuFinder {
     seq_file: "sequences used to generate bins (fasta format)"
     bin_dir: "directory containing bins (fasta format)"
     output_dir: "directory to write output files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

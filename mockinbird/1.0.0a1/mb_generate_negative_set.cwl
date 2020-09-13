@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../mb_generate_negative_set.cwl
 inputs:
-- id: number
+- id: in_number
   doc: set number or random drawings
-  type: string
+  type: long
   inputBinding:
     prefix: --number
-- id: width
+- id: in_width
   doc: set number or nt +/- selected position
-  type: string
+  type: long
   inputBinding:
     prefix: --width
-- id: verbose
+- id: in_verbose
   doc: verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mb-generate-negative-set

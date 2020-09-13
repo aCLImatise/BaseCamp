@@ -4,4 +4,7 @@ task Restclient {
   command <<<
     restclient
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

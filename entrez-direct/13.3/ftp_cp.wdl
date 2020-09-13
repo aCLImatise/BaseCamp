@@ -1,7 +1,10 @@
 version 1.0
 
-task FtpCp {
+task Ftpcp {
   command <<<
-    ftp-cp
+    ftp_cp
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

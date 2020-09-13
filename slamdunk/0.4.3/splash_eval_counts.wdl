@@ -1,20 +1,24 @@
 version 1.0
 
-task SplashEvalCounts {
+task SplashEvalcounts {
   input {
-    String? s
-    String? d
-    String? o
+    String? simulated
+    String? slam_dun
+    File? output_file
   }
   command <<<
-    splash eval-counts \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+    splash eval_counts \
+      ~{if defined(simulated) then ("--simulated " +  '"' + simulated + '"') else ""} \
+      ~{if defined(slam_dun) then ("--slamdun " +  '"' + slam_dun + '"') else ""} \
+      ~{if defined(output_file) then ("--outputFile " +  '"' + output_file + '"') else ""}
   >>>
   parameter_meta {
-    s: ""
-    d: ""
-    o: ""
+    simulated: ""
+    slam_dun: ""
+    output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

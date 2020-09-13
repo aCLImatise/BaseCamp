@@ -1,117 +1,129 @@
 class: CommandLineTool
 id: ../../../amrfinder.cwl
 inputs:
-- id: update
-  doc: ''
+- id: in_update
+  doc: Update the AMRFinder database
   type: boolean
   inputBinding:
     prefix: --update
-- id: protein
-  doc: ''
-  type: string
+- id: in_protein
+  doc: Protein FASTA file to search
+  type: File
   inputBinding:
     prefix: --protein
-- id: nucleotide
-  doc: ''
-  type: string
+- id: in_nucleotide
+  doc: Nucleotide FASTA file to search
+  type: File
   inputBinding:
     prefix: --nucleotide
-- id: gff
-  doc: ''
-  type: string
+- id: in_gff
+  doc: GFF file for protein locations. Protein id should be in the attribute 'Name=<id>'
+    (9th field) of the rows with type 'CDS' or 'gene' (3rd field).
+  type: File
   inputBinding:
     prefix: --gff
-- id: p_gap
-  doc: ''
+- id: in_p_gap
+  doc: Input files PROT_FASTA, NUC_FASTA and GFF_FILE are created by the NCBI PGAP
   type: boolean
   inputBinding:
     prefix: --pgap
-- id: database
-  doc: ''
-  type: string
+- id: in_database
+  doc: 'Alternative directory with AMRFinder database. Default: $AMRFINDER_DB'
+  type: Directory
   inputBinding:
     prefix: --database
-- id: ident_min
-  doc: ''
-  type: long
+- id: in_ident_min
+  doc: "Minimum identity for nucleotide hit (0..1). -1 means use a curated threshold\
+    \ if it exists and 0.9 otherwise\nDefault: -1"
+  type: double
   inputBinding:
     prefix: --ident_min
-- id: coverage_min
-  doc: ''
+- id: in_coverage_min
+  doc: "Minimum coverage of the reference protein (0..1)\nDefault: 0.5"
   type: long
   inputBinding:
     prefix: --coverage_min
-- id: organism
-  doc: ''
+- id: in_organism
+  doc: Taxonomy group. To see all possible taxonomy groups use the --list_organisms
+    flag
   type: string
   inputBinding:
     prefix: --organism
-- id: list_organisms
-  doc: ''
+- id: in_list_organisms
+  doc: Print the list of all possible taxonomy groups for mutations identification
+    and exit
   type: boolean
   inputBinding:
     prefix: --list_organisms
-- id: translation_table
-  doc: ''
-  type: string
+- id: in_translation_table
+  doc: "NCBI genetic code for translated BLAST\nDefault: 11"
+  type: long
   inputBinding:
     prefix: --translation_table
-- id: plus
-  doc: ''
+- id: in_plus
+  doc: Add the plus genes to the report
   type: boolean
   inputBinding:
     prefix: --plus
-- id: report_common
-  doc: ''
+- id: in_report_common
+  doc: Report proteins common to a taxonomy group
   type: boolean
   inputBinding:
     prefix: --report_common
-- id: mutation_all
-  doc: ''
-  type: string
+- id: in_mutation_all
+  doc: File to report all mutations
+  type: File
   inputBinding:
     prefix: --mutation_all
-- id: blast_bin
-  doc: ''
-  type: string
+- id: in_blast_bin
+  doc: 'Directory for BLAST. Deafult: $BLAST_BIN'
+  type: Directory
   inputBinding:
     prefix: --blast_bin
-- id: output
-  doc: ''
-  type: string
+- id: in_output
+  doc: Write output to OUTPUT_FILE instead of STDOUT
+  type: File
   inputBinding:
     prefix: --output
-- id: quiet
-  doc: ''
+- id: in_quiet
+  doc: Suppress messages to STDERR
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: g_pipe_org
-  doc: ''
+- id: in_g_pipe_org
+  doc: NCBI internal GPipe organism names
   type: boolean
   inputBinding:
     prefix: --gpipe_org
-- id: parm
-  doc: ''
+- id: in_parm
+  doc: 'amr_report parameters for testing: -nosame -noblast -skip_hmm_check -bed'
   type: string
   inputBinding:
     prefix: --parm
-- id: threads
-  doc: ''
-  type: string
+- id: in_threads
+  doc: "Max. number of threads\nDefault: 4"
+  type: long
   inputBinding:
     prefix: --threads
-- id: debug
-  doc: ''
+- id: in_debug
+  doc: Integrity checks
   type: boolean
   inputBinding:
     prefix: --debug
-- id: log
-  doc: ''
-  type: string
+- id: in_log
+  doc: "Error log file, appended, opened on application start\n"
+  type: File
   inputBinding:
     prefix: --log
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Write output to OUTPUT_FILE instead of STDOUT
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - amrfinder

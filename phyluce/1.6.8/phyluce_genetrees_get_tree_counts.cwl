@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../phyluce_genetrees_get_tree_counts.cwl
 inputs:
-- id: trees
-  doc: Tree file
-  type: string
-  inputBinding:
-    prefix: --trees
-- id: locus_support_output
-  doc: The output file in which to store trees and their associated loci (config format)
-  type: string
+- id: in_var_0
+  doc: ''
+  type: boolean
   inputBinding:
     prefix: --locus-support-output
-- id: schema
+- id: in_extension
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --extension
+- id: in_trees
+  doc: Tree file
+  type: File
+  inputBinding:
+    prefix: --trees
+- id: in_schema
   doc: The scheme of the input data
   type: string
   inputBinding:
     prefix: --schema
-- id: root
-  doc: The taxon on which to root trees
-  type: string
-  inputBinding:
-    prefix: --root
-- id: extension
-  doc: File extension used with each 'best' tree
-  type: string
-  inputBinding:
-    prefix: --extension
-- id: exclude
-  doc: Loci to exclude
+- id: in_exclude
+  doc: "Loci to exclude\n"
   type: string[]
   inputBinding:
     prefix: --exclude
-outputs: []
+- id: in_var_5
+  doc: '[--schema {nexus,newick,nexml,fasta,phylip}]'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_genetrees_get_tree_counts

@@ -6,9 +6,12 @@ task Mwcontam {
   }
   command <<<
     mwcontam \
-      ~{true="-tolerance" false="" tolerance}
+      ~{if (tolerance) then "-tolerance" else ""}
   >>>
   parameter_meta {
     tolerance: "float      [50.0] Ppm tolerance (Any numeric value)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../checkm_taxon_list.cwl
 inputs:
-- id: rank
+- id: in_rank
   doc: 'restrict list to specified taxonomic rank (default: ALL)'
   type: string
   inputBinding:
     prefix: --rank
-- id: tmpdir
+- id: in_tmpdir
   doc: specify an alternative directory for temporary files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkm

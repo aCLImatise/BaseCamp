@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../pdb.cwl
 inputs:
-- id: config
+- id: in_config
   doc: This file can be a YAML file, JSON file or JSON string
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: output_pdb_path
-  doc: Output file name
-  type: string
+- id: in_output_pdb_path
+  doc: "Output file name\n"
+  type: File
   inputBinding:
     prefix: --output_pdb_path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_pdb_path
+  doc: "Output file name\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_pdb_path)
 cwlVersion: v1.1
 baseCommand:
 - pdb

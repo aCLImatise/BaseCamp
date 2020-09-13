@@ -1,6 +1,6 @@
 version 1.0
 
-task MargeMouse. {
+task MargeMouse {
   input {
     String marge
     String is
@@ -21,7 +21,7 @@ task MargeMouse. {
     String mouse_dot
   }
   command <<<
-    marge mouse. \
+    marge mouse_ \
       ~{marge} \
       ~{is} \
       ~{a} \
@@ -58,5 +58,8 @@ task MargeMouse. {
     human: ""
     or: ""
     mouse_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

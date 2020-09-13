@@ -1,77 +1,85 @@
 class: CommandLineTool
 id: ../../../overlapImport.cwl
 inputs:
-- id: path_valid_sequence
+- id: in_path_valid_sequence
   doc: path to valid sequence store
-  type: string
+  type: File
   inputBinding:
     prefix: -S
-- id: output_file_name
+- id: in_output_file_name
   doc: output file name
   type: File
   inputBinding:
     prefix: -o
-- id: output_overlap_store
+- id: in_output_overlap_store
   doc: output overlap store
   type: string
   inputBinding:
     prefix: -O
-- id: coords
+- id: in_coords
   doc: as coordinates on each read (default)
   type: boolean
   inputBinding:
     prefix: -coords
-- id: hangs
+- id: in_hangs
   doc: as dovetail hangs
   type: boolean
   inputBinding:
     prefix: -hangs
-- id: unaligned
+- id: in_unaligned
   doc: as unaligned regions on each read
   type: boolean
   inputBinding:
     prefix: -unaligned
-- id: paf
+- id: in_paf
   doc: as miniasm Pairwise mApping Format
   type: boolean
   inputBinding:
     prefix: -paf
-- id: raw
+- id: in_raw
   doc: uncorrected raw reads
   type: boolean
   inputBinding:
     prefix: -raw
-- id: obt
+- id: in_obt
   doc: corrected reads
   type: boolean
   inputBinding:
     prefix: -obt
-- id: utg
+- id: in_utg
   doc: trimmed reads
   type: boolean
   inputBinding:
     prefix: -utg
-- id: random
+- id: in_random
   doc: create N random overlaps, for store testing
   type: string
   inputBinding:
     prefix: -random
-- id: a_read_ids_will_y
+- id: in_read_ids_will
   doc: A read IDs will be between x and y
   type: string
   inputBinding:
     prefix: -a
-- id: b_read_ids_will_y
+- id: in_b_read_ids
   doc: B read IDs will be between x and y
   type: string
   inputBinding:
     prefix: -b
-- id: ascii_ovl_file_input_dot
+- id: in_ascii_ovl_file_input_dot
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_name
+  doc: output file name
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_name)
 cwlVersion: v1.1
 baseCommand:
 - overlapImport

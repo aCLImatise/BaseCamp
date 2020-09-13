@@ -2,9 +2,9 @@ version 1.0
 
 task ConcoctRefine {
   input {
-    String? expansion_factor
+    Int? expansion_factor
     String? seed
-    String? threads
+    Int? threads
     String cluster_file
     String original_data
     String scg_file
@@ -21,9 +21,12 @@ task ConcoctRefine {
   parameter_meta {
     expansion_factor: "number of clusters to expand by"
     seed: "The seed used for algorithm result reproducibility."
-    threads: "number of threads to use defaults to one"
+    threads: "number of threads to use defaults to one\\n"
     cluster_file: "string specifying cluster file"
     original_data: "string original but transformed data file"
     scg_file: "string specifying scg frequency file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

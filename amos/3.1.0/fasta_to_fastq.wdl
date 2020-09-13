@@ -11,4 +11,7 @@ task FastaToFastq {
   parameter_meta {
     qv: ": Assign this as the fake quality values (default: '^')"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

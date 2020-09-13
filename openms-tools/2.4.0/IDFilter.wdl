@@ -13,7 +13,7 @@ task IDFilter {
     Boolean? remove_decoys
     Boolean? delete_unreferenced_peptide_hits
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -21,18 +21,18 @@ task IDFilter {
     IDFilter \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{true="-length" false="" length} \
-      ~{true="-charge" false="" charge} \
-      ~{true="-var_mods" false="" var_mods} \
-      ~{true="-unique" false="" unique} \
-      ~{true="-unique_per_protein" false="" unique_per_protein} \
-      ~{true="-keep_unreferenced_protein_hits" false="" keep_unreferenced_protein_hits} \
-      ~{true="-remove_decoys" false="" remove_decoys} \
-      ~{true="-delete_unreferenced_peptide_hits" false="" delete_unreferenced_peptide_hits} \
+      ~{if (length) then "-length" else ""} \
+      ~{if (charge) then "-charge" else ""} \
+      ~{if (var_mods) then "-var_mods" else ""} \
+      ~{if (unique) then "-unique" else ""} \
+      ~{if (unique_per_protein) then "-unique_per_protein" else ""} \
+      ~{if (keep_unreferenced_protein_hits) then "-keep_unreferenced_protein_hits" else ""} \
+      ~{if (remove_decoys) then "-remove_decoys" else ""} \
+      ~{if (delete_unreferenced_peptide_hits) then "-delete_unreferenced_peptide_hits" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                                               Input file  (valid formats: 'idXML')"
@@ -49,5 +49,9 @@ task IDFilter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

@@ -11,9 +11,9 @@ task FidoAdapter {
     Boolean? no_cleanup
     Boolean? all_psms
     Boolean? group_level
-    String? log_two_states
+    Int? log_two_states
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -23,16 +23,16 @@ task FidoAdapter {
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(fido_executable) then ("-fido_executable " +  '"' + fido_executable + '"') else ""} \
       ~{if defined(fido_cp_executable) then ("-fidocp_executable " +  '"' + fido_cp_executable + '"') else ""} \
-      ~{true="-separate_runs" false="" separate_runs} \
-      ~{true="-greedy_group_resolution" false="" greedy_group_resolution} \
-      ~{true="-no_cleanup" false="" no_cleanup} \
-      ~{true="-all_PSMs" false="" all_psms} \
-      ~{true="-group_level" false="" group_level} \
+      ~{if (separate_runs) then "-separate_runs" else ""} \
+      ~{if (greedy_group_resolution) then "-greedy_group_resolution" else ""} \
+      ~{if (no_cleanup) then "-no_cleanup" else ""} \
+      ~{if (all_psms) then "-all_PSMs" else ""} \
+      ~{if (group_level) then "-group_level" else ""} \
       ~{if defined(log_two_states) then ("-log2_states " +  '"' + log_two_states + '"') else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                 Input: identification results (valid formats: 'idXML')"
@@ -49,5 +49,8 @@ task FidoAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

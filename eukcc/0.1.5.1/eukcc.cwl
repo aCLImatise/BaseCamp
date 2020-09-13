@@ -1,146 +1,144 @@
 class: CommandLineTool
 id: ../../../eukcc.cwl
 inputs:
-- id: db
+- id: in_db
   doc: Path to EukCC DB
-  type: string
+  type: File
   inputBinding:
     prefix: --db
-- id: outdir
-  doc: Location for the output. Names will be prefixed using the bin filenames
+- id: in_outdir
+  doc: "Location for the output. Names will be prefixed using\nthe bin filenames"
   type: string
   inputBinding:
     prefix: --outdir
-- id: config
+- id: in_config
   doc: Config file to define parameters, YAML
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: n_cores
+- id: in_n_cores
   doc: set number of cores for GeneMark-ES, pplacer and Hmmer
   type: long
   inputBinding:
     prefix: --ncores
-- id: nco_resp_placer
-  doc: Pplacer requires a lot of memory. If you want you can set less cores for pplacer,
-    which improves memory consumption significantly
+- id: in_nco_resp_placer
+  doc: "Pplacer requires a lot of memory. If you want you can\nset less cores for\
+    \ pplacer, which improves memory\nconsumption significantly"
   type: long
   inputBinding:
     prefix: --ncorespplacer
-- id: hmm
+- id: in_hmm
   doc: run hmmer on all these HMMs instead
   type: string
   inputBinding:
     prefix: --hmm
-- id: training
-  doc: Run EukCC in training mode (needed to create a new release of the DB)
+- id: in_training
+  doc: "Run EukCC in training mode (needed to create a new\nrelease of the DB)"
   type: boolean
   inputBinding:
     prefix: --training
-- id: proteins
+- id: in_proteins
   doc: Input fasta is proteins
   type: boolean
   inputBinding:
     prefix: --proteins
-- id: bed
-  doc: You can pass a bedfile of the protein location to omit fragmented proteins
-    being detected twice
+- id: in_bed
+  doc: "You can pass a bedfile of the protein location to omit\nfragmented proteins\
+    \ being detected twice"
   type: File
   inputBinding:
     prefix: --bed
-- id: force
-  doc: Force rerun of computation even if output is newer than input. Don't resume
-    previous run.
+- id: in_force
+  doc: "Force rerun of computation even if output is newer\nthan input. Don't resume\
+    \ previous run."
   type: boolean
   inputBinding:
     prefix: --force
-- id: keep_temp
-  doc: Keep all temporary files, by default EukCC will remove some temp files
+- id: in_keep_temp
+  doc: "Keep all temporary files, by default EukCC will remove\nsome temp files"
   type: boolean
   inputBinding:
     prefix: --keeptemp
-- id: f_place
+- id: in_f_place
   doc: Force rerun of placement and subsequent steps
   type: boolean
   inputBinding:
     prefix: --fplace
-- id: no_glob
+- id: in_no_glob
   doc: Do not expand paths using glob
   type: boolean
   inputBinding:
     prefix: --noglob
-- id: quiet
+- id: in_quiet
   doc: Silcence most output
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: debug
+- id: in_debug
   doc: Debug and thus ignore safety
   type: boolean
   inputBinding:
     prefix: --debug
-- id: hpa
+- id: in_hpa
   doc: Set placement method to HPA
   type: boolean
   inputBinding:
     prefix: --HPA
-- id: n_placements
-  doc: 'Set number of proteins to support location in tree (default: 2)'
-  type: string
+- id: in_n_placements
+  doc: "Set number of proteins to support location in tree\n(default: 2)"
+  type: long
   inputBinding:
     prefix: --nPlacements
-- id: min_genomes
-  doc: 'Minimal number of genomes to support a set (default: 3)'
-  type: string
+- id: in_min_genomes
+  doc: "Minimal number of genomes to support a set (default:\n3)"
+  type: long
   inputBinding:
     prefix: --minGenomes
-- id: ful_lineage
+- id: in_ful_lineage
   doc: Output full lineage for MAGs
   type: boolean
   inputBinding:
     prefix: --fullineage
-- id: min_placement_likelyhood
+- id: in_min_placement_likelyhood
   doc: 'minimal pplacer likelyhood (default: 0.4)'
   type: double
   inputBinding:
     prefix: --minPlacementLikelyhood
-- id: mind_ist
+- id: in_mind_ist
   doc: 'Distance to collapse hits (default: 2000)'
-  type: string
+  type: long
   inputBinding:
     prefix: --mindist
-- id: touch
+- id: in_touch
   doc: Do not run, but touch all output files
   type: boolean
   inputBinding:
     prefix: --touch
-- id: gmes
+- id: in_gmes
   doc: only run GeneMark-ES
   type: boolean
   inputBinding:
     prefix: --gmes
-- id: pyg_mes
-  doc: Use pygmes, will improve eukccs capability of running on highly fragmented
-    bins but will take longer
+- id: in_pyg_mes
+  doc: "Use pygmes, will improve eukccs capability of running\non highly fragmented\
+    \ bins but will take longer"
   type: boolean
   inputBinding:
     prefix: --pygmes
-- id: diamond
+- id: in_diamond
   doc: required to use pygmes option
   type: string
   inputBinding:
     prefix: --diamond
-- id: plot
+- id: in_plot
   doc: produce plots
   type: boolean
   inputBinding:
     prefix: --plot
-- id: fast_a
-  doc: Run script on this bin (fasta file)
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - eukcc

@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../sga_graph_concordance.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: reference
+- id: in_reference
   doc: load the reference genome from FILE
-  type: string
+  type: File
   inputBinding:
     prefix: --reference
-- id: threads
+- id: in_threads
   doc: 'use NUM threads to compute the overlaps (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: germline
+- id: in_germline
   doc: load germline variants from FILE
   type: File
   inputBinding:
     prefix: --germline
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sga

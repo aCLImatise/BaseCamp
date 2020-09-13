@@ -21,20 +21,20 @@ task Ssu {
   command <<<
     ssu \
       ~{method} \
-      ~{true="-i" false="" input_biom_table} \
-      ~{true="-t" false="" input_phylogeny_newick} \
-      ~{true="-m" false="" the_method_} \
-      ~{true="-o" false="" output_distance_matrix} \
-      ~{true="-n" false="" number_threads_default} \
-      ~{true="-a" false="" generalized_unifrac_alpha} \
-      ~{true="-f" false="" bypass_tips_reduces} \
-      ~{true="--vaw" false="" vaw} \
-      ~{true="--mode" false="" mode} \
-      ~{true="--start" false="" start} \
-      ~{true="--stop" false="" stop} \
-      ~{true="--partial-pattern" false="" partial_pattern} \
-      ~{true="--n-partials" false="" n_partials} \
-      ~{true="--report-bare" false="" report_bare}
+      ~{if (input_biom_table) then "-i" else ""} \
+      ~{if (input_phylogeny_newick) then "-t" else ""} \
+      ~{if (the_method_) then "-m" else ""} \
+      ~{if (output_distance_matrix) then "-o" else ""} \
+      ~{if (number_threads_default) then "-n" else ""} \
+      ~{if (generalized_unifrac_alpha) then "-a" else ""} \
+      ~{if (bypass_tips_reduces) then "-f" else ""} \
+      ~{if (vaw) then "--vaw" else ""} \
+      ~{if (mode) then "--mode" else ""} \
+      ~{if (start) then "--start" else ""} \
+      ~{if (stop) then "--stop" else ""} \
+      ~{if (partial_pattern) then "--partial-pattern" else ""} \
+      ~{if (n_partials) then "--n-partials" else ""} \
+      ~{if (report_bare) then "--report-bare" else ""}
   >>>
   parameter_meta {
     input_biom_table: "The input BIOM table."
@@ -45,12 +45,15 @@ task Ssu {
     generalized_unifrac_alpha: "[OPTIONAL] Generalized UniFrac alpha, default is 1."
     bypass_tips_reduces: "[OPTIONAL] Bypass tips, reduces compute by about 50%."
     vaw: "[OPTIONAL] Variance adjusted, default is to not adjust for variance."
-    mode: "[OPTIONAL] Mode of operation: one-off : [DEFAULT] compute UniFrac. partial : Compute UniFrac over a subset of stripes. partial-report : Start and stop suggestions for partial compute. merge-partial : Merge partial UniFrac results."
+    mode: "[OPTIONAL] Mode of operation:\\none-off : [DEFAULT] compute UniFrac.\\npartial : Compute UniFrac over a subset of stripes.\\npartial-report : Start and stop suggestions for partial compute.\\nmerge-partial : Merge partial UniFrac results."
     start: "[OPTIONAL] If mode==partial, the starting stripe."
     stop: "[OPTIONAL] If mode==partial, the stopping stripe."
     partial_pattern: "[OPTIONAL] If mode==merge-partial, a glob pattern for partial outputs to merge."
     n_partials: "[OPTIONAL] If mode==partial-report, the number of partitions to compute."
     report_bare: "[OPTIONAL] If mode==partial-report, produce barebones output."
     method: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

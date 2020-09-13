@@ -16,9 +16,9 @@ task Minialign {
     Int? gap_extension_penalty
     Int? minimum_alignment_score
     Int? minimum_alignment_score_ratio
-    String? output_format_
+    Int? output_format_
     Boolean? include_quality_string
-    String? read_group_line
+    Int? read_group_line
     String? list_optional_tags
     String first
     String trial
@@ -29,8 +29,8 @@ task Minialign {
       ~{trial} \
       ~{if defined(load_preset_params) then ("-x " +  '"' + load_preset_params + '"') else ""} \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
-      ~{true="-X" false="" switch_alignment_mode} \
-      ~{true="-v" false="" show_version_number} \
+      ~{if (switch_alignment_mode) then "-X" else ""} \
+      ~{if (show_version_number) then "-v" else ""} \
       ~{if defined(kmer_size) then ("-k " +  '"' + kmer_size + '"') else ""} \
       ~{if defined(minimizer_window_size) then ("-w " +  '"' + minimizer_window_size + '"') else ""} \
       ~{if defined(dump_index_file) then ("-d " +  '"' + dump_index_file + '"') else ""} \
@@ -42,7 +42,7 @@ task Minialign {
       ~{if defined(minimum_alignment_score) then ("-s " +  '"' + minimum_alignment_score + '"') else ""} \
       ~{if defined(minimum_alignment_score_ratio) then ("-m " +  '"' + minimum_alignment_score_ratio + '"') else ""} \
       ~{if defined(output_format_) then ("-O " +  '"' + output_format_ + '"') else ""} \
-      ~{true="-Q" false="" include_quality_string} \
+      ~{if (include_quality_string) then "-Q" else ""} \
       ~{if defined(read_group_line) then ("-R " +  '"' + read_group_line + '"') else ""} \
       ~{if defined(list_optional_tags) then ("-T " +  '"' + list_optional_tags + '"') else ""}
   >>>
@@ -63,9 +63,12 @@ task Minialign {
     minimum_alignment_score_ratio: "minimum alignment score ratio [0.30]"
     output_format_: "output format {sam,maf,blast6,blasr1,blasr4,paf,mhap,falcon} [sam]"
     include_quality_string: "include quality string"
-    read_group_line: "read group header line, like \"@RG\tID:1\" []"
-    list_optional_tags: ",...   list of optional tags: {RG,AS,XS,NM,NH,IH,SA,MD} [] RG is also inferred from -R supp. records are omitted when SA tag is enabled"
+    read_group_line: "read group header line, like \\\"@RG\\tID:1\\\" []"
+    list_optional_tags: ",...   list of optional tags: {RG,AS,XS,NM,NH,IH,SA,MD} []\\nRG is also inferred from -R\\nsupp. records are omitted when SA tag is enabled"
     first: ""
     trial: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

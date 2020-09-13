@@ -3,9 +3,8 @@ version 1.0
 task RNAaliduplex {
   input {
     Boolean? detailed_help
-    String? delta_energy
     Boolean? sorted
-    String? temp
+    Int? temp
     Boolean? no_tetra
     Int? dangles
     Boolean? no_lp
@@ -13,41 +12,39 @@ task RNAaliduplex {
     Boolean? no_closing_gu
     Boolean? noconv
     String? nsp
-    String? param_file
-    File file_one_dot_aln
-    File file_two_dot_aln
+    File? param_file
+    String program
   }
   command <<<
     RNAaliduplex \
-      ~{file_one_dot_aln} \
-      ~{file_two_dot_aln} \
-      ~{true="--detailed-help" false="" detailed_help} \
-      ~{if defined(delta_energy) then ("--deltaEnergy " +  '"' + delta_energy + '"') else ""} \
-      ~{true="--sorted" false="" sorted} \
+      ~{program} \
+      ~{if (detailed_help) then "--detailed-help" else ""} \
+      ~{if (sorted) then "--sorted" else ""} \
       ~{if defined(temp) then ("--temp " +  '"' + temp + '"') else ""} \
-      ~{true="--noTetra" false="" no_tetra} \
+      ~{if (no_tetra) then "--noTetra" else ""} \
       ~{if defined(dangles) then ("--dangles " +  '"' + dangles + '"') else ""} \
-      ~{true="--noLP" false="" no_lp} \
-      ~{true="--noGU" false="" no_gu} \
-      ~{true="--noClosingGU" false="" no_closing_gu} \
-      ~{true="--noconv" false="" noconv} \
+      ~{if (no_lp) then "--noLP" else ""} \
+      ~{if (no_gu) then "--noGU" else ""} \
+      ~{if (no_closing_gu) then "--noClosingGU" else ""} \
+      ~{if (noconv) then "--noconv" else ""} \
       ~{if defined(nsp) then ("--nsp " +  '"' + nsp + '"') else ""} \
       ~{if defined(param_file) then ("--paramFile " +  '"' + param_file + '"') else ""}
   >>>
   parameter_meta {
-    detailed_help: "Print help, including all details and hidden  options, and exit"
-    delta_energy: "Compute suboptimal structures with energy in a  certain range of the optimum (kcal/mol). Default  is calculation of mfe structure only."
-    sorted: "print output sorted by free energy (default=off)"
-    temp: "Rescale energy parameters to a temperature of temp  C. Default is 37C."
-    no_tetra: "Do not include special tabulated stabilizing  energies for tri-, tetra- and hexaloop hairpins.  Mostly for testing. (default=off)"
-    dangles: "How to treat \"dangling end\" energies for bases  adjacent to helices in free ends and multi-loops (default=`2')"
-    no_lp: "Produce structures without lonely pairs (helices  of length 1). (default=off)"
-    no_gu: "Do not allow GU pairs (default=off)"
-    no_closing_gu: "Do not allow GU pairs at the end of helices (default=off)"
-    noconv: "Do not automatically substitude nucleotide \"T\"  with \"U\" (default=off)"
-    nsp: "Allow other pairs in addition to the usual  AU,GC,and GU pairs."
-    param_file: "Read energy parameters from paramfile, instead of  using the default parameter set."
-    file_one_dot_aln: ""
-    file_two_dot_aln: ""
+    detailed_help: "Print help, including all details and hidden\\noptions, and exit"
+    sorted: "print output sorted by free energy\\n(default=off)"
+    temp: "Rescale energy parameters to a temperature of temp\\nC. Default is 37C."
+    no_tetra: "Do not include special tabulated stabilizing\\nenergies for tri-, tetra- and hexaloop hairpins.\\nMostly for testing.\\n(default=off)"
+    dangles: "How to treat \\\"dangling end\\\" energies for bases\\nadjacent to helices in free ends and multi-loops\\n(default=`2')"
+    no_lp: "Produce structures without lonely pairs (helices\\nof length 1).\\n(default=off)"
+    no_gu: "Do not allow GU pairs\\n(default=off)"
+    no_closing_gu: "Do not allow GU pairs at the end of helices\\n(default=off)"
+    noconv: "Do not automatically substitude nucleotide \\\"T\\\"\\nwith \\\"U\\\"\\n(default=off)"
+    nsp: "Allow other pairs in addition to the usual\\nAU,GC,and GU pairs."
+    param_file: "Read energy parameters from paramfile, instead of\\nusing the default parameter set."
+    program: "-e, --deltaEnergy=range    Compute suboptimal structures with energy in a \\ncertain range of the optimum (kcal/mol). Default\\nis calculation of mfe structure only."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

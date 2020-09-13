@@ -11,4 +11,7 @@ task TreebestRoot {
   parameter_meta {
     tree: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

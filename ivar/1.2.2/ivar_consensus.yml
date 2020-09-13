@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- ivar
+- consensus
 positional:
 - !Positional
   description: ''
@@ -23,13 +26,13 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Minimum frequency threshold(0 - 1) to call consensus. (Default: 0)
-    Frequently used thresholds | Description ---------------------------|------------
-    0 | Majority or most common base 0.2 | Bases that make up atleast 20% of the depth
-    at a position 0.5 | Strict or bases that make up atleast 50% of the depth at a
-    position 0.9 | Strict or bases that make up atleast 90% of the depth at a position
-    1 | Identical or bases that make up 100% of the depth at a position. Will have
-    highest ambiguities'
+  description: "Minimum frequency threshold(0 - 1) to call consensus. (Default: 0)\n\
+    Frequently used thresholds | Description\n---------------------------|------------\n\
+    0 | Majority or most common base\n0.2 | Bases that make up atleast 20% of the\
+    \ depth at a position\n0.5 | Strict or bases that make up atleast 50% of the depth\
+    \ at a position\n0.9 | Strict or bases that make up atleast 90% of the depth at\
+    \ a position\n1 | Identical or bases that make up 100% of the depth at a position.\
+    \ Will have highest ambiguities"
   synonyms:
   - -t
   args: !EmptyFlagArg {}
@@ -41,9 +44,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "If '-k' flag is added, regions with depth less than minimum depth\
-    \ will not be added to the consensus sequence. Using '-k' will override any option\
-    \ specified using -n "
+  description: If '-k' flag is added, regions with depth less than minimum depth will
+    not be added to the consensus sequence. Using '-k' will override any option specified
+    using -n
   synonyms:
   - -k
   args: !EmptyFlagArg {}
@@ -64,14 +67,9 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -aa
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -A
-  args: !EmptyFlagArg {}
+  - -Q
+  args: !SimpleFlagArg
+    name: '0'
   optional: true
 - !Flag
   description: ''
@@ -83,21 +81,26 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -Q
-  args: !SimpleFlagArg
-    name: '0'
+  - -A
+  args: !EmptyFlagArg {}
   optional: true
-command:
-- ivar
-- consensus
+- !Flag
+  description: ''
+  synonyms:
+  - -aa
+  args: !EmptyFlagArg {}
+  optional: true
 parent: &id001 !Command
-  positional: []
-  named: []
   command:
   - ivar
+  positional: []
+  named: []
   parent:
   subcommands:
   - !Command
+    command:
+    - ivar
+    - trim
     positional: []
     named:
     - !Flag
@@ -146,11 +149,9 @@ parent: &id001 !Command
       - -p
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ivar
-    - trim
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -168,6 +169,119 @@ parent: &id001 !Command
     generated_using: &id002
     - --help
   - !Command
+    command:
+    - ivar
+    - Command
+    positional:
+    - !Positional
+      description: Description
+      position: 0
+      name: Command
+      optional: false
+    - !Positional
+      description: Trim reads in aligned BAM file
+      position: 1
+      name: trim
+      optional: false
+    - !Positional
+      description: Call variants from aligned BAM file
+      position: 2
+      name: variants
+      optional: false
+    - !Positional
+      description: Filter variants across replicates or samples
+      position: 3
+      name: filtervariants
+      optional: false
+    - !Positional
+      description: Call consensus from aligned BAM file
+      position: 4
+      name: consensus
+      optional: false
+    - !Positional
+      description: Detect primer mismatches and get primer indices for the amplicon
+        to be masked
+      position: 5
+      name: getmasked
+      optional: false
+    - !Positional
+      description: Remove reads from trimmed BAM file
+      position: 6
+      name: removereads
+      optional: false
+    - !Positional
+      description: Show version information
+      position: 7
+      name: version
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Unknown command: \"Command\"\n\nUsage:\tivar [command <trim|variants|filtervariants|consensus|getmasked|removereads|version|help>]\n\
+      \n        Command       Description\n           trim       Trim reads in aligned\
+      \ BAM file\n       variants       Call variants from aligned BAM file\n filtervariants\
+      \       Filter variants across replicates or samples\n      consensus      \
+      \ Call consensus from aligned BAM file\n      getmasked       Detect primer\
+      \ mismatches and get primer indices for the amplicon to be masked\n    removereads\
+      \       Remove reads from trimmed BAM file\n        version       Show version\
+      \ information\n\nTo view detailed usage for each command type `ivar <command>`\
+      \ \n"
+    generated_using: *id002
+  - !Command
+    command:
+    - ivar
+    - removereads
+    positional: []
+    named:
+    - !Flag
+      description: (Required) Input BAM file  trimmed with ‘ivar trim’. Must be sorted
+        which can be done using `samtools sort`.
+      synonyms:
+      - -i
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: (Required) Text file with primer indices separated by spaces. This
+        is the output of `getmasked` command.
+      synonyms:
+      - -t
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: (Required) BED file with primer sequences and positions.
+      synonyms:
+      - -b
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: (Required) Prefix for the output filtered BAM file
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: ivar removereads -i <input.trimmed.bam> -p <prefix> -t <text-file-with-primer-indices>\
+      \ -b <primers.bed> \nNote: This step is used only for amplicon-based sequencing.\n\
+      \nInput Options    Description\n           -i    (Required) Input BAM file \
+      \ trimmed with ‘ivar trim’. Must be sorted which can be done using `samtools\
+      \ sort`.\n           -t    (Required) Text file with primer indices separated\
+      \ by spaces. This is the output of `getmasked` command.\n           -b    (Required)\
+      \ BED file with primer sequences and positions.\n\nOutput Options   Description\n\
+      \           -p    (Required) Prefix for the output filtered BAM file\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - ivar
+    - variants
     positional:
     - !Positional
       description: ''
@@ -223,26 +337,7 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - -aa
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -A
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -d
-      args: !SimpleFlagArg
-        name: '0'
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -B
+      - --reference
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
@@ -255,14 +350,31 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - --reference
+      - -B
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ivar
-    - variants
+    - !Flag
+      description: ''
+      synonyms:
+      - -d
+      args: !SimpleFlagArg
+        name: '0'
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -A
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -aa
+      args: !EmptyFlagArg {}
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -281,6 +393,9 @@ parent: &id001 !Command
       \ Prefix for the output tsv variant file\n\n"
     generated_using: *id002
   - !Command
+    command:
+    - ivar
+    - filtervariants
     positional: []
     named:
     - !Flag
@@ -302,11 +417,9 @@ parent: &id001 !Command
       - -p
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ivar
-    - filtervariants
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -320,6 +433,9 @@ parent: &id001 !Command
     generated_using: *id002
   - *id003
   - !Command
+    command:
+    - ivar
+    - getmasked
     positional: []
     named:
     - !Flag
@@ -347,11 +463,9 @@ parent: &id001 !Command
       - -p
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - ivar
-    - getmasked
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -364,52 +478,7 @@ parent: &id001 !Command
       \ names for the same amplicon separated by a tab\nOutput Options   Description\n\
       \           -p    (Required) Prefix for the output text file\n"
     generated_using: *id002
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: (Required) Input BAM file  trimmed with ‘ivar trim’. Must be sorted
-        which can be done using `samtools sort`.
-      synonyms:
-      - -i
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: (Required) Text file with primer indices separated by spaces. This
-        is the output of `getmasked` command.
-      synonyms:
-      - -t
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: (Required) BED file with primer sequences and positions.
-      synonyms:
-      - -b
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: (Required) Prefix for the output filtered BAM file
-      synonyms:
-      - -p
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - ivar
-    - removereads
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Usage: ivar removereads -i <input.trimmed.bam> -p <prefix> -t <text-file-with-primer-indices>\
-      \ -b <primers.bed> \nNote: This step is used only for amplicon-based sequencing.\n\
-      \nInput Options    Description\n           -i    (Required) Input BAM file \
-      \ trimmed with ‘ivar trim’. Must be sorted which can be done using `samtools\
-      \ sort`.\n           -t    (Required) Text file with primer indices separated\
-      \ by spaces. This is the output of `getmasked` command.\n           -b    (Required)\
-      \ BED file with primer sequences and positions.\n\nOutput Options   Description\n\
-      \           -p    (Required) Prefix for the output filtered BAM file\n"
-    generated_using: *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -423,6 +492,7 @@ parent: &id001 !Command
     \nTo view detailed usage for each command type `ivar <command>` \n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

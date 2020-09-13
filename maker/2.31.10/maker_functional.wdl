@@ -4,4 +4,7 @@ task MakerFunctional {
   command <<<
     maker_functional
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

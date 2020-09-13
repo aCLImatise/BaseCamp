@@ -12,7 +12,7 @@ task Fmlrc {
     Float? dynamic_minimum_fraction
     Int? set_branch_limit
     Boolean? build_sampled_fmindex
-    Int? fmindex_sampled_int
+    Int? fmindex_sampled_requires
     Boolean? verbose_output
     String comp_msbwtdotnpy
     String long_reads_dot_fa
@@ -23,7 +23,7 @@ task Fmlrc {
       ~{comp_msbwtdotnpy} \
       ~{long_reads_dot_fa} \
       ~{corrected_reads_dot_fa} \
-      ~{true="-v" false="" print_version_number} \
+      ~{if (print_version_number) then "-v" else ""} \
       ~{if defined(small_kmer_size) then ("-k " +  '"' + small_kmer_size + '"') else ""} \
       ~{if defined(large_kmer_size) then ("-K " +  '"' + large_kmer_size + '"') else ""} \
       ~{if defined(number_correction_threads) then ("-p " +  '"' + number_correction_threads + '"') else ""} \
@@ -32,9 +32,9 @@ task Fmlrc {
       ~{if defined(absolute_minimum_count) then ("-m " +  '"' + absolute_minimum_count + '"') else ""} \
       ~{if defined(dynamic_minimum_fraction) then ("-f " +  '"' + dynamic_minimum_fraction + '"') else ""} \
       ~{if defined(set_branch_limit) then ("-B " +  '"' + set_branch_limit + '"') else ""} \
-      ~{true="-i" false="" build_sampled_fmindex} \
-      ~{if defined(fmindex_sampled_int) then ("-F " +  '"' + fmindex_sampled_int + '"') else ""} \
-      ~{true="-V" false="" verbose_output}
+      ~{if (build_sampled_fmindex) then "-i" else ""} \
+      ~{if defined(fmindex_sampled_requires) then ("-F " +  '"' + fmindex_sampled_requires + '"') else ""} \
+      ~{if (verbose_output) then "-V" else ""}
   >>>
   parameter_meta {
     print_version_number: "print version number and exit"
@@ -47,10 +47,13 @@ task Fmlrc {
     dynamic_minimum_fraction: "dynamic minimum fraction of median to consider a path (default: .10)"
     set_branch_limit: "set branch limit to <INT>*<k or K> (default: 4)"
     build_sampled_fmindex: "build a sampled FM-index instead of bit arrays"
-    fmindex_sampled_int: "FM-index is sampled every 2**<INT> values (default: 8); requires -i"
+    fmindex_sampled_requires: "FM-index is sampled every 2**<INT> values (default: 8); requires -i"
     verbose_output: "verbose output"
     comp_msbwtdotnpy: ""
     long_reads_dot_fa: ""
     corrected_reads_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

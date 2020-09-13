@@ -1,11 +1,12 @@
 version 1.0
 
-task JannovarHgvsToVcf {
+task JannovarHgvstovcf {
   input {
-    String? reference_fast_a
-    String? database
-    String? input_txt
-    String? output_vcf
+    String? i
+    File? reference_fast_a
+    File? database
+    File? input_txt
+    File? output_vcf
     String? show_all
     Boolean? no_three_prime_shifting
     Boolean? three_letter_amino_acids
@@ -19,27 +20,29 @@ task JannovarHgvsToVcf {
     String hgvs_to_vcf
   }
   command <<<
-    jannovar hgvs-to-vcf \
+    jannovar hgvs_to_vcf \
       ~{jan_novar_cli} \
       ~{hgvs_to_vcf} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(reference_fast_a) then ("--reference-fasta " +  '"' + reference_fast_a + '"') else ""} \
       ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
       ~{if defined(input_txt) then ("--input-txt " +  '"' + input_txt + '"') else ""} \
       ~{if defined(output_vcf) then ("--output-vcf " +  '"' + output_vcf + '"') else ""} \
       ~{if defined(show_all) then ("--show-all " +  '"' + show_all + '"') else ""} \
-      ~{true="--no-3-prime-shifting" false="" no_three_prime_shifting} \
-      ~{true="--3-letter-amino-acids" false="" three_letter_amino_acids} \
-      ~{true="--report-no-progress" false="" report_no_progress} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--very-verbose" false="" very_verbose} \
+      ~{if (no_three_prime_shifting) then "--no-3-prime-shifting" else ""} \
+      ~{if (three_letter_amino_acids) then "--3-letter-amino-acids" else ""} \
+      ~{if (report_no_progress) then "--report-no-progress" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (very_verbose) then "--very-verbose" else ""} \
       ~{if defined(http_proxy) then ("--http-proxy " +  '"' + http_proxy + '"') else ""} \
       ~{if defined(https_proxy) then ("--https-proxy " +  '"' + https_proxy + '"') else ""} \
       ~{if defined(ftp_proxy) then ("--ftp-proxy " +  '"' + ftp_proxy + '"') else ""}
   >>>
   parameter_meta {
+    i: "[--show-all SHOW_ALL]"
     reference_fast_a: "Path to reference FASTA file"
     database: "Path to database .ser file"
-    input_txt: "Input file with HGVS transcript-level changes, line-by-line"
+    input_txt: "Input file  with  HGVS  transcript-level  changes,\\nline-by-line"
     output_vcf: "Output VCF file with chromosome-level changes"
     show_all: "Show all effects"
     no_three_prime_shifting: "Disable shifting towards 3' of transcript"
@@ -52,5 +55,9 @@ task JannovarHgvsToVcf {
     ftp_proxy: "Set FTP proxy to use, if any"
     jan_novar_cli: ""
     hgvs_to_vcf: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_vcf = "${in_output_vcf}"
   }
 }

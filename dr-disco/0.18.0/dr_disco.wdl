@@ -1,7 +1,10 @@
 version 1.0
 
-task DrDisco {
+task Drdisco {
   command <<<
-    dr-disco
+    dr_disco
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

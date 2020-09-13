@@ -4,4 +4,7 @@ task Toil {
   command <<<
     toil
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

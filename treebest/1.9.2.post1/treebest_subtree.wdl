@@ -14,4 +14,7 @@ task TreebestSubtree {
     tree: ""
     list: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

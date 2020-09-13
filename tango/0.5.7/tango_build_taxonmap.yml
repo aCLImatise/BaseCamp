@@ -1,4 +1,8 @@
-&id006 !Command
+&id004 !Command
+command:
+- tango
+- build
+- taxonmap
 positional:
 - !Positional
   description: ''
@@ -29,27 +33,26 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -d
-  args: !SimpleFlagArg
-    name: DBFILE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
   - -p
   args: !SimpleFlagArg
     name: CPUS
   optional: true
-command:
-- tango
-- build
-- taxonmap
-parent: &id005 !Command
+- !Flag
+  description: ''
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: DBFILE
+  optional: true
+parent: &id003 !Command
+  command:
+  - tango
+  - build
   positional: []
   named:
   - !Flag
-    description: Name of diamond database file. Defaults to diamond.dmnd in same directory
-      as the protein fasta file
+    description: "Name of diamond database file. Defaults to\ndiamond.dmnd in same\
+      \ directory as the protein fasta\nfile"
     synonyms:
     - -d
     - --dbfile
@@ -64,10 +67,9 @@ parent: &id005 !Command
     args: !SimpleFlagArg
       name: CPUS
     optional: true
-  command:
-  - tango
-  - build
   parent: &id001 !Command
+    command:
+    - tango
     positional: []
     named:
     - !Flag
@@ -76,298 +78,12 @@ parent: &id005 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - tango
     parent:
     subcommands:
     - !Command
-      positional: []
-      named:
-      - !Flag
-        description: Write files to this directory. Defaults to db name in current
-          directory. Will be created if missing.
-        synonyms:
-        - -d
-        - --dldir
-        args: !SimpleFlagArg
-          name: DLDIR
-        optional: true
-      - !Flag
-        description: Temporary directory for downloading files
-        synonyms:
-        - --tmpdir
-        args: !SimpleFlagArg
-          name: TMPDIR
-        optional: true
-      - !Flag
-        description: Directory to store NCBI taxdump files. Defaults to 'taxonomy/'
-          in current directory
-        synonyms:
-        - -t
-        - --taxdir
-        args: !SimpleFlagArg
-          name: TAXDIR
-        optional: true
-      - !Flag
-        description: Name of ete3 sqlite file to be created within --taxdir. Defaults
-          to 'taxonomy.sqlite'
-        synonyms:
-        - --sqlitedb
-        args: !SimpleFlagArg
-          name: SQLITEDB
-        optional: true
-      - !Flag
-        description: Overwrite downloaded files
-        synonyms:
-        - -f
-        - --force
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: 'Skip check of downloaded fasta file. Default: False'
-        synonyms:
-        - --skip_check
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Skip download of seqid->taxid mapfile (only applies to 'nr' database.
-        synonyms:
-        - --skip_idmap
-        args: !EmptyFlagArg {}
-        optional: true
       command:
       - tango
-      - download
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: tango download [-h] [-d DLDIR] [--tmpdir TMPDIR] [-t TAXDIR]\n\
-        \                      [--sqlitedb SQLITEDB] [-f] [--skip_check] [--skip_idmap]\n\
-        \                      {uniref100,uniref90,uniref50,nr,taxonomy,idmap}\n\n\
-        positional arguments:\n  {uniref100,uniref90,uniref50,nr,taxonomy,idmap}\n\
-        \                        Database to download. Defaults to 'uniref100'\n\n\
-        optional arguments:\n  -h, --help            show this help message and exit\n\
-        \  -d DLDIR, --dldir DLDIR\n                        Write files to this directory.\
-        \ Defaults to db name in\n                        current directory. Will\
-        \ be created if missing.\n  --tmpdir TMPDIR       Temporary directory for\
-        \ downloading files\n  -t TAXDIR, --taxdir TAXDIR\n                      \
-        \  Directory to store NCBI taxdump files. Defaults to\n                  \
-        \      'taxonomy/' in current directory\n  --sqlitedb SQLITEDB   Name of ete3\
-        \ sqlite file to be created within\n                        --taxdir. Defaults\
-        \ to 'taxonomy.sqlite'\n  -f, --force           Overwrite downloaded files\n\
-        \  --skip_check          Skip check of downloaded fasta file. Default: False\n\
-        \  --skip_idmap          Skip download of seqid->taxid mapfile (only applies\
-        \ to\n                        'nr' database.\n"
-      generated_using: &id002
-      - --help
-    - !Command
-      positional:
-      - !Positional
-        description: Specify protein fasta to reformat
-        position: 0
-        name: fastafile
-        optional: false
-      - !Positional
-        description: Path to reformatted fastafile
-        position: 1
-        name: reformatted
-        optional: false
-      named:
-      - !Flag
-        description: Force overwrite of existing reformatted fastafile
-        synonyms:
-        - -f
-        - --force
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Force overwrite of existing accession2taxid mapfile
-        synonyms:
-        - --forceidmap
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Protein accession to taxid mapfile. For UniRef this file is created
-          from information in the fasta headers and stored in a file named prot.accession2taxid.gz
-          in the same directory as the reformatted fasta file. Specify another path
-          here.
-        synonyms:
-        - -m
-        - --taxidmap
-        args: !SimpleFlagArg
-          name: TAXIDMAP
-        optional: true
-      - !Flag
-        description: Maximum allowed length of sequence ids. Defaults to 14 (required
-          by diamond for adding taxonomy info to database). Ids longer than this are
-          written to a file with the original id
-        synonyms:
-        - --maxidlen
-        args: !SimpleFlagArg
-          name: MAXIDLEN
-        optional: true
-      - !Flag
-        description: Temporary directory for writing fasta files
-        synonyms:
-        - --tmpdir
-        args: !SimpleFlagArg
-          name: TMPDIR
-        optional: true
-      command:
-      - tango
-      - format
-      parent: *id001
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: tango format [-h] [-f] [--forceidmap] [-m TAXIDMAP]\n   \
-        \                 [--maxidlen MAXIDLEN] [--tmpdir TMPDIR]\n              \
-        \      fastafile reformatted\n\npositional arguments:\n  fastafile       \
-        \      Specify protein fasta to reformat\n  reformatted           Path to\
-        \ reformatted fastafile\n\noptional arguments:\n  -h, --help            show\
-        \ this help message and exit\n  -f, --force           Force overwrite of existing\
-        \ reformatted fastafile\n  --forceidmap          Force overwrite of existing\
-        \ accession2taxid mapfile\n  -m TAXIDMAP, --taxidmap TAXIDMAP\n          \
-        \              Protein accession to taxid mapfile. For UniRef this\n     \
-        \                   file is created from information in the fasta headers\n\
-        \                        and stored in a file named prot.accession2taxid.gz\
-        \ in\n                        the same directory as the reformatted fasta\
-        \ file.\n                        Specify another path here.\n  --maxidlen\
-        \ MAXIDLEN   Maximum allowed length of sequence ids. Defaults to 14\n    \
-        \                    (required by diamond for adding taxonomy info to\n  \
-        \                      database). Ids longer than this are written to a file\n\
-        \                        with the original id\n  --tmpdir TMPDIR       Temporary\
-        \ directory for writing fasta files\n"
-      generated_using: *id002
-    - &id003 !Command
-      positional: []
-      named: []
-      command:
-      - tango
-      - update
-      parent: *id001
-      subcommands:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: tango
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: update
-          optional: false
-        - !Positional
-          description: ''
-          position: 2
-          name: taxonmap
-          optional: false
-        - !Positional
-          description: ''
-          position: 3
-          name: idfile
-          optional: false
-        - !Positional
-          description: ''
-          position: 4
-          name: newfile
-          optional: false
-        named: []
-        command:
-        - tango
-        - update
-        - idfile
-        parent: *id003
-        subcommands: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: tango update [-h] taxonmap idfile newfile\ntango update:\
-          \ error: the following arguments are required: idfile, newfile\n"
-        generated_using: &id004 []
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: tango
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: update
-          optional: false
-        - !Positional
-          description: ''
-          position: 2
-          name: taxonmap
-          optional: false
-        - !Positional
-          description: ''
-          position: 3
-          name: idfile
-          optional: false
-        - !Positional
-          description: ''
-          position: 4
-          name: newfile
-          optional: false
-        named: []
-        command:
-        - tango
-        - update
-        - newfile
-        parent: *id003
-        subcommands: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: tango update [-h] taxonmap idfile newfile\ntango update:\
-          \ error: the following arguments are required: idfile, newfile\n"
-        generated_using: *id004
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: tango update [-h] taxonmap idfile newfile\n\npositional arguments:\n\
-        \  taxonmap    Existing prot.accession2taxid.gz file\n  idfile      File mapping\
-        \ long sequence ids to new ids\n  newfile     Updated mapfile\n\noptional\
-        \ arguments:\n  -h, --help  show this help message and exit\n"
-      generated_using: *id002
-    - *id005
-    - !Command
+      - search
       positional:
       - !Positional
         description: Query contig nucleotide file
@@ -386,15 +102,15 @@ parent: &id005 !Command
         optional: false
       named:
       - !Flag
-        description: "Choice of search mode for diamond: 'blastx' (default) for DNA\
-          \ query sequences or 'blastp' for amino acid query sequences"
+        description: "Choice of search mode for diamond: 'blastx' (default)\nfor DNA\
+          \ query sequences or 'blastp' for amino acid\nquery sequences"
         synonyms:
         - -m
         - --mode
         args: !ChoiceFlagArg
           choices: !!set
-            ? blastp
             ? blastx
+            ? blastp
         optional: true
       - !Flag
         description: Number of cpus to use for diamond
@@ -405,8 +121,8 @@ parent: &id005 !Command
           name: CPUS
         optional: true
       - !Flag
-        description: Sequence block size in billions of letters (default=2.0). Set
-          to 20 on clusters
+        description: "Sequence block size in billions of letters\n(default=2.0). Set\
+          \ to 20 on clusters"
         synonyms:
         - -b
         - --blocksize
@@ -422,8 +138,8 @@ parent: &id005 !Command
           name: CHUNKS
         optional: true
       - !Flag
-        description: Report alignments within this percentage range of top bitscore
-          (default=10)
+        description: "Report alignments within this percentage range of top\nbitscore\
+          \ (default=10)"
         synonyms:
         - -T
         - --top
@@ -439,8 +155,8 @@ parent: &id005 !Command
           name: EVALUE
         optional: true
       - !Flag
-        description: Minimum length of queries. Shorter queries will be filtered prior
-          to search.
+        description: "Minimum length of queries. Shorter queries will be\nfiltered\
+          \ prior to search."
         synonyms:
         - -l
         - --minlen
@@ -448,18 +164,16 @@ parent: &id005 !Command
           name: MINLEN
         optional: true
       - !Flag
-        description: directory for temporary files
+        description: "directory for temporary files\n"
         synonyms:
         - -t
         - --tmpdir
         args: !SimpleFlagArg
           name: TMPDIR
         optional: true
-      command:
-      - tango
-      - search
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -489,8 +203,178 @@ parent: &id005 !Command
         \ length of queries. Shorter queries will be\n                        filtered\
         \ prior to search.\n  -t TMPDIR, --tmpdir TMPDIR\n                       \
         \ directory for temporary files\n"
+      generated_using: &id002
+      - --help
+    - !Command
+      command:
+      - tango
+      - format
+      positional:
+      - !Positional
+        description: Specify protein fasta to reformat
+        position: 0
+        name: fastafile
+        optional: false
+      - !Positional
+        description: Path to reformatted fastafile
+        position: 1
+        name: reformatted
+        optional: false
+      named:
+      - !Flag
+        description: Force overwrite of existing reformatted fastafile
+        synonyms:
+        - -f
+        - --force
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Force overwrite of existing accession2taxid mapfile
+        synonyms:
+        - --forceidmap
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Protein accession to taxid mapfile. For UniRef this\nfile is\
+          \ created from information in the fasta headers\nand stored in a file named\
+          \ prot.accession2taxid.gz in\nthe same directory as the reformatted fasta\
+          \ file.\nSpecify another path here."
+        synonyms:
+        - -m
+        - --taxidmap
+        args: !SimpleFlagArg
+          name: TAXIDMAP
+        optional: true
+      - !Flag
+        description: "Maximum allowed length of sequence ids. Defaults to 14\n(required\
+          \ by diamond for adding taxonomy info to\ndatabase). Ids longer than this\
+          \ are written to a file\nwith the original id"
+        synonyms:
+        - --maxidlen
+        args: !SimpleFlagArg
+          name: MAXIDLEN
+        optional: true
+      - !Flag
+        description: Temporary directory for writing fasta files
+        synonyms:
+        - --tmpdir
+        args: !SimpleFlagArg
+          name: TMPDIR
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: tango format [-h] [-f] [--forceidmap] [-m TAXIDMAP]\n   \
+        \                 [--maxidlen MAXIDLEN] [--tmpdir TMPDIR]\n              \
+        \      fastafile reformatted\n\npositional arguments:\n  fastafile       \
+        \      Specify protein fasta to reformat\n  reformatted           Path to\
+        \ reformatted fastafile\n\noptional arguments:\n  -h, --help            show\
+        \ this help message and exit\n  -f, --force           Force overwrite of existing\
+        \ reformatted fastafile\n  --forceidmap          Force overwrite of existing\
+        \ accession2taxid mapfile\n  -m TAXIDMAP, --taxidmap TAXIDMAP\n          \
+        \              Protein accession to taxid mapfile. For UniRef this\n     \
+        \                   file is created from information in the fasta headers\n\
+        \                        and stored in a file named prot.accession2taxid.gz\
+        \ in\n                        the same directory as the reformatted fasta\
+        \ file.\n                        Specify another path here.\n  --maxidlen\
+        \ MAXIDLEN   Maximum allowed length of sequence ids. Defaults to 14\n    \
+        \                    (required by diamond for adding taxonomy info to\n  \
+        \                      database). Ids longer than this are written to a file\n\
+        \                        with the original id\n  --tmpdir TMPDIR       Temporary\
+        \ directory for writing fasta files\n"
       generated_using: *id002
     - !Command
+      command:
+      - tango
+      - transfer
+      positional:
+      - !Positional
+        description: Taxonomy assigned to ORFs (ORF ids in first column)
+        position: 0
+        name: orf_taxonomy
+        optional: false
+      - !Positional
+        description: "GFF or file with contig id in first column and ORF id\nin second\
+          \ column"
+        position: 1
+        name: gff
+        optional: false
+      - !Positional
+        description: Output file with assigned taxonomy for contigs
+        position: 2
+        name: contig_taxonomy
+        optional: false
+      - !Positional
+        description: -c CHUNKSIZE, --chunksize CHUNKSIZE
+        position: 0
+        name: contigs
+        optional: false
+      named:
+      - !Flag
+        description: Ignore ORFs unclassified at <rank>
+        synonyms:
+        - --ignore_unc_rank
+        args: !SimpleFlagArg
+          name: IGNORE_UNC_RANK
+        optional: true
+      - !Flag
+        description: Also transfer taxonomy back to ORFs and output to file
+        synonyms:
+        - --orf_tax_out
+        args: !SimpleFlagArg
+          name: ORF_TAX_OUT
+        optional: true
+      - !Flag
+        description: Number of cpus to use when transferring taxonomy to
+        synonyms:
+        - -p
+        - --cpus
+        args: !SimpleFlagArg
+          name: CPUS
+        optional: true
+      parent: *id001
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: tango transfer [-h] [--ignore_unc_rank IGNORE_UNC_RANK]\n\
+        \                      [--orf_tax_out ORF_TAX_OUT] [-p CPUS] [-c CHUNKSIZE]\n\
+        \                      orf_taxonomy gff contig_taxonomy\n\npositional arguments:\n\
+        \  orf_taxonomy          Taxonomy assigned to ORFs (ORF ids in first column)\n\
+        \  gff                   GFF or file with contig id in first column and ORF\
+        \ id\n                        in second column\n  contig_taxonomy       Output\
+        \ file with assigned taxonomy for contigs\n\noptional arguments:\n  -h, --help\
+        \            show this help message and exit\n  --ignore_unc_rank IGNORE_UNC_RANK\n\
+        \                        Ignore ORFs unclassified at <rank>\n  --orf_tax_out\
+        \ ORF_TAX_OUT\n                        Also transfer taxonomy back to ORFs\
+        \ and output to file\n  -p CPUS, --cpus CPUS  Number of cpus to use when transferring\
+        \ taxonomy to\n                        contigs\n  -c CHUNKSIZE, --chunksize\
+        \ CHUNKSIZE\n                        Size of chunks sent to process pool.\
+        \ For large input\n                        files using a large chunksize can\
+        \ make the job\n                        complete much faster than using the\
+        \ default value of\n                        1.\n"
+      generated_using: *id002
+    - *id003
+    - !Command
+      command:
+      - tango
+      - assign
       positional:
       - !Positional
         description: Diamond blastx results
@@ -504,14 +388,14 @@ parent: &id005 !Command
         optional: false
       named:
       - !Flag
-        description: Type of file format for diamond results. blast=blast tabular
-          output, 'tango'=blast tabular output with taxid in 12th column
+        description: "Type of file format for diamond results. blast=blast\ntabular\
+          \ output, 'tango'=blast tabular output with\ntaxid in 12th column"
         synonyms:
         - --format
         args: !ChoiceFlagArg
           choices: !!set
-            ? tango
             ? blast
+            ? tango
         optional: true
       - !Flag
         description: Provide custom protein to taxid mapfile.
@@ -521,8 +405,8 @@ parent: &id005 !Command
           name: TAXIDMAP
         optional: true
       - !Flag
-        description: Directory specified during 'tango download taxonomy'. Defaults
-          to taxonomy/.
+        description: "Directory specified during 'tango download taxonomy'.\nDefaults\
+          \ to taxonomy/."
         synonyms:
         - -t
         - --taxdir
@@ -530,12 +414,18 @@ parent: &id005 !Command
           name: TAXDIR
         optional: true
       - !Flag
-        description: Name of ete3 sqlite file to be created within --taxdir. Defaults
-          to 'taxonomy.sqlite'
+        description: Name of ete3 sqlite file to be created within
         synonyms:
         - --sqlitedb
         args: !SimpleFlagArg
           name: SQLITEDB
+        optional: true
+      - !Flag
+        description: to 'taxonomy.sqlite'
+        synonyms:
+        - --taxdir.
+        args: !SimpleFlagArg
+          name: Defaults
         optional: true
       - !Flag
         description: Output hits.tsv table compatible with blobtools
@@ -545,56 +435,58 @@ parent: &id005 !Command
           name: BLOBOUT
         optional: true
       - !Flag
-        description: Write output with taxonomy ids instead of taxonomy names to file
+        description: "Write output with taxonomy ids instead of taxonomy\nnames to\
+          \ file"
         synonyms:
         - --taxidout
         args: !SimpleFlagArg
           name: TAXIDOUT
         optional: true
       - !Flag
-        description: "Mode to use for parsing taxonomy: 'rank_lca' (default), 'rank_vote'\
+        description: "Mode to use for parsing taxonomy: 'rank_lca'\n(default), 'rank_vote'\
           \ or 'score'"
         synonyms:
         - -m
         - --mode
         args: !ChoiceFlagArg
           choices: !!set
+            ? rank_lca
             ? score
             ? rank_vote
-            ? rank_lca
         optional: true
       - !Flag
-        description: Ranks to use when assigning taxa. Defaults to phylum genus species
+        description: "Ranks to use when assigning taxa. Defaults to phylum\ngenus\
+          \ species"
         synonyms:
         - --assignranks
         args: !RepeatFlagArg
           name: ASSIGNRANKS
         optional: true
       - !Flag
-        description: Ranks to report in output. Defaults to superkingom phylum class
-          orderfamily genus species
+        description: "Ranks to report in output. Defaults to superkingom\nphylum class\
+          \ orderfamily genus species"
         synonyms:
         - --reportranks
         args: !RepeatFlagArg
           name: REPORTRANKS
         optional: true
       - !Flag
-        description: Rank-specific thresholds corresponding to percent identity of
-          a hit.Defaults to 45 (phylum), 60 (genus) and 85 (species)
+        description: "Rank-specific thresholds corresponding to percent\nidentity\
+          \ of a hit.Defaults to 45 (phylum), 60 (genus)\nand 85 (species)"
         synonyms:
         - --rank_thresholds
         args: !RepeatFlagArg
           name: RANK_THRESHOLDS
         optional: true
       - !Flag
-        description: Minimum fraction required when voting on rank assignments.
+        description: "Minimum fraction required when voting on rank\nassignments."
         synonyms:
         - --vote_threshold
         args: !SimpleFlagArg
           name: VOTE_THRESHOLD
         optional: true
       - !Flag
-        description: Top percent of best score to consider hits for (default=5)
+        description: "Top percent of best score to consider hits for\n(default=5)"
         synonyms:
         - -T
         - --top
@@ -618,20 +510,18 @@ parent: &id005 !Command
           name: CPUS
         optional: true
       - !Flag
-        description: Size of chunks sent to process pool. For large input files using
-          a large chunksize can make the job complete much faster than using the default
-          value of 1.
+        description: "Size of chunks sent to process pool. For large input\nfiles\
+          \ using a large chunksize can make the job\ncomplete much faster than using\
+          \ the default value of\n1.\n"
         synonyms:
         - -c
         - --chunksize
         args: !SimpleFlagArg
           name: CHUNKSIZE
         optional: true
-      command:
-      - tango
-      - assign
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -685,61 +575,73 @@ parent: &id005 !Command
         \ the default value of\n                        1.\n"
       generated_using: *id002
     - !Command
-      positional:
-      - !Positional
-        description: Taxonomy assigned to ORFs (ORF ids in first column)
-        position: 0
-        name: orf_taxonomy
-        optional: false
-      - !Positional
-        description: GFF or file with contig id in first column and ORF id in second
-          column
-        position: 1
-        name: gff
-        optional: false
-      - !Positional
-        description: Output file with assigned taxonomy for contigs
-        position: 2
-        name: contig_taxonomy
-        optional: false
-      named:
-      - !Flag
-        description: Ignore ORFs unclassified at <rank>
-        synonyms:
-        - --ignore_unc_rank
-        args: !SimpleFlagArg
-          name: IGNORE_UNC_RANK
-        optional: true
-      - !Flag
-        description: Also transfer taxonomy back to ORFs and output to file
-        synonyms:
-        - --orf_tax_out
-        args: !SimpleFlagArg
-          name: ORF_TAX_OUT
-        optional: true
-      - !Flag
-        description: Number of cpus to use when transferring taxonomy to contigs
-        synonyms:
-        - -p
-        - --cpus
-        args: !SimpleFlagArg
-          name: CPUS
-        optional: true
-      - !Flag
-        description: Size of chunks sent to process pool. For large input files using
-          a large chunksize can make the job complete much faster than using the default
-          value of 1.
-        synonyms:
-        - -c
-        - --chunksize
-        args: !SimpleFlagArg
-          name: CHUNKSIZE
-        optional: true
       command:
       - tango
-      - transfer
+      - download
+      positional: []
+      named:
+      - !Flag
+        description: "Write files to this directory. Defaults to db name in\ncurrent\
+          \ directory. Will be created if missing."
+        synonyms:
+        - -d
+        - --dldir
+        args: !SimpleFlagArg
+          name: DLDIR
+        optional: true
+      - !Flag
+        description: Temporary directory for downloading files
+        synonyms:
+        - --tmpdir
+        args: !SimpleFlagArg
+          name: TMPDIR
+        optional: true
+      - !Flag
+        description: "Directory to store NCBI taxdump files. Defaults to\n'taxonomy/'\
+          \ in current directory"
+        synonyms:
+        - -t
+        - --taxdir
+        args: !SimpleFlagArg
+          name: TAXDIR
+        optional: true
+      - !Flag
+        description: Name of ete3 sqlite file to be created within
+        synonyms:
+        - --sqlitedb
+        args: !SimpleFlagArg
+          name: SQLITEDB
+        optional: true
+      - !Flag
+        description: to 'taxonomy.sqlite'
+        synonyms:
+        - --taxdir.
+        args: !SimpleFlagArg
+          name: Defaults
+        optional: true
+      - !Flag
+        description: Overwrite downloaded files
+        synonyms:
+        - -f
+        - --force
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'Skip check of downloaded fasta file. Default: False'
+        synonyms:
+        - --skip_check
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Skip download of seqid->taxid mapfile (only applies to\n'nr'\
+          \ database.\n"
+        synonyms:
+        - --skip_idmap
+        args: !EmptyFlagArg {}
+        optional: true
       parent: *id001
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -749,23 +651,25 @@ parent: &id005 !Command
         optional: true
       usage_flag:
       version_flag:
-      help_text: "usage: tango transfer [-h] [--ignore_unc_rank IGNORE_UNC_RANK]\n\
-        \                      [--orf_tax_out ORF_TAX_OUT] [-p CPUS] [-c CHUNKSIZE]\n\
-        \                      orf_taxonomy gff contig_taxonomy\n\npositional arguments:\n\
-        \  orf_taxonomy          Taxonomy assigned to ORFs (ORF ids in first column)\n\
-        \  gff                   GFF or file with contig id in first column and ORF\
-        \ id\n                        in second column\n  contig_taxonomy       Output\
-        \ file with assigned taxonomy for contigs\n\noptional arguments:\n  -h, --help\
-        \            show this help message and exit\n  --ignore_unc_rank IGNORE_UNC_RANK\n\
-        \                        Ignore ORFs unclassified at <rank>\n  --orf_tax_out\
-        \ ORF_TAX_OUT\n                        Also transfer taxonomy back to ORFs\
-        \ and output to file\n  -p CPUS, --cpus CPUS  Number of cpus to use when transferring\
-        \ taxonomy to\n                        contigs\n  -c CHUNKSIZE, --chunksize\
-        \ CHUNKSIZE\n                        Size of chunks sent to process pool.\
-        \ For large input\n                        files using a large chunksize can\
-        \ make the job\n                        complete much faster than using the\
-        \ default value of\n                        1.\n"
+      help_text: "usage: tango download [-h] [-d DLDIR] [--tmpdir TMPDIR] [-t TAXDIR]\n\
+        \                      [--sqlitedb SQLITEDB] [-f] [--skip_check] [--skip_idmap]\n\
+        \                      {uniref100,uniref90,uniref50,nr,taxonomy,idmap}\n\n\
+        positional arguments:\n  {uniref100,uniref90,uniref50,nr,taxonomy,idmap}\n\
+        \                        Database to download. Defaults to 'uniref100'\n\n\
+        optional arguments:\n  -h, --help            show this help message and exit\n\
+        \  -d DLDIR, --dldir DLDIR\n                        Write files to this directory.\
+        \ Defaults to db name in\n                        current directory. Will\
+        \ be created if missing.\n  --tmpdir TMPDIR       Temporary directory for\
+        \ downloading files\n  -t TAXDIR, --taxdir TAXDIR\n                      \
+        \  Directory to store NCBI taxdump files. Defaults to\n                  \
+        \      'taxonomy/' in current directory\n  --sqlitedb SQLITEDB   Name of ete3\
+        \ sqlite file to be created within\n                        --taxdir. Defaults\
+        \ to 'taxonomy.sqlite'\n  -f, --force           Overwrite downloaded files\n\
+        \  --skip_check          Skip check of downloaded fasta file. Default: False\n\
+        \  --skip_idmap          Skip download of seqid->taxid mapfile (only applies\
+        \ to\n                        'nr' database.\n"
       generated_using: *id002
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -794,8 +698,12 @@ parent: &id005 !Command
       \    transfer            Transfer taxonomy from ORFs to contigs\n"
     generated_using: *id002
   subcommands:
-  - *id006
+  - *id004
   - !Command
+    command:
+    - tango
+    - build
+    - taxonnodes
     positional:
     - !Positional
       description: ''
@@ -826,23 +734,20 @@ parent: &id005 !Command
     - !Flag
       description: ''
       synonyms:
-      - -d
-      args: !SimpleFlagArg
-        name: DBFILE
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
       - -p
       args: !SimpleFlagArg
         name: CPUS
       optional: true
-    command:
-    - tango
-    - build
-    - taxonnodes
-    parent: *id005
+    - !Flag
+      description: ''
+      synonyms:
+      - -d
+      args: !SimpleFlagArg
+        name: DBFILE
+      optional: true
+    parent: *id003
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -853,7 +758,8 @@ parent: &id005 !Command
     version_flag:
     help_text: "usage: tango build [-h] [-d DBFILE] [-p CPUS] fastafile taxonmap taxonnodes\n\
       tango build: error: the following arguments are required: taxonmap, taxonnodes\n"
-    generated_using: *id004
+    generated_using: &id005 []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -874,6 +780,7 @@ parent: &id005 !Command
     \ building (defaults to 1)\n"
   generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:
@@ -884,4 +791,4 @@ usage_flag:
 version_flag:
 help_text: "usage: tango build [-h] [-d DBFILE] [-p CPUS] fastafile taxonmap taxonnodes\n\
   tango build: error: the following arguments are required: taxonmap, taxonnodes\n"
-generated_using: *id004
+generated_using: *id005

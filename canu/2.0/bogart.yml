@@ -1,9 +1,36 @@
 !Command
+command:
+- bogart
 positional:
 - !Positional
-  description: ''
+  description: bestOverlaps
   position: 0
-  name: Parameters
+  name: overlapScoring
+  optional: false
+- !Positional
+  description: optimizePositions
+  position: 1
+  name: errorProfiles
+  optional: false
+- !Positional
+  description: buildUnitig
+  position: 2
+  name: chunkGraph
+  optional: false
+- !Positional
+  description: orphans
+  position: 3
+  name: placeUnplaced
+  optional: false
+- !Positional
+  description: intermediateTigs
+  position: 4
+  name: splitDiscontinuous
+  optional: false
+- !Positional
+  description: stderr
+  position: 5
+  name: setParentAndHang
   optional: false
 named:
 - !Flag
@@ -89,13 +116,13 @@ named:
     name: num
   optional: true
 - !Flag
-  description: "[coverageGap],[highError],[lopsided],[spur] Disable filtering of:\
-    \ coverageGap - reads that have a suspicious lack of overlaps in the middle highError\
-    \   - overlaps that have error rates well outside the observed lopsided    - reads\
-    \ that have unusually asymmetric best overlaps spur        - reads that have no\
-    \ overlaps on one end The value supplied to -nofilter must be one word, case,\
-    \ order and punctuation do not matter.  The following examples behave the same:\
-    \ '-nofilter coverageGap,higherror' '-nofilter coveragegap-and-HIGHERROR'"
+  description: "[coverageGap],[highError],[lopsided],[spur]\nDisable filtering of:\n\
+    coverageGap - reads that have a suspicious lack of overlaps in the middle\nhighError\
+    \   - overlaps that have error rates well outside the observed\nlopsided    -\
+    \ reads that have unusually asymmetric best overlaps\nspur        - reads that\
+    \ have no overlaps on one end\nThe value supplied to -nofilter must be one word,\
+    \ case, order and punctuation\ndo not matter.  The following examples behave the\
+    \ same:\n'-nofilter coverageGap,higherror'\n'-nofilter coveragegap-and-HIGHERROR'"
   synonyms:
   - -nofilter
   args: !EmptyFlagArg {}
@@ -116,24 +143,24 @@ named:
     name: F
   optional: true
 - !Flag
-  description: 'Split a contig if there is an alternate path from an overlap of at
-    least L bases. Default: 2100.'
+  description: "Split a contig if there is an alternate path from an overlap of at\
+    \ least L bases.\nDefault: 2100."
   synonyms:
   - -ca
   args: !SimpleFlagArg
     name: L
   optional: true
 - !Flag
-  description: 'Split a contig if there is an alternate path from an overlap at most
-    P percent different from the length of the best overlap.  Default: 200.'
+  description: "Split a contig if there is an alternate path from an overlap at most\
+    \ P percent\ndifferent from the length of the best overlap.  Default: 200."
   synonyms:
   - -cp
   args: !SimpleFlagArg
     name: P
   optional: true
 - !Flag
-  description: Use overlaps upto D standard deviations from the mean when building
-    the best overlap graph.  Default 6.0.
+  description: "Use overlaps upto D standard deviations from the mean when building\
+    \ the best\noverlap graph.  Default 6.0."
   synonyms:
   - -dg
   args: !SimpleFlagArg
@@ -161,10 +188,10 @@ named:
     name: n
   optional: true
 - !Flag
-  description: n      Set how lopsided reads are detected and/or treated. m = off        -
-    don't detect at all (omit n parameter) m = noseed n   - detect, n% difference,
-    allow edges to but don't seed overlaps with them m = nobest n   - detect, n% difference,
-    exclude from bog graph completely
+  description: "n      Set how lopsided reads are detected and/or treated.\nm = off\
+    \        - don't detect at all (omit n parameter)\nm = noseed n   - detect, n%\
+    \ difference, allow edges to but don't seed overlaps with them\nm = nobest n \
+    \  - detect, n% difference, exclude from bog graph completely"
   synonyms:
   - -lopsided
   args: !SimpleFlagArg
@@ -185,18 +212,15 @@ named:
     name: name
   optional: true
 - !Flag
-  description: disable logging/debugging for a specific component. overlapScoring
-    bestOverlaps errorProfiles optimizePositions chunkGraph buildUnitig placeUnplaced
-    orphans splitDiscontinuous intermediateTigs setParentAndHang stderr
+  description: disable logging/debugging for a specific component.
   synonyms:
   - -d
   args: !SimpleFlagArg
     name: name
   optional: true
-command:
-- bogart
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

@@ -1,15 +1,15 @@
 version 1.0
 
-task RagoutMaf2synteny {
+task Ragoutmaf2synteny {
   input {
-    String? path_output_directory
-    String? path_file_custom
-    String? commaseparated_list_synteny
+    File? path_output_directory
+    File? path_file_custom
+    Int? commaseparated_list_synteny
     String? m
     String maf_file
   }
   command <<<
-    ragout-maf2synteny \
+    ragout_maf2synteny \
       ~{maf_file} \
       ~{if defined(path_output_directory) then ("-o " +  '"' + path_output_directory + '"') else ""} \
       ~{if defined(path_file_custom) then ("-s " +  '"' + path_file_custom + '"') else ""} \
@@ -22,5 +22,9 @@ task RagoutMaf2synteny {
     commaseparated_list_synteny: "comma-separated list of synteny block scales [default = 5000]"
     m: ""
     maf_file: "path to maf file"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_directory = "${in_path_output_directory}"
   }
 }

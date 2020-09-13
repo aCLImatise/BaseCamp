@@ -4,4 +4,7 @@ task EstLambdaFct {
   command <<<
     EstLambdaFct
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,99 +1,108 @@
 class: CommandLineTool
 id: ../../../RNA2Dfold.cwl
 inputs:
-- id: detailed_help
-  doc: Print help, including all details and hidden  options, and exit
+- id: in_detailed_help
+  doc: "Print help, including all details and hidden\noptions, and exit"
   type: boolean
   inputBinding:
     prefix: --detailed-help
-- id: num_threads
-  doc: Set the number of threads used for calculations  (only available when compiled
-    with OpenMP  support)
+- id: in_num_threads
+  doc: "Set the number of threads used for calculations\n(only available when compiled\
+    \ with OpenMP\nsupport)"
   type: long
   inputBinding:
     prefix: --numThreads
-- id: part_func
-  doc: calculate partition function and thus,  Boltzmann probabilities and Gibbs free
-    energy (default=off)
+- id: in_part_func
+  doc: "calculate partition function and thus,\nBoltzmann probabilities and Gibbs\
+    \ free energy\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --partfunc
-- id: stoch_bt
-  doc: backtrack a certain number of Boltzmann samples  from the appropriate k,l neighborhood(s)
+- id: in_stoch_bt
+  doc: "backtrack a certain number of Boltzmann samples\nfrom the appropriate k,l\
+    \ neighborhood(s)"
   type: long
   inputBinding:
     prefix: --stochBT
-- id: neighborhood
-  doc: :<l>    backtrack structures from certain  k,l-neighborhood only, can be specified  multiple
-    times (<k>:<l>,<m>:<n>,...)
+- id: in_neighborhood
+  doc: ":<l>    backtrack structures from certain\nk,l-neighborhood only, can be specified\n\
+    multiple times (<k>:<l>,<m>:<n>,...)"
   type: string
   inputBinding:
     prefix: --neighborhood
-- id: pf_scale
+- id: in_pf_scale
   doc: scaling factor for pf to avoid overflows
   type: string
   inputBinding:
     prefix: --pfScale
-- id: no_bt
-  doc: do not backtrack structures, calculate energy  contributions only (default=off)
+- id: in_no_bt
+  doc: "do not backtrack structures, calculate energy\ncontributions only\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noBT
-- id: circ
-  doc: Assume a circular (instead of linear) RNA  molecule. (default=off)
+- id: in_circ
+  doc: Assume a circular (instead of linear) RNA
   type: boolean
   inputBinding:
     prefix: --circ
-- id: temp
-  doc: Rescale energy parameters to a temperature of  temp C. Default is 37C.
-  type: string
+- id: in_temp
+  doc: "Rescale energy parameters to a temperature of\ntemp C. Default is 37C."
+  type: long
   inputBinding:
     prefix: --temp
-- id: max_dist_one
+- id: in_max_dist_one
   doc: maximum distance to first reference structure
   type: long
   inputBinding:
     prefix: --maxDist1
-- id: max_dist_two
+- id: in_max_dist_two
   doc: maximum distance to second reference structure
   type: long
   inputBinding:
     prefix: --maxDist2
-- id: no_tetra
-  doc: Do not include special tabulated stabilizing  energies for tri-, tetra- and
-    hexaloop  hairpins. Mostly for testing. (default=off)
+- id: in_no_tetra
+  doc: "Do not include special tabulated stabilizing\nenergies for tri-, tetra- and\
+    \ hexaloop\nhairpins. Mostly for testing.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noTetra
-- id: parameter_file
-  doc: Read energy parameters from paramfile, instead  of using the default parameter
-    set.
-  type: string
+- id: in_parameter_file
+  doc: "Read energy parameters from paramfile, instead\nof using the default parameter\
+    \ set."
+  type: File
   inputBinding:
     prefix: --parameterFile
-- id: dangles
-  doc: How to treat "dangling end" energies for  bases adjacent to helices in free
-    ends and  multi-loops (possible values="0", "2" default=`2')
+- id: in_dangles
+  doc: "How to treat \"dangling end\" energies for\nbases adjacent to helices in free\
+    \ ends and\nmulti-loops\n(possible values=\"0\", \"2\" default=`2')"
   type: long
   inputBinding:
     prefix: --dangles
-- id: no_gu
-  doc: Do not allow GU pairs (default=off)
+- id: in_no_gu
+  doc: "Do not allow GU pairs\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noGU
-- id: no_closing_gu
-  doc: Do not allow GU pairs at the end of helices (default=off)
+- id: in_no_closing_gu
+  doc: "Do not allow GU pairs at the end of helices\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noClosingGU
-- id: program
-  doc: --noconv                  Do not automatically substitude nucleotide  "T" with
-    "U" (default=off)
+- id: in_program
+  doc: "--noconv                  Do not automatically substitude nucleotide \n\"\
+    T\" with \"U\"\n(default=off)"
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_molecule_dot
+  doc: (default=off)
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - RNA2Dfold

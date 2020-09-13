@@ -1,26 +1,30 @@
 version 1.0
 
-task SplashEvalReadsBam {
+task SplashEvalreadsBam {
   input {
-    String? o
+    File? r
     String? b
-    String? r
+    File? o
     String splash
     String eval_reads
   }
   command <<<
-    splash eval-reads bam \
+    splash eval_reads bam \
       ~{splash} \
       ~{eval_reads} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
       ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
-      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
-    o: ""
-    b: ""
     r: ""
+    b: ""
+    o: ""
     splash: ""
     eval_reads: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_o = "${in_o}"
   }
 }

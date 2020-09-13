@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../chromosomer_transfer_output.cwl
 inputs:
-- id: f
+- id: in_f
   doc: ''
   type: string
   inputBinding:
     prefix: -f
-- id: chromosome_r
+- id: in_chromosome_r
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: transfer
+- id: in_transfer
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: map
+- id: in_map
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: annotation
+- id: in_annotation
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chromosomer

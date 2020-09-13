@@ -5,14 +5,12 @@ task Figtree {
     String? graphic
     String? width
     String? height
-    String? url
-    String? tree_file_name
-    String? graphic_file_name
+    File? url
+    String a_dotrambautateddotacdotuk
   }
   command <<<
     figtree \
-      ~{tree_file_name} \
-      ~{graphic_file_name} \
+      ~{a_dotrambautateddotacdotuk} \
       ~{if defined(graphic) then ("-graphic " +  '"' + graphic + '"') else ""} \
       ~{if defined(width) then ("-width " +  '"' + width + '"') else ""} \
       ~{if defined(height) then ("-height " +  '"' + height + '"') else ""} \
@@ -23,7 +21,9 @@ task Figtree {
     width: "width of the graphic in pixels"
     height: "height of the graphic in pixels"
     url: "input file is a URL"
-    tree_file_name: ""
-    graphic_file_name: ""
+    a_dotrambautateddotacdotuk: "http://tree.bio.ed.ac.uk/"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,9 +2,9 @@ version 1.0
 
 task Kid {
   input {
-    String? encoding
-    String? specify_output_file
-    String? port__serverhostport
+    Int? encoding
+    File? specify_output_output
+    Directory? port__serverhostportspecify
     File file
     String? args
   }
@@ -13,14 +13,18 @@ task Kid {
       ~{file} \
       ~{args} \
       ~{if defined(encoding) then ("--encoding " +  '"' + encoding + '"') else ""} \
-      ~{if defined(specify_output_file) then ("--output " +  '"' + specify_output_file + '"') else ""} \
-      ~{if defined(port__serverhostport) then ("-s " +  '"' + port__serverhostport + '"') else ""}
+      ~{if defined(specify_output_output) then ("--output " +  '"' + specify_output_output + '"') else ""} \
+      ~{if defined(port__serverhostportspecify) then ("-s " +  '"' + port__serverhostportspecify + '"') else ""}
   >>>
   parameter_meta {
-    encoding: "Specify the output character encoding. Default: utf-8"
-    specify_output_file: "Specify the output file. Default: standard output"
-    port__serverhostport: ":port, --server=host:port Specify the server address if you want to start the HTTP server. Instead of the Kid template, you can specify a base directory."
+    encoding: "Specify the output character encoding.\\nDefault: utf-8"
+    specify_output_output: "Specify the output file.\\nDefault: standard output"
+    port__serverhostportspecify: ":port, --server=host:port\\nSpecify the server address if\\nyou want to start the HTTP server.\\nInstead of the Kid template,\\nyou can specify a base directory."
     file: ""
     args: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_specify_output_output = "${in_specify_output_output}"
   }
 }

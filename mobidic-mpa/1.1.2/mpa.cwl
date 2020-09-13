@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../mpa.cwl
 inputs:
-- id: mpa_directory
-  doc: 'The path to the MPA installation folder. [Default: /tmp/tmpjlb2c7kj/bin]'
-  type: string
+- id: in_mpa_directory
+  doc: "The path to the MPA installation folder. [Default:\n/usr/local/bin]"
+  type: Directory
   inputBinding:
     prefix: --mpa-directory
-- id: logging_level
+- id: in_logging_level
   doc: 'The logger level. [Default: INFO]'
   type: string
   inputBinding:
     prefix: --logging-level
-- id: input
-  doc: 'The vcf file to annotate (format: VCF). This vcf must be annotate with annovar.'
-  type: string
+- id: in_input
+  doc: "The vcf file to annotate (format: VCF). This vcf must\nbe annotate with annovar."
+  type: File
   inputBinding:
     prefix: --input
-- id: output
-  doc: 'The output vcf file with annotation (format : VCF)'
-  type: string
+- id: in_output
+  doc: "The output vcf file with annotation (format : VCF)\n"
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "The output vcf file with annotation (format : VCF)\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - mpa

@@ -6,9 +6,12 @@ task Svtools {
   }
   command <<<
     svtools \
-      ~{true="--support" false="" support}
+      ~{if (support) then "--support" else ""}
   >>>
   parameter_meta {
     support: "information on obtaining support"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

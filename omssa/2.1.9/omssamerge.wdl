@@ -4,4 +4,7 @@ task Omssamerge {
   command <<<
     omssamerge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task XyPlot {
+task Xyplot {
   command <<<
-    xy-plot
+    xy_plot
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,122 +1,125 @@
 class: CommandLineTool
 id: ../../../PathOverlap.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: k-mer size
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: graph
+- id: in_graph
   doc: write the contig adjacency graph to FILE
   type: File
   inputBinding:
     prefix: --graph
-- id: repeats
+- id: in_repeats
   doc: write repeat contigs to FILE
   type: File
   inputBinding:
     prefix: --repeats
-- id: overlap
+- id: in_overlap
   doc: find overlapping paths [default]
   type: boolean
   inputBinding:
     prefix: --overlap
-- id: assemble
+- id: in_assemble
   doc: assemble overlapping paths
   type: boolean
   inputBinding:
     prefix: --assemble
-- id: trim
+- id: in_trim
   doc: trim overlapping paths
   type: boolean
   inputBinding:
     prefix: --trim
-- id: output_graph_adj
+- id: in_output_graph_adj
   doc: output the graph in ADJ format [default]
   type: boolean
   inputBinding:
     prefix: --adj
-- id: as_qg
+- id: in_as_qg
   doc: output the graph in ASQG format
   type: boolean
   inputBinding:
     prefix: --asqg
-- id: dot
+- id: in_dot
   doc: output the graph in GraphViz format
   type: boolean
   inputBinding:
     prefix: --dot
-- id: gfa
+- id: in_gfa
   doc: output the graph in GFA1 format
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: gfa_one
+- id: in_gfa_one
   doc: output the graph in GFA1 format
   type: boolean
   inputBinding:
     prefix: --gfa1
-- id: gfa_two
+- id: in_gfa_two
   doc: output the graph in GFA2 format
   type: boolean
   inputBinding:
     prefix: --gfa2
-- id: gv
+- id: in_gv
   doc: output the graph in GraphViz format
   type: boolean
   inputBinding:
     prefix: --gv
-- id: sam
+- id: in_sam
   doc: output the graph in SAM format
   type: boolean
   inputBinding:
     prefix: --sam
-- id: ss
+- id: in_ss
   doc: expect contigs to be oriented correctly
   type: boolean
   inputBinding:
     prefix: --SS
-- id: no_ss
+- id: in_no_ss
   doc: no assumption about contig orientation [default]
   type: boolean
   inputBinding:
     prefix: --no-SS
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: db
+- id: in_db
   doc: specify path of database repository in FILE
   type: File
   inputBinding:
     prefix: --db
-- id: library
+- id: in_library
   doc: specify library NAME for sqlite
   type: string
   inputBinding:
     prefix: --library
-- id: strain
+- id: in_strain
   doc: specify strain NAME for sqlite
   type: string
   inputBinding:
     prefix: --strain
-- id: species
+- id: in_species
   doc: specify species NAME for sqlite
   type: string
   inputBinding:
     prefix: --species
-- id: contig_adjacency_graph
+- id: in_contig_adjacency_graph
   doc: contig adjacency graph
   type: string
   inputBinding:
     position: 0
-- id: path
+- id: in_path
   doc: sequences of contig IDs
   type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - PathOverlap

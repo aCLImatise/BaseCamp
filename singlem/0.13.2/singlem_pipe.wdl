@@ -2,19 +2,25 @@ version 1.0
 
 task SinglemPipe {
   input {
-    String? threads
-    Boolean? output_extras
-    String? assignment_method
+    String? sequences
+    Boolean? full_help
+    Boolean? quiet
+    Boolean? debug
   }
   command <<<
     singlem pipe \
-      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--output_extras" false="" output_extras} \
-      ~{if defined(assignment_method) then ("--assignment_method " +  '"' + assignment_method + '"') else ""}
+      ~{if defined(sequences) then ("--sequences " +  '"' + sequences + '"') else ""} \
+      ~{if (full_help) then "--full_help" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
-    threads: "Use N threads."
-    output_extras: "Output more detailed information in the OTU table."
-    assignment_method: "Specify taxonomic assignment method [default: pplacer]."
+    sequences: ") [sequence_file(s) ...]"
+    full_help: ""
+    quiet: ""
+    debug: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

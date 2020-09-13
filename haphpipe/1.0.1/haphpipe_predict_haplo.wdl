@@ -2,15 +2,15 @@ version 1.0
 
 task HaphpipePredictHaplo {
   input {
-    String? fq_one
-    String? fq_two
+    Int? fq_one
+    Int? fq_two
     String? ref_fa
-    String? region_txt
-    String? outdir
+    File? region_txt
+    Directory? outdir
     Int? min_read_length
     Boolean? keep_tmp
     Boolean? quiet
-    String? log_file
+    File? log_file
     Boolean? debug
   }
   command <<<
@@ -21,21 +21,26 @@ task HaphpipePredictHaplo {
       ~{if defined(region_txt) then ("--region_txt " +  '"' + region_txt + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(min_read_length) then ("--min_readlength " +  '"' + min_read_length + '"') else ""} \
-      ~{true="--keep_tmp" false="" keep_tmp} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (keep_tmp) then "--keep_tmp" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     fq_one: "Fastq file with read 1"
     fq_two: "Fastq file with read 2"
     ref_fa: "Reference sequence used to align reads (fasta)"
-    region_txt: "File with regions to perform haplotype reconstruction. Regions should be specified using the samtools region specification format: RNAME[:STARTPOS[-ENDPOS]]"
+    region_txt: "File with regions to perform haplotype reconstruction.\\nRegions should be specified using the samtools region\\nspecification format: RNAME[:STARTPOS[-ENDPOS]]"
     outdir: "Output directory (default: .)"
-    min_read_length: "Minimum readlength passed to PredictHaplo (default: 36)"
+    min_read_length: "Minimum readlength passed to PredictHaplo (default:\\n36)"
     keep_tmp: "Do not delete temporary directory (default: False)"
-    quiet: "Do not write output to console (silence stdout and stderr) (default: False)"
+    quiet: "Do not write output to console (silence stdout and\\nstderr) (default: False)"
     log_file: "Append console output to this file"
     debug: "Print commands but do not run (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
+    File out_log_file = "${in_log_file}"
   }
 }

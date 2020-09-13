@@ -1,10 +1,9 @@
 &id006 !Command
-positional:
-- !Positional
-  description: Cluster name.
-  position: 0
-  name: name
-  optional: false
+command:
+- hailctl
+- dataproc
+- diagnose
+positional: []
 named:
 - !Flag
   description: Directory for diagnose output -- must be local.
@@ -42,7 +41,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[WORKERS [WORKERS ...]] Specific workers to get log files from.'
+  description: "[WORKERS [WORKERS ...]]\nSpecific workers to get log files from."
   synonyms:
   - --workers
   args: !EmptyFlagArg {}
@@ -54,11 +53,10 @@ named:
   args: !SimpleFlagArg
     name: TAKE
   optional: true
-command:
-- hailctl
-- dataproc
-- diagnose
-parent: &id001 !Command
+parent: &id005 !Command
+  command:
+  - hailctl
+  - dataproc
   positional: []
   named:
   - !Flag
@@ -67,42 +65,40 @@ parent: &id001 !Command
     - --beta
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - hailctl
-  - dataproc
-  parent: &id002 !Command
-    positional: []
-    named: []
+  parent: &id001 !Command
     command:
     - hailctl
+    positional: []
+    named: []
     parent:
     subcommands:
-    - *id001
-    - &id003 !Command
-      positional: []
-      named: []
+    - &id002 !Command
       command:
       - hailctl
       - auth
-      parent: *id002
+      positional: []
+      named: []
+      parent: *id001
       subcommands:
       - !Command
+        command:
+        - hailctl
+        - auth
+        - login
         positional: []
         named:
         - !Flag
-          description: 'Specify namespace for auth server. (default: from deploy configuration)'
+          description: "Specify namespace for auth server. (default: from\ndeploy\
+            \ configuration)\n"
           synonyms:
           - --namespace
           - -n
           args: !SimpleFlagArg
             name: NAMESPACE
           optional: true
-        command:
-        - hailctl
-        - auth
-        - login
-        parent: *id003
+        parent: *id002
         subcommands: []
+        usage: []
         help_flag: !Flag
           description: show this help message and exit
           synonyms:
@@ -117,8 +113,9 @@ parent: &id001 !Command
           \ this help message and exit\n  --namespace NAMESPACE, -n NAMESPACE\n  \
           \                      Specify namespace for auth server. (default: from\n\
           \                        deploy configuration)\n"
-        generated_using: &id004
+        generated_using: &id003
         - --help
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -133,69 +130,20 @@ parent: &id001 !Command
         \              Obtain Hail credentials.\n    logout             Revoke Hail\
         \ credentials.\n    list               List Hail credentials.\n\noptional\
         \ arguments:\n  -h, --help           show this help message and exit\n"
-      generated_using: *id004
-    - &id005 !Command
-      positional: []
-      named: []
+      generated_using: *id003
+    - &id004 !Command
       command:
       - hailctl
       - dev
-      parent: *id002
+      positional: []
+      named: []
+      parent: *id001
       subcommands:
       - !Command
-        positional:
-        - !Positional
-          description: Default namespace. Show the current configuration if not specified.
-          position: 0
-          name: namespace
-          optional: false
-        named:
-        - !Flag
-          description: 'Location. (default: external)'
-          synonyms:
-          - --location
-          - -l
-          args: !ChoiceFlagArg
-            choices: !!set
-              ? external
-              ? k8s
-              ? gce
-          optional: true
-        - !Flag
-          description: 'List of comma-separated service=namespace overrides. (default:
-            none)'
-          synonyms:
-          - --override
-          - -o
-          args: !SimpleFlagArg
-            name: OVERRIDE
-          optional: true
         command:
         - hailctl
         - dev
-        - config
-        parent: *id005
-        subcommands: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: hailctl dev config [-h] [--location {external,gce,k8s}]\n\
-          \                          [--override OVERRIDE]\n                     \
-          \     [namespace]\n\nConfigure deployment\n\npositional arguments:\n  namespace\
-          \             Default namespace. Show the current configuration if\n   \
-          \                     not specified.\n\noptional arguments:\n  -h, --help\
-          \            show this help message and exit\n  --location {external,gce,k8s},\
-          \ -l {external,gce,k8s}\n                        Location. (default: external)\n\
-          \  --override OVERRIDE, -o OVERRIDE\n                        List of comma-separated\
-          \ service=namespace overrides.\n                        (default: none)\n"
-        generated_using: *id004
-      - !Command
+        - deploy
         positional: []
         named:
         - !Flag
@@ -221,12 +169,9 @@ parent: &id001 !Command
           - -o
           args: !EmptyFlagArg {}
           optional: true
-        command:
-        - hailctl
-        - dev
-        - deploy
-        parent: *id005
+        parent: *id004
         subcommands: []
+        usage: []
         help_flag: !Flag
           description: show this help message and exit
           synonyms:
@@ -242,7 +187,63 @@ parent: &id001 !Command
           \        Fully-qualified branch, e.g., hail-is/hail:feature.\n  --steps\
           \ STEPS, -s STEPS\n                        Comma-separated list of steps\
           \ to run.\n  --open, -o            Open the deploy batch page in a web browser.\n"
-        generated_using: *id004
+        generated_using: *id003
+      - !Command
+        command:
+        - hailctl
+        - dev
+        - config
+        positional:
+        - !Positional
+          description: "Default namespace. Show the current configuration if\nnot\
+            \ specified."
+          position: 0
+          name: namespace
+          optional: false
+        named:
+        - !Flag
+          description: 'Location. (default: external)'
+          synonyms:
+          - --location
+          - -l
+          args: !ChoiceFlagArg
+            choices: !!set
+              ? k8s
+              ? external
+              ? gce
+          optional: true
+        - !Flag
+          description: "List of comma-separated service=namespace overrides.\n(default:\
+            \ none)\n"
+          synonyms:
+          - --override
+          - -o
+          args: !SimpleFlagArg
+            name: OVERRIDE
+          optional: true
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: hailctl dev config [-h] [--location {external,gce,k8s}]\n\
+          \                          [--override OVERRIDE]\n                     \
+          \     [namespace]\n\nConfigure deployment\n\npositional arguments:\n  namespace\
+          \             Default namespace. Show the current configuration if\n   \
+          \                     not specified.\n\noptional arguments:\n  -h, --help\
+          \            show this help message and exit\n  --location {external,gce,k8s},\
+          \ -l {external,gce,k8s}\n                        Location. (default: external)\n\
+          \  --override OVERRIDE, -o OVERRIDE\n                        List of comma-separated\
+          \ service=namespace overrides.\n                        (default: none)\n"
+        generated_using: *id003
+      usage: []
       help_flag: !Flag
         description: show this help message and exit
         synonyms:
@@ -256,7 +257,9 @@ parent: &id001 !Command
         \ utilities.\n\npositional arguments:\n  {config,deploy}\n    config     \
         \    Configure deployment\n    deploy         Deploy a branch\n\noptional\
         \ arguments:\n  -h, --help       show this help message and exit\n"
-      generated_using: *id004
+      generated_using: *id003
+    - *id005
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -274,15 +277,238 @@ parent: &id001 !Command
       \ and exit.\n    batch               Manage batches running on the batch service\
       \ managed by\n                        the Hail team.\n\noptional arguments:\n\
       \  -h, --help            show this help message and exit\n"
-    generated_using: *id004
+    generated_using: *id003
   subcommands:
   - !Command
+    command:
+    - hailctl
+    - dataproc
+    - describe
+    positional:
+    - !Positional
+      description: Path to hail file (either MatrixTable or Table).
+      position: 0
+      name: file
+      optional: false
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc describe [-h] file\n\nGather information about\
+      \ a hail file (including the schema)\n\npositional arguments:\n  file      \
+      \  Path to hail file (either MatrixTable or Table).\n\noptional arguments:\n\
+      \  -h, --help  show this help message and exit\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - connect
+    positional:
+    - !Positional
+      description: '{notebook,nb,spark-ui,ui,spark-ui1,ui1,spark-ui2,ui2,spark-history,hist}'
+      position: 0
+      name: name
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --dry-run
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - --zone
+      args: !SimpleFlagArg
+        name: ZONE
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - --port
+      args: !SimpleFlagArg
+        name: PORT
+      optional: true
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc connect [-h] [--port PORT] [--zone ZONE] [--dry-run]\n\
+      \                                name\n                                {notebook,nb,spark-ui,ui,spark-ui1,ui1,spark-ui2,ui2,spark-history,hist}\n\
+      hailctl dataproc connect: error: the following arguments are required: name,\
+      \ service\n"
+    generated_using: []
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - modify
+    positional: []
+    named:
+    - !Flag
+      description: New Hail installation.
+      synonyms:
+      - --wheel
+      args: !SimpleFlagArg
+        name: WHEEL
+      optional: true
+    - !Flag
+      description: New number of worker machines (min. 2).
+      synonyms:
+      - --num-workers
+      - --n-workers
+      - -w
+      args: !SimpleFlagArg
+        name: NUM_WORKERS
+      optional: true
+    - !Flag
+      description: New number of preemptible worker machines.
+      synonyms:
+      - --num-preemptible-workers
+      - --n-pre-workers
+      - -p
+      args: !SimpleFlagArg
+        name: NUM_PREEMPTIBLE_WORKERS
+      optional: true
+    - !Flag
+      description: "If set, cluster size downgrade will use graceful\ndecommissioning\
+        \ with the given timeout (e.g. \"60m\")."
+      synonyms:
+      - --graceful-decommission-timeout
+      - --graceful
+      args: !SimpleFlagArg
+        name: GRACEFUL_DECOMMISSION_TIMEOUT
+      optional: true
+    - !Flag
+      description: New maximum idle time before shutdown (e.g. "60m").
+      synonyms:
+      - --max-idle
+      args: !SimpleFlagArg
+        name: MAX_IDLE
+      optional: true
+    - !Flag
+      description: Print gcloud dataproc command, but don't run it.
+      synonyms:
+      - --dry-run
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Compute zone for Dataproc cluster (default: us-\ncentral1-b)."
+      synonyms:
+      - --zone
+      - -z
+      args: !SimpleFlagArg
+        name: ZONE
+      optional: true
+    - !Flag
+      description: "Update the version of hail running on cluster to match\nthe currently\
+        \ installed version.\n"
+      synonyms:
+      - --update-hail-version
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc modify [-h] [--wheel WHEEL]\n            \
+      \                   [--num-workers NUM_WORKERS]\n                          \
+      \     [--num-preemptible-workers NUM_PREEMPTIBLE_WORKERS]\n                \
+      \               [--graceful-decommission-timeout GRACEFUL_DECOMMISSION_TIMEOUT]\n\
+      \                               [--max-idle MAX_IDLE] [--dry-run] [--zone ZONE]\n\
+      \                               [--update-hail-version]\n                  \
+      \             name\n\nModify active Dataproc clusters.\n\npositional arguments:\n\
+      \  name                  Cluster name.\n\noptional arguments:\n  -h, --help\
+      \            show this help message and exit\n  --wheel WHEEL         New Hail\
+      \ installation.\n  --num-workers NUM_WORKERS, --n-workers NUM_WORKERS, -w NUM_WORKERS\n\
+      \                        New number of worker machines (min. 2).\n  --num-preemptible-workers\
+      \ NUM_PREEMPTIBLE_WORKERS, --n-pre-workers NUM_PREEMPTIBLE_WORKERS, -p NUM_PREEMPTIBLE_WORKERS\n\
+      \                        New number of preemptible worker machines.\n  --graceful-decommission-timeout\
+      \ GRACEFUL_DECOMMISSION_TIMEOUT, --graceful GRACEFUL_DECOMMISSION_TIMEOUT\n\
+      \                        If set, cluster size downgrade will use graceful\n\
+      \                        decommissioning with the given timeout (e.g. \"60m\"\
+      ).\n  --max-idle MAX_IDLE   New maximum idle time before shutdown (e.g. \"60m\"\
+      ).\n  --dry-run             Print gcloud dataproc command, but don't run it.\n\
+      \  --zone ZONE, -z ZONE  Compute zone for Dataproc cluster (default: us-\n \
+      \                       central1-b).\n  --update-hail-version\n            \
+      \            Update the version of hail running on cluster to match\n      \
+      \                  the currently installed version.\n"
+    generated_using: *id003
+  - *id006
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - stop
     positional:
     - !Positional
       description: Cluster name.
       position: 0
       name: name
       optional: false
+    named:
+    - !Flag
+      description: Do not wait for cluster deletion.
+      synonyms:
+      - --async
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Print gcloud dataproc command, but don't run it.
+      synonyms:
+      - --dry-run
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: hailctl dataproc stop [-h] [--async] [--dry-run] name\n\nShut\
+      \ down a Dataproc cluster.\n\npositional arguments:\n  name        Cluster name.\n\
+      \noptional arguments:\n  -h, --help  show this help message and exit\n  --async\
+      \     Do not wait for cluster deletion.\n  --dry-run   Print gcloud dataproc\
+      \ command, but don't run it.\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - hailctl
+    - dataproc
+    - start
+    positional: []
     named:
     - !Flag
       description: 'Master machine type (default: n1-highmem-8).'
@@ -294,8 +520,8 @@ parent: &id001 !Command
         name: MASTER_MACHINE_TYPE
       optional: true
     - !Flag
-      description: 'Fraction of master memory allocated to the JVM. Use a smaller
-        value to reserve more memory for Python. (default: 0.8)'
+      description: "Fraction of master memory allocated to the JVM. Use a\nsmaller\
+        \ value to reserve more memory for Python.\n(default: 0.8)"
       synonyms:
       - --master-memory-fraction
       args: !SimpleFlagArg
@@ -309,8 +535,8 @@ parent: &id001 !Command
         name: MASTER_BOOT_DISK_SIZE
       optional: true
     - !Flag
-      description: 'Number of local SSDs to attach to the master machine (default:
-        0).'
+      description: "Number of local SSDs to attach to the master machine\n(default:\
+        \ 0)."
       synonyms:
       - --num-master-local-ssds
       args: !SimpleFlagArg
@@ -326,8 +552,8 @@ parent: &id001 !Command
         name: NUM_PREEMPTIBLE_WORKERS
       optional: true
     - !Flag
-      description: 'Number of local SSDs to attach to each worker machine (default:
-        0).'
+      description: "Number of local SSDs to attach to each worker machine\n(default:\
+        \ 0)."
       synonyms:
       - --num-worker-local-ssds
       args: !SimpleFlagArg
@@ -343,7 +569,7 @@ parent: &id001 !Command
         name: NUM_WORKERS
       optional: true
     - !Flag
-      description: 'Disk size of preemptible machines, in GB (default: 40).'
+      description: "Disk size of preemptible machines, in GB (default:\n40)."
       synonyms:
       - --preemptible-worker-boot-disk-size
       args: !SimpleFlagArg
@@ -357,8 +583,8 @@ parent: &id001 !Command
         name: WORKER_BOOT_DISK_SIZE
       optional: true
     - !Flag
-      description: 'Worker machine type (default: n1-standard-8, or n1-highmem-8 with
-        --vep).'
+      description: "Worker machine type (default: n1-standard-8, or\nn1-highmem-8\
+        \ with --vep)."
       synonyms:
       - --worker-machine-type
       - --worker
@@ -380,15 +606,15 @@ parent: &id001 !Command
         name: PROPERTIES
       optional: true
     - !Flag
-      description: 'Comma-separated list of metadata to add: KEY1=VALUE1,KEY2=VALUE2...'
+      description: "Comma-separated list of metadata to add:\nKEY1=VALUE1,KEY2=VALUE2..."
       synonyms:
       - --metadata
       args: !SimpleFlagArg
         name: METADATA
       optional: true
     - !Flag
-      description: Comma-separated list of Python packages to be installed on the
-        master node.
+      description: "Comma-separated list of Python packages to be\ninstalled on the\
+        \ master node."
       synonyms:
       - --packages
       - --pkgs
@@ -396,23 +622,23 @@ parent: &id001 !Command
         name: PACKAGES
       optional: true
     - !Flag
-      description: Google Cloud project to start cluster (defaults to currently set
-        project).
+      description: "Google Cloud project to start cluster (defaults to\ncurrently\
+        \ set project)."
       synonyms:
       - --project
       args: !SimpleFlagArg
         name: PROJECT
       optional: true
     - !Flag
-      description: Google Cloud configuration to start cluster (defaults to currently
-        set configuration).
+      description: "Google Cloud configuration to start cluster (defaults\nto currently\
+        \ set configuration)."
       synonyms:
       - --configuration
       args: !SimpleFlagArg
         name: CONFIGURATION
       optional: true
     - !Flag
-      description: If specified, maximum idle time before shutdown (e.g. 60m).
+      description: "If specified, maximum idle time before shutdown (e.g.\n60m)."
       synonyms:
       - --max-idle
       args: !SimpleFlagArg
@@ -426,8 +652,8 @@ parent: &id001 !Command
         name: MAX_AGE
       optional: true
     - !Flag
-      description: The Google Cloud Storage bucket to use for cluster staging (just
-        the bucket name, no gs:// prefix).
+      description: "The Google Cloud Storage bucket to use for cluster\nstaging (just\
+        \ the bucket name, no gs:// prefix)."
       synonyms:
       - --bucket
       args: !SimpleFlagArg
@@ -441,7 +667,8 @@ parent: &id001 !Command
         name: NETWORK
       optional: true
     - !Flag
-      description: comma-separated list of instance tags to apply to the mastern node
+      description: "comma-separated list of instance tags to apply to the\nmastern\
+        \ node"
       synonyms:
       - --master-tags
       args: !SimpleFlagArg
@@ -462,7 +689,7 @@ parent: &id001 !Command
         name: INIT
       optional: true
     - !Flag
-      description: Flag to specify a timeout period for the initialization action
+      description: "Flag to specify a timeout period for the\ninitialization action"
       synonyms:
       - --init_timeout
       args: !SimpleFlagArg
@@ -474,8 +701,8 @@ parent: &id001 !Command
       - --vep
       args: !ChoiceFlagArg
         choices: !!set
-          ? GRCh38
           ? GRCh37
+          ? GRCh38
       optional: true
     - !Flag
       description: Print gcloud dataproc command, but don't run it.
@@ -483,12 +710,9 @@ parent: &id001 !Command
       - --dry-run
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - hailctl
-    - dataproc
-    - start
-    parent: *id001
+    parent: *id005
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -564,8 +788,12 @@ parent: &id001 !Command
       \ the\n                        initialization action\n  --vep {GRCh37,GRCh38}\n\
       \                        Install VEP for the specified reference genome.\n \
       \ --dry-run             Print gcloud dataproc command, but don't run it.\n"
-    generated_using: *id004
+    generated_using: *id003
   - !Command
+    command:
+    - hailctl
+    - dataproc
+    - submit
     positional:
     - !Positional
       description: Cluster name.
@@ -579,16 +807,16 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: Comma-separated list of files to add to the working directory of
-        the Hail application.
+      description: "Comma-separated list of files to add to the working\ndirectory\
+        \ of the Hail application."
       synonyms:
       - --files
       args: !SimpleFlagArg
         name: FILES
       optional: true
     - !Flag
-      description: Comma-separated list of files (or directories with python files)
-        to add to the PYTHONPATH.
+      description: "Comma-separated list of files (or directories with\npython files)\
+        \ to add to the PYTHONPATH."
       synonyms:
       - --pyfiles
       args: !SimpleFlagArg
@@ -603,8 +831,8 @@ parent: &id001 !Command
         name: PROPERTIES
       optional: true
     - !Flag
-      description: Google Cloud configuration to submit job (defaults to currently
-        set configuration).
+      description: "Google Cloud configuration to submit job (defaults to\ncurrently\
+        \ set configuration)."
       synonyms:
       - --gcloud_configuration
       args: !SimpleFlagArg
@@ -616,12 +844,9 @@ parent: &id001 !Command
       - --dry-run
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - hailctl
-    - dataproc
-    - submit
-    parent: *id001
+    parent: *id005
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -648,236 +873,8 @@ parent: &id001 !Command
       \                        Google Cloud configuration to submit job (defaults\
       \ to\n                        currently set configuration).\n  --dry-run   \
       \          Print gcloud dataproc command, but don't run it.\n"
-    generated_using: *id004
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'Local port to use for SSH tunnel to master node (default: 10000).'
-      synonyms:
-      - --port
-      - -p
-      args: !SimpleFlagArg
-        name: PORT
-      optional: true
-    - !Flag
-      description: 'Compute zone for Dataproc cluster (default: us- central1-b).'
-      synonyms:
-      - --zone
-      - -z
-      args: !SimpleFlagArg
-        name: ZONE
-      optional: true
-    - !Flag
-      description: Print gcloud dataproc command, but don't run it.
-      synonyms:
-      - --dry-run
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - hailctl
-    - dataproc
-    - connect
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: hailctl dataproc connect [-h] [--port PORT] [--zone ZONE] [--dry-run]\n\
-      \                                name\n                                {notebook,nb,spark-ui,ui,spark-ui1,ui1,spark-ui2,ui2,spark-history,hist}\n\
-      \nConnect to a running Dataproc cluster.\n\npositional arguments:\n  name  \
-      \                Cluster name.\n  {notebook,nb,spark-ui,ui,spark-ui1,ui1,spark-ui2,ui2,spark-history,hist}\n\
-      \                        Web service to launch.\n\noptional arguments:\n  -h,\
-      \ --help            show this help message and exit\n  --port PORT, -p PORT\
-      \  Local port to use for SSH tunnel to master node\n                       \
-      \ (default: 10000).\n  --zone ZONE, -z ZONE  Compute zone for Dataproc cluster\
-      \ (default: us-\n                        central1-b).\n  --dry-run         \
-      \    Print gcloud dataproc command, but don't run it.\n"
-    generated_using: *id004
-  - *id006
-  - !Command
-    positional:
-    - !Positional
-      description: Cluster name.
-      position: 0
-      name: name
-      optional: false
-    named:
-    - !Flag
-      description: Do not wait for cluster deletion.
-      synonyms:
-      - --async
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Print gcloud dataproc command, but don't run it.
-      synonyms:
-      - --dry-run
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - hailctl
-    - dataproc
-    - stop
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: hailctl dataproc stop [-h] [--async] [--dry-run] name\n\nShut\
-      \ down a Dataproc cluster.\n\npositional arguments:\n  name        Cluster name.\n\
-      \noptional arguments:\n  -h, --help  show this help message and exit\n  --async\
-      \     Do not wait for cluster deletion.\n  --dry-run   Print gcloud dataproc\
-      \ command, but don't run it.\n"
-    generated_using: *id004
-  - !Command
-    positional:
-    - !Positional
-      description: Cluster name.
-      position: 0
-      name: name
-      optional: false
-    named:
-    - !Flag
-      description: New Hail installation.
-      synonyms:
-      - --wheel
-      args: !SimpleFlagArg
-        name: WHEEL
-      optional: true
-    - !Flag
-      description: New number of worker machines (min. 2).
-      synonyms:
-      - --num-workers
-      - --n-workers
-      - -w
-      args: !SimpleFlagArg
-        name: NUM_WORKERS
-      optional: true
-    - !Flag
-      description: New number of preemptible worker machines.
-      synonyms:
-      - --num-preemptible-workers
-      - --n-pre-workers
-      - -p
-      args: !SimpleFlagArg
-        name: NUM_PREEMPTIBLE_WORKERS
-      optional: true
-    - !Flag
-      description: If set, cluster size downgrade will use graceful decommissioning
-        with the given timeout (e.g. "60m").
-      synonyms:
-      - --graceful-decommission-timeout
-      - --graceful
-      args: !SimpleFlagArg
-        name: GRACEFUL_DECOMMISSION_TIMEOUT
-      optional: true
-    - !Flag
-      description: New maximum idle time before shutdown (e.g. "60m").
-      synonyms:
-      - --max-idle
-      args: !SimpleFlagArg
-        name: MAX_IDLE
-      optional: true
-    - !Flag
-      description: Print gcloud dataproc command, but don't run it.
-      synonyms:
-      - --dry-run
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Compute zone for Dataproc cluster (default: us- central1-b).'
-      synonyms:
-      - --zone
-      - -z
-      args: !SimpleFlagArg
-        name: ZONE
-      optional: true
-    - !Flag
-      description: Update the version of hail running on cluster to match the currently
-        installed version.
-      synonyms:
-      - --update-hail-version
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - hailctl
-    - dataproc
-    - modify
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: hailctl dataproc modify [-h] [--wheel WHEEL]\n            \
-      \                   [--num-workers NUM_WORKERS]\n                          \
-      \     [--num-preemptible-workers NUM_PREEMPTIBLE_WORKERS]\n                \
-      \               [--graceful-decommission-timeout GRACEFUL_DECOMMISSION_TIMEOUT]\n\
-      \                               [--max-idle MAX_IDLE] [--dry-run] [--zone ZONE]\n\
-      \                               [--update-hail-version]\n                  \
-      \             name\n\nModify active Dataproc clusters.\n\npositional arguments:\n\
-      \  name                  Cluster name.\n\noptional arguments:\n  -h, --help\
-      \            show this help message and exit\n  --wheel WHEEL         New Hail\
-      \ installation.\n  --num-workers NUM_WORKERS, --n-workers NUM_WORKERS, -w NUM_WORKERS\n\
-      \                        New number of worker machines (min. 2).\n  --num-preemptible-workers\
-      \ NUM_PREEMPTIBLE_WORKERS, --n-pre-workers NUM_PREEMPTIBLE_WORKERS, -p NUM_PREEMPTIBLE_WORKERS\n\
-      \                        New number of preemptible worker machines.\n  --graceful-decommission-timeout\
-      \ GRACEFUL_DECOMMISSION_TIMEOUT, --graceful GRACEFUL_DECOMMISSION_TIMEOUT\n\
-      \                        If set, cluster size downgrade will use graceful\n\
-      \                        decommissioning with the given timeout (e.g. \"60m\"\
-      ).\n  --max-idle MAX_IDLE   New maximum idle time before shutdown (e.g. \"60m\"\
-      ).\n  --dry-run             Print gcloud dataproc command, but don't run it.\n\
-      \  --zone ZONE, -z ZONE  Compute zone for Dataproc cluster (default: us-\n \
-      \                       central1-b).\n  --update-hail-version\n            \
-      \            Update the version of hail running on cluster to match\n      \
-      \                  the currently installed version.\n"
-    generated_using: *id004
-  - !Command
-    positional:
-    - !Positional
-      description: Path to hail file (either MatrixTable or Table).
-      position: 0
-      name: file
-      optional: false
-    named: []
-    command:
-    - hailctl
-    - dataproc
-    - describe
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: hailctl dataproc describe [-h] file\n\nGather information about\
-      \ a hail file (including the schema)\n\npositional arguments:\n  file      \
-      \  Path to hail file (either MatrixTable or Table).\n\noptional arguments:\n\
-      \  -h, --help  show this help message and exit\n"
-    generated_using: *id004
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -899,8 +896,9 @@ parent: &id001 !Command
     \      Gather information about a hail file (including the\n                 \
     \       schema)\n\noptional arguments:\n  -h, --help            show this help\
     \ message and exit\n  --beta                Force use of `beta` in gcloud commands\n"
-  generated_using: *id004
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -923,4 +921,4 @@ help_text: "usage: hailctl dataproc diagnose [-h] --dest DEST [--hail-log HAIL_L
   \ diagnose.\n  --compress, -z        GZIP all files.\n  --workers [WORKERS [WORKERS\
   \ ...]]\n                        Specific workers to get log files from.\n  --take\
   \ TAKE           Only download logs from the first N workers.\n"
-generated_using: *id004
+generated_using: *id003

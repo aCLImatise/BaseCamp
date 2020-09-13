@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../meme2images.cwl
 inputs:
-- id: motif
+- id: in_motif
   doc: output only a selected motif; repeatable
   type: string
   inputBinding:
     prefix: -motif
-- id: eps
+- id: in_eps
   doc: output logos in eps format
   type: boolean
   inputBinding:
     prefix: -eps
-- id: png
+- id: in_png
   doc: output logos in png format
   type: boolean
   inputBinding:
     prefix: -png
-- id: rc
+- id: in_rc
   doc: output reverse complement logos
   type: boolean
   inputBinding:
     prefix: -rc
-- id: motifs_file
+- id: in_motifs_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: output_directory
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - meme2images

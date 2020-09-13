@@ -12,25 +12,41 @@ task Isoseq3Cluster {
     Boolean? log_file
     Boolean? verbose
     String iso_seq
-    String cluster
-    String fl_ncdot_bam_vertical_line_xml
     String unpolished_dot_bam_vertical_line_xml
+    String str
+    String cluster
+    String var_input
+    String fl_ncdot_bam_vertical_line_xml
+    String fl_nc
+    String unpolished
+    String bam
+    String or
+    String consensus_read_set
+    String transcript_set
   }
   command <<<
     isoseq3 cluster \
       ~{iso_seq} \
-      ~{cluster} \
-      ~{fl_ncdot_bam_vertical_line_xml} \
       ~{unpolished_dot_bam_vertical_line_xml} \
-      ~{true="--poa-cov" false="" poa_cov} \
-      ~{true="--use-qvs" false="" use_qvs} \
-      ~{true="--min-subreads-split" false="" min_sub_reads_split} \
-      ~{true="--split-bam" false="" split_bam} \
-      ~{true="--singletons" false="" singletons} \
-      ~{true="--num-threads" false="" num_threads} \
-      ~{true="--log-level" false="" log_level} \
-      ~{true="--log-file" false="" log_file} \
-      ~{true="--verbose" false="" verbose}
+      ~{str} \
+      ~{cluster} \
+      ~{var_input} \
+      ~{fl_ncdot_bam_vertical_line_xml} \
+      ~{fl_nc} \
+      ~{unpolished} \
+      ~{bam} \
+      ~{or} \
+      ~{consensus_read_set} \
+      ~{transcript_set} \
+      ~{if (poa_cov) then "--poa-cov" else ""} \
+      ~{if (use_qvs) then "--use-qvs" else ""} \
+      ~{if (min_sub_reads_split) then "--min-subreads-split" else ""} \
+      ~{if (split_bam) then "--split-bam" else ""} \
+      ~{if (singletons) then "--singletons" else ""} \
+      ~{if (num_threads) then "--num-threads" else ""} \
+      ~{if (log_level) then "--log-level" else ""} \
+      ~{if (log_file) then "--log-file" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     poa_cov: "INT   Maximum number of CCS reads used for POA consensus. [10]"
@@ -43,8 +59,19 @@ task Isoseq3Cluster {
     log_file: "FILE  Log to a file, instead of stderr."
     verbose: "Use verbose output."
     iso_seq: ""
-    cluster: ""
-    fl_ncdot_bam_vertical_line_xml: ""
     unpolished_dot_bam_vertical_line_xml: ""
+    str: ""
+    cluster: ""
+    var_input: ""
+    fl_ncdot_bam_vertical_line_xml: ""
+    fl_nc: ""
+    unpolished: ""
+    bam: ""
+    or: ""
+    consensus_read_set: ""
+    transcript_set: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

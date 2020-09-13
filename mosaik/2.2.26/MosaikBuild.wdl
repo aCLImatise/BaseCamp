@@ -2,25 +2,25 @@ version 1.0
 
 task MosaikBuild {
   input {
-    String? fr
-    String? ga
-    String? oa
+    File? fr
+    Int? ga
+    File? oa
     String? sn
     String? uri
-    String? fq
-    String? fr_two
-    String? fq_two
+    File? fq
+    File? fr_two
+    File? fq_two
     String? assign_qual
-    String? q_two
-    String? il
+    File? q_two
+    Int? il
     Boolean? split
     String? ds
-    String? id
-    String? ln
-    String? mfl
+    Int? id
+    Int? ln
+    Int? mfl
     Boolean? pu
-    String? sam
-    String? st
+    Int? sam
+    Int? st
     Boolean? tp
     Boolean? ts
   }
@@ -37,22 +37,22 @@ task MosaikBuild {
       ~{if defined(assign_qual) then ("-assignQual " +  '"' + assign_qual + '"') else ""} \
       ~{if defined(q_two) then ("-q2 " +  '"' + q_two + '"') else ""} \
       ~{if defined(il) then ("-il " +  '"' + il + '"') else ""} \
-      ~{true="-split" false="" split} \
+      ~{if (split) then "-split" else ""} \
       ~{if defined(ds) then ("-ds " +  '"' + ds + '"') else ""} \
       ~{if defined(id) then ("-id " +  '"' + id + '"') else ""} \
       ~{if defined(ln) then ("-ln " +  '"' + ln + '"') else ""} \
       ~{if defined(mfl) then ("-mfl " +  '"' + mfl + '"') else ""} \
-      ~{true="-pu" false="" pu} \
+      ~{if (pu) then "-pu" else ""} \
       ~{if defined(sam) then ("-sam " +  '"' + sam + '"') else ""} \
       ~{if defined(st) then ("-st " +  '"' + st + '"') else ""} \
-      ~{true="-tp" false="" tp} \
-      ~{true="-ts" false="" ts}
+      ~{if (tp) then "-tp" else ""} \
+      ~{if (ts) then "-ts" else ""}
   >>>
   parameter_meta {
     fr: "the FASTA reference sequences file"
     ga: "the genome assembly ID. e.g. HG18"
     oa: "the output reference file"
-    sn: "the species name. e.g. \"Homo sapiens\""
+    sn: "the species name. e.g. \\\"Homo sapiens\\\""
     uri: "the URI (e.g. URL or URN)"
     fq: "the FASTA base qualities file"
     fr_two: "the FASTA 2nd mate"
@@ -67,8 +67,12 @@ task MosaikBuild {
     mfl: "median fragment length. e.g. 150"
     pu: "<run name & lane>             the platform unit. e.g. IL12_490_5"
     sam: "sample name. e.g. NA12878"
-    st: "sets the sequencing technology: '454', 'helicos', 'illumina', 'illumina_long', 'sanger' or 'solid'"
+    st: "sets the sequencing technology: '454',\\n'helicos', 'illumina', 'illumina_long',\\n'sanger' or 'solid'"
     tp: "<# of beginning bases>        trims the first # of bases"
     ts: "<# of end bases>              trims the last # of bases"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_oa = "${in_oa}"
   }
 }

@@ -14,4 +14,7 @@ task Bustools {
     cmd: ""
     arguments: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

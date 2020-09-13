@@ -1,7 +1,10 @@
 version 1.0
 
-task MbLearnMock {
+task Mblearnmock {
   command <<<
-    mb-learn-mock
+    mb_learn_mock
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

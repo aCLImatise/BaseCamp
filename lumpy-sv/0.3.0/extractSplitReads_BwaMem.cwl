@@ -1,28 +1,31 @@
 class: CommandLineTool
 id: ../../../extractSplitReads_BwaMem.cwl
 inputs:
-- id: in_file
+- id: in_in_file
   doc: A SAM file or standard input (-i stdin).
   type: File
   inputBinding:
     prefix: --inFile
-- id: num_splits
-  doc: The maximum number of split-read mappings to allow per read. Reads with more
-    are excluded. Default=2
+- id: in_num_splits
+  doc: "The maximum number of split-read mappings to allow per\nread. Reads with more\
+    \ are excluded. Default=2"
   type: long
   inputBinding:
     prefix: --numSplits
-- id: included_ups
+- id: in_included_ups
   doc: Include alignments marked as duplicates. Default=False
   type: boolean
   inputBinding:
     prefix: --includeDups
-- id: min_non_overlap
-  doc: minimum non-overlap between split alignments on the query (default=20)
+- id: in_min_non_overlap
+  doc: "minimum non-overlap between split alignments on the\nquery (default=20)\n"
   type: long
   inputBinding:
     prefix: --minNonOverlap
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - extractSplitReads_BwaMem

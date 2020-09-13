@@ -4,4 +4,7 @@ task Gtf2genetab {
   command <<<
     gtf2genetab
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

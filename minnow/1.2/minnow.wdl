@@ -8,69 +8,69 @@ task Minnow {
     Boolean? test_uniq_ness
     Boolean? reverse_uniq_ness
     Boolean? use_weibull
-    String? num_of_doublets
-    String? mat_dir
-    String? outdir
-    String? num_molfile
+    Int? num_of_doublets
+    File? mat_dir
+    File? outdir
+    Int? num_molfile
     Boolean? gen_code
-    String? ref_file
-    String? g_two_t
+    File? ref_file
+    Int? g_two_t
     String? r_spd
-    String? bfh
-    String? gene_prob
-    String? count_prob
+    File? bfh
+    File? gene_prob
+    File? count_prob
     Boolean? velocity
     Boolean? binary
     Boolean? dbg
     Boolean? no_dump
-    String? gfa
-    String? dup_counts
+    File? gfa
+    Directory? dup_counts
     Boolean? use_whitelist
     Boolean? generate_noisy_cells
     Boolean? polya
-    String? polya_site
-    String? poly_a_fraction
+    File? polya_site
+    File? poly_a_fraction
     String? sample_cells
-    Int? intron_file
-    String? genome
-    String? number_of_cells
-    String? number_of_transcripts
-    String? clusters
-    String? pcr
-    String? pcr_model_six
+    File? intron_file
+    File? genome
+    Int? number_of_cells
+    Int? number_of_transcripts
+    Int? clusters
+    Int? pcr
+    Int? pcr_model_six
     String? error_rate
-    String? num_threads
-    String? eq_class_dir
-    String? cluster
+    Int? num_threads
+    Directory? eq_class_dir
+    File? cluster
   }
   command <<<
     minnow \
-      ~{true="--alevin-mode" false="" a_levin_mode} \
-      ~{true="--splatter-mode" false="" splatter_mode} \
-      ~{true="--normal-mode" false="" normal_mode} \
-      ~{true="--testUniqness" false="" test_uniq_ness} \
-      ~{true="--reverseUniqness" false="" reverse_uniq_ness} \
-      ~{true="--useWeibull" false="" use_weibull} \
+      ~{if (a_levin_mode) then "--alevin-mode" else ""} \
+      ~{if (splatter_mode) then "--splatter-mode" else ""} \
+      ~{if (normal_mode) then "--normal-mode" else ""} \
+      ~{if (test_uniq_ness) then "--testUniqness" else ""} \
+      ~{if (reverse_uniq_ness) then "--reverseUniqness" else ""} \
+      ~{if (use_weibull) then "--useWeibull" else ""} \
       ~{if defined(num_of_doublets) then ("--numOfDoublets " +  '"' + num_of_doublets + '"') else ""} \
       ~{if defined(mat_dir) then ("--matdir " +  '"' + mat_dir + '"') else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(num_molfile) then ("--numMolFile " +  '"' + num_molfile + '"') else ""} \
-      ~{true="--gencode" false="" gen_code} \
+      ~{if (gen_code) then "--gencode" else ""} \
       ~{if defined(ref_file) then ("--reffile " +  '"' + ref_file + '"') else ""} \
       ~{if defined(g_two_t) then ("--g2t " +  '"' + g_two_t + '"') else ""} \
       ~{if defined(r_spd) then ("--rspd " +  '"' + r_spd + '"') else ""} \
       ~{if defined(bfh) then ("--bfh " +  '"' + bfh + '"') else ""} \
       ~{if defined(gene_prob) then ("--geneProb " +  '"' + gene_prob + '"') else ""} \
       ~{if defined(count_prob) then ("--countProb " +  '"' + count_prob + '"') else ""} \
-      ~{true="--velocity" false="" velocity} \
-      ~{true="--binary" false="" binary} \
-      ~{true="--dbg" false="" dbg} \
-      ~{true="--noDump" false="" no_dump} \
+      ~{if (velocity) then "--velocity" else ""} \
+      ~{if (binary) then "--binary" else ""} \
+      ~{if (dbg) then "--dbg" else ""} \
+      ~{if (no_dump) then "--noDump" else ""} \
       ~{if defined(gfa) then ("--gfa " +  '"' + gfa + '"') else ""} \
       ~{if defined(dup_counts) then ("--dupCounts " +  '"' + dup_counts + '"') else ""} \
-      ~{true="--useWhiteList" false="" use_whitelist} \
-      ~{true="--generateNoisyCells" false="" generate_noisy_cells} \
-      ~{true="--polyA" false="" polya} \
+      ~{if (use_whitelist) then "--useWhiteList" else ""} \
+      ~{if (generate_noisy_cells) then "--generateNoisyCells" else ""} \
+      ~{if (polya) then "--polyA" else ""} \
       ~{if defined(polya_site) then ("--polyAsite " +  '"' + polya_site + '"') else ""} \
       ~{if defined(poly_a_fraction) then ("--polyAfraction " +  '"' + poly_a_fraction + '"') else ""} \
       ~{if defined(sample_cells) then ("--sampleCells " +  '"' + sample_cells + '"') else ""} \
@@ -114,7 +114,7 @@ task Minnow {
     generate_noisy_cells: "Flag for making minnow read the dup counts TSV filtered_cb_frequency.txt in the same folder"
     polya: "Flag to sample with polyA sites this should accompany --polyAsite and --polyAfraction"
     polya_site: "Fasta file with polyA sites"
-    poly_a_fraction: "File with polyA site fraction "
+    poly_a_fraction: "File with polyA site fraction"
     sample_cells: "sample this many cells from the set of all cells"
     intron_file: "Intron bed file which contains the intron boundaries per transcript"
     genome: "genome FASTA file"
@@ -127,5 +127,8 @@ task Minnow {
     num_threads: "number of threads to parallelize the process"
     eq_class_dir: "directory containing relevent files produced by the python script"
     cluster: "Optional cluster file to model cluster based histogram"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

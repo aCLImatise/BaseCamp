@@ -4,4 +4,7 @@ task OrthomclPairs {
   command <<<
     orthomclPairs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

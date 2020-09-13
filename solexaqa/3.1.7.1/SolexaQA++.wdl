@@ -1,7 +1,10 @@
 version 1.0
 
-task SolexaQA++ {
+task SolexaQA {
   command <<<
-    SolexaQA++
+    SolexaQA__
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

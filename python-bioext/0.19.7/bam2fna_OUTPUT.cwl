@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../bam2fna_OUTPUT.cwl
 inputs:
-- id: bam_two_fna
+- id: in_bam_two_fna
   doc: ''
-  type: string
+  type: long
   inputBinding:
     position: 0
-- id: input
+- id: in_input
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bam2fna

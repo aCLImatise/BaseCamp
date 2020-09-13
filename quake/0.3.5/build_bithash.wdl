@@ -4,4 +4,7 @@ task BuildBithash {
   command <<<
     build_bithash
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

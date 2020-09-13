@@ -23,9 +23,9 @@ task BcftoolsQuery {
       ~{a_dot_vcf_do_tgz} \
       ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
-      ~{true="--print-header" false="" print_header} \
+      ~{if (print_header) then "--print-header" else ""} \
       ~{if defined(include) then ("--include " +  '"' + include + '"') else ""} \
-      ~{true="--list-samples" false="" list_samples} \
+      ~{if (list_samples) then "--list-samples" else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
       ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
@@ -33,7 +33,7 @@ task BcftoolsQuery {
       ~{if defined(samples_file) then ("--samples-file " +  '"' + samples_file + '"') else ""} \
       ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
       ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
-      ~{true="--allow-undef-tags" false="" allow_undef_tags} \
+      ~{if (allow_undef_tags) then "--allow-undef-tags" else ""} \
       ~{if defined(vcf_list) then ("--vcf-list " +  '"' + vcf_list + '"') else ""}
   >>>
   parameter_meta {
@@ -49,8 +49,12 @@ task BcftoolsQuery {
     samples_file: "file of samples to include"
     targets: "similar to -r but streams rather than index-jumps"
     targets_file: "similar to -R but streams rather than index-jumps"
-    allow_undef_tags: "print \".\" for undefined tags"
+    allow_undef_tags: "print \\\".\\\" for undefined tags"
     vcf_list: "process multiple VCFs listed in the file"
     a_dot_vcf_do_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

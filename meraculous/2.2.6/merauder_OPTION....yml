@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- merauder
+- OPTION...
 positional:
 - !Positional
   description: ''
@@ -26,17 +29,89 @@ positional:
   name: required
   optional: false
 named: []
-command:
-- merauder
-- OPTION...
 parent: !Command
-  positional: []
-  named: []
   command:
   - merauder
+  positional: []
+  named:
+  - !Flag
+    description: Aggressive closures
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '*                   Contig FASTA file'
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: char
+    optional: true
+  - !Flag
+    description: Minimum depth (default 2)
+    synonyms:
+    - -D
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: '*                   Gap data file'
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: char
+    optional: true
+  - !Flag
+    description: Maximum insert size
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Mer size
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Polymorphic mode
+    synonyms:
+    - -P
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Quality offset (default 33)
+    synonyms:
+    - -Q
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Exclude repeats
+    synonyms:
+    - -R
+    args: !SimpleFlagArg
+      name: double
+    optional: true
+  - !Flag
+    description: '*                   Scaffold report file'
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: char
+    optional: true
+  - !Flag
+    description: Verbose mode
+    synonyms:
+    - -V
+    args: !EmptyFlagArg {}
+    optional: true
   parent:
   subcommands:
   - *id001
+  usage: []
   help_flag:
   usage_flag: !Flag
     description: Give a short usage message
@@ -63,6 +138,7 @@ parent: !Command
   generated_using: &id002
   - --help
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

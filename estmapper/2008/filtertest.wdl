@@ -4,4 +4,7 @@ task Filtertest {
   command <<<
     filtertest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

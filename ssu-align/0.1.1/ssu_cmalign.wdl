@@ -1,74 +1,74 @@
 version 1.0
 
-task SsuCmalign {
+task Ssucmalign {
   input {
-    String? output_alignment_file
-    Boolean? align_locally_model
+    File? output_alignment_file
+    Boolean? align_locally_wrt
     Boolean? quiet_suppress_banner
     String? metacm_mode_cmfile
     Boolean? i_leaved
     Boolean? no_prob
-    String? in_format
-    String? chunk
+    File? in_format
+    Int? chunk
     Boolean? devhelp
     Boolean? opt_acc
     Boolean? cy_k
     Boolean? sample
-    String? wsample_set_seed
+    Int? wsample_set_seed
     Boolean? viterbi
     Boolean? sub
     Boolean? small
     Boolean? h_banded
     Boolean? non_banded
-    String? tau
-    String? mx_size
+    Float? tau
+    Int? mx_size
     Boolean? rna
     Boolean? dna
     Boolean? match_only
-    String? with_ali
+    File? with_ali
     Boolean? with_p_knots
     Boolean? rf
-    String? gap_thresh
-    String? cm_idx
-    String? cm_name
-    String? t_file
-    String? i_file
-    String? el_file
-    String? s_file
+    Float? gap_thresh
+    Int? cm_idx
+    File? cm_name
+    File? t_file
+    File? i_file
+    File? el_file
+    File? s_file
     Boolean? options
     String cm_file
-    String sequence_file
+    File sequence_file
   }
   command <<<
-    ssu-cmalign \
+    ssu_cmalign \
       ~{cm_file} \
       ~{sequence_file} \
       ~{if defined(output_alignment_file) then ("-o " +  '"' + output_alignment_file + '"') else ""} \
-      ~{true="-l" false="" align_locally_model} \
-      ~{true="-q" false="" quiet_suppress_banner} \
+      ~{if (align_locally_wrt) then "-l" else ""} \
+      ~{if (quiet_suppress_banner) then "-q" else ""} \
       ~{if defined(metacm_mode_cmfile) then ("-M " +  '"' + metacm_mode_cmfile + '"') else ""} \
-      ~{true="--ileaved" false="" i_leaved} \
-      ~{true="--no-prob" false="" no_prob} \
+      ~{if (i_leaved) then "--ileaved" else ""} \
+      ~{if (no_prob) then "--no-prob" else ""} \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(chunk) then ("--chunk " +  '"' + chunk + '"') else ""} \
-      ~{true="--devhelp" false="" devhelp} \
-      ~{true="--optacc" false="" opt_acc} \
-      ~{true="--cyk" false="" cy_k} \
-      ~{true="--sample" false="" sample} \
+      ~{if (devhelp) then "--devhelp" else ""} \
+      ~{if (opt_acc) then "--optacc" else ""} \
+      ~{if (cy_k) then "--cyk" else ""} \
+      ~{if (sample) then "--sample" else ""} \
       ~{if defined(wsample_set_seed) then ("-s " +  '"' + wsample_set_seed + '"') else ""} \
-      ~{true="--viterbi" false="" viterbi} \
-      ~{true="--sub" false="" sub} \
-      ~{true="--small" false="" small} \
-      ~{true="--hbanded" false="" h_banded} \
-      ~{true="--nonbanded" false="" non_banded} \
+      ~{if (viterbi) then "--viterbi" else ""} \
+      ~{if (sub) then "--sub" else ""} \
+      ~{if (small) then "--small" else ""} \
+      ~{if (h_banded) then "--hbanded" else ""} \
+      ~{if (non_banded) then "--nonbanded" else ""} \
       ~{if defined(tau) then ("--tau " +  '"' + tau + '"') else ""} \
       ~{if defined(mx_size) then ("--mxsize " +  '"' + mx_size + '"') else ""} \
-      ~{true="--rna" false="" rna} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--matchonly" false="" match_only} \
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (match_only) then "--matchonly" else ""} \
       ~{if defined(with_ali) then ("--withali " +  '"' + with_ali + '"') else ""} \
-      ~{true="--withpknots" false="" with_p_knots} \
-      ~{true="--rf" false="" rf} \
+      ~{if (with_p_knots) then "--withpknots" else ""} \
+      ~{if (rf) then "--rf" else ""} \
       ~{if defined(gap_thresh) then ("--gapthresh " +  '"' + gap_thresh + '"') else ""} \
       ~{if defined(cm_idx) then ("--cm-idx " +  '"' + cm_idx + '"') else ""} \
       ~{if defined(cm_name) then ("--cm-name " +  '"' + cm_name + '"') else ""} \
@@ -76,11 +76,11 @@ task SsuCmalign {
       ~{if defined(i_file) then ("--ifile " +  '"' + i_file + '"') else ""} \
       ~{if defined(el_file) then ("--elfile " +  '"' + el_file + '"') else ""} \
       ~{if defined(s_file) then ("--sfile " +  '"' + s_file + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     output_alignment_file: ": output the alignment to file <f>, not stdout"
-    align_locally_model: ": align locally w.r.t. the model"
+    align_locally_wrt: ": align locally w.r.t. the model"
     quiet_suppress_banner: ": quiet; suppress banner and scores, print only the alignment"
     metacm_mode_cmfile: ": meta-cm mode: <cmfile> is a meta-cm built from aln in <f>"
     i_leaved: ": output alnment in interleaved Stockholm format (not 1 line/seq)"
@@ -115,5 +115,9 @@ task SsuCmalign {
     options: ""
     cm_file: ""
     sequence_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_alignment_file = "${in_output_alignment_file}"
   }
 }

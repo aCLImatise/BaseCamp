@@ -4,4 +4,7 @@ task Printsplitimage {
   command <<<
     printsplitimage
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

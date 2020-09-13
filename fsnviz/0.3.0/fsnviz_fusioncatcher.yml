@@ -1,4 +1,7 @@
-&id001 !Command
+&id002 !Command
+command:
+- fsnviz
+- fusioncatcher
 positional:
 - !Positional
   description: ''
@@ -6,40 +9,30 @@ positional:
   name: INPUT
   optional: false
 named: []
-command:
-- fsnviz
-- fusioncatcher
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - fsnviz
   positional: []
   named:
   - !Flag
-    description: 'Output directory. Default: current run directory.'
+    description: 'Output directory. Default: current run'
     synonyms:
     - --out-dir
     args: !SimpleFlagArg
       name: PATH
     optional: true
   - !Flag
-    description: Base file name of the image output. Filename extensions will be added
-      accordingly.
-    synonyms:
-    - -n
-    - --base-name
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  - !Flag
-    description: '[human.hg19|human.hg38] Karyotype to use. Must be supported by circos.
-      If the `--karyotype-file` parameter is defined, this parameter is ignored. Default:
-      human.hg19.'
+    description: "[human.hg19|human.hg38]\nKaryotype to use. Must be supported by\n\
+      circos. If the `--karyotype-file` parameter\nis defined, this parameter is ignored.\n\
+      Default: human.hg19."
     synonyms:
     - -k
     - --karyotype
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Circos configuration file. If not supplied, fsnviz generates a default
-      one.
+    description: "Circos configuration file. If not supplied,\nfsnviz generates a\
+      \ default one."
     synonyms:
     - -c
     - --circos-conf
@@ -47,40 +40,116 @@ parent: &id002 !Command
       name: FILE
     optional: true
   - !Flag
-    description: '/ --no-png                Whether to create PNG plots or not. Default:
-      no.'
+    description: '/ --no-png                Whether to create PNG plots or not. Default:'
     synonyms:
     - --png
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '/ --no-svg                Whether to create SVG plots or not. Default:
-      yes.'
-    synonyms:
-    - --svg
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: Karyotype file to use. This parameter takes precedence over the `--karyotype`
-      parameter.
-    synonyms:
-    - --karyotype-file
-    args: !SimpleFlagArg
-      name: FILE
-    optional: true
-  - !Flag
-    description: 'Circos executable. Default: circos (the one accessible via PATH).'
+    description: "Circos executable. Default: circos (the one\naccessible via PATH)."
     synonyms:
     - --circos-exe
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  command:
-  - fsnviz
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - fsnviz
+    - directory.
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: fsnviz
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: COMMAND
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: ARGS
+      optional: true
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: fsnviz [OPTIONS] COMMAND [ARGS]...\nTry 'fsnviz --help' for\
+      \ help.\n\nError: No such command 'directory.'.\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - fsnviz
+    - yes.
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: fsnviz
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: COMMAND
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: ARGS
+      optional: true
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: fsnviz [OPTIONS] COMMAND [ARGS]...\nTry 'fsnviz --help' for\
+      \ help.\n\nError: No such command 'yes.'.\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - fsnviz
+    - no.
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: fsnviz
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: COMMAND
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: ARGS
+      optional: true
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: fsnviz [OPTIONS] COMMAND [ARGS]...\nTry 'fsnviz --help' for\
+      \ help.\n\nError: No such command 'no.'.\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - fsnviz
+    - star-fusion
     positional:
     - !Positional
       description: ''
@@ -88,11 +157,9 @@ parent: &id002 !Command
       name: INPUT
       optional: false
     named: []
-    command:
-    - fsnviz
-    - star-fusion
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -103,8 +170,8 @@ parent: &id002 !Command
     version_flag:
     help_text: "Usage: fsnviz star-fusion [OPTIONS] INPUT\n\n  Plots output of STAR-Fusion.\n\
       \nOptions:\n  --help  Show this message and exit.\n"
-    generated_using: &id003
-    - --help
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -141,6 +208,7 @@ parent: &id002 !Command
     \ of FusionCatcher.\n  star-fusion    Plots output of STAR-Fusion.\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:

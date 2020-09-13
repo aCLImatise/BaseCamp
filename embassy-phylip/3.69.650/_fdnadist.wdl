@@ -1,17 +1,23 @@
 version 1.0
 
-task _fdnadist {
+task Fdnadist {
   input {
-    Boolean? method
     Boolean? weights
+    Boolean? lower
+    Boolean? print_data
   }
   command <<<
     _fdnadist \
-      ~{true="-method" false="" method} \
-      ~{true="-weights" false="" weights}
+      ~{if (weights) then "-weights" else ""} \
+      ~{if (lower) then "-lower" else ""} \
+      ~{if (print_data) then "-printdata" else ""}
   >>>
   parameter_meta {
-    method: "menu       [F84 distance model] Choose the method to use (Values: f (F84 distance model); k (Kimura 2-parameter distance); j (Jukes-Cantor distance); l (LogDet distance); s (Similarity table))"
     weights: "properties Weights file"
+    lower: "boolean    [N] Output as a lower triangular distance"
+    print_data: "boolean    [N] Print data at start of run"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

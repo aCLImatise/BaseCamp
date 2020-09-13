@@ -17,4 +17,7 @@ task Esimsa {
     max_charge: ""
     var_output: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

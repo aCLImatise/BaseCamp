@@ -4,4 +4,7 @@ task Arrive {
   command <<<
     arrive
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

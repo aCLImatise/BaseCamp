@@ -4,4 +4,7 @@ task TrfMask {
   command <<<
     trfMask
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

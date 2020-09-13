@@ -3,12 +3,18 @@ version 1.0
 task Sizeseq {
   input {
     Boolean? descending
+    Boolean? feature
   }
   command <<<
     sizeseq \
-      ~{true="-descending" false="" descending}
+      ~{if (descending) then "-descending" else ""} \
+      ~{if (feature) then "-feature" else ""}
   >>>
   parameter_meta {
-    descending: "boolean    [N] By default the shortest sequence is given first."
+    descending: "boolean    [N] By default the shortest sequence is\\ngiven first."
+    feature: "boolean    Sequence feature information will be\\nretained if this option is set."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

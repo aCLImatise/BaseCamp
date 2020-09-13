@@ -1,4 +1,7 @@
-&id001 !Command
+&id003 !Command
+command:
+- megahit_core
+- assemble
 positional:
 - !Positional
   description: ''
@@ -119,172 +122,17 @@ named:
   - --careful_bubble
   args: !EmptyFlagArg {}
   optional: true
-command:
-- megahit_core
-- assemble
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - megahit_core
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: local
-      optional: false
-    named:
-    - !Flag
-      description: (=8)                sparsity of hash mapper
-      synonyms:
-      - --sparsity
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: (=0.8)            alignment similarity threshold
-      synonyms:
-      - --similarity
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -c
-      args: !SimpleFlagArg
-        name: contigs.fa
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -r
-      args: !SimpleFlagArg
-        name: reads.fq
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -o
-      args: !SimpleFlagArg
-        name: out.local_contig.fa
-      optional: true
     command:
     - megahit_core
-    - local
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "local: unrecognized option '--help'\nuknown option\nUsage: local -c\
-      \ contigs.fa -r reads.fq -o out.local_contig.fa\noptions:\n  -c, --contig_file\
-      \ arg                  contig file\n  -l, --lib_file_prefix arg            \
-      \  lib file prefix\n      --kmin arg (=11)                   \n      --kmax\
-      \ arg (=41)                   \n      --step arg (=6)                    \n\
-      \      --seed_kmer arg (=31)              kmer size for seeding alignments\n\
-      \      --min_contig_len arg (=200)        \n      --min_mapping_len arg (=75)\
-      \        \n      --sparsity arg (=8)                sparsity of hash mapper\n\
-      \      --similarity arg (=0.8)            alignment similarity threshold\n \
-      \ -t, --num_threads arg (=0)             \n  -o, --output_file arg         \
-      \         \n\n"
-    generated_using: &id003
-    - --help
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: iterate
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: opt
-      optional: true
-    named:
-    - !Flag
-      description: (*) contigs file, fasta/fastq format, output by assembler
-      synonyms:
-      - -c
-      - --contig_file
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: (*) bubble file, fasta/fastq format, output by assembler
-      synonyms:
-      - -b
-      - --bubble_file
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: (*) reads to be aligned. "-" for stdin. Can be gzip'ed.
-      synonyms:
-      - -r
-      - --read_file
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: (=0)         number of cpu threads, at least 2. 0 for auto detect.
-      synonyms:
-      - -t
-      - --num_cpu_threads
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: (=0)                  (*) current kmer size.
-      synonyms:
-      - -k
-      - --kmer_k
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: (=0)                    (*) step for iteration (<= 28). i.e. this
-        iteration is from kmer_k to (kmer_k + step)
-      synonyms:
-      - -s
-      - --step
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    - !Flag
-      description: (*) output_prefix.edges.0 will be created.
-      synonyms:
-      - -o
-      - --output_prefix
-      args: !SimpleFlagArg
-        name: arg
-      optional: true
-    command:
-    - megahit_core
-    - iterate
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "iterate: unrecognized option '--help'\nuknown option\nUsage: iterate\
-      \ [opt]\nopt with (*) are must\nopt:\n  -c, --contig_file arg              \
-      \    (*) contigs file, fasta/fastq format, output by assembler\n  -b, --bubble_file\
-      \ arg                  (*) bubble file, fasta/fastq format, output by assembler\n\
-      \  -r, --read_file arg                    (*) reads to be aligned. \"-\" for\
-      \ stdin. Can be gzip'ed.\n  -t, --num_cpu_threads arg (=0)         number of\
-      \ cpu threads, at least 2. 0 for auto detect.\n  -k, --kmer_k arg (=0)     \
-      \             (*) current kmer size.\n  -s, --step arg (=0)                \
-      \    (*) step for iteration (<= 28). i.e. this iteration is from kmer_k to (kmer_k\
-      \ + step)\n  -o, --output_prefix arg                (*) output_prefix.edges.0\
-      \ will be created.\n\n"
-    generated_using: *id003
-  - !Command
+    - count
     positional:
     - !Positional
       description: ''
@@ -354,22 +202,20 @@ parent: &id002 !Command
     - !Flag
       description: ''
       synonyms:
-      - --input_file
-      args: !SimpleFlagArg
-        name: fastx_file
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
       - -o
       args: !SimpleFlagArg
         name: out
       optional: true
-    command:
-    - megahit_core
-    - count
-    parent: *id002
+    - !Flag
+      description: ''
+      synonyms:
+      - --input_file
+      args: !SimpleFlagArg
+        name: fastx_file
+      optional: true
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -383,8 +229,12 @@ parent: &id002 !Command
       \ (=out)         output prefix\n      --mem_flag arg (=1)                memory\
       \ options. 0: minimize memory usage; 1: automatically use moderate memory; other:\
       \ use all available mem specified by '--host_mem'\n\n"
-    generated_using: *id003
+    generated_using: &id002
+    - --help
   - !Command
+    command:
+    - megahit_core
+    - read2sdbg
     positional:
     - !Positional
       description: ''
@@ -464,11 +314,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: out
       optional: true
-    command:
-    - megahit_core
-    - read2sdbg
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -483,8 +331,299 @@ parent: &id002 !Command
       \ (=1)                memory options. 0: minimize memory usage; 1: automatically\
       \ use moderate memory; other: use all available mem specified by '--host_mem'\n\
       \      --need_mercy                       to add mercy edges.\n\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
+    command:
+    - megahit_core
+    - local
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: local
+      optional: false
+    named:
+    - !Flag
+      description: contig file
+      synonyms:
+      - -c
+      - --contig_file
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: lib file prefix
+      synonyms:
+      - -l
+      - --lib_file_prefix
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=11)
+      synonyms:
+      - --kmin
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=41)
+      synonyms:
+      - --kmax
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=6)
+      synonyms:
+      - --step
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=31)              kmer size for seeding alignments
+      synonyms:
+      - --seed_kmer
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=200)
+      synonyms:
+      - --min_contig_len
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=75)
+      synonyms:
+      - --min_mapping_len
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=8)                sparsity of hash mapper
+      synonyms:
+      - --sparsity
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=0.8)            alignment similarity threshold
+      synonyms:
+      - --similarity
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=0)
+      synonyms:
+      - -t
+      - --num_threads
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -o
+      - --output_file
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -r
+      args: !SimpleFlagArg
+        name: reads.fq
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "local: unrecognized option '--help'\nuknown option\nUsage: local -c\
+      \ contigs.fa -r reads.fq -o out.local_contig.fa\noptions:\n  -c, --contig_file\
+      \ arg                  contig file\n  -l, --lib_file_prefix arg            \
+      \  lib file prefix\n      --kmin arg (=11)                   \n      --kmax\
+      \ arg (=41)                   \n      --step arg (=6)                    \n\
+      \      --seed_kmer arg (=31)              kmer size for seeding alignments\n\
+      \      --min_contig_len arg (=200)        \n      --min_mapping_len arg (=75)\
+      \        \n      --sparsity arg (=8)                sparsity of hash mapper\n\
+      \      --similarity arg (=0.8)            alignment similarity threshold\n \
+      \ -t, --num_threads arg (=0)             \n  -o, --output_file arg         \
+      \         \n\n"
+    generated_using: *id002
+  - *id003
+  - !Command
+    command:
+    - megahit_core
+    - contig2fastg
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: contig2fastg
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: kmer_size
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: k_KMER_SIZE.contigs.fa
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: contig2fastg <kmer_size> <k_KMER_SIZE.contigs.fa>\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - megahit_core
+    - iterate
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: iterate
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: opt
+      optional: true
+    named:
+    - !Flag
+      description: (*) contigs file, fasta/fastq format, output by assembler
+      synonyms:
+      - -c
+      - --contig_file
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (*) bubble file, fasta/fastq format, output by assembler
+      synonyms:
+      - -b
+      - --bubble_file
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (*) reads to be aligned. "-" for stdin. Can be gzip'ed.
+      synonyms:
+      - -r
+      - --read_file
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=0)         number of cpu threads, at least 2. 0 for auto detect.
+      synonyms:
+      - -t
+      - --num_cpu_threads
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=0)                  (*) current kmer size.
+      synonyms:
+      - -k
+      - --kmer_k
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (=0)                    (*) step for iteration (<= 28). i.e. this
+        iteration is from kmer_k to (kmer_k + step)
+      synonyms:
+      - -s
+      - --step
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    - !Flag
+      description: (*) output_prefix.edges.0 will be created.
+      synonyms:
+      - -o
+      - --output_prefix
+      args: !SimpleFlagArg
+        name: arg
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "iterate: unrecognized option '--help'\nuknown option\nUsage: iterate\
+      \ [opt]\nopt with (*) are must\nopt:\n  -c, --contig_file arg              \
+      \    (*) contigs file, fasta/fastq format, output by assembler\n  -b, --bubble_file\
+      \ arg                  (*) bubble file, fasta/fastq format, output by assembler\n\
+      \  -r, --read_file arg                    (*) reads to be aligned. \"-\" for\
+      \ stdin. Can be gzip'ed.\n  -t, --num_cpu_threads arg (=0)         number of\
+      \ cpu threads, at least 2. 0 for auto detect.\n  -k, --kmer_k arg (=0)     \
+      \             (*) current kmer size.\n  -s, --step arg (=0)                \
+      \    (*) step for iteration (<= 28). i.e. this iteration is from kmer_k to (kmer_k\
+      \ + step)\n  -o, --output_prefix arg                (*) output_prefix.edges.0\
+      \ will be created.\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - megahit_core
+    - readstat
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: cat
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cat *.fq | readstat\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - megahit_core
+    - filterbylen
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: cat
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: contigs.fa
+      optional: false
+    named: []
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cat contigs.fa | filterbylen <min_len>\n"
+    generated_using: []
+  - !Command
+    command:
+    - megahit_core
+    - seq2sdbg
     positional:
     - !Positional
       description: ''
@@ -587,11 +726,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: arg
       optional: true
-    command:
-    - megahit_core
-    - seq2sdbg
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -612,76 +749,8 @@ parent: &id002 !Command
       \     --mem_flag arg (=1)                memory options. 0: minimize memory\
       \ usage; 1: automatically use moderate memory; other: use all available mem\
       \ specified by '--host_mem'\n\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: contig2fastg
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: kmer_size
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: k_KMER_SIZE.contigs.fa
-      optional: false
-    named: []
-    command:
-    - megahit_core
-    - contig2fastg
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Usage: contig2fastg <kmer_size> <k_KMER_SIZE.contigs.fa>\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: cat
-      optional: false
-    named: []
-    command:
-    - megahit_core
-    - readstat
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Usage: cat *.fq | readstat\n"
-    generated_using: *id003
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: cat
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: contigs.fa
-      optional: false
-    named: []
-    command:
-    - megahit_core
-    - filterbylen
-    parent: *id002
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Usage: cat contigs.fa | filterbylen <min_len>\n"
-    generated_using: []
+    generated_using: *id002
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -697,8 +766,9 @@ parent: &id002 !Command
     \    check whether the run-time CPU supports POPCNT\n       checkbmi2      check\
     \ whether the run-time CPU supports BMI2\n       dumpversion    dump version\n\
     \       kmax           the largest k value supported\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -720,4 +790,4 @@ help_text: "assemble: unrecognized option '--help'\nuknown option\nUsage: assemb
   \                   this is the last iteration\n      --output_standalone      \
   \          output standalone contigs to *.final.contigs.fa\n      --careful_bubble\
   \                   remove bubble carefully\n\n"
-generated_using: *id003
+generated_using: *id002

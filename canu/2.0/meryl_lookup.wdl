@@ -1,65 +1,53 @@
 version 1.0
 
-task MerylLookup {
+task Meryllookup {
   input {
-    String? sequence
+    Int? sequence
     Boolean? output_
     Boolean? mers
     Boolean? labels
     Boolean? min
     Boolean? max
-    String? threads
+    Int? threads
     String? memory
+    Boolean? existence
+    Boolean? dump
     Boolean? include
-    String var_9
-    String seq_id
-    String seq_pos
-    String exists
-    String fwd_mer
-    String fwd_val
-    String rev_mer
-    String rev_val
-    String var_17
+    Boolean? exclude
+    String speed_dot
   }
   command <<<
-    meryl-lookup \
-      ~{var_9} \
-      ~{seq_id} \
-      ~{seq_pos} \
-      ~{exists} \
-      ~{fwd_mer} \
-      ~{fwd_val} \
-      ~{rev_mer} \
-      ~{rev_val} \
-      ~{var_17} \
+    meryl_lookup \
+      ~{speed_dot} \
       ~{if defined(sequence) then ("-sequence " +  '"' + sequence + '"') else ""} \
-      ~{true="-output" false="" output_} \
-      ~{true="-mers" false="" mers} \
-      ~{true="-labels" false="" labels} \
-      ~{true="-min" false="" min} \
-      ~{true="-max" false="" max} \
+      ~{if (output_) then "-output" else ""} \
+      ~{if (mers) then "-mers" else ""} \
+      ~{if (labels) then "-labels" else ""} \
+      ~{if (min) then "-min" else ""} \
+      ~{if (max) then "-max" else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(memory) then ("-memory " +  '"' + memory + '"') else ""} \
-      ~{true="-include" false="" include}
+      ~{if (existence) then "-existence" else ""} \
+      ~{if (dump) then "-dump" else ""} \
+      ~{if (include) then "-include" else ""} \
+      ~{if (exclude) then "-exclude" else ""}
   >>>
   parameter_meta {
-    sequence: "[<input2.fasta>] \"
+    sequence: "[<input2.fasta>] \\"
     output_: "<output1>      [<output2>]"
-    mers: "<input1.meryl> [<input2.meryl>] [...] \"
+    mers: "<input1.meryl> [<input2.meryl>] [...] \\"
     labels: "<input1name>   [<input2name>]   [...]"
     min: "m    Ignore kmers with value below m"
     max: "m    Ignore kmers with value above m"
     threads: "Number of threads to use when constructing lookup table."
     memory: "Don't use more than m GB memory"
-    include: "/ -exclude"
-    var_9: "- name of the sequence this kmer is from"
-    seq_id: "- numeric version of the seqName (0-based)"
-    seq_pos: "- start position (0-based) of the kmer in the sequence"
-    exists: "- 'T' if the kmer exists in the database, 'F' if it does not"
-    fwd_mer: "- forward mer sequence"
-    fwd_val: "- value of the forward mer in the database"
-    rev_mer: "- reverse mer sequence"
-    rev_val: "- value of the reverse mer in the database"
-    var_17: "- name of the sequence this kmer is from"
+    existence: "Report a tab-delimited line for each sequence showing the number of kmers\\nin the sequence, in the database, and in both.\\noutput:  seqName <tab> mersInSeq <tab> mersInDB <tab> mersInBoth\\nseqName    - name of the sequence\\nmersInSeq  - number of mers in the sequence\\nmersInDB   - number of mers in the meryl database\\nmersInBoth - number of mers in the sequence that are\\nalso in the database"
+    dump: "Report a tab-delimited line reporting each kmer in the input sequences, in\\norder, annotated with the value of the kmer in the input database.  If the kmer\\ndoes not exist in the database its value will be reported as zero.\\noutput:  seqName <tab> seqId <tab> seqPos <tab> exists <tab> fwd-mer <tab> fwd-val <tab> rev-mer <tab> rev-val\\nseqName    - name of the sequence this kmer is from\\nseqId      - numeric version of the seqName (0-based)\\nseqPos     - start position (0-based) of the kmer in the sequence\\nexists     - 'T' if the kmer exists in the database, 'F' if it does not\\nfwd-mer    - forward mer sequence\\nfwd-val    - value of the forward mer in the database\\nrev-mer    - reverse mer sequence\\nrev-val    - value of the reverse mer in the database"
+    include: "/ -exclude\\nExtract sequences containing (-include) or not containing (-exclude) kmers in\\nany input database.  Output sequences are written in the same format as the input\\nsequences, with the number of kmers found added to the name.\\nIf two input files are supplied, the corresponding sequences are treated as a pair.\\noutput:  sequence given format (fasta or fastq) with the number of overlapping kmers appended\\nif pairs of sequences are given, R1 will be stdout and R2 be named as <output.r2>\\n<output.r2> will be automatically compressed if ends with .gz, .bz2, or xs\\nseqName    - name of the sequence this kmer is from\\nmersInBoth - number of mers in both sequence and in the database"
+    exclude: "Extract sequences *NOT containing* kmers in <input.meryl>.\\noutput:  sequence given format (fasta or fastq) without reads containing kmers\\nif pairs of sequences are given, R1 will be stdout and R2 be named as <output.r2>\\n<output.r2> will be automatically compressed if ends with .gz, .bz2, or xs\\nseqName    - name of the sequence this kmer is from"
+    speed_dot: "If the lookup table requires more memory than allowed, the program"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

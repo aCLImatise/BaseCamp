@@ -1,7 +1,10 @@
 version 1.0
 
-task UpdateSortBedStarchSlurmFloat128 {
+task Updatesortbedstarchslurmfloat128 {
   command <<<
-    update-sort-bed-starch-slurm-float128
+    update_sort_bed_starch_slurm_float128
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

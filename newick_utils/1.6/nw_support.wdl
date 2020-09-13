@@ -3,18 +3,21 @@ version 1.0
 task NwSupport {
   input {
     Boolean? hlp
-    String target_tree_filename_vertical_line
-    String replicates_filename
+    File target_tree_filename_vertical_line
+    File replicates_filename
   }
   command <<<
     nw_support \
       ~{target_tree_filename_vertical_line} \
       ~{replicates_filename} \
-      ~{true="-hlp" false="" hlp}
+      ~{if (hlp) then "-hlp" else ""}
   >>>
   parameter_meta {
     hlp: ""
     target_tree_filename_vertical_line: ""
     replicates_filename: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

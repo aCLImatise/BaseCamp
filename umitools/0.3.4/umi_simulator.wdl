@@ -2,17 +2,17 @@ version 1.0
 
 task UmiSimulator {
   input {
-    String? pcr_cycle
-    String? umi_length
-    String? pool_size
-    String? output_size
-    String? amplification_rate
-    String? pcr_error
-    String? sequencing_error
+    Int? pcr_cycle
+    Int? umi_length
+    Int? pool_size
+    Int? output_size
+    Int? amplification_rate
+    Float? pcr_error
+    Float? sequencing_error
     String? tasks_simulate_conditions
-    String? task_rep
-    String? cpu
-    String? seed
+    Int? task_rep
+    Int? cpu
+    Int? seed
   }
   command <<<
     umi_simulator \
@@ -31,14 +31,17 @@ task UmiSimulator {
   parameter_meta {
     pcr_cycle: "number of PCR cycles (default: 10)"
     umi_length: "length of UMI (default: 18)"
-    pool_size: "initial pool size (number of molecules before PCR) (default: 100)"
-    output_size: "final pool size (sequencing depth, i.e. number of reads sampled from the PCR amplified pool) (default: 100)"
-    amplification_rate: "successful rate of PCR amplification. The actual amplification rate is uniformally distributed between this number and 1 (default: 0.8)"
+    pool_size: "initial pool size (number of molecules before PCR)\\n(default: 100)"
+    output_size: "final pool size (sequencing depth, i.e. number of\\nreads sampled from the PCR amplified pool) (default:\\n100)"
+    amplification_rate: "successful rate of PCR amplification. The actual\\namplification rate is uniformally distributed between\\nthis number and 1 (default: 0.8)"
     pcr_error: "error rate of PCR amplification (default: 3e-05)"
     sequencing_error: "error rate of sequencing (default: 0.001)"
-    tasks_simulate_conditions: "tasks to simulate multiple conditions. Other PCR- related arguments are ignored when this option is used (default: None)"
+    tasks_simulate_conditions: "tasks to simulate multiple conditions. Other PCR-\\nrelated arguments are ignored when this option is used\\n(default: None)"
     task_rep: "number of replicates when doing tasks (default: 100)"
     cpu: "Tasks supporting multiprocessing. (default: 16)"
     seed: "starting seed (default: 0)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

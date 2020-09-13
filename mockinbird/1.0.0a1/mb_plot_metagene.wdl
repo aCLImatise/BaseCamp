@@ -1,24 +1,24 @@
 version 1.0
 
-task MbPlotMetagene {
+task Mbplotmetagene {
   input {
     String? downstream_bp
     String? upstream_bp
     String? gene_bp
     Int? min_ts_len
     Int? max_ts_len
-    String? smooth_window
+    Int? smooth_window
     String? label_center_a
     String? label_body
     String? label_center_b
     String? title
     Boolean? cleanup
     String? seed
-    String? n_bs_iterations
-    String? n_processes
+    Int? n_bs_iterations
+    Int? n_processes
   }
   command <<<
-    mb-plot-metagene \
+    mb_plot_metagene \
       ~{if defined(downstream_bp) then ("--downstream_bp " +  '"' + downstream_bp + '"') else ""} \
       ~{if defined(upstream_bp) then ("--upstream_bp " +  '"' + upstream_bp + '"') else ""} \
       ~{if defined(gene_bp) then ("--gene_bp " +  '"' + gene_bp + '"') else ""} \
@@ -29,7 +29,7 @@ task MbPlotMetagene {
       ~{if defined(label_body) then ("--labelBody " +  '"' + label_body + '"') else ""} \
       ~{if defined(label_center_b) then ("--labelCenterB " +  '"' + label_center_b + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
-      ~{true="--cleanup" false="" cleanup} \
+      ~{if (cleanup) then "--cleanup" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(n_bs_iterations) then ("--n_bs_iterations " +  '"' + n_bs_iterations + '"') else ""} \
       ~{if defined(n_processes) then ("--n_processes " +  '"' + n_processes + '"') else ""}
@@ -48,6 +48,9 @@ task MbPlotMetagene {
     cleanup: "remove temporary files"
     seed: "random seed"
     n_bs_iterations: "number of bootstrap iterations"
-    n_processes: "number of parallel processes spawned"
+    n_processes: "number of parallel processes spawned\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

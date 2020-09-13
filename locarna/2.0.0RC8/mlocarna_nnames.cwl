@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../mlocarna_nnames.cwl
 inputs:
-- id: man
+- id: in_man
   doc: Full documentation
   type: boolean
   inputBinding:
     prefix: --man
-- id: fast_a_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mlocarna_nnames

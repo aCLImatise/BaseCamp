@@ -1,212 +1,225 @@
 class: CommandLineTool
 id: ../../../R_scape_sim.cwl
 inputs:
-- id: _be_verbose
+- id: in__be_verbose
   doc: ': be verbose'
   type: boolean
   inputBinding:
     prefix: -v
-- id: dna
+- id: in_dna
   doc: ': use DNA alphabet'
   type: boolean
   inputBinding:
     prefix: --dna
-- id: rna
+- id: in_rna
   doc: ': use RNA alphabet'
   type: boolean
   inputBinding:
     prefix: --rna
-- id: amino
+- id: in_amino
   doc: ': use protein alphabet'
   type: boolean
   inputBinding:
     prefix: --amino
-- id: naive
+- id: in_naive
   doc: ': naive simulation: independent positions'
   type: boolean
   inputBinding:
     prefix: --naive
-- id: rn_ass
+- id: in_rn_ass
   doc: ': simulation according to a RNA secondary structure'
   type: boolean
   inputBinding:
     prefix: --rnass
-- id: potts
+- id: in_potts
   doc: ': Metropolis-Hastins for a potts model'
   type: boolean
   inputBinding:
     prefix: --potts
-- id: potts_file
+- id: in_potts_file
   doc: ': read potts params from file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --pottsfile
-- id: cnt_maxd
+- id: in_cnt_maxd
   doc: ': max distance for contact definition'
-  type: string
+  type: long
   inputBinding:
     prefix: --cntmaxD
-- id: pdb_file
+- id: in_pdb_file
   doc: ': read contacts from pdbfile <f>'
   type: string
   inputBinding:
     prefix: --pdbfile
-- id: pott_sigma
+- id: in_pott_sigma
   doc: ': if sampling param from a N(0,sigma)'
-  type: string
+  type: long
   inputBinding:
     prefix: --pottsigma
-- id: ptp_gauss
+- id: in_ptp_gauss
   doc: ': potts param sampled from a Gaussian distribution'
   type: boolean
   inputBinding:
     prefix: --ptpgauss
-- id: ptp_file
+- id: in_ptp_file
   doc: ': potts param from file pottsfile'
   type: boolean
   inputBinding:
     prefix: --ptpfile
-- id: _length_alignment
+- id: in__length_alignment
   doc: ': length of the alignment'
-  type: string
+  type: long
   inputBinding:
     prefix: -L
-- id: number_sequences_simulated
+- id: in_number_sequences_simulated
   doc: ': number of sequences in the simulated msa, N=0 for use all'
-  type: string
+  type: long
   inputBinding:
     prefix: -N
-- id: abl
+- id: in_abl
   doc: ': tree average branch length in number of changes per site'
-  type: string
+  type: long
   inputBinding:
     prefix: --abl
-- id: at_bl
+- id: in_at_bl
   doc: ': tree average total branch length in number of changes per site'
-  type: string
+  type: long
   inputBinding:
     prefix: --atbl
-- id: no_indels
+- id: in_no_indels
   doc: ': produces ungapped alignments'
   type: boolean
   inputBinding:
     prefix: --noindels
-- id: eq_branch
+- id: in_eq_branch
   doc: ': make all branch lengths equal size'
   type: boolean
   inputBinding:
     prefix: --eqbranch
-- id: star
+- id: in_star
   doc: ': star topology'
   type: boolean
   inputBinding:
     prefix: --star
-- id: rand
+- id: in_rand
   doc: ': independent sequences'
   type: boolean
   inputBinding:
     prefix: --rand
-- id: given
+- id: in_given
   doc: ': given msa topology'
   type: boolean
   inputBinding:
     prefix: --given
-- id: sim
+- id: in_sim
   doc: ': simulated topology'
   type: boolean
   inputBinding:
     prefix: --sim
-- id: uses_q
+- id: in_uses_q
   doc: ': sq from the origional msa used as root (default random)'
   type: string
   inputBinding:
     prefix: --usesq
-- id: evo_model
+- id: in_evo_model
   doc: ': evolutionary model used'
   type: string
   inputBinding:
     prefix: --evomodel
-- id: ribo_file
+- id: in_ribo_file
   doc: ': read ribosum structure from file <f>'
-  type: string
+  type: File
   inputBinding:
     prefix: --ribofile
-- id: mx
+- id: in_mx
   doc: ': substitution rate matrix choice (of some built-in matrices)'
   type: string
   inputBinding:
     prefix: --mx
-- id: outdir
+- id: in_outdir
   doc: ': specify a directory for all output files'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: send_output_file
+- id: in_send_output_file
   doc: ': send output to file <f>, not stdout'
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: in_format
+- id: in_in_format
   doc: ': specify format'
   type: string
   inputBinding:
     prefix: --informat
-- id: one_msa
+- id: in_one_msa
   doc: ': if file has more than one msa, analyze only the first one'
   type: boolean
   inputBinding:
     prefix: --onemsa
-- id: filter_seqs_xseqcons
+- id: in_filter_seqs_xseqcons
   doc: ': filter out seqs <x*seq_cons residues'
   type: string
   inputBinding:
     prefix: -F
-- id: var_32
+- id: in_var_32
   doc: ': require seqs to have < <x> id'
   type: string
   inputBinding:
     prefix: -I
-- id: var_33
+- id: in_var_33
   doc: ': require seqs to have >= <x> id'
   type: string
   inputBinding:
     prefix: -i
-- id: gap_thresh
+- id: in_gap_thresh
   doc: ': keep columns with < <x> fraction of gaps'
   type: string
   inputBinding:
     prefix: --gapthresh
-- id: mini_d
+- id: in_mini_d
   doc: ': minimum avgid of the given alignment'
   type: string
   inputBinding:
     prefix: --minid
-- id: max_id
+- id: in_max_id
   doc: ': maximum avgid of the given alignment'
   type: string
   inputBinding:
     prefix: --maxid
-- id: to_l
+- id: in_to_l
   doc: ': tolerance'
   type: string
   inputBinding:
     prefix: --tol
-- id: seed
+- id: in_seed
   doc: ': set RNG seed to <n>'
   type: string
   inputBinding:
     prefix: --seed
-- id: options
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: msa
+- id: in_msa
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: ': specify a directory for all output files'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_send_output_file
+  doc: ': send output to file <f>, not stdout'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_send_output_file)
 cwlVersion: v1.1
 baseCommand:
 - R-scape-sim

@@ -1,7 +1,10 @@
 version 1.0
 
-task AnviScriptVisualizeSplitCoverages {
+task Anviscriptvisualizesplitcoverages {
   command <<<
-    anvi-script-visualize-split-coverages
+    anvi_script_visualize_split_coverages
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

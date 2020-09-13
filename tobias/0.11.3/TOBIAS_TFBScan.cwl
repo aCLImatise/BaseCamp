@@ -1,89 +1,113 @@
 class: CommandLineTool
 id: ../../../TOBIAS_TFBScan.cwl
 inputs:
-- id: _motifs_file
+- id: in__motifs_file
   doc: ', --motifs         File containing motifs in either MEME, PFM or JASPAR format'
   type: boolean
   inputBinding:
     prefix: -m
-- id: _fasta_file
+- id: in__fasta_file
   doc: ', --fasta          A fasta file of sequences to use for scanning motifs'
   type: boolean
   inputBinding:
     prefix: -f
-- id: _regions_scanning
+- id: in__regions_scanning
   doc: ', --regions        Subset scanning to regions of interest'
   type: boolean
   inputBinding:
     prefix: -r
-- id: outdir
-  doc: 'Output directory for TFBS sites in one file per motif (default: ./tfbscan_output/).
-    NOTE: Select either --outdir or --outfile.'
-  type: boolean
+- id: in_outdir
+  doc: "Output directory for TFBS sites in one file per motif (default:\n./tfbscan_output/).\
+    \ NOTE: Select either --outdir or --outfile."
+  type: File
   inputBinding:
     prefix: --outdir
-- id: outfile
-  doc: 'Output file for TFBS sites joined in one bed-file (default: not set). NOTE:
-    Select either --outdir or --outfile.'
-  type: boolean
+- id: in_outfile
+  doc: "Output file for TFBS sites joined in one bed-file (default: not\nset). NOTE:\
+    \ Select either --outdir or --outfile."
+  type: File
   inputBinding:
     prefix: --outfile
-- id: naming
-  doc: "Naming convention for bed-ids and output files ('id', 'name', 'name_id', 'id_name')\
-    \ (default: 'name_id')"
+- id: in_naming
+  doc: "Naming convention for bed-ids and output files ('id', 'name',\n'name_id',\
+    \ 'id_name') (default: 'name_id')"
   type: boolean
   inputBinding:
     prefix: --naming
-- id: gc
-  doc: 'Set the gc content for background regions (default: will be estimated from
-    fasta)'
+- id: in_gc
+  doc: "Set the gc content for background regions (default: will be\nestimated from\
+    \ fasta)"
   type: boolean
   inputBinding:
     prefix: --gc
-- id: p_value
+- id: in_p_value
   doc: 'Set p-value for motif matches (default: 0.0001)'
   type: boolean
   inputBinding:
     prefix: --pvalue
-- id: keep_overlaps
-  doc: 'Keep overlaps of same motifs (default: overlaps are resolved by keeping best-scoring
-    site)'
+- id: in_keep_overlaps
+  doc: "Keep overlaps of same motifs (default: overlaps are resolved by\nkeeping best-scoring\
+    \ site)"
   type: boolean
   inputBinding:
     prefix: --keep-overlaps
-- id: add_region_columns
-  doc: 'Add extra information columns (starting from 4th column) from --regions to
-    the output .bed-file(s) (default: off)'
+- id: in_add_region_columns
+  doc: Add extra information columns (starting from 4th column) from
   type: boolean
   inputBinding:
     prefix: --add-region-columns
-- id: verbosity
-  doc: 'Level of output logging (0: silent, 1: errors/warnings, 2: info, 3: stats,
-    4: debug, 5: spam) (default: 3)'
+- id: in_regions
+  doc: 'the output .bed-file(s) (default: off)'
+  type: File
+  inputBinding:
+    prefix: --regions
+- id: in_verbosity
+  doc: "Level of output logging (0: silent, 1: errors/warnings, 2: info,\n3: stats,\
+    \ 4: debug, 5: spam) (default: 3)"
   type: long
   inputBinding:
     prefix: --verbosity
-- id: split
+- id: in_split
   doc: 'Split of multiprocessing jobs (default: 100)'
   type: long
   inputBinding:
     prefix: --split
-- id: cores
+- id: in_cores
   doc: 'Number of cores to use (default: 1)'
   type: boolean
   inputBinding:
     prefix: --cores
-- id: motifs
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --motifs
-- id: fast_a
+- id: in_fast_a
   doc: ''
   type: string
   inputBinding:
     prefix: --fasta
-outputs: []
+- id: in_motifs
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --motifs
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: "Output directory for TFBS sites in one file per motif (default:\n./tfbscan_output/).\
+    \ NOTE: Select either --outdir or --outfile."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_outfile
+  doc: "Output file for TFBS sites joined in one bed-file (default: not\nset). NOTE:\
+    \ Select either --outdir or --outfile."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
+- id: out_regions
+  doc: 'the output .bed-file(s) (default: off)'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_regions)
 cwlVersion: v1.1
 baseCommand:
 - TOBIAS

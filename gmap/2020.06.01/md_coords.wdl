@@ -2,16 +2,19 @@ version 1.0
 
 task MdCoords {
   input {
-    Boolean? options
     Boolean? more_options
+    Boolean? options
   }
   command <<<
     md_coords \
-      ~{true="-OPTIONS" false="" options} \
-      ~{true="-MORE_OPTIONS" false="" more_options}
+      ~{if (more_options) then "-MORE_OPTIONS" else ""} \
+      ~{if (options) then "-OPTIONS" else ""}
   >>>
   parameter_meta {
-    options: ""
     more_options: ""
+    options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -13,22 +13,22 @@ task SmofStat {
     Boolean? aa_profile
     Boolean? hist
     Boolean? log_hist
-    String input_fasta_sequence
+    String input_fasta_default
   }
   command <<<
     smof stat \
-      ~{input_fasta_sequence} \
+      ~{input_fasta_default} \
       ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""} \
-      ~{true="--byseq" false="" by_seq} \
-      ~{true="--case-sensitive" false="" case_sensitive} \
-      ~{true="--count-lower" false="" count_lower} \
-      ~{true="--counts" false="" counts} \
-      ~{true="--type" false="" type} \
-      ~{true="--length" false="" length} \
-      ~{true="--proportion" false="" proportion} \
-      ~{true="--aa-profile" false="" aa_profile} \
-      ~{true="--hist" false="" hist} \
-      ~{true="--log-hist" false="" log_hist}
+      ~{if (by_seq) then "--byseq" else ""} \
+      ~{if (case_sensitive) then "--case-sensitive" else ""} \
+      ~{if (count_lower) then "--count-lower" else ""} \
+      ~{if (counts) then "--counts" else ""} \
+      ~{if (type) then "--type" else ""} \
+      ~{if (length) then "--length" else ""} \
+      ~{if (proportion) then "--proportion" else ""} \
+      ~{if (aa_profile) then "--aa-profile" else ""} \
+      ~{if (hist) then "--hist" else ""} \
+      ~{if (log_hist) then "--log-hist" else ""}
   >>>
   parameter_meta {
     delimiter: "output delimiter"
@@ -42,6 +42,9 @@ task SmofStat {
     aa_profile: "display protein profile"
     hist: "write ascii histogram of sequence lengths"
     log_hist: "write ascii histogram of sequence log2 lengths"
-    input_fasta_sequence: "input fasta sequence (default = stdin)"
+    input_fasta_default: "input fasta sequence (default = stdin)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

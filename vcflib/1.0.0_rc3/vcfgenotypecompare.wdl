@@ -3,7 +3,7 @@ version 1.0
 task Vcfgenotypecompare {
   input {
     String other_genotype_tag
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcfgenotypecompare \
@@ -13,5 +13,8 @@ task Vcfgenotypecompare {
   parameter_meta {
     other_genotype_tag: ""
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

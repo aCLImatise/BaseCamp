@@ -1,6 +1,6 @@
 version 1.0
 
-task SsuEslSelectnFile {
+task SsueslselectnFile {
   input {
     Boolean? options
     String ssu_esl_select_n
@@ -8,16 +8,19 @@ task SsuEslSelectnFile {
     File file
   }
   command <<<
-    ssu-esl-selectn file \
+    ssu_esl_selectn file \
       ~{ssu_esl_select_n} \
       ~{n} \
       ~{file} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     ssu_esl_select_n: ""
     n: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

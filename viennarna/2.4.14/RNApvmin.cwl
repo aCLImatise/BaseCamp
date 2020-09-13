@@ -1,116 +1,127 @@
 class: CommandLineTool
 id: ../../../RNApvmin.cwl
 inputs:
-- id: detailed_help
-  doc: Print help, including all details and hidden options, and exit
+- id: in_detailed_help
+  doc: "Print help, including all details and hidden\noptions, and exit"
   type: boolean
   inputBinding:
     prefix: --detailed-help
-- id: full_help
+- id: in_full_help
   doc: Print help, including hidden options, and exit
   type: boolean
   inputBinding:
     prefix: --full-help
-- id: tau_sigma_ratio
-  doc: Ratio of the weighting factors tau and sigma. (default=`1.0')
+- id: in_shape_conversion
+  doc: "+ [optional parameters]\nSpecify the method used to convert SHAPE\nreactivities\
+    \ to pairing probabilities.\n(default=`O')"
   type: string
   inputBinding:
+    prefix: --shapeConversion
+- id: in_tau_sigma_ratio
+  doc: "Ratio of the weighting factors tau and sigma.\n(default=`1.0')"
+  type: double
+  inputBinding:
     prefix: --tauSigmaRatio
-- id: objective_function
-  doc: The energies of the perturbation vector and the discripancies between predicted
-    and observed pairing probabilities contribute to the objective function. This
-    parameter defines, which function is used to process the contributions before
-    summing them up. 0 square 1 absolute (default=`0')
+- id: in_objective_function
+  doc: "The energies of the perturbation vector and the\ndiscripancies between predicted\
+    \ and observed\npairing probabilities contribute to the\nobjective function. This\
+    \ parameter defines,\nwhich function is used to process the\ncontributions before\
+    \ summing them up.\n0 square\n1 absolute\n(default=`0')"
   type: long
   inputBinding:
     prefix: --objectiveFunction
-- id: sample_size
-  doc: The iterative minimization process requires to evaluate the gradient of the
-    objective function. A sample size of 0 leads to an analytical evaluation which
-    scales as O(N^4). Choosing a sample size >0 estimates the gradient by sampling
-    the given number of sequences from the ensemble, which is much faster. (default=`1000')
+- id: in_sample_size
+  doc: "The iterative minimization process requires to\nevaluate the gradient of the\
+    \ objective\nfunction. A sample size of 0 leads to an\nanalytical evaluation which\
+    \ scales as O(N^4).\nChoosing a sample size >0 estimates the\ngradient by sampling\
+    \ the given number of\nsequences from the ensemble, which is much\nfaster.\n(default=`1000')"
   type: long
   inputBinding:
     prefix: --sampleSize
-- id: nonredundant
-  doc: Enable non-redundant sampling strategy. (default=off)
+- id: in_nonredundant
+  doc: "Enable non-redundant sampling strategy.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --nonRedundant
-- id: intermediate_path
-  doc: Write an output file for each iteration of the minimization process. Each file
-    contains the used perturbation vector and the score of the objective function.
-    The number of the iteration will be appended to the given path.
-  type: string
+- id: in_intermediate_path
+  doc: "Write an output file for each iteration of the\nminimization process. Each\
+    \ file contains the\nused perturbation vector and the score of the\nobjective\
+    \ function. The number of the\niteration will be appended to the given path."
+  type: long
   inputBinding:
     prefix: --intermediatePath
-- id: initial_vector
-  doc: Defines the initial perturbation vector which will be used as starting vector
-    for the minimization process. The value 0 results in a null vector. Every other
-    value x will be used to populate the initial vector with random numbers from the
-    interval [-x,x]. (default=`0')
-  type: string
+- id: in_initial_vector
+  doc: "Defines the initial perturbation vector which\nwill be used as starting vector\
+    \ for the\nminimization process. The value 0 results in\na null vector. Every\
+    \ other value x will be\nused to populate the initial vector with\nrandom numbers\
+    \ from the interval [-x,x].\n(default=`0')"
+  type: long
   inputBinding:
     prefix: --initialVector
-- id: minimizer
-  doc: Set the minimizing algorithm used for finding an appropriate perturbation vector.
-    The default option uses a custom implementation of the gradient descent algorithms
-    while all other options represent various algorithms implemented in the GNU Scientific
-    Library. When the GNU Scientific Library can not be found, only the default minimizer
-    is available. (possible values="conjugate_fr", "conjugate_pr", "vector_bfgs",
-    "vector_bfgs2", "steepest_descent", "default" default=`default')
-  type: string
+- id: in_minimizer
+  doc: "Set the minimizing algorithm used for finding\nan appropriate perturbation\
+    \ vector. The\ndefault option uses a custom implementation\nof the gradient descent\
+    \ algorithms while all\nother options represent various algorithms\nimplemented\
+    \ in the GNU Scientific Library.\nWhen the GNU Scientific Library can not be\n\
+    found, only the default minimizer is\navailable.\n(possible values=\"conjugate_fr\"\
+    ,\n\"conjugate_pr\", \"vector_bfgs\",\n\"vector_bfgs2\", \"steepest_descent\"\
+    ,\n\"default\" default=`default')"
+  type: long
   inputBinding:
     prefix: --minimizer
-- id: temp
-  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
-  type: string
+- id: in_temp
+  doc: "Rescale energy parameters to a temperature of\ntemp C. Default is 37C."
+  type: long
   inputBinding:
     prefix: --temp
-- id: no_tetra
-  doc: Do not include special tabulated stabilizing energies for tri-, tetra- and
-    hexaloop hairpins. Mostly for testing. (default=off)
+- id: in_no_tetra
+  doc: "Do not include special tabulated stabilizing\nenergies for tri-, tetra- and\
+    \ hexaloop\nhairpins. Mostly for testing.\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noTetra
-- id: dangles
-  doc: How to treat "dangling end" energies for bases adjacent to helices in free
-    ends and multi-loops (default=`2')
+- id: in_dangles
+  doc: "How to treat \"dangling end\" energies for\nbases adjacent to helices in free\
+    \ ends and\nmulti-loops\n(default=`2')"
   type: long
   inputBinding:
     prefix: --dangles
-- id: no_lp
-  doc: Produce structures without lonely pairs (helices of length 1). (default=off)
+- id: in_no_lp
+  doc: "Produce structures without lonely pairs\n(helices of length 1).\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noLP
-- id: no_gu
-  doc: Do not allow GU pairs (default=off)
+- id: in_no_gu
+  doc: "Do not allow GU pairs\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noGU
-- id: no_closing_gu
-  doc: Do not allow GU pairs at the end of helices (default=off)
+- id: in_no_closing_gu
+  doc: "Do not allow GU pairs at the end of helices\n(default=off)"
   type: boolean
   inputBinding:
     prefix: --noClosingGU
-- id: param_file
-  doc: Read energy parameters from paramfile, instead of using the default parameter
-    set.
-  type: string
+- id: in_param_file
+  doc: "Read energy parameters from paramfile, instead\nof using the default parameter\
+    \ set."
+  type: File
   inputBinding:
     prefix: --paramFile
-- id: max_bp_span
-  doc: Set the maximum base pair span (default=`-1')
+- id: in_max_bp_span
+  doc: "Set the maximum base pair span\n(default=`-1')"
   type: long
   inputBinding:
     prefix: --maxBPspan
-- id: file_dot_shape
-  doc: ''
-  type: File
+- id: in_program
+  doc: "-j, --numThreads=INT          Set the number of threads used for calculations\n\
+    (only available when compiled with OpenMP\nsupport)"
+  type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - RNApvmin

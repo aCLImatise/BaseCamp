@@ -2,7 +2,7 @@ version 1.0
 
 task PpanggolinInfo {
   input {
-    String? pan_genome
+    File? pan_genome
     Boolean? parameters
     Boolean? content
     Boolean? status
@@ -10,14 +10,17 @@ task PpanggolinInfo {
   command <<<
     ppanggolin info \
       ~{if defined(pan_genome) then ("--pangenome " +  '"' + pan_genome + '"') else ""} \
-      ~{true="--parameters" false="" parameters} \
-      ~{true="--content" false="" content} \
-      ~{true="--status" false="" status}
+      ~{if (parameters) then "--parameters" else ""} \
+      ~{if (content) then "--content" else ""} \
+      ~{if (status) then "--status" else ""}
   >>>
   parameter_meta {
     pan_genome: "The pangenome .h5 file (default: None)"
-    parameters: "Shows the parameters used (or computed) for each step of the pangenome generation (default: False)"
-    content: "Shows detailled informations about the pangenome's content (default: False)"
-    status: "Shows informations about the statuses of the different elements of the pangenome (what has been computed, or not) (default: False)"
+    parameters: "Shows the parameters used (or computed) for each step\\nof the pangenome generation (default: False)"
+    content: "Shows detailled informations about the pangenome's\\ncontent (default: False)"
+    status: "Shows informations about the statuses of the different\\nelements of the pangenome (what has been computed, or\\nnot) (default: False)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,20 +2,20 @@ version 1.0
 
 task SimulateNonSilentRatio {
   input {
-    String? log_level
-    String? log
-    String? gene_fasta_file
-    String? mutations
-    String? bed
-    String? processes
-    String? num_permutations
-    String? context
-    String? score_dir
+    File? log_level
+    File? log
+    File? gene_fasta_file
+    File? mutations
+    File? bed
+    Int? processes
+    Int? num_permutations
+    Int? context
+    Directory? score_dir
     Boolean? by_sample
     Boolean? use_unmapped
-    String? genome
-    String? observed_output
-    String? output_text_file_simulation
+    File? genome
+    File? observed_output
+    File? output_text_file_simulation
   }
   command <<<
     simulate_non_silent_ratio \
@@ -28,26 +28,31 @@ task SimulateNonSilentRatio {
       ~{if defined(num_permutations) then ("--num-permutations " +  '"' + num_permutations + '"') else ""} \
       ~{if defined(context) then ("--context " +  '"' + context + '"') else ""} \
       ~{if defined(score_dir) then ("--score-dir " +  '"' + score_dir + '"') else ""} \
-      ~{true="--by-sample" false="" by_sample} \
-      ~{true="--use-unmapped" false="" use_unmapped} \
+      ~{if (by_sample) then "--by-sample" else ""} \
+      ~{if (use_unmapped) then "--use-unmapped" else ""} \
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if defined(observed_output) then ("--observed-output " +  '"' + observed_output + '"') else ""} \
       ~{if defined(output_text_file_simulation) then ("--output " +  '"' + output_text_file_simulation + '"') else ""}
   >>>
   parameter_meta {
-    log_level: "Write a log file (--log-level=DEBUG for debug mode, --log-level=INFO for info mode)"
-    log: "Path to log file. (accepts \"stdout\")"
+    log_level: "Write a log file (--log-level=DEBUG for debug mode,\\n--log-level=INFO for info mode)"
+    log: "Path to log file. (accepts \\\"stdout\\\")"
     gene_fasta_file: "gene FASTA file from extract_gene_seq.py script"
     mutations: "DNA mutations file"
     bed: "BED file annotation of genes"
-    processes: "Number of processes to use. 0 indicates using a single process without using a multiprocessing pool (more means Faster, default: 0)."
-    num_permutations: "Number of permutations for null model. p-value precision increases with more permutations (Default: 10000)."
-    context: "Number of DNA bases to use as context. 0 indicates no context. 1 indicates only use the mutated base. 1.5 indicates using the base context used in CHASM (http:/ /wiki.chasmsoftware.org/index.php/CHASM_Overview). 2 indicates using the mutated base and the upstream base. 3 indicates using the mutated base and both the upstream and downstream bases. (Default: 1.5)"
-    score_dir: "Directory containing score information in pickle files (Default: None)."
-    by_sample: "Report counts for observed mutations stratified by the tumor sample"
-    use_unmapped: "Use mutations that are not mapped to the the single reference transcript for a gene specified in the bed file indicated by the -b option."
-    genome: "Path to the genome fasta file. Required if --use- unmapped flag is used. (Default: None)"
+    processes: "Number of processes to use. 0 indicates using a single\\nprocess without using a multiprocessing pool (more\\nmeans Faster, default: 0)."
+    num_permutations: "Number of permutations for null model. p-value\\nprecision increases with more permutations (Default:\\n10000)."
+    context: "Number of DNA bases to use as context. 0 indicates no\\ncontext. 1 indicates only use the mutated base. 1.5\\nindicates using the base context used in CHASM (http:/\\n/wiki.chasmsoftware.org/index.php/CHASM_Overview). 2\\nindicates using the mutated base and the upstream\\nbase. 3 indicates using the mutated base and both the\\nupstream and downstream bases. (Default: 1.5)"
+    score_dir: "Directory containing score information in pickle files\\n(Default: None)."
+    by_sample: "Report counts for observed mutations stratified by the\\ntumor sample"
+    use_unmapped: "Use mutations that are not mapped to the the single\\nreference transcript for a gene specified in the bed\\nfile indicated by the -b option."
+    genome: "Path to the genome fasta file. Required if --use-\\nunmapped flag is used. (Default: None)"
     observed_output: "Output text file of observed results (optional)."
-    output_text_file_simulation: "Output text file of simulation results"
+    output_text_file_simulation: "Output text file of simulation results\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_observed_output = "${in_observed_output}"
+    File out_output_text_file_simulation = "${in_output_text_file_simulation}"
   }
 }

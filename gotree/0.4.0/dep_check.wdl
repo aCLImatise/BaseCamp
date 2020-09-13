@@ -2,19 +2,22 @@ version 1.0
 
 task DepCheck {
   input {
-    Boolean? suppress_output_default
+    Boolean? suppress_nonerror_output
     Boolean? skip_lock
     Boolean? skip_vendor
   }
   command <<<
     dep check \
-      ~{true="-q" false="" suppress_output_default} \
-      ~{true="-skip-lock" false="" skip_lock} \
-      ~{true="-skip-vendor" false="" skip_vendor}
+      ~{if (suppress_nonerror_output) then "-q" else ""} \
+      ~{if (skip_lock) then "-skip-lock" else ""} \
+      ~{if (skip_vendor) then "-skip-vendor" else ""}
   >>>
   parameter_meta {
-    suppress_output_default: "Suppress non-error output (default: false)"
+    suppress_nonerror_output: "Suppress non-error output (default: false)"
     skip_lock: "Skip checking that imports and Gopkg.toml are in sync with Gopkg.lock (default: false)"
     skip_vendor: "Skip checking that vendor is in sync with Gopkg.lock (default: false)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

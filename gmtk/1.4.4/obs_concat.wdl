@@ -1,7 +1,10 @@
 version 1.0
 
-task ObsConcat {
+task Obsconcat {
   command <<<
-    obs-concat
+    obs_concat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,16 +2,16 @@ version 1.0
 
 task CruxBullseye {
   input {
-    String ms_one_spectra
-    String ms_two_spectra
+    Int? gap_tolerance_dot
   }
   command <<<
     crux bullseye \
-      ~{ms_one_spectra} \
-      ~{ms_two_spectra}
+      ~{if defined(gap_tolerance_dot) then ("--gap-tolerance. " +  '"' + gap_tolerance_dot + '"') else ""}
   >>>
   parameter_meta {
-    ms_one_spectra: ""
-    ms_two_spectra: ""
+    gap_tolerance_dot: "= 3."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -11,4 +11,7 @@ task Fitevd {
   parameter_meta {
     q: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

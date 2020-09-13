@@ -4,4 +4,7 @@ task Bamcollate {
   command <<<
     bamcollate
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

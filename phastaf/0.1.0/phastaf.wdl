@@ -3,19 +3,19 @@ version 1.0
 task Phastaf {
   input {
     Boolean? check
-    Boolean? force
+    Directory? force
     Boolean? keep_files
-    String? outdir
+    Directory? outdir
     String? db
-    String? cpus
-    String? i_gff
-    String? min_genes
+    Int? cpus
+    Int? i_gff
+    Int? min_genes
   }
   command <<<
     phastaf \
-      ~{true="--check" false="" check} \
-      ~{true="--force" false="" force} \
-      ~{true="--keepfiles" false="" keep_files} \
+      ~{if (check) then "--check" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (keep_files) then "--keepfiles" else ""} \
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
@@ -27,9 +27,14 @@ task Phastaf {
     force: "Force overwite of existing output folder (default: OFF)"
     keep_files: "Keep intermediate files (default: OFF)"
     outdir: "Output folder (default: '')"
-    db: "Diamond database of phage proteins (default: '/tmp/tmpgzbnm9m3/db/phastaf.dmnd')"
+    db: "Diamond database of phage proteins (default: '/usr/local/db/phastaf.dmnd')"
     cpus: "Number of CPUs to use (0=ALL) (default: 1)"
     i_gff: "Intergenic fuzz factor (default: 2000)"
     min_genes: "Minimum genes in cluster (default: 5)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_force = "${in_force}"
+    Directory out_outdir = "${in_outdir}"
   }
 }

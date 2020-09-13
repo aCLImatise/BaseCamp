@@ -1,17 +1,17 @@
 version 1.0
 
-task CruxPrintProcessedSpectra {
+task CruxPrintprocessedspectra {
   input {
-    String ms_two_file
-    String output_file
+    File ms_two_file
   }
   command <<<
-    crux print-processed-spectra \
-      ~{ms_two_file} \
-      ~{output_file}
+    crux print_processed_spectra \
+      ~{ms_two_file}
   >>>
   parameter_meta {
     ms_two_file: ""
-    output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

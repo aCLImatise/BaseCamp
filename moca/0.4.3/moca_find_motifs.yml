@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- moca
+- find_motifs
 positional: []
 named:
 - !Flag
@@ -59,7 +62,7 @@ named:
     name: INTEGER
   optional: true
 - !Flag
-  description: Key denoting genome build to use in configuration file  [required]
+  description: "Key denoting genome build to use in\nconfiguration file  [required]"
   synonyms:
   - -g
   - -gb
@@ -73,18 +76,18 @@ named:
   - --show-progress
   args: !EmptyFlagArg {}
   optional: true
-command:
-- moca
-- find_motifs
 parent: &id002 !Command
-  positional: []
-  named: []
   command:
   - moca
+  positional: []
+  named: []
   parent:
   subcommands:
   - *id001
   - !Command
+    command:
+    - moca
+    - plot
     positional: []
     named:
     - !Flag
@@ -127,7 +130,7 @@ parent: &id002 !Command
         name: TEXT
       optional: true
     - !Flag
-      description: Length of sequence flanking motif [required]
+      description: "Length of sequence flanking motif\n[required]"
       synonyms:
       - --flank-motif
       args: !SimpleFlagArg
@@ -163,7 +166,7 @@ parent: &id002 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: Key denoting genome build to use in configuration file  [required]
+      description: "Key denoting genome build to use in\nconfiguration file  [required]"
       synonyms:
       - -g
       - -gb
@@ -171,11 +174,9 @@ parent: &id002 !Command
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    command:
-    - moca
-    - plot
     parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -193,14 +194,15 @@ parent: &id002 !Command
       \ TEXT\n                                  Control fimo.txt  [required]\n  --name\
       \ TEXT                     Plot title\n  --flank-motif INTEGER           Length\
       \ of sequence flanking motif\n                                  [required]\n\
-      \n  --motif INTEGER                 Motif number\n  -o, --oc TEXT          \
-      \         Output Directory  [required]\n  -c, --configuration TEXT        Configuration\
+      \  --motif INTEGER                 Motif number\n  -o, --oc TEXT           \
+      \        Output Directory  [required]\n  -c, --configuration TEXT        Configuration\
       \ file  [required]\n  --show-progress                 Print progress\n  -g,\
       \ -gb, --genome-build TEXT    Key denoting genome build to use in\n        \
-      \                          configuration file  [required]\n\n  -h, --help  \
-      \                    Show this message and exit.\n"
+      \                          configuration file  [required]\n  -h, --help    \
+      \                  Show this message and exit.\n"
     generated_using: &id003
     - --help
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -220,6 +222,7 @@ parent: &id002 !Command
     \ conservation plots\n  plot         Create conservation plots\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -238,6 +241,6 @@ help_text: "Usage: moca find_motifs [OPTIONS]\n\n  Search motifs and create cons
   \ motif\n  --n-motif INTEGER               Number of motifs\n  -t, --cores INTEGER\
   \             Number of parallel MEME jobs  [required]\n  -g, -gb, --genome-build\
   \ TEXT    Key denoting genome build to use in\n                                \
-  \  configuration file  [required]\n\n  --show-progress                 Print progress\n\
+  \  configuration file  [required]\n  --show-progress                 Print progress\n\
   \  -h, --help                      Show this message and exit.\n"
 generated_using: *id003

@@ -14,4 +14,7 @@ task Countsam {
     in_file_dots_am: ""
     ref_flat_dot_txt: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

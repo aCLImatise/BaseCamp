@@ -11,8 +11,8 @@ task FastenRegex {
   command <<<
     fasten_regex \
       ~{if defined(num_cpus) then ("--numcpus " +  '"' + num_cpus + '"') else ""} \
-      ~{true="--paired-end" false="" paired_end} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (paired_end) then "--paired-end" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""} \
       ~{if defined(which) then ("--which " +  '"' + which + '"') else ""}
   >>>
@@ -22,5 +22,8 @@ task FastenRegex {
     verbose: "Print more status messages"
     regex: "Regular expression (default: '.')"
     which: "Which field to match on? ID, SEQ, QUAL. Default: SEQ"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

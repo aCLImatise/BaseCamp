@@ -6,9 +6,12 @@ task Skmer {
   }
   command <<<
     skmer \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     debug: "Print the traceback when an exception is raised"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../varda2_client_sample.cwl
 inputs:
-- id: uuid
+- id: in_uuid
   doc: Sample UUID
   type: string
   inputBinding:
     prefix: --uuid
-- id: disease_code
+- id: in_disease_code
   doc: Disease indication code
   type: string
   inputBinding:
     prefix: --disease-code
-- id: lab_sample_id
-  doc: Local sample id
+- id: in_lab_sample_id
+  doc: "Local sample id\n"
   type: string
   inputBinding:
     prefix: --lab-sample-id
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - varda2-client

@@ -1,47 +1,55 @@
 class: CommandLineTool
 id: ../../../flye_samtools_dict.cwl
 inputs:
-- id: assembly
+- id: in_assembly
   doc: assembly
   type: string
   inputBinding:
     prefix: --assembly
-- id: no_header
+- id: in_no_header
   doc: do not print @HD line
   type: boolean
   inputBinding:
     prefix: --no-header
-- id: output
+- id: in_output
   doc: file to write out dict file [stdout]
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: species
+- id: in_species
   doc: species
   type: string
   inputBinding:
     prefix: --species
-- id: uri
+- id: in_uri
   doc: URI [file:///abs/path/to/file.fa]
-  type: string
+  type: File
   inputBinding:
     prefix: --uri
-- id: sam_tools
+- id: in_sam_tools
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: dict
+- id: in_dict
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: filed_otf_a_vertical_line_file_dot_fado_tgz
+- id: in_filed_otf_a_vertical_line_file_dot_fado_tgz
   doc: ''
   type: File
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: file to write out dict file [stdout]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - flye-samtools

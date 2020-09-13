@@ -1,46 +1,49 @@
 class: CommandLineTool
 id: ../../../phyluce_snp_phase_uces.cwl
 inputs:
-- id: config
-  doc: A configuration file containing the reference-to-read sample mapping and some
-    metadata
-  type: string
+- id: in_config
+  doc: "A configuration file containing the reference-to-read\nsample mapping and\
+    \ some metadata"
+  type: File
   inputBinding:
     prefix: --config
-- id: bams
+- id: in_bams
   doc: The directory containing sample-specific BAM files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --bams
-- id: output
+- id: in_output
   doc: The directory in which to store the SNPs files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: conservative
-  doc: Use this flag if you want to discard all base calls with limited certainty
-    (covered by <3 reads). This will produce the ambiguity character "N" instead of
-    that potential base call in the final sequence.
+- id: in_conservative
+  doc: "Use this flag if you want to discard all base calls\nwith limited certainty\
+    \ (covered by <3 reads). This\nwill produce the ambiguity character \"N\" instead\
+    \ of\nthat potential base call in the final sequence."
   type: boolean
   inputBinding:
     prefix: --conservative
-- id: cores
-  doc: For parallel processing you can choose the number of cores you want CLC to
-    run on.
-  type: string
+- id: in_cores
+  doc: "For parallel processing you can choose the number of\ncores you want CLC to\
+    \ run on."
+  type: long
   inputBinding:
     prefix: --cores
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_snp_phase_uces

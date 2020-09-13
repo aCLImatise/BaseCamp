@@ -11,4 +11,7 @@ task OverlapInCorePartition {
   parameter_meta {
     opts: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../tripaille_db_get_mviews.cwl
 inputs:
-- id: name
+- id: in_name
   doc: filter on mview name
   type: string
   inputBinding:
     prefix: --name
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tripaille

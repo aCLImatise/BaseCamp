@@ -1,7 +1,10 @@
 version 1.0
 
-task NcrfSort.py {
+task NcrfSort {
   command <<<
-    ncrf_sort.py
+    ncrf_sort
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

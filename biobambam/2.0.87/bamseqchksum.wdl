@@ -4,4 +4,7 @@ task Bamseqchksum {
   command <<<
     bamseqchksum
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

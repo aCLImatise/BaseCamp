@@ -9,12 +9,15 @@ task PeakrangerLc {
   command <<<
     peakranger lc \
       ~{var_input} \
-      ~{true="-d" false="" arg_data_file} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (arg_data_file) then "-d" else ""} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     arg_data_file: "[ --data ] arg      the data file"
     verbose: "show progress when possible"
     var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

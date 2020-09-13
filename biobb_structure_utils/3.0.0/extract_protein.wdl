@@ -2,9 +2,9 @@ version 1.0
 
 task ExtractProtein {
   input {
-    String? config
-    String? input_structure_path
-    String? output_protein_path
+    File? config
+    File? input_structure_path
+    File? output_protein_path
   }
   command <<<
     extract_protein \
@@ -15,6 +15,10 @@ task ExtractProtein {
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
     input_structure_path: "Input structure file path. Accepted formats: pdb."
-    output_protein_path: "Output heteroatom file path. Accepted formats: pdb."
+    output_protein_path: "Output heteroatom file path. Accepted formats: pdb.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_protein_path = "${in_output_protein_path}"
   }
 }

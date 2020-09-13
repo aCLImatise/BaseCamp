@@ -7,31 +7,31 @@ task MascotAdapter {
     Boolean? mascot_in
     Boolean? mascot_out
     String? instrument
-    String? precursor_mass_tolerance
-    String? peak_mass_tolerance
+    Int? precursor_mass_tolerance
+    Int? peak_mass_tolerance
     String? taxonomy
     String? modifications
     String? variable_modifications
     Boolean? charges
     String? db
-    String? hits
-    String? cleavage
-    String? missed_cleavages
-    String? sig_threshold
-    String? pep_homol
-    String? pep_ident
-    String? pep_rank
-    String? prot_score
-    String? pep_score
-    String? pep_exp_z
-    String? show_unassigned
-    String? first_dim_rt
+    Int? hits
+    Int? cleavage
+    Int? missed_cleavages
+    Int? sig_threshold
+    Int? pep_homol
+    Int? pep_ident
+    Int? pep_rank
+    Int? prot_score
+    Int? pep_score
+    Int? pep_exp_z
+    Int? show_unassigned
+    Int? first_dim_rt
     String? boundary
     String? mass_type
-    String? mascot_directory
-    String? temp_data_directory
+    Directory? mascot_directory
+    Directory? temp_data_directory
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -39,15 +39,15 @@ task MascotAdapter {
     MascotAdapter \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{true="-mascot_in" false="" mascot_in} \
-      ~{true="-mascot_out" false="" mascot_out} \
+      ~{if (mascot_in) then "-mascot_in" else ""} \
+      ~{if (mascot_out) then "-mascot_out" else ""} \
       ~{if defined(instrument) then ("-instrument " +  '"' + instrument + '"') else ""} \
       ~{if defined(precursor_mass_tolerance) then ("-precursor_mass_tolerance " +  '"' + precursor_mass_tolerance + '"') else ""} \
       ~{if defined(peak_mass_tolerance) then ("-peak_mass_tolerance " +  '"' + peak_mass_tolerance + '"') else ""} \
       ~{if defined(taxonomy) then ("-taxonomy " +  '"' + taxonomy + '"') else ""} \
       ~{if defined(modifications) then ("-modifications " +  '"' + modifications + '"') else ""} \
       ~{if defined(variable_modifications) then ("-variable_modifications " +  '"' + variable_modifications + '"') else ""} \
-      ~{true="-charges" false="" charges} \
+      ~{if (charges) then "-charges" else ""} \
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
       ~{if defined(hits) then ("-hits " +  '"' + hits + '"') else ""} \
       ~{if defined(cleavage) then ("-cleavage " +  '"' + cleavage + '"') else ""} \
@@ -68,17 +68,17 @@ task MascotAdapter {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
-    in: "*                      Input file in mzData format. Note: In mode 'mascot_out' a Mascot results file (.mascotXML) is read"
-    out: "*                     Output file in idXML format. Note: In mode 'mascot_in' Mascot generic format is written."
+    in: "*                      Input file in mzData format.\\nNote: In mode 'mascot_out' a Mascot results file (.mascotXML) is read"
+    out: "*                     Output file in idXML format.\\nNote: In mode 'mascot_in' Mascot generic format is written."
     mascot_in: "If this flag is set the MascotAdapter will read in mzData and write Mascot generic format"
     mascot_out: "If this flag is set the MascotAdapter will read in a Mascot results file (.mascotXML) and write idXML"
     instrument: "The instrument that was used to measure the spectra (default: 'Default')"
     precursor_mass_tolerance: "The precursor mass tolerance (default: '2')"
     peak_mass_tolerance: "The peak mass tolerance (default: '1')"
-    taxonomy: "The taxonomy (default: 'All entries' valid: 'All entries', '. . Archaea (Archaeobacteria)', '. . Eukaryota (eucaryotes)', '. . . . Alveolata (alveolates)', '. . . . . . Plasmodium falciparum (malaria parasite)', '. . . . . . Other Alveolata', '. . . . Metazoa (Animals)', '. . . . . . Caenorhabditis elegans', '. . . . . . Drosophila (fruit flies)', '. . . . . . Chordata (vertebrates and relatives)', '. . . . . . . . bony vertebrates', '. . . . . . . . . . lobe-finned fish and tetrapod clade', '. . . . . . . . . . . . Mammalia (mammals)', '. . . . . . . . . . . . . . Primates', '. . . . . . . . . . . . . . . . Homo sapiens (human)', '. . . . . . . . . . . . . . . . Other primates', '. . . . . . . . . . . . . . Rodentia (Rodents)', '. . . . . . . . . . . . . . . . Mus.', '. . . . . . . . . . . . . . . . . . Mus musculus (house mouse)', '. . . . . . . . . . . . . . . . Rattus', '. . . . . . . . . . . . . . . . Other rodentia', '. . . . . . . . . . . . . . Other mammalia', '. . . . . . . . . . . . Xenopus laevis (African clawed frog)', '. . . . . . . . . . . . Other lobe-finned fish and tetrapod clade', '. . . . . . . . . . Actinopterygii (ray-finned fishes)', '. . . . . . . . . . . . Takifugu rubripes (Japanese Pufferfish)', '. . . . . . . . . . . . Danio rerio (zebra fish)', '. . . . . . . . . . . . Other Actinopterygii', '. . . . . . . . Other Chordata', '. . . . . . Other Metazoa', '. . . . Dictyostelium discoideum', '. . . . Fungi', '. . . . . . Saccharomyces Cerevisiae (baker\'s yeast)', '. . . . . . Schizosaccharomyces pombe (fission yeast)', '. . . . . . Pneumocystis carinii', '. . . . . . Other Fungi', '. . . . Viridiplantae (Green Plants)', '. . . . . . Arabidopsis thaliana (thale cress)', '. . . . . . Oryza sativa (rice)', '. . . . . . Other green plants', '. . . . Other Eukaryota', '. . Bacteria (Eubacteria)', '. . . . Actinobacteria (class)', '. . . . . . Mycobacterium tuberculosis complex', '. . . . . . Other Actinobacteria (class)', '. . . . Firmicutes (gram-positive bacteria)', '. . . . . . Bacillus subtilis', '. . . . . . Mycoplasma', '. . . . . . Streptococcus Pneumoniae', '. . . . . . Streptomyces coelicolor', '. . . . . . Other Firmicutes', '. . . . Proteobacteria (purple bacteria)', '. . . . . . Agrobacterium tumefaciens', '. . . . . . Campylobacter jejuni', '. . . . . . Escherichia coli', '. . . . . . Neisseria meningitidis', '. . . . . . Salmonella', '. . . . . . Other Proteobacteria', '. . . . Other Bacteria', '. . Viruses', '. . . . Hepatitis C virus', '. . . . Other viruses', '. . Other (includes plasmids and artificial sequences)', '. . unclassified', '. . Species information unavailable')"
+    taxonomy: "The taxonomy (default: 'All entries' valid: 'All entries', '. . Archaea (Archaeobacteria)', '. . Eukaryota (eucaryotes)', '. . . . Alveolata (alveolates)', '. . . . . . Plasmodium falciparum (malaria parasite)', '. . . . . . Other Alveolata', '. . . . Metazoa (Animals)', '. . . . . . Caenorhabditis elegans', '. . . . . . Drosophila (fruit flies)', '. . . . . . Chordata (vertebrates and relatives)', '. . . . . . . . bony vertebrates', '. . . . . . . . . . lobe-finned fish and tetrapod clade', '. . . . . . . . . . . . Mammalia (mammals)', '. . . . . . . . . . . . . . Primates', '. . . . . . . . . . . . . . . . Homo sapiens (human)', '. . . . . . . . . . . . . . . . Other primates', '. . . . . . . . . . . . . . Rodentia (Rodents)', '. . . . . . . . . . . . . . . . Mus.', '. . . . . . . . . . . . . . . . . . Mus musculus (house mouse)', '. . . . . . . . . . . . . . . . Rattus', '. . . . . . . . . . . . . . . . Other rodentia', '. . . . . . . . . . . . . . Other mammalia', '. . . . . . . . . . . . Xenopus laevis (African clawed frog)', '. . . . . . . . . . . . Other lobe-finned fish and tetrapod clade', '. . . . . . . . . . Actinopterygii (ray-finned fishes)', '. . . . . . . . . . . . Takifugu rubripes (Japanese Pufferfish)', '. . . . . . . . . . . . Danio rerio (zebra fish)', '. . . . . . . . . . . . Other Actinopterygii', '. . . . . . . . Other Chordata', '. . . . . . Other Metazoa', '. . . . Dictyostelium discoideum', '. . . . Fungi', '. . . . . . Saccharomyces Cerevisiae (baker\\'s yeast)', '. . . . . . Schizosaccharomyces pombe (fission yeast)', '. . . . . . Pneumocystis carinii', '. . . . . . Other Fungi', '. . . . Viridiplantae (Green Plants)', '. . . . . . Arabidopsis thaliana (thale cress)', '. . . . . . Oryza sativa (rice)', '. . . . . . Other green plants', '. . . . Other Eukaryota', '. . Bacteria (Eubacteria)', '. . . . Actinobacteria (class)', '. . . . . . Mycobacterium tuberculosis complex', '. . . . . . Other Actinobacteria (class)', '. . . . Firmicutes (gram-positive bacteria)', '. . . . . . Bacillus subtilis', '. . . . . . Mycoplasma', '. . . . . . Streptococcus Pneumoniae', '. . . . . . Streptomyces coelicolor', '. . . . . . Other Firmicutes', '. . . . Proteobacteria (purple bacteria)', '. . . . . . Agrobacterium tumefaciens', '. . . . . . Campylobacter jejuni', '. . . . . . Escherichia coli', '. . . . . . Neisseria meningitidis', '. . . . . . Salmonella', '. . . . . . Other Proteobacteria', '. . . . Other Bacteria', '. . Viruses', '. . . . Hepatitis C virus', '. . . . Other viruses', '. . Other (includes plasmids and artificial sequences)', '. . unclassified', '. . Species information unavailable')"
     modifications: "The modifications i.e. Carboxymethyl (C)"
     variable_modifications: "The variable modifications i.e. Carboxymethyl (C)"
     charges: "[1+ 2+ ...]             The different charge states (default: '[1+ 2+ 3+]')"
@@ -103,5 +103,9 @@ task MascotAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

@@ -3,21 +3,21 @@ version 1.0
 task Beast {
   input {
     String? verbose
-    String? warnings
-    String? strict
+    File? warnings
+    File? strict
     String? window
     String? options
-    String? working
-    String? seed
+    File? working
+    Int? seed
     String? prefix
     String? overwrite
-    String? errors
-    String? threads
+    Int? errors
+    Int? threads
     String? java
-    String? tests
-    String? threshold
+    Int? tests
+    Float? threshold
     String? adaptation_off
-    String? adaptation_target
+    Float? adaptation_target
     String? beagle
     String? beagle_auto
     String? beagle_info
@@ -29,7 +29,7 @@ task Beast {
     String? beagle_sse
     String? beagle_sse_off
     String? beagle_threading_off
-    String? beagle_thread_count
+    Int? beagle_thread_count
     String? beagle_cuda
     String? beagle_open_cl
     String? beagle_single
@@ -39,20 +39,20 @@ task Beast {
     String? beagle_delay_scaling_off
     String? beagle_rescale
     String? mpi
-    String? particles
-    String? mc_three_chains
-    String? mc_three_delta
-    String? mc_three_temperatures
-    String? mc_three_swap
-    String? load_state
+    Directory? particles
+    Int? mc_three_chains
+    Int? mc_three_delta
+    Int? mc_three_temperatures
+    Int? mc_three_swap
+    File? load_state
     String? save_stem
-    String? save_at
-    String? save_every
-    String? save_state
+    File? save_at
+    File? save_every
+    File? save_state
     String? force_resume
-    String? citations_file
+    File? citations_file
     String? version
-    String? input_file_name
+    File? input_file_name
   }
   command <<<
     beast \
@@ -160,5 +160,8 @@ task Beast {
     citations_file: "a filename to write a citation list to"
     version: "the version and credits and stop"
     input_file_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

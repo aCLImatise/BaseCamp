@@ -5,10 +5,10 @@ task ProteinInference {
     File? in
     File? out
     String? merge_runs
-    String? annotate_in_dist_groups
+    File? annotate_in_dist_groups
     Boolean? merging
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -18,11 +18,11 @@ task ProteinInference {
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
       ~{if defined(merge_runs) then ("-merge_runs " +  '"' + merge_runs + '"') else ""} \
       ~{if defined(annotate_in_dist_groups) then ("-annotate_indist_groups " +  '"' + annotate_in_dist_groups + '"') else ""} \
-      ~{true="-Merging" false="" merging} \
+      ~{if (merging) then "-Merging" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                                               Input file(s) (valid formats: 'idXML')"
@@ -34,5 +34,9 @@ task ProteinInference {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

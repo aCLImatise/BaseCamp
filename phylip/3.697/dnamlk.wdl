@@ -4,4 +4,7 @@ task Dnamlk {
   command <<<
     dnamlk
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

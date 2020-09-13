@@ -14,4 +14,7 @@ task Vendian {
     bytes: ""
     filename: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

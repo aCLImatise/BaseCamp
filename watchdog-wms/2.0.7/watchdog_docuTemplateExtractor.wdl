@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogDocuTemplateExtractor {
+task WatchdogdocuTemplateExtractor {
   command <<<
-    watchdog-docuTemplateExtractor
+    watchdog_docuTemplateExtractor
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

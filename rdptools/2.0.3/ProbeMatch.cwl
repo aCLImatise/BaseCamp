@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../ProbeMatch.cwl
 inputs:
-- id: max_dist
+- id: in_max_dist
   doc: Give a max distance
-  type: string
+  type: long
   inputBinding:
     prefix: --maxDist
-- id: outfile
+- id: in_outfile
   doc: Write output to a file
-  type: string
+  type: File
   inputBinding:
     prefix: --outFile
-- id: primer_match
+- id: in_primer_match
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: primer_list_vertical_line_primer_file
+- id: in_primer_list_vertical_line_primer_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: seq_file
+- id: in_seq_file
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outfile
+  doc: Write output to a file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
 cwlVersion: v1.1
 baseCommand:
 - ProbeMatch

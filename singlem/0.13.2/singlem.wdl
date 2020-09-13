@@ -4,4 +4,7 @@ task Singlem {
   command <<<
     singlem
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

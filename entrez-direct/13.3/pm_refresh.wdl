@@ -1,7 +1,20 @@
 version 1.0
 
-task PmRefresh {
+task Pmrefresh {
+  input {
+    String cat
+    File? file
+  }
   command <<<
-    pm-refresh
+    pm_refresh \
+      ~{cat} \
+      ~{file}
   >>>
+  parameter_meta {
+    cat: ""
+    file: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
 }

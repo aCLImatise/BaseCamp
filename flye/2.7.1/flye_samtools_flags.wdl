@@ -1,22 +1,22 @@
 version 1.0
 
-task FlyeSamtoolsFlags {
+task FlyesamtoolsFlags {
   input {
-    String zero_x_one
-    String zero_x_two
-    String zero_x_four
-    String zero_x_eight
-    String zero_x_one_zero
-    String zero_x_two_zero
-    String zero_x_four_zero
-    String zero_x_eight_zero
-    String zero_x_one_zero_zero
-    String zero_x_two_zero_zero
-    String zero_x_four_zero_zero
-    String zero_x_eight_zero_zero
+    Int zero_x_one
+    Int zero_x_two
+    Int zero_x_four
+    Int zero_x_eight
+    Int zero_x_one_zero
+    Int zero_x_two_zero
+    Int zero_x_four_zero
+    Int zero_x_eight_zero
+    Int zero_x_one_zero_zero
+    Int zero_x_two_zero_zero
+    Int zero_x_four_zero_zero
+    Int zero_x_eight_zero_zero
   }
   command <<<
-    flye-samtools flags \
+    flye_samtools flags \
       ~{zero_x_one} \
       ~{zero_x_two} \
       ~{zero_x_four} \
@@ -43,5 +43,8 @@ task FlyeSamtoolsFlags {
     zero_x_two_zero_zero: "QCFAIL        .. not passing quality controls"
     zero_x_four_zero_zero: "DUP           .. PCR or optical duplicate"
     zero_x_eight_zero_zero: "SUPPLEMENTARY .. supplementary alignment"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

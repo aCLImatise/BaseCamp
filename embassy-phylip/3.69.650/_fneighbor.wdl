@@ -1,7 +1,10 @@
 version 1.0
 
-task _fneighbor {
+task Fneighbor {
   command <<<
     _fneighbor
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

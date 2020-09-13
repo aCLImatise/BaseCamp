@@ -2,9 +2,9 @@ version 1.0
 
 task Vcfkeepinfo {
   input {
-    String vcf_file
-    String? field_one
-    String? field_two
+    File vcf_file
+    Int? field_one
+    Int? field_two
   }
   command <<<
     vcfkeepinfo \
@@ -16,5 +16,8 @@ task Vcfkeepinfo {
     vcf_file: ""
     field_one: ""
     field_two: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

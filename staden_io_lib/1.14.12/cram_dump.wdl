@@ -8,10 +8,13 @@ task CramDump {
   command <<<
     cram_dump \
       ~{filename_dot_cram} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     v: ""
     filename_dot_cram: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

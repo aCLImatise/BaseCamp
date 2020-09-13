@@ -4,17 +4,17 @@ task FaSize {
   input {
     Boolean? detailed
     Boolean? tab
-    File file
   }
   command <<<
     faSize \
-      ~{file} \
-      ~{true="-detailed" false="" detailed} \
-      ~{true="-tab" false="" tab}
+      ~{if (detailed) then "-detailed" else ""} \
+      ~{if (tab) then "-tab" else ""}
   >>>
   parameter_meta {
-    detailed: "outputs name and size of each record has the side effect of printing nothing else"
+    detailed: "outputs name and size of each record\\nhas the side effect of printing nothing else"
     tab: "output statistics in a tab separated format"
-    file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

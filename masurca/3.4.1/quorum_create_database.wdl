@@ -2,12 +2,12 @@ version 1.0
 
 task QuorumCreateDatabase {
   input {
-    String? size
-    String? mer
-    String? bits
-    String? min_qual_value
-    String? min_qual_char
-    String? threads
+    Int? size
+    Int? mer
+    Int? bits
+    Int? min_qual_value
+    Int? min_qual_char
+    Int? threads
     File? output_file_combineddatabase
     Int? re_probe
     String create_database_cmdline
@@ -37,5 +37,9 @@ task QuorumCreateDatabase {
     re_probe: "Maximum number of reprobes (126)"
     create_database_cmdline: ""
     reads: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_combineddatabase = "${in_output_file_combineddatabase}"
   }
 }

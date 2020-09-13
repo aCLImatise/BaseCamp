@@ -1,7 +1,10 @@
 version 1.0
 
-task _ssuPrep {
+task Ssuprep {
   command <<<
-    _ssu-prep
+    _ssu_prep
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -5,12 +5,12 @@ task Gffmunger {
     Boolean? verbose
     Boolean? quiet
     Boolean? no_validate
-    Boolean? force
-    String? fast_a_file
-    String? input_file
-    String? output_file
-    String? config
-    String? genome_tools
+    File? force
+    File? fast_a_file
+    File? input_file
+    File? output_file
+    File? config
+    File? genome_tools
     String move_polypeptide_an_not
     String null
     String commands_defining_munged
@@ -20,10 +20,10 @@ task Gffmunger {
       ~{move_polypeptide_an_not} \
       ~{null} \
       ~{commands_defining_munged} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--no-validate" false="" no_validate} \
-      ~{true="--force" false="" force} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (no_validate) then "--no-validate" else ""} \
+      ~{if (force) then "--force" else ""} \
       ~{if defined(fast_a_file) then ("--fasta-file " +  '"' + fast_a_file + '"') else ""} \
       ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
@@ -38,10 +38,15 @@ task Gffmunger {
     fast_a_file: "Read FASTA from separate file instead of GFF3 input"
     input_file: "Read GFF3 from file instead of STDIN"
     output_file: "Write GFF3 to file instead of STDOUT"
-    config: "Config file [/tmp/tmp8mtcfi8e/config/gffmunger-config.yml]"
+    config: "Config file [/usr/local/config/gffmunger-config.yml]"
     genome_tools: "genometools path (override path in config)"
-    move_polypeptide_an_not: "transfer annotations from polypeptides to the feature (e.g. mRNA) they derive from"
+    move_polypeptide_an_not: "transfer annotations from polypeptides to the\\nfeature (e.g. mRNA) they derive from"
     null: "do nothing"
     commands_defining_munged: "Command(s) defining how the GFF should be munged"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_force = "${in_force}"
+    File out_output_file = "${in_output_file}"
   }
 }

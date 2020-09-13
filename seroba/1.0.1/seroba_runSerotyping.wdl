@@ -3,10 +3,10 @@ version 1.0
 task SerobaRunSerotyping {
   input {
     Boolean? no_clean
-    String? coverage
+    Int? coverage
     String databases
-    String read_one
-    String read_two
+    Int read_one
+    Int read_two
     String prefix
   }
   command <<<
@@ -15,15 +15,18 @@ task SerobaRunSerotyping {
       ~{read_one} \
       ~{read_two} \
       ~{prefix} \
-      ~{true="--noclean" false="" no_clean} \
+      ~{if (no_clean) then "--noclean" else ""} \
       ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""}
   >>>
   parameter_meta {
-    no_clean: "Do not clean up intermediate files (assemblies, ariba report)"
-    coverage: "threshold for k-mer coverage of the reference sequence , default = 20"
+    no_clean: "Do not clean up intermediate files (assemblies, ariba\\nreport)"
+    coverage: "threshold for k-mer coverage of the reference sequence\\n, default = 20\\n"
     databases: "path to database directory"
     read_one: "forward read file"
     read_two: "backward read file"
     prefix: "unique prefix"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

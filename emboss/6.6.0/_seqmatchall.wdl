@@ -1,14 +1,17 @@
 version 1.0
 
-task _seqmatchall {
+task Seqmatchall {
   input {
     Boolean? word_size
   }
   command <<<
     _seqmatchall \
-      ~{true="-wordsize" false="" word_size}
+      ~{if (word_size) then "-wordsize" else ""}
   >>>
   parameter_meta {
     word_size: "integer    [4] Word size (Integer 2 or more)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

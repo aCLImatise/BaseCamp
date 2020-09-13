@@ -2,8 +2,8 @@ version 1.0
 
 task HaphpipeAssemble01 {
   input {
-    String? read_one
-    String? read_two
+    Int? read_one
+    Int? read_two
     String? reference_fast_a
     String? reference_gtf
     String? samp_id
@@ -25,5 +25,8 @@ task HaphpipeAssemble01 {
     reference_gtf: ""
     samp_id: ""
     outdir: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,280 +1,315 @@
 class: CommandLineTool
 id: ../../../dcmqrscp.cwl
 inputs:
-- id: _quiet_quiet
+- id: in_arguments
+  doc: print expanded command line arguments
+  type: boolean
+  inputBinding:
+    prefix: --arguments
+- id: in__quiet_quiet
   doc: --quiet                 quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: _verbose_verbose
+- id: in__verbose_details
   doc: --verbose               verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: _debug_debug
+- id: in__debug_information
   doc: --debug                 debug mode, print debug information
   type: boolean
   inputBinding:
     prefix: -d
-- id: ll
-  doc: '--log-level             [l]evel: string constant (fatal, error, warn, info,
-    debug, trace) use level l for the logger'
+- id: in_ll
+  doc: "--log-level             [l]evel: string constant\n(fatal, error, warn, info,\
+    \ debug, trace)\nuse level l for the logger"
   type: boolean
   inputBinding:
     prefix: -ll
-- id: lc
-  doc: '--log-config            [f]ilename: string use config file f for the logger'
+- id: in_lc
+  doc: "--log-config            [f]ilename: string\nuse config file f for the logger"
   type: boolean
   inputBinding:
     prefix: -lc
-- id: _config_ilename
-  doc: '--config                [f]ilename: string use specific configuration file
-    (default: /tmp/tmpqmdno0st/etc/dcmtk/dcmqrscp.cfg)'
+- id: in__config_stringuse
+  doc: "--config                [f]ilename: string\nuse specific configuration file\n\
+    (default: /usr/local/etc/dcmtk/dcmqrscp.cfg)"
   type: boolean
   inputBinding:
     prefix: -c
-- id: _singleprocess_single
-  doc: --single-process        single process mode --fork                  fork child
-    process for each assoc. (default)
+- id: in__singleprocess_single
+  doc: --single-process        single process mode
   type: boolean
   inputBinding:
     prefix: -s
-- id: require_find
-  doc: reject all MOVE/GET presentation contexts for which no correspond. FIND context
-    is proposed
+- id: in_fork
+  doc: fork child process for each assoc. (default)
+  type: boolean
+  inputBinding:
+    prefix: --fork
+- id: in_require_find
+  doc: "reject all MOVE/GET presentation contexts for\nwhich no correspond. FIND context\
+    \ is proposed"
   type: boolean
   inputBinding:
     prefix: --require-find
-- id: no_parallel_store
-  doc: reject multiple simultaneous STORE presentat. contexts for one application
-    entity title
+- id: in_no_parallel_store
+  doc: "reject multiple simultaneous STORE presentat.\ncontexts for one application\
+    \ entity title"
   type: boolean
   inputBinding:
     prefix: --no-parallel-store
-- id: disable_get
+- id: in_disable_get
   doc: disable C-GET support
   type: boolean
   inputBinding:
     prefix: --disable-get
-- id: allow_shutdown
+- id: in_allow_shutdown
   doc: allow external shutdown via private SOP class
   type: boolean
   inputBinding:
     prefix: --allow-shutdown
-- id: xf
-  doc: --check-find            check C-FIND identifier validity --no-check-find         do
-    not check C-FIND identifier validity (def.)
+- id: in_xf
+  doc: --check-find            check C-FIND identifier validity
   type: boolean
   inputBinding:
     prefix: -XF
-- id: _cmove_validity
-  doc: --check-move            check C-MOVE identifier validity --no-check-move         do
-    not check C-MOVE identifier validity (def.)
+- id: in_no_check_find
+  doc: do not check C-FIND identifier validity (def.)
+  type: boolean
+  inputBinding:
+    prefix: --no-check-find
+- id: in__checkmove_check
+  doc: --check-move            check C-MOVE identifier validity
   type: boolean
   inputBinding:
     prefix: -XM
-- id: za
+- id: in_no_check_move
+  doc: do not check C-MOVE identifier validity (def.)
+  type: boolean
+  inputBinding:
+    prefix: --no-check-move
+- id: in_move_unrestricted
+  doc: do not restrict move destination (default)
+  type: boolean
+  inputBinding:
+    prefix: --move-unrestricted
+- id: in_za
   doc: --move-aetitle          restrict move dest. to requesting AE title
   type: boolean
   inputBinding:
     prefix: -ZA
-- id: zh
+- id: in_zh
   doc: --move-host             restrict move destination to requesting host
   type: boolean
   inputBinding:
     prefix: -ZH
-- id: zv
+- id: in_zv
   doc: --move-vendor           restrict move destination to requesting vendor
   type: boolean
   inputBinding:
     prefix: -ZV
-- id: qp
+- id: in_qp
   doc: --no-patient-root       do not support Patient Root Q/R models
   type: boolean
   inputBinding:
     prefix: -QP
-- id: qs
+- id: in_qs
   doc: --no-study-root         do not support Study Root Q/R models
   type: boolean
   inputBinding:
     prefix: -QS
-- id: qo
+- id: in_qo
   doc: --no-patient-study      do not support Patient/Study Only Q/R models
   type: boolean
   inputBinding:
     prefix: -QO
-- id: _proposeuncompr_propose
-  doc: =   --propose-uncompr       propose all uncompressed TS, explicit VR with local
-    byte ordering first (default)
+- id: in__proposeuncompr_propose
+  doc: "=   --propose-uncompr       propose all uncompressed TS, explicit VR\nwith\
+    \ local byte ordering first (default)"
   type: boolean
   inputBinding:
     prefix: -x
-- id: xe
-  doc: --propose-little        propose all uncompressed TS, explicit VR little endian
-    first
+- id: in_xe
+  doc: "--propose-little        propose all uncompressed TS, explicit VR\nlittle endian\
+    \ first"
   type: boolean
   inputBinding:
     prefix: -xe
-- id: xb
-  doc: --propose-big           propose all uncompressed TS, explicit VR big endian
-    first
+- id: in_xb
+  doc: "--propose-big           propose all uncompressed TS, explicit VR\nbig endian\
+    \ first"
   type: boolean
   inputBinding:
     prefix: -xb
-- id: xi
+- id: in_xi
   doc: --propose-implicit      propose implicit VR little endian TS only
   type: boolean
   inputBinding:
     prefix: -xi
-- id: xs
-  doc: --propose-lossless      propose default JPEG lossless TS and all uncompressed
-    transfer syntaxes
+- id: in_xs
+  doc: "--propose-lossless      propose default JPEG lossless TS\nand all uncompressed\
+    \ transfer syntaxes"
   type: boolean
   inputBinding:
     prefix: -xs
-- id: xy
-  doc: --propose-jpeg8         propose default JPEG lossy TS for 8 bit data and all
-    uncompressed transfer syntaxes
+- id: in_xy
+  doc: "--propose-jpeg8         propose default JPEG lossy TS for 8 bit data\nand\
+    \ all uncompressed transfer syntaxes"
   type: boolean
   inputBinding:
     prefix: -xy
-- id: xx
-  doc: --propose-jpeg12        propose default JPEG lossy TS for 12 bit data and all
-    uncompressed transfer syntaxes
+- id: in_xx
+  doc: "--propose-jpeg12        propose default JPEG lossy TS for 12 bit data\nand\
+    \ all uncompressed transfer syntaxes"
   type: boolean
   inputBinding:
     prefix: -xx
-- id: xv
-  doc: --propose-j2k-lossless  propose JPEG 2000 lossless TS and all uncompressed
-    transfer syntaxes
+- id: in_xv
+  doc: "--propose-j2k-lossless  propose JPEG 2000 lossless TS\nand all uncompressed\
+    \ transfer syntaxes"
   type: boolean
   inputBinding:
     prefix: -xv
-- id: xw
-  doc: --propose-j2k-lossy     propose JPEG 2000 lossy TS and all uncompressed transfer
-    syntaxes
+- id: in_xw
+  doc: "--propose-j2k-lossy     propose JPEG 2000 lossy TS\nand all uncompressed transfer\
+    \ syntaxes"
   type: boolean
   inputBinding:
     prefix: -xw
-- id: xt
-  doc: --propose-jls-lossless  propose JPEG-LS lossless TS and all uncompressed transfer
-    syntaxes
+- id: in_xt
+  doc: "--propose-jls-lossless  propose JPEG-LS lossless TS\nand all uncompressed\
+    \ transfer syntaxes"
   type: boolean
   inputBinding:
     prefix: -xt
-- id: xu
-  doc: --propose-jls-lossy     propose JPEG-LS lossy TS and all uncompressed transfer
-    syntaxes
+- id: in_xu
+  doc: "--propose-jls-lossy     propose JPEG-LS lossy TS\nand all uncompressed transfer\
+    \ syntaxes"
   type: boolean
   inputBinding:
     prefix: -xu
-- id: _proposempeg_propose_profile
+- id: in__proposempeg_propose_ts
   doc: --propose-mpeg2         propose MPEG2 Main Profile @ Main Level TS only
   type: boolean
   inputBinding:
     prefix: -xm
-- id: xh
+- id: in_xh
   doc: --propose-mpeg2-high    propose MPEG2 Main Profile @ High Level TS only
   type: boolean
   inputBinding:
     prefix: -xh
-- id: xn
+- id: in_xn
   doc: --propose-mpeg4         propose MPEG4 AVC/H.264 HP / Level 4.1 TS only
   type: boolean
   inputBinding:
     prefix: -xn
-- id: xl
+- id: in_xl
   doc: --propose-mpeg4-bd      propose MPEG4 AVC/H.264 BD-compatible TS only
   type: boolean
   inputBinding:
     prefix: -xl
-- id: xr
-  doc: --propose-rle           propose RLE lossless TS and all uncompressed transfer
-    syntaxes
+- id: in_xr
+  doc: "--propose-rle           propose RLE lossless TS\nand all uncompressed transfer\
+    \ syntaxes"
   type: boolean
   inputBinding:
     prefix: -xr
-- id: xd
-  doc: --propose-deflated      propose deflated expl. VR little endian TS and all
-    uncompressed transfer syntaxes
+- id: in_xd
+  doc: "--propose-deflated      propose deflated expl. VR little endian TS\nand all\
+    \ uncompressed transfer syntaxes"
   type: boolean
   inputBinding:
     prefix: -xd
-- id: to
-  doc: '--timeout               [s]econds: integer (default: unlimited) timeout for
-    connection requests'
+- id: in_to
+  doc: "--timeout               [s]econds: integer (default: unlimited)\ntimeout for\
+    \ connection requests"
   type: boolean
   inputBinding:
     prefix: -to
-- id: ta
-  doc: '--acse-timeout          [s]econds: integer (default: 30) timeout for ACSE
-    messages'
+- id: in_ta
+  doc: "--acse-timeout          [s]econds: integer (default: 30)\ntimeout for ACSE\
+    \ messages"
   type: boolean
   inputBinding:
     prefix: -ta
-- id: td
-  doc: '--dimse-timeout         [s]econds: integer (default: unlimited) timeout for
-    DIMSE messages'
+- id: in_td
+  doc: "--dimse-timeout         [s]econds: integer (default: unlimited)\ntimeout for\
+    \ DIMSE messages"
   type: boolean
   inputBinding:
     prefix: -td
-- id: max_pdu
-  doc: '[n]umber of bytes: integer (4096..131072) set max receive pdu to n bytes (default:
-    use value from configuration file)'
+- id: in_max_pdu
+  doc: "[n]umber of bytes: integer (4096..131072)\nset max receive pdu to n bytes\n\
+    (default: use value from configuration file)"
   type: boolean
   inputBinding:
     prefix: --max-pdu
-- id: disable_host_lookup
+- id: in_disable_host_lookup
   doc: disable hostname lookup
   type: boolean
   inputBinding:
     prefix: --disable-host-lookup
-- id: refuse
+- id: in_refuse
   doc: refuse association
   type: boolean
   inputBinding:
     prefix: --refuse
-- id: reject
+- id: in_reject
   doc: reject association if no implement. class UID
   type: boolean
   inputBinding:
     prefix: --reject
-- id: ignore
+- id: in_ignore
   doc: ignore store data, receive but do not store
   type: boolean
   inputBinding:
     prefix: --ignore
-- id: up
+- id: in_up
   doc: --uid-padding           silently correct space-padded UIDs
   type: boolean
   inputBinding:
     prefix: -up
-- id: _disablenewvr_disable
+- id: in__disablenewvr_disable
   doc: --disable-new-vr        disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: _writedataset_data
+- id: in__normal_allow
+  doc: --normal                allow implicit format conversions (default)
+  type: boolean
+  inputBinding:
+    prefix: -B
+- id: in__writedataset_write
   doc: --write-dataset         write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: _grouplengthremove_always
+- id: in__grouplengthremove_always
   doc: --group-length-remove   always write without group length elements
   type: boolean
   inputBinding:
     prefix: -g
-- id: _lengthundefined_write
+- id: in__lengthundefined_write
   doc: --length-undefined      write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -e
-- id: port
-  doc: 'tcp/ip port number to listen on (default: in config file)'
+- id: in__paddingoff_padding
+  doc: --padding-off           no padding (default)
+  type: boolean
+  inputBinding:
+    prefix: -p
+- id: in_port
+  doc: "tcp/ip port number to listen on\n(default: in config file)"
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - dcmqrscp

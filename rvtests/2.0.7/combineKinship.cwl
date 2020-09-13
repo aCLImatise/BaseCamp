@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../combineKinship.cwl
 inputs:
-- id: out
+- id: in_out
   doc: ': Output prefix for autosomal kinship calculation'
   type: boolean
   inputBinding:
     prefix: --out
-- id: pc_a
+- id: in_pc_a
   doc: ': Decomoposite calculated kinship matrix.'
   type: boolean
   inputBinding:
     prefix: --pca
-- id: thread
+- id: in_thread
   doc: ': Specify number of parallel threads to speed up'
   type: boolean
   inputBinding:
     prefix: --thread
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - combineKinship

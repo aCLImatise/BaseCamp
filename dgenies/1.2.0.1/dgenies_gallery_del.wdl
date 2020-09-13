@@ -10,11 +10,14 @@ task DgeniesGalleryDel {
     dgenies gallery del \
       ~{if defined(id_job) then ("--id-job " +  '"' + id_job + '"') else ""} \
       ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
-      ~{true="--remove-pict" false="" remove_pict}
+      ~{if (remove_pict) then "--remove-pict" else ""}
   >>>
   parameter_meta {
     id_job: "Id (name) of the job to delete from the gallery"
     name: "Name of the job shown in the gallery"
     remove_pict: "Remove picture file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task DownloadSequence {
+task Downloadsequence {
   command <<<
-    download-sequence
+    download_sequence
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

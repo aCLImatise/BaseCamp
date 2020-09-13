@@ -3,8 +3,8 @@ version 1.0
 task MendelscanRhro {
   input {
     Boolean? ped_file
-    Boolean? centromere_file
-    Boolean? output_windows
+    File? centromere_file
+    File? output_windows
     Boolean? inheritance
     String? jar
     String java
@@ -16,10 +16,10 @@ task MendelscanRhro {
       ~{java} \
       ~{rh_ro} \
       ~{vcf} \
-      ~{true="--ped-file" false="" ped_file} \
-      ~{true="--centromere-file" false="" centromere_file} \
-      ~{true="--output-windows" false="" output_windows} \
-      ~{true="--inheritance" false="" inheritance} \
+      ~{if (ped_file) then "--ped-file" else ""} \
+      ~{if (centromere_file) then "--centromere-file" else ""} \
+      ~{if (output_windows) then "--output-windows" else ""} \
+      ~{if (inheritance) then "--inheritance" else ""} \
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
@@ -31,5 +31,10 @@ task MendelscanRhro {
     java: ""
     rh_ro: ""
     vcf: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_centromere_file = "${in_centromere_file}"
+    File out_output_windows = "${in_output_windows}"
   }
 }

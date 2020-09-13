@@ -18,19 +18,19 @@ task GSAlign {
   }
   command <<<
     GSAlign \
-      ~{true="-t" false="" int_number_threads} \
-      ~{true="-o" false="" str_set_prefix} \
-      ~{true="-fmt" false="" fmt} \
-      ~{true="-idy" false="" id_y} \
-      ~{true="-slen" false="" slen} \
-      ~{true="-alen" false="" alen} \
-      ~{true="-ind" false="" ind} \
-      ~{true="-clr" false="" clr} \
-      ~{true="-unique" false="" unique} \
-      ~{true="-sen" false="" sen} \
-      ~{true="-dp" false="" dp} \
-      ~{true="-one" false="" set_one_one} \
-      ~{true="-gp" false="" gp}
+      ~{if (int_number_threads) then "-t" else ""} \
+      ~{if (str_set_prefix) then "-o" else ""} \
+      ~{if (fmt) then "-fmt" else ""} \
+      ~{if (id_y) then "-idy" else ""} \
+      ~{if (slen) then "-slen" else ""} \
+      ~{if (alen) then "-alen" else ""} \
+      ~{if (ind) then "-ind" else ""} \
+      ~{if (clr) then "-clr" else ""} \
+      ~{if (unique) then "-unique" else ""} \
+      ~{if (sen) then "-sen" else ""} \
+      ~{if (dp) then "-dp" else ""} \
+      ~{if (set_one_one) then "-one" else ""} \
+      ~{if (gp) then "-gp" else ""}
   >>>
   parameter_meta {
     int_number_threads: "INT     number of threads [8]"
@@ -46,5 +46,8 @@ task GSAlign {
     dp: "Output Dot-plots"
     set_one_one: "set one on one aligment mode[false]"
     gp: "STR     Specify the path of gnuplot"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

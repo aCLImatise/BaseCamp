@@ -1,33 +1,36 @@
 class: CommandLineTool
 id: ../../../annotate_hits_pyseer.cwl
 inputs:
-- id: bwa
+- id: in_bwa
   doc: Location of bwa executable [default=bwa]
   type: string
   inputBinding:
     prefix: --bwa
-- id: tmp_prefix
-  doc: Directory to store temporary files [default=./]
-  type: string
+- id: in_tmp_prefix
+  doc: "Directory to store temporary files [default=./]\n"
+  type: Directory
   inputBinding:
     prefix: --tmp-prefix
-- id: km_ers
+- id: in_km_ers
   doc: Kmers file, filtered output from SEER
   type: string
   inputBinding:
     position: 0
-- id: references
-  doc: File of reference annotations. First column fasta sequence, second column gff
-    annotation, third column 'ref' or 'draft'
+- id: in_references
+  doc: "File of reference annotations. First column fasta\nsequence, second column\
+    \ gff annotation, third column\n'ref' or 'draft'"
   type: string
   inputBinding:
     position: 1
-- id: output
+- id: in_output
   doc: Output file
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - annotate_hits_pyseer

@@ -4,4 +4,7 @@ task Sparse {
   command <<<
     sparse
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

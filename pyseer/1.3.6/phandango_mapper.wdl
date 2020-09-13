@@ -3,7 +3,7 @@ version 1.0
 task PhandangoMapper {
   input {
     String? bwa
-    String? tmp_prefix
+    Directory? tmp_prefix
     Boolean? use_filter_p
     String km_ers
     String reference
@@ -16,7 +16,7 @@ task PhandangoMapper {
       ~{output_file} \
       ~{if defined(bwa) then ("--bwa " +  '"' + bwa + '"') else ""} \
       ~{if defined(tmp_prefix) then ("--tmp-prefix " +  '"' + tmp_prefix + '"') else ""} \
-      ~{true="--use-filter-p" false="" use_filter_p}
+      ~{if (use_filter_p) then "--use-filter-p" else ""}
   >>>
   parameter_meta {
     bwa: "Location of bwa executable [Default: bwa]"
@@ -25,5 +25,8 @@ task PhandangoMapper {
     km_ers: "Kmers file, filtered output from SEER"
     reference: "Reference fasta file"
     output_file: "Output file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

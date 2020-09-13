@@ -12,6 +12,9 @@ task Humann2GenefamiliesGenusLevel {
   >>>
   parameter_meta {
     gene_families_input: "the gene families input table"
-    the_output_table: "the output table"
+    the_output_table: "the output table\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

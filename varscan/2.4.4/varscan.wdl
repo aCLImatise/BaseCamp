@@ -11,4 +11,7 @@ task Varscan {
   parameter_meta {
     jar: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

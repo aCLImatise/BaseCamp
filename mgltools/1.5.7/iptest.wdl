@@ -4,4 +4,7 @@ task Iptest {
   command <<<
     iptest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

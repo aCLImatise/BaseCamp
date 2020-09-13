@@ -4,4 +4,7 @@ task Infinitesites {
   command <<<
     infinitesites
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task Bolt {
   command <<<
     bolt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

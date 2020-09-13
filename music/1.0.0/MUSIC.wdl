@@ -3,7 +3,7 @@ version 1.0
 task MUSIC {
   input {
     Boolean? preprocess
-    Boolean? sort_reads
+    Directory? sort_reads
     Boolean? remove_duplicates
     Boolean? get_multiscale_broad_ers
     Boolean? get_multiscale_punctate_ers
@@ -36,38 +36,38 @@ task MUSIC {
   command <<<
     MUSIC \
       ~{arguments} \
-      ~{true="-preprocess" false="" preprocess} \
-      ~{true="-sort_reads" false="" sort_reads} \
-      ~{true="-remove_duplicates" false="" remove_duplicates} \
-      ~{true="-get_multiscale_broad_ERs" false="" get_multiscale_broad_ers} \
-      ~{true="-get_multiscale_punctate_ERs" false="" get_multiscale_punctate_ers} \
-      ~{true="-get_TF_peaks" false="" get_tf_peaks} \
-      ~{true="-write_MS_decomposition" false="" write_ms_decomposition} \
-      ~{true="-write_logR_signal" false="" write_log_r_signal} \
-      ~{true="-get_per_win_p_vals_vs_FC" false="" get_per_win_p_vals_vs_fc} \
-      ~{true="-get_scale_spectrum" false="" get_scale_spectrum} \
-      ~{true="-get_multiscale_music" false="" get_multiscale_music} \
-      ~{true="-chip" false="" chip} \
-      ~{true="-control" false="" control} \
-      ~{true="-mapp" false="" mapp} \
-      ~{true="-begin_l" false="" begin_l} \
-      ~{true="-end_l" false="" end_l} \
-      ~{true="-step" false="" step} \
-      ~{true="-l_bin" false="" l_bin} \
-      ~{true="-l_mapp" false="" l_mapp} \
-      ~{true="-mapp_thr" false="" mapp_thr} \
-      ~{true="-l_frag" false="" l_frag} \
-      ~{true="-l_c" false="" l_c} \
-      ~{true="-l_p" false="" l_p} \
-      ~{true="-sigma" false="" sigma} \
-      ~{true="-gamma" false="" gamma} \
-      ~{true="-q_val" false="" q_val} \
-      ~{true="-l_win_min" false="" l_win_min} \
-      ~{true="-l_win_max" false="" l_win_max} \
-      ~{true="-l_win_step" false="" l_win_step}
+      ~{if (preprocess) then "-preprocess" else ""} \
+      ~{if (sort_reads) then "-sort_reads" else ""} \
+      ~{if (remove_duplicates) then "-remove_duplicates" else ""} \
+      ~{if (get_multiscale_broad_ers) then "-get_multiscale_broad_ERs" else ""} \
+      ~{if (get_multiscale_punctate_ers) then "-get_multiscale_punctate_ERs" else ""} \
+      ~{if (get_tf_peaks) then "-get_TF_peaks" else ""} \
+      ~{if (write_ms_decomposition) then "-write_MS_decomposition" else ""} \
+      ~{if (write_log_r_signal) then "-write_logR_signal" else ""} \
+      ~{if (get_per_win_p_vals_vs_fc) then "-get_per_win_p_vals_vs_FC" else ""} \
+      ~{if (get_scale_spectrum) then "-get_scale_spectrum" else ""} \
+      ~{if (get_multiscale_music) then "-get_multiscale_music" else ""} \
+      ~{if (chip) then "-chip" else ""} \
+      ~{if (control) then "-control" else ""} \
+      ~{if (mapp) then "-mapp" else ""} \
+      ~{if (begin_l) then "-begin_l" else ""} \
+      ~{if (end_l) then "-end_l" else ""} \
+      ~{if (step) then "-step" else ""} \
+      ~{if (l_bin) then "-l_bin" else ""} \
+      ~{if (l_mapp) then "-l_mapp" else ""} \
+      ~{if (mapp_thr) then "-mapp_thr" else ""} \
+      ~{if (l_frag) then "-l_frag" else ""} \
+      ~{if (l_c) then "-l_c" else ""} \
+      ~{if (l_p) then "-l_p" else ""} \
+      ~{if (sigma) then "-sigma" else ""} \
+      ~{if (gamma) then "-gamma" else ""} \
+      ~{if (q_val) then "-q_val" else ""} \
+      ~{if (l_win_min) then "-l_win_min" else ""} \
+      ~{if (l_win_max) then "-l_win_max" else ""} \
+      ~{if (l_win_step) then "-l_win_step" else ""}
   >>>
   parameter_meta {
-    preprocess: "[File format (\"SAM\"/\"ELAND\"/\"bowtie\"/\"tagAlign\"/\"BED5\"/\"BED6\")] [Mapped reads file path (\"stdin\" for piped input)] [Output directory]"
+    preprocess: "[File format (\\\"SAM\\\"/\\\"ELAND\\\"/\\\"bowtie\\\"/\\\"tagAlign\\\"/\\\"BED5\\\"/\\\"BED6\\\")] [Mapped reads file path (\\\"stdin\\\" for piped input)] [Output directory]"
     sort_reads: "[Reads directory] [Output directory]"
     remove_duplicates: "[Sorted reads directory] [Max # of duplicates per position] [Output directory]"
     get_multiscale_broad_ers: "[Options/Values]"
@@ -97,5 +97,9 @@ task MUSIC {
     l_win_max: "[Maximum p-val window length (5000)]"
     l_win_step: "[p-val window length step (250)]"
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_sort_reads = "${in_sort_reads}"
   }
 }

@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../subChar.cwl
 inputs:
-- id: old_char
+- id: in_old_char
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: new_char
+- id: in_new_char
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - subChar

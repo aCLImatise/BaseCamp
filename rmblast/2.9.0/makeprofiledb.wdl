@@ -4,4 +4,7 @@ task Makeprofiledb {
   command <<<
     makeprofiledb
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

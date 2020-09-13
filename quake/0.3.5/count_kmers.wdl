@@ -1,7 +1,10 @@
 version 1.0
 
-task CountKmers {
+task Countkmers {
   command <<<
-    count-kmers
+    count_kmers
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

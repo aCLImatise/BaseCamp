@@ -1,14 +1,10 @@
 version 1.0
 
 task PrepareDiscovarGenome {
-  input {
-    String arg_one
-  }
   command <<<
-    PrepareDiscovarGenome \
-      ~{arg_one}
+    PrepareDiscovarGenome
   >>>
-  parameter_meta {
-    arg_one: ""
+  output {
+    File out_stdout = stdout()
   }
 }

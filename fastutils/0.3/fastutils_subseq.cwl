@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../fastutils_subseq.cwl
 inputs:
-- id: input_file_fastx
+- id: in_input_file_fastx
   doc: input file in fastx format. Use - for stdin.
-  type: string
+  type: File
   inputBinding:
     prefix: -i
-- id: output_file_use
+- id: in_output_file_use
   doc: output file. Use - for stdout.
-  type: string
+  type: File
   inputBinding:
     prefix: -o
-- id: print_version_build
+- id: in_print_version_build
   doc: print version and build date
   type: boolean
   inputBinding:
     prefix: -v
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file_use
+  doc: output file. Use - for stdout.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file_use)
 cwlVersion: v1.1
 baseCommand:
 - fastutils

@@ -4,17 +4,20 @@ task Chakin {
   input {
     Boolean? verbose
     String? instance
-    String? path
+    File? path
   }
   command <<<
     chakin \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(instance) then ("--instance " +  '"' + instance + '"') else ""} \
       ~{if defined(path) then ("--path " +  '"' + path + '"') else ""}
   >>>
   parameter_meta {
     verbose: "Enables verbose mode."
-    instance: "Name of instance in /home/ubuntu/.chakin.yml. This parameter can also be set via the environment variable CHADO_INSTANCE  [default: __default; required]"
+    instance: "Name of instance in /root/.chakin.yml. This parameter\\ncan also be set via the environment variable\\nCHADO_INSTANCE  [default: __default; required]"
     path: "config file path"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

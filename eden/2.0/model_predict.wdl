@@ -2,9 +2,9 @@ version 1.0
 
 task ModelPredict {
   input {
-    String? input_file
-    String? model_file
-    String? output_dir
+    File? input_file
+    File? model_file
+    File? output_dir
   }
   command <<<
     model predict \
@@ -15,6 +15,10 @@ task ModelPredict {
   parameter_meta {
     input_file: "Path to file containing input. (default: None)"
     model_file: "Path to a fit model file. (default: model)"
-    output_dir: "Path to output directory. (default: out)"
+    output_dir: "Path to output directory. (default: out)\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_dir = "${in_output_dir}"
   }
 }

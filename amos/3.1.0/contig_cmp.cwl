@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../contig_cmp.cwl
 inputs:
-- id: a_file
+- id: in_a_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: b_file
+- id: in_b_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - contig-cmp

@@ -1,16 +1,18 @@
 &id001 !Command
+command:
+- biox
 positional: []
 named:
-- !Flag
-  description: Load aplication plugins [Multiple; Split by ","]
-  synonyms:
-  - --plugins
-  args: !EmptyFlagArg {}
-  optional: true
 - !Flag
   description: Options for application plugins [Key-Value]
   synonyms:
   - --plugins_opts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Load aplication plugins [Multiple; Split by ","]
+  synonyms:
+  - --plugins
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -20,139 +22,42 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Enable a search path for configs. Default is the home dir and your
-    cwd. [Multiple]
+  description: "Enable a search path for configs. Default is the\nhome dir and your\
+    \ cwd. [Multiple]"
   synonyms:
   - --search_path
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Search for config files in ~/.config.(ext) and in your current working
-    directory. [Flag]
-  synonyms:
-  - --search
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Override the search paths and supply your own config.
+  description: Override the search paths and supply your own
   synonyms:
   - --config
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: --no_configs tells HPC::Runner not to load any configs [Flag]
+  description: "--no_configs tells HPC::Runner not to load any\nconfigs [Flag]"
   synonyms:
   - --no_configs
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -w
-  args: !SimpleFlagArg
-    name: workflow.yml
-  optional: true
-command:
-- biox
 parent:
 subcommands:
 - !Command
-  positional:
-  - !Positional
-    description: Prints this usage information
-    position: 0
-    name: help
-    optional: false
-  named:
-  - !Flag
-    description: '[Flag]'
-    synonyms:
-    - --json
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: '[Flag]'
-    synonyms:
-    - --show_only_errors
-    args: !EmptyFlagArg {}
-    optional: true
   command:
   - biox
-  - inspect
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: -?      Prints this usage information. [Flag]
-    synonyms:
-    - --help
-    - -h
-    - --usage
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage:\n    biox inspect [long options...]\n    biox help\n    biox\
-    \ inspect --help\n\ndescription:\n    Inspect individual variables in your workflow.\
-    \ Syntax is global.var for\n    global, or rule.rulename.var for rules. Use the\
-    \ --all flag to inspect all\n    variables.\n\noptions:\n    --plugins_opts  \
-    \          Options for application plugins [Key-Value]\n    --plugins        \
-    \         Load aplication plugins [Multiple; Split by \",\"\n                \
-    \              ]\n    --search_path             Enable a search path for configs.\
-    \ Default is\n                              the home dir and your cwd. [Multiple]\n\
-    \    --no_configs              --no_configs tells HPC::Runner not to load any\n\
-    \                              configs [Flag]\n    --config_base             Basename\
-    \ of config files [Default:\".\n                              bioxworkflow\"]\n\
-    \    --config                  Override the search paths and supply your own\n\
-    \                              config.\n    --search                  Search for\
-    \ config files in ~/.config.(ext) and\n                              in your current\
-    \ working directory. [Flag]\n    --omit_after --oa         Omit rules after and\
-    \ including a particular\n                              rule.\n    --samples \
-    \                Supply samples on the command line as --samples\n           \
-    \                   sample1 --samples sample2, or find through\n             \
-    \                 sample_rule. [Multiple; Split by \",\"]\n    --omit_rules --or\
-    \         Omit rules to process [Multiple; Split by \",\"]\n    --omit_match --om\
-    \         Match rules to omit [Multiple; Split by \",\"]\n    --exclude_samples\
-    \         Exclude samples from analysis --exclude_samples\n                  \
-    \            sample1 --exclude_samples sample2 [Multiple;\n                  \
-    \            Split by \",\"]\n    --select_before --sb      Select rules before\
-    \ and including a particular\n                              rule.\n    --omit_between\
-    \ --obtwn    Omit sets of rules. Ex: rule1-rule2,rule4-rule5\n               \
-    \               [Multiple; Split by \",\"]\n    --select_rules --sr       Select\
-    \ rules to process [Multiple; Split by \",\"\n                              ]\n\
-    \    --select_between --sbtwn  Select sets of rules. Ex: rule1-rule2,rule4-\n\
-    \                              rule5 [Multiple; Split by \",\"]\n    --omit_before\
-    \ --ob        Omit rules before and including a particular\n                 \
-    \             rule.\n    --select_match --sm       Match rules to select [Multiple;\
-    \ Split by \",\"]\n    --select_after --sa       Select rules after and including\
-    \ a particular\n                              rule.\n    --comment_char      \
-    \      [Default:\"#\"]\n    --verbose                 [Flag]\n    --auto_deps\
-    \               Create a dependency tree using the INPUT/\n                  \
-    \            OUTPUTs of a rule [Flag]\n    --outfile -o              Write your\
-    \ workflow to a file\n    --workflow -w             Supply a workflow [Required]\n\
-    \    --stdout                  Write workflows to STDOUT [Flag]\n    --all   \
-    \                  [Flag]\n    --step_key                Type any key to continue\
-    \ to next rule key. Type\n                              'q' or 'quit' to quit.\
-    \ [Flag]\n    --step_rule               Type any key to continue to next rule.\
-    \ Type 'q'\n                              or 'quit' to quit. [Flag]\n    --path\
-    \                    \n    --json                    [Flag]\n    --show_only_errors\
-    \        [Flag]\n    --help -h --usage -?      Prints this usage information.\
-    \ [Flag]\n\navailable subcommands:\n    help  Prints this usage information\n\n"
-  generated_using: &id002
-  - --help
-- !Command
+  - new
   positional:
+  - !Positional
+    description: --config_base         Basename of config files [Default:".bioxworkflow"]
+    position: 0
+    name: config.
+    optional: false
   - !Positional
     description: Prints this usage information
     position: 0
     name: help
     optional: false
   named:
-  - !Flag
-    description: Options for application plugins [Key-Value]
-    synonyms:
-    - --plugins_opts
-    args: !EmptyFlagArg {}
-    optional: true
   - !Flag
     description: Load aplication plugins [Multiple; Split by ","]
     synonyms:
@@ -160,35 +65,35 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Override the search paths and supply your own config.
+    description: Options for application plugins [Key-Value]
     synonyms:
-    - --config
+    - --plugins_opts
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Search for config files in ~/.config.(ext) and in your current working
-      directory. [Flag]
-    synonyms:
-    - --search
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: --no_configs tells HPC::Runner not to load any configs [Flag]
+    description: "--no_configs tells HPC::Runner not to load any\nconfigs [Flag]"
     synonyms:
     - --no_configs
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Enable a search path for configs. Default is the home dir and your
-      cwd. [Multiple]
+    description: Override the search paths and supply your own
     synonyms:
-    - --search_path
+    - --config
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Basename of config files [Default:".bioxworkflow"]
+    description: "Search for config files in ~/.config.(ext) and in\nyour current\
+      \ working directory. [Flag]"
     synonyms:
-    - --config_base
+    - --search
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Enable a search path for configs. Default is the\nhome dir and your\
+      \ cwd. [Multiple]"
+    synonyms:
+    - --search_path
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
@@ -199,16 +104,16 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
+    description: Write workflows to STDOUT [Flag]
+    synonyms:
+    - --stdout
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
     description: Write your workflow to a file
     synonyms:
     - --outfile
     - -o
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: Write workflows to STDOUT [Flag]
-    synonyms:
-    - --stdout
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
@@ -218,11 +123,9 @@ subcommands:
     - -w
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - biox
-  - new
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: -?  Prints this usage information. [Flag]
     synonyms:
@@ -234,22 +137,24 @@ subcommands:
   usage_flag:
   version_flag:
   help_text: "usage:\n    biox new [long options...]\n    biox help\n    biox new\
-    \ --help\n\ndescription:\n    Create a new workflow.\n\noptions:\n    --plugins_opts\
-    \        Options for application plugins [Key-Value]\n    --plugins          \
-    \   Load aplication plugins [Multiple; Split by \",\"]\n    --config         \
-    \     Override the search paths and supply your own\n                        \
-    \  config.\n    --search              Search for config files in ~/.config.(ext)\
-    \ and in\n                          your current working directory. [Flag]\n \
-    \   --no_configs          --no_configs tells HPC::Runner not to load any\n   \
-    \                       configs [Flag]\n    --search_path         Enable a search\
-    \ path for configs. Default is the\n                          home dir and your\
-    \ cwd. [Multiple]\n    --config_base         Basename of config files [Default:\"\
-    .bioxworkflow\"]\n    --rules -r            Add rules [Multiple; Split by \",\"\
-    ]\n    --outfile -o          Write your workflow to a file\n    --stdout     \
-    \         Write workflows to STDOUT [Flag]\n    --workflow -w         Supply a\
-    \ workflow [Required]\n    --help -h --usage -?  Prints this usage information.\
-    \ [Flag]\n\navailable subcommands:\n    help  Prints this usage information\n\n"
-  generated_using: *id002
+    \ --help\n\ndescription:\n    Create a new workflow.\n\noptions:\n    --plugins\
+    \             Load aplication plugins [Multiple; Split by \",\"]\n    --plugins_opts\
+    \        Options for application plugins [Key-Value]\n    --no_configs       \
+    \   --no_configs tells HPC::Runner not to load any\n                         \
+    \ configs [Flag]\n    --config              Override the search paths and supply\
+    \ your own\n                          config.\n    --config_base         Basename\
+    \ of config files [Default:\".bioxworkflow\"]\n    --search              Search\
+    \ for config files in ~/.config.(ext) and in\n                          your current\
+    \ working directory. [Flag]\n    --search_path         Enable a search path for\
+    \ configs. Default is the\n                          home dir and your cwd. [Multiple]\n\
+    \    --rules -r            Add rules [Multiple; Split by \",\"]\n    --stdout\
+    \              Write workflows to STDOUT [Flag]\n    --outfile -o          Write\
+    \ your workflow to a file\n    --workflow -w         Supply a workflow [Required]\n\
+    \    --help -h --usage -?  Prints this usage information. [Flag]\n\navailable\
+    \ subcommands:\n    help  Prints this usage information\n\n"
+  generated_using: &id002
+  - --help
+usage: []
 help_flag: !Flag
   description: -?  Prints this usage information. [Flag]
   synonyms:
@@ -262,16 +167,16 @@ usage_flag:
 version_flag:
 help_text: "usage:\n      biox run -w workflow.yml\n      biox -h\n\ndescription:\n\
   \    BioX::Workflow::Command is a templating system for creating Bioinformatics\n\
-  \    Workflows.\n\nglobal options:\n    --plugins             Load aplication plugins\
-  \ [Multiple; Split by \",\"]\n    --plugins_opts        Options for application\
-  \ plugins [Key-Value]\n    --config_base         Basename of config files [Default:\"\
+  \    Workflows.\n\nglobal options:\n    --plugins_opts        Options for application\
+  \ plugins [Key-Value]\n    --plugins             Load aplication plugins [Multiple;\
+  \ Split by \",\"]\n    --config_base         Basename of config files [Default:\"\
   .bioxworkflow\"]\n    --search_path         Enable a search path for configs. Default\
-  \ is the\n                          home dir and your cwd. [Multiple]\n    --search\
-  \              Search for config files in ~/.config.(ext) and in\n             \
-  \             your current working directory. [Flag]\n    --config             \
-  \ Override the search paths and supply your own\n                          config.\n\
-  \    --no_configs          --no_configs tells HPC::Runner not to load any\n    \
-  \                      configs [Flag]\n    --help -h --usage -?  Prints this usage\
+  \ is the\n                          home dir and your cwd. [Multiple]\n    --config\
+  \              Override the search paths and supply your own\n                 \
+  \         config.\n    --search              Search for config files in ~/.config.(ext)\
+  \ and in\n                          your current working directory. [Flag]\n   \
+  \ --no_configs          --no_configs tells HPC::Runner not to load any\n       \
+  \                   configs [Flag]\n    --help -h --usage -?  Prints this usage\
   \ information. [Flag]\n\navailable commands:\n    add       Add rules to an existing\
   \ workflow.\n    inspect   Inspect your workflow\n    new       Create a new workflow.\n\
   \    run       Run your workflow.\n    stats     Get the status of INPUT/OUTPUT\

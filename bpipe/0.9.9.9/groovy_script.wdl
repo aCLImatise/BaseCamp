@@ -4,4 +4,7 @@ task GroovyScript {
   command <<<
     groovy_script
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

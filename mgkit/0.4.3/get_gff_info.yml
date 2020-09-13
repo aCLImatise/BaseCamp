@@ -1,11 +1,80 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - get-gff-info
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --cite
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands:
 - !Command
+  command:
+  - get-gff-info
+  - split
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: GFF_FILE
+    optional: true
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Prefix for the file name in output  [default: split]'
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: "Number of chunks into which split the GFF file\n[default: 10]"
+    synonyms:
+    - -n
+    - --number
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: gzip output files
+    synonyms:
+    - -z
+    - --gzip
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: get-gff-info split [OPTIONS] [GFF_FILE]\n\n  Split annotations\
+    \ from a GFF file [gff-file] to several files starting\n  with [prefix]\n\nOptions:\n\
+    \  -v, --verbose\n  -p, --prefix TEXT     Prefix for the file name in output \
+    \ [default: split]\n  -n, --number INTEGER  Number of chunks into which split\
+    \ the GFF file\n                        [default: 10]\n\n  -z, --gzip        \
+    \    gzip output files\n  --help                Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - get-gff-info
+  - mongodb
   positional:
   - !Positional
     description: ''
@@ -18,6 +87,84 @@ subcommands:
     name: OUTPUT_FILE
     optional: true
   named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Taxonomy used to populate the lineage
+    synonyms:
+    - -t
+    - --taxonomy
+    args: !SimpleFlagArg
+      name: FILENAME
+    optional: true
+  - !Flag
+    description: No cache for the lineage function
+    synonyms:
+    - -c
+    - --no-cache
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "If used, the json will be written in a human\nreadble form"
+    synonyms:
+    - -i
+    - --indent
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Shows Progress Bar
+    synonyms:
+    - --progress
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: get-gff-info mongodb [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\n \
+    \ Extract annotations from a GFF [gff-file] file and makes output for\n  MongoDB\
+    \ [output-file]\n\nOptions:\n  -v, --verbose\n  -t, --taxonomy FILENAME  Taxonomy\
+    \ used to populate the lineage\n  -c, --no-cache           No cache for the lineage\
+    \ function\n  -i, --indent INTEGER     If used, the json will be written in a\
+    \ human\n                           readble form\n\n  --progress             \
+    \  Shows Progress Bar\n  --help                   Show this message and exit.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - get-gff-info
+  - cov
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: GFF_FILE
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: OUTPUT_FILE
+    optional: true
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
   - !Flag
     description: Reference FASTA file for the GFF  [required]
     synonyms:
@@ -41,7 +188,8 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Emulate BLAST output (use only the header part before the first space)
+    description: "Emulate BLAST output (use only the header part\nbefore the first\
+      \ space)"
     synonyms:
     - -r
     - --rename
@@ -53,11 +201,9 @@ subcommands:
     - --progress
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - get-gff-info
-  - cov
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -75,43 +221,11 @@ subcommands:
     \                            before the first space)\n\n  --progress         \
     \       Shows Progress Bar\n  --help                    Show this message and\
     \ exit.\n"
-  generated_using: &id002
-  - --help
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: GFF_FILE
-    optional: true
-  named:
-  - !Flag
-    description: 'Directory for the database  [default: gff-dbm]'
-    synonyms:
-    - -d
-    - --output-dir
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  command:
-  - get-gff-info
-  - dbm
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "Usage: get-gff-info dbm [OPTIONS] [GFF_FILE]\n\n  Creates a dbm database\
-    \ with annotations from file [gff-file] into db\n  [output-dir]\n\nOptions:\n\
-    \  -v, --verbose\n  -d, --output-dir TEXT  Directory for the database  [default:\
-    \ gff-dbm]\n  --help                 Show this message and exit.\n"
   generated_using: *id002
 - !Command
+  command:
+  - get-gff-info
+  - gtf
   positional:
   - !Positional
     description: ''
@@ -125,18 +239,24 @@ subcommands:
     optional: true
   named:
   - !Flag
-    description: 'GFF attribute to use for the GTF *gene_id* attribute [default: gene_id]'
+    description: ''
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "GFF attribute to use for the GTF *gene_id* attribute\n[default:\
+      \ gene_id]"
     synonyms:
     - -g
     - --gene-id
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  command:
-  - get-gff-info
-  - gtf
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -152,52 +272,34 @@ subcommands:
     \  Show this message and exit.\n"
   generated_using: *id002
 - !Command
+  command:
+  - get-gff-info
+  - dbm
   positional:
   - !Positional
     description: ''
     position: 0
     name: GFF_FILE
     optional: true
-  - !Positional
-    description: ''
-    position: 1
-    name: OUTPUT_FILE
-    optional: true
   named:
   - !Flag
-    description: Taxonomy used to populate the lineage
+    description: ''
     synonyms:
-    - -t
-    - --taxonomy
-    args: !SimpleFlagArg
-      name: FILENAME
-    optional: true
-  - !Flag
-    description: No cache for the lineage function
-    synonyms:
-    - -c
-    - --no-cache
+    - -v
+    - --verbose
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: If used, the json will be written in a human readble form
+    description: 'Directory for the database  [default: gff-dbm]'
     synonyms:
-    - -i
-    - --indent
+    - -d
+    - --output-dir
     args: !SimpleFlagArg
-      name: INTEGER
+      name: TEXT
     optional: true
-  - !Flag
-    description: Shows Progress Bar
-    synonyms:
-    - --progress
-    args: !EmptyFlagArg {}
-    optional: true
-  command:
-  - get-gff-info
-  - mongodb
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -206,15 +308,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "Usage: get-gff-info mongodb [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\n \
-    \ Extract annotations from a GFF [gff-file] file and makes output for\n  MongoDB\
-    \ [output-file]\n\nOptions:\n  -v, --verbose\n  -t, --taxonomy FILENAME  Taxonomy\
-    \ used to populate the lineage\n  -c, --no-cache           No cache for the lineage\
-    \ function\n  -i, --indent INTEGER     If used, the json will be written in a\
-    \ human\n                           readble form\n\n  --progress             \
-    \  Shows Progress Bar\n  --help                   Show this message and exit.\n"
+  help_text: "Usage: get-gff-info dbm [OPTIONS] [GFF_FILE]\n\n  Creates a dbm database\
+    \ with annotations from file [gff-file] into db\n  [output-dir]\n\nOptions:\n\
+    \  -v, --verbose\n  -d, --output-dir TEXT  Directory for the database  [default:\
+    \ gff-dbm]\n  --help                 Show this message and exit.\n"
   generated_using: *id002
 - !Command
+  command:
+  - get-gff-info
+  - sequence
   positional:
   - !Positional
     description: ''
@@ -227,6 +329,13 @@ subcommands:
     name: FASTA_FILE
     optional: true
   named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
   - !Flag
     description: Reverse complement sequences on the - strand
     synonyms:
@@ -242,15 +351,15 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Split the sequence header of the reference at the first space, to
-      emulate BLAST behaviour
+    description: "Split the sequence header of the reference at the\nfirst space,\
+      \ to emulate BLAST behaviour"
     synonyms:
     - -s
     - --split
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Fasta file containing the reference sequences of the GFF file
+    description: "Fasta file containing the reference sequences of\nthe GFF file"
     synonyms:
     - -f
     - --reference
@@ -263,11 +372,9 @@ subcommands:
     - --progress
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - get-gff-info
-  - sequence
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -286,57 +393,7 @@ subcommands:
     \                         the GFF file\n\n  --progress                Shows Progress\
     \ Bar\n  --help                    Show this message and exit.\n"
   generated_using: *id002
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: GFF_FILE
-    optional: true
-  named:
-  - !Flag
-    description: 'Prefix for the file name in output  [default: split]'
-    synonyms:
-    - -p
-    - --prefix
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  - !Flag
-    description: 'Number of chunks into which split the GFF file [default: 10]'
-    synonyms:
-    - -n
-    - --number
-    args: !SimpleFlagArg
-      name: INTEGER
-    optional: true
-  - !Flag
-    description: gzip output files
-    synonyms:
-    - -z
-    - --gzip
-    args: !EmptyFlagArg {}
-    optional: true
-  command:
-  - get-gff-info
-  - split
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "Usage: get-gff-info split [OPTIONS] [GFF_FILE]\n\n  Split annotations\
-    \ from a GFF file [gff-file] to several files starting\n  with [prefix]\n\nOptions:\n\
-    \  -v, --verbose\n  -p, --prefix TEXT     Prefix for the file name in output \
-    \ [default: split]\n  -n, --number INTEGER  Number of chunks into which split\
-    \ the GFF file\n                        [default: 10]\n\n  -z, --gzip        \
-    \    gzip output files\n  --help                Show this message and exit.\n"
-  generated_using: *id002
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -344,7 +401,12 @@ help_flag: !Flag
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: get-gff-info [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\n\
   Options:\n  --version  Show the version and exit.\n  --cite\n  --help     Show this\
   \ message and exit.\n\nCommands:\n  cov       Report on how much a sequence length\

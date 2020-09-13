@@ -2,17 +2,17 @@ version 1.0
 
 task Bazam {
   input {
-    String? bam
+    File? bam
     String? dr
     String? filter
     String? gene
     String? regions
-    String? concurrency_parameter
+    Int? concurrency_parameter
     Boolean? name_pos
-    String? output_file
-    String? pad
-    String? r_one
-    String? r_two
+    File? output_file
+    Int? pad
+    Int? r_one
+    Int? r_two
     String? sharding_factor_format
     String? jar
     String java
@@ -26,7 +26,7 @@ task Bazam {
       ~{if defined(gene) then ("-gene " +  '"' + gene + '"') else ""} \
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
       ~{if defined(concurrency_parameter) then ("-n " +  '"' + concurrency_parameter + '"') else ""} \
-      ~{true="-namepos" false="" name_pos} \
+      ~{if (name_pos) then "-namepos" else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
       ~{if defined(pad) then ("-pad " +  '"' + pad + '"') else ""} \
       ~{if defined(r_one) then ("-r1 " +  '"' + r_one + '"') else ""} \
@@ -36,7 +36,7 @@ task Bazam {
   >>>
   parameter_meta {
     bam: "BAM file to extract read pairs from"
-    dr: "Specify a read name to debug: processing of the read will be verbosey printed"
+    dr: "Specify a read name to debug: processing of the read\\nwill be verbosey printed"
     filter: "Filter using specified groovy expression"
     gene: "Extract region of given gene"
     regions: "Regions to include reads (and mates of reads) from"
@@ -46,8 +46,12 @@ task Bazam {
     pad: "Amount to pad regions by (0)"
     r_one: "Output for R1 if extracting FASTQ in separate files"
     r_two: "Output for R2 if extracting FASTQ in separate files"
-    sharding_factor_format: "Sharding factor: format <n>,<N>: output only reads belonging to shard n of N"
+    sharding_factor_format: "Sharding factor: format <n>,<N>: output only reads\\nbelonging to shard n of N"
     jar: ""
     java: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

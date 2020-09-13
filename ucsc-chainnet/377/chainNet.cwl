@@ -1,58 +1,56 @@
 class: CommandLineTool
 id: ../../../chainNet.cwl
 inputs:
-- id: min_space
+- id: in_min_space
   doc: '- minimum gap size to fill, default 25'
-  type: string
+  type: long
   inputBinding:
     prefix: -minSpace
-- id: min_fill
+- id: in_min_fill
   doc: '- default half of minSpace'
   type: string
   inputBinding:
     prefix: -minFill
-- id: min_score
+- id: in_min_score
   doc: '- minimum chain score to consider, default 2000.0'
-  type: string
+  type: double
   inputBinding:
     prefix: -minScore
-- id: verbose
+- id: in_verbose
   doc: '- Alter verbosity (default 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: -verbose
-- id: incl_hap
-  doc: '- include query sequences name in the form *_hap*|*_alt*. Normally these are
-    excluded from nets as being haplotype pseudochromosomes'
+- id: in_incl_hap
+  doc: "- include query sequences name in the form *_hap*|*_alt*.\nNormally these\
+    \ are excluded from nets as being haplotype\npseudochromosomes\n"
   type: boolean
   inputBinding:
     prefix: -inclHap
-- id: in_dot_chain
+- id: in_in_dot_chain
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: target_dot_sizes
+- id: in_target_dot_sizes
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: query_dot_sizes
+- id: in_query_dot_sizes
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: target_dotnet
+- id: in_target_dotnet
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: query_dotnet
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chainNet

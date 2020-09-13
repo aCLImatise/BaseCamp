@@ -3,10 +3,10 @@ version 1.0
 task FindMatchesBetweenKUnitigsAndReads {
   input {
     Boolean? long
-    String? output_file_kunitigsreadsmatches
-    String? mer
+    File? output_file_kunitigsreadsmatches
+    Int? mer
     Boolean? gzip
-    String? threads
+    Int? threads
     Boolean? verbose
     String cmdline_parse
     String kuni_tig_file
@@ -15,12 +15,12 @@ task FindMatchesBetweenKUnitigsAndReads {
     findMatchesBetweenKUnitigsAndReads \
       ~{cmdline_parse} \
       ~{kuni_tig_file} \
-      ~{true="--long" false="" long} \
+      ~{if (long) then "--long" else ""} \
       ~{if defined(output_file_kunitigsreadsmatches) then ("--output " +  '"' + output_file_kunitigsreadsmatches + '"') else ""} \
       ~{if defined(mer) then ("--mer " +  '"' + mer + '"') else ""} \
-      ~{true="--gzip" false="" gzip} \
+      ~{if (gzip) then "--gzip" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     long: "Long output format (false)"
@@ -31,5 +31,9 @@ task FindMatchesBetweenKUnitigsAndReads {
     verbose: "Be verbose (false)"
     cmdline_parse: ""
     kuni_tig_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_kunitigsreadsmatches = "${in_output_file_kunitigsreadsmatches}"
   }
 }

@@ -4,4 +4,7 @@ task BigBedToBed {
   command <<<
     bigBedToBed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

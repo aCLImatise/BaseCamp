@@ -1,32 +1,30 @@
 class: CommandLineTool
 id: ../../../newProg.cwl
 inputs:
-- id: jkh_gap
-  doc: '- include jkhgap.a and mysql libraries as well as jkweb.a archives '
+- id: in_jkh_gap
+  doc: '- include jkhgap.a and mysql libraries as well as jkweb.a archives'
   type: boolean
   inputBinding:
     prefix: -jkhgap
-- id: cgi
+- id: in_cgi
   doc: '- create shell of a CGI script for web'
   type: boolean
   inputBinding:
     prefix: -cgi
-- id: progname
+- id: in_progname
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: description
+- id: in_description
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: words
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - newProg

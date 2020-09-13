@@ -9,6 +9,9 @@ task Hca {
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""}
   >>>
   parameter_meta {
-    log_level: "['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']"
+    log_level: "['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../parse_table.cwl
 inputs:
-- id: cat
+- id: in_cat
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: table_dot_txt
+- id: in_table_dot_txt
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - parse-table

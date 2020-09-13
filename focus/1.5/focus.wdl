@@ -2,14 +2,14 @@ version 1.0
 
 task Focus {
   input {
-    String? query
-    String? output_directory
-    String? km_er_size
-    String? alternate_directory
+    File? query
+    Directory? output_directory
+    Int? km_er_size
+    Directory? alternate_directory
     String? output_prefix
-    String? threads
+    Int? threads
     Boolean? list_output
-    String? log
+    File? log
     Boolean? v
   }
   command <<<
@@ -20,9 +20,9 @@ task Focus {
       ~{if defined(alternate_directory) then ("--alternate_directory " +  '"' + alternate_directory + '"') else ""} \
       ~{if defined(output_prefix) then ("--output_prefix " +  '"' + output_prefix + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{true="--list_output" false="" list_output} \
+      ~{if (list_output) then "--list_output" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     query: "Path to directory with FAST(A/Q) files"
@@ -34,5 +34,9 @@ task Focus {
     list_output: "Output results as a list"
     log: "Path to log file (Default: STDOUT)."
     v: ""
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

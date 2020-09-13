@@ -3,8 +3,8 @@ version 1.0
 task GdtoolsDOWNLOAD {
   input {
     String? login
-    String? download_dir
-    String? genome_diff_dir
+    File? download_dir
+    Directory? genome_diff_dir
     Boolean? test
     Boolean? reference_only
     Boolean? un_gzip
@@ -14,9 +14,9 @@ task GdtoolsDOWNLOAD {
       ~{if defined(login) then ("--login " +  '"' + login + '"') else ""} \
       ~{if defined(download_dir) then ("--download-dir " +  '"' + download_dir + '"') else ""} \
       ~{if defined(genome_diff_dir) then ("--genome-diff-dir " +  '"' + genome_diff_dir + '"') else ""} \
-      ~{true="--test" false="" test} \
-      ~{true="--reference-only" false="" reference_only} \
-      ~{true="--ungzip" false="" un_gzip}
+      ~{if (test) then "--test" else ""} \
+      ~{if (reference_only) then "--reference-only" else ""} \
+      ~{if (un_gzip) then "--ungzip" else ""}
   >>>
   parameter_meta {
     login: "Login user:password information for private server access."
@@ -25,5 +25,9 @@ task GdtoolsDOWNLOAD {
     test: "Test urls in genome diff files, doesn't download the file"
     reference_only: "Only downloads the reference sequence files for this file"
     un_gzip: "Decompress gzipped read files"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_download_dir = "${in_download_dir}"
   }
 }

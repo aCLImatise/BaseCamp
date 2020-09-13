@@ -1,23 +1,26 @@
 version 1.0
 
-task EslMixdchletGen {
+task EslmixdchletGen {
   input {
-    String? set_number_seed
-    String? number_counts_vector
-    String? number_countvectors_generate
+    Int? set_random_seed
+    Int? number_counts_vector
+    Int? number_countvectors_generate
     Boolean? options
   }
   command <<<
-    esl-mixdchlet gen \
-      ~{if defined(set_number_seed) then ("-s " +  '"' + set_number_seed + '"') else ""} \
+    esl_mixdchlet gen \
+      ~{if defined(set_random_seed) then ("-s " +  '"' + set_random_seed + '"') else ""} \
       ~{if defined(number_counts_vector) then ("-M " +  '"' + number_counts_vector + '"') else ""} \
       ~{if defined(number_countvectors_generate) then ("-N " +  '"' + number_countvectors_generate + '"') else ""} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
-    set_number_seed: ": set random number seed  [0]"
+    set_random_seed: ": set random number seed  [0]"
     number_counts_vector: ": number of counts per vector  [100]"
     number_countvectors_generate: ": number of countvectors to generate  [1000]"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

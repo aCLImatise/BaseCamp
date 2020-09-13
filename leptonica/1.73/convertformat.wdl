@@ -4,4 +4,7 @@ task Convertformat {
   command <<<
     convertformat
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

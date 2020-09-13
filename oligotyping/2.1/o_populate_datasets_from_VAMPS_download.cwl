@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../o_populate_datasets_from_VAMPS_download.cwl
 inputs:
-- id: tax_on
+- id: in_tax_on
   doc: Isolate a particular taxon
   type: string
   inputBinding:
     prefix: --taxon
-- id: output
-  doc: Output file name
-  type: string
+- id: in_output
+  doc: "Output file name\n"
+  type: File
   inputBinding:
     prefix: --output
-- id: fast_a
-  doc: FASTA file downloaded from VAMPS
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Output file name\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - o-populate-datasets-from-VAMPS-download

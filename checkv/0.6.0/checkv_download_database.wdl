@@ -8,10 +8,13 @@ task CheckvDownloadDatabase {
   command <<<
     checkv download_database \
       ~{destination} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     quiet: "Suppress logging messages"
     destination: "Directory where the database will be downloaded to."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

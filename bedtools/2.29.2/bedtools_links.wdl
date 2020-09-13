@@ -9,15 +9,18 @@ task BedtoolsLinks {
   }
   command <<<
     bedtools links \
-      ~{true="-base" false="" base} \
-      ~{true="-org" false="" org} \
-      ~{true="-db" false="" db} \
+      ~{if (base) then "-base" else ""} \
+      ~{if (org) then "-org" else ""} \
+      ~{if (db) then "-db" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
-    base: "The browser basename.  Default: http://genome.ucsc.edu "
+    base: "The browser basename.  Default: http://genome.ucsc.edu"
     org: "The organism. Default: human"
     db: "The build.  Default: hg18"
     i: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

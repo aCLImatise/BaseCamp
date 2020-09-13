@@ -1,7 +1,10 @@
 version 1.0
 
-task MpaPortable {
+task Mpaportable {
   command <<<
-    mpa-portable
+    mpa_portable
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,18 +1,15 @@
 class: CommandLineTool
 id: ../../../mamotif.cwl
 inputs:
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-- id: command
-  doc: run          Run complete workflow (MAnorm + MotifScan + Integration). integrate    Run
-    the integration module with MAnorm and MotifScan results.
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mamotif

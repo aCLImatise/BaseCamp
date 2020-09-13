@@ -6,13 +6,13 @@ task Junctools {
     String script
     String contains
     String a
-    String number
+    Int number
     String of
     String tools
     String for
     String manipulating
     String junction
-    File files_dot
+    String files_dot
   }
   command <<<
     junctools \
@@ -40,5 +40,8 @@ task Junctools {
     manipulating: ""
     junction: ""
     files_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

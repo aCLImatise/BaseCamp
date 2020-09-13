@@ -1,143 +1,161 @@
 class: CommandLineTool
 id: ../../../enrichm_enrichment.cwl
 inputs:
-- id: log
+- id: in_log
   doc: Output logging information to this file.
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: verbosity
+- id: in_verbosity
   doc: Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent
-  type: string
+  type: long
   inputBinding:
     prefix: --verbosity
-- id: output
+- id: in_output
   doc: Output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-- id: force
+- id: in_force
   doc: Overwrite previous run
   type: boolean
   inputBinding:
     prefix: --force
-- id: annotate_output
+- id: in_annotate_output
   doc: Output directory provided by enrichm annotate
-  type: string
+  type: Directory
   inputBinding:
     prefix: --annotate_output
-- id: metadata
+- id: in_metadata
   doc: Metadata file with two columns, the first with the genome name, the second
     with the groupings to compare.
-  type: string
+  type: File
   inputBinding:
     prefix: --metadata
-- id: annotation_matrix
+- id: in_annotation_matrix
   doc: Annotation matrix to compare.
   type: string
   inputBinding:
     prefix: --annotation_matrix
-- id: abundance
+- id: in_abundance
   doc: Genome abundance matrix.
   type: string
   inputBinding:
     prefix: --abundance
-- id: abundance_metadata
+- id: in_abundance_metadata
   doc: Metadata grouping abundance samples.
   type: string
   inputBinding:
     prefix: --abundance_metadata
-- id: transcriptome
+- id: in_transcriptome
   doc: Genome abundance matrix.
   type: string
   inputBinding:
     prefix: --transcriptome
-- id: transcriptome_metadata
+- id: in_transcriptome_metadata
   doc: Metadata grouping abundance samples.
   type: string
   inputBinding:
     prefix: --transcriptome_metadata
-- id: batch_file
+- id: in_batch_file
   doc: metadata file to compare with.
-  type: string
+  type: File
   inputBinding:
     prefix: --batchfile
-- id: pval_cut_off
+- id: in_pval_cut_off
   doc: Only output results with a p-value below a this cutoff (default=0.05).
-  type: string
+  type: double
   inputBinding:
     prefix: --pval_cutoff
-- id: proportions_cut_off
+- id: in_proportions_cut_off
   doc: Proportion enrichment cutoff.
   type: string
   inputBinding:
     prefix: --proportions_cutoff
-- id: threshold
+- id: in_threshold
   doc: The threshold to control for in false discovery rate of familywise error rate.
   type: string
   inputBinding:
     prefix: --threshold
-- id: multi_test_correction
-  doc: 'The form of mutiple test correction to use. Uses the statsmodel module and
-    consequently has all of its options. Default: Benjamini-Hochberg FDR (fdr_bh)  Options:
-    Bonferroni (b)  Sidak (s)  Holm (h)  Holm-Sidak (hs)  Simes-Hochberg (sh)  Hommel
-    (ho)  FDR Benjamini-Yekutieli (fdr_by)  FDR 2-stage Benjamini-Hochberg (fdr_tsbh)  FDR
-    2-stage Benjamini-Krieger-Yekutieli (fdr_tsbky)  FDR adaptive Gavrilov-Benjamini-Sarkar
-    (fdr_gbs))'
-  type: string
+- id: in_multi_test_correction
+  doc: "The form of mutiple test correction to use. Uses the statsmodel module and\
+    \ consequently has all of its options.\nDefault: Benjamini-Hochberg FDR (fdr_bh)\n\
+    Options: Bonferroni (b)\nSidak (s)\nHolm (h)\nHolm-Sidak (hs)\nSimes-Hochberg\
+    \ (sh)\nHommel (ho)\nFDR Benjamini-Yekutieli (fdr_by)\nFDR 2-stage Benjamini-Hochberg\
+    \ (fdr_tsbh)\nFDR 2-stage Benjamini-Krieger-Yekutieli (fdr_tsbky)\nFDR adaptive\
+    \ Gavrilov-Benjamini-Sarkar (fdr_gbs))"
+  type: long
   inputBinding:
     prefix: --multi_test_correction
-- id: processes
+- id: in_processes
   doc: Number of processes to use for enrichment.
-  type: string
+  type: long
   inputBinding:
     prefix: --processes
-- id: allow_negative_values
+- id: in_allow_negative_values
   doc: Allow negative values in input matrix.
   type: boolean
   inputBinding:
     prefix: --allow_negative_values
-- id: ko
+- id: in_ko
   doc: Compare KO ids (annotated with DIAMOND)
   type: boolean
   inputBinding:
     prefix: --ko
-- id: ko_hmm
+- id: in_ko_hmm
   doc: Compare KO ids (annotated with HMMs)
   type: boolean
   inputBinding:
     prefix: --ko_hmm
-- id: pfam
+- id: in_pfam
   doc: Compare Pfam ids
   type: boolean
   inputBinding:
     prefix: --pfam
-- id: tigr_fam
+- id: in_tigr_fam
   doc: Compare TIGRFAM ids
   type: boolean
   inputBinding:
     prefix: --tigrfam
-- id: cluster
+- id: in_cluster
   doc: Compare cluster ids
   type: boolean
   inputBinding:
     prefix: --cluster
-- id: ortholog
+- id: in_ortholog
   doc: Compare ortholog ids
   type: boolean
   inputBinding:
     prefix: --ortholog
-- id: ca_zy
+- id: in_ca_zy
   doc: Compare dbCAN ids
   type: boolean
   inputBinding:
     prefix: --cazy
-- id: ec
+- id: in_ec
   doc: Compare EC ids
   type: boolean
   inputBinding:
     prefix: --ec
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_log
+  doc: Output logging information to this file.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log)
+- id: out_output
+  doc: Output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
+- id: out_annotate_output
+  doc: Output directory provided by enrichm annotate
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_annotate_output)
 cwlVersion: v1.1
 baseCommand:
 - enrichm

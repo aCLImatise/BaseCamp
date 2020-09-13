@@ -14,4 +14,7 @@ task Blossom5 {
     see: ""
     usage_dot_txt: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

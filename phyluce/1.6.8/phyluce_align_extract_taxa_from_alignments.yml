@@ -1,6 +1,15 @@
 !Command
+command:
+- phyluce_align_extract_taxa_from_alignments
 positional: []
 named:
+- !Flag
+  description: ''
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
 - !Flag
   description: The input directory containing nexus files
   synonyms:
@@ -9,22 +18,15 @@ named:
     name: ALIGNMENTS
   optional: true
 - !Flag
-  description: The directory in which to store the output files
-  synonyms:
-  - --output
-  args: !SimpleFlagArg
-    name: OUTPUT
-  optional: true
-- !Flag
   description: The input format of the alignments
   synonyms:
   - --input-format
   args: !ChoiceFlagArg
     choices: !!set
-      ? fasta
-      ? phylip
       ? nexus
+      ? phylip
       ? newick
+      ? fasta
   optional: true
 - !Flag
   description: The input alignment format
@@ -32,13 +34,13 @@ named:
   - --output-format
   args: !ChoiceFlagArg
     choices: !!set
+      ? fasta
+      ? phylip
+      ? stockholm
       ? nexus
+      ? emboss
       ? clustal
       ? phylip-sequential
-      ? fasta
-      ? stockholm
-      ? emboss
-      ? phylip
       ? phylip-relaxed
   optional: true
 - !Flag
@@ -47,8 +49,8 @@ named:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      ? WARN
       ? CRITICAL
+      ? WARN
       ? INFO
   optional: true
 - !Flag
@@ -59,8 +61,8 @@ named:
     name: LOG_PATH
   optional: true
 - !Flag
-  description: Process alignments in parallel using --cores for alignment. This is
-    the number of PHYSICAL CPUs.
+  description: "Process alignments in parallel using --cores for\nalignment. This\
+    \ is the number of PHYSICAL CPUs."
   synonyms:
   - --cores
   args: !SimpleFlagArg
@@ -80,16 +82,15 @@ named:
     name: EXCLUDE
   optional: true
 - !Flag
-  description: Taxa to include
+  description: "Taxa to include\n"
   synonyms:
   - --include
   args: !RepeatFlagArg
     name: INCLUDE
   optional: true
-command:
-- phyluce_align_extract_taxa_from_alignments
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

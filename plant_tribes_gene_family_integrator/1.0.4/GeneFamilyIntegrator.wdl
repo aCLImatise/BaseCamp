@@ -4,4 +4,7 @@ task GeneFamilyIntegrator {
   command <<<
     GeneFamilyIntegrator
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

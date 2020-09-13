@@ -1,7 +1,10 @@
 version 1.0
 
-task .open {
+task Open {
   command <<<
-    .open
+    _open
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

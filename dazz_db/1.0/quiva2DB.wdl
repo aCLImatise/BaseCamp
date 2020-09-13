@@ -6,9 +6,12 @@ task Quiva2DB {
   }
   command <<<
     quiva2DB \
-      ~{true="-vl" false="" vl}
+      ~{if (vl) then "-vl" else ""}
   >>>
   parameter_meta {
     vl: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

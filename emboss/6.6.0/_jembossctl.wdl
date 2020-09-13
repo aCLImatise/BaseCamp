@@ -1,7 +1,10 @@
 version 1.0
 
-task _jembossctl {
+task Jembossctl {
   command <<<
     _jembossctl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

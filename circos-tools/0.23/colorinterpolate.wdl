@@ -2,7 +2,7 @@ version 1.0
 
 task Colorinterpolate {
   input {
-    String? start
+    Int? start
   }
   command <<<
     colorinterpolate \
@@ -10,5 +10,8 @@ task Colorinterpolate {
   >>>
   parameter_meta {
     start: ",y1,z1 -end x2,y2,z2 -steps STEPS"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

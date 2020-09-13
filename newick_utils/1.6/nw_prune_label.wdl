@@ -7,11 +7,14 @@ task NwPruneLabel {
   }
   command <<<
     nw_prune label \
-      ~{true="-f" false="" node_labels_file} \
-      ~{true="-v" false="" reverse_prune_nodes}
+      ~{if (node_labels_file) then "-f" else ""} \
+      ~{if (reverse_prune_nodes) then "-v" else ""}
   >>>
   parameter_meta {
-    node_labels_file: ": node labels are in a file whose name is the second argument, instead of being passed  on the command line. There should be one label per line, and no leading or trailing whitespace."
-    reverse_prune_nodes: ": reverse: prune nodes whose labels are NOT passed on the command line. Inner nodes are not pruned. This allows pruning of trees with support values, which syntactically are node labels, withouti inner nodes disappearing because their 'label' was not passed on the command line."
+    node_labels_file: ": node labels are in a file whose name is the second argument,\\ninstead of being passed  on the command line.\\nThere should be one label per line, and no leading or trailing\\nwhitespace."
+    reverse_prune_nodes: ": reverse: prune nodes whose labels are NOT passed on the command\\nline. Inner nodes are not pruned. This allows pruning of trees\\nwith support values, which syntactically are node labels, withouti\\ninner nodes disappearing because their 'label' was not passed on\\nthe command line."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

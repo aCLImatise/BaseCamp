@@ -1,7 +1,10 @@
 version 1.0
 
-task OGenerateMatrixFilesFromENVIRONMENT {
+task OgeneratematrixfilesfromENVIRONMENT {
   command <<<
-    o-generate-matrix-files-from-ENVIRONMENT
+    o_generate_matrix_files_from_ENVIRONMENT
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

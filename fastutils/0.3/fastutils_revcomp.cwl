@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../fastutils_revcomp.cwl
 inputs:
-- id: in
+- id: in_in
   doc: input file in fasta/q format [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: --in
-- id: out
+- id: in_out
   doc: output file [stdout]
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: linewidth
+- id: in_linewidth
   doc: size of lines in fasta output. Use 0 for no wrapping [0]
   type: long
   inputBinding:
     prefix: --lineWidth
-- id: fast_q
+- id: in_fast_q
   doc: output reads in fastq format if possible
   type: boolean
   inputBinding:
     prefix: --fastq
-- id: comment
+- id: in_comment
   doc: print comments in headers
   type: boolean
   inputBinding:
     prefix: --comment
-- id: lex
+- id: in_lex
   doc: output lexicographically smaller sequence
   type: boolean
   inputBinding:
     prefix: --lex
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: output file [stdout]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - fastutils

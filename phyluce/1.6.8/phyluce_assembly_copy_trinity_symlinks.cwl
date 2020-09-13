@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../phyluce_assembly_copy_trinity_symlinks.cwl
 inputs:
-- id: assembly_symlinks
-  doc: The location of the trinity symlinks (trinity- assemblies/contigs)
+- id: in_assembly_symlinks
+  doc: "The location of the trinity symlinks (trinity-\nassemblies/contigs)"
   type: string
   inputBinding:
     prefix: --assembly-symlinks
-- id: conf
+- id: in_conf
   doc: The configuration file to use
-  type: string
+  type: File
   inputBinding:
     prefix: --conf
-- id: output
+- id: in_output
   doc: The output folder
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The output folder
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_assembly_copy_trinity_symlinks

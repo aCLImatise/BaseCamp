@@ -1,67 +1,70 @@
 class: CommandLineTool
 id: ../../../pipits_uc2otutable.cwl
 inputs:
-- id: i
-  doc: '[REQUIRED]'
+- id: in_l
+  doc: ''
   type: string
   inputBinding:
+    prefix: -l
+- id: in_i
+  doc: '[REQUIRED]'
+  type: File
+  inputBinding:
     prefix: -i
-- id: o
+- id: in_o
   doc: '[REQUIRED]'
   type: string
   inputBinding:
     prefix: -o
-- id: l
-  doc: '[REQUIRED]'
-  type: string
-  inputBinding:
-    prefix: -l
-- id: reads
+- id: in_reads
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: and
+- id: in_and
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: writes
+- id: in_writes
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: each
+- id: in_each
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: entry
+- id: in_entry
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: as
+- id: in_as
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: a
+- id: in_a
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: single
+- id: in_single
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: file_dot
+- id: in_file_dot
   doc: ''
   type: File
   inputBinding:
     position: 8
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pipits_uc2otutable

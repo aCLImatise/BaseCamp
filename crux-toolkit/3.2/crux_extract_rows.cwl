@@ -1,22 +1,20 @@
 class: CommandLineTool
 id: ../../../crux_extract_rows.cwl
 inputs:
-- id: tsv_file
+- id: in_tsv_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: column_name
+- id: in_column_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: column_value
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - crux

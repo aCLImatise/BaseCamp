@@ -2,8 +2,8 @@ version 1.0
 
 task DimspyUnzip {
   input {
-    String? file
-    String? directory_to_write
+    File? file
+    Directory? directory_to_write
   }
   command <<<
     dimspy unzip \
@@ -12,6 +12,9 @@ task DimspyUnzip {
   >>>
   parameter_meta {
     file: "file[.zip]"
-    directory_to_write: "Directory to write to."
+    directory_to_write: "Directory to write to.\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

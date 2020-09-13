@@ -4,4 +4,7 @@ task Vcfnobiallelicsnps {
   command <<<
     vcfnobiallelicsnps
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

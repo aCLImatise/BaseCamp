@@ -1,6 +1,6 @@
 version 1.0
 
-task FlyeSamtoolsFaidx {
+task FlyesamtoolsFaidx {
   input {
     File? write_fasta_file
     Int? length
@@ -14,17 +14,17 @@ task FlyeSamtoolsFaidx {
     File filed_otf_a_vertical_line_file_dot_fado_tgz
   }
   command <<<
-    flye-samtools faidx \
+    flye_samtools faidx \
       ~{sam_tools} \
       ~{fa_idx} \
       ~{filed_otf_a_vertical_line_file_dot_fado_tgz} \
       ~{if defined(write_fasta_file) then ("--output " +  '"' + write_fasta_file + '"') else ""} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
-      ~{true="--continue" false="" continue} \
+      ~{if (continue) then "--continue" else ""} \
       ~{if defined(region_file) then ("--region-file " +  '"' + region_file + '"') else ""} \
       ~{if defined(reverse_complement) then ("--reverse-complement " +  '"' + reverse_complement + '"') else ""} \
       ~{if defined(mark_strand) then ("--mark-strand " +  '"' + mark_strand + '"') else ""} \
-      ~{true="--fastq" false="" fast_q}
+      ~{if (fast_q) then "--fastq" else ""}
   >>>
   parameter_meta {
     write_fasta_file: "Write FASTA to file."
@@ -32,10 +32,13 @@ task FlyeSamtoolsFaidx {
     continue: "Continue after trying to retrieve missing region."
     region_file: "File of regions.  Format is chr:from-to. One per line."
     reverse_complement: "complement sequences."
-    mark_strand: "Add strand indicator to sequence name TYPE = rc   for /rc on negative strand (default) no   for no strand indicator sign for (+) / (-) custom,<pos>,<neg> for custom indicator"
+    mark_strand: "Add strand indicator to sequence name\\nTYPE = rc   for /rc on negative strand (default)\\nno   for no strand indicator\\nsign for (+) / (-)\\ncustom,<pos>,<neg> for custom indicator"
     fast_q: "File and index in FASTQ format."
     sam_tools: ""
     fa_idx: ""
     filed_otf_a_vertical_line_file_dot_fado_tgz: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

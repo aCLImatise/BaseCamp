@@ -2,8 +2,8 @@ version 1.0
 
 task CheckmTaxonSetMarkerFile {
   input {
-    Boolean? q
     String? tmpdir
+    Boolean? q
     String check_m
     String tax_on_set
   }
@@ -11,13 +11,16 @@ task CheckmTaxonSetMarkerFile {
     checkm taxon_set marker_file \
       ~{check_m} \
       ~{tax_on_set} \
-      ~{true="-q" false="" q} \
-      ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
+      ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
+      ~{if (q) then "-q" else ""}
   >>>
   parameter_meta {
-    q: ""
     tmpdir: ""
+    q: ""
     check_m: ""
     tax_on_set: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

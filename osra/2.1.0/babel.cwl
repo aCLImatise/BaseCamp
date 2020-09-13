@@ -1,37 +1,35 @@
 class: CommandLineTool
 id: ../../../babel.cwl
 inputs:
-- id: i
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: o
+- id: in_o
   doc: ''
   type: boolean
   inputBinding:
     prefix: -o
-- id: input_type
+- id: in_i
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -i
+- id: in_input_type
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_3
+- id: in_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_type
+- id: in_output_type
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: var_5
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - babel

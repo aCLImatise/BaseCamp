@@ -4,4 +4,7 @@ task UniqPolishes {
   command <<<
     uniqPolishes
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task LightningPredict {
   command <<<
     lightning_predict
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

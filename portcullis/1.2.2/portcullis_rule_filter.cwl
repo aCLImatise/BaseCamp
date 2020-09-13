@@ -1,57 +1,60 @@
 class: CommandLineTool
 id: ../../../portcullis_rule_filter.cwl
 inputs:
-- id: script
+- id: in_script
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: to
+- id: in_to
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: automate
+- id: in_automate
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: csv
+- id: in_csv
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: filtering
+- id: in_filtering
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: based
+- id: in_based
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: on
+- id: in_on
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: a
+- id: in_a
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: json
+- id: in_json
   doc: ''
   type: string
   inputBinding:
     position: 8
-- id: configuration_dot
+- id: in_configuration_dot
   doc: ''
   type: string
   inputBinding:
     position: 9
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - portcullis_rule_filter

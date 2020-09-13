@@ -2,28 +2,31 @@ version 1.0
 
 task FastqQualityFilter {
   input {
-    Boolean? v
-    String? q
-    String? p
-    Boolean? z
-    String? i
     String? o
+    File? i
+    Boolean? z
+    String? p
+    String? q
+    Boolean? v
   }
   command <<<
     fastq_quality_filter \
-      ~{true="-v" false="" v} \
-      ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
-      ~{true="-z" false="" z} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if (z) then "-z" else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
-    v: ""
-    q: ""
-    p: ""
-    z: ""
-    i: ""
     o: ""
+    i: ""
+    z: ""
+    p: ""
+    q: ""
+    v: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

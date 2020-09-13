@@ -1,236 +1,258 @@
 class: CommandLineTool
 id: ../../../smina.cwl
 inputs:
-- id: flex_res
-  doc: flexible side chains specified by comma  separated list of chain:resid
+- id: in_arg_rigid_part
+  doc: '[ --receptor ] arg         rigid part of the receptor (PDBQT)'
+  type: boolean
+  inputBinding:
+    prefix: -r
+- id: in_flex
+  doc: flexible side chains, if any (PDBQT)
+  type: string
+  inputBinding:
+    prefix: --flex
+- id: in__arg_ligands
+  doc: '[ --ligand ] arg           ligand(s)'
+  type: boolean
+  inputBinding:
+    prefix: -l
+- id: in_flex_res
+  doc: "flexible side chains specified by comma\nseparated list of chain:resid"
   type: string
   inputBinding:
     prefix: --flexres
-- id: flex_dist_ligand
+- id: in_flex_dist_ligand
   doc: Ligand to use for flexdist
   type: string
   inputBinding:
     prefix: --flexdist_ligand
-- id: flex_dist
-  doc: set all side chains within specified distance  to flexdist_ligand to flexible
+- id: in_flex_dist
+  doc: "set all side chains within specified distance\nto flexdist_ligand to flexible"
   type: string
   inputBinding:
     prefix: --flexdist
-- id: center_x
+- id: in_center_x
   doc: X coordinate of the center
   type: string
   inputBinding:
     prefix: --center_x
-- id: center_y
+- id: in_center_y
   doc: Y coordinate of the center
   type: string
   inputBinding:
     prefix: --center_y
-- id: center_z
+- id: in_center_z
   doc: Z coordinate of the center
   type: string
   inputBinding:
     prefix: --center_z
-- id: size_x
+- id: in_size_x
   doc: size in the X dimension (Angstroms)
-  type: string
+  type: long
   inputBinding:
     prefix: --size_x
-- id: size_y
+- id: in_size_y
   doc: size in the Y dimension (Angstroms)
-  type: string
+  type: long
   inputBinding:
     prefix: --size_y
-- id: size_z
+- id: in_size_z
   doc: size in the Z dimension (Angstroms)
-  type: string
+  type: long
   inputBinding:
     prefix: --size_z
-- id: auto_box_ligand
+- id: in_auto_box_ligand
   doc: Ligand to use for autobox
   type: string
   inputBinding:
     prefix: --autobox_ligand
-- id: auto_box_add
-  doc: Amount of buffer space to add to auto-generated box (default +4 on all six
-    sides)
-  type: string
+- id: in_auto_box_add
+  doc: "Amount of buffer space to add to auto-generated\nbox (default +4 on all six\
+    \ sides)"
+  type: long
   inputBinding:
     prefix: --autobox_add
-- id: no_lig
-  doc: no ligand; for sampling/minimizing flexible  residues
+- id: in_no_lig
+  doc: no ligand; for sampling/minimizing flexible
   type: boolean
   inputBinding:
     prefix: --no_lig
-- id: scoring
+- id: in_scoring
   doc: specify alternative builtin scoring function
   type: string
   inputBinding:
     prefix: --scoring
-- id: custom_scoring
+- id: in_custom_scoring
   doc: custom scoring function file
-  type: string
+  type: File
   inputBinding:
     prefix: --custom_scoring
-- id: custom_atoms
+- id: in_custom_atoms
   doc: custom atom type parameters file
-  type: string
+  type: File
   inputBinding:
     prefix: --custom_atoms
-- id: score_only
+- id: in_score_only
   doc: score provided ligand pose
   type: boolean
   inputBinding:
     prefix: --score_only
-- id: local_only
-  doc: local search only using autobox (you probably  want to use --minimize)
+- id: in_local_only
+  doc: "local search only using autobox (you probably\nwant to use --minimize)"
   type: boolean
   inputBinding:
     prefix: --local_only
-- id: minimize
+- id: in_minimize
   doc: energy minimization
   type: boolean
   inputBinding:
     prefix: --minimize
-- id: randomize_only
-  doc: generate random poses, attempting to avoid  clashes
+- id: in_randomize_only
+  doc: generate random poses, attempting to avoid
   type: boolean
   inputBinding:
     prefix: --randomize_only
-- id: minimize_iters
-  doc: (=0)     number iterations of steepest descent; default  scales with rotors
-    and usually isn't sufficient for convergence
-  type: string
-  inputBinding:
-    prefix: --minimize_iters
-- id: accurate_line
+- id: in_accurate_line
   doc: use accurate line search
   type: boolean
   inputBinding:
     prefix: --accurate_line
-- id: minimize_early_term
-  doc: Stop minimization before convergence conditions are fully met.
+- id: in_minimize_early_term
+  doc: "Stop minimization before convergence conditions\nare fully met."
   type: boolean
   inputBinding:
     prefix: --minimize_early_term
-- id: approximation
+- id: in_approximation
   doc: approximation (linear, spline, or exact) to use
   type: string
   inputBinding:
     prefix: --approximation
-- id: factor
-  doc: 'approximation factor: higher results in a  finer-grained approximation'
+- id: in_factor
+  doc: "approximation factor: higher results in a\nfiner-grained approximation"
   type: string
   inputBinding:
     prefix: --factor
-- id: force_cap
-  doc: max allowed force; lower values more gently  minimize clashing structures
-  type: string
+- id: in_force_cap
+  doc: "max allowed force; lower values more gently\nminimize clashing structures"
+  type: long
   inputBinding:
     prefix: --force_cap
-- id: user_grid
-  doc: Autodock map file for user grid data based  calculations
-  type: string
+- id: in_user_grid
+  doc: Autodock map file for user grid data based
+  type: File
   inputBinding:
     prefix: --user_grid
-- id: user_grid_lambda
-  doc: (=-1)  Scales user_grid and functional scoring
-  type: string
-  inputBinding:
-    prefix: --user_grid_lambda
-- id: print_terms
-  doc: Print all available terms with default  parameterizations
+- id: in_print_terms
+  doc: Print all available terms with default
   type: boolean
   inputBinding:
     prefix: --print_terms
-- id: print_atom_types
-  doc: Print all available atom types
-  type: boolean
-  inputBinding:
-    prefix: --print_atom_types
-- id: arg_name_format
-  doc: '[ --out ] arg              output file name, format taken from file  extension'
-  type: boolean
+- id: in_arg_output_file
+  doc: '[ --out ] arg              output file name, format taken from file'
+  type: File
   inputBinding:
     prefix: -o
-- id: out_flex
-  doc: output file for flexible receptor residues
-  type: string
-  inputBinding:
-    prefix: --out_flex
-- id: log
+- id: in_log
   doc: optionally, write log file
-  type: string
+  type: File
   inputBinding:
     prefix: --log
-- id: atom_terms
-  doc: optionally write per-atom interaction term  values
+- id: in_atom_terms
+  doc: optionally write per-atom interaction term
   type: string
   inputBinding:
     prefix: --atom_terms
-- id: atom_term_data
-  doc: embedded per-atom interaction terms in output  sd data
-  type: boolean
-  inputBinding:
-    prefix: --atom_term_data
-- id: cpu
-  doc: the number of CPUs to use (the default is to  try to detect the number of CPUs
-    or, failing  that, use 1)
-  type: string
+- id: in_cpu
+  doc: "the number of CPUs to use (the default is to\ntry to detect the number of\
+    \ CPUs or, failing\nthat, use 1)"
+  type: long
   inputBinding:
     prefix: --cpu
-- id: seed
+- id: in_seed
   doc: explicit random seed
   type: string
   inputBinding:
     prefix: --seed
-- id: exhaustive_ness
-  doc: (=8)     exhaustiveness of the global search (roughly  proportional to time)
-  type: string
+- id: in_exhaustive_ness
+  doc: "(=8)     exhaustiveness of the global search (roughly\nproportional to time)"
+  type: long
   inputBinding:
     prefix: --exhaustiveness
-- id: num_modes
+- id: in_num_modes
   doc: (=9)          maximum number of binding modes to generate
-  type: string
+  type: long
   inputBinding:
     prefix: --num_modes
-- id: energy_range
-  doc: (=3)       maximum energy difference between the best  binding mode and the
-    worst one displayed  (kcal/mol)
-  type: string
+- id: in_energy_range
+  doc: "(=3)       maximum energy difference between the best\nbinding mode and the\
+    \ worst one displayed\n(kcal/mol)"
+  type: long
   inputBinding:
     prefix: --energy_range
-- id: min_rmsd_filter
-  doc: (=1)    rmsd value used to filter final poses to remove redundancy
-  type: string
+- id: in_min_rmsd_filter
+  doc: (=1)    rmsd value used to filter final poses to remove
+  type: long
   inputBinding:
     prefix: --min_rmsd_filter
-- id: suppress_output_messages
-  doc: '[ --quiet ]                Suppress output messages'
-  type: boolean
-  inputBinding:
-    prefix: -q
-- id: add_h
-  doc: automatically add hydrogens in ligands (on by  default)
+- id: in_add_h
+  doc: "automatically add hydrogens in ligands (on by\ndefault)"
   type: string
   inputBinding:
     prefix: --addH
-- id: config
+- id: in_config
   doc: the above options can be put here
   type: string
   inputBinding:
     prefix: --config
-- id: help_hidden
+- id: in_help_hidden
   doc: display usage summary with hidden options
   type: boolean
   inputBinding:
     prefix: --help_hidden
-- id: input
-  doc: ''
+- id: in_residues
+  doc: 'Scoring and minimization options:'
   type: string
   inputBinding:
     position: 0
-outputs: []
+- id: in_clashes
+  doc: '--minimize_iters arg (=0)     number iterations of steepest descent; default '
+  type: string
+  inputBinding:
+    position: 1
+- id: in_calculations
+  doc: --user_grid_lambda arg (=-1)  Scales user_grid and functional scoring
+  type: string
+  inputBinding:
+    position: 0
+- id: in_parameterizations
+  doc: --print_atom_types            Print all available atom types
+  type: string
+  inputBinding:
+    position: 1
+- id: in_extension
+  doc: --out_flex arg                output file for flexible receptor residues
+  type: string
+  inputBinding:
+    position: 0
+- id: in_values
+  doc: '--atom_term_data              embedded per-atom interaction terms in output '
+  type: string
+  inputBinding:
+    position: 1
+- id: in_redundancy
+  doc: -q [ --quiet ]                Suppress output messages
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_arg_output_file
+  doc: '[ --out ] arg              output file name, format taken from file'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_file)
 cwlVersion: v1.1
 baseCommand:
 - smina

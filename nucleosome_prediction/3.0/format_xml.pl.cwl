@@ -1,7 +1,10 @@
 class: CommandLineTool
-id: ../../../format_xml.pl.bak.cwl
+id: ../../../format_xml.pl.cwl
 inputs: []
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- format_xml.pl.bak
+- format_xml.pl

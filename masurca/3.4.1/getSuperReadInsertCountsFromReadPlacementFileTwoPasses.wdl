@@ -4,7 +4,7 @@ task GetSuperReadInsertCountsFromReadPlacementFileTwoPasses {
   input {
     File? output_file
     Boolean? fib
-    String? number_reads
+    Int? number_reads
     Boolean? debug
     String cmdline_parse
     String var_input
@@ -14,9 +14,9 @@ task GetSuperReadInsertCountsFromReadPlacementFileTwoPasses {
       ~{cmdline_parse} \
       ~{var_input} \
       ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""} \
-      ~{true="--fib" false="" fib} \
+      ~{if (fib) then "--fib" else ""} \
       ~{if defined(number_reads) then ("--number-reads " +  '"' + number_reads + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     output_file: "Output file"
@@ -25,5 +25,9 @@ task GetSuperReadInsertCountsFromReadPlacementFileTwoPasses {
     debug: "Output debugging information (false)"
     cmdline_parse: ""
     var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

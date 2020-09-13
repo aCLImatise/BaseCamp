@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../checkm_modify.cwl
 inputs:
-- id: add
+- id: in_add
   doc: ID of sequence to add to bin (may specify multiple times)
   type: string
   inputBinding:
     prefix: --add
-- id: remove
+- id: in_remove
   doc: ID of sequence to remove from bin (may specify multiple times)
   type: string
   inputBinding:
     prefix: --remove
-- id: outlier_file
+- id: in_outlier_file
   doc: remove all sequences marked as outliers in the bin (see outlier command)
-  type: string
+  type: File
   inputBinding:
     prefix: --outlier_file
-- id: quiet
+- id: in_quiet
   doc: suppress console output
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: seq_file
+- id: in_seq_file
   doc: sequences used to generate bins (fasta format)
   type: string
   inputBinding:
     position: 0
-- id: bin_file
+- id: in_bin_file
   doc: bin to be modified
   type: string
   inputBinding:
     position: 1
-- id: output_file
+- id: in_output_file
   doc: modified bin
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkm

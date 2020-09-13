@@ -2,8 +2,8 @@ version 1.0
 
 task FilterContigs {
   input {
-    String? min_contig
-    String fq_two_fa
+    Int? min_contig
+    Int fq_two_fa
     String tmp_dot_fq
     String tmp_dot_fa
   }
@@ -19,5 +19,8 @@ task FilterContigs {
     fq_two_fa: ""
     tmp_dot_fq: ""
     tmp_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

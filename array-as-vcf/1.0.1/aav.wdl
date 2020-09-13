@@ -4,11 +4,11 @@ task Aav {
   input {
     File? path
     String? build
-    String? sample_name
+    File? sample_name
     String? chr_prefix
-    String? lookup_table
-    String? dump
-    String? encoding
+    File? lookup_table
+    File? dump
+    File? encoding
     Array[String] exclude_assays
     Boolean? no_ensembl_lookup
     String? log_level
@@ -23,7 +23,7 @@ task Aav {
       ~{if defined(dump) then ("--dump " +  '"' + dump + '"') else ""} \
       ~{if defined(encoding) then ("--encoding " +  '"' + encoding + '"') else ""} \
       ~{if defined(exclude_assays) then ("--exclude-assays " +  '"' + exclude_assays + '"') else ""} \
-      ~{true="--no-ensembl-lookup" false="" no_ensembl_lookup} \
+      ~{if (no_ensembl_lookup) then "--no-ensembl-lookup" else ""} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""}
   >>>
   parameter_meta {
@@ -31,11 +31,14 @@ task Aav {
     build: "Genome build (default: GRCh37)"
     sample_name: "Name of sample in VCF file (default: None)"
     chr_prefix: "Prefix to chromosome names (default: None)"
-    lookup_table: "Path to existing lookup table for rsIDs (default: None)"
+    lookup_table: "Path to existing lookup table for rsIDs (default:\\nNone)"
     dump: "Path to write generated lookup table (default: None)"
     encoding: "Encoding of the array file (default: UTF-8)"
     exclude_assays: "Assay IDs for OpenArray to ignore (default: None)"
     no_ensembl_lookup: "Lookup missing rsIDs on Ensembl (default: False)"
-    log_level: "Set the verbosity of the logger (default: INFO)"
+    log_level: "Set the verbosity of the logger (default: INFO)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

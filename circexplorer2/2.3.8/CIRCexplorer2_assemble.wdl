@@ -2,14 +2,14 @@ version 1.0
 
 task CIRCexplorer2Assemble {
   input {
-    String? ref
-    String? top_hat
-    String? output_directory
-    String? thread
+    File? ref
+    Directory? top_hat
+    Directory? output_directory
+    Int? thread
     Boolean? bb
-    String? chrom_size
+    Int? chrom_size
     Boolean? remove_rrna
-    String? max_bundle_frags
+    Int? max_bundle_frags
   }
   command <<<
     CIRCexplorer2 assemble \
@@ -17,9 +17,9 @@ task CIRCexplorer2Assemble {
       ~{if defined(top_hat) then ("--tophat " +  '"' + top_hat + '"') else ""} \
       ~{if defined(output_directory) then ("--output " +  '"' + output_directory + '"') else ""} \
       ~{if defined(thread) then ("--thread " +  '"' + thread + '"') else ""} \
-      ~{true="--bb" false="" bb} \
+      ~{if (bb) then "--bb" else ""} \
       ~{if defined(chrom_size) then ("--chrom-size " +  '"' + chrom_size + '"') else ""} \
-      ~{true="--remove-rRNA" false="" remove_rrna} \
+      ~{if (remove_rrna) then "--remove-rRNA" else ""} \
       ~{if defined(max_bundle_frags) then ("--max-bundle-frags " +  '"' + max_bundle_frags + '"') else ""}
   >>>
   parameter_meta {
@@ -31,5 +31,9 @@ task CIRCexplorer2Assemble {
     chrom_size: "Chrom size file for converting to BigBed."
     remove_rrna: "Ignore rRNA during assembling (only for human hg19)."
     max_bundle_frags: "Cufflinks --max-bundle-frags option."
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_directory = "${in_output_directory}"
   }
 }

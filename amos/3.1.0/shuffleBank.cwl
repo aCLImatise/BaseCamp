@@ -1,72 +1,80 @@
 class: CommandLineTool
 id: ../../../shuffleBank.cwl
 inputs:
-- id: bank
+- id: in_bank
   doc: bank where assembly is stored
   type: string
   inputBinding:
     prefix: -bank
-- id: common_file_prefix
+- id: in_common_file_prefix
   doc: Common file prefix to add to the output
-  type: string
+  type: File
   inputBinding:
     prefix: -p
-- id: dump_contigs_bank
+- id: in_dump_contigs_bank
   doc: Dump contigs from the bank (default)
   type: boolean
   inputBinding:
     prefix: -c
-- id: dump_reads_bank
+- id: in_dump_reads_bank
   doc: Dump reads from the bank
   type: boolean
   inputBinding:
     prefix: -r
-- id: eid
+- id: in_eid
   doc: report eids
   type: boolean
   inputBinding:
     prefix: -eid
-- id: iid
+- id: in_iid
   doc: report iids (default)
   type: boolean
   inputBinding:
     prefix: -iid
-- id: dump_fastq_format
+- id: in_dump_fastq_format
   doc: Dump in fastq format
   type: boolean
   inputBinding:
     prefix: -f
-- id: use_min_base
+- id: in_use_min_base
   doc: 'Use this as the min base quality (default: 33 / Sanger FASTQ)'
   type: long
   inputBinding:
     prefix: -Q
-- id: ignore_clear_range
+- id: in_ignore_clear_range
   doc: Ignore clear range and dump entire sequence
   type: boolean
   inputBinding:
     prefix: -a
-- id: display_details_header
+- id: in_display_details_header
   doc: Display details on header line
   type: boolean
   inputBinding:
     prefix: -d
-- id: set_maximum_number
+- id: in_set_maximum_number
   doc: 'Set the maximum number of bases per line (Default: 70)'
-  type: string
+  type: long
   inputBinding:
     prefix: -L
-- id: fofn_list_files
+- id: in_fofn_list_files
   doc: <fofn>      List of files specifying by EID where to write
   type: boolean
   inputBinding:
     prefix: -E
-- id: list_files_specifying
+- id: in_list_files_specifying
   doc: List of files specifying by EID where to write
   type: string
   inputBinding:
     prefix: -I
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_common_file_prefix
+  doc: Common file prefix to add to the output
+  type: File
+  outputBinding:
+    glob: $(inputs.in_common_file_prefix)
 cwlVersion: v1.1
 baseCommand:
 - shuffleBank

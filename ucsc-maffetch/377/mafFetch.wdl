@@ -5,19 +5,19 @@ task MafFetch {
     String db
     String table
     String over_bed
-    String maf_out
   }
   command <<<
     mafFetch \
       ~{db} \
       ~{table} \
-      ~{over_bed} \
-      ~{maf_out}
+      ~{over_bed}
   >>>
   parameter_meta {
     db: ""
     table: ""
     over_bed: ""
-    maf_out: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task OGenerateConsensusFromAlignment {
+task Ogenerateconsensusfromalignment {
   command <<<
-    o-generate-consensus-from-alignment
+    o_generate_consensus_from_alignment
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

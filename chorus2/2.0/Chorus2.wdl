@@ -2,19 +2,19 @@ version 1.0
 
 task Chorus2 {
   input {
-    String? jellyfish
-    String? bwa
-    String? genome
-    String? fasta_format_input
-    String? save
-    String? primer
-    String? threads
+    File? jellyfish
+    File? bwa
+    File? genome
+    File? fasta_format_input
+    Directory? save
+    Int? primer
+    Int? threads
     Int? length
-    String? homology
-    String? dtm
-    String? step
+    Int? homology
+    Int? dtm
+    Int? step
     String? docker
-    String? ploidy
+    Int? ploidy
   }
   command <<<
     Chorus2 \
@@ -35,16 +35,20 @@ task Chorus2 {
   parameter_meta {
     jellyfish: "The path where Jellyfish software installed"
     bwa: "The path where BWA software installed"
-    genome: "Fasta format genome file, should include all sequences from genome"
-    fasta_format_input: "Fasta format input file, can be whole genome, a chromosome or one region from genome"
+    genome: "Fasta format genome file, should include all sequences\\nfrom genome"
+    fasta_format_input: "Fasta format input file, can be whole genome, a\\nchromosome or one region from genome"
     save: "The output folder for saving results"
-    primer: "A specific 5' labeled R primer for PCR reaction. For example: CGTGGTCGCGTCTCA. (Default is none)"
+    primer: "A specific 5' labeled R primer for PCR reaction. For\\nexample: CGTGGTCGCGTCTCA. (Default is none)"
     threads: "Number of threads or CPUs to use. (Default: 1)"
     length: "The probe length. (Default: 45)"
-    homology: "The maximum homology(%) between target sequence and probe, range from 50 to 100. (Default: 75)"
-    dtm: "The minimum value of dTm (hybrid Tm - hairpin Tm), range from 0 to 37. (Default: 10)"
-    step: "The step length for k-mer searching in a sliding window, step length>=1. (Default: 5)"
+    homology: "The maximum homology(%) between target sequence and\\nprobe, range from 50 to 100. (Default: 75)"
+    dtm: "The minimum value of dTm (hybrid Tm - hairpin Tm),\\nrange from 0 to 37. (Default: 10)"
+    step: "The step length for k-mer searching in a sliding\\nwindow, step length>=1. (Default: 5)"
     docker: "Only used in Docker version of Chorus"
-    ploidy: "The ploidy of the given genome (test version). (Default: 2)"
+    ploidy: "The ploidy of the given genome (test version).\\n(Default: 2)"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_save = "${in_save}"
   }
 }

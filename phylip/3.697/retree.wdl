@@ -4,4 +4,7 @@ task Retree {
   command <<<
     retree
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

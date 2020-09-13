@@ -20,4 +20,7 @@ task SplitFastxOutput {
     var_output: ""
     chunksize: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

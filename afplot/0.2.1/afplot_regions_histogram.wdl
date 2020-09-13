@@ -9,11 +9,12 @@ task AfplotRegionsHistogram {
     File? output_dir
     File? vcf
     String? color_palette
-    Int? dpi
     Boolean? kde_only
+    String seaborn_dot_set_palette
   }
   command <<<
     afplot regions histogram \
+      ~{seaborn_dot_set_palette} \
       ~{if defined(margin) then ("--margin " +  '"' + margin + '"') else ""} \
       ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
       ~{if defined(region_file) then ("--region-file " +  '"' + region_file + '"') else ""} \
@@ -21,8 +22,7 @@ task AfplotRegionsHistogram {
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
       ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
       ~{if defined(color_palette) then ("--color-palette " +  '"' + color_palette + '"') else ""} \
-      ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
-      ~{true="--kde-only" false="" kde_only}
+      ~{if (kde_only) then "--kde-only" else ""}
   >>>
   parameter_meta {
     margin: "Margin around regions to plot"
@@ -31,8 +31,12 @@ task AfplotRegionsHistogram {
     name: "Optional title for plot"
     output_dir: "Path to output directory  [required]"
     vcf: "Path to input VCF file  [required]"
-    color_palette: "The name of a color palette to pass to seaborn.set_palette"
-    dpi: "DPI for output PNGs (default: 300)"
+    color_palette: "The name of a color palette to pass to"
     kde_only: "Only show kernel density plot"
+    seaborn_dot_set_palette: "--dpi INTEGER           DPI for output PNGs (default: 300)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_dir = "${in_output_dir}"
   }
 }

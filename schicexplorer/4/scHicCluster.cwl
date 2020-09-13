@@ -1,60 +1,68 @@
 class: CommandLineTool
 id: ../../../scHicCluster.cwl
 inputs:
-- id: schic_matrix_m
-  doc: 'scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction matrices
-    to cluster. Needs to be in scool format (default: None)'
+- id: in_out_filename
+  doc: "File name to save the resulting clusters (default:\nclusters.txt)"
+  type: File
+  inputBinding:
+    prefix: --outFileName
+- id: in_schic_matrix_m
+  doc: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction matrices\
+    \ to cluster.\nNeeds to be in scool format (default: None)"
   type: string
   inputBinding:
     prefix: --matrix
-- id: number_of_clusters
+- id: in_number_of_clusters
   doc: 'Number of to be computed clusters (default: 12)'
-  type: string
+  type: long
   inputBinding:
     prefix: --numberOfClusters
-- id: cluster_method
-  doc: 'Algorithm to cluster the Hi-C matrices (default: spectral)'
+- id: in_cluster_method
+  doc: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
   type: string
   inputBinding:
     prefix: --clusterMethod
-- id: chromosomes
+- id: in_chromosomes
   doc: 'List of to be plotted chromosomes (default: None)'
   type: string[]
   inputBinding:
     prefix: --chromosomes
-- id: dimension_reduction_method
-  doc: 'Dimension reduction methods, knn with euclidean distance, pca (default: none)'
+- id: in_dimension_reduction_method
+  doc: "Dimension reduction methods, knn with euclidean\ndistance, pca (default: none)"
   type: string
   inputBinding:
     prefix: --dimensionReductionMethod
-- id: number_of_nearest_neighbors
-  doc: 'Number of to be used computed nearest neighbors for the knn graph. Default
-    is either the default value or the number of the provided cells, whatever is smaller.
-    (default: 100)'
-  type: string
+- id: in_number_of_nearest_neighbors
+  doc: "Number of to be used computed nearest neighbors for\nthe knn graph. Default\
+    \ is either the default value or\nthe number of the provided cells, whatever is\
+    \ smaller.\n(default: 100)"
+  type: long
   inputBinding:
     prefix: --numberOfNearestNeighbors
-- id: out_filename
-  doc: 'File name to save the resulting clusters (default: clusters.txt)'
-  type: string
-  inputBinding:
-    prefix: --outFileName
-- id: threads
-  doc: 'Number of threads. Using the python multiprocessing module. (default: 4)'
-  type: string
+- id: in_threads
+  doc: "Number of threads. Using the python multiprocessing\nmodule. (default: 4)"
+  type: long
   inputBinding:
     prefix: --threads
-- id: sch_i_c
+- id: in_sch_i_c
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: var_9
+- id: in_var_9
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out_filename
+  doc: "File name to save the resulting clusters (default:\nclusters.txt)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_filename)
 cwlVersion: v1.1
 baseCommand:
 - scHicCluster

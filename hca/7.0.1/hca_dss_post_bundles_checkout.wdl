@@ -1,14 +1,14 @@
 version 1.0
 
-task HcaDssPostBundlesCheckout {
+task HcaDssPostbundlescheckout {
   input {
     String? destination
     String? email
-    String? uuid
+    Int? uuid
     String? replica
   }
   command <<<
-    hca dss post-bundles-checkout \
+    hca dss post_bundles_checkout \
       ~{if defined(destination) then ("--destination " +  '"' + destination + '"') else ""} \
       ~{if defined(email) then ("--email " +  '"' + email + '"') else ""} \
       ~{if defined(uuid) then ("--uuid " +  '"' + uuid + '"') else ""} \
@@ -19,5 +19,8 @@ task HcaDssPostBundlesCheckout {
     email: "An email address to send status updates to."
     uuid: "A RFC4122-compliant ID for the bundle."
     replica: "Replica to fetch from."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

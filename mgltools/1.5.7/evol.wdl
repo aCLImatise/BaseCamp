@@ -4,4 +4,7 @@ task Evol {
   command <<<
     evol
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

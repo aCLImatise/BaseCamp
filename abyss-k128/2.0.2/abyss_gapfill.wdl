@@ -1,20 +1,20 @@
 version 1.0
 
-task AbyssGapfill {
+task Abyssgapfill {
   input {
-    String? min_align
+    Int? min_align
     Boolean? verbose
-    String? option
   }
   command <<<
-    abyss-gapfill \
-      ~{option} \
+    abyss_gapfill \
       ~{if defined(min_align) then ("--min-align " +  '"' + min_align + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     min_align: "the minimal alignment size [1]"
     verbose: "display verbose output"
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

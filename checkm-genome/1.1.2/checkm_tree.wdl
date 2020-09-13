@@ -6,11 +6,11 @@ task CheckmTree {
     Boolean? ali
     Boolean? nt
     Boolean? genes
-    String? extension
-    String? threads
-    String? p_placer_threads
+    Directory? extension
+    Int? threads
+    Int? p_placer_threads
     Boolean? quiet
-    String? tmpdir
+    Directory? tmpdir
     String bin_dir
     String output_dir
   }
@@ -18,14 +18,14 @@ task CheckmTree {
     checkm tree \
       ~{bin_dir} \
       ~{output_dir} \
-      ~{true="--reduced_tree" false="" reduced_tree} \
-      ~{true="--ali" false="" ali} \
-      ~{true="--nt" false="" nt} \
-      ~{true="--genes" false="" genes} \
+      ~{if (reduced_tree) then "--reduced_tree" else ""} \
+      ~{if (ali) then "--ali" else ""} \
+      ~{if (nt) then "--nt" else ""} \
+      ~{if (genes) then "--genes" else ""} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(p_placer_threads) then ("--pplacer_threads " +  '"' + p_placer_threads + '"') else ""} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
   parameter_meta {
@@ -40,5 +40,8 @@ task CheckmTree {
     tmpdir: "specify an alternative directory for temporary files"
     bin_dir: "directory containing bins (fasta format)"
     output_dir: "directory to write output files"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

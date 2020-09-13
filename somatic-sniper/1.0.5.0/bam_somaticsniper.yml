@@ -1,4 +1,6 @@
 !Command
+command:
+- bam-somaticsniper
 positional: []
 named:
 - !Flag
@@ -8,10 +10,108 @@ named:
   args: !SimpleFlagArg
     name: FILE
   optional: true
-command:
-- bam-somaticsniper
+- !Flag
+  description: Display version information
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: filtering reads with mapping quality less than INT [0]
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: filtering somatic snv output with somatic quality less than  INT [15]
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: do not report LOH variants as determined by genotypes
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: FLAG
+  optional: true
+- !Flag
+  description: do not report Gain of Reference variants as determined by genotypes
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: FLAG
+  optional: true
+- !Flag
+  description: disable priors in the somatic calculation. Increases sensitivity for
+    solid tumors
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: FLAG
+  optional: true
+- !Flag
+  description: Use prior probabilities accounting for the somatic mutation rate
+  synonyms:
+  - -J
+  args: !SimpleFlagArg
+    name: FLAG
+  optional: true
+- !Flag
+  description: prior probability of a somatic mutation (implies -J) [0.010000]
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: theta in maq consensus calling model (for -c/-g) [0.850000]
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: number of haplotypes in the sample (for -c/-g) [2]
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: prior of a difference between two haplotypes (for -c/-g) [0.001000]
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: normal sample id (for VCF header) [NORMAL]
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: tumor sample id (for VCF header) [TUMOR]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "select output format [classic]\nAvailable formats:\nclassic\nvcf\n\
+    bed\n"
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

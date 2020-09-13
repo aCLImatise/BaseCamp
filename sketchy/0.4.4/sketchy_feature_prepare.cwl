@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../sketchy_feature_prepare.cwl
 inputs:
-- id: index
+- id: in_index
   doc: Path to feature index input file  [required]
   type: File
   inputBinding:
     prefix: --index
-- id: drop
+- id: in_drop
   doc: Comma separated string of columns to drop
   type: string
   inputBinding:
     prefix: --drop
-- id: prefix
+- id: in_prefix
   doc: Prefix for prepared feature index output files
   type: File
   inputBinding:
     prefix: --prefix
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - sketchy

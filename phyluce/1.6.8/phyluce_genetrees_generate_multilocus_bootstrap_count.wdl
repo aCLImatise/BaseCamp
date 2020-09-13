@@ -2,13 +2,13 @@ version 1.0
 
 task PhyluceGenetreesGenerateMultilocusBootstrapCount {
   input {
-    String? alignments
-    String? bootstrap_replicates
+    Directory? alignments
+    File? bootstrap_replicates
     Directory? directory
-    String? bootstrap_counts
-    String? boot_reps
+    File? bootstrap_counts
+    Int? boot_reps
     String? verbosity
-    String? log_path
+    File? log_path
   }
   command <<<
     phyluce_genetrees_generate_multilocus_bootstrap_count \
@@ -21,12 +21,15 @@ task PhyluceGenetreesGenerateMultilocusBootstrapCount {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
   parameter_meta {
-    alignments: "The input directory containing alignments in phylip format"
+    alignments: "The input directory containing alignments in phylip\\nformat"
     bootstrap_replicates: "The file that will hold bootstrap replicates sampling"
-    directory: "Optional path to directory containing alignments. Defaults to alignment directory if not provided."
-    bootstrap_counts: "The CSV file that will hold bootstrap replicate counts for each locus"
+    directory: "Optional path to directory containing alignments.\\nDefaults to alignment directory if not provided."
+    bootstrap_counts: "The CSV file that will hold bootstrap replicate counts\\nfor each locus"
     boot_reps: "The number of bootstrap replicates to run"
     verbosity: "The logging level to use."
     log_path: "The path to a directory to hold logs."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

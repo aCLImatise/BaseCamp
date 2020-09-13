@@ -1,32 +1,51 @@
 class: CommandLineTool
 id: ../../../alistat.cwl
 inputs:
-- id: report_persequence_info
+- id: in_report_info_just
   doc: ': report per-sequence info, not just a summary'
   type: boolean
   inputBinding:
     prefix: -a
-- id: fast_estimate_average
+- id: in_fast_estimate_average
   doc: ': fast: estimate average %id by sampling (not compatible with -a)'
   type: boolean
   inputBinding:
     prefix: -f
-- id: quiet_suppress_verbose
+- id: in_quiet_suppress_verbose
   doc: ': quiet: suppress verbose header'
   type: boolean
   inputBinding:
     prefix: -q
-- id: options
+- id: in_consensus
+  doc: ": write majority rule consensus sequence(s) in FASTA\nformat to file <f>"
+  type: File
+  inputBinding:
+    prefix: --consensus
+- id: in_ident_mx
+  doc: ': save a report on all NxN pairwise identities to file <f>'
+  type: File
+  inputBinding:
+    prefix: --identmx
+- id: in_in_format
+  doc: ": specify alignment file format <s>\nallowed formats: SELEX, MSF, Clustal,\
+    \ a2m, PHYLIP\n"
+  type: File
+  inputBinding:
+    prefix: --informat
+- id: in_options
   doc: ''
   type: boolean
   inputBinding:
     prefix: -options
-- id: alignment_file
+- id: in_alignment_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - alistat

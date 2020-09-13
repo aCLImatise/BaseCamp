@@ -1,28 +1,32 @@
 class: CommandLineTool
 id: ../../../mtsv_build.cwl
 inputs:
-- id: include_flag_trigger
+- id: in_include_flag_trigger
   doc: Include this flag to trigger debug-level logging.
   type: boolean
   inputBinding:
     prefix: -v
-- id: fast_a
+- id: in_fast_a
   doc: Path to FASTA database file.
-  type: string
+  type: File
   inputBinding:
     prefix: --fasta
-- id: sample_interval
-  doc: 'Sampling interval for index generation. Smaller = more memory usage, slightly  faster
-    queries. Larger = less memory usage slightly slower queries. [default: 32]'
-  type: string
+- id: in_sample_interval
+  doc: "Sampling interval for index generation. Smaller = more memory usage, slightly\
+    \  faster queries. Larger = less\nmemory usage slightly slower queries. [default:\
+    \ 32]"
+  type: long
   inputBinding:
     prefix: --sample-interval
-- id: index
+- id: in_index
   doc: Absolute path to mtsv index file.
-  type: string
+  type: File
   inputBinding:
     prefix: --index
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mtsv-build

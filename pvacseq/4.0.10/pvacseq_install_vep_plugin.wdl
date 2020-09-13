@@ -11,4 +11,7 @@ task PvacseqInstallVepPlugin {
   parameter_meta {
     vep_plugins_path: "Path to your VEP_plugins directory"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

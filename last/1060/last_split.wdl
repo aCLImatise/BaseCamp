@@ -1,23 +1,23 @@
 version 1.0
 
-task LastSplit {
+task Lastsplit {
   input {
     String? format
     String? genome
-    String? direction
-    String? cis
-    String? trans
-    String? mean
-    String? sdev
-    String? mis_map
+    Int? direction
+    Float? cis
+    Float? trans
+    Int? mean
+    Int? sdev
+    Int? mis_map
     Int? score
     Boolean? no_split
-    String? bytes
+    Int? bytes
     Boolean? verbose
     String last_alignments_dot_maf
   }
   command <<<
-    last-split \
+    last_split \
       ~{last_alignments_dot_maf} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
@@ -28,9 +28,9 @@ task LastSplit {
       ~{if defined(sdev) then ("--sdev " +  '"' + sdev + '"') else ""} \
       ~{if defined(mis_map) then ("--mismap " +  '"' + mis_map + '"') else ""} \
       ~{if defined(score) then ("--score " +  '"' + score + '"') else ""} \
-      ~{true="--no-split" false="" no_split} \
+      ~{if (no_split) then "--no-split" else ""} \
       ~{if defined(bytes) then ("--bytes " +  '"' + bytes + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     format: "output format: MAF, MAF+ (default=MAF+)"
@@ -46,5 +46,8 @@ task LastSplit {
     bytes: "maximum memory (default=8T for split, 8G for spliced)"
     verbose: "be verbose"
     last_alignments_dot_maf: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task FormatNumber.pl.bak {
+task FormatNumberpl {
   command <<<
-    format_number.pl.bak
+    format_number_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

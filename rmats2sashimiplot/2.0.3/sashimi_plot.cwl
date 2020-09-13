@@ -1,56 +1,79 @@
 class: CommandLineTool
 id: ../../../sashimi_plot.cwl
 inputs:
-- id: plot_insert_len
-  doc: Plot the insert length distribution from a given insert length (*.insert_len)
-    filename. Second argument is a settings file name.
-  type: string
+- id: in_plot_insert_len
+  doc: "Plot the insert length distribution from a given\ninsert length (*.insert_len)\
+    \ filename. Second argument\nis a settings file name."
+  type: long
   inputBinding:
     prefix: --plot-insert-len
-- id: plot_bf_dist
-  doc: 'Plot Bayes factor distributon. Takes the arguments: (1) Bayes factor filename
-    (*.miso_bf) filename, (2) a settings filename.'
-  type: string
+- id: in_plot_bf_dist
+  doc: "Plot Bayes factor distributon. Takes the arguments:\n(1) Bayes factor filename\
+    \ (*.miso_bf) filename, (2) a\nsettings filename."
+  type: File
   inputBinding:
     prefix: --plot-bf-dist
-- id: plot_event
-  doc: 'Plot read densities and MISO inferences for a given alternative event. Takes
-    the arguments: (1) event name (i.e. the ID= of the event based on MISO gff3 annotation
-    file, (2) directory where indexed GFF annotation is (output of index_gff.py),
-    (3) path to plotting settings file.'
-  type: string
+- id: in_plot_event
+  doc: "Plot read densities and MISO inferences for a given\nalternative event. Takes\
+    \ the arguments: (1) event name\n(i.e. the ID= of the event based on MISO gff3\n\
+    annotation file, (2) directory where indexed GFF\nannotation is (output of index_gff.py),\
+    \ (3) path to\nplotting settings file."
+  type: File
   inputBinding:
     prefix: --plot-event
-- id: no_posteriors
-  doc: If given this argument, MISO posterior estimates are not plotted.
+- id: in_no_posteriors
+  doc: "If given this argument, MISO posterior estimates are\nnot plotted."
   type: boolean
   inputBinding:
     prefix: --no-posteriors
-- id: plot_title
-  doc: 'Title of plot: a string that will be displayed at top of plot. Example: --plot-title
-    "My favorite gene".'
+- id: in_plot_title
+  doc: "Title of plot: a string that will be displayed at top\nof plot. Example: --plot-title\
+    \ \"My favorite gene\"."
   type: string
   inputBinding:
     prefix: --plot-title
-- id: plot_label
-  doc: 'Plot label. If given, plot will be saved in the output directory as the plot
-    label ending in the relevant extension, e.g. <plot_label>.pdf. Example: --plot-
-    label my_gene'
-  type: string
+- id: in_plot_label
+  doc: "Plot label. If given, plot will be saved in the output\ndirectory as the plot\
+    \ label ending in the relevant\nextension, e.g. <plot_label>.pdf. Example: --plot-\n\
+    label my_gene"
+  type: Directory
   inputBinding:
     prefix: --plot-label
-- id: output_dir
+- id: in_output_dir
   doc: Output directory.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output-dir
-- id: group_info
-  doc: "If there is the need to divide bam files into groups, then provided this parameter\
-    \ with the the group files' name. Exemple: '--group-info gf.gf'"
+- id: in_group_info
+  doc: "If there is the need to divide bam files into groups,\nthen provided this\
+    \ parameter with the the group files'\nname. Exemple: '--group-info gf.gf'\n"
   type: string
   inputBinding:
     prefix: --group-info
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_plot_event
+  doc: "Plot read densities and MISO inferences for a given\nalternative event. Takes\
+    \ the arguments: (1) event name\n(i.e. the ID= of the event based on MISO gff3\n\
+    annotation file, (2) directory where indexed GFF\nannotation is (output of index_gff.py),\
+    \ (3) path to\nplotting settings file."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_plot_event)
+- id: out_plot_label
+  doc: "Plot label. If given, plot will be saved in the output\ndirectory as the plot\
+    \ label ending in the relevant\nextension, e.g. <plot_label>.pdf. Example: --plot-\n\
+    label my_gene"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_plot_label)
+- id: out_output_dir
+  doc: Output directory.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - sashimi_plot

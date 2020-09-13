@@ -14,4 +14,7 @@ task PrintScaff {
     l: "[-dot -page -plot -unused -phys -oo -sum] [-detail]"
     f: "[-[no]merge] [-arachne <araprefix>]"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

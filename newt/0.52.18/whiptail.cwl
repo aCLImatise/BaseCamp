@@ -1,142 +1,145 @@
 class: CommandLineTool
 id: ../../../whiptail.cwl
 inputs:
-- id: msgbox
+- id: in_msgbox
   doc: <height> <width>
   type: string
   inputBinding:
     prefix: --msgbox
-- id: yes_no
+- id: in_yes_no
   doc: <text> <height> <width>
   type: boolean
   inputBinding:
     prefix: --yesno
-- id: infobox
+- id: in_infobox
   doc: <height> <width>
   type: string
   inputBinding:
     prefix: --infobox
-- id: input_box
-  doc: '<height> <width> [init] '
+- id: in_input_box
+  doc: <height> <width> [init]
   type: string
   inputBinding:
     prefix: --inputbox
-- id: password_box
-  doc: '<height> <width> [init] '
+- id: in_password_box
+  doc: <height> <width> [init]
   type: string
   inputBinding:
     prefix: --passwordbox
-- id: text_box
+- id: in_text_box
   doc: <height> <width>
   type: File
   inputBinding:
     prefix: --textbox
-- id: menu
+- id: in_menu
   doc: <height> <width> <listheight> [tag item] ...
   type: string
   inputBinding:
     prefix: --menu
-- id: checklist
+- id: in_checklist
   doc: <height> <width> <listheight> [tag item status]...
   type: string
   inputBinding:
     prefix: --checklist
-- id: radio_list
+- id: in_radio_list
   doc: <height> <width> <listheight> [tag item status]...
   type: string
   inputBinding:
     prefix: --radiolist
-- id: gauge
+- id: in_gauge
   doc: <height> <width> <percent>
   type: string
   inputBinding:
     prefix: --gauge
-- id: clear
+- id: in_clear
   doc: clear screen on exit
   type: boolean
   inputBinding:
     prefix: --clear
-- id: default_no
+- id: in_default_no
   doc: default no button
   type: boolean
   inputBinding:
     prefix: --defaultno
-- id: default_item
+- id: in_default_item
   doc: set default string
   type: string
   inputBinding:
     prefix: --default-item
-- id: full_buttons
+- id: in_full_buttons
   doc: use full buttons
   type: boolean
   inputBinding:
     prefix: --fullbuttons
-- id: no_cancel
+- id: in_no_cancel
   doc: no cancel button
   type: boolean
   inputBinding:
     prefix: --nocancel
-- id: yes_button
+- id: in_yes_button
   doc: set text of yes button
   type: string
   inputBinding:
     prefix: --yes-button
-- id: no_button
+- id: in_no_button
   doc: set text of no button
   type: string
   inputBinding:
     prefix: --no-button
-- id: ok_button
+- id: in_ok_button
   doc: set text of ok button
   type: string
   inputBinding:
     prefix: --ok-button
-- id: cancel_button
+- id: in_cancel_button
   doc: set text of cancel button
   type: string
   inputBinding:
     prefix: --cancel-button
-- id: no_item
+- id: in_no_item
   doc: don't display items
   type: boolean
   inputBinding:
     prefix: --noitem
-- id: no_tags
+- id: in_no_tags
   doc: don't display tags
   type: boolean
   inputBinding:
     prefix: --notags
-- id: separate_output
+- id: in_separate_output
   doc: output one line at a time
   type: boolean
   inputBinding:
     prefix: --separate-output
-- id: output_fd
+- id: in_output_fd
   doc: output to fd, not stdout
   type: string
   inputBinding:
     prefix: --output-fd
-- id: title
+- id: in_title
   doc: display title
   type: string
   inputBinding:
     prefix: --title
-- id: back_title
+- id: in_back_title
   doc: display backtitle
   type: string
   inputBinding:
     prefix: --backtitle
-- id: scroll_text
+- id: in_scroll_text
   doc: force vertical scrollbars
   type: boolean
   inputBinding:
     prefix: --scrolltext
-- id: top_left
+- id: in_top_left
   doc: put window in top-left corner
   type: boolean
   inputBinding:
     prefix: --topleft
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - whiptail

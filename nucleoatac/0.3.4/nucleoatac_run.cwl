@@ -1,42 +1,45 @@
 class: CommandLineTool
 id: ../../../nucleoatac_run.cwl
 inputs:
-- id: bed
+- id: in_fast_a
+  doc: '[--pwm Tn5_PWM] [--cores num_cores]'
+  type: long
+  inputBinding:
+    prefix: --fasta
+- id: in_bed
   doc: Regions for which to do stuff.
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: bam
+- id: in_bam
   doc: Accepts sorted BAM file
-  type: string
+  type: File
   inputBinding:
     prefix: --bam
-- id: out
+- id: in_out
   doc: give output basename
   type: string
   inputBinding:
     prefix: --out
-- id: fast_a
-  doc: Indexed fasta file
-  type: string
-  inputBinding:
-    prefix: --fasta
-- id: pwm
-  doc: PWM descriptor file. Default is Human.PWM.txt included in package
-  type: string
+- id: in_pwm
+  doc: "PWM descriptor file. Default is Human.PWM.txt included\nin package"
+  type: long
   inputBinding:
     prefix: --pwm
-- id: cores
+- id: in_cores
   doc: Number of cores to use
-  type: string
+  type: long
   inputBinding:
     prefix: --cores
-- id: write_all
+- id: in_write_all
   doc: write all tracks
   type: boolean
   inputBinding:
     prefix: --write_all
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nucleoatac

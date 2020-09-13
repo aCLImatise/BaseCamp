@@ -2,12 +2,12 @@ version 1.0
 
 task TreebestExport {
   input {
-    String? width
-    String? height
-    String? margin
-    String? font_size
-    String? box_size
-    String? font_width
+    Int? width
+    Int? height
+    Int? margin
+    Int? font_size
+    Int? box_size
+    Int? font_width
     File? species_tree
     Boolean? suppress_bootstrap_value
     Boolean? blackwhite_mode
@@ -26,11 +26,11 @@ task TreebestExport {
       ~{if defined(box_size) then ("-b " +  '"' + box_size + '"') else ""} \
       ~{if defined(font_width) then ("-w " +  '"' + font_width + '"') else ""} \
       ~{if defined(species_tree) then ("-s " +  '"' + species_tree + '"') else ""} \
-      ~{true="-B" false="" suppress_bootstrap_value} \
-      ~{true="-M" false="" blackwhite_mode} \
-      ~{true="-S" false="" show_species_name} \
-      ~{true="-d" false="" speciationduplication_inference} \
-      ~{true="-p" false="" pseudolength}
+      ~{if (suppress_bootstrap_value) then "-B" else ""} \
+      ~{if (blackwhite_mode) then "-M" else ""} \
+      ~{if (show_species_name) then "-S" else ""} \
+      ~{if (speciationduplication_inference) then "-d" else ""} \
+      ~{if (pseudolength) then "-p" else ""}
   >>>
   parameter_meta {
     width: "width [640]"
@@ -46,5 +46,8 @@ task TreebestExport {
     speciationduplication_inference: "speciation/duplication inference"
     pseudolength: "pseudo-length"
     tree: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

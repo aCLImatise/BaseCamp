@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../biscuit_asm.cwl
 inputs:
-- id: input_dot_epi_read
+- id: in_input_dot_epi_read
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - biscuit

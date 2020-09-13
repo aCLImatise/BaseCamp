@@ -2,9 +2,9 @@ version 1.0
 
 task SplashPreparebed {
   input {
-    String? bed
-    String? read_length
-    String? output_dir
+    File? bed
+    Int? read_length
+    Directory? output_dir
   }
   command <<<
     splash preparebed \
@@ -15,6 +15,10 @@ task SplashPreparebed {
   parameter_meta {
     bed: "BED file"
     read_length: "All UTRs short than the read length are removed."
-    output_dir: "Output directory for mapped BAM files."
+    output_dir: "Output directory for mapped BAM files.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

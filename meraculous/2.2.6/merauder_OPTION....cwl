@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../merauder_OPTION....cwl
 inputs:
-- id: max
+- id: in_max
   doc: ''
   type: long
   inputBinding:
     position: 0
-- id: insert
+- id: in_insert
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: size
+- id: in_size
   doc: ''
   type: long
   inputBinding:
     position: 2
-- id: is
+- id: in_is
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: required
+- id: in_required
   doc: ''
   type: string
   inputBinding:
     position: 4
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - merauder

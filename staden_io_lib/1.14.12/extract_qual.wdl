@@ -6,9 +6,12 @@ task ExtractQual {
   }
   command <<<
     extract_qual \
-      ~{true="-r" false="" r}
+      ~{if (r) then "-r" else ""}
   >>>
   parameter_meta {
     r: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,29 +1,37 @@
 class: CommandLineTool
 id: ../../../bayesTyperTools_combine.cwl
 inputs:
-- id: arg_commaseparated_list
+- id: in_arg_commaseparated_list
   doc: '[ --variant-files ] arg            comma-separated list of name and variant
     file (vcf format) pairs (<name>:<file>).'
   type: boolean
   inputBinding:
     prefix: -v
-- id: arg_output_prefix
+- id: in_arg_output_prefix
   doc: '[ --output-prefix ] arg            output prefix.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: compress_output_files
+- id: in_compress_output_files
   doc: '[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using gzip.'
-  type: boolean
+  type: File
   inputBinding:
     prefix: -z
-- id: filter_ambiguous_alleles
-  doc: '[=arg(=1)] (=0) filter alleles (including reference) with ambiguous nucleotides
-    (non ACGT).'
+- id: in_filter_ambiguous_alleles
+  doc: "[=arg(=1)] (=0)\nfilter alleles (including reference) with ambiguous nucleotides\
+    \ (non ACGT).\n"
   type: boolean
   inputBinding:
     prefix: --filter-ambiguous-alleles
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_compress_output_files
+  doc: '[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using gzip.'
+  type: File
+  outputBinding:
+    glob: $(inputs.in_compress_output_files)
 cwlVersion: v1.1
 baseCommand:
 - bayesTyperTools

@@ -1,13 +1,8 @@
 &id001 !Command
+command:
+- pynnotator
 positional: []
 named:
-- !Flag
-  description: ''
-  synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: example.vcf
-  optional: true
 - !Flag
   description: ''
   synonyms:
@@ -15,11 +10,19 @@ named:
   args: !SimpleFlagArg
     name: hg19
   optional: true
-command:
-- pynnotator
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: example.vcf
+  optional: true
 parent:
 subcommands:
 - !Command
+  command:
+  - pynnotator
+  - or
   positional:
   - !Positional
     description: install test
@@ -41,11 +44,9 @@ subcommands:
     args: !SimpleFlagArg
       name: hg19
     optional: true
-  command:
-  - pynnotator
-  - or
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -61,6 +62,7 @@ subcommands:
     \ file to be annotated\n  -b hg19 or hg38  The genome build you want to use\n"
   generated_using:
   - --help
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

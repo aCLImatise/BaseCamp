@@ -14,4 +14,7 @@ task Reveal {
     h: ""
     usage: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

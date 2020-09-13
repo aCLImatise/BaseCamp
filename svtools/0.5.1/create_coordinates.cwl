@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../create_coordinates.cwl
 inputs:
-- id: input_vcf
+- id: in_input_vcf
   doc: VCF input
   type: string
   inputBinding:
     prefix: --input_vcf
-- id: output
-  doc: 'output coordinates to write (default: stdout)'
+- id: in_output
+  doc: "output coordinates to write (default: stdout)\n"
   type: string
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - create_coordinates

@@ -1,6 +1,6 @@
 version 1.0
 
-task ReadSeqSelectSeqs {
+task ReadSeqSelectseqs {
   input {
     String sequence_selector
     String ids_file
@@ -11,7 +11,7 @@ task ReadSeqSelectSeqs {
     String seq_file
   }
   command <<<
-    ReadSeq select-seqs \
+    ReadSeq select_seqs \
       ~{sequence_selector} \
       ~{ids_file} \
       ~{outfile} \
@@ -28,5 +28,8 @@ task ReadSeqSelectSeqs {
     keep: ""
     y_vertical_linen: ""
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

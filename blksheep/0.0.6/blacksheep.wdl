@@ -4,4 +4,7 @@ task Blacksheep {
   command <<<
     blacksheep
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

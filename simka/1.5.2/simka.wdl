@@ -3,8 +3,8 @@ version 1.0
 task Simka {
   input {
     Boolean? in
-    Boolean? out
-    Boolean? out_tmp
+    Directory? out
+    Directory? out_tmp
     Boolean? keep_tmp
     Boolean? data_info
     Boolean? verbose
@@ -28,29 +28,29 @@ task Simka {
   }
   command <<<
     simka \
-      ~{true="-in" false="" in} \
-      ~{true="-out" false="" out} \
-      ~{true="-out-tmp" false="" out_tmp} \
-      ~{true="-keep-tmp" false="" keep_tmp} \
-      ~{true="-data-info" false="" data_info} \
-      ~{true="-verbose" false="" verbose} \
-      ~{true="-simple-dist" false="" simple_dist} \
-      ~{true="-complex-dist" false="" complex_dist} \
-      ~{true="-kmer-size" false="" km_er_size} \
-      ~{true="-abundance-min" false="" abundance_min} \
-      ~{true="-abundance-max" false="" abundance_max} \
-      ~{true="-kmer-shannon-index" false="" km_er_shannon_index} \
-      ~{true="-max-reads" false="" max_reads} \
-      ~{true="-min-read-size" false="" min_read_size} \
-      ~{true="-min-shannon-index" false="" min_shannon_index} \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-max-memory" false="" max_memory} \
-      ~{true="-max-count" false="" max_count} \
-      ~{true="-max-merge" false="" max_merge} \
-      ~{true="-count-cmd" false="" count_cmd} \
-      ~{true="-merge-cmd" false="" merge_cmd} \
-      ~{true="-count-file" false="" count_file} \
-      ~{true="-merge-file" false="" merge_file}
+      ~{if (in) then "-in" else ""} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (out_tmp) then "-out-tmp" else ""} \
+      ~{if (keep_tmp) then "-keep-tmp" else ""} \
+      ~{if (data_info) then "-data-info" else ""} \
+      ~{if (verbose) then "-verbose" else ""} \
+      ~{if (simple_dist) then "-simple-dist" else ""} \
+      ~{if (complex_dist) then "-complex-dist" else ""} \
+      ~{if (km_er_size) then "-kmer-size" else ""} \
+      ~{if (abundance_min) then "-abundance-min" else ""} \
+      ~{if (abundance_max) then "-abundance-max" else ""} \
+      ~{if (km_er_shannon_index) then "-kmer-shannon-index" else ""} \
+      ~{if (max_reads) then "-max-reads" else ""} \
+      ~{if (min_read_size) then "-min-read-size" else ""} \
+      ~{if (min_shannon_index) then "-min-shannon-index" else ""} \
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (max_memory) then "-max-memory" else ""} \
+      ~{if (max_count) then "-max-count" else ""} \
+      ~{if (max_merge) then "-max-merge" else ""} \
+      ~{if (count_cmd) then "-count-cmd" else ""} \
+      ~{if (merge_cmd) then "-merge-cmd" else ""} \
+      ~{if (count_file) then "-count-file" else ""} \
+      ~{if (merge_file) then "-merge-file" else ""}
   >>>
   parameter_meta {
     in: "(1 arg) :    input file of samples. One sample per line: id1: filename1..."
@@ -76,5 +76,10 @@ task Simka {
     merge_cmd: "(1 arg) :    command to submit merging job  [default '']"
     count_file: "(1 arg) :    filename to the couting job template  [default '']"
     merge_file: "(1 arg) :    filename to the merging job template  [default '']"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_out = "${in_out}"
+    Directory out_out_tmp = "${in_out_tmp}"
   }
 }

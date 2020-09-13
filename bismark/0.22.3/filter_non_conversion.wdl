@@ -1,20 +1,10 @@
 version 1.0
 
 task FilterNonConversion {
-  input {
-    String? bismark
-    String? bam
-    File? files
-  }
   command <<<
-    filter_non_conversion \
-      ~{bismark} \
-      ~{bam} \
-      ~{files}
+    filter_non_conversion
   >>>
-  parameter_meta {
-    bismark: ""
-    bam: ""
-    files: ""
+  output {
+    File out_stdout = stdout()
   }
 }

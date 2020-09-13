@@ -2,22 +2,23 @@ version 1.0
 
 task NucleoatacOcc {
   input {
-    String? bed
-    String? bam
+    File? bed
+    File? bam
     String? out
-    String? fast_a
-    String? pwm
-    String? sizes
+    File? fast_a
+    Int? pwm
+    File? sizes
     Int? cores
     Int? upper
     Int? flank
     Float? min_occ
     Int? nuc_sep
-    Float? confidence_interval
     Int? step
+    Int one_two_zero_dot
   }
   command <<<
     nucleoatac occ \
+      ~{one_two_zero_dot} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
@@ -29,7 +30,6 @@ task NucleoatacOcc {
       ~{if defined(flank) then ("--flank " +  '"' + flank + '"') else ""} \
       ~{if defined(min_occ) then ("--min_occ " +  '"' + min_occ + '"') else ""} \
       ~{if defined(nuc_sep) then ("--nuc_sep " +  '"' + nuc_sep + '"') else ""} \
-      ~{if defined(confidence_interval) then ("--confidence_interval " +  '"' + confidence_interval + '"') else ""} \
       ~{if defined(step) then ("--step " +  '"' + step + '"') else ""}
   >>>
   parameter_meta {
@@ -37,14 +37,17 @@ task NucleoatacOcc {
     bam: "Sorted (and indexed) BAM file"
     out: "give output basename"
     fast_a: "Indexed fasta file"
-    pwm: "PWM descriptor file. Default is Human.PWM.txt included in package"
-    sizes: "File with fragment size distribution. Use if don't want calculation of fragment size"
+    pwm: "PWM descriptor file. Default is Human.PWM.txt included\\nin package"
+    sizes: "File with fragment size distribution. Use if don't\\nwant calculation of fragment size"
     cores: "Number of cores to use"
     upper: "upper limit in insert size. default is 251"
-    flank: "Distance on each side of dyad to include for local occ calculation. Default is 60."
-    min_occ: "Occupancy cutoff for determining nucleosome distribution. Default is 0.1"
-    nuc_sep: "minimum separation between occupany peaks. Default is 120."
-    confidence_interval: "confidence interval level for lower and upper bounds. default is 0.9, should be between 0 and 1"
-    step: "step size along genome for comuting occ. Default is 5. Should be odd, or will be subtracted by 1"
+    flank: "Distance on each side of dyad to include for local occ\\ncalculation. Default is 60."
+    min_occ: "Occupancy cutoff for determining nucleosome\\ndistribution. Default is 0.1"
+    nuc_sep: "minimum separation between occupany peaks. Default is"
+    step: "step size along genome for comuting occ. Default is 5.\\nShould be odd, or will be subtracted by 1\\n"
+    one_two_zero_dot: "--confidence_interval float"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

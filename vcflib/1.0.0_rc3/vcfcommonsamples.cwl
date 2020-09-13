@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../vcfcommonsamples.cwl
 inputs:
-- id: var_0
+- id: in_vcf_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-- id: var_1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfcommonsamples

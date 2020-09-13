@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../nw_trim.cwl
 inputs:
-- id: ah
+- id: in_ah
   doc: ''
   type: boolean
   inputBinding:
     prefix: -ah
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - nw_trim

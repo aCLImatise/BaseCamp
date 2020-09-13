@@ -1,10 +1,81 @@
 !Command
-positional: []
-named: []
 command:
 - bam2fastx
+positional: []
+named:
+- !Flag
+  description: "convert all reads (mapped and unmapped)\n(but discarding those flagged\
+    \ as QC failed, unless -Q)"
+  synonyms:
+  - -A
+  - --all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "paired reads are expected and converted into two output\nfiles (see\
+    \ <outfname> comments below)"
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: convert unmapped reads even when flagged as QC failed
+  synonyms:
+  - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: convert only mapped reads
+  synonyms:
+  - -M
+  - --maped-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: for -P, append  /1 and /2 suffixes to read names
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "ignore the original quality values (OQ tag) and write the\ncurrent\
+    \ quality values (default is to use OQ data if found)"
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reads are in ABI SOLiD color format
+  synonyms:
+  - -C
+  - --color
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'input is a SAM text file (default: BAM input expected)'
+  synonyms:
+  - -s
+  - -t
+  - --sam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output FASTA records, not FASTQ (discard quality values)
+  synonyms:
+  - -a
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output file name or template (see below)
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: outfname
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

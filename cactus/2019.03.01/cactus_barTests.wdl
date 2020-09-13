@@ -4,4 +4,7 @@ task CactusBarTests {
   command <<<
     cactus_barTests
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

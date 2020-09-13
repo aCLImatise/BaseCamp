@@ -1,10 +1,18 @@
 !Command
+command:
+- ansible-pull
 positional:
 - !Positional
-  description: ''
+  description: --git-force           modified files in the working git repository
+    will be
   position: 0
-  name: playbook.yml
-  optional: true
+  name: updated
+  optional: false
+- !Positional
+  description: -h, --help            show this help message and exit
+  position: 1
+  name: discarded
+  optional: false
 named:
 - !Flag
   description: adds the hostkey for the repo url if not already added
@@ -20,8 +28,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: branch/tag/commit to checkout.  Defaults to behavior of repository
-    module.
+  description: "branch/tag/commit to checkout.  Defaults to behavior\nof repository\
+    \ module."
   synonyms:
   - -C
   - --checkout
@@ -45,16 +53,10 @@ named:
     name: EXTRA_VARS
   optional: true
 - !Flag
-  description: run the playbook even if the repository could not be updated
+  description: run the playbook even if the repository could not be
   synonyms:
   - -f
   - --force
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: modified files in the working git repository will be discarded
-  synonyms:
-  - --git-force
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -73,7 +75,7 @@ named:
     name: KEY_FILE
   optional: true
 - !Flag
-  description: Module name used to check out repository.  Default is git.
+  description: "Module name used to check out repository.  Default is\ngit."
   synonyms:
   - -m
   - --module-name
@@ -81,7 +83,7 @@ named:
     name: MODULE_NAME
   optional: true
 - !Flag
-  description: only run the playbook if the repository has been updated
+  description: "only run the playbook if the repository has been\nupdated"
   synonyms:
   - -o
   - --only-if-changed
@@ -94,8 +96,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: sleep for random interval (between 0 and n number of seconds) before
-    starting. this is a useful way to disperse git requests
+  description: "sleep for random interval (between 0 and n number of\nseconds) before\
+    \ starting. this is a useful way to\ndisperse git requests"
   synonyms:
   - -s
   - --sleep
@@ -111,9 +113,9 @@ named:
     name: TAGS
   optional: true
 - !Flag
-  description: submodules will track the latest commit on their master branch (or
-    other branch specified in .gitmodules). This is equivalent to specifying the --remote
-    flag to git submodule update
+  description: "submodules will track the latest commit on their\nmaster branch (or\
+    \ other branch specified in\n.gitmodules). This is equivalent to specifying the\n\
+    --remote flag to git submodule update"
   synonyms:
   - --track-submodules
   args: !EmptyFlagArg {}
@@ -140,17 +142,10 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- ansible-pull
 parent:
 subcommands: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+usage: []
+help_flag:
 usage_flag:
 version_flag:
 help_text: "Usage: ansible-pull [options] [playbook.yml]\n\nOptions:\n  --accept-host-key\

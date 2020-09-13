@@ -2,9 +2,9 @@ version 1.0
 
 task PhyluceProbeGetClustersFromBed {
   input {
-    String? bed
-    String? outdir
-    Array[File] files
+    Directory? bed
+    Directory? outdir
+    Array[String] files
   }
   command <<<
     phyluce_probe_get_clusters_from_bed \
@@ -15,6 +15,10 @@ task PhyluceProbeGetClustersFromBed {
   parameter_meta {
     bed: "The BED directory you want to search for clusters"
     outdir: "The output directory to store results"
-    files: "Specific files in the directory you want to process"
+    files: "Specific files in the directory you want to process\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_outdir = "${in_outdir}"
   }
 }

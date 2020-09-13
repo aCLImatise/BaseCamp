@@ -3,14 +3,14 @@ version 1.0
 task CreateKUnitigsLargeK2 {
   input {
     Int? mer
-    String? nb_mers
+    Int? nb_mers
     Int? val
     Int? threads
     File? ouput_file_stdout
-    String? quality_threshold
-    String? cont_on_low
-    String? min_len
-    Boolean? gzip
+    Int? quality_threshold
+    Int? cont_on_low
+    Int? min_len
+    File? gzip
     File? load
     String cmdline_parse
     String var_input
@@ -27,7 +27,7 @@ task CreateKUnitigsLargeK2 {
       ~{if defined(quality_threshold) then ("--quality-threshold " +  '"' + quality_threshold + '"') else ""} \
       ~{if defined(cont_on_low) then ("--cont-on-low " +  '"' + cont_on_low + '"') else ""} \
       ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
-      ~{true="--gzip" false="" gzip} \
+      ~{if (gzip) then "--gzip" else ""} \
       ~{if defined(load) then ("--load " +  '"' + load + '"') else ""}
   >>>
   parameter_meta {
@@ -43,5 +43,9 @@ task CreateKUnitigsLargeK2 {
     load: "Load jellyfish hash"
     cmdline_parse: ""
     var_input: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_gzip = "${in_gzip}"
   }
 }

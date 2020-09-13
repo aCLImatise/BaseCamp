@@ -1,6 +1,6 @@
 version 1.0
 
-task SegtoolsPreprocess {
+task Segtoolspreprocess {
   input {
     Boolean? clobber
     Boolean? quiet
@@ -9,18 +9,21 @@ task SegtoolsPreprocess {
     String? outfile
   }
   command <<<
-    segtools-preprocess \
+    segtools_preprocess \
       ~{in_file} \
       ~{outfile} \
-      ~{true="--clobber" false="" clobber} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--annotation" false="" annotation}
+      ~{if (clobber) then "--clobber" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (annotation) then "--annotation" else ""}
   >>>
   parameter_meta {
     clobber: "Overwrite any existing output files."
     quiet: "Do not print diagnostic messages."
-    annotation: "Read INFILE as an annotation, rather than as a segmentation (default)."
+    annotation: "Read INFILE as an annotation, rather than as a segmentation\\n(default).\\n"
     in_file: ""
     outfile: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

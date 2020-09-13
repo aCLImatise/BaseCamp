@@ -1,7 +1,10 @@
 version 1.0
 
-task IndexPubmed {
+task Indexpubmed {
   command <<<
-    index-pubmed
+    index_pubmed
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

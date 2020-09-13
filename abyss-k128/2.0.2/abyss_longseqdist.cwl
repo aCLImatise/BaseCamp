@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../abyss_longseqdist.cwl
 inputs:
-- id: km_er
+- id: in_km_er
   doc: length of a k-mer
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: min_gap
+- id: in_min_gap
   doc: minimum scaffold gap length to output [200]
-  type: string
+  type: long
   inputBinding:
     prefix: --min-gap
-- id: verbose
+- id: in_verbose
   doc: display verbose output
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: sam
+- id: in_sam
   doc: BWA-MEM alignments of long sequences to the assembly
   type: string
   inputBinding:
     position: 0
-- id: dist
+- id: in_dist
   doc: estimates of the distance between contigs
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - abyss-longseqdist

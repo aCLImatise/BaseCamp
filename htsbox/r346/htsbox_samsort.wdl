@@ -2,9 +2,9 @@ version 1.0
 
 task HtsboxSamsort {
   input {
-    Boolean? s
-    String? l
     String? t
+    String? l
+    Boolean? s
     String sam_sort
     String in_dot_bam
   }
@@ -12,15 +12,18 @@ task HtsboxSamsort {
     htsbox samsort \
       ~{sam_sort} \
       ~{in_dot_bam} \
-      ~{true="-S" false="" s} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
+      ~{if (s) then "-S" else ""}
   >>>
   parameter_meta {
-    s: ""
-    l: ""
     t: ""
+    l: ""
+    s: ""
     sam_sort: ""
     in_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,5 +1,13 @@
 !Command
-positional: []
+command:
+- tirmite
+positional:
+- !Positional
+  description: --gffOut              If set report features as prefix.gff3. File saved
+    to
+  position: 0
+  name: pairing.
+  optional: false
 named:
 - !Flag
   description: Path to target genome that will be queried with HMMs.
@@ -16,51 +24,51 @@ named:
     name: HMMDIR
   optional: true
 - !Flag
-  description: Path to single TIR-pHMM file. Incompatible with "-- hmmDir".
+  description: "Path to single TIR-pHMM file. Incompatible with \"--\nhmmDir\"."
   synonyms:
   - --hmmFile
   args: !SimpleFlagArg
     name: HMMFILE
   optional: true
 - !Flag
-  description: Path to directory containing only TIR alignments to be converted to
-    HMM.
+  description: "Path to directory containing only TIR alignments to be\nconverted\
+    \ to HMM."
   synonyms:
   - --alnDir
   args: !SimpleFlagArg
     name: ALNDIR
   optional: true
 - !Flag
-  description: Provide a single TIR alignment to be converted to HMM. Incompatible
-    with "--alnDir".
+  description: "Provide a single TIR alignment to be converted to HMM.\nIncompatible\
+    \ with \"--alnDir\"."
   synonyms:
   - --alnFile
   args: !SimpleFlagArg
     name: ALNFILE
   optional: true
 - !Flag
-  description: Alignments provided with "--alnDir" or "--alnFile" are all in this
-    format.
+  description: "Alignments provided with \"--alnDir\" or \"--alnFile\" are\nall in\
+    \ this format."
   synonyms:
   - --alnFormat
   args: !ChoiceFlagArg
     choices: !!set
+      ? fasta
       ? stockholm
       ? phylip
       ? nexus
-      ? fasta
       ? clustal
   optional: true
 - !Flag
-  description: If set TIRmite will preform pairing on TIRs from custom bedfile only.
+  description: "If set TIRmite will preform pairing on TIRs from\ncustom bedfile only."
   synonyms:
   - --pairbed
   args: !SimpleFlagArg
     name: PAIRBED
   optional: true
 - !Flag
-  description: Number of times to iterate pairing procedure when no additional pairs
-    are found AND remaining unpaired hits > 0.
+  description: "Number of times to iterate pairing procedure when no\nadditional pairs\
+    \ are found AND remaining unpaired hits\n> 0."
   synonyms:
   - --stableReps
   args: !SimpleFlagArg
@@ -74,24 +82,17 @@ named:
     name: OUTDIR
   optional: true
 - !Flag
-  description: Add prefix to all TIRs and Paired elements detected in this run. Useful
-    when running same TIR-pHMM against many genomes.(Default = None)
+  description: "Add prefix to all TIRs and Paired elements detected in\nthis run.\
+    \ Useful when running same TIR-pHMM against\nmany genomes.(Default = None)"
   synonyms:
   - --prefix
   args: !SimpleFlagArg
     name: PREFIX
   optional: true
 - !Flag
-  description: If set, only report TIR-pHMM hits. Do not attempt pairing.
+  description: If set, only report TIR-pHMM hits. Do not attempt
   synonyms:
   - --nopairing
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'If set report features as prefix.gff3. File saved to outdir. Default:
-    False'
-  synonyms:
-  - --gffOut
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -100,13 +101,13 @@ named:
   - --reportTIR
   args: !ChoiceFlagArg
     choices: !!set
-      ? unpaired
+      ? paired
       ? None
       ? all
-      ? paired
+      ? unpaired
   optional: true
 - !Flag
-  description: Extract x bases either side of TIR when writing TIRs to fasta.
+  description: "Extract x bases either side of TIR when writing TIRs\nto fasta."
   synonyms:
   - --padlen
   args: !SimpleFlagArg
@@ -140,7 +141,8 @@ named:
     name: MAXEVAL
   optional: true
 - !Flag
-  description: Maximum distance allowed between TIR candidates to consider valid pairing.
+  description: "Maximum distance allowed between TIR candidates to\nconsider valid\
+    \ pairing."
   synonyms:
   - --maxdist
   args: !SimpleFlagArg
@@ -160,7 +162,7 @@ named:
     name: MATRIX
   optional: true
 - !Flag
-  description: Minimum valid hit length as prop of model length. Defaults to 0.5
+  description: "Minimum valid hit length as prop of model length.\nDefaults to 0.5"
   synonyms:
   - --mincov
   args: !SimpleFlagArg
@@ -187,10 +189,9 @@ named:
   args: !SimpleFlagArg
     name: HMMBUILD
   optional: true
-command:
-- tirmite
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

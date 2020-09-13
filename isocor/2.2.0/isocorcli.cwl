@@ -1,62 +1,60 @@
 class: CommandLineTool
 id: ../../../isocorcli.cwl
 inputs:
-- id: path_metabolites_database
+- id: in_path_metabolites_database
   doc: path to metabolites database
-  type: string
+  type: File
   inputBinding:
     prefix: -M
-- id: path_derivatives_database
+- id: in_path_derivatives_database
   doc: path to derivatives database
-  type: string
+  type: File
   inputBinding:
     prefix: -D
-- id: path_isotopes_database
+- id: in_path_isotopes_database
   doc: path to isotopes database
-  type: string
+  type: File
   inputBinding:
     prefix: -I
-- id: tracer
+- id: in_tracer
   doc: the isotopic tracer (e.g. "13C")
-  type: string
+  type: long
   inputBinding:
     prefix: --tracer
-- id: resolution
-  doc: 'HR only: resolution of the mass spectrometer (e.g. "1e4")'
-  type: string
+- id: in_resolution
+  doc: "HR only: resolution of the mass spectrometer (e.g.\n\"1e4\")"
+  type: double
   inputBinding:
     prefix: --resolution
-- id: mz_of_resolution
+- id: in_mz_of_resolution
   doc: 'HR only: mz at which resolution is given (e.g. "400")'
-  type: string
+  type: long
   inputBinding:
     prefix: --mz_of_resolution
-- id: resolution_formula_code
+- id: in_resolution_formula_code
   doc: 'HR only: spectrometer formula code'
   type: string
   inputBinding:
     prefix: --resolution_formula_code
-- id: tracer_purity
+- id: in_tracer_purity
   doc: purity vector of the tracer
   type: string
   inputBinding:
     prefix: --tracer_purity
-- id: correct_na_tracer
+- id: in_correct_na_tracer
   doc: flag to correct tracer natural abundance
   type: boolean
   inputBinding:
     prefix: --correct_NA_tracer
-- id: verbose
+- id: in_verbose
   doc: flag to enable verbose logs
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: input_data
-  doc: measurements file to process
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - isocorcli

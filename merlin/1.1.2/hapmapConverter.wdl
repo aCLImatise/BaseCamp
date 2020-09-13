@@ -4,4 +4,7 @@ task HapmapConverter {
   command <<<
     hapmapConverter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

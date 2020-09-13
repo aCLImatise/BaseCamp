@@ -1,7 +1,8 @@
 version 1.0
 
-task AddGffInfoUniprot {
+task AddgffinfoUniprot {
   input {
+    Boolean? verbose
     String? email
     Int? buffer
     Boolean? force_tax_on_id
@@ -16,25 +17,27 @@ task AddGffInfoUniprot {
     String? output_file
   }
   command <<<
-    add-gff-info uniprot \
+    add_gff_info uniprot \
       ~{input_file} \
       ~{output_file} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(email) then ("--email " +  '"' + email + '"') else ""} \
       ~{if defined(buffer) then ("--buffer " +  '"' + buffer + '"') else ""} \
-      ~{true="--force-taxon-id" false="" force_tax_on_id} \
-      ~{true="--taxon-id" false="" tax_on_id} \
-      ~{true="--lineage" false="" lineage} \
-      ~{true="--eggnog" false="" eggnog} \
-      ~{true="--enzymes" false="" enzymes} \
-      ~{true="--kegg_orthologs" false="" kegg_orthologs} \
-      ~{true="--protein-names" false="" protein_names} \
+      ~{if (force_tax_on_id) then "--force-taxon-id" else ""} \
+      ~{if (tax_on_id) then "--taxon-id" else ""} \
+      ~{if (lineage) then "--lineage" else ""} \
+      ~{if (eggnog) then "--eggnog" else ""} \
+      ~{if (enzymes) then "--enzymes" else ""} \
+      ~{if (kegg_orthologs) then "--kegg_orthologs" else ""} \
+      ~{if (protein_names) then "--protein-names" else ""} \
       ~{if defined(mapping) then ("--mapping " +  '"' + mapping + '"') else ""}
   >>>
   parameter_meta {
+    verbose: ""
     email: "Contact email  [required]"
-    buffer: "Number of annotations to keep in memory  [default: 50]"
+    buffer: "Number of annotations to keep in memory  [default:\\n50]"
     force_tax_on_id: "Overwrite taxon_id if already present"
-    tax_on_id: "Add taxonomic ids to annotations, if taxon_id is found, it won't be Overwritten."
+    tax_on_id: "Add taxonomic ids to annotations, if taxon_id is\\nfound, it won't be Overwritten."
     lineage: "Add taxonomic lineage to annotations"
     eggnog: "Add eggNOG mappings to annotations"
     enzymes: "Add EC mappings to annotations"
@@ -43,5 +46,8 @@ task AddGffInfoUniprot {
     mapping: "Add any DB mappings to annotations"
     input_file: ""
     output_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -6,14 +6,14 @@ task Lsg {
     Boolean? gsa
     Boolean? tau
     Boolean? cyc_num
-    String? read_length
+    Int? read_length
   }
   command <<<
     lsg \
-      ~{true="--basename" false="" basename} \
-      ~{true="--GSA" false="" gsa} \
-      ~{true="--TAU" false="" tau} \
-      ~{true="--CycNum" false="" cyc_num} \
+      ~{if (basename) then "--basename" else ""} \
+      ~{if (gsa) then "--GSA" else ""} \
+      ~{if (tau) then "--TAU" else ""} \
+      ~{if (cyc_num) then "--CycNum" else ""} \
       ~{if defined(read_length) then ("--read-length " +  '"' + read_length + '"') else ""}
   >>>
   parameter_meta {
@@ -22,5 +22,8 @@ task Lsg {
     tau: "<TAU>          # (default: 0)"
     cyc_num: "<CycNum>       # (default: 0)"
     read_length: "# 0 if unknown or not fixed (default: 0)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

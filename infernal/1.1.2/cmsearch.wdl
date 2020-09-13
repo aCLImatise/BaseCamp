@@ -3,19 +3,19 @@ version 1.0
 task Cmsearch {
   input {
     Boolean? configure_cm_glocal
-    String? set_space_size
+    Int? set_space_size
     Boolean? devhelp
-    String? direct_output_file
-    String? save_multiple_alignment
-    String? tbl_out
+    File? direct_output_file
+    File? save_multiple_alignment
+    File? tbl_out
     Boolean? acc
     Boolean? no_ali
     Boolean? no_text_w
-    String? text_w
+    Int? text_w
     Boolean? verbose
-    String? report_sequences_evalue
-    String? report_sequences_threshold
-    String? ince
+    Float? report_sequences_evalue_threshold
+    String? report_sequences_score_threshold
+    Float? ince
     String? in_ct
     Boolean? cut_ga
     Boolean? cut_nc
@@ -26,20 +26,20 @@ task Cmsearch {
     Boolean? default
     Boolean? rf_am
     Boolean? hmm_only
-    String? fz
-    String? fmid
+    Int? fz
+    Float? fmid
     Boolean? not_run_c
     Boolean? any_trunc
     Boolean? no_null_three
-    String? mx_size
-    String? smx_size
+    Int? mx_size
+    Int? smx_size
     Boolean? cy_k
     Boolean? acy_k
-    String? wcx
+    Int? wcx
     Boolean? top_only
     Boolean? bottom_only
     String? t_format
-    String? cpu
+    Int? cpu
     String cm_file
     String seq_db
   }
@@ -47,42 +47,42 @@ task Cmsearch {
     cmsearch \
       ~{cm_file} \
       ~{seq_db} \
-      ~{true="-g" false="" configure_cm_glocal} \
+      ~{if (configure_cm_glocal) then "-g" else ""} \
       ~{if defined(set_space_size) then ("-Z " +  '"' + set_space_size + '"') else ""} \
-      ~{true="--devhelp" false="" devhelp} \
+      ~{if (devhelp) then "--devhelp" else ""} \
       ~{if defined(direct_output_file) then ("-o " +  '"' + direct_output_file + '"') else ""} \
       ~{if defined(save_multiple_alignment) then ("-A " +  '"' + save_multiple_alignment + '"') else ""} \
       ~{if defined(tbl_out) then ("--tblout " +  '"' + tbl_out + '"') else ""} \
-      ~{true="--acc" false="" acc} \
-      ~{true="--noali" false="" no_ali} \
-      ~{true="--notextw" false="" no_text_w} \
+      ~{if (acc) then "--acc" else ""} \
+      ~{if (no_ali) then "--noali" else ""} \
+      ~{if (no_text_w) then "--notextw" else ""} \
       ~{if defined(text_w) then ("--textw " +  '"' + text_w + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
-      ~{if defined(report_sequences_evalue) then ("-E " +  '"' + report_sequences_evalue + '"') else ""} \
-      ~{if defined(report_sequences_threshold) then ("-T " +  '"' + report_sequences_threshold + '"') else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if defined(report_sequences_evalue_threshold) then ("-E " +  '"' + report_sequences_evalue_threshold + '"') else ""} \
+      ~{if defined(report_sequences_score_threshold) then ("-T " +  '"' + report_sequences_score_threshold + '"') else ""} \
       ~{if defined(ince) then ("--incE " +  '"' + ince + '"') else ""} \
       ~{if defined(in_ct) then ("--incT " +  '"' + in_ct + '"') else ""} \
-      ~{true="--cut_ga" false="" cut_ga} \
-      ~{true="--cut_nc" false="" cut_nc} \
-      ~{true="--cut_tc" false="" cut_tc} \
-      ~{true="--max" false="" max} \
-      ~{true="--nohmm" false="" no_hmm} \
-      ~{true="--mid" false="" mid} \
-      ~{true="--default" false="" default} \
-      ~{true="--rfam" false="" rf_am} \
-      ~{true="--hmmonly" false="" hmm_only} \
+      ~{if (cut_ga) then "--cut_ga" else ""} \
+      ~{if (cut_nc) then "--cut_nc" else ""} \
+      ~{if (cut_tc) then "--cut_tc" else ""} \
+      ~{if (max) then "--max" else ""} \
+      ~{if (no_hmm) then "--nohmm" else ""} \
+      ~{if (mid) then "--mid" else ""} \
+      ~{if (default) then "--default" else ""} \
+      ~{if (rf_am) then "--rfam" else ""} \
+      ~{if (hmm_only) then "--hmmonly" else ""} \
       ~{if defined(fz) then ("--FZ " +  '"' + fz + '"') else ""} \
       ~{if defined(fmid) then ("--Fmid " +  '"' + fmid + '"') else ""} \
-      ~{true="--notrunc" false="" not_run_c} \
-      ~{true="--anytrunc" false="" any_trunc} \
-      ~{true="--nonull3" false="" no_null_three} \
+      ~{if (not_run_c) then "--notrunc" else ""} \
+      ~{if (any_trunc) then "--anytrunc" else ""} \
+      ~{if (no_null_three) then "--nonull3" else ""} \
       ~{if defined(mx_size) then ("--mxsize " +  '"' + mx_size + '"') else ""} \
       ~{if defined(smx_size) then ("--smxsize " +  '"' + smx_size + '"') else ""} \
-      ~{true="--cyk" false="" cy_k} \
-      ~{true="--acyk" false="" acy_k} \
+      ~{if (cy_k) then "--cyk" else ""} \
+      ~{if (acy_k) then "--acyk" else ""} \
       ~{if defined(wcx) then ("--wcx " +  '"' + wcx + '"') else ""} \
-      ~{true="--toponly" false="" top_only} \
-      ~{true="--bottomonly" false="" bottom_only} \
+      ~{if (top_only) then "--toponly" else ""} \
+      ~{if (bottom_only) then "--bottomonly" else ""} \
       ~{if defined(t_format) then ("--tformat " +  '"' + t_format + '"') else ""} \
       ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""}
   >>>
@@ -98,8 +98,8 @@ task Cmsearch {
     no_text_w: ": unlimit ASCII text output line width"
     text_w: ": set max width of ASCII text output lines  [120]  (n>=120)"
     verbose: ": report extra information; mainly useful for debugging"
-    report_sequences_evalue: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
-    report_sequences_threshold: ": report sequences >= this score threshold in output"
+    report_sequences_evalue_threshold: ": report sequences <= this E-value threshold in output  [10.0]  (x>0)"
+    report_sequences_score_threshold: ": report sequences >= this score threshold in output"
     ince: ": consider sequences <= this E-value threshold as significant  [0.01]"
     in_ct: ": consider sequences >= this score threshold as significant"
     cut_ga: ": use CM's GA gathering cutoffs as reporting thresholds"
@@ -127,5 +127,9 @@ task Cmsearch {
     cpu: ": number of parallel CPU workers to use for multithreads"
     cm_file: ""
     seq_db: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_direct_output_file = "${in_direct_output_file}"
   }
 }

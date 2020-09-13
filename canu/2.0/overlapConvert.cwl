@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../overlapConvert.cwl
 inputs:
-- id: needed_coords_default
+- id: in_seqstore_needed_default
   doc: seqStore (needed for -coords, the default)
   type: boolean
   inputBinding:
     prefix: -S
-- id: coords
+- id: in_coords
   doc: output coordiantes on reads
   type: boolean
   inputBinding:
     prefix: -coords
-- id: hangs
+- id: in_hangs
   doc: output hangs on reads
   type: boolean
   inputBinding:
     prefix: -hangs
-- id: unaligned
+- id: in_unaligned
   doc: output unaligned regions on each read
   type: boolean
   inputBinding:
     prefix: -unaligned
-- id: file_do_to_vb
+- id: in_file_do_to_vb
   doc: ''
   type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - overlapConvert

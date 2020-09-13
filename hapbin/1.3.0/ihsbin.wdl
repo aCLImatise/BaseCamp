@@ -4,7 +4,7 @@ task Ihsbin {
   input {
     Boolean? hap
     Boolean? map_file
-    Boolean? out
+    File? out
     Boolean? cut_off
     Boolean? min_maf
     Boolean? scale
@@ -15,16 +15,16 @@ task Ihsbin {
   }
   command <<<
     ihsbin \
-      ~{true="--hap" false="" hap} \
-      ~{true="--map" false="" map_file} \
-      ~{true="--out" false="" out} \
-      ~{true="--cutoff" false="" cut_off} \
-      ~{true="--minmaf" false="" min_maf} \
-      ~{true="--scale" false="" scale} \
-      ~{true="--bin" false="" bin} \
-      ~{true="--max-extend" false="" max_extend} \
-      ~{true="--binom" false="" bin_om} \
-      ~{true="--ascii" false="" ascii}
+      ~{if (hap) then "--hap" else ""} \
+      ~{if (map_file) then "--map" else ""} \
+      ~{if (out) then "--out" else ""} \
+      ~{if (cut_off) then "--cutoff" else ""} \
+      ~{if (min_maf) then "--minmaf" else ""} \
+      ~{if (scale) then "--scale" else ""} \
+      ~{if (bin) then "--bin" else ""} \
+      ~{if (max_extend) then "--max-extend" else ""} \
+      ~{if (bin_om) then "--binom" else ""} \
+      ~{if (ascii) then "--ascii" else ""}
   >>>
   parameter_meta {
     hap: "Hap file"
@@ -37,5 +37,9 @@ task Ihsbin {
     max_extend: "Maximum distance in bp to traverse when calculating EHH (default: 0 (disabled))"
     bin_om: "Use binomial coefficients rather than frequency squared for EHH"
     ascii: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

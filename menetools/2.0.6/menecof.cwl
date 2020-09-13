@@ -1,45 +1,49 @@
 class: CommandLineTool
 id: ../../../menecof.cwl
 inputs:
-- id: draft_net
+- id: in_draft_net
   doc: metabolic network in SBML format
   type: string
   inputBinding:
     prefix: --draftnet
-- id: seeds
+- id: in_seeds
   doc: seeds in SBML format
   type: string
   inputBinding:
     prefix: --seeds
-- id: targets
+- id: in_targets
   doc: targets in SBML format
   type: string
   inputBinding:
     prefix: --targets
-- id: cofactors
+- id: in_cofactors
   doc: cofactors, in one-per-line text file format
-  type: string
+  type: File
   inputBinding:
     prefix: --cofactors
-- id: suffix
-  doc: suffix to be added to the compounds of the database. It can be the suffix for
-    the cytosolic compartment or external one. Cytosolic one is prefered to ensure
-    the impact of the added cofactors. Default = None
+- id: in_suffix
+  doc: "suffix to be added to the compounds of the database.\nIt can be the suffix\
+    \ for the cytosolic compartment or\nexternal one. Cytosolic one is prefered to\
+    \ ensure the\nimpact of the added cofactors. Default = None"
   type: string
   inputBinding:
     prefix: --suffix
-- id: weight
-  doc: call this option if cofactors are weighted according to their occurrence frequency
-    in database. If so, cofactors file must be tabulated with per line compound' 'occurrence
+- id: in_weight
+  doc: "call this option if cofactors are weighted according\nto their occurrence\
+    \ frequency in database. If so,\ncofactors file must be tabulated with per line\n\
+    compound' 'occurrence"
   type: boolean
   inputBinding:
     prefix: --weight
-- id: enumerate
+- id: in_enumerate
   doc: enumerates all cofactors solutions
   type: boolean
   inputBinding:
     prefix: --enumerate
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - menecof

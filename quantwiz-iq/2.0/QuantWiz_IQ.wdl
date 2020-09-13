@@ -1,7 +1,10 @@
 version 1.0
 
-task QuantWizIQ.pl {
+task QuantWizIQ {
   command <<<
-    QuantWiz_IQ.pl
+    QuantWiz_IQ
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task Hmmconvert {
   input {
-    String? model_file
-    String? binary_output
+    File? model_file
+    Int? binary_output
     String? option
     String run_name
   }
@@ -19,5 +19,8 @@ task Hmmconvert {
     binary_output: "target format ASCII/BINARY"
     option: ""
     run_name: "required"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

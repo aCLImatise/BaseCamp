@@ -11,10 +11,10 @@ task CramtoolsIndex {
   command <<<
     cramtools index \
       ~{main_class} \
-      ~{true="--index-file" false="" index_file} \
-      ~{true="--index-format" false="" index_format} \
-      ~{true="--input-file" false="" input_file} \
-      ~{true="--log-level" false="" log_level}
+      ~{if (index_file) then "--index-file" else ""} \
+      ~{if (index_format) then "--index-format" else ""} \
+      ~{if (input_file) then "--input-file" else ""} \
+      ~{if (log_level) then "--log-level" else ""}
   >>>
   parameter_meta {
     index_file: "Write index to this file."
@@ -22,5 +22,8 @@ task CramtoolsIndex {
     input_file: "Path to a BAM or CRAM file to be indexed. Omit if standard input (pipe)."
     log_level: "Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)"
     main_class: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

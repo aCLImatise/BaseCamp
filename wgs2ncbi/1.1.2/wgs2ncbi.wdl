@@ -2,22 +2,16 @@ version 1.0
 
 task Wgs2ncbi {
   input {
-    Boolean? conf
-    String? action
-    String? config
-    File? file
+    String ncbi
   }
   command <<<
     wgs2ncbi \
-      ~{action} \
-      ~{config} \
-      ~{file} \
-      ~{true="-conf" false="" conf}
+      ~{ncbi}
   >>>
   parameter_meta {
-    conf: ""
-    action: ""
-    config: ""
-    file: ""
+    ncbi: "SYNOPSIS\\nUsage: wgs2ncbi [action] -conf [config file]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

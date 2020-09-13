@@ -2,8 +2,8 @@ version 1.0
 
 task FastutilsFormat {
   input {
-    String? in
-    String? out
+    File? in
+    File? out
     Int? linewidth
     Int? min_len
     Int? maxlen
@@ -24,15 +24,15 @@ task FastutilsFormat {
       ~{if defined(linewidth) then ("--lineWidth " +  '"' + linewidth + '"') else ""} \
       ~{if defined(min_len) then ("--minLen " +  '"' + min_len + '"') else ""} \
       ~{if defined(maxlen) then ("--maxLen " +  '"' + maxlen + '"') else ""} \
-      ~{true="--fastq" false="" fast_q} \
-      ~{true="--noN" false="" non} \
-      ~{true="--comment" false="" comment} \
-      ~{true="--digital" false="" digital} \
-      ~{true="--keep" false="" keep} \
+      ~{if (fast_q) then "--fastq" else ""} \
+      ~{if (non) then "--noN" else ""} \
+      ~{if (comment) then "--comment" else ""} \
+      ~{if (digital) then "--digital" else ""} \
+      ~{if (keep) then "--keep" else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(suffix) then ("--suffix " +  '"' + suffix + '"') else ""} \
-      ~{true="--pacbio" false="" pac_bio} \
-      ~{true="--fofn" false="" fof_n}
+      ~{if (pac_bio) then "--pacbio" else ""} \
+      ~{if (fof_n) then "--fofn" else ""}
   >>>
   parameter_meta {
     in: "input file in fasta/q format [stdin]"
@@ -49,5 +49,9 @@ task FastutilsFormat {
     suffix: "append STR to the name"
     pac_bio: "use pacbio's header format"
     fof_n: "input file is a file of file names"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

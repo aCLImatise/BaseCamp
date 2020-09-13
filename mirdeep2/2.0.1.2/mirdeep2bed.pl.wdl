@@ -1,7 +1,10 @@
 version 1.0
 
-task Mirdeep2bed.pl.orig {
+task Mirdeep2bedpl {
   command <<<
-    mirdeep2bed.pl.orig
+    mirdeep2bed_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

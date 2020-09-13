@@ -11,4 +11,7 @@ task Readfq {
   parameter_meta {
     in_dot_seq: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

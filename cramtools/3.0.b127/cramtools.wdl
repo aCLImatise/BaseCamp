@@ -4,4 +4,7 @@ task Cramtools {
   command <<<
     cramtools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

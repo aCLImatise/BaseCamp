@@ -1,7 +1,10 @@
 version 1.0
 
-task Yamlpp5Highlight {
+task Yamlpp5highlight {
   command <<<
-    yamlpp5-highlight
+    yamlpp5_highlight
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

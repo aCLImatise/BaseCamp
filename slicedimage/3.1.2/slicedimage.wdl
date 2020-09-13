@@ -4,4 +4,7 @@ task Slicedimage {
   command <<<
     slicedimage
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../vcfglxgt.cwl
 inputs:
-- id: fix_null_genotypes
+- id: in_fix_null_genotypes
   doc: only apply to null and partly-null genotypes
   type: boolean
   inputBinding:
     prefix: --fix-null-genotypes
-- id: vcf_file
+- id: in_vcf_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - vcfglxgt

@@ -1,14 +1,14 @@
 version 1.0
 
-task HmmgsFindCuts {
+task HmmgsFindcuts {
   input {
     String cut_finder
-    String km_er_size
+    Int km_er_size
     String bloom_filter
     String query_files
   }
   command <<<
-    hmmgs find-cuts \
+    hmmgs find_cuts \
       ~{cut_finder} \
       ~{km_er_size} \
       ~{bloom_filter} \
@@ -19,5 +19,8 @@ task HmmgsFindCuts {
     km_er_size: ""
     bloom_filter: ""
     query_files: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

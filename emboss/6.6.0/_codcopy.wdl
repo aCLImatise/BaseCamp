@@ -1,7 +1,10 @@
 version 1.0
 
-task _codcopy {
+task Codcopy {
   command <<<
     _codcopy
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

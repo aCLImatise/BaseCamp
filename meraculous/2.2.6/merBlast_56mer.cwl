@@ -1,37 +1,40 @@
 class: CommandLineTool
 id: ../../../merBlast_56mer.cwl
 inputs:
-- id: contigs_file
+- id: in_contigs_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: contigs_hash_file
+- id: in_contigs_hash_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: mer_size
+- id: in_mer_size
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: input_descriptor_file
+- id: in_input_descriptor_file
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: output_file_prefix
+- id: in_output_file_prefix
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: num_threads
+- id: in_num_threads
   doc: ''
   type: string
   inputBinding:
     position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - merBlast_56mer

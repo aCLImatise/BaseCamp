@@ -1,6 +1,26 @@
 !Command
+command:
+- scanwise
 positional: []
 named:
+- !Flag
+  description: '[number] effective db size for Evalue calculation [300000]'
+  synonyms:
+  - -dbsize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[localhost] host name for wise server'
+  synonyms:
+  - -scan_host
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[4050]      port for wise server'
+  synonyms:
+  - -scan_port
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Filename for multiple servers, <host> <port> format
   synonyms:
@@ -105,6 +125,36 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: '[no] width around each HSP to consider'
+  synonyms:
+  - -hsp2hit_width
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[no] length around each HSP to consider'
+  synonyms:
+  - -hsp2hit_length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[no] number of HSP subalignments to consider (disabled)'
+  synonyms:
+  - -hsp2hit_subaln
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[no] number of hitpairs to assess'
+  synonyms:
+  - -hsp2hit_hitaln
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[10] percentage off best score taken in best-in-search truncation'
+  synonyms:
+  - -hsp2hit_best_perc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: '[pseudoblast/xml/tab] pseudoblast by default'
   synonyms:
   - -hitoutput
@@ -114,6 +164,18 @@ named:
   description: more detailed help on hitlist formats
   synonyms:
   - -hithelp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: memory style [default/linear/explicit]
+  synonyms:
+  - -dymem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: memory amount to use [4000]
+  synonyms:
+  - -kbyte
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -166,6 +228,38 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: tiling skip of load (default 1)
+  synonyms:
+  - -seqloadtile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: report (using info) at what stagger rating (default none)
+  synonyms:
+  - -seqloadreport
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: <number>  truncate load after this number of sequeneces (useful for
+    debugging)
+  synonyms:
+  - -seqloadtrunc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <number>  start position in database for seq load
+  synonyms:
+  - -seqloadstart
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <number>  end position in database for seq load
+  synonyms:
+  - -seqloadend
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: '[array/hash/stream/shadow] - default array'
   synonyms:
   - -pitype
@@ -201,10 +295,9 @@ named:
   - -piseqmax_len
   args: !EmptyFlagArg {}
   optional: true
-command:
-- scanwise
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: help
   synonyms:

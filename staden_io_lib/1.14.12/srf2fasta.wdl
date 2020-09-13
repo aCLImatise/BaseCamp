@@ -8,10 +8,13 @@ task Srf2fasta {
   command <<<
     srf2fasta \
       ~{archive_name} \
-      ~{true="-C" false="" c}
+      ~{if (c) then "-C" else ""}
   >>>
   parameter_meta {
     c: ""
     archive_name: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

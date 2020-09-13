@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../seqmagick_extract_ids.cwl
 inputs:
-- id: output_file
+- id: in_output_file
   doc: Destination file
-  type: string
+  type: File
   inputBinding:
     prefix: --output-file
-- id: input_format
+- id: in_input_format
   doc: Input format for sequence file
-  type: string
+  type: File
   inputBinding:
     prefix: --input-format
-- id: include_description
-  doc: 'Include the sequence description in output [default: False]'
+- id: in_include_description
+  doc: "Include the sequence description in output [default:\nFalse]\n"
   type: boolean
   inputBinding:
     prefix: --include-description
-- id: sequence_file
-  doc: Sequence file
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: Destination file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - seqmagick

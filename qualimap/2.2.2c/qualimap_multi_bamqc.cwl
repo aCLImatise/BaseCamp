@@ -1,67 +1,81 @@
 class: CommandLineTool
 id: ../../../qualimap_multi_bamqc.cwl
 inputs:
-- id: paint_chromosome_limits
-  doc: Only for -r mode. Paint chromosome limits inside charts
+- id: in_paint_chromosome_limits
+  doc: "Only for -r mode. Paint chromosome limits\ninside charts"
   type: boolean
   inputBinding:
     prefix: --paint-chromosome-limits
-- id: data
-  doc: 'File describing the input data. Format of the file is a 2- or 3-column tab-delimited
-    table. Column 1: sample name Column 2: either path to the BAM QC result or path
-    to BAM file (-r mode) Column 3: group name (activates sample group marking)'
-  type: string
+- id: in_data
+  doc: "File describing the input data. Format of the\nfile is a 2- or 3-column tab-delimited\
+    \ table.\nColumn 1: sample name\nColumn 2: either path to the BAM QC result or\n\
+    path to BAM file (-r mode)\nColumn 3: group name (activates sample group\nmarking)"
+  type: File
   inputBinding:
     prefix: --data
-- id: feature_file
-  doc: Only for -r mode. Feature file with regions of interest in GFF/GTF or BED format
-  type: string
+- id: in_feature_file
+  doc: "Only for -r mode. Feature file with regions of\ninterest in GFF/GTF or BED\
+    \ format"
+  type: File
   inputBinding:
     prefix: --feature-file
-- id: hm
-  doc: Only for -r mode. Minimum size for a homopolymer to be considered in indel
-    analysis (default is 3)
-  type: string
+- id: in_hm
+  doc: "Only for -r mode. Minimum size for a\nhomopolymer to be considered in indel\
+    \ analysis\n(default is 3)"
+  type: long
   inputBinding:
     prefix: -hm
-- id: nr
-  doc: Only for -r mode. Number of reads analyzed in a chunk (default is 1000)
-  type: string
+- id: in_nr
+  doc: "Only for -r mode. Number of reads analyzed in\na chunk (default is 1000)"
+  type: long
   inputBinding:
     prefix: -nr
-- id: nw
-  doc: Only for -r mode. Number of windows (default is 400)
-  type: string
+- id: in_nw
+  doc: "Only for -r mode. Number of windows (default\nis 400)"
+  type: long
   inputBinding:
     prefix: -nw
-- id: outdir
+- id: in_outdir
   doc: Output folder for HTML report and raw data.
-  type: string
+  type: Directory
   inputBinding:
     prefix: -outdir
-- id: outfile
-  doc: Output file for PDF report (default value is report.pdf).
-  type: string
+- id: in_outfile
+  doc: "Output file for PDF report (default value is\nreport.pdf)."
+  type: File
   inputBinding:
     prefix: -outfile
-- id: out_format
-  doc: Format of the output report (PDF, HTML or both PDF:HTML, default is HTML).
+- id: in_out_format
+  doc: "Format of the output report (PDF, HTML or both\nPDF:HTML, default is HTML)."
   type: string
   inputBinding:
     prefix: -outformat
-- id: sequencing_protocol
-  doc: 'Only for -r mode. Sequencing library protocol: strand-specific-forward, strand-specific-reverse
-    or non-strand-specific (default)'
+- id: in_sequencing_protocol
+  doc: "Only for -r mode. Sequencing library protocol:\nstrand-specific-forward,\n\
+    strand-specific-reverse or non-strand-specific\n(default)"
   type: string
   inputBinding:
     prefix: --sequencing-protocol
-- id: run_bam_qc
-  doc: Raw BAM files are provided as input. If this option is activated BAM QC process
-    first will be run for each sample, then multi-sample analysis will be performed.
+- id: in_run_bam_qc
+  doc: "Raw BAM files are provided as input. If this\noption is activated BAM QC process\
+    \ first will\nbe run for each sample, then multi-sample\nanalysis will be performed.\n"
   type: boolean
   inputBinding:
     prefix: --run-bamqc
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: Output folder for HTML report and raw data.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_outfile
+  doc: "Output file for PDF report (default value is\nreport.pdf)."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_outfile)
 cwlVersion: v1.1
 baseCommand:
 - qualimap

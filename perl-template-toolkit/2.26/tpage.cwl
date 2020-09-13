@@ -1,147 +1,150 @@
 class: CommandLineTool
 id: ../../../tpage.cwl
 inputs:
-- id: define
+- id: in_define
   doc: =value       Define template variable
   type: string
   inputBinding:
     prefix: --define
-- id: interpolate
+- id: in_interpolate
   doc: Interpolate '$var' references in text
   type: boolean
   inputBinding:
     prefix: --interpolate
-- id: any_case
+- id: in_any_case
   doc: Accept directive keywords in any case.
   type: boolean
   inputBinding:
     prefix: --anycase
-- id: pre_chomp
-  doc: 'Chomp leading whitespace '
+- id: in_pre_chomp
+  doc: Chomp leading whitespace
   type: boolean
   inputBinding:
     prefix: --pre_chomp
-- id: post_chomp
+- id: in_post_chomp
   doc: Chomp trailing whitespace
   type: boolean
   inputBinding:
     prefix: --post_chomp
-- id: trim
+- id: in_trim
   doc: Trim blank lines around template blocks
   type: boolean
   inputBinding:
     prefix: --trim
-- id: eval_perl
+- id: in_eval_perl
   doc: Evaluate [% PERL %] ... [% END %] code blocks
   type: boolean
   inputBinding:
     prefix: --eval_perl
-- id: load_perl
+- id: in_load_perl
   doc: Load regular Perl modules via USE directive
   type: boolean
   inputBinding:
     prefix: --load_perl
-- id: absolute
+- id: in_absolute
   doc: Allow ABSOLUTE directories (enabled by default)
   type: boolean
   inputBinding:
     prefix: --absolute
-- id: relative
+- id: in_relative
   doc: Allow RELATIVE directories (enabled by default)
   type: boolean
   inputBinding:
     prefix: --relative
-- id: include_path
-  doc: 'Add directory to INCLUDE_PATH '
-  type: string
+- id: in_include_path
+  doc: Add directory to INCLUDE_PATH
+  type: Directory
   inputBinding:
     prefix: --include_path
-- id: pre_process
+- id: in_pre_process
   doc: Process TEMPLATE before each main template
   type: string
   inputBinding:
     prefix: --pre_process
-- id: post_process
+- id: in_post_process
   doc: Process TEMPLATE after each main template
   type: string
   inputBinding:
     prefix: --post_process
-- id: process
+- id: in_process
   doc: Process TEMPLATE instead of main template
   type: string
   inputBinding:
     prefix: --process
-- id: wrapper
+- id: in_wrapper
   doc: Process TEMPLATE wrapper around main template
   type: string
   inputBinding:
     prefix: --wrapper
-- id: default
+- id: in_default
   doc: Use TEMPLATE as default
   type: string
   inputBinding:
     prefix: --default
-- id: error
+- id: in_error
   doc: Use TEMPLATE to handle errors
   type: string
   inputBinding:
     prefix: --error
-- id: debug
+- id: in_debug
   doc: Set TT DEBUG option to STRING
   type: string
   inputBinding:
     prefix: --debug
-- id: start_tag
+- id: in_start_tag
   doc: STRING defines start of directive tag
   type: string
   inputBinding:
     prefix: --start_tag
-- id: end_tag
+- id: in_end_tag
   doc: STRING defined end of directive tag
   type: string
   inputBinding:
     prefix: --end_tag
-- id: tag_style
-  doc: 'Use pre-defined tag STYLE    '
+- id: in_tag_style
+  doc: Use pre-defined tag STYLE
   type: string
   inputBinding:
     prefix: --tag_style
-- id: plugin_base
-  doc: 'Base PACKAGE for plugins            '
+- id: in_plugin_base
+  doc: Base PACKAGE for plugins
   type: string
   inputBinding:
     prefix: --plugin_base
-- id: compile_ext
+- id: in_compile_ext
   doc: File extension for compiled template files
-  type: string
+  type: File
   inputBinding:
     prefix: --compile_ext
-- id: compile_dir
+- id: in_compile_dir
   doc: Directory for compiled template files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --compile_dir
-- id: perl_five_lib
+- id: in_perl_five_lib
   doc: Specify additional Perl library directories
-  type: string
+  type: long
   inputBinding:
     prefix: --perl5lib
-- id: template_module
+- id: in_template_module
   doc: Specify alternate Template module
   type: string
   inputBinding:
     prefix: --template_module
-- id: while_max
+- id: in_while_max
   doc: Change '$Template::Directive::WHILE_MAX' default
   type: long
   inputBinding:
     prefix: --while_max
-- id: files
+- id: in_files
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tpage

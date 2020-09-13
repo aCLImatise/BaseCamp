@@ -32,4 +32,7 @@ task SeqtkTrimfq {
     keep_last_bp: "keep last INT bp from right (non-zero to disable -q/-b/-B) [0]"
     in_dot_fq: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

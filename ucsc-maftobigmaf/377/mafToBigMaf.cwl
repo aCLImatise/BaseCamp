@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../mafToBigMaf.cwl
 inputs:
-- id: referenced_b
+- id: in_xxx
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -xxx
+- id: in_referenced_b
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_dot_maf
+- id: in_input_dot_maf
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_dot_bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mafToBigMaf

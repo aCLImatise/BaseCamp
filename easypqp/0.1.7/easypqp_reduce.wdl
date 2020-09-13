@@ -20,4 +20,8 @@ task EasypqpReduce {
     bins: "Number of bins to fill along gradient.  [default: 10]"
     peptides: "Number of peptides to sample.  [default: 5]"
   }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
+  }
 }

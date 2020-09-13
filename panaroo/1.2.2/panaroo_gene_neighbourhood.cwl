@@ -1,32 +1,41 @@
 class: CommandLineTool
 id: ../../../panaroo_gene_neighbourhood.cwl
 inputs:
-- id: gene
+- id: in_graph
+  doc: '[--expand_no EXPAND_NO]'
+  type: string
+  inputBinding:
+    prefix: --graph
+- id: in_gene
   doc: gene of interest
   type: string
   inputBinding:
     prefix: --gene
-- id: genome_id
+- id: in_genome_id
   doc: genome ID of interest (default=ALL)
   type: string
   inputBinding:
     prefix: --genome_id
-- id: graph
-  doc: genome graph gml ('final_graph.gml')
-  type: string
-  inputBinding:
-    prefix: --graph
-- id: expand_no
-  doc: lengths of the path that will be expanded on in a radius the target gene (default=5)
-  type: string
+- id: in_expand_no
+  doc: "lengths of the path that will be expanded on in a\nradius the target gene\
+    \ (default=5)"
+  type: File
   inputBinding:
     prefix: --expand_no
-- id: out
+- id: in_out
   doc: output file
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - panaroo-gene-neighbourhood

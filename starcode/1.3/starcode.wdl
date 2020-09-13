@@ -5,10 +5,11 @@ task Starcode {
     Boolean? dist
     Boolean? threads
     Boolean? quiet
+    Boolean? cluster_ratio
     Boolean? sphere
     Boolean? connected_comp
     Boolean? input_file_default
-    Boolean? output_file_default_stdout
+    File? output_file_default_stdout
     Boolean? input_one
     Boolean? input_two
     Boolean? output_one
@@ -19,25 +20,27 @@ task Starcode {
   }
   command <<<
     starcode \
-      ~{true="--dist" false="" dist} \
-      ~{true="--threads" false="" threads} \
-      ~{true="--quiet" false="" quiet} \
-      ~{true="--sphere" false="" sphere} \
-      ~{true="--connected-comp" false="" connected_comp} \
-      ~{true="--input" false="" input_file_default} \
-      ~{true="--output" false="" output_file_default_stdout} \
-      ~{true="--input1" false="" input_one} \
-      ~{true="--input2" false="" input_two} \
-      ~{true="--output1" false="" output_one} \
-      ~{true="--output2" false="" output_two} \
-      ~{true="--non-redundant" false="" non_redundant} \
-      ~{true="--print-clusters" false="" print_clusters} \
-      ~{true="--seq-id" false="" seq_id}
+      ~{if (dist) then "--dist" else ""} \
+      ~{if (threads) then "--threads" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if (cluster_ratio) then "--cluster-ratio" else ""} \
+      ~{if (sphere) then "--sphere" else ""} \
+      ~{if (connected_comp) then "--connected-comp" else ""} \
+      ~{if (input_file_default) then "--input" else ""} \
+      ~{if (output_file_default_stdout) then "--output" else ""} \
+      ~{if (input_one) then "--input1" else ""} \
+      ~{if (input_two) then "--input2" else ""} \
+      ~{if (output_one) then "--output1" else ""} \
+      ~{if (output_two) then "--output2" else ""} \
+      ~{if (non_redundant) then "--non-redundant" else ""} \
+      ~{if (print_clusters) then "--print-clusters" else ""} \
+      ~{if (seq_id) then "--seq-id" else ""}
   >>>
   parameter_meta {
     dist: ": maximum Levenshtein distance (default auto)"
     threads: ": number of concurrent threads (default 1)"
     quiet: ": quiet output (default verbose)"
+    cluster_ratio: ": min size ratio for merging clusters in\\nmessage passing (default 5.0)"
     sphere: ": use sphere clustering algorithm"
     connected_comp: ": cluster connected components"
     input_file_default: ": input file (default stdin)"
@@ -49,5 +52,9 @@ task Starcode {
     non_redundant: ": remove redundant sequences from input file(s)"
     print_clusters: ": outputs cluster compositions"
     seq_id: ": print sequence id numbers (1-based)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_default_stdout = "${in_output_file_default_stdout}"
   }
 }

@@ -2,8 +2,8 @@ version 1.0
 
 task Ligand {
   input {
-    String? config
-    String? output_pdb_path
+    File? config
+    File? output_pdb_path
   }
   command <<<
     ligand \
@@ -12,6 +12,10 @@ task Ligand {
   >>>
   parameter_meta {
     config: "This file can be a YAML file, JSON file or JSON string"
-    output_pdb_path: "Path to the output PDB ligand file."
+    output_pdb_path: "Path to the output PDB ligand file.\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_pdb_path = "${in_output_pdb_path}"
   }
 }

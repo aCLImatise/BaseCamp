@@ -2,7 +2,7 @@ version 1.0
 
 task AffineAlign {
   input {
-    String arg_one
+    Int arg_one
   }
   command <<<
     AffineAlign \
@@ -10,5 +10,8 @@ task AffineAlign {
   >>>
   parameter_meta {
     arg_one: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

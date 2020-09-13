@@ -7,10 +7,10 @@ task Cassiopee {
     Boolean? _sequence_index
     Boolean? _pattern_search
     Boolean? file_containing_pattern
-    Boolean? _output_file
+    File? _output_file
     Boolean? apply_tree_reduction
     Boolean? search_mode_dna
-    Boolean? allow_ambiguity_search
+    Boolean? allow_alphabet_search
     Boolean? max_consecutive_n
     Boolean? max_substitution_allowed
     Boolean? max_indel_allowed
@@ -23,24 +23,24 @@ task Cassiopee {
   }
   command <<<
     cassiopee \
-      ~{true="-l" false="" maximum_index_depth} \
-      ~{true="-u" false="" save_index_later} \
-      ~{true="-s" false="" _sequence_index} \
-      ~{true="-p" false="" _pattern_search} \
-      ~{true="-f" false="" file_containing_pattern} \
-      ~{true="-o" false="" _output_file} \
-      ~{true="-r" false="" apply_tree_reduction} \
-      ~{true="-m" false="" search_mode_dna} \
-      ~{true="-a" false="" allow_ambiguity_search} \
-      ~{true="-n" false="" max_consecutive_n} \
-      ~{true="-e" false="" max_substitution_allowed} \
-      ~{true="-i" false="" max_indel_allowed} \
-      ~{true="-g" false="" generates_dot_file} \
-      ~{true="-d" false="" max_depth_graph} \
-      ~{true="-t" false="" output_format_tsv} \
-      ~{true="-x" false="" minimum_position_sequence} \
-      ~{true="-y" false="" maximum_position_sequence} \
-      ~{true="-v" false="" _show_version}
+      ~{if (maximum_index_depth) then "-l" else ""} \
+      ~{if (save_index_later) then "-u" else ""} \
+      ~{if (_sequence_index) then "-s" else ""} \
+      ~{if (_pattern_search) then "-p" else ""} \
+      ~{if (file_containing_pattern) then "-f" else ""} \
+      ~{if (_output_file) then "-o" else ""} \
+      ~{if (apply_tree_reduction) then "-r" else ""} \
+      ~{if (search_mode_dna) then "-m" else ""} \
+      ~{if (allow_alphabet_search) then "-a" else ""} \
+      ~{if (max_consecutive_n) then "-n" else ""} \
+      ~{if (max_substitution_allowed) then "-e" else ""} \
+      ~{if (max_indel_allowed) then "-i" else ""} \
+      ~{if (generates_dot_file) then "-g" else ""} \
+      ~{if (max_depth_graph) then "-d" else ""} \
+      ~{if (output_format_tsv) then "-t" else ""} \
+      ~{if (minimum_position_sequence) then "-x" else ""} \
+      ~{if (maximum_position_sequence) then "-y" else ""} \
+      ~{if (_show_version) then "-v" else ""}
   >>>
   parameter_meta {
     maximum_index_depth: ": maximum index depth / max pattern size"
@@ -51,7 +51,7 @@ task Cassiopee {
     _output_file: ": output file"
     apply_tree_reduction: ": apply tree reduction"
     search_mode_dna: ": search mode: 0=DNA, 1=RNA, 2=Protein"
-    allow_ambiguity_search: ": allow alphabet ambiguity search"
+    allow_alphabet_search: ": allow alphabet ambiguity search"
     max_consecutive_n: ": max consecutive N allowed matches in search"
     max_substitution_allowed: ": max substitution allowed matches in search"
     max_indel_allowed: ": max indel allowed matches in search"
@@ -61,5 +61,9 @@ task Cassiopee {
     minimum_position_sequence: ": minimum position in sequence"
     maximum_position_sequence: ": maximum position in sequence"
     _show_version: ": show version"
+  }
+  output {
+    File out_stdout = stdout()
+    File out__output_file = "${in__output_file}"
   }
 }

@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../bustools.cwl
 inputs:
-- id: cmd
+- id: in_cmd
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: arguments
+- id: in_arguments
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bustools

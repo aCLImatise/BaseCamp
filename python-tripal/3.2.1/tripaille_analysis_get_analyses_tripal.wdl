@@ -11,4 +11,7 @@ task TripailleAnalysisGetAnalysesTripal {
   parameter_meta {
     analysis_id: "An analysis entity/node ID"
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

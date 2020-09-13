@@ -13,7 +13,7 @@ task CramtoolsCram {
     Boolean? lossless_quality_score
     Boolean? lossy_quality_score_spec
     Boolean? max_records
-    Boolean? output_cram_file
+    File? output_cram_file
     Boolean? preserve_read_names
     Boolean? reference_fast_a_file
     Boolean? log_level
@@ -22,21 +22,21 @@ task CramtoolsCram {
   command <<<
     cramtools cram \
       ~{main_class} \
-      ~{true="--capture-all-tags" false="" capture_all_tags} \
-      ~{true="--capture-tags" false="" capture_tags} \
-      ~{true="--encrypt" false="" encrypt} \
-      ~{true="--ignore-md5-mismatch" false="" ignore_md_five_mismatch} \
-      ~{true="--ignore-tags" false="" ignore_tags} \
-      ~{true="--inject-sq-uri" false="" inject_sq_uri} \
-      ~{true="--input-bam-file" false="" input_bam_file} \
-      ~{true="--input-is-sam" false="" input_is_sam} \
-      ~{true="--lossless-quality-score" false="" lossless_quality_score} \
-      ~{true="--lossy-quality-score-spec" false="" lossy_quality_score_spec} \
-      ~{true="--max-records" false="" max_records} \
-      ~{true="--output-cram-file" false="" output_cram_file} \
-      ~{true="--preserve-read-names" false="" preserve_read_names} \
-      ~{true="--reference-fasta-file" false="" reference_fast_a_file} \
-      ~{true="--log-level" false="" log_level}
+      ~{if (capture_all_tags) then "--capture-all-tags" else ""} \
+      ~{if (capture_tags) then "--capture-tags" else ""} \
+      ~{if (encrypt) then "--encrypt" else ""} \
+      ~{if (ignore_md_five_mismatch) then "--ignore-md5-mismatch" else ""} \
+      ~{if (ignore_tags) then "--ignore-tags" else ""} \
+      ~{if (inject_sq_uri) then "--inject-sq-uri" else ""} \
+      ~{if (input_bam_file) then "--input-bam-file" else ""} \
+      ~{if (input_is_sam) then "--input-is-sam" else ""} \
+      ~{if (lossless_quality_score) then "--lossless-quality-score" else ""} \
+      ~{if (lossy_quality_score_spec) then "--lossy-quality-score-spec" else ""} \
+      ~{if (max_records) then "--max-records" else ""} \
+      ~{if (output_cram_file) then "--output-cram-file" else ""} \
+      ~{if (preserve_read_names) then "--preserve-read-names" else ""} \
+      ~{if (reference_fast_a_file) then "--reference-fasta-file" else ""} \
+      ~{if (log_level) then "--log-level" else ""}
   >>>
   parameter_meta {
     capture_all_tags: "Capture all tags. (default: false)"
@@ -52,8 +52,12 @@ task CramtoolsCram {
     max_records: "Stop after compressing this many records.  (default: 9223372036854775807)"
     output_cram_file: "The path for the output CRAM file. Omit if standard output (pipe)."
     preserve_read_names: "Preserve all read names. (default: false)"
-    reference_fast_a_file: "The reference fasta file, uncompressed and indexed (.fai file, use 'samtools faidx'). "
+    reference_fast_a_file: "The reference fasta file, uncompressed and indexed (.fai file, use 'samtools faidx')."
     log_level: "Change log level: DEBUG, INFO, WARNING, ERROR. (default: ERROR)"
     main_class: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_cram_file = "${in_output_cram_file}"
   }
 }

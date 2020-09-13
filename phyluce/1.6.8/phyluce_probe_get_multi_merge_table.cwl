@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../phyluce_probe_get_multi_merge_table.cwl
 inputs:
-- id: conf
-  doc: A config file mapping names to BED files.
+- id: in_base_tax_on
+  doc: ''
   type: string
   inputBinding:
+    prefix: --base-taxon
+- id: in_conf
+  doc: A config file mapping names to BED files.
+  type: File
+  inputBinding:
     prefix: --conf
-- id: output
+- id: in_output
   doc: A SQLite database to create during integration.
   type: string
   inputBinding:
     prefix: --output
-- id: base_tax_on
-  doc: The base taxon to use.
-  type: string
-  inputBinding:
-    prefix: --base-taxon
-- id: filter
-  doc: A file-type filter to apply to the BED directory of files
-  type: string
+- id: in_filter
+  doc: "A file-type filter to apply to the BED directory of\nfiles\n"
+  type: File
   inputBinding:
     prefix: --filter
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - phyluce_probe_get_multi_merge_table

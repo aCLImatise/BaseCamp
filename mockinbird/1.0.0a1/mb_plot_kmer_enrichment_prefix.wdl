@@ -1,20 +1,23 @@
 version 1.0
 
-task MbPlotKmerEnrichmentPrefix {
+task MbplotkmerenrichmentPrefix {
   input {
-    String? km_er
     String? start
+    String? km_er
     String mb_plot_km_er_enrichment
   }
   command <<<
-    mb-plot-kmer-enrichment prefix \
+    mb_plot_kmer_enrichment prefix \
       ~{mb_plot_km_er_enrichment} \
-      ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
-      ~{if defined(start) then ("--start " +  '"' + start + '"') else ""}
+      ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
+      ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""}
   >>>
   parameter_meta {
-    km_er: ""
     start: ""
+    km_er: ""
     mb_plot_km_er_enrichment: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

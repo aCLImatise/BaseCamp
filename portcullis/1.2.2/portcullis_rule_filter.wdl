@@ -38,4 +38,7 @@ task PortcullisRuleFilter {
     json: ""
     configuration_dot: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

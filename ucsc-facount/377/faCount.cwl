@@ -1,27 +1,25 @@
 class: CommandLineTool
 id: ../../../faCount.cwl
 inputs:
-- id: summary
+- id: in_summary
   doc: show only summary statistics
   type: boolean
   inputBinding:
     prefix: -summary
-- id: din_uc
+- id: in_din_uc
   doc: include statistics on dinucletoide frequencies
   type: boolean
   inputBinding:
     prefix: -dinuc
-- id: strands
+- id: in_strands
   doc: count bases on both strands
   type: boolean
   inputBinding:
     prefix: -strands
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - faCount

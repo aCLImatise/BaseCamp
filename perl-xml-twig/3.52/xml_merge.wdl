@@ -4,4 +4,7 @@ task XmlMerge {
   command <<<
     xml_merge
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

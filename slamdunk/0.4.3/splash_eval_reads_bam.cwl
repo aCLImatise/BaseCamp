@@ -1,32 +1,40 @@
 class: CommandLineTool
 id: ../../../splash_eval_reads_bam.cwl
 inputs:
-- id: o
+- id: in_r
   doc: ''
-  type: string
+  type: File
   inputBinding:
-    prefix: -o
-- id: b
+    prefix: -r
+- id: in_b
   doc: ''
   type: string
   inputBinding:
     prefix: -b
-- id: r
+- id: in_o
   doc: ''
-  type: string
+  type: File
   inputBinding:
-    prefix: -r
-- id: splash
+    prefix: -o
+- id: in_splash
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: eval_reads
+- id: in_eval_reads
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_o
+  doc: ''
+  type: File
+  outputBinding:
+    glob: $(inputs.in_o)
 cwlVersion: v1.1
 baseCommand:
 - splash

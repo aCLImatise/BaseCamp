@@ -1,14 +1,17 @@
 version 1.0
 
-task RsemSamValidator {
+task Rsemsamvalidator {
   input {
     String input_dots_am_slash_input_dot_bam
   }
   command <<<
-    rsem-sam-validator \
+    rsem_sam_validator \
       ~{input_dots_am_slash_input_dot_bam}
   >>>
   parameter_meta {
     input_dots_am_slash_input_dot_bam: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

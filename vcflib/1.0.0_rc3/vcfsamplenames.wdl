@@ -4,4 +4,7 @@ task Vcfsamplenames {
   command <<<
     vcfsamplenames
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

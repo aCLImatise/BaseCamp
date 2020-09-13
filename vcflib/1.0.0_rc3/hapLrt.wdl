@@ -4,4 +4,7 @@ task HapLrt {
   command <<<
     hapLrt
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

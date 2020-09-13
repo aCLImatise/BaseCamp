@@ -4,4 +4,7 @@ task Bamrank {
   command <<<
     bamrank
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,80 +1,88 @@
 class: CommandLineTool
 id: ../../../pathoscope_LIB.cwl
 inputs:
-- id: genome_file
-  doc: Specify reference genome(Download ftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)
+- id: in_genome_file
+  doc: "Specify reference genome(Download\nftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)"
   type: string
   inputBinding:
     prefix: -genomeFile
-- id: taxonid_s
-  doc: Specify taxon ids of your interest with comma separated (if you have multiple
-    taxon ids). If you do not specify this option, it will work on all entries in
-    the reference file. For taxonomy id lookup, refer to http://www.ncbi.nlm.nih.gov/taxonomy
-  type: string
+- id: in_taxonid_s
+  doc: "Specify taxon ids of your interest with comma\nseparated (if you have multiple\
+    \ taxon ids). If you do\nnot specify this option, it will work on all entries\n\
+    in the reference file. For taxonomy id lookup, refer\nto http://www.ncbi.nlm.nih.gov/taxonomy"
+  type: File
   inputBinding:
     prefix: -taxonIds
-- id: exclude_taxonid_s
-  doc: Specify taxon ids to exclude with comma separated (if you have multiple taxon
-    ids to exclude).
+- id: in_exclude_taxonid_s
+  doc: "Specify taxon ids to exclude with comma separated (if\nyou have multiple taxon\
+    \ ids to exclude)."
   type: string
   inputBinding:
     prefix: -excludeTaxonIds
-- id: nodes_c
-  doc: Do not keep an additional description in original fasta seq header.Depending
-    on NGS aligner, a long sequence header may slow down its mapping process.
+- id: in_nodes_c
+  doc: "Do not keep an additional description in original\nfasta seq header.Depending\
+    \ on NGS aligner, a long\nsequence header may slow down its mapping process."
   type: boolean
   inputBinding:
     prefix: --noDesc
-- id: sub_tax
-  doc: To include all sub taxonomies under the query taxonomy id. e.g., if you set
-    -t 4751 --subtax, it will cover all sub taxonomies under taxon id 4751 (fungi).
+- id: in_sub_tax
+  doc: "To include all sub taxonomies under the query taxonomy\nid. e.g., if you set\
+    \ -t 4751 --subtax, it will cover\nall sub taxonomies under taxon id 4751 (fungi)."
   type: boolean
   inputBinding:
     prefix: --subTax
-- id: online
-  doc: To enable online searching in case you cannot find a correct taxonomy id for
-    a given gi. When there are many entries in nt whose gi is invalid, this option
-    may slow down the overall process.
+- id: in_online
+  doc: "To enable online searching in case you cannot find a\ncorrect taxonomy id\
+    \ for a given gi. When there are\nmany entries in nt whose gi is invalid, this\
+    \ option\nmay slow down the overall process."
   type: boolean
   inputBinding:
     prefix: --online
-- id: dbhost
-  doc: specify hostname running mysql if you want to use mysql instead of hash method
-    in mapping gi to taxonomy id
+- id: in_dbhost
+  doc: "specify hostname running mysql if you want to use\nmysql instead of hash method\
+    \ in mapping gi to taxonomy\nid"
   type: string
   inputBinding:
     prefix: -dbhost
-- id: db_port
-  doc: provide mysql server port if different from default (3306)
-  type: string
+- id: in_db_port
+  doc: "provide mysql server port if different from default\n(3306)"
+  type: long
   inputBinding:
     prefix: -dbport
-- id: dbuser
+- id: in_dbuser
   doc: user name to access mysql
   type: string
   inputBinding:
     prefix: -dbuser
-- id: db_passwd
+- id: in_db_passwd
   doc: provide password associate with user
   type: string
   inputBinding:
     prefix: -dbpasswd
-- id: db
+- id: in_db
   doc: 'mysql pathoscope database name (default: pathodb)'
   type: string
   inputBinding:
     prefix: -db
-- id: outdir
+- id: in_outdir
   doc: Output Directory (Default=. (current directory))
-  type: string
+  type: Directory
   inputBinding:
     prefix: -outDir
-- id: out_prefix
-  doc: specify an output prefix to name your target database
+- id: in_out_prefix
+  doc: "specify an output prefix to name your target database\n"
   type: string
   inputBinding:
     prefix: -outPrefix
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: Output Directory (Default=. (current directory))
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - pathoscope

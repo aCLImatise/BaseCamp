@@ -1,17 +1,20 @@
 version 1.0
 
-task GffutilsCliRmdups {
+task GffutilscliRmdups {
   input {
     Boolean? in_place
     File filename
   }
   command <<<
-    gffutils-cli rmdups \
+    gffutils_cli rmdups \
       ~{filename} \
-      ~{true="--in-place" false="" in_place}
+      ~{if (in_place) then "--in-place" else ""}
   >>>
   parameter_meta {
-    in_place: "Remove duplicates in place (overwrite current file.) (default: False)"
+    in_place: "Remove duplicates in place (overwrite current file.) (default:\\nFalse)\\n"
     filename: "GFF or GTF file to use."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

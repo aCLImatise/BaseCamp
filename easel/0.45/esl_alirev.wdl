@@ -1,20 +1,20 @@
 version 1.0
 
-task EslAlirev {
+task Eslalirev {
   input {
-    String? in_format
+    File? in_format
     String? out_format
     Boolean? dna
     Boolean? rna
     Boolean? options
   }
   command <<<
-    esl-alirev \
+    esl_alirev \
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
-      ~{true="--dna" false="" dna} \
-      ~{true="--rna" false="" rna} \
-      ~{true="-options" false="" options}
+      ~{if (dna) then "--dna" else ""} \
+      ~{if (rna) then "--rna" else ""} \
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     in_format: ": specify the input MSA file is in format <s>"
@@ -22,5 +22,8 @@ task EslAlirev {
     dna: ": use DNA alphabet"
     rna: ": use RNA alphabet"
     options: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

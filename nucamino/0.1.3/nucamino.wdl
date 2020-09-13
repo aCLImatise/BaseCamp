@@ -4,4 +4,7 @@ task Nucamino {
   command <<<
     nucamino
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

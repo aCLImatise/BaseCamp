@@ -1,28 +1,36 @@
 class: CommandLineTool
 id: ../../../confindr_create_db.cwl
 inputs:
-- id: output_folder
-  doc: Folder to first store temporary files, and eventually store the created database.
-  type: string
+- id: in_output_folder
+  doc: "Folder to first store temporary files, and eventually\nstore the created database."
+  type: Directory
   inputBinding:
     prefix: --output_folder
-- id: input_folder
-  doc: Folder with your input files to try to find core genes. Each gene should be
-    in a FASTA file. Expected extension is .fasta
-  type: string
+- id: in_input_folder
+  doc: "Folder with your input files to try to find core\ngenes. Each gene should\
+    \ be in a FASTA file. Expected\nextension is .fasta"
+  type: Directory
   inputBinding:
     prefix: --input_folder
-- id: genus
+- id: in_genus
   doc: Name of genus you're creating a database for.
   type: string
   inputBinding:
     prefix: --genus
-- id: desired_number_genes
-  doc: Minimum number of genes you want to find.
-  type: string
+- id: in_desired_number_genes
+  doc: "Minimum number of genes you want to find.\n"
+  type: long
   inputBinding:
     prefix: --desired_number_genes
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_folder
+  doc: "Folder to first store temporary files, and eventually\nstore the created database."
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_folder)
 cwlVersion: v1.1
 baseCommand:
 - confindr_create_db

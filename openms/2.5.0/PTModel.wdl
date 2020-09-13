@@ -18,7 +18,7 @@ task PTModel {
     Boolean? redundant
     Boolean? additive_cv
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -37,12 +37,12 @@ task PTModel {
       ~{if defined(sigma) then ("-sigma " +  '"' + sigma + '"') else ""} \
       ~{if defined(max_positive_count) then ("-max_positive_count " +  '"' + max_positive_count + '"') else ""} \
       ~{if defined(max_negative_count) then ("-max_negative_count " +  '"' + max_negative_count + '"') else ""} \
-      ~{true="-redundant" false="" redundant} \
-      ~{true="-additive_cv" false="" additive_cv} \
+      ~{if (redundant) then "-redundant" else ""} \
+      ~{if (additive_cv) then "-additive_cv" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in_positive: "*            Input file with positive examples (valid formats: 'idXML')"
@@ -64,5 +64,9 @@ task PTModel {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

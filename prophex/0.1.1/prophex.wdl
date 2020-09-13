@@ -4,4 +4,7 @@ task Prophex {
   command <<<
     prophex
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

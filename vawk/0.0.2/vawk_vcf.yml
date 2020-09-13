@@ -1,4 +1,7 @@
 &id001 !Command
+command:
+- vawk
+- vcf
 positional:
 - !Positional
   description: ''
@@ -19,9 +22,14 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -v
-  args: !SimpleFlagArg
-    name: VAR
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --header
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ''
@@ -33,19 +41,13 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - --header
-  args: !EmptyFlagArg {}
+  - -v
+  args: !SimpleFlagArg
+    name: VAR
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --debug
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- vawk
-- vcf
 parent: !Command
+  command:
+  - vawk
   positional: []
   named:
   - !Flag
@@ -76,11 +78,10 @@ parent: !Command
     - --debug
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - vawk
   parent:
   subcommands:
   - *id001
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -113,6 +114,7 @@ parent: !Command
   generated_using:
   - --help
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

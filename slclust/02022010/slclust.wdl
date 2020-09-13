@@ -4,7 +4,7 @@ task Slclust {
   input {
     String? _verbosity_at
     String? opts
-    File file_of_pairs
+    String file_of_pairs
     String clusters
   }
   command <<<
@@ -15,9 +15,12 @@ task Slclust {
       ~{if defined(_verbosity_at) then ("-j " +  '"' + _verbosity_at + '"') else ""}
   >>>
   parameter_meta {
-    _verbosity_at: "[v] verbosity at 'info', 'debug'  "
+    _verbosity_at: "[v] verbosity at 'info', 'debug'"
     opts: ""
     file_of_pairs: ""
     clusters: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

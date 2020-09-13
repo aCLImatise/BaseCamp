@@ -8,7 +8,7 @@ task SvmTheoreticalSpectrumGeneratorTrainer {
     Int? precursor_charge
     Boolean? write_training_files
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -18,11 +18,11 @@ task SvmTheoreticalSpectrumGeneratorTrainer {
       ~{if defined(in_identifications) then ("-in_identifications " +  '"' + in_identifications + '"') else ""} \
       ~{if defined(model_output_file) then ("-model_output_file " +  '"' + model_output_file + '"') else ""} \
       ~{if defined(precursor_charge) then ("-precursor_charge " +  '"' + precursor_charge + '"') else ""} \
-      ~{true="-write_training_files" false="" write_training_files} \
+      ~{if (write_training_files) then "-write_training_files" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in_spectra: "*          Input Training Spectra in mzML (valid formats: 'mzML')"
@@ -34,5 +34,9 @@ task SvmTheoreticalSpectrumGeneratorTrainer {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_model_output_file = "${in_model_output_file}"
   }
 }

@@ -15,9 +15,9 @@ task TadbitClean {
       ~{if defined(change_workdir) then ("--change_workdir " +  '"' + change_workdir + '"') else ""} \
       ~{if defined(workdir) then ("--workdir " +  '"' + workdir + '"') else ""} \
       ~{if defined(job_ids) then ("--jobids " +  '"' + job_ids + '"') else ""} \
-      ~{true="--delete" false="" delete} \
-      ~{true="--compress" false="" compress} \
-      ~{true="--noX" false="" nox} \
+      ~{if (delete) then "--delete" else ""} \
+      ~{if (compress) then "--compress" else ""} \
+      ~{if (nox) then "--noX" else ""} \
       ~{if defined(tmp_db) then ("--tmpdb " +  '"' + tmp_db + '"') else ""}
   >>>
   parameter_meta {
@@ -28,5 +28,8 @@ task TadbitClean {
     compress: "compress files and update paths accordingly"
     nox: "no display server (X screen)"
     tmp_db: "if provided uses this directory to manipulate the database"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

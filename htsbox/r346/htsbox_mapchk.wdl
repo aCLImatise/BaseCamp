@@ -21,8 +21,8 @@ task HtsboxMapchk {
       ~{if defined(skip_sites_excessive) then ("-f " +  '"' + skip_sites_excessive + '"') else ""} \
       ~{if defined(bed_file_include) then ("-b " +  '"' + bed_file_include + '"') else ""} \
       ~{if defined(min_nonref_count) then ("-d " +  '"' + min_nonref_count + '"') else ""} \
-      ~{true="-1" false="" one} \
-      ~{true="-2" false="" two}
+      ~{if (one) then "-1" else ""} \
+      ~{if (two) then "-2" else ""}
   >>>
   parameter_meta {
     region: "region [null]"
@@ -34,5 +34,8 @@ task HtsboxMapchk {
     two: "exclude read2"
     aln_dot_bam: ""
     ref_dot_fa: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

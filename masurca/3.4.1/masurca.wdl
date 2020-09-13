@@ -10,11 +10,11 @@ task Masurca {
   }
   command <<<
     masurca \
-      ~{true="--output" false="" assembly_script_assemblesh} \
-      ~{true="--generate" false="" generate} \
-      ~{true="--path" false="" path} \
-      ~{true="--ld-library-path" false="" ld_library_path} \
-      ~{true="--skip-checking" false="" skip_checking}
+      ~{if (assembly_script_assemblesh) then "--output" else ""} \
+      ~{if (generate) then "--generate" else ""} \
+      ~{if (path) then "--path" else ""} \
+      ~{if (ld_library_path) then "--ld-library-path" else ""} \
+      ~{if (skip_checking) then "--skip-checking" else ""}
   >>>
   parameter_meta {
     assembly_script_assemblesh: "Assembly script (assemble.sh)"
@@ -22,5 +22,8 @@ task Masurca {
     path: "Prepend to PATH in assembly script"
     ld_library_path: "Prepend to LD_LIBRARY_PATH in assembly script"
     skip_checking: "Skip checking availability of other executables"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

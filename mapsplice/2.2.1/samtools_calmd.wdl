@@ -19,12 +19,12 @@ task SamtoolsCalmd {
       ~{fill_md} \
       ~{aln_dot_bam} \
       ~{ref_dot_fast_a} \
-      ~{true="-e" false="" change_identical_bases} \
-      ~{true="-u" false="" uncompressed_bam_output} \
-      ~{true="-b" false="" compressed_bam_output} \
-      ~{true="-S" false="" input_sam_header} \
-      ~{true="-r" false="" readindependent_local_realignment} \
-      ~{true="-eubrS" false="" eu_brs}
+      ~{if (change_identical_bases) then "-e" else ""} \
+      ~{if (uncompressed_bam_output) then "-u" else ""} \
+      ~{if (compressed_bam_output) then "-b" else ""} \
+      ~{if (input_sam_header) then "-S" else ""} \
+      ~{if (readindependent_local_realignment) then "-r" else ""} \
+      ~{if (eu_brs) then "-eubrS" else ""}
   >>>
   parameter_meta {
     change_identical_bases: "change identical bases to '='"
@@ -37,5 +37,8 @@ task SamtoolsCalmd {
     fill_md: ""
     aln_dot_bam: ""
     ref_dot_fast_a: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

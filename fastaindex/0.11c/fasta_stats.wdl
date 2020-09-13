@@ -8,7 +8,7 @@ task FastaStats {
   }
   command <<<
     fasta_stats \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
@@ -16,5 +16,8 @@ task FastaStats {
     verbose: "verbose"
     fast_a: "FASTA file(s)"
     out: "output stream    [stdout]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

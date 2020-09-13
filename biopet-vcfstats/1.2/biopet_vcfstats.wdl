@@ -1,6 +1,6 @@
 version 1.0
 
-task BiopetVcfstats {
+task Biopetvcfstats {
   input {
     String? log_level
     File? input_file
@@ -11,9 +11,9 @@ task BiopetVcfstats {
     String? genotype_tag
     String? sample_to_sample_min_depth
     String? binsize
-    String? max_contigs_in_single_job
+    Int? max_contigs_in_single_job
     Boolean? write_bin_stats
-    String? local_threads
+    Int? local_threads
     Boolean? not_write_contig_stats
     Boolean? skip_general
     Boolean? skip_genotype
@@ -27,7 +27,7 @@ task BiopetVcfstats {
     String vcf_stats
   }
   command <<<
-    biopet-vcfstats \
+    biopet_vcfstats \
       ~{vcf_stats} \
       ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""} \
       ~{if defined(input_file) then ("--inputFile " +  '"' + input_file + '"') else ""} \
@@ -39,18 +39,18 @@ task BiopetVcfstats {
       ~{if defined(sample_to_sample_min_depth) then ("--sampleToSampleMinDepth " +  '"' + sample_to_sample_min_depth + '"') else ""} \
       ~{if defined(binsize) then ("--binSize " +  '"' + binsize + '"') else ""} \
       ~{if defined(max_contigs_in_single_job) then ("--maxContigsInSingleJob " +  '"' + max_contigs_in_single_job + '"') else ""} \
-      ~{true="--writeBinStats" false="" write_bin_stats} \
+      ~{if (write_bin_stats) then "--writeBinStats" else ""} \
       ~{if defined(local_threads) then ("--localThreads " +  '"' + local_threads + '"') else ""} \
-      ~{true="--notWriteContigStats" false="" not_write_contig_stats} \
-      ~{true="--skipGeneral" false="" skip_general} \
-      ~{true="--skipGenotype" false="" skip_genotype} \
-      ~{true="--skipSampleDistributions" false="" skip_sample_distributions} \
-      ~{true="--skipSampleCompare" false="" skip_sample_compare} \
-      ~{true="--repartition" false="" repartition} \
-      ~{true="--executeModulesAsJobs" false="" execute_modules_as_jobs} \
+      ~{if (not_write_contig_stats) then "--notWriteContigStats" else ""} \
+      ~{if (skip_general) then "--skipGeneral" else ""} \
+      ~{if (skip_genotype) then "--skipGenotype" else ""} \
+      ~{if (skip_sample_distributions) then "--skipSampleDistributions" else ""} \
+      ~{if (skip_sample_compare) then "--skipSampleCompare" else ""} \
+      ~{if (repartition) then "--repartition" else ""} \
+      ~{if (execute_modules_as_jobs) then "--executeModulesAsJobs" else ""} \
       ~{if defined(spark_master) then ("--sparkMaster " +  '"' + spark_master + '"') else ""} \
       ~{if defined(spark_executor_memory) then ("--sparkExecutorMemory " +  '"' + spark_executor_memory + '"') else ""} \
-      ~{true="--sparkConfigValue" false="" spark_config_value}
+      ~{if (spark_config_value) then "--sparkConfigValue" else ""}
   >>>
   parameter_meta {
     log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
@@ -74,7 +74,11 @@ task BiopetVcfstats {
     execute_modules_as_jobs: "Execute modules as jobs (only in spark mode)"
     spark_master: "Spark master to use"
     spark_executor_memory: "Spark executor memory to use"
-    spark_config_value: ":<key>=<value> Add values to the spark config"
+    spark_config_value: ":<key>=<value>\\nAdd values to the spark config\\n"
     vcf_stats: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_dir = "${in_output_dir}"
   }
 }

@@ -4,4 +4,7 @@ task THESIAS {
   command <<<
     THESIAS
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

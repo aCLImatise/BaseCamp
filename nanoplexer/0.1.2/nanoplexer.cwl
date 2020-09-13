@@ -1,87 +1,100 @@
 class: CommandLineTool
 id: ../../../nanoplexer.cwl
 inputs:
-- id: file__barcode_file
+- id: in_file_barcode_file
   doc: FILE    barcode file
   type: boolean
   inputBinding:
     prefix: -b
-- id: file_dual_barcode_file
+- id: in_file_dual_barcode
   doc: FILE    dual barcode pair file
   type: boolean
   inputBinding:
     prefix: -d
-- id: char_output_path
+- id: in_char_output_path
   doc: CHAR    output path
-  type: boolean
+  type: File
   inputBinding:
     prefix: -p
-- id: file_output_file
+- id: in_file_output_log
   doc: FILE    output log file
-  type: boolean
+  type: File
   inputBinding:
     prefix: -l
-- id: char_output_mode
+- id: in_char_mode_fastq
   doc: CHAR    output mode, fastq or fasta [default fastq]
   type: boolean
   inputBinding:
     prefix: -M
-- id: num_batch_size
+- id: in_num_batch_size
   doc: NUM     batch size [default 400M]
   type: boolean
   inputBinding:
     prefix: -B
-- id: int_number_threads
+- id: in_int_number_threads
   doc: INT     number of threads [default 3]
   type: boolean
   inputBinding:
     prefix: -t
-- id: int_target_length
+- id: in_int_target_length
   doc: INT     target length for detecting barcode [default 150]
   type: boolean
   inputBinding:
     prefix: -L
-- id: int_match_score
+- id: in_int_match_score
   doc: INT     match score [default 2]
   type: boolean
   inputBinding:
     prefix: -m
-- id: int_mismatch_score
+- id: in_int_mismatch_score
   doc: INT     mismatch score [default 2]
   type: boolean
   inputBinding:
     prefix: -x
-- id: int_gap_score
+- id: in_int_gap_open
   doc: INT     gap open score [default 3]
   type: boolean
   inputBinding:
     prefix: -o
-- id: int_extension_score
+- id: in_int_gap_extension
   doc: INT     gap extension score [default 1]
   type: boolean
   inputBinding:
     prefix: -e
-- id: int_minimal_alignment
+- id: in_int_minimal_alignment
   doc: INT     minimal alignment score for demultiplexing
   type: boolean
   inputBinding:
     prefix: -s
-- id: ignore_parameter_estimation
+- id: in_ignore_parameter_estimation
   doc: ignore parameter estimation
   type: boolean
   inputBinding:
     prefix: -i
-- id: show_version_number
+- id: in_show_version_number
   doc: show version number
   type: boolean
   inputBinding:
     prefix: -v
-- id: input_dot_fast_q
+- id: in_input_dot_fast_q
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_char_output_path
+  doc: CHAR    output path
+  type: File
+  outputBinding:
+    glob: $(inputs.in_char_output_path)
+- id: out_file_output_log
+  doc: FILE    output log file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_file_output_log)
 cwlVersion: v1.1
 baseCommand:
 - nanoplexer

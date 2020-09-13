@@ -4,4 +4,7 @@ task MafOrder {
   command <<<
     maf_order
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

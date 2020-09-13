@@ -4,4 +4,7 @@ task Scounts {
   command <<<
     scounts
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

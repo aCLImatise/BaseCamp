@@ -4,4 +4,7 @@ task Pars {
   command <<<
     pars
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

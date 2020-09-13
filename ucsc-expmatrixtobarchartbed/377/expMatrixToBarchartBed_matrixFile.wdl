@@ -14,4 +14,7 @@ task ExpMatrixToBarchartBedMatrixFile {
     auto_sql: ""
     exp_matrix_to_barchart_bed: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

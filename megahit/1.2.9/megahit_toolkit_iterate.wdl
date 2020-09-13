@@ -2,13 +2,13 @@ version 1.0
 
 task MegahitToolkitIterate {
   input {
-    String? contig_file
-    String? bubble_file
+    File? contig_file
+    File? bubble_file
     String? read_file
-    String? num_cpu_threads
-    String? km_er_k
-    String? step
-    String? output_prefix
+    Int? num_cpu_threads
+    Int? km_er_k
+    Int? step
+    Float? output_prefix
     String iterate
     String? opt
   }
@@ -27,12 +27,17 @@ task MegahitToolkitIterate {
   parameter_meta {
     contig_file: "(*) contigs file, fasta/fastq format, output by assembler"
     bubble_file: "(*) bubble file, fasta/fastq format, output by assembler"
-    read_file: "(*) reads to be aligned. \"-\" for stdin. Can be gzip'ed."
+    read_file: "(*) reads to be aligned. \\\"-\\\" for stdin. Can be gzip'ed."
     num_cpu_threads: "(=0)         number of cpu threads, at least 2. 0 for auto detect."
     km_er_k: "(=0)                  (*) current kmer size."
     step: "(=0)                    (*) step for iteration (<= 28). i.e. this iteration is from kmer_k to (kmer_k + step)"
     output_prefix: "(*) output_prefix.edges.0 will be created."
     iterate: ""
     opt: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_contig_file = "${in_contig_file}"
+    File out_bubble_file = "${in_bubble_file}"
   }
 }

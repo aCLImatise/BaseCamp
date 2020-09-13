@@ -2,8 +2,8 @@ version 1.0
 
 task KatPlotSpectraCn {
   input {
-    String? path_output_file
-    String? output_type
+    File? path_output_file
+    File? output_type
     String? title
     String? x_label
     String? y_label
@@ -17,11 +17,9 @@ task KatPlotSpectraCn {
     Boolean? no_cumulative
     String? dpi
     Boolean? verbose
-    String matrix_file
   }
   command <<<
     kat_plot_spectra_cn \
-      ~{matrix_file} \
       ~{if defined(path_output_file) then ("--output " +  '"' + path_output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output_type " +  '"' + output_type + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
@@ -34,13 +32,13 @@ task KatPlotSpectraCn {
       ~{if defined(min_assembly_frequency) then ("--min_assembly_frequency " +  '"' + min_assembly_frequency + '"') else ""} \
       ~{if defined(max_dup) then ("--max_dup " +  '"' + max_dup + '"') else ""} \
       ~{if defined(coverage_list) then ("--coverage_list " +  '"' + coverage_list + '"') else ""} \
-      ~{true="--no_cumulative" false="" no_cumulative} \
+      ~{if (no_cumulative) then "--no_cumulative" else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     path_output_file: "The path to the output file."
-    output_type: "The plot file type to create (default is based on given output name)."
+    output_type: "The plot file type to create (default is based on\\ngiven output name)."
     title: "Title for plot"
     x_label: "Label for x-axis"
     y_label: "Label for y-axis"
@@ -48,12 +46,16 @@ task KatPlotSpectraCn {
     y_max: "Maximum value for y-axis"
     width: "Width of canvas"
     height: "Height of canvas"
-    min_assembly_frequency: "Display K-mers that appear less than n times in the genome"
+    min_assembly_frequency: "Display K-mers that appear less than n times in the\\ngenome"
     max_dup: "Maximum duplication level to show in plots"
-    coverage_list: "Comma separated string listing coverage levels to show in plot (overrides -i and -u)"
+    coverage_list: "Comma separated string listing coverage levels to show\\nin plot (overrides -i and -u)"
     no_cumulative: "Do not combine remaining copy numbers in matrix"
     dpi: "Resolution in dots per inch of output graphic."
     verbose: "Print extra information"
-    matrix_file: "The input matrix file from KAT"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_file = "${in_path_output_file}"
+    File out_output_type = "${in_output_type}"
   }
 }

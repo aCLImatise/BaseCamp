@@ -4,4 +4,7 @@ task Singles {
   command <<<
     singles
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

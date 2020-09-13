@@ -2,25 +2,28 @@ version 1.0
 
 task Errno {
   input {
-    Boolean? lss
-    Boolean? list
-    Boolean? search
     Boolean? search_all_locales
+    Boolean? search
+    Boolean? list
+    Boolean? lss
     String? keyword
   }
   command <<<
     errno \
       ~{keyword} \
-      ~{true="-lsS" false="" lss} \
-      ~{true="--list" false="" list} \
-      ~{true="--search" false="" search} \
-      ~{true="--search-all-locales" false="" search_all_locales}
+      ~{if (search_all_locales) then "--search-all-locales" else ""} \
+      ~{if (search) then "--search" else ""} \
+      ~{if (list) then "--list" else ""} \
+      ~{if (lss) then "-lsS" else ""}
   >>>
   parameter_meta {
-    lss: ""
-    list: ""
-    search: ""
     search_all_locales: ""
+    search: ""
+    list: ""
+    lss: ""
     keyword: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

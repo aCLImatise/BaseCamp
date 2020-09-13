@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../reverse_bed_ref_fasta.cwl
 inputs:
-- id: reverse_bed
+- id: in_reverse_bed
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: bed_in
+- id: in_bed_in
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: ref_fast_a
+- id: in_ref_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: bed_out
+- id: in_bed_out
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - reverse_bed

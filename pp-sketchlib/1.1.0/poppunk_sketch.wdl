@@ -4,22 +4,22 @@ task PoppunkSketch {
   input {
     Boolean? sketch
     Boolean? query
-    String? r_file
-    String? ref_db
-    String? query_db
+    File? r_file
+    File? ref_db
+    File? query_db
     Int? min_k
     Int? max_k
-    String? k_step
-    String? sketch_size
+    Int? k_step
+    Int? sketch_size
     Int? min_count
-    String? cpus
+    Int? cpus
     String pp_sketch
   }
   command <<<
     poppunk_sketch \
       ~{pp_sketch} \
-      ~{true="--sketch" false="" sketch} \
-      ~{true="--query" false="" query} \
+      ~{if (sketch) then "--sketch" else ""} \
+      ~{if (query) then "--query" else ""} \
       ~{if defined(r_file) then ("--rfile " +  '"' + r_file + '"') else ""} \
       ~{if defined(ref_db) then ("--ref-db " +  '"' + ref_db + '"') else ""} \
       ~{if defined(query_db) then ("--query-db " +  '"' + query_db + '"') else ""} \
@@ -43,5 +43,8 @@ task PoppunkSketch {
     min_count: "Minimum k-mer count from reads [default = 20]"
     cpus: "Number of CPUs to use [default = 1]"
     pp_sketch: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

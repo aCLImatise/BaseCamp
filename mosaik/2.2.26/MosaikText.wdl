@@ -2,27 +2,27 @@ version 1.0
 
 task MosaikText {
   input {
-    String? fast_q
+    File? fast_q
     Boolean? screen
-    String? axt
-    String? bam
-    String? bed
-    String? el_and
+    File? axt
+    File? bam
+    File? bed
+    File? el_and
     String? ref
-    String? sam
+    File? sam
     Boolean? limit_output_unique
   }
   command <<<
     MosaikText \
       ~{if defined(fast_q) then ("-fastq " +  '"' + fast_q + '"') else ""} \
-      ~{true="-screen" false="" screen} \
+      ~{if (screen) then "-screen" else ""} \
       ~{if defined(axt) then ("-axt " +  '"' + axt + '"') else ""} \
       ~{if defined(bam) then ("-bam " +  '"' + bam + '"') else ""} \
       ~{if defined(bed) then ("-bed " +  '"' + bed + '"') else ""} \
       ~{if defined(el_and) then ("-eland " +  '"' + el_and + '"') else ""} \
       ~{if defined(ref) then ("-ref " +  '"' + ref + '"') else ""} \
       ~{if defined(sam) then ("-sam " +  '"' + sam + '"') else ""} \
-      ~{true="-u" false="" limit_output_unique}
+      ~{if (limit_output_unique) then "-u" else ""}
   >>>
   parameter_meta {
     fast_q: "stores the data in a FASTQ file"
@@ -34,5 +34,8 @@ task MosaikText {
     ref: "displays output for a specific reference"
     sam: "stores the data in a SAM file"
     limit_output_unique: "limit output to unique reads"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

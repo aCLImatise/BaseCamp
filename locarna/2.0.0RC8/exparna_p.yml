@@ -1,29 +1,201 @@
 !Command
+command:
+- exparna_p
 positional:
 - !Positional
-  description: ''
+  description: -V,--version
   position: 0
-  name: Input 1
+  name: Help
   optional: false
 - !Positional
-  description: ''
+  description: -q,--quiet
+  position: 0
+  name: Verbose
+  optional: false
+- !Positional
+  description: 'Scoring parameters:'
   position: 1
-  name: Input 2
+  name: Quiet
   optional: false
 named:
 - !Flag
-  description: Verbose
+  description: ''
   synonyms:
   - -v
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Quiet
+  description: Do not use stacking terms (otherwise needs stacking probs by RNAfold
+    -p2)
   synonyms:
-  - -q
-  - --quiet
+  - --no-stacking
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(1)\nMultiplier for sequential score"
+  synonyms:
+  - --alpha_1
+  args: !SimpleFlagArg
+    name: factor
+  optional: true
+- !Flag
+  description: "(5)\nMultiplier for structural score"
+  synonyms:
+  - --alpha_2
+  args: !SimpleFlagArg
+    name: factor
+  optional: true
+- !Flag
+  description: "(5)\nMultiplier for stacking score, 0 means no stacking contribution"
+  synonyms:
+  - --alpha_3
+  args: !SimpleFlagArg
+    name: factor
+  optional: true
+- !Flag
+  description: "(-10)\nScore for a structural mismatch (nucleotide mismatch in an\
+    \ arcmatch)"
+  synonyms:
+  - --struct-mismatch-score
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "(0.01)\nMinimal probability"
+  synonyms:
+  - -p
+  - --min-prob
+  args: !SimpleFlagArg
+    name: prob
+  optional: true
+- !Flag
+  description: "(0.0)\nMaximal ratio of #base pairs divided by sequence length (default:\
+    \ no\neffect)"
+  synonyms:
+  - --max-bps-length-ratio
+  args: !SimpleFlagArg
+    name: factor
+  optional: true
+- !Flag
+  description: "(0.0)\nMaximal ratio of #unpaired bases in loops divided by sequence\
+    \ length\n(default: no effect)"
+  synonyms:
+  - --max-uil-length-ratio
+  args: !SimpleFlagArg
+    name: factor
+  optional: true
+- !Flag
+  description: "(0.0)\nMaximal ratio of #base pairs in loops divided by loop length\
+    \ (default: no\neffect)"
+  synonyms:
+  - --max-bpil-length-ratio
+  args: !SimpleFlagArg
+    name: factor
+  optional: true
+- !Flag
+  description: "(30)\nMaximal difference for sizes of matched arcs"
+  synonyms:
+  - -D
+  - --max-diff-am
+  args: !SimpleFlagArg
+    name: diff
+  optional: true
+- !Flag
+  description: "(-1)\nMaximal difference for alignment traces"
+  synonyms:
+  - -d
+  - --max-diff
+  args: !SimpleFlagArg
+    name: diff
+  optional: true
+- !Flag
+  description: "(-1)\nMaximal difference for alignment traces, only at arc match positions"
+  synonyms:
+  - --max-diff-at-am
+  args: !SimpleFlagArg
+    name: diff
+  optional: true
+- !Flag
+  description: "(0.01)\nThreshold for prob_unpaired_in_loop"
+  synonyms:
+  - --prob_unpaired_in_loop_threshold
+  args: !SimpleFlagArg
+    name: prob
+  optional: true
+- !Flag
+  description: "(0.01)\nThreshold for prob_basepair_in_loop"
+  synonyms:
+  - --prob_basepair_in_loop_threshold
+  args: !SimpleFlagArg
+    name: prob
+  optional: true
+- !Flag
+  description: "(0.0005)\nMinimal probability for output (min-prob overrides if smaller)"
+  synonyms:
+  - -p
+  - --out-min-prob
+  args: !SimpleFlagArg
+    name: prob
+  optional: true
+- !Flag
+  description: Output best EPM chain as colored postscript
+  synonyms:
+  - --output-ps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "()\nPostscript output file for sequence A"
+  synonyms:
+  - -a
+  - --PS_fileA
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "()\nPostscript output file for sequence B"
+  synonyms:
+  - -b
+  - --PS_fileB
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "()\nFasta file with anchor constraints for locarna"
+  synonyms:
+  - -o
+  - --output-locarna
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "()\nPP files <fileroot>_A.pp and <fileroot>_B.pp, merging input PPs\
+    \ and\nanchor constraints from chaining"
+  synonyms:
+  - --output-anchor-pp
+  args: !SimpleFlagArg
+    name: fileroot
+  optional: true
+- !Flag
+  description: "()\nWrite file with chain as alignment in clustalw format"
+  synonyms:
+  - --output-clustal
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "()\nA list of all found epms"
+  synonyms:
+  - --output-epm-list
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "()\nA list of all EPMs that are present in the chain"
+  synonyms:
+  - --output-chained-epm-list
+  args: !SimpleFlagArg
+    name: file
   optional: true
 - !Flag
   description: Allow inexact structure matches
@@ -32,8 +204,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Apply an additional filter to enumerate only EPMs that are maximally
-    extended (only inexact)
+  description: "Apply an additional filter to enumerate only EPMs that are maximally\n\
+    extended (only inexact)"
   synonyms:
   - --add-filter
   args: !EmptyFlagArg {}
@@ -43,6 +215,46 @@ named:
   synonyms:
   - --no-chaining
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the suboptimal traceback
+  synonyms:
+  - --subopt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-1)\nThreshold for suboptimal traceback"
+  synonyms:
+  - --diff-to-opt-score
+  args: !SimpleFlagArg
+    name: threshold
+  optional: true
+- !Flag
+  description: "(90)\nMinimal score of a traced EPM"
+  synonyms:
+  - --min-score
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "(100)\nMaximal number of EPMs for the suboptimal traceback"
+  synonyms:
+  - --number-of-EPMs
+  args: !SimpleFlagArg
+    name: threshold
+  optional: true
+- !Flag
+  description: use --noLP option for folding
+  synonyms:
+  - --noLP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-1)\nLimit maximum base pair span (default=off)"
+  synonyms:
+  - --maxBPspan
+  args: !SimpleFlagArg
+    name: span
   optional: true
 - !Flag
   description: Relax anchor constraints (default=off)
@@ -56,25 +268,18 @@ named:
   - --stopwatch
   args: !EmptyFlagArg {}
   optional: true
-command:
-- exparna_p
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: Help
+  description: ''
   synonyms:
   - -h
   - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: Version info
-  synonyms:
-  - -V
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "exparna_p: fast exact structure local matching of RNAs.\n\nUSAGE: exparna_p\
   \ [options] <Input 1> <Input 2> \n\nOptions:\n  -h,--help\n    Help\n\n  -V,--version\n\
   \    Version info\n\n  -v,--verbose\n    Verbose\n\n  -q,--quiet\n    Quiet\n\n\n\

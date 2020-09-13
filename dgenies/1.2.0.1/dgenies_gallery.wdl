@@ -4,4 +4,7 @@ task DgeniesGallery {
   command <<<
     dgenies gallery
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

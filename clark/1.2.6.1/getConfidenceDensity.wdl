@@ -4,4 +4,7 @@ task GetConfidenceDensity {
   command <<<
     getConfidenceDensity
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

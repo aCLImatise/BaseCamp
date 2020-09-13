@@ -2,17 +2,15 @@ version 1.0
 
 task IxIxx {
   input {
-    String? prefix_size
-    String? binsize
+    Int? prefix_size
+    Int? binsize
     String in_dot_text
     String out_do_tix
-    String out_do_tixx
   }
   command <<<
     ixIxx \
       ~{in_dot_text} \
       ~{out_do_tix} \
-      ~{out_do_tixx} \
       ~{if defined(prefix_size) then ("-prefixSize " +  '"' + prefix_size + '"') else ""} \
       ~{if defined(binsize) then ("-binSize " +  '"' + binsize + '"') else ""}
   >>>
@@ -21,6 +19,8 @@ task IxIxx {
     binsize: "Size of bins in ixx.  Default is 64k."
     in_dot_text: ""
     out_do_tix: ""
-    out_do_tixx: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

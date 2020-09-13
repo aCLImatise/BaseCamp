@@ -2,22 +2,22 @@ version 1.0
 
 task FcPrCtgTrack {
   input {
-    String? n_core
+    Int? n_core
     String? base_dir
     Int? min_len
     Boolean? stream
     Boolean? debug
     Boolean? silent
-    String? best_n
+    Int? best_n
   }
   command <<<
     fc_pr_ctg_track \
       ~{if defined(n_core) then ("--n_core " +  '"' + n_core + '"') else ""} \
       ~{if defined(base_dir) then ("--base_dir " +  '"' + base_dir + '"') else ""} \
       ~{if defined(min_len) then ("--min_len " +  '"' + min_len + '"') else ""} \
-      ~{true="--stream" false="" stream} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--silent" false="" silent} \
+      ~{if (stream) then "--stream" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (silent) then "--silent" else ""} \
       ~{if defined(best_n) then ("--bestn " +  '"' + best_n + '"') else ""}
   >>>
   parameter_meta {
@@ -28,5 +28,8 @@ task FcPrCtgTrack {
     debug: "single-threaded, plus other aids to debugging (default: False)"
     silent: "suppress cmd reporting on stderr (default: False)"
     best_n: "keep best n hits (default: 40)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

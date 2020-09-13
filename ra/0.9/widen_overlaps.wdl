@@ -2,13 +2,16 @@ version 1.0
 
 task WidenOverlaps {
   input {
-    String? depot
+    Boolean? depot
   }
   command <<<
     widen_overlaps \
-      ~{if defined(depot) then ("--depot " +  '"' + depot + '"') else ""}
+      ~{if (depot) then "--depot" else ""}
   >>>
   parameter_meta {
-    depot: ""
+    depot: "depot path (string)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

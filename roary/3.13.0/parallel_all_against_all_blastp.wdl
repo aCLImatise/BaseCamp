@@ -3,7 +3,7 @@ version 1.0
 task ParallelAllAgainstAllBlastp {
   input {
     Int? number_of_threads
-    String? output_filename_blast
+    File? output_filename_blast
     String? makeblastdb_executable
     String? blastp_executable
     Boolean? verbose_output_stdout
@@ -16,7 +16,7 @@ task ParallelAllAgainstAllBlastp {
       ~{if defined(output_filename_blast) then ("-o " +  '"' + output_filename_blast + '"') else ""} \
       ~{if defined(makeblastdb_executable) then ("-m " +  '"' + makeblastdb_executable + '"') else ""} \
       ~{if defined(blastp_executable) then ("-b " +  '"' + blastp_executable + '"') else ""} \
-      ~{true="-v" false="" verbose_output_stdout}
+      ~{if (verbose_output_stdout) then "-v" else ""}
   >>>
   parameter_meta {
     number_of_threads: "number of threads [1]"
@@ -25,5 +25,9 @@ task ParallelAllAgainstAllBlastp {
     blastp_executable: "blastp executable [blastp]"
     verbose_output_stdout: "verbose output to STDOUT"
     file_dot_faa: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_filename_blast = "${in_output_filename_blast}"
   }
 }

@@ -3,9 +3,9 @@ version 1.0
 task CIRCexplorer2Annotate {
   input {
     String? ref
-    String? genome
-    String? bed
-    String? output_file
+    File? genome
+    File? bed
+    File? output_file
     Boolean? no_fix
     Boolean? low_confidence
   }
@@ -15,15 +15,19 @@ task CIRCexplorer2Annotate {
       ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
       ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
       ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""} \
-      ~{true="--no-fix" false="" no_fix} \
-      ~{true="--low-confidence" false="" low_confidence}
+      ~{if (no_fix) then "--no-fix" else ""} \
+      ~{if (low_confidence) then "--low-confidence" else ""}
   >>>
   parameter_meta {
     ref: "Gene annotation."
     genome: "Genome FASTA file."
     bed: "Input file."
-    output_file: "Output file. [default: circularRNA_known.txt]"
+    output_file: "Output file.\\n[default: circularRNA_known.txt]"
     no_fix: "No-fix mode (useful for species with poor gene annotations)."
     low_confidence: "Extract low confidence circRNAs."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file = "${in_output_file}"
   }
 }

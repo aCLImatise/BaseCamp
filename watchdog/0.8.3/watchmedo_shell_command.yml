@@ -1,4 +1,7 @@
-&id002 !Command
+&id001 !Command
+command:
+- watchmedo
+- shell-command
 positional:
 - !Positional
   description: "directories to watch (default: '.')"
@@ -7,13 +10,14 @@ positional:
   optional: false
 named:
 - !Flag
-  description: "shell command executed in response to matching events. These interpolation\
-    \ variables are available to your command string:: ${watch_src_path} - event source\
-    \ path; ${watch_dest_path} - event destination path (for moved events); ${watch_event_type}\
-    \ - event type; ${watch_object} - ``file`` or ``directory`` Note:: Please ensure\
-    \ you do not use double quotes (\") to quote your command string. That will force\
-    \ your shell to interpolate before the command is processed by this subcommand.\
-    \ Example option usage:: --command='echo \"${watch_src_path}\"' (default: -)"
+  description: "shell command executed in response to matching events.\nThese interpolation\
+    \ variables are available to your\ncommand string:: ${watch_src_path} - event\
+    \ source\npath; ${watch_dest_path} - event destination path (for\nmoved events);\
+    \ ${watch_event_type} - event type;\n${watch_object} - ``file`` or ``directory``\
+    \ Note::\nPlease ensure you do not use double quotes (\") to\nquote your command\
+    \ string. That will force your shell\nto interpolate before the command is processed\
+    \ by this\nsubcommand. Example option usage:: --command='echo\n\"${watch_src_path}\"\
+    ' (default: -)"
   synonyms:
   - -c
   - --command
@@ -21,7 +25,7 @@ named:
     name: COMMAND
   optional: true
 - !Flag
-  description: "matches event paths with these patterns (separated by ;). (default:\
+  description: "matches event paths with these patterns (separated by\n;). (default:\
     \ '*')"
   synonyms:
   - -p
@@ -31,7 +35,7 @@ named:
     name: PATTERNS
   optional: true
 - !Flag
-  description: "ignores event paths with these patterns (separated by ;). (default:\
+  description: "ignores event paths with these patterns (separated by\n;). (default:\
     \ '')"
   synonyms:
   - -i
@@ -55,7 +59,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'use this as the polling interval/blocking timeout (default: 1.0)'
+  description: "use this as the polling interval/blocking timeout\n(default: 1.0)"
   synonyms:
   - --interval
   - --timeout
@@ -63,32 +67,33 @@ named:
     name: TIMEOUT
   optional: true
 - !Flag
-  description: 'wait for process to finish to avoid multiple simultaneous instances
-    (default: False)'
+  description: "wait for process to finish to avoid multiple\nsimultaneous instances\
+    \ (default: False)"
   synonyms:
   - -w
   - --wait
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Ignore events that occur while command is still being executed to
-    avoid multiple simultaneous instances (default: False)'
+  description: "Ignore events that occur while command is still being\nexecuted to\
+    \ avoid multiple simultaneous instances\n(default: False)\n"
   synonyms:
   - -W
   - --drop
   args: !EmptyFlagArg {}
   optional: true
-command:
-- watchmedo
-- shell-command
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - watchmedo
+  positional: []
+  named: []
   parent:
   subcommands:
+  - *id001
   - !Command
+    command:
+    - watchmedo
+    - log
     positional:
     - !Positional
       description: "directories to watch. (default: '.')"
@@ -97,7 +102,7 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: "matches event paths with these patterns (separated by ;). (default:\
+      description: "matches event paths with these patterns (separated by\n;). (default:\
         \ '*')"
       synonyms:
       - -p
@@ -107,7 +112,7 @@ parent: &id001 !Command
         name: PATTERNS
       optional: true
     - !Flag
-      description: "ignores event paths with these patterns (separated by ;). (default:\
+      description: "ignores event paths with these patterns (separated by\n;). (default:\
         \ '')"
       synonyms:
       - -i
@@ -131,7 +136,7 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'use this as the polling interval/blocking timeout (default: 1.0)'
+      description: "use this as the polling interval/blocking timeout\n(default: 1.0)"
       synonyms:
       - --interval
       - --timeout
@@ -163,7 +168,7 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: '[debug] forces Windows API + I/O completion (default: False)'
+      description: "[debug] forces Windows API + I/O completion (default:\nFalse)"
       synonyms:
       - --debug-force-winapi-async
       args: !EmptyFlagArg {}
@@ -175,16 +180,14 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: '[debug] forces Linux inotify(7) (default: False)'
+      description: "[debug] forces Linux inotify(7) (default: False)\n"
       synonyms:
       - --debug-force-inotify
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - watchmedo
-    - log
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -223,8 +226,42 @@ parent: &id001 !Command
       \            [debug] forces Linux inotify(7) (default: False)\n"
     generated_using: &id003
     - --help
-  - *id002
   - !Command
+    command:
+    - watchmedo
+    - options.
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: watchmedo
+      optional: false
+    named: []
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: ''
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "usage: watchmedo [-h] [--version]\n                 {tricks-from,tricks,tricks-generate-yaml,generate-tricks-yaml,log,shell-command,auto-restart}\n\
+      \                 ...\nwatchmedo: error: invalid choice: 'options.' (choose\
+      \ from 'tricks-from', 'tricks', 'tricks-generate-yaml', 'generate-tricks-yaml',\
+      \ 'log', 'shell-command', 'auto-restart')\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - watchmedo
+    - auto-restart
     positional:
     - !Positional
       description: Long-running command to run in a subprocess.
@@ -232,15 +269,15 @@ parent: &id001 !Command
       name: command
       optional: false
     - !Positional
-      description: 'Command arguments. Note: Use -- before the command arguments,
-        otherwise watchmedo will try to interpret them. (default: -)'
+      description: "Command arguments. Note: Use -- before the command\narguments,\
+        \ otherwise watchmedo will try to interpret\nthem. (default: -)"
       position: 1
       name: arg
       optional: false
     named:
     - !Flag
-      description: 'Directory to watch. Use another -d or --directory option for each
-        directory. (default: -)'
+      description: "Directory to watch. Use another -d or --directory\noption for\
+        \ each directory. (default: -)"
       synonyms:
       - -d
       - --directory
@@ -248,7 +285,7 @@ parent: &id001 !Command
         name: directory
       optional: true
     - !Flag
-      description: "matches event paths with these patterns (separated by ;). (default:\
+      description: "matches event paths with these patterns (separated by\n;). (default:\
         \ '*')"
       synonyms:
       - -p
@@ -258,7 +295,7 @@ parent: &id001 !Command
         name: PATTERNS
       optional: true
     - !Flag
-      description: "ignores event paths with these patterns (separated by ;). (default:\
+      description: "ignores event paths with these patterns (separated by\n;). (default:\
         \ '')"
       synonyms:
       - -i
@@ -282,7 +319,7 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'use this as the polling interval/blocking timeout (default: 1.0)'
+      description: "use this as the polling interval/blocking timeout\n(default: 1.0)"
       synonyms:
       - --interval
       - --timeout
@@ -290,7 +327,7 @@ parent: &id001 !Command
         name: TIMEOUT
       optional: true
     - !Flag
-      description: "stop the subprocess with this signal (default SIGINT) (default:\
+      description: "stop the subprocess with this signal (default SIGINT)\n(default:\
         \ 'SIGINT')"
       synonyms:
       - --signal
@@ -298,18 +335,16 @@ parent: &id001 !Command
         name: SIGNAL
       optional: true
     - !Flag
-      description: 'when stopping, kill the subprocess after the specified timeout
-        (default 10) (default: 10.0)'
+      description: "when stopping, kill the subprocess after the specified\ntimeout\
+        \ (default 10) (default: 10.0)\n"
       synonyms:
       - --kill-after
       args: !SimpleFlagArg
         name: KILL_AFTER
       optional: true
-    command:
-    - watchmedo
-    - auto-restart
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -347,6 +382,7 @@ parent: &id001 !Command
       \ stopping, kill the subprocess after the specified\n                      \
       \  timeout (default 10) (default: 10.0)\n"
     generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -382,6 +418,7 @@ parent: &id001 !Command
     \ version 2.0. Please see\nLICENSE in the source code for more information.\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

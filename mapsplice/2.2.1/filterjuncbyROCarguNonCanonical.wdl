@@ -4,4 +4,7 @@ task FilterjuncbyROCarguNonCanonical {
   command <<<
     filterjuncbyROCarguNonCanonical
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -4,4 +4,7 @@ task ChadoExport {
   command <<<
     chado export
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,87 +1,90 @@
 class: CommandLineTool
 id: ../../../cands.cwl
 inputs:
-- id: n
+- id: in_t
   doc: ''
-  type: string
+  type: File
   inputBinding:
-    prefix: -n
-- id: f
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -f
-- id: r
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -r
-- id: m
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -m
-- id: l
+    prefix: -t
+- id: in_l
   doc: ''
   type: File
   inputBinding:
     prefix: -l
-- id: t
+- id: in_m
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -m
+- id: in_r
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -r
+- id: in_f
   doc: ''
   type: string
   inputBinding:
-    prefix: -t
-- id: that
+    prefix: -f
+- id: in_n
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -n
+- id: in_that
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: will
+- id: in_will
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: contain
+- id: in_contain
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: list
+- id: in_list
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: of
+- id: in_of
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: c_and
+- id: in_c_and
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: files
+- id: in_files
   doc: ''
-  type: File
+  type: string
   inputBinding:
     position: 6
-- id: created
+- id: in_created
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: seq_file
+- id: in_seq_file
   doc: ''
   type: string
   inputBinding:
     position: 8
-- id: can_d_file
+- id: in_can_d_file
   doc: ''
   type: string
   inputBinding:
     position: 9
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - cands

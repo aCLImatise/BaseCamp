@@ -2,6 +2,10 @@ version 1.0
 
 task FindTADsAndLoopsFromRelMatrix {
   input {
+    File? prefix
+    Boolean? mind_ist
+    Boolean? did_ist
+    Boolean? ins_dist
     Boolean? mint_ad_score
     Boolean? mint_ad_size
     Boolean? size_tad_optima
@@ -17,38 +21,42 @@ task FindTADsAndLoopsFromRelMatrix {
     Boolean? poisson_global_bg
     Boolean? min_loop_reads
     Boolean? skip_loops
-    String? matrix
-    File? prefix
-    String? tad
-    String? loop
-    Boolean? mind_ist
+    File? matrix
+    File? tad
+    File? loop
     String cmd
   }
   command <<<
     findTADsAndLoopsFromRelMatrix \
       ~{cmd} \
-      ~{true="-minTADscore" false="" mint_ad_score} \
-      ~{true="-minTADsize" false="" mint_ad_size} \
-      ~{true="-sizeTADoptima" false="" size_tad_optima} \
-      ~{true="-noOverlap" false="" no_overlap} \
-      ~{true="-noOverlapStrict" false="" no_overlap_strict} \
-      ~{true="-skipTADs" false="" skip_tads} \
-      ~{true="-minLoopDist" false="" min_loop_dist} \
-      ~{true="-anchorSize" false="" anchor_size} \
-      ~{true="-anchorLocalBgSize" false="" anchor_local_bg_size} \
-      ~{true="-foldLocalBg" false="" fold_local_bg} \
-      ~{true="-foldGlobalBg" false="" fold_global_bg} \
-      ~{true="-poissonLocalBg" false="" poisson_local_bg} \
-      ~{true="-poissonGlobalBg" false="" poisson_global_bg} \
-      ~{true="-minLoopReads" false="" min_loop_reads} \
-      ~{true="-skipLoops" false="" skip_loops} \
-      ~{if defined(matrix) then ("-matrix " +  '"' + matrix + '"') else ""} \
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
+      ~{if (mind_ist) then "-minDist" else ""} \
+      ~{if (did_ist) then "-diDist" else ""} \
+      ~{if (ins_dist) then "-insDist" else ""} \
+      ~{if (mint_ad_score) then "-minTADscore" else ""} \
+      ~{if (mint_ad_size) then "-minTADsize" else ""} \
+      ~{if (size_tad_optima) then "-sizeTADoptima" else ""} \
+      ~{if (no_overlap) then "-noOverlap" else ""} \
+      ~{if (no_overlap_strict) then "-noOverlapStrict" else ""} \
+      ~{if (skip_tads) then "-skipTADs" else ""} \
+      ~{if (min_loop_dist) then "-minLoopDist" else ""} \
+      ~{if (anchor_size) then "-anchorSize" else ""} \
+      ~{if (anchor_local_bg_size) then "-anchorLocalBgSize" else ""} \
+      ~{if (fold_local_bg) then "-foldLocalBg" else ""} \
+      ~{if (fold_global_bg) then "-foldGlobalBg" else ""} \
+      ~{if (poisson_local_bg) then "-poissonLocalBg" else ""} \
+      ~{if (poisson_global_bg) then "-poissonGlobalBg" else ""} \
+      ~{if (min_loop_reads) then "-minLoopReads" else ""} \
+      ~{if (skip_loops) then "-skipLoops" else ""} \
+      ~{if defined(matrix) then ("-matrix " +  '"' + matrix + '"') else ""} \
       ~{if defined(tad) then ("-tad " +  '"' + tad + '"') else ""} \
-      ~{if defined(loop) then ("-loop " +  '"' + loop + '"') else ""} \
-      ~{true="-minDist" false="" mind_ist}
+      ~{if defined(loop) then ("-loop " +  '"' + loop + '"') else ""}
   >>>
   parameter_meta {
+    prefix: "(Filename prefix for output files, default: out)"
+    mind_ist: "<#> (minimum interaction distance to score (to avoid diagonal) default: 3 x res)"
+    did_ist: "<#> (Distance used to calculate directionality index, default 1000000)"
+    ins_dist: "<#> (maximum length of interactions used to insulation ratio, default 200000)"
     mint_ad_score: "<#> (minimum inclusion ratio i.e. intra-TAD interactions vs. inter-TAD interaction, def: 1.75)"
     mint_ad_size: "<#> (minimum TAD size, default: 100000)"
     size_tad_optima: "<#> (window size to look for local optima, default: 5xresolution)"
@@ -65,10 +73,12 @@ task FindTADsAndLoopsFromRelMatrix {
     min_loop_reads: "<#> (minimum number of interaction reads for loops, default: automatic)"
     skip_loops: "(don't find loops/anchors)"
     matrix: "[relative file2] ... (relative matricies to use for scoring)"
-    prefix: "(Filename prefix for output files, default: out)"
     tad: "(score TAD on inclusion ratio)"
     loop: "(score interactions found at loops)"
-    mind_ist: "<#> (minimum contact distance to score (to avoid diagonal) default: 3 x res)"
     cmd: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_prefix = "${in_prefix}"
   }
 }

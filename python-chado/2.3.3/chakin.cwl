@@ -1,23 +1,26 @@
 class: CommandLineTool
 id: ../../../chakin.cwl
 inputs:
-- id: verbose
+- id: in_verbose
   doc: Enables verbose mode.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: instance
-  doc: 'Name of instance in /home/ubuntu/.chakin.yml. This parameter can also be set
-    via the environment variable CHADO_INSTANCE  [default: __default; required]'
+- id: in_instance
+  doc: "Name of instance in /root/.chakin.yml. This parameter\ncan also be set via\
+    \ the environment variable\nCHADO_INSTANCE  [default: __default; required]"
   type: string
   inputBinding:
     prefix: --instance
-- id: path
+- id: in_path
   doc: config file path
-  type: string
+  type: File
   inputBinding:
     prefix: --path
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - chakin

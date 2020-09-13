@@ -4,4 +4,7 @@ task Knot {
   command <<<
     knot
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

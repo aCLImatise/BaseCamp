@@ -1,4 +1,6 @@
 !Command
+command:
+- kinwalker
 positional:
 - !Positional
   description: ''
@@ -12,23 +14,87 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Use test sequence.
+  description: Start with a structure other than the open chain.
   synonyms:
-  - -t
-  - --test
+  - --init_structure
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Verbose mode. Print debugging messages about program progress.
+  description: Allow interrupted folding trajectories when the barrier is exceeded.
   synonyms:
-  - -v
-  - --verbose
+  - --interrupt
   args: !EmptyFlagArg {}
   optional: true
-command:
-- kinwalker
+- !Flag
+  description: "Creates PS plots of front progression with index i, named front_trajectory($i).ps.\n\
+    -t, --test          Use test sequence.\n-v, --verbose       Verbose mode. Print\
+    \ debugging messages about program progress."
+  synonyms:
+  - --printfront.
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'M' Morgan-Higgs,'S' limits small stacks,'B' Barriers,'A' all, then\
+    \ take minimum. Default: >M<"
+  synonyms:
+  - --barrier_heuristic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Dangle value of 0,1,2 as in the ViennaRNA package. Default: >0<'
+  synonyms:
+  - --dangle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "How barrier_heuristic 'M' treats conflict groups(\"standard\" or \"\
+    regroup\"). Default: >standard<"
+  synonyms:
+  - --grouping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '#BP that MorganHiggs forms its subpaths from. Default: >1<'
+  synonyms:
+  - --lookahead
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Breadth of breadth first seerch in barrier_heuristic='B'. Default:\
+    \ >1<"
+  synonyms:
+  - --maxkeep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Value of noLonelyPairs as in ViennaRNA. Default: >2<'
+  synonyms:
+  - --nolonely
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '#bases initially transcribed, <0 means all is transcribed. Default:
+    >1<)'
+  synonyms:
+  - --transcribed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '#bases transcribed per second. Default: >200.000000<)'
+  synonyms:
+  - --transcription_rate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Max size of substructures considered for folding events during transcription,
+    0= all are considered. Default: >0<)'
+  synonyms:
+  - --windowsize
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print usage information for kinwalker.
   synonyms:

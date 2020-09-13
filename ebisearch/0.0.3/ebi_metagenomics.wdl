@@ -4,4 +4,7 @@ task EbiMetagenomics {
   command <<<
     ebi_metagenomics
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

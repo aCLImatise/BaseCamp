@@ -3,19 +3,19 @@ version 1.0
 task Nucmer2ovl {
   input {
     Boolean? tab
-    String? ignore
+    Int? ignore
     Boolean? version_print_version
     Boolean? depend
-    String? debug
+    Int? debug
     File file
   }
   command <<<
     nucmer2ovl \
       ~{file} \
-      ~{true="-tab" false="" tab} \
+      ~{if (tab) then "-tab" else ""} \
       ~{if defined(ignore) then ("-ignore " +  '"' + ignore + '"') else ""} \
-      ~{true="-V" false="" version_print_version} \
-      ~{true="-depend" false="" depend} \
+      ~{if (version_print_version) then "-V" else ""} \
+      ~{if (depend) then "-depend" else ""} \
       ~{if defined(debug) then ("-debug " +  '"' + debug + '"') else ""}
   >>>
   parameter_meta {
@@ -23,7 +23,10 @@ task Nucmer2ovl {
     ignore: "- Maximum length of the end sequence unaligned (Default: 20 bp)"
     version_print_version: "|version      - Print the version and exit;"
     depend: "- Print the program and database dependency list;"
-    debug: "- Set the debug <level> (0, non-debug by default); "
+    debug: "- Set the debug <level> (0, non-debug by default);"
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

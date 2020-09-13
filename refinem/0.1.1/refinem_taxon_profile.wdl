@@ -2,13 +2,13 @@ version 1.0
 
 task RefinemTaxonProfile {
   input {
-    String? per_to_classify
-    String? evalue
-    String? per_identity
-    String? per_aln_len
-    String? protein_ext
-    String? tmpdir
-    String? cpus
+    Float? per_to_classify
+    Float? evalue
+    Float? per_identity
+    Float? per_aln_len
+    Directory? protein_ext
+    Directory? tmpdir
+    Int? cpus
     Boolean? silent
     String genome_prot_dir
     String scaffold_stats_file
@@ -30,15 +30,15 @@ task RefinemTaxonProfile {
       ~{if defined(protein_ext) then ("--protein_ext " +  '"' + protein_ext + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
       ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
-      ~{true="--silent" false="" silent}
+      ~{if (silent) then "--silent" else ""}
   >>>
   parameter_meta {
-    per_to_classify: "minimum percentage of genes to assign a scaffold to a taxonomic group (default: 20.0)"
+    per_to_classify: "minimum percentage of genes to assign a scaffold to a\\ntaxonomic group (default: 20.0)"
     evalue: "e-value of valid hits (default: 0.001)"
     per_identity: "percent identity of valid hits (default: 30.0)"
-    per_aln_len: "minimum percent coverage of query sequence for reporting an alignment (default: 50.0)"
-    protein_ext: "extension of amino acid gene files (other files in directory are ignored) (default: faa)"
-    tmpdir: "specify alternative directory for temporary files (default: /tmp)"
+    per_aln_len: "minimum percent coverage of query sequence for\\nreporting an alignment (default: 50.0)"
+    protein_ext: "extension of amino acid gene files (other files in\\ndirectory are ignored) (default: faa)"
+    tmpdir: "specify alternative directory for temporary files\\n(default: /tmp)"
     cpus: "number of CPUs to use (default: 1)"
     silent: "suppress output of logger"
     genome_prot_dir: "directory containing amino acid genes for each genome"
@@ -46,5 +46,8 @@ task RefinemTaxonProfile {
     db_file: "DIAMOND database of reference genomes"
     taxonomy_file: "taxonomic assignment of each reference genomes"
     output_dir: "output directory"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

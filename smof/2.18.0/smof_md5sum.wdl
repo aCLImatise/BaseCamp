@@ -7,23 +7,26 @@ task SmofMd5sum {
     Boolean? all_sequences
     Boolean? all_headers
     Boolean? replace_header
-    String input_fasta_sequence
+    String input_fasta_default
   }
   command <<<
     smof md5sum \
-      ~{input_fasta_sequence} \
-      ~{true="--ignore-case" false="" ignore_case} \
-      ~{true="--each-sequence" false="" each_sequence} \
-      ~{true="--all-sequences" false="" all_sequences} \
-      ~{true="--all-headers" false="" all_headers} \
-      ~{true="--replace-header" false="" replace_header}
+      ~{input_fasta_default} \
+      ~{if (ignore_case) then "--ignore-case" else ""} \
+      ~{if (each_sequence) then "--each-sequence" else ""} \
+      ~{if (all_sequences) then "--all-sequences" else ""} \
+      ~{if (all_headers) then "--all-headers" else ""} \
+      ~{if (replace_header) then "--replace-header" else ""}
   >>>
   parameter_meta {
     ignore_case: "convert all to uppercase, before hashing"
     each_sequence: "calculate md5sum for each sequence (TAB delimited)"
     all_sequences: "calculate one md5sum for all concatenated sequences"
     all_headers: "calculate one md5sum for all concatenated headers"
-    replace_header: "replace the header of each entry with the checksum of the sequence"
-    input_fasta_sequence: "input fasta sequence (default = stdin)"
+    replace_header: "replace the header of each entry with the checksum of\\nthe sequence\\n"
+    input_fasta_default: "input fasta sequence (default = stdin)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

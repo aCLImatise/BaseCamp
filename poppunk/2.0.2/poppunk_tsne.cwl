@@ -1,27 +1,35 @@
 class: CommandLineTool
 id: ../../../poppunk_tsne.cwl
 inputs:
-- id: distances
-  doc: Prefix of input pickle and numpy file of pre- calculated distances
-  type: string
+- id: in_distances
+  doc: "Prefix of input pickle and numpy file of pre-\ncalculated distances"
+  type: File
   inputBinding:
     prefix: --distances
-- id: output
+- id: in_output
   doc: Name of output file
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: perplexity
-  doc: Perplexity used to generate t-SNE projection [default = 30]
-  type: string
+- id: in_perplexity
+  doc: "Perplexity used to generate t-SNE projection [default\n= 30]"
+  type: long
   inputBinding:
     prefix: --perplexity
-- id: verbosity
-  doc: Verbosity level for t-SNE (0-3) [default = 0]
-  type: string
+- id: in_verbosity
+  doc: "Verbosity level for t-SNE (0-3) [default = 0]\n"
+  type: long
   inputBinding:
     prefix: --verbosity
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Name of output file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - poppunk_tsne

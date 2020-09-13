@@ -1,9 +1,17 @@
 !Command
-positional: []
+command:
+- pepdigest
+positional:
+- !Positional
+  description: -unfavoured         boolean    Trypsin will not normally cut after
+    'KR' if
+  position: 0
+  name: acids
+  optional: false
 named:
 - !Flag
-  description: 'menu       [1] Select number (Values: 1 (Trypsin); 2 (Lys-C); 3 (Arg-C);
-    4 (Asp-N); 5 (V8-bicarb); 6 (V8-phosph); 7 (Chymotrypsin); 8 (CNBr))'
+  description: "menu       [1] Select number (Values: 1 (Trypsin); 2\n(Lys-C); 3 (Arg-C);\
+    \ 4 (Asp-N); 5\n(V8-bicarb); 6 (V8-phosph); 7\n(Chymotrypsin); 8 (CNBr))"
   synonyms:
   - -menu
   args: !EmptyFlagArg {}
@@ -14,13 +22,48 @@ named:
   - -mono
   args: !EmptyFlagArg {}
   optional: true
-command:
-- pepdigest
+- !Flag
+  description: datafile   [Emolwt.dat] Molecular weight data for amino
+  synonyms:
+  - -mwdata
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "boolean    Allows semi-specific and non-specific\ndigestion. This\
+    \ option is particularly\nuseful for generating lists of peptide\nsequences for\
+    \ protein identification using\nmass-spectrometry."
+  synonyms:
+  - -ragging
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "menu       [1] Select number (Values: 1 (none); 2\n(nterm); 3 (cterm);\
+    \ 4 (nterm OR cterm))"
+  synonyms:
+  - -termini
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "boolean    Used for partial digestion. Shows all cuts\nfrom favoured\
+    \ cut sites plus 1..3, 2..4,\n3..5 etc but not (e.g.) 2..5. Overlaps are\ntherefore\
+    \ fragments with exactly one\npotential cut site within it."
+  synonyms:
+  - -overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "boolean    As for overlap but fragments containing more\nthan one\
+    \ potential cut site are included."
+  synonyms:
+  - -allpartials
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: boolean    Report command line options and exit. More information on
-    associated and general qualifiers can be found with -help -verbose
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   synonyms:
   - -help
   args: !EmptyFlagArg {}

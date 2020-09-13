@@ -2,25 +2,28 @@ version 1.0
 
 task ExpandFastq {
   input {
-    Boolean? bccdehikllnnprsvzzzero
-    Boolean? apple
-    Boolean? extension
-    Boolean? mime_encoding
-    File file
+    Boolean? print_first_n
+    Boolean? never_print_headers
+    Boolean? always_print_headers
+    String head
+    File? file
   }
   command <<<
     expand_fastq \
+      ~{head} \
       ~{file} \
-      ~{true="-bcCdEhikLlNnprsvzZ0" false="" bccdehikllnnprsvzzzero} \
-      ~{true="--apple" false="" apple} \
-      ~{true="--extension" false="" extension} \
-      ~{true="--mime-encoding" false="" mime_encoding}
+      ~{if (print_first_n) then "-c" else ""} \
+      ~{if (never_print_headers) then "-q" else ""} \
+      ~{if (always_print_headers) then "-v" else ""}
   >>>
   parameter_meta {
-    bccdehikllnnprsvzzzero: ""
-    apple: ""
-    extension: ""
-    mime_encoding: ""
+    print_first_n: "[-]N[kbm]    Print first N bytes"
+    never_print_headers: "Never print headers"
+    always_print_headers: "Always print headers"
+    head: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

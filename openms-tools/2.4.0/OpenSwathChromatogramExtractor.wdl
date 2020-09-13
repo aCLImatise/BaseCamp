@@ -2,19 +2,19 @@ version 1.0
 
 task OpenSwathChromatogramExtractor {
   input {
-    File? in
+    String? in
     File? tr
     File? rt_norm
     File? out
-    String? min_upper_edge_dist
-    String? rt_window
-    String? ion_mobility_window
-    String? mz_window
+    Int? min_upper_edge_dist
+    Int? rt_window
+    Int? ion_mobility_window
+    Int? mz_window
     Boolean? ppm
     Boolean? is_swath
     Boolean? extract_ms_one
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -28,13 +28,13 @@ task OpenSwathChromatogramExtractor {
       ~{if defined(rt_window) then ("-rt_window " +  '"' + rt_window + '"') else ""} \
       ~{if defined(ion_mobility_window) then ("-ion_mobility_window " +  '"' + ion_mobility_window + '"') else ""} \
       ~{if defined(mz_window) then ("-mz_window " +  '"' + mz_window + '"') else ""} \
-      ~{true="-ppm" false="" ppm} \
-      ~{true="-is_swath" false="" is_swath} \
-      ~{true="-extract_MS1" false="" extract_ms_one} \
+      ~{if (ppm) then "-ppm" else ""} \
+      ~{if (is_swath) then "-is_swath" else ""} \
+      ~{if (extract_ms_one) then "-extract_MS1" else ""} \
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                   Input files separated by blank (valid formats: 'mzML')"
@@ -52,5 +52,9 @@ task OpenSwathChromatogramExtractor {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

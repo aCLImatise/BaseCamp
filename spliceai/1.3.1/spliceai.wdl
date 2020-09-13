@@ -2,34 +2,35 @@ version 1.0
 
 task Spliceai {
   input {
-    Boolean? path_input_defaults
-    Boolean? path_output_vcf
-    String? path_reference_genome
-    String? gencode_v_canonical
+    Boolean? path_input_vcf
+    File? path_output_standard
+    File? path_reference_genome
+    File? gencode_vlift_canonical
     Boolean? maximum_distance_variant
     Boolean? mask_scores_representing
-    String? var_input
-    String? var_output
+    Float one_dot_three
   }
   command <<<
     spliceai \
-      ~{var_input} \
-      ~{var_output} \
-      ~{true="-I" false="" path_input_defaults} \
-      ~{true="-O" false="" path_output_vcf} \
+      ~{one_dot_three} \
+      ~{if (path_input_vcf) then "-I" else ""} \
+      ~{if (path_output_standard) then "-O" else ""} \
       ~{if defined(path_reference_genome) then ("-R " +  '"' + path_reference_genome + '"') else ""} \
-      ~{if defined(gencode_v_canonical) then ("-A " +  '"' + gencode_v_canonical + '"') else ""} \
-      ~{true="-D" false="" maximum_distance_variant} \
-      ~{true="-M" false="" mask_scores_representing}
+      ~{if defined(gencode_vlift_canonical) then ("-A " +  '"' + gencode_vlift_canonical + '"') else ""} \
+      ~{if (maximum_distance_variant) then "-D" else ""} \
+      ~{if (mask_scores_representing) then "-M" else ""}
   >>>
   parameter_meta {
-    path_input_defaults: "[input]     path to the input VCF file, defaults to standard in"
-    path_output_vcf: "[output]    path to the output VCF file, defaults to standard out"
+    path_input_vcf: "[input]     path to the input VCF file, defaults to standard in"
+    path_output_standard: "[output]    path to the output VCF file, defaults to standard out"
     path_reference_genome: "path to the reference genome fasta file"
-    gencode_v_canonical: "\"grch37\" (GENCODE V24lift37 canonical annotation file in package), \"grch38\" (GENCODE V24 canonical annotation file in package), or path to a similar custom gene annotation file"
-    maximum_distance_variant: "[distance]  maximum distance between the variant and gained/lost splice site, defaults to 50"
-    mask_scores_representing: "[mask]      mask scores representing annotated acceptor/donor gain and unannotated acceptor/donor loss, defaults to 0"
-    var_input: ""
-    var_output: ""
+    gencode_vlift_canonical: "\\\"grch37\\\" (GENCODE V24lift37 canonical annotation file in\\npackage), \\\"grch38\\\" (GENCODE V24 canonical annotation file in\\npackage), or path to a similar custom gene annotation file"
+    maximum_distance_variant: "[distance]  maximum distance between the variant and gained/lost splice\\nsite, defaults to 50"
+    mask_scores_representing: "[mask]      mask scores representing annotated acceptor/donor gain and\\nunannotated acceptor/donor loss, defaults to 0\\n"
+    one_dot_three: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_standard = "${in_path_output_standard}"
   }
 }

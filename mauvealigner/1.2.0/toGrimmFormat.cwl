@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../toGrimmFormat.cwl
 inputs:
-- id: genome_n_chr_lengths
+- id: in_genome_n_chr_lengths
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - toGrimmFormat

@@ -1,20 +1,61 @@
 !Command
+command:
+- bis-snp
 positional:
 - !Positional
-  description: ''
+  description: '-maxRuntime,--maxRuntime <maxRuntime>                                                    Stop
+    execution cleanly as soon '
   position: 0
-  name: java
+  name: seed
   optional: false
 - !Positional
-  description: ''
-  position: 1
-  name: read_filter
-  optional: true
+  description: '-fixMisencodedQuals,--fix_misencoded_quality_scores                                      Fix
+    mis-encoded base quality '
+  position: 0
+  name: string
+  optional: false
 - !Positional
-  description: ''
+  description: '-allowPotentiallyMisencodedQuals,--allow_potentially_misencoded_quality_scores           Ignore
+    warnings about base '
+  position: 1
+  name: scores
+  optional: false
+- !Positional
+  description: "-no_cmdline_in_header,--no_cmdline_in_header                     \
+    \                        Don't include the command line "
+  position: 0
+  name: locking
+  optional: false
+- !Positional
+  description: '--disable_bam_indexing                                                                   Turn
+    off on-the-fly creation '
+  position: 0
+  name: tags
+  optional: false
+- !Positional
+  description: '--generate_md5                                                                           Enable
+    on-the-fly creation of '
+  position: 0
+  name: files
+  optional: false
+- !Positional
+  description: '-rgbl,--read_group_black_list <read_group_black_list>                                    Exclude
+    read groups based on '
+  position: 0
+  name: monitoring
+  optional: false
+- !Positional
+  description: -ped,--pedigree <pedigree>                                                               Pedigree
+    files for samples
+  position: 1
+  name: tags
+  optional: false
+- !Positional
+  description: -log,--log_to_file <log_to_file>                                                         Set
+    the logging location
   position: 2
-  name: interval_merging
-  optional: true
+  name: logging
+  optional: false
 named:
 - !Flag
   description: Type of analysis to run
@@ -25,7 +66,7 @@ named:
     name: analysis_type
   optional: true
 - !Flag
-  description: Input file containing sequence  data (BAM or CRAM)
+  description: "Input file containing sequence\ndata (BAM or CRAM)"
   synonyms:
   - -I
   - --input_file
@@ -33,13 +74,13 @@ named:
     name: input_file
   optional: true
 - !Flag
-  description: Emit list of input BAM/CRAM  files to log
+  description: "Emit list of input BAM/CRAM\nfiles to log"
   synonyms:
   - --showFullBamList
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Number of reads per SAM file  to buffer in memory
+  description: "Number of reads per SAM file\nto buffer in memory"
   synonyms:
   - -rbs
   - --read_buffer_size
@@ -47,7 +88,7 @@ named:
     name: read_buffer_size
   optional: true
 - !Flag
-  description: Filters to apply to reads  before analysis
+  description: "Filters to apply to reads\nbefore analysis"
   synonyms:
   - -rf
   - --read_filter
@@ -63,7 +104,7 @@ named:
     name: disable_read_filter
   optional: true
 - !Flag
-  description: One or more genomic intervals  over which to operate
+  description: "One or more genomic intervals\nover which to operate"
   synonyms:
   - -L
   - --intervals
@@ -71,7 +112,7 @@ named:
     name: intervals
   optional: true
 - !Flag
-  description: One or more genomic intervals  to exclude from processing
+  description: "One or more genomic intervals\nto exclude from processing"
   synonyms:
   - -XL
   - --excludeIntervals
@@ -79,7 +120,7 @@ named:
     name: excludeIntervals
   optional: true
 - !Flag
-  description: Set merging approach to use  for combining interval inputs  (UNION|INTERSECTION)
+  description: "Set merging approach to use\nfor combining interval inputs\n(UNION|INTERSECTION)"
   synonyms:
   - -isr
   - --interval_set_rule
@@ -87,7 +128,7 @@ named:
     name: interval_set_rule
   optional: true
 - !Flag
-  description: Interval merging rule for  abutting intervals (ALL| OVERLAPPING_ONLY)
+  description: "Interval merging rule for\nabutting intervals (ALL|\nOVERLAPPING_ONLY)"
   synonyms:
   - -im
   - --interval_merging
@@ -95,7 +136,7 @@ named:
     name: interval_merging
   optional: true
 - !Flag
-  description: Amount of padding (in bp) to  add to each interval
+  description: "Amount of padding (in bp) to\nadd to each interval"
   synonyms:
   - -ip
   - --interval_padding
@@ -111,23 +152,15 @@ named:
     name: reference_sequence
   optional: true
 - !Flag
-  description: Use a non-deterministic random  seed
+  description: Use a non-deterministic random
   synonyms:
   - -ndrs
   - --nonDeterministicRandomSeed
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Stop execution cleanly as soon  as maxRuntime has been reached
-  synonyms:
-  - -maxRuntime
-  - --maxRuntime
-  args: !SimpleFlagArg
-    name: maxRuntime
-  optional: true
-- !Flag
-  description: Unit of time used by  maxRuntime (NANOSECONDS| MICROSECONDS|MILLISECONDS|
-    SECONDS|MINUTES|HOURS|DAYS)
+  description: "Unit of time used by\nmaxRuntime (NANOSECONDS|\nMICROSECONDS|MILLISECONDS|\n\
+    SECONDS|MINUTES|HOURS|DAYS)"
   synonyms:
   - -maxRuntimeUnits
   - --maxRuntimeUnits
@@ -135,7 +168,7 @@ named:
     name: maxRuntimeUnits
   optional: true
 - !Flag
-  description: Type of read downsampling to  employ at a given locus (NONE| ALL_READS|BY_SAMPLE)
+  description: "Type of read downsampling to\nemploy at a given locus (NONE|\nALL_READS|BY_SAMPLE)"
   synonyms:
   - -dt
   - --downsampling_type
@@ -143,7 +176,7 @@ named:
     name: downsampling_type
   optional: true
 - !Flag
-  description: Fraction of reads to  downsample to
+  description: "Fraction of reads to\ndownsample to"
   synonyms:
   - -dfrac
   - --downsample_to_fraction
@@ -151,7 +184,7 @@ named:
     name: downsample_to_fraction
   optional: true
 - !Flag
-  description: Target coverage threshold for  downsampling to coverage
+  description: "Target coverage threshold for\ndownsampling to coverage"
   synonyms:
   - -dcov
   - --downsample_to_coverage
@@ -159,8 +192,8 @@ named:
     name: downsample_to_coverage
   optional: true
 - !Flag
-  description: Type of BAQ calculation to  apply in the engine (OFF| CALCULATE_AS_NECESSARY|
-    RECALCULATE)
+  description: "Type of BAQ calculation to\napply in the engine (OFF|\nCALCULATE_AS_NECESSARY|\n\
+    RECALCULATE)"
   synonyms:
   - -baq
   - --baq
@@ -176,28 +209,14 @@ named:
     name: baqGapOpenPenalty
   optional: true
 - !Flag
-  description: Reduce NDN elements in CIGAR  string
+  description: Reduce NDN elements in CIGAR
   synonyms:
   - -fixNDN
   - --refactor_NDN_cigar_string
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Fix mis-encoded base quality  scores
-  synonyms:
-  - -fixMisencodedQuals
-  - --fix_misencoded_quality_scores
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Ignore warnings about base  quality score encoding
-  synonyms:
-  - -allowPotentiallyMisencodedQuals
-  - --allow_potentially_misencoded_quality_scores
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Use the base quality scores  from the OQ tag
+  description: "Use the base quality scores\nfrom the OQ tag"
   synonyms:
   - -OQ
   - --useOriginalQualities
@@ -212,7 +231,7 @@ named:
     name: defaultBaseQualities
   optional: true
 - !Flag
-  description: Write GATK runtime performance  log to this file
+  description: "Write GATK runtime performance\nlog to this file"
   synonyms:
   - -PF
   - --performanceLog
@@ -220,7 +239,7 @@ named:
     name: performanceLog
   optional: true
 - !Flag
-  description: Input covariates table file  for on-the-fly base quality  score recalibration
+  description: "Input covariates table file\nfor on-the-fly base quality\nscore recalibration"
   synonyms:
   - -BQSR
   - --BQSR
@@ -228,7 +247,7 @@ named:
     name: BQSR
   optional: true
 - !Flag
-  description: Quantize quality scores to a  given number of levels (with  -BQSR)
+  description: "Quantize quality scores to a\ngiven number of levels (with\n-BQSR)"
   synonyms:
   - -qq
   - --quantize_quals
@@ -236,8 +255,8 @@ named:
     name: quantize_quals
   optional: true
 - !Flag
-  description: Use static quantized quality  scores to a given number of  levels (with
-    -BQSR)
+  description: "Use static quantized quality\nscores to a given number of\nlevels\
+    \ (with -BQSR)"
   synonyms:
   - -SQQ
   - --static_quantized_quals
@@ -245,22 +264,22 @@ named:
     name: static_quantized_quals
   optional: true
 - !Flag
-  description: Disable printing of base  insertion and deletion tags  (with -BQSR)
+  description: "Disable printing of base\ninsertion and deletion tags\n(with -BQSR)"
   synonyms:
   - -DIQ
   - --disable_indel_quals
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Emit the OQ tag with the  original base qualities (with  -BQSR)
+  description: "Emit the OQ tag with the\noriginal base qualities (with\n-BQSR)"
   synonyms:
   - -EOQ
   - --emit_original_quals
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Don't recalibrate bases with  quality scores less than this  threshold
-    (with -BQSR)
+  description: "Don't recalibrate bases with\nquality scores less than this\nthreshold\
+    \ (with -BQSR)"
   synonyms:
   - -preserveQ
   - --preserve_qscores_less_than
@@ -268,7 +287,7 @@ named:
     name: preserve_qscores_less_than
   optional: true
 - !Flag
-  description: Global Qscore Bayesian prior  to use for BQSR
+  description: "Global Qscore Bayesian prior\nto use for BQSR"
   synonyms:
   - -globalQScorePrior
   - --globalQScorePrior
@@ -276,14 +295,14 @@ named:
     name: globalQScorePrior
   optional: true
 - !Flag
-  description: 'Time interval for process '
+  description: Time interval for process
   synonyms:
   - -secondsBetweenProgressUpdates
   - --secondsBetweenProgressUpdates
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: How strict should we be with  validation (STRICT|LENIENT| SILENT)
+  description: "How strict should we be with\nvalidation (STRICT|LENIENT|\nSILENT)"
   synonyms:
   - -S
   - --validation_strictness
@@ -291,22 +310,22 @@ named:
     name: validation_strictness
   optional: true
 - !Flag
-  description: Remove program records from  the SAM header
+  description: "Remove program records from\nthe SAM header"
   synonyms:
   - -rpr
   - --remove_program_records
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Keep program records in the  SAM header
+  description: "Keep program records in the\nSAM header"
   synonyms:
   - -kpr
   - --keep_program_records
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Rename sample IDs on-the-fly  at runtime using the provided  mapping
-    file
+  description: "Rename sample IDs on-the-fly\nat runtime using the provided\nmapping\
+    \ file"
   synonyms:
   - -sample_rename_mapping_file
   - --sample_rename_mapping_file
@@ -314,9 +333,9 @@ named:
     name: sample_rename_mapping_file
   optional: true
 - !Flag
-  description: 'Enable unsafe operations:  nothing will be checked at  runtime (ALLOW_N_CIGAR_READS|
-    ALLOW_UNINDEXED_BAM| ALLOW_UNSET_BAM_SORT_ORDER| NO_READ_ORDER_VERIFICATION| ALLOW_SEQ_DICT_INCOMPATIBILITY|
-    LENIENT_VCF_PROCESSING|ALL)'
+  description: "Enable unsafe operations:\nnothing will be checked at\nruntime (ALLOW_N_CIGAR_READS|\n\
+    ALLOW_UNINDEXED_BAM|\nALLOW_UNSET_BAM_SORT_ORDER|\nNO_READ_ORDER_VERIFICATION|\n\
+    ALLOW_SEQ_DICT_INCOMPATIBILITY|\nLENIENT_VCF_PROCESSING|ALL)"
   synonyms:
   - -U
   - --unsafe
@@ -324,24 +343,17 @@ named:
     name: unsafe
   optional: true
 - !Flag
-  description: Use the JDK Deflater instead  of the IntelDeflater for  writing BAMs
+  description: "Use the JDK Deflater instead\nof the IntelDeflater for\nwriting BAMs"
   synonyms:
   - -jdk_deflater
   - --use_jdk_deflater
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use the JDK Inflater instead  of the IntelInflater for  reading BAMs
+  description: "Use the JDK Inflater instead\nof the IntelInflater for\nreading BAMs"
   synonyms:
   - -jdk_inflater
   - --use_jdk_inflater
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Don't include the command line  in output VCF headers
-  synonyms:
-  - -no_cmdline_in_header
-  - --no_cmdline_in_header
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -352,16 +364,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Always output all the records  in VCF FORMAT fields, even if  some
-    are missing
+  description: "Always output all the records\nin VCF FORMAT fields, even if\nsome\
+    \ are missing"
   synonyms:
   - -writeFullFormat
   - --never_trim_vcf_format_field
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Compression level to use for  writing BAM files (0 - 9,  higher is
-    more compressed)
+  description: "Compression level to use for\nwriting BAM files (0 - 9,\nhigher is\
+    \ more compressed)"
   synonyms:
   - -compress
   - --bam_compression
@@ -369,26 +381,14 @@ named:
     name: bam_compression
   optional: true
 - !Flag
-  description: Strip down read content and  tags
+  description: Strip down read content and
   synonyms:
   - -simplifyBAM
   - --simplifyBAM
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Turn off on-the-fly creation  of indices for output BAM/CRAM  files
-  synonyms:
-  - --disable_bam_indexing
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Enable on-the-fly creation of  md5s for output BAM files.
-  synonyms:
-  - --generate_md5
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Number of data threads to  allocate to this analysis
+  description: "Number of data threads to\nallocate to this analysis"
   synonyms:
   - -nt
   - --num_threads
@@ -396,7 +396,7 @@ named:
     name: num_threads
   optional: true
 - !Flag
-  description: Number of CPU threads to  allocate per data thread
+  description: "Number of CPU threads to\nallocate per data thread"
   synonyms:
   - -nct
   - --num_cpu_threads_per_data_thread
@@ -404,27 +404,11 @@ named:
     name: num_cpu_threads_per_data_thread
   optional: true
 - !Flag
-  description: Enable threading efficiency  monitoring
+  description: Enable threading efficiency
   synonyms:
   - -mte
   - --monitorThreadEfficiency
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Exclude read groups based on  tags
-  synonyms:
-  - -rgbl
-  - --read_group_black_list
-  args: !SimpleFlagArg
-    name: read_group_black_list
-  optional: true
-- !Flag
-  description: Pedigree files for samples
-  synonyms:
-  - -ped
-  - --pedigree
-  args: !SimpleFlagArg
-    name: pedigree
   optional: true
 - !Flag
   description: Pedigree string for samples
@@ -435,7 +419,7 @@ named:
     name: pedigreeString
   optional: true
 - !Flag
-  description: Validation strictness for  pedigree (STRICT|SILENT)
+  description: "Validation strictness for\npedigree (STRICT|SILENT)"
   synonyms:
   - -pedValidationType
   - --pedigreeValidationType
@@ -443,8 +427,8 @@ named:
     name: pedigreeValidationType
   optional: true
 - !Flag
-  description: Type of IndexCreator to use  for VCF/BCF indices  (DYNAMIC_SEEK|DYNAMIC_SIZE|
-    LINEAR|INTERVAL)
+  description: "Type of IndexCreator to use\nfor VCF/BCF indices\n(DYNAMIC_SEEK|DYNAMIC_SIZE|\n\
+    LINEAR|INTERVAL)"
   synonyms:
   - -variant_index_type
   - --variant_index_type
@@ -452,7 +436,7 @@ named:
     name: variant_index_type
   optional: true
 - !Flag
-  description: Parameter to pass to the  VCF/BCF IndexCreator
+  description: "Parameter to pass to the\nVCF/BCF IndexCreator"
   synonyms:
   - -variant_index_parameter
   - --variant_index_parameter
@@ -468,7 +452,7 @@ named:
     name: reference_window_stop
   optional: true
 - !Flag
-  description: Set the minimum level of  logging
+  description: Set the minimum level of
   synonyms:
   - -l
   - --logging_level
@@ -476,12 +460,11 @@ named:
     name: logging_level
   optional: true
 - !Flag
-  description: Set the logging location
+  description: ''
   synonyms:
-  - -log
-  - --log_to_file
+  - -maxRuntime
   args: !SimpleFlagArg
-    name: log_to_file
+    name: maxRuntime
   optional: true
 - !Flag
   description: ''
@@ -490,10 +473,9 @@ named:
   args: !SimpleFlagArg
     name: BisSNP-1.0.1.jar
   optional: true
-command:
-- bis-snp
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Generate the help message
   synonyms:

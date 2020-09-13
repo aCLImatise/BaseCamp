@@ -1,37 +1,45 @@
 class: CommandLineTool
 id: ../../../spaligner.cwl
 inputs:
-- id: datatype
+- id: in_datatype
   doc: 'type of sequences: nanopore, pacbio'
   type: string
   inputBinding:
     prefix: --datatype
-- id: sequences
+- id: in_sequences
   doc: path to fasta/fastq file with sequences
-  type: string
+  type: File
   inputBinding:
     prefix: --sequences
-- id: graph
+- id: in_graph
   doc: path to GFA-file or SPAdes saves folder
-  type: string
+  type: File
   inputBinding:
     prefix: --graph
-- id: km_er
+- id: in_km_er
   doc: graph k-mer size (odd value)
-  type: string
+  type: long
   inputBinding:
     prefix: --kmer
-- id: threads
+- id: in_threads
   doc: '# of threads to use'
   type: string
   inputBinding:
     prefix: --threads
-- id: outdir
-  doc: output directory
-  type: string
+- id: in_outdir
+  doc: "output directory\n"
+  type: Directory
   inputBinding:
     prefix: --outdir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: "output directory\n"
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - spaligner

@@ -1,7 +1,10 @@
 version 1.0
 
-task FeedbackGennet {
+task Feedbackgennet {
   command <<<
-    feedback-gennet
+    feedback_gennet
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

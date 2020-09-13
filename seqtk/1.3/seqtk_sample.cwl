@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../seqtk_sample.cwl
 inputs:
-- id: rng_seed
+- id: in_rng_seed
   doc: RNG seed [11]
   type: long
   inputBinding:
     prefix: -s
-- id: pass_mode_slow
+- id: in_pass_mode_slow
   doc: '2-pass mode: twice as slow but with much reduced memory'
   type: boolean
   inputBinding:
     prefix: '-2'
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - seqtk

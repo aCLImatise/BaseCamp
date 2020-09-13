@@ -3,13 +3,13 @@ version 1.0
 task CheckmGcPlot {
   input {
     String? image_type
-    String? dpi
-    String? font_size
-    String? extension
-    String? width
-    String? height
-    String? gc_window_size
-    String? gc_bin_width
+    Int? dpi
+    Int? font_size
+    Directory? extension
+    Float? width
+    Float? height
+    Int? gc_window_size
+    Float? gc_bin_width
     Boolean? quiet
     String bin_dir
     String output_dir
@@ -28,7 +28,7 @@ task CheckmGcPlot {
       ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
       ~{if defined(gc_window_size) then ("--gc_window_size " +  '"' + gc_window_size + '"') else ""} \
       ~{if defined(gc_bin_width) then ("--gc_bin_width " +  '"' + gc_bin_width + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     image_type: "desired image type (default: png)"
@@ -43,5 +43,8 @@ task CheckmGcPlot {
     bin_dir: "directory containing bins to plot (fasta format)"
     output_dir: "directory to hold plots"
     dist_value: "reference distribution(s) to plot; integer between 0 and 100"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

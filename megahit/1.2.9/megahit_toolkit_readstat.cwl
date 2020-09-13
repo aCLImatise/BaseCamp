@@ -1,12 +1,15 @@
 class: CommandLineTool
 id: ../../../megahit_toolkit_readstat.cwl
 inputs:
-- id: cat
+- id: in_cat
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - megahit_toolkit

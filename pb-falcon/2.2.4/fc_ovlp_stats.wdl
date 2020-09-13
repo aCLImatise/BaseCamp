@@ -2,10 +2,10 @@ version 1.0
 
 task FcOvlpStats {
   input {
-    String? n_core
-    String? fof_n
+    Int? n_core
+    File? fof_n
     Int? min_len
-    String? db_fn
+    Int? db_fn
     Boolean? stream
     Boolean? debug
     Boolean? silent
@@ -16,9 +16,9 @@ task FcOvlpStats {
       ~{if defined(fof_n) then ("--fofn " +  '"' + fof_n + '"') else ""} \
       ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
       ~{if defined(db_fn) then ("--db-fn " +  '"' + db_fn + '"') else ""} \
-      ~{true="--stream" false="" stream} \
-      ~{true="--debug" false="" debug} \
-      ~{true="--silent" false="" silent}
+      ~{if (stream) then "--stream" else ""} \
+      ~{if (debug) then "--debug" else ""} \
+      ~{if (silent) then "--silent" else ""}
   >>>
   parameter_meta {
     n_core: "number of processes used for generating consensus; 0 for main process only (default: 4)"
@@ -28,5 +28,8 @@ task FcOvlpStats {
     stream: "stream from LA4Falcon, instead of slurping all at once; can save memory for large data (default: False)"
     debug: "single-threaded, plus other aids to debugging (default: False)"
     silent: "suppress cmd reporting on stderr (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

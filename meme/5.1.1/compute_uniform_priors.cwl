@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../compute_uniform_priors.cwl
 inputs:
-- id: compute_uniform_prior
+- id: in_compute_uniform_prior
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: prior_value
+- id: in_prior_value
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: psp_file
+- id: in_psp_file
   doc: ''
-  type: string
+  type: File
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - compute-uniform-priors

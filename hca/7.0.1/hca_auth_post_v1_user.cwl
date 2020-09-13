@@ -1,17 +1,30 @@
 class: CommandLineTool
 id: ../../../hca_auth_post_v1_user.cwl
 inputs:
-- id: user_id
-  doc: ''
+- id: in_user_id
+  doc: Used to identify users, groups, and roles.
   type: string
   inputBinding:
     prefix: --user-id
-- id: groups
+- id: in_groups
   doc: ''
   type: string
   inputBinding:
     prefix: --groups
-outputs: []
+- id: in_roles
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --roles
+- id: in_policy
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --policy
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hca

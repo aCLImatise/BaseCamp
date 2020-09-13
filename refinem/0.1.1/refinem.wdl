@@ -4,4 +4,7 @@ task Refinem {
   command <<<
     refinem
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

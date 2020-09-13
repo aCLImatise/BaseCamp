@@ -11,4 +11,7 @@ task ScfInfo {
   parameter_meta {
     scf_filename: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

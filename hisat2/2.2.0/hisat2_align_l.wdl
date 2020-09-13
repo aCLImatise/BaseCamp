@@ -1,6 +1,6 @@
 version 1.0
 
-task Hisat2AlignL {
+task Hisat2alignl {
   input {
     Boolean? query_input_files_fastq
     Boolean? q_seq
@@ -18,15 +18,15 @@ task Hisat2AlignL {
     Boolean? sensitive
     Boolean? very_sensitive
     Int? bowtie_two_dp
-    String? n_ceil
+    Int? n_ceil
     Boolean? ignore_quals
     Boolean? no_fw
     Boolean? norc
     Boolean? no_repeat_index
     Int? pen_can_splice
     Int? pen_non_can_splice
-    String? pen_can_intron_len
-    String? pen_non_can_intron_len
+    Int? pen_can_intron_len
+    Int? pen_non_can_intron_len
     Int? min_intron_len
     Int? max_intron_len
     File? known_splice_site_in_file
@@ -46,8 +46,8 @@ task Hisat2AlignL {
     Int? np
     Int? rdg
     Int? rfg
-    String? score_min
-    Int? it_searches_mean
+    Int? score_min
+    Int? it_searches_find
     Int? max_seeds
     Boolean? a_slash_all
     Boolean? repeat
@@ -78,32 +78,70 @@ task Hisat2AlignL {
     Boolean? remove_chr_name
     Boolean? add_chr_name
     Boolean? h_slash_help
-    String his_at_two_align
+    Int his_at_two_align
+    Int ht_two_idx
+    Int m_one
+    Int m_two
+    String var_80
+    String var_81
+    String specified
+    File file
+    String files
+    String index
+    String many
+    File filename
+    String for
+    String times_dot
+    String with
+    String e_dot_gdot
+    String var_92
+    String prefix
+    String unpaired
+    String var_output
   }
   command <<<
-    hisat2-align-l \
+    hisat2_align_l \
       ~{his_at_two_align} \
-      ~{true="-q" false="" query_input_files_fastq} \
-      ~{true="--qseq" false="" q_seq} \
-      ~{true="-f" false="" query_input_files_multifasta} \
-      ~{true="-r" false="" query_input_files_raw} \
-      ~{true="-c" false="" m_m_r} \
+      ~{ht_two_idx} \
+      ~{m_one} \
+      ~{m_two} \
+      ~{var_80} \
+      ~{var_81} \
+      ~{specified} \
+      ~{file} \
+      ~{files} \
+      ~{index} \
+      ~{many} \
+      ~{filename} \
+      ~{for} \
+      ~{times_dot} \
+      ~{with} \
+      ~{e_dot_gdot} \
+      ~{var_92} \
+      ~{prefix} \
+      ~{unpaired} \
+      ~{var_output} \
+      ~{if (query_input_files_fastq) then "-q" else ""} \
+      ~{if (q_seq) then "--qseq" else ""} \
+      ~{if (query_input_files_multifasta) then "-f" else ""} \
+      ~{if (query_input_files_raw) then "-r" else ""} \
+      ~{if (m_m_r) then "-c" else ""} \
       ~{if defined(s_slash_skip) then ("-s/--skip " +  '"' + s_slash_skip + '"') else ""} \
       ~{if defined(us_lash_up_to) then ("-u/--upto " +  '"' + us_lash_up_to + '"') else ""} \
       ~{if defined(five_slash_trim_five) then ("-5/--trim5 " +  '"' + five_slash_trim_five + '"') else ""} \
       ~{if defined(three_slash_trim_three) then ("-3/--trim3 " +  '"' + three_slash_trim_three + '"') else ""} \
-      ~{true="--phred33" false="" phred_three_three} \
-      ~{true="--phred64" false="" phred_six_four} \
-      ~{true="--int-quals" false="" int_quals} \
-      ~{true="--fast" false="" fast} \
-      ~{true="--sensitive" false="" sensitive} \
-      ~{true="--very-sensitive" false="" very_sensitive} \
+      ~{if (phred_three_three) then "--phred33" else ""} \
+      ~{if (phred_six_four) then "--phred64" else ""} \
+      ~{if (int_quals) then "--int-quals" else ""} \
+      ~{if (fast) then "--fast" else ""} \
+      ~{if (sensitive) then "--sensitive" else ""} \
+      ~{if (very_sensitive) then "--very-sensitive" else ""} \
       ~{if defined(bowtie_two_dp) then ("--bowtie2-dp " +  '"' + bowtie_two_dp + '"') else ""} \
       ~{if defined(n_ceil) then ("--n-ceil " +  '"' + n_ceil + '"') else ""} \
-      ~{true="--ignore-quals" false="" ignore_quals} \
-      ~{true="--nofw" false="" no_fw} \
-      ~{true="--norc" false="" norc} \
-      ~{true="--no-repeat-index" false="" no_repeat_index} \
+      ~{if (ignore_quals) then "--ignore-quals" else ""} \
+      ~{if (no_fw) then "--nofw" else ""} \
+      ~{if (norc) then "--norc" else ""} \
+      ~{if (no_repeat_index) then "--no-repeat-index" else ""} \
       ~{if defined(pen_can_splice) then ("--pen-cansplice " +  '"' + pen_can_splice + '"') else ""} \
       ~{if defined(pen_non_can_splice) then ("--pen-noncansplice " +  '"' + pen_non_can_splice + '"') else ""} \
       ~{if defined(pen_can_intron_len) then ("--pen-canintronlen " +  '"' + pen_can_intron_len + '"') else ""} \
@@ -113,52 +151,52 @@ task Hisat2AlignL {
       ~{if defined(known_splice_site_in_file) then ("--known-splicesite-infile " +  '"' + known_splice_site_in_file + '"') else ""} \
       ~{if defined(novel_splice_site_outfile) then ("--novel-splicesite-outfile " +  '"' + novel_splice_site_outfile + '"') else ""} \
       ~{if defined(novel_splice_site_in_file) then ("--novel-splicesite-infile " +  '"' + novel_splice_site_in_file + '"') else ""} \
-      ~{true="--no-temp-splicesite" false="" no_temp_splice_site} \
-      ~{true="--no-spliced-alignment" false="" no_spliced_alignment} \
+      ~{if (no_temp_splice_site) then "--no-temp-splicesite" else ""} \
+      ~{if (no_spliced_alignment) then "--no-spliced-alignment" else ""} \
       ~{if defined(rna_strand_ness) then ("--rna-strandness " +  '"' + rna_strand_ness + '"') else ""} \
-      ~{true="--tmo" false="" tmo} \
-      ~{true="--dta" false="" dta} \
-      ~{true="--dta-cufflinks" false="" dta_cufflinks} \
-      ~{true="--avoid-pseudogene" false="" avoid_pseudogene} \
-      ~{true="--no-templatelen-adjustment" false="" no_template_len_adjustment} \
+      ~{if (tmo) then "--tmo" else ""} \
+      ~{if (dta) then "--dta" else ""} \
+      ~{if (dta_cufflinks) then "--dta-cufflinks" else ""} \
+      ~{if (avoid_pseudogene) then "--avoid-pseudogene" else ""} \
+      ~{if (no_template_len_adjustment) then "--no-templatelen-adjustment" else ""} \
       ~{if defined(mp) then ("--mp " +  '"' + mp + '"') else ""} \
       ~{if defined(sp) then ("--sp " +  '"' + sp + '"') else ""} \
-      ~{true="--no-softclip" false="" no_soft_clip} \
+      ~{if (no_soft_clip) then "--no-softclip" else ""} \
       ~{if defined(np) then ("--np " +  '"' + np + '"') else ""} \
       ~{if defined(rdg) then ("--rdg " +  '"' + rdg + '"') else ""} \
       ~{if defined(rfg) then ("--rfg " +  '"' + rfg + '"') else ""} \
       ~{if defined(score_min) then ("--score-min " +  '"' + score_min + '"') else ""} \
-      ~{if defined(it_searches_mean) then ("-k " +  '"' + it_searches_mean + '"') else ""} \
+      ~{if defined(it_searches_find) then ("-k " +  '"' + it_searches_find + '"') else ""} \
       ~{if defined(max_seeds) then ("--max-seeds " +  '"' + max_seeds + '"') else ""} \
-      ~{true="-a/--all" false="" a_slash_all} \
-      ~{true="--repeat" false="" repeat} \
+      ~{if (a_slash_all) then "-a/--all" else ""} \
+      ~{if (repeat) then "--repeat" else ""} \
       ~{if defined(i_slash_mini_ns) then ("-I/--minins " +  '"' + i_slash_mini_ns + '"') else ""} \
       ~{if defined(x_slash_max_ins) then ("-X/--maxins " +  '"' + x_slash_max_ins + '"') else ""} \
-      ~{true="--fr/--rf/--ff" false="" fr_slash_rf_slash_ff} \
-      ~{true="--no-mixed" false="" no_mixed} \
-      ~{true="--no-discordant" false="" no_discordant} \
-      ~{true="-t/--time" false="" t_slash_time} \
+      ~{if (fr_slash_rf_slash_ff) then "--fr/--rf/--ff" else ""} \
+      ~{if (no_mixed) then "--no-mixed" else ""} \
+      ~{if (no_discordant) then "--no-discordant" else ""} \
+      ~{if (t_slash_time) then "-t/--time" else ""} \
       ~{if defined(summary_file) then ("--summary-file " +  '"' + summary_file + '"') else ""} \
-      ~{true="--new-summary" false="" new_summary} \
-      ~{true="--quiet" false="" quiet} \
+      ~{if (new_summary) then "--new-summary" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(met_file) then ("--met-file " +  '"' + met_file + '"') else ""} \
-      ~{true="--met-stderr" false="" met_stderr} \
+      ~{if (met_stderr) then "--met-stderr" else ""} \
       ~{if defined(met) then ("--met " +  '"' + met + '"') else ""} \
-      ~{true="--no-head" false="" no_head} \
-      ~{true="--no-sq" false="" no_sq} \
+      ~{if (no_head) then "--no-head" else ""} \
+      ~{if (no_sq) then "--no-sq" else ""} \
       ~{if defined(rg_id) then ("--rg-id " +  '"' + rg_id + '"') else ""} \
       ~{if defined(rg) then ("--rg " +  '"' + rg + '"') else ""} \
-      ~{true="--omit-sec-seq" false="" omit_sec_seq} \
+      ~{if (omit_sec_seq) then "--omit-sec-seq" else ""} \
       ~{if defined(oslash_off_rate) then ("-o/--offrate " +  '"' + oslash_off_rate + '"') else ""} \
       ~{if defined(p_slash_threads) then ("-p/--threads " +  '"' + p_slash_threads + '"') else ""} \
-      ~{true="--reorder" false="" reorder} \
-      ~{true="--mm" false="" mm} \
-      ~{true="--qc-filter" false="" qc_filter} \
+      ~{if (reorder) then "--reorder" else ""} \
+      ~{if (mm) then "--mm" else ""} \
+      ~{if (qc_filter) then "--qc-filter" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(non_deterministic) then ("--non-deterministic " +  '"' + non_deterministic + '"') else ""} \
-      ~{true="--remove-chrname" false="" remove_chr_name} \
-      ~{true="--add-chrname" false="" add_chr_name} \
-      ~{true="-h/--help" false="" h_slash_help}
+      ~{if (remove_chr_name) then "--remove-chrname" else ""} \
+      ~{if (add_chr_name) then "--add-chrname" else ""} \
+      ~{if (h_slash_help) then "-h/--help" else ""}
   >>>
   parameter_meta {
     query_input_files_fastq: "query input files are FASTQ .fq/.fastq (default)"
@@ -205,10 +243,10 @@ task Hisat2AlignL {
     np: "penalty for non-A/C/G/Ts in read/ref (1)"
     rdg: ",<int>  read gap open, extend penalties (5,3)"
     rfg: ",<int>  reference gap open, extend penalties (5,3)"
-    score_min: "min acceptable alignment score w/r/t read length (L,0.0,-0.2)"
-    it_searches_mean: "It searches for at most <int> distinct, primary alignments for each read. Primary alignments mean  alignments whose alignment score is equal to or higher than any other alignments. The search terminates  when it cannot find more distinct valid alignments, or when it finds <int>, whichever happens first.  The alignment score for a paired-end alignment equals the sum of the alignment scores of  the individual mates. Each reported read or pair alignment beyond the first has the SAM ‘secondary’ bit  (which equals 256) set in its FLAGS field. For reads that have more than <int> distinct,  valid alignments, hisat2 does not guarantee that the <int> alignments reported are the best possible  in terms of alignment score. Default: 5 (linear index) or 10 (graph index). Note: HISAT2 is not designed with large values for -k in mind, and when aligning reads to long,  repetitive genomes, large -k could make alignment much slower."
-    max_seeds: "HISAT2, like other aligners, uses seed-and-extend approaches. HISAT2 tries to extend seeds to  full-length alignments. In HISAT2, --max-seeds is used to control the maximum number of seeds that  will be extended. For DNA-read alignment (--no-spliced-alignment), HISAT2 extends up to these many seeds and skips the rest of the seeds. For RNA-read alignment, HISAT2 skips extending seeds and reports  no alignments if the number of seeds is larger than the number specified with the option,  to be compatible with previous versions of HISAT2. Large values for --max-seeds may improve alignment  sensitivity, but HISAT2 is not designed with large values for --max-seeds in mind, and when aligning  reads to long, repetitive genomes, large --max-seeds could make alignment much slower.  The default value is the maximum of 5 and the value that comes with -k times 2."
-    a_slash_all: "HISAT2 reports all alignments it can find. Using the option is equivalent to using both --max-seeds  and -k with the maximum value that a 64-bit signed integer can represent (9,223,372,036,854,775,807)."
+    score_min: "min acceptable alignment score w/r/t read length\\n(L,0.0,-0.2)"
+    it_searches_find: "It searches for at most <int> distinct, primary alignments for each read. Primary alignments mean\\nalignments whose alignment score is equal to or higher than any other alignments. The search terminates\\nwhen it cannot find more distinct valid alignments, or when it finds <int>, whichever happens first.\\nThe alignment score for a paired-end alignment equals the sum of the alignment scores of\\nthe individual mates. Each reported read or pair alignment beyond the first has the SAM ‘secondary’ bit\\n(which equals 256) set in its FLAGS field. For reads that have more than <int> distinct,\\nvalid alignments, hisat2 does not guarantee that the <int> alignments reported are the best possible\\nin terms of alignment score. Default: 5 (linear index) or 10 (graph index).\\nNote: HISAT2 is not designed with large values for -k in mind, and when aligning reads to long,\\nrepetitive genomes, large -k could make alignment much slower."
+    max_seeds: "HISAT2, like other aligners, uses seed-and-extend approaches. HISAT2 tries to extend seeds to\\nfull-length alignments. In HISAT2, --max-seeds is used to control the maximum number of seeds that\\nwill be extended. For DNA-read alignment (--no-spliced-alignment), HISAT2 extends up to these many seeds\\nand skips the rest of the seeds. For RNA-read alignment, HISAT2 skips extending seeds and reports\\nno alignments if the number of seeds is larger than the number specified with the option,\\nto be compatible with previous versions of HISAT2. Large values for --max-seeds may improve alignment\\nsensitivity, but HISAT2 is not designed with large values for --max-seeds in mind, and when aligning\\nreads to long, repetitive genomes, large --max-seeds could make alignment much slower.\\nThe default value is the maximum of 5 and the value that comes with -k times 2."
+    a_slash_all: "HISAT2 reports all alignments it can find. Using the option is equivalent to using both --max-seeds\\nand -k with the maximum value that a 64-bit signed integer can represent (9,223,372,036,854,775,807)."
     repeat: "report alignments to repeat sequences directly"
     i_slash_mini_ns: "minimum fragment length (0), only valid with --no-spliced-alignment"
     x_slash_max_ins: "maximum fragment length (500), only valid with --no-spliced-alignment"
@@ -225,7 +263,7 @@ task Hisat2AlignL {
     no_head: "suppress header lines, i.e. lines starting with @"
     no_sq: "suppress @SQ header lines"
     rg_id: "set read group id, reflected in @RG line and RG:Z: opt field"
-    rg: "add <text> (\"lab:value\") to @RG line of SAM header. Note: @RG line only printed when --rg-id is set."
+    rg: "add <text> (\\\"lab:value\\\") to @RG line of SAM header.\\nNote: @RG line only printed when --rg-id is set."
     omit_sec_seq: "put '*' in SEQ and QUAL fields for secondary alignments."
     oslash_off_rate: "override offrate of index; must be >= index's offrate"
     p_slash_threads: "number of alignment threads to launch (1)"
@@ -235,8 +273,30 @@ task Hisat2AlignL {
     seed: "seed for random number generator (0)"
     non_deterministic: "rand. gen. arbitrarily instead of using read attributes"
     remove_chr_name: "remove 'chr' from reference names in alignment"
-    add_chr_name: "add 'chr' to reference names in alignment "
+    add_chr_name: "add 'chr' to reference names in alignment"
     h_slash_help: "print this usage message"
     his_at_two_align: ""
+    ht_two_idx: ""
+    m_one: ""
+    m_two: ""
+    var_80: ""
+    var_81: ""
+    specified: ""
+    file: ""
+    files: ""
+    index: ""
+    many: ""
+    filename: ""
+    for: ""
+    times_dot: ""
+    with: ""
+    e_dot_gdot: ""
+    var_92: ""
+    prefix: ""
+    unpaired: ""
+    var_output: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,4 +1,7 @@
-&id003 !Command
+&id002 !Command
+command:
+- bioformats
+- gff2to3
 positional:
 - !Positional
   description: a GFF2 file
@@ -12,7 +15,7 @@ positional:
   optional: false
 named:
 - !Flag
-  description: ignore incorrect records in the specified input GFF2 file
+  description: "ignore incorrect records in the specified input GFF2\nfile\n"
   synonyms:
   - -i
   - --ignore_incorrect_records
@@ -24,10 +27,9 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- bioformats
-- gff2to3
 parent: &id001 !Command
+  command:
+  - bioformats
   positional: []
   named:
   - !Flag
@@ -36,379 +38,33 @@ parent: &id001 !Command
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - bioformats
   parent:
   subcommands:
   - !Command
-    positional:
-    - !Positional
-      description: a BED file
-      position: 0
-      name: bed_file
-      optional: false
-    - !Positional
-      description: an output file
-      position: 1
-      name: output_file
-      optional: false
-    named:
-    - !Flag
-      description: 'a table name (default: Table)'
-      synonyms:
-      - -n
-      - --name
-      args: !SimpleFlagArg
-        name: NAME
-      optional: true
-    - !Flag
-      description: 'a table description (default: Description)'
-      synonyms:
-      - -d
-      - --description
-      args: !SimpleFlagArg
-        name: DESCRIPTION
-      optional: true
-    - !Flag
-      description: 'the number of lines to analyzefrom the input file (default: 100)'
-      synonyms:
-      - -l
-      - --lines
-      args: !SimpleFlagArg
-        name: LINES
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - bioformats
-    - bedautosql
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
-      \ or use -h to view the help message. bedautosql\n       [-h] [-n NAME] [-d\
-      \ DESCRIPTION] [-l LINES] bed_file output_file\n\nGet an autoSql table structure\
-      \ for the specified BED file\n\npositional arguments:\n  bed_file          \
-      \    a BED file\n  output_file           an output file\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n  -n NAME, --name\
-      \ NAME  a table name (default: Table)\n  -d DESCRIPTION, --description DESCRIPTION\n\
-      \                        a table description (default: Description)\n  -l LINES,\
-      \ --lines LINES\n                        the number of lines to analyzefrom\
-      \ the input file\n                        (default: 100)\n"
-    generated_using: &id002
-    - --help
-  - !Command
+    - ncbirenameseq
     positional:
     - !Positional
-      description: a FASTA file of sequences to reorder
-      position: 0
-      name: fasta
-      optional: false
-    - !Positional
-      description: a file with the sequence order
-      position: 1
-      name: order_file
-      optional: false
-    - !Positional
-      description: an output FASTA file of reordered sequences
-      position: 2
-      name: output
-      optional: false
-    named:
-    - !Flag
-      description: ignore sequences in the specified order file that are missing in
-        the input FASTA file
-      synonyms:
-      - -i
-      - --ignore_missing
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - bioformats
-    - fastareorder
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
-      \ or use -h to view the help message. fastareorder\n       [-h] [-i] fasta order_file\
-      \ output\n\nReorder sequences in a FASTA file.\n\npositional arguments:\n  fasta\
-      \                 a FASTA file of sequences to reorder\n  order_file       \
-      \     a file with the sequence order\n  output                an output FASTA\
-      \ file of reordered sequences\n\noptional arguments:\n  -h, --help         \
-      \   show this help message and exit\n  -i, --ignore_missing  ignore sequences\
-      \ in the specified order file that are\n                        missing in the\
-      \ input FASTA file\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: an input file of features to be filtered
+      description: '{refseq_full,genbank_full,refseq_gi,genbank_gi,refseq,genbank,chr_refseq,chr_genbank}'
       position: 0
       name: input_file
       optional: false
     - !Positional
-      description: a FASTA file of sequences the features are related to
+      description: '{refseq_full,genbank_full,refseq_gi,genbank_gi,refseq,genbank,chr_refseq,chr_genbank,ucsc}'
       position: 1
-      name: fasta_file
-      optional: false
-    - !Positional
-      description: an output file of filtered features
-      position: 2
       name: output_file
       optional: false
-    named:
-    - !Flag
-      description: 'the input file type (default: bed)'
-      synonyms:
-      - -t
-      - --type
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? vcf
-          ? bed
-      optional: true
-    - !Flag
-      description: 'the flanking region length (default: 100)'
-      synonyms:
-      - -l
-      - --length
-      args: !SimpleFlagArg
-        name: LENGTH
-      optional: true
-    - !Flag
-      description: 'require flanks to have exactly the specified length (it may be
-        shorter if a feature is located near a sequence start or end) (default: False)'
-      synonyms:
-      - -s
-      - --strict
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - bioformats
-    - flanknfilter
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
-      \ or use -h to view the help message. flanknfilter\n       [-h] [-t {bed,vcf}]\
-      \ [-l LENGTH] [-s] input_file fasta_file output_file\n\nGiven features from\
-      \ a BED or VCF file, check if they contain N's in their\nflanking regions of\
-      \ the specified length.\n\npositional arguments:\n  input_file            an\
-      \ input file of features to be filtered\n  fasta_file            a FASTA file\
-      \ of sequences the features are related to\n  output_file           an output\
-      \ file of filtered features\n\noptional arguments:\n  -h, --help           \
-      \ show this help message and exit\n  -t {bed,vcf}, --type {bed,vcf}\n      \
-      \                  the input file type (default: bed)\n  -l LENGTH, --length\
-      \ LENGTH\n                        the flanking region length (default: 100)\n\
-      \  -s, --strict          require flanks to have exactly the specified length\n\
-      \                        (it may be shorter if a feature is located near a\n\
-      \                        sequence start or end) (default: False)\n"
-    generated_using: *id002
-  - !Command
-    positional:
     - !Positional
-      description: a GFF3 file
+      description: a file to change sequence names in
       position: 0
-      name: gff_file
+      name: input_file
       optional: false
     - !Positional
-      description: type of features to be processed
-      position: 1
-      name: type
-      optional: false
-    - !Positional
-      description: the output file in the BED format
-      position: 2
+      description: an output file for renamed sequences
+      position: 0
       name: output_file
       optional: false
-    named:
-    - !Flag
-      description: '[ATTRIBUTES [ATTRIBUTES ...]], --attributes [ATTRIBUTES [ATTRIBUTES
-        ...]] attributes to include to the output BED file (default: None)'
-      synonyms:
-      - -a
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'an attribute tag of a feature name (default: None)'
-      synonyms:
-      - -n
-      - --name_tag
-      args: !SimpleFlagArg
-        name: NAME_TAG
-      optional: true
-    - !Flag
-      description: 'the missing tag value (default: NA)'
-      synonyms:
-      - -m
-      - --missing_value
-      args: !SimpleFlagArg
-        name: MISSING_VALUE
-      optional: true
-    - !Flag
-      description: 'output a BED12 file of genes (default: False)'
-      synonyms:
-      - -g
-      - --genes
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'an attribute tag of exon genes (default: Parent)'
-      synonyms:
-      - -p
-      - --parent_tag
-      args: !SimpleFlagArg
-        name: PARENT_TAG
-      optional: true
-    - !Flag
-      description: 'do not check the order of GFF3 file records (default: False)'
-      synonyms:
-      - --no_order_check
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - bioformats
-    - gff2bed
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
-      \ or use -h to view the help message. gff2bed\n       [-h] [-a [ATTRIBUTES [ATTRIBUTES\
-      \ ...]]] [-n NAME_TAG]\n       [-m MISSING_VALUE] [-g] [-p PARENT_TAG] [--no_order_check]\n\
-      \       gff_file type output_file\n\nConvert a GFF3 file to the BED format.\n\
-      \npositional arguments:\n  gff_file              a GFF3 file\n  type       \
-      \           type of features to be processed\n  output_file           the output\
-      \ file in the BED format\n\noptional arguments:\n  -h, --help            show\
-      \ this help message and exit\n  -a [ATTRIBUTES [ATTRIBUTES ...]], --attributes\
-      \ [ATTRIBUTES [ATTRIBUTES ...]]\n                        attributes to include\
-      \ to the output BED file (default:\n                        None)\n  -n NAME_TAG,\
-      \ --name_tag NAME_TAG\n                        an attribute tag of a feature\
-      \ name (default: None)\n  -m MISSING_VALUE, --missing_value MISSING_VALUE\n\
-      \                        the missing tag value (default: NA)\n  -g, --genes\
-      \           output a BED12 file of genes (default: False)\n  -p PARENT_TAG,\
-      \ --parent_tag PARENT_TAG\n                        an attribute tag of exon\
-      \ genes (default: Parent)\n  --no_order_check      do not check the order of\
-      \ GFF3 file records (default:\n                        False)\n"
-    generated_using: *id002
-  - *id003
-  - !Command
-    positional:
-    - !Positional
-      description: a GFF3 file
-      position: 0
-      name: gff_file
-      optional: false
-    named:
-    - !Flag
-      description: filter GFF3 features by the specified source
-      synonyms:
-      - -s
-      - --source
-      args: !SimpleFlagArg
-        name: SOURCE
-      optional: true
-    - !Flag
-      description: filter GFF3 features by the specified type
-      synonyms:
-      - -t
-      - --type
-      args: !SimpleFlagArg
-        name: TYPE
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - bioformats
-    - gfftagstat
-    parent: *id001
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
-      \ or use -h to view the help message. gfftagstat\n       [-h] [-s SOURCE] [-t\
-      \ TYPE] gff_file\n\nGet statistics on attribure tags of a GFF file.\n\npositional\
-      \ arguments:\n  gff_file              a GFF3 file\n\noptional arguments:\n \
-      \ -h, --help            show this help message and exit\n  -s SOURCE, --source\
-      \ SOURCE\n                        filter GFF3 features by the specified source\n\
-      \  -t TYPE, --type TYPE  filter GFF3 features by the specified type\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: bioformats
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: command
-      optional: true
     named:
     - !Flag
       description: the input file is of the FASTA format
@@ -554,11 +210,9 @@ parent: &id001 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bioformats
-    - ncbirenameseq
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -611,18 +265,23 @@ parent: &id001 !Command
       gi|568815597|ref|NC_000001.11|\n\tgenbank_full:\tgi|568336023|gb|CM000663.2|\n\
       \trefseq_gi:\t568815597\n\tgenbank_gi:\t568336023\n\trefseq: \tNC_000001.11\n\
       \tgenbank:\tCM000663.2\n\tchr_refseq:\t1_NC_000001.11\n\tchr_genbank:\t1_CM000663.2\n"
-    generated_using: *id002
+    generated_using: &id003
+    - --help
+  - *id002
   - !Command
+    command:
+    - bioformats
+    - renameseq
     positional:
     - !Positional
-      description: a file containing a table of original and new sequence names
+      description: a file containing a table of original and new sequence
       position: 0
       name: renaming_table
       optional: false
     - !Positional
-      description: a file to change sequence names in
+      description: input_file            a file to change sequence names in
       position: 1
-      name: input_file
+      name: names
       optional: false
     - !Positional
       description: an output file with renamed sequences
@@ -638,8 +297,8 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: the number of the column that contains sequence names to be changed
-        staring from 1
+      description: "the number of the column that contains sequence names\nto be changed\
+        \ staring from 1"
       synonyms:
       - -c
       - --column
@@ -647,8 +306,8 @@ parent: &id001 !Command
         name: COLUMN
       optional: true
     - !Flag
-      description: perform reverse renaming, that is, change original and new names
-        in the renaming table
+      description: "perform reverse renaming, that is, change original and\nnew names\
+        \ in the renaming table"
       synonyms:
       - -r
       - --revert
@@ -661,15 +320,15 @@ parent: &id001 !Command
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: a character that designates comment lines in the specified plain-text
-        file
+      description: "a character that designates comment lines in the\nspecified plain-text\
+        \ file"
       synonyms:
       - --comment_char
       args: !SimpleFlagArg
         name: COMMENT_CHAR
       optional: true
     - !Flag
-      description: a symbol that separates columns in the specified plain-text file
+      description: "a symbol that separates columns in the specified\nplain-text file\n"
       synonyms:
       - -s
       - --separator
@@ -682,11 +341,9 @@ parent: &id001 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bioformats
-    - renameseq
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -715,8 +372,11 @@ parent: &id001 !Command
       \                      specified plain-text file\n  -s SEPARATOR, --separator\
       \ SEPARATOR\n                        a symbol that separates columns in the\
       \ specified\n                        plain-text file\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - bioformats
+    - rmout2bed
     positional:
     - !Positional
       description: a RepeatMasker out file
@@ -730,32 +390,32 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: 'how to choose colors of BED repeat records (default: class)'
+      description: "how to choose colors of BED repeat records (default:\nclass)"
       synonyms:
       - -c
       - --color
       args: !ChoiceFlagArg
         choices: !!set
           ? identity
-          ? class
           ? class_identity
+          ? class
       optional: true
     - !Flag
-      description: 'how to choose names of BED repeat records (default: id)'
+      description: "how to choose names of BED repeat records (default:\nid)"
       synonyms:
       - -n
       - --name
       args: !ChoiceFlagArg
         choices: !!set
-          ? class
           ? class_family
-          ? family
+          ? class
           ? id
           ? name
+          ? family
       optional: true
     - !Flag
-      description: 'output only repeat loci (the output is a BED3 file) (default:
-        False)'
+      description: "output only repeat loci (the output is a BED3 file)\n(default:\
+        \ False)\n"
       synonyms:
       - -s
       - --short
@@ -767,11 +427,9 @@ parent: &id001 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bioformats
-    - rmout2bed
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -794,8 +452,80 @@ parent: &id001 !Command
       \ names of BED repeat records (default:\n                        id)\n  -s,\
       \ --short           output only repeat loci (the output is a BED3 file)\n  \
       \                      (default: False)\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - bioformats
+    - bedautosql
+    positional:
+    - !Positional
+      description: a BED file
+      position: 0
+      name: bed_file
+      optional: false
+    - !Positional
+      description: an output file
+      position: 1
+      name: output_file
+      optional: false
+    named:
+    - !Flag
+      description: 'a table name (default: Table)'
+      synonyms:
+      - -n
+      - --name
+      args: !SimpleFlagArg
+        name: NAME
+      optional: true
+    - !Flag
+      description: 'a table description (default: Description)'
+      synonyms:
+      - -d
+      - --description
+      args: !SimpleFlagArg
+        name: DESCRIPTION
+      optional: true
+    - !Flag
+      description: "the number of lines to analyzefrom the input file\n(default: 100)\n"
+      synonyms:
+      - -l
+      - --lines
+      args: !SimpleFlagArg
+        name: LINES
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
+      \ or use -h to view the help message. bedautosql\n       [-h] [-n NAME] [-d\
+      \ DESCRIPTION] [-l LINES] bed_file output_file\n\nGet an autoSql table structure\
+      \ for the specified BED file\n\npositional arguments:\n  bed_file          \
+      \    a BED file\n  output_file           an output file\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  -n NAME, --name\
+      \ NAME  a table name (default: Table)\n  -d DESCRIPTION, --description DESCRIPTION\n\
+      \                        a table description (default: Description)\n  -l LINES,\
+      \ --lines LINES\n                        the number of lines to analyzefrom\
+      \ the input file\n                        (default: 100)\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - bioformats
+    - snpeff2bed
     positional:
     - !Positional
       description: an snpEff-annotated VCF file
@@ -820,11 +550,9 @@ parent: &id001 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bioformats
-    - snpeff2bed
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -841,8 +569,112 @@ parent: &id001 !Command
       \    an snpEff-annotated VCF file\n  bed_file    the output BED file of annotated\
       \ variants\n\noptional arguments:\n  -h, --help  show this help message and\
       \ exit\n  --bed3      convert to the BED3 format\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - bioformats
+    - gff2bed
+    positional:
+    - !Positional
+      description: a GFF3 file
+      position: 0
+      name: gff_file
+      optional: false
+    - !Positional
+      description: type of features to be processed
+      position: 1
+      name: type
+      optional: false
+    - !Positional
+      description: the output file in the BED format
+      position: 2
+      name: output_file
+      optional: false
+    named:
+    - !Flag
+      description: "[ATTRIBUTES [ATTRIBUTES ...]], --attributes [ATTRIBUTES [ATTRIBUTES\
+        \ ...]]\nattributes to include to the output BED file (default:\nNone)"
+      synonyms:
+      - -a
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'an attribute tag of a feature name (default: None)'
+      synonyms:
+      - -n
+      - --name_tag
+      args: !SimpleFlagArg
+        name: NAME_TAG
+      optional: true
+    - !Flag
+      description: 'the missing tag value (default: NA)'
+      synonyms:
+      - -m
+      - --missing_value
+      args: !SimpleFlagArg
+        name: MISSING_VALUE
+      optional: true
+    - !Flag
+      description: 'output a BED12 file of genes (default: False)'
+      synonyms:
+      - -g
+      - --genes
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'an attribute tag of exon genes (default: Parent)'
+      synonyms:
+      - -p
+      - --parent_tag
+      args: !SimpleFlagArg
+        name: PARENT_TAG
+      optional: true
+    - !Flag
+      description: "do not check the order of GFF3 file records (default:\nFalse)\n"
+      synonyms:
+      - --no_order_check
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
+      \ or use -h to view the help message. gff2bed\n       [-h] [-a [ATTRIBUTES [ATTRIBUTES\
+      \ ...]]] [-n NAME_TAG]\n       [-m MISSING_VALUE] [-g] [-p PARENT_TAG] [--no_order_check]\n\
+      \       gff_file type output_file\n\nConvert a GFF3 file to the BED format.\n\
+      \npositional arguments:\n  gff_file              a GFF3 file\n  type       \
+      \           type of features to be processed\n  output_file           the output\
+      \ file in the BED format\n\noptional arguments:\n  -h, --help            show\
+      \ this help message and exit\n  -a [ATTRIBUTES [ATTRIBUTES ...]], --attributes\
+      \ [ATTRIBUTES [ATTRIBUTES ...]]\n                        attributes to include\
+      \ to the output BED file (default:\n                        None)\n  -n NAME_TAG,\
+      \ --name_tag NAME_TAG\n                        an attribute tag of a feature\
+      \ name (default: None)\n  -m MISSING_VALUE, --missing_value MISSING_VALUE\n\
+      \                        the missing tag value (default: NA)\n  -g, --genes\
+      \           output a BED12 file of genes (default: False)\n  -p PARENT_TAG,\
+      \ --parent_tag PARENT_TAG\n                        an attribute tag of exon\
+      \ genes (default: Parent)\n  --no_order_check      do not check the order of\
+      \ GFF3 file records (default:\n                        False)\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - bioformats
+    - vcfeffect2bed
     positional:
     - !Positional
       description: an snpEff-annotated VCF file
@@ -856,6 +688,18 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
+      description: "[{HIGH,MODERATE,LOW,MODIFIER} ...], --impacts {HIGH,MODERATE,LOW,MODIFIER}\
+        \ [{HIGH,MODERATE,LOW,MODIFIER} ...]\nimpacts of effects to be reported"
+      synonyms:
+      - -i
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? MODIFIER
+          ? LOW
+          ? MODERATE
+          ? HIGH
+      optional: true
+    - !Flag
       description: '[{REFHET,COMHET,ALTHOM} ...], --genotypes {REFHET,COMHET,ALTHOM}
         [{REFHET,COMHET,ALTHOM} ...]'
       synonyms:
@@ -863,8 +707,8 @@ parent: &id001 !Command
       args: !ChoiceFlagArg
         choices: !!set
           ? ALTHOM
-          ? COMHET
           ? REFHET
+          ? COMHET
       optional: true
     - !Flag
       description: ignore errors in an input file
@@ -878,15 +722,14 @@ parent: &id001 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bioformats
-    - vcfeffect2bed
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
-      description: ''
+      description: show this help message and exit
       synonyms:
       - -h
+      - --help
       args: !EmptyFlagArg {}
       optional: true
     usage_flag:
@@ -906,8 +749,145 @@ parent: &id001 !Command
       \ ...]\n  --ignore_errors       ignore errors in an input file\n\nGenotype values:\n\
       \tREFHET - a heterozygote with one reference allele\n\tCOMHET - a heterozygote\
       \ with both alternative alleles\n\tALTHOM - an alternative homozygote\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - bioformats
+    - flanknfilter
+    positional:
+    - !Positional
+      description: an input file of features to be filtered
+      position: 0
+      name: input_file
+      optional: false
+    - !Positional
+      description: a FASTA file of sequences the features are related to
+      position: 1
+      name: fasta_file
+      optional: false
+    - !Positional
+      description: an output file of filtered features
+      position: 2
+      name: output_file
+      optional: false
+    named:
+    - !Flag
+      description: 'the input file type (default: bed)'
+      synonyms:
+      - -t
+      - --type
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? bed
+          ? vcf
+      optional: true
+    - !Flag
+      description: 'the flanking region length (default: 100)'
+      synonyms:
+      - -l
+      - --length
+      args: !SimpleFlagArg
+        name: LENGTH
+      optional: true
+    - !Flag
+      description: "require flanks to have exactly the specified length\n(it may be\
+        \ shorter if a feature is located near a\nsequence start or end) (default:\
+        \ False)\n"
+      synonyms:
+      - -s
+      - --strict
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
+      \ or use -h to view the help message. flanknfilter\n       [-h] [-t {bed,vcf}]\
+      \ [-l LENGTH] [-s] input_file fasta_file output_file\n\nGiven features from\
+      \ a BED or VCF file, check if they contain N's in their\nflanking regions of\
+      \ the specified length.\n\npositional arguments:\n  input_file            an\
+      \ input file of features to be filtered\n  fasta_file            a FASTA file\
+      \ of sequences the features are related to\n  output_file           an output\
+      \ file of filtered features\n\noptional arguments:\n  -h, --help           \
+      \ show this help message and exit\n  -t {bed,vcf}, --type {bed,vcf}\n      \
+      \                  the input file type (default: bed)\n  -l LENGTH, --length\
+      \ LENGTH\n                        the flanking region length (default: 100)\n\
+      \  -s, --strict          require flanks to have exactly the specified length\n\
+      \                        (it may be shorter if a feature is located near a\n\
+      \                        sequence start or end) (default: False)\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - bioformats
+    - gfftagstat
+    positional:
+    - !Positional
+      description: a GFF3 file
+      position: 0
+      name: gff_file
+      optional: false
+    named:
+    - !Flag
+      description: filter GFF3 features by the specified source
+      synonyms:
+      - -s
+      - --source
+      args: !SimpleFlagArg
+        name: SOURCE
+      optional: true
+    - !Flag
+      description: filter GFF3 features by the specified type
+      synonyms:
+      - -t
+      - --type
+      args: !SimpleFlagArg
+        name: TYPE
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
+      \ or use -h to view the help message. gfftagstat\n       [-h] [-s SOURCE] [-t\
+      \ TYPE] gff_file\n\nGet statistics on attribure tags of a GFF file.\n\npositional\
+      \ arguments:\n  gff_file              a GFF3 file\n\noptional arguments:\n \
+      \ -h, --help            show this help message and exit\n  -s SOURCE, --source\
+      \ SOURCE\n                        filter GFF3 features by the specified source\n\
+      \  -t TYPE, --type TYPE  filter GFF3 features by the specified type\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - bioformats
+    - vcfgeno2bed
     positional:
     - !Positional
       description: a VCF file
@@ -921,8 +901,8 @@ parent: &id001 !Command
       optional: false
     named:
     - !Flag
-      description: a file with the list of individuals to be considered for genotype
-        counting
+      description: "a file with the list of individuals to be considered\nfor genotype\
+        \ counting\n"
       synonyms:
       - -i
       - --individuals
@@ -935,11 +915,9 @@ parent: &id001 !Command
       - -v
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - bioformats
-    - vcfgeno2bed
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -958,7 +936,65 @@ parent: &id001 !Command
       \ this help message and exit\n  -i INDIVIDUALS, --individuals INDIVIDUALS\n\
       \                        a file with the list of individuals to be considered\n\
       \                        for genotype counting\n"
-    generated_using: *id002
+    generated_using: *id003
+  - !Command
+    command:
+    - bioformats
+    - fastareorder
+    positional:
+    - !Positional
+      description: a FASTA file of sequences to reorder
+      position: 0
+      name: fasta
+      optional: false
+    - !Positional
+      description: a file with the sequence order
+      position: 1
+      name: order_file
+      optional: false
+    - !Positional
+      description: an output FASTA file of reordered sequences
+      position: 2
+      name: output
+      optional: false
+    named:
+    - !Flag
+      description: "ignore sequences in the specified order file that are\nmissing\
+        \ in the input FASTA file\n"
+      synonyms:
+      - -i
+      - --ignore_missing
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command\
+      \ or use -h to view the help message. fastareorder\n       [-h] [-i] fasta order_file\
+      \ output\n\nReorder sequences in a FASTA file.\n\npositional arguments:\n  fasta\
+      \                 a FASTA file of sequences to reorder\n  order_file       \
+      \     a file with the sequence order\n  output                an output FASTA\
+      \ file of reordered sequences\n\noptional arguments:\n  -h, --help         \
+      \   show this help message and exit\n  -i, --ignore_missing  ignore sequences\
+      \ in the specified order file that are\n                        missing in the\
+      \ input FASTA file\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -997,8 +1033,9 @@ parent: &id001 !Command
     \ counts from a VCF file in the BED3+\n                        format\n\noptional\
     \ arguments:\n  -h, --help            show this help message and exit\n  -v, --version\
     \         show program's version number and exit\n"
-  generated_using: *id002
+  generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -1015,4 +1052,4 @@ help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command or
   \ arguments:\n  -h, --help            show this help message and exit\n  -i, --ignore_incorrect_records\n\
   \                        ignore incorrect records in the specified input GFF2\n\
   \                        file\n"
-generated_using: *id002
+generated_using: *id003

@@ -2,34 +2,38 @@ version 1.0
 
 task Borf {
   input {
-    String? output_path
+    File? output_path
     Boolean? strand
     Boolean? all_orfs
-    String? orf_length
-    String? upstream_incomplete_length
-    String? batch_size
+    Int? upstream_incomplete_length
+    Int? batch_size
     Boolean? force_overwrite
-    String fast_a_file
+    Int? l
+    String cut_off
   }
   command <<<
     borf \
-      ~{fast_a_file} \
+      ~{cut_off} \
       ~{if defined(output_path) then ("--output_path " +  '"' + output_path + '"') else ""} \
-      ~{true="--strand" false="" strand} \
-      ~{true="--all_orfs" false="" all_orfs} \
-      ~{if defined(orf_length) then ("--orf_length " +  '"' + orf_length + '"') else ""} \
+      ~{if (strand) then "--strand" else ""} \
+      ~{if (all_orfs) then "--all_orfs" else ""} \
       ~{if defined(upstream_incomplete_length) then ("--upstream_incomplete_length " +  '"' + upstream_incomplete_length + '"') else ""} \
       ~{if defined(batch_size) then ("--batch_size " +  '"' + batch_size + '"') else ""} \
-      ~{true="--force_overwrite" false="" force_overwrite}
+      ~{if (force_overwrite) then "--force_overwrite" else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
   parameter_meta {
-    output_path: "path to write output files. [OUTPUT_PATH].pep and [OUTPUT_PATH].txt (default: input .fa file name)"
+    output_path: "path to write output files. [OUTPUT_PATH].pep and\\n[OUTPUT_PATH].txt (default: input .fa file name)"
     strand: "Predict orfs for both strands"
-    all_orfs: "Return all ORFs for each sequence longer than the cutoff"
-    orf_length: "Minimum ORF length (AA). (default: 100)"
-    upstream_incomplete_length: "Minimum length (AA) of uninterupted sequence upstream of ORF to be included for incomplete_5prime transcripts (default: 50)"
+    all_orfs: "Return all ORFs for each sequence longer than the"
+    upstream_incomplete_length: "Minimum length (AA) of uninterupted sequence upstream\\nof ORF to be included for incomplete_5prime\\ntranscripts (default: 50)"
     batch_size: "Number of fasta records to read in in each batch"
-    force_overwrite: "Force overwriting of output files?"
-    fast_a_file: "fasta file to predict ORFs"
+    force_overwrite: "Force overwriting of output files?\\n"
+    l: ""
+    cut_off: "-l ORF_LENGTH, --orf_length ORF_LENGTH"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_path = "${in_output_path}"
   }
 }

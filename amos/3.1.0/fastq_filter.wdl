@@ -4,4 +4,7 @@ task FastqFilter {
   command <<<
     fastq_filter
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

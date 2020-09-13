@@ -1,58 +1,66 @@
 class: CommandLineTool
 id: ../../../tinscan_align.cwl
 inputs:
-- id: a_dir
+- id: in_a_dir
   doc: Name of directory containing sequences from A genome.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --adir
-- id: b_dir
+- id: in_b_dir
   doc: Name of directory containing sequences from B genome.
-  type: string
+  type: Directory
   inputBinding:
     prefix: --bdir
-- id: pairs
-  doc: 'Optional: Tab-delimited 2-col file specifying target:query sequence pairs
-    to be aligned'
-  type: string
+- id: in_pairs
+  doc: "Optional: Tab-delimited 2-col file specifying\ntarget:query sequence pairs\
+    \ to be aligned"
+  type: File
   inputBinding:
     prefix: --pairs
-- id: outdir
+- id: in_outdir
   doc: 'Write output files to this directory. (Default: cwd)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: outfile
+- id: in_outfile
   doc: Name of alignment result file.
-  type: string
+  type: File
   inputBinding:
     prefix: --outfile
-- id: verbose
+- id: in_verbose
   doc: If set report LASTZ progress.
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: lz_path
+- id: in_lz_path
   doc: Custom path to LASTZ executable if not in $PATH.
-  type: string
+  type: File
   inputBinding:
     prefix: --lzpath
-- id: mini_dt
+- id: in_mini_dt
   doc: Minimum alignment identity to report.
-  type: long
+  type: string
   inputBinding:
     prefix: --minIdt
-- id: min_len
+- id: in_min_len
   doc: Minimum alignment length to report.
   type: long
   inputBinding:
     prefix: --minLen
-- id: hsp_thresh
-  doc: LASTZ min HSP threshold. Increase for stricter matches.
-  type: string
+- id: in_hsp_thresh
+  doc: "LASTZ min HSP threshold. Increase for stricter\nmatches.\n"
+  type: long
   inputBinding:
     prefix: --hspthresh
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: 'Write output files to this directory. (Default: cwd)'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
 cwlVersion: v1.1
 baseCommand:
 - tinscan-align

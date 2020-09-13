@@ -2,8 +2,8 @@ version 1.0
 
 task PhyluceGenetreesReformatTrees {
   input {
-    String? input_trees_directory
-    String? output_trees_directory
+    Directory? input_trees_directory
+    Directory? output_trees_directory
     String? input_format
     String? output_format
     String? do_not_preserve_spaces
@@ -21,6 +21,10 @@ task PhyluceGenetreesReformatTrees {
     output_trees_directory: "The output trees directory"
     input_format: "The tree file format"
     output_format: "The tree file format"
-    do_not_preserve_spaces: "Do not retain spaces in output names"
+    do_not_preserve_spaces: "Do not retain spaces in output names\\n"
+  }
+  output {
+    File out_stdout = stdout()
+    Directory out_output_trees_directory = "${in_output_trees_directory}"
   }
 }

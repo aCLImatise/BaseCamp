@@ -17,4 +17,7 @@ task Dvipdf {
     input_dot_dvi: ""
     output_dot_pdf: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

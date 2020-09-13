@@ -1,57 +1,85 @@
 class: CommandLineTool
 id: ../../../pyatac_bias_vplot.cwl
 inputs:
-- id: bed
+- id: in_bed
   doc: Positions around which to generate VPlot
-  type: string
+  type: File
   inputBinding:
     prefix: --bed
-- id: sizes
+- id: in_sizes
   doc: Accepts sizes file from pyatac sizes command
-  type: long
+  type: File
   inputBinding:
     prefix: --sizes
-- id: bg
+- id: in_bg
   doc: Accepts tabix indexed file
-  type: string
+  type: File
   inputBinding:
     prefix: --bg
-- id: fast_a
+- id: in_fast_a
   doc: Accepts indexed fasta file
-  type: string
+  type: File
   inputBinding:
     prefix: --fasta
-- id: pwm
-  doc: PWM descriptor file. Default is Human.PWM.txt included in package
-  type: string
+- id: in_pwm
+  doc: "PWM descriptor file. Default is Human.PWM.txt included\nin package"
+  type: long
   inputBinding:
     prefix: --pwm
-- id: cores
+- id: in_out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
+- id: in_cores
   doc: Number of cores to use
   type: long
   inputBinding:
     prefix: --cores
-- id: weight
+- id: in_lower
+  doc: lower limit on insert size
+  type: long
+  inputBinding:
+    prefix: --lower
+- id: in_upper
+  doc: upper limit on insert size
+  type: long
+  inputBinding:
+    prefix: --upper
+- id: in_flank
+  doc: "how many bases on each side of site (or center of site)\nto include"
+  type: long
+  inputBinding:
+    prefix: --flank
+- id: in_scale
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --scale
+- id: in_weight
   doc: column in which weight information is included
   type: long
   inputBinding:
     prefix: --weight
-- id: strand
+- id: in_strand
   doc: column in which strand information is included
   type: long
   inputBinding:
     prefix: --strand
-- id: no_plot
+- id: in_no_plot
   doc: Don't plot output
   type: boolean
   inputBinding:
     prefix: --no_plot
-- id: plot_extra
+- id: in_plot_extra
   doc: Make some extra plots
   type: boolean
   inputBinding:
     prefix: --plot_extra
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pyatac

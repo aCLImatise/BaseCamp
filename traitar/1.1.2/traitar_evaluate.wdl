@@ -14,16 +14,19 @@ task TraitarEvaluate {
       ~{trait_ar_pred_f} \
       ~{gold_standard_f} \
       ~{out} \
-      ~{true="--are_pt_ids" false="" are_pt_ids} \
+      ~{if (are_pt_ids) then "--are_pt_ids" else ""} \
       ~{if defined(phenotype_archive) then ("--phenotype_archive " +  '"' + phenotype_archive + '"') else ""} \
       ~{if defined(min_samples) then ("--min_samples " +  '"' + min_samples + '"') else ""}
   >>>
   parameter_meta {
-    are_pt_ids: "set if the gold standard phenotype are index via phenotype ids rather than accessions"
-    phenotype_archive: "need if gold standard uses an accession index for mapping"
-    min_samples: "minimum number of positive and negative samples to consider phenotypes for calculation of the macro accuracy"
+    are_pt_ids: "set if the gold standard phenotype are index via\\nphenotype ids rather than accessions"
+    phenotype_archive: "need if gold standard uses an accession index for\\nmapping"
+    min_samples: "minimum number of positive and negative samples to\\nconsider phenotypes for calculation of the macro\\naccuracy\\n"
     trait_ar_pred_f: "phenotype prediction matrix as return by Traitar"
     gold_standard_f: "phenotype matrix with standard of truth"
     out: "output directory"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

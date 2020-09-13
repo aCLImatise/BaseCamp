@@ -4,4 +4,7 @@ task VcfIndvSummary {
   command <<<
     vcfIndvSummary
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

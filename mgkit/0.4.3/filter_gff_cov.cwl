@@ -1,48 +1,56 @@
 class: CommandLineTool
 id: ../../../filter_gff_cov.cwl
 inputs:
-- id: reference
+- id: in_verbose
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: in_reference
   doc: Reference FASTA file for the GFF  [required]
   type: File
   inputBinding:
     prefix: --reference
-- id: strand_specific
+- id: in_strand_specific
   doc: If the coverage must be calculated on each strand
   type: boolean
   inputBinding:
     prefix: --strand-specific
-- id: sorted
+- id: in_sorted
   doc: Assumes the GFF to be correctly sorted
   type: boolean
   inputBinding:
     prefix: --sorted
-- id: min_coverage
+- id: in_min_coverage
   doc: Minimum coverage for the contig/strand
   type: double
   inputBinding:
     prefix: --min-coverage
-- id: rename
-  doc: Emulates BLAST in reading the FASTA file (keeps only the header before the
-    first space)
+- id: in_rename
+  doc: "Emulates BLAST in reading the FASTA file (keeps\nonly the header before the\
+    \ first space)"
   type: boolean
   inputBinding:
     prefix: --rename
-- id: progress
+- id: in_progress
   doc: Shows Progress Bar
   type: boolean
   inputBinding:
     prefix: --progress
-- id: input_file
+- id: in_input_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: in_output_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - filter-gff

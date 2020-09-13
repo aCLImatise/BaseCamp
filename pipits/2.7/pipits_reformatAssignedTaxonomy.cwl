@@ -1,52 +1,55 @@
 class: CommandLineTool
 id: ../../../pipits_reformatAssignedTaxonomy.cwl
 inputs:
-- id: in
+- id: in_in
   doc: '[REQUIRED] taxonomy assignment output from RDP-CLASSIFIER'
   type: string
   inputBinding:
     prefix: --in
-- id: out
+- id: in_out
   doc: '[REQUIRED] reformatted taxonomy assignment file'
-  type: string
+  type: File
   inputBinding:
     prefix: --out
-- id: minimum_confidence_record
+- id: in_minimum_confidence_record
   doc: '[REQUIRED] Minimum confidence to record an assignment'
   type: string
   inputBinding:
     prefix: -c
-- id: re_format
+- id: in_re_format
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: taxonomy
+- id: in_taxonomy
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: assignment
+- id: in_assignment
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: output
+- id: in_output
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: from
+- id: in_from
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: rdp_classifier_dot
+- id: in_rdp_classifier_dot
   doc: ''
   type: string
   inputBinding:
     position: 5
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - pipits_reformatAssignedTaxonomy

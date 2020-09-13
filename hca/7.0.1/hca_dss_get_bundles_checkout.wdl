@@ -1,17 +1,23 @@
 version 1.0
 
-task HcaDssGetBundlesCheckout {
+task HcaDssGetbundlescheckout {
   input {
     String? replica
-    String? checkout_job_id
+    Int? rfccompliant_id_checkout
+    String use_route_returned
   }
   command <<<
-    hca dss get-bundles-checkout \
+    hca dss get_bundles_checkout \
+      ~{use_route_returned} \
       ~{if defined(replica) then ("--replica " +  '"' + replica + '"') else ""} \
-      ~{if defined(checkout_job_id) then ("--checkout-job-id " +  '"' + checkout_job_id + '"') else ""}
+      ~{if defined(rfccompliant_id_checkout) then ("--checkout-job-id " +  '"' + rfccompliant_id_checkout + '"') else ""}
   >>>
   parameter_meta {
     replica: "Replica to fetch from."
-    checkout_job_id: "A RFC4122-compliant ID for the checkout job request."
+    rfccompliant_id_checkout: "A RFC4122-compliant ID for the checkout job request.\\n"
+    use_route_returned: "Use this route with the `checkout_job_id` identifier returned by `POST /bundles/{uuid}/checkout`."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

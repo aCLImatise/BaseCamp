@@ -5,10 +5,9 @@ task StripSubsetLCBs {
     String input_x_mfa
     String input_bbc_ols
     String output_x_mfa
-    Int? var_3
+    Int? min
     String? lcb
     Int? size
-    Int? var_6
     String? genomes
     String? randomly
     String? subsample
@@ -21,10 +20,9 @@ task StripSubsetLCBs {
       ~{input_x_mfa} \
       ~{input_bbc_ols} \
       ~{output_x_mfa} \
-      ~{var_3} \
+      ~{min} \
       ~{lcb} \
       ~{size} \
-      ~{var_6} \
       ~{genomes} \
       ~{randomly} \
       ~{subsample} \
@@ -36,15 +34,17 @@ task StripSubsetLCBs {
     input_x_mfa: ""
     input_bbc_ols: ""
     output_x_mfa: ""
-    var_3: ""
+    min: ""
     lcb: ""
     size: ""
-    var_6: ""
     genomes: ""
     randomly: ""
     subsample: ""
     to: ""
     x: ""
     kb: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

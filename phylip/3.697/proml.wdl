@@ -4,4 +4,7 @@ task Proml {
   command <<<
     proml
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

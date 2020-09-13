@@ -1,4 +1,7 @@
 &id002 !Command
+command:
+- bealign
+- OUTPUT
 positional:
 - !Positional
   description: ''
@@ -9,9 +12,9 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -r
+  - -a
   args: !SimpleFlagArg
-    name: REFERENCE
+    name: ALPHABET
   optional: true
 - !Flag
   description: ''
@@ -23,20 +26,19 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -a
+  - -r
   args: !SimpleFlagArg
-    name: ALPHABET
+    name: REFERENCE
   optional: true
-command:
-- bealign
-- OUTPUT
 parent: &id001 !Command
+  command:
+  - bealign
   positional: []
   named:
   - !Flag
-    description: REFERENCE FASTA file or {HXB2_env, HXB2_gag, HXB2_int, HXB2_nef,
-      HXB2_pol, HXB2_pr, HXB2_prrt, HXB2_rev, HXB2_rt, HXB2_tat, HXB2_vif, HXB2_vpr,
-      HXB2_vpu, NL4-3_prrt}
+    description: "REFERENCE FASTA file or {HXB2_env, HXB2_gag, HXB2_int,\nHXB2_nef,\
+      \ HXB2_pol, HXB2_pr, HXB2_prrt, HXB2_rev,\nHXB2_rt, HXB2_tat, HXB2_vif, HXB2_vpr,\
+      \ HXB2_vpu,\nNL4-3_prrt}"
     synonyms:
     - -r
     - --reference
@@ -44,7 +46,7 @@ parent: &id001 !Command
       name: REFERENCE
     optional: true
   - !Flag
-    description: discard sequences that are insufficiently identical to the reference
+    description: "discard sequences that are insufficiently identical to\nthe reference"
     synonyms:
     - -e
     - --expected-identity
@@ -52,7 +54,7 @@ parent: &id001 !Command
       name: EXPECTED_IDENTITY
     optional: true
   - !Flag
-    description: perform an alignment using one of {amino, dna, codon} [default=codon]
+    description: "perform an alignment using one of {amino, dna, codon}\n[default=codon]"
     synonyms:
     - -a
     - --alphabet
@@ -60,8 +62,8 @@ parent: &id001 !Command
       name: ALPHABET
     optional: true
   - !Flag
-    description: parameterize using one of {BLOSUM62, DNA65, DNA70, DNA80, DNA88,
-      DNA95, HIV_BETWEEN_F, PAM200, PAM250} [default=BLOSUM62]
+    description: "parameterize using one of {BLOSUM62, DNA65, DNA70,\nDNA80, DNA88,\
+      \ DNA95, HIV_BETWEEN_F, PAM200, PAM250}\n[default=BLOSUM62]"
     synonyms:
     - -m
     - --score-matrix
@@ -77,15 +79,15 @@ parent: &id001 !Command
       name: DISCARD
     optional: true
   - !Flag
-    description: also align the reverse complement of each query sequence, returning
-      it if the alignment is superior
+    description: "also align the reverse complement of each query\nsequence, returning\
+      \ it if the alignment is superior"
     synonyms:
     - -R
     - --reverse-complement
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: do NOT sort the resulting BAM file [the default is to sort]
+    description: "do NOT sort the resulting BAM file [the default is to\nsort]"
     synonyms:
     - -S
     - --no-sort
@@ -99,18 +101,19 @@ parent: &id001 !Command
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: include the reference sequence as the first one in the resulting
-      BAM file [the default is to strip it]
+    description: "include the reference sequence as the first one in the\nresulting\
+      \ BAM file [the default is to strip it]\n"
     synonyms:
     - -K
     - --keep-reference
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - bealign
   parent:
   subcommands:
   - !Command
+    command:
+    - bealign
+    - INPUT
     positional:
     - !Positional
       description: ''
@@ -121,9 +124,9 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - -r
+      - -a
       args: !SimpleFlagArg
-        name: REFERENCE
+        name: ALPHABET
       optional: true
     - !Flag
       description: ''
@@ -135,15 +138,13 @@ parent: &id001 !Command
     - !Flag
       description: ''
       synonyms:
-      - -a
+      - -r
       args: !SimpleFlagArg
-        name: ALPHABET
+        name: REFERENCE
       optional: true
-    command:
-    - bealign
-    - INPUT
     parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -159,6 +160,7 @@ parent: &id001 !Command
     generated_using: &id003
     - --help
   - *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -202,6 +204,7 @@ parent: &id001 !Command
     \ it]\n"
   generated_using: *id003
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

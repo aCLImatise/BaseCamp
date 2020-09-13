@@ -1,22 +1,30 @@
 class: CommandLineTool
 id: ../../../clean.cwl
 inputs:
-- id: assembly
+- id: in_assembly
   doc: filename of assembly in FASTA format
-  type: string
+  type: File
   inputBinding:
     prefix: --assembly
-- id: csv
+- id: in_csv
   doc: Tapestry CSV output
   type: string
   inputBinding:
     prefix: --csv
-- id: output
-  doc: filename of output contigs, default filtered_assembly.fasta
-  type: string
+- id: in_output
+  doc: "filename of output contigs, default\nfiltered_assembly.fasta\n"
+  type: File
   inputBinding:
     prefix: --output
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "filename of output contigs, default\nfiltered_assembly.fasta\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - clean

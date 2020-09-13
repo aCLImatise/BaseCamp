@@ -2,9 +2,9 @@ version 1.0
 
 task BamtoolsMerge {
   input {
-    String? in
+    File? in
     File? list
-    String? out
+    File? out
     Boolean? force_compression
     String? region
   }
@@ -13,14 +13,18 @@ task BamtoolsMerge {
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
       ~{if defined(list) then ("-list " +  '"' + list + '"') else ""} \
       ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{true="-forceCompression" false="" force_compression} \
+      ~{if (force_compression) then "-forceCompression" else ""} \
       ~{if defined(region) then ("-region " +  '"' + region + '"') else ""}
   >>>
   parameter_meta {
     in: "the input BAM file(s)"
-    list: "the input BAM file list, one line per file"
+    list: "the input BAM file list, one\\nline per file"
     out: "the output BAM file"
-    force_compression: "if results are sent to stdout (like when piping to another tool), default behavior is to leave output uncompressed. Use this flag to override and force compression"
-    region: "genomic region. See README for more details"
+    force_compression: "if results are sent to stdout\\n(like when piping to another tool),\\ndefault behavior is to leave output\\nuncompressed. Use this flag to override\\nand force compression"
+    region: "genomic region. See README for\\nmore details"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

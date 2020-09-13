@@ -1,17 +1,20 @@
 version 1.0
 
-task AssemblyScan {
+task Assemblyscan {
   input {
     String assembly_summary_do_tpy
     String assembly
   }
   command <<<
-    assembly-scan \
+    assembly_scan \
       ~{assembly_summary_do_tpy} \
       ~{assembly}
   >>>
   parameter_meta {
     assembly_summary_do_tpy: ""
     assembly: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

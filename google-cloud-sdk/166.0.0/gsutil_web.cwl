@@ -1,27 +1,27 @@
 class: CommandLineTool
 id: ../../../gsutil_web.cwl
 inputs:
-- id: m
-  doc: ''
+- id: in_specifies_object_name
+  doc: "Specifies the object name to serve when a bucket\nlisting is requested via\
+    \ the CNAME alias to\nc.storage.googleapis.com."
   type: string
   inputBinding:
     prefix: -m
-- id: e
-  doc: ''
-  type: string
+- id: in_specifies_error_page
+  doc: "Specifies the error page to serve when a request is made\nfor a non-existent\
+    \ object via the CNAME alias to\nc.storage.googleapis.com."
+  type: long
   inputBinding:
     prefix: -e
-- id: set
-  doc: ''
+- id: in_page_dot
+  doc: For example, suppose your company's Domain name is example.com. You could set
   type: string
   inputBinding:
     position: 0
-- id: bucket_url_dot_dot_dot
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gsutil

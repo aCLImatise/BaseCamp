@@ -1,29 +1,32 @@
 version 1.0
 
-task PePrPostprocess {
+task PePrpostprocess {
   input {
-    String? peak
+    File? peak
     String? chip
     String? input_files_separated
-    String? file_type
+    File? file_type
     Boolean? remove_artefacts
-    Boolean? narrow_peak_boundary
+    String duplicates
   }
   command <<<
-    PePr-postprocess \
+    PePr_postprocess \
+      ~{duplicates} \
       ~{if defined(peak) then ("--peak " +  '"' + peak + '"') else ""} \
       ~{if defined(chip) then ("--chip " +  '"' + chip + '"') else ""} \
       ~{if defined(input_files_separated) then ("--input " +  '"' + input_files_separated + '"') else ""} \
       ~{if defined(file_type) then ("--file-type " +  '"' + file_type + '"') else ""} \
-      ~{true="--remove-artefacts" false="" remove_artefacts} \
-      ~{true="--narrow-peak-boundary" false="" narrow_peak_boundary}
+      ~{if (remove_artefacts) then "--remove-artefacts" else ""}
   >>>
   parameter_meta {
     peak: "peak file"
     chip: "chip files separated by comma"
     input_files_separated: "input files separated by comma"
     file_type: "read file types. bed, sam, bam"
-    remove_artefacts: "remove peaks that may be caused by excess PCR duplicates"
-    narrow_peak_boundary: "make peak width smaller but still contain the core binding region"
+    remove_artefacts: "remove peaks that may be caused by excess PCR"
+    duplicates: "--narrow-peak-boundary"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

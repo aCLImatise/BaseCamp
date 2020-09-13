@@ -2,19 +2,25 @@ version 1.0
 
 task MobInit {
   input {
-    String? database_directory
+    Directory? database_directory
     Boolean? verbose
     Boolean? v
+    Float three_dot_zero_dot_zero
   }
   command <<<
     mob_init \
+      ~{three_dot_zero_dot_zero} \
       ~{if defined(database_directory) then ("--database_directory " +  '"' + database_directory + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
-      ~{true="-V" false="" v}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (v) then "-V" else ""}
   >>>
   parameter_meta {
-    database_directory: "Directory to download databases to. Defaults to /tmp/tmpck7ho0cl/lib/python3.8/site- packages/mob_suite/databases"
+    database_directory: "Directory to download databases to. Defaults to\\n/usr/local/lib/python3.8/site-\\npackages/mob_suite/databases"
     verbose: "Set the verbosity level. Can by used multiple times"
     v: ""
+    three_dot_zero_dot_zero: "optional arguments:"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

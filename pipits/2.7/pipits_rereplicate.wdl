@@ -2,9 +2,9 @@ version 1.0
 
 task PipitsRereplicate {
   input {
-    String? i
+    File? i
     String? o
-    String? uc
+    File? uc
     String re_replicate
     String sequences_dot
   }
@@ -22,5 +22,8 @@ task PipitsRereplicate {
     uc: "[REQUIRED] uc file from VSEARCH"
     re_replicate: ""
     sequences_dot: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

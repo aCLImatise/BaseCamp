@@ -20,21 +20,21 @@ task TakeABreak {
   }
   command <<<
     TakeABreak \
-      ~{true="-in" false="" in} \
-      ~{true="-graph" false="" graph} \
-      ~{true="-out" false="" out} \
-      ~{true="-kmer-size" false="" km_er_size} \
-      ~{true="-abundance-min" false="" abundance_min} \
-      ~{true="-abundance-max" false="" abundance_max} \
-      ~{true="-solidity-kind" false="" solidity_kind} \
-      ~{true="-max-disk" false="" max_disk} \
-      ~{true="-max-memory" false="" max_memory} \
-      ~{true="-max-sim" false="" max_sim} \
-      ~{true="-repeat" false="" repeat} \
-      ~{true="-lct" false="" lct} \
-      ~{true="-version" false="" version} \
-      ~{true="-nb-cores" false="" nb_cores} \
-      ~{true="-verbose" false="" verbose}
+      ~{if (in) then "-in" else ""} \
+      ~{if (graph) then "-graph" else ""} \
+      ~{if (out) then "-out" else ""} \
+      ~{if (km_er_size) then "-kmer-size" else ""} \
+      ~{if (abundance_min) then "-abundance-min" else ""} \
+      ~{if (abundance_max) then "-abundance-max" else ""} \
+      ~{if (solidity_kind) then "-solidity-kind" else ""} \
+      ~{if (max_disk) then "-max-disk" else ""} \
+      ~{if (max_memory) then "-max-memory" else ""} \
+      ~{if (max_sim) then "-max-sim" else ""} \
+      ~{if (repeat) then "-repeat" else ""} \
+      ~{if (lct) then "-lct" else ""} \
+      ~{if (version) then "-version" else ""} \
+      ~{if (nb_cores) then "-nb-cores" else ""} \
+      ~{if (verbose) then "-verbose" else ""}
   >>>
   parameter_meta {
     in: "(1 arg) :    input read file(s)  [default '']"
@@ -52,5 +52,8 @@ task TakeABreak {
     version: "(0 arg) :    version"
     nb_cores: "(1 arg) :    number of cores  [default '0']"
     verbose: "(1 arg) :    verbosity level  [default '1']"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

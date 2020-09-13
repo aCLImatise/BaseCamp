@@ -1,105 +1,108 @@
 class: CommandLineTool
 id: ../../../tripaille_analysis_load_blast.cwl
 inputs:
-- id: blast_ext
-  doc: If looking for files in a directory, extension of the blast result files
-  type: string
+- id: in_blast_ext
+  doc: "If looking for files in a directory, extension of\nthe blast result files"
+  type: Directory
   inputBinding:
     prefix: --blast_ext
-- id: blast_db
-  doc: Name of the database blasted against (must be in the Chado db table)
+- id: in_blast_db
+  doc: "Name of the database blasted against (must be in\nthe Chado db table)"
   type: string
   inputBinding:
     prefix: --blastdb
-- id: blast_db_id
-  doc: ID of the database blasted against (must be in the Chado db table)
+- id: in_blast_db_id
+  doc: "ID of the database blasted against (must be in the\nChado db table)"
   type: string
   inputBinding:
     prefix: --blastdb_id
-- id: blast_parameters
+- id: in_blast_parameters
   doc: Blast parameters used to produce these results
   type: string
   inputBinding:
     prefix: --blast_parameters
-- id: query_re
-  doc: The regular expression that can uniquely identify the query name. This parameters
-    is required if the feature name is not the first word in the blast query name.
+- id: in_query_re
+  doc: "The regular expression that can uniquely identify\nthe query name. This parameters\
+    \ is required if the\nfeature name is not the first word in the blast\nquery name."
   type: string
   inputBinding:
     prefix: --query_re
-- id: query_type
-  doc: The feature type (e.g. 'gene', 'mRNA', 'contig') of the query. It must be a
-    valid Sequence Ontology term.
+- id: in_query_type
+  doc: "The feature type (e.g. 'gene', 'mRNA', 'contig') of\nthe query. It must be\
+    \ a valid Sequence Ontology\nterm."
   type: string
   inputBinding:
     prefix: --query_type
-- id: query_unique_name
-  doc: Use this if the --query-re regular expression matches unique names instead
-    of names in the database.
+- id: in_query_unique_name
+  doc: "Use this if the --query-re regular expression\nmatches unique names instead\
+    \ of names in the\ndatabase."
   type: boolean
   inputBinding:
     prefix: --query_uniquename
-- id: is_concat
-  doc: If the blast result file is simply a list of concatenated blast results.
+- id: in_is_concat
+  doc: "If the blast result file is simply a list of\nconcatenated blast results."
   type: boolean
   inputBinding:
     prefix: --is_concat
-- id: search_keywords
+- id: in_search_keywords
   doc: Extract keywords for Tripal search
   type: boolean
   inputBinding:
     prefix: --search_keywords
-- id: no_parsed
-  doc: 'Maximum number of hits to parse per feature. Default=all  [default: all]'
-  type: string
+- id: in_no_parsed
+  doc: "Maximum number of hits to parse per feature.\nDefault=all  [default: all]"
+  type: long
   inputBinding:
     prefix: --no_parsed
-- id: no_wait
+- id: in_no_wait
   doc: Do not wait for job to complete
   type: boolean
   inputBinding:
     prefix: --no_wait
-- id: algorithm
+- id: in_algorithm
   doc: analysis algorithm
   type: string
   inputBinding:
     prefix: --algorithm
-- id: source_version
+- id: in_source_version
   doc: analysis sourceversion
   type: string
   inputBinding:
     prefix: --sourceversion
-- id: source_uri
+- id: in_source_uri
   doc: analysis sourceuri
   type: string
   inputBinding:
     prefix: --sourceuri
-- id: description
+- id: in_description
   doc: analysis description
   type: string
   inputBinding:
     prefix: --description
-- id: date_executed
+- id: in_date_executed
   doc: analysis date_executed (yyyy-mm-dd)
   type: string
   inputBinding:
     prefix: --date_executed
-- id: name
+- id: in_name
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: program
+- id: in_program
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: program_version
+- id: in_program_version
   doc: ''
   type: string
   inputBinding:
     position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - tripaille

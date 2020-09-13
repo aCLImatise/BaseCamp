@@ -4,4 +4,7 @@ task AfplotRegions {
   command <<<
     afplot regions
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

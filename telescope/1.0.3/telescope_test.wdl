@@ -11,4 +11,7 @@ task TelescopeTest {
   parameter_meta {
     telescope: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -6,9 +6,12 @@ task HailctlDataproc {
   }
   command <<<
     hailctl dataproc \
-      ~{true="--beta" false="" beta}
+      ~{if (beta) then "--beta" else ""}
   >>>
   parameter_meta {
     beta: "Force use of `beta` in gcloud commands"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,47 +1,55 @@
 class: CommandLineTool
 id: ../../../cds_subgraphs.cwl
 inputs:
-- id: output_folder
+- id: in_output_folder
   doc: output folder to use for GFA files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --output-folder
-- id: part_desc
+- id: in_part_desc
   doc: file with partial genes description (.gff)
   type: File
   inputBinding:
     prefix: --part-desc
-- id: part_seq
+- id: in_part_seq
   doc: file with partial genes sequences (.fasta)
   type: File
   inputBinding:
     prefix: --part-seq
-- id: graph
+- id: in_graph
   doc: In GFA (ending with .gfa) or prefix to SPAdes graph pack
   type: string
   inputBinding:
     prefix: --graph
-- id: cds_len_est
+- id: in_cds_len_est
   doc: file with cds length estimamtes
   type: File
   inputBinding:
     prefix: --cds-len-est
-- id: kmer_length_use
+- id: in_kmer_length_use
   doc: k-mer length to use
-  type: string
+  type: long
   inputBinding:
     prefix: -k
-- id: threads
+- id: in_threads
   doc: '# of threads to use (default: max_threads / 2)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: tmpdir
-  doc: 'scratch directory to use (default: <outdir>/tmp)'
-  type: string
+- id: in_tmpdir
+  doc: "scratch directory to use (default: <outdir>/tmp)\n"
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_folder
+  doc: output folder to use for GFA files
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_folder)
 cwlVersion: v1.1
 baseCommand:
 - cds-subgraphs

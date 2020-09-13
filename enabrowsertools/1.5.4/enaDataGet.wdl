@@ -3,39 +3,39 @@ version 1.0
 task EnaDataGet {
   input {
     String? format
-    String? dest
+    Directory? dest
     Boolean? wgs
     Boolean? extract_wgs
     Boolean? expanded
     Boolean? download_read_analysis
     Boolean? index
     Boolean? aspera
-    String? aspera_settings
-    String accession
+    File? aspera_settings
   }
   command <<<
     enaDataGet \
-      ~{accession} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if defined(dest) then ("--dest " +  '"' + dest + '"') else ""} \
-      ~{true="--wgs" false="" wgs} \
-      ~{true="--extract-wgs" false="" extract_wgs} \
-      ~{true="--expanded" false="" expanded} \
-      ~{true="--meta" false="" download_read_analysis} \
-      ~{true="--index" false="" index} \
-      ~{true="--aspera" false="" aspera} \
+      ~{if (wgs) then "--wgs" else ""} \
+      ~{if (extract_wgs) then "--extract-wgs" else ""} \
+      ~{if (expanded) then "--expanded" else ""} \
+      ~{if (download_read_analysis) then "--meta" else ""} \
+      ~{if (index) then "--index" else ""} \
+      ~{if (aspera) then "--aspera" else ""} \
       ~{if defined(aspera_settings) then ("--aspera-settings " +  '"' + aspera_settings + '"') else ""}
   >>>
   parameter_meta {
-    format: "File format required. Format requested must be permitted for data type selected. sequence, assembly and wgs accessions: embl(default) and fasta formats. read group: submitted, fastq and sra formats. analysis group: submitted only."
-    dest: "Destination directory (default is current running directory)"
-    wgs: "Download WGS set for each assembly if available (default is false)"
-    extract_wgs: "Extract WGS scaffolds for each assembly if available (default is false)"
-    expanded: "Expand CON scaffolds when downloading embl format (default is false)"
-    download_read_analysis: "Download read or analysis XML in addition to data files (default is false)"
-    index: "Download CRAM index files with submitted CRAM files, if any (default is false). This flag is ignored for fastq and sra format options."
-    aspera: "Use the aspera command line client to download, instead of FTP."
-    aspera_settings: "Use the provided settings file, will otherwise check for environment variable or default settings file location."
-    accession: "Sequence, coding, assembly, run, experiment or analysis accession or WGS prefix (LLLLVV) to download"
+    format: "File format required. Format requested must be\\npermitted for data type selected. sequence, assembly\\nand wgs accessions: embl(default) and fasta formats.\\nread group: submitted, fastq and sra formats. analysis\\ngroup: submitted only."
+    dest: "Destination directory (default is current running\\ndirectory)"
+    wgs: "Download WGS set for each assembly if available\\n(default is false)"
+    extract_wgs: "Extract WGS scaffolds for each assembly if available\\n(default is false)"
+    expanded: "Expand CON scaffolds when downloading embl format\\n(default is false)"
+    download_read_analysis: "Download read or analysis XML in addition to data\\nfiles (default is false)"
+    index: "Download CRAM index files with submitted CRAM files,\\nif any (default is false). This flag is ignored for\\nfastq and sra format options."
+    aspera: "Use the aspera command line client to download,\\ninstead of FTP."
+    aspera_settings: "Use the provided settings file, will otherwise check\\nfor environment variable or default settings file\\nlocation."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

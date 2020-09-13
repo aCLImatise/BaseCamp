@@ -1,7 +1,10 @@
 version 1.0
 
-task CwlRunner {
+task Cwlrunner {
   command <<<
-    cwl-runner
+    cwl_runner
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

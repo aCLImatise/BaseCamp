@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../svtk_annotate.cwl
 inputs:
-- id: gen_code
-  doc: ''
+- id: in_gen_code
+  doc: Gencode gene annotations (GTF).
   type: string
   inputBinding:
     prefix: --gencode
-- id: noncoding
-  doc: ''
+- id: in_noncoding
+  doc: "Noncoding elements (bed). Columns =\nchr,start,end,element_class,element_name\n"
   type: string
   inputBinding:
     prefix: --noncoding
-- id: s_vtk
-  doc: ''
+- id: in_site_dot
+  doc: An SV is annotated with a new NONCODING INFO field containing all classes of
   type: string
   inputBinding:
     position: 0
-- id: vcf
-  doc: ''
+- id: in_vcf
+  doc: Structural variants.
+  type: string
+  inputBinding:
+    position: 0
+- id: in_annotated_vcf
+  doc: Annotated variants.
   type: string
   inputBinding:
     position: 1
-- id: annotated_vcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - svtk

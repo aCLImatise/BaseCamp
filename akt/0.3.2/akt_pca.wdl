@@ -22,23 +22,23 @@ task AktPca {
   }
   command <<<
     akt pca \
-      ~{true="--output" false="" _output_vcf} \
-      ~{true="--outputfmt" false="" output_fmt} \
-      ~{true="--regions-file" false="" regions_file} \
-      ~{true="--regions" false="" regions} \
-      ~{true="--targets-file" false="" targets_file} \
-      ~{true="--targets" false="" targets} \
-      ~{true="--force" false="" force} \
-      ~{true="--samples-file" false="" samples_file} \
-      ~{true="--samples" false="" samples} \
-      ~{true="--weight" false="" weight} \
-      ~{true="--npca" false="" npca} \
-      ~{true="--alg" false="" alg} \
-      ~{true="--covdef" false="" cov_def} \
-      ~{true="--extra" false="" extra} \
-      ~{true="--iterations" false="" iterations} \
-      ~{true="--svfile" false="" sv_file} \
-      ~{true="--assume-homref" false="" assume_hom_ref}
+      ~{if (_output_vcf) then "--output" else ""} \
+      ~{if (output_fmt) then "--outputfmt" else ""} \
+      ~{if (regions_file) then "--regions-file" else ""} \
+      ~{if (regions) then "--regions" else ""} \
+      ~{if (targets_file) then "--targets-file" else ""} \
+      ~{if (targets) then "--targets" else ""} \
+      ~{if (force) then "--force" else ""} \
+      ~{if (samples_file) then "--samples-file" else ""} \
+      ~{if (samples) then "--samples" else ""} \
+      ~{if (weight) then "--weight" else ""} \
+      ~{if (npca) then "--npca" else ""} \
+      ~{if (alg) then "--alg" else ""} \
+      ~{if (cov_def) then "--covdef" else ""} \
+      ~{if (extra) then "--extra" else ""} \
+      ~{if (iterations) then "--iterations" else ""} \
+      ~{if (sv_file) then "--svfile" else ""} \
+      ~{if (assume_hom_ref) then "--assume-homref" else ""}
   >>>
   parameter_meta {
     _output_vcf: ":                   output vcf"
@@ -58,5 +58,8 @@ task AktPca {
     iterations: "number of power iterations (default 10 is sufficient)"
     sv_file: ":                   File containing singular values"
     assume_hom_ref: ":            Assume missing genotypes/sites are homozygous reference (useful for projecting a single sample)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

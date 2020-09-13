@@ -4,7 +4,7 @@ task BedparseGtf2bedGtf {
   input {
     String? extrafields
     String bed_parse
-    String gtf_two_bed
+    Int gtf_two_bed
   }
   command <<<
     bedparse gtf2bed gtf \
@@ -16,5 +16,8 @@ task BedparseGtf2bedGtf {
     extrafields: ""
     bed_parse: ""
     gtf_two_bed: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

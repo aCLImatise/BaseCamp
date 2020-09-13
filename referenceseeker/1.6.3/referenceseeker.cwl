@@ -1,44 +1,47 @@
 class: CommandLineTool
 id: ../../../referenceseeker.cwl
 inputs:
-- id: crg
-  doc: Max number of candidate reference genomes to pass kmer prefilter (default =
-    100)
-  type: string
+- id: in_crg
+  doc: "Max number of candidate reference genomes to pass kmer\nprefilter (default\
+    \ = 100)"
+  type: long
   inputBinding:
     prefix: --crg
-- id: ani
+- id: in_ani
   doc: ANI threshold (default = 0.95)
-  type: string
+  type: double
   inputBinding:
     prefix: --ani
-- id: conserved_dna
+- id: in_conserved_dna
   doc: Conserved DNA threshold (default = 0.69)
-  type: string
+  type: double
   inputBinding:
     prefix: --conserved-dna
-- id: unfiltered
-  doc: Set kmer prefilter to extremely conservative values and skip species level
-    ANI cutoffs (ANI >= 0.95 and conserved DNA >= 0.69
+- id: in_unfiltered
+  doc: "Set kmer prefilter to extremely conservative values\nand skip species level\
+    \ ANI cutoffs (ANI >= 0.95 and\nconserved DNA >= 0.69"
   type: boolean
   inputBinding:
     prefix: --unfiltered
-- id: bidirectional
-  doc: Compute bidirectional ANI/conserved DNA values (default = False)
+- id: in_bidirectional
+  doc: "Compute bidirectional ANI/conserved DNA values\n(default = False)"
   type: boolean
   inputBinding:
     prefix: --bidirectional
-- id: verbose
+- id: in_verbose
   doc: Print verbose information
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: threads
-  doc: Number of used threads (default = number of available CPU cores)
-  type: string
+- id: in_threads
+  doc: "Number of used threads (default = number of available\nCPU cores)"
+  type: long
   inputBinding:
     prefix: --threads
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - referenceseeker

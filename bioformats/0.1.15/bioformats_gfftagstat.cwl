@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../bioformats_gfftagstat.cwl
 inputs:
-- id: source
+- id: in_source
   doc: filter GFF3 features by the specified source
-  type: string
+  type: long
   inputBinding:
     prefix: --source
-- id: type
+- id: in_type
   doc: filter GFF3 features by the specified type
-  type: string
+  type: long
   inputBinding:
     prefix: --type
-- id: v
+- id: in_v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-- id: gff_file
+- id: in_gff_file
   doc: a GFF3 file
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - bioformats

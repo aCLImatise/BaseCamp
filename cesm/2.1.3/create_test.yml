@@ -1,4 +1,6 @@
 !Command
+command:
+- create_test
 positional:
 - !Positional
   description: Tests or test suites to run. Testname form is TEST.GRID.COMPSET[.MACHINE_COMPILER]
@@ -7,7 +9,7 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/create_test.log
+  description: Print debug information (very verbose) to file /create_test.log
   synonyms:
   - -d
   - --debug
@@ -46,8 +48,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use pre-existing case directories they will pick up at the  latest
-    PEND state or re-run the first failed state. Requires test-id
+  description: "Use pre-existing case directories they will pick up at the\nlatest\
+    \ PEND state or re-run the first failed state. Requires test-id"
   synonyms:
   - -u
   - --use-existing
@@ -60,22 +62,22 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not submit jobs to batch system, run locally. If false, this will
-    default to machine setting.
+  description: "Do not submit jobs to batch system, run locally.\nIf false, this will\
+    \ default to machine setting."
   synonyms:
   - --no-batch
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use a single interactive allocation to run all the tests. This can  drastically
-    reduce queue waiting but only makes sense on batch machines.
+  description: "Use a single interactive allocation to run all the tests. This can\n\
+    drastically reduce queue waiting but only makes sense on batch machines."
   synonyms:
   - --single-submit
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Where test cases will be created. The default is output root as defined
-    in the config_machines file
+  description: "Where test cases will be created. The default is output root\nas defined\
+    \ in the config_machines file"
   synonyms:
   - -r
   - --test-root
@@ -90,26 +92,26 @@ named:
     name: OUTPUT_ROOT
   optional: true
 - !Flag
-  description: Specifies a root directory for baseline datasets that will  be used
-    for Bit-for-bit generate and/or compare testing.
+  description: "Specifies a root directory for baseline datasets that will\nbe used\
+    \ for Bit-for-bit generate and/or compare testing."
   synonyms:
   - --baseline-root
   args: !SimpleFlagArg
     name: BASELINE_ROOT
   optional: true
 - !Flag
-  description: Specifies if tests should be cleaned after run. If set, all object
-    executables and data files will be removed after the tests are run.
+  description: "Specifies if tests should be cleaned after run. If set, all object\n\
+    executables and data files will be removed after the tests are run."
   synonyms:
   - --clean
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'The machine for creating and building tests. This machine must be
-    defined in the config_machines.xml file for the given model. The default is to  to
-    match the name of the machine in the test name or the name of the  machine this
-    script is run on to the NODENAME_REGEX field in  config_machines.xml. WARNING:
-    This option is highly unsafe and should  only be used if you are an expert.'
+  description: "The machine for creating and building tests. This machine must be\
+    \ defined\nin the config_machines.xml file for the given model. The default is\
+    \ to\nto match the name of the machine in the test name or the name of the\nmachine\
+    \ this script is run on to the NODENAME_REGEX field in\nconfig_machines.xml. WARNING:\
+    \ This option is highly unsafe and should\nonly be used if you are an expert."
   synonyms:
   - -m
   - --machine
@@ -117,16 +119,16 @@ named:
     name: MACHINE
   optional: true
 - !Flag
-  description: Specify the mpilib. To see list of supported MPI libraries for each
-    machine,  invoke ./query_config. The default is the first listing .
+  description: "Specify the mpilib. To see list of supported MPI libraries for each\
+    \ machine,\ninvoke ./query_config. The default is the first listing ."
   synonyms:
   - --mpilib
   args: !SimpleFlagArg
     name: MPILIB
   optional: true
 - !Flag
-  description: If comparing or generating baselines, use this directory under baseline
-    root.  Default will be current branch name.
+  description: "If comparing or generating baselines, use this directory under baseline\
+    \ root.\nDefault will be current branch name."
   synonyms:
   - -b
   - --baseline-name
@@ -141,16 +143,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'While testing, generate baselines.  NOTE: this can also be done after
-    the fact with bless_test_results'
+  description: "While testing, generate baselines.\nNOTE: this can also be done after\
+    \ the fact with bless_test_results"
   synonyms:
   - -g
   - --generate
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Compiler for building cime. Default will be the name in the  Testname
-    or the default defined for the machine.
+  description: "Compiler for building cime. Default will be the name in the\nTestname\
+    \ or the default defined for the machine."
   synonyms:
   - --compiler
   args: !SimpleFlagArg
@@ -164,8 +166,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Specify a project id for the case (optional). Used for accounting when
-    on a batch system. The default is user-specified environment variable PROJECT
+  description: "Specify a project id for the case (optional).\nUsed for accounting\
+    \ when on a batch system.\nThe default is user-specified environment variable\
+    \ PROJECT"
   synonyms:
   - -p
   - --project
@@ -173,13 +176,12 @@ named:
     name: PROJECT
   optional: true
 - !Flag
-  description: "Specify an 'id' for the test. This is simply a string that is appended\
-    \  to the end of a test name. If no test-id is specified, a time stamp plus a\
-    \  random string will be used (ensuring a high probability of uniqueness).  If\
-    \ a test-id is specified, it is the user's responsibility to ensure that  each\
-    \ run of create_test uses a unique test-id. WARNING: problems will occur  if you\
-    \ use the same test-id twice on the same file system, even if the test  lists\
-    \ are completely different."
+  description: "Specify an 'id' for the test. This is simply a string that is appended\n\
+    to the end of a test name. If no test-id is specified, a time stamp plus a\nrandom\
+    \ string will be used (ensuring a high probability of uniqueness).\nIf a test-id\
+    \ is specified, it is the user's responsibility to ensure that\neach run of create_test\
+    \ uses a unique test-id. WARNING: problems will occur\nif you use the same test-id\
+    \ twice on the same file system, even if the test\nlists are completely different."
   synonyms:
   - -t
   - --test-id
@@ -187,8 +189,8 @@ named:
     name: TEST_ID
   optional: true
 - !Flag
-  description: Number of tasks create_test should perform simultaneously. The default  is
-    min(num_cores, num_tests).
+  description: "Number of tasks create_test should perform simultaneously. The default\n\
+    is min(num_cores, num_tests)."
   synonyms:
   - -j
   - --parallel-jobs
@@ -196,16 +198,16 @@ named:
     name: PARALLEL_JOBS
   optional: true
 - !Flag
-  description: The size of the processor pool that create_test can use. The default
-    is  MAX_MPITASKS_PER_NODE + 25 percent.
+  description: "The size of the processor pool that create_test can use. The default\
+    \ is\nMAX_MPITASKS_PER_NODE + 25 percent."
   synonyms:
   - --proc-pool
   args: !SimpleFlagArg
     name: PROC_POOL
   optional: true
 - !Flag
-  description: Set the wallclock limit for all tests in the suite.  Use the variable
-    CIME_GLOBAL_WALLTIME to set this for all tests.
+  description: "Set the wallclock limit for all tests in the suite.\nUse the variable\
+    \ CIME_GLOBAL_WALLTIME to set this for all tests."
   synonyms:
   - --walltime
   args: !SimpleFlagArg
@@ -228,9 +230,9 @@ named:
     name: TESTFILE
   optional: true
 - !Flag
-  description: 'If the --generate option is given, then an attempt to overwrite  an
-    existing baseline directory will raise an error. WARNING: Specifying this  option
-    will allow existing baseline directories to be silently overwritten.'
+  description: "If the --generate option is given, then an attempt to overwrite\n\
+    an existing baseline directory will raise an error. WARNING: Specifying this\n\
+    option will allow existing baseline directories to be silently overwritten."
   synonyms:
   - -o
   - --allow-baseline-overwrite
@@ -289,8 +291,8 @@ named:
     name: INPUT_DIR
   optional: true
 - !Flag
-  description: Full pathname of an optional pes specification file. The file can follow
-    either the config_pes.xml or the env_mach_pes.xml format.
+  description: "Full pathname of an optional pes specification file. The file\ncan\
+    \ follow either the config_pes.xml or the env_mach_pes.xml format."
   synonyms:
   - --pesfile
   args: !SimpleFlagArg
@@ -311,19 +313,18 @@ named:
     name: MAIL_USER
   optional: true
 - !Flag
-  description: 'When to send user email. Options are: never, all, begin, end, fail.
-    You can specify multiple types with either comma-separated args or multiple -M
-    flags.'
+  description: "When to send user email. Options are: never, all, begin, end, fail.\n\
+    You can specify multiple types with either comma-separated args or multiple -M\
+    \ flags.\n"
   synonyms:
   - -M
   - --mail-type
   args: !SimpleFlagArg
     name: MAIL_TYPE
   optional: true
-command:
-- create_test
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -359,16 +360,16 @@ help_text: "usage: create_test [-h] [-d] [-v] [-s] [--no-run] [--no-build] [--no
   \npositional arguments:\n  testargs              Tests or test suites to run. Testname\
   \ form is TEST.GRID.COMPSET[.MACHINE_COMPILER]\n\noptional arguments:\n  -h, --help\
   \            show this help message and exit\n  -d, --debug           Print debug\
-  \ information (very verbose) to file /tmp/tmpeksbd5_3/create_test.log\n  -v, --verbose\
-  \         Add additional context (time and file) to log messages\n  -s, --silent\
-  \          Print only warnings and error messages\n  --no-run              Do not\
-  \ run generated tests\n  --no-build            Do not build generated tests, implies\
-  \ --no-run\n  --no-setup            Do not setup generated tests, implies --no-build\
-  \ and --no-run\n  -u, --use-existing    Use pre-existing case directories they will\
-  \ pick up at the \n                        latest PEND state or re-run the first\
-  \ failed state. Requires test-id\n  --save-timing         Enable archiving of performance\
-  \ data.\n  --no-batch            Do not submit jobs to batch system, run locally.\n\
-  \                        If false, this will default to machine setting.\n  --single-submit\
+  \ information (very verbose) to file /create_test.log\n  -v, --verbose         Add\
+  \ additional context (time and file) to log messages\n  -s, --silent          Print\
+  \ only warnings and error messages\n  --no-run              Do not run generated\
+  \ tests\n  --no-build            Do not build generated tests, implies --no-run\n\
+  \  --no-setup            Do not setup generated tests, implies --no-build and --no-run\n\
+  \  -u, --use-existing    Use pre-existing case directories they will pick up at\
+  \ the \n                        latest PEND state or re-run the first failed state.\
+  \ Requires test-id\n  --save-timing         Enable archiving of performance data.\n\
+  \  --no-batch            Do not submit jobs to batch system, run locally.\n    \
+  \                    If false, this will default to machine setting.\n  --single-submit\
   \       Use a single interactive allocation to run all the tests. This can \n  \
   \                      drastically reduce queue waiting but only makes sense on\
   \ batch machines.\n  -r TEST_ROOT, --test-root TEST_ROOT\n                     \

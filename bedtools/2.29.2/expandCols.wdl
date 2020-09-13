@@ -13,14 +13,17 @@ task ExpandCols {
       ~{bed_tools} \
       ~{expand} \
       ~{cols} \
-      ~{true="-i" false="" input_file_assumes} \
-      ~{true="-c" false="" specify_column_based}
+      ~{if (input_file_assumes) then "-i" else ""} \
+      ~{if (specify_column_based) then "-c" else ""}
   >>>
   parameter_meta {
-    input_file_assumes: "Input file. Assumes \"stdin\" if omitted."
-    specify_column_based: "Specify the column (1-based) that should be summarized. - Required."
+    input_file_assumes: "Input file. Assumes \\\"stdin\\\" if omitted."
+    specify_column_based: "Specify the column (1-based) that should be summarized.\\n- Required."
     bed_tools: ""
     expand: ""
     cols: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

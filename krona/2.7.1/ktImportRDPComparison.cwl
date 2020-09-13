@@ -1,18 +1,21 @@
 class: CommandLineTool
 id: ../../../ktImportRDPComparison.cwl
 inputs:
-- id: rdp_comparison
+- id: in_rdp_comparison
   doc: RDP comparison result downloaded as text.
   type: string
   inputBinding:
     position: 0
-- id: name
-  doc: A name for each library to appear in the chart. The default is "Library [1/2]".
-    _________
+- id: in_name
+  doc: "A name for each library to appear in the chart. The default\nis \"Library\
+    \ [1/2]\".\n_________"
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ktImportRDPComparison

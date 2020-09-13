@@ -2,9 +2,9 @@ version 1.0
 
 task CheckmOutliers {
   input {
-    String? distributions
+    Int? distributions
     String? report_type
-    String? extension
+    Directory? extension
     Boolean? quiet
     String results_dir
     String bin_dir
@@ -20,7 +20,7 @@ task CheckmOutliers {
       ~{if defined(distributions) then ("--distributions " +  '"' + distributions + '"') else ""} \
       ~{if defined(report_type) then ("--report_type " +  '"' + report_type + '"') else ""} \
       ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
-      ~{true="--quiet" false="" quiet}
+      ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
     distributions: "reference distribution used to identify outliers; integer between 0 and 100 (default: 95)"
@@ -31,5 +31,8 @@ task CheckmOutliers {
     bin_dir: "directory containing bins (fasta format)"
     tetra_profile: "tetranucleotide profiles for each sequence (see tetra command)"
     output_file: "print results to file"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../mafToSnpBed.cwl
 inputs:
-- id: database
+- id: in_xxx
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -xxx
+- id: in_database
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_dot_maf
+- id: in_input_dot_maf
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: input_do_tgp
+- id: in_input_do_tgp
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: output_dot_bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mafToSnpBed

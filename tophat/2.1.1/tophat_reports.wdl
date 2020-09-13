@@ -20,4 +20,7 @@ task TophatReports {
     deletions_dot_vcf: ""
     accepted_hits_dots_am: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

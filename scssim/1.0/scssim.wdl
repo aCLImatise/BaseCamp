@@ -4,4 +4,7 @@ task Scssim {
   command <<<
     scssim
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

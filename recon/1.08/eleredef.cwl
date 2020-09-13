@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../eleredef.cwl
 inputs:
-- id: re_def
+- id: in_re_def
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seq_list
+- id: in_seq_list
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: start
+- id: in_start
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: clan_ct
+- id: in_clan_ct
   doc: ''
   type: string
   inputBinding:
     position: 3
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - eleredef

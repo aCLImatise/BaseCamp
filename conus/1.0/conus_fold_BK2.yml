@@ -1,4 +1,7 @@
 &id003 !Command
+command:
+- conus_fold
+- BK2
 positional:
 - !Positional
   description: ''
@@ -17,22 +20,74 @@ named:
   - -options
   args: !EmptyFlagArg {}
   optional: true
-command:
-- conus_fold
-- BK2
 parent: &id001 !Command
+  command:
+  - conus_fold
   positional: []
   named:
   - !Flag
-    description: '(with -g) shift to hydrogen bonding scoring  '
+    description: ': Use model <file>'
     synonyms:
-    - -H
+    - -m
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: ": Use grammar <string> and plus one scoring\n-H           (with\
+      \ -g) shift to hydrogen bonding scoring\n--flat       (with -g) flat scoring\
+      \ scheme"
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: ': redirect structure output to <file>'
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: ': verbose output'
+    synonyms:
+    - -v
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '(with -g) flat scoring scheme '
+    description: ': print out parameters of model'
     synonyms:
-    - --flat
+    - -x
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ': debugging output'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ': debugging, print traceback'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ': debugging, print fill matrix from cyk'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ': print predicted structures in stockholm format'
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ': print ct output format for predicted structure'
+    synonyms:
+    - -c
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
@@ -41,72 +96,44 @@ parent: &id001 !Command
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - conus_fold
   parent:
   subcommands:
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: conus_fold
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: seqfile in
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -options
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - conus_fold
-    - NUS
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "\nFATAL: Failed to open sequence file NUS\nUsage: conus_fold [-options]\
-      \ <seqfile in>\n\n\n"
-    generated_using: &id002
-    - --help
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: conus_fold
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: seqfile in
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -options
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - conus_fold
     - UNA
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: conus_fold
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: seqfile in
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
     help_text: "\nFATAL: Failed to open sequence file UNA\nUsage: conus_fold [-options]\
       \ <seqfile in>\n\n\n"
-    generated_using: *id002
+    generated_using: &id002
+    - --help
   - !Command
+    command:
+    - conus_fold
+    - code
     positional:
     - !Positional
       description: ''
@@ -125,101 +152,40 @@ parent: &id001 !Command
       - -options
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - conus_fold
-    - RUN
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
-    help_text: "\nFATAL: Failed to open sequence file RUN\nUsage: conus_fold [-options]\
+    help_text: "\nFATAL: Failed to open sequence file code\nUsage: conus_fold [-options]\
       \ <seqfile in>\n\n\n"
     generated_using: *id002
   - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: conus_fold
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: seqfile in
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -options
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - conus_fold
-    - IVO
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "\nFATAL: Failed to open sequence file IVO\nUsage: conus_fold [-options]\
-      \ <seqfile in>\n\n\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: conus_fold
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: seqfile in
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -options
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - conus_fold
-    - BJK
-    parent: *id001
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "\nFATAL: Failed to open sequence file BJK\nUsage: conus_fold [-options]\
-      \ <seqfile in>\n\n\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: conus_fold
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: seqfile in
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -options
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - conus_fold
     - YRN
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: conus_fold
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: seqfile in
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -227,6 +193,9 @@ parent: &id001 !Command
       \ <seqfile in>\n\n\n"
     generated_using: *id002
   - !Command
+    command:
+    - conus_fold
+    - IVO
     positional:
     - !Positional
       description: ''
@@ -245,18 +214,19 @@ parent: &id001 !Command
       - -options
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - conus_fold
-    - UYN
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
-    help_text: "\nFATAL: Failed to open sequence file UYN\nUsage: conus_fold [-options]\
+    help_text: "\nFATAL: Failed to open sequence file IVO\nUsage: conus_fold [-options]\
       \ <seqfile in>\n\n\n"
     generated_using: *id002
   - !Command
+    command:
+    - conus_fold
+    - RY3
     positional:
     - !Positional
       description: ''
@@ -275,19 +245,147 @@ parent: &id001 !Command
       - -options
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - conus_fold
-    - RY3
     parent: *id001
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
     help_text: "\nFATAL: Failed to open sequence file RY3\nUsage: conus_fold [-options]\
       \ <seqfile in>\n\n\n"
     generated_using: *id002
+  - !Command
+    command:
+    - conus_fold
+    - RUN
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: conus_fold
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: seqfile in
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nFATAL: Failed to open sequence file RUN\nUsage: conus_fold [-options]\
+      \ <seqfile in>\n\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - conus_fold
+    - BJK
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: conus_fold
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: seqfile in
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nFATAL: Failed to open sequence file BJK\nUsage: conus_fold [-options]\
+      \ <seqfile in>\n\n\n"
+    generated_using: *id002
   - *id003
-  help_flag:
+  - !Command
+    command:
+    - conus_fold
+    - NUS
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: conus_fold
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: seqfile in
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nFATAL: Failed to open sequence file NUS\nUsage: conus_fold [-options]\
+      \ <seqfile in>\n\n\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - conus_fold
+    - UYN
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: conus_fold
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: seqfile in
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nFATAL: Failed to open sequence file UYN\nUsage: conus_fold [-options]\
+      \ <seqfile in>\n\n\n"
+    generated_using: *id002
+  usage: []
+  help_flag: !Flag
+    description: ': print short help, usage info, and grammar description'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
   help_text: "CONUS: Single Sequence SCFG algorithms\n         CONUS 1.0 (in progress)\n\
@@ -310,6 +408,7 @@ parent: &id001 !Command
   generated_using:
   - -h
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

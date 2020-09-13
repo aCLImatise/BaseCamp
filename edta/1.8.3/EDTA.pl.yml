@@ -1,0 +1,186 @@
+!Command
+command:
+- EDTA.pl
+positional: []
+named:
+- !Flag
+  description: '[File]  The genome FASTA'
+  synonyms:
+  - --genome
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[Rice|Maize|others]   Specify the species for identification of TIR
+    candidates. Default: others'
+  synonyms:
+  - --species
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[all|filter|final|anno] Specify which steps you want to run EDTA.\n\
+    all: run the entire pipeline (default)\nfilter: start from raw TEs to the end.\n\
+    final: start from filtered TEs to finalizing the run.\nanno: perform whole-genome\
+    \ annotation/analysis after TE library construction."
+  synonyms:
+  - --step
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0|1]   If previous raw TE results are found, decide to overwrite
+    (1, rerun) or not (0, default).'
+  synonyms:
+  - --overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[File]  Provide a FASTA file containing the coding sequence (no introns,
+    UTRs, nor TEs) of this genome or its close relative.'
+  synonyms:
+  - --cds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[File]  Provided a curated library to keep consistant naming and classification\
+    \ for known TEs.\nTEs in this file will be trusted 100%, so please ONLY provide\
+    \ MANUALLY CURATED ones.\nThis option is not mandatory. It's totally OK if no\
+    \ file is provided (default)."
+  synonyms:
+  - --curatedlib
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[0|1]   Use RepeatModeler to identify remaining TEs (1) or not (0,\
+    \ default).\nThis step is very slow and MAY help to recover some TEs."
+  synonyms:
+  - --sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0|1]   Perform (1) or not perform (0, default) whole-genome TE annotation
+    after TE library construction.'
+  synonyms:
+  - --anno
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[File]  Provide your own homology-based TE annotation instead of using
+    the EDTA library for masking. File is in RepeatMasker .out format. This file will
+    be merged with the structural-based TE annotation. (--anno 1 required). Default:
+    use the EDTA library for annotation.'
+  synonyms:
+  - --rmout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[0|1]        Evaluate (1) classification consistency of the TE annotation.\
+    \ (--anno 1 required). Default: 0.\nThis step is slow and does not affect the\
+    \ annotation result."
+  synonyms:
+  - --evaluate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[File]  Exclude bed format regions from TE annotation. Default: undef.
+    (--anno 1 required).'
+  synonyms:
+  - --exclude
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0|1]   When no confident TE candidates are found: 0, interrupt and
+    exit (default); 1, use rice TEs to continue.'
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[path]  The directory containing RepeatModeler (default: read from
+    ENV)'
+  synonyms:
+  - --repeatmodeler
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[path]   The directory containing RepeatMasker (default: read from
+    ENV)'
+  synonyms:
+  - --repeatmasker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[path]  The directory containing BLASTx and BLASTn (default: read
+    from ENV)'
+  synonyms:
+  - --blast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: if dependencies are fullfiled and quit
+  synonyms:
+  - --check_dependencies
+  args: !SimpleFlagArg
+    name: Check
+  optional: true
+- !Flag
+  description: '[path]    The directory containing TRF (default: read from ENV)'
+  synonyms:
+  - --trf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[int]   Number of theads to run this script (default: 4)'
+  synonyms:
+  - --threads
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this help info
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n########################################################\n##### Extensive\
+  \ de-novo TE Annotator (EDTA) v1.8.3  ####\n##### Shujun Ou (shujun.ou.1@gmail.com)\
+  \             ####\n########################################################\n\n\
+  \n\n\nThis is the Extensive de-novo TE Annotator that generates a high-quality structure-based\
+  \ TE library. Usage:\n\tperl EDTA.pl [options]\n\t\t--genome\t[File]\tThe genome\
+  \ FASTA\n\t\t--species [Rice|Maize|others]\tSpecify the species for identification\
+  \ of TIR candidates. Default: others\n\t\t--step\t[all|filter|final|anno] Specify\
+  \ which steps you want to run EDTA.\n\t\t\t\t\t\tall: run the entire pipeline (default)\n\
+  \t\t\t\t\t\tfilter: start from raw TEs to the end.\n\t\t\t\t\t\tfinal: start from\
+  \ filtered TEs to finalizing the run.\n\t\t\t\t\t\tanno: perform whole-genome annotation/analysis\
+  \ after TE library construction.\n\t\t--overwrite\t[0|1]\tIf previous raw TE results\
+  \ are found, decide to overwrite (1, rerun) or not (0, default).\n\t\t--cds\t[File]\t\
+  Provide a FASTA file containing the coding sequence (no introns, UTRs, nor TEs)\
+  \ of this genome or its close relative.\n\t\t--curatedlib\t[File]\tProvided a curated\
+  \ library to keep consistant naming and classification for known TEs.\n\t\t\t\t\t\
+  TEs in this file will be trusted 100%, so please ONLY provide MANUALLY CURATED ones.\n\
+  \t\t\t\t\tThis option is not mandatory. It's totally OK if no file is provided (default).\n\
+  \t\t--sensitive\t[0|1]\tUse RepeatModeler to identify remaining TEs (1) or not (0,\
+  \ default).\n\t\t\t\t\tThis step is very slow and MAY help to recover some TEs.\n\
+  \t\t--anno\t[0|1]\tPerform (1) or not perform (0, default) whole-genome TE annotation\
+  \ after TE library construction.\n\t\t--rmout\t[File]\tProvide your own homology-based\
+  \ TE annotation instead of using the EDTA library for masking. File is in RepeatMasker\
+  \ .out format. This file will be merged with the structural-based TE annotation.\
+  \ (--anno 1 required). Default: use the EDTA library for annotation.\n\t\t--evaluate\
+  \ [0|1]\tEvaluate (1) classification consistency of the TE annotation. (--anno 1\
+  \ required). Default: 0.\n\t\t\t\t\tThis step is slow and does not affect the annotation\
+  \ result.\n\t\t--exclude\t[File]\tExclude bed format regions from TE annotation.\
+  \ Default: undef. (--anno 1 required).\n\t\t--force\t[0|1]\tWhen no confident TE\
+  \ candidates are found: 0, interrupt and exit (default); 1, use rice TEs to continue.\n\
+  \t\t--repeatmodeler [path]\tThe directory containing RepeatModeler (default: read\
+  \ from ENV)\n\t\t--repeatmasker [path]\tThe directory containing RepeatMasker (default:\
+  \ read from ENV)\n\t\t--blast [path]\tThe directory containing BLASTx and BLASTn\
+  \ (default: read from ENV)\n\t\t--check_dependencies Check if dependencies are fullfiled\
+  \ and quit\n\t\t--trf [path]\tThe directory containing TRF (default: read from ENV)\n\
+  \t\t--threads|-t\t[int]\tNumber of theads to run this script (default: 4)\n\t\t\
+  --help|-h\tDisplay this help info\n\n\n\n"
+generated_using:
+- --help

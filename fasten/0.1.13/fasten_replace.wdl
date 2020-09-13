@@ -12,8 +12,8 @@ task FastenReplace {
   command <<<
     fasten_replace \
       ~{if defined(num_cpus) then ("--numcpus " +  '"' + num_cpus + '"') else ""} \
-      ~{true="--paired-end" false="" paired_end} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (paired_end) then "--paired-end" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(find) then ("--find " +  '"' + find + '"') else ""} \
       ~{if defined(replace) then ("--replace " +  '"' + replace + '"') else ""} \
       ~{if defined(which) then ("--which " +  '"' + which + '"') else ""}
@@ -25,5 +25,8 @@ task FastenReplace {
     find: "Regular expression (default: '.')"
     replace: "String to replace each match"
     which: "Which field to match on? ID, SEQ, QUAL. Default: SEQ"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

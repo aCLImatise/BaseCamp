@@ -8,10 +8,13 @@ task Arb2Ascii {
   command <<<
     arb_2_ascii \
       ~{source_dot_arb} \
-      ~{true="-r" false="" r}
+      ~{if (r) then "-r" else ""}
   >>>
   parameter_meta {
     r: ""
     source_dot_arb: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

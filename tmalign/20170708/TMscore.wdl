@@ -4,4 +4,7 @@ task TMscore {
   command <<<
     TMscore
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

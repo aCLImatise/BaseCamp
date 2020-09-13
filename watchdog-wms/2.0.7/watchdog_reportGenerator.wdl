@@ -1,7 +1,10 @@
 version 1.0
 
-task WatchdogReportGenerator {
+task WatchdogreportGenerator {
   command <<<
-    watchdog-reportGenerator
+    watchdog_reportGenerator
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

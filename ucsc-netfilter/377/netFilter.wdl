@@ -2,13 +2,13 @@ version 1.0
 
 task NetFilter {
   input {
-    String? chr_restrict_query_sequence_named
-    String? not_q
-    String? chr_restrict_side_sequence_named
-    String? not_t
+    Int? chr_restrict_query_sequence_named
+    Int? not_q
+    Int? chr_restrict_target_sequence_named
+    Int? not_t
     String? min_score
     String? max_score
-    String? min_gap
+    Int? min_gap
     String? min_ali
     String? max_ali
     String? minsize_t
@@ -27,11 +27,11 @@ task NetFilter {
     String? t_overlap_end
     String? type
     Boolean? syn
-    String? min_top_score
-    String? min_syn_score
-    String? min_syn_size
-    String? min_syn_ali
-    String? max_far
+    Int? min_top_score
+    Int? min_syn_score
+    Int? min_syn_size
+    Int? min_syn_ali
+    Int? max_far
     Boolean? non_syn
     Boolean? chimps_yn
     Boolean? fill
@@ -39,14 +39,12 @@ task NetFilter {
     Boolean? line
     Boolean? no_random
     Boolean? no_hap
-    String in_dotnet
   }
   command <<<
     netFilter \
-      ~{in_dotnet} \
       ~{if defined(chr_restrict_query_sequence_named) then ("-q " +  '"' + chr_restrict_query_sequence_named + '"') else ""} \
       ~{if defined(not_q) then ("-notQ " +  '"' + not_q + '"') else ""} \
-      ~{if defined(chr_restrict_side_sequence_named) then ("-t " +  '"' + chr_restrict_side_sequence_named + '"') else ""} \
+      ~{if defined(chr_restrict_target_sequence_named) then ("-t " +  '"' + chr_restrict_target_sequence_named + '"') else ""} \
       ~{if defined(not_t) then ("-notT " +  '"' + not_t + '"') else ""} \
       ~{if defined(min_score) then ("-minScore " +  '"' + min_score + '"') else ""} \
       ~{if defined(max_score) then ("-maxScore " +  '"' + max_score + '"') else ""} \
@@ -68,24 +66,24 @@ task NetFilter {
       ~{if defined(t_overlap_start) then ("-tOverlapStart " +  '"' + t_overlap_start + '"') else ""} \
       ~{if defined(t_overlap_end) then ("-tOverlapEnd " +  '"' + t_overlap_end + '"') else ""} \
       ~{if defined(type) then ("-type " +  '"' + type + '"') else ""} \
-      ~{true="-syn" false="" syn} \
+      ~{if (syn) then "-syn" else ""} \
       ~{if defined(min_top_score) then ("-minTopScore " +  '"' + min_top_score + '"') else ""} \
       ~{if defined(min_syn_score) then ("-minSynScore " +  '"' + min_syn_score + '"') else ""} \
       ~{if defined(min_syn_size) then ("-minSynSize " +  '"' + min_syn_size + '"') else ""} \
       ~{if defined(min_syn_ali) then ("-minSynAli " +  '"' + min_syn_ali + '"') else ""} \
       ~{if defined(max_far) then ("-maxFar " +  '"' + max_far + '"') else ""} \
-      ~{true="-nonsyn" false="" non_syn} \
-      ~{true="-chimpSyn" false="" chimps_yn} \
-      ~{true="-fill" false="" fill} \
-      ~{true="-gap" false="" gap} \
-      ~{true="-line" false="" line} \
-      ~{true="-noRandom" false="" no_random} \
-      ~{true="-noHap" false="" no_hap}
+      ~{if (non_syn) then "-nonsyn" else ""} \
+      ~{if (chimps_yn) then "-chimpSyn" else ""} \
+      ~{if (fill) then "-fill" else ""} \
+      ~{if (gap) then "-gap" else ""} \
+      ~{if (line) then "-line" else ""} \
+      ~{if (no_random) then "-noRandom" else ""} \
+      ~{if (no_hap) then "-noHap" else ""}
   >>>
   parameter_meta {
     chr_restrict_query_sequence_named: ",chr2 - restrict query side sequence to those named"
     not_q: ",chr2 - restrict query side sequence to those not named"
-    chr_restrict_side_sequence_named: ",chr2 - restrict target side sequence to those named"
+    chr_restrict_target_sequence_named: ",chr2 - restrict target side sequence to those named"
     not_t: ",chr2 - restrict target side sequence to those not named"
     min_score: "- restrict to those scoring at least N"
     max_score: "- restrict to those scoring less than N"
@@ -107,19 +105,21 @@ task NetFilter {
     t_overlap_start: "- restrict to those where the target overlaps a region starting here"
     t_overlap_end: "- restrict to those where the target overlaps a region ending here"
     type: "- restrict to given type, maybe repeated to allow several types"
-    syn: "- do filtering based on synteny (tuned for human/mouse).  "
+    syn: "- do filtering based on synteny (tuned for human/mouse)."
     min_top_score: "- Minimum score for top level alignments. default 300000"
-    min_syn_score: "- Min syntenic block score (def=200,000).  Default covers 27,000 bases including 9,000  aligning--a very stringent requirement. "
+    min_syn_score: "- Min syntenic block score (def=200,000).\\nDefault covers 27,000 bases including 9,000\\naligning--a very stringent requirement."
     min_syn_size: "- Min syntenic block size (def=20,000). -"
     min_syn_ali: "- Min syntenic alignment size(def=10,000). -"
-    max_far: "- Max distance to allow synteny (def=200,000). "
-    non_syn: "- do inverse filtering based on synteny (tuned for human/mouse).  "
-    chimps_yn: "- do filtering based on synteny (tuned for human/chimp).  "
+    max_far: "- Max distance to allow synteny (def=200,000)."
+    non_syn: "- do inverse filtering based on synteny (tuned for human/mouse)."
+    chimps_yn: "- do filtering based on synteny (tuned for human/chimp)."
     fill: "- Only pass fills, not gaps. Only useful with -line."
     gap: "- Only pass gaps, not fills. Only useful with -line."
     line: "- Do this a line at a time, not recursing"
     no_random: "- suppress chains involving 'random' chromosomes"
     no_hap: "- suppress chains involving chromosome names inc '_hap|_alt'"
-    in_dotnet: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

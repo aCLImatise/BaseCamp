@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../hgsqldump.cwl
 inputs:
-- id: database
+- id: in_database
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: tables
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - hgsqldump

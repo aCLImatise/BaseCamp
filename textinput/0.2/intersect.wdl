@@ -1,14 +1,10 @@
 version 1.0
 
 task Intersect {
-  input {
-    String? option
-  }
   command <<<
-    intersect \
-      ~{option}
+    intersect
   >>>
-  parameter_meta {
-    option: ""
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -2,31 +2,33 @@ version 1.0
 
 task FfindexApply {
   input {
-    Boolean? q
+    File? i
+    File? d
     Boolean? k
-    String? d
-    String? i
-    String ff_index_apply_mpi
+    Boolean? q
     String data_filename
     String index_filename
   }
   command <<<
     ffindex_apply \
-      ~{ff_index_apply_mpi} \
       ~{data_filename} \
       ~{index_filename} \
-      ~{true="-q" false="" q} \
-      ~{true="-k" false="" k} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
+      ~{if (k) then "-k" else ""} \
+      ~{if (q) then "-q" else ""}
   >>>
   parameter_meta {
-    q: ""
-    k: ""
-    d: ""
     i: ""
-    ff_index_apply_mpi: ""
-    data_filename: ""
-    index_filename: ""
+    d: ""
+    k: ""
+    q: ""
+    data_filename: "Input ffindex data file."
+    index_filename: "Input ffindex index file."
+  }
+  output {
+    File out_stdout = stdout()
+    File out_i = "${in_i}"
+    File out_d = "${in_d}"
   }
 }

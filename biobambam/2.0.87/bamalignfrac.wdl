@@ -4,4 +4,7 @@ task Bamalignfrac {
   command <<<
     bamalignfrac
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

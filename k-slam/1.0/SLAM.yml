@@ -1,8 +1,26 @@
 !Command
-positional: []
+command:
+- SLAM
+positional:
+- !Positional
+  description: '--num-reads-at-once arg (=10000000)   Reduce RAM usage by only analysing '
+  position: 0
+  name: align
+  optional: false
+- !Positional
+  description: '--sam-xa                              only output primary alignment
+    lines, '
+  position: 0
+  name: file
+  optional: false
+- !Positional
+  description: --no-pseudo-assembly                  do not link alignments together
+  position: 0
+  name: metagenomics
+  optional: false
 named:
 - !Flag
-  description: SLAM database file which reads will be  aligned against
+  description: "SLAM database file which reads will be\naligned against"
   synonyms:
   - --db
   args: !SimpleFlagArg
@@ -16,7 +34,8 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: (=0.94999999999999996) screen alignments with scores <  this*top score
+  description: "(=0.94999999999999996)\nscreen alignments with scores <\nthis*top\
+    \ score"
   synonyms:
   - --score-fraction-threshold
   args: !SimpleFlagArg
@@ -51,17 +70,9 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: (=4294967295)         Number of reads from R1/R2 File to  align
+  description: (=4294967295)         Number of reads from R1/R2 File to
   synonyms:
   - --num-reads
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: (=10000000)   Reduce RAM usage by only analysing  "arg" reads at once,
-    this will increase execution time
-  synonyms:
-  - --num-reads-at-once
   args: !SimpleFlagArg
     name: arg
   optional: true
@@ -80,34 +91,21 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: (=10)            Number of alignments to report in SAM  file
+  description: (=10)            Number of alignments to report in SAM
   synonyms:
   - --num-alignments
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: only output primary alignment lines,  use XA field for secondary alignments
-  synonyms:
-  - --sam-xa
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: only perform alignments, not  metagenomics
+  description: only perform alignments, not
   synonyms:
   - --just-align
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: do not link alignments together
-  synonyms:
-  - --no-pseudo-assembly
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- SLAM
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: produce help message
   synonyms:

@@ -1,5 +1,12 @@
 !Command
-positional: []
+command:
+- phyluce_assembly_get_trinity_coverage
+positional:
+- !Positional
+  description: --subfolder SUBFOLDER
+  position: 0
+  name: Trinity
+  optional: false
 named:
 - !Flag
   description: The directory containing the assemblies
@@ -16,18 +23,11 @@ named:
     name: ASSEMBLO_CONFIG
   optional: true
 - !Flag
-  description: The number of compute cores/threads to run with Trinity
+  description: The number of compute cores/threads to run with
   synonyms:
   - --cores
   args: !SimpleFlagArg
     name: CORES
-  optional: true
-- !Flag
-  description: A subdirectory, below the level of the group, containing the reads
-  synonyms:
-  - --subfolder
-  args: !SimpleFlagArg
-    name: SUBFOLDER
   optional: true
 - !Flag
   description: The logging level to use
@@ -35,8 +35,8 @@ named:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      ? WARN
       ? CRITICAL
+      ? WARN
       ? INFO
   optional: true
 - !Flag
@@ -64,12 +64,12 @@ named:
   - --assembler
   args: !ChoiceFlagArg
     choices: !!set
-      ? idba
       ? abyss
-      ? trinity2
-      ? trinity
       ? spades
       ? velvet
+      ? trinity2
+      ? idba
+      ? trinity
   optional: true
 - !Flag
   description: Trim contigs to a minimum coverage amount
@@ -77,10 +77,9 @@ named:
   - --trim
   args: !EmptyFlagArg {}
   optional: true
-command:
-- phyluce_assembly_get_trinity_coverage
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

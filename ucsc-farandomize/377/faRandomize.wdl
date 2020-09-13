@@ -17,4 +17,7 @@ task FaRandomize {
     in_dot_fa: ""
     randomized_dot_fa: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

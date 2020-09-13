@@ -1,7 +1,10 @@
 version 1.0
 
-task FastaStripIdentifier {
+task Fastastripidentifier {
   command <<<
-    fasta-strip-identifier
+    fasta_strip_identifier
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

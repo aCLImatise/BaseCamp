@@ -1,4 +1,6 @@
 !Command
+command:
+- msa_diff
 positional:
 - !Positional
   description: ''
@@ -12,9 +14,27 @@ positional:
   optional: false
 named:
 - !Flag
-  description: "Use given string for alphabet.  Can be used to accommodate nonstandard\
-    \ characters (e.g., 'b' for any base or '^' for insertion gaps, '.' for deletion\
-    \ gaps).  "
+  description: "|SS|PHYLIP|MPM|MAF\nFormat of first alignment (default is to guess\
+    \ format from file contents)."
+  synonyms:
+  - --format1
+  - -i
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "|SS|PHYLIP|MPM|MAF\nFormat of second alignment (default is to guess\
+    \ format from file contents)."
+  synonyms:
+  - --format2
+  - -j
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "Use given string for alphabet.  Can be used to accommodate\nnonstandard\
+    \ characters (e.g., 'b' for any base or '^' for insertion\ngaps, '.' for deletion\
+    \ gaps)."
   synonyms:
   - --alphabet
   - -a
@@ -22,8 +42,8 @@ named:
     name: alphabet_string
   optional: true
 - !Flag
-  description: Ignore identity of bases; consider all alphabetical characters equivalent
-    (e.g., A, C, G, T, N, X, b).
+  description: "Ignore identity of bases; consider all alphabetical characters\nequivalent\
+    \ (e.g., A, C, G, T, N, X, b)."
   synonyms:
   - --ignore-base-id
   - -b
@@ -36,12 +56,11 @@ named:
   - -g
   args: !EmptyFlagArg {}
   optional: true
-command:
-- msa_diff
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: Display this help message and exit.
+  description: "Display this help message and exit.\n"
   synonyms:
   - --help
   - -h

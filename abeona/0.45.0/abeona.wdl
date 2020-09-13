@@ -8,10 +8,13 @@ task Abeona {
   command <<<
     abeona \
       ~{args} \
-      ~{true="-v" false="" v}
+      ~{if (v) then "-v" else ""}
   >>>
   parameter_meta {
     v: ""
     args: "sub-command arguments"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

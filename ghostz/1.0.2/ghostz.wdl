@@ -46,8 +46,11 @@ task Ghostz {
     maximum_number_output: "Maximum number of the output for a query [10]"
     query_sequence_type: "Query sequence type, p (protein) or d (dna) [p]"
     database_sequence_type: "Database sequence type, p (protein) or d (dna) [p]"
-    filter_query_sequence: "Filter query sequence, T (enable) or F (disable) [T] "
+    filter_query_sequence: "Filter query sequence, T (enable) or F (disable) [T]"
     the_number_threads: "The number of threads [1]"
     minimum_length_query: "Minimum length of query[12]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

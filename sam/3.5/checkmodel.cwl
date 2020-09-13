@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../checkmodel.cwl
 inputs:
-- id: option
-  doc: ''
-  type: string
+- id: in_file_contains_model
+  doc: ', while file contains a MODEL, or'
+  type: File
   inputBinding:
-    prefix: -option
-- id: run_name
-  doc: ''
-  type: string
+    prefix: -i
+- id: in_model_file
+  doc: ', where file contains any model structure, or'
+  type: File
   inputBinding:
-    position: 0
-outputs: []
+    prefix: -model_file
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkmodel

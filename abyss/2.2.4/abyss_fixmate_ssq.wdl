@@ -1,13 +1,13 @@
 version 1.0
 
-task AbyssFixmateSsq {
+task Abyssfixmatessq {
   input {
     Boolean? no_qname
     Boolean? qname
     Boolean? all
     Boolean? diff
-    String? min_align
-    String? same
+    Int? min_align
+    File? same
     File? hist
     File? cov
     Boolean? verbose
@@ -16,21 +16,19 @@ task AbyssFixmateSsq {
     String? strain
     String? species
     String abyss_fix_mate
-    String? option
   }
   command <<<
-    abyss-fixmate-ssq \
+    abyss_fixmate_ssq \
       ~{abyss_fix_mate} \
-      ~{option} \
-      ~{true="--no-qname" false="" no_qname} \
-      ~{true="--qname" false="" qname} \
-      ~{true="--all" false="" all} \
-      ~{true="--diff" false="" diff} \
+      ~{if (no_qname) then "--no-qname" else ""} \
+      ~{if (qname) then "--qname" else ""} \
+      ~{if (all) then "--all" else ""} \
+      ~{if (diff) then "--diff" else ""} \
       ~{if defined(min_align) then ("--min-align " +  '"' + min_align + '"') else ""} \
       ~{if defined(same) then ("--same " +  '"' + same + '"') else ""} \
       ~{if defined(hist) then ("--hist " +  '"' + hist + '"') else ""} \
       ~{if defined(cov) then ("--cov " +  '"' + cov + '"') else ""} \
-      ~{true="--verbose" false="" verbose} \
+      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
       ~{if defined(strain) then ("--strain " +  '"' + strain + '"') else ""} \
@@ -40,7 +38,7 @@ task AbyssFixmateSsq {
     no_qname: "set the qname to * [default]"
     qname: "do not alter the qname"
     all: "print all alignments"
-    diff: "print alignments that align to different contigs [default]"
+    diff: "print alignments that align to different\\ncontigs [default]"
     min_align: "the minimal alignment size [1]"
     same: "write properly-paired reads to this file"
     hist: "write the fragment size histogram to FILE"
@@ -51,6 +49,8 @@ task AbyssFixmateSsq {
     strain: "specify strain NAME for sqlite"
     species: "specify species NAME for sqlite"
     abyss_fix_mate: ""
-    option: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

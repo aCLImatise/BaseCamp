@@ -2,16 +2,16 @@ version 1.0
 
 task NetSyntenic {
   input {
-    String in_dotnet
-    String out_dotnet
+    String? xxx
   }
   command <<<
     netSyntenic \
-      ~{in_dotnet} \
-      ~{out_dotnet}
+      ~{if defined(xxx) then ("-xxx " +  '"' + xxx + '"') else ""}
   >>>
   parameter_meta {
-    in_dotnet: ""
-    out_dotnet: ""
+    xxx: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

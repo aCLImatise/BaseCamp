@@ -1,14 +1,10 @@
 version 1.0
 
 task Mean {
-  input {
-    String? option
-  }
   command <<<
-    mean \
-      ~{option}
+    mean
   >>>
-  parameter_meta {
-    option: ""
+  output {
+    File out_stdout = stdout()
   }
 }

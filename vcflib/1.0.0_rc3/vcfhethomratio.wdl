@@ -2,7 +2,7 @@ version 1.0
 
 task Vcfhethomratio {
   input {
-    String vcf_file
+    File vcf_file
   }
   command <<<
     vcfhethomratio \
@@ -10,5 +10,8 @@ task Vcfhethomratio {
   >>>
   parameter_meta {
     vcf_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

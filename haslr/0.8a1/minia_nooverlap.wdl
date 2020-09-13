@@ -4,4 +4,7 @@ task MiniaNooverlap {
   command <<<
     minia_nooverlap
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

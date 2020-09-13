@@ -1,22 +1,10 @@
 class: CommandLineTool
-id: ../../../TIDDIT.py.cwl
-inputs:
-- id: sv
-  doc: call structural variation
-  type: boolean
-  inputBinding:
-    prefix: --sv
-- id: cov
-  doc: generate a coverage bed file
-  type: boolean
-  inputBinding:
-    prefix: --cov
-- id: tidd_it_two_do_tone_two_dot_zero
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-outputs: []
+id: ../../../TIDDIT.cwl
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
-- TIDDIT.py
+- TIDDIT

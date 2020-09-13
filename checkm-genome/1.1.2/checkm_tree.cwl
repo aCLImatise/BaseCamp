@@ -1,64 +1,67 @@
 class: CommandLineTool
 id: ../../../checkm_tree.cwl
 inputs:
-- id: reduced_tree
+- id: in_reduced_tree
   doc: use reduced tree (requires <16GB of memory) for determining lineage of each
     bin
   type: boolean
   inputBinding:
     prefix: --reduced_tree
-- id: ali
+- id: in_ali
   doc: generate HMMER alignment file for each bin
   type: boolean
   inputBinding:
     prefix: --ali
-- id: nt
+- id: in_nt
   doc: generate nucleotide gene sequences for each bin
   type: boolean
   inputBinding:
     prefix: --nt
-- id: genes
+- id: in_genes
   doc: bins contain genes as amino acids instead of nucleotide contigs
   type: boolean
   inputBinding:
     prefix: --genes
-- id: extension
+- id: in_extension
   doc: 'extension of bins (other files in directory are ignored) (default: fna)'
-  type: string
+  type: Directory
   inputBinding:
     prefix: --extension
-- id: threads
+- id: in_threads
   doc: 'number of threads (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --threads
-- id: p_placer_threads
+- id: in_p_placer_threads
   doc: 'number of threads used by pplacer (memory usage increases linearly with additional
     threads) (default: 1)'
-  type: string
+  type: long
   inputBinding:
     prefix: --pplacer_threads
-- id: quiet
+- id: in_quiet
   doc: suppress console output
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: tmpdir
+- id: in_tmpdir
   doc: specify an alternative directory for temporary files
-  type: string
+  type: Directory
   inputBinding:
     prefix: --tmpdir
-- id: bin_dir
+- id: in_bin_dir
   doc: directory containing bins (fasta format)
   type: string
   inputBinding:
     position: 0
-- id: output_dir
+- id: in_output_dir
   doc: directory to write output files
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - checkm

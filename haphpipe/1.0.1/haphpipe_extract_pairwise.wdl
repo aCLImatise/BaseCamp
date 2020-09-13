@@ -2,8 +2,8 @@ version 1.0
 
 task HaphpipeExtractPairwise {
   input {
-    String? align_json
-    String? outfile
+    File? align_json
+    File? outfile
     String? out_fmt
     String? ref_reg
     Boolean? debug
@@ -14,13 +14,18 @@ task HaphpipeExtractPairwise {
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(out_fmt) then ("--outfmt " +  '"' + out_fmt + '"') else ""} \
       ~{if defined(ref_reg) then ("--refreg " +  '"' + ref_reg + '"') else ""} \
-      ~{true="--debug" false="" debug}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
-    align_json: "JSON file describing alignment (output of pairwise_align stage)"
+    align_json: "JSON file describing alignment (output of\\npairwise_align stage)"
     outfile: "Output file. Default is stdout"
     out_fmt: "Format for output (default: nuc_fa)"
-    ref_reg: "Reference region. String format is ref:start-stop. For example, the region string to extract pol when aligned to HXB2 is HIV_B.K03455.HXB2:2085-5096"
+    ref_reg: "Reference region. String format is ref:start-stop. For\\nexample, the region string to extract pol when aligned\\nto HXB2 is HIV_B.K03455.HXB2:2085-5096"
     debug: "Print commands but do not run (default: False)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_align_json = "${in_align_json}"
+    File out_outfile = "${in_outfile}"
   }
 }

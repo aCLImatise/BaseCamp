@@ -1,7 +1,17 @@
 version 1.0
 
-task FilterGff {
+task Filtergff {
+  input {
+    Boolean? cite
+  }
   command <<<
-    filter-gff
+    filter_gff \
+      ~{if (cite) then "--cite" else ""}
   >>>
+  parameter_meta {
+    cite: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
 }

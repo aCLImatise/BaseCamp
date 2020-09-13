@@ -14,11 +14,11 @@ task ConvertToExtent {
     convertToExtent \
       ~{in} \
       ~{out} \
-      ~{true="-v" false="" be_chatty} \
-      ~{true="-fullquery" false="" full_query} \
-      ~{true="-fullgenomic" false="" full_genomic} \
-      ~{true="-exons" false="" exons} \
-      ~{true="-extended" false="" extended}
+      ~{if (be_chatty) then "-v" else ""} \
+      ~{if (full_query) then "-fullquery" else ""} \
+      ~{if (full_genomic) then "-fullgenomic" else ""} \
+      ~{if (exons) then "-exons" else ""} \
+      ~{if (extended) then "-extended" else ""}
   >>>
   parameter_meta {
     be_chatty: "be chatty"
@@ -28,5 +28,8 @@ task ConvertToExtent {
     extended: "include the IDX of each sequence"
     in: ""
     out: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

@@ -4,4 +4,7 @@ task MapMers {
   command <<<
     mapMers
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

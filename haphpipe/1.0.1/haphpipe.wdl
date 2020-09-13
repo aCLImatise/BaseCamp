@@ -4,4 +4,7 @@ task Haphpipe {
   command <<<
     haphpipe
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

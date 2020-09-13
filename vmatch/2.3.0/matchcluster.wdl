@@ -4,4 +4,7 @@ task Matchcluster {
   command <<<
     matchcluster
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

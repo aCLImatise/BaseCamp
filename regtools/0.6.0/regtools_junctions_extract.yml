@@ -1,4 +1,8 @@
 &id005 !Command
+command:
+- regtools
+- junctions
+- extract
 positional:
 - !Positional
   description: ''
@@ -7,8 +11,8 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Minimum anchor length. Junctions which satisfy a minimum  anchor length
-    on both sides are reported. [8]
+  description: "Minimum anchor length. Junctions which satisfy a minimum\nanchor length\
+    \ on both sides are reported. [8]"
   synonyms:
   - -a
   args: !SimpleFlagArg
@@ -36,16 +40,16 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: The region to identify junctions  in "chr:start-end" format. Entire
-    BAM by default.
+  description: "The region to identify junctions\nin \"chr:start-end\" format. Entire\
+    \ BAM by default."
   synonyms:
   - -r
   args: !SimpleFlagArg
     name: STR
   optional: true
 - !Flag
-  description: Strand specificity of RNA library preparation  (0 = unstranded, 1 =
-    first-strand/RF, 2, = second-strand/FR). REQUIRED
+  description: "Strand specificity of RNA library preparation\n(0 = unstranded, 1\
+    \ = first-strand/RF, 2, = second-strand/FR). REQUIRED"
   synonyms:
   - -s
   args: !SimpleFlagArg
@@ -58,25 +62,23 @@ named:
   args: !SimpleFlagArg
     name: STR
   optional: true
-command:
-- regtools
-- junctions
-- extract
-parent: &id001 !Command
-  positional: []
-  named: []
+parent: &id002 !Command
   command:
   - regtools
   - junctions
-  parent: &id002 !Command
-    positional: []
-    named: []
+  positional: []
+  named: []
+  parent: &id001 !Command
     command:
     - regtools
+    positional: []
+    named: []
     parent:
     subcommands:
-    - *id001
     - !Command
+      command:
+      - regtools
+      - cis-ase
       positional:
       - !Positional
         description: ''
@@ -84,11 +86,9 @@ parent: &id001 !Command
         name: command
         optional: false
       named: []
-      command:
-      - regtools
-      - cis-ase
-      parent: *id002
+      parent: *id001
       subcommands: []
+      usage: []
       help_flag:
       usage_flag:
       version_flag:
@@ -96,179 +96,20 @@ parent: &id001 !Command
         \tIdentify cis ase.\n\n"
       generated_using: &id004
       - --help
+    - *id002
     - &id003 !Command
-      positional: []
-      named: []
       command:
       - regtools
       - cis-splice-effects
-      parent: *id002
+      positional: []
+      named: []
+      parent: *id001
       subcommands:
       - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: variants.vcf
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: alignments.bam
-          optional: false
-        - !Positional
-          description: ''
-          position: 2
-          name: ref.fa
-          optional: false
-        - !Positional
-          description: ''
-          position: 3
-          name: annotations.gtf
-          optional: false
-        named:
-        - !Flag
-          description: Output file containing the aberrant splice junctions with annotations.
-            [STDOUT]
-          synonyms:
-          - -o
-          args: !SimpleFlagArg
-            name: STR
-          optional: true
-        - !Flag
-          description: Output file containing variants annotated as splice relevant
-            (VCF format).
-          synonyms:
-          - -v
-          args: !SimpleFlagArg
-            name: STR
-          optional: true
-        - !Flag
-          description: Output file containing the aberrant junctions in BED12 format.
-          synonyms:
-          - -j
-          args: !SimpleFlagArg
-            name: STR
-          optional: true
-        - !Flag
-          description: Strand specificity of RNA library preparation  (0 = unstranded,
-            1 = first-strand/RF, 2, = second-strand/FR). REQUIRED
-          synonyms:
-          - -s
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Tag used in bam to label strand. [XS]
-          synonyms:
-          - -t
-          args: !SimpleFlagArg
-            name: STR
-          optional: true
-        - !Flag
-          description: Minimum anchor length. Junctions which satisfy a minimum  anchor
-            length on both sides are reported. [8]
-          synonyms:
-          - -a
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Minimum intron length. [70]
-          synonyms:
-          - -m
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Maximum intron length. [500000]
-          synonyms:
-          - -M
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Window size in b.p to identify splicing events in. The tool
-            identifies events in variant.start +/- w basepairs. Default behaviour
-            is to look at the window between previous and next exons.
-          synonyms:
-          - -w
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Maximum distance from the start/end of an exon  to annotate
-            a variant as relevant to splicing, the variant  is in exonic space, i.e
-            a coding variant. [3]
-          synonyms:
-          - -e
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Maximum distance from the start/end of an exon  to annotate
-            a variant as relevant to splicing, the variant  is in intronic space.
-            [2]
-          synonyms:
-          - -i
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Annotate variants in intronic space within a transcript(not
-            to be used with -i).
-          synonyms:
-          - -I
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Annotate variants in exonic space within a transcript(not to
-            be used with -e).
-          synonyms:
-          - -E
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Don't skip single exon transcripts.
-          synonyms:
-          - -S
-          args: !EmptyFlagArg {}
-          optional: true
         command:
         - regtools
         - cis-splice-effects
-        - identify
-        parent: *id003
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "\nProgram:\tregtools\nVersion:\t0.5.2\nidentify: invalid option\
-          \ -- '-'\nUsage:\t\tregtools cis-splice-effects identify [options] variants.vcf\
-          \ alignments.bam ref.fa annotations.gtf\nOptions:\n\t\t-o STR\tOutput file\
-          \ containing the aberrant splice junctions with annotations. [STDOUT]\n\t\
-          \t-v STR\tOutput file containing variants annotated as splice relevant (VCF\
-          \ format).\n\t\t-j STR\tOutput file containing the aberrant junctions in\
-          \ BED12 format.\n\t\t-s INT\tStrand specificity of RNA library preparation\
-          \ \n\t\t\t (0 = unstranded, 1 = first-strand/RF, 2, = second-strand/FR).\
-          \ REQUIRED\n\t\t-t STR\tTag used in bam to label strand. [XS]\n\t\t-a INT\t\
-          Minimum anchor length. Junctions which satisfy a minimum \n\t\t\t anchor\
-          \ length on both sides are reported. [8]\n\t\t-m INT\tMinimum intron length.\
-          \ [70]\n\t\t-M INT\tMaximum intron length. [500000]\n\t\t-w INT\tWindow\
-          \ size in b.p to identify splicing events in.\n\t\t\t The tool identifies\
-          \ events in variant.start +/- w basepairs.\n\t\t\t Default behaviour is\
-          \ to look at the window between previous and next exons.\n\t\t-e INT\tMaximum\
-          \ distance from the start/end of an exon \n\t\t\t to annotate a variant\
-          \ as relevant to splicing, the variant \n\t\t\t is in exonic space, i.e\
-          \ a coding variant. [3]\n\t\t-i INT\tMaximum distance from the start/end\
-          \ of an exon \n\t\t\t to annotate a variant as relevant to splicing, the\
-          \ variant \n\t\t\t is in intronic space. [2]\n\t\t-I\tAnnotate variants\
-          \ in intronic space within a transcript(not to be used with -i).\n\t\t-E\t\
-          Annotate variants in exonic space within a transcript(not to be used with\
-          \ -e).\n\t\t-S\tDon't skip single exon transcripts.\n\nError parsing inputs!(1)\n\
-          \n\n"
-        generated_using: *id004
-      - !Command
+        - associate
         positional:
         - !Positional
           description: ''
@@ -315,8 +156,8 @@ parent: &id001 !Command
             name: STR
           optional: true
         - !Flag
-          description: Minimum anchor length. Junctions which satisfy a minimum  anchor
-            length on both sides are reported. [8]
+          description: "Minimum anchor length. Junctions which satisfy a minimum\n\
+            anchor length on both sides are reported. [8]"
           synonyms:
           - -a
           args: !SimpleFlagArg
@@ -337,27 +178,27 @@ parent: &id001 !Command
             name: INT
           optional: true
         - !Flag
-          description: Window size in b.p to identify splicing events in. The tool
-            identifies events in variant.start +/- w basepairs. Default behaviour
-            is to look at the window between previous and next exons.
+          description: "Window size in b.p to identify splicing events in.\nThe tool\
+            \ identifies events in variant.start +/- w basepairs.\nDefault behaviour\
+            \ is to look at the window between previous and next exons."
           synonyms:
           - -w
           args: !SimpleFlagArg
             name: INT
           optional: true
         - !Flag
-          description: Maximum distance from the start/end of an exon  to annotate
-            a variant as relevant to splicing, the variant  is in exonic space, i.e
-            a coding variant. [3]
+          description: "Maximum distance from the start/end of an exon\nto annotate\
+            \ a variant as relevant to splicing, the variant\nis in exonic space,\
+            \ i.e a coding variant. [3]"
           synonyms:
           - -e
           args: !SimpleFlagArg
             name: INT
           optional: true
         - !Flag
-          description: Maximum distance from the start/end of an exon  to annotate
-            a variant as relevant to splicing, the variant  is in intronic space.
-            [2]
+          description: "Maximum distance from the start/end of an exon\nto annotate\
+            \ a variant as relevant to splicing, the variant\nis in intronic space.\
+            \ [2]"
           synonyms:
           - -i
           args: !SimpleFlagArg
@@ -383,12 +224,9 @@ parent: &id001 !Command
           - -S
           args: !EmptyFlagArg {}
           optional: true
-        command:
-        - regtools
-        - cis-splice-effects
-        - associate
         parent: *id003
         subcommands: []
+        usage: []
         help_flag:
         usage_flag:
         version_flag:
@@ -414,6 +252,172 @@ parent: &id001 !Command
           \ to be used with -e).\n\t\t-S\tDon't skip single exon transcripts.\n\n\
           Error parsing inputs!(1)\n\n\n"
         generated_using: *id004
+      - !Command
+        command:
+        - regtools
+        - cis-splice-effects
+        - identify
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: variants.vcf
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: alignments.bam
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: ref.fa
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: annotations.gtf
+          optional: false
+        named:
+        - !Flag
+          description: Output file containing the aberrant splice junctions with annotations.
+            [STDOUT]
+          synonyms:
+          - -o
+          args: !SimpleFlagArg
+            name: STR
+          optional: true
+        - !Flag
+          description: Output file containing variants annotated as splice relevant
+            (VCF format).
+          synonyms:
+          - -v
+          args: !SimpleFlagArg
+            name: STR
+          optional: true
+        - !Flag
+          description: Output file containing the aberrant junctions in BED12 format.
+          synonyms:
+          - -j
+          args: !SimpleFlagArg
+            name: STR
+          optional: true
+        - !Flag
+          description: "Strand specificity of RNA library preparation\n(0 = unstranded,\
+            \ 1 = first-strand/RF, 2, = second-strand/FR). REQUIRED"
+          synonyms:
+          - -s
+          args: !SimpleFlagArg
+            name: INT
+          optional: true
+        - !Flag
+          description: Tag used in bam to label strand. [XS]
+          synonyms:
+          - -t
+          args: !SimpleFlagArg
+            name: STR
+          optional: true
+        - !Flag
+          description: "Minimum anchor length. Junctions which satisfy a minimum\n\
+            anchor length on both sides are reported. [8]"
+          synonyms:
+          - -a
+          args: !SimpleFlagArg
+            name: INT
+          optional: true
+        - !Flag
+          description: Minimum intron length. [70]
+          synonyms:
+          - -m
+          args: !SimpleFlagArg
+            name: INT
+          optional: true
+        - !Flag
+          description: Maximum intron length. [500000]
+          synonyms:
+          - -M
+          args: !SimpleFlagArg
+            name: INT
+          optional: true
+        - !Flag
+          description: "Window size in b.p to identify splicing events in.\nThe tool\
+            \ identifies events in variant.start +/- w basepairs.\nDefault behaviour\
+            \ is to look at the window between previous and next exons."
+          synonyms:
+          - -w
+          args: !SimpleFlagArg
+            name: INT
+          optional: true
+        - !Flag
+          description: "Maximum distance from the start/end of an exon\nto annotate\
+            \ a variant as relevant to splicing, the variant\nis in exonic space,\
+            \ i.e a coding variant. [3]"
+          synonyms:
+          - -e
+          args: !SimpleFlagArg
+            name: INT
+          optional: true
+        - !Flag
+          description: "Maximum distance from the start/end of an exon\nto annotate\
+            \ a variant as relevant to splicing, the variant\nis in intronic space.\
+            \ [2]"
+          synonyms:
+          - -i
+          args: !SimpleFlagArg
+            name: INT
+          optional: true
+        - !Flag
+          description: Annotate variants in intronic space within a transcript(not
+            to be used with -i).
+          synonyms:
+          - -I
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Annotate variants in exonic space within a transcript(not to
+            be used with -e).
+          synonyms:
+          - -E
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Don't skip single exon transcripts.
+          synonyms:
+          - -S
+          args: !EmptyFlagArg {}
+          optional: true
+        parent: *id003
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "\nProgram:\tregtools\nVersion:\t0.5.2\nidentify: invalid option\
+          \ -- '-'\nUsage:\t\tregtools cis-splice-effects identify [options] variants.vcf\
+          \ alignments.bam ref.fa annotations.gtf\nOptions:\n\t\t-o STR\tOutput file\
+          \ containing the aberrant splice junctions with annotations. [STDOUT]\n\t\
+          \t-v STR\tOutput file containing variants annotated as splice relevant (VCF\
+          \ format).\n\t\t-j STR\tOutput file containing the aberrant junctions in\
+          \ BED12 format.\n\t\t-s INT\tStrand specificity of RNA library preparation\
+          \ \n\t\t\t (0 = unstranded, 1 = first-strand/RF, 2, = second-strand/FR).\
+          \ REQUIRED\n\t\t-t STR\tTag used in bam to label strand. [XS]\n\t\t-a INT\t\
+          Minimum anchor length. Junctions which satisfy a minimum \n\t\t\t anchor\
+          \ length on both sides are reported. [8]\n\t\t-m INT\tMinimum intron length.\
+          \ [70]\n\t\t-M INT\tMaximum intron length. [500000]\n\t\t-w INT\tWindow\
+          \ size in b.p to identify splicing events in.\n\t\t\t The tool identifies\
+          \ events in variant.start +/- w basepairs.\n\t\t\t Default behaviour is\
+          \ to look at the window between previous and next exons.\n\t\t-e INT\tMaximum\
+          \ distance from the start/end of an exon \n\t\t\t to annotate a variant\
+          \ as relevant to splicing, the variant \n\t\t\t is in exonic space, i.e\
+          \ a coding variant. [3]\n\t\t-i INT\tMaximum distance from the start/end\
+          \ of an exon \n\t\t\t to annotate a variant as relevant to splicing, the\
+          \ variant \n\t\t\t is in intronic space. [2]\n\t\t-I\tAnnotate variants\
+          \ in intronic space within a transcript(not to be used with -i).\n\t\t-E\t\
+          Annotate variants in exonic space within a transcript(not to be used with\
+          \ -e).\n\t\t-S\tDon't skip single exon transcripts.\n\nError parsing inputs!(1)\n\
+          \n\n"
+        generated_using: *id004
+      usage: []
       help_flag:
       usage_flag:
       version_flag:
@@ -422,6 +426,9 @@ parent: &id001 !Command
         \ junctions with variants\n\n"
       generated_using: *id004
     - !Command
+      command:
+      - regtools
+      - variants
       positional:
       - !Positional
         description: ''
@@ -429,17 +436,16 @@ parent: &id001 !Command
         name: command
         optional: false
       named: []
-      command:
-      - regtools
-      - variants
-      parent: *id002
+      parent: *id001
       subcommands: []
+      usage: []
       help_flag:
       usage_flag:
       version_flag:
       help_text: "Usage:\t\tregtools variants <command> [options]\nCommand:\tannotate\t\
         \tAnnotate variants with splicing information.\n\n"
       generated_using: *id004
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -451,8 +457,11 @@ parent: &id001 !Command
       \n"
     generated_using: *id004
   subcommands:
-  - *id005
   - !Command
+    command:
+    - regtools
+    - junctions
+    - annotate
     positional:
     - !Positional
       description: ''
@@ -484,12 +493,9 @@ parent: &id001 !Command
       args: !SimpleFlagArg
         name: FILE
       optional: true
-    command:
-    - regtools
-    - junctions
-    - annotate
-    parent: *id001
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
@@ -498,6 +504,8 @@ parent: &id001 !Command
       \ annotations.gtf\nOptions:\t-S include single exon genes\n\t\t-o FILE\tThe\
       \ file to write output to. [STDOUT]\n\nError parsing inputs!(1)\n\n\n"
     generated_using: *id004
+  - *id005
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -506,6 +514,7 @@ parent: &id001 !Command
     \n"
   generated_using: *id004
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

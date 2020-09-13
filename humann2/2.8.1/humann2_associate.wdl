@@ -24,6 +24,9 @@ task Humann2Associate {
     last_meta_datum: "Indicate end of metadata rows"
     focal_type: "Metadatum type"
     where_save_output: "Where to save the output"
-    fdr: "FDR threshold (default=0.2)"
+    fdr: "FDR threshold (default=0.2)\\n"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

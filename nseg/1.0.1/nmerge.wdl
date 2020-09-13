@@ -11,4 +11,7 @@ task Nmerge {
   parameter_meta {
     dbn: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

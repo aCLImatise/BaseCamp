@@ -2,7 +2,7 @@ version 1.0
 
 task RemoveRegion {
   input {
-    String? region_file
+    File? region_file
     String? ref
   }
   command <<<
@@ -11,7 +11,10 @@ task RemoveRegion {
       ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
   parameter_meta {
-    region_file: "A bed file specifying regions which should be excluded  from the gVCF. Any records contained in the excluded  region will be removed, and any boundary non-refernece  blocks will be altered to remove segments overlapping  the excluded region (required)"
+    region_file: "A bed file specifying regions which should be excluded\\nfrom the gVCF. Any records contained in the excluded\\nregion will be removed, and any boundary non-refernece\\nblocks will be altered to remove segments overlapping\\nthe excluded region (required)"
     ref: "samtools reference sequence (required)"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

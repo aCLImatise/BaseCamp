@@ -11,4 +11,7 @@ task TbvcfreportCOMMAND {
   parameter_meta {
     args: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

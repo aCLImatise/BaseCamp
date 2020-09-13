@@ -4,4 +4,7 @@ task Newseq {
   command <<<
     newseq
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

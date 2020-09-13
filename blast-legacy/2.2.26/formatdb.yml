@@ -1,29 +1,90 @@
 !Command
+command:
+- formatdb
 positional: []
 named:
 - !Flag
-  description: 'Parse options T - True: Parse SeqId and create indexes. F - False:
-    Do not parse SeqId. Do not create indexes.'
+  description: Title for database file [String]  Optional
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file(s) for formatting [File In]  Optional
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Logfile name: [File Out]  Optional\ndefault = formatdb.log"
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Type of file\nT - protein\nF - nucleotide [T/F]  Optional\ndefault\
+    \ = T"
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Parse options\nT - True: Parse SeqId and create indexes.\nF - False:\
+    \ Do not parse SeqId. Do not create indexes."
   synonyms:
   - -o
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is database in ASN.1 format (otherwise FASTA is expected)
-    T - True,  F - False.
+  description: "Input file is database in ASN.1 format (otherwise FASTA is expected)\n\
+    T - True,\nF - False."
   synonyms:
   - -a
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ASN.1 database in binary mode T - binary,  F - text mode.
+  description: "ASN.1 database in binary mode\nT - binary,\nF - text mode."
   synonyms:
   - -b
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Create an alias file with this name use the gifile arg (below) if set
-    to calculate db size use the BLAST db specified with -i (above) [File Out]  Optional
+  description: "Input is a Seq-entry [T/F]  Optional\ndefault = F"
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Base name for BLAST files [String]  Optional
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Database volume size in millions of letters [Integer]  Optional\n\
+    default = 4000"
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Create indexes limited only to accessions - sparse [T/F]  Optional\n\
+    default = F"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Verbose: check for non-unique string ids in the database [T/F]  Optional\n\
+    default = F"
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Create an alias file with this name\nuse the gifile arg (below) if\
+    \ set to calculate db size\nuse the BLAST db specified with -i (above) [File Out]\
+    \  Optional"
   synonyms:
   - -L
   args: !EmptyFlagArg {}
@@ -46,10 +107,9 @@ named:
   - -T
   args: !EmptyFlagArg {}
   optional: true
-command:
-- formatdb
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

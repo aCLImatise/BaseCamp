@@ -1,7 +1,10 @@
 version 1.0
 
-task SegwayTask {
+task Segwaytask {
   command <<<
-    segway-task
+    segway_task
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -2,7 +2,7 @@ version 1.0
 
 task GetTargetsDef {
   input {
-    File files_to_tax_ids
+    String files_to_tax_ids
   }
   command <<<
     getTargetsDef \
@@ -10,5 +10,8 @@ task GetTargetsDef {
   >>>
   parameter_meta {
     files_to_tax_ids: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

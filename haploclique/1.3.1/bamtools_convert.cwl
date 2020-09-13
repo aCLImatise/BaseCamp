@@ -1,49 +1,67 @@
 class: CommandLineTool
 id: ../../../bamtools_convert.cwl
 inputs:
-- id: in
+- id: in_in
   doc: the input BAM file(s) [stdin]
-  type: string
+  type: File
   inputBinding:
     prefix: -in
-- id: list
-  doc: the input BAM file list, one line per file
+- id: in_list
+  doc: "the input BAM file list, one\nline per file"
   type: File
   inputBinding:
     prefix: -list
-- id: out
+- id: in_out
   doc: the output BAM file [stdout]
-  type: string
+  type: File
   inputBinding:
     prefix: -out
-- id: format
-  doc: the output file format - see README for recognized formats
-  type: string
+- id: in_format
+  doc: "the output file format - see\nREADME for recognized formats"
+  type: File
   inputBinding:
     prefix: -format
-- id: region
-  doc: genomic region. Index file is recommended for better performance, and is used
-    automatically if it exists. See 'bamtools help index' for more details on creating
-    one
-  type: string
+- id: in_region
+  doc: "genomic region. Index file is\nrecommended for better performance, and is\n\
+    used automatically if it exists. See\n'bamtools help index' for more details on\n\
+    creating one"
+  type: File
   inputBinding:
     prefix: -region
-- id: fast_a
+- id: in_fast_a
   doc: FASTA reference file
-  type: string
+  type: File
   inputBinding:
     prefix: -fasta
-- id: map_qual
+- id: in_map_qual
   doc: print the mapping qualities
   type: boolean
   inputBinding:
     prefix: -mapqual
-- id: noheader
-  doc: omit the SAM header from output
+- id: in_noheader
+  doc: omit the SAM header from
   type: boolean
   inputBinding:
     prefix: -noheader
-outputs: []
+- id: in_output
+  doc: 'Help:'
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_out
+  doc: the output BAM file [stdout]
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out)
+- id: out_format
+  doc: "the output file format - see\nREADME for recognized formats"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_format)
 cwlVersion: v1.1
 baseCommand:
 - bamtools

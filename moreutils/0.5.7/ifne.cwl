@@ -1,22 +1,25 @@
 class: CommandLineTool
 id: ../../../ifne.cwl
 inputs:
-- id: n
+- id: in_n
   doc: ''
   type: boolean
   inputBinding:
     prefix: -n
-- id: command
+- id: in_command
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: args
+- id: in_args
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - ifne

@@ -1,73 +1,76 @@
 class: CommandLineTool
 id: ../../../gretel_snpper.cwl
 inputs:
-- id: bam
+- id: in_contig
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --contig
+- id: in_bam
   doc: bam of reads aligned to (psuedo)-reference
   type: string
   inputBinding:
     prefix: --bam
-- id: contig
-  doc: name of contig to generate a VCF for
-  type: string
-  inputBinding:
-    prefix: --contig
-- id: start_default_
+- id: in_start_default_
   doc: start (default = 1)
-  type: string
+  type: long
   inputBinding:
     prefix: -s
-- id: end_default_length
+- id: in_end_default_length
   doc: end (default = length of the reference)
-  type: string
+  type: long
   inputBinding:
     prefix: -e
-- id: depth
-  doc: number of reads that must feature a read to call that base as a possible variant
-    (default = 0)
-  type: string
+- id: in_depth
+  doc: "number of reads that must feature a read to call that base\nas a possible\
+    \ variant (default = 0)"
+  type: long
   inputBinding:
     prefix: --depth
-- id: aggressively
+- id: in_aggressively
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: call
+- id: in_call
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: for
+- id: in_for
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: variants
+- id: in_variants
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: and
+- id: in_and
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: generate
+- id: in_generate
   doc: ''
   type: string
   inputBinding:
     position: 5
-- id: a
+- id: in_a
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: vcf
+- id: in_vcf
   doc: ''
   type: string
   inputBinding:
     position: 7
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gretel-snpper

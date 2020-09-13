@@ -4,4 +4,7 @@ task BrockmanPipeline {
   command <<<
     brockman_pipeline
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

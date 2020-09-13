@@ -3,7 +3,7 @@ version 1.0
 task ExtractCodonAlignment {
   input {
     File? aligned_cds
-    String? aln_format
+    File? aln_format
     String? codon_poses
     File? out_aln
   }
@@ -16,8 +16,12 @@ task ExtractCodonAlignment {
   >>>
   parameter_meta {
     aligned_cds: "The CDS alignment."
-    aln_format: "the file format for the CDS alignment. Anything accepted by BioPython is fine [fasta]"
+    aln_format: "the file format for the CDS alignment. Anything\\naccepted by BioPython is fine [fasta]"
     codon_poses: "Codon position(s) to be extracted [12]"
     out_aln: "output file name"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_aln = "${in_out_aln}"
   }
 }

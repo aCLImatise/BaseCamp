@@ -1,14 +1,10 @@
 version 1.0
 
 task PileOMeth {
-  input {
-    String var_command
-  }
   command <<<
-    PileOMeth \
-      ~{var_command}
+    PileOMeth
   >>>
-  parameter_meta {
-    var_command: ""
+  output {
+    File out_stdout = stdout()
   }
 }

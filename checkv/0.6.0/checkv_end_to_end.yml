@@ -1,4 +1,7 @@
-&id001 !Command
+&id003 !Command
+command:
+- checkv
+- end_to_end
 positional:
 - !Positional
   description: Input nucleotide sequences in FASTA format
@@ -12,8 +15,8 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Reference database path. By default the CHECKVDB environment variable
-    is used
+  description: "Reference database path. By default the CHECKVDB environment\nvariable\
+    \ is used"
   synonyms:
   - -d
   args: !SimpleFlagArg
@@ -27,8 +30,8 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Overwrite existing intermediate files. By default CheckV continues
-    where program left off
+  description: "Overwrite existing intermediate files. By default CheckV\ncontinues\
+    \ where program left off"
   synonyms:
   - --restart
   args: !EmptyFlagArg {}
@@ -39,63 +42,57 @@ named:
   - --quiet
   args: !EmptyFlagArg {}
   optional: true
-command:
-- checkv
-- end_to_end
-parent: &id002 !Command
-  positional: []
-  named: []
+parent: &id001 !Command
   command:
   - checkv
+  positional: []
+  named: []
   parent:
   subcommands:
-  - *id001
   - !Command
+    command:
+    - checkv
+    - update_database
     positional:
     - !Positional
-      description: Input nucleotide sequences in FASTA format
+      description: Path to current CheckV database.
       position: 0
-      name: input
+      name: source_db
       optional: false
     - !Positional
-      description: Output directory
+      description: Path to updated CheckV database.
       position: 1
-      name: output
+      name: dest_db
+      optional: false
+    - !Positional
+      description: "FASTA file of complete genomes to add to database, where each\n\
+        nucleotide sequence represents one genome."
+      position: 2
+      name: genomes
       optional: false
     named:
-    - !Flag
-      description: Reference database path. By default the CHECKVDB environment variable
-        is used
-      synonyms:
-      - -d
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    - !Flag
-      description: Number of threads to use for Prodigal and hmmsearch
-      synonyms:
-      - -t
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: Overwrite existing intermediate files. By default CheckV continues
-        where program left off
-      synonyms:
-      - --restart
-      args: !EmptyFlagArg {}
-      optional: true
     - !Flag
       description: Suppress logging messages
       synonyms:
       - --quiet
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - checkv
-    - contamination
-    parent: *id002
+    - !Flag
+      description: Overwrite existing database
+      synonyms:
+      - --restart
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Number of threads for Prodigal and DIAMOND
+      synonyms:
+      - --threads
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -105,82 +102,21 @@ parent: &id002 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "Estimate host contamination for integrated proviruses\n\nusage: checkv\
-      \ contamination <input> <output> [options]\n\npositional arguments:\n  input\
-      \       Input nucleotide sequences in FASTA format\n  output      Output directory\n\
-      \noptional arguments:\n  -h, --help  show this help message and exit\n  -d PATH\
-      \     Reference database path. By default the CHECKVDB environment\n       \
-      \       variable is used\n  -t INT      Number of threads to use for Prodigal\
-      \ and hmmsearch\n  --restart   Overwrite existing intermediate files. By default\
-      \ CheckV\n              continues where program left off\n  --quiet     Suppress\
-      \ logging messages\n"
-    generated_using: &id003
+    help_text: "Update CheckV's database with your own complete genomes\n\nusage:\
+      \ checkv update_database <source_db> <dest_db> <genomes> [options]\n\npositional\
+      \ arguments:\n  source_db      Path to current CheckV database.\n  dest_db \
+      \       Path to updated CheckV database.\n  genomes        FASTA file of complete\
+      \ genomes to add to database, where each\n                 nucleotide sequence\
+      \ represents one genome.\n\noptional arguments:\n  -h, --help     show this\
+      \ help message and exit\n  --quiet        Suppress logging messages\n  --restart\
+      \      Overwrite existing database\n  --threads INT  Number of threads for Prodigal\
+      \ and DIAMOND\n"
+    generated_using: &id002
     - --help
   - !Command
-    positional:
-    - !Positional
-      description: Input nucleotide sequences in FASTA format
-      position: 0
-      name: input
-      optional: false
-    - !Positional
-      description: Output directory
-      position: 1
-      name: output
-      optional: false
-    named:
-    - !Flag
-      description: Reference database path. By default the CHECKVDB environment variable
-        is used
-      synonyms:
-      - -d
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    - !Flag
-      description: Number of threads to use for Prodigal and DIAMOND
-      synonyms:
-      - -t
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: Overwrite existing intermediate files. By default CheckV continues
-        where program left off
-      synonyms:
-      - --restart
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Suppress logging messages
-      synonyms:
-      - --quiet
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - checkv
-    - completeness
-    parent: *id002
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Estimate completeness for genome fragments\n\nusage: checkv completeness\
-      \ <input> <output> [options]\n\npositional arguments:\n  input       Input nucleotide\
-      \ sequences in FASTA format\n  output      Output directory\n\noptional arguments:\n\
-      \  -h, --help  show this help message and exit\n  -d PATH     Reference database\
-      \ path. By default the CHECKVDB environment\n              variable is used\n\
-      \  -t INT      Number of threads to use for Prodigal and DIAMOND\n  --restart\
-      \   Overwrite existing intermediate files. By default CheckV\n             \
-      \ continues where program left off\n  --quiet     Suppress logging messages\n"
-    generated_using: *id003
-  - !Command
+    - repeats
     positional:
     - !Positional
       description: Input viral sequences in FASTA format
@@ -206,11 +142,9 @@ parent: &id002 !Command
       - --quiet
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - checkv
-    - repeats
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -226,8 +160,77 @@ parent: &id002 !Command
       \ directory\n\noptional arguments:\n  -h, --help        show this help message\
       \ and exit\n  --min_tr_len INT  Min length of TR\n  --quiet           Suppress\
       \ logging messages\n"
-    generated_using: *id003
+    generated_using: *id002
+  - *id003
   - !Command
+    command:
+    - checkv
+    - completeness
+    positional:
+    - !Positional
+      description: Input nucleotide sequences in FASTA format
+      position: 0
+      name: input
+      optional: false
+    - !Positional
+      description: Output directory
+      position: 1
+      name: output
+      optional: false
+    named:
+    - !Flag
+      description: "Reference database path. By default the CHECKVDB environment\n\
+        variable is used"
+      synonyms:
+      - -d
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Number of threads to use for Prodigal and DIAMOND
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: "Overwrite existing intermediate files. By default CheckV\ncontinues\
+        \ where program left off"
+      synonyms:
+      - --restart
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Suppress logging messages
+      synonyms:
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Estimate completeness for genome fragments\n\nusage: checkv completeness\
+      \ <input> <output> [options]\n\npositional arguments:\n  input       Input nucleotide\
+      \ sequences in FASTA format\n  output      Output directory\n\noptional arguments:\n\
+      \  -h, --help  show this help message and exit\n  -d PATH     Reference database\
+      \ path. By default the CHECKVDB environment\n              variable is used\n\
+      \  -t INT      Number of threads to use for Prodigal and DIAMOND\n  --restart\
+      \   Overwrite existing intermediate files. By default CheckV\n             \
+      \ continues where program left off\n  --quiet     Suppress logging messages\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - checkv
+    - quality_summary
     positional:
     - !Positional
       description: Input viral sequences in FASTA format
@@ -246,11 +249,9 @@ parent: &id002 !Command
       - --quiet
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - checkv
-    - quality_summary
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -265,8 +266,11 @@ parent: &id002 !Command
       \ sequences in FASTA format\n  output      Output directory\n\noptional arguments:\n\
       \  -h, --help  show this help message and exit\n  --quiet     Suppress logging\
       \ messages\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
+    command:
+    - checkv
+    - download_database
     positional:
     - !Positional
       description: Directory where the database will be downloaded to.
@@ -280,11 +284,9 @@ parent: &id002 !Command
       - --quiet
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - checkv
-    - download_database
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -298,50 +300,54 @@ parent: &id002 !Command
       \ download_database <destination>\n\npositional arguments:\n  destination  Directory\
       \ where the database will be downloaded to.\n\noptional arguments:\n  -h, --help\
       \   show this help message and exit\n  --quiet      Suppress logging messages\n"
-    generated_using: *id003
+    generated_using: *id002
   - !Command
+    command:
+    - checkv
+    - contamination
     positional:
     - !Positional
-      description: Path to current CheckV database.
+      description: Input nucleotide sequences in FASTA format
       position: 0
-      name: source_db
+      name: input
       optional: false
     - !Positional
-      description: Path to updated CheckV database.
+      description: Output directory
       position: 1
-      name: dest_db
-      optional: false
-    - !Positional
-      description: FASTA file of complete genomes to add to database, where each nucleotide
-        sequence represents one genome.
-      position: 2
-      name: genomes
+      name: output
       optional: false
     named:
+    - !Flag
+      description: "Reference database path. By default the CHECKVDB environment\n\
+        variable is used"
+      synonyms:
+      - -d
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Number of threads to use for Prodigal and hmmsearch
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: "Overwrite existing intermediate files. By default CheckV\ncontinues\
+        \ where program left off"
+      synonyms:
+      - --restart
+      args: !EmptyFlagArg {}
+      optional: true
     - !Flag
       description: Suppress logging messages
       synonyms:
       - --quiet
       args: !EmptyFlagArg {}
       optional: true
-    - !Flag
-      description: Overwrite existing database
-      synonyms:
-      - --restart
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Number of threads for Prodigal and DIAMOND
-      synonyms:
-      - --threads
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    command:
-    - checkv
-    - update_database
-    parent: *id002
+    parent: *id001
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -351,16 +357,17 @@ parent: &id002 !Command
       optional: true
     usage_flag:
     version_flag:
-    help_text: "Update CheckV's database with your own complete genomes\n\nusage:\
-      \ checkv update_database <source_db> <dest_db> <genomes> [options]\n\npositional\
-      \ arguments:\n  source_db      Path to current CheckV database.\n  dest_db \
-      \       Path to updated CheckV database.\n  genomes        FASTA file of complete\
-      \ genomes to add to database, where each\n                 nucleotide sequence\
-      \ represents one genome.\n\noptional arguments:\n  -h, --help     show this\
-      \ help message and exit\n  --quiet        Suppress logging messages\n  --restart\
-      \      Overwrite existing database\n  --threads INT  Number of threads for Prodigal\
-      \ and DIAMOND\n"
-    generated_using: *id003
+    help_text: "Estimate host contamination for integrated proviruses\n\nusage: checkv\
+      \ contamination <input> <output> [options]\n\npositional arguments:\n  input\
+      \       Input nucleotide sequences in FASTA format\n  output      Output directory\n\
+      \noptional arguments:\n  -h, --help  show this help message and exit\n  -d PATH\
+      \     Reference database path. By default the CHECKVDB environment\n       \
+      \       variable is used\n  -t INT      Number of threads to use for Prodigal\
+      \ and hmmsearch\n  --restart   Overwrite existing intermediate files. By default\
+      \ CheckV\n              continues where program left off\n  --quiet     Suppress\
+      \ logging messages\n"
+    generated_using: *id002
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -380,8 +387,9 @@ parent: &id002 !Command
     \ across modules\n    download_database   download the latest version of CheckV's\
     \ database\n    update_database     update CheckV's database with your own complete\
     \ genomes\n\noptional arguments:\n  -h, --help  show this help message and exit\n"
-  generated_using: *id003
+  generated_using: *id002
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -400,4 +408,4 @@ help_text: "Run full pipeline to estimate completeness, contamination, and ident
   \ and DIAMOND\n  --restart   Overwrite existing intermediate files. By default CheckV\n\
   \              continues where program left off\n  --quiet     Suppress logging\
   \ messages\n"
-generated_using: *id003
+generated_using: *id002

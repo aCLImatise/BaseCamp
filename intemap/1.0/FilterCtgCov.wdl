@@ -4,4 +4,7 @@ task FilterCtgCov {
   command <<<
     FilterCtgCov
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

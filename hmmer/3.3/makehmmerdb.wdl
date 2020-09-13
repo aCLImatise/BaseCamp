@@ -2,10 +2,10 @@ version 1.0
 
 task Makehmmerdb {
   input {
-    String? in_format
-    String? bin_length
-    String? sa_freq
-    String? block_size
+    File? in_format
+    Int? bin_length
+    Int? sa_freq
+    Int? block_size
   }
   command <<<
     makehmmerdb \
@@ -19,5 +19,8 @@ task Makehmmerdb {
     bin_length: ": bin length (power of 2;  32<=b<=4096)  [256]"
     sa_freq: ": suffix array sample rate (power of 2)  [8]"
     block_size: ": input sequence broken into blocks this size (Mbases)  [50]"
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

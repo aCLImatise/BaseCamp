@@ -1,17 +1,15 @@
 class: CommandLineTool
 id: ../../../fdnainvar.cwl
 inputs:
-- id: weights
-  doc: properties Phylip weights file (optional)
-  type: boolean
-  inputBinding:
-    prefix: -weights
-- id: print_data
+- id: in_print_data
   doc: boolean    [N] Print data at start of run
   type: boolean
   inputBinding:
     prefix: -printdata
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fdnainvar

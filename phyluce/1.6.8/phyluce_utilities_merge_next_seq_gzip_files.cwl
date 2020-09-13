@@ -1,42 +1,50 @@
 class: CommandLineTool
 id: ../../../phyluce_utilities_merge_next_seq_gzip_files.cwl
 inputs:
-- id: input
+- id: in_input
   doc: The path to a directory containing the reads to merge.
-  type: string
+  type: File
   inputBinding:
     prefix: --input
-- id: config
+- id: in_config
   doc: The path to the config file to use for merging.
-  type: string
+  type: File
   inputBinding:
     prefix: --config
-- id: output
+- id: in_output
   doc: The path to a directory in which to store the output.
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: section
+- id: in_section
   doc: The section holding the merge info.
   type: string
   inputBinding:
     prefix: --section
-- id: verbosity
+- id: in_verbosity
   doc: The logging level to use.
   type: string
   inputBinding:
     prefix: --verbosity
-- id: log_path
+- id: in_log_path
   doc: The path to a directory to hold logs.
-  type: string
+  type: File
   inputBinding:
     prefix: --log-path
-- id: se
+- id: in_se
   doc: Run is single-end.
   type: boolean
   inputBinding:
     prefix: --se
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: The path to a directory in which to store the output.
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_utilities_merge_next_seq_gzip_files

@@ -1,7 +1,10 @@
 version 1.0
 
-task AirrTools {
+task Airrtools {
   command <<<
-    airr-tools
+    airr_tools
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

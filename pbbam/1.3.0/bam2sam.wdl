@@ -9,12 +9,15 @@ task Bam2sam {
   command <<<
     bam2sam \
       ~{in_dot_bam} \
-      ~{true="--no-header" false="" no_header} \
-      ~{true="--header-only" false="" header_only}
+      ~{if (no_header) then "--no-header" else ""} \
+      ~{if (header_only) then "--header-only" else ""}
   >>>
   parameter_meta {
     no_header: "Omit header from output."
     header_only: "Print only the header (no records)."
     in_dot_bam: "FILE  Input BAM file. If not provided, stdin will be used as input."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

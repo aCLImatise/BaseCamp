@@ -4,4 +4,7 @@ task Dropest {
   command <<<
     dropest
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

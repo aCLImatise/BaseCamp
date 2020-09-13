@@ -1,7 +1,10 @@
 version 1.0
 
-task TestEutils {
+task Testeutils {
   command <<<
-    test-eutils
+    test_eutils
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

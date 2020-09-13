@@ -2,10 +2,10 @@ version 1.0
 
 task FilterSeer {
   input {
-    Boolean? arg_file_output
+    File? arg_file_output
     String? chisq
     String? pval
-    String? maf
+    Int? maf
     String? beta
     Boolean? substr
     Boolean? pos_beta
@@ -13,14 +13,14 @@ task FilterSeer {
   }
   command <<<
     filter_seer \
-      ~{true="-k" false="" arg_file_output} \
+      ~{if (arg_file_output) then "-k" else ""} \
       ~{if defined(chisq) then ("--chisq " +  '"' + chisq + '"') else ""} \
       ~{if defined(pval) then ("--pval " +  '"' + pval + '"') else ""} \
       ~{if defined(maf) then ("--maf " +  '"' + maf + '"') else ""} \
       ~{if defined(beta) then ("--beta " +  '"' + beta + '"') else ""} \
-      ~{true="--substr" false="" substr} \
-      ~{true="--pos_beta" false="" pos_beta} \
-      ~{true="-s" false="" arg_field_sort}
+      ~{if (substr) then "--substr" else ""} \
+      ~{if (pos_beta) then "--pos_beta" else ""} \
+      ~{if (arg_field_sort) then "-s" else ""}
   >>>
   parameter_meta {
     arg_file_output: "[ --kmers ] arg     file of output from seer"
@@ -31,5 +31,9 @@ task FilterSeer {
     substr: "remove smaller kmers completely represented elsewhere"
     pos_beta: "output positive effect sizes only"
     arg_field_sort: "[ --sort ] arg      field to sort on: chisq, pval, maf or beta"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_arg_file_output = "${in_arg_file_output}"
   }
 }

@@ -14,4 +14,7 @@ task Mltree {
     rate_file: ""
     file: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

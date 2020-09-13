@@ -1,27 +1,30 @@
 class: CommandLineTool
 id: ../../../fermi_unitig.cwl
 inputs:
-- id: min_match
+- id: in_min_match
   doc: min match [0]
   type: long
   inputBinding:
     prefix: -l
-- id: number_of_threads
+- id: in_number_of_threads
   doc: number of threads [1]
   type: long
   inputBinding:
     prefix: -t
-- id: rank_file
+- id: in_rank_file
   doc: rank file [null]
   type: File
   inputBinding:
     prefix: -r
-- id: reads_dot_fmd
+- id: in_reads_dot_fmd
   doc: ''
   type: string
   inputBinding:
     position: 0
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - fermi

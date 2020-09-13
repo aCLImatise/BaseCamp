@@ -2,7 +2,7 @@ version 1.0
 
 task Beagle {
   input {
-    String? jar
+    Float? jar
     String java
     String? arguments
   }
@@ -16,5 +16,8 @@ task Beagle {
     jar: ""
     java: ""
     arguments: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

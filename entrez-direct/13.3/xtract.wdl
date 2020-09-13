@@ -4,4 +4,7 @@ task Xtract {
   command <<<
     xtract
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

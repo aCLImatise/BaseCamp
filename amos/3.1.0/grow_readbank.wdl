@@ -1,26 +1,32 @@
 version 1.0
 
-task GrowReadbank {
+task Growreadbank {
   input {
     Boolean? create_new_bank
     Boolean? input_celera_msg
-    Boolean? force_new_read
+    Boolean? force_new_bank
     Boolean? compress_reads_bank
     String grow_read_bank
+    String specified_dot
   }
   command <<<
-    grow-readbank \
+    grow_readbank \
       ~{grow_read_bank} \
-      ~{true="-c" false="" create_new_bank} \
-      ~{true="-C" false="" input_celera_msg} \
-      ~{true="-f" false="" force_new_read} \
-      ~{true="-s" false="" compress_reads_bank}
+      ~{specified_dot} \
+      ~{if (create_new_bank) then "-c" else ""} \
+      ~{if (input_celera_msg) then "-C" else ""} \
+      ~{if (force_new_bank) then "-f" else ""} \
+      ~{if (compress_reads_bank) then "-s" else ""}
   >>>
   parameter_meta {
     create_new_bank: "Create a new read bank"
     input_celera_msg: "Input is Celera msg format, i.e., a .frg file"
-    force_new_read: "Force new read bank by deleting existing one first"
+    force_new_bank: "Force new read bank by deleting existing one first"
     compress_reads_bank: "Compress reads in the Bank, only allows chars ACGTN"
     grow_read_bank: "<bank-name> <input-file[s]>"
+    specified_dot: ".OPTIONS."
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

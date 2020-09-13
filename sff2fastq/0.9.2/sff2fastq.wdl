@@ -4,14 +4,14 @@ task Sff2fastq {
   input {
     Boolean? program_version_information
     Boolean? output_untrimmed_sequence
-    String? desired_fastq_output
+    File? desired_fastq_output
     String? sff_file
   }
   command <<<
     sff2fastq \
       ~{sff_file} \
-      ~{true="-v" false="" program_version_information} \
-      ~{true="-n" false="" output_untrimmed_sequence} \
+      ~{if (program_version_information) then "-v" else ""} \
+      ~{if (output_untrimmed_sequence) then "-n" else ""} \
       ~{if defined(desired_fastq_output) then ("-o " +  '"' + desired_fastq_output + '"') else ""}
   >>>
   parameter_meta {
@@ -19,5 +19,9 @@ task Sff2fastq {
     output_untrimmed_sequence: "Output the untrimmed sequence and quality scores"
     desired_fastq_output: "Desired fastq output file. If not specified, defaults to stdout"
     sff_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_desired_fastq_output = "${in_desired_fastq_output}"
   }
 }

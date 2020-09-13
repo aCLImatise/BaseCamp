@@ -4,4 +4,7 @@ task KaKsAnalysis {
   command <<<
     KaKsAnalysis
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

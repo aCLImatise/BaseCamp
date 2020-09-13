@@ -1,17 +1,25 @@
 class: CommandLineTool
 id: ../../../gdtools_INTERSECT.cwl
 inputs:
-- id: output
+- id: in_output
   doc: Output Genome Diff file name (DEFAULT=output.gd)
-  type: string
+  type: File
   inputBinding:
     prefix: --output
-- id: verbose
+- id: in_verbose
   doc: Verbose mode
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: Output Genome Diff file name (DEFAULT=output.gd)
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - gdtools

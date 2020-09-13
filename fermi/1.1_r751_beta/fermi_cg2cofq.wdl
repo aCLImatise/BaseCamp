@@ -11,4 +11,7 @@ task FermiCg2cofq {
   parameter_meta {
     in_do_tcg_fq: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,7 +1,10 @@
 version 1.0
 
-task PaudaRun {
+task Paudarun {
   command <<<
-    pauda-run
+    pauda_run
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

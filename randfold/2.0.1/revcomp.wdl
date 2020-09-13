@@ -8,10 +8,13 @@ task Revcomp {
   command <<<
     revcomp \
       ~{seq_file} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     seq_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

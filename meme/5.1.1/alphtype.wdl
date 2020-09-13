@@ -1,14 +1,10 @@
 version 1.0
 
 task Alphtype {
-  input {
-    String alphabet
-  }
   command <<<
-    alphtype \
-      ~{alphabet}
+    alphtype
   >>>
-  parameter_meta {
-    alphabet: ""
+  output {
+    File out_stdout = stdout()
   }
 }

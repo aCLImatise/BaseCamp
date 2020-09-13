@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../last_map_probs.cwl
 inputs:
-- id: mis_map
-  doc: "don't write alignments with mismap probability > M (default: 0.01)"
-  type: string
+- id: in_mis_map
+  doc: "don't write alignments with mismap probability > M\n(default: 0.01)"
+  type: double
   inputBinding:
     prefix: --mismap
-- id: score
-  doc: "don't write alignments with score < S (default: e+t*ln[1000])"
-  type: string
+- id: in_score
+  doc: "don't write alignments with score < S (default:\ne+t*ln[1000])\n"
+  type: long
   inputBinding:
     prefix: --score
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - last-map-probs

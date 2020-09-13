@@ -1,45 +1,49 @@
 class: CommandLineTool
 id: ../../../erne_create.cwl
 inputs:
-- id: fast_a
+- id: in_fast_a
   doc: input file (can be repeated several time) [REQUIRED]
-  type: string
+  type: File
   inputBinding:
     prefix: --fasta
-- id: output_prefix
-  doc: 'output reference file name in ERNE format. Suffix added automatically: .ebh
-    for dB-Hash reference, .ebm for  dB-Hash methylated reference. [REQUIRED]'
-  type: string
+- id: in_output_prefix
+  doc: "output reference file name in ERNE format. Suffix added\nautomatically: .ebh\
+    \ for dB-Hash reference, .ebm for\ndB-Hash methylated reference. [REQUIRED]"
+  type: File
   inputBinding:
     prefix: --output-prefix
-- id: methyl_hash
+- id: in_methyl_hash
   doc: create reference for methylation search
   type: boolean
   inputBinding:
     prefix: --methyl-hash
-- id: fingerprint_length_default
-  doc: '[DEPRECATED] fingerprint length (default is  autodetected: log4(bl*n/2), where
-    n=text length);  the  range of admissible values is 5-32. With --methyl-hash  the
-    range of admissible values is 10-64'
-  type: string
+- id: in_fingerprint_length_default
+  doc: "[DEPRECATED] fingerprint length (default is\nautodetected: log4(bl*n/2), where\
+    \ n=text length);  the\nrange of admissible values is 5-32. With --methyl-hash\n\
+    the range of admissible values is 10-64"
+  type: long
   inputBinding:
     prefix: --k
-- id: bl
-  doc: 'seed length (default: 20 for DNA search, 30 for  BS-search)'
-  type: string
+- id: in_bl
+  doc: "seed length (default: 20 for DNA search, 30 for\nBS-search)"
+  type: long
   inputBinding:
     prefix: --bl
-- id: offrate_sa_pointers
+- id: in_offrate_sa_pointers
   doc: 'offrate for SA pointers (default: 16).'
-  type: string
+  type: long
   inputBinding:
     prefix: --o
-- id: former_hash
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --former-hash
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_prefix
+  doc: "output reference file name in ERNE format. Suffix added\nautomatically: .ebh\
+    \ for dB-Hash reference, .ebm for\ndB-Hash methylated reference. [REQUIRED]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_prefix)
 cwlVersion: v1.1
 baseCommand:
 - erne-create

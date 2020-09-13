@@ -2,8 +2,8 @@ version 1.0
 
 task KatPlotSpectraMx {
   input {
-    String? path_output_file
-    String? output_type
+    File? path_output_file
+    File? output_type
     String? title
     String? x_label
     String? y_label
@@ -15,17 +15,15 @@ task KatPlotSpectraMx {
     String? height
     Boolean? intersection
     String? list
-    String? exc_cut_off_done
-    String? exc_cut_off_d_two
+    Int? exc_cut_off_done
+    Int? exc_cut_off_d_two
     Boolean? x_log_scale
     Boolean? y_log_scale
     String? dpi
     Boolean? verbose
-    String matrix_file
   }
   command <<<
     kat_plot_spectra_mx \
-      ~{matrix_file} \
       ~{if defined(path_output_file) then ("--output " +  '"' + path_output_file + '"') else ""} \
       ~{if defined(output_type) then ("--output_type " +  '"' + output_type + '"') else ""} \
       ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
@@ -37,18 +35,18 @@ task KatPlotSpectraMx {
       ~{if defined(y_max) then ("--y_max " +  '"' + y_max + '"') else ""} \
       ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
       ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
-      ~{true="--intersection" false="" intersection} \
+      ~{if (intersection) then "--intersection" else ""} \
       ~{if defined(list) then ("--list " +  '"' + list + '"') else ""} \
       ~{if defined(exc_cut_off_done) then ("--exc_cutoff_d1 " +  '"' + exc_cut_off_done + '"') else ""} \
       ~{if defined(exc_cut_off_d_two) then ("--exc_cutoff_d2 " +  '"' + exc_cut_off_d_two + '"') else ""} \
-      ~{true="--x_logscale" false="" x_log_scale} \
-      ~{true="--y_logscale" false="" y_log_scale} \
+      ~{if (x_log_scale) then "--x_logscale" else ""} \
+      ~{if (y_log_scale) then "--y_logscale" else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     path_output_file: "The path to the output file."
-    output_type: "The plot file type to create (default is based on given output name)."
+    output_type: "The plot file type to create (default is based on\\ngiven output name)."
     title: "Title for plot"
     x_label: "Label for x-axis"
     y_label: "Label for y-axis"
@@ -58,14 +56,18 @@ task KatPlotSpectraMx {
     y_max: "Maximum value for y-axis"
     width: "Width of canvas"
     height: "Height of canvas"
-    intersection: "Activate intersection mode, which plots the shared and exclusive content found in the matrix."
-    list: "The list of columns or rows to select from the matrix (overrides -i)"
-    exc_cut_off_done: "If in intersection mode, the level at which content for dataset 1 is considered exclusive or shared"
-    exc_cut_off_d_two: "If in intersection mode, the level at which content for dataset 2 is considered exclusive or shared"
+    intersection: "Activate intersection mode, which plots the shared and\\nexclusive content found in the matrix."
+    list: "The list of columns or rows to select from the matrix\\n(overrides -i)"
+    exc_cut_off_done: "If in intersection mode, the level at which content\\nfor dataset 1 is considered exclusive or shared"
+    exc_cut_off_d_two: "If in intersection mode, the level at which content\\nfor dataset 2 is considered exclusive or shared"
     x_log_scale: "X-axis is logscale. Overrides x_min and x_max"
     y_log_scale: "Y-axis is logscale. Overrides y_min and y_max"
     dpi: "Resolution in dots per inch of output graphic."
     verbose: "Print extra information"
-    matrix_file: "The input matrix file from KAT"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_path_output_file = "${in_path_output_file}"
+    File out_output_type = "${in_output_type}"
   }
 }

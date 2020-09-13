@@ -1,33 +1,41 @@
 class: CommandLineTool
 id: ../../../kid.cwl
 inputs:
-- id: encoding
-  doc: 'Specify the output character encoding. Default: utf-8'
-  type: string
+- id: in_encoding
+  doc: "Specify the output character encoding.\nDefault: utf-8"
+  type: long
   inputBinding:
     prefix: --encoding
-- id: output
-  doc: 'Specify the output file. Default: standard output'
-  type: string
+- id: in_output
+  doc: "Specify the output file.\nDefault: standard output"
+  type: File
   inputBinding:
     prefix: --output
-- id: port__serverhostport
-  doc: :port, --server=host:port Specify the server address if you want to start the
-    HTTP server. Instead of the Kid template, you can specify a base directory.
-  type: string
+- id: in_port__serverhostportspecify
+  doc: ":port, --server=host:port\nSpecify the server address if\nyou want to start\
+    \ the HTTP server.\nInstead of the Kid template,\nyou can specify a base directory."
+  type: Directory
   inputBinding:
     prefix: -s
-- id: file
+- id: in_file
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: args
+- id: in_args
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output
+  doc: "Specify the output file.\nDefault: standard output"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - kid

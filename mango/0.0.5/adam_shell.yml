@@ -1,4 +1,6 @@
 !Command
+command:
+- adam-shell
 positional: []
 named:
 - !Flag
@@ -9,16 +11,16 @@ named:
     name: file
   optional: true
 - !Flag
-  description: 'spark://host:port, mesos://host:port, yarn, k8s://https://host:port,
-    or local (Default: local[*]).'
+  description: "spark://host:port, mesos://host:port, yarn,\nk8s://https://host:port,\
+    \ or local (Default: local[*])."
   synonyms:
   - --master
   args: !SimpleFlagArg
     name: MASTER_URL
   optional: true
 - !Flag
-  description: 'Whether to launch the driver program locally ("client") or on one
-    of the worker machines inside the cluster ("cluster") (Default: client).'
+  description: "Whether to launch the driver program locally (\"client\") or\non one\
+    \ of the worker machines inside the cluster (\"cluster\")\n(Default: client)."
   synonyms:
   - --deploy-mode
   args: !SimpleFlagArg
@@ -39,47 +41,48 @@ named:
     name: NAME
   optional: true
 - !Flag
-  description: Comma-separated list of jars to include on the driver and executor
-    classpaths.
+  description: "Comma-separated list of jars to include on the driver\nand executor\
+    \ classpaths."
   synonyms:
   - --jars
   args: !SimpleFlagArg
     name: JARS
   optional: true
 - !Flag
-  description: Comma-separated list of maven coordinates of jars to include on the
-    driver and executor classpaths. Will search the local maven repo, then maven central
-    and any additional remote repositories given by --repositories. The format for
-    the coordinates should be groupId:artifactId:version.
+  description: "Comma-separated list of maven coordinates of jars to include\non the\
+    \ driver and executor classpaths. Will search the local\nmaven repo, then maven\
+    \ central and any additional remote\nrepositories given by --repositories. The\
+    \ format for the\ncoordinates should be groupId:artifactId:version."
   synonyms:
   - --packages
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Comma-separated list of groupId:artifactId, to exclude while resolving
-    the dependencies provided in --packages to avoid dependency conflicts.
+  description: "Comma-separated list of groupId:artifactId, to exclude while\nresolving\
+    \ the dependencies provided in --packages to avoid\ndependency conflicts."
   synonyms:
   - --exclude-packages
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Comma-separated list of additional remote repositories to search for
-    the maven coordinates given with --packages.
+  description: "Comma-separated list of additional remote repositories to\nsearch\
+    \ for the maven coordinates given with --packages."
   synonyms:
   - --repositories
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Comma-separated list of .zip, .egg, or .py files to place on the PYTHONPATH
-    for Python apps.
+  description: "Comma-separated list of .zip, .egg, or .py files to place\non the\
+    \ PYTHONPATH for Python apps."
   synonyms:
   - --py-files
   args: !SimpleFlagArg
     name: PY_FILES
   optional: true
 - !Flag
-  description: Comma-separated list of files to be placed in the working directory
-    of each executor. File paths of these files in executors can be accessed via SparkFiles.get(fileName).
+  description: "Comma-separated list of files to be placed in the working\ndirectory\
+    \ of each executor. File paths of these files\nin executors can be accessed via\
+    \ SparkFiles.get(fileName)."
   synonyms:
   - --files
   args: !SimpleFlagArg
@@ -93,8 +96,8 @@ named:
     name: PROP
   optional: true
 - !Flag
-  description: Path to a file from which to load extra properties. If not specified,
-    this will look for conf/spark-defaults.conf.
+  description: "Path to a file from which to load extra properties. If not\nspecified,\
+    \ this will look for conf/spark-defaults.conf."
   synonyms:
   - --properties-file
   args: !SimpleFlagArg
@@ -120,8 +123,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Extra class path entries to pass to the driver. Note that jars added
-    with --jars are automatically included in the classpath.
+  description: "Extra class path entries to pass to the driver. Note that\njars added\
+    \ with --jars are automatically included in the\nclasspath."
   synonyms:
   - --driver-class-path
   args: !EmptyFlagArg {}
@@ -134,8 +137,8 @@ named:
     name: MEM
   optional: true
 - !Flag
-  description: User to impersonate when submitting the application. This argument
-    does not work with --principal / --keytab.
+  description: "User to impersonate when submitting the application.\nThis argument\
+    \ does not work with --principal / --keytab."
   synonyms:
   - --proxy-user
   args: !SimpleFlagArg
@@ -149,8 +152,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Number of cores used by the driver, only in cluster mode (Default:
-    1).'
+  description: "Number of cores used by the driver, only in cluster mode\n(Default:\
+    \ 1)."
   synonyms:
   - --driver-cores
   args: !SimpleFlagArg
@@ -184,8 +187,8 @@ named:
     name: NUM
   optional: true
 - !Flag
-  description: 'Number of cores per executor. (Default: 1 in YARN mode, or all available
-    cores on the worker in standalone mode)'
+  description: "Number of cores per executor. (Default: 1 in YARN mode,\nor all available\
+    \ cores on the worker in standalone mode)"
   synonyms:
   - --executor-cores
   args: !SimpleFlagArg
@@ -199,42 +202,41 @@ named:
     name: QUEUE_NAME
   optional: true
 - !Flag
-  description: 'Number of executors to launch (Default: 2). If dynamic allocation
-    is enabled, the initial number of executors will be at least NUM.'
+  description: "Number of executors to launch (Default: 2).\nIf dynamic allocation\
+    \ is enabled, the initial number of\nexecutors will be at least NUM."
   synonyms:
   - --num-executors
   args: !SimpleFlagArg
     name: NUM
   optional: true
 - !Flag
-  description: Comma separated list of archives to be extracted into the working directory
-    of each executor.
+  description: "Comma separated list of archives to be extracted into the\nworking\
+    \ directory of each executor."
   synonyms:
   - --archives
   args: !SimpleFlagArg
     name: ARCHIVES
   optional: true
 - !Flag
-  description: Principal to be used to login to KDC, while running on secure HDFS.
+  description: "Principal to be used to login to KDC, while running on\nsecure HDFS."
   synonyms:
   - --principal
   args: !SimpleFlagArg
     name: PRINCIPAL
   optional: true
 - !Flag
-  description: The full path to the file that contains the keytab for the principal
-    specified above. This keytab will be copied to the node running the Application
-    Master via the Secure Distributed Cache, for renewing the login tickets and the
-    delegation tokens periodically.
+  description: "The full path to the file that contains the keytab for the\nprincipal\
+    \ specified above. This keytab will be copied to\nthe node running the Application\
+    \ Master via the Secure\nDistributed Cache, for renewing the login tickets and\
+    \ the\ndelegation tokens periodically.\n"
   synonyms:
   - --keytab
   args: !SimpleFlagArg
     name: KEYTAB
   optional: true
-command:
-- adam-shell
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this help message and exit.
   synonyms:
@@ -249,8 +251,8 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
-help_text: "['/tmp/tmpky5_e3au/bin/..', '/tmp/tmpky5_e3au/lib/python3.6/site-packages/bdgenomics/adam']\n\
-  Using SPARK_SHELL=/tmp/tmpky5_e3au/bin/spark-shell\nUsage: ./bin/spark-shell [options]\n\
+help_text: "['/usr/local/bin/..', '/usr/local/lib/python3.6/site-packages/bdgenomics/adam']\n\
+  Using SPARK_SHELL=/usr/local/bin/spark-shell\nUsage: ./bin/spark-shell [options]\n\
   \nScala REPL options:\n  -I <file>                   preload <file>, enforcing line-by-line\
   \ interpretation\n\nOptions:\n  --master MASTER_URL         spark://host:port, mesos://host:port,\
   \ yarn,\n                              k8s://https://host:port, or local (Default:\
@@ -314,4 +316,4 @@ help_text: "['/tmp/tmpky5_e3au/bin/..', '/tmp/tmpky5_e3au/lib/python3.6/site-pac
   \         Distributed Cache, for renewing the login tickets and the\n          \
   \                    delegation tokens periodically.\n      \n"
 generated_using:
-- -h
+- --help

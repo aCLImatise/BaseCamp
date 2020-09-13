@@ -1,12 +1,10 @@
 class: CommandLineTool
 id: ../../../obrms.cwl
-inputs:
-- id: first_only
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -firstonly
-outputs: []
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - obrms

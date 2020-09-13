@@ -14,4 +14,7 @@ task SeqtkFamask {
     src_dot_fa: ""
     mask_dot_fa: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

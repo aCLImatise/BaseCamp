@@ -1,45 +1,48 @@
 class: CommandLineTool
 id: ../../../genomedata_hardmask.cwl
 inputs:
-- id: track_name
+- id: in_track_name
   doc: 'Track(s) to be filtered (default: all)'
   type: string[]
   inputBinding:
     prefix: --trackname
-- id: hard_mask
-  doc: 'Specify a comparison operation on a value to mask out (e.g. "lt0.5" will mask
-    all values less than 0.5). See the bash comparison operators for the two letter
-    operations (default: all values masked)'
-  type: string
+- id: in_hard_mask
+  doc: "Specify a comparison operation on a value to mask out\n(e.g. \"lt0.5\" will\
+    \ mask all values less than 0.5). See\nthe bash comparison operators for the two\
+    \ letter\noperations (default: all values masked)"
+  type: double
   inputBinding:
     prefix: --hardmask
-- id: no_close
+- id: in_no_close
   doc: Do not close the genomedata archive after masking
   type: boolean
   inputBinding:
     prefix: --no-close
-- id: dry_run
-  doc: Do not perform any masking. Useful with verbosity set to see what regions would
-    be filtered
+- id: in_dry_run
+  doc: "Do not perform any masking. Useful with verbosity set\nto see what regions\
+    \ would be filtered"
   type: boolean
   inputBinding:
     prefix: --dry-run
-- id: verbose
+- id: in_verbose
   doc: Print status and diagnostic messages
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: mask_file
+- id: in_mask_file
   doc: input mask file
   type: string
   inputBinding:
     position: 0
-- id: gd_archive
+- id: in_gd_archive
   doc: genomedata archive
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - genomedata-hardmask

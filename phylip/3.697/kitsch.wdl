@@ -4,4 +4,7 @@ task Kitsch {
   command <<<
     kitsch
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

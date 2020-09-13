@@ -1,32 +1,35 @@
 class: CommandLineTool
 id: ../../../CanSNPer2_download.cwl
 inputs:
-- id: db
+- id: in_db
   doc: ', --database   CanSNP database'
   type: boolean
   inputBinding:
     prefix: -db
-- id: _source_source
+- id: in__source_source
   doc: ', --source      Source for download (genbank/refseq)'
   type: boolean
   inputBinding:
     prefix: -s
-- id: _outdir_reference
+- id: in__outdir_reference
   doc: ', --outdir      reference genomes folder'
   type: boolean
   inputBinding:
     prefix: -o
-- id: logs
+- id: in_logs
   doc: Specify log directory
   type: boolean
   inputBinding:
     prefix: --logs
-- id: verbose
+- id: in_verbose
   doc: Verbose logging
   type: boolean
   inputBinding:
     prefix: --verbose
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - CanSNPer2-download

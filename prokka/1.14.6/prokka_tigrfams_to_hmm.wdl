@@ -1,29 +1,10 @@
 version 1.0
 
-task ProkkaTigrfamsToHmm {
-  input {
-    String no
-    String such
-    File file
-    String or
-    Directory directory
-    String at
-  }
+task ProkkatigrfamsToHmm {
   command <<<
-    prokka-tigrfams_to_hmm \
-      ~{no} \
-      ~{such} \
-      ~{file} \
-      ~{or} \
-      ~{directory} \
-      ~{at}
+    prokka_tigrfams_to_hmm
   >>>
-  parameter_meta {
-    no: ""
-    such: ""
-    file: ""
-    or: ""
-    directory: ""
-    at: ""
+  output {
+    File out_stdout = stdout()
   }
 }

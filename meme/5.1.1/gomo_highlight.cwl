@@ -1,17 +1,20 @@
 class: CommandLineTool
 id: ../../../gomo_highlight.cwl
 inputs:
-- id: go_dag
+- id: in_go_dag
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: gomo_xml
+- id: in_gomo_xml
   doc: ''
   type: string
   inputBinding:
     position: 1
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - gomo_highlight

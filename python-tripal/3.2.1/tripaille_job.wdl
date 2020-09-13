@@ -4,4 +4,7 @@ task TripailleJob {
   command <<<
     tripaille job
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

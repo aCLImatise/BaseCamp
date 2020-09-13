@@ -6,9 +6,12 @@ task NwStats {
   }
   command <<<
     nw_stats \
-      ~{true="-fHh" false="" fhh}
+      ~{if (fhh) then "-fHh" else ""}
   >>>
   parameter_meta {
     fhh: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

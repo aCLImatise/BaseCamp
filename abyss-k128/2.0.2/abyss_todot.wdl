@@ -1,6 +1,6 @@
 version 1.0
 
-task AbyssTodot {
+task Abysstodot {
   input {
     String? km_er
     Boolean? adj
@@ -16,22 +16,22 @@ task AbyssTodot {
     File? file
   }
   command <<<
-    abyss-todot \
+    abyss_todot \
       ~{file} \
       ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
-      ~{true="--adj" false="" adj} \
-      ~{true="--asqg" false="" as_qg} \
-      ~{true="--dist" false="" dist} \
-      ~{true="--dot" false="" dot} \
-      ~{true="--gv" false="" gv} \
-      ~{true="--dot-meancov" false="" dot_mean_cov} \
-      ~{true="--gfa" false="" gfa} \
-      ~{true="--sam" false="" sam} \
+      ~{if (adj) then "--adj" else ""} \
+      ~{if (as_qg) then "--asqg" else ""} \
+      ~{if (dist) then "--dist" else ""} \
+      ~{if (dot) then "--dot" else ""} \
+      ~{if (gv) then "--gv" else ""} \
+      ~{if (dot_mean_cov) then "--dot-meancov" else ""} \
+      ~{if (gfa) then "--gfa" else ""} \
+      ~{if (sam) then "--sam" else ""} \
       ~{if defined(estimate) then ("--estimate " +  '"' + estimate + '"') else ""} \
-      ~{true="--verbose" false="" verbose}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    km_er: "report the mean k-mer coverage, otherwise the sum k-mer coverage is reported"
+    km_er: "report the mean k-mer coverage, otherwise\\nthe sum k-mer coverage is reported"
     adj: "output the graph in adj format"
     as_qg: "output the graph in asqg format"
     dist: "output the graph in dist format"
@@ -43,5 +43,8 @@ task AbyssTodot {
     estimate: "distance estimates"
     verbose: "display verbose output"
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

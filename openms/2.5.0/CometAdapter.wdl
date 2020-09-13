@@ -5,27 +5,27 @@ task CometAdapter {
     File? in
     File? out
     File? database
-    String? comet_executable
-    String? comet_version
+    File? comet_executable
+    Float? comet_version
     File? pin_out
     File? default_params_file
-    String? precursor_mass_tolerance
+    Float? precursor_mass_tolerance
     String? precursor_error_units
-    String? isotope_error
+    Int? isotope_error
     String? enzyme
     String? num_enzyme_termini
-    String? allowed_missed_cleavages
-    String? num_hits
+    Int? allowed_missed_cleavages
+    Int? num_hits
     Boolean? precursor_charge
     String? override_charge
-    String? ms_level
+    Int? ms_level
     String? activation_method
-    String? max_fragment_charge
+    Int? max_fragment_charge
     Boolean? clip_n_term_methionine
-    String? fixed_modifications
-    String? variable_modifications
+    Int? fixed_modifications
+    Int? variable_modifications
     File? ini
-    String? threads
+    Int? threads
     File? write_ini
     Boolean? helphelp
   }
@@ -45,7 +45,7 @@ task CometAdapter {
       ~{if defined(num_enzyme_termini) then ("-num_enzyme_termini " +  '"' + num_enzyme_termini + '"') else ""} \
       ~{if defined(allowed_missed_cleavages) then ("-allowed_missed_cleavages " +  '"' + allowed_missed_cleavages + '"') else ""} \
       ~{if defined(num_hits) then ("-num_hits " +  '"' + num_hits + '"') else ""} \
-      ~{true="-precursor_charge" false="" precursor_charge} \
+      ~{if (precursor_charge) then "-precursor_charge" else ""} \
       ~{if defined(override_charge) then ("-override_charge " +  '"' + override_charge + '"') else ""} \
       ~{if defined(ms_level) then ("-ms_level " +  '"' + ms_level + '"') else ""} \
       ~{if defined(activation_method) then ("-activation_method " +  '"' + activation_method + '"') else ""} \
@@ -56,7 +56,7 @@ task CometAdapter {
       ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
       ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
-      ~{true="--helphelp" false="" helphelp}
+      ~{if (helphelp) then "--helphelp" else ""}
   >>>
   parameter_meta {
     in: "*                            Input file (valid formats: 'mzML')"
@@ -69,7 +69,7 @@ task CometAdapter {
     precursor_mass_tolerance: "Precursor monoisotopic mass tolerance (Comet parameter: peptide_mass_tolerance).  See also precursor_error_units to set the unit. (default: '10.0')"
     precursor_error_units: "Unit of precursor monoisotopic mass tolerance for parameter precursor_mass_tolerance (Comet parameter: peptide_mass_units) (default: 'ppm' valid: 'amu', 'ppm', 'Da')"
     isotope_error: "This parameter controls whether the peptide_mass_tolerance takes into account possible isotope errors in the precursor mass measurement. Use -8/-4/0/4/8 only for SILAC. (default: 'off' valid: 'off', '0/1', '0/1/2', '-1/0/1/2/3', '-8/-4/0/4/8')"
-    enzyme: "The enzyme used for peptide digestion. (default: 'Trypsin' valid: 'Asp-N', 'glutamyl endopeptidase', 'Arg-C', 'unspecific cleavage', 'Chymotrypsin', 'CNBr', 'Lys-C', 'Lys-N', 'PepsinA', 'Trypsin/P', 'Trypsin')"
+    enzyme: "The enzyme used for peptide digestion. (default: 'Trypsin' valid: 'unspecific cleavage', 'PepsinA', 'CNBr', 'Lys-N', 'Lys-C', 'glutamyl endopeptidase', 'Trypsin/P', 'Asp-N', 'Arg-C', 'Chymotrypsin', 'Trypsin')"
     num_enzyme_termini: "Specify the termini where the cleavage rule has to match (default: 'fully' valid: 'semi', 'fully', 'C-term unspecific', 'N-term unspecific')"
     allowed_missed_cleavages: "Number of possible cleavage sites missed by the enzyme. It has no effect if enzyme is unspecific cleavage. (default: '0' min: '0' max: '5')"
     num_hits: "Number of peptide hits in output file (default: '5')"
@@ -85,5 +85,9 @@ task CometAdapter {
     threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
     write_ini: "Writes the default configuration file"
     helphelp: "Shows all options (including advanced)"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out = "${in_out}"
   }
 }

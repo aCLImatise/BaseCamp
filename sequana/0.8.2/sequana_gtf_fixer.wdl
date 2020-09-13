@@ -2,8 +2,8 @@ version 1.0
 
 task SequanaGtfFixer {
   input {
-    String? input_gtf_file
-    String? output_gtf_file
+    File? input_gtf_file
+    File? output_gtf_file
     String gtf_fixer
     String var_3
     String n
@@ -25,5 +25,9 @@ task SequanaGtfFixer {
     var_3: ""
     n: ""
     var_5: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_gtf_file = "${in_output_gtf_file}"
   }
 }

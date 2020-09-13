@@ -4,4 +4,7 @@ task Dnainvar {
   command <<<
     dnainvar
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

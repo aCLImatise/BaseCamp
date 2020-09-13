@@ -1,7 +1,10 @@
 version 1.0
 
-task Stab2fasta.pl.bak {
+task Stab2fastapl {
   command <<<
-    stab2fasta.pl.bak
+    stab2fasta_pl
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

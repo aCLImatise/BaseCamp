@@ -1,17 +1,10 @@
 version 1.0
 
-task CruxPsmConvert {
-  input {
-    String input_psm_file
-    String output_format
-  }
+task CruxPsmconvert {
   command <<<
-    crux psm-convert \
-      ~{input_psm_file} \
-      ~{output_format}
+    crux psm_convert
   >>>
-  parameter_meta {
-    input_psm_file: ""
-    output_format: ""
+  output {
+    File out_stdout = stdout()
   }
 }

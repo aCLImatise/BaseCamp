@@ -4,4 +4,7 @@ task Ipengine {
   command <<<
     ipengine
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

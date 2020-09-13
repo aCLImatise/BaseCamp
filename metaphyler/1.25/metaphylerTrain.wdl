@@ -4,4 +4,7 @@ task MetaphylerTrain {
   command <<<
     metaphylerTrain
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

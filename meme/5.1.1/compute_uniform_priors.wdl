@@ -1,13 +1,13 @@
 version 1.0
 
-task ComputeUniformPriors {
+task Computeuniformpriors {
   input {
     String compute_uniform_prior
     String? prior_value
-    String psp_file
+    File psp_file
   }
   command <<<
-    compute-uniform-priors \
+    compute_uniform_priors \
       ~{compute_uniform_prior} \
       ~{prior_value} \
       ~{psp_file}
@@ -16,5 +16,8 @@ task ComputeUniformPriors {
     compute_uniform_prior: ""
     prior_value: ""
     psp_file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

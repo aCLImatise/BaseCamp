@@ -3,9 +3,9 @@ version 1.0
 task ScHicConsensusMatrices {
   input {
     String? schic_matrix_m
-    String? clusters
-    String? out_filename
-    String? threads
+    File? clusters
+    File? out_filename
+    Int? threads
     String sch_i_c
     String var_5
   }
@@ -19,11 +19,15 @@ task ScHicConsensusMatrices {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction matrices to investigate for QC. Needs to be in scool format (default: None)"
-    clusters: "file, -c cluster file Text file which contains per matrix the associated cluster. (default: None)"
-    out_filename: "File name of the consensus scool matrix. (default: None)"
-    threads: "Number of threads. Using the python multiprocessing module. (default: 4)"
+    schic_matrix_m: "scHi-C matrix, -m scool scHi-C matrix\\nThe single cell Hi-C interaction matrices to\\ninvestigate for QC. Needs to be in scool format\\n(default: None)"
+    clusters: "file, -c cluster file\\nText file which contains per matrix the associated\\ncluster. (default: None)"
+    out_filename: "File name of the consensus scool matrix. (default:\\nNone)"
+    threads: "Number of threads. Using the python multiprocessing\\nmodule. (default: 4)"
     sch_i_c: ""
     var_5: ""
+  }
+  output {
+    File out_stdout = stdout()
+    File out_out_filename = "${in_out_filename}"
   }
 }

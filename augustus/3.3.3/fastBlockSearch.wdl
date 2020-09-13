@@ -17,4 +17,7 @@ task FastBlockSearch {
     seqs_dot_fa: ""
     fam_dot_pr_fl: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

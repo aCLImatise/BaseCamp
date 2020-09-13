@@ -6,7 +6,7 @@ task Tabix {
     Int? sequence_name_column
     Int? start_column
     Int? end_column_can
-    Int? skip_first_lines
+    Int? skip_first_int
     String? symbol_commentmeta_lines
     File? replace_header_content
     Boolean? region_bed_file
@@ -23,21 +23,21 @@ task Tabix {
       ~{if defined(sequence_name_column) then ("-s " +  '"' + sequence_name_column + '"') else ""} \
       ~{if defined(start_column) then ("-b " +  '"' + start_column + '"') else ""} \
       ~{if defined(end_column_can) then ("-e " +  '"' + end_column_can + '"') else ""} \
-      ~{if defined(skip_first_lines) then ("-S " +  '"' + skip_first_lines + '"') else ""} \
+      ~{if defined(skip_first_int) then ("-S " +  '"' + skip_first_int + '"') else ""} \
       ~{if defined(symbol_commentmeta_lines) then ("-c " +  '"' + symbol_commentmeta_lines + '"') else ""} \
       ~{if defined(replace_header_content) then ("-r " +  '"' + replace_header_content + '"') else ""} \
-      ~{true="-B" false="" region_bed_file} \
-      ~{true="-0" false="" zerobased_coordinate} \
-      ~{true="-H" false="" print_only_lines} \
-      ~{true="-l" false="" list_chromosome_names} \
-      ~{true="-f" false="" force_overwrite_index}
+      ~{if (region_bed_file) then "-B" else ""} \
+      ~{if (zerobased_coordinate) then "-0" else ""} \
+      ~{if (print_only_lines) then "-H" else ""} \
+      ~{if (list_chromosome_names) then "-l" else ""} \
+      ~{if (force_overwrite_index) then "-f" else ""}
   >>>
   parameter_meta {
     preset_gff_bed: "preset: gff, bed, sam, vcf, psltbl [gff]"
     sequence_name_column: "sequence name column [1]"
     start_column: "start column [4]"
     end_column_can: "end column; can be identical to '-b' [5]"
-    skip_first_lines: "skip first INT lines [0]"
+    skip_first_int: "skip first INT lines [0]"
     symbol_commentmeta_lines: "symbol for comment/meta lines [#]"
     replace_header_content: "replace the header with the content of FILE [null]"
     region_bed_file: "region1 is a BED file (entire file will be read)"
@@ -46,5 +46,8 @@ task Tabix {
     list_chromosome_names: "list chromosome names"
     force_overwrite_index: "force to overwrite the index"
     indottabdotbgz: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

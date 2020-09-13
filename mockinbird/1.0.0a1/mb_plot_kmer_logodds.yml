@@ -1,4 +1,6 @@
 &id001 !Command
+command:
+- mb-plot-kmer-logodds
 positional: []
 named:
 - !Flag
@@ -22,13 +24,13 @@ named:
   args: !ChoiceFlagArg
     choices: !!set
       ? transitions
+      ? score
       ? occupancy
       ? coverage
-      ? score
   optional: true
 - !Flag
-  description: use quantiles for binarization instead of fixed bin size. Note, if
-    you have a small number of bindng sites the bins based on quantiles can overlap!
+  description: "use quantiles for binarization instead of fixed bin\nsize. Note, if\
+    \ you have a small number of bindng sites\nthe bins based on quantiles can overlap!"
   synonyms:
   - --quantiles
   - -q
@@ -47,11 +49,12 @@ named:
   - --keep-tmp-files
   args: !EmptyFlagArg {}
   optional: true
-command:
-- mb-plot-kmer-logodds
 parent:
 subcommands:
 - !Command
+  command:
+  - mb-plot-kmer-logodds
+  - parclip
   positional:
   - !Positional
     description: ''
@@ -62,22 +65,20 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --kmer
-    args: !SimpleFlagArg
-      name: KMER
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
     - --gff
     args: !SimpleFlagArg
       name: GFF
     optional: true
-  command:
-  - mb-plot-kmer-logodds
-  - parclip
+  - !Flag
+    description: ''
+    synonyms:
+    - --kmer
+    args: !SimpleFlagArg
+      name: KMER
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -94,6 +95,9 @@ subcommands:
   generated_using: &id002
   - --help
 - !Command
+  command:
+  - mb-plot-kmer-logodds
+  - outdir
   positional:
   - !Positional
     description: ''
@@ -104,22 +108,20 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --kmer
-    args: !SimpleFlagArg
-      name: KMER
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
     - --gff
     args: !SimpleFlagArg
       name: GFF
     optional: true
-  command:
-  - mb-plot-kmer-logodds
-  - outdir
+  - !Flag
+    description: ''
+    synonyms:
+    - --kmer
+    args: !SimpleFlagArg
+      name: KMER
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -135,73 +137,33 @@ subcommands:
     \ error: argument parclip: 'outdir' does not exist\n"
   generated_using: *id002
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: mb-plot-kmer-logodds
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --kmer
-    args: !SimpleFlagArg
-      name: KMER
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --gff
-    args: !SimpleFlagArg
-      name: GFF
-    optional: true
-  command:
-  - mb-plot-kmer-logodds
-  - prefix
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: ''
-    synonyms:
-    - -h
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: mb-plot-kmer-logodds [-h] [--kmer KMER] [--gff GFF]\n       \
-    \                     [--key {occupancy,transitions,coverage,score}]\n       \
-    \                     [--quantiles] [--verbose] [--keep-tmp-files]\n         \
-    \                   parclip outdir prefix genome negset\nmb-plot-kmer-logodds:\
-    \ error: argument parclip: 'prefix' does not exist\n"
-  generated_using: *id002
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: mb-plot-kmer-logodds
-    optional: false
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --kmer
-    args: !SimpleFlagArg
-      name: KMER
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - --gff
-    args: !SimpleFlagArg
-      name: GFF
-    optional: true
   command:
   - mb-plot-kmer-logodds
   - genome
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: mb-plot-kmer-logodds
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --gff
+    args: !SimpleFlagArg
+      name: GFF
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --kmer
+    args: !SimpleFlagArg
+      name: KMER
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -217,6 +179,9 @@ subcommands:
     \ error: argument parclip: 'genome' does not exist\n"
   generated_using: *id002
 - !Command
+  command:
+  - mb-plot-kmer-logodds
+  - negset
   positional:
   - !Positional
     description: ''
@@ -227,22 +192,20 @@ subcommands:
   - !Flag
     description: ''
     synonyms:
-    - --kmer
-    args: !SimpleFlagArg
-      name: KMER
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
     - --gff
     args: !SimpleFlagArg
       name: GFF
     optional: true
-  command:
-  - mb-plot-kmer-logodds
-  - negset
+  - !Flag
+    description: ''
+    synonyms:
+    - --kmer
+    args: !SimpleFlagArg
+      name: KMER
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -257,6 +220,49 @@ subcommands:
     \                   parclip outdir prefix genome negset\nmb-plot-kmer-logodds:\
     \ error: argument parclip: 'negset' does not exist\n"
   generated_using: *id002
+- !Command
+  command:
+  - mb-plot-kmer-logodds
+  - prefix
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: mb-plot-kmer-logodds
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --gff
+    args: !SimpleFlagArg
+      name: GFF
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --kmer
+    args: !SimpleFlagArg
+      name: KMER
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: mb-plot-kmer-logodds [-h] [--kmer KMER] [--gff GFF]\n       \
+    \                     [--key {occupancy,transitions,coverage,score}]\n       \
+    \                     [--quantiles] [--verbose] [--keep-tmp-files]\n         \
+    \                   parclip outdir prefix genome negset\nmb-plot-kmer-logodds:\
+    \ error: argument parclip: 'prefix' does not exist\n"
+  generated_using: *id002
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

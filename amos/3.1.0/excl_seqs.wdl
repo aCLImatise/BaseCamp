@@ -4,4 +4,7 @@ task ExclSeqs {
   command <<<
     excl_seqs
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

@@ -1,119 +1,121 @@
 class: CommandLineTool
 id: ../../../mutmap.cwl
 inputs:
-- id: var_0
+- id: in_var_0
   doc: '[-T] [-e <DATABASE>]'
   type: long
   inputBinding:
     prefix: -n
-- id: _ref_reference
+- id: in__ref_reference
   doc: ', --ref         Reference fasta.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: _cultivar_fastq
-  doc: ', --cultivar    fastq or bam of cultivar. If you specify fastq, please separate
-    pairs by comma, e.g. -c fastq1,fastq2. You can use this optiion multiple times'
+- id: in__cultivar_fastq
+  doc: ", --cultivar    fastq or bam of cultivar. If you specify\nfastq, please separate\
+    \ pairs by comma,\ne.g. -c fastq1,fastq2. You can use this\noptiion multiple times"
   type: boolean
   inputBinding:
     prefix: -c
-- id: _bulk_fastq
-  doc: ', --bulk        fastq or bam of mutnat bulk. If you specify fastq, please
-    separate pairs by comma, e.g. -b fastq1,fastq2. You can use this optiion multiple
-    times'
+- id: in__bulk_fastq
+  doc: ", --bulk        fastq or bam of mutnat bulk. If you specify\nfastq, please\
+    \ separate pairs by comma,\ne.g. -b fastq1,fastq2. You can use this\noptiion multiple\
+    \ times"
   type: boolean
   inputBinding:
     prefix: -b
-- id: _threads_number
-  doc: ', --threads     Number of threads. If you specify the number below one, then
-    MutMap will use the threads as many as possible. [2]'
-  type: boolean
-  inputBinding:
-    prefix: -t
-- id: _window_size
+- id: in__window_kb
   doc: ', --window      Window size (kb). [2000]'
   type: boolean
   inputBinding:
     prefix: -w
-- id: _step_size
+- id: in__step_kb
   doc: ', --step        Step size (kb). [100]'
   type: boolean
   inputBinding:
     prefix: -s
-- id: _maxdepth_maximum
-  doc: ', --max-depth   Maximum depth of variants which will be used. This cutoff
-    will be applied in both of cultivar and bulk. [250]'
+- id: in__maxdepth_maximum
+  doc: ", --max-depth   Maximum depth of variants which will be used.\nThis cutoff\
+    \ will be applied in both of cultivar\nand bulk. [250]"
   type: boolean
   inputBinding:
     prefix: -D
-- id: _mindepth_minimum
-  doc: ', --min-depth   Minimum depth of variants which will be used. This cutoff
-    will be applied in both of cultivar and bulk. [8]'
+- id: in__mindepth_minimum
+  doc: ", --min-depth   Minimum depth of variants which will be used.\nThis cutoff\
+    \ will be applied in both of cultivar\nand bulk. [8]"
   type: boolean
   inputBinding:
     prefix: -d
-- id: _nrep_number
-  doc: ', --N-rep       Number of replicates for simulation to make  null distribution.
-    [5000]'
+- id: in__nrep_number
+  doc: ", --N-rep       Number of replicates for simulation to make\nnull distribution.\
+    \ [5000]"
   type: boolean
   inputBinding:
     prefix: -N
-- id: trim
+- id: in_trim
   doc: Trim fastq using trimmomatic.
   type: boolean
   inputBinding:
     prefix: --trim
-- id: _adapter_fasta
-  doc: ', --adapter     FASTA of adapter sequences. This will be used when you specify
-    "-T" for trimming.'
+- id: in__adapter_fasta
+  doc: ", --adapter     FASTA of adapter sequences. This will be used\nwhen you specify\
+    \ \"-T\" for trimming."
   type: boolean
   inputBinding:
     prefix: -a
-- id: trim_params
-  doc: "Parameters for trimmomatic. Input parameters must be separated by comma with\
-    \ following order: phred, ILLUMINACLIP, LEADING, TRAILING, SLIDINGWINDOW, MINLEN.\
-    \ If you want to remove adapters of illumina, please specify FASTA of the adapter\
-    \ sequences with \"--adapter\". Specified name will be inserted into <ADAPTER_FASTA>.\
-    \ If you don't specify it, adapter trimming will be skipped. [33,<ADAPTER_FASTA>:2:30:10,20,20,4:15,75]"
+- id: in_trim_params
+  doc: "Parameters for trimmomatic. Input parameters\nmust be separated by comma with\
+    \ following\norder: phred, ILLUMINACLIP, LEADING, TRAILING,\nSLIDINGWINDOW, MINLEN.\
+    \ If you want to remove\nadapters of illumina, please specify FASTA of\nthe adapter\
+    \ sequences with \"--adapter\". Specified\nname will be inserted into <ADAPTER_FASTA>.\
+    \ If you\ndon't specify it, adapter trimming will be skipped.\n[33,<ADAPTER_FASTA>:2:30:10,20,20,4:15,75]"
   type: boolean
   inputBinding:
     prefix: --trim-params
-- id: _predict_variant
-  doc: ', --snpEff      Predict causal variant using SnpEff. Please check available
-    databases in SnpEff.'
+- id: in__snpeff_predict
+  doc: ", --snpEff      Predict causal variant using SnpEff. Please\ncheck available\
+    \ databases in SnpEff."
   type: boolean
   inputBinding:
     prefix: -e
-- id: mem
-  doc: Maximum memory per thread when bam sorted; suffix K/M/G recognized. [1G]
+- id: in_mem
+  doc: "Maximum memory per thread when bam sorted;\nsuffix K/M/G recognized. [1G]"
   type: boolean
   inputBinding:
     prefix: --mem
-- id: _minmq_minimum
+- id: in__minmq_minimum
   doc: ', --min-MQ      Minimum mapping quality in mpileup. [40]'
   type: boolean
   inputBinding:
     prefix: -q
-- id: _minimum_base
+- id: in__minbq_minimum
   doc: ', --min-BQ      Minimum base quality in mpileup. [18]'
   type: boolean
   inputBinding:
     prefix: -Q
-- id: _adjustmq_mpileup
-  doc: ', --adjust-MQ   "adjust-MQ" in mpileup. Default parameter is suited for BWA.
-    [50]'
+- id: in__adjustmq_mpileup
+  doc: ", --adjust-MQ   \"adjust-MQ\" in mpileup. Default parameter\nis suited for\
+    \ BWA. [50]"
   type: boolean
   inputBinding:
     prefix: -C
-- id: species
-  doc: Consider multiple test correction derived by Huang et al. (2019). Please spesify
-    a species name. With this option. QTL-seq produces a theoretical threshold. Currently,
-    Arabidopsis, Cucumber, Maize, Rapeseed, Rice, Tobacco, Tomato, Wheat, and Yeast
-    are supported.
+- id: in_species
+  doc: "Consider multiple test correction derived by\nHuang et al. (2019). Please\
+    \ spesify a species name.\nWith this option. QTL-seq produces a theoretical threshold.\n\
+    Currently, Arabidopsis, Cucumber, Maize, Rapeseed,\nRice, Tobacco, Tomato, Wheat,\
+    \ and Yeast are supported."
   type: boolean
   inputBinding:
     prefix: --species
-outputs: []
+- id: in_exist_dot
+  doc: -t , --threads     Number of threads. If you specify the number
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mutmap

@@ -4,9 +4,9 @@ task Wtcns {
   input {
     Int? number_of_threads
     Int? total_parallel_jobs
-    Int? index_current_based
-    String? input_file_layout
-    String? output_file_consensus
+    Int? index_run_wtcns
+    File? input_file_layout
+    File? output_file_consensus
     Boolean? force_overwrite
     Boolean? trun_homopolymer_compression
     Int? zmer_size_z
@@ -32,17 +32,17 @@ task Wtcns {
     String? align_reads_final
     Boolean? disable_fast_zmer
     Float? ouput_call_variants
-    Boolean? be_careful_output
+    Boolean? verbose_be_output
   }
   command <<<
     wtcns \
       ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
       ~{if defined(total_parallel_jobs) then ("-P " +  '"' + total_parallel_jobs + '"') else ""} \
-      ~{if defined(index_current_based) then ("-p " +  '"' + index_current_based + '"') else ""} \
+      ~{if defined(index_run_wtcns) then ("-p " +  '"' + index_run_wtcns + '"') else ""} \
       ~{if defined(input_file_layout) then ("-i " +  '"' + input_file_layout + '"') else ""} \
       ~{if defined(output_file_consensus) then ("-o " +  '"' + output_file_consensus + '"') else ""} \
-      ~{true="-f" false="" force_overwrite} \
-      ~{true="-H" false="" trun_homopolymer_compression} \
+      ~{if (force_overwrite) then "-f" else ""} \
+      ~{if (trun_homopolymer_compression) then "-H" else ""} \
       ~{if defined(zmer_size_z) then ("-z " +  '"' + zmer_size_z + '"') else ""} \
       ~{if defined(zmer_window) then ("-y " +  '"' + zmer_window + '"') else ""} \
       ~{if defined(minimum_size_seeding) then ("-R " +  '"' + minimum_size_seeding + '"') else ""} \
@@ -54,7 +54,7 @@ task Wtcns {
       ~{if defined(alignment_penalty_deletion) then ("-D " +  '"' + alignment_penalty_deletion + '"') else ""} \
       ~{if defined(alignment_penalty_gap) then ("-E " +  '"' + alignment_penalty_gap + '"') else ""} \
       ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""} \
-      ~{true="-F" false="" disable_phreadqv_refinealignment} \
+      ~{if (disable_phreadqv_refinealignment) then "-F" else ""} \
       ~{if defined(minimum_bandwidth_iteratively) then ("-w " +  '"' + minimum_bandwidth_iteratively + '"') else ""} \
       ~{if defined(maximum_bandwidth) then ("-W " +  '"' + maximum_bandwidth + '"') else ""} \
       ~{if defined(maximum_bandwidth_ending) then ("-e " +  '"' + maximum_bandwidth_ending + '"') else ""} \
@@ -64,14 +64,14 @@ task Wtcns {
       ~{if defined(penalty_alternative_edge) then ("-N " +  '"' + penalty_alternative_edge + '"') else ""} \
       ~{if defined(number_iterations_consensus) then ("-n " +  '"' + number_iterations_consensus + '"') else ""} \
       ~{if defined(align_reads_final) then ("-a " +  '"' + align_reads_final + '"') else ""} \
-      ~{true="-A" false="" disable_fast_zmer} \
+      ~{if (disable_fast_zmer) then "-A" else ""} \
       ~{if defined(ouput_call_variants) then ("-V " +  '"' + ouput_call_variants + '"') else ""} \
-      ~{true="-v" false="" be_careful_output}
+      ~{if (verbose_be_output) then "-v" else ""}
   >>>
   parameter_meta {
     number_of_threads: "Number of threads, [16]"
     total_parallel_jobs: "Total parallel jobs, [1]"
-    index_current_based: "Index of current job (0-based), [0] Suppose to run wtcns for the same layout file parallelly in 60 cpu. For cpu1, -P 60 -p 0; cpu2, -P 60 -p 1, ..."
+    index_run_wtcns: "Index of current job (0-based), [0]\\nSuppose to run wtcns for the same layout file parallelly in 60 cpu. For cpu1, -P 60 -p 0; cpu2, -P 60 -p 1, ..."
     input_file_layout: "Input file, layout from wtlay, +"
     output_file_consensus: "Output file, consensus sequences, [STDOUT]"
     force_overwrite: "Force overwrite"
@@ -94,11 +94,15 @@ task Wtcns {
     basic_bandwidth_refinealignment: "Basic bandwidth in refine-alignment, [8]"
     minimum_alignment_identity: "Minimum alignment identity, [0.5]"
     penalty_backbone_edge: "Penalty of backbone edge in calling consensus, [0.5]"
-    penalty_alternative_edge: "Penalty of alternative edge in calling consensus, [0.2] The above two options control whether the consensus look like backbone or alternative Default 0.5 and 0.2, will let the consensus don't look like backbone"
+    penalty_alternative_edge: "Penalty of alternative edge in calling consensus, [0.2]\\nThe above two options control whether the consensus look like backbone or alternative\\nDefault 0.5 and 0.2, will let the consensus don't look like backbone"
     number_iterations_consensus: "Number of iterations for consensus calling, the larger, the accurater, the slower [6]"
     align_reads_final: "Align reads against final consensus, and output to <-a>"
-    disable_fast_zmer: "Disable fast zmer align in final aligning (see -a), use standard smith-waterman More than once -A, will disable fast zmer align in all process"
+    disable_fast_zmer: "Disable fast zmer align in final aligning (see -a), use standard smith-waterman\\nMore than once -A, will disable fast zmer align in all process"
     ouput_call_variants: "Ouput call variants and print to <-a>, -V 2.05 mean: min_allele_count>=2,min_allele_freq>=0.05"
-    be_careful_output: "Verbose, BE careful, HUGEEEEEEEE output on STDOUT"
+    verbose_be_output: "Verbose, BE careful, HUGEEEEEEEE output on STDOUT"
+  }
+  output {
+    File out_stdout = stdout()
+    File out_output_file_consensus = "${in_output_file_consensus}"
   }
 }

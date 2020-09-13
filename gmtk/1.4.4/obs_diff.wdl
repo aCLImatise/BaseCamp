@@ -1,7 +1,10 @@
 version 1.0
 
-task ObsDiff {
+task Obsdiff {
   command <<<
-    obs-diff
+    obs_diff
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

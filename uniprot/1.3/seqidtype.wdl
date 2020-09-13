@@ -4,4 +4,7 @@ task Seqidtype {
   command <<<
     seqidtype
   >>>
+  output {
+    File out_stdout = stdout()
+  }
 }

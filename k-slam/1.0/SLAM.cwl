@@ -1,83 +1,95 @@
 class: CommandLineTool
 id: ../../../SLAM.cwl
 inputs:
-- id: db
-  doc: SLAM database file which reads will be  aligned against
-  type: string
+- id: in_db
+  doc: "SLAM database file which reads will be\naligned against"
+  type: File
   inputBinding:
     prefix: --db
-- id: min_alignment_score
+- id: in_min_alignment_score
   doc: (=0)        alignment score cutoff
-  type: string
+  type: long
   inputBinding:
     prefix: --min-alignment-score
-- id: score_fraction_threshold
-  doc: (=0.94999999999999996) screen alignments with scores <  this*top score
-  type: string
+- id: in_score_fraction_threshold
+  doc: "(=0.94999999999999996)\nscreen alignments with scores <\nthis*top score"
+  type: double
   inputBinding:
     prefix: --score-fraction-threshold
-- id: match_score
+- id: in_match_score
   doc: (=2)                match score
-  type: string
+  type: long
   inputBinding:
     prefix: --match-score
-- id: mismatch_penalty
+- id: in_mismatch_penalty
   doc: (=3)           mismatch penalty (positive)
-  type: string
+  type: long
   inputBinding:
     prefix: --mismatch-penalty
-- id: gap_open
+- id: in_gap_open
   doc: (=5)                   gap opening penalty (positive)
-  type: string
+  type: long
   inputBinding:
     prefix: --gap-open
-- id: gap_extend
+- id: in_gap_extend
   doc: (=2)                 gap extend penalty (positive)
-  type: string
+  type: long
   inputBinding:
     prefix: --gap-extend
-- id: num_reads
-  doc: (=4294967295)         Number of reads from R1/R2 File to  align
-  type: string
+- id: in_num_reads
+  doc: (=4294967295)         Number of reads from R1/R2 File to
+  type: long
   inputBinding:
     prefix: --num-reads
-- id: num_reads_at_once
-  doc: (=10000000)   Reduce RAM usage by only analysing  "arg" reads at once, this
-    will increase execution time
-  type: string
-  inputBinding:
-    prefix: --num-reads-at-once
-- id: output_file
+- id: in_output_file
   doc: write to this file instead of stdout
-  type: string
+  type: File
   inputBinding:
     prefix: --output-file
-- id: sam_file
+- id: in_sam_file
   doc: write SAM output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --sam-file
-- id: num_alignments
-  doc: (=10)            Number of alignments to report in SAM  file
-  type: string
+- id: in_num_alignments
+  doc: (=10)            Number of alignments to report in SAM
+  type: long
   inputBinding:
     prefix: --num-alignments
-- id: sam_x_a
-  doc: only output primary alignment lines,  use XA field for secondary alignments
-  type: boolean
-  inputBinding:
-    prefix: --sam-xa
-- id: just_align
-  doc: only perform alignments, not  metagenomics
+- id: in_just_align
+  doc: only perform alignments, not
   type: boolean
   inputBinding:
     prefix: --just-align
-- id: no_pseudo_assembly
-  doc: do not link alignments together
-  type: boolean
+- id: in_align
+  doc: '--num-reads-at-once arg (=10000000)   Reduce RAM usage by only analysing '
+  type: string
   inputBinding:
-    prefix: --no-pseudo-assembly
-outputs: []
+    position: 0
+- id: in_file
+  doc: '--sam-xa                              only output primary alignment lines, '
+  type: File
+  inputBinding:
+    position: 0
+- id: in_meta_genomics
+  doc: --no-pseudo-assembly                  do not link alignments together
+  type: string
+  inputBinding:
+    position: 0
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_output_file
+  doc: write to this file instead of stdout
+  type: File
+  outputBinding:
+    glob: $(inputs.in_output_file)
+- id: out_sam_file
+  doc: write SAM output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_sam_file)
 cwlVersion: v1.1
 baseCommand:
 - SLAM

@@ -2,22 +2,25 @@ version 1.0
 
 task FastaptamerCount {
   input {
-    Boolean? q
-    Boolean? v
-    String? i
     String? o
+    File? i
+    Boolean? v
+    Boolean? q
   }
   command <<<
     fastaptamer_count \
-      ~{true="-q" false="" q} \
-      ~{true="-v" false="" v} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if (v) then "-v" else ""} \
+      ~{if (q) then "-q" else ""}
   >>>
   parameter_meta {
-    q: ""
-    v: ""
-    i: ""
     o: ""
+    i: ""
+    v: ""
+    q: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }

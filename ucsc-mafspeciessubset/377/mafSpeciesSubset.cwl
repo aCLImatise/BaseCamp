@@ -1,28 +1,21 @@
 class: CommandLineTool
 id: ../../../mafSpeciesSubset.cwl
 inputs:
-- id: keep_first
-  doc: "- If set, keep the first 'a' line in a maf no matter what Useful for mafFrag\
-    \ results where we use this for the gene name"
+- id: in_keep_first
+  doc: "- If set, keep the first 'a' line in a maf no matter what\nUseful for mafFrag\
+    \ results where we use this for the gene name\n"
   type: boolean
   inputBinding:
     prefix: -keepFirst
-- id: in_dot_maf
-  doc: ''
+- id: in_truth_dot
+  doc: species.lst is a file with a list of species to keep
   type: string
   inputBinding:
     position: 0
-- id: species_dot_lst
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: out_dot_maf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
 cwlVersion: v1.1
 baseCommand:
 - mafSpeciesSubset

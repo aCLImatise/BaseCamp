@@ -1,4 +1,7 @@
-&id001 !Command
+&id003 !Command
+command:
+- wdl
+- run
 positional:
 - !Positional
   description: Path to WDL File
@@ -19,10 +22,9 @@ named:
   - --sge
   args: !EmptyFlagArg {}
   optional: true
-command:
-- wdl
-- run
-parent: &id002 !Command
+parent: &id001 !Command
+  command:
+  - wdl
   positional: []
   named:
   - !Flag
@@ -37,20 +39,21 @@ parent: &id002 !Command
     - --no-color
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - wdl
   parent:
   subcommands:
-  - *id001
-  - &id003 !Command
-    positional: []
-    named: []
+  - &id002 !Command
     command:
     - wdl
     - parse
-    parent: *id002
+    positional: []
+    named: []
+    parent: *id001
     subcommands:
     - !Command
+      command:
+      - wdl
+      - parse
+      - wdl_file
       positional:
       - !Positional
         description: ''
@@ -61,21 +64,18 @@ parent: &id002 !Command
       - !Flag
         description: ''
         synonyms:
-        - --debug
+        - --no-color
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
         description: ''
         synonyms:
-        - --no-color
+        - --debug
         args: !EmptyFlagArg {}
         optional: true
-      command:
-      - wdl
-      - parse
-      - wdl_file
-      parent: *id003
+      parent: *id002
       subcommands: []
+      usage: []
       help_flag: !Flag
         description: ''
         synonyms:
@@ -93,6 +93,7 @@ parent: &id002 !Command
         wdl: error: unrecognized arguments: --usage\n"
       generated_using:
       - --usage
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -107,6 +108,8 @@ parent: &id002 !Command
       \  -h, --help  show this help message and exit\n"
     generated_using: &id004
     - --help
+  - *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -129,6 +132,7 @@ parent: &id002 !Command
     \     Open the floodgates\n  --no-color   Don't colorize output\n"
   generated_using: *id004
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

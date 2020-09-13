@@ -1,14 +1,10 @@
 version 1.0
 
 task AveCols {
-  input {
-    File file
-  }
   command <<<
-    aveCols \
-      ~{file}
+    aveCols
   >>>
-  parameter_meta {
-    file: ""
+  output {
+    File out_stdout = stdout()
   }
 }

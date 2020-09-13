@@ -17,4 +17,7 @@ task Eps2eps {
     input_dot_eps: ""
     output_dot_eps: ""
   }
+  output {
+    File out_stdout = stdout()
+  }
 }

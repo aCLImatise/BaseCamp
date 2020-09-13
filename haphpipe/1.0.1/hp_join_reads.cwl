@@ -1,69 +1,82 @@
 class: CommandLineTool
 id: ../../../hp_join_reads.cwl
 inputs:
-- id: fq_one
+- id: in_fq_one
   doc: Fastq file with read 1
-  type: string
+  type: long
   inputBinding:
     prefix: --fq1
-- id: fq_two
+- id: in_fq_two
   doc: Fastq file with read 1
-  type: string
+  type: long
   inputBinding:
     prefix: --fq2
-- id: outdir
+- id: in_outdir
   doc: Output directory
-  type: string
+  type: Directory
   inputBinding:
     prefix: --outdir
-- id: min_overlap
-  doc: 'The minimum required overlap length between two reads to provide a confident
-    overlap. (default: 10)'
+- id: in_min_overlap
+  doc: "The minimum required overlap length between two reads\nto provide a confident\
+    \ overlap. (default: 10)"
   type: long
   inputBinding:
     prefix: --min_overlap
-- id: max_overlap
-  doc: Maximum overlap length expected in approximately 90 pct of read pairs, longer
-    overlaps are penalized.
+- id: in_max_overlap
+  doc: "Maximum overlap length expected in approximately 90\npct of read pairs, longer\
+    \ overlaps are penalized."
   type: long
   inputBinding:
     prefix: --max_overlap
-- id: allow_out_ies
-  doc: 'Also try combining read pairs in the "outie" orientation (default: False)'
+- id: in_allow_out_ies
+  doc: "Also try combining read pairs in the \"outie\"\norientation (default: False)"
   type: boolean
   inputBinding:
     prefix: --allow_outies
-- id: encoding
+- id: in_encoding
   doc: Quality score encoding
   type: string
   inputBinding:
     prefix: --encoding
-- id: n_cpu
+- id: in_n_cpu
   doc: Number of CPU to use
-  type: string
+  type: long
   inputBinding:
     prefix: --ncpu
-- id: keep_tmp
+- id: in_keep_tmp
   doc: 'Keep temporary directory (default: False)'
   type: boolean
   inputBinding:
     prefix: --keep_tmp
-- id: quiet
-  doc: 'Do not write output to console (silence stdout and stderr) (default: False)'
+- id: in_quiet
+  doc: "Do not write output to console (silence stdout and\nstderr) (default: False)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: log_file
+- id: in_log_file
   doc: Append console output to this file
-  type: string
+  type: File
   inputBinding:
     prefix: --logfile
-- id: debug
+- id: in_debug
   doc: 'Print commands but do not run (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-outputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+- id: out_outdir
+  doc: Output directory
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_outdir)
+- id: out_log_file
+  doc: Append console output to this file
+  type: File
+  outputBinding:
+    glob: $(inputs.in_log_file)
 cwlVersion: v1.1
 baseCommand:
 - hp_join_reads

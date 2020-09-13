@@ -1,17 +1,20 @@
 version 1.0
 
-task SsuEslSelectnN {
+task SsueslselectnN {
   input {
     Boolean? options
     File file
   }
   command <<<
-    ssu-esl-selectn n \
+    ssu_esl_selectn n \
       ~{file} \
-      ~{true="-options" false="" options}
+      ~{if (options) then "-options" else ""}
   >>>
   parameter_meta {
     options: ""
     file: ""
+  }
+  output {
+    File out_stdout = stdout()
   }
 }
