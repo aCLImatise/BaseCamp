@@ -1,0 +1,112 @@
+!Command
+command:
+- multi_sample_post_analysis
+positional:
+- !Positional
+  description: "Sample name and cnvs filepath separated by \":\". At\nleast two samples\
+    \ must be provided."
+  position: 0
+  name: SegCopy
+  optional: false
+- !Positional
+  description: Clustering method.
+  position: 1
+  name: clust_method
+  optional: false
+- !Positional
+  description: Distance metric.
+  position: 2
+  name: distance_metric
+  optional: false
+- !Positional
+  description: Path to the output directory (must exist).
+  position: 3
+  name: out_dir
+  optional: false
+named:
+- !Flag
+  description: "Number of permutations to execute the permutation test\nfor sample\
+    \ coesion score."
+  synonyms:
+  - --n_permutations
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Seed to initialize the pseudo-random generator used to\nperform the\
+    \ permutation test."
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "If this option is specified, only the clustering part\nis executed\
+    \ with the specified number of clusters,\nunless --reinit option is specified\
+    \ (see below)."
+  synonyms:
+  - --reclust
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: This option has effect only if combined with the
+  synonyms:
+  - --reinit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: It allows to recompute the entire
+  synonyms:
+  - --clustering
+  args: !SimpleFlagArg
+    name: option.
+  optional: true
+- !Flag
+  description: Verbose execution.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of parallel jobs to speed up pvalue computation
+  synonyms:
+  - --n_jobs
+  args: !SimpleFlagArg
+    name: NJ
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: multi_sample_post_analysis [-h] [--n_permutations N] [--seed N]\n\
+  \                                  [--reclust N] [--reinit] [--verbose]\n      \
+  \                            [--n_jobs NJ]\n                                  sample_name:SegCopy\n\
+  \                                  [sample_name:SegCopy ...] clust_method\n    \
+  \                              distance_metric out_dir\n\nMulti-sample analysis.\n\
+  \npositional arguments:\n  sample_name:SegCopy  Sample name and cnvs filepath separated\
+  \ by \":\". At\n                       least two samples must be provided.\n  clust_method\
+  \         Clustering method.\n  distance_metric      Distance metric.\n  out_dir\
+  \              Path to the output directory (must exist).\n\noptional arguments:\n\
+  \  -h, --help           show this help message and exit\n  --n_permutations N  \
+  \ Number of permutations to execute the permutation test\n                     \
+  \  for sample coesion score.\n  --seed N             Seed to initialize the pseudo-random\
+  \ generator used to\n                       perform the permutation test.\n  --reclust\
+  \ N          If this option is specified, only the clustering part\n           \
+  \            is executed with the specified number of clusters,\n              \
+  \         unless --reinit option is specified (see below).\n  --reinit         \
+  \    This option has effect only if combined with the\n                       --clustering\
+  \ option. It allows to recompute the entire\n                       analysis and\
+  \ then recluster with the specified number\n                       of clusters.\n\
+  \  --verbose            Verbose execution.\n  --n_jobs NJ          Number of parallel\
+  \ jobs to speed up pvalue computation\n"
+generated_using:
+- --help

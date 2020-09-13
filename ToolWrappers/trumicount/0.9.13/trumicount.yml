@@ -1,0 +1,309 @@
+!Command
+command:
+- trumicount
+positional: []
+named:
+- !Flag
+  description: read UMIs from FILE (uses `umi_tools group`)
+  synonyms:
+  - --input-bam
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: read UMIs from FILE produced by `umi_tools group`
+  synonyms:
+  - --input-umitools-group-out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: read UMIs from FILE (previously produced by --output-umis)
+  synonyms:
+  - --input-umis
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write bias-corrected per-group counts and models to FILE
+  synonyms:
+  - --output-counts
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write UMIs reported by `umi_tools group` to FILE
+  synonyms:
+  - --output-umis
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write strand-combined and filtered UMIs to FILE
+  synonyms:
+  - --output-final-umis
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write global reads/UMI distribution (before and after filtering) to
+    FILE
+  synonyms:
+  - --output-readdist
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write diagnostic plots in PDF format to PLOT
+  synonyms:
+  - --output-plots
+  args: !SimpleFlagArg
+    name: PLOT
+  optional: true
+- !Flag
+  description: write group-wise model details to FILE
+  synonyms:
+  - --output-groupwise-fits
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: obsolete name for --output-groupwise-fits
+  synonyms:
+  - --output-genewise-fits
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'use executable UMITOOLS to run `umi_tools group` [Default: umi_tools]'
+  synonyms:
+  - --umitools
+  args: !SimpleFlagArg
+    name: UMITOOLS
+  optional: true
+- !Flag
+  description: pass UMITOOLSOPT to `umi_tools group` (see `umi_tools group --help`)
+  synonyms:
+  - --umitools-option
+  args: !SimpleFlagArg
+    name: UMITOOLSOPT
+  optional: true
+- !Flag
+  description: 'assume UMISEP separates read name and UMI (passed to umi_tools) [Default:
+    _]'
+  synonyms:
+  - --umi-sep
+  args: !SimpleFlagArg
+    name: UMISEP
+  optional: true
+- !Flag
+  description: 'assume UMIPAIRSEP separates read1 and read2 UMI (see Strand UMIs)
+    [Default: ]'
+  synonyms:
+  - --umipair-sep
+  args: !SimpleFlagArg
+    name: UMIPAIRSEP
+  optional: true
+- !Flag
+  description: 'assume BAM file contains paired reads (passed to umi_tools) [Default:
+    FALSE]'
+  synonyms:
+  - --paired
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'ignored read with mapping quality below MAPQ (passed to umi_tools)
+    [Default: 20]'
+  synonyms:
+  - --mapping-quality
+  args: !SimpleFlagArg
+    name: MAPQ
+  optional: true
+- !Flag
+  description: 'filtes UMIs where only one strands was observed [Default: FALSE]'
+  synonyms:
+  - --filter-strand-umis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'combine UMIs strand pairs (implies --filter-strand-umis) [Default:
+    FALSE]'
+  synonyms:
+  - --combine-strand-umis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: remove UMIs with fewer than THRESHOLD reads
+  synonyms:
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: 'use quantile Q of the raw read-count distribution for THRESHOLD [Default:
+    0.2]'
+  synonyms:
+  - --threshold-quantile
+  args: !SimpleFlagArg
+    name: Q
+  optional: true
+- !Flag
+  description: 'assume UMIs are initially represented by MOLECULES copies (strands)
+    [Default: 2]'
+  synonyms:
+  - --molecules
+  args: !SimpleFlagArg
+    name: MOLECULES
+  optional: true
+- !Flag
+  description: ",KEY2,...       counts UMIs per distinct key(s), can be \"cell\" and/or\
+    \ \"gene\",\n\"cell\" implies --umitools-option --per-cell [Default: gene]"
+  synonyms:
+  - --group-per
+  args: !SimpleFlagArg
+    name: KEY1
+  optional: true
+- !Flag
+  description: skip group-wise model fitting, stop after plotting the global fit
+  synonyms:
+  - --skip-groupwise-fits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'add filtered and unfiltered read and UMI counts to count table [Default:
+    FALSE]'
+  synonyms:
+  - --include-filter-statistics
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'use global estimates for groups with fewer than MINUMIS (strand) UMIs
+    [Default: 5]'
+  synonyms:
+  - --groupwise-min-umis
+  args: !SimpleFlagArg
+    name: MINUMIS
+  optional: true
+- !Flag
+  description: obsolete name for --groupwise-min-umis
+  synonyms:
+  - --genewise-min-umis
+  args: !SimpleFlagArg
+    name: MINUMIS
+  optional: true
+- !Flag
+  description: 'spread group-wise model fitting over CORES cpus [Default: 1]'
+  synonyms:
+  - --cores
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+- !Flag
+  description: 'use VAREST to estimate variances, can be "lsq" or "mle" [Default:
+    lsq]'
+  synonyms:
+  - --variance-estimator
+  args: !SimpleFlagArg
+    name: VAREST
+  optional: true
+- !Flag
+  description: 'number of digits to output [Default: 3]'
+  synonyms:
+  - --digits
+  args: !SimpleFlagArg
+    name: DIGITS
+  optional: true
+- !Flag
+  description: make read count histogram bins PLOTXBIN wide
+  synonyms:
+  - --plot-hist-bin
+  args: !SimpleFlagArg
+    name: PLOTXBIN
+  optional: true
+- !Flag
+  description: limit read count histogram plot to at most PLOTXMAX reads per UMI
+  synonyms:
+  - --plot-hist-xmax
+  args: !SimpleFlagArg
+    name: PLOTXMAX
+  optional: true
+- !Flag
+  description: 'do not show phantom UMIs in histogram plot [Default: FALSE]'
+  synonyms:
+  - --plot-skip-phantoms
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'plot PLOTVARBINS separate emprirical variances [Default: 10]'
+  synonyms:
+  - --plot-var-bins
+  args: !SimpleFlagArg
+    name: PLOTVARBINS
+  optional: true
+- !Flag
+  description: 'use log scale for the variance (y) axis [Default: FALSE]'
+  synonyms:
+  - --plot-var-logy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enable verbose output
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: trumicount (--input-bam INBAM | --input-umitools-group-out GROUPSINTAB\
+  \ | --input-umis UMISINTAB) [options] [--umitools-option UMITOOLSOPT]...\n\nVersion\
+  \ 0.9.13 Copyright 2017-2018 Florian G. Pflug\n\nThis program is distributed in\
+  \ the hope that it will be useful, but WITHOUT ANY\nWARRANTY; without even the implied\
+  \ warranty of MERCHANTABILITY or FITNESS FOR A\nPARTICULAR PURPOSE.  See the GNU\
+  \ Affero General Public License for more details.\n\nOptions:\n--input-bam FILE\
+  \                read UMIs from FILE (uses `umi_tools group`)\n--input-umitools-group-out\
+  \ FILE read UMIs from FILE produced by `umi_tools group`\n--input-umis FILE    \
+  \           read UMIs from FILE (previously produced by --output-umis)\n--output-counts\
+  \ FILE            write bias-corrected per-group counts and models to FILE\n--output-umis\
+  \ FILE              write UMIs reported by `umi_tools group` to FILE\n--output-final-umis\
+  \ FILE        write strand-combined and filtered UMIs to FILE\n--output-readdist\
+  \ FILE          write global reads/UMI distribution (before and after filtering)\
+  \ to FILE\n--output-plots PLOT             write diagnostic plots in PDF format\
+  \ to PLOT\n--output-groupwise-fits FILE    write group-wise model details to FILE\n\
+  --output-genewise-fits FILE     obsolete name for --output-groupwise-fits\n--umitools\
+  \ UMITOOLS             use executable UMITOOLS to run `umi_tools group` [Default:\
+  \ umi_tools]\n--umitools-option UMITOOLSOPT   pass UMITOOLSOPT to `umi_tools group`\
+  \ (see `umi_tools group --help`)\n--umi-sep UMISEP                assume UMISEP\
+  \ separates read name and UMI (passed to umi_tools) [Default: _]\n--umipair-sep\
+  \ UMIPAIRSEP        assume UMIPAIRSEP separates read1 and read2 UMI (see Strand\
+  \ UMIs) [Default: ]\n--paired                        assume BAM file contains paired\
+  \ reads (passed to umi_tools) [Default: FALSE]\n--mapping-quality MAPQ         \
+  \ ignored read with mapping quality below MAPQ (passed to umi_tools) [Default: 20]\n\
+  --filter-strand-umis            filtes UMIs where only one strands was observed\
+  \ [Default: FALSE]\n--combine-strand-umis           combine UMIs strand pairs (implies\
+  \ --filter-strand-umis) [Default: FALSE]\n--threshold THRESHOLD           remove\
+  \ UMIs with fewer than THRESHOLD reads\n--threshold-quantile Q          use quantile\
+  \ Q of the raw read-count distribution for THRESHOLD [Default: 0.2]\n--molecules\
+  \ MOLECULES           assume UMIs are initially represented by MOLECULES copies\
+  \ (strands) [Default: 2]\n--group-per KEY1,KEY2,...       counts UMIs per distinct\
+  \ key(s), can be \"cell\" and/or \"gene\",\n                                \"cell\"\
+  \ implies --umitools-option --per-cell [Default: gene]\n--skip-groupwise-fits  \
+  \         skip group-wise model fitting, stop after plotting the global fit\n--include-filter-statistics\
+  \     add filtered and unfiltered read and UMI counts to count table [Default: FALSE]\n\
+  --groupwise-min-umis MINUMIS    use global estimates for groups with fewer than\
+  \ MINUMIS (strand) UMIs [Default: 5]\n--genewise-min-umis MINUMIS     obsolete name\
+  \ for --groupwise-min-umis\n--cores CORES                   spread group-wise model\
+  \ fitting over CORES cpus [Default: 1]\n--variance-estimator VAREST     use VAREST\
+  \ to estimate variances, can be \"lsq\" or \"mle\" [Default: lsq]\n--digits DIGITS\
+  \                 number of digits to output [Default: 3]\n--plot-hist-bin PLOTXBIN\
+  \        make read count histogram bins PLOTXBIN wide\n--plot-hist-xmax PLOTXMAX\
+  \       limit read count histogram plot to at most PLOTXMAX reads per UMI\n--plot-skip-phantoms\
+  \            do not show phantom UMIs in histogram plot [Default: FALSE]\n--plot-var-bins\
+  \ PLOTVARBINS     plot PLOTVARBINS separate emprirical variances [Default: 10]\n\
+  --plot-var-logy                 use log scale for the variance (y) axis [Default:\
+  \ FALSE]\n--verbose                       enable verbose output \n"
+generated_using:
+- --help

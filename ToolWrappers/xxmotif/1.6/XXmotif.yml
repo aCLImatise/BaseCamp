@@ -1,0 +1,614 @@
+!Command
+command:
+- XXmotif
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OUTDIR
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: SEQFILE
+  optional: false
+named:
+- !Flag
+  description: sequence set which has to be used as a reference set
+  synonyms:
+  - --negSet
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: use zero-or-one occurrence per sequence model (DEFAULT)
+  synonyms:
+  - --zoops
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use multiple occurrence per sequence model
+  synonyms:
+  - --mops
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use one occurrence per sequence model
+  synonyms:
+  - --oops
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'search in reverse complement of sequences as well (DEFAULT: NO)'
+  synonyms:
+  - --revcomp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'order of background distribution (DEFAULT: 2, 8(--negset) )'
+  synonyms:
+  - --background-model-order
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: 'percentage of pseudocounts used (DEFAULT: 10)'
+  synonyms:
+  - --pseudo
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: 'maximum number of gaps used for start seeds [0-3] (DEFAULT: 0)'
+  synonyms:
+  - -g
+  - --gaps
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: "defines what kind of start seeds are used (DEFAULT: ALL)\n- possible\
+    \ types: ALL, FIVEMERS, PALINDROME, TANDEM, NOPALINDROME, NOTANDEM"
+  synonyms:
+  - --type
+  args: !SimpleFlagArg
+    name: TYPE
+  optional: true
+- !Flag
+  description: "defines the similarity threshold for merging motifs (DEFAULT: HIGH)\n\
+    - possible modes: LOW, MEDIUM, HIGH"
+  synonyms:
+  - --merge-motif-threshold
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: do not optimize length during iterations (runtime advantages)
+  synonyms:
+  - --no-pwm-length-optimization
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'max number of positions per motif (DEFAULT: 17, higher values will
+    lead to very long runtimes)'
+  synonyms:
+  - --max-match-positions
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: suppress progress bars (reduce output size for batch jobs)
+  synonyms:
+  - --batch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'maximum number of sequences from the positive set used [DEFAULT: all]'
+  synonyms:
+  - --maxPosSetSize
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: 'inspect extensions and refinement of a given seed (DEFAULT: not used)'
+  synonyms:
+  - --trackedMotif
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: '|MFASTA                   defines what kind of format the input sequences
+    have (DEFAULT: FASTA)'
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: 'maximum number of sequences used in an alignment [DEFAULT: all]'
+  synonyms:
+  - --maxMultipleSequences
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: "use localization information to calculate combined P-values\n(sequences\
+    \ should have all the same length)"
+  synonyms:
+  - --localization
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'number of residues in positive set downstream of anchor point (DEFAULT:
+    0)'
+  synonyms:
+  - --downstream
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: Start motif (IUPAC characters)
+  synonyms:
+  - -m
+  - --startMotif
+  args: !SimpleFlagArg
+    name: MOTIF
+  optional: true
+- !Flag
+  description: profile file
+  synonyms:
+  - -p
+  - --profileFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: expected start position for motif occurrences relative to anchor point
+    (--localization)
+  synonyms:
+  - --startRegion
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: expected end position for motif occurrences relative to anchor point
+    (--localization)
+  synonyms:
+  - --endRegion
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: EM mode.
+  synonyms:
+  - --em
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Binding sites file name to initialize a single Markov model. Sequence
+    lengths must not differ and be provided line-by-line.
+  synonyms:
+  - --bindingSiteFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Specify the length of binding sites provided by --bindingSiteFile (not
+    mandatory).
+  synonyms:
+  - --bindingSiteLength
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Markov model file name (without ending) to initialize a single Markov
+    model. Files <FILE>.conds and <FILE>.probs need to be available.
+  synonyms:
+  - --markovModelFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "[<INTEGER>...]\nNumber of one or more XXmotif models in the ranking\
+    \ used to initialize Markov models. The remaining parameters available to choose\
+    \ models from XXmotif results are ignored."
+  synonyms:
+  - --nrModels
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Min. number of XXmotif models used to initialize Markov models. Independent
+    on options --maxPvalue and --minOccurrence. <INTEGER> > 0 (default: 1).'
+  synonyms:
+  - --minModels
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Max. number of XXmotif models used to initialize Markov models. <INTEGER>
+    > 0 (default: max. integer).'
+  synonyms:
+  - --maxModels
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Max. p-value of XXmotif models used to initialize Markov models. Not
+    applied to min. number of models. (default: 1).'
+  synonyms:
+  - --maxPvalue
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Min. percentage of sequences containing a binding site instance. Not
+    applied to min. number of models. (default: 0).'
+  synonyms:
+  - --minOccurrence
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "{1,2}\nAdd columns to the left and/or right of models. <INTEGER> >=\
+    \ 0 (default: 0 0)."
+  synonyms:
+  - --addColumns
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Markov model order. <INTEGER> >= 0 (default: 0).'
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "[<FLOAT>...]\nMarkov model pseudo-counts factor(s). Markov model order\
+    \ k fixes vector size to k+1. <FLOAT> >= 0 (default: 10)."
+  synonyms:
+  - -a
+  - --alpha
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "[<FLOAT>...]\nMarkov model pseudo-counts factor(s) defined by --alpha\
+    \ and -q. Markov model order k fixes vector size to k+1. Specify either --eta\
+    \ or --alpha. <FLOAT> >= 0 (default: 10)."
+  synonyms:
+  - --eta
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Interpolate between higher- and lower-order probabilities.
+  synonyms:
+  - --interpolate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Background model order. <INTEGER> >= 0. (default: 0).'
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Background model pseudo-counts factor. <FLOAT> >= 0 (default: 10).'
+  synonyms:
+  - -A
+  - --Alpha
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Initialize Markov model but skip EM phase.
+  synonyms:
+  - --noExpectationMaximizationPhase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specificity factor approximates the percentage of sequences contributing
+    to the Markov model. 0 < <FLOAT> < 1 (default: 0.1).'
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'EM convergence parameter. <FLOAT> > 0 (default: 0.001).'
+  synonyms:
+  - --epsilon
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Max. number of EM iterations (default: max. integer).'
+  synonyms:
+  - --maxEMIterations
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Intensity or significance values for positive sequences. The higher
+    the values the higher the weights.
+  synonyms:
+  - --sequenceIntsFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Parameter to initialize models from XXmotif results by weighting instances
+    with corresponding sequence weigths. Option --sequenceIntsFile must be provided
+    simultaneously. Options --bindingSiteFile and --markovModelFile must not be provided
+    simultaneously.
+  synonyms:
+  - --initInts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Rank-based weighting (default: intensity-based weighting).'
+  synonyms:
+  - --rankWeighting
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Quantile to estimate the background intensity value (or rank). Sequences
+    having their intensity value (rank) below (above) the background intensity value
+    (rank) get assigned to weight zero. 0 <= <FLOAT> <= 1 (default: 0).'
+  synonyms:
+  - --backgroundQuantile
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Background intensity value. Sequences having their intensity value
+    below the background intensity value get assigned to weight zero. Option --rankWeighting
+    must not be provided simultaneously (default: min. intensity value).'
+  synonyms:
+  - --backgroundIntensity
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Background intensity rank. Sequences having their intensity rank above
+    the background intensity rank get assigned to weight zero. Option --rankWeighting
+    must be provided simultaneously (default: max. rank).'
+  synonyms:
+  - --backgroundRank
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Intensity or significance values for binding site sequences. The higher
+    the values the higher the weights. Option --bindingSiteFile must be provided simultaneously.
+  synonyms:
+  - --bindingSiteIntsFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Binding site rank-based weighting (default: intensity-based weighting).'
+  synonyms:
+  - --bindingSiteRankWeighting
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Quantile to estimate the background intensity value (or rank). Binding
+    sites having their intensity value (rank) below (below) the background intensity
+    value (rank) get assigned to weight zero. 0 <= <FLOAT> <= 1 (default: 0).'
+  synonyms:
+  - --bindingSiteBackgroundQuantile
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Background intensity value. Binding sites having their intensity value
+    below the background intensity value get assigned to weight zero. Option --bindingSiteRankWeighting
+    must not be provided simultaneously (default: min. intensity value).'
+  synonyms:
+  - --bindingSiteBackgroundIntensity
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Background intensity rank. Binding sites having their intensity rank
+    above the background intensity rank get assigned to weight zero. Option --bindingSiteRankWeighting
+    must be provided simultaneously (default: max. rank).'
+  synonyms:
+  - --bindingSiteBackgroundRank
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Evaluate model(s) on training sequences.
+  synonyms:
+  - --testPosSet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Evaluate model(s) on background sequences.
+  synonyms:
+  - --testNegSet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Evaluate model(s) on sequences in FASTA format. Specify one or more
+    files. Sequence lengths may differ.
+  synonyms:
+  - --testSet
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Evaluate PWM model(s) used to initialize Markov model(s) on test sequences.
+  synonyms:
+  - --evaluatePWMs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Calculate log probabilities instead of log likelihood ratios.
+  synonyms:
+  - --logProbs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save Markov models after initialization to file.
+  synonyms:
+  - --saveInitModels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save Markov models after EM phase to file.
+  synonyms:
+  - --saveModels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save EM iteration's sequence likelihoods and positional odds to file.
+  synonyms:
+  - --saveExpectationMaximizationLikelihoods
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save EM iteration's Markov models to file.
+  synonyms:
+  - --saveExpectationMaximizationModels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Verbose printouts.\n"
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print this help page
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n==============================================================================================================================\n\
+  == XXmotif version 1.6\n==============================================================================================================================\n\
+  \nUsage: XXmotif OUTDIR SEQFILE [options] \n\n\tOUTDIR:  output directory for all\
+  \ results\n\tSEQFILE: file name with sequences from positive set in FASTA format\n\
+  \nOptions:\n\t--negSet <FILE>\t\t\t\tsequence set which has to be used as a reference\
+  \ set\n\t--zoops\t\t\t\t\tuse zero-or-one occurrence per sequence model (DEFAULT)\n\
+  \t--mops\t\t\t\t\tuse multiple occurrence per sequence model\n\t--oops\t\t\t\t\t\
+  use one occurrence per sequence model\n\t--revcomp\t\t\t\tsearch in reverse complement\
+  \ of sequences as well (DEFAULT: NO)\n\t--background-model-order <NUMBER>\torder\
+  \ of background distribution (DEFAULT: 2, 8(--negset) )\n\t--pseudo <NUMBER>\t\t\
+  \tpercentage of pseudocounts used (DEFAULT: 10)\n\t-g|--gaps <NUMBER>\t\t\tmaximum\
+  \ number of gaps used for start seeds [0-3] (DEFAULT: 0)\n\t--type <TYPE>\t\t\t\t\
+  defines what kind of start seeds are used (DEFAULT: ALL)\n\t\t\t\t\t\t - possible\
+  \ types: ALL, FIVEMERS, PALINDROME, TANDEM, NOPALINDROME, NOTANDEM\n\t--merge-motif-threshold\
+  \ <MODE>\t\tdefines the similarity threshold for merging motifs (DEFAULT: HIGH)\n\
+  \t\t\t\t\t\t - possible modes: LOW, MEDIUM, HIGH\n\t--no-pwm-length-optimization\t\
+  \tdo not optimize length during iterations (runtime advantages)\n\t--max-match-positions\
+  \ <INT>\t\tmax number of positions per motif (DEFAULT: 17, higher values will lead\
+  \ to very long runtimes)\n\n\t--batch\t\t\t\t\tsuppress progress bars (reduce output\
+  \ size for batch jobs)\n\t--maxPosSetSize <NUMBER>\t\tmaximum number of sequences\
+  \ from the positive set used [DEFAULT: all]\n\t-h|--help\t\t\t\tprint this help\
+  \ page\n\t--trackedMotif <SEED>\t\t\tinspect extensions and refinement of a given\
+  \ seed (DEFAULT: not used)\n\nUsing conservation information\n\t--format FASTA|MFASTA\t\
+  \t\tdefines what kind of format the input sequences have (DEFAULT: FASTA)\n\t--maxMultipleSequences\
+  \ <NUMBER>\t\tmaximum number of sequences used in an alignment [DEFAULT: all]\n\n\
+  Using localization information\n\t--localization\t\t\t\tuse localization information\
+  \ to calculate combined P-values \n\t\t\t\t\t\t(sequences should have all the same\
+  \ length)\n\t--downstream <NUMBER>\t\t\tnumber of residues in positive set downstream\
+  \ of anchor point (DEFAULT: 0)\n\nStart with self defined motif:\n\t-m|--startMotif\
+  \ <MOTIF>\t\t\tStart motif (IUPAC characters)\n\t-p|--profileFile <FILE>\t\t\tprofile\
+  \ file\n\t--startRegion <NUMBER>\t\t\texpected start position for motif occurrences\
+  \ relative to anchor point (--localization)\n\t--endRegion <NUMBER>\t\t\texpected\
+  \ end position for motif occurrences relative to anchor point (--localization)\n\
+  \n\n==============================================================================================================================\n\
+  \nExpectation Maximization (EM) options.\n\n\t--em\tEM mode.\n\n\n\tOptions to initialize\
+  \ models from file.\n\n\t--bindingSiteFile <FILE>\n\t\tBinding sites file name to\
+  \ initialize a single Markov model. Sequence lengths must not differ and be provided\
+  \ line-by-line.\n\n\t--bindingSiteLength <INTEGER>\n\t\tSpecify the length of binding\
+  \ sites provided by --bindingSiteFile (not mandatory).\n\n\t--markovModelFile <FILE>\n\
+  \t\tMarkov model file name (without ending) to initialize a single Markov model.\
+  \ Files <FILE>.conds and <FILE>.probs need to be available.\n\n\n\tOptions to initialize\
+  \ models from XXmotif results. Options --bindingSiteFile and --markovModelFile must\
+  \ not be provided simultaneously.\n\n\t--nrModels <INTEGER> [<INTEGER>...]\n\t\t\
+  Number of one or more XXmotif models in the ranking used to initialize Markov models.\
+  \ The remaining parameters available to choose models from XXmotif results are ignored.\n\
+  \n\t--minModels <INTEGER>\n\t\tMin. number of XXmotif models used to initialize\
+  \ Markov models. Independent on options --maxPvalue and --minOccurrence. <INTEGER>\
+  \ > 0 (default: 1).\n\n\t--maxModels <INTEGER>\n\t\tMax. number of XXmotif models\
+  \ used to initialize Markov models. <INTEGER> > 0 (default: max. integer).\n\n\t\
+  --maxPvalue <FLOAT>\n\t\tMax. p-value of XXmotif models used to initialize Markov\
+  \ models. Not applied to min. number of models. (default: 1).\n\n\t--minOccurrence\
+  \ <FLOAT>\n\t\tMin. percentage of sequences containing a binding site instance.\
+  \ Not applied to min. number of models. (default: 0).\n\n\t--msq\tUse model-specific\
+  \ specificity factors by considering the percentage of positive sequences containing\
+  \ a corresponding binding site instance.\n\n\n\tOptions to initialize models from\
+  \ XXmotif results or a binding site file. Option --markovModelFile must not be provided\
+  \ simultaneously.\n\n\t--msq\tUse model-specific specificity factors by considering\
+  \ the percentage of positive sequences containing a corresponding binding site instance.\n\
+  \n\n\tOptions to initialize models.\n\n\t--addColumns <INTEGER>{1,2}\n\t\tAdd columns\
+  \ to the left and/or right of models. <INTEGER> >= 0 (default: 0 0).\n\n\n\tMarkov\
+  \ model options.\n\n\t-k <INTEGER>\n\t\tMarkov model order. <INTEGER> >= 0 (default:\
+  \ 0).\n\n\t-a, --alpha <FLOAT> [<FLOAT>...]\n\t\tMarkov model pseudo-counts factor(s).\
+  \ Markov model order k fixes vector size to k+1. <FLOAT> >= 0 (default: 10).\n\n\
+  \t--eta <FLOAT> [<FLOAT>...]\n\t\tMarkov model pseudo-counts factor(s) defined by\
+  \ --alpha and -q. Markov model order k fixes vector size to k+1. Specify either\
+  \ --eta or --alpha. <FLOAT> >= 0 (default: 10).\n\n\t--interpolate\n\t\tInterpolate\
+  \ between higher- and lower-order probabilities.\n\n\n\tInterpolated Markov background\
+  \ model options.\n\n\t-K <INTEGER>\n\t\tBackground model order. <INTEGER> >= 0.\
+  \ (default: 0).\n\n\t-A, --Alpha <FLOAT>\n\t\tBackground model pseudo-counts factor.\
+  \ <FLOAT> >= 0 (default: 10).\n\n\n\tEM options.\n\n\t--noExpectationMaximizationPhase\n\
+  \t\tInitialize Markov model but skip EM phase.\n\n\t-q <FLOAT>\n\t\tSpecificity\
+  \ factor approximates the percentage of sequences contributing to the Markov model.\
+  \ 0 < <FLOAT> < 1 (default: 0.1).\n\n\t--epsilon <FLOAT>\n\t\tEM convergence parameter.\
+  \ <FLOAT> > 0 (default: 0.001).\n\n\t--maxEMIterations <INTEGER>\n\t\tMax. number\
+  \ of EM iterations (default: max. integer).\n\n\n\tWeighting options.\n\n\t--sequenceIntsFile\
+  \ <FILE>\n\t\tIntensity or significance values for positive sequences. The higher\
+  \ the values the higher the weights.\n\n\t--initInts\n\t\tParameter to initialize\
+  \ models from XXmotif results by weighting instances with corresponding sequence\
+  \ weigths. Option --sequenceIntsFile must be provided simultaneously. Options --bindingSiteFile\
+  \ and --markovModelFile must not be provided simultaneously.\n\n\t--rankWeighting\n\
+  \t\tRank-based weighting (default: intensity-based weighting).\n\n\t--backgroundQuantile\
+  \ <FLOAT>\n\t\tQuantile to estimate the background intensity value (or rank). Sequences\
+  \ having their intensity value (rank) below (above) the background intensity value\
+  \ (rank) get assigned to weight zero. 0 <= <FLOAT> <= 1 (default: 0).\n\n\t--backgroundIntensity\
+  \ <FLOAT>\n\t\tBackground intensity value. Sequences having their intensity value\
+  \ below the background intensity value get assigned to weight zero. Option --rankWeighting\
+  \ must not be provided simultaneously (default: min. intensity value).\n\n\t--backgroundRank\
+  \ <INTEGER>\n\t\tBackground intensity rank. Sequences having their intensity rank\
+  \ above the background intensity rank get assigned to weight zero. Option --rankWeighting\
+  \ must be provided simultaneously (default: max. rank).\n\n\n\tBinding site weighting\
+  \ options.\n\n\t--bindingSiteIntsFile <FILE>\n\t\tIntensity or significance values\
+  \ for binding site sequences. The higher the values the higher the weights. Option\
+  \ --bindingSiteFile must be provided simultaneously.\n\n\t--bindingSiteRankWeighting\n\
+  \t\tBinding site rank-based weighting (default: intensity-based weighting).\n\n\t\
+  --bindingSiteBackgroundQuantile <FLOAT>\n\t\tQuantile to estimate the background\
+  \ intensity value (or rank). Binding sites having their intensity value (rank) below\
+  \ (below) the background intensity value (rank) get assigned to weight zero. 0 <=\
+  \ <FLOAT> <= 1 (default: 0).\n\n\t--bindingSiteBackgroundIntensity <FLOAT>\n\t\t\
+  Background intensity value. Binding sites having their intensity value below the\
+  \ background intensity value get assigned to weight zero. Option --bindingSiteRankWeighting\
+  \ must not be provided simultaneously (default: min. intensity value).\n\n\t--bindingSiteBackgroundRank\
+  \ <INTEGER>\n\t\tBackground intensity rank. Binding sites having their intensity\
+  \ rank above the background intensity rank get assigned to weight zero. Option --bindingSiteRankWeighting\
+  \ must be provided simultaneously (default: max. rank).\n\n\n\tScoring options.\n\
+  \n\t--testPosSet\n\t\tEvaluate model(s) on training sequences.\n\n\t--testNegSet\n\
+  \t\tEvaluate model(s) on background sequences.\n\n\t--testSet <FILE>\n\t\tEvaluate\
+  \ model(s) on sequences in FASTA format. Specify one or more files. Sequence lengths\
+  \ may differ.\n\n\t--evaluatePWMs\n\t\tEvaluate PWM model(s) used to initialize\
+  \ Markov model(s) on test sequences.\n\n\t--logProbs\n\t\tCalculate log probabilities\
+  \ instead of log likelihood ratios.\n\n\n\tOutput options.\n\n\t--saveInitModels\n\
+  \t\tSave Markov models after initialization to file.\n\n\t--saveModels\n\t\tSave\
+  \ Markov models after EM phase to file.\n\n\t--saveExpectationMaximizationLikelihoods\n\
+  \t\tSave EM iteration's sequence likelihoods and positional odds to file.\n\n\t\
+  --saveExpectationMaximizationModels\n\t\tSave EM iteration's Markov models to file.\n\
+  \n\t--verbose\n\t\tVerbose printouts.\n\n"
+generated_using: []

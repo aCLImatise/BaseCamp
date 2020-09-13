@@ -1,0 +1,128 @@
+!Command
+command:
+- ftx.py
+positional:
+- !Positional
+  description: -r REF, --reference REF
+  position: 0
+  name: extraction
+  optional: false
+named:
+- !Flag
+  description: Output file name. Output will be in CSV format
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Location for bcftools view (e.g. chr1)
+  synonyms:
+  - -l
+  - --location
+  args: !SimpleFlagArg
+    name: LOCATION
+  optional: true
+- !Flag
+  description: "Restrict analysis to given (sparse) regions (using -R\nin bcftools)."
+  synonyms:
+  - -R
+  - --restrict-regions
+  args: !SimpleFlagArg
+    name: REGIONS_BEDFILE
+  optional: true
+- !Flag
+  description: "Restrict analysis to given (dense) regions (using -T\nin bcftools)."
+  synonyms:
+  - -T
+  - --target-regions
+  args: !SimpleFlagArg
+    name: TARGETS_BEDFILE
+  optional: true
+- !Flag
+  description: Use to include failing variants in comparison.
+  synonyms:
+  - -P
+  - --include-nonpass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Select a feature table to output. Options are:\n['hcc.strelka.snv',\
+    \ 'hcc.pisces.snv',\n'hcc.mutect.snv', 'hcc.varscan2.indel',\n'admix.strelka.snv',\
+    \ 'generic', 'hcc.pisces.indel',\n'hcc.strelka.indel', 'admix.strelka.indel',\n\
+    'hcc.varscan2.snv', 'hcc.mutect.indel']"
+  synonyms:
+  - --feature-table
+  args: !SimpleFlagArg
+    name: FEATURES
+  optional: true
+- !Flag
+  description: "We will output a lable column, this value will go in\nthere -- default\
+    \ is the input filename."
+  synonyms:
+  - --feature-label
+  args: !SimpleFlagArg
+    name: LABEL
+  optional: true
+- !Flag
+  description: pass one or more BAM files for feature table
+  synonyms:
+  - --bam
+  args: !SimpleFlagArg
+    name: BAMS
+  optional: true
+- !Flag
+  description: Enable running of bcftools norm on the input file.
+  synonyms:
+  - --normalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Replace numeric chromosome names in the query by\nchr*-type names\n"
+  synonyms:
+  - --fix-chr
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: Somatic VCF Feature Extraction [-h] -o OUTPUT [-l LOCATION]\n \
+  \                                     [-R REGIONS_BEDFILE]\n                   \
+  \                   [-T TARGETS_BEDFILE] [-P]\n                                \
+  \      [--feature-table FEATURES]\n                                      [--feature-label\
+  \ LABEL] [--bam BAMS]\n                                      [-r REF] [--normalize]\
+  \ [--fix-chr]\n                                      input\n\npositional arguments:\n\
+  \  input                 Input VCF file\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n  -o OUTPUT, --output OUTPUT\n      \
+  \                  Output file name. Output will be in CSV format\n  -l LOCATION,\
+  \ --location LOCATION\n                        Location for bcftools view (e.g.\
+  \ chr1)\n  -R REGIONS_BEDFILE, --restrict-regions REGIONS_BEDFILE\n            \
+  \            Restrict analysis to given (sparse) regions (using -R\n           \
+  \             in bcftools).\n  -T TARGETS_BEDFILE, --target-regions TARGETS_BEDFILE\n\
+  \                        Restrict analysis to given (dense) regions (using -T\n\
+  \                        in bcftools).\n  -P, --include-nonpass\n              \
+  \          Use to include failing variants in comparison.\n  --feature-table FEATURES\n\
+  \                        Select a feature table to output. Options are:\n      \
+  \                  ['hcc.strelka.snv', 'hcc.pisces.snv',\n                     \
+  \   'hcc.mutect.snv', 'hcc.varscan2.indel',\n                        'admix.strelka.snv',\
+  \ 'generic', 'hcc.pisces.indel',\n                        'hcc.strelka.indel', 'admix.strelka.indel',\n\
+  \                        'hcc.varscan2.snv', 'hcc.mutect.indel']\n  --feature-label\
+  \ LABEL\n                        We will output a lable column, this value will\
+  \ go in\n                        there -- default is the input filename.\n  --bam\
+  \ BAMS            pass one or more BAM files for feature table\n               \
+  \         extraction\n  -r REF, --reference REF\n                        Specify\
+  \ a reference file for normalization.\n  --normalize           Enable running of\
+  \ bcftools norm on the input file.\n  --fix-chr             Replace numeric chromosome\
+  \ names in the query by\n                        chr*-type names\n"
+generated_using:
+- --help

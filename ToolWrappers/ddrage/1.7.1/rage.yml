@@ -1,0 +1,483 @@
+!Command
+command:
+- rage
+positional: []
+named:
+- !Flag
+  description: "Increase verbosity of output. -v: Show progress of\nsimulation. -vv:\
+    \ Print used parameters after\nsimulation. -vvv: Show details for each simulated\n\
+    locus."
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write output as gzipped fastq.
+  synonyms:
+  - -z
+  - --zip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write copies of the default barcode files into the\ncurrent folder."
+  synonyms:
+  - --get-barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set debug-friendly values for the data set, i.e. all\nmutation events\
+    \ and mutation types are equally\nprobable."
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Name for the data set that will be used in the file\nname. If none\
+    \ is given, the name 'RAGEdataset' will be\nused."
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Prefix of the output path. At this point a folder will\nbe created\
+    \ that contains all output files created by\nddRAGE."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_PATH_PREFIX
+  optional: true
+- !Flag
+  description: 'Number of individuals in the result. Default: 3'
+  synonyms:
+  - -n
+  - --nr-individuals
+  args: !SimpleFlagArg
+    name: NR_INDIVIDUALS
+  optional: true
+- !Flag
+  description: "Number of loci for which reads will be created or path\nto a FASTA\
+    \ file with predefined fragments. Default: 3"
+  synonyms:
+  - -l
+  - --loci
+  args: !SimpleFlagArg
+    name: LOCI
+  optional: true
+- !Flag
+  description: "Total sequence length of the reads (including\noverhang, barcodes,\
+    \ etc.). The officially supported\nand well tested range is 50-500bp but longer\
+    \ or\nshorter reads are also possible. Default: 100"
+  synonyms:
+  - -r
+  - --read-length
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+  optional: true
+- !Flag
+  description: "Expected coverage that will be created by normal\nduplication and\
+    \ mutations. The exact coverage value is\ndetermined using a probabilistic process.\
+    \ Default: 30"
+  synonyms:
+  - -c
+  - --coverage
+  args: !SimpleFlagArg
+    name: COV
+  optional: true
+- !Flag
+  description: "Number of Highly Repetitive Loci (HRLs) that will be\nadded, given\
+    \ as fraction of total locus size. Example:\n``-l 100 --hrl-number 0.1`` for 10\
+    \ HRLs. Default: 0.05"
+  synonyms:
+  - --hrl-number
+  args: !SimpleFlagArg
+    name: HRL_NUMBER
+  optional: true
+- !Flag
+  description: Disable generation of singleton reads.
+  synonyms:
+  - --no-singletons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Parameter for the number of genotypes created per\nlocus. This will\
+    \ be used as parameter for a Poisson\ndistribution. Default: 1.0, increase for\
+    \ more alleles/\ngenotypes per locus."
+  synonyms:
+  - --diversity
+  args: !SimpleFlagArg
+    name: DIVERSITY
+  optional: true
+- !Flag
+  description: 'GC content of the generated sequences. Default: 0.5'
+  synonyms:
+  - --gc-content
+  args: !SimpleFlagArg
+    name: GC_CONTENT
+  optional: true
+- !Flag
+  description: "Path to a quality model file (.qmodel.npz). A qmodel\nfile contains\
+    \ a probability vector for each read\nposition. For details, please refer to the\n\
+    documentation."
+  synonyms:
+  - -q
+  - --quality-model
+  args: !SimpleFlagArg
+    name: QUALITY_MODEL
+  optional: true
+- !Flag
+  description: "Write a single-end dataset. Only writes a p5 FASTQ\nfile. Default:\
+    \ False"
+  synonyms:
+  - --single-end
+  - --se
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Overlap factor (between 0 and 1.0) of randomly\ngenerated reads. Default\
+    \ 0"
+  synonyms:
+  - --overlap
+  - --ol
+  args: !SimpleFlagArg
+    name: OVERLAP
+  optional: true
+- !Flag
+  description: "Combine individuals with multiple p7 barcodes in one\noutput file.\
+    \ Default: False"
+  synonyms:
+  - --multiple-p7-barcodes
+  - --combine-p7-bcs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Model to choose coverage values. Can be either\n'poisson' or 'betabinomial'.\
+    \ The Betabinomial model is\nthe default as it can be easily adapted to different\n\
+    coverage profiles using the --BBD-alpha and --BBD-beta\nparameters."
+  synonyms:
+  - --coverage-model
+  args: !SimpleFlagArg
+    name: COVERAGE_MODEL
+  optional: true
+- !Flag
+  description: "Alpha parameter of the Beta-binomial distribution.\nHigher values\
+    \ increase the left tailing of the\ncoverage distribution, if the BBD model is\
+    \ used.\nDefault: 6"
+  synonyms:
+  - --BBD-alpha
+  args: !SimpleFlagArg
+    name: BBD_ALPHA
+  optional: true
+- !Flag
+  description: "Beta parameter of the Beta-binomial distribution.\nHigher values increase\
+    \ the right tailing of the\ncoverage distribution, if the BBD model is used.\n\
+    Default: 2"
+  synonyms:
+  - --BBD-beta
+  args: !SimpleFlagArg
+    name: BBD_BETA
+  optional: true
+- !Flag
+  description: "Maximum number of PCR copies that can be created for\neach finalized\
+    \ (potentially mutated and multiplied)\nread. Default: 3"
+  synonyms:
+  - --max-pcr-copies
+  args: !SimpleFlagArg
+    name: MAX_PCR_COPY_NR
+  optional: true
+- !Flag
+  description: "Maximum coverage for Highly Repetitive Loci (HRLs)\n(per individual).\
+    \ The minimum coverage is determined\nas mean + 2 standard deviations of the main\
+    \ coverage\ngenerating function. Default: 1000"
+  synonyms:
+  - --hrl-max-cov
+  - --hrl-max-coverage
+  args: !SimpleFlagArg
+    name: HRL_MAX_COV
+  optional: true
+- !Flag
+  description: "Sequence of the degenerate base region (DBR) in IUPAC\nambiguity code.\
+    \ Default: 'NNNNNNMMGGACG'. To not\ninclude a DBR sequence use --dbr ''"
+  synonyms:
+  - -d
+  - --dbr
+  args: !SimpleFlagArg
+    name: DBR
+  optional: true
+- !Flag
+  description: "Sequence of the p5 overhang. Default: 'TGCAT'"
+  synonyms:
+  - --p5-overhang
+  args: !SimpleFlagArg
+    name: P5_OVERHANG
+  optional: true
+- !Flag
+  description: "Sequence of the p7 overhang. Default: 'TAC'"
+  synonyms:
+  - --p7-overhang
+  args: !SimpleFlagArg
+    name: P7_OVERHANG
+  optional: true
+- !Flag
+  description: "Sequence of the p5 recognition site. Default: 'ATGCAT'"
+  synonyms:
+  - --p5-rec-site
+  args: !SimpleFlagArg
+    name: P5_REC_SITE
+  optional: true
+- !Flag
+  description: "Sequence of the p7 recognition site. Default: 'GTCA'"
+  synonyms:
+  - --p7-rec-site
+  args: !SimpleFlagArg
+    name: P7_REC_SITE
+  optional: true
+- !Flag
+  description: "Path to barcodes file or predefined barcode set like\n'barcodes',\
+    \ 'small', 'full' or 'full'. Default:\n'barcodes', a generic population. Take\
+    \ a look at the\nrage/barcode_handler/barcodes folder for more\ninformation."
+  synonyms:
+  - -b
+  - --barcodes
+  args: !SimpleFlagArg
+    name: BARCODE_SET
+  optional: true
+- !Flag
+  description: "PROB_DROPOUT PROB_MUTATION\nProbability profile for the distribution\
+    \ of event\ntypes (common, dropout, mutation; in this order).\nExample: ``python\
+    \ ddrage.py --event-probabilities 0.9\n0.05 0.05`` -> common 90%, dropout 5%,\
+    \ mutation 5%\n(Default). Each entry can be given as a float or a\nstring of python\
+    \ code (see example above) which is\nhelpful for small probability values."
+  synonyms:
+  - --event-probabilities
+  args: !SimpleFlagArg
+    name: PROB_COMMON
+  optional: true
+- !Flag
+  description: "PROB_INSERTION PROB_DELETION PROB_P5_NA_ALTERNATIVE PROB_P7_NA_ALTERNATIVE\
+    \ PROB_P5_NA_DROPOUT PROB_P7_NA_DROPOUT\nProbability profile for the distribution\
+    \ of mutation\ntypes (snp, insertion, deletion, p5 na alternative, p7\nna alternative,\
+    \ p5 na dropout, p7 na dropout; in this\norder). Example: ``python ddrage.py --mutation-type-\n\
+    probabilities 0.8999 0.05 0.05 '0.0001*0.001'\n'0.0001*0.05' '0.0001*0.899' '0.0001*0.05'``\
+    \ -> snp\n89.99%, insertion 5%, deletion 5%, p5 na alternative\n0.00001% , p7\
+    \ na alternative 0.0005%, p5 na dropout\n0.00899%, p7 na dropout 0.0005% (Default).\
+    \ Each entry\ncan be given as a float or a string of python code\n(see example\
+    \ above) which is helpful for small\nprobability values."
+  synonyms:
+  - --mutation-type-probabilities
+  args: !SimpleFlagArg
+    name: PROB_SNP
+  optional: true
+- !Flag
+  description: "Probability of mutations being heterozygous. Default:\n0.5"
+  synonyms:
+  - --prob-heterozygous
+  args: !SimpleFlagArg
+    name: PROB_HETEROZYGOCITY
+  optional: true
+- !Flag
+  description: "Probability of incomplete digestion for an individual\nat a locus.\
+    \ Default: 0.1"
+  synonyms:
+  - --prob-incomplete-digestion
+  args: !SimpleFlagArg
+    name: PROB_INCOMPLETE_DIGESTION
+  optional: true
+- !Flag
+  description: "Expected fraction of reads that are being lost in the\nevent of Incomplete\
+    \ Digestion. Default: 0.2"
+  synonyms:
+  - --rate-incomplete-digestion
+  args: !SimpleFlagArg
+    name: RATE_INCOMPLETE_DIGESTION
+  optional: true
+- !Flag
+  description: "Probability that a (potentially mutated and\nmultiplied) read will\
+    \ receive PCR copies. This\ninfluences the simulated PCR copy rate. Default: 0.2"
+  synonyms:
+  - --prob-pcr-copy
+  args: !SimpleFlagArg
+    name: PROB_PCR_COPY
+  optional: true
+- !Flag
+  description: "Probability of PCR copies for HRL reads in relation to\nnormal reads.\
+    \ Default: 0.9, i.e. the probability for a\nPCR copy of a HRL read is prob_pcr_copy\
+    \ * hrl_pcr\ncopies = 0.2 * 0.9 = 0.18"
+  synonyms:
+  - --hrl-pcr-copies
+  args: !SimpleFlagArg
+    name: HRL_PCR_COPIES
+  optional: true
+- !Flag
+  description: "Probability of PCR copies for singleton reads in\nrelation to normal\
+    \ reads. Default: 1/3, i.e. the\nprobability for a PCR copy of a singleton read\
+    \ is\nprob_pcr_copy * singleton_pcr_copies = 0.2 * (1/3) =\n0.0666..."
+  synonyms:
+  - --singleton-pcr-copies
+  args: !SimpleFlagArg
+    name: SINGLETON_PCR_COPIES
+  optional: true
+- !Flag
+  description: "Probability of sequencing substitution errors.\nDefault: 0.01\n"
+  synonyms:
+  - -e
+  - --prob-seq-error
+  args: !SimpleFlagArg
+    name: PROB_SEQ_ERROR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print the version number.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: rage [-h] [--name NAME] [-o OUTPUT_PATH_PREFIX] [-n NR_INDIVIDUALS]\n\
+  \            [-l LOCI] [-r READ_LENGTH] [-c COV] [--hrl-number HRL_NUMBER]\n   \
+  \         [--no-singletons] [--diversity DIVERSITY]\n            [--gc-content GC_CONTENT]\
+  \ [-q QUALITY_MODEL] [--single-end]\n            [--overlap OVERLAP] [--multiple-p7-barcodes]\n\
+  \            [--coverage-model COVERAGE_MODEL] [--BBD-alpha BBD_ALPHA]\n       \
+  \     [--BBD-beta BBD_BETA] [--max-pcr-copies MAX_PCR_COPY_NR]\n            [--hrl-max-cov\
+  \ HRL_MAX_COV] [-d DBR] [--p5-overhang P5_OVERHANG]\n            [--p7-overhang\
+  \ P7_OVERHANG] [--p5-rec-site P5_REC_SITE]\n            [--p7-rec-site P7_REC_SITE]\
+  \ [-b BARCODE_SET]\n            [--event-probabilities PROB_COMMON PROB_DROPOUT\
+  \ PROB_MUTATION]\n            [--mutation-type-probabilities PROB_SNP PROB_INSERTION\
+  \ PROB_DELETION PROB_P5_NA_ALTERNATIVE PROB_P7_NA_ALTERNATIVE PROB_P5_NA_DROPOUT\
+  \ PROB_P7_NA_DROPOUT]\n            [--prob-heterozygous PROB_HETEROZYGOCITY]\n \
+  \           [--prob-incomplete-digestion PROB_INCOMPLETE_DIGESTION]\n          \
+  \  [--rate-incomplete-digestion RATE_INCOMPLETE_DIGESTION]\n            [--prob-pcr-copy\
+  \ PROB_PCR_COPY] [--hrl-pcr-copies HRL_PCR_COPIES]\n            [--singleton-pcr-copies\
+  \ SINGLETON_PCR_COPIES] [-e PROB_SEQ_ERROR]\n            [-v] [-z] [--get-barcodes]\
+  \ [--DEBUG] [--version]\n\nRAGE -- the ddRAD generator -- simulates ddRADseq\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -v, --verbose         Increase verbosity of output. -v: Show progress of\n   \
+  \                     simulation. -vv: Print used parameters after\n           \
+  \             simulation. -vvv: Show details for each simulated\n              \
+  \          locus.\n  -z, --zip             Write output as gzipped fastq.\n  --get-barcodes\
+  \        Write copies of the default barcode files into the\n                  \
+  \      current folder.\n  --DEBUG               Set debug-friendly values for the\
+  \ data set, i.e. all\n                        mutation events and mutation types\
+  \ are equally\n                        probable.\n  --version             Print\
+  \ the version number.\n\nNaming Parameters:\n  --name NAME           Name for the\
+  \ data set that will be used in the file\n                        name. If none\
+  \ is given, the name 'RAGEdataset' will be\n                        used.\n  -o\
+  \ OUTPUT_PATH_PREFIX, --output OUTPUT_PATH_PREFIX\n                        Prefix\
+  \ of the output path. At this point a folder will\n                        be created\
+  \ that contains all output files created by\n                        ddRAGE.\n\n\
+  Dataset Parameters:\n  -n NR_INDIVIDUALS, --nr-individuals NR_INDIVIDUALS\n    \
+  \                    Number of individuals in the result. Default: 3\n  -l LOCI,\
+  \ --loci LOCI  Number of loci for which reads will be created or path\n        \
+  \                to a FASTA file with predefined fragments. Default: 3\n  -r READ_LENGTH,\
+  \ --read-length READ_LENGTH\n                        Total sequence length of the\
+  \ reads (including\n                        overhang, barcodes, etc.). The officially\
+  \ supported\n                        and well tested range is 50-500bp but longer\
+  \ or\n                        shorter reads are also possible. Default: 100\n  -c\
+  \ COV, --coverage COV\n                        Expected coverage that will be created\
+  \ by normal\n                        duplication and mutations. The exact coverage\
+  \ value is\n                        determined using a probabilistic process. Default:\
+  \ 30\n  --hrl-number HRL_NUMBER\n                        Number of Highly Repetitive\
+  \ Loci (HRLs) that will be\n                        added, given as fraction of\
+  \ total locus size. Example:\n                        ``-l 100 --hrl-number 0.1``\
+  \ for 10 HRLs. Default: 0.05\n  --no-singletons       Disable generation of singleton\
+  \ reads.\n  --diversity DIVERSITY\n                        Parameter for the number\
+  \ of genotypes created per\n                        locus. This will be used as\
+  \ parameter for a Poisson\n                        distribution. Default: 1.0, increase\
+  \ for more alleles/\n                        genotypes per locus.\n  --gc-content\
+  \ GC_CONTENT\n                        GC content of the generated sequences. Default:\
+  \ 0.5\n  -q QUALITY_MODEL, --quality-model QUALITY_MODEL\n                     \
+  \   Path to a quality model file (.qmodel.npz). A qmodel\n                     \
+  \   file contains a probability vector for each read\n                        position.\
+  \ For details, please refer to the\n                        documentation.\n  --single-end,\
+  \ --se    Write a single-end dataset. Only writes a p5 FASTQ\n                 \
+  \       file. Default: False\n  --overlap OVERLAP, --ol OVERLAP\n              \
+  \          Overlap factor (between 0 and 1.0) of randomly\n                    \
+  \    generated reads. Default 0\n  --multiple-p7-barcodes, --combine-p7-bcs\n  \
+  \                      Combine individuals with multiple p7 barcodes in one\n  \
+  \                      output file. Default: False\n\nCoverage Model Parameters:\n\
+  \  --coverage-model COVERAGE_MODEL\n                        Model to choose coverage\
+  \ values. Can be either\n                        'poisson' or 'betabinomial'. The\
+  \ Betabinomial model is\n                        the default as it can be easily\
+  \ adapted to different\n                        coverage profiles using the --BBD-alpha\
+  \ and --BBD-beta\n                        parameters.\n  --BBD-alpha BBD_ALPHA\n\
+  \                        Alpha parameter of the Beta-binomial distribution.\n  \
+  \                      Higher values increase the left tailing of the\n        \
+  \                coverage distribution, if the BBD model is used.\n            \
+  \            Default: 6\n  --BBD-beta BBD_BETA   Beta parameter of the Beta-binomial\
+  \ distribution.\n                        Higher values increase the right tailing\
+  \ of the\n                        coverage distribution, if the BBD model is used.\n\
+  \                        Default: 2\n  --max-pcr-copies MAX_PCR_COPY_NR\n      \
+  \                  Maximum number of PCR copies that can be created for\n      \
+  \                  each finalized (potentially mutated and multiplied)\n       \
+  \                 read. Default: 3\n  --hrl-max-cov HRL_MAX_COV, --hrl-max-coverage\
+  \ HRL_MAX_COV\n                        Maximum coverage for Highly Repetitive Loci\
+  \ (HRLs)\n                        (per individual). The minimum coverage is determined\n\
+  \                        as mean + 2 standard deviations of the main coverage\n\
+  \                        generating function. Default: 1000\n\nRead Sequences:\n\
+  \  -d DBR, --dbr DBR     Sequence of the degenerate base region (DBR) in IUPAC\n\
+  \                        ambiguity code. Default: 'NNNNNNMMGGACG'. To not\n    \
+  \                    include a DBR sequence use --dbr ''\n  --p5-overhang P5_OVERHANG\n\
+  \                        Sequence of the p5 overhang. Default: 'TGCAT'\n  --p7-overhang\
+  \ P7_OVERHANG\n                        Sequence of the p7 overhang. Default: 'TAC'\n\
+  \  --p5-rec-site P5_REC_SITE\n                        Sequence of the p5 recognition\
+  \ site. Default: 'ATGCAT'\n  --p7-rec-site P7_REC_SITE\n                       \
+  \ Sequence of the p7 recognition site. Default: 'GTCA'\n  -b BARCODE_SET, --barcodes\
+  \ BARCODE_SET\n                        Path to barcodes file or predefined barcode\
+  \ set like\n                        'barcodes', 'small', 'full' or 'full'. Default:\n\
+  \                        'barcodes', a generic population. Take a look at the\n\
+  \                        rage/barcode_handler/barcodes folder for more\n       \
+  \                 information.\n\nSimulation Probabilities:\n  --event-probabilities\
+  \ PROB_COMMON PROB_DROPOUT PROB_MUTATION\n                        Probability profile\
+  \ for the distribution of event\n                        types (common, dropout,\
+  \ mutation; in this order).\n                        Example: ``python ddrage.py\
+  \ --event-probabilities 0.9\n                        0.05 0.05`` -> common 90%,\
+  \ dropout 5%, mutation 5%\n                        (Default). Each entry can be\
+  \ given as a float or a\n                        string of python code (see example\
+  \ above) which is\n                        helpful for small probability values.\n\
+  \  --mutation-type-probabilities PROB_SNP PROB_INSERTION PROB_DELETION PROB_P5_NA_ALTERNATIVE\
+  \ PROB_P7_NA_ALTERNATIVE PROB_P5_NA_DROPOUT PROB_P7_NA_DROPOUT\n               \
+  \         Probability profile for the distribution of mutation\n               \
+  \         types (snp, insertion, deletion, p5 na alternative, p7\n             \
+  \           na alternative, p5 na dropout, p7 na dropout; in this\n            \
+  \            order). Example: ``python ddrage.py --mutation-type-\n            \
+  \            probabilities 0.8999 0.05 0.05 '0.0001*0.001'\n                   \
+  \     '0.0001*0.05' '0.0001*0.899' '0.0001*0.05'`` -> snp\n                    \
+  \    89.99%, insertion 5%, deletion 5%, p5 na alternative\n                    \
+  \    0.00001% , p7 na alternative 0.0005%, p5 na dropout\n                     \
+  \   0.00899%, p7 na dropout 0.0005% (Default). Each entry\n                    \
+  \    can be given as a float or a string of python code\n                      \
+  \  (see example above) which is helpful for small\n                        probability\
+  \ values.\n  --prob-heterozygous PROB_HETEROZYGOCITY\n                        Probability\
+  \ of mutations being heterozygous. Default:\n                        0.5\n  --prob-incomplete-digestion\
+  \ PROB_INCOMPLETE_DIGESTION\n                        Probability of incomplete digestion\
+  \ for an individual\n                        at a locus. Default: 0.1\n  --rate-incomplete-digestion\
+  \ RATE_INCOMPLETE_DIGESTION\n                        Expected fraction of reads\
+  \ that are being lost in the\n                        event of Incomplete Digestion.\
+  \ Default: 0.2\n  --prob-pcr-copy PROB_PCR_COPY\n                        Probability\
+  \ that a (potentially mutated and\n                        multiplied) read will\
+  \ receive PCR copies. This\n                        influences the simulated PCR\
+  \ copy rate. Default: 0.2\n  --hrl-pcr-copies HRL_PCR_COPIES\n                 \
+  \       Probability of PCR copies for HRL reads in relation to\n               \
+  \         normal reads. Default: 0.9, i.e. the probability for a\n             \
+  \           PCR copy of a HRL read is prob_pcr_copy * hrl_pcr\n                \
+  \        copies = 0.2 * 0.9 = 0.18\n  --singleton-pcr-copies SINGLETON_PCR_COPIES\n\
+  \                        Probability of PCR copies for singleton reads in\n    \
+  \                    relation to normal reads. Default: 1/3, i.e. the\n        \
+  \                probability for a PCR copy of a singleton read is\n           \
+  \             prob_pcr_copy * singleton_pcr_copies = 0.2 * (1/3) =\n           \
+  \             0.0666...\n  -e PROB_SEQ_ERROR, --prob-seq-error PROB_SEQ_ERROR\n\
+  \                        Probability of sequencing substitution errors.\n      \
+  \                  Default: 0.01\n"
+generated_using:
+- --help

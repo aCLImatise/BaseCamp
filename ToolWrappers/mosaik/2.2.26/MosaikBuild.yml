@@ -1,0 +1,192 @@
+!Command
+command:
+- MosaikBuild
+positional: []
+named:
+- !Flag
+  description: the FASTA reference sequences file
+  synonyms:
+  - -fr
+  args: !SimpleFlagArg
+    name: FASTA reference filename
+  optional: true
+- !Flag
+  description: the genome assembly ID. e.g. HG18
+  synonyms:
+  - -ga
+  args: !SimpleFlagArg
+    name: genome assembly ID
+  optional: true
+- !Flag
+  description: the output reference file
+  synonyms:
+  - -oa
+  args: !SimpleFlagArg
+    name: MOSAIK reference filename
+  optional: true
+- !Flag
+  description: the species name. e.g. "Homo sapiens"
+  synonyms:
+  - -sn
+  args: !SimpleFlagArg
+    name: species name
+  optional: true
+- !Flag
+  description: the URI (e.g. URL or URN)
+  synonyms:
+  - -uri
+  args: !SimpleFlagArg
+    name: uniform resource ID
+  optional: true
+- !Flag
+  description: the FASTA base qualities file
+  synonyms:
+  - -fq
+  args: !SimpleFlagArg
+    name: FASTA quality filename
+  optional: true
+- !Flag
+  description: the FASTA 2nd mate
+  synonyms:
+  - -fr2
+  args: !SimpleFlagArg
+    name: FASTA read filename
+  optional: true
+- !Flag
+  description: the FASTA BQ 2nd mate
+  synonyms:
+  - -fq2
+  args: !SimpleFlagArg
+    name: FASTA quality filename
+  optional: true
+- !Flag
+  description: assigns a quality for each base
+  synonyms:
+  - -assignQual
+  args: !SimpleFlagArg
+    name: base quality
+  optional: true
+- !Flag
+  description: the FASTQ 2nd mate
+  synonyms:
+  - -q2
+  args: !SimpleFlagArg
+    name: FASTQ filename or directory
+  optional: true
+- !Flag
+  description: the desired lanes e.g 5678 for lanes 5-8
+  synonyms:
+  - -il
+  args: !SimpleFlagArg
+    name: lanes
+  optional: true
+- !Flag
+  description: splits the read into two mates
+  synonyms:
+  - -split
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read group description
+  synonyms:
+  - -ds
+  args: !SimpleFlagArg
+    name: description
+  optional: true
+- !Flag
+  description: read group ID. e.g. SRR009060
+  synonyms:
+  - -id
+  args: !SimpleFlagArg
+    name: identifier
+  optional: true
+- !Flag
+  description: library name. e.g. g1k-sc-NA18944-JPT-1
+  synonyms:
+  - -ln
+  args: !SimpleFlagArg
+    name: library name
+  optional: true
+- !Flag
+  description: median fragment length. e.g. 150
+  synonyms:
+  - -mfl
+  args: !SimpleFlagArg
+    name: median fragment length
+  optional: true
+- !Flag
+  description: <run name & lane>             the platform unit. e.g. IL12_490_5
+  synonyms:
+  - -pu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sample name. e.g. NA12878
+  synonyms:
+  - -sam
+  args: !SimpleFlagArg
+    name: sample name
+  optional: true
+- !Flag
+  description: "sets the sequencing technology: '454',\n'helicos', 'illumina', 'illumina_long',\n\
+    'sanger' or 'solid'"
+  synonyms:
+  - -st
+  args: !SimpleFlagArg
+    name: sequencing technology
+  optional: true
+- !Flag
+  description: '<# of beginning bases>        trims the first # of bases'
+  synonyms:
+  - -tp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<# of end bases>              trims the last # of bases'
+  synonyms:
+  - -ts
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Description: converts external read formats to native MOSAIK formats.\n\
+  \nUsage: \e[1mMosaikBuild\e[0m [OPTIONS] [-out|-oa] <filename>\n\n\e[1;31mConversion\
+  \ (Reference Sequence):\n\e[0m  -cs                               translate reference\
+  \ to colorspace\n  -fr <FASTA reference filename>    the FASTA reference sequences\
+  \ file\n  -ga <genome assembly ID>          the genome assembly ID. e.g. HG18\n\
+  \  -oa <MOSAIK reference filename>   the output reference file\n  -sn <species name>\
+  \                the species name. e.g. \"Homo sapiens\"\n  -uri <uniform resource\
+  \ ID>        the URI (e.g. URL or URN)\n\n\e[1;31mConversion (FASTA):\n\e[0m  -fr\
+  \ <FASTA read filename>         the FASTA reads file\n  -fq <FASTA quality filename>\
+  \      the FASTA base qualities file\n  -fr2 <FASTA read filename>        the FASTA\
+  \ 2nd mate\n  -fq2 <FASTA quality filename>     the FASTA BQ 2nd mate\n  -assignQual\
+  \ <base quality>        assigns a quality for each base\n\n\e[1;31mConversion (FASTQ):\n\
+  \e[0m  -q <FASTQ filename or directory>  the FASTQ file or directory\n  -q2 <FASTQ\
+  \ filename or directory> the FASTQ 2nd mate\n\n\e[1;31mConversion (Short Read Format):\n\
+  \e[0m  -srf <SRF filename or directory>  the SRF file or directory\n\n\e[1;31mConversion\
+  \ (Illumina Bustard):\n\e[0m  -bd <Bustard directory>           the Illumina Bustard\
+  \ directory\n  -il <lanes>                       the desired lanes e.g 5678 for\
+  \ lanes 5-8\n  -split                            splits the read into two mates\n\
+  \n\e[1;31mConversion (Illumina Gerald):\n\e[0m  -gd <Gerald directory>         \
+  \   the Illumina Gerald directory\n  -il <lanes>                       the desired\
+  \ lanes e.g 5678 for lanes 5-8\n\n\e[1;31mRead Archive Metadata:\n\e[0m  -cn <center\
+  \ name>                 sequencing center name. e.g. broad\n  -ds <description>\
+  \                 read group description\n  -id <identifier>                  read\
+  \ group ID. e.g. SRR009060\n  -ln <library name>                library name. e.g.\
+  \ g1k-sc-NA18944-JPT-1\n  -mfl <median fragment length>     median fragment length.\
+  \ e.g. 150\n  -pu <run name & lane>             the platform unit. e.g. IL12_490_5\n\
+  \  -sam <sample name>                sample name. e.g. NA12878\n  -st <sequencing\
+  \ technology>       sets the sequencing technology: '454',\n                   \
+  \                    'helicos', 'illumina', 'illumina_long',\n                 \
+  \                      'sanger' or 'solid'\n\n\e[1;31mRead Archive Options:\n\e\
+  [0m  -out <MOSAIK read filename>       the output read file\n  -tp <# of beginning\
+  \ bases>        trims the first # of bases\n  -ts <# of end bases>             \
+  \ trims the last # of bases\n\n\e[1;31mInterface Options:\n\e[0m  -quiet       \
+  \                     disable progress bars and counters\n\n\e[1;31mHelp:\n\e[0m\
+  \  --help, -h                        shows this help text\n"
+generated_using:
+- --help

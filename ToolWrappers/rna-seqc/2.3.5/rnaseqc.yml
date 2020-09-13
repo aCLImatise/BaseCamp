@@ -1,0 +1,274 @@
+!Command
+command:
+- rnaseqc
+positional:
+- !Positional
+  description: "The input GTF file containing features\nto check the bam against"
+  position: 0
+  name: gtf
+  optional: false
+- !Positional
+  description: "The input SAM/BAM file containing reads\nto process"
+  position: 1
+  name: bam
+  optional: false
+- !Positional
+  description: Output directory
+  position: 2
+  name: output
+  optional: false
+- !Positional
+  description: -u, --unpaired                    Allow unpaired reads to be quantified.
+  position: 3
+  name: counts
+  optional: false
+named:
+- !Flag
+  description: "[sample], --sample=[sample]     The name of the current sample. Default:\n\
+    The bam's filename"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[BEDFILE]                   Optional input BED file containing\n\
+    non-overlapping exons used for fragment\nsize calculations"
+  synonyms:
+  - --bed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[fasta]                   Optional input FASTA/FASTQ file\ncontaining\
+    \ the reference sequence used\nfor parsing CRAM files"
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[DISTANCE]    Set the maximum accepted distance\nbetween read mates.\
+    \ Mates beyond this\ndistance will be counted as chimeric\npairs. Default: 2000000\
+    \ [bp]"
+  synonyms:
+  - --chimeric-distance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[SAMPLES]      Set the number of samples to take when\ncomputing\
+    \ fragment sizes. Requires the\n--bed argument. Default: 1000000"
+  synonyms:
+  - --fragment-samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[QUALITY],'
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[QUALITY]       Set the lower bound on read quality for\nexon coverage\
+    \ counting. Reads below this\nnumber are excluded from coverage\nmetrics. Default:\
+    \ 255"
+  synonyms:
+  - --mapping-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[MISMATCHES]      Set the maximum number of allowed\nmismatches between\
+    \ a read and the\nreference sequence. Reads with more than\nthis number of mismatches\
+    \ are excluded\nfrom coverage metrics. Default: 6"
+  synonyms:
+  - --base-mismatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[OFFSET]                 Set the offset into the gene for the 3'\n\
+    and 5' windows in bias calculation. A\npositive value shifts the 3' and 5'\nwindows\
+    \ towards eachother, while a\nnegative value shifts them apart.\nDefault: 150\
+    \ [bp]"
+  synonyms:
+  - --offset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[SIZE]              Set the size of the 3' and 5' windows in\nbias\
+    \ calculation. Default: 100 [bp]"
+  synonyms:
+  - --window-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[LENGTH]            Set the minimum size of a gene for bias\ncalculation.\
+    \ Genes below this size are\nignored in the calculation. Default: 600\n[bp]"
+  synonyms:
+  - --gene-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use legacy counting rules. Gene and exon\ncounts match output of RNA-SeQC\
+    \ 1.1.9"
+  synonyms:
+  - --legacy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[stranded]             Use strand-specific metrics. Only\nfeatures\
+    \ on the same strand of a read\nwill be considered. Allowed values are\n'RF',\
+    \ 'rf', 'FR', and 'fr'"
+  synonyms:
+  - --stranded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Give some feedback about what's going\non. Supply this argument twice\
+    \ for\nprogress updates while parsing the bam"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[TAG...], --tag=[TAG...]        Filter out reads with the specified
+    tag.'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[TAG]              Reads maked with the specified tag will\nbe labeled\
+    \ as Chimeric. Defaults to 'mC'\nfor STAR"
+  synonyms:
+  - --chimeric-tag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Exclude chimeric reads from the read
+  synonyms:
+  - --exclude-chimeric
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output gene RPKM values instead of TPMs
+  synonyms:
+  - --rpkm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If this flag is provided, coverage\nstatistics for each transcript\
+    \ will be\nwritten to a table. Otherwise, only\nsummary coverage statistics are\n\
+    generated and added to the metrics table"
+  synonyms:
+  - --coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[SIZE]            Sets how many bases at both ends of a\ntranscript\
+    \ are masked out when computing\nper-base exon coverage. Default: 500bp"
+  synonyms:
+  - --coverage-mask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[threshold],'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[threshold] Number of counts on a gene to consider\nthe gene 'detected'.\
+    \ Additionally, genes\nbelow this limit are excluded from 3'\nbias computation.\
+    \ Default: 5 reads"
+  synonyms:
+  - --detection-threshold
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this message and quit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display the version and quit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "  rnaseqc [gtf] [bam] [output] {OPTIONS}\n\n    RNASeQC 2.3.5\n\n  OPTIONS:\n\
+  \n      -h, --help                        Display this message and quit\n      --version\
+  \                         Display the version and quit\n      gtf              \
+  \                 The input GTF file containing features\n                     \
+  \                   to check the bam against\n      bam                        \
+  \       The input SAM/BAM file containing reads\n                              \
+  \          to process\n      output                            Output directory\n\
+  \      -s[sample], --sample=[sample]     The name of the current sample. Default:\n\
+  \                                        The bam's filename\n      --bed=[BEDFILE]\
+  \                   Optional input BED file containing\n                       \
+  \                 non-overlapping exons used for fragment\n                    \
+  \                    size calculations\n      --fasta=[fasta]                  \
+  \ Optional input FASTA/FASTQ file\n                                        containing\
+  \ the reference sequence used\n                                        for parsing\
+  \ CRAM files\n      --chimeric-distance=[DISTANCE]    Set the maximum accepted distance\n\
+  \                                        between read mates. Mates beyond this\n\
+  \                                        distance will be counted as chimeric\n\
+  \                                        pairs. Default: 2000000 [bp]\n      --fragment-samples=[SAMPLES]\
+  \      Set the number of samples to take when\n                                \
+  \        computing fragment sizes. Requires the\n                              \
+  \          --bed argument. Default: 1000000\n      -q[QUALITY],\n      --mapping-quality=[QUALITY]\
+  \       Set the lower bound on read quality for\n                              \
+  \          exon coverage counting. Reads below this\n                          \
+  \              number are excluded from coverage\n                             \
+  \           metrics. Default: 255\n      --base-mismatch=[MISMATCHES]      Set the\
+  \ maximum number of allowed\n                                        mismatches\
+  \ between a read and the\n                                        reference sequence.\
+  \ Reads with more than\n                                        this number of mismatches\
+  \ are excluded\n                                        from coverage metrics. Default:\
+  \ 6\n      --offset=[OFFSET]                 Set the offset into the gene for the\
+  \ 3'\n                                        and 5' windows in bias calculation.\
+  \ A\n                                        positive value shifts the 3' and 5'\n\
+  \                                        windows towards eachother, while a\n  \
+  \                                      negative value shifts them apart.\n     \
+  \                                   Default: 150 [bp]\n      --window-size=[SIZE]\
+  \              Set the size of the 3' and 5' windows in\n                      \
+  \                  bias calculation. Default: 100 [bp]\n      --gene-length=[LENGTH]\
+  \            Set the minimum size of a gene for bias\n                         \
+  \               calculation. Genes below this size are\n                       \
+  \                 ignored in the calculation. Default: 600\n                   \
+  \                     [bp]\n      --legacy                          Use legacy counting\
+  \ rules. Gene and exon\n                                        counts match output\
+  \ of RNA-SeQC 1.1.9\n      --stranded=[stranded]             Use strand-specific\
+  \ metrics. Only\n                                        features on the same strand\
+  \ of a read\n                                        will be considered. Allowed\
+  \ values are\n                                        'RF', 'rf', 'FR', and 'fr'\n\
+  \      -v, --verbose                     Give some feedback about what's going\n\
+  \                                        on. Supply this argument twice for\n  \
+  \                                      progress updates while parsing the bam\n\
+  \      -t[TAG...], --tag=[TAG...]        Filter out reads with the specified tag.\n\
+  \      --chimeric-tag=[TAG]              Reads maked with the specified tag will\n\
+  \                                        be labeled as Chimeric. Defaults to 'mC'\n\
+  \                                        for STAR\n      --exclude-chimeric    \
+  \            Exclude chimeric reads from the read\n                            \
+  \            counts\n      -u, --unpaired                    Allow unpaired reads\
+  \ to be quantified.\n                                        Required for single-end\
+  \ libraries\n      --rpkm                            Output gene RPKM values instead\
+  \ of TPMs\n      --coverage                        If this flag is provided, coverage\n\
+  \                                        statistics for each transcript will be\n\
+  \                                        written to a table. Otherwise, only\n \
+  \                                       summary coverage statistics are\n      \
+  \                                  generated and added to the metrics table\n  \
+  \    --coverage-mask=[SIZE]            Sets how many bases at both ends of a\n \
+  \                                       transcript are masked out when computing\n\
+  \                                        per-base exon coverage. Default: 500bp\n\
+  \      -d[threshold],\n      --detection-threshold=[threshold] Number of counts\
+  \ on a gene to consider\n                                        the gene 'detected'.\
+  \ Additionally, genes\n                                        below this limit\
+  \ are excluded from 3'\n                                        bias computation.\
+  \ Default: 5 reads\n      \"--\" can be used to terminate flag options and force\
+  \ all following\n      arguments to be treated as positional options\n\n"
+generated_using:
+- --help

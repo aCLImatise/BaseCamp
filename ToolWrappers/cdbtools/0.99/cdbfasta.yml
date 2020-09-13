@@ -1,0 +1,180 @@
+!Command
+command:
+- cdbfasta
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Invalid
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: fastafile
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: argument
+  optional: false
+named:
+- !Flag
+  description: "index file will be named <index_file>; if not given,\nthe index filename\
+    \ is database name plus the suffix '.cidx'"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: the
+  optional: true
+- !Flag
+  description: "a string of characters at the beginning of line\nmarking the start\
+    \ of a record (default: '>')"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: record_delimiter
+  optional: true
+- !Flag
+  description: "input as fastq format, i.e. with '@' as record delimiter\nand with\
+    \ records expected to have at least 4 lines"
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: treat
+  optional: true
+- !Flag
+  description: "is compressed into the file <compressed_db>\nbefore indexing (<fastafile>\
+    \ can be \"-\" or \"stdin\"\nin order to get the input records from stdin)"
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: database
+  optional: true
+- !Flag
+  description: "extraneous characters from *around* the space delimited\ntokens, for\
+    \ the multikey options below (-m,-n,-f);\nDefault <stripendchars> set is: '\"\
+    ,`.(){}/[]!:;~|><+-"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: strip
+  optional: true
+- !Flag
+  description: "(\"multi-key\" option) create hash entries pointing to\nthe same record\
+    \ for all tokens found in\nthe defline"
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "same as -m, but only takes the first <numkeys>\ntokens from the defline"
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: numkeys
+  optional: true
+- !Flag
+  description: "*space* delimited tokens (fields) in the defline as given\nby LIST\
+    \ of fields or fields ranges (the same syntax as UNIX 'cut')"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: indexes
+  optional: true
+- !Flag
+  description: "exclude from indexing all the words found\nin the file <stopwordslist>\
+    \ (for options -m, -n and -k)"
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: stopwordslist
+  optional: true
+- !Flag
+  description: "case insensitive indexing (i.e. create additional keys for\nall-lowercase\
+    \ tokens used for indexing from the defline"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: do
+  optional: true
+- !Flag
+  description: "deflines in the format: db1|accession1|db2|accession2|...,\nonly the\
+    \ first db-accession pair ('db1|accession1') is taken as key"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: for
+  optional: true
+- !Flag
+  description: ", but also subsequent db|accession constructs are indexed,\nalong\
+    \ with the full (default) token; additionally,\nall nrdb concatenated accessions\
+    \ found in the defline\nare parsed and stored (assuming 0x01 or '^|^' as separators)"
+  synonyms:
+  - -C
+  - -c
+  args: !SimpleFlagArg
+    name: like
+  optional: true
+- !Flag
+  description: "mode: like -C option, but indexes the 'accession'\npart for all 'db|accession'\
+    \ constructs found"
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: accession
+  optional: true
+- !Flag
+  description: "(both accessions and 'db|accession'\nconstructs are used as keys"
+  synonyms:
+  - -A
+  - -a
+  - -C
+  args: !SimpleFlagArg
+    name: like
+  optional: true
+- !Flag
+  description: program version and exit
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: show
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n  cdbfasta <fastafile> [-o <index_file>] [-r <record_delimiter>]\n\
+  \   [-z <compressed_db>] [-i] [-m|-n <numkeys>|-f<LIST>]|-c|-C]\n    [-w <stopwords_list>]\
+  \ [-s <stripendchars>] [-v]\n   \n   Creates an index file for records from a multi-fasta\
+  \ file.\n   By default (without -m/-n/-c/-C option), only the first \n   space-delimited\
+  \ token from the defline is used as a key.\n  \n   <fastafile> is the multi-fasta\
+  \ file to index; \n   -o the index file will be named <index_file>; if not given,\n\
+  \      the index filename is database name plus the suffix '.cidx'\n   -r <record_delimiter>\
+  \ a string of characters at the beginning of line\n      marking the start of a\
+  \ record (default: '>')\n   -Q treat input as fastq format, i.e. with '@' as record\
+  \ delimiter\n      and with records expected to have at least 4 lines\n   -z database\
+  \ is compressed into the file <compressed_db>\n      before indexing (<fastafile>\
+  \ can be \"-\" or \"stdin\" \n      in order to get the input records from stdin)\n\
+  \   -s strip extraneous characters from *around* the space delimited\n      tokens,\
+  \ for the multikey options below (-m,-n,-f);\n      Default <stripendchars> set\
+  \ is: '\",`.(){}/[]!:;~|><+-\n   -m (\"multi-key\" option) create hash entries pointing\
+  \ to \n      the same record for all tokens found in\n      the defline\n   -n <numkeys>\
+  \ same as -m, but only takes the first <numkeys>\n      tokens from the defline\n\
+  \   -f indexes *space* delimited tokens (fields) in the defline as given\n     \
+  \ by LIST of fields or fields ranges (the same syntax as UNIX 'cut')\n   -w <stopwordslist>\
+  \ exclude from indexing all the words found\n      in the file <stopwordslist> (for\
+  \ options -m, -n and -k)\n   -i do case insensitive indexing (i.e. create additional\
+  \ keys for \n      all-lowercase tokens used for indexing from the defline \n  \
+  \ -c for deflines in the format: db1|accession1|db2|accession2|...,\n      only\
+  \ the first db-accession pair ('db1|accession1') is taken as key\n   -C like -c,\
+  \ but also subsequent db|accession constructs are indexed,\n      along with the\
+  \ full (default) token; additionally,\n      all nrdb concatenated accessions found\
+  \ in the defline \n      are parsed and stored (assuming 0x01 or '^|^' as separators)\n\
+  \   -a accession mode: like -C option, but indexes the 'accession'\n      part for\
+  \ all 'db|accession' constructs found\n   -A like -a and -C together (both accessions\
+  \ and 'db|accession'\n      constructs are used as keys\n   -v show program version\
+  \ and exit\n Invalid argument: --help\n"
+generated_using:
+- --help

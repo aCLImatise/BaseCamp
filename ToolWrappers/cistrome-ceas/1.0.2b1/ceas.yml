@@ -1,0 +1,212 @@
+!Command
+command:
+- ceas
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: 'input files '
+  optional: false
+named:
+- !Flag
+  description: BED file of ChIP regions.
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: "WIG file for either wig profiling or genome background\nannotation.\
+    \ WARNING: --bg flag must be set for genome\nbackground re-annotation."
+  synonyms:
+  - -w
+  - --wig
+  args: !SimpleFlagArg
+    name: WIG
+  optional: true
+- !Flag
+  description: "BED file of extra regions of interest (eg, non-coding\nregions)"
+  synonyms:
+  - -e
+  - --ebed
+  args: !SimpleFlagArg
+    name: EBED
+  optional: true
+- !Flag
+  description: "Gene annotation table (eg, a refGene table in sqlite3\ndb format provided\
+    \ through the CEAS web,\nhttp://liulab.dfci.harvard.edu/CEAS/download.html)."
+  synonyms:
+  - -g
+  - --gt
+  args: !SimpleFlagArg
+    name: GDB
+  optional: true
+- !Flag
+  description: "Experiment name. This will be used to name the output\nfiles. If an\
+    \ experiment name is not given, the stem of\nthe input BED file name will be used\
+    \ instead (eg, if\n'peaks.bed', 'peaks' will be used as a name.)"
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Promoter (also dowsntream) sizes for ChIP region\nannotation. Comma-separated\
+    \ three values or a single\nvalue can be given. If a single value is given, it\n\
+    will be segmented into three equal fractions (ie, 3000\nis equivalent to 1000,2000,3000),\
+    \ DEFAULT:\n1000,2000,3000. WARNING: Values > 10000bp are\nautomatically set to\
+    \ 10000bp."
+  synonyms:
+  - --sizes
+  args: !SimpleFlagArg
+    name: SIZES
+  optional: true
+- !Flag
+  description: "Bidirectional-promoter sizes for ChIP region\nannotation Comma-separated\
+    \ two values or a single\nvalue can be given. If a single value is given, it\n\
+    will be segmented into two equal fractions (ie, 5000\nis equivalent to 2500,5000)\
+    \ DEFAULT: 2500,5000bp.\nWARNING: Values > 20000bp are automatically set to\n\
+    20000bp."
+  synonyms:
+  - --bisizes
+  args: !SimpleFlagArg
+    name: BISIZES
+  optional: true
+- !Flag
+  description: "Run genome BG annotation again. WARNING: This flag is\neffective only\
+    \ if a WIG file is given through -w\n(--wig). Otherwise, ignored."
+  synonyms:
+  - --bg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Span from TSS and TTS in the gene-centered annotation.\nChIP regions\
+    \ within this range from TSS and TTS are\nconsidered when calculating the coverage\
+    \ rates in\npromoter and downstream, DEFAULT=3000bp"
+  synonyms:
+  - --span
+  args: !SimpleFlagArg
+    name: SPAN
+  optional: true
+- !Flag
+  description: "Wig profiling resolution, DEFAULT: 50bp. WARNING:\nValue smaller than\
+    \ the wig interval (resolution) may\ncause aliasing error."
+  synonyms:
+  - --pf-res
+  args: !SimpleFlagArg
+    name: PF_RES
+  optional: true
+- !Flag
+  description: "Relative distance to TSS/TTS in wig profiling,\nDEFAULT: 3000bp"
+  synonyms:
+  - --rel-dist
+  args: !SimpleFlagArg
+    name: REL_DIST
+  optional: true
+- !Flag
+  description: "Gene-groups of particular interest in wig profiling.\nEach gene group\
+    \ file must have gene names in the 1st\ncolumn. The file names are separated by\
+    \ commas w/ no\nspace (eg, --gn-groups=top10.txt,bottom10.txt)"
+  synonyms:
+  - --gn-groups
+  args: !SimpleFlagArg
+    name: GN_GROUPS
+  optional: true
+- !Flag
+  description: "The names of the gene groups in --gn-groups. The gene\ngroup names\
+    \ are separated by commas. (eg, --gn-group-\nnames='top 10%,bottom 10%'). These\
+    \ group names appear\nin the legends of the wig profiling plots. If no group\n\
+    names given, the groups are represented as 'Group 1,\nGroup2,...Group n'."
+  synonyms:
+  - --gn-group-names
+  args: !SimpleFlagArg
+    name: GN_NAMES
+  optional: true
+- !Flag
+  description: "Whether or not use the 'name2' column of the gene\nannotation table\
+    \ when reading the gene IDs in the\nfiles given through --gn-groups. This flag\
+    \ is\nmeaningful only with --gn-groups."
+  synonyms:
+  - --gname2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Whether to save the raw profiles of near TSS, TTS, and\ngene body.\
+    \ The file names have a suffix of 'TSS',\n'TTS', and 'gene' after the name.\n"
+  synonyms:
+  - --dump
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this help message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: ceas < input files > [options]\n\nCEAS (Cis-regulatory Element\
+  \ Annotation System)\n\nOptions:\n  --version             show program's version\
+  \ number and exit\n  -h, --help            Show this help message and exit.\n  -b\
+  \ BED, --bed=BED     BED file of ChIP regions.\n  -w WIG, --wig=WIG     WIG file\
+  \ for either wig profiling or genome background\n                        annotation.\
+  \ WARNING: --bg flag must be set for genome\n                        background\
+  \ re-annotation.\n  -e EBED, --ebed=EBED  BED file of extra regions of interest\
+  \ (eg, non-coding\n                        regions)\n  -g GDB, --gt=GDB      Gene\
+  \ annotation table (eg, a refGene table in sqlite3\n                        db format\
+  \ provided through the CEAS web,\n                        http://liulab.dfci.harvard.edu/CEAS/download.html).\n\
+  \  --name=NAME           Experiment name. This will be used to name the output\n\
+  \                        files. If an experiment name is not given, the stem of\n\
+  \                        the input BED file name will be used instead (eg, if\n\
+  \                        'peaks.bed', 'peaks' will be used as a name.)\n  --sizes=SIZES\
+  \         Promoter (also dowsntream) sizes for ChIP region\n                   \
+  \     annotation. Comma-separated three values or a single\n                   \
+  \     value can be given. If a single value is given, it\n                     \
+  \   will be segmented into three equal fractions (ie, 3000\n                   \
+  \     is equivalent to 1000,2000,3000), DEFAULT:\n                        1000,2000,3000.\
+  \ WARNING: Values > 10000bp are\n                        automatically set to 10000bp.\n\
+  \  --bisizes=BISIZES     Bidirectional-promoter sizes for ChIP region\n        \
+  \                annotation Comma-separated two values or a single\n           \
+  \             value can be given. If a single value is given, it\n             \
+  \           will be segmented into two equal fractions (ie, 5000\n             \
+  \           is equivalent to 2500,5000) DEFAULT: 2500,5000bp.\n                \
+  \        WARNING: Values > 20000bp are automatically set to\n                  \
+  \      20000bp.\n  --bg                  Run genome BG annotation again. WARNING:\
+  \ This flag is\n                        effective only if a WIG file is given through\
+  \ -w\n                        (--wig). Otherwise, ignored.\n  --span=SPAN      \
+  \     Span from TSS and TTS in the gene-centered annotation.\n                 \
+  \       ChIP regions within this range from TSS and TTS are\n                  \
+  \      considered when calculating the coverage rates in\n                     \
+  \   promoter and downstream, DEFAULT=3000bp\n  --pf-res=PF_RES       Wig profiling\
+  \ resolution, DEFAULT: 50bp. WARNING:\n                        Value smaller than\
+  \ the wig interval (resolution) may\n                        cause aliasing error.\n\
+  \  --rel-dist=REL_DIST   Relative distance to TSS/TTS in wig profiling,\n      \
+  \                  DEFAULT: 3000bp\n  --gn-groups=GN_GROUPS\n                  \
+  \      Gene-groups of particular interest in wig profiling.\n                  \
+  \      Each gene group file must have gene names in the 1st\n                  \
+  \      column. The file names are separated by commas w/ no\n                  \
+  \      space (eg, --gn-groups=top10.txt,bottom10.txt)\n  --gn-group-names=GN_NAMES\n\
+  \                        The names of the gene groups in --gn-groups. The gene\n\
+  \                        group names are separated by commas. (eg, --gn-group-\n\
+  \                        names='top 10%,bottom 10%'). These group names appear\n\
+  \                        in the legends of the wig profiling plots. If no group\n\
+  \                        names given, the groups are represented as 'Group 1,\n\
+  \                        Group2,...Group n'.\n  --gname2              Whether or\
+  \ not use the 'name2' column of the gene\n                        annotation table\
+  \ when reading the gene IDs in the\n                        files given through\
+  \ --gn-groups. This flag is\n                        meaningful only with --gn-groups.\n\
+  \  --dump                Whether to save the raw profiles of near TSS, TTS, and\n\
+  \                        gene body. The file names have a suffix of 'TSS',\n   \
+  \                     'TTS', and 'gene' after the name.\n"
+generated_using:
+- --help

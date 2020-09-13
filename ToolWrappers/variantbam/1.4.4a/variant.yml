@@ -1,0 +1,273 @@
+!Command
+command:
+- variant
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input.bam
+  optional: false
+named:
+- !Flag
+  description: Verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't output reads (used for profiling with -q)
+  synonyms:
+  - -x
+  - --no-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: JSON ecript for the rules.
+  synonyms:
+  - -r
+  - --rules
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Samtools-style region string (e.g. 1:1,000-2,000) or BED/VCF of regions
+    to process. -k UN iterates over unmapped-unmapped reads
+  synonyms:
+  - -k
+  - --proc-regions-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Flag reads that don't pass VariantBam with the failed QC flag, rather
+    than deleting the read.
+  synonyms:
+  - -Q
+  - --mark-as-qc-fail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file to write to (BAM/SAM/CRAM) file instead of stdout
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file should be in CRAM format
+  synonyms:
+  - -C
+  - --cram
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output should be in binary BAM format
+  synonyms:
+  - -b
+  - --bam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to reference. Required for reading/writing CRAM
+  synonyms:
+  - -T
+  - --reference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove the specified tags, separated by commas. eg. -s RG,MD
+  synonyms:
+  - -s
+  - --strip-tags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove all alignment tags
+  synonyms:
+  - -S
+  - --strip-all-tags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output the base-quality trimmed sequence rather than the original sequence.
+    Also removes quality scores
+  synonyms:
+  - -Z
+  - --write-trimmed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output a qc file that contains information about BAM
+  synonyms:
+  - -q
+  - --qc-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum coverage of output file. BAM must be sorted. Negative values
+    enforce a minimum coverage
+  synonyms:
+  - -m
+  - --max-coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set the minimum base quality score considered to be high-quality
+  synonyms:
+  - -p
+  - --min-phred
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Regions (e.g. myvcf.vcf or WG for whole genome) or newline seperated
+    subsequence file.
+  synonyms:
+  - -g
+  - --region
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -g, but for region where satisfying a rule EXCLUDES this read.
+  synonyms:
+  - -G
+  - --exclude-region
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -g, but turns on mate-linking
+  synonyms:
+  - -l
+  - --linked-region
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -l, but for mate-linked region where satisfying this rule EXCLUDES
+    this read.
+  synonyms:
+  - -L
+  - --linked-exclude-region
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Apply a padding to each region supplied with the region flags (specify
+    after region flag)
+  synonyms:
+  - -P
+  - --region-pad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum number of quality clipped bases
+  synonyms:
+  - --min-clip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum number of N bases
+  synonyms:
+  - --max-nbases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum mapping quality
+  synonyms:
+  - --min-mapq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum number of deleted bases
+  synonyms:
+  - --min-del
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum number of inserted bases
+  synonyms:
+  - --min-ins
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum read length (after base-quality trimming)
+  synonyms:
+  - --min-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Motif file
+  synonyms:
+  - --motif
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Limit to just a single read group
+  synonyms:
+  - -R
+  - --read-group
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Flags to include (like samtools -f)
+  synonyms:
+  - -f
+  - --include-aln-flag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Flags to exclude (like samtools -F)
+  synonyms:
+  - -F
+  - --exclude-aln-flag
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nUsage: variant <input.bam> [OPTIONS] \n\n  Description: Filter a BAM/SAM/CRAM/STDIN\
+  \ according to hierarchical rules\n\n General options\n  -h, --help            \
+  \               Display this help and exit\n  -v, --verbose                    \
+  \    Verbose output\n  -x, --no-output                      Don't output reads (used\
+  \ for profiling with -q)\n  -r, --rules                          JSON ecript for\
+  \ the rules.\n  -k, --proc-regions-file              Samtools-style region string\
+  \ (e.g. 1:1,000-2,000) or BED/VCF of regions to process. -k UN iterates over unmapped-unmapped\
+  \ reads\n  -Q, --mark-as-qc-fail                Flag reads that don't pass VariantBam\
+  \ with the failed QC flag, rather than deleting the read.\n Output options\n  -o,\
+  \ --output                         Output file to write to (BAM/SAM/CRAM) file instead\
+  \ of stdout\n  -C, --cram                           Output file should be in CRAM\
+  \ format\n  -b, --bam                            Output should be in binary BAM\
+  \ format\n  -T, --reference                      Path to reference. Required for\
+  \ reading/writing CRAM\n  -s, --strip-tags                     Remove the specified\
+  \ tags, separated by commas. eg. -s RG,MD\n  -S, --strip-all-tags              \
+  \   Remove all alignment tags\n  -Z, --write-trimmed                  Output the\
+  \ base-quality trimmed sequence rather than the original sequence. Also removes\
+  \ quality scores\n Filtering options\n  -q, --qc-file                        Output\
+  \ a qc file that contains information about BAM\n  -m, --max-coverage          \
+  \         Maximum coverage of output file. BAM must be sorted. Negative values enforce\
+  \ a minimum coverage\n  -p, --min-phred                      Set the minimum base\
+  \ quality score considered to be high-quality\n Region specifiers\n  -g, --region\
+  \                         Regions (e.g. myvcf.vcf or WG for whole genome) or newline\
+  \ seperated subsequence file.\n  -G, --exclude-region                 Same as -g,\
+  \ but for region where satisfying a rule EXCLUDES this read.\n  -l, --linked-region\
+  \                  Same as -g, but turns on mate-linking\n  -L, --linked-exclude-region\
+  \          Same as -l, but for mate-linked region where satisfying this rule EXCLUDES\
+  \ this read.\n  -P, --region-pad                     Apply a padding to each region\
+  \ supplied with the region flags (specify after region flag)\n Command line rules\
+  \ shortcuts (to be used without supplying a -r script)\n      --min-clip       \
+  \                Minimum number of quality clipped bases\n      --max-nbases   \
+  \                  Maximum number of N bases\n      --min-mapq                 \
+  \      Minimum mapping quality\n      --min-del                        Minimum number\
+  \ of deleted bases\n      --min-ins                        Minimum number of inserted\
+  \ bases\n      --min-length                     Minimum read length (after base-quality\
+  \ trimming)\n      --motif                          Motif file\n  -R, --read-group\
+  \                     Limit to just a single read group\n  -f, --include-aln-flag\
+  \               Flags to include (like samtools -f)\n  -F, --exclude-aln-flag  \
+  \             Flags to exclude (like samtools -F)\n\n"
+generated_using:
+- --help

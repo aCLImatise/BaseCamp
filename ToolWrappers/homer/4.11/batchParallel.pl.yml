@@ -1,0 +1,98 @@
+!Command
+command:
+- batchParallel.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: command
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: output suffix|none
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: This
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: will
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: run
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: the
+  optional: false
+- !Positional
+  description: ''
+  position: 7
+  name: for
+  optional: false
+- !Positional
+  description: ''
+  position: 8
+  name: each
+  optional: false
+- !Positional
+  description: ''
+  position: 9
+  name: file
+  optional: false
+- !Positional
+  description: ''
+  position: 10
+  name: provided
+  optional: false
+- !Positional
+  description: ''
+  position: 11
+  name: after
+  optional: false
+named:
+- !Flag
+  description: '<#> (max number of parallel processes, default: 20)'
+  synonyms:
+  - -cpu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<file suffix> (instead of stdout, \"flag file.suffix will be used\"\
+    )\ni.e. -o -o txt"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: output flag
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: parameter.
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tUsage: batchParallel.pl <command> <output suffix|none> [options] -f\
+  \ <file1> <file2>...\n\n\tThis will run the <command> for each file provided after\
+  \ the -f parameter.\n\n\tOptions:\n\t\t-cpu <#> (max number of parallel processes,\
+  \ default: 20)\n\t\t-o <output flag> <file suffix> (instead of stdout, \"flag file.suffix\
+  \ will be used\")\n\t\t\ti.e. -o -o txt\n\t\tAll other parameters up to '-f' will\
+  \ be based to the command\n\n\tExample (gzip fastq files): batchParallel.pl gzip\
+  \ none -f *.fastq\n\tExample (bed to peak format): batchParallel.pl bed2pos.pl pos\
+  \ -f *.bed\n\tExample (finding peaks): batchParallel.pl findPeaks none -o auto -style\
+  \ factor -f */\n\n\tSimilar to batchApply.pl (non-parallel version)\n\n"
+generated_using:
+- --help

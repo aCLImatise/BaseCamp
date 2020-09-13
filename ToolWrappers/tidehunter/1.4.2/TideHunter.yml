@@ -1,0 +1,218 @@
+!Command
+command:
+- TideHunter
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in.fa/fq
+  optional: false
+named:
+- !Flag
+  description: k-mer length (no larger than 16). [8]
+  synonyms:
+  - -k
+  - --kmer-length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: window size. [1]
+  synonyms:
+  - -w
+  - --window-size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: INT    step size. [1]
+  synonyms:
+  - -s
+  - --step-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use homopolymer-compressed k-mer. [False]
+  synonyms:
+  - -H
+  - --HPC-kmer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    minimum copy number of tandem repeat. [2]
+  synonyms:
+  - -c
+  - --min-copy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    maximum allowed divergence rate between two consecutive repeats.
+    [0.25]
+  synonyms:
+  - -e
+  - --max-diverg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    minimum period size of tandem repeat. (>=2) [30]
+  synonyms:
+  - -p
+  - --min-period
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    maximum period size of tandem repeat. (<=4294967295) [10K]
+  synonyms:
+  - -P
+  - --max-period
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT       match score [2]
+  synonyms:
+  - -M
+  - --match
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: mismatch penalty [4]
+  synonyms:
+  - -X
+  - --mismatch
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: (,INT) gap opening penalty (O1,O2) [4,24]
+  synonyms:
+  - -O
+  - --gap-open
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "INT(,INT) gap extension penalty (E1,E2) [2,1]\nTideHunter provides\
+    \ three gap penalty modes, cost of a g-long gap:\n- convex (default): min{O1+g*E1,\
+    \ O2+g*E2}\n- affine (set O2 as 0): O1+g*E1\n- linear (set O1 as 0): g*E1"
+  synonyms:
+  - -E
+  - --gap-ext
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: STR    5' adapter sequence (sense strand). [NULL]
+  synonyms:
+  - '-5'
+  - --five-prime
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 3' adapter sequence (anti-sense strand). [NULL]
+  synonyms:
+  - '-3'
+  - --three-prime
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: minimum match ratio of adapter sequence. [0.80]
+  synonyms:
+  - -a
+  - --ada-mat-rat
+  args: !SimpleFlagArg
+    name: FLT
+  optional: true
+- !Flag
+  description: STR    output file. [stdout]
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only output the unit sequences of each tandem repeat, no consensus
+    sequence. [False]
+  synonyms:
+  - -u
+  - --unit-seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only output the consensus sequence of the tandem repeat that covers
+    the longest read sequence. [False]
+  synonyms:
+  - -l
+  - --longest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only output full-length consensus sequence. [False]
+  synonyms:
+  - -F
+  - --full-len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    output format. [1]\n- 1: FASTA\n- 2: Tabular"
+  synonyms:
+  - -f
+  - --out-fmt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    number of threads to use. [4]
+  synonyms:
+  - -t
+  - --thread
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print this help usage information.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show version number.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nTideHunter: Tandem repeats detection and consensus calling from noisy\
+  \ long reads\n\nVersion: 1.4.2\tContact: yangao07@hit.edu.cn\n\nUsage:   TideHunter\
+  \ [options] in.fa/fq > cons.fa\n\nOptions: \n  Seeding:\n    -k --kmer-length INT\
+  \    k-mer length (no larger than 16). [8]\n    -w --window-size INT    window size.\
+  \ [1]\n    -s --step-size   INT    step size. [1]\n    -H --HPC-kmer           use\
+  \ homopolymer-compressed k-mer. [False]\n  Tandem repeat criteria:\n    -c --min-copy\
+  \    INT    minimum copy number of tandem repeat. [2]\n    -e --max-diverg  INT\
+  \    maximum allowed divergence rate between two consecutive repeats. [0.25]\n \
+  \   -p --min-period  INT    minimum period size of tandem repeat. (>=2) [30]\n \
+  \   -P --max-period  INT    maximum period size of tandem repeat. (<=4294967295)\
+  \ [10K]\n  Scoring parameters for partial order alignment:\n    -M --match    INT\
+  \       match score [2]\n    -X --mismatch INT       mismatch penalty [4]\n    -O\
+  \ --gap-open INT(,INT) gap opening penalty (O1,O2) [4,24]\n    -E --gap-ext  INT(,INT)\
+  \ gap extension penalty (E1,E2) [2,1]\n                            TideHunter provides\
+  \ three gap penalty modes, cost of a g-long gap:\n                            -\
+  \ convex (default): min{O1+g*E1, O2+g*E2}\n                            - affine\
+  \ (set O2 as 0): O1+g*E1\n                            - linear (set O1 as 0): g*E1\n\
+  \  Adapter sequence:\n    -5 --five-prime  STR    5' adapter sequence (sense strand).\
+  \ [NULL]\n    -3 --three-prime STR    3' adapter sequence (anti-sense strand). [NULL]\n\
+  \    -a --ada-mat-rat FLT    minimum match ratio of adapter sequence. [0.80]\n \
+  \ Output:\n    -o --output      STR    output file. [stdout]\n    -u --unit-seq\
+  \           only output the unit sequences of each tandem repeat, no consensus sequence.\
+  \ [False]\n    -l --longest            only output the consensus sequence of the\
+  \ tandem repeat that covers the longest read sequence. [False]\n    -F --full-len\
+  \           only output full-length consensus sequence. [False]\n    -f --out-fmt\
+  \     INT    output format. [1]\n                            - 1: FASTA\n      \
+  \                      - 2: Tabular\n  Computing resource:\n    -t --thread    \
+  \  INT    number of threads to use. [4]\n\n  General options:\n    -h --help   \
+  \            print this help usage information.\n    -v --version            show\
+  \ version number.\n\n"
+generated_using:
+- --help

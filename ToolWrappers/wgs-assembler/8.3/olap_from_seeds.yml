@@ -1,0 +1,198 @@
+!Command
+command:
+- olap-from-seeds
+positional: []
+named:
+- !Flag
+  description: "Asymmetric overlaps, i.e., only output overlaps with\na_iid < b_iid"
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output binary overlap messages
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output corrections to file <f>
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: "Use clear range <s> for reads.  Default value is\nAS_READ_CLEAR_LATEST"
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: "Set keep flag in correction record on end of frags with less\nthan\
+    \ <n> olaps"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Extend fragments beyond 3' clear range
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Read seeds from sorted file <f>.  Format is:\n<a_iid> <b_iid> [f\\\
+    r] <a_pos> <b_pos> <ct> <len>\nadditional entries on line are ignored.\nEntries\
+    \ are not reversed, i.e., a/b seed does NOT\nautomatically generate the b/a seed,\
+    \ too"
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: Do partial overlaps (i.e., local alignments)
+  synonyms:
+  - -G
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prevent correction when have an exact match of <n> bases
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Send overlaps to file or store <f>
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: Don't use haplotype counts to correct
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read seeds from binary overlap store <f>
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: Use <n> p-threads
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Set verbose level to <n>; higher is more debugging output
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: "Require <n> exact match bases around an error (combined count\non\
+    \ both sides) to vote to change a base"
+  synonyms:
+  - -V
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Use correlated differences to disqualify overlaps
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't prevent correction on first and last <n> bp of exact match\n\
+    regions (whose length is set by -k option)."
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: "Expert bit options.  <h> is a hexadecimal constant:\n(<h> & 0x1) ==\
+    \ 1 forces old banded forward homopoly alignment\n(<h> & 0x2) == 1 forces faster\
+    \ non-homopoly forward alignment\n(<h> & 0x4) == 1 forces faster non-homopoly\
+    \ reverse alignment"
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: h
+  optional: true
+- !Flag
+  description: "Allow max error rate of <x> in alignments (e.g., 0.03 for 3% error)\n\
+    Value cannot exceed  0.060"
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: Do NOT try to correct read errors
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -behp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "olap-from-seeds: invalid option -- '-'\nUnrecognized option --\n\nUSAGE:\
+  \  olap-from-seeds [-behp] [-d DegrThresh] [-k ConfLen] [-x ExcludeLen]\n     [-F\
+  \ OlapFile|-S OlapStore] [-c CorrectFile] [-o OlapOutput]\n     [-t NumPThreads]\
+  \ [-v VerboseLevel] [-V Vote_Qualify_Len]\n     [-X ExpertBits]\n     <FragStore>\
+  \ <lo> <hi>\n\nExtract from a store exact-match seeds between pairs of\nreads and\
+  \ use them to determine if the pair actually overlaps.\nThese overlaps can then\
+  \ be used to correct errors in reads based\non the alignment of all overlapping\
+  \ reads to a given read.\nFragments come from <FragStore>.  <lo> and <hi> specify\n\
+  the range of fragments to modify.\n\nOptions:\n-a      Asymmetric overlaps, i.e.,\
+  \ only output overlaps with\n        a_iid < b_iid\n-b      Output binary overlap\
+  \ messages\n-c <f>  Output corrections to file <f>\n-C <s>  Use clear range <s>\
+  \ for reads.  Default value is\n        AS_READ_CLEAR_LATEST\n-d <n>  Set keep flag\
+  \ in correction record on end of frags with less\n        than <n> olaps\n-e   \
+  \   Extend fragments beyond 3' clear range\n-F <f>  Read seeds from sorted file\
+  \ <f>.  Format is:\n        <a_iid> <b_iid> [f\\r] <a_pos> <b_pos> <ct> <len>\n\
+  \        additional entries on line are ignored.\n        Entries are not reversed,\
+  \ i.e., a/b seed does NOT\n        automatically generate the b/a seed, too\n-G\
+  \      Do partial overlaps (i.e., local alignments)\n-h      Print this message\n\
+  -k <n>  Prevent correction when have an exact match of <n> bases\n-o <f>  Send overlaps\
+  \ to file or store <f>\n-p      Don't use haplotype counts to correct\n-S <f>  Read\
+  \ seeds from binary overlap store <f>\n-t <n>  Use <n> p-threads\n-v <n>  Set verbose\
+  \ level to <n>; higher is more debugging output\n-V <n>  Require <n> exact match\
+  \ bases around an error (combined count\n        on both sides) to vote to change\
+  \ a base\n-w      Use correlated differences to disqualify overlaps\n-x <n>  Don't\
+  \ prevent correction on first and last <n> bp of exact match\n        regions (whose\
+  \ length is set by -k option).\n-X <h>  Expert bit options.  <h> is a hexadecimal\
+  \ constant:\n        (<h> & 0x1) == 1 forces old banded forward homopoly alignment\n\
+  \        (<h> & 0x2) == 1 forces faster non-homopoly forward alignment\n       \
+  \ (<h> & 0x4) == 1 forces faster non-homopoly reverse alignment\n-y <x>  Allow max\
+  \ error rate of <x> in alignments (e.g., 0.03 for 3% error)\n        Value cannot\
+  \ exceed  0.060\n-z      Do NOT try to correct read errors\n"
+generated_using:
+- --help

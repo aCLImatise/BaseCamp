@@ -1,0 +1,150 @@
+!Command
+command:
+- vcf2bed-megarow
+positional: []
+named:
+- !Flag
+  description: ', which munges these data into pseudo-elements'
+  synonyms:
+  - --keep-header
+  args: !SimpleFlagArg
+    name: option
+  optional: true
+- !Flag
+  description: "(-p)\nBy default, this application prints multiple BED elements for\
+    \ each alternate\nallele. Use this flag to print one BED element for all alternate\
+    \ alleles"
+  synonyms:
+  - --do-not-split
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-v)\nReport only single nucleotide variants"
+  synonyms:
+  - --snvs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-t)\nReport only insertion variants"
+  synonyms:
+  - --insertions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-n)\nReport only deletion variants"
+  synonyms:
+  - --deletions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-d)\nDo not sort BED output with sort-bed (not compatible with --output=starch)"
+  synonyms:
+  - --do-not-sort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-m <val>)\nSets aside <value> memory for sorting BED output. For\
+    \ example, <value> can\nbe 8G, 8000M or 8000000000 to specify 8 GB of memory (default\
+    \ is 2G)"
+  synonyms:
+  - --max-mem
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "(-r <dir>)\nOptionally sets [dir] as temporary directory for sort\
+    \ data, when used in\nconjunction with --max-mem=[value], instead of the host's\
+    \ operating system\ndefault temporary directory"
+  synonyms:
+  - --sort-tmpdir
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: "(-z)\nUsed with --output=starch, the compressed output explicitly\
+    \ applies the bzip2\nalgorithm to compress intermediate data (default is bzip2)"
+  synonyms:
+  - --starch-bzip2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-g)\nUsed with --output=starch, the compressed output applies gzip\
+    \ compression on\nintermediate data"
+  synonyms:
+  - --starch-gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=\"xyz...\" (-e \"xyz...\")\nUsed with --output=starch, this adds\
+    \ a note to the Starch archive metadata"
+  synonyms:
+  - --starch-note
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "| --help[-bam|-gff|-gtf|-gvf|-psl|-rmsk|-sam|-vcf|-wig] (-h | -h <fmt>)\n\
+    Show general help message (or detailed help for a specified input format)"
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: "(-w)\nShow application version\n"
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "convert2bed -i vcf\n  version:  2.4.39\n  author:   Alex Reynolds\n\n\
+  \  Converts 1-based, closed [a, b] VCF v4 input into 0-based,\n  half-open [a-1,\
+  \ b) extended BED or BEDOPS Starch\n\n  Usage:\n\n  $ vcf2bed < foo.vcf > sorted-foo.vcf.bed\n\
+  \  $ vcf2starch < foo.vcf > sorted-foo.vcf.starch\n\n  Or:\n\n  $ convert2bed -i\
+  \ vcf < foo.vcf > sorted-foo.vcf.bed\n  $ convert2bed -i vcf -o starch < foo.vcf\
+  \ > sorted-foo.vcf.starch\n\n  We make no assumptions about sort order from converted\
+  \ output. Apply\n  the usage case displayed to pass data to the BEDOPS sort-bed\
+  \ application,\n  which generates lexicographically-sorted BED data as output.\n\
+  \n  If you want to skip sorting, use the --do-not-sort option:\n\n  $ vcf2bed --do-not-sort\
+  \ < foo.vcf > unsorted-foo.vcf.bed\n\n  This conversion utility relies on the VCF\
+  \ v4.2 format, with its\n  specifications outlined here by the 1000 Genomes and\
+  \ Samtools projects:\n\n  http://samtools.github.io/hts-specs/VCFv4.2.pdf\n\n  --\
+  \ The \"meta-information\" (starting with '##') and \"header\"\n     lines (starting\
+  \ with '#') are discarded, unless the --keep-header\n     option is used.\n\n  \
+  \   To preserve metadata and header as BED elements, use the \n     --keep-header\
+  \ option, which munges these data into pseudo-elements\n     that generally sort\
+  \ to the top (when chromosomes follow UCSC naming\n     conventions) by using the\
+  \ \"_header\" chromosome name.\n\n  -- The header line must be tab-delimited. The\
+  \ eight, fixed mandatory\n     columns are converted to BED data as follows:\n\n\
+  \     - Data in the #CHROM column are mapped to the first column of\n       the\
+  \ BED output\n     - The POS column is mapped to the second and third BED columns\n\
+  \     - The ID and QUAL columns are mapped to the fourth and fifth BED\n       columns,\
+  \ respectively\n     - The REF, ALT, FILTER and INFO are mapped to the sixth through\n\
+  \       ninth BED columns, respectively\n\n  -- If present, genotype data in FORMAT\
+  \ and subsequence sample IDs\n     are placed into tenth and subsequent columns.\n\
+  \n  -- Data rows must also be tab-delimited.\n\n  -- Any missing data or non-standard\
+  \ delimiters may cause\n     problems. It may be useful to validate the VCF v4.2\
+  \ input\n     before conversion.\n\n  VCF conversion options:\n\n  --do-not-split\
+  \ (-p)\n      By default, this application prints multiple BED elements for each\
+  \ alternate\n      allele. Use this flag to print one BED element for all alternate\
+  \ alleles\n  --snvs (-v)\n      Report only single nucleotide variants\n  --insertions\
+  \ (-t)\n      Report only insertion variants\n  --deletions (-n)\n      Report only\
+  \ deletion variants\n  --keep-header (-k)\n      Preserve header section as pseudo-BED\
+  \ elements\n\n  Other processing options:\n\n  --do-not-sort (-d)\n      Do not\
+  \ sort BED output with sort-bed (not compatible with --output=starch)\n  --max-mem=<value>\
+  \ (-m <val>)\n      Sets aside <value> memory for sorting BED output. For example,\
+  \ <value> can\n      be 8G, 8000M or 8000000000 to specify 8 GB of memory (default\
+  \ is 2G)\n  --sort-tmpdir=<dir> (-r <dir>)\n      Optionally sets [dir] as temporary\
+  \ directory for sort data, when used in\n      conjunction with --max-mem=[value],\
+  \ instead of the host's operating system\n      default temporary directory\n  --starch-bzip2\
+  \ (-z)\n      Used with --output=starch, the compressed output explicitly applies\
+  \ the bzip2\n      algorithm to compress intermediate data (default is bzip2)\n\
+  \  --starch-gzip (-g)\n      Used with --output=starch, the compressed output applies\
+  \ gzip compression on\n      intermediate data\n  --starch-note=\"xyz...\" (-e \"\
+  xyz...\")\n      Used with --output=starch, this adds a note to the Starch archive\
+  \ metadata\n  --help | --help[-bam|-gff|-gtf|-gvf|-psl|-rmsk|-sam|-vcf|-wig] (-h\
+  \ | -h <fmt>)\n      Show general help message (or detailed help for a specified\
+  \ input format)\n  --version (-w)\n      Show application version\n\n"
+generated_using:
+- --help

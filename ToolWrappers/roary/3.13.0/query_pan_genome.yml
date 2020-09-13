@@ -1,0 +1,90 @@
+!Command
+command:
+- query_pan_genome
+positional: []
+named:
+- !Flag
+  description: groups filename [clustered_proteins]
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: action (union/intersection/complement/gene_multifasta/difference) [union]
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: percentage of isolates a gene must be in to be core [99]
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: output filename [pan_genome_results]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: comma separated list of gene names for use with gene_multifasta action
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: comma separated list of filenames, comparison set one
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: comma separated list of filenames, comparison set two
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: verbose output to STDOUT
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: this help message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: query_pan_genome [options] *.gff\nPerform set operations on the\
+  \ pan genome to see the gene differences between groups of isolates.\n\nOptions:\
+  \ -g STR    groups filename [clustered_proteins]\n         -a STR    action (union/intersection/complement/gene_multifasta/difference)\
+  \ [union]\n         -c FLOAT  percentage of isolates a gene must be in to be core\
+  \ [99]\n         -o STR    output filename [pan_genome_results]\n         -n STR\
+  \    comma separated list of gene names for use with gene_multifasta action\n  \
+  \       -i STR    comma separated list of filenames, comparison set one\n      \
+  \   -t STR    comma separated list of filenames, comparison set two\n         -v\
+  \        verbose output to STDOUT\n         -h        this help message\n \nExamples:\
+  \ \nUnion of genes found in isolates\n         query_pan_genome -a union *.gff\n\
+  \         \nIntersection of genes found in isolates (core genes)\n         query_pan_genome\
+  \ -a intersection *.gff\n         \nComplement of genes found in isolates (accessory\
+  \ genes)\n         query_pan_genome -a complement *.gff\n\nExtract the sequence\
+  \ of each gene listed and create multi-FASTA files\n         query_pan_genome -a\
+  \ gene_multifasta -n gryA,mecA,abc *.gff\n\nGene differences between sets of isolates\n\
+  \         query_pan_genome -a difference --input_set_one 1.gff,2.gff --input_set_two\
+  \ 3.gff,4.gff,5.gff\n\nFor further info see: http://sanger-pathogens.github.io/Roary/\n"
+generated_using:
+- --help

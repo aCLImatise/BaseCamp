@@ -1,0 +1,229 @@
+!Command
+command:
+- last-train
+positional:
+- !Positional
+  description: '-T NUMBER          type of alignment: 0=local, 1=overlap (default:
+    0)'
+  position: 0
+  name: per-length
+  optional: false
+named:
+- !Flag
+  description: show more details of intermediate steps
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: force reverse-complement symmetry
+  synonyms:
+  - --revsym
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: force symmetric substitution matrix
+  synonyms:
+  - --matsym
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: force insertion/deletion symmetry
+  synonyms:
+  - --gapsym
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'skip alignments with > PID% identity (default: 100)'
+  synonyms:
+  - --pid
+  args: !SimpleFlagArg
+    name: PID
+  optional: true
+- !Flag
+  description: skip mostly-lowercase alignments (default=1)
+  synonyms:
+  - --postmask
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: 'number of random sequence samples (default: 500)'
+  synonyms:
+  - --sample-number
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'length of each sample (default: 2000)'
+  synonyms:
+  - --sample-length
+  args: !SimpleFlagArg
+    name: L
+  optional: true
+- !Flag
+  description: 'match score (default: 6 if Q>0, else 5)'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: SCORE
+  optional: true
+- !Flag
+  description: 'mismatch cost (default: 18 if Q>0, else 5)'
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: COST
+  optional: true
+- !Flag
+  description: match/mismatch score matrix
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'gap existence cost (default: 21 if Q>0, else 15)'
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: COST
+  optional: true
+- !Flag
+  description: 'gap extension cost (default: 9 if Q>0, else 3)'
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: COST
+  optional: true
+- !Flag
+  description: insertion existence cost
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: COST
+  optional: true
+- !Flag
+  description: insertion extension cost
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: COST
+  optional: true
+- !Flag
+  description: 'query letters per random alignment (default: 1e6)'
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: maximum expected alignments per square giga
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: EG2
+  optional: true
+- !Flag
+  description: "0=reverse, 1=forward, 2=both (default: 2 if DNA, else\n1)"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: STRAND
+  optional: true
+- !Flag
+  description: "score matrix applies to forward strand of: 0=reference,\n1=query (default:\
+    \ 1)"
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: omit gapless alignments in COUNT others with > score-
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: COUNT
+  optional: true
+- !Flag
+  description: "maximum initial matches per query position (default:\n10)"
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: COUNT
+  optional: true
+- !Flag
+  description: "use initial matches starting at every STEP-th position\nin each query\
+    \ (default: 1)"
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: STEP
+  optional: true
+- !Flag
+  description: number of parallel threads
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "N/X is ambiguous in: 0=neither sequence, 1=reference,\n2=query, 3=both\
+    \ (default=0)"
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: "input format: 0=fasta or fastq-ignore, 1=fastq-sanger\n(default=fasta)\n"
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: last-train [options] lastdb-name sequence-file(s)\n\nTry to find\
+  \ suitable score parameters for aligning the given sequences.\n\nOptions:\n  -h,\
+  \ --help           show this help message and exit\n  -v, --verbose        show\
+  \ more details of intermediate steps\n\n  Training options:\n    --revsym      \
+  \     force reverse-complement symmetry\n    --matsym           force symmetric\
+  \ substitution matrix\n    --gapsym           force insertion/deletion symmetry\n\
+  \    --pid=PID          skip alignments with > PID% identity (default: 100)\n  \
+  \  --postmask=NUMBER  skip mostly-lowercase alignments (default=1)\n    --sample-number=N\
+  \  number of random sequence samples (default: 500)\n    --sample-length=L  length\
+  \ of each sample (default: 2000)\n\n  Initial parameter options:\n    -r SCORE \
+  \          match score (default: 6 if Q>0, else 5)\n    -q COST            mismatch\
+  \ cost (default: 18 if Q>0, else 5)\n    -p NAME            match/mismatch score\
+  \ matrix\n    -a COST            gap existence cost (default: 21 if Q>0, else 15)\n\
+  \    -b COST            gap extension cost (default: 9 if Q>0, else 3)\n    -A COST\
+  \            insertion existence cost\n    -B COST            insertion extension\
+  \ cost\n\n  Alignment options:\n    -D LENGTH          query letters per random\
+  \ alignment (default: 1e6)\n    -E EG2             maximum expected alignments per\
+  \ square giga\n    -s STRAND          0=reverse, 1=forward, 2=both (default: 2 if\
+  \ DNA, else\n                       1)\n    -S NUMBER          score matrix applies\
+  \ to forward strand of: 0=reference,\n                       1=query (default: 1)\n\
+  \    -C COUNT           omit gapless alignments in COUNT others with > score-\n\
+  \                       per-length\n    -T NUMBER          type of alignment: 0=local,\
+  \ 1=overlap (default: 0)\n    -m COUNT           maximum initial matches per query\
+  \ position (default:\n                       10)\n    -k STEP            use initial\
+  \ matches starting at every STEP-th position\n                       in each query\
+  \ (default: 1)\n    -P THREADS         number of parallel threads\n    -X NUMBER\
+  \          N/X is ambiguous in: 0=neither sequence, 1=reference,\n             \
+  \          2=query, 3=both (default=0)\n    -Q NUMBER          input format: 0=fasta\
+  \ or fastq-ignore, 1=fastq-sanger\n                       (default=fasta)\n"
+generated_using:
+- --help

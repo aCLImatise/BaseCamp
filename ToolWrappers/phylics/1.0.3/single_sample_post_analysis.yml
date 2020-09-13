@@ -1,0 +1,104 @@
+!Command
+command:
+- single_sample_post_analysis
+positional:
+- !Positional
+  description: Sample name.
+  position: 0
+  name: sample_name
+  optional: false
+- !Positional
+  description: Path to cnvs file.
+  position: 1
+  name: SegCopy
+  optional: false
+- !Positional
+  description: Path to stats file.
+  position: 2
+  name: results.txt
+  optional: false
+- !Positional
+  description: Clustering method
+  position: 3
+  name: clust_method
+  optional: false
+- !Positional
+  description: Distance metric
+  position: 4
+  name: distance_metric
+  optional: false
+- !Positional
+  description: "Path to the desired output directory where the merged\nfiles have\
+    \ to be stored"
+  position: 5
+  name: outdir
+  optional: false
+named:
+- !Flag
+  description: "Seed to initialize the pseudo-random generator used to\nperform the\
+    \ permutation test."
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "If this option is specified, only the clustering part\nis executed\
+    \ with the specified number of clusters,\nunless --reinit option is specified\
+    \ (see below)."
+  synonyms:
+  - --reclust
+  args: !SimpleFlagArg
+    name: n_clusters
+  optional: true
+- !Flag
+  description: This option has effect only if combined with the
+  synonyms:
+  - --reinit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: It allows to recompute the entire
+  synonyms:
+  - --clustering
+  args: !SimpleFlagArg
+    name: option.
+  optional: true
+- !Flag
+  description: Verbose execution.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: single_sample_post_analysis [-h] [--seed N] [--reclust n_clusters]\n\
+  \                                   [--reinit] [--verbose]\n                   \
+  \                sample_name SegCopy results.txt\n                             \
+  \      clust_method distance_metric outdir\n\nSingle-sample analysis.\n\npositional\
+  \ arguments:\n  sample_name           Sample name.\n  SegCopy               Path\
+  \ to cnvs file.\n  results.txt           Path to stats file.\n  clust_method   \
+  \       Clustering method\n  distance_metric       Distance metric\n  outdir   \
+  \             Path to the desired output directory where the merged\n          \
+  \              files have to be stored\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  --seed N              Seed to initialize\
+  \ the pseudo-random generator used to\n                        perform the permutation\
+  \ test.\n  --reclust n_clusters  If this option is specified, only the clustering\
+  \ part\n                        is executed with the specified number of clusters,\n\
+  \                        unless --reinit option is specified (see below).\n  --reinit\
+  \              This option has effect only if combined with the\n              \
+  \          --clustering option. It allows to recompute the entire\n            \
+  \            analysis and then recluster with the specified number\n           \
+  \             of clusters.\n  --verbose             Verbose execution.\n"
+generated_using:
+- --help

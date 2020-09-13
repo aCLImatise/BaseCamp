@@ -1,0 +1,129 @@
+!Command
+command:
+- statistic.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: STATISTIC_LIBRARY
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: DESTINATION
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: SOURCE
+  optional: false
+named:
+- !Flag
+  description: "Assumes that n-grams in SOURCE file have N\ntokens each. N = 2 by\
+    \ default."
+  synonyms:
+  - --ngram
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Uses the frequency combinations in FILE to\ndecode the \"meaning\"\
+    \ of the frequency\nvalues in SOURCE. By default, the default\nfrequency combinations\
+    \ output by count.pl\nfor ngrams of size N are assumed."
+  synonyms:
+  - --set_freq_combo
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Prints out the frequency combinations being\nused to FILE. If frequency\
+    \ combinations have\nbeen provided through --set_freq_combo switch\nabove these\
+    \ are output; otherwise the default\ncombinations being used are output."
+  synonyms:
+  - --get_freq_combo
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Ignores all n-grams with frequency < N.
+  synonyms:
+  - --frequency
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Shows only n-grams with rank <= N.
+  synonyms:
+  - --rank
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Displays values upto N places of decimal.
+  synonyms:
+  - --precision
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Shows only n-grams which have score >= N.
+  synonyms:
+  - --score
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Outputs chosen parameters in \"extended\"\nformat, and retains any\
+    \ extended data in\nSOURCE. By default, suppresses any extended\ninformation in\
+    \ SOURCE, and outputs no new\nparameters."
+  synonyms:
+  - --extended
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Creates formatted output.
+  synonyms:
+  - --format
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Prints this help message.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints the version number.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: statistic.pl [OPTIONS] STATISTIC_LIBRARY DESTINATION SOURCE\n\n\
+  Loads the given STATISTIC_LIBRARY, calculates the statistic on n-grams\nin SOURCE\
+  \ and outputs results to DESTINATION. SOURCE must be an\nn-gram-frequency file output\
+  \ by count.pl. N-grams in DESTINATION are\nranked on the value of their statistic.\n\
+  \nOPTIONS:\n\n  --ngram N          Assumes that n-grams in SOURCE file have N\n\
+  \                     tokens each. N = 2 by default.\n\n  --set_freq_combo FILE\
+  \ \n                     Uses the frequency combinations in FILE to\n          \
+  \           decode the \"meaning\" of the frequency\n                     values\
+  \ in SOURCE. By default, the default\n                     frequency combinations\
+  \ output by count.pl\n                     for ngrams of size N are assumed.\n\n\
+  \  --get_freq_combo FILE \n                     Prints out the frequency combinations\
+  \ being\n                     used to FILE. If frequency combinations have\n   \
+  \                  been provided through --set_freq_combo switch\n             \
+  \        above these are output; otherwise the default\n                     combinations\
+  \ being used are output.\n\n   --frequency N     Ignores all n-grams with frequency\
+  \ < N.\n\n   --rank N          Shows only n-grams with rank <= N.\n\n   --precision\
+  \ N     Displays values upto N places of decimal.\n\n   --score N         Shows\
+  \ only n-grams which have score >= N.\n\n   --extended        Outputs chosen parameters\
+  \ in \"extended\"\n                     format, and retains any extended data in\n\
+  \                     SOURCE. By default, suppresses any extended\n            \
+  \         information in SOURCE, and outputs no new\n                     parameters.\n\
+  \n   --format          Creates formatted output.\n\n   --version         Prints\
+  \ the version number.\n\n   --help            Prints this help message.\n\n"
+generated_using:
+- --help

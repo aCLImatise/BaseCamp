@@ -1,0 +1,226 @@
+!Command
+command:
+- mQC.pl
+positional: []
+named:
+- !Flag
+  description: 'working directory to run the scripts in (default: current working
+    directory)'
+  synonyms:
+  - --work_dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: customly chosen experiment name for the mappingQC run (mandatory)
+  synonyms:
+  - --experiment_name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to the SAM/BAM file that comes out of the mapping script of PROTEOFORMER
+    (mandatory)
+  synonyms:
+  - --samfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'the amount of cores to run the script on (integer, default: 5)'
+  synonyms:
+  - --cores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the studied species (mandatory)
+  synonyms:
+  - --species
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the version of the Ensembl database you want to use
+  synonyms:
+  - --ens_v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'temporary folder for storing temporary files of mappingQC (default:
+    work_dir/tmp)'
+  synonyms:
+  - --tmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: whether to use only the unique alignments.
+  synonyms:
+  - --unique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'the mapper you used to generate the SAM file (STAR, TopHat2, HiSat2)
+    (default: STAR)'
+  synonyms:
+  - --mapper
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'the maximum amount of multimapped positions used for filtering the
+    reads (default: 16)'
+  synonyms:
+  - --maxmultimap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to the Ensembl SQLite database with annotation info. If you want
+    mappingQC to download the right Ensembl database automatically for you, put in
+    'get' for this parameter (mandatory)
+  synonyms:
+  - --ens_db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the offset determination method.\nPossible options:\n- plastid: calculate\
+    \ the offsets with Plastid (Dunn et al. 2016)\n- standard: use the standard offsets\
+    \ from the paper of Ingolia et al. (2012) (default option)\n- from_file: use offsets\
+    \ from an input file"
+  synonyms:
+  - --offset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'the mapping bam file for Plastid offset generation (default: convert)'
+  synonyms:
+  - --plastid_bam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the minimum RPF length for Plastid offset generation (default 22)
+  synonyms:
+  - --min_length_plastid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the maximum RPF length for Plastid offset generation (default 34)
+  synonyms:
+  - --max_length_plastid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the offsets input file
+  synonyms:
+  - --offset_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'minimum RPF length used for gene distributions and metagenic classification
+    (default: 26).'
+  synonyms:
+  - --min_length_gd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'maximum RPF length used for gene distributions and metagenic classification
+    (default: 34).'
+  synonyms:
+  - --max_length_gd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'the folder to store the output files (default: work_dir/mQC_output)'
+  synonyms:
+  - --outfolder
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'folder with necessary additional mappingQC tools. More information
+    below in the dependencies section. (default: search for the default tool directory
+    location in the active conda environment)'
+  synonyms:
+  - --tool_dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the module that will be used for plotting the RPF-phase figure\nPossible\
+    \ options:\n- grouped2D: use Seaborn to plot a grouped 2D bar chart (default)\n\
+    - pyplot3D: use mplot3d to plot a 3D bar chart. This tool can suffer sometimes\
+    \ from Escher effects, as it tries to plot a 3D plot with the 2D software of pyplot\
+    \ and matplotlib.\n- mayavi: use the mayavi package to plot a 3D bar chart. This\
+    \ tool only works on local systems with graphical cards."
+  synonyms:
+  - --plotrpftool
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'custom name for the output HTML file (default: work_dir/mQC_experiment_name.html)'
+  synonyms:
+  - --outhtml
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'custom name for output ZIP file (default: work_dir/mQC_experiment_name.zip)'
+  synonyms:
+  - --outzip
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: this helpful screen
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n\nMappingQC (Stand-alone version)\n\n    MappingQC is a tool to easily\
+  \ generate some figures which give a nice overview of the quality of the mapping\
+  \ of ribosome profiling data. More specific, it gives an overview of the P site\
+  \ offset calculation, the gene distribution and the metagenic classification. Furthermore,\
+  \ MappingQC does a thorough analysis of the triplet periodicity and the linked triplet\
+  \ phase (typical for ribosome profiling) in the canonical transcript of your data.\
+  \ Especially, the link between the phase distribution and the RPF length, the relative\
+  \ sequence position and the triplet identity are taken into account.\n        \n\
+  \    Input parameters:\n    --help                  this helpful screen\n    --work_dir\
+  \              working directory to run the scripts in (default: current working\
+  \ directory)\n    --experiment_name       customly chosen experiment name for the\
+  \ mappingQC run (mandatory)\n    --samfile               path to the SAM/BAM file\
+  \ that comes out of the mapping script of PROTEOFORMER (mandatory)\n    --cores\
+  \                 the amount of cores to run the script on (integer, default: 5)\n\
+  \    --species               the studied species (mandatory)\n    --ens_v      \
+  \           the version of the Ensembl database you want to use\n    --tmp     \
+  \              temporary folder for storing temporary files of mappingQC (default:\
+  \ work_dir/tmp)\n    --unique                whether to use only the unique alignments.\n\
+  \    Possible options: Y, N (default Y)\n    --mapper                the mapper\
+  \ you used to generate the SAM file (STAR, TopHat2, HiSat2) (default: STAR)\n  \
+  \  --maxmultimap           the maximum amount of multimapped positions used for\
+  \ filtering the reads (default: 16)\n    --ens_db                path to the Ensembl\
+  \ SQLite database with annotation info. If you want mappingQC to download the right\
+  \ Ensembl database automatically for you, put in 'get' for this parameter (mandatory)\n\
+  \    --offset                the offset determination method.\n                \
+  \                Possible options:\n                                - plastid: calculate\
+  \ the offsets with Plastid (Dunn et al. 2016)\n                                -\
+  \ standard: use the standard offsets from the paper of Ingolia et al. (2012) (default\
+  \ option)\n                                - from_file: use offsets from an input\
+  \ file\n    --plastid_bam           the mapping bam file for Plastid offset generation\
+  \ (default: convert)\n    --min_length_plastid    the minimum RPF length for Plastid\
+  \ offset generation (default 22)\n    --max_length_plastid    the maximum RPF length\
+  \ for Plastid offset generation (default 34)\n    --offset_file           the offsets\
+  \ input file\n    --min_length_gd         minimum RPF length used for gene distributions\
+  \ and metagenic classification (default: 26).\n    --max_length_gd         maximum\
+  \ RPF length used for gene distributions and metagenic classification (default:\
+  \ 34).\n    --outfolder             the folder to store the output files (default:\
+  \ work_dir/mQC_output)\n    --tool_dir              folder with necessary additional\
+  \ mappingQC tools. More information below in the dependencies section. (default:\
+  \ search for the default tool directory location in the active conda environment)\n\
+  \    --plotrpftool           the module that will be used for plotting the RPF-phase\
+  \ figure\n                                Possible options:\n                  \
+  \              - grouped2D: use Seaborn to plot a grouped 2D bar chart (default)\n\
+  \                                - pyplot3D: use mplot3d to plot a 3D bar chart.\
+  \ This tool can suffer sometimes from Escher effects, as it tries to plot a 3D plot\
+  \ with the 2D software of pyplot and matplotlib.\n                             \
+  \   - mayavi: use the mayavi package to plot a 3D bar chart. This tool only works\
+  \ on local systems with graphical cards.\n    --outhtml               custom name\
+  \ for the output HTML file (default: work_dir/mQC_experiment_name.html)\n    --outzip\
+  \                custom name for output ZIP file (default: work_dir/mQC_experiment_name.zip)\n\
+  \    \n"
+generated_using:
+- --help

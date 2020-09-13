@@ -1,0 +1,275 @@
+!Command
+command:
+- create_mega_reads
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: create_mega_reads_cmdline
+  optional: false
+named:
+- !Flag
+  description: '*Number of k-mers in SuperReads'
+  synonyms:
+  - -s
+  - --size
+  args: !SimpleFlagArg
+    name: uint64
+  optional: true
+- !Flag
+  description: '*Mer size'
+  synonyms:
+  - -m
+  - --mer
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Mer size for fine alignment
+  synonyms:
+  - -F
+  - --fine-mer
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Min suffix length in SA. Increase for speed up at the cost of memory
+    (13)
+  synonyms:
+  - --psa-min
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Length of k-unitigs
+  synonyms:
+  - -l
+  - --unitigs-lengths
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Fasta file containing the sequence of the k-unitigs
+  synonyms:
+  - -u
+  - --unitigs-sequences
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: '*Length of k-mer used to create k-unitigs'
+  synonyms:
+  - -k
+  - --k-mer
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Number of threads (1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Output file (stdout)
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Write an overlap graph (dot file)
+  synonyms:
+  - --dot
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Constant tolerated stretch between sequences (10)
+  synonyms:
+  - --stretch-constant
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Factor tolerated stretch between sequences (1.3)
+  synonyms:
+  - --stretch-factor
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Maximum distance between two consecutive k-mers in LIS (10000.0)
+  synonyms:
+  - --stretch-cap
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Check stretch on every window of k-mer this size (1)
+  synonyms:
+  - --window-size
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Play in overlap length between position and k-unitig lengths (1.3)
+  synonyms:
+  - -O
+  - --overlap-play
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Number of average errors slack for overlap computation (3.0)
+  synonyms:
+  - -e
+  - --errors
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Filter base on percent of bases matching (17.0)
+  synonyms:
+  - -B
+  - --bases-matching
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Filter base on percent of k-mer matching (0.0)
+  synonyms:
+  - -M
+  - --mers-matching
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Use secondary matches (false)
+  synonyms:
+  - --max-match
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum mer count in super read to be used for alignment (5000)
+  synonyms:
+  - --max-count
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Maximize number of bases in path, not the number of mers (false)
+  synonyms:
+  - -b
+  - --bases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum density of k-mers in mega-read (0.029)
+  synonyms:
+  - -d
+  - --density
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Minimum length of a mega-read (100.0)
+  synonyms:
+  - -L
+  - --min-length
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "|greedy|maximal|weighted\nOption for tiling mega-reads (greedy)"
+  synonyms:
+  - -T
+  - --tiling
+  args: !SimpleFlagArg
+    name: none
+  optional: true
+- !Flag
+  description: '|match|branch             How to trim mega-read (none)'
+  synonyms:
+  - --trim
+  args: !SimpleFlagArg
+    name: none
+  optional: true
+- !Flag
+  description: SuperReads sequence file
+  synonyms:
+  - -r
+  - --superreads
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: PacBio read sequence file
+  synonyms:
+  - -p
+  - --pacbio
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: This message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag: !Flag
+  description: Usage
+  synonyms:
+  - -U
+  - --usage
+  args: !EmptyFlagArg {}
+  optional: true
+version_flag: !Flag
+  description: Version
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: create_mega_reads_cmdline [options]\n\nAlign PacBio reads and SuperReads,\
+  \ and create mega reads\n\n\n\nOptions (default value in (), *required):\n -s, --size=uint64\
+  \                       *Number of k-mers in SuperReads\n -m, --mer=uint32     \
+  \                   *Mer size\n -F, --fine-mer=uint32                    Mer size\
+  \ for fine alignment\n     --psa-min=uint32                     Min suffix length\
+  \ in SA. Increase for speed up at the cost of memory (13)\n -l, --unitigs-lengths=path\
+  \               Length of k-unitigs\n -u, --unitigs-sequences=path             Fasta\
+  \ file containing the sequence of the k-unitigs\n -k, --k-mer=uint32           \
+  \           *Length of k-mer used to create k-unitigs\n -t, --threads=uint32   \
+  \                  Number of threads (1)\n -o, --output=path                   \
+  \     Output file (stdout)\n     --dot=path                           Write an overlap\
+  \ graph (dot file)\n     --stretch-constant=int               Constant tolerated\
+  \ stretch between sequences (10)\n     --stretch-factor=double              Factor\
+  \ tolerated stretch between sequences (1.3)\n     --stretch-cap=double         \
+  \        Maximum distance between two consecutive k-mers in LIS (10000.0)\n    \
+  \ --window-size=uint32                 Check stretch on every window of k-mer this\
+  \ size (1)\n -O, --overlap-play=double                Play in overlap length between\
+  \ position and k-unitig lengths (1.3)\n -e, --errors=double                    \
+  \  Number of average errors slack for overlap computation (3.0)\n -B, --bases-matching=double\
+  \              Filter base on percent of bases matching (17.0)\n -M, --mers-matching=double\
+  \               Filter base on percent of k-mer matching (0.0)\n     --max-match\
+  \                          Use secondary matches (false)\n     --max-count=uint32\
+  \                   Maximum mer count in super read to be used for alignment (5000)\n\
+  \ -b, --bases                              Maximize number of bases in path, not\
+  \ the number of mers (false)\n -d, --density=double                     Minimum\
+  \ density of k-mers in mega-read (0.029)\n -L, --min-length=double             \
+  \     Minimum length of a mega-read (100.0)\n -T, --tiling=none|greedy|maximal|weighted\n\
+  \                                          Option for tiling mega-reads (greedy)\n\
+  \     --trim=none|match|branch             How to trim mega-read (none)\n -r, --superreads=path\
+  \                    SuperReads sequence file\n -p, --pacbio=path              \
+  \          PacBio read sequence file\n -U, --usage                             \
+  \ Usage\n -h, --help                               This message\n -V, --version\
+  \                            Version\n"
+generated_using:
+- --help

@@ -1,0 +1,319 @@
+!Command
+command:
+- unicycler_polish
+positional: []
+named:
+- !Flag
+  description: Input assembly to be polished
+  synonyms:
+  - -a
+  - --assembly
+  args: !SimpleFlagArg
+    name: ASSEMBLY
+  optional: true
+- !Flag
+  description: FASTQ file of short reads (first reads in each pair)
+  synonyms:
+  - '-1'
+  - --short1
+  args: !SimpleFlagArg
+    name: SHORT1
+  optional: true
+- !Flag
+  description: "FASTQ file of short reads (second reads in each\npair)"
+  synonyms:
+  - '-2'
+  - --short2
+  args: !SimpleFlagArg
+    name: SHORT2
+  optional: true
+- !Flag
+  description: PacBio raw bax.h5 read files
+  synonyms:
+  - --pb_bax
+  args: !RepeatFlagArg
+    name: PB_BAX
+  optional: true
+- !Flag
+  description: PacBio BAM read file
+  synonyms:
+  - --pb_bam
+  args: !SimpleFlagArg
+    name: PB_BAM
+  optional: true
+- !Flag
+  description: FASTA file of PacBio reads
+  synonyms:
+  - --pb_fasta
+  args: !SimpleFlagArg
+    name: PB_FASTA
+  optional: true
+- !Flag
+  description: FASTQ/FASTA file of long reads
+  synonyms:
+  - --long_reads
+  args: !SimpleFlagArg
+    name: LONG_READS
+  optional: true
+- !Flag
+  description: 'do not fix local misassemblies (default: False)'
+  synonyms:
+  - --no_fix_local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'minimum valid short read insert size (default: auto)'
+  synonyms:
+  - --min_insert
+  args: !SimpleFlagArg
+    name: MIN_INSERT
+  optional: true
+- !Flag
+  description: 'maximum valid short read insert size (default: auto)'
+  synonyms:
+  - --max_insert
+  args: !SimpleFlagArg
+    name: MAX_INSERT
+  optional: true
+- !Flag
+  description: 'Minimum long read alignment length (default: 1000)'
+  synonyms:
+  - --min_align_length
+  args: !SimpleFlagArg
+    name: MIN_ALIGN_LENGTH
+  optional: true
+- !Flag
+  description: "Long read polish changes to a homopolymer of this\nlength or greater\
+    \ will be ignored (default: 4)"
+  synonyms:
+  - --homopolymer
+  args: !SimpleFlagArg
+    name: HOMOPOLYMER
+  optional: true
+- !Flag
+  description: "Variants of this size or greater will be assess as\nlarge variants\
+    \ (default: 10)"
+  synonyms:
+  - --large
+  args: !SimpleFlagArg
+    name: LARGE
+  optional: true
+- !Flag
+  description: "When assessing long read changes with short read\nalignments, a variant\
+    \ will only be applied if the\nalternative occurrences in the short read alignments\n\
+    exceed this percentage (default: 5)"
+  synonyms:
+  - --illumina_alt
+  args: !SimpleFlagArg
+    name: ILLUMINA_ALT
+  optional: true
+- !Flag
+  description: "Reject Pilon substitutions from long reads if the\nFreeBayes quality\
+    \ is less than this value (default:\n10.0)"
+  synonyms:
+  - --freebayes_qual_cutoff
+  args: !SimpleFlagArg
+    name: FREEBAYES_QUAL_CUTOFF
+  optional: true
+- !Flag
+  description: "CPU threads to use in alignment and consensus\n(default: number of\
+    \ CPUs)"
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "Level of stdout information (0 to 3, default: 2)\n0 = no stdout, 1\
+    \ = basic progress indicators,\n2 = extra info, 3 = debugging info"
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: 'path to samtools executable (default: samtools)'
+  synonyms:
+  - --samtools
+  args: !SimpleFlagArg
+    name: SAMTOOLS
+  optional: true
+- !Flag
+  description: 'path to bowtie2 executable (default: bowtie2)'
+  synonyms:
+  - --bowtie2
+  args: !SimpleFlagArg
+    name: BOWTIE2
+  optional: true
+- !Flag
+  description: 'path to minimap2 executable (default: minimap2)'
+  synonyms:
+  - --minimap2
+  args: !SimpleFlagArg
+    name: MINIMAP2
+  optional: true
+- !Flag
+  description: 'path to freebayes executable (default: freebayes)'
+  synonyms:
+  - --freebayes
+  args: !SimpleFlagArg
+    name: FREEBAYES
+  optional: true
+- !Flag
+  description: "Path to Pitchfork installation of PacBio tools\n(should contain bin\
+    \ and lib directories) (default: )"
+  synonyms:
+  - --pitchfork
+  args: !SimpleFlagArg
+    name: PITCHFORK
+  optional: true
+- !Flag
+  description: 'path to bax2bam executable (default: bax2bam)'
+  synonyms:
+  - --bax2bam
+  args: !SimpleFlagArg
+    name: BAX2BAM
+  optional: true
+- !Flag
+  description: 'path to pbalign executable (default: pbalign)'
+  synonyms:
+  - --pbalign
+  args: !SimpleFlagArg
+    name: PBALIGN
+  optional: true
+- !Flag
+  description: 'path to arrow executable (default: arrow)'
+  synonyms:
+  - --arrow
+  args: !SimpleFlagArg
+    name: ARROW
+  optional: true
+- !Flag
+  description: 'path to pilon jar file (default: pilon*.jar)'
+  synonyms:
+  - --pilon
+  args: !SimpleFlagArg
+    name: PILON
+  optional: true
+- !Flag
+  description: 'path to java executable (default: java)'
+  synonyms:
+  - --java
+  args: !SimpleFlagArg
+    name: JAVA
+  optional: true
+- !Flag
+  description: 'path to ALE executable (default: ALE)'
+  synonyms:
+  - --ale
+  args: !SimpleFlagArg
+    name: ALE
+  optional: true
+- !Flag
+  description: 'path to racon executable (default: racon)'
+  synonyms:
+  - --racon
+  args: !SimpleFlagArg
+    name: RACON
+  optional: true
+- !Flag
+  description: 'path to miniasm executable (default: minimap)'
+  synonyms:
+  - --minimap
+  args: !SimpleFlagArg
+    name: MINIMAP
+  optional: true
+- !Flag
+  description: 'path to nucmer executable (default: nucmer)'
+  synonyms:
+  - --nucmer
+  args: !SimpleFlagArg
+    name: NUCMER
+  optional: true
+- !Flag
+  description: 'path to show-snps executable (default: show-snps)'
+  synonyms:
+  - --showsnps
+  args: !SimpleFlagArg
+    name: SHOWSNPS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: unicycler_polish [-h] -a ASSEMBLY [-1 SHORT1] [-2 SHORT2]\n   \
+  \                     [--pb_bax PB_BAX [PB_BAX ...]] [--pb_bam PB_BAM]\n       \
+  \                 [--pb_fasta PB_FASTA] [--long_reads LONG_READS]\n            \
+  \            [--no_fix_local] [--min_insert MIN_INSERT]\n                      \
+  \  [--max_insert MAX_INSERT]\n                        [--min_align_length MIN_ALIGN_LENGTH]\n\
+  \                        [--homopolymer HOMOPOLYMER] [--large LARGE]\n         \
+  \               [--illumina_alt ILLUMINA_ALT]\n                        [--freebayes_qual_cutoff\
+  \ FREEBAYES_QUAL_CUTOFF]\n                        [--threads THREADS] [--verbosity\
+  \ VERBOSITY]\n                        [--samtools SAMTOOLS] [--bowtie2 BOWTIE2]\n\
+  \                        [--minimap2 MINIMAP2] [--freebayes FREEBAYES]\n       \
+  \                 [--pitchfork PITCHFORK] [--bax2bam BAX2BAM]\n                \
+  \        [--pbalign PBALIGN] [--arrow ARROW] [--pilon PILON]\n                 \
+  \       [--java JAVA] [--ale ALE] [--racon RACON]\n                        [--minimap\
+  \ MINIMAP] [--nucmer NUCMER]\n                        [--showsnps SHOWSNPS]\n\n\
+  Unicycler polish - hybrid assembly polishing\n\noptional arguments:\n  -h, --help\
+  \              show this help message and exit\n\nAssembly:\n  -a ASSEMBLY, --assembly\
+  \ ASSEMBLY\n                          Input assembly to be polished\n\nShort reads:\n\
+  \  To polish with short reads (using Pilon), provide two FASTQ files of\n  paired-end\
+  \ reads\n\n  -1 SHORT1, --short1 SHORT1\n                          FASTQ file of\
+  \ short reads (first reads in each pair)\n  -2 SHORT2, --short2 SHORT2\n       \
+  \                   FASTQ file of short reads (second reads in each\n          \
+  \                pair)\n\nPacBio reads:\n  To polish with PacBio reads (using Arrow),\
+  \ provide one of the following\n\n  --pb_bax PB_BAX [PB_BAX ...]\n             \
+  \             PacBio raw bax.h5 read files\n  --pb_bam PB_BAM         PacBio BAM\
+  \ read file\n  --pb_fasta PB_FASTA     FASTA file of PacBio reads\n\nGeneric long\
+  \ reads:\n  To polish with generic long reads, provide the following\n\n  --long_reads\
+  \ LONG_READS\n                          FASTQ/FASTA file of long reads\n\nPolishing\
+  \ settings:\n  Various settings for polishing behaviour (defaults should work well\
+  \ in\n  most cases)\n\n  --no_fix_local          do not fix local misassemblies\
+  \ (default: False)\n  --min_insert MIN_INSERT\n                          minimum\
+  \ valid short read insert size (default: auto)\n  --max_insert MAX_INSERT\n    \
+  \                      maximum valid short read insert size (default: auto)\n  --min_align_length\
+  \ MIN_ALIGN_LENGTH\n                          Minimum long read alignment length\
+  \ (default: 1000)\n  --homopolymer HOMOPOLYMER\n                          Long read\
+  \ polish changes to a homopolymer of this\n                          length or greater\
+  \ will be ignored (default: 4)\n  --large LARGE           Variants of this size\
+  \ or greater will be assess as\n                          large variants (default:\
+  \ 10)\n  --illumina_alt ILLUMINA_ALT\n                          When assessing long\
+  \ read changes with short read\n                          alignments, a variant\
+  \ will only be applied if the\n                          alternative occurrences\
+  \ in the short read alignments\n                          exceed this percentage\
+  \ (default: 5)\n  --freebayes_qual_cutoff FREEBAYES_QUAL_CUTOFF\n              \
+  \            Reject Pilon substitutions from long reads if the\n               \
+  \           FreeBayes quality is less than this value (default:\n              \
+  \            10.0)\n\nOther settings:\n  --threads THREADS       CPU threads to\
+  \ use in alignment and consensus\n                          (default: number of\
+  \ CPUs)\n  --verbosity VERBOSITY   Level of stdout information (0 to 3, default:\
+  \ 2)\n                            0 = no stdout, 1 = basic progress indicators,\n\
+  \                            2 = extra info, 3 = debugging info\n\nTool locations:\n\
+  \  If these required tools are not available in your PATH variable, specify\n  their\
+  \ location here (depending on which input reads are used, some of\n  these tools\
+  \ may not be required)\n\n  --samtools SAMTOOLS     path to samtools executable\
+  \ (default: samtools)\n  --bowtie2 BOWTIE2       path to bowtie2 executable (default:\
+  \ bowtie2)\n  --minimap2 MINIMAP2     path to minimap2 executable (default: minimap2)\n\
+  \  --freebayes FREEBAYES   path to freebayes executable (default: freebayes)\n \
+  \ --pitchfork PITCHFORK   Path to Pitchfork installation of PacBio tools\n     \
+  \                     (should contain bin and lib directories) (default: )\n  --bax2bam\
+  \ BAX2BAM       path to bax2bam executable (default: bax2bam)\n  --pbalign PBALIGN\
+  \       path to pbalign executable (default: pbalign)\n  --arrow ARROW         \
+  \  path to arrow executable (default: arrow)\n  --pilon PILON           path to\
+  \ pilon jar file (default: pilon*.jar)\n  --java JAVA             path to java executable\
+  \ (default: java)\n  --ale ALE               path to ALE executable (default: ALE)\n\
+  \  --racon RACON           path to racon executable (default: racon)\n  --minimap\
+  \ MINIMAP       path to miniasm executable (default: minimap)\n  --nucmer NUCMER\
+  \         path to nucmer executable (default: nucmer)\n  --showsnps SHOWSNPS   \
+  \  path to show-snps executable (default: show-snps)\n"
+generated_using:
+- --help

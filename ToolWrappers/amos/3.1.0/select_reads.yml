@@ -1,0 +1,107 @@
+!Command
+command:
+- select-reads
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: bank path
+  optional: false
+named:
+- !Flag
+  description: Disregard bank locks and write permissions (spy mode)
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display the compatible bank version
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify file containing list of iid's to print
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: IIDFile
+  optional: true
+- !Flag
+  description: Specify file containing list of eid's to print
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: EIDFile
+  optional: true
+- !Flag
+  description: Just output read names that would be printed by eid
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Just output read names that would be printed by iid
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Automatically consider mates
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Nullify mates in FRG if not printing both mate-pairs
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File of list reads iids to exclude
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: IIDFile
+  optional: true
+- !Flag
+  description: File of list reads eids to exclude
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: EIDFile
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display help information
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nUSAGE: select-reads [options] <bank path>\n\nPrint RED, FRG & LIB messages\
+  \ of selected reads from an AMOS Bank\n\n-h            Display help information\n\
+  -s            Disregard bank locks and write permissions (spy mode)\n-v        \
+  \    Display the compatible bank version\n-i IIDFile    Specify file containing\
+  \ list of iid's to print\n-I EIDFile    Specify file containing list of eid's to\
+  \ print\n-L            Just output read names that would be printed by eid\n-l \
+  \           Just output read names that would be printed by iid\n-M            Automatically\
+  \ consider mates\n-N            Nullify mates in FRG if not printing both mate-pairs\n\
+  -x IIDFile    File of list reads iids to exclude\n-X EIDFile    File of list reads\
+  \ eids to exclude\n\nNotes:\n. If there is no fragment bank, then it only prints\
+  \ read messages\n\n. By default, reads are considered independently so you can\n\
+  \  print a read, but not its mate. The -N option removes references\n  to unprinted\
+  \ mate-pairs in the FRG messages.\n\n. In most cases, you should use -M to automatically\
+  \ select mates.\n\nYou must specify included and/or excluded reads. Precedence is:\n\
+  1) If a read is excluded by -X or -x, it will not be printed\n  (-M) Mates of excluded\
+  \ reads will not be printed either\n\n2) If a read is included by -I or -i, it will\
+  \ be printed except if excluded\n  (-M) Mates of included reads will be printed,\
+  \ except if either is excluded\n       (Included Reads or mates may be clobbered\
+  \ by excluded reads or mates)\n\n3) If no reads are included, all reads except those\
+  \ excluded will be printed\n\nExclusion takes precedence over inclusion!\n"
+generated_using:
+- -h

@@ -1,0 +1,56 @@
+!Command
+command:
+- kissreads_graph
+positional: []
+named:
+- !Flag
+  description: this message and exit
+  synonyms:
+  - -h
+  args: !SimpleFlagArg
+    name: prints
+  optional: true
+- !Flag
+  description: "\"c\" \"coverage\"\n\"m\" \"modify\""
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: ": the input is considered as a Mapsembler output\n-o file_name: write\
+    \ obtained graph. Default: standard output\n-k size_seed: will use seeds of length\
+    \ size_seed. Default: 25.\n-c min_coverage: Will consider an edge as coherent\
+    \ if coverage (number of reads from all sets using this edge) is at least min_coverage.\
+    \ Default: 2\n-d max_substitutions: Will map a read on the graph with at most\
+    \ max_substitutions substitutions. Default: 1\n"
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\nkissreads_graph, version 1.0.0 Beta - Copyright INRIA - CeCILL License\n\
+  \t -h prints this message and exit\n\nUSAGE\nkissreads_graph input_graph <readsC1.fasta/fastq[.gz]>\
+  \ [<readsC2.fasta/fastq[.gz]> [<readsC3.fasta/fastq[.gz] ...] -M -t type [-k value]\
+  \ [-c min_coverage] [-d max_substitutions] [-o name] [-h] \n\nDESCRIPTION\nkissreads_graph\
+  \ maps the provided reads on the graph\nWith option \"-t coverage\": outputs an\
+  \ equivalent graph removing uncovered edges and adding:\n\t for each node: the coverage\
+  \ per sample and per position\n\t for each edge: the number of mapped reads per\
+  \ sample using this edge\nWith option \"-t modify\": outputs the same simplified\
+  \ graph:\n\t removing low covered edges and nodes (less that min_coverage)\n\t then\
+  \ phasing simple non branching paths\nIf -M option is specified, the input is considered\
+  \ as a Mapsembler output - thus composed of multiple independant graphes\n\nMANDATORY\n\
+  \t -t <type> \n\t\t \"c\" \"coverage\" \n\t\t \"m\" \"modify\" \n\nOPTIONS\n-M:\
+  \ the input is considered as a Mapsembler output\n\t -o file_name: write obtained\
+  \ graph. Default: standard output \n\t -k size_seed: will use seeds of length size_seed.\
+  \ Default: 25.\n\t -c min_coverage: Will consider an edge as coherent if coverage\
+  \ (number of reads from all sets using this edge) is at least min_coverage. Default:\
+  \ 2 \n\t -d max_substitutions: Will map a read on the graph with at most max_substitutions\
+  \ substitutions. Default: 1 \n"
+generated_using:
+- --help

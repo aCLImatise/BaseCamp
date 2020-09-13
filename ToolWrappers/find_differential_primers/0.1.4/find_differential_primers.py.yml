@@ -1,0 +1,405 @@
+!Command
+command:
+- find_differential_primers.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: arg
+  optional: false
+named:
+- !Flag
+  description: location of configuration file
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: directory for output files
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: number of primers to find
+  synonyms:
+  - --numreturn
+  args: !SimpleFlagArg
+    name: NUMRETURN
+  optional: true
+- !Flag
+  description: generate internal oligo as a hybridisation probe
+  synonyms:
+  - --hybridprobe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: allow no more than two GC at the 3` end of primers
+  synonyms:
+  - --filtergc3prime
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "location of FASTA sequence file containing sequences\nfrom which a\
+    \ sequence-specific primer must amplify\nexactly one product."
+  synonyms:
+  - --single_product
+  args: !SimpleFlagArg
+    name: SINGLE_PRODUCT
+  optional: true
+- !Flag
+  description: location of Prodigal executable
+  synonyms:
+  - --prodigal
+  args: !SimpleFlagArg
+    name: PRODIGAL_EXE
+  optional: true
+- !Flag
+  description: location of EMBOSS eprimer3 executable
+  synonyms:
+  - --eprimer3
+  args: !SimpleFlagArg
+    name: EPRIMER3_EXE
+  optional: true
+- !Flag
+  description: location of BLASTN/BLASTALL executable
+  synonyms:
+  - --blast_exe
+  args: !SimpleFlagArg
+    name: BLAST_EXE
+  optional: true
+- !Flag
+  description: location of BLAST database
+  synonyms:
+  - --blastdb
+  args: !SimpleFlagArg
+    name: BLASTDB
+  optional: true
+- !Flag
+  description: use existing BLAST results
+  synonyms:
+  - --useblast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not restrict primer prediction to CDS
+  synonyms:
+  - --nocds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not carry out Prodigal prediction step
+  synonyms:
+  - --noprodigal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not carry out ePrimer3 prediction step
+  synonyms:
+  - --noprimer3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not carry out PrimerSearch step
+  synonyms:
+  - --noprimersearch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not carry out primer classification step
+  synonyms:
+  - --noclassify
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: optimal size for primer oligo
+  synonyms:
+  - --osize
+  args: !SimpleFlagArg
+    name: OSIZE
+  optional: true
+- !Flag
+  description: minimum size for primer oligo
+  synonyms:
+  - --minsize
+  args: !SimpleFlagArg
+    name: MINSIZE
+  optional: true
+- !Flag
+  description: maximum size for primer oligo
+  synonyms:
+  - --maxsize
+  args: !SimpleFlagArg
+    name: MAXSIZE
+  optional: true
+- !Flag
+  description: optimal melting temperature for primer oligo
+  synonyms:
+  - --otm
+  args: !SimpleFlagArg
+    name: OTM
+  optional: true
+- !Flag
+  description: minimum melting temperature for primer oligo
+  synonyms:
+  - --mintm
+  args: !SimpleFlagArg
+    name: MINTM
+  optional: true
+- !Flag
+  description: maximum melting temperature for primer oligo
+  synonyms:
+  - --maxtm
+  args: !SimpleFlagArg
+    name: MAXTM
+  optional: true
+- !Flag
+  description: optimal %GC for primer oligo
+  synonyms:
+  - --ogcpercent
+  args: !SimpleFlagArg
+    name: OGCPERCENT
+  optional: true
+- !Flag
+  description: minimum %GC for primer oligo
+  synonyms:
+  - --mingc
+  args: !SimpleFlagArg
+    name: MINGC
+  optional: true
+- !Flag
+  description: maximum %GC for primer oligo
+  synonyms:
+  - --maxgc
+  args: !SimpleFlagArg
+    name: MAXGC
+  optional: true
+- !Flag
+  description: optimal size for amplified region
+  synonyms:
+  - --psizeopt
+  args: !SimpleFlagArg
+    name: PSIZEOPT
+  optional: true
+- !Flag
+  description: minimum size for amplified region
+  synonyms:
+  - --psizemin
+  args: !SimpleFlagArg
+    name: PSIZEMIN
+  optional: true
+- !Flag
+  description: maximum size for amplified region
+  synonyms:
+  - --psizemax
+  args: !SimpleFlagArg
+    name: PSIZEMAX
+  optional: true
+- !Flag
+  description: maximum run of repeated nucleotides in primer
+  synonyms:
+  - --maxpolyx
+  args: !SimpleFlagArg
+    name: MAXPOLYX
+  optional: true
+- !Flag
+  description: allowed percentage mismatch in primersearch
+  synonyms:
+  - --mismatchpercent
+  args: !SimpleFlagArg
+    name: MISMATCHPERCENT
+  optional: true
+- !Flag
+  description: optimal size for internal oligo
+  synonyms:
+  - --oligoosize
+  args: !SimpleFlagArg
+    name: OLIGOOSIZE
+  optional: true
+- !Flag
+  description: minimum size for internal oligo
+  synonyms:
+  - --oligominsize
+  args: !SimpleFlagArg
+    name: OLIGOMINSIZE
+  optional: true
+- !Flag
+  description: maximum size for internal oligo
+  synonyms:
+  - --oligomaxsize
+  args: !SimpleFlagArg
+    name: OLIGOMAXSIZE
+  optional: true
+- !Flag
+  description: optimal melting temperature for internal oligo
+  synonyms:
+  - --oligootm
+  args: !SimpleFlagArg
+    name: OLIGOOTM
+  optional: true
+- !Flag
+  description: minimum melting temperature for internal oligo
+  synonyms:
+  - --oligomintm
+  args: !SimpleFlagArg
+    name: OLIGOMINTM
+  optional: true
+- !Flag
+  description: maximum melting temperature for internal oligo
+  synonyms:
+  - --oligomaxtm
+  args: !SimpleFlagArg
+    name: OLIGOMAXTM
+  optional: true
+- !Flag
+  description: optimal %GC for internal oligo
+  synonyms:
+  - --oligoogcpercent
+  args: !SimpleFlagArg
+    name: OLIGOOGCPERCENT
+  optional: true
+- !Flag
+  description: minimum %GC for internal oligo
+  synonyms:
+  - --oligomingc
+  args: !SimpleFlagArg
+    name: OLIGOMINGC
+  optional: true
+- !Flag
+  description: maximum %GC for internal oligo
+  synonyms:
+  - --oligomaxgc
+  args: !SimpleFlagArg
+    name: OLIGOMAXGC
+  optional: true
+- !Flag
+  description: maximum run of repeated nt in internal oligo
+  synonyms:
+  - --oligomaxpolyx
+  args: !SimpleFlagArg
+    name: OLIGOMAXPOLYX
+  optional: true
+- !Flag
+  description: number of CPUs to use in multiprocessing
+  synonyms:
+  - --cpus
+  args: !SimpleFlagArg
+    name: CPUS
+  optional: true
+- !Flag
+  description: use SGE job scheduler
+  synonyms:
+  - --sge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: clean up old output files before running
+  synonyms:
+  - --clean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: clean up old output files and exit
+  synonyms:
+  - --cleanonly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: script logfile location
+  synonyms:
+  - -l
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: report progress to log
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: report extra progress to log for debugging
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: store log files from each process
+  synonyms:
+  - --keep_logs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: store called process log files in this directory
+  synonyms:
+  - --log_dir
+  args: !SimpleFlagArg
+    name: LOG_DIR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: find_differential_primers.py [options] arg\n\nOptions:\n  -h, --help\
+  \            show this help message and exit\n  -i FILENAME, --infile=FILENAME\n\
+  \                        location of configuration file\n  -o OUTDIR, --outdir=OUTDIR\n\
+  \                        directory for output files\n  --numreturn=NUMRETURN\n \
+  \                       number of primers to find\n  --hybridprobe         generate\
+  \ internal oligo as a hybridisation probe\n  --filtergc3prime      allow no more\
+  \ than two GC at the 3` end of primers\n  --single_product=SINGLE_PRODUCT\n    \
+  \                    location of FASTA sequence file containing sequences\n    \
+  \                    from which a sequence-specific primer must amplify\n      \
+  \                  exactly one product.\n  --prodigal=PRODIGAL_EXE\n           \
+  \             location of Prodigal executable\n  --eprimer3=EPRIMER3_EXE\n     \
+  \                   location of EMBOSS eprimer3 executable\n  --blast_exe=BLAST_EXE\n\
+  \                        location of BLASTN/BLASTALL executable\n  --blastdb=BLASTDB\
+  \     location of BLAST database\n  --useblast            use existing BLAST results\n\
+  \  --nocds               do not restrict primer prediction to CDS\n  --noprodigal\
+  \          do not carry out Prodigal prediction step\n  --noprimer3           do\
+  \ not carry out ePrimer3 prediction step\n  --noprimersearch      do not carry out\
+  \ PrimerSearch step\n  --noclassify          do not carry out primer classification\
+  \ step\n  --osize=OSIZE         optimal size for primer oligo\n  --minsize=MINSIZE\
+  \     minimum size for primer oligo\n  --maxsize=MAXSIZE     maximum size for primer\
+  \ oligo\n  --otm=OTM             optimal melting temperature for primer oligo\n\
+  \  --mintm=MINTM         minimum melting temperature for primer oligo\n  --maxtm=MAXTM\
+  \         maximum melting temperature for primer oligo\n  --ogcpercent=OGCPERCENT\n\
+  \                        optimal %GC for primer oligo\n  --mingc=MINGC         minimum\
+  \ %GC for primer oligo\n  --maxgc=MAXGC         maximum %GC for primer oligo\n \
+  \ --psizeopt=PSIZEOPT   optimal size for amplified region\n  --psizemin=PSIZEMIN\
+  \   minimum size for amplified region\n  --psizemax=PSIZEMAX   maximum size for\
+  \ amplified region\n  --maxpolyx=MAXPOLYX   maximum run of repeated nucleotides\
+  \ in primer\n  --mismatchpercent=MISMATCHPERCENT\n                        allowed\
+  \ percentage mismatch in primersearch\n  --oligoosize=OLIGOOSIZE\n             \
+  \           optimal size for internal oligo\n  --oligominsize=OLIGOMINSIZE\n   \
+  \                     minimum size for internal oligo\n  --oligomaxsize=OLIGOMAXSIZE\n\
+  \                        maximum size for internal oligo\n  --oligootm=OLIGOOTM\
+  \   optimal melting temperature for internal oligo\n  --oligomintm=OLIGOMINTM\n\
+  \                        minimum melting temperature for internal oligo\n  --oligomaxtm=OLIGOMAXTM\n\
+  \                        maximum melting temperature for internal oligo\n  --oligoogcpercent=OLIGOOGCPERCENT\n\
+  \                        optimal %GC for internal oligo\n  --oligomingc=OLIGOMINGC\n\
+  \                        minimum %GC for internal oligo\n  --oligomaxgc=OLIGOMAXGC\n\
+  \                        maximum %GC for internal oligo\n  --oligomaxpolyx=OLIGOMAXPOLYX\n\
+  \                        maximum run of repeated nt in internal oligo\n  --cpus=CPUS\
+  \           number of CPUs to use in multiprocessing\n  --sge                 use\
+  \ SGE job scheduler\n  --clean               clean up old output files before running\n\
+  \  --cleanonly           clean up old output files and exit\n  -l LOGFILE, --logfile=LOGFILE\n\
+  \                        script logfile location\n  -v, --verbose         report\
+  \ progress to log\n  --debug               report extra progress to log for debugging\n\
+  \  --keep_logs           store log files from each process\n  --log_dir=LOG_DIR\
+  \     store called process log files in this directory\n"
+generated_using:
+- --help

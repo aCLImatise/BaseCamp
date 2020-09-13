@@ -1,0 +1,165 @@
+!Command
+command:
+- backspin
+positional: []
+named:
+- !Flag
+  description: '[inputfile]'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[inputfile]\nPath of the cef formatted tab delimited file.\nRows\
+    \ should be genes and columns single cells/samples.\nFor further information on\
+    \ the cef format visit:\nhttps://github.com/linnarsson-lab/ceftools"
+  synonyms:
+  - --input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[outputfile]'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[outputfile]\nThe name of the file to which the output will be written"
+  synonyms:
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[int]\nDepth/Number of levels: The number of nested splits that will\
+    \ be tried by the algorithm"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[int]\nNumber of the iterations used in the preparatory SPIN.\nDefaults\
+    \ to 10"
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[int]\nFeature selection is performed before BackSPIN. Argument controls\
+    \ how many genes are seleceted.\nSelection is based on expected noise (a curve\
+    \ fit to the CV-vs-mean plot)."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[float]\nControls the decrease rate of the width parameter used in\
+    \ the preparatory SPIN.\nSmaller values will increase the number of SPIN iterations\
+    \ and result in higher\nprecision in the first step but longer execution time.\n\
+    Defaults to 0.1"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[int]\nNumber of the iterations used for every width parameter.\n\
+    Does not apply on the first run (use -t instead)\nDefaults to 8"
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[float]\nControls the decrease rate of the width parameter.\nSmaller\
+    \ values will increase the number of SPIN iterations and result in higher\nprecision\
+    \ but longer execution time.\nDoes not apply on the first run (use -s instead)\n\
+    Defaults to 0.3"
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[int]\nMinimal number of genes that a group must contain for splitting\
+    \ to be allowed.\nDefaults to 2"
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[int]\nMinimal number of cells that a group must contain for splitting\
+    \ to be allowed.\nDefaults to 2"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[float]\nMinimum score that a breaking point has to reach to be suitable\
+    \ for splitting.\nDefaults to 1.15"
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[float]\nIf the difference between the average expression of two groups\
+    \ is lower than threshold the algorythm\nuses higly correlated genes to assign\
+    \ the gene to one of the two groups\nDefaults to 0.2"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[axisvalue]\nRun normal SPIN instead of backSPIN.\nNormal spin accepts\
+    \ the parameters -T -S\nAn axis value 0 to only sort genes (rows), 1 to only sort\
+    \ cells (columns) or 'both' for both\nmust be passed"
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Verbose. Print  to the stdoutput extra details of what is happening\n"
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\n       backSPIN commandline tool\n       -------------------------\n\
+  \n       The options are as follows:\n\n       -i [inputfile]\n       --input=[inputfile]\n\
+  \              Path of the cef formatted tab delimited file.\n              Rows\
+  \ should be genes and columns single cells/samples.\n              For further information\
+  \ on the cef format visit:\n              https://github.com/linnarsson-lab/ceftools\n\
+  \n       -o [outputfile]\n       --output=[outputfile]\n              The name of\
+  \ the file to which the output will be written\n\n       -d [int]\n            \
+  \  Depth/Number of levels: The number of nested splits that will be tried by the\
+  \ algorithm\n       -t [int]\n              Number of the iterations used in the\
+  \ preparatory SPIN.\n              Defaults to 10\n       -f [int]   \n        \
+  \      Feature selection is performed before BackSPIN. Argument controls how many\
+  \ genes are seleceted.\n              Selection is based on expected noise (a curve\
+  \ fit to the CV-vs-mean plot).\n       -s [float]\n              Controls the decrease\
+  \ rate of the width parameter used in the preparatory SPIN.\n              Smaller\
+  \ values will increase the number of SPIN iterations and result in higher \n   \
+  \           precision in the first step but longer execution time.\n           \
+  \   Defaults to 0.1\n       -T [int]\n              Number of the iterations used\
+  \ for every width parameter.\n              Does not apply on the first run (use\
+  \ -t instead)\n              Defaults to 8\n       -S [float]\n              Controls\
+  \ the decrease rate of the width parameter.\n              Smaller values will increase\
+  \ the number of SPIN iterations and result in higher \n              precision but\
+  \ longer execution time.\n              Does not apply on the first run (use -s\
+  \ instead)\n              Defaults to 0.3\n       -g [int]\n              Minimal\
+  \ number of genes that a group must contain for splitting to be allowed.\n     \
+  \         Defaults to 2\n       -c [int]\n              Minimal number of cells\
+  \ that a group must contain for splitting to be allowed.\n              Defaults\
+  \ to 2\n       -k [float]\n              Minimum score that a breaking point has\
+  \ to reach to be suitable for splitting.\n              Defaults to 1.15\n     \
+  \  -r [float]\n              If the difference between the average expression of\
+  \ two groups is lower than threshold the algorythm \n              uses higly correlated\
+  \ genes to assign the gene to one of the two groups\n              Defaults to 0.2\n\
+  \       -b [axisvalue]\n              Run normal SPIN instead of backSPIN.\n   \
+  \           Normal spin accepts the parameters -T -S\n              An axis value\
+  \ 0 to only sort genes (rows), 1 to only sort cells (columns) or 'both' for both\n\
+  \              must be passed\n       -v  \n              Verbose. Print  to the\
+  \ stdoutput extra details of what is happening\n\n    \n"
+generated_using:
+- --help

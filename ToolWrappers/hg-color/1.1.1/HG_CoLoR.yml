@@ -1,0 +1,161 @@
+!Command
+command:
+- HG-CoLoR
+positional: []
+named:
+- !Flag
+  description: ':        Minimum k-mer size of the variable-order de Bruijn graph
+    (default: K/2).'
+  synonyms:
+  - --minorder
+  - -k
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ":           Minimum number of occurrences to consider a short read\
+    \ k-mer as solid, after correction (default: 1).\nThis parameter should be carefully\
+    \ raised accordingly to the short reads coverage and accuracy,\nand to the chosen\
+    \ maximum order of the graph.\nIt should only be increased when using high coverage\
+    \ of short reads, or a small maximum order."
+  synonyms:
+  - --solid
+  - -S
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ':    Minimum overlap length to allow the merging of two overlapping
+    seeds (default: K - 1).'
+  synonyms:
+  - --seedsoverlap
+  - -o
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ':   Maximum distance to consider two consecutive seeds for merging
+    (default: 10).'
+  synonyms:
+  - --seedsdistance
+  - -d
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ":        Maximum number of branches exploration (default: 1,250).\n\
+    Raising this parameter will result in less split corrected long reads.\nHowever,\
+    \ it will also increase the runtime, and may create chimeric linkings between\
+    \ the seeds."
+  synonyms:
+  - --branches
+  - -b
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ':       Maximum number of seed skips (default: 3).'
+  synonyms:
+  - --seedskips
+  - -s
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ':      Allowed mismatches when attempting to link two seeds together
+    (default: 3).'
+  synonyms:
+  - --mismatches
+  - -m
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ":           Top alignments to be reported by BLASR (default: 50).\n\
+    This parameter should be raised accordingly to the short reads coverage.\nIts\
+    \ default value is adapted for a 50x coverage of short reads.\nIt should be decreased\
+    \ with higher coverage, and increased with lower coverage."
+  synonyms:
+  - --bestn
+  - -n
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ':           Number of processes to run in parallel (default: number
+    of cores).'
+  synonyms:
+  - --nproc
+  - -j
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ':    Path where to store the directory containing temporary files
+    (default: working directory).'
+  synonyms:
+  - --tmpdir
+  - -t
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: ':          Maximum amount of RAM for KMC, in GB (default: 12).'
+  synonyms:
+  - --kmcmem
+  - -r
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ':                    Print this help message.'
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/HG-CoLoR [options] --longreads LR.fasta --shortreads\
+  \ SR.fastq --out resultPrefix -K maxK\n\nNote: HG-CoLoR default parameters are adapted\
+  \ for a 50x coverage set of short reads with a 1% error rate.\nPlease modify the\
+  \ parameters, in particular the --solid and --bestn ones, as indicated below\nif\
+  \ using a set of short reads with a much higher coverage and/or a highly different\
+  \ error rate.\n\n\tInput:\n\tLR.fasta:                      fasta file of long reads,\
+  \ one sequence per line.\n\tSR.fastq:                      fastq file of short reads.\n\
+  \t                               Warning: only one file must be provided.\n\t  \
+  \                             If using paired reads, please concatenate them into\
+  \ one single file.\n\tresultPrefix:                  Prefix of the fasta files where\
+  \ to output the corrected, trim and split long reads.\n\tmaxK:                 \
+  \         Maximum K-mer size of the variable-order de Bruijn graph.\n\n\tOptions:\n\
+  \t--minorder INT, -k INT:        Minimum k-mer size of the variable-order de Bruijn\
+  \ graph (default: K/2).\n\t--solid INT, -S INT:           Minimum number of occurrences\
+  \ to consider a short read k-mer as solid, after correction (default: 1).\n\t  \
+  \                             This parameter should be carefully raised accordingly\
+  \ to the short reads coverage and accuracy,\n\t                               and\
+  \ to the chosen maximum order of the graph.\n                                 It\
+  \ should only be increased when using high coverage of short reads, or a small maximum\
+  \ order.\n\t--seedsoverlap INT, -o INT:    Minimum overlap length to allow the merging\
+  \ of two overlapping seeds (default: K - 1).\n  --seedsdistance INT, -d INT:   Maximum\
+  \ distance to consider two consecutive seeds for merging (default: 10).\n\t--branches\
+  \ INT, -b INT:        Maximum number of branches exploration (default: 1,250).\n\
+  \t                               Raising this parameter will result in less split\
+  \ corrected long reads.\n\t                               However, it will also\
+  \ increase the runtime, and may create chimeric linkings between the seeds.\n\t\
+  --seedskips INT, -s INT:       Maximum number of seed skips (default: 3).\n\t--mismatches\
+  \ INT, -m INT:      Allowed mismatches when attempting to link two seeds together\
+  \ (default: 3).\n\t--bestn INT, -n INT:           Top alignments to be reported\
+  \ by BLASR (default: 50).\n\t                               This parameter should\
+  \ be raised accordingly to the short reads coverage.\n\t                       \
+  \        Its default value is adapted for a 50x coverage of short reads.\n     \
+  \                            It should be decreased with higher coverage, and increased\
+  \ with lower coverage.\n\t--nproc INT, -j INT:           Number of processes to\
+  \ run in parallel (default: number of cores).\n\t--tmpdir STRING, -t STRING:   \
+  \ Path where to store the directory containing temporary files (default: working\
+  \ directory).\n\t--kmcmem INT, -r INT:          Maximum amount of RAM for KMC, in\
+  \ GB (default: 12).\n\t--help, -h:                    Print this help message.\n"
+generated_using:
+- --help

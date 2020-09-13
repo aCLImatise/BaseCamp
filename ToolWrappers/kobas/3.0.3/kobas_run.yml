@@ -1,0 +1,288 @@
+!Command
+command:
+- kobas-run
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: run_kobas.py
+  optional: false
+named:
+- !Flag
+  description: "list available species, or list available databases\nfor specific\
+    \ species"
+  synonyms:
+  - -l
+  - --list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input data file
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: INFILE
+  optional: true
+- !Flag
+  description: "input type (fasta:pro, fasta:nuc, blastout:xml,\nblastout:tab, id:refseqpro,\
+    \ id:uniprot, id:ensembl,\nid:ncbigene), default fasta:pro"
+  synonyms:
+  - -t
+  - --intype
+  args: !SimpleFlagArg
+    name: INTYPE
+  optional: true
+- !Flag
+  description: "species abbreviation (for example: ko for KEGG\nOrthology, hsa for\
+    \ Homo sapiens, mmu for Mus musculus,\ndme for Drosophila melanogaster, ath for\
+    \ Arabidopsis\nthaliana, sce for Saccharomyces cerevisiae and eco for\nEscherichia\
+    \ coli K-12 MG1655)"
+  synonyms:
+  - -s
+  - --species
+  args: !SimpleFlagArg
+    name: SPECIES
+  optional: true
+- !Flag
+  description: expect threshold for BLAST, default 1e-5
+  synonyms:
+  - -E
+  - --evalue
+  args: !SimpleFlagArg
+    name: EVALUE
+  optional: true
+- !Flag
+  description: "rank cutoff for valid hits from BLAST result, default\n5"
+  synonyms:
+  - -R
+  - --rank
+  args: !SimpleFlagArg
+    name: RANK
+  optional: true
+- !Flag
+  description: number of CPUs to be used by BLAST, default 1
+  synonyms:
+  - -N
+  - --nCPUs
+  args: !SimpleFlagArg
+    name: NCPUS
+  optional: true
+- !Flag
+  description: subject coverage cutoff for BLAST, default 0
+  synonyms:
+  - -C
+  - --coverage
+  args: !SimpleFlagArg
+    name: COVERAGE
+  optional: true
+- !Flag
+  description: "whether only use ortholog for cross-species annotation\nor not, default\
+    \ NO (If only use ortholog, give species\nabbr)"
+  synonyms:
+  - -Z
+  - --ortholog
+  args: !SimpleFlagArg
+    name: ORTHOLOG
+  optional: true
+- !Flag
+  description: "background file, the output of annotate (3 or 4-letter\nfile name\
+    \ is not allowed), or species abbreviation\n(for example: hsa for Homo sapiens,\
+    \ mmu for Mus\nmusculus, dme for Drosophila melanogaster, ath for\nArabidopsis\
+    \ thaliana, sce for Saccharomyces cerevisiae\nand eco for Escherichia coli K-12\
+    \ MG1655), default\nsame species as annotate"
+  synonyms:
+  - -b
+  - --bgfile
+  args: !SimpleFlagArg
+    name: BGFILE
+  optional: true
+- !Flag
+  description: "databases for selection, 1-letter abbreviation\nseparated by \"/\"\
+    : K for KEGG PATHWAY, R for Reactome,\nB for BioCyc, p for PANTHER, o for OMIM,\
+    \ k for KEGG\nDISEASE, N for NHGRI GWAS Catalog and G for Gene\nOntology, S for\
+    \ Gene Ontology Slim, default\nK/R/B/p/o/k/N/G/S"
+  synonyms:
+  - -d
+  - --db
+  args: !SimpleFlagArg
+    name: DB
+  optional: true
+- !Flag
+  description: "choose statistical test method: b for binomial test, c\nfor chi-square\
+    \ test, h for hypergeometric test /\nFisher's exact test, and x for frequency\
+    \ list, default\nhypergeometric test / Fisher's exact test"
+  synonyms:
+  - -m
+  - --method
+  args: !SimpleFlagArg
+    name: METHOD
+  optional: true
+- !Flag
+  description: "choose false discovery rate (FDR) correction method:\nBH for Benjamini\
+    \ and Hochberg, BY for Benjamini and\nYekutieli, QVALUE, and None, default BH"
+  synonyms:
+  - -n
+  - --fdr
+  args: !SimpleFlagArg
+    name: FDR
+  optional: true
+- !Flag
+  description: output file for identification result, default stdout
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: "the gene number in a term is not less than the cutoff,\ndefault 5"
+  synonyms:
+  - -c
+  - --cutoff
+  args: !SimpleFlagArg
+    name: CUTOFF
+  optional: true
+- !Flag
+  description: "Optional parameter. To set path to kobas_home, which\nis parent directory\
+    \ of sqlite3/ and seq_pep/ , default\nvalue is read from ~/.kobasrcwhere you set\
+    \ before\nrunning kobas. If you set this parameter, it means you\nset \"kobasdb\"\
+    \ and \"blastdb\" in this following\ndirectory. e.g. \"-k /home/user/kobas/\"\
+    , means that you\nset kobasdb = /home/user/kobas/sqlite3/ and blastdb =\n/home/user/kobas/seq_pep/"
+  synonyms:
+  - -k
+  - --kobashome
+  args: !SimpleFlagArg
+    name: KOBAS_HOME
+  optional: true
+- !Flag
+  description: "Optional parameter. To set parent directory of blastx\nand blastp.\
+    \ If you set this parameter, it means you\nset \"blastx\" and \"blastp\" in this\
+    \ following directory.\nDefault value is read from ~/.kobasrc where you set\n\
+    before running kobas"
+  synonyms:
+  - -v
+  - --blasthome
+  args: !SimpleFlagArg
+    name: BLAST_HOME
+  optional: true
+- !Flag
+  description: "Optional parameter. To set path to sep_pep/, default\nvalue is read\
+    \ from ~/.kobasrc where you set before\nrunning kobas"
+  synonyms:
+  - -y
+  - --blastdb
+  args: !SimpleFlagArg
+    name: BLASTDB
+  optional: true
+- !Flag
+  description: "Optional parameter. To set path to sqlite3/, default\nvalue is read\
+    \ from ~/.kobasrc where you set before\nrunning kobas, e.g. \"-q /kobas_home/sqlite3/\""
+  synonyms:
+  - -q
+  - --kobasdb
+  args: !SimpleFlagArg
+    name: KOBASDB
+  optional: true
+- !Flag
+  description: "Optional parameter. To set path to blastp program,\ndefault value\
+    \ is read from ~/.kobasrc where you set\nbefore running kobas"
+  synonyms:
+  - -p
+  - --blastp
+  args: !SimpleFlagArg
+    name: BLASTP
+  optional: true
+- !Flag
+  description: "Optional parameter. To set path to  blasx program,\ndefault value\
+    \ is read from ~/.kobasrc where you set\nbefore running kobas\n"
+  synonyms:
+  - -x
+  - --blastx
+  args: !SimpleFlagArg
+    name: BLASTX
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: run_kobas.py [-l] -i infile [-t intype] -s species [-E evalue]\
+  \ [-R rank] [-N nCPUs] [-C coverage] [-Z ortholog] [-b bgfile] [-d database] [-m\
+  \ method] [-n fdr] [-o outfile] [-c cutoff] [-k kobas_home] [-v blast_home] [-y\
+  \ blastdb] [-q kobasdb] [-p blastp] [-x blastx]\n\nOptions:\n  -h, --help      \
+  \      show this help message and exit\n  -l, --list            list available species,\
+  \ or list available databases\n                        for specific species\n  -i\
+  \ INFILE, --infile=INFILE\n                        input data file\n  -t INTYPE,\
+  \ --intype=INTYPE\n                        input type (fasta:pro, fasta:nuc, blastout:xml,\n\
+  \                        blastout:tab, id:refseqpro, id:uniprot, id:ensembl,\n \
+  \                       id:ncbigene), default fasta:pro\n  -s SPECIES, --species=SPECIES\n\
+  \                        species abbreviation (for example: ko for KEGG\n      \
+  \                  Orthology, hsa for Homo sapiens, mmu for Mus musculus,\n    \
+  \                    dme for Drosophila melanogaster, ath for Arabidopsis\n    \
+  \                    thaliana, sce for Saccharomyces cerevisiae and eco for\n  \
+  \                      Escherichia coli K-12 MG1655)\n  -E EVALUE, --evalue=EVALUE\n\
+  \                        expect threshold for BLAST, default 1e-5\n  -R RANK, --rank=RANK\
+  \  rank cutoff for valid hits from BLAST result, default\n                     \
+  \   5\n  -N NCPUS, --nCPUs=NCPUS\n                        number of CPUs to be used\
+  \ by BLAST, default 1\n  -C COVERAGE, --coverage=COVERAGE\n                    \
+  \    subject coverage cutoff for BLAST, default 0\n  -Z ORTHOLOG, --ortholog=ORTHOLOG\n\
+  \                        whether only use ortholog for cross-species annotation\n\
+  \                        or not, default NO (If only use ortholog, give species\n\
+  \                        abbr)\n  -b BGFILE, --bgfile=BGFILE\n                 \
+  \       background file, the output of annotate (3 or 4-letter\n               \
+  \         file name is not allowed), or species abbreviation\n                 \
+  \       (for example: hsa for Homo sapiens, mmu for Mus\n                      \
+  \  musculus, dme for Drosophila melanogaster, ath for\n                        Arabidopsis\
+  \ thaliana, sce for Saccharomyces cerevisiae\n                        and eco for\
+  \ Escherichia coli K-12 MG1655), default\n                        same species as\
+  \ annotate\n  -d DB, --db=DB        databases for selection, 1-letter abbreviation\n\
+  \                        separated by \"/\": K for KEGG PATHWAY, R for Reactome,\n\
+  \                        B for BioCyc, p for PANTHER, o for OMIM, k for KEGG\n \
+  \                       DISEASE, N for NHGRI GWAS Catalog and G for Gene\n     \
+  \                   Ontology, S for Gene Ontology Slim, default\n              \
+  \          K/R/B/p/o/k/N/G/S\n  -m METHOD, --method=METHOD\n                   \
+  \     choose statistical test method: b for binomial test, c\n                 \
+  \       for chi-square test, h for hypergeometric test /\n                     \
+  \   Fisher's exact test, and x for frequency list, default\n                   \
+  \     hypergeometric test / Fisher's exact test\n  -n FDR, --fdr=FDR     choose\
+  \ false discovery rate (FDR) correction method:\n                        BH for\
+  \ Benjamini and Hochberg, BY for Benjamini and\n                        Yekutieli,\
+  \ QVALUE, and None, default BH\n  -o OUTFILE, --outfile=OUTFILE\n              \
+  \          output file for identification result, default stdout\n  -c CUTOFF, --cutoff=CUTOFF\n\
+  \                        the gene number in a term is not less than the cutoff,\n\
+  \                        default 5\n  -k KOBAS_HOME, --kobashome=KOBAS_HOME\n  \
+  \                      Optional parameter. To set path to kobas_home, which\n  \
+  \                      is parent directory of sqlite3/ and seq_pep/ , default\n\
+  \                        value is read from ~/.kobasrcwhere you set before\n   \
+  \                     running kobas. If you set this parameter, it means you\n \
+  \                       set \"kobasdb\" and \"blastdb\" in this following\n    \
+  \                    directory. e.g. \"-k /home/user/kobas/\", means that you\n\
+  \                        set kobasdb = /home/user/kobas/sqlite3/ and blastdb =\n\
+  \                        /home/user/kobas/seq_pep/\n  -v BLAST_HOME, --blasthome=BLAST_HOME\n\
+  \                        Optional parameter. To set parent directory of blastx\n\
+  \                        and blastp. If you set this parameter, it means you\n \
+  \                       set \"blastx\" and \"blastp\" in this following directory.\n\
+  \                        Default value is read from ~/.kobasrc where you set\n \
+  \                       before running kobas\n  -y BLASTDB, --blastdb=BLASTDB\n\
+  \                        Optional parameter. To set path to sep_pep/, default\n\
+  \                        value is read from ~/.kobasrc where you set before\n  \
+  \                      running kobas\n  -q KOBASDB, --kobasdb=KOBASDB\n        \
+  \                Optional parameter. To set path to sqlite3/, default\n        \
+  \                value is read from ~/.kobasrc where you set before\n          \
+  \              running kobas, e.g. \"-q /kobas_home/sqlite3/\"\n  -p BLASTP, --blastp=BLASTP\n\
+  \                        Optional parameter. To set path to blastp program,\n  \
+  \                      default value is read from ~/.kobasrc where you set\n   \
+  \                     before running kobas\n  -x BLASTX, --blastx=BLASTX\n     \
+  \                   Optional parameter. To set path to  blasx program,\n       \
+  \                 default value is read from ~/.kobasrc where you set\n        \
+  \                before running kobas\n"
+generated_using:
+- --help

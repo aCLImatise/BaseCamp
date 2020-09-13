@@ -1,0 +1,182 @@
+!Command
+command:
+- wgfastdb
+positional: []
+named:
+- !Flag
+  description: 'Set log file path (default: ./wgfastdb.log)'
+  synonyms:
+  - --log
+  - -l
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: "Do not sync your collection with the latest assembly\nversions (default:\
+    \ False)"
+  synonyms:
+  - --no_update
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not download the latest assembly summary and\ntaxonomy dump and\
+    \ use your local copies. (default:\nFalse)"
+  synonyms:
+  - --no_assembly_update
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Run only the download step. (default: False)'
+  synonyms:
+  - --download_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "List of species to build database. The species name\nmust match exactly\
+    \ a species directory at\nftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/\n\
+    (default: None)"
+  synonyms:
+  - --species
+  - -s
+  args: !RepeatFlagArg
+    name: SPECIES
+  optional: true
+- !Flag
+  description: "Path to config table (.csv). Table MUST include a\n\"species\" column\
+    \ and may include a column \"reference\"\nfor reference genomes. Curation parameters\
+    \ can also be\nset in the table using column headers: \"unknowns\",\n\"contigs\"\
+    , \"assembly_size\", and \"distance\". If a\nparameter cell is left blank it will\
+    \ be replaced with\nthe default value or a value passed from the command\nline\
+    \ (default: None)"
+  synonyms:
+  - --config
+  - -cfg
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+- !Flag
+  description: 'Run only the curate step (default: False)'
+  synonyms:
+  - --curate_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum number of unknown bases (not A, T, C, G) for\ncuration. If\
+    \ more than one value is passed, the list\nmust be the same length as the number\
+    \ of species.\nOtherwise the same value is applied to all species.\n(default:\
+    \ [200])"
+  synonyms:
+  - --unknowns
+  - -n
+  args: !RepeatFlagArg
+    name: UNKNOWNS
+  optional: true
+- !Flag
+  description: "Acceptable deviations from median number of contigs\nfor curation.\
+    \ If more than one value is passed, the\nlist must be the same length as the number\
+    \ of species.\nOtherwise the same value is applied to all species\n(default: [3.0])"
+  synonyms:
+  - --contigs
+  - -c
+  args: !RepeatFlagArg
+    name: CONTIGS
+  optional: true
+- !Flag
+  description: "Acceptable devations from median assembly size for\ncuration. If more\
+    \ than one value is passed, the list\nmust be the same length as the number of\
+    \ species.\nOtherwise the same value is applied to all species\n(default: [3.0])"
+  synonyms:
+  - --assembly_size
+  - -a
+  args: !RepeatFlagArg
+    name: ASSEMBLY_SIZE
+  optional: true
+- !Flag
+  description: "Acceptable deviations from median MASH distances for\ncuration. If\
+    \ more than one value is passed, the list\nmust be the same length as the number\
+    \ of species.\nOtherwise the same value is applied to all species\n(default: [3.0])"
+  synonyms:
+  - --distance
+  - -d
+  args: !RepeatFlagArg
+    name: DISTANCE
+  optional: true
+- !Flag
+  description: "Define which genome to use as reference by providing\naccession number\
+    \ (GCA_XXXXXXXXX). This list should be\nthe same length as the number of species.\
+    \ This is\nREQUIRED from the command line or in the config file.\n(default: None)\n"
+  synonyms:
+  - --reference
+  - -r
+  args: !RepeatFlagArg
+    name: REFERENCE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: wgfastdb [-h] [--no_update] [--no_assembly_update] [--download_only]\n\
+  \                (--species SPECIES [SPECIES ...] | --config CONFIG)\n         \
+  \       [--curate_only] [--unknowns UNKNOWNS [UNKNOWNS ...]]\n                [--contigs\
+  \ CONTIGS [CONTIGS ...]]\n                [--assembly_size ASSEMBLY_SIZE [ASSEMBLY_SIZE\
+  \ ...]]\n                [--distance DISTANCE [DISTANCE ...]]\n                [--reference\
+  \ REFERENCE [REFERENCE ...]] [--log LOG]\n                PATH\n\nDatabase setup\
+  \ for WGFAST\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --log LOG, -l LOG     Set log file path (default: ./wgfastdb.log)\n\
+  \nDownload:\n  Download and update sequences from NCBI\n\n  PATH               \
+  \   Path to existing fasta database files or location\n                        where\
+  \ the files should be downloaded.\n  --no_update           Do not sync your collection\
+  \ with the latest assembly\n                        versions (default: False)\n\
+  \  --no_assembly_update  Do not download the latest assembly summary and\n     \
+  \                   taxonomy dump and use your local copies. (default:\n       \
+  \                 False)\n  --download_only       Run only the download step. (default:\
+  \ False)\n  --species SPECIES [SPECIES ...], -s SPECIES [SPECIES ...]\n        \
+  \                List of species to build database. The species name\n         \
+  \               must match exactly a species directory at\n                    \
+  \    ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/\n                    \
+  \    (default: None)\n  --config CONFIG, -cfg CONFIG\n                        Path\
+  \ to config table (.csv). Table MUST include a\n                        \"species\"\
+  \ column and may include a column \"reference\"\n                        for reference\
+  \ genomes. Curation parameters can also be\n                        set in the table\
+  \ using column headers: \"unknowns\",\n                        \"contigs\", \"assembly_size\"\
+  , and \"distance\". If a\n                        parameter cell is left blank it\
+  \ will be replaced with\n                        the default value or a value passed\
+  \ from the command\n                        line (default: None)\n\nCurate:\n  Curate\
+  \ genomes\n\n  --curate_only         Run only the curate step (default: False)\n\
+  \  --unknowns UNKNOWNS [UNKNOWNS ...], -n UNKNOWNS [UNKNOWNS ...]\n            \
+  \            Maximum number of unknown bases (not A, T, C, G) for\n            \
+  \            curation. If more than one value is passed, the list\n            \
+  \            must be the same length as the number of species.\n               \
+  \         Otherwise the same value is applied to all species.\n                \
+  \        (default: [200])\n  --contigs CONTIGS [CONTIGS ...], -c CONTIGS [CONTIGS\
+  \ ...]\n                        Acceptable deviations from median number of contigs\n\
+  \                        for curation. If more than one value is passed, the\n \
+  \                       list must be the same length as the number of species.\n\
+  \                        Otherwise the same value is applied to all species\n  \
+  \                      (default: [3.0])\n  --assembly_size ASSEMBLY_SIZE [ASSEMBLY_SIZE\
+  \ ...], -a ASSEMBLY_SIZE [ASSEMBLY_SIZE ...]\n                        Acceptable\
+  \ devations from median assembly size for\n                        curation. If\
+  \ more than one value is passed, the list\n                        must be the same\
+  \ length as the number of species.\n                        Otherwise the same value\
+  \ is applied to all species\n                        (default: [3.0])\n  --distance\
+  \ DISTANCE [DISTANCE ...], -d DISTANCE [DISTANCE ...]\n                        Acceptable\
+  \ deviations from median MASH distances for\n                        curation. If\
+  \ more than one value is passed, the list\n                        must be the same\
+  \ length as the number of species.\n                        Otherwise the same value\
+  \ is applied to all species\n                        (default: [3.0])\n\nTree:\n\
+  \  SNP matrix and tree generation\n\n  --reference REFERENCE [REFERENCE ...], -r\
+  \ REFERENCE [REFERENCE ...]\n                        Define which genome to use\
+  \ as reference by providing\n                        accession number (GCA_XXXXXXXXX).\
+  \ This list should be\n                        the same length as the number of\
+  \ species. This is\n                        REQUIRED from the command line or in\
+  \ the config file.\n                        (default: None)\n"
+generated_using:
+- --help

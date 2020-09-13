@@ -1,0 +1,45 @@
+!Command
+command:
+- fitevd
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: q
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: fitevd <q> [options]\n\n\t<q>\t\tquery length; ignored for EXP\
+  \ and GCEXP\n\t[-exp]\t\tcompute an exponential and Gaussian mixture;\n\t\t\tdefault:\
+  \ compute EVD\n\t[-gcexp]\tcompute a gc-dependent-exponential and Gaussian mixture;\n\
+  \t\t\tdefault: compute EVD\n\t[-s <s>]\tsize of length groups; default: 10000\n\t\
+  [-ms <ms>]\tmininum number of scores per length\n\t\t\t(orGC-content) group.  Note:\
+  \ If <ms> is 0 and -gcexp is given,\n\t\t\tthen no binning is done and weighted\
+  \ regression is used;\n\t\t\tdefault: 200\n\t[-lr <lr>]\tminimum ratio of shortest\
+  \ (or lowest-GC) to\n\t\t\tlongest (or highest-GC) in group; default 1.50\n\t[-r\
+  \ <n>]\tuse <n> randomly selected scores; default: all\n\t[-p]\t\tprint p-values;\
+  \ default: don't print p-values\n\t[-h <H>]\tinitial value of H; default: 1.0\n\t\
+  \t\tno edge-effect adjustment if <H> is 0.\n\t[-ilh <ilh>]\tmax. iterations in outer\
+  \ L-H loop; default: 10\n\t[-inr <inr>]\tmax. iterations in inner N-R loop; default:\
+  \ 20\n\t[-t]\t\tturn on debug tracing; default: tracing off\n\t[-verbosity]\t\t\
+  \ [1|2|3|4|5]; default: 2\n\t[-d <smin> <smax>] print length vs p-value v for <smin>\
+  \ <= score <= <smax>\n\n\tInput is from standard input\n\t\tEVD:\n\t\t[score length]+\n\
+  \t\tEXP or GCEXP:\n\t\t[score GC-content]+\n\n\tEVD: The outer loop alternates between\
+  \ estimating\n\tlambda and K with H fixed and estimating H with lambda and K fixed.\n\
+  \tThe inner loop is Newton-Raphson, which is used for\n\tsolving the estimation\
+  \ problems.\n\n\tEXP: EM is used to fit an exponential and Gaussian mixture\n\t\
+  for different GC-content ranges determined from the input data.\n\tFor each GC-range,\
+  \ the exponential models null scores and the\n\tGaussian models non-null scores.\n\
+  \n\tGCEXP: EM is used to fit a single mixture of a GC-dependent-mean-\n\texponential\
+  \ for null scores, and a Gaussian for non-null scores.\n\tThe exponential mean is\
+  \ assumed to be a linear function of GC-content:\n\tmu(g)=a+b*g. Linear regression\
+  \ is used to fit the binned weighted means,\n\tor weighted linear regression is\
+  \ used on the (GC,score) tuples\n\tif -ms 0 is given. If -ms 1 is given, EM is effectively\
+  \ not used,\n\tand the null distribution is fit to the unweighted (GC,score) tuples.\n\
+  \tIn all cases, the null distribution is f(x,g) = x**(-mu(g)).\n"
+generated_using: []

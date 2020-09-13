@@ -1,0 +1,204 @@
+!Command
+command:
+- barriers-RNA2
+positional:
+- !Positional
+  description: (default=off)
+  position: 0
+  name: basins
+  optional: false
+- !Positional
+  description: (default=off)
+  position: 1
+  name: neighbors
+  optional: false
+- !Positional
+  description: RNA secondary structures
+  position: 0
+  name: RNA
+  optional: false
+- !Positional
+  description: "canonical RNA structures\n[no]Shift       with/out shift moves [default\
+    \ with]"
+  position: 1
+  name: RNA-noLP
+  optional: false
+- !Positional
+  description: "RNA secondary structures\n[no]Shift       with/out shift moves [default\
+    \ with]"
+  position: 2
+  name: RNA2
+  optional: false
+- !Positional
+  description: "canonical RNA structures, no lonely pairs\n[no]Shift       with/out\
+    \ shift moves [default with]"
+  position: 3
+  name: RNA2-noLP
+  optional: false
+- !Positional
+  description: "Spin Glass\np               point mutation (default)\nc          \
+    \     flip 2nd half"
+  position: 4
+  name: Q2
+  optional: false
+- !Positional
+  description: NNI moves [no other options yet]
+  position: 0
+  name: NNI
+  optional: false
+named:
+- !Flag
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: be quiet, inhibit PS output  (default=off)
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print more information  (default=off)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: define graph type  (default=`RNA')
+  synonyms:
+  - -G
+  - --graph
+  args: !SimpleFlagArg
+    name: Graph
+  optional: true
+- !Flag
+  description: "select move-set (if Graph allows several different\nones)"
+  synonyms:
+  - -M
+  - --moves
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: print basin sizes  (default=off)
+  synonyms:
+  - --bsize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print saddle component sizes  (default=off)
+  synonyms:
+  - --ssize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "compute only the lowest <num> local minima\n(default=`100')"
+  synonyms:
+  - --max
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "print only minima with barrier > dE\n(default=`0.000001')"
+  synonyms:
+  - --minh
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: print saddle point structures  (default=off)
+  synonyms:
+  - --saddle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "compute rates between macro states (basins)\n(default=off)"
+  synonyms:
+  - --rates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "input is a poset from n objective functions\n(default=`0')"
+  synonyms:
+  - --poset
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "=<l2>  backtrack path between lmins l2 and l1 (l1 < l2),\ncan be specified\
+    \ multiple times"
+  synonyms:
+  - -P
+  - --path
+  args: !SimpleFlagArg
+    name: l1
+  optional: true
+- !Flag
+  description: 'FK: output map of structures and their respective'
+  synonyms:
+  - --sbmap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'FK: output a list of all transient structures and their'
+  synonyms:
+  - --trans
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "barriers 1.5.2\n\nCompute local minima and energy barriers of a landscape\n\
+  \nUsage: barriers [OPTIONS]... [[FILE]]...\n\n  -h, --help            Print help\
+  \ and exit\n      --full-help       Print help, including hidden options, and exit\n\
+  \  -V, --version         Print version and exit\n  -q, --quiet           be quiet,\
+  \ inhibit PS output  (default=off)\n  -v, --verbose         print more information\
+  \  (default=off)\n  -G, --graph=Graph     define graph type  (default=`RNA')\n \
+  \ -M, --moves=STRING    select move-set (if Graph allows several different\n   \
+  \                       ones)\n      --bsize           print basin sizes  (default=off)\n\
+  \      --ssize           print saddle component sizes  (default=off)\n      --max=INT\
+  \         compute only the lowest <num> local minima\n                         \
+  \ (default=`100')\n      --minh=DOUBLE     print only minima with barrier > dE\n\
+  \                          (default=`0.000001')\n      --saddle          print saddle\
+  \ point structures  (default=off)\n      --rates           compute rates between\
+  \ macro states (basins)\n                          (default=off)\n      --poset=INT\
+  \       input is a poset from n objective functions\n                          (default=`0')\n\
+  \  -P, --path=<l1>=<l2>  backtrack path between lmins l2 and l1 (l1 < l2),\n   \
+  \                       can be specified multiple times\n      --sbmap         \
+  \  FK: output map of structures and their respective\n                         \
+  \ basins  (default=off)\n      --trans           FK: output a list of all transient\
+  \ structures and their\n                          neighbors  (default=off)\n\n\n\
+  Graph Types (-G graph) and Move Sets (-M mset)are:\n  RNA             RNA secondary\
+  \ structures\n  RNA-noLP        canonical RNA structures\n      [no]Shift      \
+  \ with/out shift moves [default with]\n  RNA2            RNA secondary structures\n\
+  \      [no]Shift       with/out shift moves [default with]\n  RNA2-noLP       canonical\
+  \ RNA structures, no lonely pairs\n      [no]Shift       with/out shift moves [default\
+  \ with]\n  Q2              Spin Glass\n      p               point mutation (default)\n\
+  \      c               flip 2nd half\n  Qa,ALPHA        a-letter Hamming graph.\
+  \  \n                      ALPHAbet is optional, default is 'ABC...'\n  T      \
+  \         Phylogenetic Trees\n      NNI             NNI moves [no other options\
+  \ yet]\n  P               Permutations\n      T               Transpositions [default]\n\
+  \      C               Canonical Transpositions\n      R               Reversals\n\
+  \  X               Exchange Moves on balances +/- strings\n  ?               General\
+  \ graph; adjacency list in file\n\n"
+generated_using:
+- --help

@@ -1,0 +1,95 @@
+!Command
+command:
+- eval_predictions
+positional: []
+named:
+- !Flag
+  description: '[OPTIONS]'
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: seq_len_list
+  optional: true
+- !Flag
+  description: (required) List of names of files defining real genes (GFF).
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: real_fname_list
+  optional: true
+- !Flag
+  description: "(required) List of names of files defining predicted genes\n(GFF).\
+    \  Must correspond in order to <real_fname_list>."
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: pred_fname_list
+  optional: true
+- !Flag
+  description: "List of names of all features denoting exon regions.  By\ndefault,\
+    \ equal to the single name \"CDS\"."
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: feat_list
+  optional: true
+- !Flag
+  description: "Dump full coords of correct, partially correct, wrong, missed,\nand\
+    \ overlapping exons to a set of files having the specified\nfile name prefix."
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: fname_prefix
+  optional: true
+- !Flag
+  description: "Also report stats on \"nearly correct\" exons, that is, incorrect\n\
+    exons whose boundaries are within <nbases> of being correct.\nColumns will be\
+    \ labeled \"NCa\" and \"NCp\"."
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: nbases
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "USAGE: eval_predictions -r <real_fname_list> -p <pred_fname_list>\n  \
+  \                      -l <seq_len_list> [OPTIONS] \n\nDESCRIPTION:\nCompares predicted\
+  \ genes with \"real\" (or annotated) genes.\nReports standard measures of prediction\
+  \ quality.  The following\nmeasures are reported:\n\n    - nucleotide sensitivity\
+  \ (Sn)\n    - nucleotide specificity (Sp)\n    - approximate correlation (AC)\n\
+  \    - correlation coefficient (CC)\n    - exon sensitivity (ESn)\n    - exon specificity\
+  \ (ESp)\n    - proportion of real exons correctly predicted (CRa)\n    - proportion\
+  \ of real exons partially predicted (PCa)\n    - proportion of real exons with overlapping\
+  \ predictions (OLa)\n    - missed exons (ME)\n    - proportion of predicted exons\
+  \ that are correct (CRp)\n    - proportion of predicted exons that are partially\
+  \ correct (PCp)\n    - proportion of predicted exons that overlap real ones (OLp)\n\
+  \    - wrong exons (WE)\n\nAll quantities are computed as described in \"Evaluation\
+  \ of Gene-Finding\nPrograms on Mammalian Sequences,\" by Rogic et al. (Genome Research\n\
+  11:817-832).  Note that CRa + PCa + OLa + ME = 1 and CRp + PCp + OLp +\nWE = 1.\
+  \  Note also that each set (predicted and real) should consist of\nnon-overlapping\
+  \ groups of features (see 'refeature').\n\nOPTIONS:\n    -r <real_fname_list> \n\
+  \        (required) List of names of files defining real genes (GFF). \n\n    -p\
+  \ <pred_fname_list> \n        (required) List of names of files defining predicted\
+  \ genes\n        (GFF).  Must correspond in order to <real_fname_list>.\n\n    -l\
+  \ <seq_len_list>\n        (required) List of lengths of sequences.  Needed to compute\n\
+  \        certain nucleotide-level statistics.\n\n    -f <feat_list>  \n        List\
+  \ of names of all features denoting exon regions.  By\n        default, equal to\
+  \ the single name \"CDS\".\n\n    -d <fname_prefix>  \n        Dump full coords\
+  \ of correct, partially correct, wrong, missed, \n        and overlapping exons\
+  \ to a set of files having the specified \n        file name prefix.\n\n    -n <nbases>\n\
+  \        Also report stats on \"nearly correct\" exons, that is, incorrect\n   \
+  \     exons whose boundaries are within <nbases> of being correct.\n        Columns\
+  \ will be labeled \"NCa\" and \"NCp\".\n\n    -h\n        Print this help message.\n\
+  \n\nNOTE: be sure stop codons are included in CDSs in both the predicted\nand real\
+  \ sets, or in neither set.\n\n"
+generated_using:
+- -h

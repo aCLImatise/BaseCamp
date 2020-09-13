@@ -1,0 +1,443 @@
+!Command
+command:
+- create_test
+positional:
+- !Positional
+  description: Tests or test suites to run. Testname form is TEST.GRID.COMPSET[.MACHINE_COMPILER]
+  position: 0
+  name: testargs
+  optional: false
+named:
+- !Flag
+  description: Print debug information (very verbose) to file /create_test.log
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Add additional context (time and file) to log messages
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print only warnings and error messages
+  synonyms:
+  - -s
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not run generated tests
+  synonyms:
+  - --no-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not build generated tests, implies --no-run
+  synonyms:
+  - --no-build
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not setup generated tests, implies --no-build and --no-run
+  synonyms:
+  - --no-setup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use pre-existing case directories they will pick up at the\nlatest\
+    \ PEND state or re-run the first failed state. Requires test-id"
+  synonyms:
+  - -u
+  - --use-existing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable archiving of performance data.
+  synonyms:
+  - --save-timing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not submit jobs to batch system, run locally.\nIf false, this will\
+    \ default to machine setting."
+  synonyms:
+  - --no-batch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use a single interactive allocation to run all the tests. This can\n\
+    drastically reduce queue waiting but only makes sense on batch machines."
+  synonyms:
+  - --single-submit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Where test cases will be created. The default is output root\nas defined\
+    \ in the config_machines file"
+  synonyms:
+  - -r
+  - --test-root
+  args: !SimpleFlagArg
+    name: TEST_ROOT
+  optional: true
+- !Flag
+  description: Where the case output is written.
+  synonyms:
+  - --output-root
+  args: !SimpleFlagArg
+    name: OUTPUT_ROOT
+  optional: true
+- !Flag
+  description: "Specifies a root directory for baseline datasets that will\nbe used\
+    \ for Bit-for-bit generate and/or compare testing."
+  synonyms:
+  - --baseline-root
+  args: !SimpleFlagArg
+    name: BASELINE_ROOT
+  optional: true
+- !Flag
+  description: "Specifies if tests should be cleaned after run. If set, all object\n\
+    executables and data files will be removed after the tests are run."
+  synonyms:
+  - --clean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The machine for creating and building tests. This machine must be\
+    \ defined\nin the config_machines.xml file for the given model. The default is\
+    \ to\nto match the name of the machine in the test name or the name of the\nmachine\
+    \ this script is run on to the NODENAME_REGEX field in\nconfig_machines.xml. WARNING:\
+    \ This option is highly unsafe and should\nonly be used if you are an expert."
+  synonyms:
+  - -m
+  - --machine
+  args: !SimpleFlagArg
+    name: MACHINE
+  optional: true
+- !Flag
+  description: "Specify the mpilib. To see list of supported MPI libraries for each\
+    \ machine,\ninvoke ./query_config. The default is the first listing ."
+  synonyms:
+  - --mpilib
+  args: !SimpleFlagArg
+    name: MPILIB
+  optional: true
+- !Flag
+  description: "If comparing or generating baselines, use this directory under baseline\
+    \ root.\nDefault will be current branch name."
+  synonyms:
+  - -b
+  - --baseline-name
+  args: !SimpleFlagArg
+    name: BASELINE_NAME
+  optional: true
+- !Flag
+  description: While testing, compare baselines
+  synonyms:
+  - -c
+  - --compare
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "While testing, generate baselines.\nNOTE: this can also be done after\
+    \ the fact with bless_test_results"
+  synonyms:
+  - -g
+  - --generate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Compiler for building cime. Default will be the name in the\nTestname\
+    \ or the default defined for the machine."
+  synonyms:
+  - --compiler
+  args: !SimpleFlagArg
+    name: COMPILER
+  optional: true
+- !Flag
+  description: Only perform namelist actions for tests
+  synonyms:
+  - -n
+  - --namelists-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a project id for the case (optional).\nUsed for accounting\
+    \ when on a batch system.\nThe default is user-specified environment variable\
+    \ PROJECT"
+  synonyms:
+  - -p
+  - --project
+  args: !SimpleFlagArg
+    name: PROJECT
+  optional: true
+- !Flag
+  description: "Specify an 'id' for the test. This is simply a string that is appended\n\
+    to the end of a test name. If no test-id is specified, a time stamp plus a\nrandom\
+    \ string will be used (ensuring a high probability of uniqueness).\nIf a test-id\
+    \ is specified, it is the user's responsibility to ensure that\neach run of create_test\
+    \ uses a unique test-id. WARNING: problems will occur\nif you use the same test-id\
+    \ twice on the same file system, even if the test\nlists are completely different."
+  synonyms:
+  - -t
+  - --test-id
+  args: !SimpleFlagArg
+    name: TEST_ID
+  optional: true
+- !Flag
+  description: "Number of tasks create_test should perform simultaneously. The default\n\
+    is min(num_cores, num_tests)."
+  synonyms:
+  - -j
+  - --parallel-jobs
+  args: !SimpleFlagArg
+    name: PARALLEL_JOBS
+  optional: true
+- !Flag
+  description: "The size of the processor pool that create_test can use. The default\
+    \ is\nMAX_MPITASKS_PER_NODE + 25 percent."
+  synonyms:
+  - --proc-pool
+  args: !SimpleFlagArg
+    name: PROC_POOL
+  optional: true
+- !Flag
+  description: "Set the wallclock limit for all tests in the suite.\nUse the variable\
+    \ CIME_GLOBAL_WALLTIME to set this for all tests."
+  synonyms:
+  - --walltime
+  args: !SimpleFlagArg
+    name: WALLTIME
+  optional: true
+- !Flag
+  description: Force batch system to use a certain queue
+  synonyms:
+  - -q
+  - --queue
+  args: !SimpleFlagArg
+    name: QUEUE
+  optional: true
+- !Flag
+  description: A file containing an ascii list of tests to run
+  synonyms:
+  - -f
+  - --testfile
+  args: !SimpleFlagArg
+    name: TESTFILE
+  optional: true
+- !Flag
+  description: "If the --generate option is given, then an attempt to overwrite\n\
+    an existing baseline directory will raise an error. WARNING: Specifying this\n\
+    option will allow existing baseline directories to be silently overwritten."
+  synonyms:
+  - -o
+  - --allow-baseline-overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: On batch systems, wait for submitted jobs to complete
+  synonyms:
+  - --wait
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If waiting, fail if throughput check fails
+  synonyms:
+  - --wait-check-throughput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If waiting, fail if memory check fails
+  synonyms:
+  - --wait-check-memory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If waiting, ignore if namelist diffs
+  synonyms:
+  - --wait-ignore-namelists
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If waiting, ignore if there's a memleak
+  synonyms:
+  - --wait-ignore-memleak
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: For all tests to run with this number of processors
+  synonyms:
+  - --force-procs
+  args: !SimpleFlagArg
+    name: FORCE_PROCS
+  optional: true
+- !Flag
+  description: For all tests to run with this number of threads
+  synonyms:
+  - --force-threads
+  args: !SimpleFlagArg
+    name: FORCE_THREADS
+  optional: true
+- !Flag
+  description: Use a non-default location for input files
+  synonyms:
+  - -i
+  - --input-dir
+  args: !SimpleFlagArg
+    name: INPUT_DIR
+  optional: true
+- !Flag
+  description: "Full pathname of an optional pes specification file. The file\ncan\
+    \ follow either the config_pes.xml or the env_mach_pes.xml format."
+  synonyms:
+  - --pesfile
+  args: !SimpleFlagArg
+    name: PESFILE
+  optional: true
+- !Flag
+  description: Automatically retry failed tests. >0 implies --wait
+  synonyms:
+  - --retry
+  args: !SimpleFlagArg
+    name: RETRY
+  optional: true
+- !Flag
+  description: Email to be used for batch notification.
+  synonyms:
+  - --mail-user
+  args: !SimpleFlagArg
+    name: MAIL_USER
+  optional: true
+- !Flag
+  description: "When to send user email. Options are: never, all, begin, end, fail.\n\
+    You can specify multiple types with either comma-separated args or multiple -M\
+    \ flags.\n"
+  synonyms:
+  - -M
+  - --mail-type
+  args: !SimpleFlagArg
+    name: MAIL_TYPE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: create_test [-h] [-d] [-v] [-s] [--no-run] [--no-build] [--no-setup]\n\
+  \                   [-u] [--save-timing] [--no-batch] [--single-submit]\n      \
+  \             [-r TEST_ROOT] [--output-root OUTPUT_ROOT]\n                   [--baseline-root\
+  \ BASELINE_ROOT] [--clean] [-m MACHINE]\n                   [--mpilib MPILIB] [-b\
+  \ BASELINE_NAME] [-c] [-g]\n                   [--compiler COMPILER] [-n] [-p PROJECT]\
+  \ [-t TEST_ID]\n                   [-j PARALLEL_JOBS] [--proc-pool PROC_POOL]\n\
+  \                   [--walltime WALLTIME] [-q QUEUE] [-f TESTFILE] [-o]\n      \
+  \             [--wait] [--wait-check-throughput] [--wait-check-memory]\n       \
+  \            [--wait-ignore-namelists] [--wait-ignore-memleak]\n               \
+  \    [--force-procs FORCE_PROCS] [--force-threads FORCE_THREADS]\n             \
+  \      [-i INPUT_DIR] [--pesfile PESFILE] [--retry RETRY]\n                   [--mail-user\
+  \ MAIL_USER] [-M MAIL_TYPE]\n                   testargs [testargs ...]\n\nScript\
+  \ to create, build and run CIME tests. This script can:\n\n1) Run a single test,\
+  \ or more than one test\n   ./create_test TESTNAME\n   ./create_test TESTNAME1 TESTNAME2\
+  \ ...\n2) Run a test suite from a text file with one test per line\n   ./create_test\
+  \ -f TESTFILE\n3) Run an E3SM test suite:\n  Below, a suite name, SUITE, is defined\
+  \ in $CIMEROOT/scripts/lib/get_tests.py\n  - Run a single suite\n   ./create_test\
+  \ SUITE\n  - Run two suites\n   ./create_test SUITE1 SUITE2\n  - Run all tests in\
+  \ a suite except for one\n   ./create_test SUITE ^TESTNAME\n  - Run all tests in\
+  \ a suite except for tests that are in another suite\n   ./create_test SUITE1 ^SUITE2\n\
+  4) Run a CESM test suite(s):\n   ./create_test --xml-category XML_CATEGORY [--xml-machine\
+  \ XML_MACHINE] [--xml-compiler XML_COMPILER] [ --xml-testlist XML_TESTLIST]\n\n\
+  If this tool is missing any feature that you need, please add an issue on\nhttps://github.com/ESMCI/cime\n\
+  \npositional arguments:\n  testargs              Tests or test suites to run. Testname\
+  \ form is TEST.GRID.COMPSET[.MACHINE_COMPILER]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -d, --debug           Print debug\
+  \ information (very verbose) to file /create_test.log\n  -v, --verbose         Add\
+  \ additional context (time and file) to log messages\n  -s, --silent          Print\
+  \ only warnings and error messages\n  --no-run              Do not run generated\
+  \ tests\n  --no-build            Do not build generated tests, implies --no-run\n\
+  \  --no-setup            Do not setup generated tests, implies --no-build and --no-run\n\
+  \  -u, --use-existing    Use pre-existing case directories they will pick up at\
+  \ the \n                        latest PEND state or re-run the first failed state.\
+  \ Requires test-id\n  --save-timing         Enable archiving of performance data.\n\
+  \  --no-batch            Do not submit jobs to batch system, run locally.\n    \
+  \                    If false, this will default to machine setting.\n  --single-submit\
+  \       Use a single interactive allocation to run all the tests. This can \n  \
+  \                      drastically reduce queue waiting but only makes sense on\
+  \ batch machines.\n  -r TEST_ROOT, --test-root TEST_ROOT\n                     \
+  \   Where test cases will be created. The default is output root\n             \
+  \           as defined in the config_machines file\n  --output-root OUTPUT_ROOT\n\
+  \                        Where the case output is written.\n  --baseline-root BASELINE_ROOT\n\
+  \                        Specifies a root directory for baseline datasets that will\
+  \ \n                        be used for Bit-for-bit generate and/or compare testing.\n\
+  \  --clean               Specifies if tests should be cleaned after run. If set,\
+  \ all object\n                        executables and data files will be removed\
+  \ after the tests are run.\n  -m MACHINE, --machine MACHINE\n                  \
+  \      The machine for creating and building tests. This machine must be defined\n\
+  \                        in the config_machines.xml file for the given model. The\
+  \ default is to \n                        to match the name of the machine in the\
+  \ test name or the name of the \n                        machine this script is\
+  \ run on to the NODENAME_REGEX field in \n                        config_machines.xml.\
+  \ WARNING: This option is highly unsafe and should \n                        only\
+  \ be used if you are an expert.\n  --mpilib MPILIB       Specify the mpilib. To\
+  \ see list of supported MPI libraries for each machine, \n                     \
+  \   invoke ./query_config. The default is the first listing .\n  -b BASELINE_NAME,\
+  \ --baseline-name BASELINE_NAME\n                        If comparing or generating\
+  \ baselines, use this directory under baseline root. \n                        Default\
+  \ will be current branch name.\n  -c, --compare         While testing, compare baselines\n\
+  \  -g, --generate        While testing, generate baselines. \n                 \
+  \       NOTE: this can also be done after the fact with bless_test_results\n  --compiler\
+  \ COMPILER   Compiler for building cime. Default will be the name in the \n    \
+  \                    Testname or the default defined for the machine.\n  -n, --namelists-only\
+  \  Only perform namelist actions for tests\n  -p PROJECT, --project PROJECT\n  \
+  \                      Specify a project id for the case (optional).\n         \
+  \               Used for accounting when on a batch system.\n                  \
+  \      The default is user-specified environment variable PROJECT\n  -t TEST_ID,\
+  \ --test-id TEST_ID\n                        Specify an 'id' for the test. This\
+  \ is simply a string that is appended \n                        to the end of a\
+  \ test name. If no test-id is specified, a time stamp plus a \n                \
+  \        random string will be used (ensuring a high probability of uniqueness).\
+  \ \n                        If a test-id is specified, it is the user's responsibility\
+  \ to ensure that \n                        each run of create_test uses a unique\
+  \ test-id. WARNING: problems will occur \n                        if you use the\
+  \ same test-id twice on the same file system, even if the test \n              \
+  \          lists are completely different.\n  -j PARALLEL_JOBS, --parallel-jobs\
+  \ PARALLEL_JOBS\n                        Number of tasks create_test should perform\
+  \ simultaneously. The default \n                         is min(num_cores, num_tests).\n\
+  \  --proc-pool PROC_POOL\n                        The size of the processor pool\
+  \ that create_test can use. The default is \n                        MAX_MPITASKS_PER_NODE\
+  \ + 25 percent.\n  --walltime WALLTIME   Set the wallclock limit for all tests in\
+  \ the suite. \n                        Use the variable CIME_GLOBAL_WALLTIME to\
+  \ set this for all tests.\n  -q QUEUE, --queue QUEUE\n                        Force\
+  \ batch system to use a certain queue\n  -f TESTFILE, --testfile TESTFILE\n    \
+  \                    A file containing an ascii list of tests to run\n  -o, --allow-baseline-overwrite\n\
+  \                        If the --generate option is given, then an attempt to overwrite\
+  \ \n                        an existing baseline directory will raise an error.\
+  \ WARNING: Specifying this \n                        option will allow existing\
+  \ baseline directories to be silently overwritten.\n  --wait                On batch\
+  \ systems, wait for submitted jobs to complete\n  --wait-check-throughput\n    \
+  \                    If waiting, fail if throughput check fails\n  --wait-check-memory\
+  \   If waiting, fail if memory check fails\n  --wait-ignore-namelists\n        \
+  \                If waiting, ignore if namelist diffs\n  --wait-ignore-memleak\n\
+  \                        If waiting, ignore if there's a memleak\n  --force-procs\
+  \ FORCE_PROCS\n                        For all tests to run with this number of\
+  \ processors\n  --force-threads FORCE_THREADS\n                        For all tests\
+  \ to run with this number of threads\n  -i INPUT_DIR, --input-dir INPUT_DIR\n  \
+  \                      Use a non-default location for input files\n  --pesfile PESFILE\
+  \     Full pathname of an optional pes specification file. The file\n          \
+  \              can follow either the config_pes.xml or the env_mach_pes.xml format.\n\
+  \  --retry RETRY         Automatically retry failed tests. >0 implies --wait\n \
+  \ --mail-user MAIL_USER\n                        Email to be used for batch notification.\n\
+  \  -M MAIL_TYPE, --mail-type MAIL_TYPE\n                        When to send user\
+  \ email. Options are: never, all, begin, end, fail.\n                        You\
+  \ can specify multiple types with either comma-separated args or multiple -M flags.\n"
+generated_using:
+- --help

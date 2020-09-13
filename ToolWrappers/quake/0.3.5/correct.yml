@@ -1,0 +1,135 @@
+!Command
+command:
+- correct
+positional: []
+named:
+- !Flag
+  description: Fastq file of reads
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "File containing fastq file names, one per line or\ntwo per line for\
+    \ paired end reads."
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Write output files as gzipped.
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: K-mer size to correct.
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "File containing kmer counts in format `seq  count`.\nCan be gzipped."
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: File containing saved bithash.
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Separate trusted/untrusted kmers at cutoff <num>
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Separate trusted/untrusted kmers as a function of AT\ncontent, with\
+    \ cutoffs found in <file>, one per line"
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Use <num> openMP threads
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "=30\nReturn only reads corrected and/or trimmed to >= <num>\nbp"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Quality value ascii scale, generally 64 or 33. If not\nspecified,\
+    \ it will guess."
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "=3\nUse BWA trim parameter <num>"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Output errors reads even if they can't be corrected,\nmaintaining\
+    \ paired end reads."
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output only the original read headers without\ncorrection messages"
+  synonyms:
+  - --headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output a log of all corrections into *.log as\n'quality position new_nt\
+    \ old_nt'\n"
+  synonyms:
+  - --log
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "USAGE:  correct [options]\n\nCorrect sequencing errors in fastq file provided\
+  \ with -r\nand output trusted and corrected reads to\n<fastq-prefix>.cor.fastq.\n\
+  \nOptions:\n -r <file>\n    Fastq file of reads\n -f <file>\n    File containing\
+  \ fastq file names, one per line or\n    two per line for paired end reads.\n -z\n\
+  \    Write output files as gzipped.\n -k <num>\n    K-mer size to correct.\n -m\
+  \ <file>\n    File containing kmer counts in format `seq\tcount`.\n    Can be gzipped.\n\
+  \ -b <file>\n    File containing saved bithash.\n -c <num>\n    Separate trusted/untrusted\
+  \ kmers at cutoff <num>\n -a <file>\n    Separate trusted/untrusted kmers as a function\
+  \ of AT\n    content, with cutoffs found in <file>, one per line\n -p <num>\n  \
+  \  Use <num> openMP threads\n -l <num>=30\n    Return only reads corrected and/or\
+  \ trimmed to >= <num>\n    bp\n -q <num>\n    Quality value ascii scale, generally\
+  \ 64 or 33. If not\n    specified, it will guess.\n -t <num>=3\n    Use BWA trim\
+  \ parameter <num>\n -u\n    Output errors reads even if they can't be corrected,\n\
+  \    maintaining paired end reads.\n --headers\n    Output only the original read\
+  \ headers without\n    correction messages\n --log\n    Output a log of all corrections\
+  \ into *.log as\n    'quality position new_nt old_nt'\n\n"
+generated_using:
+- -h

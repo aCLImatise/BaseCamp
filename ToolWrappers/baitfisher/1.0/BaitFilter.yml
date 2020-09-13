@@ -1,0 +1,346 @@
+!Command
+command:
+- BaitFilter
+positional:
+- !Positional
+  description: "-i <string> [-o <string>] [-c <string>] [-m <string>]\n[--blast-second-hit-evalue\
+    \ <floating point number>]\n[--blast-first-hit-evalue <floating point number>]\n\
+    [--blast-min-hit-coverage-of-baits-in-tiling-stack <floating\npoint number>] [--ref-blast-db\
+    \ <string>]\n[--blast-extra-commandline <string>] [--blast-evalue-cutoff\n<floating\
+    \ point number>] [-B <string>] [-t <positive\ninteger>] [--ID-prefix <string>]\
+    \ [--verbosity <unsigned\ninteger>] [-S] [--] [--version] [-h]"
+  position: 0
+  name: BaitFilter
+  optional: false
+- !Positional
+  description: To compute stats of an input file, see the -S option below.
+  position: 0
+  name: below.
+  optional: false
+- !Positional
+  description: 2b) Retain only best bait locus per feature (requires that features
+    were
+  position: 0
+  name: baits.
+  optional: false
+named:
+- !Flag
+  description: ",  --input-bait-file-name <string>\n(required)  Name of the input\
+    \ bait locus file. This is the bait file\nobtained from the Bait-Fisher program."
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --output-bait-file-name <string>\nName of the output bait file.\
+    \ This is the file the contains the\nfiltered bait loci and the baits."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --convert <string>\nAllows the user to produce the final output\
+    \ file for the bait\nproducing company. In this mode, BaitFilter reads the input\
+    \ bait file\nand instead of doing a filtering step, it produces a costumn bait\
+    \ file\nthat can be uploaded to the baits producing company. In order to avoid\n\
+    confuction a filtering step cannot be done in the same run as the\nconversion.\
+    \ If you want to filter a bait file and convert the output,\nyou will need to\
+    \ call this program twice, first to do the filtering\nand second to do  the conversion.\
+    \ Allowed conversion parameters\ncurrently are: \"Agilent-Germany\".\nNew output\
+    \ formats can be added upon request. Please contact the\nauthor: Christoph Mayer,\
+    \ Email: Mayer Christoph\n<c.mayer.zfmk@uni-bonn.de>"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --mode <string>\nAppart form the input file this is the most essential\
+    \ option. This\noption specifies which filter mode Bait-Filter uses. (See the\
+    \ user\nmanual for more details):\n\"ab\":      Retain only the best bait locus\
+    \ for each alignemntfile\n(e.g. gene) when using the optimality criterion    \
+    \         to\nminimize the total number of required baits.\n\"as\":      Retain\
+    \ only the best bait locus for each alignemntfile\n(e.g. gene) when using the\
+    \ optimality criterion             to\nmaximize the number of sequences the result\
+    \ is based on.\n\"fb\":      Retain only the best bait locus for each feature\
+    \ (e.g. CDS)\nwhen using the optimality criterion             to minimize the\
+    \ total\nnumber of required baits. Only applicable if alignment cutting has\n\
+    been used in Bait-Fisher.\n\"fs\":      Retain only the best bait locus for each\
+    \ feature (e.g. CDS)\nwhen using the optimality criterion             to maximize\
+    \ the number\nof sequences the result is based on. Only applicable if alignment\n\
+    cutting has been used in Bait-Fisher.\n\"blast-a\": Remove all bait loci of ALIGNMENTs\
+    \ for which one or more\nbaits have multiple good hits to a reference genome.\n\
+    \"blast-f\": Remove all bait loci of FEATUREs for which one or more\nbaits have\
+    \ multiple good hits to a reference genome.\n\"blast-l\": Remove bait LOCI that\
+    \ contain a bait that hos multiple good\nhits to a reference genome.\n\"thin-b\"\
+    :  Thin out a bait file to every Nth bait region, by finding\nthe start position\
+    \ that minimizes the number of baits.\n\"thin-s\":  Thin out a bait file to every\
+    \ Nth bait region, by finding\nthe start position that maximizes the number of\
+    \ sequences."
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Maximum evalue for the second hit. A bait is characterized to bind\n\
+    ambiguously, if we have two good hits. This option is the evalue\nthreshold for\
+    \ the second hit."
+  synonyms:
+  - --blast-second-hit-evalue
+  args: !SimpleFlagArg
+    name: floating point number
+  optional: true
+- !Flag
+  description: "Maximum evalue for the first hit. A bait is characterized to bind\n\
+    ambiguously, if we have two good hits. This option is the evalue\nthreshold for\
+    \ the first hit."
+  synonyms:
+  - --blast-first-hit-evalue
+  args: !SimpleFlagArg
+    name: floating point number
+  optional: true
+- !Flag
+  description: "<floating point\nnumber>\nSpecifies a minimum hit coverage for the\
+    \ primary hit which at least\none bait has to have in each tiling stack. Otherwise\
+    \ the bait region\nis discarded. If not specified, no hit coverage is checked.\
+    \ This\nparameter can only be used in conjunction with other filters. Since\n\
+    the order in which the coverage filter and the other filters are\napplied matters,\
+    \ the order is defined as follows: For the mode\noptions: ab, as, fb, fs the coverage\
+    \ is checked before determining the\noptimal bait region. For the mode options:\
+    \ blast-a, blast-f, blast-l\nthe hit coverage is checked after filtering for baits\
+    \ with multiple\ngood hits to the reference genome."
+  synonyms:
+  - --blast-min-hit-coverage-of-baits-in-tiling-stack
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Base name to a blast data base file. This name is passed to the blast\n\
+    command. This is the name of the fasta file of your reference genome.\nIMPORTANT:\
+    \ The makeblastdb program has to be called before starting\nthe Bait-Filter program.\
+    \ makeblastdb takes the fasta file and  creates\ndata base files out of it."
+  synonyms:
+  - --ref-blast-db
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "When invoking the blast command, extra commandline parameters can\
+    \ be\npassed to the blast command. As an example with this option it is\npossible\
+    \ to specifiy the number of threads the blast command should\nuse."
+  synonyms:
+  - --blast-extra-commandline
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "When invoking the blast command, a default value of twice the\n--<blast-first-hit-evalue\
+    \ is used. This should guarantee that all hits\nnecessary for the blast filter\
+    \ are found. However, for the coverage\nfiltering a smaller threshold might be\
+    \ necessary. This can be\nspecified here."
+  synonyms:
+  - --blast-evalue-cutoff
+  args: !SimpleFlagArg
+    name: floating point number
+  optional: true
+- !Flag
+  description: ",  --blast-executable <string>\nName of or path+name to the blast\
+    \ executable. Default: nblast. Minimum\nversion number: Blast+ 2.2.x"
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --thinning-step-width <positive integer>\nThin out the bait file\
+    \ by retaining only every Nth bait region. This\noption specified the step width\
+    \ N. If one of the moded thin-b, thin-s\nis active, this option is required, otherwise\
+    \ it is not allowed to set\nthis parameter."
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: positive integer
+  optional: true
+- !Flag
+  description: "In the conversion mode Agilent-Germany each converted file should\
+    \ get\na unique ProdeID prefix, since even among multiple files, ProbeIDs are\n\
+    not allowed to be identical. This this option the user is able to\nspecifiy a\
+    \ prefix string to all probe IDs in this file."
+  synonyms:
+  - --ID-prefix
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "The verbosity option controls the amount of information Bait-Filter\n\
+    writes to the console while running. 0: report only error messages\nthat lead\
+    \ to exiting the program. 1: report also wanrings, 2: report\nalso progress, 3:\
+    \ report more detailed progress, >10: debug output.\n10000: all possible dignostic\
+    \ output."
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: unsigned integer
+  optional: true
+- !Flag
+  description: ",  --stats\nCompute stats for the input file and report these. This\
+    \ mode is\nautomatically used for all modes specified with -m or the conversion\n\
+    mode specified with -c.The purpose of the -S option is to compute\nstats without\
+    \ having to filter or convert the input file. In\nparticular, the -S mode does\
+    \ not require specifying an output\nfile.\nThis option has no effect if combined\
+    \ with the -m or -c modes."
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ",  --help\nDisplays usage information and exits."
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Displays version information and exits.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nUSAGE: \n\n   BaitFilter  -i <string> [-o <string>] [-c <string>] [-m\
+  \ <string>]\n               [--blast-second-hit-evalue <floating point number>]\n\
+  \               [--blast-first-hit-evalue <floating point number>]\n           \
+  \    [--blast-min-hit-coverage-of-baits-in-tiling-stack <floating\n            \
+  \   point number>] [--ref-blast-db <string>]\n               [--blast-extra-commandline\
+  \ <string>] [--blast-evalue-cutoff\n               <floating point number>] [-B\
+  \ <string>] [-t <positive\n               integer>] [--ID-prefix <string>] [--verbosity\
+  \ <unsigned\n               integer>] [-S] [--] [--version] [-h]\n\n\nWhere: \n\n\
+  \   -i <string>,  --input-bait-file-name <string>\n     (required)  Name of the\
+  \ input bait locus file. This is the bait file\n     obtained from the Bait-Fisher\
+  \ program.\n\n   -o <string>,  --output-bait-file-name <string>\n     Name of the\
+  \ output bait file. This is the file the contains the\n     filtered bait loci and\
+  \ the baits.\n\n   -c <string>,  --convert <string>\n     Allows the user to produce\
+  \ the final output file for the bait\n     producing company. In this mode, BaitFilter\
+  \ reads the input bait file\n     and instead of doing a filtering step, it produces\
+  \ a costumn bait file\n     that can be uploaded to the baits producing company.\
+  \ In order to avoid\n     confuction a filtering step cannot be done in the same\
+  \ run as the\n     conversion. If you want to filter a bait file and convert the\
+  \ output,\n     you will need to call this program twice, first to do the filtering\n\
+  \     and second to do  the conversion. Allowed conversion parameters\n     currently\
+  \ are: \"Agilent-Germany\".\n\n     New output formats can be added upon request.\
+  \ Please contact the\n     author: Christoph Mayer, Email: Mayer Christoph\n   \
+  \  <c.mayer.zfmk@uni-bonn.de>\n\n   -m <string>,  --mode <string>\n     Appart form\
+  \ the input file this is the most essential option. This\n     option specifies\
+  \ which filter mode Bait-Filter uses. (See the user\n     manual for more details):\n\
+  \n     \"ab\":      Retain only the best bait locus for each alignemntfile\n   \
+  \  (e.g. gene) when using the optimality criterion             to\n     minimize\
+  \ the total number of required baits.\n\n     \"as\":      Retain only the best\
+  \ bait locus for each alignemntfile\n     (e.g. gene) when using the optimality\
+  \ criterion             to\n     maximize the number of sequences the result is\
+  \ based on.\n\n     \"fb\":      Retain only the best bait locus for each feature\
+  \ (e.g. CDS)\n     when using the optimality criterion             to minimize the\
+  \ total\n     number of required baits. Only applicable if alignment cutting has\n\
+  \     been used in Bait-Fisher.\n\n     \"fs\":      Retain only the best bait locus\
+  \ for each feature (e.g. CDS)\n     when using the optimality criterion        \
+  \     to maximize the number\n     of sequences the result is based on. Only applicable\
+  \ if alignment\n     cutting has been used in Bait-Fisher. \n\n     \"blast-a\"\
+  : Remove all bait loci of ALIGNMENTs for which one or more\n     baits have multiple\
+  \ good hits to a reference genome.\n\n     \"blast-f\": Remove all bait loci of\
+  \ FEATUREs for which one or more\n     baits have multiple good hits to a reference\
+  \ genome.\n\n     \"blast-l\": Remove bait LOCI that contain a bait that hos multiple\
+  \ good\n     hits to a reference genome.\n\n     \"thin-b\":  Thin out a bait file\
+  \ to every Nth bait region, by finding\n     the start position that minimizes the\
+  \ number of baits.\n\n     \"thin-s\":  Thin out a bait file to every Nth bait region,\
+  \ by finding\n     the start position that maximizes the number of sequences.\n\n\
+  \n   --blast-second-hit-evalue <floating point number>\n     Maximum evalue for\
+  \ the second hit. A bait is characterized to bind\n     ambiguously, if we have\
+  \ two good hits. This option is the evalue\n     threshold for the second hit.\n\
+  \n   --blast-first-hit-evalue <floating point number>\n     Maximum evalue for the\
+  \ first hit. A bait is characterized to bind\n     ambiguously, if we have two good\
+  \ hits. This option is the evalue\n     threshold for the first hit.\n\n   --blast-min-hit-coverage-of-baits-in-tiling-stack\
+  \ <floating point\n      number>\n     Specifies a minimum hit coverage for the\
+  \ primary hit which at least\n     one bait has to have in each tiling stack. Otherwise\
+  \ the bait region\n     is discarded. If not specified, no hit coverage is checked.\
+  \ This\n     parameter can only be used in conjunction with other filters. Since\n\
+  \     the order in which the coverage filter and the other filters are\n     applied\
+  \ matters, the order is defined as follows: For the mode\n     options: ab, as,\
+  \ fb, fs the coverage is checked before determining the\n     optimal bait region.\
+  \ For the mode options: blast-a, blast-f, blast-l\n     the hit coverage is checked\
+  \ after filtering for baits with multiple\n     good hits to the reference genome.\n\
+  \n   --ref-blast-db <string>\n     Base name to a blast data base file. This name\
+  \ is passed to the blast\n     command. This is the name of the fasta file of your\
+  \ reference genome.\n     IMPORTANT: The makeblastdb program has to be called before\
+  \ starting\n     the Bait-Filter program. makeblastdb takes the fasta file and \
+  \ creates\n     data base files out of it.\n\n   --blast-extra-commandline <string>\n\
+  \     When invoking the blast command, extra commandline parameters can be\n   \
+  \  passed to the blast command. As an example with this option it is\n     possible\
+  \ to specifiy the number of threads the blast command should\n     use.\n\n   --blast-evalue-cutoff\
+  \ <floating point number>\n     When invoking the blast command, a default value\
+  \ of twice the\n     --<blast-first-hit-evalue is used. This should guarantee that\
+  \ all hits\n     necessary for the blast filter are found. However, for the coverage\n\
+  \     filtering a smaller threshold might be necessary. This can be\n     specified\
+  \ here.\n\n   -B <string>,  --blast-executable <string>\n     Name of or path+name\
+  \ to the blast executable. Default: nblast. Minimum\n     version number: Blast+\
+  \ 2.2.x\n\n   -t <positive integer>,  --thinning-step-width <positive integer>\n\
+  \     Thin out the bait file by retaining only every Nth bait region. This\n   \
+  \  option specified the step width N. If one of the moded thin-b, thin-s\n     is\
+  \ active, this option is required, otherwise it is not allowed to set\n     this\
+  \ parameter.\n\n   --ID-prefix <string>\n     In the conversion mode Agilent-Germany\
+  \ each converted file should get\n     a unique ProdeID prefix, since even among\
+  \ multiple files, ProbeIDs are\n     not allowed to be identical. This this option\
+  \ the user is able to\n     specifiy a prefix string to all probe IDs in this file.\n\
+  \n   --verbosity <unsigned integer>\n     The verbosity option controls the amount\
+  \ of information Bait-Filter\n     writes to the console while running. 0: report\
+  \ only error messages\n     that lead to exiting the program. 1: report also wanrings,\
+  \ 2: report\n     also progress, 3: report more detailed progress, >10: debug output.\n\
+  \     10000: all possible dignostic output.\n\n   -S,  --stats\n     Compute stats\
+  \ for the input file and report these. This mode is\n     automatically used for\
+  \ all modes specified with -m or the conversion\n     mode specified with -c.The\
+  \ purpose of the -S option is to compute\n     stats without having to filter or\
+  \ convert the input file. In\n     particular, the -S mode does not require specifying\
+  \ an output\n     file.\n\n     This option has no effect if combined with the -m\
+  \ or -c modes.\n\n\n   --,  --ignore_rest\n     Ignores the rest of the labeled\
+  \ arguments following this flag.\n\n   --version\n     Displays version information\
+  \ and exits.\n\n   -h,  --help\n     Displays usage information and exits.\n\n\n\
+  \   This program can be used to produce the final output file for creating\n   baits,\
+  \ or it can be used to filter bait loci obtained from the\n   Bait-Fisher program\
+  \ according to different criteria. The bait file\n   produced by BaitFisher computes\
+  \ a tiling desing for each possible\n   starting position. The purpuse of BaitFilter\
+  \ is to determine for each\n   target alignment/gene/feature the optimal bait region.\
+  \ As input it\n   requires the bait file generated by the BaitFisher program or\
+  \ a BaitFile\n   generated by a previous filtering run of BaitFilter. This bait\
+  \ file is\n   specified with the -i command line parameter (see below). Furthermore,\n\
+  \   the user has to specifiy an output file name with the -o parameter and a\n \
+  \  filter mode with the -m parameter.\n\n   To convert a file to a customn output\
+  \ format, see the -c option\n   below.\n\n   To compute stats of an input file,\
+  \ see the -S option below.\n\n   The different filter modes provided by BaitFilter\
+  \ are the following:\n\n   1a) Retain only the best bait locus per alignment file.\
+  \ Criterion:\n   Minimize number of required baits.\n\n   1b) Retain only the best\
+  \ bait locus per alignment file. Criterion:\n   Maximize number of sequenences.\n\
+  \n   2a) Retain only best bait locus per feature (requires that features were\n\
+  \   selected in Bait-Fisher). Criterion: Minimize number of required\n   baits.\n\
+  \n   2b) Retain only best bait locus per feature (requires that features were\n\
+  \   selected in Bait-Fisher). Criterion: Maximize number of sequenences.\n\n   3)\
+  \ Use a blast search of the bait sequences against a reference genome\n   to detect\
+  \ putative non-unique target loci. Non unique target sites will\n   have multiple\
+  \ good hits against the reference genome.   Furthermore, a\n   minimum coverage\
+  \ of the best blast hit of bait sequence against the\n   genome can be specified.\
+  \ Note that all blast modes require additional\n   command line parameters!  These\
+  \ modes remove bait regions for which\n   multiple blast hits where found. Different\
+  \ versions of this mode are\n   available:\n\n   3a) If a single bait is not unique,\
+  \ remove all bait regions from the\n   current gene.\n\n   3b) If a single bait\
+  \ is not unique, remove all bait regions from the\n   current feature (if applicable).\n\
+  \n   3c) If a single bait is not unique, remove only the bait region that\n   contains\
+  \ this bait.\n\n   4) Thin out the given bait file: Retain only every Nth bait region,\n\
+  \   where N has to be specified by the user. Two submodes are available:\n\n   4a)\
+  \ Thin out bait regions by retaining only every Nth bait region in a\n   bait file.\
+  \ The starting offset will by chosen such that the number of\n   required baits\
+  \ is minimized.\n\n   4b) Thin out bait regions by retaining only every Nth bait\
+  \ region in a\n   bait file. The starting offset will by chosen such that the number\
+  \ of\n   sequences the result is baised on is maximized.\n\n\n"
+generated_using:
+- --help

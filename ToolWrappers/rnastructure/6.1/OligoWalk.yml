@@ -1,0 +1,229 @@
+!Command
+command:
+- OligoWalk
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: sequence file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: report file
+  optional: false
+named:
+- !Flag
+  description: Indicate that the oligomers are DNA (as opposed to RNA).
+  synonyms:
+  - -d
+  - --dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write the report in HTML mode instead of plain text.
+  synonyms:
+  - --html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not include a list of the parameters used in the\ncalulation in\
+    \ the output report file."
+  synonyms:
+  - --no-header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Score the siRNA prefilter.
+  synonyms:
+  - -score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use special output for running OligoWalk as a webserver.\nThis implies\
+    \ HTML=true and it sends the header (which lists the\nparameters that were used\
+    \ in the calulation) to STDOUT instead of\nincluding them in the report. It also\
+    \ turns off progress updates."
+  synonyms:
+  - -w
+  - --webserver
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write sav files to save time in test mode.
+  synonyms:
+  - -write
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Molar concentration of oligos. E.g. \"1.5E-6\", \"1.5uM\", or \"0.0000015\"\
+    .\nUnit Abbreviations: mM=10^-3 uM=10^-6, nM=10^-9, pM=10^-12\nThis may be used\
+    \ in conjunction with the '--unit' flag: --conc 1.5 --unit\n-6 (1.5 micromolar)."
+  synonyms:
+  - -c
+  - -co
+  - --conc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Limit the maximum distance between nucleotides that can pair.
+  synonyms:
+  - -dist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: End position of folding region of target.
+  synonyms:
+  - -en
+  - --end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Whether to use the siRNA prefilter to prefill functional siRNA.\n\
+    0=No Prefilter; 1=Use Prefilter"
+  synonyms:
+  - -fi
+  - --filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only fold a fragment with the specified size (plus the length of\n\
+    the oligomer), which is centered on the binding region.\nWhen FOLD_SIZE > 1, MODE\
+    \ (-m) and SUBOPTIMAL (-s) must both be 2."
+  synonyms:
+  - -fold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Length of oligomers for hybridization.
+  synonyms:
+  - -l
+  - --length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Determines how target structure is used:\n1=Break Local Structure.\n\
+    2=Refold target RNA after oligo binding.\n3=No target structure considered."
+  synonyms:
+  - -m
+  - --mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Determines suboptimal structure options:\n0=Do not consider suboptimal\
+    \ structures.\n1=Use AllSub to generate suboptimal structures.\n2=Use Partition\
+    \ Function to generate all suboptimal structures.\n3=Use a heuristic method for\
+    \ both oligo-free and oligo-bound RNA.\n4=Use stochastic sampling to generate\
+    \ 1000 structures."
+  synonyms:
+  - -s
+  - --suboptimal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: End position of scanning on folded region of target.
+  synonyms:
+  - -se
+  - --to
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify a SHAPE data file.
+  synonyms:
+  - -sh
+  - --shape
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Start position of scanning on folded region of target.
+  synonyms:
+  - -ss
+  - --from
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Start position of folding region of target.
+  synonyms:
+  - -st
+  - --start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Perform self-tests. The parameter should be a list of space-separated\
+    \ test\nnumbers, e.g.: -test '1 2 5'"
+  synonyms:
+  - -test
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specifies a power-of-ten to multiply the concentration by.\nFor example\
+    \ \"-co 3 -unit -6\" is equal to \"-co 3uM\" or \"-co 3E-6\"\n"
+  synonyms:
+  - -u
+  - --unit
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: OligoWalk <sequence file> <report file> [options]\nAll flags are\
+  \ case-insensitive, and grouping of flags is not allowed.\n\n=============================\n\
+  ==== Required Parameters ====\n=============================\n<sequence file>\n\
+  \    The name of a sequence file (SEQ, FASTA) or structure file (CT, DBN)\n    containing\
+  \ the input sequence.\n\n<report file>\n    The name of a report file to which results\
+  \ will be written.\n\n=========================================\n==== Option Flags\
+  \ Without Parameters ====\n=========================================\n-d --dna \n\
+  \    Indicate that the oligomers are DNA (as opposed to RNA).\n\n-h --help \n  \
+  \  Display the usage details message.\n\n--html \n    Write the report in HTML mode\
+  \ instead of plain text.\n\n--no-header \n    Do not include a list of the parameters\
+  \ used in the \n    calulation in the output report file.\n\n-score \n    Score\
+  \ the siRNA prefilter.\n\n-v --version \n    Display version and copyright information\
+  \ for this interface.\n\n-w --webserver \n    Use special output for running OligoWalk\
+  \ as a webserver.\n    This implies HTML=true and it sends the header (which lists\
+  \ the \n    parameters that were used in the calulation) to STDOUT instead of \n\
+  \    including them in the report. It also turns off progress updates.\n\n-write\
+  \ \n    Write sav files to save time in test mode.\n\n======================================\n\
+  ==== Option Flags With Parameters ====\n======================================\n\
+  All parameters must follow their associated flag directly.\nFailure to do so may\
+  \ result in aberrant program behavior.\n\n-c -co --conc \n    Molar concentration\
+  \ of oligos. E.g. \"1.5E-6\", \"1.5uM\", or \"0.0000015\".\n    Unit Abbreviations:\
+  \ mM=10^-3 uM=10^-6, nM=10^-9, pM=10^-12\n    This may be used in conjunction with\
+  \ the '--unit' flag: --conc 1.5 --unit\n    -6 (1.5 micromolar).\n\n-dist \n   \
+  \ Limit the maximum distance between nucleotides that can pair.\n\n-en --end \n\
+  \    End position of folding region of target.\n\n-fi --filter \n    Whether to\
+  \ use the siRNA prefilter to prefill functional siRNA.\n    0=No Prefilter; 1=Use\
+  \ Prefilter\n\n-fold \n    Only fold a fragment with the specified size (plus the\
+  \ length of \n    the oligomer), which is centered on the binding region.\n    When\
+  \ FOLD_SIZE > 1, MODE (-m) and SUBOPTIMAL (-s) must both be 2.\n\n-l --length \n\
+  \    Length of oligomers for hybridization.\n\n-m --mode \n    Determines how target\
+  \ structure is used:\n      1=Break Local Structure.\n      2=Refold target RNA\
+  \ after oligo binding.\n      3=No target structure considered.\n\n-s --suboptimal\
+  \ \n    Determines suboptimal structure options:\n      0=Do not consider suboptimal\
+  \ structures.\n      1=Use AllSub to generate suboptimal structures.\n      2=Use\
+  \ Partition Function to generate all suboptimal structures.\n      3=Use a heuristic\
+  \ method for both oligo-free and oligo-bound RNA.\n      4=Use stochastic sampling\
+  \ to generate 1000 structures.\n\n-se --to \n    End position of scanning on folded\
+  \ region of target.\n\n-sh --shape \n    Specify a SHAPE data file.\n\n-ss --from\
+  \ \n    Start position of scanning on folded region of target.\n\n-st --start \n\
+  \    Start position of folding region of target.\n\n-test \n    Perform self-tests.\
+  \ The parameter should be a list of space-separated test\n    numbers, e.g.: -test\
+  \ '1 2 5'\n\n-u --unit \n    Specifies a power-of-ten to multiply the concentration\
+  \ by.\n    For example \"-co 3 -unit -6\" is equal to \"-co 3uM\" or \"-co 3E-6\"\
+  \n\n"
+generated_using:
+- --help

@@ -1,0 +1,105 @@
+!Command
+command:
+- wtobt
+positional: []
+named:
+- !Flag
+  description: Long reads sequences file, + *
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Long reads retained region, often from wtobt/wtcyc, +\nFormat: read_name\\\
+    toffset\\tlength\\toriginal_len"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Overlap file(s), + *\nFormat: reads1\\t+/-\\tlen1\\tbeg1\\tend1\\\
+    treads2\\t+/-\\tlen2\\tbeg2\\tend2\\tscore\\tidentity<float>\\tmat\\tmis\\tins\\\
+    tdel\\tcigar"
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Ouput of reads' regions after trimming, -:stdout, *\nFormat: read_name\\\
+    toffset\\tlength"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Force overwrite output file
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Trun off specical trim for reads contained by others\nOne read (A)\
+    \ will not be trimmed when it is contained by another read (B).\nWhen trun on\
+    \ special trim (by default), if the B read is trimmed, program will accordingly\
+    \ trim A read"
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum score of alignment, [200]
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum identity of alignment , [0.5]
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Maximum margin of alignment, [200]
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum depth of overlap between anchored reads along reference read,
+    to detect chimeric reads, [1]
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "WTOBT: Overlap based trimming\nSMARTdenovo: Ultra-fast de novo assembler\
+  \ for high noisy long reads\nAuthor: Jue Ruan <ruanjue@gmail.com>\nVersion: 1.0\n\
+  Usage: wtobt [options]\n -i <string> Long reads sequences file, + *\n -b <string>\
+  \ Long reads retained region, often from wtobt/wtcyc, +\n             Format: read_name\\\
+  toffset\\tlength\\toriginal_len\n -j <string> Overlap file(s), + *\n           \
+  \  Format: reads1\\t+/-\\tlen1\\tbeg1\\tend1\\treads2\\t+/-\\tlen2\\tbeg2\\tend2\\\
+  tscore\\tidentity<float>\\tmat\\tmis\\tins\\tdel\\tcigar\n -o          Ouput of\
+  \ reads' regions after trimming, -:stdout, *\n             Format: read_name\\toffset\\\
+  tlength\n -f          Force overwrite output file\n -C          Trun off specical\
+  \ trim for reads contained by others\n             One read (A) will not be trimmed\
+  \ when it is contained by another read (B).\n             When trun on special trim\
+  \ (by default), if the B read is trimmed, program will accordingly trim A read\n\
+  \ -s <int>    Minimum score of alignment, [200]\n -m <float>  Minimum identity of\
+  \ alignment , [0.5]\n -w <int>    Maximum margin of alignment, [200]\n -c <int>\
+  \    Minimum depth of overlap between anchored reads along reference read, to detect\
+  \ chimeric reads, [1]\n\nExample:\n$> wtobt -i wt.fa -j wt.zmo.ovl -o wt.zmo.obt\
+  \ -m 0.6 -c 2\n\n"
+generated_using:
+- --help

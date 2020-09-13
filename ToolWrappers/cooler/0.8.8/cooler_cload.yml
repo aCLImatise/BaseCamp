@@ -1,0 +1,2193 @@
+&id003 !Command
+command:
+- cooler
+- cload
+positional: []
+named: []
+parent: &id001 !Command
+  command:
+  - cooler
+  positional: []
+  named:
+  - !Flag
+    description: Verbose logging.
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: On error, drop into the post-mortem debugger shell.
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  parent:
+  subcommands:
+  - !Command
+    command:
+    - cooler
+    - makebins
+    positional:
+    - !Positional
+      description: 'BINSIZE : Resolution (bin size) in base pairs <int>.'
+      position: 0
+      name: order.
+      optional: false
+    named:
+    - !Flag
+      description: Output file (defaults to stdout)
+      synonyms:
+      - -o
+      - --out
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Print the header of column names as the first row.\n[default:\
+        \ False]"
+      synonyms:
+      - -H
+      - --header
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[0|1]  Include a column of relative bin IDs for each\nchromosome.\
+        \ Choose whether to report them as 0- or\n1-based."
+      synonyms:
+      - -i
+      - --rel-ids
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler makebins [OPTIONS] CHROMSIZES_PATH BINSIZE\n\n  Generate\
+      \ fixed-width genomic bins.\n\n  Output a genome segmentation at a fixed resolution\
+      \ as a BED file.\n\n  CHROMSIZES_PATH : UCSC-like chromsizes file, with chromosomes\
+      \ in desired\n  order.\n\n  BINSIZE : Resolution (bin size) in base pairs <int>.\n\
+      \nOptions:\n  -o, --out TEXT       Output file (defaults to stdout)\n  -H, --header\
+      \         Print the header of column names as the first row.\n             \
+      \          [default: False]\n\n  -i, --rel-ids [0|1]  Include a column of relative\
+      \ bin IDs for each\n                       chromosome. Choose whether to report\
+      \ them as 0- or\n                       1-based.\n\n  -h, --help           Show\
+      \ this message and exit.\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    command:
+    - cooler
+    - info
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: COOL_PATH
+      optional: false
+    named:
+    - !Flag
+      description: Print the value of a specific info field.
+      synonyms:
+      - -f
+      - --field
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Print the user metadata in JSON format.
+      synonyms:
+      - -m
+      - --metadata
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Output file (defaults to stdout)
+      synonyms:
+      - -o
+      - --out
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler info [OPTIONS] COOL_PATH\n\n  Display a cooler's info\
+      \ and metadata.\n\n  COOL_PATH : Path to a COOL file or cooler URI.\n\nOptions:\n\
+      \  -f, --field TEXT  Print the value of a specific info field.\n  -m, --metadata\
+      \    Print the user metadata in JSON format.\n  -o, --out TEXT    Output file\
+      \ (defaults to stdout)\n  -h, --help        Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - coarsen
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: COOL_PATH
+      optional: false
+    named:
+    - !Flag
+      description: "Gridding factor. The contact matrix is\ncoarsegrained by grouping\
+        \ each chromosomal contact\nblock into k-by-k element tiles  [default: 2]"
+      synonyms:
+      - -k
+      - --factor
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Number of processes to use for batch processing\nchunks of pixels\
+        \ [default: 1, i.e. no process pool]"
+      synonyms:
+      - -n
+      - -p
+      - --nproc
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Number of pixels allocated to each process\n[default: 10000000]"
+      synonyms:
+      - -c
+      - --chunksize
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Specify the names of value columns to merge as\n'<name>'. Repeat\
+        \ the `--field` option for each one.\nUse '<name>,dtype=<dtype>' to specify\
+        \ the dtype.\nInclude ',agg=<agg>' to specify an aggregation\nfunction different\
+        \ from 'sum'."
+      synonyms:
+      - --field
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Output file or URI  [required]
+      synonyms:
+      - -o
+      - --out
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler coarsen [OPTIONS] COOL_PATH\n\n  Coarsen a cooler to\
+      \ a lower resolution.\n\n  Works by pooling *k*-by-*k* neighborhoods of pixels\
+      \ and aggregating. Each\n  chromosomal block is coarsened individually.\n\n\
+      \  COOL_PATH : Path to a COOL file or Cooler URI.\n\nOptions:\n  -k, --factor\
+      \ INTEGER     Gridding factor. The contact matrix is\n                     \
+      \      coarsegrained by grouping each chromosomal contact\n                \
+      \           block into k-by-k element tiles  [default: 2]\n\n  -n, -p, --nproc\
+      \ INTEGER  Number of processes to use for batch processing\n               \
+      \            chunks of pixels [default: 1, i.e. no process pool]\n\n  -c, --chunksize\
+      \ INTEGER  Number of pixels allocated to each process\n                    \
+      \       [default: 10000000]\n\n  --field TEXT             Specify the names\
+      \ of value columns to merge as\n                           '<name>'. Repeat\
+      \ the `--field` option for each one.\n                           Use '<name>,dtype=<dtype>'\
+      \ to specify the dtype.\n                           Include ',agg=<agg>' to\
+      \ specify an aggregation\n                           function different from\
+      \ 'sum'.\n\n  -o, --out TEXT           Output file or URI  [required]\n  -h,\
+      \ --help               Show this message and exit.\n"
+    generated_using: *id002
+  - *id003
+  - !Command
+    command:
+    - cooler
+    - dump
+    positional:
+    - !Positional
+      description: --one-based-starts              Print start coordinates as one-based
+        rather
+      position: 0
+      name: based.
+      optional: false
+    named:
+    - !Flag
+      description: "[chroms|bins|pixels]\nWhich table to dump. Choosing 'chroms' or\n\
+        'bins' will cause all pixel-related options\nto be ignored. Note that for\
+        \ coolers stored\nin symmetric-upper mode, 'pixels' only holds\nthe upper\
+        \ triangle values of the matrix.\n[default: pixels]"
+      synonyms:
+      - -t
+      - --table
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[,]      Restrict output to a subset of columns,\nprovided as\
+        \ a comma-separated list."
+      synonyms:
+      - -c
+      - --columns
+      args: !SimpleFlagArg
+        name: SEPARATED
+      optional: true
+    - !Flag
+      description: "Print the header of column names as the\nfirst row.  [default:\
+        \ False]"
+      synonyms:
+      - -H
+      - --header
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Missing data representation. Default is\nempty ''."
+      synonyms:
+      - --na-rep
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Format string for floating point numbers\n(e.g. '.12g', '03.2f').\
+        \  [default: g]"
+      synonyms:
+      - --float-format
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "The coordinates of a genomic region shown\nalong the row dimension,\
+        \ in UCSC-style\nnotation. (Example:\nchr1:10,000,000-11,000,000). If omitted,\
+        \ the\nentire contact matrix is printed."
+      synonyms:
+      - -r
+      - --range
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "The coordinates of a genomic region shown\nalong the column dimension.\
+        \ If omitted, the\ncolumn range is the same as the row range."
+      synonyms:
+      - -r2
+      - --range2
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "For coolers stored in symmetric-upper mode,\nensure any empty\
+        \ areas of the genomic query\nwindow are populated by generating the\nlower-triangular\
+        \ pixels.  [default: False]"
+      synonyms:
+      - -m
+      - --matrix
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "/ --no-balance   Apply balancing weights to data. This will\n\
+        print an extra column called `balanced`\n[default: False]"
+      synonyms:
+      - -b
+      - --balanced
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Print the full chromosome bin coordinates\ninstead of bin IDs.\
+        \ This will replace the\n`bin1_id` column with `chrom1`, `start1`,\nand `end1`,\
+        \ and the `bin2_id` column with\n`chrom2`, `start2` and `end2`.  [default:\n\
+        False]"
+      synonyms:
+      - --join
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[,]         Join additional columns from the bin table\nagainst\
+        \ the pixels. Provide a comma\nseparated list of column names (no spaces).\n\
+        The merged columns will be suffixed by '1'\nand '2' accordingly."
+      synonyms:
+      - --annotate
+      args: !SimpleFlagArg
+        name: SEPARATED
+      optional: true
+    - !Flag
+      description: Print bin IDs as one-based rather than zero-
+      synonyms:
+      - --one-based-ids
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Sets the amount of pixel data loaded from\ndisk at one time. Can\
+        \ affect the performance\nof joins on high resolution datasets.\nDefault is\
+        \ to load as many rows as there are\nbins."
+      synonyms:
+      - -k
+      - --chunksize
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Output text file If .gz extension is\ndetected, file is written\
+        \ using zlib.\nDefault behavior is to stream to stdout."
+      synonyms:
+      - -o
+      - --out
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler dump [OPTIONS] COOL_PATH\n\n  Dump a cooler's data to\
+      \ a text stream.\n\n  COOL_PATH : Path to COOL file or cooler URI.\n\nOptions:\n\
+      \  -t, --table [chroms|bins|pixels]\n                                  Which\
+      \ table to dump. Choosing 'chroms' or\n                                  'bins'\
+      \ will cause all pixel-related options\n                                  to\
+      \ be ignored. Note that for coolers stored\n                               \
+      \   in symmetric-upper mode, 'pixels' only holds\n                         \
+      \         the upper triangle values of the matrix.\n                       \
+      \           [default: pixels]\n\n  -c, --columns SEPARATED[,]      Restrict\
+      \ output to a subset of columns,\n                                  provided\
+      \ as a comma-separated list.\n\n  -H, --header                    Print the\
+      \ header of column names as the\n                                  first row.\
+      \  [default: False]\n\n  --na-rep TEXT                   Missing data representation.\
+      \ Default is\n                                  empty ''.\n\n  --float-format\
+      \ TEXT             Format string for floating point numbers\n              \
+      \                    (e.g. '.12g', '03.2f').  [default: g]\n\n  -r, --range\
+      \ TEXT                The coordinates of a genomic region shown\n          \
+      \                        along the row dimension, in UCSC-style\n          \
+      \                        notation. (Example:\n                             \
+      \     chr1:10,000,000-11,000,000). If omitted, the\n                       \
+      \           entire contact matrix is printed.\n\n  -r2, --range2 TEXT      \
+      \        The coordinates of a genomic region shown\n                       \
+      \           along the column dimension. If omitted, the\n                  \
+      \                column range is the same as the row range.\n\n  -m, --matrix\
+      \                    For coolers stored in symmetric-upper mode,\n         \
+      \                         ensure any empty areas of the genomic query\n    \
+      \                              window are populated by generating the\n    \
+      \                              lower-triangular pixels.  [default: False]\n\n\
+      \  -b, --balanced / --no-balance   Apply balancing weights to data. This will\n\
+      \                                  print an extra column called `balanced`\n\
+      \                                  [default: False]\n\n  --join            \
+      \              Print the full chromosome bin coordinates\n                 \
+      \                 instead of bin IDs. This will replace the\n              \
+      \                    `bin1_id` column with `chrom1`, `start1`,\n           \
+      \                       and `end1`, and the `bin2_id` column with\n        \
+      \                          `chrom2`, `start2` and `end2`.  [default:\n     \
+      \                             False]\n\n  --annotate SEPARATED[,]         Join\
+      \ additional columns from the bin table\n                                  against\
+      \ the pixels. Provide a comma\n                                  separated list\
+      \ of column names (no spaces).\n                                  The merged\
+      \ columns will be suffixed by '1'\n                                  and '2'\
+      \ accordingly.\n\n  --one-based-ids                 Print bin IDs as one-based\
+      \ rather than zero-\n                                  based.\n\n  --one-based-starts\
+      \              Print start coordinates as one-based rather\n               \
+      \                   than zero-based.\n\n  -k, --chunksize INTEGER         Sets\
+      \ the amount of pixel data loaded from\n                                  disk\
+      \ at one time. Can affect the performance\n                                \
+      \  of joins on high resolution datasets.\n                                 \
+      \ Default is to load as many rows as there are\n                           \
+      \       bins.\n\n  -o, --out TEXT                  Output text file If .gz extension\
+      \ is\n                                  detected, file is written using zlib.\n\
+      \                                  Default behavior is to stream to stdout.\n\
+      \n  -h, --help                      Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - csort
+    positional:
+    - !Positional
+      description: -o, --out TEXT              Output gzip file
+      position: 0
+      name: command
+      optional: false
+    named:
+    - !Flag
+      description: "chrom1 field number in the input file (starting\nfrom 1)  [required]"
+      synonyms:
+      - -c1
+      - --chrom1
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: chrom2 field number  [required]
+      synonyms:
+      - -c2
+      - --chrom2
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: pos1 field number  [required]
+      synonyms:
+      - -p1
+      - --pos1
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: pos2 field number  [required]
+      synonyms:
+      - -p2
+      - --pos2
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "[tabix|pairix]  Select the preset sort and indexing options\n\
+        [default: pairix]"
+      synonyms:
+      - -i
+      - --index
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Only flip mates; no sorting or indexing. Write\nto stdout.  [default:\
+        \ False]"
+      synonyms:
+      - --flip-only
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Number of processors  [default: 8]'
+      synonyms:
+      - -p
+      - --nproc
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: 'Read positions are zero-based  [default: False]'
+      synonyms:
+      - '-0'
+      - --zero-based
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Data delimiter in the input file  [default: \t]'
+      synonyms:
+      - --sep
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: 'Comment character to skip header  [default: #]'
+      synonyms:
+      - --comment-char
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Quoted list of additional options to `sort`
+      synonyms:
+      - --sort-options
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: strand1 field number (deprecated)
+      synonyms:
+      - -s1
+      - --strand1
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: strand2 field number (deprecated)
+      synonyms:
+      - -s2
+      - --strand2
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler csort [OPTIONS] PAIRS_PATH CHROMOSOMES_PATH\n\n  Sort\
+      \ and index a contact list.\n\n  Order the mates of each pair record so that\
+      \ all contacts are upper\n  triangular with respect to the chromosome ordering\
+      \ given by the\n  chromosomes file, sort contacts by genomic location, and index\
+      \ the\n  resulting file.\n\n  PAIRS_PATH : Contacts (i.e. read pairs) text file,\
+      \ optionally compressed.\n\n  CHROMOSOMES_PATH : File listing desired chromosomes\
+      \ in the desired order.\n  May be tab-delimited, e.g. a UCSC-style chromsizes\
+      \ file. Contacts mapping\n  to other chromosomes will be discarded.\n\n  **Notes**\n\
+      \n  - csort can also be used to sort and index a text representation of\n  \
+      \  a contact *matrix* in bedGraph-like format. In this case, substitute\n  \
+      \  `pos1` and `pos2` with `start1` and `start2`, respectively.\n  - Requires\
+      \ Unix tools: sort, bgzip + tabix or pairix.\n\n  If indexing with Tabix, the\
+      \ output file will have the following\n  properties:\n\n  - Upper triangular:\
+      \ the read pairs on each row are assigned to side 1 or 2\n    in such a way\
+      \ that (chrom1, pos1) is always \"less than\" (chrom2, pos2)\n  - Rows are lexicographically\
+      \ sorted by chrom1, pos1, chrom2, pos2;\n    i.e. \"positionally sorted\"\n\
+      \  - Compressed with bgzip [*]\n  - Indexed using Tabix [*] on chrom1 and pos1.\n\
+      \n  If indexing with Pairix, the output file will have the following\n  properties:\n\
+      \n  - Upper triangular: the read pairs on each row are assigned to side 1 or\
+      \ 2\n    in such a way that (chrom1, pos1) is always \"less than\" (chrom2,\
+      \ pos2)\n  - Rows are lexicographically sorted by chrom1, chrom2, pos1, pos2;\
+      \ i.e.\n    \"block sorted\"\n  - Compressed with bgzip [*]\n  - Indexed using\
+      \ Pairix [+] on chrom1, chrom2 and pos1.\n\n  [*] Tabix manpage: <http://www.htslib.org/doc/tabix.html>.\n\
+      \  [+] Pairix on Github: <https://github.com/4dn-dcic/pairix>\n\nOptions:\n\
+      \  -c1, --chrom1 INTEGER       chrom1 field number in the input file (starting\n\
+      \                              from 1)  [required]\n\n  -c2, --chrom2 INTEGER\
+      \       chrom2 field number  [required]\n  -p1, --pos1 INTEGER         pos1\
+      \ field number  [required]\n  -p2, --pos2 INTEGER         pos2 field number\
+      \  [required]\n  -i, --index [tabix|pairix]  Select the preset sort and indexing\
+      \ options\n                              [default: pairix]\n\n  --flip-only\
+      \                 Only flip mates; no sorting or indexing. Write\n         \
+      \                     to stdout.  [default: False]\n\n  -p, --nproc INTEGER\
+      \         Number of processors  [default: 8]\n  -0, --zero-based           \
+      \ Read positions are zero-based  [default: False]\n  --sep TEXT            \
+      \      Data delimiter in the input file  [default: \\t]\n  --comment-char TEXT\
+      \         Comment character to skip header  [default: #]\n  --sort-options TEXT\
+      \         Quoted list of additional options to `sort`\n                    \
+      \          command\n\n  -o, --out TEXT              Output gzip file\n  -s1,\
+      \ --strand1 INTEGER      strand1 field number (deprecated)\n  -s2, --strand2\
+      \ INTEGER      strand2 field number (deprecated)\n  -h, --help             \
+      \     Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - ln
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: SRC_URI
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: DST_URI
+      optional: false
+    named:
+    - !Flag
+      description: Truncate and replace destination file if it already exists.
+      synonyms:
+      - -w
+      - --overwrite
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Creates a soft link rather than a hard link if the source\nand\
+        \ destination file are the same. Otherwise, creates an\nexternal link. This\
+        \ type of link uses a path rather than a\npointer."
+      synonyms:
+      - -s
+      - --soft
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler ln [OPTIONS] SRC_URI DST_URI\n\n  Create a hard link\
+      \ to a cooler (rather than a true copy) in the same file.\n  Also supports soft\
+      \ links (in the same file) or external links (different\n  files).\n\nOptions:\n\
+      \  -w, --overwrite  Truncate and replace destination file if it already exists.\n\
+      \  -s, --soft       Creates a soft link rather than a hard link if the source\n\
+      \                   and destination file are the same. Otherwise, creates an\n\
+      \                   external link. This type of link uses a path rather than\
+      \ a\n                   pointer.\n\n  -h, --help       Show this message and\
+      \ exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - tree
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: URI
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -L
+      - --level
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler tree [OPTIONS] URI\n\n  Display a file's data hierarchy.\n\
+      \nOptions:\n  -L, --level INTEGER\n  -h, --help           Show this message\
+      \ and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - balance
+    positional:
+    - !Positional
+      description: '[default: 8]'
+      position: 0
+      name: between.
+      optional: false
+    - !Positional
+      description: --stdout                        Print weight column to stdout instead
+        of
+      position: 1
+      name: exists.
+      optional: false
+    named:
+    - !Flag
+      description: Number of processes to split the work
+      synonyms:
+      - -p
+      - --nproc
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Control the number of pixels handled by each\nworker process at\
+        \ a time.  [default:\n10000000]"
+      synonyms:
+      - -c
+      - --chunksize
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Ignore bins from the contact matrix using\nthe 'MAD-max' filter:\
+        \ bins whose log\nmarginal sum is less than ``mad-max`` median\nabsolute deviations\
+        \ below the median log\nmarginal sum of all the bins in the same\nchromosome.\
+        \  [default: 5]"
+      synonyms:
+      - --mad-max
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Ignore bins from the contact matrix whose\nmarginal number of\
+        \ nonzeros is less than\nthis number.  [default: 10]"
+      synonyms:
+      - --min-nnz
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Ignore bins from the contact matrix whose\nmarginal count is less\
+        \ than this number.\n[default: 0]"
+      synonyms:
+      - --min-count
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Path to a 3-column BED file containing\ngenomic regions to mask\
+        \ out during the\nbalancing procedure, e.g. sequence gaps or\nregions of poor\
+        \ mappability."
+      synonyms:
+      - --blacklist
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: "Number of diagonals of the contact matrix to\nignore, including\
+        \ the main diagonal.\nExamples: 0 ignores nothing, 1 ignores the\nmain diagonal,\
+        \ 2 ignores diagonals (-1, 0,\n1), etc.  [default: 2]"
+      synonyms:
+      - --ignore-diags
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Distance in bp to ignore.
+      synonyms:
+      - --ignore-dist
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Threshold value of variance of the marginals\nfor the algorithm\
+        \ to converge.  [default:\n1e-05]"
+      synonyms:
+      - --tol
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: "Maximum number of iterations to perform if\nconvergence is not\
+        \ achieved.  [default: 200]"
+      synonyms:
+      - --max-iters
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Calculate weights against intra-chromosomal\ndata only instead\
+        \ of genome-wide."
+      synonyms:
+      - --cis-only
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Calculate weights against inter-chromosomal\ndata only instead\
+        \ of genome-wide."
+      synonyms:
+      - --trans-only
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Name of column to write to.  [default:\nweight]"
+      synonyms:
+      - --name
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Overwrite the target dataset, 'weight', if\nit already exists."
+      synonyms:
+      - -f
+      - --force
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Check whether a data column 'weight' already
+      synonyms:
+      - --check
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[store_final|store_nan|discard|error]\nWhat to do with weights\
+        \ when balancing\ndoesn't converge in max_iters.\n'store_final': Store the\
+        \ final result,\nregardless of whether the iterations\nconverge to the specified\
+        \ tolerance;\n'store_nan': Store a vector of NaN values to\nindicate that\
+        \ the matrix failed to converge;\n'discard': Store nothing and exit\ngracefully;\
+        \ 'error': Abort with non-zero\nexit status.  [default: store_final]"
+      synonyms:
+      - --convergence-policy
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler balance [OPTIONS] COOL_PATH\n\n  Out-of-core matrix\
+      \ balancing.\n\n  Matrix must be symmetric. See the help for various filtering\
+      \ options to\n  mask out poorly mapped bins.\n\n  COOL_PATH : Path to a COOL\
+      \ file.\n\nOptions:\n  -p, --nproc INTEGER             Number of processes to\
+      \ split the work\n                                  between.  [default: 8]\n\
+      \n  -c, --chunksize INTEGER         Control the number of pixels handled by\
+      \ each\n                                  worker process at a time.  [default:\n\
+      \                                  10000000]\n\n  --mad-max INTEGER        \
+      \       Ignore bins from the contact matrix using\n                        \
+      \          the 'MAD-max' filter: bins whose log\n                          \
+      \        marginal sum is less than ``mad-max`` median\n                    \
+      \              absolute deviations below the median log\n                  \
+      \                marginal sum of all the bins in the same\n                \
+      \                  chromosome.  [default: 5]\n\n  --min-nnz INTEGER        \
+      \       Ignore bins from the contact matrix whose\n                        \
+      \          marginal number of nonzeros is less than\n                      \
+      \            this number.  [default: 10]\n\n  --min-count INTEGER          \
+      \   Ignore bins from the contact matrix whose\n                            \
+      \      marginal count is less than this number.\n                          \
+      \        [default: 0]\n\n  --blacklist PATH                Path to a 3-column\
+      \ BED file containing\n                                  genomic regions to\
+      \ mask out during the\n                                  balancing procedure,\
+      \ e.g. sequence gaps or\n                                  regions of poor mappability.\n\
+      \n  --ignore-diags INTEGER          Number of diagonals of the contact matrix\
+      \ to\n                                  ignore, including the main diagonal.\n\
+      \                                  Examples: 0 ignores nothing, 1 ignores the\n\
+      \                                  main diagonal, 2 ignores diagonals (-1, 0,\n\
+      \                                  1), etc.  [default: 2]\n\n  --ignore-dist\
+      \ INTEGER           Distance in bp to ignore.\n  --tol FLOAT               \
+      \      Threshold value of variance of the marginals\n                      \
+      \            for the algorithm to converge.  [default:\n                   \
+      \               1e-05]\n\n  --max-iters INTEGER             Maximum number of\
+      \ iterations to perform if\n                                  convergence is\
+      \ not achieved.  [default: 200]\n\n  --cis-only                      Calculate\
+      \ weights against intra-chromosomal\n                                  data\
+      \ only instead of genome-wide.\n\n  --trans-only                    Calculate\
+      \ weights against inter-chromosomal\n                                  data\
+      \ only instead of genome-wide.\n\n  --name TEXT                     Name of\
+      \ column to write to.  [default:\n                                  weight]\n\
+      \n  -f, --force                     Overwrite the target dataset, 'weight',\
+      \ if\n                                  it already exists.\n\n  --check    \
+      \                     Check whether a data column 'weight' already\n       \
+      \                           exists.\n\n  --stdout                        Print\
+      \ weight column to stdout instead of\n                                  saving\
+      \ to file.\n\n  --convergence-policy [store_final|store_nan|discard|error]\n\
+      \                                  What to do with weights when balancing\n\
+      \                                  doesn't converge in max_iters.\n        \
+      \                          'store_final': Store the final result,\n        \
+      \                          regardless of whether the iterations\n          \
+      \                        converge to the specified tolerance;\n            \
+      \                      'store_nan': Store a vector of NaN values to\n      \
+      \                            indicate that the matrix failed to converge;\n\
+      \                                  'discard': Store nothing and exit\n     \
+      \                             gracefully; 'error': Abort with non-zero\n   \
+      \                               exit status.  [default: store_final]\n\n  -h,\
+      \ --help                      Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - load
+    positional:
+    - !Positional
+      description: 'COO: COO-rdinate sparse matrix format (a.k.a. ijv triple). 3 columns:'
+      position: 0
+      name: compressed.
+      optional: false
+    - !Positional
+      description: '[default: #]'
+      position: 0
+      name: ignore.
+      optional: false
+    named:
+    - !Flag
+      description: "[coo|bg2]          'coo' refers to a tab-delimited sparse\ntriplet\
+        \ file (bin1, bin2, count). 'bg2'\nrefers to a 2D bedGraph-like file (chrom1,\n\
+        start1, end1, chrom2, start2, end2, count).\n[required]"
+      synonyms:
+      - -f
+      - --format
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Path to JSON file containing user metadata.
+      synonyms:
+      - --metadata
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Name of genome assembly (e.g. hg19, mm10)
+      synonyms:
+      - --assembly
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Add supplemental value fields or override\ndefault field numbers\
+        \ for the specified\nformat. Specify quantitative input fields to\naggregate\
+        \ into value columns using the\nsyntax ``--field <field-name>=<field-\nnumber>``.\
+        \ Optionally, append ``:`` followed\nby ``dtype=<dtype>`` to specify the data\n\
+        type (e.g. float). Field numbers are\n1-based. Repeat the ``--field`` option\
+        \ for\neach additional field."
+      synonyms:
+      - --field
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Size (in number of lines/records) of data\nchunks to read and\
+        \ process from the input\nfile at a time. These chunks will be saved\nas temporary\
+        \ partial Coolers and merged at\nthe end. Also specifies the size of the\n\
+        buffer during the merge step."
+      synonyms:
+      - -c
+      - --chunksize
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Store the 'count' column as floating point\nvalues instead of\
+        \ as integers. Can also be\nspecified using the `--field` option."
+      synonyms:
+      - --count-as-float
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Pass this flag if the bin IDs listed in a\nCOO file are one-based\
+        \ instead of zero-\nbased."
+      synonyms:
+      - --one-based
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Comment character that indicates lines to
+      synonyms:
+      - --comment-char
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Create a complete square matrix without\nimplicit symmetry. This\
+        \ allows for distinct\nupper- and lower-triangle values"
+      synonyms:
+      - -N
+      - --no-symmetric-upper
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[unique|duplex]\nCopy status of input data when using\nsymmetric-upper\
+        \ storage. | `unique`:\nIncoming data comes from a unique half of a\nsymmetric\
+        \ matrix, regardless of how element\ncoordinates are ordered. Execution will\
+        \ be\naborted if duplicates are detected.\n`duplex`: Incoming data contains\
+        \ upper- and\nlower-triangle duplicates. All lower-\ntriangle input elements\
+        \ will be discarded! |\nIf you wish to treat lower- and upper-\ntriangle input\
+        \ data as distinct, use the\n``--no-symmetric-upper`` option instead.\n[default:\
+        \ unique]"
+      synonyms:
+      - --input-copy-status
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Options to modify the data filter pipeline.\nProvide as a comma-separated\
+        \ list of key-\nvalue pairs of the form 'k1=v1,k2=v2,...'.\nSee http://docs.h5py.org/en/stable/high/data\n\
+        set.html#filter-pipeline for more details."
+      synonyms:
+      - --storage-options
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler load [OPTIONS] BINS_PATH PIXELS_PATH COOL_PATH\n\n \
+      \ Create a cooler from a pre-binned matrix.\n\n  BINS_PATH : One of the following\n\
+      \n      <TEXT:INTEGER> : 1. Path to a chromsizes file, 2. Bin size in bp\n\n\
+      \      <TEXT> : Path to BED file defining the genomic bin segmentation.\n\n\
+      \  PIXELS_PATH : Text file containing nonzero pixel values. May be gzipped.\n\
+      \  Pass '-' to use stdin.\n\n  COOL_PATH : Output COOL file path or URI.\n\n\
+      \  **Notes**\n\n  Two input format options (tab-delimited). Input pixel file\
+      \ may be\n  compressed.\n\n  COO: COO-rdinate sparse matrix format (a.k.a. ijv\
+      \ triple). 3 columns:\n  \"bin1_id, bin2_id, count\",\n\n  BG2: 2D version of\
+      \ the bedGraph format. 7 columns: \"chrom1, start1, end1,\n  chrom2, start2,\
+      \ end2, count\"\n\n  **Examples**\n\n  cooler load -f bg2 <chrom.sizes>:<binsize>\
+      \ in.bg2.gz out.cool\n\nOptions:\n  -f, --format [coo|bg2]          'coo' refers\
+      \ to a tab-delimited sparse\n                                  triplet file\
+      \ (bin1, bin2, count). 'bg2'\n                                  refers to a\
+      \ 2D bedGraph-like file (chrom1,\n                                  start1,\
+      \ end1, chrom2, start2, end2, count).\n                                  [required]\n\
+      \n  --metadata TEXT                 Path to JSON file containing user metadata.\n\
+      \  --assembly TEXT                 Name of genome assembly (e.g. hg19, mm10)\n\
+      \  --field TEXT                    Add supplemental value fields or override\n\
+      \                                  default field numbers for the specified\n\
+      \                                  format. Specify quantitative input fields\
+      \ to\n                                  aggregate into value columns using the\n\
+      \                                  syntax ``--field <field-name>=<field-\n \
+      \                                 number>``. Optionally, append ``:`` followed\n\
+      \                                  by ``dtype=<dtype>`` to specify the data\n\
+      \                                  type (e.g. float). Field numbers are\n  \
+      \                                1-based. Repeat the ``--field`` option for\n\
+      \                                  each additional field.\n\n  -c, --chunksize\
+      \ INTEGER         Size (in number of lines/records) of data\n              \
+      \                    chunks to read and process from the input\n           \
+      \                       file at a time. These chunks will be saved\n       \
+      \                           as temporary partial Coolers and merged at\n   \
+      \                               the end. Also specifies the size of the\n  \
+      \                                buffer during the merge step.\n\n  --count-as-float\
+      \                Store the 'count' column as floating point\n              \
+      \                    values instead of as integers. Can also be\n          \
+      \                        specified using the `--field` option.\n\n  --one-based\
+      \                     Pass this flag if the bin IDs listed in a\n          \
+      \                        COO file are one-based instead of zero-\n         \
+      \                         based.\n\n  --comment-char TEXT             Comment\
+      \ character that indicates lines to\n                                  ignore.\
+      \  [default: #]\n\n  -N, --no-symmetric-upper        Create a complete square\
+      \ matrix without\n                                  implicit symmetry. This\
+      \ allows for distinct\n                                  upper- and lower-triangle\
+      \ values\n\n  --input-copy-status [unique|duplex]\n                        \
+      \          Copy status of input data when using\n                          \
+      \        symmetric-upper storage. | `unique`:\n                            \
+      \      Incoming data comes from a unique half of a\n                       \
+      \           symmetric matrix, regardless of how element\n                  \
+      \                coordinates are ordered. Execution will be\n              \
+      \                    aborted if duplicates are detected.\n                 \
+      \                 `duplex`: Incoming data contains upper- and\n            \
+      \                      lower-triangle duplicates. All lower-\n             \
+      \                     triangle input elements will be discarded! |\n       \
+      \                           If you wish to treat lower- and upper-\n       \
+      \                           triangle input data as distinct, use the\n     \
+      \                             ``--no-symmetric-upper`` option instead.\n   \
+      \                               [default: unique]\n\n  --storage-options TEXT\
+      \          Options to modify the data filter pipeline.\n                   \
+      \               Provide as a comma-separated list of key-\n                \
+      \                  value pairs of the form 'k1=v1,k2=v2,...'.\n            \
+      \                      See http://docs.h5py.org/en/stable/high/data\n      \
+      \                            set.html#filter-pipeline for more details.\n\n\
+      \  -h, --help                      Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - show
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: COOL_PATH
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: RANGE
+      optional: false
+    named:
+    - !Flag
+      description: "The coordinates of a genomic region shown\nalong the column dimension.\
+        \ If omitted, the\ncolumn range is the same as the row range.\nUse to display\
+        \ asymmetric matrices or trans\ninteractions."
+      synonyms:
+      - -r2
+      - --range2
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Show the balanced contact matrix. If not\nprovided, display the\
+        \ unbalanced counts."
+      synonyms:
+      - -b
+      - --balanced
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Save the image of the contact matrix to a\nfile. If not specified,\
+        \ the matrix is\ndisplayed in an interactive window. The\nfigure format is\
+        \ deduced from the extension\nof the file, the supported formats are png,\n\
+        jpg, svg, pdf, ps and eps."
+      synonyms:
+      - -o
+      - --out
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: The DPI of the figure, if saving to a file
+      synonyms:
+      - --dpi
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "[linear|log2|log10]\nScale transformation of the colormap:\nlinear,\
+        \ log2 or log10. Default is log10."
+      synonyms:
+      - -s
+      - --scale
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Force display very large matrices (>=10^8\npixels). Use at your\
+        \ own risk as it may\ncause performance issues."
+      synonyms:
+      - -f
+      - --force
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "The minimal value of the color scale. Units\nmust match those\
+        \ of the colormap scale. To\nprovide a negative value use a equal sign\nand\
+        \ quotes, e.g. -zmin='-0.5'"
+      synonyms:
+      - --zmin
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: "The maximal value of the color scale. Units\nmust match those\
+        \ of the colormap scale. To\nprovide a negative value use a equal sign\nand\
+        \ quotes, e.g. -zmax='-0.5'"
+      synonyms:
+      - --zmax
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: "The colormap used to display the contact\nmatrix. See the full\
+        \ list at http://matplotl\nib.org/examples/color/colormaps_reference.ht\n\
+        ml"
+      synonyms:
+      - --cmap
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: 'Pixel values to display.  [default: count]'
+      synonyms:
+      - --field
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler show [OPTIONS] COOL_PATH RANGE\n\n  Display and browse\
+      \ a cooler in matplotlib.\n\n  COOL_PATH : Path to a COOL file or Cooler URI.\n\
+      \n  RANGE : The coordinates of the genomic region to display, in UCSC\n  notation.\
+      \ Example: chr1:10,000,000-11,000,000\n\nOptions:\n  -r2, --range2 TEXT    \
+      \          The coordinates of a genomic region shown\n                     \
+      \             along the column dimension. If omitted, the\n                \
+      \                  column range is the same as the row range.\n            \
+      \                      Use to display asymmetric matrices or trans\n       \
+      \                           interactions.\n\n  -b, --balanced              \
+      \    Show the balanced contact matrix. If not\n                            \
+      \      provided, display the unbalanced counts.\n\n  -o, --out TEXT        \
+      \          Save the image of the contact matrix to a\n                     \
+      \             file. If not specified, the matrix is\n                      \
+      \            displayed in an interactive window. The\n                     \
+      \             figure format is deduced from the extension\n                \
+      \                  of the file, the supported formats are png,\n           \
+      \                       jpg, svg, pdf, ps and eps.\n\n  --dpi INTEGER      \
+      \             The DPI of the figure, if saving to a file\n  -s, --scale [linear|log2|log10]\n\
+      \                                  Scale transformation of the colormap:\n \
+      \                                 linear, log2 or log10. Default is log10.\n\
+      \n  -f, --force                     Force display very large matrices (>=10^8\n\
+      \                                  pixels). Use at your own risk as it may\n\
+      \                                  cause performance issues.\n\n  --zmin FLOAT\
+      \                    The minimal value of the color scale. Units\n         \
+      \                         must match those of the colormap scale. To\n     \
+      \                             provide a negative value use a equal sign\n  \
+      \                                and quotes, e.g. -zmin='-0.5'\n\n  --zmax FLOAT\
+      \                    The maximal value of the color scale. Units\n         \
+      \                         must match those of the colormap scale. To\n     \
+      \                             provide a negative value use a equal sign\n  \
+      \                                and quotes, e.g. -zmax='-0.5'\n\n  --cmap TEXT\
+      \                     The colormap used to display the contact\n           \
+      \                       matrix. See the full list at http://matplotl\n     \
+      \                             ib.org/examples/color/colormaps_reference.ht\n\
+      \                                  ml\n\n  --field TEXT                    Pixel\
+      \ values to display.  [default: count]\n  -h, --help                      Show\
+      \ this message and exit.\n"
+    generated_using: *id002
+  - &id004 !Command
+    command:
+    - cooler
+    - digest
+    positional: []
+    named:
+    - !Flag
+      description: Output file (defaults to stdout)
+      synonyms:
+      - -o
+      - --out
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Print the header of column names as the first row.\n[default:\
+        \ False]"
+      synonyms:
+      - -H
+      - --header
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[0|1]  Include a column of relative bin IDs for each\nchromosome.\
+        \ Choose whether to report them as 0- or\n1-based."
+      synonyms:
+      - -i
+      - --rel-ids
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands:
+    - !Command
+      command:
+      - cooler
+      - digest
+      - order.
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: cooler
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: digest
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: CHROMSIZES_PATH
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: FASTA_PATH
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: ENZYME
+        optional: false
+      named: []
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: cooler digest [OPTIONS] CHROMSIZES_PATH FASTA_PATH ENZYME\n\
+        Try 'cooler digest -h' for help.\n\nError: Missing argument 'FASTA_PATH'.\n"
+      generated_using: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler digest [OPTIONS] CHROMSIZES_PATH FASTA_PATH ENZYME\n\
+      \n  Generate fragment-delimited genomic bins.\n\n  Output a genome segmentation\
+      \ of restriction fragments as a BED file.\n\n  CHROMSIZES_PATH : UCSC-like chromsizes\
+      \ file, with chromosomes in desired\n  order.\n\n  FASTA_PATH : Genome assembly\
+      \ FASTA file or folder containing FASTA files\n  (uncompressed).\n\n  ENZYME\
+      \ : Name of restriction enzyme\n\nOptions:\n  -o, --out TEXT       Output file\
+      \ (defaults to stdout)\n  -H, --header         Print the header of column names\
+      \ as the first row.\n                       [default: False]\n\n  -i, --rel-ids\
+      \ [0|1]  Include a column of relative bin IDs for each\n                   \
+      \    chromosome. Choose whether to report them as 0- or\n                  \
+      \     1-based.\n\n  -h, --help           Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - mv
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: SRC_URI
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: DST_URI
+      optional: false
+    named:
+    - !Flag
+      description: Truncate and replace destination file if it already exists.
+      synonyms:
+      - -w
+      - --overwrite
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler mv [OPTIONS] SRC_URI DST_URI\n\n  Rename a cooler within\
+      \ the same file.\n\nOptions:\n  -w, --overwrite  Truncate and replace destination\
+      \ file if it already exists.\n  -h, --help       Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - ls
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: COOL_PATH
+      optional: false
+    named:
+    - !Flag
+      description: Long listing format
+      synonyms:
+      - -l
+      - --long
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler ls [OPTIONS] COOL_PATH\n\n  List all coolers inside\
+      \ a file.\n\nOptions:\n  -l, --long  Long listing format\n  -h, --help  Show\
+      \ this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - attrs
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: URI
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -L
+      - --level
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler attrs [OPTIONS] URI\n\n  Display a file's attribute\
+      \ hierarchy.\n\nOptions:\n  -L, --level INTEGER\n  -h, --help           Show\
+      \ this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - merge
+    positional:
+    - !Positional
+      description: 'Options:'
+      position: 0
+      name: output.
+      optional: false
+    - !Positional
+      description: '[default: 20000000]'
+      position: 1
+      name: rows.
+      optional: false
+    named:
+    - !Flag
+      description: Size of the merge buffer in number of pixel table
+      synonyms:
+      - -c
+      - --chunksize
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Specify the names of value columns to merge as\n'<name>'. Repeat\
+        \ the `--field` option for each one.\nUse '<name>,dtype=<dtype>' to specify\
+        \ the dtype.\nInclude ',agg=<agg>' to specify an aggregation\nfunction different\
+        \ from 'sum'."
+      synonyms:
+      - --field
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler merge [OPTIONS] OUT_PATH [IN_PATHS]...\n\n  Merge multiple\
+      \ coolers with identical axes.\n\n  OUT_PATH : Output file path or URI.\n\n\
+      \  IN_PATHS : Input file paths or URIs of coolers to merge.\n\n  **Notes**\n\
+      \n  Data columns merged:\n\n      pixels/bin1_id, pixels/bin2_id, pixels/<value\
+      \ columns>\n\n  Data columns preserved:\n\n      chroms/name, chroms/length\
+      \     bins/chrom, bins/start, bins/end\n\n  Additional columns in the the input\
+      \ files are not transferred to the\n  output.\n\nOptions:\n  -c, --chunksize\
+      \ INTEGER  Size of the merge buffer in number of pixel table\n             \
+      \              rows.  [default: 20000000]\n\n  --field TEXT             Specify\
+      \ the names of value columns to merge as\n                           '<name>'.\
+      \ Repeat the `--field` option for each one.\n                           Use\
+      \ '<name>,dtype=<dtype>' to specify the dtype.\n                           Include\
+      \ ',agg=<agg>' to specify an aggregation\n                           function\
+      \ different from 'sum'.\n\n  -h, --help               Show this message and\
+      \ exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - cp
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: SRC_URI
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: DST_URI
+      optional: false
+    named:
+    - !Flag
+      description: Truncate and replace destination file if it already exists.
+      synonyms:
+      - -w
+      - --overwrite
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler cp [OPTIONS] SRC_URI DST_URI\n\n  Copy a cooler from\
+      \ one file to another or within the same file.\n\n  See also: h5copy, h5repack\
+      \ tools from HDF5 suite.\n\nOptions:\n  -w, --overwrite  Truncate and replace\
+      \ destination file if it already exists.\n  -h, --help       Show this message\
+      \ and exit.\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - cooler
+    - zoomify
+    positional:
+    - !Positional
+      description: -h, --help               Show this message and exit.
+      position: 0
+      name: levels.
+      optional: false
+    named:
+    - !Flag
+      description: "Number of processes to use for batch processing\nchunks of pixels\
+        \ [default: 1, i.e. no process pool]"
+      synonyms:
+      - -n
+      - -p
+      - --nproc
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Number of pixels allocated to each process\n[default: 10000000]"
+      synonyms:
+      - -c
+      - --chunksize
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: "Comma-separated list of target resolutions. Use\nsuffixes B or\
+        \ N to specify a progression: B for\nbinary (geometric steps of factor 2),\
+        \ N for nice\n(geometric steps of factor 10 interleaved with\nsteps of 2 and\
+        \ 5). Examples:\n1000B=1000,2000,4000,8000,...\n1000N=1000,2000,5000,10000,...\n\
+        5000N=5000,10000,25000,50000,... 4DN is an alias\nfor 1000,2000,5000N [default:\
+        \ B]"
+      synonyms:
+      - -r
+      - --resolutions
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Apply balancing to each zoom level. Off by default.
+      synonyms:
+      - --balance
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Additional arguments to pass to cooler balance
+      synonyms:
+      - --balance-args
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "One or more additional base coolers to aggregate\nfrom, if needed."
+      synonyms:
+      - -i
+      - --base-uri
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Output file or URI
+      synonyms:
+      - -o
+      - --out
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Specify the names of value columns to merge as\n'<name>'. Repeat\
+        \ the `--field` option for each one.\nUse '<name>:dtype=<dtype>' to specify\
+        \ the dtype.\nInclude ',agg=<agg>' to specify an aggregation\nfunction different\
+        \ from 'sum'."
+      synonyms:
+      - --field
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Use the legacy layout of integer-labeled zoom
+      synonyms:
+      - --legacy
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: cooler zoomify [OPTIONS] COOL_PATH\n\n  Generate a multi-resolution\
+      \ cooler file by coarsening.\n\n  COOL_PATH : Path to a COOL file or Cooler\
+      \ URI.\n\nOptions:\n  -n, -p, --nproc INTEGER  Number of processes to use for\
+      \ batch processing\n                           chunks of pixels [default: 1,\
+      \ i.e. no process pool]\n\n  -c, --chunksize INTEGER  Number of pixels allocated\
+      \ to each process\n                           [default: 10000000]\n\n  -r, --resolutions\
+      \ TEXT   Comma-separated list of target resolutions. Use\n                 \
+      \          suffixes B or N to specify a progression: B for\n               \
+      \            binary (geometric steps of factor 2), N for nice\n            \
+      \               (geometric steps of factor 10 interleaved with\n           \
+      \                steps of 2 and 5). Examples:\n                           1000B=1000,2000,4000,8000,...\n\
+      \                           1000N=1000,2000,5000,10000,...\n               \
+      \            5000N=5000,10000,25000,50000,... 4DN is an alias\n            \
+      \               for 1000,2000,5000N [default: B]\n\n  --balance            \
+      \    Apply balancing to each zoom level. Off by default.\n  --balance-args TEXT\
+      \      Additional arguments to pass to cooler balance\n  -i, --base-uri TEXT\
+      \      One or more additional base coolers to aggregate\n                  \
+      \         from, if needed.\n\n  -o, --out TEXT           Output file or URI\n\
+      \  --field TEXT             Specify the names of value columns to merge as\n\
+      \                           '<name>'. Repeat the `--field` option for each one.\n\
+      \                           Use '<name>:dtype=<dtype>' to specify the dtype.\n\
+      \                           Include ',agg=<agg>' to specify an aggregation\n\
+      \                           function different from 'sum'.\n\n  --legacy   \
+      \              Use the legacy layout of integer-labeled zoom\n             \
+      \              levels.\n\n  -h, --help               Show this message and exit.\n"
+    generated_using: *id002
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+  help_text: "Usage: cooler [OPTIONS] COMMAND [ARGS]...\n\n  Type -h or --help after\
+    \ any subcommand for more information.\n\nOptions:\n  -v, --verbose  Verbose logging.\n\
+    \  -d, --debug    On error, drop into the post-mortem debugger shell.\n  -V, --version\
+    \  Show the version and exit.\n  -h, --help     Show this message and exit.\n\n\
+    Commands:\n  cload     Create a cooler from genomic pairs and bins.\n  load  \
+    \    Create a cooler from a pre-binned matrix.\n  merge     Merge multiple coolers\
+    \ with identical axes.\n  coarsen   Coarsen a cooler to a lower resolution.\n\
+    \  zoomify   Generate a multi-resolution cooler file by coarsening.\n  balance\
+    \   Out-of-core matrix balancing.\n  info      Display a cooler's info and metadata.\n\
+    \  dump      Dump a cooler's data to a text stream.\n  show      Display and browse\
+    \ a cooler in matplotlib.\n  makebins  Generate fixed-width genomic bins.\n  digest\
+    \    Generate fragment-delimited genomic bins.\n  csort     Sort and index a contact\
+    \ list.\n  ls        List all coolers inside a file.\n  cp        Copy a cooler\
+    \ from one file to another or within the same file.\n  ln        Create a hard\
+    \ link to a cooler (rather than a true copy) in the...\n  mv        Rename a cooler\
+    \ within the same file.\n  tree      Display a file's data hierarchy.\n  attrs\
+    \     Display a file's attribute hierarchy.\n"
+  generated_using: *id002
+subcommands:
+- !Command
+  command:
+  - cooler
+  - cload
+  - tabix
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: BINS
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: PAIRS_PATH
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: COOL_PATH
+    optional: false
+  named:
+  - !Flag
+    description: Path to JSON file containing user metadata.
+    synonyms:
+    - --metadata
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Name of genome assembly (e.g. hg19, mm10)
+    synonyms:
+    - --assembly
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: "Number of processes to split the work between.\n[default: 8]"
+    synonyms:
+    - -p
+    - --nproc
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: chrom2 field number (one-based)
+    synonyms:
+    - -c2
+    - --chrom2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: pos2 field number (one-based)
+    synonyms:
+    - -p2
+    - --pos2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Positions are zero-based  [default: False]'
+    synonyms:
+    - '-0'
+    - --zero-based
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Divide the pairs from each chromosome into at most\nthis many chunks.\
+      \ Smaller chromosomes will be split\nless frequently or not at all. Increase\
+      \ ths value\nif large chromosomes dominate the workload on\nmultiple processors.\
+      \  [default: 2]"
+    synonyms:
+    - -s
+    - --max-split
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  parent: *id003
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooler cload tabix [OPTIONS] BINS PAIRS_PATH COOL_PATH\n\n  Bin\
+    \ a tabix-indexed contact list file.\n\n  BINS : One of the following\n\n    \
+    \  <TEXT:INTEGER> : 1. Path to a chromsizes file, 2. Bin size in bp\n\n      <TEXT>\
+    \ : Path to BED file defining the genomic bin segmentation.\n\n  PAIRS_PATH :\
+    \ Path to contacts (i.e. read pairs) file.\n\n  COOL_PATH : Output COOL file path\
+    \ or URI.\n\n  See also: 'cooler csort' to sort and index a contact list file\n\
+    \n  Tabix manpage: <http://www.htslib.org/doc/tabix.html>.\n\nOptions:\n  --metadata\
+    \ TEXT          Path to JSON file containing user metadata.\n  --assembly TEXT\
+    \          Name of genome assembly (e.g. hg19, mm10)\n  -p, --nproc INTEGER  \
+    \    Number of processes to split the work between.\n                        \
+    \   [default: 8]\n\n  -c2, --chrom2 INTEGER    chrom2 field number (one-based)\n\
+    \  -p2, --pos2 INTEGER      pos2 field number (one-based)\n  -0, --zero-based\
+    \         Positions are zero-based  [default: False]\n  -s, --max-split INTEGER\
+    \  Divide the pairs from each chromosome into at most\n                      \
+    \     this many chunks. Smaller chromosomes will be split\n                  \
+    \         less frequently or not at all. Increase ths value\n                \
+    \           if large chromosomes dominate the workload on\n                  \
+    \         multiple processors.  [default: 2]\n\n  -h, --help               Show\
+    \ this message and exit.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - cooler
+  - cload
+  - pairs
+  positional:
+  - !Positional
+    description: '[default: #]'
+    position: 0
+    name: ignore.
+    optional: false
+  named:
+  - !Flag
+    description: Path to JSON file containing user metadata.
+    synonyms:
+    - --metadata
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Name of genome assembly (e.g. hg19, mm10)
+    synonyms:
+    - --assembly
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: chrom1 field number (one-based)  [required]
+    synonyms:
+    - -c1
+    - --chrom1
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: pos1 field number (one-based)  [required]
+    synonyms:
+    - -p1
+    - --pos1
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: chrom2 field number (one-based)  [required]
+    synonyms:
+    - -c2
+    - --chrom2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: pos2 field number (one-based)  [required]
+    synonyms:
+    - -p2
+    - --pos2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Number of input lines to load at a time
+    synonyms:
+    - --chunksize
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Positions are zero-based  [default: False]'
+    synonyms:
+    - '-0'
+    - --zero-based
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Comment character that indicates lines to
+    synonyms:
+    - --comment-char
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: "Create a complete square matrix without\nimplicit symmetry. This\
+      \ allows for distinct\nupper- and lower-triangle values"
+    synonyms:
+    - -N
+    - --no-symmetric-upper
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[unique|duplex]\nCopy status of input data when using\nsymmetric-upper\
+      \ storage. | `unique`:\nIncoming data comes from a unique half of a\nsymmetric\
+      \ map, regardless of how the\ncoordinates of a pair are ordered. `duplex`:\n\
+      Incoming data contains upper- and lower-\ntriangle duplicates. All input records\
+      \ that\nmap to the lower triangle will be discarded!\n| If you wish to treat\
+      \ lower- and upper-\ntriangle input data as distinct, use the\n``--no-symmetric-upper``\
+      \ option.   [default:\nunique]"
+    synonyms:
+    - --input-copy-status
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Specify quantitative input fields to\naggregate into value columns\
+      \ using the\nsyntax ``--field <field-name>=<field-\nnumber>``. Optionally, append\
+      \ ``:`` followed\nby ``dtype=<dtype>`` to specify the data\ntype (e.g. float),\
+      \ and/or ``agg=<agg>`` to\nspecify an aggregation function different\nfrom sum\
+      \ (e.g. mean). Field numbers are\n1-based. Passing 'count' as the target name\n\
+      will override the default behavior of\nstoring pair counts. Repeat the ``--field``\n\
+      option for each additional field."
+    synonyms:
+    - --field
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: "Create temporary files in a specified\ndirectory. Pass ``-`` to\
+      \ use the platform\ndefault temp dir."
+    synonyms:
+    - --temp-dir
+    args: !SimpleFlagArg
+      name: DIRECTORY
+    optional: true
+  - !Flag
+    description: Do not delete temporary files when finished.
+    synonyms:
+    - --no-delete-temp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Maximum number of chunks to merge before\ninvoking recursive merging\
+      \  [default: 200]"
+    synonyms:
+    - --max-merge
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: "Options to modify the data filter pipeline.\nProvide as a comma-separated\
+      \ list of key-\nvalue pairs of the form 'k1=v1,k2=v2,...'.\nSee http://docs.h5py.org/en/stable/high/data\n\
+      set.html#filter-pipeline for more details."
+    synonyms:
+    - --storage-options
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  parent: *id003
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooler cload pairs [OPTIONS] BINS PAIRS_PATH COOL_PATH\n\n  Bin\
+    \ any text file or stream of pairs.\n\n  Pairs data need not be sorted. Accepts\
+    \ compressed files. To pipe input\n  from stdin, set PAIRS_PATH to '-'.\n\n  BINS\
+    \ : One of the following\n\n      <TEXT:INTEGER> : 1. Path to a chromsizes file,\
+    \ 2. Bin size in bp\n\n      <TEXT> : Path to BED file defining the genomic bin\
+    \ segmentation.\n\n  PAIRS_PATH : Path to contacts (i.e. read pairs) file.\n\n\
+    \  COOL_PATH : Output COOL file path or URI.\n\nOptions:\n  --metadata TEXT  \
+    \               Path to JSON file containing user metadata.\n  --assembly TEXT\
+    \                 Name of genome assembly (e.g. hg19, mm10)\n  -c1, --chrom1 INTEGER\
+    \           chrom1 field number (one-based)  [required]\n  -p1, --pos1 INTEGER\
+    \             pos1 field number (one-based)  [required]\n  -c2, --chrom2 INTEGER\
+    \           chrom2 field number (one-based)  [required]\n  -p2, --pos2 INTEGER\
+    \             pos2 field number (one-based)  [required]\n  --chunksize INTEGER\
+    \             Number of input lines to load at a time\n  -0, --zero-based    \
+    \            Positions are zero-based  [default: False]\n  --comment-char TEXT\
+    \             Comment character that indicates lines to\n                    \
+    \              ignore.  [default: #]\n\n  -N, --no-symmetric-upper        Create\
+    \ a complete square matrix without\n                                  implicit\
+    \ symmetry. This allows for distinct\n                                  upper-\
+    \ and lower-triangle values\n\n  --input-copy-status [unique|duplex]\n       \
+    \                           Copy status of input data when using\n           \
+    \                       symmetric-upper storage. | `unique`:\n               \
+    \                   Incoming data comes from a unique half of a\n            \
+    \                      symmetric map, regardless of how the\n                \
+    \                  coordinates of a pair are ordered. `duplex`:\n            \
+    \                      Incoming data contains upper- and lower-\n            \
+    \                      triangle duplicates. All input records that\n         \
+    \                         map to the lower triangle will be discarded!\n     \
+    \                             | If you wish to treat lower- and upper-\n     \
+    \                             triangle input data as distinct, use the\n     \
+    \                             ``--no-symmetric-upper`` option.   [default:\n \
+    \                                 unique]\n\n  --field TEXT                  \
+    \  Specify quantitative input fields to\n                                  aggregate\
+    \ into value columns using the\n                                  syntax ``--field\
+    \ <field-name>=<field-\n                                  number>``. Optionally,\
+    \ append ``:`` followed\n                                  by ``dtype=<dtype>``\
+    \ to specify the data\n                                  type (e.g. float), and/or\
+    \ ``agg=<agg>`` to\n                                  specify an aggregation function\
+    \ different\n                                  from sum (e.g. mean). Field numbers\
+    \ are\n                                  1-based. Passing 'count' as the target\
+    \ name\n                                  will override the default behavior of\n\
+    \                                  storing pair counts. Repeat the ``--field``\n\
+    \                                  option for each additional field.\n\n  --temp-dir\
+    \ DIRECTORY            Create temporary files in a specified\n               \
+    \                   directory. Pass ``-`` to use the platform\n              \
+    \                    default temp dir.\n\n  --no-delete-temp                Do\
+    \ not delete temporary files when finished.\n  --max-merge INTEGER           \
+    \  Maximum number of chunks to merge before\n                                \
+    \  invoking recursive merging  [default: 200]\n\n  --storage-options TEXT    \
+    \      Options to modify the data filter pipeline.\n                         \
+    \         Provide as a comma-separated list of key-\n                        \
+    \          value pairs of the form 'k1=v1,k2=v2,...'.\n                      \
+    \            See http://docs.h5py.org/en/stable/high/data\n                  \
+    \                set.html#filter-pipeline for more details.\n\n  -h, --help  \
+    \                    Show this message and exit.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - cooler
+  - cload
+  - hiclib
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: BINS
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: PAIRS_PATH
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: COOL_PATH
+    optional: false
+  named:
+  - !Flag
+    description: Path to JSON file containing user metadata.
+    synonyms:
+    - --metadata
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Name of genome assembly (e.g. hg19, mm10)
+    synonyms:
+    - --assembly
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: "Control the number of pixels handled by each worker\nprocess at\
+      \ a time.  [default: 100000000]"
+    synonyms:
+    - -c
+    - --chunksize
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  parent: *id003
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooler cload hiclib [OPTIONS] BINS PAIRS_PATH COOL_PATH\n\n \
+    \ Bin a hiclib HDF5 contact list (frag) file.\n\n  BINS : One of the following\n\
+    \n      <TEXT:INTEGER> : 1. Path to a chromsizes file, 2. Bin size in bp\n\n \
+    \     <TEXT> : Path to BED file defining the genomic bin segmentation.\n\n  PAIRS_PATH\
+    \ : Path to contacts (i.e. read pairs) file.\n\n  COOL_PATH : Output COOL file\
+    \ path or URI.\n\n  hiclib on BitBucket: <https://bitbucket.org/mirnylab/hiclib>.\n\
+    \nOptions:\n  --metadata TEXT          Path to JSON file containing user metadata.\n\
+    \  --assembly TEXT          Name of genome assembly (e.g. hg19, mm10)\n  -c, --chunksize\
+    \ INTEGER  Control the number of pixels handled by each worker\n             \
+    \              process at a time.  [default: 100000000]\n\n  -h, --help      \
+    \         Show this message and exit.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - cooler
+  - cload
+  - pairix
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: BINS
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: PAIRS_PATH
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: COOL_PATH
+    optional: false
+  named:
+  - !Flag
+    description: Path to JSON file containing user metadata.
+    synonyms:
+    - --metadata
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Name of genome assembly (e.g. hg19, mm10)
+    synonyms:
+    - --assembly
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: "Number of processes to split the work between.\n[default: 8]"
+    synonyms:
+    - -p
+    - --nproc
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Positions are zero-based  [default: False]'
+    synonyms:
+    - '-0'
+    - --zero-based
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Divide the pairs from each chromosome into at most\nthis many chunks.\
+      \ Smaller chromosomes will be split\nless frequently or not at all. Increase\
+      \ ths value\nif large chromosomes dominate the workload on\nmultiple processors.\
+      \  [default: 2]"
+    synonyms:
+    - -s
+    - --max-split
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  parent: *id003
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cooler cload pairix [OPTIONS] BINS PAIRS_PATH COOL_PATH\n\n \
+    \ Bin a pairix-indexed contact list file.\n\n  BINS : One of the following\n\n\
+    \      <TEXT:INTEGER> : 1. Path to a chromsizes file, 2. Bin size in bp\n\n  \
+    \    <TEXT> : Path to BED file defining the genomic bin segmentation.\n\n  PAIRS_PATH\
+    \ : Path to contacts (i.e. read pairs) file.\n\n  COOL_PATH : Output COOL file\
+    \ path or URI.\n\n  See also: 'cooler csort' to sort and index a contact list\
+    \ file\n\n  Pairix on GitHub: <https://github.com/4dn-dcic/pairix>.\n\nOptions:\n\
+    \  --metadata TEXT          Path to JSON file containing user metadata.\n  --assembly\
+    \ TEXT          Name of genome assembly (e.g. hg19, mm10)\n  -p, --nproc INTEGER\
+    \      Number of processes to split the work between.\n                      \
+    \     [default: 8]\n\n  -0, --zero-based         Positions are zero-based  [default:\
+    \ False]\n  -s, --max-split INTEGER  Divide the pairs from each chromosome into\
+    \ at most\n                           this many chunks. Smaller chromosomes will\
+    \ be split\n                           less frequently or not at all. Increase\
+    \ ths value\n                           if large chromosomes dominate the workload\
+    \ on\n                           multiple processors.  [default: 2]\n\n  -h, --help\
+    \               Show this message and exit.\n"
+  generated_using: *id002
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: cooler cload [OPTIONS] COMMAND [ARGS]...\n\n  Create a cooler from\
+  \ genomic pairs and bins.\n\n  Choose a subcommand based on the format of the input\
+  \ contact list.\n\nOptions:\n  -h, --help  Show this message and exit.\n\nCommands:\n\
+  \  hiclib  Bin a hiclib HDF5 contact list (frag) file.\n  pairix  Bin a pairix-indexed\
+  \ contact list file.\n  pairs   Bin any text file or stream of pairs.\n  tabix \
+  \  Bin a tabix-indexed contact list file.\n"
+generated_using: *id002

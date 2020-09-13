@@ -1,0 +1,56 @@
+!Command
+command:
+- NanoLyse
+positional: []
+named:
+- !Flag
+  description: Specify a reference fasta file against which to filter.
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: Specify the path and filename for the log file.
+  synonyms:
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show the help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: NanoLyse [-h] [-v] [-r REFERENCE] [--logfile LOGFILE]\n\nRemove\
+  \ reads mapping to the lambda genome. Reads fastq from stdin and writes to stdout.\n\
+  \noptional arguments:\n  -r, --reference REFERENCE\n                        Specify\
+  \ a reference fasta file against which to filter.\n  --logfile LOGFILE     Specify\
+  \ the path and filename for the log file.\n\nGeneral options:\n  -h, --help    \
+  \        show the help and exit\n  -v, --version         Print version and exit.\n\
+  \nEXAMPLES:\n    gunzip -c reads.fastq.gz | NanoLyse | gzip > reads_without_lambda.fastq.gz\n\
+  \    gunzip -c reads.fastq.gz | NanoLyse | NanoFilt -q 12 | gzip > filtered_reads_without_lambda.fastq.gz\n\
+  \    gunzip -c reads.fastq.gz | NanoLyse --reference mygenome.fa.gz | gzip > reads_without_mygenome.fastq.gz\n\
+  \    \n"
+generated_using:
+- --help

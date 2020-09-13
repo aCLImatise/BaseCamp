@@ -1,0 +1,581 @@
+!Command
+command:
+- AdapterRemoval
+positional:
+- !Positional
+  description: http://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-016-1900-2
+  position: 0
+  name: '88.'
+  optional: false
+named:
+- !Flag
+  description: "Input files containing mate 1 reads or single-ended reads; one or\n\
+    more files may be listed [REQUIRED]."
+  synonyms:
+  - --file1
+  args: !RepeatFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "[FILE ...]\nInput files containing mate 2 reads; if used, then the\
+    \ same number of\nfiles as --file1 must be listed [OPTIONAL]."
+  synonyms:
+  - --file2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Attempt to identify the adapter pair of PE reads, by searching for\n\
+    overlapping mate reads [default: off]."
+  synonyms:
+  - --identify-adapters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum number of threads [default: 1]'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "Quality base used to encode Phred scores in input; either 33, 64,\
+    \ or\nsolexa [default: 33]."
+  synonyms:
+  - --qualitybase
+  args: !SimpleFlagArg
+    name: BASE
+  optional: true
+- !Flag
+  description: "Quality base used to encode Phred scores in output; either 33, 64,\
+    \ or\nsolexa. By default, reads will be written in the same format as the\nthat\
+    \ specified using --qualitybase."
+  synonyms:
+  - --qualitybase-output
+  args: !SimpleFlagArg
+    name: BASE
+  optional: true
+- !Flag
+  description: "Specifies the maximum Phred score expected in input files, and used\n\
+    when writing output. ASCII encoded values are limited to the\ncharacters '!' (ASCII\
+    \ = 33) to '~' (ASCII = 126), meaning that\npossible scores are 0 - 93 with offset\
+    \ 33, and 0 - 62 for offset 64\nand Solexa scores [default: 41]."
+  synonyms:
+  - --qualitymax
+  args: !SimpleFlagArg
+    name: BASE
+  optional: true
+- !Flag
+  description: "Character separating the mate number (1 or 2) from the read name in\n\
+    FASTQ records [default: '/']."
+  synonyms:
+  - --mate-separator
+  args: !SimpleFlagArg
+    name: CHAR
+  optional: true
+- !Flag
+  description: "This option enables both the --interleaved-input option and the\n\
+    --interleaved-output option [default: off]."
+  synonyms:
+  - --interleaved
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The (single) input file provided contains both the mate 1 and mate\
+    \ 2\nreads, one pair after the other, with one mate 1 reads followed by\none mate\
+    \ 2 read. This option is implied by the --interleaved option\n[default: off]."
+  synonyms:
+  - --interleaved-input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, trimmed paired-end reads are written to a single file\ncontaining\
+    \ mate 1 and mate 2 reads, one pair after the other. This\noption is implied by\
+    \ the --interleaved option [default: off]."
+  synonyms:
+  - --interleaved-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, all reads are written to the same file(s), specified by\n\
+    --output1 and --output2 (--output1 only if --interleaved-output is\nnot set).\
+    \ Discarded reads are replaced with a single 'N' with Phred\nscore 0 [default:\
+    \ off]."
+  synonyms:
+  - --combined-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Default prefix for all output files for which no filename was\nexplicitly\
+    \ set [default: your_output]."
+  synonyms:
+  - --basename
+  args: !SimpleFlagArg
+    name: BASENAME
+  optional: true
+- !Flag
+  description: "Output file containing information on the parameters used in the run\n\
+    as well as overall statistics on the reads after trimming [default:\nBASENAME.settings]"
+  synonyms:
+  - --settings
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Output file containing trimmed mate1 reads [default:\nBASENAME.pair1.truncated\
+    \ (PE), BASENAME.truncated (SE), or\nBASENAME.paired.truncated (interleaved PE)]"
+  synonyms:
+  - --output1
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Output file containing trimmed mate 2 reads [default:\nBASENAME.pair2.truncated\
+    \ (only used in PE mode, but not if\n--interleaved-output is enabled)]"
+  synonyms:
+  - --output2
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Output file to which containing paired reads for which the mate has\n\
+    been discarded [default: BASENAME.singleton.truncated]"
+  synonyms:
+  - --singleton
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "If --collapsed is set, contains overlapping mate-pairs which have\n\
+    been merged into a single read (PE mode) or reads for which the\nadapter was identified\
+    \ by a minimum overlap, indicating that the\nentire template molecule is present.\
+    \ This does not include which have\nsubsequently been trimmed due to low-quality\
+    \ or ambiguous nucleotides\n[default: BASENAME.collapsed]"
+  synonyms:
+  - --outputcollapsed
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Collapsed reads (see --outputcollapsed) which were trimmed due the\n\
+    presence of low-quality or ambiguous nucleotides [default:\nBASENAME.collapsed.truncated]"
+  synonyms:
+  - --outputcollapsedtruncated
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Contains reads discarded due to the --minlength, --maxlength or\n\
+    --maxns options [default: BASENAME.discarded]"
+  synonyms:
+  - --discarded
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Enable gzip compression [default: off]'
+  synonyms:
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Compression level, 0 - 9 [default: 6]'
+  synonyms:
+  - --gzip-level
+  args: !SimpleFlagArg
+    name: LEVEL
+  optional: true
+- !Flag
+  description: 'Enable bzip2 compression [default: off]'
+  synonyms:
+  - --bzip2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Compression level, 0 - 9 [default: 9]'
+  synonyms:
+  - --bzip2-level
+  args: !SimpleFlagArg
+    name: LEVEL
+  optional: true
+- !Flag
+  description: "Adapter sequence expected to be found in mate 1 reads [default:\n\
+    AGATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNATCTCGTATGCCGTCTTCTGCTTG]."
+  synonyms:
+  - --adapter1
+  args: !SimpleFlagArg
+    name: SEQUENCE
+  optional: true
+- !Flag
+  description: "Adapter sequence expected to be found in mate 2 reads [default:\n\
+    AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT]."
+  synonyms:
+  - --adapter2
+  args: !SimpleFlagArg
+    name: SEQUENCE
+  optional: true
+- !Flag
+  description: "Read table of white-space separated adapters pairs, used as if the\n\
+    first column was supplied to --adapter1, and the second column was\nsupplied to\
+    \ --adapter2; only the first adapter in each pair is\nrequired SE trimming mode\
+    \ [default: <not set>]."
+  synonyms:
+  - --adapter-list
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "In single-end mode, reads are only trimmed if the overlap between\n\
+    read and the adapter is at least X bases long, not counting ambiguous\nnucleotides\
+    \ (N); this is independent of the --minalignmentlength when\nusing --collapse,\
+    \ allowing a conservative selection of putative\ncomplete inserts while ensuring\
+    \ that all possible adapter\ncontamination is trimmed [default: 0]."
+  synonyms:
+  - --minadapteroverlap
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "Max error-rate when aligning reads and/or adapters. If > 1, the max\n\
+    error-rate is set to 1 / MISMATCH_RATE; if < 0, the defaults are\nused, otherwise\
+    \ the user-supplied value is used directly [default:\n1/3 for trimming; 1/10 when\
+    \ identifying adapters]."
+  synonyms:
+  - --mm
+  args: !SimpleFlagArg
+    name: MISMATCH_RATE
+  optional: true
+- !Flag
+  description: "Consider alignments where up to N nucleotides are missing from the\
+    \ 5'\ntermini [default: 2]."
+  synonyms:
+  - --shift
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "[N]\nTrim the 5' of reads by a fixed amount after removing adapters,\
+    \ but\nbefore carrying out quality based trimming. Specify one value to trim\n\
+    mate 1 and mate 2 reads the same amount, or two values separated by a\nspace to\
+    \ trim each mate different amounts [default: no trimming]."
+  synonyms:
+  - --trim5p
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "[N]\nTrim the 3' of reads by a fixed amount. See --trim5p."
+  synonyms:
+  - --trim3p
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "If set, trim ambiguous bases (N) at 5'/3' termini [default: off]"
+  synonyms:
+  - --trimns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Reads containing more ambiguous bases (N) than this number after\n\
+    trimming are discarded [default: 1000]."
+  synonyms:
+  - --maxns
+  args: !SimpleFlagArg
+    name: MAX
+  optional: true
+- !Flag
+  description: "If set, trim bases at 5'/3' termini with quality scores <= to\n--minquality\
+    \ value [default: off]"
+  synonyms:
+  - --trimqualities
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, quality trimming will be carried out using window based\n\
+    approach, where windows with an average quality less than\n--minquality will be\
+    \ trimmed. If >= 1, this value will be used as the\nwindow size. If the value\
+    \ is < 1, the value will be multiplied with\nthe read length to determine a window\
+    \ size per read. If the resulting\nwindow size is 0 or larger than the read length,\
+    \ the read length is\nused as the window size. This option implies --trimqualities\n\
+    [default: <not set>]."
+  synonyms:
+  - --trimwindows
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Inclusive minimum; see --trimqualities for details [default: 2]'
+  synonyms:
+  - --minquality
+  args: !SimpleFlagArg
+    name: PHRED
+  optional: true
+- !Flag
+  description: "If set, bases at the 5p will not be trimmed by --trimns,\n--trimqualities,\
+    \ and --trimwindows. Collapsed reads will not be\nquality trimmed when this option\
+    \ is enabled [default: 5p bases are\ntrimmed]"
+  synonyms:
+  - --preserve5p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Reads shorter than this length are discarded following trimming\n\
+    [default: 15]."
+  synonyms:
+  - --minlength
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "Reads longer than this length are discarded following trimming\n[default:\
+    \ 4294967295]."
+  synonyms:
+  - --maxlength
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "When set, paired ended read alignments of --minalignmentlength or\n\
+    more bases are combined into a single consensus sequence,\nrepresenting the complete\
+    \ insert, and written to either\nbasename.collapsed or basename.collapsed.truncated\
+    \ (if trimmed due to\nlow-quality bases following collapse); for single-ended\
+    \ reads,\nputative complete inserts are identified as having at least\n--minalignmentlength\
+    \ bases overlap with the adapter sequence, and are\nwritten to the the same files\
+    \ [default: off]."
+  synonyms:
+  - --collapse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "In standard --collapse mode, AdapterRemoval will randomly select one\n\
+    of two different overlapping bases if these have the same quality\n(otherwise\
+    \ it picks the highest quality base). With\n--collapse-deterministic, AdapterRemoval\
+    \ will instead set such bases\nto N. This option implies --collapse [default:\
+    \ off]."
+  synonyms:
+  - --collapse-deterministic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If --collapse is set, paired reads must overlap at least this number\n\
+    of bases to be collapsed, and single-ended reads must overlap at\nleast this number\
+    \ of bases with the adapter to be considered complete\ntemplate molecules [default:\
+    \ 11]."
+  synonyms:
+  - --minalignmentlength
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "Sets the RNG seed used when choosing between bases with equal Phred\n\
+    scores when --collapse is enabled. This option is not available if\nmore than\
+    \ one thread is used. If not specified, aseed is generated\nusing the current\
+    \ time."
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: "List of barcodes or barcode pairs for single or double-indexed\ndemultiplexing.\
+    \ Note that both indexes should be specified for both\nsingle-end and paired-end\
+    \ trimming, if double-indexed multiplexing\nwas used, in order to ensure that\
+    \ the demultiplexed reads can be\ntrimmed correctly [default: <not set>]."
+  synonyms:
+  - --barcode-list
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "Maximum number of mismatches allowed when counting mismatches in both\n\
+    the mate 1 and the mate 2 barcode for paired reads."
+  synonyms:
+  - --barcode-mm
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Maximum number of mismatches allowed for the mate 1 barcode; if not\n\
+    set, this value is equal to the '--barcode-mm' value; cannot be\nhigher than the\
+    \ '--barcode-mm value'."
+  synonyms:
+  - --barcode-mm-r1
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Maximum number of mismatches allowed for the mate 2 barcode; if not\n\
+    set, this value is equal to the '--barcode-mm' value; cannot be\nhigher than the\
+    \ '--barcode-mm value'."
+  synonyms:
+  - --barcode-mm-r2
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Only carry out demultiplexing using the list of barcodes supplied\n\
+    with --barcode-list. No other processing is done.\n"
+  synonyms:
+  - --demultiplex-only
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this message.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print the version string.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "AdapterRemoval ver. 2.3.0\n\nThis program searches for and removes remnant\
+  \ adapter sequences from\nyour read data.  The program can analyze both single end\
+  \ and paired end\ndata.  For detailed explanation of the parameters, please refer\
+  \ to the\nman page.  For comments, suggestions  and feedback please contact Stinus\n\
+  Lindgreen (stinus@binf.ku.dk) and Mikkel Schubert (MikkelSch@gmail.com).\n\nIf you\
+  \ use the program, please cite the paper:\n    Schubert, Lindgreen, and Orlando\
+  \ (2016). AdapterRemoval v2: rapid\n    adapter trimming, identification, and read\
+  \ merging.\n    BMC Research Notes, 12;9(1):88.\n\n    http://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-016-1900-2\n\
+  \n\n    --help  \n        Display this message.\n\n    --version  \n        Print\
+  \ the version string.\n\n\n\nOPTIONS:\n    --file1 FILE [FILE ...]\n        Input\
+  \ files containing mate 1 reads or single-ended reads; one or\n        more files\
+  \ may be listed [REQUIRED].\n\n    --file2 [FILE ...]\n        Input files containing\
+  \ mate 2 reads; if used, then the same number of\n        files as --file1 must\
+  \ be listed [OPTIONAL].\n\n    --identify-adapters  \n        Attempt to identify\
+  \ the adapter pair of PE reads, by searching for\n        overlapping mate reads\
+  \ [default: off].\n\n    --threads THREADS\n        Maximum number of threads [default:\
+  \ 1]\n\n\nFASTQ OPTIONS:\n    --qualitybase BASE\n        Quality base used to encode\
+  \ Phred scores in input; either 33, 64, or\n        solexa [default: 33].\n\n  \
+  \  --qualitybase-output BASE\n        Quality base used to encode Phred scores in\
+  \ output; either 33, 64, or\n        solexa. By default, reads will be written in\
+  \ the same format as the\n        that specified using --qualitybase.\n\n    --qualitymax\
+  \ BASE\n        Specifies the maximum Phred score expected in input files, and used\n\
+  \        when writing output. ASCII encoded values are limited to the\n        characters\
+  \ '!' (ASCII = 33) to '~' (ASCII = 126), meaning that\n        possible scores are\
+  \ 0 - 93 with offset 33, and 0 - 62 for offset 64\n        and Solexa scores [default:\
+  \ 41].\n\n    --mate-separator CHAR\n        Character separating the mate number\
+  \ (1 or 2) from the read name in\n        FASTQ records [default: '/'].\n\n    --interleaved\
+  \  \n        This option enables both the --interleaved-input option and the\n \
+  \       --interleaved-output option [default: off].\n\n    --interleaved-input \
+  \ \n        The (single) input file provided contains both the mate 1 and mate 2\n\
+  \        reads, one pair after the other, with one mate 1 reads followed by\n  \
+  \      one mate 2 read. This option is implied by the --interleaved option\n   \
+  \     [default: off].\n\n    --interleaved-output  \n        If set, trimmed paired-end\
+  \ reads are written to a single file\n        containing mate 1 and mate 2 reads,\
+  \ one pair after the other. This\n        option is implied by the --interleaved\
+  \ option [default: off].\n\n    --combined-output  \n        If set, all reads are\
+  \ written to the same file(s), specified by\n        --output1 and --output2 (--output1\
+  \ only if --interleaved-output is\n        not set). Discarded reads are replaced\
+  \ with a single 'N' with Phred\n        score 0 [default: off].\n\n\nOUTPUT FILES:\n\
+  \    --basename BASENAME\n        Default prefix for all output files for which\
+  \ no filename was\n        explicitly set [default: your_output].\n\n    --settings\
+  \ FILE\n        Output file containing information on the parameters used in the\
+  \ run\n        as well as overall statistics on the reads after trimming [default:\n\
+  \        BASENAME.settings]\n\n    --output1 FILE\n        Output file containing\
+  \ trimmed mate1 reads [default:\n        BASENAME.pair1.truncated (PE), BASENAME.truncated\
+  \ (SE), or\n        BASENAME.paired.truncated (interleaved PE)]\n\n    --output2\
+  \ FILE\n        Output file containing trimmed mate 2 reads [default:\n        BASENAME.pair2.truncated\
+  \ (only used in PE mode, but not if\n        --interleaved-output is enabled)]\n\
+  \n    --singleton FILE\n        Output file to which containing paired reads for\
+  \ which the mate has\n        been discarded [default: BASENAME.singleton.truncated]\n\
+  \n    --outputcollapsed FILE\n        If --collapsed is set, contains overlapping\
+  \ mate-pairs which have\n        been merged into a single read (PE mode) or reads\
+  \ for which the\n        adapter was identified by a minimum overlap, indicating\
+  \ that the\n        entire template molecule is present. This does not include which\
+  \ have\n        subsequently been trimmed due to low-quality or ambiguous nucleotides\n\
+  \        [default: BASENAME.collapsed]\n\n    --outputcollapsedtruncated FILE\n\
+  \        Collapsed reads (see --outputcollapsed) which were trimmed due the\n  \
+  \      presence of low-quality or ambiguous nucleotides [default:\n        BASENAME.collapsed.truncated]\n\
+  \n    --discarded FILE\n        Contains reads discarded due to the --minlength,\
+  \ --maxlength or\n        --maxns options [default: BASENAME.discarded]\n\n\nOUTPUT\
+  \ COMPRESSION:\n    --gzip  \n        Enable gzip compression [default: off]\n\n\
+  \    --gzip-level LEVEL\n        Compression level, 0 - 9 [default: 6]\n\n    --bzip2\
+  \  \n        Enable bzip2 compression [default: off]\n\n    --bzip2-level LEVEL\n\
+  \        Compression level, 0 - 9 [default: 9]\n\n\nTRIMMING SETTINGS:\n    --adapter1\
+  \ SEQUENCE\n        Adapter sequence expected to be found in mate 1 reads [default:\n\
+  \        AGATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNATCTCGTATGCCGTCTTCTGCTTG].\n\n\
+  \    --adapter2 SEQUENCE\n        Adapter sequence expected to be found in mate\
+  \ 2 reads [default:\n        AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT].\n\
+  \n    --adapter-list FILENAME\n        Read table of white-space separated adapters\
+  \ pairs, used as if the\n        first column was supplied to --adapter1, and the\
+  \ second column was\n        supplied to --adapter2; only the first adapter in each\
+  \ pair is\n        required SE trimming mode [default: <not set>].\n\n\n    --minadapteroverlap\
+  \ LENGTH\n        In single-end mode, reads are only trimmed if the overlap between\n\
+  \        read and the adapter is at least X bases long, not counting ambiguous\n\
+  \        nucleotides (N); this is independent of the --minalignmentlength when\n\
+  \        using --collapse, allowing a conservative selection of putative\n     \
+  \   complete inserts while ensuring that all possible adapter\n        contamination\
+  \ is trimmed [default: 0].\n\n    --mm MISMATCH_RATE\n        Max error-rate when\
+  \ aligning reads and/or adapters. If > 1, the max\n        error-rate is set to\
+  \ 1 / MISMATCH_RATE; if < 0, the defaults are\n        used, otherwise the user-supplied\
+  \ value is used directly [default:\n        1/3 for trimming; 1/10 when identifying\
+  \ adapters].\n\n    --shift N\n        Consider alignments where up to N nucleotides\
+  \ are missing from the 5'\n        termini [default: 2].\n\n\n    --trim5p N [N]\n\
+  \        Trim the 5' of reads by a fixed amount after removing adapters, but\n \
+  \       before carrying out quality based trimming. Specify one value to trim\n\
+  \        mate 1 and mate 2 reads the same amount, or two values separated by a\n\
+  \        space to trim each mate different amounts [default: no trimming].\n\n \
+  \   --trim3p N [N]\n        Trim the 3' of reads by a fixed amount. See --trim5p.\n\
+  \n    --trimns  \n        If set, trim ambiguous bases (N) at 5'/3' termini [default:\
+  \ off]\n\n    --maxns MAX\n        Reads containing more ambiguous bases (N) than\
+  \ this number after\n        trimming are discarded [default: 1000].\n\n    --trimqualities\
+  \  \n        If set, trim bases at 5'/3' termini with quality scores <= to\n   \
+  \     --minquality value [default: off]\n\n    --trimwindows INT\n        If set,\
+  \ quality trimming will be carried out using window based\n        approach, where\
+  \ windows with an average quality less than\n        --minquality will be trimmed.\
+  \ If >= 1, this value will be used as the\n        window size. If the value is\
+  \ < 1, the value will be multiplied with\n        the read length to determine a\
+  \ window size per read. If the resulting\n        window size is 0 or larger than\
+  \ the read length, the read length is\n        used as the window size. This option\
+  \ implies --trimqualities\n        [default: <not set>].\n\n    --minquality PHRED\n\
+  \        Inclusive minimum; see --trimqualities for details [default: 2]\n\n   \
+  \ --preserve5p  \n        If set, bases at the 5p will not be trimmed by --trimns,\n\
+  \        --trimqualities, and --trimwindows. Collapsed reads will not be\n     \
+  \   quality trimmed when this option is enabled [default: 5p bases are\n       \
+  \ trimmed]\n\n\n    --minlength LENGTH\n        Reads shorter than this length are\
+  \ discarded following trimming\n        [default: 15].\n\n    --maxlength LENGTH\n\
+  \        Reads longer than this length are discarded following trimming\n      \
+  \  [default: 4294967295].\n\n\nREAD MERGING:\n    --collapse  \n        When set,\
+  \ paired ended read alignments of --minalignmentlength or\n        more bases are\
+  \ combined into a single consensus sequence,\n        representing the complete\
+  \ insert, and written to either\n        basename.collapsed or basename.collapsed.truncated\
+  \ (if trimmed due to\n        low-quality bases following collapse); for single-ended\
+  \ reads,\n        putative complete inserts are identified as having at least\n\
+  \        --minalignmentlength bases overlap with the adapter sequence, and are\n\
+  \        written to the the same files [default: off].\n\n    --collapse-deterministic\
+  \  \n        In standard --collapse mode, AdapterRemoval will randomly select one\n\
+  \        of two different overlapping bases if these have the same quality\n   \
+  \     (otherwise it picks the highest quality base). With\n        --collapse-deterministic,\
+  \ AdapterRemoval will instead set such bases\n        to N. This option implies\
+  \ --collapse [default: off].\n\n    --minalignmentlength LENGTH\n        If --collapse\
+  \ is set, paired reads must overlap at least this number\n        of bases to be\
+  \ collapsed, and single-ended reads must overlap at\n        least this number of\
+  \ bases with the adapter to be considered complete\n        template molecules [default:\
+  \ 11].\n\n    --seed SEED\n        Sets the RNG seed used when choosing between\
+  \ bases with equal Phred\n        scores when --collapse is enabled. This option\
+  \ is not available if\n        more than one thread is used. If not specified, aseed\
+  \ is generated\n        using the current time.\n\n\nDEMULTIPLEXING:\n    --barcode-list\
+  \ FILENAME\n        List of barcodes or barcode pairs for single or double-indexed\n\
+  \        demultiplexing. Note that both indexes should be specified for both\n \
+  \       single-end and paired-end trimming, if double-indexed multiplexing\n   \
+  \     was used, in order to ensure that the demultiplexed reads can be\n       \
+  \ trimmed correctly [default: <not set>].\n\n    --barcode-mm N\n        Maximum\
+  \ number of mismatches allowed when counting mismatches in both\n        the mate\
+  \ 1 and the mate 2 barcode for paired reads.\n\n    --barcode-mm-r1 N\n        Maximum\
+  \ number of mismatches allowed for the mate 1 barcode; if not\n        set, this\
+  \ value is equal to the '--barcode-mm' value; cannot be\n        higher than the\
+  \ '--barcode-mm value'.\n\n    --barcode-mm-r2 N\n        Maximum number of mismatches\
+  \ allowed for the mate 2 barcode; if not\n        set, this value is equal to the\
+  \ '--barcode-mm' value; cannot be\n        higher than the '--barcode-mm value'.\n\
+  \n    --demultiplex-only  \n        Only carry out demultiplexing using the list\
+  \ of barcodes supplied\n        with --barcode-list. No other processing is done.\n\
+  \n\n"
+generated_using:
+- --help

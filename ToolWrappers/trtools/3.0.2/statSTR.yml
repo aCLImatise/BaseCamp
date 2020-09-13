@@ -1,0 +1,218 @@
+!Command
+command:
+- statSTR
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Tool
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: for
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: computing
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: stats
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: on
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: a
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: TR
+  optional: false
+- !Positional
+  description: ''
+  position: 7
+  name: VCF
+  optional: false
+- !Positional
+  description: ''
+  position: 8
+  name: file
+  optional: false
+named:
+- !Flag
+  description: Input STR VCF file
+  synonyms:
+  - --vcf
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: "Output file prefix. Use stdout to print file to\nstandard output."
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: "Options=['gangstr', 'advntr', 'hipstr', 'eh',\n'popstr'] (default:\
+    \ auto)"
+  synonyms:
+  - --vcftype
+  args: !SimpleFlagArg
+    name: VCFTYPE
+  optional: true
+- !Flag
+  description: "File containing list of samples to include. Or a\ncomma-separated\
+    \ list of files to compute stats\nseparate for each group of samples"
+  synonyms:
+  - --samples
+  args: !SimpleFlagArg
+    name: SAMPLES
+  optional: true
+- !Flag
+  description: "Prefixes to name output for each samples group. By\ndefault uses 1,2,3\
+    \ etc."
+  synonyms:
+  - --sample-prefixes
+  args: !SimpleFlagArg
+    name: SAMPLE_PREFIXES
+  optional: true
+- !Flag
+  description: Restrict to this region chrom:start-end
+  synonyms:
+  - --region
+  args: !SimpleFlagArg
+    name: REGION
+  optional: true
+- !Flag
+  description: "Output threshold field (max allele size, used for\nGangSTR strinfo).\
+    \ (default: False)"
+  synonyms:
+  - --thresh
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output allele frequencies (default: False)'
+  synonyms:
+  - --afreq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output allele counts (default: False)'
+  synonyms:
+  - --acount
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output HWE p-values per loci. (default: False)'
+  synonyms:
+  - --hwep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output heterozygosity of each locus. (default: False)'
+  synonyms:
+  - --het
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output mean of allele frequencies. (default: False)'
+  synonyms:
+  - --mean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output mode of allele frequencies. (default: False)'
+  synonyms:
+  - --mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output variance of allele frequencies. (default:\nFalse)"
+  synonyms:
+  - --var
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output number of samples called. (default: False)'
+  synonyms:
+  - --numcalled
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Calculate per-locus stats (het, HWE) collapsing\nalleles by length\
+    \ (default: False)"
+  synonyms:
+  - --use-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output allele frequency plot. Will only do for a\nmaximum of 10 TRs.\
+    \ (default: False)"
+  synonyms:
+  - --plot-afreq
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: \nTool for computing stats on a TR VCF file\n [-h] --vcf VCF --out\
+  \ OUT\n                                                   [--vcftype VCFTYPE]\n\
+  \                                                   [--samples SAMPLES]\n      \
+  \                                             [--sample-prefixes SAMPLE_PREFIXES]\n\
+  \                                                   [--region REGION]\n        \
+  \                                           [--thresh] [--afreq]\n             \
+  \                                      [--acount] [--hwep] [--het]\n           \
+  \                                        [--mean] [--mode] [--var]\n           \
+  \                                        [--numcalled]\n                       \
+  \                            [--use-length]\n                                  \
+  \                 [--plot-afreq] [--version]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n\nInput/output:\n  --vcf VCF     \
+  \        Input STR VCF file\n  --out OUT             Output file prefix. Use stdout\
+  \ to print file to\n                        standard output.\n  --vcftype VCFTYPE\
+  \     Options=['gangstr', 'advntr', 'hipstr', 'eh',\n                        'popstr']\
+  \ (default: auto)\n\nFiltering group:\n  --samples SAMPLES     File containing list\
+  \ of samples to include. Or a\n                        comma-separated list of files\
+  \ to compute stats\n                        separate for each group of samples\n\
+  \  --sample-prefixes SAMPLE_PREFIXES\n                        Prefixes to name output\
+  \ for each samples group. By\n                        default uses 1,2,3 etc.\n\
+  \  --region REGION       Restrict to this region chrom:start-end\n\nStats group:\n\
+  \  --thresh              Output threshold field (max allele size, used for\n   \
+  \                     GangSTR strinfo). (default: False)\n  --afreq            \
+  \   Output allele frequencies (default: False)\n  --acount              Output allele\
+  \ counts (default: False)\n  --hwep                Output HWE p-values per loci.\
+  \ (default: False)\n  --het                 Output heterozygosity of each locus.\
+  \ (default: False)\n  --mean                Output mean of allele frequencies. (default:\
+  \ False)\n  --mode                Output mode of allele frequencies. (default: False)\n\
+  \  --var                 Output variance of allele frequencies. (default:\n    \
+  \                    False)\n  --numcalled           Output number of samples called.\
+  \ (default: False)\n  --use-length          Calculate per-locus stats (het, HWE)\
+  \ collapsing\n                        alleles by length (default: False)\n\nPlotting\
+  \ group:\n  --plot-afreq          Output allele frequency plot. Will only do for\
+  \ a\n                        maximum of 10 TRs. (default: False)\n\nVersion:\n \
+  \ --version             show program's version number and exit\n"
+generated_using:
+- --help

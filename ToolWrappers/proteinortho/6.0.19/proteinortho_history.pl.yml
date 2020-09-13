@@ -1,0 +1,67 @@
+!Command
+command:
+- proteinortho_history.pl
+positional:
+- !Positional
+  description: A string of a single gene/protein or 2 separated by a comma or a whitespace
+    (the input is escaped using quotemeta, use -noquotemeta to avoid this)
+  position: 0
+  name: QUERY
+  optional: false
+named:
+- !Flag
+  description: The project name (as specified in proteinortho with -project) (default:auto
+    detect in the current directory)
+  synonyms:
+  - -project
+  args: !SimpleFlagArg
+    name: MYPROJECT
+  optional: true
+- !Flag
+  description: (optional) If set, then the query will not be escaped.
+  synonyms:
+  - -noquotemeta
+  - -E
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (optional) If -step= is set too, then the tables are not formatted
+    and a plain csv is printed instead.
+  synonyms:
+  - -plain
+  - -p
+  - -notableformat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =                                         (optional) Defines the delimiter
+    character for spliting the query (if you want to search for 2 genes/proteins)
+  synonyms:
+  - -delim
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nproteinortho_history.pl        reports the history of a (or a pair of)\
+  \ gene/protein(s).\n \nSYNOPSIS\n \nproteinortho_history.pl (-project=myproject)\
+  \ QUERY (FASTA1 FASTA2 ...)\n\n\tQUERY\tA string of a single gene/protein or 2 separated\
+  \ by a comma or a whitespace (the input is escaped using quotemeta, use -noquotemeta\
+  \ to avoid this)\n\n\t-project=MYPROJECT\tThe project name (as specified in proteinortho\
+  \ with -project) (default:auto detect in the current directory)\n\t-step=[123] \t\
+  \t(optional) If specified more optput is printed (to STDOUT) for the given step:\n\
+  \t\t-step=1 : search for the given fasta sequence in the input fasta files\n\t\t\
+  -step=2 : search in the *.blast-graph\n\t\t-step=3 : search in the *.proteinortho\
+  \ file \n\t\t-step=all : prints everything of above to STDOUT\n\tFASTA*\t\t\t\t\t\
+  \t(optional) input fasta files \n\t-noquotemeta, -E\t\t\t(optional) If set, then\
+  \ the query will not be escaped.\n\t-plain, -p, -notableformat\t(optional) If -step=\
+  \ is set too, then the tables are not formatted and a plain csv is printed instead.\
+  \ \n\t-delim= \t\t\t\t\t(optional) Defines the delimiter character for spliting\
+  \ the query (if you want to search for 2 genes/proteins)\n\n\tNOTE: if you use the\
+  \ -keep option and you have the project_cache_proteinortho/ directory, this program\
+  \ additionally searches for all blast hits.\n\n"
+generated_using:
+- --help

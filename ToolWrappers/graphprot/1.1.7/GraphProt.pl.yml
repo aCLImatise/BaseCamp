@@ -1,0 +1,187 @@
+!Command
+command:
+- GraphProt.pl
+positional: []
+named:
+- !Flag
+  description: "'regression' or 'classification'\ndefault: classification"
+  synonyms:
+  - -mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "what should GraphProt do?\nls: optimize parameters\ncv: run a crossvalidation\n\
+    train: train a model\npredict: predict binding for a whole site\npredict_profile:\
+    \ predict binding profiles\npredict_has: predict high-affinity sites\nmotif: create\
+    \ sequence and structure motifs given a model"
+  synonyms:
+  - -action
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use GraphProt sequence models
+  synonyms:
+  - -onlyseq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "this prefix is used for all results\ndefault: GraphProt"
+  synonyms:
+  - -prefix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: GraphProt model
+  synonyms:
+  - -model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fasta file containing binding sites
+  synonyms:
+  - -fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: full documentation
+  synonyms:
+  - -man
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "parameter config file created by -action ls, alternatively\nuse the\
+    \ following options to manually enter the desired\nparameters"
+  synonyms:
+  - -params
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "abstraction level [RNA structure graphs]\ndefault: 3"
+  synonyms:
+  - -abstraction
+  args: !SimpleFlagArg
+    name: RNAshapes
+  optional: true
+- !Flag
+  description: "GraphProt radius\ndefault: 1"
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "GraphProt distance\ndefault: 4"
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "GraphProt bitsize used for feature encoding\ndefault: 14"
+  synonyms:
+  - -bitsize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fasta file containing negative class sequences
+  synonyms:
+  - -negfasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "SGD parameter lambda  [classification]\ndefault: 10e-4"
+  synonyms:
+  - -lambda
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "SGD parameter epochs  [classification]\ndefault: 10"
+  synonyms:
+  - -epochs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "list of affinities\none value per line, same order as binding sites\
+    \ (fasta)"
+  synonyms:
+  - -affinities
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "SVR parameter c       [regression]\ndefault: 1"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "SVR parameter epsilon [regression]\ndefault: 0.1"
+  synonyms:
+  - -epsilon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "keep only regions with average score above a percentile\nas high-affinity\
+    \ sites\ndefault: 99"
+  synonyms:
+  - -percentile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set length of motifs\n(default: 12)"
+  synonyms:
+  - -motif_len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use n top-scoring subsequences for motif creation\n(default: 1000)\n"
+  synonyms:
+  - -motif_top_n
+  args: !SimpleFlagArg
+    name: use
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: brief help message
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage:\n    GraphProt.pl -mode {regression,classification} -action\n \
+  \   {ls,cv,train,predict,predict_profile,predict_has,motif}\n\n    Options:\n\n\
+  \        -mode        'regression' or 'classification'\n                       \
+  \  default: classification\n        -action      what should GraphProt do?\n   \
+  \                      ls: optimize parameters\n                         cv: run\
+  \ a crossvalidation\n                         train: train a model\n           \
+  \              predict: predict binding for a whole site\n                     \
+  \    predict_profile: predict binding profiles\n                         predict_has:\
+  \ predict high-affinity sites\n                         motif: create sequence and\
+  \ structure motifs given a model\n        -onlyseq     use GraphProt sequence models\n\
+  \        -prefix      this prefix is used for all results\n                    \
+  \     default: GraphProt\n        -model       GraphProt model\n        -fasta \
+  \      fasta file containing binding sites\n        -help        brief help message\n\
+  \        -man         full documentation\n\n    Specify parameters as determined\
+  \ by -action ls:\n\n        -params      parameter config file created by -action\
+  \ ls, alternatively\n                     use the following options to manually\
+  \ enter the desired\n                     parameters\n\n    Graph and Feature options:\n\
+  \n        -abstraction RNAshapes abstraction level [RNA structure graphs]\n    \
+  \                     default: 3\n        -R           GraphProt radius\n      \
+  \                   default: 1\n        -D           GraphProt distance\n      \
+  \                   default: 4\n        -bitsize     GraphProt bitsize used for\
+  \ feature encoding\n                         default: 14\n\n    Classification options:\n\
+  \n        -negfasta    fasta file containing negative class sequences\n        -lambda\
+  \      SGD parameter lambda  [classification]\n                         default:\
+  \ 10e-4\n        -epochs      SGD parameter epochs  [classification]\n         \
+  \                default: 10\n\n    Regression options:\n\n        -affinities \
+  \ list of affinities\n                         one value per line, same order as\
+  \ binding sites (fasta)\n        -c           SVR parameter c       [regression]\n\
+  \                         default: 1\n        -epsilon     SVR parameter epsilon\
+  \ [regression]\n                         default: 0.1\n\n    Prediction options:\n\
+  \n        -percentile  keep only regions with average score above a percentile\n\
+  \                     as high-affinity sites\n                         default:\
+  \ 99\n\n    Motif options:\n\n        -motif_len   set length of motifs\n      \
+  \                   (default: 12)\n        -motif_top_n use use n top-scoring subsequences\
+  \ for motif creation\n                         (default: 1000)\n\n"
+generated_using:
+- --help

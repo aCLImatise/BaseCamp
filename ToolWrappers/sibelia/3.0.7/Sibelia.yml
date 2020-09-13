@@ -1,0 +1,178 @@
+!Command
+command:
+- Sibelia
+positional:
+- !Positional
+  description: "{-s <loose|fine|far>|-k <file name>} [-o <dir name>]\n[--noblocks]\
+    \ [-r] [-a] [-m <integer>] [-q] [-g] [-v] [-t <dir\nname>] [--lastk <integer >\
+    \ 1>] [--allstages] [--gff]\n[--nopostprocess] [--correctboundaries] [-i <integer\
+    \ > 0>] [--]\n[--version] [-h] <fasta files with genomes> ..."
+  position: 0
+  name: Sibelia
+  optional: false
+named:
+- !Flag
+  description: ",  --parameters <loose|fine|far>\n(OR required)  Parameters set, used\
+    \ for the simplification. Option\n\"loose\" produces fewer blocks, but they are\
+    \ larger (\"fine\" is\nopposite).\n-- OR --"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: loose|fine|far
+  optional: true
+- !Flag
+  description: ",  --stagefile <file name>\n(OR required)  File that contains manually\
+    \ chosen simplifications\nparameters. See USAGE file for more information."
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: file name
+  optional: true
+- !Flag
+  description: ",  --outdir <dir name>\nDirectory where output files are written"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: dir name
+  optional: true
+- !Flag
+  description: Do not compute synteny blocks
+  synonyms:
+  - --noblocks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --inram\nPerform all computations in RAM, don't create temp files."
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --sharedonly\nOutput only blocks that occur exactly once in each\
+    \ input sequence."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --minblocksize <integer>\nMinimum size of a synteny block, default\
+    \ value = 5000 BP."
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ",  --sequencesfile\nOutput sequences of synteny blocks (FASTA format)."
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --graphfile\nOutput resulting condensed de Bruijn graph (in dot\
+    \ format)."
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --visualize\nDraw circos diagram with blocks at different stages."
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --tempdir <dir name>\nDirectory where temporary files are stored."
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: dir name
+  optional: true
+- !Flag
+  description: "1>\nValue of K used for the synteny blocks inferring."
+  synonyms:
+  - --lastk
+  args: !SimpleFlagArg
+    name: 'integer '
+  optional: true
+- !Flag
+  description: Output coordinates of synteny blocks from all stages
+  synonyms:
+  - --allstages
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use GFF format for reporting blocks coordinates
+  synonyms:
+  - --gff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not perform postprocessing (stripe gluing).
+  synonyms:
+  - --nopostprocess
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Correct boundaries of unique synteny blocks.
+  synonyms:
+  - --correctboundaries
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "0>,  --maxiterations <integer > 0>\nMaximum number of iterations during\
+    \ a stage of simplification, default\n= 4."
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: 'integer '
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ",  --help\nDisplays usage information and exits."
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Displays version information and exits.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nUSAGE: \n\n   Sibelia  {-s <loose|fine|far>|-k <file name>} [-o <dir\
+  \ name>]\n            [--noblocks] [-r] [-a] [-m <integer>] [-q] [-g] [-v] [-t <dir\n\
+  \            name>] [--lastk <integer > 1>] [--allstages] [--gff]\n            [--nopostprocess]\
+  \ [--correctboundaries] [-i <integer > 0>] [--]\n            [--version] [-h] <fasta\
+  \ files with genomes> ...\n\n\nWhere: \n\n   -s <loose|fine|far>,  --parameters\
+  \ <loose|fine|far>\n     (OR required)  Parameters set, used for the simplification.\
+  \ Option\n     \"loose\" produces fewer blocks, but they are larger (\"fine\" is\n\
+  \     opposite).\n         -- OR --\n   -k <file name>,  --stagefile <file name>\n\
+  \     (OR required)  File that contains manually chosen simplifications\n     parameters.\
+  \ See USAGE file for more information.\n\n\n   -o <dir name>,  --outdir <dir name>\n\
+  \     Directory where output files are written\n\n   --noblocks\n     Do not compute\
+  \ synteny blocks\n\n   -r,  --inram\n     Perform all computations in RAM, don't\
+  \ create temp files.\n\n   -a,  --sharedonly\n     Output only blocks that occur\
+  \ exactly once in each input sequence.\n\n   -m <integer>,  --minblocksize <integer>\n\
+  \     Minimum size of a synteny block, default value = 5000 BP.\n\n   -q,  --sequencesfile\n\
+  \     Output sequences of synteny blocks (FASTA format).\n\n   -g,  --graphfile\n\
+  \     Output resulting condensed de Bruijn graph (in dot format).\n\n   -v,  --visualize\n\
+  \     Draw circos diagram with blocks at different stages.\n\n   -t <dir name>,\
+  \  --tempdir <dir name>\n     Directory where temporary files are stored.\n\n  \
+  \ --lastk <integer > 1>\n     Value of K used for the synteny blocks inferring.\n\
+  \n   --allstages\n     Output coordinates of synteny blocks from all stages\n\n\
+  \   --gff\n     Use GFF format for reporting blocks coordinates\n\n   --nopostprocess\n\
+  \     Do not perform postprocessing (stripe gluing).\n\n   --correctboundaries\n\
+  \     Correct boundaries of unique synteny blocks.\n\n   -i <integer > 0>,  --maxiterations\
+  \ <integer > 0>\n     Maximum number of iterations during a stage of simplification,\
+  \ default\n     = 4.\n\n   --,  --ignore_rest\n     Ignores the rest of the labeled\
+  \ arguments following this flag.\n\n   --version\n     Displays version information\
+  \ and exits.\n\n   -h,  --help\n     Displays usage information and exits.\n\n \
+  \  <fasta files with genomes>  (accepted multiple times)\n     (required)  FASTA\
+  \ file(s) with nucleotide sequences.\n\n\n   Program for finding syteny blocks in\
+  \ closely related genomes\n\n"
+generated_using:
+- --help

@@ -1,0 +1,213 @@
+!Command
+command:
+- maker
+positional:
+- !Positional
+  description: structure for output.  Always on by default.
+  position: 0
+  name: nodatastore
+  optional: false
+named:
+- !Flag
+  description: '|g <file>    Overrides the genome file path in the control files'
+  synonyms:
+  - -genome
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|R           Turns all repeat masking options off.'
+  synonyms:
+  - -RM_off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Forcably turn on/off MAKER's two deep directory
+  synonyms:
+  - -datastore/
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the old directory styles (MAKER 2.26 and lower)
+  synonyms:
+  - -old_struct
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<string>   Set the base name MAKER uses to save output files.\nMAKER\
+    \ uses the input genome file name by default."
+  synonyms:
+  - -base
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|t <integer>  Run contigs up to the specified number of tries.'
+  synonyms:
+  - -tries
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|c  <integer>  Tells how many cpus to use for BLAST analysis.\nNote:\
+    \ this is for BLAST and not for MPI!"
+  synonyms:
+  - -cpus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Forces MAKER to use MPI (overriding MPI autodetection).\nUseful if\
+    \ MAKER doesn't correctly detect that it was\nlaunched using an MPI process manager,\
+    \ or if running\nin a Singularity container."
+  synonyms:
+  - -mpi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|f            Forces MAKER to delete old files before running again.\n\
+    This will require all blast analyses to be rerun."
+  synonyms:
+  - -force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|a            recaculate all annotations and output files even if\
+    \ no\nsettings have changed. Does not delete old analyses."
+  synonyms:
+  - -again
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|q            Regular quiet. Only a handlful of status messages.'
+  synonyms:
+  - -quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Even more quiet. There are no status messages.
+  synonyms:
+  - -qq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Quickly generate datastore index file. Note that this\nwill not check\
+    \ if run settings have changed on contigs"
+  synonyms:
+  - -dsindex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Turn off file locks. May be usful on some file systems,\nbut can cause\
+    \ race conditions if running in parallel."
+  synonyms:
+  - -nolock
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify temporary directory to use.
+  synonyms:
+  - -TMP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate empty control files in the current directory.
+  synonyms:
+  - -CTL
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generates just the maker_opts.ctl file.
+  synonyms:
+  - -OPTS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generates just the maker_bopts.ctl file.
+  synonyms:
+  - -BOPTS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generates just the maker_exe.ctl file.
+  synonyms:
+  - -EXE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<option>   Easy way to control mwas_server for web-based GUI\noptions:\
+    \  STOP\nSTART\nRESTART"
+  synonyms:
+  - -MWAS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints the MAKER version.
+  synonyms:
+  - -version
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '|?             Prints this usage statement.'
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nMAKER version 2.31.10\n\nUsage:\n\n     maker [options] <maker_opts>\
+  \ <maker_bopts> <maker_exe>\n\n\nDescription:\n\n     MAKER is a program that produces\
+  \ gene annotations in GFF3 format using\n     evidence such as EST alignments and\
+  \ protein homology. MAKER can be used to\n     produce gene annotations for new\
+  \ genomes as well as update annotations\n     from existing genome databases.\n\n\
+  \     The three input arguments are control files that specify how MAKER should\n\
+  \     behave. All options for MAKER should be set in the control files, but a\n\
+  \     few can also be set on the command line. Command line options provide a\n\
+  \     convenient machanism to override commonly altered control file values.\n \
+  \    MAKER will automatically search for the control files in the current\n    \
+  \ working directory if they are not specified on the command line.\n\n     Input\
+  \ files listed in the control options files must be in fasta format\n     unless\
+  \ otherwise specified. Please see MAKER documentation to learn more\n     about\
+  \ control file  configuration.  MAKER will automatically try and\n     locate the\
+  \ user control files in the current working directory if these\n     arguments are\
+  \ not supplied when initializing MAKER.\n\n     It is important to note that MAKER\
+  \ does not try and recalculated data that\n     it has already calculated.  For\
+  \ example, if you run an analysis twice on\n     the same dataset you will notice\
+  \ that MAKER does not rerun any of the\n     BLAST analyses, but instead uses the\
+  \ blast analyses stored from the\n     previous run. To force MAKER to rerun all\
+  \ analyses, use the -f flag.\n\n     MAKER also supports parallelization via MPI\
+  \ on computer clusters. Just\n     launch MAKER via mpiexec (i.e. mpiexec -n 40\
+  \ maker). MPI support must be\n     configured during the MAKER installation process\
+  \ for this to work though\n     \n\nOptions:\n\n     -genome|g <file>    Overrides\
+  \ the genome file path in the control files\n\n     -RM_off|R           Turns all\
+  \ repeat masking options off.\n\n     -datastore/         Forcably turn on/off MAKER's\
+  \ two deep directory\n      nodatastore        structure for output.  Always on\
+  \ by default.\n\n     -old_struct         Use the old directory styles (MAKER 2.26\
+  \ and lower)\n\n     -base    <string>   Set the base name MAKER uses to save output\
+  \ files.\n                         MAKER uses the input genome file name by default.\n\
+  \n     -tries|t <integer>  Run contigs up to the specified number of tries.\n\n\
+  \     -cpus|c  <integer>  Tells how many cpus to use for BLAST analysis.\n     \
+  \                    Note: this is for BLAST and not for MPI!\n\n     -mpi     \
+  \           Forces MAKER to use MPI (overriding MPI autodetection).\n          \
+  \               Useful if MAKER doesn't correctly detect that it was\n         \
+  \                launched using an MPI process manager, or if running\n        \
+  \                 in a Singularity container.\n\n     -force|f            Forces\
+  \ MAKER to delete old files before running again.\n\t\t\t This will require all\
+  \ blast analyses to be rerun.\n\n     -again|a            recaculate all annotations\
+  \ and output files even if no\n\t\t\t settings have changed. Does not delete old\
+  \ analyses.\n\n     -quiet|q            Regular quiet. Only a handlful of status\
+  \ messages.\n\n     -qq                 Even more quiet. There are no status messages.\n\
+  \n     -dsindex            Quickly generate datastore index file. Note that this\n\
+  \                         will not check if run settings have changed on contigs\n\
+  \n     -nolock             Turn off file locks. May be usful on some file systems,\n\
+  \                         but can cause race conditions if running in parallel.\n\
+  \n     -TMP                Specify temporary directory to use.\n\n     -CTL    \
+  \            Generate empty control files in the current directory.\n\n     -OPTS\
+  \               Generates just the maker_opts.ctl file.\n\n     -BOPTS         \
+  \     Generates just the maker_bopts.ctl file.\n\n     -EXE                Generates\
+  \ just the maker_exe.ctl file.\n\n     -MWAS    <option>   Easy way to control mwas_server\
+  \ for web-based GUI\n\n                              options:  STOP\n          \
+  \                              START\n                                        RESTART\n\
+  \n     -version            Prints the MAKER version.\n\n     -help|?           \
+  \  Prints this usage statement.\n\n\n"
+generated_using:
+- --help

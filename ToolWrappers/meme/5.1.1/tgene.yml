@@ -1,0 +1,224 @@
+!Command
+command:
+- tgene
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: locus_file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: annotation_file
+  optional: false
+named:
+- !Flag
+  description: 'output to the specified directory; default: tgene_out'
+  synonyms:
+  - --o
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: 'output to the specified directory; default: tgene_out'
+  synonyms:
+  - --oc
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: "comma-separated list of types of transcript to use from annotation\
+    \ file;\ndefault: protein_coding,processed_transcript"
+  synonyms:
+  - --transcript-types
+  args: !SimpleFlagArg
+    name: ttypes
+  optional: true
+- !Flag
+  description: "comma-separated list (no spaces) of maximum distances\nbetween an\
+    \ RE and its target; default: 500000\nNote: only one allowed if no histone/expression\
+    \ data given\nNote: there must be one distance for each histone name in <histones>"
+  synonyms:
+  - --max-link-distances
+  args: !SimpleFlagArg
+    name: mlds
+  optional: true
+- !Flag
+  description: "maximum p-value for including non-CT, non-CL links in output;\ndefault:\
+    \ 0.05"
+  synonyms:
+  - --max-pvalue
+  args: !SimpleFlagArg
+    name: mp
+  optional: true
+- !Flag
+  description: "comma-separated list (no spaces) of tissue names that are the\nsources\
+    \ of the histone and expression data; default: None"
+  synonyms:
+  - --tissues
+  args: !SimpleFlagArg
+    name: tissues
+  optional: true
+- !Flag
+  description: "histone root directory; default: None\nNote: histone files must be\
+    \ in subfolders '<hrd>/<t>'\nwhere <t> is one of the tissue names in <tissues>"
+  synonyms:
+  - --histone-root
+  args: !SimpleFlagArg
+    name: hrd
+  optional: true
+- !Flag
+  description: "comma-separated list (no spaces) of histone names; default: None\n\
+    Note: histone file names must match '<hrd>/<t>/*<hname>*[broad|narrow]Peak'\n\
+    where <t> is one of the tissue names in <tissues>\nand <hname> is one of the histone\
+    \ names listed in <histones>"
+  synonyms:
+  - --histones
+  args: !SimpleFlagArg
+    name: histones
+  optional: true
+- !Flag
+  description: '[Cage|LongPap]    type of expression data in expression files; default:
+    None'
+  synonyms:
+  - --rna-source
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "expression root directory; default: None\nNote: expression files must\
+    \ be in subfolders '<erd>/<t>'\nwhere <t> is one of the tissue names in <tissues>,\
+    \ and have\nextension '.gtf'"
+  synonyms:
+  - --expression-root
+  args: !SimpleFlagArg
+    name: erd
+  optional: true
+- !Flag
+  description: "use the 'gene_id' field rather than 'transcript_id' field\nto associate\
+    \ expression file and annotation file entries;\ndefault: use 'transcript_id' field"
+  synonyms:
+  - --use-gene-ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "scale correlation if maximum expression of transcript < <lecat>;\n\
+    default: 0"
+  synonyms:
+  - --lecat
+  args: !SimpleFlagArg
+    name: lecat
+  optional: true
+- !Flag
+  description: "don't include closest locus for all targets\nunless constraints are\
+    \ satisfied"
+  synonyms:
+  - --no-closest-locus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "don't include closest TSS (target transcript) for all loci\nunless\
+    \ constraints are satisfied"
+  synonyms:
+  - --no-closest-tss
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not add noise to expression and histone zeros
+  synonyms:
+  - --no-noise
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "seed for random number generator for noise and null model\ndefault:\
+    \ 0"
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: seed
+  optional: true
+- !Flag
+  description: plain text description of the job
+  synonyms:
+  - --desc
+  args: !SimpleFlagArg
+    name: text
+  optional: true
+- !Flag
+  description: file containing plain text description of the job
+  synonyms:
+  - --fdesc
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: '|2|3|4|5          level of information messages output to terminal'
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display the usage message and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show version and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nUsage: tgene [options] <locus_file> <annotation_file>\n\n   Options:\n\
+  \    --o <dir>                      output to the specified directory; default:\
+  \ tgene_out\n    --oc <dir>                     output to the specified directory;\
+  \ default: tgene_out\n    --transcript-types <ttypes>    comma-separated list of\
+  \ types of transcript to use from annotation file;\n                           \
+  \               default: protein_coding,processed_transcript\n    --max-link-distances\
+  \ <mlds>    comma-separated list (no spaces) of maximum distances\n            \
+  \                       between an RE and its target; default: 500000\n        \
+  \                                  Note: only one allowed if no histone/expression\
+  \ data given\n                                          Note: there must be one\
+  \ distance for each histone name in <histones>\n    --max-pvalue <mp>          \
+  \    maximum p-value for including non-CT, non-CL links in output;\n           \
+  \                               default: 0.05\n    --tissues <tissues>         \
+  \   comma-separated list (no spaces) of tissue names that are the\n            \
+  \                       sources of the histone and expression data; default: None\n\
+  \    --histone-root <hrd>           histone root directory; default: None\n    \
+  \                                      Note: histone files must be in subfolders\
+  \ '<hrd>/<t>'\n                                          where <t> is one of the\
+  \ tissue names in <tissues>\n    --histones <histones>          comma-separated\
+  \ list (no spaces) of histone names; default: None\n                           \
+  \               Note: histone file names must match '<hrd>/<t>/*<hname>*[broad|narrow]Peak'\n\
+  \                                          where <t> is one of the tissue names\
+  \ in <tissues>\n                                          and <hname> is one of\
+  \ the histone names listed in <histones>\n    --rna-source [Cage|LongPap]    type\
+  \ of expression data in expression files; default: None\n    --expression-root <erd>\
+  \        expression root directory; default: None\n                            \
+  \              Note: expression files must be in subfolders '<erd>/<t>'\n      \
+  \                                    where <t> is one of the tissue names in <tissues>,\
+  \ and have\n                                          extension '.gtf'\n    --use-gene-ids\
+  \                 use the 'gene_id' field rather than 'transcript_id' field\n  \
+  \                                 to associate expression file and annotation file\
+  \ entries;\n                                          default: use 'transcript_id'\
+  \ field\n    --lecat <lecat>                scale correlation if maximum expression\
+  \ of transcript < <lecat>;\n                                          default: 0\n\
+  \    --no-closest-locus             don't include closest locus for all targets\n\
+  \                                   unless constraints are satisfied\n    --no-closest-tss\
+  \               don't include closest TSS (target transcript) for all loci\n   \
+  \                                unless constraints are satisfied\n    --no-noise\
+  \                     do not add noise to expression and histone zeros\n    --seed\
+  \ <seed>                  seed for random number generator for noise and null model\n\
+  \                                          default: 0\n    --desc <text>       \
+  \           plain text description of the job\n    --fdesc <file>              \
+  \   file containing plain text description of the job\n    --verbosity 1|2|3|4|5\
+  \          level of information messages output to terminal\n    --help        \
+  \                 display the usage message and exit\n    --version            \
+  \          show version and exit\n"
+generated_using:
+- --help

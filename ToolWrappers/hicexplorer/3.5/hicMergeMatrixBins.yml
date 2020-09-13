@@ -1,0 +1,79 @@
+!Command
+command:
+- hicMergeMatrixBins
+positional: []
+named:
+- !Flag
+  description: 'Number of bins to merge. (default: None)'
+  synonyms:
+  - --numBins
+  - -nb
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Matrix to reduce in h5 format. (default: None)'
+  synonyms:
+  - --matrix
+  - -m
+  args: !SimpleFlagArg
+    name: matrix.h5
+  optional: true
+- !Flag
+  description: "File name to save the resulting matrix. The output is\nalso a .h5\
+    \ file. But don't add the suffix. (default:\nNone)"
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: Set to merge for using a running window of length
+  synonyms:
+  - --runningWindow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(default: False)'
+  synonyms:
+  - --numBins.
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this help message and exit.
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: hicMergeMatrixBins --matrix matrix.h5 --outFileName OUTFILENAME\n\
+  \                          --numBins int [--runningWindow] [--help] [--version]\n\
+  \nMerges bins from a Hi-C matrix. For example, using a matrix containing 5kb\nbins,\
+  \ a matrix of 50kb bins can be derived using --numBins 10. From one type\nof downstream\
+  \ analysis to another, different bin sizes are used. For example\nto call TADs,\
+  \ unmerged matrices are recommended while to display Hi-C\nmatrices, bins of approximately\
+  \ 2000bp usually yield the best representations\nwith `hicPlotMatrix` for small\
+  \ regions, and even larger bins (50kb) are\nrecommended for whole chromosome representations\
+  \ or for `hicPlotDistVsCounts`.\n\nRequired arguments:\n  --matrix matrix.h5, -m\
+  \ matrix.h5\n                        Matrix to reduce in h5 format. (default: None)\n\
+  \  --outFileName OUTFILENAME, -o OUTFILENAME\n                        File name\
+  \ to save the resulting matrix. The output is\n                        also a .h5\
+  \ file. But don't add the suffix. (default:\n                        None)\n  --numBins\
+  \ int, -nb int\n                        Number of bins to merge. (default: None)\n\
+  \nOptional arguments:\n  --runningWindow       Set to merge for using a running\
+  \ window of length\n                        --numBins. (default: False)\n  --help,\
+  \ -h            Show this help message and exit.\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help

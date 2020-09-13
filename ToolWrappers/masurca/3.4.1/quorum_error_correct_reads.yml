@@ -1,0 +1,218 @@
+!Command
+command:
+- quorum_error_correct_reads
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: error_correct_reads
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: db
+  optional: false
+named:
+- !Flag
+  description: Number of threads (1)
+  synonyms:
+  - -t
+  - --thread
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Minimum count for a k-mer to be considered "good" (1)
+  synonyms:
+  - -m
+  - --min-count
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Number of bases to skip for start k-mer (1)
+  synonyms:
+  - -s
+  - --skip
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Number of good k-mer in a row for anchor (2)
+  synonyms:
+  - -g
+  - --good
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Minimum count for an anchor k-mer (3)
+  synonyms:
+  - -a
+  - --anchor-count
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Size of window (10)
+  synonyms:
+  - -w
+  - --window
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Maximum number of error in a window (3)
+  synonyms:
+  - -e
+  - --error
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Output file prefix (error_corrected)
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: Jellyfish database of contaminant k-mers
+  synonyms:
+  - --contaminant
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Trim reads containing contaminated k-mers instead of discarding (false)
+  synonyms:
+  - --trim-contaminant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Trim homo-polymer run at the 3' end
+  synonyms:
+  - --homo-trim
+  args: !SimpleFlagArg
+    name: int32
+  optional: true
+- !Flag
+  description: Gzip output file (false)
+  synonyms:
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not memory map the input mer database (false)
+  synonyms:
+  - -M
+  - --no-mmap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Probability of a base being an error (0.01)
+  synonyms:
+  - --apriori-error-rate
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Error probability threshold in Poisson test (1.0e-06)
+  synonyms:
+  - --poisson-threshold
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Poisson cutoff when there are multiple choices
+  synonyms:
+  - -p
+  - --cutoff
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Any base above with quality equal or greater is untouched when there
+    are multiple choices
+  synonyms:
+  - -q
+  - --qual-cutoff-value
+  args: !SimpleFlagArg
+    name: uint32
+  optional: true
+- !Flag
+  description: Any base above with quality equal or greater is untouched when there
+    are multiple choices
+  synonyms:
+  - -Q
+  - --qual-cutoff-char
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Do not discard reads, output a single N (false)
+  synonyms:
+  - -d
+  - --no-discard
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Be verbose (false)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: This message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag: !Flag
+  description: Usage
+  synonyms:
+  - -U
+  - --usage
+  args: !EmptyFlagArg {}
+  optional: true
+version_flag: !Flag
+  description: Version
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: error_correct_reads [options] db:path sequence:path+\n\nError correct\
+  \ reads from a fastq file based on the k-mer frequencies.\n\nOptions (default value\
+  \ in (), *required):\n -t, --thread=uint32                      Number of threads\
+  \ (1)\n -m, --min-count=uint32                   Minimum count for a k-mer to be\
+  \ considered \"good\" (1)\n -s, --skip=uint32                        Number of bases\
+  \ to skip for start k-mer (1)\n -g, --good=uint32                        Number\
+  \ of good k-mer in a row for anchor (2)\n -a, --anchor-count=uint32            \
+  \    Minimum count for an anchor k-mer (3)\n -w, --window=uint32               \
+  \       Size of window (10)\n -e, --error=uint32                       Maximum number\
+  \ of error in a window (3)\n -o, --output=prefix                      Output file\
+  \ prefix (error_corrected)\n     --contaminant=path                   Jellyfish\
+  \ database of contaminant k-mers\n     --trim-contaminant                   Trim\
+  \ reads containing contaminated k-mers instead of discarding (false)\n     --homo-trim=int32\
+  \                    Trim homo-polymer run at the 3' end\n     --gzip          \
+  \                     Gzip output file (false)\n -M, --no-mmap                 \
+  \           Do not memory map the input mer database (false)\n     --apriori-error-rate=double\
+  \          Probability of a base being an error (0.01)\n     --poisson-threshold=double\
+  \           Error probability threshold in Poisson test (1.0e-06)\n -p, --cutoff=uint32\
+  \                      Poisson cutoff when there are multiple choices\n -q, --qual-cutoff-value=uint32\
+  \           Any base above with quality equal or greater is untouched when there\
+  \ are multiple choices\n -Q, --qual-cutoff-char=string            Any base above\
+  \ with quality equal or greater is untouched when there are multiple choices\n -d,\
+  \ --no-discard                         Do not discard reads, output a single N (false)\n\
+  \ -v, --verbose                            Be verbose (false)\n -U, --usage    \
+  \                          Usage\n -h, --help                               This\
+  \ message\n -V, --version                            Version\n"
+generated_using:
+- --help

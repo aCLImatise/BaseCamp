@@ -1,0 +1,182 @@
+!Command
+command:
+- dcm2xml
+positional:
+- !Positional
+  description: DICOM input filename to be converted
+  position: 0
+  name: dcmfile-in
+  optional: false
+- !Positional
+  description: 'XML output filename (default: stdout)'
+  position: 1
+  name: xmlfile-out
+  optional: false
+named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --quiet               quiet mode, print no warnings and errors
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --verbose             verbose mode, print processing details
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --debug               debug mode, print debug information
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-level           [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
+  synonyms:
+  - -ll
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-config          [f]ilename: string\nuse config file f for the\
+    \ logger"
+  synonyms:
+  - -lc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-dataset        read data set without file meta information
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =   --read-xfer-auto      use TS recognition (default)
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-xfer-detect    ignore TS specified in the file meta header
+  synonyms:
+  - -td
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-xfer-little    read with explicit VR little endian TS
+  synonyms:
+  - -te
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-xfer-big       read with explicit VR big endian TS
+  synonyms:
+  - -tb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-xfer-implicit  read with implicit VR little endian TS
+  synonyms:
+  - -ti
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --load-short          do not load very long values (default)
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output in DCMTK-specific format (default)
+  synonyms:
+  - -dtk
+  - --dcmtk-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output in Native DICOM Model format (part 19)
+  synonyms:
+  - -nat
+  - --native-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-element-name     do not write name of the DICOM data elements
+  synonyms:
+  - -Wn
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: --help                print this help text and exit
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "$dcmtk: dcm2xml v3.6.1 2016-11-02 $\n\ndcm2xml: Convert DICOM file and\
+  \ data set to XML\nusage: dcm2xml [options] dcmfile-in [xmlfile-out]\n\nparameters:\n\
+  \  dcmfile-in                    DICOM input filename to be converted\n  xmlfile-out\
+  \                   XML output filename (default: stdout)\n\ngeneral options:\n\
+  \  -h      --help                print this help text and exit\n          --version\
+  \             print version information and exit\n          --arguments        \
+  \   print expanded command line arguments\n  -q      --quiet               quiet\
+  \ mode, print no warnings and errors\n  -v      --verbose             verbose mode,\
+  \ print processing details\n  -d      --debug               debug mode, print debug\
+  \ information\n  -ll     --log-level           [l]evel: string constant\n      \
+  \                          (fatal, error, warn, info, debug, trace)\n          \
+  \                      use level l for the logger\n  -lc     --log-config      \
+  \    [f]ilename: string\n                                use config file f for the\
+  \ logger\ninput options:\n  input file format:\n    +f    --read-file          \
+  \ read file format or data set (default)\n    +fo   --read-file-only      read file\
+  \ format only\n    -f    --read-dataset        read data set without file meta information\n\
+  \  input transfer syntax:\n    -t=   --read-xfer-auto      use TS recognition (default)\n\
+  \    -td   --read-xfer-detect    ignore TS specified in the file meta header\n \
+  \   -te   --read-xfer-little    read with explicit VR little endian TS\n    -tb\
+  \   --read-xfer-big       read with explicit VR big endian TS\n    -ti   --read-xfer-implicit\
+  \  read with implicit VR little endian TS\n  long tag values:\n    +M    --load-all\
+  \            load very long tag values (e.g. pixel data)\n    -M    --load-short\
+  \          do not load very long values (default)\n    +R    --max-read-length \
+  \    [k]bytes: integer (4..4194302, default: 4)\n                              \
+  \  set threshold for long values to k kbytes\nprocessing options:\n  specific character\
+  \ set:\n    +Cr   --charset-require     require declaration of extended charset\
+  \ (def.)\n    +Ca   --charset-assume      [c]harset: string\n                  \
+  \              assume charset c if no extended charset declared\n    +Cc   --charset-check-all\
+  \   check all data elements with string values\n                               \
+  \ (default: only PN, LO, LT, SH, ST, UC and UT)\n    +U8   --convert-to-utf8   \
+  \  convert all element values that are affected\n                              \
+  \  by Specific Character Set (0008,0005) to UTF-8\noutput options:\n  general XML\
+  \ format:\n    -dtk  --dcmtk-format        output in DCMTK-specific format (default)\n\
+  \    -nat  --native-format       output in Native DICOM Model format (part 19)\n\
+  \    +Xn   --use-xml-namespace   add XML namespace declaration to root element\n\
+  \  DCMTK-specific format (not with --native-format):\n    +Xd   --add-dtd-reference\
+  \   add reference to document type definition (DTD)\n    +Xe   --embed-dtd-content\
+  \   embed document type definition into XML document\n    +Xf   --use-dtd-file \
+  \       [f]ilename: string\n                                use specified DTD file\
+  \ (only with +Xe)\n                                (default: /usr/local/share/dcmtk/dcm2xml.dtd)\n\
+  \    +Wn   --write-element-name  write name of the DICOM data elements (default)\n\
+  \    -Wn   --no-element-name     do not write name of the DICOM data elements\n\
+  \    +Wb   --write-binary-data   write binary data of OB and OW elements\n     \
+  \                           (default: off, be careful with --load-all)\n  encoding\
+  \ of binary data:\n    +Eh   --encode-hex          encode binary data as hex numbers\n\
+  \                                (default for DCMTK-specific format)\n    +Eu  \
+  \ --encode-uuid         encode binary data as a UUID reference\n               \
+  \                 (default for Native DICOM Model)\n    +Eb   --encode-base64  \
+  \     encode binary data as Base64 (RFC 2045, MIME)\n\n"
+generated_using:
+- --help

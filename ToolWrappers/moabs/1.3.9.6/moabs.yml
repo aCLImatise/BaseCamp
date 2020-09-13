@@ -1,0 +1,70 @@
+!Command
+command:
+- moabs
+positional:
+- !Positional
+  description: 'Usage : /usr/local/bin/moabs [options]'
+  position: 0
+  name: dsun@tamu.edu
+  optional: false
+named:
+- !Flag
+  description: <str>   input files.
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <str>   configuration file.
+  synonyms:
+  - --cf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <str>   overwrite definitions in configuration file. --def key=value
+  synonyms:
+  - --def
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <boleen>        verbose output  [0 or 1, default 0]
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Help
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "        Program : /usr/local/bin/moabs\n        Version : 1.3.9.6\n  \
+  \      Contact : dsun@tamu.edu\n        Usage : /usr/local/bin/moabs [options]\n\
+  \                --help\tHelp\n                -i \t<str>\tinput files.\n      \
+  \          --cf \t<str>\tconfiguration file.\n                --def \t<str>\toverwrite\
+  \ definitions in configuration file. --def key=value\n                -v\t<boleen>\t\
+  verbose output\t[0 or 1, default 0]\n\nExample: /usr/local/bin/moabs -i s1_r1_1.fq\
+  \ -i s1_r1_2.fq -i s1_r2_1.fq -i s1_r2_2.fq \n\t      -i s2_r1_1.fq -i s2_r1_2.fq\
+  \ -i s2_r2_1.fq -i s2_r2_2.fq\nExample: /usr/local/bin/moabs --cf myrun.cfg\nExample:\
+  \ /usr/local/bin/moabs --cf myrun.cfg --def MMAP.Path=./bsmap/bsmap\n\nNote:\n1.\
+  \ Input files should be set by either `--cf` or `-i`. Inputs are FASTQ files.\n\
+  They can be defined in the [INPUT] block in the configuration file by `--cf`.\n\
+  They can be also specified by the option `-i`. Inputs by `-i` will ovewrite the\n\
+  ones configured by `--cf`.\n\n2. `--def` overwrites parameters defined in the configuration\
+  \ file.\nMultiple-level parameters are connected by `.`. E.g., \"--def TASK.Label=wt,ko\n\
+  --def A=a --def B.C=z\". However, `--def` can not overwrite inputs. Inputs are\n\
+  specified only by `--cf` or `-i`.\n\n3. Analysis blocks will be skipped for downstream\
+  \ analysis when result files\nare observed. For example, BSMAP will be skipped when\
+  \ `SampleID.bam` is under the\ncurrent directory. MCALL will be skipped when `SampleID.G.bed`\
+  \ is observed.\n\n4. TASK.Label is used in MCOMP only. While SampleID is used for\
+  \ BSMAP BAM and\nMCALL BED filenames. SampleID is inferred from input names. Input\
+  \ names are\nsplit by `_`, say sampleid_replicateid_layout. For example, \"s1_r1_1=file_1.fastq.gz\n\
+  s1_r1_2=file_2.fastq.gz\" by `--cf`. Or `-i s1_r1_1.fastq.gz -i s1_r1_2.fastq.gz`.\n\
+  \n"
+generated_using:
+- --help

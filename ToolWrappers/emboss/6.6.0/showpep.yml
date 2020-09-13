@@ -1,0 +1,298 @@
+!Command
+command:
+- showpep
+positional: []
+named:
+- !Flag
+  description: "menu       [2] Display format (Values: 0 (Enter your\nown list of\
+    \ things to display); 1 (Sequence\nonly); 2 (Default sequence with features);\
+    \ 3\n(Pretty sequence 4:Baroque))"
+  synonyms:
+  - -format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "range      [If this is left blank, then the sequence\ncase is left\
+    \ alone.] Regions to put in\nuppercase.\nIf this is left blank, then the sequence\n\
+    case is left alone.\nA set of regions is specified by a set of\npairs of positions.\n\
+    The positions are integers.\nThey are separated by any non-digit,\nnon-alpha character.\n\
+    Examples of region specifications are:\n24-45, 56-78\n1:45, 67=99;765..888\n1,5,8,10,23,45,57,99"
+  synonyms:
+  - -uppercase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "range      [(full sequence)] Regions to colour if\nformatting for\
+    \ HTML.\nIf this is left blank, then the sequence is\nleft alone.\nA set of regions\
+    \ is specified by a set of\npairs of positions.\nThe positions are integers.\n\
+    They are followed by any valid HTML font\ncolour.\nExamples of region specifications\
+    \ are:\n24-45 blue 56-78 orange\n1-100 green 120-156 red\nA file of ranges to\
+    \ colour (one range per\nline) can be specified as '@filename'."
+  synonyms:
+  - -highlight
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "range      [If this is left blank, then no annotation\nis added.]\
+    \ Regions to annotate by marking.\nIf this is left blank, then no annotation is\n\
+    added.\nA set of regions is specified by a set of\npairs of positions followed\
+    \ by optional\ntext.\nThe positions are integers.\nThey are followed by any text\
+    \ (but not\ndigits when on the command-line).\nExamples of region specifications\
+    \ are:\n24-45 new domain 56-78 match to Mouse\n1-100 First part 120-156 oligo\n\
+    A file of ranges to annotate (one range per\nline) can be specified as '@filename'."
+  synonyms:
+  - -annotation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "string     [*] By default any feature source in the\nfeature table\
+    \ is shown. You can set this to\nmatch any feature source you wish to show.\n\
+    The source name is usually either the name\nof the program that detected the feature\
+    \ or\nit is the feature table (eg: EMBL) that the\nfeature came from.\nThe source\
+    \ may be wildcarded by using '*'.\nIf you wish to show more than one source,\n\
+    separate their names with the character '|',\neg:\ngene* | embl (Any string)"
+  synonyms:
+  - -sourcematch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "string     [*] By default any feature type in the\nfeature table is\
+    \ shown. You can set this to\nmatch any feature type you wish to show.\nSee http://www.ebi.ac.uk/embl/WebFeat/\
+    \ for a\nlist of the EMBL feature types and see\nAppendix A of the Swissprot user\
+    \ manual in\nhttp://www.expasy.org/sprot/userman.html for\na list of the Swissprot\
+    \ feature types.\nThe type may be wildcarded by using '*'.\nIf you wish to show\
+    \ more than one type,\nseparate their names with the character '|',\neg:\n*UTR\
+    \ | intron (Any string)"
+  synonyms:
+  - -typematch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "float      [0.0] Minimum score of feature to display\n(see also maxscore)\
+    \ (Any numeric value)"
+  synonyms:
+  - -minscore
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "float      [0.0] Maximum score of feature to display.\nIf both minscore\
+    \ and maxscore are zero (the\ndefault), then any score is ignored (Any\nnumeric\
+    \ value)"
+  synonyms:
+  - -maxscore
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "string     [*] Tags are the types of extra values that\na feature\
+    \ may have. By default any feature\ntag in the feature table is shown. You can\n\
+    set this to match any feature tag you wish\nto show.\nThe tag may be wildcarded\
+    \ by using '*'.\nIf you wish to show more than one tag,\nseparate their names\
+    \ with the character '|',\neg:\ngene | label (Any string)"
+  synonyms:
+  - -tagmatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "string     [*] Tag values are the values associated\nwith a feature\
+    \ tag. Tags are the types of\nextra values that a feature may have. By\ndefault\
+    \ any feature tag value in the feature\ntable is shown. You can set this to match\n\
+    any feature tag value you wish to show.\nThe tag value may be wildcarded by using\n\
+    '*'.\nIf you wish to show more than one tag value,\nseparate their names with\
+    \ the character\n'|', eg:\npax* | 10 (Any string)"
+  synonyms:
+  - -valuematch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "boolean    [N] By default if any tag/value pair in a\nfeature matches\
+    \ the specified tag and value,\nthen all the tags/value pairs of that\nfeature\
+    \ will be displayed. If this is set to\nbe true, then only those tag/value pairs\
+    \ in\na feature that match the specified tag and\nvalue will be displayed."
+  synonyms:
+  - -stricttags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "boolean    [N] Display protein sequences in\nthree-letter code"
+  synonyms:
+  - -threeletter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: boolean    [N] Number the sequences
+  synonyms:
+  - -number
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "integer    [60] Width of sequence to display (Integer 1\nor more)"
+  synonyms:
+  - -width
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "integer    [0] Line length of page (0 for indefinite)\n(Integer 0\
+    \ or more)"
+  synonyms:
+  - -length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "integer    [10] Margin around sequence for numbering\n(Integer 0 or\
+    \ more)"
+  synonyms:
+  - -margin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "integer    [1] Offset to start numbering the sequence\nfrom (Any integer\
+    \ value)"
+  synonyms:
+  - -offset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: boolean    [N] Use HTML formatting
+  synonyms:
+  - -html
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Display protein sequences with features in pretty format\nVersion: EMBOSS:6.6.0.0\n\
+  \n   Standard (Mandatory) qualifiers (* if not always prompted):\n  [-sequence]\
+  \          seqall     (Gapped) protein sequence(s) filename and\n              \
+  \                    optional format, or reference (input USA)\n   -format     \
+  \        menu       [2] Display format (Values: 0 (Enter your\n                \
+  \                  own list of things to display); 1 (Sequence\n               \
+  \                   only); 2 (Default sequence with features); 3\n             \
+  \                     (Pretty sequence 4:Baroque))\n*  -things             menu\
+  \       [B,N,T,S,A,F] Specify a list of one or more\n                          \
+  \        code characters in the order in which you\n                           \
+  \       wish things to be displayed one above the\n                            \
+  \      other down the page. For example if you wish\n                          \
+  \        to see things displayed in the order:\n                               \
+  \   sequence, ticks line, blank line; then you\n                               \
+  \   should enter 'S,T,B'. (Values: S (Sequence);\n                             \
+  \     B (Blank line); T (Ticks line); N (Number\n                              \
+  \    ticks line); F (Features); A (Annotation))\n  [-outfile]           outfile\
+  \    [*.showpep] Output file name\n\n   Additional (Optional) qualifiers:\n   -uppercase\
+  \          range      [If this is left blank, then the sequence\n              \
+  \                    case is left alone.] Regions to put in\n                  \
+  \                uppercase.\n                                  If this is left blank,\
+  \ then the sequence\n                                  case is left alone.\n   \
+  \                               A set of regions is specified by a set of\n    \
+  \                              pairs of positions.\n                           \
+  \       The positions are integers.\n                                  They are\
+  \ separated by any non-digit,\n                                  non-alpha character.\n\
+  \                                  Examples of region specifications are:\n    \
+  \                              24-45, 56-78\n                                  1:45,\
+  \ 67=99;765..888\n                                  1,5,8,10,23,45,57,99\n   -highlight\
+  \          range      [(full sequence)] Regions to colour if\n                 \
+  \                 formatting for HTML.\n                                  If this\
+  \ is left blank, then the sequence is\n                                  left alone.\n\
+  \                                  A set of regions is specified by a set of\n \
+  \                                 pairs of positions.\n                        \
+  \          The positions are integers.\n                                  They are\
+  \ followed by any valid HTML font\n                                  colour.\n \
+  \                                 Examples of region specifications are:\n     \
+  \                             24-45 blue 56-78 orange\n                        \
+  \          1-100 green 120-156 red\n                                  A file of\
+  \ ranges to colour (one range per\n                                  line) can be\
+  \ specified as '@filename'.\n   -annotation         range      [If this is left\
+  \ blank, then no annotation\n                                  is added.] Regions\
+  \ to annotate by marking.\n                                  If this is left blank,\
+  \ then no annotation is\n                                  added.\n            \
+  \                      A set of regions is specified by a set of\n             \
+  \                     pairs of positions followed by optional\n                \
+  \                  text.\n                                  The positions are integers.\n\
+  \                                  They are followed by any text (but not\n    \
+  \                              digits when on the command-line).\n             \
+  \                     Examples of region specifications are:\n                 \
+  \                 24-45 new domain 56-78 match to Mouse\n                      \
+  \            1-100 First part 120-156 oligo\n                                  A\
+  \ file of ranges to annotate (one range per\n                                  line)\
+  \ can be specified as '@filename'.\n   -sourcematch        string     [*] By default\
+  \ any feature source in the\n                                  feature table is\
+  \ shown. You can set this to\n                                  match any feature\
+  \ source you wish to show.\n                                  The source name is\
+  \ usually either the name\n                                  of the program that\
+  \ detected the feature or\n                                  it is the feature table\
+  \ (eg: EMBL) that the\n                                  feature came from.\n  \
+  \                                The source may be wildcarded by using '*'.\n  \
+  \                                If you wish to show more than one source,\n   \
+  \                               separate their names with the character '|',\n \
+  \                                 eg:\n                                  gene* |\
+  \ embl (Any string)\n   -typematch          string     [*] By default any feature\
+  \ type in the\n                                  feature table is shown. You can\
+  \ set this to\n                                  match any feature type you wish\
+  \ to show.\n                                  See http://www.ebi.ac.uk/embl/WebFeat/\
+  \ for a\n                                  list of the EMBL feature types and see\n\
+  \                                  Appendix A of the Swissprot user manual in\n\
+  \                                  http://www.expasy.org/sprot/userman.html for\n\
+  \                                  a list of the Swissprot feature types.\n    \
+  \                              The type may be wildcarded by using '*'.\n      \
+  \                            If you wish to show more than one type,\n         \
+  \                         separate their names with the character '|',\n       \
+  \                           eg:\n                                  *UTR | intron\
+  \ (Any string)\n   -minscore           float      [0.0] Minimum score of feature\
+  \ to display\n                                  (see also maxscore) (Any numeric\
+  \ value)\n   -maxscore           float      [0.0] Maximum score of feature to display.\n\
+  \                                  If both minscore and maxscore are zero (the\n\
+  \                                  default), then any score is ignored (Any\n  \
+  \                                numeric value)\n   -tagmatch           string \
+  \    [*] Tags are the types of extra values that\n                             \
+  \     a feature may have. By default any feature\n                             \
+  \     tag in the feature table is shown. You can\n                             \
+  \     set this to match any feature tag you wish\n                             \
+  \     to show.\n                                  The tag may be wildcarded by using\
+  \ '*'.\n                                  If you wish to show more than one tag,\n\
+  \                                  separate their names with the character '|',\n\
+  \                                  eg:\n                                  gene |\
+  \ label (Any string)\n   -valuematch         string     [*] Tag values are the values\
+  \ associated\n                                  with a feature tag. Tags are the\
+  \ types of\n                                  extra values that a feature may have.\
+  \ By\n                                  default any feature tag value in the feature\n\
+  \                                  table is shown. You can set this to match\n \
+  \                                 any feature tag value you wish to show.\n    \
+  \                              The tag value may be wildcarded by using\n      \
+  \                            '*'.\n                                  If you wish\
+  \ to show more than one tag value,\n                                  separate their\
+  \ names with the character\n                                  '|', eg:\n       \
+  \                           pax* | 10 (Any string)\n   -stricttags         boolean\
+  \    [N] By default if any tag/value pair in a\n                               \
+  \   feature matches the specified tag and value,\n                             \
+  \     then all the tags/value pairs of that\n                                  feature\
+  \ will be displayed. If this is set to\n                                  be true,\
+  \ then only those tag/value pairs in\n                                  a feature\
+  \ that match the specified tag and\n                                  value will\
+  \ be displayed.\n\n   Advanced (Unprompted) qualifiers:\n   -threeletter       \
+  \ boolean    [N] Display protein sequences in\n                                \
+  \  three-letter code\n   -number             boolean    [N] Number the sequences\n\
+  \   -width              integer    [60] Width of sequence to display (Integer 1\n\
+  \                                  or more)\n   -length             integer    [0]\
+  \ Line length of page (0 for indefinite)\n                                  (Integer\
+  \ 0 or more)\n   -margin             integer    [10] Margin around sequence for\
+  \ numbering\n                                  (Integer 0 or more)\n   -[no]name\
+  \           boolean    [Y] Set this to be false if you do not wish\n           \
+  \                       to display the ID name of the sequence\n   -[no]description\
+  \    boolean    [Y] Set this to be false if you do not wish\n                  \
+  \                to display the description of the sequence\n   -offset        \
+  \     integer    [1] Offset to start numbering the sequence\n                  \
+  \                from (Any integer value)\n   -html               boolean    [N]\
+  \ Use HTML formatting\n\n   General qualifiers:\n   -help               boolean\
+  \    Report command line options and exit. More\n                              \
+  \    information on associated and general\n                                  qualifiers\
+  \ can be found with -help -verbose\n\n"
+generated_using:
+- --help

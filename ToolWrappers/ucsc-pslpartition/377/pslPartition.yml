@@ -1,0 +1,53 @@
+!Command
+command:
+- pslPartition
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: pslFile
+  optional: false
+named:
+- !Flag
+  description: "- number of output subdirectory levels.  0 puts all files\ndirectly\
+    \ in outDir, 2, will create files in the form outDir/0/0/00.psl"
+  synonyms:
+  - -outLevels
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: "- will combine non-overlapping partitions, while attempting\nto keep\
+    \ them under this number of PSLs.  This reduces the number of\nfiles that are\
+    \ created while ensuring that there are no overlaps\nbetween any two PSL files.\
+    \  A value of 0 creates a PSL file per set of\noverlapping PSLs."
+  synonyms:
+  - -partSize
+  args: !SimpleFlagArg
+    name: '20000'
+  optional: true
+- !Flag
+  description: "- drop PSLs that are completely contained in a block of\nanother PSL.\n"
+  synonyms:
+  - -dropContained
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Error: wrong # args\npslPartition - split PSL files into non-overlapping\
+  \ sets\nusage:\n   pslPartition [options] pslFile outDir\n\nSplit psl files into\
+  \ non-overlapping sets for use in cluster jobs,\nlimiting memory usage, etc. Multiple\
+  \ levels of directories can be are\ncreated under outDir to prevent slow access\
+  \ to huge directories.\nThe pslFile maybe compressed and no ordering is assumed.\n\
+  \noptions:\n  -outLevels=0 - number of output subdirectory levels.  0 puts all files\n\
+  \   directly in outDir, 2, will create files in the form outDir/0/0/00.psl\n  -partSize=20000\
+  \ - will combine non-overlapping partitions, while attempting\n   to keep them under\
+  \ this number of PSLs.  This reduces the number of\n   files that are created while\
+  \ ensuring that there are no overlaps\n   between any two PSL files.  A value of\
+  \ 0 creates a PSL file per set of\n   overlapping PSLs.\n  -dropContained - drop\
+  \ PSLs that are completely contained in a block of\n   another PSL.\n\n\n"
+generated_using: []

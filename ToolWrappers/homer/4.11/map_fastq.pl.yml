@@ -1,0 +1,158 @@
+!Command
+command:
+- map-fastq.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FASTQ file1
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: FASTQ
+  optional: true
+- !Positional
+  description: ''
+  position: 2
+  name: file2
+  optional: true
+named:
+- !Flag
+  description: '<#> (Number of cpus per instance, default: 1)'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (path to index to use for mapping)
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: path-to-bt2 index
+  optional: true
+- !Flag
+  description: (if only 1st read file is specified, this will look for 2nd read and
+    do PE alignment)
+  synonyms:
+  - -pe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <suffix to apply to mapped files, default genome/program>
+  synonyms:
+  - -suffix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (map with bowtie2)
+  synonyms:
+  - -bowtie2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (map with bowtie, add "-C" if using colorspace)
+  synonyms:
+  - -bowtie
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (map with bwa mem)
+  synonyms:
+  - -bwa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (map with hisat2)
+  synonyms:
+  - -hisat2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (map with STAR)
+  synonyms:
+  - -star
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (executable file to run if not in path/diff name)
+  synonyms:
+  - -path
+  args: !SimpleFlagArg
+    name: path-to-program-file
+  optional: true
+- !Flag
+  description: (will output unaligned reads)
+  synonyms:
+  - -un
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (convert output files from sam to bam)
+  synonyms:
+  - -bam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(local alignment, default: global/end-to-end)'
+  synonyms:
+  - --local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Do not used shared memory for genome [slower])
+  synonyms:
+  - -NoSharedMemory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Perform 2-pass alignment using --twopass1readsN option)
+  synonyms:
+  - -2pass
+  args: !SimpleFlagArg
+    name: readlength
+  optional: true
+- !Flag
+  description: (Input is FASTA files, default expects FASTQ)
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '"..." (need to include quotes)'
+  synonyms:
+  - -pass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (don't dump subprogram stderr to /dev/null)
+  synonyms:
+  - -showErrors
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tUsage: map-fastq.pl [options] <FASTQ file1> [FASTQ file2]...\n\t\t\
+  paired end: <FASTQ end1>,<FASTQ end2> [FASTQ file2 end1],[end2]...\n\t\t\tor just\
+  \ specify first file and add \"-pe\" flag to auto detect second file\n\n\tRequired\
+  \ Options:\n\t\t-p <#> (Number of cpus per instance, default: 1)\n\t\t-x <path-to-bt2\
+  \ index> (path to index to use for mapping)\n\t\t-pe (if only 1st read file is specified,\
+  \ this will look for 2nd read and do PE alignment)\n\t\t-suffix <suffix to apply\
+  \ to mapped files, default genome/program>\n\n\tAlignment Program:\n\t\t-bowtie2\
+  \ (map with bowtie2)\n\t\t-bowtie (map with bowtie, add \"-C\" if using colorspace)\n\
+  \t\t-bwa (map with bwa mem)\n\t\t-hisat2 (map with hisat2)\n\t\t-star (map with\
+  \ STAR)\n\t\t\t-path <path-to-program-file> (executable file to run if not in path/diff\
+  \ name)\n\tGlobal Options:\n\t\t-un (will output unaligned reads)\n\t\t-bam (convert\
+  \ output files from sam to bam)\n\n\tBowtie options:\n\t\t--local (local alignment,\
+  \ default: global/end-to-end)\n\n\tSTAR options:\n\t\t-NoSharedMemory (Do not used\
+  \ shared memory for genome [slower])\n\t\t-2pass <readlength> (Perform 2-pass alignment\
+  \ using --twopass1readsN option)\n\n\tGeneral Options to pass along to alignment\
+  \ program:\n\t\t-f (Input is FASTA files, default expects FASTQ)\n\t\t-pass \"...\"\
+  \ (need to include quotes)\n\t\t-showErrors (don't dump subprogram stderr to /dev/null)\n\
+  \n"
+generated_using:
+- --help

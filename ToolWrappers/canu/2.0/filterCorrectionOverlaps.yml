@@ -1,0 +1,105 @@
+!Command
+command:
+- filterCorrectionOverlaps
+positional: []
+named:
+- !Flag
+  description: input reads
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: seqStore
+  optional: true
+- !Flag
+  description: input overlaps
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: ovlStore
+  optional: true
+- !Flag
+  description: "output scores for each read, binary file, to file 'sf'\nper-read logging\
+    \ to 'sf.log' (see -nolog)\nsummary statistics to 'sf.stats' (see -nostats)"
+  synonyms:
+  - -scores
+  args: !SimpleFlagArg
+    name: sf
+  optional: true
+- !Flag
+  description: estimate the cutoff from precomputed scores
+  synonyms:
+  - -estimate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute an exact cutoff by reading all overlaps
+  synonyms:
+  - -exact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output a comparison of estimated vs exact scores
+  synonyms:
+  - -compare
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: retain at most this many overlaps per read
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: coverage
+  optional: true
+- !Flag
+  description: filter overlaps shorter than this length
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: "(min-)max    filter overlaps outside this range of fraction error\n\
+    example:  -e 0.20          filter overlaps above 20% error\nexample:  -e 0.05-0.20\
+    \     filter overlaps below 5% error\nor above 20% error"
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't create 'scoreFile.log'
+  synonyms:
+  - -nolog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't create 'scoreFile.stats'
+  synonyms:
+  - -nostats
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "ERROR:  invalid arg '--help'\nusage: filterCorrectionOverlaps [options]\n\
+  \nRewrites an ovlStore, filtering overlaps that shouldn't be used for correcting\
+  \ reads.\n\n  -S seqStore     input reads\n  -O ovlStore     input overlaps\n\n\
+  \  -scores sf      output scores for each read, binary file, to file 'sf'\n    \
+  \              per-read logging to 'sf.log' (see -nolog)\n                  summary\
+  \ statistics to 'sf.stats' (see -nostats)\n\n  -estimate       estimate the cutoff\
+  \ from precomputed scores\n  -exact          compute an exact cutoff by reading\
+  \ all overlaps\n\n  -compare        output a comparison of estimated vs exact scores\n\
+  \n  -c coverage     retain at most this many overlaps per read\n\n  -l length  \
+  \     filter overlaps shorter than this length\n  -e (min-)max    filter overlaps\
+  \ outside this range of fraction error\n                    example:  -e 0.20  \
+  \        filter overlaps above 20% error\n                    example:  -e 0.05-0.20\
+  \     filter overlaps below 5% error\n                                         \
+  \                   or above 20% error\n\n  Length and Fraction Error filtering\
+  \ NOT SUPPORTED with -estimate.\n\n  -nolog          don't create 'scoreFile.log'\n\
+  \  -nostats        don't create 'scoreFile.stats'\nERROR: no sequence store (-S)\
+  \ supplied.\nERROR: no overlap store (-O) supplied.\nERROR: no output scoreFile\
+  \ (-scores) supplied.\n"
+generated_using:
+- --help

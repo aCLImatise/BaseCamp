@@ -1,0 +1,87 @@
+!Command
+command:
+- faFilter
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in.fa
+  optional: false
+named:
+- !Flag
+  description: "- Only pass records where name matches wildcard\n* matches any string\
+    \ or no character.\n? matches any single character.\nanything else etc must match\
+    \ the character exactly\n(these will will need to be quoted for the shell)"
+  synonyms:
+  - -name
+  args: !SimpleFlagArg
+    name: wildCard
+  optional: true
+- !Flag
+  description: "- A list of regular expressions, one per line, that\nwill be applied\
+    \ to the fasta name the same as -name"
+  synonyms:
+  - -namePatList
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '- invert match, select non-matching records.'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Only pass sequences at least this big.'
+  synonyms:
+  - -minSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '- Only pass sequences this size or smaller.'
+  synonyms:
+  - -maxSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Only pass sequences with fewer than this number of N's
+  synonyms:
+  - -maxN
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '- Removes duplicate sequence ids, keeping the first.'
+  synonyms:
+  - -uniq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- make -uniq ignore case so sequence IDs ABC and abc count as dupes.'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "faFilter - Filter fa records, selecting ones that match the specified\
+  \ conditions\nusage:\n   faFilter [options] in.fa out.fa\n\nOptions:\n    -name=wildCard\
+  \  - Only pass records where name matches wildcard\n                      * matches\
+  \ any string or no character.\n                      ? matches any single character.\n\
+  \                      anything else etc must match the character exactly\n    \
+  \                  (these will will need to be quoted for the shell)\n    -namePatList=filename\
+  \ - A list of regular expressions, one per line, that\n                        \
+  \    will be applied to the fasta name the same as -name\n    -v - invert match,\
+  \ select non-matching records.\n    -minSize=N - Only pass sequences at least this\
+  \ big.\n    -maxSize=N - Only pass sequences this size or smaller.\n    -maxN=N\
+  \ Only pass sequences with fewer than this number of N's\n    -uniq - Removes duplicate\
+  \ sequence ids, keeping the first.\n    -i    - make -uniq ignore case so sequence\
+  \ IDs ABC and abc count as dupes.\n\nAll specified conditions must pass to pass\
+  \ a sequence.  If no conditions are\nspecified, all records will be passed.\n\n"
+generated_using: []

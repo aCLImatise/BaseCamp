@@ -1,0 +1,311 @@
+!Command
+command:
+- ngmlr
+positional: []
+named:
+- !Flag
+  description: ",  --reference <file>\n(required)  Path to the reference genome (FASTA/Q,\
+    \ can be gzipped)"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ",  --query <file>\nPath to the read file (FASTA/Q) [/dev/stdin]"
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ",  --output <string>\nAdds RG:Z:<string> to all alignments in SAM/BAM\
+    \ [none]"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Don't write reference index to disk [false]
+  synonyms:
+  - --skip-write
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report reads with > 64k CIGAR operations as unmapped. Required to be
+    compatibel to BAM format [false]
+  synonyms:
+  - --bam-fix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Adds RG:Z:<string> to all alignments in SAM/BAM [none]
+  synonyms:
+  - --rg-id
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Sample [none]'
+  synonyms:
+  - --rg-sm
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Library [none]'
+  synonyms:
+  - --rg-lb
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Platform [none]'
+  synonyms:
+  - --rg-pl
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Description [none]'
+  synonyms:
+  - --rg-ds
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Date (format: YYYY-MM-DD) [none]'
+  synonyms:
+  - --rg-dt
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Platform unit [none]'
+  synonyms:
+  - --rg-pu
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Median insert size [none]'
+  synonyms:
+  - --rg-pi
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Programs [none]'
+  synonyms:
+  - --rg-pg
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: sequencing center [none]'
+  synonyms:
+  - --rg-cn
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Flow order [none]'
+  synonyms:
+  - --rg-fo
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'RG header: Key sequence [none]'
+  synonyms:
+  - --rg-ks
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --threads <int>\nNumber of threads [1]"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "<pacbio, ont>,  --presets <pacbio, ont>\nParameter presets for different\
+    \ sequencing technologies [pacbio]"
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --min-identity <0-1>\nAlignments with an identity lower than this\
+    \ threshold will be discarded [0.65]"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: 0-1
+  optional: true
+- !Flag
+  description: ",  --min-residues <int/float>\nAlignments containing less than <int>\
+    \ or (<float> * read length) residues will be discarded [0.25]"
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: int/float
+  optional: true
+- !Flag
+  description: Don't detect small inversions [false]
+  synonyms:
+  - --no-smallinv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Split alignments with poor quality [false]
+  synonyms:
+  - --no-lowqualitysplit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Debug output [false]
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't print progress info while mapping [false]
+  synonyms:
+  - --no-progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Match score [2]
+  synonyms:
+  - --match
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Mismatch score [-5]
+  synonyms:
+  - --mismatch
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Gap open score [-5]
+  synonyms:
+  - --gap-open
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Gap open extend max [-5]
+  synonyms:
+  - --gap-extend-max
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Gap open extend min [-1]
+  synonyms:
+  - --gap-extend-min
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Gap extend decay [0.15]
+  synonyms:
+  - --gap-decay
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: ",  --kmer-length <10-15>\nK-mer length in bases [13]"
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: 10-15
+  optional: true
+- !Flag
+  description: Number of k-mers to skip when building the lookup table from the reference
+    [2]
+  synonyms:
+  - --kmer-skip
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Sets the size of the grid used during candidate search [4]
+  synonyms:
+  - --bin-size
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Max number of segments allowed for a read per kb [1]
+  synonyms:
+  - --max-segments
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Length of fragments reads are split into [256]
+  synonyms:
+  - --subread-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Length of corridor sub-reads are aligned with [40]\n"
+  synonyms:
+  - --subread-corridor
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "ngmlr 0.2.7 (build: Jul  3 2020 03:31:03, start: 2020-09-09.21:50:21)\n\
+  Contact: philipp.rescheneder@univie.ac.at\n\nUsage: ngmlr [options] -r <reference>\
+  \ -q <reads> [-o <output>]\n\nInput/Output:\n    -r <file>,  --reference <file>\n\
+  \        (required)  Path to the reference genome (FASTA/Q, can be gzipped)\n  \
+  \  -q <file>,  --query <file>\n        Path to the read file (FASTA/Q) [/dev/stdin]\n\
+  \    -o <string>,  --output <string>\n        Adds RG:Z:<string> to all alignments\
+  \ in SAM/BAM [none]\n    --skip-write\n        Don't write reference index to disk\
+  \ [false]\n    --bam-fix\n        Report reads with > 64k CIGAR operations as unmapped.\
+  \ Required to be compatibel to BAM format [false]\n    --rg-id <string>\n      \
+  \  Adds RG:Z:<string> to all alignments in SAM/BAM [none]\n    --rg-sm <string>\n\
+  \        RG header: Sample [none]\n    --rg-lb <string>\n        RG header: Library\
+  \ [none]\n    --rg-pl <string>\n        RG header: Platform [none]\n    --rg-ds\
+  \ <string>\n        RG header: Description [none]\n    --rg-dt <string>\n      \
+  \  RG header: Date (format: YYYY-MM-DD) [none]\n    --rg-pu <string>\n        RG\
+  \ header: Platform unit [none]\n    --rg-pi <string>\n        RG header: Median\
+  \ insert size [none]\n    --rg-pg <string>\n        RG header: Programs [none]\n\
+  \    --rg-cn <string>\n        RG header: sequencing center [none]\n    --rg-fo\
+  \ <string>\n        RG header: Flow order [none]\n    --rg-ks <string>\n       \
+  \ RG header: Key sequence [none]\n\nGeneral:\n    -t <int>,  --threads <int>\n \
+  \       Number of threads [1]\n    -x <pacbio, ont>,  --presets <pacbio, ont>\n\
+  \        Parameter presets for different sequencing technologies [pacbio]\n    -i\
+  \ <0-1>,  --min-identity <0-1>\n        Alignments with an identity lower than this\
+  \ threshold will be discarded [0.65]\n    -R <int/float>,  --min-residues <int/float>\n\
+  \        Alignments containing less than <int> or (<float> * read length) residues\
+  \ will be discarded [0.25]\n    --no-smallinv\n        Don't detect small inversions\
+  \ [false]\n    --no-lowqualitysplit\n        Split alignments with poor quality\
+  \ [false]\n    --verbose\n        Debug output [false]\n    --no-progress\n    \
+  \    Don't print progress info while mapping [false]\n\nAdvanced:\n    --match <float>\n\
+  \        Match score [2]\n    --mismatch <float>\n        Mismatch score [-5]\n\
+  \    --gap-open <float>\n        Gap open score [-5]\n    --gap-extend-max <float>\n\
+  \        Gap open extend max [-5]\n    --gap-extend-min <float>\n        Gap open\
+  \ extend min [-1]\n    --gap-decay <float>\n        Gap extend decay [0.15]\n  \
+  \  -k <10-15>,  --kmer-length <10-15>\n        K-mer length in bases [13]\n    --kmer-skip\
+  \ <int>\n        Number of k-mers to skip when building the lookup table from the\
+  \ reference [2]\n    --bin-size <int>\n        Sets the size of the grid used during\
+  \ candidate search [4]\n    --max-segments <int>\n        Max number of segments\
+  \ allowed for a read per kb [1]\n    --subread-length <int>\n        Length of fragments\
+  \ reads are split into [256]\n    --subread-corridor <int>\n        Length of corridor\
+  \ sub-reads are aligned with [40]\n\n"
+generated_using:
+- --help

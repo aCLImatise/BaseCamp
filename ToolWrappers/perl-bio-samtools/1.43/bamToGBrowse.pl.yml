@@ -1,0 +1,41 @@
+!Command
+command:
+- bamToGBrowse.pl
+positional:
+- !Positional
+  description: "-- download from http://hgdownload.cse.ucsc.edu/admin/exe\nor build\
+    \ from source downloadable from\nhttp;//hgdownload.cse.ucsc.edu/admin/jksrc.zip"
+  position: 0
+  name: bedGraphToBigWig
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/bamToGBrowse.pl <directory_path> [<ref.fa>]\n\n\
+  Given the path to a directory and the fasta file for the reference\nsequence, do\
+  \ the following:\n\n 1. Find all SAM files in the indicated directory and convert\
+  \ them\n    into BAM. These must end in one of the extensions \".sam\" or \".sam.gz\"\
+  .\n    A series of <base>.bam files will be created. This step will be\n    skipped\
+  \ if SAM files are absent or the corresponding BAM files\n    are already present.\n\
+  \n 2. Sort the newly created BAM files, creating a series of files named\n    <base>_sorted.bam.\n\
+  \n 3. Index BAM files that need indexing. This step will look for\n      files named\
+  \ <base>_sorted.bam\n\n 4. Create a set of BigWig files representing the coverage\
+  \ graph. These\n      will be named <base>.bw.\n\n 5. Create a skeletal GBrowse\
+  \ config file named \"gbrowse.conf\" that\n    serves as a starting point for viewing\
+  \ these files. Previous versions\n    of this file will be appended to.\n\nYou can\
+  \ prepopulate the directory with sorted and indexed BAM files,\nin which case the\
+  \ script will not attempt to resort or reindex them.\nUnless the Fasta file is explicitly\
+  \ provided, this script will look in\nthe designated directory for ONE .fa file\
+  \ to use.\n\nNote that you will need temporary space in the directory equivalent\
+  \ to\nthe size of the largest SAM file being processed.\n\nThis script takes a long\
+  \ time to run and uses significant amounts of\nRAM when generating the coverage\
+  \ graphs. To improve both performance\nand memory consumption, you can install the\
+  \ following C binaries:\n\n  bedGraphToBigWig  -- download from http://hgdownload.cse.ucsc.edu/admin/exe\n\
+  \                       or build from source downloadable from\n               \
+  \        http;//hgdownload.cse.ucsc.edu/admin/jksrc.zip\n\nPlace these executables\
+  \ into your path, e.g. /usr/local/bin or ~/bin.\n"
+generated_using: []

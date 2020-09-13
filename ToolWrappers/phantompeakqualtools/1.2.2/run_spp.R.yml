@@ -1,0 +1,178 @@
+!Command
+command:
+- run_spp.R
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: options
+  optional: false
+named:
+- !Flag
+  description: ', full path and name (or URL) of tagAlign/BAM file (can be gzipped)
+    (FILE EXTENSION MUST BE tagAlign.gz, tagAlign, bam or bam.gz)'
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: ChIP_alignFile
+  optional: true
+- !Flag
+  description: ', full path and name (or URL) of tagAlign/BAM file (can be gzipped)
+    (FILE EXTENSION MUST BE tagAlign.gz, tagAlign, bam or bam.gz)'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: Input_alignFile
+  optional: true
+- !Flag
+  description: :<step>:<max> , strand shifts at which cross-correlation is evaluated,
+    default=-500:5:1500
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: min
+  optional: true
+- !Flag
+  description: ', user-defined cross-correlation peak strandshift'
+  synonyms:
+  - -speak
+  args: !SimpleFlagArg
+    name: strPeak
+  optional: true
+- !Flag
+  description: :<max>, strand shifts to exclude (This is mainly to avoid region around
+    phantom peak) default=10:(readlen+10)
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: min
+  optional: true
+- !Flag
+  description: ', number of parallel processing nodes, default=0'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: nodes
+  optional: true
+- !Flag
+  description: ', false discovery rate threshold for peak calling'
+  synonyms:
+  - -fdr
+  args: !SimpleFlagArg
+    name: falseDisoveryRate
+  optional: true
+- !Flag
+  description: ', threshold on number of peaks to call'
+  synonyms:
+  - -npeak
+  args: !SimpleFlagArg
+    name: numPeaks
+  optional: true
+- !Flag
+  description: ', Temporary directory (if not specified R function tempdir() is used)'
+  synonyms:
+  - -tmpdir
+  args: !SimpleFlagArg
+    name: tempdir
+  optional: true
+- !Flag
+  description: ', Pattern to use to remove tags that map to specific chromosomes e.g.
+    _ will remove all tags that map to chromosomes with _ in their name'
+  synonyms:
+  - -filtchr
+  args: !SimpleFlagArg
+    name: chrnamePattern
+  optional: true
+- !Flag
+  description: name of output directory (If not set same as ChIP file directory is
+    used)
+  synonyms:
+  - -odir
+  args: !SimpleFlagArg
+    name: outputDirectory
+  optional: true
+- !Flag
+  description: OR -savn NarrowPeak file name (fixed width peaks)
+  synonyms:
+  - -savn
+  args: !SimpleFlagArg
+    name: narrowpeakfilename
+  optional: true
+- !Flag
+  description: OR -savr RegionPeak file name (variable width peaks with regions of
+    enrichment)
+  synonyms:
+  - -savr
+  args: !SimpleFlagArg
+    name: regionpeakfilename
+  optional: true
+- !Flag
+  description: OR -savd, save Rdata file
+  synonyms:
+  - -savd
+  args: !SimpleFlagArg
+    name: rdatafile
+  optional: true
+- !Flag
+  description: OR -savp, save cross-correlation plot
+  synonyms:
+  - -savp
+  args: !SimpleFlagArg
+    name: plotdatafile
+  optional: true
+- !Flag
+  description: ", append peakshift/phantomPeak results to a file\nformat:Filename<tab>numReads<tab>estFragLen<tab>corr_estFragLen<tab>PhantomPeak<tab>corr_phantomPeak<tab>argmin_corr<tab>min_corr<tab>Normalized\
+    \ SCC (NSC)<tab>Relative SCC (RSC)<tab>QualityTag)"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: resultfile
+  optional: true
+- !Flag
+  description: ', if plot or rdata or narrowPeak file exists replace it. If not used
+    then the run is aborted if the plot or Rdata or narrowPeak file exists'
+  synonyms:
+  - -rf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', if present will remove the original chip and control files after
+    reading them in. CAUTION: Use only if the script calling run_spp.R is creating
+    temporary files'
+  synonyms:
+  - -clean
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Loading required package: Rcpp\nUsage: Rscript run_spp.R <options>\nMANDATORY\
+  \ ARGUMENTS\n-c=<ChIP_alignFile>, full path and name (or URL) of tagAlign/BAM file\
+  \ (can be gzipped) (FILE EXTENSION MUST BE tagAlign.gz, tagAlign, bam or bam.gz)\
+  \ \nMANDATORY ARGUMENTS FOR PEAK CALLING\n-i=<Input_alignFile>, full path and name\
+  \ (or URL) of tagAlign/BAM file (can be gzipped) (FILE EXTENSION MUST BE tagAlign.gz,\
+  \ tagAlign, bam or bam.gz) \nOPTIONAL ARGUMENTS\n-s=<min>:<step>:<max> , strand\
+  \ shifts at which cross-correlation is evaluated, default=-500:5:1500\n-speak=<strPeak>,\
+  \ user-defined cross-correlation peak strandshift\n-x=<min>:<max>, strand shifts\
+  \ to exclude (This is mainly to avoid region around phantom peak) default=10:(readlen+10)\n\
+  -p=<nodes> , number of parallel processing nodes, default=0\n-fdr=<falseDisoveryRate>\
+  \ , false discovery rate threshold for peak calling\n-npeak=<numPeaks>, threshold\
+  \ on number of peaks to call\n-tmpdir=<tempdir> , Temporary directory (if not specified\
+  \ R function tempdir() is used)\n-filtchr=<chrnamePattern> , Pattern to use to remove\
+  \ tags that map to specific chromosomes e.g. _ will remove all tags that map to\
+  \ chromosomes with _ in their name\nOUTPUT ARGUMENTS\n-odir=<outputDirectory> name\
+  \ of output directory (If not set same as ChIP file directory is used)\n-savn=<narrowpeakfilename>\
+  \ OR -savn NarrowPeak file name (fixed width peaks)\n-savr=<regionpeakfilename>\
+  \ OR -savr RegionPeak file name (variable width peaks with regions of enrichment)\n\
+  -savd=<rdatafile> OR -savd, save Rdata file\n-savp=<plotdatafile> OR -savp, save\
+  \ cross-correlation plot\n-out=<resultfile>, append peakshift/phantomPeak results\
+  \ to a file\n     format:Filename<tab>numReads<tab>estFragLen<tab>corr_estFragLen<tab>PhantomPeak<tab>corr_phantomPeak<tab>argmin_corr<tab>min_corr<tab>Normalized\
+  \ SCC (NSC)<tab>Relative SCC (RSC)<tab>QualityTag)\n-rf, if plot or rdata or narrowPeak\
+  \ file exists replace it. If not used then the run is aborted if the plot or Rdata\
+  \ or narrowPeak file exists\n-clean, if present will remove the original chip and\
+  \ control files after reading them in. CAUTION: Use only if the script calling run_spp.R\
+  \ is creating temporary files\n"
+generated_using: []

@@ -1,0 +1,114 @@
+!Command
+command:
+- HighResPrecursorMassCorrector
+positional: []
+named:
+- !Flag
+  description: "*                                         Input file (centroided data)\
+    \ (valid formats: 'mzML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                                        Output file (valid formats:\
+    \ 'mzML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Optional CSV output file for results on 'nearest_peak' or 'highest_intensity_peak'\
+    \ algorithm (see corresponding subsection) containing columns: RT, uncorrectedMZ,\
+    \ correctedMZ, deltaMZ. (valid formats: 'csv')"
+  synonyms:
+  - -out_csv
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nHighResPrecursorMassCorrector\
+  \ -- Corrects the precursor mass and charge determined by the instrument software.\n\
+  Full documentation: http://www.openms.de/documentation/TOPP_HighResPrecursorMassCorrector.html\n\
+  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision:\
+  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  HighResPrecursorMassCorrector <options>\n\nOptions (mandatory options marked\
+  \ with '*'):\n  -in <file>*                                         Input file (centroided\
+  \ data) (valid formats: 'mzML')\n  -out <file>*                                \
+  \        Output file (valid formats: 'mzML')\n\nUse features for precursor mass\
+  \ correction.:\n  -feature:in <file>                                  Features used\
+  \ to correct precursor masses. (valid formats: 'featureXML')\n  -feature:mz_tolerance\
+  \ <num>                         The precursor mass tolerance. Used to determine\
+  \ matching to feature mass traces. (default: '5.0')\n  -feature:mz_tolerance_unit\
+  \ <choice>                 Unit of precursor mass tolerance (default: 'ppm' valid:\
+  \ 'Da', 'ppm')\n  -feature:rt_tolerance <num>                         Additional\
+  \ retention time tolerance added to feature boundaries. (default: '0.0')\n  -feature:believe_charge\
+  \                             Assume precursor charge to be correct.\n  -feature:keep_original\
+  \                              Make a copy of the precursor and MS2 (true) or discard\
+  \ the original (false).\n  -feature:assign_all_matching                        Correct\
+  \ a precursor using all matching features (true) or only the nearest (false). Only\
+  \ evaluated if copies are created (feature:keep_original).\n\nUse nearest centroided\
+  \ MS1 peak for precursor mass correction.:\n  -nearest_peak:mz_tolerance <num> \
+  \                   The precursor mass tolerance to find the closest MS1 peak. (Disable\
+  \ method by setting value to 0.0) (default: '0.0')\n  -nearest_peak:mz_tolerance_unit\
+  \ <choice>            Unit of precursor mass tolerance (default: 'ppm' valid: 'Da',\
+  \ 'ppm')\n\nUse centroided MS1 peak with the highest intensity in a certrain mass\
+  \ range - for precursor mass correction:\n  -highest_intensity_peak:mz_tolerance\
+  \ <num>          The precursor mass tolerance to find the highest intensity MS1\
+  \ peak. Suggested value 1/max. expected charge. (Disable method by setting value\
+  \ to 0.0) (default: '0.0')\n  -highest_intensity_peak:mz_tolerance_unit <choice>\
+  \  Unit of precursor mass tolerance (default: 'ppm' valid: 'Da', 'ppm')\n\n  -out_csv\
+  \ <file>                                     Optional CSV output file for results\
+  \ on 'nearest_peak' or 'highest_intensity_peak' algorithm (see corresponding subsection)\
+  \ containing columns: RT, uncorrectedMZ, correctedMZ, deltaMZ. (valid formats: 'csv')\n\
+  \                                                      \nCommon TOPP options:\n\
+  \  -ini <file>                                         Use the given TOPP INI file\n\
+  \  -threads <n>                                        Sets the number of threads\
+  \ allowed to be used by the TOPP tool (default: '1')\n  -write_ini <file>      \
+  \                             Writes the default configuration file\n  --help  \
+  \                                            Shows options\n  --helphelp       \
+  \                                   Shows all options (including advanced)\n\n"
+generated_using:
+- --help

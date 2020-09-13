@@ -1,0 +1,26 @@
+version 1.0
+
+task PatSelOutPatFile {
+  input {
+    String pat_sel
+    String no_file
+    String in_pat_file
+    String out_pat_file
+  }
+  command <<<
+    pat_sel out_pat_file \
+      ~{pat_sel} \
+      ~{no_file} \
+      ~{in_pat_file} \
+      ~{out_pat_file}
+  >>>
+  parameter_meta {
+    pat_sel: ""
+    no_file: ""
+    in_pat_file: ""
+    out_pat_file: ""
+  }
+  output {
+    File out_stdout = stdout()
+  }
+}

@@ -1,0 +1,610 @@
+!Command
+command:
+- make_gnuplot_graph.pl
+positional: []
+named:
+- !Flag
+  description: ':       Index of the x column (x-axis). NOTE: 1-based. NOTE: use -x2...
+    to specify more indices to plot'
+  synonyms:
+  - -x1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':       Index of the y column (y-axis). NOTE: 1-based. NOTE: use -y2...
+    to specify more indices to plot'
+  synonyms:
+  - -y1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':       Index of the error bar column (y-axis). NOTE: 1-based. NOTE:
+    use -e2... to specify more indices to plot'
+  synonyms:
+  - -e1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':       Key of the plot (default: printed on the upper right-hand
+    side). NOTE: use -k2... to specify more key names to plot; use "notitle" for no
+    key'
+  synonyms:
+  - -k1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':      Data style for the column. NOTE: 1-based. NOTE: use -ds2...
+    to specify more data styles to plot'
+  synonyms:
+  - -ds1
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':      Fill style for the column. NOTE: 1-based. NOTE: use -fs2...
+    to specify more fill styles to plot'
+  synonyms:
+  - -fs1
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':     Position of the first plot (e.g. "screen 0.35,0.14"). NOTE:
+    Use -org2... to specify more positions (default: screen 0,0)'
+  synonyms:
+  - -pos1
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: '<x,y>:    Size of the first plot (e.g. "0.5,0.5"). NOTE: Use -size2...
+    to specify more sizes (default: 1,1).'
+  synonyms:
+  - -size1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':      Point size of the first plot. NOTE: Use ps2... to specify point
+    sizes of other plots'
+  synonyms:
+  - -ps1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':      Line type of the first plot. NOTE: Use lt2... to specify line
+    types of other plots. If none are specified random types will be allocated.'
+  synonyms:
+  - -lt1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':      Line width of the first plot. NOTE: Use lw2... to specify line
+    widths of other plots (default: 1).'
+  synonyms:
+  - -lw1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ":  Type of smoothing to apply to plotted data. Options are: 'unique',\
+    \ 'frequency', 'acsplines', 'csplines', 'bezier' or 'sbezier'."
+  synonyms:
+  - -smooth1
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':      Global key features: <location> [ samplen <len> ] [ [no]box]
+    [off]'
+  synonyms:
+  - -key
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':     Features of key to the first plot. NOTE: use -key2... for more
+    plots.'
+  synonyms:
+  - -key1
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ":       Extra string to plot (e.g., <str> = 'exp(-x)')"
+  synonyms:
+  - -ep
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ":       Name of second data file to plot. NOTE: 1-based. NOTE: use\
+    \ -d3... to specify more data files\nNOTE: if not specified, uses the same file\
+    \ for all plots"
+  synonyms:
+  - -d2
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':       The name of the output file to produce'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ':       Output format for the output file (default: png)'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: ':     Data style (boxes/line/point/linespoint/imp default: point)'
+  synonyms:
+  - -ds
+  args: !SimpleFlagArg
+    name: style
+  optional: true
+- !Flag
+  description: ':       Point size (default: 0.2)'
+  synonyms:
+  - -ps
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Log scale for x-axis (obsolete, use -logscale)
+  synonyms:
+  - -lsx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Log scale for y-axis (obsolete, use -logscale)
+  synonyms:
+  - -lsy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use column <num> as labels for x-axis (one-based)
+  synonyms:
+  - -xlc
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Use column <num> as labels for y-axis (one-based)
+  synonyms:
+  - -ylc
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Label for x-axis
+  synonyms:
+  - -xl
+  args: !SimpleFlagArg
+    name: label
+  optional: true
+- !Flag
+  description: Label for y-axis
+  synonyms:
+  - -yl
+  args: !SimpleFlagArg
+    name: label
+  optional: true
+- !Flag
+  description: Label for x2-axis
+  synonyms:
+  - -x2l
+  args: !SimpleFlagArg
+    name: label
+  optional: true
+- !Flag
+  description: Label for y2-axis
+  synonyms:
+  - -y2l
+  args: !SimpleFlagArg
+    name: label
+  optional: true
+- !Flag
+  description: ':       Draw an x-zero axis. Use <str> to define the line width (default:
+    same as border)'
+  synonyms:
+  - -xz
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':       Draw an y-zero axis. Use <str> to define the line width (default:
+    same as border)'
+  synonyms:
+  - -yz
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: <num:num>    global x-axis range (format 'Low:High', e.g., 1:141)
+  synonyms:
+  - -xr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <num:num>    global y-axis range (format 'Low:High')
+  synonyms:
+  - -yr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<num:num>   x-axis range of first plot. NOTE: use -xr2... to specify
+    x-axis of other plots'
+  synonyms:
+  - -xr1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<num:num>   y-axis range of first plot. NOTE: use -yr2... to specify
+    y-axis of other plots'
+  synonyms:
+  - -yr1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify which axes to use (x1y1, x1y2, x2y1 or x2y2). use -ax2 ...\
+    \ to specify axes\nfor other plots."
+  synonyms:
+  - -ax1
+  args: !SimpleFlagArg
+    name: axes
+  optional: true
+- !Flag
+  description: <num:num>   global x2-axis range (format 'Low:High', e.g., 1:141)
+  synonyms:
+  - -x2r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <num:num>   global y2-axis range (format 'Low:High')
+  synonyms:
+  - -y2r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<num:num>  x2-axis range of first plot. NOTE: use -x2r2... to specify
+    x2-axis of other plots'
+  synonyms:
+  - -x2r1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<num:num>  y2-axis range of first plot. NOTE: use -y2r2... to specify
+    y2-axis of other plots'
+  synonyms:
+  - -y2r1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Global tics frequency on the x range (or specify autofreq)
+  synonyms:
+  - -xtics
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Global tics frequency on the y range (or specify autofreq)
+  synonyms:
+  - -ytics
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: 'xtics for the first plot. NOTE: use -xtics2... to specify xtics of
+    more plots'
+  synonyms:
+  - -xtics1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: 'ytics for the first plot. NOTE: use -ytics2... to specify ytics of
+    more plots'
+  synonyms:
+  - -ytics1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Global tics frequency on the x2 range (or specify autofreq)
+  synonyms:
+  - -x2tics
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Global tics frequency on the y2 range (or specify autofreq)
+  synonyms:
+  - -y2tics
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: 'x2tics for the first plot. NOTE: use -x2tics2... to specify x2tics
+    of more plots'
+  synonyms:
+  - -x2tics1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: 'y2tics for the first plot. NOTE: use -y2tics2... to specify y2tics
+    of more plots'
+  synonyms:
+  - -y2tics1
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Sets the given axis to logscale. axis can be x, y ,x2 ,y2 or any combination
+    (e.g. xyx2)
+  synonyms:
+  - -logscale
+  args: !SimpleFlagArg
+    name: axis
+  optional: true
+- !Flag
+  description: Additional commands for gnuplot. \n will be made into newline
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: command
+  optional: true
+- !Flag
+  description: 'Title for the graph (default: no title)'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: title
+  optional: true
+- !Flag
+  description: Use multiplot mode (<str> can be left empty or be given layout and
+    title commands).
+  synonyms:
+  - -multiplot
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':           Sets on grid for the plot'
+  synonyms:
+  - -grid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':          Sets on grid only for x-axis'
+  synonyms:
+  - -gridx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':          Sets on grid only for y-axis'
+  synonyms:
+  - -gridy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':       Create plots with no border'
+  synonyms:
+  - -noborder
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':    Create plots with only left and bottom borders (and tics)'
+  synonyms:
+  - -half_border
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':            Create a png as the output file and not plotting commands'
+  synonyms:
+  - -png
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':     Create a postscript as the output file'
+  synonyms:
+  - -postscript
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":         (only for -png) Colors pallete to use. A list of xrrggbb\
+    \ format where the elements are:\nbackground, border, x/y axis, line type 1, line\
+    \ type 2 ...\nDefault pallete is: \"xffffff x000000 x404040 xff0000 xffa500 x66cdaa\
+    \ xcdb5cd x1ea4ff x0000ff xdda0dd x9500d3\""
+  synonyms:
+  - -colors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":       (only for -png) Fontsize for nonscalable font use tiny/small/medium/large/giant\
+    \ (default small).\nFor scalable font specify a pointsize (default 10)."
+  synonyms:
+  - -fontsize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':     (only for -png) Use a scalable ttf/pfa font (choose from /storage/appl/gnuplot-4.2.2/share/fonts/
+    , default Tahoma.ttf when -font is used)'
+  synonyms:
+  - -font
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ":     In png mode -- output png size in pixels (not supported on all\
+    \ machines).\nIn postscript mode -- output size of the figure. Font is not affected.\
+    \ Use -image_size 0.8 to increase font by 20%"
+  synonyms:
+  - -image_size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':    Set the ratio of the graph (width / height). Default is 1. Use
+    0.5 to make image wide, 2 to make it tall etc.'
+  synonyms:
+  - -ratio
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':     amount of header rows to skip'
+  synonyms:
+  - -skip
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ":            plot all columns: 1st column is x axis, other columns\
+    \ are various y axis data series.\nfirst line is assumed to have keys of the y\
+    \ columns.\nlines (other than first) that start with # will not be plotted. such\
+    \ lines can give\ncolumn-specific commands in -all multiplot mode, e.g. set a\
+    \ different range for each column.\na sample line should look like this: #yrange<tab>[0:3]<tab>[2:4]<tab>[0:2]"
+  synonyms:
+  - -all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":          Use with -all to add errorbars to the data series. error\
+    \ value columns should appear\nby respective order after all y value columns,\
+    \ e.g. [x] [y1]...[y5] [e1]...[e5] ."
+  synonyms:
+  - -e_all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "with -all and -multiplot in order to add the last column of the data\
+    \ file to every plot in the multiplot\nand NOT as a seperate plot"
+  synonyms:
+  - -compare_to_last
+  args: !SimpleFlagArg
+    name: Use
+  optional: true
+- !Flag
+  description: Supress printing of keys in a -all plot
+  synonyms:
+  - -no_key
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':          Print the resulting commands to STDOUT'
+  synonyms:
+  - -debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nEXE_BASE_DIR/lib/make_gnuplot_graph.pl <data file>\n\n   Make a gnuplot\
+  \ graph\n\n   -x1 <num>:       Index of the x column (x-axis). NOTE: 1-based. NOTE:\
+  \ use -x2... to specify more indices to plot\n   -y1 <num>:       Index of the y\
+  \ column (y-axis). NOTE: 1-based. NOTE: use -y2... to specify more indices to plot\n\
+  \   -e1 <num>:       Index of the error bar column (y-axis). NOTE: 1-based. NOTE:\
+  \ use -e2... to specify more indices to plot\n   -k1 <num>:       Key of the plot\
+  \ (default: printed on the upper right-hand side). NOTE: use -k2... to specify more\
+  \ key names to plot; use \"notitle\" for no key\n   -ds1 <str>:      Data style\
+  \ for the column. NOTE: 1-based. NOTE: use -ds2... to specify more data styles to\
+  \ plot\n   -fs1 <str>:      Fill style for the column. NOTE: 1-based. NOTE: use\
+  \ -fs2... to specify more fill styles to plot\n   -pos1 <str>:     Position of the\
+  \ first plot (e.g. \"screen 0.35,0.14\"). NOTE: Use -org2... to specify more positions\
+  \ (default: screen 0,0)\n   -size1 <x,y>:    Size of the first plot (e.g. \"0.5,0.5\"\
+  ). NOTE: Use -size2... to specify more sizes (default: 1,1).\n   -ps1 <num>:   \
+  \   Point size of the first plot. NOTE: Use ps2... to specify point sizes of other\
+  \ plots\n   -lt1 <num>:      Line type of the first plot. NOTE: Use lt2... to specify\
+  \ line types of other plots. If none are specified random types will be allocated.\
+  \ \n   -lw1 <num>:      Line width of the first plot. NOTE: Use lw2... to specify\
+  \ line widths of other plots (default: 1).\n   -smooth1 <str>:  Type of smoothing\
+  \ to apply to plotted data. Options are: 'unique', 'frequency', 'acsplines', 'csplines',\
+  \ 'bezier' or 'sbezier'. \n   -key <str>:      Global key features: <location> [\
+  \ samplen <len> ] [ [no]box] [off]\n   -key1 <str>:     Features of key to the first\
+  \ plot. NOTE: use -key2... for more plots.\n\n   -ep <str>:       Extra string to\
+  \ plot (e.g., <str> = 'exp(-x)')\n\n   -d2 <str>:       Name of second data file\
+  \ to plot. NOTE: 1-based. NOTE: use -d3... to specify more data files\n        \
+  \                                              NOTE: if not specified, uses the\
+  \ same file for all plots\n\n   -o <file>:       The name of the output file to\
+  \ produce\n   -f <name>:       Output format for the output file (default: png)\n\
+  \n   -ds <style>:     Data style (boxes/line/point/linespoint/imp default: point)\n\
+  \   -ps <num>:       Point size (default: 0.2)\n\n   -lsx             Log scale\
+  \ for x-axis (obsolete, use -logscale)\n   -lsy             Log scale for y-axis\
+  \ (obsolete, use -logscale)\n\n   -xlc <num>       Use column <num> as labels for\
+  \ x-axis (one-based)\n   -ylc <num>       Use column <num> as labels for y-axis\
+  \ (one-based)\n\n   -xl <label>      Label for x-axis\n   -yl <label>      Label\
+  \ for y-axis\n   -x2l <label>     Label for x2-axis\n   -y2l <label>     Label for\
+  \ y2-axis\n\n   -xz <str>:       Draw an x-zero axis. Use <str> to define the line\
+  \ width (default: same as border)\n   -yz <str>:       Draw an y-zero axis. Use\
+  \ <str> to define the line width (default: same as border)\n\n   -xr <num:num> \
+  \   global x-axis range (format 'Low:High', e.g., 1:141)\n   -yr <num:num>    global\
+  \ y-axis range (format 'Low:High')\n   -xr1 <num:num>   x-axis range of first plot.\
+  \ NOTE: use -xr2... to specify x-axis of other plots\n   -yr1 <num:num>   y-axis\
+  \ range of first plot. NOTE: use -yr2... to specify y-axis of other plots\n\n  \
+  \ -ax1 <axes>      specify which axes to use (x1y1, x1y2, x2y1 or x2y2). use -ax2\
+  \ ... to specify axes\n                    for other plots.\n\n   -x2r <num:num>\
+  \   global x2-axis range (format 'Low:High', e.g., 1:141)\n   -y2r <num:num>   global\
+  \ y2-axis range (format 'Low:High')\n   -x2r1 <num:num>  x2-axis range of first\
+  \ plot. NOTE: use -x2r2... to specify x2-axis of other plots\n   -y2r1 <num:num>\
+  \  y2-axis range of first plot. NOTE: use -y2r2... to specify y2-axis of other plots\n\
+  \n   -xtics <num>     Global tics frequency on the x range (or specify autofreq)\n\
+  \   -ytics <num>     Global tics frequency on the y range (or specify autofreq)\n\
+  \   -xtics1 <num>    xtics for the first plot. NOTE: use -xtics2... to specify xtics\
+  \ of more plots\n   -ytics1 <num>    ytics for the first plot. NOTE: use -ytics2...\
+  \ to specify ytics of more plots\n\n   -x2tics <num>     Global tics frequency on\
+  \ the x2 range (or specify autofreq)\n   -y2tics <num>     Global tics frequency\
+  \ on the y2 range (or specify autofreq)\n   -x2tics1 <num>    x2tics for the first\
+  \ plot. NOTE: use -x2tics2... to specify x2tics of more plots\n   -y2tics1 <num>\
+  \    y2tics for the first plot. NOTE: use -y2tics2... to specify y2tics of more\
+  \ plots\n\n   -logscale <axis> Sets the given axis to logscale. axis can be x, y\
+  \ ,x2 ,y2 or any combination (e.g. xyx2)\n   \n   -c <command>     Additional commands\
+  \ for gnuplot. \\n will be made into newline\n\n   -t <title>       Title for the\
+  \ graph (default: no title)\n\n   -multiplot <str> Use multiplot mode (<str> can\
+  \ be left empty or be given layout and title commands).\n\n   -grid:           Sets\
+  \ on grid for the plot\n   -gridx:          Sets on grid only for x-axis\n   -gridy:\
+  \          Sets on grid only for y-axis\n\n   -noborder:       Create plots with\
+  \ no border\n   -half_border:    Create plots with only left and bottom borders\
+  \ (and tics)\n\n   -png:            Create a png as the output file and not plotting\
+  \ commands\n   -postscript:     Create a postscript as the output file\n\n   -colors:\
+  \         (only for -png) Colors pallete to use. A list of xrrggbb format where\
+  \ the elements are: \n                          background, border, x/y axis, line\
+  \ type 1, line type 2 ...\n                    Default pallete is: \"xffffff x000000\
+  \ x404040 xff0000 xffa500 x66cdaa xcdb5cd x1ea4ff x0000ff xdda0dd x9500d3\"\n  \
+  \ -fontsize:       (only for -png) Fontsize for nonscalable font use tiny/small/medium/large/giant\
+  \ (default small).\n                    For scalable font specify a pointsize (default\
+  \ 10).\n   -font <str>:     (only for -png) Use a scalable ttf/pfa font (choose\
+  \ from /storage/appl/gnuplot-4.2.2/share/fonts/ , default Tahoma.ttf when -font\
+  \ is used)\n\n   -image_size:     In png mode -- output png size in pixels (not\
+  \ supported on all machines).\n                    In postscript mode -- output\
+  \ size of the figure. Font is not affected. Use -image_size 0.8 to increase font\
+  \ by 20%\n                    \n   -ratio <num>:    Set the ratio of the graph (width\
+  \ / height). Default is 1. Use 0.5 to make image wide, 2 to make it tall etc.\n\
+  \                    \n   -skip <num>:     amount of header rows to skip\n\n   -all:\
+  \            plot all columns: 1st column is x axis, other columns are various y\
+  \ axis data series.\n                    first line is assumed to have keys of the\
+  \ y columns.\n                    lines (other than first) that start with # will\
+  \ not be plotted. such lines can give\n                    column-specific commands\
+  \ in -all multiplot mode, e.g. set a different range for each column.\n        \
+  \            a sample line should look like this: #yrange<tab>[0:3]<tab>[2:4]<tab>[0:2]\n\
+  \n   -e_all:          Use with -all to add errorbars to the data series. error value\
+  \ columns should appear\n                    by respective order after all y value\
+  \ columns, e.g. [x] [y1]...[y5] [e1]...[e5] .\n\n   -compare_to_last Use with -all\
+  \ and -multiplot in order to add the last column of the data file to every plot\
+  \ in the multiplot\n                    and NOT as a seperate plot\n\n   -no_key\
+  \          Supress printing of keys in a -all plot\n\n   -debug:          Print\
+  \ the resulting commands to STDOUT\n   \n"
+generated_using:
+- --help

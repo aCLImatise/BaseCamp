@@ -1,0 +1,117 @@
+!Command
+command:
+- bs_seeker2-build.py
+positional: []
+named:
+- !Flag
+  description: Input your reference genome file (fasta)
+  synonyms:
+  - -f
+  - --file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Aligner program to perform the analysis: bowtie,\nbowtie2, soap, rmap\
+    \ [Default: bowtie]"
+  synonyms:
+  - --aligner
+  args: !SimpleFlagArg
+    name: ALIGNER
+  optional: true
+- !Flag
+  description: "Path to the aligner program. Detected:\nbowtie: None\nbowtie2: /usr/local/bin\n\
+    rmap: None\nsoap: None"
+  synonyms:
+  - -p
+  - --path
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Path to the reference genome library (generated in\npreprocessing\
+    \ genome) [Default:\n/usr/local/bin/bs_utils/reference_genomes]"
+  synonyms:
+  - -d
+  - --db
+  args: !SimpleFlagArg
+    name: DBPATH
+  optional: true
+- !Flag
+  description: "Build index specially for Reduced Representation\nBisulfite Sequencing\
+    \ experiments. Genome other than\ncertain fragments will be masked. [Default:\
+    \ False]"
+  synonyms:
+  - -r
+  - --rrbs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "lower bound of fragment length (excluding recognition\nsequence such\
+    \ as C-CGG) [Default: 20]"
+  synonyms:
+  - -l
+  - --low
+  args: !SimpleFlagArg
+    name: LOW_BOUND
+  optional: true
+- !Flag
+  description: "upper bound of fragment length (excluding recognition\nsequence such\
+    \ as C-CGG ends) [Default: 500]"
+  synonyms:
+  - -u
+  - --up
+  args: !SimpleFlagArg
+    name: UP_BOUND
+  optional: true
+- !Flag
+  description: "Cut sites of restriction enzyme. Ex: MspI(C-CGG),\nMael:(C-TAG), double-enzyme\
+    \ MspI&Mael:(C-CGG,C-TAG).\n[Default: C-CGG]\n"
+  synonyms:
+  - -c
+  - --cut-site
+  args: !SimpleFlagArg
+    name: CUT_FORMAT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show version of BS-Seeker2
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: bs_seeker2-build.py [options]\n\nOptions:\n  -h, --help       \
+  \     show this help message and exit\n  -f FILE, --file=FILE  Input your reference\
+  \ genome file (fasta)\n  --aligner=ALIGNER     Aligner program to perform the analysis:\
+  \ bowtie,\n                        bowtie2, soap, rmap [Default: bowtie]\n  -p PATH,\
+  \ --path=PATH  Path to the aligner program. Detected:\n                        bowtie:\
+  \ None\n                        bowtie2: /usr/local/bin\n                      \
+  \  rmap: None\n                        soap: None\n  -d DBPATH, --db=DBPATH\n  \
+  \                      Path to the reference genome library (generated in\n    \
+  \                    preprocessing genome) [Default:\n                        /usr/local/bin/bs_utils/reference_genomes]\n\
+  \  -v, --version         show version of BS-Seeker2\n\n  Reduced Representation\
+  \ Bisulfite Sequencing Options:\n    Use this options with conjuction of -r [--rrbs]\n\
+  \n    -r, --rrbs          Build index specially for Reduced Representation\n   \
+  \                     Bisulfite Sequencing experiments. Genome other than\n    \
+  \                    certain fragments will be masked. [Default: False]\n    -l\
+  \ LOW_BOUND, --low=LOW_BOUND\n                        lower bound of fragment length\
+  \ (excluding recognition\n                        sequence such as C-CGG) [Default:\
+  \ 20]\n    -u UP_BOUND, --up=UP_BOUND\n                        upper bound of fragment\
+  \ length (excluding recognition\n                        sequence such as C-CGG\
+  \ ends) [Default: 500]\n    -c CUT_FORMAT, --cut-site=CUT_FORMAT\n             \
+  \           Cut sites of restriction enzyme. Ex: MspI(C-CGG),\n                \
+  \        Mael:(C-TAG), double-enzyme MspI&Mael:(C-CGG,C-TAG).\n                \
+  \        [Default: C-CGG]\n"
+generated_using:
+- --help

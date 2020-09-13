@@ -1,0 +1,649 @@
+!Command
+command:
+- hilive-out
+positional:
+- !Positional
+  description: '--instrument-id arg               ID of the sequencing machine. Should
+    be '
+  position: 0
+  name: runInfo.xml.
+  optional: false
+named:
+- !Flag
+  description: "[ --config ]\nPath to a HiLive config file (in general, this should\
+    \ be\n'hilive_config.ini' which is created in the temp directory of the\nrespective\
+    \ run)"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --license ]                  Print license information and exit.'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to Illumina's runInfo.xml file. If\nspecified, read lengths,\
+    \ lane count and\ntile count are automatically set in\naccordance with the sequencing\
+    \ run.\nParameters obtained from the command line\nor config file are prioritized\
+    \ over\nsettings obtained from the runInfo.xml."
+  synonyms:
+  - --runinfo
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Continue an interrupted HiLive run from a\nspecified cycle. We strongly\
+    \ recommend to\nload the config file that was automatically\ncreated for the original\
+    \ run to continue\nwith identical settings. This config file\n(hilive_config.ini)\
+    \ can be found in the\ntemporary directory specified with\n--temp-dir."
+  synonyms:
+  - --continue
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --bcl-dir ] arg              Illumina's BaseCalls directory which\n\
+    contains the sequence information of the\nreads."
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --tiles ] arg                Specify the tiles to be considered\
+    \ for read\nalignment. [Default: [1-2][1-3][01-16] (96\ntiles)]"
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --max-tile ] arg             Specify the highest tile number. The\
+    \ tile\nnumbers will be computed by this number,\nconsidering the correct surface\
+    \ count,\nswath count and tile count for Illumina\nsequencing.\nThis parameter\
+    \ serves as a shortcut for\n--tiles.\nExample:\n--max-tile 2216\nwill activate\
+    \ all tiles in\n[1-2][1-2][01-16]."
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --reads ] arg                Length and types of the read segments.\
+    \ Each\nsegment is either a read ('R') or a barcode\n('B'). Please give the segments\
+    \ in the\ncorrect order as they are produced by the\nsequencing machine. [REQUIRED]\n\
+    Example:\n--reads 101R,8B,8B,101R\nspecifies paired-end sequencing with\n2x101bp\
+    \ reads and 2x8bp barcodes."
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --barcodes ] arg             Barcode(s) of the sample(s) to be\n\
+    considered for read alignment. Barcodes\nmust match the barcode length(s) as\n\
+    specified with --reads. Delimit different\nsegments of the same barcodes by '-'\
+    \ and\ndifferent barcodes by ','. [Default: All\nbarcodes]\nExample:\n-b ACCG-ATTG,ATGT-TGAC\n\
+    for two different barcodes of length 2x4bp."
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "ID of the sequencing run. Should be\nobtained from runInfo.xml."
+  synonyms:
+  - --run-id
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: ID of the flowcell. Should be obtained from
+  synonyms:
+  - --flowcell-id
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --out-dir ] arg              Path to the directory that is used\
+    \ for the\noutput files. The directory will be created\nif it does not exist.\
+    \ [Default: ./out]"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --out-format ] arg           Format of the output files. Currently,\
+    \ SAM\nand BAM format are supported. [Default:\nBAM]"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --out-cycles ] arg           Cycles for that alignment output is\n\
+    written. The respective temporary files are\nkept. [Default: write only after\
+    \ the last\ncycle]"
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --out-mode ] arg             The output mode. [Default: ANYBEST]\n\
+    [ALL|A]: Report all found alignments.\n[BESTN#|N#]: Report the # best found\n\
+    alignments.\n[ALLBEST|H]: Report all found alignments\nwith the best score.\n\
+    [ANYBEST|B]: Report one best alignment.\n[UNIQUE|U]: Report only unique alignments."
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Activate reporting unmapped reads.\n[Default: false]"
+  synonyms:
+  - --report-unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Activate extended CIGAR format for the\nalignment output files ('='\
+    \ for matches and\n'X' for mismatches instead of using 'M' for\nboth). [Default:\
+    \ false]"
+  synonyms:
+  - --extended-cigar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Always sort temporary alignment files\nbefore writing output. Existing\
+    \ sorted\nalign files are overwritten. This is only\nnecessary if the temp directory\
+    \ is used\nmore than once for new alignments. In\ngeneral, this is not recommended\
+    \ for most\napplications. [Default: false (only sort if\nno sorted files exist)]"
+  synonyms:
+  - --force-resort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximal relative length of the front\nsoftclip (only relevant during\
+    \ output)\n[Default: 0.2]\nFurther explanation:\nHiLive uses an approach that\
+    \ requires one\nexact match of a k-mer at the beginning of\nan alignment. This\
+    \ can lead to unaligned\nregions at the beginning of the read which\nwe report\
+    \ as 'softclips'. With this\nparameter, you can control the maximal\nlength of\
+    \ this region."
+  synonyms:
+  - --max-softclip-ratio
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --index ] arg                Path to the HiLive index. Please use\
+    \ the\nexecutable 'hilive-build' to create a new\nHiLive index that is delivered\
+    \ with this\nprogram. The index consists of several\nfiles with the same prefix.\
+    \ Please include\nthe file prefix when specifying the index\nlocation."
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --align-mode ] arg           Alignment mode to balance speed and\n\
+    accuracy [very-fast|fast|balanced|accurate|\nvery-accurate]. This selected mode\n\
+    automatically sets other parameters.\nIndividually configured parameters are\n\
+    prioritized over settings made by selecting\nan alignment mode. [Default: balanced]"
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Length of the alignment anchor (or initial\nseed) [Default: set by\
+    \ the selected\nalignment mode]"
+  synonyms:
+  - --anchor-length
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The interval to tolerate more errors during\nalignment (low=accurate;\
+    \ great=fast).\n[Default: 'anchor-length'/2]"
+  synonyms:
+  - --error-interval
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The interval to create new seeds\n(low=accurate; great=fast). [Default:\n\
+    'anchor-length'/2]"
+  synonyms:
+  - --seeding-interval
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The maximum length of a front softclip when\ncreating new seeds. In\
+    \ contrast to\n--max-softclip-ratio, this parameter may\nhave effects on runtime\
+    \ and mapping\naccuracy. [Default: 'readlength/2]"
+  synonyms:
+  - --max-softclip-length
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The number of errors that are tolerated for\nthe barcode segments.\
+    \ A single value can be\nprovided to be applied for all barcode\nsegments. Alternatively,\
+    \ the value can be\nset for each segment individually.\n[Default: 1]\nExample:\n\
+    --barcode-errors 2 [2 errors for all\nbarcode segments]\n--barcode-errors 2,1\
+    \ [2 errors for the\nfirst, 1 error for the second segment]"
+  synonyms:
+  - --barcode-errors
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Align all barcodes. Reads with a barcode\nthat don't match one of\
+    \ the barcodes\nspecified with '--barcodes' will be\nreported as undetermined.\
+    \ [Default: false]"
+  synonyms:
+  - --align-undetermined-barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum basecall quality for a nucleotide\nto be considered as a match\
+    \ [Default: 1\n(everything but N-calls)]"
+  synonyms:
+  - --min-basecall-quality
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Keep sequences of invalid reads, i.e. with\nunconsidered barcode or\
+    \ filtered by the\nsequencer. This option must be activated to\nreport unmapped\
+    \ reads. [Default: false]"
+  synonyms:
+  - --keep-invalid-sequences
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --min-as ] arg               Minimum alignment score. [Default:\
+    \ Set\nautomatically based on the alignment mode\nand match/mismatch scores]"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Score for a match. [Default: 0]'
+  synonyms:
+  - --match-score
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Penalty for a mismatch. [Default: 6]'
+  synonyms:
+  - --mismatch-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Penalty for insertion opening. [Default: 5]'
+  synonyms:
+  - --insertion-opening-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Penalty for insertion extension. [Default:\n3]"
+  synonyms:
+  - --insertion-extension-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Penalty for deletion opening. [Default: 5]'
+  synonyms:
+  - --deletion-opening-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Penalty for deletion extension. [Default:\n3]"
+  synonyms:
+  - --deletion-extension-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Maximal permitted consecutive gap length.\nIncreasing this parameter\
+    \ may lead to\nhighly increased runtime! [Default: 3]"
+  synonyms:
+  - --max-gap-length
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Penalty for softclip opening (only relevant\nduring output). [Default:\n\
+    'mismatch-penalty']"
+  synonyms:
+  - --softclip-opening-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Penalty for softclip extension (only\nrelevant during output). [Default:\n\
+    'mismatch-penalty'/'anchor-length']"
+  synonyms:
+  - --softclip-extension-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Temporary directory to store the alignment\nfiles and hilive_config.ini.\
+    \ [Default:\n./temp]"
+  synonyms:
+  - --temp-dir
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --keep-files ] arg           Keep intermediate alignment files for\
+    \ these\ncycles. The last cycle is always kept.\n[Default: Keep files of output\
+    \ cycles]\nFurther Explanations:\nHiLive comes with a separated executable\n'hilive-out'.\
+    \ This executable can be used\nto produce alignment files in SAM or BAM\nformat\
+    \ from existing temporary files. Thus,\noutput can only be created for cycles\
+    \ for\nthat keeping the temporary alignment files\nis activated. Temporary alignemnt\
+    \ files are\nalso needed if an interrupted run is\ncontinued with the '--continue'\
+    \ parameter."
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --keep-all-files ]           Keep all intermediate alignment files.\
+    \ This\noption may lead to huge disk space\nrequirements. [Default: false]"
+  synonyms:
+  - -K
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Block size for the alignment input/output\nstream in Bytes. Append\
+    \ 'K' or 'M' to\nspecify in Kilobytes or Megabytes,\nrespectively. [Default: 64M]\n\
+    Example:\n--block-size 1024 [1024 bytes]\n--block-size 64K [64 Kilobytes]\n--block-size\
+    \ 64M [64 Megabytes]"
+  synonyms:
+  - --block-size
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Compression of temporary alignment files.\n[Default: LZ4]\n0: no compression.\n\
+    1: Deflate (smaller).\n2: LZ4 (faster)."
+  synonyms:
+  - --compression
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --num-threads ] arg          Number of threads to spawn (including\n\
+    output threads). [Default: 1]"
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --num-out-threads ] arg      Maximum number of threads to use for\n\
+    output. More threads may be used for output\nautomatically if threads are idle.\n\
+    [Default: 'num-threads'/2]\n"
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --config
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '[ --help ]                     Print this help message and exit.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n__________________________________________________________________________\n\
+  \nHiLive Output Tool v2.0 - Output of Realtime Alignments of Illumina Reads\n__________________________________________________________________________\n\
+  \nCopyright (c) 2015-2018, Martin S. Lindner and the HiLive contributors. See CONTRIBUTORS\
+  \ for more info.\nAll rights reserved\n\nHiLive is open-source software. Check with\
+  \ --license for details.\n\nUsage: \n  hilive-out --config /path/to/config/file\
+  \ [options]\n\nREQUIRED OPTIONS:\n  -c [ --config ]\n        Path to a HiLive config\
+  \ file (in general, this should be\n        'hilive_config.ini' which is created\
+  \ in the temp directory of the\n        respective run)\n\nAll parameters can be\
+  \ set as for the HiLive main program.\nBy default, output cycles are the same as\
+  \ specified for the original HiLive run.\nUse the --out-cycles parameter to declare\
+  \ different cycle numbers (will only work if --keep-files or --out-cycles was activated\
+  \ for the cycle when running HiLive)\n\nGENERAL OPTIONS:\n  -h [ --help ]      \
+  \               Print this help message and exit.\n                            \
+  \        \n  -l [ --license ]                  Print license information and exit.\n\
+  \                                    \n  -c [ --config ] arg               Path\
+  \ to a config file. Config file is in \n                                    .ini\
+  \ format. Duplicate keys are not \n                                    permitted.\
+  \ Instead, use comma-separated \n                                    lists. Parameters\
+  \ obtained from the command\n                                    line are prioritized\
+  \ over settings made in \n                                    the config file.\n\
+  \                                    \n                                    Example\
+  \ for a config.ini:\n                                       bcl-dir=./BaseCalls\n\
+  \                                       lanes=1\n                              \
+  \         out-cycle=50,100\n                                    \n  --runinfo arg\
+  \                     Path to Illumina's runInfo.xml file. If \n               \
+  \                     specified, read lengths, lane count and \n               \
+  \                     tile count are automatically set in \n                   \
+  \                 accordance with the sequencing run. \n                       \
+  \             Parameters obtained from the command line \n                     \
+  \               or config file are prioritized over \n                         \
+  \           settings obtained from the runInfo.xml.\n                          \
+  \          \n  --continue arg                    Continue an interrupted HiLive\
+  \ run from a \n                                    specified cycle. We strongly\
+  \ recommend to \n                                    load the config file that was\
+  \ automatically\n                                    created for the original run\
+  \ to continue \n                                    with identical settings. This\
+  \ config file \n                                    (hilive_config.ini) can be found\
+  \ in the \n                                    temporary directory specified with\
+  \ \n                                    --temp-dir.\n                          \
+  \          \n\nSEQUENCING OPTIONS:\n  -b [ --bcl-dir ] arg              Illumina's\
+  \ BaseCalls directory which \n                                    contains the sequence\
+  \ information of the \n                                    reads.\n            \
+  \                        \n  -l [ --lanes ] arg                Specify the lanes\
+  \ to be considered for read\n                                    alignment. [Default:\
+  \ 1-8]\n                                    \n  -t [ --tiles ] arg             \
+  \   Specify the tiles to be considered for read\n                              \
+  \      alignment. [Default: [1-2][1-3][01-16] (96 \n                           \
+  \         tiles)]\n                                    \n  -T [ --max-tile ] arg\
+  \             Specify the highest tile number. The tile \n                     \
+  \               numbers will be computed by this number, \n                    \
+  \                considering the correct surface count, \n                     \
+  \               swath count and tile count for Illumina \n                     \
+  \               sequencing.\n                                    This parameter\
+  \ serves as a shortcut for \n                                    --tiles.\n    \
+  \                                \n                                    Example:\n\
+  \                                       --max-tile 2216\n                      \
+  \              will activate all tiles in \n                                   \
+  \ [1-2][1-2][01-16].\n                                    \n  -r [ --reads ] arg\
+  \                Length and types of the read segments. Each\n                 \
+  \                   segment is either a read ('R') or a barcode\n              \
+  \                      ('B'). Please give the segments in the \n               \
+  \                     correct order as they are produced by the \n             \
+  \                       sequencing machine. [REQUIRED]\n                       \
+  \             \n                                    Example:\n                 \
+  \                      --reads 101R,8B,8B,101R\n                               \
+  \     specifies paired-end sequencing with \n                                  \
+  \  2x101bp reads and 2x8bp barcodes.\n                                    \n  -B\
+  \ [ --barcodes ] arg             Barcode(s) of the sample(s) to be \n          \
+  \                          considered for read alignment. Barcodes \n          \
+  \                          must match the barcode length(s) as \n              \
+  \                      specified with --reads. Delimit different \n            \
+  \                        segments of the same barcodes by '-' and \n           \
+  \                         different barcodes by ','. [Default: All \n          \
+  \                          barcodes]\n                                    \n   \
+  \                                 Example:\n                                   \
+  \    -b ACCG-ATTG,ATGT-TGAC\n                                    for two different\
+  \ barcodes of length 2x4bp.\n                                    \n  --run-id arg\
+  \                      ID of the sequencing run. Should be \n                  \
+  \                  obtained from runInfo.xml.\n                                \
+  \    \n  --flowcell-id arg                 ID of the flowcell. Should be obtained\
+  \ from\n                                    runInfo.xml.\n                     \
+  \               \n  --instrument-id arg               ID of the sequencing machine.\
+  \ Should be \n                                    obtained from runInfo.xml.\n \
+  \                                   \n\nREPORT OPTIONS:\n  -o [ --out-dir ] arg\
+  \              Path to the directory that is used for the \n                   \
+  \                 output files. The directory will be created\n                \
+  \                    if it does not exist. [Default: ./out]\n                  \
+  \                  \n  -f [ --out-format ] arg           Format of the output files.\
+  \ Currently, SAM \n                                    and BAM format are supported.\
+  \ [Default: \n                                    BAM]\n                       \
+  \             \n  -O [ --out-cycles ] arg           Cycles for that alignment output\
+  \ is \n                                    written. The respective temporary files\
+  \ are\n                                    kept. [Default: write only after the\
+  \ last \n                                    cycle]\n                          \
+  \          \n  -M [ --out-mode ] arg             The output mode. [Default: ANYBEST]\n\
+  \                                    [ALL|A]: Report all found alignments.\n   \
+  \                                 [BESTN#|N#]: Report the # best found \n      \
+  \                              alignments.\n                                   \
+  \ [ALLBEST|H]: Report all found alignments \n                                  \
+  \  with the best score.\n                                    [ANYBEST|B]: Report\
+  \ one best alignment.\n                                    [UNIQUE|U]: Report only\
+  \ unique alignments.\n                                    \n  --report-unmapped\
+  \                 Activate reporting unmapped reads. \n                        \
+  \            [Default: false]\n                                    \n  --extended-cigar\
+  \                  Activate extended CIGAR format for the \n                   \
+  \                 alignment output files ('=' for matches and\n                \
+  \                    'X' for mismatches instead of using 'M' for\n             \
+  \                       both). [Default: false]\n                              \
+  \      \n  --force-resort                    Always sort temporary alignment files\
+  \ \n                                    before writing output. Existing sorted \n\
+  \                                    align files are overwritten. This is only \n\
+  \                                    necessary if the temp directory is used \n\
+  \                                    more than once for new alignments. In \n  \
+  \                                  general, this is not recommended for most \n\
+  \                                    applications. [Default: false (only sort if\n\
+  \                                    no sorted files exist)]\n                 \
+  \                   \n  --max-softclip-ratio arg          Maximal relative length\
+  \ of the front \n                                    softclip (only relevant during\
+  \ output) \n                                    [Default: 0.2]\n               \
+  \                     \n                                    Further explanation:\n\
+  \                                    HiLive uses an approach that requires one \n\
+  \                                    exact match of a k-mer at the beginning of\
+  \ \n                                    an alignment. This can lead to unaligned\
+  \ \n                                    regions at the beginning of the read which\
+  \ \n                                    we report as 'softclips'. With this \n \
+  \                                   parameter, you can control the maximal \n  \
+  \                                  length of this region.\n                    \
+  \                \n\nALIGNMENT OPTIONS:\n  -i [ --index ] arg                Path\
+  \ to the HiLive index. Please use the \n                                    executable\
+  \ 'hilive-build' to create a new \n                                    HiLive index\
+  \ that is delivered with this \n                                    program. The\
+  \ index consists of several \n                                    files with the\
+  \ same prefix. Please include \n                                    the file prefix\
+  \ when specifying the index \n                                    location.\n  \
+  \                                  \n  -m [ --align-mode ] arg           Alignment\
+  \ mode to balance speed and \n                                    accuracy [very-fast|fast|balanced|accurate|\n\
+  \                                    very-accurate]. This selected mode \n     \
+  \                               automatically sets other parameters. \n        \
+  \                            Individually configured parameters are \n         \
+  \                           prioritized over settings made by selecting\n      \
+  \                              an alignment mode. [Default: balanced]\n        \
+  \                            \n  --anchor-length arg               Length of the\
+  \ alignment anchor (or initial \n                                    seed) [Default:\
+  \ set by the selected \n                                    alignment mode]\n  \
+  \                                  \n  --error-interval arg              The interval\
+  \ to tolerate more errors during\n                                    alignment\
+  \ (low=accurate; great=fast). \n                                    [Default: 'anchor-length'/2]\n\
+  \                                    \n  --seeding-interval arg            The interval\
+  \ to create new seeds \n                                    (low=accurate; great=fast).\
+  \ [Default: \n                                    'anchor-length'/2]\n         \
+  \                           \n  --max-softclip-length arg         The maximum length\
+  \ of a front softclip when\n                                    creating new seeds.\
+  \ In contrast to \n                                    --max-softclip-ratio, this\
+  \ parameter may \n                                    have effects on runtime and\
+  \ mapping \n                                    accuracy. [Default: 'readlength/2]\n\
+  \  --barcode-errors arg              The number of errors that are tolerated for\n\
+  \                                    the barcode segments. A single value can be\n\
+  \                                    provided to be applied for all barcode \n \
+  \                                   segments. Alternatively, the value can be \n\
+  \                                    set for each segment individually. \n     \
+  \                               [Default: 1]\n                                 \
+  \   \n                                    Example:\n                           \
+  \            --barcode-errors 2 [2 errors for all \n                           \
+  \         barcode segments]\n                                       --barcode-errors\
+  \ 2,1 [2 errors for the \n                                    first, 1 error for\
+  \ the second segment]\n                                    \n  --align-undetermined-barcodes\
+  \     Align all barcodes. Reads with a barcode \n                              \
+  \      that don't match one of the barcodes \n                                 \
+  \   specified with '--barcodes' will be \n                                    reported\
+  \ as undetermined. [Default: false]\n                                    \n  --min-basecall-quality\
+  \ arg        Minimum basecall quality for a nucleotide \n                      \
+  \              to be considered as a match [Default: 1 \n                      \
+  \              (everything but N-calls)]\n                                    \n\
+  \  --keep-invalid-sequences          Keep sequences of invalid reads, i.e. with\
+  \ \n                                    unconsidered barcode or filtered by the\
+  \ \n                                    sequencer. This option must be activated\
+  \ to\n                                    report unmapped reads. [Default: false]\n\
+  \                                    \n\nSCORING OPTIONS:\n  -s [ --min-as ] arg\
+  \               Minimum alignment score. [Default: Set \n                      \
+  \              automatically based on the alignment mode \n                    \
+  \                and match/mismatch scores]\n                                  \
+  \  \n  --match-score arg                 Score for a match. [Default: 0]\n     \
+  \                               \n  --mismatch-penalty arg            Penalty for\
+  \ a mismatch. [Default: 6]\n                                    \n  --insertion-opening-penalty\
+  \ arg   Penalty for insertion opening. [Default: 5]\n                          \
+  \          \n  --insertion-extension-penalty arg Penalty for insertion extension.\
+  \ [Default: \n                                    3]\n                         \
+  \           \n  --deletion-opening-penalty arg    Penalty for deletion opening.\
+  \ [Default: 5]\n                                    \n  --deletion-extension-penalty\
+  \ arg  Penalty for deletion extension. [Default: \n                            \
+  \        3]\n                                    \n  --max-gap-length arg      \
+  \        Maximal permitted consecutive gap length. \n                          \
+  \          Increasing this parameter may lead to \n                            \
+  \        highly increased runtime! [Default: 3]\n                              \
+  \      \n  --softclip-opening-penalty arg    Penalty for softclip opening (only\
+  \ relevant\n                                    during output). [Default: \n   \
+  \                                 'mismatch-penalty']\n                        \
+  \            \n  --softclip-extension-penalty arg  Penalty for softclip extension\
+  \ (only \n                                    relevant during output). [Default:\
+  \ \n                                    'mismatch-penalty'/'anchor-length']\n  \
+  \                                  \n\nTECHNICAL OPTIONS:\n  --temp-dir arg    \
+  \                Temporary directory to store the alignment \n                 \
+  \                   files and hilive_config.ini. [Default: \n                  \
+  \                  ./temp]\n                                    \n  -k [ --keep-files\
+  \ ] arg           Keep intermediate alignment files for these\n                \
+  \                    cycles. The last cycle is always kept. \n                 \
+  \                   [Default: Keep files of output cycles]\n                   \
+  \                 \n                                    Further Explanations:\n\
+  \                                    HiLive comes with a separated executable \n\
+  \                                    'hilive-out'. This executable can be used \n\
+  \                                    to produce alignment files in SAM or BAM \n\
+  \                                    format from existing temporary files. Thus,\n\
+  \                                    output can only be created for cycles for \n\
+  \                                    that keeping the temporary alignment files\
+  \ \n                                    is activated. Temporary alignemnt files\
+  \ are\n                                    also needed if an interrupted run is\
+  \ \n                                    continued with the '--continue' parameter.\n\
+  \                                    \n  -K [ --keep-all-files ]           Keep\
+  \ all intermediate alignment files. This\n                                    option\
+  \ may lead to huge disk space \n                                    requirements.\
+  \ [Default: false]\n                                    \n  --block-size arg   \
+  \               Block size for the alignment input/output \n                   \
+  \                 stream in Bytes. Append 'K' or 'M' to \n                     \
+  \               specify in Kilobytes or Megabytes, \n                          \
+  \          respectively. [Default: 64M]\n                                    \n\
+  \                                    Example:\n                                \
+  \       --block-size 1024 [1024 bytes]\n                                       --block-size\
+  \ 64K [64 Kilobytes]\n                                       --block-size 64M [64\
+  \ Megabytes]\n                                    \n  --compression arg        \
+  \         Compression of temporary alignment files. \n                         \
+  \           [Default: LZ4]\n                                    0: no compression.\n\
+  \                                    1: Deflate (smaller).\n                   \
+  \                 2: LZ4 (faster).\n                                    \n  -n [\
+  \ --num-threads ] arg          Number of threads to spawn (including \n        \
+  \                            output threads). [Default: 1]\n                   \
+  \                 \n  -N [ --num-out-threads ] arg      Maximum number of threads\
+  \ to use for \n                                    output. More threads may be used\
+  \ for output\n                                    automatically if threads are idle.\
+  \ \n                                    [Default: 'num-threads'/2]\n           \
+  \                         \n\n"
+generated_using:
+- --help

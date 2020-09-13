@@ -1,0 +1,237 @@
+!Command
+command:
+- ovStoreDump
+positional: []
+named:
+- !Flag
+  description: mandatory path to a sequence store
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: seqStore
+  optional: true
+- !Flag
+  description: mandatory path to an overlap store
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: ovlStore
+  optional: true
+- !Flag
+  description: '[b[-e]]    dump overlaps (default)'
+  synonyms:
+  - -overlaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[b[-e]]    dump an ASCII picture of the overlaps relative to a read'
+  synonyms:
+  - -picture
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[b[-3]]    tabular metadata, including the number of overlaps per
+    read'
+  synonyms:
+  - -metadata
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[b[-e]]    the number of overlaps per read'
+  synonyms:
+  - -counts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[b[-e]]    a histogram of overlap length vs error rate'
+  synonyms:
+  - -eratelen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "* for -eratelen, write histogram to name.dat\nand also output a gnuplot\
+    \ script to name.gp\n* for -binary, mandatory, write overlaps to name.ovb"
+  synonyms:
+  - -prefix
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: uncorrected raw reads
+  synonyms:
+  - -raw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: corrected reads
+  synonyms:
+  - -obt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: trimmed reads
+  synonyms:
+  - -utg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: as coordinates on each read (default)
+  synonyms:
+  - -coords
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: as dovetail hangs
+  synonyms:
+  - -hangs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: as unaligned regions on each read
+  synonyms:
+  - -unaligned
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: as miniasm Pairwise mApping Format
+  synonyms:
+  - -paf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: as Graphical Fragment Assembly format
+  synonyms:
+  - -gfa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: as an overlapper output file (needs -prefix)
+  synonyms:
+  - -binary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not show oevrlaps off the 5' end of the A read
+  synonyms:
+  - -no5p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not show overlaps off the 3' end of the A read
+  synonyms:
+  - -no3p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not show overlaps that contain some other B read
+  synonyms:
+  - -nocontainer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not show overlaps that are contained in some other B read
+  synonyms:
+  - -nocontained
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not show overlaps where the A read ID is more than the B read ID
+  synonyms:
+  - -noredundant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[-b]         display only overlaps that are to these other B read
+    IDs'
+  synonyms:
+  - -query
+  args: !SimpleFlagArg
+    name: a
+  optional: true
+- !Flag
+  description: '[-max]     display only overlaps less than f fraction error'
+  synonyms:
+  - -erate
+  args: !SimpleFlagArg
+    name: min
+  optional: true
+- !Flag
+  description: '[-max]    display only overlaps between min and max bases long'
+  synonyms:
+  - -length
+  args: !SimpleFlagArg
+    name: min
+  optional: true
+- !Flag
+  description: annotate a picture with labels from bogart asm.best.edges output
+  synonyms:
+  - -bogart
+  args: !SimpleFlagArg
+    name: asm.best
+  optional: true
+- !Flag
+  description: do not show overlaps involving contained reads
+  synonyms:
+  - -nobogartcontained
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: not show overlaps involving coverage gap edges
+  synonyms:
+  - -nobogartcoveragegap
+  args: !SimpleFlagArg
+    name: do
+  optional: true
+- !Flag
+  description: do not show overlaps involving lopsided edges
+  synonyms:
+  - -nobogartlopsided
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not show iverlaps involving spur reads
+  synonyms:
+  - -nobogartspur
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: ovStoreDump -S seqStore -O ovlStore ...\n  -S seqStore        \
+  \  mandatory path to a sequence store\n  -O ovlStore          mandatory path to\
+  \ an overlap store\n\nWHAT TO DUMP:\n  Select what data to dump.  All take an optional\
+  \ read ID, or inclusive\n  range of read IDs, to dump.  Dumps are to stdout.\n\n\
+  \  -overlaps [b[-e]]    dump overlaps (default)\n  -picture  [b[-e]]    dump an\
+  \ ASCII picture of the overlaps relative to a read\n  -metadata [b[-3]]    tabular\
+  \ metadata, including the number of overlaps per read\n  -counts   [b[-e]]    the\
+  \ number of overlaps per read\n  -eratelen [b[-e]]    a histogram of overlap length\
+  \ vs error rate\n\n  -prefix name         * for -eratelen, write histogram to name.dat\n\
+  \                         and also output a gnuplot script to name.gp\n        \
+  \               * for -binary, mandatory, write overlaps to name.ovb\n\nWHICH READ\
+  \ VERSION TO USE:\n\n  -raw                 uncorrected raw reads\n  -obt      \
+  \           corrected reads\n  -utg                 trimmed reads\n\nFORMAT OF -overlaps\
+  \ OUTPUT\n  NOTE!  Overlap type flags are only reported with -unaligned.\n\n  -coords\
+  \              as coordinates on each read (default)\n  -hangs               as\
+  \ dovetail hangs\n  -unaligned           as unaligned regions on each read\n  -paf\
+  \                 as miniasm Pairwise mApping Format\n  -gfa                 as\
+  \ Graphical Fragment Assembly format\n  -binary              as an overlapper output\
+  \ file (needs -prefix)\n\nOVERLAP FILTERING\n\n  -no5p                do not show\
+  \ oevrlaps off the 5' end of the A read\n  -no3p                do not show overlaps\
+  \ off the 3' end of the A read\n  -nocontainer         do not show overlaps that\
+  \ contain some other B read\n  -nocontained         do not show overlaps that are\
+  \ contained in some other B read\n  -noredundant         do not show overlaps where\
+  \ the A read ID is more than the B read ID\n  -query a[-b]         display only\
+  \ overlaps that are to these other B read IDs\n  -erate min[-max]     display only\
+  \ overlaps less than f fraction error\n  -length min[-max]    display only overlaps\
+  \ between min and max bases long\n\n  -bogart asm.best     annotate a picture with\
+  \ labels from bogart asm.best.edges output\n\n  -nobogartcontained   do not show\
+  \ overlaps involving contained reads\n  -nobogartcoveragegap do not show overlaps\
+  \ involving coverage gap edges\n  -nobogartlopsided    do not show overlaps involving\
+  \ lopsided edges\n  -nobogartspur        do not show iverlaps involving spur reads\n\
+  \novStoreDump: unknown option '--help'.\nERROR: no input seqStore (-S) supplied.\n\
+  ERROR: no input ovlStore (-O) supplied.\n"
+generated_using:
+- --help

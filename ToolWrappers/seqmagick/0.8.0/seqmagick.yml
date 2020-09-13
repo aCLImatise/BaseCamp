@@ -1,0 +1,1514 @@
+&id001 !Command
+command:
+- seqmagick
+positional: []
+named:
+- !Flag
+  description: Be more verbose. Specify -vv or -vvv for even more
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Suppress output
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands:
+- !Command
+  command:
+  - seqmagick
+  - info
+  positional:
+  - !Positional
+    description: 'optional arguments:'
+    position: 0
+    name: sequence_files
+    optional: false
+  named:
+  - !Flag
+    description: Input format. Overrides extension for all input files
+    synonyms:
+    - --input-format
+    args: !SimpleFlagArg
+      name: INPUT_FORMAT
+    optional: true
+  - !Flag
+    description: 'Output destination. Default: STDOUT'
+    synonyms:
+    - --out-file
+    args: !SimpleFlagArg
+      name: destination_file
+    optional: true
+  - !Flag
+    description: "Specify output format as tab-delimited, CSV or aligned\nin a borderless\
+      \ table. Default is tab-delimited if the\noutput is directed to a file, aligned\
+      \ if output to the\nconsole."
+    synonyms:
+    - --format
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? tab
+        ? csv
+        ? align
+    optional: true
+  - !Flag
+    description: Number of threads (CPUs). [1]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: seqmagick info [-h] [--input-format INPUT_FORMAT]\n         \
+    \             [--out-file destination_file] [--format {tab,csv,align}]\n     \
+    \                 [--threads THREADS]\n                      sequence_files [sequence_files\
+    \ ...]\n\nInfo action\n\npositional arguments:\n  sequence_files\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --input-format INPUT_FORMAT\n\
+    \                        Input format. Overrides extension for all input files\n\
+    \  --out-file destination_file\n                        Output destination. Default:\
+    \ STDOUT\n  --format {tab,csv,align}\n                        Specify output format\
+    \ as tab-delimited, CSV or aligned\n                        in a borderless table.\
+    \ Default is tab-delimited if the\n                        output is directed\
+    \ to a file, aligned if output to the\n                        console.\n  --threads\
+    \ THREADS     Number of threads (CPUs). [1]\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - seqmagick
+  - help
+  positional:
+  - !Positional
+    description: 'optional arguments:'
+    position: 0
+    name: action
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: seqmagick help [-h] action\n\npositional arguments:\n  action\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n"
+  generated_using: *id002
+- !Command
+  command:
+  - seqmagick
+  - extract-ids
+  positional: []
+  named:
+  - !Flag
+    description: Destination file
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: Input format for sequence file
+    synonyms:
+    - --input-format
+    args: !SimpleFlagArg
+      name: INPUT_FORMAT
+    optional: true
+  - !Flag
+    description: "Include the sequence description in output [default:\nFalse]\n"
+    synonyms:
+    - -d
+    - --include-description
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: seqmagick extract-ids [-h] [-o OUTPUT_FILE]\n               \
+    \              [--input-format INPUT_FORMAT] [-d]\n                          \
+    \   sequence_file\n\nExtract the sequence IDs from a file\n\npositional arguments:\n\
+    \  sequence_file         Sequence file\n\noptional arguments:\n  -h, --help  \
+    \          show this help message and exit\n  -o OUTPUT_FILE, --output-file OUTPUT_FILE\n\
+    \                        Destination file\n  --input-format INPUT_FORMAT\n   \
+    \                     Input format for sequence file\n  -d, --include-description\n\
+    \                        Include the sequence description in output [default:\n\
+    \                        False]\n"
+  generated_using: *id002
+- !Command
+  command:
+  - seqmagick
+  - mogrify
+  positional:
+  - !Positional
+    description: Sequence file(s) to mogrify
+    position: 0
+    name: sequence_file
+    optional: false
+  named:
+  - !Flag
+    description: Input alphabet. Required for writing NEXUS.
+    synonyms:
+    - --alphabet
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? rna
+        ? rna-ambiguous
+        ? dna
+        ? dna-ambiguous
+        ? protein
+    optional: true
+  - !Flag
+    description: "Adjust line wrap for sequence strings. When N is 0,\nall line breaks\
+      \ are removed. Only fasta files are\nsupported for the output format."
+    synonyms:
+    - --line-wrap
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Perform sorting by length or name, ascending or\ndescending. ASCII\
+      \ sorting is performed for names"
+    synonyms:
+    - --sort
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? length-asc
+        ? name-asc
+        ? name-desc
+        ? length-desc
+    optional: true
+  - !Flag
+    description: "/path/to/module.py:function_name[:parameter]\nSpecify a custom function\
+      \ to apply to the input\nsequences, specified as\n/path/to/file.py:function_name.\
+      \ Function should accept\nan iterable of Bio.SeqRecord objects, and yield\n\
+      SeqRecords. If the parameter is specified, it will be\npassed as a string as\
+      \ the second argument to the\nfunction. Specify more than one to chain."
+    synonyms:
+    - --apply-function
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ":end[,start2:end2]\nKeep only the residues within the 1-indexed\
+      \ start and\nend positions specified, : separated. Includes last\nitem. Start\
+      \ or end can be left unspecified to indicate\nstart/end of sequence. A negative\
+      \ start may be\nprovided to indicate an offset from the end of the\nsequence.\
+      \ Note that to prevent negative numbers being\ninterpreted as flags, this should\
+      \ be written with an\nequals sign between `--cut` and the argument, e.g.:\n\
+      `--cut=-10:`"
+    synonyms:
+    - --cut
+    args: !SimpleFlagArg
+      name: start
+    optional: true
+  - !Flag
+    description: "Apply --cut relative to the indexes of non-gap\nresidues in sequence\
+      \ identified by ID"
+    synonyms:
+    - --relative-to
+    args: !SimpleFlagArg
+      name: ID
+    optional: true
+  - !Flag
+    description: ":end[,start2:end2]\nRemove the residues at the specified indices.\
+      \ Same\nformat as `--cut`."
+    synonyms:
+    - --drop
+    args: !SimpleFlagArg
+      name: start
+    optional: true
+  - !Flag
+    description: "Replace any of the characters \"?.:~\" with a \"-\" for\nall sequences"
+    synonyms:
+    - --dash-gap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Translate the sequences to lower case
+    synonyms:
+    - --lower
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ":end1[,start2:end2]\nReplace residues in 1-indexed slice with gap-\n\
+      characters. If --relative-to is also specified,\ncoordinates are relative to\
+      \ the sequence ID provided."
+    synonyms:
+    - --mask
+    args: !SimpleFlagArg
+      name: start1
+    optional: true
+  - !Flag
+    description: Reverse the order of sites in sequences
+    synonyms:
+    - --reverse
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Convert sequences into reverse complements
+    synonyms:
+    - --reverse-complement
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Remove any gaps that are present in the same position\nacross all\
+      \ sequences in an alignment (equivalent to\n--squeeze-threshold=1.0)"
+    synonyms:
+    - --squeeze
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Trim columns from an alignment which have gaps in\nleast the specified\
+      \ proportion of sequences."
+    synonyms:
+    - --squeeze-threshold
+    args: !SimpleFlagArg
+      name: PROP
+    optional: true
+  - !Flag
+    description: "Transcription and back transcription for generic DNA\nand RNA. Source\
+      \ sequences must be the correct alphabet\nor this action will likely produce\
+      \ incorrect results."
+    synonyms:
+    - --transcribe
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? rna2dna
+        ? dna2rna
+    optional: true
+  - !Flag
+    description: "Translate from generic DNA/RNA to proteins. Options\nwith \"stop\"\
+      \ suffix will NOT translate through stop\ncodons . Source sequences must be\
+      \ the correct alphabet\nor this action will likely produce incorrect results."
+    synonyms:
+    - --translate
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? dna2protein
+        ? rna2proteinstop
+        ? rna2protein
+        ? dna2proteinstop
+    optional: true
+  - !Flag
+    description: Remove gaps in the sequence alignment
+    synonyms:
+    - --ungap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Translate the sequences to upper case
+    synonyms:
+    - --upper
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Remove any duplicate sequences by sequence content,\nkeep the first\
+      \ instance seen"
+    synonyms:
+    - --deduplicate-sequences
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write all of the deduplicated sequences to a file
+    synonyms:
+    - --deduplicated-sequences-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: "Remove any duplicate sequences by ID, keep the first\ninstance seen"
+    synonyms:
+    - --deduplicate-taxa
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Filter sequences, removing those sequence IDs in the\nspecified\
+      \ file"
+    synonyms:
+    - --exclude-from-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: "Filter sequences, keeping only those sequence IDs in\nthe specified\
+      \ file"
+    synonyms:
+    - --include-from-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: "Trim down to top N sequences. With the leading `-',\nprint all but\
+      \ the last N sequences."
+    synonyms:
+    - --head
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Discard any sequences beyond the specified maximum\nlength. This\
+      \ operation occurs *before* all length-\nchanging options such as cut and squeeze."
+    synonyms:
+    - --max-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Discard any sequences less than the specified minimum\nlength. This\
+      \ operation occurs *before* cut and\nsqueeze."
+    synonyms:
+    - --min-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Discard any sequences less than the specified minimum\nlength, excluding\
+      \ gaps. This operation occurs *before*\ncut and squeeze."
+    synonyms:
+    - --min-ungapped-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Filter the sequences by regular expression in ID or\ndescription"
+    synonyms:
+    - --pattern-include
+    args: !SimpleFlagArg
+      name: REGEX
+    optional: true
+  - !Flag
+    description: "Filter the sequences by regular expression in ID or\ndescription"
+    synonyms:
+    - --pattern-exclude
+    args: !SimpleFlagArg
+      name: REGEX
+    optional: true
+  - !Flag
+    description: Prune sequences containing only gaps ('-')
+    synonyms:
+    - --prune-empty
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Select a random sampling of sequences
+    synonyms:
+    - --sample
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Set random seed for sampling of sequences
+    synonyms:
+    - --sample-seed
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Filter the sequences by regular expression in sequence
+    synonyms:
+    - --seq-pattern-include
+    args: !SimpleFlagArg
+      name: REGEX
+    optional: true
+  - !Flag
+    description: Filter the sequences by regular expression in sequence
+    synonyms:
+    - --seq-pattern-exclude
+    args: !SimpleFlagArg
+      name: REGEX
+    optional: true
+  - !Flag
+    description: "Trim down to bottom N sequences. Use +N to output\nsequences starting\
+      \ with the Nth."
+    synonyms:
+    - --tail
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Take only the first whitespace-delimited word as the\nname of the\
+      \ sequence"
+    synonyms:
+    - --first-name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Append a suffix to all IDs.
+    synonyms:
+    - --name-suffix
+    args: !SimpleFlagArg
+      name: SUFFIX
+    optional: true
+  - !Flag
+    description: Insert a prefix for all IDs.
+    synonyms:
+    - --name-prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: "replace_pattern\nReplace regex pattern \"search_pattern\" with\n\
+      \"replace_pattern\" in sequence ID and description"
+    synonyms:
+    - --pattern-replace
+    args: !SimpleFlagArg
+      name: search_pattern
+    optional: true
+  - !Flag
+    description: Strip ranges from sequences IDs, matching </x-y>
+    synonyms:
+    - --strip-range
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Input file format (default: determine from extension)'
+    synonyms:
+    - --input-format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  - !Flag
+    description: 'Output file format (default: determine from extension)'
+    synonyms:
+    - --output-format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: seqmagick mogrify [-h] [--line-wrap N]\n                    \
+    \     [--sort {length-asc,length-desc,name-asc,name-desc}]\n                 \
+    \        [--apply-function /path/to/module.py:function_name[:parameter]]\n   \
+    \                      [--cut start:end[,start2:end2]] [--relative-to ID]\n  \
+    \                       [--drop start:end[,start2:end2]] [--dash-gap]\n      \
+    \                   [--lower] [--mask start1:end1[,start2:end2]]\n           \
+    \              [--reverse] [--reverse-complement] [--squeeze]\n              \
+    \           [--squeeze-threshold PROP]\n                         [--transcribe\
+    \ {dna2rna,rna2dna}]\n                         [--translate {dna2protein,rna2protein,dna2proteinstop,rna2proteinstop}]\n\
+    \                         [--ungap] [--upper] [--deduplicate-sequences]\n    \
+    \                     [--deduplicated-sequences-file FILE]\n                 \
+    \        [--deduplicate-taxa] [--exclude-from-file FILE]\n                   \
+    \      [--include-from-file FILE] [--head N]\n                         [--max-length\
+    \ N] [--min-length N]\n                         [--min-ungapped-length N] [--pattern-include\
+    \ REGEX]\n                         [--pattern-exclude REGEX] [--prune-empty]\n\
+    \                         [--sample N] [--sample-seed N]\n                   \
+    \      [--seq-pattern-include REGEX]\n                         [--seq-pattern-exclude\
+    \ REGEX] [--tail N]\n                         [--first-name] [--name-suffix SUFFIX]\n\
+    \                         [--name-prefix PREFIX]\n                         [--pattern-replace\
+    \ search_pattern replace_pattern]\n                         [--strip-range] [--input-format\
+    \ FORMAT]\n                         [--output-format FORMAT]\n               \
+    \          [--alphabet {dna,dna-ambiguous,protein,rna,rna-ambiguous}]\n      \
+    \                   sequence_file [sequence_file ...]\n\nModify sequence file(s)\
+    \ in place.\n\npositional arguments:\n  sequence_file         Sequence file(s)\
+    \ to mogrify\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --alphabet {dna,dna-ambiguous,protein,rna,rna-ambiguous}\n     \
+    \                   Input alphabet. Required for writing NEXUS.\n\nSequence File\
+    \ Modification:\n  --line-wrap N         Adjust line wrap for sequence strings.\
+    \ When N is 0,\n                        all line breaks are removed. Only fasta\
+    \ files are\n                        supported for the output format.\n  --sort\
+    \ {length-asc,length-desc,name-asc,name-desc}\n                        Perform\
+    \ sorting by length or name, ascending or\n                        descending.\
+    \ ASCII sorting is performed for names\n\nSequence Modificaton:\n  --apply-function\
+    \ /path/to/module.py:function_name[:parameter]\n                        Specify\
+    \ a custom function to apply to the input\n                        sequences,\
+    \ specified as\n                        /path/to/file.py:function_name. Function\
+    \ should accept\n                        an iterable of Bio.SeqRecord objects,\
+    \ and yield\n                        SeqRecords. If the parameter is specified,\
+    \ it will be\n                        passed as a string as the second argument\
+    \ to the\n                        function. Specify more than one to chain.\n\
+    \  --cut start:end[,start2:end2]\n                        Keep only the residues\
+    \ within the 1-indexed start and\n                        end positions specified,\
+    \ : separated. Includes last\n                        item. Start or end can be\
+    \ left unspecified to indicate\n                        start/end of sequence.\
+    \ A negative start may be\n                        provided to indicate an offset\
+    \ from the end of the\n                        sequence. Note that to prevent\
+    \ negative numbers being\n                        interpreted as flags, this should\
+    \ be written with an\n                        equals sign between `--cut` and\
+    \ the argument, e.g.:\n                        `--cut=-10:`\n  --relative-to ID\
+    \      Apply --cut relative to the indexes of non-gap\n                      \
+    \  residues in sequence identified by ID\n  --drop start:end[,start2:end2]\n \
+    \                       Remove the residues at the specified indices. Same\n \
+    \                       format as `--cut`.\n  --dash-gap            Replace any\
+    \ of the characters \"?.:~\" with a \"-\" for\n                        all sequences\n\
+    \  --lower               Translate the sequences to lower case\n  --mask start1:end1[,start2:end2]\n\
+    \                        Replace residues in 1-indexed slice with gap-\n     \
+    \                   characters. If --relative-to is also specified,\n        \
+    \                coordinates are relative to the sequence ID provided.\n  --reverse\
+    \             Reverse the order of sites in sequences\n  --reverse-complement\
+    \  Convert sequences into reverse complements\n  --squeeze             Remove\
+    \ any gaps that are present in the same position\n                        across\
+    \ all sequences in an alignment (equivalent to\n                        --squeeze-threshold=1.0)\n\
+    \  --squeeze-threshold PROP\n                        Trim columns from an alignment\
+    \ which have gaps in\n                        least the specified proportion of\
+    \ sequences.\n  --transcribe {dna2rna,rna2dna}\n                        Transcription\
+    \ and back transcription for generic DNA\n                        and RNA. Source\
+    \ sequences must be the correct alphabet\n                        or this action\
+    \ will likely produce incorrect results.\n  --translate {dna2protein,rna2protein,dna2proteinstop,rna2proteinstop}\n\
+    \                        Translate from generic DNA/RNA to proteins. Options\n\
+    \                        with \"stop\" suffix will NOT translate through stop\n\
+    \                        codons . Source sequences must be the correct alphabet\n\
+    \                        or this action will likely produce incorrect results.\n\
+    \  --ungap               Remove gaps in the sequence alignment\n  --upper    \
+    \           Translate the sequences to upper case\n\nRecord Selection:\n  --deduplicate-sequences\n\
+    \                        Remove any duplicate sequences by sequence content,\n\
+    \                        keep the first instance seen\n  --deduplicated-sequences-file\
+    \ FILE\n                        Write all of the deduplicated sequences to a file\n\
+    \  --deduplicate-taxa    Remove any duplicate sequences by ID, keep the first\n\
+    \                        instance seen\n  --exclude-from-file FILE\n         \
+    \               Filter sequences, removing those sequence IDs in the\n       \
+    \                 specified file\n  --include-from-file FILE\n               \
+    \         Filter sequences, keeping only those sequence IDs in\n             \
+    \           the specified file\n  --head N              Trim down to top N sequences.\
+    \ With the leading `-',\n                        print all but the last N sequences.\n\
+    \  --max-length N        Discard any sequences beyond the specified maximum\n\
+    \                        length. This operation occurs *before* all length-\n\
+    \                        changing options such as cut and squeeze.\n  --min-length\
+    \ N        Discard any sequences less than the specified minimum\n           \
+    \             length. This operation occurs *before* cut and\n               \
+    \         squeeze.\n  --min-ungapped-length N\n                        Discard\
+    \ any sequences less than the specified minimum\n                        length,\
+    \ excluding gaps. This operation occurs *before*\n                        cut\
+    \ and squeeze.\n  --pattern-include REGEX\n                        Filter the\
+    \ sequences by regular expression in ID or\n                        description\n\
+    \  --pattern-exclude REGEX\n                        Filter the sequences by regular\
+    \ expression in ID or\n                        description\n  --prune-empty  \
+    \       Prune sequences containing only gaps ('-')\n  --sample N            Select\
+    \ a random sampling of sequences\n  --sample-seed N       Set random seed for\
+    \ sampling of sequences\n  --seq-pattern-include REGEX\n                     \
+    \   Filter the sequences by regular expression in sequence\n  --seq-pattern-exclude\
+    \ REGEX\n                        Filter the sequences by regular expression in\
+    \ sequence\n  --tail N              Trim down to bottom N sequences. Use +N to\
+    \ output\n                        sequences starting with the Nth.\n\nSequence\
+    \ ID Modification:\n  --first-name          Take only the first whitespace-delimited\
+    \ word as the\n                        name of the sequence\n  --name-suffix SUFFIX\
+    \  Append a suffix to all IDs.\n  --name-prefix PREFIX  Insert a prefix for all\
+    \ IDs.\n  --pattern-replace search_pattern replace_pattern\n                 \
+    \       Replace regex pattern \"search_pattern\" with\n                      \
+    \  \"replace_pattern\" in sequence ID and description\n  --strip-range       \
+    \  Strip ranges from sequences IDs, matching </x-y>\n\nFormat Options:\n  --input-format\
+    \ FORMAT\n                        Input file format (default: determine from extension)\n\
+    \  --output-format FORMAT\n                        Output file format (default:\
+    \ determine from extension)\n\nFilters using regular expressions are case-sensitive\
+    \ by default. Append \"(?i)\"\nto a pattern to make it case-insensitive.\n"
+  generated_using: *id002
+- &id003 !Command
+  command:
+  - seqmagick
+  - primer-trim
+  positional: []
+  named:
+  - !Flag
+    description: "Reverse primer is written as the reverse complement of\nthe top\
+      \ strand (default: False)"
+    synonyms:
+    - --reverse-is-revcomp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Alignment format (default: detect from extension'
+    synonyms:
+    - --source-format
+    args: !SimpleFlagArg
+      name: SOURCE_FORMAT
+    optional: true
+  - !Flag
+    description: 'Alignment format (default: detect from extension'
+    synonyms:
+    - --output-format
+    args: !SimpleFlagArg
+      name: OUTPUT_FORMAT
+    optional: true
+  - !Flag
+    description: 'Include the primers in the output (default: False)'
+    synonyms:
+    - --include-primers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Maximum Hamming distance between primer and alignment\nsite (default:\
+      \ 1). IUPAC ambiguous bases in the primer\nmatching unambiguous bases in the\
+      \ alignment are not\npenalized"
+    synonyms:
+    - --max-hamming-distance
+    args: !SimpleFlagArg
+      name: MAX_HAMMING_DISTANCE
+    optional: true
+  - !Flag
+    description: "Action to take. Options are trim (trim to the region\ndefined by\
+      \ the two primers, decreasing the width of\nthe alignment), or isolate (convert\
+      \ all characters\noutside the primer-defined area to gaps). default:\ntrim\n"
+    synonyms:
+    - --prune-action
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? isolate
+        ? trim
+    optional: true
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - seqmagick
+    - primer-trim
+    - forward_primer
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: seqmagick
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: primer-trim
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --reverse-is-revcomp
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "<frozen importlib._bootstrap>:219: RuntimeWarning: This module has\
+      \ been deprecated. We encourage users to switch to alternative libraries implementing\
+      \ a trie data structure, for example pygtrie.\n/usr/local/lib/python3.8/site-packages/Bio/triefind.py:32:\
+      \ BiopythonDeprecationWarning: This module has been deprecated. We encourage\
+      \ users to switch to alternative libraries implementing a trie data structure,\
+      \ for example pygtrie.\n  warnings.warn(\"This module has been deprecated. We\
+      \ encourage users to switch \"\nusage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n\
+      \                             [--source-format SOURCE_FORMAT]\n            \
+      \                 [--output-format OUTPUT_FORMAT]\n                        \
+      \     [--include-primers]\n                             [--max-hamming-distance\
+      \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
+      \                             source_file output_file forward_primer\n     \
+      \                        reverse_primer\nseqmagick primer-trim: error: argument\
+      \ source_file: can't open 'forward_primer': [Errno 2] No such file or directory:\
+      \ 'forward_primer'\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - seqmagick
+    - primer-trim
+    - source_file
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: seqmagick
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: primer-trim
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --reverse-is-revcomp
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "<frozen importlib._bootstrap>:219: RuntimeWarning: This module has\
+      \ been deprecated. We encourage users to switch to alternative libraries implementing\
+      \ a trie data structure, for example pygtrie.\n/usr/local/lib/python3.8/site-packages/Bio/triefind.py:32:\
+      \ BiopythonDeprecationWarning: This module has been deprecated. We encourage\
+      \ users to switch to alternative libraries implementing a trie data structure,\
+      \ for example pygtrie.\n  warnings.warn(\"This module has been deprecated. We\
+      \ encourage users to switch \"\nusage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n\
+      \                             [--source-format SOURCE_FORMAT]\n            \
+      \                 [--output-format OUTPUT_FORMAT]\n                        \
+      \     [--include-primers]\n                             [--max-hamming-distance\
+      \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
+      \                             source_file output_file forward_primer\n     \
+      \                        reverse_primer\nseqmagick primer-trim: error: argument\
+      \ source_file: can't open 'source_file': [Errno 2] No such file or directory:\
+      \ 'source_file'\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - seqmagick
+    - primer-trim
+    - output_file
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: seqmagick
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: primer-trim
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --reverse-is-revcomp
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "<frozen importlib._bootstrap>:219: RuntimeWarning: This module has\
+      \ been deprecated. We encourage users to switch to alternative libraries implementing\
+      \ a trie data structure, for example pygtrie.\n/usr/local/lib/python3.8/site-packages/Bio/triefind.py:32:\
+      \ BiopythonDeprecationWarning: This module has been deprecated. We encourage\
+      \ users to switch to alternative libraries implementing a trie data structure,\
+      \ for example pygtrie.\n  warnings.warn(\"This module has been deprecated. We\
+      \ encourage users to switch \"\nusage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n\
+      \                             [--source-format SOURCE_FORMAT]\n            \
+      \                 [--output-format OUTPUT_FORMAT]\n                        \
+      \     [--include-primers]\n                             [--max-hamming-distance\
+      \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
+      \                             source_file output_file forward_primer\n     \
+      \                        reverse_primer\nseqmagick primer-trim: error: argument\
+      \ source_file: can't open 'output_file': [Errno 2] No such file or directory:\
+      \ 'output_file'\n"
+    generated_using: *id002
+  - !Command
+    command:
+    - seqmagick
+    - primer-trim
+    - reverse_primer
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: seqmagick
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: primer-trim
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --reverse-is-revcomp
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id003
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "<frozen importlib._bootstrap>:219: RuntimeWarning: This module has\
+      \ been deprecated. We encourage users to switch to alternative libraries implementing\
+      \ a trie data structure, for example pygtrie.\n/usr/local/lib/python3.8/site-packages/Bio/triefind.py:32:\
+      \ BiopythonDeprecationWarning: This module has been deprecated. We encourage\
+      \ users to switch to alternative libraries implementing a trie data structure,\
+      \ for example pygtrie.\n  warnings.warn(\"This module has been deprecated. We\
+      \ encourage users to switch \"\nusage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n\
+      \                             [--source-format SOURCE_FORMAT]\n            \
+      \                 [--output-format OUTPUT_FORMAT]\n                        \
+      \     [--include-primers]\n                             [--max-hamming-distance\
+      \ MAX_HAMMING_DISTANCE]\n                             [--prune-action {trim,isolate}]\n\
+      \                             source_file output_file forward_primer\n     \
+      \                        reverse_primer\nseqmagick primer-trim: error: argument\
+      \ source_file: can't open 'reverse_primer': [Errno 2] No such file or directory:\
+      \ 'reverse_primer'\n"
+    generated_using: *id002
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: seqmagick primer-trim [-h] [--reverse-is-revcomp]\n         \
+    \                    [--source-format SOURCE_FORMAT]\n                       \
+    \      [--output-format OUTPUT_FORMAT]\n                             [--include-primers]\n\
+    \                             [--max-hamming-distance MAX_HAMMING_DISTANCE]\n\
+    \                             [--prune-action {trim,isolate}]\n              \
+    \               source_file output_file forward_primer\n                     \
+    \        reverse_primer\n\nFind a primer sequence in a gapped alignment, trim\
+    \ to amplicon\n\npositional arguments:\n  source_file           Source alignment\
+    \ file\n  output_file           Destination trimmed file\n  forward_primer   \
+    \     The forward primer used\n  reverse_primer        The reverse primer used.\
+    \ By default the reverse primer\n                        is assumed to be a subsequence\
+    \ of the top strand (that\n                        is, the reverse complement\
+    \ of an actual downstream PCR\n                        primer). Use --reverse-is-revcomp\
+    \ if this is not the\n                        case.\n\noptional arguments:\n \
+    \ -h, --help            show this help message and exit\n  --reverse-is-revcomp\
+    \  Reverse primer is written as the reverse complement of\n                  \
+    \      the top strand (default: False)\n  --source-format SOURCE_FORMAT\n    \
+    \                    Alignment format (default: detect from extension\n  --output-format\
+    \ OUTPUT_FORMAT\n                        Alignment format (default: detect from\
+    \ extension\n  --include-primers     Include the primers in the output (default:\
+    \ False)\n  --max-hamming-distance MAX_HAMMING_DISTANCE\n                    \
+    \    Maximum Hamming distance between primer and alignment\n                 \
+    \       site (default: 1). IUPAC ambiguous bases in the primer\n             \
+    \           matching unambiguous bases in the alignment are not\n            \
+    \            penalized\n  --prune-action {trim,isolate}\n                    \
+    \    Action to take. Options are trim (trim to the region\n                  \
+    \      defined by the two primers, decreasing the width of\n                 \
+    \       the alignment), or isolate (convert all characters\n                 \
+    \       outside the primer-defined area to gaps). default:\n                 \
+    \       trim\n"
+  generated_using: *id002
+- !Command
+  command:
+  - seqmagick
+  - convert
+  positional:
+  - !Positional
+    description: Input sequence file
+    position: 0
+    name: source_file
+    optional: false
+  - !Positional
+    description: Output file
+    position: 1
+    name: dest_file
+    optional: false
+  named:
+  - !Flag
+    description: Input alphabet. Required for writing NEXUS.
+    synonyms:
+    - --alphabet
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? rna
+        ? rna-ambiguous
+        ? dna
+        ? dna-ambiguous
+        ? protein
+    optional: true
+  - !Flag
+    description: "Adjust line wrap for sequence strings. When N is 0,\nall line breaks\
+      \ are removed. Only fasta files are\nsupported for the output format."
+    synonyms:
+    - --line-wrap
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Perform sorting by length or name, ascending or\ndescending. ASCII\
+      \ sorting is performed for names"
+    synonyms:
+    - --sort
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? length-asc
+        ? name-asc
+        ? name-desc
+        ? length-desc
+    optional: true
+  - !Flag
+    description: "/path/to/module.py:function_name[:parameter]\nSpecify a custom function\
+      \ to apply to the input\nsequences, specified as\n/path/to/file.py:function_name.\
+      \ Function should accept\nan iterable of Bio.SeqRecord objects, and yield\n\
+      SeqRecords. If the parameter is specified, it will be\npassed as a string as\
+      \ the second argument to the\nfunction. Specify more than one to chain."
+    synonyms:
+    - --apply-function
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ":end[,start2:end2]\nKeep only the residues within the 1-indexed\
+      \ start and\nend positions specified, : separated. Includes last\nitem. Start\
+      \ or end can be left unspecified to indicate\nstart/end of sequence. A negative\
+      \ start may be\nprovided to indicate an offset from the end of the\nsequence.\
+      \ Note that to prevent negative numbers being\ninterpreted as flags, this should\
+      \ be written with an\nequals sign between `--cut` and the argument, e.g.:\n\
+      `--cut=-10:`"
+    synonyms:
+    - --cut
+    args: !SimpleFlagArg
+      name: start
+    optional: true
+  - !Flag
+    description: "Apply --cut relative to the indexes of non-gap\nresidues in sequence\
+      \ identified by ID"
+    synonyms:
+    - --relative-to
+    args: !SimpleFlagArg
+      name: ID
+    optional: true
+  - !Flag
+    description: ":end[,start2:end2]\nRemove the residues at the specified indices.\
+      \ Same\nformat as `--cut`."
+    synonyms:
+    - --drop
+    args: !SimpleFlagArg
+      name: start
+    optional: true
+  - !Flag
+    description: "Replace any of the characters \"?.:~\" with a \"-\" for\nall sequences"
+    synonyms:
+    - --dash-gap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Translate the sequences to lower case
+    synonyms:
+    - --lower
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ":end1[,start2:end2]\nReplace residues in 1-indexed slice with gap-\n\
+      characters. If --relative-to is also specified,\ncoordinates are relative to\
+      \ the sequence ID provided."
+    synonyms:
+    - --mask
+    args: !SimpleFlagArg
+      name: start1
+    optional: true
+  - !Flag
+    description: Reverse the order of sites in sequences
+    synonyms:
+    - --reverse
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Convert sequences into reverse complements
+    synonyms:
+    - --reverse-complement
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Remove any gaps that are present in the same position\nacross all\
+      \ sequences in an alignment (equivalent to\n--squeeze-threshold=1.0)"
+    synonyms:
+    - --squeeze
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Trim columns from an alignment which have gaps in\nleast the specified\
+      \ proportion of sequences."
+    synonyms:
+    - --squeeze-threshold
+    args: !SimpleFlagArg
+      name: PROP
+    optional: true
+  - !Flag
+    description: "Transcription and back transcription for generic DNA\nand RNA. Source\
+      \ sequences must be the correct alphabet\nor this action will likely produce\
+      \ incorrect results."
+    synonyms:
+    - --transcribe
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? rna2dna
+        ? dna2rna
+    optional: true
+  - !Flag
+    description: "Translate from generic DNA/RNA to proteins. Options\nwith \"stop\"\
+      \ suffix will NOT translate through stop\ncodons . Source sequences must be\
+      \ the correct alphabet\nor this action will likely produce incorrect results."
+    synonyms:
+    - --translate
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? dna2protein
+        ? rna2proteinstop
+        ? rna2protein
+        ? dna2proteinstop
+    optional: true
+  - !Flag
+    description: Remove gaps in the sequence alignment
+    synonyms:
+    - --ungap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Translate the sequences to upper case
+    synonyms:
+    - --upper
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Remove any duplicate sequences by sequence content,\nkeep the first\
+      \ instance seen"
+    synonyms:
+    - --deduplicate-sequences
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write all of the deduplicated sequences to a file
+    synonyms:
+    - --deduplicated-sequences-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: "Remove any duplicate sequences by ID, keep the first\ninstance seen"
+    synonyms:
+    - --deduplicate-taxa
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Filter sequences, removing those sequence IDs in the\nspecified\
+      \ file"
+    synonyms:
+    - --exclude-from-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: "Filter sequences, keeping only those sequence IDs in\nthe specified\
+      \ file"
+    synonyms:
+    - --include-from-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: "Trim down to top N sequences. With the leading `-',\nprint all but\
+      \ the last N sequences."
+    synonyms:
+    - --head
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Discard any sequences beyond the specified maximum\nlength. This\
+      \ operation occurs *before* all length-\nchanging options such as cut and squeeze."
+    synonyms:
+    - --max-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Discard any sequences less than the specified minimum\nlength. This\
+      \ operation occurs *before* cut and\nsqueeze."
+    synonyms:
+    - --min-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Discard any sequences less than the specified minimum\nlength, excluding\
+      \ gaps. This operation occurs *before*\ncut and squeeze."
+    synonyms:
+    - --min-ungapped-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Filter the sequences by regular expression in ID or\ndescription"
+    synonyms:
+    - --pattern-include
+    args: !SimpleFlagArg
+      name: REGEX
+    optional: true
+  - !Flag
+    description: "Filter the sequences by regular expression in ID or\ndescription"
+    synonyms:
+    - --pattern-exclude
+    args: !SimpleFlagArg
+      name: REGEX
+    optional: true
+  - !Flag
+    description: Prune sequences containing only gaps ('-')
+    synonyms:
+    - --prune-empty
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Select a random sampling of sequences
+    synonyms:
+    - --sample
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Set random seed for sampling of sequences
+    synonyms:
+    - --sample-seed
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Filter the sequences by regular expression in sequence
+    synonyms:
+    - --seq-pattern-include
+    args: !SimpleFlagArg
+      name: REGEX
+    optional: true
+  - !Flag
+    description: Filter the sequences by regular expression in sequence
+    synonyms:
+    - --seq-pattern-exclude
+    args: !SimpleFlagArg
+      name: REGEX
+    optional: true
+  - !Flag
+    description: "Trim down to bottom N sequences. Use +N to output\nsequences starting\
+      \ with the Nth."
+    synonyms:
+    - --tail
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "Take only the first whitespace-delimited word as the\nname of the\
+      \ sequence"
+    synonyms:
+    - --first-name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Append a suffix to all IDs.
+    synonyms:
+    - --name-suffix
+    args: !SimpleFlagArg
+      name: SUFFIX
+    optional: true
+  - !Flag
+    description: Insert a prefix for all IDs.
+    synonyms:
+    - --name-prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: "replace_pattern\nReplace regex pattern \"search_pattern\" with\n\
+      \"replace_pattern\" in sequence ID and description"
+    synonyms:
+    - --pattern-replace
+    args: !SimpleFlagArg
+      name: search_pattern
+    optional: true
+  - !Flag
+    description: Strip ranges from sequences IDs, matching </x-y>
+    synonyms:
+    - --strip-range
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Input file format (default: determine from extension)'
+    synonyms:
+    - --input-format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  - !Flag
+    description: 'Output file format (default: determine from extension)'
+    synonyms:
+    - --output-format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: seqmagick convert [-h] [--line-wrap N]\n                    \
+    \     [--sort {length-asc,length-desc,name-asc,name-desc}]\n                 \
+    \        [--apply-function /path/to/module.py:function_name[:parameter]]\n   \
+    \                      [--cut start:end[,start2:end2]] [--relative-to ID]\n  \
+    \                       [--drop start:end[,start2:end2]] [--dash-gap]\n      \
+    \                   [--lower] [--mask start1:end1[,start2:end2]]\n           \
+    \              [--reverse] [--reverse-complement] [--squeeze]\n              \
+    \           [--squeeze-threshold PROP]\n                         [--transcribe\
+    \ {dna2rna,rna2dna}]\n                         [--translate {dna2protein,rna2protein,dna2proteinstop,rna2proteinstop}]\n\
+    \                         [--ungap] [--upper] [--deduplicate-sequences]\n    \
+    \                     [--deduplicated-sequences-file FILE]\n                 \
+    \        [--deduplicate-taxa] [--exclude-from-file FILE]\n                   \
+    \      [--include-from-file FILE] [--head N]\n                         [--max-length\
+    \ N] [--min-length N]\n                         [--min-ungapped-length N] [--pattern-include\
+    \ REGEX]\n                         [--pattern-exclude REGEX] [--prune-empty]\n\
+    \                         [--sample N] [--sample-seed N]\n                   \
+    \      [--seq-pattern-include REGEX]\n                         [--seq-pattern-exclude\
+    \ REGEX] [--tail N]\n                         [--first-name] [--name-suffix SUFFIX]\n\
+    \                         [--name-prefix PREFIX]\n                         [--pattern-replace\
+    \ search_pattern replace_pattern]\n                         [--strip-range] [--input-format\
+    \ FORMAT]\n                         [--output-format FORMAT]\n               \
+    \          [--alphabet {dna,dna-ambiguous,protein,rna,rna-ambiguous}]\n      \
+    \                   source_file dest_file\n\nConvert between sequence formats\n\
+    \npositional arguments:\n  source_file           Input sequence file\n  dest_file\
+    \             Output file\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  --alphabet {dna,dna-ambiguous,protein,rna,rna-ambiguous}\n\
+    \                        Input alphabet. Required for writing NEXUS.\n\nSequence\
+    \ File Modification:\n  --line-wrap N         Adjust line wrap for sequence strings.\
+    \ When N is 0,\n                        all line breaks are removed. Only fasta\
+    \ files are\n                        supported for the output format.\n  --sort\
+    \ {length-asc,length-desc,name-asc,name-desc}\n                        Perform\
+    \ sorting by length or name, ascending or\n                        descending.\
+    \ ASCII sorting is performed for names\n\nSequence Modificaton:\n  --apply-function\
+    \ /path/to/module.py:function_name[:parameter]\n                        Specify\
+    \ a custom function to apply to the input\n                        sequences,\
+    \ specified as\n                        /path/to/file.py:function_name. Function\
+    \ should accept\n                        an iterable of Bio.SeqRecord objects,\
+    \ and yield\n                        SeqRecords. If the parameter is specified,\
+    \ it will be\n                        passed as a string as the second argument\
+    \ to the\n                        function. Specify more than one to chain.\n\
+    \  --cut start:end[,start2:end2]\n                        Keep only the residues\
+    \ within the 1-indexed start and\n                        end positions specified,\
+    \ : separated. Includes last\n                        item. Start or end can be\
+    \ left unspecified to indicate\n                        start/end of sequence.\
+    \ A negative start may be\n                        provided to indicate an offset\
+    \ from the end of the\n                        sequence. Note that to prevent\
+    \ negative numbers being\n                        interpreted as flags, this should\
+    \ be written with an\n                        equals sign between `--cut` and\
+    \ the argument, e.g.:\n                        `--cut=-10:`\n  --relative-to ID\
+    \      Apply --cut relative to the indexes of non-gap\n                      \
+    \  residues in sequence identified by ID\n  --drop start:end[,start2:end2]\n \
+    \                       Remove the residues at the specified indices. Same\n \
+    \                       format as `--cut`.\n  --dash-gap            Replace any\
+    \ of the characters \"?.:~\" with a \"-\" for\n                        all sequences\n\
+    \  --lower               Translate the sequences to lower case\n  --mask start1:end1[,start2:end2]\n\
+    \                        Replace residues in 1-indexed slice with gap-\n     \
+    \                   characters. If --relative-to is also specified,\n        \
+    \                coordinates are relative to the sequence ID provided.\n  --reverse\
+    \             Reverse the order of sites in sequences\n  --reverse-complement\
+    \  Convert sequences into reverse complements\n  --squeeze             Remove\
+    \ any gaps that are present in the same position\n                        across\
+    \ all sequences in an alignment (equivalent to\n                        --squeeze-threshold=1.0)\n\
+    \  --squeeze-threshold PROP\n                        Trim columns from an alignment\
+    \ which have gaps in\n                        least the specified proportion of\
+    \ sequences.\n  --transcribe {dna2rna,rna2dna}\n                        Transcription\
+    \ and back transcription for generic DNA\n                        and RNA. Source\
+    \ sequences must be the correct alphabet\n                        or this action\
+    \ will likely produce incorrect results.\n  --translate {dna2protein,rna2protein,dna2proteinstop,rna2proteinstop}\n\
+    \                        Translate from generic DNA/RNA to proteins. Options\n\
+    \                        with \"stop\" suffix will NOT translate through stop\n\
+    \                        codons . Source sequences must be the correct alphabet\n\
+    \                        or this action will likely produce incorrect results.\n\
+    \  --ungap               Remove gaps in the sequence alignment\n  --upper    \
+    \           Translate the sequences to upper case\n\nRecord Selection:\n  --deduplicate-sequences\n\
+    \                        Remove any duplicate sequences by sequence content,\n\
+    \                        keep the first instance seen\n  --deduplicated-sequences-file\
+    \ FILE\n                        Write all of the deduplicated sequences to a file\n\
+    \  --deduplicate-taxa    Remove any duplicate sequences by ID, keep the first\n\
+    \                        instance seen\n  --exclude-from-file FILE\n         \
+    \               Filter sequences, removing those sequence IDs in the\n       \
+    \                 specified file\n  --include-from-file FILE\n               \
+    \         Filter sequences, keeping only those sequence IDs in\n             \
+    \           the specified file\n  --head N              Trim down to top N sequences.\
+    \ With the leading `-',\n                        print all but the last N sequences.\n\
+    \  --max-length N        Discard any sequences beyond the specified maximum\n\
+    \                        length. This operation occurs *before* all length-\n\
+    \                        changing options such as cut and squeeze.\n  --min-length\
+    \ N        Discard any sequences less than the specified minimum\n           \
+    \             length. This operation occurs *before* cut and\n               \
+    \         squeeze.\n  --min-ungapped-length N\n                        Discard\
+    \ any sequences less than the specified minimum\n                        length,\
+    \ excluding gaps. This operation occurs *before*\n                        cut\
+    \ and squeeze.\n  --pattern-include REGEX\n                        Filter the\
+    \ sequences by regular expression in ID or\n                        description\n\
+    \  --pattern-exclude REGEX\n                        Filter the sequences by regular\
+    \ expression in ID or\n                        description\n  --prune-empty  \
+    \       Prune sequences containing only gaps ('-')\n  --sample N            Select\
+    \ a random sampling of sequences\n  --sample-seed N       Set random seed for\
+    \ sampling of sequences\n  --seq-pattern-include REGEX\n                     \
+    \   Filter the sequences by regular expression in sequence\n  --seq-pattern-exclude\
+    \ REGEX\n                        Filter the sequences by regular expression in\
+    \ sequence\n  --tail N              Trim down to bottom N sequences. Use +N to\
+    \ output\n                        sequences starting with the Nth.\n\nSequence\
+    \ ID Modification:\n  --first-name          Take only the first whitespace-delimited\
+    \ word as the\n                        name of the sequence\n  --name-suffix SUFFIX\
+    \  Append a suffix to all IDs.\n  --name-prefix PREFIX  Insert a prefix for all\
+    \ IDs.\n  --pattern-replace search_pattern replace_pattern\n                 \
+    \       Replace regex pattern \"search_pattern\" with\n                      \
+    \  \"replace_pattern\" in sequence ID and description\n  --strip-range       \
+    \  Strip ranges from sequences IDs, matching </x-y>\n\nFormat Options:\n  --input-format\
+    \ FORMAT\n                        Input file format (default: determine from extension)\n\
+    \  --output-format FORMAT\n                        Output file format (default:\
+    \ determine from extension)\n\nFilters using regular expressions are case-sensitive\
+    \ by default. Append \"(?i)\"\nto a pattern to make it case-insensitive.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - seqmagick
+  - backtrans-align
+  positional:
+  - !Positional
+    description: Protein Alignment
+    position: 0
+    name: protein_align
+    optional: false
+  - !Positional
+    description: FASTA Alignment
+    position: 1
+    name: nucl_align
+    optional: false
+  named:
+  - !Flag
+    description: 'Output destination. Default: STDOUT'
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: destination_file
+    optional: true
+  - !Flag
+    description: "Translation table to use. [Default: standard-\nambiguous]"
+    synonyms:
+    - -t
+    - --translation-table
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? standard
+        ? standard-ambiguous
+        ? vertebrate-mito
+    optional: true
+  - !Flag
+    description: "Action to take on an ambiguous codon [default: fail]\n"
+    synonyms:
+    - -a
+    - --fail-action
+    args: !ChoiceFlagArg
+      choices: !!set
+        ? fail
+        ? warn
+        ? none
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: seqmagick backtrans-align [-h] [-o destination_file]\n      \
+    \                           [-t {standard,standard-ambiguous,vertebrate-mito}]\n\
+    \                                 [-a {fail,warn,none}]\n                    \
+    \             protein_align nucl_align\n\nGiven a protein alignment and unaligned\
+    \ nucleotides, align the nucleotides\nusing the protein alignment. Protein and\
+    \ nucleotide sequence files must\ncontain the same number of sequences, in the\
+    \ same order, with the same IDs.\n\npositional arguments:\n  protein_align   \
+    \      Protein Alignment\n  nucl_align            FASTA Alignment\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -o destination_file,\
+    \ --out-file destination_file\n                        Output destination. Default:\
+    \ STDOUT\n  -t {standard,standard-ambiguous,vertebrate-mito}, --translation-table\
+    \ {standard,standard-ambiguous,vertebrate-mito}\n                        Translation\
+    \ table to use. [Default: standard-\n                        ambiguous]\n  -a\
+    \ {fail,warn,none}, --fail-action {fail,warn,none}\n                        Action\
+    \ to take on an ambiguous codon [default: fail]\n"
+  generated_using: *id002
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print the version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: seqmagick [-h] [-V] [-v] [-q]\n                 {help,convert,info,mogrify,primer-trim,quality-filter,extract-ids,backtrans-align}\n\
+  \                 ...\n\nseqmagick - Manipulate sequence files.\n\npositional arguments:\n\
+  \  {help,convert,info,mogrify,primer-trim,quality-filter,extract-ids,backtrans-align}\n\
+  \    help                Detailed help for actions using help <action>\n    convert\
+  \             Convert between sequence formats\n    info                Info action\n\
+  \    mogrify             Modify sequence file(s) in place.\n    primer-trim    \
+  \     Find a primer sequence in a gapped alignment, trim to\n                  \
+  \      amplicon\n    quality-filter      Filter reads based on quality scores\n\
+  \    extract-ids         Extract the sequence IDs from a file\n    backtrans-align\
+  \     Given a protein alignment and unaligned nucleotides,\n                   \
+  \     align the nucleotides using the protein alignment.\n                     \
+  \   Protein and nucleotide sequence files must contain the\n                   \
+  \     same number of sequences, in the same order, with the\n                  \
+  \      same IDs.\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -V, --version         Print the version number and exit\n\
+  \  -v, --verbose         Be more verbose. Specify -vv or -vvv for even more\n  -q,\
+  \ --quiet           Suppress output\n"
+generated_using: *id002

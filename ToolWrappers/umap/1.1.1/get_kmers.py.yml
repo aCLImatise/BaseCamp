@@ -1,0 +1,87 @@
+!Command
+command:
+- get_kmers.py
+positional:
+- !Positional
+  description: "Path to 2 column tsv file where first column is chromosome\nname and\
+    \ second column is chromosome size"
+  position: 0
+  name: chromsize_path
+  optional: false
+- !Positional
+  description: "Path to the directory for creating\n<chromosome>.<Megabase>.<kmer>.kmer.gz\
+    \ files"
+  position: 1
+  name: out_dir
+  optional: false
+- !Positional
+  description: Path to directory with <chromosome>.fasta files.
+  position: 2
+  name: chr_dir
+  optional: false
+- !Positional
+  description: "Path to the 4 column file with the following columns: Index\n| Chromosome\
+    \ | Start | End. This file will be used for\nidentifying the chunk of the chromosome."
+  position: 3
+  name: idx_path
+  optional: false
+named:
+- !Flag
+  description: "The software would infer it based on the name of the\n'out_dir'. If\
+    \ it is set and contradicts the 'out_dir', a\nsubfolder under out_dir will be\
+    \ created named 'kmer' and\nout_dir will be changed to that."
+  synonyms:
+  - --kmer
+  args: !SimpleFlagArg
+    name: KMER
+  optional: true
+- !Flag
+  description: "If not submitted in job array, would require this parameter\nto be\
+    \ set. (1-based index)"
+  synonyms:
+  - --job_id
+  args: !SimpleFlagArg
+    name: JOB_ID
+  optional: true
+- !Flag
+  description: "The variable name that the script would use for identifying\nthe job\
+    \ id. By default: SGE_TASK_ID.\n"
+  synonyms:
+  - --var_id
+  args: !SimpleFlagArg
+    name: VAR_ID
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: get_kmers.py [-h] [--kmer KMER] [--job_id JOB_ID] [--var_id VAR_ID]\n\
+  \                    chromsize_path out_dir chr_dir idx_path\n\nCreates list of\
+  \ unique Kmers for each 1Mb of the genome. Relies on an\nenvironmental variable\
+  \ such as SGE_TASK_ID to identify the correct megabase of\nthe genome for this purpose.\
+  \ If not using job arrays, specify -job_id\nmanually.\n\npositional arguments:\n\
+  \  chromsize_path   Path to 2 column tsv file where first column is chromosome\n\
+  \                   name and second column is chromosome size\n  out_dir       \
+  \   Path to the directory for creating\n                   <chromosome>.<Megabase>.<kmer>.kmer.gz\
+  \ files\n  chr_dir          Path to directory with <chromosome>.fasta files.\n \
+  \ idx_path         Path to the 4 column file with the following columns: Index\n\
+  \                   | Chromosome | Start | End. This file will be used for\n   \
+  \                identifying the chunk of the chromosome.\n\noptional arguments:\n\
+  \  -h, --help       show this help message and exit\n  --kmer KMER      The software\
+  \ would infer it based on the name of the\n                   'out_dir'. If it is\
+  \ set and contradicts the 'out_dir', a\n                   subfolder under out_dir\
+  \ will be created named 'kmer' and\n                   out_dir will be changed to\
+  \ that.\n  --job_id JOB_ID  If not submitted in job array, would require this parameter\n\
+  \                   to be set. (1-based index)\n  --var_id VAR_ID  The variable\
+  \ name that the script would use for identifying\n                   the job id.\
+  \ By default: SGE_TASK_ID.\n"
+generated_using:
+- --help
