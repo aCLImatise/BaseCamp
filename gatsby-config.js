@@ -14,31 +14,19 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     {
-      // We need this so that gatsby-source-git works properly 
+      // We need this so that gatsby-source-git works properly
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `dummy`,
-        path: `${__dirname}/src/dummy`,
+        name: `Wrappers`,
+        path: `${__dirname}/ToolWrappers`,
       },
     },
     {
-      resolve: `gatsby-source-git`,
+      // We need this so that gatsby-source-git works properly
+      resolve: `gatsby-source-filesystem`,
       options: {
         name: `Definitions`,
-        branch: "master",
-        remote: `https://github.com/aCLImatise/ToolDefinitions.git`,
-        // patterns: 'bwa/**',
-        local: `${__dirname}/ToolDefinitions`,
-      },
-    },
-    {
-      resolve: `gatsby-source-git`,
-      options: {
-        name: `Wrappers`,
-        branch: "master",
-        remote: `https://github.com/aCLImatise/ToolWrappers.git`,
-        // patterns: 'bwa/**',
-        local: `${__dirname}/ToolWrappers`,
+        path: `${__dirname}/ToolDefinitions`,
       },
     },
   ],
