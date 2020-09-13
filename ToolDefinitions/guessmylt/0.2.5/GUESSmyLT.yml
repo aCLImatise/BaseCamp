@@ -1,0 +1,137 @@
+!Command
+command:
+- GUESSmyLT
+positional:
+- !Positional
+  description: -n                    (Snakemake dryrun option) Allows to see the scheduling
+  position: 0
+  name: directory.
+  optional: false
+named:
+- !Flag
+  description: "Mandatory when no annotation provided. What organism\nare you dealing\
+    \ with? prokaryote or eukaryote."
+  synonyms:
+  - --organism
+  args: !SimpleFlagArg
+    name: ORGANISM
+  optional: true
+- !Flag
+  description: "One or two read files in .fastq or .fastq.gz format.\nFiles can be\
+    \ compressed or uncrompressed. Handles\ninterleaved read files and any known .fastq\
+    \ header\nformat."
+  synonyms:
+  - --reads
+  args: !RepeatFlagArg
+    name: READS
+  optional: true
+- !Flag
+  description: "Number of subsampled reads that will be used for\nanalysis. Must be\
+    \ an even number."
+  synonyms:
+  - --subsample
+  args: !SimpleFlagArg
+    name: SUBSAMPLE
+  optional: true
+- !Flag
+  description: "Mandatory when --mapped used or when no reads provided\n(--reads).\
+    \ Reference file in .fa/.fasta format.\nReference can be either transcriptome\
+    \ or genome."
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: "Mode can be genome or transcriptome (default genome).\nIt defines\
+    \ how the reference fasta file will be\nhandled by BUSCO. This option is used\
+    \ when no\nannotation is provided (--annotation)."
+  synonyms:
+  - --mode
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: "Annotation file in .gff format. Needs to contain\ngenes."
+  synonyms:
+  - --annotation
+  args: !SimpleFlagArg
+    name: ANNOTATION
+  optional: true
+- !Flag
+  description: "Mapped file in .bam format (Will be sorted). Reference\nthat reads\
+    \ have been mapped to has to be provided."
+  synonyms:
+  - --mapped
+  args: !SimpleFlagArg
+    name: MAPPED
+  optional: true
+- !Flag
+  description: "The number of threads that can be used by GUESSmyLT.\nNeeds to be\
+    \ an integer. Defualt value is 2."
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "Maximum memory that can be used by GUESSmyLT in GB.\nE.g. '10G'. Default\
+    \ value is 8G."
+  synonyms:
+  - --memory
+  args: !SimpleFlagArg
+    name: MEMORY
+  optional: true
+- !Flag
+  description: Full path to output directory. Default is working
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: GUESSmyLT [-h] [--organism ORGANISM] [--reads READS [READS ...]]\n\
+  \                 [--subsample SUBSAMPLE] [--reference REFERENCE] [--mode MODE]\n\
+  \                 [--annotation ANNOTATION] [--mapped MAPPED]\n                \
+  \ [--threads THREADS] [--memory MEMORY] [--output OUTPUT] [-n]\n\nGUESSmyLT, GUESS\
+  \ my Library Type. Can predict the library type used for RNA-\nSeq. The prediction\
+  \ is based on the orientaion of your read file(s) in\n.fastq/.fastq.gz/.bam format.\
+  \ Knowing the library type helps you with\ndownstream analyses since it greatly\
+  \ improves the assembly.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --organism ORGANISM   Mandatory when no annotation provided.\
+  \ What organism\n                        are you dealing with? prokaryote or eukaryote.\n\
+  \  --reads READS [READS ...]\n                        One or two read files in .fastq\
+  \ or .fastq.gz format.\n                        Files can be compressed or uncrompressed.\
+  \ Handles\n                        interleaved read files and any known .fastq header\n\
+  \                        format.\n  --subsample SUBSAMPLE\n                    \
+  \    Number of subsampled reads that will be used for\n                        analysis.\
+  \ Must be an even number.\n  --reference REFERENCE\n                        Mandatory\
+  \ when --mapped used or when no reads provided\n                        (--reads).\
+  \ Reference file in .fa/.fasta format.\n                        Reference can be\
+  \ either transcriptome or genome.\n  --mode MODE           Mode can be genome or\
+  \ transcriptome (default genome).\n                        It defines how the reference\
+  \ fasta file will be\n                        handled by BUSCO. This option is used\
+  \ when no\n                        annotation is provided (--annotation).\n  --annotation\
+  \ ANNOTATION\n                        Annotation file in .gff format. Needs to contain\n\
+  \                        genes.\n  --mapped MAPPED       Mapped file in .bam format\
+  \ (Will be sorted). Reference\n                        that reads have been mapped\
+  \ to has to be provided.\n  --threads THREADS     The number of threads that can\
+  \ be used by GUESSmyLT.\n                        Needs to be an integer. Defualt\
+  \ value is 2.\n  --memory MEMORY       Maximum memory that can be used by GUESSmyLT\
+  \ in GB.\n                        E.g. '10G'. Default value is 8G.\n  --output OUTPUT\
+  \       Full path to output directory. Default is working\n                    \
+  \    directory.\n  -n                    (Snakemake dryrun option) Allows to see\
+  \ the scheduling\n                        plan including the assigned priorities.\n"
+generated_using:
+- --help

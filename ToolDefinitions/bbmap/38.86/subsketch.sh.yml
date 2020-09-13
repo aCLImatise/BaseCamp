@@ -1,0 +1,58 @@
+!Command
+command:
+- subsketch.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified Jan 7, 2020\n\nDescription:\
+  \  Shrinks sketches to a smaller fixed length.\n\nPlease read bbmap/docs/guides/BBSketchGuide.txt\
+  \ for more information.\n\nUsage:       subsketch.sh in=file.sketch out=sub.sketch\
+  \ size=1000 autosize=f\nBulk usage:  subsketch.sh in=big#.sketch out=small#.sketch\
+  \ sizemult=0.5\n\nStandard parameters:\nin=<file>       Input sketch file containing\
+  \ one or more sketches.\nout=<file>      Output sketch file.\nsize=10000      Size\
+  \ of sketches to generate, if autosize=f.\nautosize=t      Autosize sketches based\
+  \ on genome size.\nsizemult=1      Adjust default sketch autosize by this factor.\n\
+  blacklist=      Apply a blacklist to the sketch before resizing.\nfiles=31     \
+  \   If the output filename contains a # symbol,\n                spread the output\
+  \ across this many files, replacing\n                the # with a number.\n\nJava\
+  \ Parameters:\n-Xmx            This will set Java's memory usage, overriding autodetection.\n\
+  \                -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will specify\
+  \ 200 megs.\n                    The max is typically 85% of physical memory.\n\
+  -eoom           This flag will cause the process to exit if an out-of-memory\n \
+  \               exception occurs.  Requires Java 8u92+.\n-da             Disable\
+  \ assertions.\n\nFor more detailed information, please read /bbmap/docs/guides/BBSketchGuide.txt.\n\
+  Please contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help

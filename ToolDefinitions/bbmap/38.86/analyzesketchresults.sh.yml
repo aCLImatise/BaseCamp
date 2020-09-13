@@ -1,0 +1,58 @@
+!Command
+command:
+- analyzesketchresults.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: This flag will cause the process to exit if an out-of-memory exception
+    occurs.  Requires Java 8u92+.
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified December 19, 2019\n\nDescription:\
+  \  Analyzes sketch results from query, ref, ani format.\n\nUsage:  analyzesketchresults.sh\
+  \ in=<file> out=<outfile>\n\n\nParameters and their defaults:\n\nin=<file>     \
+  \      Required input file of Sketch results in 3column format.\nin2=<file>    \
+  \      Optional second input file of Sketch results in amino mode.\nout=stdout.txt\
+  \      Output file for summary of per-tax-level averages.\noutaccuracy=<file>  Output\
+  \ file for accuracy results; requires query taxIDs and printcal.\noutmap=<file>\
+  \       Output file for ANI vs AAI.  Requires in2.\nbbsketch            Parse BBSketch\
+  \ output format (default).\nmash                Parse Mash output format.  Files\
+  \ should be named like this:\n                    tid_511145_Escherichia_coli_str._K-12_substr._MG1655.fa.gz\n\
+  blast               Parse Blast output format (TODO).\n\now=f                (overwrite)\
+  \ Overwrites files that already exist.\napp=f               (append) Append to files\
+  \ that already exist.\n\nJava Parameters:\n-Xmx                This will set Java's\
+  \ memory usage, overriding autodetection.\n                    -Xmx20g will specify\
+  \ 20 gigs of RAM, and -Xmx200m will specify 200 megs.\n                    The max\
+  \ is typically 85% of physical memory.\n-eoom               This flag will cause\
+  \ the process to exit if an out-of-memory exception occurs.  Requires Java 8u92+.\n\
+  -da                 Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help

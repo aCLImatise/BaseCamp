@@ -1,0 +1,232 @@
+!Command
+command:
+- mirabait
+positional: []
+named:
+- !Flag
+  description: "Load bait sequences from file\n(multiple -b allowed)"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Load baits from kmer statistics file, not from sequence files.\nOnly\
+    \ one -B allowed, cannot be combined with -b.\n(see -K for creating such a file)"
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Set options for predefined job from supplied MIRA library\nCurrently\
+    \ available jobs:\nrrna Bait rRNA sequences"
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: job
+  optional: true
+- !Flag
+  description: "file2  Load paired sequences to search from file1 and file2\nFiles\
+    \ must contain same number of sequences, sequence\nnames must be in same order.\n\
+    Multiple -p allowed, but must come before non-paired\nfiles."
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: file1
+  optional: true
+- !Flag
+  description: "Load paired sequences from file\nFile must be interleaved: pairs must\
+    \ follow each other,\nnon-pairs are not allowed.\nMultiple -p allowed, but must\
+    \ come before non-paired\nfiles."
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: kmer length of bait in bases (<=256, default=31)
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "If >0: minimum number of k-mer baits needed (default=1)\nIf <=0: allowed\
+    \ number of missed kmers over sequence\nlength"
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Do not use kmers with microrepeats (DUST-like, see also -D)
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set length of microrepeats in kmers to discard from bait.\nint > 0\
+    \ microrepeat len in percentage of kmer length.\nE.g.: -k 17 -D 67 --> 11.39 bases\
+    \ --> 12 bases.\nint < 0 microrepeat len in bases.\nint != 0 implies -d, int=0\
+    \ turns DUST filter off."
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Selects sequences that do not hit bait
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Selects sequences that hit and do not hit bait (to\ndifferent files)"
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No checking of reverse complement direction
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads to use (default=0 -> up to 4 CPU cores)
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No case change of sequence to denote bait hits
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: length of a line (FASTA only, default 0=unlimited)
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Save kmer statistics to 'file' (see also -B)
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Change the prefix 'bait' to <name>\nHas no effect if -o/-O is used\
+    \ and targets are not\ndirectories"
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "Save sequences matching bait to path\nIf path is a directory, write\
+    \ separate files into this\ndirectory. If not, combine all matching sequences\
+    \ from\nthe input file(s) into a single file specified by the\npath."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Like -o, but for sequences not matching
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "Use 'dir' as directory for temporary files instead of\ncurrent working\
+    \ directory."
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: "Memory to use for computing kmer statistics\n0..100 = use percentage\
+    \ of free system memory\n>100 = amount of MiB to use (e.g. 16384 for 16 GiB)\n\
+    Default 75 (75% of free system memory)."
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "mirabait\t(MIRALIB version 4.9.6)\nAuthor: Bastien Chevreux\t(bach@chevreux.org)\n\
+  \nMIRAbait: a 'grep' like tool for kmers up to 256 bp\n\nmirabait selects reads\
+  \ from a read collection which are partly similar or\nequal to sequences defined\
+  \ as target baits. Similarity is defined by finding a\nuser-adjustable number of\
+  \ common k-mers (sequences of k consecutive bases)\nwhich are the same in the bait\
+  \ sequences and the screened sequences to be\nselected, either in forward or forward/reverse\
+  \ complement direction. Adding a\nDUST-like repeat filter for repeats up 4 bases\
+  \ is optional. \nWhen used on paired files, selects sequences where at least one\
+  \ mate matches.\n\nUsage:\nmirabait [options]\n\t\t{-b baitfile [-b ...] | -B file\
+  \ | -j joblibrary}\n\t\t{-p file_1 file_2 | -P file3}* [file4 ...]\n\nMain options:\n\
+  \t-b file\t\tLoad bait sequences from file\n\t\t\t (multiple -b allowed)\n\t-B file\t\
+  \tLoad baits from kmer statistics file, not from sequence files.\n\t\t\t Only one\
+  \ -B allowed, cannot be combined with -b.\n\t\t\t (see -K for creating such a file)\n\
+  \t-j job\t\tSet options for predefined job from supplied MIRA library\n\t\t\t Currently\
+  \ available jobs:\n\t\t\t   rrna\tBait rRNA sequences\n\t-p file1 file2\tLoad paired\
+  \ sequences to search from file1 and file2\n\t\t\t Files must contain same number\
+  \ of sequences, sequence \n\t\t\t names must be in same order.\n\t\t\t Multiple\
+  \ -p allowed, but must come before non-paired\n\t\t\t files.\n\t-P file\t\tLoad\
+  \ paired sequences from file\n\t\t\t File must be interleaved: pairs must follow\
+  \ each other,\n\t\t\t non-pairs are not allowed.\n\t\t\t Multiple -p allowed, but\
+  \ must come before non-paired\n\t\t\t files.\n\n\t-k int\t\tkmer length of bait\
+  \ in bases (<=256, default=31)\n\t-n int\t\tIf >0: minimum number of k-mer baits\
+  \ needed (default=1)\n\t\t\tIf <=0: allowed number of missed kmers over sequence\n\
+  \t\t\t        length\n\n\t-d\t\tDo not use kmers with microrepeats (DUST-like, see\
+  \ also -D)\n\t-D int\t\tSet length of microrepeats in kmers to discard from bait.\n\
+  \t\t\t int > 0 microrepeat len in percentage of kmer length.\n\t\t\t       E.g.:\
+  \ -k 17 -D 67 --> 11.39 bases --> 12 bases.\n\t\t\t int < 0 microrepeat len in bases.\n\
+  \t\t\t int != 0 implies -d, int=0 turns DUST filter off.\n\t-i\t\tSelects sequences\
+  \ that do not hit bait\n\t-I\t\tSelects sequences that hit and do not hit bait (to\n\
+  \t\t\t different files)\n\t-r\t\tNo checking of reverse complement direction\n\t\
+  -t\t\tNumber of threads to use (default=0 -> up to 4 CPU cores)\n\nOptions for output\
+  \ definition:\nNormally mirabait writes separate result files (named 'bait_match_*'\
+  \ and\n'bait_miss_*') for each input to the current directory. For changing this\n\
+  behaviour and other relating to output, use these options:\n\t-c\t\tNo case change\
+  \ of sequence to denote bait hits\n\t-l int\t\tlength of a line (FASTA only, default\
+  \ 0=unlimited)\n\t-K file\t\tSave kmer statistics to 'file' (see also -B)\n\t-N\
+  \ name\t\tChange the prefix 'bait' to <name>\n\t\t\t Has no effect if -o/-O is used\
+  \ and targets are not\n\t\t\t directories\n\t-o <path>\tSave sequences matching\
+  \ bait to path\n\t\t\t If path is a directory, write separate files into this\n\t\
+  \t\t directory. If not, combine all matching sequences from\n\t\t\t the input file(s)\
+  \ into a single file specified by the\n\t\t\t path.\n\t-O <path>\tLike -o, but for\
+  \ sequences not matching\n\nOther options:\n\t-T dir\t\tUse 'dir' as directory for\
+  \ temporary files instead of\n\t\t\t current working directory.\n\t-m integer\t\
+  Memory to use for computing kmer statistics\n\t\t\t 0..100 = use percentage of free\
+  \ system memory\n\t\t\t >100 = amount of MiB to use (e.g. 16384 for 16 GiB)\n\t\t\
+  \t Default 75 (75% of free system memory).\n\nDefining files types to load/save:\n\
+  Normally mirabait recognises the file types according to the file extension\n(even\
+  \ when packed). In cases you need to force a certain file type because the\nfile\
+  \ extension is non-standard, use the EMBOSS notation to force a type:\n<filetype>::<name_of_file>.\
+  \ E.g., to tell that \"somefile.dat\" is FASTQ, use:\nfastq::somefile.dat\nRecognised\
+  \ types are: caf, fasta, fastq, gbf, gbk, gbff, maf and phd.\n\nMIRABAIT will write\
+  \ files in the same file type as the corresponding input\nfiles.\nExamples:\n  mirabait\
+  \ -b b.fasta file.fastq\n  mirabait -I -j rrna -p file_1.fastq file_2.fastq\n  mirabait\
+  \ -b b1.fasta -b b2.gbk file.fastq\n  mirabait -b fasta::baits.dat -p fastq::file_1.dat\
+  \ fastq::file_2.dat\n  mirabait -b b.fasta -p file_1.fastq file_2.fastq -P file3.fasta\
+  \ file4.caf\n  mirabait -I -b b.fasta -p file_1.fastq file_2.fastq -P file3.fasta\
+  \ file4.caf\n  mirabait -k 27 -n 10 -b b.fasta file.fastq\n  mirabait -b fasta::b.dat\
+  \ fastq::file.dat\n  mirabait -o /dev/shm/ -b b.fasta -p file_1.fastq file_2.fastq\n\
+  \  mirabait -o /dev/shm/match -b b.fasta -p file_1.fastq file_2.fastq\n  mirabait\
+  \ -b human_genome.fasta -K HG_kmerstats.mhs.gz -p file1.fastq file2.fastq\n  mirabait\
+  \ -B HG_kmerstats.mhs.gz -p file1.fastq file2.fastq\n  mirabait -d -B HG_kmerstats.mhs.gz\
+  \ -p file1.fastq file2.fastq\n"
+generated_using:
+- --help

@@ -1,0 +1,88 @@
+!Command
+command:
+- makeBloom
+positional: []
+named:
+- !Flag
+  description: Fasta input file. Mandatory option.
+  synonyms:
+  - -f
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file, with NO extension. Mandatory option.
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: kmer size, number or elements. Optional(default = 25)
+  synonyms:
+  - -k
+  - --kmersize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: positive rate. Optional (default = 0.05)
+  synonyms:
+  - -p
+  - --fal_pos_rate
+  args: !SimpleFlagArg
+    name: 'false'
+  optional: true
+- !Flag
+  description: "number of hash functions used. Optional (default\nvalue computed from\
+    \ the false positive rate)."
+  synonyms:
+  - -g
+  - --hashNum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "size of the filter in bits. It will be forced to be\na multiple of\
+    \ 8. Optional (default value computed\nfrom the false positive rate)."
+  synonyms:
+  - -m
+  - --bfsizeBits
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Prints help dialog.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints package version.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "makeBloom from FastqPuri\nUsage: ./makeBloom --fasta <FASTA_INPUT> --output\
+  \ <FILTERFILE> --kmersize [KMERSIZE] \n                   (--fal_pos_rate [p] |\
+  \ --hashNum [HASHNUM] | --bfsizeBits [SIZEBITS])\nOptions: \n -v, --version    \
+  \  Prints package version.\n -h, --help         Prints help dialog.\n -f, --fasta\
+  \        Fasta input file. Mandatory option.\n -o, --output       Output file, with\
+  \ NO extension. Mandatory option.\n -k, --kmersize     kmer size, number or elements.\
+  \ Optional(default = 25)\n -p, --fal_pos_rate false positive rate. Optional (default\
+  \ = 0.05)\n -g, --hashNum      number of hash functions used. Optional (default\n\
+  \                    value computed from the false positive rate).\n -m, --bfsizeBits\
+  \   size of the filter in bits. It will be forced to be\n                    a multiple\
+  \ of 8. Optional (default value computed\n                    from the false positive\
+  \ rate).\nNOTE: the options -p, -g, -m are mutually exclusive. The program \n  \
+  \    will give an error if more than one of them are passed as input.\n      It\
+  \ is recommended to pass the false positive rate and let the \n      program compute\
+  \ the other variables (excepting singular situations)\n      If none of them are\
+  \ passed, the false positive rate will default\n      to 0.05 and the other variables\
+  \ will be computed respecting this\n      requirement. See documentation and supplementary\
+  \ material for \n      more details.\n"
+generated_using:
+- --help

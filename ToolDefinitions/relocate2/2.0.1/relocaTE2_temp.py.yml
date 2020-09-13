@@ -1,0 +1,232 @@
+!Command
+command:
+- relocaTE2_temp.py
+positional: []
+named:
+- !Flag
+  description: Name of BAM file of read mapped reference genome
+  synonyms:
+  - -b
+  - --bam
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: Name of fasta sequence of repeat element
+  synonyms:
+  - -t
+  - --te_fasta
+  args: !SimpleFlagArg
+    name: TE_FASTA
+  optional: true
+- !Flag
+  description: Name of directory of input fastq sequence data
+  synonyms:
+  - -d
+  - --fq_dir
+  args: !SimpleFlagArg
+    name: FQ_DIR
+  optional: true
+- !Flag
+  description: Name of fasta file of reference genome sequence
+  synonyms:
+  - -g
+  - --genome_fasta
+  args: !SimpleFlagArg
+    name: GENOME_FASTA
+  optional: true
+- !Flag
+  description: Name of RepeatMasker TE annotation of reference genome
+  synonyms:
+  - -r
+  - --reference_ins
+  args: !SimpleFlagArg
+    name: REFERENCE_INS
+  optional: true
+- !Flag
+  description: "Name of output directory where to put temperary and\nfinal results"
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: Insert size of sequence library, default = 500
+  synonyms:
+  - -s
+  - --size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: Number of CPUs to use for multiplex, default = 1
+  synonyms:
+  - -c
+  - --cpu
+  args: !SimpleFlagArg
+    name: CPU
+  optional: true
+- !Flag
+  description: string define paired-end read1, default = "_1"
+  synonyms:
+  - '-1'
+  - --mate_1_id
+  args: !SimpleFlagArg
+    name: MATE_1_ID
+  optional: true
+- !Flag
+  description: string define paired-end read2, default = "_2"
+  synonyms:
+  - '-2'
+  - --mate_2_id
+  args: !SimpleFlagArg
+    name: MATE_2_ID
+  optional: true
+- !Flag
+  description: string define single-end reads, default = ".unPaired"
+  synonyms:
+  - -u
+  - --unpaired_id
+  args: !SimpleFlagArg
+    name: UNPAIRED_ID
+  optional: true
+- !Flag
+  description: "string define sample name which will present in output\nGFF, default\
+    \ = \"not_given\""
+  synonyms:
+  - --sample
+  args: !SimpleFlagArg
+    name: SAMPLE
+  optional: true
+- !Flag
+  description: "aligner used to map reads to repeat elements,\ndefault=blat"
+  synonyms:
+  - --aligner
+  args: !SimpleFlagArg
+    name: ALIGNER
+  optional: true
+- !Flag
+  description: "length cutoff threshold for match between reads and\nrepeat elements.\
+    \ Large value will lead to less\nsensitive but more accuracy, default = 10"
+  synonyms:
+  - --len_cut_match
+  args: !SimpleFlagArg
+    name: LEN_CUT_MATCH
+  optional: true
+- !Flag
+  description: "length cutoff threshold for trimed reads after\ntrimming repeat sequence\
+    \ from reads. Large value will\nlead to less sensitive but more accuracy, default\
+    \ = 10"
+  synonyms:
+  - --len_cut_trim
+  args: !SimpleFlagArg
+    name: LEN_CUT_TRIM
+  optional: true
+- !Flag
+  description: "Number of mismatches allowed for matches between reads\nand repeat\
+    \ elements, default = 2"
+  synonyms:
+  - --mismatch
+  args: !SimpleFlagArg
+    name: MISMATCH
+  optional: true
+- !Flag
+  description: "Number of mismatches allowed for matches between\njunction reads and\
+    \ repeat elements, default = 2"
+  synonyms:
+  - --mismatch_junction
+  args: !SimpleFlagArg
+    name: MISMATCH_JUNCTION
+  optional: true
+- !Flag
+  description: "Number to control steps of pipeline, default =\n\"1234567\""
+  synonyms:
+  - --step
+  args: !SimpleFlagArg
+    name: STEP
+  optional: true
+- !Flag
+  description: write shell scripts only while this script excute
+  synonyms:
+  - --dry_run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run while this script excute
+  synonyms:
+  - --run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: split fastq into 1 M chunks to run blat/bwa jobs
+  synonyms:
+  - --split
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "verbose grade to print out information in all scripts:\nrange from\
+    \ 0 to 4, default = 2\n"
+  synonyms:
+  - -v
+  - --verbose
+  args: !SimpleFlagArg
+    name: VERBOSE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: relocaTE2_temp.py [-h] [-b BAM] [-t TE_FASTA] [-d FQ_DIR]\n   \
+  \                      [-g GENOME_FASTA] [-r REFERENCE_INS] [-o OUTDIR]\n      \
+  \                   [-s SIZE] [-c CPU] [-1 MATE_1_ID] [-2 MATE_2_ID]\n         \
+  \                [-u UNPAIRED_ID] [--sample SAMPLE]\n                         [--aligner\
+  \ ALIGNER] [--len_cut_match LEN_CUT_MATCH]\n                         [--len_cut_trim\
+  \ LEN_CUT_TRIM] [--mismatch MISMATCH]\n                         [--mismatch_junction\
+  \ MISMATCH_JUNCTION] [--step STEP]\n                         [--dry_run] [--run]\
+  \ [--split] [-v VERBOSE]\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -b BAM, --bam BAM     Name of BAM file of read mapped\
+  \ reference genome\n  -t TE_FASTA, --te_fasta TE_FASTA\n                       \
+  \ Name of fasta sequence of repeat element\n  -d FQ_DIR, --fq_dir FQ_DIR\n     \
+  \                   Name of directory of input fastq sequence data\n  -g GENOME_FASTA,\
+  \ --genome_fasta GENOME_FASTA\n                        Name of fasta file of reference\
+  \ genome sequence\n  -r REFERENCE_INS, --reference_ins REFERENCE_INS\n         \
+  \               Name of RepeatMasker TE annotation of reference genome\n  -o OUTDIR,\
+  \ --outdir OUTDIR\n                        Name of output directory where to put\
+  \ temperary and\n                        final results\n  -s SIZE, --size SIZE \
+  \ Insert size of sequence library, default = 500\n  -c CPU, --cpu CPU     Number\
+  \ of CPUs to use for multiplex, default = 1\n  -1 MATE_1_ID, --mate_1_id MATE_1_ID\n\
+  \                        string define paired-end read1, default = \"_1\"\n  -2\
+  \ MATE_2_ID, --mate_2_id MATE_2_ID\n                        string define paired-end\
+  \ read2, default = \"_2\"\n  -u UNPAIRED_ID, --unpaired_id UNPAIRED_ID\n       \
+  \                 string define single-end reads, default = \".unPaired\"\n  --sample\
+  \ SAMPLE       string define sample name which will present in output\n        \
+  \                GFF, default = \"not_given\"\n  --aligner ALIGNER     aligner used\
+  \ to map reads to repeat elements,\n                        default=blat\n  --len_cut_match\
+  \ LEN_CUT_MATCH\n                        length cutoff threshold for match between\
+  \ reads and\n                        repeat elements. Large value will lead to less\n\
+  \                        sensitive but more accuracy, default = 10\n  --len_cut_trim\
+  \ LEN_CUT_TRIM\n                        length cutoff threshold for trimed reads\
+  \ after\n                        trimming repeat sequence from reads. Large value\
+  \ will\n                        lead to less sensitive but more accuracy, default\
+  \ = 10\n  --mismatch MISMATCH   Number of mismatches allowed for matches between\
+  \ reads\n                        and repeat elements, default = 2\n  --mismatch_junction\
+  \ MISMATCH_JUNCTION\n                        Number of mismatches allowed for matches\
+  \ between\n                        junction reads and repeat elements, default =\
+  \ 2\n  --step STEP           Number to control steps of pipeline, default =\n  \
+  \                      \"1234567\"\n  --dry_run             write shell scripts\
+  \ only while this script excute\n  --run                 run while this script excute\n\
+  \  --split               split fastq into 1 M chunks to run blat/bwa jobs\n  -v\
+  \ VERBOSE, --verbose VERBOSE\n                        verbose grade to print out\
+  \ information in all scripts:\n                        range from 0 to 4, default\
+  \ = 2\n"
+generated_using:
+- --help

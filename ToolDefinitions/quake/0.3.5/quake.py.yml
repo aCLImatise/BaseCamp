@@ -1,0 +1,157 @@
+!Command
+command:
+- quake.py
+positional: []
+named:
+- !Flag
+  description: Fastq file of reads
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: READSF
+  optional: true
+- !Flag
+  description: "File containing fastq file names, one per line or two\nper line for\
+    \ paired end reads."
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: READS_LISTF
+  optional: true
+- !Flag
+  description: Size of k-mers to correct
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: K
+  optional: true
+- !Flag
+  description: 'Number of processes [default: 4]'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: PROC
+  optional: true
+- !Flag
+  description: "Quality value ascii scale, generally 64 or 33. If not\nspecified,\
+    \ it will guess."
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: QUALITY_SCALE
+  optional: true
+- !Flag
+  description: Count k-mers using a simpler program than Jellyfish
+  synonyms:
+  - --no_jelly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Kmers are already counted and in expected file [reads\nfile].qcts\
+    \ or [reads file].cts [default: False]"
+  synonyms:
+  - --no_count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Count kmers as integers w/o the use of quality values\n[default: False]"
+  synonyms:
+  - --int
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Jellyfish hash-size parameter. Quake will estimate\nusing k if not\
+    \ given"
+  synonyms:
+  - --hash_size
+  args: !SimpleFlagArg
+    name: HASH_SIZE
+  optional: true
+- !Flag
+  description: "Coverage model is optimized and cutoff was printed to\nexpected file\
+    \ cutoff.txt [default: False]"
+  synonyms:
+  - --no_cut
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Likelihood ratio to set trusted/untrusted cutoff.\nGenerally set between\
+    \ 10-1000 with lower numbers\nsuggesting a lower threshold. [default: 200]"
+  synonyms:
+  - --ratio
+  args: !SimpleFlagArg
+    name: RATIO
+  optional: true
+- !Flag
+  description: "Return only reads corrected and/or trimmed to\n<min_read> bp"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: MIN_READ
+  optional: true
+- !Flag
+  description: "Output error reads even if they can't be corrected,\nmaintaing paired\
+    \ end reads"
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use BWA-like trim parameter <trim_par>
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: TRIM_PAR
+  optional: true
+- !Flag
+  description: "Output only the original read headers without\ncorrection messages"
+  synonyms:
+  - --headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output a log of all corrections into *.log as \"quality\nposition\
+    \ new_nt old_nt\"\n"
+  synonyms:
+  - --log
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: quake.py [options]\n\nOptions:\n  -h, --help            show this\
+  \ help message and exit\n  -r READSF             Fastq file of reads\n  -f READS_LISTF\
+  \        File containing fastq file names, one per line or two\n               \
+  \         per line for paired end reads.\n  -k K                  Size of k-mers\
+  \ to correct\n  -p PROC               Number of processes [default: 4]\n  -q QUALITY_SCALE\
+  \      Quality value ascii scale, generally 64 or 33. If not\n                 \
+  \       specified, it will guess.\n\n  K-mer counting:\n    --no_jelly         \
+  \ Count k-mers using a simpler program than Jellyfish\n    --no_count          Kmers\
+  \ are already counted and in expected file [reads\n                        file].qcts\
+  \ or [reads file].cts [default: False]\n    --int               Count kmers as integers\
+  \ w/o the use of quality values\n                        [default: False]\n    --hash_size=HASH_SIZE\n\
+  \                        Jellyfish hash-size parameter. Quake will estimate\n  \
+  \                      using k if not given\n\n  Coverage model:\n    --no_cut \
+  \           Coverage model is optimized and cutoff was printed to\n            \
+  \            expected file cutoff.txt [default: False]\n    --ratio=RATIO      \
+  \ Likelihood ratio to set trusted/untrusted cutoff.\n                        Generally\
+  \ set between 10-1000 with lower numbers\n                        suggesting a lower\
+  \ threshold. [default: 200]\n\n  Correction:\n    -l MIN_READ         Return only\
+  \ reads corrected and/or trimmed to\n                        <min_read> bp\n   \
+  \ -u                  Output error reads even if they can't be corrected,\n    \
+  \                    maintaing paired end reads\n    -t TRIM_PAR         Use BWA-like\
+  \ trim parameter <trim_par>\n    --headers           Output only the original read\
+  \ headers without\n                        correction messages\n    --log      \
+  \         Output a log of all corrections into *.log as \"quality\n            \
+  \            position new_nt old_nt\"\n"
+generated_using:
+- --help

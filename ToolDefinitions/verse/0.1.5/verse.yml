@@ -1,0 +1,375 @@
+!Command
+command:
+- verse
+positional:
+- !Positional
+  description: "Give the name of input read file that contains the read mapping\n\
+    results. Format of input file is automatically determined (SAM/BAM)\nIf it is\
+    \ paired-end data, the file MUST be name-sorted, otherwise\nthe user MUST specify\
+    \ -S, or use samtools to sort it by name."
+  position: 0
+  name: input_file
+  optional: false
+named:
+- !Flag
+  description: "Give the name of the annotation file. The program currently only\n\
+    supports GTF format."
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: input
+  optional: true
+- !Flag
+  description: "Give the general name of the output file, e.g., 'Sample_A'.\nThe summary\
+    \ file will be named 'Sample_A.summary.txt.'\nThe file containing gene counts\
+    \ will be named 'Sample_A.exon.txt',\n'Sample_A.intron.txt', etc."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: input
+  optional: true
+- !Flag
+  description: "The Running Mode: 0 by default (featureCounts), 1 (HTSeq-Union),\n\
+    2 (HTSeq-Intersection_strict), 3 (HTSeq-Intersection_nonempty),\n4 (Union_strict),\
+    \ 5 (Cover_length).\nPlease refer to the manual or use '-Z' to check the details\
+    \ of\neach mode."
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Specify the feature type. Only rows which have the matched\nfeature\
+    \ type in the provided GTF annotation file will be included\nfor read counting.\
+    \ 'exon' by default.\nProviding a list of feature types (e.g., -t 'exon;intron;mito')\n\
+    will automatically enter hierarchical_assign mode. If the user\nwants to assign\
+    \ independently for each feature type, please\nspecify '--assignIndependently'.\
+    \ Use -Z to check the details."
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: input
+  optional: true
+- !Flag
+  description: "Specify the gene_identifier attribute, which is normally 'gene_id'\n\
+    or 'gene_name'. 'gene_id' by default."
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: input
+  optional: true
+- !Flag
+  description: "If the input file is paired-end data but not sorted by read name,\n\
+    this option MUST be specified."
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Indicate if strand-specific read counting should be performed.\nIt\
+    \ has three possible values:  0 (unstranded), 1 (stranded) and\n2 (reversely stranded).\
+    \ 0 by default."
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "The minimum mapping quality score a read must satisfy in order\nto\
+    \ be counted. For paired-end reads, at least one end should\nsatisfy this criteria.\
+    \ 0 by default."
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Output the gene length. This length is feature_type specific,\nwhich\
+    \ means the length in an exon_count file will be the total\nexon length of each\
+    \ gene, the length in an intron_count file will\nbe the total intron length, etc."
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output read assignment details for each read/read pairs. The\ndetails\
+    \ will be saved to a tab-delimited file that contains five\ncolumns including\
+    \ read name, status(assigned or the reason if not\nassigned), feature type and\
+    \ assigned gene name."
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of threads used for read assignment. 1 by default.\nNote that\
+    \ when running, VERSE will initiate one main thread and\nat least one helper thread\
+    \ for read assignment. This option\nspecifies the number of helper threads."
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "If specified, VERSE will assume the input is\nsingle-end data, and\
+    \ assign every reads individually. If this is\nnot specified(default), the input\
+    \ will be treated as paired-end\ndata. The 'missing mate' count will show how\
+    \ many reads are not\nin pairs. VERSE can correctly assign single-end data in\
+    \ paired-\nend mode, but it will take longer and the reads will all be\ncounted\
+    \ as missing mates. So it is recommended to specify this\nif the user knows it\
+    \ is single-end."
+  synonyms:
+  - --singleEnd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, VERSE will assign reads to listed\nfeature types independently.\
+    \ This has the same effect as running\nVERSE separately for each feature type,\
+    \ except that it only\nrequires one run, thus is more efficient."
+  synonyms:
+  - --assignIndependently
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Reads are extended upstream by <int> bases from\ntheir 5' end."
+  synonyms:
+  - --readExtension5
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Reads are extended upstream by <int> bases from\ntheir 3' end."
+  synonyms:
+  - --readExtension3
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Specify the minimum number of overlapped bases\nrequired to assign\
+    \ a read to a feature. 1 by default."
+  synonyms:
+  - --minReadOverlap
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Specify the maximum number of non-overlapped bases\na read can have.\
+    \ A read is considered no_feature if its number of\nnon-overlapped bases exceeds\
+    \ this threshold. This option is not\nuseful in strict mode since it requires\
+    \ the assigned feature to\noverlap every base of the read."
+  synonyms:
+  - --maxReadNonoverlap
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "If specified, only split alignments (CIGAR\nstrings containing letter\
+    \ `N') will be counted. All the other\nalignments will be ignored. An example\
+    \ of split alignments is\nthe exon-spanning reads in RNA-seq data."
+  synonyms:
+  - --countSplitAlignmentsOnly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<5:3>            The read is reduced to its 5' most base or 3'\nmost\
+    \ base. Read summarization is then performed based on the\nsingle base which the\
+    \ read is reduced to."
+  synonyms:
+  - --read2pos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, reads that were marked as\nduplicates will be ignored.\
+    \ Bit Ox400 in FLAG field of SAM/BAM\nfile is used for identifying duplicate reads.\
+    \ In paired end\ndata, the entire read pair will be ignored if at least one end\n\
+    is found to be a duplicate read."
+  synonyms:
+  - --ignoreDup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This option can only be used in VERSE-cover_length\nmode. When the\
+    \ read or the read pair hits more than one genes,\nthe number of bases overlapped\
+    \ by each gene will be calculated.\nIf the covered_length difference between the\
+    \ most covered gene\nand the second most covered gene is smaller than this specified\n\
+    value, the read will be set ambiguous. 1 base difference by default."
+  synonyms:
+  - --minDifAmbiguous
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "This option can only be used in intersection_\nnonempty mode. In cases\
+    \ where HTSeq would assign multi-hit reads\nto no_feature, VERSE will assign those\
+    \ to ambiguous."
+  synonyms:
+  - --nonemptyModified
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "BAM files generated with SAMTools or STAR after\nyear 2013 has a slight\
+    \ format change which allows multithreaded\ndecompression. BAM processing will\
+    \ be faster if this option is\nspecifed and multiple core is used."
+  synonyms:
+  - --multithreadDecompress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, template length (TLEN in SAM specification) will be\n\
+    checked when assigning read pairs (templates) to genes. This option\nis only applicable\
+    \ in paired-end mode. The distance thresholds\nshould be specified using -d and\
+    \ -D options."
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum template(read pair) length, 50 by default.
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum template(read pair) length, 600 by default.
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "If specified, only read pairs that have both ends successfully\naligned\
+    \ will be considered for summarization. This option is only\napplicable for paired-end\
+    \ reads."
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, the chimeric read pairs (those that have their two\n\
+    ends aligned to different chromosomes) will NOT be included for\nsummarization.\
+    \ This option is only applicable for paired-end data."
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output version of the program.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show details about the running mode or scheme.
+  synonyms:
+  - -Z
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nVersion 0.1.5\n\n\nUsage: verse [options] -a <annotation_file> -o <output_file>\
+  \ input_file\n\n    Required parameters:\n\n    -a <input>\tGive the name of the\
+  \ annotation file. The program currently only\n              \tsupports GTF format.\n\
+  \    \n    -o <input>\tGive the general name of the output file, e.g., 'Sample_A'.\n\
+  \              \tThe summary file will be named 'Sample_A.summary.txt.'\n      \
+  \        \tThe file containing gene counts will be named 'Sample_A.exon.txt',\n\
+  \              \t'Sample_A.intron.txt', etc.\n    \n    input_file\tGive the name\
+  \ of input read file that contains the read mapping\n              \tresults. Format\
+  \ of input file is automatically determined (SAM/BAM)\n              \tIf it is\
+  \ paired-end data, the file MUST be name-sorted, otherwise\n              \tthe\
+  \ user MUST specify -S, or use samtools to sort it by name.\n    \n    Optional\
+  \ parameters:\n    \n    -z <int>  \tThe Running Mode: 0 by default (featureCounts),\
+  \ 1 (HTSeq-Union),\n              \t 2 (HTSeq-Intersection_strict), 3 (HTSeq-Intersection_nonempty),\n\
+  \              \t 4 (Union_strict), 5 (Cover_length).\n              \tPlease refer\
+  \ to the manual or use '-Z' to check the details of\n              \teach mode.\n\
+  \    \n    -t <input>\tSpecify the feature type. Only rows which have the matched\n\
+  \              \tfeature type in the provided GTF annotation file will be included\n\
+  \              \tfor read counting. 'exon' by default.\n              \tProviding\
+  \ a list of feature types (e.g., -t 'exon;intron;mito')\n              \twill automatically\
+  \ enter hierarchical_assign mode. If the user\n              \twants to assign independently\
+  \ for each feature type, please\n              \tspecify '--assignIndependently'.\
+  \ Use -Z to check the details.\n    \n    -g <input>\tSpecify the gene_identifier\
+  \ attribute, which is normally 'gene_id'\n              \tor 'gene_name'. 'gene_id'\
+  \ by default.\n    \n    -S        \tIf the input file is paired-end data but not\
+  \ sorted by read name,\n              \tthis option MUST be specified.\n    \n \
+  \   -s <int>  \tIndicate if strand-specific read counting should be performed.\n\
+  \              \tIt has three possible values:  0 (unstranded), 1 (stranded) and\n\
+  \              \t2 (reversely stranded). 0 by default.\n    \n    -Q <int>  \tThe\
+  \ minimum mapping quality score a read must satisfy in order\n              \tto\
+  \ be counted. For paired-end reads, at least one end should\n              \tsatisfy\
+  \ this criteria. 0 by default.\n    \n    -l        \tOutput the gene length. This\
+  \ length is feature_type specific,\n              \twhich means the length in an\
+  \ exon_count file will be the total\n              \texon length of each gene, the\
+  \ length in an intron_count file will\n              \tbe the total intron length,\
+  \ etc.\n    \n    -R        \tOutput read assignment details for each read/read\
+  \ pairs. The\n              \tdetails will be saved to a tab-delimited file that\
+  \ contains five\n              \tcolumns including read name, status(assigned or\
+  \ the reason if not\n              \tassigned), feature type and assigned gene name.\n\
+  \    \n    -T <int>  \tNumber of threads used for read assignment. 1 by default.\n\
+  \              \tNote that when running, VERSE will initiate one main thread and\n\
+  \              \tat least one helper thread for read assignment. This option\n \
+  \             \tspecifies the number of helper threads.\n    \n    --singleEnd \
+  \                If specified, VERSE will assume the input is\n              \t\
+  single-end data, and assign every reads individually. If this is\n             \
+  \ \tnot specified(default), the input will be treated as paired-end\n          \
+  \    \tdata. The 'missing mate' count will show how many reads are not\n       \
+  \       \tin pairs. VERSE can correctly assign single-end data in paired-\n    \
+  \          \tend mode, but it will take longer and the reads will all be\n     \
+  \         \tcounted as missing mates. So it is recommended to specify this\n   \
+  \           \tif the user knows it is single-end.\n    \n    --assignIndependently\
+  \       If specified, VERSE will assign reads to listed\n              \tfeature\
+  \ types independently. This has the same effect as running\n              \tVERSE\
+  \ separately for each feature type, except that it only\n              \trequires\
+  \ one run, thus is more efficient.\n    \n    --readExtension5 <int>      Reads\
+  \ are extended upstream by <int> bases from\n              \ttheir 5' end.\n   \
+  \ \n    --readExtension3 <int>      Reads are extended upstream by <int> bases from\n\
+  \              \ttheir 3' end.\n    \n    --minReadOverlap <int>      Specify the\
+  \ minimum number of overlapped bases\n              \trequired to assign a read\
+  \ to a feature. 1 by default. \n    \n    --maxReadNonoverlap <int>   Specify the\
+  \ maximum number of non-overlapped bases\n              \ta read can have. A read\
+  \ is considered no_feature if its number of\n              \tnon-overlapped bases\
+  \ exceeds this threshold. This option is not\n              \tuseful in strict mode\
+  \ since it requires the assigned feature to\n              \toverlap every base\
+  \ of the read.\n    \n    --countSplitAlignmentsOnly  If specified, only split alignments\
+  \ (CIGAR\n              \tstrings containing letter `N') will be counted. All the\
+  \ other\n              \talignments will be ignored. An example of split alignments\
+  \ is\n              \tthe exon-spanning reads in RNA-seq data.\n    \n    --read2pos\
+  \ <5:3>            The read is reduced to its 5' most base or 3'\n             \
+  \ \tmost base. Read summarization is then performed based on the\n             \
+  \ \tsingle base which the read is reduced to.\n    \n    --ignoreDup           \
+  \      If specified, reads that were marked as\n              \tduplicates will\
+  \ be ignored. Bit Ox400 in FLAG field of SAM/BAM\n              \tfile is used for\
+  \ identifying duplicate reads. In paired end\n              \tdata, the entire read\
+  \ pair will be ignored if at least one end\n              \tis found to be a duplicate\
+  \ read.\n    \n    --minDifAmbiguous <int>     This option can only be used in VERSE-cover_length\n\
+  \              \tmode. When the read or the read pair hits more than one genes,\n\
+  \              \tthe number of bases overlapped by each gene will be calculated.\n\
+  \              \tIf the covered_length difference between the most covered gene\n\
+  \              \tand the second most covered gene is smaller than this specified\n\
+  \              \tvalue, the read will be set ambiguous. 1 base difference by default.\n\
+  \    \n    --nonemptyModified          This option can only be used in intersection_\n\
+  \              \tnonempty mode. In cases where HTSeq would assign multi-hit reads\n\
+  \              \tto no_feature, VERSE will assign those to ambiguous.\n    \n  \
+  \  --multithreadDecompress     BAM files generated with SAMTools or STAR after\n\
+  \              \tyear 2013 has a slight format change which allows multithreaded\n\
+  \              \tdecompression. BAM processing will be faster if this option is\n\
+  \              \tspecifed and multiple core is used.\n    \n    Optional paired-end\
+  \ parameters:\n    -P        \tIf specified, template length (TLEN in SAM specification)\
+  \ will be\n              \tchecked when assigning read pairs (templates) to genes.\
+  \ This option\n              \tis only applicable in paired-end mode. The distance\
+  \ thresholds\n              \tshould be specified using -d and -D options.\n   \
+  \ \n    -d <int>  \tMinimum template(read pair) length, 50 by default.\n    \n \
+  \   -D <int>  \tMaximum template(read pair) length, 600 by default.\n    \n    -B\
+  \        \tIf specified, only read pairs that have both ends successfully\n    \
+  \          \taligned will be considered for summarization. This option is only\n\
+  \              \tapplicable for paired-end reads.\n    \n    -C        \tIf specified,\
+  \ the chimeric read pairs (those that have their two\n              \tends aligned\
+  \ to different chromosomes) will NOT be included for\n              \tsummarization.\
+  \ This option is only applicable for paired-end data.\n    \n    \n    Additional\
+  \ Information:\n    \n    -v        \tOutput version of the program.\n    \n   \
+  \ -Z        \tShow details about the running mode or scheme.\n    \n"
+generated_using:
+- --help

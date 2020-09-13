@@ -1,0 +1,90 @@
+!Command
+command:
+- BRS
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: seq file
+  optional: false
+named:
+- !Flag
+  description: ': the quantile used for identification of the singular genomic positions;
+    default is 0.95'
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: ': the window size for calculating the quantiles; default is 200'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ': the output bin file; if unspecified, print to the stdout.'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ': the mappability file; If provided, filter by mappability and the
+    output will contain uniquely mappable positions with no reads mapped'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ': the gap file (two column data file with 1st column the start positions
+    of the gaps and the 2nd column the end positions of the gaps)'
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ': report the summary statistics to the file <string>'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ": If a genomic position has more than multiplicity*quantile number\
+    \ of reads,\nit will be viewed as an outlier\nand the number of reads at this\
+    \ position will be set as multiplicity*quantile;\ndefault is 5.0\n"
+  synonyms:
+  - --multiplicity
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': print this message.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: BRS [options] <seq file>\n<seq file>: a one column file only containing\
+  \ the positions of short reads.\nOptions:\n-h: print this message.\n-q <float>:\
+  \ the quantile used for identification of the singular genomic positions; default\
+  \ is 0.95\n-w <int>: the window size for calculating the quantiles; default is 200\n\
+  -o <string>: the output bin file; if unspecified, print to the stdout.\n-m <string>:\
+  \ the mappability file; If provided, filter by mappability and the output will contain\
+  \ uniquely mappable positions with no reads mapped\n-g <string>: the gap file (two\
+  \ column data file with 1st column the start positions of the gaps and the 2nd column\
+  \ the end positions of the gaps)\n-s <string>: report the summary statistics to\
+  \ the file <string>\n--multiplicity <float>: If a genomic position has more than\
+  \ multiplicity*quantile number of reads,\n                        it will be viewed\
+  \ as an outlier\n                        and the number of reads at this position\
+  \ will be set as multiplicity*quantile;\n                        default is 5.0\n"
+generated_using:
+- -h

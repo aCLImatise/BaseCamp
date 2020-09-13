@@ -1,0 +1,166 @@
+!Command
+command:
+- mason_splicing
+positional: []
+named:
+- !Flag
+  description: "Turn this option off to disable version update notifications of the\n\
+    application. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\nDefault: 1."
+  synonyms:
+  - --version-check
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: Low verbosity.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Higher verbosity.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Highest verbosity.
+  synonyms:
+  - -vv
+  - --very-verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Seed for random number generation. Default: 0.'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Output of materialized contigs. Valid filetypes are: .sam[.*],\n.raw[.*],\
+    \ .frn[.*], .fq[.*], .fna[.*], .ffn[.*], .fastq[.*],\n.fasta[.*], .faa[.*], .fa[.*],\
+    \ and .bam, where * is any of the\nfollowing extensions: gz and bgzf for transparent\
+    \ (de)compression."
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: 'String separating contig name from haplotype number. Default: /.'
+  synonyms:
+  - --haplotype-name-sep
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Path to input GFF or GTF file, must be sorted by reference name.\n\
+    Valid filetypes are: .gtf[.*], .gff[.*], .gff3[.*], and .gff, where\n* is any\
+    \ of the following extensions: gz and bgzf for transparent\n(de)compression."
+  synonyms:
+  - -ig
+  - --in-gff
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Splicing will filter to the records that have this type. Default:\n\
+    exon."
+  synonyms:
+  - --gff-type
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Assign features to their parent using the tag with this name.\nDefault:\
+    \ Parent."
+  synonyms:
+  - --gff-group-by
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Path to FASTA file to read the reference from. Valid filetypes are:\n\
+    .sam[.*], .raw[.*], .gbk[.*], .frn[.*], .fq[.*], .fna[.*], .ffn[.*],\n.fastq[.*],\
+    \ .fasta[.*], .faa[.*], .fa[.*], .embl[.*], and .bam,\nwhere * is any of the following\
+    \ extensions: gz and bgzf for\ntransparent (de)compression."
+  synonyms:
+  - -ir
+  - --input-reference
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Path to the VCF file with variants to apply. Valid filetype is:\n\
+    .vcf[.*], where * is any of the following extensions: gz and bgzf\nfor transparent\
+    \ (de)compression."
+  synonyms:
+  - -iv
+  - --input-vcf
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "mason_splicing - Generating Transcripts\n=======================================\n\
+  \nSYNOPSIS\n    mason_splicing [OPTIONS] -ir IN.fa -ig IN.gff [-iv IN.vcf] -o OUT.fa\n\
+  \nDESCRIPTION\n    Create transcripts from IN.fa using the annotations from IN.gff.\
+  \ The\n    resulting transcripts are written to OUT.fa.\n\n    You can pass an optional\
+  \ VCF file IN.vcf and the transcripts will be\n    created from the haplotypes stored\
+  \ in the VCF file.\n\nOPTIONS\n    -h, --help\n          Display the help message.\n\
+  \    --version-check BOOL\n          Turn this option off to disable version update\
+  \ notifications of the\n          application. One of 1, ON, TRUE, T, YES, 0, OFF,\
+  \ FALSE, F, and NO.\n          Default: 1.\n    --version\n          Display version\
+  \ information.\n    -q, --quiet\n          Low verbosity.\n    -v, --verbose\n \
+  \         Higher verbosity.\n    -vv, --very-verbose\n          Highest verbosity.\n\
+  \    --seed INTEGER\n          Seed for random number generation. Default: 0.\n\
+  \    -o, --out OUTPUT_FILE\n          Output of materialized contigs. Valid filetypes\
+  \ are: .sam[.*],\n          .raw[.*], .frn[.*], .fq[.*], .fna[.*], .ffn[.*], .fastq[.*],\n\
+  \          .fasta[.*], .faa[.*], .fa[.*], and .bam, where * is any of the\n    \
+  \      following extensions: gz and bgzf for transparent (de)compression.\n    --haplotype-name-sep\
+  \ STRING\n          String separating contig name from haplotype number. Default:\
+  \ /.\n    -ig, --in-gff INPUT_FILE\n          Path to input GFF or GTF file, must\
+  \ be sorted by reference name.\n          Valid filetypes are: .gtf[.*], .gff[.*],\
+  \ .gff3[.*], and .gff, where\n          * is any of the following extensions: gz\
+  \ and bgzf for transparent\n          (de)compression.\n    --gff-type INPUT_FILE\n\
+  \          Splicing will filter to the records that have this type. Default:\n \
+  \         exon.\n    --gff-group-by INPUT_FILE\n          Assign features to their\
+  \ parent using the tag with this name.\n          Default: Parent.\n\n  Apply VCF\
+  \ Variants to Reference:\n    -ir, --input-reference INPUT_FILE\n          Path\
+  \ to FASTA file to read the reference from. Valid filetypes are:\n          .sam[.*],\
+  \ .raw[.*], .gbk[.*], .frn[.*], .fq[.*], .fna[.*], .ffn[.*],\n          .fastq[.*],\
+  \ .fasta[.*], .faa[.*], .fa[.*], .embl[.*], and .bam,\n          where * is any\
+  \ of the following extensions: gz and bgzf for\n          transparent (de)compression.\n\
+  \    -iv, --input-vcf INPUT_FILE\n          Path to the VCF file with variants to\
+  \ apply. Valid filetype is:\n          .vcf[.*], where * is any of the following\
+  \ extensions: gz and bgzf\n          for transparent (de)compression.\n\nVCF VARIANT\
+  \ NOTES\n    If the option --input-vcf/-iv is given then the given VCF file is read\
+  \ and\n    the variants are applied to the input reference file. If it is not given\n\
+  \    then the input reference file is taken verbatimly for simulating reads.\n\n\
+  \    There are some restrictions on the VCF file and the application of the\n  \
+  \  variants to the reference will fail if the VCF file is non-conforming. VCF\n\
+  \    files from the mason_variator program are guaranteed to be read.\n\n    Only\
+  \ the haplotypes of the first individual will be generated.\n\nVERSION\n    Last\
+  \ update: 2018-02-02_13:03:05_+0100\n    mason_splicing version: 2.0.9 [e165baf]\n\
+  \    SeqAn version: 2.4.0\n"
+generated_using:
+- --help

@@ -1,0 +1,62 @@
+!Command
+command:
+- yaha
+positional: []
+named:
+- !Flag
+  description: produces alignment output in modified Blast8 format.
+  synonyms:
+  - -o8
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: produces alignment output in SAM format with hard clipping.
+  synonyms:
+  - -osh
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: produces alignment output in SAM format with soft clipping.
+  synonyms:
+  - -oss
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: not a valid option.
+  synonyms:
+  - --help
+  args: !SimpleFlagArg
+    name: is
+  optional: true
+usage_flag:
+version_flag:
+help_text: "YAHA version 0.1.83\n--help is not a valid option.\n\nUsage (Default parameter\
+  \ values shown in parenthesis):\n\nTo create an index:\nyaha -g genomeFilename [-H\
+  \ maxHits (65525)] [-L wordLen (15)] [-S Skip-distance (1)]\nThe genome file can\
+  \ be a FASTA file, or a nib2 file (created by a previous yaha index operation).\n\
+  \nTo align queries:\nyaha -x yahaIndexFile [-q queryFile|(stdin)] [-o8|(-osh)|-oss\
+  \ outputFile|(stdout)][AdditionalOptions]\nThe query file can be either a FASTA\
+  \ file or a FASTQ file.\n-o8     produces alignment output in modified Blast8 format.\n\
+  -osh    produces alignment output in SAM format with hard clipping.\n-oss    produces\
+  \ alignment output in SAM format with soft clipping.\n[-t numThreads (1)]\n\nAdditional\
+  \ General Alignment Options:\n    [-BW BandWidth (5)] [-G maxGap (50)] [-H maxHits\
+  \ (650)] [-M minMatch (25)]\n    [-MD MaxDesert (50)] [-P minPercent-identity (0.9)]\
+  \ [-X Xdropoff (25)]\n\n[-AGS (Y)|N] controls use of Affine Gap Scoring.\nIf -AGS\
+  \ is off, a simple edit distance calculation is done.  If on, the following are\
+  \ used:\n    [-GEC GapExtensionCost (2)] [-GOC GapOpenCost (5)] [-MS MatchScore\
+  \ (1)] [-RC ReplacementCost (3)]\n\n[-OQC (Y)|N] controls use of the Optimal Query\
+  \ Coverage Algorithm.\nIf -OQC if off, all alignments meeting above criteria are\
+  \ output.\nIf on, a set of \"primary\" alignments are found that optimally cover\
+  \ the length of the query, using the following options:\n    [-BP BreakpointPenalty\
+  \ (5)] [-MGDP MaxGenomicDistancePenalty (5)] [-MNO MinNonOverlap (minMatch)]\nThe\
+  \ cost of inserting a breakpoint in the Optimal Coverage Set is BP*MIN(MGDP, Log10(genomic\
+  \ distance between reference loci)).\n\n[-FBS Y|(N)] controls inclusion of \"secondary\"\
+  \ alignments similar to a primary alignment found using OQC.\nIf -FBS is on, the\
+  \ following are used.  A \"secondary\" alignemnt must satisfy BOTH criteria.\n \
+  \   [-PRL PercentReciprocalLength (0.9)] [-PSS PercentSimilarScore (0.9)]\n\nFor\
+  \ a more detailed help message, type yaha -xh.\n"
+generated_using:
+- --help

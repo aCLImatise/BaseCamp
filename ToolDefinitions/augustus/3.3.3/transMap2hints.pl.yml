@@ -1,0 +1,122 @@
+!Command
+command:
+- transMap2hints.pl
+positional:
+- !Positional
+  description: chrom   strand  txStart txEnd   cdsStart        cdsEnd  exonCount       exonStarts      exonEnds
+  position: 0
+  name: name
+  optional: false
+named:
+- !Flag
+  description: If idfile is given, then only those genes are used.
+  synonyms:
+  - --keepids
+  args: !SimpleFlagArg
+    name: idfile
+  optional: true
+- !Flag
+  description: larger number = higher priority (default 4)
+  synonyms:
+  - --priority
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (default 1)
+  synonyms:
+  - --ep_cutoff
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: "(default 18)\neach exon suggested by the input yields 3 exonpart hints:\n\
+    |             exon as suggested by transmap          |\n|  ep   |    ep      \
+    \ |   ep  |\n|ep_cutoff |       |   exon      |       | ep_cutoff |\n|    ep_margin\
+    \     |   exon      |    ep_margin      |"
+  synonyms:
+  - --ep_margin
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: the end of the intronpart interval are shorter by n bp than the intron
+    (default 0)
+  synonyms:
+  - --ip_cutoff
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: UTRpart hint are cut off at the end by n bp (default 15)
+  synonyms:
+  - --utrend_cutoff
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: minimal intron len (default 50)
+  synonyms:
+  - --min_intron_len
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: a gap in the utr must be at least this long to be counted as an intron
+    (default 80)
+  synonyms:
+  - --min_intron_len_utr
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (start and stop codon hint interval size)/2 (default 15)
+  synonyms:
+  - --start_stop_radius
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (tss and tts interval size)/2 (default 100)
+  synonyms:
+  - --tss_tts_radius
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: source identifier in output (default 'T')
+  synonyms:
+  - --source
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/transMap2hints.pl -- convert transmap alignments to hints\
+  \ file\n  include only transmap hints from the list of ids in idfile\n  alignment\
+  \ file format:\n  name\tchrom\tstrand\ttxStart\ttxEnd\tcdsStart\tcdsEnd\texonCount\t\
+  exonStarts\texonEnds\n  this script is quicker when you sort the input file by chromosomes\
+  \ and by gene position, e.g. with\n  cat transmap.gp | sort -n -k 4,4 | sort -s\
+  \ -k 2,2 > transmap.sorted.gp\n\nUsage: /usr/local/bin/transMap2hints.pl --in=transmapfile.psl\
+  \ --out=hints.gff\n  Options:\n  --keepids=idfile       If idfile is given, then\
+  \ only those genes are used.\n  --priority=n           larger number = higher priority\
+  \ (default 4)\n  --ep_cutoff=n          (default 1)\n  --ep_margin=n          (default\
+  \ 18)\n                         each exon suggested by the input yields 3 exonpart\
+  \ hints:\n                          |             exon as suggested by transmap\
+  \          |\n                                     |  ep   |    ep       |   ep\
+  \  |\n                          |ep_cutoff |       |   exon      |       | ep_cutoff\
+  \ |\n                          |    ep_margin     |   exon      |    ep_margin \
+  \     |\n  --ip_cutoff=n          the end of the intronpart interval are shorter\
+  \ by n bp than the intron (default 0)\n  --utrend_cutoff=n      UTRpart hint are\
+  \ cut off at the end by n bp (default 15)\n  --min_intron_len=n     minimal intron\
+  \ len (default 50)\n  --min_intron_len_utr=n a gap in the utr must be at least this\
+  \ long to be counted as an intron (default 80)\n  --start_stop_radius=n  (start\
+  \ and stop codon hint interval size)/2 (default 15)\n  --tss_tts_radius=n     (tss\
+  \ and tts interval size)/2 (default 100)\n  --source=s             source identifier\
+  \ in output (default 'T')\n"
+generated_using:
+- --help

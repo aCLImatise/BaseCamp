@@ -1,0 +1,188 @@
+!Command
+command:
+- fitsdiff
+positional: []
+named:
+- !Flag
+  description: Produce no output and just return a status code.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Max number of data differences (image pixel or table\nelement) to\
+    \ report per extension (default 10)."
+  synonyms:
+  - --num-diffs
+  - -n
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "DEPRECATED. Alias for \"--relative-tolerance\".\nDeprecated, provided\
+    \ for backward compatibility\n(default none)."
+  synonyms:
+  - --difference-tolerance
+  - -d
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: "The relative tolerance for comparison of two numbers,\nspecifically\
+    \ two floating point numbers.  This applies\nto data in both images and tables,\
+    \ and to floating\npoint keyword values in headers (default none)."
+  synonyms:
+  - --rtol
+  - --relative-tolerance
+  - -r
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: "The absolute tolerance for comparison of two numbers,\nspecifically\
+    \ two floating point numbers.  This applies\nto data in both images and tables,\
+    \ and to floating\npoint keyword values in headers (default none)."
+  synonyms:
+  - --atol
+  - --absolute-tolerance
+  - -a
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: "Don't ignore trailing blanks (whitespace) in string\nvalues.  Otherwise\
+    \ trailing blanks both in header\nkeywords/values and in table column values)\
+    \ are not\ntreated as significant i.e., without this option\n'ABCDEF   ' and 'ABCDEF'\
+    \ are considered equivalent."
+  synonyms:
+  - --no-ignore-blanks
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't ignore entirely blank cards in headers.\nNormally fitsdiff does\
+    \ not consider blank cards when\ncomparing headers, but this will ensure that\
+    \ even\nblank cards match up."
+  synonyms:
+  - --no-ignore-blank-cards
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Report ALL differences, overriding command-line\noptions and FITSDIFF_SETTINGS."
+  synonyms:
+  - --exact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output results to this file; otherwise results are\nprinted to stdout."
+  synonyms:
+  - --output-file
+  - -o
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Comma-separated list of keywords not to be compared.\nKeywords may\
+    \ contain wildcard patterns.  To exclude\nall keywords, use \"*\"; make sure to\
+    \ have double or\nsingle quotes around the asterisk on the command-line."
+  synonyms:
+  - --ignore-keywords
+  - -k
+  args: !SimpleFlagArg
+    name: KEYWORDS
+  optional: true
+- !Flag
+  description: "Comma-separated list of keywords whose comments will\nnot be compared.\
+    \  Wildcards may be used as with\n--ignore-keywords."
+  synonyms:
+  - --ignore-comments
+  - -c
+  args: !SimpleFlagArg
+    name: KEYWORDS
+  optional: true
+- !Flag
+  description: "Comma-separated list of fields (i.e. columns) not to\nbe compared.\
+    \  All columns may be excluded using \"*\" as\nwith --ignore-keywords."
+  synonyms:
+  - --ignore-fields
+  - -f
+  args: !SimpleFlagArg
+    name: COLUMNS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage\n=====\n  Compare two FITS image files and report the differences\
+  \ in header keywords and\ndata.\n\n    fitsdiff [options] filename1 filename2\n\n\
+  where filename1 filename2 are the two files to be compared.  They may also be\n\
+  wild cards, in such cases, they must be enclosed by double or single quotes, or\n\
+  they may be directory names.  If both are directory names, all files in each of\n\
+  the directories will be included; if only one is a directory name, then the\ndirectory\
+  \ name will be prefixed to the file name(s) specified by the other\nargument.  for\
+  \ example::\n\n    fitsdiff \"*.fits\" \"/machine/data1\"\n\nwill compare all FITS\
+  \ files in the current directory to the corresponding files\nin the directory /machine/data1.\n\
+  \nOptions\n=======\n--help, -h              show this help message and exit\n--quiet,\
+  \ -q             Produce no output and just return a status code.\n--num-diffs=INTEGER,\
+  \ -n INTEGER\n                        Max number of data differences (image pixel\
+  \ or table\n                        element) to report per extension (default 10).\n\
+  --difference-tolerance=NUMBER, -d NUMBER\n                        DEPRECATED. Alias\
+  \ for \"--relative-tolerance\".\n                        Deprecated, provided for\
+  \ backward compatibility\n                        (default none).\n--rtol=NUMBER,\
+  \ --relative-tolerance=NUMBER, -r NUMBER\n                        The relative tolerance\
+  \ for comparison of two numbers,\n                        specifically two floating\
+  \ point numbers.  This applies\n                        to data in both images and\
+  \ tables, and to floating\n                        point keyword values in headers\
+  \ (default none).\n--atol=NUMBER, --absolute-tolerance=NUMBER, -a NUMBER\n     \
+  \                   The absolute tolerance for comparison of two numbers,\n    \
+  \                    specifically two floating point numbers.  This applies\n  \
+  \                      to data in both images and tables, and to floating\n    \
+  \                    point keyword values in headers (default none).\n--no-ignore-blanks,\
+  \ -b  Don't ignore trailing blanks (whitespace) in string\n                    \
+  \    values.  Otherwise trailing blanks both in header\n                       \
+  \ keywords/values and in table column values) are not\n                        treated\
+  \ as significant i.e., without this option\n                        'ABCDEF   '\
+  \ and 'ABCDEF' are considered equivalent.\n--no-ignore-blank-cards\n           \
+  \             Don't ignore entirely blank cards in headers.\n                  \
+  \      Normally fitsdiff does not consider blank cards when\n                  \
+  \      comparing headers, but this will ensure that even\n                     \
+  \   blank cards match up.\n--exact                 Report ALL differences, overriding\
+  \ command-line\n                        options and FITSDIFF_SETTINGS.\n--output-file=FILE,\
+  \ -o FILE\n                        Output results to this file; otherwise results\
+  \ are\n                        printed to stdout.\n\nHeader Comparison Options\n\
+  -------------------------\n--ignore-keywords=KEYWORDS, -k KEYWORDS\n           \
+  \             Comma-separated list of keywords not to be compared.\n           \
+  \             Keywords may contain wildcard patterns.  To exclude\n            \
+  \            all keywords, use \"*\"; make sure to have double or\n            \
+  \            single quotes around the asterisk on the command-line.\n--ignore-comments=KEYWORDS,\
+  \ -c KEYWORDS\n                        Comma-separated list of keywords whose comments\
+  \ will\n                        not be compared.  Wildcards may be used as with\n\
+  \                        --ignore-keywords.\n\nTable Comparison Options\n------------------------\n\
+  --ignore-fields=COLUMNS, -f COLUMNS\n                        Comma-separated list\
+  \ of fields (i.e. columns) not to\n                        be compared.  All columns\
+  \ may be excluded using \"*\" as\n                        with --ignore-keywords.\n\
+  \nIf the two files are identical within the specified conditions, it will report\n\
+  \"No difference is found.\" If the value(s) of -c and -k takes the form\n'@filename',\
+  \ list is in the text file 'filename', and each line in that text\nfile contains\
+  \ one keyword.\n\nExample\n-------\n\n    fitsdiff -k filename,filtnam1 -n 5 -r\
+  \ 1.e-6 test1.fits test2\n\nThis command will compare files test1.fits and test2.fits,\
+  \ report maximum of 5\ndifferent pixels values per extension, only report data values\
+  \ larger than\n1.e-6 relative to each other, and will neglect the different values\
+  \ of\nkeywords FILENAME and FILTNAM1 (or their very existence).\n\nfitsdiff command-line\
+  \ arguments can also be set using the environment variable\nFITSDIFF_SETTINGS. \
+  \ If the FITSDIFF_SETTINGS environment variable is present,\neach argument present\
+  \ will override the corresponding argument on the command-\nline unless the --exact\
+  \ option is specified.  The FITSDIFF_SETTINGS\nenvironment variable exists to make\
+  \ it easier to change the behavior of\nfitsdiff on a global level, such as in a\
+  \ set of regression tests.\n"
+generated_using:
+- --help

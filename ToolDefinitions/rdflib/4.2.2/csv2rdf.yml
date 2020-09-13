@@ -1,0 +1,40 @@
+!Command
+command:
+- csv2rdf
+positional: []
+named:
+- !Flag
+  description: to read config from a .ini/config file - the file must contain one
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: says
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\ncsv2rdf.py     -b <instance-base>     -p <property-base>     [-c <classname>]\
+  \     [-i <identity column(s)>]     [-l <label columns>]     [-s <N>] [-o <output>]\
+  \     [-f configfile]     [--col<N> <colspec>]     [--prop<N> <property>]     <[-d\
+  \ <delim>]     [-C] [files...]\"\n\nReads csv files from stdin or given files\n\
+  if -d is given, use this delimiter\nif -s is given, skips N lines at the start\n\
+  Creates a URI from the columns given to -i, or automatically by numbering if\nnone\
+  \ is given\nOutputs RDFS labels from the columns given to -l\nif -c is given adds\
+  \ a type triple with the given classname\nif -C is given, the class is defined as\
+  \ rdfs:Class\nOutputs one RDF triple per column in each row.\nOutput is in n3 format.\n\
+  Output is stdout, unless -o is specified\n\nLong options also supported:     --base,\
+  \     --propbase,     --ident,     --class,     --label,     --out,     --defineclass\n\
+  \nLong options --col0, --col1, ...\ncan be used to specify conversion for columns.\n\
+  Conversions can be:\n    float(), int(), split(sep, [more]), uri(base, [class]),\
+  \ date(format)\n\nLong options --prop0, --prop1, ...\ncan be used to use specific\
+  \ properties, rather than ones auto-generated\nfrom the headers\n\n-f says to read\
+  \ config from a .ini/config file - the file must contain one\nsection called csv2rdf,\
+  \ with keys like the long options, i.e.:\n\n[csv2rdf]\nout=output.n3\nbase=http://example.org/\n\
+  col0=split(\";\")\ncol1=split(\";\", uri(\"http://example.org/things/\",\n     \
+  \               \"http://xmlns.com/foaf/0.1/Person\"))\ncol2=float()\ncol3=int()\n\
+  col4=date(\"%Y-%b-%d %H:%M:%S\")\n\n\n"
+generated_using:
+- --help

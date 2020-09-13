@@ -1,0 +1,140 @@
+!Command
+command:
+- markRepeatUnique
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: version
+  optional: false
+named:
+- !Flag
+  description: Mandatory, path G to a gkpStore directory.
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: G
+  optional: true
+- !Flag
+  description: <v>   Mandatory, path T to a tigStore, and version V.
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: Microhet probability (default 1e-5)
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: Microhet cutoff (default -1)
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: Unitig is not unique if astat is below J (cgbUniqueCutoff)
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: J
+  optional: true
+- !Flag
+  description: (unused) (cgbDefinitelyUniqueCutoff)
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: K
+  optional: true
+- !Flag
+  description: Unitig is not unique if a single read spans more than fraction F (default
+    1.0) of unitig
+  synonyms:
+  - -span
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: F  Unitig is not unique if fraction F (default 1.0) of unitig is below
+    read depth D (default 2)
+  synonyms:
+  - -lowcov
+  args: !SimpleFlagArg
+    name: D
+  optional: true
+- !Flag
+  description: "Unitig is not unique if unitig has fewer than R (default 2) reads\n\
+    If R is fractional, the least populous unitigs containing fraction R of reads\
+    \ are marked as repeat\nExample: unitigs with 9 or fewer reads contain 10% of\
+    \ the reads.  -reads 0.10 would mark these are repeat."
+  synonyms:
+  - -reads
+  args: !SimpleFlagArg
+    name: R
+  optional: true
+- !Flag
+  description: Unitig is unique if unitig is at least L (default unlimited) bases
+    long
+  synonyms:
+  - -long
+  args: !SimpleFlagArg
+    name: L
+  optional: true
+- !Flag
+  description: Unitig is not unique if unitig is shorter than S (default 1000) bases
+    long
+  synonyms:
+  - -short
+  args: !SimpleFlagArg
+    name: S
+  optional: true
+- !Flag
+  description: Prefix for output files.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: Do not update the tigStore.
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: markRepeatUnique -g gkpStore -t tigStore version\n\n  -g <G>  \
+  \     Mandatory, path G to a gkpStore directory.\n  -t <T> <v>   Mandatory, path\
+  \ T to a tigStore, and version V.\n\n  -e P         Microhet probability (default\
+  \ 1e-5)\n  -i C         Microhet cutoff (default -1)\n\n  -j J         Unitig is\
+  \ not unique if astat is below J (cgbUniqueCutoff)\n  -k K         (unused) (cgbDefinitelyUniqueCutoff)\n\
+  \n  -span F      Unitig is not unique if a single read spans more than fraction\
+  \ F (default 1.0) of unitig\n  -lowcov D F  Unitig is not unique if fraction F (default\
+  \ 1.0) of unitig is below read depth D (default 2)\n  -reads R     Unitig is not\
+  \ unique if unitig has fewer than R (default 2) reads\n               If R is fractional,\
+  \ the least populous unitigs containing fraction R of reads are marked as repeat\n\
+  \               Example: unitigs with 9 or fewer reads contain 10% of the reads.\
+  \  -reads 0.10 would mark these are repeat.\n  -long L      Unitig is unique if\
+  \ unitig is at least L (default unlimited) bases long\n  -short S     Unitig is\
+  \ not unique if unitig is shorter than S (default 1000) bases long\n\n  -o <name>\
+  \    Prefix for output files.\n  -n           Do not update the tigStore.\n\nAlgorithm:\
+  \  The first rule to trigger will mark the unitig.\n\n  1)  A unitig with a single\
+  \ read is NOT unique.\n  2)  A unitig with fewer than R (-reads) reads is NOT unique.\n\
+  \  3)  A unitig with a single read spanning fraction F (-span) of the unitig is\
+  \ NOT unique.\n  4)  A unitig longer than L (-length) bases IS unique.\n  5)  A\
+  \ unitig with astat less than J (-j) is NOT unique.\n  6)  A unitig with microhet\
+  \ probability P (-e) and astat below C (-i) is NOT unique.\n  7)  A unitig with\
+  \ fraction F below coverage D (-lowcov) is NOT unique.\n  8)  A unitig shorter than\
+  \ S (-short) bases long is NOT unique.\n  9)  Otherwise, the unitig IS unique.\n\
+  No gatekeeper store (-g option) supplied.\nNo input tigStore (-t option) supplied.\n\
+  No output prefix (-o option) supplied.\n"
+generated_using:
+- --help

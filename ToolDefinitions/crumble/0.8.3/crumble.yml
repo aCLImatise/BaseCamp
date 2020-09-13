@@ -1,0 +1,353 @@
+!Command
+command:
+- crumble
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in-file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: out-file
+  optional: false
+named:
+- !Flag
+  description: (,opt...)   Input format and format-options [auto].
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: fmt
+  optional: true
+- !Flag
+  description: (,opt...)   Output format and format-options [SAM].
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: fmt
+  optional: true
+- !Flag
+  description: Increase verbosity
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not add an @PG SAM header line
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: In highly confident regions, quality values above/below
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: qual_cutoff
+  optional: true
+- !Flag
+  description: "'qual_cutoff' [25] are quantised to 'qual_lower' [5]"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: qual_lower
+  optional: true
+- !Flag
+  description: and 'qual_upper' [40] based on agreement to consensus.
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: qual_upper
+  optional: true
+- !Flag
+  description: Quantise qualities (with -[clu] options) in soft-clips too.
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep qualities for seqs with mapping quality <= mqual [0].
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: min_mqual
+  optional: true
+- !Flag
+  description: Whether mismatching bases can have qualities lowered [1]
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: bool
+  optional: true
+- !Flag
+  description: If set, replace quals in good regions with low/high [unset]
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',add    Adjust indel size by (STR_size+add)*mul [1.0,2]'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: STR_mul
+  optional: true
+- !Flag
+  description: ',add    Adjust SNP size by (STR_size+add)*mul [0.0,0]'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: STR_mul
+  optional: true
+- !Flag
+  description: Limit input to region chr:pos(-pos) []
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: Keep quality in regions contained in the supplied bed []
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: keep.bed
+  optional: true
+- !Flag
+  description: Comma separated list of aux tags to keep []
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: tag_list
+  optional: true
+- !Flag
+  description: Comma separated list of aux tags to discard []
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: tag_list
+  optional: true
+- !Flag
+  description: Output suspicious regions to out.bed []
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: out.bed
+  optional: true
+- !Flag
+  description: Keep qual if depth locally >= [999.0] times deeper than expected
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Keep if >= [0.20] reads have soft-clipping
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Keep if >= [1.00] reads have low mapping quality
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Keep if >= [1.00] indel sizes do not fit bi-modal dist.
+  synonyms:
+  - -Z
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Keep if <  [0.00] reads span indel
+  synonyms:
+  - -V
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Minimum snp call confidence [0]
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum indel call confidence [50]
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum discrepancy score [2.0]
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Minimum snp call confidence [70]
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum indel call confidence [125]
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum discrepancy score [1.5]
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: P-block algorithm; quality values +/- 'int' [0]
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Quantise BD:Z: tags to two values (or one if both equal).'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: qual_cutoff
+  optional: true
+- !Flag
+  description: If >= 'qual_cutoff' [0] replace by 'qual_upper' [0]
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: qual_upper
+  optional: true
+- !Flag
+  description: otherwise replace by 'qual_lower' [0].
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: qual_lower
+  optional: true
+- !Flag
+  description: 'Quantise BI:Z: tags to two values (or one if both equal).'
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: qual_cutoff
+  optional: true
+- !Flag
+  description: If >= 'qual_cutoff' [0] replace by 'qual_upper' [0]
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: qual_upper
+  optional: true
+- !Flag
+  description: otherwise replace by 'qual_lower' [0].
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: qual_lower
+  optional: true
+- !Flag
+  description: ': -p0 -Q75 -D150 -X1   -M0.5 -Z0.1 -V0.5 -P3.0 -s1.0,0 -i1.1,2 -m0'
+  synonyms:
+  - '-3'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': -p0 -Q75 -D150 -X1   -M0.5 -Z0.1 -V0.5 -P3.0 -s0.0,0 -i1.1,2 -m0'
+  synonyms:
+  - '-5'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': -p0 -Q75 -D150 -X1   -M1   -Z1   -V0   -P999 -s0.0,0 -i1.1,2 -m0'
+  synonyms:
+  - '-7'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': -p0 -Q70 -D125 -X1.5 -M1   -Z1   -V0   -P999 -s0.0,0 -i1.0,2 -m0'
+  synonyms:
+  - '-8'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': -p8 -Q70 -D125 -X1.5 -M1   -Z1   -V0   -P999 -s0.0,0 -i1.0,2 -m0'
+  synonyms:
+  - '-9'
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Crumble version 0.8.3\n\nUsage: crumble [options] in-file out-file\n\n\
+  Options:\n-I fmt(,opt...)   Input format and format-options [auto].\n-O fmt(,opt...)\
+  \   Output format and format-options [SAM].\n-v                Increase verbosity\n\
+  -z                Do not add an @PG SAM header line\n-c qual_cutoff    In highly\
+  \ confident regions, quality values above/below\n-l qual_lower         'qual_cutoff'\
+  \ [25] are quantised to 'qual_lower' [5]\n-u qual_upper         and 'qual_upper'\
+  \ [40] based on agreement to consensus.\n-S                Quantise qualities (with\
+  \ -[clu] options) in soft-clips too.\n-m min_mqual      Keep qualities for seqs\
+  \ with mapping quality <= mqual [0].\n-L bool           Whether mismatching bases\
+  \ can have qualities lowered [1]\n-B                If set, replace quals in good\
+  \ regions with low/high [unset]\n-i STR_mul,add    Adjust indel size by (STR_size+add)*mul\
+  \ [1.0,2]\n-s STR_mul,add    Adjust SNP size by (STR_size+add)*mul [0.0,0]\n-r region\
+  \         Limit input to region chr:pos(-pos) []\n-R keep.bed       Keep quality\
+  \ in regions contained in the supplied bed []\n-t tag_list       Comma separated\
+  \ list of aux tags to keep []\n-T tag_list       Comma separated list of aux tags\
+  \ to discard []\n-b out.bed        Output suspicious regions to out.bed []\n-P float\
+  \          Keep qual if depth locally >= [999.0] times deeper than expected\n\n\
+  (Preserving whole read qualities; values are fractions of read coverage)\n-C float\
+  \          Keep if >= [0.20] reads have soft-clipping\n-M float          Keep if\
+  \ >= [1.00] reads have low mapping quality\n-Z float          Keep if >= [1.00]\
+  \ indel sizes do not fit bi-modal dist.\n-V float          Keep if <  [0.00] reads\
+  \ span indel\n\n(Calling while ignoring mapping quality)\n-q int            Minimum\
+  \ snp call confidence [0]\n-d int            Minimum indel call confidence [50]\n\
+  -x float          Minimum discrepancy score [2.0]\n\n(Calling with use of mapping\
+  \ quality)\n-Q int            Minimum snp call confidence [70]\n-D int         \
+  \   Minimum indel call confidence [125]\n-X float          Minimum discrepancy score\
+  \ [1.5]\n\n(Horizontal quality smoothing via P-block)\n-p int            P-block\
+  \ algorithm; quality values +/- 'int' [0]\n\n(BD and BI aux tag binary-binning;\
+  \ off by default)\n-f qual_cutoff    Quantise BD:Z: tags to two values (or one if\
+  \ both equal).\n-g qual_upper       If >= 'qual_cutoff' [0] replace by 'qual_upper'\
+  \ [0]\n-e qual_lower       otherwise replace by 'qual_lower' [0].\n-F qual_cutoff\
+  \    Quantise BI:Z: tags to two values (or one if both equal).\n-G qual_upper  \
+  \     If >= 'qual_cutoff' [0] replace by 'qual_upper' [0]\n-E qual_lower       otherwise\
+  \ replace by 'qual_lower' [0].\n\n(Standard compression levels combining the above.)\n\
+  -1,-3,-5,-7,-8,-9 Combination of options for compression level.\nLevel -9 is the\
+  \ default level.  Options used per level are:\n     -1: -p0 -Q75 -D150 -X1  - M0.5\
+  \ -Z0.1 -V0.5 -P3.0 -s1.0,5 -i2.0,1 -m5\n     -3: -p0 -Q75 -D150 -X1   -M0.5 -Z0.1\
+  \ -V0.5 -P3.0 -s1.0,0 -i1.1,2 -m0\n     -5: -p0 -Q75 -D150 -X1   -M0.5 -Z0.1 -V0.5\
+  \ -P3.0 -s0.0,0 -i1.1,2 -m0\n     -7: -p0 -Q75 -D150 -X1   -M1   -Z1   -V0   -P999\
+  \ -s0.0,0 -i1.1,2 -m0\n     -8: -p0 -Q70 -D125 -X1.5 -M1   -Z1   -V0   -P999 -s0.0,0\
+  \ -i1.0,2 -m0\n     -9: -p8 -Q70 -D125 -X1.5 -M1   -Z1   -V0   -P999 -s0.0,0 -i1.0,2\
+  \ -m0\n\nStandard htslib format options apply.  So to create a CRAM file with lossy\n\
+  template names enabled and a larger number of sequences per slice, try:\n\n    crumble\
+  \ -O cram,lossy_names,seqs_per_slice=100000\n\nThe lossy quality encoding works\
+  \ by running two distinct heterozygous consensus\ncalling algorithms; with and without\
+  \ the use of mapping qualities.  Use -q 0\nor -Q 0 to disable one of these if only\
+  \ the other is needed.  When operating,\nany sufficiently high quality SNP (above\
+  \ -q / -Q) with have the qualities for\nthe bases adjusted to 'qual_lower' or 'qual_upper'.\
+  \  Similarly for any high\nquality indel.  An lower quality indel will causes neighbouring\
+  \ bases for\nall sequences at that site to be kept, for the region as large as the\
+  \ indel\nplus an extension along any short tandem repeats (STR), multiplied by \n\
+  'indel_mult' plus an additional 'STR_add'.\n"
+generated_using:
+- -h

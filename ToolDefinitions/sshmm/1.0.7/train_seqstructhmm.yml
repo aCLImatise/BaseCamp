@@ -1,0 +1,147 @@
+!Command
+command:
+- train_seqstructhmm
+positional:
+- !Positional
+  description: FASTA file with sequences for training
+  position: 0
+  name: training_sequences
+  optional: false
+- !Positional
+  description: FASTA file with RNA structures for training
+  position: 1
+  name: training_structures
+  optional: false
+named:
+- !Flag
+  description: 'length of the motif that shall be found (default: 6)'
+  synonyms:
+  - --motif_length
+  - -n
+  args: !SimpleFlagArg
+    name: MOTIF_LENGTH
+  optional: true
+- !Flag
+  description: "Initialize the model randomly (default: initialize\nwith Baum-Welch\
+    \ optimized sequence motif)"
+  synonyms:
+  - --random
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "greedyness of Gibbs sampler: model parameters are\nsampled from among\
+    \ the top f configurations (default:\nf=10), set f to 0 in order to include all\
+    \ possible\nconfigurations"
+  synonyms:
+  - --flexibility
+  - -f
+  args: !SimpleFlagArg
+    name: FLEXIBILITY
+  optional: true
+- !Flag
+  description: "number of sequences to be held-out in each iteration\n(default: 1)"
+  synonyms:
+  - --block_size
+  - -s
+  args: !SimpleFlagArg
+    name: BLOCK_SIZE
+  optional: true
+- !Flag
+  description: "the iterative algorithm is terminated if this\nreduction in sequence\
+    \ structure loglikelihood is not\nreached for any of the 3 last measurements (default:\n\
+    10)"
+  synonyms:
+  - --threshold
+  - -t
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: 'name of the job (default: "job")'
+  synonyms:
+  - --job_name
+  - -j
+  args: !SimpleFlagArg
+    name: JOB_NAME
+  optional: true
+- !Flag
+  description: "directory to write output files to (default: current\ndirectory)"
+  synonyms:
+  - --output_directory
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: 'produce output every <i> iterations (default: i=100)'
+  synonyms:
+  - --termination_interval
+  - -i
+  args: !SimpleFlagArg
+    name: TERMINATION_INTERVAL
+  optional: true
+- !Flag
+  description: do not write model state every i iterations
+  synonyms:
+  - --no_model_state
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "train only using best structure for each sequence\n(default: use all\
+    \ structures)\n"
+  synonyms:
+  - --only_best_shape
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: train_seqstructhmm [-h] [--motif_length MOTIF_LENGTH] [--random]\n\
+  \                          [--flexibility FLEXIBILITY]\n                       \
+  \   [--block_size BLOCK_SIZE] [--threshold THRESHOLD]\n                        \
+  \  [--job_name JOB_NAME]\n                          [--output_directory OUTPUT_DIRECTORY]\n\
+  \                          [--termination_interval TERMINATION_INTERVAL]\n     \
+  \                     [--no_model_state] [--only_best_shape]\n                 \
+  \         training_sequences training_structures\n\nTrains a Hidden Markov Model\
+  \ for the sequence-structure binding preferences of an RNA-binding protein. The\
+  \ model is trained on sequences and structures from a CLIP-seq experiment given\
+  \ in two FASTA-like files.\nDuring the training process, statistics about the model\
+  \ are printed on stdout. In every iteration, the current model and a visualization\
+  \ of the model can be stored in the output directory.\nThe training process terminates\
+  \ when no significant progress has been made for three iterations.\n\npositional\
+  \ arguments:\n  training_sequences    FASTA file with sequences for training\n \
+  \ training_structures   FASTA file with RNA structures for training\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --motif_length\
+  \ MOTIF_LENGTH, -n MOTIF_LENGTH\n                        length of the motif that\
+  \ shall be found (default: 6)\n  --random, -r          Initialize the model randomly\
+  \ (default: initialize\n                        with Baum-Welch optimized sequence\
+  \ motif)\n  --flexibility FLEXIBILITY, -f FLEXIBILITY\n                        greedyness\
+  \ of Gibbs sampler: model parameters are\n                        sampled from among\
+  \ the top f configurations (default:\n                        f=10), set f to 0\
+  \ in order to include all possible\n                        configurations\n  --block_size\
+  \ BLOCK_SIZE, -s BLOCK_SIZE\n                        number of sequences to be held-out\
+  \ in each iteration\n                        (default: 1)\n  --threshold THRESHOLD,\
+  \ -t THRESHOLD\n                        the iterative algorithm is terminated if\
+  \ this\n                        reduction in sequence structure loglikelihood is\
+  \ not\n                        reached for any of the 3 last measurements (default:\n\
+  \                        10)\n  --job_name JOB_NAME, -j JOB_NAME\n             \
+  \           name of the job (default: \"job\")\n  --output_directory OUTPUT_DIRECTORY,\
+  \ -o OUTPUT_DIRECTORY\n                        directory to write output files to\
+  \ (default: current\n                        directory)\n  --termination_interval\
+  \ TERMINATION_INTERVAL, -i TERMINATION_INTERVAL\n                        produce\
+  \ output every <i> iterations (default: i=100)\n  --no_model_state, -w  do not write\
+  \ model state every i iterations\n  --only_best_shape     train only using best\
+  \ structure for each sequence\n                        (default: use all structures)\n"
+generated_using:
+- --help

@@ -1,0 +1,173 @@
+!Command
+command:
+- oases
+positional:
+- !Positional
+  description: ': working directory name'
+  position: 0
+  name: directory
+  optional: false
+- !Positional
+  description: directory/contig-ordering.txt
+  position: 0
+  name: directory/transcripts.fa
+  optional: false
+named:
+- !Flag
+  description: ': print citation to Oases manuscript and exit'
+  synonyms:
+  - --citation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': expected distance between two paired-end reads in the second short-read
+    dataset (default: no read pairing)'
+  synonyms:
+  - -ins_length2
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': expected distance between two long paired-end reads (default: no
+    read pairing)'
+  synonyms:
+  - -ins_length_long
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "*_sd <integer>       : est. standard deviation of respective dataset\
+    \ (default: 10% of corresponding length)\n[replace '*' by nothing, '2' or '_long'\
+    \ as necessary]"
+  synonyms:
+  - -ins_length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': export unused reads in UnusedReads.fa file (default: no)'
+  synonyms:
+  - -unused_reads
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+- !Flag
+  description: ': export assembly to AMOS file (default: no export)'
+  synonyms:
+  - -amos_file
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+- !Flag
+  description: ': export a summary of contig alignment to the reference sequences
+    (default: no)'
+  synonyms:
+  - -alignments
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+- !Flag
+  description: ': removal of low coverage nodes AFTER tour bus or allow the system
+    to infer it (default: 3)'
+  synonyms:
+  - -cov_cutoff
+  args: !SimpleFlagArg
+    name: floating-point
+  optional: true
+- !Flag
+  description: ': minimum number of paired end connections to justify the scaffolding
+    of two long contigs (default: 4)'
+  synonyms:
+  - -min_pair_count
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': Minimum length of output transcripts (default: hash-length)'
+  synonyms:
+  - -min_trans_lgth
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ": minimum ratio allowed between the numbers of observed and estimated\
+    \ connecting read pairs\nMust be part of the open interval ]0,1[ (default: 0.1)"
+  synonyms:
+  - -paired_cutoff
+  args: !SimpleFlagArg
+    name: floating-point
+  optional: true
+- !Flag
+  description: ':Preserve contigs mapping onto long sequences to be preserved from
+    coverage cutoff (default: no)'
+  synonyms:
+  - -merge
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+- !Flag
+  description: ": Remove edges which represent less than that fraction of a nodes\
+    \ outgoing flow\nMust be part of the open interval ]0,1[ (default: 0.01)"
+  synonyms:
+  - -edgeFractionCutoff
+  args: !SimpleFlagArg
+    name: floating-point
+  optional: true
+- !Flag
+  description: ': Allow gaps in transcripts (default: no)'
+  synonyms:
+  - -scaffolding
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+- !Flag
+  description: ": Maximum allowed degree on either end of a contigg to consider it\
+    \ 'unique' (default: 3)"
+  synonyms:
+  - -degree_cutoff
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': this help message'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: ': print version and exit'
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage:\n./oases directory [options]\n\n\tdirectory\t\t\t: working directory\
+  \ name\n\nStandard options:\n\t--help\t\t\t\t: this help message\n\t--version\t\t\
+  \t: print version and exit\n\t--citation\t\t\t: print citation to Oases manuscript\
+  \ and exit\n\t-ins_length2 <integer>\t\t: expected distance between two paired-end\
+  \ reads in the second short-read dataset (default: no read pairing)\n\t-ins_length_long\
+  \ <integer>\t: expected distance between two long paired-end reads (default: no\
+  \ read pairing)\n\t-ins_length*_sd <integer>\t: est. standard deviation of respective\
+  \ dataset (default: 10% of corresponding length)\n\t\t[replace '*' by nothing, '2'\
+  \ or '_long' as necessary]\n\t-unused_reads <yes|no>\t\t: export unused reads in\
+  \ UnusedReads.fa file (default: no)\n\t-amos_file <yes|no>\t\t: export assembly\
+  \ to AMOS file (default: no export)\n\t-alignments <yes|no>\t\t: export a summary\
+  \ of contig alignment to the reference sequences (default: no)\n\nAdvanced options:\n\
+  \t-cov_cutoff <floating-point>\t: removal of low coverage nodes AFTER tour bus or\
+  \ allow the system to infer it (default: 3)\n\t-min_pair_count <integer>\t: minimum\
+  \ number of paired end connections to justify the scaffolding of two long contigs\
+  \ (default: 4)\n\t-min_trans_lgth <integer>\t: Minimum length of output transcripts\
+  \ (default: hash-length)\n\t-paired_cutoff <floating-point>\t: minimum ratio allowed\
+  \ between the numbers of observed and estimated connecting read pairs\n\t\tMust\
+  \ be part of the open interval ]0,1[ (default: 0.1)\n\t-merge <yes|no>\t\t:Preserve\
+  \ contigs mapping onto long sequences to be preserved from coverage cutoff (default:\
+  \ no)\n\t-edgeFractionCutoff <floating-point>\t: Remove edges which represent less\
+  \ than that fraction of a nodes outgoing flow\n\t\tMust be part of the open interval\
+  \ ]0,1[ (default: 0.01)\n\t-scaffolding <yes|no>\t\t: Allow gaps in transcripts\
+  \ (default: no)\n\t-degree_cutoff <integer>\t: Maximum allowed degree on either\
+  \ end of a contigg to consider it 'unique' (default: 3)\n\nOutput:\n\tdirectory/transcripts.fa\n\
+  \tdirectory/contig-ordering.txt\n"
+generated_using:
+- --help

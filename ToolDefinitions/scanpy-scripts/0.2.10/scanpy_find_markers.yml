@@ -1,0 +1,197 @@
+!Command
+command:
+- scanpy-find-markers
+positional:
+- !Positional
+  description: '[default: 1000]'
+  position: 0
+  name: format.
+  optional: false
+- !Positional
+  description: '[required]'
+  position: 1
+  name: consider.
+  optional: false
+named:
+- !Flag
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Chunk size for writing output in zarr
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ --no-raw            Use expression values in `.raw` if present.\n\
+    [default: True]"
+  synonyms:
+  - --use-raw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The key of the observations grouping to
+  synonyms:
+  - -g
+  - --groupby
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Subset of groups to which comparison shall\nbe restricted.  [default:\
+    \ all]"
+  synonyms:
+  - --groups
+  args: !OptionalFlagArg
+    names:
+    - TEXT
+    - TEXT...
+    separator: ','
+  optional: true
+- !Flag
+  description: "If \"rest\", compare each group to the union\nof the rest of the groups.\
+    \ If a group\nidentifier, compare with respect to this\ngroup.  [default: rest]"
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "The number of genes that appear in the\nretured tables. By default\
+    \ return all\navailable genes depending on the value of\n--use-raw."
+  synonyms:
+  - -n
+  - --n-genes
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "[logreg|t-test|wilcoxon|t-test_overestim_var]\nMethod of performing\
+    \ differential expression\nanalysis.  [default: t-test_overestim_var]"
+  synonyms:
+  - --method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[benjamini-hochberg|bonferroni]\nP-value correction method. Used only\
+    \ for\n\"t-test\", \"t-test_overestim_var\" and\n\"wilcoxon\".  [default: benjamini-hochberg]"
+  synonyms:
+  - --corr-method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Rank genes by the absolute value of the\nscore, not by the score.\
+    \ The returned scores\nare never the absolute values.  [default:\nFalse]"
+  synonyms:
+  - --rankby-abs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":VAL[,TEXT:VAL...]\nParameters for filtering DE results, valid\nparameters\
+    \ are: \"min_in_group_fraction\"\n(float), \"max_out_group_fraction\" (float),\n\
+    \"min_fold_change\" (float)."
+  synonyms:
+  - --filter-params
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: ":VAL[,TEXT:VAL...]\nParameters passed to\n`sklearn.linear_model.LogisticRegression`."
+  synonyms:
+  - --logreg-param
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Tab-separated table to store results of\ndifferential expression analysis."
+  synonyms:
+  - --save
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-find-markers [OPTIONS] <input_obj> <output_obj>\n\n  Find\
+  \ markers for each clusters.\n\n  <input_obj>:   input file in format specfied by\
+  \ --input-format\n  <output_obj>:  output file in format specfied by --output-format\n\
+  \nOptions:\n  -f, --input-format [anndata|loom]\n                              \
+  \    Input object format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n\
+  \                                  Output object format.  [default: anndata]\n \
+  \ -z, --zarr-chunk-size INTEGER   Chunk size for writing output in zarr\n      \
+  \                            format.  [default: 1000]\n  -X, --export-mtx PATH \
+  \          When specified, using it as prefix for\n                            \
+  \      exporting mtx files. If not empty and not\n                             \
+  \     ending with \"/\" or \"_\", a \"_\" will be\n                            \
+  \      appended.\n  --show-obj [stdout|stderr]      Print output object summary\
+  \ info to\n                                  specified stream.\n  --use-raw / --no-raw\
+  \            Use expression values in `.raw` if present.\n                     \
+  \             [default: True]\n  -g, --groupby TEXT              The key of the\
+  \ observations grouping to\n                                  consider.  [required]\n\
+  \  --groups TEXT[,TEXT...]         Subset of groups to which comparison shall\n\
+  \                                  be restricted.  [default: all]\n  --reference\
+  \ TEXT                If \"rest\", compare each group to the union\n           \
+  \                       of the rest of the groups. If a group\n                \
+  \                  identifier, compare with respect to this\n                  \
+  \                group.  [default: rest]\n  -n, --n-genes INTEGER           The\
+  \ number of genes that appear in the\n                                  retured\
+  \ tables. By default return all\n                                  available genes\
+  \ depending on the value of\n                                  --use-raw.\n  --method\
+  \ [logreg|t-test|wilcoxon|t-test_overestim_var]\n                              \
+  \    Method of performing differential expression\n                            \
+  \      analysis.  [default: t-test_overestim_var]\n  --corr-method [benjamini-hochberg|bonferroni]\n\
+  \                                  P-value correction method. Used only for\n  \
+  \                                \"t-test\", \"t-test_overestim_var\" and\n    \
+  \                              \"wilcoxon\".  [default: benjamini-hochberg]\n  --rankby-abs\
+  \                    Rank genes by the absolute value of the\n                 \
+  \                 score, not by the score. The returned scores\n               \
+  \                   are never the absolute values.  [default:\n                \
+  \                  False]\n  --filter-params TEXT:VAL[,TEXT:VAL...]\n          \
+  \                        Parameters for filtering DE results, valid\n          \
+  \                        parameters are: \"min_in_group_fraction\"\n           \
+  \                       (float), \"max_out_group_fraction\" (float),\n         \
+  \                         \"min_fold_change\" (float).\n  --logreg-param TEXT:VAL[,TEXT:VAL...]\n\
+  \                                  Parameters passed to\n                      \
+  \            `sklearn.linear_model.LogisticRegression`.\n  --save FILE         \
+  \            Tab-separated table to store results of\n                         \
+  \         differential expression analysis.\n  --help                          Show\
+  \ this message and exit.\n"
+generated_using:
+- --help

@@ -1,0 +1,400 @@
+!Command
+command:
+- sciphi
+positional: []
+named:
+- !Flag
+  description: Name of the BAM files used to create the mpileup.
+  synonyms:
+  - --in
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Directory from which to read intermediate results.
+  synonyms:
+  - --il
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "File name of exclusion list (VCF format), containing\nloci which should\
+    \ be ignored."
+  synonyms:
+  - --ex
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "File name of mutations to exclude during the\nsequencing error rate\
+    \ estimation (VCF format)."
+  synonyms:
+  - --me
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "File name of inclusion list (VCF format) containing\nVariants (CHROM,\
+    \ POS, REF, ALT) that should be\nincluded."
+  synonyms:
+  - --inc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Prefix of output files.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "This option is deprecated. The index will be saved in\na folder specified\
+    \ with -o in \"last_index\". If\ndesired, one can continue from here to explore\
+    \ more\nsearch space."
+  synonyms:
+  - --ol
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Sampling step. If a value x different from 0 is\nspecified, every\
+    \ x iteration, after the burn in phase,\nan index will be writen to disk to provide\
+    \ a posterior\nsampling. [0]"
+  synonyms:
+  - --sa
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Maximal number of iterations before sampling form the\nposterior distribution\
+    \ of the mutation to cell\nassignment. [1000000]"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Number of iterations in which the mutation to cell\nassignment is\
+    \ sampled. [100000]"
+  synonyms:
+  - --ls
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Set to 1 if zygosity should be learned. The zygosity\nrate is the\
+    \ fraction of mutations which are homozygous\nin all cells. [0]"
+  synonyms:
+  - --lz
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Zygosity rate. [0]
+  synonyms:
+  - --zyg
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Prior mutation rate [0.0001].
+  synonyms:
+  - --pr
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --uniq ] arg      Mark loci with this number of cells being mutated\
+    \ as\n\"PASS\". [1]"
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Parameter estimation rate, i.e. the fraction of loops\nused to estimate\
+    \ the different parameters. [0.2]"
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Data usage rate increment steps. In order to speed up\nthe algorithm\
+    \ one can choose to iteratively add more\nand more of the candidate loci while\
+    \ learning the tree\nmodel. For example, 0.1 would mean to start with 10%\nof\
+    \ the data, then use 20%, and so on. Per default, all\ndata is used from the start.\
+    \ [1]"
+  synonyms:
+  - --ur
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Seed for the random number generator. [42]
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Tree score type [m (max), s (sum)]. [s]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Mean error rate. If the sequencing error rate should\nnot be learned\
+    \ \"--ese 0\" one can specify it. [0.001]"
+  synonyms:
+  - --wildMean
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Initial overdispersion for wild type. The\noverdispersion is learned\
+    \ during the tree traversal.\n[100]"
+  synonyms:
+  - --wildOverDis
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Initial overdispersion for mutant type. The\noverdispersion is learned\
+    \ during the tree\ntraversal.[2]"
+  synonyms:
+  - --mutationOverDis
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Estimate the sequencing error rate. [1]
+  synonyms:
+  - --ese
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "PCR substitution rate. An error early during the PCR\namplification\
+    \ can result in high allele fractions.\nThese are typically filtered out by requiring\
+    \ at least\ntwo cells to be mutated. However, sometimes the PCR\nerror in one\
+    \ cell is a real mutation in others. If in\nsuch a scenario the coverage for the\
+    \ cell with the PCR\nerror is high, SCIPhI will introduce false positives.\nThis\
+    \ can be avoided by specifying the PCR error rate.\nAs these events are rather\
+    \ unlikely very small values,\nsuch as 0.0000001 should be chosen. In practice\
+    \ 0\nworks very well.  [0]"
+  synonyms:
+  - --sub
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Window size in which only x (see option \"--mmw\")\nmutations are\
+    \ allowed to be present. Some sequences\nare prone to produce sequencing errors,\
+    \ which can be\navoided by specifying a range in which only x\nmutations are allowed.\
+    \ [1]"
+  synonyms:
+  - --md
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Maximum number of mutations allowed per window. [1]
+  synonyms:
+  - --mmw
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Number of tumor cells required to have a mutation in\norder to be\
+    \ called. [2]"
+  synonyms:
+  - --cwm
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Number of cells which need to pass the filters\ndescribed below. [2]"
+  synonyms:
+  - --mnp
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Minimum coverage required per cell. [1]
+  synonyms:
+  - --mc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Minimum number of reads required to support the\nalternative. [3]"
+  synonyms:
+  - --ms
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Minimum required frequency of reads supporting the\nalternative per\
+    \ cell. [0]"
+  synonyms:
+  - --mf
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Mean of acceptable variant allele frequency across all\ncells for\
+    \ a specific locus. Mapping artifacts may\nresult in low allele frequencies across\
+    \ cells. In\norder to filter these events out we apply a\nlog-likelihood ratio\
+    \ test where the sequencing error\nmodel has a mean of this value. [0.25]"
+  synonyms:
+  - --mff
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Loci with up to this number of alternative supporting\nreads in the\
+    \ bulk control sample will be skipped as\ngermline. [2]"
+  synonyms:
+  - --bns
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Minimum required coverage of reads in the bulk control\nsample. [6]"
+  synonyms:
+  - --bnc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Normal cell filter. Currently there are three options:\n(0) Do not\
+    \ use the normal cells for filtering; (1) use\na simple filtering scheme excluding\
+    \ mutations if the\nprobability of being mutated is higher than not being\nmutated\
+    \ for any cell independently; (2) filter\nmutations where the probability that\
+    \ at least one cell\nis mutated is higher than no cell is mutated. Note\nthat\
+    \ in contrast to (1) the cells are not independent\nand cells with no alternative\
+    \ support need to be\nexplained via dropout events. [1]"
+  synonyms:
+  - --ncf
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Maximum number of control cells allowed to be mutated.\n[0]"
+  synonyms:
+  - --mnc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Use normal cells for tree reconstruction. [false]
+  synonyms:
+  - --unc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '[ --help ]          Print this help'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "SCIPhI v0.1.7\nReading the config file: ... Allowed options:\n\nGeneric\
+  \ options:\n  -h [ --help ]          Print this help\n\nConfiguration:\n  --in arg\
+  \               Name of the BAM files used to create the mpileup.\n  --il arg  \
+  \             Directory from which to read intermediate results.\n  --ex arg   \
+  \            File name of exclusion list (VCF format), containing \n           \
+  \              loci which should be ignored.\n  --me arg               File name\
+  \ of mutations to exclude during the \n                         sequencing error\
+  \ rate estimation (VCF format).\n  --inc arg              File name of inclusion\
+  \ list (VCF format) containing \n                         Variants (CHROM, POS,\
+  \ REF, ALT) that should be \n                         included.\n  -o arg      \
+  \           Prefix of output files.\n  --ol arg               This option is deprecated.\
+  \ The index will be saved in \n                         a folder specified with\
+  \ -o in \"last_index\". If \n                         desired, one can continue\
+  \ from here to explore more \n                         search space.\n  --sa arg\
+  \               Sampling step. If a value x different from 0 is \n             \
+  \            specified, every x iteration, after the burn in phase,\n          \
+  \               an index will be writen to disk to provide a posterior\n       \
+  \                  sampling. [0]\n  -l arg                 Maximal number of iterations\
+  \ before sampling form the \n                         posterior distribution of\
+  \ the mutation to cell \n                         assignment. [1000000]\n  --ls\
+  \ arg               Number of iterations in which the mutation to cell \n      \
+  \                   assignment is sampled. [100000]\n  --lz arg               Set\
+  \ to 1 if zygosity should be learned. The zygosity \n                         rate\
+  \ is the fraction of mutations which are homozygous\n                         in\
+  \ all cells. [0]\n  --zyg arg              Zygosity rate. [0]\n  --pr arg      \
+  \         Prior mutation rate [0.0001].\n  -u [ --uniq ] arg      Mark loci with\
+  \ this number of cells being mutated as \n                         \"PASS\". [1]\n\
+  \  -e arg                 Parameter estimation rate, i.e. the fraction of loops\
+  \ \n                         used to estimate the different parameters. [0.2]\n\
+  \  --ur arg               Data usage rate increment steps. In order to speed up\
+  \ \n                         the algorithm one can choose to iteratively add more\
+  \ \n                         and more of the candidate loci while learning the tree\n\
+  \                         model. For example, 0.1 would mean to start with 10% \n\
+  \                         of the data, then use 20%, and so on. Per default, all\n\
+  \                         data is used from the start. [1]\n  --seed arg       \
+  \      Seed for the random number generator. [42]\n  -t arg                 Tree\
+  \ score type [m (max), s (sum)]. [s]\n  --wildMean arg         Mean error rate.\
+  \ If the sequencing error rate should \n                         not be learned\
+  \ \"--ese 0\" one can specify it. [0.001]\n  --wildOverDis arg      Initial overdispersion\
+  \ for wild type. The \n                         overdispersion is learned during\
+  \ the tree traversal. \n                         [100]\n  --mutationOverDis arg\
+  \  Initial overdispersion for mutant type. The \n                         overdispersion\
+  \ is learned during the tree \n                         traversal.[2]\n  --ese arg\
+  \              Estimate the sequencing error rate. [1]\n  --sub arg            \
+  \  PCR substitution rate. An error early during the PCR \n                     \
+  \    amplification can result in high allele fractions. \n                     \
+  \    These are typically filtered out by requiring at least\n                  \
+  \       two cells to be mutated. However, sometimes the PCR \n                 \
+  \        error in one cell is a real mutation in others. If in \n              \
+  \           such a scenario the coverage for the cell with the PCR\n           \
+  \              error is high, SCIPhI will introduce false positives. \n        \
+  \                 This can be avoided by specifying the PCR error rate. \n     \
+  \                    As these events are rather unlikely very small values,\n  \
+  \                       such as 0.0000001 should be chosen. In practice 0 \n   \
+  \                      works very well.  [0]\n  --md arg               Window size\
+  \ in which only x (see option \"--mmw\") \n                         mutations are\
+  \ allowed to be present. Some sequences \n                         are prone to\
+  \ produce sequencing errors, which can be \n                         avoided by\
+  \ specifying a range in which only x \n                         mutations are allowed.\
+  \ [1]\n  --mmw arg              Maximum number of mutations allowed per window.\
+  \ [1]\n  --cwm arg              Number of tumor cells required to have a mutation\
+  \ in \n                         order to be called. [2]\n  --mnp arg           \
+  \   Number of cells which need to pass the filters \n                         described\
+  \ below. [2]\n  --mc arg               Minimum coverage required per cell. [1]\n\
+  \  --ms arg               Minimum number of reads required to support the \n   \
+  \                      alternative. [3]\n  --mf arg               Minimum required\
+  \ frequency of reads supporting the \n                         alternative per cell.\
+  \ [0]\n  --mff arg              Mean of acceptable variant allele frequency across\
+  \ all\n                         cells for a specific locus. Mapping artifacts may\
+  \ \n                         result in low allele frequencies across cells. In \n\
+  \                         order to filter these events out we apply a \n       \
+  \                  log-likelihood ratio test where the sequencing error \n     \
+  \                    model has a mean of this value. [0.25]\n  --bns arg       \
+  \       Loci with up to this number of alternative supporting \n               \
+  \          reads in the bulk control sample will be skipped as \n              \
+  \           germline. [2]\n  --bnc arg              Minimum required coverage of\
+  \ reads in the bulk control\n                         sample. [6]\n  --ncf arg \
+  \             Normal cell filter. Currently there are three options:\n         \
+  \                (0) Do not use the normal cells for filtering; (1) use\n      \
+  \                   a simple filtering scheme excluding mutations if the \n    \
+  \                     probability of being mutated is higher than not being \n \
+  \                        mutated for any cell independently; (2) filter \n     \
+  \                    mutations where the probability that at least one cell\n  \
+  \                       is mutated is higher than no cell is mutated. Note \n  \
+  \                       that in contrast to (1) the cells are not independent \n\
+  \                         and cells with no alternative support need to be \n  \
+  \                       explained via dropout events. [1]\n  --mnc arg         \
+  \     Maximum number of control cells allowed to be mutated.\n                 \
+  \        [0]\n  --unc arg              Use normal cells for tree reconstruction.\
+  \ [false]\n\n"
+generated_using:
+- --help

@@ -1,0 +1,74 @@
+!Command
+command:
+- dsk
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input_file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: kmer_size
+  optional: false
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -histo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: out_prefix
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: max_disk_space
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: max_memory
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: min_abundance
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "dsk: [d]isk [s]treaming of [k]-mers (constant-memory k-mer counting)\n\
+  usage:\n dsk input_file kmer_size [-t min_abundance] [-m max_memory] [-d max_disk_space]\
+  \ [-o out_prefix] [-histo] [-c] [-b]\nInput file can be fasta, fastq, gzipped or\
+  \ not, or a text file containing one file name per line.\ndetails:\n [-t min_abundance]\
+  \ filters out k-mers seen ( < min_abundance ) times, default: 1 (all kmers are returned)\n\
+  \ [-m max_memory] is in MB, default: min(total system memory / 2, 5 GB) \n [-d max_disk_space]\
+  \ is in MB, default: min(available disk space / 2, reads file size)\n [-o out_prefix]\
+  \ saves results in [out_prefix].solid_kmers. default out_prefix = basename(input_file)\n\
+  \ [-histo] outputs histogram of kmers abundance\n [-c] write a Minia-compatible\
+  \ output file, i.e. discard k-mer counts\n [-b] use existing binary-converted reads,\
+  \ default: no (always recompute binary reads)\nRunning dsk version 1.6906\n"
+generated_using:
+- --help

@@ -1,0 +1,80 @@
+!Command
+command:
+- taxserver.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: tree
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell and Shijie Yao\nLast modified Jan 7, 2020\n\
+  \nDescription:   Starts a server that translates NCBI taxonomy.\n\nUsage:  taxserver.sh\
+  \ tree=<taxtree file> table=<gitable file> port=<number>\n\nUsage examples:\ntaxserver.sh\
+  \ tree=tree.taxtree.gz table=gitable.int1d.gz port=1234\n\nOn Genepool:\ntaxserver.sh\
+  \ tree=auto table=auto port=1234\n\nFor accession number support, add accession=<something>\
+  \  E.g.:\n\nExternal:\ntaxserver.sh -Xmx45g tree=tree.taxtree.gz table=gitable.int1d.gz\
+  \ accession=prot.accession2taxid.gz,nucl_wgs.accession2taxid.gz port=1234\n\nOn\
+  \ Genepool:\ntaxserver.sh tree=auto table=auto accession=auto port=1234\n\nIf all\
+  \ expected files are in some specific location, you can also do this:\ntaxserver.sh\
+  \ -Xmx45g tree=auto table=auto accession=auto port=1234 taxpath=/path/to/files\n\
+  \nTo kill remotely, launch with the flag kill=password, then access /kill/password\n\
+  \nParameters:\n\ntree=auto           taxtree path.  Always necessary.\ntable=auto\
+  \          gitable path.  Necessary for gi number support.\naccession=null     \
+  \ Comma-delimited paths of accession files.\n                    Necessary for accession\
+  \ support.\nimg=null            IMG dump file.\npattern=null        Pattern file,\
+  \ for storing accessions more efficiently.\nport=3068           Port number.\ndomain=\
+  \             Domain to be displayed in the help message.\n                    Default\
+  \ is taxonomy.jgi-psf.org.\ndbname=             Set the name of the database in\
+  \ the help message.\nsketchcomparethreads=16    Limit compare threads per connection.\n\
+  sketchloadthreads=4 Limit load threads (for local queries of fastq).\nsketchonly=f\
+  \        Don't hash taxa names.\nk=31                Kmer length, 1-32.  To maximize\
+  \ sensitivity and \n                    specificity, dual kmer lengths may be used:\
+  \  k=31,24\nprealloc=f          Preallocate some data structures for faster loading.\n\
+  \nSecurity parameters:\n\nkillcode=           Set a password to allow remote killing.\n\
+  oldcode=            Set the password of a prior instance.\noldaddress=         Attempt\
+  \ to kill a prior instance after initialization,\n                    by sending\
+  \ the old code to this address.  For example,\n                    taxonomy.jgi-psf.org/kill/\n\
+  allowremotefileaccess=f   Allow non-internal queries to use internal files\n   \
+  \                 for sketching in local mode.\nallowlocalhost=f    Consider a query\
+  \ internal if it originates from localhost\n                    without being proxied.\n\
+  addressprefix=128.  Queries originating from this IP address prefix will be\n  \
+  \                  considered internal.\n\n\nUnrecognized parameters with no = symbol\
+  \ will be treated as sketch files.\nOther sketch parameters such as index and k\
+  \ are also allowed.\nPlease consult bbmap/docs/guides/TaxonomyGuide.txt and BBSketchGuide.txt\
+  \ for more information.\n\nJava Parameters:\n-Xmx                This will set Java's\
+  \ memory usage, overriding autodetection.\n                    -Xmx20g will specify\
+  \ 20 gigs of RAM, and -Xmx200m will specify 200 megs.\n                    The max\
+  \ is typically 85% of physical memory.\n-eoom               This flag will cause\
+  \ the process to exit if an\n                    out-of-memory exception occurs.\
+  \  Requires Java 8u92+.\n-da                 Disable assertions.\n\nPlease contact\
+  \ Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help

@@ -1,0 +1,102 @@
+!Command
+command:
+- kodoja_retrieve.py
+positional: []
+named:
+- !Flag
+  description: Path to directory of kodoja_search results, required
+  synonyms:
+  - -o
+  - --file_dir
+  args: !SimpleFlagArg
+    name: FILE_DIR
+  optional: true
+- !Flag
+  description: Read 1 file path, required
+  synonyms:
+  - -r1
+  - --read1
+  args: !SimpleFlagArg
+    name: READ1
+  optional: true
+- !Flag
+  description: 'Read 2 file path, default: False'
+  synonyms:
+  - -r2
+  - --read2
+  args: !SimpleFlagArg
+    name: READ2
+  optional: true
+- !Flag
+  description: 'Sequence data format, default: fastq'
+  synonyms:
+  - -f
+  - --user_format
+  args: !SimpleFlagArg
+    name: USER_FORMAT
+  optional: true
+- !Flag
+  description: "Virus tax ID for subsetting, default: All viral\nsequences"
+  synonyms:
+  - -t
+  - --taxID
+  args: !SimpleFlagArg
+    name: TAXID
+  optional: true
+- !Flag
+  description: Include sequences classified at genus
+  synonyms:
+  - -g
+  - --genus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only subset sequences identified by both tools
+  synonyms:
+  - -s
+  - --stringent
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: kodoja_retrieve.py [-h] [--version] -o FILE_DIR -r1 READ1 [-r2\
+  \ READ2]\n                          [-f USER_FORMAT] [-t TAXID] [-g] [-s]\n\nKodoja\
+  \ Retrieve is used with the output of Kodoja Search to\ngive subsets of your input\
+  \ sequencing reads matching viruses.\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  --version             show program's version\
+  \ number and exit\n  -o FILE_DIR, --file_dir FILE_DIR\n                        Path\
+  \ to directory of kodoja_search results, required\n  -r1 READ1, --read1 READ1\n\
+  \                        Read 1 file path, required\n  -r2 READ2, --read2 READ2\n\
+  \                        Read 2 file path, default: False\n  -f USER_FORMAT, --user_format\
+  \ USER_FORMAT\n                        Sequence data format, default: fastq\n  -t\
+  \ TAXID, --taxID TAXID\n                        Virus tax ID for subsetting, default:\
+  \ All viral\n                        sequences\n  -g, --genus           Include\
+  \ sequences classified at genus\n  -s, --stringent       Only subset sequences identified\
+  \ by both tools\n\nThe main output of ``kodoja_search.py`` is a file called ``virus_table.txt``\n\
+  (a table summarising the potential viruses found), but the specified output\ndirectory\
+  \ will also contain ``kodoja_VRL.txt`` (a table listing the read\nidentifiers).\
+  \ This second file is used as input to ``kodoja_retrieve.py``\nalong with the original\
+  \ sequencing read files.\n\nA sub-directory ``subreads/`` will be created in the\
+  \ output directory,\nwhich will include either FASTA or FASTQ files named as follows:\n\
+  \n* ``subset_files/virus_all_sequences1.fasta`` FASTA output\n* ``subset_files/virus_all_sequences1.fastq``\
+  \ FASTQ output\n\nAnd, for paired end datasets,\n\n* ``subset_files/virus_all_sequences2.fasta``\
+  \ FASTA output\n* ``subset_files/virus_all_sequences2.fastq`` FASTQ output\n\nHowever,\
+  \ if the ``-t 12345`` option is used rather than ``virus_all_...``\nthe files will\
+  \ be named ``virus_12345_...`` instead.\n\nSee also https://github.com/abaizan/kodoja/wiki/Kodoja-Manual\n"
+generated_using:
+- --help

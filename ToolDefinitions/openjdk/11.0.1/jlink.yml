@@ -1,0 +1,258 @@
+&id001 !Command
+command:
+- jlink
+positional: []
+named:
+- !Flag
+  description: '[,<mod>...]    Root modules to resolve'
+  synonyms:
+  - --add-modules
+  args: !SimpleFlagArg
+    name: mod
+  optional: true
+- !Flag
+  description: "Link in service provider modules and\ntheir dependences"
+  synonyms:
+  - --bind-services
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enable compression of resources:\nLevel 0: No compression\nLevel 1:\
+    \ Constant string sharing\nLevel 2: ZIP"
+  synonyms:
+  - -c
+  - --compress
+  args: !SimpleFlagArg
+    name: 0|1|2
+  optional: true
+- !Flag
+  description: Disable the plugin mentioned
+  synonyms:
+  - --disable-plugin
+  args: !SimpleFlagArg
+    name: pluginname
+  optional: true
+- !Flag
+  description: "Byte order of generated jimage\n(default:native)"
+  synonyms:
+  - --endian
+  args: !SimpleFlagArg
+    name: little|big
+  optional: true
+- !Flag
+  description: "Suppress a fatal error when signed\nmodular JARs are linked in the\
+    \ image.\nThe signature related files of the\nsigned modular JARs are not copied\
+    \ to\nthe runtime image."
+  synonyms:
+  - --ignore-signing-information
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=<module>[/<mainclass>]\nAdd a launcher command of the given\nname\
+    \ for the module and the main class\nif specified"
+  synonyms:
+  - --launcher
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: '[,<mod>...]  Limit the universe of observable'
+  synonyms:
+  - --limit-modules
+  args: !SimpleFlagArg
+    name: mod
+  optional: true
+- !Flag
+  description: Module path
+  synonyms:
+  - -p
+  - --module-path
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Exclude include header files
+  synonyms:
+  - --no-header-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Exclude man pages
+  synonyms:
+  - --no-man-pages
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Location of output path
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Post process an existing image
+  synonyms:
+  - --post-process-path
+  args: !SimpleFlagArg
+    name: imagefile
+  optional: true
+- !Flag
+  description: The last plugin allowed to sort
+  synonyms:
+  - --resources-last-sorter
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: Strip debug information
+  synonyms:
+  - -G
+  - --strip-debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[<name>,...]  Suggest providers that implement the\ngiven service\
+    \ types from the module path"
+  synonyms:
+  - --suggest-providers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable verbose tracing
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands:
+- !Command
+  command:
+  - jlink
+  - resources
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: jlink
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: options
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --add-modules
+    args: !SimpleFlagArg
+      name: module
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --module-path
+    args: !SimpleFlagArg
+      name: modulepath
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Error: invalid argument: resources --help\nUsage: jlink <options> --module-path\
+    \ <modulepath> --add-modules <module>[,<module>...]\nUse --help for a list of\
+    \ possible options\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - jlink
+  - modules
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: jlink
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: options
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --add-modules
+    args: !SimpleFlagArg
+      name: module
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --module-path
+    args: !SimpleFlagArg
+      name: modulepath
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Error: invalid argument: modules --help\nUsage: jlink <options> --module-path\
+    \ <modulepath> --add-modules <module>[,<module>...]\nUse --help for a list of\
+    \ possible options\n"
+  generated_using: *id002
+usage: []
+help_flag: !Flag
+  description: ', -?                        Print this help message'
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Version information
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: jlink <options> --module-path <modulepath> --add-modules <module>[,<module>...]\n\
+  Possible options include:\n      --add-modules <mod>[,<mod>...]    Root modules\
+  \ to resolve\n      --bind-services                   Link in service provider modules\
+  \ and\n                                        their dependences\n  -c, --compress=<0|1|2>\
+  \                Enable compression of resources:\n                            \
+  \              Level 0: No compression\n                                       \
+  \   Level 1: Constant string sharing\n                                         \
+  \ Level 2: ZIP\n      --disable-plugin <pluginname>     Disable the plugin mentioned\n\
+  \      --endian <little|big>             Byte order of generated jimage\n      \
+  \                                  (default:native)\n  -h, --help, -?          \
+  \              Print this help message\n      --ignore-signing-information     \
+  \ Suppress a fatal error when signed\n                                        modular\
+  \ JARs are linked in the image.\n                                        The signature\
+  \ related files of the\n                                        signed modular JARs\
+  \ are not copied to\n                                        the runtime image.\n\
+  \      --launcher <name>=<module>[/<mainclass>]\n                              \
+  \          Add a launcher command of the given\n                               \
+  \         name for the module and the main class\n                             \
+  \           if specified  \n      --limit-modules <mod>[,<mod>...]  Limit the universe\
+  \ of observable\n                                        modules\n      --list-plugins\
+  \                    List available plugins\n  -p, --module-path <path>        \
+  \      Module path\n      --no-header-files                 Exclude include header\
+  \ files\n      --no-man-pages                    Exclude man pages\n      --output\
+  \ <path>                   Location of output path\n      --post-process-path <imagefile>\
+  \   Post process an existing image\n      --resources-last-sorter <name>    The\
+  \ last plugin allowed to sort\n                                        resources\n\
+  \      --save-opts <filename>            Save jlink options in the given file\n\
+  \  -G, --strip-debug                     Strip debug information\n      --suggest-providers\
+  \ [<name>,...]  Suggest providers that implement the\n                         \
+  \               given service types from the module path\n  -v, --verbose      \
+  \                   Enable verbose tracing\n      --version                    \
+  \     Version information\n      @<filename>                       Read options\
+  \ from file\n"
+generated_using: *id002

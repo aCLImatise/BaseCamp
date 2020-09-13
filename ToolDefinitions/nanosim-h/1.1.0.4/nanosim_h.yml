@@ -1,0 +1,182 @@
+!Command
+command:
+- nanosim-h
+positional: []
+named:
+- !Flag
+  description: "error profile - one of precomputed profiles\n('ecoli_UCSC1b', 'ecoli_R7.3',\
+    \ 'yeast', 'ecoli_R9_2D',\n'ecoli_R7', 'ecoli_R9_1D') or own directory with an\n\
+    error profile [ecoli_R9_2D]"
+  synonyms:
+  - -p
+  - --profile
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: prefix of output file [simulated]
+  synonyms:
+  - -o
+  - --out-pref
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: number of generated reads [10000]
+  synonyms:
+  - -n
+  - --number
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "rate of unaligned reads [detect from the error\nprofile]"
+  synonyms:
+  - -u
+  - --unalign-rate
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: mismatch rate (weight tuning) [1.0]
+  synonyms:
+  - -m
+  - --mis-rate
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: insertion rate (weight tuning) [1.0]
+  synonyms:
+  - -i
+  - --ins-rate
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: deletion rate (weight tuning) [1.0]
+  synonyms:
+  - -d
+  - --del-rate
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "initial seed for the pseudorandom number generator (0\nfor random)\
+    \ [42]"
+  synonyms:
+  - -s
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: circular simulation (linear otherwise)
+  synonyms:
+  - --circular
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output perfect reads, no mutations
+  synonyms:
+  - --perfect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: merge contigs from the reference
+  synonyms:
+  - --merge-contigs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use RNF format for read names
+  synonyms:
+  - --rnf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: add cigar to RNF names (not fully debugged, yet)
+  synonyms:
+  - --rnf-add-cigar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum read length [inf]
+  synonyms:
+  - --max-len
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: minimum read length [50]
+  synonyms:
+  - --min-len
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "prohibits homopolymers with length >= n bases in\noutput reads [6]"
+  synonyms:
+  - --kmer-bias
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: nanosim-h [-h] [-v] [-p str] [-o str] [-n int] [-u float] [-m float]\n\
+  \                 [-i float] [-d float] [-s int] [--circular] [--perfect]\n    \
+  \             [--merge-contigs] [--rnf] [--rnf-add-cigar] [--max-len int]\n    \
+  \             [--min-len int] [--kmer-bias int]\n                 <reference.fa>\n\
+  \nProgram:  NanoSim-H - a simulator of Oxford Nanopore reads.\nVersion:  1.1.0.4\n\
+  Authors:  Chen Yang <cheny@bcgsc.ca> - author of the original software package (NanoSim)\n\
+  \          Karel Brinda <kbrinda@hsph.harvard.edu> - author of the NanoSim-H fork\n\
+  \npositional arguments:\n  <reference.fa>        reference genome (- for standard\
+  \ input)\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -v, --version         show program's version number and exit\n  -p\
+  \ str, --profile str\n                        error profile - one of precomputed\
+  \ profiles\n                        ('ecoli_UCSC1b', 'ecoli_R7.3', 'yeast', 'ecoli_R9_2D',\n\
+  \                        'ecoli_R7', 'ecoli_R9_1D') or own directory with an\n \
+  \                       error profile [ecoli_R9_2D]\n  -o str, --out-pref str\n\
+  \                        prefix of output file [simulated]\n  -n int, --number int\
+  \  number of generated reads [10000]\n  -u float, --unalign-rate float\n       \
+  \                 rate of unaligned reads [detect from the error\n             \
+  \           profile]\n  -m float, --mis-rate float\n                        mismatch\
+  \ rate (weight tuning) [1.0]\n  -i float, --ins-rate float\n                   \
+  \     insertion rate (weight tuning) [1.0]\n  -d float, --del-rate float\n     \
+  \                   deletion rate (weight tuning) [1.0]\n  -s int, --seed int  \
+  \  initial seed for the pseudorandom number generator (0\n                     \
+  \   for random) [42]\n  --circular            circular simulation (linear otherwise)\n\
+  \  --perfect             output perfect reads, no mutations\n  --merge-contigs \
+  \      merge contigs from the reference\n  --rnf                 use RNF format\
+  \ for read names\n  --rnf-add-cigar       add cigar to RNF names (not fully debugged,\
+  \ yet)\n  --max-len int         maximum read length [inf]\n  --min-len int     \
+  \    minimum read length [50]\n  --kmer-bias int       prohibits homopolymers with\
+  \ length >= n bases in\n                        output reads [6]\n\nExamples: nanosim-h\
+  \ --circular ecoli_ref.fasta\n          nanosim-h --circular --perfect ecoli_ref.fasta\n\
+  \          nanosim-h -p yeast --kmer-bias 0 yeast_ref.fasta\n\nNotice: the use of\
+  \ `max-len` and `min-len` will affect the read length distributions. If\nthe range\
+  \ between `max-len` and `min-len` is too small, the program will run slowlier accordingly.\n"
+generated_using:
+- --help

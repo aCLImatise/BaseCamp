@@ -1,0 +1,269 @@
+!Command
+command:
+- sniffles-debug
+positional:
+- !Positional
+  description: 'Input/Output:'
+  position: 0
+  name: fritz.sedlazeck@gmail.com
+  optional: false
+named:
+- !Flag
+  description: ",  --mapped_reads <string>\n(required)  Sorted bam File"
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --vcf <string>\nVCF output file name []"
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --bedpe <string>\nbedpe output file name []"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Input VCF file name. Enable force calling []
+  synonyms:
+  - --Ivcf
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: path to temporary file otherwise Sniffles will use the current directory.
+    []
+  synonyms:
+  - --tmp_file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ",  --min_support <int>\nMinimum number of reads that support a SV.\
+    \ [10]"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum number of splits per read to be still taken into account. [7]
+  synonyms:
+  - --max_num_splits
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --max_distance <int>\nMaximum distance to group SV together. [1000]"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --threads <int>\nNumber of threads to use. [3]"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --min_length <int>\nMinimum length of SV to be reported. [30]"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --minmapping_qual <int>\nMinimum Mapping Quality. [20]"
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --num_reads_report <int>\nReport up to N reads that support the\
+    \ SV in the vcf file. -1: report all. [0]"
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --min_seq_size <int>\nDiscard read if non of its segment is larger\
+    \ then this. [2000]"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --min_zmw <int>\nDiscard SV that are not supported by at least\
+    \ x zmws. This applies only for PacBio recognizable reads. [0]"
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Enables the scan of CS string instead of Cigar and MD.  [false]
+  synonyms:
+  - --cs_string
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables Sniffles to compute the genotypes. [false]
+  synonyms:
+  - --genotype
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables Sniffles to phase SVs that occur on the same reads [false]
+  synonyms:
+  - --cluster
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum number of reads supporting clustering of SV. [1]
+  synonyms:
+  - --cluster_support
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",  --allelefreq <float>\nThreshold on allele frequency (0-1).  [0]"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Threshold on allele frequency (0-1).  [0.8]
+  synonyms:
+  - --min_homo_af
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Threshold on allele frequency (0-1).  [0.3]
+  synonyms:
+  - --min_het_af
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Dont report BND instead use Tra in vcf output.  [true]
+  synonyms:
+  - --report_BND
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report sequences for indels in vcf output. (Beta version!)  [false]
+  synonyms:
+  - --report_seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignores the sd based filtering.  [false]
+  synonyms:
+  - --ignore_sd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables the report of the strand categories per read. (Beta)  [false]
+  synonyms:
+  - --report_read_strands
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Preset CCS Pacbio setting. (Beta)  [false]
+  synonyms:
+  - --ccs_reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables the scan if only very few reads are present.  [false]
+  synonyms:
+  - --skip_parameter_estimation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Estimated ration of deletions per read (0-1).  [0.0458369]
+  synonyms:
+  - --del_ratio
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Estimated ratio of insertions per read (0-1).  [0.049379]
+  synonyms:
+  - --ins_ratio
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Maximum differences per 100bp. [50]
+  synonyms:
+  - --max_diff_per_window
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Maximum distance between alignment (indel) events. [4]\n"
+  synonyms:
+  - --max_dist_aln_events
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage: sniffles [options] -m <sorted.bam> -v <output.vcf> \nVersion:\
+  \ 1.0.11\nContact: fritz.sedlazeck@gmail.com\n\nInput/Output:\n    -m <string>,\
+  \  --mapped_reads <string>\n        (required)  Sorted bam File\n    -v <string>,\
+  \  --vcf <string>\n        VCF output file name []\n    -b <string>,  --bedpe <string>\n\
+  \         bedpe output file name []\n    --Ivcf <string>\n        Input VCF file\
+  \ name. Enable force calling []\n    --tmp_file <string>\n        path to temporary\
+  \ file otherwise Sniffles will use the current directory. []\n\nGeneral:\n    -s\
+  \ <int>,  --min_support <int>\n        Minimum number of reads that support a SV.\
+  \ [10]\n    --max_num_splits <int>\n        Maximum number of splits per read to\
+  \ be still taken into account. [7]\n    -d <int>,  --max_distance <int>\n      \
+  \  Maximum distance to group SV together. [1000]\n    -t <int>,  --threads <int>\n\
+  \        Number of threads to use. [3]\n    -l <int>,  --min_length <int>\n    \
+  \    Minimum length of SV to be reported. [30]\n    -q <int>,  --minmapping_qual\
+  \ <int>\n        Minimum Mapping Quality. [20]\n    -n <int>,  --num_reads_report\
+  \ <int>\n        Report up to N reads that support the SV in the vcf file. -1: report\
+  \ all. [0]\n    -r <int>,  --min_seq_size <int>\n        Discard read if non of\
+  \ its segment is larger then this. [2000]\n    -z <int>,  --min_zmw <int>\n    \
+  \    Discard SV that are not supported by at least x zmws. This applies only for\
+  \ PacBio recognizable reads. [0]\n    --cs_string\n        Enables the scan of CS\
+  \ string instead of Cigar and MD.  [false]\n\nClustering/phasing and genotyping:\n\
+  \    --genotype\n        Enables Sniffles to compute the genotypes. [false]\n  \
+  \  --cluster\n        Enables Sniffles to phase SVs that occur on the same reads\
+  \ [false]\n    --cluster_support <int>\n        Minimum number of reads supporting\
+  \ clustering of SV. [1]\n    -f <float>,  --allelefreq <float>\n        Threshold\
+  \ on allele frequency (0-1).  [0]\n    --min_homo_af <float>\n        Threshold\
+  \ on allele frequency (0-1).  [0.8]\n    --min_het_af <float>\n        Threshold\
+  \ on allele frequency (0-1).  [0.3]\n\nAdvanced:\n    --report_BND\n        Dont\
+  \ report BND instead use Tra in vcf output.  [true]\n    --report_seq\n        Report\
+  \ sequences for indels in vcf output. (Beta version!)  [false]\n    --ignore_sd\n\
+  \        Ignores the sd based filtering.  [false]\n    --report_read_strands\n \
+  \       Enables the report of the strand categories per read. (Beta)  [false]\n\
+  \    --ccs_reads\n        Preset CCS Pacbio setting. (Beta)  [false]\n\nParameter\
+  \ estimation:\n    --skip_parameter_estimation\n        Enables the scan if only\
+  \ very few reads are present.  [false]\n    --del_ratio <float>\n        Estimated\
+  \ ration of deletions per read (0-1).  [0.0458369]\n    --ins_ratio <float>\n  \
+  \      Estimated ratio of insertions per read (0-1).  [0.049379]\n    --max_diff_per_window\
+  \ <int>\n        Maximum differences per 100bp. [50]\n    --max_dist_aln_events\
+  \ <int>\n        Maximum distance between alignment (indel) events. [4]\n\n"
+generated_using:
+- --help

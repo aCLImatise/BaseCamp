@@ -1,0 +1,94 @@
+!Command
+command:
+- taxonomy_filter_fastq
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FLAGS
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: INPUT_FASTQ
+  optional: false
+named:
+- !Flag
+  description: Directory to deposited filtered output files in
+  synonyms:
+  - -d
+  - --output_dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filter using report from Centrifuge
+  synonyms:
+  - -C
+  - --centrifuge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filter using report from Kraken2
+  synonyms:
+  - -K
+  - --kraken2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Name of ancestor to use as ancestor filter
+  synonyms:
+  - -A
+  - --ancestor_taxid
+  args: !SimpleFlagArg
+    name: ANCESTOR_ID
+  optional: true
+- !Flag
+  description: URL for SQLite taxonomy database
+  synonyms:
+  - -d
+  - --db
+  args: !SimpleFlagArg
+    name: TAXDB_URL
+  optional: true
+- !Flag
+  description: Output from Kraken2 (default) or Centrifuge
+  synonyms:
+  - -F
+  - --tax_report_filename
+  args: !SimpleFlagArg
+    name: TAXONOMY_REPORT_FILENAME
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "taxonomy_filter_fastq 1.0.7\nPeter van Heusden <pvh@sanbi.axc.za>\nFilter\
+  \ FASTQ files whose reads have been classified by Centrifuge or Kraken2, only retaining\
+  \ reads in taxa descending\nfrom given ancestor\n\nUSAGE:\n    taxonomy_filter_fastq\
+  \ [FLAGS] [OPTIONS] <INPUT_FASTQ>... --ancestor_taxid <ANCESTOR_ID> --tax_report_filename\
+  \ <TAXONOMY_REPORT_FILENAME> <--centrifuge|--kraken2>\n\nFLAGS:\n    -d, --output_dir\
+  \    Directory to deposited filtered output files in\n    -C, --centrifuge    Filter\
+  \ using report from Centrifuge\n    -h, --help          Prints help information\n\
+  \    -K, --kraken2       Filter using report from Kraken2\n    -V, --version   \
+  \    Prints version information\n\nOPTIONS:\n    -A, --ancestor_taxid <ANCESTOR_ID>\
+  \                      Name of ancestor to use as ancestor filter\n    -d, --db\
+  \ <TAXDB_URL>                                    URL for SQLite taxonomy database\n\
+  \    -F, --tax_report_filename <TAXONOMY_REPORT_FILENAME>    Output from Kraken2\
+  \ (default) or Centrifuge\n\nARGS:\n    <INPUT_FASTQ>...    FASTA file with RefSeq\
+  \ sequences\n"
+generated_using:
+- --help

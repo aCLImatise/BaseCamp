@@ -1,0 +1,106 @@
+!Command
+command:
+- act
+positional:
+- !Positional
+  description: An EMBL, GenBank, FASTA, or GFF3 file
+  position: 0
+  name: SEQUENCE
+  optional: false
+- !Positional
+  description: An Artemis TAB file, or GFF file
+  position: 1
+  name: FEATURE
+  optional: false
+- !Positional
+  description: A BLAST comparison file in tabular format
+  position: 2
+  name: COMPARISON
+  optional: false
+named:
+- !Flag
+  description: Read a text file of options from FILE
+  synonyms:
+  - -options
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Connect to a Chado database (using PGHOST, PGPORT, PGDATABASE, PGUSER
+    environment variables)
+  synonyms:
+  - -chado
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =?         Keep warning messages to a minimum [true,false]
+  synonyms:
+  - -Dblack_belt_mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: For sequence 'X' open one or more userplots
+  synonyms:
+  - -DuserplotX
+  args: !OptionalFlagArg
+    names:
+    - FILE
+    - FILE2
+    separator: ','
+  optional: true
+- !Flag
+  description: For sequence 'X' open one or more userplots, take log(data)
+  synonyms:
+  - -DloguserplotX
+  args: !OptionalFlagArg
+    names:
+    - FILE
+    - FILE2
+    separator: ','
+  optional: true
+- !Flag
+  description: "[,FILE2,...]     For sequence 'X' open one or more BAM, CRAM, VCF,\
+    \ or BCF files"
+  synonyms:
+  - -DbamX
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: ="h:p/d?u"           Get ACT to open this CHADO database
+  synonyms:
+  - -Dchado
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Open CHADO database read-only
+  synonyms:
+  - -Dread_only
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "SYNOPSIS\n       Artemis Comparison Tool (ACT): Genome Comparison Tool\n\
+  USAGE\n        /usr/local/bin/act [options] <SEQUENCE_1> <COMPARISON_1_2> <SEQUENCE_2>\
+  \ ...\nOPTIONS\n        SEQUENCE                   An EMBL, GenBank, FASTA, or GFF3\
+  \ file\n        FEATURE                    An Artemis TAB file, or GFF file\n  \
+  \      COMPARISON                 A BLAST comparison file in tabular format\n\n\
+  \        -options FILE              Read a text file of options from FILE\n    \
+  \    -chado                     Connect to a Chado database (using PGHOST, PGPORT,\
+  \ PGDATABASE, PGUSER environment variables)\n\n        -Dblack_belt_mode=?     \
+  \    Keep warning messages to a minimum [true,false]\n        -DuserplotX=FILE[,FILE2]\
+  \    For sequence 'X' open one or more userplots\n        -DloguserplotX=FILE[,FILE2]\
+  \ For sequence 'X' open one or more userplots, take log(data)\n        -DbamX=FILE[,FILE2,...]\
+  \     For sequence 'X' open one or more BAM, CRAM, VCF, or BCF files\n        -Dchado=\"\
+  h:p/d?u\"           Get ACT to open this CHADO database\n        -Dread_only   \
+  \              Open CHADO database read-only\nEXAMPLES\n        % act\n        %\
+  \ act af063097.embl af063097_v_b132222.crunch b132222.embl\n        % act -Dblack_belt_mode=true\
+  \ -Dbam1=MAL_0h.bam -Dbam2=MAL_7h.bam,var.raw.new.bcf\n        % act -Duserplot2=/pathToFile/userPlot\n\
+  \nHOMEPAGE\n        http://www.sanger.ac.uk/science/tools/artemis-comparison-tool-act\n\
+  \n"
+generated_using:
+- --help

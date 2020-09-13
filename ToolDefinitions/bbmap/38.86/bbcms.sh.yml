@@ -1,0 +1,110 @@
+!Command
+command:
+- bbcms.sh
+positional:
+- !Positional
+  description: e.g. 'k=31 ksmall=29 hashes=2' has better speed and
+  position: 0
+  name: needed.
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified September 4, 2018\n\nDescription:\
+  \  Error corrects reads and/or filters by depth, storing\nkmer counts in a count-min\
+  \ sketch (a Bloom filter variant).\nThis uses a fixed amount of memory.  The error-correction\
+  \ algorithm is taken\nfrom Tadpole; with plenty of memory, the behavior is almost\
+  \ identical to \nTadpole.  As the number of unique kmers in a dataset increases,\
+  \ the accuracy \ndecreases such that it will make fewer corrections.  It is still\
+  \ capable\nof making useful corrections far past the point where Tadpole would crash\n\
+  by running out of memory, even with the prefilter flag.  But if there is\nsufficient\
+  \ memory to use Tadpole, then Tadpole is more desirable.\n\nBecause accuracy declines\
+  \ with an increasing number of unique kmers, it can\nbe useful with very large datasets\
+  \ to run this in 2 passes, with the first \npass for filtering only using a 2-bit\
+  \ filter with the flags tossjunk=t and \necc=f (and possibly mincount=2 and hcf=0.4),\
+  \ and the second pass using a \n4-bit filter for the actual error correction.\n\n\
+  Usage:  bbcms.sh in=<input file> out=<output> outb=<reads failing filters>\n\nExample\
+  \ of use in error correction:\nbbcms.sh in=reads.fq out=ecc.fq bits=4 hashes=3 k=31\
+  \ merge\n\nExample of use in depth filtering:\nbbcms.sh in=reads.fq out=high.fq\
+  \ outb=low.fq k=31 mincount=2 ecc=f hcf=0.4\n\nError correction and depth filtering\
+  \ can be done simultaneously.\n\nFile parameters:\nin=<file>       Primary input,\
+  \ or read 1 input.\nin2=<file>      Read 2 input if reads are in two files.\nout=<file>\
+  \      Primary read output.\nout2=<file>     Read 2 output if reads are in two files.\n\
+  outb=<file>     (outbad/outlow) Output for reads failing mincount.\noutb2=<file>\
+  \    (outbad2/outlow2) Read 2 output if reads are in two files.\nextra=<file>  \
+  \  Additional comma-delimited files for generating kmer counts.\nref=<file>    \
+  \  If ref is set, then only files in the ref list will be used\n               \
+  \ for kmer counts, and the input files will NOT be used for\n                counts;\
+  \ they will just be filtered or corrected.\noverwrite=t     (ow) Set to false to\
+  \ force the program to abort rather than\n                overwrite an existing\
+  \ file.\n\nHashing parameters:\nk=31            Kmer length, currently 1-31.\nhashes=3\
+  \        Number of hashes per kmer.  Higher generally reduces \n               \
+  \ false positives at the expense of speed; rapidly\n                diminishing\
+  \ returns above 4.\nksmall=         Optional sub-kmer length; setting to slightly\
+  \ lower than k \n                can improve memory efficiency by reducing the number\
+  \ of hashes\n                needed.  e.g. 'k=31 ksmall=29 hashes=2' has better\
+  \ speed and\n                accuracy than 'k=31 hashes=3' when the filter is very\
+  \ full.\nminprob=0.5     Ignore kmers with probability of being correct below this.\n\
+  memmult=1.0     Fraction of free memory to use for Bloom filter.  1.0 should\n \
+  \               generally work; if the program crashes with an out of memory\n \
+  \               error, set this lower.  You may be able to increase accuracy\n \
+  \               by setting it slightly higher.\ncells=          Option to set the\
+  \ number of cells manually.  By default this\n                will be autoset to\
+  \ use all available memory.  The only reason\n                to set this is to\
+  \ ensure deterministic output.\nseed=0          This will change the hash function\
+  \ used.  Useful if running\n                iteratively with a very full table.\
+  \  -1 uses a random seed.\n                \nDepth filtering parameters:\nmincount=0\
+  \      If positive, reads with kmer counts below mincount will\n               \
+  \ be discarded (sent to outb).\nhcf=1.0         (highcountfraction) Fraction of\
+  \ kmers that must be at least\n                mincount to pass.\nrequireboth=t\
+  \   Require both reads in a pair to pass in order to go to out.\n              \
+  \  When true, if either read has a count below mincount, both\n                reads\
+  \ in the pair will go to outb.  When false, reads will\n                only go\
+  \ to outb if both fail.\ntossjunk=f      Remove reads or pairs with outermost kmer\
+  \ depth below 2.\n(Suggested params for huge metagenomes: mincount=2 hcf=0.4 tossjunk=t)\n\
+  \nError correction parameters:\necc=t           Perform error correction.\nbits=\
+  \           Bits used to store kmer counts; max count is 2^bits-1.\n           \
+  \     Supports 2, 4, 8, 16, or 32.  16 is best for high-depth data;\n          \
+  \      2 or 4 are for huge, low-depth metagenomes that saturate the \n         \
+  \       bloom filter otherwise.  Generally 4 bits is recommended for \n        \
+  \        error-correction and 2 bits is recommended for filtering only.\necco=f\
+  \          Error-correct paired reads by overlap prior to kmer-counting.\nmerge=t\
+  \         Merge paired reads by overlap prior to kmer-counting, and \n         \
+  \       again prior to correction.  Output will still be unmerged.\nsmooth=3   \
+  \     Remove spikes from kmer counts due to hash collisions.\n                The\
+  \ number is the max width of peaks to be smoothed; range is\n                0-3\
+  \ (3 is most aggressive; 0 disables smoothing).\n                This also affects\
+  \ tossjunk.\n                \n\nJava Parameters:\n-Xmx            This will set\
+  \ Java's memory usage, overriding autodetection.\n                -Xmx20g will specify\
+  \ 20 gigs of RAM, and -Xmx200m will\n                specify 200 megs. The max is\
+  \ typically 85% of physical memory.\n-eoom           This flag will cause the process\
+  \ to exit if an out-of-memory\n                exception occurs.  Requires Java\
+  \ 8u92+.\n-da             Disable assertions.\n\nPlease contact Brian Bushnell at\
+  \ bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help

@@ -1,0 +1,176 @@
+!Command
+command:
+- sumaclust
+positional: []
+named:
+- !Flag
+  description: ': Reference sequence length is the shortest.'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Reference sequence length is the largest.'
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Reference sequence length is the alignment length (default).'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Score is normalized by reference sequence length (default).'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Raw score, not normalized.'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Score is expressed in distance (default : score is expressed in
+    similarity).'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "##.## : Score threshold for clustering. If the score is normalized\
+    \ and expressed in similarity (default),\nit is an identity, e.g. 0.95 for an\
+    \ identity of 95%. If the score is normalized\nand expressed in distance, it is\
+    \ (1.0 - identity), e.g. 0.05 for an identity of 95%.\nIf the score is not normalized\
+    \ and expressed in similarity, it is the length of the\nLongest Common Subsequence.\
+    \ If the score is not normalized and expressed in distance,\nit is (reference\
+    \ length - LCS length).\nOnly sequences with a similarity above ##.## with the\
+    \ center sequence of a cluster\nare assigned to that cluster. Default: 0.97."
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Exact option : A sequence is assigned to the cluster with the center\
+    \ sequence presenting the\nhighest similarity score > threshold, as opposed to\
+    \ the default 'fast' option where a sequence is\nassigned to the first cluster\
+    \ found with a center sequence presenting a score > threshold."
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "##    : Maximum ratio between the counts of two sequences so that\
+    \ the less abundant one can be considered\nas a variant of the more abundant one.\
+    \ Default: 1.0."
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '##    : Multithreading with ## threads using openMP.'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "####  : Sorting by ####. Must be 'None' for no sorting, or a key in\
+    \ the fasta header of each sequence,\nexcept for the count that can be computed\
+    \ (default : sorting by count)."
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Sorting is in ascending order (default : descending).'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": n's are replaced with a's (default: sequences with n's are discarded)."
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '###   : Output of the OTU table in BIOM format is activated, and written
+    to file ###.'
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '###   : Output of the OTU map (observation map) is activated, and
+    written to file ###.'
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '###   : Output in FASTA format is written to file ### instead of standard
+    output.'
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Output in FASTA format is deactivated.'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': [H]elp - print <this> help'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "------------------------------------------------------------\n SUMACLUST\
+  \ Version 1.0.31\n------------------------------------------------------------\n\
+  \ Synopsis : star clustering of sequences.\n Usage: sumaclust [options] <dataset>\n\
+  ------------------------------------------------------------\n Options:\n -h   \
+  \    : [H]elp - print <this> help\n\n -l       : Reference sequence length is the\
+  \ shortest. \n\n -L       : Reference sequence length is the largest. \n\n -a  \
+  \     : Reference sequence length is the alignment length (default). \n\n -n   \
+  \    : Score is normalized by reference sequence length (default).\n\n -r      \
+  \ : Raw score, not normalized. \n\n -d       : Score is expressed in distance (default\
+  \ : score is expressed in similarity). \n\n -t ##.## : Score threshold for clustering.\
+  \ If the score is normalized and expressed in similarity (default),\n          \
+  \  it is an identity, e.g. 0.95 for an identity of 95%. If the score is normalized\n\
+  \            and expressed in distance, it is (1.0 - identity), e.g. 0.05 for an\
+  \ identity of 95%.\n            If the score is not normalized and expressed in\
+  \ similarity, it is the length of the\n            Longest Common Subsequence. If\
+  \ the score is not normalized and expressed in distance,\n            it is (reference\
+  \ length - LCS length).\n            Only sequences with a similarity above ##.##\
+  \ with the center sequence of a cluster\n            are assigned to that cluster.\
+  \ Default: 0.97.\n\n -e       : Exact option : A sequence is assigned to the cluster\
+  \ with the center sequence presenting the\n            highest similarity score\
+  \ > threshold, as opposed to the default 'fast' option where a sequence is\n   \
+  \         assigned to the first cluster found with a center sequence presenting\
+  \ a score > threshold.\n\n -R ##    : Maximum ratio between the counts of two sequences\
+  \ so that the less abundant one can be considered\n            as a variant of the\
+  \ more abundant one. Default: 1.0.\n\n -p ##    : Multithreading with ## threads\
+  \ using openMP.\n\n -s ####  : Sorting by ####. Must be 'None' for no sorting, or\
+  \ a key in the fasta header of each sequence,\n            except for the count\
+  \ that can be computed (default : sorting by count).\n\n -o       : Sorting is in\
+  \ ascending order (default : descending).\n\n -g       : n's are replaced with a's\
+  \ (default: sequences with n's are discarded).\n\n -B ###   : Output of the OTU\
+  \ table in BIOM format is activated, and written to file ###.\n\n -O ###   : Output\
+  \ of the OTU map (observation map) is activated, and written to file ###.\n\n -F\
+  \ ###   : Output in FASTA format is written to file ### instead of standard output.\n\
+  \n -f       : Output in FASTA format is deactivated.\n\n------------------------------------------------------------\n\
+  \ Argument : the nucleotide dataset to cluster (or nothing   \n            if the\
+  \ standard input should be used).          \n------------------------------------------------------------\n\
+  \ http://metabarcoding.org/sumaclust\n------------------------------------------------------------\n\
+  \n"
+generated_using:
+- --help

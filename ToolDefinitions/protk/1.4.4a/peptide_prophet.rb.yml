@@ -1,0 +1,222 @@
+!Command
+command:
+- peptide_prophet.rb
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: file2.pep.xml
+  optional: false
+named:
+- !Flag
+  description: A string to prepend to the name of output files
+  synonyms:
+  - -b
+  - --output-prefix
+  args: !SimpleFlagArg
+    name: pref
+  optional: true
+- !Flag
+  description: Dont skip analyses for which the output file already exists [false]
+  synonyms:
+  - -r
+  - --replace-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: An explicitly named output file.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: out
+  optional: true
+- !Flag
+  description: Number of processing threads to use. Set to 0 to autodetect an appropriate
+    value [1]
+  synonyms:
+  - -n
+  - --threads
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Specify the database to use for this search. Can be a named protk database
+    or the path to a fasta file [sphuman]
+  synonyms:
+  - -d
+  - --database
+  args: !SimpleFlagArg
+    name: dbname
+  optional: true
+- !Flag
+  description: Expect N-Glycosylation modifications as variable mod in a search or
+    as a parameter when building statistical models [false]
+  synonyms:
+  - -g
+  - --glyco
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Run a search on MALDI data [false]
+  synonyms:
+  - -l
+  - --maldi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Probability threshold below which PSMs are discarded [0.05]
+  synonyms:
+  - --p-thresh
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: Use icat information [false]
+  synonyms:
+  - --useicat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use phospho information [false]
+  synonyms:
+  - --phospho
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use pI information [false]
+  synonyms:
+  - --usepi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use hydrophobicity / RT information [false]
+  synonyms:
+  - --usert
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use accurate mass binning [false]
+  synonyms:
+  - --accurate-mass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't use NTT model [false]
+  synonyms:
+  - --no-ntt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't use NMC model [false]
+  synonyms:
+  - --no-nmc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Gamma distribution to model the negatives [false]
+  synonyms:
+  - --usegamma
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only use Expect Score as the discriminant [false]
+  synonyms:
+  - --use-only-expect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Force fitting of mixture model and bypass checks [false]
+  synonyms:
+  - --force-fit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Warning instead of exit with error if instrument types between runs
+    is different [false]
+  synonyms:
+  - --allow-alt-instruments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create a separate pproph output file for each analysis [false]
+  synonyms:
+  - -F
+  - --one-ata-time
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prefix for decoy sequences [decoy]
+  synonyms:
+  - --decoy-prefix
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: Use Non-parametric model, can only be used with decoy option [false]
+  synonyms:
+  - --use-non-parametric-model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't use decoy sequences to pin down the negative distribution [false]
+  synonyms:
+  - --no-decoy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: used to commonly label all spectra belonging to one experiment (required
+    by iProphet)
+  synonyms:
+  - --experiment-label
+  args: !SimpleFlagArg
+    name: label
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this screen
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Run PeptideProphet on a set of pep.xml input files.\n\nUsage: peptide_prophet.rb\
+  \ [options] file1.pep.xml file2.pep.xml ...\n    -h, --help                    \
+  \           Display this screen\n    -b, --output-prefix pref                 A\
+  \ string to prepend to the name of output files\n    -r, --replace-output      \
+  \               Dont skip analyses for which the output file already exists [false]\n\
+  \    -o, --output out                         An explicitly named output file.\n\
+  \    -n, --threads num                        Number of processing threads to use.\
+  \ Set to 0 to autodetect an appropriate value [1]\n    -d, --database dbname   \
+  \                 Specify the database to use for this search. Can be a named protk\
+  \ database or the path to a fasta file [sphuman]\n    -g, --glyco              \
+  \                Expect N-Glycosylation modifications as variable mod in a search\
+  \ or as a parameter when building statistical models [false]\n    -l, --maldi  \
+  \                            Run a search on MALDI data [false]\n        --p-thresh\
+  \ val                       Probability threshold below which PSMs are discarded\
+  \ [0.05]\n        --useicat                            Use icat information [false]\n\
+  \        --phospho                            Use phospho information [false]\n\
+  \        --usepi                              Use pI information [false]\n     \
+  \   --usert                              Use hydrophobicity / RT information [false]\n\
+  \        --accurate-mass                      Use accurate mass binning [false]\n\
+  \        --no-ntt                             Don't use NTT model [false]\n    \
+  \    --no-nmc                             Don't use NMC model [false]\n        --usegamma\
+  \                           Use Gamma distribution to model the negatives [false]\n\
+  \        --use-only-expect                    Only use Expect Score as the discriminant\
+  \ [false]\n        --force-fit                          Force fitting of mixture\
+  \ model and bypass checks [false]\n        --allow-alt-instruments             \
+  \ Warning instead of exit with error if instrument types between runs is different\
+  \ [false]\n    -F, --one-ata-time                       Create a separate pproph\
+  \ output file for each analysis [false]\n        --decoy-prefix prefix         \
+  \       Prefix for decoy sequences [decoy]\n        --use-non-parametric-model \
+  \          Use Non-parametric model, can only be used with decoy option [false]\n\
+  \        --no-decoy                           Don't use decoy sequences to pin down\
+  \ the negative distribution [false]\n        --experiment-label label          \
+  \   used to commonly label all spectra belonging to one experiment (required by\
+  \ iProphet)\n"
+generated_using:
+- --help

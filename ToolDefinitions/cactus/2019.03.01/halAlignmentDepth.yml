@@ -1,0 +1,162 @@
+!Command
+command:
+- halAlignmentDepth
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: halPath
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: refGenome
+  optional: false
+named:
+- !Flag
+  description: ":      maximum size in bytes of regular hdf5 cache [default =\n15728640]"
+  synonyms:
+  - --cacheBytes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':        number of metadata slots in hdf5 cache [default = 113]'
+  synonyms:
+  - --cacheMDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":        number of regular slots in hdf5 cache.  should be a prime\n\
+    number ~= 10 * DefaultCacheRDCBytes / chunk [default =\n599999]"
+  synonyms:
+  - --cacheRDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':         w0 parameter fro hdf5 cache [default = 0.75]'
+  synonyms:
+  - --cacheW0
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":              count each other *position* each base aligns to, rather\n\
+    than the number of unique genomes, including paralogies so\na genome can be counted\
+    \  multiple times.  This will give\nthe height of the MAF column created with\
+    \ hal2maf.\n[default = 0]"
+  synonyms:
+  - --countDupes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":                load all data in memory (and disable hdf5 cache)\
+    \ [default\n= 0]"
+  synonyms:
+  - --inMemory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":          length of the reference genome (or sequence if specified)\n\
+    to convert.  If set to 0, the entire thing is converted\n[default = 0]"
+  synonyms:
+  - --length
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':             do not count ancestral genomes. [default = 0]'
+  synonyms:
+  - --noAncestors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':       output wig file (stdout if none) [default = stdout]'
+  synonyms:
+  - --outWiggle
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":     sequence name to export (all sequences by default)\n[default\
+    \ = \"\"]"
+  synonyms:
+  - --refSequence
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':      name of root genome (none if empty) [default = ""]'
+  synonyms:
+  - --rootGenome
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":           coordinate within reference genome (or sequence if\nspecified)\
+    \ to start at [default = 0]"
+  synonyms:
+  - --start
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':            step size [default = 1]'
+  synonyms:
+  - --step
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":   comma-separated (no spaces) list of target genomes (others\nare\
+    \ excluded) (vist all if empty) [default = \"\"]\n"
+  synonyms:
+  - --targetGenomes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ':                    dsiplay this help page [default = 0]'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: " \n\nhalAlignmentDepth v2.1: Make alignment depth wiggle plot for a genome.\
+  \ By default, \n                        this is a count of the number of other unique\
+  \ genomes each \n                        base aligns to, including ancestral genomes.\n\
+  \nUSAGE:\nhalAlignmentDepth [Options] <halPath> <refGenome>\n\nARGUMENTS:\nhalPath:\
+  \     input hal file\nrefGenome:   reference genome to scan\n\nOPTIONS:\n--cacheBytes\
+  \ <value>:      maximum size in bytes of regular hdf5 cache [default = \n      \
+  \                     15728640]\n--cacheMDC <value>:        number of metadata slots\
+  \ in hdf5 cache [default = 113]\n--cacheRDC <value>:        number of regular slots\
+  \ in hdf5 cache.  should be a prime \n                           number ~= 10 *\
+  \ DefaultCacheRDCBytes / chunk [default = \n                           599999]\n\
+  --cacheW0 <value>:         w0 parameter fro hdf5 cache [default = 0.75]\n--countDupes:\
+  \              count each other *position* each base aligns to, rather \n      \
+  \                     than the number of unique genomes, including paralogies so\n\
+  \                            a genome can be counted  multiple times.  This will\
+  \ give \n                           the height of the MAF column created with hal2maf.\
+  \ \n                           [default = 0]\n--help:                    dsiplay\
+  \ this help page [default = 0]\n--inMemory:                load all data in memory\
+  \ (and disable hdf5 cache) [default \n                           = 0]\n--length\
+  \ <value>:          length of the reference genome (or sequence if specified) \n\
+  \                           to convert.  If set to 0, the entire thing is converted\
+  \ \n                           [default = 0]\n--noAncestors:             do not\
+  \ count ancestral genomes. [default = 0]\n--outWiggle <value>:       output wig\
+  \ file (stdout if none) [default = stdout]\n--refSequence <value>:     sequence\
+  \ name to export (all sequences by default) \n                           [default\
+  \ = \"\"]\n--rootGenome <value>:      name of root genome (none if empty) [default\
+  \ = \"\"]\n--start <value>:           coordinate within reference genome (or sequence\
+  \ if \n                           specified) to start at [default = 0]\n--step <value>:\
+  \            step size [default = 1]\n--targetGenomes <value>:   comma-separated\
+  \ (no spaces) list of target genomes (others\n                            are excluded)\
+  \ (vist all if empty) [default = \"\"]\n\n\n"
+generated_using:
+- --help

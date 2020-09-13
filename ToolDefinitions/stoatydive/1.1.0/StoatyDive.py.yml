@@ -1,0 +1,177 @@
+!Command
+command:
+- StoatyDive.py
+positional:
+- !Positional
+  description: --sm                  Turn on the peak profile smoothing for the peak
+  position: 0
+  name: profiles.
+  optional: false
+- !Positional
+  description: --lam float           Parameter for the peak profile classification.
+    Set
+  position: 0
+  name: on.
+  optional: false
+named:
+- !Flag
+  description: "*.bed, --input_bed *.bed\nPath to the peak file in bed6 format."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "*.bam/*.bed, --input_bam *.bam/*.bed\nPath to the read file used for\
+    \ the peak calling in bed\nor bam format."
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "*.txt, --chr_file *.txt\nPath to the chromosome length file."
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Write results to this path. [Default: Operating Path]'
+  synonyms:
+  - -o
+  - --output_folder
+  args: !SimpleFlagArg
+    name: path/
+  optional: true
+- !Flag
+  description: "Set a normalized CV threshold to divide the peak\nprofiles into more\
+    \ specific (0) and more unspecific\n(1). [Default: 1.0]"
+  synonyms:
+  - -t
+  - --thresh
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Activate peak correction. The peaks are recentered\n(shifted) for\
+    \ the correct sumit."
+  synonyms:
+  - --peak_correction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set this flag if you want to shift the peak profiles\nbased on the\
+    \ maximum value inside the profile instead\nof a Gaussian blur translocation."
+  synonyms:
+  - --max_translocate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set maximum peak length for the constant peak length.
+  synonyms:
+  - --peak_length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Provide a maximum value for CV to make the normalized\nCV plot more\
+    \ comparable."
+  synonyms:
+  - --max_norm_value
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Adds a penalty for non-centered peaks.
+  synonyms:
+  - --border_penalty
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Provide a maximum value for the CV plot.
+  synonyms:
+  - --scale_max
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Maximal number of clusters of the kmeans clustering of\nthe peak profiles.\
+    \ The algorithm will be optimized,\ni.e., the parameter is just a constraint and\
+    \ not\nabsolute. [Default: 15]"
+  synonyms:
+  - --maxcl
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: You can forcefully set the number of cluster of peak
+  synonyms:
+  - -k
+  - --numcl
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Turn off the peak profile classification.\n"
+  synonyms:
+  - --turn_off_classification
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "[START]\nusage: StoatyDive.py [-h] [options] -a *.bed -b *.bam/*bed -c\
+  \ *.txt\n\n    The tool can evalute the profile of peaks. Provide the peaks you\
+  \ want to evalutate in bed6 format and the reads\n    you used for the peak detection\
+  \ in bed or bam format. The user obtains a distributions of the coefficient of variation\
+  \ (CV)\n    which can be used to evaluate the profile landscape. In addition, the\
+  \ tool generates ranked list for the peaks based\n    on the CV. The table hast\
+  \ the following columns: Chr Start End ID VC Strand bp r p Max_Norm_VC\n    Left_Border_Center_Difference\
+  \ Right_Border_Center_Difference. See StoatyDive's development page for a detailed\
+  \ description.\n    \n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -v, --version         show program's version number and exit\n\
+  \  -a *.bed, --input_bed *.bed\n                        Path to the peak file in\
+  \ bed6 format.\n  -b *.bam/*.bed, --input_bam *.bam/*.bed\n                    \
+  \    Path to the read file used for the peak calling in bed\n                  \
+  \      or bam format.\n  -c *.txt, --chr_file *.txt\n                        Path\
+  \ to the chromosome length file.\n  -o path/, --output_folder path/\n          \
+  \              Write results to this path. [Default: Operating Path]\n  -t float,\
+  \ --thresh float\n                        Set a normalized CV threshold to divide\
+  \ the peak\n                        profiles into more specific (0) and more unspecific\n\
+  \                        (1). [Default: 1.0]\n  --peak_correction     Activate peak\
+  \ correction. The peaks are recentered\n                        (shifted) for the\
+  \ correct sumit.\n  --max_translocate     Set this flag if you want to shift the\
+  \ peak profiles\n                        based on the maximum value inside the profile\
+  \ instead\n                        of a Gaussian blur translocation.\n  --peak_length\
+  \ int     Set maximum peak length for the constant peak length.\n  --max_norm_value\
+  \ float\n                        Provide a maximum value for CV to make the normalized\n\
+  \                        CV plot more comparable.\n  --border_penalty      Adds\
+  \ a penalty for non-centered peaks.\n  --scale_max float     Provide a maximum value\
+  \ for the CV plot.\n  --maxcl int           Maximal number of clusters of the kmeans\
+  \ clustering of\n                        the peak profiles. The algorithm will be\
+  \ optimized,\n                        i.e., the parameter is just a constraint and\
+  \ not\n                        absolute. [Default: 15]\n  -k int, --numcl int  \
+  \ You can forcefully set the number of cluster of peak\n                       \
+  \ profiles.\n  --sm                  Turn on the peak profile smoothing for the\
+  \ peak\n                        profile classification. It is recommended to turn\
+  \ it\n                        on.\n  --lam float           Parameter for the peak\
+  \ profile classification. Set\n                        lambda for the smoothing\
+  \ of the peak profiles. A\n                        higher value (> default) will\
+  \ underfit. A lower value\n                        (< default) will overfit. [Default:\
+  \ 0.3]\n  --turn_off_classification\n                        Turn off the peak profile\
+  \ classification.\n"
+generated_using:
+- --help

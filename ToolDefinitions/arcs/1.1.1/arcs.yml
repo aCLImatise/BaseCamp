@@ -1,0 +1,277 @@
+!Command
+command:
+- arcs
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: list of alignment files
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: or
+  optional: false
+named:
+- !Flag
+  description: text file listing input filenames
+  synonyms:
+  - -a
+  - --fofName
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: tsv or csv file listing barcode multiplicities [optional]
+  synonyms:
+  - -u
+  - --multfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FASTA file of contig sequences to scaffold
+  synonyms:
+  - -f
+  - --file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: min aligned read pairs per barcode mapping [5]
+  synonyms:
+  - -c
+  - --min_reads
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: min shared barcodes between contigs [0]
+  synonyms:
+  - -l
+  - --min_links
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: min contig length [500]
+  synonyms:
+  - -z
+  - --min_size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: output file prefix
+  synonyms:
+  - -b
+  - --base_name
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: write the ABySS dist.gv to FILE
+  synonyms:
+  - -g
+  - --graph
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: fixed gap size for ABySS dist.gv file [100]
+  synonyms:
+  - --gap
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: write graph in TSV format to FILE
+  synonyms:
+  - --tsv
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write number of reads per barcode to FILE
+  synonyms:
+  - --barcode-counts
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: barcode multiplicity range [50-10000]
+  synonyms:
+  - -m
+  - --index_multiplicity
+  args: !SimpleFlagArg
+    name: RANGE
+  optional: true
+- !Flag
+  description: max node degree in scaffold graph [0]
+  synonyms:
+  - -d
+  - --max_degree
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: contig head/tail length for masking alignments [30000]
+  synonyms:
+  - -e
+  - --end_length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: p-value for head/tail assignment and link orientation (lower is more
+    stringent) [0.05]
+  synonyms:
+  - -r
+  - --error_percent
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: verbose logging
+  synonyms:
+  - -v
+  - --run_verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: min sequence identity for read alignments [98]
+  synonyms:
+  - -s
+  - --seq_id
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: size of a k-mer [30]
+  synonyms:
+  - -k
+  - --k_value
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum fraction of read kmers matching a contigId [0.55]
+  synonyms:
+  - -j
+  - --j_index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of threads [1]
+  synonyms:
+  - -t
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: estimate distance using N closest Jaccard scores [20]
+  synonyms:
+  - -B
+  - --bin_size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: enable distance estimation
+  synonyms:
+  - -D
+  - --dist_est
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable distance estimation [default]
+  synonyms:
+  - --no_dist_est
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use median distance in ABySS dist.gv [default]
+  synonyms:
+  - --dist_median
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use upper bound distance in ABySS dist.gv
+  synonyms:
+  - --dist_upper
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write min/max distance estimates to FILE
+  synonyms:
+  - --dist_tsv
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write intra-contig distance/barcode samples to FILE
+  synonyms:
+  - --samples_tsv
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: output scaffolds pairing TSV with number of barcode links (no p-value
+    threshold)supporting each of the 4 possible orientation
+  synonyms:
+  - -P
+  - --pair
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Reading user inputs...\narcs 1.1.1\n\nUsage: arcs [Options] <list of alignment\
+  \ files>  or\n       arcs [Options] --arks -f <contig sequence file> <list of linked\
+  \ read files>\n\nRequirements for ARCS (default method):\n       ARCS utilizes linked\
+  \ read alignments for scaffolding (https://doi.org/10.1093/bioinformatics/btx675)\
+  \       Alignment files are REQUIRED either as positional arguments or in a supplied\
+  \ file of BAM paths (with -a).\n\n       Alignments may be in SAM or BAM file.\n\
+  \       The output of the aligner may be piped directly into ARCS by setting\n \
+  \      alignments to /dev/stdin, in which case it must be in SAM format.\n\n   \
+  \    Paired reads must occur consecutively (interleaved) in the SAM/BAM file.\n\
+  \       The output of the aligner may either not be sorted,\n       or may be sorted\
+  \ by read name using samtools sort -n.\n       The SAM/BAM file must not be sorted\
+  \ by coordinate position.\n\n       The barcode may be found in either the BX:Z:BARCODE\
+  \ SAM tag,\n       or in the read (query) name following an underscore, READNAME_BARCODE.\n\
+  \       In the latter case the barcode must be composed entirely of nucleotides.\n\
+  \nRequirements for ARKS method:\n       ARKS scaffolds draft genomes using linked\
+  \ read kmers (https://doi.org/10.1186/s12859-018-2243-x).\n       Contig sequences\
+  \ are REQUIRED by the -f option.\n       linked read files are REQUIRED either as\
+  \ positional arguments or in a supplied file of linked read file paths. Pay attention\
+  \ to have only linked read files in the file of file names.\n\n       The barcode\
+  \ multiplicity file is optional and can be provided by -u option in either .tsv\
+  \ or .csv format.\n\nCommon Options:\n   -a, --fofName=FILE    text file listing\
+  \ input filenames\n   -u, --multfile        tsv or csv file listing barcode multiplicities\
+  \ [optional]\n   -f, --file=FILE       FASTA file of contig sequences to scaffold\n\
+  \   -c, --min_reads=N     min aligned read pairs per barcode mapping [5]\n   -l,\
+  \ --min_links=N     min shared barcodes between contigs [0]\n   -z, --min_size=N\
+  \      min contig length [500]\n   -b, --base_name=STR   output file prefix\n  \
+  \ -g, --graph=FILE      write the ABySS dist.gv to FILE\n       --gap=N        \
+  \   fixed gap size for ABySS dist.gv file [100]\n       --tsv=FILE        write\
+  \ graph in TSV format to FILE\n       --barcode-counts=FILE       write number of\
+  \ reads per barcode to FILE\n   -m, --index_multiplicity=RANGE  barcode multiplicity\
+  \ range [50-10000]\n   -d, --max_degree=N    max node degree in scaffold graph [0]\n\
+  \   -e, --end_length=N    contig head/tail length for masking alignments [30000]\n\
+  \   -r, --error_percent=N p-value for head/tail assignment and link orientation\
+  \ (lower is more stringent) [0.05]\n   -v, --run_verbose     verbose logging\nOptions\
+  \ specific to ARCS:\n   -s, --seq_id=N        min sequence identity for read alignments\
+  \ [98]\nOptions specific to ARKS:\n   -k  --k_value         size of a k-mer [30]\n\
+  \   -j  --j_index         minimum fraction of read kmers matching a contigId [0.55]\n\
+  \   -t  --threads         number of threads [1]\n\n Distance Estimation Options\
+  \ (Common):\n   -B, --bin_size=N        estimate distance using N closest Jaccard\
+  \ scores [20]\n   -D, --dist_est          enable distance estimation\n       --no_dist_est\
+  \       disable distance estimation [default]\n       --dist_median       use median\
+  \ distance in ABySS dist.gv [default]\n       --dist_upper        use upper bound\
+  \ distance in ABySS dist.gv\n       --dist_tsv=FILE     write min/max distance estimates\
+  \ to FILE\n       --samples_tsv=FILE  write intra-contig distance/barcode samples\
+  \ to FILE\n   -P, --pair              output scaffolds pairing TSV with number of\
+  \ barcode links (no p-value threshold)supporting each of the 4 possible orientation\n"
+generated_using:
+- --help

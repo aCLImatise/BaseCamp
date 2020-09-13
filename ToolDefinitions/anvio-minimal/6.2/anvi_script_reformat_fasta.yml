@@ -1,0 +1,118 @@
+!Command
+command:
+- anvi-script-reformat-fasta
+positional:
+- !Positional
+  description: --prefix PREFIX       Use this parameter if you would like to add a
+    prefix
+  position: 0
+  name: names.
+  optional: false
+named:
+- !Flag
+  description: "Minimum length of contigs to keep (contigs shorter\nthan this value\
+    \ will not be included in the output\nfile). The default is 0, so nothing will\
+    \ be removed if\nyou do not declare a minimum size."
+  synonyms:
+  - -l
+  - --min-len
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+  optional: true
+- !Flag
+  description: "Maximum fraction of gaps in a sequence (any sequence\nwith more gaps\
+    \ will be removed from the output FASTA\nfile). The default is 100.000000."
+  synonyms:
+  - --max-percentage-gaps
+  args: !SimpleFlagArg
+    name: PERCENTAGE
+  optional: true
+- !Flag
+  description: "FILE, --exclude-ids TXT FILE\nIDs to remove from the FASTA file. You\
+    \ cannot provide\nboth --keep-ids and --exclude-ids."
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: TXT
+  optional: true
+- !Flag
+  description: "FILE, --keep-ids TXT FILE\nIf provided, all IDs not in this file will\
+    \ be excluded\nfrom the reformatted FASTA file. Any additional\nfilters (such\
+    \ as --min-len) will still be applied to\nthe IDs in this file. You cannot provide\
+    \ both\n--exclude-ids and --keep-ids."
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: TXT
+  optional: true
+- !Flag
+  description: "FILE, --output-file FASTA FILE\nOutput file path."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: Edit deflines to make sure they contigs have simple
+  synonyms:
+  - --simplify-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "FILE, --report-file REPORT FILE\nReport file path. When you run this\
+    \ program with\n`--simplify-names` flag, all changes to deflines will\nbe reported\
+    \ in this file in case you need to go back\nto this information later. It is not\
+    \ mandatory to\ndeclare one, but it is a very good idea to have it.\n"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: REPORT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: anvi-script-reformat-fasta [-h] [-l MIN_LENGTH]\n             \
+  \                     [--max-percentage-gaps PERCENTAGE]\n                     \
+  \             [-i TXT FILE] [-I TXT FILE] -o FASTA FILE\n                      \
+  \            [--simplify-names] [--prefix PREFIX]\n                            \
+  \      [-r REPORT FILE]\n                                  FASTA FILE\n\nReformat\
+  \ FASTA file (remove contigs based on length, or based on a given list\nof deflines,\
+  \ and/or generate an output with simpler names)\n\npositional arguments:\n  FASTA\
+  \ FILE\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  -l MIN_LENGTH, --min-len MIN_LENGTH\n                        Minimum length\
+  \ of contigs to keep (contigs shorter\n                        than this value will\
+  \ not be included in the output\n                        file). The default is 0,\
+  \ so nothing will be removed if\n                        you do not declare a minimum\
+  \ size.\n  --max-percentage-gaps PERCENTAGE\n                        Maximum fraction\
+  \ of gaps in a sequence (any sequence\n                        with more gaps will\
+  \ be removed from the output FASTA\n                        file). The default is\
+  \ 100.000000.\n  -i TXT FILE, --exclude-ids TXT FILE\n                        IDs\
+  \ to remove from the FASTA file. You cannot provide\n                        both\
+  \ --keep-ids and --exclude-ids.\n  -I TXT FILE, --keep-ids TXT FILE\n          \
+  \              If provided, all IDs not in this file will be excluded\n        \
+  \                from the reformatted FASTA file. Any additional\n             \
+  \           filters (such as --min-len) will still be applied to\n             \
+  \           the IDs in this file. You cannot provide both\n                    \
+  \    --exclude-ids and --keep-ids.\n  -o FASTA FILE, --output-file FASTA FILE\n\
+  \                        Output file path.\n  --simplify-names      Edit deflines\
+  \ to make sure they contigs have simple\n                        names.\n  --prefix\
+  \ PREFIX       Use this parameter if you would like to add a prefix\n          \
+  \              to your contig names while simplifying them. The\n              \
+  \          prefix must be a single word (you can use underscor\n               \
+  \         character, but nothing more!).\n  -r REPORT FILE, --report-file REPORT\
+  \ FILE\n                        Report file path. When you run this program with\n\
+  \                        `--simplify-names` flag, all changes to deflines will\n\
+  \                        be reported in this file in case you need to go back\n\
+  \                        to this information later. It is not mandatory to\n   \
+  \                     declare one, but it is a very good idea to have it.\n"
+generated_using:
+- --help

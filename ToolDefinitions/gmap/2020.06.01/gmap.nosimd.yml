@@ -1,0 +1,991 @@
+!Command
+command:
+- gmap.nosimd
+positional:
+- !Positional
+  description: "Positions       Genome\n0      mmap            mmap\n1      mmap &\
+    \ preload  mmap"
+  position: 0
+  name: Mode
+  optional: false
+named:
+- !Flag
+  description: "Genome directory.  Default (as specified by --with-gmapdb to the configure\
+    \ program) is\n/usr/local/share"
+  synonyms:
+  - -D
+  - --dir
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: "Genome database.  If argument is '?' (with\nthe quotes), this command\
+    \ lists available databases."
+  synonyms:
+  - -d
+  - --db
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "kmer size to use in genome database (allowed values: 16 or less).\n\
+    If not specified, the program will find the highest available\nkmer size in the\
+    \ genome database"
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Sampling to use in genome database.  If not specified, the program\n\
+    will find the smallest available sampling value in the genome database\nwithin\
+    \ selected k-mer size"
+  synonyms:
+  - --sampling
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: User-supplied genomic segment
+  synonyms:
+  - -g
+  - --gseg
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "Align one sequence against itself in FASTA format via stdin\n(Useful\
+    \ for getting protein translation of a nucleotide sequence)"
+  synonyms:
+  - '-1'
+  - --selfalign
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Align two sequences in FASTA format via stdin, first one being\ngenomic\
+    \ and second one being cDNA"
+  synonyms:
+  - '-2'
+  - --pairalign
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",STRING        Align these two sequences provided on the command line,\n\
+    first one being genomic and second one being cDNA"
+  synonyms:
+  - --cmdline
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Process only the i-th out of every n sequences\ne.g., 0/100 or 99/100\
+    \ (useful for distributing jobs\nto a computer farm)."
+  synonyms:
+  - -q
+  - --part
+  args: !SimpleFlagArg
+    name: INT/INT
+  optional: true
+- !Flag
+  description: "Size of input buffer (program reads this many sequences\nat a time\
+    \ for efficiency) (default 1000)"
+  synonyms:
+  - --input-buffer-size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Batch mode (default = 2)
+  synonyms:
+  - -B
+  - --batch
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "If 1, then allocated memory is shared among all processes on this\
+    \ node\nIf 0 (default), then each process has private allocated memory"
+  synonyms:
+  - --use-shared-memory
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Turns off splicing (useful for aligning genomic sequences\nonto a\
+    \ genome)"
+  synonyms:
+  - --nosplicing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Min length for one internal intron (default 9).  Below this size,\n\
+    a genomic gap will be considered a deletion rather than an intron."
+  synonyms:
+  - --min-intronlength
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Max length for one internal intron (default 500000).  Note: for backward\n\
+    compatibility, the -K or --intronlength flag will set both\n--max-intronlength-middle\
+    \ and --max-intronlength-ends.\nAlso see --split-large-introns below."
+  synonyms:
+  - --max-intronlength-middle
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Max length for first or last intron (default 10000).  Note: for backward\n\
+    compatibility, the -K or --intronlength flag will set both\n--max-intronlength-middle\
+    \ and --max-intronlength-ends."
+  synonyms:
+  - --max-intronlength-ends
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Sometimes GMAP will exceed the value for --max-intronlength-middle,\n\
+    if it finds a good single alignment.  However, you can force GMAP\nto split such\
+    \ alignments by using this flag"
+  synonyms:
+  - --split-large-introns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Trim end exons with fewer than given number of matches\n(in nt, default\
+    \ 12)"
+  synonyms:
+  - --trim-end-exons
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Max length for known splice sites at ends of sequence\n(default 2000000)"
+  synonyms:
+  - -w
+  - --localsplicedist
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Max total intron length (default 2400000)
+  synonyms:
+  - -L
+  - --totallength
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Amount of unaligned sequence that triggers\nsearch for the remaining\
+    \ sequence (default 30).\nEnables alignment of chimeric reads, and may help\n\
+    with some non-chimeric reads.  To turn off, set to\nzero."
+  synonyms:
+  - -x
+  - --chimera-margin
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Turns off finding of chimeras.  Same effect as --chimera-margin=0
+  synonyms:
+  - --no-chimeras
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of worker threads
+  synonyms:
+  - -t
+  - --nthreads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Limit search to given chromosome
+  synonyms:
+  - -c
+  - --chrsubset
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "cDNA direction (sense_force, antisense_force,\nsense_filter, antisense_filter,or\
+    \ auto (default))"
+  synonyms:
+  - -z
+  - --direction
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Reward for canonical and semi-canonical introns\n0=low reward, 1=high\
+    \ reward (default), 2=low reward for\nhigh-identity sequences and high reward\
+    \ otherwise"
+  synonyms:
+  - --canonical-mode
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Use a more sensitive search for canonical splicing, which helps especially\n\
+    for cross-species alignments and other difficult cases"
+  synonyms:
+  - --cross-species
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Allow an insertion and deletion close to each other\n(0=no, 1=yes\
+    \ (default), 2=only for high-quality alignments)"
+  synonyms:
+  - --allow-close-indels
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Allow microexons only if one of the splice site probabilities is\n\
+    greater than this value (default 0.95)"
+  synonyms:
+  - --microexon-spliceprob
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Directory for methylcytosine index files (created using cmetindex)\n\
+    (default is location of genome index files specified using -D, -V, and -d)"
+  synonyms:
+  - --cmetdir
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Directory for A-to-I RNA editing index files (created using atoiindex)\n\
+    (default is location of genome index files specified using -D, -V, and -d)"
+  synonyms:
+  - --atoidir
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Alignment mode: standard (default), cmet-stranded, cmet-nonstranded,\n\
+    atoi-stranded, atoi-nonstranded, ttoc-stranded, or ttoc-nonstranded.\nNon-standard\
+    \ modes requires you to have previously run the cmetindex\nor atoiindex programs\
+    \ (which also cover the ttoc modes) on the genome"
+  synonyms:
+  - --mode
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Pruning level: 0=no pruning (default), 1=poor seqs,\n2=repetitive\
+    \ seqs, 3=poor and repetitive"
+  synonyms:
+  - -p
+  - --prunelevel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show summary of alignments only
+  synonyms:
+  - -S
+  - --summary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show alignments
+  synonyms:
+  - -A
+  - --align
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show alignment in three continuous lines
+  synonyms:
+  - '-3'
+  - --continuous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show alignment in three lines per exon
+  synonyms:
+  - '-4'
+  - --continuous-by-exon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print output in compressed format
+  synonyms:
+  - -Z
+  - --compress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Print exons (\"cdna\" or \"genomic\")\nWill also print introns with\
+    \ \"cdna+introns\" or\n\"genomic+introns\""
+  synonyms:
+  - -E
+  - --exons
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Print protein sequence (cDNA)
+  synonyms:
+  - -P
+  - --protein_dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print protein sequence (genomic)
+  synonyms:
+  - -Q
+  - --protein_gen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Other format for output (also note the -A and -S options\nand other\
+    \ options listed under Output types):\nmask_introns,\nmask_utr_introns,\npsl (or\
+    \ 1) = PSL (BLAT) format,\ngff3_gene (or 2) = GFF3 gene format,\ngff3_match_cdna\
+    \ (or 3) = GFF3 cDNA_match format,\ngff3_match_est (or 4) = GFF3 EST_match format,\n\
+    splicesites (or 6) = splicesites output (for GSNAP splicing file),\nintrons =\
+    \ introns output (for GSNAP splicing file),\nmap_exons (or 7) = IIT FASTA exon\
+    \ map format,\nmap_ranges (or 8) = IIT FASTA range map format,\ncoords (or 9)\
+    \ = coords in table format,\nsampe = SAM format (setting paired_read bit in flag),\n\
+    samse = SAM format (without setting paired_read bit),\nbedpe = indels and gaps\
+    \ in BEDPE format"
+  synonyms:
+  - -f
+  - --format
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Maximum number of paths to show (default 5).  If set to 1, GMAP\n\
+    will not report chimeric alignments, since those imply\ntwo paths.  If you want\
+    \ a single alignment plus chimeric\nalignments, then set this to be 0."
+  synonyms:
+  - -n
+  - --npaths
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Report only paths whose score is within this value of the\nbest path.\n\
+    If specified between 0.0 and 1.0, then treated as a fraction\nof the score of\
+    \ the best alignment (matches minus penalties for\nmismatches and indels).  Otherwise,\
+    \ treated as an integer\nnumber to be subtracted from the score of the best alignment.\n\
+    Default value is 0.50."
+  synonyms:
+  - --suboptimal-score
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Print output in same order as input (relevant\nonly if there is more\
+    \ than one worker thread)"
+  synonyms:
+  - -O
+  - --ordered
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print MD5 checksum for each query sequence
+  synonyms:
+  - '-5'
+  - --md5
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overlap to show, if any, at chimera breakpoint
+  synonyms:
+  - -o
+  - --chimera-overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print only failed alignments, those with no results
+  synonyms:
+  - --failsonly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Exclude printing of failed alignments
+  synonyms:
+  - --nofails
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Directory for SNPs index files (created using snpindex) (default is\n\
+    location of genome index files specified using -D and -d)"
+  synonyms:
+  - -V
+  - --snpsdir
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Use database containing known SNPs (in <STRING>.iit, built\npreviously\
+    \ using snpindex) for tolerance to SNPs"
+  synonyms:
+  - -v
+  - --use-snps
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Basename for multiple-file output, separately for nomapping,\nuniq,\
+    \ mult, (and chimera, if --chimera-margin is selected)"
+  synonyms:
+  - --split-output
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Print completely failed alignments as input FASTA or FASTQ format\n\
+    to the given file.  If the --split-output flag is also given, this file\nis generated\
+    \ in addition to the output in the .nomapping file."
+  synonyms:
+  - --failed-input
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "When --split-output or --failedinput is given, this flag will append\
+    \ output\nto the existing files.  Otherwise, the default is to create new files."
+  synonyms:
+  - --append-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Buffer size, in queries, for output thread (default 1000).  When the\
+    \ number\nof results to be printed exceeds this size, the worker threads are halted\n\
+    until the backlog is cleared"
+  synonyms:
+  - --output-buffer-size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Genetic code used for translating codons to amino acids and computing\
+    \ CDS\nInteger value (default=1) corresponds to an available code at\nhttp://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi"
+  synonyms:
+  - --translation-code
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Also, use the alternate initiation codons shown in the above Web site\n\
+    By default, without this option, only ATG is considered an initiation codon"
+  synonyms:
+  - --alt-start-codons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume full-length protein, starting with Met
+  synonyms:
+  - -F
+  - --fulllength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Translate codons from given nucleotide (1-based)
+  synonyms:
+  - -a
+  - --cdsstart
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Truncate alignment around full-length protein, Met to Stop\nImplies\
+    \ -F flag."
+  synonyms:
+  - -T
+  - --truncate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Translates cDNA with corrections for frameshifts
+  synonyms:
+  - -Y
+  - --tolerant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Whether to add a ### separator after each query sequence\nValues:\
+    \ 0 (no), 1 (yes, default)"
+  synonyms:
+  - --gff3-add-separators
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Whether to swap phase (0 => 0, 1 => 2, 2 => 1) in gff3_gene format\n\
+    Needed by some analysis programs, but deviates from GFF3 specification\nValues:\
+    \ 0 (no, default), 1 (yes)"
+  synonyms:
+  - --gff3-swap-phase
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Whether to include annotation from the FASTA header into the GFF3\
+    \ output\nValues: 0 (default): Do not include\n1: Wrap all annotation as Annot=\"\
+    <header>\"\n2: Include key=value pairs, replacing brackets with quotation marks\n\
+    and replacing spaces between key=value pairs with semicolons"
+  synonyms:
+  - --gff3-fasta-annotation
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Whether to use cDNA or genomic translation for the CDS coordinates\n\
+    Values: cdna (default), genomic"
+  synonyms:
+  - --gff3-cds
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Do not print headers beginning with '@'
+  synonyms:
+  - --no-sam-headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Insert 0M in CIGAR between adjacent insertions and deletions\nRequired\
+    \ by Picard, but can cause errors in other tools"
+  synonyms:
+  - --sam-use-0M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use extended CIGAR format (using X and = symbols instead of M,\nto\
+    \ indicate matches and mismatches, respectively"
+  synonyms:
+  - --sam-extended-cigar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "For RNA-Seq alignments, disallows XS:A:? when the sense direction\n\
+    is unclear, and replaces this value arbitrarily with XS:A:+.\nMay be useful for\
+    \ some programs, such as Cufflinks, that cannot\nhandle XS:A:?.  However, if you\
+    \ use this flag, the reported value\nof XS:A:+ in these cases will not be meaningful."
+  synonyms:
+  - --force-xs-dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "In MD string, when known SNPs are given by the -v flag,\nprints difference\
+    \ nucleotides as lower-case when they,\ndiffer from reference but match a known\
+    \ alternate allele"
+  synonyms:
+  - --md-lowercase-snp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Action to take if there is a disagreement between CIGAR length and\
+    \ sequence length\nAllowed values: ignore, warning (default), noprint, abort\n\
+    Note that the noprint option does not print the CIGAR string at all if there\n\
+    is an error, so it may break a SAM parser"
+  synonyms:
+  - --action-if-cigar-error
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Value to put into read-group id (RG-ID) field
+  synonyms:
+  - --read-group-id
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Value to put into read-group name (RG-SM) field
+  synonyms:
+  - --read-group-name
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Value to put into read-group library (RG-LB) field
+  synonyms:
+  - --read-group-library
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Value to put into read-group library (RG-PL) field
+  synonyms:
+  - --read-group-platform
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Protocol for input quality scores.  Allowed values:\nillumina (ASCII\
+    \ 64-126) (equivalent to -J 64 -j -31)\nsanger   (ASCII 33-126) (equivalent to\
+    \ -J 33 -j 0)\nDefault is sanger (no quality print shift)\nSAM output files should\
+    \ have quality scores in sanger protocol\nOr you can specify the print shift with\
+    \ this flag:"
+  synonyms:
+  - --quality-protocol
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Shift FASTQ quality scores by this amount in output\n(default is 0\
+    \ for sanger protocol; to change Illumina input\nto Sanger output, select -31)"
+  synonyms:
+  - -j
+  - --quality-print-shift
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Map directory
+  synonyms:
+  - -M
+  - --mapdir
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: "Map file.  If argument is '?' (with the quotes),\nthis lists available\
+    \ map files."
+  synonyms:
+  - -m
+  - --map
+  args: !SimpleFlagArg
+    name: iitfile
+  optional: true
+- !Flag
+  description: Map each exon separately
+  synonyms:
+  - -e
+  - --mapexons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report hits from both strands of genome
+  synonyms:
+  - -b
+  - --mapboth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show flanking hits (default 0)
+  synonyms:
+  - -u
+  - --flanking
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Show comment line for each hit
+  synonyms:
+  - --print-comment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No intron lengths in alignment
+  synonyms:
+  - -N
+  - --nolengths
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Mode for alignments to genomic (-) strand:\n0=Don't invert the cDNA\
+    \ (default)\n1=Invert cDNA and print genomic (-) strand\n2=Invert cDNA and print\
+    \ genomic (+) strand"
+  synonyms:
+  - -I
+  - --invertmode
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Nucleotides to show on each end of intron (default 3)
+  synonyms:
+  - -i
+  - --introngap
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Wrap length for alignment (default 50)
+  synonyms:
+  - -l
+  - --wraplength
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Do not print alignments with trimmed coverage less\nthis value (default=0.0,\
+    \ which means no filtering)\nNote that chimeric alignments will be output regardless\n\
+    of this filter"
+  synonyms:
+  - --min-trimmed-coverage
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Do not print alignments with identity less\nthis value (default=0.0,\
+    \ which means no filtering)\nNote that chimeric alignments will be output regardless\n\
+    of this filter"
+  synonyms:
+  - --min-identity
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Check compiler assumptions
+  synonyms:
+  - --check
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this help message
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: gmap [OPTIONS...] <FASTA files...>, or\n       cat <FASTA files...>\
+  \ | gmap [OPTIONS...]\n\nInput options (must include -d or -g)\n  -D, --dir=directory\
+  \            Genome directory.  Default (as specified by --with-gmapdb to the configure\
+  \ program) is\n                                    /usr/local/share\n  -d, --db=STRING\
+  \                Genome database.  If argument is '?' (with\n                  \
+  \                 the quotes), this command lists available databases.\n\n  -k,\
+  \ --kmer=INT                 kmer size to use in genome database (allowed values:\
+  \ 16 or less).\n                                   If not specified, the program\
+  \ will find the highest available\n                                   kmer size\
+  \ in the genome database\n  --sampling=INT                 Sampling to use in genome\
+  \ database.  If not specified, the program\n                                   will\
+  \ find the smallest available sampling value in the genome database\n          \
+  \                         within selected k-mer size\n  -g, --gseg=filename    \
+  \        User-supplied genomic segment\n  -1, --selfalign                Align one\
+  \ sequence against itself in FASTA format via stdin\n                          \
+  \         (Useful for getting protein translation of a nucleotide sequence)\n  -2,\
+  \ --pairalign                Align two sequences in FASTA format via stdin, first\
+  \ one being\n                                   genomic and second one being cDNA\n\
+  \  --cmdline=STRING,STRING        Align these two sequences provided on the command\
+  \ line,\n                                   first one being genomic and second one\
+  \ being cDNA\n  -q, --part=INT/INT             Process only the i-th out of every\
+  \ n sequences\n                                   e.g., 0/100 or 99/100 (useful\
+  \ for distributing jobs\n                                   to a computer farm).\n\
+  \  --input-buffer-size=INT        Size of input buffer (program reads this many\
+  \ sequences\n                                   at a time for efficiency) (default\
+  \ 1000)\n\nComputation options\n  -B, --batch=INT                Batch mode (default\
+  \ = 2)\n                                 Mode     Positions       Genome\n     \
+  \                              0      mmap            mmap\n                   \
+  \                1      mmap & preload  mmap\n                      (default)  \
+  \  2      mmap & preload  mmap & preload\n                                   3 \
+  \     allocate        mmap & preload\n                                   4     \
+  \ allocate        allocate\n                                   5      allocate \
+  \       allocate     (same as 4)\n                           Note: For a single\
+  \ sequence, all data structures use mmap\n                           If mmap not\
+  \ available and allocate not chosen, then will use fileio (very slow)\n  --use-shared-memory=INT\
+  \        If 1, then allocated memory is shared among all processes on this node\n\
+  \                                   If 0 (default), then each process has private\
+  \ allocated memory\n  --nosplicing                   Turns off splicing (useful\
+  \ for aligning genomic sequences\n                                   onto a genome)\n\
+  \  --min-intronlength=INT         Min length for one internal intron (default 9).\
+  \  Below this size,\n                                   a genomic gap will be considered\
+  \ a deletion rather than an intron.\n  --max-intronlength-middle=INT  Max length\
+  \ for one internal intron (default 500000).  Note: for backward\n              \
+  \                     compatibility, the -K or --intronlength flag will set both\n\
+  \                                   --max-intronlength-middle and --max-intronlength-ends.\n\
+  \                                   Also see --split-large-introns below.\n  --max-intronlength-ends=INT\
+  \    Max length for first or last intron (default 10000).  Note: for backward\n\
+  \                                   compatibility, the -K or --intronlength flag\
+  \ will set both\n                                   --max-intronlength-middle and\
+  \ --max-intronlength-ends.\n  --split-large-introns          Sometimes GMAP will\
+  \ exceed the value for --max-intronlength-middle,\n                            \
+  \       if it finds a good single alignment.  However, you can force GMAP\n    \
+  \                               to split such alignments by using this flag\n  --trim-end-exons=INT\
+  \           Trim end exons with fewer than given number of matches\n           \
+  \                        (in nt, default 12)\n  -w, --localsplicedist=INT      Max\
+  \ length for known splice sites at ends of sequence\n                          \
+  \         (default 2000000)\n  -L, --totallength=INT          Max total intron length\
+  \ (default 2400000)\n  -x, --chimera-margin=INT       Amount of unaligned sequence\
+  \ that triggers\n                                   search for the remaining sequence\
+  \ (default 30).\n                                   Enables alignment of chimeric\
+  \ reads, and may help\n                                   with some non-chimeric\
+  \ reads.  To turn off, set to\n                                   zero.\n  --no-chimeras\
+  \                  Turns off finding of chimeras.  Same effect as --chimera-margin=0\n\
+  \  -t, --nthreads=INT             Number of worker threads\n  -c, --chrsubset=string\
+  \         Limit search to given chromosome\n  -z, --direction=STRING         cDNA\
+  \ direction (sense_force, antisense_force,\n                                   sense_filter,\
+  \ antisense_filter,or auto (default))\n  --canonical-mode=INT           Reward for\
+  \ canonical and semi-canonical introns\n                                   0=low\
+  \ reward, 1=high reward (default), 2=low reward for\n                          \
+  \         high-identity sequences and high reward otherwise\n  --cross-species \
+  \               Use a more sensitive search for canonical splicing, which helps\
+  \ especially\n                                   for cross-species alignments and\
+  \ other difficult cases\n  --allow-close-indels=INT       Allow an insertion and\
+  \ deletion close to each other\n                                   (0=no, 1=yes\
+  \ (default), 2=only for high-quality alignments)\n  --microexon-spliceprob=FLOAT\
+  \   Allow microexons only if one of the splice site probabilities is\n         \
+  \                          greater than this value (default 0.95)\n  --cmetdir=STRING\
+  \               Directory for methylcytosine index files (created using cmetindex)\n\
+  \                                   (default is location of genome index files specified\
+  \ using -D, -V, and -d)\n  --atoidir=STRING               Directory for A-to-I RNA\
+  \ editing index files (created using atoiindex)\n                              \
+  \     (default is location of genome index files specified using -D, -V, and -d)\n\
+  \  --mode=STRING                  Alignment mode: standard (default), cmet-stranded,\
+  \ cmet-nonstranded,\n                                    atoi-stranded, atoi-nonstranded,\
+  \ ttoc-stranded, or ttoc-nonstranded.\n                                    Non-standard\
+  \ modes requires you to have previously run the cmetindex\n                    \
+  \                or atoiindex programs (which also cover the ttoc modes) on the\
+  \ genome\n  -p, --prunelevel               Pruning level: 0=no pruning (default),\
+  \ 1=poor seqs,\n                                   2=repetitive seqs, 3=poor and\
+  \ repetitive\n\nOutput types\n  -S, --summary                  Show summary of alignments\
+  \ only\n  -A, --align                    Show alignments\n  -3, --continuous   \
+  \            Show alignment in three continuous lines\n  -4, --continuous-by-exon\
+  \       Show alignment in three lines per exon\n  -Z, --compress               \
+  \  Print output in compressed format\n  -E, --exons=STRING             Print exons\
+  \ (\"cdna\" or \"genomic\")\n                                   Will also print\
+  \ introns with \"cdna+introns\" or\n                                   \"genomic+introns\"\
+  \n  -P, --protein_dna              Print protein sequence (cDNA)\n  -Q, --protein_gen\
+  \              Print protein sequence (genomic)\n  -f, --format=INT            \
+  \   Other format for output (also note the -A and -S options\n                 \
+  \                  and other options listed under Output types):\n             \
+  \                      mask_introns,\n                                   mask_utr_introns,\n\
+  \                                   psl (or 1) = PSL (BLAT) format,\n          \
+  \                         gff3_gene (or 2) = GFF3 gene format,\n               \
+  \                    gff3_match_cdna (or 3) = GFF3 cDNA_match format,\n        \
+  \                           gff3_match_est (or 4) = GFF3 EST_match format,\n   \
+  \                                splicesites (or 6) = splicesites output (for GSNAP\
+  \ splicing file),\n                                   introns = introns output (for\
+  \ GSNAP splicing file),\n                                   map_exons (or 7) = IIT\
+  \ FASTA exon map format,\n                                   map_ranges (or 8) =\
+  \ IIT FASTA range map format,\n                                   coords (or 9)\
+  \ = coords in table format,\n                                   sampe = SAM format\
+  \ (setting paired_read bit in flag),\n                                   samse =\
+  \ SAM format (without setting paired_read bit),\n                              \
+  \     bedpe = indels and gaps in BEDPE format\n\nOutput options\n  -n, --npaths=INT\
+  \               Maximum number of paths to show (default 5).  If set to 1, GMAP\n\
+  \                                   will not report chimeric alignments, since those\
+  \ imply\n                                   two paths.  If you want a single alignment\
+  \ plus chimeric\n                                   alignments, then set this to\
+  \ be 0.\n  --suboptimal-score=FLOAT       Report only paths whose score is within\
+  \ this value of the\n                                   best path.\n           \
+  \                      If specified between 0.0 and 1.0, then treated as a fraction\n\
+  \                                   of the score of the best alignment (matches\
+  \ minus penalties for\n                                   mismatches and indels).\
+  \  Otherwise, treated as an integer\n                                   number to\
+  \ be subtracted from the score of the best alignment.\n                        \
+  \           Default value is 0.50.\n  -O, --ordered                  Print output\
+  \ in same order as input (relevant\n                                   only if there\
+  \ is more than one worker thread)\n  -5, --md5                      Print MD5 checksum\
+  \ for each query sequence\n  -o, --chimera-overlap          Overlap to show, if\
+  \ any, at chimera breakpoint\n  --failsonly                    Print only failed\
+  \ alignments, those with no results\n  --nofails                      Exclude printing\
+  \ of failed alignments\n\n  -V, --snpsdir=STRING           Directory for SNPs index\
+  \ files (created using snpindex) (default is\n                                 \
+  \  location of genome index files specified using -D and -d)\n   -v, --use-snps=STRING\
+  \          Use database containing known SNPs (in <STRING>.iit, built\n        \
+  \                           previously using snpindex) for tolerance to SNPs\n \
+  \ --split-output=STRING          Basename for multiple-file output, separately for\
+  \ nomapping,\n                                   uniq, mult, (and chimera, if --chimera-margin\
+  \ is selected)\n  --failed-input=STRING          Print completely failed alignments\
+  \ as input FASTA or FASTQ format\n                                   to the given\
+  \ file.  If the --split-output flag is also given, this file\n                 \
+  \                  is generated in addition to the output in the .nomapping file.\n\
+  \  --append-output                When --split-output or --failedinput is given,\
+  \ this flag will append output\n                                   to the existing\
+  \ files.  Otherwise, the default is to create new files.\n  --output-buffer-size=INT\
+  \       Buffer size, in queries, for output thread (default 1000).  When the number\n\
+  \                                   of results to be printed exceeds this size,\
+  \ the worker threads are halted\n                                   until the backlog\
+  \ is cleared\n  --translation-code=INT         Genetic code used for translating\
+  \ codons to amino acids and computing CDS\n                                   Integer\
+  \ value (default=1) corresponds to an available code at\n                      \
+  \             http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\n  --alt-start-codons\
+  \             Also, use the alternate initiation codons shown in the above Web site\n\
+  \                                   By default, without this option, only ATG is\
+  \ considered an initiation codon\n  -F, --fulllength               Assume full-length\
+  \ protein, starting with Met\n  -a, --cdsstart=INT             Translate codons\
+  \ from given nucleotide (1-based)\n  -T, --truncate                 Truncate alignment\
+  \ around full-length protein, Met to Stop\n                                 Implies\
+  \ -F flag.\n  -Y, --tolerant                 Translates cDNA with corrections for\
+  \ frameshifts\n\nOptions for GFF3 output\n  --gff3-add-separators=INT      Whether\
+  \ to add a ### separator after each query sequence\n                           \
+  \        Values: 0 (no), 1 (yes, default)\n  --gff3-swap-phase=INT          Whether\
+  \ to swap phase (0 => 0, 1 => 2, 2 => 1) in gff3_gene format\n                 \
+  \                  Needed by some analysis programs, but deviates from GFF3 specification\n\
+  \                                   Values: 0 (no, default), 1 (yes)\n  --gff3-fasta-annotation=INT\
+  \    Whether to include annotation from the FASTA header into the GFF3 output\n\
+  \                                   Values: 0 (default): Do not include\n      \
+  \                                     1: Wrap all annotation as Annot=\"<header>\"\
+  \n                                           2: Include key=value pairs, replacing\
+  \ brackets with quotation marks\n                                              and\
+  \ replacing spaces between key=value pairs with semicolons\n  --gff3-cds=STRING\
+  \              Whether to use cDNA or genomic translation for the CDS coordinates\n\
+  \                                   Values: cdna (default), genomic\n\nOptions for\
+  \ SAM output\n  --no-sam-headers               Do not print headers beginning with\
+  \ '@'\n  --sam-use-0M                   Insert 0M in CIGAR between adjacent insertions\
+  \ and deletions\n                                   Required by Picard, but can\
+  \ cause errors in other tools\n  --sam-extended-cigar           Use extended CIGAR\
+  \ format (using X and = symbols instead of M,\n                                \
+  \   to indicate matches and mismatches, respectively\n  --force-xs-dir         \
+  \        For RNA-Seq alignments, disallows XS:A:? when the sense direction\n   \
+  \                                is unclear, and replaces this value arbitrarily\
+  \ with XS:A:+.\n                                   May be useful for some programs,\
+  \ such as Cufflinks, that cannot\n                                   handle XS:A:?.\
+  \  However, if you use this flag, the reported value\n                         \
+  \          of XS:A:+ in these cases will not be meaningful.\n  --md-lowercase-snp\
+  \             In MD string, when known SNPs are given by the -v flag,\n        \
+  \                           prints difference nucleotides as lower-case when they,\n\
+  \                                   differ from reference but match a known alternate\
+  \ allele\n  --action-if-cigar-error        Action to take if there is a disagreement\
+  \ between CIGAR length and sequence length\n                                   Allowed\
+  \ values: ignore, warning (default), noprint, abort\n                          \
+  \         Note that the noprint option does not print the CIGAR string at all if\
+  \ there\n                                   is an error, so it may break a SAM parser\n\
+  \  --read-group-id=STRING         Value to put into read-group id (RG-ID) field\n\
+  \  --read-group-name=STRING       Value to put into read-group name (RG-SM) field\n\
+  \  --read-group-library=STRING    Value to put into read-group library (RG-LB) field\n\
+  \  --read-group-platform=STRING   Value to put into read-group library (RG-PL) field\n\
+  \nOptions for quality scores\n  --quality-protocol=STRING      Protocol for input\
+  \ quality scores.  Allowed values:\n                                   illumina\
+  \ (ASCII 64-126) (equivalent to -J 64 -j -31)\n                                \
+  \   sanger   (ASCII 33-126) (equivalent to -J 33 -j 0)\n                       \
+  \          Default is sanger (no quality print shift)\n                        \
+  \         SAM output files should have quality scores in sanger protocol\n\n   \
+  \                              Or you can specify the print shift with this flag:\n\
+  \  -j, --quality-print-shift=INT  Shift FASTQ quality scores by this amount in output\n\
+  \                                   (default is 0 for sanger protocol; to change\
+  \ Illumina input\n                                   to Sanger output, select -31)\n\
+  External map file options\n  -M, --mapdir=directory         Map directory\n  -m,\
+  \ --map=iitfile              Map file.  If argument is '?' (with the quotes),\n\
+  \                                   this lists available map files.\n  -e, --mapexons\
+  \                 Map each exon separately\n  -b, --mapboth                  Report\
+  \ hits from both strands of genome\n  -u, --flanking=INT             Show flanking\
+  \ hits (default 0)\n  --print-comment                Show comment line for each\
+  \ hit\n\nAlignment output options\n  -N, --nolengths                No intron lengths\
+  \ in alignment\n  -I, --invertmode=INT           Mode for alignments to genomic\
+  \ (-) strand:\n                                   0=Don't invert the cDNA (default)\n\
+  \                                   1=Invert cDNA and print genomic (-) strand\n\
+  \                                   2=Invert cDNA and print genomic (+) strand\n\
+  \  -i, --introngap=INT            Nucleotides to show on each end of intron (default\
+  \ 3)\n  -l, --wraplength=INT           Wrap length for alignment (default 50)\n\n\
+  Filtering output options\n  --min-trimmed-coverage=FLOAT   Do not print alignments\
+  \ with trimmed coverage less\n                                   this value (default=0.0,\
+  \ which means no filtering)\n                                   Note that chimeric\
+  \ alignments will be output regardless\n                                   of this\
+  \ filter\n  --min-identity=FLOAT           Do not print alignments with identity\
+  \ less\n                                   this value (default=0.0, which means\
+  \ no filtering)\n                                   Note that chimeric alignments\
+  \ will be output regardless\n                                   of this filter\n\
+  \nHelp options\n  --check                        Check compiler assumptions\n  --version\
+  \                      Show version\n  --help                         Show this\
+  \ help message\n"
+generated_using:
+- --help

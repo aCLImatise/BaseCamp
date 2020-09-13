@@ -1,0 +1,158 @@
+!Command
+command:
+- scallop
+positional: []
+named:
+- !Flag
+  description: '<0, 1, 2>                         0: quiet; 1: one line for each graph;
+    2: with details, default: 1'
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<first, second, unstranded>  library type of the sample, default:
+    unstranded'
+  synonyms:
+  - --library_type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'minimum coverage required for a multi-exon transcript, default: 1.01'
+  synonyms:
+  - --min_transcript_coverage
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'minimum coverage required for a single-exon transcript, default: 20'
+  synonyms:
+  - --min_single_exon_coverage
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'default: 50'
+  synonyms:
+  - --min_transcript_length_increase
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'ignore reads with mapping quality less than this value, default: 1'
+  synonyms:
+  - --min_mapping_quality
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'ignore reads with CIGAR size larger than this value, default: 7'
+  synonyms:
+  - --max_num_cigar
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum distances required to start a new bundle, default: 50'
+  synonyms:
+  - --min_bundle_gap
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum number of reads required in a bundle, default: 20'
+  synonyms:
+  - --min_num_hits_in_bundle
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum match length in each side for a spliced read, default: 3'
+  synonyms:
+  - --min_flank_length
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "minimum number of spliced reads required for a junction, default:\
+    \ 1\n___           ___           ___                                       ___\
+    \           ___\n/  /\\         /  /\\         /  /\\                        \
+    \             /  /\\         /  /\\\n/  /:/_       /  /:/        /  /::\\    \
+    \                               /  /::\\       /  /::\\\n/  /:/ /\\     /  /:/\
+    \        /  /:/\\:\\    ___     ___   ___     ___    /  /:/\\:\\     /  /:/\\\
+    :\\\n/  /:/ /::\\   /  /:/  ___   /  /:/~/::\\  /__/\\   /  /\\ /__/\\   /  /\\\
+    \  /  /:/  \\:\\   /  /:/~/:/"
+  synonyms:
+  - --min_splice_bundary_hits
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: gtf-file
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: bam-file
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print usage of Scallop and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print current version of Scallop and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Scallop v0.10.5 (c) 2017 Mingfu Shao, Carl Kingsford, and Carnegie Mellon\
+  \ University\n\nUsage: scallop -i <bam-file> -o <gtf-file> [options]\n\nOptions:\n\
+  \ --help                                      print usage of Scallop and exit\n\
+  \ --version                                   print current version of Scallop and\
+  \ exit\n --verbose <0, 1, 2>                         0: quiet; 1: one line for each\
+  \ graph; 2: with details, default: 1\n --library_type <first, second, unstranded>\
+  \  library type of the sample, default: unstranded\n --min_transcript_coverage <float>\
+  \           minimum coverage required for a multi-exon transcript, default: 1.01\n\
+  \ --min_single_exon_coverage <float>          minimum coverage required for a single-exon\
+  \ transcript, default: 20\n --min_transcript_length_increase <integer>  default:\
+  \ 50\n --min_transcript_length_base <integer>      default: 150, minimum length\
+  \ of a transcript would be\n                                             --min_transcript_length_base\
+  \ + --min_transcript_length_increase * num-of-exons\n --min_mapping_quality <integer>\
+  \             ignore reads with mapping quality less than this value, default: 1\n\
+  \ --max_num_cigar <integer>                   ignore reads with CIGAR size larger\
+  \ than this value, default: 7\n --min_bundle_gap <integer>                  minimum\
+  \ distances required to start a new bundle, default: 50\n --min_num_hits_in_bundle\
+  \ <integer>          minimum number of reads required in a bundle, default: 20\n\
+  \ --min_flank_length <integer>                minimum match length in each side\
+  \ for a spliced read, default: 3\n --min_splice_bundary_hits <integer>         minimum\
+  \ number of spliced reads required for a junction, default: 1\n\n      ___     \
+  \      ___           ___                                       ___           ___\
+  \    \n     /  /\\         /  /\\         /  /\\                               \
+  \      /  /\\         /  /\\   \n    /  /:/_       /  /:/        /  /::\\      \
+  \                             /  /::\\       /  /::\\  \n   /  /:/ /\\     /  /:/\
+  \        /  /:/\\:\\    ___     ___   ___     ___    /  /:/\\:\\     /  /:/\\:\\\
+  \ \n  /  /:/ /::\\   /  /:/  ___   /  /:/~/::\\  /__/\\   /  /\\ /__/\\   /  /\\\
+  \  /  /:/  \\:\\   /  /:/~/:/ \n /__/:/ /:/\\:\\ /__/:/  /  /\\ /__/:/ /:/\\:\\\
+  \ \\  \\:\\ /  /:/ \\  \\:\\ /  /:/ /__/:/ \\__\\:\\ /__/:/ /:/  \n \\  \\:\\/:/~/:/\
+  \ \\  \\:\\ /  /:/ \\  \\:\\/:/__\\/  \\  \\:\\  /:/   \\  \\:\\  /:/  \\  \\:\\\
+  \ /  /:/ \\  \\:\\/:/   \n  \\  \\::/ /:/   \\  \\:\\  /:/   \\  \\::/        \\\
+  \  \\:\\/:/     \\  \\:\\/:/    \\  \\:\\  /:/   \\  \\::/    \n   \\__\\/ /:/ \
+  \    \\  \\:\\/:/     \\  \\:\\         \\  \\::/       \\  \\::/      \\  \\:\\\
+  /:/     \\  \\:\\    \n     /__/:/       \\  \\::/       \\  \\:\\         \\__\\\
+  /         \\__\\/        \\  \\::/       \\  \\:\\   \n     \\__\\/         \\__\\\
+  /         \\__\\/                                     \\__\\/         \\__\\/  \
+  \ \n\n"
+generated_using:
+- --help

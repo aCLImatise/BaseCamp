@@ -1,0 +1,219 @@
+&id001 !Command
+command:
+- bealign
+positional: []
+named:
+- !Flag
+  description: "REFERENCE FASTA file or {HXB2_env, HXB2_gag, HXB2_int,\nHXB2_nef,\
+    \ HXB2_pol, HXB2_pr, HXB2_prrt, HXB2_rev,\nHXB2_rt, HXB2_tat, HXB2_vif, HXB2_vpr,\
+    \ HXB2_vpu,\nNL4-3_prrt}"
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: "discard sequences that are insufficiently identical to\nthe reference"
+  synonyms:
+  - -e
+  - --expected-identity
+  args: !SimpleFlagArg
+    name: EXPECTED_IDENTITY
+  optional: true
+- !Flag
+  description: "perform an alignment using one of {amino, dna, codon}\n[default=codon]"
+  synonyms:
+  - -a
+  - --alphabet
+  args: !SimpleFlagArg
+    name: ALPHABET
+  optional: true
+- !Flag
+  description: "parameterize using one of {BLOSUM62, DNA65, DNA70,\nDNA80, DNA88,\
+    \ DNA95, HIV_BETWEEN_F, PAM200, PAM250}\n[default=BLOSUM62]"
+  synonyms:
+  - -m
+  - --score-matrix
+  args: !SimpleFlagArg
+    name: SCOREMATRIX
+  optional: true
+- !Flag
+  description: discarded sequences are sent to DISCARD
+  synonyms:
+  - -D
+  - --discard
+  args: !SimpleFlagArg
+    name: DISCARD
+  optional: true
+- !Flag
+  description: "also align the reverse complement of each query\nsequence, returning\
+    \ it if the alignment is superior"
+  synonyms:
+  - -R
+  - --reverse-complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do NOT sort the resulting BAM file [the default is to\nsort]"
+  synonyms:
+  - -S
+  - --no-sort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not print status update messages
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "include the reference sequence as the first one in the\nresulting\
+    \ BAM file [the default is to strip it]\n"
+  synonyms:
+  - -K
+  - --keep-reference
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands:
+- !Command
+  command:
+  - bealign
+  - INPUT
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: bealign
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: ALPHABET
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -e
+    args: !SimpleFlagArg
+      name: EXPECTED_IDENTITY
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: bealign [-h] [-r REFERENCE] [-e EXPECTED_IDENTITY] [-a ALPHABET]\n\
+    \               [-m SCOREMATRIX] [-D DISCARD] [-R] [-S] [-q] [-v] [-K]\n     \
+    \          INPUT OUTPUT\nbealign: error: argument INPUT: can't open 'INPUT': [Errno\
+    \ 2] No such file or directory: 'INPUT'\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - bealign
+  - OUTPUT
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: bealign
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: ALPHABET
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -e
+    args: !SimpleFlagArg
+      name: EXPECTED_IDENTITY
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: bealign [-h] [-r REFERENCE] [-e EXPECTED_IDENTITY] [-a ALPHABET]\n\
+    \               [-m SCOREMATRIX] [-D DISCARD] [-R] [-S] [-q] [-v] [-K]\n     \
+    \          INPUT OUTPUT\nbealign: error: argument INPUT: can't open 'OUTPUT':\
+    \ [Errno 2] No such file or directory: 'OUTPUT'\n"
+  generated_using: *id002
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: bealign [-h] [-r REFERENCE] [-e EXPECTED_IDENTITY] [-a ALPHABET]\n\
+  \               [-m SCOREMATRIX] [-D DISCARD] [-R] [-S] [-q] [-v] [-K]\n       \
+  \        INPUT OUTPUT\n\nalign sequences to a reference using a codon alignment\
+  \ algorithm and output to\na BAM file\n\npositional arguments:\n  INPUT        \
+  \         INPUT FASTA file\n  OUTPUT                send BAM to OUTPUT\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -r REFERENCE,\
+  \ --reference REFERENCE\n                        REFERENCE FASTA file or {HXB2_env,\
+  \ HXB2_gag, HXB2_int,\n                        HXB2_nef, HXB2_pol, HXB2_pr, HXB2_prrt,\
+  \ HXB2_rev,\n                        HXB2_rt, HXB2_tat, HXB2_vif, HXB2_vpr, HXB2_vpu,\n\
+  \                        NL4-3_prrt}\n  -e EXPECTED_IDENTITY, --expected-identity\
+  \ EXPECTED_IDENTITY\n                        discard sequences that are insufficiently\
+  \ identical to\n                        the reference\n  -a ALPHABET, --alphabet\
+  \ ALPHABET\n                        perform an alignment using one of {amino, dna,\
+  \ codon}\n                        [default=codon]\n  -m SCOREMATRIX, --score-matrix\
+  \ SCOREMATRIX\n                        parameterize using one of {BLOSUM62, DNA65,\
+  \ DNA70,\n                        DNA80, DNA88, DNA95, HIV_BETWEEN_F, PAM200, PAM250}\n\
+  \                        [default=BLOSUM62]\n  -D DISCARD, --discard DISCARD\n \
+  \                       discarded sequences are sent to DISCARD\n  -R, --reverse-complement\n\
+  \                        also align the reverse complement of each query\n     \
+  \                   sequence, returning it if the alignment is superior\n  -S, --no-sort\
+  \         do NOT sort the resulting BAM file [the default is to\n              \
+  \          sort]\n  -q, --quiet           do not print status update messages\n\
+  \  -v, --version         print version information and exit\n  -K, --keep-reference\
+  \  include the reference sequence as the first one in the\n                    \
+  \    resulting BAM file [the default is to strip it]\n"
+generated_using: *id002

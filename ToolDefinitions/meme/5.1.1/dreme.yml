@@ -1,0 +1,236 @@
+!Command
+command:
+- dreme
+positional:
+- !Positional
+  description: It can also find motifs in a single set of DNA sequences,
+  position: 0
+  name: sequences.
+  optional: false
+named:
+- !Flag
+  description: "<directory>         create the specified output directory\nand write\
+    \ all output to files in that directory"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "create the specified output directory\noverwritting it if it already\
+    \ exists;\ndefault: create dreme_out in the currrent\nworking directory"
+  synonyms:
+  - -oc
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: positive sequence file name (required)
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "negative sequence file name (optional);\ndefault: the positive sequences\
+    \ are shuffled\nto create the negative set if -n is not used"
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: use the standard DNA alphabet; this is the default
+  synonyms:
+  - -dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use the standard RNA alphabet
+  synonyms:
+  - -rna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use the standard Protein alphabet (may not work well)
+  synonyms:
+  - -protein
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use custom alphabet (some restrictions apply - see manual)
+  synonyms:
+  - -alph
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: search given strand only for motifs (not reverse complement)
+  synonyms:
+  - -norc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "stop if motif E-value > <ethresh>;\ndefault: 0.05"
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: ethresh
+  optional: true
+- !Flag
+  description: "stop if <m> motifs have been output;\ndefault: only stop at E-value\
+    \ threshold"
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: m
+  optional: true
+- !Flag
+  description: "stop if the specified time has elapsed;\ndefault: only stop at E-value\
+    \ threshold"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: seconds
+  optional: true
+- !Flag
+  description: "number of REs to generalize; default: 100\nHint: Increasing <ngen>\
+    \ will make the motif\nsearch more thoroughly at some cost in speed."
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: ngen
+  optional: true
+- !Flag
+  description: "seed for shuffling sequences; ignored\nif -n <filename> given; default:\
+    \ 1"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: seed
+  optional: true
+- !Flag
+  description: "1..5 for varying degrees of extra output\ndefault: 2"
+  synonyms:
+  - -verbosity
+  args: !SimpleFlagArg
+    name: verbosity
+  optional: true
+- !Flag
+  description: create PNG logos
+  synonyms:
+  - -png
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: create EPS logos
+  synonyms:
+  - -eps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "store the description in the output;\ndefault: no description"
+  synonyms:
+  - -desc
+  args: !SimpleFlagArg
+    name: description
+  optional: true
+- !Flag
+  description: "acts like -desc but reads the description from\nthe specified file;\
+    \ allows characters that would\notherwise have to be escaped;\ndefault: no description"
+  synonyms:
+  - -dfile
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: minimum width of core motif; default 3
+  synonyms:
+  - -mink
+  args: !SimpleFlagArg
+    name: mink
+  optional: true
+- !Flag
+  description: maximum width of core motif; default 8
+  synonyms:
+  - -maxk
+  args: !SimpleFlagArg
+    name: maxk
+  optional: true
+- !Flag
+  description: sets mink=maxk=<k>
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: k
+  optional: true
+- !Flag
+  description: print list of enrichment of all REs tested
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print this usage message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "USAGE:\n    /usr/local/bin/dreme [options]\n\n    -o  <directory>    \
+  \     create the specified output directory \n                            and write\
+  \ all output to files in that directory\n    -oc <directory>         create the\
+  \ specified output directory \n                            overwritting it if it\
+  \ already exists;\n                            default: create dreme_out in the\
+  \ currrent\n                            working directory\n    -p <filename>   \
+  \        positive sequence file name (required)\n    -n <filename>           negative\
+  \ sequence file name (optional);\n                            default: the positive\
+  \ sequences are shuffled\n                            to create the negative set\
+  \ if -n is not used\n    -dna                    use the standard DNA alphabet;\
+  \ this is the default\n    -rna                    use the standard RNA alphabet\n\
+  \    -protein                use the standard Protein alphabet (may not work well)\n\
+  \    -alph <filename>        use custom alphabet (some restrictions apply - see\
+  \ manual)\n    -norc                   search given strand only for motifs (not\
+  \ reverse complement)\n    -e <ethresh>            stop if motif E-value > <ethresh>;\n\
+  \                            default: 0.05\n    -m <m>                  stop if\
+  \ <m> motifs have been output;\n                            default: only stop at\
+  \ E-value threshold\n    -t <seconds>            stop if the specified time has\
+  \ elapsed;\n                            default: only stop at E-value threshold\n\
+  \    -g <ngen>               number of REs to generalize; default: 100\n       \
+  \                     Hint: Increasing <ngen> will make the motif\n            \
+  \                search more thoroughly at some cost in speed.\n    -s <seed>  \
+  \             seed for shuffling sequences; ignored\n                          \
+  \  if -n <filename> given; default: 1\n    -verbosity <verbosity>  1..5 for varying\
+  \ degrees of extra output\n                            default: 2\n    -png    \
+  \                create PNG logos\n    -eps                    create EPS logos\n\
+  \    -desc <description>     store the description in the output;\n            \
+  \                default: no description\n    -dfile <filename>       acts like\
+  \ -desc but reads the description from\n                            the specified\
+  \ file; allows characters that would \n                            otherwise have\
+  \ to be escaped; \n                            default: no description\n    -h \
+  \                     print this usage message\n\n-----------------------Setting\
+  \ Core Motif Width---------------------------------\n                   Hint: The\
+  \ defaults are pretty good; making k larger\n                         than 8 slows\
+  \ DREME down with little other effect.\n                         Use these if you\
+  \ just want motifs shorter than 8.\n--------------------------------------------------------------------------------\n\
+  \    -mink <mink>            minimum width of core motif; default 3\n    -maxk <maxk>\
+  \            maximum width of core motif; default 8\n    -k <k>                \
+  \  sets mink=maxk=<k>\n--------------------------------------------------------------------------------\n\
+  \n---------------------Experimental below here; enter at your own risk.-----------\n\
+  \    -l                      print list of enrichment of all REs tested\n--------------------------------------------------------------------------------\n\
+  \n    DREME Finds discriminative regular expressions in two sets of DNA\n    sequences.\
+  \  It can also find motifs in a single set of DNA sequences,\n    in which case\
+  \ it uses a dinucleotide shuffled version of the first\n    set of sequences as\
+  \ the second set.\n\n    DNA IUPAC letters in sequences are converted to N, except\
+  \ U-->T.\n\n    IMPORTANT: If a negative sequence file is given, the sequences\n\
+  \    in it should have exactly the same length distribution as the \n    sequences\
+  \ in the positive sequence file.  (E.g., all sequences\n    in both files could\
+  \ have the same length, or each sequence in\n    the positive file could have exactly\
+  \ N corresponding sequences with\n    the same length as it in in the negative file.)\
+  \  \n    Failure to insure this will cause DREME to fail to find motifs or \n  \
+  \  to report inaccurate E-values.\n\n    \n"
+generated_using:
+- -h

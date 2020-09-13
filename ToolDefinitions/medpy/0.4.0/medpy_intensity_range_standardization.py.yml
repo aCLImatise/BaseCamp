@@ -1,0 +1,176 @@
+!Command
+command:
+- medpy_intensity_range_standardization.py
+positional:
+- !Positional
+  description: "The images used for training (in the learning case) or\nto transform\
+    \ (in the transformation case)"
+  position: 0
+  name: images
+  optional: false
+named:
+- !Flag
+  description: Verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrite existing files (both model and images)
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Location of the pickled intensity range model to load.\nActivated\
+    \ application mode."
+  synonyms:
+  - --load-model
+  args: !SimpleFlagArg
+    name: LMODEL
+  optional: true
+- !Flag
+  description: "Save the trained model under this name as a pickled\nobject (should\
+    \ end in .pkl). Activates training mode."
+  synonyms:
+  - --save-model
+  args: !SimpleFlagArg
+    name: SMODEL
+  optional: true
+- !Flag
+  description: "Colon-separated lower and upper cut-off percentile\nvalues to exclude\
+    \ intensity outliers during the model\ntraining."
+  synonyms:
+  - --cutoffp
+  args: !SimpleFlagArg
+    name: CUTOFFP
+  optional: true
+- !Flag
+  description: "The landmark percentiles, based on which to train the\nmodel. Can\
+    \ be L2, L3, L4 or a colon-separated, ordered\nlist of percentiles."
+  synonyms:
+  - --landmarkp
+  args: !SimpleFlagArg
+    name: LANDMARKP
+  optional: true
+- !Flag
+  description: "Two colon-separated intensity values to roughly define\nthe average\
+    \ intensity space to learn. In most cases\nshould be left set to 'auto'"
+  synonyms:
+  - --stdspace
+  args: !SimpleFlagArg
+    name: STDSPACE
+  optional: true
+- !Flag
+  description: "Save the transformed images under this location.\nRequired for the\
+    \ application mode, optional for the\nlearning mode."
+  synonyms:
+  - --save-images
+  args: !SimpleFlagArg
+    name: SIMAGES
+  optional: true
+- !Flag
+  description: "All voxel with an intensity > threshold are considered\nas foreground.\
+    \ Supply either this or a mask for each\nimage."
+  synonyms:
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: "A number of binary foreground mask, one for each\nimage. Alternative\
+    \ to supplying a threshold. Overrides\nthe threshold parameter if supplied."
+  synonyms:
+  - --masks
+  args: !RepeatFlagArg
+    name: MASKS
+  optional: true
+- !Flag
+  description: "Ignore possible loss of information during the\nintensity transformation.\
+    \ Should only be used when you\nknow what you are doing.\n"
+  synonyms:
+  - --ignore
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: medpy_intensity_range_standardization.py [-h] [--load-model LMODEL]\n\
+  \                                                [--save-model SMODEL]\n       \
+  \                                         [--cutoffp CUTOFFP]\n                \
+  \                                [--landmarkp LANDMARKP]\n                     \
+  \                           [--stdspace STDSPACE]\n                            \
+  \                    [--save-images SIMAGES]\n                                 \
+  \               [--threshold THRESHOLD]\n                                      \
+  \          [--masks MASKS [MASKS ...]]\n                                       \
+  \         [--ignore] [-v] [-d] [-f]\n                                          \
+  \      images [images ...]\n\nStandardizes the intensity range / profile of a number\
+  \ of similar images.\n\nTakes a number of images that display the same scene (most\
+  \ commonly MRI volumes of the\nsame body region) and learns an average intensity\
+  \ range model from these. This model can\nthen be used to transfer the training\
+  \ image set and other, formerly unseen images, to the\nlearned average intensity\
+  \ range. Such prepared, these images display the same intensity \nprofiles for the\
+  \ same structures.\n\nThe employed algorithm guarantees a lossless intensity transformation\
+  \ and throws an\nexception, should the model require re-training.\n\nThe application\
+  \ requires the supplied images to be stripped of their background. This can\neither\
+  \ be done by setting a threshold value or by supplying a foreground-mask for each\n\
+  image.\n\nThe script provide two mutually exclusive functionalities:\n    (1) the\
+  \ training of a new model and an optional application to the training images\n \
+  \   (2) the application of a stored model to a number of images\nDepending on the\
+  \ application, different arguments are require that are reflected by the\nargument\
+  \ grouping.\n\nThe implementation is based on:\n[1] Nyul, L.G.; Udupa, J.K.; Xuan\
+  \ Zhang, \"New variants of a method of MRI scale\n    standardization,\" Medical\
+  \ Imaging, IEEE Transactions on , vol.19, no.2, pp.143-150,\n    Feb. 2000\n   \
+  \ \nFor more details on the algorithm, see the medpy.filter.IntensityRangeStandardization\
+  \ class.\n\nCopyright (C) 2013 Oskar Maier\nThis program comes with ABSOLUTELY NO\
+  \ WARRANTY; This is free software,\nand you are welcome to redistribute it under\
+  \ certain conditions; see\nthe LICENSE file or <http://www.gnu.org/licenses/> for\
+  \ details.   \n                  \n\npositional arguments:\n  images           \
+  \     The images used for training (in the learning case) or\n                 \
+  \       to transform (in the transformation case)\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -v, --verbose         Verbose\
+  \ output\n  -d, --debug           Display debug information.\n  -f, --force    \
+  \       Overwrite existing files (both model and images)\n\napply an existing model:\n\
+  \  --load-model LMODEL   Location of the pickled intensity range model to load.\n\
+  \                        Activated application mode.\n\ntrain a new model and save\
+  \ and/or apply it:\n  --save-model SMODEL   Save the trained model under this name\
+  \ as a pickled\n                        object (should end in .pkl). Activates training\
+  \ mode.\n  --cutoffp CUTOFFP     Colon-separated lower and upper cut-off percentile\n\
+  \                        values to exclude intensity outliers during the model\n\
+  \                        training.\n  --landmarkp LANDMARKP\n                  \
+  \      The landmark percentiles, based on which to train the\n                 \
+  \       model. Can be L2, L3, L4 or a colon-separated, ordered\n               \
+  \         list of percentiles.\n  --stdspace STDSPACE   Two colon-separated intensity\
+  \ values to roughly define\n                        the average intensity space\
+  \ to learn. In most cases\n                        should be left set to 'auto'\n\
+  \nshared arguments:\n  --save-images SIMAGES\n                        Save the transformed\
+  \ images under this location.\n                        Required for the application\
+  \ mode, optional for the\n                        learning mode.\n  --threshold\
+  \ THRESHOLD\n                        All voxel with an intensity > threshold are\
+  \ considered\n                        as foreground. Supply either this or a mask\
+  \ for each\n                        image.\n  --masks MASKS [MASKS ...]\n      \
+  \                  A number of binary foreground mask, one for each\n          \
+  \              image. Alternative to supplying a threshold. Overrides\n        \
+  \                the threshold parameter if supplied.\n  --ignore              Ignore\
+  \ possible loss of information during the\n                        intensity transformation.\
+  \ Should only be used when you\n                        know what you are doing.\n"
+generated_using:
+- --help

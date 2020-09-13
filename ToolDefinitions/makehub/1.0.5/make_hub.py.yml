@@ -1,0 +1,347 @@
+!Command
+command:
+- make_hub.py
+positional: []
+named:
+- !Flag
+  description: Print usage examples for make_hub.py
+  synonyms:
+  - -p
+  - --printUsageExamples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Contact e-mail adress for assembly hub
+  synonyms:
+  - -e
+  - --email
+  args: !SimpleFlagArg
+    name: EMAIL
+  optional: true
+- !Flag
+  description: Genome fasta file (possibly softmasked)
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: "Long label for hub, e.g. species name in english and\nlatin, pass\
+    \ in single quotation marks, e.g.\n--long_label 'Dorosphila melanogster (fruit\
+    \ fly)'"
+  synonyms:
+  - -L
+  - --long_label
+  args: !SimpleFlagArg
+    name: LONG_LABEL
+  optional: true
+- !Flag
+  description: "Short label for hub, will also be used as directory\nname for hub,\
+    \ should not contain spaces or special\ncharacters, e.g. --short_label fly"
+  synonyms:
+  - -l
+  - --short_label
+  args: !SimpleFlagArg
+    name: SHORT_LABEL
+  optional: true
+- !Flag
+  description: "BAM file(s) - space separated - with RNA-Seq\ninformation, by default\
+    \ will be displayed as bigWig"
+  synonyms:
+  - -b
+  - --bam
+  args: !RepeatFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: Number of cores for samtools sort processes
+  synonyms:
+  - -c
+  - --cores
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+- !Flag
+  description: Display BAM file(s) as bam tracks
+  synonyms:
+  - -d
+  - --display_bam_as_bam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: GFF3 output file of Gemoma
+  synonyms:
+  - -E
+  - --gemoma_filtered_predictions
+  args: !SimpleFlagArg
+    name: GEMOMA_FILTERED_PREDICTIONS
+  optional: true
+- !Flag
+  description: BRAKER output directory with GTF files
+  synonyms:
+  - -X
+  - --braker_out_dir
+  args: !SimpleFlagArg
+    name: BRAKER_OUT_DIR
+  optional: true
+- !Flag
+  description: MAKER2 output file in GFF3 format
+  synonyms:
+  - -M
+  - --maker_gff
+  args: !SimpleFlagArg
+    name: MAKER_GFF
+  optional: true
+- !Flag
+  description: GFF3 output file of GlimmerHMM
+  synonyms:
+  - -I
+  - --glimmer_gff
+  args: !SimpleFlagArg
+    name: GLIMMER_GFF
+  optional: true
+- !Flag
+  description: SNAP output file in GFF3 format
+  synonyms:
+  - -S
+  - --snap_gff
+  args: !SimpleFlagArg
+    name: SNAP_GFF
+  optional: true
+- !Flag
+  description: GTF file with reference annotation
+  synonyms:
+  - -a
+  - --annot
+  args: !SimpleFlagArg
+    name: ANNOT
+  optional: true
+- !Flag
+  description: "Gene track with user specified label, argument must be\nformatted\
+    \ as follows: --gene_track file.gtf tracklabel"
+  synonyms:
+  - -G
+  - --gene_track
+  args: !RepeatFlagArg
+    name: GENE_TRACK
+  optional: true
+- !Flag
+  description: Add track(s) to existing hub
+  synonyms:
+  - -A
+  - --add_track
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output directory to write hub to
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "Disable repeat track generation from softmasked genome\nsequence (saves\
+    \ time)"
+  synonyms:
+  - -n
+  - --no_repeats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to samtools executable
+  synonyms:
+  - -s
+  - --SAMTOOLS_PATH
+  args: !SimpleFlagArg
+    name: SAMTOOLS_PATH
+  optional: true
+- !Flag
+  description: Path to bam2wig executable
+  synonyms:
+  - -B
+  - --BAM2WIG_PATH
+  args: !SimpleFlagArg
+    name: BAM2WIG_PATH
+  optional: true
+- !Flag
+  description: GFF file with AUGUSTUS hints
+  synonyms:
+  - -i
+  - --hints
+  args: !SimpleFlagArg
+    name: HINTS
+  optional: true
+- !Flag
+  description: GTF file with training genes
+  synonyms:
+  - -t
+  - --traingenes
+  args: !SimpleFlagArg
+    name: TRAINGENES
+  optional: true
+- !Flag
+  description: GTF file with GeneMark predictions
+  synonyms:
+  - -m
+  - --genemark
+  args: !SimpleFlagArg
+    name: GENEMARK
+  optional: true
+- !Flag
+  description: GTF file with ab initio AUGUSTUS predictions
+  synonyms:
+  - -w
+  - --aug_ab_initio
+  args: !SimpleFlagArg
+    name: AUG_AB_INITIO
+  optional: true
+- !Flag
+  description: GTF file with AUGUSTUS predictions with hints
+  synonyms:
+  - -x
+  - --aug_hints
+  args: !SimpleFlagArg
+    name: AUG_HINTS
+  optional: true
+- !Flag
+  description: GTF file with ab initio AUGUSTUS predictions with UTRs
+  synonyms:
+  - -y
+  - --aug_ab_initio_utr
+  args: !SimpleFlagArg
+    name: AUG_AB_INITIO_UTR
+  optional: true
+- !Flag
+  description: "GTF file with AUGUSTUS predictions with hints with\nUTRs"
+  synonyms:
+  - -z
+  - --aug_hints_utr
+  args: !SimpleFlagArg
+    name: AUG_HINTS_UTR
+  optional: true
+- !Flag
+  description: "Latin species name, e.g. \"Drosophila melanogaster\".\nThis argument\
+    \ must be provided if the hub is supposed\nto be added to the public UCSC list."
+  synonyms:
+  - -N
+  - --latin_name
+  args: !SimpleFlagArg
+    name: LATIN_NAME
+  optional: true
+- !Flag
+  description: "Assembly version, e.g. \"BDGP R4/dm3\". This argument\nmust be provided\
+    \ if the hub is supposed to be added to\nthe public UCSC list."
+  synonyms:
+  - -V
+  - --assembly_version
+  args: !SimpleFlagArg
+    name: ASSEMBLY_VERSION
+  optional: true
+- !Flag
+  description: Do not delete temporary files
+  synonyms:
+  - -r
+  - --no_tmp_rm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Option for the special case in which the precompiled\nUCSC binaries\
+    \ are not working on your system, and you\ninstalled kentutils from the older\
+    \ ENCODE github\nrepository; if activated, gene prediction tracks will\nbe output\
+    \ to bigBed instead of bigGenePred format and\namino acid display will not be\
+    \ possible in gene\ntracks."
+  synonyms:
+  - -P
+  - --no_genePredToBigGenePred
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If INT>0 verbose output log is produced\n"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: make_hub.py [-h] [-p] [-e EMAIL] [-g GENOME] [-L LONG_LABEL]\n\
+  \                   [-l SHORT_LABEL] [-b BAM [BAM ...]] [-c CORES] [-d]\n      \
+  \             [-E GEMOMA_FILTERED_PREDICTIONS] [-X BRAKER_OUT_DIR]\n           \
+  \        [-M MAKER_GFF] [-I GLIMMER_GFF] [-S SNAP_GFF] [-a ANNOT]\n            \
+  \       [-G GENE_TRACK [GENE_TRACK ...]] [-A] [-o OUTDIR] [-n]\n               \
+  \    [-s SAMTOOLS_PATH] [-B BAM2WIG_PATH] [-i HINTS]\n                   [-t TRAINGENES]\
+  \ [-m GENEMARK] [-w AUG_AB_INITIO]\n                   [-x AUG_HINTS] [-y AUG_AB_INITIO_UTR]\
+  \ [-z AUG_HINTS_UTR]\n                   [-N LATIN_NAME] [-V ASSEMBLY_VERSION] [-r]\
+  \ [-P]\n                   [-v VERBOSITY]\n\nGenerate UCSC assembly hub (e.g. from\
+  \ BRAKER or MAKER output).\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -p, --printUsageExamples\n                     \
+  \   Print usage examples for make_hub.py\n  -e EMAIL, --email EMAIL\n          \
+  \              Contact e-mail adress for assembly hub\n  -g GENOME, --genome GENOME\n\
+  \                        Genome fasta file (possibly softmasked)\n  -L LONG_LABEL,\
+  \ --long_label LONG_LABEL\n                        Long label for hub, e.g. species\
+  \ name in english and\n                        latin, pass in single quotation marks,\
+  \ e.g.\n                        --long_label 'Dorosphila melanogster (fruit fly)'\n\
+  \  -l SHORT_LABEL, --short_label SHORT_LABEL\n                        Short label\
+  \ for hub, will also be used as directory\n                        name for hub,\
+  \ should not contain spaces or special\n                        characters, e.g.\
+  \ --short_label fly\n  -b BAM [BAM ...], --bam BAM [BAM ...]\n                 \
+  \       BAM file(s) - space separated - with RNA-Seq\n                        information,\
+  \ by default will be displayed as bigWig\n  -c CORES, --cores CORES\n          \
+  \              Number of cores for samtools sort processes\n  -d, --display_bam_as_bam\n\
+  \                        Display BAM file(s) as bam tracks\n  -E GEMOMA_FILTERED_PREDICTIONS,\
+  \ --gemoma_filtered_predictions GEMOMA_FILTERED_PREDICTIONS\n                  \
+  \      GFF3 output file of Gemoma\n  -X BRAKER_OUT_DIR, --braker_out_dir BRAKER_OUT_DIR\n\
+  \                        BRAKER output directory with GTF files\n  -M MAKER_GFF,\
+  \ --maker_gff MAKER_GFF\n                        MAKER2 output file in GFF3 format\n\
+  \  -I GLIMMER_GFF, --glimmer_gff GLIMMER_GFF\n                        GFF3 output\
+  \ file of GlimmerHMM\n  -S SNAP_GFF, --snap_gff SNAP_GFF\n                     \
+  \   SNAP output file in GFF3 format\n  -a ANNOT, --annot ANNOT\n               \
+  \         GTF file with reference annotation\n  -G GENE_TRACK [GENE_TRACK ...],\
+  \ --gene_track GENE_TRACK [GENE_TRACK ...]\n                        Gene track with\
+  \ user specified label, argument must be\n                        formatted as follows:\
+  \ --gene_track file.gtf tracklabel\n  -A, --add_track       Add track(s) to existing\
+  \ hub\n  -o OUTDIR, --outdir OUTDIR\n                        output directory to\
+  \ write hub to\n  -n, --no_repeats      Disable repeat track generation from softmasked\
+  \ genome\n                        sequence (saves time)\n  -s SAMTOOLS_PATH, --SAMTOOLS_PATH\
+  \ SAMTOOLS_PATH\n                        Path to samtools executable\n  -B BAM2WIG_PATH,\
+  \ --BAM2WIG_PATH BAM2WIG_PATH\n                        Path to bam2wig executable\n\
+  \  -i HINTS, --hints HINTS\n                        GFF file with AUGUSTUS hints\n\
+  \  -t TRAINGENES, --traingenes TRAINGENES\n                        GTF file with\
+  \ training genes\n  -m GENEMARK, --genemark GENEMARK\n                        GTF\
+  \ file with GeneMark predictions\n  -w AUG_AB_INITIO, --aug_ab_initio AUG_AB_INITIO\n\
+  \                        GTF file with ab initio AUGUSTUS predictions\n  -x AUG_HINTS,\
+  \ --aug_hints AUG_HINTS\n                        GTF file with AUGUSTUS predictions\
+  \ with hints\n  -y AUG_AB_INITIO_UTR, --aug_ab_initio_utr AUG_AB_INITIO_UTR\n  \
+  \                      GTF file with ab initio AUGUSTUS predictions with UTRs\n\
+  \  -z AUG_HINTS_UTR, --aug_hints_utr AUG_HINTS_UTR\n                        GTF\
+  \ file with AUGUSTUS predictions with hints with\n                        UTRs\n\
+  \  -N LATIN_NAME, --latin_name LATIN_NAME\n                        Latin species\
+  \ name, e.g. \"Drosophila melanogaster\".\n                        This argument\
+  \ must be provided if the hub is supposed\n                        to be added to\
+  \ the public UCSC list.\n  -V ASSEMBLY_VERSION, --assembly_version ASSEMBLY_VERSION\n\
+  \                        Assembly version, e.g. \"BDGP R4/dm3\". This argument\n\
+  \                        must be provided if the hub is supposed to be added to\n\
+  \                        the public UCSC list.\n  -r, --no_tmp_rm       Do not delete\
+  \ temporary files\n  -P, --no_genePredToBigGenePred\n                        Option\
+  \ for the special case in which the precompiled\n                        UCSC binaries\
+  \ are not working on your system, and you\n                        installed kentutils\
+  \ from the older ENCODE github\n                        repository; if activated,\
+  \ gene prediction tracks will\n                        be output to bigBed instead\
+  \ of bigGenePred format and\n                        amino acid display will not\
+  \ be possible in gene\n                        tracks.\n  -v VERBOSITY, --verbosity\
+  \ VERBOSITY\n                        If INT>0 verbose output log is produced\n"
+generated_using:
+- --help

@@ -1,0 +1,268 @@
+!Command
+command:
+- agat_sp_manage_functional_annotation.pl
+positional:
+- !Positional
+  description: 'Description:'
+  position: 0
+  name: agat_sp_manage_functional_annotation.pl
+  optional: false
+- !Positional
+  description: qseqid  query (e.g., gene) sequence id
+  position: 0
+  name: '1.'
+  optional: false
+- !Positional
+  description: sseqid  subject (e.g., reference genome) sequence id
+  position: 1
+  name: '2.'
+  optional: false
+- !Positional
+  description: pident  percentage of identical matches
+  position: 2
+  name: '3.'
+  optional: false
+- !Positional
+  description: length  alignment length
+  position: 3
+  name: '4.'
+  optional: false
+- !Positional
+  description: mismatch  number of mismatches
+  position: 4
+  name: '5.'
+  optional: false
+- !Positional
+  description: gapopen   number of gap openings
+  position: 5
+  name: '6.'
+  optional: false
+- !Positional
+  description: qstart  start of alignment in query
+  position: 6
+  name: '7.'
+  optional: false
+- !Positional
+  description: qend  end of alignment in query
+  position: 7
+  name: '8.'
+  optional: false
+- !Positional
+  description: sstart  start of alignment in subject
+  position: 8
+  name: '9.'
+  optional: false
+- !Positional
+  description: send  end of alignment in subject
+  position: 9
+  name: '10.'
+  optional: false
+- !Positional
+  description: evalue  expect value
+  position: 10
+  name: '11.'
+  optional: false
+- !Positional
+  description: bitscore  bit score
+  position: 11
+  name: '12.'
+  optional: false
+named:
+- !Flag
+  description: ", --gff or --gff3\nString - Input GTF/GFF file."
+  synonyms:
+  - -f
+  - --reffile
+  - -ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "String - Input blast ( outfmt 6 = tabular ) file that will be\nused\
+    \ to complement the features read from the first file\n(specified with --ref)."
+  synonyms:
+  - -b
+  - --blast
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "String - The fasta file that has been used as DB for the blast.\n\
+    Gene names and products/descriptions will be fished from this\nfile."
+  synonyms:
+  - -d
+  - --db
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "Integer - Maximum e-value to keep the annotation from the blast\n\
+    file. By default 1e-6."
+  synonyms:
+  - --be
+  - --blast_evalue
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "Integer - The PE (protein existence) in the uniprot header\nindicates\
+    \ the type of evidence that supports the existence of\nthe protein. You can decide\
+    \ until which protein existence level\nyou want to consider to lift the finctional\
+    \ information. Default\n5.\n1. Experimental evidence at protein level 2. Experimental\n\
+    evidence at transcript level 3. Protein inferred from homology\n4. Protein predicted\
+    \ 5. Protein uncertain"
+  synonyms:
+  - --pe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "String - Input interpro file (.tsv) that will be used to\ncomplement\
+    \ the features read from the first file (specified with\n--ref)."
+  synonyms:
+  - -i
+  - --interpro
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "String - This option will changed the id name. It will create\nfrom\
+    \ id prefix (usually 6 letters) given as input, uniq IDs like\nprefixE00000000001.\
+    \ Where E mean exon. Instead E we can have C\nfor CDS, G for gene, T for mRNA,\
+    \ U for Utr. In the case of\ndiscontinuous features (i.e. a single feature that\
+    \ exists over\nmultiple genomic locations) the same ID may appear on multiple\n\
+    lines. All lines that share an ID collectively represent a\nsignle feature."
+  synonyms:
+  - -id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Boolean - This option (id all uniq) is similar to -id option but\n\
+    Id of features that share an ID collectively will be change by\ndifferent and\
+    \ uniq ID."
+  synonyms:
+  - -idau
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Integer - Usefull only if -id is used. This option is used to\ndefine\
+    \ the number that will be used to begin the numbering. By\ndefault begin by 1."
+  synonyms:
+  - -nb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "String - Output GFF file. If no output file is specified, the\noutput\
+    \ will be written to STDOUT."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: Boolean - Verbose, for debug purpose.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Boolean - Display this helpful text.
+  synonyms:
+  - -h
+  - --help
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.4.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sp_manage_functional_annotation.pl\n\nDescription:\n    The\
+  \ script take a gff3 file as input and blast and/or interpro output in\n    order\
+  \ to attach functional annotation to corresponding features within\n    the gff\
+  \ file.\n\n    >The blast against Protein Database (outfmt 6) allows to fill the\n\
+  \    field/attribute NAME for gene and PRODUCT for mRNA.\n\n    >The Interpro result\
+  \ (.tsv) file allows to fill the DBXREF\n    field/attribute with pfam, tigr, interpro,\
+  \ GO, KEGG, etc... terms data.\n\n    With the <id> option the script will change\
+  \ all the ID field by an Uniq\n    ID created from the given prefix, a letter to\
+  \ specify the kind of\n    feature (G,T,C,E,U), and the feature number.\n\n    The\
+  \ result is written to the specified output file, or to STDOUT.\n\n    About the\
+  \ TSV format from interproscan:\n    =======================================\n\n\
+  \    The TSV format presents the match data in columns as follows:\n\n     1.Protein\
+  \ Accession (e.g. P51587)\n     2.Sequence MD5 digest (e.g. 14086411a2cdf1c4cba63020e1622579)\n\
+  \     3.Sequence Length (e.g. 3418)\n     4.Analysis (e.g. Pfam / PRINTS / Gene3D)\n\
+  \     5.Signature Accession (e.g. PF09103 / G3DSA:2.40.50.140)\n     6.Signature\
+  \ Description (e.g. BRCA2 repeat profile)\n     7.Start location\n     8.Stop location\n\
+  \     9.Score - is the e-value (or score) of the match reported by member database\
+  \ method (e.g. 3.1E-52)\n     10.Status - is the status of the match (T: true)\n\
+  \     11.Date - is the date of the run\n     12.(InterPro annotations - accession\
+  \ (e.g. IPR002093) - optional column; only displayed if -iprlookup option is switched\
+  \ on)\n     13.(InterPro annotations - description (e.g. BRCA2 repeat) - optional\
+  \ column; only displayed if -iprlookup option is switched on)\n     14.(GO annotations\
+  \ (e.g. GO:0005515) - optional column; only displayed if --goterms option is switched\
+  \ on)\n     15.(Pathways annotations (e.g. REACT_71) - optional column; only displayed\
+  \ if --pathways option is switched on)\n\n    P.S: The 9th column contains most\
+  \ of time e-value, but can contain also\n    score (e.g Prosite). To understand\
+  \ the difference:\n    https://myhits.isb-sib.ch/cgi-bin/help?doc=scores.html\n\n\
+  \    About the outfmt 6 from blast: ==============================\n\n     1.  qseqid\
+  \  query (e.g., gene) sequence id\n     2.  sseqid  subject (e.g., reference genome)\
+  \ sequence id\n     3.  pident  percentage of identical matches\n     4.  length\
+  \  alignment length\n     5.  mismatch  number of mismatches\n     6.  gapopen \
+  \  number of gap openings\n     7.  qstart  start of alignment in query\n     8.\
+  \  qend  end of alignment in query\n     9.  sstart  start of alignment in subject\n\
+  \     10.   send  end of alignment in subject\n     11.   evalue  expect value\n\
+  \     12.   bitscore  bit score\n\n    Currently the best e-value win... That means\
+  \ another hit with a lower\n    e-value (but still over the defined threshold anyway)\
+  \ even if it has a\n    better PE value will not be reported.\n\nUsage:\n      \
+  \  agat_sp_manage_functional_annotation.pl -f infile.gff [ -b blast_infile --db\
+  \ uniprot.fasta -i interpro_infile.tsv --id ABCDEF --output outfile ]\n        agat_sp_manage_functional_annotation.pl\
+  \ --help\n\nOptions:\n    -f, --reffile,-ref , --gff or --gff3\n            String\
+  \ - Input GTF/GFF file.\n\n    -b or --blast\n            String - Input blast (\
+  \ outfmt 6 = tabular ) file that will be\n            used to complement the features\
+  \ read from the first file\n            (specified with --ref).\n\n    -d or --db\n\
+  \            String - The fasta file that has been used as DB for the blast.\n \
+  \           Gene names and products/descriptions will be fished from this\n    \
+  \        file.\n\n    --be or --blast_evalue\n            Integer - Maximum e-value\
+  \ to keep the annotation from the blast\n            file. By default 1e-6.\n\n\
+  \    --pe    Integer - The PE (protein existence) in the uniprot header\n      \
+  \      indicates the type of evidence that supports the existence of\n         \
+  \   the protein. You can decide until which protein existence level\n          \
+  \  you want to consider to lift the finctional information. Default\n          \
+  \  5.\n\n            1. Experimental evidence at protein level 2. Experimental\n\
+  \            evidence at transcript level 3. Protein inferred from homology\n  \
+  \          4. Protein predicted 5. Protein uncertain\n\n    -i or --interpro\n \
+  \           String - Input interpro file (.tsv) that will be used to\n         \
+  \   complement the features read from the first file (specified with\n         \
+  \   --ref).\n\n    -id     String - This option will changed the id name. It will\
+  \ create\n            from id prefix (usually 6 letters) given as input, uniq IDs\
+  \ like\n            prefixE00000000001. Where E mean exon. Instead E we can have\
+  \ C\n            for CDS, G for gene, T for mRNA, U for Utr. In the case of\n  \
+  \          discontinuous features (i.e. a single feature that exists over\n    \
+  \        multiple genomic locations) the same ID may appear on multiple\n      \
+  \      lines. All lines that share an ID collectively represent a\n            signle\
+  \ feature.\n\n    -idau   Boolean - This option (id all uniq) is similar to -id\
+  \ option but\n            Id of features that share an ID collectively will be change\
+  \ by\n            different and uniq ID.\n\n    -nb     Integer - Usefull only if\
+  \ -id is used. This option is used to\n            define the number that will be\
+  \ used to begin the numbering. By\n            default begin by 1.\n\n    -o or\
+  \ --output\n            String - Output GFF file. If no output file is specified,\
+  \ the\n            output will be written to STDOUT.\n\n    -v      Boolean - Verbose,\
+  \ for debug purpose.\n\n    -h or --help\n            Boolean - Display this helpful\
+  \ text.\n\nFeedback:\n  Did you find a bug?:\n    Do not hesitate to report bugs\
+  \ to help us keep track of the bugs and\n    their resolution. Please use the GitHub\
+  \ issue tracking system available\n    at this address:\n\n                https://github.com/NBISweden/AGAT/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help

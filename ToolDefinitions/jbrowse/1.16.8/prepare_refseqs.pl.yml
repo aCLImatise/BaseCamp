@@ -1,0 +1,158 @@
+!Command
+command:
+- prepare-refseqs.pl
+positional:
+- !Positional
+  description: OPTIONS
+  position: 0
+  name: used.
+  optional: false
+named:
+- !Flag
+  description: "If using GFF or FASTA input, preserve the order of the reference\n\
+    sequences (sorts alphabetically by default)."
+  synonyms:
+  - --noSort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "biodb-to-json.pl configuration file that defines a database from\n\
+    which to get reference sequence information."
+  synonyms:
+  - --conf
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Optional directory to write to. Defaults to data/.
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: output directory
+  optional: true
+- !Flag
+  description: "Do not store the actual sequence bases, just the sequence metadata\n\
+    (name, length, and so forth)."
+  synonyms:
+  - --noseq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output only the sequences with the given names.
+  synonyms:
+  - --refs
+  args: !SimpleFlagArg
+    name: comma-separated list of refseq names
+  optional: true
+- !Flag
+  description: "If passed, compress the reference sequences with gzip, making the\n\
+    chunks be .txt.gz. NOTE: this requires a bit of additional web\nserver configuration\
+    \ to be served correctly."
+  synonyms:
+  - --compress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Size of sequence chunks to make, in base pairs. Default 20kb. This\n\
+    is multiplied by 4 if --compress is passed, so that the compressed\nsequence files\
+    \ are still approximately this size."
+  synonyms:
+  - --chunksize
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Store sequences in a flat seq/$seqname/$chunk.txt structure, instead\n\
+    of the new (more scalable) /seq/hash/hash/hash/$seqname-$chunk.txt\nstructure."
+  synonyms:
+  - --nohash
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The unique name of the sequence track, default 'DNA'.
+  synonyms:
+  - --trackLabel
+  args: !SimpleFlagArg
+    name: label
+  optional: true
+- !Flag
+  description: "The displayed name of the sequence track, defaults to 'Reference\n\
+    sequence'."
+  synonyms:
+  - --key
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "The Name of the alphabet used for these reference sequences, usually\n\
+    either 'dna', 'rna', or 'protein'."
+  synonyms:
+  - --seqType
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "'{ JSON-format extra configuration for this track }'\nAdditional top-level\
+    \ configuration for the client, in JSON syntax.\nExample:\n--trackConfig '{ \"\
+    glyph\": \"ProcessedTranscript\" }'"
+  synonyms:
+  - --trackConfig
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n    prepare-refseqs.pl - format reference sequences for use by JBrowse\n\
+  \nUSAGE\n           prepare-refseqs.pl --gff <GFF file>  [options]\n       # OR:\n\
+  \           prepare-refseqs.pl --fasta <file1> --fasta <file2>  [options]\n    \
+  \   # OR:\n           prepare-refseqs.pl --indexed_fasta <file>  [options]\n   \
+  \    # OR:\n           prepare-refseqs.pl --bgzip_fasta <file>  [options]\n    \
+  \   # OR:\n           prepare-refseqs.pl --twobit <file>  [options]\n       # OR:\n\
+  \           prepare-refseqs.pl --conf <biodb config file>  [options]\n       # OR:\n\
+  \           prepare-refseqs.pl --sizes <sizes file>  [options]\n       # OR:\n \
+  \          prepare-refseqs.pl --gff-sizes <gff file>  [options]\n\nDESCRIPTION\n\
+  \    Formats reference sequence data for use with JBrowse.\n\n    This tool can\
+  \ also read fasta files compressed with gzip, if they end in\n    .gz or .gzip.\n\
+  \n    You can use a GFF file to describe the reference sequences; or you can\n \
+  \   use a JBrowse config file (pointing to a BioPerl database) or a FASTA\n    file,\
+  \ together with a list of refseq names or a list of refseq IDs. If\n    you use\
+  \ a GFF file, it should contain ##sequence-region lines as\n    described in the\
+  \ GFF specs (for --gff-sizes), and/or it should be GFF\n    version 3 with an embedded\
+  \ FASTA section (for --gff).\n\n    If you use a JBrowse config file or FASTA file,\
+  \ you can either provide a\n    (comma-separated) list of refseq names, or (if the\
+  \ names aren't globally\n    unique) a list of refseq IDs; or (for FASTA files only)\
+  \ you can omit the\n    list of refseqs, in which case every sequence in the database\
+  \ will be\n    used.\n\nOPTIONS\n    --noSort\n        If using GFF or FASTA input,\
+  \ preserve the order of the reference\n        sequences (sorts alphabetically by\
+  \ default).\n\n    --conf <file>\n        biodb-to-json.pl configuration file that\
+  \ defines a database from\n        which to get reference sequence information.\n\
+  \n    --out <output directory>\n        Optional directory to write to. Defaults\
+  \ to data/.\n\n    --noseq\n        Do not store the actual sequence bases, just\
+  \ the sequence metadata\n        (name, length, and so forth).\n\n    --refs <comma-separated\
+  \ list of refseq names>\n        Output only the sequences with the given names.\n\
+  \n    --compress\n        If passed, compress the reference sequences with gzip,\
+  \ making the\n        chunks be .txt.gz. NOTE: this requires a bit of additional\
+  \ web\n        server configuration to be served correctly.\n\n    --chunksize <num>\n\
+  \        Size of sequence chunks to make, in base pairs. Default 20kb. This\n  \
+  \      is multiplied by 4 if --compress is passed, so that the compressed\n    \
+  \    sequence files are still approximately this size.\n\n    --nohash\n       \
+  \ Store sequences in a flat seq/$seqname/$chunk.txt structure, instead\n       \
+  \ of the new (more scalable) /seq/hash/hash/hash/$seqname-$chunk.txt\n        structure.\n\
+  \n    --trackLabel <label>\n        The unique name of the sequence track, default\
+  \ 'DNA'.\n\n    --key <string>\n        The displayed name of the sequence track,\
+  \ defaults to 'Reference\n        sequence'.\n\n    --seqType <string>\n       \
+  \ The Name of the alphabet used for these reference sequences, usually\n       \
+  \ either 'dna', 'rna', or 'protein'.\n\n    --trackConfig '{ JSON-format extra configuration\
+  \ for this track }'\n        Additional top-level configuration for the client,\
+  \ in JSON syntax.\n        Example:\n\n          --trackConfig '{ \"glyph\": \"\
+  ProcessedTranscript\" }'\n\nAUTHOR\n    Mitchell Skinner <mitch_skinner@berkeley.edu>\n\
+  \n    Copyright (c) 2007-2009 The Evolutionary Software Foundation\n\n    This package\
+  \ and its accompanying libraries are free software; you can\n    redistribute it\
+  \ and/or modify it under the terms of the LGPL (either\n    version 2.1, or at your\
+  \ option, any later version) or the Artistic\n    License 2.0. Refer to LICENSE\
+  \ for the full license text.\n\n"
+generated_using:
+- --help

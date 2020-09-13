@@ -1,0 +1,178 @@
+&id001 !Command
+command:
+- rbcavity
+positional: []
+named:
+- !Flag
+  description: <PrmFile> - receptor param file (contains active site params)
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[-W]   - write docking cavities (plus distance grid) to .as file'
+  synonyms:
+  - -was
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[-R]   - read docking cavities (plus distance grid) from .as file'
+  synonyms:
+  - -ras
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- dump InsightII grids for each cavity for visualisation'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- dump target PSF/CRD files for rDock Viewer'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <dist>    - list receptor atoms with <dist> A of any cavity
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- print SITE descriptors (counts of exposed atoms)'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <border>  - set the border around the cavities for the distance grid
+    (default=8A)
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- write active site into a MOE grid'
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands:
+- !Command
+  command:
+  - rbcavity
+  - ReceptorPrmFile
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: rbcavity
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: receptor.prm
+    optional: false
+  named:
+  - !Flag
+    description: receptor file
+    synonyms:
+    - -r
+    - -receptor
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: write active site
+    synonyms:
+    - -W
+    - -was
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: read active site
+    synonyms:
+    - -R
+    - -ras
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: dump InsightII/PyMol grids
+    synonyms:
+    - -d
+    - -dump-insight
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: dump Viewer PSF/CRD files
+    synonyms:
+    - -v
+    - -viewer
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: list receptor atoms within <dist>
+    synonyms:
+    - -l
+    - -list
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: print site descriptors
+    synonyms:
+    - -s
+    - -site
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: set the border around the cavities
+    synonyms:
+    - -b
+    - -border
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag: !Flag
+    description: Display brief usage message
+    synonyms:
+    - --usage
+    args: !EmptyFlagArg {}
+    optional: true
+  version_flag:
+  help_text: "***********************************************\nThe rDock program is licensed\
+    \ under GNU-LGPLv3.0. http://rdock.sourceforge.net/\nExecutable:\trbcavity ($Id:\
+    \ //depot/dev/client3/rdock/2013.1/src/exe/rbcavity.cxx#3 $)\nLibrary:\tlibRbt.so/2013.1/901\
+    \ 2013/11/27\nRBT_ROOT:\t/usr/local/share/rdock-2013.1-1\nRBT_HOME:\t/root\nCurrent\
+    \ dir:\t/\nDate:\t\tThu Sep 10 00:21:30 2020\n***********************************************\n\
+    Usage: rbcavity -r<receptor.prm> [options]\n  -r, -receptor=STRING     receptor\
+    \ file\n  -W, -was                 write active site\n  -R, -ras             \
+    \    read active site\n  -d, -dump-insight        dump InsightII/PyMol grids\n\
+    \  -v, -viewer              dump Viewer PSF/CRD files\n  -l, -list=STRING    \
+    \     list receptor atoms within <dist>\n  -s, -site                print site\
+    \ descriptors\n  -b, -border=STRING       set the border around the cavities\n\
+    \nHelp options:\n  -?, --help               Show this help message\n      --usage\
+    \              Display brief usage message\n"
+  generated_using:
+  - --help
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "rbcavity - calculate docking cavities\nUsage:\trbcavity -r<ReceptorPrmFile>\
+  \ [-was -ras -d -l<dist> -b<border>\nOptions:\n\t\t-r<PrmFile> - receptor param\
+  \ file (contains active site params)\n\t\t-was [-W]   - write docking cavities (plus\
+  \ distance grid) to .as file\n\t\t-ras [-R]   - read docking cavities (plus distance\
+  \ grid) from .as file\n\t\t-d          - dump InsightII grids for each cavity for\
+  \ visualisation\n\t\t-v          - dump target PSF/CRD files for rDock Viewer\n\t\
+  \t-l<dist>    - list receptor atoms with <dist> A of any cavity\n\t\t-s        \
+  \  - print SITE descriptors (counts of exposed atoms)\n\t\t-b<border>  - set the\
+  \ border around the cavities for the distance grid (default=8A)\n\t\t-m        \
+  \  - write active site into a MOE grid\n"
+generated_using: []

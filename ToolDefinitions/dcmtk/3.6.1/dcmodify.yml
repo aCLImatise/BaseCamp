@@ -1,0 +1,328 @@
+!Command
+command:
+- dcmodify
+positional:
+- !Positional
+  description: DICOM input filename to be modified
+  position: 0
+  name: dcmfile-in
+  optional: false
+named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --quiet                quiet mode, print no warnings and errors
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --verbose              verbose mode, print processing details
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --debug                debug mode, print debug information
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-level            [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
+  synonyms:
+  - -ll
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-config           [f]ilename: string\nuse config file f for the\
+    \ logger"
+  synonyms:
+  - -lc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-dataset         read data set without file meta information
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =   --read-xfer-auto       use TS recognition (default)
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-xfer-detect     ignore TS specified in the file meta header
+  synonyms:
+  - -td
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-xfer-little     read with explicit VR little endian TS
+  synonyms:
+  - -te
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-xfer-big        read with explicit VR big endian TS
+  synonyms:
+  - -tb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-xfer-implicit   read with implicit VR little endian TS
+  synonyms:
+  - -ti
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --disable-correction   disable automatic data correction
+  synonyms:
+  - -dc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: backup files before modifying (default)
+  synonyms:
+  - --backup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-backup            don't backup files (DANGEROUS)
+  synonyms:
+  - -nb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--insert               \"[t]ag-path=[v]alue\"\ninsert (or overwrite)\
+    \ path at position t\nwith value v"
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--insert-from-file     \"[t]ag-path=[f]ilename\"\ninsert (or overwrite)\
+    \ path at position t\nwith value from file f"
+  synonyms:
+  - -if
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not check private reservations\nwhen inserting private tags"
+  synonyms:
+  - -nrc
+  - --no-reserv-check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--modify               \"[t]ag-path=[v]alue\"\nmodify tag at position\
+    \ t to value v"
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--modify-from-file     \"[t]ag-path=[f]ilename\"\nmodify tag at position\
+    \ t to value from file f"
+  synonyms:
+  - -mf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--modify-all           \"[t]ag=[v]alue\"\nmodify ALL matching tags\
+    \ t in file to value v"
+  synonyms:
+  - -ma
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--erase                \"[t]ag-path\"\nerase tag/item at position\
+    \ t"
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--erase-all            \"[t]ag\"\nerase ALL matching tags t in file"
+  synonyms:
+  - -ea
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --erase-private        erase ALL private data from file
+  synonyms:
+  - -ep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate new Study Instance UID
+  synonyms:
+  - -gst
+  - --gen-stud-uid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate new Series Instance UID
+  synonyms:
+  - -gse
+  - --gen-ser-uid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate new SOP Instance UID
+  synonyms:
+  - -gin
+  - --gen-inst-uid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not update metaheader UIDs if related\nUIDs in the dataset are\
+    \ modified"
+  synonyms:
+  - -nmu
+  - --no-meta-uid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --ignore-errors        continue with file, if modify error occurs
+  synonyms:
+  - -ie
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "treat 'tag not found' as success\nwhen modifying or erasing in datasets"
+  synonyms:
+  - -imt
+  - --ignore-missing-tags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not try writing any values to elements\nhaving a VR of UN"
+  synonyms:
+  - -iun
+  - --ignore-un-values
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --write-dataset        write data set without file meta information
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --disable-new-vr       disable support for new VRs, convert to OB
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --group-length-remove  always write without group length elements
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --length-undefined     write with undefined lengths
+  synonyms:
+  - -le
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: --help                 print this help text and exit
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "$dcmtk: dcmodify v3.6.1 2016-11-02 $\n\ndcmodify: Modify DICOM files\n\
+  usage: dcmodify [options] dcmfile-in...\n\nparameters:\n  dcmfile-in           \
+  \          DICOM input filename to be modified\n\ngeneral options:\n  -h      --help\
+  \                 print this help text and exit\n          --version           \
+  \   print version information and exit\n          --arguments            print expanded\
+  \ command line arguments\n  -q      --quiet                quiet mode, print no\
+  \ warnings and errors\n  -v      --verbose              verbose mode, print processing\
+  \ details\n  -d      --debug                debug mode, print debug information\n\
+  \  -ll     --log-level            [l]evel: string constant\n                   \
+  \              (fatal, error, warn, info, debug, trace)\n                      \
+  \           use level l for the logger\n  -lc     --log-config           [f]ilename:\
+  \ string\n                                 use config file f for the logger\ninput\
+  \ options:\n  input file format:\n    +f    --read-file            read file format\
+  \ or data set (default)\n    +fo   --read-file-only       read file format only\n\
+  \    -f    --read-dataset         read data set without file meta information\n\
+  \    +fc   --create-file          create file format if file does not exist\n  input\
+  \ transfer syntax:\n    -t=   --read-xfer-auto       use TS recognition (default)\n\
+  \    -td   --read-xfer-detect     ignore TS specified in the file meta header\n\
+  \    -te   --read-xfer-little     read with explicit VR little endian TS\n    -tb\
+  \   --read-xfer-big        read with explicit VR big endian TS\n    -ti   --read-xfer-implicit\
+  \   read with implicit VR little endian TS\n  parsing of odd-length attributes:\n\
+  \    +ao   --accept-odd-length    accept odd length attributes (default)\n    +ae\
+  \   --assume-even-length   assume real length is one byte larger\n  automatic data\
+  \ correction:\n    +dc   --enable-correction    enable automatic data correction\
+  \ (default)\n    -dc   --disable-correction   disable automatic data correction\n\
+  \  bitstream format of deflated input:\n    +bd   --bitstream-deflated   expect\
+  \ deflated bitstream (default)\n    +bz   --bitstream-zlib       expect deflated\
+  \ zlib bitstream\nprocessing options:\n  backup input files:\n          --backup\
+  \               backup files before modifying (default)\n    -nb   --no-backup \
+  \           don't backup files (DANGEROUS)\n  insert mode:\n    -i    --insert \
+  \              \"[t]ag-path=[v]alue\"\n                                 insert (or\
+  \ overwrite) path at position t\n                                 with value v\n\
+  \    -if   --insert-from-file     \"[t]ag-path=[f]ilename\"\n                  \
+  \               insert (or overwrite) path at position t\n                     \
+  \            with value from file f\n    -nrc  --no-reserv-check      do not check\
+  \ private reservations\n                                 when inserting private\
+  \ tags\n  modify mode:\n    -m    --modify               \"[t]ag-path=[v]alue\"\n\
+  \                                 modify tag at position t to value v\n    -mf \
+  \  --modify-from-file     \"[t]ag-path=[f]ilename\"\n                          \
+  \       modify tag at position t to value from file f\n    -ma   --modify-all  \
+  \         \"[t]ag=[v]alue\"\n                                 modify ALL matching\
+  \ tags t in file to value v\n  erase mode:\n    -e    --erase                \"\
+  [t]ag-path\"\n                                 erase tag/item at position t\n  \
+  \  -ea   --erase-all            \"[t]ag\"\n                                 erase\
+  \ ALL matching tags t in file\n    -ep   --erase-private        erase ALL private\
+  \ data from file\n  unique identifier:\n    -gst  --gen-stud-uid         generate\
+  \ new Study Instance UID\n    -gse  --gen-ser-uid          generate new Series Instance\
+  \ UID\n    -gin  --gen-inst-uid         generate new SOP Instance UID\n    -nmu\
+  \  --no-meta-uid          do not update metaheader UIDs if related\n           \
+  \                      UIDs in the dataset are modified\n  error handling:\n   \
+  \ -ie   --ignore-errors        continue with file, if modify error occurs\n    -imt\
+  \  --ignore-missing-tags  treat 'tag not found' as success\n                   \
+  \              when modifying or erasing in datasets\n    -iun  --ignore-un-values\
+  \     do not try writing any values to elements\n                              \
+  \   having a VR of UN\noutput options:\n  output file format:\n    +F    --write-file\
+  \           write file format (default)\n    -F    --write-dataset        write\
+  \ data set without file meta information\n  output transfer syntax:\n    +t=   --write-xfer-same\
+  \      write with same TS as input (default)\n    +te   --write-xfer-little    write\
+  \ with explicit VR little endian TS\n    +tb   --write-xfer-big       write with\
+  \ explicit VR big endian TS\n    +ti   --write-xfer-implicit  write with implicit\
+  \ VR little endian TS\n  post-1993 value representations:\n    +u    --enable-new-vr\
+  \        enable support for new VRs (UN/UT) (default)\n    -u    --disable-new-vr\
+  \       disable support for new VRs, convert to OB\n  group length encoding:\n \
+  \   +g=   --group-length-recalc  recalculate group lengths if present (default)\n\
+  \    +g    --group-length-create  always write with group length elements\n    -g\
+  \    --group-length-remove  always write without group length elements\n  length\
+  \ encoding in sequences and items:\n    +le   --length-explicit      write with\
+  \ explicit lengths (default)\n    -le   --length-undefined     write with undefined\
+  \ lengths\n  data set trailing padding (not with --write-dataset):\n    -p=   --padding-retain\
+  \       do not change padding\n                                 (default if not\
+  \ --write-dataset)\n    -p    --padding-off          no padding (implicit if --write-dataset)\n\
+  \    +p    --padding-create       [f]ile-pad [i]tem-pad: integer\n             \
+  \                    align file on multiple of f bytes\n                       \
+  \          and items on multiple of i bytes\n\n"
+generated_using:
+- --help

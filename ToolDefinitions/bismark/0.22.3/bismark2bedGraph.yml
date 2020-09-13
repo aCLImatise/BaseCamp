@@ -1,0 +1,205 @@
+!Command
+command:
+- bismark2bedGraph
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: methylation
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: extractor
+  optional: true
+- !Positional
+  description: ''
+  position: 2
+  name: input
+  optional: true
+- !Positional
+  description: ''
+  position: 3
+  name: files
+  optional: true
+named:
+- !Flag
+  description: Name of the output file, mandatory.
+  synonyms:
+  - -o/--output
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: Output directory. Output is written to the current directory if not
+    specified explicitly.
+  synonyms:
+  - --dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[threshold]       The minimum number of times a methylation state\
+    \ has to be seen for that nucleotide\nbefore its methylation percentage is reported.\
+    \ Default: 1."
+  synonyms:
+  - --cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Replaces whitespaces in the sequence ID field with underscores to allow
+    sorting.
+  synonyms:
+  - --remove_spaces
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The sorted bedGraph output file contains information on every single\
+    \ cytosine that was covered\nin the experiment irrespective of its sequence context.\
+    \ This applies to both forward and\nreverse strands. Please be aware that this\
+    \ option may generate large temporary and output files\nand may take a long time\
+    \ to sort (up to many hours). Default: OFF.\n(i.e. Default = CpG context only)."
+  synonyms:
+  - --CX/--CX_context
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This allows you to specify the main memory sort buffer when sorting\
+    \ the methylation information.\nEither specify a percentage of physical memory\
+    \ by appending % (e.g. --buffer_size 50%) or\na multiple of 1024 bytes, e.g. 'K'\
+    \ multiplies by 1024, 'M' by 1048576 and so on for 'T' etc.\n(e.g. --buffer_size\
+    \ 20G). For more information on sort type 'info sort' on a command line.\nDefaults\
+    \ to 2G."
+  synonyms:
+  - --buffer_size
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Users working with unfinished genomes sporting tens or even hundreds\
+    \ of thousands of\nscaffolds/contigs/chromosomes frequently encountered errors\
+    \ with pre-sorting reads to\nindividual chromosome files. These errors were caused\
+    \ by the operating system's limit\nof the number of filehandle that can be written\
+    \ to at any one time (typically 1024; to\nfind out this limit on Linux, type:\
+    \ ulimit -a).\nTo bypass the limitation of open filehandles, the option --scaffolds\
+    \ does not pre-sort\nmethylation calls into individual chromosome files. Instead,\
+    \ all input files are\ntemporarily merged into a single file (unless there is\
+    \ only a single file), and this\nfile will then be sorted by both chromosome AND\
+    \ position using the Unix sort command.\nPlease be aware that this option might\
+    \ take a looooong time to complete, depending on\nthe size of the input files,\
+    \ and the memory you allocate to this process (see --buffer_size).\nNevertheless,\
+    \ it seems to be working."
+  synonyms:
+  - --scaffolds/--gazillion
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Using this option will not sort chromosomal positions using the UNIX\
+    \ 'sort' command, but will\ninstead use two arrays to sort methylated and unmethylated\
+    \ calls, respectively. This may result\nin a faster sorting process for very large\
+    \ files, but this comes at the cost of a larger memory\nfootprint (as an estimate,\
+    \ two arrays of the length of (the largest) human chromosome 1 (nearly\n250 million\
+    \ bp) temporarily consume around 16GB of RAM). Note however that due to the overheads\n\
+    of creating and looping through arrays this option might in fact be *slower* for\
+    \ small-ish\nfiles (up to a few million alignments). Note also that this option\
+    \ is not currently compatible\nwith options '--scaffolds/--gazillion'."
+  synonyms:
+  - --ample_memory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write out an additional coverage file (ending in .zero.cov) that uses\
+    \ 0-based genomic start\nand 1-based genomic end coordinates (zero-based, half-open),\
+    \ like used in the bedGraph file,\ninstead of using 1-based coordinates throughout.\
+    \ Default: OFF."
+  synonyms:
+  - --zero_based
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: output
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n  SYNOPSIS:\n\n  This script uses positional methylation data generated\
+  \ by the Bismark methylation extractor to generate\n  a bedGraph file as well as\
+  \ a coverage file which are both sorted by chromosomal position. The bedGraph\n\
+  \  file uses 0-based genomic start and 1-based genomic end coordinates and should\
+  \ be UCSC compatible (if\n  UCSC genomes were used for the alignment step). In addition\
+  \ this module will write out a coverage file\n  which is similar to the bedGraph\
+  \ file, but uses 1-based genomic coordinates and also reports the count\n  of methylated\
+  \ and unmethylated cytosines for any covered position; this coverage file is required\
+  \ if you\n  wish to generate a genome-wide cytosine report with the module coverage2cytosine.\n\
+  \n  USAGE: bismark2bedGraph [options] -o <output> [methylation extractor input files]\n\
+  \nMethylation extractor input files: These files are required to start with CpG...\
+  \ in order for the\nscript to correctly work out the sequence context when using\
+  \ CpG context only (default). If all cytosine\ncontexts are selected ('--CX_context'),\
+  \ all input files will be used regardless of their file file name(s).\n\n\n-o/--output\
+  \ <filename>     Name of the output file, mandatory.\n\n--dir                  \
+  \    Output directory. Output is written to the current directory if not specified\
+  \ explicitly.\n\n--cutoff [threshold]       The minimum number of times a methylation\
+  \ state has to be seen for that nucleotide\n                           before its\
+  \ methylation percentage is reported. Default: 1.\n\n--remove_spaces           \
+  \ Replaces whitespaces in the sequence ID field with underscores to allow sorting.\n\
+  \n--CX/--CX_context          The sorted bedGraph output file contains information\
+  \ on every single cytosine that was covered\n                           in the experiment\
+  \ irrespective of its sequence context. This applies to both forward and\n     \
+  \                      reverse strands. Please be aware that this option may generate\
+  \ large temporary and output files\n                           and may take a long\
+  \ time to sort (up to many hours). Default: OFF.\n                           (i.e.\
+  \ Default = CpG context only).\n\n--buffer_size <string>     This allows you to\
+  \ specify the main memory sort buffer when sorting the methylation information.\n\
+  \                           Either specify a percentage of physical memory by appending\
+  \ % (e.g. --buffer_size 50%) or\n\t\t\t   a multiple of 1024 bytes, e.g. 'K' multiplies\
+  \ by 1024, 'M' by 1048576 and so on for 'T' etc.\n                           (e.g.\
+  \ --buffer_size 20G). For more information on sort type 'info sort' on a command\
+  \ line.\n                           Defaults to 2G.\n\n--scaffolds/--gazillion \
+  \   Users working with unfinished genomes sporting tens or even hundreds of thousands\
+  \ of\n                           scaffolds/contigs/chromosomes frequently encountered\
+  \ errors with pre-sorting reads to \n                           individual chromosome\
+  \ files. These errors were caused by the operating system's limit\n            \
+  \               of the number of filehandle that can be written to at any one time\
+  \ (typically 1024; to\n                           find out this limit on Linux,\
+  \ type: ulimit -a).\n                           To bypass the limitation of open\
+  \ filehandles, the option --scaffolds does not pre-sort\n                      \
+  \     methylation calls into individual chromosome files. Instead, all input files\
+  \ are\n                           temporarily merged into a single file (unless\
+  \ there is only a single file), and this\n                           file will then\
+  \ be sorted by both chromosome AND position using the Unix sort command.\n     \
+  \                      Please be aware that this option might take a looooong time\
+  \ to complete, depending on \n                           the size of the input files,\
+  \ and the memory you allocate to this process (see --buffer_size).\n           \
+  \                Nevertheless, it seems to be working.\n\n--ample_memory       \
+  \      Using this option will not sort chromosomal positions using the UNIX 'sort'\
+  \ command, but will\n                           instead use two arrays to sort methylated\
+  \ and unmethylated calls, respectively. This may result\n                      \
+  \     in a faster sorting process for very large files, but this comes at the cost\
+  \ of a larger memory\n                           footprint (as an estimate, two\
+  \ arrays of the length of (the largest) human chromosome 1 (nearly\n           \
+  \                250 million bp) temporarily consume around 16GB of RAM). Note however\
+  \ that due to the overheads\n                           of creating and looping\
+  \ through arrays this option might in fact be *slower* for small-ish\n         \
+  \                  files (up to a few million alignments). Note also that this option\
+  \ is not currently compatible\n                           with options '--scaffolds/--gazillion'.\n\
+  \n--zero_based               Write out an additional coverage file (ending in .zero.cov)\
+  \ that uses 0-based genomic start\n                           and 1-based genomic\
+  \ end coordinates (zero-based, half-open), like used in the bedGraph file,\n   \
+  \                        instead of using 1-based coordinates throughout. Default:\
+  \ OFF.\n\n\n\nThe bedGraph output looks like this (tab-delimited; 0-based start\
+  \ coords, 1-based end coords):\n==============================================================================================\n\
+  \ntrack type=bedGraph (header line)\n\n<chromosome>  <start position>  <end position>\
+  \  <methylation percentage>\n\n\n\nThe coverage output looks like this (tab-delimited,\
+  \ 1-based genomic coords; optional zero-based, half-open coords with '--zero_based'):\n\
+  =======================================================================================================================================\n\
+  \n<chromosome>  <start position>  <end position>  <methylation percentage>  <count\
+  \ methylated>  <count non-methylated>\n\n\n                          Script last\
+  \ modified: 07 June 2017\n\n"
+generated_using:
+- --help

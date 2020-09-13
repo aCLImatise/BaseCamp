@@ -1,0 +1,294 @@
+!Command
+command:
+- fqtrim
+positional: []
+named:
+- !Flag
+  description: "rename the reads using the <prefix> followed by a read counter;\n\
+    if -C option was also provided, the suffix \"_x<N>\" is appended\n(where <N> is\
+    \ the read duplication count)"
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "write the trimmed/filtered reads to file(s) named <input>.<outsuffix>\n\
+    which will be created in the current (working) directory (unless --outdir\nis\
+    \ used); this suffix should include the file extension; if this extension\nis\
+    \ .gz, .gzip or .bz2 then the output will be compressed accordingly.\nNOTE: if\
+    \ the input file is '-' (stdin) then this is the full name of the\noutput file,\
+    \ not just the suffix."
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', write the output file(s) to <outdir> directory instead'
+  synonyms:
+  - --outdir
+  - -o
+  args: !SimpleFlagArg
+    name: for
+  optional: true
+- !Flag
+  description: "file with adapter sequences to trim, each line having this format:\n\
+    [<5_adapter_sequence>][ <3_adapter_sequence>]"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "trim the given adapter or primer sequence at the 5' end of each read\n\
+    (e.g. -5 CGACAGGTTCAGAGTTCTACAGTCCGACGATC)"
+  synonyms:
+  - '-5'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "trim the given adapter sequence at the 3' end of each read\n(e.g.\
+    \ -3 TCGTATGCCGTCTTCTGCTTG)"
+  synonyms:
+  - '-3'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable polyA/T trimming (enabled by default)
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "trim polyA/T at both ends (default: only poly-A at 3' end, poly-T\
+    \ at 5')"
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output only reads affected by trimming (discard clean reads!)
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum length of poly-A/T run to remove (6)
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: trim read ends where the quality value drops below <minq>
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: for -q, sliding window size for calculating avg. quality (default 6)
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: for -q, limit maximum trimming at either end to <trim_max_len>
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum percentage of Ns allowed in a read after trimming (default
+    5)
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "minimum read length after trimming (if the remaining sequence is shorter\n\
+    than this, the read will be discarded (trashed)(default: 16)"
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "write a \"trimming report\" file listing the affected reads with a\
+    \ list\nof trimming operations"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":  for paired reads, one of the reads (1 or 2) is not being processed\n\
+    (no attempt to trim it) but the pair is discarded if the other read is\ntrashed\
+    \ by the trimming process"
+  synonyms:
+  - -s1/-s2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "can only be given with -r and -f options and it makes all the\nvector/adapter\
+    \ trimming operations encoded as a,b,c,.. instead of V,\ncorresponding to the\
+    \ order of adapter sequences in the -f file"
+  synonyms:
+  - --aidx
+  args: !SimpleFlagArg
+    name: option
+  optional: true
+- !Flag
+  description: "write the number of bases trimmed at 5' and 3' ends after the read\
+    \ names\nin the FASTA/FASTQ output file(s)"
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "pass reads through a low-complexity (dust) filter and discard any\
+    \ read\nthat has over 50% of its length masked as low complexity"
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "is the same with -D but fqtrim will actually mask the low\ncomplexity\
+    \ regions with Ns in the output sequence"
+  synonyms:
+  - --dmask
+  args: !SimpleFlagArg
+    name: option
+  optional: true
+- !Flag
+  description: "collapse duplicate reads and append a _x<N>count suffix to the read\n\
+    name (where <N> is the duplication count)"
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use <numcpus> CPUs (threads) on the local machine
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input is phred64/phred33 (use -P64 or -P33)
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: convert quality values to the other Phred qv type
+  synonyms:
+  - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable read name consistency check for paired reads
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show verbose trimming summary
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "minimum length of exact suffix-prefix match with adapter sequence\
+    \ that\ncan be trimmed at either end of the read (default: 6)"
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum percent identity for adapter match at 5' end (default 96.0)
+  synonyms:
+  - --pid5
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum percent identity for adapter match at 3' end (default 94.0)
+  synonyms:
+  - --pid3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: mismatch penalty for scoring the adapter alignment (default 3)
+  synonyms:
+  - --mism
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reward for scoring the adapter alignment (default 1)
+  synonyms:
+  - --match
+  args: !SimpleFlagArg
+    name: match
+  optional: true
+- !Flag
+  description: "also look for terminal alignments with the reverse complement\nof\
+    \ the adapter sequence(s)"
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "fqtrim v0.9.7. Usage:\nfqtrim [{-5 <5adapter> -3 <3adapter>|-f <adapters_file>}]\
+  \ [-a <min_match>]\\\n   [-R] [-q <minq> [-t <trim_max_len>]] [-p <numcpus>] [-P\
+  \ {64|33}] \\\n   [-m <max_percN>] [--ntrimdist=<max_Ntrim_dist>] [-l <minlen>]\
+  \ [-C]\\\n   [-o <outsuffix> [--outdir <outdir>]] [-D][-Q][-O] [-n <rename_prefix>]\\\
+  \n   [-r <trim_report.txt>] [-y <min_poly>] [-A|-B] <input.fq>[,<input_mates.fq>\\\
+  \n \n Trim low quality bases at the 3' end and can trim adapter sequence(s), filter\n\
+  \ for low complexity and collapse duplicate reads.\n If read pairs should be trimmed\
+  \ and kept together (i.e. never discarding\n only one read in a pair), the two file\
+  \ names should be given delimited by a comma\n or a colon character.\n\nOptions:\n\
+  -n  rename the reads using the <prefix> followed by a read counter;\n    if -C option\
+  \ was also provided, the suffix \"_x<N>\" is appended\n    (where <N> is the read\
+  \ duplication count)\n-o  write the trimmed/filtered reads to file(s) named <input>.<outsuffix>\n\
+  \    which will be created in the current (working) directory (unless --outdir\n\
+  \    is used); this suffix should include the file extension; if this extension\n\
+  \    is .gz, .gzip or .bz2 then the output will be compressed accordingly.\n   \
+  \ NOTE: if the input file is '-' (stdin) then this is the full name of the\n   \
+  \ output file, not just the suffix.\n--outdir for -o option, write the output file(s)\
+  \ to <outdir> directory instead\n-f  file with adapter sequences to trim, each line\
+  \ having this format:\n    [<5_adapter_sequence>][ <3_adapter_sequence>]\n-5  trim\
+  \ the given adapter or primer sequence at the 5' end of each read\n    (e.g. -5\
+  \ CGACAGGTTCAGAGTTCTACAGTCCGACGATC)\n-3  trim the given adapter sequence at the\
+  \ 3' end of each read\n    (e.g. -3 TCGTATGCCGTCTTCTGCTTG)\n-A  disable polyA/T\
+  \ trimming (enabled by default)\n-B  trim polyA/T at both ends (default: only poly-A\
+  \ at 3' end, poly-T at 5')\n-O  output only reads affected by trimming (discard\
+  \ clean reads!)\n-y  minimum length of poly-A/T run to remove (6)\n-q  trim read\
+  \ ends where the quality value drops below <minq>\n-w  for -q, sliding window size\
+  \ for calculating avg. quality (default 6)\n-t  for -q, limit maximum trimming at\
+  \ either end to <trim_max_len>\n-m  maximum percentage of Ns allowed in a read after\
+  \ trimming (default 5)\n-l  minimum read length after trimming (if the remaining\
+  \ sequence is shorter\n    than this, the read will be discarded (trashed)(default:\
+  \ 16)\n-r  write a \"trimming report\" file listing the affected reads with a list\n\
+  \    of trimming operations\n-s1/-s2:  for paired reads, one of the reads (1 or\
+  \ 2) is not being processed\n    (no attempt to trim it) but the pair is discarded\
+  \ if the other read is\n    trashed by the trimming process\n--aidx option can only\
+  \ be given with -r and -f options and it makes all the \n    vector/adapter trimming\
+  \ operations encoded as a,b,c,.. instead of V,\n    corresponding to the order of\
+  \ adapter sequences in the -f file\n-T  write the number of bases trimmed at 5'\
+  \ and 3' ends after the read names\n    in the FASTA/FASTQ output file(s)\n-D  pass\
+  \ reads through a low-complexity (dust) filter and discard any read\n    that has\
+  \ over 50% of its length masked as low complexity\n--dmask option is the same with\
+  \ -D but fqtrim will actually mask the low \n    complexity regions with Ns in the\
+  \ output sequence\n-C  collapse duplicate reads and append a _x<N>count suffix to\
+  \ the read\n    name (where <N> is the duplication count)\n-p  use <numcpus> CPUs\
+  \ (threads) on the local machine\n-P  input is phred64/phred33 (use -P64 or -P33)\n\
+  -Q  convert quality values to the other Phred qv type\n-M  disable read name consistency\
+  \ check for paired reads\n-V  show verbose trimming summary\nAdvanced adapter/primer\
+  \ match options (for -f or -5 , -3 options):\n  -a      minimum length of exact\
+  \ suffix-prefix match with adapter sequence that\n          can be trimmed at either\
+  \ end of the read (default: 6)\n  --pid5  minimum percent identity for adapter match\
+  \ at 5' end (default 96.0)\n  --pid3  minimum percent identity for adapter match\
+  \ at 3' end (default 94.0)\n  --mism  mismatch penalty for scoring the adapter alignment\
+  \ (default 3)\n  --match match reward for scoring the adapter alignment (default\
+  \ 1)\n  -R      also look for terminal alignments with the reverse complement\n\
+  \          of the adapter sequence(s)\n \nInvalid argument: --help\n"
+generated_using:
+- --help

@@ -1,0 +1,69 @@
+!Command
+command:
+- cbTool
+positional:
+- !Positional
+  description: '- convert matrix market to .tsv.gz'
+  position: 0
+  name: mtx2tsv
+  optional: false
+named:
+- !Flag
+  description: show debug messages
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "try to fix R's mangling of various special chars to '.' in\nthe cell\
+    \ IDs"
+  synonyms:
+  - --fixDots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "only for metaCat: names of fields to order first, comma-\nsep, e.g.\
+    \ disease,age. Not cellId, that's always the first\nfield"
+  synonyms:
+  - --first
+  args: !SimpleFlagArg
+    name: FIRST
+  optional: true
+- !Flag
+  description: 'only for metaCat: names of fields to remove'
+  synonyms:
+  - --del
+  args: !SimpleFlagArg
+    name: DELFIELDS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: cbTool [options] mtx2tsv|matCat|metaCat - convert various single-cell\
+  \ related files\n\n    mtx2tsv   - convert matrix market to .tsv.gz\n    matCat\
+  \ - merge expression matrices with one line per gene into a big matrix.\n      \
+  \  Matrices must have identical genes in the same order and the same number of\n\
+  \        lines. Handles .csv files, otherwise defaults to tab-sep input. gzip OK.\n\
+  \    metaCat - concat/join meta tables on the first (cell ID) field\n\n    Examples:\n\
+  \    - cbTool mtx2tsv matrix.mtx genes.tsv barcodes.tsv exprMatrix.tsv.gz - convert\
+  \ .mtx to .tsv.gz file\n    - cbTool matCat mat1.tsv.gz mat2.tsv.gz exprMatrix.tsv.gz\
+  \ - concatenate expression matrices\n    - cbTool metaCat meta.tsv seurat/meta.tsv\
+  \ scanpy/meta.tsv newMeta.tsv - merge meta matrices\n    \n\nOptions:\n  -h, --help\
+  \       show this help message and exit\n  -d, --debug      show debug messages\n\
+  \  --fixDots        try to fix R's mangling of various special chars to '.' in\n\
+  \                   the cell IDs\n  --first=FIRST    only for metaCat: names of\
+  \ fields to order first, comma-\n                   sep, e.g. disease,age. Not cellId,\
+  \ that's always the first\n                   field\n  --del=DELFIELDS  only for\
+  \ metaCat: names of fields to remove\n"
+generated_using:
+- --help

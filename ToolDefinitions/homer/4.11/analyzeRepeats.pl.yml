@@ -1,0 +1,319 @@
+!Command
+command:
+- analyzeRepeats.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: genome
+  optional: false
+named:
+- !Flag
+  description: (level one 'repeat name', i.e. AluSx3)
+  synonyms:
+  - -L1
+  args: !SimpleFlagArg
+    name: repeat name
+  optional: true
+- !Flag
+  description: (level two 'repeat family', i.e. SINE)
+  synonyms:
+  - -L2
+  args: !SimpleFlagArg
+    name: repeat name
+  optional: true
+- !Flag
+  description: (level three 'repeat class', i.e. Alu)
+  synonyms:
+  - -L3
+  args: !SimpleFlagArg
+    name: repeat name
+  optional: true
+- !Flag
+  description: '(max divergence, i.e. -div 0.10, default: 1.0)'
+  synonyms:
+  - -maxdiv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(min divergence, default: 0)'
+  synonyms:
+  - -mindiv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (only return repeats at lest this length, default: 0)'
+  synonyms:
+  - -minLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (only return repeats less than % of full length, default: no max)'
+  synonyms:
+  - -maxLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (only return repeats at lest % of full length, default: 0%)'
+  synonyms:
+  - -minLengthP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (only return repeats less than % of full length, default: 100%)'
+  synonyms:
+  - -maxLengthP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (combine read counts for repeats for same L2 or L3 annotation)
+  synonyms:
+  - -condenseL2
+  - -condenseL3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (force filtering of repeats in case it thinks your file is for RNA)
+  synonyms:
+  - -rmsk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (return peak files centered on 5' end of repeats)
+  synonyms:
+  - -5p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (return peak files centered on 3' end of repeats)
+  synonyms:
+  - -3p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (return positions relative to full length repeats)
+  synonyms:
+  - -og
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (for GFF or GFF3 formated files - ideally use a GTF formated file,
+    default)
+  synonyms:
+  - -gff/-gff3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use gene_id instead of transcript_id when parsing GTF file)
+  synonyms:
+  - -gid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[tag directory 2] ... (list of experiment directories to show\ntag\
+    \ counts for) NOTE: -dfile <file> where file is a list of directories in first\
+    \ column"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: tag directory 1
+  optional: true
+- !Flag
+  description: "(regions to count reads in, default: genes)\nSpecify \"-pausingOptions\"\
+    \ to get more options for pausing analysis for GRO-Seq data"
+  synonyms:
+  - -count
+  args: !SimpleFlagArg
+    name: genes|exons|introns|5utr|3utr|cds|pausing
+  optional: true
+- !Flag
+  description: '<+|-|both> (count tags on indicated strand, default: both)'
+  synonyms:
+  - -strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> or -tbp <#> (maximum tags to count per position, default: 0=no
+    limit)'
+  synonyms:
+  - -pc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (output tag counts as randomized log2 values - for scatter plots)
+  synonyms:
+  - -log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (output tag counts as randomized sqrt values - for scatter plots)
+  synonyms:
+  - -sqrt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Only report one transcript from each gene locus with highest expression)
+  synonyms:
+  - -condenseGenes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(do not condense counts from entries will same ID, default: do condense)'
+  synonyms:
+  - -noCondensing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (i.e. report exons separately)
+  synonyms:
+  - -noCondensingParts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (minimum expression value to print, default: none)'
+  synonyms:
+  - -min
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Don't normalize, report raw counts)
+  synonyms:
+  - -raw
+  - -noadj
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: (Report results as fragments per kb per million mapped)
+  synonyms:
+  - -rpkm/-fpkm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Report transcripts per million)
+  synonyms:
+  - -tpm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Normalize to total mapped tags: default 1e7)'
+  synonyms:
+  - -norm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Normalize to total tags in gene expression matrix: not used)'
+  synonyms:
+  - -normMatrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (quantile/variance normalization on reported genes using DESeq2 rlog
+    funcition, needs R)
+  synonyms:
+  - -rlog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (quantile/variance normalization on reported genes using DESeq2 vst
+    function, needs R)
+  synonyms:
+  - -vst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (quantile normalization on reported genes)
+  synonyms:
+  - -quantile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Distance upstream of each repeat to check for reads, default:
+    0 [off])'
+  synonyms:
+  - -upstream
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Distance downstream to each repeat to check for reads, default:
+    0 [off])'
+  synonyms:
+  - -downstream
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Only keep repeats with local enrichment greater than #, default:
+    keep all)'
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Find overlapping GWAS Catalog file from UCSC)
+  synonyms:
+  - -gwasCatalog
+  args: !SimpleFlagArg
+    name: gwasCatalog.txt
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tUsage: analyzeRepeats.pl <input file> <genome> [options] ...\n\n\t\
+  Where <input file> can be one of:\n\t\trna (quantify gene expression of RefSeq annotated\
+  \ genes)\n\t\trepeats (just type \"repeats\" to load the default repeats for genome)\n\
+  \t\t<gtf file> (quantify gene expression from GTF file)\n\t\t<transcript file> (Homer\
+  \ formatted peak/transcript file i.e. hg19.repeats)\n\n\tAvailable Genomes (required\
+  \ argument): (name,org,directory,default promoter set)\n\t\tGenome can also specify\
+  \ a FASTA file, or just specify \"none\"\n\n\tSpecifying distinct classes of repeats\
+  \ or filtering based on parameters:\n\t\t-L1 <repeat name> (level one 'repeat name',\
+  \ i.e. AluSx3)\n\t\t-L2 <repeat name> (level two 'repeat family', i.e. SINE)\n\t\
+  \t-L3 <repeat name> (level three 'repeat class', i.e. Alu)\n\t\t-maxdiv (max divergence,\
+  \ i.e. -div 0.10, default: 1.0)\n\t\t-mindiv (min divergence, default: 0)\n\t\t\
+  -minLength <#> (only return repeats at lest this length, default: 0)\n\t\t-maxLength\
+  \ <#> (only return repeats less than % of full length, default: no max)\n\t\t-minLengthP\
+  \ <#> (only return repeats at lest % of full length, default: 0%)\n\t\t-maxLengthP\
+  \ <#> (only return repeats less than % of full length, default: 100%)\n\t\t-condenseL2,\
+  \ -condenseL3 (combine read counts for repeats for same L2 or L3 annotation)\n\t\
+  \t-rmsk (force filtering of repeats in case it thinks your file is for RNA)\n\n\t\
+  Adjusting coordinates returned:\n\t\t-5p (return peak files centered on 5' end of\
+  \ repeats)\n\t\t-3p (return peak files centered on 3' end of repeats)\n\t\t-og (return\
+  \ positions relative to full length repeats)\n\n\tGTF file options if specifying\
+  \ a GTF file:\n\t\t-gff/-gff3 (for GFF or GFF3 formated files - ideally use a GTF\
+  \ formated file, default)\n\t\t-gid (use gene_id instead of transcript_id when parsing\
+  \ GTF file)\n\n\tExpression/Read Coverage Reporting Options:\n\t\t-d <tag directory\
+  \ 1> [tag directory 2] ... (list of experiment directories to show\n\t\t\ttag counts\
+  \ for) NOTE: -dfile <file> where file is a list of directories in first column\n\
+  \t\t-count <genes|exons|introns|5utr|3utr|cds|pausing> (regions to count reads in,\
+  \ default: genes)\n\t\t\tSpecify \"-pausingOptions\" to get more options for pausing\
+  \ analysis for GRO-Seq data\n\t\t-strand <+|-|both> (count tags on indicated strand,\
+  \ default: both)\n\t\t-pc <#> or -tbp <#> (maximum tags to count per position, default:\
+  \ 0=no limit)\n\t\t-log (output tag counts as randomized log2 values - for scatter\
+  \ plots)\n\t\t-sqrt (output tag counts as randomized sqrt values - for scatter plots)\n\
+  \t\t-condenseGenes (Only report one transcript from each gene locus with highest\
+  \ expression)\n\t\t-noCondensing (do not condense counts from entries will same\
+  \ ID, default: do condense)\n\t\t-noCondensingParts (i.e. report exons separately)\n\
+  \t\t-min <#> (minimum expression value to print, default: none)\n\n\tSimple Normalizations:\n\
+  \t\t-raw or -noadj (Don't normalize, report raw counts)\n\t\t-rpkm/-fpkm (Report\
+  \ results as fragments per kb per million mapped)\n\t\t-tpm (Report transcripts\
+  \ per million)\n\t\t-norm <#> (Normalize to total mapped tags: default 1e7)\n\t\t\
+  -normMatrix <#> (Normalize to total tags in gene expression matrix: not used)\n\n\
+  \tAdvanced Normalization: (-rlog and -vst require R and DESeq2 to be installed)\n\
+  \t\t-rlog (quantile/variance normalization on reported genes using DESeq2 rlog funcition,\
+  \ needs R)\n\t\t-vst (quantile/variance normalization on reported genes using DESeq2\
+  \ vst function, needs R)\n\t\t-quantile (quantile normalization on reported genes)\n\
+  \n\tChecking read-through expression: (example: \"-upstream -1000 -L 2\")\n\t\t\
+  -upstream <#> (Distance upstream of each repeat to check for reads, default: 0 [off])\n\
+  \t\t-downstream <#> (Distance downstream to each repeat to check for reads, default:\
+  \ 0 [off])\n\t\t-L <#> (Only keep repeats with local enrichment greater than #,\
+  \ default: keep all)\n\n\tAnnotation:\n\t\t-gwasCatalog <gwasCatalog.txt> (Find\
+  \ overlapping GWAS Catalog file from UCSC)\n\n"
+generated_using:
+- --help

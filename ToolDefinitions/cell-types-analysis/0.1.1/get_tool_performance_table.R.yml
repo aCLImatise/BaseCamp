@@ -1,0 +1,173 @@
+!Command
+command:
+- get_tool_performance_table.R
+positional: []
+named:
+- !Flag
+  description: "Path to the directory with standardised output .tsv files from multiple\n\
+    methods"
+  synonyms:
+  - -i
+  - --input-dir
+  args: !SimpleFlagArg
+    name: INPUT-DIR
+  optional: true
+- !Flag
+  description: Path to the file with reference, "true" cell type assignments
+  synonyms:
+  - -r
+  - --ref-file
+  args: !SimpleFlagArg
+    name: REF-FILE
+  optional: true
+- !Flag
+  description: 'Boolean: Should computation be run in parallel? Default: FALSE'
+  synonyms:
+  - -n
+  - --parallel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of cores to run the process on. Default: all available cores.
+    --parallel must be set to "true" for this to take effect'
+  synonyms:
+  - -c
+  - --num-cores
+  args: !SimpleFlagArg
+    name: NUM-CORES
+  optional: true
+- !Flag
+  description: Path to the yaml file with excluded terms. Must contain fields 'unlabelled'
+    and 'trivial_terms'
+  synonyms:
+  - -e
+  - --exclusions
+  args: !SimpleFlagArg
+    name: EXCLUSIONS
+  optional: true
+- !Flag
+  description: Cache directory path
+  synonyms:
+  - -d
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: TMPDIR
+  optional: true
+- !Flag
+  description: Path to the ontology graph in .obo or .xml format. Import link can
+    also be provided.
+  synonyms:
+  - -f
+  - --ontology-graph
+  args: !SimpleFlagArg
+    name: ONTOLOGY-GRAPH
+  optional: true
+- !Flag
+  description: Path to serialised object containing cell label - CL terms mapping
+  synonyms:
+  - -m
+  - --lab-cl-mapping
+  args: !SimpleFlagArg
+    name: LAB-CL-MAPPING
+  optional: true
+- !Flag
+  description: Name of the cell id field in reference file
+  synonyms:
+  - -b
+  - --barcode-col-ref
+  args: !SimpleFlagArg
+    name: BARCODE-COL-REF
+  optional: true
+- !Flag
+  description: Name of the cell id field in prediction file
+  synonyms:
+  - -a
+  - --barcode-col-pred
+  args: !SimpleFlagArg
+    name: BARCODE-COL-PRED
+  optional: true
+- !Flag
+  description: Name of the label column in reference file
+  synonyms:
+  - -l
+  - --label-column-ref
+  args: !SimpleFlagArg
+    name: LABEL-COLUMN-REF
+  optional: true
+- !Flag
+  description: Name of the label column in prediction file
+  synonyms:
+  - -p
+  - --label-column-pred
+  args: !SimpleFlagArg
+    name: LABEL-COLUMN-PRED
+  optional: true
+- !Flag
+  description: "Semantic similarity scoring method. Must be supported by Onassis\n\
+    package. See listSimilarities()$pairwiseMeasures for a list\nof accepted options.\n\
+    NB: if included in combined score calculation, make sure to select a metric with\
+    \ values in the [0;1] range."
+  synonyms:
+  - -s
+  - --semantic-sim-metric
+  args: !SimpleFlagArg
+    name: SEMANTIC-SIM-METRIC
+  optional: true
+- !Flag
+  description: "Should semantic similarity be included into combined score calculation?\
+    \ Default: FALSE.\nIf setting to TRUE, note that this confines the options on\
+    \ semantic similarity metric\nto those with range in the [0;1] interval only."
+  synonyms:
+  - -k
+  - --include-sem-siml
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to the output table in .tsv format
+  synonyms:
+  - -o
+  - --output-path
+  args: !SimpleFlagArg
+    name: OUTPUT-PATH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "Show this help message and exit\n"
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/get_tool_performance_table.R [options]\n\n\nOptions:\n\
+  \t-i INPUT-DIR, --input-dir=INPUT-DIR\n\t\tPath to the directory with standardised\
+  \ output .tsv files from multiple\n                methods\n\n\t-r REF-FILE, --ref-file=REF-FILE\n\
+  \t\tPath to the file with reference, \"true\" cell type assignments\n\n\t-n, --parallel\n\
+  \t\tBoolean: Should computation be run in parallel? Default: FALSE\n\n\t-c NUM-CORES,\
+  \ --num-cores=NUM-CORES\n\t\tNumber of cores to run the process on. Default: all\
+  \ available cores. --parallel must be set to \"true\" for this to take effect\n\n\
+  \t-e EXCLUSIONS, --exclusions=EXCLUSIONS\n\t\tPath to the yaml file with excluded\
+  \ terms. Must contain fields 'unlabelled' and 'trivial_terms'\n\n\t-d TMPDIR, --tmpdir=TMPDIR\n\
+  \t\tCache directory path\n\n\t-f ONTOLOGY-GRAPH, --ontology-graph=ONTOLOGY-GRAPH\n\
+  \t\tPath to the ontology graph in .obo or .xml format. Import link can also be provided.\n\
+  \n\t-m LAB-CL-MAPPING, --lab-cl-mapping=LAB-CL-MAPPING\n\t\tPath to serialised object\
+  \ containing cell label - CL terms mapping\n\n\t-b BARCODE-COL-REF, --barcode-col-ref=BARCODE-COL-REF\n\
+  \t\tName of the cell id field in reference file\n\n\t-a BARCODE-COL-PRED, --barcode-col-pred=BARCODE-COL-PRED\n\
+  \t\tName of the cell id field in prediction file\n\n\t-l LABEL-COLUMN-REF, --label-column-ref=LABEL-COLUMN-REF\n\
+  \t\tName of the label column in reference file\n\n\t-p LABEL-COLUMN-PRED, --label-column-pred=LABEL-COLUMN-PRED\n\
+  \t\tName of the label column in prediction file\n\n\t-s SEMANTIC-SIM-METRIC, --semantic-sim-metric=SEMANTIC-SIM-METRIC\n\
+  \t\tSemantic similarity scoring method. Must be supported by Onassis\n         \
+  \       package. See listSimilarities()$pairwiseMeasures for a list\n          \
+  \      of accepted options. \n                NB: if included in combined score\
+  \ calculation, make sure to select a metric with values in the [0;1] range.\n\n\t\
+  -k, --include-sem-siml\n\t\tShould semantic similarity be included into combined\
+  \ score calculation? Default: FALSE.\n                If setting to TRUE, note that\
+  \ this confines the options on semantic similarity metric\n                to those\
+  \ with range in the [0;1] interval only.\n\n\t-o OUTPUT-PATH, --output-path=OUTPUT-PATH\n\
+  \t\tPath to the output table in .tsv format\n\n\t-h, --help\n\t\tShow this help\
+  \ message and exit\n\n\n"
+generated_using:
+- --help

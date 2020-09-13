@@ -1,0 +1,103 @@
+!Command
+command:
+- show-snps
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: deltafile
+  optional: false
+named:
+- !Flag
+  description: "Do not report SNPs from alignments with an ambiguous\nmapping, i.e.\
+    \ only report SNPs where the [R] and [Q]\ncolumns equal 0 and do not output these\
+    \ columns"
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not print the output header
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not report indels
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Include sequence length information in the output
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sort output lines by query IDs and SNP positions
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sort output lines by reference IDs and SNP positions
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify which alignments to report by passing\n'show-coords' lines\
+    \ to stdin"
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Switch to tab-delimited format
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Include x characters of surrounding SNP context in the\noutput, default\
+    \ 0"
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display help information
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nUSAGE: show-snps  [options]  <deltafile>\n\n-C            Do not report\
+  \ SNPs from alignments with an ambiguous\n              mapping, i.e. only report\
+  \ SNPs where the [R] and [Q]\n              columns equal 0 and do not output these\
+  \ columns\n-h            Display help information\n-H            Do not print the\
+  \ output header\n-I            Do not report indels\n-l            Include sequence\
+  \ length information in the output\n-q            Sort output lines by query IDs\
+  \ and SNP positions\n-r            Sort output lines by reference IDs and SNP positions\n\
+  -S            Specify which alignments to report by passing\n              'show-coords'\
+  \ lines to stdin\n-T            Switch to tab-delimited format\n-x int        Include\
+  \ x characters of surrounding SNP context in the\n              output, default\
+  \ 0\n\n  Input is the .delta output of either the nucmer or promer program\npassed\
+  \ on the command line.\n  Output is to stdout, and consists of a list of SNPs (or\
+  \ amino acid\nsubstitutions for promer) with positions and other useful info.\n\
+  Output will be sorted with -r by default and the [BUFF] column will\nalways refer\
+  \ to the sequence whose positions have been sorted. This\nvalue specifies the distance\
+  \ from this SNP to the nearest mismatch\n(end of alignment, indel, SNP, etc) in\
+  \ the same alignment, while the\n[DIST] column specifies the distance from this\
+  \ SNP to the nearest\nsequence end. SNPs for which the [R] and [Q] columns are greater\
+  \ than\n0 should be evaluated with caution, as these columns specify the\nnumber\
+  \ of other alignments which overlap this position. Use -C to\nassure SNPs are only\
+  \ reported from unique alignment regions.\n\n"
+generated_using:
+- -h

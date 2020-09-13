@@ -1,0 +1,221 @@
+!Command
+command:
+- draw
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: ct file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: output file
+  optional: false
+named:
+- !Flag
+  description: "Specify that the structure should be drawn with its backbone stretched\n\
+    around a circle. Note that pseudoknotted structures will be drawn\ncircularized\
+    \ even if this option is not specified.\nDefault is to show a collapsed structure."
+  synonyms:
+  - -c
+  - -C
+  - --circle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that the structure should be drawn with its backbone stretched\
+    \ in a\nstraight line.\nDefault is to show a collapsed structure."
+  synonyms:
+  - -f
+  - -F
+  - --flat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that the drawn structure is rendered counterclockwise.\nDefault\
+    \ is to render drawn structures clockwise."
+  synonyms:
+  - -l
+  - -L
+  - --levorotatory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that the output file should be an SVG image file, rather than\
+    \ a\nPostscript image file. Note that only one SVG image can be written into a\n\
+    particular file, so the structure number flag must also be specified when\nwriting\
+    \ an SVG document."
+  synonyms:
+  - --svg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that no circles should surround nucleotides when drawing.\n\
+    Default is to surround nucleotides with circles."
+  synonyms:
+  - -u
+  - -U
+  - --uncircled
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Configure the output of descriptions. Valid values are: (1) \"\" or\
+    \ \"~none\"\n-- Do not write a description (2) \"~file\" -- If the default description\n\
+    corresponds to a file or path, use only the base name of the path (i.e. no\ndirectory\
+    \ or file extension). (3) \"~~\" or \"~default\" -- Use the default\ndescription\
+    \ (this is the same as not specifying the flag) (4)\n\"~list|DESC1|DESC2|DESC3\"\
+    \ -- use this syntax when the output is expected to\nhave more than one plot.\
+    \ It specifies a list of descriptions will be\napplied in the order given. The\
+    \ character immediately after \"~list\" will be\nused as the separator. (5) Any\
+    \ other value is assumed to be the literal\ndescription you want to have displayed\
+    \ in the plot legend."
+  synonyms:
+  - --desc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the ending structure number. Use this in combination with\
+    \ the\n--number (-n) flag to specify a range of structures to draw, e.g.\n\"--number\
+    \ 3 --end 7\" to draw structures 3 through 7."
+  synonyms:
+  - -e
+  - --end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of the partition function file from which loop probability\n\
+    data will be read for annotation. This file should describe pairing data\nfor\
+    \ the predicted structure, not the accepted structure.\nDefault is no probability\
+    \ annotation file used."
+  synonyms:
+  - -lp
+  - -LP
+  - --loopprobability
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Limit the total number of structures drawn. This is useful in automated\n\
+    tool chains to prevent creation of huge output files when many results are\nreturned\
+    \ from another program (e.g. AllSub)."
+  synonyms:
+  - --maxstructures
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the index of a particular structure in the predicted CT to\
+    \ be\ncompared with the accepted CT, one-indexed.\nDefault is -1, which signifies\
+    \ all structures output to one file."
+  synonyms:
+  - -n
+  - -N
+  - --number
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of the partition function file from which base pairing\n\
+    probability data will be read for annotation. This file should describe\npairing\
+    \ data for the predicted structure, not the accepted structure.\nDefault is no\
+    \ probability annotation file used."
+  synonyms:
+  - -p
+  - -P
+  - --probability
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of the file from which SHAPE data will be read for\n\
+    annotation.\nDefault is no SHAPE annotation file used."
+  synonyms:
+  - -s
+  - -S
+  - --SHAPE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of the text file from which base pairing probability\
+    \ data\nwill be read for annotation. This file should describe pairing data for\
+    \ the\npredicted structure, not the accepted structure.\nDefault is no probability\
+    \ annotation file used.\n"
+  synonyms:
+  - -t
+  - -T
+  - --text
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: draw <ct file> <output file> [options]\nAll flags are case-insensitive,\
+  \ and grouping of flags is not allowed.\n\n=============================\n==== Required\
+  \ Parameters ====\n=============================\n<ct file>\n    The name of a file\
+  \ containing CT data for the structure to be drawn.\n\n<output file>\n    The name\
+  \ of an image file to which output will be written. Usually, this is\n    a Postscript\
+  \ image file, although the user can specify that it be an SVG\n    image file instead.\
+  \ To specify SVG images, the \"--svg\" flag must be\n    specified in conjunction\
+  \ with a structure number flag.\n\n=========================================\n====\
+  \ Option Flags Without Parameters ====\n=========================================\n\
+  -c -C --circle \n    Specify that the structure should be drawn with its backbone\
+  \ stretched\n    around a circle. Note that pseudoknotted structures will be drawn\n\
+  \    circularized even if this option is not specified.\n    Default is to show\
+  \ a collapsed structure.\n\n-f -F --flat \n    Specify that the structure should\
+  \ be drawn with its backbone stretched in a\n    straight line.\n    Default is\
+  \ to show a collapsed structure.\n\n-h --help \n    Display the usage details message.\n\
+  \n-l -L --levorotatory \n    Specify that the drawn structure is rendered counterclockwise.\n\
+  \    Default is to render drawn structures clockwise.\n\n--svg \n    Specify that\
+  \ the output file should be an SVG image file, rather than a\n    Postscript image\
+  \ file. Note that only one SVG image can be written into a\n    particular file,\
+  \ so the structure number flag must also be specified when\n    writing an SVG document.\n\
+  \n-u -U --uncircled \n    Specify that no circles should surround nucleotides when\
+  \ drawing.\n    Default is to surround nucleotides with circles.\n\n-v --version\
+  \ \n    Display version and copyright information for this interface.\n\n======================================\n\
+  ==== Option Flags With Parameters ====\n======================================\n\
+  All parameters must follow their associated flag directly.\nFailure to do so may\
+  \ result in aberrant program behavior.\n\n--desc \n    Configure the output of descriptions.\
+  \ Valid values are: (1) \"\" or \"~none\"\n    -- Do not write a description (2)\
+  \ \"~file\" -- If the default description\n    corresponds to a file or path, use\
+  \ only the base name of the path (i.e. no\n    directory or file extension). (3)\
+  \ \"~~\" or \"~default\" -- Use the default\n    description (this is the same as\
+  \ not specifying the flag) (4)\n    \"~list|DESC1|DESC2|DESC3\" -- use this syntax\
+  \ when the output is expected to\n    have more than one plot. It specifies a list\
+  \ of descriptions will be\n    applied in the order given. The character immediately\
+  \ after \"~list\" will be\n    used as the separator. (5) Any other value is assumed\
+  \ to be the literal\n    description you want to have displayed in the plot legend.\n\
+  \n-e --end \n    Specify the ending structure number. Use this in combination with\
+  \ the\n    --number (-n) flag to specify a range of structures to draw, e.g.\n \
+  \   \"--number 3 --end 7\" to draw structures 3 through 7.\n\n-lp -LP --loopprobability\
+  \ \n    Specify the name of the partition function file from which loop probability\n\
+  \    data will be read for annotation. This file should describe pairing data\n\
+  \    for the predicted structure, not the accepted structure.\n    Default is no\
+  \ probability annotation file used.\n\n--maxstructures \n    Limit the total number\
+  \ of structures drawn. This is useful in automated\n    tool chains to prevent creation\
+  \ of huge output files when many results are\n    returned from another program\
+  \ (e.g. AllSub).\n\n-n -N --number \n    Specify the index of a particular structure\
+  \ in the predicted CT to be\n    compared with the accepted CT, one-indexed.\n \
+  \   Default is -1, which signifies all structures output to one file.\n\n-p -P --probability\
+  \ \n    Specify the name of the partition function file from which base pairing\n\
+  \    probability data will be read for annotation. This file should describe\n \
+  \   pairing data for the predicted structure, not the accepted structure.\n    Default\
+  \ is no probability annotation file used.\n\n-s -S --SHAPE \n    Specify the name\
+  \ of the file from which SHAPE data will be read for\n    annotation.\n    Default\
+  \ is no SHAPE annotation file used.\n\n-t -T --text \n    Specify the name of the\
+  \ text file from which base pairing probability data\n    will be read for annotation.\
+  \ This file should describe pairing data for the\n    predicted structure, not the\
+  \ accepted structure.\n    Default is no probability annotation file used.\n\n"
+generated_using:
+- --help

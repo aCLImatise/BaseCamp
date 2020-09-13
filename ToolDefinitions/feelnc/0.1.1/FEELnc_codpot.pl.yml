@@ -1,0 +1,270 @@
+!Command
+command:
+- FEELnc_codpot.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: known_lnc.GTF
+  optional: false
+named:
+- !Flag
+  description: Open man page
+  synonyms:
+  - --man
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Level of verbosity
+  synonyms:
+  - --verbosity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify the .GTF or .FASTA file  (such as a cufflinks transcripts/merged
+    .GTF or .FASTA file)
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: file.gtf/.fasta
+  optional: true
+- !Flag
+  description: Specify the annotation .GTF or .FASTA file  (file of protein coding
+    transcripts .GTF or .FASTA file)
+  synonyms:
+  - -a
+  - --mRNAfile
+  args: !SimpleFlagArg
+    name: file.gtf/.fasta
+  optional: true
+- !Flag
+  description: Genome file or directory with chr files (mandatory if input is .GTF)
+    [ default undef ]
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: genome.fa
+  optional: true
+- !Flag
+  description: Specify a known set of lncRNA for training .GTF or .FASTA  [ default
+    undef ]
+  synonyms:
+  - -l
+  - --lncRNAfile
+  args: !SimpleFlagArg
+    name: file.gtf/.fasta
+  optional: true
+- !Flag
+  description: 'Only consider transcripts having this(these) biotype(s) from the reference
+    annotation (e.g : -b transcript_biotype=protein_coding,pseudogene) [default undef
+    i.e all transcripts]'
+  synonyms:
+  - -b
+  - --biotype
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of mRNA and lncRNA transcripts required for the training. mRNAs\
+    \ and lncRNAs numbers need to be separate by a ',': i.e. 1500,1000 for 1500 mRNAs\
+    \ and 1000 lncRNAs. For all the annotation, let it blank [ default undef, all\
+    \ the two annotations ]"
+  synonyms:
+  - -n
+  - --numtx
+  args: !SimpleFlagArg
+    name: undef
+  optional: true
+- !Flag
+  description: =[0-1]                      Random forest voting cutoff [ default undef
+    i.e will compute best cutoff ]
+  synonyms:
+  - -r
+  - --rfcut
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Two specificity threshold based on the 10-fold cross-validation, first
+    one for mRNA and the second for lncRNA, need to be in ]0,1[ on separated by a
+    ','
+  synonyms:
+  - --spethres
+  args: !SimpleFlagArg
+    name: undef
+  optional: true
+- !Flag
+  description: ",2,3,6,9,12                Kmer size list with size separate by ','\
+    \ as string [ default \"1,2,3,6,9,12\" ], the maximum value for one size is '15'"
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: Output filename [ default infile_name ]
+  synonyms:
+  - -o
+  - --outname
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFILENAME:
+  optional: true
+- !Flag
+  description: ="feelnc_codpot_out/"         Output directory [ default "./feelnc_codpot_out/"
+    ]
+  synonyms:
+  - --outdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The mode of the lncRNA sequences simulation if no lncRNA sequences\
+    \ have been provided. The mode can be:\n'shuffle'   : make a permutation of mRNA\
+    \ sequences while preserving the 7mer count. Can be done on either FASTA and GTF\
+    \ input file;\n'intergenic': extract intergenic sequences. Can be done *only*\
+    \ on GTF input file."
+  synonyms:
+  - -m
+  - --mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ratio between mRNA sequence lengths and non coding intergenic region
+    sequence lengths as, by default, ncInter = mRNA * 0.75
+  synonyms:
+  - -s
+  - --sizeinter
+  args: !SimpleFlagArg
+    name: '0.75'
+  optional: true
+- !Flag
+  description: "Integer [0,1,2,3,4] to specify the type of longest ORF calculate [\
+    \ default: 3 ] for learning data set.\nIf the CDS is annotated in the .GTF, then\
+    \ the CDS is considered as the longest ORF, whatever the --orftype value.\n'0':\
+    \ ORF with start and stop codon;\n'1': same as '0' and ORF with only a start codon,\
+    \ take the longest;\n'2': same as '1' but with a stop codon;\n'3': same as '0'\
+    \ and ORF with a start or a stop, take the longest (see '1' and '2');\n'4': same\
+    \ as '3' but if no ORF is found, take the input sequence as ORF."
+  synonyms:
+  - --learnorftype
+  args: !SimpleFlagArg
+    name: '3'
+  optional: true
+- !Flag
+  description: 'Integer [0,1,2,3,4] to specify the type of longest ORF calculate [
+    default: 3 ] for test data set. See --learnortype description for more informations.'
+  synonyms:
+  - --testorftype
+  args: !SimpleFlagArg
+    name: '3'
+  optional: true
+- !Flag
+  description: Number of trees used in random forest [ default 500 ]
+  synonyms:
+  - --ntree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Percentage of the training file use for the training of the kmer model.
+    What remains will be used to train the random forest
+  synonyms:
+  - --percentage
+  args: !SimpleFlagArg
+    name: '0.1'
+  optional: true
+- !Flag
+  description: To keep the temporary files in a 'tmp' directory the outdir, by default
+    don't keep it (0 value). Any other value than 0 will keep the temporary files
+  synonyms:
+  - --keeptmp
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: Use to fixe the seed value for the extraction of intergenic DNA region
+    to get lncRNA like sequences and for the random forest [ default 1234 ]
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: '1234'
+  optional: true
+- !Flag
+  description: added
+  synonyms:
+  - -to
+  args: !SimpleFlagArg
+    name: be
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage:\n    FEELnc_codpot.pl -i transcripts.GTF -a known_mRNA.GTF -g genome.FA\
+  \ -l\n    known_lnc.GTF [options...]\n\nOptions:\n  General:\n      --help     \
+  \                           Print this help\n      --man                       \
+  \          Open man page\n      --verbosity                           Level of verbosity\n\
+  \n  Mandatory arguments:\n      -i,--infile=file.gtf/.fasta           Specify the\
+  \ .GTF or .FASTA file  (such as a cufflinks transcripts/merged .GTF or .FASTA file)\n\
+  \      -a,--mRNAfile=file.gtf/.fasta         Specify the annotation .GTF or .FASTA\
+  \ file  (file of protein coding transcripts .GTF or .FASTA file)\n\n  Optional arguments:\n\
+  \      -g,--genome=genome.fa                 Genome file or directory with chr files\
+  \ (mandatory if input is .GTF) [ default undef ]\n      -l,--lncRNAfile=file.gtf/.fasta\
+  \       Specify a known set of lncRNA for training .GTF or .FASTA  [ default undef\
+  \ ]\n      -b,--biotype                          Only consider transcripts having\
+  \ this(these) biotype(s) from the reference annotation (e.g : -b transcript_biotype=protein_coding,pseudogene)\
+  \ [default undef i.e all transcripts]\n      -n,--numtx=undef                  \
+  \    Number of mRNA and lncRNA transcripts required for the training. mRNAs and\
+  \ lncRNAs numbers need to be separate by a ',': i.e. 1500,1000 for 1500 mRNAs and\
+  \ 1000 lncRNAs. For all the annotation, let it blank [ default undef, all the two\
+  \ annotations ]\n      -r,--rfcut=[0-1]                      Random forest voting\
+  \ cutoff [ default undef i.e will compute best cutoff ]\n      --spethres=undef\
+  \                      Two specificity threshold based on the 10-fold cross-validation,\
+  \ first one for mRNA and the second for lncRNA, need to be in ]0,1[ on separated\
+  \ by a ','\n      -k,--kmer=1,2,3,6,9,12                Kmer size list with size\
+  \ separate by ',' as string [ default \"1,2,3,6,9,12\" ], the maximum value for\
+  \ one size is '15'\n      -o,--outname={INFILENAME}             Output filename\
+  \ [ default infile_name ]\n      --outdir=\"feelnc_codpot_out/\"         Output\
+  \ directory [ default \"./feelnc_codpot_out/\" ]\n      -m,--mode              \
+  \               The mode of the lncRNA sequences simulation if no lncRNA sequences\
+  \ have been provided. The mode can be:\n                                       \
+  \             'shuffle'   : make a permutation of mRNA sequences while preserving\
+  \ the 7mer count. Can be done on either FASTA and GTF input file;\n            \
+  \                                        'intergenic': extract intergenic sequences.\
+  \ Can be done *only* on GTF input file.\n      -s,--sizeinter=0.75             \
+  \      Ratio between mRNA sequence lengths and non coding intergenic region sequence\
+  \ lengths as, by default, ncInter = mRNA * 0.75\n      --learnorftype=3        \
+  \              Integer [0,1,2,3,4] to specify the type of longest ORF calculate\
+  \ [ default: 3 ] for learning data set.\n                                      \
+  \      If the CDS is annotated in the .GTF, then the CDS is considered as the longest\
+  \ ORF, whatever the --orftype value.\n                                         \
+  \           '0': ORF with start and stop codon;\n                              \
+  \                      '1': same as '0' and ORF with only a start codon, take the\
+  \ longest;\n                                                    '2': same as '1'\
+  \ but with a stop codon;\n                                                    '3':\
+  \ same as '0' and ORF with a start or a stop, take the longest (see '1' and '2');\n\
+  \                                                    '4': same as '3' but if no\
+  \ ORF is found, take the input sequence as ORF.\n      --testorftype=3         \
+  \              Integer [0,1,2,3,4] to specify the type of longest ORF calculate\
+  \ [ default: 3 ] for test data set. See --learnortype description for more informations.\n\
+  \      --ntree                               Number of trees used in random forest\
+  \ [ default 500 ]\n      --percentage=0.1                      Percentage of the\
+  \ training file use for the training of the kmer model. What remains will be used\
+  \ to train the random forest\n\n  Debug arguments:\n      --keeptmp=0          \
+  \                 To keep the temporary files in a 'tmp' directory the outdir, by\
+  \ default don't keep it (0 value). Any other value than 0 will keep the temporary\
+  \ files\n      --verbosity=1                         Integer [0,1,2]: which level\
+  \ of information that need to be print [ default 1 ]. Note that that printing is\
+  \ made on STDERR\n      --seed=1234                           Use to fixe the seed\
+  \ value for the extraction of intergenic DNA region to get lncRNA like sequences\
+  \ and for the random forest [ default 1234 ]\n\n  Intergenic lncrna extraction:\n\
+  \            -to be added\n\n"
+generated_using:
+- --help

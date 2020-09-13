@@ -1,0 +1,131 @@
+!Command
+command:
+- gmtkDMLPtrain
+positional: []
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Argument Error: Unknown switch: --help\nUsage: gmtkDMLPtrain  [[[-flag]\
+  \ [option]] ...]\nOptions:\nRequired: <>; Optional: []; Flagless arguments must\
+  \ be in order.\n\n\n*** Observation input file handling ***\n\n <-ofX str>     \
+  \                        Observation File.  Replace X with the file number {null}\n\
+  \ [-nfX unsigned]                        Number of floats in observation file X\
+  \ {0}\n [-niX unsigned]                        Number of ints in observation file\
+  \ X {0}\n [-fmtX str]                            Format (htk,binary,ascii,flatascii,hdf5,pfile)\
+  \ for observation file X {pfile}\n [-fileBufferSize unsigned]             Size in\
+  \ MB of the file observation frame buffer {16}\n [-constantSpace bool]         \
+  \         Use only fileBufferSize memory to hold the observation data {F}\n [-fileWindowSize\
+  \ unsigned]             Size in MB to load at once if constantSpace is active {4}\n\
+  \ [-fileWindowDelta unsigned]            How close (in frames) from the edge of\
+  \ the current window triggers loading more frames {100}\n [-iswpX bool]        \
+  \                  Endian swap condition for observation file X {T}\n [-prefrX str]\
+  \                          Float range for observation file X (before transforms)\
+  \ {all}\n [-preirX str]                          Int range for observation file\
+  \ X {all}\n [-frX str]                             Float range for observation file\
+  \ X (after transforms) {all}\n [-irX str]                             Int range\
+  \ for observation file X {all}\n [-srX str]                             Segment\
+  \ range for observation file X {all}\n [-leftPadX unsigned]                   Prepend\
+  \ padding frames to file X {0}\n [-rightPadX unsigned]                  Append padding\
+  \ frames to file X {0}\n [-preprX str]                          Pre Per-segment\
+  \ frame Range for obs file X before any transforms are applied {null}\n [-postprX\
+  \ str]                         Post Per-segment frame Range for obs file X after\
+  \ per-stream transforms are applied {null}\n [-gpr str]                        \
+  \     Global Per-segment final frame Range {null}\n [-justification str]       \
+  \            Justification of usable frames (left, center, right) {left}\n [-obsNAN\
+  \ bool]                         True if observation files allow FP NAN values {F}\n\
+  \n*** File range options ***\n\n [-trrng str]                           Range to\
+  \ train over segment file {all}\n [-startSkip integer]                   Frames\
+  \ to skip at beginning (i.e., first frame is buff[startSkip]) {0}\n [-endSkip integer]\
+  \                     Frames to skip at end (i.e., last frame is buff[len-1-endSkip])\
+  \ {0}\n\n*** Help options ***\n\n [-help [unsigned]]                     Print this\
+  \ message. Add an argument from 1 to 5 for increasing help info. {0}\n [-version\
+  \ bool]                        Print GMTK version number and exit. {F}\n\n*** Observation\
+  \ matrix transformation options ***\n\n [-fdiffactX str]                       Action\
+  \ if different number of frames in streams: error (er), repeat last frame (rl),\
+  \ first frame (rf), segmentally expand (se), truncate from start (ts), truncate\
+  \ from end (te) {er}\n [-sdiffactX str]                       Action if different\
+  \ number of segments in streams: error (er), truncate from end (te), repeat last\
+  \ sent (rl), and wrap around (wa). {te}\n [-cppifascii bool]                   \
+  \  Pre-process ASCII files using CPP {F}\n [-transX str]                       \
+  \   per stream transformations string {null}\n [-posttrans str]                \
+  \       Final global transformations string {null}\n [-comb str]               \
+  \             Combine float features (none: no combination, add, sub, mul,div {none}\n\
+  \ [-cppCommandOptions str]               Command line options to give to 'cpp' {null}\n\
+  \n*** Input trainable parameter file handling ***\n\n [-inputMasterFile str]   \
+  \              Input file of multi-level master CPP processed GM input parameters\
+  \ {null}\n [-outputMasterFile str]                Output file to place master CPP\
+  \ processed GM output parameters {null}\n [-inputTrainableParameters str]      \
+  \  File of only and all trainable parameters {null}\n [-binInputTrainableParameters\
+  \ bool]    Binary condition of trainable parameters file {F}\n [-outputTrainableParameters\
+  \ str]       File to place only and all trainable output parametes {null}\n [-binOutputTrainableParameters\
+  \ bool]   Binary condition of output trainable parameters? {F}\n [-allocateDenseCpts\
+  \ integer]           Automatically allocate undefined CPTs. (-1) = don't read params,\
+  \ (0) = don't allocate, (1) = use random initial CPT values, (2) = use uniform values\
+  \ {0}\n [-cptNormThreshold double]             Read error if |Sum-1.0|/card > norm_threshold\
+  \ {1.000000e-02}\n\n*** Continuous random variable options ***\n\n [-varFloor double]\
+  \                     Variance Floor (variances can't fall below this value) {1.000000e-10}\n\
+  \ [-floorVarOnRead bool]                 Floor the variances to varFloor when they\
+  \ are read in {F}\n\n*** General options ***\n\n [-seed bool]                  \
+  \         Seed the random number generator {F}\n [-verbosity str]              \
+  \         Verbosity - coma separated list of m=v, where m is all, default, inference,\
+  \ inference-memory, training, triangulation, boundary, unrolling, printing, modelinfo,\
+  \ obsfile, obsstream; 0 <= v <= 100 {null}\n [-printIntValues bool]            \
+  \     Always print rv values as integer rather than symbols {F}\n\n*** DMLP training\
+  \ options ***\n\n [-nnChunkSize unsigned]                Size in MB to use for incremental\
+  \ DeepNN matrix operations {4}\n [-batchQueueSize unsigned]             Size (in\
+  \ training instances) of the asynchronous batch queue {1000}\n <-deepMLPName str>\
+  \                     Name of deep NN to train {null}\n [-featureOffset unsigned]\
+  \              Offset in observation file where input features start {0}\n <-numFeatures\
+  \ unsigned>                Number of input features (per frame) {0}\n [-radius unsigned]\
+  \                     Number of frames comprising one input instance = 2r+1 {0}\n\
+  \ <-labelOffset unsigned>                Offset in observation file where output\
+  \ labels start {0}\n [-oneHot bool]                         If true, labelOffset\
+  \ is the single discrete correct parent value, else the parent distribution starts\
+  \ ate labelOffset {T}\n [-randomInitLayer bool]                Initialize weights\
+  \ randomly (according to sparse or dense strategy specified by -sparseInitLayer)\
+  \ {T}\n [-sparseInitLayer bool]                Use sparse or dense initilization\
+  \ strategy (dense is better for rectified linear) {F}\n [-trainingSchedule str]\
+  \                Order to process training data (linear, random, permute, shuffle)\
+  \ {linear}\n [-pretrainType str]                    Pretraining type (none, AE,\
+  \ CD) {CD}\n [-pretrainActFunc str]                 Pretraining input activation\
+  \ function (sig, tanh, cubic, linear, rect) {linear}\n [-saveTrainingFile str] \
+  \               Filename to save training state for resuming training later {null}\n\
+  \ [-loadTrainingFile str]                Filename to load training state from to\
+  \ resume training {null}\n [-tempDir str]                         Directory to store\
+  \ temp files if $GMTKTMPDIR environment variable is not set {null}\n\n*** DMLP pretraining\
+  \ hyperparameters ***\n\n [-ptInitStepSize double]               Pretrain: Initial\
+  \ step size hyperparameter {1.000000e-02}\n [-ptMinMomentum double]            \
+  \    Pretrain: Minimum momentum hyperparameter {5.000000e-01}\n [-ptMaxMomentum\
+  \ double]                Pretrain: Maximum momentum hyperparameter {9.900000e-01}\n\
+  \ [-ptMaxUpdate double]                  Pretrain: Maximum update hyperparameter\
+  \ {1.000000e-01}\n [-ptL2 double]                         Pretrain: l2 hyperparameter\
+  \ {0.000000e+00}\n [-ptNumEpochs float]                   Pretrain: Number of epochs\
+  \ hyperparameter {1.000000e+00}\n [-ptNumAnnealEpochs float]             Pretrain:\
+  \ Number of anneal epochs hyperparameter {1.000000e+00}\n [-ptMiniBatchSize unsigned]\
+  \            Pretrain: Mini-batch size hyperparameter {10}\n [-ptCheckInterval unsigned]\
+  \            Pretrain: Check interval hyperparameter {2000}\n\n*** DMLP backprob\
+  \ hyperparameters ***\n\n [-bpInitStepSize double]               Backprop: Initial\
+  \ step size hyperparameter {1.000000e-02}\n [-bpMinMomentum double]            \
+  \    Backprop: Minimum momentum hyperparameter {5.000000e-01}\n [-bpMaxMomentum\
+  \ double]                Backprop: Maximum momentum hyperparameter {9.900000e-01}\n\
+  \ [-bpMaxUpdate double]                  Backprop: Maximum update hyperparameter\
+  \ {1.000000e-01}\n [-bpL2 double]                         Backprop: l2 hyperparameter\
+  \ {0.000000e+00}\n [-bpNumEpochs float]                   Backprop: Total epochs\
+  \ of training hyperparameter {1.000000e+00}\n [-bpEpochFraction float]         \
+  \      Backprop: [0,1] fraction of -bpNumEpochs to do in this invocation {1.000000e+00}\n\
+  \ [-bpNumAnnealEpochs float]             Backprop: Total epochs of anneal training\
+  \ hyperparameter {1.000000e+00}\n [-bpAnnealEpochFraction float]         Backprop:\
+  \ [0,1] fraction of -bpNumAnnealEpochs to do in this invocation {1.000000e+00}\n\
+  \ [-bpMiniBatchSize unsigned]            Backprop: Mini-batch size hyperparameter\
+  \ {10}\n [-bpCheckInterval unsigned]            Backprop: Check interval hyperparameter\
+  \ {2000}\n [-bpIdropP double]                     Backprop: dropout probability\
+  \ for input layer {0.000000e+00}\n [-bpHdropP double]                     Backprop:\
+  \ dropout probability for hidden layers {0.000000e+00}\n\n*** Additional arguments\
+  \ ***\n\n [-argsFile <str>]                      File to obtain additional arguments\
+  \ from {}\n"
+generated_using:
+- --help

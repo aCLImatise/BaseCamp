@@ -1,0 +1,62 @@
+!Command
+command:
+- extract_aln_ends.py
+positional:
+- !Positional
+  description: Path to alignments in SAM or BAM format.
+  position: 0
+  name: infile
+  optional: false
+named:
+- !Flag
+  description: 'Write results to this file. (default: None)'
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: 'Be verbose. (default: False)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print lots of debugging information (default: False)'
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: extract_aln_ends.py [-h] [-o OUTFILE] [-v] [-d] infile\n\nExtract\
+  \ alignment ends from sam file and export to bed format.\n\nThe resulting bed file\
+  \ contains the outer coordinates of the alignments. The bed\nname field is set to\
+  \ the read id and the score field is set to the edit distance\nof the alignment.\
+  \ The crosslinked nucleotide is one nt upstream of the 5'-end of\nthe bed entries.\n\
+  \nThis script only reports results for alignments that are properly aligned in FR\n\
+  (\"forward-reverse\") direction.\n\nBy default output is written to stdout.\n\n\
+  Input:\n* alignments in SAM or BAM format (paired-end sequencing)\n\nOutput:\n*\
+  \ bed6 file containing outer coordinates (sorted by read id)\n\nExample usage:\n\
+  - Extract coordinates from file input.bam and write to file output.bed\nextract_aln_ends.py\
+  \ input.bam --out output.bed\n\npositional arguments:\n  infile                Path\
+  \ to alignments in SAM or BAM format.\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n  -o OUTFILE, --outfile OUTFILE\n     \
+  \                   Write results to this file. (default: None)\n  -v, --verbose\
+  \         Be verbose. (default: False)\n  -d, --debug           Print lots of debugging\
+  \ information (default: False)\n"
+generated_using:
+- --help

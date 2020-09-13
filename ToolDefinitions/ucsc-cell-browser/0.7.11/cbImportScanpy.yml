@@ -1,0 +1,115 @@
+!Command
+command:
+- cbImportScanpy
+positional:
+- !Positional
+  description: --markerField=MARKERFIELD
+  position: 0
+  name: htmlDir
+  optional: false
+- !Positional
+  description: --clusterField=CLUSTERFIELD
+  position: 0
+  name: rank_genes_groups
+  optional: false
+- !Positional
+  description: -m, --skipMatrix      do not convert the matrix, saves time if the
+    same one
+  position: 0
+  name: others
+  optional: false
+named:
+- !Flag
+  description: show debug messages
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input .h5ad file. Required parameter
+  synonyms:
+  - -i
+  - --inFile
+  args: !SimpleFlagArg
+    name: INFILE
+  optional: true
+- !Flag
+  description: "when exporting, do not use the raw input data, instead\nuse the normalized\
+    \ and corrected matrix scanpy. This\nhas no effect if the anndata.raw attribute\
+    \ is not used\nin the anndata object"
+  synonyms:
+  - --proc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output directory. Required parameter
+  synonyms:
+  - -o
+  - --outDir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "Dataset name for generated cellbrowser.conf. If not\nspecified, the\
+    \ last component of -o will be used."
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: DATASETNAME
+  optional: true
+- !Flag
+  description: "do not only convert to tab-sep files but also run\ncbBuild toconvert\
+    \ the data and add the dataset under\nhtmlDir"
+  synonyms:
+  - --htmlDir
+  args: !SimpleFlagArg
+    name: HTMLDIR
+  optional: true
+- !Flag
+  description: 'only with --htmlDir: start webserver on port to serve'
+  synonyms:
+  - -p
+  - --port
+  args: !SimpleFlagArg
+    name: PORT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: cbImportScanpy [options] inFilename outDir datasetName - convert\
+  \ Scanpy AnnData object to cellbrowser. inFilename can be an .h5ad or .loom file.\n\
+  \n    Example:\n    - cbImportScanpy -i pbmc3k.h5ad -o pbmc3kScanpy - convert pbmc3k\
+  \ to directory with tab-separated files\n    \n\nOptions:\n  -h, --help        \
+  \    show this help message and exit\n  -d, --debug           show debug messages\n\
+  \  -i INFILE, --inFile=INFILE\n                        input .h5ad file. Required\
+  \ parameter\n  --proc                when exporting, do not use the raw input data,\
+  \ instead\n                        use the normalized and corrected matrix scanpy.\
+  \ This\n                        has no effect if the anndata.raw attribute is not\
+  \ used\n                        in the anndata object\n  -o OUTDIR, --outDir=OUTDIR\n\
+  \                        Output directory. Required parameter\n  -n DATASETNAME,\
+  \ --name=DATASETNAME\n                        Dataset name for generated cellbrowser.conf.\
+  \ If not\n                        specified, the last component of -o will be used.\n\
+  \  --htmlDir=HTMLDIR     do not only convert to tab-sep files but also run\n   \
+  \                     cbBuild toconvert the data and add the dataset under\n   \
+  \                     htmlDir\n  -p PORT, --port=PORT  only with --htmlDir: start\
+  \ webserver on port to serve\n                        htmlDir\n  --markerField=MARKERFIELD\n\
+  \                        name of the marker genes field, default:\n            \
+  \            rank_genes_groups\n  --clusterField=CLUSTERFIELD\n                \
+  \        if no marker genes are present, use this field to\n                   \
+  \     calculate them. Default is to try a list of common\n                     \
+  \   field names, like 'Cluster' or 'louvain' and a few\n                       \
+  \ others\n  -m, --skipMatrix      do not convert the matrix, saves time if the same\
+  \ one\n                        has been exported before to the same directory\n"
+generated_using:
+- --help

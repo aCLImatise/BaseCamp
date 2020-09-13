@@ -1,0 +1,122 @@
+!Command
+command:
+- hhfilter
+positional:
+- !Positional
+  description: 'Usage: hhfilter -i infile -o outfile [options]'
+  position: 0
+  name: 10.1101/560029
+  optional: false
+named:
+- !Flag
+  description: read input file in A3M/A2M or FASTA format
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: write to output file in A3M format
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: append to output file in A3M format
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: 'verbose mode: 0:no screen output  1:only warings  2: verbose'
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: '[0,100]  maximum pairwise sequence identity (%) (def=90)'
+  synonyms:
+  - -id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[0,inf[  filter MSA by selecting most diverse set of sequences, keeping\n\
+    at least this many seqs in each MSA block of length 50 (def=0)"
+  synonyms:
+  - -diff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0,100]  minimum coverage with query (%) (def=0)'
+  synonyms:
+  - -cov
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0,100]  minimum sequence identity with query (%) (def=0)'
+  synonyms:
+  - -qid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[0,100]  minimum score per column with query  (def=-20.0)'
+  synonyms:
+  - -qsc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[1,inf]  target diversity of alignment (default=off)'
+  synonyms:
+  - -neff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: max number of input rows (def=65535)
+  synonyms:
+  - -maxseq
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: max number of HMM columns (def=20001)
+  synonyms:
+  - -maxres
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "HHfilter 3.1.0\nFilter an alignment by maximum pairwise sequence identity,\
+  \ minimum coverage,\nminimum sequence identity, or score per column to the first\
+  \ (seed) sequence.n(c) The HH-suite development team\nSteinegger M, Meier M, Mirdita\
+  \ M, Vöhringer H, Haunsberger S J, and Söding J (2019)\nHH-suite3 for fast remote\
+  \ homology detection and deep protein annotation.\nbioRxiv, 560029. doi:10.1101/560029\n\
+  \nUsage: hhfilter -i infile -o outfile [options]\n -i <file>      read input file\
+  \ in A3M/A2M or FASTA format                 \n -o <file>      write to output file\
+  \ in A3M format                         \n -a <file>      append to output file\
+  \ in A3M format                        \n\nOptions:                            \
+  \                                      \n -v <int>       verbose mode: 0:no screen\
+  \ output  1:only warings  2: verbose\n -id   [0,100]  maximum pairwise sequence\
+  \ identity (%) (def=90)   \n -diff [0,inf[  filter MSA by selecting most diverse\
+  \ set of sequences, keeping \n                at least this many seqs in each MSA\
+  \ block of length 50 (def=0) \n -cov  [0,100]  minimum coverage with query (%) (def=0)\
+  \ \n -qid  [0,100]  minimum sequence identity with query (%) (def=0) \n -qsc  [0,100]\
+  \  minimum score per column with query  (def=-20.0)\n -neff [1,inf]  target diversity\
+  \ of alignment (default=off)\n\nInput alignment format:                        \
+  \                            \n -M a2m         use A2M/A3M (default): upper case\
+  \ = Match; lower case = Insert;\n                '-' = Delete; '.' = gaps aligned\
+  \ to inserts (may be omitted)   \n -M first       use FASTA: columns with residue\
+  \ in 1st sequence are match states\n -M [0,100]     use FASTA: columns with fewer\
+  \ than X% gaps are match states   \n                                           \
+  \                               \nOther options:\n -maxseq <int>  max number of\
+  \ input rows (def=65535)\n -maxres <int>  max number of HMM columns (def=20001)\n\
+  Example: hhfilter -id 50 -i d1mvfd_.a2m -o d1mvfd_.fil.a2m          \n\n"
+generated_using:
+- --help

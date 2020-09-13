@@ -1,0 +1,247 @@
+!Command
+command:
+- aletsch
+positional: []
+named:
+- !Flag
+  description: profiling individual samples and exit (will write to files if -p provided)
+  synonyms:
+  - --profile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'reduce false positives, default: not to do so'
+  synonyms:
+  - --boost_precision
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'list of chromosomes that will be assembled, default: N/A (i.e., assemble
+    all)'
+  synonyms:
+  - -l/--chrm_list_string
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'file with chromosomes that will be assembled, default: N/A (i.e.,
+    assemble all)'
+  synonyms:
+  - -L/--chrm_list_file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'existing directory for individual transcripts, default: N/A'
+  synonyms:
+  - -d/--output_gtf_dir
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'existing directory for individual bridged alignments, default: N/A'
+  synonyms:
+  - -b/--output_bridged_bam_dir
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'existing directory for saving/loading profiles of each samples, default:
+    N/A'
+  synonyms:
+  - -p/--profile_dir
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'maximized number of threads, default: 10'
+  synonyms:
+  - -t/--max_threads
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'the maximized number of splice graphs that will be combined, default:
+    20'
+  synonyms:
+  - -c/--max_group_size
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'the minimized similarity for two graphs to be combined, default: 0.2'
+  synonyms:
+  - -s/--min_grouping_similarity
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'the minimum score for bridging a paired-end reads, default: 1.5'
+  synonyms:
+  - --min_bridging_score
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'the minimum number of spliced reads required to support a junction,
+    default: 1'
+  synonyms:
+  - --min_splice_bundary_hits
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum coverage required for a multi-exon transcript, default: 1.0'
+  synonyms:
+  - --min_transcript_coverage
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'default: 150'
+  synonyms:
+  - --min_transcript_length_base
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'default: 50, minimum length of a transcript: base + #exons * increase'
+  synonyms:
+  - --min_transcript_length_increase
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum coverage required for a single-exon transcript, default: 20'
+  synonyms:
+  - --min_single_exon_coverage
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'minimum length of single-exon transcript, default: 250'
+  synonyms:
+  - --min_single_exon_transcript_length
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum overlaping ratio to merge two single-exon transcripts, default:
+    0.8'
+  synonyms:
+  - --min_single_exon_clustering_overlap
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'ignore reads with mapping quality less than this value, default: 1'
+  synonyms:
+  - --min_mapping_quality
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'ignore reads with CIGAR size larger than this value, default: 1000'
+  synonyms:
+  - --max_num_cigar
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum distances required to start a new bundle, default: 50'
+  synonyms:
+  - --min_bundle_gap
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum number of reads required in a bundle, default: 20'
+  synonyms:
+  - --min_num_hits_in_bundle
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum match length in each side for a spliced read, default: 3'
+  synonyms:
+  - --min_flank_length
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'minimum log-ratio to identify a new boundary, default: 2.0'
+  synonyms:
+  - --min_boundary_log_ratio
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: output.gtf
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: input-bam-list
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print usage of aletsch and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print current version of aletsch and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Aletsch 1.0.3 (c) 2020 Mingfu Shao, The Pennsylvania State University\n\
+  \nUsage: aletsch -i <input-bam-list> -o <output.gtf> [options]\n\nOptions:\n --help\
+  \                                          print usage of aletsch and exit\n --version\
+  \                                       print current version of aletsch and exit\n\
+  \ --profile                                       profiling individual samples and\
+  \ exit (will write to files if -p provided)\n --boost_precision                \
+  \               reduce false positives, default: not to do so\n -l/--chrm_list_string\
+  \ <string>                  list of chromosomes that will be assembled, default:\
+  \ N/A (i.e., assemble all)\n -L/--chrm_list_file <string>                    file\
+  \ with chromosomes that will be assembled, default: N/A (i.e., assemble all)\n -d/--output_gtf_dir\
+  \ <string>                    existing directory for individual transcripts, default:\
+  \ N/A\n -b/--output_bridged_bam_dir <string>            existing directory for individual\
+  \ bridged alignments, default: N/A\n -p/--profile_dir <string>                 \
+  \      existing directory for saving/loading profiles of each samples, default:\
+  \ N/A\n -t/--max_threads <integer>                      maximized number of threads,\
+  \ default: 10\n -c/--max_group_size <integer>                   the maximized number\
+  \ of splice graphs that will be combined, default: 20\n -s/--min_grouping_similarity\
+  \ <float>            the minimized similarity for two graphs to be combined, default:\
+  \ 0.2\n --min_bridging_score <float>                    the minimum score for bridging\
+  \ a paired-end reads, default: 1.5\n --min_splice_bundary_hits <integer>       \
+  \      the minimum number of spliced reads required to support a junction, default:\
+  \ 1\n --min_transcript_coverage <float>               minimum coverage required\
+  \ for a multi-exon transcript, default: 1.0\n --min_transcript_length_base <integer>\
+  \          default: 150\n --min_transcript_length_increase <integer>      default:\
+  \ 50, minimum length of a transcript: base + #exons * increase\n --min_single_exon_coverage\
+  \ <float>              minimum coverage required for a single-exon transcript, default:\
+  \ 20\n --min_single_exon_transcript_length <integer>   minimum length of single-exon\
+  \ transcript, default: 250\n --min_single_exon_clustering_overlap <float>    minimum\
+  \ overlaping ratio to merge two single-exon transcripts, default: 0.8\n --min_mapping_quality\
+  \ <integer>                 ignore reads with mapping quality less than this value,\
+  \ default: 1\n --max_num_cigar <integer>                       ignore reads with\
+  \ CIGAR size larger than this value, default: 1000\n --min_bundle_gap <integer>\
+  \                      minimum distances required to start a new bundle, default:\
+  \ 50\n --min_num_hits_in_bundle <integer>              minimum number of reads required\
+  \ in a bundle, default: 20\n --min_flank_length <integer>                    minimum\
+  \ match length in each side for a spliced read, default: 3\n --min_boundary_log_ratio\
+  \ <float>                minimum log-ratio to identify a new boundary, default:\
+  \ 2.0\n\n"
+generated_using:
+- --help

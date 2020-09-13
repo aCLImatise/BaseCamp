@@ -1,0 +1,283 @@
+!Command
+command:
+- skewer
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: reads.fastq
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: paired-reads.fastq
+  optional: true
+named:
+- !Flag
+  description: Adapter sequence/file (AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: "Adapter sequence/file for pair-end reads (AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA),\n\
+    implied by -x if -x is the only one specified explicitly."
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: File indicates valid adapter pairing (all-ones matrix).
+  synonyms:
+  - -M
+  - --matrix
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Junction adapter sequence/file for Nextera Mate Pair reads (CTGTCTCTTATACACATCTAGATGTGTATAAGAGACAG)
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: "trimming mode; 1) single-end -- head: 5' end; tail: 3' end; any: anywhere\
+    \ (tail)\n2) paired-end -- pe: paired-end; mp: mate-pair; ap: amplicon (pe)"
+  synonyms:
+  - -m
+  - --mode
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Demultiplex reads according to adapters/primers (no)
+  synonyms:
+  - -b
+  - --barcode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum allowed error rate (normalized #errors / length of aligned
+    region) [0, 0.5], (0.1)'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Maximum allowed indel error rate [0, r], (0.03)\nreciprocal is used\
+    \ for -r, -e and -d when num > or = 2"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Minimum overlap length for adapter detection [1, inf);\n(max(1, int(4-10*r))\
+    \ for single-end; (<junction length>/2) for mate-pair)"
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",<int> Hard clip off the 5' leading bases as the barcodes in amplicon\
+    \ mode; (no)"
+  synonyms:
+  - -c
+  - --cut
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Hard clip off the 3' tailing bases if the read length is greater than\n\
+    the maximum read length specified by -L; (no)"
+  synonyms:
+  - -e
+  - --cut3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <int> Trim 3' end until specified or higher quality reached; (0)
+  synonyms:
+  - -q
+  - --end-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The lowest mean quality value allowed before trimming; (0)
+  synonyms:
+  - -Q
+  - --mean-quality
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: The minimum read length allowed after trimming; (18)
+  synonyms:
+  - -l
+  - --min
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: The maximum read length allowed after trimming; (no limit)
+  synonyms:
+  - -L
+  - --max
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Whether to filter out highly degenerative (many Ns) reads; (no)
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Whether to filter out undetermined mate-pair reads; (no)
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: to replace trimmed bases with Ns (has no effect with 'b' or '-m mp');
+    (no)
+  synonyms:
+  - -N
+  - --fillNs
+  args: !SimpleFlagArg
+    name: Whether
+  optional: true
+- !Flag
+  description: 'Format of FASTQ quality value: sanger|solexa|auto; (auto)'
+  synonyms:
+  - -f
+  - --format
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Base name of output file; ('<reads>.trimmed')
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Compress output in GZIP format (no)
+  synonyms:
+  - -z
+  - --compress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Redirect output to STDOUT, suppressing -b, -o, and -z options (no)
+  synonyms:
+  - '-1'
+  - --stdout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Prepare the "barcodes.fastq" and "mapping_file.txt" for processing
+    with QIIME; (default: no)'
+  synonyms:
+  - --qiime
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No progress update (not quiet)
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write output file(s) for trimmed reads (trimmed bases converted to
+    lower case) (no)
+  synonyms:
+  - -A
+  - --masked-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output file(s) for excluded reads (no)
+  synonyms:
+  - -X
+  - --excluded-output
+  args: !SimpleFlagArg
+    name: Write
+  optional: true
+- !Flag
+  description: For mate-pair mode, whether to redistribute reads based on junction
+    information; (no)
+  synonyms:
+  - -i
+  - --intelligent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of concurrent threads [1, 32]; (1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Skewer (A fast and accurate adapter trimmer for paired-end reads)\nVersion\
+  \ 0.2.2 (updated in April 4, 2016), Author: Hongshan Jiang\n\nUSAGE: skewer [options]\
+  \ <reads.fastq> [paired-reads.fastq]\n    or skewer [options] - (for input from\
+  \ STDIN)\n\nOPTIONS (ranges in brackets, defaults in parentheses):\n Adapter:\n\
+  \          -x <str> Adapter sequence/file (AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)\n\
+  \          -y <str> Adapter sequence/file for pair-end reads (AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA),\n\
+  \                   implied by -x if -x is the only one specified explicitly.\n\
+  \          -M, --matrix <str> File indicates valid adapter pairing (all-ones matrix).\n\
+  \          -j <str> Junction adapter sequence/file for Nextera Mate Pair reads (CTGTCTCTTATACACATCTAGATGTGTATAAGAGACAG)\n\
+  \          -m, --mode <str> trimming mode; 1) single-end -- head: 5' end; tail:\
+  \ 3' end; any: anywhere (tail)\n                           2) paired-end -- pe:\
+  \ paired-end; mp: mate-pair; ap: amplicon (pe)\n          -b, --barcode    Demultiplex\
+  \ reads according to adapters/primers (no)\n Tolerance:\n          -r <num> Maximum\
+  \ allowed error rate (normalized #errors / length of aligned region) [0, 0.5], (0.1)\n\
+  \          -d <num> Maximum allowed indel error rate [0, r], (0.03)\n          \
+  \         reciprocal is used for -r, -e and -d when num > or = 2\n          -k <int>\
+  \ Minimum overlap length for adapter detection [1, inf);\n                   (max(1,\
+  \ int(4-10*r)) for single-end; (<junction length>/2) for mate-pair)\n Clipping:\n\
+  \          -c, --cut <int>,<int> Hard clip off the 5' leading bases as the barcodes\
+  \ in amplicon mode; (no)\n          -e, --cut3            Hard clip off the 3' tailing\
+  \ bases if the read length is greater than\n                                the\
+  \ maximum read length specified by -L; (no)\n Filtering:\n          -q, --end-quality\
+  \  <int> Trim 3' end until specified or higher quality reached; (0)\n          -Q,\
+  \ --mean-quality <int> The lowest mean quality value allowed before trimming; (0)\n\
+  \          -l, --min <int> The minimum read length allowed after trimming; (18)\n\
+  \          -L, --max <int> The maximum read length allowed after trimming; (no limit)\n\
+  \          -n  Whether to filter out highly degenerative (many Ns) reads; (no)\n\
+  \          -u  Whether to filter out undetermined mate-pair reads; (no)\n      \
+  \    -N, --fillNs Whether to replace trimmed bases with Ns (has no effect with 'b'\
+  \ or '-m mp'); (no)\n Input/Output:\n          -f, --format <str>   Format of FASTQ\
+  \ quality value: sanger|solexa|auto; (auto)\n          -o, --output <str>   Base\
+  \ name of output file; ('<reads>.trimmed')\n          -z, --compress       Compress\
+  \ output in GZIP format (no)\n          -1, --stdout         Redirect output to\
+  \ STDOUT, suppressing -b, -o, and -z options (no)\n          --qiime           \
+  \   Prepare the \"barcodes.fastq\" and \"mapping_file.txt\" for processing with\
+  \ QIIME; (default: no)\n          --quiet              No progress update (not quiet)\n\
+  \          -A, --masked-output  Write output file(s) for trimmed reads (trimmed\
+  \ bases converted to lower case) (no)\n          -X, --excluded-output Write output\
+  \ file(s) for excluded reads (no)\n Miscellaneous:\n          -i, --intelligent\
+  \     For mate-pair mode, whether to redistribute reads based on junction information;\
+  \ (no)\n          -t, --threads <int>   Number of concurrent threads [1, 32]; (1)\n\
+  \nEXAMPLES:\n          skewer -Q 9 -t 2 -x adapters.fa sample.fastq -o trimmed\n\
+  \          skewer -x AGATCGGAAGAGC -q 3 sample-pair1.fq.gz sample-pair2.fq.gz\n\
+  \          skewer -x TCGTATGCCGTCTTCTGCTTGT -l 16 -L 30 -d 0 srna.fastq\n      \
+  \    skewer -m mp -i lmp-pair1.fastq lmp-pair2.fastq\n          skewer -m ap --cut\
+  \ 0,6 --qiime -x forward-primers.fa -y reverse-primers.fa mix-pair1.fastq mix-pair2.fastq\n"
+generated_using:
+- --help

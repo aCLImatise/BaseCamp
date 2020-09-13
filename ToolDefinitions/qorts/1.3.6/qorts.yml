@@ -1,0 +1,165 @@
+!Command
+command:
+- qorts
+positional:
+- !Positional
+  description: 'NOTE: if you run into OutOfMemoryExceptions, '
+  position: 0
+  name: formatting.
+  optional: false
+- !Positional
+  description: 'For more info, use:'
+  position: 0
+  name: identifiers.
+  optional: false
+- !Positional
+  description: 'For more info, use:'
+  position: 0
+  name: orphan.
+  optional: false
+- !Positional
+  description: or fitness for any particular purpose.
+  position: 0
+  name: merchantability
+  optional: false
+- !Positional
+  description: 'NOTE: This package includes (internally) the sam-1.113.jar '
+  position: 0
+  name: citation.
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "GENERAL HELP:\nQoRTs: Quality Of Rna-seq Tool Set\nversion: 1.3.6\n\n\
+  DESCRIPTION:\n    This jar-file contains the data processing module of the \n  \
+  \  software package QoRTs, which is intended for use with \n    Paired-End or Single-End\
+  \ High-Throughput RNA-Seq data.\n    This tool can perform a number of different\
+  \ functions to assist \n    in assessing the data quality, detecting errors or biases,\
+  \ \n    performing analyses, data cleaning, data visualization, and data \n    formatting.\n\
+  \    NOTE: if you run into OutOfMemoryExceptions, \n    try adding the java options:\
+  \ \"-Xmx18000M -Xms5000M\"\n\nGENERAL SYNTAX:\n    java [_java_options_] -jar QoRTs.jar\
+  \ _COMMAND_ [_options_]\n\nCOMMANDS:\n    QC:                            Runs a\
+  \ battery of QC tools\n        This utility runs a large battery of QC / data processing\
+  \ \n        tools on a single given sam or bam file. This is the primary \n    \
+  \    function of the QoRTs utility. All analyses are run via a \n        single\
+  \ pass through the sam/bam file.\n        For more info, use:\n        java -jar\
+  \ QoRTs.jar --man QC\n    mergeCounts:                   \n        This utility\
+  \ merges count, wiggle, and similar data from \n        multiple QoRTs QC runs.\
+  \ This is intended for use in merging \n        the data from multiple technical\
+  \ replicates of the same \n        sample/library.This tool will then merge all\
+  \ count data \n        (including gene-level, exon-level, and known/novel \n   \
+  \     splice-junction) counts, as well as wiggle files, assuming \n        all files\
+  \ use the standard naming conventions (for example, \n        the fwd-strand wiggle\
+  \ files must be named: \n        \"QC.wiggle.fwd.wig.gz\", etc).If any files are\
+  \ missing, they \n        will be skipped.\n        For more info, use:\n      \
+  \  java -jar QoRTs.jar --man mergeCounts\n    mergeAllCounts:                \n\
+  \        This tool uses a replicate decoder to merge count/wiggle \n        data\
+  \ of all techical replicates in a dataset, producing \n        sample-wise counts.\
+  \ You must supply a replicate decoder \n        which indicates which replicates\
+  \ are technical replicates of \n        which samples. This tool will then merges\
+  \ each sample's \n        technical replicates using the \"mergeCounts\" function.\n\
+  \        For more info, use:\n        java -jar QoRTs.jar --man mergeAllCounts\n\
+  \    bamToWiggle:                   \n        Generates '.wig' wiggle files, suitable\
+  \ for use with the \n        UCSC genome browser or similar tools. Wiggle files\
+  \ contain \n        depth-of-coverage counts for all equally-sized windows \n  \
+  \      across the entire genome. These depth-of-coverage counts can \n        be\
+  \ either be by read (the default) or by read-pair.\n        For more info, use:\n\
+  \        java -jar QoRTs.jar --man bamToWiggle\n    makeJunctionTrack:         \
+  \    \n        This utility takes the splice junction count files created \n   \
+  \     by the QoRTs QC utility across multiple samples and creates \n        a single\
+  \ merged splice junction 'bed' file that lists each \n        splice junction along\
+  \ with the mean read-pair coverage \n        counts (optionally, the mean normalized\
+  \ counts).This splice \n        junction bed file can be used to visualize splice\
+  \ junction \n        counts using the UCSC genome browser and other similar \n \
+  \       utilities. Note: Either the '--filenames' or the \n        '--sampleList'\
+  \ option must be set! The sampleList option is \n        generally used with the\
+  \ --infilePrefix and --infileSuffix \n        options. Also note: This command only\
+  \ compiles the named \n        splice junctions. For other unnamed splice junctions\
+  \ such as \n        novel splice junctions with low coverage, or novel splice \n\
+  \        junctions that bridge multiple genes, use the \n        makeAltJunctionTrack\
+  \ command instead.\n        For more info, use:\n        java -jar QoRTs.jar --man\
+  \ makeJunctionTrack\n    makeOrphanJunctionTrack:       \n        This utility takes\
+  \ the 'orphan' splice junction count files \n        created by the QoRTs QC utility\
+  \ (optionally across multiple \n        samples) and creates a single merged splice\
+  \ junction 'bed' \n        file that lists each splice junction along with the \n\
+  \        read-pair coverage counts. It can optionally calculate the \n        mean\
+  \ counts, and/or normalize the counts using the supplied \n        normalization\
+  \ size factors.The output splice junction bed \n        file can be used to visualize\
+  \ splice junction counts using \n        the UCSC genome browser, IGV, or other\
+  \ similar \n        utilities.Note: Either the '--filenames' or the \n        '--sampleList'\
+  \ option MUST be set! The sampleList option is \n        generally used with the\
+  \ --infilePrefix and --infileSuffix \n        options to determine the input filenames.\n\
+  \        For more info, use:\n        java -jar QoRTs.jar --man makeOrphanJunctionTrack\n\
+  \    mergeNovelSplices:             \n        This utility takes the QC output from\
+  \ the standard QC \n        utility run on a series of samples and performs two\
+  \ \n        functions: first, it compiles all splice junctions across \n       \
+  \ all samples and filters low-coverage novel splice junctions \n        by mean\
+  \ coverage across all samples (optionally normalized \n        with user-supplied\
+  \ size factors). It then assigns unique \n        identifiers to each novel splice\
+  \ junction that passed this \n        filter, and outputs a special flat gff file\
+  \ listing all \n        exons, annotated splice junctions and passed-filter novel\
+  \ \n        splice junctions with assigned unique identifiers for all \n       \
+  \ features. Next, it uses these unique identifiers to create a \n        new set\
+  \ of JunctionSeq-formatted count files, one for each \n        input sample. This\
+  \ new count file will include counts for \n        the passed-filter novel splice\
+  \ junctions in addition to the \n        usual counts for annotated splice junctions,\
+  \ exons, and \n        aggregated-genes, all listed by the assigned unique \n  \
+  \      identifiers.\n        For more info, use:\n        java -jar QoRTs.jar --man\
+  \ mergeNovelSplices\n    mergeWig:                      \n        This utility merges\
+  \ multiple '.wig' wiggle files into a \n        single summary '.wig' wiggle file.\
+  \ Optionally it can be used \n        to display the mean read-pair coverage of\
+  \ each window across \n        all input wiggle files rather than the sum. Also\
+  \ optionally, \n        the mean/sum can be weighted by a set of user-supplied \n\
+  \        normalization factors.\n        Note: Either the '--filenames' or the '--sampleList'\
+  \ option \n        must be set! The sampleList option is generally used with \n\
+  \        the --infilePrefix and --infileSuffix options.\n        For more info,\
+  \ use:\n        java -jar QoRTs.jar --man mergeWig\n    makeFlatGff:           \
+  \        \n        When running the QC command, QoRT first generates a set of \n\
+  \        non-overlapping exonic fragments out of all the exons in the \n       \
+  \ genome annotation gtf file. It then assigns each exonic \n        fragment a unique\
+  \ identifier. Similarly, it assigns every \n        splice junction its own unique\
+  \ identifier. This command can \n        be used to write that data to file.\n \
+  \       It can also be used to produce a flattened gff file that \n        adheres\
+  \ to the specifications used by DEXSeq.\n        For more info, use:\n        java\
+  \ -jar QoRTs.jar --man makeFlatGff\n    generateSamplePlots:           \n      \
+  \  This simple function invokes R and generates a simple, \n        single-replicate\
+  \ plots (or a similar pdf report) given a \n        single replicate's QoRTs QC\
+  \ output.\n        For more info, use:\n        java -jar QoRTs.jar --man generateSamplePlots\n\
+  \    longReadClassifier:            \n        This function Classifies long reads\
+  \ (such as those from \n        pacbio or oxford nanopore sequencers) It determines\
+  \ which \n        reads are matches to the known isoforms supplied in the gene \n\
+  \        annotation.Note that many of the options listed below are \n        currently\
+  \ nonfunctional. They are placeholders for future \n        improvements and/or\
+  \ holdovers from the QC function, upon \n        which this function is built.WARNING!\
+  \ THIS FUNCTION IS BETA!\n        For more info, use:\n        java -jar QoRTs.jar\
+  \ --man longReadClassifier\n    makeSimpleJunctionTrack:       \n        This utility\
+  \ converts QoRTs splice junction count files into \n        bed format. Unlike makeJunctionTrack\
+  \ and \n        makeOrphanJunctionTrack, this utility is not designed to \n    \
+  \    compile multiple samples or replicates together. It is a \n        simple converter\
+  \ from a QoRTs junction count file to a bed \n        file. The count files come\
+  \ in 3 types: known, novel, and \n        orphan.\n        For more info, use:\n\
+  \        java -jar QoRTs.jar --man makeSimpleJunctionTrack\nAUTHORS:\n    Stephen\
+  \ W. Hartley, Ph.D. stephen.hartley (at nih dot gov)\nLEGAL:\n    This software\
+  \ is \"United States Government Work\" under the terms \n    of the United States\
+  \ Copyright Act. It was written as part of \n    the authors' official duties for\
+  \ the United States Government \n    and thus cannot be copyrighted. This software\
+  \ is freely \n    available to the public for use without a copyright notice. \n\
+  \    Restrictions cannot be placed on its present or future use.\n    Although all\
+  \ reasonable efforts have been taken to ensure the \n    accuracy and reliability\
+  \ of the software and data, the National \n    Human Genome Research Institute (NHGRI)\
+  \ and the U.S. Government \n    does not and cannot warrant the performance or results\
+  \ that may \n    be obtained by using this software or data. NHGRI and the U.S.\
+  \ \n    Government disclaims all warranties as to performance, \n    merchantability\
+  \  or fitness for any particular purpose.\n    In any work or product derived from\
+  \ this material, proper \n    attribution of the authors as the source of the software\
+  \ or data \n    should be made, using \"NHGRI Genome Technology Branch\" as the\
+  \ \n    citation.\n    NOTE: This package includes (internally) the sam-1.113.jar\
+  \ \n    library from picard tools. That package uses the MIT license, \n    which\
+  \ can be accessed using the command:\n     java -jar thisjarfile.jar help samjdkinfo\n\
+  \n"
+generated_using:
+- --help

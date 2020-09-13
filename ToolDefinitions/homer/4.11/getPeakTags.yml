@@ -1,0 +1,201 @@
+!Command
+command:
+- getPeakTags
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: peak file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: tag directory
+  optional: false
+named:
+- !Flag
+  description: '<#> (position to start counting tags relative to peak center, default:
+    -1000)'
+  synonyms:
+  - -start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (position to stop counting tags relative to peak center, default:
+    1000)'
+  synonyms:
+  - -end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (relative position of start to peak center, default: midpoint)'
+  synonyms:
+  - -offset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Count tags relative to actual peak start and stop - parameters -start
+    and
+  synonyms:
+  - -fixed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (DEFAULT, Will output total/ratio tag counts to stdout)
+  synonyms:
+  - -count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <both|+|-> (Strand [relative to peak] to count tags from, default:both)
+  synonyms:
+  - -strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<#> (bp to shift tag positions to estimate fragment centers, default:\
+    \ 0)\n'-tagAdjust auto' uses half of the estimated tag fragment length"
+  synonyms:
+  - -tagAdjust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Maximum tags per bp to count, 0 = no limit, default: 0)'
+  synonyms:
+  - -tbp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (report tags per bp)
+  synonyms:
+  - -ratio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Return nucleosome free region score over the peak center)
+  synonyms:
+  - -nfr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (nucleosome free region size, default 100)
+  synonyms:
+  - -nfrSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(output locations of tags relative to peak reference position to stdout)\n\
+    Columns: 1:peakname,2:tags separated by \",\""
+  synonyms:
+  - -peaktags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(output genomic locations of tags i.e. tags.tsv file to stdout)\n\
+    Columns: 1:none,2:chr,3:position,4:strand,5:value,6:length/-1"
+  synonyms:
+  - -tags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (output autocorrelation between read in locus, #=max distance)'
+  synonyms:
+  - -tagAutocorrelation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Center peaks on summit of peak)
+  synonyms:
+  - -center
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (sequencing fragment length estimate, default: auto)'
+  synonyms:
+  - -fragLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: getPeakTags <peak file> -bedGraph <bedGraph file> [options]
+  synonyms:
+  - -or-
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[name 2] ... (only report genotypes for these column headers)'
+  synonyms:
+  - -individuals
+  args: !SimpleFlagArg
+    name: name 1
+  optional: true
+- !Flag
+  description: "(By default, only SNPs with non-reference alleles in at least on individual\
+    \ are\nreported, \"-all\" will report all SNPs regardless of genotype)"
+  synonyms:
+  - -all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (will individual SNPs and genotypes associated with each peak)
+  synonyms:
+  - -peaksnps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -vcf
+  args: !SimpleFlagArg
+    name: vcf file
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -wig
+  args: !SimpleFlagArg
+    name: wiggle file
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tUsage: getPeakTags <peak file> <tag directory> [options]\n\n\tExtracts\
+  \ tags near each peak from the tag directory and either counts them,\n\tor outputs\
+  \ the individual tag information for each peak\n\n\tGeneral Options:\n\t\t-start\
+  \ <#> (position to start counting tags relative to peak center, default: -1000)\n\
+  \t\t-end <#> (position to stop counting tags relative to peak center, default: 1000)\n\
+  \t\t-offset <#> (relative position of start to peak center, default: midpoint)\n\
+  \t\t-fixed (Count tags relative to actual peak start and stop - parameters -start\
+  \ and\n\t\t\t\t-end will extend from start and end of peaks, not reference position)\n\
+  \n\tOutput Options:\n\t\t-count (DEFAULT, Will output total/ratio tag counts to\
+  \ stdout)\n\t\t\t-strand <both|+|-> (Strand [relative to peak] to count tags from,\
+  \ default:both)\n\t\t\t-tagAdjust <#> (bp to shift tag positions to estimate fragment\
+  \ centers, default: 0)\n\t\t\t\t'-tagAdjust auto' uses half of the estimated tag\
+  \ fragment length\n\t\t\t-tbp <#> (Maximum tags per bp to count, 0 = no limit, default:\
+  \ 0)\n\t\t\t-ratio (report tags per bp)\n\t\t\t-nfr (Return nucleosome free region\
+  \ score over the peak center)\n\t\t\t-nfrSize <#> (nucleosome free region size,\
+  \ default 100)\n\t\t-peaktags (output locations of tags relative to peak reference\
+  \ position to stdout)\n\t\t\t\tColumns: 1:peakname,2:tags separated by \",\"\n\t\
+  \t-tags (output genomic locations of tags i.e. tags.tsv file to stdout)\n\t\t\t\t\
+  Columns: 1:none,2:chr,3:position,4:strand,5:value,6:length/-1\n\t\t-tagAutocorrelation\
+  \ <#> (output autocorrelation between read in locus, #=max distance)\n\n\tPeak Centering:\
+  \ find position with specific tag features, output is a peak file\n\t\t-center (Center\
+  \ peaks on summit of peak)\n\t\t\t-nfr (Center on nucleosome free region instead\
+  \ of maximum tag pile-up)\n\t\t\t-nfrSize <#> (nucleosome free region size, default\
+  \ 100)\n\t\t\t-fragLength <#> (sequencing fragment length estimate, default: auto)\n\
+  \n\tWiggle/bedGraph mode: To get tag density from these instead of tag directories\n\
+  \n\t\tusage: getPeakTags <peak file> -wig <wiggle file> [options]\n\t\t -or-  getPeakTags\
+  \ <peak file> -bedGraph <bedGraph file> [options]\n\n\tVCF mode: For extracing SNP\
+  \ information from specific regions of the genome\n\n\t\tUsage: getPeakTags <peak\
+  \ file> -vcf <vcf file> [options]\n\n\t\tWhere the 2nd argument MUST be \"-vcf\"\
+  \ and 3rd argument MUST be a vcf file\n\n\t\tVCF options:\n\t\t\t-start <#> | -end\
+  \ <#> | -offset <#> | -fixed (same as above)\n\t\t\t-individuals <name 1> [name\
+  \ 2] ... (only report genotypes for these column headers)\n\t\t\t-all (By default,\
+  \ only SNPs with non-reference alleles in at least on individual are\n\t\t\t\treported,\
+  \ \"-all\" will report all SNPs regardless of genotype)\n\t\t\tOutput options:\n\
+  \t\t\t\t-count (DEFAULT, Will output total edit distance from reference)\n\t\t\t\
+  \t-peaksnps (will individual SNPs and genotypes associated with each peak)\n\n"
+generated_using:
+- --help

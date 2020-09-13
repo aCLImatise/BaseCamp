@@ -1,0 +1,204 @@
+!Command
+command:
+- scanpy-run-tsne
+positional:
+- !Positional
+  description: '[default: 1000]'
+  position: 0
+  name: format.
+  optional: false
+- !Positional
+  description: --perplexity FLOAT              The perplexity is related to the number
+    of
+  position: 1
+  name: table.
+  optional: false
+named:
+- !Flag
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Chunk size for writing output in zarr
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use this many PCs. Use `.X` if --n-pcs is 0\nwhen --use-rep is None."
+  synonyms:
+  - -n
+  - --n-pcs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Use the indicated representation. If None,\nthe representation is\
+    \ chosen automatically:\nfor `.n_vars` < 50, `.X` is used, otherwise\n`X_pca`\
+    \ is used. If `X_pca` is not present,\nit's computed with default parameters."
+  synonyms:
+  - -u
+  - --use-rep
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Seed for random number generator.  [default:\n0]"
+  synonyms:
+  - -S
+  - --random-state
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Key under which to add the computed results
+  synonyms:
+  - --key-added
+  args: !OptionalFlagArg
+    names:
+    - TEXT
+    - TEXT...
+    separator: ','
+  optional: true
+- !Flag
+  description: Number of jobs for parallel computation.
+  synonyms:
+  - -J
+  - --n-jobs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Export embeddings in a tab-separated text
+  synonyms:
+  - -E
+  - --export-embedding
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Controls how tight natural clusters in the\noriginal space are in\
+    \ the embedded space and\nhow much space will be between them. For\nlarger values,\
+    \ the space between natural\nclusters will be larger in the embedded\nspace. Again,\
+    \ the choice of this parameter\nis not very critical. If the cost function\nincreases\
+    \ during initial optimization, the\nearly exaggeration factor or the learning\n\
+    rate might be too high.  [default: 12]"
+  synonyms:
+  - --early-exaggeration
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Note that the R-package \"Rtsne\" uses a\ndefault of 200. The learning\
+    \ rate can be a\ncritical parameter. It should be between 100\nand 1000. If the\
+    \ cost function increases\nduring initial optimization, the early\nexaggeration\
+    \ factor or the learning rate\nmight be too high. If the cost function gets\n\
+    stuck in a bad local minimum increasing the\nlearning rate helps sometimes.  [default:\n\
+    1000]"
+  synonyms:
+  - --learning-rate
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "When NOT set, use the MulticoreTSNE package\nby D. Ulyanov if installed.\
+    \  [default: True]"
+  synonyms:
+  - --no-fast-tsne
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-run-tsne [OPTIONS] <input_obj> <output_obj>\n\n  Embed the\
+  \ cells using t-SNE.\n\n  <input_obj>:   input file in format specfied by --input-format\n\
+  \  <output_obj>:  output file in format specfied by --output-format\n\nOptions:\n\
+  \  -f, --input-format [anndata|loom]\n                                  Input object\
+  \ format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n     \
+  \                             Output object format.  [default: anndata]\n  -z, --zarr-chunk-size\
+  \ INTEGER   Chunk size for writing output in zarr\n                            \
+  \      format.  [default: 1000]\n  -X, --export-mtx PATH           When specified,\
+  \ using it as prefix for\n                                  exporting mtx files.\
+  \ If not empty and not\n                                  ending with \"/\" or \"\
+  _\", a \"_\" will be\n                                  appended.\n  --show-obj\
+  \ [stdout|stderr]      Print output object summary info to\n                   \
+  \               specified stream.\n  -n, --n-pcs INTEGER             Use this many\
+  \ PCs. Use `.X` if --n-pcs is 0\n                                  when --use-rep\
+  \ is None.\n  -u, --use-rep TEXT              Use the indicated representation.\
+  \ If None,\n                                  the representation is chosen automatically:\n\
+  \                                  for `.n_vars` < 50, `.X` is used, otherwise\n\
+  \                                  `X_pca` is used. If `X_pca` is not present,\n\
+  \                                  it's computed with default parameters.\n  -S,\
+  \ --random-state INTEGER      Seed for random number generator.  [default:\n   \
+  \                               0]\n  --key-added TEXT[,TEXT...]      Key under\
+  \ which to add the computed results\n  -J, --n-jobs INTEGER            Number of\
+  \ jobs for parallel computation.\n  -E, --export-embedding FILE     Export embeddings\
+  \ in a tab-separated text\n                                  table.\n  --perplexity\
+  \ FLOAT              The perplexity is related to the number of\n              \
+  \                    nearest neighbors that is used in other\n                 \
+  \                 manifold learning algorithms. Larger\n                       \
+  \           datasets usually require a larger\n                                \
+  \  perplexity. Consider selecting a value\n                                  between\
+  \ 5 and 50. The choice is not\n                                  extremely critical\
+  \ since t-SNE is quite\n                                  insensitive to this parameter.\
+  \  [default:\n                                  30]\n  --early-exaggeration FLOAT\
+  \      Controls how tight natural clusters in the\n                            \
+  \      original space are in the embedded space and\n                          \
+  \        how much space will be between them. For\n                            \
+  \      larger values, the space between natural\n                              \
+  \    clusters will be larger in the embedded\n                                 \
+  \ space. Again, the choice of this parameter\n                                 \
+  \ is not very critical. If the cost function\n                                 \
+  \ increases during initial optimization, the\n                                 \
+  \ early exaggeration factor or the learning\n                                  rate\
+  \ might be too high.  [default: 12]\n  --learning-rate FLOAT           Note that\
+  \ the R-package \"Rtsne\" uses a\n                                  default of 200.\
+  \ The learning rate can be a\n                                  critical parameter.\
+  \ It should be between 100\n                                  and 1000. If the cost\
+  \ function increases\n                                  during initial optimization,\
+  \ the early\n                                  exaggeration factor or the learning\
+  \ rate\n                                  might be too high. If the cost function\
+  \ gets\n                                  stuck in a bad local minimum increasing\
+  \ the\n                                  learning rate helps sometimes.  [default:\n\
+  \                                  1000]\n  --no-fast-tsne                  When\
+  \ NOT set, use the MulticoreTSNE package\n                                  by D.\
+  \ Ulyanov if installed.  [default: True]\n  --help                          Show\
+  \ this message and exit.\n"
+generated_using:
+- --help

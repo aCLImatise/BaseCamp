@@ -1,0 +1,160 @@
+!Command
+command:
+- bfconvert
+positional:
+- !Positional
+  description: converted_Z0_T1.tiff
+  position: 0
+  name: converted_Z0_T0.tiff
+  optional: false
+- !Positional
+  description: converted_Z1_T0.tiff
+  position: 1
+  name: converted_Z0_T2.tiff
+  optional: false
+- !Positional
+  description: Each file would have a single image plane.
+  position: 0
+  name: converted_Z4_T2.tiff
+  optional: false
+named:
+- !Flag
+  description: ': print the library version and exit'
+  synonyms:
+  - -version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': do not perform the upgrade check'
+  synonyms:
+  - -no-upgrade
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': turn on debugging output'
+  synonyms:
+  - -debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': stitch input files with similar names'
+  synonyms:
+  - -stitch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': split RGB images into separate channels'
+  synonyms:
+  - -separate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': combine separate channels into RGB image'
+  synonyms:
+  - -merge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': expand indexed color to RGB'
+  synonyms:
+  - -expand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': force BigTIFF files to be written'
+  synonyms:
+  - -bigtiff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": specify the codec to use when saving images\n-series: specify which\
+    \ image series to convert\n-map: specify file on disk to which name should be\
+    \ mapped\n-range: specify range of planes to convert (inclusive)"
+  synonyms:
+  - -compression
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": force multi-file datasets to be read as individual             \
+    \ files\n-nolookup: disable the conversion of lookup tables"
+  synonyms:
+  - -nogroup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": automatically adjust brightness and contrast before\nconverting;\
+    \ this may mean that the original pixel\nvalues are not preserved"
+  synonyms:
+  - -autoscale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': always overwrite the output file, if it already exists'
+  synonyms:
+  - -overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": never overwrite the output file, if it already exists\n-crop: crop\
+    \ images before converting; argument is 'x,y,w,h'"
+  synonyms:
+  - -nooverwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": only convert the specified channel (indexed from 0)\n-z: only convert\
+    \ the specified Z section (indexed from 0)"
+  synonyms:
+  - -channel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": only convert the specified timepoint (indexed from 0)\n-padded:\
+    \ filename indexes for series, z, c and t will be zero padded\n-option: add the\
+    \ specified key/value pair to the options list"
+  synonyms:
+  - -timepoint
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "To convert a file between formats, run:\n  bfconvert [-debug] [-stitch]\
+  \ [-separate] [-merge] [-expand]\n    [-bigtiff] [-compression codec] [-series series]\
+  \ [-map id]\n    [-range start end] [-crop x,y,w,h] [-channel channel] [-z Z]\n\
+  \    [-timepoint timepoint] [-nogroup] [-nolookup] [-autoscale]\n    [-version]\
+  \ [-no-upgrade] [-padded] [-option key value]\n    in_file out_file\n\n    -version:\
+  \ print the library version and exit\n -no-upgrade: do not perform the upgrade check\n\
+  \      -debug: turn on debugging output\n     -stitch: stitch input files with similar\
+  \ names\n   -separate: split RGB images into separate channels\n      -merge: combine\
+  \ separate channels into RGB image\n     -expand: expand indexed color to RGB\n\
+  \    -bigtiff: force BigTIFF files to be written\n-compression: specify the codec\
+  \ to use when saving images\n     -series: specify which image series to convert\n\
+  \        -map: specify file on disk to which name should be mapped\n      -range:\
+  \ specify range of planes to convert (inclusive)\n    -nogroup: force multi-file\
+  \ datasets to be read as individual              files\n   -nolookup: disable the\
+  \ conversion of lookup tables\n  -autoscale: automatically adjust brightness and\
+  \ contrast before\n              converting; this may mean that the original pixel\n\
+  \              values are not preserved\n  -overwrite: always overwrite the output\
+  \ file, if it already exists\n-nooverwrite: never overwrite the output file, if\
+  \ it already exists\n       -crop: crop images before converting; argument is 'x,y,w,h'\n\
+  \    -channel: only convert the specified channel (indexed from 0)\n          -z:\
+  \ only convert the specified Z section (indexed from 0)\n  -timepoint: only convert\
+  \ the specified timepoint (indexed from 0)\n     -padded: filename indexes for series,\
+  \ z, c and t will be zero padded\n     -option: add the specified key/value pair\
+  \ to the options list\n\nIf any of the following patterns are present in out_file,\
+  \ they will\nbe replaced with the indicated metadata value from the input file.\n\
+  \n   Pattern:\tMetadata value:\n   ---------------------------\n   %s\t\tseries\
+  \ index\n   %n\t\tseries name\n   %c\t\tchannel index\n   %w\t\tchannel name\n \
+  \  %z\t\tZ index\n   %t\t\tT index\n   %A\t\tacquisition timestamp\n\nIf any of\
+  \ these patterns are present, then the images to be saved\nwill be split into multiple\
+  \ files.  For example, if the input file\ncontains 5 Z sections and 3 timepoints,\
+  \ and out_file is\n\n  converted_Z%z_T%t.tiff\n\nthen 15 files will be created,\
+  \ with the names\n\n  converted_Z0_T0.tiff\n  converted_Z0_T1.tiff\n  converted_Z0_T2.tiff\n\
+  \  converted_Z1_T0.tiff\n  ...\n  converted_Z4_T2.tiff\n\nEach file would have a\
+  \ single image plane.\n"
+generated_using:
+- --help

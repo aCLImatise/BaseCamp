@@ -1,0 +1,304 @@
+&id001 !Command
+command:
+- bxtools
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - bxtools
+  - split
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: BAM/SAM/CRAM
+    optional: false
+  named:
+  - !Flag
+    description: 'Select verbosity level (0-4). Default: 0'
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ID to prefix output files with [foo]
+    synonyms:
+    - -a
+    - --analysis-id
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Don't output BAMs (count only) [off]
+    synonyms:
+    - -x
+    - --no-output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Minumum reads of given tag to see before writing [0]
+    synonyms:
+    - -m
+    - --min-reads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Split by a tag other than BX (e.g. MI)
+    synonyms:
+    - -t
+    - --tag
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Display this help and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: bxtools split <BAM/SAM/CRAM> -a <id> > bxcounts.tsv\nDescription:\
+    \ Split / count a BAM into multiple BAMs, one BAM per unique BX tag\n\n  General\
+    \ options\n  -v, --verbose                        Select verbosity level (0-4).\
+    \ Default: 0 \n  -h, --help                           Display this help and exit\n\
+    \  -a, --analysis-id                    ID to prefix output files with [foo]\n\
+    \  -x, --no-output                      Don't output BAMs (count only) [off]\n\
+    \  -m, --min-reads                      Minumum reads of given tag to see before\
+    \ writing [0]\n  -t, --tag                            Split by a tag other than\
+    \ BX (e.g. MI)\n\n"
+  generated_using: &id003 []
+- !Command
+  command:
+  - bxtools
+  - mol
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: BAM/SAM/CRAM
+    optional: false
+  named:
+  - !Flag
+    description: Set verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: bxtools mol <BAM/SAM/CRAM> > mol.bed\nDescription: Return span\
+    \ of molecules from 10X data (using MI tag)\n\n  General options\n  -v, --verbose\
+    \         Set verbose output\n\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - bxtools
+  - stats
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: bxtools
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: stat
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: BAM/SAM/CRAM
+    optional: false
+  named:
+  - !Flag
+    description: Set verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Collect stats by a tag other than BX (e.g. MI)
+    synonyms:
+    - -t
+    - --tag
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: bxtools stat <BAM/SAM/CRAM> > stats.tsv\nDescription: Gather\
+    \ BX-level statistics\n\n  General options\n  -v, --verbose                  \
+    \      Set verbose output\n  -t, --tag                            Collect stats\
+    \ by a tag other than BX (e.g. MI)\n\n"
+  generated_using: *id002
+- !Command
+  command:
+  - bxtools
+  - relabel
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input.bam
+    optional: false
+  named:
+  - !Flag
+    description: 'Select verbosity level (0-4). Default: 0'
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Display this help and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: bxtools relabel input.bam > relabeled.bam \nDescription: Move\
+    \ BX barcodes from BX tag to qname\n\n  General options\n  -v, --verbose     \
+    \                   Select verbosity level (0-4). Default: 0 \n  -h, --help  \
+    \                         Display this help and exit\n\n"
+  generated_using: *id003
+- !Command
+  command:
+  - bxtools
+  - convert
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: BAM/SAM/CRAM
+    optional: false
+  named:
+  - !Flag
+    description: Set verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Add chromosome tag (CR) and keep other tags. Default: delete all
+      tags'
+    synonyms:
+    - -k
+    - --keep-tags
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Tag to flip for chromosome. Default: BX'
+    synonyms:
+    - -t
+    - --tag
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: bxtools convert <BAM/SAM/CRAM> > converted.bam\nDescription:\
+    \ Convert a BAM to a BX sorted BAM by switching BX and chromosome\n\n  General\
+    \ options\n  -v, --verbose         Set verbose output\n  -k, --keep-tags     \
+    \  Add chromosome tag (CR) and keep other tags. Default: delete all tags\n  -t,\
+    \ --tag             Tag to flip for chromosome. Default: BX\n\n"
+  generated_using: *id002
+- !Command
+  command:
+  - bxtools
+  - tile
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: BAM/SAM/CRAM
+    optional: false
+  named:
+  - !Flag
+    description: Set verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Width of the tile [1000]
+    synonyms:
+    - -w
+    - --width
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Overlap of the tiles [0]
+    synonyms:
+    - -O
+    - --overlap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Rather than tile genome, input BED with regions
+    synonyms:
+    - -b
+    - --bed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Tag other than BX to evaluate (e.g. MI)
+    synonyms:
+    - -t
+    - --tag
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage: bxtools tile <BAM/SAM/CRAM> > tiles.bed\nDescription: Gather\
+    \ BX counts on tiled ranges\n\n  General options\n  -v, --verbose         Set\
+    \ verbose output\n  -w, --width           Width of the tile [1000]\n  -O, --overlap\
+    \         Overlap of the tiles [0]\n  -b, --bed             Rather than tile genome,\
+    \ input BED with regions\n  -t, --tag             Tag other than BX to evaluate\
+    \ (e.g. MI)\n\n"
+  generated_using: *id002
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Program: bxtools \nContact: Jeremiah Wala [ jwala@broadinstitute.org ]\n\
+  Usage: snowman <command> [options]\n\nCommands:\n           split          Split\
+  \ a BAM into multiple BAMs, one per BX tag\n           stats          Collect BX-level\
+  \ statistics across a BAM\n           tile           Collect BX-level coverage in\
+  \ tiles or regions along genome\n           group          Group together BX tags\
+  \ into molecules\n           relabel        Move BX barcodes from BX tags (e.g.\
+  \ BX:TAATACG) to qname_TAATACG\n           mol            Output BED with footprint\
+  \ of each molecule (from MI tag)\n           convert        Flip the BX tag and\
+  \ chromosome, so as to allow for a BX-sorted and indexable BAM\n\nReport bugs to\
+  \ jwala@broadinstitute.org \n\n"
+generated_using: *id002

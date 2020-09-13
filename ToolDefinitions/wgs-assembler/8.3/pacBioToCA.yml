@@ -1,0 +1,123 @@
+!Command
+command:
+- pacBioToCA
+positional: []
+named:
+- !Flag
+  description: Minimum length of PacBio sequences to correct/output.
+  synonyms:
+  - -length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Number of partitions for consensus
+  synonyms:
+  - -partitions
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Name of the library; freeformat text. Must be unique from any library
+    names in the FRG files used for correction
+  synonyms:
+  - -libraryname
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Number of threads to use for correction. Defaults to available cores
+    on the local system
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Use if the sequences for correction are 100bp or shorter.
+  synonyms:
+  - -shortReads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <int>          Specify the approximate genome size. This will be used
+    to compute the maximum number of bases to correct
+  synonyms:
+  - -genomeSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum coverage of PacBio sequences to correct. Only the longest sequences
+    adding up to this coverage will be corrected. Requires genomeSize to be specified.
+    Defaults to 40X
+  synonyms:
+  - -maxCoverage
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'The maximum uncorrected PacBio gap that will be allowed. When there
+    is no short-read coverage for a region, by default the pipeline will split a PacBio
+    sequence. This option will attempt to use other PacBio sequences to patch the
+    gap and avoid splitting the read. Sequences where the gaps have no support will
+    still be broken. For example, specifying 50, will mean any gap 50bp or smaller
+    can have no short-read coverage (but has other PacBio sequence support) without
+    splitting the PacBio sequence. Warning: this can allow more sequences that went
+    through the SMRTbell to not be fixed.'
+  synonyms:
+  - -maxGap
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Specify the pacBio coverage (integer) used to separate repeat copies
+    instead of automatically estimating.
+  synonyms:
+  - -coverageCutoff
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "0Warning: no frag files specified, assuming self-correction of pacbio\
+  \ sequences.\nusage: /usr/local/bin/pacBioToCA [options] -libraryname <name> -s\
+  \ <specfile> -fastq <fastqfile> [optional frg files]\n  -length <int>          \
+  \      Minimum length of PacBio sequences to correct/output.\n  -partitions <int>\
+  \            Number of partitions for consensus\n  -libraryname <string>       \
+  \ Name of the library; freeformat text. Must be unique from any library names in\
+  \ the FRG files used for correction\n  -threads <int>               Number of threads\
+  \ to use for correction. Defaults to available cores on the local system\n  -shortReads\
+  \                  Use if the sequences for correction are 100bp or shorter.\n \
+  \ -genomeSize\t<int>          Specify the approximate genome size. This will be\
+  \ used to compute the maximum number of bases to correct\n  -maxCoverage <int> \
+  \          Maximum coverage of PacBio sequences to correct. Only the longest sequences\
+  \ adding up to this coverage will be corrected. Requires genomeSize to be specified.\
+  \ Defaults to 40X\n \"localStaging=<string>\"    Specify a local path (such as /scratch)\
+  \ to use for caching overlap computation. Will speed up grid-based computation by\
+  \ avoiding disk contention. Only use when running on a grid system (SGE, PBS or\
+  \ LSF), not a single machine\n\nAdvanced options (EXPERT):\n  -maxGap <int>    \
+  \            The maximum uncorrected PacBio gap that will be allowed. When there\
+  \ is no short-read coverage for a region, by default the pipeline will split a PacBio\
+  \ sequence. This option will attempt to use other PacBio sequences to patch the\
+  \ gap and avoid splitting the read. Sequences where the gaps have no support will\
+  \ still be broken. For example, specifying 50, will mean any gap 50bp or smaller\
+  \ can have no short-read coverage (but has other PacBio sequence support) without\
+  \ splitting the PacBio sequence. Warning: this can allow more sequences that went\
+  \ through the SMRTbell to not be fixed.\n  -coverageCutoff                Specify\
+  \ the pacBio coverage (integer) used to separate repeat copies instead of automatically\
+  \ estimating.\n  \"blasr=<string>\"               Use blasr for overlap computation\
+  \ instead of CA's built-in overlapper. This parameter specifies the blasr parameters\
+  \ to use.\n  \"bowtie=<string>\"              Use bowtie2 for overlap computation\
+  \ instead of CA's built-in overlapper. This parameter specifies the bowtie 2 parameters\
+  \ to use.\n  samFOFN=<file>                 Skip overlap computation. Use the provided\
+  \ file of file names of SAM files as the overlaps instead. Any valid sam files should\
+  \ be accepted.\n\nComplete documentation at http://wgs-assembler.sourceforge.net/\n\
+  \nNo fastq file specified. Please specify a fastq file containing PacBio sequences\
+  \ for correction using the -fastq parameter.\nNo spec file defined. Please specify\
+  \ a spec file using the -s option.\nNo library name provided. Please specify a name\
+  \ using the -library option.\n"
+generated_using:
+- --help

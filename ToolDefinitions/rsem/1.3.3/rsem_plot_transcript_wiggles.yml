@@ -1,0 +1,118 @@
+!Command
+command:
+- rsem-plot-transcript-wiggles
+positional:
+- !Positional
+  description: The name of the sample analyzed.
+  position: 0
+  name: sample_name
+  optional: false
+- !Positional
+  description: "A list of transcript ids or gene ids. But it cannot be a mixture of\n\
+    transcript & gene ids. Each id occupies one line without extra\nspaces."
+  position: 1
+  name: input_list
+  optional: false
+named:
+- !Flag
+  description: 'The input-list is a list of gene ids. (Default: off)'
+  synonyms:
+  - --gene-list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The input-list is a list of transcript ids. This option can only be\n\
+    turned on if allele-specific expression is calculated. (Default:\noff)"
+  synonyms:
+  - --transcript-list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Show the wiggle plots as stacked bar plots. See description section\n\
+    for details. (Default: off)"
+  synonyms:
+  - --show-unique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Set the number of threads we can use. (Default: 1)'
+  synonyms:
+  - -p/--num-threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set the maximum allowable memory per thread. <string> represents the\n\
+    memory and accepts suffices 'K/M/G'. (Default: 1G)"
+  synonyms:
+  - --memory-per-thread
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Show help information.
+  synonyms:
+  - -h/--help
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n    rsem-plot-transcript-wiggles - Generate PDF wiggle plots from\
+  \ transcript\n    or gene ids\n\nSYNOPSIS\n     rsem-plot-transcript-wiggles [options]\
+  \ sample_name input_list output_plot_file\n\nARGUMENTS\n    sample_name\n      \
+  \  The name of the sample analyzed.\n\n    input_list\n        A list of transcript\
+  \ ids or gene ids. But it cannot be a mixture of\n        transcript & gene ids.\
+  \ Each id occupies one line without extra\n        spaces.\n\n    output_plot_file\n\
+  \        The file name of the pdf file which contains all plots.\n\nOPTIONS\n  \
+  \  --gene-list\n        The input-list is a list of gene ids. (Default: off)\n\n\
+  \    --transcript-list\n        The input-list is a list of transcript ids. This\
+  \ option can only be\n        turned on if allele-specific expression is calculated.\
+  \ (Default:\n        off)\n\n    --show-unique\n        Show the wiggle plots as\
+  \ stacked bar plots. See description section\n        for details. (Default: off)\n\
+  \n    -p/--num-threads <int>\n        Set the number of threads we can use. (Default:\
+  \ 1)\n\n    --memory-per-thread <string>\n        Set the maximum allowable memory\
+  \ per thread. <string> represents the\n        memory and accepts suffices 'K/M/G'.\
+  \ (Default: 1G)\n\n    -h/--help\n        Show help information.\n\nDESCRIPTION\n\
+  \    This program generates transcript wiggle plots and outputs them in a pdf\n\
+  \    file. This program can accept either a list of transcript ids or gene\n   \
+  \ ids (if transcript to gene mapping information is provided) and has two\n    modes\
+  \ of showing wiggle plots. If '--show-unique' is not specified, the\n    wiggle\
+  \ plot for each transcript is a histogram where each position has\n    the expected\
+  \ read depth at this position as its height. If\n    '--show-unique' is specified,\
+  \ for each transcript a stacked bar plot is\n    generated. For each position, the\
+  \ read depth of unique reads, which have\n    only one alignment, is showed in black.\
+  \ The read depth of multi-reads,\n    which align to more than one places, is showed\
+  \ in red on top of the read\n    depth of unique reads.This program will use some\
+  \ files RSEM generated\n    previouslly. So please do not delete/move any file\n\
+  \    'rsem-calculate-expression' generated. If allele-specific expression is\n \
+  \   calculated, the basic unit for plotting is an allele-specific transcript\n \
+  \   and plots can be grouped by either transcript ids (--transcript-list) or\n \
+  \   gene ids (--gene-list).\n\nOUTPUT\n    output_plot_file\n        This is a pdf\
+  \ file containing all plots generated. If a list of\n        transcript ids is provided,\
+  \ each page display at most 6 plots in 3\n        rows and 2 columns. If gene ids\
+  \ are provided, each page display a\n        gene. The gene's id is showed at the\
+  \ top and all its transcripts'\n        wiggle plots are showed in this page. The\
+  \ arrangement of plots is\n        determined automatically. For each transcript\
+  \ wiggle plot, the\n        transcript id is displayed as title. x-axis is position\
+  \ in the\n        transcript and y-axis is read depth. If allele-specific expression\n\
+  \        is calculated, the basin unit becomes an allele-specific transcript\n \
+  \       and transcript ids and gene ids can be used to group allele-specific\n \
+  \       transcripts.\n\n    sample_name.transcript.sorted.bam and sample_name.transcript.readdepth\n\
+  \        If these files do not exist, 'rsem-plot-transcript-wiggles' will\n    \
+  \    automatically generate them.\n\n    sample_name.uniq.transcript.bam, sample_name.uniq.transcript.sorted.bam\n\
+  \    and sample_name.uniq.transcript.readdepth\n        If '--show-unique' option\
+  \ is specified and these files do not exist,\n        'rsem-plot-transcript-wiggles'\
+  \ will automatically generate them.\n\nEXAMPLES\n    Suppose sample_name and output_plot_file\
+  \ are set to\n    'mmliver_single_quals' and 'output.pdf' respectively. input_list\
+  \ is set\n    to 'transcript_ids.txt' if transcript ids are provided, and is set\
+  \ to\n    'gene_ids.txt' if gene ids are provided.\n\n    1) Transcript ids are\
+  \ provided and we just want normal wiggle plots:\n\n     rsem-plot-transcript-wiggles\
+  \ mmliver_single_quals transcript_ids.txt output.pdf\n\n    2) Gene ids are provided\
+  \ and we want to show stacked bar plots:\n\n     rsem-plot-transcript-wiggles --gene-list\
+  \ --show-unique mmliver_single_quals gene_ids.txt output.pdf\n\n"
+generated_using:
+- --help

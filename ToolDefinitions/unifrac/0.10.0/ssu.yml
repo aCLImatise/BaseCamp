@@ -1,0 +1,139 @@
+!Command
+command:
+- ssu
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: METHOD
+  optional: true
+named:
+- !Flag
+  description: The input BIOM table.
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The input phylogeny in newick.
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The method, [unweighted | weighted_normalized | weighted_unnormalized
+    | generalized].
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The output distance matrix.
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OPTIONAL] The number of threads, default is 1.'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OPTIONAL] Generalized UniFrac alpha, default is 1.'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OPTIONAL] Bypass tips, reduces compute by about 50%.'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OPTIONAL] Variance adjusted, default is to not adjust for variance.'
+  synonyms:
+  - --vaw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[OPTIONAL] Mode of operation:\none-off : [DEFAULT] compute UniFrac.\n\
+    partial : Compute UniFrac over a subset of stripes.\npartial-report : Start and\
+    \ stop suggestions for partial compute.\nmerge-partial : Merge partial UniFrac\
+    \ results."
+  synonyms:
+  - --mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OPTIONAL] If mode==partial, the starting stripe.'
+  synonyms:
+  - --start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OPTIONAL] If mode==partial, the stopping stripe.'
+  synonyms:
+  - --stop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OPTIONAL] If mode==merge-partial, a glob pattern for partial outputs
+    to merge.'
+  synonyms:
+  - --partial-pattern
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OPTIONAL] If mode==partial-report, the number of partitions to compute.'
+  synonyms:
+  - --n-partials
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OPTIONAL] If mode==partial-report, produce barebones output.'
+  synonyms:
+  - --report-bare
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: ssu -i <biom> -o <out.dm> -m [METHOD] -t <newick> [-n threads]\
+  \ [-a alpha] [--vaw]\n    [--mode [MODE]] [--start starting-stripe] [--stop stopping-stripe]\
+  \ [--partial-pattern <glob>]\n    [--n-partials number_of_partitions] [--report-bare]\n\
+  \n    -i\t\tThe input BIOM table.\n    -t\t\tThe input phylogeny in newick.\n  \
+  \  -m\t\tThe method, [unweighted | weighted_normalized | weighted_unnormalized |\
+  \ generalized].\n    -o\t\tThe output distance matrix.\n    -n\t\t[OPTIONAL] The\
+  \ number of threads, default is 1.\n    -a\t\t[OPTIONAL] Generalized UniFrac alpha,\
+  \ default is 1.\n    -f\t\t[OPTIONAL] Bypass tips, reduces compute by about 50%.\n\
+  \    --vaw\t[OPTIONAL] Variance adjusted, default is to not adjust for variance.\n\
+  \    --mode\t[OPTIONAL] Mode of operation:\n    \t\t    one-off : [DEFAULT] compute\
+  \ UniFrac.\n    \t\t    partial : Compute UniFrac over a subset of stripes.\n  \
+  \  \t\t    partial-report : Start and stop suggestions for partial compute.\n  \
+  \  \t\t    merge-partial : Merge partial UniFrac results.\n    --start\t[OPTIONAL]\
+  \ If mode==partial, the starting stripe.\n    --stop\t[OPTIONAL] If mode==partial,\
+  \ the stopping stripe.\n    --partial-pattern\t[OPTIONAL] If mode==merge-partial,\
+  \ a glob pattern for partial outputs to merge.\n    --n-partials\t[OPTIONAL] If\
+  \ mode==partial-report, the number of partitions to compute.\n    --report-bare\t\
+  [OPTIONAL] If mode==partial-report, produce barebones output.\n\nCitations: \n \
+  \   For UniFrac, please see:\n        McDonald et al. Nature Methods 2018; DOI:\
+  \ 10.1038/s41592-018-0187-8\n        Lozupone and Knight Appl Environ Microbiol\
+  \ 2005; DOI: 10.1128/AEM.71.12.8228-8235.2005\n        Lozupone et al. Appl Environ\
+  \ Microbiol 2007; DOI: 10.1128/AEM.01996-06\n        Hamady et al. ISME 2010; DOI:\
+  \ 10.1038/ismej.2009.97\n        Lozupone et al. ISME 2011; DOI: 10.1038/ismej.2010.133\n\
+  \    For Generalized UniFrac, please see: \n        Chen et al. Bioinformatics 2012;\
+  \ DOI: 10.1093/bioinformatics/bts342\n    For Variance Adjusted UniFrac, please\
+  \ see: \n        Chang et al. BMC Bioinformatics 2011; DOI: 10.1186/1471-2105-12-118\n\
+  \nRuntime progress can be obtained by issuing a SIGUSR1 signal. If running with\
+  \ \nmultiple threads, this signal will only be honored if issued to the master PID.\
+  \ \nThe report will yield the following information: \n\ntid:<thread ID> start:<starting\
+  \ stripe> stop:<stopping stripe> k:<postorder node index> total:<number of nodes>\n\
+  \nThe proportion of the tree that has been evaluated can be determined from (k /\
+  \ total).\n\n"
+generated_using:
+- --help
